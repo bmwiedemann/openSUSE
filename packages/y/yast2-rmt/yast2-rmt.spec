@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-rmt
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-rmt
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 BuildArch:      noarch
 
@@ -40,7 +40,7 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 Summary:        YaST2 - Module to configure RMT
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-rmt
+URL:            https://github.com/yast/yast-rmt
 
 %description
 Provides the YaST module to configure the Repository Mirroring Tool (RMT) Server.

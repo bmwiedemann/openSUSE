@@ -143,4 +143,17 @@
 - Pass SSL password to Cheetah CLI interface securely (CVE-2018-20105: bsc#1119835)</comment>
     <requestid>780172</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b40450e83b643378f296b15c273076bb</srcmd5>
+    <version>1.3.2</version>
+    <time>1596278024</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.3.2
+- Handle Common Name length (bsc#1172674)
+
+- Changed placeholders in translatable strings (%&lt;&gt; -&gt; %{})
+  to better support gettext language format tags (bsc#1171555)
+- 1.3.1</comment>
+    <requestid>823767</requestid>
+  </revision>
 </revisionlist>
