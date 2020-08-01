@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-vistir
-Version:        0.5.0
+Version:        0.5.2
 Release:        0
 Summary:        Utilities for filesystems, paths, projects, subprocesses, and more
 License:        ISC
