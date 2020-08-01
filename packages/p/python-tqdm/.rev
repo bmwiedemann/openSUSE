@@ -295,4 +295,12 @@ See https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:N
     <comment></comment>
     <requestid>818498</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1ad8dbc0e077b3a7465e10b98770187d</srcmd5>
+    <version>4.48.0</version>
+    <time>1596277699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821708</requestid>
+  </revision>
 </revisionlist>

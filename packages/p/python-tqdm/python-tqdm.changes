@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jul 18 17:53:20 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.48.0:
+  * add tqdm.asyncio (#1004, #772, #91 <- #65)
+    + supports async iterables (async for row in tqdm(iterable))
+    + supports iterables
+    + supports coroutine.send (tqdm(coroutine).send)
+    + add as_completed wrapper (for f in tqdm.as_completed(fs))
+  * reduce contrib.discord logging verbosity
+  * fix potential pandas() modifying **kwargs bug
+  * update documentation
+    + add missing inline docstrings
+    + update contributing notes
+    + update readme
+    + add to examples/ folder
+       o async_coroutines
+       o coroutine_pipe
+    + standardise variable naming
+  * add tests
+    + add benchmark tests against popular alternative libraries
+    + test new functionality
+    + more thorough miniters test (#1003)
+  * misc framework updates
+    + tidy changelog helper
+    + add helper bots
+        o comment-bot /tag
+        o post-release-bot
+           - wiki updater
+           - website updater
+        o benchmark regressions
+           - full/thorough test on schedule & release
+           - quick test on PR
+
+-------------------------------------------------------------------
 Fri Jul  3 03:09:31 UTC 2020 - Arun Persaud <arun@dhcp.lbl.gov>
 
 - specfile:
