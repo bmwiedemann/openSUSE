@@ -111,4 +111,12 @@ systems
     <comment>- Update to release 3.8.5</comment>
     <requestid>811847</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1782851426f0ffb9e5c19d9f0dab977d</srcmd5>
+    <version>3.8.7</version>
+    <time>1596277989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.7</comment>
+    <requestid>823749</requestid>
+  </revision>
 </revisionlist>
