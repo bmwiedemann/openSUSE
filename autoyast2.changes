@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 30 14:00:17 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not report profile validation errors multiple times if the
+  errors are the same already reported and accepted (bsc#1173091)
+- 4.3.32
+
+-------------------------------------------------------------------
+Thu Jul 30 13:31:01 CEST 2020 - schubi@suse.de
+
+- Adapted doc: Calling of post-partitioning scripts moved from
+  dropped inst_autoimage to inst_kickoff (bsc#1140711).
+
+-------------------------------------------------------------------
 Mon Jul 27 17:01:01 CEST 2020 - schubi@suse.de
 
 - Removed "image" section from "software" section (bsc#1140711).
