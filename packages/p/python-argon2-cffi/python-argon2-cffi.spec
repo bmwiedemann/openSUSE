@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-argon2-cffi
-Version:        19.2.0
+Version:        20.1.0
 Release:        0
 Summary:        The Argon2 password hashing algorithm for Python
 License:        MIT

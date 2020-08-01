@@ -55,4 +55,14 @@
     <comment>Staging:I py2 fix</comment>
     <requestid>785548</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b261ac723696a1b87b7bc1aaa68e9bd6</srcmd5>
+    <version>20.1.0</version>
+    <time>1596277849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.1.0:
+  * It is now possible to manually override the detection of SSE2 using
+    the ``ARGON2_CFFI_USE_SSE2`` environment variable.</comment>
+    <requestid>823068</requestid>
+  </revision>
 </revisionlist>
