@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 21 08:39:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.14.0
+  * This will likely be the final version supporting Python 2.7. Future
+    releases will likely only work on Python 3.5+. See #109 for more
+    context.
+  * There is a significant possibility that future versions will use
+    Rust - instead of C - for compiled code. See #110 for more context.
+  * Some internal fields of C structs are now explicitly initialized.
+    (Possible fix for #105.)
+  * The ``make_cffi.py`` script used to build the CFFI bindings now
+    calls ``distutils.sysconfig.customize_compiler()`` so compiler
+    customizations (such as honoring the ``CC`` environment variable)
+    are performed. Patch by @Arfrever. (#103)
+  * The ``make_cffi.py`` script now sets ``LC_ALL=C`` when invoking
+    the preprocessor in an attempt to normalize output to ASCII. (#95)
+
+-------------------------------------------------------------------
 Mon Mar  9 10:11:02 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.13.0
