@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-setuptools_scm%{psuffix}
-Version:        3.5.0
+Version:        4.1.2
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT

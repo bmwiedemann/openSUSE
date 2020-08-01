@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 29 14:13:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.1.2
+  * include python 3.9 via the deadsnakes action
+  * fix handling of missing git/hg on python2.7 (python 3 exceptions where used)
+  * Add ``parentdir_project_version`` to support installs from GitHub release
+    tarballs.
+  * switch to declarative metadata
+  * select git tags based on the presence of numbers instead of dots
+  * enable getting a version form a parent folder prefix
+  * add release-branch-semver version scheme
+  * make global configuration available to version metadata
+  * drop official support for python 3.4
+
+-------------------------------------------------------------------
 Wed Mar 18 12:04:39 UTC 2020 - pgajdos@suse.com
 
 - version update to 3.5.0
