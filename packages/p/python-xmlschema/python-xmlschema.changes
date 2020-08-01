@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:50:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.2.2
+  * Fix XPath context for schema nodes
+  * Fix XPath parser and context for identities
+  * Fix content type classification (issue #195)
+  * Make sandbox mode more explicit (PR #191)
+  * Allow alphanumeric prefixes for the base converter
+  * Fix XPath issues with default namespace
+  * Fix W3C tests on XSD identities
+
+-------------------------------------------------------------------
 Thu Jun 11 03:46:21 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 1.2.0:
