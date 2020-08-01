@@ -26,7 +26,7 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.7.10
+Version:        1.8.1
 Release:        0
 URL:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.xz
@@ -38,7 +38,7 @@ Source5:        README.packaging
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.12
+BuildRequires:  go >= 1.13
 BuildRequires:  golang-packaging >= 15.0.8
 BuildRequires:  xmlto
 %if %{with systemd}

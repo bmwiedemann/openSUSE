@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jul 24 14:36:43 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 1.8.1
+  #18457: feat(query): Parallelize field iterator planning.
+  #18886: feat(http): Allow user supplied HTTP headers.
+
+  Bugfixes:
+  #17319: fix(flux): buckets call no longer panics.
+  #18212: fix(tsdb): Defer closing of underlying SeriesIDSetIterators.
+  #18286: fix(tsdb): Disable series id set cache size by default.
+  #18299: refactor(http): Simplify Authorizer.
+  #18694: fix(tsi1): wait deleting epoch before dropping shard.
+  #18687: perf(tsi1): batch write tombstone entries when dropping/deleting.
+  #18826: fix: gracefully handle errors when creating snapshots.
+  #18849: chore(build): remove all of the go1.12 references from build.
+
+-------------------------------------------------------------------
+Sat Jul  4 18:33:22 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 1.8.0
+  #15952: Add influx_inspect verify-tombstone tool.
+  #16542: Add offline series compaction to influx_inspect buildtsi.
+  #16599: Make influx CLI support custom HTTP endpoint.
+  #16908: Add support for InfluxDB 2.0 write API.
+  #17621: Update Flux to v0.65.0.
+  #17188: Enhance support for bound parameters.
+
+  Bugfixes:
+  #10503: Delete rebuilds series index when series to be deleted are only found in cache.
+  #10504: Delete rebuilds series index when series to be deleted are outside timerange.
+  #14485: Parse Accept header correctly.
+  #16524: Upgrade compaction error log from Info to Warn.
+  #16525: Remove double increment of meta index.
+  #16595: Improve series cardinality limit for inmem index.
+  #16606: Ensure all block data returned.
+  #16627: Skip WriteSnapshot during backup if snapshotter is busy.
+  #16709: Reduce influxd and influx startup time if Flux isn't used.
+  #16762: Fix bugs in -compact-series-file.
+  #16944: Update to Go 1.13.8 and Go modules.
+  #17032: Fix a SIGSEGV when accessing tsi active log.
+  #17656: Verify precision in write requests.
+  #17698: Enable configuration of TLS 1.3.
+
+-------------------------------------------------------------------
 Sat Mar  7 14:26:06 UTC 2020 - Uwe Arnold <donvipre@gmail.com>
 
 - update to 1.7.10:
