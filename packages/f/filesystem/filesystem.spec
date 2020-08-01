@@ -1,7 +1,7 @@
 #
 # spec file for package filesystem
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       group(root)
 Requires:       user(root)
-Url:            https://build.opensuse.org/package/show/openSUSE:Factory/filesystem
+URL:            https://build.opensuse.org/package/show/openSUSE:Factory/filesystem
 Source0:        directory.list
 Source1:        filesystem.links
 Source2:        languages

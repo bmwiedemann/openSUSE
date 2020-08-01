@@ -43,7 +43,6 @@
 0755 root root /root/bin
 0755 root root /run
 0755 root root /sbin
-0755 root root /selinux
 0755 root root /srv/www
 0755 root root /srv/www/cgi-bin
 0755 root root /srv/www/htdocs
