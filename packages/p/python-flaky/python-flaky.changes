@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 29 05:39:42 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.7.0:
+  * Flaky now retries tests which fail during setup.
+
+-------------------------------------------------------------------
 Fri Jan 31 01:54:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add required suffix to package name for test package. Although

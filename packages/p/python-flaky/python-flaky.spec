@@ -1,7 +1,7 @@
 #
-# spec file for package python-flaky
+# spec file for package python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,10 @@
 %bcond_with test
 %endif
 Name:           python-flaky%{?psuffix}
-Version:        3.6.1
+Version:        3.7.0
 Release:        0
 Summary:        Plugin for nose or py.test that automatically reruns flaky tests
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/box/flaky
 Source:         https://files.pythonhosted.org/packages/source/f/flaky/flaky-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
