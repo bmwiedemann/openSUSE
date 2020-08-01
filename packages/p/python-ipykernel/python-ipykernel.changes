@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 25 15:31:23 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.3.4:
+  * Only run Qt eventloop in the shell stream. (:ghpull:`531`)
+
+-------------------------------------------------------------------
+Sat Jul 18 18:10:45 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.3.3:
+  * Fix QSocketNotifier in the Qt event loop not being disabled for
+    the control channel. (:ghpull:`525`)
+
+-------------------------------------------------------------------
 Sat Jul 11 19:29:18 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.3.2:
