@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/n/networkx/networ
 Patch0:         numpy-38-test.patch
 # UPSTREAM PATCH: gh#networkx/networkx#3697
 Patch1:         matplotlib.patch
+# UPSTREAM PATCH: gh#networkx/networkx#4012
+Patch2:         networkx-pr4012-use-mpl.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module decorator >= 3.4.0}
 BuildRequires:  %{python_module matplotlib >= 3.1}

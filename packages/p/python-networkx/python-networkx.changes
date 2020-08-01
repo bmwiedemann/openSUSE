@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 16:10:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+-  gh#networkx/networkx#4012 networkx-pr4012-use-mpl.patch
+   new matplotlib removed keyword argument 'warn' for mpl.use()
+
+-------------------------------------------------------------------
 Tue Jul  7 20:31:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - We don't need to skip TestKatzCentralityDirectedNumpy when we don't
