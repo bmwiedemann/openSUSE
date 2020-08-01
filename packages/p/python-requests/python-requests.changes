@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 23 18:47:44 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove patch pr_5251-pytest5.patch, not needed anymore.
+- update to version 2.24.0:
+ - pyOpenSSL TLS implementation is now only used if Python
+   either doesn't have an `ssl` module or doesn't support
+   SNI. Previously pyOpenSSL was unconditionally used if available.
+   This applies even if pyOpenSSL is installed via the
+   `requests[security]` extra (#5443)
+ - Redirect resolution should now only occur when
+   `allow_redirects` is True. (#5492)
+ - No longer perform unnecessary Content-Length calculation for
+   requests that won't use it. (#5496)
+
+-------------------------------------------------------------------
 Mon Feb 24 15:19:16 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.23.0

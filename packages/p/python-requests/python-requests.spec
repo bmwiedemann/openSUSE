@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests%{psuffix}
-Version:        2.23.0
+Version:        2.24.0
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
@@ -35,7 +35,6 @@ URL:            http://python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-SUSE: do not hardcode versions in setup.py/requirements
 Patch0:         requests-no-hardcoded-version.patch
-Patch1:         pr_5251-pytest5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

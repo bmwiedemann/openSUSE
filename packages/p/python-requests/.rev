@@ -686,4 +686,12 @@
     <comment>- update to version 2.20.0 bsc#1111622:</comment>
     <requestid>796260</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>16f2e5b6e73b4df90b5a62f647c5667f</srcmd5>
+    <version>2.24.0</version>
+    <time>1596277836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822516</requestid>
+  </revision>
 </revisionlist>
