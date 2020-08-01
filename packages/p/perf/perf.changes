@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 31 07:08:56 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Remove libebl Requires for ppc64/ppc64le (boo#1174714)
+  now that elfutils 0.178 do not generate it anymore.
+
+-------------------------------------------------------------------
 Wed Jul 22 07:09:35 UTC 2020 - Mian Yousaf Kaukab <yousaf.kaukab@suse.com>
 
 - Link with CoreSight Trace Decode library (OpenCSD)

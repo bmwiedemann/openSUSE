@@ -55,10 +55,6 @@ Requires:       kernel >= 2.6.31
 %ifarch aarch64 ia64 x86_64 ppc64 ppc64le ppc %sparc
 BuildRequires:  libnuma-devel
 %endif
-# dl_open requirement so not autodetected
-%ifarch ppc64 ppc64le
-Requires:       libebl
-%endif
 
 %description
 This package provides a userspace tool 'perf', which monitors performance for
