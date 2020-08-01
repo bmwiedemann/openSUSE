@@ -49,4 +49,12 @@
   * Fixed parsing errors when parsing some table names (#76).</comment>
     <requestid>784176</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de3035cee0794d7dac045df3bd24fb4f</srcmd5>
+    <version>0.6.0</version>
+    <time>1596277829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822437</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-tomlkit
-Version:        0.5.11
+Version:        0.6.0
 Release:        0
 Summary:        Style preserving TOML library
 License:        MIT
