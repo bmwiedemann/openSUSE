@@ -1069,4 +1069,12 @@ Enable cycles-osl in build</comment>
     <comment></comment>
     <requestid>822969</requestid>
   </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>05986353e0dc2811f45ac5846db7fb92</srcmd5>
+    <version>2.83.3</version>
+    <time>1596277923</time>
+    <user>dimstar_suse</user>
+    <comment>fixes aarch64 build issue</comment>
+    <requestid>823747</requestid>
+  </revision>
 </revisionlist>

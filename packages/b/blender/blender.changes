@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 30 12:14:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase %limit_build value to avoid OOM failures
+
+-------------------------------------------------------------------
 Mon Jul 27 09:03:30 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - After upgrading ffmpeg from 4.2.3 to 4.3.1, unaligned buffer

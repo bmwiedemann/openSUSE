@@ -242,7 +242,7 @@ rm -rf extern/libopenjpeg
 for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
-%limit_build -m 1000
+%limit_build -m 1300
 echo "optflags: " %{optflags}
 # Find python3 version and abiflags
 export psver=$(pkg-config python3 --modversion)
