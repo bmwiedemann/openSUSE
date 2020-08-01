@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 21 08:53:11 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 5.2
+  * Add support for Python 3.8.
+  * When a layer is run in a subprocess, read its stderr in a thread to avoid
+    a deadlock if its stderr output (containing failing and erroring test IDs)
+    overflows the capacity of a pipe
+
+-------------------------------------------------------------------
 Wed Oct 30 12:13:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.1:

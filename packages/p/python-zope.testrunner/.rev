@@ -97,4 +97,12 @@
   * Fix incorrect failure counts in per-layer summary output, broken in 4.0.1.</comment>
     <requestid>745976</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fd2622c04bc1b17e565b84c1b77b4acd</srcmd5>
+    <version>5.2</version>
+    <time>1596277723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822035</requestid>
+  </revision>
 </revisionlist>
