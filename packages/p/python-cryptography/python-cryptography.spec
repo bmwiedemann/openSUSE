@@ -1,7 +1,7 @@
 #
 # spec file for package python-cryptography
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cryptography
-Version:        2.9.2
+Version:        3.0
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause

@@ -459,4 +459,33 @@
     <comment></comment>
     <requestid>805793</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6881ea56783621c9dc5d5e1c7d776441</srcmd5>
+    <version>3.0</version>
+    <time>1596277866</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0
+- refreshed disable-uneven-sizes-tests.patch and  skip_openssl_memleak_test.patch
+ * Removed support for passing an Extension instance
+    to from_issuer_subject_key_identifier(), as per our deprecation policy.
+ * Support for LibreSSL 2.7.x, 2.8.x, and 2.9.0 has been removed
+ * Dropped support for macOS 10.9, macOS users must upgrade to 10.10 or newer.
+ * RSA generate_private_key() no longer accepts public_exponent values except
+    65537 and 3 (the latter for legacy purposes).
+ * X.509 certificate parsing now enforces that the version field contains
+    a valid value, rather than deferring this check until version is accessed.
+ * Deprecated support for Python 2
+ * Added support for OpenSSH serialization format for ec, ed25519, rsa and dsa
+    private keys: load_ssh_private_key() for loading and OpenSSH for writing.
+ * Added support for OpenSSH certificates to load_ssh_public_key().
+ * Added encrypt_at_time() and decrypt_at_time() to Fernet.
+ * Added support for the SubjectInformationAccess X.509 extension.
+ * Added support for parsing SignedCertificateTimestamps in OCSP responses.
+ * Added support for parsing attributes in certificate signing requests via get_attribute_for_oid().
+ * Added support for encoding attributes in certificate signing requests via add_attribute().
+ * On OpenSSL 1.1.1d and higher cryptography now uses OpenSSL’s built-in CSPRNG
+    instead of its own OS random engine because these versions of OpenSSL properly reseed on fork.
+ * Added initial support for creating PKCS12 files with serialize_key_and_certificates().</comment>
+    <requestid>823211</requestid>
+  </revision>
 </revisionlist>
