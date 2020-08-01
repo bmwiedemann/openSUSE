@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:38:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.9.18
+  * Support package prompt-toolkit V3 as well as V2 in prompt_toolkit shell.
+  * $SHELL_TYPE "prompt_toolkit" with any suffix creates the "prompt_toolkit" 
+    shell, requires package prompt-toolkit >= 2.0
+  * minor changes and fixes
+
+-------------------------------------------------------------------
 Tue Jun 23 19:56:57 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - add local source dir to PYTHONPATH gh#openSUSE/python-rpm-macros#48 
@@ -13,7 +22,7 @@ Fri May 15 12:55:14 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 -------------------------------------------------------------------
 Thu Apr 16 07:44:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 0.9.1&:
+- Update to 0.9.17:
   * various minor fixes all around
 
 -------------------------------------------------------------------

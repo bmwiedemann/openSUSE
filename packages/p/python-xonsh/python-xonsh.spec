@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xonsh
-Version:        0.9.17
+Version:        0.9.18
 Release:        0
 Summary:        Python-powered, cross-platform, Unix-gazing shell
 License:        BSD-2-Clause
@@ -27,7 +27,7 @@ URL:            https://github.com/xonsh/xonsh
 Source:         https://files.pythonhosted.org/packages/source/x/xonsh/xonsh-%{version}.tar.gz
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module importlib_resources}
-BuildRequires:  %{python_module prompt_toolkit}
+BuildRequires:  %{python_module prompt_toolkit >= 2.0}
 BuildRequires:  %{python_module pygments >= 2.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setproctitle}
@@ -40,7 +40,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python
 Requires:       python-distro
 Requires:       python-importlib_resources
-Requires:       python-prompt_toolkit
+Requires:       python-prompt_toolkit >= 2.0
 Requires:       python-pygments >= 2.2
 Requires:       python-setproctitle
 Requires(post): update-alternatives
