@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:04:49 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- support newest numpy by removing old test
+  gh#pandas-dev/pandas#34991 pandas-pr34991-npconstructor.patch  
+- move testing to multibuild flavor
+- run slow tests only on x86_64
+- replace gcc10-skip-one-test.patch with pytest -k deselection
+- tidy SKIP_TESTS declarations
+- add pandas-pytest.ini as pytest.ini in order to support the
+  custom marks and filter some warnings
+- remove random hash seed
+
+-------------------------------------------------------------------
 Tue Jun 30 13:03:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Skip test_raw_roundtrip on i586
