@@ -26,11 +26,11 @@
 %endif
 %bcond_without python2
 Name:           python-arrow%{?psuffix}
-Version:        0.15.7
+Version:        0.15.8
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
-URL:            https://github.com/crsmithdev/arrow
+URL:            https://github.com/arrow-py/arrow
 Source:         https://files.pythonhosted.org/packages/source/a/arrow/arrow-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul 25 15:25:36 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated url
+
+- update to version 0.15.8:
+  * [WARN] arrow will drop support for Python 2.7 and 3.5 in the 1.0.0
+    release in late September. The 0.15.x and 0.16.x releases are the
+    last to support Python 2.7 and 3.5.
+  * [NEW] Added humanize week granularity translation for Czech.
+  * [FIX] arrow.get will now pick sane defaults when weekdays are
+    passed with particular token combinations, see #446.
+  * [INTERNAL] Moved arrow to an organization. The repo can now be
+    found here.
+  * [INTERNAL] Started issuing deprecation warnings for Python 2.7 and
+    3.5.
+  * [INTERNAL] Added Python 3.9 to CI pipeline.
+
+-------------------------------------------------------------------
 Sun Jul 12 21:40:32 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.15.7:
