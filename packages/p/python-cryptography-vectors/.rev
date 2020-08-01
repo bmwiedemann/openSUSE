@@ -32,4 +32,13 @@
     <comment></comment>
     <requestid>805792</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2c7689c3618a65f5482573015b1c7047</srcmd5>
+    <version>3.0</version>
+    <time>1596277857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0:
+  * updated vectors for the cryptography 3.0 testing</comment>
+    <requestid>823206</requestid>
+  </revision>
 </revisionlist>
