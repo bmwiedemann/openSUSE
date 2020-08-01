@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug  1 07:14:32 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.4. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-4-has-been-released/8574
+  boo#1174789
+
+  + VGA console for virtual machines
+  + Clustering failure domains
+  + /dev/lxd API in virtual machines
+  + Graceful daemon shutdown
+  + macvlan and sriov managed network types
+  + Disk usage limits in projects
+  + AppAmor confinement for dnsmasq
+  + GPU mediated devices in resources API
+  + --console option in lxc launch
+
+-------------------------------------------------------------------
 Thu Jul  2 02:12:53 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.3. The full upstream changelog is available from:
