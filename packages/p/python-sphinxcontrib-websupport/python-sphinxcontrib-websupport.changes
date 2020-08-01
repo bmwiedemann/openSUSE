@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:01:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- version update to 1.2.3
+  * #43: doctreedir argument has been ignored on initialize app
+  * Stop to use sphinx.util.pycompat:htmlescape
+
+-------------------------------------------------------------------
 Fri Mar 27 09:00:20 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.2.1

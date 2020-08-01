@@ -27,7 +27,7 @@
 %endif
 %global skip_python2 1
 Name:           python-sphinxcontrib-websupport%{psuffix}
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
