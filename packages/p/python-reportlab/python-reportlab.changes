@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:14:37 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.5.46
+  * micro changes to normalDate
+  * fix warnings about is not (detected in python 3.8b4)
+  * implement PR #59 bug fix
+  * add recursive ttf searching
+  * sync with rlextra
+  * fix Barchart axis crossing issue
+
+-------------------------------------------------------------------
 Wed Jul 15 11:00:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.5.44
