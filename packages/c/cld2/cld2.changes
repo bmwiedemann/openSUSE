@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 27 13:25:05 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- add pkgconfig file
+- cleanup spec file
+  * remove stuff for compatibility below SLE 12
+  * use license tag in files section
+
+-------------------------------------------------------------------
 Fri Aug 11 12:43:51 UTC 2017 - astieger@suse.com
 
 - Update to version 20150820:

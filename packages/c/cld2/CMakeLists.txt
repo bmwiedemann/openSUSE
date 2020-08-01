@@ -9,7 +9,7 @@ set (common_SOURCE_FILES
     internal/compact_lang_det_hint_code.cc
     internal/compact_lang_det_impl.cc
     internal/debug.cc
-    internal/fixunicodevalue.cc 
+    internal/fixunicodevalue.cc
     internal/generated_entities.cc
     internal/generated_language.cc
     internal/generated_ulscript.cc
@@ -155,3 +155,11 @@ target_link_libraries(compact_lang_det_test_chrome_2 cld2)
 target_link_libraries(compact_lang_det_test_chrome_16 cld2)
 target_link_libraries(cld2_unittest_chrome_2 cld2)
 target_link_libraries(cld2_unittest_avoid_chrome_2 cld2)
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cld2.pc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/cld2.pc
+    @ONLY
+)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cld2.pc
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+)
