@@ -64,4 +64,12 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>744002</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>256f32583914bc95e7741bad8e43ad84</srcmd5>
+    <version>2.6.0</version>
+    <time>1596277826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822417</requestid>
+  </revision>
 </revisionlist>

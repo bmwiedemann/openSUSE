@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 12:18:09 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.6.0
+  * Add `use_tuple` option to unpacking functions for unpacking MessagePack arrays into tuples.
+  * Add `ext_serializable()` decorator for registration of application classes with Ext types for automatic packing and unpacking.
+
+-------------------------------------------------------------------
 Mon Oct 14 14:48:47 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
