@@ -190,6 +190,8 @@ Requires:       ghc-pandoc-citeproc
 Requires:       mathjax
 Requires:       pandoc
 Recommends:     git
+Recommends:     gcc
+Recommends:     gcc-c++
 Suggests:       rstudio-desktop
 Suggests:       rstudio-server
 Provides:       bundled(ace.js) = %{bundled_ace_version}

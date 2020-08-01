@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 31 16:32:03 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Recommend gcc & g++ so that R modules can be installed
+
+-------------------------------------------------------------------
 Mon Jun 15 20:06:34 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Correct license of bundled font
