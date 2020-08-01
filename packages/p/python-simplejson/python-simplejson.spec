@@ -1,7 +1,7 @@
 #
 # spec file for package python-simplejson
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-simplejson
-Version:        3.17.0
+Version:        3.17.2
 Release:        0
 Summary:        Extensible JSON encoder/decoder for Python
 License:        MIT OR AFL-2.1
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/simplejson/simplejson
 Source:         https://files.pythonhosted.org/packages/source/s/simplejson/simplejson-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,7 +50,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE.txt
