@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tempora
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
@@ -30,15 +30,13 @@ BuildRequires:  %{python_module jaraco.functools >= 1.20}
 BuildRequires:  %{python_module pytest-freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.functools >= 1.20
 Requires:       python-pytz
-Requires:       python-setuptools
-Requires:       python-six
 BuildArch:      noarch
 Requires(post):   update-alternatives
 Requires(postun):  update-alternatives
@@ -54,6 +52,7 @@ Modules include:
 
 %prep
 %setup -q -n tempora-%{version}
+sed -i '/--mypy/d' pytest.ini
 
 %build
 %python_build

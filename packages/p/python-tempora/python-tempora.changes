@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 24 12:28:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.0.0
+  * Removed ``strptime`` function in favor of
+    `datetime.datetime.strptime`. If passing
+    a ``tzinfo`` parameter, instead invoke `.replace(tzinfo=...)`
+    on the result.
+  * Deprecated ``divide_timedelta`` and ``divide_timedelta_float``
+    now that Python supports this functionality natively.
+  * Deprecated ``Parser`` class. The
+    'dateutil.parser' provides more sophistication.
+
+-------------------------------------------------------------------
 Tue Apr 14 09:12:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.
