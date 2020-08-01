@@ -19,12 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-twine
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Collection of utilities for interacting with PyPI
 License:        Apache-2.0
 URL:            https://github.com/pypa/twine
 Source:         https://files.pythonhosted.org/packages/source/t/twine/twine-%{version}.tar.gz
+BuildRequires:  %{python_module colorama >= 0.4.3}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module jaraco.envs}
 BuildRequires:  %{python_module keyring >= 15.1}
@@ -36,17 +37,20 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readme_renderer >= 21.0}
 BuildRequires:  %{python_module requests >= 2.20}
 BuildRequires:  %{python_module requests-toolbelt >= 0.8.0}
+BuildRequires:  %{python_module rfc3986 >= 1.4.0}
 BuildRequires:  %{python_module setuptools >= 0.7.0}
 BuildRequires:  %{python_module setuptools_scm >= 1.15}
 BuildRequires:  %{python_module tqdm >= 4.14}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-colorama >= 0.4.3
 Requires:       python-importlib-metadata
 Requires:       python-keyring >= 15.1
 Requires:       python-pkginfo >= 1.4.2
 Requires:       python-readme_renderer >= 21.0
 Requires:       python-requests >= 2.20
 Requires:       python-requests-toolbelt >= 0.8.0
+Requires:       python-rfc3986 >= 1.4.0
 Requires:       python-setuptools >= 0.7.0
 Requires:       python-tqdm >= 4.14
 Requires(post): update-alternatives
@@ -63,6 +67,7 @@ checking, if descriptions will render correctly.
 %setup -q -n twine-%{version}
 
 sed -i '1s/^#!.*//' twine/__main__.py
+sed -i 's/--cov.*$//' pytest.ini
 
 %build
 %python_build

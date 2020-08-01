@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 23 12:22:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.2.0
+  * :feature:`666` Improve display of HTTP errors during upload
+  * :feature:`649` Use red text when printing errors on the command line
+  * :feature:`652` Print packages and signatures to be uploaded when using
+    ``--verbose`` option
+  * :bug:`655 major` Update URL to ``.pypirc`` specfication
+  * :feature:`602` Require repository URL scheme to be ``http`` or ``https``
+  * :bug:`612 major` Don't raise an exception when Python version can't be
+    parsed from filename
+
+-------------------------------------------------------------------
 Sun Apr  5 07:40:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update deps to really match up reality
