@@ -3,5 +3,8 @@
     <physicalmemory>
       <size unit="G">2</size>
     </physicalmemory>
+    <disk>
+      <size unit="G">4</size>
+    </disk>
   </hardware>
 </constraints>
