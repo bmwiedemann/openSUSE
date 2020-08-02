@@ -36,53 +36,62 @@ Index: lib/config.guess
  	esac
  	# The Operating System including object format, if it has switched
  	# to ELF recently (or will in the future) and ABI.
-@@ -241,36 +251,36 @@ case "$UNAME_MACHINE:$UNAME_SYSTEM:$UNAM
- 	exit ;;
+@@ -245,42 +245,42 @@ case "$UNAME_MACHINE:$UNAME_SYSTEM:$UNAM
+	exit ;;
      *:Bitrig:*:*)
- 	UNAME_MACHINE_ARCH=`arch | sed 's/Bitrig.//'`
+	UNAME_MACHINE_ARCH=`arch | sed 's/Bitrig.//'`
 -	echo "$UNAME_MACHINE_ARCH"-unknown-bitrig"$UNAME_RELEASE"
 +	echo "$UNAME_MACHINE_ARCH"-${VENDOR}-bitrig"$UNAME_RELEASE"
- 	exit ;;
+	exit ;;
      *:OpenBSD:*:*)
- 	UNAME_MACHINE_ARCH=`arch | sed 's/OpenBSD.//'`
+	UNAME_MACHINE_ARCH=`arch | sed 's/OpenBSD.//'`
 -	echo "$UNAME_MACHINE_ARCH"-unknown-openbsd"$UNAME_RELEASE"
 +	echo "$UNAME_MACHINE_ARCH"-${VENDOR}-openbsd"$UNAME_RELEASE"
- 	exit ;;
+	exit ;;
      *:LibertyBSD:*:*)
- 	UNAME_MACHINE_ARCH=`arch | sed 's/^.*BSD\.//'`
+	UNAME_MACHINE_ARCH=`arch | sed 's/^.*BSD\.//'`
 -	echo "$UNAME_MACHINE_ARCH"-unknown-libertybsd"$UNAME_RELEASE"
 +	echo "$UNAME_MACHINE_ARCH"-${VENDOR}-libertybsd"$UNAME_RELEASE"
- 	exit ;;
+	exit ;;
      *:MidnightBSD:*:*)
 -	echo "$UNAME_MACHINE"-unknown-midnightbsd"$UNAME_RELEASE"
 +	echo "$UNAME_MACHINE"-${VENDOR}-midnightbsd"$UNAME_RELEASE"
- 	exit ;;
+	exit ;;
      *:ekkoBSD:*:*)
 -	echo "$UNAME_MACHINE"-unknown-ekkobsd"$UNAME_RELEASE"
 +	echo "$UNAME_MACHINE"-${VENDOR}-ekkobsd"$UNAME_RELEASE"
- 	exit ;;
+	exit ;;
      *:SolidBSD:*:*)
 -	echo "$UNAME_MACHINE"-unknown-solidbsd"$UNAME_RELEASE"
 +	echo "$UNAME_MACHINE"-${VENDOR}-solidbsd"$UNAME_RELEASE"
- 	exit ;;
+	exit ;;
+     *:OS108:*:*)
+-	echo "$UNAME_MACHINE"-unknown-os108_"$UNAME_RELEASE"
++	echo "$UNAME_MACHINE"-${VENDOR}-os108_"$UNAME_RELEASE"
+	exit ;;
      macppc:MirBSD:*:*)
 -	echo powerpc-unknown-mirbsd"$UNAME_RELEASE"
 +	echo powerpc-${VENDOR}-mirbsd"$UNAME_RELEASE"
- 	exit ;;
+	exit ;;
      *:MirBSD:*:*)
 -	echo "$UNAME_MACHINE"-unknown-mirbsd"$UNAME_RELEASE"
 +	echo "$UNAME_MACHINE"-${VENDOR}-mirbsd"$UNAME_RELEASE"
- 	exit ;;
+	exit ;;
      *:Sortix:*:*)
 -	echo "$UNAME_MACHINE"-unknown-sortix
 +	echo "$UNAME_MACHINE"-${VENDOR}-sortix
- 	exit ;;
+	exit ;;
+     *:Twizzler:*:*)
+-	echo "$UNAME_MACHINE"-unknown-twizzler
++	echo "$UNAME_MACHINE"-${VENDOR}-twizzler
+	exit ;;
      *:Redox:*:*)
 -	echo "$UNAME_MACHINE"-unknown-redox
 +	echo "$UNAME_MACHINE"-${VENDOR}-redox
- 	exit ;;
+	exit ;;
      mips:OSF1:*.*)
-         echo mips-dec-osf1
+	echo mips-dec-osf1
+
 @@ -332,13 +342,13 @@ case "$UNAME_MACHINE:$UNAME_SYSTEM:$UNAM
  	trap '' 0
  	exit $exitcode ;;
@@ -493,24 +502,24 @@ Index: lib/config.sub
 ===================================================================
 --- lib/config.sub.orig	2018-03-21 12:19:25.009766883 +0100
 +++ lib/config.sub	2018-03-21 12:19:27.861785205 +0100
-@@ -1071,12 +1071,18 @@ case $basic_machine in
- 	rtpc | rtpc-*)
- 		basic_machine=romp-ibm
+@@ -1138,13 +1138,19 @@
+ 		cpu=nsx
+ 		vendor=tandem
  		;;
--	s390 | s390-*)
 +	s390)
- 		basic_machine=s390-ibm
- 		;;
--	s390x | s390x-*)
-+	s390-*)
-+		basic_machine=s390-`echo $basic_machine | sed 's/^[^-]*-//'`
++		cpu=s390
++		vendor=ibm
++		;;
+ 	s390-*)
+ 		cpu=s390
 +		;;
 +	s390x)
- 		basic_machine=s390x-ibm
++		cpu=s390x
+ 		vendor=ibm
  		;;
-+	s390x-*)
-+		basic_machine=s390x-`echo $basic_machine | sed 's/^[^-]*-//'`
-+		;;
- 	sa29200)
- 		basic_machine=a29k-amd
- 		os=-udi
+ 	s390x-*)
+ 		cpu=s390x
+-		vendor=ibm
+ 		;;
+ 	tile*-*)
+ 		os=${os:-linux-gnu}

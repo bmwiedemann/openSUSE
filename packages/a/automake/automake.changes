@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jul 17 09:03:35 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fix name tag for multibuild
+
+-------------------------------------------------------------------
+Fri Jul 10 14:54:32 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add etags to BuildRequires for testsuite
+- Add automake-testsuite-vala-gcc10.patch: fixes testsuite
+
+-------------------------------------------------------------------
+Sun Jul  5 16:19:34 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed automake-SuSE.patch: updated for new version
+- Update to 1.16.2. Changes since 1.16.1:
+  * New features added
+
+    - add zstd support and the automake option, dist-zstd.
+  
+    - support for Python 3: py-compile now supports both Python 3
+    and Python 2; tests do not require .pyo files, and uninstall
+    deletes __pycache__ correctly (automake bug #32088).
+
+  * Miscellaneous changes
+
+    - automake no longer requires a @setfilename in each .texi file
+
+  * Bugs fixed
+
+    - When cleaning the compiled python files, '\n' is not used anymore in the
+    substitution text of 'sed' transformations.  This is done to preserve
+    compatibility with the 'sed' implementation provided by macOS which
+    considers '\n' as the 'n' character instead of a newline.
+    (automake bug#31222)
+
+    - For make tags, lisp_LISP is followed by the necessary space when
+    used with CONFIG_HEADERS.
+    (automake bug#38139)
+
+    - The automake test txinfo-vtexi4.sh no longer fails when localtime
+    and UTC cross a day boundary.
+
+    - Emacsen older than version 25, which require use of
+    byte-compile-dest-file, are supported again.
+
+-------------------------------------------------------------------
+Sun Mar 22 14:00:34 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- convert testsuite to singlespec
+
+-------------------------------------------------------------------
 Tue Nov 12 09:01:36 UTC 2019 - Petr Vorel <pvorel@suse.cz>
 
 - Add missing perl dependency (bsc#1156491).
