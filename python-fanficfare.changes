@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug  1 13:50:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.21.0:
+  - New site: chireads.com -- Thanks, Kolbo!
+  - Fix for recursion in add_genre_when_multi_category caching bad
+    value.
+  - Change INI edit highlight colors when dark theme.
+  - Add cover_min_size setting.
+  - Fix add_genre_when_multi_category so it can include_in_ without
+    breaking and move above doreplacements.
+  - Add .SHOW_EMPTY feature for titlepage_entries.
+  - Check for epub before polishing cover into it.
+  - Change site efiction.esteliel.de to faerie-archive.com, also changed
+    siteabbrev eesd->fae
+  - Allow for no genre stories in adapter_fanficauthorsnet.
+  - Fix adapter_webnovelcom sitetags for site changes.
+
+-------------------------------------------------------------------
 Sun Jun 21 20:37:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 3.20.1:
