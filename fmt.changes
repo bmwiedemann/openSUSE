@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 29 17:33:10 UTC 2020 - aloisio@gmx.com
+
+- Update to version 7.0.2
+  * Worked around broken ``numeric_limits`` for 128-bit integers
+  * Fixed compatibility with CMake 3.4
+  * Fixed handling of digit separators in locale-specific
+    formatting
+
+-------------------------------------------------------------------
 Tue Jul  7 19:18:26 UTC 2020 - aloisio@gmx.com
 
 - Update to version 7.0.1
