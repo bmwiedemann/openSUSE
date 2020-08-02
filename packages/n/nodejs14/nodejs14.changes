@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 22 12:52:50 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.6.0:
+  * deps:
+    + upgrade to libuv 1.38.1
+    + upgrade npm to 6.14.6
+    + update V8 to 8.4.371.19
+  * module:
+    + doc only deprecation of module.parent
+    + package "imports" field
+  * src: allow embedders to disable esm loader
+  * tls: make 'createSecureContext' honor more options
+  * vm: add run-after-evaluate microtask mode
+  * worker: add option to track unmanaged file descriptors
+
+- versioned.patch - refreshed
+
+-------------------------------------------------------------------
 Thu Jul  2 20:51:30 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 14.5.0:

@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.5.0
+Version:        14.6.0
 Release:        0
 
 %define node_version_number 14
