@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 22 12:27:31 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 12.22.0:
+  * deps:
+    + upgrade npm to 6.14.6 - fixes potential information leak through
+      log files (bsc#1173937, CVE-2020-15095)
+    + upgrade openssl sources to 1.1.1g (SLE-12 only)
+  * n-api: add napi_detach_arraybuffer
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Tue Jun  9 11:45:32 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Add Require for nodejs10 when intalling npm10 (bsc#1172728)
