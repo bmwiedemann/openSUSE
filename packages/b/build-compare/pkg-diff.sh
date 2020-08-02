@@ -198,6 +198,8 @@ diff_two_files()
   offset=$(( ($offset >> 6) << 6 ))
   length=512
   diff -u \
+    --label "old $file (hex)" \
+    --label "new $file (hex)" \
     <( hexdump -C -s $offset -n $length "old/$file" ) \
     <( hexdump -C -s $offset -n $length "new/$file" ) | $buildcompare_head
   return 1
@@ -789,6 +791,7 @@ compare_archive()
         : "${REPLY}"
         filelist+=( "${REPLY}" )
       done < 'cn'
+      ret=0
       for f in "${filelist[@]}"
       do
         if ! check_single_file "${file}/${f}"
@@ -801,7 +804,6 @@ compare_archive()
         fi
         watchdog_touch
       done
-      ret=$?
     else
       wprint "$file has different file list"
       diff -u 'co' 'cn'
@@ -832,7 +834,7 @@ check_single_file()
   verify_before_processing "${file}" "${dfile}"
   case "$?" in
     0) return 0 ;;
-    1) return 1 ;;
+    1) test -z "$check_all" && return 1 ;;
     *) ;;
   esac
 
@@ -901,6 +903,8 @@ check_single_file()
     ELF*[LM]SB\ pie\ executable*|\
     setuid\ ELF*[LM]SB\ pie\ executable*)
       diff --speed-large-files --unified \
+        --label "old $file (disasm)" \
+        --label "new $file (disasm)" \
         <( $OBJDUMP -d --no-show-raw-insn old/$file |
           filter_disasm |
           sed -e "s,old/,," ;
@@ -973,6 +977,8 @@ check_single_file()
       for section in $sections
       do
         diff --unified \
+          --label "old $file (objdump)" \
+          --label "new $file (objdump)" \
           <( $OBJDUMP -s -j $section old/$file |
               sed -e "s,^old/,," ;
               echo "${PIPESTATUS[@]}" > $file1) \

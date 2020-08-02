@@ -218,7 +218,7 @@ function unpackage()
 function comp_file()
 {
     echo "comparing $1"
-    if ! diff -au $2 $3; then
+    if ! diff --label old-$1 --label new-$1 -au $2 $3; then
       if test -z "$check_all"; then
         rm $2 $3 $4 $5
         return 1
@@ -320,7 +320,7 @@ function cmp_rpm_meta ()
     cat $rpm_meta_old | trim_release_old > $file1
     cat $rpm_meta_new | trim_release_new > $file2
     echo "comparing the rpm tags of $name_new"
-    if diff -au $file1 $file2; then
+    if diff --label old-rpm-tags --label new-rpm-tags -au $file1 $file2; then
       rm $file1 $file2 $rpm_meta_old $rpm_meta_new
       return 0
     fi
@@ -376,7 +376,7 @@ function cmp_rpm_meta ()
       do
         : "${REPLY}"
         files+=( "${REPLY}" )
-      done < <(diff -U0 $file1 $file2 | sed -E -n -e '/^-\//{s/^-//;s/ [0-9a-f]+ [0-9]+$//;p}')
+      done < <(diff -U0 $file1 $file2 | sed -E -n -e '/^\+\//{s/^\+//;s/ [0-9a-f]+ [0-9]+$//;p}')
     fi
 
     if test -n "$sh"; then

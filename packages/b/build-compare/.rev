@@ -1003,4 +1003,14 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>811920</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>4e2c3c42da4d5254a1dcb6361955754b</srcmd5>
+    <version>20200727T175347.d95eb35</version>
+    <time>1596364056</time>
+    <user>dimstar_suse</user>
+    <comment>- Make output more diffable and readable
+- Fix regression in compare_archive
+- Fix unit tests</comment>
+    <requestid>823017</requestid>
+  </revision>
 </revisionlist>
