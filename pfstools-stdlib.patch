@@ -1,0 +1,153 @@
+diff --git a/src/fileformat/pfsinexr.cpp b/src/fileformat/pfsinexr.cpp
+index 2f535fd..8d55e17 100644
+--- a/src/fileformat/pfsinexr.cpp
++++ b/src/fileformat/pfsinexr.cpp
+@@ -29,6 +29,8 @@
+ 
+ #include <cstdlib>
+ 
++#include <stdlib.h>
++
+ #include <iostream>
+ 
+ #include <stdio.h>
+diff --git a/src/fileformat/pfsinppm.cpp b/src/fileformat/pfsinppm.cpp
+index c3af50d..3af39dc 100644
+--- a/src/fileformat/pfsinppm.cpp
++++ b/src/fileformat/pfsinppm.cpp
+@@ -30,6 +30,8 @@
+ 
+ #include <cstdlib>
+ 
++#include <stdlib.h>
++
+ #include <iostream>
+ 
+ #include <getopt.h>
+diff --git a/src/fileformat/pfsinrgbe.cpp b/src/fileformat/pfsinrgbe.cpp
+index 9e9f0fa..9793048 100644
+--- a/src/fileformat/pfsinrgbe.cpp
++++ b/src/fileformat/pfsinrgbe.cpp
+@@ -30,6 +30,8 @@
+ 
+ #include <cstdlib>
+ 
++#include <stdlib.h>
++
+ #include <iostream>
+ 
+ #include <getopt.h>
+diff --git a/src/fileformat/pfsintiff.cpp b/src/fileformat/pfsintiff.cpp
+index 3fd3ded..fd65b25 100644
+--- a/src/fileformat/pfsintiff.cpp
++++ b/src/fileformat/pfsintiff.cpp
+@@ -29,6 +29,8 @@
+ 
+ #include <cstdlib>
+ 
++#include <stdlib.h>
++
+ #include <iostream>
+ 
+ #include <getopt.h>
+diff --git a/src/fileformat/pfsoutexr.cpp b/src/fileformat/pfsoutexr.cpp
+index 1712966..a65abb4 100644
+--- a/src/fileformat/pfsoutexr.cpp
++++ b/src/fileformat/pfsoutexr.cpp
+@@ -33,6 +33,7 @@
+ #include <iostream>
+ #include <string>
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <pfs.h>
+ #include <getopt.h>
+diff --git a/src/fileformat/pfsoutppm.cpp b/src/fileformat/pfsoutppm.cpp
+index caff241..2d74549 100644
+--- a/src/fileformat/pfsoutppm.cpp
++++ b/src/fileformat/pfsoutppm.cpp
+@@ -30,6 +30,8 @@
+ 
+ #include <cstdlib>
+ 
++#include <stdlib.h>
++
+ #include <iostream>
+ 
+ #include <getopt.h>
+diff --git a/src/fileformat/pfsoutrgbe.cpp b/src/fileformat/pfsoutrgbe.cpp
+index 9972be6..ff425c8 100644
+--- a/src/fileformat/pfsoutrgbe.cpp
++++ b/src/fileformat/pfsoutrgbe.cpp
+@@ -30,6 +30,8 @@
+ 
+ #include <cstdlib>
+ 
++#include <stdlib.h>
++
+ #include <iostream>
+ 
+ #include <getopt.h>
+diff --git a/src/fileformat/pfsouttiff.cpp b/src/fileformat/pfsouttiff.cpp
+index 3614450..7a11f0b 100644
+--- a/src/fileformat/pfsouttiff.cpp
++++ b/src/fileformat/pfsouttiff.cpp
+@@ -29,6 +29,8 @@
+ 
+ #include <cstdlib>
+ 
++#include <stdlib.h>
++
+ #include <iostream>
+ 
+ #include <getopt.h>
+diff --git a/src/filter/pfscat.cpp b/src/filter/pfscat.cpp
+index 09dda09..c40f2a9 100644
+--- a/src/filter/pfscat.cpp
++++ b/src/filter/pfscat.cpp
+@@ -29,6 +29,7 @@
+ #include <iostream>
+ #include <getopt.h>
+ #include <fcntl.h>
++#include <limits.h> 
+ #include <stdlib.h>
+ 
+ #define PROG_NAME "pfscat"
+diff --git a/src/filter/pfscut.cpp b/src/filter/pfscut.cpp
+index 1c2b28b..3ed9b51 100644
+--- a/src/filter/pfscut.cpp
++++ b/src/filter/pfscut.cpp
+@@ -29,6 +29,8 @@
+ #include <cstdlib>
+ #include <iostream>
+ #include <getopt.h>
++#include <limits.h>
++#include <stdlib.h>
+ 
+ 
+ #define PROG_NAME "pfscut"
+diff --git a/src/filter/pfspad.cpp b/src/filter/pfspad.cpp
+index 5ed8b05..8b9508f 100644
+--- a/src/filter/pfspad.cpp
++++ b/src/filter/pfspad.cpp
+@@ -30,6 +30,8 @@
+ #include <cstdlib>
+ #include <iostream>
+ #include <getopt.h>
++#include <limits.h>
++#include <stdlib.h>
+ 
+ 
+ #define PROG_NAME "pfspad"
+diff --git a/src/pfs/pfs.cpp b/src/pfs/pfs.cpp
+index aa5d8c5..193e8c6 100644
+--- a/src/pfs/pfs.cpp
++++ b/src/pfs/pfs.cpp
+@@ -43,6 +43,7 @@
+ 
+ #include <fcntl.h>
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <assert.h>
+ #include <string>
