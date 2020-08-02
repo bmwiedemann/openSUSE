@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jul 25 01:05:13 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Upgrade to upstream vresion 2.1.2 as 2.1.2-suse (for
+  jre#SES-1081), including:
+ * use openssl for random data generation
+ * Misspelled socket name might cause confusion to inexperienced user.
+ * iscsi/libopeniscsiusr:add libopeniscsiuser_node.h to HEADERS
+ * Let initiator name be created by iscsi-init.service.
+ * iscsi: fix fd leak
+ * iscsi: Add break to while loop
+ * Fix compiler complaint about string copy in iscsiuio
+ * Fix a compiler complaint about writing one byte
+ * Fix issue with zero-length arrays at end of struct
+ * Add iscsi-init.service
+ * Proper disconnect of TCP connection
+ * Fix dependency on new systemd RPM macro
+ * Fix SIGPIPE loop in signal handler
+ * Update iscsi-iname.c
+ * log:modify iSCSI shared memory permissions for logs
+ * Sequence systemd services correctly when upgrading
+ * Ignore iface.example in iface match checks
+ * More changes for musl.
+ * Fix type mismatch under musl.
+ * Change include of <sys/poll.h> to <poll.h>
+ * Add Wants=remote-fs-pre.target for sequencing.
+ * Add workaround in SPEC file for installcheck.
+ * Fix issue where "iscsi-iname -p" core dumps.
+ * iscsi-iname: fix iscsi-iname -p access NULL pointer without given IQN prefix
+ * Fix iscsi.service so it handles restarts better
+ Replacing open-iscsi-2.1.1-suse.tar.bz2 with open-iscsi-2.1.2-suse.tar.bz2,
+ and updating open-iscsi-SUSE-latest.diff.bz2 to empty, since initially
+ there are no differences.
+
+-------------------------------------------------------------------
 Mon Jun  8 16:42:42 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Merged in latest upstream. Summary:
