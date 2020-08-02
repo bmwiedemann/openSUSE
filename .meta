@@ -1,9 +1,0 @@
-<package name="fvwm2" project="openSUSE:Factory">
-  <title>Improved Version of FVWM Window Manager</title>
-  <description>FVWM is a virtual desktop window manager for the X Window System.
-
-FVWM is intended to have a small memory footprint but a rich feature
-set, to be extremely customizable and extendible, and to be very
-compatible with the Motif MWM.</description>
-  <devel project="X11:windowmanagers" package="fvwm2"/>
-</package>
