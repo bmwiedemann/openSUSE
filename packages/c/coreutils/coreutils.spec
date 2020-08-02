@@ -45,7 +45,6 @@ BuildRequires:  libcap-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  makeinfo
 BuildRequires:  perl
-BuildRequires:  suse-module-tools
 BuildRequires:  xz
 %if %{suse_version} > 1320
 BuildRequires:  gcc-PIE
