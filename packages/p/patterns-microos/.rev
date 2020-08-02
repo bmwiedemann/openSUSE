@@ -160,4 +160,15 @@
     <comment>- Re-add kernel-firmware back to the DVDs [bsc#1174521]</comment>
     <requestid>822949</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>5f1466b3134d4d20b7e19f513004fad0</srcmd5>
+    <version>5.0</version>
+    <time>1596364148</time>
+    <user>dimstar_suse</user>
+    <comment>- Add xfsprogs to the media else YaST2 can become very unhappy.
+
+- Remove explicit cracklib dictionary, instead add pam_pwquality
+  to the media.</comment>
+    <requestid>823707</requestid>
+  </revision>
 </revisionlist>

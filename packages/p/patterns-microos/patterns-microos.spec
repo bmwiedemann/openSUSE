@@ -85,8 +85,6 @@ Requires:       zypper
 ####
 Requires:       btrfsmaintenance
 Requires:       chrony
-# prefer small variant
-Suggests:       cracklib-dict-small
 # curl indirectly needed by ignition via dracut's url-lib
 Requires:       curl
 # probably needed for fsck.fat on efi partitions
@@ -419,7 +417,6 @@ Group:          Metapackages
 Provides:       pattern-category() = MicroOS
 Requires:       apparmor-utils
 Requires:       bcache-tools
-Requires:       cracklib-dict-full
 Requires:       cryptsetup
 Requires:       glibc-locale
 Requires:       iscsiuio
@@ -430,6 +427,7 @@ Requires:       open-iscsi
 Requires:       hyper-v
 Requires:       open-vm-tools
 %endif
+Requires:       pam_pwquality
 Requires:       tftpboot-installation-openSUSE-MicroOS-%{_arch}
 %ifarch %ix86 x86_64
 Requires:       ucode-amd
@@ -437,6 +435,7 @@ Requires:       ucode-intel
 Requires:       vim
 %endif
 Requires:       wpa_supplicant
+Requires:       xfsprogs
 Provides:       pattern() = microos_onlyDVD
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9900

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 31 09:35:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add xfsprogs to the media else YaST2 can become very unhappy.
+
+-------------------------------------------------------------------
+Thu Jul 30 09:59:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove explicit cracklib dictionary, instead add pam_pwquality
+  to the media.
+
+-------------------------------------------------------------------
 Mon Jul 27 09:26:16 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Re-add kernel-firmware back to the DVDs [bsc#1174521]
