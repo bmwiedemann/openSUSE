@@ -213,7 +213,6 @@
     <package name="bc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="bcm20702a1-firmware" supportstatus="unsupported"/> <!-- reason: dvd:bcm20702a1-firmware -->
     <package name="bcm43xx-firmware" supportstatus="unsupported"/> <!-- reason: dvd:bcm43xx-firmware -->
-    <package name="bea-stax-api" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="bijiben" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bijiben-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
@@ -5129,7 +5128,6 @@
     <package name="xmessage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xml-commons-apis" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="xml-commons-resolver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="xmlbeans" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xmlcharent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xmlformat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="xmlgraphics-batik" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
