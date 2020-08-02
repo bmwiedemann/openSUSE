@@ -103,4 +103,14 @@
   caller.</comment>
     <requestid>774144</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>f11eb213a9d42b2d9246a5bad3c8b3a1</srcmd5>
+    <version>8.0</version>
+    <time>1596364046</time>
+    <user>dimstar_suse</user>
+    <comment>- add upstream keyring and verify source signature
+- change custom handling of official upstream patches to standard,
+  and verify signatures on official patches (forwarded request 821348 from AndreasStieger)</comment>
+    <requestid>821442</requestid>
+  </revision>
 </revisionlist>

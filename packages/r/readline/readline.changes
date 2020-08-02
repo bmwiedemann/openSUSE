@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 19:13:54 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream keyring and verify source signature
+- change custom handling of official upstream patches to standard,
+  and verify signatures on official patches
+
+-------------------------------------------------------------------
 Thu Feb 13 11:10:31 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add official patch readline80-002
