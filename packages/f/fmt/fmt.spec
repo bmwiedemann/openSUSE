@@ -18,7 +18,7 @@
 
 %define sover   7
 Name:           fmt
-Version:        7.0.1
+Version:        7.0.2
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
