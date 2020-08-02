@@ -1,2 +1,0 @@
-# The devel package only contains C headers files:
-addFilter("pyzmq-devel.*: W: no-dependency-on python\(abi\)")

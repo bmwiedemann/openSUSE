@@ -98,4 +98,12 @@
     <comment>- Set CFLAGS+=-fcommon.</comment>
     <requestid>812120</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7ae62053e1695d7ac85496d4314a5b0f</srcmd5>
+    <version>1.2.1</version>
+    <time>1596363623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823901</requestid>
+  </revision>
 </revisionlist>

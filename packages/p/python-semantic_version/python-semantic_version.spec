@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-semantic_version
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 Summary:        A library implementing the 'SemVer' scheme
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/rbarrois/python-semanticversion
 Source:         https://files.pythonhosted.org/packages/source/s/semantic_version/semantic_version-%{version}.tar.gz
+BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,9 +1,0 @@
-<package name="zpaq" project="openSUSE:Factory">
-  <title>zpaq</title>
-  <description>zpaq is a journaling, incremental, deduplicating archiver for Windows and Linux. &quot;Journaling&quot; means that when you update a file or directory, both the old and new versions are saved. You can extract from the archive as it existed at any time in the past. &quot;Incremental&quot;, means that when you back up your entire hard drive, for example:
-
-zpaq -add e:backup.zpaq c:\*
-
-that only those files whose last-modified date has changed since the previous backup are added. For 100 GB of files, this typically takes 1-2 minutes, vs. a few hours to create the first version. &quot;Deduplicating&quot; means that identical files or fragments are stored only once to save time and space.</description>
-  <devel project="Archiving" package="zpaq"/>
-</package>

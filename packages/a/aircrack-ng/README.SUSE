@@ -1,9 +1,0 @@
-You could need to patch wireless drivers source code to enable sniffing and monitor-mode features.
-
-patches are provided in /usr/share/doc/packages/aircrack-ng/patches.
-
-If you need more please check here: http://patches.aircrack-ng.org/
-
-Please note that using aircrack-ng for cracking networks is illegal in most countries,
-and something we do not support in any way. However, aircrack-ng is also a very useful
-tool for security audits and assessments.

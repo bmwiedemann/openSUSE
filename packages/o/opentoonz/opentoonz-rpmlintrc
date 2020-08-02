@@ -1,5 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter("files-duplicated-waste.*")
-addFilter("files-duplicate.*/usr/share/opentoonz/stuff")

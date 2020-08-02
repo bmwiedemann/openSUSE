@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  1 14:07:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * sccp_internal.h: fix compilation with gcc-10
+
+-------------------------------------------------------------------
 Sat Jun  6 23:05:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Set CFLAGS+=-fcommon.

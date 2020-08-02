@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-sccp
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 %define libversion %(echo "%version" | sed 's/\\./_/g')
 Summary:        Osmocom library for the A-bis interface between BTS and BSC

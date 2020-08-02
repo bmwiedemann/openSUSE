@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 29 13:46:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.8.5
+  * Properly handle wildcards in ``SimpleSpec``
+
+-------------------------------------------------------------------
 Wed Mar 18 13:38:47 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.8.4

@@ -1,9 +1,0 @@
-diff -uNr old-parcellite-1.1.9/data/parcellite-startup.desktop.in parcellite-1.1.9/data/parcellite-startup.desktop.in
---- old-parcellite-1.1.9/data/parcellite-startup.desktop.in	2014-11-12 13:00:48.053198794 +0100
-+++ parcellite-1.1.9/data/parcellite-startup.desktop.in	2014-11-12 13:02:23.769199300 +0100
-@@ -5,4 +5,5 @@
- Exec=parcellite
- Terminal=false
- Type=Application
-+NotShownIn=KDE;
- X-GNOME-Autostart-enabled=true

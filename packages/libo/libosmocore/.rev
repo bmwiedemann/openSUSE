@@ -191,4 +191,12 @@
     <comment>- Update to release 1.3.1</comment>
     <requestid>812118</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a4cf4f567d0373b94620fa9d2dbc5db9</srcmd5>
+    <version>1.3.2</version>
+    <time>1596363616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823900</requestid>
+  </revision>
 </revisionlist>

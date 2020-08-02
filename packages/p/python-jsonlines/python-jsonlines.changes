@@ -1,5 +1,0 @@
--------------------------------------------------------------------
-Wed Aug 29 11:40:44 UTC 2018 - mcalabkova@suse.com
-
-- Added python-jsonlines needed by python-cloudflare, which is 
-needed by python-certbot-dns-cloudflare
