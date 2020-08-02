@@ -1,0 +1,5 @@
+# libproxychains.so is a LD_PRELOAD hack, not a regular library
+addFilter("shlib-policy-name-error")
+addFilter("shared-lib-calls-exit")
+# This is not fixable look yet
+addFilter("binary-or-shlib-calls-gethostbyname")

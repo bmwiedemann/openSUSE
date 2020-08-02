@@ -1,0 +1,55 @@
+Fix segfault in die_cu
+
+[ Backport of master commit e2c440e. ]
+
+When running dwz in normal mode, we get an error:
+...
+$ dwz clang-offload-bundler-10.debug -lnone
+dwz: clang-offload-bundler-10.debug: Couldn't find DIE referenced by \
+  DW_OP_GNU_implicit_pointer
+...
+but when forcing low-mem mode, we get a segfault:
+...
+$ dwz clang-offload-bundler-10.debug -l0
+Segmentation fault (core dumped)
+...
+
+In normal mode, we hit the error here:
+...
+         ref = off_htab_lookup (NULL, addr);
+         if (ref == NULL)
+           {
+             error (0, 0, "%s: Couldn't find DIE referenced by %s",
+                    dso->filename, get_DW_OP_str (op));
+...
+but for low-mem mode, this doesn't trigger, because we find the dummy DIE that
+has been added by read_exprloc_low_mem_phase1.
+
+Fix this by testing for the dummy DIE in the error condition:
+...
+-	  if (ref == NULL)
++	  if (ref == NULL || (unlikely (low_mem) && ref->die_tag == 0))
+...
+
+2020-01-24  Tom de Vries  <tdevries@suse.de>
+
+	PR dwz/25456
+	* dwz.c (read_exprloc): Test for dummy DIE in error condition.
+
+---
+ dwz.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dwz.c b/dwz.c
+index 298bca1..44b5ba3 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -1597,7 +1597,7 @@ read_exprloc (DSO *dso, dw_die_ref die, unsigned char *ptr, size_t len,
+ 	  else
+ 	    ptr += 4;
+ 	  ref = off_htab_lookup (NULL, addr);
+-	  if (ref == NULL)
++	  if (ref == NULL || (unlikely (low_mem) && ref->die_tag == 0))
+ 	    {
+ 	      error (0, 0, "%s: Couldn't find DIE referenced by %s",
+ 		     dso->filename, get_DW_OP_str (op));

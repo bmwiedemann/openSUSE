@@ -1,0 +1,16 @@
+Bart Martens <bartm@debian.org>
+Fixes broken link.
+
+Index: lib/Finance/Quote/SEB.pm
+===================================================================
+--- lib/Finance/Quote/SEB.pm.orig
++++ lib/Finance/Quote/SEB.pm
+@@ -121,7 +121,7 @@ Unfortunately there is no unique identif
+ Therefore the complete fund name must be given, including spaces, case
+ is important.
+ 
+-Consult http://taz.vv.sebank.se/cgi-bin/pts3/pow/Fonder/kurser/kurslista_body.asp
++Consult http://www.seb.se/
+ for all available funds.
+ 
+ Example "SEB Aktiesparfond"

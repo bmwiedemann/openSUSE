@@ -1,0 +1,20 @@
+--- grub-0.97/util/grub-install.in.orig	2007-03-16 17:29:21.000000000 +0100
++++ grub-0.97/util/grub-install.in	2007-03-16 17:43:14.000000000 +0100
+@@ -216,7 +216,16 @@ resolve_symlink () {
+ find_device () {
+     # For now, this uses the program `df' to get the device name, but is
+     # this really portable?
+-    tmp_fname=`df $1/ | sed -n 's%.*\(/dev/[^ 	]*\).*%\1%p'`
++    tmp_fname=`df $1/ | awk '/\/dev\/|LABEL=|UUID=/{ print $1 }'`
++
++    if grep -q LABEL= <<<$tmp_fname; then
++	label=`sed -e s/.*=// <<<$tmp_fname`
++	tmp_fname=`readlink -f /dev/disk/by-label/$label`
++    fi	
++    if grep -q UUID= <<<$tmp_fname; then
++	uuid=`sed -e s/.*=// <<<$tmp_fname`
++	tmp_fname=`readlink -f /dev/disk/by-uuid/$uuid`
++    fi
+ 
+     if test -z "$tmp_fname"; then
+ 	echo "Could not find device for $1" 2>&1

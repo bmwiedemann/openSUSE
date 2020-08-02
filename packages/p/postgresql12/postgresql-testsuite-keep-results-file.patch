@@ -1,0 +1,18 @@
+commit 463154c669010cffc0e96b683576f1e879b61d8b
+Author: yac <yac@blesmrt.net>
+Date:   Mon Mar 11 18:42:39 2013 +0100
+
+    don't unlink the result file
+
+Index: postgresql-12beta2/src/test/regress/pg_regress.c
+===================================================================
+--- postgresql-12beta2.orig/src/test/regress/pg_regress.c
++++ postgresql-12beta2/src/test/regress/pg_regress.c
+@@ -2597,7 +2597,6 @@ regression_main(int argc, char *argv[],
+ 	else
+ 	{
+ 		unlink(difffilename);
+-		unlink(logfilename);
+ 	}
+ 
+ 	if (fail_count != 0)

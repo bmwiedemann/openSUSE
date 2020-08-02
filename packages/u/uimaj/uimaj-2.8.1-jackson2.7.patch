@@ -1,0 +1,20 @@
+diff -Nru uimaj-2.8.1/uimaj-json/src/main/java/org/apache/uima/json/impl/JsonContentHandlerJacksonWrapper.java uimaj-2.8.1.jackson/uimaj-json/src/main/java/org/apache/uima/json/impl/JsonContentHandlerJacksonWrapper.java
+--- uimaj-2.8.1/uimaj-json/src/main/java/org/apache/uima/json/impl/JsonContentHandlerJacksonWrapper.java	2015-08-04 17:06:42.000000000 +0200
++++ uimaj-2.8.1.jackson/uimaj-json/src/main/java/org/apache/uima/json/impl/JsonContentHandlerJacksonWrapper.java	2016-08-25 10:57:52.780477994 +0200
+@@ -37,6 +37,7 @@
+ import com.fasterxml.jackson.core.JsonGenerationException;
+ import com.fasterxml.jackson.core.JsonGenerator;
+ import com.fasterxml.jackson.core.PrettyPrinter;
++import com.fasterxml.jackson.core.util.DefaultIndenter;
+ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter.FixedSpaceIndenter;
+ 
+@@ -351,7 +352,7 @@
+   
+   public void withNl() {
+     if (isFormattedOutput) {
+-      uimaPrettyPrinter.indentObjectsWith(DefaultPrettyPrinter.Lf2SpacesIndenter.instance);
++      uimaPrettyPrinter.indentObjectsWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
+     }
+   }
+   

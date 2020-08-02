@@ -1,0 +1,10 @@
+Index: xournalpp-1.99.20190821.ccc9dbc6/desktop/com.github.xournalpp.xournalpp.desktop
+===================================================================
+--- xournalpp-1.99.20190821.ccc9dbc6.orig/desktop/com.github.xournalpp.xournalpp.desktop
++++ xournalpp-1.99.20190821.ccc9dbc6/desktop/com.github.xournalpp.xournalpp.desktop
+@@ -24,4 +24,4 @@ Terminal=false
+ StartupNotify=true
+ MimeType=application/x-xoj;application/x-xojpp;application/x-xopp;application/x-xopt;application/pdf;
+ Icon=com.github.xournalpp.xournalpp
+-Categories=Office;GNOME;GTK;
++Categories=Graphics;2DGraphics;GTK;GNOME;

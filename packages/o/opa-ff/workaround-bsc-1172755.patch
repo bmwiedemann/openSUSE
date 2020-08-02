@@ -1,0 +1,24 @@
+commit c477cf2496c1ec83a63a28629a4fdf0c2a10d458
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Tue Jun 9 22:57:52 2020 +0200
+
+    workaround bsc 1172755
+    
+    GCC bug causes compilation to fail with LTO enabled.
+    Workaround the issue by changing mcmodel
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git IbaTools/stream/Makefile IbaTools/stream/Makefile
+index 7ed670d19fee..6eb0a334c8a9 100644
+--- IbaTools/stream/Makefile
++++ IbaTools/stream/Makefile
+@@ -110,7 +110,7 @@ INCLUDE_SUBDIR		=
+ #				(in addition to LOCALDEPLIBS)
+ #LOCAL_LIB_DIRS	= User library directories for libpaths [Empty]
+ 
+-CLOCAL = $(CPIE) -mcmodel=medium -DSTREAM_ARRAY_SIZE=353783808 -fopenmp
++CLOCAL = $(CPIE) -mcmodel=large -DSTREAM_ARRAY_SIZE=353783808 -fopenmp
+ LDLOCAL = -fopenmp
+ 
+ # Include Make Rules definitions and rules

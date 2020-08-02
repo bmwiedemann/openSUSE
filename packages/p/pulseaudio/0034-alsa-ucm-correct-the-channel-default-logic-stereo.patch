@@ -1,0 +1,45 @@
+From cabd387e26b5fe03661f4b894826c7c6b58d7efa Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 11 Feb 2020 10:54:16 +0100
+Subject: [PATCH] alsa-ucm: correct the channel default logic (stereo)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-ucm.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index a57be6d22497..b7d2c5b9c51a 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -377,6 +377,13 @@ static int ucm_get_device_property(
+             pa_log("UCM playback device %s fetch pcm failed", device_name);
+     }
+ 
++    if (pa_proplist_gets(device->proplist, PA_ALSA_PROP_UCM_SINK) &&
++        device->playback_channels == 0) {
++        pa_log("UCM file does not specify 'PlaybackChannels' "
++                    "for device %s, assuming stereo duplex.", device_name);
++        device->playback_channels = 2;
++    }
++
+     value = pa_proplist_gets(device->proplist, PA_ALSA_PROP_UCM_CAPTURE_CHANNELS);
+     if (value) { /* input */
+         /* get channels */
+@@ -391,10 +398,10 @@ static int ucm_get_device_property(
+             pa_log("UCM capture device %s fetch pcm failed", device_name);
+     }
+ 
+-    if (device->playback_channels == 0 && device->capture_channels == 0) {
+-        pa_log_warn("UCM file does not specify 'PlaybackChannels' or 'CaptureChannels'"
++    if (pa_proplist_gets(device->proplist, PA_ALSA_PROP_UCM_SOURCE) &&
++        device->capture_channels == 0) {
++        pa_log("UCM file does not specify 'CaptureChannels' "
+                     "for device %s, assuming stereo duplex.", device_name);
+-        device->playback_channels = 2;
+         device->capture_channels = 2;
+     }
+ 
+-- 
+2.16.4
+

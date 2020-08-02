@@ -1,0 +1,29 @@
+From 79d3b99ba4773651c4ebc082233f9d0b5f68bfad Mon Sep 17 00:00:00 2001
+From: Krzysztof Stasiowski <krzys.stasiowski@gmail.com>
+Date: Tue, 18 Jun 2019 11:50:35 +0000
+Subject: [PATCH] alsa-mixer: Add support for SteelSeries Arctis 5 2019 headset
+
+Signed-off-by: Dave Chiluk <chiluk@ubuntu.com>
+---
+ src/modules/alsa/90-pulseaudio.rules | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/modules/alsa/90-pulseaudio.rules b/src/modules/alsa/90-pulseaudio.rules
+index 9d34e6dfdd38..61e7692543e8 100644
+--- a/src/modules/alsa/90-pulseaudio.rules
++++ b/src/modules/alsa/90-pulseaudio.rules
+@@ -119,8 +119,10 @@ ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1294", ENV{PULSE_PROFILE_SET}="steel
+ ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1730", ENV{PULSE_PROFILE_SET}="steelseries-arctis-7-usb-audio.conf"
+ 
+ # ID 1038:1250 is for the Arctis 5
+-# ID 1038:1252 is for Arctis Pro 2019 edition
++# ID 1037:12aa is for the Arctis 5 2019
++# ID 1038:1252 is for the Arctis Pro 2019 edition
+ ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1250", ENV{PULSE_PROFILE_SET}="steelseries-arctis-common-usb-audio.conf"
++ATTRS{idVendor}=="1038", ATTRS{idProduct}=="12aa", ENV{PULSE_PROFILE_SET}="steelseries-arctis-common-usb-audio.conf"
+ ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1252", ENV{PULSE_PROFILE_SET}="steelseries-arctis-common-usb-audio.conf"
+ 
+ ATTRS{idVendor}=="147a", ATTRS{idProduct}=="e055", ENV{PULSE_PROFILE_SET}="cmedia-high-speed-true-hdaudio.conf"
+-- 
+2.16.4
+

@@ -1,0 +1,396 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:35:43 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Apr 25 09:26:04 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.1.14:
+  + Improved RFC compliance.
+  + Split verbose logs into a separate option.
+  + Numerous bug fixes.
+  + Use GnuTLS for hash functions.
+  + Implement NewReno in PseudoTCP.
+  + Requires GLib 2.44 GnuTLS 2.12.
+- Add pkgconfig(gnutls) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Fri Apr 15 12:23:54 UTC 2016 - idonmez@suse.com
+
+- Merge with factory for Gnome 3.20 fate#318572. 
+
+-------------------------------------------------------------------
+Sat Apr  2 18:02:16 UTC 2016 - zaitor@opensuse.org
+
+- Drop pkgconfig(gstreamer-0.10) and pkgconfig(gstreamer-base-0.10)
+  BuildRequires: Stop building gstreamer-0.10 support. As a result
+  of this drop subpackage gstreamer-0_10-libnice, no longer built.
+
+-------------------------------------------------------------------
+Fri May 15 07:29:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.1.13:
+  + Fix build on non-Windows platforms that don't have
+    getifaddrs().
+  + Fix build regression on Windows.
+
+-------------------------------------------------------------------
+Thu Apr 23 14:45:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.1.12:
+  + Fix regression in SDP parser.
+  + Make examples work on Windows.
+  + Bug fixes on nicesrc.
+
+-------------------------------------------------------------------
+Tue Apr 21 10:53:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.1.11:
+  + API: nice_agent_set_local_credentials() for WebRTC.
+  + Nicesink: support GstBufferList.
+  + Better warnings on programming errors.
+  + Build fixes for Solaris and Windows.
+  + Bug and documentation fixes.
+
+-------------------------------------------------------------------
+Thu Jan 29 22:58:46 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.1.10:
+  + Fix bug on component change on the sink.
+- Changes from version 0.1.9:
+  + Make it possible to statically build the GStreamer plugins.
+  + Bug fixes, in particular fix compatibility with coTurn servers.
+  + Documentation fixes.
+
+-------------------------------------------------------------------
+Thu Oct 16 19:53:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf: provide multi-arch packages.
+
+-------------------------------------------------------------------
+Sun Oct 12 16:25:39 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.1.8:
+  + Added FIN-ACK behavior in the PseudoTCP ICE-TCP, both standard
+    mode and Microsoft compatible Microsoft compatible TURN-TCP.
+  + API: nice_address_equal_no_port() to compare NiceAddresses
+    ignoring the port.
+  + API: nice_agent_get_component_state() to get the current
+    component state.
+  + API: agent:keepalive-conncheck to make the agent use conncheck
+    as keepalives and fail the connection if there is no answer.
+  + API: agent:ice-tcp, agent:udp-tcp to control ICE-UDP vs ICE-TCP
+    behaviours.
+  + API: agent:bytestream-tcp to know if the send/receives in
+    reliable mode create full packets or not.
+  + API: New signals agent::new-selected-pair-full,
+    agent::new-candidate-full, agent::new-remote-candidate-full
+    which include the NiceCandidates directly.
+  + API: Deprecated agent::new-selected-pair and
+    agent::new-candidate and  agent::new-remote-candidate signals.
+    Now all signals are emitted at the function return time.
+
+-------------------------------------------------------------------
+Mon Jun 30 20:47:55 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.1.7:
+  + Fix undesired API change that broke Farstream unit testsx.
+
+-------------------------------------------------------------------
+Mon May  5 17:51:57 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.1.6:
+  + API changes:
+    - nice_agent_restart_stream() to do a ICE restart on a single
+      strema.
+    - nice_component_state_to_string() to get a printable name for
+      a component state.
+    - nice_agent_forget_relays() to forget the relays set for a
+      specific component, along with nice_agent_restart_stream(),
+      it allows changing the current relay without dropping the
+      connection.
+  + It is now possible to add relays after the initial candidate
+    gathering.
+  + Many bug fixes.
+- No longer set LIBNICE_RELEASE="yes", not needed anymore, fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Mar  8 12:49:35 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.1.5:
+  + API changes:
+    - nice_agent_recv() and nice_agent_recv_nonblocking() as an
+      alternative to the nice_agent_attach_recv().
+    - nice_agent_recv_messages() and
+      nice_agent_recv_messages_nonblocking() to receive multiple
+      messages at the same time.
+    - nice_agent_get_io_stream() to get a GIOStream in reliable
+      mode.
+    - nice_agent_get_selected_socket() to extract the selected
+      GSocket.
+  + Import Google's newer PseudoTCP code including window scaling.
+  + Improve PseudoTCP performance.
+  + Improve performance.
+  + Build fixes.
+- Set LIBNICE_RELEASE=yes in configure.
+
+-------------------------------------------------------------------
+Mon Mar 11 20:20:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.1.4:
+  + Fix issue with dribble mode.
+  + Fix issue with TURN permissions.
+  + Fix missing win32 directory from release archive.
+  + Fix support for OC2007.
+  + Added new nice_address_ip_version API.
+  + Added new nice_agent_get_selected_pair API.
+  + Added new SDP parsing and generation API.
+  + Added simple examples (simple, threaded and sdp usages
+    examples.
+
+-------------------------------------------------------------------
+Fri Sep 14 20:05:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.3:
+  + Dribble mode: You can set remote candidates while gathering the
+    local ones
+  + Add support for GStreamer 1.0, will compile plugins for both
+    1.0 and 0.10 by default
+  + Cache GSocketAddress in UdpBsdSocket, creating it is very slow
+- Add gstreamer-libnice sub package: the new GStreamer 1.0 plugin.
+- No longer recommend gstreamer-0_10-libnice from libnice10, but
+  newly add supplements to the two gstreamer plugin sub packages,
+  triggering automatic installation when libnice and any the
+  respective gstreamer version is installed.
+- Replace gstreamer-0_10-devel (and even older gstreamer010-devel)
+  BuildRequires, in favor of new pkgconfig() style variants:
+  + For gstreamer 0.10:
+    - gstreamer-0.10
+    - gstreamer-base-0.10
+  + For gstreamer 1.0
+    - gstreamer-1.0
+    - gstreamer-base-1.0
+
+-------------------------------------------------------------------
+Wed Jul 11 05:15:17 UTC 2012 - adrian@suse.de
+
+- test suite failure in qemu emulated builds (arm) must be ignored
+  for now. qemu is not threadsafe enough for it.
+
+-------------------------------------------------------------------
+Wed Apr  4 07:44:21 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.2:
+  + Fix a bug where a controlled agent may never go to READY if it
+    received early conncheck
+  + Restart connchecks on a failed candidate pair when receiving a
+    triggered check
+  + Fix a bug where gathering-done signal could be sent before UPnP
+    mapping finishes
+  + Fix a race condition where setting remote-candidates on a
+    gathered stream failed if another stream was gathering
+  + Many fixes to complete and stabilize TURN support
+  + Fix a bug in proxy support where TURN packets were misread
+  + Refactor libnice to use GSocket which works around a glib
+    limitation of g_io_channel on windows
+  + Fix a bug with receiving error messages during conncheck
+  + Fix a possible infinite loop bug
+  + Fix memory leaks and multi-threaded race conditions
+  + Better compatibility for BSD and Mingw
+  + Added support files for Visual Studio compilation
+  + Various fixes to UPnP support
+  + Fixes to the build system
+
+-------------------------------------------------------------------
+Mon Jan 23 17:53:50 UTC 2012 - cdenicolo@suse.com
+
+- license update: MPL-1.1 or LGPL-2.1
+  is dual license  MPL-1.1 or LGPL-2.1
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:43 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Sep  8 11:01:56 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.1:
+  + Fixed BSD and Solaris compatibility
+  + Fixed PPC64 symbol test
+  + Removed a few possible leak/bugs
+  + Fixed compatibility with google's recent protocol change
+
+-------------------------------------------------------------------
+Thu Jul  7 22:42:33 CEST 2011 - vuntz@opensuse.org
+
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Mon May  2 23:48:09 CEST 2011 - vuntz@opensuse.org
+
+- Remove explicit Requires of glib2-devel in devel subpackage: it
+  will automatically be added the pkgconfig() way.
+- Remove unneeded openssl-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sat Apr 30 11:38:14 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.1.0:
+  + Added nice_candidate_copy to the public API
+  + Make stun_timer timeouts configurable (Break API and ABI)
+  + Add compatibility support for MSOC 2007 and MSOC 2007 R2
+  + Add MS-TURN support for MSOC
+  + Added and completed TURN RFC 5766 support
+  + Add a nice_agent_set_port_range API to force a component to use
+    a specific port
+  + Fix various bugs and memory leaks
+  + Improve documentation.
+- Change libnice-doc Obsoletes from <= to <: fix rpmlint warning.
+- Rename libnice0 to libnice10 after soversion change.
+- Use source services: download_url, recompress and set_version.
+
+-------------------------------------------------------------------
+Fri Jul 23 08:45:36 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.0.13:
+  + Add support for IPv6
+  + Fix crc32 function conflict with libz.so
+  + Various bug fixing and code cleaning
+  + Validate the remote candidate address before adding it
+
+-------------------------------------------------------------------
+Mon Jun 21 12:48:09 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.0.12:
+  + Update compatibility to RFC5245
+  + Fix a memory corruption bug
+  + Fix a possible buffer overflow with socks5 proxies
+
+-------------------------------------------------------------------
+Fri Mar 19 09:01:42 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.0.11:
+  + Handle EAGAIN for UDP sockets
+  + Fix coverity warnings
+  + Fix a bug with TURN and Channel Bindings
+  + Add a reliable transport mode using libjingle's PseudoTcp
+    implementation
+  + Various fixes.
+
+-------------------------------------------------------------------
+Fri Nov 13 14:16:19 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.0.10:
+  + Fix some memory leaks with the gstreamer elements
+  + Fix username/foundation for google TURN candidates
+  + Fix the sending of hundreds of connectivity checks at once the
+    stream is connected
+  + Fix BSD support
+  + Fix reprocessing of already processed early incoming checks
+    when in dribble-mode
+  + Fix a rare crash with failing relay candidates allocations
+  + Add a stun_agent_set_software API
+  + Add a nice_agent_set_software API
+
+-------------------------------------------------------------------
+Sat Aug  1 22:50:12 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 0.0.9:
+  + Fix some more issues with peer-reflexive candidates in google
+    mode (for early incoming checks)
+  + Fix SHA1 algorithm when strict aliasing is used
+  + Fix google mode connectivity with discovered remote peer
+    reflexive candidates
+  + Fix google/msn mode by not limiting the conncheck list
+  + Fix the interfaces discovery by using getifaddrs
+  + Fix compilation on Mac OS X
+  + Add ToS support to the sockets
+- Merge -doc into -devel since it only contains gtk-doc
+
+-------------------------------------------------------------------
+Mon Jun 22 13:24:15 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 0.0.8:
+  + Remove deprecated g_strcasecmp call
+  + Use addr instead of base_addr on assigning remote peer-
+    reflexive candidates (fixes crash)
+  + Use a global mutex and g_source_is_destroyed to avoid race
+    conditions (fixes crashes)
+  + Unlock the mutex before calling the recv callback
+
+-------------------------------------------------------------------
+Sun Jun 14 00:51:26 CEST 2009 - vuntz@novell.com
+
+- Add libgupnp-igd-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jun 12 12:52:02 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.0.7:
+  + Added UPnP Support
+  + Fix a race condition when destroying the nice agent
+  + Stun headers are now installed
+  + Unset timer's source if they return FALSE
+  + Fix interoperability with gtalk2voip.com
+  + Avoid a race condition where a candidate has the wrong
+    user/pass
+  + Add support for delayed setting of the remote candidates in
+    google mode
+  + Better connectivity support and race condition fixes
+  + Keepalive connchecks do not change the state if they fail but
+    data was still received
+  + Fix foundation generation for remote peer reflexive candidates
+  + Drop packets when using TCP and the bandwidth is too slow for
+    the data output
+- Add glib2-devel Requires to devel package.
+
+-------------------------------------------------------------------
+Sat Apr  4 12:42:41 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.0.6:
+  + Fix connectivity checks for detecting when we loose the
+    connection
+  + Fix a race condition with gtalk that made the call silent after
+    30 seconds
+  + Robustness checks with regards to relay information
+  + Fix a race condition crash with retransmission ticks
+  + Added a new STUN API : stun_agent_forget_transaction
+  + Fix a possible crash if tcp-turn is shutdown early in the
+    process
+  + Fix a crash when a stream is removed
+  + Fix MSN support by disable keepalive connchecks
+
+-------------------------------------------------------------------
+Fri Mar  6 16:44:33 CET 2009 - vuntz@novell.com
+
+- Update to version 0.0.5:
+  + Name change from nice to libnice
+  + Added support for HTTP proxies
+  + Added a nice_interfaces API to query the local interfaces/ips
+  + Fixed libnice when used in dribble mode
+  + Fix a data corruption issue with the SHA1 algorithm
+  + Endianness gets checked at runtime so libnice should compile
+    and work everywhere
+  + Add compatiblity for WLM2009 ICE
+  + Export libstun API and add documentation for libstun
+  + Add connectivity checks during the connection to detect when
+    the peer gets disconnected
+  + Bug fixes and code cleaning
+- Adjust spec file for tarball rename.
+- Package new include files in /usr/include/stun
+
+-------------------------------------------------------------------
+Fri Feb  6 12:00:28 EST 2009 - hfiguiere@novell.com
+
+- Don't require itself.
+- The -doc don't require the library.
+- Split gstreamer-0_10-libnice package.
+
+-------------------------------------------------------------------
+Fri Jan  2 15:54:29 EST 2009 - hfiguiere@novell.com
+
+- Initial packaging.

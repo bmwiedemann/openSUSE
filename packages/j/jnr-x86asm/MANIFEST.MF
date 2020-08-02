@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: jnr.x86asm
+Export-Package: com.kenai.jnr.x86asm;version="1.0.2",jnr.x86asm;versio
+ n="1.0.2"
+Bundle-Name: Pure Java x86 And x86_64 Assembler
+Bundle-Version: 1.0.2
+Bundle-Localization: plugin
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: Eclipse Orbit
+

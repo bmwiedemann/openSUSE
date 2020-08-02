@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Sun Jan  8 20:12:29 UTC 2017 - sor.alexei@meowr.ru
+
+- Bump to version 4.0-v0.1:
+  * awesome 4.0 compatibility.
+  * Replace built-in keydoc with awful.hotkeys_popup.
+  * Use a 22x22 openSUSE icon from
+    hicolor-icon-theme-branding-openSUSE for opensusegeeko.png.
+  * Use the openSUSE icon for the main menu.
+  * Drop the network widget.
+
+-------------------------------------------------------------------
+Tue Nov 10 14:07:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.5-v0.3:
+  * awesome 3.5 compatibility (boo#953503).
+  * Use Adwaita icon theme instead of GNOME icon theme.
+  * Use light-locker instead of xscreensaver.
+- Remove awesome-branding-openSUSE-systemctl.patch.
+
+-------------------------------------------------------------------
+Thu May 15 05:56:09 UTC 2014 - glin@suse.com
+
+- Add awesome-branding-openSUSE-systemctl.patch to use systemctl
+  to shutdown and reboot
+
+-------------------------------------------------------------------
+Sun Jul  7 11:55:03 UTC 2013 - toganm@opensuse.org
+
+- Upgraded to 3.4.15-v0.1
+  * Use wallpaper-branding-openSUSE 1920x1080 image as default 
+
+-------------------------------------------------------------------
+Wed Jan 30 12:26:41 UTC 2013 - toganm@opensuse.org
+
+- Upgraded to 3.4.13-v0.2 git version
+  * Fixes bnc#798460 and bnc#798289 
+  * Added some widgets to show how they can be used
+    + keyboard
+    + weather
+    + ethernet network
+    + battery
+  * Documentation for branding
+  * Provide option to use personal theme if available
+  * Use local in prepartion for awesome 3.5 migration
+ 
+-------------------------------------------------------------------
+Fri Dec  7 17:35:17 UTC 2012 - toganm@opensuse.org
+
+- Initial packaging
+  * added nitrogen and awesome-freedesktop awesome-vicious
+    xscreensaver  to the required packages. awesome-shifty is
+    recommended
+  * keydoc.lua and calendar2.lua are added as modules

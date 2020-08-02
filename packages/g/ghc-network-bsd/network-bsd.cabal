@@ -1,0 +1,90 @@
+cabal-version:  1.12
+name:           network-bsd
+version:        2.8.1.0
+x-revision: 3
+license:        BSD3
+license-file:   LICENSE
+maintainer:     Kazu Yamamoto, Herbert Valerio Riedel
+synopsis:       POSIX network database (<netdb.h>) API
+description:
+  This package provides Haskell bindings to the
+  the [POSIX network database (<netdb.h>) API](http://pubs.opengroup.org/onlinepubs/009696699/basedefs/netdb.h.html).
+  .
+  === Relationship to the @network@ package
+  .
+  The @network@ package version 2.* series provides "Network.BSD" but
+  it is removed starting with @network@ version 3.0.
+  .
+  This package provides the "Network.BSD" module split off from the
+  <https://hackage.haskell.org/package/network network package>.
+  .
+  If in addition to the @network@'s modules also "Network.BSD" is
+  necessary, add @network-bsd@ to your dependencies like so:
+  .
+  > library
+  >     build-depends: network     >= 2.7 && < 3.1
+  >                  , network-bsd >= 2.7 && < 2.9
+  .
+  I.e. you can control the version of the @network@ package
+  independently.
+  .
+  __NOTE__: Starting with @network-bsd-2.8.1.0@ the APIs of @network@
+  and @network-bsd@ evolve differently, and consequently the
+  versioning doesn't match up anymore! Moreover, also starting with
+  version @network-bsd-2.8.1.0@ this package requires @network >= 3@
+  in order to avoid module name clashes with @network < 3@'s
+  "Network.BSD" module.
+  .
+  However, @network-bsd-2.7.0.0@ and @network-bsd-2.8.0.0@ passes thru
+  the "Network.BSD" module from @network-2.7.*@ and @network-2.8.*@
+  respectively in a non-clashing way via Cabal's
+  <https://www.haskell.org/cabal/users-guide/developing-packages.html#pkg-field-library-reexported-modules reexported-modules>
+  feature while ensuring a well-defined
+  <https://pvp.haskell.org/ API versioning> of the observable API of
+  @network-bsd@. This is why the example above supporting a wide range
+  of @network@ versions works by including version 2.7.0.0 in the
+  required version range of @network-bsd@.
+
+category:       Network
+build-type:     Simple
+homepage:       https://github.com/haskell/network-bsd
+bug-reports:    https://github.com/haskell/network-bsd/issues
+tested-with:   GHC == 7.8.4
+             , GHC == 7.10.3
+             , GHC == 8.0.2
+             , GHC == 8.2.2
+             , GHC == 8.4.4
+             , GHC == 8.6.3
+extra-source-files: CHANGELOG.md
+
+library
+  default-language: Haskell2010
+  other-extensions: CPP, NondecreasingIndentation
+  exposed-modules: Network.BSD
+  build-depends: base    >= 4.7 && < 5
+               , deepseq >= 1.3.0.0 && < 1.5
+               -- NOTES on `network` depdendency
+               --
+               -- `network-bsd` heavily relies on `network`'s
+               -- exported CPP headers!  make sure that `network`
+               -- doesn't inadvertently break/change its CPP
+               -- headers before advertising support for new
+               -- versions of `network`.
+               --
+               -- Moreover, `network-bsd` reexports entities from
+               -- `network` so we need to be very conservative
+               -- with the bounds to avoid leaking through API
+               -- changes that aren't reflected in `network-bsd`'s
+               -- API version.
+               , network (>= 3.0.0.0 && < 3.0.2) 
+                      || (>= 3.1.0.0 && < 3.1.2)
+  build-tools: hsc2hs >= 0.67 && < 0.69
+  ghc-options: -Wall
+
+  if os(windows) && impl(ghc >= 7.10)
+    -- See https://github.com/haskell/network/pull/362
+    cpp-options: -D_WIN32_WINNT=0x0600
+
+source-repository head
+  type:     git
+  location: git://github.com/haskell/network-bsd.git

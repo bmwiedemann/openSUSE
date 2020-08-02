@@ -1,0 +1,35 @@
+From c38be0653111e3d63efbbf2f8914c83f15a73e70 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Thu, 14 Nov 2019 18:00:54 +0100
+Subject: [PATCH] hints: fix mem leaking buffers
+
+---
+ lib/label/hints.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/lib/label/hints.c b/lib/label/hints.c
+index df1327a10b..8739f337df 100644
+--- a/lib/label/hints.c
++++ b/lib/label/hints.c
+@@ -1200,6 +1200,8 @@ check:
+ 			return;
+ 		}
+ 	}
++
++	free(name);
+ }
+ 
+ /*
+@@ -1353,6 +1355,9 @@ int get_hints(struct cmd_context *cmd, struct dm_list *hints_out, int *newhints,
+ 		  dm_list_size(devs_out), dm_list_size(devs_in));
+ 
+ 	dm_list_splice(hints_out, &hints_list);
++
++	free(vgname);
++
+ 	return 1;
+ }
+ 
+-- 
+2.24.0
+

@@ -1,0 +1,32 @@
+From 3058a0ed3aaf0a54058a96f884b0a73b0cc578a8 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Wed, 11 Mar 2020 09:16:50 +0000
+Subject: [PATCH] test-utils: Clarify meaning of an environment variable
+
+SOUP_TESTS_IN_MAKE_CHECK used to be used for the Autotools build system.
+I mistakenly thought it was a way to skip the Apache-dependent tests
+during `make check`, but in fact the Autotools build system used to
+start a single instance of Apache, then run all the tests against that
+single instance, and finally shut it down.
+
+This mechanism is currently unused, but resurrecting it might be one way
+to avoid GNOME/libsoup#175.
+---
+ tests/test-utils.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Index: libsoup-2.70.0/tests/test-utils.c
+===================================================================
+--- libsoup-2.70.0.orig/tests/test-utils.c
++++ libsoup-2.70.0/tests/test-utils.c
+@@ -189,7 +189,9 @@ apache_cmd (const char *cmd)
+ void
+ apache_init (void)
+ {
+-	if (g_getenv ("SOUP_TESTS_IN_MAKE_CHECK"))
++	/* Set this environment variable if you are already running a
++	 * suitably-configured Apache server */
++	if (g_getenv ("SOUP_TESTS_ALREADY_RUNNING_APACHE"))
+ 		return;
+ 
+ 	if (!apache_cmd ("start")) {

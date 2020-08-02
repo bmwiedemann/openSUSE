@@ -1,0 +1,13 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig	2016-08-21 06:54:46.000000000 +0200
++++ Makefile	2016-11-04 13:46:21.037423459 +0100
+@@ -11,7 +11,7 @@
+ # determination of the actual installation directories.
+ # Suggested values are "/usr/local", "/usr", "/pkgs/fdupes-$(VERSION)"
+ #
+-PREFIX = /usr/local
++PREFIX = /usr
+ 
+ #
+ # When compiling for 32-bit systems, FILEOFFSET_64BIT must be enabled

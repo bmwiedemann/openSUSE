@@ -1,0 +1,20 @@
+
+It's 12 on i586.
+
+---
+ include/libcamera/controls.h |    2 --
+ 1 file changed, 2 deletions(-)
+
+Index: libcamera/include/libcamera/controls.h
+===================================================================
+--- libcamera.orig/include/libcamera/controls.h
++++ libcamera/include/libcamera/controls.h
+@@ -170,8 +170,6 @@ private:
+ 		 std::size_t numElements, std::size_t elementSize);
+ };
+ 
+-static_assert(sizeof(ControlValue) == 16, "Invalid size of ControlValue class");
+-
+ class ControlId
+ {
+ public:

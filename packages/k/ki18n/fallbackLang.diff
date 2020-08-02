@@ -1,0 +1,51 @@
+Index: ki18n-5.56.0git.20190305T182931~c25a541/src/kcatalog.cpp
+===================================================================
+--- ki18n-5.56.0git.20190305T182931~c25a541.orig/src/kcatalog.cpp	2019-03-05 18:29:31.000000000 +0100
++++ ki18n-5.56.0git.20190305T182931~c25a541/src/kcatalog.cpp	2019-03-09 08:53:52.950588453 +0100
+@@ -119,9 +119,21 @@
+ QString KCatalog::catalogLocaleDir(const QByteArray &domain,
+                                    const QString &language)
+ {
++     QStringList localeDirs;
+     QString relpath = QStringLiteral("%1/LC_MESSAGES/%2.mo")
+                       .arg(language, QFile::decodeName(domain));
+ 
++    // Specific SUSE kf5 location   ; bundle-lang-bla  ; update-translations ; generic
++    localeDirs << QStringLiteral("/usr/share/locale/kf5/") << QStringLiteral("/usr/share/locale-bundle/kf5/") << QStringLiteral("/usr/share/locale-bundle/") << QStringLiteral("/usr/share/locale-langpack/");
++
++    for (const QString &locDir: qAsConst(localeDirs)) {
++        QFile file(locDir + relpath);
++        if (file.exists()) {
++            return locDir;
++        }
++    }
++    // Check the standard locations
++
+     {
+         QMutexLocker lock(&catalogStaticData->mutex);
+         const QString customLocaleDir = catalogStaticData->customCatalogDirs.value(domain);
+@@ -158,9 +170,23 @@
+ QSet<QString> KCatalog::availableCatalogLanguages(const QByteArray &domain_)
+ {
+     QString domain = QFile::decodeName(domain_);
+-    QStringList localeDirPaths = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
++
++    QStringList localeDirPaths;
++    QStringList localeDirs;
++
++    // Specific SUSE kf5 location   ; bundle-lang-bla  ; update-translations ; generic
++    localeDirs << QStringLiteral("/usr/share/locale/kf5") << QStringLiteral("/usr/share/locale-bundle/kf5") << QStringLiteral("/usr/share/locale-bundle") << QStringLiteral("/usr/share/locale-langpack");
++
++    for (const QString &localeDir: qAsConst(localeDirs)) {
++        QDir locDir(localeDir);
++        if (locDir.exists()) {
++            localeDirPaths.append(localeDir);
++        }
++    }
++    QStringList localeFallbackDirPaths = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
+                                  QStringLiteral("locale"),
+                                  QStandardPaths::LocateDirectory);
++    localeDirPaths.append(localeFallbackDirPaths);
+ 
+     {
+         QMutexLocker lock(&catalogStaticData->mutex);

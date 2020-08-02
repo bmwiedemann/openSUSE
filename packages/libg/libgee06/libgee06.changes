@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Tue Mar 19 14:24:56 UTC 2013 - dimstar@opensuse.org
+
+- Rename package to libgee06, in order to have libgee 0.9.x as the
+  'primary' libgee package.
+
+-------------------------------------------------------------------
+Sat Oct 20 20:38:37 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.6.6:
+  + Fix iterator.remove in PriorityQueue.
+
+-------------------------------------------------------------------
+Wed Aug 15 14:18:53 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.6.5:
+  + Prevent hashtables from resizing during iteration.
+
+-------------------------------------------------------------------
+Fri Feb 24 14:45:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.6.4:
+  + Fix compilation with vala master
+  + Fix creation of GObject introspection files
+- Changes from version 0.6.3:
+  + Fix buffer underflow.
+- Changes from version 0.6.2.1:
+  + Add check-news to AM_INIT_AUTOMAKE
+- Changes from version 0.6.2:
+  + Fix adding second element to priority queue.
+  + Fix problem with key used in range is freed.
+- Rebase libgee-gir.patch.
+
+-------------------------------------------------------------------
+Tue Jan 10 14:16:43 UTC 2012 - vuntz@opensuse.org
+
+- Add a typelib-1_0-Gee-1_0 Requires to libgee2 subpackage on 12.1
+  and earlier: this shouldn't be needed, but unfortunately, this is
+  needed for people using GNOME:Apps with 12.1. Otherwise,
+  typelib-1_0-Gee-1_0 doesn't get installed and gnome-shell will
+  stop working.
+
+-------------------------------------------------------------------
+Tue Dec 13 21:23:30 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-Gee-1_0 subpackage.
+- Add typelib-1_0-Gee-1_0 Requires to libgee-devel subpackage.
+- Add libgee-gir.patch: Make sure the typelib file references the
+  real library name.
+- Drop glib2-devel Requires from -devel package: it is
+  automatically added the pkgconfig()-way.
+
+-------------------------------------------------------------------
+Mon Mar 21 16:37:11 CET 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.1:
+  +  Fix memory leaks in LinkedList.
+
+-------------------------------------------------------------------
+Mon Sep 27 07:54:50 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.0:
+  + Fix compiler warning.
+
+-------------------------------------------------------------------
+Thu Sep 16 20:25:23 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.5.3:
+  + Fix memory leaks in TimSort and LinkedList.
+  + Bug fixes in TreeMap and TreeSet.
+
+-------------------------------------------------------------------
+Wed Aug  4 17:34:43 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.5.2:
+  + Build system enhancements to conform Gnome's style.
+  + Bug fixes in TreeSet, TreeMap and Collection.to_array.
+  + Deprecated Map methods marked with [Deprecated].
+- Move *.gir to -devel package and package also the typelib.
+
+-------------------------------------------------------------------
+Mon Jun 21 14:53:26 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.5.1:
+  + Bug fixes in HashMultiSet, TimSort, TreeMap, TreeMultiSet, and
+    TreeSet.
+  + Fix build with Vala 0.8.0 and later
+  + Fix build on Windows
+  + Fix subprocess handling in test infrastructure
+
+-------------------------------------------------------------------
+Wed Jan  6 14:44:17 UTC 2010 - lmedinas@opensuse.org
+
+- Initial package for openSUSE.
+

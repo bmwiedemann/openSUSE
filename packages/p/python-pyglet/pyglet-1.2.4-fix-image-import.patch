@@ -1,0 +1,13 @@
+Index: pyglet/image/codecs/pil.py
+===================================================================
+--- pyglet/image/codecs/pil.py.orig
++++ pyglet/image/codecs/pil.py
+@@ -48,7 +48,7 @@ from pyglet.image.codecs import *
+ 
+ try:
+     import Image
+-except ImportError:
++except (ImportError, ValueError):
+     from PIL import Image
+ 
+ class PILImageDecoder(ImageDecoder):

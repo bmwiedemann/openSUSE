@@ -1,0 +1,28 @@
+--- jdk10/src/hotspot/cpu/zero/stack_zero.hpp	2016-12-27 22:00:30.000000000 +0100
++++ jdk10/src/hotspot/cpu/zero/stack_zero.hpp	2017-01-09 08:35:53.221098668 +0100
+@@ -96,7 +96,7 @@
+   int shadow_pages_size() const {
+     return _shadow_pages_size;
+   }
+-  int abi_stack_available(Thread *thread) const;
++  ssize_t abi_stack_available(Thread *thread) const;
+ 
+  public:
+   void overflow_check(int required_words, TRAPS);
+--- jdk10/src/hotspot/cpu/zero/stack_zero.inline.hpp	2016-12-27 22:00:30.000000000 +0100
++++ jdk10/src/hotspot/cpu/zero/stack_zero.inline.hpp	2017-01-09 08:35:53.221098668 +0100
+@@ -47,11 +47,11 @@
+ // This method returns the amount of ABI stack available for us
+ // to use under normal circumstances.  Note that the returned
+ // value can be negative.
+-inline int ZeroStack::abi_stack_available(Thread *thread) const {
++inline ssize_t ZeroStack::abi_stack_available(Thread *thread) const {
+   guarantee(Thread::current() == thread, "should run in the same thread");
+-  int stack_used = thread->stack_base() - (address) &stack_used
++  ssize_t stack_used = thread->stack_base() - (address) &stack_used
+     + (JavaThread::stack_guard_zone_size() + JavaThread::stack_shadow_zone_size());
+-  int stack_free = thread->stack_size() - stack_used;
++  ssize_t stack_free = thread->stack_size() - stack_used;
+   return stack_free;
+ }
+ 

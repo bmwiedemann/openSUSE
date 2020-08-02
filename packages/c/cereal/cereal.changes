@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Feb 16 01:00:45 UTC 2017 - junghans@votca.org
+
+- added 8b8f5814e292e03bb5b07333a0e634ef0481c85b.patch from upsteam
+  to fix unstable test
+
+-------------------------------------------------------------------
+Wed Feb 15 16:48:34 UTC 2017 - junghans@votca.org
+
+- update to version 1.2.2
+
+-------------------------------------------------------------------
+Wed Feb  1 10:20:13 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Fri Sep  2 18:59:18 UTC 2016 - junghans@votca.org
+
+- disable PORTABILITY_TEST to support arm
+
+-------------------------------------------------------------------
+Wed Aug 31 21:09:15 UTC 2016 - junghans@votca.org
+
+- Initial version 1.2.1
+

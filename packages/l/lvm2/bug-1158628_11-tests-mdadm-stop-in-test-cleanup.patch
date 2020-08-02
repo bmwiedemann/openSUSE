@@ -1,0 +1,33 @@
+From fd5b8b72da79e2f0a10785d055a27643d9eaaf19 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Fri, 27 Sep 2019 12:51:34 -0500
+Subject: [PATCH] tests: mdadm stop in test cleanup
+
+try to clear any existing md devs remaining after
+a test
+---
+ test/lib/aux.sh | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/test/lib/aux.sh b/test/lib/aux.sh
+index 9c9e1fda39..7b0ef22348 100644
+--- a/test/lib/aux.sh
++++ b/test/lib/aux.sh
+@@ -421,9 +421,14 @@ teardown_devs() {
+ 	teardown_udev_cookies
+ 
+ 	test ! -f MD_DEV || cleanup_md_dev
++	udev_wait
++	mdadm --stop --scan || true
++	udev_wait
+ 	test ! -f DEVICES || teardown_devs_prefixed "$PREFIX"
+ 	test ! -f RAMDISK || { modprobe -r brd || true ; }
+ 
++	mdadm --stop --scan || true
++
+ 	# NOTE: SCSI_DEBUG_DEV test must come before the LOOP test because
+ 	# prepare_scsi_debug_dev() also sets LOOP to short-circuit prepare_loop()
+ 	if test -f SCSI_DEBUG_DEV; then
+-- 
+2.24.0
+

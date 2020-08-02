@@ -1,0 +1,106 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 16804b5..08841f9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,7 +110,7 @@ target_link_libraries(test_xtrx xtrx ${SYSTEM_LIBS})
+ find_package(Qt5Widgets)
+ find_package(Qt5PrintSupport)
+ find_package(QCustomPlot)
+-if(Qt5Widgets_FOUND AND Qt5PrintSupport_FOUND AND QCustomPlot_FOUND)
++if(Qt5Widgets_FOUND AND Qt5PrintSupport_FOUND AND QCUSTOMPLOT_FOUND)
+     set(LIBXTRX_FOUND TRUE "libxtrx found")
+     set(LIBXTRX_LIBRARIES xtrx)
+     set(LIBXTRX_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
+diff --git a/cmake/FindQCustomPlot.cmake b/cmake/FindQCustomPlot.cmake
+new file mode 100644
+index 0000000..385cb1e
+--- /dev/null
++++ b/cmake/FindQCustomPlot.cmake
+@@ -0,0 +1,31 @@
++if(NOT QCUSTOMPLOT_FOUND)
++        if(NOT WIN32)
++                include(FindPkgConfig)
++                pkg_check_modules (QCUSTOMPLOT_PKG qcustomplot)
++        endif(NOT WIN32)
++
++        find_path(QCUSTOMPLOT_INCLUDE_DIRS NAMES qcustomplot.h
++                PATHS
++                ${QCUSTOMPLOT_PKG_INCLUDE_DIRS}
++                /usr/include
++                /usr/local/include
++                )
++
++        find_library(QCUSTOMPLOT_LIBRARIES NAMES qcustomplot
++                PATHS
++                ${QCUSTOMPLOT_PKG_LIBRARY_DIRS}
++                /usr/lib
++                /usr/local/lib
++                )
++
++        if(QCUSTOMPLOT_INCLUDE_DIRS AND QCUSTOMPLOT_LIBRARIES)
++                set(QCUSTOMPLOT_FOUND TRUE CACHE INTERNAL "QCustomPlot found")
++                message(STATUS "Found QCustomPlot: ${QCUSTOMPLOT_INCLUDE_DIRS}, ${QCUSTOMPLOT_LIBRARIES}")
++        else(QCUSTOMPLOT_INCLUDE_DIRS AND QCUSTOMPLOT_LIBRARIES)
++                set(QCUSTOMPLOT_FOUND FALSE CACHE INTERNAL "QCustomPlot found")
++                message(STATUS "QCustomPlot not found.")
++        endif(QCUSTOMPLOT_INCLUDE_DIRS AND QCUSTOMPLOT_LIBRARIES)
++
++        mark_as_advanced(QCUSTOMPLOT_LIBRARIES QCUSTOMPLOT_INCLUDE_DIRS)
++endif(NOT QCUSTOMPLOT_FOUND)
++
+diff --git a/examples/xtrx_fft/CMakeLists.txt b/examples/xtrx_fft/CMakeLists.txt
+index 6f5ee74..6e52d18 100644
+--- a/examples/xtrx_fft/CMakeLists.txt
++++ b/examples/xtrx_fft/CMakeLists.txt
+@@ -12,7 +12,7 @@ message(${CMAKE_MODULE_PATH})
+ # Find the QtWidgets library
+ find_package(Qt5Widgets CONFIG REQUIRED)
+ find_package(Qt5PrintSupport CONFIG REQUIRED)
+-find_package(QCustomPlot CONFIG REQUIRED)
++find_package(QCustomPlot REQUIRED)
+ find_package(LibXTRX REQUIRED)
+ 
+ # Populate a CMake variable with the sources
+@@ -27,4 +27,4 @@ set(mainwindow_SRCS
+ include_directories(${LIBXTRX_INCLUDE_DIRS})
+ 
+ add_executable(mainwindow ${mainwindow_SRCS})
+-target_link_libraries(mainwindow Qt5::Widgets Qt5::PrintSupport ${QCustomPlot_LIBRARIES} ${LIBXTRX_LIBRARIES})
++target_link_libraries(mainwindow Qt5::Widgets Qt5::PrintSupport ${QCUSTOMPLOT_LIBRARIES} ${LIBXTRX_LIBRARIES})
+diff --git a/examples/xtrx_fft/FindQCustomPlot.cmake b/examples/xtrx_fft/FindQCustomPlot.cmake
+new file mode 100644
+index 0000000..385cb1e
+--- /dev/null
++++ b/examples/xtrx_fft/FindQCustomPlot.cmake
+@@ -0,0 +1,31 @@
++if(NOT QCUSTOMPLOT_FOUND)
++        if(NOT WIN32)
++                include(FindPkgConfig)
++                pkg_check_modules (QCUSTOMPLOT_PKG qcustomplot)
++        endif(NOT WIN32)
++
++        find_path(QCUSTOMPLOT_INCLUDE_DIRS NAMES qcustomplot.h
++                PATHS
++                ${QCUSTOMPLOT_PKG_INCLUDE_DIRS}
++                /usr/include
++                /usr/local/include
++                )
++
++        find_library(QCUSTOMPLOT_LIBRARIES NAMES qcustomplot
++                PATHS
++                ${QCUSTOMPLOT_PKG_LIBRARY_DIRS}
++                /usr/lib
++                /usr/local/lib
++                )
++
++        if(QCUSTOMPLOT_INCLUDE_DIRS AND QCUSTOMPLOT_LIBRARIES)
++                set(QCUSTOMPLOT_FOUND TRUE CACHE INTERNAL "QCustomPlot found")
++                message(STATUS "Found QCustomPlot: ${QCUSTOMPLOT_INCLUDE_DIRS}, ${QCUSTOMPLOT_LIBRARIES}")
++        else(QCUSTOMPLOT_INCLUDE_DIRS AND QCUSTOMPLOT_LIBRARIES)
++                set(QCUSTOMPLOT_FOUND FALSE CACHE INTERNAL "QCustomPlot found")
++                message(STATUS "QCustomPlot not found.")
++        endif(QCUSTOMPLOT_INCLUDE_DIRS AND QCUSTOMPLOT_LIBRARIES)
++
++        mark_as_advanced(QCUSTOMPLOT_LIBRARIES QCUSTOMPLOT_INCLUDE_DIRS)
++endif(NOT QCUSTOMPLOT_FOUND)
++

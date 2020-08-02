@@ -1,0 +1,44 @@
+From ef1df946274a0499e1fa631a8b6680c23c4eb723 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 6 Dec 2019 15:43:04 +0100
+Subject: [PATCH] alsa-ucm: do not try to use UCM device name as jack name by
+ default
+
+Remove the implicit rule. It is perfectly ok to have the jack with
+the same name for another I/O in the driver. Trust only the
+value obtained from UCM.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-ucm.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index ac1b71e94022..95f1a47f8b61 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -1522,9 +1522,8 @@ static pa_alsa_jack* ucm_get_jack(pa_alsa_ucm_config *ucm, pa_alsa_ucm_device *d
+          * end, so drop the trailing " Jack". */
+         name = pa_xstrndup(jack_control, strlen(jack_control) - 5);
+     } else {
+-        /* The jack control hasn't been explicitly configured - try a jack name
+-         * that is the same as the device name. */
+-        name = pa_xstrdup(device_name);
++        /* The jack control hasn't been explicitly configured, fail. */
++        return NULL;
+     }
+ 
+     PA_LLIST_FOREACH(j, ucm->jacks)
+@@ -1603,7 +1602,8 @@ static int ucm_create_profile(
+         ucm_create_mapping(ucm, ps, p, dev, verb_name, name, sink, source);
+ 
+         jack = ucm_get_jack(ucm, dev);
+-        device_set_jack(dev, jack);
++        if (jack)
++            device_set_jack(dev, jack);
+ 
+         /* JackHWMute contains a list of device names. Each listed device must
+          * be associated with the jack object that we just created. */
+-- 
+2.16.4
+

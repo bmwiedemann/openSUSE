@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Tue Apr  9 14:37:13 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Make this a multibuild package where the bootstrap version is
+  built using the included javacc.jar and the non-bootstrap version
+  uses the system javacc.jar
+
+-------------------------------------------------------------------
+Wed Feb  6 09:12:23 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 7.0.4
+  * No obvious changelog
+  * Fixes a number of C++ generation issues
+- Generate the scripts during build using jpackage_script
+- Build and package the javadoc documentation
+- Removed patch:
+  * javacc.patch
+    + not needed any more in this version
+
+-------------------------------------------------------------------
+Mon Sep 18 16:25:17 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 1.6
+
+-------------------------------------------------------------------
+Thu Jan  5 15:58:51 UTC 2017 - tchvatal@suse.com
+
+- Do not use gcj as it is getting deprecated
+
+-------------------------------------------------------------------
+Thu Jul 30 13:17:31 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 5.0:
+  * No obvious changelog
+  * Works better with jdk8
+- Updated to match up with fedora version
+
+-------------------------------------------------------------------
+Wed Sep 25 11:57:00 UTC 2013 - mvyskocil@suse.com
+
+- Build with gcc-java as openjdk7 (1.7.0_40) fails to build it
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:54 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Mon Jan 28 15:00:14 CET 2008 - mmaher@suse.de
+
+- updated to 4.0:
+	See the bug list in issue tracker for all the bugs fixed in this release.
+        JJTree and JavaCC both now support 1.5 syntax.
+        We now support accessing token fields in the grammar like: s=<ID>.image
+        Convenient constructors for passing encoding directly to the grammar
+        Tabsetting is now customizable.
+        SimpleNode can now extend a class using the NODE_EXTENDS option.
+        JAVACODE and BNF productions take optional access modifiers.
+
+-------------------------------------------------------------------
+Wed Sep 20 01:32:35 CEST 2006 - ro@suse.de
+
+- set source=1.4 for java 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 18 14:59:01 CEST 2005 - jsmeix@suse.de
+
+- Current version 3.2 from JPackage.org
+
+-------------------------------------------------------------------
+Thu Sep 29 00:20:03 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Feb 18 16:35:14 CET 2005 - skh@suse.de
+
+- initial package
+

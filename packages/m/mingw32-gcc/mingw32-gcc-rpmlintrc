@@ -1,0 +1,2 @@
+addFilter("arch-independent-package-contains-binary-or-object")
+addFilter("file-contains-buildroot")

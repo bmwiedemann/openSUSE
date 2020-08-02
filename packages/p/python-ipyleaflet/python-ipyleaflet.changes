@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Mon Feb 10 16:13:13 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.2
+  + Fixes:
+    * Popup creation
+    * DrawControl creation
+  + New features and improvements
+    * Smoother URL changes on GridLayers
+    * ScaleControl
+    * Documentation improvements
+    * WMSLayer: Listen for dynamic changes on parameters
+
+-------------------------------------------------------------------
+Tue Jan 28 16:03:48 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.1
+  * Update environment.yml
+  * Allow passing a TileLayer as basemap
+  * Add Here basemaps
+- Update to 0.12.0
+  * Add zoom_control_instance default value
+  * Move to modern javascript
+
+-------------------------------------------------------------------
+Wed Jan 15 16:03:43 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.11.7
+  * Add support for font-awesome icons in Markers
+  * Add support for setting layer.popup to a Popup instance
+  * Add loading attribute to TileLayer (#460)
+  * Improvements suggested by @martinRenou
+  * Add leaflet-ant-path plugin
+  * Remove on_displayed event listener
+  * Use Bunch from traitlets
+  * Add BSD copyright headers
+- Update to 0.11.5
+  * Add Leaflet.Path.Transform
+  * Bump macaddress from 0.2.8 to 0.2.9 in /js
+  * Add show_loading attribute in docs
+  * Remove show_progress Map attribute
+  * Add leaflet.py
+  * Add spinner when tiles are loading
+  * Allow rendering GeoJSON points with CircleMarkers. 
+  * Bump lodash from 4.17.5 to 4.17.15 in /js 
+  * Sync locations
+  * Improve README
+
+-------------------------------------------------------------------
+Sat Jan 11 14:50:34 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+
+-------------------------------------------------------------------
+Mon Nov 18 16:08:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.11.4
+  * Add substitute_layer to LayerGroup clas
+  * fix DeprecationWarning
+- Update to 0.11.3
+  * Fix documentation
+  * Fix LocalTileLayer
+  * Clean GeoData on_hover Notebook
+  * Add screencast
+  * Add Wealth Of Nations Notebook example
+  * silence traitlet deprecation warnings
+- Update to 0.11.2
+  * Add missing installation command
+  * Add keywords to allow for package to be visible in JupyterLab extension
+  * Update Numpy.ipynb to use new USGS url for data download
+  * Geodata on hover example
+  * changes Geodata Class
+  * adding feature in on hover with ex
+  * Fix issue when the view is not rendered yet
+- Update to 0.11.1
+  * Drop lab variables polyfill
+  * Load Stamen tiles over HTTPS
+- Update to 0.11.0
+  * Add Attribution control
+  * Add missing add of the ZoomControl in __init__
+  * Add ZoomControl as an ipyleaflet.Control
+  * Feat : Add redraw method for TileLayer
+  * Options are now given to the JS control
+- Update to 0.10.8
+  * Fix Layer's Popup and typo in Popup class
+- Update to 0.10.7
+  * Make geopandas an optional dependency
+- Update to 0.10.6
+  * Trigger before-attach events and fix popup display 
+  * Trigger after-attach phosphor event in WidgetControl
+- Update to 0.10.5
+  * Add Usage section in the docs
+  * Add jlab themes support
+  * Add docs for min_native_zoom and max_native_zoom for TileLayer
+  * Features : Add attributes for TileLayer
+  * Add Select GeoJSON example
+  * Add flask for examples/CustomTileServer.ipynb on binder
+  * Create CustomTileServer.ipynb
+- Update to 0.10.4
+  * Fix wrong requirement string
+- Update to 0.10.3
+  * geodata class
+  * choropleth doc improve
+  * Add no_wrap option for TileLayer
+
+-------------------------------------------------------------------
+Tue May 14 16:35:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.10.2
+  * Add WidgetControl
+  * Fix Popup attribute changing
+  * Use JLab background color for widget controls
+  * add MapStyle to change Map's css style, aiming to change the cursor
+  * make MapStyle work and change default cursor to "hand"
+  * Put the map in a subcontainer
+  * return normal behavior of the cursor when map is dragging
+  * change "hand" cursor to "grab"
+  * check for allowed cursor
+  * Change name of OpenTopoMap from 'OpenTopMap' to 'OpenTopoMap'
+  * change name 'Esri.WoldStreetMap' to 'Esri.WorldStreetMap'
+  * Use latest version of leaflet-draw plugin 
+  * Fix styling problems for GeoJSON
+  * Expose fullscreen control/state
+  * Fix map size issue
+  * Use more robust check before using noConflict() mode
+- Fix dependencies
+
+-------------------------------------------------------------------
+Mon Apr 29 21:22:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- initial version (0.10.1)

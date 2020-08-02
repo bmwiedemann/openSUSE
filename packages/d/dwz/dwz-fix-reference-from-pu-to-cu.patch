@@ -1,0 +1,98 @@
+Fix reference from PU to CU
+
+[ Backport of master commit bce3238. ]
+
+Consider the following situation:
+- we have two duplicate chains: {A, B} and {C, D, E}
+- each duplicate chain has a representant: A' and C'
+- there's a pseudo-ref from Z to D, which is using one of the CU-local dwarf
+  operators DW_OP_GNU_{{regval,deref,const}_type,convert,reinterpret} (which
+  is summarized in the code by setting D->die_op_type_referenced).
+
+Schematically this looks like this:
+...
+(A') --------d-------> (A) --d--> (B)
+                        |          |
+                        r          r
+                        |          |
+                        v          v
+(C') --d--> (C) --d--> (D) --d--> (E)
+                        ^
+                        |
+                        pr
+                        |
+                       (Z)
+...
+
+Because the die D is referenced using a CU-local dwarf operator, the die is
+kept in the CU (even though it's part of a duplicate chain), to keep the
+pseudo-ref valid.  Also other CU-local refs to D keep pointing to D.
+
+A situation however arises while writing out A' to a partial unit using A as
+template, when we try to write out the reference to D, and arrive here in
+in write_die with die == A', ref == A, refd == D and refdt == D:
+...
+                  if (refdt->die_dup && refdt->die_op_type_referenced)
+                    {
+                      if (cu == die_cu (refdt->die_dup))
+                        refd = die_find_dup (refdt, refdt->die_dup, refd);
+                    }
+                  else if (refdt->die_dup)
+                    refd = die_find_dup (refdt, refdt->die_dup, refd);
+...
+
+The first if condition evaluates to true because D->die_dup == C' and
+D->die_op_type_referenced == 1.
+
+But the following (nested) if condition evalutes to false, because A' and C'
+are not part of the same unit.
+
+Consequently, refd remains D, and we get a reference from a die in a partial
+unit (A') to a die in a compilation unit (D):
+...
+(A') --------d--------> (A) --d--> (B)
+    \                    |          |
+     +---------------+   r          r
+                      \  |          |
+                       v v          v
+(C') --d--> (C) --d--> (D) ---d--> (E)
+                        ^
+                        |
+                        pr
+                        |
+                       (Z)
+...
+
+The behaviour that is triggered is one that is valid for writing out A, but is
+incorrect because in fact we're writing out A' using A as template.  Note that
+this problem would not have occurred if the pseudo-reference pointed to E
+instead, in which case we would have had the expected reference from A' to C'.
+
+Fix this by detecting that we're writing out A' (in other words,
+cu->cu_kind == CU_PU), and skipping the die_op_type_referenced
+handling in that case, resulting in a reference from A' to C'.
+
+2020-01-16  Tom de Vries  <tdevries@suse.de>
+
+	PR dwz/25398
+	* dwz.c (write_die): Skip die_op_type_referenced handling if
+	cu->cu_kind == CU_PU.
+
+---
+ dwz.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/dwz.c b/dwz.c
+index c7db337..298bca1 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -9301,7 +9301,8 @@ write_die (unsigned char *ptr, dw_cu_ref cu, dw_die_ref die,
+ 		  refdt = refd;
+ 		  while (refdt->die_toplevel == 0)
+ 		    refdt = refdt->die_parent;
+-		  if (refdt->die_dup && refdt->die_op_type_referenced)
++		  if (refdt->die_dup && refdt->die_op_type_referenced
++		      && cu->cu_kind != CU_PU)
+ 		    {
+ 		      if (cu == die_cu (refdt->die_dup))
+ 			refd = die_find_dup (refdt, refdt->die_dup, refd);

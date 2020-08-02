@@ -1,0 +1,25 @@
+From 7cd17bca4fb8369b5e1c5822ac1c79574766d3e7 Mon Sep 17 00:00:00 2001
+From: Eike Ziller <eike.ziller@qt.io>
+Date: Wed, 6 May 2020 10:34:01 +0200
+Subject: [PATCH] Fix build against Qt 5.15
+
+After qtbase/487dd80bce9c6006f349ccb09222e1c308200f0a which adds
+a meta type declaration
+---
+ plugins/network/networksupport.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/plugins/network/networksupport.cpp b/plugins/network/networksupport.cpp
+index 32191d0ca..97db54222 100644
+--- a/plugins/network/networksupport.cpp
++++ b/plugins/network/networksupport.cpp
+@@ -89,7 +89,9 @@ Q_DECLARE_METATYPE(QNetworkInterface::InterfaceFlags)
+ #endif
+ Q_DECLARE_METATYPE(QNetworkProxy::Capabilities)
+ Q_DECLARE_METATYPE(QNetworkProxy::ProxyType)
++#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+ Q_DECLARE_METATYPE(QSocketNotifier::Type)
++#endif
+ #ifndef QT_NO_SSL
+ Q_DECLARE_METATYPE(QSsl::KeyAlgorithm)
+ Q_DECLARE_METATYPE(QSsl::KeyType)

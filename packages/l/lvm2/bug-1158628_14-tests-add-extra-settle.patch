@@ -1,0 +1,29 @@
+From 3b05fd4d072d94bfead8c2d188ecf704fe57e2a8 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Fri, 8 Nov 2019 15:09:17 +0100
+Subject: [PATCH] tests: add extra settle
+
+To avoid removing, while 'add' might not have been processed yet.
+(when emulating reboot in pvmove-restart)
+---
+ test/lib/aux.sh | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/test/lib/aux.sh b/test/lib/aux.sh
+index 36e1c2bb3e..6822d7e3e4 100644
+--- a/test/lib/aux.sh
++++ b/test/lib/aux.sh
+@@ -1652,6 +1652,10 @@ wait_pvmove_lv_ready() {
+ 			retries=$((retries-1))
+ 		done
+ 	fi
++
++	# Adding settle here, to avoid remove, before processing of 'add' is finished
++	# (masking systemd-udevd issue)
++	udevadm settle --timeout=2 || true
+ }
+ 
+ # Holds device open with sleep which automatically expires after given timeout
+-- 
+2.24.0
+

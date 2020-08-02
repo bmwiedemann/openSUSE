@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Tue Nov 13 14:43:31 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Nov  9 17:22:28 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- updated to 0.18
+  [Bugfixes]
+  - CPAN RT #77807: Net::Pcap is no longer limited to one callback function,
+    thanks to a patch by James Rouzier.
+  - CPAN RT #55163: Typo in eg/pcapdump (Iain Arnell and Jose Pedro Oliveira).
+  - CPAN RT #83842: Typo in Net:Pcap (Xavier Guimard).
+ 
+  [API]
+  - Added pcap_offline_filter() (Martijn Lievaart).
+ 
+  [Code]
+  - use warnings (David Farrell).
+ 
+  [Documentation]
+  - Moved HISTORY from README to main documentation.
+  - Rewrote AUTHORS to acknowledge all contributors.
+  - Updated copyright years.
+ 
+  [Tests]
+  - Added timeouts to prevent tests from hanging (Patrice Auffret).
+  - t/17-lib_version.t: adjust regexp to match Apple builds (David Farrell).
+  - t/50-poe-component-pcap.t: small improvments.
+  - Added t/50-net-pcap-easy.t to test with Net::Pcap::Easy.
+  - Added t/50-anyevent-pcap.t to test with AnyEvent::Pcap.
+  - Make t/50-* pass with old versions of Test::More
+ 
+  [Distribution]
+  - Converted the Changes file to CPAN::Changes::Spec format.
+  - Makefile.PL: append CCFLAGS to $Config{ccflags} instead of overriding it.
+  - Makefile.PL: now dies when libpcap isn't found.
+  - Makefile.PL: declare minimum Perl version (David Farrell).
+
+- Removed patch perl-Net-Pcap-fix_libpcap_detection.patch
+
+- Added patch to avoid a redefinition of the pcap_rmtauth struct
+  already defined in libpcap >= 1.9.0
+  * perl-Net-Pcap-avoid-pcap_rmtauth-redefinition.patch         
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:51 UTC 2013 - coolo@suse.com
+
+- updated to 0.17
+   - [BUGFIX] CPAN-RT#43308: Net::Pcap no longer enables immediate
+     (unsafe) signals delivery.
+   - [BUGFIX] Fix allocated size in pcap_open(), pcap_createsrcstr()
+     and pcap_parsesrcstr(). 
+   - [API] Now make the C-like API available by default. Added the
+     pcap_perl_settings() function and UNSAFE_SIGNALS pseudo-bloc.
+   - [CODE] Replaced all occurrences of safemalloc() with Newx().
+   - [CODE] Silenced some warnings.
+   - [DOC] Added a long note about Net::Pcap and signals delivery.
+   - [DOC] Improved README.
+   - [DOC] Mention Net::Pcap::Easy.
+   - [TESTS] Fixed t/17-lib_version.t to handle two digits versions.
+   - [TESTS] CPAN-RT#44448: Fixed t/17-lib_version.t to handle
+     versions from the CVS, thanks to Craig Davison.
+   - [TESTS] Refactored t/01-api.t and added checks for the new API.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:52:07 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Fri Dec 16 06:11:09 UTC 2011 - pascal.bleser@opensuse.org
+
+- add patch to fix libpcap detection on >= 12.1 (32bit), see bnc#711611
+
+-------------------------------------------------------------------
+Wed Mar 23 09:31:14 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.16)
+

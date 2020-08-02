@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Tue Jul  4 10:27:05 UTC 2017 - tchvatal@suse.com
+
+- Cleanu pwith spec-cleaner
+- Switch to upstream tarball instead of repacking
+- Update dependencies to match reality
+- Explicitely enable configuration switches
+- Disable docu building as they are kinda empty unless we would
+  add latex and dot
+
+-------------------------------------------------------------------
+Tue May 26 09:17:16 UTC 2015 - jkeil@suse.com
+
+- Add baselibs.conf as Source
+
+-------------------------------------------------------------------
+Sun Apr 12 02:00:27 UTC 2015 - plinnell@opensuse.org
+
+- added existing baselibs.conf to fix build
+
+-------------------------------------------------------------------
+Sat Apr  4 18:11:09 UTC 2015 - dmueller@suse.com
+
+- remove unneeded texlive-latex dependency 
+
+-------------------------------------------------------------------
+Sat Dec  7 23:30:21 UTC 2013 - matz@suse.de
+
+- Don't buildrequire valgrind-devel anywhere, it's unused.
+
+-------------------------------------------------------------------
+Thu Dec 20 01:00:27 CET 2012 - ro@suse.de
+
+- buildrequire pkg-config regardless of build-architecture 
+
+-------------------------------------------------------------------
+Fri Dec  9 11:49:18 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:55 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+- Add dirac-devel to baselibs
+
+-------------------------------------------------------------------
+Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
+   
+- added 32bit compatibility libraries
+
+-------------------------------------------------------------------
+Mon May 24 13:25:36 UTC 2010 - davejplater@gmail.com
+
+- Split off doc subpackage
+
+-------------------------------------------------------------------
+Mon May 24 07:01:37 UTC 2010 - davejplater@gmail.com
+
+- Added Provides: and Obsoletes: for packman libdirac-devel
+- Included patch from dirac git to fix uninitialised memory read
+  that causes the encoder to crash when using non-overlapping blocks.
+
+-------------------------------------------------------------------
+Sun May  9 08:49:10 UTC 2010 - davejplater@gmail.com
+
+- Fixed factory build with patch from git dirac-1.0.2-gcc45.patch
+
+-------------------------------------------------------------------
+Fri Dec 18 22:46:01 CET 2009 - jengelh@medozas.de
+
+- exclude valgrind-devel on SPARC
+
+-------------------------------------------------------------------
+Sun Jul 12 14:31:22 CEST 2009 - coolo@novell.com
+
+- fix build in disabling as-needed
+
+-------------------------------------------------------------------
+Wed Jul  1 17:44:48 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 1.0.2:
+  * minor release complying with the latest Dirac Bytestream
+    Specification 2.2.3.
+  * Improved compression performance for small picture sizes.
+  * Improved compression performance at low bit-rates.
+  * Included macros to check the API version.
+  * Improved motion estimation.
+  * New 422 <-> 420 conversion utilities for interlaced video.
+  * New functionality added to encoder API.
+  * Fixed bugs in handling DC subband.
+
+-------------------------------------------------------------------
+Wed Apr 29 19:26:44 CEST 2009 - sbrabec@suse.cz
+
+- Worked around internal compiler error on 11.0-x86_64.
+
+-------------------------------------------------------------------
+Tue Nov 25 10:26:27 CET 2008 - ro@suse.de
+
+- do not buildrequire valgrind on ia64 s390 s390x
+  (does not exist on these platforms)
+
+-------------------------------------------------------------------
+Thu Nov  6 10:40:56 CET 2008 - sbrabec@suse.cz
+
+- New SuSE package (bnc#441855).
+

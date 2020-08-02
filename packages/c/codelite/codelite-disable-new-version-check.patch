@@ -1,0 +1,26 @@
+Description: disable by default automatic update check function - not needed on Linux
+Author: Alexey Svistunov <svalx@svalx.net>
+Index: Runtime/config/codelite.xml.default.gtk
+===================================================================
+--- Runtime/config/codelite.xml.default.gtk.orig
++++ Runtime/config/codelite.xml.default.gtk
+@@ -19,4 +19,7 @@
+   <ArchiveObject Name="GenerateFullPathMakefile">
+     <long Value="1" Name="m_value"/>
+   </ArchiveObject>
++  <ArchiveObject Name="CheckNewVersion">
++    <long Value="0" Name="m_value"/>
++  </ArchiveObject>
+ </CodeLite>
+Index: Runtime/config/codelite.xml.default
+===================================================================
+--- Runtime/config/codelite.xml.default.orig
++++ Runtime/config/codelite.xml.default
+@@ -19,4 +19,7 @@
+   <ArchiveObject Name="GenerateFullPathMakefile">
+     <long Value="1" Name="m_value"/>
+   </ArchiveObject>
++  <ArchiveObject Name="CheckNewVersion">
++    <long Value="0" Name="m_value"/>
++  </ArchiveObject>
+ </CodeLite>

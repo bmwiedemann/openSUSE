@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Mon Feb 11 11:15:25 UTC 2019 - sndirsch@suse.com
+
+- Update to version 1.0.9:
+  * Update configure.ac bug URL for gitlab migration
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * XauFileName: always go through buf allocation if buf is NULL
+  * XauFileName: reset bsize when malloc failed
+  * AuDispose.c:remove redundant null check on calling free()
+  * AuFileName.c: remove redundant null check on calling free()
+  * AuRead.c: remove redundant null check on calling free()
+  * Avoid out of boundary read access
+- supersedes U_0001-XauFileName-reset-bsize-when-malloc-failed.patch,
+  U_0002-XauFileName-always-go-through-buf-allocation-if-buf-.patch
+
+-------------------------------------------------------------------
+Mon Sep 30 10:12:46 UTC 2013 - sndirsch@suse.com
+
+- U_0001-XauFileName-reset-bsize-when-malloc-failed.patch/
+  U_0002-XauFileName-always-go-through-buf-allocation-if-buf-.patch
+  * fixes regression in libXau 1.0.8, which resulted in a crash in
+    Mozilla (bnc#831620,fdo#69929)
+
+-------------------------------------------------------------------
+Wed May 29 22:21:50 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.8:
+  This maintenance release brings happiness by getting rid of things
+  that make valgrind, clang, doclifter, automake, the GNOME build system,
+  various other static analyzers, and obsessive developers be unhappy.
+  Don't warn, be happy.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+- Avoid calling fdupes outside of /usr
+
+-------------------------------------------------------------------
+Wed Apr 11 15:16:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0.7:
+  + Improve the handling of "normal" locking collisions
+  + Documentation cleanups
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Sat Feb 11 18:29:50 UTC 2012 - jengelh@medozas.de
+
+- Rename xorg-x11-libXau to libXau and utilize shlib policy
+
+-------------------------------------------------------------------
+Tue Dec 21 02:43:31 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6_1.0.6 
+
+-------------------------------------------------------------------
+Sat Sep  4 18:04:08 UTC 2010 - sndirsch@novell.com
+
+- libXau 1.0.6
+  * This minor release includes a number of packaging updates
+    accumulated over the last year, and a couple of documentation
+    fixes.
+- bumped version number to 7.5_1.0.6 
+- make use of %fdupes macro
+- fixed Summary/Group entries in -devel package
+
+-------------------------------------------------------------------
+Sun Apr  4 15:33:14 CEST 2010 - sndirsch@suse.de
+
+- libXau 1.0.5
+- bumped version number to 7.5 
+
+-------------------------------------------------------------------
+Mon Dec 14 18:18:22 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Fri May  1 23:34:35 CEST 2009 - eich@suse.de
+
+- revert static library and .la file removal
+  for SUSE versions <= 11.1.
+
+-------------------------------------------------------------------
+Tue Apr 21 20:43:12 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries 
+
+-------------------------------------------------------------------
+Thu Sep 11 14:21:14 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Wed Aug 27 10:31:34 CEST 2008 - sndirsch@suse.de
+
+- libXau 1.0.4
+  * SVR4 (including Solaris) puts gethostbyname_r in libnsl instead
+    of libc
+  * Bug 17314: libXau's Makefile.am should have proper man creation
+    rules
+  * Bug #11097: libXau COPYING fix (add missing copyright dates) 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Mar 14 18:01:02 CET 2008 - sndirsch@suse.de
+
+- readded libXau.la for openSUSE <= 10.3 (bnc #371041)
+
+-------------------------------------------------------------------
+Tue Jan  1 22:57:42 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-* error
+- add missing PreReq coreutils 
+- remove libXau.la (empty dependency_libs) 
+
+-------------------------------------------------------------------
+Sat Sep 29 12:22:45 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Mon Dec 18 10:59:53 CET 2006 - sndirsch@suse.de
+
+- updated libXau to release 1.0.3 
+  * Makefile.am: make ChangeLog hook safer
+
+-------------------------------------------------------------------
+Thu Oct 26 07:28:53 CEST 2006 - sndirsch@suse.de
+
+- set version to 7.2 in specfile 
+
+-------------------------------------------------------------------
+Wed Aug  2 16:12:06 CEST 2006 - sndirsch@suse.de
+
+- fix setup line 
+
+-------------------------------------------------------------------
+Sat Jul 29 08:34:15 CEST 2006 - sndirsch@suse.de
+
+- updated libXau to release 1.0.2
+
+-------------------------------------------------------------------
+Fri Jul 28 14:44:21 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:41:34 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+- remove existing /usr/include/X11 symlink in %pre
+
+-------------------------------------------------------------------
+Thu Jun 22 11:22:12 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

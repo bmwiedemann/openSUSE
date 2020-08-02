@@ -1,0 +1,37 @@
+From a46071293b65e4f2c396a0a9833e36f040aca7a4 Mon Sep 17 00:00:00 2001
+From: Stefan Dirsch <sndirsch@suse.de>
+Date: Fri, 10 Jun 2016 16:03:06 +0200
+Subject: [PATCH vmmouse] conf: rename to 70-vmmouse.conf
+
+Bump up the vmmouse driver to 70, so it get's preferred over libinput, which
+was dropped down to 60. This is only relevant for older kernels, which do not
+yet have the functionality provided by vmmouse driver. On recent kernels
+vmmouse driver is no longer loaded at all.
+
+Signed-off-by: Stefan Dirsch <sndirsch@suse.de>
+---
+ tools/{50-vmmouse.conf => 70-vmmouse.conf} | 0
+ tools/Makefile.am                          | 2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename tools/{50-vmmouse.conf => 70-vmmouse.conf} (100%)
+
+diff --git a/tools/50-vmmouse.conf b/tools/70-vmmouse.conf
+similarity index 100%
+rename from tools/50-vmmouse.conf
+rename to tools/70-vmmouse.conf
+diff --git a/tools/Makefile.am b/tools/Makefile.am
+index da0e782..0b4c526 100644
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -41,7 +41,7 @@ CLEANFILES = hal-probe-vmmouse
+ if HAS_XORG_CONF_DIR
+ 
+ confdir=$(XORG_CONF_DIR)
+-dist_conf_DATA = 50-vmmouse.conf
++dist_conf_DATA = 70-vmmouse.conf
+ 
+ endif
+ 
+-- 
+2.6.6
+

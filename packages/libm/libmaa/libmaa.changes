@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Mon Apr 13 08:56:32 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.7
+  * Fix incorrect work of set_* where hash function generates
+    full ulong_t hash value
+  * hsh_string_hash generates full 64bit hash value on platforms
+    where sizeof(long) == 8
+  * Improve build and test system
+  * tests/err: minor fix, target "test" should not remove _mkc_*
+    and .o files
+  * Avoid trailing \n in format argument for err_* functions, no
+    need for it any longer
+  * tests/err/errtest.c: fix another compilation failure due to
+    __wur (warning used result)
+  version 1.4.6
+  * Add missing fix (compilation failure) for tests/err/errtest.c
+  version 1.4.5
+  * err_* functions:
+    + Fix segfault caused by "ap" is used twice.  Solution is to
+      va_copy it and use copied "ap" for printing to stderr.
+    + Improve formatting (no empty lines in log files)
+  * err_set_program_name: handle correctly NULL argument
+  * log_mkpath function: avoid use of alloca(3)
+  * hsh_pointer_compare function now follows -1/0/1 logic
+  * Add more tests for log_*, err_*, hsh_* and set_* function
+
+- Fix build with gcc 9.x
+
+- Drop Group tag
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Apr 23 22:06:51 MSK 2019 - vle@gmx.net
+
+- Update to libmaa-1.4.4:
+  * Fix compilation failure using gcc-8
+- Simplify build process using capabilities of mk-configure
+- Remove patches already applied in upstream, specifically
+  - 02-Spelling-typos.patch
+  - 03-Fix-gcc-8-ftbfs.patch
+- Fix License in rpm spec
+- Remove unnecessary dependencies from rpm spec
+
+-------------------------------------------------------------------
+Thu Mar  7 23:47:47 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.4.3:
+  - Fix parallel build
+  - Explicitely enable WARNERR and remove gcc-ism from CFLAGS
+
+-------------------------------------------------------------------
+Mon Jan 28 10:11:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from descriptions. Set proper RPM groups,
+  and noarch status for doc subpackage.
+- Drop silly glibc PreReq.
+
+-------------------------------------------------------------------
+Sat Jan 26 18:51:28 CET 2019 - mcepl@suse.com
+
+- Upgrade to libmaa-1.4.2:
+  * Fix build failure on SunOS-5.11 (alloca)
+  * License has been changed from LGPL to MIT, permitted by Rik
+    Faith, original author of this library.
+  * Build system changed from autotools to mk-configure.
+  * Library version/soname was bumped from 3 to 4. I cannot
+    guarantee that mk-configure and libtool build shared library
+    the same way.
+  * Tests were added for stk_*, mem_* and prm_* functions.
+  * stk_isempty function was added.
+  * stk_* and other was reimplemented without obstack functions
+    (glibc extension).
+
+-------------------------------------------------------------------
+Tue Oct  9 12:27:04 UTC 2018 - mcepl@suse.com
+
+- Add 02-Spelling-typos.patch and 03-Fix-gcc-8-ftbfs.patch from Debian
+  package.
+
+-------------------------------------------------------------------
+Sun Nov 27 05:26:01 UTC 2011 - brunciter@localhost.lan
+
+- initial package
+

@@ -1,0 +1,84 @@
+#!/bin/bash
+#
+# /etc/mail/system/sm-client.pre
+#
+# Author: Werner Fink
+# Please send feedback to http://www.suse.de/feedback/
+#
+# Description:
+#
+#   Helper script to set up the environment for sendmail
+#   Mail Transport Client if started by systemd
+#
+ 
+pidfile=/var/spool/clientmqueue/sm-client.pid
+
+typeset -i timeout=1000
+typeset -i port=25
+
+for cfg in /etc/sendmail.cf /etc/mail/sendmail.cf ; do
+    test -s $cfg && break
+done
+for sed in /bin/sed /usr/bin/sed ; do
+    test -x $sed && break
+done
+for fuser in /bin/fuser /usr/bin/fuser ; do
+    test -x $fuser && break
+done
+for usleep in /bin/usleep /usr/bin/usleep ; do
+    test -x $usleep && break
+done
+
+#
+# Create /var/run/sendmail if not exit
+#
+if test ! -d /var/run ; then
+    if test -d /run ; then
+	/bin/ln -sf /run /var/run
+    else
+	/bin/mkdir -m 0755 /var/run
+    fi
+fi
+test -d /var/run/sendmail || /bin/mkdir --mode 1750 /var/run/sendmail
+test -x /usr/bin/chkstat  && /usr/bin/chkstat -n --set --system /var/run/sendmail
+
+#
+# Some default permissions
+#
+/bin/touch		$pidfile
+/bin/chown mail:mail	$pidfile
+/bin/chmod 0600		$pidfile
+
+#
+# Make sure that configuration is uptodate
+#
+test -x /usr/bin/make && /usr/bin/make -C /etc/mail > /dev/null 2>&1
+
+#
+# Check for DaemonPortOptions
+#
+PortOpts=$($sed -rn '/^O[[:blank:]]+DaemonPortOptions=.*Name=MTA.*$/I {
+		s/[[:blank:]]+//g
+		s/^O[^=]+=(.*)/\1/p
+	    }' $cfg)
+
+#
+# Seek for port beside 25 aka smtp
+#
+for opt in ${PortOpts//,/ } ; do
+    case "${opt%=*}" in
+    [Pp]ort) port=${opt#*=}
+    esac
+done
+unset opt
+
+#
+# Now wait that sendmail MTA is becoming ready
+#
+while ! $fuser -sn tcp $port > /dev/null 2>&1 ; do
+    ((timeout-- <= 0)) && break
+    $usleep 10000
+done
+
+#
+# end of /etc/mail/system/sm-client.pre

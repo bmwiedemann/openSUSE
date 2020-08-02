@@ -1,0 +1,96 @@
+From 540b6f0f5f59bd8257f09b750281dc7ddd9533c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jean-No=C3=ABl=20Grad?= <jgrad@icp.uni-stuttgart.de>
+Date: Tue, 21 Jan 2020 15:39:10 +0100
+Subject: [PATCH] Fix BOOST_CHECK_CLOSE assertions
+
+`BOOST_*_CLOSE` assertions take a tolerance as a percentage.
+When using machine epsilon, it needs to be multiplied by 100.
+---
+ src/core/unit_tests/grid_test.cpp         | 17 ++++++++++-------
+ src/utils/tests/int_pow_test.cpp          |  4 ++--
+ src/utils/tests/interpolation_test.cpp    |  2 +-
+ src/utils/tests/matrix_vector_product.cpp |  2 +-
+ 4 files changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/src/core/unit_tests/grid_test.cpp b/src/core/unit_tests/grid_test.cpp
+index 3b926bf8c8..310b416f80 100644
+--- a/src/core/unit_tests/grid_test.cpp
++++ b/src/core/unit_tests/grid_test.cpp
+@@ -170,9 +170,9 @@ BOOST_AUTO_TEST_CASE(regular_decomposition_test) {
+     auto const result = regular_decomposition(box, {0, 0, 0}, node_grid);
+     auto const local_box_l = result.length();
+ 
+-    BOOST_CHECK_CLOSE(box_l[0], local_box_l[0] * node_grid[0], eps);
+-    BOOST_CHECK_CLOSE(box_l[1], local_box_l[1] * node_grid[1], eps);
+-    BOOST_CHECK_CLOSE(box_l[2], local_box_l[2] * node_grid[2], eps);
++    BOOST_CHECK_CLOSE(box_l[0], local_box_l[0] * node_grid[0], 100. * eps);
++    BOOST_CHECK_CLOSE(box_l[1], local_box_l[1] * node_grid[1], 100. * eps);
++    BOOST_CHECK_CLOSE(box_l[2], local_box_l[2] * node_grid[2], 100. * eps);
+   }
+ 
+   /* check corners */
+@@ -185,9 +185,12 @@ BOOST_AUTO_TEST_CASE(regular_decomposition_test) {
+           auto const local_box_l = result.length();
+           auto const lower_corner = result.my_left();
+ 
+-          BOOST_CHECK_CLOSE(lower_corner[0], local_box_l[0] * node_pos[0], eps);
+-          BOOST_CHECK_CLOSE(lower_corner[1], local_box_l[1] * node_pos[1], eps);
+-          BOOST_CHECK_CLOSE(lower_corner[2], local_box_l[2] * node_pos[2], eps);
++          BOOST_CHECK_CLOSE(lower_corner[0], local_box_l[0] * node_pos[0],
++                            100. * eps);
++          BOOST_CHECK_CLOSE(lower_corner[1], local_box_l[1] * node_pos[1],
++                            100. * eps);
++          BOOST_CHECK_CLOSE(lower_corner[2], local_box_l[2] * node_pos[2],
++                            100. * eps);
+         }
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/src/utils/tests/int_pow_test.cpp b/src/utils/tests/int_pow_test.cpp
+index 072aabfff3..74610052d9 100644
+--- a/src/utils/tests/int_pow_test.cpp
++++ b/src/utils/tests/int_pow_test.cpp
+@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE(even) {
+   const double x = 3.14159;
+ 
+   BOOST_CHECK(1 == int_pow<0>(x));
+-  BOOST_CHECK_CLOSE(x * x, int_pow<2>(x), eps);
++  BOOST_CHECK_CLOSE(x * x, int_pow<2>(x), 100. * eps);
+   BOOST_CHECK_CLOSE((x * x) * (x * x), int_pow<4>(x), 100. * eps);
+ }
+ 
+@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(odd) {
+   const double x = 3.14159;
+ 
+   BOOST_CHECK(x == int_pow<1>(x));
+-  BOOST_CHECK_CLOSE((x * x) * x, int_pow<3>(x), eps);
++  BOOST_CHECK_CLOSE((x * x) * x, int_pow<3>(x), 100. * eps);
+   BOOST_CHECK_CLOSE((x * x) * (x * x) * x, int_pow<5>(x), 100. * eps);
+ }
+ 
+diff --git a/src/utils/tests/interpolation_test.cpp b/src/utils/tests/interpolation_test.cpp
+index 59a351e723..50b4b164b6 100644
+--- a/src/utils/tests/interpolation_test.cpp
++++ b/src/utils/tests/interpolation_test.cpp
+@@ -140,7 +140,7 @@ BOOST_AUTO_TEST_CASE(nearest_point) {
+   bspline_3d<1>({.1, .2, .3}, save_ind, {0.5, 0.5, 0.5}, {});
+ 
+   BOOST_CHECK((std::array<int, 3>{{0, 0, 1}} == nmp));
+-  BOOST_CHECK_CLOSE(weight, 1., std::numeric_limits<double>::epsilon());
++  BOOST_CHECK_CLOSE(weight, 1., 100. * std::numeric_limits<double>::epsilon());
+ }
+ 
+ BOOST_AUTO_TEST_CASE(interpolation_points_3) {
+diff --git a/src/utils/tests/matrix_vector_product.cpp b/src/utils/tests/matrix_vector_product.cpp
+index fb015bb6c5..f3e560620d 100644
+--- a/src/utils/tests/matrix_vector_product.cpp
++++ b/src/utils/tests/matrix_vector_product.cpp
+@@ -34,6 +34,6 @@ BOOST_AUTO_TEST_CASE(inner_product) {
+   auto const result = Utils::matrix_vector_product<double, 3, matrix>(vector);
+   for (int i = 0; i < 3; ++i) {
+     BOOST_CHECK_CLOSE(result[i], boost::inner_product(matrix[i], vector, 0.0),
+-                      std::numeric_limits<double>::epsilon());
++                      100. * std::numeric_limits<double>::epsilon());
+   }
+ }

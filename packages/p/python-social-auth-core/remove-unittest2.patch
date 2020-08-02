@@ -1,0 +1,172 @@
+Index: social-auth-core-3.1.0/social_core/tests/__init__.py
+===================================================================
+--- /dev/null
++++ social-auth-core-3.1.0/social_core/tests/__init__.py
+@@ -0,0 +1,6 @@
++try:
++    import unittest2
++    import sys
++    sys.modules['unittest'] = unittest2
++except ImportError:
++    pass
+Index: social-auth-core-3.1.0/social_core/tests/actions/actions.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/actions/actions.py
++++ social-auth-core-3.1.0/social_core/tests/actions/actions.py
+@@ -1,6 +1,6 @@
+ import json
+ import requests
+-import unittest2 as unittest
++import unittest
+ 
+ from httpretty import HTTPretty
+ 
+Index: social-auth-core-3.1.0/social_core/tests/backends/base.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/backends/base.py
++++ social-auth-core-3.1.0/social_core/tests/backends/base.py
+@@ -1,4 +1,4 @@
+-import unittest2 as unittest
++import unittest
+ import requests
+ 
+ from httpretty import HTTPretty
+Index: social-auth-core-3.1.0/social_core/tests/backends/open_id_connect.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/backends/open_id_connect.py
++++ social-auth-core-3.1.0/social_core/tests/backends/open_id_connect.py
+@@ -3,7 +3,7 @@ import os
+ import sys
+ import json
+ import datetime
+-import unittest2
++import unittest
+ import base64
+ from calendar import timegm
+ 
+Index: social-auth-core-3.1.0/social_core/tests/backends/test_broken.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/backends/test_broken.py
++++ social-auth-core-3.1.0/social_core/tests/backends/test_broken.py
+@@ -1,4 +1,4 @@
+-import unittest2 as unittest
++import unittest
+ 
+ from ...backends.base import BaseAuth
+ from ..strategy import TestStrategy
+Index: social-auth-core-3.1.0/social_core/tests/backends/test_elixir.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/backends/test_elixir.py
++++ social-auth-core-3.1.0/social_core/tests/backends/test_elixir.py
+@@ -1,4 +1,4 @@
+-import unittest2
++import unittest
+ 
+ from .oauth import OAuth1Test, OAuth2Test
+ from .open_id_connect import OpenIdConnectTestMixin
+Index: social-auth-core-3.1.0/social_core/tests/backends/test_globus.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/backends/test_globus.py
++++ social-auth-core-3.1.0/social_core/tests/backends/test_globus.py
+@@ -1,5 +1,5 @@
+ import json
+-import unittest2
++import unittest
+ 
+ from .oauth import OAuth1Test, OAuth2Test
+ from .open_id_connect import OpenIdConnectTestMixin
+Index: social-auth-core-3.1.0/social_core/tests/backends/test_google.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/backends/test_google.py
++++ social-auth-core-3.1.0/social_core/tests/backends/test_google.py
+@@ -1,6 +1,6 @@
+ import datetime
+ import json
+-import unittest2
++import unittest
+ 
+ from httpretty import HTTPretty
+ 
+Index: social-auth-core-3.1.0/social_core/tests/backends/test_saml.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/backends/test_saml.py
++++ social-auth-core-3.1.0/social_core/tests/backends/test_saml.py
+@@ -1,7 +1,7 @@
+ import re
+ import json
+ import sys
+-import unittest2
++import unittest
+ import requests
+ import os
+ from os import path
+@@ -28,11 +28,11 @@ from ...exceptions import AuthMissingPar
+ DATA_DIR = path.join(path.dirname(__file__), 'data')
+ 
+ 
+-@unittest2.skipIf('TRAVIS' in os.environ,
+-                  'Travis-ci segfaults probably due to a bad '
+-                  'dependencies build')
+-@unittest2.skipIf('__pypy__' in sys.builtin_module_names,
+-                  'dm.xmlsec not compatible with pypy')
++@unittest.skipIf('TRAVIS' in os.environ,
++                 'Travis-ci segfaults probably due to a bad '
++                 'dependencies build')
++@unittest.skipIf('__pypy__' in sys.builtin_module_names,
++                 'dm.xmlsec not compatible with pypy')
+ class SAMLTest(BaseBackendTest):
+     backend_path = 'social_core.backends.saml.SAMLAuth'
+     expected_username = 'myself'
+Index: social-auth-core-3.1.0/social_core/tests/backends/test_utils.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/backends/test_utils.py
++++ social-auth-core-3.1.0/social_core/tests/backends/test_utils.py
+@@ -1,4 +1,4 @@
+-import unittest2 as unittest
++import unittest
+ 
+ from ..models import TestStorage
+ from ..strategy import TestStrategy
+Index: social-auth-core-3.1.0/social_core/tests/test_exceptions.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/test_exceptions.py
++++ social-auth-core-3.1.0/social_core/tests/test_exceptions.py
+@@ -1,4 +1,4 @@
+-import unittest2 as unittest
++import unittest
+ 
+ from ..exceptions import SocialAuthBaseException, WrongBackend, \
+                          AuthFailed, AuthTokenError, \
+Index: social-auth-core-3.1.0/social_core/tests/test_partial.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/test_partial.py
++++ social-auth-core-3.1.0/social_core/tests/test_partial.py
+@@ -1,4 +1,4 @@
+-import unittest2 as unittest
++import unittest
+ try:
+     from mock import Mock, patch
+ except ImportError:
+Index: social-auth-core-3.1.0/social_core/tests/test_storage.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/test_storage.py
++++ social-auth-core-3.1.0/social_core/tests/test_storage.py
+@@ -1,6 +1,6 @@
+ import six
+ import random
+-import unittest2 as unittest
++import unittest
+ 
+ from ..strategy import BaseStrategy
+ from ..storage import UserMixin, NonceMixin, AssociationMixin, \
+Index: social-auth-core-3.1.0/social_core/tests/test_utils.py
+===================================================================
+--- social-auth-core-3.1.0.orig/social_core/tests/test_utils.py
++++ social-auth-core-3.1.0/social_core/tests/test_utils.py
+@@ -1,5 +1,5 @@
+ import sys
+-import unittest2 as unittest
++import unittest
+ 
+ try:
+     from unittest.mock import Mock

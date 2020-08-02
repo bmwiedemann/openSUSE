@@ -1,0 +1,87 @@
+diff -Nru maven-jaxb2-plugin-0.13.0/plugin/src/test/java/org/jvnet/jaxb2/maven2/JAXBGenerateTest.java maven-jaxb2-plugin-0.13.0.maven3/plugin/src/test/java/org/jvnet/jaxb2/maven2/JAXBGenerateTest.java
+--- maven-jaxb2-plugin-0.13.0/plugin/src/test/java/org/jvnet/jaxb2/maven2/JAXBGenerateTest.java	2015-08-30 11:39:57.000000000 +0200
++++ maven-jaxb2-plugin-0.13.0.maven3/plugin/src/test/java/org/jvnet/jaxb2/maven2/JAXBGenerateTest.java	2015-10-26 07:08:33.061224903 +0100
+@@ -23,6 +23,7 @@
+ import org.apache.maven.plugin.testing.AbstractMojoTestCase;
+ import org.apache.maven.project.MavenProject;
+ import org.apache.maven.project.MavenProjectBuilder;
++import org.apache.maven.project.MavenProjectHelper;
+ import org.jvnet.mjiip.v_2.XJC2Mojo;
+ 
+ public abstract class JAXBGenerateTest extends AbstractMojoTestCase {
+@@ -37,7 +38,7 @@
+ 		super.setUp();
+ 
+ 		mavenProjectBuilder = (MavenProjectBuilder) getContainer().lookup(
+-				MavenProjectBuilder.ROLE);
++				MavenProjectHelper.ROLE);
+ 	}
+ 
+ 	protected static File getBaseDir() {
+diff -Nru maven-jaxb2-plugin-0.13.0/plugin-2.1/src/test/java/org/jvnet/mjiip/v_2_1/JAXBGenerateTest.java maven-jaxb2-plugin-0.13.0.maven3/plugin-2.1/src/test/java/org/jvnet/mjiip/v_2_1/JAXBGenerateTest.java
+--- maven-jaxb2-plugin-0.13.0/plugin-2.1/src/test/java/org/jvnet/mjiip/v_2_1/JAXBGenerateTest.java	2015-08-30 11:39:57.000000000 +0200
++++ maven-jaxb2-plugin-0.13.0.maven3/plugin-2.1/src/test/java/org/jvnet/mjiip/v_2_1/JAXBGenerateTest.java	2015-10-26 07:08:33.061224903 +0100
+@@ -23,6 +23,7 @@
+ import org.apache.maven.plugin.testing.AbstractMojoTestCase;
+ import org.apache.maven.project.MavenProject;
+ import org.apache.maven.project.MavenProjectBuilder;
++import org.apache.maven.project.MavenProjectHelper;
+ 
+ public abstract class JAXBGenerateTest extends AbstractMojoTestCase {
+ 
+@@ -36,7 +37,7 @@
+ 		super.setUp();
+ 
+ 		mavenProjectBuilder = (MavenProjectBuilder) getContainer().lookup(
+-				MavenProjectBuilder.ROLE);
++				MavenProjectHelper.ROLE);
+ 	}
+ 
+ 	protected static File getBaseDir() {
+diff -Nru maven-jaxb2-plugin-0.13.0/plugin-core/pom.xml maven-jaxb2-plugin-0.13.0.maven3/plugin-core/pom.xml
+--- maven-jaxb2-plugin-0.13.0/plugin-core/pom.xml	2015-10-26 07:10:24.540750466 +0100
++++ maven-jaxb2-plugin-0.13.0.maven3/plugin-core/pom.xml	2015-10-26 07:08:33.061224903 +0100
+@@ -25,6 +25,10 @@
+ 		<!-- Maven plugin and api classes -->
+ 		<dependency>
+ 			<groupId>org.apache.maven</groupId>
++			<artifactId>maven-compat</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>org.apache.maven</groupId>
+ 			<artifactId>maven-plugin-api</artifactId>
+ 		</dependency>
+ 		<dependency>
+@@ -37,7 +41,7 @@
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.apache.maven</groupId>
+-			<artifactId>maven-project</artifactId>
++			<artifactId>maven-core</artifactId>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.apache.maven.plugin-tools</groupId>
+diff -Nru maven-jaxb2-plugin-0.13.0/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/AbstractXJC2Mojo.java maven-jaxb2-plugin-0.13.0.maven3/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/AbstractXJC2Mojo.java
+--- maven-jaxb2-plugin-0.13.0/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/AbstractXJC2Mojo.java	2015-08-30 11:39:57.000000000 +0200
++++ maven-jaxb2-plugin-0.13.0.maven3/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/AbstractXJC2Mojo.java	2015-10-26 07:08:33.062224854 +0100
+@@ -1191,7 +1191,7 @@
+ 			@SuppressWarnings("unchecked")
+ 			final Set<Artifact> artifacts = MavenMetadataSource
+ 					.createArtifacts(getArtifactFactory(),
+-							Arrays.asList(dependencyResource),
++							Arrays.asList((Dependency) dependencyResource),
+ 							Artifact.SCOPE_RUNTIME, null, getProject());
+ 
+ 			if (artifacts.size() != 1) {
+diff -Nru maven-jaxb2-plugin-0.13.0/pom.xml maven-jaxb2-plugin-0.13.0.maven3/pom.xml
+--- maven-jaxb2-plugin-0.13.0/pom.xml	2015-08-30 11:39:57.000000000 +0200
++++ maven-jaxb2-plugin-0.13.0.maven3/pom.xml	2015-10-26 07:09:26.349608065 +0100
+@@ -162,7 +162,7 @@
+ 			</dependency>
+ 			<dependency>
+ 				<groupId>org.apache.maven</groupId>
+-				<artifactId>maven-project</artifactId>
++				<artifactId>maven-compat</artifactId>
+ 				<version>${maven.version}</version>
+ 			</dependency>
+ 			<dependency>

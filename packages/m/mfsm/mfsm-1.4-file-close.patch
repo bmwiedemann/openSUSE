@@ -1,0 +1,15 @@
+--- mfsm.c
++++ mfsm.c
+@@ -1792,10 +1792,12 @@
+ 		dbar->usage      = 100 * usage / limit;
+ 		dbar->usage_type = QUOTA_SPACE2;
+ 		searching        = FALSE;
++                fclose(tfp);
+ 		unlink( tmp_file);
+ 		return;
+ 	      }
+ 	    }
++            fclose(tfp);
+ 	    unlink( tmp_file);
+ 	    quota_command = FALSE;
+ 	    if ( Resrcs.verbose)

@@ -1,0 +1,7 @@
+---
+preamble: |-
+ # workaround a spurious test failure in "skipped" t/cdbi/mk_group_accessors.t
+ BuildRequires:  perl(Class::DBI)
+post_prep:
+ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
+

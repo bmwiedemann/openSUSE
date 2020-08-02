@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Apr 20 15:45:10 UTC 2020 - Markos Chandras <markos@chandras.me>
+
+- Disable debug package on Fedora (https://en.opensuse.org/Fedora_packaging)
+
+-------------------------------------------------------------------
+Tue Mar 17 08:48:55 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- run spec cleaner 
+
+-------------------------------------------------------------------
+Sat Aug 25 08:36:52 UTC 2018 - info@paolostivanin.com
+
+- fix build 
+
+-------------------------------------------------------------------
+Fri Aug 24 17:16:37 UTC 2018 - info@paolostivanin.com
+
+- first release on OBS 

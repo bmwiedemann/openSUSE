@@ -1,0 +1,202 @@
+From e653f43732fd61f8dc272b157f323663abce3daa Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Thu, 20 Jun 2019 00:03:18 +0200
+Subject: [PATCH] tests: simplify some var settings
+
+scan_lvs now automatically comes with extend_filter_LVMTEST
+---
+ test/lib/aux.sh                       | 2 +-
+ test/shell/discards-thin.sh           | 2 --
+ test/shell/lvconvert-thin.sh          | 2 --
+ test/shell/lvcreate-large-raid10.sh   | 1 -
+ test/shell/lvcreate-large.sh          | 2 --
+ test/shell/pvcreate-operation-md.sh   | 3 +--
+ test/shell/pvcreate-restore.sh        | 2 --
+ test/shell/pvremove-thin.sh           | 2 --
+ test/shell/scan-lvs.sh                | 4 +---
+ test/shell/snapshot-remove-dmsetup.sh | 2 --
+ test/shell/snapshot-usage-exa.sh      | 2 --
+ test/shell/snapshot-usage.sh          | 2 --
+ test/shell/vgsplit-stacked.sh         | 2 --
+ 13 files changed, 3 insertions(+), 25 deletions(-)
+
+diff --git a/test/lib/aux.sh b/test/lib/aux.sh
+index 81e8f91c98..32d5a0ba7b 100644
+--- a/test/lib/aux.sh
++++ b/test/lib/aux.sh
+@@ -1164,7 +1164,7 @@ devices/default_data_alignment = 1
+ devices/dir = "$DM_DEV_DIR"
+ devices/filter = "a|.*|"
+ devices/global_filter = [ "a|$DM_DEV_DIR/mapper/${PREFIX}.*pv[0-9_]*$|", "r|.*|" ]
+-devices/md_component_detection  = 0
++devices/md_component_detection = 0
+ devices/scan = "$DM_DEV_DIR"
+ devices/sysfs_scan = 1
+ devices/write_cache_state = 0
+diff --git a/test/shell/discards-thin.sh b/test/shell/discards-thin.sh
+index 3564a8793e..f27d4c3d14 100644
+--- a/test/shell/discards-thin.sh
++++ b/test/shell/discards-thin.sh
+@@ -25,8 +25,6 @@ export LVM_TEST_THIN_REPAIR_CMD=${LVM_TEST_THIN_REPAIR_CMD-/bin/false}
+ #
+ aux have_thin 1 1 0 || skip
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ aux prepare_vg 2 64
+ get_devs
+ 
+diff --git a/test/shell/lvconvert-thin.sh b/test/shell/lvconvert-thin.sh
+index 731c45bd5e..1f8d2edb9a 100644
+--- a/test/shell/lvconvert-thin.sh
++++ b/test/shell/lvconvert-thin.sh
+@@ -17,8 +17,6 @@ export LVM_TEST_THIN_REPAIR_CMD=${LVM_TEST_THIN_REPAIR_CMD-/bin/false}
+ 
+ . lib/inittest
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ prepare_lvs() {
+ 	lvremove -f $vg
+ 	lvcreate -L10M -n $lv1 $vg
+diff --git a/test/shell/lvcreate-large-raid10.sh b/test/shell/lvcreate-large-raid10.sh
+index 1ad09aac52..a46be374f6 100644
+--- a/test/shell/lvcreate-large-raid10.sh
++++ b/test/shell/lvcreate-large-raid10.sh
+@@ -20,7 +20,6 @@ SKIP_WITH_LVMPOLLD=1
+ # FIXME  update test to make something useful on <16T
+ aux can_use_16T || skip
+ aux have_raid 1 3 0 || skip
+-aux lvmconf 'devices/scan_lvs = 1'
+ 
+ aux prepare_vg 5
+ 
+diff --git a/test/shell/lvcreate-large.sh b/test/shell/lvcreate-large.sh
+index b1cb0b0831..473b0edb36 100644
+--- a/test/shell/lvcreate-large.sh
++++ b/test/shell/lvcreate-large.sh
+@@ -17,8 +17,6 @@ SKIP_WITH_LVMPOLLD=1
+ 
+ . lib/inittest
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ # FIXME  update test to make something useful on <16T
+ aux can_use_16T || skip
+ 
+diff --git a/test/shell/pvcreate-operation-md.sh b/test/shell/pvcreate-operation-md.sh
+index 11f08877f4..4b51932374 100644
+--- a/test/shell/pvcreate-operation-md.sh
++++ b/test/shell/pvcreate-operation-md.sh
+@@ -22,8 +22,7 @@ test -f /proc/mdstat && grep -q raid0 /proc/mdstat || \
+ 	modprobe raid0 || skip
+ 
+ aux lvmconf 'devices/md_component_detection = 1'
+-aux extend_filter_LVMTEST
+-aux extend_filter "a|/dev/md.*|"
++aux extend_filter_LVMTEST "a|/dev/md|"
+ 
+ aux prepare_devs 2
+ 
+diff --git a/test/shell/pvcreate-restore.sh b/test/shell/pvcreate-restore.sh
+index 789f45c16f..d0b46eb2bf 100644
+--- a/test/shell/pvcreate-restore.sh
++++ b/test/shell/pvcreate-restore.sh
+@@ -15,8 +15,6 @@ SKIP_WITH_LVMPOLLD=1
+ 
+ . lib/inittest
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ aux prepare_vg 4
+ 
+ lvcreate --type snapshot -s -L10 -n $lv1 $vg --virtualsize 2T
+diff --git a/test/shell/pvremove-thin.sh b/test/shell/pvremove-thin.sh
+index 84a2a558b1..9859b6cadb 100644
+--- a/test/shell/pvremove-thin.sh
++++ b/test/shell/pvremove-thin.sh
+@@ -18,8 +18,6 @@ SKIP_WITH_LVMPOLLD=1
+ 
+ . lib/inittest
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ aux prepare_vg
+ 
+ aux have_thin 1 8 0 || skip
+diff --git a/test/shell/scan-lvs.sh b/test/shell/scan-lvs.sh
+index 8e8a77d3e9..f49bf4df5c 100644
+--- a/test/shell/scan-lvs.sh
++++ b/test/shell/scan-lvs.sh
+@@ -15,10 +15,9 @@ SKIP_WITH_LVMPOLLD=1
+ 
+ . lib/inittest
+ 
++# Sets 'scan_lvs = 1'
+ aux extend_filter_LVMTEST
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ aux prepare_pvs 1
+ 
+ vgcreate $SHARED $vg1 "$dev1"
+@@ -44,4 +43,3 @@ lvchange -an "$vg1/$lv1"
+ lvremove "$vg1/$lv1"
+ 
+ vgremove $vg1
+-
+diff --git a/test/shell/snapshot-remove-dmsetup.sh b/test/shell/snapshot-remove-dmsetup.sh
+index 916aec9265..19411ce93f 100644
+--- a/test/shell/snapshot-remove-dmsetup.sh
++++ b/test/shell/snapshot-remove-dmsetup.sh
+@@ -17,8 +17,6 @@ SKIP_WITH_LVMPOLLD=1
+ 
+ . lib/inittest
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ which mkfs.ext2 || skip
+ 
+ aux prepare_vg 5
+diff --git a/test/shell/snapshot-usage-exa.sh b/test/shell/snapshot-usage-exa.sh
+index f537f0dbf8..5d666bf439 100644
+--- a/test/shell/snapshot-usage-exa.sh
++++ b/test/shell/snapshot-usage-exa.sh
+@@ -18,8 +18,6 @@ SKIP_WITH_LVMPOLLD=1
+ 
+ . lib/inittest
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ aux can_use_16T || skip
+ 
+ aux prepare_pvs 1
+diff --git a/test/shell/snapshot-usage.sh b/test/shell/snapshot-usage.sh
+index 5cfdae6e4c..bcfa16a3e9 100644
+--- a/test/shell/snapshot-usage.sh
++++ b/test/shell/snapshot-usage.sh
+@@ -17,8 +17,6 @@ SKIP_WITH_LVMPOLLD=1
+ 
+ . lib/inittest
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ MKFS=mkfs.ext2
+ which $MKFS || skip
+ 
+diff --git a/test/shell/vgsplit-stacked.sh b/test/shell/vgsplit-stacked.sh
+index 09af3f76c6..331ee8e86b 100644
+--- a/test/shell/vgsplit-stacked.sh
++++ b/test/shell/vgsplit-stacked.sh
+@@ -15,8 +15,6 @@ SKIP_WITH_LVMPOLLD=1
+ 
+ . lib/inittest
+ 
+-aux lvmconf 'devices/scan_lvs = 1'
+-
+ aux extend_filter_LVMTEST
+ aux prepare_pvs 3
+ 
+-- 
+2.24.0
+

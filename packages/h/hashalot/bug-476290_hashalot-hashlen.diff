@@ -1,0 +1,35 @@
+Index: hashalot-0.3/hashalot.c
+===================================================================
+--- hashalot-0.3.orig/hashalot.c
++++ hashalot-0.3/hashalot.c
+@@ -34,6 +34,7 @@
+ #include "sha512.h"
+ 
+ #define PASSWDBUFFLEN 130
++#define MAXHASHLEN (ULONG_MAX/2 - 2)
+ 
+ typedef int (*phash_func_t)(char dest[], size_t dest_len, const char src[], size_t src_len);
+ 
+@@ -182,8 +183,7 @@ static void *
+ xmalloc (size_t size) {
+         void *p;
+ 
+-        if (size == 0)
+-                return NULL;
++        assert(size != 0);
+ 
+         p = malloc(size);
+         if (p == NULL) {
+@@ -242,6 +242,12 @@ main(int argc, char *argv[])
+ 				show_usage(argv[0]);
+ 				exit(EXIT_FAILURE);
+ 			}
++			if (hashlen >= MAXHASHLEN) {
++				fprintf(stderr, 
++					"please supply a value smaller than %lu for the -n option\n",
++					MAXHASHLEN);
++				exit(EXIT_FAILURE);
++			}
+ 			break;
+                 case 's':
+                         salt = optarg;

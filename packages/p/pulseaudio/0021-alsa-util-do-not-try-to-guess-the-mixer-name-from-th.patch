@@ -1,0 +1,84 @@
+From d8200ee805ed6b508a8174031080b1d98a7c27b3 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 6 Dec 2019 16:05:07 +0100
+Subject: [PATCH] alsa-util: do not try to guess the mixer name from the PCM
+ name
+
+This is just invalid. It results to an error in almost all cases.
+The hw:<number> scheme is sufficient to get the right card mixer.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-ucm.c  |  2 ++
+ src/modules/alsa/alsa-util.c | 26 +++++++-------------------
+ 2 files changed, 9 insertions(+), 19 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index 95f1a47f8b61..45eb83085b38 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -1725,6 +1725,8 @@ static void ucm_mapping_jack_probe(pa_alsa_mapping *m) {
+     PA_IDXSET_FOREACH(dev, context->ucm_devices, idx) {
+         bool has_control;
+ 
++        if (!dev->jack)
++            continue;
+         has_control = pa_alsa_mixer_find(mixer_handle, dev->jack->alsa_name, 0) != NULL;
+         pa_alsa_jack_set_has_control(dev->jack, has_control);
+         pa_log_info("UCM jack %s has_control=%d", dev->jack->name, dev->jack->has_control);
+diff --git a/src/modules/alsa/alsa-util.c b/src/modules/alsa/alsa-util.c
+index a14b061118e6..54fe1361148a 100644
+--- a/src/modules/alsa/alsa-util.c
++++ b/src/modules/alsa/alsa-util.c
+@@ -1743,7 +1743,6 @@ snd_mixer_t *pa_alsa_open_mixer(int alsa_card_index, char **ctl_device) {
+ snd_mixer_t *pa_alsa_open_mixer_for_pcm(snd_pcm_t *pcm, char **ctl_device) {
+     int err;
+     snd_mixer_t *m;
+-    const char *dev;
+     snd_pcm_info_t* info;
+     snd_pcm_info_alloca(&info);
+ 
+@@ -1754,15 +1753,6 @@ snd_mixer_t *pa_alsa_open_mixer_for_pcm(snd_pcm_t *pcm, char **ctl_device) {
+         return NULL;
+     }
+ 
+-    /* First, try by name */
+-    if ((dev = snd_pcm_name(pcm)))
+-        if (prepare_mixer(m, dev) >= 0) {
+-            if (ctl_device)
+-                *ctl_device = pa_xstrdup(dev);
+-
+-            return m;
+-        }
+-
+     /* Then, try by card index */
+     if (snd_pcm_info(pcm, info) >= 0) {
+         char *md;
+@@ -1771,17 +1761,15 @@ snd_mixer_t *pa_alsa_open_mixer_for_pcm(snd_pcm_t *pcm, char **ctl_device) {
+         if ((card_idx = snd_pcm_info_get_card(info)) >= 0) {
+ 
+             md = pa_sprintf_malloc("hw:%i", card_idx);
++            if (prepare_mixer(m, md) >= 0) {
+ 
+-            if (!dev || !pa_streq(dev, md))
+-                if (prepare_mixer(m, md) >= 0) {
++                if (ctl_device)
++                    *ctl_device = md;
++                else
++                    pa_xfree(md);
+ 
+-                    if (ctl_device)
+-                        *ctl_device = md;
+-                    else
+-                        pa_xfree(md);
+-
+-                    return m;
+-                }
++                return m;
++            }
+ 
+             pa_xfree(md);
+         }
+-- 
+2.16.4
+

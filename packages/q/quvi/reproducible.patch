@@ -1,0 +1,26 @@
+Index: quvi-0.9.5/configure.ac
+===================================================================
+--- quvi-0.9.5.orig/configure.ac
++++ quvi-0.9.5/configure.ac
+@@ -47,7 +47,7 @@ AC_DEFINE_UNQUOTED([CFLAGS], "$CFLAGS",
+ AC_DEFINE_UNQUOTED([CC], "$CC", [Define to compiler])
+ 
+ AC_PATH_PROG([DATE], [date], [no])
+-AS_IF([test x"$DATE" != "xno"], [build_time=`$DATE +"%F %T %z"`])
++AS_IF([test x"$DATE" != "xno"], [build_time='see rpm -qi quvi'])
+ AC_DEFINE_UNQUOTED([BUILD_TIME], ["$build_time"], [We have build time])
+ 
+ AC_PATH_PROG([A2X], [a2x], [no])
+Index: quvi-0.9.5/configure
+===================================================================
+--- quvi-0.9.5.orig/configure
++++ quvi-0.9.5/configure
+@@ -14580,7 +14580,7 @@ fi
+ 
+ 
+ if test x"$DATE" != "xno"; then :
+-  build_time=`$DATE +"%F %T %z"`
++  build_time='see rpm -qi quvi'
+ fi
+ 
+ cat >>confdefs.h <<_ACEOF

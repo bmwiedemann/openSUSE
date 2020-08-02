@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Jan 31 08:12:03 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 20180128.f77bb8e:
+  * Utilize force_system_openssl for Company of Heroes 2. (#5)
+
+-------------------------------------------------------------------
+Fri May 19 02:21:52 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 20170518.71f4ec6:
+  * Provide force_system_openssl and utilize for Tomb Raider.
+  * Utilize force_system_openssl for Mad Max.
+
+-------------------------------------------------------------------
+Fri May 19 00:48:36 UTC 2017 - jimmy@boombatower.com
+
+- Drop 0~git prefix from version format to start with date.
+
+-------------------------------------------------------------------
+Tue Feb 14 23:10:32 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 0~git20170214.e263295:
+  * Allow GPLv2+ for compatibility with steam-linux-workarounds.
+  * BattleBlock Theater Mesa Fix.
+- Require bsdiff for binary patching fixes.
+
+-------------------------------------------------------------------
+Sun Oct 16 05:59:46 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 0~git20161009.c7ed0fa:
+  * 67000-The_Polynomial: fix for 64bit version.
+
+-------------------------------------------------------------------
+Sat Oct 08 05:35:58 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 0~git20161007.637d797:
+  * Add COPYING: GPLv2 just as the Linux kernel.
+  * Add AUTHORS: only creator for now.
+
+-------------------------------------------------------------------
+Wed Oct 05 03:55:09 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 0~git20161004.f442a71:
+  * 18700-And_Yet_It_Moves: initial fix
+  * 249990-FORCED: initial fix, use 64bit version
+
+-------------------------------------------------------------------
+Wed Oct  5 01:47:08 UTC 2016 - jimmy@boombatower.com
+
+- Initial package.
+

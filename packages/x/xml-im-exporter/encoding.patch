@@ -1,0 +1,23 @@
+From: mvyskocil@suse.com
+Subject: Specify encoding of source files
+
+java7 does expect only ascii by default
+
+---
+ build.xml |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: xml-im-exporter/build.xml
+===================================================================
+--- xml-im-exporter.orig/build.xml
++++ xml-im-exporter/build.xml
+@@ -72,7 +72,8 @@
+     <javac destdir="${build.classes}"
+       debug="${debug}"
+       deprecation="${deprecation}"
+-      optimize="${optimize}" >
++      optimize="${optimize}"
++      encoding="ISO-8859-1" >
+       <src path="${src.dir}/main"/>
+       <src path="${src.dir}/test"/>
+       <classpath refid="classpath" />

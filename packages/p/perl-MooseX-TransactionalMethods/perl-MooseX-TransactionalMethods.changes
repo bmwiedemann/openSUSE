@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:18:30 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Tue Apr 14 18:19:15 UTC 2015 - coolo@suse.com
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-MooseX-TransactionalMethods/Changes
+
+-------------------------------------------------------------------
+Sun Dec 25 16:46:31 UTC 2011 - coolo@suse.com
+
+- initial package 0.008
+    * created by cpanspec 1.78.06
+

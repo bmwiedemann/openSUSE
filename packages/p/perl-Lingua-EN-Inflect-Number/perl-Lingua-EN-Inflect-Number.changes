@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Jul  7 09:03:47 UTC 2015 - coolo@suse.com
+
+- updated to 1.12
+   see /usr/share/doc/packages/perl-Lingua-EN-Inflect-Number/Changes
+
+  1.12 2015-07-04 NEILB
+      - Added [MetaJSON] to dist.ini, so release will include META.json.
+        RT#105629 from ETHER++
+
+-------------------------------------------------------------------
+Mon Apr 13 19:17:02 UTC 2015 - coolo@suse.com
+
+- updated to 1.11
+   see /usr/share/doc/packages/perl-Lingua-EN-Inflect-Number/Changes
+
+-------------------------------------------------------------------
+Fri Jan 13 12:05:22 UTC 2012 - coolo@suse.com
+
+- digged out the right license
+
+-------------------------------------------------------------------
+Mon Jan 17 16:20:38 UTC 2011 - coolo@novell.com
+
+- initial package 1.1
+  * created by cpanspec 1.78.03
+

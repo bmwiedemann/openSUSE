@@ -1,0 +1,104 @@
+From 7259e8c22fb97b1ae80ac4909713e51b293afc4a Mon Sep 17 00:00:00 2001
+From: Josh <questofiranon@gmail.com>
+Date: Sat, 25 May 2019 02:35:01 -0700
+Subject: [PATCH] alsa-mixer: add support for SteelSeries Arctis Pro 2019
+ headset
+
+Signed-off-by: Dave Chiluk <chiluk@ubuntu.com>
+---
+ src/Makefile.am                                                |  6 +++---
+ src/modules/alsa/90-pulseaudio.rules                           | 10 +++++++---
+ ...ut-chat.conf => steelseries-arctis-output-chat-common.conf} |  0
+ ...ut-game.conf => steelseries-arctis-output-game-common.conf} |  0
+ ...usb-audio.conf => steelseries-arctis-common-usb-audio.conf} |  4 ++--
+ 5 files changed, 12 insertions(+), 8 deletions(-)
+ rename src/modules/alsa/mixer/paths/{steelseries-arctis-5-output-chat.conf => steelseries-arctis-output-chat-common.conf} (100%)
+ rename src/modules/alsa/mixer/paths/{steelseries-arctis-5-output-game.conf => steelseries-arctis-output-game-common.conf} (100%)
+ rename src/modules/alsa/mixer/profile-sets/{steelseries-arctis-5-usb-audio.conf => steelseries-arctis-common-usb-audio.conf} (80%)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e3baf587a8a3..3db921a07e1b 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1353,7 +1353,7 @@ dist_alsaprofilesets_DATA = \
+ 		modules/alsa/mixer/profile-sets/native-instruments-korecontroller.conf \
+ 		modules/alsa/mixer/profile-sets/kinect-audio.conf \
+ 		modules/alsa/mixer/profile-sets/sb-omni-surround-5.1.conf \
+-		modules/alsa/mixer/profile-sets/steelseries-arctis-5-usb-audio.conf \
++		modules/alsa/mixer/profile-sets/steelseries-arctis-common-usb-audio.conf \
+ 		modules/alsa/mixer/profile-sets/steelseries-arctis-7-usb-audio.conf \
+ 		modules/alsa/mixer/profile-sets/dell-dock-tb16-usb-audio.conf \
+ 		modules/alsa/mixer/profile-sets/cmedia-high-speed-true-hdaudio.conf
+@@ -1399,8 +1399,8 @@ dist_alsapaths_DATA = \
+ 		modules/alsa/mixer/paths/hdmi-output-5.conf \
+ 		modules/alsa/mixer/paths/hdmi-output-6.conf \
+ 		modules/alsa/mixer/paths/hdmi-output-7.conf \
+-		modules/alsa/mixer/paths/steelseries-arctis-5-output-chat.conf \
+-		modules/alsa/mixer/paths/steelseries-arctis-5-output-game.conf \
++		modules/alsa/mixer/paths/steelseries-arctis-output-chat-common.conf \
++		modules/alsa/mixer/paths/steelseries-arctis-output-game-common.conf \
+ 		modules/alsa/mixer/paths/steelseries-arctis-7-input.conf \
+ 		modules/alsa/mixer/paths/steelseries-arctis-7-output-mono.conf \
+ 		modules/alsa/mixer/paths/steelseries-arctis-7-output-stereo.conf
+diff --git a/src/modules/alsa/90-pulseaudio.rules b/src/modules/alsa/90-pulseaudio.rules
+index d85763917d76..9d34e6dfdd38 100644
+--- a/src/modules/alsa/90-pulseaudio.rules
++++ b/src/modules/alsa/90-pulseaudio.rules
+@@ -109,16 +109,20 @@ ATTRS{idVendor}=="0763", ATTRS{idProduct}=="2012", ENV{PULSE_PROFILE_SET}="maudi
+ ATTRS{idVendor}=="045e", ATTRS{idProduct}=="02bb", ENV{PULSE_PROFILE_SET}="kinect-audio.conf"
+ ATTRS{idVendor}=="041e", ATTRS{idProduct}=="322c", ENV{PULSE_PROFILE_SET}="sb-omni-surround-5.1.conf"
+ ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="4014", ENV{PULSE_PROFILE_SET}="dell-dock-tb16-usb-audio.conf"
+-ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1250", ENV{PULSE_PROFILE_SET}="steelseries-arctis-5-usb-audio.conf"
++
+ 
+ # ID 1038:12ad is for the 2018 refresh of the Arctis 7.
+-# ID 1038:1294 is for Arctis Pro Wireless (which works with the Arctis 7
+-# configuration).
++# ID 1038:1294 is for Arctis Pro Wireless (which works with the Arctis 7 configuration).
+ ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1260", ENV{PULSE_PROFILE_SET}="steelseries-arctis-7-usb-audio.conf"
+ ATTRS{idVendor}=="1038", ATTRS{idProduct}=="12ad", ENV{PULSE_PROFILE_SET}="steelseries-arctis-7-usb-audio.conf"
+ ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1294", ENV{PULSE_PROFILE_SET}="steelseries-arctis-7-usb-audio.conf"
+ ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1730", ENV{PULSE_PROFILE_SET}="steelseries-arctis-7-usb-audio.conf"
+ 
++# ID 1038:1250 is for the Arctis 5
++# ID 1038:1252 is for Arctis Pro 2019 edition
++ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1250", ENV{PULSE_PROFILE_SET}="steelseries-arctis-common-usb-audio.conf"
++ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1252", ENV{PULSE_PROFILE_SET}="steelseries-arctis-common-usb-audio.conf"
++
+ ATTRS{idVendor}=="147a", ATTRS{idProduct}=="e055", ENV{PULSE_PROFILE_SET}="cmedia-high-speed-true-hdaudio.conf"
+ 
+ GOTO="pulseaudio_end"
+diff --git a/src/modules/alsa/mixer/paths/steelseries-arctis-5-output-chat.conf b/src/modules/alsa/mixer/paths/steelseries-arctis-output-chat-common.conf
+similarity index 100%
+rename from src/modules/alsa/mixer/paths/steelseries-arctis-5-output-chat.conf
+rename to src/modules/alsa/mixer/paths/steelseries-arctis-output-chat-common.conf
+diff --git a/src/modules/alsa/mixer/paths/steelseries-arctis-5-output-game.conf b/src/modules/alsa/mixer/paths/steelseries-arctis-output-game-common.conf
+similarity index 100%
+rename from src/modules/alsa/mixer/paths/steelseries-arctis-5-output-game.conf
+rename to src/modules/alsa/mixer/paths/steelseries-arctis-output-game-common.conf
+diff --git a/src/modules/alsa/mixer/profile-sets/steelseries-arctis-5-usb-audio.conf b/src/modules/alsa/mixer/profile-sets/steelseries-arctis-common-usb-audio.conf
+similarity index 80%
+rename from src/modules/alsa/mixer/profile-sets/steelseries-arctis-5-usb-audio.conf
+rename to src/modules/alsa/mixer/profile-sets/steelseries-arctis-common-usb-audio.conf
+index fe353c38f09c..80c33707aea4 100644
+--- a/src/modules/alsa/mixer/profile-sets/steelseries-arctis-5-usb-audio.conf
++++ b/src/modules/alsa/mixer/profile-sets/steelseries-arctis-common-usb-audio.conf
+@@ -6,13 +6,13 @@ description = Chat
+ device-strings = hw:%f,0,0
+ channel-map = left,right
+ paths-input = analog-input-mic
+-paths-output = steelseries-arctis-5-output-chat
++paths-output = steelseries-arctis-output-chat-common
+ 
+ [Mapping analog-game]
+ description = Game
+ device-strings = hw:%f,1,0
+ channel-map = left,right
+-paths-output = steelseries-arctis-5-output-game
++paths-output = steelseries-arctis-output-game-common
+ direction = output
+ 
+ [Profile output:analog-chat+output:analog-game+input:analog-chat]
+-- 
+2.16.4
+

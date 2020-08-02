@@ -1,0 +1,40 @@
+From cb676052272ed4f6f3b901dbc21510fabf742860 Mon Sep 17 00:00:00 2001
+From: Goldwyn Rodrigues <rgoldwyn@suse.com>
+Date: Mon, 22 Apr 2019 09:08:28 -0500
+Subject: [PATCH] apparmor: allow readby and tracedby
+
+Fixes audit errors such as:
+
+type=AVC msg=audit(1550236803.810:143):
+apparmor="DENIED" operation="ptrace" profile="docker-default"
+pid=3181 comm="ps" requested_mask="readby" denied_mask="readby"
+peer="docker-default"
+
+audit(1550236375.918:3): apparmor="DENIED" operation="ptrace"
+profile="docker-default" pid=2267 comm="ps"
+requested_mask="tracedby" denied_mask="tracedby"
+peer="docker-default"
+
+SUSE-Bugs: bsc#1122469
+Signed-off-by: Goldwyn Rodrigues <rgoldwyn@suse.com>
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ components/engine/profiles/apparmor/template.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/components/engine/profiles/apparmor/template.go b/components/engine/profiles/apparmor/template.go
+index 400b3bd50a11..d8db0ee2fb36 100644
+--- a/components/engine/profiles/apparmor/template.go
++++ b/components/engine/profiles/apparmor/template.go
+@@ -44,7 +44,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+ 
+ {{if ge .Version 208095}}
+   # suppress ptrace denials when using 'docker ps' or using 'ps' inside a container
+-  ptrace (trace,read) peer={{.Name}},
++  ptrace (trace,read,tracedby,readby) peer={{.Name}},
+ {{end}}
+ }
+ `
+-- 
+2.24.0
+

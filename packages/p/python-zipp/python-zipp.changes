@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Fri Mar 13 07:52:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop not-removed py2 dependencies
+
+-------------------------------------------------------------------
+Mon Mar  9 12:20:53 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.1.0
+  * #47: ``.open`` now raises ``FileNotFoundError`` and
+    ``IsADirectoryError`` when appropriate.
+  * #44: ``zipp.Path.open()`` now supports a compatible signature
+    as ``pathlib.Path.open()``, accepting text (default) or binary
+    modes and soliciting keyword parameters passed through to
+    ``io.TextIOWrapper`` (encoding, newline, etc). The stream is
+    opened in text-mode by default now. ``open`` no
+    longer accepts ``pwd`` as a positional argument and does not
+    accept the ``force_zip64`` parameter at all. This change is
+    a backward-incompatible change for that single function.
+  * #43: Restored performance of implicit dir computation.
+  * #36: Rebuild package with minimum Python version declared both
+    in package metadata and in the python tag.
+  * #32: For read-only zip files, complexity of ``.exists`` and
+    ``joinpath`` is now constant time instead of ``O(n)``, preventing
+    quadratic time in common use-cases and rendering large
+    zip files unusable for Path. Big thanks to Benjy Weinberger
+    for the bug report and contributed fix (#33).
+
+-------------------------------------------------------------------
+Thu Aug 29 14:07:59 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.6.0
+  * When adding implicit dirs, ensure that ancestral directories 
+    are added and that duplicates are excluded.
+  * The library now relies on more_itertools.
+
+-------------------------------------------------------------------
+Mon Jul 22 11:23:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.2:
+  * #7: Parent of a directory now actually returns the parent.
+
+-------------------------------------------------------------------
+Thu Jun  6 15:51:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to mulitbuild to avoid build cycle
+
+-------------------------------------------------------------------
+Thu May 16 20:56:11 UTC 2019 - ranand@suse.com
+
+- update to 0.5.1
+  * Declared package as backport. 
+
+-------------------------------------------------------------------
+Tue May 14 23:13:22 UTC 2019 - svasudevan@suse.com
+
+- Update to 0.5.0
+  * no changelog found
+  * Added runtime dependencies python-unittest2 and python-contextlib2
+
+-------------------------------------------------------------------
+Mon May  6 08:52:42 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.4.0
+  * #4: Add support for zip files with implied directories.
+
+-------------------------------------------------------------------
+Thu Jan 31 13:15:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by importlib-metadata

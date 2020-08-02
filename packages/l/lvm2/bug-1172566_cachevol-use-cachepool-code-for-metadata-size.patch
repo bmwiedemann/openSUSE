@@ -1,0 +1,56 @@
+By heming.zhao@suse.com
+this patch is based on upstream commit
+```
+commit c08704cee7e34a96fdaa453faf900683283e8691
+Author: David Teigland <teigland@redhat.com>
+Date:   Mon Oct 21 12:13:33 2019 -0500
+
+    cachevol: use cachepool code for metadata size
+    
+    Based on a more detailed calculation, but because of
+    extent size rounding, the final result is about the
+    same.
+```
+
+diff -Nupr a/lib/metadata/cache_manip.c b/lib/metadata/cache_manip.c
+--- a/lib/metadata/cache_manip.c	2020-06-12 09:04:17.474637002 +0800
++++ b/lib/metadata/cache_manip.c	2020-06-12 09:04:28.914578582 +0800
+@@ -184,12 +184,16 @@ void cache_check_for_warns(const struct
+  */
+ static uint64_t _cache_min_metadata_size(uint64_t data_size, uint32_t chunk_size)
+ {
+-	uint64_t min_meta_size;
+-
+-	min_meta_size = data_size / chunk_size;		/* nr_chunks */
+-	min_meta_size *= (DM_BYTES_PER_BLOCK + DM_MAX_HINT_WIDTH + DM_HINT_OVERHEAD_PER_BLOCK);
+-	min_meta_size = (min_meta_size + (SECTOR_SIZE - 1)) >> SECTOR_SHIFT;	/* in sectors */
+-	min_meta_size += DM_TRANSACTION_OVERHEAD * (1024 >> SECTOR_SHIFT);
++	/* Used space for mapping and hints for each cached chunk in bytes
++	 * (matching thin-tools cache_metadata_size.cc) */
++	const uint64_t chunk_overhead = (DM_BYTES_PER_BLOCK + DM_MAX_HINT_WIDTH + DM_HINT_OVERHEAD_PER_BLOCK);
++	const uint64_t transaction_overhead = DM_TRANSACTION_OVERHEAD * 1024; /* 4MiB */
++
++	/* Number of cache chunks we have in caching volume */
++	uint64_t nr_chunks = data_size / chunk_size;
++	/* Minimal size of metadata volume converted back to sectors */
++	uint64_t min_meta_size = (transaction_overhead + nr_chunks * chunk_overhead +
++			(SECTOR_SIZE - 1)) >> SECTOR_SHIFT;
+ 
+ 	return min_meta_size;
+ }
+@@ -1242,14 +1246,7 @@ int cache_vol_set_params(struct cmd_cont
+ 	}
+ 
+ 	if (!meta_size) {
+-		if (pool_lv->size < (128 * ONE_MB_S))
+-			meta_size = 16 * ONE_MB_S;
+-
+-		else if (pool_lv->size < ONE_GB_S)
+-			meta_size = 32 * ONE_MB_S;
+-
+-		else if (pool_lv->size < (128 * ONE_GB_S))
+-			meta_size = 64 * ONE_MB_S;
++		meta_size = _cache_min_metadata_size(pool_lv->size, chunk_size);
+ 
+ 		if (meta_size > (pool_lv->size / 2))
+ 			meta_size = pool_lv->size / 2;

@@ -1,0 +1,268 @@
+Index: alevt-1.6.2/alevt-cap.c
+===================================================================
+--- alevt-1.6.2.orig/alevt-cap.c
++++ alevt-1.6.2/alevt-cap.c
+@@ -217,6 +217,7 @@ main(int argc, char **argv)
+     struct dl_head reqs[2];	// simple linear lists of requests & captures
+     char *progname = NULL;
+     int txtpid = -1;
++    char *outfile = NULL;
+ 
+     setprgname(argv[0]);
+ 
+@@ -302,7 +303,7 @@ main(int argc, char **argv)
+ 	fatal("no pages requested");
+ 
+     // setup device
+-    if (not(vbi = vbi_open(vbi_name, 0, fine_tune, newbttv, progname, txtpid)))
++    if (not(vbi = vbi_open(vbi_name, 0, fine_tune, newbttv, progname, txtpid, outfile)))
+ 	fatal("cannot open %s", vbi_name);
+     vbi_add_handler(vbi, event, reqs); // register event handler
+ 
+Index: alevt-1.6.2/alevt-date.c
+===================================================================
+--- alevt-1.6.2.orig/alevt-date.c
++++ alevt-1.6.2/alevt-date.c
+@@ -149,10 +149,12 @@ option(int argc, char **argv, int *ind,
+ 	if (streq(*arg, opts[i].nam) || streq(*arg, opts[i].altnam))
+ 	{
+ 	    if (opts[i].arg)
++	      {
+ 		if (*ind < argc)
+ 		    *arg = argv[(*ind)++];
+ 		else
+ 		    fatal("option %s requires an argument", *arg);
++	      }
+ 	    return i+1;
+ 	}
+ 
+@@ -176,11 +178,12 @@ main(int argc, char **argv)
+     char *arg;
+     char *progname = NULL;
+     int txtpid = -1;
++    char *outfile = NULL;
+ 
+     setprgname(argv[0]);
+ 
+     ind = 1;
+-    while (opt = option(argc, argv, &ind, &arg))
++    while ((opt = option(argc, argv, &ind, &arg)))
+ 	switch (opt)
+ 	{
+ 	    case 1:	// -set
+@@ -239,7 +242,7 @@ main(int argc, char **argv)
+ 	alarm(timeout);
+     }
+ 
+-    vbi = vbi_open(vbi_name, 0, 1, big_buf, progname, txtpid);	// open device
++    vbi = vbi_open(vbi_name, 0, 1, big_buf, progname, txtpid, outfile);	// open device
+     if (not vbi)
+ 	fatal_ioerror(vbi_name);
+ 
+Index: alevt-1.6.2/alevt.1x.in
+===================================================================
+--- alevt-1.6.2.orig/alevt.1x.in
++++ alevt-1.6.2/alevt.1x.in
+@@ -67,6 +67,15 @@ Selects the character set to use.  Chara
+ in the selected set are replaced by similar looking symbols.
+ (default: latin-1)
+ .TP
++.B \-progname (dvb only)
++Selects the station name to display.
++.TP
++.B \-pid (dvb only)
++Selects the station pid to display.
++.TP
++.B \-outfile (dvb only)
++Specifies a file where the available stations are written.
++.TP
+ .B \-\-help
+ Show summary of options.
+ .TP
+@@ -89,6 +98,10 @@ The
+ options requires a parent window.  So, it must be preceded by a parent
+ or another child window.
+ .PP
++To access the DVB interface, use:
++.IP
++.I alevt -vbi /dev/dvb/adapter0/demux0
++.PP
+ When saving pages
+ .B alevt
+ asks for a format string.  Look at
+Index: alevt-1.6.2/main.c
+===================================================================
+--- alevt-1.6.2.orig/main.c
++++ alevt-1.6.2/main.c
+@@ -24,6 +24,7 @@ static int erc = 1;
+ static int newbttv = -1;
+ static char *progname;
+ static int txtpid = -1;
++static char *outfile;
+ 
+ static void
+ usage(FILE *fp, int exitval)
+@@ -44,8 +45,9 @@ usage(FILE *fp, int exitval)
+ 	    "    -[no]erc\t\t\tenabled\n"
+ 	    "    -[no]bell\t\t\tenabled\n"
+ 	    "    -charset latin-1/2\t\tlatin-1\n"
+-	    "    -progname name\n"
+-	    "    -pid pid\n"
++	    "    -progname <name>\n"
++	    "    -pid <pid>\n"
++	    "    -outfile <path>\n"
+ 	    "\n"
+ 	    "  Order is important!  Each page number\n"
+ 	    "  opens a new window with the previously\n"
+@@ -66,6 +68,8 @@ usage(FILE *fp, int exitval)
+ 	    "  The -progname or -pid option specify\n"
+ 	    "  the program or teletext PID if using\n"
+ 	    "  the DVB interface.\n"
++	    "  The -outfile option specifies a file\n"
++	    "  where the available stations are written\n"
+ 	);
+     exit(exitval);
+ }
+@@ -96,7 +100,7 @@ static struct vtwin *
+ start(int argc, char **argv, struct vtwin *parent, int pgno, int subno)
+ {
+     if (vbi == 0)
+-	vbi = vbi_open(vbi_name, cache_open(), fine_tune, newbttv, progname, txtpid);
++	vbi = vbi_open(vbi_name, cache_open(), fine_tune, newbttv, progname, txtpid, outfile);
+     if (vbi == 0)
+ 	fatal("cannot open %s", vbi_name);
+     if (vbi->cache)
+@@ -138,6 +142,7 @@ option(int argc, char **argv, int *ind,
+ 	{ "-charset", "-latin", 1 },
+ 	{ "-progname", "-pn", 1 },
+ 	{ "-pid", "--pid", 1 },
++	{ "-outfile", "-of", 1 },
+     };
+     int i;
+ 
+@@ -262,6 +267,9 @@ main(int argc, char **argv)
+ 		parent = start(argc, argv, 0, pgno, subno);
+ 		geometry = 0;
+ 		break;
++	    case 21:
++		outfile = arg;
++		break;
+ 	}
+ 
+     if (parent == 0)
+Index: alevt-1.6.2/vbi.c
+===================================================================
+--- alevt-1.6.2.orig/vbi.c
++++ alevt-1.6.2/vbi.c
+@@ -16,7 +16,7 @@
+ #include "lang.h"
+ 
+ 
+-static int vbi_dvb_open(struct vbi *vbi, const char *vbi_name, const char *progname, int txtpid);
++static int vbi_dvb_open(struct vbi *vbi, const char *vbi_name, const char *progname, int txtpid, const char *outfile);
+ static void dvb_handler(struct vbi *vbi, int fd);
+ 
+ #define FAC	(1<<16)		// factor for fix-point arithmetic
+@@ -587,7 +587,7 @@ setup_dev(struct vbi *vbi)
+ 
+ 
+ struct vbi *
+-vbi_open(char *vbi_name, struct cache *ca, int fine_tune, int big_buf, const char *progname, int txtpid)
++vbi_open(char *vbi_name, struct cache *ca, int fine_tune, int big_buf, const char *progname, int txtpid, const char *outfile)
+ {
+     static int inited = 0;
+     struct vbi *vbi;
+@@ -602,7 +602,7 @@ vbi_open(char *vbi_name, struct cache *c
+ 	goto fail1;
+     }
+ 
+-    if (!vbi_dvb_open(vbi, vbi_name, progname, txtpid)) {
++    if (!vbi_dvb_open(vbi, vbi_name, progname, txtpid, outfile)) {
+ 	    vbi->cache = ca;
+ 
+ 	    dl_init(vbi->clients);
+@@ -628,6 +628,18 @@ vbi_open(char *vbi_name, struct cache *c
+ 
+     vbi->cache = ca;
+ 
++    if (outfile) {
++	      FILE * outstr;
++	       outstr = fopen (outfile,"w");
++	       if (outstr!=NULL)
++			{
++			        fputs ("This works only with dvb",outstr);
++				fclose (outstr);
++			}
++    }       
++	    
++
++    
+     dl_init(vbi->clients);
+     vbi->seq = 0;
+     out_of_sync(vbi);
+@@ -853,7 +865,7 @@ static void dvb_handler(struct vbi *vbi,
+ 		memmove(rawbuf, rawbuf + len, rawptr);
+ }
+ 
+-static int vbi_dvb_open(struct vbi *vbi, const char *vbi_name, const char *progname, int txtpid)
++static int vbi_dvb_open(struct vbi *vbi, const char *vbi_name, const char *progname, int txtpid, const char *outfile)
+ {
+ 	struct {
+ 		u_int16_t pmtpid;
+@@ -905,7 +917,7 @@ static int vbi_dvb_open(struct vbi *vbi,
+ 	for (i = 0; i < (unsigned)r; i += 4) {
+ 		if (progcnt >= sizeof(progtbl)/sizeof(progtbl[0])) {
+ 			error("Program table overflow");
+-			goto outerr;
++			break;
+ 		}
+ 		progtbl[progcnt].service_id = (tbl[8 + i] << 8) | tbl[9 + i];
+ 		if (!progtbl[progcnt].service_id)  /* this is the NIT pointer */
+@@ -1012,6 +1024,21 @@ static int vbi_dvb_open(struct vbi *vbi,
+ 		       progtbl[i].txttype, progtbl[i].txtmagazine, progtbl[i].txtpage);
+ 	}
+ 
++
++        if (outfile) {
++		FILE * outstr;
++		outstr = fopen(outfile,"wt");
++		for (i = 0; i < progcnt; i++) {
++                        if (progtbl[i].txtpid != 0x1fff) {	
++				fprintf (outstr,"Provider: %s  ", progtbl[i].service_provider_name);
++				fprintf (outstr,"Sender: \t%s  ", progtbl[i].service_name);
++				fprintf (outstr,"PID: 0x%04x", progtbl[i].txtpid);
++				fputs ("\n",outstr);
++			}
++		}	
++		fclose(outstr);			
++	}
++	
+ 	progp = NULL;
+ 	if (progname) {
+ 		j = strlen(progname);
+Index: alevt-1.6.2/vbi.h
+===================================================================
+--- alevt-1.6.2.orig/vbi.h
++++ alevt-1.6.2/vbi.h
+@@ -51,7 +51,7 @@ struct vbi_client
+ };
+ 
+ struct vbi *vbi_open(char *vbi_dev_name, struct cache *ca, int fine_tune,
+-		     int big_buf, const char *progname, int txtpid);
++		     int big_buf, const char *progname, int txtpid, const char *outfile);
+ void vbi_close(struct vbi *vbi);
+ void vbi_reset(struct vbi *vbi);
+ int vbi_add_handler(struct vbi *vbi, void *handler, void *data);
+Index: alevt-1.6.2/xio.c
+===================================================================
+--- alevt-1.6.2.orig/xio.c
++++ alevt-1.6.2/xio.c
+@@ -379,7 +379,7 @@ xio_title(struct xio_win *xw, char *titl
+ 	return;
+ 
+     strcpy(xw->title, title);
+-    sprintf(buf, "AleVT " VERSION "    %s", xw->title);
++    sprintf(buf, "AleVT-dvb " VERSION "    %s", xw->title);
+     XStoreName(xw->xio->dpy, xw->win, buf);
+     XSetIconName(xw->xio->dpy, xw->win, xw->title);
+ }

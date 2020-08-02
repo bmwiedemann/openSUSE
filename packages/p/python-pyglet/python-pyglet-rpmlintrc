@@ -1,0 +1,6 @@
+# This are needed scripts in datadir
+addFilter('non-executable-script')
+# This are needed scripts in documentation
+addFilter('doc-file-dependency')
+# This is not a devel package
+addFilter('devel-dependency')

@@ -1,0 +1,125 @@
+From f18b0c3402f5e1f7db9d0a42c6e10cfe1f212da3 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 7 Dec 2019 17:54:04 +0100
+Subject: [PATCH] alsa-mixer: handle interface type (CARD,PCM) for mixer
+ element lookups
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-mixer.c       |  2 +-
+ src/modules/alsa/alsa-ucm.c         |  2 +-
+ src/modules/alsa/alsa-util.c        | 18 +++++++++++++++++-
+ src/modules/alsa/alsa-util.h        |  3 ++-
+ src/modules/alsa/module-alsa-card.c |  4 ++--
+ 5 files changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-mixer.c b/src/modules/alsa/alsa-mixer.c
+index ed06f42d86da..094cff817df7 100644
+--- a/src/modules/alsa/alsa-mixer.c
++++ b/src/modules/alsa/alsa-mixer.c
+@@ -1907,7 +1907,7 @@ static int jack_probe(pa_alsa_jack *j, pa_alsa_mapping *mapping, snd_mixer_t *m)
+         j->append_pcm_to_name = false;
+     }
+ 
+-    has_control = pa_alsa_mixer_find(m, j->alsa_name, 0) != NULL;
++    has_control = pa_alsa_mixer_find_card(m, j->alsa_name, 0) != NULL;
+     pa_alsa_jack_set_has_control(j, has_control);
+ 
+     if (j->has_control) {
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index d1ca62d28619..a64505a0c781 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -1796,7 +1796,7 @@ static void ucm_mapping_jack_probe(pa_alsa_mapping *m) {
+             mdev_opened = mdev;
+         }
+ 
+-        has_control = pa_alsa_mixer_find(mixer_handle, dev->jack->alsa_name, 0) != NULL;
++        has_control = pa_alsa_mixer_find_card(mixer_handle, dev->jack->alsa_name, 0) != NULL;
+         pa_alsa_jack_set_has_control(dev->jack, has_control);
+         pa_log_info("UCM jack %s has_control=%d", dev->jack->name, dev->jack->has_control);
+     }
+diff --git a/src/modules/alsa/alsa-util.c b/src/modules/alsa/alsa-util.c
+index 2df2258d85af..08a144782394 100644
+--- a/src/modules/alsa/alsa-util.c
++++ b/src/modules/alsa/alsa-util.c
+@@ -1610,7 +1610,11 @@ bool pa_alsa_may_tsched(bool want) {
+ 
+ #define SND_MIXER_ELEM_PULSEAUDIO (SND_MIXER_ELEM_LAST + 10)
+ 
+-snd_mixer_elem_t *pa_alsa_mixer_find(snd_mixer_t *mixer, const char *name, unsigned int device) {
++static snd_mixer_elem_t *pa_alsa_mixer_find(snd_mixer_t *mixer,
++                                            snd_ctl_elem_iface_t iface,
++                                            const char *name,
++                                            unsigned int index,
++                                            unsigned int device) {
+     snd_mixer_elem_t *elem;
+ 
+     for (elem = snd_mixer_first_elem(mixer); elem; elem = snd_mixer_elem_next(elem)) {
+@@ -1618,8 +1622,12 @@ snd_mixer_elem_t *pa_alsa_mixer_find(snd_mixer_t *mixer, const char *name, unsig
+         if (snd_mixer_elem_get_type(elem) != SND_MIXER_ELEM_PULSEAUDIO)
+             continue;
+         helem = snd_mixer_elem_get_private(elem);
++        if (snd_hctl_elem_get_interface(helem) != iface)
++            continue;
+         if (!pa_streq(snd_hctl_elem_get_name(helem), name))
+             continue;
++        if (snd_hctl_elem_get_index(helem) != index)
++            continue;
+         if (snd_hctl_elem_get_device(helem) != device)
+             continue;
+         return elem;
+@@ -1627,6 +1635,14 @@ snd_mixer_elem_t *pa_alsa_mixer_find(snd_mixer_t *mixer, const char *name, unsig
+     return NULL;
+ }
+ 
++snd_mixer_elem_t *pa_alsa_mixer_find_card(snd_mixer_t *mixer, const char *name, unsigned int device) {
++    return pa_alsa_mixer_find(mixer, SND_CTL_ELEM_IFACE_CARD, name, 0, device);
++}
++
++snd_mixer_elem_t *pa_alsa_mixer_find_pcm(snd_mixer_t *mixer, const char *name, unsigned int device) {
++    return pa_alsa_mixer_find(mixer, SND_CTL_ELEM_IFACE_PCM, name, 0, device);
++}
++
+ static int mixer_class_compare(const snd_mixer_elem_t *c1, const snd_mixer_elem_t *c2)
+ {
+     /* Dummy compare function */
+diff --git a/src/modules/alsa/alsa-util.h b/src/modules/alsa/alsa-util.h
+index 4ceaa06ee480..ceca48809400 100644
+--- a/src/modules/alsa/alsa-util.h
++++ b/src/modules/alsa/alsa-util.h
+@@ -141,7 +141,8 @@ const char* pa_alsa_strerror(int errnum);
+ 
+ bool pa_alsa_may_tsched(bool want);
+ 
+-snd_mixer_elem_t *pa_alsa_mixer_find(snd_mixer_t *mixer, const char *name, unsigned int device);
++snd_mixer_elem_t *pa_alsa_mixer_find_card(snd_mixer_t *mixer, const char *name, unsigned int device);
++snd_mixer_elem_t *pa_alsa_mixer_find_pcm(snd_mixer_t *mixer, const char *name, unsigned int device);
+ 
+ snd_mixer_t *pa_alsa_open_mixer(int alsa_card_index, char **ctl_device);
+ 
+diff --git a/src/modules/alsa/module-alsa-card.c b/src/modules/alsa/module-alsa-card.c
+index be260e4badab..ba7a19a38983 100644
+--- a/src/modules/alsa/module-alsa-card.c
++++ b/src/modules/alsa/module-alsa-card.c
+@@ -588,7 +588,7 @@ static void init_eld_ctls(struct userdata *u) {
+         if (device < 0)
+             continue;
+ 
+-        melem = pa_alsa_mixer_find(u->mixer_handle, "ELD", device);
++        melem = pa_alsa_mixer_find_pcm(u->mixer_handle, "ELD", device);
+         if (melem) {
+             snd_mixer_elem_set_callback(melem, hdmi_eld_changed);
+             snd_mixer_elem_set_callback_private(melem, u);
+@@ -635,7 +635,7 @@ static void init_jacks(struct userdata *u) {
+     u->mixer_handle = pa_alsa_open_mixer(u->alsa_card_index, NULL);
+     if (u->mixer_handle && pa_alsa_fdlist_set_handle(u->mixer_fdl, u->mixer_handle, NULL, u->core->mainloop) >= 0) {
+         PA_HASHMAP_FOREACH(jack, u->jacks, state) {
+-            jack->melem = pa_alsa_mixer_find(u->mixer_handle, jack->alsa_name, 0);
++            jack->melem = pa_alsa_mixer_find_card(u->mixer_handle, jack->alsa_name, 0);
+             if (!jack->melem) {
+                 pa_log_warn("Jack '%s' seems to have disappeared.", jack->alsa_name);
+                 pa_alsa_jack_set_has_control(jack, false);
+-- 
+2.16.4
+

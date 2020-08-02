@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Jul 30 19:20:22 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-qlogic_sanbox
+
+-------------------------------------------------------------------
+Fri Mar  8 10:08:53 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.3 (thanks to Christian Fertig):
+  + added configurable warning and critical options for sensor 4
+    (the CPU sensor)
+  + added explanation for --filename option in help text
+
+-------------------------------------------------------------------
+Wed Jan 23 10:28:10 UTC 2013 - lars@linux-schulserver.de
+
+- license update following SPDX format
+
+-------------------------------------------------------------------
+Tue Jun 12 12:08:35 UTC 2012 - lars@linux-schulserver.de
+
+- increase the temperature warnings for sensor 4 to 70/75 - looks 
+  more useful (and shown in manual, too)
+
+-------------------------------------------------------------------
+Wed Jun  6 20:47:18 CEST 2012 - ro@suse.de
+
+- temp sensor 4 (only with firmware 8.x) seems to be
+  cpu-temperature, use special warn and crit levels
+
+-------------------------------------------------------------------
+Tue Jun  5 01:52:56 CEST 2012 - ro@suse.de
+
+- specify timeout also for snmp-session 
+
+-------------------------------------------------------------------
+Tue Jun  5 01:33:11 CEST 2012 - ro@suse.de
+
+- add maxmsgsize, more useful error output 
+
+-------------------------------------------------------------------
+Sat May  5 17:11:23 UTC 2012 - lars@linux-schulserver.de
+
+- initial version
+

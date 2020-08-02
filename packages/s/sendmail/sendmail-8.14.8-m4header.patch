@@ -1,0 +1,18 @@
+---
+ devtools/M4/header.m4 |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- devtools/M4/header.m4
++++ devtools/M4/header.m4	2016-04-14 07:36:39.329213548 +0000
+@@ -31,7 +31,11 @@ define(`confSHAREDLIB_EXT', `.so')
+ define(`confSITECONFIG', `site.config')
+ define(`confBUILDBIN', `${SRCDIR}/devtools/bin')
+ define(`confRANLIB', `echo')
++define(`confSHAREDLIB_EXT', `.so')
+ define(`PUSHDIVERT', `pushdef(`__D__', divnum)divert($1)')
+ define(`POPDIVERT', `divert(__D__)popdef(`__D__')')
+ define(`APPENDDEF', `define(`$1', ifdef(`$1', `$1 $2', `$2'))')
+ define(`PREPENDDEF', `define(`$1', ifdef(`$1', `$2 $1', `$2'))')
++define(`REPLACEDEF', `define(`_$1', `esyscmd(`x='$1`;echo -n ${x//$2/$3}')')dnl
++define(`$1', _$1)dnl
++undefine(`_$1')')

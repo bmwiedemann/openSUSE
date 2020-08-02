@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Mon Apr  2 08:46:28 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and SUSE-LDPL-2.0
+  SPDX format
+
+-------------------------------------------------------------------
+Sat Sep 17 20:30:33 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Jan 12 14:42:23 CET 2009 - pgajdos@suse.cz
+
+- modified LSL contact information in the nag2.pdf [bnc#465174]
+
+-------------------------------------------------------------------
+Thu Nov  6 15:40:59 CET 2008 - ro@suse.de
+
+- drop nosource 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:53 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Apr 26 14:35:33 CEST 2005 - ro@suse.de
+
+- use NoSource 
+
+-------------------------------------------------------------------
+Fri Apr 16 11:35:19 CEST 2004 - ro@suse.de
+
+- gain control over version number
+
+-------------------------------------------------------------------
+Mon Feb  2 16:36:05 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuilt in specfile
+
+-------------------------------------------------------------------
+Wed May 21 15:40:11 CEST 2003 - coolo@suse.de
+
+- using %doc
+
+-------------------------------------------------------------------
+Mon Feb 10 15:15:56 CET 2003 - ro@suse.de
+
+- removed index.html (no longer used) (#23511) 
+
+-------------------------------------------------------------------
+Mon Feb 25 14:54:50 CET 2002 - ro@suse.de
+
+- install index.html as 644 
+
+-------------------------------------------------------------------
+Fri Sep 14 12:31:55 CEST 2001 - adrian@suse.de
+
+- move susehelp conf files to susehelp
+
+-------------------------------------------------------------------
+Thu May 10 17:20:18 CEST 2001 - utuerk@suse.de
+
+- fixed susehelp conf-files
+
+-------------------------------------------------------------------
+Mon May  7 18:30:44 CEST 2001 - ro@suse.de
+
+- added first cut for susehelp conf-files 
+
+-------------------------------------------------------------------
+Mon May  7 17:45:36 CEST 2001 - ro@suse.de
+
+- major update, use pdf's only 
+
+-------------------------------------------------------------------
+Fri Apr 20 14:58:47 CEST 2001 - ro@suse.de
+
+- needs xf86 to build for fig2dev 
+
+-------------------------------------------------------------------
+Sat Dec  9 17:44:58 MET 2000 - nashif@suse.de
+
+- re-sorted (typo)
+
+-------------------------------------------------------------------
+Mon Sep 25 15:20:06 CEST 2000 - ro@suse.de
+
+- sorted 
+
+-------------------------------------------------------------------
+Thu Sep 14 11:57:52 CEST 2000 - ro@suse.de
+
+- fix if built on alpha 
+
+-------------------------------------------------------------------
+Mon Jun 19 02:01:00 CEST 2000 - ro@suse.de
+
+- specfile fix 
+
+-------------------------------------------------------------------
+Sun Jun 18 23:50:44 CEST 2000 - ro@suse.de
+
+- moved to /usr/share/doc 
+
+-------------------------------------------------------------------
+Tue Nov  2 19:42:49 MET 1999 - kukuk@suse.de
+
+- Update install-guide to 3.2
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jun  8 16:06:52 MEST 1999 - bs@suse.de
+
+- made package "noarch"
+
+
+-------------------------------------------------------------------
+Sat Feb 28 15:25:47 MET 1998 - bs@suse.de
+
+- deleted texhash stuff (done by tetex package now)
+
+-------------------------------------------------------------------
+Tue Nov 18 17:37:49 MET 1997 - ro@suse.de
+
+- ready for autobuild
+

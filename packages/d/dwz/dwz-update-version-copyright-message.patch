@@ -1,0 +1,294 @@
+Update --version copyright message
+
+[ This is a backport of master commit dda7184. Output of
+contrib/gen-copyright-years.sh and dwz --version in this log message have been
+updated accordingly. ]
+
+In commit 9a663b4 "Update copyright" we've updated copyright in the sources,
+but not in the --version copyright message.
+
+Update the --version copyright message, using new script
+contrib/gen-copyright-years.sh that extracts the copyright years from the
+source files, and generates a file COPYRIGHT_YEARS containing define flags:
+...
+-DFSF_YEARS='"1992-2017"'
+-DRH_YEARS='"2001-2018"'
+-DSUSE_YEARS='"2019"'
+...
+resulting in:
+...
+$ dwz --version
+dwz version 0.13
+Copyright (C) 2001-2018 Red Hat, Inc.
+Copyright (C) 1992-2017 Free Software Foundation, Inc.
+Copyright (C) 2019 SUSE LLC.
+...
+
+2019-08-15  Tom de Vries  <tdevries@suse.de>
+
+	* contrib/copyright-lines.awk: New file.
+	* contrib/gen-copyright-years.sh: New file.
+	* COPYRIGHT_YEARS: Generate.
+	* Makefile (override CFLAGS +=, dwz-for-test): Add COPYRIGHT_YEARS
+	defines.
+	* dwz.c (version): Update copyright message using COPYRIGHT_YEARS
+	defines.
+
+---
+ COPYRIGHT_YEARS                |   3 +
+ Makefile                       |   6 +-
+ contrib/copyright-lines.awk    |  27 +++++++
+ contrib/gen-copyright-years.sh | 162 +++++++++++++++++++++++++++++++++++++++++
+ dwz.c                          |   5 +-
+ 5 files changed, 199 insertions(+), 4 deletions(-)
+
+diff --git a/COPYRIGHT_YEARS b/COPYRIGHT_YEARS
+new file mode 100644
+index 0000000..1dc95a5
+--- /dev/null
++++ b/COPYRIGHT_YEARS
+@@ -0,0 +1,3 @@
++-DFSF_YEARS='"1992-2017"'
++-DRH_YEARS='"2001-2018"'
++-DSUSE_YEARS='"2019"'
+diff --git a/Makefile b/Makefile
+index 7e281e5..c945c9d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,7 +5,8 @@ srcdir=$(shell pwd)
+ endif
+ CFLAGS = -O2 -g
+ DWZ_VERSION := $(shell cat $(srcdir)/VERSION)
+-override CFLAGS += -Wall -W -D_FILE_OFFSET_BITS=64 -DDWZ_VERSION='"$(DWZ_VERSION)"'
++override CFLAGS += -Wall -W -D_FILE_OFFSET_BITS=64 \
++	-DDWZ_VERSION='"$(DWZ_VERSION)"' $(shell cat $(srcdir)/COPYRIGHT_YEARS)
+ prefix = /usr
+ exec_prefix = $(prefix)
+ bindir = $(exec_prefix)/bin
+@@ -52,7 +53,8 @@ DWZ_TEST_SOURCES := $(patsubst %.o,%-for-test.c,$(OBJECTS))
+ 
+ dwz-for-test: $(DWZ_TEST_SOURCES)
+ 	$(CC) $(DWZ_TEST_SOURCES) -O2 -g -lelf -o $@ -Wall -W -DDEVEL \
+-	  -D_FILE_OFFSET_BITS=64 -DDWZ_VERSION='"for-test"' -I$(srcdir)
++	  -D_FILE_OFFSET_BITS=64 -DDWZ_VERSION='"for-test"' -I$(srcdir) \
++	  $(shell cat $(srcdir)/COPYRIGHT_YEARS)
+ 
+ min:
+ 	$(CC) $(TEST_SRC)/min.c $(TEST_SRC)/min-2.c -o $@ -g
+diff --git a/contrib/copyright-lines.awk b/contrib/copyright-lines.awk
+new file mode 100644
+index 0000000..b031c50
+--- /dev/null
++++ b/contrib/copyright-lines.awk
+@@ -0,0 +1,27 @@
++BEGIN {
++    start=0
++}
++
++/Copyright \(C\).*[.]/ {
++    print
++    next
++}
++
++/Copyright \(C\)/ {
++    start=1
++    printf $0
++    next
++}
++
++/[.]/ {
++    if (start == 0)
++	next
++    print
++    start=0
++}
++
++// {
++    if (start == 0)
++	next
++    printf $0
++}
+diff --git a/contrib/gen-copyright-years.sh b/contrib/gen-copyright-years.sh
+new file mode 100755
+index 0000000..1ef6f3f
+--- /dev/null
++++ b/contrib/gen-copyright-years.sh
+@@ -0,0 +1,162 @@
++#!/bin/bash
++
++this=$(basename $0)
++
++max ()
++{
++    local a
++    a=$1
++    local b
++    b=$2
++
++    if [ "$a" = "" ]; then
++	echo "$b"
++	return
++    elif [ "$b" = "" ]; then
++	echo "$a"
++	return
++    fi
++
++    if [ $a -gt $b ]; then
++        echo "$a"
++    else
++        echo "$b"
++    fi
++}
++
++min ()
++{
++    local a
++    a="$1"
++    local b
++    b="$2"
++
++    if [ "$a" = "" ]; then
++	echo "$b"
++	return
++    elif [ "$b" = "" ]; then
++	echo "$a"
++	return
++    fi
++
++    if [ $a -lt $b ]; then
++        echo "$a"
++    else
++        echo "$b"
++    fi
++}
++
++print_range () {
++    local a
++    a="$1"
++    local b
++    b="$2"
++
++    if [ "$a" = "$b" ]; then
++	echo "$a"
++	return
++    fi
++    echo "$a-$b"
++}
++
++process_line ()
++{
++    local line
++    line="$1"
++
++    fsf=false
++    rh=false
++    suse=false;
++
++    if echo "$line" \
++	    | grep -q "Free Software Foundation, Inc\."; then
++	fsf=true
++	who=fsf
++	line=$(echo "$line" \
++		   | sed 's/Free Software Foundation, Inc\.//')
++    elif echo "$line" \
++	    | grep -q "Red Hat, Inc\."; then
++	rh=true
++	who=rh
++	line=$(echo "$line" \
++		   | sed 's/Red Hat, Inc\.//')
++    elif echo "$line" \
++	    | grep -q "SUSE LLC\."; then
++	suse=true
++	who=suse
++	line=$(echo "$line" \
++		   | sed 's/SUSE LLC\.//')
++    else
++	echo "error: unknown copyright: $line"
++	exit 1
++    fi
++
++    line=$(echo "$line" \
++	       | sed 's/[,-]/ /g')
++    max_year=$(echo "$line" \
++		   | sed 's/ /\n/g' \
++		   | grep -v '^$' \
++		   | sort -n -r \
++		   | head -n 1)
++    min_year=$(echo "$line" \
++		   | sed 's/ /\n/g' \
++		   | grep -v '^$' \
++		   | sort -n \
++		   | head -n 1)
++
++    if $fsf; then
++	fsf_max=$(max "$fsf_max" "$max_year")
++	fsf_min=$(min "$fsf_min" "$min_year")
++    elif $rh; then
++	rh_max=$(max "$rh_max" "$max_year")
++	rh_min=$(min "$rh_min" "$min_year")
++    elif $suse; then
++	suse_max=$(max "$suse_max" "$max_year")
++	suse_min=$(min "$suse_min" "$min_year")
++    fi
++}
++
++main ()
++{
++    if ! git status --ignored 2>&1 \
++	   | grep -q "nothing to commit, working tree clean"; then
++	echo "Git tree not clean"
++	exit 1
++    fi
++
++    local tmp
++    tmp=$(mktemp)
++
++    for f in *.c *.h *.def; do
++	if ! grep -q "Copyright (C)" $f; then
++	    echo "error: found file without copyright marker: $f"
++	    exit 1
++	fi
++
++	echo processing file: $f
++
++	grep -v '"' $f \
++	    | awk -f contrib/copyright-lines.awk \
++		  > $tmp
++
++	while read line; do
++	    line=$(echo "$line" \
++		       | sed 's/  */ /g')
++	    line=$(echo "$line" \
++		       | sed 's/.*Copyright (C) *//')
++	    echo "Processing line: $line"
++	    process_line "$line"
++	done < $tmp
++    done
++
++    rm -f $tmp
++
++    echo "-DFSF_YEARS='\"$(print_range $fsf_min $fsf_max)\"'" \
++	 > COPYRIGHT_YEARS
++    echo "-DRH_YEARS='\"$(print_range $rh_min $rh_max)\"'" \
++	 >> COPYRIGHT_YEARS
++    echo "-DSUSE_YEARS='\"$(print_range $suse_min $suse_max)\"'" \
++	 >> COPYRIGHT_YEARS
++}
++
++main "$@"
+diff --git a/dwz.c b/dwz.c
+index 266f56d..727314f 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -12395,8 +12395,9 @@ version (void)
+ {
+   fprintf (stderr,
+ 	   "dwz version " DWZ_VERSION "\n"
+-	   "Copyright (C) 2001-2012 Red Hat, Inc.\n"
+-	   "Copyright (C) 2003 Free Software Foundation, Inc.\n"
++	   "Copyright (C) " RH_YEARS " Red Hat, Inc.\n"
++	   "Copyright (C) " FSF_YEARS " Free Software Foundation, Inc.\n"
++	   "Copyright (C) " SUSE_YEARS " SUSE LLC.\n"
+ 	   "This program is free software; you may redistribute it under the terms of\n"
+ 	   "the GNU General Public License version 3 or (at your option) any later version.\n"
+ 	   "This program has absolutely no warranty.\n");

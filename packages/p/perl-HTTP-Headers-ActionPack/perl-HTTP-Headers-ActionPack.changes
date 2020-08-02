@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Wed Aug 26 02:48:51 UTC 2015 - ncutler@suse.com
+
+- add cpanspec.yml so Plack build dependency survives cpanspec -f 
+
+-------------------------------------------------------------------
+Sat Aug 22 06:54:18 UTC 2015 - ncutler@suse.com
+
+- t/302-content-negotiation-charset.t started failing strangely:
+    + "All 5 subtests passed" (but there are more than 5 subtests)
+    + Non-zero wait status: 11
+    + Parse errors: No plan found in TAP output
+    + fails only in openSUSE 13.2, but not consistently - sometimes
+      x86_64 succeeds and i586 fails, other times this is reversed
+    + test suite runs fine on my openSUSE 13.2 workstation
+- add Plack build dependency
+
+-------------------------------------------------------------------
+Sun May 25 17:15:18 UTC 2014 - ncutler@suse.com
+
+- taking over
+- checked license
+- initial package 0.09
+    * created by cpanspec 1.78.07
+

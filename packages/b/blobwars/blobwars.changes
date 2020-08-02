@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Thu Jul 20 09:08:53 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort file list to fix build-compare (boo#1041090)
+
+-------------------------------------------------------------------
+Wed Nov 25 17:17:48 UTC 2015 - nemysis@openSUSE.org
+
+- Update to 2.00, announce message:
+
+* Changed to SDL 2.0. This also allows the window to be scaled to an arbitrary
+  size, and doesn't change the desktop resolution anymore when going to
+  fullscreen.
+* The joystick/gamepad can now also be used in the menus and on the hub.
+* Updated credits and copyright notices.
+* Added stereo to the sound effects.
+* Cleaned up some graphics.
+* Fixed the machinegun sound.
+* Fixed the behaviour of grenades.
+* Many small fixes.
+
+- Remove icons blobwars-icons.tar, use supplied
+- Change BuildRequires, changed by Upstream for SDL2
+- Change sed, use Makefile instead of makefile, changed by Upstream
+
+-------------------------------------------------------------------
+Sat Jun 27 14:44:52 UTC 2015 - nemysis@gmx.ch
+
+- Modernize spec
+- Use sed instead of simple patches
+- Remove patches blobwars-1.19-makefile.patch, blobwars-1.05-debian.patch,
+  blobwars-1.19-check-chdir-ret.patch, blobwars-1.14-as_needed.patch
+- Add patch blobwars-icons_blobwars.desktop.patch
+- Change Source0 to use Web URL
+- Add icons, use blobwars-icons.tar
+- Use %{name} instead of blobwars
+- Add BuildRequires for pkgconfig
+- Use check for openSUSE %if 0%{?suse_version}
+- Use BuildRequires pkgconfig() instead of devel packages
+- Remove Recommends for blobwars-lang = %{version}, because
+  is default installed
+- Change Description
+- Use chmod 0644 makefile* instead of chmod a-x src/* doc/*
+- Add sed, Fix paths and libraries
+- Add sed, Fix pak
+
+-------------------------------------------------------------------
+Mon Oct  6 19:31:08 UTC 2014 - dimstar@opensuse.org
+
+- Add bobwars.appdata.xml to the package for software centers.
+
+-------------------------------------------------------------------
+Wed Mar 27 20:15:23 UTC 2013 - joop.boonen@opensuse.org
+
+- Updated the License
+
+-------------------------------------------------------------------
+Sat May  5 12:37:39 UTC 2012 - reddwarf@opensuse.org
+
+- Make it start (bnc#760845)
+
+-------------------------------------------------------------------
+Sat Jul  2 16:56:34 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Tue May  3 17:24:48 UTC 2011 - claes.backstrom@opensuse.org
+
+- New upstream release 1.19
+  * Fixed medal support.
+  * Corrected the credits for the song Herbs from Ambick, which 
+    is a modified version of Claustrophobia from LizardKing.
+- Respin of makefile patch and use patch from debian
+- Add new check-chdir patch
+- Removed patch for desktop file fixed upstream
+- Removed build requirement of licenses
+
+-------------------------------------------------------------------
+Sat Apr  2 17:45:12 UTC 2011 - toddrme2178@gmail.com
+
+- New upstream release 1.18
+  * Updated Catalan and Dutch translations.
+  * Minor spelling errors fixed.
+  * Moved desktop entry from Applicaitons to ArcadeGame section.
+  * Perform a sanitiy check when loading keyboard.cfg.
+  * Allow the game to run without music and sounds.
+  * Fixed bug preventing long messages to be seen.
+  * Briefly show music credits at the start of a level.
+  * Fixed bugs found by Valgrind and Cppcheck.
+  * Prevent the player from getting the JetPack too early.
+  * Added Free music and sound effects.
+  * Added exit screen.
+- New upstream release 1.17
+  * Add medal support.
+- Removed separate music tarball since music is now included
+- Remove build tests for obsolete openSUSE versions
+- Respin of makefile patchs
+- Moved to Amusements/Games/Arcade based on upstream spec file
+
+-------------------------------------------------------------------
+Sun Sep 13 13:53:26 UTC 2009 - cmorve69@yahoo.es
+
+- Readd missing icons
+- Patch to compile with --as-needed
+
+-------------------------------------------------------------------
+Wed Aug 12 20:50:16 UTC 2009 - claes.backstrom@fsfe.org
+
+- New upstream release 1.14
+  * This update fixes some issues with loading missions and when 
+    changing or restarting a level when holding special items, 
+    such as grappling hooks. 
+- Removed upstreamed blobwars-1.11-es.patch and
+  blobwars-1.11-es-title.patch
+- Removed Autoreqprov 
+- Respin of makefile patch
+- Added SUSE_ASNEEDED=0 to get it to build
+
+-------------------------------------------------------------------
+Sat Apr 11 16:43:27 CEST 2009 - claes.backstrom@fsfe.orrg
+
+- Remove nonfree sounds and music
+- Update to 1.11
+
+-------------------------------------------------------------------
+Thu Nov 22 00:03:00 CET 2007 - claes.backstrom@fsfe.org
+
+- Initial package built from Fedora package (1.07-2)
+

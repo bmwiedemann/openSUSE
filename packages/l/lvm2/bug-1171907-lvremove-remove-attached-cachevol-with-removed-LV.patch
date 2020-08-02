@@ -1,0 +1,41 @@
+change this patch
+from: if (!lv_detach_cache_vol(lv, 0)) {
+to  : if (!lv_detach_cache_vol(lv)) {
+by heming.zhao@suse.com
+
+---
+From 56aadd7fe2a1d24043ea9d06543c29317ac1cc58 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Tue, 24 Sep 2019 13:46:40 -0500
+Subject: [PATCH] lvremove: remove attached cachevol with removed LV
+
+When an LV is removed that has an attached cachevol,
+also remove the cachevol LV.
+---
+ lib/metadata/lv_manip.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/lib/metadata/lv_manip.c b/lib/metadata/lv_manip.c
+index 79e3d15..f404555 100644
+--- a/lib/metadata/lv_manip.c
++++ b/lib/metadata/lv_manip.c
+@@ -6283,10 +6283,16 @@ int lv_remove_single(struct cmd_context *cmd, struct logical_volume *lv,
+ 		return_0;
+ 
+ 	if (lv_is_cache(lv) && lv_is_cache_vol(first_seg(lv)->pool_lv)) {
++		struct logical_volume *cachevol_lv = first_seg(lv)->pool_lv;
++
+ 		if (!lv_detach_cache_vol(lv)) {
+ 			log_error("Failed to detach cache from %s", display_lvname(lv));
+ 			return 0;
+ 		}
++		if (!lv_remove_single(cmd, cachevol_lv, force, suppress_remove_message)) {
++			log_error("Failed to remove cachevol %s.", display_lvname(cachevol_lv));
++			return 0;
++		}
+ 	}
+ 
+ 	/* FIXME Ensure not referred to by another existing LVs */
+-- 
+1.8.3.1
+

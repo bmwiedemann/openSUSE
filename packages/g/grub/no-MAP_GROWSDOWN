@@ -1,0 +1,14 @@
+--- grub-0.97/grub/asmstub.c.orig	2011-09-12 12:02:32.000000000 +0200
++++ grub-0.97/grub/asmstub.c	2011-09-26 16:55:51.000000000 +0200
+@@ -145,9 +145,9 @@ grub_stage2 (void)
+ 
+   assert (grub_scratch_mem == 0);
+ #ifdef MAP_32BIT
+-#define MY_MAP_SET MAP_PRIVATE | MAP_GROWSDOWN | MAP_ANONYMOUS | MAP_32BIT
++#define MY_MAP_SET MAP_PRIVATE | MAP_ANONYMOUS | MAP_32BIT
+ #else
+-#define MY_MAP_SET MAP_PRIVATE | MAP_GROWSDOWN | MAP_ANONYMOUS
++#define MY_MAP_SET MAP_PRIVATE | MAP_ANONYMOUS
+ #endif
+   scratch = mmap(NULL,
+                  0x100000 + EXTENDED_MEMSIZE + 15,

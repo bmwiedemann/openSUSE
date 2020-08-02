@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Mon Apr 27 06:29:53 UTC 2020 - tuukka.pasanen@ilmi.fi
+
+- Update to version 0.0~git.20200426T084008~b81818b2:
+  * Accommodate PHP 7.4 changes to certain "preg_match_all()" calls
+  * Make "arc <workflow> --help" work again for workflows which haven't updated yet
+  * Allow HTTPFuture callers to disable processing of "Content-Encoding" response headers
+  * If the Conduit server asserts it has the "gzip" capability, compress requests
+  * If the Conduit client supports gzip, make calls with "Accept-Encoding: gzip"
+  * In "phutil_loggable_string()", encode every byte above 0x7F
+  * Only inject legacy Arcanist workflows into "help" if run from the context of an Arcanist runtime
+  * Update "arc paste" for Toolsets
+  * Crudely bridge legacy workflows into "arc help"
+  * Remove "backout", "close", "flag", "start", "stop", "time", and "revert" workflows
+  * Upgrade (most) Differential API callsites to "differential.revision.search"
+  * Restore "%d" support to "tsprintf()"
+  * Upgrade "arc download" to Toolsets
+  * Update "arc call-conduit" for Toolsets
+  * Update "arc amend" for Toolsets
+  * Add a "SymbolEngine" to support top-level ref resolution by symbol
+  * Add some support code for printing refs to stdout
+  * Add ref lookup for username symbols
+  * Add a "RevisionSymbolRef", revision commit messages, and make "--explore" recursive
+  * Add a "CommitSymbolRef" for resolving symbolic commits into stable commit hashes
+  * Add a mode to "ExecFuture" that makes "resolvex()" semantics the default
+  * Allow "loadHardpoints()" to accept a single ref and/or a single hardpoint
+  * Remove obsolete definitions of "defineHardpoints()" in older Ref objects
+  * Update "feature", "branch", and "bookmark" flows to report properly in "arc help"
+  * Port "arc prompts" from wilds and fix a path issue in shell completion
+  * Restore "arc alias" shell aliases
+  * Remove "RefQuery" and all "HardpointLoader" code
+  * Reroute all RefQuery callers to HardpointEngine
+  * Bring "pro" browse queries from modern hardpoint code
+  * Bring a "pro" WorkingCopyState ref to "master"
+  * Introduce "arc inspect" and some of the new ref/hardpoint classes
+  * Rename "getWorkingCopy()" to "getWorkingCopyIdentity()" in Arcanist
+  * Trivially update "arc branch/feature" and "arc browse" for Toolsets
+  * Revert "Compress requests from the Conduit client to Phabricator"
+  * Compress requests from the Conduit client to Phabricator
+  * Remove onboard future bulk-resolution from ConduitEngine
+  * Add new "Hardpoint" classes to support request parallelization
+  * Update the "WorkingCopy" API and create a fallback "Filesystem" working copy
+  * Fix improper XHPAST parsing of namespace grammar like "use x as private;"
+  * Fix XHPAST parsing of variadic calls
+  * Update XHPAST "expect" test blocks to the new stable, human-readable format
+  * Make XHPAST unit test "expect" blocks stable and human-readable
+  * Remove duplication of XHPAST version in PHP and C code
+  * Revert xhpast changes that impacted builds under Bison 2.3
+  * Allow "phage" to print execution status on SIGINT
+  * Move Phage to FuturePool
+  * Introduce "FuturePool" to make it easier to manage an ongoing pool of futures
+  * Update some ancient "set X=Y" environment code for new Windows execution without a shell
+  * Make Windows escaping preserve "%" symbols in arguments
+  * Fix error behavior of "arc version" when it encounters a library which is not a working copy
+  * Fix three Windows subprocess issues
+  * Fix two issues with Future key selection inside FutureIterator
+  * Integrate "ServiceProfiler" into the base "Future"
+  * Make "FutureIterator" queue management more formal
+  * Make "exception" on Future a private property
+  * Make the "result" property on Future private
+  * Resolve all futures inside FutureIterator
+  * Remove the "timeout" parameter from "Future->resolve()"
+  * Run ls-files from the root of the directory
+  * Treat all PHP language-level errors as exceptions by default
+  * Switch file uploader in "arc diff" to use ConduitEngine
+  * Use a named remote and branches for staging to help git-lfs
+  * Remove the "preg_quote()" lint rule and update the "__CLASS__" lint rule
+  * Fix an issue where "arc" may fail on startup when trying to read older "default" config
+  * When "ArcanistRuntime" exits with a nonzero exit code, emit that exit code
+  * Update "arc upload" for Toolsets
+  * Improve error handling in ArcanistRuntime when failing to load libraries
+  * Update Phage for toolsets and restore library loading behaviors
+  * Fix two "implode()" order issues arising from wilds/experimental collapse
+  * Port "arc upgrade" to Toolsets
+  * Remove obscure features no longer supported by Toolsets from "classic" Arcanist
+  * Restore old expanded include path rules for workflows which fall through
+  * Require "--" as an argument terminator when running noninteractively
+  * Port "arc weld" and "arc anoid" to Toolsets workflows, plus minor fixes
+  * Port "arc shell-complete" to Toolsets
+  * Update "arc alias" to modern workflows
+  * Port "arc version" to Toolsets
+  * Port "arc liberate" to Toolsets
+  * Port "arc help" to Toolsets
+  * Collapse Arcanist toolsets from "wilds" into "master", as an overlay layer
+  * Merge utility/support changes from "wilds" to "master"
+  * Don't depend on "XMLWriter" to load the lint renderer class tree
+  * Merge the remainder of the "experimental" branch
+  * Merge Arcanist lint changes from "experimental" branch
+  * Merge "--draft" flag and related changes from "experimental" to "master"
+  * Make "arcanist/" unit tests pass
+  * Merge "phage" from "experimental"
+  * Fully merge "libphutil/" into "arcanist/"
+  * Move HTML-only intraline diff code to Phabricator
+  * Omit "--" in older fallback commands for Git remote URIs
+  * In Git, fall back across versions more cleanly when trying to get the URI for a remote
+
+-------------------------------------------------------------------
+Mon Jan 13 12:56:00 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0.0~git.20191118T203151~cc850163:
+  * When "arc close-revision --finalize ..." skips closing a revision, print a message
+  * When generating diffs in "arc diff", disable Git config option "diff.suppressBlankEmpty"
+  * Make "arc land --merge" an explicit error when targeting a Perforce remote
+  * In "arc land", when "remote/onto" does not exist locally, try to fetch it before giving up
+  * Update "arc help land" to reference Perforce support
+  * Support Perforce/Git repositories in "arc land"
+  * Move Git-specific "arc land" parsing of "--onto" and "--remote" into GitLandEngine
+  * Add a lint check for deprecated argument order to "implode()"
+  * When running "arc land" from a detached HEAD, don't try to delete the source ref
+  * Fix two "msort()" vs "msortv()" issues in "arc land"
+
+-------------------------------------------------------------------
+Mon Jan 13 12:52:01 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Change LICENSE to %license section and update template
+
+-------------------------------------------------------------------
+Thu Oct 17 13:32:20 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Wed Oct  2 11:03:20 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Add conflicts to arc package because they use the same bin name
+
+-------------------------------------------------------------------
+Wed Sep 18 08:43:22 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Disable _service for Factory submit
+- Update remove-arc-upgrade.patch
+
+-------------------------------------------------------------------
+Tue Sep 17 11:50:50 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Add resources folder which is needed for spell checking
+
+-------------------------------------------------------------------
+Tue Sep 17 11:30:04 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to git version 3cdfe1ff
+- Change branch to master because it is more reliable than stable
+
+-------------------------------------------------------------------
+Tue Sep  4 08:13:22 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to git version d09b5beb
+
+-------------------------------------------------------------------
+Wed Jun 14 15:16:22 UTC 2017 - asn@cryptomilk.org
+
+- Initial package

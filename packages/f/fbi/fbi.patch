@@ -1,0 +1,10 @@
+--- a/fbi.c
++++ b/fbi.c
+@@ -100,7 +100,6 @@ static int img_mem, max_mem_mb;
+ 
+ /* graphics interface */
+ gfxstate                   *gfx;
+-int                        debug;
+ 
+ /* framebuffer */
+ char                       *fbdev = NULL;

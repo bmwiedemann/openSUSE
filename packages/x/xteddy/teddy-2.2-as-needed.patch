@@ -1,0 +1,13 @@
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig	2009-02-25 21:06:50.000000000 +0100
++++ Makefile.am	2011-08-29 13:34:54.570528131 +0200
+@@ -7,7 +7,7 @@ man_MANS = xteddy.6
+ bin_SCRIPTS = xtoys xteddy_test
+ 
+ AM_CFLAGS  = @IMLIB2_CFLAGS@
+-AM_LDFLAGS = @IMLIB2_LIBS@ -lX11
++xteddy_LDADD = @IMLIB2_LIBS@ -lXext -lX11
+ 
+ DEFS = -DPIXMAP_PATH=\"@PIXMAP_PATH@\" -Wall
+ 

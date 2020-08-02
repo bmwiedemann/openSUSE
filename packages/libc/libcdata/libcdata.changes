@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Tue Apr  2 17:51:00 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~2019
+	* fixed issue in libcdata_btree_node_get_sub_node_by_value
+	* Changes to array to handle failure in lock release
+	* Worked on B-tree type
+	* API change in return value.  The change requires tests of the return value to be updated.
+
+-------------------------------------------------------------------
+Wed Feb 15 18:15:01 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170102
+	* worked on tests
+- removed Requires libcstring
+
+-------------------------------------------------------------------
+Wed Jan 27 09:40:52 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v0~20160108
+	* added array remove entry function
+	* 2016 update
+	* updated dependencies
+	* code clean up
+	* corrections in include header
+	* updated man page: libcdata.3
+	* added libcdata_range_list_get_spanning_range
+
+-------------------------------------------------------------------
+Mon Jan  5 23:52:38 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150101
+	* 2015 update - minimal changes
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using libcstring from OBS, not internal version
+- add buildrequires for libcthreads
+
+-------------------------------------------------------------------
+Thu Aug 14 11:45:46 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v0~20140105
+	* updated dependencies
+	* 2014 update
+	* bug fix in array test
+	* bug fix in list multi threading support
+
+-------------------------------------------------------------------
+Thu Oct  3 02:14:14 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update to v0~20130904
+	* added fail safe check in array
+	* bug fix in array clone function
+	* fix in .pc.in file
+	* updated dependencies
+	* bug fixes for recent changes
+	* worked on multi-threading support
+	* worked on tests
+	* added libcthreads
+	* updated msvscpp files
+	* bug fix in range list
+
+-------------------------------------------------------------------
+Mon Jul 29 02:15:38 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update to v0~20130407
+	* small changes to range list
+	* moved range list value to separate source files
+	* added value support to range list
+	* improved range list remove function to multiple ranges
+	* textual updates
+	* updated include header
+	* added error functions
+	* updated dependencies
+	* added array prepend entry
+	* added array reverse
+	* 2013 update
+- change from xz to gz to simplyfy download/convert step
+
+-------------------------------------------------------------------
+Mon Apr 22 18:04:14 UTC 2013 - Greg.Freemyer@gmail.com
+
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr  3 23:33:00 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0~20121224) for build.opensuse.org

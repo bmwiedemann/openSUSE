@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Fri Jul 17 07:27:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.4:
+  - Extract "renew_self_token" from "renew_token". GH-598
+  - Add convenience step_down sys backend method. GH-597
+
+-------------------------------------------------------------------
+Mon Jun  8 13:37:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.3:
+  - Add Support For use_token_groups In LDAP Auth Method. GH-591
+  - Add Raft System Backend Methods. GH-594
+
+-------------------------------------------------------------------
+Tue Jun  2 16:18:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.2:
+  - Create_role_secret_id: add token_bound_cidrs parameter. GH-585
+  - Add vault rekey verification methods. GH-586
+  - Add request data to exception objects. GH-583
+  - Add marshaling_algorithm to sign/verify params. GH-584
+  - Add issuer to kubernetes configuration. GH-575
+  - Remove json() calls (unneeded following JSONAdapter addition) GH-589
+  - Fix format errors in contributing for HTML docs. GH-577
+
+-------------------------------------------------------------------
+Wed Apr  8 07:29:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.1:
+  * many various fixes all around
+
+-------------------------------------------------------------------
+Wed Feb  6 16:56:58 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
+

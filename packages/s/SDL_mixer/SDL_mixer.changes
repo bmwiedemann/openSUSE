@@ -1,0 +1,349 @@
+-------------------------------------------------------------------
+Tue Jan  6 12:27:02 UTC 2015 - jengelh@inai.de
+
+- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway, remove redundant Requires.
+- Enable modplug support
+
+-------------------------------------------------------------------
+Sat Nov 23 19:19:39 UTC 2013 - bwiedemann@suse.com
+
+- import patches from https://projects.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/sdl_mixer
+  to fix mixer / mikmod free corruption (bnc#851996)
+  Add double-free-crash.patch, mikmod1.patch and mikmod2.patch
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list
+
+-------------------------------------------------------------------
+Sun Feb 24 09:35:38 UTC 2013 - mailaender@opensuse.org
+
+- Update to 1.2.12
+  * SDL_mixer is now under the zlib license
+  * Fixed seek offset with SMPEG (was relative, should be absolute)
+  * Added Mix_LoadMUSType_RW() so you can tell SDL_mixer what type the music is
+  * Added /usr/local/share/timidity to the timidity data path
+  * Fixed timidity loading of some MIDI files
+  * Fixed dropping audio in the FLAC audio decoding
+  * Fixed memory leak in SDL_LoadMUS()
+  * Removed GPL native MIDI code for new licensing
+  * Fixed drums playing on MIDI channel 16 with timidity
+  * The music-finished hook can start a track immediately
+  * Added support for FluidSynth
+  * Added support for libmodplug (disabled by default)
+
+-------------------------------------------------------------------
+Thu Jan  3 02:18:43 UTC 2013 - crrodriguez@opensuse.org
+
+- Do not use dlopened libraries _ever_. 
+
+-------------------------------------------------------------------
+Sat Sep 17 10:23:43 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Aug  1 09:37:56 UTC 2011 - jengelh@medozas.de
+
+- Update baselibs.conf to also ship libSDL_mixer-devel-32bit
+
+-------------------------------------------------------------------
+Sat Jul  2 14:52:44 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Sat Jul 24 20:34:26 UTC 2010 - reddwarf@opensuse.org
+
+- Add FLAC support
+- Recommend the libraries that are dlopened
+
+-------------------------------------------------------------------
+Tue Jan 12 09:16:01 UTC 2010 - coolo@novell.com
+
+- fix file list
+
+-------------------------------------------------------------------
+Mon Dec 21 14:28:09 UTC 2009 - prusnak@suse.cz
+
+- updated to 1.2.11
+ * Fixed initialization error and crashes if MikMod library isn't available
+ * Fixed bug loading multiple music files
+ * Added Mix_Init()/Mix_Quit() to prevent constantly loading and unloading DLLs
+ * Check for fork/vfork on any platform, don't just assume it on UNIX
+ * Fixed export of Mix_GetNumChunkDecoders() and Mix_GetNumMusicDecoders()
+ * Reset channel volumes after a fade out interrupts a fade in.
+ * Fixed crash race condition with position audio functions
+ * Fixed stereo panning in 8-bit mode
+ * Added /usr/share/timidity to the default timidity.cfg locations
+ * MOD support uses libmikmod and is dynamically loaded by default
+ * Added TIMIDITY_CFG environment variable to fully locate timidity.cfg
+ * Implemented seamless looping for music playback
+ * ID3 files are now recognized as MP3 format
+ * Added decoder enumeration API:
+        Mix_GetNumChunkDecoders(), Mix_GetChunkDecoder(),
+        Mix_GetNumMusicDecoders(), Mix_GetMusicDecoder()
+ * Added support for FLAC audio both as chunks and streaming
+ * Added support for streaming WAV files with Mix_LoadMUS_RW()
+ * Fixed crash caused by not resetting position_channels
+- drop no longer needed 64bit-fix.patch and timidity_cfg.patch
+
+-------------------------------------------------------------------
+Sat Dec 19 19:21:38 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Oct  7 14:52:31 CEST 2009 - prusnak@suse.cz
+
+- fix provides and obsoletes [bnc#544957]
+
+-------------------------------------------------------------------
+Fri May 29 17:38:08 CEST 2009 - prusnak@suse.cz
+
+- removed VisualC.zip, Watcom-OS2.zip, Xcode.tar.gz from upstream
+  tarball [bnc#508180]
+
+-------------------------------------------------------------------
+Wed May 20 16:12:36 CEST 2009 - prusnak@suse.cz
+
+- follow Shared Library Policy
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Sun Jul  6 00:40:19 CEST 2008 - crrodriguez@suse.de
+
+- remove unusable static libraries
+- cleanup BuildRequires and -devel package dependencies 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Sun Dec 16 21:40:34 CET 2007 - sndirsch@suse.de
+
+- fixed BuildRequires for SUSE < 10.2 
+
+-------------------------------------------------------------------
+Wed Jul 25 18:24:14 CEST 2007 - prusnak@suse.cz
+
+- updated to 1.2.8
+ * improved detection of Ogg Vorbis and Tremor libraries
+ * fixed memory leaks in Effects API
+ * added support for MP3 playback with libmad (for GPL projects only!)
+ * fixed the final loop of audio samples of a certain size
+ * added support for Ogg Vorbis playback with Tremor (an integer decoder)
+ * fixed memory corruption in timidity resampling code
+ * fixed building SDL_mixer with SDL 1.3 pre-release
+ * fixed compiling both timidity and native midi in the same build
+ * added volume control to playmus
+ * fixed linking with system libmikmod
+ * corrected no-op conditions in SetDistance(), SetPanning() and SetPosition()
+ * fixed copy/paste errors in channel amplitudes
+- dropped obsoleted patch:
+  * timidity-crash.patch (included in update)
+  * warn.patch (included in update)
+  * libmikmod.patch (included in update)
+
+-------------------------------------------------------------------
+Sun Jul 22 18:59:22 CEST 2007 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Sun Apr 15 00:33:38 CEST 2007 - dmueller@suse.de
+
+- fix requires of devel package again
+
+-------------------------------------------------------------------
+Wed Apr 11 16:18:16 CEST 2007 - sbrabec@suse.cz
+
+- Require just created libmikmod-devel instead of libmikmod.
+
+-------------------------------------------------------------------
+Fri Mar  2 12:39:04 CET 2007 - prusnak@suse.cz
+
+- cleaned spec file
+
+-------------------------------------------------------------------
+Thu Jan 18 17:38:07 CET 2007 - prusnak@suse.cz
+
+- fixed crash in timidity (timidity-crash.patch) [#235376]
+
+-------------------------------------------------------------------
+Thu Sep 14 14:52:41 CEST 2006 - nadvornik@suse.cz
+
+- updated to 1.2.7:
+  * Added support for dynamically loading Ogg Vorbis library
+  * Search timidity.cfg also in /etc
+  * Fix memory leaks in timidity player
+  * Always build SDL_RWops music support
+- fixed Requires of devel subpackage
+
+-------------------------------------------------------------------
+Fri Mar 10 14:29:44 CET 2006 - bk@suse.de
+
+- SDL_mixer-devel: add libstdc++ and gcc to Requires (libSDL_mixer.la)
+- SDL_mixer-devel: add gpm and libmikmod to Requires (libSDL_mixer.la)
+- SDL_mixer-devel: remove libogg-devel from Requires (already by libvorbis-devel)
+
+-------------------------------------------------------------------
+Tue Jan 31 06:46:15 CET 2006 - aj@suse.de
+
+- Add libogg-devel libvorbis-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:57 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jul 27 20:21:42 CEST 2005 - nadvornik@suse.cz
+
+- added libmikmod to nfb [#98983]
+
+-------------------------------------------------------------------
+Thu Jul 21 16:46:20 CEST 2005 - nadvornik@suse.cz
+
+- update to 1.2.6
+- added devel subpackage
+
+-------------------------------------------------------------------
+Mon Mar 28 15:10:10 CEST 2005 - schwab@suse.de
+
+- Fix namespace pollution.
+
+-------------------------------------------------------------------
+Fri Jan 28 15:52:17 CET 2005 - ro@suse.de
+
+- make it possible to build without smpeg 
+
+-------------------------------------------------------------------
+Sat Jan 10 17:03:14 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Aug  8 15:42:34 CEST 2003 - bk@suse.de
+
+- update to 1.2.5(numerious fixes, eg for mp3 playback, midi crash)
+
+-------------------------------------------------------------------
+Mon Dec 16 17:46:03 CET 2002 - ro@suse.de
+
+- fix build with automake, use "AUTOMAKE_OPTIONS = foreign" 
+
+-------------------------------------------------------------------
+Tue Aug 20 17:19:15 CEST 2002 - tiwai@suse.de
+
+- fixed the detection of 64bit architectures [bug #18106]
+
+-------------------------------------------------------------------
+Mon Jul 22 14:57:25 CEST 2002 - bk@suse.de
+
+- don't use %configure, it uses broken target_platform syntax
+
+-------------------------------------------------------------------
+Tue Jul 16 14:51:37 CEST 2002 - bk@suse.de
+
+- update to 1.2.4
+
+-------------------------------------------------------------------
+Thu Jul 11 14:15:31 CEST 2002 - meissner@suse.de
+
+- rerun auto* so we get shared libraries too.
+
+-------------------------------------------------------------------
+Tue Jan 22 18:23:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <kdelibs-artsd> to <kdelibs3-artsd>
+
+-------------------------------------------------------------------
+Thu Oct 18 14:05:32 CEST 2001 - tiwai@suse.de
+
+- added suse_update_config to build shared libraries.
+- added libogg/libvorbis and devel packages to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Aug 16 14:31:54 CEST 2001 - nadvornik@suse.cz
+
+- added smpeg-devel to neededforbuild
+
+-------------------------------------------------------------------
+Wed Aug  8 17:43:57 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <kdelibs kdelibs-devel> to <kdelibs-artsd>
+
+-------------------------------------------------------------------
+Wed Aug  8 16:55:46 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sdl> to <SDL>
+- changed neededforbuild <sdl-devel> to <SDL-devel>
+
+-------------------------------------------------------------------
+Fri Jun 22 01:59:20 CEST 2001 - ro@suse.de
+
+- added kdelibs for artsd 
+
+-------------------------------------------------------------------
+Thu Apr 12 16:50:28 CEST 2001 - nadvornik@suse.cz
+
+- update to 1.2.0
+
+-------------------------------------------------------------------
+Mon Mar 26 12:05:39 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sdl> to <sdl sdl-devel>
+
+-------------------------------------------------------------------
+Fri Mar  9 01:45:10 CET 2001 - ro@suse.de
+
+- added xf86
+
+-------------------------------------------------------------------
+Mon Mar  5 06:19:42 CET 2001 - bk@suse.de
+
+- rename sdlmixer -> SDL_mixer
+- Update to 1.1.0 and added smpeg to neededforbuild for MP3 music support
+- fix copyright (LGPL) and group (Applications/Sound -> System/Libraries)
+- removed libmikmo from neededforbuild, SDL_mixer uses internal libmikmod
+  (and timidity) libs
+
+-------------------------------------------------------------------
+Mon Feb 19 17:36:52 CET 2001 - uli@suse.de
+
+- added alsa* to neededforbuild (needed by new SDL)
+- added esound-devel to neededforbuild
+
+-------------------------------------------------------------------
+Mon Nov  6 00:35:48 CET 2000 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Mon Oct 16 10:17:02 CEST 2000 - nadvornik@suse.cz
+
+- fixed to compile with correct CFLAGS
+
+-------------------------------------------------------------------
+Thu May 25 16:58:30 CEST 2000 - freitag@suse.de
+
+- new version v. 1.0.5 
+

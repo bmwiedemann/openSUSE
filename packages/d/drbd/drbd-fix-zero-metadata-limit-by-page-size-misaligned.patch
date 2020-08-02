@@ -1,0 +1,41 @@
+From 55293e6d7064c39183c3622c63ef6c2ab7162b80 Mon Sep 17 00:00:00 2001
+From: Nick Wang <nwang@suse.com>
+Date: Wed, 11 Dec 2019 14:50:21 +0800
+Subject: [PATCH] drbd: fix zero metadata limit by misaligned with page size
+
+Metadata is aligned on 4k blocks, which is ok for x86 platform.
+But may cause a result of zero page with PPC64LE or ARM with
+64k page size.
+
+And calculate effective bytes directly from sector size.
+
+Error log:
+...
+drbd0: Device size clipped from 2097016s to 0s due to metadata size
+...
+
+Signed-off-by: Nick Wang <nwang@suse.com>
+
+CC: drbd-dev@lists.linbit.com
+
+---
+ drbd/drbd_main.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index a7294639..336a4177 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -5589,8 +5589,7 @@ u64 directly_connected_nodes(struct drbd_resource *resource, enum which_state wh
+ 
+ static sector_t bm_sect_to_max_capacity(unsigned int bm_max_peers, sector_t bm_sect)
+ {
+-	u64 bm_pages = bm_sect >> (PAGE_SHIFT - SECTOR_SHIFT);
+-	u64 bm_bytes = bm_pages << PAGE_SHIFT;
++	u64 bm_bytes = bm_sect << SECTOR_SHIFT;
+ 	u64 bm_bytes_per_peer = div_u64(bm_bytes, bm_max_peers);
+ 	u64 bm_bits_per_peer = bm_bytes_per_peer * BITS_PER_BYTE;
+ 	return BM_BIT_TO_SECT(bm_bits_per_peer);
+-- 
+2.16.4
+

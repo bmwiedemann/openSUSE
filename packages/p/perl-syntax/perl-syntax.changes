@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Aug  5 15:02:08 UTC 2013 - coolo@suse.com
+
+- updated to 0.004
+    - Fixed dist.ini to move Test::More to BuildRequires
+    - Added unimport possibility
+      (RT #77253, Thanks to ikegami for reporting and patch contribution)
+
+-------------------------------------------------------------------
+Sun Oct  9 15:09:45 UTC 2011 - coolo@suse.com
+
+- initial package 0.003
+    * created by cpanspec 1.78.06
+

@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Sun Mar 26 12:12:49 UTC 2017 - astieger@suse.com
+
+- innotop 1.11.4:
+  * add SUM function for ONLY_FULL_GROUP_BY
+  * Undisplay handlersocket's threads in hide_inactive
+  * fix runtime error regarding redundant sprintf argument
+  * add sort on connection-name in display M, after sql/io running,
+    seconds behind master and channel_name
+  * fix bug that removed value for cxn and channel_name columns in
+    display M
+  * added sort on replication delay, so that the
+    replication-display will sort on slave_sql_running, timelag
+    (in minutes) and channel_name. 
+
+-------------------------------------------------------------------
+Thu Jan 19 21:49:50 UTC 2017 - astieger@suse.com
+
+- update to 1.11.1:
+  * MySQL 5.7 support
+  * MariaDB 10.1 support
+  * Add support for replication channels
+  * Add command line option 'askpass' for noecho password
+  * Add prompt for password when -p/--password given without an
+    argument
+
+-------------------------------------------------------------------
+Fri Jul 12 18:42:14 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.9.1
+  * Support of MySQL 5.6 was broken on some pages
+  * Deadlock clearing transactions is now not included in binary log
+- bring spec file to openSUSE standards
+
+-------------------------------------------------------------------
+Tue Sep 11 07:04:27 UTC 2012 - lenz@grimmer.com
+
+- Update to 1.9.0
+- Updated URL and source location
+- Adjusted build requirements and file list
+- Updated License and Group tag to make rpmlint happy
+
+-------------------------------------------------------------------
+Tue Aug 28 11:13:45 CEST 2007 - poeml@suse.de
+
+- fix perl Requires
+- remove useless build requires
+
+-------------------------------------------------------------------
+Tue Aug 28 11:08:14 CEST 2007 - poeml@suse.de
+
+- import from
+  http://fedora.kiewel-online.de/linux/updates/7/SRPMS/innotop-1.4.3-2.fc7.src.rpm
+

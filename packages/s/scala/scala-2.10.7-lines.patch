@@ -1,0 +1,147 @@
+--- scala-2.10.7/src/compiler/scala/tools/cmd/gen/AnyVals.scala	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/compiler/scala/tools/cmd/gen/AnyVals.scala	2019-11-28 13:37:03.940143371 +0100
+@@ -183,7 +183,7 @@
+     }
+     def objectLines = {
+       val comp = if (isCardinal) cardinalCompanion else floatingCompanion
+-      (comp + allCompanions + "\n" + nonUnitCompanions).trim.lines.toList ++ implicitCoercions map interpolate
++      (comp + allCompanions + "\n" + nonUnitCompanions).trim.linesIterator.toList ++ implicitCoercions map interpolate
+     }
+ 
+     /** Makes a set of binary operations based on the given set of ops, args, and resultFn.
+@@ -225,7 +225,7 @@
+     def representation = repr.map(", a " + _).getOrElse("")
+ 
+     def indent(s: String)  = if (s == "") "" else "  " + s
+-    def indentN(s: String) = s.lines map indent mkString "\n"
++    def indentN(s: String) = s.linesIterator map indent mkString "\n"
+ 
+     def boxUnboxImpls = Map(
+       "@boxImpl@"   -> "%s.valueOf(x)".format(boxedName),
+@@ -453,9 +453,9 @@
+ def ^(x: Boolean): Boolean
+ 
+ override def getClass(): Class[Boolean] = null
+-    """.trim.lines.toList
++    """.trim.linesIterator.toList
+ 
+-    def objectLines = interpolate(allCompanions + "\n" + nonUnitCompanions).lines.toList
++    def objectLines = interpolate(allCompanions + "\n" + nonUnitCompanions).linesIterator.toList
+   }
+   object U extends AnyValRep("Unit", None, "void") {
+     override def classDoc = """
+@@ -468,7 +468,7 @@
+     def classLines  = List(
+       """override def getClass(): Class[Unit] = null"""
+     )
+-    def objectLines = interpolate(allCompanions).lines.toList
++    def objectLines = interpolate(allCompanions).linesIterator.toList
+ 
+     override def boxUnboxImpls = Map(
+       "@boxImpl@"   -> "scala.runtime.BoxedUnit.UNIT",
+--- scala-2.10.7/src/compiler/scala/tools/nsc/doc/base/CommentFactoryBase.scala	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/doc/base/CommentFactoryBase.scala	2019-11-28 13:38:10.892515720 +0100
+@@ -209,7 +209,7 @@
+         SafeTags.replaceAllIn(javadoclessComment, { mtch =>
+           java.util.regex.Matcher.quoteReplacement(safeTagMarker + mtch.matched + safeTagMarker)
+         })
+-      markedTagComment.lines.toList map (cleanLine(_))
++      markedTagComment.linesIterator.toList map (cleanLine(_))
+     }
+ 
+     /** Parses a comment (in the form of a list of lines) to a `Comment`
+--- scala-2.10.7/src/compiler/scala/tools/nsc/interactive/tests/InteractiveTestSettings.scala	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/interactive/tests/InteractiveTestSettings.scala	2019-11-28 13:39:14.716870692 +0100
+@@ -58,7 +58,7 @@
+     val str = try File(optsFile).slurp() catch {
+       case e: java.io.IOException => ""
+     }
+-    str.lines.filter(!_.startsWith(CommentStartDelimiter)).mkString(" ")
++    str.linesIterator.filter(!_.startsWith(CommentStartDelimiter)).mkString(" ")
+   }
+ 
+   override protected def printClassPath(implicit reporter: Reporter) {
+--- scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/AbstractFileClassLoader.scala	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/AbstractFileClassLoader.scala	2019-11-28 13:57:53.339092518 +0100
+@@ -85,7 +85,7 @@
+       defineClass(name, bytes, 0, bytes.length)
+   }
+ 
+-  private val packages = mutable.Map[String, Package]()
++  private val whatever = mutable.Map[String, Package]()
+ 
+   override def definePackage(name: String, specTitle: String, specVersion: String, specVendor: String, implTitle: String, implVersion: String, implVendor: String, sealBase: URL): Package = {
+     throw new UnsupportedOperationException()
+@@ -94,7 +94,7 @@
+   override def getPackage(name: String): Package = {
+     findAbstractDir(name) match {
+       case null => super.getPackage(name)
+-      case file => packages.getOrElseUpdate(name, {
++      case file => whatever.getOrElseUpdate(name, {
+         val ctor = classOf[Package].getDeclaredConstructor(classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[URL], classOf[ClassLoader])
+         ctor.setAccessible(true)
+         ctor.newInstance(name, null, null, null, null, null, null, null, this)
+--- scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/Formatting.scala	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/Formatting.scala	2019-11-28 13:43:44.162369415 +0100
+@@ -25,7 +25,7 @@
+   def indentCode(code: String) = {
+     val indent = spaces(code)
+     stringFromWriter(str =>
+-      for (line <- code.lines) {
++      for (line <- code.linesIterator) {
+         str print indent
+         str print (line + "\n")
+         str.flush()
+--- scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/IMain.scala	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/IMain.scala	2019-11-28 13:47:12.735529430 +0100
+@@ -454,7 +454,7 @@
+   // enclosing in braces it is constructed like "val x =\n5 // foo".
+   private def removeComments(line: String): String = {
+     showCodeIfDebugging(line) // as we're about to lose our // show
+-    line.lines map (s => s indexOf "//" match {
++    line.linesIterator map (s => s indexOf "//" match {
+       case -1   => s
+       case idx  => s take idx
+     }) mkString "\n"
+@@ -580,7 +580,7 @@
+         if (printResults && result != "")
+           printMessage(result stripSuffix "\n")
+         else if (isReplDebug) // show quiet-mode activity
+-          printMessage(result.trim.lines map ("[quiet] " + _) mkString "\n")
++          printMessage(result.trim.linesIterator map ("[quiet] " + _) mkString "\n")
+ 
+         // Book-keeping.  Have to record synthetic requests too,
+         // as they may have been issued for information, e.g. :type
+@@ -1161,8 +1161,8 @@
+     /** Secret bookcase entrance for repl debuggers: end the line
+      *  with "// show" and see what's going on.
+      */
+-    def isShow    = code.lines exists (_.trim endsWith "// show")
+-    def isShowRaw = code.lines exists (_.trim endsWith "// raw")
++    def isShow    = code.linesIterator exists (_.trim endsWith "// show")
++    def isShowRaw = code.linesIterator exists (_.trim endsWith "// raw")
+ 
+     // old style
+     beSilentDuring(parse(code)) foreach { ts =>
+--- scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/Power.scala	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/Power.scala	2019-11-28 13:46:26.087269973 +0100
+@@ -150,7 +150,7 @@
+     // Then we import everything from $r.
+     intp interpret ("import " + intp.pathToTerm("$r") + "._")
+     // And whatever else there is to do.
+-    init.lines foreach (intp interpret _)
++    init.linesIterator foreach (intp interpret _)
+   }
+   def valsDescription: String = {
+     def to_str(m: Symbol) = "%12s %s".format(
+--- scala-2.10.7/src/scalacheck/org/scalacheck/Pretty.scala	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/scalacheck/org/scalacheck/Pretty.scala	2019-11-28 14:07:48.018400196 +0100
+@@ -45,7 +45,7 @@
+     else s.substring(0, length) / break(lead+s.substring(length), lead, length)
+ 
+   def format(s: String, lead: String, trail: String, width: Int) =
+-    s.lines.map(l => break(lead+l+trail, "  ", width)).mkString("\n")
++    s.linesIterator.map(l => break(lead+l+trail, "  ", width)).mkString("\n")
+ 
+   implicit def prettyAny(t: Any) = Pretty { p => t.toString }
+ 

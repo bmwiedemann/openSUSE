@@ -1,0 +1,11 @@
+--- maven-jmod-plugin-3.0.0-alpha-1/src/main/java/org/apache/maven/plugins/jmod/JModCreateMojo.java	2017-09-17 13:29:30.000000000 +0200
++++ maven-jmod-plugin-3.0.0-alpha-1/src/main/java/org/apache/maven/plugins/jmod/JModCreateMojo.java	2019-11-22 11:46:01.229465983 +0100
+@@ -47,7 +47,7 @@
+ import org.codehaus.plexus.languages.java.jpms.LocationManager;
+ import org.codehaus.plexus.languages.java.jpms.ResolvePathsRequest;
+ import org.codehaus.plexus.languages.java.jpms.ResolvePathsResult;
+-import org.codehaus.plexus.languages.java.jpms.ResolvePathsResult.ModuleNameSource;
++import org.codehaus.plexus.languages.java.jpms.ModuleNameSource;
+ import org.codehaus.plexus.util.FileUtils;
+ import org.codehaus.plexus.util.cli.Commandline;
+ 

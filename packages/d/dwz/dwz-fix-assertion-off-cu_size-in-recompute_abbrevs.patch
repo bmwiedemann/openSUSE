@@ -1,0 +1,138 @@
+Fix assertion 'off == cu_size' in recompute_abbrevs
+
+[ Backport of master commit 331eabd. ]
+
+With an executable from PR25024, we manage to reproduce PR24764:
+...
+$ dwz -l0 clang-offload-bundler-10.0.0-0.20190817snap5.fc30.x86_64.debug
+dwz: dwz.c:9920: recompute_abbrevs: Assertion `off == cu_size' failed.
+Aborted (core dumped)
+...
+
+The problem is that the cu_size as computed during recompute_abbrevs is not
+the same as was computed before during compute_abbrevs.
+
+I tracked down the first DIE in the CU that has a different size, at 0xdf615:
+...
+ <5><df615>: Abbrev Number: 65 (DW_TAG_formal_parameter)
+    <df616>   DW_AT_type        : <0xe33be>
+    <df618>   DW_AT_artificial  : 1
+...
+
+Using a debug patch, we can track the size of the DIE during compute_abbrevs:
+...
+init_new_die_offsets: intracusize: 2
+init_new_die_offsets: start die_size: 0
+init_new_die_offsets: add DIE code size to die_size: 1
+init_new_die_offsets: add nr_refs * intracusize to die_size: 3
+update_new_die_offsets: die_size: 3
+update_new_die_offsets: die_size: 3
+finalize_new_die_offsets: die_size: 3
+...
+and recompute_abbrevs:
+...
+init_new_die_offsets: intracusize: 3
+init_new_die_offsets: start die_size: 0
+init_new_die_offsets: add DIE code size to die_size: 1
+init_new_die_offsets: add nr_refs * intracusize to die_size: 4
+update_new_die_offsets: die_size: 4
+update_new_die_offsets: die_size: 4
+update_new_die_offsets: die_size: 4
+finalize_new_die_offsets: die_size: 4
+...
+
+The difference starts in init_new_die_offsets, when adding intracusize, which
+is different for compute_abbrevs and recompute_abbrevs (2 vs. 3).
+
+The code in recompute_abbrevs that calculates intracusize for the relevant
+init_new_die_offsets call is:
+...
+      /* Need to be conservatively high estimate, as update_new_die_offsets
+        relies on the offsets always decreasing.  cu_size at this point is
+        the size we will end up with in the end, but if cu_size is
+        sufficiently close (from bottom) to some uleb128 boundary (say
+        16384), init_new_die_offsets might return off above that boundary
+        and then update_new_die_offsets might fail its assertions on
+        reference to DIEs that crossed the uleb128 boundary.  */
+      intracusize = size_of_uleb128 (2 * cu_size);
+
+      off = init_new_die_offsets (cu->cu_die, headersz, intracusize);
+...
+where the '2 * cu_size' is the result of commit d16aa5e "Fix up
+recompute_abbrevs if cu_size is close below an uleb128 boundary and
+init_new_die_offsets would return offset above that uleb128 boundary":
+...
+-      intracusize = size_of_uleb128 (cu_size);
++      intracusize = size_of_uleb128 (2 * cu_size);
+...
+
+Reverting commit d16aa5e gets us an intracusize of 2 in recompute_abbrevs, and
+fixes the assert.  However, doing so reintroduces the assertion that was fixed
+by the commit (at least, provided commit a4668e1 "Fix assertion failure in
+create_import_tree" is also reverted):
+...
+$ dwz -l0 inkview.debug
+dwz: dwz.c:8527: update_new_die_offsets: Assertion \
+  `die->u.p2.die_intracu_udata_size >= intracu_udata_size' failed.
+Aborted (core dumped)
+...
+
+Fix the 'off == cu_size' assert (without introducing the regression for
+inkview.debug) by:
+- saving the intracusize used for the call to init_new_die_offsets in
+  compute_abbrevs, and
+- reusing the saved intracusize for the call to init_new_die_offsets in
+  recompute_abbrevs.
+
+Also tested with clang and CheckerOptionHandlingAnalyzerPlugin.so, for which
+this PR also triggered.
+
+2019-11-27  Tom de Vries  <tdevries@suse.de>
+
+	PR dwz/24764
+	* dwz.c (struct dw_cu): Add initial_intracusize field.
+	(compute_abbrevs): Initalize initial_intracusize.
+	(recompute_abbrevs): Use initial_intracusize.
+
+---
+ dwz.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/dwz.c b/dwz.c
+index 7c7b401..928fefa 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -674,6 +674,9 @@ struct dw_cu
+   unsigned int cu_chunk;
+   /* Form chosen for intra-cu references.  */
+   enum dwarf_form cu_intracu_form;
++  /* Intracusize argument to init_new_die_offsets.  Set in compute_abbrevs,
++     used in recompute_abbrevs.  */
++  unsigned int initial_intracusize;
+ };
+ 
+ /* Internal representation of a debugging information entry (DIE).
+@@ -8405,6 +8408,7 @@ compute_abbrevs (DSO *dso)
+ 	  intracusize = i;
+ 	}
+       while (1);
++      cu->initial_intracusize = intracusize;
+       off = init_new_die_offsets (cu->cu_die, headersz, intracusize);
+       do
+ 	{
+@@ -9555,14 +9559,7 @@ recompute_abbrevs (dw_cu_ref cu, unsigned int cu_size)
+     }
+   else
+     {
+-      /* Need to be conservatively high estimate, as update_new_die_offsets
+-	 relies on the offsets always decreasing.  cu_size at this point is
+-	 the size we will end up with in the end, but if cu_size is
+-	 sufficiently close (from bottom) to some uleb128 boundary (say
+-	 16384), init_new_die_offsets might return off above that boundary
+-	 and then update_new_die_offsets might fail its assertions on
+-	 reference to DIEs that crossed the uleb128 boundary.  */
+-      intracusize = size_of_uleb128 (2 * cu_size);
++      intracusize = cu->initial_intracusize;
+ 
+       off = init_new_die_offsets (cu->cu_die, headersz, intracusize);
+       do

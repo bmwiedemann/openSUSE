@@ -1,0 +1,10 @@
+--- magic/Localstuff
++++ magic/Localstuff	2014-06-25 08:53:43.110735387 +0000
+@@ -49,3 +49,7 @@
+ >44	ulelong	>0	\b block size = %d,
+ >48	ulequad	>0	\b bytes = %lld
+ 
++# libsatsolver solv file
++
++0	string		SOLV		Sat-solver solv file,
++>4	belong		x		version %d

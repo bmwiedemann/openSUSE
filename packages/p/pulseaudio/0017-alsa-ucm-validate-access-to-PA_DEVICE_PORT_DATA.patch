@@ -1,0 +1,81 @@
+From e6779ad229d5858f90f5f10c3796c9778f05c3fa Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 4 Dec 2019 19:33:01 +0100
+Subject: [PATCH] alsa-ucm: validate access to PA_DEVICE_PORT_DATA()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-sink.c        | 3 ++-
+ src/modules/alsa/alsa-source.c      | 3 +--
+ src/modules/alsa/module-alsa-card.c | 6 +++++-
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-sink.c b/src/modules/alsa/alsa-sink.c
+index 0a5c92529af3..19e9efc3674b 100644
+--- a/src/modules/alsa/alsa-sink.c
++++ b/src/modules/alsa/alsa-sink.c
+@@ -1672,6 +1672,7 @@ static int sink_set_port_cb(pa_sink *s, pa_device_port *p) {
+     pa_assert(u);
+     pa_assert(p);
+     pa_assert(u->mixer_handle);
++    pa_assert(!u->ucm_context);
+ 
+     data = PA_DEVICE_PORT_DATA(p);
+     pa_assert_se(u->mixer_path = data->path);
+@@ -2688,7 +2689,7 @@ pa_sink *pa_alsa_sink_new(pa_module *m, pa_modargs *ma, const char*driver, pa_ca
+      * pa_sink_suspend() between pa_sink_new() and pa_sink_put() would
+      * otherwise work, but currently pa_sink_suspend() will crash if
+      * pa_sink_put() hasn't been called. */
+-    if (u->sink->active_port) {
++    if (u->sink->active_port && !u->ucm_context) {
+         pa_alsa_port_data *port_data;
+ 
+         port_data = PA_DEVICE_PORT_DATA(u->sink->active_port);
+diff --git a/src/modules/alsa/alsa-source.c b/src/modules/alsa/alsa-source.c
+index d186101720b8..34946b74c77f 100644
+--- a/src/modules/alsa/alsa-source.c
++++ b/src/modules/alsa/alsa-source.c
+@@ -1519,8 +1519,6 @@ static int source_set_port_ucm_cb(pa_source *s, pa_device_port *p) {
+     struct userdata *u = s->userdata;
+     pa_alsa_ucm_port_data *data;
+ 
+-    data = PA_DEVICE_PORT_DATA(p);
+-
+     pa_assert(u);
+     pa_assert(p);
+     pa_assert(u->mixer_handle);
+@@ -1545,6 +1543,7 @@ static int source_set_port_cb(pa_source *s, pa_device_port *p) {
+     pa_assert(u);
+     pa_assert(p);
+     pa_assert(u->mixer_handle);
++    pa_assert(!u->ucm_context);
+ 
+     data = PA_DEVICE_PORT_DATA(p);
+     pa_assert_se(u->mixer_path = data->path);
+diff --git a/src/modules/alsa/module-alsa-card.c b/src/modules/alsa/module-alsa-card.c
+index e2a86bc1c68d..be260e4badab 100644
+--- a/src/modules/alsa/module-alsa-card.c
++++ b/src/modules/alsa/module-alsa-card.c
+@@ -538,6 +538,9 @@ static int hdmi_eld_changed(snd_mixer_elem_t *melem, unsigned int mask) {
+     if (mask == SND_CTL_EVENT_MASK_REMOVE)
+         return 0;
+ 
++    if (u->use_ucm)
++        return 0;
++
+     p = find_port_with_eld_device(u->card->ports, device);
+     if (p == NULL) {
+         pa_log_error("Invalid device changed in ALSA: %d", device);
+@@ -900,7 +903,8 @@ int pa__init(pa_module *m) {
+      * results in an infinite loop of "fill buffer, handle underrun". To work
+      * around this issue, the suspend_when_unavailable flag is used to stop
+      * playback when the HDMI cable is unplugged. */
+-    if (pa_safe_streq(pa_proplist_gets(data.proplist, "alsa.driver_name"), "snd_hdmi_lpe_audio")) {
++    if (!u->use_ucm &&
++        pa_safe_streq(pa_proplist_gets(data.proplist, "alsa.driver_name"), "snd_hdmi_lpe_audio")) {
+         pa_device_port *port;
+         void *state;
+ 
+-- 
+2.16.4
+

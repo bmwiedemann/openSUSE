@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Tue Apr 10 23:08:51 UTC 2018 - jengelh@inai.de
+
+- Remove --with-pic which only makes sense for static libs.
+- Fix SRPM group.
+
+-------------------------------------------------------------------
+Wed Mar 28 14:23:35 UTC 2018 - dimstar@opensuse.org
+
+- Also delete examples/.deps: with automake 1.16, this directory is
+  newly also generated and remains back with make distcheck.
+
+-------------------------------------------------------------------
+Tue Feb 10 18:08:24 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.5.0
+  * Use raptor2 and openssl for MD5
+- Remove patches; fixed on upstream release
+  * liblrdf-symbol-conflict.diff
+  * raptor2-compat.diff
+- Update homepage Url
+- Use download Url as source
+- Add openssl-devel require; new upstream dependency
+
+-------------------------------------------------------------------
+Mon Jan 26 14:34:32 UTC 2015 - idonmez@suse.com
+
+- Add baselibs.conf as source file
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan 21 10:20:43 UTC 2015 - olaf@aepfle.de
+
+- BuildRequire libraptor-devel >= 0.9.11
+
+-------------------------------------------------------------------
+Sat Nov 19 20:39:28 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Sep 16 13:56:52 UTC 2011 - tittiatcoke@gmail.com
+
+- Added Raptor2 compatibility patch (upstream)
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added 32bit compatibility libraries
+- Removed self-obsoletes (fix for RPMLINT warning)
+ 
+-------------------------------------------------------------------
+Wed Apr 15 18:01:01 CEST 2009 - tiwai@suse.de
+
+- fix conflict of symbols (bnc#492257)
+
+-------------------------------------------------------------------
+Wed Dec 19 23:20:09 CET 2007 - crrodriguez@suse.de
+
+- use library packaging policy 
+
+-------------------------------------------------------------------
+Wed Dec 19 23:11:33 CET 2007 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- fix -devel pakcage dependencies (missing libraptor-devel)
+
+-------------------------------------------------------------------
+Thu May  3 13:43:48 CEST 2007 - wstephenson@suse.de
+
+- libraptor1-devel -> libraptor-devel
+
+-------------------------------------------------------------------
+Thu May  3 06:35:53 CEST 2007 - lrupp@suse.de
+
+- require libraptor1-devel
+
+-------------------------------------------------------------------
+Tue Apr 17 16:46:56 CEST 2007 - tiwai@suse.de
+
+- fix buildrequires ladspa -> ladspa-devel
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 24 17:34:46 CET 2005 - tiwai@suse.de
+
+- updated to version 0.4.0.
+
+-------------------------------------------------------------------
+Thu Aug  5 16:15:45 CEST 2004 - tiwai@suse.de
+
+- updated to version 0.3.7.
+
+-------------------------------------------------------------------
+Fri Feb 27 17:00:20 CET 2004 - tiwai@suse.de
+
+- removed the binareis from examples directory for installation.
+
+-------------------------------------------------------------------
+Thu Feb 26 17:22:39 CET 2004 - tiwai@suse.de
+
+- updated to version 0.3.5.
+
+-------------------------------------------------------------------
+Tue Jan 13 20:20:14 CET 2004 - tiwai@suse.de
+
+- build as non-root.
+
+-------------------------------------------------------------------
+Fri Jan  9 17:38:57 CET 2004 - tiwai@suse.de
+
+- updated to version 0.3.2.
+
+-------------------------------------------------------------------
+Fri Jun  6 16:30:46 CEST 2003 - tiwai@suse.de
+
+- updated to version 0.3.1.
+
+-------------------------------------------------------------------
+Wed Apr  2 14:58:27 CEST 2003 - tiwai@suse.de
+
+- initial version: 0.2.4.
+

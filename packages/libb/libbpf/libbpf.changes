@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Mon Jun  8 23:52:39 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Add python3 as a build dependency.
+
+-------------------------------------------------------------------
+Sun Feb  2 19:50:55 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Build libbpf from kernel sources, not from github sources, for
+  consistency with bpftool package.
+
+-------------------------------------------------------------------
+Tue Jan  7 14:36:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reflect SUSE CFLAGS
+- Do not bother with obscpio if we are fetching direct releases
+- Remove patch 0001-makefile-Fix-install-target.patch seems
+  to build/install without it just fine
+- Update to 0.0.6:
+  + New features
+    - new extensible bpf_object__open_{file,mem} APIs and
+      DECLARE_LIBBPF_OPTS() macro to go with them
+    - bpf_helpers.h, bpf_endian.h, and bpf_tracing.h are now
+      distributed with libbpf
+    - BPF CO-RE: added field size, field existence, and bitfield
+      relocation support
+    - BPF CO-RE: BPF_CORE_READ(), bpf_core_field_exists(),
+      bpf_core_field_size() and other BPF CO-RE related helpers
+      available through bpf_core_read.h header
+    - bpf_object__open() API now auto-detects program type from
+      its section name
+    - BPF_PROG_TRACING programs support (incuding BTF-typed raw
+      tracepoints, fentry/fexit programs)
+    - mmap() support for BPF global variables
+    - declarative map pinning support added
+    - probe_read_{user,kernel}[_str]() BPF helpers added
+    - bpf_get_link_xdp_info() function to get more XDP information
+      added
+    - a bunch of other AF_XDP changes
+  + Usability improvements
+    - no need for int version SEC('version') = 1; anymore
+    - raw_tp/tp and uprobe/uretprobe section prefixes added
+    - new bpf_program__get_{type,expected_attach_type} getters
+    - preserve error code on program load failure
+  + Fixes
+    - btf_dump padding handling
+    - bpf_object__name() returning name, not path
+    - ELF section handling off-by-one bug fix
+    - mem leak/double free fix in BPF program relocation code
+
+-------------------------------------------------------------------
+Tue Oct  1 09:15:18 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Initial release

@@ -1,0 +1,4 @@
+addFilter('no-manual-page-for-binary')
+addFilter('incorrect-fsf-address')
+addFilter('hidden-file-or-dir')
+addFilter('binary-or-shlib-calls-gethostbyname')

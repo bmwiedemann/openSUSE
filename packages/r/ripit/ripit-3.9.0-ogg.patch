@@ -1,0 +1,30 @@
+Index: ripit-4.0.0_beta20140508/ripit.pl
+===================================================================
+--- ripit-4.0.0_beta20140508.orig/ripit.pl
++++ ripit-4.0.0_beta20140508/ripit.pl
+@@ -127,7 +127,7 @@ my $verify    = 1;          # Rip track
+ my $span      = "";         # Options for track spans.
+ my $ripper    = 1;          # 0 - dagrab, 1 - cdparanoia,
+                             # 2 - cdda2wav, 3 - tosha, 4 - cdd.
+-my @coder     = (0);        # 0 - Lame, 1 - Oggenc, 2 - Flac,
++my @coder     = (1);        # 0 - Lame, 1 - Oggenc, 2 - Flac,
+                             # 3 - Faac, 4 - mp4als, 5 - Musepack,
+                             # 6 - Wavpack, 7 - ffmpeg,
+                             # comma separated list.
+@@ -141,14 +141,14 @@ my $bitrate   = 128;        # Bitrate fo
+                             # bitrate is equal to the -b option.
+ my $maxrate   = 0;          # Bitrate for lame using --vbrmode,
+                             # maxrate is equal to the -B option.
+-my @quality   = (5,3,5,100,0,5);# Quality for lame in vbr mode (0-9), best
++my @quality   = (5,6,5,100,0,5);# Quality for lame in vbr mode (0-9), best
+                             # quality = 0, quality for oggenc (1-10),
+                             # best = 10; or compression level for Flac
+                             # (0-8), lowest = 0, quality for Faac
+                             # (10-500), best = 500, no values for
+                             # Wavpack and ffmpeg.
+ my $qualame   = 5;          # Same as above, more intuitive. Use quotes
+-my $qualoggenc= 3;          # if values shall be comma separated lists.
++my $qualoggenc= 6;          # if values shall be comma separated lists.
+ my $quaflac   = 5;          #
+ my $quafaac   = 100;        #
+ my $quamp4als = 0;          #

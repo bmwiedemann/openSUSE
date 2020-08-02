@@ -1,0 +1,15 @@
+Index: fcitx-chewing-0.2.2/cmake/FindChewing.cmake
+===================================================================
+--- fcitx-chewing-0.2.2.orig/cmake/FindChewing.cmake
++++ fcitx-chewing-0.2.2/cmake/FindChewing.cmake
+@@ -31,8 +31,8 @@ set(CHEWING_INCLUDE_DIR "${CHEWING_MAIN_
+ set(CHEWING_FOUND ${PC_LIBCHEWING_FOUND})
+ 
+ include(FindPackageHandleStandardArgs)
+-find_package_handle_standard_args(Chewing FOUND_VAR CHEWING_FOUND
++find_package_handle_standard_args(Chewing
+                                           REQUIRED_VARS CHEWING_LIBRARIES CHEWING_MAIN_INCLUDE_DIR
+-                                          VERSION_VAR PC_LIBCHEWING_VERSION)
++					   VERSION_VAR PC_LIBCHEWING_VERSION)
+ 
+ mark_as_advanced(CHEWING_INCLUDE_DIR CHEWING_LIBRARIES)

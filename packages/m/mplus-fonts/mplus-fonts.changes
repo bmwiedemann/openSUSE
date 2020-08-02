@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Sun Mar 18 22:05:50 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Thu Mar 15 13:11:20 UTC 2018 - ftake@geeko.jp
+
+- update to testflight 063
+  * new 100 glyphs; the number of kanji glyphs is now 5300
+  * new symbol glyphs and surrounding letter glyphs
+  * fix kerning of B, D, P, R, y of M+ M Type-2
+  * Add U+2260 (NOT EQUAL TO) to M+ M and MN
+
+-------------------------------------------------------------------
+Sat Apr 29 01:23:59 UTC 2017 - ftake@geeko.jp
+
+- update to testflight 062
+  * new 100 glyphs; the number of kanji glyphs is now 5200
+
+-------------------------------------------------------------------
+Sat Apr 30 03:58:29 UTC 2016 - ftake@geeko.jp
+
+- update to testflight 061
+  * new 100 glyphs; the number of kanji glyphs is now 5100 
+
+-------------------------------------------------------------------
+Fri Nov 13 19:03:47 UTC 2015 - ftake@geeko.jp
+
+- update to testflight 060
+  * new 100 glyphs; the number of kanji glyphs is 5000
+- update to testflight 059
+  * new 100 glyphs; 
+- update the project URLs
+
+-------------------------------------------------------------------
+Sun Mar  9 10:09:54 UTC 2014 - ftake@geeko.jp
+
+- updated to testflight 058
+  * new 100 glyphs; contains 4800 kanji glyphs
+  * fix the vertical layout problem
+- updated to testflight 057
+  * new 100 glyphs
+
+-------------------------------------------------------------------
+Mon Jul 15 09:08:52 UTC 2013 - toms@opensuse.org
+
+- updated to testflight 056
+* About 100 characters were added, bringing the total number of
+  Kanji glyphs to 4600.
+* Composition of IPA symbols may not work
+* Disabled ligatures U+FB00–U+FB04 in the half-width fixed font.
+* During composition, punctuation marks, sokuon symbol classes etc.
+  were not displayed in the correct position
+
+-------------------------------------------------------------------
+Tue Apr 16 10:18:05 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Sep 19 16:26:50 UTC 2012 - ftake@geeko.jp
+
+- updated to testflight 052
+  * New 100 glyphs and 4300 kanji glyphs are available in total.
+  * This version covers JIS Level 1. 
+
+-------------------------------------------------------------------
+Mon Aug  6 12:29:49 UTC 2012 - toms@opensuse.org
+
+- Updated to testflight 051; following changelog is translated
+  through Google Translate (slightly shortend and corrected):
+  * Amount of characters are now 4200 Chinese glyphs
+  * If there is a synthesis of (IPA Extensions)  
+    is not functioning international phonetic symbols.
+  * You have to disable the character uniFB04 Ligature of fixed-width
+    font characters, from uniFB00.
+  * Fixed a bug is in Kana characters nasal sound, left glyph can
+    not be displayed.
+  * When using vertical, screws, and gemination punctuation, symbol
+    class has gone and is no longer displayed in the correct position.
+  * Trouble seems to have occurred to send single-byte characters
+    of a fixed-width font under some circumstances. 
+    If you are, please let us know about the cause or idea, similar cases.
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Wed Jun  6 16:26:56 UTC 2012 - ftake@geeko.jp
+
+- updated to testflight 049
+
+-------------------------------------------------------------------
+Thu May 17 09:10:22 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar 30 09:10:24 UTC 2012 - pgajdos@suse.com
+
+- SUSE-mplus license
+
+-------------------------------------------------------------------
+Wed Sep 28 04:33:49 UTC 2011 - ftake@geeko.jp
+
+- updated to testflight 042
+  * daily-use kanjis are available
+
+-------------------------------------------------------------------
+Wed Mar 31 18:07:43 CEST 2010 - tiwai@suse.de
+
+- updated to testflight 029
+- removed unneeded depenency on xorg-x11-devel
+
+-------------------------------------------------------------------
+Tue Dec  8 08:44:24 UTC 2009 - toms@suse.de
+
+- Updated to testflight 027
+
+-------------------------------------------------------------------
+Mon Aug  3 16:15:03 CEST 2009 - toms@suse.de
+
+- Updated to testflight 025
+
+-------------------------------------------------------------------
+Wed May 27 08:20:00 CEST 2007 - toms@suse.de
+
+- First release of TESTFLIGHT 023

@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Tue Apr 23 12:32:37 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133097).
+
+-------------------------------------------------------------------
+Sun Jan 11 17:59:00 UTC 2015 - Led <ledest@gmail.com>
+
+- upgrade to 1.0.16
+  * code cleanups
+  * various sctp_status fixes
+  * avoid using file descriptor 0 to get ENOTSOCK
+  * various fixes
+  * fix build for prefixed architectures
+- remove patches:
+  * lksctp-fixes.patch
+
+-------------------------------------------------------------------
+Thu Aug  1 19:49:35 UTC 2013 - andreas.stieger@gmx.de
+
+- upgrade to 1.0.15
+  * withsctp: fix quoted command line arguments
+  * sctp_status: fix printstatus output
+  * do not returns an error if AM_SILENT_RULES does not exist
+- include changes from 1.0.14
+  * build: only use AM_CPPFLAGS instead of a mixture of AM_CFLAGS and AM_CPPFLAGS
+  * test_sctp_sendrecvmsg: fix bug in msg_flag passing
+  * build: fix out-of-tree build of withsctp.
+  * test_1_to_1_threads: fixup pthread hung by giving an array instead of a pointer
+  * test_1_to_1_threads: remove unused variable for t_recv and t_send
+  * sctp: Add new spinfo state values to enumeration
+  * build: Modernize autotools
+
+-------------------------------------------------------------------
+Sat Jan 26 11:01:29 UTC 2013 - meissner@suse.com
+
+- upgraded to 1.0.13 (bugfixes)
+  T:BUILD Use silent rules
+  T:BUILD Fix build warnings all over the place
+  T:APP Fix memory leak in sctp_xconnect
+  T:TEST Fix deprecated values in test cases
+- lskctp-fixes.patch: implicit warning fix
+
+-------------------------------------------------------------------
+Mon Jan 21 10:38:43 UTC 2013 - meissner@suse.com
+
+- upgraded to 1.0.12
+  T:API Add needed definitions for DTLS/SCTP.
+  T:API Fix data corruption in sctp_send
+  T:API Implement private SCTP_GET_ASSOC_STATS option to fetch addition
+        association data.
+  T:TEST Add more options to conformace test tool.
+  T:APP Add HEARTBEAT command to sctp_darn
+  T:API Obsolete interefaces have been removed
+  T:API Suport for SCTP_SACK_IMMEDIATELY options
+  T:API Support for non-blocking sctp-connectx
+
+-------------------------------------------------------------------
+Wed Jun 20 06:35:03 UTC 2012 - meissner@suse.com
+
+- upgraded to 1.0.11
+  T:BUILD fix parallel build warning
+  T:BUILD fix make distcheck for lksctp-tools
+  T:BUILD fix compiler warnings in the libraray, apps and tests
+  T:API   Update the sctp.h header to match the kernel.
+
+-------------------------------------------------------------------
+Wed Feb 15 06:06:42 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Nov 24 10:19:35 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Dec 16 09:49:55 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Mon Apr  6 17:47:21 CEST 2009 - meissner@suse.de
+
+- upgraded to 1.0.10
+  T:TEST Split the kernel frame test framework from lksctp-tools.
+         The framework is very sensitive to all kernel changes, not just
+         ones related to SCTP.  As such, it has been a gating fractor
+         to the releases of the new tools.
+  T:APP New tool sctp_status to be used with SCTP conformance tests.
+        http://networktest.sourceforge.net/
+  T:APP Add -T option to sctp_test
+  T:APP Fix the -e option to sctp_darn
+  T:LIB Fix building of static libraries.
+  T:LIB Fix compile warning in addrs.c
+  T:APP Update the application useage of sctp_connectx
+  T:TEST Update the sctp_connectx() functional tests.
+  T:API Update to the sctp_connectx().  Now takes additional argument.
+  T:API Let sctp_recvmsg() honor passed in MSG_ flags
+  K:    See kernel change log for details.  We'll track only tools
+        changes here from now on.
+
+-------------------------------------------------------------------
+Mon Sep  1 14:03:38 CEST 2008 - meissner@suse.de
+
+- upgraded to 1.0.9
+	- adjusted to 2.6.26
+	- Implement and export SCTP-AUTH API extensions based on sctpsocket-16 draft
+	- lots of bugfixes
+- disable shared libraries and .la files
+
+-------------------------------------------------------------------
+Mon Feb 25 22:53:47 CET 2008 - meissner@suse.de
+
+- upgraded to 1.0.8
+	- added various new features
+	- adjusted to 2.6.24
+	- bugfixes
+
+-------------------------------------------------------------------
+Tue Jul 17 12:47:55 CEST 2007 - meissner@suse.de
+
+- upgraded to 1.0.7
+	- lots of fixes
+	- adjusted to 2.6.22 kernel
+
+-------------------------------------------------------------------
+Wed Apr 25 16:02:54 CEST 2007 - meissner@suse.de
+
+- fixed some rpmlint problems. Changed permissions
+  to 755/644, moved some development libraries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 12 12:28:55 CET 2005 - okir@suse.de
+
+- Updated to latest upstream version (1.0.4)
+
+-------------------------------------------------------------------
+Wed Nov  2 22:18:33 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Fri Jan 21 14:45:30 CET 2005 - okir@suse.de
+
+- Updated to latest upstream version (1.0.2)
+
+-------------------------------------------------------------------
+Wed May 12 11:09:24 CEST 2004 - okir@suse.de
+
+- Updated to lksctp-tools to 1.0.1 per request from IBM
+
+-------------------------------------------------------------------
+Tue Mar 16 10:47:03 CET 2004 - okir@suse.de
+
+- Built initial package
+

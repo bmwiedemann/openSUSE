@@ -1,0 +1,13 @@
+Index: guile-1.8.8/libguile/Makefile.am
+===================================================================
+--- guile-1.8.8.orig/libguile/Makefile.am
++++ guile-1.8.8/libguile/Makefile.am
+@@ -265,7 +265,7 @@ libpath.h: $(srcdir)/Makefile.in  $(top_
+ 		>> libpath.tmp
+ 	@echo '	{ "LIBS",	   "@GUILE_LIBS@" }, \' >> libpath.tmp
+ 	@echo '	{ "CFLAGS",	   "@GUILE_CFLAGS@" }, \' >> libpath.tmp
+-	@echo '	{ "buildstamp",    "'"`date`"'" }, \' >> libpath.tmp
++	@echo '	{ "buildstamp",    "'"`date -u -d \"@$${SOURCE_DATE_EPOCH:-$$(date +%s)}\" `"'" }, \' >> libpath.tmp
+ 	@echo '}' >> libpath.tmp
+ 	@mv libpath.tmp libpath.h
+ 

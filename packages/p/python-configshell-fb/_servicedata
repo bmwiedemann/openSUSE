@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/open-iscsi/rtslib-fb.git</param>
+              <param name="changesrevision">b37bc67fc7ed3d1ec447e9f43eb68d30dd716367</param></service><service name="tar_scm">
+                <param name="url">https://github.com/open-iscsi/configshell-fb.git</param>
+              <param name="changesrevision">7e3b8ebe12519ad5cc20a9654a7c070b2ecf3cd8</param></service></servicedata>

@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed May 15 15:12:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 since some dependencies are python3-only
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+
+-------------------------------------------------------------------
+Wed May 30 17:40:26 UTC 2018 - toddrme2178@gmail.com
+
+- Skip python2, since some dependencies are not available.
+
+-------------------------------------------------------------------
+Thu May  3 21:59:38 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.0.5
+  * Add license file to source archive
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Add license
+- Package readme
+- Use %license tag
+
+-------------------------------------------------------------------
+Thu Jan 18 18:22:54 UTC 2018 - toddrme2178@gmail.com
+
+- Fix installation.
+- Update to 1.0.5
+  * Use ipywidgets 5, 6, or 7
+  * Added simulation_magic
+  * Fixed graphics canvas toGIF/PNG/PIL
+  * Clean up CameraWidget
+
+-------------------------------------------------------------------
+Sun Oct 22 18:33:12 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

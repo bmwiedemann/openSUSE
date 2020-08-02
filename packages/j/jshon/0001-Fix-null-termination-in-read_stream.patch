@@ -1,0 +1,26 @@
+From d919aeaece37962251dbe6c1ee50f0028a5c90e4 Mon Sep 17 00:00:00 2001
+From: Mikael Brockman <mikael@brockman.se>
+Date: Thu, 2 Mar 2017 10:15:24 +0200
+Subject: [PATCH] Fix null termination in read_stream
+
+This came up in issue #53.
+---
+ jshon.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/jshon.c b/jshon.c
+index 6e2f96a..ffefee6 100644
+--- a/jshon.c
++++ b/jshon.c
+@@ -368,6 +368,8 @@ char* read_stream(FILE* fp)
+                 (ssize_t)st.st_size, (ssize_t)bytes_r);
+     }
+ 
++    buffer[bytes_r] = 0;
++
+     return buffer;
+ }
+ 
+-- 
+2.16.4
+

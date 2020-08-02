@@ -1,0 +1,21 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/mockito/mockito.git</param>
+		<param name="revision">v1.10.19</param>
+		<param name="versionformat">1.10.19</param>
+		<param name="exclude">build.gradle</param>
+		<param name="exclude">cglib-and-asm</param>
+		<param name="exclude">lib/*</param>
+		<param name="exclude">doc</param>
+		<param name="exclude">gradle</param>
+		<param name="exclude">gradlew</param>
+		<param name="exclude">gradlew.bat</param>
+		<param name="exclude">javadoc</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

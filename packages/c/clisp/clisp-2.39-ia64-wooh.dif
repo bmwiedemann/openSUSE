@@ -1,0 +1,18 @@
+---
+ tests/streams.tst |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/streams.tst b/tests/streams.tst
+--- a/tests/streams.tst
++++ b/tests/streams.tst
+@@ -1043,8 +1043,8 @@ T
+            (describe (make-array nil :element-type nil) s)))
+ T
+ 
+-(stringp (with-output-to-string (s) (describe nil s)))
+-T
++;(stringp (with-output-to-string (s) (describe nil s)))
++;T
+ 
+ ;; https://sourceforge.net/p/clisp/bugs/396/
+ (let ((s "a   b"))

@@ -1,0 +1,30 @@
+Index: matplotlib-3.2.1/setupext.py
+===================================================================
+--- matplotlib-3.2.1.orig/setupext.py
++++ matplotlib-3.2.1/setupext.py
+@@ -514,7 +514,7 @@ class FreeType(SetupPackage):
+         ext.sources.insert(0, 'src/checkdep_freetype2.c')
+         if options.get('local_freetype'):
+             src_path = pathlib.Path(
+-                'build', f'freetype-{LOCAL_FREETYPE_VERSION}')
++                f'freetype-{LOCAL_FREETYPE_VERSION}')
+             # Statically link to the locally-built freetype.
+             # This is certainly broken on Windows.
+             ext.include_dirs.insert(0, str(src_path / 'include'))
+@@ -541,7 +541,7 @@ class FreeType(SetupPackage):
+         if not options.get('local_freetype'):
+             return
+ 
+-        src_path = pathlib.Path('build', f'freetype-{LOCAL_FREETYPE_VERSION}')
++        src_path = pathlib.Path(f'freetype-{LOCAL_FREETYPE_VERSION}')
+ 
+         # We've already built freetype
+         if sys.platform == 'win32':
+@@ -555,7 +555,6 @@ class FreeType(SetupPackage):
+ 
+         # do we need to download / load the source from cache?
+         if not src_path.exists():
+-            os.makedirs('build', exist_ok=True)
+ 
+             url_fmts = [
+                 ('https://downloads.sourceforge.net/project/freetype'

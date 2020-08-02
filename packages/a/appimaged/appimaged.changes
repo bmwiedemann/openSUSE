@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue May 30 12:23:38 UTC 2017 - adrian@suse.de
+
+- prepare for factory submission
+
+-------------------------------------------------------------------
+Mon Feb 27 07:37:46 UTC 2017 - adrian@suse.de
+
+- update to version 8
+- package it in a way to make it usable for rpm2appimage for OBS
+
+-------------------------------------------------------------------
+Tue Jan 24 18:11:11 UTC 2017 - jengelh@inai.de
+
+- Resolve some typographical issues in description.
+  Use %setup's options instead of tar.
+
+-------------------------------------------------------------------
+Tue Jan 24 11:57:18 UTC 2017 - i@marguerite.su
+
+- packaging as native distro package instead of appimage
+- add a systemd per-user service appimaged.service
+- add mkappimagedir script to create skeleton AppImage.Dir
+  for the end users.
+
+-------------------------------------------------------------------
+Tue Dec 20 10:09:03 UTC 2016 - i@marguerite.su
+
+- initial version
+- add appimagekit-abuild.patch
+
+

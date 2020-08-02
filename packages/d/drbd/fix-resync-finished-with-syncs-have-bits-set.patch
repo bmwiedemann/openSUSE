@@ -1,0 +1,13 @@
+diff -Naur drbd-9.0.7rc1+git.093821cd.orig/drbd/drbd_receiver.c drbd-9.0.7rc1+git.093821cd/drbd/drbd_receiver.c
+--- drbd-9.0.7rc1+git.093821cd.orig/drbd/drbd_receiver.c	2017-03-24 16:55:42.169376092 +0800
++++ drbd-9.0.7rc1+git.093821cd/drbd/drbd_receiver.c	2017-03-24 16:56:51.137239174 +0800
+@@ -6240,7 +6240,8 @@
+ 		/* if peer_state changes to connected at the same time,
+ 		 * it explicitly notifies us that it finished resync.
+ 		 * Maybe we should finish it up, too? */
+-		else if (peer_state.conn == L_ESTABLISHED) {
++		else if (peer_state.conn == L_ESTABLISHED &&
++		        peer_disk_state > D_NEGOTIATING) {
+ 			bool finish_now = false;
+ 
+ 			if (old_peer_state.conn == L_WF_BITMAP_S) {

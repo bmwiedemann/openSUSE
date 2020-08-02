@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Compress old nagios logfiles in /var/log/nagios/archives/
+# once a week, if sysconfig variable is set to true
+#
+CFG='/etc/nagios/nagios.cfg'
+SYSCFG='/etc/sysconfig/nagios'
+
+if [[ -r $SYSCFG ]]; then 
+. $SYSCFG
+else
+	echo "$SYSCFG not found or not readable." >&2
+	exit 1
+fi
+
+if [[ -r $CFG ]]; then
+  NAGIOS_USER=$( grep ^nagios_user  $CFG | tail -n 1 | sed 's@.*=@@' | tr -d '[:cntrl:]')
+  NAGIOS_GROUP=$(grep ^nagios_group $CFG | tail -n 1 | sed 's@.*=@@' | tr -d '[:cntrl:]')
+fi
+
+if [ -z "$NAGIOS_USER" ]; then
+  NAGIOS_USER='__NAGIOS_USER__'
+fi
+if [ -z "$NAGIOS_GROUP" ]; then
+  NAGIOS_GROUP='__NAGIOS_GROUP__'
+fi
+
+if [[ $NAGIOS_COMPRESS_LOGFILES = "true" ]]; then
+	for f in /var/log/nagios/archives/*.log ; do
+		if [[ -r $f ]] ; then
+			setpriv --init-groups --ruid $NAGIOS_USER --rgid $NAGIOS_GROUP \
+				--inh-caps -all --reset-env /usr/bin/bzip2 "$f"
+		fi
+	done
+fi

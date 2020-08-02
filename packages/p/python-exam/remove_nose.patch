@@ -1,0 +1,18 @@
+--- a/setup.py	2020-03-26 12:27:17.135857081 +0100
++++ b/setup.py	2020-03-26 12:27:32.139881471 +0100
+@@ -10,14 +10,9 @@
+ 
+ install_requires = ['mock']
+ lint_requires = ['pep8', 'pyflakes']
+-tests_require = ['nose']
+-
+-if sys.version_info < (2, 7):
+-    tests_require.append('unittest2')
++tests_require = ['unittest']
+ 
+ setup_requires = []
+-if 'nosetests' in sys.argv[1:]:
+-    setup_requires.append('nose')
+ 
+ setup(
+     name='exam',

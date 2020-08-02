@@ -1,0 +1,39 @@
+From ff24ad44384433611fabaa9ae9ba8ac1418fb2df Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Mon, 29 Aug 2016 22:26:43 +0200
+Subject: [PATCH] Fix no-return-in-nonvoid-function errors reported by RPM
+ postbuild check
+
+I: Program returns random data in a function
+E: oath-toolkit no-return-in-nonvoid-function pskcverify.c:43
+E: oath-toolkit no-return-in-nonvoid-function serialno.c:45
+---
+ libpskc/examples/pskcverify.c | 2 ++
+ libpskc/examples/serialno.c   | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/libpskc/examples/pskcverify.c b/libpskc/examples/pskcverify.c
+index 76e1b4d..4e6a2cc 100644
+--- a/libpskc/examples/pskcverify.c
++++ b/libpskc/examples/pskcverify.c
+@@ -40,4 +40,6 @@ main (int argc, const char *argv[])
+ 
+   pskc_done (container);
+   pskc_global_done ();
++
++  return 0;
+ }
+diff --git a/libpskc/examples/serialno.c b/libpskc/examples/serialno.c
+index 7682adb..420cab5 100644
+--- a/libpskc/examples/serialno.c
++++ b/libpskc/examples/serialno.c
+@@ -42,4 +42,6 @@ main (int argc, const char *argv[])
+ 
+   pskc_done (container);
+   pskc_global_done ();
++
++  return 0;
+ }
+-- 
+2.6.6
+

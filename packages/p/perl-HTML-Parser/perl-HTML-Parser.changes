@@ -1,0 +1,329 @@
+-------------------------------------------------------------------
+Wed Jan 20 10:12:44 UTC 2016 - coolo@suse.com
+
+- updated to 3.72
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+
+  2016-01-19  Release 3.72
+  
+  Gisle Aas (3):
+        Avoid more clang casting warnings
+        Remove trailing whitespace
+        Ensure entities expand to utf8 sequences under 'utf8_mode' [RT#99755]
+  
+  David Steinbrunner (2):
+        typo fix
+        typo fixes
+  
+  Jacques Germishuys (1):
+        Silence clang warning
+  
+  bulk88 (1):
+        const+static-ing
+  
+  
+  _______________________________________________________________________________
+
+-------------------------------------------------------------------
+Mon Apr 13 17:15:23 UTC 2015 - coolo@suse.com
+
+- regnererate spec file to be in line with current template
+
+-------------------------------------------------------------------
+Tue Oct 15 07:30:00 UTC 2013 - nine@detonation.org
+
+- update to 3.71
+      Transform ':' in headers to '-' [RT#80524]
+      Fix for cross-compiling with Buildroot
+      Comment typo fix
+      Fix Issue #3 / RT #84144: HTML::Entities::decode_entities() needs
+          to call SV_CHECK_THINKFIRST() before checking READONLY flag
+
+-------------------------------------------------------------------
+Mon Apr 15 10:55:30 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Mon Oct 17 01:36:26 UTC 2011 - vcizek@suse.com
+
+- update to 3.69
+      Documentation fix; encode_utf8 mixup [RT#71151]
+      Make it clearer that there are 2 (actually 3) options for handing "UTF-8 garbage"
+      Github is the official repo
+      Can't be bothered to try to fix the failures that occur on perl-5.6
+      fix to TokeParser to correctly handle option configuration
+      Aesthetic change: remove extra ;
+      Trim surrounding whitespace from extracted URLs.
+_______________________________________________________________________________
+
+-------------------------------------------------------------------
+Thu Aug 25 21:49:31 UTC 2011 - chris@computersalat.de
+
+- fix build for RHEL, CentOS
+  * Unknown tag: Suggests:
+
+-------------------------------------------------------------------
+Fri Feb 11 09:42:17 UTC 2011 - vcizek@novell.com
+
+- changed Recommends: perl(HTTP:Headers) to Suggests
+  (bnc#570870) 
+
+-------------------------------------------------------------------
+Thu Feb 10 22:11:33 UTC 2011 - chris@computersalat.de
+
+- remove Author
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Sep  6 09:35:03 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- fix deps
+  o Recommends HTTP::Headers not HTML::Headers
+
+-------------------------------------------------------------------
+Thu Sep  2 05:13:03 UTC 2010 - pascal.bleser@opensuse.org
+
+- replaced auto-generated spec file
+- update to 3.68:
+  * declare the encoding of the POD to be utf8
+
+-------------------------------------------------------------------
+Fri Aug 20 12:39:37 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- added bcond_with opt
+
+-------------------------------------------------------------------
+Wed Aug 18 09:14:32 CEST 2010 - dmueller@suse.de
+
+- update to 3.67:
+  * bleadperl 2154eca7 breaks HTML::Parser 3.66
+
+-------------------------------------------------------------------
+Mon Jul 12 09:33:04 CEST 2010 - dmueller@suse.de
+
+- update to 3.66:
+  * Fix entity decoding in utf8_mode for the title header
+
+-------------------------------------------------------------------
+Wed Apr  7 20:01:30 UTC 2010 - chris@computersalat.de
+
+- update to 3.65
+  * Eliminate buggy entities_decode_old
+  * Fixed endianness typo [RT#50811]
+  * Documentation fixes.
+
+-------------------------------------------------------------------
+Wed Jan 13 17:40:06 CET 2010 - anicka@suse.cz
+
+- update to 3.64 
+ * Convert files to UTF-8
+ * Don't allow decode_entities() to generate illegal Unicode chars
+ * Copyright 2009
+ * Remove rendundant (repeated) test
+ * Make parse_file() method use 3-arg open [RT#49434]
+ * Take more care to prepare the char range for encode_entities [RT#50170]
+ * decode_entities confused by trailing incomplete entity
+ * HTTP::Header doc typo fix.
+ * Do not bother tracking style or script, they're ignored.
+ * Bring HTML 5 head elements up to date with WD-html5-20090423.
+ * Improve HeadParser performance.
+ * Doc patch: Make it clearer what the return value from ->parse is
+- remove last patch (fixed in upstream)
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Oct 29 13:48:31 CET 2009 - anicka@suse.cz
+
+- fixed CVE-2009-3627 (bnc#550076)
+
+-------------------------------------------------------------------
+Thu Aug 27 14:39:20 CEST 2009 - coolo@novell.com
+
+- remove strange obsoletes
+
+-------------------------------------------------------------------
+Sat Jul 25 19:38:06 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 28 20:17:46 CEST 2009 - chris@computersalat.de
+
+- update to 3.61
+  * Test that triggers the crash that Chip fixed
+  * Complete documented list of literal tags
+  * Avoid crash (referenced pend_text instead of skipped_text)
+  * Reference HTML::LinkExttor [RT#43164]
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o fixed deps
+- fixed rpmlint warnings
+  o spurious-executable-perm in doc
+
+-------------------------------------------------------------------
+Fri Feb 27 10:48:05 CET 2009 - anicka@suse.cz
+
+- update to 3.60
+ * Spelling fixes.
+ * Test multi-value headers.
+ * Documentation improvements.
+ * Do not terminate head parsing on the <object> element
+ * Add support for HTML 5 <meta charset> and new HEAD elements.
+ * Short description of the htextsub example
+ * Suppress warning when encode_entities is called with undef
+ * HTML::Parser doesn't compile with perl 5.8.0.
+ 
+-------------------------------------------------------------------
+Tue Jan 20 15:55:27 CET 2009 - anicka@suse.cz
+
+- update to 3.59
+  * Restore perl-5.6 compatibility for HTML::HeadParser.
+  * Suppress "Parsing of undecoded UTF-8 will give garbage" warning
+    with attr_encoded
+  * The <iframe> element content is now parsed in literal mode.
+  * Parsing of <script> and <style> content ends on the first end tag
+    even when that tag was in a quoted string. That seems to be the
+    behaviour of all modern browsers.
+  * Implement backquote() attribute
+  * Test and documentation tweaks
+
+-------------------------------------------------------------------
+Mon Jan 15 10:56:22 CET 2007 - anicka@suse.cz
+
+- update to 3.56
+  * Cloning of parser state for compatiblity with threads.
+  * Don't require whitespace between declaration tokens.
+
+-------------------------------------------------------------------
+Tue Jul 11 16:39:58 CEST 2006 - anicka@suse.cz
+
+- update to 3.55
+- minor release
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan  6 13:02:25 CET 2006 - anicka@suse.cz
+
+- update to 3.48 
+
+-------------------------------------------------------------------
+Thu Feb 17 19:39:28 CET 2005 - mjancar@suse.cz
+
+- update to 3.45
+
+-------------------------------------------------------------------
+Fri Aug 06 18:51:34 CEST 2004 - mjancar@suse.cz
+
+- update to 3.36
+
+-------------------------------------------------------------------
+Thu Feb 26 14:52:31 CET 2004 - mjancar@suse.cz
+
+- update to 3.35
+
+-------------------------------------------------------------------
+Tue Oct 21 19:15:18 CEST 2003 - mjancar@suse.cz
+
+- update to 3.33
+
+-------------------------------------------------------------------
+Fri Aug 22 14:52:51 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 17 14:10:27 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Mon Jun 16 17:40:31 CEST 2003 - mjancar@suse.cz
+
+- fix filelist
+
+-------------------------------------------------------------------
+Fri Jun 06 10:35:16 CEST 2003 - mjancar@suse.cz
+
+- update to 3.28
+- use $RPM_OPT_FLAGS
+- don't package MANIFEST
+
+-------------------------------------------------------------------
+Tue May 20 12:40:48 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Wed Jul 10 20:09:18 CEST 2002 - prehak@suse.cz
+
+- updated to version 3.26
+- added eg directory into documentation
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue Oct 30 12:13:39 CET 2001 - rvasice@suse.cz
+
+- added perl-HTML-Tagset to Requires
+
+-------------------------------------------------------------------
+Tue Aug 14 15:33:24 CEST 2001 - rvasice@suse.cz
+
+- update to version 3.25
+
+-------------------------------------------------------------------
+Mon Mar 26 13:36:50 CEST 2001 - cihlar@suse.cz
+
+- added perl-HTML-Tagset to neededforbuild
+- added make test
+
+-------------------------------------------------------------------
+Wed Mar 14 07:35:40 CET 2001 - cihlar@suse.cz
+
+- update to version 3.19
+
+-------------------------------------------------------------------
+Tue Nov 14 10:32:54 CET 2000 - cihlar@suse.cz
+
+- renamed perl_htp -> perl-HTML-Parser
+- update to version 3.13
+
+-------------------------------------------------------------------
+Tue Aug 22 10:16:09 CEST 2000 - cihlar@suse.cz
+
+- update to version 3.10
+- bzipped sources
+
+-------------------------------------------------------------------
+Mon Aug 21 16:40:16 CEST 2000 - ro@suse.de
+
+- adapted for perl-5.6 
+
+-------------------------------------------------------------------
+Thu Apr 13 18:09:17 MEST 2000 - ug@suse.de
+
+- added to distribution 
+

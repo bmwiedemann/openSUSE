@@ -1,0 +1,212 @@
+From ac915ba6a9c6a9ad2491eb2d779a3e9de485e93d Mon Sep 17 00:00:00 2001
+From: easymodo <easymodofrf@gmail.com>
+Date: Sun, 31 May 2020 15:34:48 +0300
+Subject: [PATCH] place qimgv librares/plugins in lib/qimgv #231 rename to
+ player_mpv.so, unversioned
+
+---
+ CMakeLists.txt                                |  7 +++++-
+ .../player_mpv}/CMakeLists.txt                | 25 ++++++++++---------
+ .../player_mpv}/src/mpvwidget.cpp             |  0
+ .../player_mpv}/src/mpvwidget.h               |  0
+ .../player_mpv}/src/qthelper.hpp              |  0
+ .../player_mpv}/src/videoplayer.cpp           |  0
+ .../player_mpv}/src/videoplayer.h             |  0
+ .../player_mpv}/src/videoplayermpv.cpp        |  0
+ .../player_mpv}/src/videoplayermpv.h          |  0
+ qimgv/CMakeLists.txt                          |  3 +++
+ qimgv/gui/viewers/videoplayerinitproxy.cpp    | 24 +++++++++++++++---
+ 11 files changed, 42 insertions(+), 17 deletions(-)
+ rename {qimgv_libs/qimgv_player_mpv => plugins/player_mpv}/CMakeLists.txt (51%)
+ rename {qimgv_libs/qimgv_player_mpv => plugins/player_mpv}/src/mpvwidget.cpp (100%)
+ rename {qimgv_libs/qimgv_player_mpv => plugins/player_mpv}/src/mpvwidget.h (100%)
+ rename {qimgv_libs/qimgv_player_mpv => plugins/player_mpv}/src/qthelper.hpp (100%)
+ rename {qimgv_libs/qimgv_player_mpv => plugins/player_mpv}/src/videoplayer.cpp (100%)
+ rename {qimgv_libs/qimgv_player_mpv => plugins/player_mpv}/src/videoplayer.h (100%)
+ rename {qimgv_libs/qimgv_player_mpv => plugins/player_mpv}/src/videoplayermpv.cpp (100%)
+ rename {qimgv_libs/qimgv_player_mpv => plugins/player_mpv}/src/videoplayermpv.h (100%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a97ea91..e7848b9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,6 +12,11 @@ project(qimgv
+ #endif()
+ message(STATUS "Build configuration: " ${CMAKE_BUILD_TYPE})
+ 
++set(QIMGV_PLUGIN_PATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/qimgv")
++ADD_DEFINITIONS(-D_QIMGV_PLUGIN_PATH="${QIMGV_PLUGIN_PATH}/")
++
++message(STATUS "Plugin path: " ${QIMGV_PLUGIN_PATH})
++
+ # detect if libstdc++ is in use to know if libstdc++fs should be linked
+ include(CheckCXXSourceCompiles)
+ check_cxx_source_compiles("#include <iostream>
+@@ -67,5 +72,5 @@ endif()
+ add_subdirectory(qimgv)
+ 
+ if(VIDEO_SUPPORT)
+-    add_subdirectory(qimgv_libs/qimgv_player_mpv)
++    add_subdirectory(plugins/player_mpv)
+ endif()
+diff --git a/qimgv_libs/qimgv_player_mpv/CMakeLists.txt b/plugins/player_mpv/CMakeLists.txt
+similarity index 51%
+rename from qimgv_libs/qimgv_player_mpv/CMakeLists.txt
+rename to plugins/player_mpv/CMakeLists.txt
+index b12ab97..0fdccfd 100644
+--- a/qimgv_libs/qimgv_player_mpv/CMakeLists.txt
++++ b/plugins/player_mpv/CMakeLists.txt
+@@ -1,10 +1,12 @@
+ cmake_minimum_required(VERSION 3.11)
+-project(qimgv_player_mpv VERSION 1.0
++project(player_mpv
+     DESCRIPTION "video player widget for qimgv (using mpv)"
+     LANGUAGES CXX)
+ 
+ set(CMAKE_AUTOMOC ON)
+ 
++set(QIMGV_LIBDIR "${CMAKE_INSTALL_LIBDIR}/qimgv")
++
+ find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
+ 
+ find_package(PkgConfig REQUIRED)
+@@ -12,31 +14,30 @@ pkg_check_modules(Mpv REQUIRED IMPORTED_TARGET mpv)
+ 
+ include(GNUInstallDirs)
+ 
+-add_library(qimgv_player_mpv SHARED
++add_library(player_mpv SHARED
+     src/videoplayer.cpp
+     src/mpvwidget.cpp
+     src/videoplayermpv.cpp
+     src/qthelper.hpp)
+ 
+-target_compile_features(qimgv_player_mpv PRIVATE cxx_std_11)
++target_compile_features(player_mpv PRIVATE cxx_std_11)
+ 
+-target_link_libraries(qimgv_player_mpv PRIVATE
++target_link_libraries(player_mpv PRIVATE
+     Qt5::Core Qt5::Widgets PkgConfig::Mpv)
+ 
+-set_target_properties(qimgv_player_mpv PROPERTIES
++set_target_properties(player_mpv PROPERTIES
+     CXX_EXTENSIONS OFF
+-    VERSION ${PROJECT_VERSION}
+-    SOVERSION 1)
++    PREFIX "")
+ 
+-target_include_directories(qimgv_player_mpv PRIVATE src)
++target_include_directories(player_mpv PRIVATE src)
+ 
+ if(WIN32)
+-    target_include_directories(qimgv_player_mpv PRIVATE
++    target_include_directories(player_mpv PRIVATE
+         ${CMAKE_CURRENT_SOURCE_DIR}/mpv-dev/include)
+-    target_link_directories(qimgv_player_mpv PRIVATE
++    target_link_directories(player_mpv PRIVATE
+         ${CMAKE_CURRENT_SOURCE_DIR}/mpv-dev/$<IF$<EQUAL:${CMAKE_SIZEOF_VOID_P},8>,x86_64,i686>)
+ endif()
+ 
+-target_compile_definitions(qimgv_player_mpv PRIVATE QIMGV_PLAYER_MPV_LIBRARY)
++target_compile_definitions(player_mpv PRIVATE player_mpv_LIBRARY)
+ 
+-install(TARGETS qimgv_player_mpv LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(TARGETS player_mpv LIBRARY DESTINATION ${QIMGV_LIBDIR})
+diff --git a/qimgv_libs/qimgv_player_mpv/src/mpvwidget.cpp b/plugins/player_mpv/src/mpvwidget.cpp
+similarity index 100%
+rename from qimgv_libs/qimgv_player_mpv/src/mpvwidget.cpp
+rename to plugins/player_mpv/src/mpvwidget.cpp
+diff --git a/qimgv_libs/qimgv_player_mpv/src/mpvwidget.h b/plugins/player_mpv/src/mpvwidget.h
+similarity index 100%
+rename from qimgv_libs/qimgv_player_mpv/src/mpvwidget.h
+rename to plugins/player_mpv/src/mpvwidget.h
+diff --git a/qimgv_libs/qimgv_player_mpv/src/qthelper.hpp b/plugins/player_mpv/src/qthelper.hpp
+similarity index 100%
+rename from qimgv_libs/qimgv_player_mpv/src/qthelper.hpp
+rename to plugins/player_mpv/src/qthelper.hpp
+diff --git a/qimgv_libs/qimgv_player_mpv/src/videoplayer.cpp b/plugins/player_mpv/src/videoplayer.cpp
+similarity index 100%
+rename from qimgv_libs/qimgv_player_mpv/src/videoplayer.cpp
+rename to plugins/player_mpv/src/videoplayer.cpp
+diff --git a/qimgv_libs/qimgv_player_mpv/src/videoplayer.h b/plugins/player_mpv/src/videoplayer.h
+similarity index 100%
+rename from qimgv_libs/qimgv_player_mpv/src/videoplayer.h
+rename to plugins/player_mpv/src/videoplayer.h
+diff --git a/qimgv_libs/qimgv_player_mpv/src/videoplayermpv.cpp b/plugins/player_mpv/src/videoplayermpv.cpp
+similarity index 100%
+rename from qimgv_libs/qimgv_player_mpv/src/videoplayermpv.cpp
+rename to plugins/player_mpv/src/videoplayermpv.cpp
+diff --git a/qimgv_libs/qimgv_player_mpv/src/videoplayermpv.h b/plugins/player_mpv/src/videoplayermpv.h
+similarity index 100%
+rename from qimgv_libs/qimgv_player_mpv/src/videoplayermpv.h
+rename to plugins/player_mpv/src/videoplayermpv.h
+diff --git a/qimgv/CMakeLists.txt b/qimgv/CMakeLists.txt
+index dcf8ce8..bf95811 100644
+--- a/qimgv/CMakeLists.txt
++++ b/qimgv/CMakeLists.txt
+@@ -42,6 +42,9 @@ if(KDE_SUPPORT)
+ endif()
+ if(VIDEO_SUPPORT)
+     target_compile_definitions(qimgv PRIVATE USE_MPV)
++    if(NOT WIN32)
++        ADD_DEFINITIONS(-D_QIMGV_PLAYER_PLUGIN="player_mpv.so")
++    endif()
+ endif()
+ if(OPENCV_SUPPORT)
+     target_link_libraries(qimgv PRIVATE ${OpenCV_LIBS})
+diff --git a/qimgv/gui/viewers/videoplayerinitproxy.cpp b/qimgv/gui/viewers/videoplayerinitproxy.cpp
+index 409d42f..7de3048 100644
+--- a/qimgv/gui/viewers/videoplayerinitproxy.cpp
++++ b/qimgv/gui/viewers/videoplayerinitproxy.cpp
+@@ -1,5 +1,17 @@
+ #include "videoplayerinitproxy.h"
+ 
++#ifdef _QIMGV_PLUGIN_PATH
++    #define QIMGV_PLUGIN_PATH _QIMGV_PLUGIN_PATH
++#else
++    #define QIMGV_PLUGIN_PATH ""
++#endif
++
++#ifdef _QIMGV_PLAYER_PLUGIN
++    #define QIMGV_PLAYER_PLUGIN _QIMGV_PLAYER_PLUGIN
++#else
++    #define QIMGV_PLAYER_PLUGIN ""
++#endif
++
+ VideoPlayerInitProxy::VideoPlayerInitProxy(QWidget *parent)
+     : VideoPlayer(parent),
+       player(nullptr)
+@@ -26,13 +38,19 @@ std::shared_ptr<VideoPlayer> VideoPlayerInitProxy::getPlayer() {
+ }
+ 
+ inline bool VideoPlayerInitProxy::initPlayer() {
++    QString path = QString(QIMGV_PLUGIN_PATH) + QIMGV_PLAYER_PLUGIN;
+ #ifndef USE_MPV
+     return false;
+ #endif
+     if(player)
+         return true;
+ #ifdef __linux
+-    playerLib.setFileName("qimgv_player_mpv");
++    if(QFile::exists(path)) {
++        playerLib.setFileName(path);
++    } else {
++        qDebug() << "Plugin at:" << path << "does not exist.";
++        playerLib.setFileName("qimgv_player_mpv"); // let QLibrary try to find it
++    }
+ #else
+     playerLib.setFileName("libqimgv_player_mpv.dll");
+ #endif
+@@ -43,11 +61,9 @@ inline bool VideoPlayerInitProxy::initPlayer() {
+         player.reset(pl);
+     }
+     if(!player) {
+-        qDebug() << "[VideoPlayerInitProxy] Error - could not load player library";
+-        qDebug() << playerLib.fileName();
++        qDebug() << "Could not load plugin:" << playerLib.fileName();
+         return false;
+     }
+-    //qDebug() << "[VideoPlayerInitProxy] Library load success!";
+ 
+     player->setMuted(!settings->playVideoSounds());
+     player->setVideoUnscaled(!settings->expandImage());

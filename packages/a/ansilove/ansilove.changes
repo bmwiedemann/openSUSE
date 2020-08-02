@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Sun Jul  5 15:28:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.2
+  * Define _GNU_SOURCE in CMakeLists.txt to avoid cluttering source
+    files
+  * No need to set HAVE_SECCOMP to 1, defining it is enough
+  * Remove some unneeded seccomp related includes
+  * Validate architectures for seccomp
+  * Add seccomp support on i386, tested on glibc and musl
+  * Remove extraneous underscore in #if defined check
+  * Use __NR_ instead of SYS_ prefix in #if defined checks
+
+-------------------------------------------------------------------
+Mon May 25 17:31:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.1
+  * Various documentation tweaks and improvements
+  * Define timespecsub macro in compat.h if it doesn't exists
+  * Use CLOCK_REALTIME if CLOCK_MONOTONIC is not available
+  * Display processing time on exit.
+  * Fix includes and add forward declarations in various source
+    files
+
+-------------------------------------------------------------------
+Mon Feb 17 19:33:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.0
+  * Add a new '-t' flag (type), allowing to specify input file type
+    and override file type detection
+  * Various documentation tweaks and improvements
+
+-------------------------------------------------------------------
+Sun Jan 19 10:09:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.7
+- Use OpenBSD style(9) for function prototypes and declarations
+- Replace EXIT_SUCCESS by zero in all SAUCE functions
+- Do not use typedef for the sauce struct
+- Set icecolors to true if defined in SAUCE record ANSiFlags
+- Add test cases for most supported formats
+- Sync the description of Retina output capabilities with reality
+
+-------------------------------------------------------------------
+Tue Dec 10 18:50:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.6
+  * Remove extraneous sauceReadFileName() call, read from existing
+    SAUCE record
+  * Use strdup() when assigning fileName and fext fallback values
+  * Call memset() to set all record struct fields to zero
+  * Free SAUCE record and comments once and for all when exiting
+    the program
+
+-------------------------------------------------------------------
+Tue Nov 19 18:16:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.5
+  * Add ENABLE_SECCOMP build option, to allow building seccomp
+    support conditionally
+  * Use ${CMAKE_INSTALL_BINDIR} instead of hardcoding 'bin'
+
+-------------------------------------------------------------------
+Sun Nov  3 19:07:40 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Shorten the description
+
+-------------------------------------------------------------------
+Mon Oct 28 21:07:42 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.4
+  * Add initial seccomp support to Ansilove
+  * Move pledge and seccomp initialization before ansilove_init()
+  * Move conditional includes for 'pledge' and 'strtonum' in compat.h
+
+-------------------------------------------------------------------
+Sun Oct 27 12:33:52 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 4.0.3

@@ -1,0 +1,23 @@
+From 0da043466ace27eb483114c87ce81feaf00ed682 Mon Sep 17 00:00:00 2001
+From: Eric Ren <zren@suse.com>
+Date: Thu, 6 Apr 2017 11:22:30 +0800
+Subject: [PATCH] systemd service: make pvscan service after multipathd
+
+bsc#998893
+Signed-off-by: Eric Ren <zren@suse.com>
+
+2020-05-13:
+lvm2-lvmetad had been removed, so this patch was modified too.
+Signed-off-by: Heming zhao <heming.zhao@suse.com>
+---
+
+diff -Nupr a/scripts/lvm2-pvscan.service.in b/scripts/lvm2-pvscan.service.in
+--- a/scripts/lvm2-pvscan.service.in    2020-05-13 11:28:58.290210992 +0800
++++ b/scripts/lvm2-pvscan.service.in    2020-05-13 11:29:42.997788967 +0800
+@@ -4,6 +4,7 @@ Documentation=man:pvscan(8)
+ DefaultDependencies=no
+ StartLimitIntervalSec=0
+ BindsTo=dev-block-%i.device
++After=multipathd.service
+ Before=shutdown.target
+ Conflicts=shutdown.target

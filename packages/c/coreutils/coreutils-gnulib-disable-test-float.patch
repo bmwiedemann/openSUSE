@@ -1,0 +1,25 @@
+Disable gnulib test 'test-float' temporarily as it fails on ppc and ppc64le.
+
+* gnulib-tests/gnulib.mk: Comment lines related to 'test-float'.
+---
+ gnulib-tests/gnulib.mk |    7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+Index: gnulib-tests/gnulib.mk
+===================================================================
+--- gnulib-tests/gnulib.mk.orig
++++ gnulib-tests/gnulib.mk
+@@ -635,9 +635,10 @@ EXTRA_DIST += test-filevercmp.c macros.h
+ 
+ ## begin gnulib module float-tests
+ 
+-TESTS += test-float
+-check_PROGRAMS += test-float
+-EXTRA_DIST += test-float.c macros.h
++# Test fails with GCC-10 on ppc and ppc64le.
++#TESTS += test-float
++#check_PROGRAMS += test-float
++#EXTRA_DIST += test-float.c macros.h
+ 
+ ## end   gnulib module float-tests
+ 

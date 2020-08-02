@@ -1,0 +1,1530 @@
+-------------------------------------------------------------------
+Fri Mar 29 16:06:38 UTC 2019 - Jean Delvare <jdelvare@suse.com>
+
+- test-faildiff-workaround-order-bug.patch: Avoid false-positive
+  test suite failures in the build service.
+
+-------------------------------------------------------------------
+Fri Mar 29 15:34:44 UTC 2019 - Jean Delvare <jdelvare@suse.com>
+
+- Update to version 0.66:
+  * Add support for lzip archives and patches
+  * Document QUILT_PC as user-settable
+  * configure: Don't require md5sum
+  * Test suite: Allow keeping the working directory on failure
+  * Test suite: Fix /bin/sh filtering
+  * Test suite: Run tests again if test.quiltrc changes
+  * Test suite: Handle alternative QUILT_PATCHES values
+  * Test suite: Increase code path coverage
+  * Test suite: Be verbose on directory error
+  * Test suite: Clean up when interrupted
+  * Test suite: Prevent test cases from escaping
+  * diff: Add missing quotes in basename call
+  * header: Fix corruption when trailing newline is missing
+  * mail: Remove Content-Disposition headers
+  * mail: Complain when a patch doesn't exist
+  * new: Fix corruption when trailing newline is missing
+  * refresh: Add missing quotes in basename call
+  * setup: Add basic support for p7zip (.7z) archives
+  * setup: Align --fast on --slow for series files
+  * quilt.el: Define quilt-edit-top-only before it's used
+  * quilt.el: Stop using deprecated toggle-read-only
+  * quilt.el: Don't strip directory in quilt-top-patch
+  * quilt.el: Fix emacs compatibility issue
+  * quilt.el: Read QUILT_PC from config file
+  * guards: Mention it in quilt manual page
+  * compat/getopt: Handle a second separator
+  * compat/getopt: Allow non-digit parameter embedded in short option
+  * Obsoletes mail-fix-patch-set-threading.patch
+  * Obsoletes patch-wrapper-rpm.diff
+  * Obsoletes perl-526.patch
+  * Obsoletes quilt-translations.patch
+  * Obsoletes quiltrc-support-all-patch-formats-by-default.patch
+- Refresh suse-workaround-pseudo-release.patch
+
+-------------------------------------------------------------------
+Thu May  3 08:53:20 CEST 2018 - jdelvare@suse.de
+
+- quiltrc-support-all-patch-formats-by-default.patch: quiltrc:
+  Support all patch formats by default (bsc#1088281).
+
+-------------------------------------------------------------------
+Sun Sep 24 10:00:18 UTC 2017 - coolo@suse.com
+
+- add perl-526.patch to work with perl 5.26
+
+-------------------------------------------------------------------
+Fri Jul 21 17:11:23 UTC 2017 - olaf@aepfle.de
+
+- Correct fold -R helptext in german locale with quilt-translations.patch
+
+-------------------------------------------------------------------
+Mon May 29 11:24:01 UTC 2017 - jdelvare@suse.de
+
+- Add missing bug number in changes file (bsc#1041323).
+
+-------------------------------------------------------------------
+Fri Apr 14 13:56:29 CEST 2017 - jdelvare@suse.de
+
+- Change the rpm group. Quilt is a development tool, not a text
+  file editor.
+- We don't need procmail to build quilt.
+- patch-wrapper-rpm.diff: Add a decription and upstream reference.
+- mail-fix-patch-set-threading.patch: mail: Fix patch set threading
+  (regression in version 0.64, savannah bug #50775.)
+
+-------------------------------------------------------------------
+Thu Nov 10 10:34:09 CET 2016 - jdelvare@suse.de
+
+- Update to version 0.65:
+  * Project settings have priority
+  * Fix a race condition in diff_file
+  * Performance: Optimizations to the setup command
+  * Performance: Optimizations to the bash completion script
+  * Test suite: Improve the edit test case
+  * Test suite: Test backup failure
+  * Test suite: Test the header command with hard links
+  * diff: Report diff failures
+  * mail: Fix the help text
+  * push: Fix the synopsis
+  * refresh: Do not remove symlinks
+  * refresh: Break links to read-only patch files
+  * refresh: Always preserve modification time
+  * setup: Report failed look-ups in inspect-wrapper
+  * quilt.el: Fix quilt-editable when patches are stored in subdirs
+  * bash_completion: Handle spaces in file names
+  * bash_completion: Update the list of commands
+  * bash_completion: Add new command options
+  * bash_completion: Fix handling of mail, new, push options
+  * guards: Simplify the help text
+  * guards: Include the file name also in the "Not found" case
+  * guards: Add support for an external filelist in --check mode
+  * guards: Report which config file has problem in --check mode
+  * guards: Documentation update
+  * guards: Clarify a user message
+  * Obsoletes edit-01-test-file-creation.patch
+  * Obsoletes edit-02-call-remove-not-revert.patch
+  * Obsoletes edit-03-fix-corner-case.patch
+  * Obsoletes translation-fixes-01.patch
+  * Obsoletes translation-fixes-02.patch
+  * Obsoletes translation-fixes-03.patch
+  * Obsoletes translation-fixes-04.patch
+  * Obsoletes reject-binary-files-in-patches.patch
+- Pass --sysconfdir to configure so that the configuration files
+  are installed in the right place.
+- Update package description.
+- Refresh suse-workaround-pseudo-release.patch
+
+-------------------------------------------------------------------
+Fri Sep 16 09:24:13 UTC 2016 - jdelvare@suse.de
+
+- reject-binary-files-in-patches.patch: Since diffutils version
+  3.4, diff no longer returns an error code for binary files. Parse
+  the first line of the output to detect this case and raise our
+  own error.
+- Remove fix-faildiff-test-for-diffutils-3.4.patch, use the
+  upstream fix instead.
+
+-------------------------------------------------------------------
+Fri Sep  9 11:05:04 CEST 2016 - jdelvare@suse.de
+
+- fix-faildiff-test-for-diffutils-3.4.patch: Since diffutils
+  version 3.4, diff no longer returns an error code for binary
+  files. Remove this test from faildiff.test.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:22:51 CET 2015 - jdelvare@suse.de
+
+Translation fixes:
+- translation-fixes-01.patch: Make gettext happy (needed so that
+  following patches apply cleanly.)
+- translation-fixes-02.patch: Missing escape in Japanese
+  translation.
+- translation-fixes-03.patch: Improve the German translation
+  (including a number of important fixes.)
+- translation-fixes-04.patch: Fix translation of main usage message
+  (all languages.)
+
+Fixes to the "edit" command:
+- edit-01-test-file-creation.patch: edit: Improve the test case
+  (needed so that following patches apply cleanly.)
+- edit-02-call-remove-not-revert.patch: edit: Use command "remove"
+  to remove files.
+- edit-03-fix-corner-case.patch: edit: Fix a corner case.
+
+-------------------------------------------------------------------
+Mon Feb 16 15:43:04 CET 2015 - jdelvare@suse.de
+
+- Update to version 0.64:
+  * Performance: Several optimizations
+  * Test suite: Several fixes and coverage improvements
+  * Test suite: Run the tests in predictable order
+  * files: Add support for unapplied patches
+  * graph: Check for graphviz availability
+  * mail: Remove procmail dependency
+  * push: Do not use interactive mode with -f
+  * Obsoletes dont-substitute-release.patch
+  * Obsoletes hackweek-11-01-comment-update.patch
+  * Obsoletes hackweek-11-02-cleanups.patch
+  * Obsoletes hackweek-11-03-inspect-list-all-options.patch
+  * Obsoletes hackweek-11-04-pass-through.patch
+  * Obsoletes hackweek-11-05-no-explicit-rm.patch
+  * Obsoletes hackweek-11-06-exclude-from-md5sums.patch
+  * Obsoletes hackweek-11-07-normalize-path.patch
+  * Obsoletes hackweek-11-08-inspect-split-wrapper-script.patch
+  * Obsoletes hackweek-11-09-inspect-temporary-data-file.patch
+  * Obsoletes hackweek-11-10-setup-fix-path-to-extra-patches.patch
+  * Obsoletes hackweek-11-11-setup-trace-call-first.patch
+  * Obsoletes hackweek-11-12-setup-alternative-implementation-v2.patch
+  * Obsoletes hackweek-11-13-setup-let-normalize_path-deal-with-dot.patch
+  * Obsoletes hackweek-11-14-setup-fix-link-creation.patch
+  * Obsoletes hackweek-11-15-setup-missing-escape-in-normalize_path.patch
+  * Obsoletes hackweek-11-16-setup-fix-create_symlink-corner-case.patch
+  * Obsoletes inspect-skip-version-check.patch
+  * Obsoletes pop-add-auto-refresh.patch
+  * Obsoletes push-add-auto-refresh.patch
+  * Obsoletes quilt-check-modified-series-rearm.patch
+  * Obsoletes quilt-check-modified-series.patch
+  * Obsoletes quilt-el-fix-patch-select-completion.patch
+  * Obsoletes quilt-el-fix-tramp-support.patch
+  * Obsoletes quilt-format-options-pass-through.patch
+  * Obsoletes setup-check-for-rpmbuild.patch
+  * Obsoletes setup-fix-tar-with-long-options.patch
+  * Obsoletes setup-skip-version-check.patch
+- Refresh suse-workaround-pseudo-release.patch
+
+-------------------------------------------------------------------
+Wed Feb  4 08:52:03 CET 2015 - jdelvare@suse.de
+
+- dont-substitute-release.patch: Update upstream reference.
+- hackweek-11-15-setup-missing-escape-in-normalize_path.patch:
+  setup: Fix removal of "." components in normalize_path.
+- hackweek-11-16-setup-fix-create_symlink-corner-case.patch: setup:
+  Fix a corner case in create_symlink (boo#916007).
+
+-------------------------------------------------------------------
+Wed Jan 28 12:15:51 CET 2015 - jdelvare@suse.de
+
+- dont-substitute-release.patch: mail: Don't include the release
+  number in User-Agent.
+
+-------------------------------------------------------------------
+Wed Jan 28 11:40:19 CET 2015 - jdelvare@suse.de
+
+- Update upstream references.
+- quilt-el-fix-tramp-support.patch: quilt-el: Fix tramp support.
+- quilt-el-fix-patch-select-completion.patch: quilt-el: Fix patch
+  select completion.
+- hackweek-11-13-setup-let-normalize_path-deal-with-dot.patch:
+  setup: Let normalize_path deal with ".".
+- hackweek-11-14-setup-fix-link-creation.patch: setup: Fix link
+  creation.
+
+-------------------------------------------------------------------
+Mon Dec  8 10:39:42 CET 2014 - jdelvare@suse.de
+
+- Update upstream references.
+- hackweek-11-11-setup-alternative-implementation.patch: Delete,
+  replaced with new implementation.
+- hackweek-11-11-setup-trace-call-first.patch: inspect-wrapper:
+  Trace calls earlier.
+- hackweek-11-12-setup-alternative-implementation-v2.patch: New
+  implementation of "setup --fast" option.
+
+-------------------------------------------------------------------
+Tue Nov  4 13:30:30 CET 2014 - jdelvare@suse.de
+
+- quilt.spec: Only use Recommends for SUSE targets, as it was not
+  supported upstream until very recently so it breaks the build
+  on Fedora_18, RHEL_6 and CentOS_6.
+
+-------------------------------------------------------------------
+Mon Nov  3 14:09:31 CET 2014 - jdelvare@suse.de
+
+- quilt-check-modified-series.patch: Add upstream reference.
+- quilt-check-modified-series-rearm.patch: pop: Rearm consistency
+  check if needed.
+- hackweek-11-01-comment-update.patch: inspect: Comment update.
+- hackweek-11-02-cleanups.patch: setup/inspect: Cleanups.
+- hackweek-11-03-inspect-list-all-options.patch: inspect: List all
+  options in usage text.
+- hackweek-11-04-pass-through.patch: inspect: Pass through the
+  wrappers when appropriate.
+- hackweek-11-05-no-explicit-rm.patch: inspect: Don't explicitly
+  delete the temporary data file.
+- hackweek-11-06-exclude-from-md5sums.patch: inspect: Exclude more
+  files from md5sums.
+- hackweek-11-07-normalize-path.patch: setup: Introduce function
+  normalize_path.
+- hackweek-11-08-inspect-split-wrapper-script.patch: inspect: Split
+  the patch/tar/unzip wrapper to a separate script.
+- hackweek-11-09-inspect-temporary-data-file.patch:
+  inspect-wrapper: Minor code optimization.
+- hackweek-11-10-setup-fix-path-to-extra-patches.patch: setup: Fix
+  path to extra patches in series file.
+- hackweek-11-11-setup-alternative-implementation.patch: setup: Add
+  --fast option.
+
+-------------------------------------------------------------------
+Tue Oct 14 13:07:53 CEST 2014 - jdelvare@suse.de
+
+- quilt-check-modified-series.patch: Check for series file
+  consistency.
+- setup-fix-tar-with-long-options.patch,
+  inspect-skip-version-check.patch: Update upstream status.
+
+-------------------------------------------------------------------
+Thu Oct  9 15:00:35 CEST 2014 - jdelvare@suse.de
+
+- inspect-skip-version-check.patch: Skip version check when
+  running "quilt setup" on a spec file. The previous fix only
+  worked when running "quilt setup" on a series file.
+
+-------------------------------------------------------------------
+Wed Oct  1 14:10:22 CEST 2014 - jdelvare@suse.de
+
+- setup-fix-tar-with-long-options.patch: Update to new upstream
+  version. This fixes handling of corner cases.
+- quilt-format-options-pass-through.patch,
+  pop-add-auto-refresh.patch, push-add-auto-refresh.patch:
+  Implement auto-refreshing when applying or unapplying patches, as
+  suggested by Tomas Cech and Takashi Iwai.
+
+-------------------------------------------------------------------
+Thu Jul 31 18:47:10 CEST 2014 - jdelvare@suse.de
+
+- setup-skip-version-check.patch: setup: Skip version check
+  (bsc#891332).
+- setup-fix-tar-with-long-options.patch: inspect: Handle long
+  options passed to tar.
+
+-------------------------------------------------------------------
+Mon Jun  9 15:46:01 CEST 2014 - jdelvare@suse.de
+
+- Fix setup-check-for-rpmbuild.patch: echo was used where printf
+  was intended (bnc#873817); also update upstream reference
+
+-------------------------------------------------------------------
+Mon Jun  9 14:45:46 CEST 2014 - jdelvare@suse.de
+
+- update to 0.63
+  * Option -E is no longer passed to patch by default
+  * Return 2 when there is nothing to do, contrasting with errors
+    (ret=1)
+  * Exit with an error when diff's retcode=2 (error) on patch
+    refresh
+  * bash_completion: cleanups and performance improvement
+    (Savannah's #27111)
+  * Add some tests to our testsuite, for a better coverage
+  * Bug fix: Patches emptying files should work now
+  * Bug fix: Check for duplicate patch in series (Savannah's
+    #20628)
+  * Obsoletes quilt-bash_completion-fix-completion-of-patch-names.patch
+  * Obsoletes quilt-boost-the-speed-of-series-applied-and-unapplied.patch
+  * Obsoletes quilt-enable-patch-wrapper-test.patch
+  * Obsoletes quilt-files-return-nothing-if-there-are-no-files.patch
+  * Obsoletes quilt-fix-quilt-diff-z-on-files-with-spaces-in-name.patch
+  * Obsoletes quilt-patches-fix-heuristic-for-unapplied-patches-with-timestamps.patch
+  * Obsoletes quilt-patches-optimize-processing-of-unapplied-patches.patch
+  * Obsoletes quilt-patches-optimize-the-multiple-files-case.patch
+  * Obsoletes quilt-refresh-fix-error-message.patch
+- Refresh patch-wrapper-rpm.diff
+- Refresh quilt-support-vimdiff.patch
+
+-------------------------------------------------------------------
+Fri Apr 25 18:16:09 CEST 2014 - jdelvare@suse.de
+
+- quilt-bash_completion-fix-completion-of-patch-names.patch: Fix
+  bash completion of patch names (bnc#872719)
+- quilt-boost-the-speed-of-series-applied-and-unapplied.patch:
+  Performance boost for series, applied and unapplied commands
+  (bnc#872719)
+- quilt-enable-patch-wrapper-test.patch: Re-enable testing of
+  patch-wrapper (bnc#872719)
+- quilt-files-return-nothing-if-there-are-no-files.patch: Fix quilt
+  files output when there are no files (bnc#872719)
+- quilt-fix-quilt-diff-z-on-files-with-spaces-in-name.patch: Fix
+  quilt diff -z on file names including spaces (bnc#872719)
+- quilt-patches-fix-heuristic-for-unapplied-patches-with-timestamps.patch:
+  Fix patches heuristic for unapplied patches with timestamps
+  (bnc#872719)
+- quilt-patches-optimize-processing-of-unapplied-patches.patch,
+  quilt-patches-optimize-the-multiple-files-case.patch: Fix
+  performance regression in quilt patches (bnc#872719)
+- quilt-refresh-fix-error-message.patch: Fix refresh error message
+  (bnc#872719)
+
+-------------------------------------------------------------------
+Thu Apr 17 10:49:29 CEST 2014 - jdelvare@suse.de
+
+- setup-check-for-rpmbuild.patch: setup: Check for rpmbuild
+  availability (bnc#873817)
+- Add recommends: rpmbuild (bnc#873817)
+
+-------------------------------------------------------------------
+Fri Mar 21 09:42:03 CET 2014 - ohering@suse.de
+
+- quilt requires less, unless PAGER is set
+
+-------------------------------------------------------------------
+Mon Dec  9 13:36:41 CET 2013 - jdelvare@suse.de
+
+- Recompress the source archive with bzip2 (to remove a rpmlint
+  warning.)
+
+-------------------------------------------------------------------
+Mon Dec  9 11:20:32 CET 2013 - jdelvare@suse.de
+
+- Change bzip2 from required to recommended. Quilt works just fine
+  without it and xz compression if becoming more popular than
+  bzip2.
+
+-------------------------------------------------------------------
+Mon Dec  9 10:44:43 CET 2013 - jdelvare@suse.de
+
+- update to 0.61
+  * No new feature, but almost two years of fixes and minor
+    improvements.
+  * Many fixes and improvements to quilt.el (emacs integration.)
+  * Many fixes and improvements to the setup command, which we
+    already had as patches.
+  * Parameter quoting fixes to many commands.
+  * Several fixes and improvements to remove-trailing-ws, together
+    with a dedicated test case.
+  * Various fixes to the pop, push, refresh and patches commands.
+  * Translation fixes and updates.
+  * Obsoletes quilt-find-quoting-style.patch.
+  * Obsoletes quilt-makefile-fix-configure-with-xargs.patch.
+  * Obsoletes quilt-makefile-fix-find-perm-usage.patch.
+  * Obsoletes quilt-setup-01-check-existing-files-after-unpack.patch.
+  * Obsoletes quilt-setup-02-try-alternative-names.patch.
+  * Obsoletes quilt-setup-03-remember-alternative-names.patch.
+  * Obsoletes quilt-setup-04-handle-zip-files.patch.
+  * Obsoletes quilt-setup-05-fix-check_for_existing_files.patch.
+  * Obsoletes quilt-setup-06-check-for-directories-too.patch.
+  * Obsoletes quilt-stable-rebuild.patch.
+
+-------------------------------------------------------------------
+Mon Sep 30 14:36:03 CEST 2013 - jdelvare@suse.de
+
+- quilt-makefile-fix-find-perm-usage.patch: Makefile: Fix "find
+  -perm" usage.
+- quilt-makefile-fix-configure-with-xargs.patch: Makefile: Fix
+  support for "./configure --with-xargs".
+- quilt-find-quoting-style.patch: delete.test: Cope with new
+  quoting style in find error message.
+
+-------------------------------------------------------------------
+Fri Apr  5 12:49:39 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Oct 19 14:17:34 CEST 2012 - jdelvare@suse.de
+
+- quilt.spec: Add myself as an author.
+
+-------------------------------------------------------------------
+Fri Oct 19 11:15:16 CEST 2012 - jdelvare@suse.de
+
+- quilt-setup-04-handle-zip-files.patch: Refresh from upstream.
+- quilt-setup-05-fix-check_for_existing_files.patch: Fix handling
+  of directory names including white spaces by
+  check_for_existing_files.
+- quilt-setup-06-check-for-directories-too.patch: Check for
+  existing directories before unpacking.
+
+-------------------------------------------------------------------
+Wed Oct 17 21:42:44 CEST 2012 - jdelvare@suse.de
+
+- quilt-setup-04-handle-zip-files.patch: Let quilt setup handle
+  zip archives referenced in spec files (bnc#768332).
+
+-------------------------------------------------------------------
+Tue Oct 16 13:13:36 CEST 2012 - jdelvare@suse.de
+
+- quilt-setup-01-check-existing-files-after-unpack.patch: setup:
+  Check for existing files after unpacking (bnc#785167).
+- quilt-setup-02-try-alternative-names.patch: setup: Try
+  alternative patches/series names (bnc#785167).
+- quilt-setup-03-remember-alternative-names.patch: setup: Run
+  create_db (bnc#785167).
+
+-------------------------------------------------------------------
+Fri Mar  2 14:20:24 CET 2012 - jdelvare@suse.de
+
+- Fix interaction between quilt and vimdiff (bnc#749563).
+
+-------------------------------------------------------------------
+Thu Mar  1 21:29:26 CET 2012 - jdelvare@suse.de
+
+- Fix build (/usr/lib/quilt is gone.)
+- Turn into a noarch package.
+
+-------------------------------------------------------------------
+Thu Mar  1 21:11:18 CET 2012 - jdelvare@suse.de
+
+- update to 0.60
+  * Includes a rewrite of backup-files from C to bash, making it
+    possible to turn quilt into a noarch package.
+  * Includes several fixes to the mail command.
+  * Obsoletes fix-relative-import.patch.
+  * Obsoletes grep-support-spaces.patch.
+
+-------------------------------------------------------------------
+Sat Feb 25 23:50:59 CET 2012 - meissner@suse.de
+
+- make rebuilding stable by sorting the README reference entries.
+
+-------------------------------------------------------------------
+Wed Feb  1 16:01:36 CET 2012 - jdelvare@suse.de
+
+- Fix license string to make rpmlint happy.
+
+-------------------------------------------------------------------
+Mon Jan 30 13:49:59 CET 2012 - jdelvare@suse.de
+
+- fix-relative-import.patch: Fix import of relative patches
+  (savannah#35244).
+
+-------------------------------------------------------------------
+Sun Jan 29 20:22:18 CET 2012 - jdelvare@suse.de
+
+- update to 0.51
+  * Obsoletes change-docdir-definition.patch.
+  * Obsoletes fix-inspect.patch.
+  * Obsoletes inspect-check-if-wrapper-executable.patch.
+  * Obsoletes inspect-remap-outputs.patch.
+  * Obsoletes mail-fix-delivery-address-checking.patch.
+  * Obsoletes patchfns-non-exec.patch.
+  * Obsoletes substitute-docdir-in-man-page.patch.
+
+-------------------------------------------------------------------
+Tue Jan 17 21:34:30 CET 2012 - jdelvare@suse.de
+
+- inspect-remap-outputs.patch,
+  inspect-check-if-wrapper-executable.patch: inspect: Report if
+  patch/tar wrapper can't be executed (quilt setup).
+
+-------------------------------------------------------------------
+Fri Dec 16 14:41:39 CET 2011 - jdelvare@suse.de
+
+- Fix two rpmlint warnings.
+
+-------------------------------------------------------------------
+Fri Dec 16 11:53:53 CET 2011 - jdelvare@suse.de
+
+- Don't call autoconf during build, assume configure script is
+  already up-to-date. This avoids problems when version of autoconf
+  is too old.
+
+-------------------------------------------------------------------
+Thu Dec 15 15:18:04 CET 2011 - jdelvare@suse.de
+
+- Delete docdir.diff, replaced with
+  substitute-docdir-in-man-page.patch and
+  change-docdir-definition.patch. Upstream solution for the same
+  problem.
+
+-------------------------------------------------------------------
+Wed Dec  7 23:26:56 CET 2011 - jdelvare@suse.de
+
+- fix-inspect.patch: Fix inspect (quilt setup).
+
+-------------------------------------------------------------------
+Wed Dec  7 20:53:56 CET 2011 - jdelvare@suse.de
+
+- mail-fix-delivery-address-checking.patch: quilt mail: Fix
+  delivery address checking.
+
+-------------------------------------------------------------------
+Tue Dec  6 14:24:24 CET 2011 - jdelvare@suse.de
+
+- update to 0.50
+  * Obsoletes fix-test-create-delete.diff.
+  * Obsoletes hide-git-desc-error.diff.
+  * Obsoletes mail-dont-use-equal-tilde.diff.
+  * Obsoletes revert-should-not-hard-link.diff.
+  * Obsoletes fix-fr-import-message.diff.
+  * Obsoletes lzma-xz-support.patch, except expand part which was
+    merged in expand.diff.
+  * Obsoletes inspect-lzma-xz.patch.
+  * Obsoletes fix-patch-version-detection.patch.
+  * Obsoletes setup-add-fuzz-parameter.patch.
+  * Obsoletes setup-support-reverse-patch.patch.
+  * Obsoletes completion-revert.patch.
+  * Obsoletes inspect-shell-syntax-errors.patch.
+  * Obsoletes mail-fix-a-temporary-directory-leak.patch.
+  * Too many upstream changes in 34 months to list.
+- Add missing requires: findutils.
+- Add recommends: xz.
+
+-------------------------------------------------------------------
+Thu Dec  1 16:23:20 CET 2011 - jdelvare@suse.de
+
+- suse-workaround-pseudo-release.patch: Filter invalid characters
+  in release field (bnc#628258).
+
+-------------------------------------------------------------------
+Thu Nov 10 21:00:07 CET 2011 - jdelvare@suse.de
+
+- grep-support-spaces.patch: grep: Accept file names with spaces.
+- mail-fix-a-temporary-directory-leak.patch: mail: Fix a temporary
+  directory leak.
+
+-------------------------------------------------------------------
+Thu Nov 10 12:25:27 CET 2011 - pth@suse.de
+
+- Newer file changed the output for xz compressed data so
+  adapt to it.
+
+-------------------------------------------------------------------
+Thu Oct  6 18:53:45 CEST 2011 - ohering@suse.de
+
+- inspect-shell-syntax-errors.patch: Quote strings in inspect
+  helper script to avoid flood of shell syntax errors during
+  quilt setup -v *.spec.
+
+-------------------------------------------------------------------
+Tue Nov  2 18:47:20 CET 2010 - jdelvare@suse.de
+
+- Fix bash completion after the removal of the "remove" command and
+  the addition of the "revert" command (bnc#330753).
+
+-------------------------------------------------------------------
+Mon Oct 25 15:52:36 CEST 2010 - jdelvare@suse.de
+
+- Compile quilt.el for faster emacs startup (bnc#617673).
+
+-------------------------------------------------------------------
+Mon Jun 21 12:12:58 CEST 2010 - jdelvare@suse.de
+
+- fix-patch-version-detection.patch: Update so that we don't break
+  the build on all older distributions.
+
+-------------------------------------------------------------------
+Sun Jun 20 22:22:41 CEST 2010 - jdelvare@suse.de
+
+- setup-add-fuzz-parameter.patch: Add a --fuzz parameter to quilt
+  setup and inspect (bnc#615073).
+- setup-support-reverse-patch.patch: Handle reverted patches in
+  spec files (bnc#615065).
+
+-------------------------------------------------------------------
+Wed May 19 10:01:44 UTC 2010 - puzel@novell.com
+
+- add fix-patch-version-detection.patch: fix build
+
+-------------------------------------------------------------------
+Tue Dec  8 00:34:00 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Fri Nov 27 13:56:32 CET 2009 - jdelvare@suse.de
+
+- lzma-xz-support.patch: Add support for lzma/xz-compressed files
+  (bnc#555273). Patch from Philipp Thomas.
+- inspect-lzma-xz.patch: Add support for lzma/xz-compressed files
+  to inspect (bnc#555273).
+- Add dependency on "file", inspect (and thus "quilt setup") needs
+  it.
+
+-------------------------------------------------------------------
+Wed Sep  9 11:41:28 CEST 2009 - jdelvare@suse.de
+
+- Fix a French translation that was saying the exact opposite of
+  the original message.
+
+-------------------------------------------------------------------
+Wed Jul 29 14:25:16 CEST 2009 - jdelvare@suse.de
+
+- Fix data loss by quilt revert in some cases.
+
+-------------------------------------------------------------------
+Tue Jun 30 11:01:50 CEST 2009 - jdelvare@suse.de
+
+- Fix test on Suse version.
+
+-------------------------------------------------------------------
+Wed Jun 17 16:34:58 CEST 2009 - jdelvare@suse.de
+
+- Include /etc/bash_completion.d/quilt.sh only once in file list.
+
+-------------------------------------------------------------------
+Wed Jun 17 14:21:26 CEST 2009 - jdelvare@suse.de
+
+- hide-git-desc-error.diff: Avoid error messages when building due
+  to missing git-desc file.
+- mail-dont-use-equal-tilde.diff: Older versions of bash do not
+  support the =~ construct, so stop using it.
+
+-------------------------------------------------------------------
+Tue Jun  9 18:59:16 CEST 2009 - jdelvare@suse.de
+
+- update to 0.48
+  * Obsoletes quilt-fix-completion.diff.
+  * Obsoletes quilt-improve-formail-error.diff.
+- fix-test-create-delete.diff: Fix error in create-delete.test in
+  Factory.
+- Don't use Recommends on SLES9, rpm doesn't know about it there.
+
+-------------------------------------------------------------------
+Mon Nov 10 13:04:10 CET 2008 - bwalle@suse.de
+
+- Remove "Recommends: bash-completion" (bnc#443203).
+
+-------------------------------------------------------------------
+Tue Oct 28 13:33:44 CET 2008 - bwalle@suse.de
+
+- Use 'type' instead of 'which' in last change to avoid dependency
+  of 'which' package.
+
+-------------------------------------------------------------------
+Mon Oct 27 22:36:14 CET 2008 - bwalle@suse.de
+
+- Only recommend 'procmail' (contains the 'formail' binary) instead
+  of requiring it. It's only needed for the 'mail' command.
+
+-------------------------------------------------------------------
+Thu Aug 21 15:18:12 CEST 2008 - bwalle@suse.de
+
+- update to 0.47
+  * quilt/scripts/patchfns.in (cat_series): Handle lines properly
+    that only contain whitespace.
+  * Add a new "publish" makefile target for pushing releases to
+    savannah.nongnu.org.
+- mark /etc/bash_completion.d/quilt.sh as %config (rpmlint)
+
+-------------------------------------------------------------------
+Mon Aug 18 11:18:19 CEST 2008 - schwab@suse.de
+
+- Fix name of completions file.
+
+-------------------------------------------------------------------
+Tue Aug 12 16:50:26 CEST 2008 - bwalle@suse.de
+
+- fix completion of "quilt fold" (bnc#415762)
+- mark /etc/quilt.quiltrc as %config (rpmlint)
+- mark /etc/bash_completion.d/quilt as %config (rpmlint)
+
+-------------------------------------------------------------------
+Fri Jun 13 15:16:05 CEST 2008 - bwalle@suse.de
+
+- recommend bash-completion (bnc#399615)
+
+-------------------------------------------------------------------
+Fri Jun 13 11:50:30 CEST 2008 - agruen@suse.de
+
+- quilt/import.in: When importing multiple patches at once, make
+  sure that they won't end up in the series file in reverse order.
+  This happened because each new patch was inserted before the
+  "next" patch, which made it the new "next" patch.
+
+-------------------------------------------------------------------
+Tue May 20 09:30:33 CEST 2008 - agruen@suse.de
+
+- Stop using cp -l: it doesn't fall back to doing a regular copy
+  when hardlinks are not supported; on some types of filesystems
+  like AFS and in some situtions, this is annoying.
+
+-------------------------------------------------------------------
+Wed Mar 26 00:11:27 CET 2008 - agruen@suse.de
+
+- Assume patches are in unified format by default when applying
+  them. (For working with other patch formats, make sure to remove
+  "--unified" from QUILT_PATCH_OPTS in ~/.quiltrc or
+  /etc/quilt.quiltrc.)
+
+-------------------------------------------------------------------
+Tue Feb 12 19:40:38 CET 2008 - jeffm@suse.com
+
+- Added dependency on procmail (formail)
+
+-------------------------------------------------------------------
+Mon Nov  5 17:37:35 CET 2007 - bwalle@suse.de
+
+- quilt/mail.in: Remove the Recipient-* and Replace-* headers
+  used internally from the resulting emails; not sure how that
+  was missed so far.
+- Fix `make snapshot'.
+- Make the changelog file chronological again.
+
+-------------------------------------------------------------------
+Mon Oct 29 20:46:46 CET 2007 - agruen@suse.de
+
+- quilt mail: Work around a ``Broken pipe'' problem in
+  quilt_mail_patch_filter().
+
+-------------------------------------------------------------------
+Wed Oct 26 11:56:55 CEST 2007 - bwalle@suse.de
+
+- change version to '0.46_cvs20071026' to make it clear to the
+  user that this is a CVS version
+- fix some rpmlint warnings
+
+-------------------------------------------------------------------
+Thu Oct 25 14:07:46 CEST 2007 - agruen@suse.de
+
+- quilt/mail.in: Make sure that shell meta-characters like * in
+  subjects won't get expanded by accident (this was broken). Add
+  test case.
+- quilt/mail.in: ``formail -x Foo'' will extract all Foo* headers,
+  so use ``formail -x Foo:'' instead.
+- quilt/mail.in: Recognize sequences of common subject prefixes
+  like Fwd:, Fw:, Re:, Aw:, Tr:, [foo] only at the beginning of
+  subjects.
+
+-------------------------------------------------------------------
+Mon Oct 15 15:51:48 CEST 2007 - agruen@suse.de
+
+- Update to latest CVS version.
+
+-------------------------------------------------------------------
+Thu Jul 26 14:06:57 CEST 2007 - agruen@suse.de
+
+- quilt diff: don't colorize the output when the --diff=... option
+  is used (allows diff utilities to use terminal IO).
+- QUILT_SERIES and series file search algorithm bugfix.
+
+-------------------------------------------------------------------
+Sat Apr 28 16:01:08 CEST 2007 - agruen@suse.de
+
+- mail: allow to specify a range of patches.
+- remove: rename this command to revert.
+- push, fold: clean up the force-apply and interactive logic.
+
+-------------------------------------------------------------------
+Wed Apr 18 13:40:40 CEST 2007 - agruen@suse.de
+
+- Add emacs quilt mode.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:24:05 CEST 2007 - agruen@suse.de
+
+- Quilt refresh: fix existing patch check.
+
+-------------------------------------------------------------------
+Thu Feb 15 20:43:22 CET 2007 - olh@suse.de
+
+- force mandir to fix build in sles10
+
+-------------------------------------------------------------------
+Thu Oct 19 20:47:06 CEST 2006 - agruen@suse.de
+
+- Switch to the upstream 0.46 tarball.
+- Add a few missing pieces in the "refresh -z" patch.
+
+-------------------------------------------------------------------
+Wed Oct 11 15:44:47 CEST 2006 - agruen@suse.de
+
+- Update to version 0.46.
+- Add patch for "refresh -z".
+
+-------------------------------------------------------------------
+Wed Sep 27 16:20:45 CEST 2006 - agruen@suse.de
+
+- Remove a duplicate hunk from the last update.
+
+-------------------------------------------------------------------
+Thu Sep 21 18:39:22 CEST 2006 - agruen@suse.de
+
+- Fix the docdir in the man page.
+
+-------------------------------------------------------------------
+Wed May 31 17:21:43 CEST 2006 - agruen@suse.de
+
+- Fix `quilt setup' in build environments.
+
+-------------------------------------------------------------------
+Mon Apr 24 15:25:28 CEST 2006 - jdelvare@suse.de
+
+- import-compressed.diff: Fix replacement of compressed patches.
+
+-------------------------------------------------------------------
+Wed Apr 19 15:00:27 CEST 2006 - agruen@suse.de
+
+- pop-error-path-fix.diff: Fix bogus error message.
+
+-------------------------------------------------------------------
+Sat Mar 25 21:09:08 CET 2006 - agruen@suse.de
+
+- mail command: Use -gt instead of > in [ ... ] expression.
+  Fix quoting of recipients.
+
+-------------------------------------------------------------------
+Tue Mar 21 16:55:34 CET 2006 - agruen@suse.de
+
+- edit2.diff: The last fix broke another way of using edit.
+
+-------------------------------------------------------------------
+Wed Mar 15 20:36:38 CET 2006 - agruen@suse.de
+
+- edit.diff: Fix editing files in subdirectories.
+
+-------------------------------------------------------------------
+Thu Feb 16 09:15:28 CET 2006 - agruen@suse.de
+
+- Setup command: also recognize archive files passed to tar on the
+  command line.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:52:26 CET 2006 - agruen@suse.de
+
+- Bump to official version to 0.44.
+- Stop using bash's =~ operator: older versions don't support it.
+- Translation update.
+- patch-wrapper-rpm.diff: Some fixes to make the patch names that
+  quilt shows more convenient.
+- Remove unnecessary gawk wrapper.
+
+-------------------------------------------------------------------
+Tue Feb 14 05:16:59 CET 2006 - agruen@suse.de
+
+- Fix a critical bug in the push command that causes parts of
+  patches to end up half-reversed.
+
+-------------------------------------------------------------------
+Mon Feb 13 00:35:11 CET 2006 - agruen@suse.de
+
+- quiltrc.diff: Change the default patch options to
+  --ignore-whitespace --unified-reject.
+
+-------------------------------------------------------------------
+Sun Feb 12 01:09:09 CET 2006 - agruen@suse.de
+
+- Fix two bash 3.1 compatibility bugs.
+- Run the test suite after building.
+
+-------------------------------------------------------------------
+Sat Feb 11 16:22:59 CET 2006 - agruen@suse.de
+
+- Fix bug when working in subdirectories.
+- setup command: Improvements when a series file is given.
+- Improve help of new command, add two test cases.
+- Fix expand command.
+
+-------------------------------------------------------------------
+Wed Feb  8 02:59:10 CET 2006 - agruen@suse.de
+
+- GNU patch wrapper: Fix permissions of installed file. Call
+  GNU patch by absolute patch to avoid recursion. Don't print an
+  error message when a patch contains no files.
+- setup command: Improve recognition of patch's -i and --input
+  options.
+
+-------------------------------------------------------------------
+Mon Feb  6 12:05:16 CET 2006 - agruen@suse.de
+
+- Add GNU patch wrapper for Autobuild.
+
+-------------------------------------------------------------------
+Sat Feb  4 08:39:25 CET 2006 - agruen@suse.de
+
+- aclocal.m4 is missing from the tarball.
+- quilt mail: Remove a broken check.
+
+-------------------------------------------------------------------
+Wed Feb  1 16:21:37 CET 2006 - agruen@suse.de
+
+- Update to version 0.43.
+- Translations update; more portability improvements.
+
+-------------------------------------------------------------------
+Mon Jan 30 00:08:39 CET 2006 - agruen@suse.de
+
+- Mail command: add heuristic for automatically extracting
+  subjects. Check for duplicate subjects. Add some checks.
+- Lots of smaller fixes and portability improvements here and
+  there.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 21:46:29 CET 2006 - agruen@suse.de
+
+- When a patch doesn't apply, check and report when it applies
+  in the reverse order (which probably means it already has been
+  applied).
+- Put "---" markers above when inserting a diffstat section.
+- A lot more portability fixes.
+
+-------------------------------------------------------------------
+Sun Jan 22 02:53:45 CET 2006 - agruen@suse.de
+
+- Lots of improvements: command parameter handling, input command,
+  portability, test suite.
+
+-------------------------------------------------------------------
+Wed Jan 18 14:19:22 CET 2006 - agruen@suse.de
+
+- setup command: add heuristic to check for input files specified
+  on the command line in the tar/patch wrapper.
+- Translation update.
+- Fix heuristic for splitting a patch into header and body for
+  git.
+- Makefile and test suite improvements.
+
+-------------------------------------------------------------------
+Mon Jan  9 00:46:26 CET 2006 - agruen@suse.de
+
+- Use the --with-sendmail configure option for sendmail, instead
+  of the removed --with-mta.
+
+-------------------------------------------------------------------
+Thu Dec  1 12:34:52 CET 2005 - agruen@suse.de
+
+- Specify where diffstat will end up so that it will be supported
+  even though it is missing in the build environment.
+
+-------------------------------------------------------------------
+Mon Nov 28 04:54:41 CET 2005 - agruen@suse.de
+
+- CVS update, including a bugfix with -p0 style patches that
+  remove files.
+- Add an expand command that is not yet upstream.
+
+-------------------------------------------------------------------
+Thu Sep 29 11:57:56 CEST 2005 - agruen@suse.de
+
+- Add README.MAIL and fix the documentation path that appears in
+  quilt(1).
+
+-------------------------------------------------------------------
+Wed Sep 28 16:17:34 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Sun Sep 18 18:49:42 CEST 2005 - agruen@suse.de
+
+- CVS update.
+- doc/quilt.quiltrc no longer exists.
+- Skip the dead-symlink check: the mta symlink points to sendmail,
+  which we don't want to depend on.
+
+-------------------------------------------------------------------
+Fri Sep 16 18:41:23 CEST 2005 - agruen@suse.de
+
+- Remove obsolete doc/sample.quiltrc.
+
+-------------------------------------------------------------------
+Thu Sep 15 15:26:56 CEST 2005 - agruen@suse.de
+
+- CVS update.
+
+-------------------------------------------------------------------
+Wed Aug 24 16:57:29 CEST 2005 - agruen@suse.de
+
+- CVS update.
+
+-------------------------------------------------------------------
+Wed Aug 17 12:32:36 CEST 2005 - agruen@suse.de
+
+- CVS update.
+
+-------------------------------------------------------------------
+Wed Jul 27 18:15:20 CEST 2005 - agruen@suse.de
+
+- Update to version 0.42.
+
+-------------------------------------------------------------------
+Mon Jul 18 17:06:11 CEST 2005 - agruen@suse.de
+
+- Update to version 0.41: new header command, several fixes.
+
+-------------------------------------------------------------------
+Fri Jun 17 17:43:42 CEST 2005 - agruen@suse.de
+
+- cvs.diff: Update to CVS head.
+- annotate.diff: Add experimental annotate command.
+
+-------------------------------------------------------------------
+Fri Apr 29 09:39:45 CEST 2005 - agruen@suse.de
+
+- Update to version 0.40.
+
+-------------------------------------------------------------------
+Fri Feb 25 14:00:33 CET 2005 - agruen@suse.de
+
+- Remove unneeded requirement on the gettext package.
+
+-------------------------------------------------------------------
+Fri Feb 18 11:01:57 CET 2005 - agruen@suse.de
+
+- quilt add: Add check to ensure that no files below patches/
+  or .pc/ will be added.
+
+-------------------------------------------------------------------
+Thu Feb 10 11:50:39 CET 2005 - agruen@suse.de
+
+- Update to version 0.39.
+
+-------------------------------------------------------------------
+Wed Feb  2 01:35:51 CET 2005 - agruen@suse.de
+
+- Use color defaults so that QUILT_COLORS can be used to only
+  override some colors.
+- When checking for remaining changes (refresh forgotten), use
+  $QUILT_PATCH_OPTS as in the push command to get identical
+  results. Don't generate the actually diff; it doesn't get
+  printed anyway. This should speed up things.
+
+-------------------------------------------------------------------
+Tue Jan 25 13:53:23 CET 2005 - agruen@suse.de
+
+- Fix pop command for recent coreutils (cp dir dir2/ no longer
+  works if dir2 doesn't yet exist).
+
+-------------------------------------------------------------------
+Mon Jan 24 15:42:17 CET 2005 - agruen@suse.de
+
+- Make "vi" an alias for the edit command.
+
+-------------------------------------------------------------------
+Sun Jan 23 19:28:40 CET 2005 - agruen@suse.de
+
+- Add color support for push command output and allow to customize
+  colors via the QUILT_COLORS environment variable (for reverse
+  video, etc.).
+
+-------------------------------------------------------------------
+Sun Jan 23 05:08:18 CET 2005 - agruen@suse.de
+
+- Add mail command, doc/README.MAIL and example ``mail'' command
+  filter in quilt.quiltrc.
+- Bump version to 0.38.
+
+-------------------------------------------------------------------
+Tue Jan 11 04:11:14 CET 2005 - agruen@suse.de
+
+- Add a default /etc/quilt.quiltrc file that is sourced if no
+  ~/.quiltrc file exists.
+
+-------------------------------------------------------------------
+Fri Nov 19 13:05:08 CET 2004 - agruen@suse.de
+
+- Push command: Write out output of patch process immediately
+  instead of reading into a variable and then printing that
+  variable. This helps to see what's happening with large patches.
+
+-------------------------------------------------------------------
+Wed Nov 17 17:33:56 CET 2004 - agruen@suse.de
+
+- Get rid of the apatch and rpatch helper scripts: Integrate them
+  in the push and pop commands. This should bring a small
+  performance improvement.
+
+-------------------------------------------------------------------
+Mon Nov 15 21:15:43 CET 2004 - agruen@suse.de
+
+- Fix extra trailing space in series file after quilt refresh
+  (David Vrabel <dvrabel@arcom.com>).
+- Missing quotation in bash_completion
+  (Axel Grossklaus <ag@pre-secure.de>).
+- Fix patches command (Brent Casavant <bcasavan@sgi.com>).
+
+-------------------------------------------------------------------
+Sun Oct 17 18:48:59 CEST 2004 - agruen@suse.de
+
+- Touch timestamps of files in ``quilt pop'' so that tools like
+  make don't get confused.
+- Various minor fixes; update to version 0.37.
+
+-------------------------------------------------------------------
+Wed Sep 22 14:26:37 CEST 2004 - agruen@suse.de
+
+- Various fixes; update to version 0.36.
+
+-------------------------------------------------------------------
+Fri Sep  3 18:07:55 CEST 2004 - agruen@suse.de
+
+- Fix ``quilt setup'' command when used inside Autobuild: Make
+  sure rpmbuild does not reset PATH.
+
+-------------------------------------------------------------------
+Fri Aug 13 20:14:03 CEST 2004 - agruen@suse.de
+
+- Improvements to setup command.
+
+-------------------------------------------------------------------
+Thu Jul 15 04:00:03 CEST 2004 - agruen@suse.de
+
+- Improve messages and update translations.
+- Update and improve the bash completion script.
+- Add syntax coloring to diff command.
+- Add support for QUILT_${COMMAND}_ARGS in .quiltrc.
+- Add QUILT_PATCHES_PREFIX option to .quiltrc.
+- Support combined diff format and allow the user to adjust
+  the number of context lines.
+- Re-add diffstat support to refresh command.
+- Documentation update.
+- Bump version to 0.35.
+
+-------------------------------------------------------------------
+Thu Jun 10 22:08:07 CEST 2004 - agruen@suse.de
+
+- Add meta-data version check/upgrade code from Martin Quinson and
+  me; new `quilt upgrade' command.
+- Handle new/removed files correctly in generated patches: If the
+  old or new file is missing, the file name in the patch should
+  be /dev/null. Fix test suite accordingly, and add
+  test/create-delete.diff. GNU patch recognizes this, and does
+  additional file existance tests when a patch creates/deletes a
+  file. Also use the --label option of GNU diff instead of
+  hand-editing file name headers.
+- Add test/Makefile for running the test suite. Note: The tests
+  run against the installed version of quilt!
+- Bump version to 0.34.
+
+-------------------------------------------------------------------
+Sun Jun  6 20:16:44 CEST 2004 - agruen@suse.de
+
+- Preserve the order of files in patches in the diff and refresh
+  commands. Files added to a patch appear at the end of a patch.
+  The files command also lists the files in the order in which
+  they appear in patches.
+- Update to version 0.33.
+
+-------------------------------------------------------------------
+Sun Jun  6 12:21:11 CEST 2004 - agruen@suse.de
+
+- dependency-graph: Fix for --lines option in patcher mode;
+  restrict to applied patches.
+
+-------------------------------------------------------------------
+Sun Jun  6 03:35:32 CEST 2004 - agruen@suse.de
+
+- import: Create patches/ and parent directories to patch to be
+  imported. Insert the correct patch name in the series file.
+
+-------------------------------------------------------------------
+Sun Jun  6 02:02:32 CEST 2004 - agruen@suse.de
+
+- backup-file.c: Add code to recursively search .pc directories.
+  Add a "no-op" mode as default, and allow to just unlink files.
+- apatch/rpatch: let backup-files search .pc directories instead
+  of generating temporary file lists.
+- rpatch/pop: unlink files of topmost patch after popping instead
+  of unlinking at each step.
+- If QUILTRC is set in the environment, use this as the
+  configuration file.
+
+-------------------------------------------------------------------
+Sat Jun  5 16:12:17 CEST 2004 - agruen@suse.de
+
+- Return exit status 2 when commands go beyond the series (top
+  with no series, push/next when all patches are applied, pop/
+  previous when no patches are applied).
+- From  John Lenz <jelenz@students.wisc.edu>: Add compatibility
+  code to the dependency-graph script for reading the meta-data
+  of Holger Schurig's patcher tool,
+  http://www.holgerschurig.de/patcher.html.
+- Update German translation.
+
+-------------------------------------------------------------------
+Tue Jun  1 22:59:41 CEST 2004 - agruen@suse.de
+
+- Fix from Dean Roehrich <roehrich@sgi.com>: Preserve file mode
+  of original file when creating backup files.
+
+-------------------------------------------------------------------
+Tue Jun  1 10:23:01 PDT 2004 - mquinson@tuxfamily.org
+
+- document common options to all scripts (--trace and --quiltrc)
+- update french translation
+
+-------------------------------------------------------------------
+Mon May 31 17:29:45 CEST 2004 - agruen@suse.de
+
+- Rewrite spec2series to return what the new `quilt setup' needs,
+  and rename it to inspect.
+- `quilt setup': Rewrite so that it supports multiple archives
+  per spec file. Always make the patches directory a symlink to
+  the original patch files instead of copying the patches.
+
+-------------------------------------------------------------------
+Sun May 16 01:33:50 CEST 2004 - agruen@suse.de
+
+- Allow passing path arguments to `quilt grep' as well.
+
+-------------------------------------------------------------------
+Mon May 10 17:21:53 CEST 2004 - agruen@suse.de
+
+- Add `quilt grep': Grep over all files, recursively, skipping
+  the $QUILT_PATCHES and $QUILT_PC directories.
+
+-------------------------------------------------------------------
+Wed Apr 28 00:46:31 CEST 2004 - agruen@suse.de
+
+- Fix `quilt fork': It destroys .pc/applied patches; that bug got
+  introduced when reverting it to its previous semantics.
+
+-------------------------------------------------------------------
+Sat Mar 20 21:17:47 CET 2004 - agruen@suse.de
+
+- Fix an algorithmic bug in `quilt graph --lines': Edges were
+  sometimes lost.
+
+-------------------------------------------------------------------
+Mon Mar 15 00:10:58 CET 2004 - agruen@suse.de
+
+- CVS update:
+  + Add `quilt graph' command for generating a dependency graph
+    between patches. This requires the graphviz package for
+    removing transitive edges (optional) and for rendering the
+    graph. Please note that the graph command itself is minimal,
+    while the underlying scripts/dependency+graph is more
+    flexible.
+  + Complete one more detail in scripts/dependency-graph.
+  + Revert `quilt fork' to how it originally worked: fork the
+    *topmost* patch, not the next unapplied patch. Adapt the
+    test suite accordingly.
+  + Add flag to backup-files.c to make sure that files in the
+    working tree have a link count of at most one. Use this where
+    appropriate.
+  + Fix a bug in `quilt snapshot': Taking snapshots caused files
+    to get link counts bigger than one, so modifying them could
+    cause multiple files to get modified. Speed up the command,
+    too.
+  + Update the documentation. Add example1.test from the
+    documentation.
+  + Change `quilt import' to allow importing multiple patches
+    at once.
+  + Update to version 0.32.
+
+-------------------------------------------------------------------
+Wed Mar 10 11:20:09 CET 2004 - agruen@suse.de
+
+- Quilt push/pop: exit with a non-zero status when beyond series.
+- Ignore empty lines in series file.
+- Add man page to tarball and to spec file; add make dependencies.
+- Sort the commands in the man page command reference.
+- Add completion to the edit command in bash
+- Add a man page (generated automatically from -h)
+- Sub-directory support: `quilt setup' could get confused, too.
+
+-------------------------------------------------------------------
+Tue Mar  9 02:03:00 CET 2004 - agruen@suse.de
+
+- Fix typo: use chmod instead of chown...
+
+-------------------------------------------------------------------
+Fri Mar  5 13:33:45 CET 2004 - agruen@suse.de
+
+- Make files writeable in `quilt add' (and `quilt edit') for
+  working with read-only trees.
+
+-------------------------------------------------------------------
+Fri Feb 20 15:32:06 CET 2004 - agruen@suse.de
+
+- Sub-directory support:
+  + Fix another bug that triggers when /patches exists.
+  + Working in sub-directories: Force `quilt new' to always create
+    the new patch in the current working directory even if there
+    is a patches/ sub-directory further up the directory tree.
+    This should restore the behavior from before Jan 28 very well.
+- quilt files, diff, refresh: Sort the files in the patch
+  alphabetically.
+- Update to version 0.31.
+
+-------------------------------------------------------------------
+Wed Feb  4 10:39:59 CET 2004 - agruen@suse.de
+
+- Add --quiltrc={rcfile|-} option. Remove some superfluous quoting
+  from quilt wrapper.
+- Extra tests in `quilt refresh' did not check if the old patch
+  was missing.
+
+-------------------------------------------------------------------
+Mon Feb  2 14:17:24 CET 2004 - agruen@suse.de
+
+- Update from CVS (several improvements and fixes).
+
+-------------------------------------------------------------------
+Wed Jan 28 02:48:33 CET 2004 - agruen@suse.de
+
+- Fix bugs introduced while merging Chris's patch.
+- Update to version 0.30.
+
+-------------------------------------------------------------------
+Wed Jan 28 01:13:16 CET 2004 - agruen@suse.de
+
+- Patch from Chris Mason <mason@suse.de>: Add support for working
+  in subdirectories of the base directory that contains patches/
+  and .pc/. In the unlikely case that quilt shall operate in the
+  sub-directory itself, it is sufficient to create a patches/
+  directory there.
+- Add a small testcase for subdirectory support.
+
+-------------------------------------------------------------------
+Sun Jan 25 00:00:34 CET 2004 - agruen@suse.de
+
+- Add QUILT_PATCH_OPTS setting.
+
+-------------------------------------------------------------------
+Wed Jan 21 19:17:11 CET 2004 - agruen@suse.de
+
+- Add QUILT_NO_DIFF_TIMESTAMPS option in .quiltrc.
+
+-------------------------------------------------------------------
+Thu Jan  8 03:53:18 CET 2004 - agruen@suse.de
+
+- Also accept `quilt diff -z ./file' (ignore the ./ prefix that
+  is often produced by find etc.)
+
+-------------------------------------------------------------------
+Wed Dec 24 16:36:48 CET 2003 - agruen@suse.de
+
+- Minor documentation tweak.
+
+-------------------------------------------------------------------
+Thu Nov 27 17:08:47 CET 2003 - agruen@suse.de
+
+- `quilt fold' did not create directories for additional files,
+  and the code for recovering from failures was wrong.
+
+-------------------------------------------------------------------
+Wed Nov 26 14:50:13 CET 2003 - agruen@suse.de
+
+- Update from CVS.
+
+-------------------------------------------------------------------
+Tue Nov 25 15:51:05 CET 2003 - agruen@suse.de
+
+- Error check for `quilt diff -z filelist' was too strict; relax.
+- Add sample.quiltrc file in /usr/share/doc/packages/quilt.
+- Update quilt paper.
+
+-------------------------------------------------------------------
+Mon Nov 17 20:39:56 CET 2003 - agruen@suse.de
+
+- Update from CVS: Adds fold command; minor fixes and cleanups.
+
+-------------------------------------------------------------------
+Wed Nov 12 01:52:58 CET 2003 - agruen@suse.de
+
+- Update to version 0.29 (adds quilt.pdf, Introduction to Quilt).
+
+-------------------------------------------------------------------
+Tue Nov  4 18:01:57 CET 2003 - agruen@suse.de
+
+- cvs.diff: Fix check for modified patches in `quilt pop'.
+
+-------------------------------------------------------------------
+Sat Nov  1 20:28:19 CET 2003 - agruen@suse.de
+
+- Update to version 0.28.
+
+-------------------------------------------------------------------
+Tue Oct 28 14:57:08 CET 2003 - agruen@suse.de
+
+- Update to version 0.27.
+
+-------------------------------------------------------------------
+Tue Oct 28 11:34:08 CET 2003 - agruen@suse.de
+
+- Update to remove-pc-files-3.diff patch (minor fixes).
+
+-------------------------------------------------------------------
+Mon Oct 27 12:58:44 CET 2003 - agruen@suse.de
+
+- Update to remove-pc-files-2.diff patch (minor fixes).
+
+-------------------------------------------------------------------
+Mon Oct 27 03:18:26 CET 2003 - agruen@suse.de
+
+- Sync with CVS:
+  + Add `quilt edit' command.
+  + Get rid of patches_per_file cache.
+- Add remove-pc-files.diff patch.
+
+-------------------------------------------------------------------
+Sun Oct 26 17:53:53 CET 2003 - agruen@suse.de
+
+- Get rid of patches_per cache_in `quilt patches'. Remove
+  patches_per_file and associated functions. `quilt patches'
+  now is a bit slow for unapplied patches.
+
+-------------------------------------------------------------------
+Sun Oct 26 14:45:08 CET 2003 - agruen@suse.de
+
+- Rename snapshot directory from ".snap0" to ".snap".
+- `quilt diff: Speed up file list generation in `quilt diff'.
+  Don't use modified_files anymore. Instead, add first_modified_by
+  function. I want to get rid of the patches_per_file cache;
+  it sometimes was not brought up to date. Some cleanups.
+- Add test/snapshot.test.
+- Fix two errors in the date format in quilt.changes.
+
+-------------------------------------------------------------------
+Fri Oct 24 00:50:08 CEST 2003 - agruen@suse.de
+
+- `quilt add': Return exit code 2 when a file has already been
+  added.
+- Add `quilt edit' command: Does a `quilt add' and then invokes
+  $EDITOR (fallback is `vi'). Files that don't exist after editing
+  are again removed from the patch.
+
+-------------------------------------------------------------------
+Wed Oct 22 01:53:54 CEST 2003 - agruen@suse.de
+
+- Change semantics of `quilt fork', and fix a bug in updating the
+  series file.
+
+-------------------------------------------------------------------
+Tue Oct 21 20:15:59 CEST 2003 - agruen@suse.de
+
+- Update to version 0.26. This adds `quilt fork' and
+  `quilt snapshot'.
+
+-------------------------------------------------------------------
+Tue Sep  2 15:24:51 CEST 2003 - agruen@suse.de
+
+- Pipe rpmbuild output to /dev/null in spec2series (seems to be
+  necessary since rpm4).
+
+-------------------------------------------------------------------
+Mon Jul 28 18:25:56 CEST 2003 - agruen@suse.de
+
+- Remove obsolete #neededforbuild entry bash-completion.
+
+-------------------------------------------------------------------
+Mon Jul 28 00:52:06 CEST 2003 - agruen@suse.de
+
+- Update to version 0.24 + cvs.
+- Install /etc/bash_completions.d/quilt.
+
+-------------------------------------------------------------------
+Wed Jun 11 05:15:54 CEST 2003 - kukuk@suse.de
+
+- Use %{find_lang} macro
+
+-------------------------------------------------------------------
+Fri May 16 20:49:48 CEST 2003 - agruen@suse.de
+
+- Include recent changes from CVS head.
+
+-------------------------------------------------------------------
+Fri Apr 11 17:22:10 CEST 2003 - agruen@suse.de
+
+- Include recent changes from CVS head.
+
+-------------------------------------------------------------------
+Mon Apr  7 16:23:21 CEST 2003 - agruen@suse.de
+
+- Include head -1 / tail -1 fixes from CVS head.
+
+-------------------------------------------------------------------
+Mon Mar 24 12:36:09 CET 2003 - agruen@suse.de
+
+- Include recent CVS changes.
+
+-------------------------------------------------------------------
+Fri Feb 14 15:53:52 CET 2003 - agruen@suse.de
+
+- Initial package.

@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Tue Feb 12 17:57:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- The description is not supposed to be a manual: trim instructions.
+- Replace %__-type macro indirections.
+- Use noun phrase in summaries.
+
+-------------------------------------------------------------------
+Mon Feb 11 18:40:35 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Wed May 30 05:36:14 UTC 2018 - cyberorg@opensuse.org
+
+- Add lsb-release requirement, fixes BSC #1093817
+
+-------------------------------------------------------------------
+Sat Feb  3 07:17:38 UTC 2018 - cyberorg@cyberorg.info
+
+- Remove fuseios requirement
+- Support for ix86 arch on openSUSE
+- Support new kiwi-live for newer openSUSE images
+
+-------------------------------------------------------------------
+Wed Jun 21 12:18:47 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- tag 0.4.2 version
+- use --force to install grub
+- more explanations in GUI
+
+-------------------------------------------------------------------
+Tue Aug  9 05:58:00 UTC 2016 - cyberorg@opensuse.org
+
+- live-usb-gui only show available scripts
+- get correct exit status, xterm always returned 0
+- compare image size after copy
+
+-------------------------------------------------------------------
+Mon Aug  8 05:06:11 UTC 2016 - cyberorg@opensuse.org
+
+- Check iso size, vfat does not support file larger than 4G
+
+-------------------------------------------------------------------
+Sun Aug  7 16:49:47 UTC 2016 - cyberorg@opensuse.org
+
+- live-grub-stick support openSUSE install media iso on
+  non-vfat partition
+
+-------------------------------------------------------------------
+Fri Jul 15 09:46:48 UTC 2016 - cyberorg@opensuse.org
+
+- Require qemu-tools to create cow file for persistence
+
+-------------------------------------------------------------------
+Sat Jul  2 14:21:14 UTC 2016 - cyberorg@opensuse.org
+
+- added --suse-persistent and --ubuntu-persistent
+  with these options a cowfile is created to store changes
+  made while in live mode
+
+-------------------------------------------------------------------
+Wed Jun 29 10:20:01 UTC 2016 - cyberorg@opensuse.org
+
+- many cross distribution fixes
+
+-------------------------------------------------------------------
+Thu Jun 23 07:41:31 UTC 2016 - cyberorg@opensuse.org
+
+- Shortname for Li-f-e
+
+-------------------------------------------------------------------
+Sun Jan 10 05:10:05 UTC 2016 - cyberorg@opensuse.org
+
+- Add syslinux availability only on ExclusiveArch ix86 x86_64
+  as suggested by dmueller@suse.com
+- disable suse specific macros on other distros
+-------------------------------------------------------------------
+Sun Dec 27 05:36:34 UTC 2015 - cyberorg@opensuse.org
+
+- more cleanups, remove duplicated mounts, check before mounting
+
+-------------------------------------------------------------------
+Sat Dec 26 13:09:02 UTC 2015 - cyberorg@opensuse.org
+
+- Add ipxe network boot support
+
+-------------------------------------------------------------------
+Fri Dec 25 08:46:03 UTC 2015 - cyberorg@opensuse.org
+
+- Add live-grub-stick to create multiboot USB using grub2
+
+-------------------------------------------------------------------
+Fri Jul 10 13:36:53 UTC 2015 - cyberorg@opensuse.org
+
+- fixes for isoname and path with spaces in them
+
+-------------------------------------------------------------------
+Thu Feb 26 07:45:36 UTC 2015 - cyberorg@opensuse.org
+
+- use by-path instead of by-id to detect usb storage devices
+
+-------------------------------------------------------------------
+Sat Nov  8 08:45:36 UTC 2014 - opensuse.lietuviu.kalba@gmail.com
+
+- Fix live-fat-stick then ISO filename contains spaces
+
+-------------------------------------------------------------------
+Thu Jan 30 11:07:19 UTC 2014 - cyberorg@opensuse.org
+
+- use fuseiso to mount iso image instead of mount
+
+-------------------------------------------------------------------
+Wed Jan 29 14:27:26 UTC 2014 - cyberorg@opensuse.org
+
+- dd_rescue optimization
+- live-fat-stick now supports --isohybrid option
+
+-------------------------------------------------------------------
+Tue Jan 21 10:24:40 UTC 2014 - cyberorg@opensuse.org
+
+- live-usb-gui supports isohybrid and be nice
+
+-------------------------------------------------------------------
+Wed Dec  4 16:01:54 UTC 2013 - cyberorg@opensuse.org
+
+- minor fixes
+
+-------------------------------------------------------------------
+Thu Feb 14 10:15:41 UTC 2013 - cyberorg@opensuse.org
+
+- add live-usb-gui
+
+-------------------------------------------------------------------
+Mon Feb 11 10:48:40 UTC 2013 - cyberorg@opensuse.org
+
+- supports ubuntu and fedora as well, see live-fat-stick -h
+  for syntax change
+
+-------------------------------------------------------------------
+Sat Sep 15 05:32:30 UTC 2012 - cyberorg@opensuse.org
+
+- better handling of iso already on stick
+
+-------------------------------------------------------------------
+Fri Sep 14 14:40:47 UTC 2012 - cyberorg@opensuse.org
+
+- cleanup, allow using iso already on usb stick
+
+-------------------------------------------------------------------
+Fri Sep 14 10:51:57 UTC 2012 - cyberorg@opensuse.org
+
+- live-fat-stick -l to list possible usb sticks
+
+-------------------------------------------------------------------
+Thu Sep 13 09:52:37 UTC 2012 - cyberorg@opensuse.org
+
+- initial package

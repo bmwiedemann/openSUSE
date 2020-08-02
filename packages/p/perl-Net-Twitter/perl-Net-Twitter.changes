@@ -1,0 +1,303 @@
+-------------------------------------------------------------------
+Thu Jan 18 06:55:46 UTC 2018 - coolo@suse.com
+
+- updated to 4.01043
+   see /usr/share/doc/packages/perl-Net-Twitter/Changes
+
+  4.01043 2018-01-17
+      - deprecation notice: Twitter::API is the new Net::Twitter
+      - deprecated update_with_media
+      - doc and build updates
+      - remove debugger breakpoint (Oof!)
+
+-------------------------------------------------------------------
+Mon Oct  9 05:40:49 UTC 2017 - coolo@suse.com
+
+- updated to 4.01042
+   see /usr/share/doc/packages/perl-Net-Twitter/Changes
+
+  4.01042 2017-02-06
+      - deprecated contributors/contributees
+      - Fixed: follow_suggestions and follow_suggestions_for were reversed
+      - fix "overwriting a accessor" warnings under Moose 2.2004 #70
+      - build changes: keep dist.ini, create Makefile.PL (ether)
+
+-------------------------------------------------------------------
+Mon Nov 21 06:59:47 UTC 2016 - coolo@suse.com
+
+- updated to 4.01041
+   see /usr/share/doc/packages/perl-Net-Twitter/Changes
+
+  4.01041 2016-11-19
+      - hack dist.ini to get POD and README back into the distribution O_o
+  
+  4.01040 2016-11-19
+      - added trait WrapResult (returns both the HTTP response, with rate limit
+        accessors, and the decoded JSON response)
+      - rename placeholder :category to :slug with backwards compatibility to
+        match Twitter's documentation
+      - add attachment_url parameter to update method
+      - add links to Twitter API docs
+
+-------------------------------------------------------------------
+Sat Nov 19 06:58:18 UTC 2016 - coolo@suse.com
+
+- updated to 4.01030
+   see /usr/share/doc/packages/perl-Net-Twitter/Changes
+
+  4.01030 2016-11-18
+      - cleaned up Net::Twitter::Error and documented stack_trace and stack_frame
+        methods
+      - Add method upload_status (ghathwar on Github)
+
+-------------------------------------------------------------------
+Mon Apr  4 10:07:03 UTC 2016 - coolo@suse.com
+
+- updated to 4.01020
+   see /usr/share/doc/packages/perl-Net-Twitter/Changes
+
+-------------------------------------------------------------------
+Sun Apr 19 07:13:00 UTC 2015 - coolo@suse.com
+
+- updated to 4.01010
+   see /usr/share/doc/packages/perl-Net-Twitter/Changes
+
+  4.01010 2014-03-25
+      - Replace missing POD file
+  
+  4.01009 2015-03-24
+      - Added Application-Only Authentication via trait AppAuth
+  
+  4.01008 2015-01-19
+      - Added REST API mithods muting, create_mute, destroy_mute (Ashley Willis)
+  
+  4.01007 2015-01-07
+      - Added REST API method lookup_statuses (thanks SocialFlow)
+      - Typo fixes (thanks Zaki Mughal)
+      - Bumped IO::Socket::SSL requirement to 2.005; recent versions seem to fix
+        an issue with stalled connections.
+  
+  4.01006 2014-11-17
+      - Default `ssl => 1`
+      - Added `mutes` (@pjcj on Github)
+  
+  4.01005 2014-08-12
+      - Added upload_media for multi-image support (@ghathwar)
+  
+  4.01004 2014-04-11
+      - PUT requires paramters in the message body, now (Samuel Kaufman)
+  
+  4.01003 2014-03-12
+      - Net::Twitter::Error's twitter_error_text excludes stack trace line number
+  
+  4.01002 2014-01-16
+      - Fix POD bugs
+  
+  4.01001 2014-01-16
+      - Warn if ssl option to new is not passed (deprecation cycle)
+  
+  4.01000 2013-11-19
+      - Add API method retweeters_ids
+      - Fix update_with_media with utf8 status (RT#72814)
+      - Expand Carp::Clan list (should resolve RT#77306)
+      - Remove reliance on MooseX::Aliases (issue #35)
+      - Use Class::Load to replace deprecated Class::Mop method (issue #35)
+      - Add missing dependency: LWP::Protocol::https (issue #25)
+      - Fix OAuth failure for UTF8 params (issue #21)
+  
+  4.00007 2013-08-12
+      - Support for HTTP method PUT (sartak)
+      - example improvements (clmh)
+  
+  4.00006 2013-05-30
+      - Spelling error fixed (spazm@github)
+      - Added path_suffix parameter to twitter_api_method (sartak)
+      - tidy + pod fix (sartak)
+  
+  4.00005 2013-04-25
+      - Added list_ownerships (eleniS no Github)
+      - Removed Makefile.PL (cruft - using Module::Build, now)
+  
+  4.00004
+      - Dependecy Net::HTTP fixed in 6.06 (30 second timeout in OAuth requests)
+  
+  4.00003
+      - Fixed URI argument encoding (v1.1 is more stringent)
+  
+  4.00002 2013-02-23
+      - Removed Test::NoWarnings to accommodate HTTP::Request::Common 6.03
+      - Added method twitter_error_code to Net::Twitter::Error
+  
+  4.00001 2013-02-21
+      - First general release with Twitter API v1.1 support
+      - Twitter::Manual::MigratingToV1_1
+  
+  4.00000_03 2013-02-19
+      - Fixed: needed skip directives for dzil's AutoPrereqs plugin
+      - Stripped version numbers---let dzil put them in
+  
+  4.00000_02 2013-02-19
+      - use Dist::Zilla instead of Module::Install
+  
+  4.00000_01 2013-01-28
+      - Added Twitter API version 1.1 support
+  
+  3.18004 2012-10-15
+      - Allow extra parameters to get_auth*_url methods (this accommodates
+        Twitter's optional force_login and screen_name parameters to those
+        endpoints.
+  
+  3.18003 2012-06-27
+      - Use path statuses/mentions, not statuses/replies
+
+-------------------------------------------------------------------
+Tue Apr 24 21:18:17 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 3.18002:
+  * added API method subscriptions; list_subscriptions is now all_subscriptions
+    with alias list_subscriptions
+  * deprecated TwitterVision API support
+  * added API method members_destroy_all with alias remove_list_members
+  * added deprecation warning for 'trends'; calls trends_location(1), instead
+
+-------------------------------------------------------------------
+Sun Oct 02 23:39:14 UTC 2011 - pascal.bleser@opensuse.org
+
+- now also requires MooseX::Aliases
+
+- update to 3.18001:
+  * fixed: AutoCursor:
+    + no behavior change when user passes "cursor" arg
+    + work with InflateObjects trait
+  * synthetic ags use (-) prefix: -authenticate, -since, -legacy_lists_api
+  * replaced JSON::Any with JSON
+
+- changes from 3.18000_01:
+  * added update_with_media
+  * added get_privacy_policy and get_tos API methods
+  * added get_languages and get_settings API methods
+  * added contributors and contributees API methods
+  * added geo_search, geo_search, similar_places, and add_place API methods
+  * friends/followers API methods deprecated
+  * implemented the *new* Lists API in the API::REST trait
+  * replaced MX:MultiInitArg::Trait with MX:Aliases
+  * fixed bad whatis entry (patch from debian, closes RT#67203)
+  * use Digest::SHA instead of Digest::SHA1 (patch from debian, closes
+    RT#67202)
+
+-------------------------------------------------------------------
+Fri Jun  3 07:21:54 UTC 2011 - aj@suse.de
+
+- Disable pod tests for now until upstream package is fixed.
+
+-------------------------------------------------------------------
+Fri Apr 01 16:19:30 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.17001:
+  * fixed intermittent bug in AutoCursor (result of Class::MOP anon class caching)
+
+- changes from 3.17000:
+  * production release with new AutoCursor trait
+
+-------------------------------------------------------------------
+Sun Mar 27 00:18:15 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.16000:
+  * moved trends methods to API::REST; added warning to API::Search::Trends
+  * added no_retweet_ids method
+  * modify searchapiurl for identica option
+  * added deprecation notice to Net::Identica with Net::Twitter examples
+
+-------------------------------------------------------------------
+Sat Feb 26 07:32:18 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.15000:
+  * added Lists API method members_create_all (alias add_list_members)
+  * added tests dependency: Test::Exception (closes RT#65786)
+
+-------------------------------------------------------------------
+Tue Feb  8 21:40:38 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.14003:
+  * fixed: trends_location (RT#65506)
+  * added parameters trim_user, include_entities, include_rts (RT#62542)
+
+- changes from 3.14001:
+  * make Crypt::SSLeay a hard requirement (really no longer practical without
+    it)
+
+- changes from 3.14000:
+  * added #newtwitter API methods (account_totals, account_settings,
+    suggestion_categories, user_suggestions, show_direct_message,
+    retweeted_to_user, retweeted_by_user, lookup_friendships,
+    update_friendship, all_lists, related_results)
+  * fixed: memory leak in RateLimit trait
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:13 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:47 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 12 09:51:42 CEST 2010 - dmueller@suse.de
+
+- fix dependencies
+
+-------------------------------------------------------------------
+Sat Sep 18 09:40:18 UTC 2010 - pascal.bleser@opensuse.org
+
+- add dependency to Devel::StackTrace
+
+- update to 3.13009:
+  * use Athorization header for OAuth token requests rather than query params
+  * "identica => 1" sets OAuth URLs
+  * updated Synopsis with OAuth (closes RT#61273)
+
+- changes from 3.13008_02:
+  * fixed stack frame filter
+  * fixed missing dependency
+  * detect Twitter's errors array as an error object
+
+- changes from 3.13008_01:
+  * extract error from the various disparate error formats
+
+-------------------------------------------------------------------
+Thu Aug 26 22:13:55 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 3.13008:
+  * use HTTPS for all OAuth token negotiation steps
+
+- changes from 3.13007:
+  * decode_html_entities now decodes all fields (incl source in search results)
+  * Role::OAuth doc patch
+  * fixed: incompatibility between "since" and InflateObjects
+
+- changes from 3.13006:
+  * test fix: bump the skip count for a new test in t/unicode.t for optional module
+
+- changes from 3.13005:
+  * fixed: since (synthetic arg) filtering
+  * fixed: don't use args for OAuth signature on multi-part mime posts
+
+-------------------------------------------------------------------
+Sat Jun 19 00:25:52 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 3.13004
+
+-------------------------------------------------------------------
+Thu Apr  9 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.12
+
+
+-------------------------------------------------------------------
+Sun Jan 11 00:00:00 UTC 2009 - guru@unixtech.be
+
+- new package
+
+

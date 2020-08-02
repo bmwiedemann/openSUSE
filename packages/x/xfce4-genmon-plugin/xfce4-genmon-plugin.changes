@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:27:17 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Mon Aug 12 09:12:48 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.0.2
+  - Change font to use pt instead of px to match system font setting
+  - Simplify and standardize spacing
+  - Adjust tooltip such that period is shown as float (2) number 
+  - Translation updates
+
+-------------------------------------------------------------------
+Tue Jul 16 16:13:31 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added bcond for git master builds
+- Only add NEWS and omi Changelog
+
+-------------------------------------------------------------------
+Fri Nov 10 20:51:56 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 4.0.1
+  - Allow pango markup in tooltip as well
+  - Fix progressbar wrong direction
+
+-------------------------------------------------------------------
+Wed Jul 19 08:57:57 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 4.0.0
+  - Port to Gtk3
+  - Fix font styling to work with Gtk 3.22
+  - Add support for "genmon" in 'xfce4-panel --plugin-event' (bxo#10734)
+  - Fix default tooltip does not work (bxo#11284)
+  - Add <txtclick> functionality (bxo#3437)
+- packaging: do not package ChangeLog, NEWS is good enough
+
+-------------------------------------------------------------------
+Sat May 12 22:56:54 UTC 2012 - gber@opensuse.org
+
+- update to version 3.4.0
+  - port from libxfcegui4 to libxfce4ui
+  - install as a shared library rather than an executable
+  - no longer uses troublesome fixed-length text buffers
+  - bug fixes
+
+-------------------------------------------------------------------
+Fri Apr 20 10:15:03 UTC 2012 - gber@opensuse.org
+
+- corrected license
+- added documentation files
+
+-------------------------------------------------------------------
+Tue Apr 17 22:32:09 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Tue Apr  3 15:49:09 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Thu Jan  5 09:38:18 UTC 2012 - gber@opensuse.org
+
+- updated to version 3.3.1
+  - change icon to "utilities-system-monitor"
+  - fix problems when changing panel orientation
+  - fix timer not started at startup (bnc#737801)
+  - remove obsolete samples.txt
+- dropped obsolete
+  xfce4-panel-plugin-genmon-initialize-timer-on-startup.patch
+
+-------------------------------------------------------------------
+Tue Dec 20 14:53:05 UTC 2011 - gber@opensuse.org
+
+- added xfce4-panel-plugin-genmon-initialize-timer-on-startup.patch
+  which fixes a bug introduced in 3.3.0 where the display timer
+  was not initialized on startup (bnc#737801)
+- fix missing icon
+- remove unncessary xdt-autogen run
+
+-------------------------------------------------------------------
+Fri May 27 07:55:58 UTC 2011 - coolo@novell.com
+
+- use suse_update_desktop_file to translate
+
+-------------------------------------------------------------------
+Wed Mar 23 18:40:28 UTC 2011 - gber@opensuse.org
+
+- update to version 3.3.0
+  + Support for xfce 4.8
+  + Translated to 29 languages
+  + Introduces new markup for colored and styled text
+  + Various small bug fixes
+  + Build and package fixes
+- dropped obsolete
+  xfce4-panel-plugin-genmon-3.2-fix-build-with-4.7.patch,
+  xfce4-panel-plugin-genmon-3.2-prevent-zombies.patch, and
+  xfce4-panel-plugin-genmon-3.2-close-unused-pipes.patch
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

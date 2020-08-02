@@ -1,0 +1,17 @@
+diff -Nur jbig2dec-0.18/jbig2.c new/jbig2.c
+--- jbig2dec-0.18/jbig2.c	2020-03-12 13:26:37.000000000 +0100
++++ new/jbig2.c	2020-05-24 13:32:53.883047409 +0200
+@@ -99,6 +99,13 @@
+     return -1;
+ }
+ 
++#undef jbig2_ctx_new
++Jbig2Ctx *
++jbig2_ctx_new(Jbig2Allocator *allocator, Jbig2Options options, Jbig2GlobalCtx *global_ctx, Jbig2ErrorCallback error_callback, void *error_callback_data)
++{
++    return jbig2_ctx_new_imp((allocator), (options), (global_ctx), (error_callback), (error_callback_data), JBIG2_VERSION_MAJOR, JBIG2_VERSION_MINOR);
++}
++
+ Jbig2Ctx *
+ jbig2_ctx_new_imp(Jbig2Allocator *allocator, Jbig2Options options, Jbig2GlobalCtx *global_ctx, Jbig2ErrorCallback error_callback, void *error_callback_data, int jbig2_version_major, int jbig2_version_minor)
+ {

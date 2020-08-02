@@ -1,0 +1,6 @@
+addFilter(".*devel-file-in-non-devel-package.*/usr/lib.*/clisp-.*/.*")
+addFilter(".*make-check-outside-check-section.*make\ check.*")
+addFilter(".*executable-stack.*/usr/lib.*/clisp-.*")
+addFilter(".*binary-or-shlib-calls-gethostbyname.*/usr/lib.*/clisp-.*")
+addFilter(".*file-contains-date-and-time.*/usr/lib.*/clisp-.*")
+addFilter(".*position-independent-executable-suggested.*")

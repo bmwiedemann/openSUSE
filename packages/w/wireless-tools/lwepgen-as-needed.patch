@@ -1,0 +1,13 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig	2007-03-22 16:52:08.000000000 +0100
++++ Makefile	2009-09-22 20:34:04.000000000 +0200
+@@ -4,7 +4,7 @@ CFLAGS ?= -O2 -Wall
+ default: lwepgen
+ 
+ lwepgen: lwepgen.c
+-	 $(CC) $(CFLAGS) -lcrypto -o lwepgen lwepgen.c
++	 $(CC) $(CFLAGS) -o lwepgen lwepgen.c -lcrypto
+ 	 
+ clean:
+ 	rm -rf lwepgen

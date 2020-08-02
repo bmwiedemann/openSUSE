@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Sun Dec 30 21:21:20 UTC 2018 - sogal@opensuse.org
+
+- Updated to v0.7
+  * applied ncursesw patch
+  * allow UTF-8 to pass thrue
+  * README written in markdown
+- Dropped logtop-ncursesw.patch (applied upstream gh-PR#7)
+
+-------------------------------------------------------------------
+Tue Nov 20 00:14:43 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- logtop-ncursesw.patch: Move to ncursesw
+
+-------------------------------------------------------------------
+Tue Jul 31 19:48:26 UTC 2018 - sogal@opensuse.org
+
+- remove FixMe line
+- fix license to BSD-2-Clause after reviewing it with author
+
+-------------------------------------------------------------------
+Fri Jul 27 07:10:08 UTC 2018 - jengelh@inai.de
+
+- Trim filler wording from description. Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Mon Jul  9 11:22:56 UTC 2018 - sogal@opensuse.org
+
+- use original man page
+
+-------------------------------------------------------------------
+Sun Jul  8 10:26:29 UTC 2018 - sogal@opensuse.org
+
+- initial build
+- create missing man page

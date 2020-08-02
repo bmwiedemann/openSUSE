@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Thu Jun 18 15:20:06 UTC 2015 - crrodriguez@opensuse.org
+
+- Force GNU inline semantics, fixes build with GCC5 
+
+-------------------------------------------------------------------
+Fri Sep 30 16:17:35 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Jun 17 17:22:51 CEST 2009 - crrodriguez@suse.de
+
+- fix build with as-needed by default 
+
+-------------------------------------------------------------------
+Wed Nov  5 11:49:13 CET 2008 - sassmann@suse.de
+
+- add supplements statement to match Cell hardware for automatic
+  package installation (bnc#430179)
+
+-------------------------------------------------------------------
+Thu Oct 23 18:06:23 CEST 2008 - sassmann@suse.de
+
+- update spu-tools to version 2.3.0 (bnc#438245)
+
+-------------------------------------------------------------------
+Wed Aug 20 15:57:22 CEST 2008 - meissner@suse.de
+
+- use rpm_opt_flags
+
+-------------------------------------------------------------------
+Tue Aug  5 16:50:40 CEST 2008 - sassmann@suse.de
+
+- add ncurses-devel BuildRequires
+- remove Requires ncurses
+
+-------------------------------------------------------------------
+Wed Jul 23 14:00:35 CEST 2008 - sassmann@suse.de
+
+- intial release of package spu-tools (version 2.2.80)
+

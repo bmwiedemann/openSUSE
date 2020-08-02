@@ -1,0 +1,17 @@
+From: Alexey Svistunov <svalx@svalx.net>
+Date: 2017-03-15 15:48:22 +0300
+Subject: Fixing rpmlint no-return-in-nonvoid-function error in dump 
+References: https://sourceforge.net/u/svalx1/dump/ci/7b36fa5f01cfb42e6dc9af83b444524ca1d2d4e9/
+Upstream: merged
+Index: dump-0.4b46/common/transformation_lzo.c
+===================================================================
+--- dump-0.4b46.orig/common/transformation_lzo.c
++++ dump-0.4b46/common/transformation_lzo.c
+@@ -13,6 +13,7 @@
+ static int
+ lzo_initialize(Transformation *xform, int enc)
+ {
++	return 0;
+ }
+ 
+ /*

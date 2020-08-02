@@ -1,0 +1,21 @@
+sort input files
+
+when building packages
+(random) filesystem order of input files
+influences ordering of functions in the output,
+thus without the patch, builds (in disposable VMs) would usually differ.
+
+See https://reproducible-builds.org/ for why this matters.
+Index: liboil-0.3.17/ltmain.sh
+===================================================================
+--- liboil-0.3.17.orig/ltmain.sh
++++ liboil-0.3.17/ltmain.sh
+@@ -2684,7 +2684,7 @@ func_extract_archives ()
+         func_extract_an_archive "$my_xdir" "$my_xabs"
+ 	;;
+       esac
+-      my_oldobjs="$my_oldobjs "`find $my_xdir -name \*.$objext -print -o -name \*.lo -print | $NL2SP`
++      my_oldobjs="$my_oldobjs "`find $my_xdir -name \*.$objext -print -o -name \*.lo -print | sort | $NL2SP`
+     done
+ 
+     func_extract_archives_result="$my_oldobjs"

@@ -1,0 +1,12 @@
+Index: nagios-4.4.2/worker/ping/worker-ping.c
+===================================================================
+--- nagios-4.4.2.orig/worker/ping/worker-ping.c
++++ nagios-4.4.2/worker/ping/worker-ping.c
+@@ -84,6 +84,7 @@ int main( int argc, char **argv, char **
+ 	if( worker( worker_socket)) {
+ 		exit( 1);
+ 	}
++    return 1;
+ }
+ 
+ void parse_worker_command_line( int argc, char **argv, char **env,

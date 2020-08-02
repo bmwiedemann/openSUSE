@@ -1,0 +1,13 @@
+
+
+diff --git a/utils/gctrigger.c b/utils/gctrigger.c
+--- a/utils/gctrigger.c
++++ b/utils/gctrigger.c
+@@ -601,6 +601,7 @@ static inline void VectorToken_delete (V
+ static Token nexttoken (boolean within_prep_directive)
+ {
+   Token token;
++  memset(&token, 0, sizeof(Token));
+  restart:
+   { int c = next_char();
+     switch (c) {

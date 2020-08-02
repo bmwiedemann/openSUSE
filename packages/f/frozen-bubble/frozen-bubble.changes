@@ -1,0 +1,375 @@
+-------------------------------------------------------------------
+Mon Jun 18 14:50:18 UTC 2018 - opensuse@dstoecker.de
+
+- fix build for Tumbleweed (add silencebadsnprintfcheck.patch)
+
+-------------------------------------------------------------------
+Mon Mar  5 11:13:18 UTC 2018 - dimstar@opensuse.org
+
+- Add Requires(post): coreutils to server subpackage: the post
+  script calls 'cat' (boo#839736).
+
+-------------------------------------------------------------------
+Wed Aug 24 00:34:54 UTC 2016 - rpm@fthiessen.de
+
+- Use bundled icons and install all resolutions available.
+- Removed code in spec for now unmaintained openSUSE versions.
+
+-------------------------------------------------------------------
+Tue Aug 23 21:18:54 UTC 2016 - mailaender@opensuse.org
+
+- Add appdata.patch and desktop.patch for inclusion in
+  https://software.opensuse.org/packages/Games
+- Avoid deprecated pixmap icon folder.
+- Use https://en.opensuse.org/SourceUrls
+- Add missing desktop/icon post macros.
+
+-------------------------------------------------------------------
+Sat Aug 29 15:47:43 UTC 2015 - bwiedemann@suse.com
+
+- BuildRequire perl(Module::Build)
+
+-------------------------------------------------------------------
+Sun Jan 25 20:53:45 UTC 2015 - devel.suse@gmail.com
+
+- Remove exec bit from frozen-bubble-server.service
+
+-------------------------------------------------------------------
+Sun Aug  3 18:25:40 UTC 2014 - sfalken@opensuse.org
+
+- Changed $PIDDIR in fb-server to /run/fb-server, instead of /var/run
+  Removed references to /run in .spec file, per discussion on OBS request #243074
+- Modified:
+    frozen-bubble.spec
+    fb-server 
+
+-------------------------------------------------------------------
+Wed Jul 30 15:41:13 UTC 2014 - sfalken@opensuse.org
+
+- Changed paths in .spec file from /var/run to /run to resolve rpmlint check failures in oS:Factory 
+
+-------------------------------------------------------------------
+Sun Oct 27 19:27:16 UTC 2013 - p.drouand@gmail.com
+
+- Add systemd support for openSUSE >= 12.3
+- Add a language subpackage
+
+-------------------------------------------------------------------
+Thu Dec 20 09:14:24 UTC 2012 - joop.boonen@opensuse.org
+
+- Added missing BuildRequirements
+- Created unused-result patch
+- Build manifest 
+
+-------------------------------------------------------------------
+Wed Sep 19 19:05:31 UTC 2012 - opensuse@dstoecker.de
+
+- update to 2.212 (2.2.1beta1)
+  * use new SDL Perl API
+  * ported to CPAN; should now work "natively" on Windows and Mac OSX
+  * integrates all functional openSUSE patches
+
+-------------------------------------------------------------------
+Mon Feb 13 10:46:32 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Nov 20 17:29:12 UTC 2011 - dimstar@opensuse.org
+
+- Create /var/run/fb-server so we can package it. Fixes build on
+  12.1 / Factory.
+
+-------------------------------------------------------------------
+Fri Aug 26 15:50:57 UTC 2011 - prusnak@opensuse.org
+
+- package /var/run as %ghost [bnc#710295]
+
+-------------------------------------------------------------------
+Mon Dec 27 23:22:15 CET 2010 - dimstar@opensuse.org
+
+- Fix build on openSUSE 11.4.
+
+-------------------------------------------------------------------
+Thu Oct 15 14:17:38 CEST 2009 - lrupp@suse.de
+
+- add frozen-bubble-server as Provides to init script
+
+-------------------------------------------------------------------
+Sat Oct  3 19:06:07 CEST 2009 - lars@linux-schulserver.de
+
+- build all packages via one single specfile
+- add $remote_fs to init-skript as /usr can be remote
+- added 'status' and 'try-restart' options to init-script
+- use /etc/init.d/frozen-bubble-server to be lsb conform
+- optimize the code
+- added frozen-bubble-2.2.0-total_launched_bubbles.patch
+- added frozen-bubble-2.2.0-german.patch
+- generate a primary working fb-server.conf on installation
+- fix PreReq
+
+-------------------------------------------------------------------
+Wed May 20 16:56:50 CEST 2009 - prusnak@suse.cz
+
+- cleaned-up Requires and BuildRequires list
+
+-------------------------------------------------------------------
+Mon Dec  8 12:00:00 CEST 2008 - opensuse@dstoecker.de
+
+- updated to 2.2.0 final release
+
+-------------------------------------------------------------------
+Mon Dec  1 12:00:00 CEST 2008 - opensuse@dstoecker.de
+
+- updated to 2.2.0 RC2
+
+-------------------------------------------------------------------
+Tue Nov  4 12:00:00 CEST 2008 - opensuse@dstoecker.de
+
+- updated to 2.2.0 RC1 (removing two now integrated patches)
+- NOTE that connections to older FB servers are no longer possible
+
+-----------------------------------------------------------------
+Fri Jun 27 18:01:56 CEST 2008 - sndirsch@suse.de
+
+- verified that dstoecker's changes are fine
+
+-------------------------------------------------------------------
+Fri Jun 27 12:00:00 CET 2008 - opensuse@dstoecker.de
+
+- updated to current SVN version integrating lots of the patches
+- fixed server starts script for 64 bit systems (bnc #404439)
+
+-------------------------------------------------------------------
+Mon Mar 10 09:00:00 CET 2008 - opensuse@dstoecker.de
+
+- added /autokick command and messages for /kick
+
+-------------------------------------------------------------------
+Sun Feb 24 05:36:53 CET 2008 - crrodriguez@suse.de
+
+- user find_lang macro
+- frozen-bubble-server failed to call restart_on_update, stop_on_removal 
+  and insserv_cleanup macros properly 
+
+-------------------------------------------------------------------
+Wed Jan 30 03:11:28 CET 2008 - ro@suse.de
+
+- fix missing prototype (logging_init) 
+
+-------------------------------------------------------------------
+Mon Jan 14 11:57:41 CET 2008 - coolo@suse.de
+
+- CheckHardware is dropped
+
+-------------------------------------------------------------------
+Sun Oct  4 12:00:00 CEST 2007 - opensuse@dstoecker.de
+
+- fixed LAN game server selection problem (Bug #336294)
+- fixed LAN game server creation with long nickname
+
+-------------------------------------------------------------------
+Sun Sep 30 21:11:24 CEST 2007 - sndirsch@suse.de
+
+- added -server subpackage and a lot of patches by Dirk Stoecker
+
+-------------------------------------------------------------------
+Fri Sep 21 09:00:47 CEST 2007 - sndirsch@suse.de
+
+- make no use of %optipng macro on openSUSE 10.2 (Bug #326968) 
+
+-------------------------------------------------------------------
+Mon Sep 10 19:39:05 CEST 2007 - sndirsch@suse.de
+
+- make use of %optipng macro (Bug #309087) 
+
+-------------------------------------------------------------------
+Mon Dec 18 22:33:19 CET 2006 - sndirsch@suse.de
+
+- removed bogus %post/%postun scripts (Bug #229374)
+
+-------------------------------------------------------------------
+Tue Dec 12 00:18:37 CET 2006 - dmueller@suse.de
+
+- add missing require for .desktop file 
+
+-------------------------------------------------------------------
+Wed Dec  6 14:41:27 CET 2006 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Sat Nov 25 13:34:00 CET 2006 - wstephenson@suse.de
+
+- update to frozen-bubble 2.1.0
+  * 1-player multiplayer training: ability to activate chain reaction
+  * world map: you can view the amount of playing players, which helps chosing a server
+  * world map: you see playing players as green dots
+  * network game lounge: you can toggle fullscreen
+  * network game lounge: the game creator can activate chain-reaction and set a victories limit through options
+  * network game lounge: you can request server info
+  * network game lounge: chat is timestampped
+  * multiplayer: you can view who's attacking you
+
+-------------------------------------------------------------------
+Tue Nov  7 19:29:48 CET 2006 - sndirsch@suse.de
+
+- added missing mini images for the colourblind balls (Bug #218841)
+
+-------------------------------------------------------------------
+Mon Nov  6 23:29:43 CET 2006 - sndirsch@suse.de
+
+- fixed file permissions 
+
+-------------------------------------------------------------------
+Mon Oct 30 07:29:34 CET 2006 - sndirsch@suse.de
+
+- fixed sever startup for LAN game 
+
+-------------------------------------------------------------------
+Sun Oct 29 20:16:58 CET 2006 - sndirsch@suse.de
+
+- updated to frozen-bubble 2.0.0
+  * new 1-player game mode: multiplayer training; uses identical
+    game rules as multiplayer, generated malus bubbles are counted
+    as points - what score will you be able to reach in the 2
+    minutes time frame?
+  * network (Internet) game: up to 5 players in a game (net game 
+    system has logic able to transparently handle players behind ai
+    NAT)
+  * LAN game: similar to network game except that no connection to
+    Internet is made, substituted by polling the local network
+  * fully revamped graphics, including now 3d-based smooth penguin
+    eyecandy
+  * revamped intro and 1p music into fully digital productions
+  * full joystick support: just move your joystick(s) or push 
+    buttons in the "change keys" dialog (analog joysticks handled
+    as digital for fair play)
+  * recording and playback of all games with non-predefined levels
+    (1-player in random and multiplayer training, local 2-player,
+    and network/LAN game with 2 to 5 players)
+  * realtime graphical effects in the menu screen (if your computer
+    is fast enough)
+  * anti-aliased and localized messages
+
+-------------------------------------------------------------------
+Sat Oct 28 11:11:38 CEST 2006 - sndirsch@suse.de
+
+- fixed startup 
+
+-------------------------------------------------------------------
+Fri Sep  8 08:22:06 CEST 2006 - sndirsch@suse.de
+
+- fixed build in openSUSE buildservice / Bug #212212
+
+-------------------------------------------------------------------
+Thu Feb 16 14:28:03 CET 2006 - stbinner@suse.de
+
+- add GenericName to .desktop file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep  8 16:11:31 CEST 2005 - sndirsch@suse.de
+
+- fixed file permissions (#114849) 
+
+-------------------------------------------------------------------
+Thu Jul 28 06:46:24 CEST 2005 - sndirsch@suse.de
+
+- added libmikmod to #neededforbuild
+
+-------------------------------------------------------------------
+Fri Jul 22 08:25:31 CEST 2005 - sndirsch@suse.de
+
+- added SDL_mixer-devel to #neededforbuild 
+
+-------------------------------------------------------------------
+Fri Mar 19 22:01:22 CET 2004 - sndirsch@suse.de
+
+- removed .orig files to fix build
+
+-------------------------------------------------------------------
+Mon Sep 22 20:44:46 CEST 2003 - sndirsch@suse.de
+
+- added 48x48 Icon as additional source
+
+-------------------------------------------------------------------
+Sat Aug 30 05:52:07 CEST 2003 - sndirsch@suse.de
+
+- added desktop icon
+
+-------------------------------------------------------------------
+Wed Aug 20 19:49:06 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Aug 18 15:01:40 CEST 2003 - sndirsch@suse.de
+
+- removed previous patch again as SDL_perl was downgraded to 1.20.0
+  again
+
+-------------------------------------------------------------------
+Sat Aug 16 13:52:24 CEST 2003 - sndirsch@suse.de
+
+- added patch required for SDL_perl 2.0
+
+-------------------------------------------------------------------
+Sun Aug 10 12:15:57 CEST 2003 - sndirsch@suse.de
+
+- added desktop file
+
+-------------------------------------------------------------------
+Sun Jul 13 10:19:08 CEST 2003 - sndirsch@suse.de
+
+- fixed build
+
+-------------------------------------------------------------------
+Fri Jun 13 22:29:47 CEST 2003 - sndirsch@suse.de
+
+- fixed filelist
+
+-------------------------------------------------------------------
+Wed Jun  4 04:56:46 CEST 2003 - sndirsch@suse.de
+
+- fixed filelist for non-i386 archs
+
+-------------------------------------------------------------------
+Thu May 15 00:27:07 CEST 2003 - sndirsch@suse.de
+
+- fixed filelist
+
+-------------------------------------------------------------------
+Wed Apr 16 08:54:33 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Mon Feb 17 21:19:05 CET 2003 - sndirsch@suse.de
+
+- update to release 1.0.0
+  * added: level editor, contributed by Kim and David Joham
+  * added: 50 more levels, to make them 100 now
+  * changed: graphics have been re-designed
+  * added: chain-reaction mechanism in 2p-mode
+  * added: manpages (first contributed by Debian)
+
+-------------------------------------------------------------------
+Sun Oct 27 12:10:08 CET 2002 - sndirsch@suse.de
+
+- added missing 'Requires: SDL_perl'
+
+-------------------------------------------------------------------
+Fri Oct 25 11:59:28 CEST 2002 - sndirsch@suse.de
+
+- fixed %files section (use macros now)
+
+-------------------------------------------------------------------
+Fri Oct 25 00:05:08 CEST 2002 - sndirsch@suse.de
+
+- created package
+

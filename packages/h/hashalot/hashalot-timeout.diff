@@ -1,0 +1,87 @@
+add timeout option -t
+
+Signed-off-by: Ludwig Nussel <ludwig.nussel@suse.de>
+
+Index: hashalot-0.3/hashalot.c
+===================================================================
+--- hashalot-0.3.orig/hashalot.c
++++ hashalot-0.3/hashalot.c
+@@ -21,6 +21,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <assert.h>
++#include <signal.h>
+ 
+ #include <sys/types.h>
+ #include <sys/mman.h>
+@@ -36,6 +37,12 @@
+ 
+ typedef int (*phash_func_t)(char dest[], size_t dest_len, const char src[], size_t src_len);
+ 
++static int got_timeout;
++void alrm_handler(int num)
++{
++	got_timeout = 1;
++}
++
+ static int
+ phash_rmd160(char dest[], size_t dest_len, const char src[], size_t src_len)
+ {
+@@ -101,9 +108,9 @@ show_usage(const char argv0[])
+ 
+ 	fprintf (stdout,
+ 		 "usage:\n"
+-		 "    hashalot [ -x ] [ -s SALT ] [ -n _#bytes_ ] [ -C itercountk ] HASHTYPE\n"
++		 "    hashalot [ -t secs ] [ -x ] [ -s SALT ] [ -n _#bytes_ ] [ -C itercountk ] HASHTYPE\n"
+ 		 "  or\n"
+-		 "    HASHTYPE [ -x ] [ -s SALT ] [ -n _#bytes_ ] [ -C itercountk ]\n"
++		 "    HASHTYPE [ -t secs ] [ -x ] [ -s SALT ] [ -n _#bytes_ ] [ -C itercountk ]\n"
+ 		 "\n"
+ 		 "supported values for HASHTYPE: ");
+ 
+@@ -222,8 +229,9 @@ main(int argc, char *argv[])
+ 	phash_func_t func;
+ 	int hex_output = 0, c;
+ 	unsigned long itercountk = 0;
++	unsigned timeout = 0;
+ 
+-	while ((c = getopt(argc, argv, "n:s:xC:")) != -1) {
++	while ((c = getopt(argc, argv, "n:s:xC:t:")) != -1) {
+ 		switch (c) {
+ 		case 'n':
+ 			hashlen = strtoul(optarg, &p, 0);
+@@ -238,6 +246,9 @@ main(int argc, char *argv[])
+                 case 's':
+                         salt = optarg;
+                         break;
++		case 't':
++			timeout = atoi(optarg);
++			break;
+ 		case 'x':
+ 			hex_output++;
+ 			break;
+@@ -276,8 +287,24 @@ main(int argc, char *argv[])
+ 		fputs("Warning: couldn't lock memory, are you root?\n", stderr);
+ 	}
+ 
++	if(timeout) {
++		struct sigaction sa;
++		sa.sa_handler = alrm_handler;
++		sigemptyset (&sa.sa_mask);
++		sa.sa_flags = 0;
++		sigaction(SIGALRM, &sa, NULL);
++		alarm(timeout);
++	}
++
+ 	/* here we acquire the precious passphrase... */
+ 	pass = xgetpass("Enter passphrase: ");
++	if(got_timeout) {
++ 		exit(EXIT_FAILURE);
++ 	}
++	if(timeout) {
++		alarm(0);
++	}
++
+ 	if (salt)
+ 		pass = salt_passphrase(pass, salt);
+ 	hashlen = func(passhash, hashlen, pass, strlen(pass));

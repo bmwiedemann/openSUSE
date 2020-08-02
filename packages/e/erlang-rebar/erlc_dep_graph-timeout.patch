@@ -1,0 +1,6 @@
+Index: rebar-2.6.1+git20151013.5d73a8d/inttest/erlc_dep_graph/retest.config
+===================================================================
+--- /dev/null
++++ rebar-2.6.1+git20151013.5d73a8d/inttest/erlc_dep_graph/retest.config
+@@ -0,0 +1 @@
++{timeout, 120000}.

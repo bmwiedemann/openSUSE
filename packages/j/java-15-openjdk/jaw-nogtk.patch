@@ -1,0 +1,148 @@
+--- java-atk-wrapper-0.33.2/configure.ac	2018-08-21 13:51:47.158216451 +0200
++++ java-atk-wrapper-0.33.2/configure.ac	2018-08-21 13:52:22.122434818 +0200
+@@ -45,7 +45,6 @@
+   dbus-1
+   glib-2.0 >= 2.32.0
+   gthread-2.0
+-  gdk-2.0
+   gobject-2.0
+ ])
+ AC_SUBST(JAW_LIBS)
+--- java-atk-wrapper-0.33.2/jni/src/AtkWrapper.c	2015-07-02 15:18:08.000000000 +0200
++++ java-atk-wrapper-0.33.2/jni/src/AtkWrapper.c	2018-08-21 13:53:20.206797576 +0200
+@@ -23,9 +23,6 @@
+ #include <stdlib.h>
+ #include <glib.h>
+ #include <atk-bridge.h>
+-#include <gdk/gdk.h>
+-#include <gdk/gdkx.h>
+-#include <gtk/gtk.h>
+ #include <X11/Xlib.h>
+ #include "jawutil.h"
+ #include "jawimpl.h"
+@@ -258,7 +255,7 @@
+ {
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+-  gdk_threads_add_idle(focus_notify_handler, para);
++  g_idle_add(focus_notify_handler, para);
+ }
+ 
+ static gboolean
+@@ -336,7 +333,7 @@
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+   para->is_toplevel = (jIsToplevel == JNI_TRUE) ? TRUE : FALSE;
+-  gdk_threads_add_idle(window_open_handler, para);
++  g_idle_add(window_open_handler, para);
+ }
+ 
+ static gboolean
+@@ -413,7 +410,7 @@
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+   para->is_toplevel = (jIsToplevel == JNI_TRUE) ? TRUE : FALSE;
+-  gdk_threads_add_idle(window_close_handler, para);
++  g_idle_add(window_close_handler, para);
+ }
+ 
+ static gboolean
+@@ -462,7 +459,7 @@
+ {
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+-  gdk_threads_add_idle(window_minimize_handler, para);
++  g_idle_add(window_minimize_handler, para);
+ }
+ 
+ static gboolean
+@@ -511,7 +508,7 @@
+ {
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac );
+-  gdk_threads_add_idle(window_maximize_handler, para);
++  g_idle_add(window_maximize_handler, para);
+ }
+ 
+ static gboolean
+@@ -561,7 +558,7 @@
+ 
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+-  gdk_threads_add_idle(window_restore_handler, para);
++  g_idle_add(window_restore_handler, para);
+ }
+ 
+ static gboolean
+@@ -609,7 +606,7 @@
+ 
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+-  gdk_threads_add_idle(window_activate_handler, para);
++  g_idle_add(window_activate_handler, para);
+ }
+ 
+ static gboolean
+@@ -659,7 +656,7 @@
+ 
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+-  gdk_threads_add_idle(window_deactivate_handler, para);
++  g_idle_add(window_deactivate_handler, para);
+ }
+ 
+ static gboolean
+@@ -710,7 +707,7 @@
+ 
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+-  gdk_threads_add_idle(window_state_change_handler, para);
++  g_idle_add(window_state_change_handler, para);
+ }
+ 
+ static gchar
+@@ -1047,7 +1044,7 @@
+   CallbackPara *para = alloc_callback_para(global_ac);
+   para->signal_id = (gint)id;
+   para->args = global_args;
+-  gdk_threads_add_idle(signal_emit_handler, para);
++  g_idle_add(signal_emit_handler, para);
+ }
+ 
+ static gboolean
+@@ -1106,7 +1103,7 @@
+   } else {
+     para->state_value = FALSE;
+   }
+-  gdk_threads_add_idle(object_state_change_handler, para);
++  g_idle_add(object_state_change_handler, para);
+ }
+ 
+ static gboolean
+@@ -1163,7 +1160,7 @@
+ {
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+-  gdk_threads_add_idle(component_added_handler, para);
++  g_idle_add(component_added_handler, para);
+ }
+ 
+ static gboolean
+@@ -1222,7 +1219,7 @@
+ {
+   jobject global_ac = (*jniEnv)->NewGlobalRef(jniEnv, jAccContext);
+   CallbackPara *para = alloc_callback_para(global_ac);
+-  gdk_threads_add_idle(component_removed_handler, para);
++  g_idle_add(component_removed_handler, para);
+ }
+ 
+ static gboolean
+@@ -1340,7 +1337,7 @@
+ {
+   jboolean key_consumed;
+   jobject global_key_event = (*jniEnv)->NewGlobalRef(jniEnv, jAtkKeyEvent);
+-  gdk_threads_add_idle(key_dispatch_handler, (gpointer)global_key_event);
++  g_idle_add(key_dispatch_handler, (gpointer)global_key_event);
+ 
+   if(jaw_debug)
+     printf("key_dispatch_result saved = %d\n ", key_dispatch_result);

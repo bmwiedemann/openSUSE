@@ -1,0 +1,92 @@
+diff -Naur a/scripts/ibus-engine-cangjie.in b/scripts/ibus-engine-cangjie.in
+--- a/scripts/ibus-engine-cangjie.in	2014-12-31 21:20:03.000000000 +0800
++++ b/scripts/ibus-engine-cangjie.in	2017-03-06 13:15:17.616964581 +0800
+@@ -20,6 +20,9 @@
+ import argparse
+ import locale
+ 
++import gi
++gi.require_version('IBus','1.0')
++
+ from gi.repository import IBus
+ 
+ from ibus_cangjie import IMApp
+diff -Naur a/scripts/ibus-setup-cangjie.in b/scripts/ibus-setup-cangjie.in
+--- a/scripts/ibus-setup-cangjie.in	2014-12-31 21:20:03.000000000 +0800
++++ b/scripts/ibus-setup-cangjie.in	2017-03-06 13:16:57.556857309 +0800
+@@ -32,6 +32,10 @@
+ 
+ import locale
+ 
++import gi
++gi.require_version('IBus','1.0')
++gi.require_version('Gtk','3.0')
++
+ from gi.repository import Gtk
+ from gi.repository import IBus
+ 
+diff -Naur a/src/engine.py b/src/engine.py
+--- a/src/engine.py	2015-03-30 01:53:39.000000000 +0800
++++ b/src/engine.py	2017-03-06 11:07:43.100949023 +0800
+@@ -22,6 +22,9 @@
+ import gettext
+ from operator import attrgetter
+ 
++import gi
++gi.require_version('IBus','1.0')
++
+ from gi.repository import Gio
+ from gi.repository import IBus
+ 
+diff -Naur a/src/__init__.py b/src/__init__.py
+--- a/src/__init__.py	2014-12-31 21:19:37.000000000 +0800
++++ b/src/__init__.py	2017-03-06 11:17:32.083703046 +0800
+@@ -15,6 +15,8 @@
+ # You should have received a copy of the GNU General Public License
+ # along with ibus-cangjie.  If not, see <http://www.gnu.org/licenses/>.
+ 
++import gi
++gi.require_version('IBus','1.0')
+ 
+ from gi.repository import GLib
+ from gi.repository import GObject
+diff -Naur a/src/setup.py b/src/setup.py
+--- a/src/setup.py	2015-03-30 01:53:11.000000000 +0800
++++ b/src/setup.py	2017-03-06 11:05:58.520711915 +0800
+@@ -18,6 +18,11 @@
+ 
+ from gettext import dgettext
+ 
++import gi
++gi.require_version('IBus','1.0')
++gi.require_version('Gdk','3.0')
++gi.require_version('Gtk','3.0')
++
+ from gi.repository import Gdk
+ from gi.repository import Gio
+ from gi.repository import GLib
+diff -Naur a/tests/test_cangjie.py b/tests/test_cangjie.py
+--- a/tests/test_cangjie.py	2014-12-31 21:20:03.000000000 +0800
++++ b/tests/test_cangjie.py	2017-03-06 13:20:29.556637385 +0800
+@@ -19,6 +19,9 @@
+ import os
+ import unittest
+ 
++import gi
++gi.require_version('IBus','1.0')
++
+ from gi.repository import IBus
+ 
+ from ibus_cangjie.engine import *
+diff -Naur a/tests/test_prefs.py b/tests/test_prefs.py
+--- a/tests/test_prefs.py	2015-03-30 01:53:11.000000000 +0800
++++ b/tests/test_prefs.py	2017-03-06 11:22:09.988909930 +0800
+@@ -33,6 +33,8 @@
+     automatically skip the tests which can't run without.
+     """
+     try:
++        import gi
++        gi.require_version('Gtk', '3.0')
+         from gi.repository import Gtk
+ 
+     except RuntimeError as e:

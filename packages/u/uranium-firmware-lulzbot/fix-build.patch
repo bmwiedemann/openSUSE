@@ -1,0 +1,15 @@
+diff --git a/Marlin/Makefile b/Marlin/Makefile
+index 9e9eeb42f..cc2aafc0b 100644
+--- a/Marlin/Makefile
++++ b/Marlin/Makefile
+@@ -470,8 +470,8 @@ LST = $(ASRC:.S=.lst) $(CXXSRC:.cpp=.lst) $(SRC:.c=.lst)
+ 
+ # Combine all necessary flags and optional flags.
+ # Add target processor to flags.
+-ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS)
+-ALL_CXXFLAGS = -mmcu=$(MCU) $(CXXFLAGS)
++ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS) -I/usr/avr/sys-root/include/
++ALL_CXXFLAGS = -mmcu=$(MCU) $(CXXFLAGS) -I/usr/avr/sys-root/include/
+ ALL_ASFLAGS = -mmcu=$(MCU) -x assembler-with-cpp $(ASFLAGS)
+ 
+ # set V=1 (eg, "make V=1") to print the full commands etc.

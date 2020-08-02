@@ -1,0 +1,109 @@
+diff -up scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/ConsoleReaderHelper.scala.sysjline scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/ConsoleReaderHelper.scala
+--- scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/ConsoleReaderHelper.scala.sysjline	2013-10-10 21:03:24.000000000 +0200
++++ scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/ConsoleReaderHelper.scala	2013-10-13 15:28:24.478283303 +0200
+@@ -6,8 +6,8 @@
+ package scala.tools.nsc
+ package interpreter
+ 
+-import scala.tools.jline.console.{ ConsoleReader, CursorBuffer }
+-import scala.tools.jline.console.completer.CompletionHandler
++import jline.console.{ ConsoleReader, CursorBuffer }
++import jline.console.completer.CompletionHandler
+ import Completion._
+ 
+ trait ConsoleReaderHelper extends ConsoleReader {
+diff -up scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/Delimited.scala.sysjline scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/Delimited.scala
+--- scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/Delimited.scala.sysjline	2013-10-10 21:03:24.000000000 +0200
++++ scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/Delimited.scala	2013-10-13 15:28:24.483282990 +0200
+@@ -6,7 +6,7 @@
+ package scala.tools.nsc
+ package interpreter
+ 
+-import scala.tools.jline.console.completer.ArgumentCompleter.{ ArgumentDelimiter, ArgumentList }
++import jline.console.completer.ArgumentCompleter.{ ArgumentDelimiter, ArgumentList }
+ 
+ class JLineDelimiter extends ArgumentDelimiter {
+   def toJLine(args: List[String], cursor: Int) = args match {
+diff -up scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/JLineCompletion.scala.sysjline scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/JLineCompletion.scala
+--- scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/JLineCompletion.scala.sysjline	2013-10-10 21:03:24.000000000 +0200
++++ scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/JLineCompletion.scala	2013-10-13 15:28:24.487282739 +0200
+@@ -6,8 +6,8 @@
+ package scala.tools.nsc
+ package interpreter
+ 
+-import scala.tools.jline._
+-import scala.tools.jline.console.completer._
++import jline._
++import jline.console.completer._
+ import Completion._
+ import scala.collection.mutable.ListBuffer
+ 
+diff -up scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala.sysjline scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala
+--- scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala.sysjline	2013-10-10 21:03:24.000000000 +0200
++++ scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala	2013-10-13 15:30:16.619034744 +0200
+@@ -6,8 +6,8 @@
+ package scala.tools.nsc
+ package interpreter
+ 
+-import scala.tools.jline.console.ConsoleReader
+-import scala.tools.jline.console.completer._
++import jline.console.ConsoleReader
++import jline.console.completer._
+ import session._
+ import scala.collection.JavaConverters._
+ import Completion._
+@@ -71,6 +71,9 @@ class JLineReader(_completion: => Comple
+   def eraseLine() = consoleReader.eraseLine()
+   // Alternate implementation, not sure if/when I need this.
+   // def eraseLine() = while (consoleReader.delete()) { }
+-  def readOneLine(prompt: String) = consoleReader readLine prompt
++  def readOneLine(prompt: String) = {
++      consoleReader.setExpandEvents(false)
++      consoleReader readLine prompt
++      }
+   def readOneKey(prompt: String)  = consoleReader readOneKey prompt
+ }
+diff -up scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/Parsed.scala.sysjline scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/Parsed.scala
+--- scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/Parsed.scala.sysjline	2013-10-10 21:03:24.000000000 +0200
++++ scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/Parsed.scala	2013-10-13 15:28:24.496282176 +0200
+@@ -6,7 +6,7 @@
+ package scala.tools.nsc
+ package interpreter
+ 
+-import scala.tools.jline.console.completer.ArgumentCompleter.{ ArgumentDelimiter, ArgumentList }
++import jline.console.completer.ArgumentCompleter.{ ArgumentDelimiter, ArgumentList }
+ import util.returning
+ 
+ /** One instance of a command buffer.
+diff -up scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/ReplProps.scala.sysjline scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/ReplProps.scala
+--- scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/ReplProps.scala.sysjline	2013-10-10 21:03:24.000000000 +0200
++++ scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/ReplProps.scala	2013-10-13 15:28:24.500281925 +0200
+@@ -13,8 +13,8 @@ class ReplProps {
+   private def bool(name: String) = BooleanProp.keyExists(name)
+   private def int(name: String) = IntProp(name)
+ 
+-  val jlineDebug = bool("scala.tools.jline.internal.Log.debug")
+-  val jlineTrace = bool("scala.tools.jline.internal.Log.trace")
++  val jlineDebug = bool("jline.internal.Log.debug")
++  val jlineTrace = bool("jline.internal.Log.trace")
+ 
+   val info  = bool("scala.repl.info")
+   val debug = bool("scala.repl.debug")
+diff -up scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/session/package.scala.sysjline scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/session/package.scala
+--- scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/session/package.scala.sysjline	2013-10-10 21:03:24.000000000 +0200
++++ scala-2.10.3/src/compiler/scala/tools/nsc/interpreter/session/package.scala	2013-10-13 15:28:24.504281675 +0200
+@@ -14,10 +14,10 @@ package object session {
+   type JIterator[T]       = java.util.Iterator[T]
+   type JListIterator[T]   = java.util.ListIterator[T]
+ 
+-  type JEntry             = scala.tools.jline.console.history.History.Entry
+-  type JHistory           = scala.tools.jline.console.history.History
+-  type JMemoryHistory     = scala.tools.jline.console.history.MemoryHistory
+-  type JPersistentHistory = scala.tools.jline.console.history.PersistentHistory
++  type JEntry             = jline.console.history.History.Entry
++  type JHistory           = jline.console.history.History
++  type JMemoryHistory     = jline.console.history.MemoryHistory
++  type JPersistentHistory = jline.console.history.PersistentHistory
+ 
+   private[interpreter] implicit def charSequenceFix(x: CharSequence): String = x.toString
+ }

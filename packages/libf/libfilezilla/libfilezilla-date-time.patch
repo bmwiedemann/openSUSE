@@ -1,0 +1,12 @@
+Index: doc/doxygen.am
+===================================================================
+--- doc/doxygen.am.orig
++++ doc/doxygen.am
+@@ -139,7 +139,6 @@ doxygen-doc: doxygen-run $(DX_PS_GOAL) $
+ @DX_DOCDIR@/@PACKAGE@.tag: $(DX_CONFIG) $(pkginclude_HEADERS)
+ 	rm -rf @DX_DOCDIR@
+ 	$(DX_ENV) $(DX_DOXYGEN) $(DX_CONFIG)
+-	echo Timestamp >$@
+ 
+ DX_CLEANFILES = \
+ 	@DX_DOCDIR@/@PACKAGE@.tag \

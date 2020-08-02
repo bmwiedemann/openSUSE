@@ -1,0 +1,37 @@
+From a9c31af9e6edd45ae01fb2712ad7a3c0d3e3cc37 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 4 Jul 2020 21:04:52 +0200
+Subject: [PATCH] Add missing guard required for GLES to disable stereo
+ rendering
+
+fmt.stereo() will evaluate to false for GLES, guard the whole block
+so GL_BACK_* is not used.
+Qt already includes the OpenGL/GLES headers, so GL_ES_VERSION_2_0 will
+be defined for Qt GLES builds.
+---
+ GUISupport/Qt/QVTKOpenGLWindow.cxx | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/GUISupport/Qt/QVTKOpenGLWindow.cxx b/GUISupport/Qt/QVTKOpenGLWindow.cxx
+index 335feb581c..b692b5490a 100644
+--- a/GUISupport/Qt/QVTKOpenGLWindow.cxx
++++ b/GUISupport/Qt/QVTKOpenGLWindow.cxx
+@@ -231,6 +231,7 @@ void QVTKOpenGLWindow::paintGL()
+ 
+     const QSize deviceSize = this->size() * this->devicePixelRatioF();
+     const auto fmt = this->context()->format();
++#ifndef GL_ES_VERSION_2_0
+     if (fmt.stereo() && this->RenderWindow->GetStereoRender() &&
+       this->RenderWindow->GetStereoType() == VTK_STEREO_CRYSTAL_EYES)
+     {
+@@ -240,6 +241,7 @@ void QVTKOpenGLWindow::paintGL()
+         this->defaultFramebufferObject(), GL_BACK_RIGHT, QRect(QPoint(0, 0), deviceSize));
+     }
+     else
++#endif
+     {
+       this->RenderWindowAdapter->blit(
+         this->defaultFramebufferObject(), GL_BACK, QRect(QPoint(0, 0), deviceSize));
+-- 
+2.27.0
+

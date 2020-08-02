@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Mon Jun 29 09:10:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.14.0
+  * Fix #162, and event_loop fixture behavior now is coherent on all scopes.
+
+-------------------------------------------------------------------
+Tue Jun  9 08:13:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.12.0:
+  * Run the event loop fixture as soon as possible.
+
+-------------------------------------------------------------------
+Mon Apr 27 10:36:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.11.0:
+  * Fix with pytest 5.4
+
+-------------------------------------------------------------------
+Mon Mar  9 09:37:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix test run on python 3.8+
+
+-------------------------------------------------------------------
+Wed Feb 13 13:14:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.0:
+  * support for pytest 4+
+
+-------------------------------------------------------------------
+Tue Sep  4 13:10:57 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.0
+- use github tarbal due packaging errrors in upstream
+ * Python 3.7 support.
+ * Remove event_loop_process_pool fixture
+     and pytest.mark.asyncio_process_pool marker
+
+-------------------------------------------------------------------
+Fri Jan  5 09:47:11 UTC 2018 - alarrosa@suse.com
+
+- Initial release of python-pytest-asyncio 0.8.0 

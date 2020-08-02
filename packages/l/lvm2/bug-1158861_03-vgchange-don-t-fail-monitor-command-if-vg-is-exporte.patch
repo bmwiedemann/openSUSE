@@ -1,0 +1,31 @@
+From 82b137ef2f7f1b6fc1bbf83918750037835a9568 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Thu, 20 Jun 2019 15:59:36 -0500
+Subject: [PATCH] vgchange: don't fail monitor command if vg is exported
+
+When monitoring, skip exported VGs without causing a command
+failure.
+
+The lvm2-monitor service runs 'vgchange --monitor y', so
+any exported VG on the system would cause the service to
+fail.
+---
+ tools/vgchange.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tools/vgchange.c b/tools/vgchange.c
+index d6d4f9175f..a17f4566ff 100644
+--- a/tools/vgchange.c
++++ b/tools/vgchange.c
+@@ -631,6 +631,8 @@ static int _vgchange_single(struct cmd_context *cmd, const char *vg_name,
+ 	};
+ 
+ 	if (vg_is_exported(vg)) {
++		if (cmd->command->command_enum == vgchange_monitor_CMD)
++			return ECMD_PROCESSED;
+ 		log_error("Volume group \"%s\" is exported", vg_name);
+ 		return ECMD_FAILED;
+ 	}
+-- 
+2.24.0
+

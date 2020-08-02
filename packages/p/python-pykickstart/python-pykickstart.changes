@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed May 20 12:38:46 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Drop unused nose and coverage test dependencies
+- Drop unused Sphinx dependency for docs
+
+-------------------------------------------------------------------
+Mon Apr 20 14:11:36 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Sync disable for running tests in package builds from Fedora
+
+-------------------------------------------------------------------
+Mon Apr 20 13:25:03 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 3.25
+  + Add Fedora 33 support
+  + Add Fedora 32 support
+  + Drop Python 2 compatibility
+
+-------------------------------------------------------------------
+Sat Mar  2 23:50:05 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging for openSUSE

@@ -1,0 +1,482 @@
+-------------------------------------------------------------------
+Sun Sep  1 06:41:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.3
+  * Improve SIMD decoding of 24 bit files
+- Drop flac-CVE-2017-6888.patch (merged upstream)
+
+-------------------------------------------------------------------
+Wed Jan 23 10:15:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove useless --with-pic (only useful for --enable-static).
+- Trim authorship and licensing info from description,
+  this is metadata.
+
+-------------------------------------------------------------------
+Fri Jan 18 10:45:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop doxygen dependency to reduce python3 buildcycle
+
+-------------------------------------------------------------------
+Fri Apr 27 15:17:11 CEST 2018 - tiwai@suse.de
+
+- Fix memory leak in read_metadata_vorbiscomment_() function
+  (CVE-2017-6888, bsc#1091045):
+  flac-CVE-2017-6888.patch
+
+-------------------------------------------------------------------
+Sun Jan  1 04:35:06 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.3.2
+  * Fix undefined behaviour using GCC/Clang UBSAN (erikd).
+  * General hardening via fuzz testing with AFL (erikd and
+    others).
+  * General code improvements (lvqcl, erikd and others).
+  * Add FLAC in MP4 specification docs (Ralph Giles).
+  * Fix some cppcheck warnings (erikd).
+  * Assume all currently used OSes support SSE2.
+  flac:
+  * Fix potential infinite loop on flac-to-flac conversion
+    (erikd).
+  * Add WAVEFORMATEXTENSIBLE to WAV (as needed) when
+    decoding (lvqcl).
+  * Only write vorbis-comments if they are non-empty.
+  * Error out if decoding RAW with bits != (8|16|24).
+  metaflac:
+  * Add --scan-replay-gain option.
+  libraries:
+  * CPU detection cleanup and fixes (Julian Calaby, erikd
+    and lvqcl).
+  * Fix two stream decoder bugs (Max Kellermann).
+  * Fix a NULL dereference bug (on a malformed file).
+  * Changed the LPC order guess for a slight compression
+    improvement, particularly for classical music
+    (Martijn van Beurden).
+  * Improved encoding speed on older Intel CPUs.
+  * Fixed a seeking bug when decoding certain files
+    (Miroslav Lichvar).
+  * Put an upper bound (32768) on the number of seek
+    points.
+  * Fix potential memory leaks.
+  * Support 64bit brword/bwword allowing
+    FLAC__BYTES_PER_WORD to be set to 8 (disabled by
+    default).
+  * Fix an out-of-bounds heap read.
+
+- Refreshed flac-cflags.patch
+
+-------------------------------------------------------------------
+Sat Sep 10 07:35:50 UTC 2016 - tchvatal@suse.com
+
+- Drop patch that should be upstreamed first, otherwise we will
+  have to keep it ofrever:
+  * flac-ocloexec.patch
+- Drop wrong patch:
+  * flac-fix-pkgconfig.patch
+    + If using this change you get assert.h include overriden in your
+      project by the one from FLAC/ which is not what upstream desired
+      If packages fail to build they should fix their include
+
+-------------------------------------------------------------------
+Sat Mar 21 07:22:12 UTC 2015 - mpluskal@suse.com
+
+- Build documentation as noarch
+
+-------------------------------------------------------------------
+Fri Mar 20 15:22:04 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update url
+- Remove no longer needed patches
+  * flac-fix-CVE-2014-8962.patch
+  * flac-fix-CVE-2014-9028.patch
+  * 0001-getopt_long-not-broken-here.patch
+- Remove following as benefit of using openssl is small
+  * 0001-Allow-use-of-openSSL.patch
+- Add flac-cflags.patch
+- Use doxygen to build documentation
+- Split documentation to separate package
+- Update to 1.3.1
+  * Improved decoding efficiency of all bit depths but especially
+    so for 24 bits for IA32 architecture (lvqcl and Miroslav Lichvar).
+  * Faster encoding using SSE and AVX (lvqcl).
+  * Fixed bartlett, bartlett_hann and triangle functions.
+  * New apodization functions partial_tukey and punchout_tukey for
+    improved compression (Martijn van Beurden).
+  * Retuned compression presets to incorporate new apodization
+    functions (Martijn van Beurden).
+  * Fix -Wcast-align warnings on armhf architecture (Erik de
+    Castro Lopo).
+  * Help output documentation improvements.
+  * I/O buffering improvements on Windows to reduce disk
+    fragmentation when writing files.
+  * Only write vorbis-comments if they are non-empty.
+  * Fix symbol visibility in XMMS plugin.
+  * Many fixes and improvements across all the build systems.
+  * Fix CVE-2014-9028 (heap write overflow) and CVE-2014-8962
+    (heap read overflow)
+
+-------------------------------------------------------------------
+Wed Nov 26 09:56:05 CET 2014 - tiwai@suse.de
+
+- A couple of security fixes:
+  * flac-fix-CVE-2014-8962.patch:
+    arbitrary code execution by a stack overflow (CVE-2014-8962,
+    bnc#906831)
+  * flac-fix-CVE-2014-9028.patch:
+    Heap overflow via specially crafted .flac files (CVE-2014-9028,
+    bnc#907016)
+
+-------------------------------------------------------------------
+Mon Jul  1 02:13:39 UTC 2013 - jengelh@inai.de
+
+- Update to final upstream release 1.3.0
+* No user-visible changes
+- More robust make install call
+
+-------------------------------------------------------------------
+Sun May 26 04:09:21 UTC 2013 - crrodriguez@opensuse.org
+
+- Update to flac 1.3.0pre4 (packaged as 1.2.99_git* to avoid
+ messing with RPM versioning)
+ * Mostly non-linux related bugfixes plus autotools fixes
+
+ - flac-openssl.patch --> 0001-Allow-use-of-openSSL.patch
+ - remove flac-1.2.1-automake1_13.patch, fixed in upstream.
+ - add 0001-getopt_long-not-broken-here.patch, FLAC bundles
+   GNU-compatible getopt_long for broken OS, but we do have
+   a functional version in libc already.
+
+-------------------------------------------------------------------
+Mon Apr 22 14:32:21 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-3-Clause and GPL-2.0+ and GFDL-1.2
+  Numerous GPL-2.0+ licensed files;documtation is GFDL-1.2
+
+-------------------------------------------------------------------
+Thu Feb 28 16:07:33 UTC 2013 - seife+obs@b1-systems.com
+
+- add flac-1.2.1-automake1_13.patch, fix build with automake-1.13.1
+
+-------------------------------------------------------------------
+Tue Dec 18 11:24:17 UTC 2012 - idonmez@suse.com
+
+- Add flac-fix-pkgconfig.patch to fix includedir in the pkgconfig
+  files.
+
+-------------------------------------------------------------------
+Sat Dec  8 23:48:01 UTC 2012 - crrodriguez@opensuse.org
+
+- add xz buildrequires for old distros.
+
+-------------------------------------------------------------------
+Sat Dec  8 21:46:21 UTC 2012 - crrodriguez@opensuse.org
+
+- Update to current git
+* patches deleted:
+  - flac-1.2.1-asm.patch
+  - flac-1.2.1-bitreader.patch
+  - flac-gcc43-fixes.diff
+  - flac-gcc47.patch
+  - flac-leaks.patch
+  - flac-no-xmms.diff
+  - flac-visibility.patch
+  - flac-printf-format-fix.diff
+All Upstreamed either by us or other distros.
+
+- Add flac-openssl.patch, do crypto with openssl (not wanted upstream)
+
+- Restore make check
+
+-------------------------------------------------------------------
+Tue Sep  4 10:00:35 UTC 2012 - schwab@linux-m68k.org
+
+- Don't ignore $(AM_CFLAGS).
+- Remove ppc patch.
+
+-------------------------------------------------------------------
+Tue Mar 13 20:45:17 UTC 2012 - dimstar@opensuse.org
+
+- Add flac-gcc47.patch: Replacing strcpy without 'lenght
+  limitation' with strncpy, limited to 4 chars. This is safe, as we
+  check the length already to be sure it is 4 chars, yet do not
+  suffer from the problem that strcpy wants to add a '\0' char in
+  plus to the target string.
+
+-------------------------------------------------------------------
+Thu Mar  8 12:55:29 UTC 2012 - dvaleev@suse.com
+
+- don't use fvisibility=hidden on ppc. As it can't find symbols
+  afterwards
+
+-------------------------------------------------------------------
+Fri Jan 27 18:06:28 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix some memory and resources leak.
+- Link shared libraries with -Bsymbolic-functions
+- annotate relevant functions with proper attributes to
+  allow the compiler generate better code (attribute hot. alloc_size)
+
+-------------------------------------------------------------------
+Tue Jan 24 16:01:40 UTC 2012 - crrodriguez@opensuse.org
+
+- Support symbol visibility features
+- Disable test suite, nothing wrong with it, it just
+  takes too long to run and uses private/hidden symbols to
+  test flac's internals.
+
+-------------------------------------------------------------------
+Sun Nov 20 03:45:44 UTC 2011 - crrodriguez@opensuse.org
+
+- Use O_CLOEXEC in all library code.
+
+-------------------------------------------------------------------
+Sat Oct  1 05:39:06 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Wed Sep 28 03:27:46 UTC 2011 - crrodriguez@opensuse.org
+
+- Build with --enable-sse, this only disables runtime
+  checking if the *OS* supports SSE, which registers a
+  SIGILL signal handler then tries to execute SSE code...
+  it still tests the running *CPU* though.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+- Add flac-devel to baselibs
+
+-------------------------------------------------------------------
+Sat Aug  6 04:00:28 UTC 2011 - crrodriguez@opensuse.org
+
+- Do not build with -fno-strict-aliasing since is no longer
+  required.
+- Impoer two patches from redhat, one speeds up decoding and
+  the other enables the working ASM optimizations.
+
+-------------------------------------------------------------------
+Wed Dec  8 13:19:48 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- run make check, but only the basic test suite, complete
+  one takes hours.
+
+-------------------------------------------------------------------
+Wed Dec 16 10:22:22 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:16 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Wed May 21 19:11:47 CEST 2008 - cthiel@suse.de
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Dec 13 01:33:43 CET 2007 - crrodriguez@suse.de
+
+- disable static libraries
+- remove uneeded dependency on libogg-devel in the -devel package
+- remove "la" files
+
+-------------------------------------------------------------------
+Mon Oct 22 15:22:16 CEST 2007 - tiwai@suse.de
+
+- fix build with gcc 4.3.
+
+-------------------------------------------------------------------
+Fri Oct 12 14:24:16 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.2.1:
+  * VUL-0: flac integer overflows (#333278)
+  * new --keep-foreign-metadata, --no-utf8-convert options
+  * changed default extension for Ogg FLAC to .oga
+  * many other fixes, see changelog
+
+-------------------------------------------------------------------
+Wed Jul 25 13:05:50 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.2.0:
+  * small encoding speedups
+  * runtime SSE OS support
+  * fixed bug with invalid seek tables
+  * added FLAC__format_sample_rate_is_subset(),
+    FLAC::Decoder::Stream::get_decoder_position()
+- clean up spec file
+
+-------------------------------------------------------------------
+Fri Jun  8 14:12:16 CEST 2007 - tiwai@suse.de
+
+- add provides and obsolets for libflac.
+
+-------------------------------------------------------------------
+Tue Jun  5 16:40:03 CEST 2007 - tiwai@suse.de
+
+- split to packages libFLAC8 and libFLAC++6 to follow more the
+  library packaging policy.
+
+-------------------------------------------------------------------
+Tue Apr 10 19:09:37 CEST 2007 - tiwai@suse.de
+
+- fix post and postun for libflac.
+- fix compile warnings
+
+-------------------------------------------------------------------
+Wed Apr  4 16:15:16 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.1.4:
+  * improved compression with no change to format or decrease
+    in speed.
+  * encoding and decoding speedups for all modes. Encoding at
+    -8 is twice as fast.
+  * large format support.
+  * supports FLAC and Ogg FLAC as input encoder.
+  * misc bug fixes
+- split library to libflac sub-package to reduce package
+  dependencies.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jul  7 17:07:48 CEST 2005 - tiwai@suse.de
+
+- fix Requires of devel subpackage.
+
+-------------------------------------------------------------------
+Wed May 25 16:47:59 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.1.2.
+
+-------------------------------------------------------------------
+Fri Feb 25 12:04:57 CET 2005 - tiwai@suse.de
+
+- split flac-xmms and flac-bmp plugins to another spec file
+  to avoid too deep dependencies.
+
+-------------------------------------------------------------------
+Fri Jan 28 13:15:43 CET 2005 - tiwai@suse.de
+
+- fix many compile warnings
+- add BMP plugin support
+
+-------------------------------------------------------------------
+Fri Jan 21 12:59:02 CET 2005 - tiwai@suse.de
+
+- updated to version 1.1.1.
+
+-------------------------------------------------------------------
+Tue Aug 24 11:36:39 CEST 2004 - tiwai@suse.de
+
+- fixed neededforbuild for xmms.
+
+-------------------------------------------------------------------
+Tue Apr 27 01:28:19 CEST 2004 - ro@suse.de
+
+- add -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Wed Jan 21 18:50:47 CET 2004 - tiwai@suse.de
+
+- fixed quoting in m4 files.
+
+-------------------------------------------------------------------
+Sat Jan 10 16:03:44 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig to %postun
+
+-------------------------------------------------------------------
+Wed May 28 00:44:04 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot
+
+-------------------------------------------------------------------
+Tue Apr  1 10:29:49 CEST 2003 - ro@suse.de
+
+- added xmms-devel to neededforbuild
+
+-------------------------------------------------------------------
+Thu Feb 13 17:24:53 CET 2003 - tiwai@suse.de
+
+- fixed the installation path of xmms plugin.
+- added la file for plugin.
+
+-------------------------------------------------------------------
+Mon Jan 27 18:40:48 CET 2003 - tiwai@suse.de
+
+- updated to version 1.1.0.
+
+-------------------------------------------------------------------
+Wed Nov 27 15:35:40 CET 2002 - tiwai@suse.de
+
+- added the compatible layer for version 1.0.3 (flac-compat.dif).
+
+-------------------------------------------------------------------
+Mon Nov 25 15:51:37 CET 2002 - tiwai@suse.de
+
+- updated to version 1.0.4.
+- fixed neeededforbuild: xf86 -> x-devel-packages.
+- added id3lib to neededforbuild.
+- regenrated prototype patches.  renamed the patch to avoid
+  name confliction.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:57:32 CEST 2002 - pthomas@suse.de
+
+- Add -lsdc++ to LIBADD in src/libFLAC++/Makefile.am to work
+  around a bug in libtool 1.4.2.
+- Properly use (void) not () in prototypes.
+- Omit -I/usr/include from LIBFLAC_CFLAGS in libFLAC.m4 as
+  it's searched by default.
+- Omit -L/usr/lib from LIBFLAC_LIBS in libFLAC.m4
+
+-------------------------------------------------------------------
+Mon Jul 29 10:17:58 CEST 2002 - tiwai@suse.de
+
+- added %run_ldconfig.
+
+-------------------------------------------------------------------
+Fri Jul  5 15:25:34 CEST 2002 - tiwai@suse.de
+
+- updated to version 1.0.3.
+
+-------------------------------------------------------------------
+Mon Jun 24 12:41:27 CEST 2002 - tiwai@suse.de
+
+- fixed file permission of xmms plugins.
+
+-------------------------------------------------------------------
+Tue May 21 17:39:00 CEST 2002 - tiwai@suse.de
+
+- added missing *.so to the filelist.
+
+-------------------------------------------------------------------
+Tue May 21 17:02:20 CEST 2002 - tiwai@suse.de
+
+- initial version: 1.0.2.

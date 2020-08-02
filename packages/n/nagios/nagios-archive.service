@@ -1,0 +1,6 @@
+[Unit]
+Description=Auto-Archiving of Nagios Logfiles
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -ce "/usr/sbin/nagios-archive"

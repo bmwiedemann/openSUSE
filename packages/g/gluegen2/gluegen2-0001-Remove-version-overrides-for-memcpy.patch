@@ -1,0 +1,62 @@
+From f4e2a278d68dda55130f0ef5808f803c45a0595a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 25 Nov 2017 14:47:56 +0100
+Subject: [PATCH] Remove version overrides for memcpy
+
+memcpy from different GLIBC versions differ in behaviour when source
+and destination overlap.
+
+gluegen tries to force use of the oldest available memcpy version to
+allow usage on systems which have an older glibc version than the
+build host. This is not necessary in a Linux distribution context.
+
+As the glibc on ARMv7 and Aarch64 do not provide memcpy@GLIBC_2.4
+symbols, but only the unversioned symbol, this breaks building
+packages using gluegen, e.g. jogl.
+---
+ make/stub_includes/platform/glibc-compat-symbols.h | 29 ++++------------------
+ 1 file changed, 5 insertions(+), 24 deletions(-)
+
+diff --git a/make/stub_includes/platform/glibc-compat-symbols.h b/make/stub_includes/platform/glibc-compat-symbols.h
+index 1163c78..293fa2e 100644
+--- a/make/stub_includes/platform/glibc-compat-symbols.h
++++ b/make/stub_includes/platform/glibc-compat-symbols.h
+@@ -16,30 +16,11 @@
+  * Check build-in macro definitions via 'gcc -dM -E - < /dev/null'
+  */
+ #if defined(__linux__) /* Actually we like to test whether we link against GLIBC .. */
+-    #if defined(__GNUC__)
+-        #if defined(__aarch64__)
+-           #define GLIBC_COMPAT_SYMBOL(FFF) __asm__(".symver " #FFF "," #FFF "@GLIBC_2.4");
+-        #elif defined(__arm__)
+-           #define GLIBC_COMPAT_SYMBOL(FFF) __asm__(".symver " #FFF "," #FFF "@GLIBC_2.4");
+-        #elif defined(__amd64__)
+-           #define GLIBC_COMPAT_SYMBOL(FFF) __asm__(".symver " #FFF "," #FFF "@GLIBC_2.2.5");
+-        #else
+-           #define GLIBC_COMPAT_SYMBOL(FFF) __asm__(".symver " #FFF "," #FFF "@GLIBC_2.0");
+-        #endif /*__amd64__*/
+-    #elif defined(__clang__)
+-        #if defined(__aarch64__)
+-           #define GLIBC_COMPAT_SYMBOL(FFF) asm(".symver " #FFF "," #FFF "@GLIBC_2.4");
+-        #elif defined(__arm__)
+-           #define GLIBC_COMPAT_SYMBOL(FFF) asm(".symver " #FFF "," #FFF "@GLIBC_2.4");
+-        #elif defined(__amd64__)
+-           #define GLIBC_COMPAT_SYMBOL(FFF) asm(".symver " #FFF "," #FFF "@GLIBC_2.2.5");
+-        #else
+-           #define GLIBC_COMPAT_SYMBOL(FFF) asm(".symver " #FFF "," #FFF "@GLIBC_2.0");
+-        #endif /*__amd64__*/
+-    #else
+-        #warning GLIBC_COMPAT_SYMBOL not supported with current compiler on GNU/Linux
+-        #define GLIBC_COMPAT_SYMBOL(FFF)
+-    #endif
++    /*
++     * Use compile time symbol version at runtime, no need to override for backwards
++     * compatiblity.
++     */
++    #define GLIBC_COMPAT_SYMBOL(FFF)
+ #else
+     #warning GLIBC_COMPAT_SYMBOL not supported with target OS
+     #define GLIBC_COMPAT_SYMBOL(FFF)
+-- 
+2.15.0
+

@@ -1,0 +1,60 @@
+---
+ line.c |   31 +++++++++++++++++++++++++++++--
+ 1 file changed, 29 insertions(+), 2 deletions(-)
+
+Index: line.c
+===================================================================
+--- line.c.orig	2009-06-30 21:27:09.000000000 +0200
++++ line.c	2009-07-07 15:39:00.000000000 +0200
+@@ -66,6 +66,25 @@ static int mbc_buf_len = 0;
+ static int mbc_buf_index = 0;
+ static POSITION mbc_pos;
+ 
++
++
++/* Following define alters the "-r" switch to not throw
++ * away location information, but keep location as well
++ * as "possible" (currently only interpreting location escape
++ * sequences
++ *
++ * This benefits the user who may be operating with "-r" but
++ * is still displaying predominantly "normal" spacing characters
++ * (especially single, 8-bit characters that print "normally"
++ * but might otherwise be "undisplayable" in non "-r" mode.
++ *
++ * This is especially true using extended European characters
++ * that might be present in UTF-8 docs (among others);
++ * 					- lawless@tlinx.org
++ */
++#define THROW_AWAY_LOCATION 0
++
++
+ /*
+  * Initialize from environment variables.
+  */
+@@ -617,7 +636,11 @@ store_char(ch, a, rep, pos)
+ 		w = pwidth(ch, a, prev_ch);
+ 	}
+ 
+-	if (ctldisp != OPT_ON && column + w + attr_ewidth(a) > sc_width)
++	if (
++#if THROW_AWAY_LOCATION
++			ctldisp != OPT_ON &&
++#endif
++			column + w + attr_ewidth(a) > sc_width)
+ 		/*
+ 		 * Won't fit on screen.
+ 		 */
+@@ -949,7 +972,11 @@ do_append(ch, rep, pos)
+ 		{
+ 			STORE_PRCHAR((char) ch, pos);
+ 		}
+-	} else if (utf_mode && ctldisp != OPT_ON && is_ubin_char(ch))
++	} else if (utf_mode &&
++#if THROW_AWAY_LOCATION
++			ctldisp != OPT_ON &&
++#endif
++			is_ubin_char(ch))
+ 	{
+ 		char *s;
+ 

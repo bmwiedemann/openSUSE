@@ -1,0 +1,293 @@
+-------------------------------------------------------------------
+Tue Apr  2 20:04:25 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Remove useless uses of rpm.expand
+- Fix use of file:close
+
+-------------------------------------------------------------------
+Wed Mar 13 09:15:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- my attempt to rewrite %post in lua (bsc#1129036)
+
+-------------------------------------------------------------------
+Mon Jan 14 15:49:09 CET 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Thu Jun 28 11:01:07 UTC 2018 - tchvatal@suse.com
+
+- Update to 1.19.0.5:
+  * no changes in update-alternatives code, only dpkg
+
+-------------------------------------------------------------------
+Tue Jan 16 10:54:19 UTC 2018 - tchvatal@suse.com
+
+- Update to 1.19.0.4:
+  * No changes in update-alternatives just match step with dpkg
+- Drop patch 0001-In-case-of-equal-priority-rather-update.patch
+  * Causes issues on too eagerly regenerating stuff bsc#1075971
+  * Reason for this patch should no longer be needed as all python
+    packages are singlespec
+  * Also drop the post override
+
+-------------------------------------------------------------------
+Wed Nov 22 11:06:33 UTC 2017 - dimstar@opensuse.org
+
+- Migrate u-a data from /var/lib/rpm instead of relying on dbpath:
+  no u-a version ever installed files explicitly into dbpath, but
+  always hard specified /var/lib/rpm. The fact that RPM moved its
+  database is irrelevant to update-alternatives. In case RPM moved
+  it's database, our files are still accessible via the
+  /var/lib/rpm symlink being put in place.
+- Drop the arbitrary depenency on a specific rpm version: the idea
+  was to ensure to have an rpm with the new dbpath location in
+  place. For one, the dependency does not work as intended, and
+  2nd, as the migration now happens explicitly from the old u-a
+  admindir without relying on dbpath, is no longer needed.
+
+-------------------------------------------------------------------
+Mon Nov 20 14:50:53 UTC 2017 - mpluskal@suse.com
+
+- Move update alternatives database to new location
+- Update rpm requirements to avoid unnecessary builds
+
+-------------------------------------------------------------------
+Tue Nov  7 19:57:49 UTC 2017 - mpluskal@suse.com
+
+- Use dbpath macro for locationg rpm state directory
+- Require exactly same version of rpm we had when building to make
+  sure dbpath matches
+
+-------------------------------------------------------------------
+Wed Aug  9 10:43:10 UTC 2017 - tchvatal@suse.com
+
+- Silence the update-alternatives regen output wrt bsc#1050848
+  it causes more confusion than benefits
+
+-------------------------------------------------------------------
+Mon Mar 27 12:38:32 UTC 2017 - tchvatal@suse.com
+
+- Update to 1.18.23:
+  * Various small fixes and memleaks removed
+- Make sure to generate manpage
+- Refresh patch update-alternatives-suse.patch
+
+-------------------------------------------------------------------
+Wed Sep  7 12:41:35 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.18.10:
+  * Various few fixes, see changelog file in the package
+  * Refresh patch update-alternatives-suse.patch
+  * Remove patch dpkg-sparc.diff
+
+-------------------------------------------------------------------
+Wed Sep  7 12:31:05 UTC 2016 - tchvatal@suse.com
+
+- Use ls . instead of * to avoid error when nothing is in alternatives
+  directory
+
+-------------------------------------------------------------------
+Tue May 31 11:47:57 UTC 2016 - tchvatal@suse.com
+
+- Require touch in post phase bnc#982336
+
+-------------------------------------------------------------------
+Fri May 13 12:03:28 UTC 2016 - tchvatal@suse.com
+
+- Provide alternatives binary and alternatives = %{version} symbol
+
+-------------------------------------------------------------------
+Wed Apr  6 18:20:13 UTC 2016 - tchvatal@suse.com
+
+- Fix bnc#969171 by updating even with equal priority
+  * 0001-In-case-of-equal-priority-rather-update.patch
+- Try to autorefresh all the alternatives in post in case some of
+  them were broken
+
+-------------------------------------------------------------------
+Wed Apr  6 12:05:23 UTC 2016 - tchvatal@suse.com
+
+- The logfile for update-alternatives is /var/log/alternatives.log
+  so stop using update-alternatives.log file which is empty
+
+-------------------------------------------------------------------
+Fri Mar 25 09:47:24 UTC 2016 - tchvatal@suse.com
+
+- Update to the 1.18.4:
+  * Rebase patch update-alternatives-suse.patch
+  * Touch the gost file in post
+
+-------------------------------------------------------------------
+Fri Jun  5 07:44:29 UTC 2015 - tchvatal@suse.com
+
+- Adjust to the new manpage location
+
+-------------------------------------------------------------------
+Thu Jun  4 11:15:32 UTC 2015 - tchvatal@suse.com
+
+- Verion bump to 1.18.1:
+  * Bump to latest upstream release
+  * Plenty of fixes with too long changelog, see changelog file in
+    documentation
+  * Also fixes bnc#926749 CVE-2015-0840
+  * Refresh patch:
+    + update-alternatives-suse.patch
+
+-------------------------------------------------------------------
+Wed Apr  1 12:57:51 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr  1 12:55:43 UTC 2015 - tchvatal@suse.com
+
+- Update to 1.11.24:
+  * Translation updates
+  * Various small fixes
+
+-------------------------------------------------------------------
+Tue Feb 17 13:38:47 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.17.23
+  + Use a matching group instead of ${^MATCH} in s/// in dselect build script.
+  + Skip tar extractor tests if tar is not GNU tar >= 1.27.
+  + Reset the trigger cycle tracking on unsatisfied dependencies during
+    trigger processing. Closes: bdo#771730
+  + Fix out-of-bounds buffer read accesses when parsing field and trigger
+    names or checking package ownership of conffiles and directories.
+  + Add versioned Breaks on packages creating trigger cycles. Namely auctex,
+    apt-cudf, ccache, cups, distcc, fusionforge-plugin-mediawiki, gap-core,
+    gxine, hoogle, icecc, libjs-protoaculous, mcollective, pypy, wordpress
+    and xfonts-traditional.
+  + Update translations
+- Remove unapplied patches; SLE11 support is disabled in project home
+  + dpkg-pod2man-no-utf8.patch
+  + dpkg-old-File-Path.patch
+  + dpkg-old-Test-More.patch
+- Remove obsolete patches
+  * dpkg-ppc64le.diff
+  * dpkg-archive_tar_format_gnu.patch
+  * dpkg-archtable-suse.patch
+- Rename updated patch
+  pdate-alternatives-1.16.8-suse.patch > pdate-alternatives-suse.patch
+- Clean up a bit specfile
+
+-------------------------------------------------------------------
+Mon May 12 13:57:59 UTC 2014 - tchvatal@suse.com
+
+- Use SUSE not SuSE.
+
+-------------------------------------------------------------------
+Mon Dec  2 21:27:10 UTC 2013 - dvaleev@suse.com
+
+- add dpkg-ppc64le.diff (adds ppc64le architecture)  
+
+-------------------------------------------------------------------
+Wed Jul  3 09:57:49 UTC 2013 - jengelh@inai.de
+
+- Add dpkg-sparc.diff to unbreak compilation on sparcv9 build
+
+-------------------------------------------------------------------
+Mon Mar 25 20:35:24 UTC 2013 - frank.lichtenheld@sophos.com
+
+- update to 1.16.10
+* Fix update-alternatives test suite to behave correctly on non-Debian
+  binary paths. Known to be affecting at least Gentoo and Mac OS X.
+* Do not leak subcall command arguments in update-alternatives.
+* Fix segfault on update-alternatives when passing --slave without any
+  action at all. lp#1037431
+
+-------------------------------------------------------------------
+Thu Sep 27 21:58:39 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 1.16.8
+
+-------------------------------------------------------------------
+Fri Jul  6 23:15:06 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 1.16.7
+* Print master and slave alternarive link names in update-alternatives
+  --query and always print alternative link in --config. Closes: #679010
+* Check parsed integers for invalid or no digit errors in
+  update-alternatives. Check all parsed integers for out of range
+  errors. On "update-alternatives --install" only warn for now on
+  out of range priorities and clamp the values
+
+-------------------------------------------------------------------
+Wed Jun  6 08:22:03 UTC 2012 - coolo@suse.com
+
+- fix the reworked patch
+
+-------------------------------------------------------------------
+Mon May 21 03:34:58 UTC 2012 - i@marguerite.su
+
+- update to 1.16.3
+- reworked patch
+
+-------------------------------------------------------------------
+Sun Jan 29 21:29:58 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 1.15.8.12
+* no changes, just keep in sync with deb
+
+-------------------------------------------------------------------
+Sat Nov 26 00:24:49 UTC 2011 - frank.lichtenheld@sophos.com
+
+- update to 1.15.8.11
+- remove unused tarballs and patches
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Mar 17 15:30:58 UTC 2011 - mvyskocil@suse.cz
+
+- update to 1.15.8.10 - bug fix release
+- build it in the same source tree as package deb
+
+-------------------------------------------------------------------
+Mon Mar 14 13:13:50 UTC 2011 - mvyskocil@suse.cz
+
+- update to 1.15.8.5
+  * update-alternatives is now implemented in C
+- fix bnc#647151 - update-alternatives: false claim in the description
+  * removed jpackage only part, as it's now don't have any sense
+
+-------------------------------------------------------------------
+Thu Feb 17 15:18:25 UTC 2011 - mvyskocil@suse.cz
+
+- fix bnc#669716 - update-alternatives corrupt
+  the pack/unpack removal code broke the java update-alternatives file
+
+-------------------------------------------------------------------
+Mon Jul 21 16:22:46 CEST 2008 - mvyskocil@suse.cz
+
+- fix of enhancenment request[bnc#261246] - update-alternatives should support --set
+  - update to the 1.14.19
+
+-------------------------------------------------------------------
+Tue Nov  6 18:53:00 CET 2007 - mvyskocil@suse.cz
+
+- fix the manual link state after --install and --remove commands [#334783] 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:53 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 00:10:28 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Wed Sep  1 21:10:06 CEST 2004 - skh@suse.de
+
+- Initial package version 1.8.3
+
+

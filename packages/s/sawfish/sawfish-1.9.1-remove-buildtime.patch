@@ -1,0 +1,23 @@
+From: Togan Muftuoglu <toganm@opensuse.org>
+Subject: Remove build date and time
+
+Remove build date and time
+
+These cause the package to be rebuild unnecessarily
+hence remove build_date and build_time definitions
+
+---
+ build-info |    3 ---
+ 1 file changed, 3 deletions(-)
+
+--- a/build-info
++++ b/build-info
+@@ -39,8 +39,5 @@ cat >src/build.h <<EOF
+ #define BUILD_HOST "$sys_name"
+ #define BUILD_USER "$user_name"
+ 
+-#define BUILD_DATE "$build_date"
+-#define BUILD_TIME "$build_time"
+-
+ #endif /* BUILD_H */
+ EOF

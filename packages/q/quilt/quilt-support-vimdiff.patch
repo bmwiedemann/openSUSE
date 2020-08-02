@@ -1,0 +1,40 @@
+From: Jean Delvare <jdelvare@suse.de>
+Subject: Fix interaction between quilt and vimdiff
+References: bnc#749563
+
+Using vimdiff as a diff viewer in quilt breaks if QUILT_PAGER is set.
+So inhibit the pager in that case. Other diff viewers may be affected
+as well but I don't know how to fix this in a generic way, short of
+inhibiting the pager as soon as option --diff is passed to the diff
+command. Not sure if this desirable though, as I presume
+non-interactive alternative diff viewers must exist too.
+---
+ quilt/diff.in |   11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+--- a/quilt/diff.in
++++ b/quilt/diff.in
+@@ -66,7 +66,9 @@ included.
+ 
+ --diff=utility
+ 	Use the specified utility for generating the diff. The utility
+-	is invoked with the original and new file name as arguments.
++	is invoked with the original and new file name as arguments.  If
++	using an interactive text-mode diff viewer that is not known to
++	quilt, you will have to unset QUILT_PAGER for proper result.
+ 
+ --color[=always|auto|never]
+ 	Use syntax coloring (auto activates it only if the output is a tty).
+@@ -219,6 +221,13 @@ done
+ 
+ QUILT_DIFF_OPTS="$QUILT_DIFF_OPTS $opt_format"
+ 
++# Inhibit pager for interactive text-mode diff viewers
++case "$(basename $opt_diff)" in
++vimdiff)
++	QUILT_PAGER=
++	;;
++esac
++
+ opt_files=( $(for file in "$@"; do echo "$SUBDIR${file#./}" ; done) )
+ 
+ if [ $[0$opt_combine + 0$opt_snapshot + 0$opt_relative] -gt 1 ]

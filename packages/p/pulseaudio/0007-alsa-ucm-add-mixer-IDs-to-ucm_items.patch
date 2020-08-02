@@ -1,0 +1,72 @@
+From ab5be56a10a83bfdfd7f40c02245db039e6eb730 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 23 Nov 2019 15:50:29 +0100
+Subject: [PATCH] alsa-ucm: add mixer IDs to ucm_items
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-ucm.c |  6 ++++++
+ src/modules/alsa/alsa-ucm.h | 18 ++++++++++++++++++
+ 2 files changed, 24 insertions(+)
+
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index aeb4e59e323c..14056825a25f 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -100,11 +100,17 @@ static struct ucm_items item[] = {
+     {"CapturePCM", PA_ALSA_PROP_UCM_SOURCE},
+     {"PlaybackVolume", PA_ALSA_PROP_UCM_PLAYBACK_VOLUME},
+     {"PlaybackSwitch", PA_ALSA_PROP_UCM_PLAYBACK_SWITCH},
++    {"PlaybackMixerElem", PA_ALSA_PROP_UCM_PLAYBACK_MIXER_ELEM},
++    {"PlaybackMasterElem", PA_ALSA_PROP_UCM_PLAYBACK_MASTER_ELEM},
++    {"PlaybackMasterType", PA_ALSA_PROP_UCM_PLAYBACK_MASTER_TYPE},
+     {"PlaybackPriority", PA_ALSA_PROP_UCM_PLAYBACK_PRIORITY},
+     {"PlaybackRate", PA_ALSA_PROP_UCM_PLAYBACK_RATE},
+     {"PlaybackChannels", PA_ALSA_PROP_UCM_PLAYBACK_CHANNELS},
+     {"CaptureVolume", PA_ALSA_PROP_UCM_CAPTURE_VOLUME},
+     {"CaptureSwitch", PA_ALSA_PROP_UCM_CAPTURE_SWITCH},
++    {"CaptureMixerElem", PA_ALSA_PROP_UCM_CAPTURE_MIXER_ELEM},
++    {"CaptureMasterElem", PA_ALSA_PROP_UCM_CAPTURE_MASTER_ELEM},
++    {"CaptureMasterType", PA_ALSA_PROP_UCM_CAPTURE_MASTER_TYPE},
+     {"CapturePriority", PA_ALSA_PROP_UCM_CAPTURE_PRIORITY},
+     {"CaptureRate", PA_ALSA_PROP_UCM_CAPTURE_RATE},
+     {"CaptureChannels", PA_ALSA_PROP_UCM_CAPTURE_CHANNELS},
+diff --git a/src/modules/alsa/alsa-ucm.h b/src/modules/alsa/alsa-ucm.h
+index c926f3cc39a6..4feb8c0bfc3f 100644
+--- a/src/modules/alsa/alsa-ucm.h
++++ b/src/modules/alsa/alsa-ucm.h
+@@ -51,6 +51,15 @@ typedef void snd_use_case_mgr_t;
+ /** For devices: Playback switch e.g PlaybackSwitch */
+ #define PA_ALSA_PROP_UCM_PLAYBACK_SWITCH            "alsa.ucm.playback.switch"
+ 
++/** For devices: Playback mixer identifier */
++#define PA_ALSA_PROP_UCM_PLAYBACK_MIXER_ELEM        "alsa.ucm.playback.mixer.element"
++
++/** For devices: Playback mixer master identifier */
++#define PA_ALSA_PROP_UCM_PLAYBACK_MASTER_ELEM       "alsa.ucm.playback.master.element"
++
++/** For devices: Playback mixer master type */
++#define PA_ALSA_PROP_UCM_PLAYBACK_MASTER_TYPE       "alsa.ucm.playback.master.type"
++
+ /** For devices: Playback priority */
+ #define PA_ALSA_PROP_UCM_PLAYBACK_PRIORITY          "alsa.ucm.playback.priority"
+ 
+@@ -69,6 +78,15 @@ typedef void snd_use_case_mgr_t;
+ /** For devices: Capture switch e.g CaptureSwitch */
+ #define PA_ALSA_PROP_UCM_CAPTURE_SWITCH             "alsa.ucm.capture.switch"
+ 
++/** For devices: Capture mixer identifier */
++#define PA_ALSA_PROP_UCM_CAPTURE_MIXER_ELEM         "alsa.ucm.capture.mixer.element"
++
++/** For devices: Capture mixer identifier */
++#define PA_ALSA_PROP_UCM_CAPTURE_MASTER_ELEM        "alsa.ucm.capture.master.element"
++
++/** For devices: Capture mixer identifier */
++#define PA_ALSA_PROP_UCM_CAPTURE_MASTER_TYPE        "alsa.ucm.capture.master.type"
++
+ /** For devices: Capture priority */
+ #define PA_ALSA_PROP_UCM_CAPTURE_PRIORITY           "alsa.ucm.capture.priority"
+ 
+-- 
+2.16.4
+

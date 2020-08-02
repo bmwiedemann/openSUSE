@@ -1,0 +1,1460 @@
+diff --git a/configure.ac b/configure.ac
+index 0fd1b9b..e23f33d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -734,8 +734,6 @@ AC_CONFIG_FILES([Makefile
+                  ifd/Makefile
+                  ifd/Info.plist
+                  libcyberjack/Makefile
+-                 libcyberjack/libdialog/Makefile
+-                 libcyberjack/libdialog/base/Makefile
+                  tools/Makefile
+                  tools/cjflash/Makefile
+                  tools/cjgeldkarte/Makefile
+diff --git a/libcyberjack/Makefile.am b/libcyberjack/Makefile.am
+index 3d59000..93da881 100644
+--- a/libcyberjack/Makefile.am
++++ b/libcyberjack/Makefile.am
+@@ -1,4 +1,3 @@
+-SUBDIRS=libdialog
+ 
+ INCLUDES= $(pcsc_includes) $(libxml2_includes) \
+           -I../include -I../include/driver -I../ifd -I../libcyberjack -I../cjeca32 -I../include/firmware -Iausb
+diff --git a/libcyberjack/libdialog/Makefile.am b/libcyberjack/libdialog/Makefile.am
+deleted file mode 100644
+index 5178dd2..0000000
+--- a/libcyberjack/libdialog/Makefile.am
++++ /dev/null
+@@ -1,31 +0,0 @@
+-SUBDIRS=base
+-
+-INCLUDES=\
+- -I../../include/driver \
+- -I../../cjeca32 \
+- -I../../cjeca32/ausb \
+- -Ibase \
+- -I../../ppa $(pcsc_includes)
+-
+-
+-AM_CFLAGS=$(visibility_cflags) @cyberjack_platform_def@ \
+-  -DBUILDING_CYBERJACK \
+-  -DCYBERJACK_CONFIG_FILE=\"@cyberjack_config_file@\"
+-  
+-AM_CPPFLAGS=$(visibility_cflags) @cyberjack_platform_def@ \
+-  -DBUILDING_CYBERJACK \
+-  -DCYBERJACK_CONFIG_FILE=\"@cyberjack_config_file@\"
+-
+-noinst_LTLIBRARIES=libdialog_client.la
+-libdialog_client_la_SOURCES=dialog.c
+-libdialog_client_la_LIBADD=base/libdialog_base.la $(FOUNDATION_FRAMEWORK) $(SYSCONF_FRAMEWORK)
+-
+-noinst_HEADERS=\
+-  dialog.h\
+-  dialog_p.h
+-
+-
+-noinst_PROGRAMS=libtest
+-libtest_SOURCES=libtest.cpp
+-libtest_LDADD=libdialog_client.la
+-
+diff --git a/libcyberjack/libdialog/base/Makefile.am b/libcyberjack/libdialog/base/Makefile.am
+deleted file mode 100644
+index fd9164d..0000000
+--- a/libcyberjack/libdialog/base/Makefile.am
++++ /dev/null
+@@ -1,26 +0,0 @@
+-
+-INCLUDES=\
+- -I../../../include/driver \
+- -I../../../cjeca32 \
+- -I../../../cjeca32/ausb \
+- -I../../../ppa $(pcsc_includes)
+-
+-
+-AM_CFLAGS=$(visibility_cflags) @cyberjack_platform_def@ \
+-  -DBUILDING_CYBERJACK \
+-  -DCYBERJACK_CONFIG_FILE=\"@cyberjack_config_file@\"
+-  
+-AM_CPPFLAGS=$(visibility_cflags) @cyberjack_platform_def@ \
+-  -DBUILDING_CYBERJACK \
+-  -DCYBERJACK_CONFIG_FILE=\"@cyberjack_config_file@\"
+-
+-noinst_LTLIBRARIES=libdialog_base.la
+-libdialog_base_la_SOURCES=\
+-  message.c \
+-  network.c
+-
+-
+-noinst_HEADERS=\
+-  message.h \
+-  network.h
+-
+diff --git a/libcyberjack/libdialog/base/message.c b/libcyberjack/libdialog/base/message.c
+deleted file mode 100644
+index bc3d98d..0000000
+--- a/libcyberjack/libdialog/base/message.c
++++ /dev/null
+@@ -1,40 +0,0 @@
+-/***************************************************************************
+-    begin       : Wed Jun 16 2010
+-    copyright   : (C) 2010 by Martin Preuss
+-    email       : martin@libchipcard.de
+-
+- ***************************************************************************
+- *                                                                         *
+- *   This library is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU Lesser General Public            *
+- *   License as published by the Free Software Foundation; either          *
+- *   version 2.1 of the License, or (at your option) any later version.    *
+- *                                                                         *
+- *   This library is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+- *   Lesser General Public License for more details.                       *
+- *                                                                         *
+- *   You should have received a copy of the GNU Lesser General Public      *
+- *   License along with this library; if not, write to the Free Software   *
+- *   Foundation, Inc., 59 Temple Place, Suite 330, Boston,                 *
+- *   MA  02111-1307  USA                                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-#include "Platform.h"
+-#include "message.h"
+-
+-
+-
+-
+-const char *RSCT_MessageTypeToString(int t) {
+-  switch(t) {
+-  case RSCT_Message_Command_OpenDialog:  return "openDialog";
+-  case RSCT_Message_Command_CloseDialog: return "closeDialog";
+-  case RSCT_Message_Command_SetCharNum:  return "setCharNum";
+-  default:                               return "unknown";
+-  }
+-}
+-
+-
+diff --git a/libcyberjack/libdialog/base/message.h b/libcyberjack/libdialog/base/message.h
+deleted file mode 100644
+index 1a5ce93..0000000
+--- a/libcyberjack/libdialog/base/message.h
++++ /dev/null
+@@ -1,143 +0,0 @@
+-/***************************************************************************
+-    begin       : Wed Jun 16 2010
+-    copyright   : (C) 2010 by Martin Preuss
+-    email       : martin@libchipcard.de
+-
+- ***************************************************************************
+- *                                                                         *
+- *   This library is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU Lesser General Public            *
+- *   License as published by the Free Software Foundation; either          *
+- *   version 2.1 of the License, or (at your option) any later version.    *
+- *                                                                         *
+- *   This library is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+- *   Lesser General Public License for more details.                       *
+- *                                                                         *
+- *   You should have received a copy of the GNU Lesser General Public      *
+- *   License along with this library; if not, write to the Free Software   *
+- *   Foundation, Inc., 59 Temple Place, Suite 330, Boston,                 *
+- *   MA  02111-1307  USA                                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-#ifndef RSCT_MESSAGE_H
+-#define RSCT_MESSAGE_H
+-
+-
+-#include <inttypes.h>
+-
+-
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+-
+-#if defined (__APPLE__) | defined (sun)
+-# pragma pack(1)
+-#else
+-# pragma pack(push, 1)
+-#endif
+-
+-
+-#define RSCT_MAX_MESSAGE_LEN (65*1024)
+-#define RSCT_MAX_BUFFER_LEN  4096
+-
+-
+-
+-
+-enum RSCT_MESSAGE_COMMANDS {
+-  RSCT_Message_Command_OpenDialog,
+-  RSCT_Message_Command_CloseDialog,
+-  RSCT_Message_Command_SetStage,
+-  RSCT_Message_Command_SetCharNum
+-};
+-
+-
+-
+-struct RSCT_MESSAGE_OPENDIALOG {
+-  uint32_t dialogId;
+-  uint32_t stages;
+-  uint8_t cla;
+-  uint8_t ins;
+-  uint8_t keyTimeout;
+-  char title[128];
+-  char textStage0[512];
+-  char textStage1[512];
+-  char textStage2[512];
+-  int8_t result;
+-};
+-typedef struct RSCT_MESSAGE_OPENDIALOG RSCT_MESSAGE_OPENDIALOG;
+-
+-
+-
+-struct RSCT_MESSAGE_CLOSEDIALOG {
+-  uint32_t dialogId;
+-  int8_t result;
+-};
+-typedef struct RSCT_MESSAGE_CLOSEDIALOG RSCT_MESSAGE_CLOSEDIALOG;
+-
+-
+-
+-struct RSCT_MESSAGE_SETSTAGE {
+-  uint32_t dialogId;
+-  uint32_t stage;
+-  int8_t result;
+-};
+-typedef struct RSCT_MESSAGE_SETSTAGE RSCT_MESSAGE_SETSTAGE;
+-
+-
+-
+-struct RSCT_MESSAGE_SETCHARNUM {
+-  uint32_t dialogId;
+-  uint32_t charNum;
+-  int8_t beep;
+-  int8_t result;
+-};
+-typedef struct RSCT_MESSAGE_SETCHARNUM RSCT_MESSAGE_SETCHARNUM;
+-
+-
+-
+-struct RSCT_MESSAGE_HEADER {
+-  uint8_t type;
+-  uint32_t len;
+-};
+-typedef struct RSCT_MESSAGE_HEADER RSCT_MESSAGE_HEADER;
+-
+-
+-
+-struct RSCT_MESSAGE {
+-  RSCT_MESSAGE_HEADER header;
+-  union {
+-    RSCT_MESSAGE_OPENDIALOG openDialog;
+-    RSCT_MESSAGE_CLOSEDIALOG closeDialog;
+-    RSCT_MESSAGE_SETSTAGE setStage;
+-    RSCT_MESSAGE_SETCHARNUM setCharNum;
+-  };
+-};
+-typedef struct RSCT_MESSAGE RSCT_MESSAGE;
+-
+-
+-#if defined (__APPLE__) | defined (sun)
+-# pragma pack()
+-#else
+-# pragma pack(pop)
+-#endif
+-
+-
+-#define RSCT_MSG_SIZE(tp) (\
+-  sizeof(struct RSCT_MESSAGE_HEADER)+\
+-  sizeof(tp))
+-
+-
+-const char *RSCT_MessageTypeToString(int t);
+-
+-
+-#ifdef __cplusplus
+-}
+-#endif
+-
+-
+-#endif
+-
+diff --git a/libcyberjack/libdialog/base/network.c b/libcyberjack/libdialog/base/network.c
+deleted file mode 100644
+index 44c1d8a..0000000
+--- a/libcyberjack/libdialog/base/network.c
++++ /dev/null
+@@ -1,439 +0,0 @@
+-/***************************************************************************
+-    begin       : Wed Jun 16 2010
+-    copyright   : (C) 2010 by Martin Preuss
+-    email       : martin@libchipcard.de
+-
+- ***************************************************************************
+- *                                                                         *
+- *   This library is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU Lesser General Public            *
+- *   License as published by the Free Software Foundation; either          *
+- *   version 2.1 of the License, or (at your option) any later version.    *
+- *                                                                         *
+- *   This library is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+- *   Lesser General Public License for more details.                       *
+- *                                                                         *
+- *   You should have received a copy of the GNU Lesser General Public      *
+- *   License along with this library; if not, write to the Free Software   *
+- *   Foundation, Inc., 59 Temple Place, Suite 330, Boston,                 *
+- *   MA  02111-1307  USA                                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-
+-#include "Platform.h"
+-
+-
+-#include "network.h"
+-#include "message.h"
+-
+-#include <string.h>
+-#include <errno.h>
+-
+-#include <sys/types.h>
+-#include <sys/socket.h>
+-#include <netinet/in.h>
+-#include <arpa/inet.h>
+-#include <sys/un.h>
+-
+-#include <sys/stat.h>
+-#include <fcntl.h>
+-#include <unistd.h>
+-#include <stdio.h>
+-#include <assert.h>
+-
+-#include <netdb.h>
+-
+-
+-/* enable or disable error messages */
+-#define ENABLE_DEBUGPE
+-
+-/* enable or disable info messages */
+-/*#define ENABLE_DEBUGPI*/
+-
+-/* enable or disable debug messages */
+-/*#define ENABLE_DEBUGPD*/
+-
+-
+-#ifdef ENABLE_DEBUGPE
+-# define DEBUGPE(format, args...) \
+-    fprintf(stderr, __FILE__":%5d:" format, __LINE__, ## args);
+-#else
+-# define DEBUGPE(format, args...)
+-#endif
+-
+-
+-#ifdef ENABLE_DEBUGPI
+-# define DEBUGPI(format, args...) \
+-    fprintf(stderr, __FILE__":%5d:" format, __LINE__, ## args);
+-#else
+-# define DEBUGPI(format, args...)
+-#endif
+-
+-
+-#ifdef ENABLE_DEBUGPD
+-# define DEBUGPD(format, args...) \
+-    fprintf(stderr, __FILE__":%5d:" format, __LINE__, ## args);
+-#else
+-# define DEBUGPD(format, args...)
+-#endif
+-
+-
+-
+-
+-
+-int rsct_net_listen_by_ip(const char *ip, int port) {
+-  union {
+-    struct sockaddr raw;
+-    struct sockaddr_in in;
+-  } addr;
+-  int s;
+-  int fl;
+-
+-  memset(&addr, 0, sizeof(addr));
+-#if defined(PF_INET)
+-  addr.raw.sa_family=PF_INET;
+-#elif defined (AF_INET)
+-  addr.raw.sa_family=AF_INET;
+-#endif
+-  if (!inet_aton(ip, &addr.in.sin_addr)) {
+-    DEBUGPE("ERROR: inet_aton(): %d=%s\n", errno, strerror(errno));
+-    return -1;
+-  }
+-  addr.in.sin_port=htons(port);
+-
+-#if defined(PF_INET)
+-  s=socket(PF_INET, SOCK_STREAM,0);
+-#elif defined (AF_INET)
+-  s=socket(AF_INET, SOCK_STREAM,0);
+-#endif
+-  if (s==-1) {
+-    DEBUGPE("ERROR: socket(): %d=%s\n", errno, strerror(errno));
+-    return -1;
+-  }
+-
+-  fl=1;
+-  if (setsockopt(s,
+-		 SOL_SOCKET,
+-		 SO_REUSEADDR,
+-		 &fl,
+-		 sizeof(fl))) {
+-    DEBUGPE("ERROR: setsockopt(): %s", strerror(errno));
+-    return -1;
+-  }
+-
+-  if (bind(s, &addr.raw, sizeof(struct sockaddr_in))) {
+-    DEBUGPE("ERROR: bind(): %d=%s\n", errno, strerror(errno));
+-    close(s);
+-    return -1;
+-  }
+-
+-  if (listen(s, 10)) {
+-    DEBUGPE("ERROR: listen(): %d=%s\n", errno, strerror(errno));
+-    close(s);
+-    return -1;
+-  }
+-
+-  return s;
+-}
+-
+-
+-
+-int rsct_net_listen_by_path(const char *name) {
+-  union {
+-    struct sockaddr addr;
+-    struct sockaddr_un un;
+-    char bin[512];
+-  } a;
+-  int s;
+-
+-  memset(&a.bin, 0, sizeof(a.bin));
+-#if defined(PF_UNIX)
+-  a.addr.sa_family=PF_UNIX;
+-#elif defined (AF_UNIX)
+-  a.addr.sa_family=AF_UNIX;
+-#endif
+-
+-#ifdef PF_UNIX
+-  a.un.sun_family=PF_UNIX;
+-#elif defined (AF_UNIX)
+-  a.un.sun_family=AF_UNIX;
+-#else
+-  fprintf(stderr, "No unix domain sockets available for this system\n");
+-  return -1;
+-#endif
+-  a.un.sun_path[0]=0;
+-
+-  if (name) {
+-    /* ok, address to be set */
+-    if ((strlen(name)+1)>sizeof(a.un.sun_path)) {
+-      /* bad address */
+-      fprintf(stderr, "Path too long (%d>%d)\n",
+-	      (int)(strlen(name)+1),(int)(sizeof(a.un.sun_path)));
+-      return -1;
+-    }
+-    strcpy(a.un.sun_path, name);
+-  }
+-
+-  /* create socket */
+-#if defined(PF_UNIX)
+-  s=socket(PF_UNIX, SOCK_STREAM, 0);
+-#elif defined (AF_UNIX)
+-  s=socket(AF_UNIX, SOCK_STREAM, 0);
+-#endif
+-  if (s==-1) {
+-    fprintf(stderr, "ERROR: socket(): %d=%s\n", errno, strerror(errno));
+-    return -1;
+-  }
+-
+-  if (bind(s, &a.addr, sizeof(struct sockaddr_un))) {
+-    fprintf(stderr, "ERROR: bind(): %d=%s\n", errno, strerror(errno));
+-    close(s);
+-    return -1;
+-  }
+-
+-  if (listen(s, 10)) {
+-    fprintf(stderr, "ERROR: listen(): %d=%s\n", errno, strerror(errno));
+-    close(s);
+-    return -1;
+-  }
+-
+-  return s;
+-}
+-
+-
+-
+-int rsct_net_accept(int sk) {
+-  socklen_t addrLen;
+-  int newS;
+-  struct sockaddr peerAddr;
+-
+-  addrLen=sizeof(peerAddr);
+-  newS=accept(sk, &peerAddr, &addrLen);
+-  if (newS!=-1)
+-    return newS;
+-  else {
+-    if (errno!=EINTR) {
+-      DEBUGPE("ERROR: accept(): %d=%s\n", errno, strerror(errno));
+-    }
+-    return -1;
+-  }
+-}
+-
+-
+-
+-int rsct_net_connect_by_ip(const char *ip, int port) {
+-  union {
+-    struct sockaddr raw;
+-    struct sockaddr_in in;
+-  } addr;
+-  int s;
+-
+-  memset(&addr, 0, sizeof(addr));
+-#if defined(PF_INET)
+-  addr.raw.sa_family=PF_INET;
+-#elif defined (AF_INET)
+-  addr.raw.sa_family=AF_INET;
+-#endif
+-  if (!inet_aton(ip, &addr.in.sin_addr)) {
+-    struct hostent *he;
+-
+-    he=gethostbyname(ip);
+-    if (!he) {
+-      DEBUGPE("ERROR: gethostbyname(%s): %d=%s\n", ip, errno, strerror(errno));
+-      return -1;
+-    }
+-    memcpy(&(addr.in.sin_addr),
+-	   he->h_addr_list[0],
+-	   sizeof(struct in_addr));
+-  }
+-  addr.in.sin_port=htons(port);
+-
+-#if defined(PF_INET)
+-  s=socket(PF_INET, SOCK_STREAM,0);
+-#elif defined (AF_INET)
+-  s=socket(AF_INET, SOCK_STREAM,0);
+-#endif
+-  if (s==-1) {
+-    DEBUGPE("ERROR: socket(): %d=%s\n", errno, strerror(errno));
+-    return -1;
+-  }
+-
+-  if (connect(s, &addr.raw, sizeof(struct sockaddr_in))) {
+-    DEBUGPE("ERROR: connect(): %d=%s\n", errno, strerror(errno));
+-    close(s);
+-    return -1;
+-  }
+-
+-  return s;
+-}
+-
+-
+-
+-int rsct_net_connect_by_path(const char *name) {
+-  union {
+-    struct sockaddr addr;
+-    struct sockaddr_un un;
+-    char bin[512];
+-  } a;
+-  int s;
+-
+-  memset(&a.bin, 0, sizeof(a.bin));
+-#if defined(PF_UNIX)
+-  a.addr.sa_family=PF_UNIX;
+-#elif defined (AF_UNIX)
+-  a.addr.sa_family=AF_UNIX;
+-#endif
+-
+-#ifdef PF_UNIX
+-  a.un.sun_family=PF_UNIX;
+-#elif defined (AF_UNIX)
+-  a.un.sun_family=AF_UNIX;
+-#else
+-  fprintf(stderr, "No unix domain sockets available for this system\n");
+-  return -1;
+-#endif
+-  a.un.sun_path[0]=0;
+-
+-  if (name) {
+-    /* ok, address to be set */
+-    if ((strlen(name)+1)>sizeof(a.un.sun_path)) {
+-      /* bad address */
+-      fprintf(stderr, "Path too long (%d>%d)\n",
+-	      (int)(strlen(name)+1),(int)(sizeof(a.un.sun_path)));
+-      return -1;
+-    }
+-    strcpy(a.un.sun_path,name);
+-  }
+-
+-  /* create socket */
+-#if defined(PF_UNIX)
+-  s=socket(PF_UNIX, SOCK_STREAM, 0);
+-#elif defined (AF_UNIX)
+-  s=socket(AF_UNIX, SOCK_STREAM, 0);
+-#endif
+-  if (s==-1) {
+-    fprintf(stderr, "ERROR: socket(): %d=%s\n", errno, strerror(errno));
+-    return -1;
+-  }
+-
+-  if (connect(s, &a.addr, sizeof(struct sockaddr_un))) {
+-    fprintf(stderr, "ERROR: connect(): %d=%s\n", errno, strerror(errno));
+-    close(s);
+-    return -1;
+-  }
+-
+-  return s;
+-}
+-
+-
+-
+-int rsct_net_recv(int sk, RSCT_MESSAGE *msg) {
+-  char *p;
+-  int bytesRead;
+-
+-  assert(msg);
+-
+-  bytesRead=0;
+-  p=(char*) msg;
+-
+-  /* read header */
+-  while(bytesRead<sizeof(RSCT_MESSAGE_HEADER)) {
+-    ssize_t i;
+-
+-    i=sizeof(RSCT_MESSAGE_HEADER)-bytesRead;
+-    i=read(sk, p, i);
+-    if (i<0) {
+-      if (errno!=EINTR) {
+-	DEBUGPE("ERROR: read(): %d=%s\n", errno, strerror(errno));
+-	return -1;
+-      }
+-    }
+-    else if (i==0) {
+-      if (bytesRead==0) {
+-	DEBUGPI("INFO: peer disconnected (header)\n");
+-        return 0;
+-      }
+-      else {
+-	DEBUGPE("ERROR: eof met prematurely (header, %d bytes)\n", bytesRead);
+-      }
+-      return -1;
+-    }
+-    bytesRead+=i;
+-    p+=i;
+-    DEBUGPI("INFO: Received %d bytes (header)\n", bytesRead);
+-  }
+-
+-  /* check length */
+-  if (msg->header.len>=RSCT_MAX_MESSAGE_LEN) {
+-    DEBUGPE("ERROR: Request too long (%d bytes)\n", msg->header.len);
+-    return -1;
+-  }
+-  DEBUGPI("INFO: Message has %d bytes (type: %s)\n",
+-	 msg->header.len,
+-	  RSCT_MessageTypeToString(msg->header.type));
+-
+-  /* read payload */
+-  while(bytesRead<msg->header.len) {
+-    ssize_t i;
+-
+-    i=msg->header.len-bytesRead;
+-    i=read(sk, p, i);
+-    if (i<0) {
+-      DEBUGPE("ERROR: read(): %d=%s\n", errno, strerror(errno));
+-      return -1;
+-    }
+-    else if (i==0) {
+-      DEBUGPE("ERROR: eof met prematurely (payload, %d bytes)\n",
+-	     bytesRead);
+-      return -1;
+-    }
+-    bytesRead+=i;
+-    p+=i;
+-    DEBUGPI("INFO: Received %d bytes (payload)\n", bytesRead);
+-  }
+-
+-  return bytesRead;
+-}
+-
+-
+-
+-int rsct_net_send(int sk, const RSCT_MESSAGE *msg) {
+-  int bytesLeft;
+-  const uint8_t *p;
+-
+-  /* send */
+-  DEBUGPI("INFO: Sending %d bytes (type %s)\n",
+-	 msg->header.len,
+-	 RSCT_MessageTypeToString(msg->header.type));
+-
+-  bytesLeft=msg->header.len;
+-  p=(const uint8_t*) msg;
+-
+-  while(bytesLeft) {
+-    ssize_t i;
+-
+-    i=send(sk, (const void*)p, bytesLeft, 0);
+-
+-    /* evaluate */
+-    if (i<0) {
+-      if (errno!=EINTR) {
+-	DEBUGPE("ERROR: send(): %d=%s\n", errno, strerror(errno));
+-	return -1;
+-      }
+-    }
+-    else if (i==0) {
+-    }
+-    else {
+-      bytesLeft-=(int) i;
+-      p+=i;
+-    }
+-  }
+-
+-  return 0;
+-}
+-
+-
+-
+diff --git a/libcyberjack/libdialog/base/network.h b/libcyberjack/libdialog/base/network.h
+deleted file mode 100644
+index ded1e11..0000000
+--- a/libcyberjack/libdialog/base/network.h
++++ /dev/null
+@@ -1,59 +0,0 @@
+-/***************************************************************************
+-    begin       : Wed Jun 16 2010
+-    copyright   : (C) 2010 by Martin Preuss
+-    email       : martin@libchipcard.de
+-
+- ***************************************************************************
+- *                                                                         *
+- *   This library is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU Lesser General Public            *
+- *   License as published by the Free Software Foundation; either          *
+- *   version 2.1 of the License, or (at your option) any later version.    *
+- *                                                                         *
+- *   This library is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+- *   Lesser General Public License for more details.                       *
+- *                                                                         *
+- *   You should have received a copy of the GNU Lesser General Public      *
+- *   License along with this library; if not, write to the Free Software   *
+- *   Foundation, Inc., 59 Temple Place, Suite 330, Boston,                 *
+- *   MA  02111-1307  USA                                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-
+-#ifndef RSCT_NET_NETWORK_H
+-#define RSCT_NET_NETWORK_H
+-
+-
+-#include "message.h"
+-
+-
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+-
+-int rsct_net_listen_by_ip(const char *ip, int port);
+-int rsct_net_listen_by_path(const char *name);
+-
+-int rsct_net_accept(int sk);
+-
+-int rsct_net_connect_by_ip(const char *ip, int port);
+-int rsct_net_connect_by_path(const char *name);
+-
+-int rsct_net_recv(int sk, RSCT_MESSAGE *msg);
+-int rsct_net_send(int sk, const RSCT_MESSAGE *msg);
+-
+-
+-#ifdef __cplusplus
+-}
+-#endif
+-
+-
+-#endif
+-
+-
+-
+-
+diff --git a/libcyberjack/libdialog/dialog.c b/libcyberjack/libdialog/dialog.c
+deleted file mode 100644
+index 7f23633..0000000
+--- a/libcyberjack/libdialog/dialog.c
++++ /dev/null
+@@ -1,448 +0,0 @@
+-/***************************************************************************
+-    begin       : Wed Jun 16 2010
+-    copyright   : (C) 2010 by Martin Preuss
+-    email       : martin@libchipcard.de
+-
+- ***************************************************************************
+- *                                                                         *
+- *   This library is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU Lesser General Public            *
+- *   License as published by the Free Software Foundation; either          *
+- *   version 2.1 of the License, or (at your option) any later version.    *
+- *                                                                         *
+- *   This library is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+- *   Lesser General Public License for more details.                       *
+- *                                                                         *
+- *   You should have received a copy of the GNU Lesser General Public      *
+- *   License along with this library; if not, write to the Free Software   *
+- *   Foundation, Inc., 59 Temple Place, Suite 330, Boston,                 *
+- *   MA  02111-1307  USA                                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-
+-#include "Platform.h"
+-#include "dialog_p.h"
+-#include "network.h"
+-
+-#include <sys/types.h>
+-#include <sys/stat.h>
+-#include <pwd.h>
+-#include <utmp.h>
+-
+-#include <errno.h>
+-#include <string.h>
+-#include <assert.h>
+-#include <stdio.h>
+-
+-
+-#ifdef OS_DARWIN
+-# include <SystemConfiguration/SCDynamicStoreCopySpecific.h>
+-#endif
+-
+-
+-#ifdef ENABLE_DEBUGPE
+-# define DEBUGPE(format, args...) \
+-    fprintf(stderr, __FILE__":%5d:" format, __LINE__, ## args);
+-#else
+-# define DEBUGPE(format, args...)
+-#endif
+-
+-
+-#ifdef ENABLE_DEBUGPI
+-# define DEBUGPI(format, args...) \
+-    fprintf(stderr, __FILE__":%5d:" format, __LINE__, ## args);
+-#else
+-# define DEBUGPI(format, args...)
+-#endif
+-
+-
+-#ifdef ENABLE_DEBUGPD
+-# define DEBUGPD(format, args...) \
+-    fprintf(stderr, __FILE__":%5d:" format, __LINE__, ## args);
+-#else
+-# define DEBUGPD(format, args...)
+-#endif
+-
+-
+-#ifdef OS_DARWIN
+-
+-static int rsct_dialog_mk_socket() {
+-  char buffer[256];
+-  CFStringRef socketPath=NULL;
+-  CFStringRef currentUser=SCDynamicStoreCopyConsoleUser(NULL, NULL, NULL);
+-
+-  if (currentUser==NULL )
+-    return -1;
+-
+-  if ( CFStringGetLength(currentUser) == 0 ) {
+-    CFRelease(currentUser);
+-    return -1;
+-  }
+-
+-  if (CFStringGetCString(currentUser, buffer, sizeof(buffer)-1, kCFStringEncodingUTF8)) {
+-    struct passwd * pw = getpwnam(buffer);
+-    if (pw && pw->pw_dir) {
+-      socketPath=CFStringCreateWithFormat(NULL, NULL, CFSTR("/%s/.cyberJack_gui_sock"), pw->pw_dir);
+-    }
+-  }
+-  if (socketPath==NULL )
+-    socketPath=CFStringCreateWithFormat(NULL, NULL, CFSTR("/Users/%@//.cyberJack_gui_sock"), currentUser);
+-
+-  if (currentUser)
+-    CFRelease(currentUser);
+-
+-  if (socketPath==NULL)
+-    return -1;
+-
+-  if (CFStringGetFileSystemRepresentation(socketPath, buffer, sizeof(buffer))) {
+-    int sk;
+-
+-    CFRelease(socketPath);
+-    sk=rsct_net_connect_by_path(buffer);
+-    if (sk==-1) {
+-      DEBUGPE("RSCT: Could not connect to [%s]: %s (%d)\n",
+-	      buffer, strerror(errno), errno);
+-      return -1;
+-    }
+-
+-    return sk;
+-  }
+-  else {
+-    CFRelease(socketPath);
+-    return -1;
+-  }
+-}
+-
+-#else
+-
+-static int rsct_dialog_mk_socket() {
+-  char buffer[256];
+-  struct utmp *u_tmp_p;
+-  struct passwd *pw;
+-  int sk;
+-
+-  while ((u_tmp_p = getutent()) != NULL) {
+-    DEBUGPI("RSCT: ut_type=%d, ut_line=[%s]\n",
+-	    u_tmp_p->ut_type,
+-	    u_tmp_p->ut_line);
+-    if (u_tmp_p->ut_type==USER_PROCESS &&
+-	(u_tmp_p->ut_line[0]!=0 && strcasecmp(u_tmp_p->ut_line, ":0")==0) &&
+-	u_tmp_p->ut_user[0]!=0)
+-      break;
+-  }
+-
+-  if (u_tmp_p==NULL) {
+-    DEBUGPE("RSCT: No user logged in at XServer :0 (%s (%d))\n", strerror(errno), errno);
+-    endutent();
+-    return -1;
+-  }
+-
+-  pw=getpwnam(u_tmp_p->ut_user);
+-  if (pw==NULL) {
+-    DEBUGPE("RSCT: Could not get home folder for user [%s]: %s (%d)\n",
+-	    u_tmp_p->ut_user, strerror(errno), errno);
+-    endutent();
+-    return -1;
+-  }
+-
+-  if (pw->pw_dir==NULL || *(pw->pw_dir)==0) {
+-    DEBUGPE("RSCT: User [%s] has no home folder\n", u_tmp_p->ut_user);
+-    endutent();
+-    return -1;
+-  }
+-  strncpy(buffer, pw->pw_dir, sizeof(buffer)-1);
+-  strncat(buffer, "/.cyberJack_gui_sock", sizeof(buffer)-1);
+-  endutent();
+-
+-  sk=rsct_net_connect_by_path(buffer);
+-  if (sk==-1) {
+-    DEBUGPE("RSCT: Could not connect to [%s]: %s (%d)\n",
+-	    buffer, strerror(errno), errno);
+-    return -1;
+-  }
+-
+-  return sk;
+-}
+-
+-
+-#endif
+-
+-
+-
+-RSCT_DIALOG *rsct_dialog_new(const char *title, int stages,
+-			     uint8_t cla, uint8_t ins,
+-			     int keyTimeout,
+-			     const char *textStage0,
+-			     const char *textStage1,
+-			     const char *textStage2){
+-  RSCT_DIALOG *dlg;
+-
+-  dlg=(RSCT_DIALOG*) malloc(sizeof(RSCT_DIALOG));
+-  if (dlg) {
+-    memset(dlg, 0, sizeof(RSCT_DIALOG));
+-    dlg->socket=-1;
+-
+-    if (title && *title)
+-      dlg->title=strdup(title);
+-    else
+-      dlg->title=strdup("Reiner SCT cyberJack");
+-
+-    if (textStage0 && *textStage0)
+-      dlg->textStage0=strdup(textStage0);
+-    else
+-      dlg->textStage0=NULL;
+-
+-    if (stages>1) {
+-      if (textStage1 && *textStage1)
+-	dlg->textStage1=strdup(textStage1);
+-      else
+-	dlg->textStage1=NULL;
+-    }
+-
+-    if (stages>2) {
+-      if (textStage2 && *textStage2)
+-	dlg->textStage2=strdup(textStage2);
+-      else
+-	dlg->textStage2=NULL;
+-    }
+-
+-    dlg->cla=cla;
+-    dlg->ins=ins;
+-    dlg->stages=stages;
+-    dlg->keyTimeout=keyTimeout;
+-  }
+-
+-  return dlg;
+-}
+-
+-
+-
+-void rsct_dialog_free(RSCT_DIALOG *dlg) {
+-  if (dlg) {
+-    free(dlg->title);
+-    free(dlg->textStage2);
+-    free(dlg->textStage1);
+-    free(dlg->textStage0);
+-    if (dlg->socket!=-1)
+-      close(dlg->socket);
+-    free(dlg);
+-  }
+-}
+-
+-
+-
+-int rsct_dialog_get_socket(const RSCT_DIALOG *dlg) {
+-  return dlg->socket;
+-}
+-
+-
+-
+-int rsct_dialog_get_char_num(const RSCT_DIALOG *dlg) {
+-  return dlg->numChars;
+-}
+-
+-
+-
+-int rsct_dialog_set_stage(RSCT_DIALOG *dlg, int stage) {
+-  if (dlg && dlg->socket!=-1 &&
+-      stage<RSCT_DIALOG_MAX_STAGES) {
+-    int rv;
+-    union {
+-      char buffer[RSCT_MAX_MESSAGE_LEN];
+-      RSCT_MESSAGE msg;
+-    } m;
+-  
+-    memset(m.buffer, 0, RSCT_MAX_MESSAGE_LEN);
+-    m.msg.header.type=RSCT_Message_Command_SetStage;
+-    m.msg.header.len=RSCT_MSG_SIZE(RSCT_MESSAGE_SETSTAGE);
+-    m.msg.setStage.dialogId=dlg->dialogId;
+-    m.msg.setStage.stage=stage;
+-    rv=rsct_net_send(dlg->socket, &m.msg);
+-    if (rv<0) {
+-      close(dlg->socket);
+-      dlg->socket=-1;
+-      return rv;
+-    }
+-
+-    /* receive response */
+-    memset(m.buffer, 0, RSCT_MAX_MESSAGE_LEN);
+-    rv=rsct_net_recv(dlg->socket, &m.msg);
+-    if (rv<0) {
+-      close(dlg->socket);
+-      dlg->socket=-1;
+-      return rv;
+-    }
+-    if (m.msg.setStage.result<0) {
+-      close(dlg->socket);
+-      dlg->socket=-1;
+-      return m.msg.setStage.result;
+-    }
+-  }
+-
+-  dlg->currentStage=stage;
+-
+-  return 0;
+-}
+-
+-
+-
+-int rsct_dialog_get_stage(const RSCT_DIALOG *dlg) {
+-  if (dlg)
+-    return dlg->currentStage;
+-  return 0;
+-}
+-
+-
+-
+-int rsct_dialog_get_stages(const RSCT_DIALOG *dlg) {
+-  if (dlg)
+-    return dlg->stages;
+-  return 0;
+-}
+-
+-
+-
+-uint8_t rsct_dialog_get_cla(const RSCT_DIALOG *dlg) {
+-  if (dlg)
+-    return dlg->cla;
+-  return 0;
+-}
+-
+-
+-
+-uint8_t rsct_dialog_get_ins(const RSCT_DIALOG *dlg) {
+-  if (dlg)
+-    return dlg->ins;
+-  return 0;
+-}
+-
+-
+-
+-int rsct_dialog_open(RSCT_DIALOG *dlg) {
+-  if (dlg) {
+-    int rv;
+-    union {
+-      char buffer[RSCT_MAX_MESSAGE_LEN];
+-      RSCT_MESSAGE msg;
+-    } m;
+-
+-    dlg->socket=rsct_dialog_mk_socket();
+-    if (dlg->socket==-1)
+-      return -1;
+-
+-    /* send OPEN_DIALOG */
+-    memset(m.buffer, 0, RSCT_MAX_MESSAGE_LEN);
+-    m.msg.header.type=RSCT_Message_Command_OpenDialog;
+-    m.msg.header.len=RSCT_MSG_SIZE(RSCT_MESSAGE_OPENDIALOG);
+-    m.msg.openDialog.stages=dlg->stages;
+-    m.msg.openDialog.keyTimeout=dlg->keyTimeout;
+-
+-    if (dlg->title)
+-      strncpy(m.msg.openDialog.title, dlg->title, sizeof(m.msg.openDialog.title)-1);
+-    if (dlg->stages>0 && dlg->textStage0)
+-      strncpy(m.msg.openDialog.textStage0, dlg->textStage0, sizeof(m.msg.openDialog.textStage0)-1);
+-    if (dlg->stages>1 && dlg->textStage1)
+-      strncpy(m.msg.openDialog.textStage1, dlg->textStage1, sizeof(m.msg.openDialog.textStage1)-1);
+-    if (dlg->stages>2 && dlg->textStage2)
+-      strncpy(m.msg.openDialog.textStage2, dlg->textStage2, sizeof(m.msg.openDialog.textStage2)-1);
+-
+-    /* send message */
+-    rv=rsct_net_send(dlg->socket, &m.msg);
+-    if (rv<0) {
+-      close(dlg->socket);
+-      dlg->socket=-1;
+-      return rv;
+-    }
+-
+-    /* receive response */
+-    memset(m.buffer, 0, RSCT_MAX_MESSAGE_LEN);
+-    rv=rsct_net_recv(dlg->socket, &m.msg);
+-    if (rv<0) {
+-      close(dlg->socket);
+-      dlg->socket=-1;
+-      return rv;
+-    }
+-    if (m.msg.openDialog.result<0) {
+-      close(dlg->socket);
+-      dlg->socket=-1;
+-      return m.msg.openDialog.result;
+-    }
+-
+-    dlg->dialogId=m.msg.openDialog.dialogId;
+-
+-    return 0;
+-  }
+-
+-  return -1;
+-}
+-
+-
+-
+-void rsct_dialog_close(RSCT_DIALOG *dlg) {
+-  if (dlg && dlg->socket!=-1) {
+-    union {
+-      char buffer[RSCT_MAX_MESSAGE_LEN];
+-      RSCT_MESSAGE msg;
+-    } m;
+-  
+-    memset(m.buffer, 0, RSCT_MAX_MESSAGE_LEN);
+-    m.msg.header.type=RSCT_Message_Command_CloseDialog;
+-    m.msg.header.len=RSCT_MSG_SIZE(RSCT_MESSAGE_CLOSEDIALOG);
+-    m.msg.closeDialog.dialogId=dlg->dialogId;
+-    rsct_net_send(dlg->socket, &m.msg);
+-    close(dlg->socket);
+-    dlg->socket=-1;
+-  }
+-}
+-
+-
+-
+-int rsct_dialog_set_char_num(RSCT_DIALOG *dlg, int charNum, int beep) {
+-  if (dlg && dlg->socket!=-1) {
+-    int rv;
+-    union {
+-      char buffer[RSCT_MAX_MESSAGE_LEN];
+-      RSCT_MESSAGE msg;
+-    } m;
+-  
+-    memset(m.buffer, 0, RSCT_MAX_MESSAGE_LEN);
+-    m.msg.header.type=RSCT_Message_Command_SetCharNum;
+-    m.msg.header.len=RSCT_MSG_SIZE(RSCT_MESSAGE_SETCHARNUM);
+-    m.msg.setCharNum.dialogId=dlg->dialogId;
+-    m.msg.setCharNum.charNum=charNum;
+-    m.msg.setCharNum.beep=beep;
+-
+-    rv=rsct_net_send(dlg->socket, &m.msg);
+-    if (rv<0) {
+-      close(dlg->socket);
+-      dlg->socket=-1;
+-    }
+-
+-    /* receive response */
+-    memset(m.buffer, 0, RSCT_MAX_MESSAGE_LEN);
+-    rv=rsct_net_recv(dlg->socket, &m.msg);
+-    if (rv<0) {
+-      close(dlg->socket);
+-      dlg->socket=-1;
+-      return rv;
+-    }
+-    if (m.msg.setCharNum.result<0) {
+-      close(dlg->socket);
+-      dlg->socket=-1;
+-      return m.msg.setCharNum.result;
+-    }
+-  }
+-
+-  dlg->numChars=charNum;
+-  return 0;
+-}
+-
+-
+-
+-
+-
+-
+-
+diff --git a/libcyberjack/libdialog/dialog.h b/libcyberjack/libdialog/dialog.h
+deleted file mode 100644
+index c7d27ce..0000000
+--- a/libcyberjack/libdialog/dialog.h
++++ /dev/null
+@@ -1,79 +0,0 @@
+-/***************************************************************************
+-    begin       : Wed Jun 16 2010
+-    copyright   : (C) 2010 by Martin Preuss
+-    email       : martin@libchipcard.de
+-
+- ***************************************************************************
+- *                                                                         *
+- *   This library is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU Lesser General Public            *
+- *   License as published by the Free Software Foundation; either          *
+- *   version 2.1 of the License, or (at your option) any later version.    *
+- *                                                                         *
+- *   This library is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+- *   Lesser General Public License for more details.                       *
+- *                                                                         *
+- *   You should have received a copy of the GNU Lesser General Public      *
+- *   License along with this library; if not, write to the Free Software   *
+- *   Foundation, Inc., 59 Temple Place, Suite 330, Boston,                 *
+- *   MA  02111-1307  USA                                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-
+-#ifndef RSCT_DIALOG_H
+-#define RSCT_DIALOG_H
+-
+-
+-#include "message.h"
+-
+-
+-
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+-
+-
+-typedef struct RSCT_DIALOG RSCT_DIALOG;
+-
+-#define RSCT_DIALOG_MAX_STAGES 3
+-
+-
+-RSCT_DIALOG *rsct_dialog_new(const char *title, int stages,
+-			     uint8_t cla, uint8_t ins,
+-			     int keyTimeout,
+-			     const char *textStage0,
+-			     const char *textStage1,
+-			     const char *textStage2);
+-void rsct_dialog_free(RSCT_DIALOG *dlg);
+-
+-uint8_t rsct_dialog_get_cla(const RSCT_DIALOG *dlg);
+-uint8_t rsct_dialog_get_ins(const RSCT_DIALOG *dlg);
+-
+-int rsct_dialog_open(RSCT_DIALOG *dlg);
+-void rsct_dialog_close(RSCT_DIALOG *dlg);
+-
+-int rsct_dialog_set_stage(RSCT_DIALOG *dlg, int stage);
+-int rsct_dialog_get_stage(const RSCT_DIALOG *dlg);
+-
+-int rsct_dialog_get_stages(const RSCT_DIALOG *dlg);
+-
+-int rsct_dialog_set_char_num(RSCT_DIALOG *dlg, int charNum, int beep);
+-int rsct_dialog_get_char_num(const RSCT_DIALOG *dlg);
+-
+-
+-
+-int rsct_dialog_get_socket(const RSCT_DIALOG *dlg);
+-
+-#ifdef __cplusplus
+-}
+-#endif
+-
+-#endif
+-
+-
+-
+-
+diff --git a/libcyberjack/libdialog/dialog_p.h b/libcyberjack/libdialog/dialog_p.h
+deleted file mode 100644
+index bf2ca26..0000000
+--- a/libcyberjack/libdialog/dialog_p.h
++++ /dev/null
+@@ -1,59 +0,0 @@
+-/***************************************************************************
+-    begin       : Wed Jun 16 2010
+-    copyright   : (C) 2010 by Martin Preuss
+-    email       : martin@libchipcard.de
+-
+- ***************************************************************************
+- *                                                                         *
+- *   This library is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU Lesser General Public            *
+- *   License as published by the Free Software Foundation; either          *
+- *   version 2.1 of the License, or (at your option) any later version.    *
+- *                                                                         *
+- *   This library is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+- *   Lesser General Public License for more details.                       *
+- *                                                                         *
+- *   You should have received a copy of the GNU Lesser General Public      *
+- *   License along with this library; if not, write to the Free Software   *
+- *   Foundation, Inc., 59 Temple Place, Suite 330, Boston,                 *
+- *   MA  02111-1307  USA                                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-
+-#ifndef RSCT_DIALOG_P_H
+-#define RSCT_DIALOG_P_H
+-
+-
+-#include "dialog.h"
+-
+-
+-
+-
+-struct RSCT_DIALOG {
+-  uint32_t dialogId;
+-  int socket;
+-  int stages;
+-  int currentStage;
+-  unsigned int keyTimeout;
+-  char *title;
+-  char *textStage0;
+-  char *textStage1;
+-  char *textStage2;
+-
+-  uint8_t cla;
+-  uint8_t ins;
+-
+-  int numChars;
+-};
+-
+-
+-
+-
+-#endif
+-
+-
+-
+-
+diff --git a/libcyberjack/libdialog/libtest.cpp b/libcyberjack/libdialog/libtest.cpp
+deleted file mode 100644
+index dc1b10f..0000000
+--- a/libcyberjack/libdialog/libtest.cpp
++++ /dev/null
+@@ -1,54 +0,0 @@
+-
+-
+-#include "dialog.h"
+-
+-#include <stdio.h>
+-#include <unistd.h>
+-
+-
+-
+-int main(int argc, char **argv) {
+-  RSCT_DIALOG *dlg;
+-  int rv;
+-  int stage;
+-
+-  dlg=rsct_dialog_new("Sichere PIN-Eingabe",
+-		      3,
+-		      0x20, 0x18,
+-		      15,
+-		      "Bitte geben Sie Ihre bisherige PIN ein",
+-		      "Bitte geben Sie die neue PIN ein",
+-		      "Bitte wiederholen Sie die neue PIN");
+-
+-  rv=rsct_dialog_open(dlg);
+-  if (rv<0) {
+-    fprintf(stderr, "rsct_dialog_open: %d\n", rv);
+-    return 2;
+-  }
+-
+-
+-  for(stage=0; stage<3; stage++) {
+-    int i;
+-
+-    rv=rsct_dialog_set_stage(dlg, stage);
+-    if (rv<0) {
+-      fprintf(stderr, "rsct_dialog_set_stage(%d): %d\n", stage, rv);
+-      return 2;
+-    }
+-
+-    for (i=1; i<6; i++) {
+-      sleep(3);
+-      rv=rsct_dialog_set_char_num(dlg, i, 1);
+-      if (rv<0) {
+-	fprintf(stderr, "rsct_dialog_set_char_num(%d): %d\n", i, rv);
+-	return 2;
+-      }
+-    }
+-  }
+-
+-  rsct_dialog_close(dlg);
+-
+-  return 0;
+-}
+-
+-

@@ -1,0 +1,36 @@
+#include <tunables/global>
+
+# this profile is mainly intended to prevent easy exploitation of
+# issues in ghostscript. This is mainly intended as a hardening
+# measure and doesn't alleviate the need for regular updates.
+profile ghostscript /usr/bin/{gs,gs.bin} {
+  #include <abstractions/base>
+  #include <abstractions/consoles>
+  #include <abstractions/nameservice>
+  #include <abstractions/X>
+
+  # needed to read gc/write pdfs/eps/.. everywhere
+  /** wr,
+  # have these spelled out in case we can narrow the line above down sometime
+  /usr/bin/{gs,gs.bin} mrix,
+  /usr/bin/dvips mrix,
+  /usr/lib64/ghostscript/** m,
+  /usr/lib64/libgs.so.* m,
+  /usr/lib64/libijs-* m,
+
+  /usr/bin/hpijs Cx,
+  profile /usr/bin/hpijs flags=(complain) {
+    #include <abstractions/base>
+
+    network inet dgram,
+
+    /etc/cups/cupsd.conf r,
+    /etc/hp/hplip.conf r,
+    /usr/bin/hpijs mr,
+    /usr/share/ghostscript/** r,
+    /usr/share/hplip/** r,
+    /usr/share/snmp/mibs/ r,
+    /usr/share/snmp/mibs/*.txt r,
+    owner /var/spool/cups/tmp/gs_?????? rw,
+  }
+}

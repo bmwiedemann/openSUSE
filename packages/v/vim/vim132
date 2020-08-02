@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Shell script for use with UNIX
+# Starts up Vim with the terminal in 132 column mode
+# Only works on VT-100 terminals and lookalikes
+# You need to have a termcap entry "vt100-w". Same as vt100 but 132 columns.
+#
+echo "[?3h"
+TERM=vt100-w vim "$@"
+echo "[?3l"

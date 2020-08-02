@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Jan 16 15:17:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim history/future vision from description. Trim em dashes
+  from summaries.
+
+-------------------------------------------------------------------
+Sun Jan 12 20:53:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.2.2

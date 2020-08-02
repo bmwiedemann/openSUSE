@@ -1,0 +1,113 @@
+#! /bin/bash
+# Copyright (c) 2002 SuSE Linux AG Nuernberg, Germany.
+#           (c) 2014 SUSE Linux Products GmbH
+# 
+# Author: Takashi Iwai <tiwai@suse.de>, 2001
+#
+# /etc/init.d/joystick
+#
+### BEGIN INIT INFO
+# Provides:       joystick
+# Required-Start: alsasound
+# Required-Stop:  alsasound
+# Default-Start:  2 3 5
+# Default-Stop:
+# Short-Description: Set up analog joysticks
+# Description:   Loading joystick drivers
+### END INIT INFO
+
+. /etc/rc.status
+. /etc/sysconfig/joystick
+
+alsactl=/usr/sbin/alsactl
+if [ -x /sbin/lsmod ]; then
+    lsmod=/sbin/lsmod
+else
+    lsmod=/bin/lsmod
+fi
+
+# load joystick drivers
+function start () {
+    # first load joydev module
+    if [ -z "${JOYSTICK_MODULE_0}${JOYSTICK_MODULE_1}${JOYSTICK_MODULE_2}${JOYSTICK_MODULE_3}" ]; then
+	rc_failed 5
+	return
+    fi
+
+    /sbin/modprobe joydev
+    for js in 0 1 2 3; do
+	# load gameport module
+	eval jsmod=\$GAMEPORT_MODULE_$js
+	if [ -n "$jsmod" -a "$jsmod" != off ]; then
+	    /sbin/modprobe $jsmod >/dev/null 2>&1
+	fi
+	# load joystick module
+	eval jsdev=\$JOYSTICK_MODULE_$js
+	eval jsdev_opts=\$JOYSTICK_MODULE_OPTION_$js
+	if [ -n "$jsdev" -a "$jsdev" != off ]; then
+	    /sbin/modprobe $jsdev $jsdev_opts >/dev/null 2>&1
+	fi
+    done
+}
+
+function stop () {
+    for js in 0 1 2 3; do
+	# remove gameport module
+	eval jsmod=\$GAMEPORT_MODULE_$js
+	if [ -n "$jsmod" -a "$jsmod" != off ]; then
+	    /sbin/modprobe -r $jsmod
+	fi
+	# remove joystick module
+	eval jsdev=\$JOYSTICK_MODULE_$js
+	if [ -n "$jsdev" -a "$jsdev" != off ]; then
+	    /sbin/modprobe -r $jsdev
+	fi
+    done
+}
+
+# See how we were called.
+case "$1" in
+    start)
+	echo -n "Starting joystick driver"
+	start
+	rc_status -v
+        ;;
+    stop)
+        # Stop daemons.
+        echo -n "Stopping joystick driver"
+	stop
+	rc_status -v
+        ;;
+    try-restart)
+        $0 status >/dev/null && $0 restart
+	rc_status
+	;;
+    restart)
+	$0 stop
+	$0 start
+        rc_status
+	;;
+    force-reload)
+	$0 stop && $0 start
+	rc_status
+	;;
+    reload)
+        rc_failed 3
+	rc_status -v
+	;;
+    status)
+	if $lsmod | grep -q joydev; then
+          echo -n "Joystick driver loaded."
+          rc_status -v
+        else
+          echo -n "Joystick driver not loaded."
+	  rc_status -u
+        fi
+        ;;
+    *)
+	echo "Usage: $0 {start|stop|try-restart|restart|force-reload|reload|status}"
+        exit 1
+	;;
+esac
+
+rc_exit

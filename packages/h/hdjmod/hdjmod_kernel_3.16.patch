@@ -1,0 +1,25 @@
+From: Matthias Bach <marix@marix.org>
+Date: 2014-07-26 23:30:00 +0200
+Subject: Fix compile on kernel 3.16
+Upstream: to be done
+
+The module no longer compiled on 3.16 due to API changes in ALSA.
+
+diff -Naru hdjmod-1.28o/device.c hdjmod-1.28/device.c
+--- hdjmod-1.28o/device.c	2014-07-25 22:38:52.985186212 +0200
++++ hdjmod-1.28/device.c	2014-07-25 22:44:05.297761993 +0200
+@@ -1660,7 +1660,13 @@
+ 		/* let the kernel option override custom id */
+ 		strncpy(card_id,id[idx],sizeof(card_id)-1);
+ 	}
+-#if ( LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,30) )
++#if ( LINUX_VERSION_CODE >= KERNEL_VERSION(3,16,0) )
++	err = snd_card_new(&dev->dev, index[idx], card_id/*id[idx]*/, THIS_MODULE, 0, &card );
++	if (err) {
++		snd_printk(KERN_WARNING "snd_hdj_chip_create(): cannot create card instance %d\n", idx);
++		return err;
++	}
++#elif ( LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,30) )
+ 	err = snd_card_create(index[idx], card_id/*id[idx]*/, THIS_MODULE, 0, &card );
+ 	if (err) {
+ 		snd_printk(KERN_WARNING "snd_hdj_chip_create(): cannot create card instance %d\n", idx);

@@ -1,0 +1,37 @@
+Description: Support LLVM 6
+
+LLVMContext::setDiagnosticHandler and LoopInfo::markAsRemoved are renamed
+
+Author: Rebecca N. Palmer <rebecca_palmer@zoho.com>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+
+diff -uNr Beignet-1.3.2-Source.orig/backend/src/llvm/llvm_to_gen.cpp Beignet-1.3.2-Source/backend/src/llvm/llvm_to_gen.cpp
+--- Beignet-1.3.2-Source.orig/backend/src/llvm/llvm_to_gen.cpp	2017-10-24 08:04:48.000000000 +0200
++++ Beignet-1.3.2-Source/backend/src/llvm/llvm_to_gen.cpp	2018-07-21 09:02:25.891056989 +0200
+@@ -322,7 +322,11 @@
+     DataLayout DL(&mod);
+     
+     gbeDiagnosticContext dc;
+-    mod.getContext().setDiagnosticHandler(&gbeDiagnosticHandler,&dc);
++#if LLVM_VERSION_MAJOR >= 6
++    mod.getContext().setDiagnosticHandlerCallBack(&gbeDiagnosticHandler, &dc);
++#else
++    mod.getContext().setDiagnosticHandler(&gbeDiagnosticHandler, &dc);
++#endif
+ 
+ #if LLVM_VERSION_MAJOR * 10 + LLVM_VERSION_MINOR >= 37
+     mod.setDataLayout(DL);
+diff -uNr Beignet-1.3.2-Source.orig/backend/src/llvm/llvm_unroll.cpp Beignet-1.3.2-Source/backend/src/llvm/llvm_unroll.cpp
+--- Beignet-1.3.2-Source.orig/backend/src/llvm/llvm_unroll.cpp	2017-10-24 08:04:48.000000000 +0200
++++ Beignet-1.3.2-Source/backend/src/llvm/llvm_unroll.cpp	2018-07-21 09:03:15.524362357 +0200
+@@ -205,7 +205,9 @@
+           if (parentTripCount != 0 && currTripCount * parentTripCount > 32) {
+             //Don't change the unrollID if doesn't force unroll.
+             //setUnrollID(parentL, false);
+-#if LLVM_VERSION_MAJOR * 10 + LLVM_VERSION_MINOR >= 38
++#if LLVM_VERSION_MAJOR >= 6
++            loopInfo.erase(parentL);
++#elif LLVM_VERSION_MAJOR * 10 + LLVM_VERSION_MINOR >= 38
+             loopInfo.markAsRemoved(parentL);
+ #else
+             LPM.deleteLoopFromQueue(parentL);

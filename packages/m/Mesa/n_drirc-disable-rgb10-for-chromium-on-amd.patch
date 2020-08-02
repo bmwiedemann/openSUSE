@@ -1,0 +1,18 @@
+diff -dupr mesa-20.0.0.orig/src/util/00-mesa-defaults.conf mesa-20.0.0/src/util/00-mesa-defaults.conf
+--- mesa-20.0.0.orig/src/util/00-mesa-defaults.conf	2020-02-19 20:29:32.000000000 +0100
++++ mesa-20.0.0/src/util/00-mesa-defaults.conf	2020-02-22 12:10:47.118008543 +0100
+@@ -556,6 +556,14 @@ TODO: document the other workarounds.
+         <application name="DiRT Rally" executable="DirtRally">
+             <option name="radeonsi_prim_restart_tri_strips_only" value="true"/>
+         </application>
++        <!-- This is workaround to prevent distorted colors on hardware accelerated video in Chromium. https://bugzilla.opensuse.org/show_bug.cgi?id=1113211 -->
++        <application name="Chromium" executable="chromium">
++            <option name="allow_rgb10_configs" value="false" />
++        </application>
++        <!-- This is workaround to prevent distorted colors on hardware accelerated video in Totem. https://bugzilla.opensuse.org/show_bug.cgi?id=1142270 -->
++        <application name="Totem" executable="totem">
++            <option name="allow_rgb10_configs" value="false" />
++        </application>
+         <application name="Gfx Bench" executable="gfxbench_gl">
+             <!-- Helps offscreen tests -->
+             <option name="mesa_glthread" value="true"/>

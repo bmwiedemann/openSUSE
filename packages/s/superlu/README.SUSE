@@ -1,0 +1,8 @@
+This version of SuperLU is slightly different form the original SuperLU
+available on http://crd.lbl.gov/~xiaoye/SuperLU/. For legal reasons the
+routine mc64ad from the Harwell Subroutine Library cannot be redistributed
+by openSUSE and have been removed form the sources. Only SRC/mc64ad.c was
+removed from the tarball.
+
+However the SuperLU library provided by openSUSE is fully functionnal
+except that the mc64ad routine is not used.

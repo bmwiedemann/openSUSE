@@ -1,0 +1,29 @@
+From 25e7bf021a4e7c5ad5f925b86605bf025ff1a949 Mon Sep 17 00:00:00 2001
+From: Joe Thornber <ejt@redhat.com>
+Date: Tue, 29 Oct 2019 15:21:11 +0000
+Subject: [PATCH] [bcache] bcache_invalidate_fd, only remove prefixes on
+ success.
+
+---
+ lib/device/bcache.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/lib/device/bcache.c b/lib/device/bcache.c
+index b0edf28062..04d49f1656 100644
+--- a/lib/device/bcache.c
++++ b/lib/device/bcache.c
+@@ -1376,7 +1376,10 @@ bool bcache_invalidate_fd(struct bcache *cache, int fd)
+ 	it.success = true;
+ 	it.it.visit = _invalidate_v;
+ 	radix_tree_iterate(cache->rtree, k.bytes, k.bytes + sizeof(k.parts.fd), &it.it);
+-	radix_tree_remove_prefix(cache->rtree, k.bytes, k.bytes + sizeof(k.parts.fd));
++
++	if (it.success)
++		radix_tree_remove_prefix(cache->rtree, k.bytes, k.bytes + sizeof(k.parts.fd));
++
+ 	return it.success;
+ }
+ 
+-- 
+2.16.4
+

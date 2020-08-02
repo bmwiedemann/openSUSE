@@ -1,0 +1,6 @@
+<services>
+  <service name="format_spec_file" mode="localonly" />
+  <service name="download_files" mode="disabled" />
+  <service name="source_validator" mode="localonly" /> 
+</services>
+

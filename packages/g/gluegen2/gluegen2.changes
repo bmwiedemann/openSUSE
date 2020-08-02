@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Thu May 17 08:03:01 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+-------------------------------------------------------------------
+Fri Dec 22 15:03:25 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * gluegen2-jdk10.patch
+    - Fix build with jdk10 by generating headers in javac target
+- Require ant >= 1.9.8 that understands "nativeheaderdir" attribute
+  and java-devel >= 1.8 that understands javac -h option
+
+-------------------------------------------------------------------
+Sat Nov 25 13:50:24 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Fix building of dependent packages (e.g. jogl2) on ARMv7/Aarch64
+  * Drop gluegen2-missing-arch-symbol.patch
+  * Add gluegen2-0001-Remove-version-overrides-for-memcpy.patch
+
+-------------------------------------------------------------------
+Fri Oct  6 06:53:16 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * gluegen2-jdk9.patch
+    + Fix build with jdk9
+- Allow building with jdk9
+
+-------------------------------------------------------------------
+Mon Sep 18 08:03:57 UTC 2017 - fstrba@suse.com
+
+- Build for the while with java < 1.9
+
+-------------------------------------------------------------------
+Fri May 19 16:18:02 UTC 2017 - tchvatal@suse.com
+
+- Remove ant and junit deps to reduce buildgraph
+
+-------------------------------------------------------------------
+Wed Mar  9 13:04:03 UTC 2016 - dvaleev@suse.com
+
+- Don't try to guess glbc version on other architectures
+  (gluegen2-missing-arch-symbol.patch)
+
+-------------------------------------------------------------------
+Sun Oct 11 16:43:59 UTC 2015 - badshah400@gmail.com
+
+- Update to version 2.3.2:
+  + See http://jogamp.org/deployment/v2.3.2/archive/ChangeLogs/gluegen-ShortLog-v2.3.2.txt
+    for a list of changes.
+- Upstream switched to using tar.xz for source tarballs; adapt
+  %setup acordingly, drop p7zip BuildRequires.
+- Add gluegen2-no-static-libstdc++.patch to prevent the buildtools
+  from adding a "-static-libstdc++" option to linker, adding this
+  flag causes builds to fail.
+
+-------------------------------------------------------------------
+Tue Sep  1 08:39:24 UTC 2015 - normand@linux.vnet.ibm.com
+
+- put back patch updated for last version 2.3.1:
+  gluegen2-add-ppc64-aarch64.patch
+
+-------------------------------------------------------------------
+Wed Apr  8 11:27:53 UTC 2015 - tchvatal@suse.com
+
+- Drop the aach64 patch, not sure if still needed and if so we
+  can reintroduce it later:
+  * gluegen2-ppc64-aarch64.patch
+
+-------------------------------------------------------------------
+Sat Apr  4 03:21:52 UTC 2015 - badshah400@gmail.com
+
+- Update to version 2.3.1:
+  + See gluegen changes from
+    https://jogamp.org/wiki/index.php/SW_Tracking_Report_Objectives_for_the_release_2.3.1.
+- Add source tarball for jcpp as gluegen now uses jcpp as the
+  default compiler; extract and copy jccp sources into gluegen
+  build tree during %prep.
+- Add BuildRequires: ant-findbugs.
+
+-------------------------------------------------------------------
+Fri Apr  3 03:11:49 UTC 2015 - badshah400@gmail.com
+
+- Update to version 2.3.0:
+  + See gluegen changes from
+    https://jogamp.org/wiki/index.php/SW_Tracking_Report_Objectives_for_the_release_2.3.0.
+- Add gluegen2-disable-tests.patch to disable junit tests as this
+  requires additional dependencies not currently packaged in obs.
+- Rebase existing patches.
+- Disable gluegen2-ppc64-aarch64.patch; needs rebase.
+
+-------------------------------------------------------------------
+Mon Jul  7 15:01:55 UTC 2014 - tchvatal@suse.com
+
+- Use junit not junit4
+
+-------------------------------------------------------------------
+Thu Jun 19 14:58:20 UTC 2014 - dvaleev@suse.com
+
+- Fix builds for ppc64, ppc64le and aarch64 architectures
+  (gluegen2-ppc64-aarch64.patch)
+
+-------------------------------------------------------------------
+Fri Mar 21 01:12:15 UTC 2014 - badshah400@gmail.com
+
+- Use tagged tarballs released by upstream
+  - Requires p7zip
+  - Requires manual setup of buildsource directory
+- Use full URL for source
+- Fix unnecessary executable bits on som files
+
+-------------------------------------------------------------------
+Mon Sep 16 18:07:49 UTC 2013 - dmitry_r@opensuse.org
+
+- Delete ant-* requires for runtime
+
+-------------------------------------------------------------------
+Thu Aug  1 03:50:13 UTC 2013 - ierturk@ieee.org
+
+- Update to version 2.0.2
+
+-------------------------------------------------------------------
+Thu Jul 18 20:30:45 UTC 2013 - dmitry_r@opensuse.org
+
+- Initial package
+- Version 2.0-rc12
+- Rename library to gluegen2-rt
+  * gluegen2-0001-renamed-library.patch
+- Disable tests for unused components
+  * gluegen2-0003-disable-executable-tmp-tests.patch
+- Use system jar files
+  * gluegen2-jar-paths.patch
+  * gluegen2-0004-add-antlr-jar-to-all-targets.patch

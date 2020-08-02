@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Mon Apr  8 12:22:59 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.2.0
+  - Imported Translations from Zanata
+  - Use standard cover tox env
+  - switch documentation job to new PTI
+  - Update py27-ocata to py27-queens
+  - Change openstack-dev to openstack-discuss
+  - Move legacy-muranoclient-dsvm-functional-mysql-backend job to muranoclient
+  - Update reno for stable/rocky
+  - Update min tox version to 2.0
+  - Remove PyPI downloads
+  - Remove the export pre_test_hook from murano repo
+  - add python 3.6 unit test job
+  - add python 3.7 unit test job
+  - import zuul job settings from project-config
+  - Use templates for cover and lower-constraints
+  - Add Python 3.6 classifier to setup.cfg
+
+-------------------------------------------------------------------
+Mon Sep  3 17:30:06 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.1.1
+  - Switch to stestr
+  - fix tox python3 overrides
+  - Add os-testr to test-requirements.txt
+  - Update reno for stable/queens
+  - Add release note link in README
+  - Fix incompatible requirement
+  - Trivial: Update pypi url to new url
+  - Ignore default values for deprecated security parameters
+  - Imported Translations from Zanata
+  - Follow the new PTI for document build
+  - Trivial: update url to new url
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Feb 23 13:11:36 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Jan 30 15:12:51 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.0.1
+  - update env template output
+  - Skip two test due to apps.openstack.org is retired
+  - Imported Translations from Zanata
+  - Update links in README
+  - Update reno for stable/pike
+  - Add bundle import to openstack CLI
+  - Remove setting of version/release from releasenotes
+  - Update the documentation link for doc migration
+  - Add package show to openstack CLI
+  - Add package update to openstack CLI
+  - Avoid tox_install.sh for constraints support
+  - Fix to use "." to source script files
+  - Updated from global requirements
+  - Add package download to openstack CLI
+  - Use generic user for both zuul v2 and v3
+
+-------------------------------------------------------------------
+Mon Aug  7 11:33:14 UTC 2017 - cloud-devel@suse.de
+
+- update to version 0.14.0
+  - Make method import_versioned_module work
+  - Correct the unit test name
+  - Remove long-ago deprecated show_categories
+  - Imported Translations from Zanata
+  - Add package import to openstack CLI
+  - Update reno for stable/ocata
+  - import content from cli-reference in openstack-manuals
+  - Optimize the link address
+  - Update the documentation link for doc migration
+  - Replace six.iteritems() with .items()
+  - Using the latest openstackdocstheme settings
+  - move existing content into the new standard structure
+  - Modify Default Domain
+  - delete bash_completion in subcommand
+  - Remove log translations
+  - Update test requirement
+  - Turn on warning-is-error in sphinx build
+  - Remove support for py34
+  - switch to openstackdocstheme
+  - Replaces uuid.uuid4 with uuidutils.generate_uuid()
+  - Allows fetching of deployments from all environments.
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Sat Mar 25 09:59:35 UTC 2017 - dmueller@suse.com
+
+- update to 0.12.0:
+  * Add debug to tox enviroment
+  * Remove white space between print ()
+  * Fixes filtering applications by name with glare
+  * Remove the data assert to pass the gate
+  * Add package delete to openstack CLI
+  * Using sys.exit(main()) instead of main()
+  * Return error code when a error occurred during package-import
+  * Fix Murano client to use V3 and MultiDomain Authentication
+  * Use assertGreater() and assertLess()
+  * Support i18n for LOG.warning
+  * Show team and repo badges on README
+  * Support for environment list filtering by project id
+  * Delete python bytecode file
+  * Fix typos in cover.sh
+  * Fix removes date_time items from dictionaries
+  * Fix removes date_time items from dictionaries
+  * Updated from global requirements
+  * Add functional test for environment-model-show
+  * Fix OpenStack Licensing
+  * OSC plugin should be using region/interface
+  * Enable release notes translation
+  * Add support for environment edit API
+  * Fixing environment creation from template
+  * Unskip the test due to bugfix
+  * Skip some tests when using glare in a right way
+  * Mark .testr.conf as non-executable
+  * Make some OSC tests more clean
+  * Updated from global requirements
+  * TrivialFix: Fix typo in the bash shell file
+  * Add package list to openstack CLI
+  * TrivialFix: Using assertTrue() instead of assertEqual(True)
+  * Remove unnecessary setUp
+  * Make --limit argument in package-list command robust
+  * Add opportunity to import package from directory
+
+-------------------------------------------------------------------
+Tue Nov 15 09:39:51 UTC 2016 - dmueller@suse.com
+
+- update to 0.11.1:
+  * Populate tenant information in client
+
+-------------------------------------------------------------------
+Mon Sep  5 12:15:34 UTC 2016 - tbechtold@suse.com
+
+update to version 0.11.0
+  * Increase yaql quotas
+  * Replace functions 'Dict.get' and 'del' with 'Dict.pop'
+  * Add package create to openstack CLI
+  * Decode PrettyTable output before printing for Python3
+  * Add script for unit test coverage job
+  * Use upper constraints for all jobs in tox.ini
+  * [docs] Update Readme with correct Doc URL
+  * Updated from global requirements
+  * Sync tools/tox_install.sh
+  * Trivial: clean up oslo-incubator related stuff
+
+-------------------------------------------------------------------
+Thu Aug 25 11:59:53 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 0.10.0)
+

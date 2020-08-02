@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Dec 27 09:19:40 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- change license to GPL-3.0-or-later to match gcc package
+
+-------------------------------------------------------------------
+Fri Dec  6 13:40:56 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- need to conflict with bootstrap gcc to avoid file conflicts
+
+-------------------------------------------------------------------
+Sat Nov 23 17:17:48 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 9.2.0 
+
+-------------------------------------------------------------------
+Fri Nov 22 13:42:32 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- conflict with dummy pthread headers. The package needs the correct
+  one instead.
+
+-------------------------------------------------------------------
+Wed Nov 20 18:56:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- inital package for Factory submission

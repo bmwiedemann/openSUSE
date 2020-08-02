@@ -1,0 +1,73 @@
+Index: ekiga-4.0.1/Makefile.am
+===================================================================
+--- ekiga-4.0.1.orig/Makefile.am
++++ ekiga-4.0.1/Makefile.am
+@@ -18,6 +18,10 @@ DESKTOP_FILE=@PACKAGE_NAME@.desktop
+ SCHEMAS_IN_IN_FILE = @PACKAGE_NAME@.schemas.in.in
+ SCHEMAS_FILE = @PACKAGE_NAME@.schemas
+ 
++APPDATAdir = $(datadir)/appdata
++APPDATA_IN_FILES = ekiga.appdata.xml.in
++APPDATA_DATA = $(APPDATA_IN_FILES:.appdata.xml.in=.appdata.xml)
++@INTLTOOL_XML_RULE@
+ 
+ ### Win32 files
+ WIN32_DIST = \
+@@ -59,7 +63,8 @@ EXTRA_DIST = \
+         LICENSE                                                 \
+         MAINTAINERS                                             \
+ 	$(SCHEMAS_FILE) 					\
+-	$(WIN32_DIST)
++	$(WIN32_DIST)                                           \
++	$(APPDATA_IN_FILES)
+ 
+ Applicationsdir = $(datadir)/applications
+ Applications_DATA = $(DESKTOP_FILE)
+@@ -93,3 +98,4 @@ install-data-local: install-schemas
+ else
+ install-data-local:
+ endif
++
+Index: ekiga-4.0.1/ekiga.appdata.xml.in
+===================================================================
+--- /dev/null
++++ ekiga-4.0.1/ekiga.appdata.xml.in
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- Copyright 2015 Eugen Dedu <eugen.dedu@univ-fcomte.fr> -->
++
++<component type="desktop">
++  <id>ekiga.desktop</id>
++  <metadata_license>CC0-1.0</metadata_license>
++  <project_license>GPL-2.0+</project_license>
++  <name>Ekiga Softphone</name>
++  <summary>Talk to and see people over the Internet</summary>
++  <description>
++    <_p>
++      Ekiga is a VoIP, IP Telephony, and Video Conferencing application
++      that allows you to make audio and video calls to remote users with
++      SIP or H.323 compatible hardware and software.  It supports many
++      audio and video codecs and all modern VoIP features for both SIP and
++      H.323.  Ekiga is the first Open Source application to support both
++      H.323 and SIP, as well as audio and video.
++    </_p>
++  </description>
++  <url type="homepage">http://ekiga.org/</url>
++  <screenshots>
++    <screenshot type="default">http://wiki.ekiga.org/images/c/cb/250px-Ekiga_in_a_call.png</screenshot>
++    <!--<screenshot></screenshot>-->
++  </screenshots>
++  <updatecontact>ekiga-devel-list@gnome.org</updatecontact>
++</component>
++
+Index: ekiga-4.0.1/po/POTFILES.in
+===================================================================
+--- ekiga-4.0.1.orig/po/POTFILES.in
++++ ekiga-4.0.1/po/POTFILES.in
+@@ -1,5 +1,6 @@
+ # List of source files containing translatable strings.
+ # Please keep this file in alphabetical order.
++ekiga.appdata.xml.in
+ ekiga.desktop.in.in
+ ekiga.schemas.in.in
+ lib/engine/addressbook/contact-core.cpp

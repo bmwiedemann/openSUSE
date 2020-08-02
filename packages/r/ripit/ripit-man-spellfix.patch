@@ -1,0 +1,29 @@
+Description: Correcting typos in manpage
+Author: Elimar Riesebieter <riesebie@lxtec.de>
+Last-Update: 2016-01-30.
+
+diff -Naurd a/ripit.1 b/ripit.1
+--- a/ripit.1	2016-01-30 12:23:43.289397300 +0100
++++ b/ripit.1	2016-01-30 13:26:41.620722087 +0100
+@@ -11,10 +11,10 @@
+ This Perl script makes it a lot easier to extract and compress sound
+ files from an audio CD or a local directory with wav/flac files. Although
+ Ripit ensures exact copy of the digital data with different verification
+-possibilites, it aims to enhance the audio content for a more
++possibilities, it aims to enhance the audio content for a more
+ userfriendly experience. Tracks can be merged or partially ripped,
+ hidden tracks (aka pregap tracks or HTOA) and ghost songs are detected
+-and can be splitted, like all other tracks, into chunks of sound where
++and can be split, like all other tracks, into chunks of sound where
+ silence has been trimmed away. Data tracks can be omitted to prevent
+ ripper failure or waste of time on such tracks.
+ .PP
+@@ -504,7 +504,7 @@
+ .TP
+ \fB\-T,\fR \fB\-\-tracktemplate\fR '"foo \fIparameters\fR"'
+ See above. The tracktemplate is not an array, only one can be stated.
+-Additionaly it allows two more variables helpful in case VA-style is
++Additionally it allows two more variables helpful in case VA-style is
+ detected:
+ .IR $trackartist,
+ .IR $tracktitle;

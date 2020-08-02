@@ -1,0 +1,59 @@
+From 4cd44fcc9e4c6f230cefd397cb75f4b911ea0a11 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 17 Jan 2017 19:22:39 +0100
+Subject: [PATCH] audiooutput: fallback to primary device if secondary is not
+ set
+
+Ekiga already falls back to the primary audio output device
+when the manager for the secondary device is NULL. But the
+gmconf bridge will set the SILENT device if an empty setting for
+the secondary device is encountered, which effectively mutes
+ekiga's ring tone unless the user actively reconfigures the
+secondary device. The primary device, if not set, defaults to
+the first detected audio device on the system, which is a
+more reasonable default than SILENT.
+
+This patch changes the behavior for the secondary device such
+that the primary device fallback is used for the secondary
+device if no configuration is found.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+References: https://bugs.launchpad.net/ubuntu/+source/ekiga/+bug/558304
+Upstream Submission: https://github.com/GNOME/ekiga/pull/2
+
+---
+ lib/engine/audiooutput/audiooutput-core.cpp          | 2 +-
+ lib/engine/audiooutput/audiooutput-gmconf-bridge.cpp | 4 +---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/lib/engine/audiooutput/audiooutput-core.cpp b/lib/engine/audiooutput/audiooutput-core.cpp
+index 9c5348966..cd988493b 100644
+--- a/lib/engine/audiooutput/audiooutput-core.cpp
++++ b/lib/engine/audiooutput/audiooutput-core.cpp
+@@ -189,7 +189,7 @@ void AudioOutputCore::set_device(AudioOutputPS ps, const AudioOutputDevice & dev
+ 
+       break;
+     case secondary:
+-        if (device == current_device[primary])
++        if (device == current_device[primary] || device.name == "")
+         {
+           current_manager[secondary] = NULL;
+           current_device[secondary].type = "";
+diff --git a/lib/engine/audiooutput/audiooutput-gmconf-bridge.cpp b/lib/engine/audiooutput/audiooutput-gmconf-bridge.cpp
+index 104fab0c5..36b395b7a 100644
+--- a/lib/engine/audiooutput/audiooutput-gmconf-bridge.cpp
++++ b/lib/engine/audiooutput/audiooutput-gmconf-bridge.cpp
+@@ -134,9 +134,7 @@ void AudioOutputCoreConfBridge::on_property_changed (std::string key, GmConfEntr
+          (device.source == "") ||
+          (device.name   == "") ) {
+       PTRACE(1, "AudioOutputCore\tTried to set malformed device");
+-      device.type   = AUDIO_OUTPUT_FALLBACK_DEVICE_TYPE;
+-      device.source = AUDIO_OUTPUT_FALLBACK_DEVICE_SOURCE;
+-      device.name   = AUDIO_OUTPUT_FALLBACK_DEVICE_NAME;
++      device.name   = "";
+     }
+     audiooutput_core.set_device (secondary, device);
+   }
+-- 
+2.11.0
+

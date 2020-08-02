@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Wed Nov 14 12:01:47 UTC 2018 - jmassaguerpla@suse.com
+
+- Build also for i586 to fix Factory build (bsc#1110410) 
+
+-------------------------------------------------------------------
+Sun Jul 29 12:45:52 UTC 2018 - jengelh@inai.de
+
+- Fix self-referential summary.
+
+-------------------------------------------------------------------
+Thu Jun 28 11:07:07 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 2833cac by Vítor Avelino vavelino@suse.com
+ logo: fixed kubic image dimensions
+ 
+ The previous image dimensions was causing the logo to be displayed with wrong
+ proportions in Velum. Now it behaves as expected similar to CaaS Platform.
+ 
+ fix#kubic-logo
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Wed Jun 13 05:30:34 UTC 2018 - containers-builds@suse.de
+
+- Commit 4468c00 by Maximilian Meister mmeister@suse.de
+ make 503 page more generic
+ 
+ bsc#1080636
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Jun 12 12:55:58 UTC 2018 - containers-builds@suse.de
+
+- Commit 476bea0 by Maximilian Meister mmeister@suse.de
+ conform static error pages to haproxy standards
+ 
+ * move them to a new folder other than public, as it would override the
+ precompiled assets after the mount
+ * add header
+ * change filename to end with .http according to the haproxy guidelines
+ * minify the html/css to stay within the 16kb limit to avoid truncation
+ 
+ https://cbonte.github.io/haproxy-dconv/1.6/configuration.html#4-errorfile
+ 
+ bsc#1080636
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Jun 12 11:12:17 UTC 2018 - containers-builds@suse.de
+
+- Commit 9e05732 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ remove public dir
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+ 
+ Commit ab10a35 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ move favicon to the images folder that will be mounted by c-c-m
+ 
+ Commit 32c2fba by Jordi Massaguer Pla jmassaguerpla@suse.de
+ Remove html error pages and use the ones from velum
+ 
+ This is needed because we need to revert the change in
+ caasp-container-manifests that was mounting the public directory from the
+ host.
+ 
+ Mounting the public directory from the host, was "hidding" the assets files
+ present in the public directory and so our images were broken.
+ 
+ This was only happening in the iso and not in our dev environments because in
+ production we have the assets precompiled and we don't compile them on the
+ fly, since we don't have a js engine installed.
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Jun 12 06:34:07 UTC 2018 - containers-builds@suse.de
+
+- Commit f772f3e by Thorsten Kukuk kukuk@thkukuk.de
+ Update openSUSE Kubic branding with official one.
+
+
+-------------------------------------------------------------------
+Thu May 31 10:24:19 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 9485bbd by David Cassany dcassany@suse.de
+ Make use of %license macro
+
+
+-------------------------------------------------------------------
+Fri May 25 07:27:41 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 5e28212 by Maximilian Meister mmeister@suse.de
+ copy images, not folder
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu May 24 13:33:08 UTC 2018 - containers-bugowner@suse.de
+
+- Commit b15c1b3 by Maximilian Meister mmeister@suse.de
+ add all rights reserved char to SUSE
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu May 24 08:31:22 UTC 2018 - mmeister@suse.com
+
+- Initial branding

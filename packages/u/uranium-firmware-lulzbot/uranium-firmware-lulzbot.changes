@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Wed Feb 20 09:47:58 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 1.1.9.34
+  (needed for cura-lulzbot 3.6.4)
+
+-------------------------------------------------------------------
+Wed Jan  9 09:59:46 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 1.1.9.28
+  (needed for cura-lulzbot 3.6.1)
+
+-------------------------------------------------------------------
+Tue Sep 25 14:48:20 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to 1.1.9.17
+  * larger list of changes, but no changelog 
+
+-------------------------------------------------------------------
+Mon Aug  6 07:02:42 UTC 2018 - adrian@suse.de
+
+- update to version 1.1.8.66
+  * Security fix for CVE-2018-1000537
+  * bugfixes
+
+-------------------------------------------------------------------
+Fri Jul 13 04:53:50 UTC 2018 - adrian@suse.de
+
+- update to version 1.1.8.62
+  * Updates for Mini 2
+
+-------------------------------------------------------------------
+Wed May 30 06:19:23 UTC 2018 - adrian@suse.de
+
+- update to version 1.1.8.59
+  * bugfix release
+
+-------------------------------------------------------------------
+Mon May 14 09:52:38 UTC 2018 - adrian@suse.de
+
+- update to version 1.1.8.51
+  * minor updates for Hibiscus
+
+-------------------------------------------------------------------
+Wed May  2 14:37:32 UTC 2018 - adrian@suse.de
+
+- update to version 1.1.8.42
+  * Mini 2 (former Hibiscus) updates
+
+-------------------------------------------------------------------
+Thu Apr 19 07:49:56 UTC 2018 - adrian@suse.de
+
+- update to version 1.1.8.29
+  * Mostly updates for Hibiscus (upcoming Lulzbot Mini)
+  * Allow timer to exceed 24h (T2335)
+  * Changed FW identification string (T910)
+
+-------------------------------------------------------------------
+Tue Apr  3 06:48:16 UTC 2018 - adrian@suse.de
+
+- update to version 1.1.8.21
+
+-------------------------------------------------------------------
+Wed Mar 28 12:48:59 UTC 2018 - adrian@suse.de
+
+- update to version 1.1.8.20
+
+-------------------------------------------------------------------
+Mon Mar 26 06:54:53 UTC 2018 - adrian@suse.de
+
+- update to version 1.1.8.17
+
+-------------------------------------------------------------------
+Thu Mar  8 20:42:19 UTC 2018 - adrian@suse.de
+
+- initial package, version 1.1.8.8 for cura 3.2.9
+
