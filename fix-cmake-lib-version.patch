@@ -1,0 +1,12 @@
+diff -Nur luabind-0.9.1+20150408/src/CMakeLists.txt new/src/CMakeLists.txt
+--- luabind-0.9.1+20150408/src/CMakeLists.txt	2016-01-28 00:19:12.653828822 +0100
++++ new/src/CMakeLists.txt	2016-01-28 02:04:30.704424451 +0100
+@@ -125,6 +125,8 @@
+ 	luabind PROPERTY
+ 	COMPILE_FLAGS
+ 	${CMAKE_SHARED_LIBRARY_C_FLAGS})
++set_target_properties(luabind PROPERTIES VERSION ${CPACK_PACKAGE_VERSION}
++                      SOVERSION ${CPACK_PACKAGE_VERSION})
+ 
+ set_property(TARGET
+ 	luabind
