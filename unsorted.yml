@@ -1112,6 +1112,7 @@ unsorted:
   - bdfresize 
   - bdftopcf 
   - bea-stax 
+  - bea-stax-api 
   - bean-validation-api 
   - bean-validation-api-javadoc 
   - beansbinding 
@@ -1174,6 +1175,8 @@ unsorted:
   - bitlbee-steam 
   - bitmap 
   - bittwist 
+  - black-hole-solver 
+  - black-hole-solver-devel 
   - blacs-devel-headers 
   - bladeRF 
   - bladeRF-devel 
@@ -8676,6 +8679,7 @@ unsorted:
   - libbitmask-devel 
   - libbitmask1 
   - libbitstream1: [x86_64] 
+  - libblack_hole_solver1 
   - libblacs2-mvapich2 
   - libblacs2-mvapich2-devel 
   - libblacs2-mvapich2-devel-static 
@@ -11314,7 +11318,7 @@ unsorted:
   - libosmo-mgcp-client-devel 
   - libosmo-mgcp-client6 
   - libosmo-mgcp-devel 
-  - libosmo-mtp-1_2_0 
+  - libosmo-mtp-1_2_1 
   - libosmo-mtp-devel 
   - libosmo-ranap-devel 
   - libosmo-ranap3 
@@ -11322,13 +11326,13 @@ unsorted:
   - libosmo-rspro1 
   - libosmo-sabp-devel 
   - libosmo-sabp0 
-  - libosmo-sccp-1_2_0 
+  - libosmo-sccp-1_2_1 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran5 
   - libosmo-simtrace2-0 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_2_0 
+  - libosmo-xua-1_2_1 
   - libosmo-xua-devel 
   - libosmoabis-devel 
   - libosmoabis6 
@@ -22481,6 +22485,7 @@ unsorted:
   - rime 
   - rime-plum 
   - rinetd 
+  - rinutils-devel 
   - ripgrep 
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
@@ -34740,6 +34745,7 @@ unsorted:
   - xml2po 
   - xml2po-devel 
   - xmlb-tool 
+  - xmlbeans 
   - xmlbeans-mini 
   - xmlbeans-scripts 
   - xmlbird-devel 
