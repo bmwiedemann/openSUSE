@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 14 07:20:07 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add official patch bash50-018
+  * In certain cases, bash does not perform quoted null removal on patterns
+    that are used as part of word expansions such as ${parameter##pattern}, so
+    empty patterns are treated as non-empty.
+
+-------------------------------------------------------------------
 Sat May  9 07:03:45 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add official patch bash50-017

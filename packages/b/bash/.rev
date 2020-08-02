@@ -1567,4 +1567,15 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>806032</requestid>
   </revision>
+  <revision rev="164" vrev="8">
+    <srcmd5>44187062697891c55837795e5f7d2eb3</srcmd5>
+    <version>5.0.11</version>
+    <time>1596364042</time>
+    <user>dimstar_suse</user>
+    <comment>- Add official patch bash50-018
+  * In certain cases, bash does not perform quoted null removal on patterns
+    that are used as part of word expansions such as ${parameter##pattern}, so
+    empty patterns are treated as non-empty.</comment>
+    <requestid>820865</requestid>
+  </revision>
 </revisionlist>
