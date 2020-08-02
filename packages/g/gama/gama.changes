@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  1 14:34:08 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.09:
+  * Implicit value of XML parameter update_constrained_coordinates
+    was changed to yes
+
+-------------------------------------------------------------------
 Sat Jun 27 21:51:09 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.08:
