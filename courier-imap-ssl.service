@@ -1,0 +1,32 @@
+[Unit]
+Description=Courier IMAP (SSL)
+Wants=courier-authdaemon.service
+Wants=courier-imap-gencert.service
+After=syslog.target
+After=network.target
+After=courier-authdaemon.target
+After=courier-authdaemon.service
+After=courier-imap-gencert.service
+
+[Service]
+EnvironmentFile=/etc/courier/imapd
+EnvironmentFile=/etc/courier/imapd-ssl
+Environment="SSLPIDFILE=/run/imapd-ssl.pid" "LOCKFILE=/run/imapd-ssl.pid.lock"
+PIDFile=/run/imapd-ssl.pid
+LimitNOFILE=65536
+ExecStart=/usr/bin/env - /bin/sh -c " set -a ; \
+  . /etc/courier/imapd ; \
+  . /etc/courier/imapd-ssl ; \
+  IMAP_TLS=1; export IMAP_TLS; \
+  PROXY_HOSTNAME=$PROXY_HOSTNAME ; \
+  /usr/sbin/courierlogger -pid=$SSLPIDFILE -start $SSLLOGGEROPTS \
+    /usr/lib/courier-imap/couriertcpd -address=$SSLADDRESS \
+    -maxprocs=$MAXDAEMONS -maxperip=$MAXPERIP $TCPDOPTS \
+    $SSLPORT $COURIERTLS -server -tcpd /usr/sbin/imaplogin \
+    /usr/sbin/imapd $MAILDIRPATH"
+ExecStop=/usr/sbin/courierlogger -pid=$SSLPIDFILE -stop
+ExecStopPost=/usr/bin/rm $SSLPIDFILE $LOCKFILE
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
