@@ -1,7 +1,7 @@
 #
 # spec file for package arping2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           arping2
-Version:        2.20
+Version:        2.21
 Release:        0
 Summary:        Layer-2 Ethernet pinger
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            http://www.habets.pp.se/synscan/programs.php?prog=arping
-
+URL:            http://www.habets.pp.se/synscan/programs.php?prog=arping
 #Git-Clone:	git://github.com/ThomasHabets/arping
 Source0:        http://www.habets.pp.se/synscan/files/arping-%version.tar.gz
 Source1:        http://www.habets.pp.se/synscan/files/arping-%version.tar.gz.asc
 Source2:        %name.keyring
 Patch1:         arping-setgroups.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libnet-devel
 BuildRequires:  libpcap-devel
 
@@ -39,22 +37,20 @@ Arping is a util to find out it a specific IP address on the LAN is
 unrouted networks and with ICMP-blocking hosts.
 
 %prep
-%setup -n arping-%version
-%patch -P 1 -p1
+%autosetup -n arping-%version -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-b="%buildroot";
+b="%buildroot"
 %make_install
 # Avoid collision with iputils's inferior arping.
-mv "$b/%_sbindir"/{arping,%name};
-mv "$b/%_mandir/man8"/{arping.8,%name.8};
+mv "$b/%_sbindir/arping" "$b/%_sbindir/%name"
+mv "$b/%_mandir/man8/arping.8" "$b/%_mandir/man8/arping2.8"
 
 %files
-%defattr(-,root,root)
 %_sbindir/arping2
 %_mandir/man8/arping2.8*
 %doc README

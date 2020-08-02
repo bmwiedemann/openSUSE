@@ -152,4 +152,12 @@
     <comment></comment>
     <requestid>725177</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e9f0dbf36d5fc93030bae49e2d806adc</srcmd5>
+    <version>2.21</version>
+    <time>1596363630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.21</comment>
+    <requestid>823905</requestid>
+  </revision>
 </revisionlist>
