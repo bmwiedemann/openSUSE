@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 13 07:05:45 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to mpfr 4.1.0
+  * New function mpfr_get_str_ndigits about conversion to a string of digits.
+  * New function mpfr_dot for the dot product (incomplete, experimental).
+  * New functions mpfr_get_decimal128 and mpfr_set_decimal128 (available only
+    when MPFR has been built with decimal float support).
+  * New function mpfr_cmpabs_ui.
+  * New function mpfr_total_order_p for the IEEE 754 totalOrder predicate.
+  * The mpfr_out_str function now accepts bases from -2 to -36, in order to
+    follow mpfr_get_str and GMP's mpf_out_str functions (these cases gave an
+    assertion failure, as with other invalid bases).
+  * Shared caches: cleanup; really detect lock failures (abort in this case).
+  * The behavior of the formatted output functions (mpfr_printf, etc.) with
+    an empty precision field has improved: trailing zeros are kept in a way
+    similar to the formatted output functions from C.
+  * Improved mpfr_add and mpfr_sub when all operands have a precision equal to
+    twice the number of bits per word, e.g., 128 bits on a 64-bit platform.
+  * Optimized the tuning parameters for various architectures.
+  * Improved test coverage to 98.6% of code for x86_64.
+  * Bug fixes.
+  * MPFR manual: corrected/completed the mpfr_get_str description in order to
+    follow the historical behavior and GMP's mpf_get_str function.
+- Remove mpfr-4.0.2-p6.patch and floating-point-format-no-lto.patch
+
+-------------------------------------------------------------------
 Wed Apr  1 07:27:49 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Add cummulative patch mpfr-4.0.2-p6.patch fixing various bugs.
