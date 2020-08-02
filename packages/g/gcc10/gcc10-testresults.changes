@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 28 11:02:20 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (c0438ced53bcf57e4ebb1c38c), git465.
+  * Includes GCC 10.2 release.  [bsc#1173972] [jsc#ECO-2373]
+  * Picks up fixes for C++20 coroutines support.  [jsc#SLE-12297]
+  * Picks up fix for a recent chromium build fail.
+- Build x86 CET enabled runtime for Factory.
+- Disable GCN offloading for SLE12 and SLE15 GA.
+
+-------------------------------------------------------------------
+Tue Jul  7 06:48:08 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (12e1a54b06777db74ce375496), git355.
+  * Includes fix for non-reproducible builds with LTO [bsc#1172846].
+
+-------------------------------------------------------------------
+Fri Jul  3 09:47:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable nvptx support for aarch64
+
+-------------------------------------------------------------------
 Thu Jun 25 09:08:00 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-10 branch head (c91e43e9363bd119a695d6450), git290. 

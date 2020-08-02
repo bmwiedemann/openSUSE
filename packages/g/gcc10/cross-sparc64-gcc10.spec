@@ -114,7 +114,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.1.1+git290
+Version:        10.2.1+git465
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -219,7 +219,7 @@ BuildRequires:  cross-%cross_arch-glibc-devel
 BuildRequires:  nvptx-tools
 Requires:       cross-nvptx-newlib-devel >= %{version}-%{release}
 Requires:       nvptx-tools
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 %define nvptx_newlib 1
 %endif
 %if "%{cross_arch}" == "amdgcn"
@@ -229,7 +229,13 @@ BuildRequires:  llvm
 Requires:       cross-amdgcn-newlib-devel >= %{version}-%{release}
 Requires:       lld
 Requires:       llvm
+# SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
+# technically also SLE12 SP5 but do not bother there
+%if %{suse_version} >= 1550 || 0%{?sle_version:%sle_version} >= 150100
 ExclusiveArch:  x86_64
+%else
+ExclusiveArch:  do-not-build
+%endif
 %define amdgcn_newlib 1
 %endif
 %endif
@@ -424,7 +430,11 @@ amdgcn-amdhsa=%{_prefix}/amdgcn-amdhsa,\
 %if 0%{!?build_libvtv:1}
 	--disable-libvtv \
 %endif
+%if 0%{suse_version} >= 1550
+	--enable-cet \
+%else
 	--disable-cet \
+%endif
 	--disable-libcc1 \
 %if %{enable_plugins}
 	--enable-plugin \

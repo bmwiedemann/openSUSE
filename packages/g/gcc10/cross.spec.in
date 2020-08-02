@@ -133,7 +133,7 @@ BuildRequires: cross-%cross_arch-glibc-devel
 BuildRequires: nvptx-tools
 Requires: nvptx-tools
 Requires: cross-nvptx-newlib-devel >= %{version}-%{release}
-ExclusiveArch: x86_64
+ExclusiveArch: x86_64 aarch64
 %define nvptx_newlib 1
 %endif
 %if "%{cross_arch}" == "amdgcn"
@@ -143,7 +143,13 @@ BuildRequires: lld
 Requires: llvm
 Requires: lld
 Requires: cross-amdgcn-newlib-devel >= %{version}-%{release}
+# SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
+# technically also SLE12 SP5 but do not bother there
+%if %{suse_version} >= 1550 || 0%{?sle_version:%sle_version} >= 150100
 ExclusiveArch: x86_64
+%else
+ExclusiveArch: do-not-build
+%endif
 %define amdgcn_newlib 1
 %endif
 %endif
