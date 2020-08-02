@@ -18,19 +18,19 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 URL:            https://linphone.org/
-Source:         https://github.com/BelledonneCommunications/bzrtp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://gitlab.linphone.org/BC/public/bzrtp/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bzrtp-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install libbzrtp.pc.
 Patch0:         bzrtp-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.3.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.4.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 
@@ -67,14 +67,15 @@ application which will use libbzrtp.
 %cmake_install
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
+
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}%{sover}
-%license COPYING
 %{_libdir}/lib%{name}.so.%{sover}*
 
 %files devel
-%doc AUTHORS NEWS README.md
+%license LICENSE.txt
+%doc README.md
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
 %{_datadir}/%{name}/
