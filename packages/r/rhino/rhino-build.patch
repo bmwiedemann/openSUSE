@@ -1,8 +1,6 @@
-Index: examples/Matrix.java
-===================================================================
---- examples/Matrix.java.orig	2011-05-09 20:04:38.000000000 +0200
-+++ examples/Matrix.java	2012-01-13 11:31:47.275360948 +0100
-@@ -249,7 +249,7 @@
+--- examples/Matrix.java
++++ examples/Matrix.java
+@@ -218,7 +218,7 @@ public class Matrix implements Scriptabl
       * Use the convenience method from Context that takes care of calling
       * toString, etc.
       */
@@ -11,11 +9,9 @@ Index: examples/Matrix.java
          return "[object Matrix]";
      }
  
-Index: examples/PrimitiveWrapFactory.java
-===================================================================
---- examples/PrimitiveWrapFactory.java.orig	2011-05-09 20:04:38.000000000 +0200
-+++ examples/PrimitiveWrapFactory.java	2012-01-13 11:31:47.276360983 +0100
-@@ -57,7 +57,7 @@
+--- examples/PrimitiveWrapFactory.java
++++ examples/PrimitiveWrapFactory.java
+@@ -25,7 +25,7 @@ import org.mozilla.javascript.*;
  public class PrimitiveWrapFactory extends WrapFactory {
    @Override
    public Object wrap(Context cx, Scriptable scope, Object obj,
@@ -24,11 +20,9 @@ Index: examples/PrimitiveWrapFactory.java
    {
      if (obj instanceof String || obj instanceof Number ||
          obj instanceof Boolean)
-Index: src/org/mozilla/javascript/WrapFactory.java
-===================================================================
---- src/org/mozilla/javascript/WrapFactory.java.orig	2011-05-09 20:04:34.000000000 +0200
-+++ src/org/mozilla/javascript/WrapFactory.java	2012-01-13 11:31:47.277361018 +0100
-@@ -75,7 +75,7 @@
+--- src/org/mozilla/javascript/WrapFactory.java
++++ src/org/mozilla/javascript/WrapFactory.java
+@@ -42,7 +42,7 @@ public class WrapFactory
       * @return the wrapped value.
       */
      public Object wrap(Context cx, Scriptable scope,
@@ -37,11 +31,107 @@ Index: src/org/mozilla/javascript/WrapFactory.java
      {
          if (obj == null || obj == Undefined.instance
              || obj instanceof Scriptable)
-Index: toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java
-===================================================================
---- toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java.orig	2011-05-09 20:04:36.000000000 +0200
-+++ toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java	2012-01-13 11:31:47.278361053 +0100
-@@ -67,7 +67,7 @@
+--- toolsrc/org/mozilla/javascript/tools/debugger/build.xml
++++ toolsrc/org/mozilla/javascript/tools/debugger/build.xml
+@@ -8,7 +8,7 @@
+ 
+   <target name="properties">
+     <property name="swing-ex-url" value="http://java.sun.com/products/jfc/tsc/articles/treetable2/downloads/src.zip"/>
+-    <available file="downloaded/AbstractCellEditor.java"
++    <available file="treetable/AbstractCellEditor.java"
+                property="swing-ex-available"/>
+   </target>
+ 
+@@ -16,9 +16,9 @@
+     <!-- Download source from Sun's site, unzip it, remove
+          the files we don't need, and change the package
+     -->
+-    <mkdir dir="downloaded"/>
+-    <get src="${swing-ex-url}" dest="downloaded/swingExSrc.zip"/>
+-    <unzip src="downloaded/swingExSrc.zip" dest="downloaded/">
++    <mkdir dir="treetable"/>
++    <get src="${swing-ex-url}" dest="treetable/swingExSrc.zip"/>
++    <unzip src="treetable/swingExSrc.zip" dest="downloaded/">
+       <patternset>
+           <include name="AbstractCellEditor.java"/>
+           <include name="JTreeTable.java"/>
+@@ -26,58 +26,58 @@
+           <include name="TreeTableModelAdapter.java"/>
+       </patternset>
+     </unzip>
+-    <replace file="downloaded/AbstractCellEditor.java">
++    <replace file="treetable/AbstractCellEditor.java">
+        <replacetoken>import java.awt.Component;</replacetoken>
+        <replacevalue>
+-package org.mozilla.javascript.tools.debugger.downloaded;
++package org.mozilla.javascript.tools.debugger.treetable;
+        </replacevalue>
+     </replace>
+-    <replace file="downloaded/AbstractCellEditor.java">
++    <replace file="treetable/AbstractCellEditor.java">
+        <replacetoken>import java.awt.event.*;</replacetoken>
+        <replacevalue></replacevalue>
+     </replace>
+-    <replace file="downloaded/AbstractCellEditor.java">
++    <replace file="treetable/AbstractCellEditor.java">
+        <replacetoken>import java.awt.AWTEvent;</replacetoken>
+        <replacevalue></replacevalue>
+     </replace>
+-    <replace file="downloaded/AbstractCellEditor.java">
++    <replace file="treetable/AbstractCellEditor.java">
+        <replacetoken>import java.io.Serializable;</replacetoken>
+        <replacevalue></replacevalue>
+     </replace>
+-    <replace file="downloaded/JTreeTable.java">
++    <replace file="treetable/JTreeTable.java">
+        <replacetoken>import javax.swing.*;</replacetoken>
+        <replacevalue>
+-         package org.mozilla.javascript.tools.debugger.downloaded;
++         package org.mozilla.javascript.tools.debugger.treetable;
+          import javax.swing.*;
+        </replacevalue>
+     </replace>
+-    <replace file="downloaded/JTreeTable.java">
++    <replace file="treetable/JTreeTable.java">
+        <replacetoken>class ListToTreeSelectionModelWrapper</replacetoken>
+        <replacevalue>public class ListToTreeSelectionModelWrapper</replacevalue>
+     </replace>
+-    <replace file="downloaded/JTreeTable.java">
++    <replace file="treetable/JTreeTable.java">
+        <replacetoken>ListSelectionModel getListSelectionModel</replacetoken>
+        <replacevalue>public ListSelectionModel getListSelectionModel</replacevalue>
+     </replace>
+-    <replace file="downloaded/JTreeTable.java">
++    <replace file="treetable/JTreeTable.java">
+        <replacetoken>import java.awt.Rectangle;</replacetoken>
+        <replacevalue></replacevalue>
+     </replace>
+-    <replace file="downloaded/TreeTableModel.java">
++    <replace file="treetable/TreeTableModel.java">
+        <replacetoken>import javax.swing.tree.TreeModel;</replacetoken>
+        <replacevalue>
+-         package org.mozilla.javascript.tools.debugger.downloaded;
++         package org.mozilla.javascript.tools.debugger.treetable;
+          import javax.swing.tree.TreeModel;
+        </replacevalue>
+     </replace>
+-    <replace file="downloaded/TreeTableModelAdapter.java">
++    <replace file="treetable/TreeTableModelAdapter.java">
+        <replacetoken>import javax.swing.JTree;</replacetoken>
+        <replacevalue>
+-         package org.mozilla.javascript.tools.debugger.downloaded;
++         package org.mozilla.javascript.tools.debugger.treetable;
+          import javax.swing.JTree;
+        </replacevalue>
+     </replace>
+-    <delete file="downloaded/swingExSrc.zip"/>
++    <delete file="treetable/swingExSrc.zip"/>
+   </target>
+ 
+   <target name="download" depends="properties,get-swing-ex"/>
+--- toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java
++++ toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java
+@@ -36,7 +36,7 @@ public class JavaPolicySecurity extends
              return super.defineClass(name, data, 0, data.length, domain);
          }
  
@@ -50,11 +140,9 @@ Index: toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java
              resolveClass(cl);
          }
      }
-Index: xmlimplsrc/org/mozilla/javascript/xmlimpl/Namespace.java
-===================================================================
---- xmlimplsrc/org/mozilla/javascript/xmlimpl/Namespace.java.orig	2011-05-09 20:04:38.000000000 +0200
-+++ xmlimplsrc/org/mozilla/javascript/xmlimpl/Namespace.java	2012-01-13 11:31:47.282361193 +0100
-@@ -120,7 +120,7 @@
+--- xmlimplsrc/org/mozilla/javascript/xmlimpl/Namespace.java
++++ xmlimplsrc/org/mozilla/javascript/xmlimpl/Namespace.java
+@@ -86,7 +86,7 @@ class Namespace extends IdScriptableObje
      }
  
      @Override
@@ -63,11 +151,9 @@ Index: xmlimplsrc/org/mozilla/javascript/xmlimpl/Namespace.java
          return uri();
      }
  
-Index: xmlimplsrc/org/mozilla/javascript/xmlimpl/QName.java
-===================================================================
---- xmlimplsrc/org/mozilla/javascript/xmlimpl/QName.java.orig	2011-05-09 20:04:38.000000000 +0200
-+++ xmlimplsrc/org/mozilla/javascript/xmlimpl/QName.java	2012-01-13 11:31:47.284361263 +0100
-@@ -150,7 +150,7 @@
+--- xmlimplsrc/org/mozilla/javascript/xmlimpl/QName.java
++++ xmlimplsrc/org/mozilla/javascript/xmlimpl/QName.java
+@@ -116,7 +116,7 @@ final class QName extends IdScriptableOb
      }
  
      @Override
@@ -76,11 +162,9 @@ Index: xmlimplsrc/org/mozilla/javascript/xmlimpl/QName.java
          return toString();
      }
  
-Index: xmlimplsrc/org/mozilla/javascript/xmlimpl/XMLObjectImpl.java
-===================================================================
---- xmlimplsrc/org/mozilla/javascript/xmlimpl/XMLObjectImpl.java.orig	2011-05-09 20:04:38.000000000 +0200
-+++ xmlimplsrc/org/mozilla/javascript/xmlimpl/XMLObjectImpl.java	2012-01-13 11:31:47.285361298 +0100
-@@ -165,7 +165,7 @@
+--- xmlimplsrc/org/mozilla/javascript/xmlimpl/XMLObjectImpl.java
++++ xmlimplsrc/org/mozilla/javascript/xmlimpl/XMLObjectImpl.java
+@@ -105,7 +105,7 @@ abstract class XMLObjectImpl extends XML
      }
  
      @Override
