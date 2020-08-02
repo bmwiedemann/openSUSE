@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 29 12:32:52 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to skopeo v1.1.1:
+  * Run htpasswd from our build-container instead of registry:2
+  * Vendor golang.org/x/text@v0.3.3
+
+-------------------------------------------------------------------
 Wed Jun 24 13:17:30 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to skopeo v1.1.0:
@@ -170,7 +177,7 @@ Wed Aug  7 08:02:58 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
       file) print single lines instead of using progress bars. This avoids
       long and hard to parse output
     - man pages: add --dest-oci-accept-uncompressed-layers
-    - completions: 
+    - completions:
       - Introduce transports completions
       - Fix bash completions when a option requires a argument
       - Use only spaces in indent
@@ -178,14 +185,14 @@ Wed Aug  7 08:02:58 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
       - add --dest-oci-accept-uncompressed-layers
 
 - Update bsc1115165-0001-Introduce-the-sync-command.patch and add
-  0002-Add-set-of-image-options-used-only-for-docker-transp.patch 
+  0002-Add-set-of-image-options-used-only-for-docker-transp.patch
   required by the updated sync patch.
 
 -------------------------------------------------------------------
 Tue Nov 27 10:51:19 UTC 2018 - Marco Vedovati <mvedovati@suse.com>
 
 - Disable ostree repository types for SLE, as this feature requires libostree
-  that is not yet available in the Server Application module where skopeo is 
+  that is not yet available in the Server Application module where skopeo is
   located.
 
 -------------------------------------------------------------------
@@ -211,7 +218,7 @@ Mon Jul 30 05:39:38 UTC 2018 - vrothberg@suse.com
 -------------------------------------------------------------------
 Wed Jun 13 13:02:47 UTC 2018 - dcassany@suse.com
 
-- Make use of %license macro 
+- Make use of %license macro
 
 -------------------------------------------------------------------
 Tue May 22 06:54:22 UTC 2018 - vrothberg@suse.com
@@ -369,4 +376,3 @@ Fri Nov 11 03:04:14 UTC 2016 - asarai@suse.com
 Fri Nov 11 02:40:15 UTC 2016 - asarai@suse.com
 
 - Initial import of skopeo v0.1.16.
-
