@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jul 29 13:59:37 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.5.0+git20200729.f0955e0:
+  * Add scraping of endpoint for kubelet probe metrics
+  * prometheus-adapter: Collect metrics from Prometheus Adapter
+  * manifests: regenerate
+  * jsonnet: update kube-rbac-proxy ciphers
+  * make generate
+  * port https-metrics
+  * update secure ports for other cluster
+  * secure scheduler/controller metrics ports, kubeadm discovery services
+  * Regenerate dashboards and alerts
+  * manifests: regenerate
+  * jsonnet: update component versions
+  * manifests: regenerate
+  * jsonnet: remove incorrect instance:node_filesystem_usage:sum rule
+  * manifests/prometheus-rules.yaml: Regenerate
+  * prometheus-operator.libsonnet: Add List error alert and fix threshold to
+  * manifests/prometheus-rules.yaml: Regenerate
+  * prometheus-operator.libsonnet: Add PrometheusOperatorWatchErrors alert
+  * chore(jsonnet): ⬆️  update jsonnet to master
+  * manifests: Regenerate files
+  * jsonnet/kube-prometheus: Bump default versions of prometheus and alertmanager
+  * enable etcd latency metrics in kube-apiserver
+  * Update the Issue templates to redirect to GitHub Discussions.
+  * Update kubernetes-mixin to remove KubeAPILatencyHigh & KubeAPIErrorsHigh
+  * Fix typo
+  * manifests: regenerate
+  * Bump Grafana version to v6.7.4
+  * Updated prometheus adapter deployment to use a multi arch image repo
+  * Allow nodeExporter address to be configured
+  * Allow nodeExporter address to be configured
+  * manifests: regenerate
+  * Fix AlertmanagerConfigInconsistent alert
+  * Update prometheus-adapter endpoint
+  * docs, manifests: Regenerate files
+  * jsonnetfile.lock.json: jb update
+  * jsonnet/kube-prometheus/jsonnetfile.json: Bump prometheus-operator to
+  * [docs/update-grafana-dashboard-docs] Update Grafana dashboard instructions
+  * doc: update release-0.5 compatibility
+  * Update kubelet config section and compatibility
+
+-------------------------------------------------------------------
 Mon May 25 08:35:19 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.4.0+git20200520.28332b4:

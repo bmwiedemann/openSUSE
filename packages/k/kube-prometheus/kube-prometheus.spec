@@ -17,7 +17,7 @@
 
 
 Name:           kube-prometheus
-Version:        0.4.0+git20200520.28332b4
+Version:        0.5.0+git20200729.f0955e0
 Release:        0
 Summary:        Manifests to use Prometheus to monitor Kubernetes
 License:        Apache-2.0
