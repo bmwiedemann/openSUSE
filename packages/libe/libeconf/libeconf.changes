@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 10 21:15:09 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.3.8+git20200710.5126fff:
+  * Add CMake build scripts, remove autotools support
+  * Move C++ ABI compatibility section
+
+-------------------------------------------------------------------
 Fri Jun 05 15:57:26 UTC 2020 - rbrown@suse.com
 
 - Update to version 0.3.7+git20200605.c67ef9a:

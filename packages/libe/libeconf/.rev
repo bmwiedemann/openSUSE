@@ -80,4 +80,12 @@
   * Add C++ compatibility</comment>
     <requestid>811882</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3203e9c0f4b6fb1d869d6b7e76c92330</srcmd5>
+    <version>0.3.8+git20200710.5126fff</version>
+    <time>1596364038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820744</requestid>
+  </revision>
 </revisionlist>
