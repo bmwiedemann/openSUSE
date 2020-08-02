@@ -1,0 +1,54 @@
+From c805c1de1141cb22f74c0d94dd5664bda37398e0 Mon Sep 17 00:00:00 2001
+From: Marcelo Roberto Jimenez <marcelo.jimenez@gmail.com>
+Date: Thu, 4 Jun 2020 12:03:03 -0300
+Subject: [PATCH] Fixes #177: NULL pointer dereference in
+ FindServiceControlURLPath
+References: https://bugzilla.opensuse.org/show_bug.cgi?id=1172625
+
+Also fixes its dual bug in FindServiceEventURLPath.
+---
+ ChangeLog                                     |    6 ++++++
+ upnp/src/genlib/service_table/service_table.c |    6 ++++++
+ 2 files changed, 12 insertions(+)
+
+Index: libupnp-1.12.1/ChangeLog
+===================================================================
+--- libupnp-1.12.1.orig/ChangeLog
++++ libupnp-1.12.1/ChangeLog
+@@ -32,6 +32,12 @@ Version 1.12.1
+ 
+ 	List: Add extern C for C++ users
+ 
++2020-06-04 Patrik Lantz pjlantz(at)github
++
++        Fixes #177
++
++        NULL pointer dereference in FindServiceControlURLPath
++
+ *******************************************************************************
+ Version 1.12.0
+ *******************************************************************************
+Index: libupnp-1.12.1/upnp/src/genlib/service_table/service_table.c
+===================================================================
+--- libupnp-1.12.1.orig/upnp/src/genlib/service_table/service_table.c
++++ libupnp-1.12.1/upnp/src/genlib/service_table/service_table.c
+@@ -300,6 +300,9 @@ FindServiceEventURLPath( service_table *
+     uri_type parsed_url;
+     uri_type parsed_url_in;
+ 
++	if (!table || !eventURLPath) {
++		return NULL;
++	}
+     if( ( table )
+         &&
+         ( parse_uri( eventURLPath,
+@@ -352,6 +355,9 @@ FindServiceControlURLPath( service_table
+     uri_type parsed_url;
+     uri_type parsed_url_in;
+ 
++	if (!table || !controlURLPath) {
++		return NULL;
++	}
+     if( ( table )
+         &&
+         ( parse_uri
