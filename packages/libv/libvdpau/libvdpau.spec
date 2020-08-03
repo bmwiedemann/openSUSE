@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+  %define _distconfdir /usr/etc
+%endif
+
 Name:           libvdpau
 Version:        1.4
 Release:        0
@@ -28,6 +32,7 @@ Source1:        https://gitlab.freedesktop.org/vdpau/vdpauinfo/-/archive/vdpauin
 Source2:        README
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
+Patch0:         n_UsrEtc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -82,6 +87,7 @@ Its usage is documented in the README.
 
 %prep
 %setup -q -b1
+%patch0 -p1
 
 %build
 %meson
@@ -112,9 +118,10 @@ cp %{_sourcedir}/README .
 %files -n libvdpau1
 %defattr(-,root,root)
 %dir %{_libdir}/vdpau
+%dir %{_distconfdir}
 %{_bindir}/vdpauinfo
 %{_libdir}/libvdpau.so.*
-%config %{_sysconfdir}/vdpau_wrapper.cfg
+%{_distconfdir}/vdpau_wrapper.cfg
 
 %files -n libvdpau-devel
 %defattr(-,root,root)

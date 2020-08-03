@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 11:52:51 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_UsrEtc.patch
+  * switch to /usr/etc location for vdpau_wrapper.cfg, but first
+    try /etc (boo#1173038)
+
+-------------------------------------------------------------------
 Sat Apr 11 20:32:45 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update libvdpau to version 1.4
