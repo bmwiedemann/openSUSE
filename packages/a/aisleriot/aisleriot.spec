@@ -17,15 +17,12 @@
 
 
 Name:           aisleriot
-Version:        3.22.10
+Version:        3.22.11
 Release:        0
 Summary:        Solitaire Card Games for GNOME
 License:        GPL-3.0-or-later
-Group:          Amusements/Games/Board/Card
 URL:            https://wiki.gnome.org/Apps/Aisleriot
 Source0:        https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/aisleriot-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM allow buidl with Guile 3.0 -- 4c79d5b0
-Patch0:         add-guile-3.0-support.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  guile-devel
@@ -48,7 +45,6 @@ Aisleriot is a compilation of 80 different solitaire card games.
 
 %package themes
 Summary:        Extra themes for the Aisleriot solitaire card game program
-Group:          Amusements/Games/Board/Card
 Requires:       %{name} = %{version}
 Enhances:       %{name}
 BuildArch:      noarch

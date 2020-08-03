@@ -443,4 +443,24 @@
     <comment>As it builds now - let's forward it</comment>
     <requestid>767860</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>ce1c6b0084b79819d18d60248901f6d7</srcmd5>
+    <version>3.22.11</version>
+    <time>1596457154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.22.11:
+  + Support for guile-3.0
+  + Updated translations.
+- Remove patch:
+  * add-guile-3.0-support.patch: it was fixed upstream.
+- Run spec-cleaner.
+
+  + Switch to the meson build system.
+  + remove intltool marks from AppData file.
+  + Update translations.
+  + Fix reshuffling.
+  + Some fixes and cleanups.
+  + add-guile-3.0-support.patch: Allows building with Guile 3.0.</comment>
+    <requestid>824089</requestid>
+  </revision>
 </revisionlist>
