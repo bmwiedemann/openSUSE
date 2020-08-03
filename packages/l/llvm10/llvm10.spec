@@ -1274,10 +1274,14 @@ fi
    --slave %{_bindir}/ld64.lld ld64.lld %{_bindir}/ld64.lld-%{_relver} \
    --slave %{_bindir}/lld-link lld-link %{_bindir}/lld-link-%{_relver} \
    --slave %{_bindir}/wasm-ld wasm-ld %{_bindir}/wasm-ld-%{_relver}
+%{_sbindir}/update-alternatives --install %{_bindir}/ld ld %{_bindir}/ld.lld 1
 
 %postun -n lld%{_sonum}
 if [ ! -f %{_bindir}/lld-%{_relver} ] ; then
     %{_sbindir}/update-alternatives --remove lld %{_bindir}/lld-%{_relver}
+fi
+if [ ! -f %{_bindir}/lld ] ; then
+    %{_sbindir}/update-alternatives --remove ld %{_bindir}/ld.lld
 fi
 %endif
 

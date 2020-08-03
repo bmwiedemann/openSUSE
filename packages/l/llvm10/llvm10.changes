@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 30 21:20:08 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add ld.lld as an alternative for ld. (boo#1174656)
+
+-------------------------------------------------------------------
 Wed Jul 22 21:54:01 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 10.0.1.
