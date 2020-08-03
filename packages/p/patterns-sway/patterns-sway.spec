@@ -67,9 +67,9 @@ Recommends:     pulseaudio-utils
 Recommends:     system-config-printer
 Recommends:     desktop-data-openSUSE
 
-#openSUSEway brandings
-Recommends:     sway-branding-openSUSE
-Recommends:     waybar-branding-openSUSE
+#upstream brandings for clean Sway experience
+Recommends:     sway-branding-upstream
+Recommends:     waybar-branding-upstream
 
 %description sway
 Sway Tiling Wayland Compositor and related tools.
