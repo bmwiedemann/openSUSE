@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 23 17:56:55 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix compilation with GCC 10, add
+  Fix-ODR-violation-replace-variable-definition.patch
+
+-------------------------------------------------------------------
 Thu Mar 12 07:22:10 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 0.2.5+11:

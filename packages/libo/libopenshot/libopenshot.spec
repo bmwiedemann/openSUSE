@@ -26,6 +26,8 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://openshot.org/
 Source0:        libopenshot-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM -- https://github.com/OpenShot/libopenshot/pull/512.patch
+Patch0:         Fix-ODR-violation-replace-variable-definition.patch
 
 BuildRequires:  cmake
 BuildRequires:  cppzmq-devel
