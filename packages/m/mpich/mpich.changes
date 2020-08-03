@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 25 07:07:11 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- For HPC builds check for gnu compiler suite version >= 10 and
+  set -fallow-argument-mismatch.
+
+-------------------------------------------------------------------
 Thu Jul 23 16:06:00 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc8/9/10 to HPC build (bsc#1174439). 

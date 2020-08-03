@@ -388,7 +388,7 @@ echo without HPC
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 # GCC10 needs an extra flag to allow badly passed parameters
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?hpc_gnu_dep_version} >= 10
 export FFLAGS="-fallow-argument-mismatch $FFLAGS"
 %endif
 
