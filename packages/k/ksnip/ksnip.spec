@@ -17,19 +17,19 @@
 
 
 Name:           ksnip
-Version:        1.7.1
+Version:        1.7.3
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/DamirPorobic/ksnip
 Source:         https://github.com/DamirPorobic/ksnip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel >= 0.3.1
+BuildRequires:  kImageAnnotator-devel >= 0.3.2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -59,7 +59,7 @@ annotation features for your screenshots.
 
 %install
 %cmake_install
-%suse_update_desktop_file -r %{name} Utility DesktopUtility
+%suse_update_desktop_file -r org.ksnip.ksnip Utility DesktopUtility
 
 %find_lang %{name} --with-qt
 
@@ -67,9 +67,9 @@ annotation features for your screenshots.
 %license LICENSE
 %doc CHANGELOG.md CODINGSTYLE README.md
 %{_bindir}/%{name}
-%{_datadir}/metainfo/%{name}.appdata.xml
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.??g
+%{_datadir}/applications/org.ksnip.ksnip.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/metainfo/org.ksnip.ksnip.appdata.xml
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}

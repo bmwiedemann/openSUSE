@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:37:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.3
+  * Install svg icon file in hicolor theme dir instead of
+    usr/share/pixmaps/.
+- Update to version 1.7.2
+  Changed:
+  * Stop upload script when process writes to stderr.
+  * Upload script uses regex to select output for clipboard.
+  Fixed:
+  * Ksnip becomes unresponsive when file dropped into it.
+  * Ksnip window always visible on screenshots on Gnome Wayland.
+
+-------------------------------------------------------------------
 Thu Jun 25 19:32:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.1
