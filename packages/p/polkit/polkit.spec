@@ -1,7 +1,7 @@
 #
 # spec file for package polkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           polkit
-Version:        0.116
+Version:        0.117
 Release:        0
 Summary:        PolicyKit Authorization Framework
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            http://www.freedesktop.org/wiki/Software/polkit/
-Source0:        http://www.freedesktop.org/software/polkit/releases/%{name}-%{version}.tar.gz
-Source1:        http://www.freedesktop.org/software/polkit/releases/%{name}-%{version}.tar.gz.sign
+URL:            https://www.freedesktop.org/wiki/Software/polkit/
+Source0:        https://www.freedesktop.org/software/polkit/releases/%{name}-%{version}.tar.gz
+Source1:        https://www.freedesktop.org/software/polkit/releases/%{name}-%{version}.tar.gz.sign
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
 
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.2
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(mozjs-60)
+BuildRequires:  pkgconfig(mozjs-68)
 BuildRequires:  pkgconfig(systemd)
 # gtk-doc drags indirectyly ruby in for one of the helpers. This in turn causes a build cycle.
 #!BuildIgnore:  ruby
