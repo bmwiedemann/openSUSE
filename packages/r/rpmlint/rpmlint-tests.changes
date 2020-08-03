@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 31 10:28:58 UTC 2020 - matthias.gerstner@suse.com
+
+- Update of rpmlint-tests to version 84.87+git20200724.ef05f7e:
+  * use /usr/bin/su instead of /bin/su since the latter is no longer allowed
+
+-------------------------------------------------------------------
 Fri Feb 28 14:28:17 UTC 2020 - malte.kraus@suse.com
 
 - Update to version 84.87+git20200221.3ea152b:

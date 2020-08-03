@@ -28,6 +28,8 @@ addCheck("BrandingPolicyCheck")
 addCheck("CheckSUIDPermissions")
 # polkit-default-privs would need to be installed always
 addCheck("CheckPolkitPrivs")
+addCheck("CheckWorldWritable")
+addCheck("CheckDeviceFiles")
 addCheck("CheckDBUSServices")
 addCheck("CheckDBusPolicy")
 addCheck("CheckFilelist")

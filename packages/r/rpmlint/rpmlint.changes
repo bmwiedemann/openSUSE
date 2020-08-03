@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 31 10:29:00 UTC 2020 - matthias.gerstner@suse.com
+
+- Update of rpmlint-checks to version master:
+  * Introduce new metadata whitelist type and related checks. Device files and
+    world-writeable files will now be covered by new whitelists from
+    rpmlint-security-whitelistings.
+- config: Enable new CheckWorldWritable and CheckDeviceFiles
+
+-------------------------------------------------------------------
 Fri Jul 24 09:05:55 UTC 2020 - matthias.gerstner@suse.com
 
 - whitelist kanidm PAM module (bsc#1173387)

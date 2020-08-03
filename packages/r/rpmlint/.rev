@@ -3043,4 +3043,12 @@ will self heal once rpmlint-mini is rebuild
     <comment>- whitelist kanidm PAM module (bsc#1173387) (forwarded request 822591 from mgerstner)</comment>
     <requestid>822593</requestid>
   </revision>
+  <revision rev="341" vrev="30">
+    <srcmd5>92aa0632077facdcb83679f27959210b</srcmd5>
+    <version>1.11</version>
+    <time>1596456752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823733</requestid>
+  </revision>
 </revisionlist>
