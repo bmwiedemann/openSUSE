@@ -18,9 +18,8 @@
 
 # Use hardening ldflags.
 %global rustflags "-Clink-arg=-Wl,-z,relro,-z,now"
-
 Name:           alacritty
-Version:        0.4.3
+Version:        0.5.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
@@ -35,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  freetype-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.37
+BuildRequires:  rust >= 1.41.0
 BuildRequires:  update-desktop-files
 BuildRequires:  xclip
 BuildRequires:  pkgconfig(fontconfig)

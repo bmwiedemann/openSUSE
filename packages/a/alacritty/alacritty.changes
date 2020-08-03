@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Sun Aug  2 22:42:32 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.5.0
+  Packaging:
+  * Minimum Rust version has been bumped to 1.41.0
+  * Prebuilt Linux binaries have been removed
+  * Added manpage, terminfo, and completions to macOS application bundle
+  * On Linux/BSD the build will fail without Fontconfig installed, instead of
+    building it from source
+  Added:
+  * Default Command+N keybinding for SpawnNewInstance on macOS
+  * Vi mode for regex search, copying text, and opening links
+  * CopySelection action which copies into selection buffer on Linux/BSD
+  * Option cursor.thickness to set terminal cursor thickness
+  * Font fallback on Windows
+  * Support for Fontconfig embolden and matrix options
+  * Opt-out compilation flag winpty to disable WinPTY support
+  * Scrolling during selection when mouse is at top/bottom of window
+  * Expanding existing selections using single, double and triple click with
+    the right mouse button
+  * Support for gopher and gemini URLs
+  * Unicode 13 support
+  * Option to run command on bell which can be set in bell.command
+  Changed:
+  * Block cursor is no longer inverted at the start/end of a selection
+  * Preserve selection on non-LMB or mouse mode clicks
+  * Wayland client side decorations are now based on config colorscheme
+  * Low resolution window decoration icon on Windows
+  * Mouse bindings for additional buttons need to be specified as a number
+    not a string
+  * Don't hide cursor on modifier press with mouse.hide_when_typing enabled
+  * Shift + Backspace now sends ^? instead of ^H
+  * Default color scheme is now Tomorrow Night with the bright colors of
+    Tomorrow Night Bright
+  * Set IUTF8 termios flag for improved UTF8 input support
+  * Dragging files into terminal now adds a space after each path
+  * Default binding replacement conditions
+  * Adjusted selection clearing granularity to more accurately match content
+  * To use the cell's text color for selection with a modified background,
+    the color.selection.text
+  * variable must now be set to CellForeground instead of omitting it
+  * URLs are no longer highlighted without a clearly delimited scheme
+  * Renamed config option visual_bell to bell
+  * Moved config option dynamic_title to window.dynamic_title
+  Fixed:
+  * Selection not cleared when switching between main and alt grid
+  * Freeze when application is invisible on Wayland
+  * Paste from some apps on Wayland
+  * Slow startup with Nvidia binary drivers on some X11 systems
+  * Display not scrolling when printing new lines while scrolled in history
+  * Regression in font rendering on macOS
+  * Scroll down escape (CSI Ps T) incorrectly pulling lines from history
+  * Dim escape (CSI 2 m) support for truecolor text
+  * Incorrectly deleted lines when increasing width with a prompt wrapped
+    using spaces
+  * Documentation for class in --help missing information on setting general
+    class
+  * Linewrap tracking when switching between primary and alternate screen
+    buffer
+  * Preservation of the alternate screen's saved cursor when swapping to
+    primary screen and back
+  * Reflow of cursor during resize
+  * Cursor color escape ignored when its color is set to inverted in the
+    config
+  * Fontconfig's autohint and hinting options being ignored
+  * Ingoring of default FreeType properties
+  * Alacritty crashing at startup when the configured font does not exist
+  * Font size rounding error
+  Removed:
+  * Environment variable RUST_LOG for selecting the log level
+  * Deprecated window.start_maximized config field
+  * Deprecated render_timer config field
+  * Deprecated persistent_logging config field
+
+-------------------------------------------------------------------
 Sat Jun  6 22:00:39 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 0.4.3
