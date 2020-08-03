@@ -93,4 +93,12 @@
     <comment></comment>
     <requestid>791822</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6e86e8b7a1eaf6dd5f4638a66f5946ee</srcmd5>
+    <version>0.21.1</version>
+    <time>1596457145</time>
+    <user>dimstar_suse</user>
+    <comment>- Add subpackage for fish completion. (forwarded request 824075 from fcrozat)</comment>
+    <requestid>824080</requestid>
+  </revision>
 </revisionlist>

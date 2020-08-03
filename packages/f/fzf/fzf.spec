@@ -52,6 +52,24 @@ BuildArch:      noarch
 %description bash-completion
 Bash shell completions for fzf
 
+%package fish-completion
+Summary:        Fish completion for fzf
+Group:          Productivity/File utilities
+Requires:       fish
+Supplements:    packageand(fzf:fish)
+BuildArch:      noarch
+
+%description fish-completion
+fish shell completions for fzf
+
+To enable it, ensure you have a file ~/.config/fish/functions/fish_user_key_bindings.fish
+which contains:
+function fish_user_key_bindings
+	fzf_key_bindings
+end
+
+(or append fzf_key_bindings to the fish_user_key_bindings function if the file already exists)
+
 %package zsh-completion
 Summary:        ZSH completion for fzf
 Group:          Productivity/File utilities
@@ -101,6 +119,8 @@ install -Dm0644 shell/completion.zsh \
     %{buildroot}%{_datadir}/zsh/site-functions/_fzf
 install -Dm0644 shell/key-bindings.zsh \
     %{buildroot}%{_sysconfdir}/zsh_completion.d/fzf-key-bindings
+install -Dm0644 shell/key-bindings.fish \
+    %{buildroot}%{_datadir}/fish/vendor_functions.d/fzf_key_bindings.fish
 
 # vim plugin
 install -D -m0644 -t %{buildroot}%{vimplugin_dir}/doc doc/*
@@ -119,6 +139,11 @@ install -D -m0644 -t %{buildroot}%{vimplugin_dir}/plugin plugin/*
 %files bash-completion
 %{_datadir}/bash-completion/completions/fzf
 %{_datadir}/bash-completion/completions/fzf-key-bindings
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_functions.d
+%{_datadir}/fish/vendor_functions.d/fzf_key_bindings.fish
 
 %files zsh-completion
 %{_datadir}/zsh
