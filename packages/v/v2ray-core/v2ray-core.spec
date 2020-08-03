@@ -34,9 +34,6 @@ URL:            https://github.com/v2ray/v2ray-core
 Source0:        https://github.com/v2ray/v2ray-core/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        v2ray.service
-Source3:        config.json
-Source4:        vpoint_socks_vmess.json
-Source5:        vpoint_vmess_freedom.json
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
@@ -83,13 +80,15 @@ mv %{_builddir}/go/bin/main %{_builddir}/go/bin/v2ctl
 %gosrc
 %gofilelist
 
-install -d %{buildroot}%{_unitdir}/v2ray
-install -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/v2ray/
+install -d %{buildroot}%{_datadir}/%{name}
+install -m0644 release/config/geoip.dat %{buildroot}%{_datadir}/%{name}/
+install -m0644 release/config/geosite.dat %{buildroot}%{_datadir}/%{name}/
 
-install -d %{buildroot}%{_sysconfdir}/v2ray
-install -m0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/v2ray/
-install -m0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/v2ray/
-install -m0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/v2ray/
+install -d %{buildroot}%{_unitdir}
+install -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/
+
+install -d %{buildroot}%{_sysconfdir}/%{project}
+install -m0644 release/config/*.json %{buildroot}%{_sysconfdir}/%{project}/
 
 install -d %{buildroot}%{_sbindir}/
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
@@ -113,9 +112,11 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
 %license LICENSE
 %{_bindir}/v2ray
 %{_bindir}/v2ctl
-%{_unitdir}/v2ray
-%dir %{_sysconfdir}/v2ray
-%config(noreplace) %{_sysconfdir}/v2ray/*.json
+%{_unitdir}/%{project}.service
+%dir %{_sysconfdir}/%{project}
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/*
+%config(noreplace) %{_sysconfdir}/%{project}/*.json
 %{_sbindir}/rcv2ray
 
 %files -n golang-%{provider}-%{project}-%{repo} -f file.lst
