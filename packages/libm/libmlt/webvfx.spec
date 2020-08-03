@@ -17,8 +17,8 @@
 
 
 %define _name mlt
-%define mltversion 6.20.0
-%define mltsoversion 6.20.0
+%define mltversion 6.22.1
+%define mltsoversion 6.22.1
 %define sover 1
 %define mltmaj %(echo %{mltversion} |cut -d "." -f 1)
 # Find qt version used to build

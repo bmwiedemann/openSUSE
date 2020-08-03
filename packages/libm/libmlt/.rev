@@ -549,4 +549,104 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>791136</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8e28b96262422c709cce36f9468c604b</srcmd5>
+    <version>6.22.1</version>
+    <time>1596457062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.22.1
+  * This patch version only fixes the version reported in the
+    CMake build.
+- Update to version 6.22.0
+  Framework:
+  * Added mlt_properties_exists() and
+    Mlt::Properties::property_exists().
+  * Added mlt_audio C class
+  * Added Mlt::Audio C++ class
+  * Fixed drop-frame timecode for 59.94 fps.
+  * Fixed crash on null pointer passed to mlt_consumer_stop().
+  Modules:
+  * Fixed frei0r transitions with preview scaling.
+  * Fixed affine ox and oy properties incorrect with preview
+    scaling.
+  * Fixed a crash and incorrect preview scaling with more than
+    one affine
+    filter active on the same frame.
+  * Fixed preview scaling for the rotoscoping filter.
+  * Added the sample_fmt property to the avformat consumer.
+  * Fixed a possible segfault in the mix transition.
+  * Removed support for text keyframes to the text and qtext
+    filters
+    to fix regression on strings containing '='.
+  * Disable frame-threading with bigsh0t, distort0r, and medians
+    frei0r plugins.
+  * Added &quot;meta.media.%d.stream.projection&quot; property the
+    avformat producer.
+  * Fixed a crash with with filters not supporting preview scale
+    in frei0r transitions.
+  * Fix artifacts in luma transition and affine filter with
+    frame-threading.
+  * Stop including 'title=&quot;Anonymous Submission&quot;' in xml
+    consumer.
+  * Fixed a crash in opencv.tracker filter.
+  * Fixed a crash in composite transition if luma file fails to
+    load.
+  * Added validations in opengl module to prevent asserts in
+    Movit.
+  * Fixed building with OpenCV 4.
+  * Moved some services from gtk2 module to new gdk module:
+    gtkrescale filter, pango producer and pixbuf producer
+  * Deprecated the gtk2 module and no longer enabled by default.
+  * Changed avformat producer to accept a '?' in
+    argument/resource property by escaping it as '\?'.
+  * Changed the background property of the affine filter to be
+    mutable.
+  * Deprecated the linsys (DVEO SDI) module.
+  * Fixed changing the audio_index property in the avformat
+    producer.
+  * Changed resample filter to more resiliant to frequency
+    changes.
+  * Added a video_delay property to the sdl2_audio and rtaudio
+    consumers.
+  * Add millisecond options to the timer filter.
+  * Fixed the in point handling for the timewarp producer.
+  * Fixed some audio gaps and sync issues with the rbpitch
+    filter and timewarp pitch compensation.
+  * Fixed a possible crash caused by producer consumer.
+  * Changed avformat consumer to set AVOption color_primaries
+    based on the MLT colorspace if not already set as property.
+  * Fixed crop right on image with odd width skews image in crop
+    filter.
+  * Fixed incorrect silence value for unsigned 8-bit audio in
+    avformat producer.
+  * Changed qimage to use Qt's internal orientation detection
+    instead of libexif.
+  * Reduced clicks in mix transition by silencing buffers on
+    discontinuity.
+  * Improved A/V synchronization in (sw)resample filters - also
+    reduces audio clicks.
+  * Improved speed of the qimage producer.
+  * Fixed incorrect color using libx264rgb in avformat consumer.
+  * Fixed relative paths for avfilters that have the &quot;filename&quot;
+    option.
+  * Fixed some avfilters dropping the alpha channel: smartblur,
+    vaguedenoiser.
+  * Improved performance of the resize filter.
+  * Fixed an affine filter inside a transition was always
+    nearest neighbor interpolation.
+  * Changed the lift_gamma_gain filter to use round values up.
+  Other:
+  * Fixed melt option &quot;-group&quot; applies to an implicit consumer.
+  * Added &quot;-quiet&quot; option to melt (implies -silent but more so).
+  * CMake build improvments adding modules: gdk, jackrack, lumas
+    resample, sox and vorbis
+  * Added avformat consumer presets: Slide-Deck-H264 and
+    Slide-Deck-HEVC
+  * Removed intra=1 from some avformat presets (use g=1 for
+    intra only): intermediate/MPEG-2, intermediate/MPEG-4
+    and lossless/H.264
+- Drop 0001-Fix-build-with-Qt-5.15.0.patch (merged upstream)
+</comment>
+    <requestid>823989</requestid>
+  </revision>
 </revisionlist>

@@ -21,14 +21,14 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 6.20.0
+%define lversion 6.22.1
 %define soname 6
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define soname_pp 3
 
 Name:           %{libname}
-Version:        6.20.0
+Version:        6.22.1
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
@@ -39,8 +39,6 @@ Source0:        https://github.com/mltframework/mlt/archive/v%{version}.tar.gz#/
 Patch1:         libmlt-0.8.2-vdpau.patch
 # PATCH-FIX-UPSTREAM libmlt-fixluma.patch aloisio@gmx.com -- add LD_LIBRARY_PATH so that luma can run
 Patch2:         libmlt-fixluma.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-build-with-Qt-5.15.0.patch
-Patch3:         0001-Fix-build-with-Qt-5.15.0.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} >= 1500
 BuildRequires:  gcc-c++
@@ -208,7 +206,6 @@ This package contains python bindings.
 %setup -q -n %{_name}-%{version}
 %patch1
 %patch2 -p1
-%patch3 -p1
 
 # To complement libmlt-0.8.0-vdpau.patch.
 # When vdpau support is not compiled it will break the code. Doesn't matter because the code will not be used anyway.
@@ -309,7 +306,7 @@ rm -f %{buildroot}%{_datadir}/mlt
 
 %files -n %{libname}%{soname}-modules -f module_data.dirs
 %defattr(0644, root, root, 0755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %license GPLv3 COPYING GPL
 %{_libdir}/%{_name}-%{soname}/
 %dir %{_datadir}/%{_name}-%{soname}/
