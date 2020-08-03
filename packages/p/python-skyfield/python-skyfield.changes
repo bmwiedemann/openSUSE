@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Aug  2 11:51:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.26
+  * The official ∆T files on NASA’s FTP server have stopped receiving
+    updates — they have no new data beyond February, the start of the
+    global pandemic.  Unless they are updated by next February, older
+    versions of Skyfield will unfortunately download the files all over
+    again every time `skyfield.iokit.Loader.timescale()` is called
+    (unless the ``builtin=True`` parameter is provided).  To make Skyfield
+    less fragile going forward:
+    1. The loader’s `skyfield.iokit.Loader.timescale()` method now
+        defaults to ``builtin=True``, telling it to use the ∆T and leap
+        second files that ship with Skyfield internally.  To download new
+        ∆T files from NASA and the leap second file from the International
+        Earth Rotation Service, specify ``builtin=False``.
+    2. The concept of an “expired” file has been removed from ``load()``.
+        Skyfield is now much simpler: if a file with the correct name
+        exists, Skyfield uses it.  See `downloading-timescale-files`
+        if you still want your application to check the age of your
+        timescale files and automatically download new ones.
+  * The `ICRF.separation_from()` method now officially supports the
+    combination of an array of positions with a single reference position!
+    Its previous support for that combination was, alas, accidental, and
+    was broken with the 1.23 release.
+    `#414 <https://github.com/skyfielders/python-skyfield/issues/414>`
+    `#424 <https://github.com/skyfielders/python-skyfield/issues/424>`
+  * A prototype `skyfield.magnitudelib.planetary_magnitude()`
+    routine has been added with support for several planets.
+    `#210 <https://github.com/skyfielders/python-skyfield/issues/210>`
+  * The ``utc`` timezone that Skyfield returns in Python datetimes is now
+    either the Python Standard Library’s own UTC object, if it supplies
+    one, or else is defined by Skyfield itself.  Skyfield no longer
+    silently tries importing the whole ``pytz`` package merely to use its
+    UTC object — which also means that the timezone returned by Skyfield
+    longer offers the non-standard ``localize()`` method.
+    `#413 <https://github.com/skyfielders/python-skyfield/issues/413>`
+- make builds reproducible gh#skyfielders/python-skyfield#415
+    
+-------------------------------------------------------------------
 Sat Jul 25 11:43:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.25

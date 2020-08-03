@@ -21,7 +21,7 @@
 %define assayver    252.79f5d78
 %define skip_python2 1
 Name:           python-skyfield
-Version:        1.25
+Version:        1.26
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
@@ -33,12 +33,9 @@ Source2:        https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_d
 Source3:        https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/a_old_versions/pck00008.tpc
 Source4:        ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp/de405.bsp
 Source5:        ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp/de421.bsp
-Source6:        ftp://cddis.nasa.gov/products/iers/deltat.data
-Source7:        ftp://cddis.nasa.gov/products/iers/deltat.preds
-Source8:        https://hpiers.obspm.fr/iers/bul/bulc/Leap_Second.dat
 # use generate-hipparcos.sh to download and truncate the test data
-Source9:        hip_main.dat.gz
-Source10:       generate-hipparcos.sh
+Source6:        hip_main.dat.gz
+Source97:       generate-hipparcos.sh
 # upstreams custom test runner assay: gh#skyfielders/python-skyfield#405
 Source98:       https://github.com/brandon-rhodes/assay/archive/%{assaycommit}.tar.gz#/assay-master-%{assayver}.tar.gz
 Source99:       python-skyfield-rpmlintrc
@@ -75,8 +72,8 @@ research-grade positions for planets and Earth satellites.
 
 %prep
 %setup -q -n skyfield-%{version} -b 98
-# copy all test data files into the rootdir
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} ./
+# copy all test data files into the rootdir from where the tests are run
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} ./
 
 %build
 %python_build
