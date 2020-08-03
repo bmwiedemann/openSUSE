@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 30 17:50:08 UTC 2020 - iforster@suse.com
+
+- Update to version 1.0+git20200730.1243fd0:
+  * Add comment about the mounting of /root in the initrd
+  * Better check for already existing /etc overlay [boo#1174733]
+
+-------------------------------------------------------------------
 Tue Jul 21 11:22:14 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use file requires, add sed
