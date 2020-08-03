@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul 31 10:56:54 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.2.2+git0.b8a2763d5:
+  * [RELEASE] Released version 2.2.2
+  * BUG/MEDIUM: tcp-checks: always attach the transport before installing the mux
+  * BUG/MEDIUM: backend: always attach the transport before installing the mux
+  * SCRIPTS: announce-release: add the link to the wiki in the announce messages
+  * MINOR: stream-int: Be sure to have a mux to do sends and receives
+  * MINOR: connection: Preinstall the mux for non-ssl connect
+  * BUG/MEDIUM: connection: Be sure to always install a mux for sync connect
+  * BUG/MINOR: tcp-rules: Set the inspect-delay when a tcp-response action yields
+  * BUG/MINOR: tcp-rules: Preserve the right filter analyser on content eval abort
+  * BUG/MINOR: lua: Abort execution of actions that yield on a final evaluation
+  * BUG/MEDIUM: dns: Don't yield in do-resolve action on a final evaluation
+  * MEDIUM: lua: Add support for the Lua 5.4
+  * BUG/MAJOR: dns: don't treat Authority records as an error
+  * BUG/MAJOR: dns: fix null pointer dereference in snr_update_srv_status
+  * BUG/MINOR: debug: Don't dump the lua stack if it is not initialized
+  * BUILD: tools: fix build with static only toolchains
+  * BUG/MINOR: mux-fcgi: Don't url-decode the QUERY_STRING parameter anymore
+
+-------------------------------------------------------------------
 Thu Jul 23 15:00:50 UTC 2020 - mrueckert@suse.de
 
 - Update to version 2.2.1+git0.0ef71a557:
