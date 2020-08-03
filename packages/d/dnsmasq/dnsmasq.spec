@@ -21,14 +21,12 @@
 %else
 %bcond_without tftp_user_package
 %endif
-
 Name:           dnsmasq
+Version:        2.82
+Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Networking/DNS/Servers
-Version:        2.81
-Release:        0
-Provides:       dns_daemon
 URL:            http://www.thekelleys.org.uk/dnsmasq/
 Source0:        http://www.thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz
 Source1:        http://www.thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz.asc
@@ -38,20 +36,20 @@ Source4:        dnsmasq.service
 Source5:        rc.dnsmasq-suse
 Source8:        %{name}-rpmlintrc
 Patch0:         dnsmasq-groups.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  libidn2-devel
 BuildRequires:  libnettle-devel
 BuildRequires:  lua-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnetfilter_conntrack)
 BuildRequires:  pkgconfig(systemd)
 Requires(pre):  group(nogroup)
+Provides:       dns_daemon
 %if %{with tftp_user_package}
 Requires(pre):  user(tftp)
 %else
-Requires(pre):  /usr/sbin/useradd
+Requires(pre):  %{_sbindir}/useradd
 %endif
 
 %description
@@ -83,7 +81,7 @@ find contrib -name *.py -exec chmod a-x '{}' +
 dos2unix contrib/systemd/dbus_activation
 
 # SED-FIX-UPSTREAM -- Fix paths
-sed -i -e 's|\(PREFIX *= *\)/usr/local|\1/usr|;
+sed -i -e 's|\(PREFIX *= *\)%{_prefix}/local|\1/usr|;
 	   s|$(LDFLAGS)|$(CFLAGS) $(LDFLAGS)|' \
 	Makefile
 
@@ -101,31 +99,31 @@ sed -i -e 's|CACHESIZ 150|CACHESIZ 2000|;
 	src/config.h
 
 # Fix trust-anchor.conf location and include /etc/dnsmasq.d/*.conf by default
-sed -i -e '/trust-anchors.conf/c\#conf-file=/etc/dnsmasq.d/trust-anchors.conf' \
+sed -i -e '/trust-anchors.conf/c\#conf-file=%{_sysconfdir}/dnsmasq.d/trust-anchors.conf' \
        -e '/conf-dir=.*conf/s/^\#//' \
 	dnsmasq.conf.example
 
 %build
 mv po/no.po po/nb.po
-export CFLAGS="%optflags -std=gnu99 -fPIC -DPIC -fpie"
+export CFLAGS="%{optflags} -std=gnu99 -fPIC -DPIC -fpie"
 export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 # the dnsmasq make system hashes the configuration flags, so we have to supply the
 # same flags for make and make install, else everything gets recompiled
 %define _copts   "-DHAVE_DBUS -DHAVE_CONNTRACK -DHAVE_LIBIDN2 -DHAVE_DNSSEC -DHAVE_LUASCRIPT"
-make %{?_smp_mflags} AWK=gawk all-i18n CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" COPTS=%{_copts}
+%make_build AWK=gawk all-i18n CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" COPTS=%{_copts}
 
 %pre
 %if %{without tftp_user_package}
-if ! /usr/bin/getent group tftp >/dev/null; then
+if ! %{_bindir}/getent group tftp >/dev/null; then
     %{_sbindir}/groupadd -r tftp
 fi
-if ! /usr/bin/getent passwd tftp >/dev/null; then
+if ! %{_bindir}/getent passwd tftp >/dev/null; then
     %{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp -g tftp \
     -r -s /bin/false tftp
 fi
 %endif
-if ! /usr/bin/getent passwd dnsmasq >/dev/null; then
-    /usr/sbin/useradd -r -d /var/lib/empty -s /bin/false -c "dnsmasq" -g nogroup -G tftp dnsmasq
+if ! %{_bindir}/getent passwd dnsmasq >/dev/null; then
+    %{_sbindir}/useradd -r -d %{_localstatedir}/lib/empty -s /bin/false -c "dnsmasq" -g nogroup -G tftp dnsmasq
 fi
 
 %service_add_pre %{name}.service
@@ -133,8 +131,8 @@ fi
 %post
 %service_add_post %{name}.service
 # reload dbus after install or upgrade to apply new policies
-if [ -z "${TRANSACTIONAL_UPDATE}" -a -x /usr/bin/systemctl ]; then
-        /usr/bin/systemctl reload dbus.service 2>/dev/null || :
+if [ -z "${TRANSACTIONAL_UPDATE}" -a -x %{_bindir}/systemctl ]; then
+        %{_bindir}/systemctl reload dbus.service 2>/dev/null || :
 fi
 
 %preun
@@ -144,22 +142,22 @@ fi
 %service_del_postun %{name}.service
 # reload dbus after uninstall, our policies are gone again
 if [ $1 -eq 0 -a -z "${TRANSACTIONAL_UPDATE}" \
-     -a -x /usr/bin/systemctl ]; then
-        /usr/bin/systemctl reload dbus.service 2>/dev/null || :
+     -a -x %{_bindir}/systemctl ]; then
+        %{_bindir}/systemctl reload dbus.service 2>/dev/null || :
 fi
 
 %install
-make install-i18n DESTDIR=%{buildroot} PREFIX=/usr AWK=gawk COPTS=%{_copts}
+make install-i18n DESTDIR=%{buildroot} PREFIX=%{_prefix} AWK=gawk COPTS=%{_copts}
 install -d -m 755 %{buildroot}/%{_sysconfdir}/slp.reg.d
 install -m 644 dnsmasq.conf.example %{buildroot}/%{_sysconfdir}/dnsmasq.conf
-install -m 644 %SOURCE3 %{buildroot}/%{_sysconfdir}/slp.reg.d/
-install -d 755 %{buildroot}/etc/dbus-1/system.d/
-install -m 644 dbus/dnsmasq.conf %{buildroot}/etc/dbus-1/system.d/dnsmasq.conf
-install -D -m 0644 %SOURCE4 %{buildroot}%{_unitdir}/dnsmasq.service
+install -m 644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/slp.reg.d/
+install -d 755 %{buildroot}%{_sysconfdir}/dbus-1/system.d/
+install -m 644 dbus/dnsmasq.conf %{buildroot}%{_sysconfdir}/dbus-1/system.d/dnsmasq.conf
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/dnsmasq.service
 %if %{without tftp_user_package}
 install -d -m 0755 %{buildroot}/srv/tftpboot
 %endif
-ln -sf %{_sbindir}/service %{buildroot}/usr/sbin/rcdnsmasq
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdnsmasq
 install -d -m 755 %{buildroot}/%{_sysconfdir}/dnsmasq.d
 install -m 644 trust-anchors.conf %{buildroot}/%{_sysconfdir}/dnsmasq.d/trust-anchors.conf
 
@@ -189,8 +187,8 @@ rm -rf contrib/MacOSX-launchd
 %{_sbindir}/rcdnsmasq
 %dir %{_sysconfdir}/slp.reg.d/
 %config %attr(0644,root,root) /%{_sysconfdir}/slp.reg.d/dnsmasq.reg
-%{_mandir}/man8/dnsmasq.8.gz
-%config(noreplace) /etc/dbus-1/system.d/dnsmasq.conf
+%{_mandir}/man8/dnsmasq.8%{?ext_man}
+%config(noreplace) %{_sysconfdir}/dbus-1/system.d/dnsmasq.conf
 %{_unitdir}/dnsmasq.service
 %dir %{_sysconfdir}/dnsmasq.d
 %config(noreplace) %{_sysconfdir}/dnsmasq.d/trust-anchors.conf

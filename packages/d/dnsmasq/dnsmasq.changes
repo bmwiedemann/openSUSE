@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 28 08:00:51 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 2.82:
+  * Improve behaviour in the face of network interfaces which come
+    and go and change index.
+  * Convert hard startup failure on NETLINK_NO_ENOBUFS under
+    qemu-user to a warning.
+  * Allow IPv6 addresses ofthe form [::ffff:1.2.3.4] in
+    --dhcp-option.
+  * Fix crash under heavy TCP connection load introduced in 2.81.
+  * Change default lease time for DHCPv6 to one day.
+  * Alter calculation of preferred and valid times in router
+    advertisements, so that these do not have a floor applied of
+    the lease time in the dhcp-range if this is not explicitly
+    specified and is merely the default.
+- Reformat spec file with spec-cleaner
+
+-------------------------------------------------------------------
 Tue May  5 11:26:55 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.81:
