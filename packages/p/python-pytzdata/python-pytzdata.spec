@@ -21,11 +21,10 @@
 
 %define modname pytzdata
 Name:           python-%{modname}
-Version:        2019.3
+Version:        2020.1
 Release:        0
 Summary:        The pytzdata module for Python-pendulum 
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/pytzdata
 Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
