@@ -1,7 +1,7 @@
 #
 # spec file for package clustershell
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Stephane Thiell <sthiell@stanford.edu>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,6 +21,9 @@
 %{!?python2_sitelib: %global python2_sitelib %{python_sitelib}}
 %{!?__python: %global __python python}
 %{!?__python2: %global __python2 %{__python}}
+%if ! 0%{?rhel} >= 8 && ! 0%{?suse_version} > 1550
+%define py2 1
+%endif
 
 %if 0%{?fedora} >= 22
 %{!?python2_pkgversion: %global python2_pkgversion 2}
@@ -43,18 +46,33 @@
 %global srcname ClusterShell
 
 Name:           clustershell
-Version:        1.8.2
-Release:        0%{?dist}
+Version:        1.8.3
+Release:        1%{?dist}
 Summary:        Python framework for efficient cluster administration
 License:        LGPL-2.1-or-later
-Group:          Productivity/Clustering/Computing
+Group:          System Environment/Base
+%if 0%{?suse_version}
+%else
+%endif
 URL:            http://cea-hpc.github.io/clustershell/
-Source:         https://github.com/cea-hpc/clustershell/archive/v%{version}/%{srcname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/C/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
+%if 0%{!?py2:1}
+Requires:       python3-%{name} = %{version}-%{release}
+%else
 Requires:       python2-%{name} = %{version}-%{release}
+%endif
+%if 0%{?rhel} >= 7 || 0%{?fedora}
+Requires:       vim-filesystem
+%else
+%if 0%{?suse_version}
 Requires:       vim
 BuildRequires:  fdupes
 BuildRequires:  vim
+%else
+Requires:       vim-common
+%endif
+%endif
 Provides:       vim-clustershell = %{version}-%{release}
 Obsoletes:      vim-clustershell < 1.7.81-4
 
@@ -67,7 +85,7 @@ server farms. Command line utilities like clush, clubak and nodeset (or
 cluset) allow traditional shell scripts to take benefit of the features
 offered by the library.
 
-
+%if 0%{?py2}
 %package -n python2-%{name}
 Summary:        ClusterShell module for Python 2
 Group:          Productivity/Clustering/Computing
@@ -83,7 +101,7 @@ Requires:       PyYAML
 
 %description -n python2-%{name}
 ClusterShell Python 2 module and related command line tools.
-
+%endif
 
 %package -n %{python3_pkgprefix}-%{name}
 Summary:        ClusterShell module for Python 3
@@ -92,6 +110,7 @@ BuildRequires:  %{python3_pkgprefix}-devel
 BuildRequires:  %{python3_pkgprefix}-setuptools
 Requires:       %{python3_pkgprefix}-PyYAML
 Requires:       %{python3_pkgprefix}-setuptools
+%{!?py2:Obsoletes:      python2-%{name}}
 %{?python_provide:%python_provide %{python3_pkgprefix}-%{srcname}}
 
 %description -n %{python3_pkgprefix}-%{name}
@@ -99,15 +118,16 @@ ClusterShell Python 3 module and related command line tools.
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{srcname}-%{version}
 
 %build
 %{__python3} setup.py build
-%{__python2} setup.py build
+%{?py2:%{__python2} setup.py build}
 
 %install
 %{__python3} setup.py install -O1 --skip-build --root %{buildroot}
 
+%if 0%{?py2}
 pushd %{buildroot}%{_bindir}
 for i in clubak cluset clush nodeset; do
   mv $i $i-%{python3_shortver}
@@ -115,6 +135,7 @@ done
 popd
 
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
+%endif
 
 # move config dir away from default setuptools /usr prefix (if rpm-building as user)
 [ -d %{buildroot}/usr/etc ] && mv %{buildroot}/usr/etc %{buildroot}/%{_sysconfdir}
@@ -146,13 +167,15 @@ install -p -m 0644 doc/extras/vim/ftdetect/clustershell.vim %{buildroot}/%{vimda
 install -p -m 0644 doc/extras/vim/syntax/clushconf.vim %{buildroot}/%{vimdatadir}/syntax/
 install -p -m 0644 doc/extras/vim/syntax/groupsconf.vim %{buildroot}/%{vimdatadir}/syntax/
 
-%fdupes %{buildroot}
+%{?suse_version:%fdupes %{buildroot}}
 
 %if 0%{?rhel}
 %clean
 rm -rf %{buildroot}
 %endif
 
+# Unversioned python3 for rhel8
+%if 0%{?py2}
 %files -n python2-%{name}
 %if 0%{?rhel}
 %defattr(-,root,root,-)
@@ -175,12 +198,29 @@ rm -rf %{buildroot}
 %{python3_sitelib}/ClusterShell/
 %{python3_sitelib}/ClusterShell-*-py?.?.egg-info
 
+%else
+%files -n %{python3_pkgprefix}-%{name}
+%if 0%{?rhel}
+%defattr(-,root,root,-)
+%endif
+%{_bindir}/clubak
+%{_bindir}/cluset
+%{_bindir}/clush
+%{_bindir}/nodeset
+%{python3_sitelib}/ClusterShell/
+%{python3_sitelib}/ClusterShell-*-py?.?.egg-info
+%endif
+
 %files
 %if 0%{?rhel}
 %defattr(-,root,root,-)
 %endif
-%license COPYING.LGPLv2.1
 %doc ChangeLog README.md
+%if %{suse_version} >= 1500
+%license COPYING.LGPLv2.1
+%else
+%doc COPYING.LGPLv2.1
+%endif
 %doc doc/examples
 %doc doc/sphinx
 %{_mandir}/man1/clubak.1*

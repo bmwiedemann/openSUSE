@@ -86,4 +86,13 @@
 - The correct license is LGPL-2.1-or-later</comment>
     <requestid>752640</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d21d2afccc38684c1adec982af8276d</srcmd5>
+    <version>1.8.3</version>
+    <time>1596456934</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete python2 package that may be installed when building for
+  python3 only. (forwarded request 824103 from eeich)</comment>
+    <requestid>824105</requestid>
+  </revision>
 </revisionlist>

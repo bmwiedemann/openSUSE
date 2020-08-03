@@ -16,7 +16,7 @@
 #
 
 
-%define git_ver .0.35.0.bd8b24a56fcb
+%define git_ver .0.24a3b31bd026
 %define opamgt_major 0
 %define opasadb_major 1_0_0
 
@@ -24,7 +24,7 @@
 %define opasysconfdir %{_sysconfdir}/opa/
 
 Name:           opa-ff
-Version:        10.10.1
+Version:        10.10.3.0.11
 Release:        0
 Summary:        Intel Omni-Path basic tools and libraries for fabric managment
 License:        BSD-3-Clause OR GPL-2.0-only

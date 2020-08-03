@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.4.0:
+  * Fix building with Clang 10.
+
+-------------------------------------------------------------------
 Wed Apr 22 16:24:17 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.3.1:

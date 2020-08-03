@@ -19,7 +19,7 @@
 %define soname  libbelcard
 %define sover   1
 Name:           belcard
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        C++ library to manipulate vCard standard format files
 License:        GPL-3.0-or-later
@@ -66,6 +66,7 @@ to develop applications using the belcard library.
 %cmake_install
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
+
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files -n %{soname}%{sover}

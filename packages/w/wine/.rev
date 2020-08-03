@@ -3620,4 +3620,17 @@
 - update staging to 5.13 release</comment>
     <requestid>821810</requestid>
   </revision>
+  <revision rev="313" vrev="1">
+    <srcmd5>f27c6d19245bf4461d6d7cef507bc431</srcmd5>
+    <version>5.14</version>
+    <time>1596456970</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.14 development release
+  - More restructuration of the console support.
+  - Initial version of the Webdings font.
+  - Beginnings of PE conversion of the MSVCRT libraries.
+  - Various bug fixes.
+- update staging to 5.14 release</comment>
+    <requestid>823964</requestid>
+  </revision>
 </revisionlist>

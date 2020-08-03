@@ -1,7 +1,7 @@
 #
 # spec file for package adwaita-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,14 +23,12 @@
 %bcond_with qt4
 %endif
 Name:           adwaita-qt
-Version:        1.1.1
+Version:        1.1.4
 Release:        0
 Summary:        Adwaita theme for Qt-based applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/adwaita-qt
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-devel
@@ -43,7 +41,6 @@ Theme to let Qt applications fit nicely into GNOME desktop.
 
 %package -n adwaita-qt4
 Summary:        Adwaita Qt4 theme
-Group:          System/GUI/GNOME
 Supplements:    (libqt4 and gnome-session)
 
 %description -n adwaita-qt4
@@ -51,7 +48,6 @@ Adwaita theme variant for applications utilizing Qt4
 
 %package -n adwaita-qt5
 Summary:        Adwaita Qt5 theme
-Group:          System/GUI/GNOME
 Supplements:    (libQt5Core5 and gnome-session)
 
 %description -n adwaita-qt5

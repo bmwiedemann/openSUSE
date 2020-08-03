@@ -469,4 +469,12 @@
     <comment>- Update to release 20200522</comment>
     <requestid>811852</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9e1667c03fc20676e08295f414215ae9</srcmd5>
+    <version>20200722</version>
+    <time>1596457007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20200722</comment>
+    <requestid>823963</requestid>
+  </revision>
 </revisionlist>

@@ -61,17 +61,17 @@
 +mark_as_advanced(READLINE_INCLUDE_DIRS READLINE_LIBRARIES HAVE_READLINE_H HAVE_HISTORY_H)
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -56,6 +56,7 @@ option(ENABLE_TUTORIALS "Enable compilat
- option(ENABLE_UNIT_TESTS "Enable compilation of unit tests." YES)
- option(ENABLE_UPDATE_CHECK "Enable update check." NO)
- option(ENABLE_VIDEO "Build with video support." YES)
+@@ -69,6 +69,7 @@ option(ENABLE_ASSETS "Package sound asse
+ option(ENABLE_PACKAGE_SOURCE "Create 'package_source' target for source archive making (CMake >= 3.11)" OFF)
+ 
+ cmake_dependent_option(ENABLE_NOTIFY "Enable libnotify support." YES "ENABLE_GTK_UI;NOT APPLE" NO)
 +cmake_dependent_option(ENABLE_READLINE "Enable readline support." YES "ENABLE_CONSOLE_UI" NO)
  cmake_dependent_option(ENABLE_ASSISTANT "Turn on assistant compiling." YES "ENABLE_GTK_UI" NO)
- option(ENABLE_DEBUG_LOGS "Turn on or off debug level logs." NO)
- option(ENABLE_NLS "Build with internationalisation support" YES)
-@@ -137,6 +138,15 @@ endif()
- if(ENABLE_SQLITE_STORAGE)
- 	find_package(Sqlite3 REQUIRED)
+ 
+ set(CMAKE_CXX_STANDARD 11)
+@@ -156,6 +157,15 @@ if(ENABLE_TUNNEL)
+ 		set(ENABLE_TUNNEL OFF CACHE BOOL "Enable tunnel support." FORCE)
+ 	endif()
  endif()
 +if(ENABLE_READLINE)
 +	find_package(Readline)
@@ -85,10 +85,10 @@
  if(ENABLE_NOTIFY)
  	find_package(Notify)
  	if(NOTIFY_FOUND)
-@@ -267,7 +277,7 @@ if(MSVC)
- 	endif()
- else()
- 	list(APPEND STRICT_OPTIONS_CPP "-Wall" "-Wuninitialized" "-Wno-error=deprecated-declarations")
+@@ -302,7 +312,7 @@ else()
+ 	if (SUGGEST_OVERRIDE)
+ 		list(APPEND STRICT_OPTIONS_CXX "-Wsuggest-override" "-Wno-error=suggest-override" )
+ 	endif ()
 -	list(APPEND STRICT_OPTIONS_C "-Wstrict-prototypes" "-Werror=strict-prototypes")
 +	list(APPEND STRICT_OPTIONS_C "-Wstrict-prototypes")
  	if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
@@ -97,7 +97,7 @@
 --- a/config.h.cmake
 +++ b/config.h.cmake
 @@ -42,6 +42,9 @@
- #cmakedefine HAVE_GTK_OSX 1
+ #cmakedefine BUILD_WIZARD
  #cmakedefine HAVE_NOTIFY4
  #cmakedefine HAVE_ZLIB 1
 +#cmakedefine HAVE_READLINE
@@ -108,9 +108,9 @@
  #cmakedefine HAVE_LIBUDEV_H 0
 --- a/console/CMakeLists.txt
 +++ b/console/CMakeLists.txt
-@@ -40,6 +40,10 @@ add_executable(linphonec ${LINPHONEC_SOU
- target_link_libraries(linphonec ${LINPHONE_LIBS_FOR_TOOLS} ${BCTOOLBOX_CORE_LIBRARIES} ${ORTP_LIBRARIES} ${MEDIASTREAMER2_LIBRARIES})
+@@ -41,6 +41,10 @@ target_link_libraries(linphonec ${LINPHO
  set_target_properties(linphonec PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
+ set_target_properties(linphonec PROPERTIES LINKER_LANGUAGE CXX)
  
 +if(READLINE_FOUND)
 +	target_include_directories(linphonec PUBLIC ${READLINE_INCLUDE_DIRS})
@@ -119,10 +119,10 @@
  if(INTL_FOUND)
  	target_link_libraries(linphonec ${INTL_LIBRARIES})
  endif()
-@@ -47,6 +51,10 @@ endif()
+@@ -48,6 +52,10 @@ endif()
  if(WIN32)
  	add_executable(linphoned WIN32 ${LINPHONEC_SOURCE_FILES})
- 	target_link_libraries(linphoned ${LINPHONE_LIBS_FOR_TOOLS} ${BCTOOLBOX_CORE_LIBRARIES} ${ORTP_LIBRARIES} ${MEDIASTREAMER2_LIBRARIES})
+ 	target_link_libraries(linphoned ${LINPHONE_LIBS_FOR_TOOLS} bctoolbox ortp mediastreamer ${XSD_LIBRARIES})
 +	if(READLINE_FOUND)
 +		target_include_directories(linphoned PUBLIC ${READLINE_INCLUDE_DIRS})
 +		target_link_libraries(linphoned ${READLINE_LIBRARIES})
@@ -130,9 +130,9 @@
  	if(INTL_FOUND)
  		target_link_libraries(linphoned ${INTL_LIBRARIES})
  	endif()
-@@ -56,6 +64,11 @@ add_executable(linphonecsh ${LINPHONECSH
- target_link_libraries(linphonecsh ${LINPHONE_LIBS_FOR_TOOLS} ${ORTP_LIBRARIES})
+@@ -58,6 +66,11 @@ target_link_libraries(linphonecsh ${LINP
  set_target_properties(linphonecsh PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
+ set_target_properties(linphonecsh PROPERTIES LINKER_LANGUAGE CXX)
  
 +if(READLINE_FOUND)
 +	target_include_directories(linphonecsh PUBLIC ${READLINE_INCLUDE_DIRS})
@@ -144,9 +144,9 @@
  	list(APPEND INSTALL_TARGETS linphoned)
 --- a/daemon/CMakeLists.txt
 +++ b/daemon/CMakeLists.txt
-@@ -118,6 +118,11 @@ target_include_directories(linphone-daem
- target_link_libraries(linphone-daemon ${LINPHONE_LIBS_FOR_TOOLS} ${MEDIASTREAMER2_LIBRARIES} ${ORTP_LIBRARIES} ${BCTOOLBOX_CORE_LIBRARIES})
+@@ -123,6 +123,11 @@ target_link_libraries(linphone-daemon ${
  set_target_properties(linphone-daemon PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
+ set_target_properties(linphone-daemon PROPERTIES LINKER_LANGUAGE CXX)
  
 +if(READLINE_FOUND)
 +	target_include_directories(linphone-daemon PUBLIC ${READLINE_INCLUDE_DIRS})
@@ -154,11 +154,11 @@
 +endif()
 +
  add_executable(linphone-daemon-pipetest ${DAEMON_PIPETEST_SOURCE_FILES})
- target_link_libraries(linphone-daemon-pipetest ${LINPHONE_LIBS_FOR_TOOLS} ${ORTP_LIBRARIES})
+ target_link_libraries(linphone-daemon-pipetest ${LINPHONE_LIBS_FOR_TOOLS} ortp mediastreamer)
  set_target_properties(linphone-daemon-pipetest PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
 --- a/daemon/daemon.cc
 +++ b/daemon/daemon.cc
-@@ -28,11 +28,6 @@ Inc., 51 Franklin Street, Fifth Floor, B
+@@ -31,11 +31,6 @@
  #include <functional>
  #include <limits>
  
@@ -170,13 +170,3 @@
  #ifndef _WIN32
  #include <poll.h>
  #endif
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -67,6 +67,7 @@ EXTRA_DIST = \
- 	cmake/FindIconv.cmake \
- 	cmake/FindIntl.cmake \
- 	cmake/FindNotify.cmake \
-+	cmake/FindReadline.cmake \
- 	cmake/FindSqlite3.cmake \
- 	cmake/FindXML2.cmake \
- 	cmake/FindZlib.cmake \

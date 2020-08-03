@@ -509,4 +509,12 @@ Now with many if 0%{?suse_version} to still build on older releases. (forwarded 
     <comment></comment>
     <requestid>708872</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>7ef65dcee9b76c36e28b93d5a09174fe</srcmd5>
+    <version>4.4.0</version>
+    <time>1596456922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0.</comment>
+    <requestid>823439</requestid>
+  </revision>
 </revisionlist>

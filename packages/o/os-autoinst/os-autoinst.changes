@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 02 03:25:57 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1596198579.6374e804:
+  * Fix warning "Subroutine OpenQA::Isotovideo::Utils::diag redefined"
+  * Simplify check_socket methods of backends
+  * Slightly simplify code of all backends
+
+-------------------------------------------------------------------
 Thu Jul 30 19:25:53 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1596123333.53214479:

@@ -19,7 +19,7 @@
 %define soname  libbelr
 %define sover   1
 Name:           belr
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Language recognition library
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ Patch0:         belr-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.3.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.4.0
 
 %description
 Belr parses input formatted according to a language defined by an

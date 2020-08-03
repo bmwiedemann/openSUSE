@@ -17,7 +17,7 @@
 
 
 Name:           VirtualGL
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        A toolkit for displaying OpenGL applications to thin clients
 License:        LGPL-2.1-only AND SUSE-wxWidgets-3.1
@@ -26,7 +26,6 @@ URL:            http://www.virtualgl.org
 Source0:        https://sourceforge.net/projects/virtualgl/files/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         VirtualGL-link-libs.patch
-Patch2:         fix-Mesa-19.3.0-build.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLU-devel
 BuildRequires:  cmake
@@ -95,7 +94,6 @@ Ertl 2000.)
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
 
 # Use /var/lib
 sed -e "s#%{_sysconfdir}/opt#%{_localstatedir}/lib#g" \

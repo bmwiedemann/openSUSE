@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.4.0:
+  * Fix a bug with the use of createRootObject().
+    It wasn't passed the size of what was really parsed, which was
+    confusing for the DebugParser and the output of belr-parse tool.
+  * Add Iphlpapi dependency for using liblinphone
+    GetAdaptersAddresses.
+
+-------------------------------------------------------------------
 Wed Apr 22 16:24:17 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.3.1 (changes since 0.1.3):

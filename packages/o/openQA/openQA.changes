@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 02 03:26:39 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1596190499.d88f85256:
+  * Dependency cron 200731
+  * Add test for API keys UI
+  * Allow adding API keys without expiration date via the UI
+  * Improve code for API keys page
+
+-------------------------------------------------------------------
 Thu Jul 30 14:33:32 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1596119585.a5800f1aa:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug  1 13:01:26 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.14 development release
+  - More restructuration of the console support.
+  - Initial version of the Webdings font.
+  - Beginnings of PE conversion of the MSVCRT libraries.
+  - Various bug fixes.
+- update staging to 5.14 release
+
+-------------------------------------------------------------------
 Sat Jul 18 06:37:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.13 development release

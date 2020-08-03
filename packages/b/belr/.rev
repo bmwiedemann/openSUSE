@@ -55,4 +55,12 @@
     <comment>- Update to version 4.3.1.</comment>
     <requestid>796706</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f1f4065b5331a4eb647711aca132bfa</srcmd5>
+    <version>4.4.0</version>
+    <time>1596456913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0.</comment>
+    <requestid>823436</requestid>
+  </revision>
 </revisionlist>

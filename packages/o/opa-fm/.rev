@@ -112,4 +112,12 @@ Fix build with rdma-core (vs previous OFED)</comment>
     <comment></comment>
     <requestid>812247</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f38bf82b826318b0b47116681ffdf198</srcmd5>
+    <version>10.10.3.0.11</version>
+    <time>1596456849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823142</requestid>
+  </revision>
 </revisionlist>

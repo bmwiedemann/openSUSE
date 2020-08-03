@@ -1,4 +1,4 @@
-commit ae670c7f2281c63096c769b519a57a43ce5f81bb
+commit a63f004c9c628bcaa4750485bb3949dbc62a8422
 Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 Date:   Thu Jun 8 11:13:38 2017 +0200
 
@@ -268,14 +268,14 @@ index 4ffe1f5dbb10..cae42a380ad4 100644
  # 
  # Copyright (c) 2015, Intel Corporation
 diff --git TestTools/chassis.exp TestTools/chassis.exp
-index 152d7d9fcdfd..ae5e3f9c3838 100644
+index 93265e2d30ed..488ab27fbbf1 100644
 --- TestTools/chassis.exp
 +++ TestTools/chassis.exp
 @@ -1,3 +1,4 @@
 +#!/usr/bin/expect
  # BEGIN_ICS_COPYRIGHT8 ****************************************
- # 
- # Copyright (c) 2015, Intel Corporation
+ #
+ # Copyright (c) 2015-2020, Intel Corporation
 diff --git TestTools/common_funcs.exp TestTools/common_funcs.exp
 index 68d55d8fdf48..22bed8bdbb7e 100644
 --- TestTools/common_funcs.exp
@@ -295,14 +295,14 @@ index 8e1a8e6e816d..2081a2b64d1e 100644
  # 
  # Copyright (c) 2015, Intel Corporation
 diff --git TestTools/extmng.exp TestTools/extmng.exp
-index b513c61c1069..e0ba680daed3 100644
+index cf6d989fc8f5..52caed45283b 100644
 --- TestTools/extmng.exp
 +++ TestTools/extmng.exp
 @@ -1,3 +1,4 @@
 +#!/usr/bin/expect
  # BEGIN_ICS_COPYRIGHT8 ****************************************
- # 
- # Copyright (c) 2015, Intel Corporation
+ #
+ # Copyright (c) 2015-2020, Intel Corporation
 diff --git TestTools/ib.exp TestTools/ib.exp
 index 06c4a6ecc645..5b32311d123f 100644
 --- TestTools/ib.exp
@@ -331,14 +331,14 @@ index 773676547a28..8b84886318c8 100644
  # 
  # Copyright (c) 2015, Intel Corporation
 diff --git TestTools/mpi.exp TestTools/mpi.exp
-index 4fe36e9aeca0..fa0624080c98 100644
+index f3b7e29fb0d0..d810878a5759 100644
 --- TestTools/mpi.exp
 +++ TestTools/mpi.exp
 @@ -1,3 +1,4 @@
 +#!/usr/bin/expect
  # BEGIN_ICS_COPYRIGHT8 ****************************************
- # 
- # Copyright (c) 2015, Intel Corporation
+ #
+ # Copyright (c) 2015-2020, Intel Corporation
 diff --git TestTools/network.exp TestTools/network.exp
 index c1b8867019f0..f4f212c5a59b 100644
 --- TestTools/network.exp
@@ -349,14 +349,14 @@ index c1b8867019f0..f4f212c5a59b 100644
  # 
  # Copyright (c) 2015, Intel Corporation
 diff --git TestTools/opa_to_xml.exp TestTools/opa_to_xml.exp
-index 448bfb471aeb..c6232d54ea47 100644
+index f81f07ae8c00..fd52484818ef 100644
 --- TestTools/opa_to_xml.exp
 +++ TestTools/opa_to_xml.exp
 @@ -1,3 +1,4 @@
 +#!/usr/bin/expect
  # BEGIN_ICS_COPYRIGHT8 ****************************************
- # 
- # Copyright (c) 2015, Intel Corporation
+ #
+ # Copyright (c) 2015-2020, Intel Corporation
 diff --git TestTools/proc_mgr.exp TestTools/proc_mgr.exp
 index abcb65d214ec..e86621d5ea12 100644
 --- TestTools/proc_mgr.exp
@@ -385,14 +385,14 @@ index 9f1377397dcb..cf59126aeb35 100644
  # 
  # Copyright (c) 2015, Intel Corporation
 diff --git TestTools/target.exp TestTools/target.exp
-index b10d1995cbde..b4fd69fbb8ad 100644
+index 8d8311aaa1a6..2e5c05e4e0b9 100644
 --- TestTools/target.exp
 +++ TestTools/target.exp
 @@ -1,3 +1,4 @@
 +#!/usr/bin/expect
  # BEGIN_ICS_COPYRIGHT8 ****************************************
- # 
- # Copyright (c) 2015, Intel Corporation
+ #
+ # Copyright (c) 2015-2020, Intel Corporation
 diff --git TestTools/tools.exp TestTools/tools.exp
 index 850e7891b035..1250087c58be 100644
 --- TestTools/tools.exp

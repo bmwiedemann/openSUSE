@@ -16,13 +16,13 @@
 #
 
 
-%define git_ver .0.35.0.317bb9f13773
+%define git_ver .0.dd537b757410
 
 %define pseudo_opt %{_prefix}/lib/opa-fm
 %define opasysconfdir %{_sysconfdir}/opa-fm/
 %define opavarlibdir %{_localstatedir}/usr/lib/opa-fm/
 Name:           opa-fm
-Version:        10.10.1
+Version:        10.10.3.0.11
 Release:        0
 Summary:        Intel Omni-Path Fabric Management Software
 License:        BSD-3-Clause

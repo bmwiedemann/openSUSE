@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.4.0 (changes since 4.3.1):
+  * Now get custom well_known_port (either sip or sips) if set,
+    exported well known port getter and setter to be used in
+    public api.
+  * Introduce bufferising file body handler.
+  * Fix potential crashes when processing invalid responses or
+    requests.
+  * Add Session-Expires header support (from RFC 4028).
+  * Fix bad algorithm for channel selection.
+  * Add a new cppListToClist method on hybrid objects.
+  * Replace std::mem_fun by std::mem_fn, as the former is
+    deprecated.
+  * User body handler gets buffering too.
+  * Make received parameter in VIA header compatible with url
+    encoded IPv6 address
+    (https://tools.ietf.org/html/rfc5118#section-4.5)
+  * Print C++ object type names using typeid.
+  * Make belle_sip_main_loop_do_later() to be thread-safe.
+  * Clear all data of the control pipe on each main loop
+    iteration.
+  * Prevent bad behaviour when creating a belle_sip_source_t with a
+    timeout higher than UINT_MAX/2.
+
+-------------------------------------------------------------------
 Wed Apr 22 16:24:17 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.3.1 (changes since 1.6.3):

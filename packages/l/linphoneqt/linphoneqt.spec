@@ -1,7 +1,7 @@
 #
 # spec file for package linphoneqt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,43 +18,32 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        4.1.1
+Version:        4.2.1
 Release:        0
 Summary:        Qt interface for Linphone
-License:        GPL-2.0-or-later
-Group:          Productivity/Telephony/SIP/Clients
-Url:            https://linphone.org/
-Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
+License:        GPL-3.0-or-later
+URL:            https://linphone.org/
+Source:         https://gitlab.linphone.org/BC/public/linphone-desktop/-/archive/%{version}/%{_name}-desktop-%{version}.tar.bz2
 Source1:        %{_name}.appdata.xml
-# PATCH-FIX-UPSTREAM linphoneqt-fix-cmake-i18n.patch -- Support new CMake versions for translations (commit e70c077).
-Patch0:         linphoneqt-fix-cmake-i18n.patch
-# PATCH-FIX-UPSTREAM linphoneqt-force-default-style.patch boo#1083654 -- Force default theme style (commit 313aa68).
-Patch1:         linphoneqt-force-default-style.patch
-# PATCH-FIX-UPSTREAM linphoneqt-fix-qt-5.11.patch boo#1083654 -- Fix issues with Qt 5.10 and 5.11 (commits ecaab0f, d95f523, 5dd0161, 7f62ae9, 8720931, 4f908ef).
-Patch2:         linphoneqt-fix-qt-5.11.patch
-# PATCH-FIX-OPENSUSE linphoneqt-qt-5.9-fix-buttons.patch boo#1095273 -- Fix button invisibility with Qt 5.9.
-Patch3:         linphoneqt-qt-5.9-fix-buttons.patch
 # PATCH-FIX-OPENSUSE linphoneqt-fix-no-git.patch -- Fix building out-of-git.
-Patch4:         linphoneqt-fix-no-git.patch
-# PATCH-FIX-OPENSUSE fix-qm-generation.patch
-Patch5:         fix-qm-generation.patch
+Patch0:         linphoneqt-fix-no-git.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist-devel >= 5.9
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.9
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.9
-BuildRequires:  pkgconfig(Qt5Network) >= 5.9
-BuildRequires:  pkgconfig(Qt5Quick) >= 5.9
-BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.9
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.9
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
-BuildRequires:  pkgconfig(linphone) >= 3.12.0
-BuildRequires:  pkgconfig(mediastreamer) >= 2.16.0
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.12
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(linphone) >= 4.4.0
+BuildRequires:  pkgconfig(mediastreamer) >= 4.4.0
 
 %description
 Linphone is a Web phone with a Qt interface. It lets you make
@@ -66,7 +55,6 @@ with high speed connections as well as 28k modems.
 
 %package -n %{_name}
 Summary:        Web Phone
-Group:          Productivity/Telephony/SIP/Clients
 Requires:       lib%{_name}-data
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
@@ -83,41 +71,34 @@ SIP-based Web phones. With several codecs available, it can be used
 with high speed connections as well as 28k modems.
 
 %prep
-%autosetup -p1
+%autosetup -n %{_name}-desktop-%{version} -p1
 cp %{SOURCE1} linphone.appdata.xml
+touch linphone-sdk/CMakeLists.txt
+mkdir -p build/linphone-sdk/desktop/{bin,share}
 
 %build
 %cmake \
-  -DENABLE_DBUS=ON                 \
-  -DENABLE_PRECOMPILED_HEADERS=OFF \
-  -DENABLE_STRICT=OFF              \
+  -DLINPHONE_OUTPUT_DIR="$PWD" \
+  -DENABLE_UPDATE_CHECK=OFF \
+  -DENABLE_STRICT=OFF       \
   -DENABLE_STATIC=OFF
-make %{?_smp_mflags} V=1
+%cmake_build
 
 %install
 %cmake_install
 install -Dpm 0644 linphone.appdata.xml \
-  %{buildroot}%{_datadir}/metainfo/linphone.appdata.xml
+  %{buildroot}%{_datadir}/metainfo/org.linphone.appdata.xml
 
-%if 0%{?suse_version} < 1500
-%post -n %{_name}
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun -n %{_name}
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
+rm %{buildroot}%{_bindir}/qt.conf
 
 %files -n %{_name}
-%license LICENSE
-%doc README.md
+%license LICENSE.txt
+%doc CHANGELOG.md README.md
 %{_bindir}/linphone
-%{_bindir}/linphone-tester
 %{_datadir}/linphone/
 %{_datadir}/applications/linphone.desktop
 %{_datadir}/icons/hicolor/*/apps/linphone.*
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/linphone.appdata.xml
+%{_datadir}/metainfo/org.linphone.appdata.xml
 
 %changelog

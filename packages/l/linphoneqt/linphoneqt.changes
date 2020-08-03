@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.2.1:
+  * See https://gitlab.linphone.org/BC/public/linphone-desktop/blob/4.2.1/CHANGELOG.md
+- Update licence to GPLv3+.
+- Rebase linphoneqt-fix-no-git.patch.
+- Drop linphoneqt-fix-cmake-i18n.patch,
+  linphoneqt-fix-qt-5.11.patch, fix-qm-generation.patch,
+  linphoneqt-force-default-style.patch: fixed upstream.
+- Drop linphoneqt-qt-5.9-fix-buttons.patch: no longer supported.
+
+-------------------------------------------------------------------
 Sat Aug 31 12:09:47 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add fix-qm-generation.patch to fix abort on startup (boo#1140595)

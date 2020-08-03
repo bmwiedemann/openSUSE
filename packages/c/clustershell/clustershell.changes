@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 29 18:21:55 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to upstream release 1.8.3: 
+  * Worker/ScpClient: always put remote into brackets (#424)
+  * RangeSetND: fix padding info when slicing using __getitem__() (#429)
+  * Defaults: Allow out-of-tree worker modules
+- Resync spec file with upstream, disable Python2 where not supported
+  any more.
+- Obsolete python2 package that may be installed when building for
+  python3 only.
+
+-------------------------------------------------------------------
 Sat Nov 30 18:18:41 UTC 2019 - Stephane Thiell <sthiell@stanford.edu>
 
 - The correct license is LGPL-2.1-or-later
