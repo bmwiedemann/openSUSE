@@ -17,8 +17,8 @@
 
 
 Name:           libzbc
-%define lname   libzbc-5_8_5
-Version:        5.8.5
+%define lname   libzbc-5_9_0
+Version:        5.9.0
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later
@@ -26,7 +26,6 @@ Group:          Hardware/Other
 URL:            https://github.com/hgst/libzbc
 
 Source:         https://github.com/hgst/libzbc/archive/v%version.tar.gz
-Patch1:         0001-build-avoid-double-definition-of-zbc_log_drv-etc.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config

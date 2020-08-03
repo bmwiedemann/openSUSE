@@ -127,4 +127,12 @@
     <comment>- Add 0001-build-avoid-double-definition-of-zbc_log_drv-etc.patch [boo#1166503]</comment>
     <requestid>785464</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0008e58322a60c2c25f110599257f743</srcmd5>
+    <version>5.9.0</version>
+    <time>1596456726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.9.0</comment>
+    <requestid>823629</requestid>
+  </revision>
 </revisionlist>

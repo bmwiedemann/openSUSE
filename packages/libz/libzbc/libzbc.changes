@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 30 15:53:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9.0
+  * Compilation warning fixes
+- Drop 0001-build-avoid-double-definition-of-zbc_log_drv-etc.patch
+  (merged)
+
+-------------------------------------------------------------------
 Mon Mar 16 07:20:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-build-avoid-double-definition-of-zbc_log_drv-etc.patch
