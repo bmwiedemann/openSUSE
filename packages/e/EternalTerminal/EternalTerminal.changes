@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  3 06:45:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.11:
+  * Fix version number
+
+-------------------------------------------------------------------
+Mon Aug  3 06:45:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.10:
+  * Fix --help and --version flags
+
+-------------------------------------------------------------------
 Fri Jul 31 06:33:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.0.9:
