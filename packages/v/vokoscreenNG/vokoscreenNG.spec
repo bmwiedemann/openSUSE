@@ -17,15 +17,16 @@
 
 
 Name:           vokoscreenNG
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/vkohaupt/vokoscreenNG
 Source:         https://github.com/vkohaupt/%{name}/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - Fix Qt 5.15 build failure
-Patch0:         adapt-to-qt-5.15.patch
+# PATCH-FIX-UPSTREAM - Add AppStream metadata - PR#94
+Patch0:         add_appstream_metadata.patch
+BuildRequires:  appstream-glib
 BuildRequires:  gstreamer-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
@@ -78,6 +79,10 @@ mkdir -p %{buildroot}/usr/share/applications/
 cp src/applications/%{name}.desktop %{buildroot}/usr/share/applications/
 mkdir -p %{buildroot}/usr/share/pixmaps/
 cp src/applications/%{name}.png %{buildroot}/usr/share/pixmaps/
+mkdir -p %{buildroot}/usr/share/metainfo/
+cp src/applications/vokoscreenNG.appdata.xml %{buildroot}/usr/share/metainfo/
+
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 %files
 %doc README.md
@@ -85,5 +90,6 @@ cp src/applications/%{name}.png %{buildroot}/usr/share/pixmaps/
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %changelog

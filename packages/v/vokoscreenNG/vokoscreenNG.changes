@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 31 11:08:46 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.4
+  * fix automatic detection of screen resolution changes
+  * switch from adder to audiomixer
+  * switch from faac voaacenc
+  * remove opus from mov format
+- Removed adapt-to-qt-5.15.patch
+- Added add_appstream_metadata.patch (boo#1172620)
+
+-------------------------------------------------------------------
 Mon Jun  8 11:33:18 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - added adapt-to-qt-5.15.patch
