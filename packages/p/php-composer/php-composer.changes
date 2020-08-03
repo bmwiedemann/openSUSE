@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug  3 09:59:56 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.10.10
+  * Fixed create-project not triggering events while installing the
+    root package
+  * Fixed PHP 8 compatibility issue
+  * Fixed self-update to avoid automatically upgrading to the next
+    major version once it becomes stable
+- Version 1.10.9
+  * Fixed Bitbucket redirect loop when credentials are outdated
+  * Fixed GitLab auth prompt wording
+  * Fixed self-update handling of files requiring admin permissions
+    to write to on Windows (it now does a UAC prompt)
+  * Fixed parsing issues in funding.yml files
+- Version 1.10.8
+  * Fixed compatibility issue with git being configured to show
+    signatures by default
+  * Fixed discarding of local changes when updating packages to include
+    untracked files
+  * Several minor fixes
+
+-------------------------------------------------------------------
 Wed Jun  3 08:40:35 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 1.10.7
