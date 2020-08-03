@@ -249,7 +249,7 @@ ln -sf /usr/share/mof/cim-current $RPM_BUILD_ROOT/%{_datadir}/sfcb/CIM
 install -m 0644 %SOURCE4 $RPM_BUILD_ROOT/etc/pam.d/sfcb
 install -m 0755 %SOURCE8 %{buildroot}%{_datadir}/sfcb/gen_ssl_certs.sh
 rm $RPM_BUILD_ROOT%{_libdir}/sfcb/*.la
-%if 0%{?suse_version} > 1010
+%if 0%{?suse_version} <= 1500
 # firewall service definition
 mkdir -p $RPM_BUILD_ROOT/etc/sysconfig/SuSEfirewall2.d/services
 install -m 0644 %SOURCE6 $RPM_BUILD_ROOT/etc/sysconfig/SuSEfirewall2.d/services/sblim-sfcb
@@ -268,7 +268,7 @@ echo "%dir %{_sysconfdir}/sfcb/" >> _pkg_list
 echo "%dir %{_libdir}/sfcb" >> _pkg_list
 echo "%config(noreplace) %{_sysconfdir}/sfcb/sfcb.cfg" >> _pkg_list
 echo "%config %{_sysconfdir}/pam.d/sfcb" >> _pkg_list
-%if 0%{?suse_version} > 1010
+%if 0%{?suse_version} <= 1500
 echo "%config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/sblim-sfcb" >> _pkg_list
 %endif
 echo "%doc README COPYING AUTHORS" >> _pkg_list
