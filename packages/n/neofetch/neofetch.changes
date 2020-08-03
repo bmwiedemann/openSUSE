@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Aug  3 06:43:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 7.1.0:
+  * [distro] added support for latest macOS.
+  * [distro] added automatic detection for Ubuntu flavours.
+  * [uptime] fixed seconds on Linux.
+  * [desktop environment] enabled version output by default.
+  * [distro] now displays whether -current or -release when OpenBSD is detected.
+  * [distro] added support for OpenStage Linux.
+  * [theme] change gtk3 config order.
+  * [distro] split AOSC into OS and OS/Retro.
+  * [distro] added support for openmamba 
+  * [general] added support for OIL shell.
+  * [distro] added support for Alter Linux
+  * [distro] added support for Serene Linux 
+  * [window manager] added support for xmonad.
+  * [packages] sped up guix.
+  * [shell] added es shell support.
+  * [distro] added support for OS Elbrus.
+  * [distro] added support for sambabox.
+  * [disk] fixed bug with disk entries and spaces in filenames.
+  * [resolution] multi-monitor Windows support.
+  * [distro] added support for Venom Linux.
+  * [song] added playerctl support.
+  * [general] updated iOS device information.
+  * [distro] added support for Hash Linux.
+  * [distro] added support for Garuda Linux.
+  * [window manager] added support for x11fs.
+  * [song] added Tauon Music Box support.
+  * [distro] added support for DarkOS.
+  * [song] added support for Olivia player.
+  * [distro] added support for ITX.
+  * [resolution] fixed output when monitor connected but turned off.
+  * [ascii] added logo for Ubuntu Cinnamon.
+  * [distro] added support for OpenEuler.
+  * [terminal] added support for Windows terminal.
+  * [memory] added support for changing output unit (kb, mb, gb).
+  * [wallpaper] added LXQT support.
+
+-------------------------------------------------------------------
 Sun Mar  8 15:03:04 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 7.0.0:

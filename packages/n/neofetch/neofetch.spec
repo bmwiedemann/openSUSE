@@ -18,7 +18,7 @@
 
 
 Name:           neofetch
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        CLI system information tool written in BASH
 License:        MIT
