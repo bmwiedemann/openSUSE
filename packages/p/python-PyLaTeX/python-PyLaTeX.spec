@@ -26,6 +26,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/JelteF/PyLaTeX
 Source:         https://github.com/JelteF/PyLaTeX/archive/v%{version}.tar.gz#/PyLaTeX-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM denose.patch gh#JelteF/PyLaTeX#294 mcepl@suse.com
+# Remove nose dependency
+Patch0:         denose.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -66,8 +69,11 @@ Recommends:     tex(tikz.sty)
 Recommends:     tex(xcolor.sty)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module ordered-set}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module quantities}
 BuildRequires:  texlive-latex
 BuildRequires:  tex(amsmath.sty)
 BuildRequires:  tex(booktabs.sty)
@@ -106,6 +112,7 @@ PyLaTeX is a Python library for creating and compiling LaTeX files.
 
 %prep
 %setup -q -n PyLaTeX-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -116,7 +123,8 @@ PyLaTeX is a Python library for creating and compiling LaTeX files.
 
 %check
 # Quantities is an optional dependency that currently doesn't work
-%python_expand nosetests-%{$python_bin_suffix} -v -e 'test_quantities'
+# %%python_expand nosetests-%%{$python_bin_suffix} -v -e 'test_quantities'
+%pytest
 
 %files %{python_files}
 %doc README.rst
