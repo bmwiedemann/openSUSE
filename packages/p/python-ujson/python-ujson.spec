@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-ujson
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/esnme/ultrajson
 Source:         https://files.pythonhosted.org/packages/source/u/ujson/ujson-%{version}.tar.gz
 # unbundle double-conversion (https://github.com/ultrajson/ultrajson/issues/375)

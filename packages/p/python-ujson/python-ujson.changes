@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  3 05:24:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.0:
+  * PEP 489 Multi Phase Init support (#418) @WillAyd
+  * PyPy3 test fixes (#413) @mgorny
+
+-------------------------------------------------------------------
 Sun Jun 14 09:36:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.0.0:
