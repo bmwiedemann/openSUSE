@@ -3265,6 +3265,7 @@ unsorted:
   - fluxbox-styles-upstream 
   - flxmlrpc-devel 
   - fly 
+  - fmit 
   - fmpp 
   - fmpp-javadoc 
   - fmt-devel 
@@ -3457,6 +3458,7 @@ unsorted:
   - fxload 
   - fzf 
   - fzf-bash-completion 
+  - fzf-fish-completion 
   - fzf-tmux 
   - fzf-zsh-completion 
   - fzy 
@@ -8664,8 +8666,8 @@ unsorted:
   - libbeecrypt6 
   - libbelcard1 
   - libbelcard1-32bit: [x86_64] 
-  - libbellesip0 
-  - libbellesip0-32bit: [x86_64] 
+  - libbellesip1 
+  - libbellesip1-32bit: [x86_64] 
   - libbelr1 
   - libbelr1-32bit: [x86_64] 
   - libbemenu0 
@@ -10427,7 +10429,7 @@ unsorted:
   - libjthread1_3_3 
   - libjxrglue0 
   - libkColorPicker0_1_4 
-  - libkImageAnnotator0_3_1 
+  - libkImageAnnotator0_3_2 
   - libkaccounts2-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
@@ -10615,13 +10617,13 @@ unsorted:
   - liblinebreak-devel 
   - liblinebreak2 
   - liblink-grammar5 
-  - liblinphone++9 
-  - liblinphone++9-32bit: [x86_64] 
+  - liblinphone++10 
+  - liblinphone++10-32bit: [x86_64] 
   - liblinphone-data 
   - liblinphone-devel 
   - liblinphone-lang 
-  - liblinphone9 
-  - liblinphone9-32bit: [x86_64] 
+  - liblinphone10 
+  - liblinphone10-32bit: [x86_64] 
   - libliquid-devel 
   - liblirc0 
   - liblirc0-32bit: [x86_64] 
@@ -10888,6 +10890,7 @@ unsorted:
   - libmowgli-2-0 
   - libmowgli2-devel 
   - libmozjs-52 
+  - libmozjs-60 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
@@ -13433,7 +13436,7 @@ unsorted:
   - libzbarqt-devel 
   - libzbarqt0 
   - libzbarqt0-32bit: [x86_64] 
-  - libzbc-5_8_5 
+  - libzbc-5_9_0 
   - libzbc-devel 
   - libzbc-gui 
   - libzbc-tools 
@@ -19231,7 +19234,6 @@ unsorted:
   - python2-appindicator 
   - python2-arabic-reshaper 
   - python2-azure-datalake-store 
-  - python2-clustershell 
   - python2-geopy 
   - python2-keyrings.alt 
   - python2-libfwsi 
@@ -34375,6 +34377,7 @@ unsorted:
   - wayland-devel 
   - wayland-devel-32bit: [x86_64] 
   - wayland-protocols-devel 
+  - wayland-utils 
   - waylandpp 
   - waylandpp-devel 
   - wayvnc 
@@ -34460,6 +34463,7 @@ unsorted:
   - wl-clipboard 
   - wl-clipboard-bash-completion 
   - wl-clipboard-zsh-completion 
+  - wlr-randr 
   - wlroots-devel 
   - wm-icons 
   - wmpomme 
