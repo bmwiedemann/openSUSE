@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:14:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.2
+  * Fixed: Tests fail to build with shared library.
+
+-------------------------------------------------------------------
 Thu Jun 25 19:27:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.3.1
