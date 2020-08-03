@@ -463,6 +463,27 @@ Prefer: -Mesa-libGLESv1_CM-devel-32bit
 Prefer: -Mesa-libGLESv1-devel-32bit
 Prefer: -libqt5-qttools-devel-32bit
 Prefer: -libqt5-qtwebengine-devel-32bit
+Prefer: -libcom_err-devel-32bit
+Prefer: -libverto-devel-32bit
+Prefer: -libuuid-devel-32bit
+Prefer: -libmount-devel-32bit
+Prefer: -libbz2-devel-32bit
+Prefer: -zlib-devel-32bit
+Prefer: -libexpat-devel-32bit
+Prefer: -libblkid-devel-32bit
+Prefer: -libgcrypt-devel-32bit
+Prefer: -popt-devel-32bit
+Prefer: -xz-devel-32bit
+Prefer: -libelf-devel-32bit
+Prefer: -ncurses-devel-32bit
+Prefer: -libnettle-devel-32bit
+Prefer: -libtiff-devel-32bit
+Prefer: -libattr-devel-32bit
+Prefer: -keyutils-devel-32bit
+Prefer: -libacl-devel-32bit
+Prefer: -libext2fs-devel-32bit
+Prefer: -audit-devel-32bit
+
 
 # have choice for python3-Sphinx needed by trytond: python3-Sphinx python3-Sphinx2
 Prefer: python3-Sphinx
