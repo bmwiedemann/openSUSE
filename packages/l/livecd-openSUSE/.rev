@@ -932,4 +932,11 @@
     <time>1592211681</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="114" vrev="114">
+    <srcmd5>d53981599ee7305db95964f375509d51</srcmd5>
+    <version>unknown</version>
+    <time>1596438990</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop okular-lang from the KDE Live CD - hunting for space</comment>
+  </revision>
 </revisionlist>
