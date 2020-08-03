@@ -1,14 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 30 20:33:25 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 3.22.11:
+  + Support for guile-3.0
+  + Updated translations.
+- Remove patch:
+  * add-guile-3.0-support.patch: it was fixed upstream.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Thu Jan 16 14:09:03 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 3.22.10:
-  * Switch to the meson build system.
-  * remove intltool marks from AppData file.
-  * Update translations.
-  * Fix reshuffling.
-  * Some fixes and cleanups.
+  + Switch to the meson build system.
+  + remove intltool marks from AppData file.
+  + Update translations.
+  + Fix reshuffling.
+  + Some fixes and cleanups.
 - Add patch:
-  * add-guile-3.0-support.patch: Allows building with Guile 3.0.
+  + add-guile-3.0-support.patch: Allows building with Guile 3.0.
 - Switch download link, as release is not on download.gnome.org
 - New build requires: gcc-c++, meson and pkgconfig(libxml-2.0)
 - Remove no longer needed dependencies: intltool
