@@ -22,7 +22,7 @@
 %bcond_without python3
 
 Name:           tbb
-Version:        2020.2
+Version:        2020.3
 Release:        0
 Summary:        Threading Building Blocks (TBB)
 License:        Apache-2.0
