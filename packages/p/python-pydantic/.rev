@@ -33,4 +33,12 @@
   * Avoid mutating `Field` default value, #1412 by @prettywood</comment>
     <requestid>813030</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5e81aaacfba26417019532f374746fa</srcmd5>
+    <version>1.6.1</version>
+    <time>1596565310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824184</requestid>
+  </revision>
 </revisionlist>

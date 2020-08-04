@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sun Aug  2 15:14:47 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add optional test dependencies
+- Recommend optional runtime dependency python-typing_extensions
+- Remove unused runtime dependency ujson
+- Update to v1.6.1
+  * fix validation and parsing of nested models with default_factory
+- from v1.6
+  * Modify validators for conlist and conset to not have always=True
+  * Add port check to AnyUrl (can't exceed 65536) ports are 16 insigned
+    bits: 0 <= port <= 2**16-1 src: rfc793 header format
+  * Document default regex anchoring semantics
+  * Use chain.from_iterable in class_validators.py. This is a faster
+    and more idiomatic way of using itertools.chain. Instead of computing
+    all the items in the iterable and storing them in memory, they are
+    computed one-by-one and never stored as a huge list.
+    This can save on both runtime and memory space
+  * Add conset(), analogous to conlist()
+  * make pydantic errors (un)pickable
+  * Allow custom encoding for dotenv files
+  * Ensure SchemaExtraCallable is always defined to get type hints on BaseConfig
+  * Update datetime parser to support negative timestamps
+  * Update mypy, remove AnyType alias for Type[Any]
+  * Adjust handling of root validators so that errors are aggregated
+    from all failing root validators, instead of reporting on only
+    the first root validator to fail
+  * Make __modify_schema__ on Enums apply to the enum schema rather
+    than fields that use the enum
+  * Fix behavior of __all__ key when used in conjunction with index
+    keys in advanced include/exclude of fields that are sequences
+  * Subclass validators do not run when referencing a List field
+    defined in a parent class when each_item=True
+  * change schema.field_class_to_schema to support frozenset in schema
+  * Call __modify_schema__ only for the field schema
+  * Move the assignment of field.validate_always in fields.py so the
+    always parameter of validators work on inheritance
+  * Added support for UUID instantiation through 16 byte strings such
+    as b'\x12\x34\x56\x78' * 4.
+    This was done to support BINARY(16) columns in sqlalchemy
+  * Add a test assertion that default_factory can return a singleton
+  * Add NameEmail.__eq__ so duplicate NameEmail instances are
+    evaluated as equal
+  * Add datamodel-code-generator link in pydantic document site
+  * Added a "Discussion of Pydantic" section to the documentation,
+    with a link to "Pydantic Introduction" video
+  * Avoid some side effects of default_factory by calling it only
+    once if possible and by not setting a default value in the schema
+  * Added docs about dumping dataclasses to JSON
+  * Make BaseModel.__signature__ class-only, so getting __signature__
+    from model instance will raise AttributeError
+  * include 'format': 'password' in the schema for secret types
+  * Modify schema constraints on ConstrainedFloat so that
+    exclusiveMinimum and minimum are not included in the schema if
+    they are equal to -math.inf and exclusiveMaximum and maximum are
+    not included if they are equal to math.inf
+  * Squash internal __root__ dicts in .dict() (and, by extension, in .json())
+  * Move const validator to post-validators so it validates the parsed value
+  * Fix model validation to handle nested literals
+  * Remove user_required = True from RedisDsn, neither user nor
+    password are required
+  * Remove extra allOf from schema for fields with Union and custom Field
+  * Updates OpenAPI schema generation to output all enums as separate
+    models. Instead of inlining the enum values in the model schema,
+    models now use a $ref property to point to the enum definition
+
+-------------------------------------------------------------------
 Tue Jun  9 19:24:27 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.1
