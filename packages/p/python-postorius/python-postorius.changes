@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Aug  4 02:03:24 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Update to 1.3.3
+  * Expose additional list settings.
+  * Correct description of Digest Frequency.
+  * Added links to Reply-To munging articles.
+  * Fix "Show Headers" button to show the held message headers in the
+    held message popup.
+  * Fix the held message popup structure and increase the max width of the popup
+    to be 800px(modal-lg) for larger screens.
+  * Fix FILTER_VHOST = True option to try to find the email host corresponding
+    to the requesting web host.
+  * Allow specifying a reason when rejecting a held message.
+  * Allow users to set their preferred language in their preferences.
+  * Add support to ban addresses for the entire Mailman installation.
+  * Un-handled HTTPError exception raised from MailmanClient now results in an
+    error page and proper logging instead of mysterious KeyError in logs.
+  * Change List settings navigation to be vertical instead of horizontal.
+  * Move bounce processing settings into a new vertical tab for better
+    visibility.
+  * Add URL to edit the Web host for each domain in Domain Index page. Also, show
+    the SITE_ID for each webhost.
+
+-------------------------------------------------------------------
 Tue Apr 14 08:12:34 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.3.2 (no changelog)
