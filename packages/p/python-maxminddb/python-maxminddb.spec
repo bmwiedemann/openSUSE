@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-maxminddb
-Version:        1.5.4
+Version:        2.0.2
 Release:        0
 Summary:        Reader for the MaxMind DB format
 License:        Apache-2.0
 URL:            http://www.maxmind.com/
 Source:         https://files.pythonhosted.org/packages/source/m/maxminddb/maxminddb-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libmaxminddb-devel
@@ -37,9 +37,6 @@ BuildRequires:  python-ipaddress
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 # /SECTION
-%ifpython2
-Requires:       python-ipaddress
-%endif
 %python_subpackages
 
 %description
