@@ -23,7 +23,7 @@
 
 
 Name:               pagure
-Version:            5.10.0
+Version:            5.11.2
 Release:            0
 Summary:            A git-centered forge
 Group:              Development/Tools/Version Control
@@ -40,35 +40,6 @@ Source1:            https://raw.githubusercontent.com/fedora-infra/python-fedora
 # SUSE-specific README providing a quickstart guide
 Source10:           pagure-README.SUSE
 
-
-# Backports from upstream
-## Backport fix to make stats page work
-Patch0001:          0001-Make-the-stats-page-use-the-new-stats-API-endpoint.patch
-## Backport support for STARTTLS support for SMTP servers
-Patch0002:          0001-Add-support-for-smtp-server-requiring-starttls-to-wo.patch
-Patch0003:          0002-starttls-support-via-SMTP_STARTTLS-provide-additiona.patch
-Patch0004:          0001-Do-not-assume-there-is-a-SMTP_STARTTLS-configuration.patch
-## Fix access grants for docs repo
-Patch0005:          0001-Fix-repotype-spelling.patch
-## Fix visual bug on api documentation formatting
-Patch0006:          0001-api-fix-apidoc-format-on-api_view_issues_history_det.patch
-## Add setting for changing pull mirror source for projects
-Patch0007:          0001-Allow-editing-the-URL-a-project-is-mirrored-from.patch
-## Add descriptions to API scopes listed at API token creation page
-Patch0008:          0001-Show-the-ACL-name-in-addition-to-the-description-whe.patch
-## Restore heatmap JS library
-Patch0009:          0001-Bring-back-JS-library-used-for-the-heatmap.patch
-## Ensure header keys are rendered as strings
-Patch0010:          0001-Ensure-the-title-name-of-the-headers-are-strings.patch
-## Fix title of burndown graph
-Patch0011:          0001-Fix-the-title-of-the-graph-showing-the-evolution-of-.patch
-## Fix permissions for generated authorized_keys file
-Patch0012:          0001-Make-sure-authorized_keys-file-has-mode-600.patch
-
-# Changes proposed upstream
-## Use whitenoise to render static assets
-## From: https://pagure.io/pagure/pull-request/4885
-Patch0101:          0101-Use-WhiteNoise-to-serve-static-assets-for-the-Pagure.patch
 
 # SUSE-specific fixes
 ## Change the defaults in the example config to match packaging
@@ -659,6 +630,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %attr(-,git,git) %config(noreplace) /srv/gitolite/.gitolite/conf/gitolite.conf
 %attr(-,git,git) %config(noreplace) /srv/gitolite/.gitolite.rc
 %attr(-,git,git) %dir /srv/www/pagure-releases
+%attr(-,git,git) %dir %{_localstatedir}/log/pagure
 
 
 %files web-apache-httpd
@@ -674,8 +646,8 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %config(noreplace) %{_sysconfdir}/nginx/vhosts.d/pagure.conf
 %{_unitdir}/pagure_web.service
 %{_unitdir}/pagure_docs_web.service
-%attr(-,git,git) %dir %{_localstatedir}/log/pagure
-%ghost %{_localstatedir}/log/pagure/*.log
+%ghost %{_localstatedir}/log/pagure/access_*.log
+%ghost %{_localstatedir}/log/pagure/error_*.log
 
 
 %files theme-upstream
