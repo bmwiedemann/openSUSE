@@ -17,19 +17,16 @@
 
 
 Name:           miller
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
 License:        BSD-2-Clause AND BSD-4-Clause
 URL:            http://johnkerl.org/miller/doc
 Source0:        https://github.com/johnkerl/miller/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM miller-5.3.0-gcc43.patch
-Patch0:         miller-5.3.0-gcc43.patch
 BuildRequires:  automake
 BuildRequires:  flex >= 2.5.35
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Miller (mlr) allows name-indexed data such as CSV and JSON files to be
@@ -43,7 +40,6 @@ well with pipes and can feed "tail -f".
 %ifarch %ix86
 sed -e 's/-pg//' -i c/Makefile.am
 %endif
-%patch0 -p1
 
 %build
 autoreconf -fiv
@@ -54,8 +50,8 @@ make %{?_smp_mflags}
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc LICENSE.txt README.md c/draft-release-notes.md
+%license LICENSE.txt
+%doc README.md c/draft-release-notes.md
 %{_bindir}/mlr
 %{_mandir}/man1/mlr.1%{ext_man}
 

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug  4 06:57:04 UTC 2020 - aloisio@gmx.com
+
+- Update to version 5.8.0
+  Features:
+  * The new count verb is a keystroke-saver for stats -a count
+    -f {some field name}`.
+  * --jsonx and --ojsonx are keystroke-savers for --json
+    --jvstack and --ojson --jvstack, which is to say, multi-line
+    pretty-printed JSON format.
+  * The new -s name=value feature for mlr put and mlr filter
+    gives you simpler access to environment variables in your
+    Miller script, as requested in #315.
+  Bugfixes:
+  * mlr format-values is no longer SEGVing on CSV/TSV input.
+    This was reported on #330.
+  * #313 fixes a corner case when field names within
+    command-line arguments have embedded newlines.
+  * Line/column indicators for JSON-formatting error messages
+    are now correct (previously they were showing up as 0).
+  * end {print NF} no longer SEGVs. This was reported in #330.
+  * Several broken doc links were fixed up as reported on #329.
+- Drop miller-5.3.0-gcc43.patch (no longer necessary)
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Mar 17 06:56:30 UTC 2020 - aloisio@gmx.com
 
 - Update to version 5.7.0
