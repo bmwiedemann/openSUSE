@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 29 12:00:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.12.0:
+  * Option to hide left or right part of the keypad
+  * Replace fraction mode combo box with a single toggle button
+  * Disable prefixes by default in scientific, engineering,
+    and pure modes, and change behaviour of composite modes when
+    user changes separate options
+  * Auto completion for objects and properites in data set functions
+  * Split long numerical results in two lines and show bit position
+    for binary number that does not fit in window
+  * Improved text layout in result 
+  * Fix Insert button in insert function dialog 
+
+-------------------------------------------------------------------
 Tue Jun 23 09:17:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 3.11.0:
