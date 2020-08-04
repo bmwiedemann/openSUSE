@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 21:27:49 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.14:
+  * fix spine not updating rrd_next_step
+
+-------------------------------------------------------------------
 Tue Jul 14 09:12:54 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.13:
