@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:02:41 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1595940615.c452cc00:
+  * Dev: unittest: test the case which command "crm corosync status quorum" return code is 2
+  * Dev: behave: use "crm corosync status quorum" to check the quorum status
+  * Low: corosync: handle the return code of corosync-quorumtool correctly(bsc#1174588)
+
+-------------------------------------------------------------------
 Thu Jul 23 15:28:41 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1595517298.a06e892f:
