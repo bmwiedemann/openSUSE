@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  1 22:06:58 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.0.5:
+  * Theano is now compatible with Python 3.9
+  * Fixed many deprecation warnings
+
+-------------------------------------------------------------------
 Mon May 18 09:10:30 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

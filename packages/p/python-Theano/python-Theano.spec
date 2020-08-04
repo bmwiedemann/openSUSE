@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-Theano%{psuffix}
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        A scientific python library
 License:        BSD-3-Clause
