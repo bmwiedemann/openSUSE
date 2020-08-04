@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 31 20:30:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.1
+  * Adding monitor-failure information in juniper_junos_facts
+    output
+  * Raise exception when dev.cli fails with exception
+  * Device version fix for srx when cluster id greater than 15
+
+-------------------------------------------------------------------
 Tue Jun 30 19:33:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.0
