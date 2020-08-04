@@ -1,0 +1,22 @@
+Index: bin/otrs.CheckModules.pl
+===================================================================
+--- bin/otrs.CheckModules.pl.orig
++++ bin/otrs.CheckModules.pl
+@@ -427,6 +427,17 @@ my @NeededModules = (
+         },
+     },
+     {
++        Module    => 'Moo',
++        Required  => 1,
++        Comment   => 'Minimalist Object Orientation.',
++        InstTypes => {
++            aptget => 'libmoo-perl',
++            emerge => 'dev-perl/Moo',
++            zypper => 'perl-Moo',
++            ports  => 'perl/p5-moo',
++        },
++    },
++    {
+         Module               => 'Net::DNS',
+         Required             => 1,
+         VersionsNotSupported => [

@@ -57,6 +57,8 @@ Source99:       itsm-update.sh
 Patch1:         %{name}-httpd_conf.patch
 # PATCH-FIX-OPENSUSE -- don't test write permissions on bin/
 Patch2:         otrs-perm_test.patch
+# PATCH-FIX-OPENSUSE -- missing check for perl(Moo)
+Patch10:        otrs-CheckModules.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  coreutils
@@ -91,6 +93,7 @@ Requires:       perl(DateTime)
 Requires:       perl(Digest::SHA)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(List::Util::XS)
+Requires:       perl(Moo)
 Requires:       perl(Net::DNS) >= 0.60
 Requires:       perl(Template)
 Requires:       perl(Template::Stash::XS)
@@ -180,6 +183,7 @@ Authors list: see CREDITS
 %setup -q -n %{name}-%{otrs_ver} -a 1
 %patch1
 %patch2
+%patch10
 
 ### Is this critical ? (https://bugs.otrs.org/show_bug.cgi?id=12889)
 # rpmlint: pem-certificate /srv/otrs/Kernel/cpan-lib/Mozilla/CA/cacert.pem

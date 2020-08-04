@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  1 12:32:06 UTC 2020 - chris@computersalat.de
+
+- fix deps
+  * add missing perl(Moo)
+- add otrs-CheckModules.patch
+
+-------------------------------------------------------------------
 Tue Apr  7 21:54:05 UTC 2020 - chris@computersalat.de
 
 - Update to 6.0.27

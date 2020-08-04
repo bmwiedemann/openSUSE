@@ -522,4 +522,12 @@ update OTRS:ITSM to 3.1.4</comment>
     <comment>Update to 6.0.27, CVE-2019-11358, OSA-2020-05, CVE-2020-1769, OSA-2020-06, CVE-2020-1770, OSA-2020-07, CVE-2020-1771, OSA-2020-08, CVE-2020-1772, OSA-2020-09, CVE-2020-1773, OSA-2020-10 (forwarded request 792265 from computersalat)</comment>
     <requestid>792266</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>92e61482a7f48364a78efe58df99dac1</srcmd5>
+    <version>6.0.27</version>
+    <time>1596565263</time>
+    <user>dimstar_suse</user>
+    <comment>fix deps, add missing perl(Moo) (forwarded request 824149 from computersalat)</comment>
+    <requestid>824151</requestid>
+  </revision>
 </revisionlist>
