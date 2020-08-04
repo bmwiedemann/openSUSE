@@ -38,4 +38,15 @@
   * fix entering a toolbox if something changed in /dev since creation</comment>
     <requestid>788121</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c845267ce8eb61e025af472b70731c60</srcmd5>
+    <version>1.0+git20200803.7ff20b6</version>
+    <time>1596564990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200803.7ff20b6:
+  * Connect to the host's SSH agent in user toolboxes.
+  * Stay in current directory, even when entering a toolbox
+  * Use the toolbox name as the actual toolbox's hostname</comment>
+    <requestid>824140</requestid>
+  </revision>
 </revisionlist>

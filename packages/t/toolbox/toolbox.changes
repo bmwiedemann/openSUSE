@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 03 12:49:28 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.0+git20200803.7ff20b6:
+  * Connect to the host's SSH agent in user toolboxes.
+  * Stay in current directory, even when entering a toolbox
+  * Use the toolbox name as the actual toolbox's hostname
+
+-------------------------------------------------------------------
 Wed Mar 25 10:04:19 UTC 2020 - kukuk@suse.com
 
 - Update to version 1.0+git20200324.dd047bc:
