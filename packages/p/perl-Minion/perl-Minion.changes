@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug  1 03:19:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.13
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.13  2020-07-30
+    - Added EXPERIMENTAL support for lax dependencies.
+    - Added EXPERIMENTAL lax option to enqueue method in Minion, Minion::Backend and Minion::Backend::Pg.
+    - Removed experimental status from notes option in Minion::Backend and Minion::Backend::Pg.
+    - Added lax field to list_jobs method in Minion::Backend::Pg.
+    - Added is_locked method to Minion.
+    - Added auto_retry_job method to Minion::Backend.
+    - Added parents method to Minion::Job.
+    - Added -x option to job command.
+    - Fixed a bug in Minion::Backend::Pg where manual retries would count towards the attempts limit for automatic
+      retries.
+
+-------------------------------------------------------------------
 Tue Jul 28 09:44:28 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.12
