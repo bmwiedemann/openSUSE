@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 31 15:42:39 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- GNOME desktop pattern:
+  * useful tool, not available as flatpak (gnome-usage)
+  * packages necessary for using, e.g., a bluetooth headset
+  * packages necessary if one wants thumbnails in nautilus
+  * make GNOME keyring fully work (gcr-ssh-askpass)
+
+-------------------------------------------------------------------
 Fri Jul 31 09:35:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add xfsprogs to the media else YaST2 can become very unhappy.

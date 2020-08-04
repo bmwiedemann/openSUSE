@@ -307,7 +307,9 @@ Requires:       gnome-packagekit
 Requires:       gnome-software
 Requires:       gnome-system-monitor
 Requires:       gnome-tweak-tool
+Requires:       gnome-usage
 # for online accounts and calendar integration
+Requires:       gnome-bluetooth
 Requires:       gnome-control-center-goa
 Requires:       gnome-online-accounts
 Requires:       gnome-shell-calendar
@@ -315,6 +317,12 @@ Requires:       google-carlito-fonts
 Requires:       google-droid-fonts
 Requires:       google-opensans-fonts
 Requires:       google-roboto-fonts
+# For seeing thumbnails in Nautilus
+Requires:       gdk-pixbuf-thumbnailer
+Requires:       gsf-office-thumbnailer
+Requires:       rsvg-thumbnailer
+# So that GNOME shell extensions can be installed
+Requires:       chrome-gnome-shell
 Requires:       libgnomesu
 Requires:       nautilus
 Requires:       nautilus-extension-terminal
@@ -324,9 +332,15 @@ Requires:       noto-emoji-fonts
 Requires:       noto-sans-fonts
 Requires:       polkit-default-privs
 # Pulseaudio is the default sound server
+Requires:       pulseaudio-module-bluetooth
 Requires:       pulseaudio-module-gsettings
 Requires:       pulseaudio-module-x11
+# So that GNOME keyring works
+Requires:       gcr-ssh-askpass
 Requires:       samba
+# implied by gnome-bluetooth
+#Requires:       bluez
+Requires:       bluez-firmware
 # #509829
 Requires:       xdg-user-dirs-gtk
 Requires:       yelp
