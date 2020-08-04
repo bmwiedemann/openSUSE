@@ -1,7 +1,7 @@
 #
 # spec file for package k3s
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,9 @@
 
 # To workaround https://github.com/rancher/k3s/issues/231, build kubectl
 %define build_kubectl 1
+
+# baseversion - version of kubernetes for this package
+%define baseversion 1.14
 
 Name:           k3s
 Version:        0.4.0
@@ -46,6 +49,9 @@ Requires:       runc
 # Conflicts:      cri-tools
 Conflicts:      kubectl
 Conflicts:      kubernetes-client
+Conflicts:      kubernetes-client-provider
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %{?systemd_requires}
 
 %description
@@ -74,6 +80,7 @@ Kubernetes server components.
 
 %prep
 %setup -q
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH0}
 %patch0 -p1
 
 %build
@@ -88,13 +95,14 @@ Kubernetes server components.
 %{goinstall}
 %if %{build_kubectl}
 %{goinstall} ./cmd/kubectl
+mv -v %{buildroot}%{_bindir}/kubectl %{buildroot}%{_bindir}/kubectl%{baseversion}
 %endif
 %{goinstall} ./vendor/k8s.io/kubernetes/cmd/hyperkube
 
 # Install symlinks
 pushd %{buildroot}%{_bindir}
 %if !%{build_kubectl}
-ln -s k3s kubectl
+ln -s k3s kubectl%{baseversion}
 %endif
 # ln -s k3s crictl
 popd
@@ -113,16 +121,27 @@ mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rck3s-server
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rck3s-agent
 
+# alternatives
+ln -s -f %{_sysconfdir}/alternatives/kubectl %{buildroot}%{_bindir}/kubectl
+
 %pre
 %service_add_pre k3s-server.service k3s-agent.service
 
 %post
+export baseversion="%{baseversion}"
+%{_sbindir}/update-alternatives \
+  --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} ${baseversion/./}
+
 %service_add_post k3s-server.service k3s-agent.service
 
 %preun
 %service_del_preun k3s-server.service k3s-agent.service
 
 %postun
+if [ ! -f %{_bindir}/kubectl%{baseversion} ] ; then
+  update-alternatives --remove kubectl %{_bindir}/kubectl%{baseversion}
+fi
+
 %service_del_postun k3s-server.service k3s-agent.service
 
 %files
@@ -131,6 +150,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rck3s-agent
 # %{_bindir}/crictl
 %{_bindir}/k3s
 %{_bindir}/kubectl
+%{_bindir}/kubectl%{baseversion}
 %{_localstatedir}/lib/rancher
 %config %{_sysconfdir}/rancher
 %config(noreplace) %{_sysconfdir}/rancher/k3s/agent.conf
@@ -139,6 +159,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rck3s-agent
 %{_unitdir}/k3s-server.service
 %{_sbindir}/rck3s-agent
 %{_sbindir}/rck3s-server
+%ghost %_sysconfdir/alternatives/kubectl
 
 %files hyperkube
 %{_bindir}/hyperkube

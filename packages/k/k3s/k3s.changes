@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:41:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add conflicts and minimal update-alternatives for new kubectl implementation 
+
+-------------------------------------------------------------------
+Mon Aug  3 17:02:25 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Thu May  2 12:44:52 UTC 2019 - Duncan Mac-Vicar <dmacvicar@suse.de>
 
 - Update to version 0.4.0

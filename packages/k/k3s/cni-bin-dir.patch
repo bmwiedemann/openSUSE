@@ -6,7 +6,7 @@ diff -u -r k3s-0.1.0.orig/pkg/agent/config/config.go k3s-0.1.0/pkg/agent/config/
  	}
  
 -	hostLocal, err := exec.LookPath("host-local")
-+	hostLocal, err := exec.LookPath("/usr/lib/cni/host-local")
++	hostLocal, err := exec.LookPath("@LIBEXECDIR@/cni/host-local")
  	if err != nil {
  		return nil, errors.Wrapf(err, "failed to find host-local")
  	}
