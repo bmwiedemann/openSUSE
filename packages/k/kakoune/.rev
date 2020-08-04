@@ -175,4 +175,31 @@
   * InsertCompletionHide parameter is the list of inserted ranges</comment>
     <requestid>764978</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1924ff794a530ed65a5fb5411b6a9879</srcmd5>
+    <version>2020.08.04</version>
+    <time>1596565516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.08.04:
+  * Introduce User hook support.
+  * The bold and italic faces are no longer built-in. Highlighters
+    are expected to use face attributes (+b and +i, respectively) to
+    decorate text.
+  * The lint-enable command no longer needs to be called to display
+    linting errors. The lint-disable command was renamed into
+    lint-hide-diagnostics.
+  * The +&lt;length&gt; part of a range-specs highlighter consistently
+    refers to the length of the target range.
+  * clients stdin is transferred to the server, making it possible
+    to pipe into kak -c &lt;session&gt;
+  * Faces can have an alpha channel, specified using the
+    rgba:RRGGBBAA format.
+  * replace-ranges highlighter now support empty and multi-lines ranges
+  * %val{...} now expands to list of strings, $kak_quoted_... now work
+    as expected with these.
+  * *SetOption hooks filter string will contain a value only for options
+    of int/str/bool types to avoid performance issue with generating those
+    on more complex option types.</comment>
+    <requestid>824335</requestid>
+  </revision>
 </revisionlist>
