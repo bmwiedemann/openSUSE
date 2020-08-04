@@ -142,6 +142,7 @@ install -d %{buildroot}/%{_mandir}/man8
 install -m 0644 docs/crio.conf.5 %{buildroot}/%{_mandir}/man5
 install -m 0644 docs/crio.8      %{buildroot}/%{_mandir}/man8
 # Configs
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE3}
 install -D -m 0644 %{SOURCE3}       %{buildroot}/%{_sysconfdir}/crio/crio.conf.d/00-default.conf
 install -D -m 0644 crio-umount.conf %{buildroot}/%{_datadir}/oci-umount/oci-umount.d/cri-umount.conf
 install -D -m 0644 %{SOURCE2}       %{buildroot}%{_fillupdir}/sysconfig.crio
