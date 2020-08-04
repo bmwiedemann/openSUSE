@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 03 12:26:03 UTC 2020 - okurz@suse.com
+
+- Update to version 1.20.2:
+  * Delete unused import json
+  * Fix "ValueError: Expecting ',' delimiter: line 1..." when trying to parse soft-fail details
+
+-------------------------------------------------------------------
 Fri Jul 24 10:51:24 UTC 2020 - okurz@suse.com
 
 - Update to version 1.20.1:
