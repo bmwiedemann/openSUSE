@@ -19,7 +19,7 @@
 %define service recompress
 
 Name:           obs-service-%{service}
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        An OBS source service: Recompress files
 License:        GPL-2.0-or-later

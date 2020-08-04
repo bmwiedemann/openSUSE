@@ -131,4 +131,13 @@
   * use --threads=0</comment>
     <requestid>822924</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b937465c96e5b51cb2586125cf0cc40f</srcmd5>
+    <version>0.5.1</version>
+    <time>1596565070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1:
+  * Use at least 2 threads for xz compression</comment>
+    <requestid>824028</requestid>
+  </revision>
 </revisionlist>

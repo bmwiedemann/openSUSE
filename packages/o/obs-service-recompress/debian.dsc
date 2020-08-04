@@ -1,6 +1,6 @@
 Format: 1.0
 Source: obs-service-recompress
-Version: 0.5.0-0
+Version: 0.5.1-0
 Binary: obs-service-recompress
 Maintainer: Adrian Schroeter <adrian@suse.de>
 Architecture: all
