@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  3 10:24:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.2.1
+  * Include tests in sdist tarball
+  * Don't limit contexts to a single server name
+
+-------------------------------------------------------------------
 Mon Mar 30 15:20:56 UTC 2020 - pgajdos@suse.com
 
 - test package

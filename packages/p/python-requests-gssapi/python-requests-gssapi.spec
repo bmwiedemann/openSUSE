@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-gssapi
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        A GSSAPI authentication handler for python-requests
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/pythongssapi/requests-gssapi
-# https://github.com/pythongssapi/requests-gssapi/issues/24
-Source0:        https://github.com/pythongssapi/requests-gssapi/archive/v%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/requests-gssapi/requests-gssapi-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
