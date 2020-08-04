@@ -214,6 +214,10 @@ bazel build \
     --override_repository="rules_python=/usr/src/bazel-rules-python" \
     --override_repository="upb=/usr/src/upb" \
     --override_repository="zlib=%{_datadir}/bazel-workspaces/zlib" \
+%ifarch ppc64le
+    --local_cpu_resources=HOST_CPUS*.65 \
+    --local_ram_resources=HOST_RAM*.8 \
+%endif
     --strip=never \
     --verbose_failures \
     //:envoy
