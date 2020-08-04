@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 31 10:15:55 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Put back PowerPC specific constraints (from 6 to 7GB disk space)
+  as failing on some builders.
+
+-------------------------------------------------------------------
 Fri Apr  3 16:40:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add more optional build dependencies.

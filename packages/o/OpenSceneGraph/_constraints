@@ -7,5 +7,16 @@
       <size unit="M">4500</size>
     </memory>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+    <disk>
+      <size unit="G">7</size>
+    </disk>
+    </hardware>
+  </overwrite>
 </constraints>
 
