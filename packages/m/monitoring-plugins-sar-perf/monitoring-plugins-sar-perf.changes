@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 14:03:05 CEST 2020 - ro@suse.de
+
+- update apparmor profile again to allow reading
+  /sys/devices/**/stat 
+
+-------------------------------------------------------------------
 Tue Jul 07 15:29:46 UTC 2020 - lars@linux-schulserver.de
 
 -  update AppArmor profiles to include a comment why the check
