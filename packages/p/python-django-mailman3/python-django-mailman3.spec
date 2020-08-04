@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-mailman3
-Version:        1.3.3rc1
+Version:        1.3.4
 Release:        0
 Summary:        Django library to help interaction with Mailman
 License:        GPL-3.0-only
