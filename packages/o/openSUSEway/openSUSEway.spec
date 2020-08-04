@@ -19,7 +19,7 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
 Group:          Metapackages
@@ -124,7 +124,7 @@ This package provides the openSUSE look and feel for waybar.
 
 ## openSUSEway package
 install -D -p -m 644 openSUSEway.sh %{buildroot}%{_sysconfdir}/profile.d/openSUSEway.sh
-install -D -p -m 644 .config/sway/env %{buildroot}%{_prefix}/lib/environment.d/50-openSUSE.conf
+install -D -p -m 644 .config/sway/env %{buildroot}%{_prefix}/lib/environment.d/50-openSUSEway.conf
 
 ## openSUSEway pattern package
 mkdir -p %{buildroot}/%{_defaultdocdir}/patterns/
@@ -151,7 +151,7 @@ install -D -p -m 644 .config/waybar/style.css %{buildroot}%{_sysconfdir}/xdg/way
 
 %files
 %config %{_sysconfdir}/profile.d/openSUSEway.sh
-%config %{_prefix}/lib/environment.d/50-openSUSE.conf
+%config %{_prefix}/lib/environment.d/50-openSUSEway.conf
 
 %files -n patterns-openSUSEway
 %dir %{_defaultdocdir}/patterns
