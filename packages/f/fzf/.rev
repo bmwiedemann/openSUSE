@@ -101,4 +101,12 @@
     <comment>- Add subpackage for fish completion. (forwarded request 824075 from fcrozat)</comment>
     <requestid>824080</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ca9e975da6401e8909303e03a49a9335</srcmd5>
+    <version>0.22.0</version>
+    <time>1596565361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824174</requestid>
+  </revision>
 </revisionlist>
