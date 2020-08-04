@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  3 20:56:00 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Nose is actually not needed (gh#matplotlib/pytest-mpl#25).
+
+-------------------------------------------------------------------
 Mon Nov 18 07:58:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.11:

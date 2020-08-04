@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-mpl
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
 Requires:       python-matplotlib
-Requires:       python-nose
 Requires:       python-pytest
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
