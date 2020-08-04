@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 12:05:16 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.5.0:
+ -  Add type hints (#45)
+
+-------------------------------------------------------------------
 Tue Apr  7 07:42:02 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Disable Python2 build, upstream says they stopped support for it.

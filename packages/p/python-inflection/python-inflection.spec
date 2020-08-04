@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-inflection
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A port of Ruby on Rails inflector to Python
 License:        MIT
