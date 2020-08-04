@@ -901,4 +901,14 @@
   * vo_gpu: reinterpret SDR white levels based on ITU-R BT.2408</comment>
     <requestid>818953</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>d68e1aa2cd25c92d2fa46412f8b79d50</srcmd5>
+    <version>0.32.0+git.20200802T170651.fb55ee99e3</version>
+    <time>1596565523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200802T170651.fb55ee99e3:
+  * See https://github.com/mpv-player/mpv/compare/8fbc4b1737..fb55ee99e3
+    for the complete changelog.</comment>
+    <requestid>824330</requestid>
+  </revision>
 </revisionlist>
