@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  4 02:03:44 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Update to 3.3.1
+  * Held message moderation now supports an optional keyword, reason to
+    specify the reason to reject the message.
+  * Fix a bug where missing display_name attribute with
+    MalingList.subscribe would subscribe the user with a display name of
+    "None".
+  * Add advertised flag to MailingList object.
+  * MailingList.nonmembers now uses roster/nonmembers resource instead of
+    the find/ API for consistency.
+  * Add Client.get_nonmember and MailingList.get_nonmember to get a
+    non-member by address.
+
+-------------------------------------------------------------------
 Thu Jan 23 14:56:37 UTC 2020 - pgajdos@suse.com
 
 - removing 15 conditionals, LANG definition will be removed
