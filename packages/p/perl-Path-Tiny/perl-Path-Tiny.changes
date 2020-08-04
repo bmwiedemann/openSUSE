@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 30 10:37:05 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Revert last change as requested (File::Path 2.07 -> 2.070000)
+
+-------------------------------------------------------------------
+Tue Jul 28 10:24:55 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Fix File::Path version (2.07 vs. 2.070000)
+
+-------------------------------------------------------------------
 Mon Apr 27 03:11:21 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.114
