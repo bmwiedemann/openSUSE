@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Aug  3 20:44:15 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 5.1.2 (bsc#1173357, bsc#1174847)
+  + Detect when the VM is running in ASM (Azure Classic) and handle the
+    condition to generate the data we are interested in without requiring
+    access to the full IMDS available only in ARM instances.
+
+- From version 5.1.1 (bsc#1173238, bsc#1173240)
+  + Add --listapis and --api latest support
+
+-------------------------------------------------------------------
+Mon Apr 27 14:51:02 UTC 2020 - Ivan Kapelyukhin <ikapelyukhin@suse.com>
+
+- Version 5.1.0
+- Produce well-formed JSON and XML output when multiple filters
+  are specified (bsc#1170598, bsc#1170599) 
+
+-------------------------------------------------------------------
+Tue Apr 21 04:24:27 UTC 2020 - Ivan Kapelyukhin <ikapelyukhin@suse.com>
+
+- Version 5.0.1
+- Use lsblk for root device detection (bsc#1169921)
+
+-------------------------------------------------------------------
+Tue Mar 31 10:45:22 UTC 2020 - Ivan Kapelyukhin <ikapelyukhin@suse.com>
+
+- Version 5.0.0
+- Support new Azure metadata API (bsc#1164818, bsc#1164819)
+- Automatically detect root device (bsc#1158698, bsc#1158707)
+
