@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  2 03:08:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.873
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.873 Sat Aut 01 16:00:00 EST 2020
+
+    * Removed unused variable in MCE::Mutex::Channel.
+
+    * Fixed typo in prior change log.
+      Replaced "completed" with "feature complete".
+
+-------------------------------------------------------------------
 Tue Jun 16 03:09:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.872
