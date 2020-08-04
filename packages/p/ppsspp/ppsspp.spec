@@ -26,6 +26,9 @@ Group:          System/Emulators/Other
 URL:            http://www.ppsspp.org
 Source:         %{name}-%{version}.tar.xz
 
+# never built for PowerPC on 20200721
+ExcludeArch:    ppc ppc64 ppc64le
+
 BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
