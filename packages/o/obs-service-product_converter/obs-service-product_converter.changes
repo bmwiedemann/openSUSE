@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 28 06:49:31 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.2
+  - try to get OBS_NAME when using evil local wrapper scripts
+    which do not set it (they can still set it wrong)
+  - add warning for missing OBS_NAME
+
+-------------------------------------------------------------------
 Mon Jul 20 09:31:07 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.1
