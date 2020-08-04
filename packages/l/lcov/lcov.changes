@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 14:03:41 UTC 2020 - Miklos Vajna <vmiklos@collabora.com>
+
+- Remove no longer needed kernel-coverage conflict (bsc#1078447)
+
+-------------------------------------------------------------------
 Sun Jul 26 01:32:35 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 1.15+git.20200723.b668fab:

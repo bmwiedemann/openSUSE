@@ -1,7 +1,7 @@
 #
 # spec file for package lcov
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,11 @@ Release:        0
 Summary:        A Graphical GCOV Front-end
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-Url:            https://github.com/linux-test-project/lcov
+URL:            https://github.com/linux-test-project/lcov
 Source0:        %{name}-%{version}.tar.xz
 Requires:       gcc
 Requires:       perl-GD
 Requires:       perl-PerlIO-gzip
-Conflicts:      kernel-coverage < 0.1-49
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 

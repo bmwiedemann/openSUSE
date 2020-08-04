@@ -183,4 +183,12 @@
     <comment></comment>
     <requestid>822835</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e1e648be4cd117e587270b9d4d3ea46f</srcmd5>
+    <version>1.15+git.20200723.b668fab</version>
+    <time>1596565357</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>824173</requestid>
+  </revision>
 </revisionlist>
