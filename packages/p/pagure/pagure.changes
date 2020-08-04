@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Aug  4 13:00:36 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 5.11.2
+  + Allow having a dedicated logging configuration for the git hooks
+  + Increase logging to the pagure_auth logger
+  + Make work pagure-admin ensure-project-hooks when the target link exists but is
+    broken
+  + Change the project icon when the project is mirrored from an external source
+  + Allow a theme or a blueprint to inject custom buttons in the navigation bar.
+  + Add API endpoint to get a pull-request comment
+  + Omit breaking original comment format in reply on pull-requests
+  + Let the milter announce when it reject an email based on its address
+  + Don't Let the milter process the email we send.
+  + Add a collaborator level to projects
+  + Allow setting the default git branch when creating projects via the API
+  + Allow creating mirrored project from the API
+  + Add the possibility to set the default branch at project creation
+  + Add API endpoint to set the default git branch and expose it in an existing
+    endpoint
+  + Adjust the example configuration for logging to a file
+  + Allow project-less API token with the "modify_project" ACL to update watchers
+  + Add a new API endpoint to retrieve a commit's metadata/info
+  + Add a new API endpoint allowing to delete a project
+  + Add support for customizing the new issue page
+  + Introducing the boards feature
+  + Add an API endpoint to view the content of a git repo
+  + Port pagure's markdown extension to the new API
+  + Multiple small fixes for the vagrant-based development environment
+  + Use WhiteNoise to serve static assets for the Pagure web
+  + Fix the title of the graph showing the evolution of the number of open tickets
+    on a project
+  + Do not assume there is a SMTP_STARTTLS configuration key set
+  + Bring back JS library used for the heatmap
+  + Show the ACL name in addition to the description when creating API tokens
+  + Allow editing the URL a project is mirrored from
+  + Add comments to the mirror service files for clarifying their purpose.
+  + Add a dedicated logger for everything that is auth related
+  + api: fix apidoc format on api_view_issues_history_detailed_stats Fixes web
+    api doc view template issues
+  + doc: Add a page documenting known Pagure instances
+  + starttls support via SMTP_STARTTLS: provide additional documentation.
+  + Add support for smtp server requiring starttls to work
+  + Make the stats page use the new stats API endpoint
+- Drop patches included in this release
+  + Patch: 0001-Make-the-stats-page-use-the-new-stats-API-endpoint.patch
+  + Patch: 0001-Add-support-for-smtp-server-requiring-starttls-to-wo.patch
+  + Patch: 0002-starttls-support-via-SMTP_STARTTLS-provide-additiona.patch
+  + Patch: 0001-Do-not-assume-there-is-a-SMTP_STARTTLS-configuration.patch
+  + Patch: 0001-Fix-repotype-spelling.patch
+  + Patch: 0001-api-fix-apidoc-format-on-api_view_issues_history_det.patch
+  + Patch: 0001-Allow-editing-the-URL-a-project-is-mirrored-from.patch
+  + Patch: 0001-Show-the-ACL-name-in-addition-to-the-description-whe.patch
+  + Patch: 0001-Bring-back-JS-library-used-for-the-heatmap.patch
+  + Patch: 0001-Ensure-the-title-name-of-the-headers-are-strings.patch
+  + Patch: 0001-Fix-the-title-of-the-graph-showing-the-evolution-of-.patch
+  + Patch: 0001-Make-sure-authorized_keys-file-has-mode-600.patch
+  + Patch: 0101-Use-WhiteNoise-to-serve-static-assets-for-the-Pagure.patch
+
+-------------------------------------------------------------------
 Sun Jun 21 12:57:17 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Backport fixes for STARTTLS support
