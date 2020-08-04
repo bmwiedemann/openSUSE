@@ -1,7 +1,7 @@
 #
 # spec file for package qdirstat
 #
-# Copyright (c) 2016-2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           qdirstat
-Version:        1.6.1
+Version:        1.7
 Release:        0
 Summary:        Directory Statistics
 License:        GPL-2.0-only
 Group:          Productivity/File utilities
-Url:            https://github.com/shundhammer/qdirstat
-Source0:        %{name}-%{version}.tar.bz2
+URL:            https://github.com/shundhammer/qdirstat
+Source0:        https://github.com/shundhammer/qdirstat/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Widgets-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 QDirStat is a graphical application to show where your disk space has gone and
@@ -59,8 +58,9 @@ and the local documentation in
 %setup -q
 
 %build
+# FIXME: you should use the %%qmake5 macro
 qmake-qt5
-make
+%make_build
 
 %install
 make install INSTALL_ROOT=%{buildroot} %{?_smp_mflags}
@@ -68,7 +68,6 @@ make install INSTALL_ROOT=%{buildroot} %{?_smp_mflags}
 # %suse_update_desktop_file -N "QDirStat" -G "Directory Statistics" %name Filesystem
 
 %files
-%defattr(-,root,root)
 %{_bindir}/qdirstat
 %{_bindir}/qdirstat-cache-writer
 %{_datadir}/applications/qdirstat.desktop
@@ -76,7 +75,8 @@ make install INSTALL_ROOT=%{buildroot} %{?_smp_mflags}
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/qdirstat.svg
-%doc README.md LICENSE doc/cache-file-format.txt doc/*.md
+%license %{_docdir}/qdirstat/LICENSE
+%doc README.md doc/cache-file-format.txt doc/*.md
 %dir %{_docdir}/%{name}/stats
 %{_docdir}/%{name}/stats/*.md
 # %{_mandir}/man1/qdirstat.1.gz
