@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-requirements-detector
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Python tool to find and list requirements of a Python project
 License:        MIT
@@ -30,12 +30,12 @@ Source:         https://github.com/landscapeio/requirements-detector/archive/%{v
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 1.0.0
+Requires:       python-astroid >= 1.4
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module astroid}
+BuildRequires:  %{python_module astroid >= 1.4}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %ifpython3

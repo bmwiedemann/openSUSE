@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  3 10:06:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 0.7
+  * support Python 3.8
+  * code refactorings and cleanups
+
+-------------------------------------------------------------------
 Wed Jun  3 10:48:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest
