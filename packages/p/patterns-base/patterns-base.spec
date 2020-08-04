@@ -724,10 +724,9 @@ Requires:       yast2-qt
 Recommends:     dejavu-fonts
 Recommends:     libyui-qt
 Recommends:     libyui-qt-pkg
-# Recommend lightdm so it gets installed by default
-# rather then xdm bsc#1081760
-# Todo: Require DisplayManger and suggest lightdm
-Recommends:     lightdm
+# Recommend something other than xdm, default to lightdm
+Recommends:     (gdm or lightdm or sddm)
+Suggests:       lightdm
 Recommends:     noto-sans-fonts
 Recommends:     tigervnc
 Recommends:     x11-tools

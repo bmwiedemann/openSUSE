@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  3 09:54:36 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Don't recommend lightdm directly, also allow other DMs
+
+-------------------------------------------------------------------
 Mon Jul 27 09:59:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move pam_pwquality to Recommends section, as it is not required
