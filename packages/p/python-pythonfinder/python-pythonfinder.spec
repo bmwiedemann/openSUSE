@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pythonfinder
-Version:        1.2.1
+Version:        1.2.4
 Release:        0
 Summary:        A tool to locate Python on the system
 License:        MIT
@@ -31,7 +31,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 Requires:       python-cached-property
 Requires:       python-click
-Requires:       python-crayons
 Requires:       python-packaging
 Requires:       python-six
 Requires:       python-vistir >= 0.2.5
@@ -48,6 +47,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module vistir >= 0.2.5}
 # /SECTION
+%ifpython2
+Requires:       pathlib2
+Requires:       python-backports.functools_lru_cache
+%endif
 %python_subpackages
 
 %description
