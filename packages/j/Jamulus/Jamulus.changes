@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Mon Aug  3 11:09:38 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.5.9
+  * new app icon for Jamulus, created by geheimerEichkater
+  * support up to four different groups for the channels
+  * support sorting faders by channel group
+  * add support to change the GUI language
+  * add special server list filter for filtering occupied
+    servers by using "#"
+  * update server UI to allow setting the jam recorder directory
+    (like -R)
+  * redesign of the server dialog (e.g. added welcome message
+    setting)
+  * save and restore mixer state (like fader, mute, etc.)
+    note that saving/loading of settings only works if not
+    connected
+  * scale channel instrument picture in Compact skin mode
+  * show maximum number of clients for servers in the
+    serverlist, coded by dingodoppelt
+  * log the number of connected clients on each new connection
+  * move the Mute Myself button up to prevent accidentally
+    disconnecting
+  * bug fix: grouping faders in the client should be
+    proportional
+  version 3.5.8:
+  * bug fix: incorrect selection of UI language
+  version 3.5.7:
+  * add new "compact" skin, intended for large ensembles
+  * support sorting faders by channel instrument, coded by
+    Alberstein8
+  * new group switch to change several faders in sync, coded by
+    Alberstein8
+  * support a clip LED, coded by fleutot
+  * add server recording indicator, coded by pljones
+  * support for storing/recovering the server window positions
+  * add a headless build type which does not depend on
+    QtGui/QtWidgets, coded by marcan
+  * the local pan middle position is no longer attenuated in
+    Mono-in/Stereo-out mode
+  * added translation: Brazilian Portuguese by melcon
+  * add send button to chat window
+  * add some protections to the code, coded by atsampson
+  * bug fix: server window stop updating after minimized, coded
+    by AronVietti
+  version 3.5.6:
+  * support sorting faders by channel name
+  * enable/disable recording from command line, coded by pljones
+  * add Audacity "list of files" writer to jam recorder, by
+    pljones
+  * make level meter LED black when off, by fleutot
+  * added ukulele/bass ukulele instrument icons created by dos1
+  * avoid showing IP address if no name in the musician profile
+    is given
+  * show channel numbers if --ctrlmidich is used
+  * added check in acknowledge message, coded by atsampson
+  * bug fix: on MacOS declare an activity to ensure the process
+    doesn't get throttled by OS level Nap, Sleep, and Thread
+    Priority systems, coded by AronVietti
+  version 3.5.5:
+  * added banjo/mandolin instrument icons created by atsampson
+  * faster update of musicians list in the server list table
+  * display recorder state and latest recording directory in the
+    server GUI, allow a new recording to be requested, by
+    pljones
+  * New Client Level now also applies if you enter a server
+  * bug fix: honour own fader and Mute button in Mute Myself
+  * bug fix: audio fader sliders cannot be moved if the main
+    windows is too small
+  * bug fix: server gain calculations were incorrect (introduced
+    in version 3.5.4)
+  version 3.5.4:
+  * introduce genre-based server lists
+  * implement panning for channels, coded by tarmoj
+  * added an indicator that another client has muted me
+  * move central server type dropdown to connection setup
+  * added vocal bass/tenor/alto/soprano instrument icons created
+    by Alberstein8
+  * support intermediate Reaper RPP file while recording, coded
+    by pljones
+  * save client settings on Linux cmdline termination signal,
+    coded by pljones
+  * added translation: Italian by dzpex
+  * bug fix: fixed misaligned tracks in recordings, coded by
+    snayler, improved by pljones
+  version 3.5.3:
+  * correct unregister of headless server and RPP file creation
+    on SIGINT/SIGTERM, coded by pljones
+  * for CoreAudio and 4 channel input, support mixing channels
+    1&2 with 3&4
+  * added bassoon/oboe/harp instrument icons created by dszgit,
+    congas/bongo created by bspeer
+  * link to docs from application Help menu
+  * support Mac CoreAudio aggregated devices
+  * added translations: French by trebmuh, Portuguese by Snayler,
+    Spanish by ignotus666, Dutch by jerogee, German by corrados
+  * new design for the About dialog
+  * new command line option -d to disconnect all clients on
+    shutdown of the server
+  * bug fix: for mono capture jack audio interface Jamulus
+    complains it cannot make connections
+  * bug fix: fixed that Jamulus segfaults when jackd is
+    restarted
+  * bug fix: better handling of disconnect message in the client
+  * note: Jamulus is no longer compatible to Qt4
+
+-------------------------------------------------------------------
 Mon May 11 14:18:37 UTC 2020 - suse@adamspiers.org
 
 - Update to version 3.5.2:
