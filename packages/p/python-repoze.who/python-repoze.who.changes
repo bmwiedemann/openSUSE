@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  3 11:09:47 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.4
+  * Add support for Python 3.6, 3.7, and 3.8.
+  * Drop support for Python 3.3.
+  * Fix travis configuration.
+  * Add ``samesite`` option to AuthTktCookiePlugin constructor.
+    If this is passed, it should be a string, and it will be used
+    to compose the Set-Cookie header's "SameSite" value, e.g.
+    if you pass ``samesite="Strict"`` into the constructor,
+    the cookie value for the auth tkt cooke will contain
+    ``SameSite=Strict``.
+
+-------------------------------------------------------------------
 Mon Apr  6 07:12:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip failing test as it the zope.interface now raises different

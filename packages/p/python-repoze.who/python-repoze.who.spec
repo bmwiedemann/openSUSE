@@ -19,20 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname repoze.who
 Name:           python-repoze.who
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Identification and authentication framework for WSGI
 License:        SUSE-Repoze
 URL:            http://www.repoze.org
 Source:         https://files.pythonhosted.org/packages/source/r/repoze.who/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Paste
 Requires:       python-WebOb
 Requires:       python-zope.interface
 BuildArch:      noarch
@@ -61,8 +59,7 @@ domain of the WSGI application.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
-# test_brokenimpl zope.interface raises different assert
-%pytest -k 'not test_brokenimpl'
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
