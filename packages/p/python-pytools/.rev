@@ -84,4 +84,12 @@
     <comment>- Make requires to really be the requires</comment>
     <requestid>795746</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>246f2da040561bef6ed04811575cccfe</srcmd5>
+    <version>2020.3.1</version>
+    <time>1596565287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824175</requestid>
+  </revision>
 </revisionlist>

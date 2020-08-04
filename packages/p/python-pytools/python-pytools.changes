@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  3 14:09:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2020.3.1
+  * drop Python2 support
+  * Drop 3.4, 3.5 support
+  *  Work around numpy/numpy#16564 in make_obj_array
+  * add CycleError class
+  * add few procedures
+
+-------------------------------------------------------------------
 Mon Apr 20 09:53:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Make requires to really be the requires
