@@ -17,11 +17,10 @@
 
 
 Name:           iso-codes
-Version:        4.4
+Version:        4.5.0
 Release:        0
 Summary:        ISO Code Lists and Translations
 License:        LGPL-2.1-or-later
-Group:          System/Localization
 URL:            https://salsa.debian.org/iso-codes-team/iso-codes
 Source0:        https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/iso-codes-%{version}/iso-codes-iso-codes-%{version}.tar.bz2
 BuildRequires:  pkgconfig
@@ -36,7 +35,6 @@ translations in gettext .po form.
 
 %package devel
 Summary:        ISO code lists and translations
-Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 
 %description devel

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 27 22:56:21 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 4.5.0:
+  + ISO-3166-2
+    - Update subdivision names for Belarus.
+    - Update Norway ISO 316.
+  + Updated translations for ISO 3166-1, ISO 3166-2, ISO 3166-3,
+    ISO 639-2, ISO 639-3, ISO 639-5, ISO 4217 and ISO 15924.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Tue Apr 14 13:13:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.4:

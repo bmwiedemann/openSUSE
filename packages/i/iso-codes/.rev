@@ -687,4 +687,18 @@
 - Update source url (forwarded request 794009 from pluskalm)</comment>
     <requestid>794359</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>0777e68f7848eb8cfec7fdaeaf35f075</srcmd5>
+    <version>4.5.0</version>
+    <time>1596565091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.5.0:
+  + ISO-3166-2
+    - Update subdivision names for Belarus.
+    - Update Norway ISO 316.
+  + Updated translations for ISO 3166-1, ISO 3166-2, ISO 3166-3,
+    ISO 639-2, ISO 639-3, ISO 639-5, ISO 4217 and ISO 15924.
+- Run spec-cleaner.</comment>
+    <requestid>824091</requestid>
+  </revision>
 </revisionlist>
