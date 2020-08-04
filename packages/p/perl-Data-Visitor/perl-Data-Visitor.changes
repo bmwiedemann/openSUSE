@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  3 03:07:46 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Data-Visitor/Changes
+
+  Revision history for Data-Visitor
+
+  0.31      2020-08-02 22:39:31Z
+      - updated distribution tooling (resolves RT#133059, a problem with the
+        compilation test when the installed perl has whitespace in its path)
+
+-------------------------------------------------------------------
 Thu Jul 18 16:03:40 UTC 2013 - coolo@suse.com
 
 - updated to 0.30
