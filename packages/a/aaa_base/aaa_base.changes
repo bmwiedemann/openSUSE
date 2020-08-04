@@ -1,13 +1,4 @@
 -------------------------------------------------------------------
-Wed Jul 08 10:00:41 UTC 2020 - ro@suse.de
-
-- Update to version 84.87+git20200708.f5e90d7:
-  * check for Packages.db and use this instead of Packages
-    (boo#1171762)
-  * Add also support for /usr/etc/profile.d for tcsh
-  * Do add some support for /usr/etc/profile.d
-
--------------------------------------------------------------------
 Tue Jun 16 12:37:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Properly adjust usr/bin/service to look for legacy-action
@@ -29,11 +20,6 @@ Thu May 07 12:43:27 UTC 2020 - lnussel@suse.de
   * set SYSTEMD_OFFLINE=1 if there's no systemd
   * Better support of Midnight Commander (bsc#1170527)
   * improve sysconf_addword: remove/cleanup spaces while adding/removing flags/modules
-
--------------------------------------------------------------------
-Thu May 07 08:26:51 UTC 2020 - werner@suse.de
-
-- Better support of Midnight Commander (bsc#1170527)
 
 -------------------------------------------------------------------
 Tue Mar 31 18:00:15 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
