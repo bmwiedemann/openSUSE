@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug  1 13:36:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.0
+  * Fixing disable_paging and set_terminal_width so cmd_verify
+    is not used as we are still in session_preparation phase.
+  * Add Centec-switch platform
+  * Sixwind Driver Update
+  * Disable cmd_verify on Comware
+  * check text with config_md5
+  * Add support for vendor/os: broacom_icos.
+  * Bypass automatic _open() call
+  * Added HPE Comware support
+  * Tell aruba connection to strip ansi codes from switches
+  * Fixing Arista check_config_mode bug with hostname change
+  * Ansi insert line for ProCurve and Aruba
+  * Add progress bar for Secure Copy
+  * Add connection timeout argument (conn_timeout)
+
+-------------------------------------------------------------------
 Tue May 19 17:17:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.1.1
