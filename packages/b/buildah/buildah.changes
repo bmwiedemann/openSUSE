@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  3 06:39:53 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.15.1
+  * Mask over the /sys/fs/selinux in mask branch
+  * chroot: do not use setgroups if it is blocked
+  * chroot, run: not fail on bind mounts from /sys
+  * Allow "readonly" as alias to "ro" in mount options
+  * Add VFS additional image store to container
+  * vendor golang.org/x/text@v0.3.3
+  * Make imagebuildah.BuildOptions.Architecture/OS optional
+
+-------------------------------------------------------------------
 Wed Jun 24 13:24:58 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to v1.15.0
