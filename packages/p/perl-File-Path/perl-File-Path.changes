@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 30 10:38:28 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Revert last change as requested (2.17 -> 2.170000)
+
+-------------------------------------------------------------------
+Tue Jul 28 10:46:26 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Fix version (2.17 vs. 2.170000)
+
+-------------------------------------------------------------------
+Thu Jul 23 10:33:48 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- updated to 2.17
+   see /usr/share/doc/packages/perl-File-Path/Changes
+
+  2.17 2020-07-18
+      - Eliminate one line of debugging code which was generating
+        a warning.
+
+-------------------------------------------------------------------
 Sat Sep  1 05:23:30 UTC 2018 - coolo@suse.com
 
 - updated to 2.16
