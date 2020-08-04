@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 29 11:58:55 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.12.0:
+  * Improved exact simplification of roots (e.g. sqrt(2)-2/sqrt(2)=0)
+  * Only apply negative exponents option to units, and always use
+    negative exponents instead of division for unit expressions with
+    only negative exponents
+  * Support use of right arrow (including "->") as alternative to "to"
+    for conversion (e.g. 5m->ft)
+  * Use middle dot instead of multiplication x in unit expressions
+  * Minor bug fixes and feature improvements
+
+-------------------------------------------------------------------
 Tue Jun 23 09:00:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.11.0:
