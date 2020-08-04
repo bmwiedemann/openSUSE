@@ -999,4 +999,13 @@
     <comment>20.04.3 release</comment>
     <requestid>820116</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>b1099e17aa9f59c0ef5fa17e54d49698</srcmd5>
+    <version>20.04.3</version>
+    <time>1596565004</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to prevent directory traversal (boo#1174773, CVE-2020-16116)
+  * 0001-Fix-vulnerability-to-path-traversal-attacks.patch</comment>
+    <requestid>824154</requestid>
+  </revision>
 </revisionlist>

@@ -30,6 +30,8 @@ URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Support-building-against-libarchive-3.3.2-again.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-vulnerability-to-path-traversal-attacks.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libarchive-devel

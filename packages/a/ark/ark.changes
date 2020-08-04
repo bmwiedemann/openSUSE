@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 13:31:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to prevent directory traversal (boo#1174773, CVE-2020-16116)
+  * 0001-Fix-vulnerability-to-path-traversal-attacks.patch
+
+-------------------------------------------------------------------
 Thu Jul  9 20:08:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
