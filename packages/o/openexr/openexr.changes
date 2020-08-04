@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 16 07:06:33 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Disable testsuite also on ppc
+
+-------------------------------------------------------------------
 Sun Jul  5 22:46:48 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix 0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch
