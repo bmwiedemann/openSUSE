@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  3 18:30:06 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 3.0.3 (bsc#1174743, bsc#1174837)
+  + Prefer IMDSv2 and switch all IMDS access requests to support v2 token
+    based access method.
+
+-------------------------------------------------------------------
 Wed Dec  4 22:21:34 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 3.0.2 (bsc#1157901, bsc#1157902)
