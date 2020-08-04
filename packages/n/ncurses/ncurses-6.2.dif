@@ -429,8 +429,8 @@
  # Linux 2.6.x has a fix for SI/SO to work with UTF-8 encoding added here:
  #	http://lkml.iu.edu/hypermail/linux/kernel/0602.2/0738.html
 @@ -1032,6 +1040,7 @@ linux2.6|linux 2.6.x console,
- 	acsc=++\,\,--..00__``aaffgghhiijjkkllmmnnooppqqrrssttuuvvwwx
- 	     xyyzz{{||}c~~,
+ 	acsc=++\,\,--..00``aaffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxy
+ 	     yzz{{||}}~~,
  	enacs=\E)0, rmacs=^O,
 +	cvvis=\E[?25h\E[?8c,
  	sgr=\E[0;10%?%p1%t;7%;%?%p2%t;4%;%?%p3%t;7%;%?%p4%t;5%;%?%p5
@@ -846,7 +846,7 @@
  #include <curses.priv.h>
  
  #include <ctype.h>
-@@ -105,6 +109,30 @@ _nc_basename(char *path)
+@@ -111,6 +115,30 @@ _nc_basename(char *path)
      return path + _nc_pathlast(path);
  }
  
@@ -955,9 +955,9 @@
      }
      if (copied != 0)
 --- progs/Makefile.in
-+++ progs/Makefile.in	2020-03-09 09:17:28.753300070 +0000
-@@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
- CFLAGS_NORMAL	= $(CCFLAGS)
++++ progs/Makefile.in	2020-07-07 09:13:53.548391492 +0000
+@@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS) -DNCURSES_ST
+ CFLAGS_NORMAL	= $(CCFLAGS) -DNCURSES_STATIC
  CFLAGS_DEBUG	= $(CCFLAGS) @CC_G_OPT@ -DTRACE
  CFLAGS_PROFILE	= $(CCFLAGS) -pg
 -CFLAGS_SHARED	= $(CCFLAGS) @CC_SHARED_OPTS@
@@ -976,7 +976,7 @@
  
 --- test/test.priv.h
 +++ test/test.priv.h	2020-03-09 09:17:28.753300070 +0000
-@@ -994,12 +994,12 @@ extern char *_nc_strstr(const char *, co
+@@ -1001,12 +1001,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */

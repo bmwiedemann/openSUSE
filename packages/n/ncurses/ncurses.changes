@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:20:28 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200711
+  + fix pound-sign mapping in acsc of linux2.6 entry (report by Ingo
+    Bruckl).
+  + additional changes for building with Visual Studio C++ and msys2
+    (reports/patches by "Maarten Anonymous")
+  + build-improvements for Windows 10 and MinGW (patch by Juergen
+    Pfeifer).
+  + fix a typo in curs_printw.3x (patch by William Pursell).
+  + fix two errors in infotocap which allowed indexing outside the
+    buffer (report/testcases by Zhang Gan).
+  + update length of strings in infocmp's usage function to restore a
+    trailing null on the longest string (report/testcase by Zhang Gen).
+
+-------------------------------------------------------------------
+Tue Jul  7 09:11:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200704
+  + modify version-check with Ada generics to use the same pattern as in
+    the check for supported gnat versions (report by Pascal Pignard).
+  > additional changes for building with Visual Studio C++ and msys2
+    (patches by "Maarten Anonymous"):
+  + adjust headers/declarations to provide for "dllimport" vs "dllexport"
+    declarations when constructing DLLs, to worko with Visual Studio C++.
+
+-------------------------------------------------------------------
+Mon Jun 29 05:56:54 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200627
+  + build-fixes for gnat 10.1.1, whose gnatmake drops integration with
+    gprbuild.
+  + correct buffer-length in test/color_name.h
+
+-------------------------------------------------------------------
 Mon Jun 22 16:58:17 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Run ldconfig local on %buildroot %_lib to get links done (boo#1173222)
@@ -6,6 +41,11 @@ Mon Jun 22 16:58:17 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Mon Jun 15 11:05:42 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
+- Add ncurses patch 20200613
+  + update list of functions in ncurses.3x
+  + move dlclose() call from lib_mouse.c to delscreen() to avoid a case
+    in the former which could be called from SIGTSTP handler (Debian
+    #961097).
 - Add ncurses patch 20200606
   + add xterm+256color2, xterm+88color2, to deprecate nonstandard usage 
     in xterm+256color, xterm+88color -TD
@@ -13,11 +53,6 @@ Mon Jun 15 11:05:42 UTC 2020 - Dr. Werner Fink <werner@suse.de>
     screen.linux (report by Alexandre Montaron).
   + use vt100+enq in screen (report by Alexandre Montaron).
   + add screen.linux-s alias (suggested by Alexandre Montaron).
-- Add ncurses patch 20200613
-  + update list of functions in ncurses.3x
-  + move dlclose() call from lib_mouse.c to delscreen() to avoid a case
-    in the former which could be called from SIGTSTP handler (Debian
-    #961097).
 
 -------------------------------------------------------------------
 Tue Jun  2 06:24:20 UTC 2020 - Dr. Werner Fink <werner@suse.de>

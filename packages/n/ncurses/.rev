@@ -2907,4 +2907,41 @@
     #961097).</comment>
     <requestid>816433</requestid>
   </revision>
+  <revision rev="176" vrev="7">
+    <srcmd5>0c9fb41aaebbcf8c74ff467186b9be87</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1596565016</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20200711
+  + fix pound-sign mapping in acsc of linux2.6 entry (report by Ingo
+    Bruckl).
+  + additional changes for building with Visual Studio C++ and msys2
+    (reports/patches by &quot;Maarten Anonymous&quot;)
+  + build-improvements for Windows 10 and MinGW (patch by Juergen
+    Pfeifer).
+  + fix a typo in curs_printw.3x (patch by William Pursell).
+  + fix two errors in infotocap which allowed indexing outside the
+    buffer (report/testcases by Zhang Gan).
+  + update length of strings in infocmp's usage function to restore a
+    trailing null on the longest string (report/testcase by Zhang Gen).
+
+- Add ncurses patch 20200704
+  + modify version-check with Ada generics to use the same pattern as in
+    the check for supported gnat versions (report by Pascal Pignard).
+  &gt; additional changes for building with Visual Studio C++ and msys2
+    (patches by &quot;Maarten Anonymous&quot;):
+  + adjust headers/declarations to provide for &quot;dllimport&quot; vs &quot;dllexport&quot;
+    declarations when constructing DLLs, to worko with Visual Studio C++.
+
+- Add ncurses patch 20200627
+  + build-fixes for gnat 10.1.1, whose gnatmake drops integration with
+    gprbuild.
+  + correct buffer-length in test/color_name.h
+
+- Add ncurses patch 20200613
+  + update list of functions in ncurses.3x
+  + move dlclose() call from lib_mouse.c to delscreen() to avoid a case
+    in the former which could be called from SIGTSTP handler (Debian</comment>
+    <requestid>820866</requestid>
+  </revision>
 </revisionlist>
