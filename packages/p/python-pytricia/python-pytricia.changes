@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 13:43:22 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.0.2
+  * Bugfix: pytricia_contains must return -1 on error, rather than 0
+
+-------------------------------------------------------------------
 Fri Mar 20 08:48:03 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.0.1

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytricia
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        A library for IP address lookup in Python
 License:        LGPL-3.0-or-later
