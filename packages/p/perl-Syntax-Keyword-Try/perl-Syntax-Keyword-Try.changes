@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug  2 03:12:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.18    2020-08-01
+          [CHANGES]
+           * De-experiment the `catch ($var)` syntax
+
+  0.17    2020-07-31
+          [CHANGES]
+           * Ensure that `catch ($var)` does not retain exception value after
+             block exit
+           * Docs fixes for clarity on experimental status of `catch ($var)`
+
+          [BUGFIXES]
+           * Ensure sv_isa_sv is a macro for aTHX on threaded perls
+
+-------------------------------------------------------------------
 Wed Jul 29 03:12:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.16
