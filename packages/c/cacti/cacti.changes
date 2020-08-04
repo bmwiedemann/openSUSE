@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  3 21:29:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.14:
+  * Poller keeps using old IP address for a device
+  * poller bug fixes and various display fixes
+  * Fix XSS vulnerability due to improper escaping of error message
+    during template import preview (boo#1174850)
+
+-------------------------------------------------------------------
 Tue Jul 14 09:14:56 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.13:

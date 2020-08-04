@@ -271,4 +271,13 @@
 </comment>
     <requestid>820849</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>664767df30a528ad1d115053f6cbf24b</srcmd5>
+    <version>1.2.14</version>
+    <time>1596565454</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.14 (boo#1174850)
+</comment>
+    <requestid>824224</requestid>
+  </revision>
 </revisionlist>

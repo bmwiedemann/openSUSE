@@ -29,7 +29,7 @@
 %endif
 
 Name:           cacti
-Version:        1.2.13
+Version:        1.2.14
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
