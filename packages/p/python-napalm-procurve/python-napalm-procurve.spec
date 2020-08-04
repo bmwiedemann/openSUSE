@@ -21,7 +21,7 @@
 # python-napalm is python3 only
 %define skip_python2 1
 Name:           python-napalm-procurve
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        NAPALM - HP ProCurve network driver
 License:        Apache-2.0
