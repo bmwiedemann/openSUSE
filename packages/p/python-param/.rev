@@ -107,4 +107,13 @@
     <comment></comment>
     <requestid>783950</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e3ed327cefca8318d2c2021c7627523e</srcmd5>
+    <version>1.9.3</version>
+    <time>1596565276</time>
+    <user>dimstar_suse</user>
+    <comment>- Add denose.patch to remove dependency on nose (gh#holoviz/param#423).
+</comment>
+    <requestid>824171</requestid>
+  </revision>
 </revisionlist>

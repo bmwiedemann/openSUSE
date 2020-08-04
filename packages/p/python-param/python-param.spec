@@ -26,8 +26,11 @@ Group:          Development/Languages/Python
 URL:            http://param.pyviz.org/
 Source0:        https://github.com/ioam/param/archive/v%{version}.tar.gz
 Source100:      python-param-rpmlintrc
-BuildRequires:  %{python_module nose}
+# PATCH-FEATURE-UPSTREAM denose.patch gh#holoviz/param#423 mcepl@suse.com
+# Remove nose dependency
+Patch0:         denose.patch
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +50,8 @@ commercial use under a BSD license, so that it can easily be included
 as part of other projects.
 
 %prep
-%setup -q -n param-%{version}
+%autosetup -p1 -n param-%{version}
+
 sed -i -e 's:version=get_setup_version("param"):version="%{version}":g' setup.py
 echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.version
 
@@ -59,7 +63,8 @@ echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+# Exclusion documented in gh#holoviz/param#423
+%pytest -k 'not test_abstract_class' tests/*/*.py
 
 %files %{python_files}
 %license LICENSE.txt

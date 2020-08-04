@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  3 10:32:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add denose.patch to remove dependency on nose (gh#holoviz/param#423).
+
+-------------------------------------------------------------------
 Wed Mar 11 14:59:28 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.9.3
