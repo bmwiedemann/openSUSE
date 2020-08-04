@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_without lang
 Name:           plasma-wayland-protocols
-Version:        1.0
+Version:        1.1.1
 Release:        0
 Summary:        Wayland protocols used by Plasma
 License:        LGPL-2.1-only AND LGPL-2.1-or-later AND MIT AND BSD-3-Clause
@@ -52,6 +53,5 @@ KDE Plasma.
 %license COPYING* LICENSES/*.txt
 %{_kf5_sharedir}/plasma-wayland-protocols/
 %{_kf5_cmakedir}/PlasmaWaylandProtocols/
-
 
 %changelog
