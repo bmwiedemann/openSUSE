@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  4 14:36:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.9.8:
+  * GH#426: The Shamir's secret sharing implementation is not actually compatible with ``ssss``.
+  Added an optional parameter to enable interoperability.
+  * GH#427: Skip altogether loading of ``gmp.dll`` on Windows.
+  * GH#420: Fix incorrect CFB decryption when the input and the output are the same buffer.
+  * Speed up Shamir's secret sharing routines. Thanks to ncarve.
+
+-------------------------------------------------------------------
 Fri Feb 28 21:52:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.9.7:

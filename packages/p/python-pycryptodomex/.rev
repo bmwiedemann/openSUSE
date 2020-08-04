@@ -253,4 +253,17 @@
     when compiled with gcc on 32-bit x86 platforms.</comment>
     <requestid>780395</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>09abe2d5ade5f0135a33309adad12412</srcmd5>
+    <version>3.9.8</version>
+    <time>1596565544</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.8:
+  * GH#426: The Shamir's secret sharing implementation is not actually compatible with ``ssss``.
+  Added an optional parameter to enable interoperability.
+  * GH#427: Skip altogether loading of ``gmp.dll`` on Windows.
+  * GH#420: Fix incorrect CFB decryption when the input and the output are the same buffer.
+  * Speed up Shamir's secret sharing routines. Thanks to ncarve.</comment>
+    <requestid>824345</requestid>
+  </revision>
 </revisionlist>
