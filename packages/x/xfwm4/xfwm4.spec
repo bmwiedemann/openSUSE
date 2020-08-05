@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfwm4
-Version:        4.14.3
+Version:        4.14.4
 Release:        0
 Summary:        Default Window Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
