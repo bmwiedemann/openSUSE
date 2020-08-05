@@ -28,7 +28,7 @@
 %define          qb_cfgmoddir   %{fronts_libdir}/qbanking/cfgmodules
 %define          q4b_cfgmoddir  %{fronts_libdir}/q4banking/cfgmodules
 Name:           aqbanking
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
