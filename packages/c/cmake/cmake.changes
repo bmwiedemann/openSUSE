@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 31 16:44:08 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.18.1:
+  * Revert undocumented fix in 3.18.0 in the add_test() command
+    for special characters to avoid breaking existing projects that
+    worked around the issue. Will be reintroduced later
+- drop no-system-nghttp2.patch, upstream
+
+-------------------------------------------------------------------
 Thu Jul 23 10:38:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Install the rpm provides handler to the correct location
