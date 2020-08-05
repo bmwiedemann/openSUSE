@@ -1,0 +1,23 @@
+It's coming from a length in the protocol (unsigned) and passed
+to functions that expect unsigned int parameters (_XCopyToArg()
+and memcpy()).
+
+Signed-off-by: Matthieu Herrb <matthieu@herrb.eu>
+Reviewed-by: Todd Carson <toc@daybefore.net>
+---
+ modules/im/ximcp/imRmAttr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: libX11-1.6.5/modules/im/ximcp/imRmAttr.c
+===================================================================
+--- libX11-1.6.5.orig/modules/im/ximcp/imRmAttr.c
++++ libX11-1.6.5/modules/im/ximcp/imRmAttr.c
+@@ -214,7 +214,7 @@ _XimAttributeToValue(
+     Xic			  ic,
+     XIMResourceList	  res,
+     CARD16		 *data,
+-    INT16		  data_len,
++    CARD16		  data_len,
+     XPointer		  value,
+     BITMASK32		  mode)
+ {

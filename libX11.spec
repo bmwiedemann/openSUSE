@@ -1,7 +1,7 @@
 #
 # spec file for package libX11
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,12 @@ Patch0:         p_khmer-compose.diff
 Patch1:         p_xlib_skip_ext_env.diff
 # PATCH-FIX-UPSTREAM en-locales.diff fdo#48596 bnc#388711 -- Add missing data for more en locales
 Patch2:         en-locales.diff
+Patch21:        U_001-ChangeTheData_lenParameterOf_XimAttributeToValueToCARD16.patch
+Patch22:        U_002-FixIntegerOverflowsIn_XimAttributeToValue.patch
+Patch23:        U_003-FixMoreUncheckedLengths.patch
+Patch24:        U_004-FixSignedLengthValuesIn_XimGetAttributeID.patch
+Patch25:        U_005-ZeroOutBuffersInFunctions.patch
+Patch26:        U_006-Fix-size-calculation-in-_XimAttributeToValue.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -133,7 +139,15 @@ in libX11-6 and libX11-xcb1.
 test -f nls/ja.U90/XLC_LOCALE.pre && exit 1
 test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 
-%autopatch -p0
+%patch0
+%patch1
+%patch2
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
 
 %build
 %configure \
