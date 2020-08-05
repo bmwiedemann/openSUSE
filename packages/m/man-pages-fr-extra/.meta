@@ -1,5 +1,0 @@
-<package name="man-pages-fr-extra" project="openSUSE:Factory">
-  <title>French version of the manual pages</title>
-  <description>This package contains translations which are neither shipped by man-pages-fr nor along with original manual pages. </description>
-  <devel project="Documentation" package="man-pages-fr-extra"/>
-</package>
