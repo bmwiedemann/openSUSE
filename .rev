@@ -526,4 +526,18 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     <comment></comment>
     <requestid>822572</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9098936c0de59306439942d76c29bfc0</srcmd5>
+    <version>2.23</version>
+    <time>1596651953</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.23
+  - Add &quot;run&quot; command to be able to execute a single command in a new snapshot
+  - Add &quot;--drop-if-no-change&quot; option to discard snapshots if no changes were
+    perfomed (BETA, required for Salt integration)
+  - Removed previous CaaSP Salt support (gh#openSUSE/transactional-update#33)
+  - Avoid &quot;file not found&quot; message on systems without /var subvol
+</comment>
+    <requestid>823772</requestid>
+  </revision>
 </revisionlist>
