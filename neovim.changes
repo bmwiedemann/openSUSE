@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 13:31:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.4:
+  bugfixes only
+
+-------------------------------------------------------------------
 Tue Jun  2 07:31:15 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable -fcommon in order to fix gh#neovim/neovim#12423.
