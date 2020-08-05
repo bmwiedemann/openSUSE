@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug  5 01:25:43 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200801
+  - Added 32 icons
+  - Updated icons
+    * Bitwarden #2326
+    * Deezer #2332
+    * Laigter #2319
+    * MuseScore #2334
+  - Changes and fixes
+    * Fix blurred emblem for symlinks
+    * Fixed inconsistent arrows in ePapirus #2307
+    * Fixed scaling icons for 96px/128px/192px/256px/320px/384px/448px/512px icon sizes #2312 (Fixes #2309)
+    * Removed obsolete Zrythm symlink
+
+-------------------------------------------------------------------
 Fri Jul  3 05:38:16 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20200702
