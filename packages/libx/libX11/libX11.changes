@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  4 16:33:45 CEST 2020 - tiwai@suse.de
+
+- U_006-Fix-size-calculation-in-_XimAttributeToValue.patch:
+  * Regression fix in previous XIM client head overflow fixes
+    (CVE-2020-14344, bsc#1174628)
+
+-------------------------------------------------------------------
+Fri Jul 31 20:23:05 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_001-ChangeTheData_lenParameterOf_XimAttributeToValueToCARD16.patch,
+  U_002-FixIntegerOverflowsIn_XimAttributeToValue.patch,
+  U_003-FixMoreUncheckedLengths.patch,
+  U_004-FixSignedLengthValuesIn_XimGetAttributeID.patch,
+  U_005-ZeroOutBuffersInFunctions.patch,
+  * XIM client heap overflows (CVE-2020-14344, bsc#1174628)
+
+-------------------------------------------------------------------
 Sun Oct 20 18:27:32 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add conflicts for old xorgproto-devel, X11/extensions/XKBgeom.h

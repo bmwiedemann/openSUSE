@@ -260,4 +260,14 @@ additions, including new UTF-8 compose sequences for:
     <comment></comment>
     <requestid>741458</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>b84259397a4cc4b2cd8ac04a6e85d466</srcmd5>
+    <version>1.6.9</version>
+    <time>1596651995</time>
+    <user>dimstar_suse</user>
+    <comment>- U_006-Fix-size-calculation-in-_XimAttributeToValue.patch:
+  * Regression fix in previous XIM client head overflow fixes
+    (CVE-2020-14344, bsc#1174628) (forwarded request 824349 from tiwai)</comment>
+    <requestid>824353</requestid>
+  </revision>
 </revisionlist>
