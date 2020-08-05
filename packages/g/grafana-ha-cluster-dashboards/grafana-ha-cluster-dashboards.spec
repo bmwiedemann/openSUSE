@@ -18,7 +18,7 @@
 
 Name:           grafana-ha-cluster-dashboards
 # Version will be processed via set_version source service
-Version:        1.0.1+git.1594734541.4222fc5
+Version:        1.0.2+git.1596627252.62154d3
 Release:        0
 Summary:        Grafana Dashboards displaying metrics about a Pacemaker/Corosync High Availability Cluster.
 License:        Apache-2.0
