@@ -17,13 +17,13 @@
 
 
 Name:           python-PyCBC
-Version:        1.16.4
+Version:        1.16.7
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            http://www.pycbc.org/
-Source:         https://files.pythonhosted.org/packages/source/p/pycbc/PyCBC-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyCBC/PyCBC-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy >= 1.16.0}
@@ -32,9 +32,21 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+Requires:       python-astropy
+Requires:       python-beautifulsoup4
+Requires:       python-decorator
+Requires:       python-h5py
 Requires:       python-numpy >= 1.16.0
-ExclusiveArch:  %ix86 x86_64
-
+Requires:       python-requests
+Requires:       python-scipy
+Requires:       python-tqdm
+Recommends:     python-emcee
+Recommends:     python-gwdatafind
+Recommends:     python-lal
+Recommends:     python-lalframe
+Recommends:     python-lalsimulation
+Recommends:     python-ligo-segments
+ExclusiveArch:  %{ix86} x86_64
 %python_subpackages
 
 %description
@@ -48,7 +60,7 @@ of detected sources.
 %setup -q -n PyCBC-%{version}
 
 # FOR REAL BINARIES SET HASHBANG TO PYTHON3 DIRECTLY
-sed -E -i "1{s|^#\!\s*/usr/bin/env python|#\!/usr/bin/python3|}" \
+sed -E -i "1{s|^#\!\s*/usr/bin/env python|#\!%{_bindir}/python3|}" \
   bin/pycbc_* \
   bin/*/pycbc_*
 
