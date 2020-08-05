@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysmb
-Version:        1.1.25
+Version:        1.2.1
 Release:        0
-License:        Zlib
 Summary:        SMB/CIFS library to support file sharing between Windows and Linux machines
-Url:            https://miketeo.net/projects/pysmb
+License:        Zlib
 Group:          Development/Languages/Python
+URL:            https://miketeo.net/projects/pysmb
 Source:         https://files.pythonhosted.org/packages/source/p/pysmb/pysmb-%{version}.zip
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
+Requires:       python-pyasn1
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pyasn1}
 # /SECTION
-BuildRequires:  unzip
-BuildRequires:  fdupes
-Requires:       python-pyasn1
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
