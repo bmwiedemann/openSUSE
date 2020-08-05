@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  5 13:20:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.6
+  * Fixed #128: Added ECC support by changing key generation parameters. (The Key-Length
+    value isn't added if a curve is specified.)
+  * More bugfixes.
+  * Support for Python versions 3.5 and under is discontinued, except for Python 2.7.
+
+-------------------------------------------------------------------
 Tue Sep 10 11:08:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.5:

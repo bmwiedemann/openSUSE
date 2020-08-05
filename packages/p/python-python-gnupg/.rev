@@ -87,4 +87,12 @@ providing the results. (forwarded request 695023 from mcepl)</comment>
   * various bugfixes</comment>
     <requestid>729817</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a0440bb5d552d7c72ba0d76b160556c5</srcmd5>
+    <version>0.4.6</version>
+    <time>1596652203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824526</requestid>
+  </revision>
 </revisionlist>
