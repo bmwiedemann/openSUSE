@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 05 10:41:33 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.9.5
+- Treat characters 'ÅåÄäÖö' as special when matching in the Swedish dictionary
+  (Resolves: http ://github.com/mike-fabian/ibus-typing-booster/issues/126)
+- Update emoji annotations from CLDR
+- AppStream tweaks by Gunnar Hjalmarsson
+- Translation update from Weblate for ca, de, es, sv
+
+-------------------------------------------------------------------
 Tue Jul 14 10:40:04 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.9.4
