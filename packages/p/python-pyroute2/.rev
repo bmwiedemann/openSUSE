@@ -201,4 +201,16 @@
     <comment></comment>
     <requestid>818349</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>90556192cfa5b4b54515e1dccb2d9373</srcmd5>
+    <version>0.5.13</version>
+    <time>1596652038</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.13:
+  * netns: allow to pass custom libc reference &lt;https://github.com/svinota/pyroute2/issues/702&gt;
+  * generic: att L2TP support &lt;https://github.com/svinota/pyroute2/pull/709&gt;
+  * iproute: link_lookup() optimization &lt;https://github.com/svinota/pyroute2/issues/712&gt;
+  * ndb: basic cluster support</comment>
+    <requestid>824351</requestid>
+  </revision>
 </revisionlist>
