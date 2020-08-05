@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  3 11:33:00 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.0.6:
+  - fixed crash with 4k resolution (2019/12/27 MS)
+- Run spec-cleaner
+  
+-------------------------------------------------------------------
 Sun Jan 19 20:46:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Use Source URL for lbreakout2-levelsets-20160512.tar.gz

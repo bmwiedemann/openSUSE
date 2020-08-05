@@ -1,7 +1,7 @@
 #
 # spec file for package lbreakouthd
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           lbreakouthd
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Classic Breakout-Style Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Breakout
 URL:            http://lgames.sourceforge.net/LBreakoutHD/
-Source:         http://downloads.sourceforge.net/project/lgames/%{name}/%{name}-%{version}.tar.gz
+Source:         https://downloads.sourceforge.net/project/lgames/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://sourceforge.net/projects/lgames/files/add-ons/lbreakout2/lbreakout2-levelsets-20160512.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -48,7 +48,7 @@ and must destroy bricks at the top by bouncing balls against them.
 %build
 %configure \
   --localstatedir=%{_localstatedir}/games
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
