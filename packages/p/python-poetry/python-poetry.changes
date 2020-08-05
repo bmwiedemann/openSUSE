@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug  5 12:12:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.0.10
+  * The lock files are now versioned to ease transitions for lock
+    file format changes, with warnings being displayed on 
+    incompatibility detection (#2695).
+  * The init and new commands will now provide hints on invalid
+    given licenses (#1634).
+  * Fixed error messages when the authors specified in the
+    pyproject.toml file are invalid (#2525).
+  * Fixed empty .venv directories being deleted (#2064).
+  * Fixed the shell command for tcsh shells (#2583).
+  * Fixed errors when installing directory or file dependencies in
+    some cases (#2582).
+ 
+-------------------------------------------------------------------
 Wed Jul 29 10:32:43 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - allow keyring >= 20.0.1

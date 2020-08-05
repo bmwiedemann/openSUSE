@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define dephell_loglevel DEBUG
 Name:           python-poetry
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
