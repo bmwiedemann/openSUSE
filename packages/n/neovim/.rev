@@ -339,4 +339,14 @@
     <comment>- Enable -fcommon in order to fix gh#neovim/neovim#12423.</comment>
     <requestid>810727</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>552a20df4f348ab1035098b1f61cd815</srcmd5>
+    <version>0.4.4</version>
+    <time>1596652215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.4:
+  bugfixes only
+</comment>
+    <requestid>824515</requestid>
+  </revision>
 </revisionlist>
