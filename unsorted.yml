@@ -5093,7 +5093,7 @@ unsorted:
   - gnome-todo 
   - gnome-todo-devel 
   - gnome-todo-lang 
-  - gnome-usage 
+  - gnome-usage: [i586] 
   - gnome-usage-lang 
   - gnome-user-docs-lang 
   - gnome-vfs2 
@@ -7415,6 +7415,7 @@ unsorted:
   - ktp-text-ui-lang 
   - kube-prometheus-k8s-yaml: [i586] 
   - kube-prometheus-sources 
+  - kuberlr 
   - kubernetes-apiserver: [x86_64] 
   - kubernetes-apiserver-minus1: [x86_64] 
   - kubernetes-controller-manager: [x86_64] 
@@ -19777,6 +19778,7 @@ unsorted:
   - python3-azure-storage-queue 
   - python3-azure-synapse 
   - python3-azurectl 
+  - python3-azuremetadata 
   - python3-babelfish 
   - python3-babeltrace 
   - python3-babeltrace2 
