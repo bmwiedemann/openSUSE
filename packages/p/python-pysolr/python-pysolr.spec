@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysolr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pysolr
-Version:        3.8.1
+Version:        3.9.0
 Release:        0
 Summary:        Lightweight python wrapper for Apache Solr
 License:        BSD-3-Clause
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.9.1
-Suggests:       python-kazoo >= 2.2
+Suggests:       python-kazoo >= 2.5.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}

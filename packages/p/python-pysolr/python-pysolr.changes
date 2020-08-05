@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  5 15:21:54 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.9.0
+  * Improved SolrCloud support
+  * Support for Solr.ping
+  * Dropped support for Python 3.4
+  * Added JSON interface which can be significantly faster
+
+-------------------------------------------------------------------
 Mon Dec  2 10:47:16 UTC 2019 - pgajdos@suse.com
 
 - call spec-cleaner
