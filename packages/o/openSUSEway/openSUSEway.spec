@@ -49,8 +49,10 @@ Requires:       firefox
 Requires:       NetworkManager
 Requires:       mpv
 Requires:       libqt5-qtwayland
-Requires:       xdg-desktop-portal
+Requires:       pipewire
 Requires:       xdg-utils
+Requires:       xdg-desktop-portal
+Requires:       xdg-desktop-portal-wlr
 Requires:       qt5ct
 Requires:       adwaita-qt5
 Requires:       wob
