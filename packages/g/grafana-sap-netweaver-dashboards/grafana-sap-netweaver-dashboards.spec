@@ -1,26 +1,29 @@
 #
-# Copyright 2020 SUSE LLC
+# spec file for package grafana-sap-netweaver-dashboards
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# Copyright (c) 2020 SUSE LLC
 #
-#    https://www.apache.org/licenses/LICENSE-2.0
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+
+
 Name:           grafana-sap-netweaver-dashboards
 # Version will be processed via set_version source service
-Version:        1.0.0+git.1594823081.85af75f
+Version:        1.0.1+git.1596627184.3ac5830
 Release:        0
-License:        Apache-2.0
 Summary:        Grafana Dashboards displaying metrics about a SAP NetWeaver landscape.
+License:        Apache-2.0
 Group:          System/Monitoring
-Url:            https://github.com/SUSE/sap_host_exporter
+URL:            https://github.com/SUSE/sap_host_exporter
 Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       grafana-sap-providers

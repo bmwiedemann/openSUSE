@@ -2,10 +2,10 @@
     <service name="tar_scm" mode="disabled">
         <param name="url">git://github.com/SUSE/sap_host_exporter.git</param>
         <param name="scm">git</param>
-        <param name="revision">85af75f4cacba793e6d34160c06fc52983232d3b</param>
+        <param name="revision">3ac5830969ef1ac8443392597440c3cbc95389f9</param>
         <param name="include">dashboards</param>
         <param name="include">LICENSE</param>
-        <param name="versionformat">1.0.0+git.%ct.%h</param>
+        <param name="versionformat">1.0.1+git.%ct.%h</param>
         <param name="filename">grafana-sap-netweaver-dashboards</param>
     </service>
     <service name="set_version" mode="disabled">
