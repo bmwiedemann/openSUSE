@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 16 20:10:30 UTC 2020 - Mariusz Fik <fisiu@opensuse.org>
+
+- Update to version 10.11:
+  * Default value of MinTLSversion set to 1.2.
+  * Small bugfixes.
+- Changes from 10.10:
+  * Removed several build options. Functionalities are now always enabled.
+  * Updated Let's Encrypt script due to changes in the API.
+  * Bugfix: AlterMode not working correctly.
+
+-------------------------------------------------------------------
 Wed Jul 24 09:26:57 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

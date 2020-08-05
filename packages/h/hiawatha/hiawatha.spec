@@ -1,8 +1,8 @@
 #
 # spec file for package hiawatha
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2013-2019 Mariusz Fik <fisiu@opensuse.org>.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2013-2020 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,12 +21,12 @@
 %define mbedtls_version %(rpm -q mbedtls-devel --qf "%%{VERSION}")
 
 Name:           hiawatha
-Version:        10.9
+Version:        10.11
 Release:        0
 Summary:        A secure and advanced webserver
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Web/Servers
-Url:            http://www.hiawatha-webserver.org
+URL:            http://www.hiawatha-webserver.org
 Source0:        http://www.hiawatha-webserver.org/files/%{name}-%{version}.tar.gz
 Source1:        %{name}.logrotate
 Source2:        %{name}.service
@@ -135,7 +135,8 @@ install -D -m 0644 %{SOURCE103} \
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog LICENSE README.md
+%doc ChangeLog README.md
+%license LICENSE
 %{_bindir}/ssi-cgi
 %{_sbindir}/%{name}
 %{_sbindir}/rc%{name}
