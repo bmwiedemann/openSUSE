@@ -80,8 +80,9 @@ for i in v%{version}/intel-signed/*.ri v%{version}/*.ri; do
     ln -s $i $f.ri
 done
 
-# fix up the missing firmware for Commet Lake
+# fix up the missing firmware for Commet Lake and Coffee Lake
 test -f sof-cml.ri || ln -s sof-cnl.ri sof-cml.ri
+test -f sof-cfl.ri || ln -s sof-cnl.ri sof-cfl.ri
 
 mkdir -p debug
 cd debug
