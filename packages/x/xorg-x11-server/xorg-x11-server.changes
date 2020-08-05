@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:54:05 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_FixForZDI-11426.patch
+  *  Leak of uninitialized heap memory form the X server to clients
+     on pixmap allocation (ZDI-CAN-11426, CVE-2020-14347, bsc#1174633)
+
+-------------------------------------------------------------------
 Tue Jun 30 16:48:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - move xorg_pci_ids dir from /etc/X11 to /usr/share/X11 and

@@ -3433,4 +3433,14 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   no longer package /etc/X11/xorg.conf.d (boo#1173056)</comment>
     <requestid>817940</requestid>
   </revision>
+  <revision rev="384" vrev="5">
+    <srcmd5>b0a8455bbab438428fe3605dd1d69af6</srcmd5>
+    <version>1.20.8+0</version>
+    <time>1596651961</time>
+    <user>dimstar_suse</user>
+    <comment>- U_FixForZDI-11426.patch
+  *  Leak of uninitialized heap memory form the X server to clients
+     on pixmap allocation (ZDI-CAN-11426, CVE-2020-14347, bsc#1174633)</comment>
+    <requestid>823797</requestid>
+  </revision>
 </revisionlist>
