@@ -18,15 +18,15 @@
 %define _buildshell /bin/bash
 
 Name:           sssd
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://pagure.io/SSSD/sssd
 #Git-Clone:	https://pagure.io/SSSD/sssd
-Source:         https://github.com/SSSD/sssd/releases/download/sssd-2_3_0/%name-%version.tar.gz
-Source2:        https://github.com/SSSD/sssd/releases/download/sssd-2_3_0/%name-%version.tar.gz.asc
+Source:         https://github.com/SSSD/sssd/releases/download/sssd-2_3_1/%name-%version.tar.gz
+Source2:        https://github.com/SSSD/sssd/releases/download/sssd-2_3_1/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 Source5:        %name.keyring
 Patch1:         krb-noversion.diff
@@ -179,32 +179,6 @@ Requires:       sssd = %version
 %description tools
 The packages contains commandline tools for managing users and groups using
 the "local" id provider of the System Security Services Daemon (sssd).
-
-%package wbclient
-Summary:        SSSD's implementation of the Winbind pipe protocol
-License:        LGPL-3.0-or-later
-Group:          System/Libraries
-
-%description wbclient
-libwbclient is a plugin for the Samba client, though it has been
-implemented as a regular shared library requested via DT_NEEDED.
-
-sssd-wbclient implements the libwbclient API for Samba daemons and
-utilities. The main purpose is to map Active Directory users and
-groups identified by their SID to POSIX users and groups identified
-by their POSIX UIDs and GIDs respectively.
-
-%package wbclient-devel
-Summary:        Development files for SSSD winbind
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       %name-wbclient = %version
-
-%description wbclient-devel
-sssd-wbclient implements the libwbclient API for Samba daemons and
-utilities. The main purpose is to map Active Directory users and
-groups identified by their SID to POSIX users and groups identified
-by their POSIX UIDs and GIDs respectively.
 
 %package winbind-idmap
 Summary:        The sss idmap backend for Winbind
@@ -433,10 +407,6 @@ ln -sfv service "$b/%_sbindir/rcsssd-ssh"
 ln -sfv service "$b/%_sbindir/rcsssd-sudo"
 
 mkdir -pv "$b/%sssdstatedir/mc"
-mkdir -pv "$b/%_sysconfdir/ld.so.conf.d"
-cat >"$b/%_sysconfdir/ld.so.conf.d/sssd-wbclient.conf" <<-EOF
-	%_libdir/%name/modules
-EOF
 find "$b" -type f -name "*.la" -print -delete
 rm -Rfv "$b/usr/lib/debug/usr/lib/sssd/p11_child-1.16.2-0.x86_64.debug"
 %find_lang %name --all-name
@@ -603,6 +573,7 @@ rm -f /var/lib/sss/db/*.ldb
 %_libdir/krb5/
 %_libdir/%name/modules/sssd_krb5_localauth_plugin.so
 %_mandir/??/man8/sssd_krb5_locator_plugin.8*
+%_mandir/??/man8/pam_sss.8*
 %_mandir/man8/pam_sss.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
 
@@ -690,19 +661,6 @@ rm -f /var/lib/sss/db/*.ldb
 %dir %_mandir/??/man8/
 %_mandir/??/man8/sss_*.8*
 %_mandir/man8/sss_*.8*
-
-%files wbclient
-%config %_sysconfdir/ld.so.conf.d/sssd-wbclient.conf
-%dir %_libdir/sssd/
-%dir %_libdir/sssd/modules/
-%_libdir/sssd/modules/libwbclient.so.*
-
-%files wbclient-devel
-%_includedir/wbclient_sssd.h
-%dir %_libdir/sssd/
-%dir %_libdir/sssd/modules/
-%_libdir/sssd/modules/libwbclient.so
-%_libdir/pkgconfig/wbclient_sssd.pc
 
 %files winbind-idmap
 %_libdir/samba/

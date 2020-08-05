@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 24 16:57:58 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.1
+  * Domains can be now explicitly enabled or disabled using
+    enable option in domain section. This can be especially used
+    in configuration snippets.
+  * New configuration options memcache_size_passwd,
+    memcache_size_group, memcache_size_initgroups that can be
+    used to control memory cache size.
+  * Fixed several regressions in GPO processing introduced in
+    sssd-2.3.0
+  * Fixed regression in PAM responder: failures in cache only
+    lookups are no longer considered fatal.
+  * Fixed regression in proxy provider: pwfield=x is now default
+    value only for sssd-shadowutils target.
+- sssd-wbclient is obsolete and no longer shipped
+
+-------------------------------------------------------------------
 Tue May 19 11:32:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.0
