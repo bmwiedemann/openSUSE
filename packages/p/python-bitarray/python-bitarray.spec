@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bitarray
-Version:        1.3.0
+Version:        1.4.2
 Release:        0
 Summary:        Efficient Arrays of Booleans
 License:        Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/ilanschnell/bitarray
 Source:         https://github.com/ilanschnell/bitarray/archive/%{version}.tar.gz#/bitarray-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
