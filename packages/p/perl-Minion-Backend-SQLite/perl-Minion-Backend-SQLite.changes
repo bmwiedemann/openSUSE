@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug  3 03:10:02 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.0.3
+   see /usr/share/doc/packages/perl-Minion-Backend-SQLite/Changes
+
+  v5.0.3    2020-08-02 18:15:20 EDT
+    - Minion requirement bumped to 10.13.
+    - Removed experimental support for job sequences.
+    - Added EXPERIMENTAL expire option to enqueue method to support expiring jobs.
+    - Added EXPERIMENTAL lax option to enqueue method to support lax dependencies.
+    - Removed next and previous fields from list_jobs method.
+    - Added expires and lax fields to list_jobs method.
+    - Fixed a bug where manual retries would count towards the attempts limit for automatic retries.
+    - Optimized checking parent job state in job dequeue.
+
+-------------------------------------------------------------------
 Tue Jul 28 09:45:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.0.2
