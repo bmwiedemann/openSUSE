@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-cfgv
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Configuration validator producing human readable error messages
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/asottile/cfgv
 Source:         https://github.com/asottile/cfgv/archive/v%{version}.tar.gz#/cfgv-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
