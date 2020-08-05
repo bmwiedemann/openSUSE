@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  5 13:46:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.14.0
+  * Privilege definition in file over the environment in variable expansion (#256 by
+    [@elbehery95]).
+  * Improve error message for when file isn't found (#245 by [@snobu]).
+  * Use HTTPS URL in package meta data (#251 by [@ekohl]).
+
+-------------------------------------------------------------------
 Tue Jun 30 04:44:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Downgrade jupyter_ipython from Recommends to Suggests as
