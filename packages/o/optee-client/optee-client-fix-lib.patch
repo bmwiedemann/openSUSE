@@ -1,0 +1,57 @@
+From b9a04bac9799676e1332b0947c69b63bbac4bd0c Mon Sep 17 00:00:00 2001
+From: Jerome Forissier <jerome@forissier.org>
+Date: Thu, 25 Jun 2020 17:51:01 +0200
+Subject: [PATCH] libckteec: fix SONAME to be libckteec.so.<MAJOR_VERSION>
+
+The libckteec CMakeList.txt and Makefile both have the SONAME wrong.
+With the current version (0.1.0), SONAME should be libckteec.so.0, but:
+- CMakeList.txt sets it to libckteec.so.ckteec
+- Makefile sets it to libckteec.so.0.1.0
+
+This commit fixes both build environments.
+
+Reported-by: Guillaume Gardet <guillaume.gardet@opensuse.org>
+Signed-off-by: Jerome Forissier <jerome@forissier.org>
+---
+ libckteec/CMakeLists.txt | 8 ++++++--
+ libckteec/Makefile       | 2 +-
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/libckteec/CMakeLists.txt b/libckteec/CMakeLists.txt
+index 1454a283..6e782d06 100644
+--- a/libckteec/CMakeLists.txt
++++ b/libckteec/CMakeLists.txt
+@@ -1,6 +1,10 @@
+ project(ckteec C)
+ 
+-set(PROJECT_VERSION "0.1.0")
++set(MAJOR_VERSION 0)
++set(MINOR_VERSION 1)
++set(PATCH_VERSION 0)
++
++set(PROJECT_VERSION "${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}")
+ 
+ ################################################################################
+ # Packages
+@@ -30,7 +34,7 @@ add_library (ckteec SHARED ${SRC})
+ 
+ set_target_properties (ckteec PROPERTIES
+ 	VERSION ${PROJECT_VERSION}
+-	SOVERSION ${PROJECT_NAME}
++	SOVERSION ${MAJOR_VERSION}
+ )
+ 
+ ################################################################################
+diff --git a/libckteec/Makefile b/libckteec/Makefile
+index 8c933ca4..bc939d02 100644
+--- a/libckteec/Makefile
++++ b/libckteec/Makefile
+@@ -47,7 +47,7 @@ libckteec: $(OUT_DIR)/$(LIBCKTEEC_SO_LIBRARY)
+ 
+ $(OUT_DIR)/$(LIBCKTEEC_SO_LIBRARY): $(LIBCKTEEC_OBJS)
+ 	@echo "  LINK    $@"
+-	$(VPREFIX)$(CC) -shared -Wl,-soname,$(LIBCKTEEC_SO_LIBRARY) -o $@ $+ $(LIBCKTEEC_LFLAGS)
++	$(VPREFIX)$(CC) -shared -Wl,-soname,$(LIB_MAJOR) -o $@ $+ $(LIBCKTEEC_LFLAGS)
+ 	@echo ""
+ 
+ libckteec: $(OUT_DIR)/$(LIBCKTEEC_AR_LIBRARY)
