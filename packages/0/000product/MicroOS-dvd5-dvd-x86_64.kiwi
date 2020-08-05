@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20200803" schemaversion="4.1">
+<image name="OBS__MicroOS___20200804" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200803</productvar>
+      <productvar name="VERSION">20200804</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200803,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200804,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200803/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200804/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -81,6 +81,7 @@
       <repopackage name="blog"/>
       <repopackage name="bluedevil5" arch="x86_64"/>
       <repopackage name="bluez" arch="x86_64"/>
+      <repopackage name="bluez-firmware" arch="x86_64"/>
       <repopackage name="bluez-qt-imports" arch="x86_64"/>
       <repopackage name="bluez-qt-udev" arch="x86_64"/>
       <repopackage name="boost-license1_71_0" arch="x86_64"/>
@@ -107,6 +108,7 @@
       <repopackage name="catatonit" arch="x86_64"/>
       <repopackage name="checkpolicy" arch="x86_64"/>
       <repopackage name="chkstat"/>
+      <repopackage name="chrome-gnome-shell" arch="x86_64"/>
       <repopackage name="chrony" arch="x86_64"/>
       <repopackage name="chrony-pool-openSUSE" arch="x86_64"/>
       <repopackage name="cifs-utils" arch="x86_64"/>
@@ -176,8 +178,10 @@
       <repopackage name="gcab" arch="x86_64"/>
       <repopackage name="gcr-data" arch="x86_64"/>
       <repopackage name="gcr-prompter" arch="x86_64"/>
+      <repopackage name="gcr-ssh-askpass" arch="x86_64"/>
       <repopackage name="gdk-pixbuf-loader-rsvg" arch="x86_64"/>
       <repopackage name="gdk-pixbuf-query-loaders" arch="x86_64"/>
+      <repopackage name="gdk-pixbuf-thumbnailer" arch="x86_64"/>
       <repopackage name="gdm" arch="x86_64"/>
       <repopackage name="gdm-branding-MicroOS" arch="x86_64"/>
       <repopackage name="gdmflexiserver" arch="x86_64"/>
@@ -195,6 +199,7 @@
       <repopackage name="glibc-locale" arch="x86_64"/>
       <repopackage name="glibc-locale-base" arch="x86_64"/>
       <repopackage name="gmenudbusmenuproxy" arch="x86_64"/>
+      <repopackage name="gnome-bluetooth" arch="x86_64"/>
       <repopackage name="gnome-calculator" arch="x86_64"/>
       <repopackage name="gnome-control-center" arch="x86_64"/>
       <repopackage name="gnome-control-center-goa" arch="x86_64"/>
@@ -219,6 +224,7 @@
       <repopackage name="gnome-terminal" arch="x86_64"/>
       <repopackage name="gnome-themes-accessibility" arch="x86_64"/>
       <repopackage name="gnome-tweaks" arch="x86_64"/>
+      <repopackage name="gnome-usage" arch="x86_64"/>
       <repopackage name="gnome-user-docs" arch="x86_64"/>
       <repopackage name="gnome-version" arch="x86_64"/>
       <repopackage name="gnomekbd-tools" arch="x86_64"/>
@@ -238,6 +244,7 @@
       <repopackage name="grub2-x86_64-efi" arch="x86_64"/>
       <repopackage name="gsettings-backend-dconf" arch="x86_64"/>
       <repopackage name="gsettings-desktop-schemas" arch="x86_64"/>
+      <repopackage name="gsf-office-thumbnailer" arch="x86_64"/>
       <repopackage name="gstreamer" arch="x86_64"/>
       <repopackage name="gstreamer-plugins-bad" arch="x86_64"/>
       <repopackage name="gstreamer-plugins-base" arch="x86_64"/>
@@ -444,6 +451,7 @@
       <repopackage name="libdaemon0" arch="x86_64"/>
       <repopackage name="libdatrie1" arch="x86_64"/>
       <repopackage name="libdav1d4" arch="x86_64"/>
+      <repopackage name="libdazzle-1_0-0" arch="x86_64"/>
       <repopackage name="libdb-4_8" arch="x86_64"/>
       <repopackage name="libdbus-1-3"/>
       <repopackage name="libdbusmenu-qt5-2" arch="x86_64"/>
@@ -1224,6 +1232,7 @@
       <repopackage name="procps" arch="x86_64"/>
       <repopackage name="psmisc" arch="x86_64"/>
       <repopackage name="pulseaudio" arch="x86_64"/>
+      <repopackage name="pulseaudio-module-bluetooth" arch="x86_64"/>
       <repopackage name="pulseaudio-module-gsettings" arch="x86_64"/>
       <repopackage name="pulseaudio-module-x11" arch="x86_64"/>
       <repopackage name="pulseaudio-module-zeroconf" arch="x86_64"/>
@@ -1289,6 +1298,7 @@
       <repopackage name="restorecond" arch="x86_64"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
+      <repopackage name="rsvg-thumbnailer" arch="x86_64"/>
       <repopackage name="rsync" arch="x86_64"/>
       <repopackage name="rtkit" arch="x86_64"/>
       <repopackage name="runc" arch="x86_64"/>

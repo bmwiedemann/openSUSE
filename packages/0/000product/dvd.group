@@ -859,7 +859,7 @@
     <package name="gtk2-engine-hcengine" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gtk2-engine-industrial" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk2-engine-mist" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="gtk2-engine-murrine" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gtk2-engine-murrine" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="gtk2-engine-redmond95" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk2-engine-thinice" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk2-engines" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -873,7 +873,7 @@
     <package name="gtk2-metatheme-adwaita" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk2-metatheme-breeze" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gtk2-metatheme-gilouche" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="gtk2-metatheme-greybird-geeko" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gtk2-metatheme-greybird-geeko" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="gtk2-metatheme-industrial" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk2-metatheme-sonar" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk2-theme-clearlooks" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -895,7 +895,7 @@
     <package name="gtk3-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk3-metatheme-adwaita" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk3-metatheme-breeze" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="gtk3-metatheme-greybird-geeko" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gtk3-metatheme-greybird-geeko" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="gtk3-schema" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk3-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtkiterm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2330,7 +2330,7 @@
     <package name="libldns3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="liblensfun1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblhasa0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libliveMedia79" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3035,13 +3035,13 @@
     <package name="libzypp" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lifecycle-data-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="lightdm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="lightdm-gtk-greeter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="lightdm-gtk-greeter-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="lightdm-gtk-greeter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="lightdm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
+    <package name="lightdm-gtk-greeter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
+    <package name="lightdm-gtk-greeter-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
+    <package name="lightdm-gtk-greeter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="lightdm-gtk-greeter-settings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="lightdm-gtk-greeter-settings-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="lightdm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="lightdm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="lightsoff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lightsoff-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="links" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3111,7 +3111,7 @@
     <package name="metamail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="metatheme-adwaita-common" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="metatheme-breeze-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="metatheme-greybird-geeko-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="metatheme-greybird-geeko-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="metatheme-sonar-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mgopen-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
