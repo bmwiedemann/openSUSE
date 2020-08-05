@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 31 16:11:04 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.23
+  - Add "run" command to be able to execute a single command in a new snapshot
+  - Add "--drop-if-no-change" option to discard snapshots if no changes were
+    perfomed (BETA, required for Salt integration)
+  - Removed previous CaaSP Salt support (gh#openSUSE/transactional-update#33)
+  - Avoid "file not found" message on systems without /var subvol
+
+-------------------------------------------------------------------
 Thu Jul 23 13:17:47 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove unused attr requires
