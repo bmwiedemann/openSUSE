@@ -18,19 +18,18 @@
 
 %define _name   libtorrent
 %define sover   10
-%define _version 1_2_7
 %bcond_without  python2
 %bcond_without  python3
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
-Source:         https://github.com/arvidn/%{_name}/releases/download/%{_name}_%{_version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/arvidn/%{_name}/releases/download/%{_name}-%{version}/%{name}-%{version}.tar.gz
 # for directory ownership
 BuildRequires:  cmake-full
 BuildRequires:  gcc-c++

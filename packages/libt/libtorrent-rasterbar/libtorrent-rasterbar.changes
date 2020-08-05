@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug  4 17:29:38 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.2.8
+  * validate UTF-8 encoding of client version strings from peers
+  * don't time out tracker announces as eagerly while resolving
+    hostnames
+  * fix NAT-PMP shutdown issue
+  * improve hostname lookup by merging identical lookups
+  * fix network route enumeration for large routing tables
+  * fixed issue where pop_alerts() could return old, invalid
+    alerts
+  * fix issue when receiving have-all message before the
+    metadata
+  * don't leave lingering part files handles open
+  * disallow calling add_piece() during checking
+  * fix incorrect filename truncation at multi-byte character
+  * always announce listen port 1 when using a proxy
+
+-------------------------------------------------------------------
 Fri Jul 10 04:42:21 UTC 2020 - aloisio@gmx.com
 
 - Update to version 1.2.7
