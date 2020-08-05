@@ -1,6 +1,7 @@
 #
-# spec file for package python-pysol-cards.spec
+# spec file for package python-pysol-cards
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,22 +16,23 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysol-cards
-Version:        0.8.8
+Version:        0.10.1
 Release:        0
 Summary:        Python module for pysol-cards
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://pypi.org/project/pysol-cards/
-Source:         https://pypi.io/packages/source/p/pysol_cards/pysol_cards-%{version}.tar.gz
+URL:            https://pypi.org/project/pysol-cards/
+Source:         https://files.pythonhosted.org/packages/source/p/pysol_cards/pysol_cards-%{version}.tar.gz
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module pbr >= 2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module random2}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 ## MANUAL BEGIN ##
