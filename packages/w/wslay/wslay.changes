@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 26 09:00:49 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 1.1.1
+  * Check for eof when read_callback returns 0
+- Update to version 1.1.0
+  * Fix compilation of examples
+  * Check for 0 length before memcpy
+  * Skip UTF-8 validation for PMCE fragments
+  * Allow RSV1 bit in event-based API for PMCE - RFC 7692
+  * Fixed missing malloc guard
+  * Fix argc check
+
+-------------------------------------------------------------------
 Thu Apr 23 09:22:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use py3 version of sphinx

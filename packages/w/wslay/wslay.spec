@@ -19,13 +19,13 @@
 %define sover   0
 %define c_lib   lib%{name}%{sover}
 Name:           wslay
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        WebSocket library in C
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/tatsuhiro-t/wslay
-Source0:        https://github.com/tatsuhiro-t/wslay/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/tatsuhiro-t/wslay/archive/release-%{version}.tar.gz#/%{name}-release-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cunit-devel
@@ -33,7 +33,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
-BuildRequires:  pkgconfig(nettle)
+BuildRequires:  pkgconfig(nettle) >= 2.4
 
 %description
 Wslay is a WebSocket library written in C. It implements the protocol version
