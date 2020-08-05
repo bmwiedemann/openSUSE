@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug  1 09:54:53 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 68.11.0
+  * fixed: FileLink attachments included as a link and file when
+    added from a network drive via drag & drop (bmo#793118)
+  MFSA 2020-35 (bsc#1174538)
+  * CVE-2020-15652 (bmo#1634872)
+    Potential leak of redirect targets when loading scripts in a
+    worker
+  * CVE-2020-6514 (bmo#1642792)
+    WebRTC data channel leaks internal address to peer
+  * CVE-2020-6463 (bmo#1635293)
+    Use-after-free in ANGLE gl::Texture::onUnbindAsSamplerTexture
+  * CVE-2020-15659 (bmo#1550133, bmo#1633880, bmo#1646787,
+    bmo#1650811)
+    Memory safety bugs fixed in Thunderbird 68.11
+
+-------------------------------------------------------------------
 Wed Jul  1 21:00:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird 68.10.0
@@ -6,6 +24,22 @@ Wed Jul  1 21:00:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
     (bmo#1644024)
   * fixed: Calendar: Filtering tasks did not work when
     "Incomplete Tasks" was selected (bmo#1593711)
+  MFSA 2020-26 (bsc#1173576)
+  * CVE-2020-12417 (bmo#1640737)
+    Memory corruption due to missing sign-extension for ValueTags
+    on ARM64
+  * CVE-2020-12418 (bmo#1641303)
+    Information disclosure due to manipulated URL object
+  * CVE-2020-12419 (bmo#1643874)
+    Use-after-free in nsGlobalWindowInner
+  * CVE-2020-12420 (bmo#1643437)
+    Use-After-Free when trying to connect to a STUN server
+  * MFSA-2020-0001 (bmo#1606610)
+    Automatic account setup leaks Microsoft Exchange login
+    credentials
+  * CVE-2020-12421 (bmo#1308251)
+    Add-On updates did not respect the same certificate trust
+    rules as software updates
 
 -------------------------------------------------------------------
 Thu Jun 11 14:52:51 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
