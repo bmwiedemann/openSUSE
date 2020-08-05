@@ -18,7 +18,7 @@
 
 
 Name:           udp2raw-tunnel
-Version:        20200715.0
+Version:        20200727.0
 Release:        0
 Summary:        UDP over TCP/ICMP/UDP tunnel
 # The following files are adapted from PolarSSL 1.3.19 (GPL-2.0)
