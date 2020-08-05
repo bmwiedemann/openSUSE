@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-slugify
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Slugify application that handles Unicode
 License:        MIT

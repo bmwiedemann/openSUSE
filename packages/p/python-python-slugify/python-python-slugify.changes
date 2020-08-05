@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 08:35:13 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.0.1
+  * Add support for Py 3.8
+
+-------------------------------------------------------------------
 Wed May 20 07:26:54 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
