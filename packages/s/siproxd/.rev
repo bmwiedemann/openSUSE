@@ -317,4 +317,12 @@ Error is masked due to || : (forwarded request 141997 from dimstar)</comment>
   configuration struct (forwarded request 812499 from oertel)</comment>
     <requestid>812500</requestid>
   </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>7fec228dffd7e594698a3d4c8de0e1e5</srcmd5>
+    <version>0.8.2</version>
+    <time>1596703407</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't install SuSEfirewall2 service files, it's gone. (forwarded request 823195 from kukuk)</comment>
+    <requestid>824637</requestid>
+  </revision>
 </revisionlist>

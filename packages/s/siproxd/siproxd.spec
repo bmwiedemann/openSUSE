@@ -72,7 +72,9 @@ Requires:       logrotate
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 Requires(pre):  %insserv_prereq
+%if %suse_version <= 1500
 Suggests:       SuSEfirewall2
+%endif
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -113,8 +115,10 @@ mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 mv %{buildroot}%{_sysconfdir}/%{name}.conf.example \
    %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
 
+%if %suse_version <= 1500
 install -d %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/
 install -m 644 %{S:1} %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
+%endif
 
 install -d %{buildroot}/%{_sysconfdir}/logrotate.d/
 install -m 0644 %{S:3} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
@@ -176,7 +180,9 @@ getent passwd %{siproxduser} >/dev/null || \
 %{_unitdir}
 %{_unitdir}/siproxd.service
 
+%if %suse_version <= 1500
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
+%endif
 
 %_mandir/man8/%name.8*
 
