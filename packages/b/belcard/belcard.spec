@@ -31,17 +31,28 @@ Patch0:         belcard-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.3.0
-BuildRequires:  pkgconfig(belr) >= 4.3.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.4.0
+BuildRequires:  pkgconfig(belr) >= 4.4.0
 
 %description
 Belcard is a C++ library to manipulate the vCard standard format files.
 
 %package -n %{soname}%{sover}
 Summary:        C++ library to manipulate vCard standard format files
+Requires:       %{name}-data >= %{version}
 
 %description -n %{soname}%{sover}
 Belcard is a C++ library to manipulate the vCard standard format files.
+
+%package data
+Summary:        Belcard data files
+Requires:       %{soname}%{sover} = %{version}
+BuildArch:      noarch
+
+%description data
+Belcard is a C++ library to manipulate the vCard standard format files.
+
+This package contains data files such as belr grammar.
 
 %package devel
 Summary:        Headers and libraries for the belcard library
@@ -73,6 +84,10 @@ to develop applications using the belcard library.
 %license LICENSE.txt
 %{_libdir}/%{soname}.so.%{sover}*
 
+%files data
+%dir %{_datadir}/belr/
+%{_datadir}/belr/grammars/
+
 %files devel
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
@@ -81,7 +96,6 @@ to develop applications using the belcard library.
 %{_libdir}/%{soname}.so
 %{_datadir}/%{name}/
 %{_datadir}/%{name}_tester/
-%{_datadir}/belr/grammars/vcard_grammar
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog

@@ -3,6 +3,8 @@ Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.4.0:
   * Fix building with Clang 10.
+- Move belr grammar files from belcard-devel to a new belcard-data
+  package.
 
 -------------------------------------------------------------------
 Wed Apr 22 16:24:17 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
