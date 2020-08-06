@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-crontab
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        Python Crontab API
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://gitlab.com/doctormo/python-crontab/
-# https://gitlab.com/doctormo/python-crontab/-/issues/69
-Source:         https://gitlab.com/doctormo/python-crontab/-/archive/v%{version}/python-crontab-v%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-crontab/python-crontab-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,7 +49,7 @@ Crontab module for reading and writing crontab files and
 accessing the system cron automatically using an API.
 
 %prep
-%setup -q -n python-crontab-v%{version}
+%setup -q -n python-crontab-%{version}
 
 %build
 %python_build
@@ -60,8 +59,9 @@ accessing the system cron automatically using an API.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# test_07_non_posix_shell - only for Windows
 export LANG=en_US.UTF-8
-%pytest
+%pytest -k "not test_07_non_posix_shell"
 
 %files %{python_files}
 %doc README.rst

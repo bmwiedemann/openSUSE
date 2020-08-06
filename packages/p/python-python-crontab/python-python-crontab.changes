@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:02:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.5.1
+  * Update crontab class to allow with context manager
+  * Convert file to unix format
+  * add support for percent sign stdin and escaping
+
+-------------------------------------------------------------------
 Mon Mar 23 11:22:46 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.4.0
