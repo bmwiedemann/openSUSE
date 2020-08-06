@@ -318,4 +318,46 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
     <comment></comment>
     <requestid>807561</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9e90bc1e46aaf7cd1d5e385dccba0181</srcmd5>
+    <version>2.4.8</version>
+    <time>1596727840</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 2.4.8.
+  * New pppd options have been added:
+    * ifname, to set the name for the PPP interface device
+    * defaultroute-metric, to set the metric for the default route
+    * defaultroute6, to add an IPv6 default route (with
+      nodefaultroute6 to prevent adding an IPv6 default route).
+    * up_sdnotify, to have pppd notify systemd when the link is up.
+  * The rp-pppoe plugin has new options:
+    * host-uniq, to set the Host-Uniq value to send
+    * pppoe-padi-timeout, to set the timeout for discovery packets
+    * pppoe-padi-attempts, to set the number of discovery attempts.
+  * Added the CLASS attribute in radius packets.
+  * Fixed warnings and issues found by static analysis.
+- Obsoleted patches:
+  * ppp-2.4.3-pppoatm.diff
+  * ppp-2.4.4-strncatfix.patch
+  * ppp-2.4.6-ifname.diff
+  * ppp-2.4.7-DES-openssl.patch
+  * ppp-2.4.7.tar.gz.asc
+  * ppp-send-padt.patch
+- Patches that got renamed, because they needed rediffing:
+  * ppp-2.4.1-higher-speeds.diff -&gt; ppp-higher-speeds.patch
+  * ppp-2.4.1-higher-speeds.diff -&gt; ppp-higher-speeds.patch
+  * ppp-2.4.2-__P.diff -&gt; ppp-__P.patch
+  * ppp-2.4.2-cifdefroute.diff -&gt; ppp-cifdefroute.patch
+  * ppp-2.4.2-pie.patch -&gt; ppp-pie.patch
+  * ppp-2.4.2-smpppd.diff -&gt; ppp-smpppd.patch
+  * ppp-2.4.3-filter.diff -&gt; ppp-filter.patch
+  * ppp-2.4.3-fork-fix.diff -&gt; ppp-fork-fix.patch
+  * ppp-2.4.4-var_run_resolv_conf.patch -&gt; ppp-var_run_resolv_conf.patch
+  * ppp-2.4.6-lib64.patch -&gt; ppp-lib64.patch
+  * ppp-2.4.6-make.diff -&gt; ppp-make.patch
+  * ppp-2.4.6-misc.diff -&gt; ppp-misc.patch
+  * ppp-2.4.7-fix-bashisms.patch -&gt; ppp-fix-bashisms.patch
+- bsc#1172916: Fix an outdated comment for lcp-echo-interval.</comment>
+    <requestid>824334</requestid>
+  </revision>
 </revisionlist>

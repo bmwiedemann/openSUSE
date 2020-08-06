@@ -114,11 +114,10 @@ asyncmap 0
 nodetach
 
 # If this option is given, pppd will send an LCP echo-request frame to
-# the peer every n seconds. Under Linux, the echo-request is sent when
-# no packets have been received from the peer for n seconds. Normally
-# the peer should respond to the echo-request by sending an echo-reply.
-# This option can be used with the lcp-echo-failure option to detect
-# that the peer is no longer connected.
+# the peer every n seconds. Normally the peer should respond to the
+# echo-request by sending an echo-reply.  This option can be used with
+# the lcp-echo-failure option to detect that the peer is no longer
+# connected.
 lcp-echo-interval 30
 
 # If this option is given, pppd will presume the peer to be dead if n

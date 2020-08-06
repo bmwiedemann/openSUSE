@@ -1,6 +1,6 @@
---- chat/Makefile.linux
+--- chat/Makefile.linux.orig
 +++ chat/Makefile.linux
-@@ -11,7 +11,7 @@
+@@ -11,7 +11,7 @@ CDEF4=	-DFNDELAY=O_NDELAY		# Old name va
  CDEFS=	$(CDEF1) $(CDEF2) $(CDEF3) $(CDEF4)
  
  COPTS=	-O2 -g -pipe
@@ -9,7 +9,7 @@
  
  INSTALL= install
  
-@@ -25,8 +25,8 @@
+@@ -25,8 +25,8 @@ chat.o:	chat.c
  
  install: chat
  	mkdir -p $(BINDIR) $(MANDIR)
@@ -20,9 +20,9 @@
  
  clean:
  	rm -f chat.o chat *~
---- pppd/Makefile.linux
+--- pppd/Makefile.linux.orig
 +++ pppd/Makefile.linux
-@@ -32,8 +32,9 @@
+@@ -32,8 +32,9 @@ endif
  
  # CC = gcc
  #
@@ -32,9 +32,9 @@
 +COPTS = $(MY_CFLAGS) -O2 -pipe -Wall -fno-strict-aliasing
 +LIBS = -lutil
  
- # Uncomment the next 2 lines to include support for Microsoft's
+ # Uncomment the next line to include support for Microsoft's
  # MS-CHAP authentication protocol.  Also, edit plugins/radius/Makefile.linux.
-@@ -208,10 +209,8 @@
+@@ -219,10 +220,8 @@ all: $(TARGETS)
  install: pppd
  	mkdir -p $(BINDIR) $(MANDIR)
  	$(EXTRAINSTALL)
@@ -46,8 +46,8 @@
 +	$(INSTALL) -m 644 pppd.8 $(MANDIR)
  
  pppd: $(PPPDOBJS)
- 	$(CC) $(CFLAGS) $(LDFLAGS) -o pppd $(PPPDOBJS) $(LIBS)
---- pppd/plugins/Makefile.linux
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $(LDFLAGS_PLUGIN) -o pppd $(PPPDOBJS) $(LIBS)
+--- pppd/plugins/Makefile.linux.orig
 +++ pppd/plugins/Makefile.linux
 @@ -1,5 +1,5 @@
 -#CC	= gcc
@@ -55,18 +55,18 @@
 +CC	= gcc
 +COPTS	= $(MY_CFLAGS) -O2 -g -Wall
  CFLAGS	= $(COPTS) -I.. -I../../include -fPIC
- LDFLAGS	= -shared
+ LDFLAGS_SHARED	= -shared
  INSTALL	= install
---- pppd/plugins/pppoatm/Makefile.linux
+--- pppd/plugins/pppoatm/Makefile.linux.orig
 +++ pppd/plugins/pppoatm/Makefile.linux
 @@ -1,5 +1,5 @@
  #CC	= gcc
 -COPTS	= -O2 -g
 +COPTS	= $(MY_CFLAGS) -O2 -g
  CFLAGS	= $(COPTS) -I../.. -I../../../include -fPIC
- LDFLAGS	= -shared
+ LDFLAGS_SHARED	= -shared
  INSTALL	= install
---- pppd/plugins/pppol2tp/Makefile.linux
+--- pppd/plugins/pppol2tp/Makefile.linux.orig
 +++ pppd/plugins/pppol2tp/Makefile.linux
 @@ -1,5 +1,5 @@
 -#CC	= gcc
@@ -74,9 +74,9 @@
 +CC	= gcc
 +COPTS	= $(MY_CFLAGS) -O2 -pipe -Wall
  CFLAGS	= $(COPTS) -I. -I../.. -I../../../include -fPIC
- LDFLAGS	= -shared
+ LDFLAGS_SHARED	= -shared
  INSTALL	= install
-@@ -20,7 +20,7 @@
+@@ -20,7 +20,7 @@ all: $(PLUGINS)
  
  install: all
  	$(INSTALL) -d -m 755 $(LIBDIR)
@@ -85,9 +85,9 @@
  
  clean:
  	rm -f *.o *.so
---- pppd/plugins/radius/Makefile.linux
+--- pppd/plugins/radius/Makefile.linux.orig
 +++ pppd/plugins/radius/Makefile.linux
-@@ -12,7 +12,8 @@
+@@ -12,7 +12,8 @@ VERSION = $(shell awk -F '"' '/VERSION/
  INSTALL	= install
  
  PLUGIN=radius.so radattr.so radrealms.so
@@ -97,9 +97,9 @@
  
  # Uncomment the next line to include support for Microsoft's
  # MS-CHAP authentication protocol.
---- pppd/plugins/rp-pppoe/Makefile.linux
+--- pppd/plugins/rp-pppoe/Makefile.linux.orig
 +++ pppd/plugins/rp-pppoe/Makefile.linux
-@@ -25,7 +25,7 @@
+@@ -25,7 +25,7 @@ INSTALL	= install
  # Version is set ONLY IN THE MAKEFILE!  Don't delete this!
  RP_VERSION=3.8p
  
@@ -108,7 +108,7 @@
  CFLAGS=$(COPTS) -I../../../include '-DRP_VERSION="$(RP_VERSION)"'
  all: rp-pppoe.so pppoe-discovery
  
-@@ -43,7 +43,7 @@
+@@ -43,7 +43,7 @@ rp-pppoe.so: plugin.o discovery.o if.o c
  
  install: all
  	$(INSTALL) -d -m 755 $(LIBDIR)
@@ -117,9 +117,9 @@
  	$(INSTALL) -d -m 755 $(BINDIR)
  	$(INSTALL) -s -c -m 555 pppoe-discovery $(BINDIR)
  
---- pppdump/Makefile.linux
+--- pppdump/Makefile.linux.orig
 +++ pppdump/Makefile.linux
-@@ -2,7 +2,7 @@
+@@ -2,7 +2,7 @@ DESTDIR = $(INSTROOT)@DESTDIR@
  BINDIR = $(DESTDIR)/sbin
  MANDIR = $(DESTDIR)/share/man/man8
  
@@ -128,7 +128,7 @@
  OBJS = pppdump.o bsd-comp.o deflate.o zlib.o
  
  INSTALL= install
-@@ -17,5 +17,5 @@
+@@ -17,5 +17,5 @@ clean:
  
  install:
  	mkdir -p $(BINDIR) $(MANDIR)
@@ -136,9 +136,9 @@
 -	$(INSTALL) -c -m 444 pppdump.8 $(MANDIR)
 +	$(INSTALL) pppdump $(BINDIR)
 +	$(INSTALL) -m 444 pppdump.8 $(MANDIR)
---- pppstats/Makefile.linux
+--- pppstats/Makefile.linux.orig
 +++ pppstats/Makefile.linux
-@@ -9,8 +9,8 @@
+@@ -9,8 +9,8 @@ MANDIR = $(DESTDIR)/share/man/man8
  PPPSTATSRCS = pppstats.c
  PPPSTATOBJS = pppstats.o
  
@@ -149,7 +149,7 @@
  COMPILE_FLAGS = -I../include
  LIBS =
  
-@@ -22,8 +22,8 @@
+@@ -22,8 +22,8 @@ all: pppstats
  
  install: pppstats
  	-mkdir -p $(MANDIR)
@@ -159,4 +159,4 @@
 +	$(INSTALL) -m 444 pppstats.8 $(MANDIR)
  
  pppstats: $(PPPSTATSRCS)
- 	$(CC) $(CFLAGS) -o pppstats pppstats.c $(LIBS)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o pppstats pppstats.c $(LIBS)

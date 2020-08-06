@@ -1,6 +1,6 @@
---- pppd/pppd.h
-+++ pppd/pppd.h	2004/09/12 07:31:44
-@@ -57,14 +57,17 @@
+--- pppd/pppd.h.orig
++++ pppd/pppd.h
+@@ -59,14 +59,17 @@
  #include <net/ppp_defs.h>
  #include "patchlevel.h"
  

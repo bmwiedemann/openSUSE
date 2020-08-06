@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Aug  3 14:52:55 UTC 2020 - Reinhard Max <max@suse.com>
+
+- New version 2.4.8.
+  * New pppd options have been added:
+    * ifname, to set the name for the PPP interface device
+    * defaultroute-metric, to set the metric for the default route
+    * defaultroute6, to add an IPv6 default route (with
+      nodefaultroute6 to prevent adding an IPv6 default route).
+    * up_sdnotify, to have pppd notify systemd when the link is up.
+
+  * The rp-pppoe plugin has new options:
+    * host-uniq, to set the Host-Uniq value to send
+    * pppoe-padi-timeout, to set the timeout for discovery packets
+    * pppoe-padi-attempts, to set the number of discovery attempts.
+
+  * Added the CLASS attribute in radius packets.
+
+  * Fixed warnings and issues found by static analysis.
+
+- Obsoleted patches:
+  * ppp-2.4.3-pppoatm.diff
+  * ppp-2.4.4-strncatfix.patch
+  * ppp-2.4.6-ifname.diff
+  * ppp-2.4.7-DES-openssl.patch
+  * ppp-2.4.7.tar.gz.asc
+  * ppp-send-padt.patch
+
+- Patches that got renamed, because they needed rediffing:
+  * ppp-2.4.1-higher-speeds.diff -> ppp-higher-speeds.patch
+  * ppp-2.4.1-higher-speeds.diff -> ppp-higher-speeds.patch
+  * ppp-2.4.2-__P.diff -> ppp-__P.patch
+  * ppp-2.4.2-cifdefroute.diff -> ppp-cifdefroute.patch
+  * ppp-2.4.2-pie.patch -> ppp-pie.patch
+  * ppp-2.4.2-smpppd.diff -> ppp-smpppd.patch
+  * ppp-2.4.3-filter.diff -> ppp-filter.patch
+  * ppp-2.4.3-fork-fix.diff -> ppp-fork-fix.patch
+  * ppp-2.4.4-var_run_resolv_conf.patch -> ppp-var_run_resolv_conf.patch
+  * ppp-2.4.6-lib64.patch -> ppp-lib64.patch
+  * ppp-2.4.6-make.diff -> ppp-make.patch
+  * ppp-2.4.6-misc.diff -> ppp-misc.patch
+  * ppp-2.4.7-fix-bashisms.patch -> ppp-fix-bashisms.patch
+
+- bsc#1172916: Fix an outdated comment for lcp-echo-interval.
+
+-------------------------------------------------------------------
 Tue May 19 15:40:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fixup previous fix: use the defined macro %_unitdir for the

@@ -1,8 +1,6 @@
-Index: pppd/sys-linux.c
-===================================================================
 --- pppd/sys-linux.c.orig
 +++ pppd/sys-linux.c
-@@ -875,6 +875,24 @@ struct speed {
+@@ -904,6 +904,24 @@ struct speed {
  #ifdef B4000000
      { 4000000, B4000000 },
  #endif

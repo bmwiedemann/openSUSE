@@ -18,7 +18,7 @@
 
 %define _group dialout
 Name:           ppp
-Version:        2.4.7
+Version:        2.4.8
 Release:        0
 Summary:        The Point to Point Protocol for Linux
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -49,35 +49,29 @@ Source16:       modem.rules
 Source17:       %{name}.keyring
 Source18:       https://download.samba.org/pub/%{name}/%{name}-%{version}.tar.gz.asc
 # Makefile changes
-Patch0:         ppp-2.4.6-make.diff
+Patch0:         ppp-make.patch
 # replacedefaultroute option
-Patch2:         ppp-2.4.2-cifdefroute.diff
+Patch2:         ppp-cifdefroute.patch
 # misc tiny stuff
-Patch3:         ppp-2.4.6-misc.diff
+Patch3:         ppp-misc.patch
 # more log output for smpppd
-Patch4:         ppp-2.4.2-smpppd.diff
+Patch4:         ppp-smpppd.patch
 # allow higher serial speeds
-Patch5:         ppp-2.4.1-higher-speeds.diff
+Patch5:         ppp-higher-speeds.patch
 # fixed use of libpcap including dial on demand
-Patch6:         ppp-2.4.3-filter.diff
-# option to rename ppp interface
-Patch8:         ppp-2.4.6-ifname.diff
+Patch6:         ppp-filter.patch
 # Don't use __P from glibc (pppd uses it wrong)
-Patch9:         ppp-2.4.2-__P.diff
-Patch10:        ppp-2.4.3-pppoatm.diff
-Patch11:        ppp-2.4.7-fix-bashisms.patch
-Patch12:        ppp-2.4.2-pie.patch
-Patch14:        ppp-2.4.3-fork-fix.diff
+Patch9:         ppp-__P.patch
+Patch11:        ppp-fix-bashisms.patch
+Patch12:        ppp-pie.patch
+Patch14:        ppp-fork-fix.patch
 Patch17:        ppp-2.4.3-strip.diff
 Patch18:        ppp-2.4.3-winbind-setuidfix.patch
-Patch19:        ppp-2.4.4-strncatfix.patch
-Patch21:        ppp-2.4.6-lib64.patch
-Patch22:        ppp-2.4.4-var_run_resolv_conf.patch
-Patch23:        ppp-send-padt.patch
+Patch21:        ppp-lib64.patch
+Patch22:        ppp-var_run_resolv_conf.patch
 # PATCH-FIX-UPSTREAM -- Patch for CVE-2015-3310
 Patch24:        ppp-CVE-2015-3310.patch
 Patch25:        fix-header-conflict.patch
-Patch26:        ppp-2.4.7-DES-openssl.patch
 Patch27:        ppp-CVE-2020-8597.patch
 BuildRequires:  libpcap-devel
 BuildRequires:  linux-atm-devel
@@ -132,24 +126,19 @@ you can disable unnecessary or disable everything.
 %patch3
 %patch4
 %patch5
-%patch6 -p1
-%patch8
+%patch6
 %patch9
-%patch10 -p1
 %patch11 -p1
-%patch12 -p1
+%patch12
 %patch14
 %patch17
 %patch18
-%patch19 -p1
 %if %{_lib} == lib64
 %patch21
 %endif
 %patch22
-%patch23 -p1
 %patch24
 %patch25 -p1
-%patch26 -p1
 %patch27
 sed -i -e '1s/local\///' scripts/secure-card
 find scripts -type f | xargs chmod a-x

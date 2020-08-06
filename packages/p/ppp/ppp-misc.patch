@@ -1,6 +1,6 @@
---- pppd/auth.c
+--- pppd/auth.c.orig
 +++ pppd/auth.c
-@@ -2091,9 +2091,10 @@
+@@ -2105,9 +2105,10 @@ check_access(f, filename)
  
      if (fstat(fileno(f), &sbuf) < 0) {
  	warn("cannot stat secret file %s: %m", filename);
@@ -14,9 +14,9 @@
      }
  }
  
---- pppd/lcp.c
+--- pppd/lcp.c.orig
 +++ pppd/lcp.c
-@@ -2303,7 +2303,7 @@
+@@ -2302,7 +2302,7 @@ lcp_received_echo_reply (f, id, inp, len
      if (lcp_gotoptions[f->unit].neg_magicnumber
  	&& magic == lcp_gotoptions[f->unit].magicnumber) {
  	warn("appear to have received our own echo-reply!");
@@ -25,9 +25,9 @@
      }
  
      /* Reset the number of outstanding echo frames */
---- pppd/pppd.h
+--- pppd/pppd.h.orig
 +++ pppd/pppd.h
-@@ -848,15 +848,7 @@
+@@ -873,15 +873,7 @@ extern void (*snoop_send_hook) __P((unsi
  #define DEBUGCHAP	1
  #endif
  

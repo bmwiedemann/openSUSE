@@ -1,0 +1,33 @@
+--- pppd/Makefile.linux.orig
++++ pppd/Makefile.linux
+@@ -224,7 +224,7 @@ install: pppd
+ 	$(INSTALL) -m 644 pppd.8 $(MANDIR)
+ 
+ pppd: $(PPPDOBJS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(LDFLAGS_PLUGIN) -o pppd $(PPPDOBJS) $(LIBS)
++	$(CC) $(CFLAGS) -pie -fPIC $(LDFLAGS) $(LDFLAGS_PLUGIN) -o pppd $(PPPDOBJS) $(LIBS)
+ 
+ srp-entry:	srp-entry.c
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ srp-entry.c $(LIBS)
+--- chat/Makefile.linux.orig
++++ chat/Makefile.linux
+@@ -18,7 +18,7 @@ INSTALL= install
+ all:	chat
+ 
+ chat:	chat.o
+-	$(CC) $(LDFLAGS) -o chat chat.o
++	$(CC) -pie $(LDFLAGS) -o chat chat.o
+ 
+ chat.o:	chat.c
+ 	$(CC) -c $(CFLAGS) -o chat.o chat.c
+--- pppstats/Makefile.linux.orig
++++ pppstats/Makefile.linux
+@@ -26,7 +26,7 @@ install: pppstats
+ 	$(INSTALL) -m 444 pppstats.8 $(MANDIR)
+ 
+ pppstats: $(PPPSTATSRCS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o pppstats pppstats.c $(LIBS)
++	$(CC) $(CFLAGS) -pie -fPIE $(LDFLAGS) -o pppstats pppstats.c $(LIBS)
+ 
+ clean:
+ 	rm -f pppstats *~ #* core

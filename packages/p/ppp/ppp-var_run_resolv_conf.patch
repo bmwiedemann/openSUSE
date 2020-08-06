@@ -1,6 +1,6 @@
---- Changes-2.3
+--- Changes-2.3.orig
 +++ Changes-2.3
-@@ -262,10 +262,10 @@
+@@ -262,10 +262,10 @@ What was new in ppp-2.3.6.
  
  * Added new option `usepeerdns', thanks to Nick Walker
    <nickwalker@email.com>.  If the peer supplies DNS addresses, these
@@ -15,9 +15,9 @@
  
  * The Solaris ppp driver should now work correctly on SMP systems.
  
---- pppd/ipcp.c
+--- pppd/ipcp.c.orig
 +++ pppd/ipcp.c
-@@ -2041,10 +2041,13 @@
+@@ -2148,10 +2148,13 @@ create_resolv(peerdns1, peerdns2)
      u_int32_t peerdns1, peerdns2;
  {
      FILE *f;
@@ -33,7 +33,7 @@
  	return;
      }
  
-@@ -2055,7 +2058,7 @@
+@@ -2162,7 +2165,7 @@ create_resolv(peerdns1, peerdns2)
  	fprintf(f, "nameserver %s\n", ip_ntoa(peerdns2));
  
      if (ferror(f))
@@ -42,7 +42,7 @@
  
      fclose(f);
  }
---- pppd/pathnames.h
+--- pppd/pathnames.h.orig
 +++ pppd/pathnames.h
 @@ -30,7 +30,7 @@
  #define _PATH_TTYOPT	 _ROOT_PATH "/etc/ppp/options."
@@ -53,9 +53,9 @@
  
  #define _PATH_USEROPT	 ".ppprc"
  #define	_PATH_PSEUDONYM	 ".ppp_pseudonym"
---- pppd/pppd.8
+--- pppd/pppd.8.orig
 +++ pppd/pppd.8
-@@ -1062,8 +1062,8 @@
+@@ -1143,8 +1143,8 @@ Ask the peer for up to 2 DNS server addr
  by the peer (if any) are passed to the /etc/ppp/ip\-up script in the
  environment variables DNS1 and DNS2, and the environment variable
  USEPEERDNS will be set to 1.  In addition, pppd will create an
