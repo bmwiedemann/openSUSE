@@ -291,4 +291,13 @@
   * Fix next in iterators in wsgilib.py.</comment>
     <requestid>821422</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b9b26f4397c99726ada3cb054d585451</srcmd5>
+    <version>3.4.3</version>
+    <time>1596727898</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.3:
+  * Patch auth ticket to be python3 compatible.</comment>
+    <requestid>824325</requestid>
+  </revision>
 </revisionlist>
