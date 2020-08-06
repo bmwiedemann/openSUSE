@@ -1,4 +1,4 @@
-From 4f5f79074ddd974f48238540e586a4b7d9286c0b Mon Sep 17 00:00:00 2001
+From 5796b079cc4ff4ea685745c86dfd07135b7cadc6 Mon Sep 17 00:00:00 2001
 From: Dirk Mueller <dirk@dmllr.de>
 Date: Fri, 12 Jun 2020 19:20:09 +0200
 Subject: [PATCH 08/10] helm: allow to configure bpf-nat-global-max using Helm
@@ -17,7 +17,7 @@ Cherry-Pick of https://github.com/cilium/cilium/commit/20f6083d6fabfcce302a1c43d
  3 files changed, 11 insertions(+)
 
 diff --git a/install/kubernetes/cilium/charts/config/templates/configmap.yaml b/install/kubernetes/cilium/charts/config/templates/configmap.yaml
-index adf1d0b37..0180b17d8 100644
+index ebc2a0158..7bcc40b23 100644
 --- a/install/kubernetes/cilium/charts/config/templates/configmap.yaml
 +++ b/install/kubernetes/cilium/charts/config/templates/configmap.yaml
 @@ -136,6 +136,10 @@ data:
@@ -32,10 +32,10 @@ index adf1d0b37..0180b17d8 100644
    # the expense of up-front memory allocation for the entries in the maps. The
    # default value below will minimize memory usage in the default installation;
 diff --git a/install/kubernetes/cilium/values.yaml b/install/kubernetes/cilium/values.yaml
-index bf011a6ee..9409f90e7 100644
+index 138375932..92e4d3c1b 100644
 --- a/install/kubernetes/cilium/values.yaml
 +++ b/install/kubernetes/cilium/values.yaml
-@@ -209,6 +209,9 @@ global:
+@@ -213,6 +213,9 @@ global:
      # tracking table
      ctAnyMax: 262144
  
@@ -46,7 +46,7 @@ index bf011a6ee..9409f90e7 100644
      policyMapMax: 16384
  
 diff --git a/install/kubernetes/quick-install.yaml b/install/kubernetes/quick-install.yaml
-index 21e499268..cca20a800 100644
+index 4280c3377..bc106477b 100644
 --- a/install/kubernetes/quick-install.yaml
 +++ b/install/kubernetes/quick-install.yaml
 @@ -79,6 +79,10 @@ data:
@@ -61,5 +61,5 @@ index 21e499268..cca20a800 100644
    # the expense of up-front memory allocation for the entries in the maps. The
    # default value below will minimize memory usage in the default installation;
 -- 
-2.26.2
+2.27.0
 

@@ -1,4 +1,4 @@
-From f590267aed3d373586e9ac8fff5bf63cc4bb10a1 Mon Sep 17 00:00:00 2001
+From cd966c7e198eb838cd1e838cd1c7b9eb764e7add Mon Sep 17 00:00:00 2001
 From: Daniel Borkmann <daniel@iogearbox.net>
 Date: Thu, 19 Mar 2020 23:36:15 +0100
 Subject: [PATCH 05/10] bpf: re-add a proper types.h mapper
@@ -32,12 +32,12 @@ Signed-off-by: Daniel Borkmann <daniel@iogearbox.net>
  create mode 100644 bpf/include/linux/types.h
 
 diff --git a/bpf/Makefile.bpf b/bpf/Makefile.bpf
-index 371f60e7b..63ef5fdf6 100644
+index 14e17a6eb..fee4b8322 100644
 --- a/bpf/Makefile.bpf
 +++ b/bpf/Makefile.bpf
 @@ -1,4 +1,4 @@
--FLAGS := -I/usr/include/$(shell uname -m)-linux-gnu -I$(ROOT_DIR)/bpf/include -I$(ROOT_DIR)/bpf -D__NR_CPUS__=$(shell nproc) -O2 -g
-+FLAGS := -I$(ROOT_DIR)/bpf/include -I$(ROOT_DIR)/bpf -D__NR_CPUS__=$(shell nproc) -O2 -g
+-FLAGS := -I/usr/include/$(shell uname -m)-linux-gnu -I$(ROOT_DIR)/bpf/include -I$(ROOT_DIR)/bpf -D__NR_CPUS__=$(shell nproc --all) -O2 -g
++FLAGS := -I$(ROOT_DIR)/bpf/include -I$(ROOT_DIR)/bpf -D__NR_CPUS__=$(shell nproc --all) -O2 -g
  
  CLANG_FLAGS := ${FLAGS} -target bpf -emit-llvm
  # eBPF verifier enforces unaligned access checks where necessary, so don't
@@ -96,10 +96,10 @@ index 000000000..abed7f764
 +
 +#endif /* _LINUX_TYPES_H */
 diff --git a/bpf/init.sh b/bpf/init.sh
-index 5036ca3f7..8d18c4145 100755
+index ae815c99e..4ed5328c8 100755
 --- a/bpf/init.sh
 +++ b/bpf/init.sh
-@@ -57,8 +57,6 @@ rm $RUNDIR/encap.state 2> /dev/null || true
+@@ -58,8 +58,6 @@ rm $RUNDIR/encap.state 2> /dev/null || true
  # This directory was created by the daemon and contains the per container header file
  DIR="$PWD/globals"
  
@@ -108,26 +108,27 @@ index 5036ca3f7..8d18c4145 100755
  function setup_dev()
  {
  	local -r NAME=$1
-@@ -272,7 +270,6 @@ function bpf_compile()
+@@ -273,7 +271,6 @@ function bpf_compile()
  
  	clang -O2 -g -target bpf -emit-llvm				\
  	      -Wno-address-of-packed-member -Wno-unknown-warning-option	\
 -	      -I/usr/include/${MACHINE}-linux-gnu                       \
  	      -I. -I$DIR -I$LIB -I$LIB/include				\
- 	      -D__NR_CPUS__=$(nproc)					\
+ 	      -D__NR_CPUS__=$NR_CPUS					\
  	      -DENABLE_ARP_RESPONDER					\
 diff --git a/pkg/datapath/loader/compile.go b/pkg/datapath/loader/compile.go
-index b244d46ad..5adc186ee 100644
+index dfc9b473f..df20ea261 100644
 --- a/pkg/datapath/loader/compile.go
 +++ b/pkg/datapath/loader/compile.go
-@@ -24,14 +24,12 @@ import (
+@@ -23,7 +23,6 @@ import (
+ 	"io/ioutil"
  	"os"
  	"path"
- 	"runtime"
 -	"sync"
  
+ 	"github.com/cilium/cilium/common"
  	"github.com/cilium/cilium/pkg/command/exec"
- 	"github.com/cilium/cilium/pkg/logging/logfields"
+@@ -31,7 +30,6 @@ import (
  	"github.com/cilium/cilium/pkg/option"
  
  	"github.com/sirupsen/logrus"
@@ -172,14 +173,14 @@ index b244d46ad..5adc186ee 100644
  		fmt.Sprintf("-I%s", dir.State),
  		fmt.Sprintf("-I%s", dir.Library),
 diff --git a/test/bpf/Makefile b/test/bpf/Makefile
-index 49a85ce15..c5e006499 100644
+index 4919d32bc..e4f0dfed2 100644
 --- a/test/bpf/Makefile
 +++ b/test/bpf/Makefile
 @@ -1,8 +1,8 @@
  include ../../Makefile.defs
  
--FLAGS := -I/usr/include/$(shell uname -m)-linux-gnu  -I../../bpf/ -I../../bpf/include -I. -D__NR_CPUS__=$(shell nproc) -O2
-+FLAGS := -I../../bpf/ -I../../bpf/include -I. -D__NR_CPUS__=$(shell nproc) -O2
+-FLAGS := -I/usr/include/$(shell uname -m)-linux-gnu  -I../../bpf/ -I../../bpf/include -I. -D__NR_CPUS__=$(shell nproc --all) -O2
++FLAGS := -I../../bpf/ -I../../bpf/include -I. -D__NR_CPUS__=$(shell nproc --all) -O2
  BPF_CC_FLAGS :=  ${FLAGS} -target bpf -emit-llvm
 -BPF_LLC_FLAGS   := -march=bpf -mcpu=probe -filetype=obj
 +BPF_LLC_FLAGS := -march=bpf -mcpu=probe -filetype=obj
@@ -187,5 +188,5 @@ index 49a85ce15..c5e006499 100644
  LIB := $(shell find ../../bpf/ -name '*.h')
  
 -- 
-2.26.2
+2.27.0
 

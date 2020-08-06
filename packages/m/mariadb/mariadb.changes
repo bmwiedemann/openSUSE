@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:49:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix installed .service files to follow the /usr/lib ->
+  /usr/libexec move (boo#1174811).
+
+-------------------------------------------------------------------
 Tue Jun  9 14:38:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints to make it more readable and request

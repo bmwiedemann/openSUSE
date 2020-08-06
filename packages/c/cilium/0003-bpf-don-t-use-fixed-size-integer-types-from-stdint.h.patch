@@ -1,4 +1,4 @@
-From 7daa01fc7a23f83f6088b6eb43917cefa9944937 Mon Sep 17 00:00:00 2001
+From 8bed85809641de4d62cf80aa728ad5730205cbf6 Mon Sep 17 00:00:00 2001
 From: Tobias Klauser <tklauser@distanz.ch>
 Date: Mon, 17 Feb 2020 11:58:32 +0100
 Subject: [PATCH 03/10] bpf: don't use fixed size integer types from stdint.h
@@ -120,12 +120,12 @@ index e9d0371b6..903b2f363 100644
  +----------------------------------------------------------------------------------+--------------------------+-------------------------------------------------------------------------------+
  |  llvm                                                                            | >= 3.9.1                 | N/A (OS-specific)                                                             |
 diff --git a/bpf/Makefile.bpf b/bpf/Makefile.bpf
-index e433094a7..371f60e7b 100644
+index 0e0b3e0d0..14e17a6eb 100644
 --- a/bpf/Makefile.bpf
 +++ b/bpf/Makefile.bpf
 @@ -1,6 +1,6 @@
--FLAGS := -I$(ROOT_DIR)/bpf/include -I$(ROOT_DIR)/bpf -D__NR_CPUS__=$(shell nproc) -O2 -g
-+FLAGS := -I/usr/include/$(shell uname -m)-linux-gnu -I$(ROOT_DIR)/bpf/include -I$(ROOT_DIR)/bpf -D__NR_CPUS__=$(shell nproc) -O2 -g
+-FLAGS := -I$(ROOT_DIR)/bpf/include -I$(ROOT_DIR)/bpf -D__NR_CPUS__=$(shell nproc --all) -O2 -g
++FLAGS := -I/usr/include/$(shell uname -m)-linux-gnu -I$(ROOT_DIR)/bpf/include -I$(ROOT_DIR)/bpf -D__NR_CPUS__=$(shell nproc --all) -O2 -g
  
 -CLANG_FLAGS :=  ${FLAGS} -target bpf -emit-llvm
 +CLANG_FLAGS := ${FLAGS} -target bpf -emit-llvm
@@ -182,7 +182,7 @@ index 11c6379d6..e5c882f0a 100644
  #include "lib/dbg.h"
  
 diff --git a/bpf/bpf_lxc.c b/bpf/bpf_lxc.c
-index 497edf48c..41a951c38 100644
+index 7b598915b..1f35c0091 100644
 --- a/bpf/bpf_lxc.c
 +++ b/bpf/bpf_lxc.c
 @@ -22,9 +22,6 @@
@@ -676,10 +676,10 @@ index 989633ff6..ab05413c9 100644
  struct udphdr {
  	__be16	source;
 diff --git a/bpf/init.sh b/bpf/init.sh
-index 8d18c4145..5036ca3f7 100755
+index 4ed5328c8..ae815c99e 100755
 --- a/bpf/init.sh
 +++ b/bpf/init.sh
-@@ -57,6 +57,8 @@ rm $RUNDIR/encap.state 2> /dev/null || true
+@@ -58,6 +58,8 @@ rm $RUNDIR/encap.state 2> /dev/null || true
  # This directory was created by the daemon and contains the per container header file
  DIR="$PWD/globals"
  
@@ -688,13 +688,13 @@ index 8d18c4145..5036ca3f7 100755
  function setup_dev()
  {
  	local -r NAME=$1
-@@ -270,6 +272,7 @@ function bpf_compile()
+@@ -271,6 +273,7 @@ function bpf_compile()
  
  	clang -O2 -g -target bpf -emit-llvm				\
  	      -Wno-address-of-packed-member -Wno-unknown-warning-option	\
 +	      -I/usr/include/${MACHINE}-linux-gnu                       \
  	      -I. -I$DIR -I$LIB -I$LIB/include				\
- 	      -D__NR_CPUS__=$(nproc)					\
+ 	      -D__NR_CPUS__=$NR_CPUS					\
  	      -DENABLE_ARP_RESPONDER					\
 diff --git a/bpf/lib/common.h b/bpf/lib/common.h
 index bde713507..ace0561dc 100644
@@ -1402,17 +1402,18 @@ index 4902c0446..370321864 100644
  	}
  
 diff --git a/pkg/datapath/loader/compile.go b/pkg/datapath/loader/compile.go
-index 7fab412ab..b244d46ad 100644
+index 449c9a4e7..dfc9b473f 100644
 --- a/pkg/datapath/loader/compile.go
 +++ b/pkg/datapath/loader/compile.go
-@@ -24,12 +24,14 @@ import (
+@@ -23,6 +23,7 @@ import (
+ 	"io/ioutil"
  	"os"
  	"path"
- 	"runtime"
 +	"sync"
  
+ 	"github.com/cilium/cilium/common"
  	"github.com/cilium/cilium/pkg/command/exec"
- 	"github.com/cilium/cilium/pkg/logging/logfields"
+@@ -30,6 +31,7 @@ import (
  	"github.com/cilium/cilium/pkg/option"
  
  	"github.com/sirupsen/logrus"
@@ -1467,14 +1468,14 @@ index 7fab412ab..b244d46ad 100644
  	args = append(args, progCFlags(prog, dir)...)
  
 diff --git a/test/bpf/Makefile b/test/bpf/Makefile
-index 063a9a019..49a85ce15 100644
+index 97fb5ea40..4919d32bc 100644
 --- a/test/bpf/Makefile
 +++ b/test/bpf/Makefile
 @@ -1,6 +1,6 @@
  include ../../Makefile.defs
  
--FLAGS := -I../../bpf/ -I../../bpf/include -I. -D__NR_CPUS__=$(shell nproc) -O2
-+FLAGS := -I/usr/include/$(shell uname -m)-linux-gnu  -I../../bpf/ -I../../bpf/include -I. -D__NR_CPUS__=$(shell nproc) -O2
+-FLAGS := -I../../bpf/ -I../../bpf/include -I. -D__NR_CPUS__=$(shell nproc -all) -O2
++FLAGS := -I/usr/include/$(shell uname -m)-linux-gnu  -I../../bpf/ -I../../bpf/include -I. -D__NR_CPUS__=$(shell nproc --all) -O2
  BPF_CC_FLAGS :=  ${FLAGS} -target bpf -emit-llvm
  BPF_LLC_FLAGS   := -march=bpf -mcpu=probe -filetype=obj
  
@@ -1512,5 +1513,5 @@ index 87876ec19..6d5acfc63 100644
  
  #include "lib/conntrack_test.h"
 -- 
-2.26.2
+2.27.0
 

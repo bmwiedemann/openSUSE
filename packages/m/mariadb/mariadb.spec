@@ -65,10 +65,10 @@ Source5:        suse-test-run
 Source7:        README.install
 Source12:       mysql-user.conf
 Source14:       my.ini
-Source15:       mariadb.service
+Source15:       mariadb.service.in
 Source16:       mariadb.target
 Source17:       mysql-systemd-helper
-Source18:       mariadb@.service
+Source18:       mariadb@.service.in
 Source19:       macros.mariadb-test
 Source50:       suse_skipped_tests.list
 Source51:       mariadb-rpmlintrc
@@ -627,8 +627,8 @@ sed -i 's|@MYSQLVER@|%{version}|' '%{buildroot}'%{_libexecdir}/mysql/mysql-syste
 ln -sf service '%{buildroot}'%{_sbindir}/rcmysql
 ln -sf service '%{buildroot}'%{_sbindir}/rcmariadb
 rm -rf '%{buildroot}'%{_sysconfdir}/init.d
-install -D -m 644 %{_sourcedir}/mariadb.service '%{buildroot}'%{_unitdir}/mariadb.service
-install -D -m 644 %{_sourcedir}/mariadb@.service '%{buildroot}'%{_unitdir}/mariadb@.service
+sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{_sourcedir}/mariadb.service.in > '%{buildroot}'%{_unitdir}/mariadb.service
+sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{_sourcedir}/mariadb@.service.in > '%{buildroot}'%{_unitdir}/mariadb@.service
 install -D -m 644 %{_sourcedir}/mariadb.target '%{buildroot}'%{_unitdir}/mariadb.target
 # Aliases for the backward compatibility. Create symlinks from the alias to the existing one
 # We can't use 'Alias=' option only because it's effective only when the unit is enabled

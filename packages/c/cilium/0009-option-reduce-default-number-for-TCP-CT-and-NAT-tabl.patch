@@ -1,4 +1,4 @@
-From 4c362fd543c00aeb4257ac6bcc64fe102e05f31e Mon Sep 17 00:00:00 2001
+From ed37585d4d2342c318814d66bd83351843558c55 Mon Sep 17 00:00:00 2001
 From: Tobias Klauser <tklauser@distanz.ch>
 Date: Fri, 21 Feb 2020 15:22:29 +0100
 Subject: [PATCH 09/10] option: reduce default number for TCP CT and NAT table
@@ -37,7 +37,7 @@ Signed-off-by: Tobias Klauser <tklauser@distanz.ch>
  6 files changed, 322 insertions(+), 7 deletions(-)
 
 diff --git a/Documentation/cmdref/cilium-agent.md b/Documentation/cmdref/cilium-agent.md
-index 8925944db..e7e7a755a 100644
+index c3076b175..3e4f42107 100644
 --- a/Documentation/cmdref/cilium-agent.md
 +++ b/Documentation/cmdref/cilium-agent.md
 @@ -25,14 +25,14 @@ cilium-agent [flags]
@@ -384,7 +384,7 @@ index 75c162e9d..001b2aa86 100644
  
  1.7 Upgrade Notes
 diff --git a/install/kubernetes/cilium/charts/config/templates/configmap.yaml b/install/kubernetes/cilium/charts/config/templates/configmap.yaml
-index 0180b17d8..77fa80523 100644
+index 7bcc40b23..08ff88756 100644
 --- a/install/kubernetes/cilium/charts/config/templates/configmap.yaml
 +++ b/install/kubernetes/cilium/charts/config/templates/configmap.yaml
 @@ -118,7 +118,7 @@ data:
@@ -406,10 +406,10 @@ index 0180b17d8..77fa80523 100644
    bpf-ct-global-any-max: "{{ .Values.global.bpf.ctAnyMax }}"
  
 diff --git a/install/kubernetes/cilium/values.yaml b/install/kubernetes/cilium/values.yaml
-index 9409f90e7..302e7b4c3 100644
+index 92e4d3c1b..bb8e151ea 100644
 --- a/install/kubernetes/cilium/values.yaml
 +++ b/install/kubernetes/cilium/values.yaml
-@@ -210,7 +210,7 @@ global:
+@@ -214,7 +214,7 @@ global:
      ctAnyMax: 262144
  
      # natMax is the maximum number of entries for the NAT table
@@ -419,7 +419,7 @@ index 9409f90e7..302e7b4c3 100644
      # policyMapMax is the maximum number of entries in endpoint policy map (per endpoint)
      policyMapMax: 16384
 diff --git a/install/kubernetes/quick-install.yaml b/install/kubernetes/quick-install.yaml
-index cca20a800..ab2f4a261 100644
+index bc106477b..5d6fdabf4 100644
 --- a/install/kubernetes/quick-install.yaml
 +++ b/install/kubernetes/quick-install.yaml
 @@ -71,7 +71,7 @@ data:
@@ -432,7 +432,7 @@ index cca20a800..ab2f4a261 100644
    bpf-ct-global-any-max: "262144"
  
 diff --git a/pkg/option/config.go b/pkg/option/config.go
-index df24ad98b..187a38286 100644
+index f6c6fb473..79e87a2fd 100644
 --- a/pkg/option/config.go
 +++ b/pkg/option/config.go
 @@ -440,7 +440,7 @@ const (
@@ -445,5 +445,5 @@ index df24ad98b..187a38286 100644
  	CTMapEntriesGlobalTCPName    = "bpf-ct-global-tcp-max"
  	CTMapEntriesGlobalAnyName    = "bpf-ct-global-any-max"
 -- 
-2.26.2
+2.27.0
 

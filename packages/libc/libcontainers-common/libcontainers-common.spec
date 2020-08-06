@@ -111,6 +111,7 @@ install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf
 install -D -m 0644 %{SOURCE8} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE10}
 install -D -m 0644 %{SOURCE10} %{buildroot}/%{_datadir}/containers/containers.conf
 install -D -m 0644 podman-%{podmanver}/seccomp.json %{buildroot}/%{_datadir}/containers/seccomp.json
 install -D -m 0644 podman-%{podmanver}/seccomp.json %{buildroot}/%{_sysconfdir}/containers/seccomp.json

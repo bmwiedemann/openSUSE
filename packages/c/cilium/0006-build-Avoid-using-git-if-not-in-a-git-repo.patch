@@ -1,4 +1,4 @@
-From adcb5e534caacbd369ddac63c6fe2c4734bb7e99 Mon Sep 17 00:00:00 2001
+From 3235de2df4901d1d2f8c265f117ccb95e361b9c8 Mon Sep 17 00:00:00 2001
 From: Jarno Rajahalme <jarno@covalent.io>
 Date: Fri, 15 May 2020 17:33:01 -0700
 Subject: [PATCH 06/10] build: Avoid using git if not in a git repo
@@ -31,5 +31,5 @@ index 2e472a839..c32a5e02f 100644
  CILIUM_DATAPATH_SHA=$(shell cat $(BPF_FILES) | sha1sum | awk '{print $$1}')
  GOLDFLAGS += -X "github.com/cilium/cilium/pkg/datapath/loader.DatapathSHA=$(CILIUM_DATAPATH_SHA)"
 -- 
-2.26.2
+2.27.0
 

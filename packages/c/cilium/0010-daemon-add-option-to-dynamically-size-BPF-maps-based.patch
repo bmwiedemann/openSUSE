@@ -1,4 +1,4 @@
-From a2587781735a609a82656f76a70dfc716b29e0f3 Mon Sep 17 00:00:00 2001
+From cff3e5709f84896f2985ec79d63bc1859b55a19a Mon Sep 17 00:00:00 2001
 From: Tobias Klauser <tklauser@distanz.ch>
 Date: Thu, 9 Apr 2020 16:08:55 +0200
 Subject: [PATCH 10/10] daemon: add option to dynamically size BPF maps based
@@ -51,8 +51,8 @@ Signed-off-by: Tobias Klauser <tklauser@distanz.ch>
  pkg/maps/nat/types.go                         |   6 +
  pkg/maps/policymap/policymap.go               |  10 +-
  pkg/option/config.go                          | 142 +++++++++++++-
- pkg/option/config_test.go                     | 177 ++++++++++++++++++
- 17 files changed, 405 insertions(+), 13 deletions(-)
+ pkg/option/config_test.go                     | 178 +++++++++++++++++-
+ 17 files changed, 405 insertions(+), 14 deletions(-)
 
 diff --git a/Documentation/architecture.rst b/Documentation/architecture.rst
 index d7a38ef1b..f836c3285 100644
@@ -95,7 +95,7 @@ index d7a38ef1b..f836c3285 100644
  ======================
  
 diff --git a/Documentation/cmdref/cilium-agent.md b/Documentation/cmdref/cilium-agent.md
-index e7e7a755a..65a06dc04 100644
+index 3e4f42107..fe720558b 100644
 --- a/Documentation/cmdref/cilium-agent.md
 +++ b/Documentation/cmdref/cilium-agent.md
 @@ -32,6 +32,7 @@ cilium-agent [flags]
@@ -136,7 +136,7 @@ index 001b2aa86..d09eb7109 100644
  ~~~~~~~~~~~~~~~~~~
  
 diff --git a/Documentation/spelling_wordlist.txt b/Documentation/spelling_wordlist.txt
-index 4c2618fbe..586be122c 100644
+index 621658892..b8201dabd 100644
 --- a/Documentation/spelling_wordlist.txt
 +++ b/Documentation/spelling_wordlist.txt
 @@ -38,6 +38,7 @@ Fastabend
@@ -148,7 +148,7 @@ index 4c2618fbe..586be122c 100644
  Golang
  Gospodarek
 diff --git a/daemon/daemon_main.go b/daemon/daemon_main.go
-index 4b3a933a4..127a2f897 100644
+index 8f64484aa..6e1a3beb2 100644
 --- a/daemon/daemon_main.go
 +++ b/daemon/daemon_main.go
 @@ -51,7 +51,10 @@ import (
@@ -162,7 +162,7 @@ index 4b3a933a4..127a2f897 100644
  	"github.com/cilium/cilium/pkg/metrics"
  	monitorAPI "github.com/cilium/cilium/pkg/monitor/api"
  	"github.com/cilium/cilium/pkg/node"
-@@ -680,6 +683,9 @@ func init() {
+@@ -683,6 +686,9 @@ func init() {
  	flags.Int(option.PolicyMapEntriesName, defaults.PolicyMapEntries, "Maximum number of entries in endpoint policy map (per endpoint)")
  	option.BindEnv(option.PolicyMapEntriesName)
  
@@ -172,7 +172,7 @@ index 4b3a933a4..127a2f897 100644
  	flags.String(option.CMDRef, "", "Path to cmdref output directory")
  	flags.MarkHidden(option.CMDRef)
  	option.BindEnv(option.CMDRef)
-@@ -819,6 +825,13 @@ func initConfig() {
+@@ -822,6 +828,13 @@ func initConfig() {
  }
  
  func initEnv(cmd *cobra.Command) {
@@ -187,7 +187,7 @@ index 4b3a933a4..127a2f897 100644
  	option.Config.Populate()
  
 diff --git a/install/kubernetes/cilium/charts/config/templates/configmap.yaml b/install/kubernetes/cilium/charts/config/templates/configmap.yaml
-index 77fa80523..605c55d38 100644
+index 08ff88756..cd97b7e42 100644
 --- a/install/kubernetes/cilium/charts/config/templates/configmap.yaml
 +++ b/install/kubernetes/cilium/charts/config/templates/configmap.yaml
 @@ -140,6 +140,10 @@ data:
@@ -202,10 +202,10 @@ index 77fa80523..605c55d38 100644
    # the expense of up-front memory allocation for the entries in the maps. The
    # default value below will minimize memory usage in the default installation;
 diff --git a/install/kubernetes/cilium/values.yaml b/install/kubernetes/cilium/values.yaml
-index 302e7b4c3..09459dd9f 100644
+index bb8e151ea..f36c3f60f 100644
 --- a/install/kubernetes/cilium/values.yaml
 +++ b/install/kubernetes/cilium/values.yaml
-@@ -215,6 +215,13 @@ global:
+@@ -219,6 +219,13 @@ global:
      # policyMapMax is the maximum number of entries in endpoint policy map (per endpoint)
      policyMapMax: 16384
  
@@ -220,7 +220,7 @@ index 302e7b4c3..09459dd9f 100644
      monitorAggregation: medium
  
 diff --git a/install/kubernetes/quick-install.yaml b/install/kubernetes/quick-install.yaml
-index ab2f4a261..47dd39b48 100644
+index 5d6fdabf4..ea5839b46 100644
 --- a/install/kubernetes/quick-install.yaml
 +++ b/install/kubernetes/quick-install.yaml
 @@ -83,6 +83,10 @@ data:
@@ -381,7 +381,7 @@ index 413ad2ead..8733c5e39 100644
  			flags, 0,
  			bpf.ConvertKeyValue,
 diff --git a/pkg/option/config.go b/pkg/option/config.go
-index 187a38286..ea1a5b973 100644
+index 79e87a2fd..642650419 100644
 --- a/pkg/option/config.go
 +++ b/pkg/option/config.go
 @@ -38,6 +38,7 @@ import (
@@ -433,7 +433,7 @@ index 187a38286..ea1a5b973 100644
  }
  
  var (
-@@ -1764,9 +1786,6 @@ func (c *DaemonConfig) Populate() {
+@@ -1768,9 +1790,6 @@ func (c *DaemonConfig) Populate() {
  	c.AnnotateK8sNode = viper.GetBool(AnnotateK8sNode)
  	c.AutoCreateCiliumNodeResource = viper.GetBool(AutoCreateCiliumNodeResource)
  	c.BPFCompilationDebug = viper.GetBool(BPFCompileDebugName)
@@ -443,7 +443,7 @@ index 187a38286..ea1a5b973 100644
  	c.BPFRoot = viper.GetString(BPFRoot)
  	c.CertDirectory = viper.GetString(CertsDirectory)
  	c.CGroupRoot = viper.GetString(CGroupRoot)
-@@ -1864,7 +1883,6 @@ func (c *DaemonConfig) Populate() {
+@@ -1868,7 +1887,6 @@ func (c *DaemonConfig) Populate() {
  	c.NAT46Range = viper.GetString(NAT46Range)
  	c.FlannelMasterDevice = viper.GetString(FlannelMasterDevice)
  	c.FlannelUninstallOnExit = viper.GetBool(FlannelUninstallOnExit)
@@ -451,7 +451,7 @@ index 187a38286..ea1a5b973 100644
  	c.PProf = viper.GetBool(PProf)
  	c.PreAllocateMaps = viper.GetBool(PreAllocateMapsName)
  	c.PrependIptablesChains = viper.GetBool(PrependIptablesChainsName)
-@@ -1894,6 +1912,10 @@ func (c *DaemonConfig) Populate() {
+@@ -1898,6 +1916,10 @@ func (c *DaemonConfig) Populate() {
  		c.ipv4NativeRoutingCIDR = cidr.MustParseCIDR(nativeCIDR)
  	}
  
@@ -462,7 +462,7 @@ index 187a38286..ea1a5b973 100644
  	// toFQDNs options
  	// When the poller is enabled, the default MinTTL is lowered. This is to
  	// avoid caching large sets of identities generated by a poller (it runs
-@@ -2101,6 +2123,118 @@ func (c *DaemonConfig) populateHostServicesProtos() error {
+@@ -2122,6 +2144,118 @@ func (c *DaemonConfig) checkIPv4NativeRoutingCIDR() error {
  	return nil
  }
  
@@ -582,19 +582,20 @@ index 187a38286..ea1a5b973 100644
  	intParam := viper.GetInt(paramName)
  	if intParam <= 0 {
 diff --git a/pkg/option/config_test.go b/pkg/option/config_test.go
-index 46757710b..c0303ec1b 100644
+index 60bc9b1fa..4d50c9442 100644
 --- a/pkg/option/config_test.go
 +++ b/pkg/option/config_test.go
-@@ -24,6 +24,8 @@ import (
- 	"path/filepath"
+@@ -25,7 +25,8 @@ import (
  	"testing"
  
+ 	"github.com/cilium/cilium/pkg/cidr"
+-
 +	"github.com/cilium/cilium/pkg/defaults"
 +	"github.com/google/go-cmp/cmp"
  	flag "github.com/spf13/pflag"
  	"github.com/spf13/viper"
  	. "gopkg.in/check.v1"
-@@ -245,3 +247,178 @@ func (s *OptionSuite) TestEndpointStatusValues(c *C) {
+@@ -317,3 +318,178 @@ func (s *OptionSuite) TestEndpointStatusValues(c *C) {
  		c.Assert(ok, Equals, true)
  	}
  }
@@ -774,5 +775,5 @@ index 46757710b..c0303ec1b 100644
 +	}
 +}
 -- 
-2.26.2
+2.27.0
 

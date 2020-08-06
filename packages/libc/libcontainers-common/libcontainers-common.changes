@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  3 17:10:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Tue Jul 28 13:22:02 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Added containers/common tarball for containers.conf(5) man page

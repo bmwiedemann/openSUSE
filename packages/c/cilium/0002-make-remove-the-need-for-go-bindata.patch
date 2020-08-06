@@ -1,4 +1,4 @@
-From d80e4fbf8c2b522700adc054f31bcbefc04e85e3 Mon Sep 17 00:00:00 2001
+From d3115d045b74d506b82f8e5a94f5c12de68a980f Mon Sep 17 00:00:00 2001
 From: Tobias Klauser <tklauser@distanz.ch>
 Date: Thu, 13 Feb 2020 11:09:40 +0100
 Subject: [PATCH 02/10] make: remove the need for go-bindata
@@ -143,7 +143,7 @@ index 4bd8e59b7..e9d0371b6 100644
  +----------------------------------------------------------------------------------+--------------------------+-------------------------------------------------------------------------------+
  + `gomega <https://github.com/onsi/gomega>`_                                       | >= 1.2.0                 | ``go get -u github.com/onsi/gomega``                                          |
 diff --git a/Makefile b/Makefile
-index 829d78832..0977c664e 100644
+index 4db582c89..fca5de25a 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,5 +1,4 @@
@@ -433,17 +433,17 @@ index ddbd83de2..8f2c5e9c8 100644
 -	$(GO_BINDATA) -o ./bindata.go $(BPF_FILES)
 diff --git a/daemon/bpf.sha b/daemon/bpf.sha
 deleted file mode 100644
-index a60ff9fbd..000000000
+index e4f35b406..000000000
 --- a/daemon/bpf.sha
 +++ /dev/null
 @@ -1,2 +0,0 @@
--GO_BINDATA_SHA1SUM=b251f59546cc7ea8afebc6214c4c8c53b476f038
+-GO_BINDATA_SHA1SUM=4c9cc3d2d8462a47feff46ddfe344e0396d955b6
 -BPF_FILES=../bpf/COPYING ../bpf/Makefile ../bpf/Makefile.bpf ../bpf/bpf_alignchecker.c ../bpf/bpf_features.h ../bpf/bpf_hostdev_ingress.c ../bpf/bpf_ipsec.c ../bpf/bpf_lxc.c ../bpf/bpf_netdev.c ../bpf/bpf_network.c ../bpf/bpf_overlay.c ../bpf/bpf_sock.c ../bpf/bpf_xdp.c ../bpf/cilium-map-migrate.c ../bpf/filter_config.h ../bpf/include/bpf/api.h ../bpf/include/elf/elf.h ../bpf/include/elf/gelf.h ../bpf/include/elf/libelf.h ../bpf/include/iproute2/bpf_elf.h ../bpf/include/linux/bpf.h ../bpf/include/linux/bpf_common.h ../bpf/include/linux/byteorder.h ../bpf/include/linux/byteorder/big_endian.h ../bpf/include/linux/byteorder/little_endian.h ../bpf/include/linux/icmp.h ../bpf/include/linux/icmpv6.h ../bpf/include/linux/if_arp.h ../bpf/include/linux/if_ether.h ../bpf/include/linux/if_packet.h ../bpf/include/linux/in.h ../bpf/include/linux/in6.h ../bpf/include/linux/ioctl.h ../bpf/include/linux/ip.h ../bpf/include/linux/ipv6.h ../bpf/include/linux/perf_event.h ../bpf/include/linux/swab.h ../bpf/include/linux/tcp.h ../bpf/include/linux/type_mapper.h ../bpf/include/linux/udp.h ../bpf/init.sh ../bpf/lib/arp.h ../bpf/lib/common.h ../bpf/lib/config.h ../bpf/lib/conntrack.h ../bpf/lib/conntrack_map.h ../bpf/lib/conntrack_test.h ../bpf/lib/csum.h ../bpf/lib/dbg.h ../bpf/lib/drop.h ../bpf/lib/encap.h ../bpf/lib/eps.h ../bpf/lib/eth.h ../bpf/lib/events.h ../bpf/lib/icmp6.h ../bpf/lib/identity.h ../bpf/lib/ipv4.h ../bpf/lib/ipv6.h ../bpf/lib/ipv6_test.h ../bpf/lib/l3.h ../bpf/lib/l4.h ../bpf/lib/lb.h ../bpf/lib/lxc.h ../bpf/lib/maps.h ../bpf/lib/metrics.h ../bpf/lib/nat.h ../bpf/lib/nat46.h ../bpf/lib/nodeport.h ../bpf/lib/policy.h ../bpf/lib/signal.h ../bpf/lib/tailcall.h ../bpf/lib/trace.h ../bpf/lib/utils.h ../bpf/lib/xdp.h ../bpf/lxc_config.h ../bpf/netdev_config.h ../bpf/node_config.h ../bpf/probes/raw_change_tail.t ../bpf/probes/raw_fib_lookup.t ../bpf/probes/raw_insn.h ../bpf/probes/raw_invalidate_hash.t ../bpf/probes/raw_lpm_map.t ../bpf/probes/raw_lru_map.t ../bpf/probes/raw_main.c ../bpf/probes/raw_max_insn.t ../bpf/probes/raw_sock_cookie.t ../bpf/run_probes.sh ../bpf/sockops/Makefile ../bpf/sockops/bpf_redir.c ../bpf/sockops/bpf_sockops.c ../bpf/sockops/bpf_sockops.h ../bpf/sockops/sockops_config.h 
 diff --git a/daemon/daemon_main.go b/daemon/daemon_main.go
-index 5acb48281..4b3a933a4 100644
+index 56f451334..8f64484aa 100644
 --- a/daemon/daemon_main.go
 +++ b/daemon/daemon_main.go
-@@ -743,9 +743,9 @@ func init() {
+@@ -746,9 +746,9 @@ func init() {
  	viper.BindPFlags(flags)
  }
  
@@ -455,7 +455,7 @@ index 5acb48281..4b3a933a4 100644
  	fileList := []string{}
  	err := filepath.Walk(searchDir, func(path string, f os.FileInfo, err error) error {
  		for _, pattern := range patterns {
-@@ -918,20 +918,11 @@ func initEnv(cmd *cobra.Command) {
+@@ -921,20 +921,11 @@ func initEnv(cmd *cobra.Command) {
  	if err := os.MkdirAll(option.Config.LibDir, defaults.RuntimePathRights); err != nil {
  		scopedLog.WithError(err).Fatal("Could not create library directory")
  	}
@@ -520,5 +520,5 @@ index 23a7ddd0e..c320e40d7 100644
  go get -u github.com/onsi/ginkgo/ginkgo
  go get -u github.com/onsi/gomega/...
 -- 
-2.26.2
+2.27.0
 

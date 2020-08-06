@@ -1,4 +1,4 @@
-From 3d5a59c46ea00133f81b8c22aaf2b5e764b83935 Mon Sep 17 00:00:00 2001
+From 1b18e321e27a0aea0d23069f71c2529304b4e35d Mon Sep 17 00:00:00 2001
 From: Tobias Klauser <tklauser@distanz.ch>
 Date: Mon, 6 Apr 2020 20:13:13 +0200
 Subject: [PATCH 07/10] option: rename PolicyMapMaxEntries to PolicyMapEntries
@@ -27,7 +27,7 @@ index 314be6fed..c722cb8bd 100644
  	if option.Config.DryMode == false {
  		if err := bpf.ConfigureResourceLimits(); err != nil {
 diff --git a/pkg/option/config.go b/pkg/option/config.go
-index 52e05a0ef..df24ad98b 100644
+index 3643aadec..f6c6fb473 100644
 --- a/pkg/option/config.go
 +++ b/pkg/option/config.go
 @@ -1010,9 +1010,9 @@ type DaemonConfig struct {
@@ -58,9 +58,9 @@ index 52e05a0ef..df24ad98b 100644
 -			c.PolicyMapMaxEntries, policyMapMax)
 +			c.PolicyMapEntries, policyMapMax)
  	}
- 	// Validate that the KVStore Lease TTL value lies between a particular range.
- 	if c.KVstoreLeaseTTL > defaults.KVstoreLeaseMaxTTL || c.KVstoreLeaseTTL < defaults.LockLeaseTTL {
-@@ -1864,7 +1864,7 @@ func (c *DaemonConfig) Populate() {
+ 	if err := c.checkIPv4NativeRoutingCIDR(); err != nil {
+ 		return err
+@@ -1868,7 +1868,7 @@ func (c *DaemonConfig) Populate() {
  	c.NAT46Range = viper.GetString(NAT46Range)
  	c.FlannelMasterDevice = viper.GetString(FlannelMasterDevice)
  	c.FlannelUninstallOnExit = viper.GetBool(FlannelUninstallOnExit)
@@ -70,5 +70,5 @@ index 52e05a0ef..df24ad98b 100644
  	c.PreAllocateMaps = viper.GetBool(PreAllocateMapsName)
  	c.PrependIptablesChains = viper.GetBool(PrependIptablesChainsName)
 -- 
-2.26.2
+2.27.0
 

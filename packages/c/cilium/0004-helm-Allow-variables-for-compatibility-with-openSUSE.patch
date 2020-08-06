@@ -1,4 +1,4 @@
-From 7fc312d45653e8d3247ba8cc2ad6f50bab6c99c9 Mon Sep 17 00:00:00 2001
+From af0e3b27cbfd7795d9c76d74dee71aede88a4330 Mon Sep 17 00:00:00 2001
 From: Michal Rostecki <mrostecki@opensuse.org>
 Date: Mon, 24 Feb 2020 19:57:31 +0100
 Subject: [PATCH 04/10] helm: Allow variables for compatibility with openSUSE
@@ -116,5 +116,5 @@ index 233d3e068..788bde816 100644
  # Specifies the maximum number of Pods that can be unavailable during the
  # update process.
 -- 
-2.26.2
+2.27.0
 

@@ -35,7 +35,7 @@
 %endif
 
 Name:           cilium
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Summary:        Linux Native, HTTP Aware Networking and Security for Containers
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -243,6 +243,7 @@ for service in cilium cilium-docker cilium-etcd cilium-consul; do
     ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc${service}
 done
 
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE2}
 install -D -m 0755 %{SOURCE2} %{buildroot}%{_sbindir}/cilium-cni-install
 install -D -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/cilium-cni-uninstall
 install -D -m 0755 contrib/packaging/docker/init-container.sh %{buildroot}/%{_bindir}/cilium-init
