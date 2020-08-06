@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-urllib3%{psuffix}
-Version:        1.25.9
+Version:        1.25.10
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
