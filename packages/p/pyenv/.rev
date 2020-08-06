@@ -70,4 +70,12 @@
   * Add version in last changelog entry to avoid rpmlint warnings</comment>
     <requestid>765693</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9eb1135afc945da68529c3fce53ed55</srcmd5>
+    <version>1.2.20</version>
+    <time>1596727984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824671</requestid>
+  </revision>
 </revisionlist>
