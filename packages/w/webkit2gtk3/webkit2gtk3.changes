@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 29 15:18:24 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.28.4 (boo#1174662):
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2020-9862, CVE-2020-9893, CVE-2020-9894,
+    CVE-2020-9895, CVE-2020-9915, CVE-2020-9925.
+
+-------------------------------------------------------------------
 Fri Jul 10 12:08:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.28.3:
+- Update to version 2.28.3 (boo#1173998):
   + Enable kinetic scrolling with async scrolling.
   + Fix web process hangs on large GitHub pages.
   + Bubblewrap sandbox should not attempt to bind empty paths.

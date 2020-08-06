@@ -811,4 +811,12 @@
 </comment>
     <requestid>820991</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>166c967b2dbfc556e6c6f5ce6aecfa2e</srcmd5>
+    <version>2.28.4</version>
+    <time>1596727741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.28.4 (boo#1174662): (forwarded request 823473 from mgorse)</comment>
+    <requestid>823594</requestid>
+  </revision>
 </revisionlist>
