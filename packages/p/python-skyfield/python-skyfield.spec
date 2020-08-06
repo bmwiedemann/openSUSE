@@ -17,8 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define assaycommit 79f5d784a55d70f31b2c90b636910738cd74840e
-%define assayver    252.79f5d78
+%define assaycommit 23c18c2457c035996057144e1fe74cd6e19b44eb
+%define assayver    256.23c18c2
 %define skip_python2 1
 Name:           python-skyfield
 Version:        1.26
