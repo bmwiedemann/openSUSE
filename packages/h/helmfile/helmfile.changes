@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Aug  6 07:37:04 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.125.3: Fix various issues in chart preparation (#1400)
+  * b85243a (HEAD, tag: v0.125.3, origin/master, origin/HEAD, master)
+    Fix various issues in chart preparation (#1400)
+  * 53c3fe9 Add support for selector on helmfile template (#1399)
+
+- v0.125.2
+  * 2ce57ba (HEAD, tag: v0.125.2, origin/master, origin/HEAD, master)
+    Handle --disable-openapi-validation parameter in helm upgrade (#1396)
+  * cc9b7f3 Fix regression on template failing due to duplicate fetch
+    target (#1395)
+
+- v0.125.1: Fix `helmfile lint` failure when `installed: false` (#1391)
+  * 85a2024 (HEAD, tag: v0.125.1, origin/master, origin/HEAD, master)
+    Fix helmfile lint failure when installed: false (#1391)
+  * 8757308 Fix false-positive duplicate release with kubeContext (#1390)
+  * 4fb47a8 Add version sub-command (#1389)
+  * 9cffef5 Update documentation to mention Renovate integration (#1387)
+  * b485793 Fix lint to not fail for duplicate release names across
+    ns (#1388)
+  * 1e260e4 Fix and enhancement to repository update (#1383)
+
+-------------------------------------------------------------------
 Fri Jul 24 12:50:14 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.125.0: Add pre/postuninstall hooks (#1375)
