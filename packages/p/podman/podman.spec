@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        1.9.3
+Version:        2.0.4
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -30,7 +30,6 @@ Group:          System/Management
 Url:            https://github.com/containers/libpod
 Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
-Source2:        libpod.conf
 Source3:        %{name}-rpmlintrc
 Source4:        README.SUSE.SLES
 BuildRequires:  bash-completion
@@ -49,7 +48,7 @@ BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) = 1.13
 # Build fails with PIE enabled on ppc64le due to boo#1098017
 %ifarch ppc64le
 #!BuildIgnore: gcc-PIE
@@ -60,15 +59,13 @@ Requires:       cni
 Requires:       cni-plugins
 Requires:       conmon
 Requires:       iptables
-Requires:       libcontainers-common
-Requires:       libcontainers-image
-Requires:       libcontainers-storage
+Requires:       libcontainers-common >= 20200727
 Requires:       runc >= 1.0.0~rc4
 Requires:       slirp4netns >= 0.4.0
 Requires:       catatonit
 Requires:       fuse-overlayfs
 Recommends:     %{name}-cni-config = %{version}
-Recommends:     katacontainers
+Suggests:       katacontainers
 %{go_nostrip}
 %if 0%{?with_libostree}
 BuildRequires:  libostree-devel
@@ -125,11 +122,7 @@ install -D -m 0755 bin/podman         %{buildroot}/%{_bindir}/podman
 install -D -m 0755 bin/podman-remote  %{buildroot}/%{_bindir}/podman-remote
 install -d %{buildroot}/%{_mandir}/man1
 install -m 0644 docs/build/man/podman*.1 %{buildroot}/%{_mandir}/man1
-install -d %{buildroot}/%{_mandir}/man5
-install -m 0644 docs/build/man/libpod*.5 %{buildroot}/%{_mandir}/man5
 install -D -m 0644 cni/87-podman-bridge.conflist %{buildroot}/%{_sysconfdir}/cni/net.d/87-podman-bridge.conflist
-install -D -m 0644 %{SOURCE2} %{buildroot}/%{_sysconfdir}/containers/libpod.conf
-install -D -m 0644 %{SOURCE2} %{buildroot}/%{_datadir}/containers/libpod.conf
 install -D -m 0644 completions/bash/podman %{buildroot}/%{_datadir}/bash-completion/completions/podman
 install -D -m 0644 completions/zsh/_podman %{buildroot}%{_sysconfdir}/zsh_completion.d/_podman
 
@@ -158,11 +151,7 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_bindir}/podman-remote
 # Manpages
 %{_mandir}/man1/podman*.1*
-%{_mandir}/man5/libpod*.5*
 # Configs
-%config(noreplace) %{_sysconfdir}/containers/libpod.conf
-%dir %{_datadir}/containers
-%{_datadir}/containers/libpod.conf
 %dir %{_libexecdir}/modules-load.d
 %{_libexecdir}/modules-load.d/podman.conf
 # Completion
@@ -173,6 +162,7 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_unitdir}/io.podman.service
 %{_unitdir}/io.podman.socket
 %ghost /run/podman
+%ghost  %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-libpodconf
 %license LICENSE
 
 %files cni-config
@@ -181,6 +171,9 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 
 %pre
 %service_add_pre io.podman.service io.podman.socket
+# move away any old rpmsave config file to avoid having it re-activated again in
+# %posttrans
+test -f /etc/containers/libpod.conf.rpmsave && mv -v /etc/containers/libpod.conf.rpmsave /etc/containers/libpod.conf.rpmsave.old ||:
 
 %post
 %service_add_post io.podman.service io.podman.socket
@@ -191,6 +184,29 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 
 %postun
 %service_del_postun io.podman.service io.podman.socket
+
+%posttrans
+# if libpod.conf.rpmsave was created move it back into place and set an update
+# message informing about the libpod.conf -> containers.conf change
+if test -f /etc/containers/libpod.conf.rpmsave ; then
+    mv -v /etc/containers/libpod.conf.rpmsave /etc/containers/libpod.conf ||:
+    cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-libpodconf << EOF
+WARNING: Podman configuration file changes
+
+With version 2.0 Podman changed to a slightly different configuration file format.
+Also the name of default configuration file has been changed. The new format is
+documented in the containers.conf(5) man-page and changes should usually be
+straight-forward.
+
+The new default configuration is located in /usr/share/containers/containers.conf.
+In order to override setting from that file you can create
+/etc/containers/containers.conf with your changed settings.
+
+For backwards compatibility Podman 2.0 is still able to read libpod.conf. The support
+for this will go away in future releases. Please migrate your configuration to the new
+format as soon as possible.
+EOF
+fi
 
 %triggerun cni-config -- %{name}-cni-config < 1.6.0
 # The name of the network bridge changed from cni0 to podman-cni0 with

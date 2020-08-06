@@ -1,11 +1,11 @@
 <services>
 
 <service name="tar_scm" mode="disabled">
-<param name="url">https://github.com/containers/libpod.git</param>
+<param name="url">https://github.com/containers/podman.git</param>
 <param name="scm">git</param>
 <param name="filename">podman</param>
-<param name="versionformat">1.9.3</param>
-<param name="revision">v1.9.3</param>
+<param name="versionformat">2.0.4</param>
+<param name="revision">v2.0.4</param>
 </service>
 
 <service name="set_version" mode="disabled">
