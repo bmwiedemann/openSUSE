@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 29 13:22:53 MDT 2020 - carnold@suse.com
+
+- bsc#1174176 - IDE: "Only 2 disks for bus 'NONE' are supported"
+  virtman-disallow-adding-floppy-disk.patch
+
+-------------------------------------------------------------------
+Thu Jul 23 17:20:03 MDT 2020 - carnold@suse.com
+
+- bsc#1172356 - Not able to hot-plug NIC via virt-manager, asks to
+  attach on next reboot while it should be live attached
+  virtinst-set-default-nic.patch
+
+-------------------------------------------------------------------
+Mon Jul 13 14:43:35 MDT 2020 - carnold@suse.com
+
+- bsc#1169708 - Virtualization/virt-manager: Bug yast2 virt-install
+  internal error
+  virt-install.rb
+
+-------------------------------------------------------------------
 Tue Mar 24 14:00:39 MDT 2020 - carnold@suse.com
 
 - bsc#1167569 - SLES 15 SP2 RC1 - virt-install: cache=none is

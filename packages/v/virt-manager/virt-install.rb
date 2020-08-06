@@ -48,7 +48,7 @@ module Yast
         status = UI.RunInTerminal("/usr/bin/vm-install")
       else
         Builtins.y2milestone("Launching virt-manager to run virt-install in GUI mode.")
-        if Arch.is_xen == false
+        if Arch.is_xen0 == false
           details = Convert.to_map(SCR.Execute(path(".target.bash_output"), "/usr/bin/virt-manager --connect=qemu:///system --show-domain-creator"))
         else
           details = Convert.to_map(SCR.Execute(path(".target.bash_output"), "/usr/bin/virt-manager --connect=xen:/// --show-domain-creator"))

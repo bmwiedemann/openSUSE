@@ -78,6 +78,7 @@ Patch154:       virtman-allow-creating-i686-vm.patch
 Patch155:       virtman-dont-specify-vte-version.patch
 Patch156:       virtman-dont-specify-gtksource-version.patch
 Patch157:       virtman-fix-restore-vm-menu-selection.patch
+Patch158:       virtman-disallow-adding-floppy-disk.patch
 Patch160:       virtinst-xen-drive-type.patch
 Patch161:       virtinst-xenbus-disk-index-fix.patch
 Patch162:       virtinst-refresh_before_fetch_pool.patch
@@ -86,6 +87,7 @@ Patch164:       virtinst-use-qemu-for-cdrom-device.patch
 Patch165:       virtinst-keep-install-iso-attached.patch
 Patch166:       virtinst-osdict-get_supported.patch
 Patch167:       virtinst-dont-use-special-copy-cpu-features.patch
+Patch168:       virtinst-set-default-nic.patch
 # Python2 to Python3 patches
 Patch200:       virtconv-python2-to-python3-conversion.patch
 Patch201:       virtinst-python2-to-python3-conversion.patch
@@ -226,6 +228,7 @@ machine).
 %patch155 -p1
 %patch156 -p1
 %patch157 -p1
+%patch158 -p1
 %patch160 -p1
 %patch161 -p1
 %patch162 -p1
@@ -234,6 +237,7 @@ machine).
 %patch165 -p1
 %patch166 -p1
 %patch167 -p1
+%patch168 -p1
 # Python2 to Python3 patches
 %patch200 -p1
 %patch201 -p1

@@ -1,0 +1,41 @@
+References: bsc#1174176, bsc#1174139
+Current libxl does not support adding a floppy. Code is included
+in this patch anyways to correctly set up a bus if a floppy were
+added.
+
+
+Index: virt-manager-2.2.1/virtManager/addhardware.py
+===================================================================
+--- virt-manager-2.2.1.orig/virtManager/addhardware.py
++++ virt-manager-2.2.1/virtManager/addhardware.py
+@@ -528,6 +528,9 @@ class vmmAddHardware(vmmGObjectUI):
+             buses = domcaps.devices.disk.get_enum("bus").get_values()
+         else:
+             buses = vmmAddHardware.disk_old_recommended_buses(guest)
++        # libxl doesn't support floppy but request one from qemu anyways if specified
++        if guest.conn.is_xen() and devtype == "floppy":
++            buses.append("fdc")
+ 
+         bus_map = {
+             "disk": ["ide", "sata", "scsi", "sd", "usb", "virtio", "xen"],
+@@ -539,7 +542,7 @@ class vmmAddHardware(vmmGObjectUI):
+ 
+     @staticmethod
+     def disk_pretty_bus(bus):
+-        if bus in ["ide", "sata", "scsi", "usb", "sd"]:
++        if bus in ["ide", "sata", "scsi", "usb", "sd", "fdc"]:
+             return bus.upper()
+         if bus in ["xen"]:
+             return bus.capitalize()
+@@ -724,8 +727,9 @@ class vmmAddHardware(vmmGObjectUI):
+                       "drive-harddisk", _("Disk device")])
+         target_model.append([DeviceDisk.DEVICE_CDROM,
+                       "media-optical", _("CDROM device")])
+-        target_model.append([DeviceDisk.DEVICE_FLOPPY,
+-                      "media-floppy", _("Floppy device")])
++        if not self.conn.is_xen():
++            target_model.append([DeviceDisk.DEVICE_FLOPPY,
++                          "media-floppy", _("Floppy device")])
+         if self.conn.is_qemu() or self.conn.is_test():
+             target_model.append([DeviceDisk.DEVICE_LUN,
+                           "drive-harddisk", _("LUN Passthrough")])

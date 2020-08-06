@@ -1630,4 +1630,12 @@
     <comment>Fixes for bsc#1167202 and bsc#1167569</comment>
     <requestid>787931</requestid>
   </revision>
+  <revision rev="207" vrev="11">
+    <srcmd5>77a2303d26051987bdc829b976f1c781</srcmd5>
+    <version>2.2.1</version>
+    <time>1596703163</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>824560</requestid>
+  </revision>
 </revisionlist>
