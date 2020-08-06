@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 21:04:38 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- nose is actually not required: the test suite happily skips over tests
+  which require it.
+
+-------------------------------------------------------------------
 Tue Jun  9 07:43:57 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Rebase and re-add tidy-up-embeddedfile.patch, it was only partially merged

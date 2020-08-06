@@ -850,4 +850,14 @@
      of unittest.TestCase subclasses for skipped tests.</comment>
     <requestid>813080</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>76382d3b66b32ca10298a8f5282037ae</srcmd5>
+    <version>5.4.3</version>
+    <time>1596727895</time>
+    <user>dimstar_suse</user>
+    <comment>- nose is actually not required: the test suite happily skips over tests
+  which require it.
+</comment>
+    <requestid>824226</requestid>
+  </revision>
 </revisionlist>

@@ -57,7 +57,9 @@ BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module hypothesis >= 3.56}
 BuildRequires:  %{python_module importlib-metadata >= 0.12}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+# nose is really not REQUIRED, the test suite skips over particular
+# tests, when the package is not available.
+# BuildRequires:  %%{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pygments-pytest}
