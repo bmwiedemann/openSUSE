@@ -20,7 +20,7 @@
 # python_requires='>=3.6'
 %define skip_python2 1
 Name:           python-python-box
-Version:        4.2.2
+Version:        5.1.0
 Release:        0
 Summary:        Advanced Python dictionaries with dot notation access
 License:        MIT
@@ -33,14 +33,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pathlib}
+BuildRequires:  %{python_module msgpack >= 1.0.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module ruamel.yaml}
-BuildRequires:  %{python_module testsuite}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module ruamel.yaml >= 0.16.10}
+BuildRequires:  %{python_module toml >= 0.10.1}
 # /SECTION
-Requires:       python-ruamel.yaml
-Requires:       python-toml
+Requires:       python-msgpack >= 1.0.0
+Requires:       python-ruamel.yaml >= 0.16.10
+Requires:       python-toml >= 0.10.1
 %python_subpackages
 
 %description
