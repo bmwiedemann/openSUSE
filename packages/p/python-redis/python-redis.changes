@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Aug  3 11:44:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.5.3
+  * Restore try/except clauses to __del__ methods. These will be removed
+    in 4.0 when more explicit resource management if enforced. #1339
+  * Update the master_address when Sentinels promote a new master. #847
+  * Update SentinelConnectionPool to not forcefully disconnect other in-use
+    connections which can negatively affect threaded applications. #1345
+  3.5.2
+  * Tune the locking in ConnectionPool.get_connection so that the lock is
+    not held while waiting for the socket to establish and validate the
+    TCP connection.
+  3.5.1
+  * Fix for HSET argument validation to allow any non-None key. Thanks
+    @AleksMat, #1337, #1341
+  3.5.0
+  * Removed exception trapping from __del__ methods. redis-py objects that
+    hold various resources implement __del__ cleanup methods to release
+    those resources when the object goes out of scope. This provides a
+    fallback for when these objects aren't explicitly closed by user code.
+    Prior to this change any errors encountered in closing these resources
+    would be hidden from the user. Thanks @jdufresne. #1281
+  * Expanded support for connection strings specifying a username connecting
+    to pre-v6 servers. #1274
+  * Optimized Lock's blocking_timeout and sleep. If the lock cannot be
+    acquired and the sleep value would cause the loop to sleep beyond
+    blocking_timeout, fail immediately. Thanks @clslgrnc. #1263
+  * Added support for passing Python memoryviews to Redis command args that
+    expect strings or bytes. The memoryview instance is sent directly to
+    the socket such that there are zero copies made of the underlying data
+    during command packing. Thanks @Cody-G. #1265, #1285
+  * HSET command now can accept multiple pairs. HMSET has been marked as
+    deprecated now. Thanks to @laixintao #1271
+  * Don't manually DISCARD when encountering an ExecAbortError.
+    Thanks @nickgaya, #1300/#1301
+  * Reset the watched state of pipelines after calling exec. This saves
+    a roundtrip to the server by not having to call UNWATCH within
+    Pipeline.reset(). Thanks @nickgaya, #1299/#1302
+  * Added the KEEPTTL option for the SET command. Thanks
+    @laixintao #1304/#1280
+  * Added the MEMORY STATS command. #1268
+  * Lock.extend() now has a new option, `replace_ttl`. When False (the
+    default), Lock.extend() adds the `additional_time` to the lock's existing
+    TTL. When replace_ttl=True, the lock's existing TTL is replaced with
+    the value of `additional_time`.
+  * Add testing and support for PyPy.
+
+-------------------------------------------------------------------
 Thu Mar 19 11:37:31 UTC 2020 - pgajdos@suse.com
 
 - version update to 3.4.1

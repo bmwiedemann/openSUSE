@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-redis
-Version:        3.4.1
+Version:        3.5.3
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
