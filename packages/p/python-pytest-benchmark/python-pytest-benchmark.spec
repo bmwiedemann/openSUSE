@@ -33,7 +33,6 @@ BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module pygaljs}
 BuildRequires:  %{python_module pygal}
 BuildRequires:  %{python_module pytest >= 3.8}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core
@@ -80,7 +79,7 @@ rm -f tests/test_cli.py
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-#%%pytest tests
+%pytest tests
 
 %post
 %{python_install_alternative pytest-benchmark py.test-benchmark}

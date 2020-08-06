@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 21:31:21 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove pytest-xdist from build
+- Re-activate test suite
+
+-------------------------------------------------------------------
 Fri Mar 13 12:42:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix buidling without python2
