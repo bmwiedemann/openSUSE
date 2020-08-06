@@ -17,12 +17,15 @@
 
 
 Name:           waybar
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
+# use this to download tarball. then use `meson subprojects download`
+# to get the `date` dependency. and create own tarball
+#Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
 Source:         %{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

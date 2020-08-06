@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Aug  6 05:56:55 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.3:
+  Added:
+  * FreeBSD support tada #425
+  * Taskbar module tada #692
+  * Added an on-update option to all modules #402
+  * Network: Added Rfkill status #568
+  * Bluetooth: Basic new module #568
+  * Added a way to exclude specific output #596
+  * Temperature: Add kelvin-scale #683
+  * sway/workspaces: Added current_output CSS class #693
+  * River status module #745
+  Changed:
+  * Fixed AMD brightness e01a081
+  * Fixed full-at #680
+  * sway/workspaces: sort by the "num" property provided by sway #696
+  * Clock: prefer default fmt format when not using a timezone #715
+  * Fixed exec-if hidding 3b16946
+  * Fixed SIGSEV/BLOCKING bar while changing/removing output 6e7f22a
+  * Battery: add check for battery type 401ea05
+  * Fixed Workspace back and forth unwanted behavior 0080feb
+  * Fixed persistent workspace position #783
+  * Network: make nl80211 dep optional fb8cda9
+  * Updated date, gtk-layer-shell subproject #797, Fixes #776 #780 #530 #750
+
+-------------------------------------------------------------------
 Sat Jun  22 17:11:07 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - package shouldn't require specific branding version, just a package
