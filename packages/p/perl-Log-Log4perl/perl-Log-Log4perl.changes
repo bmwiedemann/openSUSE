@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:40:31 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.50
+   see /usr/share/doc/packages/perl-Log-Log4perl/Changes
+
+  1.50 2020-07-22
+     *    (ms) Fix for slow unlinking on Windows test - thanks @zhiyuan-lin
+     *    (ms) [rt.cpan.org #121346] Gabor Kanizsai reported a regression
+               with empty messages logged via syswrite(). Fixed with test
+               case.
+
+-------------------------------------------------------------------
 Wed Feb 22 06:47:37 UTC 2017 - coolo@suse.com
 
 - updated to 1.49
