@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dateparser
-Version:        0.7.4
+Version:        0.7.6
 Release:        0
 Summary:        Date parsing library designed to parse dates from HTML pages
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/scrapinghub/dateparser
 Source:         https://files.pythonhosted.org/packages/source/d/dateparser/dateparser-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -37,12 +36,13 @@ Recommends:     python-jdatetime
 Recommends:     python-ruamel.yaml
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module jdatetime}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module regex}
@@ -60,6 +60,8 @@ Date parsing library designed to parse dates from HTML pages
 # not py3 compatible and weird license of the imported module
 rm tests/test_hijri.py
 rm dateparser/calendars/hijri*
+# Requires files not shipped in PyPi tarball
+rm tests/test_dateparser_data_integrity.py
 
 %build
 %python_build
@@ -69,7 +71,7 @@ rm dateparser/calendars/hijri*
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
@@ -78,6 +80,8 @@ rm dateparser/calendars/hijri*
 %{python_sitelib}/dateparser/*
 %dir %{python_sitelib}/dateparser_data
 %{python_sitelib}/dateparser_data/*
+%dir %{python_sitelib}/dateparser_scripts
+%{python_sitelib}/dateparser_scripts/*
 %dir %{python_sitelib}/dateparser-%{version}-py*.egg-info
 %{python_sitelib}/dateparser-%{version}-py*.egg-info
 

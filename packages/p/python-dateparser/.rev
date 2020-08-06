@@ -23,4 +23,20 @@
     <comment></comment>
     <requestid>790846</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8238683c0b575d9fd7993bf875552ffa</srcmd5>
+    <version>0.7.6</version>
+    <time>1596727866</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.6:
+  * Rename ``scripts`` to ``dateparser_scripts`` to avoid name collisions
+    with modules from other packages or projects
+  * Add Python 3.8 support
+  * Implement a ``REQUIRE_PARTS`` setting
+  * Add support for subscript and superscript numbers
+  * Extended French support
+  * Extended German support
+- Switch from nose to pytest.</comment>
+    <requestid>823471</requestid>
+  </revision>
 </revisionlist>

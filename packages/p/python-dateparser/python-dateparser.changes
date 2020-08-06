@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 30 01:41:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.6:
+  * Rename ``scripts`` to ``dateparser_scripts`` to avoid name collisions
+    with modules from other packages or projects
+  * Add Python 3.8 support
+  * Implement a ``REQUIRE_PARTS`` setting
+  * Add support for subscript and superscript numbers
+  * Extended French support
+  * Extended German support
+- Switch from nose to pytest.
+
+-------------------------------------------------------------------
 Thu Apr  2 09:44:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.7.4
