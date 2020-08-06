@@ -1,7 +1,7 @@
-Index: python-jose-3.1.0/setup.py
+Index: python-jose-3.2.0/setup.py
 ===================================================================
---- python-jose-3.1.0.orig/setup.py
-+++ python-jose-3.1.0/setup.py
+--- python-jose-3.2.0.orig/setup.py
++++ python-jose-3.2.0/setup.py
 @@ -35,11 +35,11 @@ def _cryptography_version():
  pyasn1 = ['pyasn1']
  extras_require = {
@@ -11,7 +11,7 @@ Index: python-jose-3.1.0/setup.py
 +    'pycrypto': ['pycrypto >=2.6.0'] + pyasn1,
 +    'pycryptodome': ['pycryptodome >=3.3.1'] + pyasn1,
  }
--legacy_backend_requires = ['ecdsa <1.0', 'rsa'] + pyasn1
+-legacy_backend_requires = ['ecdsa <0.15', 'rsa'] + pyasn1
 -install_requires = ['six <2.0']
 +legacy_backend_requires = ['ecdsa', 'rsa'] + pyasn1
 +install_requires = ['six']

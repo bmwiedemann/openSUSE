@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  5 12:58:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.2.0
+  * This will be the last release supporting Python 2.7, 3.5, and the PyCrypto
+    backend.
+  * Use hmac.compare_digest instead of our own constant_time_string_compare #163
+  * Fix `to_dict` output, which should always be JSON encodeable. #139 and #165
+    (fixes #127 and #137)
+  * Require setuptools >= 39.2.0 #167 (fixes #161)
+  * Emit a warning when verifying with a private key #168 (fixes #53 and #142)
+  * Avoid loading python-ecdsa when using the cryptography backend, and pinned
+    python-ecdsa dependency to <0.15 #178
+- Rebase patch unpin-deps.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 09:47:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.1.0:

@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-jose
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        JOSE implementation in Python
 License:        MIT
 URL:            https://github.com/mpdavis/python-jose
 Source:         https://github.com/mpdavis/python-jose/archive/%{version}.tar.gz#/python-jose-%{version}.tar.gz
 Patch0:         unpin-deps.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
