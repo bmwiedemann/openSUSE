@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-python-xlib
-Version:        0.26
+Version:        0.27
 Release:        0
 Summary:        Python X11 interface
 License:        LGPL-2.1-or-later

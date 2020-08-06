@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  5 08:07:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.27
+  * fix TypeError in socket.error exception handling for Python 3.x (by @t-wissmann)
+  * NV-CONTROL: set offset for all perf levels (by @Sporif)
+
+-------------------------------------------------------------------
 Mon Jan 13 04:42:33 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - version update to 0.26
