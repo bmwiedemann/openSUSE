@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 12:42:59 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Remove ag_uid to save memory at installation time (bsc#1172139).
+- 4.3.6
+
+-------------------------------------------------------------------
 Fri Jul 24 14:00:40 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Load the right nsswitch.conf from either, /usr/etc or /etc
