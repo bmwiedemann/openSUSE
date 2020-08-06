@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 07:43:16 UTC 2020 - XinLiang <XLiang@suse.com>
+
+- Change format of scp command for ipv6 compatible(bsc#1174894)
+  Add patch 0002-Change-format-of-scp-command-for-ipv6-compatible.patch
+
+-------------------------------------------------------------------
 Tue May 19 02:32:03 UTC 2020 - XinLiang <XLiang@suse.com>
 
 - Add ssh_key option used by -i option of ssh and scp(bsc#1169581)

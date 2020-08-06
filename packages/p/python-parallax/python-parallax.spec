@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/krig/parallax/
 Source:         https://files.pythonhosted.org/packages/source/p/parallax/parallax-%{version}.tar.gz
 Patch1:         0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch
+Patch2:         0002-Change-format-of-scp-command-for-ipv6-compatible.patch
 
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -51,6 +52,7 @@ multiple nodes using SCP.
 %prep
 %setup -q -n parallax-%{version}
 %patch1 -p1
+%patch2 -p1
 
 %build
 %python_build
