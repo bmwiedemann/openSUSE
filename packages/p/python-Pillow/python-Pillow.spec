@@ -28,7 +28,6 @@ URL:            https://python-pillow.org/
 Source:         https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module olefile}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tk}
@@ -99,18 +98,18 @@ Python Imaging Library by Fredrik Lundh and Contributors.
 %{python_expand echo "PIL" > %{buildroot}%{$python_sitearch}/PIL.pth}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHONDONTWRITEBYTECODE=1
 %if %{_arch} == s390 || %{_arch} == s390x
 echo "WARNING ignoring tests completely due to https://github.com/python-pillow/Pillow/issues/1204 and segfault"
 %else
 %if %{_arch} == ppc || %{_arch} == ppc64
 $python selftest.py --installed || \
 echo "WARNING ignore failure https://github.com/python-pillow/Pillow/issues/1204"
-$python setup.py test  || \
+pytest-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.pypy3 -v || \
 echo "WARNING ignore failure https://github.com/python-pillow/Pillow/issues/1204"
 %else
 $python selftest.py --installed
-$python -m pytest -v -k 'not (test_stroke or test_stroke_multiline)'
+pytest-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.pypy3 -v -k 'not (test_stroke or test_stroke_multiline)'
 %endif
 %endif
 }

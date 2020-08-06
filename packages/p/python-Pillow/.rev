@@ -380,4 +380,13 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>820507</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>67cddd7963fe6902d1f1a77a3f14be65</srcmd5>
+    <version>7.2.0</version>
+    <time>1596727948</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on pytest-runner as it is unnecessary
+</comment>
+    <requestid>824544</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  5 18:37:46 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove dependency on pytest-runner as it is unnecessary
+
+-------------------------------------------------------------------
 Sat Jul 11 18:36:52 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 7.2.0:
