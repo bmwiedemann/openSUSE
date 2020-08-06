@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 16:19:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.26:
+  * bugfixes (reject invalid json patches)
+
+-------------------------------------------------------------------
 Fri Feb 28 21:34:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.25:

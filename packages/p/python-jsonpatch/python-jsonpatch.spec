@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonpatch
-Version:        1.25
+Version:        1.26
 Release:        0
 Summary:        Python - JSON-Patches
 License:        BSD-3-Clause

@@ -171,4 +171,13 @@
   * bugfixes, 3.8 support</comment>
     <requestid>780383</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>38af60ff8a564498d7d8d624fc0c1005</srcmd5>
+    <version>1.26</version>
+    <time>1596727930</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26:
+  * bugfixes (reject invalid json patches)</comment>
+    <requestid>824356</requestid>
+  </revision>
 </revisionlist>
