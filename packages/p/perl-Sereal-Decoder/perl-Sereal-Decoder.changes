@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  4 03:14:10 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.018
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+
+  4.018 Thurs Aug 3, 2020
+      * Fix issue with gcc 10 with snappy compression.
+
+-------------------------------------------------------------------
 Fri Jul 10 09:41:03 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.017

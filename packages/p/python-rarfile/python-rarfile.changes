@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jul 31 22:20:37 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0
+  Main goals are:
+  * Increased zipfile-compatibility, thus also achieving
+    smaller difference between RAR3 and RAR5 archives.
+  * Removing dependency on unrar for extract, thus making
+    maintenance of alternative backends more manageable.
+  Breaking changes:
+  * Directory names will have "/" appended.
+  * RarFile.extract operates only on single entry, so when used
+    on directory it will create directory but not extract files
+    under it.
+  * RarFile.extract / RarFile.extractall / RarFile.testrar will
+    not launch special unrar command line, instead they are
+    implemented on top of RarFile.open.
+  * Keyword args in top-level APIs were renamed to match zipfile:
+    + RarFile(rarfile) -> RarFile(file)
+    + RarFile.setpassword(password) -> .setpassword(pwd)
+    + RarFile.getinfo(fname) -> .getinfo(name)
+    + RarFile.open(fname, mode, psw) -> .open(name, mode, pwd)
+    + RarFile.read(fname, psw) -> .read(name, pwd)
+  * PATH_SEP cannot be changed from "/".
+  New features:
+  * RarFile.extract will return final sanitized filename
+    for target file.
+  * RarInfo.is_dir is now preferred spelling of isdir().
+    Old method kept as alias.
+  * New RarInfo.is_file and RarInfo.is_symlink
+    methods. Only one of ~RarInfo.is_file, ~RarInfo.is_dir or
+    ~RarInfo.is_symlink can be True.
+  * RarFile.printdir has file argument for output.
+  * RarFile.__iter__ loops over RarInfo entries.
+  * RAR3: throw NeedFirstVolume exception with current volume
+    number, like RAR5 does.
+  * Nanosecond timestamp support.  Visible as nsdatetime
+    instance.
+  * Minimal CLI when run as script: python3 -m rarfile
+  * Skip old file versions in versioned archive.
+  Cleanups:
+  * Use PBKDF2 implementation from hashlib.
+  * Improve test coverage.
+  version 3.3:
+  Fixes:
+  * Add the .sfx test files to MANIFEST.in for inclusion in pypi
+    tarball.
+  * Add all files in git to tarball.
+- Run tests
+- Switch to unar
+
+-------------------------------------------------------------------
 Mon Jul 20 07:50:34 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.2

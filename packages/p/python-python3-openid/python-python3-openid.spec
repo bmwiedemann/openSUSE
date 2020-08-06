@@ -21,7 +21,7 @@
 # tests are partly broken
 %bcond_without     test
 Name:           python-python3-openid
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        OpenID support for Python
 License:        Apache-2.0

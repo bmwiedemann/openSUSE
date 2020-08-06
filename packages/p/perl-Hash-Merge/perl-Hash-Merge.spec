@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Hash-Merge
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-Hash-Merge
-Version:        0.300
+Version:        0.302
 Release:        0
 %define cpan_name Hash-Merge
 Summary:        Merges arbitrarily deep hashes into a single hash
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RE/REHSACK/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/H/HE/HERMES/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -50,20 +50,16 @@ passed to the merge function will be cloned using the Clone module;
 however, if necessary, this behavior can be changed to use as many of the
 original values as possible. (See 'set_clone_behavior').
 
-Because there are a number of possible ways that one may want to merge
-values when keys are conflicting, Hash::Merge provides several preset
-methods for your convenience, as well as a way to define you own.
-
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

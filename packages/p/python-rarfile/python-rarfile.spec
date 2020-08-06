@@ -18,18 +18,21 @@
 
 %define skip_python2 1
 Name:           python-rarfile
-Version:        3.2
+Version:        4.0
 Release:        0
 Summary:        RAR Archive Reader for Python
 License:        ISC
 URL:            https://rarfile.readthedocs.org/
 Source0:        https://files.pythonhosted.org/packages/source/r/rarfile/rarfile-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  bsdtar
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx >= 1.3
+BuildRequires:  unar
 Requires:       bsdtar
-Recommends:     unrar
+Recommends:     unar
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,6 +63,9 @@ rm doc/_build/html/.buildinfo
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %license LICENSE
