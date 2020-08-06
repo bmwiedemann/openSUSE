@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  4 12:09:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.6.1:
+  - Fix buffer overflow in frame_writer after frame_max is increased. `frame_writer`
+  allocates a `bytearray` on intialization with a length based on the `connection.frame_max`
+  value. If `connection.frame_max` is changed to a larger value, this causes an
+  error like `pack_into requires a buffer of at least 408736 bytes`.
+
+-------------------------------------------------------------------
 Mon Jun  8 13:29:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.6.0:

@@ -292,4 +292,16 @@
   - Speedups of serialization.py are more restrictive</comment>
     <requestid>812617</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>12477ee643c8edaa858b7689111ceb38</srcmd5>
+    <version>2.6.1</version>
+    <time>1596727903</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.1:
+  - Fix buffer overflow in frame_writer after frame_max is increased. `frame_writer`
+  allocates a `bytearray` on intialization with a length based on the `connection.frame_max`
+  value. If `connection.frame_max` is changed to a larger value, this causes an
+  error like `pack_into requires a buffer of at least 408736 bytes`.</comment>
+    <requestid>824326</requestid>
+  </revision>
 </revisionlist>
