@@ -2308,6 +2308,7 @@ unsorted:
   - d-feet-lang 
   - d0_blind_id 
   - d0_blind_id-devel 
+  - dMagnetic 
   - dSFMT-devel 
   - dai-banna-fonts 
   - dante 
@@ -6928,7 +6929,7 @@ unsorted:
   - karchive-devel 
   - karchive-devel-32bit: [x86_64] 
   - kasumi 
-  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime 
+  - katacontainers: [x86_64] 
   - katacontainers-image-initrd: [x86_64] 
   - kauth-devel 
   - kauth-devel-32bit: [x86_64] 
@@ -9102,8 +9103,8 @@ unsorted:
   - libcpluffxx-devel 
   - libcpluffxx0 
   - libcpprest2_10 
-  - libcppunit-1_14-0 
-  - libcppunit-1_14-0-32bit: [x86_64] 
+  - libcppunit-1_15-1 
+  - libcppunit-1_15-1-32bit: [x86_64] 
   - libcppunit_subunit0 
   - libcppunit_subunit0-devel 
   - libcpuid-devel 
@@ -20797,6 +20798,7 @@ unsorted:
   - python3-masakariclient 
   - python3-matplotlib-latex 
   - python3-matplotlib-qt5 
+  - python3-matplotlib-testdata 
   - python3-matplotlib-tk 
   - python3-matplotlib-web 
   - python3-matplotlib-wx 
