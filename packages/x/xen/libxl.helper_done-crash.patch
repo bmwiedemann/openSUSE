@@ -35,11 +35,11 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  tools/libxl/libxl_save_callout.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/tools/libxl/libxl_save_callout.c b/tools/libxl/libxl_save_callout.c
-index 6452d70036..89a2f6ecf0 100644
---- a/tools/libxl/libxl_save_callout.c
-+++ b/tools/libxl/libxl_save_callout.c
-@@ -368,8 +368,9 @@ static void helper_done(libxl__egc *egc, libxl__save_helper_state *shs)
+Index: xen-4.14.0-testing/tools/libxl/libxl_save_callout.c
+===================================================================
+--- xen-4.14.0-testing.orig/tools/libxl/libxl_save_callout.c
++++ xen-4.14.0-testing/tools/libxl/libxl_save_callout.c
+@@ -366,8 +366,9 @@ static void helper_done(libxl__egc *egc,
      assert(!libxl__save_helper_inuse(shs));
  
      shs->egc = egc;

@@ -82,10 +82,10 @@ xenpmd.c:117:52: note: in expansion of macro 'BATTERY_STATE_FILE_PATH'
       |                                                    ^~~~~~~~~~~~~~~~~~~~~~~
 
 
-Index: xen-4.13.0-testing/tools/libxl/libxlu_pci.c
+Index: xen-4.14.0-testing/tools/libxl/libxlu_pci.c
 ===================================================================
---- xen-4.13.0-testing.orig/tools/libxl/libxlu_pci.c
-+++ xen-4.13.0-testing/tools/libxl/libxlu_pci.c
+--- xen-4.14.0-testing.orig/tools/libxl/libxlu_pci.c
++++ xen-4.14.0-testing/tools/libxl/libxlu_pci.c
 @@ -22,6 +22,9 @@ static int hex_convert(const char *str,
      return 0;
  }
@@ -96,11 +96,11 @@ Index: xen-4.13.0-testing/tools/libxl/libxlu_pci.c
  static int pcidev_struct_fill(libxl_device_pci *pcidev, unsigned int domain,
                                 unsigned int bus, unsigned int dev,
                                 unsigned int func, unsigned int vdevfn)
-Index: xen-4.13.0-testing/tools/debugger/kdd/kdd.c
+Index: xen-4.14.0-testing/tools/debugger/kdd/kdd.c
 ===================================================================
---- xen-4.13.0-testing.orig/tools/debugger/kdd/kdd.c
-+++ xen-4.13.0-testing/tools/debugger/kdd/kdd.c
-@@ -396,6 +396,9 @@ static void find_os(kdd_state *s)
+--- xen-4.14.0-testing.orig/tools/debugger/kdd/kdd.c
++++ xen-4.14.0-testing/tools/debugger/kdd/kdd.c
+@@ -734,6 +734,9 @@ static void find_os(kdd_state *s)
   */
  
  
@@ -110,10 +110,10 @@ Index: xen-4.13.0-testing/tools/debugger/kdd/kdd.c
  /* Send a serial packet */
  static void kdd_tx(kdd_state *s)
  {
-Index: xen-4.13.0-testing/stubdom/polarssl.patch
+Index: xen-4.14.0-testing/stubdom/polarssl.patch
 ===================================================================
---- xen-4.13.0-testing.orig/stubdom/polarssl.patch
-+++ xen-4.13.0-testing/stubdom/polarssl.patch
+--- xen-4.14.0-testing.orig/stubdom/polarssl.patch
++++ xen-4.14.0-testing/stubdom/polarssl.patch
 @@ -62,3 +62,25 @@ diff -Naur polarssl-1.1.4/library/bignum
               t_udbl r;
  
@@ -140,42 +140,10 @@ Index: xen-4.13.0-testing/stubdom/polarssl.patch
 + /*
 +  * Reset an initialized and used SSL context for re-use while retaining
 +  * all application-set variables, function pointers and data.
-Index: xen-4.13.0-testing/tools/xenstore/xenstored_core.h
+Index: xen-4.14.0-testing/tools/libxl/libxl_utils.c
 ===================================================================
---- xen-4.13.0-testing.orig/tools/xenstore/xenstored_core.h
-+++ xen-4.13.0-testing/tools/xenstore/xenstored_core.h
-@@ -204,7 +204,11 @@ void finish_daemonize(void);
- /* Open a pipe for signal handling */
- void init_pipe(int reopen_log_pipe[2]);
- 
-+#if __GNUC__ >= 10
-+extern xengnttab_handle **xgt_handle;
-+#else
- xengnttab_handle **xgt_handle;
-+#endif
- 
- int remember_string(struct hashtable *hash, const char *str);
- 
-Index: xen-4.13.0-testing/tools/xenstore/utils.h
-===================================================================
---- xen-4.13.0-testing.orig/tools/xenstore/utils.h
-+++ xen-4.13.0-testing/tools/xenstore/utils.h
-@@ -24,7 +24,11 @@ static inline bool strends(const char *a
- void barf(const char *fmt, ...) __attribute__((noreturn));
- void barf_perror(const char *fmt, ...) __attribute__((noreturn));
- 
-+#if __GNUC__ >= 10
-+extern void (*xprintf)(const char *fmt, ...);
-+#else
- void (*xprintf)(const char *fmt, ...);
-+#endif
- 
- #define eprintf(_fmt, _args...) xprintf("[ERR] %s" _fmt, __FUNCTION__, ##_args)
- 
-Index: xen-4.13.0-testing/tools/libxl/libxl_utils.c
-===================================================================
---- xen-4.13.0-testing.orig/tools/libxl/libxl_utils.c
-+++ xen-4.13.0-testing/tools/libxl/libxl_utils.c
+--- xen-4.14.0-testing.orig/tools/libxl/libxl_utils.c
++++ xen-4.14.0-testing/tools/libxl/libxl_utils.c
 @@ -1248,6 +1248,9 @@ int libxl__random_bytes(libxl__gc *gc, u
      return ret;
  }
@@ -186,10 +154,10 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_utils.c
  int libxl__prepare_sockaddr_un(libxl__gc *gc,
                                 struct sockaddr_un *un, const char *path,
                                 const char *what)
-Index: xen-4.13.0-testing/tools/xenpmd/xenpmd.c
+Index: xen-4.14.0-testing/tools/xenpmd/xenpmd.c
 ===================================================================
---- xen-4.13.0-testing.orig/tools/xenpmd/xenpmd.c
-+++ xen-4.13.0-testing/tools/xenpmd/xenpmd.c
+--- xen-4.14.0-testing.orig/tools/xenpmd/xenpmd.c
++++ xen-4.14.0-testing/tools/xenpmd/xenpmd.c
 @@ -86,6 +86,9 @@ struct battery_status {
  
  static struct xs_handle *xs;

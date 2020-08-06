@@ -2467,4 +2467,12 @@
     <comment>Security and maintenance update for Xen with several CVEs</comment>
     <requestid>820049</requestid>
   </revision>
+  <revision rev="288" vrev="1">
+    <srcmd5>c38df99e7c5e9e9df627b3f281bcb1c5</srcmd5>
+    <version>4.14.0_02</version>
+    <time>1596727860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824549</requestid>
+  </revision>
 </revisionlist>

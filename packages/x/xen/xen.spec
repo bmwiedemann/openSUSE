@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -24,8 +24,8 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define changeset 40162
-%define xen_build_dir xen-4.13.1-testing
+%define changeset 41121
+%define xen_build_dir xen-4.14.0-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -123,12 +123,12 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.1_04
+Version:        4.14.0_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.13.1-testing-src.tar.bz2
+Source0:        xen-4.14.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source5:        ipxe.tar.bz2
 Source6:        mini-os.tar.bz2
@@ -162,32 +162,8 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         5eb51be6-cpupool-fix-removing-cpu-from-pool.patch
-Patch2:         5eb51caa-sched-vcpu-pause-flags-atomic.patch
-Patch3:         5ec2a760-x86-determine-MXCSR-mask-always.patch
-Patch4:         5ec50b05-x86-idle-rework-C6-EOI-workaround.patch
-Patch5:         5ec7dcaa-x86-dont-enter-C6-with-in-service-intr.patch
-Patch6:         5ec7dcf6-x86-dont-enter-C3-C6-with-errata.patch
-Patch7:         5ec82237-x86-extend-ISR-C6-workaround-to-Haswell.patch
-Patch8:         5ece1b91-x86-clear-RDRAND-CPUID-bit-on-AMD-fam-15-16.patch
-Patch9:         5ece8ac4-x86-load_system_tables-NMI-MC-safe.patch
-Patch10:        5ed69804-x86-ucode-fix-start-end-update.patch
-Patch11:        5eda60cb-SVM-split-recalc-NPT-fault-handling.patch
-Patch12:        5edf6ad8-ioreq-pending-emulation-server-destruction-race.patch
-Patch13:        5edfbbea-x86-spec-ctrl-CPUID-MSR-defs-for-SRBDS.patch
-Patch14:        5edfbbea-x86-spec-ctrl-mitigate-SRBDS.patch
-Patch15:        5ee24d0e-x86-spec-ctrl-document-SRBDS-workaround.patch
-Patch317:       xsa317.patch
-Patch319:       xsa319.patch
-Patch32101:     xsa321-1.patch
-Patch32102:     xsa321-2.patch
-Patch32103:     xsa321-3.patch
-Patch32104:     xsa321-4.patch
-Patch32105:     xsa321-5.patch
-Patch32106:     xsa321-6.patch
-Patch32107:     xsa321-7.patch
-Patch32801:     xsa328-1.patch
-Patch32802:     xsa328-2.patch
+Patch1:         5f1a9916-x86-S3-put-data-sregs-into-known-state.patch
+Patch2:         5f21b9fd-x86-cpuid-APIC-bit-clearing.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -199,6 +175,7 @@ Patch406:       suse-xendomains-service.patch
 Patch407:       replace-obsolete-network-configuration-commands-in-s.patch
 Patch408:       disable-building-pv-shim.patch
 Patch409:       xenstore-launch.patch
+Patch410:       ignore-ip-command-script-errors.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
 Patch422:       stubdom-have-iovec.patch
@@ -417,30 +394,6 @@ Authors:
 # Upstream patches
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch317 -p1
-%patch319 -p1
-%patch32801 -p1
-%patch32802 -p1
-%patch32101 -p1
-%patch32102 -p1
-%patch32103 -p1
-%patch32104 -p1
-%patch32105 -p1
-%patch32106 -p1
-%patch32107 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -452,6 +405,7 @@ Authors:
 %patch407 -p1
 %patch408 -p1
 %patch409 -p1
+%patch410 -p1
 # Needs to go upstream
 %patch420 -p1
 %patch422 -p1
@@ -1005,6 +959,7 @@ rm -rf %{buildroot}/var
 rm -f  %{buildroot}/%{_sysconfdir}/bash_completion.d/xl.sh
 rm -f  %{buildroot}/%{_sysconfdir}/init.d/xen*
 rm -f  %{buildroot}/%{_bindir}/*trace*
+rm -f  %{buildroot}/%{_bindir}/vchan-socket-proxy
 rm -f  %{buildroot}/%{_bindir}/xenalyze*
 rm -f  %{buildroot}/%{_bindir}/xenco*
 rm -f  %{buildroot}/%{_bindir}/xen-cpuid
@@ -1038,6 +993,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/bin/xencons
 /usr/bin/xenstore*
 /usr/bin/pygrub
+/usr/bin/vchan-socket-proxy
 /usr/bin/xencov_split
 /usr/bin/xentrace_format
 %ifarch x86_64
@@ -1076,6 +1032,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/sbin/xen-hvmctx
 /usr/sbin/xen-lowmemd
 /usr/sbin/xen-kdd
+/usr/sbin/xenhypfs
 %endif
 /usr/sbin/xen-list
 /usr/sbin/xen-destroy
@@ -1138,7 +1095,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %dir %{_libdir}/python%{pyver}/site-packages/xen/lowlevel
 %dir %{_libdir}/python%{pyver}/site-packages/xen/migration
 %{_libdir}/python%{pyver}/site-packages/grub/*
-%{_libdir}/python%{pyver}/site-packages/xen/__init__*
+%{_libdir}/python%{pyver}/site-packages/xen/util.py
 %{_libdir}/python%{pyver}/site-packages/xen/lowlevel/*
 %{_libdir}/python%{pyver}/site-packages/xen/migration/*
 %{_libdir}/python%{pyver}/site-packages/*.so
@@ -1251,6 +1208,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %{_libdir}/pkgconfig/xenforeignmemory.pc
 %{_libdir}/pkgconfig/xengnttab.pc
 %{_libdir}/pkgconfig/xenguest.pc
+%{_libdir}/pkgconfig/xenhypfs.pc
 %{_libdir}/pkgconfig/xenstat.pc
 %{_libdir}/pkgconfig/xenstore.pc
 %{_libdir}/pkgconfig/xentoolcore.pc

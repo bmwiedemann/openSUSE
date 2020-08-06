@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Aug  5 19:30:23 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Correct license name
+  * GPL-3.0+ is now GPL-3.0-or-later
+
+-------------------------------------------------------------------
+Mon Aug  3 06:26:08 MDT 2020 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  5f1a9916-x86-S3-put-data-sregs-into-known-state.patch
+  5f21b9fd-x86-cpuid-APIC-bit-clearing.patch
+
+-------------------------------------------------------------------
+Fri Jul 24 16:27:29 MDT 2020 - carnold@suse.com
+
+- Update to Xen 4.14.0 FCS release
+  xen-4.14.0-testing-src.tar.bz2
+  * Linux stubdomains (contributed by QUBES OS)
+  * Control-flow Enforcement Technology (CET) Shadow Stack support (contributed by Citrix)
+  * Lightweight VM fork for fuzzing / introspection. (contributed by Intel)
+  * Livepatch: buildid and hotpatch stack requirements
+  * CONFIG_PV32
+  * Hypervisor FS support
+  * Running Xen as a Hyper-V Guest
+  * Domain ID randomization, persistence across save / restore
+  * Golang binding autogeneration
+  * KDD support for Windows 7, 8.x and 10
+- Dropped patches contained in new tarball
+  5eb51be6-cpupool-fix-removing-cpu-from-pool.patch
+  5eb51caa-sched-vcpu-pause-flags-atomic.patch
+  5ec2a760-x86-determine-MXCSR-mask-always.patch
+  5ec50b05-x86-idle-rework-C6-EOI-workaround.patch
+  5ec7dcaa-x86-dont-enter-C6-with-in-service-intr.patch
+  5ec7dcf6-x86-dont-enter-C3-C6-with-errata.patch
+  5ec82237-x86-extend-ISR-C6-workaround-to-Haswell.patch
+  5ece1b91-x86-clear-RDRAND-CPUID-bit-on-AMD-fam-15-16.patch
+  5ece8ac4-x86-load_system_tables-NMI-MC-safe.patch
+  5ed69804-x86-ucode-fix-start-end-update.patch
+  5eda60cb-SVM-split-recalc-NPT-fault-handling.patch
+  5edf6ad8-ioreq-pending-emulation-server-destruction-race.patch
+  5edfbbea-x86-spec-ctrl-CPUID-MSR-defs-for-SRBDS.patch
+  5edfbbea-x86-spec-ctrl-mitigate-SRBDS.patch
+  5ee24d0e-x86-spec-ctrl-document-SRBDS-workaround.patch
+  xsa317.patch
+  xsa319.patch
+  xsa321-1.patch
+  xsa321-2.patch
+  xsa321-3.patch
+  xsa321-4.patch
+  xsa321-5.patch
+  xsa321-6.patch
+  xsa321-7.patch
+  xsa328-1.patch
+  xsa328-2.patch
+
+-------------------------------------------------------------------
+Thu Jul 23 11:12:58 MDT 2020 - carnold@suse.com
+
+- bsc#1172356 - Not able to hot-plug NIC via virt-manager, asks to
+  attach on next reboot while it should be live attached
+  ignore-ip-command-script-errors.patch
+
+-------------------------------------------------------------------
+Fri Jul 17 14:14:14 UTC 2020 - ohering@suse.de
+
+- Enhance libxc.migrate_tracking.patch
+  After transfer of domU memory, the target host has to assemble
+  the backend devices. Track the time prior xc_domain_unpause.
+
+-------------------------------------------------------------------
 Tue Jun 30 18:03:40 UTC 2020 - ohering@suse.de
 
 - Add libxc.migrate_tracking.patch to track live migrations

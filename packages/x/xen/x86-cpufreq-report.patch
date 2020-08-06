@@ -1,7 +1,7 @@
-Index: xen-4.12.0-testing/xen/arch/x86/platform_hypercall.c
+Index: xen-4.14.0-testing/xen/arch/x86/platform_hypercall.c
 ===================================================================
---- xen-4.12.0-testing.orig/xen/arch/x86/platform_hypercall.c
-+++ xen-4.12.0-testing/xen/arch/x86/platform_hypercall.c
+--- xen-4.14.0-testing.orig/xen/arch/x86/platform_hypercall.c
++++ xen-4.14.0-testing/xen/arch/x86/platform_hypercall.c
 @@ -25,7 +25,7 @@
  #include <xen/symbols.h>
  #include <asm/current.h>
@@ -9,9 +9,9 @@ Index: xen-4.12.0-testing/xen/arch/x86/platform_hypercall.c
 -#include <acpi/cpufreq/processor_perf.h>
 +#include <acpi/cpufreq/cpufreq.h>
  #include <asm/edd.h>
+ #include <asm/microcode.h>
  #include <asm/mtrr.h>
- #include <asm/io_apic.h>
-@@ -807,6 +807,41 @@ ret_t do_platform_op(XEN_GUEST_HANDLE_PA
+@@ -808,6 +808,41 @@ ret_t do_platform_op(XEN_GUEST_HANDLE_PA
              ret = -EFAULT;
      }
      break;
@@ -53,10 +53,10 @@ Index: xen-4.12.0-testing/xen/arch/x86/platform_hypercall.c
  
      default:
          ret = -ENOSYS;
-Index: xen-4.12.0-testing/xen/include/public/platform.h
+Index: xen-4.14.0-testing/xen/include/public/platform.h
 ===================================================================
---- xen-4.12.0-testing.orig/xen/include/public/platform.h
-+++ xen-4.12.0-testing/xen/include/public/platform.h
+--- xen-4.14.0-testing.orig/xen/include/public/platform.h
++++ xen-4.14.0-testing/xen/include/public/platform.h
 @@ -553,6 +553,16 @@ struct xenpf_core_parking {
  typedef struct xenpf_core_parking xenpf_core_parking_t;
  DEFINE_XEN_GUEST_HANDLE(xenpf_core_parking_t);

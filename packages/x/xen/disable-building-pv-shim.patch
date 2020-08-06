@@ -1,5 +1,7 @@
---- xen-4.13.0-testing/xen/arch/x86/configs/pvshim_defconfig.orig	2019-10-14 09:46:44.567846243 -0600
-+++ xen-4.13.0-testing/xen/arch/x86/configs/pvshim_defconfig	2019-10-14 09:47:17.722552005 -0600
+Index: xen-4.14.0-testing/xen/arch/x86/configs/pvshim_defconfig
+===================================================================
+--- xen-4.14.0-testing.orig/xen/arch/x86/configs/pvshim_defconfig
++++ xen-4.14.0-testing/xen/arch/x86/configs/pvshim_defconfig
 @@ -2,8 +2,8 @@
  CONFIG_PV=y
  CONFIG_XEN_GUEST=y
@@ -9,5 +11,5 @@
 +CONFIG_PV_SHIM=n
 +CONFIG_PV_SHIM_EXCLUSIVE=n
  CONFIG_NR_CPUS=32
- # Disable features not used by the PV shim
- # CONFIG_SHADOW_PAGING is not set
+ CONFIG_EXPERT=y
+ CONFIG_SCHED_NULL=y
