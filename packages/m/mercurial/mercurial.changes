@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:05:43 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.5:
+  This is a regularly-scheduled quarterly feature release
+
+  * New Features
+    + clonebundles can be annotated with the expected memory requirements
+      using the `REQUIREDRAM` option. This allows clients to skip bundles 
+      created with large zstd windows and fallback to larger, but less 
+      demanding bundles.
+    + The `phabricator` extension now provides more functionality of the 
+      arcanist CLI like changing the status of a differential.
+    + Phases processing is much faster, especially for repositories with old 
+      non-public changesets.
+  
+  * New Experimental Features
+    + The core of some hg operations have been (and are being) implemented in 
+      rust, for speed. `hg status` on a repository with 300k tracked files 
+      goes from 1.8s to 0.6s for instance. This has currently been tested only 
+      on linux, and does not build on windows. See rust/README.rst in the 
+      mercurial repository for instructions to opt into this.
+    + An experimental config `rewrite.empty-successor` was introduced 
+      to control what happens when rewrite operations result 
+      in empty changesets.
+  
+  * Bug Fixes
+    + For the case when connected to a TTY, stdout was fixed 
+      to be line-buffered on Python 3 (where it was block-buffered before, 
+      causing the process to seem hanging) and Windows on Python 2 (where it 
+      was unbuffered before).
+    + Subversion sources of the convert extension were fixed to work 
+      on Python 3.
+    + Subversion sources of the convert extension now interpret the encoding 
+      of URLs like Subversion. Previously, there were situations where 
+      the convert extension recognized a repository as present but Subversion 
+      did not, and vice versa.
+    + The empty changeset check of in-memory rebases was fixed to match that 
+      of normal rebases (and that of the commit command).
+    + The push command now checks the correct set of outgoing changesets for 
+      obsolete and unstable changesets. Previously, it could happen that the 
+      check prevented pushing changesets which were already on the server.
+  
+  * Backwards Compatibility Changes
+    + Mercurial now requires at least Python 2.7.9 or a Python version that 
+      backported modern SSL/TLS features (as defined in PEP 466), and that 
+      Python was compiled against a OpenSSL version supporting TLS 1.1 or 
+      TLS 1.2 (likely this requires the OpenSSL version to be at least 1.0.1).
+    + The `hg perfwrite` command from contrib/perf.py was made more flexible 
+      and changed its default behavior. To get the previous behavior, run 
+      `hg perfwrite --nlines=100000 --nitems=1 --item='Testing write performance' --batch-line`.
+    + The absorb extension now preserves changesets with no file changes that 
+      can be created by the commit command (those which change the branch name 
+      compared to the parent and those closing a branch head).
+
+-------------------------------------------------------------------
 Thu Jul  2 11:39:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mercurial 5.4.2:
