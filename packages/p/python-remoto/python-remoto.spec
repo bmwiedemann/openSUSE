@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-remoto
-Version:        1.1.5
+Version:        1.2.0
 Release:        0
 Summary:        Remote command executor using ssh and Python in the remote end
 License:        MIT
@@ -31,11 +31,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet
-Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION build requirements
-BuildRequires:  %{python_module mock >= 1.0b1}
-BuildRequires:  %{python_module pytest >= 2.1.3}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
