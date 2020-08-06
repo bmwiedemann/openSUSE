@@ -41,4 +41,22 @@
     <comment></comment>
     <requestid>769610</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>96b0022a63b9cb7e08b8cdde886e5a62</srcmd5>
+    <version>0.18.0</version>
+    <time>1596727973</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not install tests folder directly in sitelib
+
+- update to 0.18.0
+  * Update cli-spinners to ``v2.4.0``
+  * Update dependencies
+  * fix(#59): remove ``tests/`` and ``examples/`` from wheels distribution
+  * Migrate to ``poetry`` for dependencies management, building and publishing project
+  * Add tests for Python 3.8
+  * Deprecate support for Python 3.4
+  * Run tests under Ubuntu 18.04
+  * Update dev dependencies to the most recent ones (compatible with Python 2.7)</comment>
+    <requestid>824592</requestid>
+  </revision>
 </revisionlist>

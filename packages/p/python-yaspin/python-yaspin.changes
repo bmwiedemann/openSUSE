@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug  6 05:55:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not install tests folder directly in sitelib
+
+-------------------------------------------------------------------
+Tue Jul 21 10:44:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.18.0
+  * Update cli-spinners to ``v2.4.0``
+  * Update dependencies
+  * fix(#59): remove ``tests/`` and ``examples/`` from wheels distribution
+  * Migrate to ``poetry`` for dependencies management, building and publishing project
+  * Add tests for Python 3.8
+  * Deprecate support for Python 3.4
+  * Run tests under Ubuntu 18.04
+  * Update dev dependencies to the most recent ones (compatible with Python 2.7)
+
+-------------------------------------------------------------------
 Mon Feb  3 13:54:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.16.0

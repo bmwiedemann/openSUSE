@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yaspin
-Version:        0.16.0
+Version:        0.18.0
 Release:        0
 Summary:        Yet Another Terminal Spinner
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pavdmyt/yaspin
 Source:         https://files.pythonhosted.org/packages/source/y/yaspin/yaspin-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -45,10 +44,11 @@ Yet Another Terminal Spinner.
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst
