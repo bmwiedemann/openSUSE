@@ -46,6 +46,7 @@ Think about the ideal way to write a web app. Write the code to make it happen.
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  6 05:53:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not install tests in sitelib directly
+
+-------------------------------------------------------------------
 Thu Mar 26 07:10:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the test requirements to pull in only what's really needed

@@ -124,4 +124,12 @@
   for compability with Python 3.8</comment>
     <requestid>788431</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d6aaaa9d40c3cc5aaf46ec08e7152783</srcmd5>
+    <version>0.51</version>
+    <time>1596727966</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not install tests in sitelib directly</comment>
+    <requestid>824589</requestid>
+  </revision>
 </revisionlist>
