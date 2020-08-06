@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 13 22:22:05 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Version update to 1.15.1
+  Portability:
+  * Fix Wdefaulted-function-deleted warning with clang
+  * Remove old Visual Studio project files
+- Changes in version 1.15.0
+  * Report (un)signed character as intergers
+  * add CPPUNIT_TEST_FIXTURE()
+  * add message_to_string trait to allow custom string formatters
+  Portability:
+  * Fix build with gcc 9
+  * Fix various compiler warnings
+- Run spec-cleaner
+  * remove rpm groups
+- Drop patches fixed upstream:
+  * gcc9-Wdeprecated-copy-1.patch
+  * gcc9-Wdeprecated-copy-2.patch
+
+-------------------------------------------------------------------
 Mon Apr 29 14:11:16 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add gcc9-Wdeprecated-copy-1.patch and gcc9-Wdeprecated-copy-2.patch

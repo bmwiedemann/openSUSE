@@ -1,7 +1,7 @@
 #
 # spec file for package cppunit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,22 @@
 #
 
 
-%define libname libcppunit-1_14-0
+%define libname libcppunit-1_15-1
 Name:           cppunit
-Version:        1.14.0
+Version:        1.15.1
 Release:        0
 Summary:        C++ Port of the JUnit Testing Framework
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-Url:            http://www.freedesktop.org/wiki/Software/cppunit
+URL:            https://www.freedesktop.org/wiki/Software/cppunit
 Source:         http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.gz
 Source1:        cppunit-devel.desktop
 Source99:       baselibs.conf
-Patch0:         gcc9-Wdeprecated-copy-1.patch
-Patch1:         gcc9-Wdeprecated-copy-2.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 CppUnit is the C++ port of the famous JUnit framework for unit testing.
@@ -44,14 +40,12 @@ supervised tests.
 
 %package -n %{libname}
 Summary:        Cppunit library for writting C++ unittests
-Group:          System/Libraries
 
 %description -n %{libname}
 Cppunit library for writting C++ unittests in JUnit like fashion.
 
 %package devel
 Summary:        Include Files and Libraries for cppunit
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Suggests:       devel-doc = %{version}
 Provides:       libcppunit-devel = %{version}
@@ -63,7 +57,6 @@ in JUnit like fashion.
 
 %package devel-doc
 Summary:        Documentation for the cppunit API
-Group:          Documentation/HTML
 Conflicts:      libcppunit-devel < 1.13.2
 BuildArch:      noarch
 
@@ -71,9 +64,7 @@ BuildArch:      noarch
 This package contains documentation for the cppunit API.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup
 
 %build
 export CXXFLAGS="%{optflags}"
@@ -82,12 +73,14 @@ export CXXFLAGS="%{optflags}"
     --disable-silent-rules \
     --disable-static \
     --enable-doxygen
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 # remove la archive
 find %{buildroot} -type f -name "*.la" -delete -print
+# remove INSTALL* files from package docs
+find %{buildroot}%{_docdir}/%{name}/ -type f -name "INSTALL*" -delete -print
 # this got also installed to _defaultdocdir
 rm -rf %{buildroot}%{_datadir}/cppunit/html/
 find %{buildroot}%{_includedir} -type f | xargs chmod a-x
@@ -97,19 +90,18 @@ install %{SOURCE1} %{buildroot}%{_datadir}/susehelp/meta/Development/Libraries/
 %suse_update_desktop_file %{buildroot}%{_datadir}/susehelp/meta/Development/Libraries/cppunit-devel.desktop
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
-%doc AUTHORS COPYING
+%license COPYING
+%doc AUTHORS
 %{_libdir}/libcppunit*.so.*
 %{_datadir}/cppunit
 
 %files devel
-%defattr(-,root,root)
 %doc NEWS README THANKS ChangeLog
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/*
@@ -119,7 +111,6 @@ make check %{?_smp_mflags}
 %{_includedir}/*
 
 %files devel-doc
-%defattr(-,root,root)
 %doc doc/html/*
 %{_datadir}/susehelp
 
