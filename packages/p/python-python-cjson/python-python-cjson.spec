@@ -19,10 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-python-cjson
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        C-accelerated JSON encoder/decoder for Python
-License:        LGPL-2.0-or-later
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/AGProjects/python-cjson
 Source:         https://files.pythonhosted.org/packages/source/p/python-cjson/python-cjson-%{version}.tar.gz

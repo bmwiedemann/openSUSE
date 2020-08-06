@@ -8,10 +8,10 @@ Subject: [PATCH] Python 3 support - initial attempt
  jsontest.py |  16 ++--
  2 files changed, 144 insertions(+), 140 deletions(-)
 
-diff --git a/cjson.c b/cjson.c
-index d3ecc81..a44e7e4 100644
---- a/cjson.c
-+++ b/cjson.c
+Index: python-cjson-1.2.2/cjson.c
+===================================================================
+--- python-cjson-1.2.2.orig/cjson.c
++++ python-cjson-1.2.2/cjson.c
 @@ -8,6 +8,16 @@
  #include <ctype.h>
  #include <math.h>
@@ -96,11 +96,10 @@ index d3ecc81..a44e7e4 100644
  
      Py_DECREF(str);
  
-@@ -579,75 +594,6 @@ decode_json(JSONData *jsondata)
- 
+@@ -580,75 +595,6 @@ decode_json(JSONData *jsondata)
  /* ------------------------------ Encoding ----------------------------- */
  
--/*
+ /*
 - * This function is an almost verbatim copy of PyString_Repr() from
 - * Python's stringobject.c with the following differences:
 - *
@@ -169,9 +168,10 @@ index d3ecc81..a44e7e4 100644
 -    }
 -}
 -
- /*
+-/*
   * This function is an almost verbatim copy of unicodeescape_string() from
   * Python's unicodeobject.c with the following differences:
+  *
 @@ -662,7 +608,7 @@ encode_unicode(PyObject *unicode)
      PyObject *repr;
      Py_UNICODE *s;
@@ -204,7 +204,7 @@ index d3ecc81..a44e7e4 100644
              *p++ = '\\';
              *p++ = (char) ch;
              continue;
-@@ -801,10 +747,11 @@ encode_unicode(PyObject *unicode)
+@@ -782,10 +728,11 @@ encode_unicode(PyObject *unicode)
              *p++ = (char) ch;
      }
  
@@ -218,7 +218,7 @@ index d3ecc81..a44e7e4 100644
      return repr;
  }
  
-@@ -825,9 +772,9 @@ encode_tuple(PyObject *tuple)
+@@ -806,9 +753,9 @@ encode_tuple(PyObject *tuple)
      PyObject *pieces, *result = NULL;
      PyTupleObject *v = (PyTupleObject*) tuple;
  
@@ -230,7 +230,7 @@ index d3ecc81..a44e7e4 100644
  
      pieces = PyTuple_New(n);
      if (pieces == NULL)
-@@ -843,29 +790,29 @@ encode_tuple(PyObject *tuple)
+@@ -824,29 +771,29 @@ encode_tuple(PyObject *tuple)
  
      /* Add "[]" decorations to the first and last items. */
      assert(n > 0);
@@ -266,7 +266,7 @@ index d3ecc81..a44e7e4 100644
      Py_DECREF(s);
  
  Done:
-@@ -899,8 +846,8 @@ encode_list(PyObject *list)
+@@ -880,8 +827,8 @@ encode_list(PyObject *list)
          return NULL;
      }
  
@@ -277,7 +277,7 @@ index d3ecc81..a44e7e4 100644
          goto Done;
      }
  
-@@ -910,7 +857,7 @@ encode_list(PyObject *list)
+@@ -891,7 +838,7 @@ encode_list(PyObject *list)
  
      /* Do repr() on each element.  Note that this may mutate the list,
       * so must refetch the list size on each iteration. */
@@ -286,7 +286,7 @@ index d3ecc81..a44e7e4 100644
          int status;
          s = encode_object(v->ob_item[i]);
          if (s == NULL)
-@@ -923,29 +870,29 @@ encode_list(PyObject *list)
+@@ -904,29 +851,29 @@ encode_list(PyObject *list)
  
      /* Add "[]" decorations to the first and last items. */
      assert(PyList_GET_SIZE(pieces) > 0);
@@ -322,7 +322,7 @@ index d3ecc81..a44e7e4 100644
      Py_DECREF(s);
  
  Done:
-@@ -984,7 +931,7 @@ encode_dict(PyObject *dict)
+@@ -965,7 +912,7 @@ encode_dict(PyObject *dict)
      }
  
      if (mp->ma_used == 0) {
@@ -331,7 +331,7 @@ index d3ecc81..a44e7e4 100644
          goto Done;
      }
  
-@@ -992,7 +939,7 @@ encode_dict(PyObject *dict)
+@@ -973,7 +920,7 @@ encode_dict(PyObject *dict)
      if (pieces == NULL)
          goto Done;
  
@@ -340,7 +340,7 @@ index d3ecc81..a44e7e4 100644
      if (colon == NULL)
          goto Done;
  
-@@ -1002,7 +949,7 @@ encode_dict(PyObject *dict)
+@@ -983,7 +930,7 @@ encode_dict(PyObject *dict)
      while (PyDict_Next((PyObject *)mp, &i, &key, &value)) {
          int status;
  
@@ -349,7 +349,7 @@ index d3ecc81..a44e7e4 100644
              PyErr_SetString(JSON_EncodeError, "JSON encodable dictionaries "
                              "must have string/unicode keys");
              goto Done;
-@@ -1010,9 +957,10 @@ encode_dict(PyObject *dict)
+@@ -991,9 +938,10 @@ encode_dict(PyObject *dict)
  
          /* Prevent repr from deleting value during key format. */
          Py_INCREF(value);
@@ -363,7 +363,7 @@ index d3ecc81..a44e7e4 100644
          Py_DECREF(value);
          if (s == NULL)
              goto Done;
-@@ -1024,35 +972,36 @@ encode_dict(PyObject *dict)
+@@ -1005,35 +953,36 @@ encode_dict(PyObject *dict)
  
      /* Add "{}" decorations to the first and last items. */
      assert(PyList_GET_SIZE(pieces) > 0);
@@ -406,7 +406,7 @@ index d3ecc81..a44e7e4 100644
      return result;
  }
  
-@@ -1061,29 +1010,27 @@ static PyObject*
+@@ -1042,29 +991,27 @@ static PyObject*
  encode_object(PyObject *object)
  {
      if (object == Py_True) {
@@ -443,7 +443,7 @@ index d3ecc81..a44e7e4 100644
          return PyObject_Str(object);
      } else if (PyList_Check(object)) {
          PyObject *result;
-@@ -1130,6 +1077,7 @@ JSON_decode(PyObject *self, PyObject *args, PyObject *kwargs)
+@@ -1111,6 +1058,7 @@ JSON_decode(PyObject *self, PyObject *ar
      static char *kwlist[] = {"json", "all_unicode", NULL};
      int all_unicode = False; // by default return unicode only when needed
      PyObject *object, *string, *str;
@@ -451,7 +451,7 @@ index d3ecc81..a44e7e4 100644
      JSONData jsondata;
  
      if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|i:decode", kwlist,
-@@ -1146,13 +1094,13 @@ JSON_decode(PyObject *self, PyObject *args, PyObject *kwargs)
+@@ -1127,13 +1075,13 @@ JSON_decode(PyObject *self, PyObject *ar
          str = string;
      }
  
@@ -467,7 +467,7 @@ index d3ecc81..a44e7e4 100644
      jsondata.all_unicode = all_unicode;
  
      object = decode_json(&jsondata);
-@@ -1198,37 +1146,93 @@ PyDoc_STRVAR(module_doc,
+@@ -1179,37 +1127,93 @@ PyDoc_STRVAR(module_doc,
  
  /* Initialization function for the module (*must* be called initcjson) */
  
@@ -567,11 +567,11 @@ index d3ecc81..a44e7e4 100644
  }
 -
 -
-diff --git a/jsontest.py b/jsontest.py
-index 0f79307..19c24fa 100644
---- a/jsontest.py
-+++ b/jsontest.py
-@@ -128,7 +128,7 @@ def testReadBadEscapedHexCharacter(self):
+Index: python-cjson-1.2.2/jsontest.py
+===================================================================
+--- python-cjson-1.2.2.orig/jsontest.py
++++ python-cjson-1.2.2/jsontest.py
+@@ -128,7 +128,7 @@ class JsonTest(unittest.TestCase):
          self.assertRaises(_exception, self.doReadBadEscapedHexCharacter)
  
      def doReadBadEscapedHexCharacter(self):
@@ -580,7 +580,7 @@ index 0f79307..19c24fa 100644
  
      def testReadBadObjectKey(self):
          self.assertRaises(_exception, self.doReadBadObjectKey)
-@@ -141,7 +141,7 @@ def testReadBadArray(self):
+@@ -141,7 +141,7 @@ class JsonTest(unittest.TestCase):
  
      def doReadBadArray(self):
          cjson.decode('[1,2,3,,]')
@@ -589,7 +589,7 @@ index 0f79307..19c24fa 100644
      def testReadBadObjectSyntax(self):
          self.assertRaises(_exception, self.doReadBadObjectSyntax)
  
-@@ -159,7 +159,7 @@ def testReadIntegerValue(self):
+@@ -159,7 +159,7 @@ class JsonTest(unittest.TestCase):
      def testReadNegativeIntegerValue(self):
          obj = cjson.decode('{ "key" : -44 }')
          self.assertEqual({ "key" : -44 }, obj)
@@ -598,7 +598,7 @@ index 0f79307..19c24fa 100644
      def testReadFloatValue(self):
          obj = cjson.decode('{ "age" : 44.5 }')
          self.assertEqual({ "age" : 44.5 }, obj)
-@@ -176,7 +176,7 @@ def doReadBadNumber(self):
+@@ -176,7 +176,7 @@ class JsonTest(unittest.TestCase):
  
      def testReadSmallObject(self):
          obj = cjson.decode('{ "name" : "Patrick", "age":44} ')
@@ -607,7 +607,7 @@ index 0f79307..19c24fa 100644
  
      def testReadEmptyArray(self):
          obj = cjson.decode('[]')
-@@ -194,7 +194,7 @@ def testWriteSmallArray(self):
+@@ -194,7 +194,7 @@ class JsonTest(unittest.TestCase):
  
      def testWriteSmallObject(self):
          s = cjson.encode({ "name" : "Patrick", "age": 44 })
@@ -616,7 +616,7 @@ index 0f79307..19c24fa 100644
  
      def testWriteFloat(self):
          n = 3.44556677
-@@ -276,7 +276,7 @@ def testWriteComplexArray(self):
+@@ -276,7 +276,7 @@ class JsonTest(unittest.TestCase):
          obj = [{"name":"Patrick","age":44,"Employed?":True,"Female?":False,"grandchildren":None},
                 "used","abused","confused",
                 1,2,[3,4,5]]
@@ -625,7 +625,7 @@ index 0f79307..19c24fa 100644
                           _removeWhitespace(cjson.encode(obj)))
  
  
-@@ -290,7 +290,7 @@ def testReadWriteCopies(self):
+@@ -290,7 +290,7 @@ class JsonTest(unittest.TestCase):
  
      def testStringEncoding(self):
          s = cjson.encode([1, 2, 3])
@@ -634,9 +634,9 @@ index 0f79307..19c24fa 100644
  
      def testReadEmptyObjectAtEndOfArray(self):
          self.assertEqual(["a","b","c",{}],
-@@ -329,7 +329,7 @@ def testWriteLongUnicode(self):
+@@ -331,7 +331,7 @@ class JsonTest(unittest.TestCase):
                           u'\u1234\u1234\u1234\u1234\u1234\u1234')
-         self.assertEqual(r'"\U0001d11e\U0001d11e\U0001d11e\U0001d11e'
+         self.assertEqual(r'"\ud834\udd1e\ud834\udd1e\ud834\udd1e\ud834\udd1e'
                           r'\u1234\u1234\u1234\u1234\u1234\u1234"', s)
 -        
 +

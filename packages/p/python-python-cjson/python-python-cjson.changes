@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:50:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.2.2
+    * Fix encoding of UTF-16 surrogate pairs
+    * Made MANIFEST.in more explicit
+    * Refactored setup.py to be PEP-8 compliant
+    * Pass command line arguments from build_inplace to setup.py
+    * Cleanup after build_inplace
+    * Explicitly use python2 in shebang lines
+    * Updated license
+- Rebase py3.patch
+
+-------------------------------------------------------------------
 Thu Apr 30 07:26:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
