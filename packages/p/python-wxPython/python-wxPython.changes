@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  1 12:55:23 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Wrap all relevant build dependencies when building with system
+  wxWidgets library.
+- Add patches to allow building with STL variant of wxGTK:
+  * 0001-Fix-conversion-of-variant-list-members.patch
+  * use_stl_build.patch
+  * 0001-Fix-wxUIActionSimulator-Text-parameter-documentation.patch
+  * 0003-Use-explicit-wxString-c_str-conversion-for-sipFindTy.patch
+
+-------------------------------------------------------------------
 Fri May 29 22:21:35 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add explicit libXtst build dependency, required for Leap 15.1

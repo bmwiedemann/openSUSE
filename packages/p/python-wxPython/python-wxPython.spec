@@ -37,19 +37,31 @@ Source:         https://files.pythonhosted.org/packages/source/w/wxPython/wxPyth
 Source1:        python-wxPython-rpmlintrc
 # PATCH-FIX-OPENSUSE fix_no_return_in_nonvoid.patch -- Fix lack of return in nonvoid functions
 Patch0:         fix_no_return_in_nonvoid.patch
+# PATCH-FIX-OPENSUSE
+Patch1:         use_stl_build.patch
+# PATCH-FIX-UPSTREAM -- patch for bundled wxWidgets
+Patch2:         0001-Fix-conversion-of-variant-list-members.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-wxUIActionSimulator-Text-parameter-documentation.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0003-Use-explicit-wxString-c_str-conversion-for-sipFindTy.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
-BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+%if %{with test}
+BuildRequires:  xorg-x11-server
+BuildRequires:  pkgconfig(cppunit)
+%endif
+%if %{with syswx}
+BuildRequires:  wxGTK3-devel
+%else
 BuildRequires:  freeglut-devel
 BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  libjbig-devel
-BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
-BuildRequires:  xorg-x11-server
-BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libjpeg)
@@ -63,6 +75,7 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
+%endif
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -101,6 +114,10 @@ Provides translations to the package %{name}.
 %prep
 %setup -q -n wxPython-%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 sed -i -e '/^#!\//, 1d' wx/py/*.py
 sed -i -e '/^#!\//, 1d' wx/tools/*.py
 sed -i -e '/^#!\//, 1d' wx/py/tests/*.py
