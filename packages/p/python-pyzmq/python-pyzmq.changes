@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  4 16:05:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to version 19.0.2:
+  - Regenerate Cython sources with 0.29.21 in sdists for compatibility with Python 3.9
+  - Handle underlying socket being closed in ZMQStream with warning instead of error
+  - Improvements to socket cleanup during process teardown
+  - Fix debug-builds on Windows
+  - Avoid importing ctypes during startup on Windows
+  - Documentation improvements
+  - Raise ``AttributeError`` instead of ``ZMQError(EINVAL)`` on attempts to read write-only attributes,
+    for compatibility with mocking
+
+-------------------------------------------------------------------
 Sat May  9 16:07:53 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 19.0.1:
