@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 30 15:30:18 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.1.3:
+  * Export the JcatBlobKind and JcatBlobMethod on the result
+  * trivial: source the version header when including <jcat.h>
+
+-------------------------------------------------------------------
 Thu Jun 25 09:16:15 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - remove unreproducible signature file to make package build reproducible
