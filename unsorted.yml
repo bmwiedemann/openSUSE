@@ -1121,6 +1121,7 @@ unsorted:
   - beforelight 
   - beignet 
   - beignet-devel 
+  - belcard-data 
   - belcard-devel 
   - belle-sip-devel 
   - belr-devel 
@@ -20135,6 +20136,7 @@ unsorted:
   - python3-django-phonenumber-field 
   - python3-django-picklefield 
   - python3-django-pipeline 
+  - python3-django-push-notifications 
   - python3-django-pyscss 
   - python3-django-q 
   - python3-django-redis 
@@ -20160,6 +20162,7 @@ unsorted:
   - python3-django-webtest 
   - python3-django-widget-tweaks 
   - python3-djangorestframework 
+  - python3-djangorestframework-camel-case 
   - python3-djangorestframework-simplejwt 
   - python3-djet 
   - python3-djvulibre 
