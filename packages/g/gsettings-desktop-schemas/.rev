@@ -479,4 +479,12 @@
     <comment></comment>
     <requestid>808843</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>8f62c6b244253a737c07567aafed6c6b</srcmd5>
+    <version>3.36.1</version>
+    <time>1596727770</time>
+    <user>dimstar_suse</user>
+    <comment>- Call %meson_build in %build section, not %meson_install. (forwarded request 823563 from dimstar)</comment>
+    <requestid>823595</requestid>
+  </revision>
 </revisionlist>

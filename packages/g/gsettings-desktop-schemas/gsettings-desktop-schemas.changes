@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 30 10:59:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Call %meson_build in %build section, not %meson_install.
+
+-------------------------------------------------------------------
 Fri May 22 08:15:42 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add 00_org.gnome.desktop.peripherals.gschema.override: in
