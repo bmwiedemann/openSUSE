@@ -12,3 +12,195 @@
 -class BaseTest(unittest2.TestCase):
 +class BaseTest(unittest.TestCase):
      pass
+--- a/rollbar/test/test_lib.py
++++ b/rollbar/test/test_lib.py
+@@ -2,6 +2,8 @@ from rollbar.lib import dict_merge
+ 
+ from rollbar.test import BaseTest
+ 
++import six
++
+ class RollbarLibTest(BaseTest):
+     def test_dict_merge_not_dict(self):
+         a = {'a': {'b': 42}}
+@@ -56,4 +58,4 @@ class RollbarLibTest(BaseTest):
+         self.assertIn('b', result['a'])
+         self.assertEqual(42, result['a']['b'])
+         self.assertIn('y', result['a'])
+-        self.assertRegex(result['a']['y'], r'Uncopyable obj')
++        six.assertRegex(self, result['a']['y'], r'Uncopyable obj')
+--- a/rollbar/test/test_rollbar.py
++++ b/rollbar/test/test_rollbar.py
+@@ -17,6 +17,7 @@ try:
+ except ImportError:
+     from io import StringIO
+ import unittest
++import six
+ 
+ import rollbar
+ from rollbar.lib import python_major_version, string_types
+@@ -686,7 +687,7 @@ class RollbarTest(BaseTest):
+         varargs = payload['data']['body']['trace']['frames'][-1]['varargspec']
+ 
+         self.assertEqual(1, len(payload['data']['body']['trace']['frames'][-1]['locals'][varargs]))
+-        self.assertRegex(payload['data']['body']['trace']['frames'][-1]['locals'][varargs][0], r'\*+')
++        six.assertRegex(self, payload['data']['body']['trace']['frames'][-1]['locals'][varargs][0], r'\*+')
+ 
+     @mock.patch('rollbar.send_payload')
+     def test_args_lambda_with_star_args_and_args(self, send_payload):
+@@ -713,8 +714,8 @@ class RollbarTest(BaseTest):
+         self.assertEqual('arg1-value', payload['data']['body']['trace']['frames'][-1]['locals']['arg1'])
+ 
+         self.assertEqual(2, len(payload['data']['body']['trace']['frames'][-1]['locals'][varargs]))
+-        self.assertRegex(payload['data']['body']['trace']['frames'][-1]['locals'][varargs][0], r'\*+')
+-        self.assertRegex(payload['data']['body']['trace']['frames'][-1]['locals'][varargs][1], r'\*+')
++        six.assertRegex(self, payload['data']['body']['trace']['frames'][-1]['locals'][varargs][0], r'\*+')
++        six.assertRegex(self, payload['data']['body']['trace']['frames'][-1]['locals'][varargs][1], r'\*+')
+ 
+     @mock.patch('rollbar.send_payload')
+     def test_args_lambda_with_kwargs(self, send_payload):
+@@ -877,7 +878,7 @@ class RollbarTest(BaseTest):
+ 
+         self.assertEqual(2, len(payload['data']['body']['trace']['frames'][-1]['argspec']))
+         self.assertEqual('password', payload['data']['body']['trace']['frames'][-1]['argspec'][0])
+-        self.assertRegex(payload['data']['body']['trace']['frames'][-1]['locals']['password'], r'\*+')
++        six.assertRegex(self, payload['data']['body']['trace']['frames'][-1]['locals']['password'], r'\*+')
+         self.assertEqual('clear', payload['data']['body']['trace']['frames'][-1]['argspec'][1])
+         self.assertEqual('text', payload['data']['body']['trace']['frames'][-1]['locals']['clear'])
+ 
+@@ -931,7 +932,7 @@ class RollbarTest(BaseTest):
+ 
+         self.assertEqual(2, len(payload['data']['body']['trace']['frames'][-1]['locals'][keywords]))
+         self.assertIn('password', payload['data']['body']['trace']['frames'][-1]['locals'][keywords])
+-        self.assertRegex(payload['data']['body']['trace']['frames'][-1]['locals'][keywords]['password'], r'\*+')
++        six.assertRegex(self, payload['data']['body']['trace']['frames'][-1]['locals'][keywords]['password'], r'\*+')
+         self.assertIn('clear', payload['data']['body']['trace']['frames'][-1]['locals'][keywords])
+         self.assertEqual('text', payload['data']['body']['trace']['frames'][-1]['locals'][keywords]['clear'])
+ 
+@@ -962,8 +963,8 @@ class RollbarTest(BaseTest):
+ 
+         payload = send_payload.call_args[0][0]
+ 
+-        self.assertRegex(payload['data']['body']['trace']['frames'][-1]['locals']['password'], r'\*+')
+-        self.assertRegex(payload['data']['body']['trace']['frames'][-1]['locals']['Password'], r'\*+')
++        six.assertRegex(self, payload['data']['body']['trace']['frames'][-1]['locals']['password'], r'\*+')
++        six.assertRegex(self, payload['data']['body']['trace']['frames'][-1]['locals']['Password'], r'\*+')
+         self.assertIn('_invalid', payload['data']['body']['trace']['frames'][-1]['locals'])
+ 
+         binary_type_name = 'str' if python_major_version() < 3 else 'bytes'
+@@ -1280,19 +1281,19 @@ class RollbarTest(BaseTest):
+         self.assertEqual('I am from NSA', unscrubbed['headers']['Authorization'])
+ 
+         scrubbed = rollbar._transform(unscrubbed)
+-        self.assertRegex(scrubbed['url'], r'http://example.com/the/path\?(q=hello&password=-+)|(password=-+&q=hello)')
++        six.assertRegex(self, scrubbed['url'], r'http://example.com/the/path\?(q=hello&password=-+)|(password=-+&q=hello)')
+ 
+         self.assertEqual(scrubbed['GET']['q'], 'hello')
+-        self.assertRegex(scrubbed['GET']['password'], r'\*+')
++        six.assertRegex(self, scrubbed['GET']['password'], r'\*+')
+ 
+         self.assertEqual(scrubbed['POST']['foo'], 'bar')
+-        self.assertRegex(scrubbed['POST']['confirm_password'], r'\*+')
+-        self.assertRegex(scrubbed['POST']['token'], r'\*+')
++        six.assertRegex(self, scrubbed['POST']['confirm_password'], r'\*+')
++        six.assertRegex(self, scrubbed['POST']['token'], r'\*+')
+ 
+         self.assertEqual('5.6.7.8', scrubbed['headers']['X-Real-Ip'])
+ 
+-        self.assertRegex(scrubbed['headers']['Cookies'], r'\*+')
+-        self.assertRegex(scrubbed['headers']['Authorization'], r'\*+')
++        six.assertRegex(self, scrubbed['headers']['Cookies'], r'\*+')
++        six.assertRegex(self, scrubbed['headers']['Authorization'], r'\*+')
+ 
+     def test_filter_ip_no_user_ip(self):
+         request_data = {'something': 'but no ip'}
+--- a/rollbar/test/test_scruburl_transform.py
++++ b/rollbar/test/test_scruburl_transform.py
+@@ -1,4 +1,5 @@
+ import copy
++import six
+ 
+ from rollbar.lib import map, transforms, string_types, urlparse, parse_qs, python_major_version
+ from rollbar.lib.transforms.scruburl import ScrubUrlTransform, _starts_with_auth_re
+@@ -146,5 +147,5 @@ class ScrubUrlTransformTest(BaseTest):
+         self.assertNotIn('secret', result['url'][0]['link'])
+         self.assertNotIn('secr3t', result['link'][0]['url'])
+         self.assertNotIn('secret', result['link'][0]['url'])
+-        self.assertNotRegex(result['url'][0]['link'], r'^-+$')
+-        self.assertNotRegex(result['link'][0]['url'], r'^-+$')
++        six.assertNotRegex(self, result['url'][0]['link'], r'^-+$')
++        six.assertNotRegex(self, result['link'][0]['url'], r'^-+$')
+--- a/rollbar/test/test_serializable_transform.py
++++ b/rollbar/test/test_serializable_transform.py
+@@ -10,6 +10,8 @@ except ImportError:
+     # Python 2.7
+     from collections import Mapping
+ 
++import six
++
+ from rollbar.lib import transforms, python_major_version
+ from rollbar.lib.transforms.serializable import SerializableTransform
+ 
+@@ -237,7 +239,7 @@ class SerializableTransformTest(BaseTest
+         if python_major_version() < 3:
+             self.assertEqual(result['custom'], b'hello')
+         else:
+-            self.assertRegex(result['custom'], "<class '.*CustomRepr'>")
++            six.assertRegex(self, result['custom'], "<class '.*CustomRepr'>")
+ 
+     def test_encode_with_custom_repr_returns_object(self):
+         class CustomRepr(object):
+@@ -248,7 +250,7 @@ class SerializableTransformTest(BaseTest
+ 
+         serializable = SerializableTransform(whitelist_types=[CustomRepr])
+         result = transforms.transform(start, serializable)
+-        self.assertRegex(result['custom'], "<class '.*CustomRepr'>")
++        six.assertRegex(self, result['custom'], "<class '.*CustomRepr'>")
+ 
+     def test_encode_with_custom_repr_returns_unicode(self):
+         class CustomRepr(object):
+@@ -268,7 +270,7 @@ class SerializableTransformTest(BaseTest
+         start = {'hello': 'world', 'custom': CustomRepr()}
+         serializable = SerializableTransform(whitelist_types=[CustomRepr])
+         result = transforms.transform(start, serializable)
+-        self.assertRegex(result['custom'], "<AssertionError.*CustomRepr.*>")
++        six.assertRegex(self, result['custom'], "<AssertionError.*CustomRepr.*>")
+ 
+     def test_encode_with_bad_str_doesnt_die(self):
+ 
+@@ -284,4 +286,4 @@ class SerializableTransformTest(BaseTest
+         start = {'hello': 'world', 'custom': CustomRepr()}
+         serializable = SerializableTransform(whitelist_types=[CustomRepr])
+         result = transforms.transform(start, serializable)
+-        self.assertRegex(result['custom'], "<UnStringableException.*Exception.*str.*>")
++        six.assertRegex(self, result['custom'], "<UnStringableException.*Exception.*str.*>")
+--- a/setup.py
++++ b/setup.py
+@@ -20,7 +20,6 @@ with open(INIT_PATH) as fd:
+ tests_require = [
+     'webob',
+     'blinker',
+-    'unittest2'
+ ]
+ 
+ version = sys.version_info
+@@ -78,7 +77,7 @@ setup(
+         ],
+     install_requires=[
+         'requests>=0.12.1',
+-        'six>=1.9.0'
++        'six>=1.14.0'
+     ],
+     tests_require=tests_require,
+     )
+--- a/shell.nix
++++ b/shell.nix
+@@ -20,7 +20,7 @@ python = let
+   };
+ in python36.override { inherit packageOverrides; };
+ pyrollbar = pkgs.callPackage ./. { inherit python; };
+-pyenv = python.withPackages(ps: with ps; [ pyrollbar twine unittest2 mock pyramid ]);
++pyenv = python.withPackages(ps: with ps; [ pyrollbar twine mock pyramid ]);
+ 
+ in
+ 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  5 16:13:20 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace self.assertRegex with six.assertRegex in
+  python-rollbar-no-unittest2.patch to finally unrequire
+  unittest2 (gh#rollbar/pyrollbar#340).
+- Update the patch according to the pending pull request
+  gh#rollbar/pyrollbar#346.
+
+-------------------------------------------------------------------
 Sat Jul 18 05:17:28 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Upstream doesn't care about unittest2 at all
