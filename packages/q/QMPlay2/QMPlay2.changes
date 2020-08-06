@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 16:56:21 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Require python-xml as the YouTube play function crashes when python-xml is not installed
+- Corrected a wrong comment in the specfile
+
+-------------------------------------------------------------------
 Tue Jul  7 12:32:57 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-build-error-lp151.patch to fix compilation on openSUSE Leap 15.1
