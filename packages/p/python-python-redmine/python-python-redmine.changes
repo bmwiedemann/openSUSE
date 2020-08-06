@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug  5 09:33:59 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 2.3.0
+  * Support custom filename in ``redmine.upload()``
+  * Support for ``get()`` and ``update()`` operations for ``/my/account`` endpoint which doesn't require admin
+    privileges by using ``me`` as an id, i.e. ``redmine.user.get('me')`` or ``redmine.user.update('me',firstname='John')``
+    (requires Redmine >= 4.1.0)
+  * News ``create()``, ``update()``, ``delete()`` operations support (requires Redmine >= 4.1.0)
+  * ResourceSet's ``export()`` method now supports ``columns`` keyword argument which can be either an iterable
+    of column names, an "all" string which tells Python*Redmine to export all available columns, "all_gui" string
+    for GUI like behaviour or iterable of elements with "all_gui" string and additional columns to export
+  * Added support for special characters in WikiPage titles (`Issue #222 <https://github.com/maxtepkeev/python-redmine/
+    issues/222>`__) (thanks to `Radek Czajka <https://github.com/rczajka>`__)
+  * Added ``return_response`` and ``ignore_response`` parameters to engine which allow to skip response processing
+    and speed up the create/update/delete operation in case response body isn't needed (see
+    `docs <https://python*redmine.com/advanced/request_engines.html#session>`__ for details)
+  * *Backwards Incompatible:* Requests version required >= 2.23.0
+  * *Backwards Incompatible:* Removed Python 3.4 support as it's not supported by Requests anymore
+- Drop apparently obsolete python-python-redmine-use-system-requests.patch
+
+-------------------------------------------------------------------
 Mon Apr 20 10:04:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the runtime dependencies
