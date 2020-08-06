@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rpm-spec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-rpm-spec
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        Python module for parsing RPM spec files
 License:        MIT
@@ -51,7 +51,7 @@ access to various bits of information that is contained in the spec file.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand py.test-%{$python_bin_suffix} -vv tests
+%pytest tests
 
 %files %{python_files}
 %doc CHANGELOG* README*
