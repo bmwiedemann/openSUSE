@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 29 18:16:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- python3-setools needs python3-networkx
+
+-------------------------------------------------------------------
 Fri Apr  3 08:45:25 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Update to the upstream version 4.3.0:

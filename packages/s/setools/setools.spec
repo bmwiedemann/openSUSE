@@ -73,6 +73,7 @@ Summary:        Python bindings for SELinux policy analysis
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 Requires:       python
+Requires:       python3-networkx
 Obsoletes:      python-setools < %{version}
 Provides:       python-setools = %{version}-%{release}
 
