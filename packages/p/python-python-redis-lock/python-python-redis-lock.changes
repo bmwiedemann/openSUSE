@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  5 09:43:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.6.0
+  * Improved ``timeout``/``expire`` validation.
+  * Removed the custom script caching code. Now the ``register_script`` method from the redis client is used.
+
+-------------------------------------------------------------------
 Tue Jun 16 12:17:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.5.0:

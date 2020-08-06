@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-redis-lock
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Lock context manager implemented via redis SETNX/BLPOP
 License:        BSD-2-Clause
