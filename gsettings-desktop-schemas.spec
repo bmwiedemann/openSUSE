@@ -69,7 +69,7 @@ translation-update-upstream po %{name}
 %build
 %meson \
 	%{nil}
-%meson_install
+%meson_build
 
 %install
 %meson_install
