@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  4 17:40:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.09:
+  * net: don't throw warning messages when /proc file can't be
+    opened
+
+-------------------------------------------------------------------
 Fri Apr 24 15:06:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.03.07
