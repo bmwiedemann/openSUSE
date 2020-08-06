@@ -7951,7 +7951,7 @@ unsorted:
   - libLTO8-32bit: [x86_64] 
   - libLTO9 
   - libLTO9-32bit: [x86_64] 
-  - libLimeSuite20_01-1 
+  - libLimeSuite20_07-1 
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
@@ -9001,6 +9001,7 @@ unsorted:
   - libcjose0 
   - libcjs0 
   - libck0 
+  - libckteec0 
   - libclFFT2: [x86_64] 
   - libclang10-32bit: [x86_64] 
   - libclang7 
@@ -14028,7 +14029,6 @@ unsorted:
   - mame-data 
   - mame-mess: [x86_64] 
   - mame-tools 
-  - man-pages-fr-extra 
   - manaplus 
   - manaplus-lang 
   - manchu-fonts 
@@ -25243,8 +25243,6 @@ unsorted:
   - sssd-krb5 
   - sssd-proxy 
   - sssd-tools 
-  - sssd-wbclient 
-  - sssd-wbclient-devel 
   - sssd-winbind-idmap 
   - st 
   - staging-build-key 

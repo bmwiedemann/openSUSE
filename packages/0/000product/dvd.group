@@ -3085,7 +3085,6 @@
     <package name="makedumpfile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="man-pages" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="man-pages-fr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="man-pages-ja" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="man-pages-posix" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="man-pages-zh_CN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
