@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Sun Aug 2 16:48:47 UTC 2020 - mvidner@suse.cz
+
+- merge gh#openSUSE/installation-images#398
+- Update the environment variable reference (doc/configoptions.md)
+- Removed obsolete bin/mk_boot
+- Remove unused liveeval option
+- 16.3
+
+--------------------------------------------------------------------
 Wed Jul 29 09:28:31 UTC 2020 - mvidner@suse.cz
 
 - merge gh#openSUSE/installation-images#399
