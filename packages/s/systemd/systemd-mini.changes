@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:38:09 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Restore default upstream tmp.mount (/tmp as tmpfs) behaviour (boo#1173461)
+
+-------------------------------------------------------------------
 Wed Jun 24 06:33:33 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - migrate-sysconfig-i18n.sh: fix marker handling  (bsc#1173229)

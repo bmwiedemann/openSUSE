@@ -615,12 +615,6 @@ rm -f %{buildroot}/etc/systemd/system/default.target
 # Replace /etc/pam.d/systemd-user shipped by upstream with the openSUSE one.
 install -m0644 %{S:2} %{buildroot}%{_sysconfdir}/pam.d/
 
-# Remove tmp.mount from the unit search path as /tmp doesn't use tmpfs
-# by default on SUSE distros. We still keep a copy in /var for those
-# who want to switch to tmpfs: it's still can be copied in /etc.
-rm %{buildroot}/%{_unitdir}/local-fs.target.wants/tmp.mount
-mv %{buildroot}/%{_unitdir}/tmp.mount %{buildroot}/%{_datadir}/systemd/
-
 # don't enable wall ask password service, it spams every console (bnc#747783)
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
 
