@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Jul 23 09:49:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Require Pillow
+- Bump dependency versions 
+
+-------------------------------------------------------------------
+Mon Jul 20 21:10:29 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Work on unit testing
+  * Move architecture selection to bcond definition at top of 
+    specfile. This makes it clear in the OBS web UI that the test
+    flavor is only built for x86_64 and aarch64
+  * do not build everything a second time during check (in-place)
+  * instead use new subpackage testdata wich contains the baseline
+    images created at regular build time
+  * use pytest-xvfb and %pytest macro 
+    (buildroot path actually not required)
+  * tidy test skip definitions
+  * add python-gobject-Gdk to pass the gtk3 backend testso
+- include version for obsoletes -qt-shared (rpmlint warning)
+- move some cairo files to backend packages
+- remove python2 transition requirements mock and six
+- update matplotlib-setup.cfg
+
+-------------------------------------------------------------------
+Sat Jul 18 19:20:56 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- update to version 3.3.0
+  + Figure and Axes creation / management
+    * Provisional API for composing semantic axes layouts from text or nested lists
+    * GridSpec.subplots()
+    * New Axes.sharex, Axes.sharey methods
+    * tight_layout now supports suptitle
+    * Setting axes box aspect
+  + Colors and colormaps
+    * Turbo colormap
+    * colors.BoundaryNorm supports extend keyword argument
+    * Text color for legend labels
+    * Pcolor and Pcolormesh now accept shading='nearest' and 'auto'
+  + Titles, ticks, and labels
+    * Align labels to Axes edges
+    * Allow tick formatters to be set with str or function inputs
+    * Axes.set_title gains a y keyword argument to control auto positioning
+    * Offset text is now set to the top when using axis.tick_top()
+    * Set zorder of contour labels
+  + Other changes
+    * New Axes.axline method
+    * imshow now coerces 3D arrays with depth 1 to 2D
+    * Better control of Axes.pie normalization
+    * Dates use a modern epoch
+    * Lines now accept MarkerStyle instances as input
+  + Fonts
+    * Simple syntax to select fonts by absolute path
+    * Improved font weight detection
+  + rcParams improvements
+    * matplotlib.rc_context can be used as a decorator
+    * rcParams for controlling default "raise window" behavior
+    * Add generalized mathtext.fallback to rcParams
+    * Add contour.linewidth to rcParams
+  + 3D Axes improvements
+    * Axes3D no longer distorts the 3D plot to match the 2D aspect ratio
+    * 3D axes now support minor ticks
+    * Home/Forward/Backward buttons now work with 3D axes
+  + Interactive tool improvements
+    * More consistent toolbar behavior across backends
+    * Toolbar icons are now styled for dark themes
+    * Cursor text now uses a number of significant digits matching pointing precision
+    * GTK / Qt zoom rectangle now black and white
+    * Event handler simplifications
+  + Functions to compute a Path's size
+    * Better interface for Path segment iteration
+    * Fixed bug that computed a Path's Bbox incorrectly
+  + Backend-specific improvements
+    * savefig() gained a backend keyword argument
+    * The SVG backend can now render hatches with transparency
+    * SVG supports URLs on more artists
+    * Images in SVG will no longer be blurred in some viewers
+    * Saving SVG now supports adding metadata
+    * Saving PDF metadata via PGF now consistent with PDF backend
+    * NbAgg and WebAgg no longer use jQuery & jQuery UI
+- Rebase no-builddir-freetype.patch
+
+-------------------------------------------------------------------
 Wed Jun 24 02:32:47 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - update to version 3.2.2:

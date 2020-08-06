@@ -24,12 +24,14 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+# Run on 64bit intel and arm only, on others there are >100 test failures
+ExclusiveArch:  x86_64 aarch64
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -41,29 +43,27 @@ Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6
 Patch0:         no-builddir-freetype.patch
 BuildRequires:  %{python_module Cycler >= 0.10}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module kiwisolver}
+BuildRequires:  %{python_module kiwisolver >= 1.0.1}
 BuildRequires:  %{python_module numpy >= 1.7.1}
 BuildRequires:  %{python_module numpy-devel >= 1.7.1}
-BuildRequires:  %{python_module pyparsing > 2.1.6}
+BuildRequires:  %{python_module pyparsing > 2.2.1}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.10}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  qhull-devel >= 2003.1
 Requires:       python-Cycler >= 0.10
+Requires:       python-Pillow >= 6.2
 Requires:       python-kiwisolver >= 1.0.1
 Requires:       python-numpy >= 1.7.1
-Requires:       python-pyparsing > 2.1.6
-Requires:       python-python-dateutil >= 2.1
+Requires:       python-pyparsing > 2.2.1
+Requires:       python-python-dateutil >= 2.7
 Requires:       python-pytz
-Requires:       python-six >= 1.10
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
-Recommends:     python-Pillow
 Provides:       python-matplotlib-gtk = %{version}
 Obsoletes:      python-matplotlib-gtk < %{version}
 # SECTION WebAgg dependencies
@@ -76,19 +76,26 @@ BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(tcl)
 # /SECTION
 %if %{with test}
-BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module Pillow >= 6.2}
+BuildRequires:  %{python_module matplotlib-cairo = %{version}}
+BuildRequires:  %{python_module matplotlib-gtk3 = %{version}}
+BuildRequires:  %{python_module matplotlib-qt5 = %{version}}
+BuildRequires:  %{python_module matplotlib-testdata = %{version}}
+BuildRequires:  %{python_module matplotlib-tk = %{version}}
+BuildRequires:  %{python_module matplotlib-web = %{version}}
+BuildRequires:  %{python_module matplotlib-wx = %{version}}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 2.1}
+BuildRequires:  %{python_module python-dateutil >= 2.7}
 # SECTION cairo dependencies
 BuildRequires:  %{python_module cairo}
+# /SECTION
 # SECTION GTK3 dependencies
-BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module gobject-Gdk}
 # /SECTION
 # SECTION Qt5 dependencies
 BuildRequires:  %{python_module qt5}
-BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(gtk+-3.0)
 # /SECTION
 # SECTION tk dependencies
@@ -139,7 +146,7 @@ Summary:        GTK3 backends for %{name}
 License:        BSD-2-Clause
 Requires:       %{name} = %{version}
 Requires:       %{name}-cairo = %{version}
-Requires:       python-gobject
+Requires:       python-gobject-Gdk
 
 %description    gtk3
 This package includes the GTK3-based gtk3, gtk3agg, and
@@ -164,10 +171,19 @@ License:        BSD-2-Clause
 Requires:       %{name} = %{version}
 Requires:       python-qt5
 Provides:       %{name}-qt-shared = %{version}
-Obsoletes:      %{name}-qt-shared
+Obsoletes:      %{name}-qt-shared < %{version}
 
 %description    qt5
 This package includes the Qt5-based pyqt5 backend
+for the %{name} plotting package
+
+%package        testdata
+Summary:        Test data for %{name}
+License:        BSD-2-Clause
+Requires:       %{name} = %{version}
+
+%description    testdata
+This package includes the test baseline data
 for the %{name} plotting package
 
 %package        tk
@@ -207,51 +223,39 @@ chmod -x lib/matplotlib/mpl-data/images/*.svg
 find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "s|#!\/usr\/bin\/env python||" {} \;
 find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "s|#!\/usr\/bin\/python||" {} \;
 cp %{SOURCE1} setup.cfg
-
 %patch0 -p1
-
-%if !%{with test}
-sed -i -e 's/tests = .*/tests = False/' setup.cfg
-%else
-# As freetype changes the behaviour slightly for tests always use the bundled freetype
-sed -i -e 's:#local_freetype = False:local_freetype = True:' setup.cfg
-%endif
 
 %build
 %if !%{with test}
-export XDG_RUNTIME_DIR=/tmp
 %python_build
 %endif
 
 %install
 %if !%{with test}
-export XDG_RUNTIME_DIR=/tmp
 %python_install
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}
 $python -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/matplotlib/backends/qt_editor/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitearch}/matplotlib/backends/qt_editor/
 %fdupes %{buildroot}%{$python_sitearch}/matplotlib/backends/qt_editor/
+sed -i -e "s/install matplotlib from source/install the ${python_flavor}-matplotlib-testdata package/" \
+    %{buildroot}%{$python_sitearch}/matplotlib/tests/__init__.py
 }
 %endif
 
 %if %{with test}
 %check
-# test_savefig_to_stringio - generated ps is differing a bit
-# test_interactive_backend - needs full X session
-# test_bbox_inches_tight_raster - resulting PNGs look differently
-# test_backend_fallback_headful - fails to detect X session with xvfb
-# test_usetex - png differs
-# test_pdflatex - output slightly differs
-# test_labels test_collection - fails on aarch64
-# test_fig_signals - races and fails randomly
-# test_otf - fails with tex 2020
-# Run on 64bit intel and arm only, on others there are >100 test failures
-%ifarch x86_64 aarch64
-export XDG_RUNTIME_DIR=/tmp
-export PYTHONDONTWRITEBYTECODE=1
-%python_exec setup.py build_ext --inplace
-%python_expand PYTHONPATH=./lib xvfb-run $python -m pytest -v -n auto -k 'not (test_savefig_to_stringio or test_interactive_backend or test_bbox_inches_tight_raster or test_backend_fallback_headful or test_usetex or test_pdflatex or test_labels or test_collection or test_otf or test_fig_signals)'
-%endif
+# fails to detect alternative backend within xvfb
+skip_tests+=" or test_backend_fallback_headful"
+# test_usetex.py::test_usetex[png] - no tex text -- do not skip test_empty[png] and test_unicode_minus[png]
+skip_tests+=" or (test_usetex and png and not empty and not unicode)"
+# output slightly differs: text moves a bit
+skip_tests+=" or test_pdflatex"
+# we do not ship the qt4 backend
+skip_tests+=" or (test_correct_key and Qt4Agg)"
+skip_tests+=" or (test_fig_close and Qt4Agg)"
+# timing tests on obs can fail unpredictably
+skip_tests+=" or test_invisible_Line_rendering"
+%pytest_arch --pyargs matplotlib.tests --pyargs mpl_toolkits.tests -n auto -k "not ( ${skip_tests:4} )"
 %endif
 
 %if !%{with test}
@@ -272,34 +276,41 @@ export PYTHONDONTWRITEBYTECODE=1
 %exclude %{python_sitearch}/matplotlib/backends/backend_gtk3cairo.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt4.py*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt4agg.py*
+%exclude %{python_sitearch}/matplotlib/backends/backend_qt4cairo.py*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5agg.*
+%exclude %{python_sitearch}/matplotlib/backends/backend_qt5cairo.py*
 %exclude %{python_sitearch}/matplotlib/backends/backend_tkagg.*
+%exclude %{python_sitearch}/matplotlib/backends/backend_tkcairo.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_webagg.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_webagg_core.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_wx.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_wxagg.*
+%exclude %{python_sitearch}/matplotlib/backends/backend_wxcairo.*
 %exclude %{python_sitearch}/matplotlib/backends/qt_compat.*
 %exclude %{python_sitearch}/matplotlib/backends/qt_editor/
-%exclude %{python_sitearch}/matplotlib/backends/tkagg.*
 %exclude %{python_sitearch}/matplotlib/backends/web_backend/
-%exclude %{python_sitearch}/matplotlib/backends/wx_compat.*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_cairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk3.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk3agg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk3cairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt4.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt4agg.*.py*
+%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt4cairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5agg.*.py*
+%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5cairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_tkagg.*.py*
+%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_tkcairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg_core.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_wx.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxagg.*.py*
+%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxcairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/qt_compat.*.py*
-%exclude %{python_sitearch}/matplotlib/backends/__pycache__/tkagg.*.py*
-%exclude %{python_sitearch}/matplotlib/backends/__pycache__/wx_compat.*.py*
+%exclude %{python_sitearch}/matplotlib/tests/baseline_images
+%exclude %{python_sitearch}/matplotlib/tests/tinypages
+%exclude %{python_sitearch}/mpl_toolkits/tests/baseline_images
 
 # Dummy package to pull in latex dependencies.
 %files %{python_files latex}
@@ -327,17 +338,30 @@ export PYTHONDONTWRITEBYTECODE=1
 %license doc/users/license.rst
 %{python_sitearch}/matplotlib/backends/backend_qt5.py*
 %{python_sitearch}/matplotlib/backends/backend_qt5agg.py*
+%{python_sitearch}/matplotlib/backends/backend_qt5cairo.py*
 %{python_sitearch}/matplotlib/backends/qt_compat.py*
 %{python_sitearch}/matplotlib/backends/qt_editor/
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5agg.*.py*
+%pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5cairo.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/qt_compat.*.py*
+
+%files %{python_files testdata}
+%license LICENSE/
+%license doc/users/license.rst
+%{python_sitearch}/matplotlib/tests/baseline_images
+%{python_sitearch}/matplotlib/tests/tinypages
+%{python_sitearch}/mpl_toolkits/tests/baseline_images
+%exclude %{python_sitearch}/matplotlib/tests/tinypages/.gitignore
+%exclude %{python_sitearch}/matplotlib/tests/tinypages/_static/.gitignore
 
 %files %{python_files tk}
 %license LICENSE/
 %license doc/users/license.rst
 %{python_sitearch}/matplotlib/backends/backend_tkagg.py*
+%{python_sitearch}/matplotlib/backends/backend_tkcairo.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_tkagg.*.py*
+%pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_tkcairo.*.py*
 
 %files %{python_files web}
 %license LICENSE/
@@ -345,6 +369,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %{python_sitearch}/matplotlib/backends/backend_webagg.py*
 %{python_sitearch}/matplotlib/backends/backend_webagg_core.py*
 %{python_sitearch}/matplotlib/backends/web_backend/
+%exclude %{python_sitearch}/matplotlib/backends/web_backend/.*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg_core.*.py*
 
@@ -353,8 +378,10 @@ export PYTHONDONTWRITEBYTECODE=1
 %license doc/users/license.rst
 %{python_sitearch}/matplotlib/backends/backend_wx.py*
 %{python_sitearch}/matplotlib/backends/backend_wxagg.py*
+%{python_sitearch}/matplotlib/backends/backend_wxcairo.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_wx.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxagg.*.py*
+%pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxcairo.*.py*
 %endif
 
 %changelog
