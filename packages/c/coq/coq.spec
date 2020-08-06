@@ -18,7 +18,7 @@
 
 
 Name:           coq
-Version:        8.11.2
+Version:        8.12.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -169,6 +169,7 @@ find %{buildroot}%{_libdir}/coq -name '*.a' \
 %{_bindir}/coqtop.opt
 %{_bindir}/coqwc
 %{_bindir}/coqworkmgr
+%{_bindir}/ocamllibdep
 %{_bindir}/votour
 
 %dir %{_libdir}/coq

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 28 21:48:40 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.12.0.
+  * New binder notation for non-maximal implicit arguments using []
+    allowing to set and see the implicit status of arguments
+    immediately.
+  * New notation Inductive "I A | x : s := ..." to distinguish the
+    uniform from the non-uniform parameters in inductive
+    definitions.
+  * More robust and expressive treatment of implicit inductive
+    parameters in inductive declarations.
+  * Improvements in the treatment of implicit arguments and
+    partially applied constants in notations, parsing of
+    hexadecimal number notation and better handling of scopes and
+    coercions for printing.
+  * A correct and efficient coercion coherence checking algorithm,
+    avoiding spurious or duplicate warnings.
+  * An improved Search command which accepts complex queries. This
+    takes precedence over the now deprecated ssreflect search.
+  * Many additions and improvements of the standard library.
+  * Improvements to the reference manual include a more logical
+    organization of chapters along with updated syntax descriptions
+    that match Coq's grammar in most but not all chapters.
+
+-------------------------------------------------------------------
 Sat Jun  6 12:11:06 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.11.2.
