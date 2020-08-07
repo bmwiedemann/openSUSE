@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  6 13:39:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.1.1:
+  - Mostly cosmetical fixes and bugfixes
+- Remove BR of nose, we don't run tests anyway.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:47:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
