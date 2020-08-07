@@ -15,4 +15,15 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>653996</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>17f9fc3f3d15c5501ac321246f0b5c37</srcmd5>
+    <version>2.1.1</version>
+    <time>1596802232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  - Mostly cosmetical fixes and bugfixes
+- Remove BR of nose, we don't run tests anyway.
+</comment>
+    <requestid>824722</requestid>
+  </revision>
 </revisionlist>

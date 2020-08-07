@@ -17,7 +17,7 @@
 
 
 Name:           wayvnc
-Version:        0.1.2
+Version:        0.2.0
 Release:        0
 Summary:        A VNC server for wlroots based Wayland compositors
 License:        ISC
@@ -34,7 +34,7 @@ BuildRequires:  libpixman-1-0-devel
 BuildRequires:  libuv-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  meson
-BuildRequires:  neatvnc-devel
+BuildRequires:  neatvnc-devel >= 0.2.0
 BuildRequires:  pkgconfig
 BuildRequires:  wayland-devel
 
@@ -58,7 +58,5 @@ The Wayland session may be a headless one, so it is also possible to run wayvnc 
 %license COPYING
 %doc README.md
 %{_bindir}/wayvnc
-%dir %{_datadir}/wayvnc/
-%{_datadir}/wayvnc/shaders/
 
 %changelog

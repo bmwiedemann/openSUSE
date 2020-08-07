@@ -57,12 +57,10 @@ BuildRequires:  gettext-tools
 BuildRequires:  ghostscript >= 8.60
 BuildRequires:  ghostscript-fonts-other
 BuildRequires:  ghostscript-fonts-std
-BuildRequires:  guile1 >= 1.8.2
 BuildRequires:  gzip
 BuildRequires:  ifntjapa
 BuildRequires:  liberation-fonts
 BuildRequires:  libgnutls-devel
-BuildRequires:  libguile1-devel >= 1.8.2
 BuildRequires:  libtool
 BuildRequires:  lilypond = %{version}
 BuildRequires:  lndir
@@ -89,6 +87,7 @@ BuildRequires:  ttf-wqy-zenhei
 BuildRequires:  xfntjp
 BuildRequires:  xorg-x11-fonts
 BuildRequires:  zip
+BuildRequires:  pkgconfig(guile-1.8)
 BuildRequires:  pkgconfig(python3)
 Requires:       lilypond = %{version}
 Requires(pre):   %{install_info_prereq} %{_bindir}/touch %{_bindir}/sed

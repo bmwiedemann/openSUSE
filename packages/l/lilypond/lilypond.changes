@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  6 09:19:51 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Add patch from git to fix boo#1174949 - CVE-2020-17353:
+  0001-scm-disable-embedded-ps-and-embedded-svg-in-dsafe-mo.patch
+
+-------------------------------------------------------------------
 Thu May  7 12:37:36 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 2.20.0.

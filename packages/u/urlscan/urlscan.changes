@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:44:43 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to version 0.9.5 
+  * Change shebang to specifically call python3
+  * Add --width flag to change displayed width. Closes #92.
+  * Update tlds and copyright dates
+  * Remove workaround for fixed python webbrowser bug (#94)
+  * Add -R option to reverse URL/context output. Closes #90
+  * Add --single option to quit after opening/copying first link.
+    Closes #95
+  * Support wl-clipboard. Resolve #88.
+
+-------------------------------------------------------------------
 Fri Mar 13 06:10:44 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 0.9.4

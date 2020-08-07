@@ -30,9 +30,8 @@
 %bcond_with    haru
 
 %define __builder ninja
-
 Name:           paraview
-Version:        5.8.0
+Version:        5.8.1
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -41,7 +40,7 @@ URL:            https://www.paraview.org
 Source0:        https://www.paraview.org/files/v%{major_ver}/ParaView-v%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # CAUTION: GettingStarted may or may not be updated with each minor version
-Source2:        https://www.paraview.org/files/v%{major_ver}/ParaViewGettingStarted-%{major_ver}.0.pdf
+Source2:        https://www.paraview.org/files/v%{major_ver}/ParaViewGettingStarted-%{version}.pdf
 Source3:        https://www.paraview.org/files/v%{major_ver}/ParaViewGuide-%{version}.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
 Patch1:         paraview-desktop-entry-fix.patch
@@ -116,6 +115,8 @@ Requires:       gnuplot
 Requires:       graphviz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
+# Disable on aarch64 since GLES isn't supported for bundled vtk but is needed for paraview
+ExcludeArch:    aarch64
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

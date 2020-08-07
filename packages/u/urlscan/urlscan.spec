@@ -17,7 +17,7 @@
 
 
 Name:           urlscan
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        An other URL extractor/viewer
 License:        GPL-2.0-or-later

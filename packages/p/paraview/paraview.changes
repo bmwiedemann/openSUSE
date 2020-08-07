@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  5 23:11:58 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.8.1:
+  * Long list of bug fixes, see
+    https://blog.kitware.com/paraview-5-8-1-release-notes/.
+- Update manuals (ParaViewGettingStarted-5.8.1.pdf and
+  ParaViewGuide-5.8.1.pdf) to latest version.
+- Disable on aarch64 since GLES isn't supported for bundled vtk
+  but is needed for paraview.
+
+-------------------------------------------------------------------
 Fri Jul 17 15:58:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Set CMAKE_SKIP_INSTALL_RPATH:BOOL=ON during %cmake for openSUSE

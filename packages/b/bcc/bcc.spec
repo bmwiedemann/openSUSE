@@ -35,8 +35,8 @@ Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
-Source:         https://github.com/iovisor/bcc/archive/v%{version}.tar.gz
-Source1:        https://github.com/libbpf/libbpf/archive/v%{libbpf_version}.tar.gz
+Source:         https://github.com/iovisor/bcc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/libbpf/libbpf/archive/v%{libbpf_version}.tar.gz#/libbpf-%{libbpf_version}.tar.gz
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
@@ -129,7 +129,7 @@ Group:          Documentation/Other
 Documentation on how to write programs with the BPF Compiler Collection.
 
 %prep
-%setup -q -D -n %{name}-%{version}
+%setup -q
 
 pushd src/cc/libbpf
 tar xf %{SOURCE1} --strip 1

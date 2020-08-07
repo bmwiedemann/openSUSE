@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:56:41 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v5.3.0 (2020-08-06)
+  + Run every test case individually.
+  + Update getting started doc.
+  + Update list of services for GCE and Azure images.
+  + Allow no default test dirs in config.
+  + Add prefix name option.
+
+-------------------------------------------------------------------
 Fri Jun 19 21:29:50 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v5.2.0 (2020-06-19)

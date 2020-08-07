@@ -17,13 +17,14 @@
 
 
 Name:           neatvnc
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        A VNC server library
 License:        ISC
 Group:          System/GUI/Other
 URL:            https://github.com/any1/neatvnc
 Source0:        https://github.com/any1/neatvnc/archive/v%{version}.tar.gz
+BuildRequires:  aml-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libjpeg8-devel

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug  6 21:47:06 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
+
+- Update to version 0.2.0
+- New features:
+  + The OpenGL ES 2.0 based renderer has now been replaced with a pixman based
+    renderer. The new renderer is both simpler and performs better on devices
+    with poor memory bandwidth such as the Raspberry Pi 3.
+  + Extra damage checking is now done using a fash-hash (murmur3) based method,
+    rather than comparing frames. This saves memory bandwidth.
+  + Experimental support for GPU side wlr-screencopy (wlroots 0.11.0 is
+    required).
+  + dtrace probes have been added for latency measurements.
+- Bugs fixed:
+  + Output transformations are now in line with wlroots's output transformation
+    behaviour.
+  + Shared memory files are now allocated with the correct size rather than zero.
+  + Keyboard modifiers no longer get stuck.
+  + Wayvnc exits when the compositor goes away rather than crashing.
+  + Wayvnc exits when the selected seat or output goes away rather than crashing.
+- Default frame rate limit is now 30fps 
+
+-------------------------------------------------------------------
 Wed Jun  3 04:43:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of wayvnc 0.1.2 for openSUSE

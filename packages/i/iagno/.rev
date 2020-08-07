@@ -301,4 +301,12 @@
     <comment>New stable release (forwarded request 818721 from iznogood)</comment>
     <requestid>819937</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>2697318f87a9a2d0ea46ea3d6594cc58</srcmd5>
+    <version>3.36.4</version>
+    <time>1596802472</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 824287 from iznogood)</comment>
+    <requestid>824805</requestid>
+  </revision>
 </revisionlist>

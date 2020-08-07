@@ -2,7 +2,7 @@ Index: bin/otrs.CheckModules.pl
 ===================================================================
 --- bin/otrs.CheckModules.pl.orig
 +++ bin/otrs.CheckModules.pl
-@@ -427,6 +427,17 @@ my @NeededModules = (
+@@ -438,6 +438,17 @@ my @NeededModules = (
          },
      },
      {

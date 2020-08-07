@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:08:39 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
+
+- Update to version 0.2.0
+- Tight encoding is no longer experimental and also more complete.
+  + The encoder employs multiple CPU cores, both for lossy and lossless
+    compression, which makes it considerably faster than ZRLE, even with
+    lossless compression.
+  + Supports both lossy (JPEG) and lossless (DEFLATE) compression.
+  + Allows the client to choose the JPEG "quality" level.
+  + Allows the client to choose whether to enable lossy compression or not.
+- Service-side resizing: the server can notify the client and resize buffers
+  when a different display mode is set
+- The API has been prepared for adding multi-display suppport. It has not been
+  implemented, but the (hopefully) won't have to change when it is.
+- Version info is baked into the library, so applications linking to neatvnc
+  can report the version to the user.
+- The server can now looks up the address to which to bind using getaddrinfo
+ 
+
+-------------------------------------------------------------------
 Sat Jun  6 11:52:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim redundancies and conjecture from descriptions.

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  7 04:05:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Modify URLs to get the tarballs with names not just versions
+- Drop _constraints
+  + We don't link the static clang libraries anymore and this
+    reduces the requirements of hardware.
+- Drop the unused _service file
+
+-------------------------------------------------------------------
 Thu Jul  2 02:25:31 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.15.0

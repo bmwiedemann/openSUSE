@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  5 10:57:18 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add physicalmemory for PowerPC in _constraints to avoid OOM failure
+
+-------------------------------------------------------------------
 Thu Jul 30 12:14:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Increase %limit_build value to avoid OOM failures

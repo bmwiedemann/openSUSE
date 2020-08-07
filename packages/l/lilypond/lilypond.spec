@@ -35,6 +35,7 @@ Patch1:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
 Patch2:         add_dircategories_to_documentation.patch
 Patch3:         Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
 Patch4:         use_cstring_and_ctype_includes.patch
+Patch5:         0001-scm-disable-embedded-ps-and-embedded-svg-in-dsafe-mo.patch
 BuildRequires:  ImageMagick
 BuildRequires:  bison
 BuildRequires:  dblatex
@@ -47,10 +48,10 @@ BuildRequires:  gettext
 BuildRequires:  ghostscript >= 8.15
 BuildRequires:  ghostscript-fonts-other
 BuildRequires:  ghostscript-fonts-std
-BuildRequires:  libguile1-devel >= 1.8
 BuildRequires:  makeinfo >= 6.1
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  potrace-devel
+BuildRequires:  pkgconfig(guile-1.8)
 # Needed for pngtopnm
 BuildRequires:  netpbm
 BuildRequires:  pkgconfig
