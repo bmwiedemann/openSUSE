@@ -456,6 +456,7 @@ unsorted:
   - amarok-lang 
   - amazon-ecs-init 
   - amazon-ssm-agent 
+  - aml-devel 
   - amsynth 
   - amsynth-lang 
   - amsynth-plugin-dssi 
@@ -8470,6 +8471,7 @@ unsorted:
   - libalut0 
   - libalut0-32bit: [x86_64] 
   - libamd-doc 
+  - libaml0 
   - libangelscript2_34_0 
   - libansilove-devel 
   - libansilove1 
@@ -34469,6 +34471,7 @@ unsorted:
   - wl-clipboard-bash-completion 
   - wl-clipboard-zsh-completion 
   - wlr-randr 
+  - wlr-sunclock 
   - wlroots-devel 
   - wm-icons 
   - wmpomme 
