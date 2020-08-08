@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  5 12:08:32 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (dda1e9d08434def88ed86557d0), git501.
+  * Includes fix for AARCH64 kernel build failure.  [bsc#1174817]
+  * Includes aarch64 SLS mitigation changes.  [bsc#1172798, CVE-2020-13844]
+- Add gcc10-streamer-backports1.patch and gcc10-streamer-backports2.patch.
+- Enable x86 CET runtime for SLES15 and Leap15 also.
+- Do not enable the now deprecated HSA offloading capability.
+
+-------------------------------------------------------------------
 Tue Jul 28 11:02:20 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-10 branch head (c0438ced53bcf57e4ebb1c38c), git465.

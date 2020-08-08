@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Aug  3 23:28:52 CEST 2020 - afaerber@suse.com
+
+- config: armv7hl: Update to 5.8
+- commit ede84e7
+
+-------------------------------------------------------------------
+Mon Aug  3 22:45:33 CEST 2020 - afaerber@suse.com
+
+- config: armv6hl: Update to 5.8
+- commit ecdaa95
+
+-------------------------------------------------------------------
+Mon Aug  3 10:11:08 CEST 2020 - jslaby@suse.cz
+
+- Fix for missing check in vgacon scrollback handling (bsc#1174205
+  CVE-2020-14331).
+  Update to the latest findings/submission.
+- commit e91a540
+
+-------------------------------------------------------------------
+Mon Aug  3 07:49:59 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.8 final
+- refresh configs (headers only)
+- commit c02ba5f
+
+-------------------------------------------------------------------
+Sat Aug  1 08:18:48 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.7.12 (bnc#1012628).
+- regmap: debugfs: check count when read regmap file
+  (bnc#1012628).
+- io_uring: ensure double poll additions work with both request
+  types (bnc#1012628).
+- tipc: allow to build NACK message in link timeout function
+  (bnc#1012628).
+- udp: Improve load balancing for SO_REUSEPORT (bnc#1012628).
+- udp: Copy has_conns in reuseport_grow() (bnc#1012628).
+- sctp: shrink stream outq when fails to do addstream reconf
+  (bnc#1012628).
+- sctp: shrink stream outq only when new outcnt < old outcnt
+  (bnc#1012628).
+- AX.25: Prevent integer overflows in connect and sendmsg
+  (bnc#1012628).
+- tcp: allow at most one TLP probe per flight (bnc#1012628).
+- rxrpc: Fix sendmsg() returning EPIPE due to recvmsg() returning
+  ENODATA (bnc#1012628).
+- rtnetlink: Fix memory(net_device) leak when ->newlink fails
+  (bnc#1012628).
+- qrtr: orphan socket in qrtr_release() (bnc#1012628).
+- net: udp: Fix wrong clean up for IS_UDPLITE macro (bnc#1012628).
+- net-sysfs: add a newline when printing 'tx_timeout' by sysfs
+  (bnc#1012628).
+- net/sched: act_ct: fix restore the qdisc_skb_cb after defrag
+  (bnc#1012628).
+- ip6_gre: fix null-ptr-deref in ip6gre_init_net() (bnc#1012628).
+- drivers/net/wan/x25_asy: Fix to make it work (bnc#1012628).
+- dev: Defer free of skbs in flush_backlog (bnc#1012628).
+- AX.25: Prevent out-of-bounds read in ax25_sendmsg()
+  (bnc#1012628).
+- AX.25: Fix out-of-bounds read in ax25_connect() (bnc#1012628).
+- commit 9c98feb
+
+-------------------------------------------------------------------
 Wed Jul 29 11:32:21 CEST 2020 - jslaby@suse.cz
 
 - Refresh
@@ -320,6 +384,13 @@ Wed Jul 29 10:55:18 CEST 2020 - jslaby@suse.cz
 - commit 6157a8d
 
 -------------------------------------------------------------------
+Tue Jul 28 13:09:06 CEST 2020 - acho@suse.com
+
+- Bluetooth: Disconnect if E0 is used for Level 4 (bsc#1171988
+  CVE-2020-10135).
+- commit 86181ec
+
+-------------------------------------------------------------------
 Tue Jul 28 13:02:10 CEST 2020 - acho@suse.com
 
 - Bluetooth: Disconnect if E0 is used for Level 4 (bsc#1171988
@@ -329,11 +400,27 @@ Tue Jul 28 13:02:10 CEST 2020 - acho@suse.com
 - commit d1148b9
 
 -------------------------------------------------------------------
+Tue Jul 28 11:36:00 CEST 2020 - dmueller@suse.com
+
+- rpm/kernel-obs-build.spec.in: Enable overlayfs
+  Overlayfs is needed for podman or docker builds when no more specific
+  driver can be used (like lvm or btrfs). As the default build fs is ext4
+  currently, we need overlayfs kernel modules to be available.
+- commit 29474aa
+
+-------------------------------------------------------------------
 Tue Jul 28 11:06:00 CEST 2020 - jslaby@suse.cz
 
 - vgacon: fix out of bounds write to the scrollback buffer
   (bsc#1174205 CVE-2020-14331).
 - commit 62bfb93
+
+-------------------------------------------------------------------
+Mon Jul 27 00:50:54 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.8-rc7
+- eliminated 2 patches
+- commit 786d3ff
 
 -------------------------------------------------------------------
 Wed Jul 22 16:25:48 CEST 2020 - jslaby@suse.cz
@@ -759,6 +846,52 @@ Wed Jul 22 15:00:12 CEST 2020 - jslaby@suse.cz
 - commit dcedc15
 
 -------------------------------------------------------------------
+Tue Jul 21 17:54:15 CEST 2020 - mkubecek@suse.cz
+
+- sched: Fix race against ptrace_freeze_trace() (bsc#1174345).
+- commit 007dcf0
+
+-------------------------------------------------------------------
+Mon Jul 20 01:14:21 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.8-rc6
+- eliminated 2 patches
+- refresh config files
+- commit 25ae237
+
+-------------------------------------------------------------------
+Fri Jul 17 14:16:32 CEST 2020 - mkubecek@suse.cz
+
+- config: restore PHYLIB=m
+  This essentially reverts kernel-source commit fcc47b444be6 ("config:
+  enable PHYLIB=y and ETHTOOL_NETLINK=y") which responded to upstream
+  change not allowing ETHTOOL_NETLINK=y with PHYLIB=m. There are two
+  exceptions:
+  - vanilla flavors keep PHYLIB=y as patches fixing the dependency are
+    not applied to */vanilla (will be fixed with 5.9-rc1 update)
+  - we preserve ETHTOOL_NETLINK=y which was previously lost in 5.8-rc1
+    update
+- commit 4756d9e
+
+-------------------------------------------------------------------
+Fri Jul 17 14:04:15 CEST 2020 - mkubecek@suse.cz
+
+- net: ethtool: Remove PHYLIB direct dependency
+  (http://lkml.kernel.org/r/0353ce74-ffc6-4d40-bf0f-d2a7ad640b30@gmail.com).
+- net: phy: Register ethtool PHY operations
+  (http://lkml.kernel.org/r/0353ce74-ffc6-4d40-bf0f-d2a7ad640b30@gmail.com).
+- net: ethtool: Introduce ethtool_phy_ops
+  (http://lkml.kernel.org/r/0353ce74-ffc6-4d40-bf0f-d2a7ad640b30@gmail.com).
+- commit bcc2825
+
+-------------------------------------------------------------------
+Fri Jul 17 13:24:03 CEST 2020 - mkubecek@suse.cz
+
+- bpf: Use dedicated bpf_trace_printk event instead of
+  trace_printk().
+- commit a2c9fc2
+
+-------------------------------------------------------------------
 Thu Jul 16 11:40:06 CEST 2020 - jslaby@suse.cz
 
 - net: ethernet: mvneta: Do not error out in non serdes modes
@@ -1059,13 +1192,33 @@ Wed Jul 15 12:30:54 CEST 2020 - mbrugger@suse.com
 
 - brcmfmac: Transform compatible string for FW loading
   (bsc#1169771).
-- commit 9a6cea0
+- commit 0f57628
+
+-------------------------------------------------------------------
+Tue Jul 14 14:02:38 CEST 2020 - afaerber@suse.com
+
+- config: arm64: Update to 5.8-rc5
+- commit b4e494e
 
 -------------------------------------------------------------------
 Mon Jul 13 08:34:04 CEST 2020 - jslaby@suse.cz
 
 - cxgb4: fix all-mask IP address comparison (git-fixes).
 - commit 8f507a0
+
+-------------------------------------------------------------------
+Mon Jul 13 06:25:16 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.8-rc5
+- refresh riscv64 configs
+- commit 9f5e5ef
+
+-------------------------------------------------------------------
+Fri Jul 10 16:47:15 CEST 2020 - mkubecek@suse.cz
+
+- sched: Fix loadavg accounting race
+  (http://lkml.kernel.org/r/20200702171548.GA11813@codemonkey.org.uk).
+- commit 2cd7849
 
 -------------------------------------------------------------------
 Thu Jul  9 11:45:46 CEST 2020 - jslaby@suse.cz
@@ -1273,6 +1426,22 @@ Tue Jul  7 16:09:58 CEST 2020 - tiwai@suse.de
 - commit d62e41f
 
 -------------------------------------------------------------------
+Mon Jul  6 11:46:02 CEST 2020 - mkubecek@suse.cz
+
+- x86/entry/32: Fix XEN_PV build dependency
+  (https://lkml.kernel.org/r/20200706084155.ndltt24ipognh67e@lion.mk-sys.cz).
+- commit 006adcb
+
+-------------------------------------------------------------------
+Mon Jul  6 02:23:06 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.8-rc4
+- eliminated 1 patch
+- refresh
+  patches.rpmify/Kconfig-make-CONFIG_CC_CAN_LINK-always-true.patch
+- commit 6584126
+
+-------------------------------------------------------------------
 Thu Jul  2 00:33:52 CEST 2020 - mkubecek@suse.cz
 
 - rpm/kernel-binary.spec.in: do not run klp-symbols for configs with no modules
@@ -1284,6 +1453,21 @@ Thu Jul  2 00:33:52 CEST 2020 - mkubecek@suse.cz
   add another condition to the place where %klp_symbols is set as it can be
   already set to 1 from prjconf.)
 - commit a048c4b
+
+-------------------------------------------------------------------
+Thu Jul  2 00:29:45 CEST 2020 - mkubecek@suse.cz
+
+- Revert "rpm/kernel-binary.spec.in: do not run klp-symbols for configs with no modules"
+  This reverts commit b5e55f7584b89b6e17d91451bc47c5c0f732e730.
+  This approach doesn't work correctly if %klp_symbols is set to 1 in
+  prjconf and correct solution is simpler.
+- commit 708b64e
+
+-------------------------------------------------------------------
+Thu Jul  2 00:29:07 CEST 2020 - mkubecek@suse.cz
+
+- config: refresh riscv64/default
+- commit 6b56aca
 
 -------------------------------------------------------------------
 Wed Jul  1 21:03:27 CEST 2020 - jslaby@suse.cz
@@ -1713,11 +1897,74 @@ Wed Jul  1 21:03:27 CEST 2020 - jslaby@suse.cz
 - commit cba119b
 
 -------------------------------------------------------------------
+Wed Jul  1 18:46:51 CEST 2020 - rgoldwyn@suse.com
+
+- Re-enable F2FS (boo#1173546)
+  Since the changes of blacklisting landed)boo#1109665), we can re-enable
+  F2FS for opensuse kernels. For SLE, it will land in
+  kernel-default-extra
+- commit 33443b2
+
+-------------------------------------------------------------------
+Wed Jul  1 12:06:38 CEST 2020 - mkubecek@suse.cz
+
+- Update
+  patches.rpmify/Kconfig-make-CONFIG_CC_CAN_LINK-always-true.patch.
+- we faked also CC_CAN_LINK_STATIC temporarily to work around the
+  bpfilter_umh build breakage but that is no longer needed so we no longer
+  need to pretend we can do static linkage on build
+- refresh config files to reflect the change
+- commit c06a44f
+
+-------------------------------------------------------------------
+Wed Jul  1 11:58:58 CEST 2020 - mkubecek@suse.cz
+
+- bpfilter: allow to build bpfilter_umh
+  as a module without static library
+  (http://lkml.kernel.org/r/20200608115628.osizkpo76cgn2ci7@lion.mk-sys.cz).
+- Delete
+  patches.rpmify/bpfilter-only-build-bpfilter_umh-as-static-when-BPFI.patch.
+  Replace temporary version of the build fix with upstream submitted patch.
+- commit 75906a0
+
+-------------------------------------------------------------------
+Wed Jul  1 11:42:11 CEST 2020 - mkubecek@suse.cz
+
+- rpm/kernel-binary.spec.in: do not run klp-symbols for configs with no modules
+  Starting with 5.8-rc1, s390x/zfcpdump builds fail because rpm/klp-symbols
+  script does not find .tmp_versions directory. This is missing because
+  s390x/zfcpdump is built without modules (CONFIG_MODULES disabled).
+  As livepatching cannot work without modules, the cleanest solution is not
+  setting %klp_symbols if CONFIG_MODULES is disabled. To implement that, we
+  need to move the block where %klp_symbols is defined after the place where
+  we set macros for config options.
+- commit b5e55f7
+
+-------------------------------------------------------------------
+Wed Jul  1 10:03:53 CEST 2020 - mkubecek@suse.cz
+
+- Revert "fs: Do not check if there is
+  a fsnotify watcher on pseudo inodes"
+  (http://lkml.kernel.org/r/7b4aa1e985007c6d582fffe5e8435f8153e28e0f.camel@redhat.com).
+- commit 45231d0
+
+-------------------------------------------------------------------
 Mon Jun 29 11:10:38 CEST 2020 - jslaby@suse.cz
 
 - Revert "ath9k: Fix general protection fault in
   ath9k_hif_usb_rx_cb" (bko#208251).
 - commit 6ff0af7
+
+-------------------------------------------------------------------
+Mon Jun 29 06:53:10 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.8-rc3
+- eliminated 2 patches
+- refresh
+  patches.suse/suse-hv-guest-os-id.patch
+- update configs
+  - EFI_CUSTOM_SSDT_OVERLAYS=y
+- commit 162848a
 
 -------------------------------------------------------------------
 Fri Jun 26 08:01:11 CEST 2020 - jslaby@suse.cz
@@ -3200,6 +3447,19 @@ Mon Jun 22 12:57:16 CEST 2020 - jslaby@suse.cz
 - commit 33d4749
 
 -------------------------------------------------------------------
+Mon Jun 22 06:26:47 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.8-rc2
+- refresh configs
+- commit f76a148
+
+-------------------------------------------------------------------
+Thu Jun 18 15:26:39 CEST 2020 - jeyu@suse.de
+
+- panic: do not print uninitialized taint_flags (bsc#1172814).
+- commit ed3a673
+
+-------------------------------------------------------------------
 Thu Jun 18 15:16:31 CEST 2020 - jslaby@suse.cz
 
 - Linux 5.7.4 (bnc#1012628).
@@ -3498,6 +3758,24 @@ Tue Jun 16 08:57:51 CEST 2020 - jslaby@suse.cz
 - commit 096f443
 
 -------------------------------------------------------------------
+Mon Jun 15 10:20:29 CEST 2020 - mkubecek@suse.cz
+
+- config: disable BPFILTER_UMH on i386
+  It does not build currently.
+- commit 72fbe18
+
+-------------------------------------------------------------------
+Mon Jun 15 01:22:10 CEST 2020 - mkubecek@suse.cz
+
+- config: enable PHYLIB=y and ETHTOOL_NETLINK=y
+  As an unfortunate side effect of ethtool cable diagnostic support,
+  ETHTOOL_NETLINK now depends on PHYLIB and the dependency is implemented in
+  a way making "make oldconfig" drops ETHTOOL_NETLINK if PHYLIB=m.
+  Until this issue is resolved in upstream, set PHYLIB=y so that
+  ETHTOOL_NETLINK can be enabled again.
+- commit fcc47b4
+
+-------------------------------------------------------------------
 Mon Jun 15 01:10:59 CEST 2020 - mkubecek@suse.cz
 
 - rpm: drop execute permissions on source files
@@ -3507,6 +3785,173 @@ Mon Jun 15 01:10:59 CEST 2020 - mkubecek@suse.cz
   Sanitize the source tree by removing execute permissions from all C source
   and header files.
 - commit 771e293
+
+-------------------------------------------------------------------
+Mon Jun 15 00:54:58 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.8-rc1
+- eliminated 48 patches (40 stable, 8 other)
+- disable ARM architectures (need config update)
+- refresh
+  patches.rpmify/Kconfig-make-CONFIG_CC_CAN_LINK-always-true.patch
+  patches.suse/apparmor-compatibility-with-v2.x-net.patch
+  patches.suse/btrfs-btrfs-use-the-new-VFS-super_block_dev.patch
+  patches.suse/dm-mpath-leastpending-path-update
+  patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+  patches.suse/pstore_disable_efi_backend_by_default.patch
+  patches.suse/readahead-request-tunables.patch
+  patches.suse/supported-flag
+  patches.suse/supported-flag-external
+  patches.suse/supported-flag-modverdir
+  patches.suse/suse-hv-guest-os-id.patch
+- fix build with BPFILTER_UMH=m
+  patches.rpmify/bpfilter-only-build-bpfilter_umh-as-static-when-BPFI.patch
+- new config options:
+  - General setup
+    - CONFIG_DEFAULT_INIT=""
+    - CONFIG_WATCH_QUEUE=y
+  - Power management and ACPI options
+    - CONFIG_HIBERNATION_SNAPSHOT_DEV=y
+  - Enable the block layer
+    - CONFIG_BLK_INLINE_ENCRYPTION=y
+    - CONFIG_BLK_INLINE_ENCRYPTION_FALLBACK=y
+    - CONFIG_BLK_DEV_RNBD_CLIENT=m
+    - CONFIG_BLK_DEV_RNBD_SERVER=m
+  - Memory Management options
+    - CONFIG_ZSMALLOC_PGTABLE_MAPPING=n
+  - Networking support
+    - CONFIG_INET6_ESPINTCP=y
+    - CONFIG_BRIDGE_MRP=y
+    - CONFIG_NET_ACT_GATE=m
+    - CONFIG_QRTR=m
+    - CONFIG_QRTR_SMD=m
+    - CONFIG_QRTR_TUN=m
+    - CONFIG_QRTR_MHI=m
+    - CONFIG_BT_MSFTEXT=n
+  - File systems
+    - CONFIG_PSTORE_BLK=m
+  - Library routines
+    - CONFIG_PRIME_NUMBERS=n
+    - CONFIG_DEBUG_INFO_COMPRESSED=n
+    - CONFIG_DEBUG_VM_PGTABLE=n
+    - CONFIG_HIST_TRIGGERS_DEBUG=n
+    - CONFIG_TEST_BITOPS=n
+    - CONFIG_TEST_HMM=n
+  - Multiple devices driver support (RAID and LVM)
+    - CONFIG_BCACHE_ASYNC_REGISTRAION=n
+    - CONFIG_DM_EBS=m
+    - CONFIG_DM_MULTIPATH_HST=m
+  - Network device support
+    - CONFIG_NET_DSA_SJA1105_VL=y
+    - CONFIG_MLX5_CLS_ACT=y
+    - CONFIG_BCM54140_PHY=m
+    - CONFIG_MT7663U=m
+    - CONFIG_MT7915E=m
+    - CONFIG_RTW88_8723DE=m
+  - Input device support
+    - CONFIG_TOUCHSCREEN_CY8CTMA140=m
+    - CONFIG_INPUT_IQS269A=m
+  - Character devices
+    - CONFIG_SERIAL_LANTIQ=m
+  - Multifunction device drivers
+    - CONFIG_MFD_MP2629=n
+    - CONFIG_MFD_INTEL_PMC_BXT=m
+    - CONFIG_INTEL_SOC_PMIC_MRFLD=m
+    - CONFIG_INTEL_MRFLD_PWRBTN=m
+    - CONFIG_EXTCON_INTEL_MRFLD=m
+    - CONFIG_INTEL_MRFLD_ADC=n
+    - CONFIG_MFD_INTEL_MSIC=n
+    - CONFIG_MFD_MT6360=n
+  - Multimedia support
+    - CONFIG_MEDIA_SUPPORT_FILTER=y
+    - CONFIG_MEDIA_PLATFORM_SUPPORT=n
+    - CONFIG_MEDIA_TEST_SUPPORT=n
+    - CONFIG_VIDEO_OV2740=m
+    - CONFIG_INTEL_ATOMISP=y
+    - CONFIG_VIDEO_ATOMISP=m
+    - CONFIG_VIDEO_ATOMISP_ISP2401=y
+    - CONFIG_VIDEO_ATOMISP_OV5693=m
+    - CONFIG_VIDEO_ATOMISP_OV2722=m
+    - CONFIG_VIDEO_ATOMISP_GC2235=m
+    - CONFIG_VIDEO_ATOMISP_MSRLIST_HELPER=m
+    - CONFIG_VIDEO_ATOMISP_MT9M114=m
+    - CONFIG_VIDEO_ATOMISP_GC0310=m
+    - CONFIG_VIDEO_ATOMISP_OV2680=m
+    - CONFIG_VIDEO_ATOMISP_LM3554=m
+    - CONFIG_CEC_CROS_EC=m
+    - CONFIG_CEC_SECO=m
+    - CONFIG_CEC_SECO_RC=n
+  - Graphics support
+    - CONFIG_DRM_I915_FENCE_TIMEOUT=10000
+  - Sound card support
+    - CONFIG_SND_SOC_AMD_RENOIR=m
+    - CONFIG_SND_SOC_AMD_RENOIR_MACH=m
+    - CONFIG_SND_SOC_INTEL_SOF_WM8804_MACH=m
+    - CONFIG_SND_SOC_INTEL_EHL_RT5660_MACH=m
+    - CONFIG_SND_SOC_MAX98390=m
+    - CONFIG_SND_SOC_ZL38060=n
+  - USB support
+    - CONFIG_USB_XHCI_PCI_RENESAS=m
+  - InfiniBand support
+    - CONFIG_INFINIBAND_RTRS_CLIENT=m
+    - CONFIG_INFINIBAND_RTRS_SERVER=m
+  - Virtio drivers
+    - CONFIG_VIRTIO_MEM=m
+  - X86 Platform Specific Device Drivers
+    - CONFIG_INTEL_WMI_SBL_FW_UPDATE=m
+    - CONFIG_INTEL_SCU_PCI=y
+    - CONFIG_INTEL_SCU_PLATFORM=m
+    - CONFIG_INTEL_MID_POWER_BUTTON=m
+    - CONFIG_INTEL_SCU_IPC_UTIL=m
+  - Industrial I/O support
+    - CONFIG_AD9467=n
+    - CONFIG_ADI_AXI_ADC=n
+    - CONFIG_MAX1241=n
+    - CONFIG_ATLAS_EZO_SENSOR=n
+    - CONFIG_ADIS16475=n
+    - CONFIG_SX9310=n
+    - CONFIG_VCNL3020=n
+  - Misc drivers
+    - CONFIG_MTD_NAND_ARASAN=m
+    - CONFIG_MTD_PSTORE=m
+    - CONFIG_INTERCONNECT=n
+    - CONFIG_SPI_AMD=n
+    - CONFIG_PINCTRL_JASPERLAKE=m
+    - CONFIG_GPIO_PCA953X_IRQ=y
+    - CONFIG_GPIO_AGGREGATOR=m
+    - CONFIG_BATTERY_CW2015=m
+    - CONFIG_CHARGER_BD99954=m
+    - CONFIG_SENSORS_AMD_ENERGY=m
+    - CONFIG_SENSORS_MAX16601=m
+  - ACPI INT340X thermal drivers
+    - CONFIG_REGULATOR_MAX77826=m
+    - CONFIG_LEDS_SGM3140=m
+    - CONFIG_PWM_IQS620A=m
+  - i386 / ppc64 / ppc64le
+    - MDIO_IPQ4019=m
+    - HW_RANDOM_CCTRNG=n
+    - MFD_GATEWORKS_GSC=m
+    - DRM_PANEL_ASUS_Z00T_TM5P5_NT35596=n
+    - DRM_PANEL_LEADTEK_LTK050H3146W=n
+    - DRM_PANEL_VISIONOX_RM69299=n
+    - DRM_CHRONTEL_CH7033=n
+    - DRM_NWL_MIPI_DSI=n
+    - LEDS_AW2013=m
+    - CLK_LGM_CGU=y
+    - PHY_CADENCE_SALVO=m
+    - PHY_INTEL_COMBO=y
+    - PHY_OCELOT_SERDES=m
+    - MTD_PHYSMAP_VERSATILE=y
+    - MTD_PHYSMAP_GEMINI=y
+    - MDIO_IPQ8064=m
+    - SERIAL_8250_ASPEED_VUART=n
+    - GPIO_LOGICVC=n
+    - GPIO_SAMA5D2_PIOBU=n
+    - GPIO_SYSCON=n
+    - SENSORS_GSC=m
+    - DRM_PANEL_ARM_VERSATILE=n
+    - LEDS_SYSCON=y
+- commit 8874901
 
 -------------------------------------------------------------------
 Fri Jun 12 19:07:00 CEST 2020 - bp@suse.de
@@ -19775,7 +20220,7 @@ Thu Aug  8 14:35:08 CEST 2019 - dmueller@suse.com
 
 - rpm/kernel-obs-build.spec.in: add dm-crypt for building with cryptsetup
   Co-Authored-By: Adam Spiers <aspiers@suse.com>
-- commit 1756301
+- commit 7cf5b9e
 
 -------------------------------------------------------------------
 Thu Aug  8 10:34:56 CEST 2019 - mkubecek@suse.cz

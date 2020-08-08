@@ -77,7 +77,6 @@
 %endif
 
 %ifarch x86_64
-%define build_hsa 1
 # SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
 # technically also SLE12 SP5 but do not bother there
 %if %{suse_version} >= 1550 || 0%{?sle_version:%sle_version} >= 150100
@@ -86,7 +85,6 @@
 %define build_gcn 0
 %endif
 %else
-%define build_hsa 0
 %define build_gcn 0
 %endif
 
@@ -261,7 +259,7 @@ BuildRequires:  gdb
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.2.1+git465
+Version:        10.2.1+git501
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -319,6 +317,8 @@ Patch11:        gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
 Patch15:        gcc7-avoid-fixinc-error.diff
 Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
+Patch18:        gcc10-streamer-backports1.patch
+Patch19:        gcc10-streamer-backports2.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 Patch52:        gcc10-foffload-default.patch
@@ -1804,6 +1804,8 @@ ln -s newlib-3.3.0/newlib .
 %patch15
 %patch16
 %patch17 -p1
+%patch18 -p1
+%patch19 -p1
 %patch51
 %patch52
 %patch60
@@ -1911,11 +1913,8 @@ TCFLAGS="$RPM_OPT_FLAGS" \
 	--libdir=%{_libdir} \
 	--libexecdir=%{_libdir} \
 	--enable-languages=$languages \
-%if %{build_hsa} || %{build_nvptx}
+%if %{build_nvptx} || %{build_gcn}
 	--enable-offload-targets=\
-%if %{build_hsa}
-hsa,\
-%endif
 %if %{build_nvptx}
 nvptx-none=%{_prefix}/nvptx-none,\
 %endif
@@ -1934,8 +1933,8 @@ amdgcn-amdhsa=%{_prefix}/amdgcn-amdhsa,\
 %if 0%{!?build_libvtv:1}
 	--disable-libvtv \
 %endif
-%if 0%{suse_version} >= 1550
-	--enable-cet \
+%if 0%{suse_version} >= 1500
+	--enable-cet=auto \
 %else
 	--disable-cet \
 %endif
@@ -2265,9 +2264,6 @@ for libname in \
   libgphobos \
 %endif
   libgomp \
-%if %{build_hsa}
-  libgomp-plugin-hsa \
-%endif
 %if %{build_nvptx}
   libgomp-plugin-nvptx \
 %endif
@@ -2700,9 +2696,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc10-locale.lang
 %versmainlib libgomp.so
 %versmainlib libgomp.a
 %versmainlib libgomp.spec
-%if %{build_hsa}
-%versmainlib libgomp-plugin-hsa.so
-%endif
 %if %{build_nvptx}
 %versmainlib libgomp-plugin-nvptx.so
 %endif
@@ -2914,9 +2907,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc10-locale.lang
 %files -n libgomp%{libgomp_sover}%{libgomp_suffix}
 %defattr(-,root,root)
 %mainlib libgomp.so.%{libgomp_sover}*
-%if %{build_hsa}
-%mainlib libgomp-plugin-hsa.so.%{libgomp_sover}*
-%endif
 %if %{build_nvptx}
 %mainlib libgomp-plugin-nvptx.so.%{libgomp_sover}*
 %endif

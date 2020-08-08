@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.7.11
+%define patchversion 5.8.0
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-501599469bceacc25b7494a8c45b87fefd7ea51a
+BuildRequires:  kernel%kernel_flavor-srchash-9bc0044f23a1ebc1496c9ed8967e0aa5d0a5685e
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0
 Group:          SLES
-Version:        5.7.11
+Version:        5.8.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5015994
+Release:        <RELEASE>.g9bc0044
 %else
 Release:        0
 %endif
@@ -116,7 +116,7 @@ echo "DefaultTasksAccounting=no" >> /etc/systemd/system.conf
 
 # a longer list to have them also available for qemu cross builds where x86_64 kernel runs in eg. arm env.
 # this list of modules where available on build workers of build.opensuse.org, so we stay compatible.
-export KERNEL_MODULES="loop dm-crypt dm-mod dm-snapshot binfmt-misc fuse kqemu squashfs ext2 ext3 ext4 reiserfs btrfs xfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat nls_cp437 nls_iso8859-1 ibmvscsi sd_mod e1000 ibmveth"
+export KERNEL_MODULES="loop dm-crypt dm-mod dm-snapshot binfmt-misc fuse kqemu squashfs ext2 ext3 ext4 reiserfs btrfs xfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat nls_cp437 nls_iso8859-1 ibmvscsi sd_mod e1000 ibmveth overlay"
 
 # manually load all modules to make sure they're available
 for i in $KERNEL_MODULES; do

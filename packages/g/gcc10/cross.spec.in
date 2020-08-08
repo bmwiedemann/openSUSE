@@ -26,7 +26,6 @@ ExclusiveArch: do-not-build
 %define build_objc 0
 %define build_objcp 0
 %define build_go 0
-%define build_hsa 0
 %define build_nvptx 0
 %define build_gcn 0
 %define build_d 0
