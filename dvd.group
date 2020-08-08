@@ -1342,7 +1342,6 @@
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krdc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krename" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3300,9 +3299,6 @@
     <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
     <package name="openSUSE-xfce-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3425,7 +3421,6 @@
     <package name="patterns-yast-yast2_install_wf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_install_wf -->
     <package name="pavucontrol" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pavucontrol-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="pcfclock-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pciutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pcmciautils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-laptop -->
     <package name="pcsc-acr38" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-acr38 -->
@@ -3983,7 +3978,6 @@
     <package name="rtkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="rtl-sdr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rtl-sdr-udev" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="rtl8812au-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rtl_433" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4642,7 +4636,6 @@
     <package name="syntax-highlighting" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sysconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sysconfig-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="sysdig-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sysfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-laptop -->
     <package name="syslinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="syslog-service" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
@@ -5352,6 +5345,7 @@
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.7.11-1-default needed by openafs-kmp-default-1.8.6_k5.7.11_1-1.6.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5371,7 +5365,6 @@
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="ffmpeg-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5390,6 +5383,7 @@
     <package name="guestfs-data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="ldmtool" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lib389" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libHX32-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5568,6 +5562,7 @@
     <package name="nss_ldap-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.7.11-1-default needed by openafs-kmp-default-1.8.6_k5.7.11_1-1.6.x86_64-->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
