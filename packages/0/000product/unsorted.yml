@@ -2614,6 +2614,7 @@ unsorted:
   - dracut-sshd 
   - dracut-tools 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -7337,6 +7338,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -16288,11 +16290,14 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -16954,6 +16959,7 @@ unsorted:
   - pcb-doc 
   - pcc 
   - pcfclock 
+  - pcfclock-kmp-default 
   - pcfclock-kmp-pae: [i586] 
   - pciutils-devel 
   - pciutils-devel-32bit: [x86_64] 
@@ -22600,6 +22606,7 @@ unsorted:
   - rtaudio-devel 
   - rtl-sdr-devel 
   - rtl8812au 
+  - rtl8812au-kmp-default 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -25437,6 +25444,7 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
+  - sysdig-kmp-default 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 
