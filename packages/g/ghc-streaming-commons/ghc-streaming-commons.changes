@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 21 08:27:35 UTC 2020 - psimons@suse.com
+
+- Update streaming-commons to version 0.2.2.1.
+  ## 0.2.2.1
+
+  * Fix test suite compilation issue [stackage#5528](https://github.com/commercialhaskell/stackage/issues/5528)
+
+-------------------------------------------------------------------
+Mon Jul 20 02:00:58 UTC 2020 - psimons@suse.com
+
+- Update streaming-commons to version 0.2.2.0.
+  ## 0.2.2.0
+
+  * Remove `AI_ADDRCONFIG` [#58](https://github.com/fpco/streaming-commons/issues/58)
+
+-------------------------------------------------------------------
 Tue Jun 16 11:14:37 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
