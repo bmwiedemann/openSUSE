@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 10 10:23:06 UTC 2020 - cloud-devel@suse.de
+
+- update to version 1.2.0
+  - Allow read-only Commands to bypass txns in execute()
+  - Add "inactivity_probe" parameter to "enable_connection_uri"
+  - Accept a Row as a result in AddCommand
+  - Update .gitreview for stable/ussuri
+  - Tempest job inherits from Neutron tempest OVN job
+  - Fix spurious test failure
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri
+
+-------------------------------------------------------------------
 Tue May 12 10:03:38 UTC 2020 - cloud-devel@suse.de
 
 - update to version 1.1.0

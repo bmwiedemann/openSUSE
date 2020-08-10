@@ -101,4 +101,19 @@
     <comment>Ussuri Update</comment>
     <requestid>803606</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2f39cd5be6a317de9c81b849ae51c3e2</srcmd5>
+    <version>1.2.0</version>
+    <time>1597064765</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.2.0
+  - Allow read-only Commands to bypass txns in execute()
+  - Add &quot;inactivity_probe&quot; parameter to &quot;enable_connection_uri&quot;
+  - Accept a Row as a result in AddCommand
+  - Update .gitreview for stable/ussuri
+  - Tempest job inherits from Neutron tempest OVN job
+  - Fix spurious test failure
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri</comment>
+    <requestid>825327</requestid>
+  </revision>
 </revisionlist>
