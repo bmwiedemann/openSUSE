@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 09 03:26:03 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1596783764.cd2b73a9:
+  * Add tidy-cpp target also to CMake build script and enable tidying headers
+  * Add option to skip initial SUT restarts on ipmi backend
+
+-------------------------------------------------------------------
 Thu Aug 06 08:42:48 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1596703356.52434c7c:
