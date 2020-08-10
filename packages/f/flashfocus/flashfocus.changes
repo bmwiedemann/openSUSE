@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 10 07:00:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.2:
+  * Added: #55 Emit warning when flash-fullscreen: true in sway.
+
+-------------------------------------------------------------------
 Mon Jul  6 08:18:58 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.1:
