@@ -45,7 +45,7 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  lua51
 BuildRequires:  pkgconfig >= 0.20
-BuildRequires:  wxWidgets-3_2-devel
+BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ffms2)
 BuildRequires:  pkgconfig(fftw3) >= 3.3
