@@ -946,4 +946,11 @@
     <user>dimstar_suse</user>
     <comment>Hunt for space on the rescue cd</comment>
   </revision>
+  <revision rev="116" vrev="116">
+    <srcmd5>48c2288c0c8f1552510d8340e605524a</srcmd5>
+    <version>unknown</version>
+    <time>1597045144</time>
+    <user>dimstar_suse</user>
+    <comment>- config.sh: Forcibly remove adwaita-icon-theme for kde and Rescue CD</comment>
+  </revision>
 </revisionlist>

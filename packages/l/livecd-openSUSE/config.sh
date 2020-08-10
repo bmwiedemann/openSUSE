@@ -32,6 +32,10 @@ rpm -q wodim && rpm -e --nodeps wodim
 # Actually a hack: xrdb requires this, but on livecds it's not used
 rpm -qa | grep "^cpp" | xargs -r rpm -e --nodeps
 
+# GTK 3 hard-requires this for some reason. The only GTK3 application is Firefox,
+# which has its own icons and we have breeze for the rest.
+[ "$desktop" = "kde" -o "$desktop" = "x11" ] && rpm -e --nodeps adwaita-icon-theme
+
 #--------------------------------------
 # enable and disable services
 
