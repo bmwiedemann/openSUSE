@@ -854,4 +854,12 @@ from the squid 3.x changelog</comment>
   * HTTP: validate Content-Length value prefix (CVE-2020-15049, bsc#1173455)</comment>
     <requestid>817633</requestid>
   </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>9b42b5421278e93650f5533cce5b9942</srcmd5>
+    <version>4.12</version>
+    <time>1597064465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825214</requestid>
+  </revision>
 </revisionlist>

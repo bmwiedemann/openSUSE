@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 24 15:03:53 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Change pinger and basic_pam_auth helper to use standard permissions.
+  pinger uses cap_net_raw=ep instead (bsc#1171569)
+- Move squid helpers under /usr/lib{,64}/squid for Tumbleweed and SLE16
+  Please adjust your config paths accordingly
+
+-------------------------------------------------------------------
 Sun Jun 21 05:28:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - squid 4.12:

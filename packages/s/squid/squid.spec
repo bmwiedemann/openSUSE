@@ -18,6 +18,13 @@
 
 %define         squidlibdir %{_libdir}/squid
 %define         squidconfdir %{_sysconfdir}/squid
+
+%if 0%{?suse_version} >= 1550
+%define         squidhelperdir %{squidlibdir}
+%else
+%define         squidhelperdir %{_sbindir}
+%endif
+
 Name:           squid
 Version:        4.12
 Release:        0
@@ -106,7 +113,7 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
 %configure \
 	--disable-strict-error-checking \
 	--sysconfdir=%{squidconfdir} \
-	--libexecdir=%{_sbindir} \
+	--libexecdir=%{squidhelperdir} \
 	--datadir=%{_datadir}/squid \
 	--sharedstatedir=%{_localstatedir}/squid \
 	--with-logdir=%{_localstatedir}/log/squid \
@@ -166,8 +173,11 @@ install scripts/*.pl doc/scripts
 cat > doc/scripts/cachemgr.readme <<-EOT
 	cachemgr.cgi will now be found in %{_libdir}/%{name}
 EOT
+
+%if 0%{?suse_version} <= 1500
 install -dpm 755 %{buildroot}/%{_libdir}/%{name}
 mv %{buildroot}%{_sbindir}/cachemgr.cgi %{buildroot}/%{_libdir}/%{name}
+%endif
 
 install -dpm 755 doc/contrib
 install %{SOURCE6} doc/contrib
@@ -221,8 +231,8 @@ if [ "$1" -gt "1" ]; then
 fi
 
 %post
-%set_permissions %{_sbindir}/basic_pam_auth
-%set_permissions %{_sbindir}/pinger
+# %%set_permissions %%{_sbindir}/basic_pam_auth
+# %%set_permissions %%{_sbindir}/pinger
 %set_permissions %{_localstatedir}/cache/squid/
 %set_permissions %{_localstatedir}/log/squid/
 %tmpfiles_create %{_tmpfilesdir}/squid.conf
@@ -232,8 +242,8 @@ fi
 %service_del_preun squid.service
 
 %verifyscript
-%verify_permissions -e %{_sbindir}/basic_pam_auth
-%verify_permissions -e %{_sbindir}/pinger
+# %%verify_permissions -e %%{_sbindir}/basic_pam_auth
+# %%verify_permissions -e %%{_sbindir}/pinger
 %verify_permissions -e %{_localstatedir}/cache/squid/
 %verify_permissions -e %{_localstatedir}/log/squid/
 
@@ -271,6 +281,7 @@ fi
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/snmp
 %dir %{_datadir}/snmp/mibs
+%dir %{_libdir}/%{name}
 %{_datadir}/%{name}/errors
 %{_datadir}/%{name}/icons
 %{_datadir}/%{name}/mime.conf
@@ -278,50 +289,50 @@ fi
 %{_datadir}/snmp/mibs/SQUID-MIB.txt
 %{_bindir}/purge
 %{_bindir}/squidclient
-%{_sbindir}/basic_db_auth
-%{_sbindir}/basic_fake_auth
-%{_sbindir}/basic_getpwnam_auth
-%{_sbindir}/basic_ldap_auth
-%{_sbindir}/digest_edirectory_auth
-%{_sbindir}/basic_ncsa_auth
-%{_sbindir}/basic_nis_auth
-%verify(not mode) %attr(2750,root,shadow) %{_sbindir}/basic_pam_auth
-%{_sbindir}/basic_pop3_auth
-%{_sbindir}/basic_radius_auth
-%{_sbindir}/basic_sasl_auth
-%{_sbindir}/basic_smb_auth
-%{_sbindir}/basic_smb_auth.sh
-%{_sbindir}/basic_smb_lm_auth
-%{_sbindir}/cert_tool
-%{_sbindir}/digest_file_auth
-%{_sbindir}/digest_ldap_auth
-%{_sbindir}/diskd
-%{_sbindir}/ext_edirectory_userip_acl
-%{_sbindir}/ext_file_userip_acl
-%{_sbindir}/ext_kerberos_ldap_group_acl
-%{_sbindir}/ext_ldap_group_acl
-%{_sbindir}/ext_session_acl
-%{_sbindir}/ext_unix_group_acl
-%{_sbindir}/ext_wbinfo_group_acl
-%{_sbindir}/helper-mux
-%{_sbindir}/log_db_daemon
-%{_sbindir}/log_file_daemon
-%{_sbindir}/negotiate_kerberos_auth
-%{_sbindir}/negotiate_kerberos_auth_test
-%{_sbindir}/negotiate_wrapper_auth
-%{_sbindir}/ntlm_fake_auth
-%{_sbindir}/ntlm_smb_lm_auth
-%verify(not user group mode caps) %attr(0750,root,squid) %{_sbindir}/pinger
-%{_sbindir}/security_fake_certverify
-%{_sbindir}/security_file_certgen
-%{_sbindir}/%{name}
-%{_sbindir}/storeid_file_rewrite
-%{_sbindir}/unlinkd
-%{_sbindir}/url_fake_rewrite
-%{_sbindir}/url_fake_rewrite.sh
-%{_sbindir}/url_lfs_rewrite
-%{_sbindir}/ext_time_quota_acl
-%{_sbindir}/rc%{name}
+%{squidhelperdir}/basic_db_auth
+%{squidhelperdir}/basic_fake_auth
+%{squidhelperdir}/basic_getpwnam_auth
+%{squidhelperdir}/basic_ldap_auth
+%{squidhelperdir}/digest_edirectory_auth
+%{squidhelperdir}/basic_ncsa_auth
+%{squidhelperdir}/basic_nis_auth
+%{squidhelperdir}/basic_pam_auth
+%{squidhelperdir}/basic_pop3_auth
+%{squidhelperdir}/basic_radius_auth
+%{squidhelperdir}/basic_sasl_auth
+%{squidhelperdir}/basic_smb_auth
+%{squidhelperdir}/basic_smb_auth.sh
+%{squidhelperdir}/basic_smb_lm_auth
+%{squidhelperdir}/cert_tool
+%{squidhelperdir}/digest_file_auth
+%{squidhelperdir}/digest_ldap_auth
+%{squidhelperdir}/diskd
+%{squidhelperdir}/ext_edirectory_userip_acl
+%{squidhelperdir}/ext_file_userip_acl
+%{squidhelperdir}/ext_kerberos_ldap_group_acl
+%{squidhelperdir}/ext_ldap_group_acl
+%{squidhelperdir}/ext_session_acl
+%{squidhelperdir}/ext_unix_group_acl
+%{squidhelperdir}/ext_wbinfo_group_acl
+%{squidhelperdir}/helper-mux
+%{squidhelperdir}/log_db_daemon
+%{squidhelperdir}/log_file_daemon
+%{squidhelperdir}/negotiate_kerberos_auth
+%{squidhelperdir}/negotiate_kerberos_auth_test
+%{squidhelperdir}/negotiate_wrapper_auth
+%{squidhelperdir}/ntlm_fake_auth
+%{squidhelperdir}/ntlm_smb_lm_auth
+%{squidhelperdir}/pinger
+%{squidhelperdir}/security_fake_certverify
+%{squidhelperdir}/security_file_certgen
+%{squidhelperdir}/storeid_file_rewrite
+%{squidhelperdir}/unlinkd
+%{squidhelperdir}/url_fake_rewrite
+%{squidhelperdir}/url_fake_rewrite.sh
+%{squidhelperdir}/url_lfs_rewrite
+%{squidhelperdir}/ext_time_quota_acl
+%{_sbindir}/squid
+%{_sbindir}/rcsquid
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/cachemgr.cgi
 
