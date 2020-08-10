@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-rfc5051
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 %global pkg_name rfc5051
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.4
+Version:        0.2
 Release:        0
 Summary:        Simple unicode collation as per RFC5051
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-text-devel
 
 %description
 This library implements 'i;unicode-casemap', the simple, non locale-sensitive
@@ -36,13 +37,13 @@ unicode collation algorithm described in RFC 5051
 done using text-icu, but that is a big dependency that depends on a large C
 library, and rfc5051 might be better for some purposes.
 
-Here is a list of strings sorted by the Prelude's 'sort' function: 'Abe Oeb abe
-ab&#233; oeb &#193;be &#196;be &#212;eb &#225;be &#228;be &#244;eb'.
+Here is a list of strings sorted by the Prelude's 'sort' function:
+
+Abe Oeb abe ab&#233; oeb &#193;be &#196;be &#212;eb &#225;be &#228;be &#244;eb.
 
 Here is the same list sorted by 'sortBy compareUnicode':
 
-'Abe abe ab&#233; &#193;be &#225;be &#196;be &#228;be Oeb oeb &#212;eb
-&#244;eb'.
+Abe abe ab&#233; &#193;be &#225;be &#196;be &#228;be Oeb oeb &#212;eb &#244;eb.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -63,6 +64,9 @@ This package provides the Haskell %{pkg_name} library development files.
 %install
 %ghc_lib_install
 
+%check
+%cabal_test
+
 %post devel
 %ghc_pkg_recache
 
@@ -73,5 +77,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc changelog.md
 
 %changelog
