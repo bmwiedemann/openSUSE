@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 24 02:00:22 UTC 2020 - psimons@suse.com
+
+- Update lifted-async to version 0.10.1.2.
+  ## v0.10.1.2 - 2020-07-23
+
+  * Relax upper version bound for tasty-expected-failure
+
+-------------------------------------------------------------------
 Tue Jun 30 02:00:21 UTC 2020 - psimons@suse.com
 
 - Update lifted-async to version 0.10.1.1.
