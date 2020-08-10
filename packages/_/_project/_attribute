@@ -168,7 +168,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = KDE:Qt:5.15 Cloud:Seafile M17N:l10n.opensuse.org
+devel-whitelist = KDE:Qt:5.15 Cloud:Seafile M17N:l10n.opensuse.org X11:Solus
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
