@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 31 05:56:28 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.0.9:
+  * Avoid downloading existing blocks during sync download
+  * Fix crash when cancel syncing before a library is synced
+  * Fix incorrect error message in some error situations
+
+-------------------------------------------------------------------
 Mon Jun  8 08:34:19 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 7.0.8 (no changelog)

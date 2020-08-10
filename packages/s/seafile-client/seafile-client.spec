@@ -18,7 +18,7 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           seafile-client
-Version:        7.0.8
+Version:        7.0.9
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
@@ -56,6 +56,7 @@ BuildRequires:  sqlite-devel
 %else
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-common-devel
+BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Designer)
@@ -81,9 +82,14 @@ Seafile also allows users to create groups and easily sharing files into groups.
 %patch1 -p1
 
 %build
+# set path, otherwise qmake is not found
+export PATH=$PATH:/usr/lib64/qt5/bin/
 export CFLAGS="%{optflags} -fPIE -pie"
 export CXXFLAGS="%{optflags} -fPIE -pie"
-%cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=%{_prefix} -DBUILD_SHIBBOLETH_SUPPORT=ON ../
+%cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+    -DBUILD_SHIBBOLETH_SUPPORT=ON ..
 %cmake_build
 
 %install
