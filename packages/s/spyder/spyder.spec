@@ -31,9 +31,9 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       %{name}-lang
 Requires:       python3-Pygments >= 2.0
@@ -68,11 +68,11 @@ Requires:       python3-spyder-kernels >= 1.9.2
 Requires:       python3-watchdog
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
-Recommends:     %{name}-line-profiler
-Recommends:     %{name}-memory-profiler
-Recommends:     %{name}-notebook
-Recommends:     %{name}-terminal
-Recommends:     %{name}-unittest
+Suggests:       %{name}-line-profiler
+Suggests:       %{name}-memory-profiler
+Suggests:       %{name}-notebook
+Suggests:       %{name}-terminal
+Suggests:       %{name}-unittest
 Recommends:     python3-Cython >= 0.21
 Recommends:     python3-Pillow
 Recommends:     python3-matplotlib >= 2.0.0
@@ -93,54 +93,55 @@ Obsoletes:      spyder3-profiler < %{version}
 Obsoletes:      spyder3-pylint < %{version}
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module Cython >= 0.21}
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module Pygments >= 2.0}
+BuildRequires:  %{python_module QDarkStyle >= 2.8}
+BuildRequires:  %{python_module QtAwesome >= 0.5.7}
+BuildRequires:  %{python_module QtPy >= 1.5.0}
+BuildRequires:  %{python_module Sphinx >= 0.6.6}
+BuildRequires:  %{python_module atomicwrites >= 1.2.0}
+BuildRequires:  %{python_module chardet >= 2.0.0}
+BuildRequires:  %{python_module cloudpickle >= 0.5.0}
+BuildRequires:  %{python_module diff-match-patch >= 20181111}
+BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module intervaltree}
+BuildRequires:  %{python_module ipython >= 4.0}
+BuildRequires:  %{python_module jedi >= 0.17.1}
+BuildRequires:  %{python_module keyring}
+BuildRequires:  %{python_module matplotlib >= 2.0.0}
+BuildRequires:  %{python_module matplotlib-qt5}
+BuildRequires:  %{python_module matplotlib-tk}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module nbconvert >= 4.0}
+BuildRequires:  %{python_module numpydoc >= 0.6.0}
+BuildRequires:  %{python_module opengl}
+BuildRequires:  %{python_module pandas >= 0.13.1}
+BuildRequires:  %{python_module parso >= 0.7.0}
+BuildRequires:  %{python_module pexpect >= 4.4.0}
+BuildRequires:  %{python_module pickleshare >= 0.4}
+BuildRequires:  %{python_module psutil >= 5.3}
+BuildRequires:  %{python_module pyaml}
+BuildRequires:  %{python_module pygments >= 2.0}
+BuildRequires:  %{python_module pylint >= 1.0}
+BuildRequires:  %{python_module pytest >= 5.0}
+BuildRequires:  %{python_module pytest-lazy-fixture}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-ordering}
+BuildRequires:  %{python_module pytest-qt}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xvfb}
+BuildRequires:  %{python_module python-language-server >= 0.34.0}
+BuildRequires:  %{python_module pyxdg >= 0.26}
+BuildRequires:  %{python_module pyzmq >= 17}
+BuildRequires:  %{python_module qt5 >= 5.5}
+BuildRequires:  %{python_module qtconsole >= 4.6.0}
+BuildRequires:  %{python_module qtwebengine-qt5}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module spyder-kernels >= 1.9.2}
+BuildRequires:  %{python_module sympy >= 0.7.3}
+BuildRequires:  %{python_module watchdog}
 BuildRequires:  git-core
-BuildRequires:  python3-Cython >= 0.21
-BuildRequires:  python3-Pillow
-BuildRequires:  python3-Pygments >= 2.0
-BuildRequires:  python3-QDarkStyle >= 2.8
-BuildRequires:  python3-QtAwesome >= 0.5.7
-BuildRequires:  python3-QtPy >= 1.5.0
-BuildRequires:  python3-Sphinx >= 0.6.6
-BuildRequires:  python3-atomicwrites >= 1.2.0
-BuildRequires:  python3-chardet >= 2.0.0
-BuildRequires:  python3-cloudpickle >= 0.5.0
-BuildRequires:  python3-diff-match-patch >= 20181111
-BuildRequires:  python3-flaky
-BuildRequires:  python3-intervaltree
-BuildRequires:  python3-ipython >= 4.0
-BuildRequires:  python3-jedi >= 0.17.1
-BuildRequires:  python3-keyring
-BuildRequires:  python3-matplotlib >= 2.0.0
-BuildRequires:  python3-matplotlib-qt5
-BuildRequires:  python3-matplotlib-tk
-BuildRequires:  python3-mock
-BuildRequires:  python3-nbconvert >= 4.0
-BuildRequires:  python3-numpydoc >= 0.6.0
-BuildRequires:  python3-pandas >= 0.13.1
-BuildRequires:  python3-parso >= 0.7.0
-BuildRequires:  python3-pexpect >= 4.4.0
-BuildRequires:  python3-pickleshare >= 0.4
-BuildRequires:  python3-psutil >= 5.3
-BuildRequires:  python3-pyaml
-BuildRequires:  python3-pygments >= 2.0
-BuildRequires:  python3-pylint >= 1.0
-BuildRequires:  python3-pytest >= 5.0
-BuildRequires:  python3-pytest-lazy-fixture
-BuildRequires:  python3-pytest-mock
-BuildRequires:  python3-pytest-ordering
-BuildRequires:  python3-pytest-qt
-BuildRequires:  python3-pytest-timeout
-BuildRequires:  python3-pytest-xvfb
-BuildRequires:  python3-python-language-server >= 0.34.0
-BuildRequires:  python3-pyxdg >= 0.26
-BuildRequires:  python3-pyzmq >= 17
-BuildRequires:  python3-qt5 >= 5.5
-BuildRequires:  python3-qtconsole >= 4.6.0
-BuildRequires:  python3-qtwebengine-qt5
-BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 1.9.2
-BuildRequires:  python3-sympy >= 0.7.3
-BuildRequires:  python3-watchdog
 BuildRequires:  xdpyinfo
 %endif
 
@@ -231,6 +232,10 @@ sed -i "s|JEDI_REQVER = '=|JEDI_REQVER = '>=|" spyder/dependencies.py
 # parso was pinned because of JEDI (PR#11476 and PR#11809)
 sed -i "s|PARSO_REQVER = '=|PARSO_REQVER = '>=|" spyder/dependencies.py
 
+# importing qtpy early causes trap/breakpoint fails with ipythonconsole
+# and mainwindow tests; removing despite warning comment not to do it (!?)
+sed -i "/from qtpy import QtWebEngineWidgets/ d" runtests.py
+
 # Upstream brings its fixed version pyls and spyder-kernels for its
 # test environment, but we want to test against installed packages.
 rm -r external-deps/*
@@ -270,49 +275,51 @@ export PYTHONDONTWRITEBYTECODE=1
 
 # Upstream splits the tests into slow and fast ones.
 # Add all tests which must be skipped into $skiptests or $skipslowtests
-# separated by whitespace.
-skiptests=""
-skipslowtests=""
+# separated by ";".
+
+# the click/tab press is not sent by the bot
+skiptests+=";test_tab_copies_find_to_replace"
+# requires internet connection
+skiptests+=";test_github_backend"
+# we modified the dependencies in %%prep, this is a pure developer test
+skiptests+=";test_dependencies_for_spyder_dialog_in_sync"
+# tests not suitable for CIs or OBS as evident from the last assert which fails here
+skiptests+=";test_connection_dialog_remembers_input_with_ssh_passphrase"
+skiptests+=";test_connection_dialog_remembers_input_with_password"
+# runs into qtbot timeouts: wrong captures
+skiptests+=";test_dbg_input"
+# runs into timeouts
+skiptests+=";test_mpl_backend_change"
+# different PyQT version?
+skiptests+=";(test_objectexplorer_collection_types and params5)"
+# qtbot timeout
+skiptests+=";test_run_python_script_in_terminal"
+# segfault
+skiptests+=";test_header_encoding"
 
 # segfault
-skiptests+=" test_apps_dialog"
-# the click/tab press is not sent by the bot
-skiptests+=" test_tab_copies_find_to_replace"
-# requires internet connection
-skiptests+=" test_github_backend"
-# we modified the dependencies in %%prep, this is a pure developer test
-skiptests+=" test_dependencies_for_spyder_dialog_in_sync"
-# tests not suitable for CIs or OBS as evident from the last assert which fails here
-skiptests+=" test_connection_dialog_remembers_input_with_ssh_passphrase"
-skiptests+=" test_connection_dialog_remembers_input_with_password"
-# runs into timeouts
-skiptests+=" test_dbg_input"
-# runs into timeouts
-skiptests+=" test_mpl_backend_change"
-# different PyQT version?
-skiptests+=" test_objectexplorer_collection_types"
-# timeout
-skiptests+=" test_run_python_script_in_terminal"
-# timeout
-skiptests+=" test_change_format_emits_signal"
-
-# segfault on obs (but not locally?)
-skipslowtests+=" test_arrayeditor_edit_complex_array"
+skipslowtests+=";test_arrayeditor_edit_complex_array"
 # completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)
-skipslowtests+=" test_completions"
-# Would require network connections
-skipslowtests+=" test_update"
+skipslowtests+=";(test_introspection and test_completions)"
+# test_update.py would require network connections
+skipslowtests+=";(test_update and not test_no_update)"
 # runs into timeout on obs
-skipslowtests+=" test_hide_widget_completion"
+skipslowtests+=";test_hide_widget_completion"
 # tries to download stuff
-skipslowtests+=" test_kite_install"
+skipslowtests+=";test_kite_install"
 # no warnings returned here. PyLS/LSP problem? It works in the installed application, though.
-skipslowtests+=" test_ignore_warnings test_move_warnings test_get_warnings"
+skipslowtests+=";test_ignore_warnings; test_move_warnings; test_get_warnings; test_update_warnings"
+# new fail: qtbot timeout
+skipslowtests+=";test_get_hints"
+# ultimate rationale: skip whole mainwindow as these tests are leaking again!
+# https://github.com/spyder-ide/spyder/issues/13483
+skipslowtests+=";test_mainwindow"
 
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 for s in skiptests skipslowtests; do
-    declare ${s}_p="$($python -c "import sys; print(' or '.join('${!s}'.split()))")"
+    declare ${s}_p="$($python -c "import sys; print(' or '.join('${!s}'.strip(';').split(';')))")"
 done
+
 $python runtests.py -k "not ($skiptests_p)" --timeout 1800
 $python runtests.py --run-slow -k "not ($skipslowtests_p)" --timeout 1800
 }

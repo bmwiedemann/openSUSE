@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug  7 18:20:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- singlespec automatic conversion of "Requires: python-*" does not
+  work for the packagename without "python-"
+- only suggest external more intrusive plugins
+  
+-------------------------------------------------------------------
+Wed Aug  5 21:03:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- move to Python singlespec
+- do not preload qtpy in runtests.py: avoids "Trace/breakpoint traps"
+- skip newly failing tests because of meta change
+- skip the slow mainwindow test again: the mainwindow fixture is
+  leaking file descriptors and causes undeterministic segfaults
+  gh#spyder-ide/spyder#13483
+
+-------------------------------------------------------------------
 Fri Jul 10 19:58:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 4.1.4
