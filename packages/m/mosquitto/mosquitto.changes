@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  2 18:14:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Lets always build with support for systemd and websockets and
+  drop all the related ifdef's.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Jul 29 20:15:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Fix for the apparmor profile to properly allow reading files
+  from /etc/mosquitto/conf.d/
+
+-------------------------------------------------------------------
 Tue May 26 06:36:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.10

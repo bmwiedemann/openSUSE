@@ -10,7 +10,7 @@
  	/etc/mosquitto/mosquitto.conf r,
  	/etc/mosquitto/ca_certificates/* r,
  	/etc/mosquitto/certs/* r,
-+	/etc/mosquitto/conf.d r,
++	/etc/mosquitto/conf.d/ r,
  	/etc/mosquitto/conf.d/* r,
  	/var/lib/mosquitto/ r,
  	/var/lib/mosquitto/mosquitto.db rwk,
