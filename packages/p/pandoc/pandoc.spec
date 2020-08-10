@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.10
+Version:        2.10.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -42,7 +42,9 @@ BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-blaze-markup-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-case-insensitive-devel
-BuildRequires:  ghc-cmark-gfm-devel
+BuildRequires:  ghc-commonmark-devel
+BuildRequires:  ghc-commonmark-extensions-devel
+BuildRequires:  ghc-commonmark-pandoc-devel
 BuildRequires:  ghc-connection-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-data-default-devel
