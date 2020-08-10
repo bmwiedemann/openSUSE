@@ -939,4 +939,11 @@
     <user>dimstar_suse</user>
     <comment>- Drop okular-lang from the KDE Live CD - hunting for space</comment>
   </revision>
+  <revision rev="115" vrev="115">
+    <srcmd5>d67bcf311b0abad2da20ad032220a51b</srcmd5>
+    <version>unknown</version>
+    <time>1597043013</time>
+    <user>dimstar_suse</user>
+    <comment>Hunt for space on the rescue cd</comment>
+  </revision>
 </revisionlist>
