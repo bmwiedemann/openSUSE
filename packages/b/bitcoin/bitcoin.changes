@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:02:30 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.20.1
+  * Mining
+    * Fix GBT: Restore "!segwit" and "csv" to "rules" key
+  * P2P protocol and network code
+    * Replace automatic bans with discouragement filter
+  * Wallet
+    * Handle concurrent wallet loading
+    * Minimal fix to restore conflicted transaction notifications 
+  * RPC and other APIs
+    * Increment input value sum only once per UTXO in decodepsbt
+    * psbt: Increment input value sum only once per UTXO in decodepsbt
+    * psbt: Include and allow both non_witness_utxo and witness_utxo for segwit inputs
+  * GUI
+    * Add missing QPainterPath include
+    * update Qt base translations for macOS release
+  * Misc
+    * util: Don't reference errno when pthread fails
+    * Fix locking on WSL using flock instead of fcntl
+- Remove fix-qpainterpath.patch
+
+-------------------------------------------------------------------
 Fri Jul 24 04:46:06 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add 7GB min disk space and change memory setting to physicalmemory
