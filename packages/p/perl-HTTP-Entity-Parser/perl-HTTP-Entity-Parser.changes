@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 03:10:27 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-HTTP-Entity-Parser/Changes
+
+  0.24 2020-08-05T05:36:49Z
+
+     - encode recursively nested Arrayrefs and Hashrefs in JSON #13
+
+-------------------------------------------------------------------
 Fri Jul 10 09:29:30 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.23
