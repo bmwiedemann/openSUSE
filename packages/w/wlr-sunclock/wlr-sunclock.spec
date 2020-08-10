@@ -17,7 +17,7 @@
 
 
 Name:           wlr-sunclock
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Wayland desktop widget to show to the sun's shadows on earth
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/sentriz/wlr-sunclock
 Source:         https://github.com/sentriz/wlr-sunclock/archive/v%{version}.tar.gz
 BuildRequires:  gtk-layer-shell-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 
