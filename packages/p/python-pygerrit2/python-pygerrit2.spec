@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pygerrit2
-Version:        2.0.10
+Version:        2.0.13
 Release:        0
 Summary:        Client library for interacting with Gerrit code review
 License:        MIT
@@ -26,16 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/dpursehouse/pygerrit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygerrit2/pygerrit2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata >= 0.22
 Requires:       python-pbr >= 0.8.0
-Requires:       python-requests >= 2.10.0
+Requires:       python-requests >= 2.20.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module importlib-metadata >= 0.22}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr >= 0.8.0}
 BuildRequires:  %{python_module requests >= 2.20.0}

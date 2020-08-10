@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  7 15:04:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.0.13
+  * Return result from review() method
+  * Support explicit anonymous access
+  * Debug log when .netrc could not be parsed
+  * Remove unnecessary string concatenation
+
+-------------------------------------------------------------------
 Fri Mar 20 08:26:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.0.10
