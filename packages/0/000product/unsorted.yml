@@ -1366,6 +1366,12 @@ unsorted:
   - btrfs-extent-same 
   - btrfsprogs-static 
   - bucklespring 
+  - budgie-calendar-applet 
+  - budgie-calendar-applet-lang 
+  - budgie-desktop 
+  - budgie-desktop-devel 
+  - budgie-desktop-doc 
+  - budgie-desktop-lang 
   - buffer 
   - bugzilla 
   - bugzilla-lang-de 
@@ -4024,6 +4030,12 @@ unsorted:
   - ghc-cmdargs-devel 
   - ghc-colour 
   - ghc-colour-devel 
+  - ghc-commonmark 
+  - ghc-commonmark-devel 
+  - ghc-commonmark-extensions 
+  - ghc-commonmark-extensions-devel 
+  - ghc-commonmark-pandoc 
+  - ghc-commonmark-pandoc-devel 
   - ghc-comonad 
   - ghc-comonad-devel 
   - ghc-compiler 
@@ -4191,6 +4203,10 @@ unsorted:
   - ghc-ghc-lib-parser-ex-devel 
   - ghc-ghci 
   - ghc-ghci-devel 
+  - ghc-ghcid 
+  - ghc-ghcid-devel 
+  - ghc-git-lfs 
+  - ghc-git-lfs-devel 
   - ghc-githash 
   - ghc-githash-devel 
   - ghc-gitrev 
@@ -4261,6 +4277,8 @@ unsorted:
   - ghc-http-api-data-devel 
   - ghc-http-client 
   - ghc-http-client-devel 
+  - ghc-http-client-restricted 
+  - ghc-http-client-restricted-devel 
   - ghc-http-client-tls 
   - ghc-http-client-tls-devel 
   - ghc-http-conduit 
@@ -4756,6 +4774,7 @@ unsorted:
   - ghc-zip-archive-devel 
   - ghc-zlib 
   - ghc-zlib-devel 
+  - ghcid 
   - ghex-devel 
   - ghostscript-devel 
   - ghostscript-mini 
@@ -8850,6 +8869,9 @@ unsorted:
   - libbtrfs-devel 
   - libbtrfsutil-devel 
   - libbtrfsutil1 
+  - libbudgie-plugin0 
+  - libbudgie-private0 
+  - libbudgietheme0 
   - libbuffer0_3 
   - libbullet-devel 
   - libbullet2_89 
@@ -11927,6 +11949,7 @@ unsorted:
   - libratbag-devel 
   - libratbag-tools 
   - librav1e0-32bit: [x86_64] 
+  - libraven0 
   - libraw-devel 
   - libraw-devel-static 
   - libraw-tools 
@@ -19378,6 +19401,7 @@ unsorted:
   - python3-PyCBC 
   - python3-PyChart 
   - python3-PyChromecast 
+  - python3-PyCondor 
   - python3-PyDispatcher 
   - python3-PyECLib 
   - python3-PyFxA 
@@ -20242,6 +20266,7 @@ unsorted:
   - python3-encore 
   - python3-entrypoint2 
   - python3-entrypoints 
+  - python3-environ-config 
   - python3-environmental-override 
   - python3-envisage 
   - python3-enzyme 
@@ -20418,6 +20443,7 @@ unsorted:
   - python3-google-cloud-speech 
   - python3-google-cloud-storage 
   - python3-google-cloud-translate 
+  - python3-google-pasta 
   - python3-google-resumable-media 
   - python3-googleapis-common-protos 
   - python3-googlemaps 
@@ -21406,11 +21432,15 @@ unsorted:
   - python3-pytest-click 
   - python3-pytest-codestyle 
   - python3-pytest-console-scripts 
+  - python3-pytest-cookies 
   - python3-pytest-cov 
   - python3-pytest-datadir 
+  - python3-pytest-describe 
   - python3-pytest-django 
+  - python3-pytest-djangoapp 
   - python3-pytest-doctestplus 
   - python3-pytest-dotenv 
+  - python3-pytest-echo 
   - python3-pytest-env 
   - python3-pytest-error-for-skips 
   - python3-pytest-expect 
@@ -21450,6 +21480,7 @@ unsorted:
   - python3-pytest-reorder 
   - python3-pytest-repeat 
   - python3-pytest-rerunfailures 
+  - python3-pytest-responsemock 
   - python3-pytest-runner 
   - python3-pytest-server-fixtures 
   - python3-pytest-services 
@@ -21465,6 +21496,7 @@ unsorted:
   - python3-pytest-testconfig 
   - python3-pytest-timeout 
   - python3-pytest-tldr 
+  - python3-pytest-toolbox 
   - python3-pytest-tornado 
   - python3-pytest-tornasync 
   - python3-pytest-translations 
@@ -33748,6 +33780,7 @@ unsorted:
   - typelib-1_0-BlockDev-2_0 
   - typelib-1_0-BraseroBurn-3_2_0 
   - typelib-1_0-BraseroMedia-3_2_0 
+  - typelib-1_0-Budgie-1_0 
   - typelib-1_0-BuzztraxCore-1_1 
   - typelib-1_0-BuzztraxCore-1_1-32bit: [x86_64] 
   - typelib-1_0-BuzztraxIc-1_1 
