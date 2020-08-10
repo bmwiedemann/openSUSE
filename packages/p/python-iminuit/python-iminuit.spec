@@ -1,7 +1,7 @@
 #
 # spec file for package python-iminuit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Python2 support dropped since version 1.4.0
+%define skip_python2 1
 Name:           python-iminuit
-Version:        1.3.8
+Version:        1.4.9
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
@@ -36,7 +38,9 @@ Requires:       python-numpy >= 1.11.3
 Recommends:     python-matplotlib
 Recommends:     python-scipy
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
+# Fix unresolved status for Leap 15.x on account of multiple choices for python3-importlib-metadata (python3-importlib-metadata and python3-importlib_metadata)
+BuildRequires:  %{python_module importlib-metadata}
 # /SECTION
 %python_subpackages
 
@@ -59,9 +63,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-mv iminuit iminuit_temp
 %pytest_arch %{buildroot}%{$python_sitearch}/iminuit
-mv iminuit_temp iminuit
 
 %files %{python_files}
 %doc README.rst
