@@ -1,0 +1,237 @@
+-------------------------------------------------------------------
+Sun Aug  9 21:02:01 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Rename and recommend doc package
+
+-------------------------------------------------------------------
+Sun Aug  9 19:40:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Create separate lang package
+
+-------------------------------------------------------------------
+Sat Aug  8 12:24:31 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Move vala to correct directory
+- Correct typelib library name
+- Removed fix-meson-build.patch: contained in upstream
+- Removed support-libmutter2.patch: contained in upstream
+- Added support-libmutter6.patch: adds support for mutter 3.36
+- Correct license name
+- Switch to verified sources:
+  * Add source.asc and GPG keyring
+- Add new BuildRequires:
+  * pkgconfig(libnotify)
+  * pkgconfig(gnome-settings-daemon)
+  * pkgconfig(alsa)
+- Updated BuildRequires:
+  * pkgconfig(libmutter-2) >> pkgconfig(libmutter-6)
+- Add new library libbudgie-private0
+- Update to version 10.5.1:
+  * For the changes see
+    https://getsol.us/2019/10/03/budgie-and-its-army-of-gnomes/
+
+-------------------------------------------------------------------
+Sun Apr 15 20:16:38 UTC 2018 - matthias.eliasson@gmail.com
+
+- Add support-libmutter2.patch: This to support the version of 
+  mutter in openSUSE:Factory.
+- Change copyright year to 2018
+- Change licenses to SPDX-3.0 version
+- Modernize spec-file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov 30 02:35:20 UTC 2017 - qantas94heavy@gmail.com
+
+- Add fix-meson-build.patch: fixes gvc subproject sandbox issue
+  with Meson 0.43.0
+
+-------------------------------------------------------------------
+Mon Sep 18 18:30:34 UTC 2017 - mailaender@opensuse.org
+
+- Update pkgconfig libmutter-0 to libmutter-1
+
+-------------------------------------------------------------------
+Sun Aug 20 07:39:58 UTC 2017 - mailaender@opensuse.org
+
+- Drop sed fix bdugie-desktop typo (resolved upstream)
+
+-------------------------------------------------------------------
+Tue Aug 15 18:12:38 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 10.4 "Irish Summer"
+- Drop upstream gtk-3.22.14+raven-crash-fix.patch
+- Drop upstream meson-0.41.patch
+- Drop upstream 0001-wm-Default-to-an-empty-rpath.patch
+
+-------------------------------------------------------------------
+Mon Jul 24 02:16:59 UTC 2017 - matcherapy@gmail.com
+
+- fix empty rpath 0001-wm-Default-to-an-empty-rpath.patch
+
+-------------------------------------------------------------------
+Sat Jul 22 12:58:29 UTC 2017 - mailaender@opensuse.org
+
+- Fix build with meson 0.41 using meson-0.41.patch
+
+-------------------------------------------------------------------
+Tue Jun 13 14:25:23 UTC 2017 - jengelh@inai.de
+
+- Redo descriptions.
+
+-------------------------------------------------------------------
+Sun Jun  4 09:31:04 UTC 2017 - mailaender@opensuse.org
+
+- Add gtk-3.22.14+raven-crash-fix.patch to fix #918
+
+-------------------------------------------------------------------
+Fri Apr 21 23:06:59 UTC 2017 - dev+novell@devmotion.de
+
+- Update to v10.3.1
+- See https://github.com/budgie-desktop/budgie-desktop/releases/tag/v10.3.1
+
+-------------------------------------------------------------------
+Fri Jan 27 07:16:21 UTC 2017 - mailaender@opensuse.org
+
+- Add https://en.opensuse.org/SourceUrls
+- Fix standard-dir-owned-by-package rpmlint warnings
+- Implement shared library policy
+
+-------------------------------------------------------------------
+Fri Dec 16 09:17:27 UTC 2016 - ikey.doherty@gmail.com
+
+- Update to v10.2.9 - a maintenance release
+- See: https://github.com/budgie-desktop/budgie-desktop/releases/tag/v10.2.9
+
+-------------------------------------------------------------------
+Wed Nov  9 19:46:01 UTC 2016 - sfalken@opensuse.org
+
+- Fixed /usr/bin ownership conflict for F24 
+
+-------------------------------------------------------------------
+Sat Nov  5 18:57:44 UTC 2016 - sfalken@opensuse.org
+
+- Added docbook2X buildrequire for Fedora, builds for F24 now
+
+-------------------------------------------------------------------
+Sat Nov  5 17:22:37 UTC 2016 - sfalken@opensuse.org
+
+- Added conditional BuildDeps for Fedora
+
+-------------------------------------------------------------------
+Sat Nov  5 05:37:24 UTC 2016 - sfalken@opensuse.org
+
+- Did some spec cleanup, for maintainability and clarity
+
+-------------------------------------------------------------------
+Sat Oct 29 07:41:05 UTC 2016 - ikey.doherty@gmail.com
+
+- Yet another Fedora change. Strongly considering dropping support for them.
+
+-------------------------------------------------------------------
+Sat Oct 29 07:38:31 UTC 2016 - ikey.doherty@gmail.com
+
+- Explicitly require gtk-doc for Fedora.
+
+-------------------------------------------------------------------
+Sat Oct 29 07:31:44 UTC 2016 - ikey.doherty@gmail.com
+
+- Fix even more build failures with ancient Vala. Circa 1940.
+
+-------------------------------------------------------------------
+Sat Oct 29 06:42:27 UTC 2016 - ikey.doherty@gmail.com
+
+- Reflow patch series specifically to this OBS repo
+- Fix build failures on Fedora 22, 23, and openSUSE Leap 42.1 by
+  allowing old ibus versions and removing use of Source.REMOVE which
+  is unavailable in their vala versions.
+
+-------------------------------------------------------------------
+Sat Oct 29 06:17:28 UTC 2016 - ikey.doherty@gmail.com
+
+- Update to Budgie Desktop 10.2.8
+- Sync some essential patches for an enhanced experience
+
+-------------------------------------------------------------------
+Thu Jul 28 00:57:07 UTC 2016 - ikey.doherty@gmail.com
+
+- Remove the screensaver component for now
+
+-------------------------------------------------------------------
+Mon Jul 11 23:35:08 UTC 2016 - ikey.doherty@gmail.com
+
+- Update to v10.2.6
+  - https://github.com/solus-project/budgie-desktop/releases/tag/v10.2.6 
+
+-------------------------------------------------------------------
+Sun Mar 27 20:48:50 UTC 2016 - ikey.doherty@gmail.com
+
+- Fix version number in documentation - we didn't update it in this
+  point release
+
+-------------------------------------------------------------------
+Sun Mar 27 20:40:02 UTC 2016 - ikey.doherty@gmail.com
+
+- Update to v10.2.5, and exclude .la files
+
+-------------------------------------------------------------------
+Sun Feb 28 02:29:22 UTC 2016 - ikey.doherty@gmail.com
+
+- Account for html files too 
+
+-------------------------------------------------------------------
+Sun Feb 28 02:21:53 UTC 2016 - ikey.doherty@gmail.com
+
+- Fix noobish packaging issues
+
+-------------------------------------------------------------------
+Sun Feb 28 02:10:21 UTC 2016 - ikey.doherty@gmail.com
+
+- Add -docs subpackage
+
+-------------------------------------------------------------------
+Sun Feb 28 02:00:07 UTC 2016 - ikey.doherty@gmail.com
+
+- Update to 10.2.4 
+
+-------------------------------------------------------------------
+Sun Jan  3 04:12:26 UTC 2016 - ikey.doherty@gmail.com
+
+- Fix many linking/portability issues on other distributions
+- Fix nm-applet-likes-small-holes bug (size of x11 tray icons)
+- Respect and follow screen resolution changes
+- Fix background corruption on resume with NVIDIA gpus
+- Fix use of colours for backgrounds
+- Replace polkit-gnome dependency with our own new budgie-polkit       
+- Refactor much of the codebase into smallerl ibraries
+- Updated translations
+- Fix bug #166 (firefox becomes homeless)
+- Fix uhm-is-that-youtube-i-see-through-gedit-thar transparency issue
+- Consumed several pizzas
+
+-------------------------------------------------------------------
+Wed Dec 30 23:11:17 UTC 2015 - ikey.doherty@gmail.com
+
+- Use find_lang due to borked directory ownership
+
+-------------------------------------------------------------------
+Wed Dec 30 22:30:49 UTC 2015 - ikey.doherty@gmail.com
+
+- Drop requirements down to GNOME 3.16 stack for openSUSE Leap 42 users
+- Introduce many translations
+- Fix derpiness of panel when using Raven (moving screen edge)
+- Partially fix mumble notifications (more to happen here yet)
+- Use unique desktop name (XDG_CURRENT_DESKTOP=Budgie:GNOME)
+- Ship our own nm-applet .desktop launcher until we have our own network settings
+- Go back to "view-grid-symbolic" icon
+
+-------------------------------------------------------------------
+Mon Dec 28 22:45:44 UTC 2015 - ikey.doherty@gmail.com
+
+- Drop gnome-control-center dependency, causing issues on Fedora
+- Apply some patches to enable building on 3.16 GNOME stack (from git)
+
+-------------------------------------------------------------------
+Mon Dec 28 22:04:40 UTC 2015 - ikey.doherty@gmail.com
+
+- Initial packaging for openSUSE:Factory and Fedora 23
+
