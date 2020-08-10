@@ -17,7 +17,7 @@
 
 
 Name:           perl-Sereal-Encoder
-Version:        4.017
+Version:        4.018
 Release:        0
 %define cpan_name Sereal-Encoder
 Summary:        Binary serialization module for Perl (encoder part)
