@@ -18,14 +18,15 @@
 
 %global pkg_name data-fix
 Name:           ghc-%{pkg_name}
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Fixpoint data types
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-deepseq-devel
+BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
 
 %description
@@ -46,7 +47,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -64,5 +64,6 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.md
 
 %changelog
