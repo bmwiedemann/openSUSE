@@ -17,7 +17,7 @@
 
 
 Name:           nomacs
-Version:        3.14
+Version:        3.16.224
 Release:        0
 Summary:        Lightweight image viewer
 License:        GPL-3.0-or-later
@@ -56,7 +56,6 @@ differences (e.g. schemes of architects to show the progress).
 
 %prep
 %setup -q
-sed -i 's/\r$//g' ImageLounge/Readme/*
 
 %build
 pushd ImageLounge/
@@ -76,7 +75,7 @@ pushd ImageLounge/
 popd
 
 rm %{buildroot}%{_libdir}/lib%{name}*.so
-%suse_update_desktop_file %{name}
+%suse_update_desktop_file org.%{name}.ImageLounge
 %find_lang %{name} --with-qt
 # find_lang doesn't escape paths, but language paths contain "Image Lounge" with space,
 # we'll escape the paths manually
@@ -88,16 +87,16 @@ sed -i -E 's|(%{_datadir}.*)$|"\1"|' %{name}.lang
 %postun -p /sbin/ldconfig
 
 %files
-%license ImageLounge/Readme/COPYRIGHT ImageLounge/Readme/LICENSE*
-%doc ImageLounge/Readme/README
 %{_bindir}/%{name}
 %{_libdir}/lib%{name}*.so.*
 %{_datadir}/%{name}/
 %exclude "%{_datadir}/nomacs/Image Lounge/translations/"
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.*
+%{_datadir}/applications/org.%{name}.ImageLounge.desktop
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%{_datadir}/icons/hicolor/scalable/apps/org.%{name}.ImageLounge.svg
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.%{name}.ImageLounge.appdata.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
 %files lang -f %{name}.lang

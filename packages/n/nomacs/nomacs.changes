@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  7 00:29:08 UTC 2020 - Namor Barcode <z1trus@gmx.com> - 3.16.224
+
+- Update to version 3.16.224
+   * avif support
+   * cr3, pcx support added
+   * default system theme added
+   * edit: adds blur
+   * translations updated
+   * plugins: adds composite image plugin
+   * bug fixes
+
+-------------------------------------------------------------------
 Mon Mar 16 18:29:49 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.14:

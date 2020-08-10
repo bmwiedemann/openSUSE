@@ -183,4 +183,12 @@
     <comment>- Update to version 3.14.</comment>
     <requestid>785740</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>787137c14cadb4f7fc193dda465903aa</srcmd5>
+    <version>3.16.224</version>
+    <time>1597064234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824894</requestid>
+  </revision>
 </revisionlist>
