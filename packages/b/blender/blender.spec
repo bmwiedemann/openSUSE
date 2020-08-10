@@ -2,7 +2,7 @@
 # spec file for package blender
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@
 %define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.83.3
+Version:        2.83.4
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -67,8 +67,6 @@ Source99:       series
 Patch0:         make_python_3.6_compatible.patch
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch1:         reproducible.patch
-# PATCH-FIX-UPSTREAM https://developer.blender.org/rB6778ef4dcc6e8d92e3b2ec9b9ecaf1e54e5bf7b5
-Patch2:         0001-Fix-T78867-Crash-related-to-viewing-video-files.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -235,7 +233,6 @@ popd
 %patch0 -p1
 %endif
 %patch1 -p1
-%patch2 -p1
 
 rm -rf extern/glew
 rm -rf extern/libopenjpeg

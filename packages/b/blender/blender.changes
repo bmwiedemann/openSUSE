@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug  7 08:57:31 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 2.83.4
+  - Crash when adjusting sequencer property [T78999]
+  - GPencil: Fix unreported missing strokes in interpolation
+    [dcf7a0507755]
+  - Crash related to viewing video files [T78867]
+  - Mantaflow Field weights cannot be animated [T79264]
+  - Batch Generate-Previews doesn’t work anymore [T79031]
+  - Dimensions fail on negative scaled axis [T79272]
+  - Scale to Fit Text Box fails when text is too narrow [T77609]
+  - Copy-pasting strip twice crashes Blender [T77669]
+  - Prefetching can corrupt .blend files [T78837]
+  - Random crash editing shader nodes with textures [T78358]
+  - Missing depsgraph relation when using sound strips in VSE
+    [T78920]
+  - Fix View3D “Mirror” menu, both “Global” and “Local” items are
+    GLOBAL [4a9d903e2bfd]
+  - Crash displaying many aligned buttons [T78636]
+  - Follow Active Quads, divide by zero error [T68845]
+  - Crash when removing strips with prefetching [T78573]
+  - Fresh install of blender 2.83.0 not able to save user startup
+    file [T78037]
+  - Weight Transfer Operator target mesh doesn’t update [T78306]
+  - Weight Transfer Operator “Deform Pose Bones” destination
+    setting [T78308]
+  - Object disappears when scaled, set origin etc after applying
+    smooth [T79180]
+- remove 0001-Fix-T78867-Crash-related-to-viewing-video-files.patch
+  as being fixed upstream
+-------------------------------------------------------------------
 Wed Aug  5 10:57:18 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add physicalmemory for PowerPC in _constraints to avoid OOM failure
