@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 10 10:19:57 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.0.1
+  - Rename variables to address pep8 error
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri
+  - Labels override
+  - Update .gitreview for stable/ussuri
+
+-------------------------------------------------------------------
 Tue May 12 10:03:21 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.0.0

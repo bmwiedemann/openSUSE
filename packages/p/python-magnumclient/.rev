@@ -175,4 +175,16 @@
     <comment>Ussuri Update</comment>
     <requestid>803569</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f10c3c78d783f2cd94339b0ba65b6717</srcmd5>
+    <version>3.0.1</version>
+    <time>1597064750</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.1
+  - Rename variables to address pep8 error
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri
+  - Labels override
+  - Update .gitreview for stable/ussuri</comment>
+    <requestid>825321</requestid>
+  </revision>
 </revisionlist>
