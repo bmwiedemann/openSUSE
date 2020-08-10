@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 09 03:26:45 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1596790814.ca2af820f:
+  * Replace custom implementation of expiring jobs with Minion feature
+
+-------------------------------------------------------------------
 Thu Aug 06 18:04:28 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1596727008.bebda9b71:
