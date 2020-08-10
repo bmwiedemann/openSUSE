@@ -17,7 +17,7 @@
 
 
 Name:           seafile
-Version:        7.0.8
+Version:        7.0.9
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-2.0-only
@@ -78,6 +78,7 @@ developing applications that use %{name}.
 %setup -q -n seafile-%{version}
 sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
 sed -i -e 's@#!%{_bindir}/env python@#!%{_bindir}/python3@' app/seaf-cli
+sed -i -e 's@#!%{_bindir}/python33@#!%{_bindir}/python3@' app/seaf-cli
 
 %build
 ./autogen.sh

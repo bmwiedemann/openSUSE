@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 10 06:19:58 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- For some reasons (very likely a typo), seaf-cli had python33
+  instead of python3 set as interpreter. An additional 'sed' was
+  added to the spec file
+
+-------------------------------------------------------------------
+Fri Jul 31 05:55:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.0.9 (no changelog) 
+
+-------------------------------------------------------------------
 Mon Jun  8 07:53:04 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 7.0.8 (no changelog) 
