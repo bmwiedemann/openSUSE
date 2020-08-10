@@ -85,9 +85,9 @@
 
 %global rstudio_version_major 1
 %global rstudio_version_minor 3
-%global rstudio_version_patch 959
+%global rstudio_version_patch 1056
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash 3a09be39fd51a8fafa8ae330007937d31924b395
+%global rstudio_git_revision_hash 5a4dee980c998d9a270a83b582b367126f3914cf
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
@@ -120,7 +120,6 @@ Patch0:         0001-Unbundle-mathjax-and-pandoc.patch
 # shorten the installation time a bit by not installing mathjax
 Patch1:         0002-Don-t-install-pandoc-and-mathjax.patch
 Patch2:         0003-Fix-rstudio-exec-path.patch
-Patch3:         0004-R_Slave-R_NoEcho-for-non-Windows.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel

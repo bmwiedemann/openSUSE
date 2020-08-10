@@ -1,7 +1,7 @@
-From 2c741fa655b39b24ffdd46e0caf20de6072d10ac Mon Sep 17 00:00:00 2001
+From 4e3cbf84fa999d4c7ff380639e788dd0c6b42f44 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 14 Jan 2020 14:20:40 +0100
-Subject: [PATCH 2/4] Don't install pandoc and mathjax
+Subject: [PATCH 2/3] Don't install pandoc and mathjax
 
 Because we use the system wide version, there's no need to waste time installing
 the files.

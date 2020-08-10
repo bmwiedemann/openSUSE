@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 31 17:27:38 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.3.1056
+
+  Drop patch (merged upstream):
+  * 0004-R_Slave-R_NoEcho-for-non-Windows.patch
+
+  Rebase patches:
+  * 0001-Unbundle-mathjax-and-pandoc.patch
+  * 0002-Don-t-install-pandoc-and-mathjax.patch
+  * 0003-Fix-rstudio-exec-path.patch
+
+-------------------------------------------------------------------
 Fri Jul 31 16:32:03 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Recommend gcc & g++ so that R modules can be installed
