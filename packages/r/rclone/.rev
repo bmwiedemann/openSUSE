@@ -244,4 +244,12 @@ various additional features.</comment>
     - Fix free/used display for rclone about/df for certain backends (Nick Craig-Wood)</comment>
     <requestid>816872</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>333964e3186371c6b6b4259c794b5a6a</srcmd5>
+    <version>1.52.3</version>
+    <time>1597064409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824996</requestid>
+  </revision>
 </revisionlist>
