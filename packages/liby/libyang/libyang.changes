@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug  1 13:45:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.184
+  * CFFI Python bindings were moved into a separated repository
+  * new functions and clarified behavior of current functions for
+    changing state of YANG features
+  * several bugfixes (#1104, #1119, #1123, #1133)
+
+-------------------------------------------------------------------
+Sat Jun 13 16:37:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.176
+  Main features of this release are:
+  * completely new CFFI Python bindings
+  * printer and internal bugfixes
+  * better support of older compilers
+
+-------------------------------------------------------------------
 Thu May  7 09:57:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.167

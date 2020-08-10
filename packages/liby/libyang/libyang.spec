@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           libyang
-Version:        1.0.167
+Version:        1.0.184
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
@@ -180,11 +180,11 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/swig
 %{_libdir}/libyang.so.*
 
 %files extentions
-%dir %{_libdir}/libyang
-%dir %{_libdir}/libyang/extensions/
-%{_libdir}/libyang/extensions/*.so
-%dir %{_libdir}/libyang/user_types/
-%{_libdir}/libyang/user_types/*.so
+%dir %{_libdir}/libyang1
+%dir %{_libdir}/libyang1/extensions/
+%{_libdir}/libyang1/extensions/*.so
+%dir %{_libdir}/libyang1/user_types/
+%{_libdir}/libyang1/user_types/*.so
 
 %files -n yang-tools
 %{_bindir}/yanglint
