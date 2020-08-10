@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug  8 16:56:43 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Add patches fix-CVE-2020-17367.patch and fix-CVE-2020-17368.patch to fix CVE-2020-17367 and CVE-2020-17368 and boo#1174986
+
+-------------------------------------------------------------------
 Wed Apr 29 11:30:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add firejail-0.9.62-fix-usr-etc.patch:

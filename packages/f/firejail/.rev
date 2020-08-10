@@ -105,4 +105,13 @@
 </comment>
     <requestid>799832</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b6a170ab198f158284c9e2a02feb274f</srcmd5>
+    <version>0.9.62</version>
+    <time>1597064276</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches fix-CVE-2020-17367.patch and fix-CVE-2020-17368.patch to fix CVE-2020-17367 and CVE-2020-17368 and boo#1174986
+</comment>
+    <requestid>825005</requestid>
+  </revision>
 </revisionlist>
