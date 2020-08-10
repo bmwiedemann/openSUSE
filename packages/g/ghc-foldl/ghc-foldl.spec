@@ -19,12 +19,13 @@
 %global pkg_name foldl
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.7
+Version:        1.4.8
 Release:        0
 Summary:        Composable, streaming, and efficient left folds
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-comonad-devel
@@ -36,7 +37,6 @@ BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-profunctors-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroupoids-devel
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
@@ -64,6 +64,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

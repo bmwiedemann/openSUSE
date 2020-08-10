@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  4 09:04:43 UTC 2020 - psimons@suse.com
+
+- Update foldl to version 1.4.8.
+  1.4.8
+
+  * Only depend on `semigroups` for older GHC versions
+
+-------------------------------------------------------------------
 Sun Jun 21 02:00:43 UTC 2020 - psimons@suse.com
 
 - Update foldl to version 1.4.7.
