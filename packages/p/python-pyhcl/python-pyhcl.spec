@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyhcl
-Version:        0.4.2
+Version:        0.4.4
 Release:        0
 Summary:        HCL configuration parser for python
 License:        MPL-2.0
