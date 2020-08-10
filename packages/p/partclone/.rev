@@ -107,4 +107,12 @@
     <comment>- Fix building with gcc10</comment>
     <requestid>813462</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b011b5b5b126bc09e67acaa985330a72</srcmd5>
+    <version>0.3.15</version>
+    <time>1597064384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825213</requestid>
+  </revision>
 </revisionlist>
