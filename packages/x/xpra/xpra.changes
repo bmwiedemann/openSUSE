@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Aug  8 08:24:00 UTC 2020 - aloisio@gmx.com
+
+- Update to version 4.0.3
+  * fix server crash caused by use after free in scrolling code
+  * fix encryption option overzealously enforced on all socket
+    types
+  * fix network layer compression errors that can cause
+    connections to drop
+  * fix printing errors with some shell character encodings
+  * fix NVENC h264 stream compatibility with HTML5 client
+  * fix windows not getting focused when clicking on title bar
+    (HTML5)
+  * fix suspend / resume errors with tray windows
+  * fix garbled terminal when ssh messages and 'top' client
+    conflict
+  * fix OpenGL force-enable option not honoured
+  * fix tray geometry errors
+  * fix socket setup error handler
+  * fix minimum video scaling not being honoured via heuristics
+  * fix error in main thread verifier (fortunately, never fired)
+  * fix archlinux build root stripping
+  * fix detection of named-pipe creation errors
+  * fix clipboard data sometimes going missing when ownership
+    changes
+  * fix memory contents of the swscale pixel format object
+  * fix csc_swscale converter getting recycled every time
+  * fix division by zero errors during window cleanup
+  * fix rfb connections missing all screen updates
+  * fix toolbox examples when running under wayland
+  * fix notification widget wrongly stealing input focus
+  * fix support for building with CUDA 11.0
+  * fix unshrinkable session-info window
+  * fix window resizing errors when non-GUI clients are also
+    connected
+  * avoid ever using b-frames for text content
+  * avoid opengl warning with wayland
+  * add extra environment variables to try to disable any server
+    side scaling
+  * also update mdns records when the session name changes
+  * workaround for older versions of python-cryptography
+  * use 'text' mode for 'geany' (fixes lossy screen updates)
+  * ensure all toolbox windows set a correct and readable window
+    title
+  * make it possible to specify the path used for saving video
+    streams / frames
+
+-------------------------------------------------------------------
 Fri Jul 17 22:22:24 UTC 2020 - Markus Ebner <info@ebner-markus.de>
 
 - add python3-opengl, and python3-opengl-accelerate as recommended
