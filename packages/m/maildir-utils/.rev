@@ -257,4 +257,13 @@
   * Bugfix release, no changes provided</comment>
     <requestid>822925</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>27aab492e56fff6d3ee74df5d9868361</srcmd5>
+    <version>1.4.13</version>
+    <time>1597064576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.13:
+  * Bugfix release, no changes provided</comment>
+    <requestid>825263</requestid>
+  </revision>
 </revisionlist>
