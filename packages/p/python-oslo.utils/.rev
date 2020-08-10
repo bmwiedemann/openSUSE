@@ -419,4 +419,15 @@
     <comment>Ussuri Update</comment>
     <requestid>803601</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>29fed03261dc799910058e66b4227e00</srcmd5>
+    <version>4.1.2</version>
+    <time>1597064760</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.2
+  - Update .gitreview for stable/ussuri
+  - Release greenthread when computing checksum
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri</comment>
+    <requestid>825325</requestid>
+  </revision>
 </revisionlist>
