@@ -19,7 +19,7 @@
 %global pkg_name fgl
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.7.0.2
+Version:        5.7.0.3
 Release:        0
 Summary:        Martin Erwig's Functional Graph Library
 License:        BSD-3-Clause
