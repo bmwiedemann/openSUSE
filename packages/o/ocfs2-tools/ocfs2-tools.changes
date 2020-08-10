@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 10 10:50:30 UTC 2020 - ghe@suse.com
+
+- Add nocluster mount option support (bsc#1174943)
+  + mount.ocfs2-add-nocluster-mount-option-support.patch
+
+-------------------------------------------------------------------
 Wed May  6 11:30:20 UTC 2020 - ghe@suse.com
 
 - Fix debugfs.ocfs2 error on devices with sector size 4096 (bsc#1170530)
