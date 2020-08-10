@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>809802</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ae2793dc8fa9ad99f44b472e955adc0f</srcmd5>
+    <version>0.16.0</version>
+    <time>1597064227</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_nose.patch to remove dependency on nose
+  (https://github.com/Blosc/bloscpack/issues/99).</comment>
+    <requestid>824849</requestid>
+  </revision>
 </revisionlist>

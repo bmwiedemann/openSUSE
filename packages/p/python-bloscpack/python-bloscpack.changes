@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  6 09:02:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to remove dependency on nose
+  (https://github.com/Blosc/bloscpack/issues/99).
+
+-------------------------------------------------------------------
 Wed May 27 09:36:29 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

@@ -25,6 +25,9 @@ Summary:        Command line interface and serialization format for Blosc
 License:        MIT
 URL:            https://github.com/blosc/bloscpack
 Source:         https://files.pythonhosted.org/packages/source/b/bloscpack/bloscpack-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#Blosc/bloscpack#99 mcepl@suse.com
+# Remove nose dependency
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,14 +40,15 @@ Recommends:     cryptography >= 1.3.4
 Recommends:     python-pyOpenSSL >= 0.14
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module blosc}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module coveralls}
 BuildRequires:  %{python_module cryptography >= 1.3.4}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pyOpenSSL >= 0.14}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module twine}
 BuildRequires:  %{python_module wheel}
@@ -64,7 +68,8 @@ python-blosc bindings to interface with Blosc. It also comes with native
 support for serializing and deserializing Numpy arrays.
 
 %prep
-%setup -q -n bloscpack-%{version}
+%autosetup -p1 -n bloscpack-%{version}
+
 find bloscpack -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} +
 
 %build
@@ -80,8 +85,8 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 %python_exec -c 'import blosc'
-# Tests take too long
-# %%python_expand nosetests-%%{$python_bin_suffix} test
+# Tests are completely broken (gh#Blosc/bloscpack#99)
+# %%pytest
 
 %post
 %python_install_alternative blpk
