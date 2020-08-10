@@ -19,7 +19,7 @@
 %global pkg_name prettyprinter
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        A modern, easy to use, well-documented, extensible pretty-printer
 License:        BSD-2-Clause
