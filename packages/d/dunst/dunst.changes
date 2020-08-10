@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug  8 09:15:20 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.5.0
+- refresh makefile.patch
+ * min_icon_size option to automatically scale up icons to a desired value
+ * vertical_alignment option to control the text/icon alignment within the notification
+ * Ability to configure multiple actions for each mouse event
+ * dunstctl command line control client
+ * RGBA support for all color strings
+ * Ability to run multiple scripts for each notification
+ * ignore_dbusclose setting
+ * dunstify notification client is now installed by default
+ * Keyboard follow mode falls back to the monitor with the mouse if no window has keyboard focus
+ * Overflow when setting a >=40 minute timeout
+ * Unset configuration options not falling back to default values
+ * Crash when $HOME environment variable is unset
+ * Lack of antialiasing with round corners enabled 
+
+-------------------------------------------------------------------
 Wed Jul  3 10:50:50 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to version 1.4.1
@@ -46,6 +65,7 @@ Tue May 28 06:35:15 UTC 2019 - Petr Cervinka <petr@cervinka.net>
 - Update makefile.patch to be compatible with latest version
 - Build and install dunstify binary, command which is completely compatible to notify-send
   and can be used alongside it, but offers more features. 
+
 -------------------------------------------------------------------
 Sun May  6 16:26:56 UTC 2018 - avindra@opensuse.org
 

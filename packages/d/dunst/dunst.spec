@@ -1,7 +1,7 @@
 #
 # spec file for package dunst
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?_userunitdir:%define _userunitdir %{_prefix}/lib/systemd/user}
 Name:           dunst
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        A customizable notification daemon
 License:        BSD-3-Clause
@@ -28,15 +28,14 @@ Source:         https://github.com/dunst-project/dunst/archive/v%{version}.tar.g
 Patch0:         makefile.patch
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xscrnsaver)
@@ -64,9 +63,11 @@ sed -i -e 's/ExecStart.*/ExecStart=\/usr\/bin\/dunst/' %{buildroot}/%{_userunitd
 %license LICENSE
 %{_bindir}/dunst
 %{_bindir}/dunstify
+%{_bindir}/dunstctl
 %{_datadir}/dbus-1/services/org.knopwob.dunst.service
 %{_userunitdir}/dunst.service
 %{_datadir}/dunst
 %{_mandir}/man1/dunst.1%{?ext_man}
+%{_mandir}/man1/dunstctl.1%{?ext_man}
 
 %changelog

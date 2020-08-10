@@ -61,4 +61,26 @@
  * Fullscreen status change not being detected in some cases (forwarded request 713212 from mimi_vx)</comment>
     <requestid>713213</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>70649e1429952b965edcf4faf7a5ed88</srcmd5>
+    <version>1.5.0</version>
+    <time>1597064288</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0
+- refresh makefile.patch
+ * min_icon_size option to automatically scale up icons to a desired value
+ * vertical_alignment option to control the text/icon alignment within the notification
+ * Ability to configure multiple actions for each mouse event
+ * dunstctl command line control client
+ * RGBA support for all color strings
+ * Ability to run multiple scripts for each notification
+ * ignore_dbusclose setting
+ * dunstify notification client is now installed by default
+ * Keyboard follow mode falls back to the monitor with the mouse if no window has keyboard focus
+ * Overflow when setting a &amp;gt;=40 minute timeout
+ * Unset configuration options not falling back to default values
+ * Crash when $HOME environment variable is unset
+ * Lack of antialiasing with round corners enabled (forwarded request 824973 from mimi_vx)</comment>
+    <requestid>824974</requestid>
+  </revision>
 </revisionlist>
