@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  4 09:04:45 UTC 2020 - psimons@suse.com
+
+- Update pandoc-citeproc to version 0.17.0.2.
+  pandoc-citeproc (0.17.0.2)
+
+    * Update to use latest rfc5051.
+    * Update chicago-author-date.csl and locales.
+
+-------------------------------------------------------------------
 Wed Jun 24 02:00:43 UTC 2020 - psimons@suse.com
 
 - Update pandoc-citeproc to version 0.17.0.1.
