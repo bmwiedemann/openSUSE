@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.policy
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        OpenStack Oslo Policy library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.policy
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-3.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-3.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-oslo.config >= 5.2.0
@@ -75,7 +75,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the Oslo Policy library.
 
 %prep
-%autosetup -p1 -n oslo.policy-3.1.0
+%autosetup -p1 -n oslo.policy-3.1.1
 %py_req_cleanup
 
 %build

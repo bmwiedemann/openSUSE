@@ -263,4 +263,15 @@
     <comment>Ussuri Update</comment>
     <requestid>803595</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dc65d974b2f1d03b34acd88827de1b9c</srcmd5>
+    <version>3.1.1</version>
+    <time>1597064755</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.1.1
+  - Reload files in policy_dirs on primary file change
+  - Update .gitreview for stable/ussuri
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri</comment>
+    <requestid>825324</requestid>
+  </revision>
 </revisionlist>

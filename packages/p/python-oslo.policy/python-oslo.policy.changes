@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 10:22:25 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.1
+  - Reload files in policy_dirs on primary file change
+  - Update .gitreview for stable/ussuri
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri
+
+-------------------------------------------------------------------
 Tue May 12 09:54:56 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.1.0
