@@ -68,6 +68,7 @@ included, with gevent/asyncio/SSL support.
 %setup -q -n mocket-%{version}
 rm -f setup.cfg pytest.ini tox.ini
 sed -i '/pipenv/d' setup.py
+sed -i 's/==/>=/' requirements.txt
 touch conftest.py
 
 %build
