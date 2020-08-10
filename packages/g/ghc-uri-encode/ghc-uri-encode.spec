@@ -18,7 +18,7 @@
 
 %global pkg_name uri-encode
 Name:           ghc-%{pkg_name}
-Version:        1.5.0.5
+Version:        1.5.0.6
 Release:        0
 Summary:        Unicode aware uri-encoding
 License:        BSD-3-Clause
