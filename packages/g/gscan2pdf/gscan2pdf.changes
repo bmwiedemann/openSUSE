@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  8 18:49:33 UTC 2020 - malcolmlewis@opensuse.org
+
+- Add requies on typelib(GdkPixdata) for SLE 15+, Leap 15.2 and
+  greater.
+
+-------------------------------------------------------------------
 Mon Jul 13 13:43:13 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to version 2.8.1

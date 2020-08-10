@@ -47,6 +47,9 @@ Requires:       perl(Readonly)
 Requires:       perl(Set::IntSpan)
 Requires:       perl(Try::Tiny)
 Requires:       typelib(GooCanvas) = 2.0
+%if 0%{?sle_version} >= 150200 && 0%{?is_opensuse} || 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
+Requires:       typelib(GdkPixdata) = 2.0
+%endif
 Recommends:     djvulibre
 Recommends:     gocr
 Recommends:     tesseract-ocr
