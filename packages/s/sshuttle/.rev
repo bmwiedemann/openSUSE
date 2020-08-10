@@ -69,4 +69,12 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
     * tests for existing PR-312 (#337).</comment>
     <requestid>816894</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>708f5ce3354d484d04a6b260aba0a3a6</srcmd5>
+    <version>1.0.3</version>
+    <time>1597064615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825272</requestid>
+  </revision>
 </revisionlist>

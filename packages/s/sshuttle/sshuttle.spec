@@ -17,7 +17,7 @@
 
 
 Name:           sshuttle
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        VPN over an SSH tunnel
 License:        LGPL-2.1-only
@@ -25,6 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/sshuttle/sshuttle
 Source0:        https://files.pythonhosted.org/packages/source/s/sshuttle/sshuttle-%{version}.tar.gz
 Patch0:         fix-pytest.patch
+Patch1:         fix-shebang.patch
 BuildRequires:  python3-mock
 BuildRequires:  python3-pytest-runner
 BuildRequires:  python3-setuptools
@@ -53,6 +54,7 @@ sshuttle is a program that solves the following case:
 %prep
 %setup -q -n sshuttle-%{version}
 %patch0
+%patch1 -p1
 
 %build
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)

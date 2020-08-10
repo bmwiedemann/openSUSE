@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 28 23:21:09 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.0.3:
+  * Fixed:
+    - Ask setuptools to require Python 3.5 and above.
+    - Add missing import.
+    - Fix formatting typos in usage docs
+- Add fix-shebang.patch to fix env-script-interpreter rpmlint error
+
+-------------------------------------------------------------------
 Tue Jun 23 12:44:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.2:
