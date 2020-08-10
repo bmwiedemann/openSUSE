@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  6 18:20:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.07.2
+  - Updated CMake to automatically include atomic library when
+    needed.
+  - Updated CMake to include required thread libraries on different
+    systems.
+  - Added missing changelog entries and version information
+
+-------------------------------------------------------------------
 Fri Jul 31 19:41:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
-- Update to version 20.0.7.1
+- Update to version 20.07.1
   LimeSuite library changes:
   * Changed LimeSDR-Mini SXR default values to match SXT
   * Fix for lms chip id not changing when setting interface
