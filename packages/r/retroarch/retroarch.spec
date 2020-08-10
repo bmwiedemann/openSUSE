@@ -17,7 +17,7 @@
 
 
 Name:           retroarch
-Version:        1.8.9
+Version:        1.9.0
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
@@ -79,6 +79,7 @@ Recommends:     retroarch-joypad-autoconfig
 Recommends:     retroarch-assets
 Recommends:     libretro-core-info
 Recommends:     libretro-database
+Recommends:     libretro-glsl-shaders
 
 # Emulation cores
 
@@ -116,7 +117,7 @@ Recommends:     libretro-desmume
 Recommends:     libretro-citra
 
 # Sega Genesis/Mega Drive (MD)
-Recommends:     libretro-blastem
+Recommends:     libretro-picodrive
 # Sega Saturn (SS)
 Recommends:     libretro-yabause
 # Sega Dreamcast (DC)
@@ -231,6 +232,7 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cg2glsl
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/metainfo/com.libretro.*.xml
 %{_datadir}/pixmaps/%{name}.svg
 %{_mandir}/man?/%{name}.?*
 %{_mandir}/man?/%{name}-cg2glsl.?*
