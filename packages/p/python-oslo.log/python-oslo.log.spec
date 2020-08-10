@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.log
-Version:        4.1.1
+Version:        4.1.3
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.log
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-4.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-4.1.3.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-mock
 BuildRequires:  python3-monotonic >= 1.4
@@ -81,14 +81,14 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the oslo.log library.
 
 %prep
-%autosetup -p1 -n oslo.log-4.1.1
+%autosetup -p1 -n oslo.log-4.1.3
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PYTHONPATH=. PBR_VERSION=4.1.1 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=4.1.3 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install

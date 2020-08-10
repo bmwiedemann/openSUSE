@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 10 10:19:13 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.1.3
+  - Update .gitreview for stable/ussuri
+  - Add missing SYSLOG_FACILITY to JournalHandler
+  - Default facility to None in OSJournalHandler class
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri
+
+-------------------------------------------------------------------
 Tue May 12 09:44:47 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.1.1
