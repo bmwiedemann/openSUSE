@@ -1,7 +1,7 @@
 #
 # spec file for package zypper-lifecycle-plugin
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 Name:           zypper-lifecycle-plugin
 Url:            https://github.com/SUSE/zypper-lifecycle
-Version:        0.6.1490613702.a925823
+Version:        0.6.1596796104.87bdab7
 Release:        0
 Requires:       zypper >= 1.13.10
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

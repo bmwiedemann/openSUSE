@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  7 10:31:01 UTC 2020 - Vladimir Nadvornik <nadvornik@suse.com>
+
+- Version 0.6.1596796104.87bdab7
+- Handle zypper errors (bsc#1174369)
+- Fix ruby warning (bsc#1173714)
+- Handle all times in UTC (bsc#1143453)
+
+-------------------------------------------------------------------
 Thu Nov 23 13:54:37 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 
