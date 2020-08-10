@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 10 08:43:22 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.22.0:
+  * Fix vsan disk name and computed.
+  * Add import for vsphere_virtual_disk (#1) (#1120)
+  * Add roles and permission resources  (#1144)
+  * Add host_thumbprint data source (#1142)
+  * r/vm: Set guest_id before customization (#1139)
+  * Add go-version file (#1135)
+
+-------------------------------------------------------------------
 Tue Jul 07 11:24:56 UTC 2020 - dmueller@suse.com
 
 - Update to version 1.21.0:

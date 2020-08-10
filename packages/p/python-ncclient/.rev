@@ -151,4 +151,12 @@
   * Bugfix release</comment>
     <requestid>776246</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06fad5711aad196b600e1088a1f2e953</srcmd5>
+    <version>0.6.9</version>
+    <time>1597064721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825318</requestid>
+  </revision>
 </revisionlist>

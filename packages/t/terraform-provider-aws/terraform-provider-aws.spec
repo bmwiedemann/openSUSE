@@ -17,7 +17,7 @@
 
 
 Name:           terraform-provider-aws
-Version:        2.59.0
+Version:        2.69.0
 Release:        0
 Summary:        Terraform provider for Amazon Web Services (AWS)
 License:        MPL-2.0

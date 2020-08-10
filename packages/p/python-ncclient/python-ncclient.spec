@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ncclient
-Version:        0.6.7
+Version:        0.6.9
 Release:        0
 Summary:        Python library for NETCONF clients
 License:        Apache-2.0
@@ -83,6 +83,6 @@ cd docs && make %{?_smp_mflags} html && rm build/html/.buildinfo
 %{python_sitelib}/*
 
 %files -n python-ncclient-doc
-%doc README README.rst examples docs/build/html
+%doc README.md README.rst examples docs/build/html
 
 %changelog

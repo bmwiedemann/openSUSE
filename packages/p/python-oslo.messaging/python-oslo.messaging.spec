@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.messaging
-Version:        12.1.0
+Version:        12.1.2
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.messaging
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-12.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-12.1.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-WebOb >= 1.7.1
@@ -101,15 +101,8 @@ of different messaging transports.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.messaging-12.1.0
+%autosetup -p1 -n oslo.messaging-12.1.2
 %py_req_cleanup
-
-%if !0%{?suse_version}
-# FIXME(jpena): since version 5.23.0, four tests in the amqp driver are
-# failing. Let's remove the tests for now, so we can build a package and
-# figure out whatis wrong.
-rm -f oslo_messaging/tests/drivers/test_amqp_driver.py
-%endif
 
 %build
 %py3_build
@@ -124,11 +117,11 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 # NOTE(jpena): we do not want to run functional tests, just unit tests
+# python3-pifpaf is not available in RDO, but loading functional tests would
+# fail without it
 rm -rf oslo_messaging/tests/functional
-# workaround test running forever until update to release with fix
-# https://review.opendev.org/#/c/742609/
-rm -f oslo_messaging/tests/drivers/test_impl_rabbit.py
-python3 -m stestr.cli run
+# 3 cyrus tests fail on rdo with time out
+python3 -m stestr.cli run --black-regex '^oslo_messaging.tests.(functional|drivers.test_amqp_driver.TestCyrusAuthentication.test_authentication_(ok|ignore_default_realm|default_realm))'
 
 %files -n python3-oslo.messaging
 %license LICENSE

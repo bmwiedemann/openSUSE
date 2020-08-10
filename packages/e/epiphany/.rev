@@ -1390,4 +1390,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment>New stable rel (forwarded request 818620 from iznogood)</comment>
     <requestid>819930</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>2b3864077754679c45c3ce9bb7f53671</srcmd5>
+    <version>3.36.4</version>
+    <time>1597064646</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 825130 from iznogood)</comment>
+    <requestid>825302</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,1066 @@
 -------------------------------------------------------------------
+Mon Aug 10 09:02:35 UTC 2020 - rjschwei@suse.com
+
+- Update to version 2.69.0:
+  * resource/aws_customer_gateway: Allow 4-byte ASNs (#14030)
+  * awsproviderlint: Add missing AWSR002 link and docs to add these links to README (#14034)
+  * Add hardcoded AMI ID check
+  * docs: Fix broken ec2_tag resource link in resource tagging guide (#14023)
+  * docs/resource/aws_vpc: Change instance_tenancy to default (#14026)
+  * Update CHANGELOG for #13927
+  * resource/aws_db_instance_role_association: Prevent immediate read after creation panic (#13927)
+  * Update CHANGELOG for #12005
+  * resource/aws_sfn_state_machine: Handle IAM role eventual consistency on creation + wait for delete + add `arn` attribute (#12005)
+  * Update CHANGELOG for #13012
+  * tests/resource/aws_route53_record: Add covering tests for updates involving health_check_id
+  * Update CHANGELOG for #11335
+  * tests/resource/aws_route53_record: Filter Local Zones from aws_availability_zones usage
+  * Update CHANGELOG for #13922
+  * resource/aws_spot_fleet_request: Increase default delete timeout to 15 minutes (#13922)
+  * Update CHANGELOG for #13912
+  * resource/aws_autoscaling_group: Prevent unexpected differences in `tags` for Terraform 0.11 and earlier with boolean `propagate_at_launch` values (#13912)
+  * tests/service/iam: Implement aws_iam_group and aws_iam_policy sweepers, catch additional aws_iam_role and aws_iam_user (#13901)
+  * tests/resource/aws_cloudtrail: Ensure covering test for removing of all event_selector configuration blocks
+  * awsproviderlint: Enforce kms_key_id as ARN attribute in AWSAT001 check (#13996)
+  * docs/resource/aws_cognito_user_pool_domain: terrafmt fix
+  * Added the creation of the aws_route53_record to the Custom Cognito Domain example (#10196)
+  * Update CHANGELOG for #10452
+  * tests/provider: Ensure terrafmt check runs on website updates (#13997)
+  * add misspell job
+  * Update module aws/aws-sdk-go to v1.32.12 (#13803)
+  * docs/resource/aws_cognito_user_pool: Remove "it's" contraction due to format error in website (#13993)
+  * docs/provider: Fix various typos (#13991)
+  * docs/service/docdb: Fix typos on aws_docdb_cluster/instance doc (#13987)
+  * Update website/docs/r/ecs_service.html.markdown
+  * add gh-action for markdown file linting
+  * correct ul indentation w/MD007 rule
+  * Update CHANGELOG for #12183
+  * add force new details to enabled attribute in docs
+  * update version
+  * Update CHANGELOG for #13961
+  * Update Terraform github to v2.9.0 (#13978)
+  * Update CHANGELOG for #13945
+  * resource/aws_backup_selection: Remove from Terraform state when Backup Plan is destroyed instead of returning error (#13945)
+  * resource/aws_elasticsearch_domain: Improve handling of advanced_security_options.enabled = false
+  * filter by repo rather than by org
+  * run terrafmt on config
+  * add additional test for operator statement
+  * docs/provider: Final markdownlint fixes for MD007
+  * tests/provider: Move markdownlint MD007 configuration to top
+  * Update CHANGELOG for #13771
+  * provider: First pass at removing non-inclusive terminology (#13771)
+  * add additional nested level
+  * Update CHANGELOG for #13928
+  * resource/aws_db_instance: Prevent schema version 1 upgrade panic on missing state (#13928)
+  * Update CHANGELOG for #13958
+  * Update CHANGELOG for 13958
+  * resource/aws_efs_mount_target: Continue allowing empty string in ip_address validation (#13958)
+  * Rewrite TypeSet checks with new helpers [Part 4] (#13932)
+  * Rewrite TypeSet checks with new helpers [Part 5] (#13934)
+  * Cleanup after v2.68.0 release
+  * v2.68.0
+  * Update CHANGELOG for #13907
+  * embed warmConfig
+  * Rewrite TypeSet checks with new helpers [Part 3] (#13882)
+  * Rewrite TypeSet checks with new helpers [Part 2] (#13831)
+  * Rewrite TypeSet checks with new helpers (#13812)
+  * Update CHANGELOG for #13935
+  * resource/aws_batch_compute_environment: Remove resource from Terraform state when not found instead of returning error (#13935)
+  * resource/aws_dynamodb_table: Return error instead of panic on empty CreateTable response (#13925)
+  * Update CHANGELOG for #13918
+  * New Data Source: aws_efs_access_points (#13918)
+  * tests/resource/aws_instance: Ensure sweeper has dependencies on resources that manage EC2 Instances (#13917)
+  * Update CHANGELOG for #13937
+  * action-setup
+  * Update CHANGELOG for #5448
+  * resource/aws_cloudtrail: Handle single event selector in cloudtrail with non-default read_write_type (#5448)
+  * Update CHANGELOG for #13892
+  * correct retry message to match in error handling
+  * correct import resource name
+  * accept empty string in volume_type validation
+  * Update CHANGELOG for #4855
+  * resource/aws_batch_compute_environment: Support fully optional desired_vcpus and wait for updates
+  * add retry error handling for SLR
+  * remove unused WebACL resource name in disappears test
+  * reference current AWS partition in iam role policy stmt
+  * remove duplicated disappears test step
+  * Update CHANGELOG for #13926
+  * resource/aws_ecs_service: Add plan-time validation and prevent panics with empty `type` argument in `ordered_placement_strategy` configuration block (#13926)
+  * CR updates
+  * Update CHANGELOG for #13778
+  * service/ec2: Additional validation and fixes for CIDR misalignment (#13778)
+  * tests/resource/aws_db_snapshot: Ensure sweeper runs after aws_db_instance and skips automated snapshots (#13897)
+  * docs/resource/aws_media_store_container_policy: Corrected the ARN in the Resource of the policy (#13924)
+  * Update CHANGELOG for #13577
+  * resource/aws_spot_fleet_request: Fix import crash on missing 'availability_zone'. (#13577)
+  * Update CHANGELOG for #11463
+  * resource/aws_ecs_task_definition: Prevent API ordering differences in `container_definitions` environment variables during updates (#11463)
+  * Update CHANGELOG for #13136
+  * resource/aws_ecs_task_definition: Support EFS Access Points and Transit Encryption (#13136)
+  * MD007 changes part 5/5
+  * MD007 changes part 4/5
+  * update disappears test and string formatting in resource read msg
+  * update test cases and attribute checks
+  * update test cases and attribute checks
+  * MD007 changes part 3/5
+  * MD007 changes part 2/5
+  * use enabled parameter in test
+  * MD007 changes part 1/5
+  * Update CHANGELOG for #13836
+  * resource/aws_vpn_connection: Add arn attribute (#13836)
+  * add note to docs
+  * Update CHANGELOG for #8134 / #8652
+  * resource/aws_ecs_service: Minor testing/documentation tweaks for EXTERNAL deployment controller release
+  * Add note on how to use wafv2 in CloudFront
+  * Update CHANGELOG for #12038
+  * service/ec2: Add arn attribute and plan-time validations to aws_ami(_*) resources (#12038)
+  * Update CHANGELOG for #13876
+  * resource/aws_vpc_endpoint: Wait for acceptance when auto_accept is enabled (#13876)
+  * tests/resource/aws_ec2_transit_gateway: Change disappears test + arn check (#13899)
+  * update iam_role_policy name reference
+  * Update CHANGELOG for #13858
+  * resource/aws_vpc_endpoint_service: Add 'arn' attribute and tags test (#13858)
+  * Update CHANGELOG for #13856
+  * data-source/aws_vpc_endpoint_service: Add 'arn' attribute. (#13856)
+  * markdownlint fixes
+  * Update CHANGELOG for #11922
+  * resource/aws_iot_topic_rule: Add error_action configuration block (#11922)
+  * Update CHANGELOG for #13895
+  * resource/aws_ebs_snapshot: Support resource import (#13895)
+  * Update CHANGELOG for #13827
+  * service/ec2: Add arn attribute to aws_vpn_gateway resources (#13827)
+  * Update CHANGELOG for 13611
+  * service/ec2: Add arn attribute and plan-time validations to aws_customer_gateway resources (#13611)
+  * set redacted_fields to empty arr if not set
+  * resource/web_acl_logging_configuration: new resource
+  * split enabled and disabled configs
+  * use zero values
+  * provider: Add Resource Groups Tagging API service client and initial keyvaluetags support (#12587)
+  * add a test step with UW disabled
+  * Update CHANGELOG for #13853
+  * resource/aws_vpc_endpoint: Add 'arn' attribute and tags test (#13853)
+  * Update CHANGELOG for #13707
+  * resource/aws_iot_policy: Support resource import & ForceNew on name (#13707)
+  * Update CHANGELOG for #13852
+  * data-source/aws_vpc_endpoint: Add arn attribute (#13852)
+  * resource_aws_elasticsearch_domain: warm_enabled does not recreate resource
+  * tests/data_source/aws_elasticsearch_domain: only assert advanced_security_options in advanced test
+  * Update CHANGELOG for #13452
+  * resource/aws_glue_catalog_database: Add arn attribute + disappears test (#13452)
+  * resource/aws_elasticsearch_domain: internal_user_database_enabled default and docs
+  * resource/aws_elasticsearch_domain: advanced_security_options error wrapping
+  * Add ARN for AWS Foundational Security Best Practices (#13851)
+  * Update CHANGELOG for #13840
+  * service/ec2: Add arn attribute to aws_ebs_snapshot(_copy) resources (#13840)
+  * Update CHANGELOG for #13849
+  * resource/aws_ec2_traffic_mirror_session: Add arn attribute (#13849)
+  * Update CHANGELOG for #13838
+  * resource/aws_placement_group: Add arn attribute + disappears test (#13838)
+  * Update CHANGELOG for #13819
+  * service/ec2: Add arn attribute and plan-time validations to aws_(default_)network_acl resources (#13819)
+  * Update CHANGELOG for #13811
+  * resource/aws_ses_receipt_filter: Add arn attribute and plan-time validations for all arguments (#13811)
+  * Mention that override_action is required for rule groups
+  * Update CHANGELOG for #13871
+  * resource/aws_wafv2_web_acl: Skip UpdateWebACL call on tags only updates (#13871)
+  * resource/aws_elasticsearch_domain: style and test cleanup
+  * resource/aws_elasticsearch_domain: return fmt.Errorf
+  * examples/aws_elasticsearch_domain: formatting
+  * Revert "examples/aws_elasticsearch_domain: remove interpolation syntax"
+  * examples/aws_elasticsearch_domain: remove interpolation syntax
+  * resource/aws_elasticsearch_domain: schema settings; resource read logic
+  * docs/resource/aws_elasticsearch_domain: Update master_user_options description
+  * Update website/docs/r/elasticsearch_domain.html.markdown
+  * Update website/docs/d/elasticsearch_domain.html.markdown
+  * Update website/docs/r/elasticsearch_domain.html.markdown
+  * Update website/docs/r/elasticsearch_domain.html.markdown
+  * Update website/docs/r/elasticsearch_domain.html.markdown
+  * resource/aws_elasticsearch_domain: aws conversion methods; schema validation
+  * Cleanup after v2.67.0 release
+  * v2.67.0
+  * update CHANGELOG.md to revert failed release
+  * v2.67.0
+  * service/secretsmanager: Fix rotation resource typo and testing
+  * docs/resource/aws_secretsmanager_secret: Add more verbiage around rotation changes
+  * Update CHANGELOG for #9487
+  * Update CHANGELOG for #12497
+  * New resource: aws_secretsmanager_secret_rotation (#9487)
+  * tests/provider: Switch Outposts acceptance testing to testAccPreCheckAWSOutpostsOutposts and aws_outposts_outposts data source (#13822)
+  * Update CHANGELOG for #13824
+  * New Data Sources: aws_outposts_outpost_instance_type(s) (#13824)
+  * Update CHANGELOG for #13825
+  * New Data Sources: aws_outposts_site(s) (#13825)
+  * Update CHANGELOG for #13782
+  * Applies Terraform format fixes
+  * Adds tweaks for acceptance tests
+  * Update CHANGELOG for #12698
+  * Update CHANGELOG for #12395
+  * Update CHANGELOG for #13777
+  * New Data Sources: aws_outposts_outpost(s) (#13777)
+  * Update CHANGELOG for #13779
+  * New Guide: Resource Tagging (#13779)
+  * Update CHANGELOG for #13456
+  * resource/aws_glue_catalog_table: Add arn attribute (#13456)
+  * Update module hashicorp/go-version to v1.2.1 (#13804)
+  * Update CHANGELOG for #13606
+  * service/ec2: Add arn attribute and refactor disappears testing in aws_(default_)vpc_dhcp_options (#13606)
+  * Update CHANGELOG for #13607
+  * resource/aws_ec2_capacity_reservation: Add arn attribute + support for linux sql server `instance_platform` (#13607)
+  * Update CHANGELOG for #12668
+  * correct the comment about cross-subnet mounts
+  * change attributes to computed
+  * add support for lambda file systems
+  * Update CHANGELOG for #13614
+  * service/ec2: Add arn attribute and disappears testing to aws_internet_gateway (#13614)
+  * Update CHANGELOG for #13648
+  * resource/aws_key_pair: Add arn attribute + minor refactor (#13648)
+  * Update CHANGELOG for #13649
+  * resource/aws_ec2_tarffic_mirror_target: Add arn attribute (#13649)
+  * Update CHANGELOG for #13650
+  * service/efs: Add Availability Zone and Mount Target DNS Name attributes to aws_efs_mount_target resource and data source (#13650)
+  * Update CHANGELOG for #13656
+  * resource/aws_flow_log: Add arn attribute (#13656)
+  * Update CHANGELOG for #13697
+  * resource/aws_cloudwatch_log_stream: Support resource import (#13697)
+  * docs/resource/aws_lambda_alias: Update import example to use correct resource name (#13277)
+  * Add doc comment
+  * Update CHANGELOG for #13081
+  * resource/aws_cloudfront_origin_access_identity: Properly trigger resource recreation when deleted outside Terraform (#13081)
+  * Update CHANGELOG for #13020
+  * resource/aws_devicefarm_project: Support resource import (#13020)
+  * Treat unset values as matched
+  * fix validate func based on validation error + docs
+  * no longer return default nil in error param
+  * New Data Source: aws_ec2_local_gateway_virtual_interface (#13770)
+  * add unparam linter to golangci config
+  * tech-debt/structure: remove always nil error param from expandElastiCacheParameters func (#13668)
+  * add test for `warm_type`
+  * New Resource: aws_ec2_local_gateway_route (#13768)
+  * use `validation.StringMatch` instead of custom validation func add validation for `volume_type`
+  * New Resource: aws_ec2_local_gateway_route_table_vpc_association (#13765)
+  * move es funcs to relevant file + use aws ptr funcs where needed
+  * add valid values for `warm_count` in doc
+  * Update resource_aws_elasticsearch_domain_test.go
+  * fix doc
+  * fix doc
+  * dix indent
+  * add support for elasticsearch warm storage
+  * add support for elasticsearch warm storage
+  * Update module hashicorp/terraform-plugin-sdk to v1.14.0 (#13792)
+  * service/guardduty: Implement resource tagging support (#13756)
+  * resource/aws_ecs_capacity_provider: Implement API deletion support (#13740)
+  * internal/keyvaluetags: Create {SERVICE}GetTag generator, support EC2 list/get, use in aws_ec2_tag implementation (#13745)
+  * New Data Sources: aws_ec2_local_gateway_virtual_interface_group(s) (#13767)
+  * Update module aws/aws-sdk-go to v1.32.3
+  * provider: Add outposts service client (#13773)
+  * Add aws_wafv2_web_acl_association
+  * Add aws_wafv2_web_acl data source
+  * linting
+  * fix typo in Access Point docs
+  * data/aws_ebs_volumes: Add data source (#13751)
+  * Add unit tests and rename pkg
+  * Add test case for 50 ip addresses for wafv2 ipset
+  * Implement TypeSet resource.TestCheckFuncs
+  * docs/resource/aws_ecs_service: Remove EC2 restriction from efs_volume_configuration (#13746)
+  * Add documentation for aws_db_snapshot timeouts (#13757)
+  * aws_route: Retry if route not found after creating it (#13747)
+  * Update module hashicorp/go-multierror to v1.1.0 (#12598)
+  * service/servicediscovery: AWS Cloud Map resource tagging (#13750)
+  * resource/aws_ec2_tag: Switch resource identifier separator from colon to comma to prevent confusing behavior with ARNs
+  * resource/aws_ec2_tag: Finish implementation
+  * CodeArtifact new service support (#13735)
+  * few typos
+  * internal/keyvaluetags: Support servicediscovery and worklink (#13732)
+  * tests/provider: Remove TravisCI (#13730)
+  * update method params in web_acl test check
+  * Add roadmap to issue chooser
+  * expand contributing response guidelines
+  * Fix rebase change
+  * Fix docs
+  * Improve error message
+  * Apply review comments
+  * Refactor after rebase
+  * Apply review comments
+  * Apply changes based on review
+  * Format test config
+  * Fix failing build
+  * Add calculated wcus attribute
+  * Add documentation
+  * Add rule_group_reference_statement
+  * Add rate_based_statement
+  * Add managed_rule_group_statement
+  * Add aws_wafv2_web_acl
+  * Update module aws/aws-sdk-go to v1.32.0 (#13459)
+  * Fixed a typo in the "import" example
+  * resource/aws_cognito_user_pool_client: Mark client secret as sensitive (#13680)
+  * Add 't' branch prefix for tests (#13682)
+  * tests/provider: Setup ignores for current MigrateState usage and enable linter (#13728)
+  * tests/provider: Add GitHub Actions workflow for dependency changes (#13657)
+  * fixed typo
+  * added authorization token format check
+  * Cleanup after v2.66.0 release
+  * v2.66.0
+  * fix maxint in validation func
+  * Update autoscaling group doc
+  * Add documentation
+  * Bump wafv2_ip_set.address limit to match AWS
+  * Typo in tag error for resourceAwsSsmParameterRead
+  * remove unused var
+  * remove unused return error from rule group import
+  * remove unused method param
+  * remove unused error return param
+  * remove unused error return param
+  * remove unused error return param
+  * run go fmt
+  * return string conversion errors
+  * remove unused error return param
+  * run go fmt
+  * remove unused method param
+  * format function w/params
+  * format function w/params
+  * remove unused error param
+  * remove unused params
+  * remove unused vars
+  * run go fmt
+  * remove unused params in waf resources
+  * remove always nil error param from expandPolicyAttributes func
+  * remove always nil error param from expandApiGatewayMethodParametersOperations func
+  * remove always nil error param from expandNeptuneParameters func
+  * remove always nil error param from expanddocdbparameters func
+  * remove always nil error param from expandredshiftparameters func
+  * remove always nil error param from expandParameters func
+  * remove always nil error param
+  * add in CheckDestroy for ec2_tag tests to ensure VPCs cleaned up
+  * make an error message more informative
+  * remove conditional tag checks for VPC, subnet, and route table, general clean up
+  * docs/provider: Fix common review items links (#13646)
+  * run format
+  * add back missing test
+  * fix ipv4 validation check
+  * resource/aws_batch_job_definition: Prevent diffs when no command specified in container properties. (#13634)
+  * @review Document blank owner attribute
+  * @review Rephrase
+  * Expand data.aws_workspaces_bundle with owner/name filtering
+  * Cleanup after v2.65.0 release
+  * v2.65.0
+  * remove diffsuppressfunc interfering with attribute setting and update field behaviors
+  * Update module hashicorp/terraform-plugin-sdk to v1.13.1 (#13604)
+  * resource/aws_acm_certificate: Various small improvements and fixes (#13513)
+  * Update resource_aws_instance.go
+  * Update resource_aws_instance.go
+  * docs
+  * fmt + fix error handle for `InvalidParameterCombination`
+  * resource/aws_dynamodb_table: Perform individual replica creations/deletions (#13523)
+  * tests/provider: Bump GitHub Actions versions and minor adjustments to examples handling (#13534)
+  * tests/provider: Small sweeper fixes (#13553)
+  * Update resource_aws_instance.go
+  * Update resource_aws_instance.go
+  * delete TestInstanceTenancySchema unit test (?)
+  * use enums
+  * add arn attribute + plan time validations for: `client_cidr_block`, `server_certificate_arn` and `root_certificate_chain_arn` minor test refactors
+  * apply review comments regarding constants and boolean checks
+  * use AWS SDK constant for error and use conversions
+  * apply S018 linter rule and add AWS SDK constants for validation
+  * use AWS SDK constants where possible
+  * update ebs logic after read method
+  * set ebs block if root is only volume in instance
+  * Fixes some acceptance test errors introduced by code review. Style clean up and updated some ARN checks to TestCheckResourceAttrPair()
+  * Update api_gateway_authorizer.html.markdown
+  * set ebs block device attributes in addition to the root
+  * Update self_service_permissions block
+  * Apply review comments
+  * Documentation tweak after review.
+  * Removes stray comment
+  * Removes unused function
+  * Removes explicit ARN checks. Other cleanups.
+  * Removes ARN checks and replaces them with AttrPair checks. Removes unneeded custom checks and other cleanups.
+  * Uses `resource.TestCheckResourceAttrPair` for most attributes in S3 Bucket Object data source acceptance tests. Simplifies most multi-stage tests
+  * Uses Pair check function for Route 53 service discovery
+  * Uses ARN testing check functions for Redshift service account data source
+  * Uses ARN testing check functions for ELB service account data source
+  * Uses ARN testing check functions for Cloudtrail service account data source
+  * Uses ARN testing check functions for AWS Config recorder
+  * Uses Account ID check function for AWS Config aggregator
+  * Uses ARN testing check function for billing service account
+  * Uses ARN testing check function for Redshift cluster
+  * Removes custom ARN check for CloudTrail
+  * docs/provider: Add Environment Variable dictionary to Maintaining Guide (#13518)
+  * docs/provider: Add Acceptance Test Sweeper section to Contributing Guide (#13526)
+  * Rebased
+  * Moved findConfigurationSet logic into resource Read function
+  * Update based on PR review feedback
+  * Fix string handling
+  * BAU Fix deps
+  * Fix for SES configuration sets state and error handling
+  * Fix typo in Athena workgroup validation regex
+  * Refactor acceptance test checks
+  * Update workspaces_workspace.html.markdown
+  * Further clarification around the use of quoted display names.
+  * Create Redshift cluster in-VPC.
+  * Implement resource.TestCheckResourceAttrPair to check for pair values
+  * Implement resource.TestCheckResourceAttrPair to check for pair values
+  * Remove lbListenerDefaultRuleActionForward function, use lbListenerRuleActionForward instead
+  * Use ActionTypeEnum instead of string values
+  * Use testAccMatchResourceAttrRegionalARN instead of resource.TestCheckResourceAttrSet
+  * Fix stickiness duration attirbute not changing when stickiness enabled status is set to false
+  * Run make website-lint-fix in lb_listener_rule.html.markdown
+  * Prevent exiting without retries if one ResourceInUse error is returned when deleting an LB TargetGroup
+  * Update lb_listener_rule and lb_listener docs for weighted target groups
+  * Implement weighted target group acceptance tests
+  * Implement weighted target groups in aws_lb_listener_rule and aws_lb_listener
+  * Cleanup after v2.64.0 release
+  * v2.64.0
+  * minor naming changes
+  * document default value
+  * reuse disappears func
+  * Update security group example
+  * reuse disappears func
+  * revert connect ips removal
+  * Update resource_aws_directory_service_directory.go
+  * Update resource_aws_directory_service_directory.go
+  * remove sg id
+  * remove sg id
+  * add attributes to data source
+  * refactor test resource names
+  * formatting
+  * remove computed field validation
+  * add `security_group_id` and `availability_zones` attributes to vpc_settings
+  * add missing `connect_ips` attribute
+  * add plan time validation to `customer_dns_ips` and `dns_ip_addresses` add support for SharedMSAD type
+  * refactor
+  * refactor tests + add disappearing test case move vpc to base config from each other config
+  * Changes after review.
+  * r/aws_appmesh_route: Correctly handle routes with 0 weights.
+  * service/directoryservice: Fix schema error on `connect_ips` (#13395)
+  * Documentation: Additional resources affected by the provider 'skip_requesting_account_id' attribute (#13507)
+  * r/aws_kinesis_firehose_delivery_stream: Verify import of 'kinesis_source_configuration' and add '_disappears' test.
+  * Update CHANGELOG for #13520
+  * resource/aws_iot_topic_rule: Add step_functions configuration block (#13520)
+  * Fixes tiny typo in logo title in README.md (#13533)
+  * r/aws_kinesis_firehose_delivery_stream: Set 'kinesis_source_configuration' in Read function.
+  * Use 'validation.StringInSlice' with SDK-defined string constants.
+  * Revised from_email_address to remove &gt; &lt; and incorporate quotes around display name.
+  * docs/resource/aws_acm_certificate: Removed erroneous use of "to" (#13531)
+  * renamed variable in test
+  * implemented PR change requests
+  * Fixup: 'principal', not 'principle'.
+  * Fixup: Change link to https and remove stray period.
+  * update Read method error messaging and acctest
+  * Update CHANGELOG.md
+  * service/elb: Fix schema errors (#13418)
+  * Update CHANGELOG.md
+  * service/opsworks: Fix schema error (#13435)
+  * Update CHANGELOG.md
+  * service/sns: Fix schema error (#13437)
+  * save name in resourcename var
+  * fix error formatting
+  * update destroy/exists methods with id search
+  * run go fmt
+  * update test random naming and disappears step
+  * refine if-condition
+  * add disappears conditions in Read methods of ses receipt rule resources
+  * add new section on service availablity precheck
+  * Update CHANGELOG.md
+  * service/apigateway: Fix schema set errors (#13403)
+  * docs/resource/aws_ecs_service: Remove ARN mention from capacity_provider argument (#12060)
+  * Update CHANGELOG for #13515
+  * resource/aws_autoscaling_group: Ignore ordering differences for `tags` argument (#13515)
+  * Update CHANGELOG.md
+  * service/elasticsearch: Fix schema type mismatch (#13397)
+  * Update CHANGELOG for #12371
+  * resource/aws_acm_certificate: Update pending DNS validation record creation time from 1 minute to 5 minutes. (#12371)
+  * Removes missed test
+  * Reorders parameters for ARN checks with specific account IDs
+  * Renames Workspaces state functions
+  * Moves WorkSpaces waiters to internal package
+  * Now assumes that the required IAM role will be present for acceptance tests
+  * provider: Update pull request template link to Contributing Guide (#13500)
+  * EBS, for typo and rephrase error message on IOPS for non-IO1 (#13465)
+  * Update CHANGELOG for #12571 and #12751
+  * resource/ecs_task_definition: Ensure `efs_volume_configuration` changes are detected (#12751)
+  * resource/aws_ecs_service: Assign efs_volume_configuration when present (#12571)
+  * tests/resource/aws_batch_job_definition: Filter sweeper input on ACTIVE status (#13496)
+  * Add missing ENHANCEMENTS header
+  * Update CHANGELOG for #13464
+  * resource/aws_ses_event_destination: Refresh resource state in the Read method (#13466)
+  * docs/resource/aws_codestarnotifications_notification_rule: Fix invalid import command (#13486)
+  * data-source/aws_lambda_invocation: Deprecate result_map attribute (#13492)
+  * docs/resource/aws_rds_cluster: Sort arguments alphabetically (#13443)
+  * Update CHANGELOG.md
+  * service/lightsail: Fix type mismatch (#13430)
+  * fixed PR change requests
+  * Add aws_wafv2_rule_group data source
+  * Cleanup after v2.63.0 release
+  * v2.63.0
+  * Update CHANGELOG.md
+  * service/ssm: Fix schema errors (#13438)
+  * Formatting cleanup
+  * tests/service/efs: Fix infinite looping of sweepers (#13415)
+  * Updates example for Terraform 0.11 compatibility. Now assumes required IAM role is present and includes instructions when not present.
+  * resource/aws_network_acl: Use schema.ImportStatePassthrough (#13419)
+  * tests/provider: Remove fixed aws_s3_analytics_configuration ignores from tfproviderdocs (#13448)
+  * Removes old test check
+  * Removes old test check
+  * Removes alternate account test functions
+  * Update CHANGELOG for #13440
+  * Update resource_aws_cognito_identity_pool_roles_attachment.go
+  * docs/resource/aws_db_instance: Clarify replicate_source_db for cross-region (#12518)
+  * docs/resource/aws_db_instance: Updated character_set_name for compatibility MSSQL (#12006)
+  * docs/service/rds: Replace "a RDS" with "an RDS" (#12605)
+  * docs/resource/aws_elasticsearch_domain: Fix incorrect reference in example (#13451)
+  * Update CHANGELOG for #13436
+  * resource/aws_codebuild_webhook: Support `COMMIT_MESSAGE` value in filter types (#13436)
+  * Update CHANGELOG for #13414
+  * resource/aws_eks_node_group: Add force_update_version argument (#13414)
+  * tests/resource/aws_batch_job_definition: Add sweeper (#13427)
+  * update flatten/expand methods to handle new list values
+  * Update CHANGELOG for #13404
+  * Update CHANGELOG for #11960
+  * Update CHANGELOG.md
+  * Switch to import state passthrough (#13431)
+  * Update CHANGELOG.md
+  * service/ram: Fix schema error (#13402)
+  * service/emr: Fix schema error (#13413)
+  * Current aws_macie resources interact with Macie Classic. (#13441)
+  * Update module aws/aws-sdk-go to v1.31.2 (#13399)
+  * Update module hashicorp/terraform-plugin-sdk to v1.13.0 (#13429)
+  * Update CHANGELOG.md
+  * service/cloudwatchlog: Fix schema error (#13411)
+  * add new files. Teamcity snippet
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * service/elbv2: Fix elbv2 errors by exporting attributes (#13400)
+  * Update CHANGELOG for #12789
+  * Update efs_file_system_policy.html.markdown
+  * add import support add disappears test
+  * Format test config
+  * Default 1500 capacity can be increased on request
+  * Add documentation
+  * Fix state diff caused by api returning lowercase
+  * Add mssing retries and set correct validation
+  * Rules get ordered by priority
+  * Small refactorings
+  * Use computed lock token
+  * Add regex pattern set reference statement
+  * Add ip set reference statement
+  * Fix test according to statement depth
+  * Add xss match statement
+  * Add sql injection match statement
+  * Add size constraint statement
+  * Add logical statements
+  * Temporarly prevent schema changes to break tests
+  * Refactor schema
+  * Rules are not depending on order
+  * Add byte match statment field to match
+  * Add byte match statement
+  * Add rule action
+  * Add geo match statement
+  * Add new resource aws_wafv2_rule_group
+  * Fix docs
+  * Update CHANGELOG for #13407
+  * Clarify CloudFront usage
+  * Clarify CloudFront usage
+  * Fix docs
+  * Apply review comments
+  * Add documentation
+  * Add aws_wafv2_regex_pattern_set data source
+  * resource/aws_eks_node_group: Only pass ReleaseVersion during UpdateNodegroupVersion if changed (#13407)
+  * Update CHANGELOG for #13382
+  * resource/aws_network_acl: Fix issue with updating subnet associations returning InvalidAssociationID.NotFound (#13382)
+  * Update CHANGELOG for #12284
+  * Fix docs
+  * Update docs
+  * Apply review comments
+  * Fix docs
+  * Apply review comments
+  * Remove error message condition
+  * Apply review comments
+  * Apply changes based on review
+  * Duplicate code
+  * Regex has 200 character limit
+  * Regex not required on creation
+  * Format config code
+  * Retry in case association is being removed
+  * Cleanup
+  * Make user aware of optimistic lock exception
+  * Add docs
+  * Add resource aws_wafv2_regex_pattern_set
+  * Update CHANGELOG for #12788
+  * add golang version update section
+  * update URLs for permanently moved sites
+  * add extra nil check and correct existing one
+  * remove commented out function
+  * handle empty expiration
+  * run go fmt
+  * update disablebinary flag in test and ptr value conversions
+  * update from typset to typelist with maxitems of 1
+  * update hash strings for secondary_sources
+  * change auth attributes to typelist with maxitems of 1 and remove disablebinarydriver flag where applicable
+  * tests/resource/aws_db_cluster_snapshot: Add sweeper (#13301)
+  * add back binarydriver flag
+  * change attribute type to handle update diffs
+  * use typelist for attributes with maxitems of 1 and remove DisableBinaryDriver refs
+  * provider: Implement examples label (#13325)
+  * provider: First batch of unparam linter fixes (#13279)
+  * resource/aws_secretsmanager_secret: Move hardcoded timeout to waiter package, allow retries in CheckDestroy (#13183)
+  * tests/provider: Add misspell to CHANGELOG GitHub Action workflow (#13249)
+  * Update CHANGELOG for #13293
+  * resource/aws_iot_topic_rule: Implement tagging support (#13293)
+  * docs/contributing: Add Resource Policy Support section, fix tagging documentation heading level (#13322)
+  * hashibot: Labeling for top level Markdown files and docs/ directories (#13324)
+  * service/eks: markdownlint MD007 fixes (#13356)
+  * tests/provider: Add Terraform Provider GitHub Actions workflow (#13248)
+  * Update glue_connection.html.markdown
+  * arn
+  * Use resource.TestCheckResourceAttrPair for security_group_id
+  * remove DisableBinaryDriver refs in tests
+  * remove DisableBinaryDriver refs in tests
+  * Make retry timeout a static 5 minutes
+  * Better docs thanks to bflad
+  * Remove timeout docs
+  * Remove configurable timeouts
+  * docs/resource/aws_eks_node_group: Add ignore_changes example, similar to aws_ecs_service resource (#13378)
+  * Update CHANGELOG for #13376
+  * resource/aws_ecs_service: Add `force_new_deployment` argument and support in-place updates for `ordered_placement_strategy` and `placement_constraints` (#13376)
+  * service/eks: Fix testing and eks-getting-started example for EKS API change (#13323)
+  * Adjust CHANGELOG formatting for #13362
+  * Update CHANGELOG for #11965
+  * service/efs: New Resource and Data Source for EFS Access Point (#11965)
+  * Add additional validation on sg rule attributes
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * service/asg: Fix schema panic in ASG tags (#13360)
+  * Update CHANGELOG.md
+  * service/rds: Fix schema panic errors (#13362)
+  * move mysql tarball to ./aws/testdata (#13333)
+  * Update docs
+  * Add extra checks
+  * Add missing attributes
+  * Add documentation
+  * Add aws_wafv2_ip_set data source
+  * Update module aws/aws-sdk-go to v1.31.0 (#13358)
+  * run go fmt
+  * run go fmt
+  * remove DisableBinaryDriver refs in tests
+  * pr feedback
+  * Update CHANGELOG for #12119
+  * docs/provider: Various documentation updates for aws_cloudfront_distribution and codecommit (#13319)
+  * Disable binary driver for missed tests (#13359)
+  * docs/contributing: Initial Resource and Data Source Acceptance Testing sections (#13332)
+  * style: Add spacing between principal blocks
+  * add docs
+  * Update efs_file_system.html.markdown
+  * add update case
+  * add docs
+  * take remove custom arn handling
+  * fix
+  * Fix aws_security_group_rule description field overwritten to nil on TF state refresh
+  * Adds custom KMS key and makes example Terraform v0.11-friendly
+  * Adds acceptance test functions for cross-account resources
+  * split efs policy to its own resource
+  * split efs policy to its own resource
+  * fmt
+  * efs file system data source - add support for policy
+  * add support for efs iam policy
+  * add missing attributes to testcheck
+  * move assume_role test to provider testing
+  * Apply review changes
+  * website: Add Synthetics to allowed subcategories
+  * service/synthetics: Add service client (#13186)
+  * Update module aws/aws-sdk-go to v1.30.28 (#13190)
+  * resource/aws_launch_template: Prevent downstream resource errors with unconfigured partition numbers (#13239)
+  * Provide examples of placement strategy
+  * resource/aws_datasync_task: Support `ONLY_FILES_TRANSFERRED` value in `verify_mode` argument (#12897)
+  * Improve nil checks
+  * provider: Add Transit Gateway Network Manager service client and resource tagging (#13262)
+  * infrastructure/repository: Synchronize recent AWS service labels and bump GitHub provider to latest (#13226)
+  * tests/resource/aws_codebuild_project: Add testing for empty value environment variables
+  * ROADMAP.md: Fix WAFv2 link (#13240)
+  * Update documentation for API gateway integration.
+  * Fixes errors, adds README, and makes example easier to run out-of-the-box
+  * resource/code_build_project: Support `SECRETS_MANAGER` environment variable type (#12572)
+  * resource/aws_codebuild_project: Support `git_submodules_config` with `GITHUB` and `GITHUB_ENTERPRISE` source types  (#13285)
+  * Fixes indentation
+  * Enables AWSAT001 linter for ARN attribute checks in acceptance tests
+  * add branch prefix section
+  * Add extra error checking
+  * tests/resource/aws_sqs_queue: Add sweeper (#13244)
+  * tests/resource/aws_sns_topic: Add sweeper (#13167)
+  * Fix Examples Check linting error (#13300)
+  * docs/resource/aws_nat_gateway: Fix for misleading subnet name (#13273)
+  * docs/resource/aws_lb_listener_rule: fix "-" to "_" (#13299)
+  * resource/aws_iot_topic_rule: Remove unused function
+  * resource/aws_iot_topic_rule: Refactor for type safety, error checking, and preparation for top level action/error_action configuration blocks
+  * resource/aws_iot_topic_rule: Finish dynamodbv2 implementation
+  * Add nil check for s.UserId parameter
+  * Remove extraneous lines in acc test
+  * remove GoReport
+  * tests/resource/aws_ecr_repository: Implement sweeper (#12834)
+  * tests/resource/aws_cloudtrail: Add sweeper (#13150)
+  * tests/resource/aws_flow_log: Add sweeper (#13149)
+  * tests/resource/aws_route53_query_log: Skip SerializationError and AccessDeniedException for sweeper
+  * Updates Glue acceptance tests to use ARN testing check functions
+  * Updates IOT acceptance tests to use ARN testing check functions
+  * tests/resource/aws_sns_platform_application: Add sweeper (#13168)
+  * tests/resource/aws_kinesis_analytics_application: Add sweeper (#13153)
+  * Updates Organizations acceptance tests to use ARN testing check functions
+  * return original arn in parsing error
+  * Updates Kinesis Firehose acceptance tests to use ARN testing check functions
+  * tests/resource/aws_ses_receipt_rule_set: Add sweeper (#13169)
+  * Remove error message condition
+  * tests/resource/aws_glacier_vault: Add sweeper (#13184)
+  * tests/resource/aws_iot_topic_rule: Add sweeper (#13245)
+  * Updates RAM acceptance tests to use ARN testing check functions
+  * tests/service/ses: Add sweepers for aws_ses_domain_identity and aws_ses_email_identity resources (#13217)
+  * add S006 linter rule
+  * tests/resource/aws_ses_configuration_set: Add sweeper (#13216)
+  * tests/resource/aws_redshift_event_subscription: Add sweeper (#13215)
+  * tests/resource/aws_neptune_event_subscription: Add sweeper (#13214)
+  * fix kerims handle
+  * extra blurb on roadmap
+  * add community guidelines link
+  * tests/resource/aws_db_event_subscription: Add test sweeper. (#13213)
+  * brief triage section
+  * Cleanup code and make it consistent across all handlers.
+  * Bump lambda runtime Node version.
+  * Update AWS SDK version.
+  * Updated resource names (aws_apigatewayv2_).
+  * API Gateway WebSocket chat application example
+  * tests/resource/aws_budgets_budget: Add test sweeper. (#13210)
+  * Update CHANGELOG for #12747
+  * resource/aws_appsync_resolver: Add CachingConfig support (#12747)
+  * Update enabled_cloudwatch_logs_exports description
+  * Wording fix: noncurrent object versions
+  * Update module bflad/tfproviderdocs to v0.6.0 (#13246)
+  * Update module hashicorp/terraform-plugin-sdk to v1.12.0 (#12740)
+  * r/organizations_account: tech debt: replace custom validation funcs
+  * add breaking changes section
+  * add elem attribute to typemaps
+  * info > docs
+  * FAQ revision
+  * code review fixes
+  * Update info/FAQ.md
+  * Update info/contributing/contribution-checklists.md
+  * fix waiting response tag link
+  * Update info/MAINTAINING.md
+  * Update info/FAQ.md
+  * some FAQ changes
+  * add link to the label dictionary
+  * Update module bflad/tfproviderdocs to v0.5.3 (#13225)
+  * Update module bflad/tfproviderdocs to v0.5.2 (#13220)
+  * resource/aws_ec2_transit_gateway_peering_attachment: Finish up  implementation
+  * infrastructure/repository: Lift and shift Terraform configuration for managing certain repository labels (#13212)
+  * switch docs/ to info/ to appease linters
+  * use disappears test func
+  * refactor iam saml provider to use arn package instead of custom logic + add tests
+  * add disappears test case
+  * refactor argument name
+  * refactor disappears func
+  * add core services document
+  * Initial commit for tests - WIP
+  * reuse
+  * remove hardcoded ami id and instance type
+  * remove hardcoded ami id and instance type
+  * use resource name variable
+  * add missing hashibot labeler
+  * fix skip test data source filter
+  * randomize resource names - fix oops
+  * randomize resource names
+  * fix missing test
+  * use enums + refactor tests
+  * hashibot: Capture additional provider and test path labels for pull requests (#13209)
+  * Update CHANGELOG for #13125
+  * provider: Add skip_collaborators to hashibot opened_pull_request_labeler (#13204)
+  * tests/provider: Initial examples checking against Terraform 0.11.14 and 0.12.24 (#13196)
+  * Disable binary driver for tests with set addresses (#13194)
+  * .github/workflows/issues: Remove outdated GitHub Project handling (#13205)
+  * Protect against nil SizeInBytes
+  * Updates Neptune acceptance tests to use ARN testing check functions
+  * Suppress IPv6 state diffs
+  * Q2-2020 Public Roadmap
+  * fix typo
+  * r/vpn_connection: Remove case-insensitive mode parameter
+  * rename `multi_attach` to `multi_attach_enabled`
+  * Update module aws/aws-sdk-go to v1.30.21 (#13088)
+  * Update module golangci/golangci-lint to v1.26.0 (#12397)
+  * Complete implementation of kinesisanalyticsv2 service client. (#13161)
+  * add plan time validation to `rules.source` add tags test fix state removal when does not exist
+  * Fix workspaces default role
+  * Add workspaces_directory sweeper dependency on workspaces_workspace
+  * New resource: aws_workspaces_workspace
+  * Updates attribute tests with variables instead of strings
+  * Update Roadmap Copy - 2020Q2
+  * Updates SNS acceptance tests to use ARN testing check functions
+  * Updates Lambda acceptance tests to use ARN testing check functions
+  * move ssm validation method to resource
+  * Apply review comments
+  * Format test config
+  * Retry in case association is being removed
+  * Make user aware of optimistick lock exception
+  * Apply review changes
+  * Cleanup
+  * Sort imports
+  * Add docs
+  * r/aws_route53_query_log: Add test sweeper.
+  * Add tags support
+  * Add import
+  * Add force new test
+  * Add update
+  * Fix addresses
+  * Basic functionality
+  * correct validate fn
+  * revert to using a typemap but with schema.Schema defined
+  * fixing broken tests for new tagging mechanism for VPC, subnet, and route table resources
+  * Updates Secrets Manager acceptance tests to use ARN testing check functions
+  * Update CHANGELOG for #13141
+  * Update CHANGELOG for #13054
+  * support glue connection for kafka
+  * enabled R009 linting rule and fixed affected resources
+  * enabled S022 check and fix affected resources
+  * Implement ignore-tags functionality
+  * Add docs for transit gateway peering attachment accepter
+  * Checks only for known parameters in destroy check. Style cleanups
+  * resource/aws_api_gateway_deployment: Add triggers argument (#13054)
+  * resource/aws_apigatewayv2_deployment: Add triggers argument (#13055)
+  * merge changes from master for service/ec2: Add Resource & Data Source aws_ec2_transit_gateway_peering_attachment (#11162)
+  * Correct type and tests for SizeInBytes to reflect that the value is an integer
+  * Add size_in_bytes to efs_file_system data source
+  * tests/service/ec2: Minor refactoring for EIP COIP testing
+  * service/ec2: Rename aws_local_gateway_route_table(s) to aws_ec2_local_gateway_route_table(s), use AWS_OUTPOST_ARN environment variable
+  * service/ec2: Rename aws_local_gateway(s) to aws_ec2_local_gateway(s), use AWS_OUTPOST_ARN environment variable for testing
+  * data-source/aws_ec2_coip_pool: Include ignore tags config
+  * docs/provider: Fix new aws_ec2_coip_pool(s) links in legacy sidebar
+  * service/ec2: Rename aws_coip_pool(s) to aws_ec2_coip_pool(s), hide testing behind consistent AWS_OUTPOST_ARN environment variable
+  * Cleanup after v2.60.0 release
+  * v2.60.0
+  * r/aws_redshift_snapshot_copy_grant: Remove extraneous Exists function (#13052)
+  * finish removing `host_resource_group_arn`
+  * drop `host_resource_group_arn` from PR expand test
+  * add plan time validation for:
+  * add more tests to launch template data source
+  * add `host_resource_group_arn` and `partition_number` attributes to resource and data source
+  * Updates WAF and WAF Regional acceptance tests to use ARN testing check functions
+  * Updates Storage Gateway acceptance tests to use ARN testing check functions
+  * resource/aws_glue_trigger: Remove incorrectly implemented ConflictsWith (#13110)
+  * service/ec2: Add ignore tags handling to aws_ec2_transit_gateway_peering_attachment resource and data source
+  * service/ec2: Minor testing fixes and improvements on failing Transit Gateway Peering Attachments
+  * service/ec2: Add Resource & Data Source aws_ec2_transit_gateway_peering_attachment (#11162)
+  * fix
+  * fix
+  * Updates SSM acceptance tests to use ARN testing check functions
+  * data source docs
+  * add to data source
+  * fix workspaces tags
+  * add docs
+  * add tests
+  * add `directory_name`, `directory_type`, `customer_user_name`, `alias` attributes
+  * refactor to have specific tags test
+  * add attributes
+  * add support for multi attach
+  * service/backup: Fix tfproviderlint AWSR002 errors. (#13106)
+  * tests/resource/aws_db_security_group: Include EC2-Classic PreCheck
+  * docs: Experimental markdown-link-check testing (#12818)
+  * provider: Implement ignore tags functionality across all data sources resources (#13039)
+  * service/guardduty: Support GuardDuty Organizations (#13034)
+  * Updates aws_rds_cluster acceptance tests to use ARN testing check functions
+  * Updates aws_rds_cluster_parameter_group acceptance tests to use ARN testing check functions
+  * resource/aws_dms_endpoint: Add kafka_settings configuration block and kafka to engine_name validation (#12835)
+  * Updates RDS acceptance tests to use ARN testing check functions
+  * provider: Introduce shared IAM propagation timeout, refactor KMS Key creation to that timeout and add KMS Key deletion to internal waiter package (#12863)
+  * r/aws_route: Remove extraneous Exists function.
+  * Updates EKS acceptance tests to use ARN testing check functions
+  * resource/aws_api_gateway_stage: Ignore NotFoundException on destroy (#12826)
+  * data-source/aws_api_gateway_rest_api: Prevent error with VPC Endpoint configured APIs (#12825)
+  * tests/resource/aws_cloudwatch_log_group: Add sweeper (#12792)
+  * Adds Security Group test fix
+  * Adds additional test fix
+  * Updates EC2 acceptance tests to use ARN testing check functions
+  * r/aws_snapshot_create_volume_permission: Remove extraneous Exists function.
+  * resource/aws_storagegateway_gateway: Finish gateway_vpc_endpoint implementation
+  * Removes some `lintignore` directives
+  * tests/provider: Introduce shared disappears TestCheckFunc, refactor Backup testing to implement and verify (#12864)
+  * enable lint checks R007 and R008
+  * resource/emr_cluster: Remove deprecated (helper/schema.ResourceData).Partial() and (helper/schema.ResourceData).SetPartial() (#13074)
+  * resource/aws_storagegateway_smb_file_share: Add path attribute (#12623)
+  * service/ec2: Add outpost_arn attribute to aws_network_interface resource and data source (#12440)
+  * service/ec2: Add outpost_arn attribute to aws_ebs_volume resource and data source (#12439)
+  * r/aws_rds_cluster_parameter_group: Remove deprecated Partial/SetPartial.
+  * service/ec2: Add outposts_arn attribute to resource and data source (#12097)
+  * provider: Various data source information for new eu-south-1 (Milan) region (#13061)
+  * Update module aws/aws-sdk-go to v1.30.16 (#12970)
+  * Replace 'testAccPreCheckOffersEc2InstanceType' with 'aws_ec2_instance_type_offering' data source. (#13076)
+  * resource/aws_storagegateway_gateway: Retry 504 status code on activation (#12773)
+  * service/storagegateway: Gateway activation stability and test configuration fixes (#12772)
+  * resource/aws_appautoscaling_scheduled_action: Include ResourceId in DescribeScheduledActions API call (#12699)
+  * resource/aws_efs_file_system: Prevent panic with empty lifecycle_policy configuration block (#12640)
+  * tests/service/guardduty: Prevent detector data source concurrency errors, refactor detector resource import testing (#12766)
+  * resource/aws_batch_job_queue: Prevent panic when ComputeEnvironmentOrder is updated outside Terraform (#12632)
+  * r/aws_route53_health_check: Validate reference_name (#12873)
+  * resource/aws_elasticsearch_domain: Support customizable update timeout (#12916)
+  * docs/resource/aws_appautoscaling_policy: Additional customized_metric_specification documentation (#12696)
+  * Clarified options for `email_sending_account` and associated `source_arn`.  Updated `from_email_address` formatting to properly display in generated pages and replaced smith.com with example.com.
+  * r/aws_ami_launch_permission: Remove extraneous Exists function.
+  * r/aws_kms_grant: Remove extraneous Exists function.
+  * r/aws_ssm_parameter: Remove extraneous Exists function.
+  * r/aws_iam_openid_connect_provider: Remove extraneous Exists function.
+  * r/aws_glue_crawler: Remove extraneous Exists function.
+  * revert local change
+  * resource/aws_route53_zone: Guard against missing ChangeInfo during creation (#12634)
+  * resource/aws_fsx_windows_file_system: Prevent panic when update includes `self_managed_active_directory` settings (#12630)
+  * resource/aws_glue_catalog_table: Prevent various panics with empty configuration blocks (#12611)
+  * provider: Replace deprecated helper/validation.ValidateJsonString function (#12378)
+  * docs/resource/aws_appautoscaling_target: Additional information about role_arn (#12694)
+  * docs/resource/aws_appautoscaling_policy: Link to AWS documentation for policy_type argument documentation (#12695)
+  * resource/aws_lb_listener: Prevent panics on creation and refresh when API throttled (#12617)
+  * service/ec2: Fix tagging for default route table and add CIDR plan time validation to route table resources (#12858)
+  * resource/aws_kinesis_firehose_delivery_stream: Prevent panic with empty `processing_configuration` configuration block (#12613)
+  * resource/aws_elastic_transcoder_preset: Refactor testing to ensure unrelated testing does not include description (#12612)
+  * Format code
+  * adjust delete timout default to 10 min
+  * tests/provider: Introduce regional sweeper AWSClient cache (#12604)
+  * provider: Ensure aws_prefix_list is labeled service/ec2 (#12588)
+  * data-source/aws_elb_hosted_zone_id: Add `us-gov-east-1` and `us-gov-west-1` region values (#12976)
+  * set "instance_pools_to_use_count" in import
+  * Update aws/resource_aws_spot_fleet_request.go
+  * Update aws/resource_aws_spot_fleet_request.go
+  * rebase import and add to new test cases
+  * fix typo
+  * fmt fix
+  * add import support
+  * resource/aws_spot_fleet_request: Launch Template Support (#12732)
+  * docs/resource/aws_iot_topic_rule: Use latest SQL version in example (#13037)
+  * resource/aws_wafregional_xss_match_set: Fix 'panic: interface conversion: interface {} is *schema.Set, not []interface {}'. (#13024)
+  * Adds one more ARN test fix and replaces many `acctest.RandInt()` calls with `acctest.RandomWithPrefix()`
+  * Updates DynamoDB acceptance tests to use ARN testing check functions
+  * Updates CodeDeploy acceptance tests to use ARN testing check functions
+  * Updates CloudWatch Events acceptance tests to use ARN testing check functions
+  * adjust config format spacing
+  * CR updates: remove extra fields and update tests
+  * Move test code
+  * Actually test behaviour of `TestAccAWSCodePipeline_emptyStageArtifacts` other than not crashing
+  * Updates CodePipeline acceptance tests to use ARN testing check functions
+  * Updates S3 acceptance tests to use ARN testing check functions
+  * remove duplicate change of GH-12858
+  * Simplify code & add states to trigger recreation.
+  * aws_ec2_transit_gateway_peering_attachment_accepter: remove unnecessary items
+  * aws_ec2_transit_gateway_peering_attachment_accepter: peer tgw direction
+  * aws_ec2_transit_gateway_peering_attachment_accepter: keyvaluetags
+  * add data source links to aws provider home
+  * add backup_* data sources
+  * add support for importing aws_default_route_table resource and setting tags
+  * r/aws_glue_catalog_database: Remove extraneous Exists function.
+  * service/vpn: tech debt: replace custom validation functions
+  * service/redshift: missed the $, change which method we use
+  * service/redshift: tech debt: replace existing custom validators
+  * docs: update documentation
+  * test: add cover test
+  * service/iam: Clean up inlining mess I made.
+  * service/iam: replace custom SchemaValidateFunc with provided ones
+  * feat: support mongodb connection type for AWS Glue
+  * fix: route53 setid and type change
+  * resource/aws_placement_group: Support tag-on-create (#12963)
+  * Update CHANGELOG for #12962
+  * resource/aws_key_pair: Support tag-on-create (#12962)
+  * Better cleaner code and a build fix
+  * More docs beats less docs
+  * Update db_snapshot.html.markdown
+  * Fix some typos in docs etc
+  * add zero tag check
+  * Fix some overlooked text
+  * fix arn test
+  * Add Local Gateway Route Table datasources
+  * add tags test case
+  * use create out put for setting id
+  * add import to db snapshot
+  * Updates KMS acceptance tests to use ARN testing check functions
+  * Cleanup after v2.59.0 release
+  * Adds ARN test for IAM instance profile data source
+  * Updates IAM acceptance tests to use ARN testing check functions
+  * Updates docdb acceptance tests to use ARN testing check functions
+  * Updates Cloud9 acceptance tests to use ARN testing check functions
+  * r/aws_apigatewayv2_stage: Correctly handle diffs for HTTP API 'default_route_settings.logging_level' attribute, plus the special '$default' stage.
+  * docs: add documentation for Qos field
+  * test: add cover test for Qos field
+  * feat: add Qos field to IoT republish action
+  * Delete mistake part duece
+  * Delete mistake
+  * Add links to website, fix redundant nil checks.
+  * Pool_id(s) instead of id(s)
+  * Add Coip to EIP resource and datasource
+  * Break dependency on VPC tests
+  * Add COIP Datasources
+  * docs: Add Federated Principal information to iam_policy_document
+  * R005 linting
+  * Docs: aws_lambda_permission clarifications.
+  * docs: rename documentation file to match resource name
+  * Add new docs to index. Run gofmt
+  * Add docs, accept state filter
+  * Add Outpost Local Gateway support
+  * IoT Rule DyanmoDB operation action
+  * resource/aws_iam_instance_profile: Remove deprecated (helper/schema.ResourceData).Partial() and (helper/schema.ResourceData).SetPartial()
+  * added data source side navigation link
+  * added aws_ecr_authorization_token documentation
+  * added data source aws_ecr_authorization_token
+  * docs/resource/aws_elasticsearch_domain: Update access policy in example
+  * resource/aws_elasticsearch_domain: move master user options in docs
+  * resource/aws_elasticsearch_domain: add es domain example
+  * resource/aws_elasticsearch_domain: Use len check on master_user_options
+  * resource/aws_elasticsearch_domain: update docs to match schema
+  * resource/aws_elasticsearch_domain: add read and update support; ignore master user options in tests
+  * tests/resouce/aws_elasticsearch_domain: add user db and iam tests for es advanced security
+  * tests/data_source/aws_elasticsearch_domain: Assert false for default values
+  * resource/aws_elasticsearch_domain: Validation and type assertion improvements for advanced security options
+  * resource/aws_elasticsearch_domain: Add advanced security options
+  * Fix
+  * tests/data-source/aws_elasticsearch_domain: Add advanced_security_options to acceptance tests
+  * docs/data-source/aws_elasticsearch_domain: Add advanced_security_options attributes to docs
+  * data-source/aws_elasticsearch_domain: Add advanced security options
+  * update docs
+  * update arn test
+  * add import support use enums add plan time validations remove extraneous list tags call add disappearing test case
+  * resource/aws_security_group_rule: Prevent resource replacement when source sg id is specified with account id prefix
+  * Placate linter
+  * Apply eventual consistency mitigation only on create
+  * Prevent VPC and Subnet resources from deleting tags created by aws_ec2_tag
+  * aws_codebuild_project: allow empty value of environment variables
+  * Remove references to default RT propogation
+  * Delete old Route53 record when updating name
+  * Fix conflicts
+  * Resource aws_ec2_transit_gateway_peering_attachment_accepter
+  * aws_ec2_transit_gateway_peering_attachment_accepter
+  * add subcategory to website doc
+  * Switch to terraform-plugin-sdk
+  * resource/ecs_service: Add support for customTimeout on delete
+  * Added [WARN] prefix in the log
+  * Handle tag delete in resourceAwsEc2TagRead
+  * Add docs for timeout.
+  * updated documentation with new parameter
+  * added in changes for storage gateway to accept a vpc endpoint
+  * Add docs
+  * Add iotEvents action
+  * Fix block name
+  * Add iotAnalytics action
+  * fixing retry logic - DescribeTags returns no err and an empty list of tags if the tag is not yet there
+  * Use a retry as the EC2 API is eventually consistent.
+  * resource/aws_ecs_service: Add EXTERNAL deployment_controller argument
+  * do the same for route tables
+  * Check error on delete.
+  * Only manage tags if someone has defined them in aws_subnet and aws_vpc.
+  * Get tests working minus the VPC resource causing a dirty plan.
+  * Get code compiling.
+  * Add the resource to the provider and write some docs.
+  * Add the initial aws_ec2_tag resource.
+  * r/ecs_service: Add EXTERNAL to deployment_controller
+  * fix linting error
+  * Add support for DynamoDbv2 IoT topic rule action
+  * [docs] Clarify mfa_delete cannot toggle state
+  * Add acceptance test for non-zero min_vcpus
+  * Revert "Ensure desired_vcpus is set before including it in update"
+  * Ensure desired_vcpus is set before including it in update
+
+-------------------------------------------------------------------
 Mon Apr 27 13:49:49 UTC 2020 - rjschwei@suse.com
 
 - Add symlink required by terraform execution

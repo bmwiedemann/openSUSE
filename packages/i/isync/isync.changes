@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  4 17:37:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.3
+  * Network timeout handling has been added.
+  * Support for proper Maildir++ and a Maildir sub-folder naming
+    style.
+  * without extra dots have been added.
+  * Support for TLS client certificates was added.
+  * Support for recovering from baseless UID validity changes was
+     added.
+  * The get-cert script was renamed to mbsync-get-cert.
+
+-------------------------------------------------------------------
 Wed Jul  8 11:19:38 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Update to version 1.3.2

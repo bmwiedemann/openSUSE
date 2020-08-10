@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  5 12:36:58 UTC 2020 - cloud-devel@suse.de
+
+- Proper fix for forever looping test (bsc#1163136) is the kombu change below
+- update to version 12.1.2
+  - tests: Resolves issues with kombu > 4.6.8
+  - Update .gitreview for stable/ussuri
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri
+  - Simplify tools/test-setup.sh
+  - Print warning message when connection running out
+
+-------------------------------------------------------------------
 Tue Jul 28 11:31:49 UTC 2020 - Jan Zerebecki <jzerebecki@suse.com>
 
 - as a workaround (bsc#1163136) disable test for rabbit until a release with

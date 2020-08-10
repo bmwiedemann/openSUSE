@@ -17,7 +17,7 @@
 
 
 Name:           accerciser
-Version:        3.36.2
+Version:        3.36.3
 Release:        0
 Summary:        Accessibility debugging tool
 License:        BSD-3-Clause

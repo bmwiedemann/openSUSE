@@ -468,4 +468,12 @@
   fix is available, otherwise build would loop forever</comment>
     <requestid>823213</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>077b6199c8147e746c2e6249ca694c87</srcmd5>
+    <version>12.1.2</version>
+    <time>1597064731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825319</requestid>
+  </revision>
 </revisionlist>

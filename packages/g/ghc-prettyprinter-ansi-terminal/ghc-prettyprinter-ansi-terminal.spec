@@ -19,7 +19,7 @@
 %global pkg_name prettyprinter-ansi-terminal
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.1.2
+Version:        1.1.2
 Release:        0
 Summary:        ANSI terminal backend for the »prettyprinter« package
 License:        BSD-2-Clause

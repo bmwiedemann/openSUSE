@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 24 11:26:42 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.0
+  + Bump botocore and extras
+  + Drop support for 3.5 given we are unable to test it
+    with moto and it will soon be unsupported
+  + Remove loop parameters for Python 3.8 compliance
+  + Remove deprecated AioPageIterator.next_page
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Jan 27 15:26:32 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.11.1
