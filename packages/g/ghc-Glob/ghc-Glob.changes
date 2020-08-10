@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 20 02:00:58 UTC 2020 - psimons@suse.com
+
+- Update Glob to version 0.10.1.
+  0.10.1, 2020-07-19:
+  	Updated code and dependencies to support dlist-1.0.
+
+  	Cabal-Version minimum bumped to 1.10 as Hackage now rejects older minima.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:13:35 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
