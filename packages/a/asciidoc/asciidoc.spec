@@ -17,7 +17,7 @@
 
 
 Name:           asciidoc
-Version:        9.0.1
+Version:        9.0.2
 Release:        0
 Summary:        Text-Based Document Generation
 License:        GPL-2.0-or-later
