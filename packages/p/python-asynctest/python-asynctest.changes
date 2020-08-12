@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 11 07:17:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable more known failures with python 3.8 and asyncmock
+
+-------------------------------------------------------------------
 Tue Mar 10 15:33:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip known failures upstream is aware of for >6 months

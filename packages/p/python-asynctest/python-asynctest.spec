@@ -52,7 +52,8 @@ testing asyncio libraries.
 %check
 # Tests failing with py3.8 https://github.com/Martiusweb/asynctest/issues/132
 # test_basic - it is not supposed to be launched by pytest
-%pytest -k 'not (test_basic or test_create_autospec_on_coroutine_and_using_assert_methods or test_awaited_from_autospec_mock or test_patch_coroutine_with_multiple_scopes or test_multiple_patches_on_coroutine or test_patch_coroutine_only_when_running)'
+# test_patch and test_create_autospec - fail since 3.8 upstream knows https://github.com/Martiusweb/asynctest/issues/132
+%pytest -k 'not (test_basic or test_create_autospec_on_coroutine_and_using_assert_methods or test_awaited_from_autospec_mock or test_patch_coroutine_with_multiple_scopes or test_multiple_patches_on_coroutine or test_patch_coroutine_only_when_running or Test_patch or Test_create_autospec)'
 
 %files %{python_files}
 %license LICENSE.md
