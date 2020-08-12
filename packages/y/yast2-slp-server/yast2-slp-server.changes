@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:26:19 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(slp-server) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.0
+
+-------------------------------------------------------------------
 Mon Mar  9 10:52:33 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not break when running the module without 'openslp-server'
