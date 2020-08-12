@@ -20,7 +20,7 @@
 %define sover   2
 %define _version 1.24
 Name:           marco
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        MATE window manager
 License:        GPL-2.0-or-later

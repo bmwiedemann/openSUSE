@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Aug  9 16:04:06 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * common: Window icon (META_DEFAULT_ICON_NAME) is no longer
+    available.
+  * workspace: Don't try to use per-workspace MRU lists as a hint
+    for focusing.
+  * stack: Make meta_window_raise() and meta_window_lower() smarter.
+  * window: Fix crash if workspace is null.
+  * workspace-switcher: Fix colours of selected workspace when
+    compositing is disabled.
+  * build: Silent build warnings for distcheck.
+  * Remove unnecessary warnings about visible region.
+  * meson: Improvements.
+  * Introduce nullpointer checks and return null if validation fails.
+  * util: meta_bug raises SIGABRT so it shouldn't return.
+  * Add meson build files to EXTRA_DIST.
+  * remove warning: 'GTimeVal' is deprecated.
+  * theme: Avoid deprecated g_memmove.
+  * frames: Don't bother painting the background.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.1):
