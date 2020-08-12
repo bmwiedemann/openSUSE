@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.72
+%define _tar_path 5.73
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kwayland
-Version:        5.72.0
+Version:        5.73.0
 Release:        0
 Summary:        KDE Wayland library
 License:        LGPL-2.1-or-later
@@ -41,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.12.0
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
 BuildRequires:  cmake(Qt5Gui) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.12.0
@@ -84,6 +85,7 @@ KWayland provides a Qt-style Client and Server library wrapper for the Wayland l
 %files
 %license LICENSES/*
 %{_kf5_debugdir}/*.categories
+%{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5WaylandClient.so.*
 %{_kf5_libdir}/libKF5WaylandServer.so.*
 
