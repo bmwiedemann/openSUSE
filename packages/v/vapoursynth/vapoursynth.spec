@@ -17,10 +17,10 @@
 
 
 Name:           vapoursynth
-Version:        50
+Version:        51
 Release:        0
 Summary:        A video processing framework
-License:        LGPL-2.1-only AND OFL-1.1
+License:        LGPL-2.1-only
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.vapoursynth.com/
 Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.tar.gz#/%{name}-R%{version}.tar.gz
@@ -195,9 +195,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libvapoursynth-script0 -p /sbin/ldconfig
 
 %files -n libvapoursynth-%{version}
-%license COPYING.LGPLv2.1
+%license COPYING.LESSER
 %doc ChangeLog
-%doc ofl.txt
 %dir %{_libdir}/vapoursynth
 %{_libdir}/libvapoursynth-%{version}.so
 
