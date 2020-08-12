@@ -252,4 +252,12 @@ Apologies for the delay in fixing it. (forwarded request 212315 from dimstar)</c
   * Replaced gnome-canvas with canvas supplied by GooCanvas. (forwarded request 712888 from wfrisch)</comment>
     <requestid>712931</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>45e6eb006d58b7f7f8ca88f49944f48d</srcmd5>
+    <version>0.9.19</version>
+    <time>1597221388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825722</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package etherape
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           etherape
-Version:        0.9.18
+Version:        0.9.19
 Release:        0
 Summary:        A Graphical Network Monitor
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            http://etherape.sourceforge.net/
-Source0:        http://prdownloads.sourceforge.net/etherape/%{name}-%{version}.tar.gz
+URL:            https://etherape.sourceforge.net/
+Source0:        https://prdownloads.sourceforge.net/etherape/%{name}-%{version}.tar.gz
 Patch0:         etherape-0.9.12-desktop.patch
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
