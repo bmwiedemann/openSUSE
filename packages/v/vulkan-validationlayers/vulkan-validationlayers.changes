@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:10:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.148
+  * Add RP potentialFormatFeature VUID, maxExtent VUIDs,
+    External Import handleType VUIDs, YCbCr Swizzle VUIDs,
+    and Protected Resource VUIDs.
+  * Add HDR ASTC formats
+  * Add VK_EXT_astc_decode_mode
+  * Add more custom border color checks
+  * Add range operator + and copy constructor
+  * Add support for fake device memory address
+  * Add VK_EXT_extended_dynamic_state validation
+  * Validate VK_EXT_fragment_density_map2
+
+-------------------------------------------------------------------
 Sun Jun 28 17:15:56 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to release 1.2.145
