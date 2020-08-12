@@ -208,4 +208,16 @@ Allows mounting a device multiple times, e.g. to mount several subvolumes from a
 </comment>
     <requestid>802626</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>51460f4a7dd3063efe764c17d348264a</srcmd5>
+    <version>2.6.0</version>
+    <time>1597220975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0
+* Fixed Makefile for i386 build and permissions
+* Merge of ignition-dracut into ignition; CoreOS specific files have been removed (they can be found as part of https://github.com/coreos/fedora-coreos-config now for reference)
+* Dropped 0003-Disable-resetting-UUID.patch (upstream moved the functionality into the CoreOS configuration.
+* Added ignition-enable-network.sh / ignition-enable-network.service: Implemented ignition-fetch-offline feature to only start networking if required</comment>
+    <requestid>825412</requestid>
+  </revision>
 </revisionlist>

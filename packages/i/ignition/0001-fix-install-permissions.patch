@@ -1,0 +1,34 @@
+commit 2ff83c70c46a22920aa9d5d0e58bbc71a62184ef
+Author: Ignaz Forster <iforster@suse.com>
+Date:   Wed Jul 29 09:20:05 2020 +0200
+References: (gh#coreos/ignition#1069)
+Upstream: Submitted
+
+    Install Dracut modules with correct permissions
+
+diff --git a/Makefile b/Makefile
+index 29e52840..35b0deda 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,11 +14,17 @@ all:
+ 
+ .PHONY: install
+ install: all
+-	for x in dracut/*; do \
+-	  bn=$$(basename $$x); \
+-	  install -D -t $(DESTDIR)/usr/lib/dracut/modules.d/$${bn} $$x/*; \
++	for x in dracut/*/*.service dracut/*/*.target dracut/*/*.conf dracut/*/*.rules; do \
++	  bn=$$(dirname $$x); \
++	  bn=$$(basename $$bn); \
++	  install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/$${bn} $$x; \
+ 	done
+-	install -D -t $(DESTDIR)/usr/lib/systemd/system systemd/*
++	for x in dracut/*/*.sh dracut/*/*-generator; do \
++	  bn=$$(dirname $$x); \
++	  bn=$$(basename $$bn); \
++	  install -m 0755 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/$${bn} $$x; \
++	done
++	install -m 0644 -D -t $(DESTDIR)/usr/lib/systemd/system systemd/*
+ 	install -m 0755 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/30ignition bin/$(GOARCH)/ignition
+ 	install -m 0755 -D -t $(DESTDIR)/usr/bin bin/$(GOARCH)/ignition-validate
+ 

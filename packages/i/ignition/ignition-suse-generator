@@ -1,0 +1,35 @@
+#!/bin/bash
+# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# ex: ts=8 sw=4 sts=4 et filetype=sh
+
+set -e
+
+# Call upstream generator
+. /usr/lib/systemd/system-generators/ignition-generator
+. /run/ignition.env
+
+add_requires ignition-mount-initrd-fstab.service ignition-files.service
+add_requires ignition-enable-network.service ignition-fetch.service
+
+if [ -e "${UNIT_DIR}/ignition-setup-user.service.d/diskful.conf" ]; then
+    cat > "${UNIT_DIR}/ignition-setup-user.service.d/diskful.conf" <<EOF
+[Unit]
+Wants=dev-disk-by\x2dlabel-ignition.device
+After=dev-disk-by\x2dlabel-ignition.device
+
+[Service]
+ExecStart=
+ExecStart=/usr/sbin/ignition-setup-user-suse
+EOF
+fi
+
+if [ -z "${PLATFORM_ID}" ]; then
+    platform="$(virt-what)"
+    case "${platform}" in
+        *vmware*)     platform="vmware" ;;
+        *virtualbox*) platform="virtualbox" ;;
+        *kvm*|*qemu*) platform="qemu" ;;
+        *)            platform="metal" ;;
+    esac
+    echo "PLATFORM_ID=${platform}" > /run/ignition.env
+fi

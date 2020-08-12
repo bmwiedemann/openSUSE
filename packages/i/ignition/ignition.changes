@@ -1,4 +1,447 @@
 -------------------------------------------------------------------
+Sun Aug 09 22:06:51 UTC 2020 - kukuk@suse.de
+
+- Update to version 2.6.0:
+  * news: add notes for 2.6.0
+  * travis: test container build
+  * README: always run latest release of ignition-validate container
+  * release-checklist: update Quay release tag
+  * build_releases: specialize for container build
+  * Revert "build_releases: drop script"
+  * ci: use faster compression for buildextend-live
+  * cloudstack|openstack: propagate ErrNeedNet
+  * internal/config: allow Ignition generated key-files for all devices
+  * dracut/30ignition: Add packages to delete users/groups
+  * tests/positive: Add test for deleting users
+  * tests/stubs: Add blackbox testing stub for userdel and groupdel
+  * config: add ShouldExist to schema
+  * passwd: allow removing the existing users/groups
+  * Revert "ci: skip rootfs.uuid test while ratcheting ignition-dracut merge"
+  * ci: drop cosa compress call
+- Add 0001-fix-install-permissions.patch: Fix permissions of installed files
+- Add 0003-fix-i386-build.patch: Fix build on 32 Bit x86 machines
+
+-------------------------------------------------------------------
+Tue Jul 28 11:16:55 UTC 2020 - kukuk@suse.de
+
+- Update to version 2.5.0:
+  Merge of ignition-dracut into ignition; CoreOS specific files have been
+  removed (they can be found as part of
+  https://github.com/coreos/fedora-coreos-config now for reference)
+  * news: add notes for 2.5.0
+  * ci: skip rootfs.uuid test while ratcheting ignition-dracut merge
+  * stages/disks: get filesystem info via device alias
+  * dracut: remove CoreOS specific modules
+  * Clean-up post-merge files.
+  * ci: build metal4k image before live image
+  * 30ignition: move conditional network startup out of ignition-dracut
+  * tests/kola: move blackbox tests to its own dir
+  * build_releases: drop script
+  * templates: update checklist for current process
+  * dracut/30ignition: fix typo in udev rule
+  * dracut/30ignition: add Ignition LUKS
+  * make: install systemd unit as non-executable
+  * 30ignition: make var in dracut_func local
+  * Add new ignition-fetch-offline.service
+  * ci: test with git master of coreos/ignition
+  * 30ignition: GPT setup: wait for 'boot' labeled partition
+  * 30ignition: add wipefs to the initramfs
+  * Remove OnFailure= from targets, put in services
+  * ignition-setup-user.service: run before multipathd
+  * 30ignition: clean up Ignition stages ordering
+  * coreos-teardown-initramfs: propagate the automatic multipath conf
+  * 99emergency-timeout: Dump all failed services
+  * 30ignition: drop hard requirement on qemu_fw_cfg
+  * 99emergency-timeout: improve readability of Ignition failure message
+  * 99emergency-timeout: also check ignition-fetch.service for failure
+  * coreos-teardown-initramfs-network: don't run when emergency.target
+  * dracut: add logging to systemd generator
+  * coreos-teardown-initramfs-network: also propagate hostname
+  * coreos-teardown-initramfs-network: support coreos.no_persist_ip karg
+  * coreos-teardown-initramfs-network: consider ifcfg files in real root for RHCOS
+  * coreos-teardown-initramfs-network: also skip local loopback interface
+  * coreos-teardown-initramfs-network: do SELinux relabel on copied files
+  * coreos-teardown-initramfs-network: order ExecStop after other ignition units
+  * coreos-teardown-initramfs-network: remove After=ignition-files.service
+  * Add ignition-virtio-dump-journal.service
+  * Add `basename` dependency to dracut module
+  * coreos-teardown-initramfs-network: enable the service statically
+  * coreos-teardown-initramfs-network: simplify networking takedown
+  * coreos-teardown-initramfs-network: take down routes too
+  * coreos-teardown-initramfs-network: take down teams as well
+  * coreos-teardown-initramfs-network: remove state files on switch
+  * coreos-teardown-initramfs-network: also propagate initramfs networking if desired
+  * coreos-teardown-initramfs-network: refactor into more functions
+  * add coreos-teardown-initramfs-network.service
+  * Declare external applications as optional
+  * Remove obsolete dependencies
+  * Hook up to CoreOS CI
+  * Add ignition-diskful-subsequent.target
+  * Makefile: Remove grub/ install bits
+  * Make setfiles optional
+  * dracut: add some bins for s390x zVM instalation
+  * README.md: add details about the branches here
+  * units: add ConditionPathExists=/etc/initrd-release everywhere
+  * Add ConditionPathExists=/etc/initrd-release to targets
+  * 30ignition: add setfiles
+  * 30ignition/ignition-setup-user: mount /boot partition ro
+  * firstboot-complete: tell zipl to run
+  * coreos-gpt-setup: workaround old lsblk not having PTUUID
+  * Add `ignition-subsequent.target` for non-Ignition boots
+  * ignition-firstboot-complete.service: Run as part of basic.target
+  * Run ignition-disks earlier to avoid race condition
+  * 30ignition: update ignition-complete.target OnFailure comment
+  * dracut: Add an ignition-fetch.service
+  * 30ignition: drop OnFailure handler from ignition-diskful.target
+  * 30ignition: fix sequencing of target dependencies
+  * Add RemainAfterExit=yes to systemd units of Type=oneshot
+  * Makefile: New file implementing `make install`
+  * 30ignition: move coreos-gpt-setup RemainAfterExit to correct section
+  * 30ignition: on live images, read config.ign from custom initrd
+  * 30ignition: make ignition-diskful a dependency of ignition-complete
+  * 30ignition: fix double slash in ignition-setup-* dest paths
+  * systemd: don't try to mark live boots complete
+  * 30ignition: conditionally enable units requiring a boot disk
+  * README.md: fix download link
+  * update-bootengine: drop file
+  * dracut/30ignition: localize some variables
+  * ignition: fix correct device path when randomizing UUID
+  * dracut/30ignition: fix typo in module_setup
+  * ignition: split ignition-setup into base and user
+  * dracut/30ignition: scramble disk uuid on 1st boot
+  * grub: drop 02_ignition_firstboot
+  * dracut: add 99emergency-timeout
+  * 30ignition: drop CoreOS specific bits
+  * dracut/30ignition: link to RHBZ in ignition-complete
+  * dracut/30ignition: add OnFailure= for ExecStop= services
+  * dracut/30ignition: order ExecStop= units before initrd-switch-root.target
+  * dracut/30ignition: re-order directives in remount-sysroot
+  * dracut/30ignition: add missing Before= for mount unit
+  * dracut/30ignition: order ignition-complete.target before initrd.target
+  * module_setup: include cdrom rules for openstack
+  * dracut: add CoreOS integration services
+  * dracut/30ignition: Add mount stage and drop OSTree-specific bits
+  * dracut/30ignition: Explicitly add OnFailure=emergency.target
+  * 30ignition: ignore coreos.randomize_disk_guid
+  * 30ignition: drop check for coreos.oem.id
+  * grub: support overriding network kcmdline args
+  * README.md: update documentation
+  * 02_ignition_firstboot: Enable networking if Ignition will run
+  * dracut/30ignition: expect ignition binary in module directory
+  * dracut/30ignition: add ignition-complete.target
+  * dracut/30ignition: split out ignition-setup.service
+  * dracut/30ignition: Only write ignition-setup.service on first boot
+  * grub: find boot partition and use it directly
+  * module-setup.sh: Check for module qemu_fw_cfg not build-in, so it works out of box on all arches
+  * dracut/30ignition: general hack cleanups
+  * dracut: adapt for s/oem/platform in Ignition
+  * ignition-setup: don't perform umount, rely on systemd
+  * ignition-setup: rename copy function
+  * services: fixup unit deps to more match CL
+  * ignition-setup: use MountFlags=slave for systemd unit
+  * ignition-setup: changes from code review
+  * ignition-setup: mount/unmount boot to grab user.ign
+  * dracut: add /usr/sbin/ignition-setup to initramfs
+  * generator: try to get ignition-setup to run on boot
+  * generator: RemainAfterExit=yes for ignition-setup
+  * ignition-setup: support boot or platform base/user configs
+  * ignition-setup: remove support for default configs
+  * Remove the check for OEM partition, not used
+  * Always check for boot, needs to exist
+  * Replace OEM with boot
+  * Add ability to parse config.ign file on boot
+  * journal: add clarifying comment for context
+  * Remount /sysroot rw (#38)
+  * ignition-firstboot-complete.service: Remount /boot rw
+  * Rename `coreos.firstboot` kernel cmdline arg to `ignition.firstboot` to make options more distribution neutral. Update dracut/README.txt to take into account recent changes.
+  * 30ignition: only instmods if module available
+  * remove ignition-remount-sysroot.service files
+  * ignition: run files stage at original CL ordering
+  * ignition-disks.service: drop Requires=network.target
+  * ignition-ask-var-mount.service: use RemainAfterExit=yes
+  * module-setup.sh: explicitly install qemu_fw_cfg
+  * module-setup: Make mkfs.btrfs optional
+  * 30ignition: add support for ignition-disks
+  * journal: Don't log to console AND kmsg
+  * dracut/ignition: remove CL-legacy udev references
+  * coreos-firstboot-complete: RemainAfterExit=yes
+  * change the default level of messages send to kmsg
+  * Add Journald forward to kernel log buffer option
+  * fixup! Rework how we run Ignition on first boot
+  * Rework how we run Ignition on first boot
+  * Drop 'auto-detect' hacks in generator
+  * Make ignition work on classic systems
+  * ignition-generator: add hack for openstack support
+  * Add ignition-ask-var-mount.service
+  * no disks for now - boot systemd unit ordering issue
+  * Run ignition-files after ostree-prepare-root.service
+  * Prefix remount-sysroot.service with "ignition-"
+  * README.txt: fix rpm-ostree instruction
+  * update README
+  * add back in forwarding journal to console
+  * get rid of usr-generator module
+  * For now let's assume ec2 if we are running on xen
+  * module-setup: update module-setup so deps are pulled in
+  * module-setup: order install list alphabetically
+  * README: Note instructions are for classic systems
+  * ignition-quench.clc: add the source for ignition-quench.ign
+  * add ignition disks stage
+  * only run Ignition on first boot
+  * module-setup.sh should install the binaries Ignition depends on
+  * reset to 863a8f6
+  * Try to fix problem
+  * Revert "use /etc/machine-id to detect firstboot"
+  * use /etc/machine-id to detect firstboot
+  * Make it so we will only run once
+  * Add README that shows people how to use this
+  * Hack dracut to just do ignition-files.
+  * remove extra sauce
+  * dracut: drop obsolete comment
+  * 99start-root: drop DEVLINKS from mdadm invocation
+  * update CoC and legalese
+  * dracut: ignore Azure SR-IOV VF interface
+  * dracut: correctly sequence disk-uuid@ before ignition-setup
+  * dracut: copy Ignition base configs into system dir
+  * dracut: fix comment
+  * dracut: consolidate Oracle OCI network units
+  * dracut: add module to start iSCSI root disk
+  * dracut: add network units for Oracle OCI
+  * dracut: move IP/link teardown from a drop-in to a separate unit
+  * dracut: switch to using gpt partition types
+  * dracut: add module to assemble root raid array
+  * update-bootengine: enable terminfo module
+  * dracut: fail verity-setup.service if verity setup fails
+  * dracut: update some comments in usr-generator
+  * dracut: disable systemd-fsck@.service for /usr
+  * dracut: prevent dev-mapper-usr.device from timing out
+  * dracut: Move chmod into coreos-overlay with the others
+  * dracut: Run coreos-static-network before ignition-files
+  * dracut: add mkswap for ignition-disks
+  * update-bootengine: take out multipath again with 045
+  * dracut: Have ignition depend on the upstream qemu module
+  * dracut: use coreos-metadata to configure Packet networking on first boot
+  * dracut: on ec2, disable systemd-networkd if ignition fails
+  * update-bootengine: Drop amd64-generic from usage text
+  * dracut: Drop support for diskless amd64-generic
+  * dracut: disable networkd by default
+  * dracut: conditionally enable coreos-digitalocean-network.service
+  * dracut/30ignition: add mkfs.vfat
+  * Revert "add sysusers to the initramfs"
+  * add sysusers to the initramfs
+  * dracut: Don't prompt twice upon reaching a dracut breakpoint
+  * dracut: Don't instantly reboot upon reaching a dracut breakpoint
+  * dracut: Unmount /sysroot/boot more carefully
+  * dracut: teach ignition-generator about kvm
+  * dracut: Delete /boot/coreos/first_boot after automatic Ignition run
+  * dracut: Add comment
+  * Revert "dracut: Use ConditionKernelCommandLine in Ignition units"
+  * Revert "dracut: Run ignition-files whenever /etc/machine-id doesn't exist"
+  * Revert "dracut: Randomize disk GUID only after ignition-disks succeeds"
+  * dracut: Confirm entering emergency shell, reboot otherwise
+  * dracut: Randomize disk GUID only after ignition-disks succeeds
+  * dracut: Run ignition-files whenever /etc/machine-id doesn't exist
+  * dracut: Use ConditionKernelCommandLine in Ignition units
+  * dracut: Eliminate ignition.target
+  * dracut: Migrate Ignition unit files from coreos-overlay
+  * diskless-generator: Fix root directory mode 1777 on tmpfs
+  * dracut: add qemu detection to ignition generator
+  * dracut: support initramfs network configuration via cmdline
+  * verity-generator: use BindsTo for device dependencies
+  * verity-generator: fix race with disk modification jobs
+  * dracut: enable coreos-digitalocean-network.service
+  * dracut: add digitalocean network config
+  * dracut: include cdrom_id rules
+  * dracut: install qemu_fw_cfg lkm in ignition module
+  * dracut: build onto the upstream systemd-networkd module
+  * dracut: change pxe network config condition
+  * dracut: set ClientIdentifier=mac for the PXE OEM
+  * update-bootengine: add -k to usage message
+  * dracut: install kernel network modules
+  * update-bootengine: add support for bundling kernel modules
+  * dracut: include ca-certs bundle
+  * setup-root: fix ordering with /sysroot/usr mount
+  * dracut: enable DHCPv6
+  * dracut: make gpt headers valid before randomizing
+  * dracut: add forward-to-console option to journald
+  * dracut: run tmpfilesd with etc-shadow config
+  * dracut: explicitly order disk-uuid before systemd-fsck-root
+  * dracut: read guid to randomize in disk-uuid from kernel paramater
+  * dracut: require disk-uuid.service on coreos.randomize_disk_guid=1
+  * dracut: use ignition-generator to require disk-uuid.service
+  * dracut: parse coreos.oem.id for ignition
+  * setup-root: fix ordering between selinux-base.conf and libsemanage.conf
+  * dracut: add mkfs.xfs to ignition
+  * initrd-setup-root: check selinux tmpfiles configs before using them
+  * update-bootengine: use the native ldconfig
+  * dracut: apply etc.conf in initrd-setup-root
+  * dracut: remove link-local addr from network config
+  * dracut: remove junk from zz-default.network
+  * dracut: remove Ignition udev trigger
+  * dracut: use inst_simple instead of inst
+  * dracut: swap ignition.force for coreos.first_boot
+  * dracut: add mkfs dependencies for Ignition
+  * dracut: use idiomatic method for installing rules
+  * bootengine: apply baselayout-home.conf in initrd-setup-root
+  * bootengine: fully populate the initrd shadow db from baselayout
+  * bootengine: initialize /sysroot/etc shadowdb files from baselayout
+  * bootengine: convert initrd-setup-root to a standalone shell script
+  * bootengine: convert setup-root to a standalone systemd service
+  * bootengine:  rename 80setup-root to 99setup-root
+  * Set up selinux tmpfiles before performing root pivot
+  * dracut: set DefaultDependencies=no for initrd-systemd-resolved
+  * dracut: add ignition systemd generator
+  * dracut: add useradd, usermod, groupadd to ignition module.
+  * dracut: udevadm settle after writing the disk GUID
+  * dracut: take down all interfaces before switchroot
+  * dracut: discard 99-default.link from 02systemd-networkd module
+  * dracut: add ordering on disk-uuid.service
+  * dracut: add Ignition
+  * dracut: add systemd-networkd to the initramfs.
+  * dracut: remove disk-uuid's dependence on Ignition
+  * dracut: fix typo in disk-uuid.service
+  * disk-uuid: add service for generating GPT UUID
+  * verity-generator: disable default dependencies
+  * verity-generator: add service generator for veritysetup
+  * diskless-generator: make a real mount unit when using btrfs as rootfstype
+  * dracut: don't explicitly remount /sysroot rw
+  * setup-root: remove call to ldconfig
+  * gptprio: remove kexec based implementation
+  * diskless-generator: check value of mount.usr= and usr=
+  * systemd: don't initialize machine-id, do initialize ld.so.conf
+  * Explicitly supply the ACPI RSDP address to kexec on efi systems
+  * update-bootengine: always run ldconfig in chroots before dracut
+  * gptprio: retry mount if it fails the first time
+  * systemd: add module to disable network device renaming
+  * fix(update-bootengine): Exclude unnecessary dracut modules.
+  * add(diskless-btrfs): Experiment for diskless btrfs instead of tmpfs
+  * add(remount-sysroot.service): If needed remount root as rw
+  * fix(99dracut-root): Replace 99fstab with an even more stupid hack.
+  * add(10diskless-generator): Add generator for squashfs and tmpfs mounts.
+  * fix(10usr-generator): Typo fixes
+  * add(10usr-generator): Move usr=/dev/foo handling to a systemd generator
+  * fix(80setup-root): Add missing -E flag to grep.
+  * remove(80squashfs): Replaced by using fstab instead.
+  * add(99fstab): New module to satisfy dracut without root=
+  * fix(80setup-root): Handle initrd OEMs
+  * fix(80setup-root): Silence "machine-id: No such file" error message
+  * cleanup(80setup-root): Remove ${BOOTENGINE_ROOT_DIR} var
+  * remove(80usrgptprio): Replaced by new gptprio and setup-root modules
+  * add(80setup-root): Move fs setup logic to new module
+  * fix(80gptprio): Gut most of gptprio, make it work for root and usr
+  * feat(80usrgptprio) add ability for unique /etc/machine-id files
+  * remove(80resize): Drop resize module
+  * fix(80resize): Don't resize until after kexec
+  * fix(80usrgptprio): Add special x-initrd.mount option to /sysroot/usr
+  * add(resize): New dracut module to resize ROOT before mounting.
+  * fix(update-bootengine): Include fsck in bootengine.
+  * fix(80squashfs): Split hook into separate parse and mount hooks.
+  * fix(80usrgptprio): Add basic support for plain block devices
+  * fix(80usrgptprio): Update usr= option, not root=
+  * fix(80usrgptprio): Support kernels in both /usr/boot and /boot
+  * fix(80usrgptprio): Fix normal test case. Enable 80usrgptprio testing.
+  * fix(80usrgptprio): Fix mount-fail test case.
+  * fix(80usrgptprio): Fix kexec-fail test case.
+  * fix(80usrgptprio): Fix fail-kernel test case.
+  * fix(80usrgptprio): Fix backup/setup of symlinks root filesystem.
+  * fix(80usrgptprio): Fix fail-everything test case.
+  * fix(80usrgptprio): Do not run without usr=gptprio
+  * fix(80usrgptprio): Convert test case to same spacing as module code.
+  * feat(80usrgptprio): initial commit
+  * fix(gptprio): Fix fallback path when using systemd.
+  * fix(parse-gptprio.sh): Fix up log message.
+  * add(journald): New module for journald configuration
+  * fix(gptprio): Add best-effort support for unloading modules before kexec
+  * fix(gptprio): Switch to falling back on kernel/kexec failures.
+  * fix(tests): Rework the test suite, make false positives harder.
+  * cleanup(gptprio): Move our verbose command logging into a common function
+  * fix(gptprio): Drop case translation, cgpt next now uses lower case
+  * fix(update-bootengine): Silence setlocale errors
+  * fix(update-bootengine): Fix terrible typo that broke namespace creation.
+  * feat(dracut/80squashfs): make oem of unlimited size
+  * feat(parse-squashfs): add in support for custom OEMs
+  * feat(squashfs): initial commit of squashfs root support
+  * fix(update-bootengine): Compare namespaces via mountinfo.
+  * License project under BSD-2 license
+  * fix(module-setup): Use dracut_install which aborts on errors.
+  * Add(update-bootengine): Move code for running dracut out of ebuild.
+  * fix(dracut): use lower on PARTUUID
+  * fix(dracut): umount the root fs
+  * feat(tests): refactor and add tests
+  * feat(dracut): add debuggging output
+  * feat(pre-mount-gptprio): die if the kexec returns
+  * fix(dracut) mount boot filesystem as ro so it's not dirty when it boots
+  * feat(dracut) add proper support for cgpt
+  * feat(dracut): get everything working
+  * Initial commit
+- Dropped 0003-Disable-resetting-UUID.patch (upstream moved the
+  functionality into the CoreOS configuration.
+- Added ignition-enable-network.sh /
+  ignition-enable-network.service:
+  Implemented ignition-fetch-offline feature to only start
+  networking if required
+
+-------------------------------------------------------------------
+Mon Jul 20 06:53:08 UTC 2020 - iforster@suse.de
+
+- Update to version 2.4.1:
+  * news: add notes for 2.4.1
+  * ci: also run testiso
+  * engine: fix provider config precedence
+  * news: fix typo
+  * files: don't relabel homedir symlinks themselves
+  * stages/files: set LUKS keyfile directory to 0700
+  * util/user_group_lookup: handle more error codes
+- Update to version 2.4.0:
+  * news: add notes for 2.4.0
+  * doc: add Azure Stack to platform list
+  * doc: drop production-users
+  * doc: update link for systemd drop-ins
+  * doc: update supported platform links
+  * fetch-offline: signal networking for Tang-pinned LUKS devices
+  * doc: add LUKS fields to configuration document
+  * internal: add LUKS support
+  * config: add LUKS to schema
+  * units: empty dropins should be written to disk
+  * internal/resource/http: clear CA compression on rewrite
+  * internal/exec/engine: write empty cache config when not provided
+  * AzureStack: add new target platform
+  * CONTRIBUTING: drop mailing list and IRC references
+  * MAINTAINERS: drop file
+  * Azure: allow for either udf or iso9660 config volume
+  * files: don't run `setfiles` with `-i`
+  * files: relabel the systemd preset directory
+  * exec/util: factor function for resolving symlinks
+  * passwd: don't auto-prefix user homedir
+  * internal/util/url: don't require networking for empty schemes
+  * docs: Add gs scheme
+  * config/types: Add validation for gcs urls
+  * internal/resource: Support gcs urls in Ignition config
+  * vendor: Add GCS module and its dependencies
+  * ci: change --blacklist-test to --denylist-test
+  * ci: also run gofmt and unit tests
+  * fetch-offline: new stage for conditional networking
+  * ci: move comment about kernel closer to `curl`
+  * tests: add test for creating a deeper hard link to the file
+  * stages/files: fix hard links to files that are deeper than the hard link
+  * doc/configuration-*: clarify references to `source`
+  * stages/disks: run wipefs before creating filesystem
+  * stages/disks: warn if libblkid finds multiple filesystem signatures
+  * exec/util: merge filesystem lookup functions
+  * tests: add positive test for reusing ambivalent filesystem
+  * tests: specify type when mounting filesystem
+  * tests: add canned ZFS image
+  * tests: only mount partitions if we need to
+  * ci: test with latest ignition-dracut
+  * providers/aws: change metadata version from 2009-04-04 to 2019-10-01
+  * Add CA bundle reference in the docs
+  * Moving tls public/private keys into a separate package
+  * Update AWS for IMDSv2
+  * Add cabundle tests
+  * config/*: drop warning on unset file/dir mode
+  * Add support for CA bundles for fetching the ignition config Fixes https://github.com/coreos/ignition/issues/931
+  * ci: Freeze kernel at 5.6.7 due to loop regression breaking blackbox test
+
+-------------------------------------------------------------------
 Mon May 11 07:09:28 UTC 2020 - kukuk@suse.de
 
 - Update to version 2.3.0:
