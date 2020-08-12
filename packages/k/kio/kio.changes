@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Too many changes since 5.72.0, only listing bugfixes:
+  * RenameDialog: Show if files are identical (kde#412662)
+  * [rename dialog] Port Overwrite button to KStandardGuiItem::Overwrite (kde#424414)
+  * Show up to three file item actions inline, not just one (kde#424281)
+  * [Properties] Add SHA512 algorithm to checksums widget (kde#423739)
+  * [WebDav] Fix copies that include overwrites for the webdav slave (kde#422238)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
