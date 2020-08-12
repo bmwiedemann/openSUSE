@@ -25,9 +25,10 @@ Summary:        Python module for mocking out requests made by ClientSession fro
 License:        MIT
 URL:            https://github.com/pnuckowski/aioresponses
 Source:         https://files.pythonhosted.org/packages/source/a/aioresponses/aioresponses-%{version}.tar.gz
-Patch0:         disable-online-test.patch
+# PATCH-FIX-UPSTREAM aioresponses-replace-asynctest.patch gh#pnuckowski/aioresponses#166
+Patch0:         aioresponses-replace-asynctest.patch
 BuildRequires:  %{python_module aiohttp >= 2.0.0}
-BuildRequires:  %{python_module asynctest >= 0.12.2}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module ddt >= 1.1.0}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytest >= 3.8.1}
@@ -59,12 +60,15 @@ export LC_ALL=en_US.UTF-8
 
 %check
 export LC_ALL=en_US.UTF-8
-# disabled test which uses http://httpbin.org
-%pytest -k "not test_pass_through_with_origin_params"
+# disable tests which try to access external network
+skiptests+="test_address_as_instance_of_url_combined_with_pass_through"
+skiptests+=" or test_pass_through_with_origin_params"
+%pytest -k "not ($skiptests)"
 
 %files %{python_files}
 %doc AUTHORS AUTHORS.rst ChangeLog README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/aioresponses
+%{python_sitelib}/aioresponses-%{version}-py*.egg-info
 
 %changelog

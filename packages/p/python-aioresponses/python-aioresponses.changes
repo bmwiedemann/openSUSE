@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 08:37:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- replace asynctest with native python 3.8 unittest async test class
+  * aioresponses-replace-asynctest.patch
+  * gh#pnuckowski/aioresponses#166 
+- drop disable-online-test.patch and deselect by pytest call
+
+-------------------------------------------------------------------
 Mon Jun  8 09:41:48 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.6.4
