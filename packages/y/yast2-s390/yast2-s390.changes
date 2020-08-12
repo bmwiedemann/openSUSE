@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 14:59:52 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(xpram,zfcp,dasd) into the
+  spec file in order to install this packages if the section has
+  been defined in the AY configuration file (bsc#1146494).
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 14:50:34 UTC 2020 - josef Reidinger <jreidinger@localhost>
 
 - Autoyast schema: Allow optional types for string and map objects
