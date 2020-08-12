@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Thu Aug 06 09:30:53 UTC 2020 - rbrown@suse.com
+
+- Update to version 3.4.10 [CVE-2020-15106][boo#1174951]:
+  * version: 3.4.10
+  * Documentation: note on data encryption
+  * etcdserver: change protobuf field type from int to int64 (#12000)
+  * pkg: consider umask when use MkdirAll
+  * etcdmain: let grpc proxy warn about insecure-skip-tls-verify
+  * etcdmain: fix shadow error
+  * pkg/fileutil: print desired file permission in error log
+  * pkg: Fix dir permission check on Windows
+  * auth: Customize simpleTokenTTL settings.
+  * mvcc: chanLen 1024 is to biger,and it used more memory. 128 seems to be enough. Sometimes the consumption speed is more than the production speed.
+  * auth: return incorrect result 'ErrUserNotFound' when client request without username or username was empty.
+  * etcdmain: fix shadow error
+  * doc: add TLS related warnings
+  * etcdserver:FDUsage set ticker to 10 minute from 5 seconds. This ticker will check File Descriptor Requirements ,and count all fds in used. And recorded some logs when in used >= limit/5*4. Just recorded message. If fds was more than 10K,It's low performance due to FDUsage() works. So need to increase it.
+  * clientv3: cancel watches proactively on client context cancellation
+  * wal: check out of range slice in "ReadAll", "decoder"
+  * etcdctl, etcdmain: warn about --insecure-skip-tls-verify options
+  * Documentation: note on the policy of insecure by default
+  * etcdserver: don't let InternalAuthenticateRequest have password
+  * auth: a new error code for the case of password auth against no password user
+  * Documentation: note on password strength
+  * etcdmain: best effort detection of self pointing in tcp proxy
+  * Discovery: do not allow passing negative cluster size
+  * wal: fix panic when decoder not set
+  * embed: fix compaction runtime err
+  * pkg: check file stats
+  * etcdserver, et al: add --unsafe-no-fsync flag
+  * version: 3.4.9
+  * wal: add TestValidSnapshotEntriesAfterPurgeWal testcase
+  * wal: fix crc mismatch crash bug
+  * rafthttp: log snapshot download duration
+  * version: 3.4.8
+  * rafthttp: improve snapshot send logging
+  *  *: make sure snapshot save downloads SHA256 checksum
+  * etcdserver/api/snap: exclude orphaned defragmentation files in snapNames
+  * etcdserver: continue releasing snap db in case of error
+  * etcdserver,wal: fix inconsistencies in WAL and snapshot
+  * cherry pick of #11564 (#11880)
+  * mvcc: fix deadlock bug
+  * auth: optimize lock scope for CheckPassword
+  * auth: ensure RoleGrantPermission is compatible with older versions
+  * etcdserver: print warn log when failed to apply request
+  * auth: cleanup saveConsistentIndex in NewAuthStore
+  * auth: print warning log when error is ErrAuthOldRevision
+  * auth: add new metric 'etcd_debugging_auth_revision'
+  * tools/etcd-dump-db: add auth decoder, optimize print format
+  * *: fix auth revision corruption bug
+  * etcdserver: watch stream got closed once one request is not permitted (#11708)
+  * version: 3.4.7
+  * wal: add "etcd_wal_writes_bytes_total"
+  * pkg/ioutil: add "FlushN"
+  * test: auto detect branch when finding merge base
+  * mvcc/kvstore:when the number key-value is greater than one million, compact take too long and blocks other requests
+  * version: 3.4.6
+  * lease: fix memory leak in LeaseGrant when node is follower
+  * version: 3.4.5
+  * words: whitelist "racey"
+  * Revert "version: 3.4.5"
+  * words: whitelist "hasleader"
+  * version: 3.4.5
+  * etcdserver/api/v3rpc: handle api version metadata, add metrics
+  * clientv3: embed api version in metadata
+  * etcdserver/api/etcdhttp: log server-side /health checks
+  * proxy/grpcproxy: add return on error for metrics handler
+  * etcdctl: fix member add command
+  * version: 3.4.4
+  * etcdserver: fix quorum calculation when promoting a learner member
+  * etcdserver: corruption check via http
+  * mvcc/backend: check for nil boltOpenOptions
+  * mvcc/backend: Delete orphaned db.tmp files before defrag
+  * auth: correct logging level
+  * e2e: test curl auth on onoption user
+  * auth: fix NoPassWord check when add user
+  * auth: fix user.Options nil pointer
+  * mvcc/kvstore:fixcompactbug
+  * mvcc: update to "etcd_debugging_mvcc_total_put_size_in_bytes"
+  * mvcc: add "etcd_mvcc_put_size_in_bytes" to monitor the throughput of put request.
+  * clientv3: fix retry/streamer error message
+  * etcdserver: wait purge file loop during shutdown
+  * integration: disable TestV3AuthOldRevConcurrent
+  * etcdserver: remove auth validation loop
+  * scripts/release: list GPG key only when tagging is needed
+
+-------------------------------------------------------------------
 Sun Jun  7 21:09:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update home-page url 

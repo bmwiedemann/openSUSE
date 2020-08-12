@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.4.3
+Version:        3.4.10
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0
@@ -33,8 +33,7 @@ Source1:        vendor.tar.gz
 Source11:       %{name}.conf
 Source12:       %{name}.service
 Source15:       README.security
-BuildRequires:  go1.12 >= 1.12.9
-BuildRequires:  golang(API) = 1.12
+BuildRequires:  golang(API) = 1.14
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
@@ -91,7 +90,6 @@ install -D -m 0755 etcdctl/etcdctl %{buildroot}/%{_bindir}/etcdctl
 
 # Service
 install -D -p -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/%{name}.service
-install -d %{buildroot}/%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 # Sysconfig
