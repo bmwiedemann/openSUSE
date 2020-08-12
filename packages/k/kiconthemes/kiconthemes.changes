@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Move forward declaration where it's necessary
+  * Use KF-standardized Qt logging categories
+  * Use camelcase include. (scripted)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
