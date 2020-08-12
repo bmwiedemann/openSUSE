@@ -17,7 +17,7 @@
 
 
 Name:           yast2-vpn
-Version:        4.2.4
+Version:        4.3.0
 Release:        0
 Url:            https://github.com/yast/yast-vpn
 Source0:        %{name}-%{version}.tar.bz2
@@ -38,6 +38,8 @@ PreReq:         %fillup_prereq
 # CFA::SysctlConfig
 Requires:       yast2 >= 4.2.67
 Requires:       yast2-ruby-bindings
+
+Supplements:    autoyast(vpn)
 
 BuildArch:      noarch
 
