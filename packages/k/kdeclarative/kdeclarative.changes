@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * SettingStateBinding : expose whether non default highlight is enabled
+  * Make sure KF5CoreAddons is installed before using KF5Declarative
+  * Add KF5::CoreAddons to public interface for KF5::QuickAddons
+  * Introduce SettingState* elements to ease KCM writing.
+  * fix version in new api
+  * support config notifications in configpropertymap
+  * Use camelcase include. (scripted)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
