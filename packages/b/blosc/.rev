@@ -186,4 +186,12 @@ I have fixed the issues from the previous submit requests.</comment>
   * blosc_decompress_unsafe(), blosc_decompress_ctx_unsafe() and blosc_getitem_unsafe() have been removed because they are dangerous and after latest improvements, they should not be used in production.</comment>
     <requestid>816559</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>40343378bd1a7961506ed6958e20ac34</srcmd5>
+    <version>1.19.0</version>
+    <time>1597221418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825907</requestid>
+  </revision>
 </revisionlist>
