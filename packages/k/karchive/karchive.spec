@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Archive5
-%define _tar_path 5.72
+%define _tar_path 5.73
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           karchive
-Version:        5.72.0
+Version:        5.73.0
 Release:        0
 Summary:        Qt 5 addon providing access to numerous types of archives
 License:        LGPL-2.1-or-later
@@ -97,6 +97,7 @@ GZip format, via a subclass of QIODevice. Development files
 %license LICENSES/*
 %doc README*
 %{_kf5_debugdir}/karchive.categories
+%{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5Archive.so.*
 
 %files devel

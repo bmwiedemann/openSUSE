@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 13:12:56 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.2.9
+  * This release addresses the issue described in gxo#xfce/tumbler#28
+    and partially solved by the previous release 0.2.28.
+    The issue now is completely solved by adding the correct
+    orientation handling when fallback code for generating jpeg
+    thumbnail takes place.
+
+-------------------------------------------------------------------
 Thu Mar 12 11:28:12 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add support for WebP and custom folder thumbnails

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  7 08:36:29 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procinfo-strsignal.dif to use strsignal(3) as replacement
+  of (_)sys_siglist[]
+
+-------------------------------------------------------------------
 Tue May  7 06:28:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize old variables. Drop author list from description.

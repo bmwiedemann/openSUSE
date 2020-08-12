@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 28 22:49:23 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- ripgrep 12.1.1 
+  * Corrects some egregious markup output in --help (#1581)
+  * Mention the special $0 capture group in docs for the
+    -r/--replace flag. (#1591)
+  * Fix failing test resulting from out-of-sync dependencies.
+    (#1602)
+
+-------------------------------------------------------------------
 Fri May 15 15:33:34 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ripgrep 12.1.0

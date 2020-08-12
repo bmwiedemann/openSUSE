@@ -1,7 +1,7 @@
 #
 # spec file for package guix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define guile	guile-2.0.9.tar.xz
 %define guix_builder_group	guixbuild
 Name:           guix
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        GNU Package manager
 License:        GPL-3.0-only
 Group:          System/Packages
-Url:            http://www.gnu.org/software/guix/
+URL:            http://www.gnu.org/software/guix/
 Source0:        https://ftp.gnu.org/gnu/guix/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/guix/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
@@ -44,10 +44,6 @@ Source12:       aarch64-linux-guile-2.0.14.tar.xz
 Source13:       aarch64-linux-guile-2.0.14.tar.xz.sig
 Source20:       run_guix_daemon.sh
 Source21:       run_guix_publish.sh
-# PATCH-FIX-UPSTREAM 88bc3c89bf5145d24c2270d2192b7be547e0024f -- guix fails on downloading
-Patch0:         fix-time-duration-issue-part1.patch
-# PATH-FIX-UPSTREAM b6f5339dd0180fe73ab70d9c5b851ca0adc04193 -- guix fails on downloading
-Patch1:         fix-time-duration-issue-part2.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gnutls-guile
 BuildRequires:  guile-charting
@@ -65,6 +61,7 @@ BuildRequires:  shepherd
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       gnutls-guile
 Requires:       guile
@@ -75,7 +72,7 @@ Requires:       guile-sqlite3
 Requires:       guile-ssh-devel
 Requires:       gzip
 Requires:       libgcrypt-devel
-Requires:       libguile-ssh11
+Requires:       libguile-ssh12
 Requires(pre):  %{install_info_prereq}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64
@@ -87,11 +84,9 @@ As a GNU distribution it contains only free software.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 # install service file to _unitdir
 sed -i 's@\$(libdir)/systemd/system@%{_unitdir}@' Makefile.in
-mkdir -p gnu/packages/bootstrap/{i686,x86_64,mips64el,armhf}-linux
+mkdir -p gnu/packages/bootstrap/{i686,x86_64,mips64el,armhf,aarch64}-linux
 cp %{SOURCE3} gnu/packages/bootstrap/i686-linux/%{guile}
 cp %{SOURCE4} gnu/packages/bootstrap/x86_64-linux/%{guile}
 cp %{SOURCE5} gnu/packages/bootstrap/mips64el-linux/%{guile}
@@ -113,8 +108,8 @@ make -j3
 rm %{buildroot}%{_infodir}/dir
 install -d -m 0755 %{buildroot}/gnu
 install -d -m 0755 %{buildroot}/gnu/store
-# only systemd is used, so upstart files are not needed
-rm -rvf %{buildroot}%{_libdir}/upstart
+# only systemd is used, so upstart or sysv init files are not needed
+rm -rvf %{buildroot}%{_libdir}/upstart %{buildroot}%{_sysconfdir}/init.d/guix-daemon
 install -m 0755 -t %{buildroot}%{_bindir} %{SOURCE20}
 install -m 0755 -t %{buildroot}%{_bindir} %{SOURCE21}
 sed -i 's@^ExecStart=.*@ExecStart=/usr/bin/run_guix_daemon.sh@' %{buildroot}%{_unitdir}/guix-daemon.service
@@ -139,8 +134,9 @@ done
 %service_add_post guix-daemon.service
 %service_add_post guix-publish.service
 # Authorize official keys of Guix build farm to enable binary substitutes
-guix archive --authorize < %{_datadir}/guix/hydra.gnu.org.pub
-guix archive --authorize < %{_datadir}/guix/ci.guix.gnu.org.pub
+for key in %{_datadir}/guix/*.pub; do
+    guix archive --authorize < "$key"
+done
 
 %postun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/guix.info.gz
@@ -164,7 +160,6 @@ guix archive --authorize < %{_datadir}/guix/ci.guix.gnu.org.pub
 %{_infodir}/guix*
 %{_infodir}/images
 %{_libdir}/guile/*
-%{_libexecdir}/guix
 %{_mandir}/man1/guix*
 %{_unitdir}/guix*.service
 %attr(755,root,root) %dir /gnu

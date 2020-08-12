@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tweaks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Luis Medinas, Lisbon, Portugal.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        GPL-3.0-or-later AND CC0-1.0
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
 Source0:        https://download.gnome.org/sources/gnome-tweaks/3.34/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-tweaks-fix-titlebar-buttons-left.patch bsc#1162080, glgo#GNOME/gnome-tweaks#245 alynx.zhou@suse.com -- Fix titlebar flicker after setting buttons placement to left
+Patch1:         gnome-tweaks-fix-titlebar-buttons-left.patch
 
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires

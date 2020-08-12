@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:20:21 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.3.2:
+  Bug Fixes:
+  * Updated Allocine data source.
+  * Updated KNewStuff categories so KDE Store uploads are shown.
+  * Updated KinoPoisk data source.
+  * Improved the Goodreads importer.
+  * Fixed compilation with Qt version 5.9 and KDE ECM 5.72.0.
+- Drop patches merged upstream:
+  * Fix-compilation-with-Qt-5.9.patch
+  * switch-order-of-cmake-modules.patch
+
+-------------------------------------------------------------------
 Sat Jul 11 13:53:46 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add switch-order-of-cmake-modules.patch to fix build with KDE

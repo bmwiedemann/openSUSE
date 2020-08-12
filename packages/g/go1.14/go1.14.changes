@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 19:23:18 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.7 (released 2020-08-06) includes security fixes to the
+  encoding/binary package.
+  CVE-2020-16845
+  Refs boo#1164903 go1.14 release tracking
+  * boo#1174977 CVE-2020-16845
+  * go#40619 encoding/binary: ReadUvarint and ReadVarint can read an unlimited number of bytes from invalid inputs
+
+-------------------------------------------------------------------
 Fri Jul 17 07:33:25 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14.6 (released 2020-07-16) includes fixes to the go command,

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  5 06:28:46 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Update gnome-software-add-missing-headers.patch: add more devel
+  headers in lib/meson.build (glgo#GNOME/gnome-software!446).
+
+-------------------------------------------------------------------
+Thu Jul 30 19:58:49 UTC 2020 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Add gnome-software-add-missing-headers.patch: add missing devel
+  headers referenced by gnome-software.h (bsc#1174849).
+
+-------------------------------------------------------------------
 Mon Jun  8 02:55:54 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add gnome-software-failed-offline-update-notification.patch:

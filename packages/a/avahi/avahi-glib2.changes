@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  6 07:59:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Skip the xargs dance and just use find directly.
+
+-------------------------------------------------------------------
 Wed Jan  8 10:17:38 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use %make_build.

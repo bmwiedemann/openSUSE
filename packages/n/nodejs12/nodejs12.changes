@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  3 12:18:12 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 12.18.3:
+  deps:
+  * upgrade npm to 6.14.6 (claudiahdz) #34246
+    Fixes information leak through log files (bsc#1173937, CVE-2020-15095)
+  * update node-inspect to v2.0.0 (Jan Krems) #33447
+  * uvwasi: cherry-pick 9e75217 (Colin Ihrig) #33521
+
+- fix_ci_tests.patch: refreshed
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Thu Jul  2 20:39:34 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 12.18.2:

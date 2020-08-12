@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 07:59:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Skip the xargs dance and just use find directly.
+
+-------------------------------------------------------------------
+Fri Jul 31 16:22:16 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Pass -print0 to find, to match -r0 being passed to xargs.
+
+-------------------------------------------------------------------
 Thu Jul 30 10:06:28 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Call xargs -r0 instead of just xargs -r: guard against file names

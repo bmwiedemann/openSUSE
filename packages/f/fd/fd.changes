@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:03:50 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 8.1.1
+  * Bugfixes
+    - Support colored output on older Windows versions if either
+      (1) --color=always is set or
+      (2) the TERM environment variable is set. See #469 
+
+-------------------------------------------------------------------
 Wed May 20 09:51:47 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.1.0

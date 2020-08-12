@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Sun Aug  2 18:26:26 UTC 2020 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 4.1
+  + New gnucash-cli executable for command line interactions
+  + Improvements for business documents layout
+  + When deleting accounts the destination accounts of moved splits 
+    will be checked to ensure that they have the same commodity as 
+    the source account. If they don't you'll get a warning and the 
+    opportunity to pick another account or to carry on regardless.
+  + New type-ahead search added to sequential search when selecting 
+    an account in the register: Instead of typing the first few 
+    characters of a top level account, the separator, the first few 
+    characters of the next level account and so on you may instead 
+    type a few characters of any part of a full account name and the 
+    drop-list will be filtered to contain only matching accounts. 
+    Once you have a small enough list you can use the arrow keys to 
+    select the account that you want.
+  + Python bindings are now localized and their strings available for 
+    translation.
+  + A new Transaction Association dialog, available from the Update 
+    Association for Transaction menu item that has replaced the two 
+    association items in 3.x, allows setting, changing, and deleting 
+    associations.
+  + Allow Associations to be added to invoices. The actual 
+    association when present is added as a link button which is shown 
+    below the notes.
+  + A symbol is now displayed on transactions in the register when 
+    they have an attachment and the selected font supports the 
+    symbol. This does not work on MacOS, which will continue to use 
+    a letter.
+  + The OFX file importer can now import more than one file at a time.
+  + A new report menu supbmenu Multicolumn contains the old 
+    custom-multicolumn report and a new Dashboard report containing 
+    Account reports for expenses and income, an income-expense chart, 
+    and an account summary.
+  + Support for UK VAT and Australian GST added to the Income-GST 
+    report. The reports options are changed from source accounts to 
+    source sales and purchase accounts to permit proper reporting of 
+    capital purchases. N.B. This is incompatible with previous versions 
+    of the report and will require regenerating saved configurations.
+  + The matcher window columns are changed from R to C and from U+R 
+    to U+C, reflecting that the matcher marks transactions cleared but 
+    doesn't reconcile them. (Bug 797338)
+  + OFX imports having balance information will now offer to immediately 
+    reconcile, passing the balance information in the file to the 
+    reconcile info.
+  + Improve quickfill in the account pickers to filter the choices 
+    based on any part of the name.
+  + The GnuCash widget hierarchy for CSS has been revised to be more 
+    consistent with Gtk practice. You may need to spend some time with 
+    the GtkInspector to get your custom CSS back the way you like it.
+  + When creating a new account hierarchy it's now possible to load 
+    account templates from locales other than the one set for the user 
+    interface. (Bug 797472)
+  + New Account - Online Account match list to the Import Map Editor.
+  + New invalid maps dialog in the Import Map Editor. (Bug 797612)
+  + Optionally include the account code option in budget view.
+  + Account matcher will decline to match accounts with a different 
+    commodity from the imported split if the import information includes 
+    the commodity.
+  + Ellipsize the Description and Memo fields in the account matcher.
+  + Enable adding notes to budgets. (Bug 693180)
+  + Support for AQBanking Version 6. This is required to support new 
+    FinTS protocols for the European Payment Services Directive (PSD2).
+  + GnuCash 4.x will not migrate old gconf settings from GnuCash 2.4.x.
+  + Reversing transactions will now pop a dialog box to request a 
+    posting date. (Bug 782455)
+  + The Accounts page has a new optional column for the hidden 
+    property to make it easier to toggle it. Note that in order 
+    to see hidden accounts you must still enable that in the 
+    Filter by... dialog. (Bug 797486)
+  + The Customer, Vendor, and Employee overviews have a 
+    process-payment toolbar. (Bug 797605).
+  + Account codes may now optionally be displayed in the Budget 
+    Tree View. (Bug 797489).
+- Add gnucash-4.1-fix-gtest-path.patch to cope with file layout
+  for gtest/gmock in openSUSE 
+
+-------------------------------------------------------------------
+Sat May 30 19:18:12 UTC 2020 - Johannes Engel <jcnengel@gmail.com>
+
+- Upgrade to 3.10
+  + Update latest translation from the Translation project.
+  + [window-reconcile] when reconciling, warn on splits having a 
+    reconcile date > statement_date
+  + [window-reconcile] when inputing statement_date, warn if it's 
+    after today
+  + [find-transactions] add search for reconciled date
+  + Show transaction value, not amount, for registers with 
+    subaccounts.
+  + Add instance argument to Session constructor
+  + Enables a python console to connect to the running GnuCash's 
+    session.
+  + Make python console less noisy without --debug.
+  + Provide locals and globals of calling context to the python 
+    console's shell on shell init
+  + Merge Jean Laroche's '797006_subaccounts' into maint.
+  + Add check to display warning dialog for mismatched commodities
+  + Replicate changes in *2 files
+  + Apply astyle to modified files
+  + Merge Chris Mayo's iPython-fixes into maint.
+  + Make pycons/ishell.py compatible with Python 3 and current 
+    IPython
+  + [eguile-utilities] Prevent crash in balsheet-eg.scm
+  + [eguile] escape-html -> gnc:html-string-sanitize
+  + [qif-to-gnc] Properly mark intra-QIF internal transfers.
+  + Bugfixes
+
+-------------------------------------------------------------------
 Wed Apr  8 08:48:23 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Upgrade to 3.9:

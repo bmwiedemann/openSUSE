@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Fix inline literal formatting
+  * Fix reST list from not being a list
+  * fix license headers
+  * Add ecm_generate_dbus_service_file
+  * Introduce function ecm_install_configured_file
+  * Export Wayland_DATADIR
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0

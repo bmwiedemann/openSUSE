@@ -17,12 +17,12 @@
 #
 
 
-%global version_current 1.43.1
-%global version_previous 1.43.0
-%global version_bootstrap 1.43.0
+%global version_current 1.44.1
+%global version_previous 1.43.1
+%global version_bootstrap 1.43.1
 
 # some sub-packages are versioned independently
-%global rustfmt_version 1.4.12
+%global rustfmt_version 1.4.16
 %global clippy_version 0.0.212
 
 # Build the rust target triple.
@@ -68,10 +68,10 @@
 %global rustlibdir %{common_libdir}/rustlib
 
 # Will build with distro LLVM by default, but the following versions
-# do not have a version new enough, >= 6.0 add --without bundled_llvm
+# do not have a version new enough, >= 8.0 add --without bundled_llvm
 # option, i.e. enable bundled_llvm by default Leap 42 to 42.3, SLE12
-# SP1 to SLE12 SP3, Leap 15.0, SLE15 SP0
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150000
+# SP1 to SLE12 SP3, Leap 15.1, SLE15 SP0
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150100
 %bcond_without bundled_llvm
 %endif
 
@@ -136,7 +136,6 @@ Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
 # PATCH-FIX-UPSTREAM: fix compilation with llvm10 https://github.com/rust-lang/rust/issues/71573
-Patch1:         rust-pr70163-prepare-for-llvm-10-upgrade.patch
 BuildRequires:  ccache
 BuildRequires:  curl
 BuildRequires:  fdupes
@@ -166,10 +165,10 @@ BuildRequires:  gcc-c++
 %if !%{with rust_bootstrap} && 0%{?sle_version} >= 150000
 BuildRequires:  pkgconfig(libssh2) >= 1.6.0
 %endif
-# Real LLVM minimum version should be 7.x, but rust has a fallback
+# Real LLVM minimum version should be 8.x, but rust has a fallback
 # mode
 %if !%with bundled_llvm
-BuildRequires:  llvm-devel >= 6.0
+BuildRequires:  llvm-devel >= 8.0
 %endif
 %if !%with rust_bootstrap
 # We will now package cargo using the version number of rustc since it
@@ -310,9 +309,9 @@ A tool for formatting Rust code according to style guidelines.
 
 %package -n clippy
 Summary:        Lints to catch common mistakes and improve Rust code
+# /usr/bin/clippy-driver is dynamically linked against internal rustc libs
 License:        MPL-2.0
 Group:          Development/Languages/Rust
-# /usr/bin/clippy-driver is dynamically linked against internal rustc libs
 Requires:       %{name} = %{version}
 Requires:       cargo = %{version}
 Provides:       clippy = %{clippy_version}
@@ -336,10 +335,10 @@ Cargo downloads dependencies of Rust projects and compiles it.
 
 %package -n cargo-doc
 Summary:        Documentation for Cargo
-License:        MIT OR Apache-2.0
-Group:          Development/Languages/Rust
 # Cargo no longer builds its own documentation
 # https://github.com/rust-lang/cargo/pull/4904
+License:        MIT OR Apache-2.0
+Group:          Development/Languages/Rust
 Requires:       rust-doc = %{version}
 BuildArch:      noarch
 
@@ -387,7 +386,6 @@ This package includes HTML documentation for Cargo.
 %setup -q -n rustc-%{version}-src
 
 %patch0 -p1
-%patch1 -p1
 
 # use python3
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" x.py

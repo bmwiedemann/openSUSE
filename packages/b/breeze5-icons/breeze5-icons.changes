@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:12:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Too many changes since 5.72.0, only listing bugfixes:
+  * Add SMART status icon BUG: 423997 (kde#423997)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:54:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0

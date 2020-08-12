@@ -17,7 +17,7 @@
 
 
 Name:           ripgrep
-Version:        12.1.0
+Version:        12.1.1
 Release:        0
 Summary:        A search tool that combines ag with grep
 License:        MIT AND Unlicense

@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Aug  7 05:54:43 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Minimum version needed for LLVM is >= 8.0
+
+-------------------------------------------------------------------
+Thu Aug  6 08:26:41 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Update to version 1.44.1
+  * rustfmt accepts rustfmt_skip in cfg_attr again.
+  * Don't hash executable filenames on apple platforms, fixing backtraces.
+  * Fix crashes when finding backtrace on macOS.
+  * Clippy applies lint levels into different files.
+- Update to version 1.44.0
+  + Language
+    - You can now use `async/.await` with `#[no_std]` enabled.
+    - Added the `unused_braces` lint.
+    - Expansion-driven outline module parsing
+  + Compiler
+    - Rustc now respects the `-C codegen-units` flag in incremental mode.
+      Additionally when in incremental mode rustc defaults to 256 codegen units.
+    - Refactored `catch_unwind` to have zero-cost, unless unwinding is enabled and
+      a panic is thrown.
+    - Added tier 3\* support for the `aarch64-unknown-none` and
+      `aarch64-unknown-none-softfloat` targets.
+    - Added tier 3 support for `arm64-apple-tvos` and
+      `x86_64-apple-tvos` targets.
+  + Libraries
+    - Special cased `vec![]` to map directly to `Vec::new()`. This allows
+      `vec![]` to be able to be used in `const` contexts.
+    - `convert::Infallible` now implements `Hash`.
+    - `OsString` now implements `DerefMut` and `IndexMut` returning
+      a `&mut OsStr`.
+    - Unicode 13 is now supported.
+    - `String` now implements `From<&mut str>`.
+    - `IoSlice` now implements `Copy`.
+    - `Vec<T>` now implements `From<[T; N]>`. Where `N` is at most 32.
+    - `proc_macro::LexError` now implements `fmt::Display` and `Error`.
+    - `from_le_bytes`, `to_le_bytes`, `from_be_bytes`, `to_be_bytes`,
+      `from_ne_bytes`, and `to_ne_bytes` methods are now `const` for all
+      integer types.
+  + Stabilizd APIs
+    - [`PathBuf::with_capacity`]
+    - [`PathBuf::capacity`]
+    - [`PathBuf::clear`]
+    - [`PathBuf::reserve`]
+    - [`PathBuf::reserve_exact`]
+    - [`PathBuf::shrink_to_fit`]
+    - [`f32::to_int_unchecked`]
+    - [`f64::to_int_unchecked`]
+    - [`Layout::align_to`]
+    - [`Layout::pad_to_align`]
+    - [`Layout::array`]
+    - [`Layout::extend`]
+  + Cargo
+    - Added the `cargo tree` command which will print a tree graph of
+      your dependencies
+  + Misc
+    - Rustdoc now allows you to specify `--crate-version` to have rustdoc include
+      the version in the sidebar.
+  + Compatibility Notes
+    - Rustc now correctly generates static libraries on Windows GNU targets with
+      the `.a` extension, rather than the previous `.lib`.
+    - Removed the `-C no_integrated_as` flag from rustc.
+    - The `file_name` property in JSON output of macro errors now points the actual
+      source file rather than the previous format of `<NAME macros>`.
+      **Note:** this may not point to a file that actually exists on the user's system.
+    - The minimum required external LLVM version has been bumped to LLVM 8.
+    - `mem::{zeroed, uninitialised}` will now panic when used with types that do
+      not allow zero initialization such as `NonZeroU8`. This was
+      previously a warning.
+    - In 1.45.0 (the next release) converting a `f64` to `u32` using the `as`
+      operator has been defined as a saturating operation. This was previously
+      undefined behaviour, but you can use the `{f64, f32}::to_int_unchecked` methods to
+      continue using the current behaviour, which may be desirable in rare performance
+      sensitive situations.
+- Rebased patches:
+  + ignore-Wstring-conversion.patch (offset / fuzz)
+  + rust-pr70163-prepare-for-llvm-10-upgrade.patch dropped (merged upstream)
+
+-------------------------------------------------------------------
 Wed May 20 12:23:40 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to version 1.43.1

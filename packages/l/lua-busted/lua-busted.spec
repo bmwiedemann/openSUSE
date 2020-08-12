@@ -28,9 +28,9 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            http://olivinelabs.com/busted/
 Source:         https://github.com/Olivine-Labs/%{mod_name}/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
-BuildRequires:  %{flavor}-penlight >= 1.3.2-2
 BuildRequires:  %{flavor}-cliargs >= 3.0-1
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-penlight >= 1.3.2-2
 # For testing
 # BuildRequires:  %%{flavor}-copas
 BuildRequires:  %{flavor}-lua-ev
@@ -45,8 +45,9 @@ BuildRequires:  curl
 BuildRequires:  openssl
 BuildRequires:  unzip
 Requires:       %{flavor}
-Requires:       %{flavor}-lua-ev
 Requires:       %{flavor}-cliargs
+Requires:       %{flavor}-dkjson >= 2.1.0-0
+Requires:       %{flavor}-lua-ev
 Requires:       %{flavor}-luafilesystem
 Requires:       %{flavor}-luassert >= 1.7.8-0
 Requires:       %{flavor}-luasystem >= 0.2.0-0
@@ -54,7 +55,6 @@ Requires:       %{flavor}-luaterm >= 0.1-1
 Requires:       %{flavor}-mediator_lua >= 1.1-0
 Requires:       %{flavor}-penlight
 Requires:       %{flavor}-say >= 1.3-0
-Requires:       %{flavor}-dkjson >= 2.1.0-0
 Requires:       curl
 Requires:       openssl
 Requires:       unzip

@@ -1,5 +1,5 @@
 #
-# spec file for package lua-editorconfig-core
+# spec file for package lua-editorconfig-core-lua
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -26,9 +26,9 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/Other
 URL:            https://github.com/editorconfig/editorconfig-core-lua
 Source:         https://github.com/editorconfig/%{mod_name}/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
-BuildRequires:  %{flavor}-penlight
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luafilesystem
+BuildRequires:  %{flavor}-penlight
 BuildRequires:  cmake
 BuildRequires:  libeditorconfig-devel
 Requires:       %{flavor}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:02:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
 Tue Apr  7 19:55:49 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add update-alternatives for the bash and zsh completion files.

@@ -18,8 +18,17 @@
 
 %define __builder ninja
 
+# Define used guile version
+%if 0%{?suse_version} > 1500
+%define guile_version 3.0
+%else
+%if 0%{?sle_version} == 150200
+%define guile_version 2.0
+%endif
+%endif
+
 Name:           gnucash
-Version:        3.9
+Version:        4.1
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -32,31 +41,35 @@ Source1:        %{name}-rpmlintrc
 Patch0:         gnucash-cpan-warning.patch
 # PATCH-FIX-UPSTREAM gnucash-libm.patch gh#gnucash/gnucash#632 dimstar@opensuse.org -- Link libm: gnucash uses e.g. log10 without explicitly requesting libm
 Patch1:         gnucash-libm.patch
+Patch2:         gnucash-4.1-fix-gtest-path.patch
 
+BuildRequires:  boost-devel >= 1.60.0
 BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmock >= 1.8.0
 BuildRequires:  gtest >= 1.8.0
-BuildRequires:  guile-devel < 3.0
-BuildRequires:  libboost_date_time-devel >= 1.54.0
-BuildRequires:  libboost_filesystem-devel >= 1.54.0
-BuildRequires:  libboost_headers-devel >= 1.54.0
-BuildRequires:  libboost_locale-devel >= 1.54.0
-BuildRequires:  libboost_regex-devel >= 1.54.0
-BuildRequires:  libboost_system-devel >= 1.54.0
+BuildRequires:  guile-devel
+BuildRequires:  libboost_date_time-devel >= 1.60.0
+BuildRequires:  libboost_filesystem-devel >= 1.60.0
+BuildRequires:  libboost_headers-devel >= 1.60.0
+BuildRequires:  libboost_locale-devel >= 1.60.0
+BuildRequires:  libboost_program_options-devel >= 1.60.0
+BuildRequires:  libboost_regex-devel >= 1.60.0
+BuildRequires:  libboost_system-devel >= 1.60.0
 BuildRequires:  libdbi-drivers-dbd-sqlite3
 BuildRequires:  makeinfo
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
+BuildRequires:  swig >= 3.0.12
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(aqbanking) >= 4.0.0
+BuildRequires:  pkgconfig(aqbanking) >= 6.0.0
 BuildRequires:  pkgconfig(dbi) >= 0.8.3
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.1
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.40
 BuildRequires:  pkgconfig(gnome-keyring-1) >= 0.6
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.40
@@ -138,7 +151,6 @@ a personal finance manager.
 %fdupes %{buildroot}%{_libdir}
 %fdupes %{buildroot}%{_datadir}
 # Remove MS-Windows-related files and auto-installed LICENSE file
-rm %{buildroot}%{_docdir}/%{name}/README*win32-bin.txt
 rm %{buildroot}%{_docdir}/%{name}/LICENSE
 
 %post -p /sbin/ldconfig
@@ -148,6 +160,7 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %license LICENSE
 %{_bindir}/gnc-fq-*
 %{_bindir}/gnucash
+%{_bindir}/gnucash-cli
 %{_bindir}/gnucash-valgrind
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/gnucash.appdata.xml
@@ -156,9 +169,15 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %{_datadir}/gnucash/
 %{_datadir}/icons/hicolor/*/apps/gnucash-icon.png
 %{_datadir}/icons/hicolor/scalable/apps/gnucash-icon.svg
+%dir %{_datadir}/guile/site/%{guile_version}
+%{_datadir}/guile/site/%{guile_version}/gnucash
+%{_datadir}/guile/site/%{guile_version}/tests
 %doc %{_docdir}/%{name}
 %{_libdir}/*.so
 %{_libdir}/gnucash
+%dir %{_libdir}/guile/%{guile_version}/site-ccache
+%{_libdir}/guile/%{guile_version}/site-ccache/gnucash
+%{_libdir}/guile/%{guile_version}/site-ccache/tests
 %{_mandir}/man?/*%{?ext_man}
 %dir %{_sysconfdir}/gnucash
 %config %{_sysconfdir}/gnucash/environment

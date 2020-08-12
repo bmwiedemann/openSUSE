@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyupgrade
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyupgrade
-Version:        2.6.2
+Version:        2.7.2
 Release:        0
-License:        MIT
 Summary:        A tool to automatically upgrade syntax for newer versions
-Url:            https://github.com/asottile/pyupgrade
+License:        MIT
 Group:          Development/Languages/Python
-# pypi tarball does not include tests, use github instead. PR for inclusion: https://github.com/asottile/pyupgrade/pull/326
+URL:            https://github.com/asottile/pyupgrade
+# pypi tarball does not include tests, use github instead. PR for inclusion was denied https://github.com/asottile/pyupgrade/pull/326
 Source:         https://github.com/asottile/pyupgrade/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Source:         https://files.pythonhosted.org/packages/source/p/pyupgrade/pyupgrade-%%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module tokenize-rt >= 3.2.0}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tokenize-rt >= 3.2.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-tokenize-rt >= 3.2.0

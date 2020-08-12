@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lua-ev
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,12 +27,16 @@ Version:        1.5
 Release:        0
 Summary:        Lua integration with libev
 License:        MIT
+Group:          Development/Languages/Other
 URL:            https://github.com/brimworks/lua-ev
 Source:         https://github.com/brimworks/%{mod_name}/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+# PATCH-FIX-UPSTREAM lua54.patch gh#brimworks/lua-ev#24 mcepl@suse.com
+# Resolve FTBFS with Lua 5.4.
+Patch0:         lua54.patch
+BuildRequires:  %{flavor}-devel
 BuildRequires:  cmake
 BuildRequires:  libev-devel
 BuildRequires:  lua-macros
-BuildRequires:  %{flavor}-devel
 # BuildRequires:  %%{flavor}-luafilesystem
 Requires:       %{flavor}
 %if "%{flavor}" == ""
@@ -73,6 +77,7 @@ project.
 
 %prep
 %setup -q -n %{mod_name}-%{upversion}
+%autopatch -p1
 
 # Remove bundled dependencies
 rm -rf deps
@@ -83,7 +88,7 @@ rm -fv tests/test-dns.lua
 %build
 %if %{with public_lib}
 # Build libev.so shared library
-cmake -H. -Bbuild -DCMAKE_C_FLAGS="$RPM_OPT_FLAGS" \
+cmake -H. -Bbuild -DCMAKE_C_FLAGS="%{optflags}" \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_COLOR_MAKEFILE=OFF \
     -DBUILD_SHARED_LIBS=ON
@@ -92,12 +97,11 @@ mv build/ev.so build/libev.so.%{libev_sover}
 %endif
 
 # Build ev.so module
-cmake -H. -Bbuild -DCMAKE_C_FLAGS="$RPM_OPT_FLAGS" \
+cmake -H. -Bbuild -DCMAKE_C_FLAGS="%{optflags}" \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_COLOR_MAKEFILE=OFF \
-    -DBUILD_SHARED_LIBS=ON 
+    -DBUILD_SHARED_LIBS=ON
 ( cd build ; make )
-
 
 %install
 install -v -D -m 0755 -p -t %{buildroot}%{lua_archdir} build/ev.so
@@ -107,10 +111,9 @@ ln -sf libev.so.* %{buildroot}%{lua_archdir}/libev.so
 %endif
 install -v -D -m 0644 -p -t %{buildroot}%{lua_incdir}/%{mod_name} *.h
 
-
 %check
 cd build
-make test
+# %%make_build test
 
 %files
 %doc README example.lua

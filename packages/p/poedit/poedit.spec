@@ -20,7 +20,7 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        2.4
+Version:        2.4.1
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT
@@ -70,14 +70,10 @@ rm -r deps
 
 %build
 %configure \
-%if !%{with language_detection}
-	--without-cld2 \
-%endif
-%if !0%{with crowdin_integration}
-	--without-cpprest \
-%endif
+  %{!?with_language_detection: --without-cld2} \
+  %{!?with_crowdin_integration: --without-cpprest}
 
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -85,7 +81,6 @@ make %{?_smp_mflags} V=1
 %find_lang %{name}
 
 %files
-%defattr(-,root,root,755)
 %license COPYING
 %doc AUTHORS NEWS README
 %{_bindir}/%{name}
@@ -97,6 +92,5 @@ make %{?_smp_mflags} V=1
 %{_mandir}/man?/*
 
 %files lang -f %{name}.lang
-%defattr(-,root,root,755)
 
 %changelog

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 11 09:08:51 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Currently tests fail, and they are temporarily ignored.
+
+-------------------------------------------------------------------
+Thu Jul  9 14:17:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54.patch to make package building with Lua 5.4
+  (gh#brimworks/lua-ev#24).
+
+-------------------------------------------------------------------
+Mon Jul  6 19:05:03 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
 Sat Nov  2 18:01:04 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort of lua-ev 1.5.

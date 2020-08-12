@@ -1004,4 +1004,12 @@
   possible exploits (bsc#1154063).</comment>
     <requestid>823552</requestid>
   </revision>
+  <revision rev="134" vrev="15">
+    <srcmd5>f9c35234d8cf2eea94f11f6fda093540</srcmd5>
+    <version>0.7</version>
+    <time>1597220456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824816</requestid>
+  </revision>
 </revisionlist>

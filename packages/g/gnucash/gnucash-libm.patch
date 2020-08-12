@@ -1,13 +1,10 @@
-Index: gnucash-3.8/libgnucash/app-utils/CMakeLists.txt
-===================================================================
---- gnucash-3.8.orig/libgnucash/app-utils/CMakeLists.txt
-+++ gnucash-3.8/libgnucash/app-utils/CMakeLists.txt
-@@ -78,7 +78,7 @@ set (app_utils_SOURCES
- set_source_files_properties (${app_utils_SOURCES} PROPERTIES OBJECT_DEPENDS ${CONFIG_H})
+--- gnucash-4.1/libgnucash/app-utils/CMakeLists.txt.orig	2020-08-02 23:12:50.335306666 +0200
++++ gnucash-4.1/libgnucash/app-utils/CMakeLists.txt	2020-08-02 23:13:12.071450498 +0200
+@@ -88,6 +88,7 @@ set(app_utils_ALL_LIBRARIES
+     ${LIBXML2_LDFLAGS}
+     ${LIBXSLT_LDFLAGS}
+     ${STANDARD_MATH_LIBRARY}
++    -lm
+ )
  
- set(app_utils_ALL_SOURCES ${app_utils_SOURCES} ${app_utils_HEADERS} ${app_utils_noinst_HEADERS})
--set(app_utils_ALL_LIBRARIES gncmod-engine gnc-module ${GIO_LDFLAGS} ${LIBXML2_LDFLAGS} ${LIBXSLT_LDFLAGS})
-+set(app_utils_ALL_LIBRARIES gncmod-engine gnc-module ${GIO_LDFLAGS} ${LIBXML2_LDFLAGS} ${LIBXSLT_LDFLAGS} -lm)
- set(app_utils_ALL_INCLUDES  ${CMAKE_CURRENT_SOURCE_DIR}/calculation ${GIO_INCLUDE_DIRS} ${LIBXML2_INCLUDE_DIRS}
-     ${LIBXSLT_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/libgnucash/backend ${CMAKE_SOURCE_DIR}/libgnucash/engine)
- 
+ set(app_utils_ALL_INCLUDES

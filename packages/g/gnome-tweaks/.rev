@@ -63,4 +63,14 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736569</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e38b9800f8c0d76c00a7091f7cdc173c</srcmd5>
+    <version>3.34.0</version>
+    <time>1597220421</time>
+    <user>dimstar_suse</user>
+    <comment>- Added gnome-tweaks-fix-titlebar-buttons-left.patch: GNOME Tweaks
+  titlebar starts flickering when setting button placement to left,
+  this patch fixs it. (bsc#1162080, glgo#GNOME/gnome-tweaks#245) (forwarded request 824565 from AZhou)</comment>
+    <requestid>824807</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package innoextract
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           innoextract
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        A tool to extract Inno Setup installers under non-windows systems
 License:        Zlib
@@ -27,8 +27,6 @@ URL:            http://constexpr.org/innoextract/
 Source:         http://constexpr.org/innoextract/files/%{name}-%{version}.tar.gz
 Source1:        http://constexpr.org/innoextract/files/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
-Patch0:         0002-CMake-Remove-library-link-checks.patch
-Patch1:         0005-CMake-Remove-automatic-re-check-of-libraries.patch
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel
@@ -51,8 +49,6 @@ Extract currently supports installers created by Inno Setup 1.2.10 to
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %cmake

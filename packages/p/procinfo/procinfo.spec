@@ -1,7 +1,7 @@
 #
 # spec file for package procinfo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Tool to Display System Status Gathered from /proc
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            ftp://ftp.cistron.nl/pub/people/00-OLD/svm/
+URL:            ftp://ftp.cistron.nl/pub/people/00-OLD/svm/
 Source:         ftp://ftp.cistron.nl/pub/people/svm/%{name}-%{version}.tar.bz2
 Patch0:         procinfo-%{version}.dif
 Patch1:         procinfo-uptime.dif
@@ -46,6 +46,7 @@ Patch18:        procinfo-man.dif
 Patch19:        procinfo-maxdev.dif
 Patch20:        procinfo-sysconf.dif
 Patch21:        procinfo-ranges.dif
+Patch22:        procinfo-strsignal.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ncurses-devel
 Provides:       ps:/usr/bin/lsdev
@@ -80,9 +81,10 @@ directory and prints it nicely formatted on the standard output device.
 %patch19
 %patch20
 %patch21
+%patch22
 
 %build
-CFLAGS="-D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 %{optflags} -pipe"
+CFLAGS="-D_GNU_SOURCE $(getconf LFS_CFLAGS) %{optflags} -pipe"
 export CFLAGS
 make LDFLAGS= CC="%__cc" %{?_smp_mflags}
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 27 09:21:12 UTC 2020 - psychonaut@nothingisreal.com
+
+- update to GPP 2.27
+  * --help and --version now print to stdout, not stderr (Issue #47)
+  * Various minor fixes and revisions to the documentation (Issues #38
+    through #44)
+
+-------------------------------------------------------------------
 Wed Jul 15 13:11:00 UTC 2020 - psychonaut@nothingisreal.com
 
 - update to GPP 2.26

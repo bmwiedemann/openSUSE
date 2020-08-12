@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 22:29:39 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.16.1
+
+- More explicitness about the color group when getting colors from the standard panel. This fixes a small problem in inactive line-edits of some themes.
+- Made the toolbar of recent versions of Krita stylable. 
+
+-------------------------------------------------------------------
 Wed Jun 24 22:39:09 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 0.16.0

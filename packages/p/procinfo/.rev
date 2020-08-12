@@ -215,4 +215,13 @@
     <comment>- Modernize old variables. Drop author list from description. (forwarded request 701208 from jengelh)</comment>
     <requestid>701273</requestid>
   </revision>
+  <revision rev="32" vrev="225">
+    <srcmd5>1c6a196b8212e445866d315e9bf5c390</srcmd5>
+    <version>18</version>
+    <time>1597220465</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch procinfo-strsignal.dif to use strsignal(3) as replacement
+  of (_)sys_siglist[]</comment>
+    <requestid>824821</requestid>
+  </revision>
 </revisionlist>
