@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug  3 12:20:57 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.7.0:
+  * deps: upgrade npm to 6.14.7
+  * dgram: add IPv6 scope id suffix to received udp6 dgrams
+  * src:
+    + allow preventing SetPromiseRejectCallback #34387
+    + allow setting a dir for all diagnostic output #33584
+  * worker: make MessagePort inherit from EventTarget #34057
+  * zlib: switch to lazy init for zlib streams (Andrey Pechkurov) #34048
+
+-------------------------------------------------------------------
 Wed Jul 22 12:52:50 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 14.6.0:
   * deps:
     + upgrade to libuv 1.38.1
-    + upgrade npm to 6.14.6
+    + upgrade npm to 6.14.6 fixing information leak through
+      log files (bsc#1173937, CVE-2020-15095)
     + update V8 to 8.4.371.19
   * module:
     + doc only deprecation of module.parent

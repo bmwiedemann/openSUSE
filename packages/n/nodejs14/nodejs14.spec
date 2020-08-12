@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.6.0
+Version:        14.7.0
 Release:        0
 
 %define node_version_number 14
@@ -118,7 +118,7 @@ Release:        0
 Summary:        Evented I/O for V8 JavaScript
 License:        MIT
 Group:          Development/Languages/NodeJS
-Url:            https://nodejs.org
+URL:            https://nodejs.org
 Source:         https://nodejs.org/dist/v%{version}/node-v%{version}.tar.xz
 Source1:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt
 Source2:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt.sig
