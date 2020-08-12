@@ -1,7 +1,7 @@
 #
 # spec file for package links
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           links
-Version:        2.20.2
+Version:        2.21
 Release:        0
 Summary:        Text-Based WWW Browser
 License:        GPL-2.0-or-later
@@ -68,7 +68,7 @@ CFLAGS="%{optflags} -DOPENSSL_NO_SSL_INTERN"
         --with-ssl \
         --with-x \
         --enable-graphics
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

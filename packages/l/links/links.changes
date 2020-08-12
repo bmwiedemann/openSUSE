@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  7 19:31:13 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- links 2.21:
+  * Fix a bug that textarea was broken if it immediatelly followed
+    a list
+  * Fix a bug that an image would not be properly resized sometimes
+  * Delete the 4-pixel border in Xwindow
+  * Updated Turkish translation
+
+-------------------------------------------------------------------
 Sun Oct 13 10:09:48 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - links 2.20.2:
