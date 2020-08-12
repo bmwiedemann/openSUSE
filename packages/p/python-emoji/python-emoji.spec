@@ -2,7 +2,7 @@
 # spec file for package python-emoji
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018 Matthias Bach <marix@marix.org>.
+# Copyright (c) 2020 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-emoji
-Version:        0.5.4
+Version:        0.6.0
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/carpedm20/emoji/
 Source:         https://files.pythonhosted.org/packages/source/e/emoji/emoji-%{version}.tar.gz
 # https://github.com/carpedm20/emoji/pull/118
-Patch0:         remove_nose.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,7 +47,6 @@ Python is 👍
 
 %prep
 %setup -q -n emoji-%{version}
-%patch0 -p1
 
 %build
 %python_build
