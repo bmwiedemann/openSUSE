@@ -1,7 +1,7 @@
 #
-# spec file for package terraform
+# spec file for package terraform-provider-template
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Make sure that the binary is not getting stripped.
-%if 0%{?suse_version}
-%{go_nostrip}
-%endif
 
 Name:           terraform-provider-template
 Version:        2.1.2
 Release:        0
-License:        MPL-2.0
 Summary:        Terraform template-provider
-Url:            https://github.com/terraform-providers/terraform-provider-template
+License:        MPL-2.0
 Group:          System/Management
+URL:            https://github.com/terraform-providers/terraform-provider-template
 Source:         %{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.8
-Requires:       terraform >= 0.11.0
+Requires:       terraform >= 0.12.0
+# Make sure that the binary is not getting stripped.
+%if 0%{?suse_version}
+%{go_nostrip}
+%endif
 %if 0%{?suse_version}
 %{go_provides}
 %endif
@@ -40,14 +39,12 @@ Requires:       terraform >= 0.11.0
 This is a terraform provider that lets you use template files
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
-export GO111MODULE=off
-export GOPROXY=off
 %if 0%{?suse_version}
-%goprep github.com/terraform-providers/terraform-provider-template
-%gobuild
+%{goprep} github.com/terraform-providers/%{name}
+%{gobuild} -mod=vendor ""
 %endif
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?ubuntu_version}
 mkdir -p ./_build/src/github.com/terraform-providers
@@ -58,10 +55,8 @@ go build -ldflags "-X main.version=%{version}" .
 %endif
 
 %install
-export GO111MODULE=off
-export GOPROXY=off
 %if 0%{?suse_version}
-%goinstall
+%{goinstall}
 rm -rf %{buildroot}/%{_libdir}/go/contrib
 %endif
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?ubuntu_version}
@@ -71,18 +66,12 @@ export GOBIN=%{buildroot}%{_bindir}
 cd _build/src/github.com/terraform-providers/terraform-provider-template
 go install -ldflags "-X main.version=%{version}"
 %endif
-
-curr=$PWD
-# extract the binary to be published
-if [ -d %{_topdir}/OTHER ]; then
-    cd %{buildroot}%{_bindir}
-    tar zcf %{_topdir}/OTHER/%{name}-%{version}.%{_repository}.%{_arch}.tar.gz %{name}
-fi
-cd $curr
+ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
 %files
-%defattr(-,root,root,-)
-%doc README.md LICENSE
+%license LICENSE
+%doc README.md
 %{_bindir}/%{name}
+%{_bindir}/%{name}_v%{version}
 
 %changelog
