@@ -19,14 +19,14 @@
 %define source_file MaxMind-DB-Reader-php
 %define pkg_name    maxminddb
 Name:           php7-%{pkg_name}
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        PHP extension providing access to maxminddb databases
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/package/maxminddb
 Source0:        https://github.com/maxmind/%{source_file}/archive/v%{version}.tar.gz#/%{source_file}-%{version}.tar.gz
-BuildRequires:  php7-devel >= 7.0.0
+BuildRequires:  php7-devel >= 7.2.0
 BuildRequires:  pkgconfig
 BuildRequires:  re2c
 BuildRequires:  pkgconfig(libmaxminddb)
@@ -47,11 +47,11 @@ cd ext
 export CFLAGS="%{optflags} -fvisibility=hidden"
 %{_bindir}/phpize
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
 cd ext
-make %{?_smp_mflags} PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
+%make_build PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
 
 %install
 cd ext

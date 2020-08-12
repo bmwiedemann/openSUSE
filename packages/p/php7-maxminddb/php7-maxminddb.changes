@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 11 12:31:33 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to version 1.7.0
+  * PHP 7.2 or greater is now required
+  * The extension no longer depends on the pure PHP classes ini
+    maxmind-db/reader. You can use it independently
+  * Type hints have been added to both the pure PHP implementation
+    and the extension.
+  * The metadata method on the reader now returns a new copy of the
+    metadata object rather than the actual object used by the reader.
+  * Work around PHP is_readable() bug. Reported by Ben Roberts.
+    gh#maxmind/MaxMind-DB-Reader-php#92
+  * This is the first release of the extension as a PECL package.
+    gh#maxmind/MaxMind-DB-Reader-php#34
+
+-------------------------------------------------------------------
 Thu Jan  9 07:14:29 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to version 1.6.0
