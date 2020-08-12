@@ -17,7 +17,7 @@
 
 
 Name:           perl-Net-DNS
-Version:        1.25
+Version:        1.26
 Release:        0
 %define cpan_name Net-DNS
 Summary:        Perl Interface to the Domain Name System
@@ -30,14 +30,18 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Carp) >= 1.1
 BuildRequires:  perl(Digest::HMAC) >= 1.03
 BuildRequires:  perl(Digest::SHA) >= 5.23
+BuildRequires:  perl(Encode) >= 2.26
 BuildRequires:  perl(IO::Socket::IP) >= 0.38
 BuildRequires:  perl(PerlIO) >= 1.05
 BuildRequires:  perl(Scalar::Util) >= 1.25
 BuildRequires:  perl(Time::Local) >= 1.19
+Requires:       perl(Carp) >= 1.1
 Requires:       perl(Digest::HMAC) >= 1.03
 Requires:       perl(Digest::SHA) >= 5.23
+Requires:       perl(Encode) >= 2.26
 Requires:       perl(IO::Socket::IP) >= 0.38
 Requires:       perl(PerlIO) >= 1.05
 Requires:       perl(Scalar::Util) >= 1.25
