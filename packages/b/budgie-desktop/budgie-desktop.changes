@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Aug 11 10:39:42 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Remove gnome-session dependency
+
+-------------------------------------------------------------------
+Mon Aug 10 20:02:33 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fix desktop icons
+
+-------------------------------------------------------------------
+Mon Aug 10 19:15:07 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add patches:
+  * Rework-grab-and-ungrab-keys.patch (gh#solus-project/budgie-desktop#1907)
+  * mutter-3-35-91.patch (gh#solus-project/budgie-desktop#1939)
+  * gnome-coexistance.patch (gh#solus-project/budgie-desktop#1984)
+- Remove old %post and %postun
+- Add new Requires:
+  * ibus
+  * typelib-1_0-PeasGtk-1_0
+  * typelib-1_0-Budgie-1_0
+
+-------------------------------------------------------------------
+Mon Aug 10 14:27:48 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add xsession update-alternatives
+
+-------------------------------------------------------------------
 Sun Aug  9 21:02:01 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Rename and recommend doc package

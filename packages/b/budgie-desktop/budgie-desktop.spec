@@ -29,6 +29,12 @@ Source1:        https://github.com/solus-project/%{name}/releases/download/v%{ve
 Source2:        %{name}.keyring
 # PATCH-FIX-UPSTREAM: Add support for mutter 3.36 gh#solus-project/budgie-desktop#1918
 Patch:          support-libmutter6.patch
+# PATCH-FIX-UPSTREAM: Resolve losing keyboard shortcuts on login gh#solus-project/budgie-desktop#1907
+Patch1:         Rework-grab-and-ungrab-keys.patch
+# PATCH-FIX-UPSTREAM: Add support for mutter 3.35.91 gh#solus-project/budgie-desktop#1939
+Patch2:         mutter-3-35-91.patch
+# PATCH-FIX-UPSTREAM: Allow budgie-desktop and gnome-shell to coexist gh#solus-project/budgie-desktop#1984
+Patch3:         gnome-coexistance.patch
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.41.2
 BuildRequires:  pkgconfig
@@ -52,7 +58,9 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen) >= 0.28
-Requires:       gnome-session
+Requires:       typelib-1_0-PeasGtk-1_0
+Requires:       typelib-1_0-Budgie-1_0
+Requires:       ibus
 Requires:       gnome-settings-daemon
 #Recommends:     gnome-screensaver
 Recommends:     NetworkManager-applet
@@ -131,7 +139,7 @@ Private library for Budgie desktop to link against.
 %autosetup -p1
 
 %build
-%meson
+%meson -Dwith-desktop-icons=none
 %meson_build
 
 %install
@@ -146,17 +154,19 @@ mkdir -pv %{buildroot}%{_datadir}/vala-%{vala_version}/
 mv %{buildroot}%{_datadir}/vala/* %{buildroot}%{_datadir}/vala-%{vala_version}/
 rm -Rf %{buildroot}%{_datadir}/vala/
 
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
+ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
+
 %find_lang %{name}
 
-%if 0%{?suse_version} < 1500
 %post
-%glib2_gsettings_schema_post
-%icon_theme_cache_post
+%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
+  default-xsession.desktop %{_datadir}/xsessions/budgie-desktop.desktop 20
 
 %postun
-%glib2_gsettings_schema_post
-%icon_theme_cache_postun
-%endif
+[ -f %{_datadir}/xsessions/budgie-desktop.desktop ] || %{_sbindir}/update-alternatives \
+  --remove default-xsession.desktop %{_datadir}/xsessions/budgie-desktop.desktop
 
 %post   -n libraven0 -p /sbin/ldconfig
 %postun -n libraven0 -p /sbin/ldconfig
@@ -177,9 +187,11 @@ rm -Rf %{buildroot}%{_datadir}/vala/
 %{_datadir}/glib-2.0/schemas/20_solus-project.budgie.wm.gschema.override
 %{_datadir}/gnome-session/sessions/budgie-desktop.session
 %{_datadir}/icons/hicolor/scalable/*/*.svg
+%{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
 %{_libdir}/budgie-desktop/
 %{_sysconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
+%ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 
 %files -n libraven0
 %{_libdir}/libraven.so.*
