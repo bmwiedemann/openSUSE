@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Use "standard" name for pot files for mimetypes
+  * Introduce KRandom::shuffle(container)
+  * Use KF-standardized Qt logging categories
+  * Apply FreeBSD test hacks only for "fast" (inotify) backends.
+  * Add a band-aid in kdirwatch unit test for FreeBSD OS. This makes all tests pass.
+  * Use camelcase include. (scripted)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
