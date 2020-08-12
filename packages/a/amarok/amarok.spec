@@ -17,7 +17,7 @@
 
 
 Name:           amarok
-Version:        2.9.70git.20200617T113036~a69c9418b4
+Version:        2.9.70git.20200731T193253~4ae108506f
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -124,7 +124,7 @@ EOF
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -138,13 +138,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %fdupes -s %{buildroot}
 
-%post
-/sbin/ldconfig
-%mime_database_post %{_kf5_sharedir}/mime
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%mime_database_postun %{_kf5_sharedir}/mime
+%postun -p /sbin/ldconfig
 
 %files
 %license COPYING*

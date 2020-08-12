@@ -1077,4 +1077,17 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     <comment></comment>
     <requestid>815528</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>2d188abae3d16b25719a1cf03633d382</srcmd5>
+    <version>2.9.70git.20200731T193253~4ae108506f</version>
+    <time>1597220451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.70git.20200731T193253~4ae108506f:
+  * Fix breadcrumb widget for left menu
+  * Fix crash when closing dialog to edit filter (kde#421456)
+  * qVariantFromValue() -&gt; QVariant::fromValue()
+  * Drop old copy of Qt modeltest
+  * Use https for bugs.kde.org</comment>
+    <requestid>824812</requestid>
+  </revision>
 </revisionlist>
