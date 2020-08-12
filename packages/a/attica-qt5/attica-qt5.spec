@@ -19,7 +19,7 @@
 %define sonum   5
 %define rname attica
 %define _libname KF5Attica
-%define _tar_path 5.72
+%define _tar_path 5.73
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -27,7 +27,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           attica-qt5
-Version:        5.72.0
+Version:        5.73.0
 Release:        0
 Summary:        Open Collaboration Service client library
 License:        LGPL-2.1-or-later
@@ -89,6 +89,7 @@ Development files for attica, Attica a library to access Open Collaboration Serv
 %license LICENSES/*
 %doc README*
 %{_kf5_debugdir}/attica.categories
+%{_kf5_debugdir}/attica.renamecategories
 
 %files -n lib%{_libname}%{sonum}
 %license LICENSES/*
