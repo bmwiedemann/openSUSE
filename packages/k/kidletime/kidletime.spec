@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5IdleTime5
-%define _tar_path 5.72
+%define _tar_path 5.73
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kidletime
-Version:        5.72.0
+Version:        5.73.0
 Release:        0
 Summary:        User and system idle time reporting singleton
 License:        LGPL-2.1-or-later
@@ -100,6 +100,7 @@ idle time events, such as custom timeouts, or user activity.
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/org.kde.kidletime.platforms
 %{_kf5_debugdir}/kidletime.categories
+%{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5IdleTime.so.*
 %{_kf5_plugindir}/kf5/org.kde.kidletime.platforms/KF5IdleTimeXcbPlugin0.so
 %{_kf5_plugindir}/kf5/org.kde.kidletime.platforms/KF5IdleTimeXcbPlugin1.so
