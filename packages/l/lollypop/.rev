@@ -1410,4 +1410,17 @@
   * Bug fixes.</comment>
     <requestid>823630</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>8c9b033da0938226563c6e86b86060ec</srcmd5>
+    <version>1.3.4</version>
+    <time>1597221268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.4:
+  * Fix an issue with disc numbers (glgo#World/lollypop#2510).
+  * Fix party mode not being resumed on lollypop restart
+    (glgo#World/lollypop#2512).
+  * Fix an issue which prevented tracks from being played from
+    artist view (glgo#World/lollypop#2513).</comment>
+    <requestid>825548</requestid>
+  </revision>
 </revisionlist>
