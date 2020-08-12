@@ -353,4 +353,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>811844</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>724c0d71f23c306724c5b27a8d0bf05f</srcmd5>
+    <version>20.07.11</version>
+    <time>1597221288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825812</requestid>
+  </revision>
 </revisionlist>

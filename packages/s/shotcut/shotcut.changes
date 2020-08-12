@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 11 09:29:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20.07.11:
+  * Fixed noisy sound playback on some Windows systems.
+  * Fixed UI layout glitches and default/minimum size of timeline
+    too short.
+  * Fixed Quick Sync Video hardware encoder (h264_qsv or hevc_qsv
+    withQuality-based VBR) not working on Windows on older Intel chips.
+  * Fixed Properties > Speed not working correctly on trimmed
+    clip in Source player.
+  * Fixed Stabilize and Normalize: Two Pass filters not working
+    on trimmed clip in Source player.
+- Remove shotcut-QPainterPath.patch: upstreamed
+
+-------------------------------------------------------------------
 Fri Jun  5 14:16:15 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Fix Factory build with shotcut-QPainterPath.patch submitted

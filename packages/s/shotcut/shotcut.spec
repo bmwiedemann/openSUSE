@@ -22,7 +22,7 @@
 %bcond_with    x264
 
 Name:           shotcut
-Version:        20.04.12
+Version:        20.07.11
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
@@ -34,7 +34,6 @@ URL:            http://www.shotcut.org/
 Source:         https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM shotcut-with-mlt-6.16.0.patch davejplater@gmail.com -- Fix missing type define with mlt < 6.17.0
 Patch1:         shotcut-with-mlt-6.16.0.patch
-Patch2:         shotcut-QPainterPath.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -149,6 +148,7 @@ chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-edl/rebuild.sh
 %{_datadir}/%{name}/
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_datadir}/icons/hicolor/64x64/apps/org.shotcut.Shotcut.png
+%{_datadir}/icons/hicolor/128x128/apps/org.shotcut.Shotcut.png
 %{_datadir}/metainfo/
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/mime/
