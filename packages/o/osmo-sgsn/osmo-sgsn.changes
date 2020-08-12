@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug  1 14:28:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.6.1
+  * gtphub_test: Fix compilation with gcc-10
+- Remove not longer needed patch:
+  * 0001-gtphub_test-Fix-compilation-with-gcc-10.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 19:03:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch to fix gcc10 compilation errors (boo#1160244)
