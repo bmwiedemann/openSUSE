@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 04:19:21 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Update to 1.8.1
+  * Be stricter on which characters can be considered wide or not
+  * Apply change about hiding mouse pointer after idle timeout on all terminals 
+
+-------------------------------------------------------------------
 Tue Aug  4 08:01:14 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.8.0
@@ -15,7 +22,7 @@ Tue Aug  4 08:01:14 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
   * Fix issues detected by UndefinedBehavior Sanitizer
 
 -------------------------------------------------------------------
-Thu May 14 07:43:52 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+Thu May 14 07:43:52 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Update to 1.7.0
 Additions:
