@@ -220,4 +220,14 @@ Allows mounting a device multiple times, e.g. to mount several subvolumes from a
 * Added ignition-enable-network.sh / ignition-enable-network.service: Implemented ignition-fetch-offline feature to only start networking if required</comment>
     <requestid>825412</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ec8aeca95f71737f17a7ca1cf4cc3517</srcmd5>
+    <version>2.6.0</version>
+    <time>1597232523</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed &quot;ignition presets not applied&quot; (boo#1172510)
+- Refresh 0001-fix-install-permissions.patch to match pull request
+</comment>
+    <requestid>825960</requestid>
+  </revision>
 </revisionlist>

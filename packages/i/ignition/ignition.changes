@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 09:27:01 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Fixed "ignition presets not applied" (boo#1172510)
+- Refresh 0001-fix-install-permissions.patch to match pull request
+
+-------------------------------------------------------------------
 Sun Aug 09 22:06:51 UTC 2020 - kukuk@suse.de
 
 - Update to version 2.6.0:
