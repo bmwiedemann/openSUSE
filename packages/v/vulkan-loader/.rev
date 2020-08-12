@@ -191,4 +191,12 @@
     <comment>- Update to release 1.2.145</comment>
     <requestid>817691</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9ac0860da7c565fceb60da9b50b44ea1</srcmd5>
+    <version>1.2.148</version>
+    <time>1597222550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.148</comment>
+    <requestid>825155</requestid>
+  </revision>
 </revisionlist>
