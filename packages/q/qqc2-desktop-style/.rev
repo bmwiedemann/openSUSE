@@ -288,4 +288,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.72</comment>
     <requestid>820408</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ff43c2a8ba1913be1ae96cab3bb114e3</srcmd5>
+    <version>5.73.0</version>
+    <time>1597228037</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.73.0</comment>
+    <requestid>825122</requestid>
+  </revision>
 </revisionlist>

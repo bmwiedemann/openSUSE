@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Use "raised" style for non-flat toolbuttons
+  * Only reserve space for the icon in toolbutton if we actually have an icon
+  * Support showing a menu arrow on tool buttons
+  * Use camelcase include. (scripted)
+  * Really fix menu separator height on high DPI
+  * Update Mainpage.dox
+  * Set height of MenuSeparator properly (kde#423653)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
