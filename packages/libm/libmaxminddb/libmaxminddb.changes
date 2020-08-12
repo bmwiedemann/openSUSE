@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  7 16:14:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.3:
+  * Use of uninitialized memory in dump_entry_data_list() could have
+    cause a heap buffer flow in mmdblookup [bsc#1175006]
+
+-------------------------------------------------------------------
 Wed Nov 20 13:46:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: build libmaxminddb0-32bit, which is required
