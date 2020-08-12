@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug  3 08:40:06 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.16.0
+  * libinput now monitors timestamps of the events vs the current
+    time when libinput_dispatch() is called by the compositor.
+    Where the difference may result in issues, a (rate-limited)
+    warning is printed to the log.
+  * Touchpads now support the "flat" acceleration profile. The
+    default remains unchanged and this needs to be selected in
+    the configuration interface.
+  * Events from lid or tablet-mode switches that are known to
+    libinput as being unreliable are now filtered and no longer
+    passed to the caller.
+
+-------------------------------------------------------------------
 Mon Jun 22 12:08:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.15.6

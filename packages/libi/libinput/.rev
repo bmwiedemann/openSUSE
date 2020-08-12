@@ -781,4 +781,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.15.6</comment>
     <requestid>816341</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>075e3a6ab1ed39cd3a52e31d1123767d</srcmd5>
+    <version>1.16.0</version>
+    <time>1597222602</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>825293</requestid>
+  </revision>
 </revisionlist>
