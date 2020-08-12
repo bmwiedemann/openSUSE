@@ -5,7 +5,7 @@ diff -burNE chrony-3.5_orig/examples/chronyd.service chrony-3.5/examples/chronyd
  PIDFile=/run/chrony/chronyd.pid
  EnvironmentFile=-/etc/sysconfig/chronyd
  ExecStart=/usr/sbin/chronyd $OPTIONS
-+ExecStartPost=/usr/lib/chrony/helper update-daemon
++ExecStartPost=@LIBEXECDIR@/chrony/helper update-daemon
  PrivateTmp=yes
  ProtectHome=yes
  ProtectSystem=full

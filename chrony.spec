@@ -143,6 +143,7 @@ e.g. because the servers will be set via DHCP.
 %prep
 %setup -q -a 10
 %patch0 -p1
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH1}
 %patch1 -p1
 %patch2 -p1
 %patch3
@@ -200,6 +201,7 @@ install -Dpm 0644 examples/chronyd.service \
   %{buildroot}%{_unitdir}/chronyd.service
 install -Dpm 0644 examples/chrony-wait.service \
   %{buildroot}%{_unitdir}/chrony-wait.service
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE5}
 install -Dpm 0644 %{SOURCE5} \
   %{buildroot}%{_unitdir}/chrony-dnssrv@.service
 install -Dpm 0644 %{SOURCE6} \
