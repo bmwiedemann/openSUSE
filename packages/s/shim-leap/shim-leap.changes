@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 11 06:36:37 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim to 15+git47-lp152.4.3.1 from openSUSE Leap 15.2
+  + Version: 15+git47 "Fri Jul 31 07:41:26 UTC 2020"
+  + Use shim-install in the rpm package
+
+-------------------------------------------------------------------
 Wed Jul 22 09:33:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update the path to grub-tpm.efi in shim-install (bsc#1174320)

@@ -25,13 +25,12 @@
 %endif
 
 Name:           shim-leap
-Version:        14
+Version:        15+git47
 Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
 Group:          System/Boot
-Source:         shim-14-lp150.8.5.1.x86_64.rpm
-Source1:        shim-install
+Source:         shim-15+git47-lp152.4.3.1.x86_64.rpm
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 
@@ -55,14 +54,7 @@ rpm2cpio %{SOURCE0} | cpio --extract --unconditional --preserve-modification-tim
 %install
 # purely repackaged
 cp -a * %{buildroot}
-install -m 755 %{SOURCE1} %{buildroot}/%{_sbindir}
-
-# Move 'efi'-executables to '/usr/share/efi' (FATE#326960, bsc#1166523)
-install -d %{buildroot}/%{sysefidir}
-mv %{buildroot}/usr/lib64/efi/* %{buildroot}/%{sysefidir}
-%if %{defined shim_lib64_share_compat}
-ln -srf %{buildroot}/%{sysefidir}/*.efi %{buildroot}/usr/lib64/efi/
-%endif
+# NOTE: shim-15+git47 already contains the sym-link to /usr/lib64/efi.
 
 %post -n shim
 /sbin/update-bootloader --reinit || true
