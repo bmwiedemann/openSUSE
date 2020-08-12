@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 10 08:09:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.26:
+  + Core: Allow unsetting of property keys on paramspecs.
+  + Operations:
+    - perlin-noise: use a local random generator, avoiding
+      resetting the global one.
+    - transform: decrease epsilon for affine-detection, and round
+      some affine matrices to be exact.
+
+-------------------------------------------------------------------
 Thu Jun 11 06:45:46 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.4.24
