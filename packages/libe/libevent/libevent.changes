@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 28 23:30:12 UTC 2020 - David Disseldorp <ddiss@suse.com>
+
+- Update to 2.1.12 stable
+  * buffer: do not pass NULL to memcpy() from evbuffer_pullup()
+  * http: fix undefined-shift in EVUTIL_IS*_ helpers
+  * Check error code of evhttp_add_header_internal() in
+    evhttp_parse_query_impl()
+  * http: fix EVHTTP_CON_AUTOFREE in case of timeout
+  * evdns: Add additional validation for values of dns options
+  * Fix memory corruption in EV_CLOSURE_EVENT_FINALIZE with debug enabled
+  * increase segment refcnt only if evbuffer_add_file_segment() succeeds
+  * evdns: fix a crash when evdns_base with waiting requests is freed
+  * event_base_once: fix potential null pointer threat
+  * http: do not assume body for CONNECT
+  * evbuffer_add_file: fix freeing of segment in the error path
+  * Fix checking return value of the evdns_base_resolv_conf_parse()
+  * Support EV_CLOSED on linux for poll(2)
+  * Parse IPv6 scope IDs.
+  * evutil_time: detect and use _gmtime64_s()/_gmtime64()
+  * bufferevent: allow setting priority on socket and openssl type
+  * Fix EV_CLOSED detection/reporting
+  * Revert "Warn if forked from the event loop during event_reinit()"
+
+-------------------------------------------------------------------
 Tue Sep 24 12:03:16 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Add upstream patches with the feature of "prepare" and "check"

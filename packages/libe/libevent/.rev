@@ -292,4 +292,12 @@ gruss friseer (forwarded request 77922 from Friseer)</comment>
   * 0002-evwatch-fix-race-condition.patch (forwarded request 741457 from mrostecki)</comment>
     <requestid>741477</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>dfe4d31da34daad5bb4c88c35f94750a</srcmd5>
+    <version>2.1.12</version>
+    <time>1597222590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825271</requestid>
+  </revision>
 </revisionlist>

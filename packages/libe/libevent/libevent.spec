@@ -1,7 +1,7 @@
 #
 # spec file for package libevent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           libevent
 %define     version_base 2
 %define     version_minor 1
-%define     version_release 11
+%define     version_release 12
 %define     abi_release 7
 %define     version_suffix stable
 %define     libsoname %{name}-%{version_base}_%{version_minor}-%{abi_release}
@@ -29,7 +29,7 @@ Release:        0
 Summary:        An event notification library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://libevent.org/
+URL:            http://libevent.org/
 Source0:        https://github.com/%{name}/%{name}/releases/download/release-%{version}-%{version_suffix}/%{name}-%{version}-%{version_suffix}.tar.gz
 Source1:        https://github.com/%{name}/%{name}/releases/download/release-%{version}-%{version_suffix}/%{name}-%{version}-%{version_suffix}.tar.gz.asc
 Source2:        %{name}.keyring
