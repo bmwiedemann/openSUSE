@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Too many changes since 5.72.0, only listing bugfixes:
+  * Don't show Plasma dialogs in task switchers (kde#419239)
+  * Copy DataEngine relays before itterating (kde#422973)
+  * Make signal strength in network icons more visible (kde#423843)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
