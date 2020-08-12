@@ -64,6 +64,7 @@ BuildRequires:  pkgconfig(dbus-1) >= 1.0.0
 BuildRequires:  pkgconfig(dhash) >= 0.4.2
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(ini_config) >= 1.1.0
+BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(ldb) >= 0.9.2
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcrypto)
@@ -72,14 +73,15 @@ BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnl-route-3.0) >= 3.0
 BuildRequires:  pkgconfig(libpcre) >= 7
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(ndr_krb5pac)
 BuildRequires:  pkgconfig(ndr_nbt)
+BuildRequires:  pkgconfig(p11-kit-1) >= 0.23.3
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(talloc)
 BuildRequires:  pkgconfig(tdb) >= 1.1.3
 BuildRequires:  pkgconfig(tevent)
-BuildRequires:  pkgconfig(ndr_krb5pac)
-BuildRequires:  pkgconfig(p11-kit-1) >= 0.23.3
+BuildRequires:  pkgconfig(uuid)
 %{?systemd_ordering}
 Requires:       sssd-ldap = %version-%release
 Requires(postun): pam-config
@@ -129,6 +131,16 @@ Provides:       %name-ipa-provider = %version-%release
 %description ipa
 Provides the IPA back end that the SSSD can utilize to fetch identity
 data from and authenticate against an IPA server.
+
+%package kcm
+Summary:        SSSD's Kerberos cache manager
+License:        GPL-3.0-or-later
+Group:          System/Daemons
+Requires:       sssd = %version-%release
+
+%description kcm
+KCM is a process that stores, tracks and manages Kerberos credential
+caches.
 
 %package krb5
 Summary:        The Kerberos authentication backend plugin for sssd
@@ -372,7 +384,6 @@ export LDFLAGS="-pie"
     --with-os=suse \
     --with-semanage=no \
     --disable-ldb-version-check \
-    --without-kcm \
     --without-secrets \
     --without-python2-bindings
 make %{?_smp_mflags} all
@@ -490,25 +501,24 @@ rm -f /var/lib/sss/db/*.ldb
 %dir %_mandir/??/
 %dir %_mandir/??/man[158]/
 %_mandir/??/man1/sss_ssh_*
-%_mandir/??/man5/sss-certmap.5.gz
-%_mandir/??/man5/sssd-ad.5.gz
+%_mandir/??/man5/sss-certmap.5*
+%_mandir/??/man5/sssd-ad.5*
 %_mandir/??/man5/sssd-files.5*
 %_mandir/??/man5/sssd-ldap-attributes.5*
-%_mandir/??/man5/sssd-secrets.5.gz
-%_mandir/??/man5/sssd-session-recording.5.gz
+%_mandir/??/man5/sssd-secrets.5*
+%_mandir/??/man5/sssd-session-recording.5*
 %_mandir/??/man5/sssd-simple.5*
 %_mandir/??/man5/sssd-sudo.5*
-%_mandir/??/man5/sssd-systemtap.5.gz
-%_mandir/??/man5/sssd.conf.5.gz
-%_mandir/??/man8/idmap_sss.8.gz
-%_mandir/??/man8/sssctl.8.gz
-%_mandir/??/man8/sssd-kcm.8.gz
+%_mandir/??/man5/sssd-systemtap.5*
+%_mandir/??/man5/sssd.conf.5*
+%_mandir/??/man8/idmap_sss.8*
+%_mandir/??/man8/sssctl.8*
 %_mandir/??/man8/sssd.8*
 %_mandir/man1/sss_ssh_*
-%_mandir/man5/sss-certmap.5.gz
+%_mandir/man5/sss-certmap.5*
 %_mandir/man5/sssd-files.5*
 %_mandir/man5/sssd-ldap-attributes.5*
-%_mandir/man5/sssd-session-recording.5.gz
+%_mandir/man5/sssd-session-recording.5*
 %_mandir/man5/sssd-simple.5*
 %_mandir/man5/sssd-sudo.5*
 %_mandir/man5/sssd.conf.5*
@@ -613,6 +623,16 @@ rm -f /var/lib/sss/db/*.ldb
 %dir %_mandir/??/
 %dir %_mandir/??/man5/
 %_mandir/??/man5/sssd-ipa.5*
+
+%files kcm
+%dir %_libexecdir/sssd/
+%_libexecdir/sssd/sssd_kcm
+%dir %_libdir/sssd/
+%_libdir/sssd/libsss_secrets.so
+%_mandir/man8/sssd-kcm.8*
+%_mandir/??/man8/sssd-kcm.8*
+%_datadir/sssd-kcm/
+%_unitdir/sssd-kcm.*
 
 %files krb5
 %dir %_libdir/%name/
