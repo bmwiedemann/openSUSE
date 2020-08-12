@@ -1,7 +1,7 @@
 #
 # spec file for package aha
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           aha
-Version:        0.5
+Version:        0.5.1
 Release:        0
 Summary:        ANSI color to HTML converter
 License:        MPL-1.1 OR LGPL-2.1-or-later
