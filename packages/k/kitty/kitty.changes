@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:50:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.3:
+  * hints kitten: Allow customizing hint colors (#2894)
+  * Wayland: Fix a typo in the previous release that broke reading
+    mouse cursor size (#2895)
+  * Fix a regression in the previous release that could cause an
+    exception during startup in rare circumstances (#2896)
+  * Fix image leaving behind a black rectangle when switch away and
+    back to alternate screen (#2901)
+  * Fix one pixel mis-alignment of rounded corners when either the
+    cell dimensions or the thickness of the line is an odd number
+    of pixels (#2907)
+  * Fix a regression that broke specifying OS window size in the
+    session file (#2908)
+
+-------------------------------------------------------------------
 Wed Jul 29 05:49:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.2:

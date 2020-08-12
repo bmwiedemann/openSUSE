@@ -374,4 +374,24 @@
   * Wayland: Fix a regression in 0.18.0 that could cause crashes related</comment>
     <requestid>823298</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>222d185cccdd27d93d1d8671fd02347e</srcmd5>
+    <version>0.18.3</version>
+    <time>1597221436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.3:
+  * hints kitten: Allow customizing hint colors (#2894)
+  * Wayland: Fix a typo in the previous release that broke reading
+    mouse cursor size (#2895)
+  * Fix a regression in the previous release that could cause an
+    exception during startup in rare circumstances (#2896)
+  * Fix image leaving behind a black rectangle when switch away and
+    back to alternate screen (#2901)
+  * Fix one pixel mis-alignment of rounded corners when either the
+    cell dimensions or the thickness of the line is an odd number
+    of pixels (#2907)
+  * Fix a regression that broke specifying OS window size in the
+    session file (#2908)</comment>
+    <requestid>825901</requestid>
+  </revision>
 </revisionlist>
