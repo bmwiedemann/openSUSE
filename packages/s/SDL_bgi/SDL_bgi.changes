@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:58:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.1
+  * Implemented a 16-color palette that uses the same RGB values
+    as Turbo C. This palette is used if the environment variable
+    SDL_BGI_PALETTE is set to "BGI".
+  * Extended the setpalette() function to modify the default 16
+    colors too.
+  * Added initpalette() to restore the original 16 colors.
+  * Added more Hershey fonts: Cursive, Futural, Rowmant, and
+    Timesr.
+  * Fine tuning of Hershey font metrics; now they equal the
+    metrics of corresponding .CHR fonts.
+  * Preliminary .CHR font loading support.
+
+-------------------------------------------------------------------
 Thu Feb 20 15:46:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.0
