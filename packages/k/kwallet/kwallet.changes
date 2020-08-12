@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * use better Name and follow HIG
+  * Use KF-standardized Qt logging categories
+  * Use camelcase include. (scripted)
+  * Mark API as deprecated also in D-Bus interface description
+  * Add copy of org.kde.KWallet.xml without deprecated API
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
