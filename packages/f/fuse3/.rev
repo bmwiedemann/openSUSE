@@ -99,4 +99,13 @@
 - Drop BR on c++_compiler</comment>
     <requestid>814191</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6a144b128ff61c8e28283f4f532de3a4</srcmd5>
+    <version>3.9.3</version>
+    <time>1597222555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9.3
+  * Minor bugfixes, documentation updates</comment>
+    <requestid>825160</requestid>
+  </revision>
 </revisionlist>
