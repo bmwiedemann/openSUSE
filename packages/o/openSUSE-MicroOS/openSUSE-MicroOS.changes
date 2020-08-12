@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:14:52 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add Controller-SelfInstall flavour for self installation on
+  Bare Metal 
+
+-------------------------------------------------------------------
 Mon Jul 20 07:23:18 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Replace openSUSE-MicroOS-release-dvd with MicroOS-release-dvd:

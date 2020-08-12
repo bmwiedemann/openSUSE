@@ -34,7 +34,8 @@
         </profile>
         <profile name="Vagrant" description="Vagrant" arch="aarch64">
             <requires profile="Vagrant_aarch64"/>
-        </profile>
+    </profile>
+    <profile name="SelfInstall" description="Self Installing Image" arch="x86_64"/>
         <!-- Images (flavor + platform) -->
         <profile name="ContainerHost-kvm-and-xen" description="MicroOS with Podman for KVM and HVM Xen" arch="x86_64">
             <requires profile="kvm-and-xen_x86_64"/>
@@ -107,6 +108,10 @@
         <profile name="Kubic-kubeadm-Vagrant" description="kubeadm with CRI-O for Vagrant" arch="aarch64">
             <requires profile="Vagrant_aarch64"/>
             <requires profile="Kubic-kubeadm"/>
+        </profile>
+        <profile name="ContainerHost-SelfInstall" description="MicroOS with Podman for SelfInstallation" arch="x86_64">
+            <requires profile="SelfInstall"/>
+            <requires profile="ContainerHost"/>
         </profile>
     </profiles>
     <preferences profiles="kvm-and-xen_x86_64">
@@ -495,7 +500,55 @@
             <vagrantconfig provider="libvirt" virtualsize="24"/>
             <size unit="G">24</size>
         </type>
+        </preferences>
+    <preferences profiles="SelfInstall">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootsplash-theme>openSUSE</bootsplash-theme>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="btrfs"
+            bootloader="grub2"
+            bootloader_console="gfxterm"
+            firmware="uefi"
+            initrd_system="dracut"
+            installiso="true"
+            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=qemu"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="tmp"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/i386-pc"/>
+                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <oemconfig>
+                <oem-systemsize>2048</oem-systemsize>
+                <oem-swap>true</oem-swap>
+                <oem-device-filter>/dev/ram</oem-device-filter>
+                <oem-multipath-scan>false</oem-multipath-scan>
+            </oemconfig>
+            <machine memory="512" guestOS="suse" HWversion="4">
+                <vmdisk id="0" controller="ide"/>
+                <vmnic driver="e1000" interface="0" mode="bridged"/>
+            </machine>
+        </type>
     </preferences>
+
     <repository type="rpm-md" >
         <source path='obsrepositories:/'/>
     </repository>
@@ -589,6 +642,11 @@
     <packages type="image" profiles="Vagrant,Vagrant_x86_64,Vagrant_aarch64">
         <!-- vagrant-libvirt uses nfs for synced folders -->
         <package name="nfs-client"/>
+    </packages>
+    <packages type="image" profiles="SelfInstall">
+        <package name="dracut-kiwi-oem-repart"/>
+	<package name="dracut-kiwi-oem-dump"/>
+	<package name="kernel-firmware-all"/>	
     </packages>
     <packages type="bootstrap">
         <package name="udev"/>
