@@ -19,18 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-mitmproxy
-Version:        5.1.1
+Version:        5.2
 Release:        0
-Summary:        An interactive, SSL/TLS-capable intercepting proxy for HTTP/1, HTTP/2, and WebSockets
+Summary:        An interactive, SSL/TLS-capable intercepting proxy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://mitmproxy.org
 Source:         https://github.com/mitmproxy/mitmproxy/archive/v%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
 # upstream likes to pin dependencies too aggressively
 Patch0:         unpin.patch
+# PATCH-FIX-UPSTREAM replace-asynctest.patch gh#mitmproxy/mitmproxy#4020
+Patch1:         replace-asynctest.patch
 BuildRequires:  %{python_module Brotli >= 1.0}
-BuildRequires:  %{python_module Flask >= 1.1.1}
+BuildRequires:  %{python_module Flask >= 1.0}
+%if 0%{?suse_version} < 1550
+# Python 3.6 only
+BuildRequires:  %{python_module dataclasses >= 0.7}
+# Python < 3.8
 BuildRequires:  %{python_module asynctest >= 0.12.0}
+%endif
 BuildRequires:  %{python_module beautifulsoup4 >= 4.4.1}
 BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module certifi >= 2019.9.11}
@@ -51,6 +58,7 @@ BuildRequires:  %{python_module pyparsing >= 2.4.2}
 BuildRequires:  %{python_module pyperclip >= 1.6.0}
 BuildRequires:  %{python_module pytest >= 5.1.3}
 BuildRequires:  %{python_module pytest-asyncio >= 0.10.0}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module requests >= 2.9.1}
 BuildRequires:  %{python_module ruamel.yaml >= 0.16}
 BuildRequires:  %{python_module setuptools}
@@ -84,6 +92,10 @@ Requires:       python-tornado >= 4.3
 Requires:       python-urwid >= 2.1.0
 Requires:       python-wsproto >= 0.14
 Requires:       python-zstandard >= 0.11
+%if 0%{?python3_version_nodots} < 37
+# Python 3.6 only
+Requires:       python3-dataclasses >= 0.7
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-beautifulsoup4 >= 4.4.1
@@ -107,6 +119,12 @@ that creatively violate the standards.
 %prep
 %setup -q -n mitmproxy-%{version}
 %patch0 -p1
+%if 0%{?suse_version} >= 1550
+%patch1 -p1
+%endif
+#remove shebang
+sed -i '1 {\@^#!/usr/bin/env@ d}' mitmproxy/contrib/wbxml/*.py
+rm mitmproxy/contrib/kaitaistruct/make.sh
 
 %build
 %python_build
@@ -123,7 +141,8 @@ that creatively violate the standards.
 %check
 # test_refresh fails on i586... wrong timestamp type, maybe?
 # test_rollback and test_output[None-expected_out0-expected_err0] just randomly fail on i586
-%pytest -k "not (test_refresh or test_rollback or test_output)"
+# test_get_version fails to mock updated git version
+%pytest -k "not (test_refresh or test_rollback or test_output or test_get_version)"
 
 %post
 %python_install_alternative mitmdump
