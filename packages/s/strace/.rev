@@ -1128,4 +1128,27 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     * Fixed pathtrace matching of openat2 syscall. (forwarded request 810688 from AndreasSchwab)</comment>
     <requestid>810689</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>66b3c6b6ffd51cbf01a2811862e6be28</srcmd5>
+    <version>5.8</version>
+    <time>1597220336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.8
+  * Changes in behaviour
+    * Modified %process class to contain system calls associated with
+      process lifecycle (creation, exec, termination):
+      kill, tkill, tgkill, pidfd_send_signal and rt_sigqueueinfo are added,
+      arch_prctl and unshare are removed.
+  * Improvements
+    * Implemented decoding of faccessat2 syscall.
+    * Implemented decoding of LOOP_CONFIGURE ioctl command.
+    * Updated decoding of io_uring_setup syscall to match Linux 5.8.
+    * Updated lists of AUDIT_*, BPF_*, CAP_*, ETH_*, INET_DIAG_*, IORING_*,
+      KEYCTL_*, KVM_*, LOOP_*, NDA_*, RTC_*, TCA_*, STATX_*, and *_MAGIC
+      constants.
+    * Updated lists of ioctl commands from Linux 5.8.
+  * Bug fixes
+    * Added statx syscall to %fstat trace class. (forwarded request 824725 from AndreasSchwab)</comment>
+    <requestid>824726</requestid>
+  </revision>
 </revisionlist>

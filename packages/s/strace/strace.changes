@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug  6 18:25:37 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.8
+  * Changes in behaviour
+    * Modified %process class to contain system calls associated with
+      process lifecycle (creation, exec, termination):
+      kill, tkill, tgkill, pidfd_send_signal and rt_sigqueueinfo are added,
+      arch_prctl and unshare are removed.
+  * Improvements
+    * Implemented decoding of faccessat2 syscall.
+    * Implemented decoding of LOOP_CONFIGURE ioctl command.
+    * Updated decoding of io_uring_setup syscall to match Linux 5.8.
+    * Updated lists of AUDIT_*, BPF_*, CAP_*, ETH_*, INET_DIAG_*, IORING_*,
+      KEYCTL_*, KVM_*, LOOP_*, NDA_*, RTC_*, TCA_*, STATX_*, and *_MAGIC
+      constants.
+    * Updated lists of ioctl commands from Linux 5.8.
+  * Bug fixes
+    * Added statx syscall to %fstat trace class.
+
+-------------------------------------------------------------------
 Mon Jun  1 22:09:59 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 5.7
