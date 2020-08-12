@@ -443,4 +443,41 @@
     <comment></comment>
     <requestid>807550</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b9e69fc3ed1f6548f5abda85da6cca87</srcmd5>
+    <version>19.11.3</version>
+    <time>1597221338</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v19.11.3:
+    app/crypto-perf: fix display of sample test vector
+    app/eventdev: check Tx adapter service ID
+    app: fix usage help of options separated by dashes
+    app/pipeline: fix build with gcc 10
+    app: remove extra new line after link duplex
+    app/testpmd: add parsing for QinQ VLAN headers
+    app/testpmd: fix DCB set
+    app/testpmd: fix memory failure handling for i40e DDP
+    app/testpmd: fix PPPoE flow command
+    app/testpmd: fix statistics after reset
+    baseband/turbo_sw: fix exposed LLR decimals assumption
+    bbdev: fix doxygen comments
+    build: disable gcc 10 zero-length-bounds warning
+    build: fix linker warnings with clang on Windows
+    build: support MinGW-w64 with Meson
+    buildtools: get static mlx dependencies for meson
+    bus/fslmc: fix dereferencing null pointer
+    bus/fslmc: fix size of qman fq descriptor
+    bus/pci: fix devargs on probing again
+    bus/pci: fix UIO resource access from secondary process
+    bus/vmbus: fix comment spelling
+    ci: fix telemetry dependency in Travis
+    common/iavf: update copyright
+    common/mlx5: fix build with -fno-common
+    common/mlx5: fix build with rdma-core 21
+    common/mlx5: fix netlink buffer allocation from stack
+    common/mlx5: fix umem buffer alignment
+    common/octeontx: fix gcc 9.1 ABI break
+    common/qat: fix GEN3 marketing name</comment>
+    <requestid>825700</requestid>
+  </revision>
 </revisionlist>

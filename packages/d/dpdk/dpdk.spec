@@ -53,7 +53,7 @@
 # Add option to build without tools
 %bcond_without tools
 Name:           dpdk%{name_tag}
-Version:        19.11.1
+Version:        19.11.3
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -62,12 +62,6 @@ URL:            http://dpdk.org
 Source:         http://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Source1:        preamble
 Patch1:         0001-fix-cpu-compatibility.patch
-Patch2:         0001-vhost-check-log-mmap-offset-and-size-overflow.patch
-Patch3:         0002-vhost-fix-vring-index-check.patch
-Patch4:         0003-vhost-crypto-validate-keys-lengths.patch
-Patch5:         0004-vhost-fix-translated-address-not-checked.patch
-Patch6:         0005-vhost-fix-potential-memory-space-leak.patch
-Patch7:         0006-vhost-fix-potential-fd-leak.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libelf-devel
@@ -165,12 +159,6 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 # can't use %{name} because of dpdk-thunderx
 %setup -q -n dpdk-stable-%{version}
 %patch1 -p1 -z .init
-%patch2 -p1 -z .init
-%patch3 -p1 -z .init
-%patch4 -p1 -z .init
-%patch5 -p1 -z .init
-%patch6 -p1 -z .init
-%patch7 -p1 -z .init
 
 # This fixes CROSS compilation (broken) in the mk file for ThunderX
 sed -i '/^CROSS /s/^/#/'  mk/machine/thunderx/rte.vars.mk
@@ -179,6 +167,9 @@ sed -i '/^CROSS /s/^/#/'  mk/machine/thunderx/rte.vars.mk
 [ "$(cat ABI_VERSION)" = "%{maj}.%{min}" ] || exit 1
 
 %build
+
+cp mk/machine/armv8a/rte.vars.mk mk/machine/thunderx
+
 # set up a method for modifying the resulting .config file
 function setconf() {
 	if grep -q ^$1= $3/.config; then
