@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Mon Aug 10 09:06:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.1412, fixes the following problems
+- refreshed vim-7.4-highlight_fstab.patch
+  * CTRL-K in Insert mode gets <CursorHold> inserted. (Roland Puntaier)
+  * MS-Windows: regexp test may fail if 'iskeyword' set wrongly.
+  * Cannot use a lambda with quickfix functions.
+  * Vim9: type wrong after getting dict item in lambda.
+  * Vim9: list unpack doesn't work at the script level.
+  * CursorHold does not work well.a (Shane-XB-Qian)
+  * Empty group in 'tabline' may cause using an invalid pointer.
+  * There is no good test for CursorHold.
+  * Vim9: common type of function not tested.
+  * src/ex_cmds.c file is too big.
+  * Vim9: comperators use 'ignorecase' in Vim9 script.
+  * Terminal getwinpos() test is a bit flaky.
+  * Crash with EXITFREE when split() fails.
+  * Makefile preferences were accidentally included.
+  * Vim9: no error for using double quote comment after :func or :def.
+  * Language and locale code spread out.
+  * Vim9: not skipping over function type declaration with only a return type.
+  * Vim9: Error for Funcref function argument type.
+  * Vim9: type not checked if declaration also assigns value.
+  * Vim9: no error for missing white space in assignment at script level.
+  * Vim9: compiler warning for buffer size.
+  * Tests on Travis do not run with EXITFREE.
+  * Vim9: line break after "->" only allowed in :def function.
+  * Some tests on Travis have EXITFREE duplicated.
+  * Ex command error cannot contain an argument.
+  * The "trailing characters" error can be hard to understand.
+  * Vim9: crash when using CheckScriptFailure() in
+  Test_vim9script_call_fail_decl().
+  * Vim9: error for misplaced -> lacks argument.
+  * Vim9: skipping over type includes following white space, leading to an
+  error for missing white space.
+  * Vim9: argument types are not checked on assignment.
+  * Vim9: No error when using a type to a window variable
+  * Vim9: crash when using an imported function.
+  * Vim9: cannot use mark in range.
+  * Crash when using a custom completion function.
+  * Vim9: cannot replace a global function.
+  * Vim9: type of varargs items is not checked.
+  * AIDL filetype not recognized.
+  * Vim9: :execute mixes up () expression and function call.
+  * Vim9: error when using vim9script in TextYankPost.
+  * Tests 44 and 99 are old style.
+  * Some part of using 'smarcase' was not tested.
+  * When a test fails it's often not easy to see what the call stack is.
+  * Compiler warning for unused argument in small version.
+  * Compiler warning for using size_t for int and void pointer.
+  * Vim9: optional argument type not parsed properly.
+  * Vim9: varargs argument type not parsed properly.
+  * Vim9: varargs arg after optional arg does not work
+  * Calling popup_setoptions() resets 'signcolumn'.
+  * Debug backtrace isn't tested much.
+  * Some tests are still old style.
+  * Checking for first character of dict key is inconsistent.
+  * popup window width does not include number, fold of sign column width.
+  * Vim9: accidentally using "x" causes Vim to exit.
+  * Build failure with tiny version.
+  * Configure with Xcode 12 fails to check for tgetent.
+  * Test failures with legacy Vim script.
+  * Vim9 script: cannot assign to environment variable.
+  * Vim9: rule for comment after :function is confusing.
+  * Vim9: cannot declare some single letter variables.
+  * Vim9: method on double quoted string doesn't work.
+  * Vim9: invalid operators only rejected in :def function.
+  * Vim9: line break after "=" does not work.
+  * Vim9: using Vim9 script for autaload not tested.
+  * Vim9: skipping over white space after list.
+  * No space allowed before comma in list.
+  * Vim9: cannot define global function inside :def function.
+  * Vim9: :echo with two lists doesn't work.
+  * Vim9: memory leak when using nested global function.
+  * Vim9: memory leak when using nested global function.
+  * Github workflow timeout needs tuning
+  * CTRL-C in the GUI doesn't interrupt. (Sergey Vlasov)
+  * Build failure on non-Unix systems.
+  * Vim9: cannot use empty key in dict assignment.
+  * Vim9: assigning to script-local variable doesn't check type.
+  * Vim9: assigning to global dict variable doesn't work.
+  * Some tests fail on Cirrus CI and/or with FreeBSD.
+  * Build failures.
+  * Vim9: accidentally using "x" gives a confusing error.
+  * Vim9: cannot find global function when using g: when local function with
+  the same name exists.
+  * Vim9: No test for trying to redefine global function.
+  * Redraw error when using visual block and scroll.
+  * Small build fails.
+  * Cannot easily get the script ID.
+  * Build failure without the eval feature.
+  * Vim9: can define a function with the name of an import.
+  * Vim9: no test for error message when redefining function.
+  * Vim9: no proper error if using namespace for nested function.
+  * Vim9: no error for shadowing a script-local function by a nested function.
+  * Crash when drawing double-wide character in terminal window. (Masato
+  Nishihata)
+  * Vim9: no error using :let for options and registers.
+  * Vim9: cannot get the percent register.
+  * Vim9: cannot assign to / register.
+  * Vim9: test fails with +dnd is not available.
+  * Vim9: cannot assign to / register in Vim9 script.
+  * Stray error for white space after expression.
+  * Error for white space after expression in assignment.
+  * Last entry of ":set term=xxx" overwritten by error message when 'cmdheight'
+  is two or more. (Tony Mechelynck)
+  * Test trying to run terminal when it is not supported.
+  * Invalid memory access when searching for raw string.
+  * Vim9: no error for missing white space around operator.
+  * Test 49 is old style.
+  * Vim9: no error for missing white space around operator.
+  * Vim9: no error for assigning to non-existing script var.
+  * Vim9: error for assigning empty list to script variable.
+  * Vim9: method name with digit not accepted.
+  * Vim9: expression mapping causes error for using :import.
+  * Triggering the ATTENTION prompt causes typeahead to be messed up.
+  * Cannot put space between function name and paren.
+  * Curly braces expression ending in " }" does not work.
+  * Vim9: return type of getreg() is always a string.
+  * Vim9: using :import in filetype plugin gives an error.
+  * Test 49 is old style.
+  * No ATTENTION prompt for :vimgrep first match file.
+  * No testing on ARM.
+  * Backslash not removed afer space in option with space in 'isfname'.
+  * Vim9: cannot assign to single letter variable with type.
+  * Vim9: += only works for numbers.
+  * File missing from the distribution.
+  * Vim9: type error after storing an option value.
+  * Vim9: no error for shadowing a script function.
+  * Vim9: error line number incorrect after skipping over comment lines.
+  * Insufficient testing for script debugging.
+  * Vim9: compiling a function interferes with command modifiers.
+  * Vim9: no error if declaring a funcref with a lower case letter.
+  * Vim9: no error for unexpectedly returning a value.
+  * Vim9: return type of maparg() not adjusted for fourth argument.
+  * Autoload script sourced twice if sourced directly.
+  * Vim9: may find imported item in wrong script.
+  * Vim9: test does not delete written files.
+  * Cannot jump to the last used tabpage.
+  * s390x tests always fail.
+  * Vim9: Vim highlighting fails in cmdline window if it uses Vim9 commands.
+  * Vim9: script test fails in the GUI.
+  * Vim9: vim9compile.c is getting too big.
+  * Popupwindow lacks scrollbar if no "maxheight" is used.
+  * Vim9: type of list and dict only depends on first item.
+  * Vim9: type casting not supported.
+  * Nmpmrc and php.ini filetypes not recognized.
+  * Adding compiler plugin requires test change.
+  * when splitting a window localdir is copied but prevdir is not.
+  * Vim: not operator does not result in boolean.
+
+-------------------------------------------------------------------
 Mon Jul 20 11:26:57 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.1253, fixes the following problems
