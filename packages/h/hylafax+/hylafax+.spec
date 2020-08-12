@@ -19,7 +19,7 @@
 %global faxspool    %{_localstatedir}/spool/hylafax
 %define lib_version %(echo %{version} | tr \. _)
 Name:           hylafax+
-Version:        7.0.2
+Version:        7.0.3
 Release:        0
 Summary:        A fax server
 License:        BSD-3-Clause
@@ -191,46 +191,18 @@ rm -f %{buildroot}%{faxspool}/bin/{ps2fax.imp,ps2fax.dps}
 rm -f %{buildroot}%{faxspool}/COPYRIGHT
 
 %pre
-%service_add_pre hylafax-faxq.service 
-%service_add_pre hylafax-hfaxd.service 
-%service_add_pre hylafax-usage.service
-%service_add_pre hylafax-faxqclean.service
-%service_add_pre hylafax-usage.timer 
-%service_add_pre hylafax-faxqclean.timer
-%service_add_pre hylafax.target
-%service_add_pre hylafax-faxgetty@.service
+%service_add_pre hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service
 
 %post
 /sbin/ldconfig
-%service_add_post hylafax-faxq.service 
-%service_add_post hylafax-hfaxd.service 
-%service_add_post hylafax-usage.service 
-%service_add_post hylafax-faxqclean.service
-%service_add_post hylafax-usage.timer 
-%service_add_post hylafax-faxqclean.timer
-%service_add_post hylafax.target
-%service_add_post hylafax-faxgetty@.service
+%service_add_post hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service
 
 %preun
-%service_del_preun hylafax-faxq.service 
-%service_del_preun hylafax-hfaxd.service 
-%service_del_preun hylafax-usage.service
-%service_del_preun hylafax-faxqclean.service
-%service_del_preun hylafax-usage.timer 
-%service_del_preun hylafax-faxqclean.timer
-%service_del_preun hylafax.target
-%service_del_preun hylafax-faxgetty@.service
+%service_del_preun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service 
 
 %postun
 /sbin/ldconfig
-%service_del_postun hylafax-faxq.service 
-%service_del_postun hylafax-hfaxd.service 
-%service_del_postun hylafax-usage.service
-%service_del_postun hylafax-faxqclean.service
-%service_del_postun hylafax-usage.timer 
-%service_del_postun hylafax-faxqclean.timer
-%service_del_postun hylafax.target
-%service_del_postun hylafax-faxgetty@.service
+%service_del_postun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service
 
 %post -n libfaxutil%{lib_version} -p /sbin/ldconfig
 %postun -n libfaxutil%{lib_version} -p /sbin/ldconfig
