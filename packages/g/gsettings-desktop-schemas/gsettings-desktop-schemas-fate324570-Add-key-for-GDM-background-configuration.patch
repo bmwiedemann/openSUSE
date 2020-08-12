@@ -46,7 +46,7 @@ index 0000000..b38e699
 +      </description>
 +    </key>
 +    <key name="picture-uri" type="s">
-+      <default>'resource:///org/gnome/shell/theme/noise-texture.png'</default>
++      <default>''</default>
 +      <summary>Picture URI</summary>
 +      <description>
 +        URI to use for the background image. Note that the backend only supports
@@ -62,14 +62,14 @@ index 0000000..b38e699
 +      </description>
 +    </key>
 +    <key name="primary-color" type="s">
-+      <default>'#2e3436'</default>
++      <default>'#677378'</default>
 +      <summary>Primary Color</summary>
 +      <description>
 +        Left or Top color when drawing gradients, or the solid color.
 +      </description>
 +    </key>
 +    <key name="secondary-color" type="s">
-+      <default>'#2e3436'</default>
++      <default>'#677378'</default>
 +      <summary>Secondary Color</summary>
 +      <description>
 +        Right or Bottom color when drawing gradients, not used for solid color.

@@ -487,4 +487,15 @@
     <comment>- Call %meson_build in %build section, not %meson_install. (forwarded request 823563 from dimstar)</comment>
     <requestid>823595</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>40cbbb7df3c88d00c13f636eaa1aa1e6</srcmd5>
+    <version>3.36.1</version>
+    <time>1597222607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch: 
+  + Remove noise texture background
+  + Tweak the gdm grey color to be the same with 3.36 default behavior
+    (boo#1172826). (forwarded request 824818 from qkzhu)</comment>
+    <requestid>825300</requestid>
+  </revision>
 </revisionlist>
