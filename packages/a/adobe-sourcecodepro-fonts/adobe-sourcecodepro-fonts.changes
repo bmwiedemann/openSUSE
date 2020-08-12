@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  3 09:04:59 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Add GitHub source URL
+- Remove README.md because it isn't useful for users
+- Change deprecated /usr/share/appdata to /usr/share/metainfo
+- Use dos2unix to fix DOS/Windows encoding
+
+-------------------------------------------------------------------
 Tue May  7 13:27:27 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Remove TTF files because better OTF files have been installed
