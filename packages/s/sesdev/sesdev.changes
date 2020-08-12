@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 11 12:02:56 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.6.1+1597147109.g204bf79
+  + upstream 1.6.1 release (2020-08-11)
+    * ceph_salt_deployment: implement "--stop-before-ceph-orch-apply" (PR #415)
+    * settings: rename straggler version_os_repo_mappings (PR #419)
+    * setup.cfg: fix "options.package_data" file list (PR #424)
+      (fixes a packaging regression introduced in 1.6.0)
+    * sesdev: non-create, non-box functions in alphabetical order (PR #414)
+    * Unify naming of role-related constants (PR #416)
+    * CaaSP: remove hard dependency on loadbalancer (PR #422)
+
+-------------------------------------------------------------------
 Sun Jul 26 10:54:31 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.6.0+1595760860.gc353ea1
