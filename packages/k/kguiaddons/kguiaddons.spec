@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5GuiAddons5
-%define _tar_path 5.72
+%define _tar_path 5.73
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kguiaddons
-Version:        5.72.0
+Version:        5.73.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -95,6 +95,7 @@ of colors, fonts, text, images, keyboard input. Development files.
 %dir %{_kf5_plugindir}/kf5/kguiaddons/kmodifierkey
 %{_kf5_libdir}/libKF5GuiAddons.so.*
 %{_kf5_plugindir}/kf5/kguiaddons/kmodifierkey/kmodifierkey_xcb.so
+%{_kf5_debugdir}/kguiaddons.categories
 
 %files devel
 %{_kf5_includedir}/
