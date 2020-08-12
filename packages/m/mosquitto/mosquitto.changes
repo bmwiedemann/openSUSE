@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 11 16:05:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.11
+  Broker:
+  * Fix usage message only mentioning v3.1.1.
+  * Fix broker refusing to start if only websockets listeners
+    were defined.
+  * Change systemd unit files to create /var/log/mosquitto before
+    starting.
+  * Don't quit with an error if opening the log file isn't
+    possible.
+  * Fix bridge topic remapping when using "" as the topic.
+  * Fix messages being queued for disconnected bridges when clean
+    start was set to true.
+  * Fix `autosave_interval` not being triggered by messages being
+    delivered.
+  * Fix websockets clients sometimes not being disconnected
+    promptly.
+  * Fix "slow" file based logging by switching to line based
+    buffering.
+  * Log protocol error message where appropriate from a bad
+    UNSUBSCRIBE, rather than the generic "socket error".
+  * Don't try to start DLT logging if DLT unavailable, to avoid a
+    long delay when shutting down the broker.
+  * Fix potential memory leaks.
+  * Fix clients not receiving messages after a previous client
+    with the same client ID and positive will delay interval quit.
+  * Fix overly broad HAVE_PTHREAD_CANCEL compile guard.
+  Client library:
+  * Improved documentation around connect callback return codes.
+  * Fix `mosquitto_publish*()` no longer returning
+    `MOSQ_ERR_NO_CONN` when not connected.
+  * `mosquitto_loop_start()` now sets a thread name on Linux
+
+-------------------------------------------------------------------
 Sun Aug  2 18:14:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Lets always build with support for systemd and websockets and
