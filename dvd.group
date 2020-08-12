@@ -1989,7 +1989,7 @@
     <package name="libfam0-gamin" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfarstream-0_2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
-    <package name="libfaxutil7_0_2" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
+    <package name="libfaxutil7_0_3" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
     <package name="libfbclient2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfcitx-4_2_9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5364,6 +5364,7 @@
     <package name="audacity-plugins" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
