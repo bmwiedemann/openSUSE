@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Too many changes since 5.72.0, only listing bugfixes:
+  * [QtQuick dialog] use update icon that exists (kde#424892)
+  * Allow to delete updatable entries (kde#260836)
+  * Do not focus first element automatically (kde#417843)
+  * Fix display of Details and Uninstall button in Tiles view mode (kde#418034)
+  * Fix moving buttons when seach text is inserted (kde#406993)
+  * Fix details install dropdown in QWidgets dialog (kde#369561)
+  * Set entry to uninstalled if installation fails (kde#422864)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
