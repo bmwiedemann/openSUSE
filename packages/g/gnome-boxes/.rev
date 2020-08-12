@@ -586,4 +586,22 @@
   distributions are listed as recommended. (forwarded request 818038 from fcrozat)</comment>
     <requestid>818351</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>7edf12836c9afa9a173ca7fdb277d1f7</srcmd5>
+    <version>3.36.6</version>
+    <time>1597222610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.36.6:
+  + Restore support to download from URI in the VM creation
+    assistant
+  + Update recommended downloads for new OS releases
+  + Various improvements on the machine display management
+  + Account for offset of event_box child when relaying display
+    events
+  + Only downscale SPICE displays to prevent undersired upscaling
+  + Update gtk-frdp to include recent RDP authentication fixes
+  + Updated translations.
+- Rebase gnome-boxes-opensuse.patch. (forwarded request 825134 from iznogood)</comment>
+    <requestid>825303</requestid>
+  </revision>
 </revisionlist>
