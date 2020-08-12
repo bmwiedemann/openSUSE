@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 17:05:37 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(cluster) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.1
+
+-------------------------------------------------------------------
 Thu Jul 23 10:48:14 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - RPM Packaging: do not rely on libexecdir being expanded to
