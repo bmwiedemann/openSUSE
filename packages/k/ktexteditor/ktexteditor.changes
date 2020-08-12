@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Use KF-standardized Qt logging categories
+  * add icons to all buttons of file modified message (kde#423061)
+  * Revert changes in autotests. It seems that camelcase changes breaks them
+  * Use camelcase include. (scripted)
+  * Use the canonical docs.kde.org URLs
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
