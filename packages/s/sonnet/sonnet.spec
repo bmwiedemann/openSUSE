@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.72
+%define _tar_path 5.73
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           sonnet
-Version:        5.72.0
+Version:        5.73.0
 Release:        0
 Summary:        KDE spell checking library
 License:        LGPL-2.1-or-later
@@ -141,6 +141,7 @@ to the Sonnet spell checking framework.
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/sonnet
 %{_kf5_debugdir}/sonnet.categories
+%{_kf5_debugdir}/*.renamecategories
 %{_kf5_plugindir}/kf5/sonnet/sonnet_hunspell.so
 
 %files -n libKF5SonnetCore%{sonum}
