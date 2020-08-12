@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  7 19:56:36 UTC 2020 - aloisio@gmx.com
+
+- Update to version 7.0.3
+  * Worked around broken ``numeric_limits`` for 128-bit integers
+  * Added error reporting on missing named arguments
+  * Stopped using 128-bit integers with clang-cl
+  * Fixed issues in locale-specific integer formatting
+
+-------------------------------------------------------------------
 Wed Jul 29 17:33:10 UTC 2020 - aloisio@gmx.com
 
 - Update to version 7.0.2
