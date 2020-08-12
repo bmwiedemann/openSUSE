@@ -1,0 +1,2 @@
+addFilter (".* W: devel-dependency kernel-devel")
+addFilter (".* W: position-independent-executable-suggested /usr/lib/oci/hooks.d/oci-seccomp-bpf-hook")

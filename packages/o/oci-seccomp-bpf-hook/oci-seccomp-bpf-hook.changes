@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Aug 12 10:01:45 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to version 1.2.0:
+  * README: link to the enable sysadmin article
+  * Improve README.md and replace black/whitelist references
+  * Automatically add seccomp architecture from runtime.GOARCH
+  * Switch to seccomp/containers-golang instead of docker types
+- Make the kernel-devel a build-time only requirement
+
+-------------------------------------------------------------------
+Wed Aug 12 07:48:55 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Add package at version v1.1.2
