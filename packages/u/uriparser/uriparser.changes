@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:34:10 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to version 0.9.4
+  * Fixed: testrunner: No longer crashes when compiled with NDEBUG
+    (GitHub #67)
+  * Fixed: CMake: Support GTest 1.8.0 (GitHub #68)
+      Thanks to Ryan Schmidt for the related report!
+  * Fixed: CMake: Use variable GTEST_INCLUDE_DIRS (with plural "S")
+    rather than GTEST_INCLUDE_DIR (GitHub #79, #81)
+      Thanks to Wouter Beek for the related report!
+  * Improved: CMake: Send config summary to stdout, not stderr
+    (GitHub #72)
+      Thanks to Scott Donelan for the patch!
+  * Improved: Make -DURIPARSER_BUILD_TESTS=OFF unlock compilation
+    without a C++ compiler; thanks to Fabrice Fontaine for the
+    patch! (GitHub #69)
+  * Added: Functions to make UriUri[AW] instances independent of
+    the original URI string (GitHub #77 and #78)
+    New functions:
+      uriMakeOwner[AW]
+      uriMakeOwnerMm[AW]
+  * Added: CMake option URIPARSER_ENABLE_INSTALL to toggle
+    installation of files, defaults to "ON" (GitHub #74, #75)
+      Thanks to Scott Donelan for the patch!
+  * Soname: 1:26:0
+
+-------------------------------------------------------------------
 Mon Jul 22 18:58:11 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 0.9.3

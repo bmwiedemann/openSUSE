@@ -1,7 +1,7 @@
 #
 # spec file for package uriparser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,12 @@
 
 %define so_ver  1
 Name:           uriparser
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        A strictly RFC 3986 compliant URI parsing library
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://uriparser.github.io
+URL:            https://uriparser.github.io
 Source:         https://github.com/uriparser/uriparser/releases/download/uriparser-%{version}/uriparser-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  cmake
