@@ -31,6 +31,8 @@ Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
 # PATCH-FIX-UPSTREAM gnome-software-failed-offline-update-notification.patch bsc#1161095 glgo#GNOME/gnome-software!471 sckang@suse.com -- plugin-loader: handle offline update errors properly.
 Patch1:         gnome-software-failed-offline-update-notification.patch
+# PATCH-FIX-UPSTREAM gnome-software-add-missing-headers.patch bsc#1174849 erico.mendonca@suse.com -- Add missing devel header files.
+Patch2:         gnome-software-add-missing-headers.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
@@ -129,17 +131,7 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %dir %{_includedir}/%{name}
 %{_datadir}/gtk-doc/html/%{name}/
 %dir %{_datadir}/doc/gnome-software
-%{_includedir}/%{name}/gnome-software.h
-%{_includedir}/%{name}/gs-app-list.h
-%{_includedir}/%{name}/gs-app.h
-%{_includedir}/%{name}/gs-category.h
-%{_includedir}/%{name}/gs-metered.h
-%{_includedir}/%{name}/gs-os-release.h
-%{_includedir}/%{name}/gs-plugin-vfuncs.h
-%{_includedir}/%{name}/gs-plugin.h
-%{_includedir}/%{name}/gs-plugin-event.h
-%{_includedir}/%{name}/gs-plugin-types.h
-%{_includedir}/%{name}/gs-utils.h
+%{_includedir}/%{name}/*.h
 %{_libdir}/pkgconfig/gnome-software.pc
 
 %files lang -f %{name}.lang
