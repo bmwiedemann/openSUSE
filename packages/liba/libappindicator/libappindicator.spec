@@ -125,6 +125,8 @@ This package contains the development files for the appindicator%{?psuffix} libr
 %package -n libappindicator3-%{sover}
 Summary:        Application indicators library for GTK+3
 Group:          System/Libraries
+# Fedora and friends compatibility symbol
+Provides:       libappindicator-gtk3 = %{version}
 
 %description -n libappindicator3-%{sover}
 A library to allow applications to export a menu into the Unity Menu bar. Based
