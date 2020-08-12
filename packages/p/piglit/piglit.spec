@@ -61,6 +61,7 @@ Requires:       python3-Mako
 Requires:       python3-numpy
 Requires:       python3-six
 Requires:       python3-xml
+Recommends:     waffle
 ExcludeArch:    %{ix86} ppc
 %if %{with opengl}
 BuildRequires:  pkgconfig(gl)

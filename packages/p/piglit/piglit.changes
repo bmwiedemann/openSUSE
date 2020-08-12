@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 07:28:43 UTC 2020 - Jozef Pupava <jpupava@suse.com>
+
+- update suse_qa-skip-tests.txt bsc#1174531, cleanup obsolete entries
+- add Recommends: waffle to fix wfinfo utility not found
+
+-------------------------------------------------------------------
 Tue Jul 21 22:49:51 UTC 2020 - Jozef Pupava <jpupava@suse.com>
 
 - Update to version 1~20200721.5db8d7472:
