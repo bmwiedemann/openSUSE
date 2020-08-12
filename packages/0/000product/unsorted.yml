@@ -53,6 +53,7 @@ unsorted:
   - Fragments 
   - Fragments-lang 
   - FreeCAD: [x86_64] 
+  - FreeFileSync 
   - GraphicsMagick 
   - GraphicsMagick-devel 
   - HSAIL-Tools 
@@ -232,6 +233,7 @@ unsorted:
   - R-tools 
   - R-utils 
   - RBTools 
+  - RealtimeSync 
   - Regina-REXX 
   - Regina-REXX-devel 
   - Regina-REXX-doc 
@@ -1372,6 +1374,10 @@ unsorted:
   - budgie-desktop-devel 
   - budgie-desktop-doc 
   - budgie-desktop-lang 
+  - budgie-haste-applet 
+  - budgie-haste-applet-lang 
+  - budgie-screenshot-applet 
+  - budgie-screenshot-applet-lang 
   - buffer 
   - bugzilla 
   - bugzilla-lang-de 
@@ -2602,7 +2608,6 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
-  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -6167,7 +6172,6 @@ unsorted:
   - igerman98-doc 
   - ignition 
   - ignition-config-transpiler 
-  - ignition-dracut 
   - ignition-dracut-grub2 
   - iio-sensor-proxy-doc 
   - ikiwiki 
@@ -6964,8 +6968,6 @@ unsorted:
   - kbibtex 
   - kbibtex-devel 
   - kbibtex-lang 
-  - kblog-devel 
-  - kblog-lang 
   - kbookmarks-devel 
   - kbookmarks-devel-32bit: [x86_64] 
   - kbuild 
@@ -7877,7 +7879,6 @@ unsorted:
   - libKF5AuthCore5-32bit: [x86_64] 
   - libKF5Baloo5-32bit: [x86_64] 
   - libKF5BalooEngine5-32bit: [x86_64] 
-  - libKF5Blog5 
   - libKF5Bookmarks5-32bit: [x86_64] 
   - libKF5CalendarEvents5-32bit: [x86_64] 
   - libKF5CddbWidgets5 
@@ -8242,7 +8243,7 @@ unsorted:
   - libSDL_Pango1 
   - libSDL_Pango1-32bit: [x86_64] 
   - libSDL_bgi-devel 
-  - libSDL_bgi-suse3 
+  - libSDL_bgi-suse4 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
@@ -12941,7 +12942,7 @@ unsorted:
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
-  - libvapoursynth-50 
+  - libvapoursynth-51 
   - libvapoursynth-script0 
   - libvarnishapi2 
   - libvbr2 
@@ -13866,6 +13867,7 @@ unsorted:
   - lua54 
   - lua54-alt-getopt 
   - lua54-argparse 
+  - lua54-busted 
   - lua54-cliargs 
   - lua54-compat-5.3 
   - lua54-copas 
@@ -13873,6 +13875,7 @@ unsorted:
   - lua54-devel 
   - lua54-dkjson 
   - lua54-doc 
+  - lua54-editorconfig-core-lua 
   - lua54-ldbus 
   - lua54-ldoc 
   - lua54-lgi 
@@ -13881,6 +13884,8 @@ unsorted:
   - lua54-lpeg 
   - lua54-lpeg-doc 
   - lua54-lua-dbus 
+  - lua54-lua-ev 
+  - lua54-lua-ev-devel 
   - lua54-lua-mpris 
   - lua54-luadbi 
   - lua54-luaevent 
@@ -16075,6 +16080,7 @@ unsorted:
   - ocfs2-tools-devel-static 
   - ocfs2-tools-o2cb 
   - oci-cli 
+  - oci-seccomp-bpf-hook: [x86_64] 
   - ocl-icd-devel 
   - ocl-icd-devel-32bit: [x86_64] 
   - ocli 
@@ -19281,6 +19287,7 @@ unsorted:
   - python3-APScheduler 
   - python3-AnyQt 
   - python3-Arpeggio 
+  - python3-Authlib 
   - python3-BTrees 
   - python3-BTrees-devel 
   - python3-BitVector 
@@ -20486,6 +20493,7 @@ unsorted:
   - python3-hdf5storage 
   - python3-heatclient 
   - python3-helpdev 
+  - python3-hepunits 
   - python3-hetzner 
   - python3-hetznercloud 
   - python3-hexdump 
@@ -20814,6 +20822,7 @@ unsorted:
   - python3-magic-wormhole 
   - python3-magic-wormhole-mailbox-server 
   - python3-magic-wormhole-transit-relay 
+  - python3-magicalimport 
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
   - python3-mailman-web 
@@ -21544,6 +21553,7 @@ unsorted:
   - python3-python-openid-cla 
   - python3-python-openid-teams 
   - python3-python-pam 
+  - python3-python-prctl: [x86_64] 
   - python3-python-pseudorandom 
   - python3-python-ptrace 
   - python3-python-qdatamatrix 
@@ -25286,6 +25296,7 @@ unsorted:
   - sssd-ad 
   - sssd-dbus 
   - sssd-ipa 
+  - sssd-kcm 
   - sssd-krb5 
   - sssd-proxy 
   - sssd-tools 
@@ -34337,6 +34348,7 @@ unsorted:
   - vodovod 
   - voikkospell 
   - vokoscreenNG 
+  - volatility3 
   - volk 
   - volk-devel 
   - volk_modtool 
