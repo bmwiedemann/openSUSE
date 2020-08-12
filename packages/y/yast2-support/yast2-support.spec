@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-support
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           yast2-support
 Summary:        YaST2 - Support Inquiries
 License:        GPL-2.0-only
 Group:          System/YaST
-Version:        4.2.3
+Version:        4.3.0
 Release:        0
 Url:            https://github.com/yast/yast-support
 
@@ -36,6 +36,8 @@ BuildArch:      noarch
 # Yast::CoreExt::AnsiString
 Requires:       yast2
 Requires:       yast2-ruby-bindings >= 3.1.36
+
+Supplements:    autoyast(support)
 
 %description
 This module allows you to collect system information for installation
