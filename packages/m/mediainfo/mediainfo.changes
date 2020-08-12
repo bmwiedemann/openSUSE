@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 11 12:00:57 UTC 2020 - aloisio@gmx.com
+
+- Update to version 20.08
+  Added:
+  * MPEG-H 3D Audio full featured support (group presets, switch
+    groups, groups, signal groups)
+  * MP4/MOV: support of more metadata locations
+  * JSON and XML outputs: authorize "complete" output
+  * MPEG-4: support of TrueHD
+  * WM: show legacy value of performer if not same as modern one
+  * WAV: trace of adtl (Associated Data List) chunk
+  Fixed:
+  * URL encoding detection fix for URL having a query part
+    (issue with e.g. pre-signed AWS S3 URLs)
+  * Don't try to seek to the end (false positive range related
+    error with HTTP)
+  * DPX: don't load the whole file in RAM
+  * Opus: fix wrong channel mapping
+  * Miscellaneous other bug fixes
+
+-------------------------------------------------------------------
 Fri Apr  3 18:18:50 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 20.03
