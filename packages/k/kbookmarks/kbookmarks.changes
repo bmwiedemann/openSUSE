@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:13:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Add license texts according to REUSE specification
+  * Converte license statements to SPDX expressions
+  * Use KF-standardized Qt logging categories
+  * Use camelcase include. (scripted)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:55:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.72.0
