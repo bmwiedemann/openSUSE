@@ -1,0 +1,79 @@
+diff -ruN FreeFileSync_11.0_Source_orig/FreeFileSync/Source/Makefile FreeFileSync_11.0_Source/FreeFileSync/Source/Makefile
+--- FreeFileSync_11.0_Source_orig/FreeFileSync/Source/Makefile	2020-07-22 13:22:18.000000000 +0200
++++ FreeFileSync_11.0_Source/FreeFileSync/Source/Makefile	2020-08-05 12:22:18.001794429 +0200
+@@ -2,9 +2,9 @@
+ 
+ cxxFlags = -std=c++2a -pipe -DWXINTL_NO_GETTEXT_MACRO -I../.. -I../../zenXml -include "zen/i18n.h" -include "zen/warn_static.h" \
+            -Wall -Wfatal-errors -Wmissing-include-dirs -Wswitch-enum -Wcast-align -Wshadow -Wnon-virtual-dtor \
+-           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
++           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread -fpie
+ 
+-linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
++linkFlags = -s `wx-config --libs std, aui --debug=no` -pthread -lz -pie
+ 
+ 
+ cxxFlags  += `pkg-config --cflags openssl`
+@@ -17,6 +17,7 @@
+ linkFlags += `pkg-config --libs   libssh2`
+ 
+ cxxFlags  += `pkg-config --cflags gtk+-2.0`
++linkFlags += `pkg-config --libs   gtk+-2.0`
+ #treat as system headers so that warnings are hidden:
+ cxxFlags  += -isystem/usr/include/gtk-2.0
+ 
+diff -ruN FreeFileSync_11.0_Source_orig/FreeFileSync/Source/RealTimeSync/Makefile FreeFileSync_11.0_Source/FreeFileSync/Source/RealTimeSync/Makefile
+--- FreeFileSync_11.0_Source_orig/FreeFileSync/Source/RealTimeSync/Makefile	2020-07-22 13:22:18.000000000 +0200
++++ FreeFileSync_11.0_Source/FreeFileSync/Source/RealTimeSync/Makefile	2020-08-05 12:22:00.473864076 +0200
+@@ -2,12 +2,13 @@
+ 
+ cxxFlags = -std=c++2a -pipe -DWXINTL_NO_GETTEXT_MACRO -I../../.. -I../../../zenXml -include "zen/i18n.h" -include "zen/warn_static.h" \
+            -Wall -Wfatal-errors -Wmissing-include-dirs -Wswitch-enum -Wcast-align -Wshadow -Wnon-virtual-dtor \
+-           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
++           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread -fpie
+ 
+-linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
++linkFlags = -s `wx-config --libs std, aui --debug=no` -pthread -lz -pie
+ 
+ #Gtk - support "no button border"
+ cxxFlags  += `pkg-config --cflags gtk+-2.0`
++linkFlags += `pkg-config --libs   gtk+-2.0`
+ #treat as system headers so that warnings are hidden:
+ cxxFlags  += -isystem/usr/include/gtk-2.0
+ 
+diff -ruN FreeFileSync_11.0_Source_orig/libssh2/libssh2_wrap.h FreeFileSync_11.0_Source/libssh2/libssh2_wrap.h
+--- FreeFileSync_11.0_Source_orig/libssh2/libssh2_wrap.h	2020-07-22 13:22:20.000000000 +0200
++++ FreeFileSync_11.0_Source/libssh2/libssh2_wrap.h	2020-08-04 11:35:17.919354168 +0200
+@@ -20,6 +20,22 @@
+     #error libssh2_sftp.h header guard changed
+ #endif
+ 
++// fix some build errors
++/* MAX_SFTP_READ_SIZE is how much data is asked for at max in each FXP_READ
++ * packets.
++ */
++#ifndef MAX_SFTP_READ_SIZE
++#define MAX_SFTP_READ_SIZE 30000
++#endif
++
++/*
++ * MAX_SFTP_OUTGOING_SIZE MUST not be larger than 32500 or so. This is the
++ * amount of data sent in each FXP_WRITE packet
++ */
++#ifndef MAX_SFTP_OUTGOING_SIZE
++#define MAX_SFTP_OUTGOING_SIZE 30000
++#endif
++
+ //fix libssh2 64-bit warning mess: https://github.com/libssh2/libssh2/pull/96
+ #undef libssh2_userauth_password
+ inline int libssh2_userauth_password(LIBSSH2_SESSION* session, const std::string& username, const std::string& password)
+diff -ruN FreeFileSync_11.0_Source_orig/zen/ring_buffer.h FreeFileSync_11.0_Source/zen/ring_buffer.h
+--- FreeFileSync_11.0_Source_orig/zen/ring_buffer.h	2020-07-22 13:22:20.000000000 +0200
++++ FreeFileSync_11.0_Source/zen/ring_buffer.h	2020-08-04 11:35:36.075289535 +0200
+@@ -8,6 +8,7 @@
+ #define RING_BUFFER_H_01238467085684139453534
+ 
+ #include <cassert>
++#include <cstddef>
+ #include "scope_guard.h"
+ 
+ 

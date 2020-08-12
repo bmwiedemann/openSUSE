@@ -1,0 +1,12 @@
+--- FreeFileSync_11.0_Source_orig/FreeFileSync/Source/ffs_paths.cpp	2020-07-22 13:22:20.000000000 +0200
++++ FreeFileSync_11.0_Source/FreeFileSync/Source/ffs_paths.cpp	2020-08-04 15:21:24.667813874 +0200
+@@ -64,7 +64,8 @@
+ 
+ Zstring fff::getResourceDirPf()
+ {
+-    return getProcessParentFolderPath() + FILE_NAME_SEPARATOR + Zstr("Resources") + FILE_NAME_SEPARATOR;
++    // for opensuse install to /usr/share/FreeFileSync specificly
++    return Zstr("/usr/share/FreeFileSync/");
+ }
+ 
+ 
