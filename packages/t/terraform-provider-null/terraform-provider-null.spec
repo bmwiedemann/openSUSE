@@ -12,40 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Make sure that the binary is not getting stripped.
-%if 0%{?suse_version}
-%{go_nostrip}
-%endif
 
 Name:           terraform-provider-null
 Version:        2.1.2
 Release:        0
-License:        MPL-2.0
 Summary:        Terraform null-provider
-Url:            https://github.com/terraform-providers/terraform-provider-null
+License:        MPL-2.0
 Group:          System/Management
+URL:            https://github.com/terraform-providers/terraform-provider-null
 Source:         %{name}-%{version}.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version}
+%{go_nostrip}
+%endif
 %if 0%{?ubuntu_version}
 BuildRequires:  debhelper
 BuildRequires:  dh-golang
-BuildRequires:  xz-utils
 BuildRequires:  golang-go
-BuildRequires:  pkg-config
 BuildRequires:  libvirt-dev
+BuildRequires:  pkgconfig
+BuildRequires:  xz-utils
 %else
+Requires:       terraform >= 0.12.0
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  golang
 %endif
 %if 0%{?suse_version}
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.12
 %endif
-Requires:       terraform >= 0.12.0
 %endif
 %if 0%{?suse_version}
 %{go_provides}
@@ -55,19 +53,18 @@ Requires:       terraform >= 0.12.0
 This is a terraform provider that lets you use null files
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
-%goprep github.com/terraform-providers/%{name}
-%gobuild -mod=vendor ""
+%{goprep} github.com/terraform-providers/%{name}
+%{gobuild} -mod=vendor ""
 ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
 %install
-%goinstall
+%{goinstall}
 rm -rf %{buildroot}/%{_libdir}/go/contrib
 
 %files
-%defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{_bindir}/%{name}
