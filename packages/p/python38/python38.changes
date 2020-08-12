@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jul 20 17:46:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 3.8.5:
+  - bpo-39603: Prevent http header injection by rejecting control
+    characters in http.client.putrequest(…).
+  - bpo-41295: Resolve a regression in CPython 3.8.4 where defining
+    “__setattr__” in a multi-inheritance setup and calling up the
+    hierarchy chain could fail if builtins/extension types were
+    involved in the base types.
+  - bpo-41288: Unpickling invalid NEWOBJ_EX opcode with the
+    C implementation raises now UnpicklingError instead of
+    crashing.
+  - bpo-39017: Avoid infinite loop when reading specially crafted
+    TAR files using the tarfile module (CVE-2019-20907, bsc#1174091).
+  - bpo-37703: Updated Documentation to comprehensively elaborate
+    on the behaviour of gather.cancel()
+  - bpo-41302: Enable building Python 3.8 with libmpdec-2.5.0 to
+    ease maintenance for Linux distributions. Patch by Felix Yan.
+  - bpo-41300: Save files with non-ascii chars. Fix regression
+    released in 3.9.0b4 and 3.8.4.
+
+-------------------------------------------------------------------
+Fri Jul 17 06:39:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Few minor fixes for the non-primary-interpreter option found
+  in py3.9
+
+-------------------------------------------------------------------
 Wed Jul 15 10:05:28 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Minor spec file fixes

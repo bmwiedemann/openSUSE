@@ -87,7 +87,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.8.4
+Version:        3.8.5
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -653,7 +653,7 @@ ln -sf python%{python_version} %{buildroot}%{_bindir}/python3
 %if !%{primary_interpreter}
 # base
 rm %{buildroot}%{_bindir}/python3
-rm %{buildroot}%{_bindir}/pydocs3
+rm %{buildroot}%{_bindir}/pydoc3
 rm %{buildroot}%{_mandir}/man1/python3.1
 # devel
 rm %{buildroot}%{_bindir}/python3-config
@@ -669,7 +669,7 @@ rm %{buildroot}%{_bindir}/idle3*
 
 # delete the generic 2to3 binary if we are not primary
 %if !%{primary_interpreter}
-rm %{buildroot}%{_bindir}2to3
+rm %{buildroot}%{_bindir}/2to3
 %endif
 
 # replace duplicate .pyo/.pyc with hardlinks
@@ -960,8 +960,10 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{sitedir}/_import_failed
 %{sitedir}/site-packages/zzzz-import-failed-hooks.pth
 # symlinks
+%if %{primary_interpreter}
 %{_bindir}/python3
 %{_bindir}/pydoc3
+%endif
 # executables
 %attr(755, root, root) %{_bindir}/pydoc%{python_version}
 # %%attr(755, root, root) %%{_bindir}/python%%{python_abi}
