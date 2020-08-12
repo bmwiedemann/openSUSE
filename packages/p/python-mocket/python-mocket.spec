@@ -17,12 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-mocket
-Version:        3.8.6
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-mocket%{psuffix}
+Version:        3.8.7
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mindflayer/python-mocket
 Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +45,7 @@ Suggests:       python-redis
 Suggests:       python-requests
 Suggests:       python-xxhash
 BuildArch:      noarch
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module decorator}
@@ -57,7 +64,7 @@ BuildRequires:  %{python_module xxhash}
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  python3-aiohttp
 BuildRequires:  python3-async_timeout
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -66,35 +73,37 @@ included, with gevent/asyncio/SSL support.
 
 %prep
 %setup -q -n mocket-%{version}
-rm -f setup.cfg pytest.ini tox.ini
-sed -i '/pipenv/d' setup.py
+sed -i '/cov/ d' setup.cfg
+sed -i '/pipenv/ d' setup.py
 sed -i 's/==/>=/' requirements.txt
-touch conftest.py
 
 %build
+%if !%{with test}
 export LANG=en_US.UTF-8
 %python_build
+%endif
 
 %install
+%if !%{with test}
 export LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export LANG=en_US.UTF-8
-export PYTHONPATH=${PWD}
 export SKIP_TRUE_HTTP=1
-%{python_expand  #
-if [ $python = python2 ]; then
-  $python -m pytest tests/main mocket -vv -k 'not RedisTestCase'
-else
-  $python -m pytest tests/main mocket tests/tests35/ -vv -k 'not RedisTestCase'
-fi
-}
+%define pytest_ignore_python2 --ignore tests/tests35 --ignore tests/tests38
+%pytest -k 'not RedisTestCase' %{?pytest_ignore%{$python_version}}
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mocket
+%{python_sitelib}/mocket-%{version}-py*.egg-info
+%endif
 
 %changelog

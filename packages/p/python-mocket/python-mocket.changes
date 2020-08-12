@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 11 07:17:16 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 3.8.7
+  * This version ships the change to support the libmagic wrapper
+    distributed with file's command.
+
+------------------------------------------------------------------- 
+Tue Aug 11 07:08:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild as we create cycle with python-pook otherwise
+
+-------------------------------------------------------------------
 Sat Aug  8 13:00:29 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Change requirements version specifier from == to >=.
