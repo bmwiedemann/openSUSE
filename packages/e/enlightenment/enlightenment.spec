@@ -24,7 +24,7 @@
 # Fix this later
 %define build_doc 0
 Name:           enlightenment
-Version:        0.24.0
+Version:        0.24.2
 Release:        0
 Summary:        The window manager
 License:        BSD-2-Clause
@@ -106,6 +106,7 @@ Provides:       e17 > 0.17.4
 %if 0%{?suse_version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Requires(post): permissions
 %endif
 %{?systemd_requires}
 %if %{enable_wayland}
@@ -223,6 +224,7 @@ FAKE_DOCDATETIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%a %%b %
 sed -i "s/\$datetime/$FAKE_DOCDATETIME/g;s/\$date/$FAKE_DOCDATE/g;s/\$year/$FAKEDOCYEAR/g" doc/*.html
 
 export CFLAGS="%{optflags}%{?mageia: -g}"
+
 %meson \
 %if %{enable_wayland}
     -Dwl=true \
@@ -313,10 +315,11 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 if [ ! -f %{_datadir}/xsessions/enlightenment.desktop ] ; then
   %{_sbindir}/update-alternatives  --remove default-xsession.desktop %{_datadir}/xsessions/enlightenment.desktop
 fi
-%endif
 
 %verifyscript
 %verify_permissions -e %{_libdir}/enlightenment/utils/enlightenment_system
+
+%endif
 
 %files -f enlightenment.lang
 %defattr(-,root,root)
@@ -336,6 +339,7 @@ fi
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*
 %{_libdir}/enlightenment
+%verify(not user group mode) %attr(4755,root,root) %{_libdir}/enlightenment/utils/enlightenment_system
 %config(noreplace) %{_sysconfdir}/enlightenment
 %config(noreplace) %{_sysconfdir}/pam.d/enlightenment
 %dir %{_sysconfdir}/xdg/menus

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Aug  6 01:09:06 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+
+- 0.24.2
+  * Fixed null exec command running
+  * Fixed handling of screen with no edid
+  * Fixed signal.h, execinfo.h include for some libc's
+  * Sped up pager thumb loading significant;y
+  * Handle zone changes during startup
+  * Longer efreetd timeout for update event
+  * Fixed e's xsettings support on 64bit to use the right types
+  * Fixed preloading of icon
+  * Fixed e's wl backlight/dimming logic to be correct and reliable
+  * Fixed noisy logging on invalid exec handle found
+  * Fixed shot blurriness if size didn't quite match
+  * Fixed battery on openbsd to use right constants
+  * Fixed cpu freq setting on freebsd etc.
+  * Handle error exits from dependency libs as an error and bring up alert
+  * E system - isolate stdio so it doesn't affect ipc on stdin/out
+  * Polkit & Askpass password - handle escaping right
+  * Fix tiling issue with float/unfloat
+  * Fixed shell autohide when clock data up
+  * Handle x io error with proper exit code and exit
+- 0.24.1
+  * Optimized keymap response handling to not stall on startup
+  * Fixed wayland frame request timestamp to be the 0 base same as others
+  * Fix polkit auth handling when having to auth for non-user UID
+  * Randr fix to move pointer on-screen if off screen after reconfigure
+  * Fix non-systemd system suport for resume to not think it's suspended
+  * Add delay to allow any pending frames to display before suspend
+- Add fix-opensuse-pam-search-path.patch because pam is in /usr/include/security
+
+-------------------------------------------------------------------
 Fri Jul  3 22:51:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix name for dlopen'ed libddcutil2 runtime dependency
