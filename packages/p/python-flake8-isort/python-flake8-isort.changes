@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 11 08:16:08 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 4.0.0
+  * support isort >= 5 [bnavigator, pkolbus]
+
+-------------------------------------------------------------------
+Mon Jul 13 16:53:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 3.0.1
+  * Work around FailedToLoadPlugin exception by requiring isort 4.x. 
+    Likewise, pin the major version of all dependencies, to reduce 
+    risk of any future incompatibilities. [pkolbus] 
+- Update to version 3.0.0
+  * Let isort search the configuration, rather than flake8-isort
+    try to find it. [jnns]  
+
+-------------------------------------------------------------------
 Sat Apr 11 07:07:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, used by spec-cleaner

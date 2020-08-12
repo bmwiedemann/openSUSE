@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-isort
-Version:        2.9.1
+Version:        4.0.0
 Release:        0
 Summary:        Plugin integrating isort in flake8
 License:        GPL-2.0-only
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module isort >= 4.3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testfixtures}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-flake8 >= 3.2.1
@@ -52,12 +53,13 @@ Use `isort`_ to check if the imports on your python files are sorted the way you
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# the three skipped tests need to have the extension registered in the flake8 -> same sitelib
-%pytest run_tests.py -k 'not (test_config_file or test_default_option or test_isort_uses_pyproject)'
+%pytest 
 
 %files %{python_files}
 %doc README.rst CHANGES.rst
 %license LICENSE*
-%{python_sitelib}/*
+%{python_sitelib}/flake8_isort.py*
+%pycache_only %{python_sitelib}/__pycache__/flake8_isort*
+%{python_sitelib}/flake8_isort-%{version}-py*.egg-info
 
 %changelog
