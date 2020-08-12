@@ -287,7 +287,7 @@ BuildRequires:  arm-trusted-firmware-sun50ih6
 %if %{with uboot_atf}
 %if "%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock960-rk3399" || "${name}" == "u-boot-rock-pi-4-rk3399"
 # make_fit_atf.py
-BuildRequires:  python-pyelftools
+BuildRequires:  python3-pyelftools
 %endif
 %endif
 %if "%{name}" == "u-boot-qemu-ppce500"

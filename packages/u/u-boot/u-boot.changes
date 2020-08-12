@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug  9 19:41:12 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Use python3 for pyelftools
+
+-------------------------------------------------------------------
 Tue Jun  2 06:54:36 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - Fix RAM discovery for 8GB devices (bsc#1172371)
