@@ -883,4 +883,12 @@
     <comment>New stable release (forwarded request 818724 from iznogood)</comment>
     <requestid>819940</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>0f67fcdf025c070580f2b8e2bcc4a544</srcmd5>
+    <version>3.36.5</version>
+    <time>1597222618</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 825146 from iznogood)</comment>
+    <requestid>825306</requestid>
+  </revision>
 </revisionlist>
