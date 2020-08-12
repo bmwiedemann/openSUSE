@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Jul 30 14:52:34 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.4.5:
+  * Add XB_QUERY_FLAG_FORCE_NODE_CACHE
+  * Add support for a delayed activation flow for Thunderbolt
+  * Allow firmware to require specific features from front-end clients
+  * Allow multi-byte FuUdevDevice preads and writes
+  * Be more defensive when remotes are missing required keys
+  * Disable the SQLite lookaside cache
+  * ccgx: Add more hybrid dock support
+  * ccgx: Modify readme to remove customer info
+  * ccgx: add new protocol for dmc dock
+  * ccgx: remove verify flag in plugin
+  * modem-manager: read the vendor ID directly from sysfs attribute Fixes: #2209
+  * thelio-io: Add the DFU instance ID as a counterpart only
+  * thunderbolt: Add a new subclassed thunderbolt firmware update type
+  * thunderbolt: Allow quirks to skip the authentication step
+  * thunderbolt: drop support for force power
+  * tpm-eventlog: fix PCR0 calculation
+  * uefi: check for free space after cleaning up ESP
+  * vli: Add dual-image feature for VL103 backup firmware
+  * vli: Add the project ID shared SPI PD controllers
+  * vli: Allow chained usb hub devices where the parent needs GPIOB reset
+  * vli: Do not modify the class vfuncs depending on device type
+  * vli: Do not use GUID matching for the MSP device
+  * vli: Rename FuVliUsbhubI2cDevice to FuVliUsbhubMsp430Device
+  * vli: Set FuQuirks on the shared SPI object
+  * vli: Set the i2c instance IDs in probe()
+  * vli: Use the GPIOB reset for the MiniDock VL103
+  * vli: Wait for the root device to be replugged when updating the MSP430
+
+-------------------------------------------------------------------
+Thu Jul 30 14:52:20 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.4.4:
+  * Release fwupd 1.4.4
+  * Fix regression when checking for downgraded metadata
+
+-------------------------------------------------------------------
+Thu Jul 30 14:52:05 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.4.3:
+  * Release fwupd 1.4.3
+  * ata: A OUI quirk for Kingston
+  * ccgx: Fix a potential division by zero
+  * Check the device requirements when returning from GetDetails
+  * fu-engine: Allow --plugin-whitelist to use dashes instead of
+    underscores
+  * Always enforce the metadata signature has a valid timestamp
+  * ccgx: modify install duration for dmc device
+  * ccgx: Add support for HP DMC dock devices
+  * dell-dock: prevent updates to occur via synaptics-mst plugin
+  * dell-dock: Capture the dock SKU in metadata
+  * synaptics-prometheus: Force the minor version from 0x02 to 0x01
+    to make sure the devices can be updated back to 0x01.
+  * Generate a body for github releases (Fixes: #2034)
+
+-------------------------------------------------------------------
+Fri Jul 24 06:52:18 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Build the package separately for openSUSE and SLE using
+  _multibuild (jsc#SLE-11744).
+
+-------------------------------------------------------------------
 Wed Jun 03 15:32:46 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 1.4.2:

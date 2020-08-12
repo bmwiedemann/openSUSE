@@ -17,18 +17,37 @@
 # needssslcertforbuild
 
 
+%define flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == ""
+ExclusiveArch:  %{nil}
+%else
+%define branding_name %{flavor}
+%if "%{flavor}" == "SLE"
+%define build_SLE 1
+%else
+%define build_openSUSE 1
+%endif
+%endif
+
+%if (0%{?build_SLE} && 0%{?is_opensuse}) || (0%{?build_openSUSE} && ! 0%{?is_opensuse})
+# Don't build SLE branding on openSUSE and vice-versa
+ExclusiveArch:  %{nil}
+%endif
+
 %ifarch %{ix86} x86_64 aarch64
 %bcond_without efi_fw_update
 %else
 %bcond_with efi_fw_update
 %endif
-%if 0%{?is_opensuse}
+%if 0%{?build_openSUSE}
 %global efidir opensuse
 %else
 %global efidir sles
 %endif
+
 Name:           fwupd
-Version:        1.4.2
+Version:        1.4.5
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -76,7 +95,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk-doc) >= 1.14
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(gusb) >= 0.2.9
-BuildRequires:  pkgconfig(jcat) >= 0.1.0
+BuildRequires:  pkgconfig(jcat) >= 0.1.3
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.1.1
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libelf)
