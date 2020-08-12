@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug  9 19:08:11 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.14.5
+  * Fix an error leak in compositor (gxo#xfce/xfwm4#351)
+  * Fix compositor selection atom misuse
+
+-------------------------------------------------------------------
 Sat Aug  1 14:48:08 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.14.4
