@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Runner5
-%define _tar_path 5.72
+%define _tar_path 5.73
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           krunner
-Version:        5.72.0
+Version:        5.73.0
 Release:        0
 Summary:        KDE Framework for providing different actions given a string query
 License:        LGPL-2.1-or-later
@@ -37,8 +37,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Do-not-remove-virtual-method-from-build.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -78,7 +76,7 @@ Conflicts:      kapptemplate <= 16.03.80
 Files needed for developing custom runners or frontends.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
   %cmake_kf5 -d build
@@ -98,6 +96,7 @@ Files needed for developing custom runners or frontends.
 %{_kf5_qmldir}/
 %{_kf5_servicetypesdir}/plasma-runner.desktop
 %{_kf5_debugdir}/*.categories
+%{_kf5_debugdir}/*.renamecategories
 
 %files devel
 #doc COPYING* README*
