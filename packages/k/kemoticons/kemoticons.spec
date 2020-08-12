@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Emoticons5
-%define _tar_path 5.72
+%define _tar_path 5.73
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kemoticons
-Version:        5.72.0
+Version:        5.73.0
 Release:        0
 Summary:        Emoticon to graphical emoticon text converter
 License:        LGPL-2.1-or-later
@@ -100,6 +100,7 @@ from different providers. Development files.
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/emoticons/
 %{_kf5_debugdir}/kemoticons.categories
+%{_kf5_debugdir}/*.renamecategories
 
 %files devel
 %{_kf5_libdir}/libKF5Emoticons.so
