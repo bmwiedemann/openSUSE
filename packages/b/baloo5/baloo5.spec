@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.72
+%define _tar_path 5.73
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5
-Version:        5.72.0
+Version:        5.73.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -188,6 +188,7 @@ package contains aditional command line utilities. Development files.
 %{_kf5_bindir}/balooctl
 %{_kf5_configdir}/autostart/baloo_file.desktop
 %{_kf5_debugdir}/baloo.categories
+%{_kf5_debugdir}/baloo.renamecategories
 
 %files kioslaves
 %license COPYING*
@@ -213,13 +214,13 @@ package contains aditional command line utilities. Development files.
 
 %files devel
 %license COPYING*
-%dir %{_kf5_includedir}
-%{_kf5_includedir}/
+%{_kf5_includedir}/Baloo
+%{_kf5_includedir}/baloo_version.h
 %{_kf5_libdir}/cmake/KF5Baloo/
 %{_kf5_libdir}/libKF5Baloo.so
 %{_kf5_libdir}/pkgconfig/Baloo.pc
-%{_kf5_sharedir}/dbus-1/interfaces/*.xml
 %{_kf5_mkspecsdir}/qt_Baloo.pri
+%{_kf5_sharedir}/dbus-1/interfaces/*.xml
 
 %if %{with lang}
 %files -n libKF5BalooEngine5-lang -f libKF5BalooEngine5.lang
