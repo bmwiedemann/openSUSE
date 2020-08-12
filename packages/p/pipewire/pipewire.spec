@@ -22,7 +22,7 @@
 %global provfind sh -c "grep -v -e 'libpulse.*\\.so' -e 'libjack.*\\.so' | %__find_provides"
 %global __find_provides %provfind
 
-%define sover 0_3_6
+%define sover 0_3_8
 %define apiver 0.3
 %define apiver_str 0_3
 %define spa_ver 0.2
@@ -36,7 +36,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.6
+Version:        0.3.8
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -46,27 +46,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Patch0:         fix-memfd_create-call.patch
 Patch1:         do-not-use-snd_pcm_ioplug_hw_avail.patch
-Patch2:         fix-meson-required-version.patch
-Patch101:       0001-client-node-fix-buffer-size-calculation.patch
-Patch102:       0002-gst-fix-proxy-leaks.patch
-Patch103:       0003-pulse-fix-pa_card_info-profiles2-array-to-be-NULL-terminated.patch
-Patch104:       0004-pulse-fix-size-calculation.patch
-Patch105:       0005-jack-fix-crash-on-close-when-metadata-are-not-available.patch
-Patch106:       0006-a2dpsink-only-request-new-data-when-buffer-is-done.patch
-Patch107:       0007-pulse-fix-counter-while-populating-car_info-profiles.patch
-Patch108:       0008-impl-link-reset-state-before-starting-allocation.patch
-Patch109:       0009-impl-core-clear-the-mempool.patch
-Patch110:       0010-mem-reset-the-map-in-clear.patch
-Patch111:       0011-avoid-uninitialized-variables.patch
-Patch112:       0012-dlclose-on-errors.patch
-Patch113:       0013-stream-handle-NULL-context.patch
-Patch114:       0014-state-always-update-state-variables.patch
-Patch115:       0015-spa-device-fix-leak-of-properties-in-error-case.patch
-Patch116:       0016-alsa-dont-leak-structure-on-error.patch
-Patch117:       0017-alsa-dont-leak-properties-on-error.patch
-Patch118:       0018-stream-fix-some-more-leaks-in-error-paths.patch
-Patch119:       0019-buffers-increase-max-datas-and-metadata-in-buffers.patch
-Patch120:       0020-gst-return-NULL-for-unknown-format.patch
+Patch2:         do-not-install-alsa-config-files.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -282,6 +262,7 @@ This package contains documentation for the PipeWire media server.
 %patch1 -p1
 sed -i -e "s/dependency('alsa', version : '>=1.1.7')/dependency('alsa', version : '>=1.1.5')/" meson.build
 %endif
+sed -i -e "s/meson_version : '>= 0.49.0',/meson_version : '>= 0.46.0',/" meson.build
 %patch2 -p1
 
 %autopatch -m 101 -p1
@@ -385,6 +366,7 @@ fi
 
 %dir %{_libdir}/alsa-lib
 %{_libdir}/alsa-lib/libasound_module_pcm_pipewire.so
+%{_libdir}/alsa-lib/libasound_module_ctl_pipewire.so
 %dir %{_datadir}/alsa/alsa.conf.d
 %{_datadir}/alsa/alsa.conf.d/50-pipewire.conf
 %{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf
