@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-ScanDeps
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Module-ScanDeps
-Version:        1.27
+Version:        1.28
 Release:        0
 %define cpan_name Module-ScanDeps
 Summary:        Recursively scan Perl code for dependencies
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -34,7 +34,6 @@ BuildRequires:  perl(Test::Requires)
 BuildRequires:  perl(version)
 Requires:       perl(Module::Metadata)
 Requires:       perl(version)
-BuildArch:      noarch
 %{perl_requires}
 
 %description

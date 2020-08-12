@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  7 03:10:39 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-Module-ScanDeps/Changes
+
+  1.28  2020-08-06
+
+  - placate cperl ("Attempt to change hash while iterating over it.")
+
+  - make _find_encoding() more robust
+
+-------------------------------------------------------------------
 Mon Nov 11 12:45:44 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - Change architecture to 'noarch'
