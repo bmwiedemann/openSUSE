@@ -53,14 +53,14 @@
 %bcond_with    libnsl
 %endif
 Name:           postfix
-Version:        3.5.4
+Version:        3.5.6
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
 Group:          Productivity/Networking/Email/Servers
 URL:            http://www.postfix.org
 Source0:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz
-Source1:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.sig
+Source1:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.asc
 Source2:        %{name}-SUSE.tar.gz
 Source3:        %{name}-mysql.tar.bz2
 #Source4:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/wietse.pgp#/postfix.keyring

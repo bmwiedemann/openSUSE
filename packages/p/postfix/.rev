@@ -1758,4 +1758,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>821373</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>3d79fab3f568812e0bde7d5797634033</srcmd5>
+    <version>3.5.6</version>
+    <time>1597222578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825266</requestid>
+  </revision>
 </revisionlist>
