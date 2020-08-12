@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 24 21:47:06 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to version 2.7.2
+- upstream have changed location to github, change URLs accordingly
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Aug  8 16:20:17 UTC 2018 - jengelh@inai.de
 
 - Repair broken description ("the package ADOL-C [end of sentence]")

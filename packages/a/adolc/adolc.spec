@@ -1,7 +1,7 @@
 #
 # spec file for package adolc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname   libadolc2
 Name:           adolc
-Version:        2.6.3
+Version:        2.7.2
 Release:        0
 Summary:        Algorithmic Differentiation Library for C/C++
 License:        GPL-2.0-or-later OR EPL-1.0
-Group:          Development/Libraries/C and C++
-Url:            http://projects.coin-or.org/ADOL-C
-Source0:        http://www.coin-or.org/download/source/ADOL-C/ADOL-C-%{version}.tgz
+URL:            https://github.com/coin-or/ADOL-C
+Source0:        https://github.com/coin-or/ADOL-C/archive/releases/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  ColPack-devel
+BuildRequires:  gcc-c++
+BuildRequires:  libstdc++-devel
+BuildRequires:  pkgconfig
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  boost-devel
 %endif
-BuildRequires:  gcc-c++
-BuildRequires:  libstdc++-devel
-BuildRequires:  pkg-config
 
 %description
 ADOL-C (Automatic Differentiation by OverLoading in C++) facilitates
@@ -44,7 +43,6 @@ written in C or C++.
 
 %package -n %{lname}
 Summary:        Algorithmic Differentiation Library for C/C++
-Group:          System/Libraries
 
 %description -n %{lname}
 ADOL-C (Automatic Differentiation by OverLoading in C++) facilitates
@@ -59,7 +57,6 @@ accessed memory of the given function evaluation program.
 
 %package devel
 Summary:        Development files for the Algorithmic Differentiation Library
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -68,7 +65,6 @@ This package provides the development environment for ADOL-C
 
 %package doc
 Summary:        Algorithmic Differentiation Library for C/C++ -- documentation
-Group:          Documentation/Other
 %if 0%{?suse_version}
 BuildArch:      noarch
 %endif
@@ -77,23 +73,22 @@ BuildArch:      noarch
 This package provides the user's manual for ADOL-C.
 
 %prep
-%setup -q -n ADOL-C-%{version}
+%autosetup -n ADOL-C-releases-%{version}
 
 %build
 # autoreconf -v --install --force
-%configure 
-make %{?_smp_mflags}
+%configure
+%make_build
 # pushd ADOL-C/doc
 # for ((i=0; i < 3; i++)); do
 #    pdflatex adolc-manual.tex &>/dev/null
 # done
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f "(" -name "*.a" -o -name "*.la" ")" -delete -print
 
 %post -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
