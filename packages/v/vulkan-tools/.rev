@@ -159,4 +159,12 @@
     <comment></comment>
     <requestid>818383</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>94f1019a635b51334f037565c245d5dd</srcmd5>
+    <version>1.2.148</version>
+    <time>1597228071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.148</comment>
+    <requestid>825156</requestid>
+  </revision>
 </revisionlist>
