@@ -71,7 +71,6 @@ find share/tools -type f -name *.py -exec sed -i -r '1s|^#!%{_bindir}/env |#!%{_
 rm %{buildroot}/%{_datadir}/fish/completions/curl.fish
 
 rm %{buildroot}/%{_datadir}/doc/fish/.buildinfo
-rm -r %{buildroot}/%{_datadir}/%{name}/man
 
 %post
 # Add fish to the list of allowed shells in /etc/shells
