@@ -1,0 +1,31 @@
+From 72c5f71cd45c860299950cd058d8e13b87375741 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Gr=C3=A9gory=20Mouni=C3=A9?= <Gregory.Mounie@imag.fr>
+Date: Sun, 2 Aug 2020 15:56:33 +0200
+Subject: [PATCH] Avoid segfaults if XIM is set but not xim_styles
+
+Emacs segfaults at the X11 initialization if XIM is set
+and xim_styles is NULL.  This patch avoids the crash.
+* src/xfns.c: Check also if FRAME_X_XIM_STYLES(f) is NULL.
+(Bug#42676)  (Bug#42673)  (Bug#42677)
+
+Copyright-paperwork-exempt: yes
+---
+ src/xfns.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git src/xfns.c src/xfns.c
+index b89fac1cda..f9a00a6daf 100644
+--- src/xfns.c
++++ src/xfns.c
+@@ -2563,7 +2563,7 @@ create_frame_xic (struct frame *f)
+     goto out;
+ 
+   xim = FRAME_X_XIM (f);
+-  if (!xim)
++  if (!xim || ! FRAME_X_XIM_STYLES(f))
+     goto out;
+ 
+   /* Determine XIC style.  */
+-- 
+2.26.2
+
