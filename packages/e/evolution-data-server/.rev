@@ -1843,4 +1843,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>New stable release (forwarded request 818722 from iznogood)</comment>
     <requestid>819938</requestid>
   </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>011094e1657a58ea48dbebbddfdb51ca</srcmd5>
+    <version>3.36.5</version>
+    <time>1597222613</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 825140 from iznogood)</comment>
+    <requestid>825304</requestid>
+  </revision>
 </revisionlist>

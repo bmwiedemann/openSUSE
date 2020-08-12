@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:14:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.5:
+  + Fix a memory leak in ebmb_gather_photos_local_filenames().
+  + ESoupSession: Provided SoupAuth might not be always used by
+    libsoup.
+  + Bugs fixed: glgo#GNOME/evolution-data-server#236,
+    glgo#GNOME/evolution-data-server#240.
+
+-------------------------------------------------------------------
 Sat Jul  4 09:42:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.4:
