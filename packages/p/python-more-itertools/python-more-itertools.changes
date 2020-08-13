@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  6 08:16:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.4.0:
+ * New itertools
+ * :func:`mark_ends` (thanks to kalekundert)
+ * :func:`is_sorted`
+ * Changes to existing itertools:
+   * :func:`islice_extended` can now be used with real slices (thanks to cool-RR)
+   * The implementations for :func:`filter_except` and :func:`map_except` were improved (thanks to SergBobrovsky)
+ * Other changes
+   * Automated tests now enforce code style (using `black <https://github.com/psf/black>`__)
+   * The various signatures of :func:`islice_extended` and :func:`numeric_range` now appear in the docs (thanks to dsfulf)
+   * The test configuration for mypy was updated (thanks to blueyed)
+
+-------------------------------------------------------------------
 Tue Jun  2 16:30:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 8.3.0:

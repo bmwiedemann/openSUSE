@@ -210,4 +210,22 @@
     * Tests now run with ``python -m unittest`` instead of ``python setup.py test`` (thanks to jdufresne)</comment>
     <requestid>810900</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85c85da14663a401693b817b9b82db11</srcmd5>
+    <version>8.4.0</version>
+    <time>1597306473</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.4.0:
+ * New itertools
+ * :func:`mark_ends` (thanks to kalekundert)
+ * :func:`is_sorted`
+ * Changes to existing itertools:
+   * :func:`islice_extended` can now be used with real slices (thanks to cool-RR)
+   * The implementations for :func:`filter_except` and :func:`map_except` were improved (thanks to SergBobrovsky)
+ * Other changes
+   * Automated tests now enforce code style (using `black &lt;https://github.com/psf/black&gt;`__)
+   * The various signatures of :func:`islice_extended` and :func:`numeric_range` now appear in the docs (thanks to dsfulf)
+   * The test configuration for mypy was updated (thanks to blueyed)</comment>
+    <requestid>824641</requestid>
+  </revision>
 </revisionlist>
