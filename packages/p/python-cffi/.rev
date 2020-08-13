@@ -273,4 +273,17 @@
  * fixed a memory leak inside ffi.getwinerror() on CPython 3.x.</comment>
     <requestid>778788</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7acc1fc8f12dbdb7e4a12a3c5c96fc8d</srcmd5>
+    <version>1.14.1</version>
+    <time>1597306340</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.1:
+  * CFFI source code is now hosted on Heptapod.
+  * Improved support for typedef int my_array_t[...]; with an explicit dot-dot-dot in API mode (issue #453)
+  * Windows (32 and 64 bits): multiple fixes for ABI-mode call to functions that return a structure.
+  * Experimental support for MacOS 11 on aarch64.
+  * and a few other minor changes and bug fixes.</comment>
+    <requestid>825281</requestid>
+  </revision>
 </revisionlist>

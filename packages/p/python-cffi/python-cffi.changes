@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 10 08:10:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.14.1:
+  * CFFI source code is now hosted on Heptapod.
+  * Improved support for typedef int my_array_t[...]; with an explicit dot-dot-dot in API mode (issue #453)
+  * Windows (32 and 64 bits): multiple fixes for ABI-mode call to functions that return a structure.
+  * Experimental support for MacOS 11 on aarch64.
+  * and a few other minor changes and bug fixes.
+
+-------------------------------------------------------------------
 Mon Feb 24 14:58:25 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 1.14.0
