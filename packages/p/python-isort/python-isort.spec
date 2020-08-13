@@ -25,73 +25,91 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%bcond_without python2
+%define skip_python2 1
 Name:           python-isort%{psuffix}
-Version:        4.3.21
+Version:        5.3.2
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
-URL:            https://github.com/timothycrosley/isort
+URL:            https://timothycrosley.github.io/isort/
 Source:         https://files.pythonhosted.org/packages/source/i/isort/isort-%{version}.tar.gz
+# tests and test data are not packaged for PyPI, get them from git sources
+Source1:        https://github.com/timothycrosley/isort/archive/%{version}.tar.gz#/isort-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-appdirs >= 1.4.0
-Recommends:     python-pip
+Recommends:     python-pip-api
 Recommends:     python-pipreqs
-Recommends:     python-requirementslib
-Recommends:     python-toml
+Recommends:     python-requirementslib >= 1.5.4
+Recommends:     python-tomlkit
+Suggests:       git
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-backports.functools_lru_cache
-BuildRequires:  python-futures
-%endif
 %if %{with test}
-BuildRequires:  %{python_module appdirs >= 1.4.0}
+BuildRequires:  %{python_module black}
+BuildRequires:  %{python_module hypothesis-auto}
+BuildRequires:  %{python_module isort = %{version}}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
-BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requirementslib}
-BuildRequires:  %{python_module toml}
-%endif
-%ifpython2
-Requires:       python-backports.functools_lru_cache
-Requires:       python-futures
+BuildRequires:  %{python_module requirementslib >= 1.5.4}
+BuildRequires:  %{python_module tomlkit}
+BuildRequires:  git
 %endif
 %python_subpackages
 
 %description
 isort your python imports for you so you don’t have to.
 
-isort is a Python utility / library to sort imports alphabetically,
-and automatically separated into sections. It provides a command line
-utility, Python library and plugins for various editors to quickly
-sort all your imports. It currently cleanly supports Python 2.7 - 3.6 without
-any dependencies.
+isort is a Python utility / library to sort imports alphabetically, and 
+automatically separated into sections and by type. It provides a command line 
+utility, Python library and plugins for various editors to quickly sort all your 
+imports. It requires Python 3.6+ to run but supports formatting Python 2 code 
+too.
 
 %prep
+%if !%{with test}
 %setup -q -n isort-%{version}
 chmod -x LICENSE
+%else
+%setup -q -n isort-%{version} -T -b 1
+%endif
 
+%if !%{with test}
 %build
 %python_build
+%endif
 
-%install
 %if !%{with test}
+%install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_clone -a %{buildroot}%{_bindir}/isort
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
-%check
-# test_pipfile_finder - broken upstrem in tomlkit
 %if %{with test}
-%pytest -k 'not (test_settings_path_skip_issue_909 or test_standard_library_deprecates_user_issue_778 or test_skip_paths_issue_938 or test_requirements_finder or test_pipfile_finder)'
+%check
+%{python_expand # create egg-info for example projects
+for exampledir in example_shared_isort_profile example_isort_formatting_plugin; do
+  pushd $exampledir
+  # no exact environment as upstreams devel project
+  rm poetry.lock
+  # no dependency download, we have it by BuildRequires
+  sed -i '/tool.poetry.dependencies/,/^$/ d' pyproject.toml
+  poetry-%{$python_bin_suffix} install
+  # append current dir, only use colon if not empty
+  export PYTHONPATH="${PYTHONPATH:+$PYTHONPATH:}$(pwd)"
+  popd
+done
+}
+# no test_hypothesmith because no libcst because no pyre-check
+%pytest -W "ignore::UserWarning" -W "ignore::DeprecationWarning" --ignore tests/test_hypothesmith.py
 %endif
 
 %if !%{with test}
@@ -102,9 +120,10 @@ chmod -x LICENSE
 %python_uninstall_alternative isort
 
 %files %{python_files}
-%{python_sitelib}/isort*
-%python_alternative %{_bindir}/isort
 %license LICENSE
+%python_alternative %{_bindir}/isort
+%{python_sitelib}/isort
+%{python_sitelib}/isort-%{version}-py*.egg-info
 %endif
 
 %changelog

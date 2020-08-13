@@ -200,4 +200,14 @@
     <comment></comment>
     <requestid>808784</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6ce298eb1eb148ae8c59ed991f119ffc</srcmd5>
+    <version>5.3.2</version>
+    <time>1597306369</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.3.2:
+
+Let's see which package is missing in ringX for test flavor</comment>
+    <requestid>825424</requestid>
+  </revision>
 </revisionlist>
