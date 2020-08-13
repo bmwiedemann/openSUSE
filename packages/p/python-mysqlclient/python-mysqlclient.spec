@@ -82,17 +82,17 @@ cconf=abuild-myclient.cnf
 #
 # start the mariadb server
 #
-%mysql_testserver_start -u auth_db_user -p auth_db_pass
+%mysql_testserver_start -u auth_db_user -p auth_db_pass -d test_database
 #
 # creating client mysql config
 #
-%mysql_testserver_cconf -n $cconf
+%mysql_testserver_cconf -n $cconf -d test_database
 #
 # running the test
 #
 rm -r MySQLdb
 export TESTDB="$PWD/$cconf"
-%pytest_arch -k "not (test_LONG or test_TEXT)"
+%pytest_arch -k "not (test_LONG or test_TEXT)" || exit_code=1
 #
 # stopping mariadb
 #

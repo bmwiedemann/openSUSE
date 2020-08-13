@@ -137,4 +137,12 @@
     <comment></comment>
     <requestid>782219</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f43382c499b617413f8aa0d01bfffae4</srcmd5>
+    <version>1.4.6</version>
+    <time>1597306352</time>
+    <user>dimstar_suse</user>
+    <comment>- do mysql shutdown even if testsuite fails, exit 1 afterwards</comment>
+    <requestid>825342</requestid>
+  </revision>
 </revisionlist>
