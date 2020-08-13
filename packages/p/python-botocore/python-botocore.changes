@@ -1,85 +1,118 @@
 -------------------------------------------------------------------
+Wed Aug 12 10:45:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.17.40 (bsc#1175147, bsc#1175148, jsc#ECO-2362, jsc#PM-2069)
+  * api-change:``organizations``: Update organizations client to latest version
+  * api-change:``s3``: Update s3 client to latest version
+  * api-change:``lambda``: Update lambda client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.17.39
+  * api-change:``savingsplans``: Update savingsplans client to latest version
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.17.38
+  * api-change:``sms``: Update sms client to latest version
+  * api-change:``organizations``: Update organizations client to latest version
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``s3``: Update s3 client to latest version
+- from version 1.17.37
+  * api-change:``lex-runtime``: Update lex-runtime client to latest version
+  * api-change:``personalize``: Update personalize client to latest version
+  * api-change:``personalize-runtime``: Update personalize-runtime client to latest version
+  * api-change:``lex-models``: Update lex-models client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``personalize-events``: Update personalize-events client to latest version
+- from version 1.17.36
+  * api-change:``fsx``: Update fsx client to latest version
+  * api-change:``appsync``: Update appsync client to latest version
+  * api-change:``sns``: Update sns client to latest version
+  * api-change:``resourcegroupstaggingapi``: Update resourcegroupstaggingapi client to latest version
+  * api-change:``transcribe``: Update transcribe client to latest version
+- from version 1.17.35
+  * api-change:``health``: Update health client to latest version
+- from version 1.17.34
+  * api-change:``ssm``: Update ssm client to latest version
+
+-------------------------------------------------------------------
 Tue Aug  4 12:15:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- update to 1.17.34:
-    api-change:ssm: Update ssm client to latest version
-    1.17.33
-    api-change:resourcegroupstaggingapi: Update resourcegroupstaggingapi client to latest version
-    api-change:storagegateway: Update storagegateway client to latest version
-    api-change:wafv2: Update wafv2 client to latest version
-    api-change:chime: Update chime client to latest version
-    api-change:personalize-runtime: Update personalize-runtime client to latest version
-    1.17.32
-    api-change:organizations: Update organizations client to latest version
-    api-change:ec2: Update ec2 client to latest version
-    api-change:codebuild: Update codebuild client to latest version
-    api-change:kafka: Update kafka client to latest version
-    api-change:servicecatalog: Update servicecatalog client to latest version
-    api-change:cloudfront: Update cloudfront client to latest version
-    api-change:resource-groups: Update resource-groups client to latest version
-    api-change:guardduty: Update guardduty client to latest version
-    api-change:sesv2: Update sesv2 client to latest version
-    1.17.31
-    api-change:resource-groups: Update resource-groups client to latest version
-    api-change:ec2: Update ec2 client to latest version
-    api-change:firehose: Update firehose client to latest version
-    api-change:servicediscovery: Update servicediscovery client to latest version
-    api-change:ecr: Update ecr client to latest version
-    api-change:guardduty: Update guardduty client to latest version
-    1.17.30
-    api-change:ec2: Update ec2 client to latest version
-    api-change:autoscaling: Update autoscaling client to latest version
-    api-change:securityhub: Update securityhub client to latest version
-    api-change:ivs: Update ivs client to latest version
-    api-change:medialive: Update medialive client to latest version
-    api-change:rds: Update rds client to latest version
-    api-change:imagebuilder: Update imagebuilder client to latest version
-    1.17.29
-    api-change:glue: Update glue client to latest version
-    api-change:datasync: Update datasync client to latest version
-    api-change:ec2: Update ec2 client to latest version
-    api-change:frauddetector: Update frauddetector client to latest version
-    api-change:ssm: Update ssm client to latest version
-    api-change:dms: Update dms client to latest version
-    1.17.28
-    api-change:mediaconnect: Update mediaconnect client to latest version
-    api-change:sagemaker: Update sagemaker client to latest version
-    api-change:kendra: Update kendra client to latest version
-    api-change:fsx: Update fsx client to latest version
-    api-change:frauddetector: Update frauddetector client to latest version
-    api-change:mediapackage: Update mediapackage client to latest version
-    api-change:macie2: Update macie2 client to latest version
-    api-change:cloudwatch: Update cloudwatch client to latest version
-    api-change:mq: Update mq client to latest version
-    1.17.27
-    api-change:directconnect: Update directconnect client to latest version
-    api-change:config: Update config client to latest version
-    api-change:fsx: Update fsx client to latest version
-    api-change:glue: Update glue client to latest version
-    api-change:workspaces: Update workspaces client to latest version
-    api-change:lightsail: Update lightsail client to latest version
-    1.17.26
-    api-change:quicksight: Update quicksight client to latest version
-    api-change:medialive: Update medialive client to latest version
-    1.17.25
-    api-change:codeguruprofiler: Update codeguruprofiler client to latest version
-    1.17.24
-    api-change:frauddetector: Update frauddetector client to latest version
-    api-change:rds: Update rds client to latest version
-    api-change:codebuild: Update codebuild client to latest version
-    api-change:groundstation: Update groundstation client to latest version
-    api-change:fms: Update fms client to latest version
-    api-change:ec2: Update ec2 client to latest version
-    api-change:cloudfront: Update cloudfront client to latest version
-    1.17.23
-    api-change:connect: Update connect client to latest version
-    api-change:elasticbeanstalk: Update elasticbeanstalk client to latest version
-    api-change:appsync: Update appsync client to latest version
-    api-change:macie2: Update macie2 client to latest version
-    api-change:application-autoscaling: Update application-autoscaling client to latest version
-    api-change:ec2: Update ec2 client to latest version
-    1.17.22
-    enhancement:examples: Pull in latest examples from EFS.
+- Version update to 1.17.33
+  * api-change:``resourcegroupstaggingapi``: Update resourcegroupstaggingapi client to latest version
+  * api-change:``storagegateway``: Update storagegateway client to latest version
+  * api-change:``wafv2``: Update wafv2 client to latest version
+  * api-change:``chime``: Update chime client to latest version
+  * api-change:``personalize-runtime``: Update personalize-runtime client to latest version
+- from version 1.17.32
+  * api-change:``organizations``: Update organizations client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``codebuild``: Update codebuild client to latest version
+  * api-change:``kafka``: Update kafka client to latest version
+  * api-change:``servicecatalog``: Update servicecatalog client to latest version
+  * api-change:``cloudfront``: Update cloudfront client to latest version
+  * api-change:``resource-groups``: Update resource-groups client to latest version
+  * api-change:``guardduty``: Update guardduty client to latest version
+  * api-change:``sesv2``: Update sesv2 client to latest version
+- from version 1.17.31
+  * api-change:``resource-groups``: Update resource-groups client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``firehose``: Update firehose client to latest version
+  * api-change:``servicediscovery``: Update servicediscovery client to latest version
+  * api-change:``ecr``: Update ecr client to latest version
+  * api-change:``guardduty``: Update guardduty client to latest version
+- from version 1.17.30
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``autoscaling``: Update autoscaling client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+  * api-change:``ivs``: Update ivs client to latest version
+  * api-change:``medialive``: Update medialive client to latest version
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``imagebuilder``: Update imagebuilder client to latest version
+- from version 1.17.29
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``datasync``: Update datasync client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``frauddetector``: Update frauddetector client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``dms``: Update dms client to latest version
+- from version 1.17.28
+  * api-change:``mediaconnect``: Update mediaconnect client to latest version
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+  * api-change:``kendra``: Update kendra client to latest version
+  * api-change:``fsx``: Update fsx client to latest version
+  * api-change:``frauddetector``: Update frauddetector client to latest version
+  * api-change:``mediapackage``: Update mediapackage client to latest version
+  * api-change:``macie2``: Update macie2 client to latest version
+  * api-change:``cloudwatch``: Update cloudwatch client to latest version
+  * api-change:``mq``: Update mq client to latest version
+- from version 1.17.27
+  * api-change:``directconnect``: Update directconnect client to latest version
+  * api-change:``config``: Update config client to latest version
+  * api-change:``fsx``: Update fsx client to latest version
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``workspaces``: Update workspaces client to latest version
+  * api-change:``lightsail``: Update lightsail client to latest version
+- from version 1.17.26
+  * api-change:``quicksight``: Update quicksight client to latest version
+  * api-change:``medialive``: Update medialive client to latest version
+- from version 1.17.25
+  * api-change:``codeguruprofiler``: Update codeguruprofiler client to latest version
+- from version 1.17.24
+  * api-change:``frauddetector``: Update frauddetector client to latest version
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``codebuild``: Update codebuild client to latest version
+  * api-change:``groundstation``: Update groundstation client to latest version
+  * api-change:``fms``: Update fms client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``cloudfront``: Update cloudfront client to latest version
+- from version 1.17.23
+  * api-change:``connect``: Update connect client to latest version
+  * api-change:``elasticbeanstalk``: Update elasticbeanstalk client to latest version
+  * api-change:``appsync``: Update appsync client to latest version
+  * api-change:``macie2``: Update macie2 client to latest version
+  * api-change:``application-autoscaling``: Update application-autoscaling client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.17.22
+  * enhancement:examples: Pull in latest examples from EFS.
 
 -------------------------------------------------------------------
 Thu Jul 16 12:48:46 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

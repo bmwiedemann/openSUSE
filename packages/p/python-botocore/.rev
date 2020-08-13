@@ -640,4 +640,12 @@
     api-change:ivs: Update ivs client to latest version</comment>
     <requestid>824327</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>a8949b234fad5193e8cfb6956bfe52eb</srcmd5>
+    <version>1.17.40</version>
+    <time>1597306381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826013</requestid>
+  </revision>
 </revisionlist>
