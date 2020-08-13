@@ -5215,6 +5215,9 @@ unsorted:
   - go1.14 
   - go1.14-doc 
   - go1.14-race: [x86_64] 
+  - go1.15 
+  - go1.15-doc 
+  - go1.15-race: [x86_64] 
   - go1.4 
   - go1.4-doc 
   - go1.4-race: [x86_64] 
@@ -12029,6 +12032,7 @@ unsorted:
   - libreoffice-l10n-bs 
   - libreoffice-l10n-ca 
   - libreoffice-l10n-ca_valencia 
+  - libreoffice-l10n-ckb: [x86_64] 
   - libreoffice-l10n-cy 
   - libreoffice-l10n-dgo 
   - libreoffice-l10n-dsb 
@@ -13479,6 +13483,7 @@ unsorted:
   - libzen-devel 
   - libzen0 
   - libzen0-32bit: [x86_64] 
+  - libzfp0: [x86_64] 
   - libzhuyin-1_1-devel 
   - libzhuyin13-32bit: [x86_64] 
   - libzimg2-32bit: [x86_64] 
@@ -19591,7 +19596,6 @@ unsorted:
   - python3-astropy-helpers 
   - python3-astunparse 
   - python3-asv 
-  - python3-async_generator 
   - python3-async_timeout 
   - python3-asyncssh 
   - python3-asynctest 
@@ -20010,7 +20014,6 @@ unsorted:
   - python3-construct 
   - python3-contexter 
   - python3-contextlib2 
-  - python3-contextvars 
   - python3-control 
   - python3-convertdate 
   - python3-cookies 
@@ -20543,7 +20546,6 @@ unsorted:
   - python3-img-proof-tests 
   - python3-img2pdf 
   - python3-iminuit 
-  - python3-immutables 
   - python3-imobiledevice 
   - python3-importlab 
   - python3-imread 
@@ -21081,7 +21083,6 @@ unsorted:
   - python3-osmviz 
   - python3-osprofiler 
   - python3-otb 
-  - python3-outcome 
   - python3-ovirt-engine-sdk 
   - python3-ovs 
   - python3-ovsdbapp 
@@ -21115,6 +21116,7 @@ unsorted:
   - python3-parsimonious 
   - python3-partd 
   - python3-parted 
+  - python3-particle 
   - python3-parver 
   - python3-pass_python_keyring 
   - python3-passa 
@@ -21659,7 +21661,6 @@ unsorted:
   - python3-requests-kerberos 
   - python3-requests-mock 
   - python3-requests-oauthlib 
-  - python3-requests-toolbelt 
   - python3-requests-unixsocket 
   - python3-requests_ntlm 
   - python3-requestsexceptions 
@@ -21793,7 +21794,6 @@ unsorted:
   - python3-smbprotocol 
   - python3-smbus 
   - python3-smmap 
-  - python3-sniffio 
   - python3-snimpy 
   - python3-snuggs 
   - python3-social-auth-app-django 
@@ -21803,7 +21803,6 @@ unsorted:
   - python3-softlayer 
   - python3-sorl-thumbnail 
   - python3-sortedcollections 
-  - python3-sortedcontainers 
   - python3-sortinghat 
   - python3-sounddevice 
   - python3-soupsieve 
@@ -21988,7 +21987,6 @@ unsorted:
   - python3-treq 
   - python3-tri.declarative 
   - python3-tri.struct 
-  - python3-trio 
   - python3-trustme 
   - python3-tsk 
   - python3-tvtk 
@@ -35147,6 +35145,7 @@ unsorted:
   - zerobranestudio 
   - zerofree: [i586] 
   - zeromq-devel 
+  - zfp-devel: [x86_64] 
   - zhu3d 
   - zile 
   - zile-doc 
