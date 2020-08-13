@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        7.0.0.0.beta2
+Version:        7.0.0.3
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -102,11 +102,6 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
-Patch4:         poppler-0.86.patch
-Patch5:         pyuno-nopwd.patch
-Patch6:         libreoffice-stuck-widgets-in-sidebar.patch
-Patch7:         libreoffice-select-correct-item-in-gallery.patch
-Patch8:         libreoffice-clipped-sidebar-paragraph-widget.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -853,6 +848,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %langpack -l bs -n Bosnian -T -X
 %langpack -l ca -n Catalan -M -X -T
 %langpack -l ca_valencia -n Valencian -m ca_ES_valencia -T -L ca-valencia -g ca@valencia -j ca_valencia -X
+%langpack -l ckb -n Central_Kurdish
 %langpack -l cs -n Czech -X -m cs_CZ -T
 %langpack -l cy -n Welsh -X
 %langpack -l da -n Danish -X -m da_DK -T
@@ -964,11 +960,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch2
 %patch3
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 %patch990 -p1
 %patch991 -p1
 

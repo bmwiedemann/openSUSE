@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Aug  6 05:24:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 7.0.0.3:
+  * Final stable release for 7.0.0 version
+
+-------------------------------------------------------------------
+Tue Jul 21 07:00:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 7.0.0.2:
+  * RC2 7.0 series update
+
+-------------------------------------------------------------------
+Fri Jul  3 07:42:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 7.0.0.1:
+  * RC1 7.0 series containing many additional fixes
+- Remove merged patches:
+  * libreoffice-clipped-sidebar-paragraph-widget.patch
+  * libreoffice-select-correct-item-in-gallery.patch
+  * libreoffice-stuck-widgets-in-sidebar.patch
+  * pyuno-nopwd.patch
+  * poppler-0.86.patch
+- Also contains fixes for bsc#1155141 and bsc#1136234
+
+-------------------------------------------------------------------
 Wed Jul  1 20:15:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update libreoffice-stuck-widgets-in-sidebar.patch with

@@ -2821,4 +2821,26 @@ Petr</comment>
     <comment></comment>
     <requestid>818250</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>66a08a4fc1a1a703a661084295948414</srcmd5>
+    <version>7.0.0.3</version>
+    <time>1597306434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.0.3:
+  * Final stable release for 7.0.0 version
+
+- Update to 7.0.0.2:
+  * RC2 7.0 series update
+
+- Update to 7.0.0.1:
+  * RC1 7.0 series containing many additional fixes
+- Remove merged patches:
+  * libreoffice-clipped-sidebar-paragraph-widget.patch
+  * libreoffice-select-correct-item-in-gallery.patch
+  * libreoffice-stuck-widgets-in-sidebar.patch
+  * pyuno-nopwd.patch
+  * poppler-0.86.patch
+- Also contains fixes for bsc#1155141 and bsc#1136234</comment>
+    <requestid>824590</requestid>
+  </revision>
 </revisionlist>
