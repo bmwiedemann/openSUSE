@@ -132,4 +132,12 @@
     <comment>- Do not install tests in sitelib directly</comment>
     <requestid>824589</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ab5212b6737926348616198372ded13</srcmd5>
+    <version>0.61</version>
+    <time>1597306361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825357</requestid>
+  </revision>
 </revisionlist>

@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define skip_python2 1
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-web.py
-Version:        0.51
+Version:        0.61
 Release:        0
 Summary:        web.py: makes web apps
 License:        SUSE-Public-Domain AND BSD-3-Clause
@@ -46,7 +47,6 @@ Think about the ideal way to write a web app. Write the code to make it happen.
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
