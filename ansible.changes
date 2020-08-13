@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 12 12:44:52 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- added fix-cron-regression-71207.patch
+
+-------------------------------------------------------------------
+Tue Aug 11 05:09:36 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.12 with many bug fixes,
+  most notably the following security fixes:
+  * security issue - copy - Redact the value of the no_log 'content' 
+    parameter in the result's invocation.module_args in check mode. 
+    Previously when used with check mode and with '-vvv', the module would 
+    not censor the content if a change would be made to the destination path. 
+    (CVE-2020-14332)
+  * security issue atomic_move - change default permissions when creating 
+    temporary files so they are not world readable 
+    (https://github.com/ansible/ansible/issues/67794) (CVE-2020-1736)
+  * Fix warning for default permission change when no mode is specified. 
+    Follow up to https://github.com/ansible/ansible/issues/67794. 
+    (CVE-2020-1736)
+  * Sanitize no_log values from any response keys that might be returned 
+    from the uri module (CVE-2020-14330).
+  * reset logging level to INFO due to CVE-2019-14846.
+
+-------------------------------------------------------------------
 Tue Jul 21 04:48:11 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to version 2.9.11 with many bug fixes
