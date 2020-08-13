@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun  5 19:31:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update 3.1.0
+  * Set parallel\_read\_safe to True
+  * Handle empty config files
+  * Add cache support for release dates
+  * Remove future imports
+  * Keep scanning master branch after first shared commit
+  * Sort config options
+  * Add support for release dates
+  * sphinxext: Support rootdir discovery without git
+  * Use unittest.mock instead of third party mock
+  * tox: Suppress output
+  * do not include external svgs from readme in docs
+  * Update hacking for Python3
+
+-------------------------------------------------------------------
 Wed Apr 15 15:29:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.0.1

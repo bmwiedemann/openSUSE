@@ -163,4 +163,24 @@
   * Remove references to oslosphinx</comment>
     <requestid>794362</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3e7899a2fa3a76575d8faf6b73ae4c1f</srcmd5>
+    <version>3.1.0</version>
+    <time>1597306356</time>
+    <user>dimstar_suse</user>
+    <comment>- update 3.1.0
+  * Set parallel\_read\_safe to True
+  * Handle empty config files
+  * Add cache support for release dates
+  * Remove future imports
+  * Keep scanning master branch after first shared commit
+  * Sort config options
+  * Add support for release dates
+  * sphinxext: Support rootdir discovery without git
+  * Use unittest.mock instead of third party mock
+  * tox: Suppress output
+  * do not include external svgs from readme in docs
+  * Update hacking for Python3</comment>
+    <requestid>825343</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-reno
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        RElease NOtes manager
 License:        Apache-2.0
