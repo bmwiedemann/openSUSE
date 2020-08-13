@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  7 08:28:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.0.22
+  * Add File_seekable #52
+  * Rework some routines to fix holes in error checking #50
+  * Fix File_read when the current location is not zero #49
+  * Add File_flush #48
+  * Add File_tell #47
+  * Added SAMBA protocol version optional variable #41
+
+-------------------------------------------------------------------
 Mon Mar 23 12:56:53 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.0.19

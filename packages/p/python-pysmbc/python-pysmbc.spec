@@ -21,13 +21,13 @@
 # Tests don't work in rpmbuild sandbox
 %bcond_with     test
 Name:           python-pysmbc
-Version:        1.0.19
+Version:        1.0.22
 Release:        0
 Summary:        Python bindings for samba clients (libsmbclient)
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            http://cyberelk.net/tim/software/pysmbc/
-Source:         https://files.pythonhosted.org/packages/source/p/pysmbc/pysmbc-%{version}.tar.bz2
+Source:         https://files.pythonhosted.org/packages/source/p/pysmbc/pysmbc-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
