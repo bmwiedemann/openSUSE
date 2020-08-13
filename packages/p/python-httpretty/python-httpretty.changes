@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 12:24:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- avoid reading DNS resolver settings
+  gh#gabrielfalcao/HTTPretty#405
+- remove unnecessary test packages
+
+-------------------------------------------------------------------
 Thu Apr  9 11:25:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.0.2

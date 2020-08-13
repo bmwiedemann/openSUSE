@@ -26,13 +26,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/gabrielfalcao/HTTPretty
 Source:         https://files.pythonhosted.org/packages/source/h/httpretty/httpretty-%{version}.tar.gz
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module httplib2}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module rednose}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sure}
@@ -50,13 +48,17 @@ It is similar to Ruby's FakeWeb.
 
 %prep
 %setup -q -n httpretty-%{version}
-# randomly is unknown option for our nose
-sed -i -e '/with-randomly/d' setup.cfg
+# no test coverage check needed
+sed -i -e '/cover/ d' setup.cfg
+# no color printout for tests
+sed -i -e '/rednose/ d' setup.cfg
 
 %build
 %python_build
 
 %check
+# https://github.com/gabrielfalcao/HTTPretty/issues/405
+export EVENTLET_NO_GREENDNS=yes
 # test_http_passthrough and test_https_passthrough need internet connection
 %python_expand nosetests-%{$python_bin_suffix} --exclude='test_http.?_passthrough'
 
