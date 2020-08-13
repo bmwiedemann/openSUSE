@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 11 07:24:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to avoid cycles with matplotib
+
+-------------------------------------------------------------------
 Sun Jun 14 09:06:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.2.2

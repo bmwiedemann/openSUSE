@@ -17,24 +17,31 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-sortedcontainers
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-sortedcontainers%{psuffix}
 Version:        2.2.2
 Release:        0
 Summary:        Sorted container data types
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/grantjenks/python-sortedcontainers
 Source:         https://github.com/grantjenks/python-sortedcontainers/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
+BuildArch:      noarch
+%if %{with test}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
-# /SECTION
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -60,16 +67,21 @@ rm -rf sortedcontainers.egg-info
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
+%if %{with test}
 %pytest tests
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*
+%endif
 
 %changelog

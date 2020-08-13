@@ -82,4 +82,12 @@
   * Change SortedDict to avoid cycles for CPython reference counting.</comment>
     <requestid>814546</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>78ad9b01c9770071508bd6984dd25095</srcmd5>
+    <version>2.2.2</version>
+    <time>1597306376</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to avoid cycles with matplotib</comment>
+    <requestid>825708</requestid>
+  </revision>
 </revisionlist>
