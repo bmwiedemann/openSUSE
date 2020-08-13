@@ -1,7 +1,7 @@
 #
 # spec file for package python-multi_key_dict
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,11 @@ Release:        0
 Summary:        Multi key dictionary implementation
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/formiaczek/multi_key_dict
-Source:         https://pypi.python.org/packages/source/m/multi_key_dict/multi_key_dict-%{version}.tar.gz
+URL:            https://github.com/formiaczek/multi_key_dict
+Source:         https://files.pythonhosted.org/packages/source/m/multi_key_dict/multi_key_dict-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -49,7 +48,6 @@ to the number of keys used to map to the value.
 %python_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.txt
 %{python_sitelib}/*
 

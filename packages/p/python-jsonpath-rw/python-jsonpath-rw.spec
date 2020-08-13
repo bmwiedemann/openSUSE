@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpath-rw
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,22 @@
 #
 
 
+# detritus in /etc/alternatives from brp-python-bytecompile must be removed
+%define __os_install_post %(echo '%__os_install_post; \
+  rm -f %{buildroot}%{_sysconfdir}/alternatives/jsonpath.pyo; \
+  rm -f %{buildroot}%{_sysconfdir}/alternatives/jsonpath.pyc')
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define modname jsonpath-rw
+
 Name:           python-jsonpath-rw
 Version:        1.4.0
 Release:        0
 Summary:        An extended implementation of JSONPath for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/kennknowles/python-jsonpath-rw
-Source:         https://pypi.python.org/packages/source/j/jsonpath-rw/jsonpath-rw-%{version}.tar.gz
+URL:            https://github.com/kennknowles/python-jsonpath-rw
+Source:         https://files.pythonhosted.org/packages/source/j/jsonpath-rw/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -34,14 +41,7 @@ Requires:       python-ply >= 3.4
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-
-# detritus in /etc/alternatives from brp-python-bytecompile must be removed
-%define __os_install_post %(echo '%{__os_install_post}; \
-  rm -f %{buildroot}%{_sysconfdir}/alternatives/jsonpath.pyo; \
-  rm -f %{buildroot}%{_sysconfdir}/alternatives/jsonpath.pyc')
-
 %python_subpackages
 
 %description
@@ -72,7 +72,6 @@ sed -i '/^#!/ d' jsonpath_rw/bin/jsonpath.py
 %python_uninstall_alternative jsonpath.py
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %python_alternative %{_bindir}/jsonpath.py
 %{python_sitelib}/*

@@ -1055,7 +1055,9 @@ install -d -m 0755 -p \
 	%{buildroot}/%{_sysconfdir}/{pam.d,xinetd.d,logrotate.d} \
 	%{buildroot}/%{_sysconfdir}/openldap/schema \
 	%{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/{if-{down,up}.d,scripts} \
+%if 0%{?suse_version} <= 1500
 	%{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services \
+%endif
 	%{buildroot}/%{_sysconfdir}/security \
 	%{buildroot}/%{_sysconfdir}/slp.reg.d \
 	%{buildroot}/%{CONFIGDIR} \
@@ -1219,6 +1221,7 @@ done
 %if 0%{?suse_version} < 1221
 	touch %{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-{down,up}.d/21-%{cifs_init_script}
 %endif
+%if 0%{?suse_version} <= 1500
 # Install SuSEfirewall2 config files
 install -m 0644 config/sysconfig.firewall.netbios-server \
 	%{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/netbios-server
@@ -1227,6 +1230,7 @@ install -m 0644 config/sysconfig.firewall.samba-server \
 %if 0%{?suse_version} > 1100
 install -m 0644 config/sysconfig.firewall.samba-client \
 	%{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/samba-client
+%endif
 %endif
 # Add logrotate settings for nmbd and smbd only on systems newer than 8.1.
 	LOGROTATE_FILES="samba samba-winbind"
@@ -1632,8 +1636,10 @@ exit 0
 %config(noreplace) %{CONFIGDIR}/smbusers
 %config %{_sysconfdir}/pam.d/samba
 %{_sysconfdir}/slp.reg.d
+%if 0%{?suse_version} <= 1500
 %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/netbios-server
 %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/samba-server
+%endif
 %dir %{_libdir}/samba
 %dir %{_libdir}/samba/vfs
 %dir %{_libdir}/samba/ldb
@@ -1687,7 +1693,7 @@ exit 0
 %dir %{_sysconfdir}/openldap
 %dir %{_sysconfdir}/openldap/schema
 %attr(0444,root,root) %config %{_sysconfdir}/openldap/schema/samba3.schema
-%if 0%{?suse_version} > 1100
+%if 0%{?suse_version} <= 1500 && 0%{?suse_version} > 1100
 %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/samba-client
 %endif
 %{_bindir}/cifsdd

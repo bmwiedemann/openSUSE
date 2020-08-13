@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyuca
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-BuildArch:      noarch
 Name:           python-pyuca
 Version:        1.2
 Release:        0
 Summary:        Python implementation of the Unicode Collation Algorithm
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/jtauber/pyuca
-Source0:        https://pypi.python.org/packages/source/p/pyuca/pyuca-%{version}.tar.gz
+URL:            https://github.com/jtauber/pyuca
+Source0:        https://files.pythonhosted.org/packages/source/p/pyuca/pyuca-%{version}.tar.gz
 # https://github.com/jtauber/pyuca/issues/21
 Source1:        https://raw.githubusercontent.com/jtauber/pyuca/master/test.py
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %python_subpackages
 
 %description

@@ -25,6 +25,9 @@ Summary:        Python adapter for universal, libarchive-based archive access
 License:        GPL-2.0-only
 URL:            https://github.com/dsoprea/PyEasyArchive
 Source:         https://files.pythonhosted.org/packages/source/l/libarchive/libarchive-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM denose_tests.patch gh#dsoprea/PyEasyArchive#44 mcepl@suse.com
+# Removes the need for nose test requirement
+Patch0:         denose_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libarchive-devel
@@ -33,7 +36,7 @@ Requires:       libarchive-devel
 Conflicts:      python-libarchive-c
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %ifpython2
 Conflicts:      %{oldpython}-libarchive-c
@@ -46,14 +49,16 @@ A ctypes-based adapter to libarchive.
 
 %prep
 %setup -q -n libarchive-%{version}
+%autopatch -p1
 
 %build
 %python_build
 
 %check
-# https://github.com/dsoprea/PyEasyArchive/issues/33
 export LANG=en_US.UTF8
-%python_expand nosetests-%{$python_bin_suffix} -v -e test_read_symlinks
+# test_read_symlinks expects README.rst to be symlink
+ln -sf libarchive/resources/README.rst README.rst
+%pytest
 
 %install
 %python_install

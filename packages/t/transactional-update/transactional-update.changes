@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 12 10:06:11 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.24.1
+  - SELinux: adjust labels for etc, fstab and grub.cfg
+
+-------------------------------------------------------------------
+Thu Aug  6 08:32:11 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.24
+  - Add partial SELinux support
+
+-------------------------------------------------------------------
 Fri Jul 31 16:11:04 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Version 2.23

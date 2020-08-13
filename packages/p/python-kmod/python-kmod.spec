@@ -1,7 +1,7 @@
 #
 # spec file for package python-kmod
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Python module to work with kernel modules
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
-Url:            https://github.com/agrover/python-kmod
-Source:         https://pypi.python.org/packages/source/k/kmod/kmod-%{version}.tar.gz
+URL:            https://github.com/agrover/python-kmod
+Source:         https://files.pythonhosted.org/packages/source/k/kmod/kmod-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix-build.patch
 Patch0:         fix-build.patch
 Patch1:         fix-build-kmod-17.patch
@@ -34,7 +34,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  kmod
 BuildRequires:  libkmod-devel
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %python_subpackages
 
 %description
@@ -66,7 +65,6 @@ operations: listing installed modules, modprobe, and rmmod.
 %python_install
 
 %files %{python_files}
-%defattr(-,root,root)
 %dir %{python_sitearch}/kmod/
 %{python_sitearch}/kmod/*
 %{python_sitearch}/kmod*.egg-info

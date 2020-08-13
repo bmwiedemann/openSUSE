@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 11 03:12:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.58
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.58  2020-08-05
+    - Improved app and lite_app generators to use templates with subroutine signatures.
+    - Updated all documentation to use subroutine signatures. (kiwiroy)
+
+-------------------------------------------------------------------
 Sat Jul 18 03:10:07 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.57

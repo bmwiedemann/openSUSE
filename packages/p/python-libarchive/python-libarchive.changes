@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 12 09:31:58 UTC 2020 - pgajdos@suse.com
+
+- run test_read_symlinks but make README.rst to be a symlink to
+  libarchive/resources/README.rst
+
+-------------------------------------------------------------------
+Thu Jul 30 15:43:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add denose_tests.patch removing the need for nose
+  (gh#dsoprea/PyEasyArchive#44).
+
+-------------------------------------------------------------------
 Tue Mar  3 12:13:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build on older releases

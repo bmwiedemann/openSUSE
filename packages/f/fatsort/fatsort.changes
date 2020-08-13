@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 12 11:03:50 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.3.622:
+  * fatsort release file now includes precompiled makefile
+  * fixed support for macOS (thanks to Max for the fix)
+  * declared OPT_LOCALE as extern
+  * fixed uninitialized variable
+  * avoided some string truncation compiler warnings
+  * implemented platform independent transliteration for invalid
+    multi-byte characters during conversion
+  * test makefile now returns error code
+
+-------------------------------------------------------------------
 Thu Jun 11 09:50:19 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10

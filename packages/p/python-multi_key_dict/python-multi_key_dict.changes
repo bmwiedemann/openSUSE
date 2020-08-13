@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 12 22:41:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Run SPEC file through spec-cleaner
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:34 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

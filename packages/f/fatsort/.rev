@@ -55,4 +55,20 @@
     <comment>- Fix building with gcc10</comment>
     <requestid>813439</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>79d27191e9dc2d9b7f88e21d16efdc0e</srcmd5>
+    <version>1.6.3.622</version>
+    <time>1597306629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.3.622:
+  * fatsort release file now includes precompiled makefile
+  * fixed support for macOS (thanks to Max for the fix)
+  * declared OPT_LOCALE as extern
+  * fixed uninitialized variable
+  * avoided some string truncation compiler warnings
+  * implemented platform independent transliteration for invalid
+    multi-byte characters during conversion
+  * test makefile now returns error code</comment>
+    <requestid>826006</requestid>
+  </revision>
 </revisionlist>

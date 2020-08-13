@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymongo
-Version:        3.10.1
+Version:        3.11.0
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0

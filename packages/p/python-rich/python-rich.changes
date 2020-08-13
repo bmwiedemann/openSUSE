@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Aug  8 04:47:19 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v5.0.0
+  * Change to console markup syntax to not parse Python structures
+    as markup, i.e. `[1,2,3]` is treated as a literal, not a tag.
+  * Standard color numbers syntax has changed to `"color(<number>)"`
+    so that `[5]` (for example) is considered a literal.
+  * Markup escape method has changed from double brackets to
+    preceding with a backslash, so `foo[[]]` would be `foo\[bar]`
+
+- From v4.2.2
+  * Added thread to automatically call update() in progress.track().
+    Replacing previous adaptive algorithm.
+  * Second attempt at working around https://bugs.python.org/issue37871
+
+-------------------------------------------------------------------
+Fri Jul 31 08:06:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 4.2.1
+  - Added show_time and show_level parameters to RichHandler https://github.com/willmcgugan/rich/pull/182
+  - Fixed progress.track iterator exiting early https://github.com/willmcgugan/rich/issues/189
+  - Added workaround for Python bug https://bugs.python.org/issue37871, fixing https://github.com/willmcgugan/rich/issues/186
+  - Set overflow=fold for log messages https://github.com/willmcgugan/rich/issues/190
+  - Fixed missing new lines https://github.com/willmcgugan/rich/issues/178
+  - Fixed Progress.track https://github.com/willmcgugan/rich/issues/184
+  - Remove control codes from exported text https://github.com/willmcgugan/rich/issues/181
+  - Implemented auto-detection and color rendition of 16-color mode
+  - Optimized progress.track for very quick iterations
+  - Force default size of 80x25 if get_terminal_size reports size of 0,0
+  - Added markup switch to RichHandler https://github.com/willmcgugan/rich/issues/171
+  - Change signature of Text.stylize to accept style first
+  - Remove Text.stylize_all which is no longer necessary
+  - Fixed rendering of Confirm prompt https://github.com/willmcgugan/rich/issues/170
+
+-------------------------------------------------------------------
 Wed Jul 22 20:03:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.4.1

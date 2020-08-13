@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 12 17:15:51 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.15+git.20200812.d100e6c:
+  * lcov: Finalize release 1.15
+  * Makefile: Reduce unnecessary meta-data in tar and RPM files
+  * geninfo: Add workaround for MSYS GCC problem
+  * geninfo: Change json module
+  * geninfo: Fix warning due to non-numerical branch count
+  * geninfo: Fix missing check for unterminated exclusion marker
+  * Exclusion of exception branches
+  * genhtml: Fix applying prefix to a prefix filename
+  * genhtml: Add more demangler options
+  * tests: Minor improvements
+  * tests: Minor test improvements
+  * man: Add clarification regarding file patterns
+  * geninfo: Change gzip decompression module
+  * Fixed processing GCOV intermediate format.
+
+-------------------------------------------------------------------
 Mon Jul 27 14:03:41 UTC 2020 - Miklos Vajna <vmiklos@collabora.com>
 
 - Remove no longer needed kernel-coverage conflict (bsc#1078447)

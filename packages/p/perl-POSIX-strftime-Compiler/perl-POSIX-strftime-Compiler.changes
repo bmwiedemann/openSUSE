@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 11 03:15:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.44
+   see /usr/share/doc/packages/perl-POSIX-strftime-Compiler/Changes
+
+  0.44 2020-08-10T07:10:35Z
+
+     - Check tzdata before test
+
+-------------------------------------------------------------------
 Tue Jul 28 09:51:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.43

@@ -17,7 +17,7 @@
 
 
 Name:           fatsort
-Version:        1.6.2.605
+Version:        1.6.3.622
 Release:        0
 Summary:        FAT Filesystem Sorting Utility
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ transmitted to the device. FATSort can help here.
 %autosetup
 
 %build
-%make_build CFLAGS="%{optflags} -fcommon"
+%make_build CFLAGS="%{optflags}"
 
 %install
 install -Dpm 0755 -p src/%{name}   \

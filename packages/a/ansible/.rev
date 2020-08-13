@@ -779,4 +779,12 @@ numbers for further reference.
     <comment></comment>
     <requestid>822847</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>c3781521eacb2922085bc4878b89f6e9</srcmd5>
+    <version>2.9.12</version>
+    <time>1597306641</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.9.12 including back-port patch fixing a regression in 2.9.12</comment>
+    <requestid>826038</requestid>
+  </revision>
 </revisionlist>

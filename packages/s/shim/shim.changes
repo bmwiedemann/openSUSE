@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 09:43:19 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Amend the check of %shim_enforce_ms_signature
+
+-------------------------------------------------------------------
+Fri Jul 31 07:41:26 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Updated openSUSE signature
+
+-------------------------------------------------------------------
 Mon Jul 27 07:26:03 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Replace shim-correct-license-in-headers.patch with the upstream
@@ -9,6 +19,17 @@ Mon Jul 27 07:26:03 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 Wed Jul 22 09:23:02 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update the path to grub-tpm.efi in shim-install (bsc#1174320)
+
+-------------------------------------------------------------------
+Fri Jul 10 07:21:27 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Use vendor-dbx to block old SUSE/openSUSE signkeys (bsc#1168994)
+  + Add dbx-cert.tar.xz which contains the certificates to block
+    and a script, generate-vendor-dbx.sh, to generate
+    vendor-dbx.bin
+  + Add vendor-dbx.bin as the vendor dbx to block unwanted keys
+- Drop shim-opensuse-signed.efi
+  + We don't need it anymore
 
 -------------------------------------------------------------------
 Fri Jul 10 06:28:44 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>

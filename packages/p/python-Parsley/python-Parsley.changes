@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 12 22:50:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace pypi.python.org Source URL with the canonical files.pythonhosted.org
+
+-------------------------------------------------------------------
 Wed May 20 07:26:05 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

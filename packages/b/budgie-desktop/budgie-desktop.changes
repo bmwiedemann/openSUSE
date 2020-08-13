@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 22:04:27 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add gnome-session-core as a dependency
+- Spec file cleanups
+- Correct URL
+
+-------------------------------------------------------------------
 Tue Aug 11 10:39:42 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Remove gnome-session dependency

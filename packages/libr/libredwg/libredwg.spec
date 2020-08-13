@@ -16,15 +16,14 @@
 #
 
 
-Name:           libredwg
 %define lname	libredwg0
-Version:        0.10
+Name:           libredwg
+Version:        0.11
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libredwg/
-
 #Git-Clone:	https://github.com/LibreDWG/libredwg/
 Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz
 Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz.sig
@@ -41,7 +40,7 @@ Summary:        Command line utilities for handling DWG file
 Group:          Productivity/File utilities
 Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
-# Both packages ship a %_bindir/dwg2dxf
+# Both packages ship a %%_bindir/dwg2dxf
 Conflicts:      libdxfrw-tools
 
 %description tools
@@ -76,8 +75,7 @@ OpenDWG libraries. DWG is the native file format of AutoCAD.
 # No management of SO version despite ABI breaking changes:
 # Force-add some symvers so RPM can produce meaningful deps.
 echo 'V_%version { global: *; };' >src/sv.sym
-%configure \
-	--disable-static
+%configure --disable-static
 make %{?_smp_mflags} libredwg_la_LDFLAGS=-Wl,-version-script,sv.sym libredwg_la_LIBADD=-lm
 
 %install
@@ -85,10 +83,10 @@ make %{?_smp_mflags} libredwg_la_LDFLAGS=-Wl,-version-script,sv.sym libredwg_la_
 find "%buildroot" -type f -name "*.la" -delete -print
 
 %post tools
-%install_info --info-dir="%_infodir" "%_infodir/LibreDWG.info.gz"
+%install_info --info-dir="%_infodir" "%_infodir/LibreDWG.info*.gz"
 
 %preun tools
-%install_info_delete --info-dir="%_infodir" "%_infodir/LibreDWG.info.gz"
+%install_info_delete --info-dir="%_infodir" "%_infodir/LibreDWG.info*.gz"
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -98,7 +96,7 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %_bindir/dwg*
 %_bindir/dxf*
 %_mandir/man?/*.1%{?ext_man}
-%_infodir/LibreDWG.info%{?ext_info}
+%_infodir/LibreDWG.info*%{?ext_info}
 
 %files devel
 %license COPYING

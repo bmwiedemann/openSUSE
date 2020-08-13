@@ -17,7 +17,7 @@
 
 
 Name:           perl-POSIX-strftime-Compiler
-Version:        0.43
+Version:        0.44
 Release:        0
 %define cpan_name POSIX-strftime-Compiler
 Summary:        GNU C library compatible strftime for loggers and servers

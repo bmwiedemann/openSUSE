@@ -191,4 +191,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>824173</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3714abe0ad93112237a5d64dd82b5561</srcmd5>
+    <version>1.15+git.20200812.d100e6c</version>
+    <time>1597306705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.15+git.20200812.d100e6c:
+  * lcov: Finalize release 1.15
+  * Makefile: Reduce unnecessary meta-data in tar and RPM files
+  * geninfo: Add workaround for MSYS GCC problem
+  * geninfo: Change json module
+  * geninfo: Fix warning due to non-numerical branch count
+  * geninfo: Fix missing check for unterminated exclusion marker
+  * Exclusion of exception branches
+  * genhtml: Fix applying prefix to a prefix filename
+  * genhtml: Add more demangler options
+  * tests: Minor improvements
+  * tests: Minor test improvements
+  * man: Add clarification regarding file patterns
+  * geninfo: Change gzip decompression module
+  * Fixed processing GCOV intermediate format.</comment>
+    <requestid>826083</requestid>
+  </revision>
 </revisionlist>

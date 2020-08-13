@@ -130,4 +130,41 @@
     <comment></comment>
     <requestid>816891</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0d75864ec8d63a18dea24ab9cde6f433</srcmd5>
+    <version>1.12.2</version>
+    <time>1597306713</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.2:
+  * New Addon: Automated GCP Credentials #8682
+  * status: Add experimental cluster JSON status with state transition support #8868
+  * Add support for Error type to JSON output #8796
+  * Implement Warning type for JSON output #8793
+  * Add stopping as a possible state in deleting, change errorf to warningf #8896
+  * Use preloaded tarball for cri-o container runtime #8588
+  * docker/podman: warn if allocated memory is below limit #8718
+  * Enabling metrics addon when someone enables dashboard #8842
+  * make base-image respect --image-repository #8880
+  * UI: suggest to enable metric-server for full feature dashboard addon. #8863
+  * Fix mount issues with Docker/Podman drivers #8780
+  * Fix upgrading from minikube 1.9 and older #8782
+  * Make restarts in Docker/Podman drivers more reliable #8864
+  * update crio to 1.18.3 and kicbase to ubuntu 20.04 #8895
+  * Podman downgrade to 1.9.3 for the build command #8774
+  * Upgrade kicbase to v0.0.11 #8899
+  * update golang version #8781
+  * Update external-provisioner for storage provisioner for Kubernetes 1.18 #8610
+  * Upgrade storage provisioner image #8909
+
+- update to 1.12.1:
+  * Add support for Calico CNI (--cni=calico) #8571
+  * Add support for Cilium CNI (--cni=cilium) #8573
+  * Fix bugs which prevented upgrades from v1.0+ to v1.12 #8741
+  * Add KicBaseImage to existing config if missing (fixes v1.9.x upgrade) #8738
+  * multinode: fix control plane not ready on restart #8698
+  * none CNI: error if portmap plug-in is required but unavailable #8684
+  * ingress addon: bump to latest version #8705
+  * Upgrade go version to 1.14.4 #8660</comment>
+    <requestid>826108</requestid>
+  </revision>
 </revisionlist>

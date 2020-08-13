@@ -1,7 +1,7 @@
 #
 # spec file for package python-pika-pool
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,13 @@ Release:        0
 Summary:        Pools for pikas
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/bninja/pika-pool
-Source:         https://pypi.python.org/packages/source/p/pika-pool/pika-pool-%{version}.tar.gz
+URL:            https://github.com/bninja/pika-pool
+Source:         https://files.pythonhosted.org/packages/source/p/pika-pool/pika-pool-%{version}.tar.gz
 BuildRequires:  %{python_module pika}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-pika >= 0.9
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -51,7 +50,6 @@ Typically you'll go with local `shovels <https://www.rabbitmq.com/shovel.html>`_
 %python_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %{python_sitelib}/*
 

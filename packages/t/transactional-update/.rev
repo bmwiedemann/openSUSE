@@ -540,4 +540,16 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 </comment>
     <requestid>823772</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b2c91d995226007aaff68c800fb3fa32</srcmd5>
+    <version>2.24.1</version>
+    <time>1597306502</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.24.1
+  - SELinux: adjust labels for etc, fstab and grub.cfg
+- Version 2.24
+  - Add partial SELinux support
+</comment>
+    <requestid>825971</requestid>
+  </revision>
 </revisionlist>

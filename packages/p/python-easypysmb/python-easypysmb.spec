@@ -1,7 +1,7 @@
 #
 # spec file for package python-easypysmb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-easypysmb
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
-License:        GPL-3.0-only
 Summary:        PySMB wrapper library
-Url:            https://github.com/pschmitt/easypysmb
+License:        GPL-3.0-only
 Group:          Development/Languages/Python
+URL:            https://github.com/pschmitt/easypysmb
 Source:         https://files.pythonhosted.org/packages/source/e/easypysmb/easypysmb-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/pschmitt/easypysmb/master/LICENSE
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-pysmb
 BuildArch:      noarch
 

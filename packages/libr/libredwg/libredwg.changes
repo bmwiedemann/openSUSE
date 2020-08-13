@@ -1,3 +1,22 @@
+-------------------------------------------------------------------
+Wed Aug 12 20:59:49 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.11:
+  * new programs dwgfilter, dxfwrite
+  * improved file support for r2004+ (incomplete)
+  * Add support for GeoJSON RFC794a godsend for the json importer)
+  * API extensions and breaking changes
+
+-------------------------------------------------------------------
+Sun Apr 12 07:26:25 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.10.1:
+  * Fixed dwg2SVG htmlescape overflows and off-by-ones
+  * Removed direct usages of fprintf and stderr in the lib
+  * Fuzzing fixes for dwg2SVG, dwgread
+  * Fixed eed.raw leaks
+
+-------------------------------------------------------------------
 Thu Jan  9 13:22:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.10

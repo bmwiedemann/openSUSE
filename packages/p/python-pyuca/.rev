@@ -27,4 +27,13 @@
     <comment></comment>
     <requestid>707449</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8586da4bc4118c5194b322f1d52284aa</srcmd5>
+    <version>1.2</version>
+    <time>1597306960</time>
+    <user>dimstar_suse</user>
+    <comment>- Run SPEC file through spec-cleaner
+</comment>
+    <requestid>826127</requestid>
+  </revision>
 </revisionlist>

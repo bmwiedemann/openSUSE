@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Wed Aug 11 23:53:56 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.15 (released 2020-08-11) Go 1.15 is a major release of Go.
+  go1.15.x minor releases will be provided through August 2021.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  Most changes are in the implementation of the toolchain, runtime,
+  and libraries. As always, the release maintains the Go 1 promise
+  of compatibility. We expect almost all Go programs to continue to
+  compile and run as before.
+  Refs boo#1175132 go1.15 release tracking
+  * See release notes https://golang.org/doc/go1.15. Excerpts
+    relevant to OBS environment and for SUSE/openSUSE follow:
+  * Module support in the go command is ready for production use,
+    and we encourage all users to migrate to Go modules for
+    dependency management.
+  * Module cache: The location of the module cache may now be set
+    with the GOMODCACHE environment variable. The default value of
+    GOMODCACHE is GOPATH[0]/pkg/mod, the location of the module
+    cache before this change.
+  * Compiler flag parsing: Various flag parsing issues in go test
+    and go vet have been fixed. Notably, flags specified in
+    GOFLAGS are handled more consistently, and the -outputdir flag
+    now interprets relative paths relative to the working
+    directory of the go command (rather than the working directory
+    of each individual test).
+  * The GOPROXY environment variable now supports skipping proxies
+    that return errors. Proxy URLs may now be separated with
+    either commas (,) or pipe characters (|). If a proxy URL is
+    followed by a comma, the go command will only try the next
+    proxy in the list after a 404 or 410 HTTP response. If a proxy
+    URL is followed by a pipe character, the go command will try
+    the next proxy in the list after any error. Note that the
+    default value of GOPROXY remains
+    https://proxy.golang.org,direct, which does not fall back to
+    direct in case of errors.
+  * On a Unix system, if the kill command or kill system call is
+    used to send a SIGSEGV, SIGBUS, or SIGFPE signal to a Go
+    program, and if the signal is not being handled via
+    os/signal.Notify, the Go program will now reliably crash with
+    a stack trace. In earlier releases the behavior was
+    unpredictable.
+  * Allocation of small objects now performs much better at high
+    core counts, and has lower worst-case latency.
+  * Go 1.15 reduces typical binary sizes by around 5% compared to
+    Go 1.14 by eliminating certain types of GC metadata and more
+    aggressively eliminating unused type metadata.
+  * The toolchain now mitigates Intel CPU erratum SKX102 on
+    GOARCH=amd64 by aligning functions to 32 byte boundaries and
+    padding jump instructions. While this padding increases binary
+    sizes, this is more than made up for by the binary size
+    improvements mentioned above.
+  * Go 1.15 adds a -spectre flag to both the compiler and the
+    assembler, to allow enabling Spectre mitigations. These should
+    almost never be needed and are provided mainly as a "defense
+    in depth" mechanism. See the Spectre Go wiki page for details.
+  * The compiler now rejects //go: compiler directives that have
+    no meaning for the declaration they are applied to with a
+    "misplaced compiler directive" error. Such misapplied
+    directives were broken before, but were silently ignored by
+    the compiler.
+  * Substantial improvements to the Go linker, which reduce linker
+    resource usage (both time and memory) and improve code
+    robustness/maintainability. Linking is 20% faster and requires
+    30% less memory on average. These changes are part of a
+    multi-release project to modernize the Go linker, meaning that
+    there will be additional linker improvements expected in
+    future releases.
+  * The linker now defaults to internal linking mode for
+    -buildmode=pie on linux/amd64 and linux/arm64, so these
+    configurations no longer require a C linker.
+  * There has been progress in improving the stability and
+    performance of the 64-bit RISC-V port on Linux (GOOS=linux,
+    GOARCH=riscv64). It also now supports asynchronous preemption.
+  * crypto/x509: The deprecated, legacy behavior of treating the
+    CommonName field on X.509 certificates as a host name when no
+    Subject Alternative Names are present is now disabled by
+    default. It can be temporarily re-enabled by adding the value
+    x509ignoreCN=0 to the GODEBUG environment variable. Note that
+    if the CommonName is an invalid host name, it's always
+    ignored, regardless of GODEBUG settings. Invalid names include
+    those with any characters other than letters, digits, hyphens
+    and underscores, and those with empty labels or trailing dots.
+  * crypto/x509: go1.15 applications with an AWS DB instance that
+    was created or updated to the rds-ca-2019 certificate prior to
+    July 28, 2020, you must update the certificate again. If you
+    created your DB instance or updated its certificate after July
+    28, 2020, no action is required. For more information, see
+    go#39568
+
+-------------------------------------------------------------------
+Fri Aug  7 23:30:11 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.15rc2 (released 2020-08-07) is a release candidate of go1.15
+  cut from the master branch at the revision tagged go1.15rc2.
+
+-------------------------------------------------------------------
+Fri Jul 24 21:15:52 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.15rc1 (released 2020-07-24) is a release candidate of go1.15
+  cut from the master branch at the revision tagged go1.15rc1.
+
+-------------------------------------------------------------------
+Fri Jun 12 16:21:05 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.15beta1 (released 2020-06-11) is a beta version of go1.15 cut
+  from the master branch at the revision tagged go1.15beta1.

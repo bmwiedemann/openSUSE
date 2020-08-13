@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 10:55:38 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(isns) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.0
+
+-------------------------------------------------------------------
 Fri May 31 12:32:18 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Add metainfo (fate#319035)

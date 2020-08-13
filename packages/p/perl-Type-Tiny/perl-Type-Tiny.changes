@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug  9 03:10:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.010003
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010003	2020-08-08	The Crazy 88
+
+   [ Bug Fixes ]
+   - ClassName type constraint should treat empty @ISA as if no @ISA were
+     defined, like Type::Tiny::XS.
+     Fixes RT#132583.
+     Szymon Nieznański++
+     <https://rt.cpan.org/Ticket/Display.html?id=132583>
+   - Fix for Type::Tiny->can called as a class method.
+     Meredith Howard++
+     <https://github.com/tobyink/p5-type-tiny/pull/57>
+   - Fix predeclared types in Type::Library.
+     Meredith Howard++
+     <https://github.com/tobyink/p5-type-tiny/pull/58>
+
+   [ Documentation ]
+   - Document some edge cases for Types::Standard Int.
+     <https://rt.cpan.org/Ticket/Display.html?id=132754>
+
+-------------------------------------------------------------------
 Sat May  2 03:17:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 1.010002

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 17:11:58 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace pypi.python.org Source URL with the canonical files.pythonhosted.org
+- Run SPEC file through spec-cleaner.
+
+-------------------------------------------------------------------
 Tue Jan  8 23:06:06 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
 
 - Remove redundant /etc/alternatives files produced on Red Hat

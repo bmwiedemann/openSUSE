@@ -322,4 +322,24 @@
     maxMessageSizeBytes when generating a compressed bulk write command.</comment>
     <requestid>783016</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>bdb11a63049cd82a5d7c5e1b83789d9e</srcmd5>
+    <version>3.11.0</version>
+    <time>1597306480</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.0:
+  * Version 3.11 adds support for MongoDB 4.4 and includes a number of bug fixes.
+  * Support for OCSP (Online Certificate Status Protocol).
+  * Support for PyOpenSSL as an alternative TLS implementation.
+  * Support for the MONGODB-AWS authentication mechanism.
+  * Support for the directConnection URI option and kwarg to MongoClient.
+  * Support for speculative authentication attempts in connection handshakes which reduces the number of network roundtrips needed to authenticate new connections on MongoDB 4.4+.
+  * Support for creating collections in multi-document transactions with create_collection() on MongoDB 4.4+.
+  * Added index hinting support to the ReplaceOne, UpdateOne, UpdateMany, DeleteOne, and DeleteMany bulk operations.
+  * Added support for bson.binary.UuidRepresentation.UNSPECIFIED and MongoClient(uuidRepresentation='unspecified') which will become the default UUID representation starting in PyMongo 4.0. See Handling UUID Data for details.
+  * Added the background parameter to pymongo.database.Database.validate_collection(). For a description of this parameter see the MongoDB documentation for the validate command.
+  * Added the allow_disk_use parameters to pymongo.collection.Collection.find().
+  * Added the hedge parameter to PrimaryPreferred, Secondary, SecondaryPreferred, Nearest to support disabling (or explicitly enabling) hedged reads in MongoDB 4.4+.</comment>
+    <requestid>824650</requestid>
+  </revision>
 </revisionlist>

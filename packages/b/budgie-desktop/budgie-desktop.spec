@@ -23,7 +23,7 @@ Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
-URL:            https://solus-project.com/budgie/
+URL:            https://getsol.us/solus/experiences/
 Source:         https://github.com/solus-project/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/solus-project/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -58,19 +58,20 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen) >= 0.28
+BuildRequires:  (pkgconfig(libmutter-5) or pkgconfig(libmutter-6))
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(gnome-settings-daemon)
+BuildRequires:  pkgconfig(alsa)
 Requires:       typelib-1_0-PeasGtk-1_0
 Requires:       typelib-1_0-Budgie-1_0
 Requires:       ibus
+Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
 #Recommends:     gnome-screensaver
 Recommends:     NetworkManager-applet
 Recommends:     gnome-backgrounds
 Recommends:     gnome-control-center
 Recommends:     budgie-desktop-doc
-BuildRequires:  (pkgconfig(libmutter-5) or pkgconfig(libmutter-6))
-BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(gnome-settings-daemon)
-BuildRequires:  pkgconfig(alsa)
 %define vala_version %(rpm -q --queryformat='%%{VERSION}' vala | sed 's/\.[0-9]*$//g')
 
 %description
@@ -154,6 +155,7 @@ mkdir -pv %{buildroot}%{_datadir}/vala-%{vala_version}/
 mv %{buildroot}%{_datadir}/vala/* %{buildroot}%{_datadir}/vala-%{vala_version}/
 rm -Rf %{buildroot}%{_datadir}/vala/
 
+# update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
@@ -189,7 +191,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_datadir}/icons/hicolor/scalable/*/*.svg
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
-%{_libdir}/budgie-desktop/
+%{_libdir}/budgie-desktop
 %{_sysconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 
@@ -206,8 +208,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_libdir}/libbudgie-private.so.*
 
 %files devel
-%dir %{_includedir}/budgie-desktop
-%{_includedir}/budgie-desktop/*.h
+%{_includedir}/budgie-desktop
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/Budgie-1.0.gir
@@ -217,7 +218,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_libdir}/girepository-1.0/Budgie-1.0.typelib
 
 %files doc
-%{_datadir}/gtk-doc/html/budgie-desktop/
+%{_datadir}/gtk-doc/html/budgie-desktop
 
 %files lang -f %{name}.lang
 

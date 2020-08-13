@@ -22,7 +22,7 @@
 %if 0%{?suse_version} > 1500
 %bcond_without system_icu
 %bcond_without system_vpx
-%bcond_without wayland
+%bcond_with wayland
 %else
 %bcond_with system_icu
 %bcond_with system_vpx
@@ -42,7 +42,7 @@
 %endif
 %ifarch x86_64
 %if %{?suse_version} > 1500
-%bcond_with lto
+%bcond_without lto
 %else
 %bcond_with lto
 %endif
@@ -51,7 +51,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        84.0.4147.89
+Version:        84.0.4147.125
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -120,6 +120,7 @@ Patch101:       old-libva.patch
 Patch102:       chromium-vaapi-fix.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch200:       chromium-prop-codecs.patch
+Patch201:       chromium-disable-parallel-gold.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -410,7 +411,6 @@ keeplibs=(
     third_party/libsrtp
     third_party/libsync
     third_party/libudev
-    third_party/libusb
     third_party/libwebm
     third_party/libxml/chromium
     third_party/libyuv
@@ -528,10 +528,6 @@ keeplibs+=(
 )
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
-# hack for libusb stuff
-rm -rf third_party/libusb/src/libusb/libusb.h
-cp -a %{_includedir}/libusb-1.0/libusb.h third_party/libusb/src/libusb/libusb.h
-
 %build
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
@@ -573,12 +569,6 @@ export PATH="$HOME/bin/:$PATH"
 %endif
 # do not eat all memory
 %limit_build -m 2600
-%if %{with lto}
-# reduce the threads for linking even more due to LTO eating ton of memory
-_link_threads=$(((%{jobs} - 2)))
-test "$_link_threads" -le 0 && _link_threads=1
-export LDFLAGS="-flto=$_link_threads --param lto-max-streaming-parallelism=1"
-%endif
 
 # Set system libraries to be used
 gn_system_libraries=(

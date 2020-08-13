@@ -3051,4 +3051,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 - Use bundled xcb-proto as we need to generate py2 bindings</comment>
     <requestid>821455</requestid>
   </revision>
+  <revision rev="262" vrev="1">
+    <srcmd5>76f835615021065eac4beba99cfd2b58</srcmd5>
+    <version>84.0.4147.125</version>
+    <time>1597306506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826031</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:25:09 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't install SuSEfirewall2 services, we don't have that package
+  anymore
+
+-------------------------------------------------------------------
 Thu Jul  2 15:18:42 UTC 2020 - Noel Power <nopower@suse.com>
 
 - Update to samba 4.12.5

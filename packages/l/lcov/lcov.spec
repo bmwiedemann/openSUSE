@@ -17,7 +17,7 @@
 
 
 Name:           lcov
-Version:        1.15+git.20200723.b668fab
+Version:        1.15+git.20200812.d100e6c
 Release:        0
 Summary:        A Graphical GCOV Front-end
 License:        GPL-2.0-or-later

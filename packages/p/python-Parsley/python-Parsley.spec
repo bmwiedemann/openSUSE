@@ -17,7 +17,7 @@
 #
 
 
-%define oname   Parsley
+%define modname  Parsley
 %define oldpython python
 Name:           python-Parsley
 Version:        1.3
@@ -25,7 +25,7 @@ Release:        0
 Summary:        PEG algorithm based parser generator
 License:        MIT
 URL:            https://github.com/washort/parsley
-Source:         https://pypi.python.org/packages/source/P/%{oname}/%{oname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +51,7 @@ as yacc, bison or PLY.
 The binaries are prefixed with parsley-.
 
 %prep
-%setup -q -n %{oname}-%{version}
+%setup -q -n %{modname}-%{version}
 # Remove with bump, missing fixtures
 rm -f ometa/test/test_vm_builder.py
 

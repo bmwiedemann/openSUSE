@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-isns
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-isns
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Configuration of isns
 License:        GPL-2.0-only
@@ -37,6 +37,8 @@ BuildRequires:  yast2 >= 4.1.3
 # Yast2::Systemd::Service
 Requires:       yast2 >= 4.1.3
 Requires:       yast2-ruby-bindings >= 1.0.0
+
+Supplements:    autoyast(isns)
 
 BuildArch:      noarch
 

@@ -917,4 +917,13 @@
   (boo#1173786)</comment>
     <requestid>819887</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>e1edac8d912fd3b775c033f6fc959cb8</srcmd5>
+    <version>7.4.9</version>
+    <time>1597306496</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.9: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.9 (forwarded request 824687 from adkorte)</comment>
+    <requestid>824689</requestid>
+  </revision>
 </revisionlist>
