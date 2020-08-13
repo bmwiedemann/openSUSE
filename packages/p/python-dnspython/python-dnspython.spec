@@ -1,7 +1,7 @@
 #
 # spec file for package python-dnspython
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,38 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-dnspython
-Version:        1.16.0
+Version:        2.0.0
 Release:        0
 Summary:        A DNS toolkit for Python
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/rthalley/dnspython
-Source:         http://dnspython.org/kits/%{version}/dnspython-%{version}.tar.gz
-Source2:        http://dnspython.org/kits/%{version}/dnspython-%{version}.tar.gz.asc
-Source3:        python-dnspython.keyring
+Source:         https://files.pythonhosted.org/packages/source/d/dnspython/dnspython-%{version}.zip
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python3-base >= 3.6
+# SECTION tests
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module pycryptodome}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module requests-toolbelt}
+BuildRequires:  %{python_module trio >= 0.14.0}
 BuildRequires:  %{python_module typing}
+# /SECTION tests
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 Requires:       python-ecdsa
 Requires:       python-pycryptodome
+Requires:       python-requests-toolbelt
 BuildArch:      noarch
-Recommends:     python-idna
+Recommends:     python-cryptography
+Recommends:     python-idna >= 2.1
+Recommends:     python-trio >= 0.14.0
+Recommends:     python-sniffio >= 1.1
 
 %description
 dnspython is a DNS toolkit for Python. It supports almost all
@@ -50,15 +60,13 @@ level classes perform queries for data of a given name, type, and
 class, and return an answer set. The low level classes allow direct
 manipulation of DNS zones, messages, names, and records.
 
-dnspython originated at Nominum where it was developed to
-facilitate the testing of DNS software. Nominum has generously
-allowed it to be opened under a BSD-style licence.
-
 %python_subpackages
 
 %prep
 %setup -q -n dnspython-%{version}
 chmod -x examples/*
+# Two sets of fail which fail on openssl 1.1.0i and lower
+sed -Ei 's/def (testAbsoluteED)(448|25519)/def _\1\2/' tests/test_dnssec.py
 
 %build
 %python_build
@@ -68,8 +76,9 @@ chmod -x examples/*
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
-# Skip the resolver test suite as it requires Internet connection.
-#test -f tests/test_resolver.py && rm tests/test_resolver.py
+%if  %python3_version_nodots  < 37
+rm tests/nanonameserver.py
+%endif
 %python_exec setup.py test
 
 %files %{python_files}
