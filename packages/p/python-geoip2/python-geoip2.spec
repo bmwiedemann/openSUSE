@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-geoip2
-Version:        3.0.0
+Version:        4.0.2
 Release:        0
 Summary:        MaxMind GeoIP2 Python API
 License:        Apache-2.0
@@ -31,12 +31,15 @@ BuildRequires:  %{python_module urllib3 >= 1.25.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module maxminddb >= 1.5.2}
-BuildRequires:  %{python_module requests >= 2.22.0}
-BuildRequires:  %{python_module requests-mock >= 0.5}
+BuildRequires:  %{python_module aiohttp >= 3.6.2}
+BuildRequires:  %{python_module maxminddb >= 2.0.0}
+BuildRequires:  %{python_module mocket >= 3.8.6}
+BuildRequires:  %{python_module python-magic >= 0.4.18}
+BuildRequires:  %{python_module requests >= 2.24.0}
 # /SECTION
-Requires:       python-maxminddb >= 1.5.2
-Requires:       python-requests >= 2.22.0
+Requires:       python-aiohttp >= 3.6.2
+Requires:       python-maxminddb >= 2.0.0
+Requires:       python-requests >= 2.24.0
 Requires:       python-urllib3 >= 1.25.2
 BuildArch:      noarch
 %ifpython2
