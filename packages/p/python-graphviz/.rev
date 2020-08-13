@@ -80,4 +80,24 @@
     <comment></comment>
     <requestid>750863</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0ec9383cb1a119b5bf55bbf448c4a924</srcmd5>
+    <version>0.14.1</version>
+    <time>1597306347</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.1
+  * Document the colon-separated ``node[:port[:compass]]`` format used for ``tail``
+  and ``head`` points in the ``edge()``- and ``edges()``-methods'
+  * Improve handling of escaped quotes (``\&quot;``). Different from other layout engine
+  escapes sequences such as ``\l`` and ``\N`` (which are passed on as is by
+  default), there is no use case for backslash-escaping a literal quote character
+  because escaping of quotes is done by this library. Therefore, a
+  backslash-escaped quote (e.g. in ``label='\\&quot;'``) is now treated the same as a
+  plain unescaped quote, i.e. both ``label='&quot;'`` and ``label='\\&quot;'`` produce
+  the same DOT source ``[label=&quot;\&quot;&quot;]`` (a label that renders as a literal quote).
+  Before this change, use of ``'\\&quot;'`` could break the quoting mechanism creating
+  invalid or unintended DOT, possibly leading to syntax errors from the rendering
+  process.</comment>
+    <requestid>825341</requestid>
+  </revision>
 </revisionlist>
