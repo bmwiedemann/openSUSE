@@ -185,7 +185,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.5.0
+Version:        6.6.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -259,9 +259,7 @@ BuildRequires:  sanlock-devel >= 2.4
 BuildRequires:  libnl3-devel
 BuildRequires:  libpcap-devel >= 1.5.0
 BuildRequires:  libselinux-devel
-%if 0%{?suse_version} >= 1330
 BuildRequires:  libtirpc-devel
-%endif
 %if %{with_apparmor}
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  libapparmor-devel

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  4 22:46:13 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 6.6.0
+  - CVE-2020-14339
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+
+-------------------------------------------------------------------
 Mon Jul  6 14:58:35 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 6.5.0

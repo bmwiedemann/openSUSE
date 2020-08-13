@@ -3,10 +3,10 @@ tests: temporarily disable the new multipath PR tests
 The new multipath PR tests are failing in a build root env.
 Disable them for now until discussing a solution with upstream.
 
-Index: libvirt-6.5.0/tests/qemuhotplugtest.c
+Index: libvirt-6.6.0/tests/qemuhotplugtest.c
 ===================================================================
---- libvirt-6.5.0.orig/tests/qemuhotplugtest.c
-+++ libvirt-6.5.0/tests/qemuhotplugtest.c
+--- libvirt-6.6.0.orig/tests/qemuhotplugtest.c
++++ libvirt-6.6.0/tests/qemuhotplugtest.c
 @@ -87,8 +87,6 @@ qemuHotplugCreateObjects(virDomainXMLOpt
      virQEMUCapsSet(priv->qemuCaps, QEMU_CAPS_VNC);
      virQEMUCapsSet(priv->qemuCaps, QEMU_CAPS_SPICE);

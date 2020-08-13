@@ -3616,4 +3616,12 @@ StandardGroups in rpmlint package.
     ec07aad8-libxl-normalize-mac-addr.patch</comment>
     <requestid>819047</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>a969f12fc0ce305a8d9eec2105f60a74</srcmd5>
+    <version>6.6.0</version>
+    <time>1597306418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824562</requestid>
+  </revision>
 </revisionlist>
