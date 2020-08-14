@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Aug 10 07:24:49 UTC 2020 - Stefan Haas <stefan.haas@suse.com>
+
+- Update to v1.4.0:
+  * Ceph-CSI 3.0 is deployed by default
+    * Multi Architecture docker images are published (amd64 and arm64)
+    * Create/Delete beta snapshot for RBD, while support for Alpha snapshots is removed.
+    * Create PVCs from RBD snapshots and PVCs
+    * Support ROX volumes for RBD and CephFS
+    * The dashboard for the ceph object store will be enabled if the dashboard module is enabled.
+  * An admission controller enhances CRD validations (Experimental)
+    * The admission controller is not enabled by default.
+    * Support for Ceph CRDs is provided. Some validations for CephClusters are included and a framework for additional validations is in place for other CRDs.
+  * RGW Multisite is available through new CRDs for zones, zone groups, and realms. (Experimental)
+  * CephObjectStore CRD changes:
+    * Health displayed in the Status field
+    * Run health checks on the object store endpoint by creating a bucket and writing to it periodically.
+    * The endpoint is stored for reference in the Status field
+  * OSD changes:
+    * OSDs on PVC now support multipath and crypt device types.
+    * OSDs on PVC can now be encrypted by setting encrypted: true on the storageClassDeviceSet.
+    * OSDs can now be provisioned using Ceph's Drive Groups definitions for Ceph Octopus v15.2.5+.
+    * OSDs can be provisioned on the device path such as /dev/disk/by-path/pci-HHHH:HH:HH.H with colons (:)
+  * A new CephRBDMirror CR will configure the RBD mirroring daemons. The RBD mirror settings were previously included in the CephCluster CR.
+  * Multus support is improved, though still in experimental mode
+    * Added support for the Whereabouts IPAM
+  * CephCluster CRD changes:
+    * Converted to use the controller-runtime framework
+    * Added settings to configure health checks as well as pod liveness probes.
+  * CephBlockPool CRD has a new field called parameters which allows to set any Ceph pool property on a given pool
+  * OBC changes:
+    * Updated the lib bucket provisioner version to support multithreading
+    * Added support for quota, have options for object count and total size.
+  * Prometheus monitoring for external clusters is now possible, refer to the external cluster section
+  * The operator will check for the presence of the lvm2 package on the host where OSDs will run. If not available, the prepare job will fail. This will prevent issues of OSDs not restarting on node reboot.
+  * Added a new label ceph_daemon_type to Ceph daemon pods.
+  * Added a toolbox job example for running a script with Ceph commands, similar to running commands in the Rook toolbox.
+
+-------------------------------------------------------------------
 Wed May 27 09:57:20 UTC 2020 - Stefan Haas <stefan.haas@suse.com>
 
 - Update to v1.3.4:
