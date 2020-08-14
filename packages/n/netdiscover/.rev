@@ -45,4 +45,16 @@
   * Fix build with GCC 10. (Jaime PeÃ±alba)</comment>
     <requestid>802849</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>487c1bcf7af155ce66ffe5624031347c</srcmd5>
+    <version>0.7</version>
+    <time>1597390418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7:
+  * Updated create-man.sh to 2.0 version.
+  * Updated manpage dates.
+  * Updated update-oui-database.sh to be useful in macOS.
+  * Updated OUI table.</comment>
+    <requestid>826270</requestid>
+  </revision>
 </revisionlist>

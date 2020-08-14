@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 12:01:50 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7:
+  * Updated create-man.sh to 2.0 version.
+  * Updated manpage dates.
+  * Updated update-oui-database.sh to be useful in macOS.
+  * Updated OUI table.
+
+-------------------------------------------------------------------
 Tue May 12 07:39:34 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.6:
