@@ -7305,4 +7305,10 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <time>1597432096</time>
     <user>staging-bot</user>
   </revision>
+  <revision rev="1217" vrev="1217">
+    <srcmd5>6f2ade26d6b0a4f76f2d6956cf8fe4ca</srcmd5>
+    <version>unknown</version>
+    <time>1597432119</time>
+    <user>staging-bot</user>
+  </revision>
 </revisionlist>
