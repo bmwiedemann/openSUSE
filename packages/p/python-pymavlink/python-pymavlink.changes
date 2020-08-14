@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  7 13:42:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.4.9
+  * tools: add mavfft_pid.py to allow FFT analysis for pids in log files
+  * Add support for generating Lua 5.3 code for use with ArduPilot
+  * make magfit_WMM.py an installable tool
+  * few bugfixes
+
+-------------------------------------------------------------------
 Wed May 20 07:26:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

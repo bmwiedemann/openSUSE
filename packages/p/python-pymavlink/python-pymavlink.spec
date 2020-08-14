@@ -17,10 +17,10 @@
 #
 
 
-%define binaries mavtomfile mavtogpx mavsummarize mavsigloss mavsearch mavplayback mavparms mavparmdiff mavmission mavloss mavlogdump mavlink_bitmask_decoder mavkml mavgraph mavgpslock mavgen mavflighttime mavflightmodes mavfft_isb mavfft mavextract magfit_motors magfit_gps magfit_delta magfit MPU6KSearch
+%define binaries mavtomfile mavtogpx mavsummarize mavsigloss mavsearch mavplayback mavparms mavparmdiff mavmission mavloss mavlogdump mavlink_bitmask_decoder mavkml mavgraph mavgpslock mavgen mavflighttime mavflightmodes mavfft_isb mavfft mavextract magfit_motors magfit_gps magfit_delta magfit_WMM magfit MPU6KSearch
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymavlink
-Version:        2.4.6
+Version:        2.4.9
 Release:        0
 Summary:        Python MAVLink code
 License:        LGPL-3.0-only
@@ -91,6 +91,7 @@ done
 %doc README.md
 %python_alternative %{_bindir}/MPU6KSearch
 %python_alternative %{_bindir}/magfit
+%python_alternative %{_bindir}/magfit_WMM
 %python_alternative %{_bindir}/magfit_delta
 %python_alternative %{_bindir}/magfit_gps
 %python_alternative %{_bindir}/magfit_motors
