@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:15:02 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(geo-cluster) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.2
+
+-------------------------------------------------------------------
 Wed May 27 15:03:16 UTC 2020 - Martin Vidner <mvidner@suse.com>
 
 - Autoyast schema: Fix for inclusion in yast2-schema (bsc#1170886)

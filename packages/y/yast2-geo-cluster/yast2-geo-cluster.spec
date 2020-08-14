@@ -17,7 +17,7 @@
 
 
 Name:           yast2-geo-cluster
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        Configuration of booth
 License:        GPL-2.0-only
@@ -34,6 +34,8 @@ BuildRequires:  yast2-devtools >= 4.2.2
 Requires:       autoyast2-installation
 Requires:       yast2 >= 4.0.39
 Requires:       yast2-ruby-bindings >= 1.0.0
+
+Supplements:    autoyast(geo-cluster)
 
 BuildArch:      noarch
 
