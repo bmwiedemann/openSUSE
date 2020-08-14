@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug  6 12:00:08 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoinstProposal now properly reports the proposal as failed when
+  it fails to find the disks (bsc#1174469)
+- 4.3.14
+
+-------------------------------------------------------------------
+Wed Aug  5 15:06:26 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Proposal: fixed detection of shadowed subvolumes for roles using
+  separate LVM volume groups for each filesystem (bsc#1174475).
+- 4.3.13
+
+-------------------------------------------------------------------
+Fri Jul 17 11:44:48 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Partitioner: fix stripes size reported for thin LVs.
+- Partitioner: do not show stripes size when its value is zero.
+
+-------------------------------------------------------------------
 Tue Jul  7 10:57:59 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Partitioner: fix and improve the information shown for each
