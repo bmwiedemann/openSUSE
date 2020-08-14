@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:52:47 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- AutoYaST: moved the configuration into first stage (bsc#1173624)
+- 4.3.4
+
+-------------------------------------------------------------------
+Tue Aug 11 12:05:15 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(firewall) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.3
+
+-------------------------------------------------------------------
 Thu Jul 23 15:55:52 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - AutoYaST: Only export modified zones when it is asked to export a

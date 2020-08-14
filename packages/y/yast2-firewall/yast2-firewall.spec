@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firewall
-Version:        4.3.2
+Version:        4.3.4
 Release:        0
 Summary:        YaST2 - Firewall Configuration
 License:        GPL-2.0-only
@@ -49,6 +49,8 @@ Provides:       yast2-trans-firewall
 
 Obsoletes:      yast2-config-firewall
 Obsoletes:      yast2-trans-firewall
+
+Supplements:    autoyast(firewall)
 
 BuildArch:      noarch
 
