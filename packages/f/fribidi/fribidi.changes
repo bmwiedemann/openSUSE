@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Aug  9 20:02:12 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 1.0.10:
+  * Fixed various compilation problems and symbol exports necessary for
+    proper compilation under windows.
+- Changes from version 1.0.9:
+  * A bug fix in the fribidi unicode algorithm where isolate sequences were
+    not really isolated.
+  * Restored mistakenly removed deprecated function
+    fribidi_log2vis_get_embedding_levels()
+  * autotools now generates xz archives instead of bzip2 archives
+- Changes from version 1.0.8:
+  * A bug fix in the fribidi unicode algorithm for multiple isolate
+    sequences.
+  * Fixed a potential buffer overflow for a long sequence of isolate
+    overrides characters
+- Changes from version 1.0.7:
+  * This is a minor bugfix that removes symlinks and updates the meson
+    version.
+- Changes from version 1.0.6:
+  * This is a minor bugfix release that fixes a list of minor issues that
+    have turned up during the last year.
+  * Various compilation and cross compilation issues.
+  * Various minor header cleanups.
+  * Removed libc's bsearch for performance and portability reasons
+- Run spec-cleaner
+  * Remove package groups
+- Drop patches fixed upstream
+  * Truncate-isolate_level-to-FRIBIDI_BIDI_MAX_EXPLICIT_.diff
+  * no-config-h.diff
+
+-------------------------------------------------------------------
 Fri May 22 14:43:34 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add no-config-h.diff - copied from Debian

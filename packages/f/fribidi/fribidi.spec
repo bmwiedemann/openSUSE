@@ -18,18 +18,13 @@
 
 %define lname   libfribidi0
 Name:           fribidi
-Version:        1.0.5
+Version:        1.0.10
 Release:        0
 Summary:        An implementation of the Unicode BiDi algorithm
 License:        LGPL-2.1-only
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/fribidi/fribidi
-Source:         https://github.com/fribidi/fribidi/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+Source:         https://github.com/fribidi/fribidi/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
-# PATCH-FIX-UPSTREAM no-config-h.diff - copied from Debian
-Patch1:         no-config-h.diff
-# PATCH-FIX-UPSTREAM Truncate-isolate_level-to-FRIBIDI_BIDI_MAX_EXPLICIT_.diff - copied from Debian
-Patch2:         Truncate-isolate_level-to-FRIBIDI_BIDI_MAX_EXPLICIT_.diff
 BuildRequires:  pkgconfig
 #
 Provides:       locale(ar;he)
@@ -44,7 +39,6 @@ Standard Annex #9, the Bidirectional Algorithm".
 
 %package -n %{lname}
 Summary:        An implementation of the Unicode BiDi algorithm
-Group:          System/Libraries
 
 %description -n %{lname}
 This library implements the algorithm as described in "Unicode
@@ -59,16 +53,13 @@ adding BiDi support to Mozilla.
 
 %package devel
 Summary:        Development Files for FriBiDi
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
 This package provides headers and manual files for FriBiDi.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static
