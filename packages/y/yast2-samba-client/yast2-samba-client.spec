@@ -17,7 +17,7 @@
 
 
 Name:           yast2-samba-client
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        YaST2 - Samba Client Configuration
 License:        GPL-2.0-only
@@ -44,6 +44,8 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 Conflicts:      yast2-kerberos-client < 3.1.2
 
 Recommends:     samba-python3
+
+Supplements:    autoyast(samba-client)
 
 BuildArch:      noarch
 
