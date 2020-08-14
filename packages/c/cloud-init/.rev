@@ -902,4 +902,12 @@
     <comment>- Disable testing to aid elimination of unittest2 in Factory</comment>
     <requestid>815739</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>f1ce0747763ae6f3c44bdb6981cb15d7</srcmd5>
+    <version>20.2</version>
+    <time>1597390179</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>826089</requestid>
+  </revision>
 </revisionlist>
