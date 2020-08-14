@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 12:22:20 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(configuration-management)
+  into the spec file in order to install this packages if the
+  section has been defined in the AY configuration file (bsc#1146494).
+- 4.3.3
+
+-------------------------------------------------------------------
 Fri Jul 24 08:44:41 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Handle exceptions when parsing xml file (related to bsc#1170886)

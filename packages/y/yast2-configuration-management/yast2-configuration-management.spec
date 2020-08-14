@@ -17,7 +17,7 @@
 
 
 Name:           yast2-configuration-management
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Url:            https://github.com/yast/yast-migration
 Summary:        YaST2 - YaST Configuration Management
@@ -37,6 +37,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 # CWM DateField and TimeField widgets
 Requires:       yast2 => 4.1.53
 Requires:       yast2-installation
+
+Supplements:    autoyast(configuration-management)
 
 BuildArch:      noarch
 
