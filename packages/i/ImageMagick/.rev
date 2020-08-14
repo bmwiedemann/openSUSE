@@ -2699,4 +2699,38 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/pull/2081).</comment>
     <requestid>817194</requestid>
   </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>a4b0308909b9f666d019ba3925a46b35</srcmd5>
+    <version>7.0.10.27</version>
+    <time>1597390246</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.27
+  * fix regression when detecting the libz delegate library.
+  * Add animated webp blend method support (reference
+    https://github.com/ImageMagick/ImageMagick/pull/2351).
+  * Add support for OpenRaster (.ora) image format (reference
+    https://github.com/ImageMagick/ImageMagick/pull/2342).
+  * Paths in Photoshop EPS files are no longer corrupted (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2380).
+
+- version update to 7.0.10.25
+  * Remove UseCIEColor setting from PDF code as its use is not recommended.
+  * Update to the latest documentation.
+  * To preserve compression of input image with the tiff encoder use:
+    -define tiff:preserve-compression=true.
+  * Add support for the -white-balance command-line option.
+  * Discover hidden files when globbing (e.g. *.jpg) (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2239).
+  * New inverse-log evaluate operator.
+  * Ensure that float is valid in ClampToQuantum() (reference
+    https://github.com/ImageMagick/ImageMagick/pull/2219).
+  * New pseudo-image format, ashlar, e.g.
+    convert *.jpg -resize 320x320 ashlar:canvas.png).
+
+- version update to 7.0.10.22
+  * fix wrapping of caption (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2178).
+  * sanity check of affine matrix when drawing.</comment>
+    <requestid>825763</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Aug 11 10:35:44 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.27
+  * fix regression when detecting the libz delegate library.
+  * Add animated webp blend method support (reference
+    https://github.com/ImageMagick/ImageMagick/pull/2351).
+  * Add support for OpenRaster (.ora) image format (reference
+    https://github.com/ImageMagick/ImageMagick/pull/2342).
+  * Paths in Photoshop EPS files are no longer corrupted (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2380).
+
+-------------------------------------------------------------------
+Tue Aug  4 08:07:37 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.25
+  * Remove UseCIEColor setting from PDF code as its use is not recommended.
+  * Update to the latest documentation.
+  * To preserve compression of input image with the tiff encoder use:
+    -define tiff:preserve-compression=true.
+  * Add support for the -white-balance command-line option.
+  * Discover hidden files when globbing (e.g. *.jpg) (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2239).
+  * New inverse-log evaluate operator.
+  * Ensure that float is valid in ClampToQuantum() (reference
+    https://github.com/ImageMagick/ImageMagick/pull/2219).
+  * New pseudo-image format, ashlar, e.g.
+    convert *.jpg -resize 320x320 ashlar:canvas.png).
+
+-------------------------------------------------------------------
+Tue Jun 30 06:55:55 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.22
+  * fix wrapping of caption (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2178).
+  * sanity check of affine matrix when drawing.
+
+-------------------------------------------------------------------
 Fri Jun 26 06:58:03 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.10.21
