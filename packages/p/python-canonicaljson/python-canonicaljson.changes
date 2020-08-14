@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 13 21:28:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.2.0:
+  - JSON from the standard library is used automatically on PyPy.
+  - Support for Python versions which are end-of-lifed was dropped,
+    Python >= 3.5 is supported and tested in continuous
+    integration.
+  - An API to configure the underlying JSON library was added
+    (set_json_library).
+
+-------------------------------------------------------------------
 Thu Feb 28 09:34:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.4:
