@@ -17,7 +17,7 @@
 
 
 Name:           yast2-kdump
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        Configuration of kdump
 License:        GPL-2.0-only
@@ -53,6 +53,8 @@ Recommends:     makedumpfile
 Conflicts:      yast2-installation < 3.1.198
 
 Supplements:    (yast2 and kdump)
+
+Supplements:    autoyast(kdump)
 
 %description
 Configuration of kdump

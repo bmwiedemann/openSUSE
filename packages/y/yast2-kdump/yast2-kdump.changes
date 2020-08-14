@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 16:20:25 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(kdump) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.2
+
+-------------------------------------------------------------------
 Tue Jun  9 19:43:21 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Reduce autoyast profile size if kdump is disabled (bsc#1172749)
