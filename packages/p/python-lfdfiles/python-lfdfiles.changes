@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Aug 10 11:58:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update the archive to match up the upstream one
+
+-------------------------------------------------------------------
+Fri Jul 31 15:15:25 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update spec file to use python alternative.
+
+-------------------------------------------------------------------
+Mon Jun  1 02:04:12 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2020.1.1.
+  *Read CZI files via czifile module.
+  *Read Olympus Image files via oiffile module.
+  *Read Netpbm formats via netpbmfile module.
+  *Add B64, Z64, and I64 write functions.
+  *Remove support for Python 2.7 and 3.5.
+  *Update copyright.
+ 
+
+-------------------------------------------------------------------
+Mon Mar  4 07:41:58 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2019.2.20
