@@ -1,7 +1,7 @@
 #
 # spec file for package augeas
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %define libname lib%{name}0
 Name:           augeas
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        An utility for changing configuration files
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-Url:            http://augeas.net/
+URL:            https://augeas.net/
 Source0:        http://download.augeas.net/augeas-%{version}.tar.gz
 Source1:        http://download.augeas.net/augeas-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
@@ -44,7 +43,6 @@ file format and the transformation into a tree.
 
 %package        devel
 Summary:        A library for changing configuration files
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description    devel
@@ -59,7 +57,6 @@ file format and the transformation into a tree.
 
 %package        -n %{libname}
 Summary:        A library for changing configuration files
-Group:          System/Libraries
 Recommends:     %{name}-lenses = %{version}
 
 %description    -n %{libname}
@@ -74,7 +71,6 @@ file format and the transformation into a tree.
 
 %package        lenses
 Summary:        Official set of lenses for use by %{libname}
-Group:          System/Libraries
 Requires:       %{libname} = %{version}
 
 %description    lenses
@@ -87,7 +83,6 @@ set of lenses.
 
 %package        lense-tests
 Summary:        Set of tests for official Augeas lenses
-Group:          Development/Libraries/Other
 Requires:       %{name}-lenses = %{version}
 
 %description    lense-tests
@@ -104,7 +99,7 @@ modifying the official lenses, or when creating new ones.
 	--disable-static \
 	--disable-silent-rules \
 	--disable-rpath
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -113,7 +108,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mv %{buildroot}/%{_datadir}/vim/vimfiles %{buildroot}/%{_datadir}/vim/site
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
