@@ -17,7 +17,7 @@
 
 
 Name:           yast2-online-update-configuration
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Configuration of Online Update
 License:        GPL-2.0-only
@@ -26,13 +26,13 @@ Url:            https://github.com/yast/yast-online-update-configuration
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2 >= 2.17.0
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-packager
 BuildRequires:  yast2-pkg-bindings >= 2.17.20
-BuildRequires:  yast2-testsuite
+BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
+BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 PreReq:         %fillup_prereq
 # Wizard::SetDesktopTitleAndIcon
@@ -45,6 +45,8 @@ Conflicts:      yast2-registration <= 2.19.1
 
 Provides:       yast2-registration:/usr/share/YaST2/clients/online_update_configuration.ycp
 
+Supplements:    autoyast(online_update_configuration)
+
 BuildArch:      noarch
 
 %description
@@ -53,8 +55,10 @@ Allows to configure automatic online update.
 %prep
 %setup -q
 
+%check
+%yast_check
+
 %build
-%yast_build
 
 %install
 %yast_install
