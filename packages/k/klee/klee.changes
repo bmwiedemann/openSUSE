@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 06 09:35:38 UTC 2020 - jslaby@suse.com
+
+- Update to version 2.1+20200730:
+  * introduce --rng-initial-seed=<unsigned>
+  * remove holes in Instruction-/FunctionInfoTable, add documentation
+  * Clean-up and add documentation
+  * Remove state contructor with constraints
+  * Use constraint sets and separate metadata for timing solver invocation
+  * Separate constraint set and constraint manager
+  * Move constraint implementation from header to cpp files
+  * Enable subsets for RandomPathSearcher
+  * [PTree] Replace left/right with PointerIntPair
+  * Implement fshr/fshl intrinsics
+  * Switch to a more recent version of SQLite in the CI
+  * Enforce fork/branch limits in branch() and fix double termination
+  * fix Executor: initializeGlobalAliases
+  * ExecutorUtil: assert that GlobalValue is already known
+  * add simple unknown bitcast alias test from the original issue
+  * and more
+- switch to obs_scm
+
+-------------------------------------------------------------------
 Tue Jun 09 07:08:47 UTC 2020 - jslaby@suse.com
 
 - Update to version 2.1+20200606:
