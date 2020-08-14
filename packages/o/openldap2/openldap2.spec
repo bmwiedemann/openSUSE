@@ -22,7 +22,7 @@
 %endif
 
 %define run_test_suite 0
-%define version_main 2.4.50
+%define version_main 2.4.51
 
 %if %{suse_version} >= 1310 && %{suse_version} != 1315
 %define  _rundir /run/slapd
@@ -62,7 +62,6 @@ Patch5:         0005-pie-compile.dif
 Patch7:         0007-Recover-on-DB-version-change.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
 Patch11:        0011-openldap-re24-its7796.patch
-Patch14:        0014-ITS-8650-fix-debug-usage.patch
 Patch15:        openldap-r-only.dif
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
 Source200:      %{name_ppolicy_check_module}-%{version_ppolicy_check_module}.tar.gz
@@ -259,7 +258,6 @@ gzip -k %{S:203}
 %patch7 -p1
 %patch8 -p1
 %patch11 -p1
-%patch14 -p1
 %patch15 -p1
 %patch16 -p1
 cp %{SOURCE5} .
