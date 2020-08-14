@@ -20,7 +20,7 @@ Name:           yast2-tftp-server
 Summary:        YaST2 - TFTP Server Configuration
 License:        GPL-2.0-or-later
 Group:          System/YaST
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Url:            https://github.com/yast/yast-tftp-server
 
@@ -43,6 +43,8 @@ Requires:       lsof
 Requires:       yast2-journal >= 4.1.1
 Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       rubygem(%rb_default_ruby_abi:cfa)
+
+Supplements:    autoyast(tftp-server)
 
 BuildArch:      noarch
 
