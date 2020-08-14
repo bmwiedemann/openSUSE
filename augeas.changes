@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:44:09 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 1.12.0
+  General changes/additions
+    - update gnulib to 91584ed6
+  Lens changes/additions
+    - Anaconda: new lens to process /etc/sysconfig/anaconda instead of Shellvars (Pino Toscano) (Issue #597)
+    - DevfsRules: add lens for FreeBSD devfs.rules files
+    - Dovecot: permit ! in block titles (Nathan Ward) (Issue #599)
+    - Hostname: Allow creation of hostname when file is missing (David Farrell) (Issue #606)
+    - Krb5: add more pkinit_* options (Issue #603)
+    - Logrotate: fix missing recognition of double quoted filenames (Issue #611)
+    - Multipath: accept values enclosed in quotes (Issue #583)
+    - Nginx: support unix sockets as server address (Issue #618)
+    - Nsswitch: add merge action (Issue #609)
+    - Pam: accept continuation lines (Issue #590)
+    - Puppetfile: allow symbols as (optional) values (Issue #619) allow comments in entries (Issue #620)
+    - Rsyslog: support dynamic file paths (Issue #622) treat #!/+/- as comment (arnolda, PR #595)
+    - Syslog: accept 'include' directive (Issue #486)
+    - Semanage: new lens to process /etc/selinux/semanage.conf instead of Simplevars (Pino Toscano) (Issue #594)
+    - Shellvars: allow and/or in @if conditions (#582) accept functions wrapped in round brackets, accept variables with a dash in their name, exclude csh/tcsh profile scripts (Pino Toscano) (Issue #600) accept variable as command (Issue #601)
+    - Ssh: accept RekeyLimit (Issue #605)
+    - Sshd: accept '=' to separate option names from their values (Emil Dragu, #587)
+    - Sudoers: support 'always_query_group_plugin' flag (Steve Traylen, #588)
+    - Strongswan: parse lists. This is a backwards-incompatible change since list entries that were parsed into a single string are now split into a list of entries (Kaarle Ritvanen)
+    - Toml: new lens to parse .toml files (PR #91)
+    - Xorg: accept empty values for options (arnolda, PR #596)
+- refresh patches
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Mar 11 13:09:47 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add gcc9-disable-broken-test.patch in order to address bsc#1120894.
