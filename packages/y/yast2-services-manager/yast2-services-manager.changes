@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 10 18:06:31 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(services_manager) into the
+  spec file in order to install this packages if the section has
+  been defined in the AY configuration file (bsc#1146494).
+- 4.3.4
+
+-------------------------------------------------------------------
+Mon Aug 10 15:18:56 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Fix changing other services than the user expects (bsc#1165388,
+  bsc#1174615)
+- 4.3.3
+
+-------------------------------------------------------------------
 Wed Jul 29 11:15:35 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix detection of modifications in AutoYaST config mode

@@ -24,7 +24,7 @@
 ######################################################################
 
 Name:           yast2-services-manager
-Version:        4.3.2
+Version:        4.3.4
 Release:        0
 Summary:        YaST2 - Services Manager
 License:        GPL-2.0-or-later
@@ -58,6 +58,8 @@ Obsoletes:      yast2-runlevel
 # need new enough installation for its inst clients
 Conflicts:      yast2-installation < 3.1.32
 Conflicts:      yast2-runlevel
+
+Supplements:    autoyast(services-manager)
 
 BuildArch:      noarch
 
