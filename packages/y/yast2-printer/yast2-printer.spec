@@ -17,7 +17,7 @@
 
 
 Name:           yast2-printer
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        YaST2 - Printer Configuration
 License:        GPL-2.0-only
@@ -42,6 +42,8 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 Recommends:     cups-client iptables netcat samba-client
 
 Obsoletes:      yast2-printer-devel-doc
+
+Supplements:    autoyast(printer)
 
 %description
 This package contains the YaST2 component for printer configuration.
