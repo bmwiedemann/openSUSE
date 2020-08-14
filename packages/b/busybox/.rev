@@ -619,4 +619,12 @@
     <comment></comment>
     <requestid>822592</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>de62948e628bd4be2547346be30cd113</srcmd5>
+    <version>1.32.0</version>
+    <time>1597390327</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable SELinux for the dynamic version</comment>
+    <requestid>826044</requestid>
+  </revision>
 </revisionlist>

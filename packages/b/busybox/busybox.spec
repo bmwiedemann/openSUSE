@@ -32,6 +32,7 @@ Source4:        man.conf
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
 BuildRequires:  glibc-devel-static
+BuildRequires:  pkgconfig(libselinux)
 # for test suite
 BuildRequires:  zip
 
