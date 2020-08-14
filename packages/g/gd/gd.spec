@@ -19,11 +19,10 @@
 %define prjname libgd
 %define lname libgd3
 Name:           gd
-Version:        2.2.5
+Version:        2.3.0
 Release:        0
 Summary:        A Drawing Library for Programs That Use PNG and JPEG Output
 License:        MIT
-Group:          System/Libraries
 URL:            https://libgd.github.io/
 Source:         https://github.com/libgd/libgd/releases/download/%{name}-%{version}/%{prjname}-%{version}.tar.xz
 Source1:        baselibs.conf
@@ -33,15 +32,6 @@ Patch1:         gd-fontpath.patch
 Patch2:         gd-format.patch
 # could be upstreamed
 Patch3:         gd-aliasing.patch
-Patch4:         gd-CVE-2018-5711.patch
-Patch5:         libgd-config.patch
-Patch6:         gd-CVE-2018-1000222.patch
-Patch7:         gd-CVE-2019-6978.patch
-Patch8:         gd-CVE-2019-6977.patch
-# CVE-2019-11038 [bsc#1140118]
-Patch9:         gd-CVE-2019-11038.patch
-# CVE-2018-14553 [bsc#1165471], null pointer dereference in gdImageClone()
-Patch10:        gd-CVE-2018-14553.patch
 # needed for tests
 BuildRequires:  dejavu
 BuildRequires:  libjpeg-devel
@@ -64,7 +54,6 @@ and is supported by PHP.
 %package -n %{lname}
 Summary:        A Drawing Library for Programs That Use PNG and JPEG Output
 # change order while installing a split library
-Group:          System/Libraries
 Obsoletes:      gd < 2.2.3
 Conflicts:      gd < 2.2.3
 
@@ -76,7 +65,6 @@ and is supported by PHP.
 
 %package devel
 Summary:        Drawing Library for Programs with PNG and JPEG Output
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       glibc-devel
 
@@ -92,13 +80,6 @@ the formats accepted for inline images by most browsers.
 %patch1
 %patch2
 %patch3
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
 chmod 644 COPYING
 
 %build
@@ -125,7 +106,7 @@ export CFLAGS="%{optflags} -ffp-contract=off"
 	--with-webp \
 	--with-zlib \
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
 %if !0%{?sle_version} || 0%{?sle_version} < 150000
@@ -137,7 +118,7 @@ XFAIL_TESTS="gdimagegrayscale/basic $XFAIL_TESTS"
 %endif
 %endif
 export XFAIL_TESTS
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 %make_install
@@ -148,7 +129,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%doc COPYING
+%license COPYING
 %{_bindir}/annotate
 %{_bindir}/bdftogd
 %{_bindir}/gd2copypal
@@ -163,12 +144,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/webpng
 
 %files -n %{lname}
-%doc COPYING
+%license COPYING
 %{_libdir}/*.so.*
 
 %files devel
-%doc COPYING
-%{_bindir}/gdlib-config
+%license COPYING
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/gdlib.pc
