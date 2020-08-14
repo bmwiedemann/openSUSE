@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 12 09:35:29 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Change hard requires for AppArmor to Recommends. They are not
+  needed for runtime or with SELinux but already installed if
+  AppArmor is used [jsc#SMO-15]
+
+-------------------------------------------------------------------
+Tue Aug  4 13:52:05 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add BuildRequires for pkg-config(libselinux) to build with
+  SELinux support [jsc#SMO-15] 
+
+-------------------------------------------------------------------
 Mon Aug  3 06:47:04 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v2.0.4

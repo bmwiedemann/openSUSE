@@ -47,14 +47,15 @@ BuildRequires:  libbtrfs-devel
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
+BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  golang(API) = 1.13
 # Build fails with PIE enabled on ppc64le due to boo#1098017
 %ifarch ppc64le
 #!BuildIgnore: gcc-PIE
 %endif
-Requires:       apparmor-parser
-Requires:       apparmor-abstractions
+Recommends:     apparmor-parser
+Recommends:     apparmor-abstractions
 Requires:       cni
 Requires:       cni-plugins
 Requires:       conmon
