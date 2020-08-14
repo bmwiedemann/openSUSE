@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:50:18 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 4.0.1
+  * Maintenance of pytest-flakes has moved from fschulze to
+    asmeurer. The repo for pytest-flakes is now at 
+    https://github.com/asmeurer/pytest-flakes/
+  * Fix test failures. [asmeurer]
+  * Fix deprecation warnings from pytest. [asmeurer]
+  * Fix invalid escape sequences. [akeeman]
+- drop patches for fixed test
+  * remove-bad-test.patch
+  * replace-pytest-pep8-with-pytest-codestyle.patch
+- no pytest-codestyle needed for packaging
+
+-------------------------------------------------------------------
 Fri Dec  6 14:13:07 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - use pytest macro 
