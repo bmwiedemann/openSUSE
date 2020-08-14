@@ -281,7 +281,8 @@ cp %{SOURCE2} .
 
 # Only x86/x86-64/ARMv8 CPUs support DYNAMIC_ARCH
 %ifarch %ix86 x86_64
-%define openblas_target DYNAMIC_ARCH=1
+# We specify TARGET= to avoid compile-time CPU-detection (boo#1100677)
+%define openblas_target TARGET=CORE2 DYNAMIC_ARCH=1
 %endif
 %ifarch aarch64
 %if !(0%{?suse_version} > 1500)
