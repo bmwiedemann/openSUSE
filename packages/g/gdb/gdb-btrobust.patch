@@ -14,7 +14,7 @@ printed, but a default backtrace will occur in this case.
 diff --git a/gdb/python/py-framefilter.c b/gdb/python/py-framefilter.c
 --- a/gdb/python/py-framefilter.c
 +++ b/gdb/python/py-framefilter.c
-@@ -1139,6 +1139,7 @@ gdbpy_apply_frame_filter (const struct extension_language_defn *extlang,
+@@ -1204,6 +1204,7 @@ gdbpy_apply_frame_filter (const struct extension_language_defn *extlang,
  				       htab_eq_pointer,
  				       NULL));
  
@@ -22,7 +22,7 @@ diff --git a/gdb/python/py-framefilter.c b/gdb/python/py-framefilter.c
    while (true)
      {
        gdbpy_ref<> item (PyIter_Next (iterable.get ()));
-@@ -1147,8 +1148,8 @@ gdbpy_apply_frame_filter (const struct extension_language_defn *extlang,
+@@ -1212,8 +1213,8 @@ gdbpy_apply_frame_filter (const struct extension_language_defn *extlang,
  	{
  	  if (PyErr_Occurred ())
  	    {
@@ -33,7 +33,7 @@ diff --git a/gdb/python/py-framefilter.c b/gdb/python/py-framefilter.c
  	    }
  	  break;
  	}
-@@ -1181,7 +1182,8 @@ gdbpy_apply_frame_filter (const struct extension_language_defn *extlang,
+@@ -1245,7 +1246,8 @@ gdbpy_apply_frame_filter (const struct extension_language_defn *extlang,
        /* Do not exit on error printing a single frame.  Print the
  	 error and continue with other frames.  */
        if (success == EXT_LANG_BT_ERROR)

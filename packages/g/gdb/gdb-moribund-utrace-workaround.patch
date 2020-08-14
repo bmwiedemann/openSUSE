@@ -14,7 +14,7 @@ Bug in FSF GDB exploited by the ptrace-on-utrace interaction.
 diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
 --- a/gdb/breakpoint.c
 +++ b/gdb/breakpoint.c
-@@ -11929,6 +11929,8 @@ update_global_location_list (enum ugll_insert_mode insert_mode)
+@@ -11904,6 +11904,8 @@ update_global_location_list (enum ugll_insert_mode insert_mode)
  		 traps we can no longer explain.  */
  
  	      old_loc->events_till_retirement = 3 * (thread_count () + 1);

@@ -61,31 +61,19 @@ Http://sourceware.org/ml/gdb-patches/2010-01/msg00517.html
 	* exec.c (exec_file_attach): Print a more useful error message if the
 	user did "gdb core".
 
-diff --git a/gdb/common/common-exceptions.h b/gdb/common/common-exceptions.h
---- a/gdb/common/common-exceptions.h
-+++ b/gdb/common/common-exceptions.h
-@@ -104,6 +104,9 @@ enum errors {
-      "_ERROR" is appended to the name.  */
-   MAX_COMPLETIONS_REACHED_ERROR,
- 
-+  /* Attempt to load a core file as executable.  */
-+  IS_CORE_ERROR,
-+
-   /* Add more errors here.  */
-   NR_ERRORS
- };
 diff --git a/gdb/exec.c b/gdb/exec.c
 --- a/gdb/exec.c
 +++ b/gdb/exec.c
-@@ -36,6 +36,7 @@
- #include "gdb_bfd.h"
- #include "gcore.h"
- #include "source.h"
-+#include "exceptions.h"
+@@ -18,6 +18,8 @@
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
  
- #include <fcntl.h>
- #include "readline/readline.h"
-@@ -355,12 +356,27 @@ exec_file_attach (const char *filename, int from_tty)
+ #include "defs.h"
++#include "arch-utils.h"
++#include "exceptions.h"
+ #include "frame.h"
+ #include "inferior.h"
+ #include "target.h"
+@@ -345,12 +347,27 @@ exec_file_attach (const char *filename, int from_tty)
  
        if (!bfd_check_format_matches (exec_bfd, bfd_object, &matching))
  	{
@@ -106,20 +94,33 @@ diff --git a/gdb/exec.c b/gdb/exec.c
 +
 +	  if (is_core != 0)
 +	    throw_error (IS_CORE_ERROR,
-+		   _("\"%s\" is a core file.\n"
-+		     "Please specify an executable to debug."),
-+		   scratch_pathname);
++			 _("\"%s\" is a core file.\n"
++			   "Please specify an executable to debug."),
++			 scratch_pathname);
 +	  else
-+	    error (_("\"%s\": not in executable format: %s"),
++	    error (_("\"%ss\": not in executable format: %s"),
 +		   scratch_pathname,
 +		   gdb_bfd_errmsg (bfd_get_error (), matching).c_str ());
  	}
  
        if (build_section_table (exec_bfd, &sections, &sections_end))
+diff --git a/gdb/gdbsupport/common-exceptions.h b/gdb/gdbsupport/common-exceptions.h
+--- a/gdb/gdbsupport/common-exceptions.h
++++ b/gdb/gdbsupport/common-exceptions.h
+@@ -106,6 +106,9 @@ enum errors {
+      "_ERROR" is appended to the name.  */
+   MAX_COMPLETIONS_REACHED_ERROR,
+ 
++  /* Attempt to load a core file as executable.  */
++  IS_CORE_ERROR,
++
+   /* Add more errors here.  */
+   NR_ERRORS
+ };
 diff --git a/gdb/main.c b/gdb/main.c
 --- a/gdb/main.c
 +++ b/gdb/main.c
-@@ -448,6 +448,35 @@ struct cmdarg
+@@ -467,6 +467,34 @@ struct cmdarg
    char *string;
  };
  
@@ -132,11 +133,11 @@ diff --git a/gdb/main.c b/gdb/main.c
 +{
 +  gdb_assert (exec_bfd == NULL);
 +
-+  TRY
++  try
 +    {
 +      exec_file_attach (filename, from_tty);
 +    }
-+  CATCH (e, RETURN_MASK_ALL)
++  catch (gdb_exception_error &e)
 +    {
 +      if (e.error == IS_CORE_ERROR)
 +	{
@@ -147,15 +148,14 @@ diff --git a/gdb/main.c b/gdb/main.c
 +	  if (exec_bfd != NULL)
 +	    return;
 +	}
-+      throw_exception (e);
++      throw_exception (std::move (e));
 +    }
-+  END_CATCH
 +}
 +
  static void
  captured_main_1 (struct captured_main_args *context)
  {
-@@ -893,6 +922,8 @@ captured_main_1 (struct captured_main_args *context)
+@@ -907,6 +935,8 @@ captured_main_1 (struct captured_main_args *context)
  	{
  	  symarg = argv[optind];
  	  execarg = argv[optind];
@@ -164,7 +164,7 @@ diff --git a/gdb/main.c b/gdb/main.c
  	  optind++;
  	}
  
-@@ -1043,12 +1074,25 @@ captured_main_1 (struct captured_main_args *context)
+@@ -1063,12 +1093,25 @@ captured_main_1 (struct captured_main_args *context)
        && symarg != NULL
        && strcmp (execarg, symarg) == 0)
      {

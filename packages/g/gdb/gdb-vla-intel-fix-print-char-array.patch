@@ -22,7 +22,7 @@ And adjust its testcase.
 diff --git a/gdb/f-valprint.c b/gdb/f-valprint.c
 --- a/gdb/f-valprint.c
 +++ b/gdb/f-valprint.c
-@@ -313,8 +313,22 @@ f_val_print (struct type *type, LONGEST embedded_offset,
+@@ -319,8 +319,22 @@ f_val_print (struct type *type, int embedded_offset,
  				      original_value, &opts, 0, stream);
  	}
        else

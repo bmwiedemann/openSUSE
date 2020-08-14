@@ -8,7 +8,7 @@ Subject: gdb-archer-pie-addons-keep-disabled.patch
 diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
 --- a/gdb/breakpoint.c
 +++ b/gdb/breakpoint.c
-@@ -15441,6 +15441,50 @@ static struct cmd_list_element *enablebreaklist = NULL;
+@@ -15396,6 +15396,51 @@ static struct cmd_list_element *enablebreaklist = NULL;
  
  cmd_list_element *commands_cmd_element = nullptr;
  
@@ -52,17 +52,18 @@ diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
 +    }
 +
 +  if (changed)
-+    qsort (bp_locations, bp_locations_count, sizeof (*bp_locations),
-+	   bp_locations_compare);
++    std::sort (bp_locations, bp_locations + bp_locations_count,
++	       bp_location_is_less_than);
 +}
 +
++void _initialize_breakpoint (void);
  void
  _initialize_breakpoint (void)
  {
 diff --git a/gdb/breakpoint.h b/gdb/breakpoint.h
 --- a/gdb/breakpoint.h
 +++ b/gdb/breakpoint.h
-@@ -1664,6 +1664,9 @@ extern const char *ep_parse_optional_if_clause (const char **arg);
+@@ -1696,6 +1696,9 @@ extern const char *ep_parse_optional_if_clause (const char **arg);
     UIOUT iff debugging multiple threads.  */
  extern void maybe_print_thread_hit_breakpoint (struct ui_out *uiout);
  
@@ -75,7 +76,7 @@ diff --git a/gdb/breakpoint.h b/gdb/breakpoint.h
 diff --git a/gdb/objfiles.c b/gdb/objfiles.c
 --- a/gdb/objfiles.c
 +++ b/gdb/objfiles.c
-@@ -875,6 +875,11 @@ objfile_relocate1 (struct objfile *objfile,
+@@ -816,6 +816,11 @@ objfile_relocate1 (struct objfile *objfile,
  				obj_section_addr (s));
      }
  
@@ -87,3 +88,15 @@ diff --git a/gdb/objfiles.c b/gdb/objfiles.c
    /* Data changed.  */
    return 1;
  }
+diff --git a/gdb/value.c b/gdb/value.c
+--- a/gdb/value.c
++++ b/gdb/value.c
+@@ -2840,7 +2840,7 @@ value_static_field (struct type *type, int fieldno)
+     case FIELD_LOC_KIND_PHYSADDR:
+       retval = value_at_lazy (TYPE_FIELD_TYPE (type, fieldno),
+ 			      TYPE_FIELD_STATIC_PHYSADDR (type, fieldno)
+-			      + (TYPE_OBJFILE (type) == NULL ? 0 : TYPE_OBJFILE (type)->section_offsets[SECT_OFF_TEXT (TYPE_OBJFILE (type))]));
++			      + (TYPE_OBJFILE (type) == NULL ? 0 : ANOFFSET (TYPE_OBJFILE (type)->section_offsets, SECT_OFF_TEXT (TYPE_OBJFILE (type)))));
+       break;
+     case FIELD_LOC_KIND_PHYSNAME:
+     {

@@ -30,7 +30,7 @@ debugging problem of GOMP outside of the scope of this Bug.
 diff --git a/gdb/infrun.c b/gdb/infrun.c
 --- a/gdb/infrun.c
 +++ b/gdb/infrun.c
-@@ -6499,6 +6499,16 @@ process_event_stop_test (struct execution_control_state *ecs)
+@@ -6453,6 +6453,16 @@ process_event_stop_test (struct execution_control_state *ecs)
  
        if (ecs->event_thread->control.step_over_calls == STEP_OVER_ALL)
  	{
@@ -38,16 +38,16 @@ diff --git a/gdb/infrun.c b/gdb/infrun.c
 +	  struct minimal_symbol *stopf = lookup_minimal_symbol_by_pc (stop_pc).minsym;
 +
 +	  if ((stop_fn == NULL
-+	       || strstr (SYMBOL_LINKAGE_NAME (stop_fn), ".omp_fn.") == NULL)
++	       || strstr (stop_fn->linkage_name (), ".omp_fn.") == NULL)
 +	      /* gcc-4.7.2-9.fc19.x86_64 uses a new format.  */
 +	      && (stopf == NULL
-+		  || strstr (MSYMBOL_LINKAGE_NAME (stopf), "._omp_fn.") == NULL))
++		  || strstr (stopf->linkage_name (), "._omp_fn.") == NULL))
 +{	/* ".omp_fn." */
 +
  	  /* We're doing a "next".
  
  	     Normal (forward) execution: set a breakpoint at the
-@@ -6532,6 +6542,7 @@ process_event_stop_test (struct execution_control_state *ecs)
+@@ -6486,6 +6496,7 @@ process_event_stop_test (struct execution_control_state *ecs)
  
  	  keep_going (ecs);
  	  return;

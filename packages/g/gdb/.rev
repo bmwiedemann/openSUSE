@@ -1514,4 +1514,40 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   - gdb-fix-toplevel-types-with-fdebug-types-section.patch (forwarded request 801284 from tomdevries)</comment>
     <requestid>801343</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>dc190847fd738ae69d5f6b06ba10261b</srcmd5>
+    <version>9.2</version>
+    <time>1597390260</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore License/Group.
+
+- Add BuildRequire babeltrace-devel.  On Factory this adds bdeps
+  babeltrace-devel, libuuid-devel, babeltrace, libglib-2_0-0, and
+  libgmodule-2_0-0.
+
+- Fix internal error on aarch64 [swo#26316].
+  gdb-aarch64-fix-erroneous-use-of-spu-architecture-bfd.patch
+
+- Change into multibuild package and add flavour gdb-testsuite.
+
+- Fix s390 -&gt; s390x typo.
+
+- Don't BuildRequire binutils-gold for SLE-12/s390.
+
+- BuildRequire binutils-gold for testsuite
+
+- Rebase to 9.2 release.
+
+- Fix SLE-11 build.  Gdb 9.1 requires make 3.82, but SLE-11 has
+  make 3.81:
+  * gdbserver-fix-build-with-make-3.81.patch
+  
+
+- Fix patch context:
+  * gdb-fix-the-thread-pool.c-compilation.patch
+
+- Fix build error due to missing DIAGNOSTIC_IGNORE_UNUSED_FUNCTION.
+  * gdb-fix-the-thread-pool.c-compilation.patch</comment>
+    <requestid>825816</requestid>
+  </revision>
 </revisionlist>
