@@ -1,7 +1,7 @@
 #
 # spec file for package ceph-csi
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,19 @@
 #
 
 
+# Remove stripping of Go binaries.
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+
 Name:           ceph-csi
-Version:        1.2.2+git0.gf8c854dc
+Version:        3.0.0+git0.f831f5257
 Release:        0
 Summary:        Container Storage Interface driver for Ceph block and file
 License:        Apache-2.0
 URL:            https://github.com/ceph/ceph-csi
 
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 Source98:       README
-Source99:       update-tarball.sh
 
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
@@ -33,9 +36,12 @@ ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le
 %endif
 
 # Go and spec requirements
-BuildRequires:  go
-BuildRequires:  golang-packaging
-BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.13
+
+# for go-ceph bindings
+BuildRequires:  libcephfs-devel
+BuildRequires:  librados-devel
+BuildRequires:  librbd-devel
 
 # Rook runtime requirements - referenced from packages installed in Rook images
 # From Ceph base container: github.com/ceph/ceph-container/src/daemon-base/...
@@ -52,40 +58,31 @@ See https://github.com/ceph/ceph-csi for more information.
 # The tasty, meaty build section
 ################################################################################
 
-%define _buildshell /bin/bash
-
-%{go_nostrip}
-%{go_provides}
-
 %prep
-%setup -q -n %{name}
+%setup -q
+# make sure we use the content from the vendor tarball
+rm -rf vendor/
+%setup -q -T -D -a 1
 
 %build
-%goprep github.com/ceph/ceph-csi
-export CGO_ENABLED=0
 
-# Make sure version contains parseable symbols
-version_parsed=%{version}
-version_parsed="${version_parsed//[+]/-}"
-git_commit_parsed="$(echo $version_parsed | sed 's/.*\.g\(.*\).*/\1/')"
-linker_flags=(
-    "-X" "github.com/ceph/ceph-csi/pkg/util.GitCommit=$git_commit_parsed"
-    "-X" "github.com/ceph/ceph-csi/pkg/util.DriverVersion=$version_parsed"
-)
-build_flags=("-ldflags" "${linker_flags[*]}")
+# version format is defined in _service
+version_parsed=`echo %{version} | cut -d '+' -f 1`
+git_commit_parsed=`echo %{version} | sed 's/.*\.//'`
 
-# builds a binary called 'cmd'
-%gobuild "${build_flags[@]}" cmd
+go build \
+  -mod=vendor \
+  -buildmode=pie \
+  -a \
+  -ldflags " \
+  -X github.com/ceph/ceph-csi/pkg/util.GitCommit=$git_commit_parsed \
+  -X github.com/ceph/ceph-csi/pkg/util.DriverVersion=v$version_parsed" \
+  -o _output/cephcsi \
+  ./cmd/
 
 %install
-
-bin_location=%{_builddir}/go/bin/
-install_location=%{buildroot}%{_bindir}
-
-install --mode=755 --directory "${install_location}"
-
-mv ${bin_location}/cmd ${bin_location}/cephcsi
-install --preserve-timestamps --mode=755 --target-directory="${install_location}" "${bin_location}"/cephcsi
+install --mode=755 --directory %{buildroot}%{_bindir}
+install --preserve-timestamps --mode=755 --target-directory=%{buildroot}%{_bindir} _output/cephcsi
 
 ################################################################################
 # Specify which files we built belong to each package

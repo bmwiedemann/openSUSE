@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Mon Aug 10 08:10:54 UTC 2020 - Stefan Haas <stefan.haas@suse.com>
+
+- update to 3.0.0:
+  * Create/Delete snapshot for RBD
+  * Create PVC from RBD snapshot
+  * Create PVC from RBD PVC
+  * Add support for multiple CephFS subvolume groups
+  * Multi Architecture docker images(amd64 and arm64)
+  * Support ROX(ReadOnlyMany) PVC for RBD
+  * Support ROX(ReadOnlyMany) PVC for CephFS
+  * Move to go-ceph binding from RBD CLI
+  * Move to go-ceph binding from RADOS CLI
+  * Add Upgrade E2E testing from 2.1.2 to 3.0.0
+  * Update Sidecars to the latest version
+  * Improve locking to create a parallel clone and snapshot restore
+  * Simplify Error Handling
+  * Update golangci-lint version in CI
+  * Update gosec version in CI
+  * Add support to track cephfs PVC and subvolumes
+  * Introduce build.env for configuration of the environment variables
+  * Update go-ceph to v0.4.0
+  * Update E2E testing to test with latest kubernetes versions
+  * Split out CephFS and RBD E2E tests
+  * Integration with Centos CI to run containerized builds
+  * Update Rook to 1.2.7 for E2E testing
+  * Disable reflink when creating xfs filesystem for RBD
+  * Replace klog with klog v2
+  * Reduce RBAC for kubernetes sidecar containers
+  * Add option to compile e2e tests in containerized
+  * Add commitlint bot in CI
+  * Add Stale bot to the repo
+  * Add E2E and documentation for CephFS PVC
+  * Update kubernetes dependency to v1.18.6
+
+-------------------------------------------------------------------
+Fri May 29 12:28:16 UTC 2020 - Stefan Haas <stefan.haas@suse.com>
+
+- Fixed spec-file:
+  * Rook expects CSI version-string with a leading "v" 
+
+-------------------------------------------------------------------
+Thu May 28 09:43:46 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- change version format back to make ceph-csi-image building again.
+
+-------------------------------------------------------------------
+Wed May 27 04:21:30 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.1.1:
+  * XFS: Superblock has unknown read-only compatible
+  * XFS: Format with nouuid to avoid UUID conflict
+- update to 2.1.0:
+  * Add support for rbd static PVC
+  * Move cephfs subvolume support from `Alpha` to `Beta`.
+  * Added support for rbd topology-based provisioning.
+  * Support externally managed configmap.
+  * Updated Base image to ceph Octopus
+  * Added csiImageKey to keep track of the image name in RADOS omap
+  * Added E2E for helm charts
+  * Implement CreateVolume with go-ceph which boosts performance.
+  * Migrated from `dep` to `go modules`
+  * Updated Kubernetes version to v1.18.0
+  * Updated golang version to 1.13.9
+  * Updated Kubernetes sidecar containers to latest version
+  * E2E: Add Ability to test with non root userLog an error message if cephfs mounter fails during init
+  * Aligned with klog standards for logging
+  * Added support in to run E2E in a different namespace
+  * Removed cache functionality for cephfs plugin restart
+  * rbd: fallback to inline image deletion if adding it as a task fails
+  * code cleanup for static errors and unwanted code blocks
+  * Fix mountoption issue in  rbd
+- update to 2.0.1:
+  * Fix rbd mount option issue when mount options from storage-class are not
+    passed to mount point
+  * Added a check for cephfs subvolume present in the backend when creating
+    a PVC
+  * Added forcecephkernelclient as startup parameter in helm chart
+  * Fix PVC delete issue when the pool is deleted
+  * Fix typo in pod spec in rbd helm chart
+  * Add _netdev as default mount options for both cephfs and rbd
+  * Check for ENOENT errors when deleting CephFS volumes
+  * Fix ceph-csi image tag version in rbd helm chart
+  * Added PodSecurityPolicy support to helm charts
+- drop update-tarball.sh . no longer used.
+- add _service file and use common OBS source services
+  * use the obscpio format for saving space on OBS
+  * create a vendor.tar.gz for building
+- update README for new build/update instructions
+
+-------------------------------------------------------------------
+Thu Feb  6 12:32:36 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.0.0+git0.ge58d537a:
+  * Added dynamic resize support for CephFS PVCs
+  * Added dynamic resize support for RBD PVCs
+  * Added encryption with LUKS support for RBD PVCs
+  * Mutli arch support ( ceph-csi Arm64 image)
+  * Upgrade documentation from v1.2.2 to v2.0.0
+  * Updated code base to kube v1.17
+  * leader election enabled in deployment
+  * Added Version flag to cephcsi
+  * Removed Kubernetes 1.13.x support with 2.0.0 release
+  * CSI: run all containers as privileged in daemonset pods
+  * Upgrade: csi-attacher sidecar from v1.2.0 to v2.1.0
+  * Upgrade: csi-snapshotter sidecar from v1.2.1 to v1.2.2
+  * Upgrade: csi-node-driver-registrar sidecar from v1.1.0 to v1.2.0
+  * Upgrade: csi-resizer from sidecar v0.3.0 to v0.4.0
+  * Update csi-provisioner from sidecar v1.3.0 to v1.4.0
+  * Remove deprecated containerized flag in rbd
+  * Discard umount error if the directory is not mounted
+  * Use EmptyDir to store provisioner socket
+  * Add ContentSource to the CreateVolume response
+  * Rbd: only load nbd module if not available yet
+  * Enhance scripts to deploy ceph cluster using rook
+  * Add e2e tests for RBD resizer
+  * Update minikube to latest released version
+  * Update golangci-lint version to v1.21.0
+  * Fix to use kubectl create not kubectl apply in the e2e
+  * Add volume size roundoff for expand request
+  * Add E2E for cephfs resize functionality
+  * Add Documentation for PVC resize
+  * Fix block resize issue in RBD
+  * Add 13.0.0 Mimic supported version to the readme
+  * update Metrics supported version in Readme
+  * Remove hard-coded UpdateStrategy from templates
+  * Add E2E for block PVC resize
+  * Enable logging in E2E if the test fails
+  * Enable Block E2E for rbd
+  * Add ID-based logging for ExpandVolume
+  * Validate rbd image name in NodeExpand
+
+-------------------------------------------------------------------
 Tue Dec  3 15:20:26 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Update to v1.2.2:
