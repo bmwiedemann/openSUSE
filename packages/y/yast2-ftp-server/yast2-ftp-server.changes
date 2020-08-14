@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 10:52:33 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(ftp-server) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.2
+
+-------------------------------------------------------------------
 Tue Jun  2 14:20:43 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Add missing dependency of yast2-users (bsc#1132116).
