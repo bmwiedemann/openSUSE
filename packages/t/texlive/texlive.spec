@@ -19,7 +19,7 @@
 %define texlive_version  2020
 %define texlive_previous 2019
 %define texlive_release  20200327
-%define texlive_noarch   176
+%define texlive_noarch   177
 %define texlive_source   texlive-20200327-source
 
 %define __perl_requires		%{nil}
@@ -4351,6 +4351,7 @@ fi
 	    cont-??|mptopdf|*musixtex) continue ;;
 	    *)  test "$fmt" = "$(ls -ld "$fmt" 2> /dev/null | awk '{print $NF}')" || rm -rf "$fmt"
 		test ! -f "$fmt" || continue
+		test "$fmt" = "pdfcsplain" && engine=pdftex
 		ln -vsf "$engine" "$fmt"
 	    esac
 	done

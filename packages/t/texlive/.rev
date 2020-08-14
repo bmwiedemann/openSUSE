@@ -821,4 +821,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>818535</requestid>
   </revision>
+  <revision rev="69" vrev="72">
+    <srcmd5>bf13407d11fcb32cc2e09479656697e0</srcmd5>
+    <version>unknown</version>
+    <time>1597390318</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix longstanding bug: Make sure that pdfcsplain points to pdftex
+  as otherwise UTF-8 characters are missed in the output</comment>
+    <requestid>826037</requestid>
+  </revision>
 </revisionlist>

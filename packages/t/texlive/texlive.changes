@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 11:23:33 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Fix longstanding bug: Make sure that pdfcsplain points to pdftex
+  as otherwise UTF-8 characters are missed in the output
+
+-------------------------------------------------------------------
 Fri Jun 26 07:57:00 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid expanded texuid/texgid macros within comments (boo#1172690)
