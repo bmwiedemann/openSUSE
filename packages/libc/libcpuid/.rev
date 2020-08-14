@@ -79,4 +79,15 @@
   * Use constant for registers name It helps when reading technical documentation and it avoids 'magic values'</comment>
     <requestid>809020</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fc2da9f889787d9fa3d70dbd9a00183a</srcmd5>
+    <version>0.5.0+git.20200528</version>
+    <time>1597390397</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git.20200528:
+  * Related to c2645d0. Convert all python scripts to Python 3.
+  * Add Downloads section on Readme.md Close #140
+  * Add I-Nex to the users list</comment>
+    <requestid>826264</requestid>
+  </revision>
 </revisionlist>

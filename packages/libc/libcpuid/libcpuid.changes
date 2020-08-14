@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 13 11:17:44 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.0+git.20200528:
+  * Related to c2645d0. Convert all python scripts to Python 3.
+  * Add Downloads section on Readme.md Close #140
+  * Add I-Nex to the users list
+
+-------------------------------------------------------------------
 Tue May 26 12:21:20 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version v0.5.0+git.20200526:
