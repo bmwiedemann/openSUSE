@@ -48,9 +48,11 @@ BuildRequires:  net-tools
 BuildRequires:  net-tools-deprecated
 BuildRequires:  netcat-openbsd
 BuildRequires:  patch
+BuildRequires:  policycoreutils
 BuildRequires:  procps
 BuildRequires:  psmisc
 BuildRequires:  sed
+BuildRequires:  selinux-tools
 BuildRequires:  sendmail
 BuildRequires:  sharutils
 BuildRequires:  sysvinit-tools
@@ -94,9 +96,11 @@ Requires:       busybox-ncurses-utils = %{version}
 Requires:       busybox-net-tools = %{version}
 Requires:       busybox-netcat = %{version}
 Requires:       busybox-patch = %{version}
+Requires:       busybox-policycoreutils = %{version}
 Requires:       busybox-procps = %{version}
 Requires:       busybox-psmisc = %{version}
 Requires:       busybox-sed = %{version}
+Requires:       busybox-selinux-tools = %{version}
 Requires:       busybox-sendmail = %{version}
 Requires:       busybox-sh = %{version}
 Requires:       busybox-sharutils = %{version}
@@ -527,6 +531,22 @@ Conflicts:      sysvinit-tools
 %description -n busybox-sysvinit-tools
 This package contains the symlinks to provide sysvinit-tools with busybox.
 
+%package -n busybox-selinux-tools
+Summary:        Busybox applets replacing selinux-tools
+Requires:       busybox = %{version}
+Conflicts:      selinux-tools
+
+%description -n busybox-selinux-tools
+This package contains the symlinks to provide selinux-tools with busybox.
+
+%package -n busybox-policycoreutils
+Summary:        Busybox applets replacing policycoreutils
+Requires:       busybox = %{version}
+Conflicts:      policycoreutils
+
+%description -n busybox-policycoreutils
+This package contains the symlinks to provide policycoreutils with busybox.
+
 %prep
 %setup -q -c -T
 
@@ -541,7 +561,7 @@ rm apps/rpm apps/rpm2cpio
 rm -f apps/linuxrc
 # Does not really fit
 rm apps/[[
-for package in coreutils diffutils findutils grep util-linux util-linux-systemd iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail shadow less whois unzip vim wget ed bc netcat-openbsd dos2unix telnet tftp time tunctl vlan sysvinit-tools; do
+for package in coreutils diffutils findutils grep util-linux util-linux-systemd iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail shadow less whois unzip vim wget ed bc netcat-openbsd dos2unix telnet tftp time tunctl vlan sysvinit-tools selinux-tools policycoreutils; do
     for i in `rpm -ql $package |grep "bin/"` ; do
 	prog=`basename $i`
 	if [ -f apps/$prog ]; then
@@ -640,9 +660,11 @@ fi
 %files -n busybox-net-tools -f filelist-net-tools.txt
 %files -n busybox-netcat -f filelist-netcat-openbsd.txt
 %files -n busybox-patch -f filelist-patch.txt
+%files -n busybox-policycoreutils -f filelist-policycoreutils.txt
 %files -n busybox-procps -f filelist-procps.txt
 %files -n busybox-psmisc -f filelist-psmisc.txt
 %files -n busybox-sed -f filelist-sed.txt
+%files -n busybox-selinux-tools -f filelist-selinux-tools.txt
 %files -n busybox-sendmail -f filelist-sendmail.txt
 %files -n busybox-sharutils -f filelist-sharutils.txt
 %files -n busybox-syslogd -f filelist-syslogd.txt

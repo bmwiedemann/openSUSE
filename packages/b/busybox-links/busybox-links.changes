@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 13 09:30:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix typo in spec file
+
+-------------------------------------------------------------------
+Wed Aug 12 14:29:02 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create new sub-packages: selinux-tools and policycoreutils
+
+-------------------------------------------------------------------
 Tue Jul 28 12:28:36 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - busybox-syslogd: add conflict with syslogd
