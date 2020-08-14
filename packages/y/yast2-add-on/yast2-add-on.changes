@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 17:28:28 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(add-on) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.4
+
+-------------------------------------------------------------------
 Tue Jul 28 14:05:54 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the schema definition for the add_on_products

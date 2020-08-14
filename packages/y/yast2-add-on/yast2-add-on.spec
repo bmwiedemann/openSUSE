@@ -17,7 +17,7 @@
 
 
 Name:           yast2-add-on
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 Summary:        YaST2 - Add-On media installation code
 License:        GPL-2.0-only
@@ -44,6 +44,8 @@ Requires:       yast2-packager >= 4.2.16
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 Obsoletes:      yast2-add-on-devel-doc
+
+Supplements:    autoyast(add-on)
 
 BuildArch:      noarch
 
