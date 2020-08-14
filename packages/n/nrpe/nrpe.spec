@@ -235,12 +235,7 @@ install -Dm 644 %{SOURCE4} %{buildroot}%{_mandir}/man8/nrpe.8
   %endif
 %endif
 
-%if %{with firewalld}
-  # firewalld service file - handled by firewalld package now
-  # install -Dm 644 %{SOURCE13} %{buildroot}%{_libexecdir}/firewalld/services/%{name}.xml
-  # temporary: also install SuSEfirewall2 snipplet for a while
-  install -Dm644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/nrpe
-%else
+%if %{without firewalld}
   # install SuSEfirewall2 script
   install -Dm644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/nrpe
 %endif
@@ -355,7 +350,9 @@ if test -e %{nagios_sysconfdir}/nrpe.cfg.rpmsave -a ! -e %{_sysconfdir}/nrpe.cfg
     echo "include=%{_sysconfdir}/nrpe.cfg" >> %{nagios_sysconfdir}/nrpe.cfg
 fi
 sed -i "s|%{nagios_sysconfdir}/nrpe.cfg|%{_sysconfdir}/nrpe.cfg|g" %{_sysconfdir}/xinetd.d/nrpe || :
+%if %{without firewalld}
 sed -i "s|nrpe-service|%{name}|g" %{_sysconfdir}/sysconfig/SuSEfirewall2 || :
+%endif
 if [ -e %{_localstatedir}/adm/update-scripts/nrpe ]; then
     /bin/sh %{_localstatedir}/adm/update-scripts/nrpe
     rm %{_localstatedir}/adm/update-scripts/nrpe
@@ -387,7 +384,9 @@ fi
 %dir %{_sysconfdir}/xinetd.d
 %endif
 %config(noreplace) %{_sysconfdir}/xinetd.d/nrpe
+%if %{without firewalld}
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/nrpe
+%endif
 %if 0%{?suse_version} <= 1230
 %ghost %{_rundir}/%{name}/nrpe.pid
 %endif
