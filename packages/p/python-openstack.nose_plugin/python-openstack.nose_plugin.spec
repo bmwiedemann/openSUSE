@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstack.nose_plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Openstack run_testspy style output for nosetests
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/jkoelker/openstack-nose
-Source:         http://pypi.python.org/packages/source/o/openstack.nose_plugin/openstack.nose_plugin-%{version}.tar.gz
+URL:            https://github.com/jkoelker/openstack-nose
+Source:         https://files.pythonhosted.org/packages/source/o/openstack.nose_plugin/openstack.nose_plugin-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  openstack-suse-macros
 BuildRequires:  python-rpm-macros

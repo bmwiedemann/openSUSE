@@ -52,4 +52,12 @@
     <comment>- convert to singlespec</comment>
     <requestid>662400</requestid>
   </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>fe083d30bb5a0763e2ecbc8684c4a082</srcmd5>
+    <version>0.11</version>
+    <time>1597392248</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to https url for source</comment>
+    <requestid>826307</requestid>
+  </revision>
 </revisionlist>
