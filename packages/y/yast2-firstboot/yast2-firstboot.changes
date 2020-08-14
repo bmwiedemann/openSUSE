@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 17:15:51 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(firstboot) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.4
+
+-------------------------------------------------------------------
 Mon Jul 27 09:05:35 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Handle exceptions when parsing xml file (related to bsc#1170886)

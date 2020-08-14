@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firstboot
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 Summary:        YaST2 - Initial System Configuration
 License:        GPL-2.0-only
@@ -46,6 +46,8 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 
 # bsc #1165646
 Recommends:     (icewm if libyui-qt)
+
+Supplements:    autoyast(firstboot)
 
 BuildArch:      noarch
 
