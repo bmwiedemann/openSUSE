@@ -67,10 +67,11 @@ Requires:       typelib-1_0-Budgie-1_0
 Requires:       ibus
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
+Requires:       gnome-control-center
+Requires:       gnome-software
 #Recommends:     gnome-screensaver
 Recommends:     NetworkManager-applet
 Recommends:     gnome-backgrounds
-Recommends:     gnome-control-center
 Recommends:     budgie-desktop-doc
 %define vala_version %(rpm -q --queryformat='%%{VERSION}' vala | sed 's/\.[0-9]*$//g')
 

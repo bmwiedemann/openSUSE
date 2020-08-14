@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 13 11:55:45 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Change gnome-control-center from Recommends to Requires:
+  * Needed for changing desktop background
+- Add gnome-software to Requires:
+  * Needed for links in gnome-control-center
+
+-------------------------------------------------------------------
 Wed Aug 12 22:04:27 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add gnome-session-core as a dependency
