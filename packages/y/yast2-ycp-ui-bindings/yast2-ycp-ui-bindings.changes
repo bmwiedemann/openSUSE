@@ -1,9 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 12 12:12:01 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Use new syntax (MenuBar(), Menu()) in MenuBar example (bsc#1175115)
+- 4.3.2
+
+-------------------------------------------------------------------
+Tue Aug 11 15:10:00 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added MenuBar widget (bsc#1175115)
+- Require libyui.so.13
+- 4.3.1
+
+-------------------------------------------------------------------
 Thu Jun  4 11:52:17 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Added widget option autoWrap for label widget (bsc#1172513) 
 - Require libyui.so.12
-- 4.3.10
+- 4.3.0
 
 -------------------------------------------------------------------
 Thu Jan 23 16:47:02 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
