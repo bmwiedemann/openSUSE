@@ -947,4 +947,41 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>791192</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>6b15524f693fc7fa95ed72e846e1b517</srcmd5>
+    <version>0.7.5</version>
+    <time>1597390333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.5:
+  * release: v0.7.5
+  * chore(translation): merge from master
+  * fix(cli): add ipset type hash:mac is incompatible with the family parameter Fixes: rhbz1541077
+  * test(rhbz1483921): better test name
+  * fix(cli): add --zone is an invalid option with --direct
+  * fix: core: rich: Catch ValueError on non-numeric priority values
+  * fix: update dynamic DCE RPC ports in freeipa-trust service
+  * docs: replace occurrences of the term blacklist with denylist
+  * docs(README): add libxslt for doc generation
+  * test(rich): source mac with nftables backend
+  * fix(firewall-offline-cmd): remove instances of &quot;[P]&quot; in help text
+  * test(check-container): add support for centos8 stream
+  * test(functions): use IndividualCalls if host doesn't support nft rule index
+  * test(functions): add macro IF_HOST_SUPPORTS_NFT_RULE_INDEX
+  * test(dbus): better way to check IPv6_rpfilter expected value
+  * fix(ipset): flush the set if IndividiualCalls=yes
+  * test(ipv6): skip square bracket address tests if ipv6 not available
+  * test(gh509): only run test for nftables backend
+  * fix(dbus): service: don't cleanup config for old set APIs
+  * fix(config): bool values in dict based import/export
+  * fix(doc): dbus: signatures for zone tuple based APIs
+  * test(dbus): zone: fix zone runtime functional test title
+  * test(dbus): zone: fix false failure due to list order
+  * fix(client): addService needs to reduce tuple size
+  * test(direct): rule in a zone chain
+  * fix(direct): rule in a zone chain
+  * test(dbus): zone: verify runtime config APIs
+  * test(dbus): zone: verify permanent config APIs
+  * fix(systemd): Conflict with nftables.service (forwarded request 826046 from mrostecki)</comment>
+    <requestid>826047</requestid>
+  </revision>
 </revisionlist>

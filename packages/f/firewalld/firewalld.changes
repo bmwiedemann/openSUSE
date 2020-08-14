@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Aug 12 13:48:37 UTC 2020 - mrostecki@suse.com
+
+- Update to version 0.7.5:
+  * release: v0.7.5
+  * chore(translation): merge from master
+  * fix(cli): add ipset type hash:mac is incompatible with the family parameter Fixes: rhbz1541077
+  * test(rhbz1483921): better test name
+  * fix(cli): add --zone is an invalid option with --direct
+  * fix: core: rich: Catch ValueError on non-numeric priority values
+  * fix: update dynamic DCE RPC ports in freeipa-trust service
+  * docs: replace occurrences of the term blacklist with denylist
+  * docs(README): add libxslt for doc generation
+  * test(rich): source mac with nftables backend
+  * fix(firewall-offline-cmd): remove instances of "[P]" in help text
+  * test(check-container): add support for centos8 stream
+  * test(functions): use IndividualCalls if host doesn't support nft rule index
+  * test(functions): add macro IF_HOST_SUPPORTS_NFT_RULE_INDEX
+  * test(dbus): better way to check IPv6_rpfilter expected value
+  * fix(ipset): flush the set if IndividiualCalls=yes
+  * test(ipv6): skip square bracket address tests if ipv6 not available
+  * test(gh509): only run test for nftables backend
+  * fix(dbus): service: don't cleanup config for old set APIs
+  * fix(config): bool values in dict based import/export
+  * fix(doc): dbus: signatures for zone tuple based APIs
+  * test(dbus): zone: fix zone runtime functional test title
+  * test(dbus): zone: fix false failure due to list order
+  * fix(client): addService needs to reduce tuple size
+  * test(direct): rule in a zone chain
+  * fix(direct): rule in a zone chain
+  * test(dbus): zone: verify runtime config APIs
+  * test(dbus): zone: verify permanent config APIs
+  * fix(systemd): Conflict with nftables.service
+  * fix: test/regression/gh599: use expr to be more portable
+  * test: dbus: zone: verify runtime config API signatures
+  * test: dbus: zone: verify permanent config API signatures
+  * fix: test/regression/gh599: fix if not using debug output
+  * test: log: verify logging still works after truncate
+  * test: ipset: verify port ranges for non-default protocol
+
+-------------------------------------------------------------------
 Fri Apr  3 07:39:02 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update to 0.7.4
