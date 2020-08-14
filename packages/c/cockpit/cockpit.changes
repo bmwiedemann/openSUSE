@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 09:33:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require group wheel
+- Add permission macros [bsc#1169614]
+- Create tmpfiles in %post install
+
+-------------------------------------------------------------------
 Fri Jun 26 12:09:09 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - new version 222:
