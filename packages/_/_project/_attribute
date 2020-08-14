@@ -5,7 +5,7 @@
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
   boo#1140040: '20200305'
-  boo#1141597: '20200812'
+  boo#1141597: '20200813'
   boo#1146736: '20200513'
   boo#1153159: '20200517'
   boo#1153514: '20200413'
@@ -31,7 +31,7 @@
   boo#1162853: '20200312'
   boo#1163655: '20200218'
   boo#1163766: '20200414'
-  boo#1164313: '20200812'
+  boo#1164313: '20200813'
   boo#1166657: '20200405'
   boo#1167245: '20200327'
   boo#1167332: '20200319'
@@ -41,7 +41,7 @@
   boo#1168371: '20200331'
   boo#1168629: '20200415'
   boo#1168849: '20200428'
-  boo#1169797: '20200812'
+  boo#1169797: '20200813'
   boo#1169855: '20200813'
   boo#1169874: '20200501'
   boo#1170553: '20200511'
@@ -140,7 +140,7 @@
   poo#66331: '20200710'
   poo#66373: '20200502'
   poo#66580: '20200627'
-  poo#66784: '20200812'
+  poo#66784: '20200813'
   poo#66967: '20200802'
   poo#67183: '20200622'
   poo#67216: '20200526'
@@ -153,7 +153,7 @@
   poo#68116: '20200813'
   poo#68522: '20200708'
   poo#68818: '20200813'
-  poo#69475: '20200812'
+  poo#69475: '20200813'
   poo#69508: '20200813'
   poo#69679: '20200813'
   poo#69688: '20200813'
@@ -205,7 +205,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20200813</value>
+    <value>20200814</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
