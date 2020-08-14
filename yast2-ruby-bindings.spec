@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-ruby-bindings
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-ruby-bindings
-Version:        4.3.0
+Version:        4.3.2
 Release:        0
-Url:            https://github.com/yast/yast-ruby-bindings
+URL:            https://github.com/yast/yast-ruby-bindings
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        yast2-ruby-bindings-%{version}.tar.bz2
 Prefix:         /usr
@@ -40,9 +40,9 @@ Requires:       rubygem(%{rb_default_ruby_abi}:fast_gettext) < 3.0
 BuildRequires:  ruby-devel
 Requires:       yast2-core >= 3.2.2
 BuildRequires:  yast2-core-devel >= 3.2.2
-# UI.SetApplicationTitle
-Requires:       yast2-ycp-ui-bindings       >= 4.2.2
-BuildRequires:  yast2-ycp-ui-bindings-devel >= 4.2.2
+# MenuBar widget
+Requires:       yast2-ycp-ui-bindings       >= 4.3.1
+BuildRequires:  yast2-ycp-ui-bindings-devel >= 4.3.1
 # The test suite includes a regression test (std_streams_spec.rb) for a
 # libyui-ncurses bug fixed in 2.47.3
 BuildRequires:  libyui-ncurses >= 2.47.3
