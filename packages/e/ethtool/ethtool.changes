@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug  4 16:31:09 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to new upstream release 5.8
+  * netlink handler for device features
+  * netlink handler for private flags
+  * netlink handler for ring sizes
+  * netlink handler for channels counts
+  * netlink handler for coalescing parameters
+  * netlink handler for pause parameters
+  * netlink handler for EEE settings
+  * netlink handler for timestamping info
+  * master/slave configuration support
+  * LINKSTATE SQI support
+  * cable test support
+  * cable test TDR support
+  * JSON output for cable test commands
+  * igc driver support
+  * support for get/set ethtool_tunable
+  * dsa: mv88e6xxx: add pretty dump for 88E6352 SERDES
+  * fix some build warnings
+- drop patches present in 5.8 release:
+  * netlink-fix-build-warnings.patch
+  * netlink-fix-error-message-suppression.patch
+  * netlink-fix-unwanted-switch-fall-through-in-family_i.patch
+
+-------------------------------------------------------------------
+Tue Aug  4 13:47:14 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- ethtool.keyring:
+  add new upstream maintainer's key (F4554567B91DE934)
+
+-------------------------------------------------------------------
 Fri Jun 12 10:19:38 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
 
 - prevent misleading netlink error message when running on kernel

@@ -17,7 +17,7 @@
 
 
 Name:           ethtool
-Version:        5.7
+Version:        5.8
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
@@ -33,19 +33,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl)
 
-Patch1:         netlink-fix-build-warnings.patch
-Patch2:         netlink-fix-unwanted-switch-fall-through-in-family_i.patch
-Patch3:         netlink-fix-error-message-suppression.patch
-
 %description
 Ethtool is a small utility for examining and tuning ethernet-based
 network interfaces.  See the man page for more details.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 export CFLAGS="%optflags -W -Wall -Wstrict-prototypes -Wformat-security -Wpointer-arith -Wno-missing-field-initializers"
