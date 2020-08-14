@@ -17,7 +17,7 @@
 
 
 Name:           yast2-sound
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        YaST2 - Sound Configuration
 License:        GPL-2.0-or-later
@@ -50,6 +50,8 @@ Requires:       yast2 >= 3.1.180
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 Obsoletes:      yast2-sound-devel-doc
+
+Supplements:    autoyast(sound)
 
 %description
 This package contains the YaST2 component for sound card configuration.
