@@ -384,4 +384,17 @@
     <comment></comment>
     <requestid>821876</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>83e5fd9ac9abbfea1267e52d0bdfac74</srcmd5>
+    <version>1.18.117</version>
+    <time>1597390348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.117 (bsc#1175147, bsc#1175148, jsc#ECO-2362, jsc#PM-2069)
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.18.117/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+  + Update Requires in spec file from setup.py
+- Rename README.rst to README.md in %docs section</comment>
+    <requestid>826017</requestid>
+  </revision>
 </revisionlist>
