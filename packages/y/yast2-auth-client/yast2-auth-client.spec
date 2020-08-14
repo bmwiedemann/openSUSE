@@ -17,7 +17,7 @@
 
 
 Name:           yast2-auth-client
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Url:            https://github.com/yast/yast-auth-client
 Summary:        YaST2 - Centralised System Authentication Configuration
@@ -46,6 +46,8 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 
 Obsoletes:      yast2-kerberos-client
 Obsoletes:      yast2-ldap-client
+
+Supplements:    autoyast(auth-client)
 
 BuildArch:      noarch
 
