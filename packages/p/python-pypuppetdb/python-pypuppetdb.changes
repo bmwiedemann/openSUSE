@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  7 09:18:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.2.0
+  * Loosen requirements and drop six
+- Drop loosen-requirements.patch
+
+-------------------------------------------------------------------
 Fri Mar 20 12:59:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.1.0

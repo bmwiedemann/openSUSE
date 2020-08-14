@@ -1,8 +1,0 @@
-Index: pypuppetdb-2.0.0/requirements.txt
-===================================================================
---- pypuppetdb-2.0.0.orig/requirements.txt
-+++ pypuppetdb-2.0.0/requirements.txt
-@@ -1,2 +1 @@
--requests==2.22.0
--six==1.13.0
-+requests>=2.22.0
