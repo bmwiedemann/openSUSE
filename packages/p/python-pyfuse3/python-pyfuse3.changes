@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  7 15:46:22 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.0.0
+  * Changed create handler to return a FileInfo struct to allow for 
+    modification of certain kernel file attributes, e.g. direct_io.
+
+-------------------------------------------------------------------
 Thu Oct 10 08:27:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.0.0:

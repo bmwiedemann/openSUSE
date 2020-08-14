@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfuse3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,22 +20,23 @@
 %define skip_python2 1
 %define pname   pyfuse3
 Name:           python-%{pname}
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        Python Bindings for the low-level FUSE3 API
 License:        LGPL-2.1-or-later
 URL:            https://github.com/libfuse/pyfuse3
 Source:         https://github.com/libfuse/pyfuse3/archive/release-%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module contextvars >= 2.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module trio}
 BuildRequires:  fdupes
 BuildRequires:  fuse3-devel >= 3.3.0
 BuildRequires:  libattr-devel
 BuildRequires:  python-rpm-macros
+Requires:       python-trio
 Recommends:     fuse3 >= 3.3.0
 %python_subpackages
 

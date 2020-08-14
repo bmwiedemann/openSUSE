@@ -35,4 +35,12 @@
     for modification of certain kernel file attributes, e.g. direct_io.</comment>
     <requestid>736804</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5aa2a53938d8dad7cc938fe841c8eeb4</srcmd5>
+    <version>3.0.0</version>
+    <time>1597403442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824896</requestid>
+  </revision>
 </revisionlist>
