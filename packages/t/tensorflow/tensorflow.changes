@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 12 23:52:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace pypi.python.org Source URL with the canonical files.pythonhosted.org
+
+-------------------------------------------------------------------
 Thu Jun 18 07:28:26 UTC 2020 - Sumit Jamgade <sjamgade@suse.com>
 
 - update spec file to link ccache correctly for bazel builds.

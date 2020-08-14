@@ -115,9 +115,9 @@ Source1:        tensorflow-rpmlintrc
 # License10: Apache-2.0
 Source10:       https://github.com/bazelbuild/rules_closure/archive/308b05b2419edb5c8ee0471b67a40403df940149.tar.gz#/rules_closure.tar.gz
 # License12:  Python-2.0
-Source12:       https://pypi.python.org/packages/bc/cc/3cdb0a02e7e96f6c70bd971bc8a90b8463fda83e264fa9c5c1c98ceabd81/backports.weakref-1.0rc1.tar.gz#/backports.weakref-1.0rc1.tar.gz
+Source12:       https://files.pythonhosted.org/packages/source/b/backports.weakref/backports.weakref-1.0rc1.tar.gz
 # License13: BSD-3-Clause
-Source14:       https://files.pythonhosted.org/packages/4e/35/11749bf99b2d4e3cceb4d55ca22590b0d7c2c62b9de38ac4a4a7f4687421/gast-0.2.2.tar.gz
+Source14:       https://files.pythonhosted.org/packages/source/g/gast/gast-0.2.2.tar.gz
 # License15: MIT
 Source15:       https://github.com/google/farmhash/archive/816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz#/farmhash.tar.gz
 # License17: Apache-2.0
@@ -153,7 +153,7 @@ Source37:       https://github.com/bazelbuild/rules_docker/archive/a9bb1dab84cdf
 # License43: BSD and ICU License
 Source44:       https://github.com/nanopb/nanopb/archive/f8ac463766281625ad710900479130c7fcb4d63b.tar.gz#/nanopb.tar.gz
 # Deps sources for Tensorflow-Lite (use same eigen, gemmlowp and abseil_cpp packages as non lite version)
-Source46:       https://pypi.python.org/packages/c5/60/6ac26ad05857c601308d8fb9e87fa36d0ebf889423f47c3502ef034365db/functools32-3.2.3-2.tar.gz
+Source46:       https://files.pythonhosted.org/packages/source/f/functools32/functools32-3.2.3-2.tar.gz
 Source47:       https://github.com/pybind/pybind11/archive/v2.3.0.tar.gz#/pybind11-v2.3.0.tar.gz
 Source48:       https://github.com/llvm-mirror/llvm/archive/7a7e03f906aada0cf4b749b51213fe5784eeff84.tar.gz#/llvm.tar.gz
 Source49:       https://github.com/mborgerding/kissfft/archive/36dbc057604f00aacfc0288ddad57e3b21cfc1b8.tar.gz#/kissfft.tar.gz
