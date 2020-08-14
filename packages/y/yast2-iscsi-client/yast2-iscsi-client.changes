@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 15:54:00 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(iscsi-client) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.2
+
+-------------------------------------------------------------------
 Wed May 20 13:55:46 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Help text to clarify the behavior of the Startup widget when
