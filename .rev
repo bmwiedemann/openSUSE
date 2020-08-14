@@ -320,4 +320,13 @@
   + Updated pci, usb and vendor ids.</comment>
     <requestid>821258</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>eb92768717202e9873f8ed4105c0b43e</srcmd5>
+    <version>0.338</version>
+    <time>1597403256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.338:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>825787</requestid>
+  </revision>
 </revisionlist>
