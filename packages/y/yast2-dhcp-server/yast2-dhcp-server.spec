@@ -17,7 +17,7 @@
 
 
 Name:           yast2-dhcp-server
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        YaST2 - DHCP Server Configuration
 License:        GPL-2.0-only
@@ -56,6 +56,8 @@ Requires:       yast2 >= 4.1.22
 # DnsServerAPI::IsServiceConfigurableExternally
 Requires:       yast2-dns-server >= 2.13.16
 Requires:       yast2-ruby-bindings >= 1.0.0
+
+Supplements:    autoyast(dhcp-server)
 
 BuildArch:      noarch
 
