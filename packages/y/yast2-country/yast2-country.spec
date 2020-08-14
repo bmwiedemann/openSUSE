@@ -17,7 +17,7 @@
 
 
 Name:           yast2-country
-Version:        4.3.6
+Version:        4.3.8
 Release:        0
 Summary:        YaST2 - Country Settings (Language, Keyboard, and Timezone)
 License:        GPL-2.0-only
@@ -57,6 +57,8 @@ Requires:       rubygem(%{rb_default_ruby_abi}:ruby-dbus)
 
 # Y2Network::NtpServer
 Conflicts:      yast2-ntp-client < 4.2.8
+
+Supplements:    autoyast(language,keyboard,timezone)
 
 %description
 Country specific data and configuration modules (language, keyboard,
