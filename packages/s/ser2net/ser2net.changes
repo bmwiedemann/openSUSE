@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug  9 14:31:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.0
+  controller:
+  * Added a yaml mode for the controller interface. This should
+    make having a program talk to the controller much easier.
+  * In yaml mode for the controller interface, add asychronous
+    notifications to know if anything connects or disconnects.
+
+-------------------------------------------------------------------
 Wed Jul  8 18:53:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2.0
