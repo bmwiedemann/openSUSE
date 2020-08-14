@@ -25,7 +25,7 @@
 %define min_ndctl_ver 63.0
 
 Name:           pmdk
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Persistent Memory Development Kit
 License:        BSD-3-Clause
@@ -35,6 +35,8 @@ URL:            http://pmem.io/pmdk/
 Source:         https://github.com/pmem/pmdk/archive/%version.tar.gz
 Source1:        pregen-doc.tgz
 Source99:       gen-doc.sh
+Patch0:         examples-rpmem-add-missing-lfabric-flag.patch
+Patch1:         common-fix-LIBFABRIC-flags.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  man
@@ -237,6 +239,8 @@ Documentation for the pmem library interface.
 
 %prep
 %setup -q
+%patch0
+%patch1
 #Extract pre generated documentation
 tar xf %{S:1}
 

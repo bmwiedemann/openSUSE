@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 22 07:34:47 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to PMDK 1.9
+  - Switches the default instruction set for memcpy, memmove and memset
+    implementations on x86 to AVX512, and introduces numerous performance
+    improvements for those operations on AVX and SSE2 fallback paths.
+  - Optimizes transactional allocations in libpmemobj by avoiding one
+    extraneous cache miss and reducing the amount of work required to perform
+    a reservation.
+  - Introduces a new API in libpmemobj, pmemobj_tx_set_failure_behavior,
+    that enables the application to control the behavior of aborting
+    transactions.
+  - Stabilizes support for ppc64.
+  - pmem: mem[cpy|set] optimization when eADR is available
+  - obj: detect msync failures in non-pmem variants of mem[cpy|move|set]
+- Add patches to fix compilation against libfabric:
+  - examples-rpmem-add-missing-lfabric-flag.patch to fix examples linkage errors
+  - common-fix-LIBFABRIC-flags.patch to fix daemons/tools linkage errors
+
+-------------------------------------------------------------------
 Thu Feb 13 08:49:37 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to PMDK 1.8
