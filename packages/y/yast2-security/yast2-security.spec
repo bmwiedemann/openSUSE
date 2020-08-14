@@ -17,7 +17,7 @@
 
 
 Name:           yast2-security
-Version:        4.3.1
+Version:        4.3.3
 Release:        0
 Summary:        YaST2 - Security Configuration
 License:        GPL-2.0-only
@@ -61,6 +61,8 @@ Obsoletes:      y2c_sec
 Obsoletes:      y2t_sec
 Obsoletes:      yast2-config-security
 Obsoletes:      yast2-trans-security
+
+Supplements:    autoyast(security)
 
 BuildArch:      noarch
 

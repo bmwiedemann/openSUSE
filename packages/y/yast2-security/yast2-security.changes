@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 13 10:00:58 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed randomly failing unit tests, do not query the installed
+  PAM modules in the testing system (related to bsc#1171318)
+- 4.3.3
+
+-------------------------------------------------------------------
+Mon Aug 10 17:40:01 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(security) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.2
+
+-------------------------------------------------------------------
 Tue Jul 28 13:52:52 CEST 2020 - aschnell@suse.com
 
 - Use pam_pwquality instead of pam_cracklib depending on
