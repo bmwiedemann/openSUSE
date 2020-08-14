@@ -209,4 +209,15 @@
     <comment></comment>
     <requestid>816356</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3ee3727ea2a822461e25ff7c3d65ef00</srcmd5>
+    <version>1.8.5</version>
+    <time>1597390287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.5:
+  * Fix compile issue with check &gt;= 0.15.0
+  * Fix travis CI issues
+  * Remove problematic language</comment>
+    <requestid>825916</requestid>
+  </revision>
 </revisionlist>

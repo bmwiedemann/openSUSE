@@ -25,7 +25,7 @@
 %define python3 0
 %endif
 Name:           libstoragemgmt
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        Storage array management library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -294,7 +294,6 @@ pyfiles=(plugin/megaraid/megaraid_lsmplugin \
          tools/lsmcli/lsmcli \
          test/cmdtest.py \
          test/plugin_test.py \
-         tools/sanity_check/local_sanity_check.py \
         )
 
 head -vn 1 ${pyfiles[@]}
@@ -303,7 +302,6 @@ head -vn 1 ${pyfiles[@]}
 
 #Fix rpmlint Warning: non-executable-script
 pyfiles=(tools/use_cases/find_unused_lun.py \
-         tools/sanity_check/local_sanity_check.py \
         )
 
 head -vn 1 ${pyfiles[@]}
@@ -546,7 +544,7 @@ fi
 %{_bindir}/sim_lsmplugin
 %dir %{_libexecdir}/lsm.d
 %{_libexecdir}/lsm.d/find_unused_lun.py*
-%{_libexecdir}/lsm.d/local_sanity_check.py*
+%{_libexecdir}/lsm.d/local_check.py
 %config(noreplace) %{_sysconfdir}/lsm/pluginconf.d/sim.conf
 %{_mandir}/man1/sim_lsmplugin.1%{ext_man}
 
