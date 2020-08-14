@@ -222,4 +222,12 @@
     Vehicle type specific pre-flight checklists. Turn on from Settings.</comment>
     <requestid>810733</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>63d75e85acc80574617e7abde127d69f</srcmd5>
+    <version>4.0.8</version>
+    <time>1597392221</time>
+    <user>dimstar_suse</user>
+    <comment>-  Add _constraints default min disk size &amp;amp; physicalmemory 4GB (forwarded request 826287 from michel_mno)</comment>
+    <requestid>826289</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 10:16:28 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+-  Add _constraints default min disk size & physicalmemory 4GB
+
+-------------------------------------------------------------------
 Tue Jun  2 06:38:22 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to version 4.0.8
