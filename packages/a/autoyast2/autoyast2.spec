@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.3.32
+Version:        4.3.35
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -136,6 +136,8 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 
 Provides:       yast2-trans-autoinst
 Obsoletes:      yast2-trans-autoinst
+
+Supplements:    autoyast(files,general,report,scripts,partitioning,software)
 
 %description installation
 This package performs auto-installation relying on a control file
