@@ -17,19 +17,54 @@
 #
 
 
+%define flavor @BUILD_FLAVOR@%{nil}
+
+%bcond_with ringdisabled
+
+%if "%flavor" == "testsuite"
+%if %{with ringdisabled}
+ExclusiveArch:  do_not_build
+%endif
 %if 0%{?qemu_user_space_build}
 # In a qemu_user_space_build ptrace is not supported, so we can't test gdb.
-%global _without_testsuite 1
+ExclusiveArch:  do_not_build
 %endif
-%bcond_without testsuite
+%define build_main 0
+%define build_testsuite 1
+%else
+%define build_main 1
+%define build_testsuite 0
+%endif
+
+%if %{build_testsuite}
+%define debug_package %{nil}
+%endif
+
+%if %{build_main}
+%define name_suffix %{nil}
+%else
+%if %{build_testsuite}
+%define name_suffix -testresults
+%else
+%define name_suffix -%{flavor}
+%endif
+%endif
+
 %bcond_without fpc
 
+%if %{build_main}
 Summary:        A GNU source-level debugger for C, C++, Fortran and other languages
 License:        GPL-3.0-or-later AND GPL-3.0-with-GCC-exception AND LGPL-2.1-or-later AND LGPL-3.0-or-later
 Group:          Development/Tools/Debuggers
-Name:           gdb
+%endif
+%if %{build_testsuite}
+Summary:        GDB testsuite results
+License:        SUSE-Public-Domain
+Group:          Development/Languages/C and C++
+%endif
+Name:           gdb%{name_suffix}
 
-Version:        8.3.1
+Version:        9.2
 Release:        0
 
 # The release always contains a leading reserved number, start it at 1.
@@ -46,9 +81,9 @@ Obsoletes:      devtoolset-1.0-%{pkg_name}
 %endif
 
 # For our convenience
-%global gdb_src %{name}-%{version}
+%global gdb_src gdb-%{version}
 %global gdb_build build-%{_target_platform}
-%global gdb_docdir %{_docdir}/%{name}-doc
+%global gdb_docdir %{_docdir}/gdb-doc
 
 %global have_inproctrace 0
 %ifarch %{ix86} x86_64
@@ -96,9 +131,20 @@ Source10:       patchlist.pl
 Source11:       patchname_get.sh
 Source12:       baselibs.conf
 Source13:       gdb-rpmlintrc
+%if %{build_testsuite}
+NoSource:       0
+NoSource:       2
+NoSource:       3
+NoSource:       4
+NoSource:       5
+NoSource:       7
+NoSource:       10
+NoSource:       11
+NoSource:       12
+NoSource:       13
+%endif
 
 #Fedora Packages begin
-Patch1:         gdb-6.3-rh-testversion-20041202.patch
 Patch2:         gdb-vla-intel-fortran-strides.patch
 Patch3:         gdb-vla-intel-fortran-vla-strings.patch
 Patch4:         gdb-vla-intel-stringbt-fix.patch
@@ -115,112 +161,93 @@ Patch14:        gdb-6.5-sharedlibrary-path.patch
 Patch15:        gdb-6.5-BEA-testsuite.patch
 Patch16:        gdb-6.5-last-address-space-byte-test.patch
 Patch17:        gdb-6.5-readline-long-line-crash-test.patch
-Patch18:        gdb-6.5-bz216711-clone-is-outermost.patch
-Patch19:        gdb-6.5-bz218379-ppc-solib-trampoline-test.patch
-Patch20:        gdb-6.5-bz218379-solib-trampoline-lookup-lock-fix.patch
-Patch21:        gdb-6.5-bz109921-DW_AT_decl_file-test.patch
-Patch22:        gdb-6.3-bz140532-ppc-unwinding-test.patch
-Patch23:        gdb-6.3-bz202689-exec-from-pthread-test.patch
-Patch24:        gdb-6.6-bz230000-power6-disassembly-test.patch
-Patch25:        gdb-6.6-bz229517-gcore-without-terminal.patch
-Patch26:        gdb-6.6-testsuite-timeouts.patch
-Patch27:        gdb-6.6-bz237572-ppc-atomic-sequence-test.patch
-Patch28:        gdb-6.6-scheduler_locking-step-is-default.patch
-Patch29:        gdb-6.3-attach-see-vdso-test.patch
-Patch30:        gdb-6.5-bz243845-stale-testing-zombie-test.patch
-Patch31:        gdb-6.6-buildid-locate.patch
-Patch32:        gdb-6.6-buildid-locate-solib-missing-ids.patch
-Patch33:        gdb-6.6-buildid-locate-rpm.patch
-Patch34:        gdb-6.7-charsign-test.patch
-Patch35:        gdb-6.7-ppc-clobbered-registers-O2-test.patch
-Patch36:        gdb-6.7-testsuite-stable-results.patch
-Patch37:        gdb-6.5-ia64-libunwind-leak-test.patch
-Patch38:        gdb-6.5-missed-trap-on-step-test.patch
-Patch39:        gdb-6.5-gcore-buffer-limit-test.patch
-Patch40:        gdb-6.3-mapping-zero-inode-test.patch
-Patch41:        gdb-6.3-focus-cmd-prev-test.patch
-Patch42:        gdb-6.8-bz442765-threaded-exec-test.patch
-Patch43:        gdb-6.5-section-num-fixup-test.patch
-Patch44:        gdb-6.8-bz436037-reg-no-longer-active.patch
-Patch45:        gdb-6.8-bz466901-backtrace-full-prelinked.patch
-Patch46:        gdb-simultaneous-step-resume-breakpoint-test.patch
-Patch47:        gdb-core-open-vdso-warning.patch
-Patch49:        gdb-bz533176-fortran-omp-step.patch
-Patch50:        gdb-follow-child-stale-parent.patch
-Patch51:        gdb-ccache-workaround.patch
-Patch52:        gdb-archer-pie-addons.patch
-Patch53:        gdb-archer-pie-addons-keep-disabled.patch
-Patch54:        gdb-lineno-makeup-test.patch
-Patch55:        gdb-ppc-power7-test.patch
-Patch56:        gdb-bz541866-rwatch-before-run.patch
-Patch57:        gdb-moribund-utrace-workaround.patch
-Patch58:        gdb-archer-next-over-throw-cxx-exec.patch
-Patch59:        gdb-bz601887-dwarf4-rh-test.patch
-Patch60:        gdb-6.6-buildid-locate-core-as-arg.patch
-Patch61:        gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
-Patch62:        gdb-test-bt-cfi-without-die.patch
-Patch63:        gdb-bz568248-oom-is-error.patch
-Patch64:        gdb-bz634108-solib_address.patch
-Patch65:        gdb-test-pid0-core.patch
-Patch66:        gdb-test-dw2-aranges.patch
-Patch67:        gdb-test-expr-cumulative-archer.patch
-Patch68:        gdb-physname-pr11734-test.patch
-Patch69:        gdb-physname-pr12273-test.patch
-Patch70:        gdb-test-ivy-bridge.patch
-Patch71:        gdb-runtest-pie-override.patch
-Patch72:        gdb-attach-fail-reasons-5of5.patch
-Patch73:        gdb-glibc-strstr-workaround.patch
-Patch74:        gdb-rhel5.9-testcase-xlf-var-inside-mod.patch
-Patch75:        gdb-rhbz-818343-set-solib-absolute-prefix-testcase.patch
-Patch76:        gdb-rhbz795424-bitpos-20of25.patch
-Patch77:        gdb-rhbz795424-bitpos-21of25.patch
-Patch78:        gdb-rhbz795424-bitpos-22of25.patch
-Patch79:        gdb-rhbz795424-bitpos-23of25.patch
-Patch80:        gdb-rhbz795424-bitpos-25of25.patch
-Patch81:        gdb-rhbz795424-bitpos-25of25-test.patch
-Patch82:        gdb-rhbz795424-bitpos-lazyvalue.patch
-Patch83:        gdb-rhbz947564-findvar-assertion-frame-failed-testcase.patch
-Patch84:        gdb-gnat-dwarf-crash-3of3.patch
-Patch85:        gdb-rhbz1007614-memleak-infpy_read_memory-test.patch
-Patch86:        gdb-6.6-buildid-locate-misleading-warning-missing-debuginfo-rhbz981154.patch
-Patch87:        gdb-archer-vla-tests.patch
-Patch88:        gdb-vla-intel-tests.patch
-Patch89:        gdb-btrobust.patch
-Patch90:        gdb-fortran-frame-string.patch
-Patch91:        gdb-rhbz1156192-recursive-dlopen-test.patch
-Patch92:        gdb-jit-reader-multilib.patch
-Patch93:        gdb-rhbz1149205-catch-syscall-after-fork-test.patch
-Patch94:        gdb-rhbz1186476-internal-error-unqualified-name-re-set-test.patch
-Patch95:        gdb-rhbz1350436-type-printers-error.patch
-Patch96:        gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
-Patch97:        gdb-bz1219747-attach-kills.patch
-Patch98:        gdb-fedora-libncursesw.patch
-Patch99:        gdb-opcodes-clflushopt-test.patch
-Patch100:       gdb-dts-rhel6-python-compat.patch
-Patch101:       gdb-6.6-buildid-locate-rpm-scl.patch
-Patch102:       gdb-readline62-ask-more-rh.patch
-Patch103:       gdb-6.8-quit-never-aborts.patch
-Patch104:       gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
-Patch105:       gdb-container-rh-pkg.patch
-Patch106:       gdb-rhbz1325795-framefilters-test.patch
-Patch107:       gdb-linux_perf-bundle.patch
-Patch108:       gdb-libexec-add-index.patch
-Patch109:       gdb-rhbz1398387-tab-crash-test.patch
-Patch110:       gdb-testsuite-readline63-sigint.patch
-Patch111:       gdb-archer.patch
-Patch112:       gdb-vla-intel-fix-print-char-array.patch
-Patch113:       gdb-rhbz1553104-s390x-arch12-test.patch
-Patch114:       gdb-rhbz795424-bitpos-arrayview.patch
-Patch115:       gdb-rhbz1371380-gcore-elf-headers.patch
-Patch116:       gdb-rhbz1708192-parse_macro_definition-crash.patch
-Patch117:       gdb-rhbz1704406-disable-style-log-output-1of3.patch
-Patch118:       gdb-rhbz1704406-disable-style-log-output-2of3.patch
-Patch119:       gdb-rhbz1704406-disable-style-log-output-3of3.patch
-Patch120:       gdb-rhbz1723564-gdb-crash-PYTHONMALLOC-debug.patch
-Patch121:       gdb-rhbz1553086-binutils-warning-loadable-section-outside-elf.patch
+Patch18:        gdb-6.5-bz218379-ppc-solib-trampoline-test.patch
+Patch19:        gdb-6.5-bz218379-solib-trampoline-lookup-lock-fix.patch
+Patch20:        gdb-6.5-bz109921-DW_AT_decl_file-test.patch
+Patch21:        gdb-6.3-bz140532-ppc-unwinding-test.patch
+Patch22:        gdb-6.3-bz202689-exec-from-pthread-test.patch
+Patch23:        gdb-6.6-bz230000-power6-disassembly-test.patch
+Patch24:        gdb-6.6-bz229517-gcore-without-terminal.patch
+Patch25:        gdb-6.6-testsuite-timeouts.patch
+Patch26:        gdb-6.6-bz237572-ppc-atomic-sequence-test.patch
+Patch27:        gdb-6.3-attach-see-vdso-test.patch
+Patch28:        gdb-6.5-bz243845-stale-testing-zombie-test.patch
+Patch29:        gdb-6.6-buildid-locate.patch
+Patch30:        gdb-6.6-buildid-locate-solib-missing-ids.patch
+Patch31:        gdb-6.6-buildid-locate-rpm.patch
+Patch32:        gdb-6.7-charsign-test.patch
+Patch33:        gdb-6.7-ppc-clobbered-registers-O2-test.patch
+Patch34:        gdb-6.7-testsuite-stable-results.patch
+Patch35:        gdb-6.5-ia64-libunwind-leak-test.patch
+Patch36:        gdb-6.5-missed-trap-on-step-test.patch
+Patch37:        gdb-6.5-gcore-buffer-limit-test.patch
+Patch38:        gdb-6.3-mapping-zero-inode-test.patch
+Patch39:        gdb-6.3-focus-cmd-prev-test.patch
+Patch40:        gdb-6.8-bz442765-threaded-exec-test.patch
+Patch41:        gdb-6.5-section-num-fixup-test.patch
+Patch42:        gdb-6.8-bz466901-backtrace-full-prelinked.patch
+Patch43:        gdb-simultaneous-step-resume-breakpoint-test.patch
+Patch44:        gdb-core-open-vdso-warning.patch
+Patch45:        gdb-bz533176-fortran-omp-step.patch
+Patch46:        gdb-ccache-workaround.patch
+Patch47:        gdb-archer-pie-addons.patch
+Patch48:        gdb-archer-pie-addons-keep-disabled.patch
+Patch49:        gdb-lineno-makeup-test.patch
+Patch50:        gdb-ppc-power7-test.patch
+Patch51:        gdb-moribund-utrace-workaround.patch
+Patch52:        gdb-archer-next-over-throw-cxx-exec.patch
+Patch53:        gdb-bz601887-dwarf4-rh-test.patch
+Patch54:        gdb-6.6-buildid-locate-core-as-arg.patch
+Patch55:        gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
+Patch56:        gdb-test-bt-cfi-without-die.patch
+Patch57:        gdb-bz634108-solib_address.patch
+Patch58:        gdb-test-pid0-core.patch
+Patch59:        gdb-test-dw2-aranges.patch
+Patch60:        gdb-test-expr-cumulative-archer.patch
+Patch61:        gdb-physname-pr11734-test.patch
+Patch62:        gdb-physname-pr12273-test.patch
+Patch63:        gdb-test-ivy-bridge.patch
+Patch64:        gdb-runtest-pie-override.patch
+Patch65:        gdb-attach-fail-reasons-5of5.patch
+Patch66:        gdb-glibc-strstr-workaround.patch
+Patch67:        gdb-rhel5.9-testcase-xlf-var-inside-mod.patch
+Patch68:        gdb-rhbz-818343-set-solib-absolute-prefix-testcase.patch
+Patch69:        gdb-rhbz947564-findvar-assertion-frame-failed-testcase.patch
+Patch70:        gdb-gnat-dwarf-crash-3of3.patch
+Patch71:        gdb-rhbz1007614-memleak-infpy_read_memory-test.patch
+Patch73:        gdb-archer-vla-tests.patch
+Patch74:        gdb-vla-intel-tests.patch
+Patch75:        gdb-btrobust.patch
+Patch76:        gdb-fortran-frame-string.patch
+Patch77:        gdb-rhbz1156192-recursive-dlopen-test.patch
+Patch78:        gdb-jit-reader-multilib.patch
+Patch79:        gdb-rhbz1149205-catch-syscall-after-fork-test.patch
+Patch80:        gdb-rhbz1186476-internal-error-unqualified-name-re-set-test.patch
+Patch81:        gdb-rhbz1350436-type-printers-error.patch
+Patch82:        gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
+Patch83:        gdb-bz1219747-attach-kills.patch
+Patch84:        gdb-fedora-libncursesw.patch
+Patch85:        gdb-opcodes-clflushopt-test.patch
+Patch86:        gdb-dts-rhel6-python-compat.patch
+Patch87:        gdb-6.6-buildid-locate-rpm-scl.patch
+Patch88:        gdb-6.8-quit-never-aborts.patch
+Patch89:        gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
+Patch90:        gdb-container-rh-pkg.patch
+Patch91:        gdb-rhbz1325795-framefilters-test.patch
+Patch92:        gdb-linux_perf-bundle.patch
+Patch94:        gdb-rhbz1398387-tab-crash-test.patch
+Patch95:        gdb-archer.patch
+Patch96:        gdb-vla-intel-fix-print-char-array.patch
+Patch97:        gdb-rhbz1553104-s390x-arch12-test.patch
+Patch98:        gdb-rhbz1818011-bfd-gcc10-error.patch
 #Fedora Packages end
 
-#Fedora patches fixup
+# Fedora Packages not copied:
+# - gdb-libexec-add-index.patch
+# - gdb-6.3-rh-testversion-20041202.patch
+# - gdb-6.6-buildid-locate-misleading-warning-missing-debuginfo-rhbz981154.patch
+
+# Fedora patches fixup
 
 Patch500:       gdb-testsuite-avoid-pagination-in-attach-32.exp.patch
 Patch501:       gdb-testsuite-fix-perror-in-gdb.opt-fortran-string.exp.patch
@@ -232,41 +259,24 @@ Patch1002:      gdb-6.6-buildid-locate-rpm-suse.patch
 Patch1003:      gdb-testsuite-ada-pie.patch
 
 # Patches to upstream
-
-# Fixed upstream Sat, Jun 22 2019, 47e3f47487 "[gdb] Fix s390x -m31 build".
-# We should be able to drop this in 8.4.
-Patch1007:      gdb-fix-s390-build.diff
+Patch1500:      gdb-fix-debug-agent-odr-bool-int.patch
+Patch1501:      gdbserver-fix-build-with-make-3.81.patch
 
 # Backports from master
 
-Patch2001:      gdb-fix-riscv-tdep.patch
-Patch2004:      gdb-testsuite-add-missing-initial-prompt-read-in-multidictionary.exp.patch
-Patch2005:      gdb-testsuite-pie-no-pie.patch
-Patch2007:      gdb-testsuite-read1-fixes.patch
-Patch2008:      gdb-testsuite-i386-pkru-exp.patch
-Patch2009:      gdb-s390-handle-arch13.diff
-Patch2010:      gdb-fix-heap-use-after-free-in-typename-concat.patch
-Patch2011:      gdb-dwarf-reader-reject-sections-with-invalid-sizes.patch
-Patch2012:      gdb-0001-remove-alloca-0-calls.patch
-Patch2013:      gdb-arch13-1.diff
-Patch2014:      gdb-arch13-2.diff
-Patch2015:      gdb-arch13-3.diff
-Patch2016:      bfd-change-num_group-to-unsigned-int.patch
-Patch2017:      gdb-fix-incorrect-use-of-is-operator-for-comparison-in-python-lib-gdb-command-prompt.py.patch
 Patch2018:      gdb-fix-toplevel-types-with-fdebug-types-section.patch
 Patch2019:      gdb-fix-range-loop-index-in-find_method.patch
-
-# Proposed patch for PR symtab/24971
-Patch2500:      gdb-symtab-prefer-var-def-over-decl.patch
-
-# Proposed patch for PR gdb/24956
-Patch2501:      gdb-only-force-interp_console-ui_out-for-breakpoint-commands-in-mi-mode.patch
+Patch2020:      gdb-fix-python3.9-related-runtime-problems.patch
+Patch2021:      gdb-fix-unused-function-error.patch
+Patch2022:      gdb-fix-the-thread-pool.c-compilation.patch
+Patch2023:      gdb-aarch64-fix-erroneous-use-of-spu-architecture-bfd.patch
 
 # Proposed patch for PR threads/25478
 Patch2502:      gdb-threads-fix-hang-in-stop_all_threads-after-killing-inferior.patch
 
 # Testsuite patches
-Patch2600:      gdb-testsuite-8.3-kfail-xfail-unsupported.patch
+
+# -
 
 # libipt support
 Patch3000:      v1.5-libipt-static.patch
@@ -319,7 +329,26 @@ BuildRequires:  cmake
 ExclusiveArch:  noarch i386 x86_64 ppc ppc64 ia64 s390 s390x
 %endif # 0%{?el5:1}
 
-%if %{with testsuite}
+%ifarch s390x
+%if %{suse_version} > 1500
+BuildRequires:  babeltrace-devel
+%endif
+%endif
+%ifarch ppc64
+%if %{suse_version} >= 1500
+BuildRequires:  babeltrace-devel
+%endif
+%endif
+%ifarch %{ix86} x86_64
+%if %{suse_version} >= 1200
+BuildRequires:  babeltrace-devel
+%endif
+%endif
+%ifarch aarch64
+BuildRequires:  babeltrace-devel
+%endif
+
+%if %{build_testsuite}
 
 # Copied from gcc9/gcc.spec.in
 # Ada currently fails to build on a few platforms, enable it only
@@ -402,12 +431,23 @@ BuildRequires:  valgrind
 %endif
 %endif
 
-%endif # %%{with testsuite}
+%ifarch s390x
+%if 0%{?suse_version} >= 1500
+# s390x (for SLE12 and earlier) doesn't have binutils-gold
+BuildRequires:  binutils-gold
+%endif
+%else
+BuildRequires:  binutils-gold
+%endif
+
+%endif # %%{build_testsuite}
 
 %ifarch ia64
 BuildRequires:  libunwind-devel
 Requires:       libunwind
 %endif
+
+%if %{build_main}
 
 %description
 GDB, the GNU debugger, allows you to debug programs written in C, C++,
@@ -445,14 +485,12 @@ Java, and other languages, by executing them in a controlled fashion
 and printing their data.
 
 This package provides INFO, HTML and PDF user manual for GDB.
+%endif
 
-%package testresults
-Summary:        GDB testsuite results
-License:        SUSE-Public-Domain
-Group:          Development/Languages/C and C++
-
-%description testresults
+%if %{build_testsuite}
+%description
 Results from running the GDB testsuite. 
+%endif
 
 %prep
 %setup -q -n %{gdb_src}
@@ -471,7 +509,6 @@ rm -f gdb/jv-exp.c gdb/m2-exp.c gdb/objc-exp.c gdb/p-exp.c gdb/go-exp.c
 find -name "*.info*"|xargs rm -f
 
 #Fedora patching start
-%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
@@ -518,6 +555,7 @@ find -name "*.info*"|xargs rm -f
 %patch45 -p1
 %patch46 -p1
 %patch47 -p1
+%patch48 -p1
 %patch49 -p1
 %patch50 -p1
 %patch51 -p1
@@ -541,7 +579,6 @@ find -name "*.info*"|xargs rm -f
 %patch69 -p1
 %patch70 -p1
 %patch71 -p1
-%patch72 -p1
 %patch73 -p1
 %patch74 -p1
 %patch75 -p1
@@ -562,35 +599,11 @@ find -name "*.info*"|xargs rm -f
 %patch90 -p1
 %patch91 -p1
 %patch92 -p1
-%patch93 -p1
 %patch94 -p1
 %patch95 -p1
 %patch96 -p1
 %patch97 -p1
 %patch98 -p1
-%patch99 -p1
-%patch100 -p1
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
-%patch106 -p1
-%patch107 -p1
-%patch108 -p1
-%patch109 -p1
-%patch110 -p1
-%patch111 -p1
-%patch112 -p1
-%patch113 -p1
-%patch114 -p1
-%patch115 -p1
-%patch116 -p1
-%patch117 -p1
-%patch118 -p1
-%patch119 -p1
-%patch120 -p1
-%patch121 -p1
 #Fedora patching end
 
 %patch500 -p1
@@ -600,30 +613,17 @@ find -name "*.info*"|xargs rm -f
 %patch1002 -p1
 %patch1003 -p1
 
-%patch1007 -p1
+%patch1500 -p1
+%patch1501 -p1
 
-%patch2001 -p1
-%patch2004 -p1
-%patch2005 -p1
-%patch2007 -p1
-%patch2008 -p1
-%patch2009 -p1
-%patch2010 -p1
-%patch2011 -p1
-%patch2012 -p1
-%patch2013 -p1
-%patch2014 -p1
-%patch2015 -p1
-%patch2016 -p1
-%patch2017 -p1
 %patch2018 -p1
 %patch2019 -p1
+%patch2020 -p1
+%patch2021 -p1
+%patch2022 -p1
+%patch2023 -p1
 
-%patch2500 -p1
-%patch2501 -p1
 %patch2502 -p1
-
-%patch2600 -p1
 
 #unpack libipt
 %if 0%{have_libipt}
@@ -751,7 +751,7 @@ EXTRA_TARGETS=
 	--disable-sim						\
 	--disable-rpath						\
 	--with-system-zlib					\
-%if %{suse_version} > 1110
+%if %{suse_version} >= 1500
 	--with-system-readline					\
 %else
 	--without-system-readline				\
@@ -856,7 +856,7 @@ fi
 # This is a build-time test, but still a test.  So, skip if we don't do tests.
 # This is relevant for %%qemu_user_space_build == 1 builds, which atm is
 # the case for riscv64.
-%if %{with testsuite}
+%if %{build_testsuite}
 if [ "$LIBRPM" != "no" ]; then
     cd gdb
     cat \
@@ -936,7 +936,7 @@ cp $RPM_BUILD_DIR/%{gdb_src}/gdb/NEWS $RPM_BUILD_DIR/%{gdb_src}
 # Initially we're in the %%{gdb_src} directory.
 cd %{gdb_build}
 
-%if %{without testsuite}
+%if !%{build_testsuite}
 echo ====================TESTSUITE DISABLED=========================
 %else
 echo ====================TESTING=========================
@@ -1108,11 +1108,24 @@ rm -f $RPM_BUILD_ROOT%{_infodir}/configure*
 rm -rf $RPM_BUILD_ROOT%{_includedir}
 rm -rf $RPM_BUILD_ROOT/%{_libdir}/lib{bfd*,opcodes*,iberty*}
 
+%if %{build_testsuite}
+rm -rf $RPM_BUILD_ROOT%{_sysconfdir}/gdbinit
+rm -rf $RPM_BUILD_ROOT%{_bindir}
+rm -rf $RPM_BUILD_ROOT%{_libdir}
+rm -rf $RPM_BUILD_ROOT%{_datadir}/gdb
+rm -rf $RPM_BUILD_ROOT%{_infodir}
+rm -rf $RPM_BUILD_ROOT%{_mandir}
+rm -rf $RPM_BUILD_ROOT/usr/src
+%endif
+
 # pstack obsoletion
 
+%if %{build_main}
 cp -p %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/man1/gstack.1
+%endif
 %endif	# 0%{!?_with_upstream:1}
 
+%if %{build_main}
 # Packaged GDB is not a cross-target one.
 (cd $RPM_BUILD_ROOT%{_datadir}/gdb/syscalls
  rm -f mips*.xml
@@ -1161,6 +1174,7 @@ rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 # build" ( https://sourceware.org/bugzilla/show_bug.cgi?id=24575 ).
 rm %{buildroot}/usr/share/man/man1/gdbserver.1
 %endif
+%endif
 
 %post
 # This step is part of the installation of the RPM. Not to be confused
@@ -1184,6 +1198,7 @@ then
   fi
 fi
 
+%if %{build_main}
 %files
 %defattr(-,root,root)
 %doc README NEWS
@@ -1206,9 +1221,10 @@ fi
 %{_datadir}/gdb
 %{_infodir}/annotate.info*
 %{_infodir}/gdb.info*
+%endif
 
-%if %{with testsuite}
-%files testresults
+%if %{build_testsuite}
+%files
 %defattr(-,root,root)
 %doc %{gdb_build}/gdb/gdb-*.sum
 %doc %{gdb_build}/gdb/gdb-*.log
@@ -1216,6 +1232,7 @@ fi
 
 # don't include the files in include, they are part of binutils
 
+%if %{build_main}
 %ifnarch riscv64 sparcv9 hppa
 %files -n gdbserver
 %defattr(-,root,root)
@@ -1225,7 +1242,9 @@ fi
 %{_libdir}/libinproctrace.so
 %endif # %%{have_inproctrace}
 %endif
+%endif
 
+%if %{build_main}
 %post doc
 # This step is part of the installation of the RPM. Not to be confused
 # with the 'make install ' of the build (rpmbuild) process.
@@ -1247,5 +1266,6 @@ then
     /sbin/install-info --delete --info-dir=%{_infodir} %{_infodir}/gdb.info.gz || :
   fi
 fi
+%endif
 
 %changelog

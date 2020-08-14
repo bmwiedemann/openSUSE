@@ -45,7 +45,7 @@ gdb/gdbserver/
 diff --git a/gdb/config.in b/gdb/config.in
 --- a/gdb/config.in
 +++ b/gdb/config.in
-@@ -267,6 +267,9 @@
+@@ -251,6 +251,9 @@
  /* Define if librpm library is being used. */
  #undef HAVE_LIBRPM
  
@@ -55,7 +55,7 @@ diff --git a/gdb/config.in b/gdb/config.in
  /* Define to 1 if you have the <libunwind-ia64.h> header file. */
  #undef HAVE_LIBUNWIND_IA64_H
  
-@@ -390,6 +393,9 @@
+@@ -386,6 +389,9 @@
  /* Define to 1 if you have the `scm_new_smob' function. */
  #undef HAVE_SCM_NEW_SMOB
  
@@ -68,7 +68,7 @@ diff --git a/gdb/config.in b/gdb/config.in
 diff --git a/gdb/configure b/gdb/configure
 --- a/gdb/configure
 +++ b/gdb/configure
-@@ -15898,6 +15898,64 @@ cat >>confdefs.h <<_ACEOF
+@@ -16434,6 +16434,64 @@ cat >>confdefs.h <<_ACEOF
  _ACEOF
  
  
@@ -136,7 +136,7 @@ diff --git a/gdb/configure b/gdb/configure
 diff --git a/gdb/configure.ac b/gdb/configure.ac
 --- a/gdb/configure.ac
 +++ b/gdb/configure.ac
-@@ -2051,6 +2051,10 @@ case $host_os in
+@@ -1964,6 +1964,10 @@ case $host_os in
  esac
  AC_DEFINE_UNQUOTED(GDBINIT,"$gdbinit",[The .gdbinit filename.])
  
@@ -150,9 +150,9 @@ diff --git a/gdb/configure.ac b/gdb/configure.ac
 diff --git a/gdb/gdbserver/config.in b/gdb/gdbserver/config.in
 --- a/gdb/gdbserver/config.in
 +++ b/gdb/gdbserver/config.in
-@@ -126,6 +126,9 @@
- /* Define to 1 if you have the `mcheck' library (-lmcheck). */
- #undef HAVE_LIBMCHECK
+@@ -125,6 +125,9 @@
+ /* Define to 1 if you have the `dl' library (-ldl). */
+ #undef HAVE_LIBDL
  
 +/* Define to 1 if you have the `selinux' library (-lselinux). */
 +#undef HAVE_LIBSELINUX
@@ -160,7 +160,7 @@ diff --git a/gdb/gdbserver/config.in b/gdb/gdbserver/config.in
  /* Define if the target supports branch tracing. */
  #undef HAVE_LINUX_BTRACE
  
-@@ -202,6 +205,9 @@
+@@ -210,6 +213,9 @@
  /* Define to 1 if you have the `pwrite' function. */
  #undef HAVE_PWRITE
  
@@ -173,7 +173,7 @@ diff --git a/gdb/gdbserver/config.in b/gdb/gdbserver/config.in
 diff --git a/gdb/gdbserver/configure b/gdb/gdbserver/configure
 --- a/gdb/gdbserver/configure
 +++ b/gdb/gdbserver/configure
-@@ -8589,6 +8589,64 @@ if $want_ipa ; then
+@@ -9398,6 +9398,64 @@ if $want_ipa ; then
     fi
  fi
  
@@ -241,7 +241,7 @@ diff --git a/gdb/gdbserver/configure b/gdb/gdbserver/configure
 diff --git a/gdb/gdbserver/configure.ac b/gdb/gdbserver/configure.ac
 --- a/gdb/gdbserver/configure.ac
 +++ b/gdb/gdbserver/configure.ac
-@@ -478,6 +478,10 @@ if $want_ipa ; then
+@@ -465,6 +465,10 @@ if $want_ipa ; then
     fi
  fi
  
@@ -255,7 +255,7 @@ diff --git a/gdb/gdbserver/configure.ac b/gdb/gdbserver/configure.ac
 diff --git a/gdb/gdbserver/linux-low.c b/gdb/gdbserver/linux-low.c
 --- a/gdb/gdbserver/linux-low.c
 +++ b/gdb/gdbserver/linux-low.c
-@@ -967,7 +967,16 @@ linux_ptrace_fun ()
+@@ -968,7 +968,16 @@ linux_ptrace_fun ()
  {
    if (ptrace (PTRACE_TRACEME, 0, (PTRACE_TYPE_ARG3) 0,
  	      (PTRACE_TYPE_ARG4) 0) < 0)
@@ -276,22 +276,21 @@ diff --git a/gdb/gdbserver/linux-low.c b/gdb/gdbserver/linux-low.c
 diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
 --- a/gdb/linux-nat.c
 +++ b/gdb/linux-nat.c
-@@ -1099,7 +1099,17 @@ linux_nat_target::create_inferior (const char *exec_file,
+@@ -1092,7 +1092,16 @@ linux_nat_target::create_inferior (const char *exec_file,
    /* Make sure we report all signals during startup.  */
    pass_signals ({});
  
 -  inf_ptrace_target::create_inferior (exec_file, allargs, env, from_tty);
-+  TRY
++  try
 +    {
 +      inf_ptrace_target::create_inferior (exec_file, allargs, env, from_tty);
 +    }
-+  CATCH (ex, RETURN_MASK_ERROR)
++  catch (const gdb_exception_error &ex)
 +    {
 +      std::string result =  linux_ptrace_create_warnings ();
 +
-+      throw_error (ex.error, "%s%s", result.c_str (), ex.message);
++      throw_error (ex.error, "%s%s", result.c_str (), ex.message->c_str ());
 +    }
-+  END_CATCH
  }
  
  /* Callback for linux_proc_attach_tgid_threads.  Attach to PTID if not

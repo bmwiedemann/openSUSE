@@ -44,9 +44,9 @@ glibc-debuginfo-2.7-2.x86_64: /usr/lib/debug/lib64/libc.so.6.debug:
 diff --git a/gdb/printcmd.c b/gdb/printcmd.c
 --- a/gdb/printcmd.c
 +++ b/gdb/printcmd.c
-@@ -1183,6 +1183,10 @@ print_command_1 (const char *exp, int voidprint)
+@@ -1214,6 +1214,10 @@ print_command_1 (const char *args, int voidprint)
  
-   if (exp && *exp)
+   if (exp != nullptr && *exp)
      {
 +      /* '*((int *(*) (void)) __errno_location) ()' is incompatible with
 +	 function descriptors.  */

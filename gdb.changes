@@ -1,4 +1,148 @@
 -------------------------------------------------------------------
+Tue Aug 11 09:56:29 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Restore License/Group.
+
+-------------------------------------------------------------------
+Tue Aug  4 10:57:48 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Add BuildRequire babeltrace-devel.  On Factory this adds bdeps
+  babeltrace-devel, libuuid-devel, babeltrace, libglib-2_0-0, and
+  libgmodule-2_0-0.
+
+-------------------------------------------------------------------
+Wed Jul 29 15:44:22 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix internal error on aarch64 [swo#26316].
+  gdb-aarch64-fix-erroneous-use-of-spu-architecture-bfd.patch
+
+-------------------------------------------------------------------
+Tue Jul 28 11:29:35 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Change into multibuild package and add flavour gdb-testsuite.
+
+-------------------------------------------------------------------
+Fri Jul 24 12:39:06 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix s390 -> s390x typo.
+
+-------------------------------------------------------------------
+Fri Jul 24 12:34:41 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Don't BuildRequire binutils-gold for SLE-12/s390.
+
+-------------------------------------------------------------------
+Fri Jul 24 10:23:12 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- BuildRequire binutils-gold for testsuite
+
+-------------------------------------------------------------------
+Thu Jul 23 15:34:40 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Rebase to 9.2 release.
+
+-------------------------------------------------------------------
+Tue Jul 14 14:33:12 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix SLE-11 build.  Gdb 9.1 requires make 3.82, but SLE-11 has
+  make 3.81:
+  * gdbserver-fix-build-with-make-3.81.patch
+  
+-------------------------------------------------------------------
+Tue Jul 14 08:31:27 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix patch context:
+  * gdb-fix-the-thread-pool.c-compilation.patch
+
+-------------------------------------------------------------------
+Mon Jul 13 22:13:07 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix build error due to missing DIAGNOSTIC_IGNORE_UNUSED_FUNCTION.
+  * gdb-fix-the-thread-pool.c-compilation.patch
+
+-------------------------------------------------------------------
+Mon Jul 13 15:36:16 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Drop ChangeLog part of patch:
+  * gdb-fix-unused-function-error.patch
+
+-------------------------------------------------------------------
+Mon Jul 13 15:24:53 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix Werror=unused-function with gcc 4.8 (for Leap 42.3).
+  * gdb-fix-unused-function-error.patch
+
+-------------------------------------------------------------------
+Mon Jul 13 13:56:50 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Require %{suse_version} >= 1500 for --with-system-readline.
+
+-------------------------------------------------------------------
+Mon Jul 13 12:21:04 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Rebase to 9.1 release (as in fedora 32 @ 1735910).
+  * Breakpoints on nested functions and subroutines in Fortran.
+  * Multithreaded symbol loading, disabled by default.  Enable
+    using 'maint set worker-threads unlimited'.
+  * Multi-target debugging support.
+  * New command pipe.
+  * New command set logging debugredirect [on|off].
+  * New fortran commands info modules, info module functions,
+    info module variables.
+- Fedora-specific patches dropped:
+  * gdb-libexec-add-index.patch
+  * gdb-6.3-rh-testversion-20041202.patch
+  * gdb-6.6-buildid-locate-misleading-warning-missing-debuginfo-rhbz981154.patch
+- Obsoleted fedora patches dropped:
+  * gdb-6.5-bz216711-clone-is-outermost.patch
+  * gdb-6.6-scheduler_locking-step-is-default.patch
+  * gdb-6.8-bz436037-reg-no-longer-active.patch
+  * gdb-bz541866-rwatch-before-run.patch
+  * gdb-bz568248-oom-is-error.patch
+  * gdb-follow-child-stale-parent.patch
+  * gdb-readline62-ask-more-rh.patch
+  * gdb-rhbz1371380-gcore-elf-headers.patch
+  * gdb-rhbz1553086-binutils-warning-loadable-section-outside-elf.patch
+  * gdb-rhbz1704406-disable-style-log-output-1of3.patch
+  * gdb-rhbz1704406-disable-style-log-output-2of3.patch
+  * gdb-rhbz1704406-disable-style-log-output-3of3.patch
+  * gdb-rhbz1708192-parse_macro_definition-crash.patch
+  * gdb-rhbz1723564-gdb-crash-PYTHONMALLOC-debug.patch
+  * gdb-rhbz795424-bitpos-20of25.patch
+  * gdb-rhbz795424-bitpos-21of25.patch
+  * gdb-rhbz795424-bitpos-22of25.patch
+  * gdb-rhbz795424-bitpos-23of25.patch
+  * gdb-rhbz795424-bitpos-25of25-test.patch
+  * gdb-rhbz795424-bitpos-25of25.patch
+  * gdb-rhbz795424-bitpos-arrayview.patch
+  * gdb-rhbz795424-bitpos-lazyvalue.patch
+  * gdb-testsuite-readline63-sigint.patch
+- Fedora patches added:
+  * gdb-rhbz1818011-bfd-gcc10-error.patch
+- Obsoleted patched dropped:
+  * gdb-fix-s390-build.diff
+  * gdb-fix-riscv-tdep.patch
+  * gdb-testsuite-add-missing-initial-prompt-read-in-multidictionary.exp.patch
+  * gdb-testsuite-pie-no-pie.patch
+  * gdb-testsuite-read1-fixes.patch
+  * gdb-testsuite-i386-pkru-exp.patch
+  * gdb-s390-handle-arch13.diff
+  * gdb-fix-heap-use-after-free-in-typename-concat.patch
+  * gdb-dwarf-reader-reject-sections-with-invalid-sizes.patch
+  * gdb-0001-remove-alloca-0-calls.patch
+  * gdb-arch13-1.diff
+  * gdb-arch13-2.diff
+  * gdb-arch13-3.diff
+  * bfd-change-num_group-to-unsigned-int.patch
+  * gdb-fix-incorrect-use-of-is-operator-for-comparison-in-python-lib-gdb-command-prompt.py.patch
+  * gdb-symtab-prefer-var-def-over-decl.patch
+  * gdb-only-force-interp_console-ui_out-for-breakpoint-commands-in-mi-mode.patch
+  * gdb-testsuite-8.3-kfail-xfail-unsupported.patch
+- Backport from master:
+  * gdb-fix-debug-agent-odr-bool-int.patch
+  * gdb-fix-python3.9-related-runtime-problems.patch
+
+-------------------------------------------------------------------
 Wed May  6 03:46:31 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Fix .debug_types problems [swo#24480, swo#25889, bsc#1168394].

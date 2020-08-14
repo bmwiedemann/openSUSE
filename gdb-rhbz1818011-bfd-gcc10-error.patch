@@ -1,3 +1,15 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Wed, 6 May 2020 10:02:22 -0700
+Subject: gdb-rhbz1818011-bfd-gcc10-error.patch
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+;; Fix int conversion error from bfd/elf.c when compiling with gcc 10
+
+Original commit message from H.J. Lu <hjl.tools@gmail.com> is below:
+
 bfd: Change num_group to unsigned int
 
 elf.c failed with to with GCC 10 as of
@@ -23,15 +35,10 @@ Change num_group in elf_obj_tdata to unsigned int to compile with GCC 10.
 	PR binutils/25717
 	* elf-bfd.h (elf_obj_tdata): Change num_group to unsigned int.
 
----
- bfd/elf-bfd.h | 2 +-
- 2 files changed, 6 insertions(+), 1 deletion(-)
-
 diff --git a/bfd/elf-bfd.h b/bfd/elf-bfd.h
-index c546b583b8..5f3a5cc04b 100644
 --- a/bfd/elf-bfd.h
 +++ b/bfd/elf-bfd.h
-@@ -1953,7 +1953,7 @@ struct elf_obj_tdata
+@@ -1937,7 +1937,7 @@ struct elf_obj_tdata
    struct sdt_note *sdt_note_head;
  
    Elf_Internal_Shdr **group_sect_ptr;

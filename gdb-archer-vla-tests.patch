@@ -8,7 +8,7 @@ Subject: gdb-archer-vla-tests.patch
 diff --git a/gdb/testsuite/gdb.ada/packed_array.exp b/gdb/testsuite/gdb.ada/packed_array.exp
 --- a/gdb/testsuite/gdb.ada/packed_array.exp
 +++ b/gdb/testsuite/gdb.ada/packed_array.exp
-@@ -56,5 +56,11 @@ gdb_test_multiple "$test" "$test" {
+@@ -53,5 +53,11 @@ gdb_test_multiple "$test" "$test" {
          # are.  Observed with (FSF GNU Ada 4.5.3 20110124).
          xfail $test
      }
@@ -2804,7 +2804,7 @@ new file mode 100644
 +gdb_breakpoint [gdb_get_line_number "varx-allocated"]
 +gdb_continue_to_breakpoint "varx-allocated"
 +# $1 = (( ( 0, 0, 0, 0, 0, 0) ( 0, 0, 0, 0, 0, 0) --- , 0) ) ( ( 0, 0, ...) ...) ...)
-+gdb_test "ptype varx" "type = real(\\(kind=4\\)|\\*4) \\(6,5:15,17:28\\)" "ptype varx allocated"
++gdb_test "ptype varx" "type = real(\\(kind=4\\)|\\*4), allocatable \\(6,5:15,17:28\\)" "ptype varx allocated"
 +# Intel Fortran Compiler 10.1.008 uses -1 there, GCC uses 1.
 +gdb_test "p l" "\\$\[0-9\]* = (\\.TRUE\\.|4294967295)" "p l if varx allocated"
 +
@@ -2831,7 +2831,7 @@ new file mode 100644
 +gdb_test "p varv(3, 7, 19)" "\\$\[0-9\]* = 6" "p varv(3, 7, 19) associated"
 +# Intel Fortran Compiler 10.1.008 uses -1 there, GCC uses 1.
 +gdb_test "p l" "\\$\[0-9\]* = (\\.TRUE\\.|4294967295)" "p l if varv associated"
-+gdb_test "ptype varx" "type = real(\\(kind=4\\)|\\*4) \\(6,5:15,17:28\\)" "ptype varx with varv associated"
++gdb_test "ptype varx" "type = real(\\(kind=4\\)|\\*4), allocatable \\(6,5:15,17:28\\)" "ptype varx with varv associated"
 +# Intel Fortran Compiler 10.1.008 uses the pointer type.
 +gdb_test "ptype varv" "type = (PTR TO -> \\( )?real(\\(kind=4\\)|\\*4) \\(6,5:15,17:28\\)\\)?" "ptype varv associated"
 +
@@ -2852,7 +2852,7 @@ new file mode 100644
 +gdb_breakpoint [gdb_get_line_number "varx-deallocated"]
 +gdb_continue_to_breakpoint "varx-deallocated"
 +gdb_test "p varx" "\\$\[0-9\]* = <not allocated>" "p varx deallocated"
-+gdb_test "ptype varx" {type = real\(kind=4\) \(:,:,:\)} "ptype varx deallocated"
++gdb_test "ptype varx" {type = real\(kind=4\), allocatable \(:,:,:\)} "ptype varx deallocated"
 +gdb_test "p l" "\\$\[0-9\]* = \\.FALSE\\." "p l if varx deallocated"
 +gdb_test "p varx(1,5,17)" {no such vector element \(vector not allocated\)} "p varx(1,5,17) deallocated"
 +gdb_test "ptype varx(1,5,17)" {no such vector element \(vector not allocated\)} "ptype varx(1,5,17) deallocated"
@@ -3690,7 +3690,7 @@ diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
 @@ -170,6 +170,11 @@ proc gdb_unload {} {
- 	    send_gdb "y\n"
+ 	    send_gdb "y\n" answer
  	    exp_continue
  	}
 +	-re "A program is being debugged already..*Are you sure you want to change the file.*y or n. $"\
@@ -3699,7 +3699,7 @@ diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
 +	    exp_continue
 +	}
  	-re "Discard symbol table from .*y or n.*$" {
- 	    send_gdb "y\n"
+ 	    send_gdb "y\n" answer
  	    exp_continue
 diff --git a/gdb/testsuite/lib/pascal.exp b/gdb/testsuite/lib/pascal.exp
 --- a/gdb/testsuite/lib/pascal.exp

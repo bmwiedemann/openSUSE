@@ -9,7 +9,7 @@ Subject: gdb-linux_perf-bundle.patch
 diff --git a/gdb/configure b/gdb/configure
 --- a/gdb/configure
 +++ b/gdb/configure
-@@ -12137,7 +12137,7 @@ else
+@@ -11905,7 +11905,7 @@ else
  
  #include <linux/perf_event.h>
  #ifndef PERF_ATTR_SIZE_VER5
@@ -21,7 +21,7 @@ diff --git a/gdb/configure b/gdb/configure
 diff --git a/gdb/configure.ac b/gdb/configure.ac
 --- a/gdb/configure.ac
 +++ b/gdb/configure.ac
-@@ -1500,7 +1500,7 @@ else
+@@ -1414,7 +1414,7 @@ else
    AC_PREPROC_IFELSE([AC_LANG_SOURCE([[
  #include <linux/perf_event.h>
  #ifndef PERF_ATTR_SIZE_VER5
@@ -56,7 +56,7 @@ diff --git a/gdb/gdb.c b/gdb/gdb.c
 diff --git a/gdb/nat/linux-btrace.h b/gdb/nat/linux-btrace.h
 --- a/gdb/nat/linux-btrace.h
 +++ b/gdb/nat/linux-btrace.h
-@@ -28,6 +28,177 @@
+@@ -27,6 +27,177 @@
  #  include <linux/perf_event.h>
  #endif
  

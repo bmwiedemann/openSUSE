@@ -1,8 +1,19 @@
-Index: gdb-7.12.1/gdb/build-id.c
+Index: gdb-9.1/gdb/build-id.c
 ===================================================================
---- gdb-7.12.1.orig/gdb/build-id.c	2017-02-14 15:56:04.000000000 +0100
-+++ gdb-7.12.1/gdb/build-id.c	2017-02-14 15:58:29.000000000 +0100
-@@ -841,9 +841,9 @@ missing_rpm_enlist_1 (const char *filena
+--- gdb-9.1.orig/gdb/build-id.c
++++ gdb-9.1/gdb/build-id.c
+@@ -861,19 +861,17 @@ missing_rpm_enlist_1 (const char *filena
+ #endif
+ 	{
+ 	  Header h;
+-	  char *debuginfo, **slot, *s, *s2;
++	  char *debuginfo, **slot;
+ 	  errmsg_t err;
+-	  size_t srcrpmlen = sizeof (".src.rpm") - 1;
+-	  size_t debuginfolen = sizeof ("-debuginfo") - 1;
+ 	  rpmdbMatchIterator mi_debuginfo;
+ 
+ 	  h = rpmdbNextIterator_p (mi);
  	  if (h == NULL)
  	    break;
  
@@ -15,7 +26,7 @@ Index: gdb-7.12.1/gdb/build-id.c
  				      &err);
  	  if (!debuginfo)
  	    {
-@@ -851,60 +851,19 @@ missing_rpm_enlist_1 (const char *filena
+@@ -881,60 +879,19 @@ missing_rpm_enlist_1 (const char *filena
  	               err);
  	      continue;
  	    }
@@ -78,8 +89,8 @@ Index: gdb-7.12.1/gdb/build-id.c
  	  /* Base package name for `debuginfo-install'.  We do not use the
  	     `yum' command directly as the line
  		 yum --enablerepo='*debug*' install NAME-debuginfo.ARCH
-@@ -1035,10 +994,7 @@ missing_rpm_list_print (void)
- 	 (int (*) (const void *, const void *)) missing_rpm_list_compar);
+@@ -1076,10 +1033,7 @@ missing_rpm_list_print (void)
+   missing_rpm_list_entries = 0;
  
    printf_unfiltered (_("Missing separate debuginfos, use: %s"),
 -#ifdef DNF_DEBUGINFO_INSTALL
@@ -87,10 +98,10 @@ Index: gdb-7.12.1/gdb/build-id.c
 -#endif
 -		     "debuginfo-install");
 +		     "zypper install");
-   for (array_iter = array; array_iter < array + missing_rpm_list_entries;
-        array_iter++)
+   for (const char *el : array)
      {
-@@ -1251,13 +1207,12 @@ debug_print_missing (const char *binary,
+       puts_unfiltered (" ");
+@@ -1287,13 +1241,12 @@ debug_print_missing (const char *binary,
  	fprintf_unfiltered (gdb_stdlog,
  			    _("Missing separate debuginfo for %s\n"), binary);
          if (debug != NULL)
@@ -110,19 +121,3 @@ Index: gdb-7.12.1/gdb/build-id.c
        }
  }
  
-diff --git a/gdb/build-id.c b/gdb/build-id.c
-index b9ff15a..75d501a 100644
---- a/gdb/build-id.c
-+++ b/gdb/build-id.c
-@@ -864,10 +864,8 @@ missing_rpm_enlist_1 (const char *filename, int verify_vendor)
- #endif
- 	{
- 	  Header h;
--	  char *debuginfo, **slot, *s, *s2;
-+	  char *debuginfo, **slot;
- 	  errmsg_t err;
--	  size_t srcrpmlen = sizeof (".src.rpm") - 1;
--	  size_t debuginfolen = sizeof ("-debuginfo") - 1;
- 	  rpmdbMatchIterator mi_debuginfo;
- 
- 	  h = rpmdbNextIterator_p (mi);

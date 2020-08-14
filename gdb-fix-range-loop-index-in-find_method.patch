@@ -49,11 +49,11 @@ gdb/testsuite/ChangeLog:
  gdb/testsuite/gdb.cp/cpexprs.exp             | 14 ++++++++++++--
  5 files changed, 45 insertions(+), 4 deletions(-)
 
-diff --git a/gdb/linespec.c b/gdb/linespec.c
-index e902b11c8e8..2231a5674c8 100644
---- a/gdb/linespec.c
-+++ b/gdb/linespec.c
-@@ -3680,12 +3680,12 @@ find_method (struct linespec_state *self, std::vector<symtab *> *file_symtabs,
+Index: gdb-9.1/gdb/linespec.c
+===================================================================
+--- gdb-9.1.orig/gdb/linespec.c
++++ gdb-9.1/gdb/linespec.c
+@@ -3670,12 +3670,12 @@ find_method (struct linespec_state *self
       because we collect data across the program space before deciding
       what to do.  */
    last_result_len = 0;
@@ -67,7 +67,7 @@ index e902b11c8e8..2231a5674c8 100644
  
        /* Program spaces that are executing startup should have
  	 been filtered out earlier.  */
-@@ -3716,7 +3716,6 @@ find_method (struct linespec_state *self, std::vector<symtab *> *file_symtabs,
+@@ -3706,7 +3706,6 @@ find_method (struct linespec_state *self
  
  	  superclass_vec.clear ();
  	  last_result_len = result_names.size ();
@@ -75,11 +75,10 @@ index e902b11c8e8..2231a5674c8 100644
  	}
      }
  
-diff --git a/gdb/testsuite/gdb.cp/cpexprs-debug-types.exp b/gdb/testsuite/gdb.cp/cpexprs-debug-types.exp
-new file mode 100644
-index 00000000000..9499aecf4c6
+Index: gdb-9.1/gdb/testsuite/gdb.cp/cpexprs-debug-types.exp
+===================================================================
 --- /dev/null
-+++ b/gdb/testsuite/gdb.cp/cpexprs-debug-types.exp
++++ gdb-9.1/gdb/testsuite/gdb.cp/cpexprs-debug-types.exp
 @@ -0,0 +1,20 @@
 +# Copyright 2020 Free Software Foundation, Inc.
 +#
@@ -101,11 +100,11 @@ index 00000000000..9499aecf4c6
 +# Run cpexprs.exp with -fdebug-types-section.
 +set flags {additional_flags=-fdebug-types-section}
 +source $srcdir/$subdir/cpexprs.exp
-diff --git a/gdb/testsuite/gdb.cp/cpexprs.exp b/gdb/testsuite/gdb.cp/cpexprs.exp
-index ecf3a2fbc8d..618388cef3d 100644
---- a/gdb/testsuite/gdb.cp/cpexprs.exp
-+++ b/gdb/testsuite/gdb.cp/cpexprs.exp
-@@ -690,13 +690,23 @@ if { [istarget "spu*-*-*"] } {
+Index: gdb-9.1/gdb/testsuite/gdb.cp/cpexprs.exp
+===================================================================
+--- gdb-9.1.orig/gdb/testsuite/gdb.cp/cpexprs.exp
++++ gdb-9.1/gdb/testsuite/gdb.cp/cpexprs.exp
+@@ -685,13 +685,23 @@ if {[skip_cplus_tests]} { continue }
  # test running programs
  #
  

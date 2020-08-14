@@ -30,7 +30,7 @@ diff --git a/gdb/defs.h b/gdb/defs.h
 diff --git a/gdb/extension.c b/gdb/extension.c
 --- a/gdb/extension.c
 +++ b/gdb/extension.c
-@@ -820,6 +820,11 @@ check_quit_flag (void)
+@@ -823,6 +823,11 @@ check_quit_flag (void)
    int i, result = 0;
    const struct extension_language_defn *extlang;
  
@@ -45,7 +45,7 @@ diff --git a/gdb/extension.c b/gdb/extension.c
 diff --git a/gdb/top.c b/gdb/top.c
 --- a/gdb/top.c
 +++ b/gdb/top.c
-@@ -1626,7 +1626,13 @@ quit_force (int *exit_arg, int from_tty)
+@@ -1703,7 +1703,13 @@ quit_force (int *exit_arg, int from_tty)
  
    qt.from_tty = from_tty;
  
@@ -58,13 +58,13 @@ diff --git a/gdb/top.c b/gdb/top.c
 +#endif
  
    /* Get out of tfind mode, and kill or detach all inferiors.  */
-   TRY
+   try
 diff --git a/gdb/utils.c b/gdb/utils.c
 --- a/gdb/utils.c
 +++ b/gdb/utils.c
-@@ -100,6 +100,13 @@ static std::chrono::steady_clock::duration prompt_for_continue_wait_time;
+@@ -102,6 +102,13 @@ static std::chrono::steady_clock::duration prompt_for_continue_wait_time;
  
- static int debug_timestamp = 0;
+ static bool debug_timestamp = false;
  
 +#ifdef NEED_DETACH_SIGSTOP
 +/* Nonzero means we are already processing the quitting cleanups and we should
@@ -73,6 +73,6 @@ diff --git a/gdb/utils.c b/gdb/utils.c
 +int quit_flag_cleanup;
 +#endif
 +
- /* Nonzero means that strings with character values >0x7F should be printed
-    as octal escapes.  Zero means just print the value (e.g. it's an
+ /* True means that strings with character values >0x7F should be printed
+    as octal escapes.  False means just print the value (e.g. it's an
     international character, and the terminal or window can cope.)  */
