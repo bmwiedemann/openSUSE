@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:04:06 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bsc#1173624
+  - Run firewall configuration in first stage
+- 4.3.35
+
+-------------------------------------------------------------------
+Tue Aug 11 10:13:57 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(files,general,report,scripts,
+  partitioning,software) into the spec file in order to install
+  this packages if the section has been defined in the AY
+  configuration file (bsc#1146494).
+- 4.3.34
+
+-------------------------------------------------------------------
+Tue Aug  4 16:31:17 CEST 2020 - schubi@suse.de
+
+- Improve finding the respective package for a section in the XML
+  installation profile. Find a package with the
+  "autoyast(<section_name>)" supplements dependency (bsc#1146494).
+- 4.3.33
+
+-------------------------------------------------------------------
 Thu Jul 30 14:00:17 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not report profile validation errors multiple times if the
