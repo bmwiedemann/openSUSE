@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 13 12:35:59 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.10.0
+  * Drop support for Python 3.4.
+  * Support Python 3.8.
+  * Make error messages returned by match failures less ambiguous
+
+-------------------------------------------------------------------
 Wed May  6 07:47:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not restrict pytest anymore, seems working

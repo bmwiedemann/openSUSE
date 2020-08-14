@@ -42,4 +42,12 @@
     <comment>- Do not restrict pytest anymore, seems working</comment>
     <requestid>800592</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f8a087b4b1867546da2c579e0263cac7</srcmd5>
+    <version>0.10.0</version>
+    <time>1597390411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826282</requestid>
+  </revision>
 </revisionlist>
