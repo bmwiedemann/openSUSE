@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jul 23 15:37:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update version to 3.6.4
+  * Fix parenthesization for selector schema and real parents
+  * Add deprecation warning for global variable creation
+  * Ensure correct output order of compound selectors
+  * Handle loaded source code as shared objects
+  * New custom memory allocator - disabled for now
+  * Add back C-API getters for plugin paths
+  * Fix abspath handling on windows without directory
+  * Fix various edge case crashes
+  * Fix segfault on directive ruleset
+  * Fix heap-buffer-overflow in lexer
+  * Fix stack-overflow in parser
+  * Fix memory leak in parser
+  * Fix memory leak in evaluation
+  * Fix memory handling edge case
+  * Fix some null pointer access crashes
+  * Preparations for ongoing refactoring
+- from v3.6.3
+  * Fix compound extend warning
+  * Fix extend being stuck in endless loop
+  * Fix various edge-case segfault crashes
+  * Extend error_src lifetime on c-api context
+  * Fix memory leak in permutation function
+  * Preserve indentation in nested mode
+- from v3.6.2
+  * Improve pseudo selector handling
+  * Code improvements
+  * Fix various functions arguments
+  * Fix "call" for $function
+  * Check weight argument on invert call
+  * Improve makefile to use dylib extension on MacOS
+  * Fix bug in scale-color with positive saturation
+  * Minor API documentation improvements
+  * Fix selector isInvisible logic
+  * Fix evaluation of unary expressions in loops
+  * Fix attribute selector equality with modifiers
+
+-------------------------------------------------------------------
 Fri Jul 12 07:10:58 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
 
 - Update version to 3.6.1:
