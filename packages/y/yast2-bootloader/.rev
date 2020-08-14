@@ -2210,4 +2210,12 @@
     <comment>submit new version 4.3.7</comment>
     <requestid>822361</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>72ddc3eb9780b9e8c70930c318ff7990</srcmd5>
+    <version>4.3.8</version>
+    <time>1597403407</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.8</comment>
+    <requestid>826026</requestid>
+  </revision>
 </revisionlist>

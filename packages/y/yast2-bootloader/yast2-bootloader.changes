@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:57:36 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(bootloader) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.8
+
+-------------------------------------------------------------------
 Thu Jul 23 10:54:47 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - add rd.zdev to allowed kernel options on s390 (bsc#1168036)

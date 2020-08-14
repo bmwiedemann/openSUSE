@@ -17,7 +17,7 @@
 
 
 Name:           yast2-bootloader
-Version:        4.3.7
+Version:        4.3.8
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later
@@ -59,6 +59,8 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 %ifarch %ix86 x86_64
 Recommends:     syslinux
 %endif
+
+Supplements:    autoyast(bootloader)
 
 %description
 This package contains the YaST2 component for bootloader configuration.
