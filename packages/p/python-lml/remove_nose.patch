@@ -1,0 +1,268 @@
+--- a/setup.py
++++ b/setup.py
+@@ -169,7 +169,7 @@ if __name__ == '__main__':
+         license=LICENSE,
+         keywords=KEYWORDS,
+         extras_require=EXTRAS_REQUIRE,
+-        tests_require=['nose'],
++        tests_require=["pytest"],
+         install_requires=INSTALL_REQUIRES,
+         packages=PACKAGES,
+         include_package_data=True,
+--- a/tests/requirements.txt
++++ b/tests/requirements.txt
+@@ -1,5 +1,4 @@
+ mock
+-nose
+ codecov
+ coverage
+ flake8
+--- a/tests/test_plugin_info.py
++++ b/tests/test_plugin_info.py
+@@ -1,7 +1,6 @@
+ import json
+ 
+ from lml.plugin import PluginInfo
+-from nose.tools import eq_
+ 
+ 
+ def test_plugin_info():
+@@ -18,7 +17,7 @@ def test_plugin_info():
+         "plugin_type": "renderer",
+         "custom": "property",
+     }
+-    eq_(json.loads(info.__repr__()), expected)
++    assert json.loads(info.__repr__()) == expected
+ 
+ 
+ def test_module_name_scenario_2():
+@@ -27,4 +26,4 @@ def test_module_name_scenario_2():
+ 
+     info = PluginInfo("renderer", custom="property")
+     info.cls = TestClass2
+-    eq_(info.module_name, "test_plugin_info")
++    assert info.module_name == "test_plugin_info"
+--- a/tests/test_plugin_loader.py
++++ b/tests/test_plugin_loader.py
+@@ -1,5 +1,4 @@
+ from mock import patch
+-from nose.tools import eq_
+ 
+ 
+ @patch("pkgutil.get_importer")
+@@ -10,7 +9,7 @@ def test_load_from_pyinstaller(pkgutil_g
+ 
+     module_names = scan_from_pyinstaller("pyexcel_", "path")
+     expected = ["pyexcel_io", "pyexcel_xls"]
+-    eq_(sorted(list(module_names)), sorted(expected))
++    assert sorted(list(module_names)) == sorted(expected)
+ 
+ 
+ @patch("pkgutil.get_importer")
+@@ -21,7 +20,7 @@ def test_load_from_pyinstaller_with_rege
+ 
+     module_names = scan_from_pyinstaller("^.+cel_.+$", "path")
+     expected = ["pyexcel_io", "pyexcel_xls"]
+-    eq_(sorted(list(module_names)), sorted(expected))
++    assert sorted(list(module_names)) == sorted(expected)
+ 
+ 
+ @patch("pkgutil.get_importer")
+@@ -37,8 +36,8 @@ def test_load_plugins(pkgutil_iter_modul
+     from lml.plugin import CACHED_PLUGIN_INFO
+ 
+     info = CACHED_PLUGIN_INFO["test_io"][0]
+-    eq_(info.plugin_type, "test_io")
+-    eq_(info.absolute_import_path, "pyexcel_test.x")
++    assert info.plugin_type == "test_io"
++    assert info.absolute_import_path == "pyexcel_test.x"
+ 
+ 
+ @patch("pkgutil.get_importer")
+@@ -57,8 +56,8 @@ def test_load_plugins_without_pyinstalle
+     from lml.plugin import CACHED_PLUGIN_INFO
+ 
+     info = CACHED_PLUGIN_INFO["test_io"][0]
+-    eq_(info.plugin_type, "test_io")
+-    eq_(info.absolute_import_path, "pyexcel_test.x")
++    assert info.plugin_type == "test_io"
++    assert info.absolute_import_path == "pyexcel_test.x"
+ 
+ 
+ @patch("pkgutil.get_importer")
+@@ -73,7 +72,7 @@ def test_load_plugins_without_any_plugin
+     from lml.loader import scan_plugins
+ 
+     scan_plugins("pyexcel_", ".", ["pyexcel_io"])
+-    assert mocked_load_me_later.called is False
++    assert not mocked_load_me_later.called
+ 
+ 
+ @patch("pkgutil.get_importer")
+@@ -88,7 +87,7 @@ def test_load_plugins_without_black_list
+     from lml.loader import scan_plugins
+ 
+     scan_plugins("pyexcel_", ".")
+-    assert mocked_load_me_later.called is False
++    assert not mocked_load_me_later.called
+ 
+ 
+ @patch("pkgutil.get_importer")
+@@ -103,4 +102,4 @@ def test_load_plugins_import_error(
+     from lml.loader import scan_plugins
+ 
+     scan_plugins("test_", ".", ["pyexcel_io"])
+-    assert mocked_load_me_later.called is False
++    assert not mocked_load_me_later.called
+--- a/tests/test_plugin_manager.py
++++ b/tests/test_plugin_manager.py
+@@ -6,7 +6,7 @@ from lml.plugin import (
+     PluginManager,
+     _show_me_your_name,
+ )
+-from nose.tools import eq_, raises
++from pytest import raises
+ 
+ 
+ def test_plugin_manager():
+@@ -32,27 +32,27 @@ def test_load_me_now(mock_import):
+     plugin_info = make_me_a_plugin_info(test_plugin)
+     manager.load_me_later(plugin_info)
+     actual = manager.load_me_now(test_plugin)
+-    eq_(actual, custom_class)
+-    eq_(manager.tag_groups, {"my plugin": "my plugin"})
+-    eq_(plugin_info, manager.registry["my plugin"][0])
++    assert actual == custom_class
++    assert manager.tag_groups == {"my plugin": "my plugin"}
++    assert plugin_info == manager.registry["my plugin"][0]
+ 
+ 
+-@raises(Exception)
+ @patch("lml.plugin.do_import_class")
+ def test_load_me_now_exception(mock_import):
+     custom_class = PluginInfo
+     mock_import.return_value = custom_class
+     test_plugin = "my plugin"
+-    manager = PluginManager(test_plugin)
+-    plugin_info = make_me_a_plugin_info("my")
++    with raises(Exception):
++        manager = PluginManager(test_plugin)
++        plugin_info = make_me_a_plugin_info("my")
+     manager.load_me_later(plugin_info)
+     manager.load_me_now("my", "my special library")
+ 
+ 
+-@raises(Exception)
+ def test_load_me_now_no_key_found():
+     test_plugin = "my plugin"
+-    manager = PluginManager(test_plugin)
++    with raises(Exception):
++        manager = PluginManager(test_plugin)
+     manager.load_me_now("my", custom_property="here")
+ 
+ 
+@@ -64,7 +64,7 @@ def test_dynamic_load_library(mock_impor
+     manager = PluginManager(test_plugin)
+     plugin_info = make_me_a_plugin_info(test_plugin)
+     manager.dynamic_load_library(plugin_info)
+-    eq_(custom_obj, plugin_info.cls)
++    assert custom_obj == plugin_info.cls
+ 
+ 
+ @patch("lml.plugin.do_import_class")
+@@ -87,9 +87,9 @@ def test_register_a_plugin():
+     manager = PluginManager(test_plugin)
+     plugin_info = make_me_a_plugin_info("my")
+     manager.register_a_plugin(TestClass, plugin_info)
+-    eq_(plugin_info.cls, TestClass)
+-    eq_(manager.registry["my"][0], plugin_info)
+-    eq_(manager.tag_groups, {"my": "my"})
++    assert plugin_info.cls == TestClas
++    assert manager.registry["my"][0] == plugin_info
++    assert manager.tag_groups == {"my": "my"}
+ 
+ 
+ def test_get_a_plugin():
+@@ -121,11 +121,11 @@ def test_load_me_later_function():
+     assert list(manager.registry.keys()) == [test_plugin]
+ 
+ 
+-@raises(ImportError)
+ def test_do_import_cls_error():
+     from lml.plugin import do_import_class
+ 
+-    do_import_class("non.exist.class")
++    with raises(ImportError):
++        do_import_class("non.exist.class")
+ 
+ 
+ def test_register_a_plugin_function_1():
+@@ -157,7 +157,7 @@ def test_primary_key():
+         pass
+ 
+     pk = manager.get_primary_key("key 1")
+-    eq_(pk, "primary key")
++    assert pk == "primary key"
+ 
+ 
+ def test_dict_as_plugin_payload():
+@@ -167,7 +167,7 @@ def test_dict_as_plugin_payload():
+     plugin(dict(B=1))
+ 
+     instance = manager.load_me_now("key 1")
+-    eq_(instance, dict(B=1))
++    assert instance == dict(B=1)
+ 
+ 
+ def test_show_me_your_name():
+@@ -175,7 +175,7 @@ def test_show_me_your_name():
+         pass
+ 
+     name = _show_me_your_name(Test)
+-    eq_(name, "Test")
++    assert name == "Test"
+ 
+     name2 = _show_me_your_name(dict(A=1))
+     assert "dict" in name2
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -1,7 +1,7 @@
+ from mock import patch
+ from lml.utils import do_import, json_dumps
+ from lml.plugin import PluginManager
+-from nose.tools import eq_, raises
++from pytest import raises
+ 
+ 
+ def test_json_dumps():
+@@ -17,20 +17,20 @@ def test_do_import():
+     import pyexcel_test
+ 
+     pyexcel_test_package = do_import("pyexcel_test")
+-    eq_(pyexcel_test_package, pyexcel_test)
++    assert pyexcel_test_package == pyexcel_test
+ 
+ 
+ def test_do_import_2():
+     import lml.plugin as plugin
+ 
+     themodule = do_import("lml.plugin")
+-    eq_(plugin, themodule)
++    assert plugin == themodule
+ 
+ 
+-@raises(ImportError)
+ @patch("lml.utils.log.exception")
+ def test_do_import_error(mock_exception):
+-    do_import("non.exist")
++    with raises(ImportError):
++        do_import("non.exist")
+     mock_exception.assert_called_with("No module named 'non'")
+ 
+ 
+@@ -38,4 +38,4 @@ def test_do_import_cls():
+     from lml.utils import do_import_class
+ 
+     manager = do_import_class("lml.plugin.PluginManager")
+-    eq_(manager, PluginManager)
++    assert manager == PluginManager

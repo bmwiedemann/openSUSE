@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  7 13:13:56 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch (gh#python-lml/lml#19), which
+  unfortunately is still WIP, so we have to remove switch off
+  tests for now.
+
+-------------------------------------------------------------------
 Mon Feb 25 14:03:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix license string

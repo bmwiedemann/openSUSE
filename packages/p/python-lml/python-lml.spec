@@ -1,7 +1,7 @@
 #
 # spec file for package python-lml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,19 @@ Release:        0
 Summary:        A lazy plugin management system for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/chfw/lml
+URL:            https://github.com/chfw/lml
 Source:         https://files.pythonhosted.org/packages/source/l/lml/lml-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM remove_nose.patch bsc#[0-9]+ mcepl@suse.com
+# Replace dependency on nose with pytest
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,7 +50,7 @@ Plugins loaded by lml may be installed packages or standalone
 Python modules in a supplied directory.
 
 %prep
-%setup -q -n lml-%{version}
+%autosetup -p1 -n lml-%{version}
 
 %build
 %python_build
@@ -58,7 +60,9 @@ Python modules in a supplied directory.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec %{_bindir}/nosetests --with-doctest --doctest-extension=.rst README.rst tests docs/source lml
+export PYTEST_ADDOPTS="--doctest-modules --doctest-glob='*.rst'"
+# Not yet gh#python-lml/lml#19
+# %%pytest README.rst tests docs/source lml
 
 %files %{python_files}
 %license LICENSE
