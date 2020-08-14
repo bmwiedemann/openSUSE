@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 14 09:13:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add photutils-pr1041-update-watershed-import.patch to fix failing
+  test gh#astropy/photutils#1041 
+
+-------------------------------------------------------------------
 Fri Jul 17 11:35:55 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - actually detect failures with sys.exit(photutils.test())
