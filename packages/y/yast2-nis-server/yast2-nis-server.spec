@@ -17,7 +17,7 @@
 
 
 Name:           yast2-nis-server
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        YaST2 - Network Information Services (NIS) Server Configuration
 License:        GPL-2.0-only
@@ -47,6 +47,8 @@ Provides:       yast2-trans-nis-server
 Obsoletes:      yast2-config-nis-server
 Obsoletes:      yast2-nis-server-devel-doc
 Obsoletes:      yast2-trans-nis-server
+
+Supplements:    autoyast(nis_server)
 
 BuildArch:      noarch
 
