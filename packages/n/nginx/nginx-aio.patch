@@ -1,8 +1,8 @@
-Index: nginx-1.11.3/auto/unix
+Index: nginx-1.19.1/auto/unix
 ===================================================================
---- nginx-1.11.3.orig/auto/unix
-+++ nginx-1.11.3/auto/unix
-@@ -531,7 +531,12 @@ if [ $NGX_FILE_AIO = YES ]; then
+--- nginx-1.19.1.orig/auto/unix
++++ nginx-1.19.1/auto/unix
+@@ -559,7 +559,12 @@ if [ $NGX_FILE_AIO = YES ]; then
          ngx_feature="Linux AIO support (SYS_eventfd)"
          ngx_feature_incs="#include <linux/aio_abi.h>
                            #include <sys/syscall.h>"
@@ -16,10 +16,10 @@ Index: nginx-1.11.3/auto/unix
                            iocb.aio_lio_opcode = IOCB_CMD_PREAD;
                            iocb.aio_flags = IOCB_FLAG_RESFD;
                            iocb.aio_resfd = -1;
-Index: nginx-1.11.3/src/event/modules/ngx_epoll_module.c
+Index: nginx-1.19.1/src/event/modules/ngx_epoll_module.c
 ===================================================================
---- nginx-1.11.3.orig/src/event/modules/ngx_epoll_module.c
-+++ nginx-1.11.3/src/event/modules/ngx_epoll_module.c
+--- nginx-1.19.1.orig/src/event/modules/ngx_epoll_module.c
++++ nginx-1.19.1/src/event/modules/ngx_epoll_module.c
 @@ -77,9 +77,7 @@ int epoll_wait(int epfd, struct epoll_ev
  
  #if (NGX_HAVE_FILE_AIO)

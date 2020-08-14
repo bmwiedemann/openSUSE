@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Aug 12 15:23:16 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.19.2
+  * https://nginx.org/en/CHANGES
+  * Now nginx starts closing keepalive connections before all free
+    worker connections are exhausted, and logs a warning about this
+    to the error log.
+  * Optimization of client request body reading when using chunked
+    transfer encoding.
+  * Memory leak if the "ssl_ocsp" directive was used.
+  * "zero size buf in output" alerts might appear in logs if a
+    FastCGI server returned an incorrect response; the bug had
+    appeared in 1.19.1.
+  * A segmentation fault might occur in a worker process if
+    different large_client_header_buffers sizes were used in
+    different virtual servers.
+  * SSL shutdown might not work.
+  * "SSL_shutdown() failed (SSL: ... bad write retry)" messages
+    might appear in logs.
+  * In the ngx_http_slice_module.
+  * In the ngx_http_xslt_filter_module.
+
+-------------------------------------------------------------------
+Tue Aug  4 19:10:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update nginx-1.6.1-default_config.patch:
+  * remove geoip_module which is no longer compiled (bsc#1156202)
+
+-------------------------------------------------------------------
 Wed Jul  8 11:52:53 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 1.19.1
