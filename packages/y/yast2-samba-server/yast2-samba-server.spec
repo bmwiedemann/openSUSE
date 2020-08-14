@@ -17,7 +17,7 @@
 
 
 Name:           yast2-samba-server
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Url:            https://github.com/yast/yast-samba-server
 Summary:        YaST2 - Samba Server Configuration
@@ -55,6 +55,8 @@ Requires:       yast2-users
 
 # bnc #386473, recommend yast2-samba-server when installaing these packages
 Supplements:    samba
+
+Supplements:    autoyast(samba-server)
 
 BuildArch:      noarch
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:54:32 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(samba-server) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.3
+
+-------------------------------------------------------------------
 Mon Jun  1 09:40:31 UTC 2020 - Martin Vidner <mvidner@suse.com>
 
 - Autoyast schema: corrected problems in 'disabled' and 'share'
