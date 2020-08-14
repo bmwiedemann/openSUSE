@@ -33,10 +33,10 @@ A parallel implementation of gzip for modern multi-processor, multi-core machine
 %setup -q
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+make %{?_smp_mflags} CFLAGS="%{optflags} -fexceptions"
 
 %check
-make tests %{?_smp_mflags} CFLAGS="%{optflags}"
+make tests %{?_smp_mflags} CFLAGS="%{optflags} -fexceptions"
 
 %install
 install -Dpm 0755 pigz \
