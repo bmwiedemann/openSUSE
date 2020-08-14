@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  6 10:39:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Put up a more sensible description.
+
+-------------------------------------------------------------------
 Fri Jul 31 15:52:19 UTC 2020 - Enno Gotthold <egotthold@suse.com>
 
 - Corrected specfile install command to let rpm take care of the
-  comporession (see rq#823547#status-history-8597198 )
+  compression (see rq#823547#status-history-8597198 )
 
 -------------------------------------------------------------------
 Mon Jul 27 08:02:23 UTC 2020 - Michael Vetter <mvetter@suse.com>

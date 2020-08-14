@@ -19,15 +19,16 @@
 Name:           dMagnetic
 Version:        0.25
 Release:        0
-Summary:        A Magnetic Scrolls Interpreter
+Summary:        An interpreter for Magnetic Scrolls games
 License:        BSD-2-Clause
 Group:          Amusements/Games/Other
 URL:            http://dettus.net/dMagnetic/
 Source0:        http://dettus.net/dMagnetic/dMagnetic_%{version}.tar.bz2
 
 %description
-
-Olay Textadventures from Magnetic Scrolls with glorious ANSI Art.
+An interpreter for games produced by the studio Magnetic Scrolls. It
+can be used to play "The Pawn", "The Guild of Thieves", "Jinxter",
+"Fish!", "Myth", "Corruption" and "Wonderland".
 
 %prep
 %setup -q -n dMagnetic_%{VERSION}
