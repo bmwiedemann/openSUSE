@@ -1,4 +1,34 @@
 --------------------------------------------------------------------
+Fri Aug 14 05:59:27 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#407
+- rename product release package 'SUSE_MicroOS' to 'SUSE-MicroOS'
+- rename 'SUSE_MicroOS' to 'SUSE-MicroOS'
+- 16.7
+
+--------------------------------------------------------------------
+Thu Aug 13 15:00:24 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#406
+- use $releasever in repo URL (bsc#1171018)
+- 16.6
+
+--------------------------------------------------------------------
+Wed Aug 12 11:50:53 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#405
+- rename MicroOSNG to "SUSE MicroOS"
+- 16.5
+
+--------------------------------------------------------------------
+Mon Aug 10 16:24:09 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#401
+- wicked started using /usr/libexec (bsc#1174957)
+- fix nokogiri update-alternatives handling
+- 16.4
+
+--------------------------------------------------------------------
 Sun Aug 2 16:48:47 UTC 2020 - mvidner@suse.cz
 
 - merge gh#openSUSE/installation-images#398

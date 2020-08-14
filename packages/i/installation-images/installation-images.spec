@@ -57,20 +57,21 @@ ExclusiveArch:  do_not_build
 %if 0%{?is_opensuse}
 %define theme openSUSE
 %if 0%{?sle_version}
-%define the_version %(echo %sle_version | sed -Ee 's/^([0-9][0-9])(0|([0-9]))([0-9]).*/\\1.\\3\\4/')
+# define the_version %(echo %sle_version | sed -Ee 's/^([0-9][0-9])(0|([0-9]))([0-9]).*/\\1.\\3\\4/')
+%define the_version \\$releasever
 %if "%{the_version}" == ""
 %error "bad version string"
 %endif
 %ifarch aarch64 ppc64 ppc64le
-%define net_repo http://download.opensuse.org/ports/%{the_arch}/distribution/leap/%{the_version}/repo/oss/
+%define net_repo https://download.opensuse.org/ports/%{the_arch}/distribution/leap/%{the_version}/repo/oss/
 %else
-%define net_repo http://download.opensuse.org/distribution/leap/%{the_version}/repo/oss
+%define net_repo https://download.opensuse.org/distribution/leap/%{the_version}/repo/oss
 %endif
 %else
 %ifarch aarch64 ppc64 ppc64le
-%define net_repo http://download.opensuse.org/ports/%{the_arch}/tumbleweed/repo/oss/
+%define net_repo https://download.opensuse.org/ports/%{the_arch}/tumbleweed/repo/oss/
 %else
-%define net_repo http://download.opensuse.org/tumbleweed/repo/oss
+%define net_repo https://download.opensuse.org/tumbleweed/repo/oss
 %endif
 %endif
 %endif
@@ -85,11 +86,11 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
-%if "%flavor" == "MicroOSNG"
+%if "%flavor" == "SMO"
 # build for both Leap and SLE
 %if 0%{?sle_version}
 %ifnarch %ix86
-%define theme MicroOSNG
+%define theme SMO
 %endif
 %endif
 %endif
@@ -177,16 +178,16 @@ BuildRequires:  distribution-logos-openSUSE-Kubic
 %global product_name openSUSE-Kubic
 %endif
 
-%if "%theme" == "MicroOSNG"
+%if "%theme" == "SMO"
 %define with_storage_ng 1
 %define with_ssl_hmac 0
-%define branding_skelcd   MicroOSNG
-%define branding_systemd  SLE
+%define branding_skelcd   SMO
+%define branding_systemd  SMO
 %define branding_plymouth SLE
 %define branding_grub2    SLE
 %define branding_gfxboot  SLE
 %define config_bootmenu_no_upgrade 1
-BuildRequires:  MicroOSNG-release
+BuildRequires:  SUSE-MicroOS-release
 %endif
 
 %if "%theme" == "MicroOS"
@@ -639,7 +640,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        16.3
+Version:        16.7
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
