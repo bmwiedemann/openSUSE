@@ -17,7 +17,7 @@
 
 
 Name:           yast2-http-server
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        YaST2 - HTTP Server Configuration
 License:        GPL-2.0-only
@@ -48,6 +48,8 @@ Requires:       yast2-perl-bindings
 # Yast2::ServiceWidget
 Requires:       yast2 >= 4.1.0
 Requires:       yast2-ruby-bindings >= 1.0.0
+
+Supplements:    autoyast(http-server)
 
 BuildArch:      noarch
 
