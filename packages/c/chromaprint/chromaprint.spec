@@ -1,7 +1,7 @@
 #
 # spec file for package chromaprint
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,19 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname      1
-%bcond_without ffmpeg
 Name:           chromaprint
-Version:        1.4.3
+Version:        1.5.0
 Release:        0
 Summary:        Audio Fingerprinting Library
-License:        MIT AND LGPL-2.1
-Group:          Development/Libraries/C and C++
-Url:            https://acoustid.org/chromaprint
+License:        MIT AND LGPL-2.1-only
+URL:            https://acoustid.org/chromaprint
 Source0:        https://github.com/acoustid/chromaprint/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
@@ -33,13 +31,11 @@ BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtag-devel
 BuildRequires:  pkgconfig
-%if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavresample)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswresample)
-%endif
 
 %description
 Chromaprint is the core component of the Acoustid project. It's a client-side
@@ -48,8 +44,7 @@ audio source.
 
 %package -n libchromaprint%{soname}
 Summary:        Audio Fingerprinting Library
-License:        LGPL-2.1+
-Group:          System/Libraries
+License:        LGPL-2.1-or-later
 
 %description -n libchromaprint%{soname}
 Chromaprint is the core component of the Acoustid project. It's a client-side
@@ -58,8 +53,7 @@ audio source.
 
 %package -n libchromaprint-devel
 Summary:        Audio Fingerprinting Library
-License:        LGPL-2.1+
-Group:          Development/Libraries/C and C++
+License:        LGPL-2.1-or-later
 Requires:       fftw3-devel
 Requires:       libchromaprint%{soname} = %{version}
 Requires:       libtag-devel
@@ -69,11 +63,9 @@ Chromaprint is the core component of the Acoustid project. It's a client-side
 library that implements a custom algorithm for extracting fingerprints from any
 audio source.
 
-%if %{with ffmpeg}
 %package fpcalc
 Summary:        Chromaprint Audio Fingerprinting Command Line Tool
-License:        GPL-2.0+
-Group:          Productivity/Multimedia/Sound/Utilities
+License:        GPL-2.0-or-later
 Requires:       libchromaprint%{soname} = %{version}
 Provides:       fpcalc = %{version}
 
@@ -83,21 +75,18 @@ library that implements a custom algorithm for extracting fingerprints from any
 audio source.
 This package contains fpcalc, a command-line tool to perform Chromaprint
 fingerprinting.
-%endif
 
 %prep
-%setup -qn %{name}-v%{version}
+%setup -q -n %{name}-v%{version}
 
 %build
 %cmake \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE \
-%if %{with ffmpeg}
     -DUSE_AVFFT=ON \
     -DBUILD_TOOLS=ON
-%endif
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -106,7 +95,8 @@ make %{?_smp_mflags}
 %postun -n libchromaprint%{soname} -p /sbin/ldconfig
 
 %files -n libchromaprint%{soname}
-%doc LICENSE.md NEWS.txt README.md
+%license LICENSE.md
+%doc NEWS.txt README.md
 %{_libdir}/libchromaprint.so.%{soname}
 %{_libdir}/libchromaprint.so.%{soname}.*
 
@@ -115,9 +105,7 @@ make %{?_smp_mflags}
 %{_libdir}/libchromaprint.so
 %{_libdir}/pkgconfig/libchromaprint.pc
 
-%if %{with ffmpeg}
 %files fpcalc
 %{_bindir}/fpcalc
-%endif
 
 %changelog
