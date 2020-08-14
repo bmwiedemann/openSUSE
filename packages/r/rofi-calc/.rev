@@ -88,4 +88,14 @@
   * Use echo -n for clipboard</comment>
     <requestid>799966</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>79f9e187bf81fcefd3e3364567cfe6f5</srcmd5>
+    <version>1.8</version>
+    <time>1597390351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8:
+  * Enable qalc's Unicode mode by default
+  * Add -no-unicode option to disable aforementioned unicode support</comment>
+    <requestid>826195</requestid>
+  </revision>
 </revisionlist>
