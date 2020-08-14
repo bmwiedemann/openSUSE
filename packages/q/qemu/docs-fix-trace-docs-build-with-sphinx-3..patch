@@ -6,6 +6,7 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 Git-commit: 0000000000000000000000000000000000000000
+Include-If: %if 0%{?suse_version} > 1500
 
 In Fedora 33 rawhide, we now have sphinx 3.1.1, as opposed
 to previous 2.2.2. This new version generates a warning on

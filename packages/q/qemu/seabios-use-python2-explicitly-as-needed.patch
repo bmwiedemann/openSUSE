@@ -14,7 +14,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/roms/seabios/Makefile b/roms/seabios/Makefile
-index 5f7d5370198abac950b24e08a7aa..de1fa90035b82ef3608d68d62f59 100644
+index 3d8943ef5f25afb9c41db84ad2a0..87a6ac92e69f23c1ce799d16512a 100644
 --- a/roms/seabios/Makefile
 +++ b/roms/seabios/Makefile
 @@ -22,7 +22,7 @@ LD=$(CROSS_PREFIX)ld

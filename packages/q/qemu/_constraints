@@ -1,5 +1,5 @@
 <constraints>
-  <!-- All builds are fine with 8GB disk -->
+  <!-- All builds are fine with 9GB disk -->
   <overwrite>
     <conditions>
       <package>qemu</package>
@@ -8,8 +8,20 @@
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">8</size>
+        <size unit="G">9</size>
       </disk>
+    </hardware>
+  </overwrite>
+  <!-- To test qemu-linux-user, armv7l needs more than the default memory -->
+  <overwrite>
+    <conditions>
+      <arch>armv7l</arch>
+      <package>qemu:linux-user</package>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="M">8192</size>
+      </memory>
     </hardware>
   </overwrite>
   <!-- To build qemu, s390x needs more than the default memory -->

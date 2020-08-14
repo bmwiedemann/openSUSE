@@ -1,6 +1,6 @@
 From: Valentine Barshak <gvaxon@gmail.com>
 Date: Sun, 9 Jun 2019 13:30:11 +0300
-Subject: [build] Fix "'%s' directive argument is null" error
+Subject: Fix "'%s' directive argument is null" error
 
 Git-commit: 412acd7854de10e7194f362a6b1a3257a17974f7
 References: bsc#1121464

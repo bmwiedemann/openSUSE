@@ -8,10 +8,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/Makefile b/Makefile
-index 1a2f649a21a85e1849a3ca40991d..a7851435c0ba8c60df39ebad492b 100644
+index e7116289550f169a65f8aecfeccf..3da7feaf0d9e9b3f1222efb8823b 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -974,6 +974,7 @@ ifneq ($(DESCS),)
+@@ -970,6 +970,7 @@ ifneq ($(DESCS),)
  			"$(DESTDIR)$(qemu_datadir)/firmware/$$x"; \
  	done
  endif
@@ -19,7 +19,7 @@ index 1a2f649a21a85e1849a3ca40991d..a7851435c0ba8c60df39ebad492b 100644
  	for s in $(ICON_SIZES); do \
  		mkdir -p "$(DESTDIR)$(qemu_icondir)/hicolor/$${s}/apps"; \
  		$(INSTALL_DATA) $(SRC_PATH)/ui/icons/qemu_$${s}.png \
-@@ -988,6 +989,7 @@ endif
+@@ -984,6 +985,7 @@ endif
  	mkdir -p "$(DESTDIR)$(qemu_desktopdir)"
  	$(INSTALL_DATA) $(SRC_PATH)/ui/qemu.desktop \
  		"$(DESTDIR)$(qemu_desktopdir)/qemu.desktop"

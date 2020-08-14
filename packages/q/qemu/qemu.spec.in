@@ -73,6 +73,12 @@
 %define with_rbd 1
 %endif
 
+%if 0%{?is_opensuse}
+%ifarch x86_64 ppc64le
+%define with_daxctl 1
+%endif
+%endif
+
 # qemu, qemu-linux-user, and qemu-testsuite "flavors" enabled via OBS Multibuild
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -195,7 +201,7 @@ BuildRequires:  glibc-devel-32bit
 %if 0%{?with_glusterfs}
 BuildRequires:  glusterfs-devel >= 3
 %endif
-BuildRequires:  gtk3-devel >= 3.16
+BuildRequires:  gtk3-devel >= 3.22
 BuildRequires:  libaio-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbz2-devel
@@ -211,6 +217,9 @@ BuildRequires:  libgcrypt-devel >= 1.5.0
 BuildRequires:  libgnutls-devel >= 3.1.18
 BuildRequires:  libiscsi-devel >= 1.9.0
 BuildRequires:  libjpeg-devel
+%if 0%{?with_daxctl}
+BuildRequires:  libndctl-devel
+%endif
 %if 0%{?is_opensuse}
 BuildRequires:  libnfs-devel >= 1.9.3
 %endif
@@ -232,6 +241,9 @@ BuildRequires:  libSDL2-devel
 BuildRequires:  libSDL2_image-devel
 %endif
 BuildRequires:  libseccomp-devel >= 2.3.0
+%if 0%{?is_opensuse}
+BuildRequires:  libslirp-devel >= 4.2.0
+%endif
 BuildRequires:  libspice-server-devel >= 0.12.5
 BuildRequires:  libssh-devel >= 0.8
 BuildRequires:  pkgconfig(libudev)
@@ -293,11 +305,17 @@ BuildRequires:  qemu-block-nfs = %{qemuver}
 BuildRequires:  qemu-block-rbd = %{qemuver}
 %endif
 BuildRequires:  qemu-block-ssh = %{qemuver}
+BuildRequires:  qemu-chardev-baum = %{qemuver}
 %if %{provide_edk2_firmware}
 BuildRequires:  qemu-edk2 = %{qemuver}
 %endif
 BuildRequires:  qemu-extra = %{qemuver}
 BuildRequires:  qemu-guest-agent = %{qemuver}
+BuildRequires:  qemu-hw-display-qxl = %{qemuver}
+BuildRequires:  qemu-hw-usb-redirect = %{qemuver}
+%if 0%{?is_opensuse}
+BuildRequires:  qemu-hw-usb-smartcard = %{qemuver}
+%endif
 BuildRequires:  qemu-ipxe = 1.0.0+
 %if 0%{?is_opensuse}
 BuildRequires:  qemu-ksm = %{qemuver}
@@ -328,6 +346,11 @@ Requires(post): procps
 Recommends:     kvm_stat
 %endif
 Recommends:     qemu-block-curl
+Recommends:     qemu-hw-display-qxl
+Recommends:     qemu-hw-usb-redirect
+%if 0%{?is_opensuse}
+Recommends:     qemu-hw-usb-smartcard
+%endif
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
 Recommends:     qemu-ui-gtk
@@ -366,6 +389,7 @@ Suggests:       qemu-block-nfs
 Suggests:       qemu-block-rbd
 %endif
 Suggests:       qemu-block-ssh
+Suggests:       qemu-chardev-baum
 Suggests:       qemu-extra
 Suggests:       qemu-lang
 %if 0%{?is_opensuse}
@@ -513,6 +537,38 @@ Conflicts:      %name > %{qemuver}-%{release} \
 Conflicts:      qemu-tools < %{qemuver}-%{release} \
 Conflicts:      qemu-tools > %{qemuver}-%{release}
 
+%package audio-alsa
+Summary:        ALSA based audio support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description audio-alsa
+This package contains a module for ALSA based audio support for QEMU.
+
+%package audio-pa
+Summary:        Pulse Audio based audio support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description audio-pa
+This package contains a module for Pulse Audio based audio support for QEMU.
+
+%if 0%{?is_opensuse}
+%package audio-sdl
+Summary:        SDL based audio support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description audio-sdl
+This package contains a module for SDL based audio support for QEMU.
+%endif
+
 %package block-curl
 Summary:        cURL block support for QEMU
 Group:          System/Emulators/PC
@@ -595,6 +651,46 @@ Release:        0
 This package contains a module for accessing network-based image files over an
 SSH network connection from qemu-img tool and QEMU system emulation.
 
+%package chardev-baum
+Summary:        Baum braille chardev support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description chardev-baum
+This package contains a module for baum braille chardev support.
+
+%package hw-display-qxl
+Summary:        QXL display support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description hw-display-qxl
+This package contains a module for QXL display support.
+
+%package hw-usb-redirect
+Summary:        USB redirection support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description hw-usb-redirect
+This package contains a module for USB redirection support.
+
+%package hw-usb-smartcard
+Summary:        USB smartcard support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description hw-usb-smartcard
+This package contains a modules for USB smartcard support.
+
 %package ui-curses
 Summary:        Curses based UI support for QEMU
 Group:          System/Emulators/PC
@@ -636,38 +732,6 @@ Release:        0
 
 %description ui-spice-app
 This package contains a module for doing Spice based UI for QEMU.
-
-%package audio-alsa
-Summary:        ALSA based audio support for QEMU
-Group:          System/Emulators/PC
-Version:        %{qemuver}
-Release:        0
-%{qemu_module_conflicts}
-
-%description audio-alsa
-This package contains a module for ALSA based audio support for QEMU.
-
-%package audio-pa
-Summary:        Pulse Audio based audio support for QEMU
-Group:          System/Emulators/PC
-Version:        %{qemuver}
-Release:        0
-%{qemu_module_conflicts}
-
-%description audio-pa
-This package contains a module for Pulse Audio based audio support for QEMU.
-
-%if 0%{?is_opensuse}
-%package audio-sdl
-Summary:        SDL based audio support for QEMU
-Group:          System/Emulators/PC
-Version:        %{qemuver}
-Release:        0
-%{qemu_module_conflicts}
-
-%description audio-sdl
-This package contains a module for SDL based audio support for QEMU.
-%endif
 
 %package vhost-user-gpu
 Summary:        Vhost user mode virtio-gpu 2D/3D rendering backend for QEMU
@@ -958,6 +1022,11 @@ cd %mybuilddir
 	--enable-tools --enable-guest-agent \
 	--enable-modules \
 	--disable-module-upgrades \
+%if 0%{?is_opensuse}
+	--enable-slirp=system \
+%else
+	--enable-slirp=git \
+%endif
 	--enable-pie \
 	--enable-docs \
 %if 0%{?is_opensuse}
@@ -995,6 +1064,11 @@ cd %mybuilddir
 	--enable-kvm \
 %else
 	--disable-kvm \
+%endif
+%if 0%{?with_daxctl}
+	--enable-libdaxctl \
+%else
+	--disable-libdaxctl \
 %endif
 	--enable-libiscsi \
 %if 0%{?is_opensuse}
@@ -1044,6 +1118,7 @@ cd %mybuilddir
 %endif
 	--enable-rdma \
 	--enable-replication \
+	--disable-safe-stack \
 	--disable-sanitizers \
 %if 0%{?is_opensuse}
 	--enable-sdl \
@@ -1072,6 +1147,7 @@ cd %mybuilddir
 	--enable-vhost-scsi \
 	--enable-vhost-user \
         --enable-vhost-user-fs \
+	--enable-vhost-vdpa \
 	--enable-vhost-vsock \
 	--enable-virglrenderer \
 	--enable-virtfs \
@@ -1110,6 +1186,7 @@ cd %mybuilddir
 	--disable-fdt \
 	--disable-iconv \
 	--disable-kvm \
+	--disable-libdaxctl \
 	--disable-malloc-trim \
 %if %{with system_membarrier}
 	--enable-membarrier \
@@ -1122,6 +1199,7 @@ cd %mybuilddir
 	--disable-qed \
 	--disable-replication \
 	--disable-sheepdog \
+	--disable-safe-stack \
 	--disable-slirp \
 	--disable-tpm \
 	--disable-vdi \
@@ -1215,8 +1293,7 @@ make                 -C %{_builddir}/%buildsubdir/roms sgabios \
 pushd %{_builddir}/%buildsubdir
 patch -p1 < %_sourcedir/stub-out-the-SAN-req-s-in-int13.patch
 popd
-make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms \
-    pxerom_variants=virtio pxerom_targets=1af41000 pxerom
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms pxerom_variants=virtio pxerom_targets=1af41000 pxerom
 %endif
 
 # enforce pxe rom sizes for migration compatability from SLE 11 SP3 forward
@@ -1585,16 +1662,18 @@ fi
 %_docdir/%name/interop/live-block-operations.html
 %_docdir/%name/interop/objects.inv
 %_docdir/%name/interop/pr-helper.html
+%_docdir/%name/interop/qemu-ga-ref.html
+%_docdir/%name/interop/qemu-ga-ref.txt
+%_docdir/%name/interop/qemu-qmp-ref.html
+%_docdir/%name/interop/qemu-qmp-ref.txt
 %_docdir/%name/interop/search.html
 %_docdir/%name/interop/searchindex.js
 %_docdir/%name/interop/vhost-user.html
 %_docdir/%name/interop/vhost-user-gpu.html
-%_docdir/%name/qemu-qmp-ref.txt
-%_docdir/%name/qemu-qmp-ref.html
-%_docdir/%name/qemu-ga-ref.txt
-%_docdir/%name/qemu-ga-ref.html
+%_docdir/%name/interop/vhost-vdpa.html
 %_docdir/%name/specs/.buildinfo
 %_docdir/%name/specs/_static/*
+%_docdir/%name/specs/acpi_hest_ghes.html
 %_docdir/%name/specs/acpi_hw_reduced_hotplug.html
 %_docdir/%name/specs/genindex.html
 %_docdir/%name/specs/index.html
@@ -1606,8 +1685,14 @@ fi
 %_docdir/%name/specs/tpm.html
 %_docdir/%name/system/.buildinfo
 %_docdir/%name/system/_static/*
+%_docdir/%name/system/arm/aspeed.html
+%_docdir/%name/system/arm/collie.html
 %_docdir/%name/system/arm/cpu-features.html
+%_docdir/%name/system/arm/digic.html
+%_docdir/%name/system/arm/gumstix.html
 %_docdir/%name/system/arm/integratorcp.html
+%_docdir/%name/system/arm/mps2.html
+%_docdir/%name/system/arm/musca.html
 %_docdir/%name/system/arm/musicpal.html
 %_docdir/%name/system/arm/nseries.html
 %_docdir/%name/system/arm/orangepi.html
@@ -1616,6 +1701,8 @@ fi
 %_docdir/%name/system/arm/stellaris.html
 %_docdir/%name/system/arm/sx1.html
 %_docdir/%name/system/arm/versatile.html
+%_docdir/%name/system/arm/vexpress.html
+%_docdir/%name/system/arm/virt.html
 %_docdir/%name/system/arm/xscale.html
 %_docdir/%name/system/build-platforms.html
 %_docdir/%name/system/deprecated.html
@@ -1637,20 +1724,26 @@ fi
 %_docdir/%name/system/qemu-cpu-models.html
 %_docdir/%name/system/qemu-manpage.html
 %_docdir/%name/system/quickstart.html
+%_docdir/%name/system/s390x/3270.html
+%_docdir/%name/system/s390x/css.html
+%_docdir/%name/system/s390x/protvirt.html
 %_docdir/%name/system/s390x/vfio-ap.html
+%_docdir/%name/system/s390x/vfio-ccw.html
 %_docdir/%name/system/search.html
 %_docdir/%name/system/searchindex.js
 %_docdir/%name/system/security.html
 %_docdir/%name/system/target-arm.html
+%_docdir/%name/system/target-avr.html
 %_docdir/%name/system/target-i386.html
 %_docdir/%name/system/target-m68k.html
 %_docdir/%name/system/target-mips.html
 %_docdir/%name/system/target-ppc.html
-%_docdir/%name/system/targets.html
+%_docdir/%name/system/target-rx.html
 %_docdir/%name/system/target-s390x.html
 %_docdir/%name/system/target-sparc64.html
 %_docdir/%name/system/target-sparc.html
 %_docdir/%name/system/target-xtensa.html
+%_docdir/%name/system/targets.html
 %_docdir/%name/system/tls.html
 %_docdir/%name/system/usb.html
 %_docdir/%name/system/vnc-security.html
@@ -1745,6 +1838,7 @@ fi
 %files extra
 %defattr(-, root, root)
 %_bindir/qemu-system-alpha
+%_bindir/qemu-system-avr
 %_bindir/qemu-system-cris
 %_bindir/qemu-system-hppa
 %_bindir/qemu-system-lm32
@@ -1794,6 +1888,23 @@ fi
 %endif
 %endif
 
+%files audio-alsa
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/audio-alsa.so
+
+%files audio-pa
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/audio-pa.so
+
+%if 0%{?is_opensuse}
+%files audio-sdl
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/audio-sdl.so
+%endif
+
 %files block-curl
 %defattr(-, root, root)
 %dir %_libdir/%name
@@ -1838,6 +1949,28 @@ fi
 %dir %_libdir/%name
 %_libdir/%name/block-ssh.so
 
+%files chardev-baum
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/chardev-baum.so
+
+%files hw-display-qxl
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/hw-display-qxl.so
+
+%files hw-usb-redirect
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/hw-usb-redirect.so
+
+%if 0%{?is_opensuse}
+%files hw-usb-smartcard
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/hw-usb-smartcard.so
+%endif
+
 %files ui-curses
 %defattr(-, root, root)
 %dir %_libdir/%name
@@ -1859,23 +1992,6 @@ fi
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/ui-spice-app.so
-
-%files audio-alsa
-%defattr(-, root, root)
-%dir %_libdir/%name
-%_libdir/%name/audio-alsa.so
-
-%files audio-pa
-%defattr(-, root, root)
-%dir %_libdir/%name
-%_libdir/%name/audio-pa.so
-
-%if 0%{?is_opensuse}
-%files audio-sdl
-%defattr(-, root, root)
-%dir %_libdir/%name
-%_libdir/%name/audio-sdl.so
-%endif
 
 %files lang -f %mybuilddir/%name.lang
 %defattr(-, root, root)
@@ -1970,11 +2086,11 @@ fi
 %_bindir/qemu-io
 %_bindir/qemu-keymap
 %_bindir/qemu-nbd
-%_bindir/qemu-pr-helper
 %_bindir/qemu-storage-daemon
-%_bindir/virtfs-proxy-helper
 %_bindir/vmstate-static-checker.py
 %verify(not mode) %attr(4750,root,kvm) %_libexecdir/qemu-bridge-helper
+%_libexecdir/qemu-pr-helper
+%_libexecdir/virtfs-proxy-helper
 %_libexecdir/virtiofsd
 %_mandir/man1/qemu-img.1.gz
 %_mandir/man1/virtfs-proxy-helper.1.gz

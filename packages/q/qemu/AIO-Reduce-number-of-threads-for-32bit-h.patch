@@ -20,10 +20,10 @@ Signed-off-by: Alexander Graf <agraf@suse.de>
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/util/thread-pool.c b/util/thread-pool.c
-index 4ed9b89ab2d9c4e6d805ea47c2b2..697c989885ca8aa4dd1185b780df 100644
+index d763cea505b68575af8e1b39cd95..785487b8767d96ca76c643f1851f 100644
 --- a/util/thread-pool.c
 +++ b/util/thread-pool.c
-@@ -307,7 +307,12 @@ static void thread_pool_init_one(ThreadPool *pool, AioContext *ctx)
+@@ -306,7 +306,12 @@ static void thread_pool_init_one(ThreadPool *pool, AioContext *ctx)
      qemu_mutex_init(&pool->lock);
      qemu_cond_init(&pool->worker_stopped);
      qemu_sem_init(&pool->sem, 0);

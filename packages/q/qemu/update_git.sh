@@ -245,6 +245,7 @@ osc add qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 # !! We (perhaps temporarily) do MORE recursive submodules, since we are tracking ALL in these scripts, while upstream doesn't include all in tarball currently 
+# !!! THIS IS AT LEAST PARTLY REDUNDANT WITH THE update --init DONE ABOUT 30 LINES AGO
 (cd $GIT_DIR && git submodule update --init --recursive &>/dev/null)
 SUBMODULE_COMMIT_IDS=($(git -C $GIT_DIR submodule status --recursive|awk '{print $1}'))
 SUBMODULE_DIRS=($(git -C $GIT_DIR submodule status --recursive|awk '{print $2}'))
@@ -479,8 +480,9 @@ rm -rf $BUNDLE_DIR
     echo "QEMU source version: $SOURCE_VERSION"
     echo "QEMU version extra: $VERSION_EXTRA"
 
+# get rid of "rel-" prefix to the seabios version - keep any trailing git info, such as: "-44-g88ab0c1"
     SEABIOS_VERSION=${SEABIOS_VERSION:-$(tar JxfO qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz \
-        qemu-$SOURCE_VERSION/roms/seabios/.version | cut -d '-' -f 2)}
+        qemu-$SOURCE_VERSION/roms/seabios/.version | cut -c5- | tr '-' '_')}
 
     for package in qemu; do
         while IFS= read -r line; do

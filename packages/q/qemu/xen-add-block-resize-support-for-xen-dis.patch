@@ -15,10 +15,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/hw/block/xen-block.c b/hw/block/xen-block.c
-index 57d0e2804860e6776b509c5b6d6e..f9a22ec8d7d13a242775797f1e1f 100644
+index 1a379e8771faee970808dd2efd89..310b9639e06b0d543f22652fadd9 100644
 --- a/hw/block/xen-block.c
 +++ b/hw/block/xen-block.c
-@@ -275,6 +275,9 @@ static void xen_block_realize(XenDevice *xendev, Error **errp)
+@@ -270,6 +270,9 @@ static void xen_block_realize(XenDevice *xendev, Error **errp)
  
      xen_block_set_size(blockdev);
  

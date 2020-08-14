@@ -15,10 +15,10 @@ Signed-off-by: Alexander Graf <agraf@suse.de>
  1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 0317c64f4ae460c972fe4fe67ef8..6ada54d3a19e455c0c12a1d4b321 100644
+index 9ec933bdc0078f3fc62bfd499957..78a1f6c347511b85634da898f831 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -8005,8 +8005,13 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_ulong arg1,
+@@ -8149,8 +8149,13 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_ulong arg1,
          return ret;
  #endif
  #ifdef TARGET_NR_lseek

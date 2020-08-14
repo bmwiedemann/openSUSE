@@ -14,7 +14,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 10 insertions(+), 3 deletions(-)
 
 diff --git a/roms/ipxe/src/Makefile.housekeeping b/roms/ipxe/src/Makefile.housekeeping
-index 893bd20f1fd5cecf0e480dee05bd..9c33cc08c4db1bbd0f9966924fce 100644
+index f6f3e29248d3e59b76de690aeb0c..d94eb1454c9168545c933ec6e900 100644
 --- a/roms/ipxe/src/Makefile.housekeeping
 +++ b/roms/ipxe/src/Makefile.housekeeping
 @@ -1172,11 +1172,18 @@ blib : $(BLIB)

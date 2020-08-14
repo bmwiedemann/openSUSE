@@ -1935,4 +1935,85 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
     <comment></comment>
     <requestid>822155</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>913e667cab5f4e316a21b8b44dbd306e</srcmd5>
+    <version>5.1.0</version>
+    <time>1597390274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v5.1.0: See http://wiki.qemu.org/ChangeLog/5.1
+  Take note that ongoing feature deprecation is tracked at both
+  http://wiki.qemu-project.org/Features/LegacyRemoval and in
+  the deprecated.html file installed with the qemu package
+  Some noteworthy changes:
+* s390: Protected virtualization (secure execute) is fully merged
+  upstream
+* s390: vfio-ccw devices no longer require setting the allow
+  prefetch bit in the ORB, but is still dependent on host kernel
+  support
+* s390: vfio-ccw now has basic support for relaying path state
+  changes to the guest
+* PowerPC: pseries: NVDIMMs require label-size property
+* PowerPC: pseries: POWER10 support
+* PowerPC: added interface to inject POWER style NMIs
+* ARM: new board: sonorapass-bmc
+* ARM: new emulated features: ARMv8.2-TTSUXN, ARMv8.5-MemTag
+* ARM: Raspberry Pi boards now support a USB controller
+* ARM: virt board now supports hot-remove memory
+* RISC-V lots of improvements
+* qemu-img resize now requires -shrink to shrinking raw images
+* The mem parameter of the -numa option is no longer recognized
+  starting with 5.1 machine types - instead use the memdev parameter
+* The ACPI WAET table is now exposed to guests
+* The max blocksize for virtual storage device is now 2 MiB
+* NVMe improvements
+* Crypto subsystem improvements
+* Block backends and tools: Numerous improvements and fixes
+* Firmware updates: SeaBIOS (essentially v1.14.0), OpenBIOS, SLOF
+  (20200717), OpenSBI (v0.7)
+* Patches dropped (upstream unless otherwise noted):
+  ati-vga-check-mm_index-before-recursive-.patch
+  audio-fix-wavcapture-segfault.patch
+  es1370-check-total-frame-count-against-c.patch
+  exec-set-map-length-to-zero-when-returni.patch
+  gcc10-maybe-uninitialized.patch
+  hw-vfio-pci-quirks-Fix-broken-legacy-IGD.patch
+  megasas-use-unsigned-type-for-reply_queu.patch
+  nbd-server-Avoid-long-error-message-asse.patch
+  ppc-spapr_caps-Don-t-disable-cap_cfpc-on.patch
+  s390x-Add-SIDA-memory-ops.patch
+  s390x-Add-unpack-facility-feature-to-GA1.patch
+  s390x-Move-diagnose-308-subcodes-and-rcs.patch
+  s390x-protvirt-Add-migration-blocker.patch
+  s390x-protvirt-Disable-address-checks-fo.patch
+  s390x-protvirt-Handle-SIGP-store-status-.patch
+  s390x-protvirt-Inhibit-balloon-when-swit.patch
+  s390x-protvirt-KVM-intercept-changes.patch
+  s390x-protvirt-Move-diag-308-data-over-S.patch
+  s390x-protvirt-Move-IO-control-structure.patch
+  s390x-protvirt-Move-STSI-data-over-SIDAD.patch
+  s390x-protvirt-SCLP-interpretation.patch
+  s390x-protvirt-Set-guest-IPL-PSW.patch
+  s390x-protvirt-Support-unpack-facility.patch
+  s390x-s390-virtio-ccw-Fix-build-on-syste.patch
+  Sync-pv.patch
+  tests-Disable-some-block-tests-for-now.patch (no longer needed)
+  vga-fix-cirrus-bios.patch
+  virtiofsd-add-rlimit-nofile-NUM-option.patch
+  virtiofsd-stay-below-fs.file-max-sysctl-.patch
+* Patches renamed:
+  build-Do-not-apply-WORKAROUND_CFLAGS-for.patch
+  -&gt; Do-not-apply-WORKAROUND_CFLAGS-for-host-.patch
+  build-Fix-s-directive-argument-is-null-e.patch
+  -&gt; Fix-s-directive-argument-is-null-error.patch
+* Patches added:
+   hw-hyperv-vmbus-Fix-32bit-compilation.patch
+- New subpackages, due to modularization: qemu-chardev-baum,
+  qemu-hw-display-qxl, qemu-hw-usb-redirect, qemu-hw-usb-smartcard
+- Configure to use &quot;system&quot; libslirp and libdaxctl (libnvdimm)
+  when available
+- Don't disable cap_cfpc on POWER8 by default (bsc#1174374)
+  ppc-spapr_caps-Don-t-disable-cap_cfpc-on.patch
+</comment>
+    <requestid>825863</requestid>
+  </revision>
 </revisionlist>

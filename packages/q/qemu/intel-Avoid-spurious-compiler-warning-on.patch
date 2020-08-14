@@ -4,7 +4,7 @@ Subject: [intel] Avoid spurious compiler warning on GCC 10
 
 Git-commit: 28cf9806d1632d378485005babec295da0c77fcf
 References: boo#1171123
-`
+
 GCC 10 produces a spurious warning about an out-of-bounds array access
 for the unsized raw dword array in union intelvf_msg.
 

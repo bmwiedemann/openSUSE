@@ -28,7 +28,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-index b330e36fe6cc69a3b47ddd51ccba..8c4e4b66dd33ee482125b98846b7 100644
+index 67a18fe2b64c2cc0f77be5897c5d..79386df49b7aaec7c2f2b4c19b6f 100644
 --- a/hw/usb/hcd-xhci.c
 +++ b/hw/usb/hcd-xhci.c
 @@ -3340,6 +3340,7 @@ static void usb_xhci_init(XHCIState *xhci)

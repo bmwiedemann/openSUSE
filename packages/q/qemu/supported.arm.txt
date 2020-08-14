@@ -202,6 +202,7 @@ Deprecated, Superseded, Modified and Dropped Features
   and could possibly change syntax in the future.
 
 - This previously unsupported command line option is now deprecated:
+  -soundhw (use -device ... instead)
   -tb-size
 
 - These previously unsupported command line options are no longer recognized:
@@ -732,7 +733,9 @@ QEMU Command-Line and Monitor Syntax and Support
           allwinner-rtc-sun6i|allwinner-rtc-sun7i|allwinner-sdhost-sun4i|
           allwinner-sdhost-sun5i|allwinner-sid|allwinner-sun8i-emac|imx.rngc|
           imx.usbphy|serial|serial-io|stm32f405-soc|stm32f4xx-exti|
-          stm32f4xx-syscfg|tpm-tis-device]
+          stm32f4xx-syscfg|tpm-tis-device|nvdimm|vhost-user-vsock-device|i
+          vhost-user-vsock-pci|vhost-user-vsock-pci-non-transitional|
+          vhost-user-vsock-pci-transitional]
           (the following are aliases of these unsupported devices: lsi|
           piix3-usb-uhci)
           (note that some of these device names represent supported devices and
@@ -760,10 +763,10 @@ QEMU Command-Line and Monitor Syntax and Support
      mps2-an511|mps2-an521|musca-a|musca-b1|musicpal|n800|n810|netduino2|
      netduinoplus2|nuri|orangepi-pc|palmetto-bmc|raspi2|raspi3|realview-eb|
      realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|
-     sbsa-ref|smdkc210|spitz|swift-bmc|sx1|sx1-v1|tacoma-bmc|terrier|tosa|
-     verdex|versatileab|versatilepb|vexpress-a15|vexpress-a9|virt-2.7|virt-2.8|
-     virt-2.12|virt-3.0|virt-4.0|virt-4.1|virt-5.0|witherspoon-bmc|
-     xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
+     sbsa-ref|smdkc210|sonorapass-bmc|spitz|swift-bmc|sx1|sx1-v1|tacoma-bmc|
+     terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|vexpress-a9|
+     virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|virt-5.0|virt-5.1|
+     witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
 
   -machine
 
@@ -774,10 +777,11 @@ QEMU Command-Line and Monitor Syntax and Support
            musicpal|n800|n810|netduino2|netduinoplus2|nuri|orangepi-pc|
            palmetto-bmc|raspi2|raspi3|realview-eb|realview-eb-mpcore|
            realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|sbsa-ref|
-           smdkc210|spitz|swift-bmc|sx1|sx1-v1|tacoma-bmc|terrier|tosa|verdex|
-           versatileab|versatilepb|vexpress-a15|vexpress-a9|virt-2.7|virt-2.8|
-           virt-2.12|virt-3.0|virt-4.0|virt-4.1|virt-5.0|witherspoon-bmc|
-           xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
+           smdkc210|sonorapass-bmc|spitz|swift-bmc|sx1|sx1-v1|tacoma-bmc|
+           terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|vexpress-a9|
+           virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|virt-5.0|
+           virt-5.1|witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|
+           z2]
 
   -mtdblock file
   -net [dump|socket|vde] ...
@@ -865,6 +869,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-colo-status
   query-sev
   query-sev-launch-measure
+  x-blockdev-amend
   x-blockdev-change
   x-blockdev-insert-medium
   x-blockdev-remove-medium

@@ -18,10 +18,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure b/configure
-index 5a0a52e842df70b757252f89b74a..790337b204cdfa6d84b1f8524f90 100755
+index 3b3c5dc2f93b87a91d247079f4c8..4340229b47a3294307a08df3339e 100755
 --- a/configure
 +++ b/configure
-@@ -6939,7 +6939,7 @@ fi
+@@ -7229,7 +7229,7 @@ fi
  if test "$modules" = "yes"; then
    # $shacmd can generate a hash started with digit, which the compiler doesn't
    # like as an symbol. So prefix it with an underscore

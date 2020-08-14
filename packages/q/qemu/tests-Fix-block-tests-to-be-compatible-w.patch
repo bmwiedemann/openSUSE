@@ -16,10 +16,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  4 files changed, 14 insertions(+), 4 deletions(-)
 
 diff --git a/tests/qemu-iotests/130 b/tests/qemu-iotests/130
-index 77ad2aa13a06094f26d2c8991e48..fd84a4c77d192e15ee961b07994b 100755
+index a7b365701c490b4b4894eb0c26a8..02cb0f8216a6618b5e0dc526c361 100755
 --- a/tests/qemu-iotests/130
 +++ b/tests/qemu-iotests/130
-@@ -64,7 +64,8 @@ echo
+@@ -63,7 +63,8 @@ echo
  _launch_qemu -drive id=testdisk,file="$TEST_IMG",backing.file.filename="$TEST_IMG.base"
  _send_qemu_cmd $QEMU_HANDLE "commit testdisk" "(qemu)"
  _send_qemu_cmd $QEMU_HANDLE '' '(qemu)'
@@ -29,7 +29,7 @@ index 77ad2aa13a06094f26d2c8991e48..fd84a4c77d192e15ee961b07994b 100755
  _img_info | _filter_img_info
  
  # Make sure that if there was a backing file that was just overridden on the
-@@ -73,7 +74,8 @@ _make_test_img -F raw -b "$TEST_IMG.orig" 64M
+@@ -72,7 +73,8 @@ _make_test_img -F raw -b "$TEST_IMG.orig" 64M
  _launch_qemu -drive id=testdisk,file="$TEST_IMG",backing.file.filename="$TEST_IMG.base",backing.driver=$IMGFMT
  _send_qemu_cmd $QEMU_HANDLE "commit testdisk" "(qemu)"
  _send_qemu_cmd $QEMU_HANDLE '' '(qemu)'
@@ -60,10 +60,10 @@ index e45285ccc311522481ac1b27ba99..7168bdf70c3eb32d4de0d28bb947 100644
  file format: IMGFMT
  virtual size: 64 MiB (67108864 bytes)
 diff --git a/tests/qemu-iotests/153 b/tests/qemu-iotests/153
-index 2b1311176801e30485cf39ec65d8..608a377af5f3662dc25ddcebb01e 100755
+index 34045ea3cfeb5e30acac17ae8a10..b5cec71dd9a718055d9264e51946 100755
 --- a/tests/qemu-iotests/153
 +++ b/tests/qemu-iotests/153
-@@ -202,7 +202,8 @@ _send_qemu_cmd $QEMU_HANDLE \
+@@ -201,7 +201,8 @@ _send_qemu_cmd $QEMU_HANDLE \
      'return'
  _run_cmd $QEMU_IMG commit -b "${TEST_IMG}.b" "${TEST_IMG}.c"
  
@@ -73,7 +73,7 @@ index 2b1311176801e30485cf39ec65d8..608a377af5f3662dc25ddcebb01e 100755
  
  _launch_qemu
  
-@@ -254,7 +255,8 @@ _send_qemu_cmd $QEMU_HANDLE \
+@@ -253,7 +254,8 @@ _send_qemu_cmd $QEMU_HANDLE \
  
  _run_cmd $QEMU_IO "${TEST_IMG}" -c 'write 0 512'
  
@@ -84,10 +84,10 @@ index 2b1311176801e30485cf39ec65d8..608a377af5f3662dc25ddcebb01e 100755
  echo
  echo "== Detecting -U and force-share conflicts =="
 diff --git a/tests/qemu-iotests/153.out b/tests/qemu-iotests/153.out
-index f7464dd8d345a853f7b64a67c6d0..8bc14f6abf94662473d6d93b5672 100644
+index 8a79e1ee870d72c6d346898113b1..d1d6b673b22d5443700ae9c146c7 100644
 --- a/tests/qemu-iotests/153.out
 +++ b/tests/qemu-iotests/153.out
-@@ -421,6 +421,8 @@ Is another process using the image [TEST_DIR/t.qcow2]?
+@@ -424,6 +424,8 @@ Is another process using the image [TEST_DIR/t.qcow2]?
  _qemu_img_wrapper commit -b TEST_DIR/t.qcow2.b TEST_DIR/t.qcow2.c
  { 'execute': 'qmp_capabilities' }
  {"return": {}}
@@ -96,7 +96,7 @@ index f7464dd8d345a853f7b64a67c6d0..8bc14f6abf94662473d6d93b5672 100644
  Adding drive
  { 'execute': 'human-monitor-command', 'arguments': { 'command-line': 'drive_add 0 if=none,id=d0,file=TEST_DIR/t.IMGFMT' } }
  {"return": "OKrn"}
-@@ -454,6 +456,8 @@ Closing the other
+@@ -457,6 +459,8 @@ Closing the other
  {"return": ""}
  
  _qemu_io_wrapper TEST_DIR/t.qcow2 -c write 0 512

@@ -9,10 +9,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 8a9113e6663eb51cf842b2f4f5a2..1a2f649a21a85e1849a3ca40991d 100644
+index 13dd708c4af52df3bc932812fc60..e7116289550f169a65f8aecfeccf 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -619,7 +619,7 @@ fsdev/virtfs-proxy-helper$(EXESUF): fsdev/virtfs-proxy-helper.o fsdev/9p-marshal
+@@ -613,7 +613,7 @@ fsdev/virtfs-proxy-helper$(EXESUF): fsdev/virtfs-proxy-helper.o fsdev/9p-marshal
  
  scsi/qemu-pr-helper$(EXESUF): scsi/qemu-pr-helper.o scsi/utils.o $(authz-obj-y) $(crypto-obj-y) $(io-obj-y) $(qom-obj-y) $(COMMON_LDADDS)
  ifdef CONFIG_MPATH
@@ -22,10 +22,10 @@ index 8a9113e6663eb51cf842b2f4f5a2..1a2f649a21a85e1849a3ca40991d 100644
  
  qemu-img-cmds.h: $(SRC_PATH)/qemu-img-cmds.hx $(SRC_PATH)/scripts/hxtool
 diff --git a/configure b/configure
-index 23b5e93752b6a2597b2099b50218..ef127fb1e0715da446b4a822e3ab 100755
+index 2acc4d1465f8165ae3a238784231..a47fda0fb5267e153a3f1f3ee3bc 100755
 --- a/configure
 +++ b/configure
-@@ -3961,7 +3961,7 @@ int main(void) {
+@@ -4100,7 +4100,7 @@ int main(void) {
      return 0;
  }
  EOF

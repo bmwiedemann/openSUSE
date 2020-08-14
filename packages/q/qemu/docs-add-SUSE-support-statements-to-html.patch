@@ -14,7 +14,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/docs/index.html.in b/docs/index.html.in
-index e9a160384cfe939a3bccc51e5da9..2a76ade7bfd053f359d7782c7473 100644
+index 6736fa4360cfb8c40cbab2a362b0..ad431321ee858bcbe3e237e687b5 100644
 --- a/docs/index.html.in
 +++ b/docs/index.html.in
 @@ -7,6 +7,7 @@

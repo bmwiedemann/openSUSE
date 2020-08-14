@@ -197,6 +197,7 @@ Deprecated, Superseded, Modified and Dropped Features
   -bt
   -device ide-drive (use ide-hd or ide-cd)
   -device scsi-disk (use scsi-hd or scsi-cd)
+  -soundhw (use -device ... instead)
   -tb-size
 
 - These previously unsupported command line options are no longer recognized:
@@ -687,7 +688,10 @@ QEMU Command-Line and Monitor Syntax and Support
           zEC12.2-s390x-cpu|zEC12-base-s390x-cpu|zEC12-s390x-cpu|cpu-cluster|
           z14.2-base-s390x-cpu|z14.2-s390x-cpu|vhost-user-fs-device|
           virtio-iommu-device|virtio-iommu-pci|
-          virtio-iommu-pci-non-transitional|virtio-iommu-pci-transitional]
+          virtio-iommu-pci-non-transitional|virtio-iommu-pci-transitional|
+          vhost-user-vsock-device|vhost-user-vsock-pci|
+          vhost-user-vsock-pci-non-transitional|
+          vhost-user-vsock-pci-transitional]
           (the following are aliases of these unsupported devices: lsi|
           ahci|e1000-82540em|vfio-ccw)
           (note that some of these device names represent supported devices and
@@ -712,14 +716,14 @@ QEMU Command-Line and Monitor Syntax and Support
      [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
      s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|s390-ccw-virtio-2.12|
      s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1|
-     s390-ccw-virtio-5.0]
+     s390-ccw-virtio-5.0|s390-ccw-virtio-5.1]
 
   -machine
 
            [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
            s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|s390-ccw-virtio-2.12|
            s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1|
-           s390-ccw-virtio-5.0]
+           s390-ccw-virtio-5.0|s390-ccw-virtio-5.1]
 
   -mtdblock file
   -net [dump|socket|vde] ...
@@ -817,6 +821,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-tpm
   query-tpm-models
   query-tpm-types
+  x-blockdev-amend
   x-blockdev-change
   x-blockdev-insert-medium
   x-blockdev-remove-medium

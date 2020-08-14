@@ -17,10 +17,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 13 insertions(+)
 
 diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
-index 20717f026bc03922944317f73a68..e640fe183a0b407db555aade6e16 100644
+index 15a2243101f8c465e038e26c6551..d4d3a388f2034d735a6595fdaa36 100644
 --- a/hw/usb/dev-mtp.c
 +++ b/hw/usb/dev-mtp.c
-@@ -1722,9 +1722,22 @@ static void usb_mtp_write_metadata(MTPState *s, uint64_t dlen)
+@@ -1721,9 +1721,22 @@ static void usb_mtp_write_metadata(MTPState *s, uint64_t dlen)
      assert(!s->write_pending);
      assert(p != NULL);
  

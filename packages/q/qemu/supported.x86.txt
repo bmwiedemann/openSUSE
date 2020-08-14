@@ -241,6 +241,7 @@ Deprecated, Superseded, Modified and Dropped Features
 
 - These previously unsupported command line options are now deprecated:
   -no-kvm-pit
+  -soundhw (use -device ... instead)
   -tb-size
 
 - The case of specified sockets, cores, and threads not matching the vcpu count
@@ -802,7 +803,10 @@ QEMU Command-Line and Monitor Syntax and Support
           intel-iommu|vhost-user-fs-device|tulip|ati-vga|i2c-ddc|pci-ipmi-bt|
           pci-ipmi-kcs|serial|serial-io|serial-mm|virtio-iommu-device|
           virtio-iommu-pci|virtio-iommu-pci-nontransitional|
-          virtio-iommu-pci-transitional|xen-sysdev|imx.usbphy]
+          virtio-iommu-pci-transitional|xen-sysdev|imx.usbphy|vmbus-bridge|
+          vhost-user-vsock-device|vhost-user-vsock-pci|
+          vhost-user-vsock-pci-non-transitional|
+          vhost-user-vsock-pci-transitional|virtio-mem|virtio-mem-pci]
           (the following are aliases of these unsupported devices: lsi)
           (note that some of these device names represent supported devices and
           are used internally, but are not specifyable via -device even though
@@ -824,10 +828,10 @@ QEMU Command-Line and Monitor Syntax and Support
      [isapc|microvm|pc-1.0|pc-1.1|pc-1.2|pc-1.3|pc-i440fx-1.5|pc-i440fx-1.6|
      pc-i440fx-2.1|pc-i440fx-2.2|pc-i440fx-2.4|pc-i440fx-2.5|pc-i440fx-2.7|
      pc-i440fx-2.8|pc-i440fx-2.10|pc-i440fx-2.12|pc-i440fx-3.0|pc-i440fx-4.0|
-     pc-i440fx-4.1|pc-i440fx-5.0|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|pc-q35-1.7|
-     pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|pc-q35-2.4|pc-q35-2.5|
-     pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|pc-q35-3.0|pc-q35-4.0|
-     pc-q35-4.1|pc-q35-5.0]
+     pc-i440fx-4.1|pc-i440fx-5.0|pc-i440fx-5.1|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|
+     pc-q35-1.7|pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|pc-q35-2.4|
+     pc-q35-2.5|pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|pc-q35-3.0|
+     pc-q35-4.0|pc-q35-4.1|pc-q35-5.0|pc-q35-5.1]
 
   -machine
 
@@ -835,10 +839,10 @@ QEMU Command-Line and Monitor Syntax and Support
            pc-i440fx-1.6|pc-i440fx-2.1|pc-i440fx-2.2|pc-i440fx-2.4|
            pc-i440fx-2.5|pc-i440fx-2.7|pc-i440fx-2.8|pc-i440fx-2.10|
            pc-i440fx-2.12|pc-i440fx-3.0|pc-i440fx-4.0|pc-i440fx-4.1|
-           pc-i440fx-5.0|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|pc-q35-1.7|
-           pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|pc-q35-2.4|pc-q35-2.5|
-           pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|pc-q35-3.0|
-           pc-q35-4.0|pc-q35-4.1|pc-q35-5.0]
+           pc-i440fx-5.0|pc-i440fx-5.1|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|
+           pc-q35-1.7|pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|pc-q35-2.4|
+           pc-q35-2.5|pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|pc-q35-3.0|
+           pc-q35-4.0|pc-q35-4.1|pc-q35-5.0|pc-q35-5.1]
 
   -mtdblock file
   -net [dump|socket|vde] ...
@@ -916,6 +920,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-colo-status
   query-sev
   query-sev-launch-measure
+  x-blockdev-amend
   x-blockdev-change
   x-blockdev-insert-medium
   x-blockdev-remove-medium

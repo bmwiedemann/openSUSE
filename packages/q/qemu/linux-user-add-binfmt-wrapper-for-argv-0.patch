@@ -35,7 +35,7 @@ Signed-off-by: Andreas Färber <afaerber@suse.de>
  3 files changed, 56 insertions(+)
 
 diff --git a/Makefile.target b/Makefile.target
-index 8ed1eba95b9c29ab4e47349cbdb2..8b5d84006cb32d4463f13059de93 100644
+index ffa2657269ac5e4ed4eab213e1bd..b6621549b8909d76e64cc0c5c2f3 100644
 --- a/Makefile.target
 +++ b/Makefile.target
 @@ -39,6 +39,10 @@ endif
@@ -58,7 +58,7 @@ index 8ed1eba95b9c29ab4e47349cbdb2..8b5d84006cb32d4463f13059de93 100644
  endif #CONFIG_LINUX_USER
  
  #########################################################
-@@ -176,7 +182,11 @@ generated-files-y += config-devices.h
+@@ -173,7 +179,11 @@ generated-files-y += config-devices.h
  
  endif # CONFIG_SOFTMMU
  
@@ -69,8 +69,8 @@ index 8ed1eba95b9c29ab4e47349cbdb2..8b5d84006cb32d4463f13059de93 100644
 +endif
  all-obj-y := $(obj-y)
  
- include $(SRC_PATH)/Makefile.objs
-@@ -211,6 +221,9 @@ ifdef CONFIG_DARWIN
+ #
+@@ -222,6 +232,9 @@ ifdef CONFIG_DARWIN
  	$(call quiet-command,SetFile -a C $@,"SETFILE","$(TARGET_DIR)$@")
  endif
  

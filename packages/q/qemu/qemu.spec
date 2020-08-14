@@ -73,6 +73,12 @@
 %define with_rbd 1
 %endif
 
+%if 0%{?is_opensuse}
+%ifarch x86_64 ppc64le
+%define with_daxctl 1
+%endif
+%endif
+
 # qemu, qemu-linux-user, and qemu-testsuite "flavors" enabled via OBS Multibuild
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -89,9 +95,9 @@
 
 %bcond_with system_membarrier
 
-%define qemuver 5.0.0
-%define srcver  5.0.0
-%define sbver   1.13.0
+%define qemuver 5.1.0
+%define srcver  5.1.0
+%define sbver   1.13.0_48_gd9c812d
 %define srcname qemu
 Name:           qemu%{name_suffix}
 URL:            https://www.qemu.org/
@@ -127,89 +133,62 @@ Source303:      README.PACKAGING
 # This patch queue is auto-generated - see README.PACKAGING for process
 
 # Patches applied in base project:
-Patch00000:     s390x-Move-diagnose-308-subcodes-and-rcs.patch
-Patch00001:     Sync-pv.patch
-Patch00002:     s390x-protvirt-Support-unpack-facility.patch
-Patch00003:     s390x-protvirt-Add-migration-blocker.patch
-Patch00004:     s390x-protvirt-Inhibit-balloon-when-swit.patch
-Patch00005:     s390x-protvirt-KVM-intercept-changes.patch
-Patch00006:     s390x-Add-SIDA-memory-ops.patch
-Patch00007:     s390x-protvirt-Move-STSI-data-over-SIDAD.patch
-Patch00008:     s390x-protvirt-SCLP-interpretation.patch
-Patch00009:     s390x-protvirt-Set-guest-IPL-PSW.patch
-Patch00010:     s390x-protvirt-Move-diag-308-data-over-S.patch
-Patch00011:     s390x-protvirt-Disable-address-checks-fo.patch
-Patch00012:     s390x-protvirt-Move-IO-control-structure.patch
-Patch00013:     s390x-protvirt-Handle-SIGP-store-status-.patch
-Patch00014:     s390x-Add-unpack-facility-feature-to-GA1.patch
-Patch00015:     virtiofsd-add-rlimit-nofile-NUM-option.patch
-Patch00016:     virtiofsd-stay-below-fs.file-max-sysctl-.patch
-Patch00017:     es1370-check-total-frame-count-against-c.patch
-Patch00018:     audio-fix-wavcapture-segfault.patch
-Patch00019:     ati-vga-check-mm_index-before-recursive-.patch
-Patch00020:     nbd-server-Avoid-long-error-message-asse.patch
-Patch00021:     hw-vfio-pci-quirks-Fix-broken-legacy-IGD.patch
-Patch00022:     megasas-use-unsigned-type-for-reply_queu.patch
-Patch00023:     exec-set-map-length-to-zero-when-returni.patch
-Patch00024:     XXX-dont-dump-core-on-sigabort.patch
-Patch00025:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00026:     qemu-cvs-gettimeofday.patch
-Patch00027:     qemu-cvs-ioctl_debug.patch
-Patch00028:     qemu-cvs-ioctl_nodirection.patch
-Patch00029:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00030:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00031:     linux-user-binfmt-support-host-binaries.patch
-Patch00032:     linux-user-Fake-proc-cpuinfo.patch
-Patch00033:     linux-user-use-target_ulong.patch
-Patch00034:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00035:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00036:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00037:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00038:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00039:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00040:     linux-user-properly-test-for-infinite-ti.patch
-Patch00041:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00042:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00043:     increase-x86_64-physical-bits-to-42.patch
-Patch00044:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00045:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00046:     Switch-order-of-libraries-for-mpath-supp.patch
-Patch00047:     Make-installed-scripts-explicitly-python.patch
-Patch00048:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00049:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00050:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00051:     tests-Fix-block-tests-to-be-compatible-w.patch
-Patch00052:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00053:     Conditionalize-ui-bitmap-installation-be.patch
-Patch00054:     tests-change-error-message-in-test-162.patch
-Patch00055:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
-Patch00056:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
-Patch00057:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00058:     configure-only-populate-roms-if-softmmu.patch
-Patch00059:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00060:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00061:     tests-Disable-some-block-tests-for-now.patch
-Patch00062:     test-add-mapping-from-arch-of-i686-to-qe.patch
-Patch00063:     roms-Makefile-enable-cross-compile-for-b.patch
-Patch00064:     s390x-s390-virtio-ccw-Fix-build-on-syste.patch
-Patch00065:     configure-remove-pkgversion-from-CONFIG_.patch
-Patch00066:     gcc10-maybe-uninitialized.patch
-Patch00067:     docs-add-SUSE-support-statements-to-html.patch
-Patch00068:     docs-fix-trace-docs-build-with-sphinx-3..patch
+Patch00000:     docs-fix-trace-docs-build-with-sphinx-3..patch
+Patch00001:     hw-hyperv-vmbus-Fix-32bit-compilation.patch
+Patch00002:     XXX-dont-dump-core-on-sigabort.patch
+Patch00003:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00004:     qemu-cvs-gettimeofday.patch
+Patch00005:     qemu-cvs-ioctl_debug.patch
+Patch00006:     qemu-cvs-ioctl_nodirection.patch
+Patch00007:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00008:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00009:     linux-user-binfmt-support-host-binaries.patch
+Patch00010:     linux-user-Fake-proc-cpuinfo.patch
+Patch00011:     linux-user-use-target_ulong.patch
+Patch00012:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00013:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00014:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00015:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00016:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00017:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00018:     linux-user-properly-test-for-infinite-ti.patch
+Patch00019:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00020:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00021:     increase-x86_64-physical-bits-to-42.patch
+Patch00022:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00023:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00024:     Switch-order-of-libraries-for-mpath-supp.patch
+Patch00025:     Make-installed-scripts-explicitly-python.patch
+Patch00026:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00027:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00028:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00029:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00030:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00031:     Conditionalize-ui-bitmap-installation-be.patch
+Patch00032:     tests-change-error-message-in-test-162.patch
+Patch00033:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
+Patch00034:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
+Patch00035:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00036:     configure-only-populate-roms-if-softmmu.patch
+Patch00037:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00038:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00039:     test-add-mapping-from-arch-of-i686-to-qe.patch
+Patch00040:     roms-Makefile-enable-cross-compile-for-b.patch
+Patch00041:     configure-remove-pkgversion-from-CONFIG_.patch
+Patch00042:     docs-add-SUSE-support-statements-to-html.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
 Patch01002:     enable-cross-compilation-on-ARM.patch
-Patch01003:     vga-fix-cirrus-bios.patch
 # Patches applied in roms/ipxe/:
-Patch02000:     build-Fix-s-directive-argument-is-null-e.patch
+Patch02000:     Fix-s-directive-argument-is-null-error.patch
 Patch02001:     build-Workaround-compilation-error-with-.patch
-Patch02002:     build-Do-not-apply-WORKAROUND_CFLAGS-for.patch
-Patch02003:     build-Be-explicit-about-fcommon-compiler.patch
-Patch02004:     intel-Avoid-spurious-compiler-warning-on.patch
-Patch02005:     golan-Add-explicit-type-casts-for-nodnic.patch
-Patch02006:     stub-out-the-SAN-req-s-in-int13.patch
-Patch02007:     ipxe-Makefile-fix-issues-of-build-reprod.patch
+Patch02002:     build-Be-explicit-about-fcommon-compiler.patch
+Patch02003:     intel-Avoid-spurious-compiler-warning-on.patch
+Patch02004:     golan-Add-explicit-type-casts-for-nodnic.patch
+Patch02005:     stub-out-the-SAN-req-s-in-int13.patch
+Patch02006:     ipxe-Makefile-fix-issues-of-build-reprod.patch
+Patch02007:     Do-not-apply-WORKAROUND_CFLAGS-for-host-.patch
 # Patches applied in roms/sgabios/:
 Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
 Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
@@ -289,7 +268,7 @@ BuildRequires:  glibc-devel-32bit
 %if 0%{?with_glusterfs}
 BuildRequires:  glusterfs-devel >= 3
 %endif
-BuildRequires:  gtk3-devel >= 3.16
+BuildRequires:  gtk3-devel >= 3.22
 BuildRequires:  libaio-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbz2-devel
@@ -305,6 +284,9 @@ BuildRequires:  libgcrypt-devel >= 1.5.0
 BuildRequires:  libgnutls-devel >= 3.1.18
 BuildRequires:  libiscsi-devel >= 1.9.0
 BuildRequires:  libjpeg-devel
+%if 0%{?with_daxctl}
+BuildRequires:  libndctl-devel
+%endif
 %if 0%{?is_opensuse}
 BuildRequires:  libnfs-devel >= 1.9.3
 %endif
@@ -326,6 +308,9 @@ BuildRequires:  libSDL2-devel
 BuildRequires:  libSDL2_image-devel
 %endif
 BuildRequires:  libseccomp-devel >= 2.3.0
+%if 0%{?is_opensuse}
+BuildRequires:  libslirp-devel >= 4.2.0
+%endif
 BuildRequires:  libspice-server-devel >= 0.12.5
 BuildRequires:  libssh-devel >= 0.8
 BuildRequires:  libusb-1_0-devel >= 1.0.13
@@ -387,11 +372,17 @@ BuildRequires:  qemu-block-nfs = %{qemuver}
 BuildRequires:  qemu-block-rbd = %{qemuver}
 %endif
 BuildRequires:  qemu-block-ssh = %{qemuver}
+BuildRequires:  qemu-chardev-baum = %{qemuver}
 %if %{provide_edk2_firmware}
 BuildRequires:  qemu-edk2 = %{qemuver}
 %endif
 BuildRequires:  qemu-extra = %{qemuver}
 BuildRequires:  qemu-guest-agent = %{qemuver}
+BuildRequires:  qemu-hw-display-qxl = %{qemuver}
+BuildRequires:  qemu-hw-usb-redirect = %{qemuver}
+%if 0%{?is_opensuse}
+BuildRequires:  qemu-hw-usb-smartcard = %{qemuver}
+%endif
 BuildRequires:  qemu-ipxe = 1.0.0+
 %if 0%{?is_opensuse}
 BuildRequires:  qemu-ksm = %{qemuver}
@@ -422,6 +413,11 @@ Requires(post): procps
 Recommends:     kvm_stat
 %endif
 Recommends:     qemu-block-curl
+Recommends:     qemu-hw-display-qxl
+Recommends:     qemu-hw-usb-redirect
+%if 0%{?is_opensuse}
+Recommends:     qemu-hw-usb-smartcard
+%endif
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
 Recommends:     qemu-ui-gtk
@@ -460,6 +456,7 @@ Suggests:       qemu-block-nfs
 Suggests:       qemu-block-rbd
 %endif
 Suggests:       qemu-block-ssh
+Suggests:       qemu-chardev-baum
 Suggests:       qemu-extra
 Suggests:       qemu-lang
 %if 0%{?is_opensuse}
@@ -607,6 +604,38 @@ Conflicts:      %name > %{qemuver}-%{release} \
 Conflicts:      qemu-tools < %{qemuver}-%{release} \
 Conflicts:      qemu-tools > %{qemuver}-%{release}
 
+%package audio-alsa
+Summary:        ALSA based audio support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description audio-alsa
+This package contains a module for ALSA based audio support for QEMU.
+
+%package audio-pa
+Summary:        Pulse Audio based audio support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description audio-pa
+This package contains a module for Pulse Audio based audio support for QEMU.
+
+%if 0%{?is_opensuse}
+%package audio-sdl
+Summary:        SDL based audio support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description audio-sdl
+This package contains a module for SDL based audio support for QEMU.
+%endif
+
 %package block-curl
 Summary:        cURL block support for QEMU
 Group:          System/Emulators/PC
@@ -689,6 +718,46 @@ Release:        0
 This package contains a module for accessing network-based image files over an
 SSH network connection from qemu-img tool and QEMU system emulation.
 
+%package chardev-baum
+Summary:        Baum braille chardev support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description chardev-baum
+This package contains a module for baum braille chardev support.
+
+%package hw-display-qxl
+Summary:        QXL display support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description hw-display-qxl
+This package contains a module for QXL display support.
+
+%package hw-usb-redirect
+Summary:        USB redirection support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description hw-usb-redirect
+This package contains a module for USB redirection support.
+
+%package hw-usb-smartcard
+Summary:        USB smartcard support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description hw-usb-smartcard
+This package contains a modules for USB smartcard support.
+
 %package ui-curses
 Summary:        Curses based UI support for QEMU
 Group:          System/Emulators/PC
@@ -730,38 +799,6 @@ Release:        0
 
 %description ui-spice-app
 This package contains a module for doing Spice based UI for QEMU.
-
-%package audio-alsa
-Summary:        ALSA based audio support for QEMU
-Group:          System/Emulators/PC
-Version:        %{qemuver}
-Release:        0
-%{qemu_module_conflicts}
-
-%description audio-alsa
-This package contains a module for ALSA based audio support for QEMU.
-
-%package audio-pa
-Summary:        Pulse Audio based audio support for QEMU
-Group:          System/Emulators/PC
-Version:        %{qemuver}
-Release:        0
-%{qemu_module_conflicts}
-
-%description audio-pa
-This package contains a module for Pulse Audio based audio support for QEMU.
-
-%if 0%{?is_opensuse}
-%package audio-sdl
-Summary:        SDL based audio support for QEMU
-Group:          System/Emulators/PC
-Version:        %{qemuver}
-Release:        0
-%{qemu_module_conflicts}
-
-%description audio-sdl
-This package contains a module for SDL based audio support for QEMU.
-%endif
 
 %package vhost-user-gpu
 Summary:        Vhost user mode virtio-gpu 2D/3D rendering backend for QEMU
@@ -905,7 +942,9 @@ This package provides a service file for starting and stopping KSM.
 # ========================================================================
 %prep
 %setup -q -n %{srcname}-%{expand:%%(SV=%{srcver};echo ${SV%%%%+git*})}
+%if 0%{?suse_version} > 1500
 %patch00000 -p1
+%endif
 %patch00001 -p1
 %patch00002 -p1
 %patch00003 -p1
@@ -947,51 +986,26 @@ This package provides a service file for starting and stopping KSM.
 %patch00039 -p1
 %patch00040 -p1
 %patch00041 -p1
-%patch00042 -p1
-%patch00043 -p1
-%patch00044 -p1
-%patch00045 -p1
-%patch00046 -p1
-%patch00047 -p1
-%patch00048 -p1
-%patch00049 -p1
-%patch00050 -p1
-%patch00051 -p1
-%patch00052 -p1
-%patch00053 -p1
-%patch00054 -p1
-%patch00055 -p1
-%patch00056 -p1
-%patch00057 -p1
-%patch00058 -p1
-%patch00059 -p1
-%patch00060 -p1
-%patch00061 -p1
-%patch00062 -p1
-%patch00063 -p1
-%patch00064 -p1
-%patch00065 -p1
-%patch00066 -p1
 %if %{legacy_qemu_kvm} && 0%{?is_opensuse} == 0
-%patch00067 -p1
+%patch00042 -p1
 %endif
-%patch00068 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
-%patch01003 -p1
 %patch02000 -p1
+%if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
 %patch02001 -p1
-%ifarch aarch64
-%patch02002 -p1
 %endif
+%patch02002 -p1
 %patch02003 -p1
 %patch02004 -p1
-%patch02005 -p1
 %if 0%{?patch-possibly-applied-elsewhere}
-%patch02006 -p1
+%patch02005 -p1
 %endif
+%patch02006 -p1
+%ifarch aarch64
 %patch02007 -p1
+%endif
 %patch03000 -p1
 %patch03001 -p1
 %patch08000 -p1
@@ -1143,6 +1157,11 @@ cd %mybuilddir
 	--enable-tools --enable-guest-agent \
 	--enable-modules \
 	--disable-module-upgrades \
+%if 0%{?is_opensuse}
+	--enable-slirp=system \
+%else
+	--enable-slirp=git \
+%endif
 	--enable-pie \
 	--enable-docs \
 %if 0%{?is_opensuse}
@@ -1180,6 +1199,11 @@ cd %mybuilddir
 	--enable-kvm \
 %else
 	--disable-kvm \
+%endif
+%if 0%{?with_daxctl}
+	--enable-libdaxctl \
+%else
+	--disable-libdaxctl \
 %endif
 	--enable-libiscsi \
 %if 0%{?is_opensuse}
@@ -1229,6 +1253,7 @@ cd %mybuilddir
 %endif
 	--enable-rdma \
 	--enable-replication \
+	--disable-safe-stack \
 	--disable-sanitizers \
 %if 0%{?is_opensuse}
 	--enable-sdl \
@@ -1257,6 +1282,7 @@ cd %mybuilddir
 	--enable-vhost-scsi \
 	--enable-vhost-user \
         --enable-vhost-user-fs \
+	--enable-vhost-vdpa \
 	--enable-vhost-vsock \
 	--enable-virglrenderer \
 	--enable-virtfs \
@@ -1295,6 +1321,7 @@ cd %mybuilddir
 	--disable-fdt \
 	--disable-iconv \
 	--disable-kvm \
+	--disable-libdaxctl \
 	--disable-malloc-trim \
 %if %{with system_membarrier}
 	--enable-membarrier \
@@ -1307,6 +1334,7 @@ cd %mybuilddir
 	--disable-qed \
 	--disable-replication \
 	--disable-sheepdog \
+	--disable-safe-stack \
 	--disable-slirp \
 	--disable-tpm \
 	--disable-vdi \
@@ -1400,8 +1428,7 @@ make                 -C %{_builddir}/%buildsubdir/roms sgabios \
 pushd %{_builddir}/%buildsubdir
 patch -p1 < %_sourcedir/stub-out-the-SAN-req-s-in-int13.patch
 popd
-make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms \
-    pxerom_variants=virtio pxerom_targets=1af41000 pxerom
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms pxerom_variants=virtio pxerom_targets=1af41000 pxerom
 %endif
 
 # enforce pxe rom sizes for migration compatability from SLE 11 SP3 forward
@@ -1770,16 +1797,18 @@ fi
 %_docdir/%name/interop/live-block-operations.html
 %_docdir/%name/interop/objects.inv
 %_docdir/%name/interop/pr-helper.html
+%_docdir/%name/interop/qemu-ga-ref.html
+%_docdir/%name/interop/qemu-ga-ref.txt
+%_docdir/%name/interop/qemu-qmp-ref.html
+%_docdir/%name/interop/qemu-qmp-ref.txt
 %_docdir/%name/interop/search.html
 %_docdir/%name/interop/searchindex.js
 %_docdir/%name/interop/vhost-user.html
 %_docdir/%name/interop/vhost-user-gpu.html
-%_docdir/%name/qemu-qmp-ref.txt
-%_docdir/%name/qemu-qmp-ref.html
-%_docdir/%name/qemu-ga-ref.txt
-%_docdir/%name/qemu-ga-ref.html
+%_docdir/%name/interop/vhost-vdpa.html
 %_docdir/%name/specs/.buildinfo
 %_docdir/%name/specs/_static/*
+%_docdir/%name/specs/acpi_hest_ghes.html
 %_docdir/%name/specs/acpi_hw_reduced_hotplug.html
 %_docdir/%name/specs/genindex.html
 %_docdir/%name/specs/index.html
@@ -1791,8 +1820,14 @@ fi
 %_docdir/%name/specs/tpm.html
 %_docdir/%name/system/.buildinfo
 %_docdir/%name/system/_static/*
+%_docdir/%name/system/arm/aspeed.html
+%_docdir/%name/system/arm/collie.html
 %_docdir/%name/system/arm/cpu-features.html
+%_docdir/%name/system/arm/digic.html
+%_docdir/%name/system/arm/gumstix.html
 %_docdir/%name/system/arm/integratorcp.html
+%_docdir/%name/system/arm/mps2.html
+%_docdir/%name/system/arm/musca.html
 %_docdir/%name/system/arm/musicpal.html
 %_docdir/%name/system/arm/nseries.html
 %_docdir/%name/system/arm/orangepi.html
@@ -1801,6 +1836,8 @@ fi
 %_docdir/%name/system/arm/stellaris.html
 %_docdir/%name/system/arm/sx1.html
 %_docdir/%name/system/arm/versatile.html
+%_docdir/%name/system/arm/vexpress.html
+%_docdir/%name/system/arm/virt.html
 %_docdir/%name/system/arm/xscale.html
 %_docdir/%name/system/build-platforms.html
 %_docdir/%name/system/deprecated.html
@@ -1822,20 +1859,26 @@ fi
 %_docdir/%name/system/qemu-cpu-models.html
 %_docdir/%name/system/qemu-manpage.html
 %_docdir/%name/system/quickstart.html
+%_docdir/%name/system/s390x/3270.html
+%_docdir/%name/system/s390x/css.html
+%_docdir/%name/system/s390x/protvirt.html
 %_docdir/%name/system/s390x/vfio-ap.html
+%_docdir/%name/system/s390x/vfio-ccw.html
 %_docdir/%name/system/search.html
 %_docdir/%name/system/searchindex.js
 %_docdir/%name/system/security.html
 %_docdir/%name/system/target-arm.html
+%_docdir/%name/system/target-avr.html
 %_docdir/%name/system/target-i386.html
 %_docdir/%name/system/target-m68k.html
 %_docdir/%name/system/target-mips.html
 %_docdir/%name/system/target-ppc.html
-%_docdir/%name/system/targets.html
+%_docdir/%name/system/target-rx.html
 %_docdir/%name/system/target-s390x.html
 %_docdir/%name/system/target-sparc64.html
 %_docdir/%name/system/target-sparc.html
 %_docdir/%name/system/target-xtensa.html
+%_docdir/%name/system/targets.html
 %_docdir/%name/system/tls.html
 %_docdir/%name/system/usb.html
 %_docdir/%name/system/vnc-security.html
@@ -1930,6 +1973,7 @@ fi
 %files extra
 %defattr(-, root, root)
 %_bindir/qemu-system-alpha
+%_bindir/qemu-system-avr
 %_bindir/qemu-system-cris
 %_bindir/qemu-system-hppa
 %_bindir/qemu-system-lm32
@@ -1979,6 +2023,23 @@ fi
 %endif
 %endif
 
+%files audio-alsa
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/audio-alsa.so
+
+%files audio-pa
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/audio-pa.so
+
+%if 0%{?is_opensuse}
+%files audio-sdl
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/audio-sdl.so
+%endif
+
 %files block-curl
 %defattr(-, root, root)
 %dir %_libdir/%name
@@ -2023,6 +2084,28 @@ fi
 %dir %_libdir/%name
 %_libdir/%name/block-ssh.so
 
+%files chardev-baum
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/chardev-baum.so
+
+%files hw-display-qxl
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/hw-display-qxl.so
+
+%files hw-usb-redirect
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/hw-usb-redirect.so
+
+%if 0%{?is_opensuse}
+%files hw-usb-smartcard
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/hw-usb-smartcard.so
+%endif
+
 %files ui-curses
 %defattr(-, root, root)
 %dir %_libdir/%name
@@ -2044,23 +2127,6 @@ fi
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/ui-spice-app.so
-
-%files audio-alsa
-%defattr(-, root, root)
-%dir %_libdir/%name
-%_libdir/%name/audio-alsa.so
-
-%files audio-pa
-%defattr(-, root, root)
-%dir %_libdir/%name
-%_libdir/%name/audio-pa.so
-
-%if 0%{?is_opensuse}
-%files audio-sdl
-%defattr(-, root, root)
-%dir %_libdir/%name
-%_libdir/%name/audio-sdl.so
-%endif
 
 %files lang -f %mybuilddir/%name.lang
 %defattr(-, root, root)
@@ -2155,11 +2221,11 @@ fi
 %_bindir/qemu-io
 %_bindir/qemu-keymap
 %_bindir/qemu-nbd
-%_bindir/qemu-pr-helper
 %_bindir/qemu-storage-daemon
-%_bindir/virtfs-proxy-helper
 %_bindir/vmstate-static-checker.py
 %verify(not mode) %attr(4750,root,kvm) %_libexecdir/qemu-bridge-helper
+%_libexecdir/qemu-pr-helper
+%_libexecdir/virtfs-proxy-helper
 %_libexecdir/virtiofsd
 %_mandir/man1/qemu-img.1.gz
 %_mandir/man1/virtfs-proxy-helper.1.gz
