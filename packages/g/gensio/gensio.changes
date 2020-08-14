@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  9 14:29:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.4
+  * telnet - There were some more negotiation issues.
+  * serialdev - Fix issues with slow closes. A close could hang
+    for a long time with pending write data, avoid this.
+  * conacc - Added some extensions to make it more useful,
+    general, and easy to test.
+  * pty - Added the ability to create an unattached pty so another
+    program can attach to it.
+
+-------------------------------------------------------------------
 Sun Jul 26 19:40:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.3
