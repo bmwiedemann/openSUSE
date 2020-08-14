@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Wed Aug 12 13:57:05 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.3.11.3 and pigeonhole to 0.5.11 (boo#1174920 boo#1174922 boo#1174923)
+
+  Dovecot 2.3.11.3
+  - pop3-login: Login didn't handle commands in multiple IP packets properly.
+    This mainly affected large XCLIENT commands or a large SASL initial
+    response parameter in the AUTH command.
+  - pop3: pop3_deleted_flag setting was broken, causing:
+    Panic: file seq-range-array.c: line 472 (seq_range_array_invert):
+    assertion failed: (range[count-1].seq2 <= max_seq)
+  Dovecot 2.3.11.2
+  - auth: Lua passdb/userdb leaks stack elements per call, eventually
+    causing the stack to become too deep and crashing the auth or
+    auth-worker process.
+  - lib-mail: v2.3.11 regression: MIME parts not returned correctly by
+    Dovecot MIME parser.
+  - pop3-login: Login would fail with "Input buffer full" if the initial
+    response for SASL was too long.
+  Dovecot 2.3.11
+  * CVE-2020-12100: Parsing mails with a large number of MIME parts could
+    have resulted in excessive CPU usage or a crash due to running out of
+    stack memory.
+  * CVE-2020-12673: Dovecot's NTLM implementation does not correctly check
+    message buffer size, which leads to reading past allocation which can
+    lead to crash.
+  * CVE-2020-10967: lmtp/submission: Issuing the RCPT command with an
+    address that has the empty quoted string as local-part causes the lmtp
+    service to crash.
+  * CVE-2020-12674: Dovecot's RPA mechanism implementation accepts
+    zero-length message, which leads to assert-crash later on.
+  * Events: Fix inconsistency in events. See event documentation in
+    https://doc.dovecot.org.
+  * imap_command_finished event's cmd_name field now contains "unknown"
+    for unknown commands. A new "cmd_input_name" field contains the
+    command name exactly as it was sent.
+  * lib-index: Renamed mail_cache_compress_* settings to mail_cache_purge_*.
+    Note that these settings are mainly intended for testing and usually
+    shouldn't be changed.
+  * events: Renamed "index" event category to "mail-index".
+  * events: service:<name> category is now using the name from
+    configuration file.
+  * dns-client: service dns_client was renamed to dns-client.
+  * log: Prefixes generally use the service name from configuration file.
+    For example dict-async service will now use
+    "dict-async(pid): " log prefix instead of "dict(pid): "
+  * *-login: Changed logging done by proxying to use a consistent prefix
+    containing the IP address and port.
+  * *-login: Changed disconnection log messages to be slightly clearer.
+  + dict: Add events for dictionaries.
+  + lib-index: Finish logging with events.
+  + oauth2: Support local validation of JWT tokens.
+  + stats: Add support for dynamic histograms and grouping. See
+    https://doc.dovecot.org/configuration_manual/stats/.
+  + imap: Implement RFC 8514: IMAP SAVEDATE
+  + lib-index: If a long-running transaction (e.g. SORT/FETCH on a huge
+    folder) adds a lot of data to dovecot.index.cache file, commit those
+    changes periodically to make them visible to other concurrent sessions
+    as well.
+  + stats: Add OpenMetrics exporter for statistics. See
+    https://doc.dovecot.org/configuration_manual/stats/openmetrics/.
+  + stats: Support disabling stats-writer socket by setting
+    stats_writer_socket_path="".
+  - auth-worker: Process keeps slowly increasing its memory usage and
+    eventually dies with "out of memory" due to reaching vsz_limit.
+  - auth: Prevent potential timing attacks in authentication secret
+    comparisons: OAUTH2 JWT-token HMAC, imap-urlauth token, crypt() result.
+  - auth: Several auth-mechanisms allowed input to be truncated by NUL
+    which can potentially lead to unintentional issues or even successful
+    logins which should have failed.
+  - auth: When auth policy returned a delay, auth_request_finished event
+    had policy_result=ok field instead of policy_result=delayed.
+  - auth: auth process crash when auth_policy_server_url is set to an
+    invalid URL.
+  - dict-ldap: Crash occurs if var_expand template expansion fails.
+  - dict: If dict client disconnected while iteration was still running,
+    dict process could have started using 100% CPU, although it was still
+    handling clients.
+  - doveadm: Running doveadm commands via proxying may hang, especially
+    when doveadm is printing a lot of output.
+  - imap: "MOVE * destfolder" goes to a loop copying the last mail to the
+    destination until the imap process dies due to running out of memory.
+  - imap: Running "UID MOVE 1:* Trash" on an empty folder goes to infinite
+    loop.
+  - imap: SEARCH doesn't support $.
+  - lib-compress: Buffer over-read in zlib stream read.
+  - lib-dns: If DNS lookup times out, lib-dns can cause crash in calling
+    process.
+  - lib-index: Fixed several bugs in dovecot.index.cache handling that
+    could have caused cached data to be lost.
+  - lib-index: Writing to >=1 GB dovecot.index.cache files may cause
+    assert-crashes:
+    Panic: file mail-index-util.c: line 37 (mail_index_uint32_to_offset):
+    assertion failed: (offset < 0x40000000)
+  - lib-ssl-iostream: Fix buggy OpenSSL error handling without
+    assert-crashing. If there is no error available, log it as an error
+    instead of crashing:
+    Panic: file iostream-openssl.c: line 599 (openssl_iostream_handle_error):
+    assertion failed: (errno != 0)
+  - lib-ssl-iostream: ssl_key_password setting did not work.
+  - submission: A segfault crash may occur when the client or server
+    disconnects while a non-transaction command like NOOP or VRFY is still
+    being processed.
+  - virtual: Copying/moving mails with IMAP into a virtual folder assert-crashes:
+    Panic: file cmd-copy.c: line 152 (fetch_and_copy): assertion failed:
+    (copy_ctx->copy_count == seq_range_count(&copy_ctx->saved_uids))
+
+  Pigeonhole 0.5.11
+  * managesieve: managesieve_max_line_length setting is now a "size" type
+    instead of just number of bytes. This allows using e.g. "64k" as the
+    value.
+  - lib-sieve: When folding white space is used in the Message-ID header,
+    it is not stripped away correctly before the message ID value is used,
+    causing e.g. garbled log lines at delivery.
+
+-------------------------------------------------------------------
 Tue May 19 12:04:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update tls 1.3 patch to allow building with tls 1.0
@@ -21,7 +137,7 @@ Mon May 18 14:04:52 UTC 2020 - Michael Ströder <michael@stroeder.com>
 Wed Apr 29 21:25:30 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - add allow-tls1.3-only.patch:
-  Allow setting TLSv1.3 as minimum TLS version 
+  Allow setting TLSv1.3 as minimum TLS version
 
   https://github.com/dovecot/core/pull/126
 
@@ -141,7 +257,7 @@ Fri Mar  6 11:14:00 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
   Pigeonhole 0.5.10
   * imap_sieve_filter: Change result action logging to include IMAP UID
   - vacation: Addresses were compared case-sensitively.
-  
+
 -------------------------------------------------------------------
 Wed Feb 26 12:40:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
@@ -434,7 +550,7 @@ Mon May 20 14:25:49 UTC 2019 - Peter Varkoly <varkoly@suse.com>
   protocol 'SSLv2'
   * remove !SSLv2 from existing ssl_protocols configuration
     during upgrade
- 
+
 -------------------------------------------------------------------
 Tue Apr 30 13:49:18 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
 
