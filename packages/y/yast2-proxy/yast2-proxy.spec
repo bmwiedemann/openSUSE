@@ -17,7 +17,7 @@
 
 
 Name:           yast2-proxy
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        YaST2 - Proxy Configuration
 License:        GPL-2.0-or-later
@@ -37,6 +37,8 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 
 # we split off that one
 Conflicts:      yast2-network < 2.22.6
+
+Supplements:    autoyast(proxy)
 
 BuildArch:      noarch
 
