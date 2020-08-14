@@ -66,9 +66,11 @@
     <package name="busybox-net-tools"/>
     <package name="busybox-netcat"/>
     <package name="busybox-patch" replaces="patch"/>
+    <package name="busybox-policycoreutils"/>
     <package name="busybox-procps" replaces="procps"/>
     <package name="busybox-psmisc"/>
     <package name="busybox-sed" replaces="sed"/>
+    <package name="busybox-selinux-tools"/>
     <package name="busybox-sendmail"/>
     <package name="busybox-sh"/>
     <package name="busybox-sharutils"/>

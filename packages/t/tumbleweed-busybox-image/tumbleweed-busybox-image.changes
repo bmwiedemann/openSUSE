@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 12 14:59:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-policycoreutils and busybox-selinux-tools
+
+-------------------------------------------------------------------
 Fri Jul 24 08:18:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add busybox-{dos2unix,telnet,tftp,time,tunctl,vlan,sysvinit-tools}

@@ -114,4 +114,12 @@
   busybox-wget and busybox-syslogd (forwarded request 822618 from kukuk)</comment>
     <requestid>822619</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>7b102f1bc91d5b4a91d25bcd0d160ce1</srcmd5>
+    <version>1.0.0</version>
+    <time>1597390337</time>
+    <user>dimstar_suse</user>
+    <comment>- Add busybox-policycoreutils and busybox-selinux-tools (forwarded request 826065 from kukuk)</comment>
+    <requestid>826066</requestid>
+  </revision>
 </revisionlist>
