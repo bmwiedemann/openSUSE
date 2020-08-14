@@ -17,7 +17,7 @@
 
 
 Name:           yast2-users
-Version:        4.3.6
+Version:        4.3.7
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only
@@ -67,6 +67,8 @@ Obsoletes:      yast2-users-devel-doc
 Conflicts:      autoyast2 < 3.1.92
 # older storage uses removed deprecated method, see https://github.com/yast/yast-storage/pull/187
 Conflicts:      yast2-storage < 3.1.75
+
+Supplements:    autoyast(users,groups,user_defaults)
 
 %description
 This package provides GUI for maintenance of linux users and groups.
