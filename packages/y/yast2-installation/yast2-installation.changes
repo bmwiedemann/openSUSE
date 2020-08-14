@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 10:33:04 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(deploy_image,ssh_import)
+  into the spec file in order to install this packages if the
+  section has been defined in the AY configuration file (bsc#1146494).
+- 4.3.14
+
+-------------------------------------------------------------------
 Mon Jul 27 17:04:26 CEST 2020 - schubi@suse.de
 
 - AY: Removed "image" section from "software" section
