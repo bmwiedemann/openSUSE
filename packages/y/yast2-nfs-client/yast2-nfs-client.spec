@@ -17,7 +17,7 @@
 
 
 Name:           yast2-nfs-client
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Url:            https://github.com/yast/yast-nfs-client
 Summary:        YaST2 - NFS Configuration
@@ -64,6 +64,8 @@ Provides:       yast2-trans-nfs
 Obsoletes:      yast2-config-nfs
 Obsoletes:      yast2-config-nfs-devel
 Obsoletes:      yast2-trans-nfs
+
+Supplements:    autoyast(nfs)
 
 BuildArch:      noarch
 
