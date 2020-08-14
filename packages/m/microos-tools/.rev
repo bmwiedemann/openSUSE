@@ -75,4 +75,18 @@
 </comment>
     <requestid>824150</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>412b1cccd5c9a6a6b7bd3d9e9f3a50ef</srcmd5>
+    <version>2.3</version>
+    <time>1597390312</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3
+  - overwrite tmp.mount options with SELinux label for /tmp
+  - Add generator to label mount points if required
+  - Add dracut module to relabel core system if required
+  - Add locale-check to reset locale to system default if the one
+    set by SSH does not exist [bsc#1156175]
+  - Set TMPDIR for salt to not use /tmp (preparation for noexec) (forwarded request 826035 from kukuk)</comment>
+    <requestid>826036</requestid>
+  </revision>
 </revisionlist>

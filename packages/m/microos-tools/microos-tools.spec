@@ -17,19 +17,20 @@
 
 
 Name:           microos-tools
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/kubic-project/microos-tools
 Source:         microos-tools-%{version}.tar.xz
+Source99:       microos-tools-rpmlintrc
 BuildRequires:  distribution-release
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(systemd)
 Requires:       read-only-root-fs
 Conflicts:      systemd-coredump
-BuildArch:      noarch
 
 %description
 Files, scripts and directories for openSUSE Kubic.
@@ -45,30 +46,48 @@ Files, scripts and directories for openSUSE Kubic.
 %make_install
 
 %pre
-%service_add_pre setup-systemd-proxy-env.service
+%service_add_pre setup-systemd-proxy-env.service printenv.service
 
 %post
-%service_add_post setup-systemd-proxy-env.service
+%regenerate_initrd_post
+%service_add_post setup-systemd-proxy-env.service printenv.service
 
 %preun
-%service_del_preun setup-systemd-proxy-env.service
+%service_del_preun setup-systemd-proxy-env.service printenv.service
 
 %postun
-%service_del_postun setup-systemd-proxy-env.service
+%regenerate_initrd_post
+%service_del_postun setup-systemd-proxy-env.service printenv.service
+
+%posttrans
+%regenerate_initrd_posttrans
 
 %files
 %license COPYING
-%config %{_sysconfdir}/systemd/system/systemd-firstboot.service
+%dir %{_sysconfdir}/selinux
+%config %{_sysconfdir}/selinux/fixfiles_exclude_dirs
 %dir %{_sysconfdir}/systemd
 %dir %{_sysconfdir}/systemd/system
+%config %{_sysconfdir}/systemd/system/systemd-firstboot.service
 %{_unitdir}/MicroOS-firstboot.service
 %{_unitdir}/printenv.service
 %{_unitdir}/setup-systemd-proxy-env.path
 %{_unitdir}/setup-systemd-proxy-env.service
 %dir %{_unitdir}/sysinit.target.wants
 %{_unitdir}/sysinit.target.wants/MicroOS-firstboot.service
-%{_prefix}/lib/sysctl.d/30-corefiles.conf
+%dir %{_unitdir}/tmp.mount.d
+%{_unitdir}/tmp.mount.d/selinux.conf
+%dir %{_unitdir}/salt-minion.service.d
+%{_unitdir}/salt-minion.service.d/TMPDIR.conf
+%{_tmpfilesdir}/salt-minion-tmpdir.conf
+%{_sysctldir}/30-corefiles.conf
 %{_libexecdir}/MicroOS-firstboot
 %{_sbindir}/setup-systemd-proxy-env
+%dir %{_prefix}/lib/dracut
+%dir %{_prefix}/lib/dracut/modules.d
+%{_prefix}/lib/dracut/modules.d/98selinux-microos
+%{_systemdgeneratordir}/selinux-autorelabel-generator
+%config %{_sysconfdir}/profile.d/ssh-locale-check.sh
+%{_bindir}/locale-check
 
 %changelog

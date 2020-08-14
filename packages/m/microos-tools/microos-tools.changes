@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 12 07:32:04 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.3
+  - overwrite tmp.mount options with SELinux label for /tmp
+  - Add generator to label mount points if required
+  - Add dracut module to relabel core system if required
+  - Add locale-check to reset locale to system default if the one
+    set by SSH does not exist [bsc#1156175]
+  - Set TMPDIR for salt to not use /tmp (preparation for noexec)
+
+-------------------------------------------------------------------
 Thu Jul 30 09:34:25 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.2
