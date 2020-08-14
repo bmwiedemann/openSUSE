@@ -20,7 +20,7 @@ Name:           yast2-sysconfig
 Summary:        YaST2 - Sysconfig Editor
 License:        GPL-2.0-or-later
 Group:          System/YaST
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Url:            https://github.com/yast/yast-sysconfig
 
@@ -40,6 +40,8 @@ Requires:       perl
 # Yast2::Systemd::Service
 Requires:       yast2 >= 4.1.3
 Requires:       yast2-ruby-bindings >= 1.0.0
+
+Supplements:    autoyast(sysconfig)
 
 BuildArch:      noarch
 
