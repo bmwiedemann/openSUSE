@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 14:52:42 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix W: shared-lib-calls-exit /usr/lib64/libbrotlienc.so.1.0.7 
+  exit@GLIBC_2.2.5.
+
+-------------------------------------------------------------------
 Tue Nov 19 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - %make_jobs is deprecated and replaced by %cmake_build

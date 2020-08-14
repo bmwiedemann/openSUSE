@@ -63,4 +63,13 @@
     <comment>- %make_jobs is deprecated and replaced by %cmake_build</comment>
     <requestid>749854</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>6f2a7a3e6568dbeb4f11c9dfcaac6414</srcmd5>
+    <version>1.0.7</version>
+    <time>1597390180</time>
+    <user>dimstar_suse</user>
+    <comment>Fix W: shared-lib-calls-exit /usr/lib64/libbrotlienc.so.1.0.7 
+  exit@GLIBC_2.2.5 by adding -DCMAKE_C_FLAGS=&quot;-DBROTLI_ENCODER_CLEANUP_ON_OOM&quot; (forwarded request 826074 from andythe_great)</comment>
+    <requestid>826092</requestid>
+  </revision>
 </revisionlist>

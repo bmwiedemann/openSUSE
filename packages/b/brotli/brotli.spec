@@ -1,7 +1,7 @@
 #
 # spec file for package brotli
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Buschmann <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -102,7 +102,7 @@ RFC 7932.
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DCMAKE_C_FLAGS="-DBROTLI_ENCODER_CLEANUP_ON_OOM"
 %cmake_build
 
 %install
