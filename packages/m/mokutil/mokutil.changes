@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 14 06:59:46 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update mokutil-support-revoke-builtin-cert.patch
+  + Add "--revoke-cert" to the man page
+
+-------------------------------------------------------------------
 Fri Dec 13 10:38:44 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add build for ppc64/ppc64le

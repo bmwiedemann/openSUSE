@@ -1401,4 +1401,26 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment>New stable rel (forwarded request 817561 from iznogood)</comment>
     <requestid>817617</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>d6b1bb85a107d5af544707e3677a6b82</srcmd5>
+    <version>3.24.22</version>
+    <time>1597518975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.24.22:
+  + GtkTextView:
+    - Fix some corner cases of pixelcache invalidation.
+    - Make select-all work on touch.
+  + Fix print portal support.
+  + Adwaita:
+    - Tweak title style class.
+    - Add a public color for text view background.
+  + Wayland: Add a way to change the application id:
+  + Add --enable-tracker3 option to configure.
+  + Updated translations.
+- Only recommend instead of Require adwaita-icon-theme: Even though
+  GTK3 references this icon set as fallback, we only want to
+  recommend it here to have a chance to make live CD's smaller
+  (where we have good control of the apps on them). (forwarded request 825426 from iznogood)</comment>
+    <requestid>826635</requestid>
+  </revision>
 </revisionlist>

@@ -35,7 +35,7 @@
 %bcond_without  broadway
 %bcond_with     doc
 Name:           %{pname}
-Version:        3.24.21
+Version:        3.24.22
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -111,8 +111,9 @@ Summary:        The GTK+ toolkit library (version 3)
 Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 Requires:       %{name}-schema >= %{version}
-# Require Adwaita Icon Theme: It's GTKs icon set, that's guaranteed to be there
-Requires:       adwaita-icon-theme
+# Recommend Adwaita Icon Theme: GTK3 references this icon set in the code,
+# but some setups might still want to eliminate it (think limited size Live CDs)
+Recommends:     adwaita-icon-theme
 # Require gdk-pixbuf-loader-rsvg - bsc#1007453. We require adwaita-icon-theme
 # so we need something to load the svg icons.
 Requires:       gdk-pixbuf-loader-rsvg

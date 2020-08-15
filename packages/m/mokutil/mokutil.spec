@@ -1,7 +1,7 @@
 #
 # spec file for package mokutil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Tools for manipulating machine owner keys
 License:        GPL-3.0-only
 Group:          Productivity/Security
-Url:            https://github.com/lcp/mokutil
+URL:            https://github.com/lcp/mokutil
 Source:         https://github.com/lcp/%{name}/archive/%{version}.tar.gz
 Source1:        modhash
 # PATCH-FIX-UPSTREAM mokutil-remove-shebang-from-bash-completion-file.patch glin@suse.com -- Remove shebang from bash-completion/mokutil

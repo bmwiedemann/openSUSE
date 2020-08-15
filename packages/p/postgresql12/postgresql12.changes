@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 13 12:01:34 UTC 2020 - Reinhard Max <max@suse.com>
+
+- update to 12.4:
+  * CVE-2020-14349, bsc#1175193: Set a secure search_path in
+    logical replication walsenders and apply workers
+  * CVE-2020-14350, bsc#1175194: Make contrib modules' installation
+    scripts more secure.
+  * https://www.postgresql.org/docs/12/release-12-4.html
+- Remove postgresql-regress.patch, it does not apply anymore and
+  it does not seem to be needed anymore.
+- Pack the /usr/lib/postgresql symlink only into the main package.
+
+-------------------------------------------------------------------
+Tue Jun 16 12:21:43 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Let postgresqlXX conflict with postgresql-noarch < 12.0.1 to get
+  a clean and complete cutover to the new packaging schema.
+
+-------------------------------------------------------------------
 Wed Jun  3 17:36:27 UTC 2020 - Reinhard Max <max@suse.com>
 
 - update to 12.3 (bsc#1171924).

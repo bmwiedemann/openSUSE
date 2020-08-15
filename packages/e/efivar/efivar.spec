@@ -1,7 +1,7 @@
 #
 # spec file for package efivar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Release:        0
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/rhinstaller/efivar
+URL:            https://github.com/rhinstaller/efivar
 Source:         https://github.com/rhinstaller/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         libefiboot-export-disk_get_partition_info.patch
 # PATCH-FIX-UPSTREAM boo#1120862
@@ -95,6 +95,7 @@ CFLAGS="%{optflags} -Wno-nonnull -flto"
   CFLAGS="${CFLAGS//-fstack-protector/}"
 %endif
 export CFLAGS
+export LDFLAGS="-flto-partition=one"
 
 make \
 %if 0%{?gcc_v} != 0

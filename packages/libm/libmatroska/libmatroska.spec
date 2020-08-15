@@ -18,7 +18,7 @@
 
 %define sover 7
 Name:           libmatroska
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        Library to Deal with Matroska Files
 License:        LGPL-2.1-or-later
@@ -69,7 +69,7 @@ your own applications.
 # Force some additional versioning, since upstream did not track the ABI
 # changes.
 # Tag with the version of the most recent !!incompatible!! change.
-echo "V_1.6.0 { global: *; };" > libmatroska.sym
+echo "V_1.6.1 { global: *; };" > libmatroska.sym
 export LDFLAGS="-Wl,--version-script=$PWD/libmatroska.sym"
 %cmake \
 	-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now"

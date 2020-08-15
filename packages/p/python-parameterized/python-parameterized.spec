@@ -30,6 +30,7 @@ Patch0:         skip_Documentation_tests.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,8 +41,6 @@ BuildArch:      noarch
 
 %description
 Parameterized testing with any Python test framework.
-
-Not working with supportest "pytest" versions
 
 %prep
 %setup -q -n parameterized-%{version}
@@ -59,6 +58,7 @@ export LANG=en_US.UTF8
 %{python_expand nosetests-%$python_version}
 %{python_expand nose2-%$python_version}
 %python_exec -m unittest parameterized.test
+%pytest parameterized/test.py
 
 %files %{python_files}
 %doc CHANGELOG.txt README.rst

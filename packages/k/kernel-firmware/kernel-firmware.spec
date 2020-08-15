@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-firmware
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __ksyms_path ^/lib/firmware
-%define version_unconverted 20200716
+%define version_unconverted 20200807
 
 Name:           kernel-firmware
-Version:        20200716
+Version:        20200807
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -40,8 +40,8 @@ Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
 Source99:       %{name}-rpmlintrc
-# Revert AMDGPU firmware due to regression (bsc#1174278)
-Source100:      amdgpu-887d2a103c2b.tar.xz
+# Revert AMDGPU Picasso firmware due to regression (bsc#1174278)
+Source100:      amdgpu-picasso-887d2a103c2b.tar.xz
 # install / build infrastructure
 Source1001:     install-split.sh
 Source1002:     list-license.sh
@@ -122,8 +122,8 @@ Conflicts:      kernel < 5.3
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
 Requires:       %{name}-amdgpu = %{version}
-Requires:       %{name}-ath10k = %{version}
 Requires:       %{name}-atheros = %{version}
+Requires:       %{name}-ath10k = %{version}
 Requires:       %{name}-bluetooth = %{version}
 Requires:       %{name}-bnx2 = %{version}
 Requires:       %{name}-brcm = %{version}
@@ -142,6 +142,7 @@ Requires:       %{name}-network = %{version}
 Requires:       %{name}-nfp = %{version}
 Requires:       %{name}-nvidia = %{version}
 Requires:       %{name}-platform = %{version}
+Requires:       %{name}-prestera = %{version}
 Requires:       %{name}-qlogic = %{version}
 Requires:       %{name}-radeon = %{version}
 Requires:       %{name}-realtek = %{version}
@@ -1463,6 +1464,10 @@ Supplements:    modalias(pci:v00008086d00009A60sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00009A68sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00009A70sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00009A78sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00009AC0sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00009AC9sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00009AD9sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00009AF8sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00009B21sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00009B41sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00009BA0sv*sd*bc03sc*i*)
@@ -2064,6 +2069,9 @@ Supplements:    modalias(pci:v00008086d00002725sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000310bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000A10bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002726sv*sd00000090bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002726sv*sd000000B0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002726sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd00000034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd00000038bc*sc*i*)
@@ -2312,11 +2320,14 @@ Supplements:    modalias(pci:v00008086d000043F0sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd00004244bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd000042A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004DF0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000090bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007A70sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000310bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000A10bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000090bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007AF0sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000310bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000A10bc*sc*i*)
@@ -2692,6 +2703,8 @@ Supplements:    modalias(of:N*T*Cmediatek,mt7668u-bluetoothC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8183-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8183-scpC*)
 Supplements:    modalias(pci:v000014C3d00007602sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007610sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007611sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007612sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007615sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007630sv*sd*bc*sc*i*)
@@ -2701,6 +2714,7 @@ Supplements:    modalias(pci:v000014C3d00007663sv*sd*bc*sc*i*)
 Supplements:    modalias(sdio:c*v037Ad7663*)
 Supplements:    modalias(sdio:c*v037Ad7668*)
 Supplements:    modalias(usb:v045Ep02E6d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v045Ep02FEd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04BBp0951d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v057Cp8502d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v057Cp8503d*dc*dsc*dp*ic*isc*ip*in*)
@@ -2742,6 +2756,7 @@ Supplements:    modalias(usb:v293Cp5702d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2955p0001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2955p1001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2A5Fp1000d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2C4Ep0103d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392p7710d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392pA711d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392pB711d*dc*dsc*dp*ic*isc*ip*in*)
@@ -3214,6 +3229,8 @@ Supplements:    modalias(of:N*T*Cqcom,sc7180-dpu)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-mdssC*)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pas)
@@ -3234,6 +3251,12 @@ Supplements:    modalias(of:N*T*Cqcom,sm8150-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-slpi-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-slpi-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pasC*)
 Supplements:    modalias(pci:v0000100Bd00000035sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d00001456sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d00001468sv*sd*bc*sc*i*)
@@ -3665,6 +3688,18 @@ Supplements:    modalias(usb:v1943pA250d*dc*dsc*dp*ic*isc*ip*in*)
 %description platform
 This package contains compressed kernel firmware files for
 various platform drivers.
+
+%package prestera
+Summary:        Kernel firmware files for Marvell Prestera ASIC driver
+Group:          System/Kernel
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(post): dracut >= 049
+Conflicts:      kernel < 5.3
+
+%description prestera
+This package contains compressed kernel firmware files for
+Marvell Prestera ASIC driver.
 
 %package qlogic
 Summary:        Kernel firmware files for QLogic network drivers
@@ -4637,6 +4672,8 @@ Supplements:    modalias(usb:v045Ep07ABd*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v045Ep07ABd*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v045Ep07C6d*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v045Ep07C6d*dc*dsc*dp*icFFisc*ip*in*)
+Supplements:    modalias(usb:v045Ep0927d*dc*dsc*dp*ic02isc06ip00in*)
+Supplements:    modalias(usb:v045Ep0927d*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v0471p200Fd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0471p20DDd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0471p2104d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5802,6 +5839,12 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %{?regenerate_initrd_post}
 %posttrans platform
 %{?regenerate_initrd_posttrans}
+%post prestera
+%{?regenerate_initrd_post}
+%postun prestera
+%{?regenerate_initrd_post}
+%posttrans prestera
+%{?regenerate_initrd_posttrans}
 %post qlogic
 %{?regenerate_initrd_post}
 %postun qlogic
@@ -5891,6 +5934,7 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %files -f files-nfp nfp
 %files -f files-nvidia nvidia
 %files -f files-platform platform
+%files -f files-prestera prestera
 %files -f files-qlogic qlogic
 %files -f files-radeon radeon
 %files -f files-realtek realtek

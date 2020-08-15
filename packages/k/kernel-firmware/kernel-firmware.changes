@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:01:54 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200807 (git commit c331aa9c49ce):
+  * amdgpu: update vega20 firmware for 20.30
+  * amdgpu: update vega12 firmware for 20.30
+  * amdgpu: update vega10 firmware for 20.30
+  * amdgpu: update renoir firmware for 20.30
+  * amdgpu: update raven2 firmware for 20.30
+  * amdgpu: update raven firmware for 20.30
+  * amdgpu: update picasso firmware for 20.30
+  * amdgpu: update navi14 firmware for 20.30
+  * amdgpu: update navi10 firmware for 20.30
+  * linux-firmware: update NXP SDSD-8997 firmware image
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2008.1036
+  * linux-firmware: Update AMD SEV firmware
+  * QCA: Add correct bin file for WCN3991
+- Still keep the revert of AMDGPU Picasso firmware due to the
+  regression (bsc#1174278)
+- Move a big prestera firmware file in platform subpackage into the
+  own subpackage, kernel-firmware-prestera
+- Update aliases from 5.8 kernel packages
+
+-------------------------------------------------------------------
 Sun Jul 19 16:21:20 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200716 (git commit 1d1c80b69653):

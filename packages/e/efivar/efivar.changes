@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 14 08:20:09 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Do not partition LTO as we may reach new GAS error:
+  Error: invalid attempt to declare external version
+  name as default in symbol `efi_set_variable@@LIBEFIVAR_0.24'
+
+-------------------------------------------------------------------
 Fri Mar  8 03:16:22 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add efivar-bsc1127544-fix-ucs2len.patch to fix logic that checks

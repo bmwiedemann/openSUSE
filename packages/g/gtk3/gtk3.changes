@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 10 16:55:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.22:
+  + GtkTextView:
+    - Fix some corner cases of pixelcache invalidation.
+    - Make select-all work on touch.
+  + Fix print portal support.
+  + Adwaita:
+    - Tweak title style class.
+    - Add a public color for text view background.
+  + Wayland: Add a way to change the application id:
+  + Add --enable-tracker3 option to configure.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 10 08:12:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only recommend instead of Require adwaita-icon-theme: Even though
+  GTK3 references this icon set as fallback, we only want to
+  recommend it here to have a chance to make live CD's smaller
+  (where we have good control of the apps on them).
+
+-------------------------------------------------------------------
 Sun Jun 28 22:12:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.21:

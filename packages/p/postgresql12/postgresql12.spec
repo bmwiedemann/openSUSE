@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 12.3
+%define pgversion 12.4
 %define pgmajor 12
 %define pgsuffix %pgmajor
 %define buildlibs 1
@@ -136,7 +136,6 @@ Source2:        baselibs.conf
 Source3:        postgresql-README.SUSE
 Source17:       postgresql-rpmlintrc
 Patch1:         postgresql-conf.patch
-Patch2:         postgresql-regress.patch
 # PL/Perl needs to be linked with rpath (bsc#578053)
 Patch4:         postgresql-plperl-keep-rpath.patch
 Patch6:         postgresql-testsuite-int8.sql.patch
@@ -149,6 +148,9 @@ Provides:       postgresql-implementation = %version-%release
 Requires:       %libpq >= %version
 Requires(post): postgresql-noarch >= %pgmajor
 Requires(postun): postgresql-noarch >= %pgmajor
+# At this point we changed the package layout on SLE and conflict with
+# older releases to get a clean cut.
+Conflicts:      postgresql-noarch < 12.0.1
 
 %description
 PostgreSQL is an advanced object-relational database management system
@@ -442,7 +444,6 @@ included in the postgresql-server package.
 # confuse PostgreSQL's build system
 touch -r configure tmp
 %patch1
-%patch2
 %patch4
 %patch6
 %patch8 -p1
@@ -839,7 +840,6 @@ fi
 %pgdocdir/extension
 %dir %pgdatadir
 %dir %pgcontribdir
-/usr/lib/postgresql
 
 %files server -f server.files
 %defattr(-,root,root)
@@ -854,7 +854,6 @@ fi
 %pgdatadir/tsearch_data
 %exclude %pgdatadir/tsearch_data/*.rules
 %dir %pgdatadir
-/usr/lib/postgresql
 %pgdatadir/timezone*
 %pgdatadir/*.*
 %if %buildlibs
@@ -874,6 +873,7 @@ fi
 
 %if %{with llvm}
 %files llvmjit
+%defattr(-,root,root)
 %pglibdir/llvm*
 %pglibdir/bitcode/*
 %endif

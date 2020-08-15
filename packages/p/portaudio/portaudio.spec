@@ -1,7 +1,7 @@
 #
 # spec file for package portaudio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Portable Real-Time Audio Library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://www.portaudio.com/
+URL:            http://www.portaudio.com/
 Source:         http://www.portaudio.com/archives/pa_stable_v%{version}.tgz
 Source1:        baselibs.conf
 Patch1:         0001-Merge-branch-ticket_275_pass_void-into-master.patch
@@ -90,6 +90,7 @@ echo 'HTML_TIMESTAMP=NO' >> Doxyfile
 echo 'Requires: alsa' >> portaudio-2.0.pc.in
 
 %build
+export CFLAGS="%optflags -D_GNU_SOURCE -fexceptions"
 %configure --disable-static \
            --enable-cxx=yes \
            --with-alsa=yes \

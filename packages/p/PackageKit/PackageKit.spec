@@ -63,6 +63,8 @@ Patch5:         PackageKit-zypp-ignore-already-installed-packages.patch
 Patch6:         PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch
 # PATCH-FIX-UPSTREAM PackageKit-pkcon-exit-with-retval-5.patch gh#/hughsie/PackageKit#405 bsc#1170562 sckang@suse.com -- pkcon: exit with retval 5 if no packages needed be installed.
 Patch7:         PackageKit-pkcon-exit-with-retval-5.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-cleanup-tmp-files.patch gh#/hughsie/PackageKit/commit/807f410, bsc#1169739 sckang@suse.com -- zypp: Cleanup temporary files when PackageKit quits.
+Patch8:         PackageKit-zypp-cleanup-tmp-files.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-openSUSE-vendor.patch ngompa13@gmail.com -- Add openSUSE vendor
 Patch1001:      PackageKit-dnf-Add-openSUSE-vendor.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files

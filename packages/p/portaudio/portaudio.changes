@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 14:39:46 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- The portaudio C library uses pthread_cleanup* macros, a sane but
+  compiler/os specific implementation of them requires using 
+  -fexceptions flag. see pthread.h for details.
+
+-------------------------------------------------------------------
 Sat Jun  9 11:14:56 UTC 2018 - tom.mbrt@googlemail.com
 
 - Add upstream patch 0001-Merge-branch-ticket_275_pass_void-into-master.patch
