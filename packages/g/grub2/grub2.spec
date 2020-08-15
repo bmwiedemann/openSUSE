@@ -320,6 +320,7 @@ Patch712:       0009-script-Avoid-a-use-after-free-when-redefining-a-func.patch
 # bsc#1174570 VUL-0: EMBARGOED: CVE-2020-15707: grub2: linux: Fix integer
 # overflows in initrd size handling
 Patch713:       0010-linux-Fix-integer-overflows-in-initrd-size-handling.patch
+Patch714:       0001-kern-mm.c-Make-grub_calloc-inline.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -635,6 +636,7 @@ swap partition while in resuming
 %patch711 -p1
 %patch712 -p1
 %patch713 -p1
+%patch714 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15
