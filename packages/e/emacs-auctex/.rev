@@ -350,4 +350,41 @@
     <comment> Supplement emacs-auctex if texlive and emacs are installed (boo#1158035)</comment>
     <requestid>753195</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>763e47812863943416ae1998c38fcec3</srcmd5>
+    <version>12.2</version>
+    <time>1597519179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.2 to avoid obsolete (process-kill-without-query) (boo#1175274)
+  * AUCTeX reflects the changes in LaTeX2e 2019-10-01 release.
+     'filecontents' environment now takes an optional argument and can
+     be used anywhere in a document.  The macros '\Ref' and
+     '\labelformat' are moved from 'varioref.sty' to LaTeX kernel.
+     amsmath has a new macro '\overunderset'.
+  * A new method is implemented in preview-latex to adjust the
+    foreground colors of generated images to those of Emacs, when the
+    LaTeX command produces PDF.  The traditional method became invalid
+    because of the change introduced in Ghostscript 9.27.
+    Unfortunately, the new method doesn't work due to a bug in
+    Ghostscript 9.27 and is valid only for Ghostscript &gt; 9.27.  There
+    is also a fallback method for gs 9.27 users which displays plain
+    &quot;black on white&quot; images.  For successful function of preview-latex,
+    the users are encouraged to set up the new user option
+    'preview-pdf-color-adjust-method' to choose appropriate option
+    among the three: new, traditional and fallback method.
+  * AUCTeX has support for the Flymake package in Emacs 26 or newer.
+    To enable, call 'M-x flymake-mode RET' or add this to your '.emacs'
+    file:
+         (add-hook 'LaTeX-mode-hook #'flymake-mode)
+  * The way the option 'TeX-record-buffer' is used was corrected.  It
+    was used in just the opposite way as the document says.  Erase the
+    customization if you have customized this option since it now acts
+    in reverse to your expectation.
+  * A former customize option 'japanese-TeX-command-list' is removed.
+    Use 'japanese-TeX-engine-default', or if it's really necessary,
+    customize 'TeX-command-list' directly if the task which the option
+    used to carry is required.
+  * Support for standard LaTeX without e-TeX extension is now very</comment>
+    <requestid>826659</requestid>
+  </revision>
 </revisionlist>

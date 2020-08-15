@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-auctex
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,19 +36,17 @@ BuildRequires:  texlive-collection-latexextra
 BuildRequires:  texlive-tex
 BuildRequires:  texlive-texinfo
 %endif
-Version:        12.1
+Version:        12.2
 Release:        0
 Summary:        AUC TeX: An Emacs Extension
 License:        GPL-2.0-or-later
 Group:          Productivity/Editors/Emacs
-Source:         http://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz
+Source0:        http://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz
+Source1:        http://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz.sig
 URL:            http://www.gnu.org/software/auctex
 # Allows to select printer instance
 # PATCH-FEATURE-UPSTREAM dvips.patch
 Patch0:         dvips.patch
-Patch10:        utf8-names-3b1ffcd8.patch
-Patch11:        utf8-names-a8ea1273.patch
-Patch12:        utf8-names-fix-boo1135326.patch
 BuildArch:      noarch
 
 %description
@@ -71,9 +69,6 @@ you cannot use this package for XEmacs.
 %prep
 %setup -n auctex-%{version}
 %patch0
-%patch10
-%patch11
-%patch12
 
 %build
     unset ${!LC_*}
