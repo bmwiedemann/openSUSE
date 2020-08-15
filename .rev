@@ -1687,4 +1687,14 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
   (gh#/hughsie/PackageKit#405 bsc#1170562). (forwarded request 814795 from JonathanKang)</comment>
     <requestid>815257</requestid>
   </revision>
+  <revision rev="203" vrev="7">
+    <srcmd5>8af6147f3931b0a56d31f0f81ba50205</srcmd5>
+    <version>1.1.13</version>
+    <time>1597519005</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-cleanup-tmp-files.patch: zypp: Cleanup
+  temporary files when PackageKit quits
+  (gh#/hughsie/PackageKit/commit/807f410, bsc#1169739). (forwarded request 826192 from JonathanKang)</comment>
+    <requestid>826638</requestid>
+  </revision>
 </revisionlist>

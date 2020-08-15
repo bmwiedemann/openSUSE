@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 13 03:26:49 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-cleanup-tmp-files.patch: zypp: Cleanup
+  temporary files when PackageKit quits
+  (gh#/hughsie/PackageKit/commit/807f410, bsc#1169739).
+
+-------------------------------------------------------------------
 Tue Jun 16 02:07:15 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-pkcon-exit-with-retval-5.patch: pkcon: exit with
