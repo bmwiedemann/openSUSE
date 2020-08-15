@@ -167,4 +167,12 @@
     <comment>- Update to release 2020.3</comment>
     <requestid>810825</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b51df1b7c8bfaddfbc153a2bdb78382f</srcmd5>
+    <version>2020.4</version>
+    <time>1597519104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.4</comment>
+    <requestid>826223</requestid>
+  </revision>
 </revisionlist>

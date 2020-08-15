@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 22:43:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.4
+   * Memory model support for SPIR-V 1.4
+   * Add new spirv-fuzz tool
+   * Instrument: Add version 2 of record formats
+
+-------------------------------------------------------------------
 Fri May 29 17:21:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.3
