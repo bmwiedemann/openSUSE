@@ -1031,7 +1031,6 @@ unsorted:
   - babelstone-ogham-fonts 
   - babelstone-phags-pa-fonts 
   - babelstone-runic-fonts 
-  - babeltrace: [i586] 
   - babeltrace-devel 
   - babeltrace2 
   - babeltrace2-devel 
@@ -1416,7 +1415,9 @@ unsorted:
   - busybox-ncurses-utils 
   - busybox-net-tools 
   - busybox-netcat 
+  - busybox-policycoreutils 
   - busybox-procps 
+  - busybox-selinux-tools 
   - busybox-sh 
   - busybox-sharutils 
   - busybox-syslogd 
@@ -6340,6 +6341,7 @@ unsorted:
   - isapnp: [i586] 
   - isapnp-devel: [i586] 
   - isatapd 
+  - iscsi-formula 
   - isight-firmware-tools 
   - isl-devel 
   - isl-devel-32bit: [x86_64] 
@@ -10990,6 +10992,7 @@ unsorted:
   - libmumps_5_2_1-gnu-openmpi3-hpc: [x86_64] 
   - libmunge2 
   - libmunge2-32bit: [x86_64] 
+  - libmunit0suse0 
   - libmuparser2_2_6 
   - libmuparser2_2_6-32bit: [x86_64] 
   - libmuparserx4_0_8 
@@ -11017,8 +11020,7 @@ unsorted:
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
-  - libndctl-devel: [x86_64] 
-  - libndctl6: [x86_64] 
+  - libndctl-devel: [x86_64] # devel package of dvd:libndctl6 
   - libndp 
   - libndp-devel 
   - libndpi-devel 
@@ -11974,7 +11976,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
   - libre0suse0 
-  - libre2-7-32bit: [x86_64] 
+  - libre2-8-32bit: [x86_64] 
   - libreadline-java 
   - libreadline-java-32bit: [x86_64] 
   - libreadline-java-javadoc 
@@ -12249,7 +12251,7 @@ unsorted:
   - libsamplerate0-32bit: [x86_64] 
   - libsane1-32bit: [x86_64] 
   - libsanlock1 
-  - libsass-3_6_1-1 
+  - libsass-3_6_4-1 
   - libsass-devel 
   - libsbc1-32bit: [x86_64] 
   - libsblim-cmpiutil1 
@@ -12397,7 +12399,6 @@ unsorted:
   - libskk0-32bit: [x86_64] 
   - libslang2-32bit: [x86_64] 
   - libslirp-devel 
-  - libslirp0: [i586] 
   - libslopy7_4 
   - libslurm35: [x86_64] 
   - libsmartcols-devel 
@@ -13454,7 +13455,7 @@ unsorted:
   - libyui-ncurses-pkg-devel 
   - libyui-ncurses-pkg-doc 
   - libyui-ncurses-rest-api-devel 
-  - libyui-ncurses-rest-api12 
+  - libyui-ncurses-rest-api13 
   - libyui-ncurses-tools 
   - libyui-qt-devel 
   - libyui-qt-doc 
@@ -13463,9 +13464,9 @@ unsorted:
   - libyui-qt-pkg-devel 
   - libyui-qt-pkg-doc 
   - libyui-qt-rest-api-devel 
-  - libyui-qt-rest-api12 
+  - libyui-qt-rest-api13 
   - libyui-rest-api-devel 
-  - libyui-rest-api12 
+  - libyui-rest-api13 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -15093,6 +15094,7 @@ unsorted:
   - munge-maven-plugin-javadoc 
   - munin 
   - munin-node 
+  - munit-devel 
   - muparser-devel 
   - muparser-devel-32bit: [x86_64] 
   - muparserx-devel 
@@ -19986,6 +19988,7 @@ unsorted:
   - python3-cluster-preflight-check 
   - python3-clustershell 
   - python3-cma 
+  - python3-cmapfile 
   - python3-cmarkgfm 
   - python3-cmd2 
   - python3-coards 
@@ -20055,6 +20058,7 @@ unsorted:
   - python3-cymruwhois 
   - python3-cyordereddict 
   - python3-cytoolz 
+  - python3-czifile 
   - python3-d2to1 
   - python3-daemonize 
   - python3-daiquiri 
@@ -20722,6 +20726,7 @@ unsorted:
   - python3-lensfun 
   - python3-lesscpy 
   - python3-leveldb 
+  - python3-lfdfiles 
   - python3-lhafile 
   - python3-lib3to6 
   - python3-libaccounts 
@@ -20954,6 +20959,7 @@ unsorted:
   - python3-net-snmp 
   - python3-netCDF4 
   - python3-netmiko 
+  - python3-netpbmfile 
   - python3-networkx: [i586] 
   - python3-neutronclient 
   - python3-newt 
@@ -21017,6 +21023,7 @@ unsorted:
   - python3-odfpy 
   - python3-odorik 
   - python3-oic 
+  - python3-oiffile 
   - python3-onionshare 
   - python3-onnx 
   - python3-onnxconverter-common 
@@ -21686,6 +21693,7 @@ unsorted:
   - python3-rjsmin 
   - python3-rnginline 
   - python3-robot-detection 
+  - python3-roifile 
   - python3-rollbar 
   - python3-rope 
   - python3-rply 
@@ -21942,6 +21950,7 @@ unsorted:
   - python3-threevis 
   - python3-thrift 
   - python3-thriftpy2 
+  - python3-tifffile 
   - python3-tinyarray 
   - python3-tinycss2 
   - python3-tinydb 
