@@ -1,7 +1,7 @@
 #
 # spec file for package gifsicle
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gifsicle
-Version:        1.91
+Version:        1.92
 Release:        0
 Summary:        Creating and editing GIF images and animations
 License:        GPL-2.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://www.lcdf.org/gifsicle/
 Source:         https://www.lcdf.org/gifsicle/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_gifdiff_null_pointer_deref.patch
-Patch0:         fix_gifdiff_null_pointer_deref.patch
-Obsoletes:      ungifsicle < %{version}
-Provides:       ungifsicle = %{version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
+Obsoletes:      ungifsicle < %{version}
+Provides:       ungifsicle = %{version}
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  perl-Time-HiRes
+%define ext_man .gz
 %endif
 
 %description
@@ -52,8 +51,7 @@ gifdiff compares two GIFs for identical visual
 appearance.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup
 
 %build
 %configure
@@ -71,8 +69,8 @@ make %{?_smp_mflags} check
 %{_bindir}/gifdiff
 %{_bindir}/gifsicle
 %{_bindir}/gifview
-%{_mandir}/man1/gifdiff.1*
-%{_mandir}/man1/gifsicle.1*
-%{_mandir}/man1/gifview.1*
+%{_mandir}/man1/gifdiff.1%{?ext_man}
+%{_mandir}/man1/gifsicle.1%{?ext_man}
+%{_mandir}/man1/gifview.1%{?ext_man}
 
 %changelog
