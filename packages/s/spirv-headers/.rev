@@ -151,4 +151,12 @@
     <comment>- Update to release 1.5.3</comment>
     <requestid>810824</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b8119a3caa7acc25a0aee20918010964</srcmd5>
+    <version>1.5.3.g18</version>
+    <time>1597519083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 1.5.3.g18 (979924c8bc)</comment>
+    <requestid>826202</requestid>
+  </revision>
 </revisionlist>
