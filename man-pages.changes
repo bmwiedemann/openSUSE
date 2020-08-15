@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug 13 12:46:18 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.08
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  prctl.2
+      Dave Martin
+          Add SVE prctls (arm64)
+              Add documentation for the the PR_SVE_SET_VL and PR_SVE_GET_VL
+              prctls added in Linux 4.15 for arm64.
+      Dave Martin  [Catalin Marinas]
+          Add tagged address ABI control prctls (arm64)
+              Add documentation for the the PR_SET_TAGGED_ADDR_CTRL and 
+              PR_GET_TAGGED_ADDR_CTRL prctls added in Linux 5.4 for arm64.
+  setns.2
+      Michael Kerrisk
+          Document the use of PID file descriptors with setns()
+              Starting with Linux 5.8, setns() can take a PID file descriptor as
+              an argument, and move the caller into or more of the namespaces of
+              the thread referred to by that descriptor.
+  capabilities.7
+      Michael Kerrisk
+          Document CAP_BPF
+      Michael Kerrisk
+          Add CAP_PERFMON
+  symlink.7
+      Aleksa Sarai
+          Document magic links more completely
+  etc. see Changes
+- modified patches
+  % man-pages-openat2.h-location.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Jun 30 14:10:19 UTC 2020 - pgajdos@suse.com
 
 - added patches
