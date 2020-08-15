@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 13 11:36:17 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20200812:
+  * .travis.yml: Also build for the ppc64le architecture
+  * iscsi-ls: Fix iser url scheme parsing
+  * test-tool: Use block_size instead of hardcoded 512 bytes
+  * examples/iscsi-dd: use common init function for src and dst endpoints
+  * examples/iscsi-dd: use common iscsi_endpoint struct
+  * iscsi-perf: Add explicit casts to avoid two warnings
+  * socket: Make the pdu timeout handling aware of old iscsi context
+  * libiscsi: Make the cancellation aware of the pdus in old iscsi context
+  * pdu: Remove the checking for iscsi->is_loggedin in iscsi_cancel_pdus()
+  * libiscsi: Avoid discontinuities in cmdsn ordering in some cases
+  * test-tool: Use block_size instead of hardcoded 512 bytes
+  * exclude ld_iscsi.so from RPM
+  * include iser-private.h in make dist tarball
+
+-------------------------------------------------------------------
 Tue May 26 08:40:28 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20200521:
