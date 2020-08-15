@@ -1309,4 +1309,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Bump to head of stable branch, get several screen-cast fixes (forwarded request 821353 from iznogood)</comment>
     <requestid>821842</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>9c1fa4aaff8a66b0906fdc758c413588</srcmd5>
+    <version>3.36.5</version>
+    <time>1597519014</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 826555 from iznogood)</comment>
+    <requestid>826639</requestid>
+  </revision>
 </revisionlist>

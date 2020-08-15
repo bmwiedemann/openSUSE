@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 12 21:08:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.5:
+  + Screencast fixes and improvements.
+  + Fix glitches when subsurfaces extend outside the toplevel.
+  + Mipmap background texture rendering.
+  + Fix wine copy & paste.
+  + Plugged memory leaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jul 16 19:34:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.4+9:
