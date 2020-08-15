@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 13 12:05:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update summary to be more on point.
+
+-------------------------------------------------------------------
+Thu Aug  6 16:55:31 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 2.138
+- Use upstream version number
+- Use roboto-android.zip for better emoji compatibility
+- Update metainfo installation location according to latest standard
+- Remove useless docs but keep the license file
+- Move google-roboto-slab-fonts into an individual package
+
+-------------------------------------------------------------------
 Wed Dec  7 17:14:57 CET 2016 - tiwai@suse.de
 
 - Fix source URL to point to the right version number
