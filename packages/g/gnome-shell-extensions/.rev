@@ -867,4 +867,13 @@
   sle_version (jsc#SLE-11720). (forwarded request 820643 from xiaoguang_wang)</comment>
     <requestid>821834</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>d2fcb21489893eb6a7c61b1e9021d739</srcmd5>
+    <version>3.36.3</version>
+    <time>1597519037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.36.3:
+  + Updated translations. (forwarded request 826557 from iznogood)</comment>
+    <requestid>826641</requestid>
+  </revision>
 </revisionlist>
