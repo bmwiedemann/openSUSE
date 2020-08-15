@@ -28,6 +28,9 @@ Group:          Development/Languages/Rust
 URL:            https://pagure.io/fedora-rust/rust2rpm
 Source0:        https://releases.pagure.org/fedora-rust/rust2rpm/rust2rpm-%{version}.tar.xz
 
+# Backports from upstream
+Patch0001:      0001-Add-riscv64-to-rust_arches.patch
+
 BuildArch:      noarch
 
 %description

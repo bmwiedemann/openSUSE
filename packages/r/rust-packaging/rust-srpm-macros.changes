@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 13 20:21:48 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport patch to add 64-bit RISC-V support
+  + Patch: 0001-Add-riscv64-to-rust_arches.patch
+
+-------------------------------------------------------------------
 Fri May 22 13:48:07 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 15
