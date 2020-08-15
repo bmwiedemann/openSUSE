@@ -18,8 +18,7 @@
 
 %define asan_build 0
 %define debug_build 0
-
-%define srcver   2.0.4
+%define srcver   2.0.5
 %define major    8
 %define minor    2
 %define micro    2
@@ -33,14 +32,12 @@ Version:        %{srcver}
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause
-Group:          Productivity/Graphics/Convertors
-URL:            https://github.com/libjpeg-turbo/libjpeg-turbo
+URL:            https://sourceforge.net/projects/libjpeg-turbo
 Source0:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz
-Source1:        baselibs.conf
+Source1:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz.sig
+Source2:        libjpeg-turbo.keyring
+Source3:        baselibs.conf
 Patch1:         libjpeg-turbo-1.3.0-tiff-ojpeg.patch
-Patch2:         ctest-depends.patch
-# CVE-2020-13790 [bsc#1172491], heap-based buffer over-read in get_rgb_row() in rdppm.c via a malformed PPM input file
-Patch3:         libjpeg-turbo-CVE-2020-13790.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -68,7 +65,6 @@ It also includes the following command line utilities:
 Version:        %{libver}
 Release:        0
 Summary:        A SIMD-accelerated JPEG compression/decompression library
-Group:          System/Libraries
 
 %description -n libjpeg%{major}
 A library for manipulating JPEG images. It supports
@@ -79,7 +75,6 @@ AltiVec, NEON, MIPS DSPR2, and Loongson MMI.
 Version:        %{version}
 Release:        0
 Summary:        A SIMD-accelerated JPEG compression/decompression library
-Group:          System/Libraries
 
 %description -n libturbojpeg%{tmajor}
 A library for manipulating JPEG images. It supports
@@ -90,7 +85,6 @@ AltiVec, NEON, MIPS DSPR2, and Loongson MMI.
 Version:        %{libver}
 Release:        0
 Summary:        Development Tools for applications which will use the Libjpeg Library
-Group:          Development/Libraries/C and C++
 Requires:       libjpeg%{major} = %{version}
 Requires:       libturbojpeg%{tmajor} = %{version}
 Conflicts:      libjpeg-devel
@@ -105,8 +99,6 @@ files using the libjpeg library.
 %prep
 %setup -q
 %patch1
-%patch2 -p1
-%patch3 -p1
 
 %build
 MYLDFLAGS="-Wl,-z,relro,-z,now"
@@ -130,7 +122,7 @@ MYCFLAGS="$MYCFLAGS -O0 -g"
     -DFLOATTEST=64bit \
 %endif
     %{nil}
-make %{?_smp_mflags}
+%make_build
 
 %check
 %if %{asan_build}

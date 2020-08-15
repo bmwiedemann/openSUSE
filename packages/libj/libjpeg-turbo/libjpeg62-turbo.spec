@@ -19,23 +19,19 @@
 %define major   62
 %define minor   3
 %define micro   0
-%define srcver  2.0.4
+%define srcver  2.0.5
 %define libver  %{major}.%{minor}.%{micro}
 Name:           libjpeg62-turbo
 Version:        %{srcver}
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause
-Group:          Productivity/Graphics/Convertors
-URL:            http://sourceforge.net/projects/libjpeg-turbo
+URL:            https://sourceforge.net/projects/libjpeg-turbo
 Source0:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz
 Source1:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz.sig
 Source2:        libjpeg-turbo.keyring
 Source3:        baselibs.conf
 Patch1:         libjpeg-turbo-1.3.0-tiff-ojpeg.patch
-Patch2:         ctest-depends.patch
-# CVE-2020-13790 [bsc#1172491], heap-based buffer over-read in get_rgb_row() in rdppm.c via a malformed PPM input file
-Patch3:         libjpeg-turbo-CVE-2020-13790.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 # needed for tests as we remove the lib here
@@ -53,7 +49,6 @@ such as SSE/SSE2/AVX2, AltiVec, NEON, MIPS DSPR2, and Loongson MMI.
 Version:        %{libver}
 Release:        0
 Summary:        A SIMD-accelerated JPEG compression/decompression library
-Group:          System/Libraries
 Obsoletes:      libjpeg = 6.2.0
 
 %description -n libjpeg%{major}
@@ -65,7 +60,6 @@ AltiVec, NEON, MIPS DSPR2, and Loongson MMI.
 Version:        %{libver}
 Release:        0
 Summary:        Development Tools for applications which will use the Libjpeg Library
-Group:          Development/Libraries/C and C++
 Requires:       libjpeg%{major} = %{version}
 Conflicts:      libjpeg-devel
 Provides:       libjpeg-devel = %{version}
@@ -79,8 +73,6 @@ files using the libjpeg library.
 %prep
 %setup -q -n libjpeg-turbo-%{srcver}
 %patch1
-%patch2 -p1
-%patch3 -p1
 
 %build
 export LDFLAGS="-Wl,-z,relro,-z,now"
@@ -90,7 +82,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
     -DFLOATTEST=64bit \
 %endif
     %{nil}
-make %{?_smp_mflags}
+%make_build
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
