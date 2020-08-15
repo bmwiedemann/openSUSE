@@ -2,10 +2,9 @@
 	<service name="tar_scm" mode="disabled">
  		<param name="scm">git</param>
 		<param name="url">https://github.com/KhronosGroup/glslang</param>
-		<!-- minor part also in glslang/Include/revision.h (and sometimes out of date too) -->
-		<param name="revision">9c3204a1fde09ba7b98b1779047bf8d3491244a5</param>
-		<param name="parent-tag">e157435c1</param>
-		<param name="versionformat">8.13.3727+git@TAG_OFFSET@</param>
+		<!-- CHANGES.md has been declared by upstream to be the authoritative place -->
+		<param name="revision">6c7beeafa7a53c876c0dda13afd7f47e1ea6d905</param>
+		<param name="versionformat">10.15.3847</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

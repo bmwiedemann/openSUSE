@@ -178,4 +178,12 @@
     <comment>- Update to snapshot 8.13.3727+git4 (9c3204a1)</comment>
     <requestid>792438</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f47ead2dffd8163e81251205e1ebe05c</srcmd5>
+    <version>10.15.3847</version>
+    <time>1597519085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10.15.3847 (6c7beeafa)</comment>
+    <requestid>826206</requestid>
+  </revision>
 </revisionlist>

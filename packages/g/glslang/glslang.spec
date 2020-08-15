@@ -17,11 +17,11 @@
 
 
 # lname needs a bump for every change in commit (_service)
-%define version_unconverted 8.13.3727+git4
-%define lname libglslang-suse10
+%define version_unconverted 10.15.3847
+%define lname libglslang10
 
 Name:           glslang
-Version:        8.13.3727+git4
+Version:        10.15.3847
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -30,7 +30,6 @@ URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
 
 Source:         %name-%version.tar.xz
-Patch1:         ver.diff
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -100,7 +99,7 @@ ln -s libglslang.so "$b/%_libdir/libOSDependent.so"
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/*.so.suse10*
+%_libdir/*.so.10*
 
 %files devel
 %_bindir/gls*

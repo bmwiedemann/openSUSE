@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:32:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.15.3847 (6c7beeafa)
+  * Add support for EXT_ray_flags_primitive_culling,
+    GL_ARB_shader_bit_encoding, GL_ARB_shader_image_size,
+    GL_ARB_shader_storage_buffer_object,
+    GL_ARB_shading_language_packing, GL_ARB_texture_query_lod,
+    GL_ARB_vertex_attrib_64bit,
+    GL_EXT_shader_implicit_conversions,
+    GL_EXT_shader_integer_mix, GL_EXT_blend_func_extended
+  * Add support for primitive culling layout qualifier
+  * GlslangToSpv: offer a -g0 command line argument similar to gcc
+  * libglslang is now built with -fvisibility and exports
+- Drop ver.diff (issue resolved upstream)
+
+-------------------------------------------------------------------
 Wed Apr  8 10:42:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 8.13.3727+git4 (9c3204a1)
