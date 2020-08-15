@@ -1,7 +1,7 @@
 #
 # spec file for package graphite2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %define libname libgraphite2-3
 Name:           graphite2
-Version:        1.3.12
+Version:        1.3.14
 Release:        0
 Summary:        Font rendering capabilities for complex non-Roman writing systems
 License:        LGPL-2.1-or-later OR MPL-2.0+
-Group:          Productivity/Publishing/Word
-Url:            http://graphite.sil.org/
+URL:            http://graphite.sil.org/
 Source0:        https://github.com/silnrsi/graphite/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         graphite2-1.2.0-cmakepath.patch
@@ -32,11 +31,11 @@ BuildRequires:  cmake
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
-# libglib-2_0-0 pulls in shared-mime-info for mime detection in gvfs
-#!BuildIgnore:  shared-mime-info
 BuildRequires:  glib2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+# libglib-2_0-0 pulls in shared-mime-info for mime detection in gvfs
+#!BuildIgnore:  shared-mime-info
 
 %description
 Graphite2 is a project within SIL's Non-Roman Script Initiative and Language
@@ -48,7 +47,6 @@ system implementation.
 
 %package -n %{libname}
 Summary:        Text categorization library
-Group:          System/Libraries
 
 %description -n %{libname}
 Graphite2 is a project within SIL's Non-Roman Script Initiative and Language
@@ -60,7 +58,6 @@ system implementation.
 
 %package devel
 Summary:        Files for Developing with %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       glibc-devel
 
@@ -75,9 +72,7 @@ system implementation.
 This package contains the %{name} development files.
 
 %prep
-%setup -q -n graphite-%{version}
-%patch0 -p1
-%patch2 -p1
+%autosetup -p1 -n graphite-%{version}
 
 # Make sure to use python3 everywhere
 find tests -type f -exec sed -i "s|python|python3|g" {} +
@@ -92,7 +87,7 @@ find . -name *.cmake -exec sed -i "s|python|python3|g" {} +
 find . -type f \
 	-exec sed -i -e 's/\-O3//g' {} \;
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -108,7 +103,7 @@ ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} \
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc LICENSE COPYING
+%license LICENSE COPYING
 %{_bindir}/gr2fonttest
 
 %files -n %{libname}
