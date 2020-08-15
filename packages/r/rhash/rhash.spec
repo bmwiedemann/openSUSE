@@ -18,13 +18,12 @@
 
 %define major   0
 Name:           rhash
-Version:        1.3.9
+Version:        1.4.0
 Release:        0
 Summary:        Recursive Hasher
 License:        0BSD
 URL:            https://github.com/rhash/RHash
 Source0:        https://github.com/rhash/RHash/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         rhash-uk.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 
