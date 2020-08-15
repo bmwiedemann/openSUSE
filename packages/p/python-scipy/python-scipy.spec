@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _ver 1_4_1
+%define _ver 1_5_2
 %define shortname scipy
 %define pname python-%{shortname}
 
@@ -86,7 +86,7 @@ ExclusiveArch:  do_not_build
 
 %define         skip_python2 1
 Name:           %{package_name}
-Version:        1.4.1
+Version:        1.5.2
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -94,8 +94,6 @@ Group:          Development/Libraries/Python
 URL:            http://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 Source100:      python-scipy-rpmlintrc
-# PATCH-FIX-OPENSUSE - no_implicit_decl.patch - Fix implicit-pointer-decl warnings and implicit-fortify-decl error
-Patch0:         no_implicit_decl.patch
 BuildRequires:  %{python_module Cython >= 0.19}
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module pybind11 >= 2.2.4}
@@ -114,7 +112,6 @@ BuildRequires:  blas-devel
 BuildRequires:  lapack-devel
  %endif
 BuildRequires:  %{python_module numpy-devel >= 1.5.1}
-BuildRequires:  lapacke-devel
 Requires:       python-numpy >= 1.5.1
 Requires:       python-pybind11 >= 2.2.4
 %else
@@ -140,12 +137,10 @@ for numerical integration and optimization.
 
 %prep
 %setup -q -n scipy-%{version}
-%patch0 -p1
 find . -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} \;
 
 %build
 %{python_expand #
-export FFLAGS="-std=legacy"
 %if %{with hpc}
 py_ver=%{$python_version}
 %hpc_setup

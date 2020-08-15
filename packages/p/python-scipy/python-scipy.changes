@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:23:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.5.2
+  * wrappers for more than a dozen new LAPACK routines are now available in scipy.linalg.lapack
+  * Improved support for leveraging 64-bit integer size from linear algebra backends
+  * addition of the probability distribution for two-sided one-sample Kolmogorov-Smirnov tests
+  * see upstream changelog for more detailed info
+- Drop breaking patch no_implicit_decl.patch
+  * the problem is with lapacke
+
+-------------------------------------------------------------------
 Thu Mar 19 08:05:49 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add -std=legacy in order to build with GCC10:
