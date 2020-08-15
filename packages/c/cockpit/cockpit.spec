@@ -76,7 +76,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        222
+Version:        225
 %if %{defined wip}
 Release:        1.%{wip}%{?dist}
 Source0:        cockpit-%{version}.tar.xz
@@ -94,6 +94,7 @@ BuildRequires: pkgconfig(polkit-agent-1) >= 0.105
 BuildRequires: pam-devel
 
 BuildRequires: autoconf automake
+BuildRequires: make
 BuildRequires: /usr/bin/python3
 BuildRequires: gettext >= 0.19.7
 %if %{defined build_dashboard}
@@ -195,7 +196,7 @@ exec 2>&1
 %{?testsuite_skip} make -j4 check %{?testsuite_fail}
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 make install-tests DESTDIR=%{buildroot}
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/pam.d
 install -p -m 644 tools/cockpit.pam $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/cockpit
@@ -451,10 +452,10 @@ Recommends: (reportd >= 0.7.1 if abrt)
 %endif
 # NPM modules which are also available as packages
 Provides: bundled(js-jquery) = 3.5.1
-Provides: bundled(js-moment) = 2.25.3
+Provides: bundled(js-moment) = 2.27.0
 Provides: bundled(nodejs-flot) = 0.8.3
 Provides: bundled(xstatic-bootstrap-datepicker-common) = 1.9.0
-Provides: bundled(xstatic-patternfly-common) = 3.59.4
+Provides: bundled(xstatic-patternfly-common) = 3.59.5
 
 %description system
 This package contains the Cockpit shell and system configuration interfaces.
