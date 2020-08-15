@@ -89,4 +89,27 @@
     <comment></comment>
     <requestid>811584</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f26104b259e6d922ad9f5847ab8cb4e</srcmd5>
+    <version>11.9</version>
+    <time>1597518832</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.9:
+  * CVE-2020-14349, bsc#1175193: Set a secure search_path in
+    logical replication walsenders and apply workers
+  * CVE-2020-14350, bsc#1175194: Make contrib modules' installation
+    scripts more secure.
+  * https://www.postgresql.org/docs/11/release-11-9.html
+- Remove postgresql-regress.patch, it does not apply anymore and
+  it does not seem to be needed anymore.
+- Pack the /usr/lib/postgresql symlink only into the main package.
+
+- Let postgresqlXX conflict with postgresql-noarch &lt; 12.0.1 to get
+  a clean and complete cutover to the new packaging schema.
+
+- Move from the &quot;libs&quot; build flavour to a &quot;mini&quot; package that will
+  only be used inside the build service and not get shipped, to
+  avoid confusion with the debuginfo packages (bsc#1148643).</comment>
+    <requestid>826607</requestid>
+  </revision>
 </revisionlist>
