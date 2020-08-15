@@ -17,7 +17,7 @@
 #
 
 
-%global short_name ordered-set
+%global modname ordered-set
 %global dir_name ordered_set
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -28,13 +28,13 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-Name:           python-%{short_name}%{psuffix}
+Name:           python-%{modname}%{psuffix}
 Version:        3.1.1
 Release:        0
 Summary:        Custom MutableSet that remembers its order
 License:        MIT
 URL:            https://github.com/LuminosoInsight/ordered-set
-Source0:        https://pypi.python.org/packages/source/o/%{short_name}/%{short_name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/o/%{modname}/%{modname}-%{version}.tar.gz
 # this package is build dependency of setuptools
 BuildRequires:  %{python_module base}
 BuildRequires:  fdupes
@@ -51,7 +51,7 @@ An OrderedSet is a custom MutableSet that remembers its order, so that every
 entry has an index that can be looked up.
 
 %prep
-%setup -q -n %{short_name}-%{version}
+%setup -q -n %{modname}-%{version}
 # we are build dep of setuptools
 sed -i -e 's:from setuptools :from distutils.core :g' setup.py
 

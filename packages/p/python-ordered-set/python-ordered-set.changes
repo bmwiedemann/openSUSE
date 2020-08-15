@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 12 20:31:01 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace Source URL with the standard one
+
+-------------------------------------------------------------------
 Fri Jan 17 09:41:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use psuffix properly to not override src packages
