@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 14 12:59:45 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Drop paa_sudo_sle15_nopwd.patch (bsc#1175198)
+  + sudoers file is managed by cloud-init we no longer need this hack
+
+-------------------------------------------------------------------
 Fri Jul 17 17:20:01 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Add proper_dhcp_config_set.patch (bsc#1173866)

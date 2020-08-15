@@ -26,7 +26,6 @@ URL:            https://github.com/Azure/WALinuxAgent
 Source0:        WALinuxAgent-%{version}.tar.gz
 Patch1:         agent-no-auto-update.patch
 Patch6:         paa_force_py3_sle15.patch
-Patch9:         paa_sudo_sle15_nopwd.patch
 Patch10:        paa_use_hostnamectl.patch
 Patch11:        proper_dhcp_config_set.patch
 BuildRequires:  dos2unix
@@ -120,9 +119,6 @@ Unit tests for python-azure-agent.
 %patch1
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 %patch6
-%endif
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
-%patch9
 %endif
 %patch10
 %patch11
