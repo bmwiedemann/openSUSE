@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 12 20:46:35 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 3.2.6:
+  * CVE-2020-17498: Kafka dissector crash (boo#1175204)
+  * Further features, bug fixes and updated protocol support as
+    listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-3.2.6.html
+
+-------------------------------------------------------------------
 Wed Jul  1 22:22:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Wireshark 3.2.5:
