@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 14 12:35:00 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to release 1.4.8
+
+  * Adding timout option for RDP connections.
+  * Avoid quickconnect to empty hostnames. Fixes #2240
+  * Using full paths instead of variables
+  * Add support for quick connecting to RDP, VNC and SPICE from the
+    command line
+  * Add SSH support to the protocol handler
+  * Restart SSH session when user has provided new username or password to
+    allow for changing SSH user
+  * Use inline with AppStream 0.12 specification.
+  * Enabled GDK_SCROLL_SMOOTH for RDP/VNC
+  * Some fixes for the RDP backend
+  * Trim white from ip addresses input into quick connect bar
+  * Enhancing the SNAP info dialog box
+  * Adding FreeRDP log level setting
+
+-------------------------------------------------------------------
 Fri Jul  3 15:20:11 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Set minimal freerdp version to 2.1.0, because with 2.0.0
