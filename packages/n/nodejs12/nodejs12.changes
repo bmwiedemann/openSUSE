@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 10 16:36:26 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Explicitly add -fno-strict-aliasing to CFLAGS to fix compilation
+  on Aarch64 with gcc10 (bsc#1172686)
+
+-------------------------------------------------------------------
 Mon Aug  3 12:18:12 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 12.18.3:

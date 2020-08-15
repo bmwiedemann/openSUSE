@@ -404,8 +404,8 @@ find deps/zlib -name *.[ch] -delete
 
 # percent-configure pulls in something that confuses node's configure
 # script, so we'll do it thus:
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
 export LDFLAGS="%{?build_ldflags}"
 
 %if 0%{?cc_exec:1}
@@ -452,6 +452,10 @@ find doc/api -type f -exec chmod 0644 {} +
 
 %install
 . %{SOURCE20}
+
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
+export LDFLAGS="%{?build_ldflags}"
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}
@@ -534,6 +538,10 @@ mkdir -p %{buildroot}%{_defaultlicensedir}
 %endif
 
 %check
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
+export LDFLAGS="%{?build_ldflags}"
+
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}
 export CXX=%{?cpp_exec}

@@ -295,4 +295,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>825386</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>bce2ed2ae0a3f84ec9b49a77f0a831dc</srcmd5>
+    <version>12.18.3</version>
+    <time>1597519168</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly add -fno-strict-aliasing to CFLAGS to fix compilation
+  on Aarch64 with gcc10 (bsc#1172686)</comment>
+    <requestid>826661</requestid>
+  </revision>
 </revisionlist>
