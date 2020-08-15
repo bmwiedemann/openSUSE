@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 11 03:07:08 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.29
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.29      2020-08-10 09:16:59 -0600
+    - Move to new GitHub org: https://github.com/PerlAlien
+    - Fixed meta which was incorrectly requiring 5.8.1 instead of 5.8.4
+
+-------------------------------------------------------------------
 Thu Aug  6 09:12:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.28
