@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 13 11:14:43 UTC 2020 - Reinhard Max <max@suse.com>
+
+- update to 9.6.19:
+  * CVE-2020-14350, bsc#1175194: Make contrib modules' installation
+    scripts more secure.
+  * https://www.postgresql.org/docs/9.6/release-9-6-19.html
+- Remove postgresql-regress.patch, it does not apply anymore and
+  it does not seem to be needed anymore.
+- Pack the /usr/lib/postgresql symlink only into the main package.
+
+-------------------------------------------------------------------
+Tue Jun 16 12:21:43 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Let postgresqlXX conflict with postgresql-noarch < 12.0.1 to get
+  a clean and complete cutover to the new packaging schema.
+
+-------------------------------------------------------------------
 Wed Jun  3 17:29:52 UTC 2020 - Reinhard Max <max@suse.com>
 
 - update to 9.6.18 (bsc#1171924).
@@ -6,11 +23,14 @@ Wed Jun  3 17:29:52 UTC 2020 - Reinhard Max <max@suse.com>
   https://www.postgresql.org/docs/9.6/release-9-6-18.html
 - Unify the spec file to work across all current PostgreSQL
   versions to simplify future maintenance.
+- Move from the "libs" build flavour to a "mini" package that will
+  only be used inside the build service and not get shipped, to
+  avoid confusion with the debuginfo packages (bsc#1148643).
 
 -------------------------------------------------------------------
 Sat Feb 15 03:23:25 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- update to 9.6.17 (CVE-2020-1720)
+- update to 9.6.17 (CVE-2020-1720, bsc#1163985)
   https://www.postgresql.org/about/news/2011/
   https://www.postgresql.org/docs/9.6/release-9-6-17.html
 
