@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug  8 03:11:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302177
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302177  2020-08-06 21:46:06-07:00 America/Los_Angeles
+      - Minor fix to author downstream test
+      - No significant changes since the last trial
+  1.302176  2020-08-05 21:45:19-07:00 America/Los_Angeles (TRIAL RELEASE)
+      - Fix Test::More's $TODO inside intercept (#862)
+
+-------------------------------------------------------------------
 Tue Apr 14 03:13:25 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.302175
