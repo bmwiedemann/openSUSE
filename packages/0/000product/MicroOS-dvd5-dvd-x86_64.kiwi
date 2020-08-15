@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20200814" schemaversion="4.1">
+<image name="OBS__MicroOS___20200815" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200814</productvar>
+      <productvar name="VERSION">20200815</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200814,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200815,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200814/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200815/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -59,7 +59,6 @@
       <repopackage name="adobe-sourcecodepro-fonts" arch="x86_64"/>
       <repopackage name="adobe-sourcesanspro-fonts" arch="x86_64"/>
       <repopackage name="adobe-sourceserifpro-fonts" arch="x86_64"/>
-      <repopackage name="adwaita-icon-theme" arch="x86_64"/>
       <repopackage name="alsa-plugins-pulse" arch="x86_64"/>
       <repopackage name="apparmor-abstractions" arch="x86_64"/>
       <repopackage name="apparmor-parser" arch="x86_64"/>
@@ -322,6 +321,7 @@
       <repopackage name="kernel-firmware-nfp" arch="x86_64"/>
       <repopackage name="kernel-firmware-nvidia" arch="x86_64"/>
       <repopackage name="kernel-firmware-platform" arch="x86_64"/>
+      <repopackage name="kernel-firmware-prestera" arch="x86_64"/>
       <repopackage name="kernel-firmware-qlogic" arch="x86_64"/>
       <repopackage name="kernel-firmware-radeon" arch="x86_64"/>
       <repopackage name="kernel-firmware-realtek" arch="x86_64"/>
