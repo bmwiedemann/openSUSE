@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 12 11:15:44 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.12.1
+- drop msgpack-1.patch
+ * moved under jazzband.co
+ * Removed support for end-of-life Django
+ * Removed support for unmaintained redis-py 2.X.
+ *  Changed uses of deprecated smart_text() to smart_str().
+ * Fixed deprecation warning with the msgpack serializer.
+ * The .touch() method now uses the default timeout, to cache forever pass None.
+ * Subclasses of JSONSerializer can now override the encoder_class attribute
+    to change the JSON encoder. It defaults to DjangoJSONEncoder.
+ * Fixed DefaultClient.set() to work with empty Pipeline.
+ * The thread_local parameter is now forwarded to the Redis client.
+
+-------------------------------------------------------------------
 Fri Apr 24 07:21:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build with new msgpack:
