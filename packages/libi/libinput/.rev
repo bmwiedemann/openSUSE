@@ -789,4 +789,12 @@ Peter Hutterer (3):
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>825293</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>1d718f97860764a85601aba8a6905f68</srcmd5>
+    <version>1.16.1</version>
+    <time>1597519080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.16.1</comment>
+    <requestid>826189</requestid>
+  </revision>
 </revisionlist>
