@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 13 19:26:33 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1597317239.6bef59ee4:
+  * Dependency cron 200813
+  * Fix support for multiple params with the same name in api command
+  * Add tests for GNU style arguments
+  * Reduce number of fixtures loaded by several tests
+  * Refactor t/05-scheduler-dependencies.t
+  * Speed up cache client tests by mocking sleep
+  * Rename skip_passed_children to skip_ok_result_children
+  * Don't cancel directly chained parents/siblings as well
+  * Add test for skipping passed child jobs when restarting a parent job
+  * Update documentation of restart behaviour
+  * cloning/restarting: Consider job failed if one of its children failed
+  * Fix rendering dependency graph in some cases
+  * Allow skipping passed children when restarting a job
+  * Add retry feature to cache service client
+  * Highlight dependency jobs in the overview page
+
+-------------------------------------------------------------------
 Tue Aug 11 11:26:48 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1597138547.40c3d2c81:
