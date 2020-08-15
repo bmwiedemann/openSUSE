@@ -1,7 +1,7 @@
 #
 # spec file for package sparsehash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           sparsehash
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Memory-efficient hash_map implementation
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/sparsehash/sparsehash
+URL:            https://github.com/sparsehash/sparsehash
 Source:         https://github.com/sparsehash/sparsehash/archive/sparsehash-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Google SparseHash project contains several C++ template hash-map
@@ -45,7 +44,7 @@ an implementation that optimizes for space and one that optimizes for
 speed.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 %configure
@@ -58,7 +57,6 @@ rm %{buildroot}%{_datadir}/doc/%{name}-2.0.2/INSTALL
 rm %{buildroot}%{_datadir}/doc/%{name}-2.0.2/README_windows.txt
 
 %files devel
-%defattr(-,root,root)
 %doc %{_datadir}/doc/%{name}-2.0.2/
 %{_includedir}/google/
 %{_includedir}/sparsehash/

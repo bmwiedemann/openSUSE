@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:37:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.4
+  * Corrected the memory usage claims to take into account
+    allocator overhead.
+  * Cleared some compiler warnings.
+
+-------------------------------------------------------------------
 Sun Jan 13 09:53:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove extreme wording.
