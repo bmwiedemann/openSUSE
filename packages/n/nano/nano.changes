@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 12 20:51:54 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 5.1:
+  * Make M-Bsp (Alt+Backspace) delete a word backwards
+  * Make M-[ bindable
+  * Fix crash on first keystroke in an empty buffer --indicator
+    and --softwrap
+  * Fix crash when invoking the formatter while text is marked
+  * In UTF-8 locales, an anchor is shown as a diamond
+
+-------------------------------------------------------------------
 Wed Jul 29 11:45:53 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - GNU nano 5.0:
