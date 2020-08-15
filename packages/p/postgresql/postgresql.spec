@@ -16,7 +16,7 @@
 #
 
 %define pgmajor 12
-%define defaultpackage postgresql%version
+%define defaultpackage postgresql%pgmajor
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -40,7 +40,7 @@ Name:           postgresql
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        %pgmajor
+Version:        %pgmajor.0.1
 Release:        0
 Url:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -48,15 +48,19 @@ Provides:       postgresql-noarch = %version-%release
 Requires:       postgresql-implementation
 Requires:       update-alternatives
 Recommends:     %defaultpackage
-%if 0%{?sle_version}
-# At this point we changed the package layout on SLE and conflict with
-# older releases to get a clean cut.
+# In June 2020 we changed the package layout for PostgreSQL and
+# conflict with older releases to get a clean cut-over.
+Conflicts:      postgresql < 9
+Conflicts:      postgresql90
+Conflicts:      postgresql91
+Conflicts:      postgresql92
+Conflicts:      postgresql93
+Conflicts:      postgresql94 < 9.4.26
 Conflicts:      postgresql95 < 9.5.22
 Conflicts:      postgresql96 < 9.6.18
 Conflicts:      postgresql10 < 10.13
 Conflicts:      postgresql11 < 11.8
 Conflicts:      postgresql12 < 12.3
-%endif
 BuildArch:      noarch
 Source0:        postgresql-init
 Source1:        postgresql-sysconfig

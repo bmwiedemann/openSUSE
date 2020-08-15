@@ -1,10 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:22:16 UTC 2020 - Reinhard Max <max@suse.com>
+
+- We also transfer PostgreSQL 9.4.26 to the new package layout in
+  SLE12-SP2 and newer. Reflect this in the conflict with
+  postgresql94.
+
+-------------------------------------------------------------------
+Fri Jun 26 13:49:21 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Also conflict with PostgreSQL versions before 9.
+- Conflicting with older versions is not limited to SLE.
+
+-------------------------------------------------------------------
+Tue Jun 16 12:17:33 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Bump version to 12.0.1, so that the binary packages also have
+  a cut-point to conflict with.
+
+-------------------------------------------------------------------
 Wed Jun  3 08:17:46 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Disable LLVM on SLE (bsc#1172274).
 - Conflict with versions of the binary packages prior to the
   May 2020 update, because we changed the package layout at that
   point and need a clean cutover.
+
+-------------------------------------------------------------------
+Tue Mar 24 10:45:25 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Bump package version to 12, but leave default at 10 for
+  SLE-15 and SLE-15-SP1.
 
 -------------------------------------------------------------------
 Tue Dec 17 10:27:02 UTC 2019 - Reinhard Max <max@suse.com>

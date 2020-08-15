@@ -442,4 +442,23 @@
     <comment></comment>
     <requestid>811579</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d5ca6a26d5434295f92fad610de0c45e</srcmd5>
+    <version>12.0.1</version>
+    <time>1597518800</time>
+    <user>dimstar_suse</user>
+    <comment>- We also transfer PostgreSQL 9.4.26 to the new package layout in
+  SLE12-SP2 and newer. Reflect this in the conflict with
+  postgresql94.
+
+- Also conflict with PostgreSQL versions before 9.
+- Conflicting with older versions is not limited to SLE.
+
+- Bump version to 12.0.1, so that the binary packages also have
+  a cut-point to conflict with.
+
+- Bump package version to 12, but leave default at 10 for
+  SLE-15 and SLE-15-SP1.</comment>
+    <requestid>826578</requestid>
+  </revision>
 </revisionlist>
