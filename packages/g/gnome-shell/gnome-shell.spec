@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.36.4+3
+Version:        3.36.5
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -36,7 +36,7 @@ Source2:        sle-background.png
 Patch1:         gnome-shell-private-connection.patch
 # PATCH-FIX-OPENSUSE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
 Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
-# PATCH-NEEDS-REBASE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680 qkzhu@suse.com -- make GDM background image configurable WAS: PATCH-FEATURE-OPENSUSE
+# PATCH-FEATURE-OPENSUSE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680, boo#1172826 qkzhu@suse.com -- make GDM background image configurable
 Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 # PATCH-NEEDS-REBASE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog (WAS: PATCH-FEATURE-OPENSUSE)
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
@@ -178,7 +178,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %setup -q
 %patch1 -p1
 %patch2 -p1
-#patch4 -p1
+%patch4 -p1
 #patch5 -p1
 %patch6 -p1
 

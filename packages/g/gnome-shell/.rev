@@ -1594,4 +1594,24 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Bump to head of stable branch, get 2 rather important bug fixes (forwarded request 821352 from iznogood)</comment>
     <requestid>821840</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>2546b8043ac50e709ec9dbdf5a537975</srcmd5>
+    <version>3.36.5</version>
+    <time>1597519029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.36.5:
+  + Fix extension updates when many extensions are installed.
+  + Fix missing icons in on-screen keyboard.
+  + Fix delay when showing calendar events.
+  + Fix app picker regressions on small displays.
+  + Fix top bar navigation when NumLock is active.
+  + Delay login animation until wallpaper has loaded.
+  + Revert changes that caused mispositioning in overview in
+    multi-monitor setups.
+  + Reset auth prompt on login screen on VT switch before fade in.
+  + Fix stuck grab when destroying open popup menu.
+  + Misc. bug fixes and cleanups.
+  + Updated translations. (forwarded request 826556 from iznogood)</comment>
+    <requestid>826640</requestid>
+  </revision>
 </revisionlist>
