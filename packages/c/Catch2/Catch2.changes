@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Fri Aug 14 13:05:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.13.0
+  Improvements:
+  * `GENERATE` can now follow a `SECTION` at the same level of
+    nesting
+    + The `SECTION`(s) before the `GENERATE` will not be run
+      multiple times, the following ones will.
+  * Added `-D`/`--min-duration` command line flag
+    + If a test takes longer to finish than the provided value,
+      its name and duration will be printed.
+    + This flag is overriden by setting `-d`/`--duration`.
+  Fixes:
+  * `TAPReporter` no longer skips successful assertions
+  version 2.12.4:
+  * `GENERATE` nested in a for loop no longer creates multiple
+    generators
+  * Fixed copy paste error breaking `TEMPLATE_TEST_CASE_SIG` for
+    6 or more arguments
+  * Fixed potential UB when handling non-ASCII characters in CLI
+    args
+  * There can be multiple calls to `GENERATE` on a single line
+  * Improved `fno-except` support for platforms that do not
+    provide shims for exception-related std functions
+    + E.g. the Green Hills C++ compiler
+  * XmlReporter now also reports test-case-level statistics
+    + This is done via a new element, `OverallResultsCases`
+  * Added `.clang-format` file to the repo
+  * Rewrote contributing docs
+    + They should explain the different levels of testing and so
+      on much better
+ version 2.12.2:
+  * Fixed compilation failure if `is_range` ADL found deleted
+    function
+  * Fixed potential UB in `CAPTURE` if the expression contained
+    non-ASCII characters
+  * `std::result_of` is not used if `std::invoke_result` is
+    available
+  * JUnit reporter writes out `status` attribute for tests
+  * Suppresed clang-tidy's `hicpp-vararg` warning
+    + Catch2 was already suppressing the
+      `cppcoreguidelines-pro-type-vararg` alias of the warning
+  version 2.12.1:
+  * Vector matchers now support initializer list literals better
+  * Added support for `^` (bitwise xor) to `CHECK` and `REQUIRE`
+  version 2.12.0:
+  * Running tests in random order (`--order rand`) has been
+    reworked significantly
+    + Given same seed, all platforms now produce the same order
+    + Given same seed, the relative order of tests does not
+      change if you select only a subset of them
+  * Vector matchers support custom allocators
+  * `|` and `&` (bitwise or and bitwise and) are now supported
+    in `CHECK` and `REQUIRE`
+    + The resulting type must be convertible to `bool`
+  * Fixed computation of benchmarking column widths in
+    ConsoleReporter
+  * Suppressed clang-tidy's `cppcoreguidelines-pro-type-vararg`
+    in assertions
+    + It was a false positive trigered by the new warning
+      support workaround
+  * Fixed bug in test specification parser handling of OR'd
+    patterns using escaping
+  * Worked around IBM XL's codegen bug
+    + It would emit code for _destructors_ of temporaries in an
+      unevaluated context
+  * Improved detection of stdlib's support for
+    `std::uncaught_exceptions`
+  version 2.11.2:
+  * GCC and Clang now issue warnings for suspicious code in
+    assertions
+    + E.g. `REQUIRE( int != unsigned int )` will now issue mixed
+      signedness comparison warning
+    + This has always worked on MSVC, but it now also works for
+      GCC and current Clang versions
+  * Colorization of "Test filters" output should be more robust
+    now
+  * `--wait-for-keypress` now also accepts `never` as an option
+  * Reporters no longer round-off nanoseconds when reporting
+    benchmarking results
+  * It is now possible to customize benchmark's warm-up time
+    when running the test binary
+    + `--benchmark-warmup-time {ms}`
+  * User can now specify how Catch2 should break into debugger
+  * Fixes missing `<random>` include in benchmarking
+  * Fixed missing `<iterator>` include in benchmarking
+  * Hidden test cases are now also tagged with `[!hide]` as per
+    documentation
+  * Detection of whether libc provides `std::nextafter` has been
+    improved
+  * Composing already-composed matchers no longer modifies the
+    partially-composed matcher expression
+    + This bug has been present for the last ~2 years and nobody
+      reported it
+  version 2.11.1:
+  * `google-build-using-namespace` clang-tidy warning is
+    suppressed
+  * `ObjectStorage` now behaves properly in `const` contexts
+  * `GENERATE_COPY(a, b)` now compiles properly
+  * Some more cleanups in the benchmarking support
+
+-------------------------------------------------------------------
 Wed Jan  8 12:55:46 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Use only %license
