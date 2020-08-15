@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200814" schemaversion="4.1">
+<image name="OBS__openSUSE___20200815" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200814</productvar>
+      <productvar name="VERSION">20200815</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200814,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200815,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200814/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200815/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -644,7 +644,6 @@
       <repopackage name="ghostscript-x11"/>
       <repopackage name="gimp"/>
       <repopackage name="gimp-lang"/>
-      <repopackage name="gimp-plugin-aa"/>
       <repopackage name="gimp-plugins-python"/>
       <repopackage name="gimp-ufraw"/>
       <repopackage name="gio-branding-openSUSE"/>
@@ -1202,6 +1201,7 @@
       <repopackage name="kernel-firmware-nfp"/>
       <repopackage name="kernel-firmware-nvidia"/>
       <repopackage name="kernel-firmware-platform"/>
+      <repopackage name="kernel-firmware-prestera"/>
       <repopackage name="kernel-firmware-qlogic"/>
       <repopackage name="kernel-firmware-radeon"/>
       <repopackage name="kernel-firmware-realtek"/>
@@ -1433,7 +1433,6 @@
       <repopackage name="lhasa"/>
       <repopackage name="liba2ps1"/>
       <repopackage name="liba52-0"/>
-      <repopackage name="libaa1"/>
       <repopackage name="libabw-0_1-1"/>
       <repopackage name="libaccounts-glib1"/>
       <repopackage name="libaccounts-qt5-1"/>
@@ -1492,7 +1491,6 @@
       <repopackage name="libbabl-0_1-0"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
-      <repopackage name="libBasicUsageEnvironment1"/>
       <repopackage name="libbd_btrfs2"/>
       <repopackage name="libbd_crypto2"/>
       <repopackage name="libbd_fs2"/>
@@ -1571,7 +1569,6 @@
       <repopackage name="libchewing3"/>
       <repopackage name="libchm0"/>
       <repopackage name="libcholmod3"/>
-      <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
       <repopackage name="libclang10"/>
       <repopackage name="libclastfm0"/>
@@ -1651,13 +1648,10 @@
       <repopackage name="libdrm_radeon1"/>
       <repopackage name="libdrpm0"/>
       <repopackage name="libdv4"/>
-      <repopackage name="libdvbpsi10"/>
-      <repopackage name="libdvdnav4"/>
       <repopackage name="libdvdread8"/>
       <repopackage name="libdw1"/>
       <repopackage name="libe-book-0_1-1"/>
       <repopackage name="libebackend-1_2-10"/>
-      <repopackage name="libebml5"/>
       <repopackage name="libebook-1_2-20"/>
       <repopackage name="libebook-contacts-1_2-3"/>
       <repopackage name="libebtc0"/>
@@ -1856,7 +1850,6 @@
       <repopackage name="libgrilo-0_3-0"/>
       <repopackage name="libgrlnet-0_3-0"/>
       <repopackage name="libgrlpls-0_3-0"/>
-      <repopackage name="libgroupsock8"/>
       <repopackage name="libgsasl-lang"/>
       <repopackage name="libgsasl7"/>
       <repopackage name="libgsf-1-114"/>
@@ -1981,7 +1974,6 @@
       <repopackage name="libitm1"/>
       <repopackage name="libiw30"/>
       <repopackage name="libixion-0_15-0"/>
-      <repopackage name="libixml11"/>
       <repopackage name="libjack0"/>
       <repopackage name="libjansson4"/>
       <repopackage name="libjavascriptcoregtk-4_0-18"/>
@@ -2229,7 +2221,6 @@
       <repopackage name="liblightdm-gobject-1-0"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
-      <repopackage name="libliveMedia79"/>
       <repopackage name="libLLVM10"/>
       <repopackage name="liblmdb-0_9_24"/>
       <repopackage name="libloader"/>
@@ -2263,7 +2254,6 @@
       <repopackage name="libmariadb3"/>
       <repopackage name="libmariadbd19"/>
       <repopackage name="libmarkdown2"/>
-      <repopackage name="libmatroska7"/>
       <repopackage name="libmaxminddb0"/>
       <repopackage name="libmbim"/>
       <repopackage name="libmbim-glib4"/>
@@ -2450,9 +2440,7 @@
       <repopackage name="libpq5"/>
       <repopackage name="libpresage1"/>
       <repopackage name="libprocps8"/>
-      <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
-      <repopackage name="libprotobuf-lite23"/>
       <repopackage name="libprotobuf23"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libproxy1-config-gnome3"/>
@@ -2654,7 +2642,6 @@
       <repopackage name="libscg1_0"/>
       <repopackage name="libscgcmd1_0"/>
       <repopackage name="libschily2_0"/>
-      <repopackage name="libschroedinger-1_0-0"/>
       <repopackage name="libSDL-1_2-0"/>
       <repopackage name="libSDL2-2_0-0"/>
       <repopackage name="libSDL2_image-2_0-0"/>
@@ -2801,11 +2788,9 @@
       <repopackage name="libunique-1_0-0"/>
       <repopackage name="libunistring2"/>
       <repopackage name="libunwind"/>
-      <repopackage name="libupnp16"/>
       <repopackage name="libupower-glib3"/>
       <repopackage name="libupsclient1"/>
       <repopackage name="liburcu6"/>
-      <repopackage name="libUsageEnvironment3"/>
       <repopackage name="libusb-0_1-4"/>
       <repopackage name="libusb-1_0-0"/>
       <repopackage name="libusbmuxd6"/>
@@ -2823,7 +2808,6 @@
       <repopackage name="libv4lconvert0"/>
       <repopackage name="libva-drm2"/>
       <repopackage name="libva-glx2"/>
-      <repopackage name="libva-wayland2"/>
       <repopackage name="libva-x11-2"/>
       <repopackage name="libva2"/>
       <repopackage name="libvala-0_48-0"/>
@@ -2859,8 +2843,6 @@
       <repopackage name="libvirt-libs"/>
       <repopackage name="libvisio-0_1-1"/>
       <repopackage name="libvisual"/>
-      <repopackage name="libvlc5"/>
-      <repopackage name="libvlccore9"/>
       <repopackage name="libvmtools0"/>
       <repopackage name="libvncclient1"/>
       <repopackage name="libvncserver1"/>
@@ -4974,12 +4956,6 @@
       <repopackage name="virt-manager-common"/>
       <repopackage name="virt-what"/>
       <repopackage name="vlan"/>
-      <repopackage name="vlc"/>
-      <repopackage name="vlc-codec-gstreamer"/>
-      <repopackage name="vlc-lang"/>
-      <repopackage name="vlc-noX"/>
-      <repopackage name="vlc-qt"/>
-      <repopackage name="vlc-vdpau"/>
       <repopackage name="vlgothic-fonts"/>
       <repopackage name="vm-install"/>
       <repopackage name="vorbis-tools"/>

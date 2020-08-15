@@ -4822,6 +4822,7 @@ unsorted:
   - gimp-help-sl 
   - gimp-help-sv 
   - gimp-help-zh 
+  - gimp-plugin-aa: [i586] 
   - gimp-plugin-dds 
   - gimp-plugin-dds-doc 
   - gimp-plugin-gmic 
@@ -5071,6 +5072,8 @@ unsorted:
   - gnome-multi-writer-lang 
   - gnome-nettool 
   - gnome-nettool-lang 
+  - gnome-network-displays 
+  - gnome-network-displays-lang 
   - gnome-news 
   - gnome-news-lang 
   - gnome-nibbles 
@@ -7780,6 +7783,7 @@ unsorted:
   - libAppStreamQt-devel 
   - libArcus-devel 
   - libArcus3 
+  - libBasicUsageEnvironment1: [i586] 
   - libBox2D-devel 
   - libBox2D-devel-32bit: [x86_64] 
   - libBox2D2_3_1 
@@ -8299,6 +8303,7 @@ unsorted:
   - libUil4 
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
+  - libUsageEnvironment3: [i586] 
   - libVFlib3-5 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
@@ -8406,6 +8411,7 @@ unsorted:
   - libYODA-1_8_3 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
+  - libaa1: [i586] 
   - libaa1-32bit: [x86_64] 
   - libaal-1_0-7 
   - libaal-devel 
@@ -9009,6 +9015,7 @@ unsorted:
   - libchipcard6 
   - libchm0-32bit: [x86_64] 
   - libchromaprint-devel 
+  - libchromaprint1: [i586] 
   - libchromaprint1-32bit: [x86_64] 
   - libcilium1: [x86_64] 
   - libcilkrts5 
@@ -9356,6 +9363,7 @@ unsorted:
   - libdv4-32bit: [x86_64] 
   - libdvbpsi-0-devel 
   - libdvbpsi-devel 
+  - libdvbpsi10: [i586] 
   - libdvbpsi10-32bit: [x86_64] 
   - libdvbpsi7 
   - libdvbpsi7-32bit: [x86_64] 
@@ -9363,6 +9371,7 @@ unsorted:
   - libdvbv5-0-32bit: [x86_64] 
   - libdvbv5-devel 
   - libdvdnav-devel 
+  - libdvdnav4: [i586] 
   - libdvdnav4-32bit: [x86_64] 
   - libdvdread-devel 
   - libdvdread8-32bit: [x86_64] 
@@ -9390,6 +9399,7 @@ unsorted:
   - libeb16 
   - libebackend-1_2-10-32bit: [x86_64] 
   - libebml-devel 
+  - libebml5: [i586] 
   - libebml5-32bit: [x86_64] 
   - libebook-1_2-20-32bit: [x86_64] 
   - libebook-contacts-1_2-3-32bit: [x86_64] 
@@ -9830,7 +9840,7 @@ unsorted:
   - libgloox17 
   - libgloox17-32bit: [x86_64] 
   - libglpk40 
-  - libglslang-suse10 
+  - libglslang10 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglue-devel 
@@ -9945,6 +9955,7 @@ unsorted:
   - libgrooveloudness4 
   - libgrooveplayer-devel 
   - libgrooveplayer4 
+  - libgroupsock8: [i586] 
   - libgrpc++1 
   - libgrpc8 
   - libgrss-devel 
@@ -10420,6 +10431,7 @@ unsorted:
   - libiw-devel 
   - libixion-devel 
   - libixion-tools 
+  - libixml11: [i586] 
   - libixml11-32bit: [x86_64] 
   - libjack-devel 
   - libjack-devel-32bit: [x86_64] 
@@ -10667,6 +10679,7 @@ unsorted:
   - liblirc_driver0 
   - liblirc_driver0-32bit: [x86_64] 
   - liblittleb0 
+  - libliveMedia79: [i586] 
   - liblldb10: [x86_64] 
   - liblldb7: [x86_64] 
   - liblldb8: [x86_64] 
@@ -10804,6 +10817,7 @@ unsorted:
   - libmatio-devel 
   - libmatio9 
   - libmatroska-devel 
+  - libmatroska7: [i586] 
   - libmatroska7-32bit: [x86_64] 
   - libmaxminddb-devel 
   - libmaxminddb0-32bit: [x86_64] 
@@ -11651,10 +11665,12 @@ unsorted:
   - libprimesieve9 
   - libprofiler0 
   - libproj19 
+  - libprojectM3: [i586] 
   - libprometheus-cpp0 
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
+  - libprotobuf-lite23: [i586] 
   - libprotobuf-lite23-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
@@ -12318,6 +12334,7 @@ unsorted:
   - libscg-devel 
   - libschily-devel 
   - libschily-devel-doc 
+  - libschroedinger-1_0-0: [i586] 
   - libschroedinger-1_0-0-32bit: [x86_64] 
   - libscintilla-devel 
   - libscintilla3 
@@ -12875,6 +12892,7 @@ unsorted:
   - libupb0 
   - libupm1 
   - libupnp-devel 
+  - libupnp16: [i586] 
   - libupnp16-32bit: [x86_64] 
   - libupower-glib-devel 
   - liburcu-devel 
@@ -12936,6 +12954,7 @@ unsorted:
   - libva-glx2-32bit: [x86_64] 
   - libva-utils 
   - libva-vdpau-driver 
+  - libva-wayland2: [i586] 
   - libva-wayland2-32bit: [x86_64] 
   - libva-x11-2-32bit: [x86_64] 
   - libva2-32bit: [x86_64] 
@@ -13023,6 +13042,8 @@ unsorted:
   - libvkd3d-utils1-32bit: [x86_64] 
   - libvkd3d1 
   - libvkd3d1-32bit: [x86_64] 
+  - libvlc5: [i586] 
+  - libvlccore9: [i586] 
   - libvma: [x86_64] 
   - libvma-devel: [x86_64] 
   - libvma9: [x86_64] 
@@ -21742,7 +21763,7 @@ unsorted:
   - python3-scikit-umfpack 
   - python3-scipy: [i586] 
   - python3-scipy-gnu-hpc: [x86_64] 
-  - python3-scipy_1_4_1-gnu-hpc: [x86_64] 
+  - python3-scipy_1_5_2-gnu-hpc: [x86_64] 
   - python3-scp 
   - python3-screeninfo 
   - python3-scripttest 
@@ -34337,9 +34358,15 @@ unsorted:
   - vkeybd 
   - vkmark: [x86_64] 
   - vkquake 
+  - vlc: [i586] 
+  - vlc-codec-gstreamer: [i586] 
   - vlc-devel 
   - vlc-jack 
+  - vlc-lang: [i586] 
+  - vlc-noX: [i586] 
   - vlc-opencv 
+  - vlc-qt: [i586] 
+  - vlc-vdpau: [i586] 
   - vm-dump-metrics 
   - vms-empire 
   - vmtouch 
