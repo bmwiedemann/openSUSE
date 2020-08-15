@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 13 09:32:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.08.12
+  * star: GNU cpio archives may contain longer path names than
+    permitted by the AT&T documentation, problems with which
+    where fixed.
+  * sccs: sccslog again allows ovelapping delgets and now allows
+    overlapping delget groups to be correctly detected as commit
+    bundle.
+
+-------------------------------------------------------------------
 Sun Jul 19 22:24:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.07.18

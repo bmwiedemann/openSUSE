@@ -320,4 +320,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>822952</requestid>
   </revision>
+  <revision rev="33" vrev="33">
+    <srcmd5>b338e0521cd93ece7e806743f30ea301</srcmd5>
+    <version>unknown</version>
+    <time>1597519113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.08.12</comment>
+    <requestid>826256</requestid>
+  </revision>
 </revisionlist>
