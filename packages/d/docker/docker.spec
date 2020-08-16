@@ -416,6 +416,7 @@ find %{buildroot}%{_prefix}/src/docker \
 
 %if "%flavour" == "kubic"
 # place kubelet.env in fillupdir (for kubeadm-criconfig)
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE5}
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.kubelet
 %endif
 
