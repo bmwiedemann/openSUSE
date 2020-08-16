@@ -1,7 +1,7 @@
 #
 # spec file for package marisa
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define with_python2 0%{?suse_version} < 1550
 %{!?py_ver: %global py_ver %(python -c "import sys; v=sys.version_info[:2]; print '%%d.%%d'%%v" 2>/dev/null || echo PYTHON-NOT-FOUND)}
 %{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
@@ -29,15 +30,17 @@ Name:           marisa
 Version:        0.2.4
 Release:        0
 Summary:        Matching Algorithm with Recursively Implemented StorAge
-License:        LGPL-2.1+ or BSD-2-Clause
+License:        LGPL-2.1-or-later OR BSD-2-Clause
 Group:          System/I18n/Japanese
-Url:            https://code.google.com/p/marisa-trie/
+URL:            https://code.google.com/p/marisa-trie/
 Source:         https://marisa-trie.googlecode.com/files/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  perl
 BuildRequires:  pkg-config
+%if %with_python2
 BuildRequires:  python-devel
+%endif
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 Provides:       marisa-trie = %{version}
@@ -74,6 +77,7 @@ Requires:       perl = %{perl_version}
 %description -n perl-marisa
 Perl bindings for %{name}.
 
+%if %with_python2
 %package -n python-marisa
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
@@ -82,6 +86,7 @@ Requires:       %{name} = %{version}
 
 %description -n python-marisa
 Python bindings for %{name}.
+%endif
 
 %package -n ruby-marisa
 Summary:        Ruby bindings for %{name}
@@ -97,7 +102,9 @@ Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       perl-marisa = %{version}
+%if %with_python2
 Requires:       python-marisa = %{version}
+%endif
 Requires:       ruby-marisa = %{version}
 
 %description devel
@@ -117,11 +124,13 @@ ruby extconf.rb --with-opt-include="%{_builddir}/%{name}-%{version}/lib" --vendo
 make %{?_smp_mflags}
 popd
 
+%if %with_python2
 # build python
 pushd bindings/python
 python setup.py build_ext --include-dirs="%{_builddir}/%{name}-%{version}/lib" --library-dirs="%{_builddir}/%{name}-%{version}/lib/.libs"
 python setup.py build
 popd
+%endif
 
 # build perl
 pushd bindings/perl
@@ -139,10 +148,12 @@ pushd bindings/ruby
 make install DESTDIR=%{buildroot} hdrdir=%{_includedir}/ruby-%{rb_ver} rubyhdrdir=%{_includedir}/ruby-%{rb_ver}
 popd
 
+%if %with_python2
 # install python
 pushd bindings/python
 python setup.py install --prefix=%{_prefix} --root=%{buildroot}
 popd
+%endif
 
 # install perl
 pushd bindings/perl
@@ -179,12 +190,14 @@ sed -i '1s/^=head2 .*:/=head2/' %{buildroot}%{perl_archlib}/perllocal.pod
 %{rb_vendorarch}/%{name}.so
 %endif
 
+%if %with_python2
 %files -n python-marisa
 %defattr(-,root,root)
 %{python_sitearch}/_marisa.so
 %{python_sitearch}/marisa.*
 %if 0%{?suse_version} >= 1110
 %{python_sitearch}/marisa-0.0.0-py%{py_ver}.egg-info
+%endif
 %endif
 
 %files -n perl-marisa

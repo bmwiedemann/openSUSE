@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 14 12:55:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer package python2-binding on suse_version > 1500.
+
+-------------------------------------------------------------------
 Tue Mar 13 09:37:28 UTC 2018 - bwiedemann@suse.com
 
 - Drop build time from perllocal.pod for reproducibility (boo#1047218)
