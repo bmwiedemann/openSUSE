@@ -165,7 +165,7 @@ generates setup.py from the provided pyproject.toml.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Install macros.lua for rpm to have centralized place to
 # manage dephell_genspec macro
-install -D -m 644 %{SOURCE1} %{buildroot}%{_libexecdir}/rpm/macros.d/macros.py-dephell
+install -D -m 644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.py-dephell
 %endif
 
 %check
@@ -190,8 +190,7 @@ export TRAVIS_OS_NAME=1
 %{python_sitelib}/*
 
 %files rpm-macros
-%dir %{_libexecdir}/rpm/macros.d
-%{_libexecdir}/rpm/macros.d/macros.py-dephell
+%{_rpmmacrodir}/macros.py-dephell
 %endif
 
 %changelog
