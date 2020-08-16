@@ -48,4 +48,14 @@
 </comment>
     <requestid>808724</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7c3ea2441b49717ff248230778ae58f4</srcmd5>
+    <version>3.7.7</version>
+    <time>1597602462</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.7
+  + Improvements to the build system.
+  + Updates to nl, pt, sv translations (thanks, translators!).</comment>
+    <requestid>826891</requestid>
+  </revision>
 </revisionlist>
