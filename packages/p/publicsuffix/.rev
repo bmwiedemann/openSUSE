@@ -672,4 +672,24 @@ Now with build cycle removed.</comment>
     <comment></comment>
     <requestid>821284</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8b89c7d120d17dee9e64c1fc45667dd7</srcmd5>
+    <version>20200810</version>
+    <time>1597602356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200810:
+  * Add algorithmia.com (#1071)
+  * Added Mythic Beasts (#1075)
+  * gTLD autopull: 2020-08-07 (#1085)
+  * add rdv.to domains for pcarrier.ca Software Inc. (#1039)
+  * thingdust AG: added in-house domains of internal services (#1031)
+  * Add mcdir.ru and vps.mcdir.ru (#1051)
+  * Add na4u.ru to list (#998)
+  * gTLD autopull: 2020-07-29 (#1079)
+  * gTLD autopull: 2020-07-28 (#1077)
+  * add impertrix.com and impertrixcdn.com (#1060)
+  * gTLD autopull: 2020-07-18 (#1069)
+  * Add 12 sub zones to .br [20200714 update] (#1068)</comment>
+    <requestid>826653</requestid>
+  </revision>
 </revisionlist>
