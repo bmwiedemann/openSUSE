@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Aug  2 16:05:18 UTC 2020 - aloisio@gmx.com
+
+- Update to version 49.0.0
+  New features and enhancements:
+  * mkvmerge: added support for copying the new track header
+    elements `BlockAddIDName`, `BlockAddIDType`,
+    `BlockAddIDValue` and `BlockAddIDExtraData` from Matroska
+    files if they exist.
+  * mkvinfo: added support for the new track header elements
+    `BlockAdditionMapping`, `BlockAddIDName`, BlockAddIDType`,
+    `BlockAddIDValue` and `BlockAddIDExtraData`.
+  * MKVToolNix GUI: multiplexer: the list of recent directories
+    can now be edited in the preferences → "Multiplexer" →
+    "Destination file name".
+  * MKVToolNix GUI: preferences: the values in the various
+   "predefined values" lists can now be re-ordered freely by
+    dragging & dropping.
+  Bug fixes:
+  * mkvmerge: Matroska reader: when reading tracks (e.g. a
+    subtitle track) from Matroska files with their `default
+    track` flag set to `yes`, and when overwriting those via the
+    command line to `no`, `mkvmerge` would not promote
+    additional tracks of the same type from other files (e.g.
+    another subtitle track from an SRT file).
+  * mkvmerge: SRT reader: empty lines inside entries were
+    doubled.
+  * mkvmerge: subtitles: when calculating the rounded duration
+    of each entry the error from rounding the corresponding
+    timestamp will be taken into account.
+  * mkvextract: SSA/ASS extraction: mkvextract is no longer
+    inserting empty lines before the `Dialogue:` lines.
+  * mkvextract: USF subtitles: start & end timestamps were too
+    high by a factor of 1.000.000.
+  * MKVToolNix: info tool: when saving to a text file the
+    checkbox "Save as default for saving output to text files"
+    did nothing.
+  * MKVToolNix: info tool: when saving to a text file in "all
+    elements in a tree-like structure" mode, the GUI always
+    stopped at the first cluster regardless of the setting of
+    the "verbosity" option.
+  * MKVToolNix GUI: preferences: when tooltips were disabled the
+    dialogs for adding new entries to the various "predefined
+    values" lists were missing their texts.
+  * configure: fixed detection of QtDBus. Fixes #2886.
+  Build system changes:
+  * libMatroska v1.6.1 is now required. The bundled version has
+    been updated to that version.
+ 
+-------------------------------------------------------------------
 Sun Jun 28 05:55:10 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 48.0.0

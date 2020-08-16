@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        48.0.0
+Version:        49.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -58,7 +58,7 @@ BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fmt) >= 6.1.0
 BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libebml) >= 1.4.0
-BuildRequires:  pkgconfig(libmatroska) >= 1.6.0
+BuildRequires:  pkgconfig(libmatroska) >= 1.6.1
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
@@ -77,8 +77,7 @@ mkvextract, mkvinfo, mkvmerge and mkvpropedit.
 This package contains the graphical user interface for the mkvtoolnix utils.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 # Make sure to use system libs:
 rm -rf lib/{boost,libebml,libmatroska,nlohmann-json,pugixml,fmt}
 
