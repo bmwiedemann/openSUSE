@@ -5,20 +5,20 @@ Index: emacs-25.2/configure.ac
  emacs-26.1/src/image.c  |   12 ++++++++++++
  2 files changed, 13 insertions(+), 1 deletion(-)
 
---- emacs-26.1/configure.ac
-+++ emacs-26.1/configure.ac	2018-05-29 12:46:11.911662417 +0000
-@@ -2525,7 +2525,7 @@ if test "${HAVE_X11}" = "yes" || test "$
-     ## 6.3.5 is the earliest version known to work; see Bug#17339.
-     ## 6.8.2 makes Emacs crash; see Bug#13867.
-     ## 7 and later have not been ported to; See Bug#25967.
--    IMAGEMAGICK_MODULE="Wand >= 6.3.5 Wand != 6.8.2 Wand < 7"
-+    IMAGEMAGICK_MODULE="MagickWand >= 6.3.5 MagickWand != 6.8.2"
-     EMACS_CHECK_MODULES([IMAGEMAGICK], [$IMAGEMAGICK_MODULE])
+--- emacs-27.1/configure.ac
++++ emacs-27.1/configure.ac	2020-08-11 09:59:04.349950601 +0000
+@@ -2618,7 +2618,7 @@ if test "${HAVE_X11}" = "yes" || test "$
+     else
+        ## 6.3.5 is the earliest version known to work; see Bug#17339.
+        ## 6.8.2 makes Emacs crash; see Bug#13867.
+-       EMACS_CHECK_MODULES([IMAGEMAGICK], [Wand >= 6.3.5 Wand != 6.8.2])
++       EMACS_CHECK_MODULES([IMAGEMAGICK], [MagickWand >= 6.3.5 MagickWand != 6.8.2])
+     fi
  
      if test $HAVE_IMAGEMAGICK = yes; then
---- emacs-26.1/src/image.c
-+++ emacs-26.1/src/image.c	2018-05-29 12:43:23.178732705 +0000
-@@ -8434,7 +8434,11 @@ imagemagick_compute_animated_image (Magi
+--- emacs-27.1/src/image.c
++++ emacs-27.1/src/image.c	2020-08-11 09:49:35.500181432 +0000
+@@ -8770,7 +8770,11 @@ imagemagick_compute_animated_image (Magi
        PixelWand **source, **dest;
        size_t source_width, source_height;
        ssize_t source_left, source_top;
@@ -30,7 +30,7 @@ Index: emacs-25.2/configure.ac
        DisposeType dispose;
        ptrdiff_t lines = 0;
  
-@@ -8499,7 +8503,11 @@ imagemagick_compute_animated_image (Magi
+@@ -8835,7 +8839,11 @@ imagemagick_compute_animated_image (Magi
  	      if (dispose == BackgroundDispose || PixelGetAlpha (source[x]))
  		{
  		  PixelGetMagickColor (source[x], &pixel);
@@ -42,7 +42,7 @@ Index: emacs-25.2/configure.ac
  		}
  	    }
  	  PixelSyncIterator (dest_iterator);
-@@ -8546,7 +8554,11 @@ imagemagick_load_image (struct frame *f,
+@@ -8880,7 +8888,11 @@ imagemagick_load_image (struct frame *f,
    MagickWand *image_wand;
    PixelIterator *iterator;
    PixelWand **pixels, *bg_wand = NULL;

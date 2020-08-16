@@ -14,7 +14,7 @@
  #ifdef HAVE_PWD_H
  #include <pwd.h>
  #endif
-@@ -502,6 +505,15 @@ x_load_resources (Display *display, cons
+@@ -470,6 +473,15 @@ x_load_resources (Display *display, cons
    XrmPutLineResource (&rdb, line);
  
  #endif /* not USE_MOTIF */
@@ -30,7 +30,7 @@
  
    user_database = get_user_db (display);
  
-@@ -543,6 +555,10 @@ x_load_resources (Display *display, cons
+@@ -511,6 +523,10 @@ x_load_resources (Display *display, cons
  	XrmMergeDatabases (db, &rdb);
      }
  

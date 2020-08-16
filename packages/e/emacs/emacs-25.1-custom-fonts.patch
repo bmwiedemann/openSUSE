@@ -17,8 +17,8 @@ Work around openSUSE bug #1016172
  
 @@ -42,28 +43,28 @@ If DISPLAY-OR-FRAME is a frame, the disp
  
- If SET-FONT is non-nil, change the font for frames.  Otherwise re-apply the
- current form for the frame (i.e. hinting or somesuch changed)."
+ If SET-FONT is non-nil, change the font for frames.  Otherwise re-apply
+ the current form for the frame (i.e. hinting or somesuch changed)."
 -  (let ((new-font (and (fboundp 'font-get-system-font)
 -		       (font-get-system-font)))
 -	(frame-list (frames-on-display-list display-or-frame)))
@@ -60,15 +60,15 @@ Work around openSUSE bug #1016172
    "Handle config-changed-event on the display in EVENT.
 --- src/xsettings.c
 +++ src/xsettings.c	2016-12-21 07:25:17.605036477 +0000
-@@ -45,6 +45,7 @@ along with GNU Emacs.  If not, see <http
- #endif
- 
- #ifdef HAVE_XFT
+@@ -49,6 +49,7 @@ along with GNU Emacs.  If not, see <http
+ #ifdef USE_CAIRO
+ #include <fontconfig/fontconfig.h>
+ #else  /* HAVE_XFT */
 +#include <math.h>
  #include <X11/Xft/Xft.h>
  #endif
- 
-@@ -620,7 +621,11 @@ apply_xft_settings (struct x_display_inf
+ #endif
+@@ -625,7 +626,11 @@ apply_xft_settings (struct x_display_inf
  #endif
    FcPatternGetInteger (pat, FC_LCD_FILTER, 0, &oldsettings.lcdfilter);
    FcPatternGetInteger (pat, FC_RGBA, 0, &oldsettings.rgba);

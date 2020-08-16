@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Aug 14 08:01:27 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Provide for all three emacs layouts, that are emacs-nox, emacs-x11,
+  and emacs-gtk their own pdumper file (boo#1175233)
+
+-------------------------------------------------------------------
+Wed Aug 12 12:24:44 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to GNU Emacs version 27.1
+  * Emacs is now compliant with the latest version 13.0 of the Unicode Standard.
+  * Emacs can now use the XDG convention for init files.
+    The 'XDG_CONFIG_HOME' environment variable (which defaults to
+    "~/.config") specifies the XDG configuration parent directory.
+    Emacs checks for "init.el" and other configuration files inside
+    the "emacs" subdirectory of 'XDG_CONFIG_HOME', i.e.
+    "$XDG_CONFIG_HOME/emacs/init.el"
+    However, Emacs will still initially look for init files in their
+    traditional locations if "~/.emacs.d" or "~/.emacs" exist, even if
+    "$XDG_CONFIG_HOME/emacs" also exists.  This means that you must delete
+    or rename any existing "~/.emacs.d" and "~/.emacs" to enable use of
+    the XDG directory.
+  * The varius changes can be read in detail at /usr/share/emacs/27.1/etc/NEWS
+- Port and rename patch emacs-26.2.dif to emacs-27.1.dif
+- Modify/port patches
+  * emacs-24.1-ps-mule.patch
+  * emacs-24.3-asian-print.patch
+  * emacs-24.3-iconic.patch
+  * emacs-24.3-x11r7.patch
+  * emacs-24.4-flyspell.patch
+  * emacs-24.4-glibc.patch
+  * emacs-24.4-nonvoid.patch
+  * emacs-24.4-ps-bdf.patch
+  * emacs-24.4-xim.patch
+  * emacs-25.1-custom-fonts.patch
+  * emacs-25.2-ImageMagick7.patch
+  * emacs-26.1-xft4x11.patch
+- Remove patches now upstream solved
+  * xwidget.patch
+  * emacs-libX11-boo1175028.patch
+- Add patch emacs-27.1-pdftex.patch to generate pdf files
+- Add emacs-27.1-pdf.tar.xz as result of this to use texlive only once
+- Use emacs.keyring to verify source tar ball
+
+-------------------------------------------------------------------
 Mon Aug 10 12:31:55 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-libX11-boo1175028.patch to fix SIGSEGV introduced

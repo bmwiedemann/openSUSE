@@ -11,28 +11,31 @@
  lisp/net/ange-ftp.el            |    8 +--
  lisp/site-load.el               |   41 ++++++++++++++++
  lisp/speedbar.el                |    1 
- lisp/textmodes/ispell.el        |   85 ++++++++++++++++++++++++++++++++---
+ lisp/textmodes/ispell.el        |   82 ++++++++++++++++++++++++++++++++-
  site-lisp/term/func-keys.el     |   33 +++++++++++++
  site-lisp/term/gnome.el         |   97 ++++++++++++++++++++++++++++++++++++++++
  site-lisp/term/kvt.el           |   97 ++++++++++++++++++++++++++++++++++++++++
  site-lisp/term/linux.el         |   79 ++++++++++++++++++++++++++++++++
  site-lisp/term/locale.el        |   13 +++++
- 18 files changed, 473 insertions(+), 33 deletions(-)
+ 18 files changed, 471 insertions(+), 32 deletions(-)
 
 --- Makefile.in
-+++ Makefile.in	2019-04-15 12:04:25.158945850 +0000
-@@ -490,8 +490,8 @@ install-arch-dep: src install-arch-indep
++++ Makefile.in	2020-08-11 10:21:15.194072175 +0000
+@@ -493,11 +493,11 @@ install-arch-dep: src install-arch-indep
  	umask 022; ${MKDIR_P} "$(DESTDIR)${bindir}"
  	$(MAKE) -C lib-src install
  ifeq (${ns_self_contained},no)
 -	${INSTALL_PROGRAM} $(INSTALL_STRIP) src/emacs${EXEEXT} "$(DESTDIR)${bindir}/$(EMACSFULL)"
--	-chmod 755 "$(DESTDIR)${bindir}/$(EMACSFULL)"
 +	${INSTALL_PROGRAM} $(INSTALL_STRIP) src/emacs${EXEEXT} "$(DESTDIR)${bindir}/$(EMACS)"
+ ifeq (${DUMPING},pdumper)
+ 	${INSTALL_DATA} src/emacs.pdmp "$(DESTDIR)${libexecdir}/emacs/${version}/${configuration}"/emacs.pdmp
+ endif
+-	-chmod 755 "$(DESTDIR)${bindir}/$(EMACSFULL)"
 +	-chmod 755 "$(DESTDIR)${bindir}/$(EMACS)"
  ifndef NO_BIN_LINK
  	rm -f "$(DESTDIR)${bindir}/$(EMACS)"
  	cd "$(DESTDIR)${bindir}" && $(LN_S_FILEONLY) "$(EMACSFULL)" "$(EMACS)"
-@@ -682,6 +682,7 @@ install-man:
+@@ -690,6 +690,7 @@ install-man:
  	umask 022; ${MKDIR_P} "$(DESTDIR)${man1dir}"
  	thisdir=`/bin/pwd`; \
  	cd ${mansrcdir}; \
@@ -40,7 +43,7 @@
  	for page in *.1; do \
  	  test "$$page" = ChangeLog.1 && continue; \
  	  dest=`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1; \
-@@ -780,7 +781,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
+@@ -788,7 +789,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
  	   for page in *.1; do \
  	     rm -f "$(DESTDIR)${man1dir}"/`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1$$ext; done; \
  	 fi)
@@ -50,8 +53,8 @@
  	   rm -f hicolor/*x*/apps/"${EMACS_NAME}.png" \
  	     "hicolor/scalable/apps/${EMACS_NAME}.svg" \
 --- configure
-+++ configure	2019-04-15 12:04:25.158945850 +0000
-@@ -10465,10 +10465,8 @@ fi
++++ configure	2020-08-11 10:17:21.102266456 +0000
+@@ -10750,10 +10750,8 @@ fi
  LD_SWITCH_X_SITE_RPATH=
  if test "${x_libraries}" != NONE; then
    if test -n "${x_libraries}"; then
@@ -65,8 +68,8 @@
    x_default_search_path=""
    x_search_path=${x_libraries}
 --- configure.ac
-+++ configure.ac	2019-04-15 12:04:25.162945775 +0000
-@@ -1806,10 +1806,8 @@ fi
++++ configure.ac	2020-08-11 10:17:21.102266456 +0000
+@@ -1881,10 +1881,8 @@ fi
  LD_SWITCH_X_SITE_RPATH=
  if test "${x_libraries}" != NONE; then
    if test -n "${x_libraries}"; then
@@ -80,7 +83,7 @@
    x_default_search_path=""
    x_search_path=${x_libraries}
 --- doc/man/etags.1
-+++ doc/man/etags.1	2019-04-15 12:04:25.162945775 +0000
++++ doc/man/etags.1	2020-08-11 10:17:21.102266456 +0000
 @@ -7,7 +7,7 @@
  ..
  
@@ -164,7 +167,7 @@
  .B \-h, \-H, \-\-help
  Print usage information.  Followed by one or more \-\-language=LANG
 --- lib-src/Makefile.in
-+++ lib-src/Makefile.in	2019-04-15 12:04:25.162945775 +0000
++++ lib-src/Makefile.in	2020-08-11 10:31:37.642931244 +0000
 @@ -30,6 +30,8 @@ CC=@CC@
  CFLAGS=@CFLAGS@
  CPPFLAGS = @CPPFLAGS@
@@ -183,17 +186,17 @@
                 ebrowse${EXEEXT}
  
  # Things that Emacs runs internally, or during the build process,
-@@ -376,7 +378,7 @@ etags${EXEEXT}: ${etags_deps}
+@@ -371,7 +373,7 @@ etags${EXEEXT}: ${etags_deps}
  ## etags.o files on top of each other.
  ## FIXME?
  ## Can't we use a wrapper that calls 'etags --ctags'?
 -ctags${EXEEXT}: ${srcdir}/ctags.c ${etags_deps}
 +gnuctags${EXEEXT}: ${srcdir}/ctags.c ${etags_deps}
- 	$(AM_V_CCLD)$(CC) ${ALL_CFLAGS} $(etags_cflags) $< $(etags_libs)
+ 	$(AM_V_CCLD)$(CC) ${ALL_CFLAGS} -o $@ $< $(etags_libs)
  
  ebrowse${EXEEXT}: ${srcdir}/ebrowse.c ${srcdir}/../lib/min-max.h $(NTLIB) \
 --- lib-src/pop.c
-+++ lib-src/pop.c	2019-04-15 12:04:25.242944251 +0000
++++ lib-src/pop.c	2020-08-11 10:17:21.102266456 +0000
 @@ -26,6 +26,7 @@ along with GNU Emacs.  If not, see <http
  #ifdef MAIL_USE_POP
  
@@ -203,7 +206,7 @@
  #include "ntlib.h"
  #undef _WIN32_WINNT
 --- lib/Makefile.in
-+++ lib/Makefile.in	2019-04-15 12:04:25.242944251 +0000
++++ lib/Makefile.in	2020-08-11 10:17:21.102266456 +0000
 @@ -50,6 +50,8 @@ am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
  am__v_at_0 = @
  am__v_at_1 =
@@ -214,7 +217,7 @@
    $(C_SWITCH_SYSTEM) $(C_SWITCH_MACHINE) $(DEPFLAGS) \
    $(GNULIB_WARN_CFLAGS) $(WERROR_CFLAGS) $(PROFILING_CFLAGS) $(CFLAGS) \
 --- lisp/cmuscheme.el
-+++ lisp/cmuscheme.el	2019-04-15 12:04:25.242944251 +0000
++++ lisp/cmuscheme.el	2020-08-11 10:17:21.106266385 +0000
 @@ -241,7 +241,8 @@ is run).
  			 (read-string "Run Scheme: " scheme-program-name)
  			 scheme-program-name)))
@@ -226,7 +229,7 @@
  			   (scheme-start-file (car cmdlist)) (cdr cmdlist)))
  	(inferior-scheme-mode)))
 --- lisp/international/mule-cmds.el
-+++ lisp/international/mule-cmds.el	2019-04-15 12:04:25.242944251 +0000
++++ lisp/international/mule-cmds.el	2020-08-11 10:17:21.106266385 +0000
 @@ -39,6 +39,7 @@
  
  (defvar mule-keymap
@@ -236,8 +239,8 @@
      (define-key map "r" 'revert-buffer-with-coding-system)
      (define-key map "F" 'set-file-name-coding-system)
 --- lisp/net/ange-ftp.el
-+++ lisp/net/ange-ftp.el	2019-04-15 12:04:25.242944251 +0000
-@@ -4971,7 +4971,7 @@ NEWNAME should be the name to give the n
++++ lisp/net/ange-ftp.el	2020-08-11 10:17:21.106266385 +0000
+@@ -5066,7 +5066,7 @@ NEWNAME should be the name to give the n
  ;  "If a host matches this regexp then it is assumed to be running VOS.")
  ;
  ;(defun ange-ftp-vos-host (host)
@@ -246,7 +249,7 @@
  ;       (save-match-data
  ;	 (string-match ange-ftp-vos-host-regexp host))))
  ;
-@@ -5086,7 +5086,7 @@ NEWNAME should be the name to give the n
+@@ -5181,7 +5181,7 @@ NEWNAME should be the name to give the n
  
  ;; Return non-nil if HOST is running VMS.
  (defun ange-ftp-vms-host (host)
@@ -255,7 +258,7 @@
         (string-match-p ange-ftp-vms-host-regexp host)))
  
  ;; Because some VMS ftp servers convert filenames to lower case
-@@ -5594,7 +5594,7 @@ Other orders of $ and _ seem to all work
+@@ -5689,7 +5689,7 @@ Other orders of $ and _ seem to all work
  
  ;; Return non-nil if HOST is running MTS.
  (defun ange-ftp-mts-host (host)
@@ -264,7 +267,7 @@
         (string-match-p ange-ftp-mts-host-regexp host)))
  
  ;; Parse the current buffer which is assumed to be in mts ftp dir format.
-@@ -5792,7 +5792,7 @@ Other orders of $ and _ seem to all work
+@@ -5887,7 +5887,7 @@ Other orders of $ and _ seem to all work
  
  ;; Return non-nil if HOST is running CMS.
  (defun ange-ftp-cms-host (host)
@@ -274,7 +277,7 @@
  
  (defun ange-ftp-add-cms-host (host)
 --- lisp/site-load.el
-+++ lisp/site-load.el	2019-04-15 12:04:25.246944174 +0000
++++ lisp/site-load.el	2020-08-11 10:17:21.106266385 +0000
 @@ -0,0 +1,41 @@
 +;;;;
 +;;; emacs20.xx/lisp/site-load.el
@@ -318,8 +321,8 @@
 +
 +;;; site-load.el ends here
 --- lisp/speedbar.el
-+++ lisp/speedbar.el	2019-04-15 12:04:25.246944174 +0000
-@@ -794,6 +794,7 @@ If you want to change this while speedba
++++ lisp/speedbar.el	2020-08-11 10:17:21.106266385 +0000
+@@ -767,6 +767,7 @@ If you want to change this while speedba
  
      ;; Navigation.
      (define-key map "n" 'speedbar-next)
@@ -328,7 +331,7 @@
      (define-key map "\M-n" 'speedbar-restricted-next)
      (define-key map "\M-p" 'speedbar-restricted-prev)
 --- lisp/textmodes/ispell.el
-+++ lisp/textmodes/ispell.el	2019-04-15 12:04:25.246944174 +0000
++++ lisp/textmodes/ispell.el	2020-08-11 10:30:39.847965024 +0000
 @@ -202,10 +202,12 @@ Must be greater than 1."
  ;; cause an error; and one of the other spelling engines below is
  ;; almost certainly installed in any case, for enchant to use.
@@ -346,33 +349,23 @@
    "Program invoked by \\[ispell-word] and \\[ispell-region] commands."
    :type 'string
    :set (lambda (symbol value)
-@@ -1194,7 +1196,8 @@ dictionary from that list was found."
-     (setq hunspell-default-dict (or hunspell-multi-dict
- 				    (car hunspell-default-dict)))
-     (setq hunspell-default-dict-entry
--	  (ispell-parse-hunspell-affix-file hunspell-default-dict))
-+	  (if hunspell-default-dict
-+	      (ispell-parse-hunspell-affix-file hunspell-default-dict) nil))
-     ;; Create an alist of found dicts with only names, except for default dict.
-     (setq ispell-hunspell-dictionary-alist
- 	  (list (cons nil (cdr hunspell-default-dict-entry))))
-@@ -1430,6 +1433,78 @@ The variable `ispell-library-directory'
- (if ispell-menu-map-needed
-     (progn
-       (setq ispell-menu-map (make-sparse-keymap "Spell"))
-+      ;; Begin adding list for ispell dictonaries installed on SuSE
-+      (if (and (functionp 'append-ispell-dict-alist)
-+	       (symbolp 'ispell-program-name)
-+	       (string-match "ispell" ispell-program-name))
+@@ -1438,6 +1440,78 @@ The variable `ispell-library-directory'
+ 
+   ;; Define commands in menu in opposite order you want them to appear.
+   (let ((map (make-sparse-keymap "Spell")))
++    ;; Begin adding list for ispell dictonaries installed on SuSE
++    (if (and (functionp 'append-ispell-dict-alist)
++             (symbolp 'ispell-program-name)
++             (string-match "ispell" ispell-program-name))
 +	(let ((dicts (reverse (cons (cons "default" nil)
-+		       (append ispell-local-dictionary-alist ispell-dictionary-alist))))
++                                    (append ispell-local-dictionary-alist ispell-dictionary-alist))))
 +	      (path (and (boundp 'ispell-library-path) ispell-library-path))
 +	      name load-dict)
 +	  (dolist (dict dicts)
 +	    (setq name (car dict)
 +		  load-dict (car (cdr (member "-d" (nth 5 dict)))))
 +	    (cond ((not (stringp name))
-+		   (define-key ispell-menu-map (vector 'default)
++		   (define-key map (vector 'default)
 +		     (cons "Select Default Dict"
 +			   (cons "Dictionary for which Ispell was configured"
 +				 (list 'lambda () '(interactive)
@@ -383,60 +376,60 @@
 +		       (and load-dict
 +			    (or (file-exists-p(concat path "/" load-dict ".hash"))
 +				(file-exists-p(concat path "/" load-dict ".has")))))
-+		   (define-key ispell-menu-map (vector (intern name))
++		   (define-key map (vector (intern name))
 +		     (cons (concat "Select " (capitalize name) " Dict")
 +			   (list 'lambda () '(interactive)
 +				 (list 'ispell-change-dictionary name))))))))
-+	 (if (and (functionp 'ispell-find-aspell-dictionaries)
-+		  (symbolp 'ispell-program-name)
-+		  (string-match "aspell" ispell-program-name))
-+	     (progn
-+	       (ispell-find-aspell-dictionaries)
-+	       (let ((dicts (reverse (cons (cons "default" nil)
-+			      (append ispell-local-dictionary-alist ispell-dictionary-alist))))
-+		     name load-dict)
-+		 (dolist (dict dicts)
-+		   (setq name (car dict))
-+		   (cond ((not (stringp name))
-+			  (define-key ispell-menu-map (vector 'default)
-+			    (cons "Select Default Dict"
-+				  (cons "Dictionary for which Aspell was configured"
-+					(list 'lambda () '(interactive)
-+					      (list 'ispell-change-dictionary "default"))))))
-+			 ((and (stringp name)
-+			       (ispell-aspell-find-dictionary name))
-+			  (define-key ispell-menu-map (vector (intern name))
-+			    (cons (concat "Select " (capitalize name) " Dict")
-+				  (list 'lambda () '(interactive)
-+					(list 'ispell-change-dictionary name)))))))))
-+	  (if (and (functionp 'ispell-find-hunspell-dictionaries)
-+		   (symbolp 'ispell-program-name)
-+		   (string-match "hunspell" ispell-program-name))
-+              (progn
-+		(ispell-find-hunspell-dictionaries)
-+                (let ((dicts (reverse (cons (cons "default" nil)
-+                               (append ispell-local-dictionary-alist ispell-hunspell-dictionary-alist))))
-+                      name load-dict)
-+                  (dolist (dict dicts)
-+                    (setq name (car dict))
-+                    (cond ((not (stringp name))
-+                           (define-key ispell-menu-map (vector 'default)
-+                             (cons "Select Default Dict"
-+                                   (cons "Dictionary for which Hunspell was configured"
-+                                         (list 'lambda () '(interactive)
-+                                               (list 'ispell-change-dictionary "default"))))))
-+                           ((stringp name)
-+                            (define-key ispell-menu-map (vector (intern name))
-+                              (cons (concat "Select " (capitalize name) " Dict")
-+                                    (list 'lambda () '(interactive)
-+                                          (list 'ispell-change-dictionary name)
-+                                          )))))))))))
-+      ;; End adding list for ispell dictonaries installed on SuSE
-       (define-key ispell-menu-map [ispell-change-dictionary]
- 	`(menu-item ,(purecopy "Change Dictionary...") ispell-change-dictionary
- 		    :help ,(purecopy "Supply explicit dictionary file name")))
++      (if (and (functionp 'ispell-find-aspell-dictionaries)
++               (symbolp 'ispell-program-name)
++               (string-match "aspell" ispell-program-name))
++          (progn
++            (ispell-find-aspell-dictionaries)
++            (let ((dicts (reverse (cons (cons "default" nil)
++                                        (append ispell-local-dictionary-alist ispell-dictionary-alist))))
++                  name load-dict)
++              (dolist (dict dicts)
++                (setq name (car dict))
++                (cond ((not (stringp name))
++                       (define-key map (vector 'default)
++                         (cons "Select Default Dict"
++                               (cons "Dictionary for which Aspell was configured"
++                                     (list 'lambda () '(interactive)
++                                           (list 'ispell-change-dictionary "default"))))))
++                      ((and (stringp name)
++                            (ispell-aspell-find-dictionary name))
++                       (define-key map (vector (intern name))
++                         (cons (concat "Select " (capitalize name) " Dict")
++                               (list 'lambda () '(interactive)
++                                     (list 'ispell-change-dictionary name)))))))))
++        (if (and (functionp 'ispell-find-hunspell-dictionaries)
++                 (symbolp 'ispell-program-name)
++                 (string-match "hunspell" ispell-program-name))
++            (progn
++              (ispell-find-hunspell-dictionaries)
++              (let ((dicts (reverse (cons (cons "default" nil)
++                                          (append ispell-local-dictionary-alist ispell-hunspell-dictionary-alist))))
++                    name load-dict)
++                (dolist (dict dicts)
++                  (setq name (car dict))
++                  (cond ((not (stringp name))
++                         (define-key map (vector 'default)
++                           (cons "Select Default Dict"
++                                 (cons "Dictionary for which Hunspell was configured"
++                                       (list 'lambda () '(interactive)
++                                             (list 'ispell-change-dictionary "default"))))))
++                        ((stringp name)
++                         (define-key map (vector (intern name))
++                           (cons (concat "Select " (capitalize name) " Dict")
++                                 (list 'lambda () '(interactive)
++                                       (list 'ispell-change-dictionary name)
++                                       )))))))))))
++    ;; End adding list for ispell dictonaries installed on SuSE
+     (define-key map [ispell-change-dictionary]
+       `(menu-item ,(purecopy "Change Dictionary...") ispell-change-dictionary
+ 		  :help ,(purecopy "Supply explicit dictionary file name")))
 --- site-lisp/term/func-keys.el
-+++ site-lisp/term/func-keys.el	2019-04-15 12:04:25.246944174 +0000
++++ site-lisp/term/func-keys.el	2020-08-11 10:17:21.106266385 +0000
 @@ -0,0 +1,33 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/func-keys.el for site-lisp path
@@ -472,7 +465,7 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;; Ende von func-keys.el
 --- site-lisp/term/gnome.el
-+++ site-lisp/term/gnome.el	2019-04-15 12:04:25.246944174 +0000
++++ site-lisp/term/gnome.el	2020-08-11 10:17:21.106266385 +0000
 @@ -0,0 +1,97 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/gnomw.el for site-lisp path
@@ -572,7 +565,7 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;; Ende von gnomw.el
 --- site-lisp/term/kvt.el
-+++ site-lisp/term/kvt.el	2019-04-15 12:04:25.246944174 +0000
++++ site-lisp/term/kvt.el	2020-08-11 10:17:21.106266385 +0000
 @@ -0,0 +1,97 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/kvt.el for site-lisp path
@@ -672,7 +665,7 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;; Ende von kvt.el
 --- site-lisp/term/linux.el
-+++ site-lisp/term/linux.el	2019-04-15 12:04:25.246944174 +0000
++++ site-lisp/term/linux.el	2020-08-11 10:17:21.106266385 +0000
 @@ -0,0 +1,79 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/linux.el for site-lisp path
@@ -754,7 +747,7 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;; Ende von linux.el
 --- site-lisp/term/locale.el
-+++ site-lisp/term/locale.el	2019-04-15 12:04:25.246944174 +0000
++++ site-lisp/term/locale.el	2020-08-11 10:17:21.106266385 +0000
 @@ -0,0 +1,13 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/locale.el for site-lisp path

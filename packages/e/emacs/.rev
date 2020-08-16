@@ -1426,4 +1426,41 @@
   by a security fix for libX11 (boo#1175028)</comment>
     <requestid>825389</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>2a4c906a0da83f6e5043442a811775c7</srcmd5>
+    <version>27.1</version>
+    <time>1597602376</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide for all three emacs layouts, that are emacs-nox, emacs-x11,
+  and emacs-gtk their own pdumper file (boo#1175233)
+
+- Update to GNU Emacs version 27.1
+  * Emacs is now compliant with the latest version 13.0 of the Unicode Standard.
+  * Emacs can now use the XDG convention for init files.
+    The 'XDG_CONFIG_HOME' environment variable (which defaults to
+    &quot;~/.config&quot;) specifies the XDG configuration parent directory.
+    Emacs checks for &quot;init.el&quot; and other configuration files inside
+    the &quot;emacs&quot; subdirectory of 'XDG_CONFIG_HOME', i.e.
+    &quot;$XDG_CONFIG_HOME/emacs/init.el&quot;
+    However, Emacs will still initially look for init files in their
+    traditional locations if &quot;~/.emacs.d&quot; or &quot;~/.emacs&quot; exist, even if
+    &quot;$XDG_CONFIG_HOME/emacs&quot; also exists.  This means that you must delete
+    or rename any existing &quot;~/.emacs.d&quot; and &quot;~/.emacs&quot; to enable use of
+    the XDG directory.
+  * The varius changes can be read in detail at /usr/share/emacs/27.1/etc/NEWS
+- Port and rename patch emacs-26.2.dif to emacs-27.1.dif
+- Modify/port patches
+  * emacs-24.1-ps-mule.patch
+  * emacs-24.3-asian-print.patch
+  * emacs-24.3-iconic.patch
+  * emacs-24.3-x11r7.patch
+  * emacs-24.4-flyspell.patch
+  * emacs-24.4-glibc.patch
+  * emacs-24.4-nonvoid.patch
+  * emacs-24.4-ps-bdf.patch
+  * emacs-24.4-xim.patch
+  * emacs-25.1-custom-fonts.patch
+  * emacs-25.2-ImageMagick7.patch</comment>
+    <requestid>826660</requestid>
+  </revision>
 </revisionlist>
