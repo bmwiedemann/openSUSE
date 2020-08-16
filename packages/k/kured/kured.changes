@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 14 11:35:54 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.4.5:
+  * document how releases are town wrt Helm bits
+  * bump versions for 1.4.5 release
+  * Use nindent, not indent
+  * chart: update readme
+  * Bump chart version
+  * Add missing 'end'
+  * Chart: Support extraEnvVars
+  * update install instructions to use latest
+  * update chart version
+  * Prep for 1.4.4 release
+  * bump and fix
+  * split matchLabels template
+  * restructured and improved service
+
+-------------------------------------------------------------------
 Tue Jun 30 23:08:34 UTC 2020 - dmueller@suse.com
 
 - Update to version 1.4.3:

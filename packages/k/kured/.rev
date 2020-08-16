@@ -145,4 +145,25 @@
     <comment></comment>
     <requestid>818055</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6924d2b5bacaf11d29d68981d7f0817c</srcmd5>
+    <version>1.4.5</version>
+    <time>1597602386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.5:
+  * document how releases are town wrt Helm bits
+  * bump versions for 1.4.5 release
+  * Use nindent, not indent
+  * chart: update readme
+  * Bump chart version
+  * Add missing 'end'
+  * Chart: Support extraEnvVars
+  * update install instructions to use latest
+  * update chart version
+  * Prep for 1.4.4 release
+  * bump and fix
+  * split matchLabels template
+  * restructured and improved service</comment>
+    <requestid>826666</requestid>
+  </revision>
 </revisionlist>

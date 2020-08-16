@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 13 13:38:23 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Pacify source validator
+
+-------------------------------------------------------------------
+Thu Aug 13 10:04:38 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add support for riscv64
+
+-------------------------------------------------------------------
 Fri Aug  7 05:54:43 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Minimum version needed for LLVM is >= 8.0

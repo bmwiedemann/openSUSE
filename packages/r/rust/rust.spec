@@ -52,6 +52,10 @@
 %global rust_arch powerpc64le
 %endif
 
+%ifarch riscv64
+%global rust_arch riscv64gc
+%endif
+
 # Must restrict the x86 build to i686 since i586 is currently
 # unsupported
 %ifarch %{ix86}
@@ -131,11 +135,12 @@ Source105:      %{dl_url}/rust-%{version_bootstrap}-powerpc64-unknown-linux-gnu.
 Source106:      %{dl_url}/rust-%{version_bootstrap}-powerpc64le-unknown-linux-gnu.tar.xz
 Source107:      %{dl_url}/rust-%{version_bootstrap}-s390x-unknown-linux-gnu.tar.xz
 Source108:      %{dl_url}/rust-%{version_bootstrap}-powerpc-unknown-linux-gnu.tar.xz
+# Not yet available
+#Source109:      %{dl_url}/rust-%{version_bootstrap}-riscv64gc-unknown-linux-gnu.tar.xz
 # Make factory-auto stop complaining...
 Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
-# PATCH-FIX-UPSTREAM: fix compilation with llvm10 https://github.com/rust-lang/rust/issues/71573
 BuildRequires:  ccache
 BuildRequires:  curl
 BuildRequires:  fdupes
@@ -191,7 +196,7 @@ Conflicts:      rust
 Conflicts:      rustc-bootstrap
 # Restrict the architectures as building rust relies on being
 # initially bootstrapped before we can build the n+1 release
-ExclusiveArch:  x86_64 %{arm} aarch64 ppc ppc64 ppc64le s390x %{ix86}
+ExclusiveArch:  x86_64 %{arm} aarch64 ppc ppc64 ppc64le s390x %{ix86} riscv64
 %ifarch %{ix86}
 ExclusiveArch:  i686
 %endif
@@ -309,9 +314,9 @@ A tool for formatting Rust code according to style guidelines.
 
 %package -n clippy
 Summary:        Lints to catch common mistakes and improve Rust code
-# /usr/bin/clippy-driver is dynamically linked against internal rustc libs
 License:        MPL-2.0
 Group:          Development/Languages/Rust
+# /usr/bin/clippy-driver is dynamically linked against internal rustc libs
 Requires:       %{name} = %{version}
 Requires:       cargo = %{version}
 Provides:       clippy = %{clippy_version}
@@ -335,10 +340,10 @@ Cargo downloads dependencies of Rust projects and compiles it.
 
 %package -n cargo-doc
 Summary:        Documentation for Cargo
-# Cargo no longer builds its own documentation
-# https://github.com/rust-lang/cargo/pull/4904
 License:        MIT OR Apache-2.0
 Group:          Development/Languages/Rust
+# Cargo no longer builds its own documentation
+# https://github.com/rust-lang/cargo/pull/4904
 Requires:       rust-doc = %{version}
 BuildArch:      noarch
 
@@ -351,7 +356,7 @@ This package includes HTML documentation for Cargo.
 %setup -q -T -b 100 -n rust-%{version_bootstrap}-%{rust_triple}
 %endif
 %ifarch %{ix86}
-%setup -q -T -b 101 -n rust-%{version_bootstrap}-i686-unknown-linux-%{abi}
+%setup -q -T -b 101 -n rust-%{version_bootstrap}-%{rust_triple}
 %endif
 %ifarch aarch64
 %setup -q -T -b 102 -n rust-%{version_bootstrap}-%{rust_triple}
@@ -373,6 +378,10 @@ This package includes HTML documentation for Cargo.
 %endif
 %ifarch ppc
 %setup -q -T -b 108 -n rust-%{version_bootstrap}-%{rust_triple}
+%endif
+%ifarch riscv64
+# Not yet available
+#%%setup -q -T -b 109 -n rust-%{version_bootstrap}-%{rust_triple}
 %endif
 ./install.sh --components=cargo,rustc,rust-std-%{rust_triple} --prefix=.%{_prefix} --disable-ldconfig
 %endif

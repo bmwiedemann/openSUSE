@@ -22,9 +22,9 @@
 # Project name when using go tooling.
 %define project github.com/weaveworks/kured
 # Project upstream commit.
-%define commit 2afd04d
+%define commit b024898
 Name:           kured
-Version:        1.4.3
+Version:        1.4.5
 Release:        0
 Summary:        Kubernetes daemonset to perform safe automatic node reboots
 License:        Apache-2.0

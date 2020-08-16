@@ -482,4 +482,13 @@
     <comment></comment>
     <requestid>825388</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>be345c702c0e47216fd016a95e9a21de</srcmd5>
+    <version>1.44.1</version>
+    <time>1597602393</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for riscv64
+- Pacify source validator</comment>
+    <requestid>826667</requestid>
+  </revision>
 </revisionlist>
