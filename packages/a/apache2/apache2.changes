@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Aug  7 12:25:58 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.4.46
+  Changes with Apache 2.4.46
+  *) mod_proxy_fcgi: Fix build warnings for Windows platform
+     [Eric Covener, Christophe Jaillet]
+  Changes with Apache 2.4.45
+  *) mod_http2: remove support for abandoned http-wg draft
+     <https://datatracker.ietf.org/doc/draft-kazuho-h2-cache-digest/>.
+     [Stefan Eissing]
+  Changes with Apache 2.4.44
+  *) mod_proxy_uwsgi: Error out on HTTP header larger than 16K (hard
+     protocol limit).  [Yann Ylavic]
+  *) mod_http2:
+     Fixes <https://github.com/icing/mod_h2/issues/200>:
+     "LimitRequestFields 0" now disables the limit, as documented.
+     Fixes <https://github.com/icing/mod_h2/issues/201>:
+     Do not count repeated headers with same name against the field
+     count limit. The are merged internally, as if sent in a single HTTP/1 line.
+     [Stefan Eissing]
+  *) mod_http2: Avoid segfaults in case of handling certain responses for
+     already aborted connections.  [Stefan Eissing, Ruediger Pluem]
+  *) mod_http2: The module now handles master/secondary connections and has marked
+     methods according to use. [Stefan Eissing]
+  *) core: Drop an invalid Last-Modified header value coming
+     from a FCGI/CGI script instead of replacing it with Unix epoch.
+     [Yann Ylavic, Luca Toscano]
+  *) Add support for strict content-length parsing through addition of
+     ap_parse_strict_length() [Yann Ylavic]
+  *) mod_proxy_fcgi: ProxyFCGISetEnvIf unsets variables when expression
+     evaluates to false.  PR64365. [Michael König <mail ikoenig.net>]
+  *) mod_proxy_http: flush spooled request body in one go to avoid
+     leaking (or long lived) temporary file. PR 64452. [Yann Ylavic]
+  *) mod_ssl: Fix a race condition and possible crash when using a proxy client
+     certificate (SSLProxyMachineCertificateFile).
+     [Armin Abfalterer <a.abfalterer gmail.com>]
+  *) mod_ssl: Fix memory leak in stapling code. PR63687. [Stefan Eissing]
+  *) mod_http2: Fixed regression that no longer set H2_STREAM_ID and H2_STREAM_TAG.
+     PR64330 [Stefan Eissing]
+  *) mod_http2: Fixed regression that caused connections to close when mod_reqtimeout
+     was configured with a handshake timeout. Fixes gitub issue #196.
+     [Stefan Eissing]
+  *) mod_proxy_http2: the "ping" proxy parameter
+     (see <https://httpd.apache.org/docs/2.4/mod/mod_proxy.html>) is now used
+     when checking the liveliness of a new or reused h2 connection to the backend.
+     With short durations, this makes load-balancing more responsive. The module
+     will hold back requests until ping conditions are met, using features of the
+     HTTP/2 protocol alone. [Ruediger Pluem, Stefan Eissing]
+  *) core: httpd is no longer linked against -lsystemd if mod_systemd
+     is enabled (and built as a DSO).  [Rainer Jung]
+  *) mod_proxy_http2: respect ProxyTimeout settings on backend connections
+     while waiting on incoming data. [Ruediger Pluem, Stefan Eissing]
+- modified patches
+  % apache2-mod_proxy_uwsgi-fix-crash.patch (refreshed)
+- modified sources
+  % apache2.keyring
+
+-------------------------------------------------------------------
 Wed Jul 15 09:16:02 UTC 2020 - pgajdos@suse.com
 
 - fix crash in mod_proxy_uwsgi for empty values of environment

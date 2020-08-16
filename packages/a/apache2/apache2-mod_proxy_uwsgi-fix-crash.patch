@@ -1,5 +1,7 @@
---- a/modules/proxy/mod_proxy_uwsgi.c	2020/07/15 07:48:38	1879877
-+++ b/modules/proxy/mod_proxy_uwsgi.c	2020/07/15 08:24:13	1879878
+Index: httpd-2.4.46/modules/proxy/mod_proxy_uwsgi.c
+===================================================================
+--- httpd-2.4.46.orig/modules/proxy/mod_proxy_uwsgi.c	2020-07-24 11:35:25.000000000 +0200
++++ httpd-2.4.46/modules/proxy/mod_proxy_uwsgi.c	2020-08-07 14:03:05.266134827 +0200
 @@ -175,7 +175,7 @@ static int uwsgi_send_headers(request_re
      env = (apr_table_entry_t *) env_table->elts;
  
@@ -8,8 +10,8 @@
 +        headerlen += 2 + strlen(env[j].key) + 2 + (env[j].val ? strlen(env[j].val) : 0);
      }
  
-     ptr = buf = apr_palloc(r->pool, headerlen);
-@@ -189,10 +189,12 @@ static int uwsgi_send_headers(request_re
+     pktsize = headerlen - 4;
+@@ -198,10 +198,12 @@ static int uwsgi_send_headers(request_re
          memcpy(ptr, env[j].key, keylen);
          ptr += keylen;
  
@@ -24,4 +26,3 @@
          ptr += vallen;
      }
  
-

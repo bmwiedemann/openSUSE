@@ -1717,4 +1717,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
   + apache2-mod_proxy_uwsgi-fix-crash.patch</comment>
     <requestid>821097</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>f0f6ec2ed30c0a93e57fe8e2c3fe03f4</srcmd5>
+    <version>2.4.46</version>
+    <time>1597602783</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>826679</requestid>
+  </revision>
 </revisionlist>
