@@ -17,7 +17,7 @@
 
 
 Name:           dbxtool
-Version:        7
+Version:        8
 Release:        0
 Summary:        Secure Boot DBX updater
 License:        GPL-2.0-only
@@ -55,7 +55,6 @@ rm %buildroot/usr/share/doc/dbxtool/COPYING
 
 %postun
 %service_del_postun dbxtool.service
-
 
 %files
 %license COPYING

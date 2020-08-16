@@ -1,8 +1,8 @@
-Index: dbxtool-7/src/iter.c
+Index: dbxtool-8/src/iter.c
 ===================================================================
---- dbxtool-7.orig/src/iter.c
-+++ dbxtool-7/src/iter.c
-@@ -111,8 +111,8 @@ esd_iter_next(esd_iter *iter, efi_guid_t
+--- dbxtool-8.orig/src/iter.c
++++ dbxtool-8/src/iter.c
+@@ -114,8 +114,8 @@ esd_iter_next(esd_iter *iter, efi_guid_t
  					sizeof (iter->esd->SignatureOwner)) {
  				warnx("X.509 Cert ASN.1 size does not match "
  				      "SignatureList Size (%d vs %ld)",
@@ -13,8 +13,8 @@ Index: dbxtool-7/src/iter.c
  			}
  		}
  
-@@ -230,8 +230,8 @@ esl_iter_next(esl_iter *iter, efi_guid_t
- 					       sizeof (efi_guid_t)) {
+@@ -241,8 +241,8 @@ esl_iter_next(esl_iter *iter, efi_guid_t
+ 							 - sizeof (efi_guid_t)) {
  				warnx("X.509 Cert ASN.1 size does not match "
  				      "SignatureList Size (%d vs %ld)",
 -				      asn1size, iter->esl->SignatureSize -
