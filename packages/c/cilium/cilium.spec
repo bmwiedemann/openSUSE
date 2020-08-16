@@ -58,8 +58,8 @@ Patch4:         0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
 Patch5:         0005-bpf-re-add-a-proper-types.h-mapper.patch
 # PATCH-FIX-UPSTREAM 0006-build-Avoid-using-git-if-not-in-a-git-repo.patch
 Patch6:         0006-build-Avoid-using-git-if-not-in-a-git-repo.patch
-# PATCH-FIX-UPSTREAM 0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch 
-Patch7:         0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch 
+# PATCH-FIX-UPSTREAM 0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch
+Patch7:         0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch
 # PATCH-FIX-UPSTREAM 0008-helm-allow-to-configure-bpf-nat-global-max-using-Hel.patch
 Patch8:         0008-helm-allow-to-configure-bpf-nat-global-max-using-Hel.patch
 # PATCH-FIX-UPSTREAM 0009-option-reduce-default-number-for-TCP-CT-and-NAT-tabl.patch

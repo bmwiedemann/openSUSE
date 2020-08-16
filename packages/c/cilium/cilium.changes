@@ -41,6 +41,11 @@ Thu Jul 30 10:15:01 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   0010-daemon-add-option-to-dynamically-size-BPF-maps-based.patch: rebase against 1.7.6
 
 -------------------------------------------------------------------
+Tue Jul  7 13:35:47 UTC 2020 - jmassaguerpla@suse.com
+
+- Add a _constraints to require at least 5GB of disk space
+
+-------------------------------------------------------------------
 Mon Jun 15 16:13:44 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Fix cniInstallScript and cniUninstallScript values in helm chart.
