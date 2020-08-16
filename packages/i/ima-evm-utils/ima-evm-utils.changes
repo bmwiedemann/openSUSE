@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 14 14:50:08 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.3.1
+	* "--pcrs" support for per crypto algorithm
+	* Drop/rename "ima_measurement" options
+	* Moved this summary from "Changelog" to "NEWS", removing
+	  requirement for GNU empty files
+	* Distro build fixes
+
+  * Remove 0001-pcr_tss-Fix-compilation-for-old-compilers.patch (from this
+    release)
+
+-------------------------------------------------------------------
 Thu Jul 23 07:15:19 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Use %autosetup -p1

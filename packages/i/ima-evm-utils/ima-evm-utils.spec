@@ -19,14 +19,13 @@
 %define sover 2
 %define libname libimaevm%{sover}
 Name:           ima-evm-utils
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        IMA/EVM control utility
 License:        LGPL-2.1-or-later
 Group:          System/Base
 URL:            http://sourceforge.net/projects/linux-ima/
 Source0:        http://downloads.sourceforge.net/project/linux-ima/ima-evm-utils/%{name}-%{version}.tar.gz
-Patch1:         0001-pcr_tss-Fix-compilation-for-old-compilers.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
