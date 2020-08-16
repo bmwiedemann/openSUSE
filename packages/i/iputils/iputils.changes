@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 14 14:18:41 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Remove 2 old patches (iputils-sec-ping-unblock.diff, iputils-ping-interrupt.diff)
+  Although not documented, they both belong to bsc#674304. Fix from 2011 was
+  resolved upstream in commit 810dd7f ("ping,ping6: Unmask signals on
+  start-up.") [1], released in s20121112.
+- Use %autosetup -p1
+
+-------------------------------------------------------------------
 Sun Jul 12 19:57:40 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unneeded libidn build dependency (boo#1174049)
