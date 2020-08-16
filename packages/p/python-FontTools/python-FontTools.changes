@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 13 06:57:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 4.13.0
+  * [feaLib/otlLib] Moved lookup subtable builders from feaLib to otlLib; refactored
+    some common code (#2004, #2007).
+  * [glifLib] Fixed bug with some UFO .glif filenames clashing on case-insensitive
+    filesystems (#2001, #2002).
+  * [_n_a_m_e] Fixed error in ``addMultilingualName`` with one-character names.
+    Only attempt to recovered malformed UTF  *16 data from a ``bytes`` string,
+    not from unicode ``str`` (#1997, #1998).
+  * [OS/2] Don't calculate whole sets of unicode codepoints, use faster and more memory
+    efficient ranges and bisect lookups (#1984).
+  * [voltLib] Support writing back abstract syntax tree as VOLT data (#1983).
+  * [voltLib] Accept DO_NOT_TOUCH_CMAP keyword (#1987).
+  * [ufoLib] Silently delete duplicate glyphs within the same kerning group when reading
+    groups (#1970).
+  * [ttLib] Set version of COLR table when decompiling COLRv1 (commit 9d8a7e2).
+
+-------------------------------------------------------------------
 Tue May 26 06:34:20 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

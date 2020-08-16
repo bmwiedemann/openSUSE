@@ -25,7 +25,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-FontTools%{psuffix}
-Version:        4.10.2
+Version:        4.13.0
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
@@ -41,12 +41,13 @@ BuildRequires:  unzip
 Requires:       python-brotlipy >= 0.7.0
 Requires:       python-fs >= 2.4.11
 Requires:       python-lxml >= 4.0
-Requires:       python-reportlab
-Requires:       python-scipy >= 1.4.1
+Requires:       python-scipy >= 1.5.1
 Requires:       python-sympy
 Requires:       python-unicodedata2 >= 13.0.0
+Requires:       python-zopfli >= 0.1.6
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     python-reportlab
 BuildArch:      noarch
 %if "%{flavor}" == "test"
 BuildRequires:  zip
@@ -54,7 +55,7 @@ BuildRequires:  zip
 BuildRequires:  %{python_module brotlipy >= 0.7.0}
 BuildRequires:  %{python_module fs >= 2.4.11}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.4.1}
+BuildRequires:  %{python_module scipy >= 1.5.1}
 BuildRequires:  %{python_module sympy}
 BuildRequires:  %{python_module ufoLib2 >= 0.6.2}
 BuildRequires:  %{python_module zopfli >= 0.1.6}

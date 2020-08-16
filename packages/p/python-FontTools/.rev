@@ -46,4 +46,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment></comment>
     <requestid>809914</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d197a737032c4f1b240b11696885039b</srcmd5>
+    <version>4.13.0</version>
+    <time>1597602457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826625</requestid>
+  </revision>
 </revisionlist>
