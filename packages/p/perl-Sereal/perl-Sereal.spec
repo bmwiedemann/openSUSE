@@ -17,7 +17,7 @@
 
 
 Name:           perl-Sereal
-Version:        4.017
+Version:        4.018
 Release:        0
 %define cpan_name Sereal
 Summary:        Binary serialization module for Perl
@@ -30,13 +30,13 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Sereal::Decoder) >= 4.017
-BuildRequires:  perl(Sereal::Encoder) >= 4.017
+BuildRequires:  perl(Sereal::Decoder) >= 4.018
+BuildRequires:  perl(Sereal::Encoder) >= 4.018
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Sereal::Decoder) >= 4.017
-Requires:       perl(Sereal::Encoder) >= 4.017
+Requires:       perl(Sereal::Decoder) >= 4.018
+Requires:       perl(Sereal::Encoder) >= 4.018
 %{perl_requires}
 
 %description
