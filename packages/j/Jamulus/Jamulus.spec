@@ -17,10 +17,10 @@
 #
 
 
-%define tarball_version 3_5_9
+%define tarball_version 3_5_10
 
 Name:           Jamulus
-Version:        3.5.9
+Version:        3.5.10
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
@@ -51,12 +51,12 @@ collects the audio data from each Jamulus client software, mixes the audio data
 and sends the mix back to each client.
 
 %prep
-%setup -q -n jamulus-r%{tarball_version}
+%autosetup -n jamulus-r%{tarball_version}
 install %{SOURCE1} .
 
 %build
 %qmake5 CONFIG+=opus_shared_lib
-make %{?_smp_mflags}
+%make_jobs
 
 %install
 install -D -m0755 Jamulus %{buildroot}%{_bindir}/%{name}

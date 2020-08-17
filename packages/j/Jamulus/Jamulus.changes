@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 16 08:15:56 UTC 2020 - aloisio@gmx.com
+
+- Update to version 3.5.10
+  * do not change the server list order if the mouse is over the
+    table to avoid selecting an incorrect server on a mouse
+    double click
+  * if network name/address contains spaces, they are removed
+    now, coded by dingodoppelt
+  * improve compact skin by using smaller font size
+  * improve server audio mix processing for better clipping
+    behavior
+  * support MIDI control faders in headless build (#483)
+  * option to set Mute Myself on with a command line argument
+  * added a red message to indicate that Mute Myself is
+    activated
+  * manual clip LED reset by mouse click on the level meter
+  * replacing internal history graph functionality by external
+    scripts/tools
+  * accessibility improvements, coded by chigkim
+  * bug fix: added more mutex in the server
+  * bug fix: --showallservers ping column sort is alphabetic
+- Drop _service file
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Aug  3 11:09:38 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.5.9
