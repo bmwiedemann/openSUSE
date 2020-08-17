@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 17 09:21:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove %bcond_without test and note upstream issue that no test
+  suite exists
+- Tidy spec
+
+-------------------------------------------------------------------
 Thu Jan  4 11:33:33 UTC 2018 - alarrosa@suse.com
 
 - Update to python-fann2 1.1.2 
