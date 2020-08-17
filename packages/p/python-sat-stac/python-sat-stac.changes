@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Aug 17 07:08:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix download url
+
+-------------------------------------------------------------------
+Mon Aug 10 11:46:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix few minor issues with alternatives
+
+-------------------------------------------------------------------
+Fri Jul 31 15:33:36 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update spec file to use python alternative.
+
+-------------------------------------------------------------------
+Sun Jul 26 14:20:25 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 
