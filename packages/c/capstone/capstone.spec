@@ -18,7 +18,7 @@
 
 %define sover   4
 Name:           capstone
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        A multi-platform, multi-architecture disassembly framework
 License:        BSD-3-Clause
