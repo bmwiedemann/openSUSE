@@ -654,4 +654,12 @@ Passed the spec file through spec cleaner (forwarded request 116645 from worldci
   * The build behaviour changed</comment>
     <requestid>796443</requestid>
   </revision>
+  <revision rev="77" vrev="14">
+    <srcmd5>ea4a688bf518c5ea6a24d39c1ab8839e</srcmd5>
+    <version>1.2.11</version>
+    <time>1597658335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824669</requestid>
+  </revision>
 </revisionlist>

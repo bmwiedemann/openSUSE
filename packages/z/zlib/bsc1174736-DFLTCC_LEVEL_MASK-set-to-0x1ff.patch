@@ -1,0 +1,51 @@
+Index: zlib-1.2.11/deflate.c
+===================================================================
+--- zlib-1.2.11.orig/deflate.c
++++ zlib-1.2.11/deflate.c
+@@ -504,7 +504,7 @@ int ZEXPORT deflateResetKeep (strm)
+         s->wrap == 2 ? crc32(0L, Z_NULL, 0) :
+ #endif
+         adler32(0L, Z_NULL, 0);
+-    s->last_flush = Z_NO_FLUSH;
++    s->last_flush = -2;
+ 
+     _tr_init(s);
+ 
+@@ -601,13 +601,13 @@ int ZEXPORT deflateParams(strm, level, s
+     func = configuration_table[s->level].func;
+ 
+     if ((strategy != s->strategy || func != configuration_table[level].func ||
+-         hook_flush != Z_NO_FLUSH) && s->high_water) {
++         hook_flush != Z_NO_FLUSH) && s->last_flush != -2) {
+         /* Flush the last buffer: */
+         int err = deflate(strm, RANK(hook_flush) > RANK(Z_BLOCK) ?
+                           hook_flush : Z_BLOCK);
+         if (err == Z_STREAM_ERROR)
+             return err;
+-        if (strm->avail_out == 0)
++        if (strm->avail_in || (s->strstart - s->block_start) + s->lookahead)
+             return Z_BUF_ERROR;
+     }
+     if (s->level != level) {
+Index: zlib-1.2.11/zlib.h
+===================================================================
+--- zlib-1.2.11.orig/zlib.h
++++ zlib-1.2.11/zlib.h
+@@ -712,11 +712,12 @@ ZEXTERN int ZEXPORT deflateParams OF((z_
+    used to switch between compression and straight copy of the input data, or
+    to switch to a different kind of input data requiring a different strategy.
+    If the compression approach (which is a function of the level) or the
+-   strategy is changed, and if any input has been consumed in a previous
+-   deflate() call, then the input available so far is compressed with the old
+-   level and strategy using deflate(strm, Z_BLOCK).  There are three approaches
+-   for the compression levels 0, 1..3, and 4..9 respectively.  The new level
+-   and strategy will take effect at the next call of deflate().
++   strategy is changed, and if there have been any deflate() calls since the
++   state was initialized or reset, then the input available so far is
++   compressed with the old level and strategy using deflate(strm, Z_BLOCK).
++   There are three approaches for the compression levels 0, 1..3, and 4..9
++   respectively.  The new level and strategy will take effect at the next call
++   of deflate().
+ 
+      If a deflate(strm, Z_BLOCK) is performed by deflateParams(), and it does
+    not have enough output space to complete, then the parameter change will not

@@ -41,6 +41,8 @@ Patch4:         410.patch
 #PATCH-FIX-SUSE do not check exact version match as the lib can be updated
 #               we should simply rely on soname versioning to protect us
 Patch5:         zlib-no-version-check.patch
+Patch6:         bsc1174736-DFLTCC_LEVEL_MASK-set-to-0x1ff.patch
+Patch7:         bsc1174551-fxi-imcomplete-raw-streams.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -122,6 +124,8 @@ developing applications which use minizip.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
 cp %{SOURCE4} .
 
 %build
