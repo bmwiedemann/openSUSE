@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyshould
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Requires:       python-hamcrest
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hamcrest}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -53,6 +53,9 @@ the standard AssertionError.
 
 %prep
 %setup -q -n %{modname}-%{version}
+sed -i '/nose/d' setup.py
+# Remove __init__.py to help 15.x
+rm tests/__init__.py
 
 %build
 %python_build
@@ -60,12 +63,12 @@ the standard AssertionError.
 %install
 %python_install
 # We shouldn't install tests
-%python_expand rm -rvf %{buildroot}%{$python_sitelib}/tests
-
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -rvf %{buildroot}%{$python_sitelib}/tests
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
-%python_exec setup.py test -v
+%pytest tests/*.py
 
 %files %{python_files}
 %doc README.md
