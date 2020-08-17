@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug 08 09:10:45 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200730:
+  * Fix Right Analog for xinput profile for Stadia Controller
+  * Add hid profile Stadia Controller
+  * Add xinput profile for Stadia Controller
+  * Add dinput profiles for 8Bitdo N30 Pro USB/BT.
+  * sdl2 profile for Stadia Controller
+  * Create Logitech_Gamepad_F310.cfg
+  * add generic 360 and Steam link profiles
+  * Fixed 8BitDo M30 udev mappings for firmware 1.14
+  * Update Razer Kishi.cfg
+  * Create Razer Kishi.cfg
+  * Added Quasicon 2P default
+  * Added NVIDIA SHIELD 2019 Remote
+  * Improve README file
+  * Create PCEngine PAD.cfg
+  * Port MAGIC-NS.cfg in udev to dinput/xinput
+  * Update Makefile
+  * Add GameCube Controller support for sdl2
+  * Add HORIPAD S to android, dinput, hid, sdl2, udev, xinput
+
+-------------------------------------------------------------------
 Tue Jun 23 19:30:42 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200622:
