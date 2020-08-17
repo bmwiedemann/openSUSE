@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Aug 16 21:19:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.06:
+  * Fixed multiple memory leaks (r15684, r15685, etc...)
+  * Fixed 100% CPU usage when drawing lines in the controller rulers,
+    bug #1571 (r15705)
+  * Fixed multiple invalid reads (r15707, r15708)
+  * Increased the height of the loop ruler, feature #481 (r15718)
+  * Fixed CCs not going out when playback begins in the middle of
+    a segment, bug #1560 (r15735)
+  * Fixed volume and pan CCs always going out even if the controllers
+    were removed from the Device, feature #482 (r15750)
+  * Stop sending CCs on ch10 when metronome muted, feature #482
+    (r15751)
+  * Fixed a problem with showing pitchbend ruler (r15771)
+  * Made default for expression CC 127 instead of 100 (r15773)
+  * Fixed a crash in Audio File Manager, bug #1576 (r15786)
+  * Fixed a crash when importing .ly as X11/RG21, bug #1579 (r15806)
+  * Fixed a crash on chords in pitch tracker, bug #1582 (r15835)
+  * Track height can now be adjusted in the preferences, feature #479
+    (r15710-r15712, r15737)
+  * New Segment > Transpose by Semitones... available in the Segment
+    Canvas, feature #480 (r15715)
+  * Right-click can now be used in the loop ruler to set the loop,
+    feature #481 (r15717)
+  * The current segment label is now displayed in the Matrix editor
+    when multiple segments have been selected for editing, feature
+    #470 (r15738-r15740)
+  * Segment "For Notation" feature, bug #1578 (r15805)
+  * Source distribution now includes these release notes in a
+    CHANGELOG file.  The release notes will continue to be available
+    on the wiki as well:
+    https://www.rosegardenmusic.com/wiki/start#release_notes
+  * PitchBend and Controller Sequence Dialog cleanup (r15662-r15684,
+    r15696-r15701, etc...)
+  * MappedEventBuffer cleanup (r15719-r15730)
+  * Colour removal and ColourMap cleanup (r15795-r15803)
+
+-------------------------------------------------------------------
 Wed Jun  3 12:03:20 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Update to stable release is 19.12 and add patch to fix factory
