@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 15 23:20:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.9.4 (bsc#1174579, CVE-2020-15953):
+  * Bugfixes on QUOTA
+  * Varios warning fixes & build fixes 
+
+-------------------------------------------------------------------
 Wed Sep 25 20:10:15 UTC 2019 - markus.beth@web.de
 
 - update to version 1.9.3

@@ -213,4 +213,14 @@
     <comment></comment>
     <requestid>743296</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1a8fdc75831a74e2f192e328a41be3b7</srcmd5>
+    <version>1.9.4</version>
+    <time>1597658745</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.4 (bsc#1174579, CVE-2020-15953):
+  * Bugfixes on QUOTA
+  * Varios warning fixes &amp; build fixes</comment>
+    <requestid>826908</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libetpan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 %define sover 20
-
 Name:           libetpan
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Mail Handling Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.etpan.org/libetpan.html
+URL:            https://www.etpan.org/libetpan.html
 Source0:        https://github.com/dinhviethoa/libetpan/archive/%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -34,7 +33,6 @@ BuildRequires:  db-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libEtPan is a mail purpose library. It will be used for low-level mail
@@ -72,10 +70,10 @@ and message / MIME parsing.
 %setup -q
 
 %build
-touch README INSTALL COPYING 
+touch README INSTALL COPYING
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -86,16 +84,14 @@ rm %{buildroot}%{_libdir}/libetpan.la
 %postun -n libetpan%{sover} -p /sbin/ldconfig
 
 %files -n libetpan%{sover}
-%defattr(-, root, root)
 %doc ChangeLog NEWS doc/README*
 %{_libdir}/libetpan.so.%{sover}*
 
 %files -n libetpan-devel
-%defattr(-, root, root)
 %doc doc/API* doc/DOCUMENTATION
-%{_bindir}/libetpan-config
 %{_includedir}/libetpan/
 %{_includedir}/libetpan.h
 %{_libdir}/libetpan.so
+%{_libdir}/pkgconfig/libetpan.pc
 
 %changelog
