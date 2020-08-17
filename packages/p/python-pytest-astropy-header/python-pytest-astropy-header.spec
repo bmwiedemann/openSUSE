@@ -16,6 +16,7 @@
 #
 
 
+%define modname pytest-astropy-header
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -26,14 +27,14 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-Name:           python-pytest-astropy-header%{psuffix}
+Name:           python-%{modname}%{psuffix}
 Version:        0.1.2
 Release:        0
 Summary:        Pytest plugin to add diagnostic information to the header of the test output
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/pytest-astropy-header
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-astropy-header/pytest-astropy-header-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,7 +53,7 @@ running pytest. It can be used with packages that are not affiliated with the
 Astropy project, but is optimized for use with astropy-related projects.
 
 %prep
-%setup -q -n pytest-astropy-header-%{version}
+%setup -q -n %{modname}-%{version}
 
 %build
 %python_build
@@ -65,6 +66,8 @@ Astropy project, but is optimized for use with astropy-related projects.
 
 %check
 %if %{with test}
+# multibuild: nothing has been installed, test the source directory
+export PYTHONPATH=$(pwd)
 %pytest
 %endif
 

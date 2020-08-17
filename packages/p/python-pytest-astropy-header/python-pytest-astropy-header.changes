@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 16 12:25:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix test failures by testing the source directory in multibuild
+
+-------------------------------------------------------------------
 Fri Jan 10 08:26:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild to avoid cycles
