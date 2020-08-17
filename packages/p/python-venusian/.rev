@@ -143,4 +143,12 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>783371</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3784b3f99bf88230df9935039855e304</srcmd5>
+    <version>3.0.0</version>
+    <time>1597668023</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pytest and remove not needed extra buildrequires</comment>
+    <requestid>827214</requestid>
+  </revision>
 </revisionlist>

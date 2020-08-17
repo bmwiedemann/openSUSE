@@ -32,10 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module nose-exclude}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 # SECTION documentation requirements
@@ -64,6 +60,7 @@ This package contains documentation files for %{name}.
 %setup -q -n venusian-%{version}
 %patch0 -p1
 rm -rf venusian.egg-info
+sed -i '/addopts/d' setup.cfg
 
 %build
 %python_build

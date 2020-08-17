@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 17 06:18:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to pytest and remove not needed extra buildrequires
+
+-------------------------------------------------------------------
 Tue Mar 10 12:18:57 UTC 2020 - pgajdos@suse.com
 
 - version update to 3.0.0
