@@ -27,7 +27,6 @@ URL:            https://github.com/nandoflorestan/kajiki
 Source:         https://files.pythonhosted.org/packages/source/K/Kajiki/Kajiki-%{version}.tar.gz
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module nine}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,6 +43,7 @@ other textual content for output generation on the web.)
 
 %prep
 %setup -q -n Kajiki-%{version}
+sed -i 's/from nose import SkipTest/from unittest import SkipTest/' kajiki/tests/test_xml.py
 
 %build
 %python_build

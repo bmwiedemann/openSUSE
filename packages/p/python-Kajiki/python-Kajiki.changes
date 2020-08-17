@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 16 13:21:47 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace nose with pytest
+
+-------------------------------------------------------------------
 Mon Jan 13 16:35:33 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.8.2
