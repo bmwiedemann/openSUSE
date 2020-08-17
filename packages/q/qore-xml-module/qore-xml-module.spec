@@ -1,7 +1,7 @@
 #
 # spec file for package qore-xml-module
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define module_api %(qore --latest-module-api 2>/dev/null)
-%define module_dir %{_libdir}/qore-modules
 
 Name:           qore-xml-module
-Version:        1.2
+Version:        1.4.1
 Release:        0
 Summary:        XML module for Qore
-License:        LGPL-2.1+ or GPL-2.0+ or MIT
+License:        LGPL-2.1-or-later OR GPL-2.0-or-later OR MIT
 Group:          Development/Languages/Other
-Url:            http://qore.org
-Source:         http://prdownloads.sourceforge.net/qore/%{name}-%{version}.tar.bz2
+URL:            https://qore.org
+Source:         https://github.com/qorelanguage/module-xml/releases/download/v1.4.1/qore-xml-module-1.4.1.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-devel
@@ -67,14 +66,15 @@ find test -type f|xargs chmod 644
 find docs -type f|xargs chmod 644
 
 %install
-mkdir -p %{buildroot}/%{module_dir}
 mkdir -p %{buildroot}%{_datadir}/doc/qore-xml-module
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 %fdupes -s docs
 
 %files
-%defattr(-,root,root,-)
-%{module_dir}
-%doc COPYING.LGPL COPYING.MIT README RELEASE-NOTES ChangeLog AUTHORS
+%license COPYING.LGPL COPYING.MIT
+%doc README RELEASE-NOTES
+%{_bindir}/soaputil
+%{_datadir}/qore-modules
+%{_libdir}/qore-modules
 
 %changelog
