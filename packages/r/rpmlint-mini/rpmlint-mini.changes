@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 11:50:49 UTC 2020 - matthias.gerstner@suse.com
+
+- seucirty-whitelistings: update to version master:
+  * Introduce new metadata based whitelistings for device files and world-writable files
+
+-------------------------------------------------------------------
 Tue Jul 28 07:39:48 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version master:

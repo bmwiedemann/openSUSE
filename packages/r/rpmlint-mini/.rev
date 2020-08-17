@@ -838,4 +838,13 @@ undo bootstrap workaround</comment>
   * opa-ff: add wildcard whitelisting (bsc#1174464)</comment>
     <requestid>823075</requestid>
   </revision>
+  <revision rev="104" vrev="21">
+    <srcmd5>a42b6e2d552c7fd1b2b15972c43dd76b</srcmd5>
+    <version>1.10</version>
+    <time>1597658403</time>
+    <user>dimstar_suse</user>
+    <comment>- seucirty-whitelistings: update to version master:
+  * Introduce new metadata based whitelistings for device files and world-writable files</comment>
+    <requestid>826022</requestid>
+  </revision>
 </revisionlist>
