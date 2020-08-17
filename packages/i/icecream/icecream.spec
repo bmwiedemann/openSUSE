@@ -1,7 +1,7 @@
 #
 # spec file for package icecream
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           icecream
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Distributed Compilation in the Network
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
