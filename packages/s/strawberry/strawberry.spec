@@ -17,13 +17,13 @@
 
 
 Name:           strawberry
-Version:        0.6.13
+Version:        0.7.2
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.strawberrymusicplayer.org/
-Source:         https://files.jkvinge.net/packages/strawberry/%{name}-%{version}.tar.xz
+Source:         https://files.strawberrymusicplayer.org/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
@@ -66,7 +66,6 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudf)
 BuildRequires:  pkgconfig(libvlc)
-BuildRequires:  pkgconfig(libxine)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.11.1
@@ -92,7 +91,7 @@ Features:
   - Support for multiple backends
   - Audio analyzer
   - Equalizer
-  - Transfer music to iPod, iPhone, MTP or mass-storage USB player
+  - Transfer music to iPod, MTP or mass-storage USB player
   - Scrobbler with support for Last.fm, Libre.fm and ListenBrainz
   - Subsonic streaming support
 
