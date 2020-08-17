@@ -37,4 +37,12 @@
 - Refresh wrk-3.1.2_distrofixes.patch</comment>
     <requestid>391824</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ecb1d68f7e394b4a80ca242cac6e5d3</srcmd5>
+    <version>4.1.0</version>
+    <time>1597658972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827262</requestid>
+  </revision>
 </revisionlist>

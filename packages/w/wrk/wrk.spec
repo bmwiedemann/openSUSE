@@ -1,7 +1,7 @@
 #
 # spec file for package wrk
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           wrk
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        Modern HTTP benchmarking tool
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Utilities
-Url:            https://github.com/wg/wrk
+URL:            https://github.com/wg/wrk
 Source:         https://github.com/wg/wrk/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         wrk-3.1.2_distrofixes.patch
-BuildRequires:  pkg-config
 BuildRequires:  pkgconfig
-#BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(openssl)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    aarch64 ppc ppc64 ppc64le
 
 %description
@@ -46,17 +43,14 @@ scripts.
 %patch0
 
 %build
-# current luajit in TW seems to be broken
-# sed -i 's|luajit-2.0|luajit-5_1-2.0|g' src/*
-# make %{?_smp_mflags} OPTFLAGS="%{optflags}" WITH_OPENSSL=/usr WITH_LUAJIT=/usr
-make %{?_smp_mflags} OPTFLAGS="%{optflags}" WITH_OPENSSL=%{_prefix}
+%make_build OPTFLAGS="%{optflags}" WITH_OPENSSL=%{_prefix}
 
 %install
 install -D -m 0755 wrk %{buildroot}%{_bindir}/wrk
 
 %files
-%defattr(-,root,root)
-%doc LICENSE README NOTICE
+%license LICENSE
+%doc README.md NOTICE
 %doc scripts/
 %{_bindir}/wrk
 
