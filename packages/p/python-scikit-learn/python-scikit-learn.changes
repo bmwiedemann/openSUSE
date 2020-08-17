@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Sat Aug 15 16:57:34 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update numpy, scipy required versions
+  * added requirement for threadpoolctl
+
+- update to version 0.23.2:
+  * sklearn.cluster
+    + Fix Fixed a bug in cluster.KMeans where rounding errors could
+      prevent convergence to be declared when tol=0. #17959 by Jérémie
+      du Boisberranger.
+    + Fix Fixed a bug in cluster.KMeans and cluster.MiniBatchKMeans
+      where the reported inertia was incorrectly weighted by the
+      sample weights. #17848 by Jérémie du Boisberranger.
+    + Fix Fixed a bug in cluster.MeanShift with bin_seeding=True. When
+      the estimated bandwidth is 0, the behavior is equivalent to
+      bin_seeding=False. #17742 by Jeremie du Boisberranger.
+    + Fix Fixed a bug in cluster.AffinityPropagation, that gives
+      incorrect clusters when the array dtype is float32. #17995 by
+      Thomaz Santana and Amanda Dsouza.
+  * sklearn.decomposition
+    + Fix Fixed a bug in
+      decomposition.MiniBatchDictionaryLearning.partial_fit which
+      should update the dictionary by iterating only once over a
+      mini-batch. #17433 by Chiara Marmo.
+    + Fix Avoid overflows on Windows in
+      decomposition.IncrementalPCA.partial_fit for large batch_size
+      and n_samples values. #17985 by Alan Butler and Amanda Dsouza.
+  * sklearn.ensemble
+    + Fix Fixed bug in ensemble.MultinomialDeviance where the average
+      of logloss was incorrectly calculated as sum of logloss. #17694
+      by Markus Rempfler and Tsutomu Kusanagi.
+    + Fix Fixes ensemble.StackingClassifier and
+      ensemble.StackingRegressor compatibility with estimators that do
+      not define n_features_in_. #17357 by Thomas Fan.
+  * sklearn.feature_extraction
+    + Fix Fixes bug in feature_extraction.text.CountVectorizer where
+      sample order invariance was broken when max_features was set and
+      features had the same count. #18016 by Thomas Fan, Roman
+      Yurchak, and Joel Nothman.
+  * sklearn.linear_model
+    + Fix linear_model.lars_path does not overwrite X when X_copy=True
+      and Gram='auto'. #17914 by Thomas Fan.
+  * sklearn.manifold
+    + Fix Fixed a bug where metrics.pairwise_distances would raise an
+      error if metric='seuclidean' and X is not type
+      np.float64. #15730 by Forrest Koch.
+  * sklearn.metrics
+    + Fix Fixed a bug in metrics.mean_squared_error where the average
+      of multiple RMSE values was incorrectly calculated as the root
+      of the average of multiple MSE values. #17309 by Swier Heeres.
+  * sklearn.pipeline
+    + Fix pipeline.FeatureUnion raises a deprecation warning when None
+      is included in transformer_list. #17360 by Thomas Fan.
+  * sklearn.utils
+    + Fix Fix utils.estimator_checks.check_estimator so that all test
+      cases support the binary_only estimator tag. #17812 by Bruno
+      Charron.
+
+-------------------------------------------------------------------
+Sat May 23 20:09:35 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.23.1:
+  * sklearn.cluster
+    + Efficiency cluster.KMeans efficiency has been improved for very
+      small datasets. In particular it cannot spawn idle threads any
+      more. #17210 and #17235 by Jeremie du Boisberranger.
+    + Fix Fixed a bug in cluster.KMeans where the sample weights
+      provided by the user were modified in place. #17204 by Jeremie
+      du Boisberranger.
+  * Miscellaneous
+    + Fix Fixed a bug in the repr of third-party estimators that use a
+      **kwargs parameter in their constructor, when changed_only is
+      True which is now the default. #17205 by Nicolas Hug.
+
+- changes from version 0.23:
+  * long list of changes, see
+    https://scikit-learn.org/stable/whats_new/v0.23.html#version-0-23-0
+    for details
+
+- changes from version 0.22.2.post1:
+  * sklearn.impute
+    + Efficiency Reduce impute.KNNImputer asymptotic memory usage by
+      chunking pairwise distance computation. #16397 by Joel Nothman.
+  * sklearn.metrics
+    + Fix Fixed a bug in metrics.plot_roc_curve where the name of the
+      estimator was passed in the metrics.RocCurveDisplay instead of
+      the parameter name. It results in a different plot when calling
+      metrics.RocCurveDisplay.plot for the subsequent times. #16500 by
+      Guillaume Lemaitre.
+    + Fix Fixed a bug in metrics.plot_precision_recall_curve where the
+      name of the estimator was passed in the
+      metrics.PrecisionRecallDisplay instead of the parameter name. It
+      results in a different plot when calling
+      metrics.PrecisionRecallDisplay.plot for the subsequent
+      times. #16505 by Guillaume Lemaitre.
+  * sklearn.neighbors
+    + Fix Fix a bug which converted a list of arrays into a 2-D object
+      array instead of a 1-D array containing NumPy arrays. This bug
+
+-------------------------------------------------------------------
 Thu May  7 06:45:57 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - added provide sklearn and python-sklearn as this is name most

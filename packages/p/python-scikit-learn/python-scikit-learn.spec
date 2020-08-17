@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-scikit-learn
-Version:        0.22.1
+Version:        0.23.2
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
@@ -27,21 +27,23 @@ URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit-learn-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.8.2}
-BuildRequires:  %{python_module scipy >= 0.13.3}
+BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module scipy >= 0.19.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module threadpoolctl >= 2.0.0}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
+Requires:       python-joblib >= 0.11
+Requires:       python-matplotlib
+Requires:       python-numpy >= 1.13.3
+Requires:       python-scipy >= 0.19.1
+Requires:       python-threadpoolctl >= 2.0.0
+Requires:       python-xml
 Provides:       python-sklearn
 Provides:       sklearn
-Requires:       python-joblib
-Requires:       python-matplotlib
-Requires:       python-numpy >= 1.8.2
-Requires:       python-scipy >= 0.13.3
-Requires:       python-xml
 # SECTION test requirements
 BuildRequires:  %{python_module joblib}
 BuildRequires:  %{python_module matplotlib}
