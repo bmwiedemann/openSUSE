@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/rocky/python-spark/
 Source:         https://files.pythonhosted.org/packages/source/s/spark_parser/spark_parser-%{version}.tar.gz
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module nose >= 1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

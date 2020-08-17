@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 16 22:50:53 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary build dependency nose
+
+-------------------------------------------------------------------
 Tue May 19 08:03:00 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
