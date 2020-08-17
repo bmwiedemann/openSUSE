@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 03:26:34 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1597409476.5b230be31:
+  * Streamline "duplicate" and "restart" routes
+  * Do not hard-code source tree for API descriptions
+
+-------------------------------------------------------------------
 Thu Aug 13 19:26:33 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1597317239.6bef59ee4:
