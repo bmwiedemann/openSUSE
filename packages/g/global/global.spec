@@ -1,7 +1,7 @@
 #
 # spec file for package global
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           global
-Version:        6.6.3
+Version:        6.6.4
 Release:        0
 Summary:        Common source code tag system
 License:        GPL-3.0-only
@@ -29,6 +29,7 @@ Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{
 Patch0:         global-5.7.diff
 # PATCH-FIX-UPSTREAM fix_paths.patch bnc#977967
 Patch1:         fix_paths.patch
+Patch2:         global-gcc10.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  emacs-nox
@@ -38,7 +39,6 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(sqlite3)
 Requires:       python3-Pygments
 Requires(pre):  %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
@@ -55,12 +55,14 @@ subdirectories or many main() functions like MH, X, or Linux kernel.
 %setup -q
 %patch0
 %patch1
+%patch2 -p1
 
 %build
 autoreconf -fiv
+export CPPFLAGS="-fno-common"
 %configure \
   --disable-static \
-  --with-sqlite3 \
+  --without-included-ltdl \
   --with-exuberant-ctags=%{_bindir}/ctags \
   PYTHON=python3
 make %{?_smp_mflags}

@@ -435,4 +435,19 @@
 - Get rid of env usage</comment>
     <requestid>711692</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>46cc407bf2b697eee45ba4a194c959f1</srcmd5>
+    <version>6.6.4</version>
+    <time>1597658862</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.6.4
+  o gtags.vim: New custom variable 'Gtags_Emacs_Like_Mode'.
+  If this variable is 1, use the tag files of the project to which the current
+  file belongs. By default, use the tag files of the current project.
+  o gtags.vim: Gtags command discarded all unsaved changes. Now it brings
+  the following error: E37: No write since last change (add ! to override).
+  o gtags: Now gtags skips java annotations (@...[(...)]).
+- add global-gcc10.patch to fix build with -fcommon</comment>
+    <requestid>827150</requestid>
+  </revision>
 </revisionlist>

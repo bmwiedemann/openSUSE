@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 16 23:52:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.6.4
+  o gtags.vim: New custom variable 'Gtags_Emacs_Like_Mode'.
+  If this variable is 1, use the tag files of the project to which the current
+  file belongs. By default, use the tag files of the current project.
+
+  o gtags.vim: Gtags command discarded all unsaved changes. Now it brings
+  the following error: E37: No write since last change (add ! to override).
+  o gtags: Now gtags skips java annotations (@...[(...)]).
+
+- add global-gcc10.patch to fix build with -fcommon
+
+-------------------------------------------------------------------
 Mon Jun 24 10:17:15 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch to python3
