@@ -17,7 +17,7 @@
 
 
 Name:           noson-app
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        SONOS device controller
 License:        GPL-3.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(noson) = 2.3.0
+BuildRequires:  pkgconfig(noson) = 2.3.1
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 
