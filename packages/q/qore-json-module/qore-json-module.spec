@@ -1,7 +1,7 @@
 #
 # spec file for package qore-json-module
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define module_api %(qore --latest-module-api 2>/dev/null)
-%define module_dir %{_libdir}/qore-modules
-
 Name:           qore-json-module
-Version:        1.4
+Version:        1.7
 Release:        0
 Summary:        JSON module for Qore
 License:        LGPL-2.0-or-later OR GPL-2.0-or-later OR MIT
-Group:          Development/Languages
-Url:            http://qore.org
-Source:         http://prdownloads.sourceforge.net/qore/%{name}-%{version}.tar.bz2
-Patch0:         0001-set-64bit-for-other-architectures.patch
+URL:            https://qore.org
+Source:         https://github.com/qorelanguage/module-json/releases/download/v%{version}/qore-json-module-%{version}.tar.bz2
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -36,7 +32,6 @@ BuildRequires:  qore
 BuildRequires:  qore-devel >= 0.8.5
 Requires:       %{_bindir}/env
 Requires:       qore-module-api-%{module_api}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains the json module for the Qore Programming Language.
@@ -45,36 +40,34 @@ JSON is a concise human-readable data serialization format.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 # Remove -m32 and -m64 options except for x86* and ppc*
 %ifnarch %{ix86} x86_64 ppc64 ppc64le
 sed -i 's/-m32//g;s/-m64//g' configure
 %endif
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug
-make %{?_smp_mflags}
+# FIXME: you should use the %%configure macro
+CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=%{_prefix} --disable-debug
+%make_build
 
 %install
-mkdir -p %{buildroot}/%{module_dir}
 mkdir -p %{buildroot}%{_datadir}/doc/qore-json-module
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %files
-%defattr(-,root,root,-)
-%{module_dir}
-%doc COPYING.LGPL COPYING.MIT README RELEASE-NOTES ChangeLog AUTHORS
+%{_datadir}/qore-modules
+%{_libdir}/qore-modules
+%license COPYING.LGPL COPYING.MIT
+%doc README RELEASE-NOTES
 
 %package doc
 Summary:        JSON module for Qore
-Group:          Development/Languages
 
 %description doc
 This package contains the HTML documentation and example programs for the Qore
 json module.
 
 %files doc
-%defattr(-,root,root,-)
 %doc docs/json/html docs/JsonRpcHandler/html examples/ test/
 
 %changelog
