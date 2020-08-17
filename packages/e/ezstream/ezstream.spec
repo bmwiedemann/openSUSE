@@ -1,7 +1,7 @@
 #
 # spec file for package ezstream
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ezstream
-Version:        0.6.0
+Version:        1.0.1
 Release:        0
 Summary:        Icecast media streaming client
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            http://www.icecast.org/ezstream.php
 Source:         https://downloads.xiph.org/releases/ezstream/ezstream-%{version}.tar.gz
@@ -29,6 +29,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(shout)
 BuildRequires:  pkgconfig(taglib_c)
@@ -53,7 +54,7 @@ sed -i "s/BUILD_DATE=\$(date '+%%B %%d, %%Y')/BUILD_DATE=\"$FAKE_BUILDDATE\"/" c
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -64,11 +65,14 @@ rm -rf "%{buildroot}%{_datadir}/examples"
 rm -rf "%{buildroot}%{_datadir}/doc"
 
 %files
-%doc COPYING NEWS README
+%license COPYING
+%doc NEWS README.md
 %doc examples
 %{_bindir}/ezstream
 %{_bindir}/ezstream-file.sh
-%{_mandir}/man1/ezstream.1*
-%{_mandir}/man1/ezstream-file.sh.1*
+%{_bindir}/ezstream-cfgmigrate
+%{_mandir}/man1/ezstream.1%{?ext_man}
+%{_mandir}/man1/ezstream-file.sh.1%{?ext_man}
+%{_mandir}/man1/ezstream-cfgmigrate.1%{?ext_man}
 
 %changelog
