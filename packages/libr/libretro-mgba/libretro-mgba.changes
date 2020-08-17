@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Sat Aug 08 09:19:53 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200805:
+  * CHANGES: Update for 0.8.3
+  * ARM: Fix warnings
+  * Vita: Clean this up properly
+  * GBA Memory: Fix instability on Wii when using AGBPrint
+  * Vita: Fix flickering when using frameskip (fixes #1822)
+  * README: Add missing Switch mention, update notes on macOS
+  * Qt: Attempt to fix DisplayGL crash
+  * 3DS: Fix garbage on borders of scaled screens
+  * 3DS: Make pre-init garbage slightly less bad
+  * 3DS: Fix compilation flags
+  * Core: Fix thread names that were too long
+  * ARM: Fix decoder detection of branches with ALU and LDR instrctions
+  * Fix emscripten build on OSX hosts
+  * CMake: Add missing dllexports.h file to dev installation
+  * Wii: Fix pixelated filtering on interframe blending (fixes #1830)
+  * GBA Savedata: Fix potential corruption when loading a 1Mbit flash save
+  * ARM: Fix regression setting C flag in SBC (fixes #1827)
+  * SM83: Fix flags on little endian PowerPC
+  * FFmpeg: Minor lossless encoding improvements
+  * GB: Fix OAM in GB mVL playback
+  * GBA: Fix leak if attempting to load BIOS multiple times
+  * GB Video: Fix state loading
+  * GBA Video: Fix color of disabled screen
+  * GB Video: Always initialize palette
+  * ARM: Fix edge case with Thumb SBC flags (fixes #1818)
+  * CMake: Fix build with libzip 1.7
+  * All: Correct more format strings on Windows (fixes #1817)
+  * Qt: Add missing option for Wisdom Tree in overrides list
+  * Qt: Fix logging config section width
+  * FFmpeg: Use range coder for FFV1 to reduce output size
+  * README: Remove ImageMagick mention
+  * Qt: Missed a few
+  * Qt: Don't use non-C++14 designated initializers
+  * Util: Fix crash if PNG header fails to write
+  * GBA Video: Fix invalid read in mode 4 mosaic
+  * Fix Italian real time clock translation (#1809)
+  * ARM: Fix LDM^ {pc} differences (fixes #1698)
+  * ARM: Fix LDM^ writeback to user-mode register
+  * Qt: Fix file handle leak on opening an invalid ROM
+  * GBA BIOS: Fix reloading video registers after reset (fixes #1808)
+  * Core: Fix warning in DISABLE_THREADING build
+  * CMake: Fix packaging of test components
+  * CMake: Fix regex on empty libzip version
+  * Qt: Setting to show filename in title bar instead of ROM name. (#1807)
+  * Core: Fix mCoreIsCompatible on null vf
+  * All: Correct format strings for some numbers on Windows (fixes #1794)
+  * Qt: Add per-page scrolling to memory view (fixes #1795)
+  * Core: Warn when savedata fails to load from state
+  * GBA Savedata: Fix extracting save when not yet configured in-game
+  * GB Core: Fix extracting SRAM when none is present
+  * GB Memory: Fix OAM DMA from top 8 kB
+  * GB MBC: Fix MBC2 bit selection
+  * GB MBC: Fix MBC1 RAM enable bit selection
+  * CMake: Bump version number
+  * CHANGES: Update for 0.8.2
+  * Revert "GBA Video: Add sprite cycle counting to GL (fixes #1635)"
+  * Res: Update patrons
+  * GBA Video: Fix sprite/backdrop blending regression
+  * 3DS: Fix framelimiter on newer citro3d (fixes #1771)
+  * 3DS: Fix warning
+  * GBA Video: Add sprite cycle counting to GL (fixes #1635)
+  * GBA Video: Simplify sprite cycle counting (fixes #1279)
+  * ARM: Fix disassembling of several S-type instructions (fixes mgba.io/i/1778)
+  * GBA: Add timing fudge factor for running a frame
+  * GBA: Break infinite loop for 0-frame mVLs (fixes #1723)
+  * Qt: Show a warning when save file can't be opened
+  * Qt: Fix unmapping zipped ROM (fixes #1777)
+  * 3DS: Clean up legacy initialization (fixes #1768)
+  * GBA Serialize: Only flunk BIOS check if official BIOS was expected
+  * CMake: Fix rebuilding dkp ports
+  * 3DS: Fix perf build
+  * README: Update Ubuntu Docker images
+  * GBA Video: Fix double-size OBJ wrapping in GL renderer (fixes #1712)
+  * GBA Video: Add missing parts of 256-color mode 0 mosaic (fixes #1701)
+  * ARM Debugger: Clear low bit on breakpoint addresses (fixes #1764)
+  * GBA Video: Fix disabling OBJWIN in GL renderer (fixes #1759)
+  * ARM: Fix timing on Thumb shift instructions
+  * Add CI for PS2 platform
+  * Adapt to PS2 newlib changes
+  * GBA BIOS: Reset renderer when RegisterRamReset called (fixes #1756)
+  * CMake: Always use devkitPro toolchain when applicable (fixes #1755)
+  * libretro: Fix cheevos memory map for GB games using external RAM
+  * GBA Video: Fix mosaic objects drawing past the end (fixes #1702)
+  * GB MBC: Support 4MB MBC30 ROMs (fixes #1713)
+  * GB Video: Fix BGPS value after skipping BIOS (fixes #1717)
+  * GB: Fix GBC game registers after skipping BIOS
+  * 3DS: Fix build with ctrulib 1.7.0
+  * GBA: Add missing RTC overrides for Legendz games
+  * Use consistent conditionals for big endian detection (not all PowerPC hosts are big-endian!)
+  * Memory Search: on return press in value field execute search (#1707)
+  * Win32: Fix copyright year of the Win32 installer
+  * Libretro: Add cheevos support for GB/GBC
+  * GB Video: Fix some cases where SGB border doesn't draw to mutli-buffers
+  * GBA: Reject incorrectly sized BIOSes
+  * Qt: Fix OpenGL 2.1 support (fixes #1678)
+  * Fix the libretro 3DS build
+  * All: Fix your libc, Windows
+  * All: Fix some warnings
+  * GBA Timers: Fix deserializing count-up timers
+  * GBA SIO: Fix double-unloading active driver
+  * GBA SIO: Fix Multiplayer busy bit
+  * Qt: Set icon for Discord Rich Presence
+  * Qt: Defer texture updates until frame is drawn (fixes #1590)
+  * Qt: Fix memory leak in library
+  * VFS: Fix memory leak if attempt to open a 7z fails
+  * Qt: Disable Replace ROM option when no game loaded
+  * Core: Fix crash modifying hash table entry (fixes #1673)
+  * libretro: Update version number to 0.8.1
+  * Core: Fix ELF loading regression (fixes #1669)
+  * CMake: Bump version number
+  * CHANGES: Update for 0.8.1
+  * SDL: Refresh stale pointers after adding a joystick (fixes #1622)
+  * GBA DMA: Fix invalid audio DMA parameters
+  * Qt: Fix invalid names for modifier keys (fixes #525)
+  * Qt: Fix pausing Qt Multimedia audio (fixes #1643)
+  * SDL: Fix Windows build on static 2.0.10
+  * SDL: Use DirectSound audio driver by default on Windows
+  * GBA: Automatically skip BIOS for multiboot ROMs
+  * GBA: Fix multiboot entry point while skipping BIOS
+  * GBA BIOS: Fix undefined instruction HLE behavior
+  * Qt: Fix non-GB build (fixes #1664)
+  * CMake: Include namelink in dev package
+  * VFS: Fix handle leak when double-mapping (fixes #1659)
+  * FFmpeg: Add more presets
+  * FFmpeg: Disallow recording video with no audio nor video
+  * FFmpeg: Fix crash when -strict -2 is needed for vcodec or container
+  * Qt: Fix GIF view not allowing manual filename entry
+  * Qt: Fix window title not updating after shutting down game
+  * Core: Fix integer overflow in ELF loading
+  * Debugger: Fix build on MINIMAL_CORE=2
+
+-------------------------------------------------------------------
 Fri Feb 07 15:07:23 UTC 2020 - i@guoyunhe.me
 
 - Remove mgba.libretro which is provided in libretro-core-info package

@@ -17,7 +17,7 @@
 
 
 Name:           libretro-mgba
-Version:        0~git20200206
+Version:        0~git20200805
 Release:        0
 Summary:        The mGBA libretro core for GameBoy Advance emulation
 License:        MPL-2.0
