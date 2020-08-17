@@ -17,10 +17,10 @@
 
 
 Name:           libretro-freeintv
-Version:        0~git20200109
+Version:        0~git20200721
 Release:        0
 Summary:        FreeIntv libretro core for Mattel Intellivision emulation
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 

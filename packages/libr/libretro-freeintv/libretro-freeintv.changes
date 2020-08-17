@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Aug 08 09:36:46 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200721:
+  * Fix error with PRI_SIZET
+  * Fix CI/CD
+  * Add CI/CD to the PS2
+  * Add Ps2 support
+  * Buildfixes for C89
+  * Update libretro-common
+  * Cut down libretro-common to base essentials
+  * Add files via upload
+  * Fixes #47
+  * Moved itoa to osd
+  * Fixes #45
+  * Fixes graphics issues from #40
+  * Correctly detect MTE Test Cart
+  * Fixes #40 - Intellicart roms w/o A8
+  * Expose RAM for Retroachievements
+  * Fixes #44
+  * OSD, Keyboard keypad controls
+
+-------------------------------------------------------------------
 Sun Jan 12 15:22:06 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version
