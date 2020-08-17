@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 15 13:30:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Authenticated users can trigger an application crash
+  (with a NULL pointer dereference) if echo-message is not enabled
+   and there is no network. (bsc#1172446, CVE-2020-1377)
+
+-------------------------------------------------------------------
 Mon May 11 08:21:41 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Use pristine linker flags
