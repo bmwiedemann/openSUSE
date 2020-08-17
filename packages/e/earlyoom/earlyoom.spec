@@ -20,13 +20,13 @@
 %global _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           earlyoom
-Version:        1.6
+Version:        1.6.1
 Release:        0
 Summary:        Early OOM Daemon for Linux
 License:        MIT
 Group:          System/Daemons
 URL:            https://github.com/rfjakob/%{name}
-Source0:        %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/rfjakob/earlyoom/archive/v%{version}.tar.gz
 Source11:       %{name}.sysconfig
 # pandoc only for `pandoc MANPAGE.md -s -t man > earlyoom.1`
 BuildRequires:  pandoc
