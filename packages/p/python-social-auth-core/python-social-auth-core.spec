@@ -30,13 +30,15 @@ Source:         https://files.pythonhosted.org/packages/source/s/social-auth-cor
 # Missing test data https://github.com/python-social-auth/social-core/pull/351
 Source1:        https://raw.githubusercontent.com/python-social-auth/social-core/master/social_core/tests/backends/data/saml_config.json
 Patch0:         remove-unittest2.patch
+# PATCH-FEATURE-UPSTREAM resolve_depreciations.patch gh#python-social-auth/social-core#500 mcepl@suse.com
+# Remove deprecation warnings
+Patch1:         resolve_depreciations.patch
 BuildRequires:  %{python_module PyJWT >= 1.4.0}
 BuildRequires:  %{python_module Unidecode >= 1.1.1}
 BuildRequires:  %{python_module coverage >= 3.6}
 BuildRequires:  %{python_module cryptography >= 2.1.1}
 BuildRequires:  %{python_module httpretty}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose >= 1.2.1}
 BuildRequires:  %{python_module oauthlib >= 1.0.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jose >= 3.0.0}
@@ -83,8 +85,8 @@ third party services, implement integrations with web frameworks and
 storage solutions.
 
 %prep
-%setup -q -n social-auth-core-%{version}
-%patch0 -p1
+%autosetup -p1 -n social-auth-core-%{version}
+
 cp %{SOURCE1} social_core/tests/backends/data/
 
 %build
