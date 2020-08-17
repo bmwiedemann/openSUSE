@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:36:43 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.10.3
+
+Released July 15, 2020
+
+- Added get_named(substring) method to retrieve holidays by name (dr-p)
+- Added pop_named(substring) method to pop specific holiday/s by name (samtregar, dr-p)
+- Support for Burundi (bmwachajr)
+- Support for Latvia (rolandinsh)
+- Support for Romania (dorianm)
+- Spain fix (dr-p)
+- Netherlands fix (RooieRakkert)
+- Switzerland fixes (cgrigis)
+- Germany fix (MikeTsenatek)
+- Added korean_cal attribute to Korea and Vietnam (seriousran, pelennor)
+- United States fixes (patrick-nicholson, dr-p)
+- Singapore fixes + 2021 holidays (mborsetti)
+
+
+Version 0.10.2
+==============
+
+Released April 13, 2020
+
+- Support for Spain (piliamaurizio, jbroudou, dr-p, gerardo15)
+- Support for Turkey (cemkaragozlu)
+- Support for Korea (1kko, dr-p)
+- Support for Vietnam (1kko, dr-p)
+- Support for Morocco (abensrhir, dr-p)
+- Mexico fix (Rosi2143, dr-p)
+- Croatia fix (sebojanko, dr-p)
+- US Georgia fix (jbroudou, dr-p)
+- Austria province ISO3166-2 adoption (jbroudou, dr-p)
+- Portugal typos & name fixes (reinaldoramosarxi)
+- US MLK renamed (snoopyjc, dr-p)
+- ISO-3 codes export fix (dr-p)
+
+-------------------------------------------------------------------
 Thu Apr  9 08:51:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.10.1

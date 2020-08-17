@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-holidays
-Version:        0.10.1
+Version:        0.10.3
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
@@ -26,12 +26,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/dr-prodigy/python-holidays
 Source:         https://files.pythonhosted.org/packages/source/h/holidays/holidays-%{version}.tar.gz
 BuildRequires:  %{python_module convertdate}
+BuildRequires:  %{python_module korean-lunar-calendar}
+#BuildRequires:  %{python_module hijri-converter}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-convertdate
+Requires:       python-korean-lunar-calendar
+#Requires:       python-hijri-converter
 Requires:       python-python-dateutil
 Requires:       python-six
 BuildArch:      noarch
