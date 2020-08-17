@@ -326,6 +326,8 @@ Patch120:     info_installed-works-without-status-attr-now.patch
 Patch121:     opensuse-3000.3-spacewalk-runner-parse-command-250.patch
 # PATCH-FIX_UPSTREAM: https://github.com/openSUSE/salt/pull/251
 Patch122:     opensuse-3000-libvirt-engine-fixes-251.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/58013
+Patch123:     fix-__mount_device-wrapper-254.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -954,8 +956,15 @@ cp %{S:5} ./.travis.yml
 %patch120 -p1
 %patch121 -p1
 %patch122 -p1
+%patch123 -p1
 
 %build
+# Putting /usr/bin at the front of $PATH is needed for RHEL/RES 7. Without this
+# change, the RPM will require /bin/python, which is not provided by any package
+# on RHEL/RES 7.
+%if 0%{?fedora} || 0%{?rhel}
+export PATH=/usr/bin:$PATH
+%endif
 %if 0%{?build_py2}
 python setup.py --with-salt-version=%{version} --salt-transport=both build
 cp ./build/lib/salt/_version.py ./salt
@@ -1119,8 +1128,10 @@ install -Dpm 0644  pkg/suse/salt-common.logrotate %{buildroot}%{_sysconfdir}/log
 install -Dpm 0644  pkg/salt-common.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/salt
 %endif
 #
+%if 0%{?suse_version} <= 1500
 ## install SuSEfirewall2 rules
 install -Dpm 0644  pkg/suse/salt.SuSEfirewall2 %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/salt
+%endif
 #
 ## install completion scripts
 %if %{with bash_completion}
@@ -1573,7 +1584,9 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %{_mandir}/man1/salt-key.1.gz
 %{_mandir}/man1/salt-run.1.gz
 %{_mandir}/man7/salt.7.gz
+%if 0%{?suse_version} <= 1500
 %config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/salt
+%endif
 %{_sbindir}/rcsalt-master
 %if %{with systemd}
 %{_unitdir}/salt-master.service

@@ -1487,4 +1487,17 @@ let build start it or we will get libvirt errors.
   * avoid-has_docker-true-if-import-messes-with-salt.uti.patch</comment>
     <requestid>819714</requestid>
   </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>7350550a722e01983e0f31aaf65978b7</srcmd5>
+    <version>3000.3</version>
+    <time>1597658421</time>
+    <user>dimstar_suse</user>
+    <comment>- Require /usr/bin/python instead of /bin/python for RHEL-family (bsc#1173936)
+
+- Don't install SuSEfirewall2 service files in Factory
+- Fix __mount_device wrapper to accept separate args and kwargs
+- Added:
+  * fix-__mount_device-wrapper-254.patch</comment>
+    <requestid>826691</requestid>
+  </revision>
 </revisionlist>

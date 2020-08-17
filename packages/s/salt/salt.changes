@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 10 15:15:31 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
+
+- Require /usr/bin/python instead of /bin/python for RHEL-family (bsc#1173936)
+
+-------------------------------------------------------------------
+Fri Jul 31 14:55:06 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
+
+- Don't install SuSEfirewall2 service files in Factory
+- Fix __mount_device wrapper to accept separate args and kwargs
+
+- Added:
+  * fix-__mount_device-wrapper-254.patch
+
+-------------------------------------------------------------------
 Fri Jul  3 13:19:02 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
 - Fix the registration of libvirt pool and nodedev events
