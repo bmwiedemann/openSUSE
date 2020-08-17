@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 12 03:09:26 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.02
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.02 2020-08-11T13:06:40+0900
+   - Add recursive_data_protection() #220
+     Contributor: Jason Cooper
+
+-------------------------------------------------------------------
 Wed Jul  1 03:09:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.01
