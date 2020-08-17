@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://python-redmine.com
 Source:         https://files.pythonhosted.org/packages/source/p/python-redmine/python-redmine-%{version}.tar.gz
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.23.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -56,7 +56,7 @@ powerful Pythonic API inspired by a well-known Django ORM.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
