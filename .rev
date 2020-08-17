@@ -15,4 +15,16 @@
     <comment> (forwarded request 790029 from msmeissn)</comment>
     <requestid>790399</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cb0783ccfb5d632004b12adcb21342bf</srcmd5>
+    <version>0.6</version>
+    <time>1597658540</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.6
+ - Add Japanese translation
+ - Restore status messages when launching processes via explorer
+ - GCC 10 build fix
+ - Fix for WINE &gt;= 5.14</comment>
+    <requestid>827042</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 15 06:25:56 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Version 0.6
+ - Add Japanese translation
+ - Restore status messages when launching processes via explorer
+ - GCC 10 build fix
+ - Fix for WINE >= 5.14
+
+-------------------------------------------------------------------
 Tue Mar 31 08:27:19 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Version 0.5
