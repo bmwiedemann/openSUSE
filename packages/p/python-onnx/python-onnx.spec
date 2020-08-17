@@ -27,6 +27,7 @@ URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch1:         no-python2.patch
+Patch2:         using-onnxruntime-proto.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module protobuf}
@@ -41,6 +42,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel
 BuildRequires:  python-rpm-macros
+Requires:       libonnx == %version
+Requires:       libonnx_proto == %version
+Requires:       libonnxifi_dummy == %version
 Requires:       python-numpy
 Requires:       python-protobuf
 Requires:       python-six
@@ -56,6 +60,43 @@ Open format to represent deep learning models. With ONNX, AI developers can
 more easily move models between state-of-the-art tools and choose the
 combination that is best for them. ONNX is developed and supported by a
 community of partners.
+
+%package -n onnx-devel
+Summary:        Header files of onnx
+Requires:       libonnx == %version
+Requires:       libonnx_proto == %version
+Requires:       libonnxifi_dummy == %version
+
+%description  -n onnx-devel
+Header files of ONNX. 
+
+%package -n libonnxifi_dummy
+Summary:        Library for ONNX Interface for Framework Integration
+
+%description  -n  libonnxifi_dummy
+This package exists to create libonnx_proto, so you do no want
+to install this package.
+
+%package -n libonnx
+Summary:        Shared library for onnx
+
+%description  -n  libonnx
+This package exists to create libonnx_proto, so you do no want
+to install this package.
+
+%package -n libonnx_proto
+Summary:        Shared library for onnx protocul bufer
+
+%description  -n  libonnx_proto
+Shared library for the protocol buffer library, packaged separately to be
+used by external project.
+
+%package -n onnx-backend-test
+Summary:        Test data
+
+%description -n onnx-backend-test
+This packages includes the data for testing the backend.
+
 
 %prep
 %setup -q -n onnx-%{version}
@@ -80,16 +121,18 @@ sed -i -e '/pytest-runner/d' setup.py
   -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
   -DONNX_WERROR=OFF \
   -DBUILD_ONNX_PYTHON=ON \
-  -DBUILD_SHARED_LIBS=OFF \
-  -DBUILD_STATIC_LIBS=ON \
+  -DBUILD_SHARED_LIBS=ON \
+  -DBUILD_STATIC_LIBS=OFF \
   -DPYTHON_EXECUTABLE="%{_bindir}/$python" \
-  -DPY_EXT_SUFFIX="`$python-config --extension-suffix`"
+  -DPY_EXT_SUFFIX="`$python-config --extension-suffix`" \
+  %{nil}
 %cmake_build ; cd ..
 }
 %python_build
 
 %install
 %python_install
+%cmake_install
 %python_clone -a %{buildroot}%{_bindir}/backend-test-tools
 %python_clone -a %{buildroot}%{_bindir}/check-node
 %python_clone -a %{buildroot}%{_bindir}/check-model
@@ -124,5 +167,23 @@ cp %{__builddir}/*cpp2py* ./onnx/
 %python_alternative %{_bindir}/check-node
 %python_alternative %{_bindir}/backend-test-tools
 %{python_sitearch}/onnx*
+
+%files -n onnx-devel
+%{_includedir}/onnx
+%{_libdir}/cmake/*
+%exclude %{_includedir}/onnx/backend
+
+%files -n onnx-backend-test
+%{_includedir}/onnx/backend
+
+%files -n libonnxifi_dummy
+%{_libdir}/libonnxifi*.so
+%{_libdir}/libonnxifi_loader.*
+/usr/lib/libonnxifi.so
+
+%files -n libonnx
+%{_libdir}/libonnx.so
+%files -n libonnx_proto
+%{_libdir}/libonnx_proto.so
 
 %changelog

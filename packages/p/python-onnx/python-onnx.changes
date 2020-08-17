@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 14 14:05:18 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- reorganized package in order to have shared library support.
+  Additional  packages are:
+  * onnx-devel
+  * libonnxifi_dummy
+  * libonnx
+  * onnx-devel
+  As no so versions for the shared libraries are available, there
+  is not a explicit dependency for the shared libraries.
+  The archive file libonnxifi_loader.a is explicitely allowed in 
+  the rpmlintrc as this archive file is consumed by libonnxifi_loader.so
+- Added the proto files from onnxruntime so that both packages can 
+  use the same shared libraries:
+  * added using-onnxruntime-proto.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 09:02:56 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - updated to version 1.7.0 with following highlights:
