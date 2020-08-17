@@ -17,21 +17,19 @@
 
 
 Name:           iptraf-ng
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        TCP/IP Network Monitor
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/iptraf-ng/iptraf-ng/
-
 Source:         https://github.com/iptraf-ng/iptraf-ng/archive/v%version.tar.gz
-Patch1:         0001-Revert-TPACKET_V3-mlock-mmap-ed-address-space-into-R.patch
-Obsoletes:      iptraf < 4
-# Just pick a number that is >3
-Provides:       iptraf = 4
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
 BuildRequires:  xz
+Obsoletes:      iptraf < 4
+# Just pick a number that is >3
+Provides:       iptraf = 4
 
 %description
 IPTraf-ng is a console-based network statistics utility. It gathers a
@@ -43,7 +41,7 @@ breakdowns, and LAN station packet and byte counts.
 %autosetup -n %name-%version -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%optflags -D_GNU_SOURCE" V=1
+%make_build CFLAGS="%optflags -D_GNU_SOURCE"
 
 %install
 %make_install prefix="%_prefix" V=1

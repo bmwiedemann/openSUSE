@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 16 14:11:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Makefile: protect mandatory compile flags
+  * packet capture: don't reuse socket for multiple receive functions
+  * TPACKET_V[23]: continue even if mlock() fails
+- remove 0001-Revert-TPACKET_V3-mlock-mmap-ed-address-space-into-R.patch:
+  fixed differently upstream
+
+-------------------------------------------------------------------
 Wed Jun 10 14:44:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0
