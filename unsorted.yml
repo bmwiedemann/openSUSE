@@ -1587,6 +1587,16 @@ unsorted:
   - carla: [x86_64] 
   - carla-devel: [x86_64] 
   - carla-vst: [x86_64] 
+  - casacore 
+  - casacore-devel 
+  - casacore-openmpi1 
+  - casacore-openmpi1-devel 
+  - casacore-openmpi2 
+  - casacore-openmpi2-devel 
+  - casacore-openmpi3 
+  - casacore-openmpi3-devel 
+  - casacore-openmpi4 
+  - casacore-openmpi4-devel 
   - caslon-fonts 
   - casync: [x86_64] 
   - catalan-pos-dict 
@@ -5296,6 +5306,8 @@ unsorted:
   - google-exo-fonts 
   - google-gson 
   - google-gson-javadoc 
+  - google-guest-configs 
+  - google-guest-oslogin 
   - google-guice 
   - google-guice-javadoc 
   - google-http-java-client 
@@ -5320,6 +5332,7 @@ unsorted:
   - google-oauth-java-client-servlet 
   - google-quiche-source 
   - google-roboto-mono-fonts 
+  - google-roboto-slab-fonts 
   - google-worksans-fonts 
   - googleapis-source 
   - googler 
@@ -8858,8 +8871,8 @@ unsorted:
   - libboost_wave1_71_0-32bit: [x86_64] 
   - libboost_wave1_71_0-devel 
   - libboringssl1 
-  - libbotan-2-13 
-  - libbotan-2-13-32bit: [x86_64] 
+  - libbotan-2-15 
+  - libbotan-2-15-32bit: [x86_64] 
   - libbotan-devel 
   - libbotan-devel-32bit: [x86_64] 
   - libbpf-devel 
@@ -8949,6 +8962,11 @@ unsorted:
   - libcapstone4 
   - libcares2-32bit: [x86_64] 
   - libcaribou0 
+  - libcasacore5 
+  - libcasacore5-openmpi1 
+  - libcasacore5-openmpi2 
+  - libcasacore5-openmpi3 
+  - libcasacore5-openmpi4 
   - libcblas3 
   - libcblas3-32bit: [x86_64] 
   - libcbor-devel 
@@ -9283,7 +9301,7 @@ unsorted:
   - libdd_opentracing0 
   - libddccontrol0 
   - libddcutil-devel 
-  - libddcutil2 
+  - libddcutil3 
   - libdeal_II9_2_0: [x86_64] 
   - libdeal_II9_2_0-openmpi2: [x86_64] 
   - libdeal_II9_2_0-openmpi3: [x86_64] 
@@ -9347,7 +9365,7 @@ unsorted:
   - libdrumstick-file1 
   - libdrumstick-rt-plugins 
   - libdrumstick-rt1 
-  - libdruntime-ldc91 
+  - libdruntime-ldc92 
   - libdtkcore2 
   - libdtkwidget2 
   - libdtkwm2 
@@ -9416,6 +9434,8 @@ unsorted:
   - libeditorconfig-devel-32bit: [x86_64] 
   - libeditorconfig0-32bit: [x86_64] 
   - libefa1-32bit: [x86_64] 
+  - libei-devel 
+  - libei-suse0 
   - libelektra-augeas 
   - libelektra-devel 
   - libelektra-devel-doc 
@@ -10619,7 +10639,7 @@ unsorted:
   - libldac2 
   - libldapcpp-devel 
   - libldb-devel 
-  - libldc-jit91 
+  - libldc-jit92 
   - libldl-doc 
   - libldl2 
   - libldm-1_0-0: [i586] 
@@ -11233,6 +11253,9 @@ unsorted:
   - libomp7-devel 
   - libomp8-devel 
   - libomp9-devel 
+  - libonnx 
+  - libonnx_proto 
+  - libonnxifi_dummy 
   - liboop-devel 
   - liboop4 
   - libopae-c1: [x86_64] 
@@ -11546,7 +11569,7 @@ unsorted:
   - libpgf7 
   - libpgm-5_2-0-32bit: [x86_64] 
   - libphobos2-0_87 
-  - libphobos2-ldc91 
+  - libphobos2-ldc92 
   - libphonenumber-devel 
   - libphonon4qt5-32bit: [x86_64] 
   - libphysfs-devel 
@@ -16249,6 +16272,8 @@ unsorted:
   - onefetch 
   - oneko 
   - oniguruma-devel 
+  - onnx-backend-test 
+  - onnx-devel 
   - ooRexx 
   - ooRexx-devel 
   - opa-address-resolution: [x86_64] 
@@ -19918,6 +19943,7 @@ unsorted:
   - python3-capng 
   - python3-capstone 
   - python3-capturer 
+  - python3-casacore 
   - python3-case 
   - python3-cassandra-driver 
   - python3-cassowary 
@@ -20057,7 +20083,6 @@ unsorted:
   - python3-curtsies 
   - python3-cx_Freeze 
   - python3-cymruwhois 
-  - python3-cyordereddict 
   - python3-cytoolz 
   - python3-czifile 
   - python3-d2to1 
@@ -20123,6 +20148,7 @@ unsorted:
   - python3-dfwinreg 
   - python3-dialite 
   - python3-dictdiffer 
+  - python3-dictknife 
   - python3-dicttoxml 
   - python3-diff-match-patch 
   - python3-digitalocean 
@@ -20298,6 +20324,7 @@ unsorted:
   - python3-evdev 
   - python3-evemu 
   - python3-eventlet 
+  - python3-evilunit 
   - python3-evtx 
   - python3-exam 
   - python3-execnet 
@@ -20486,6 +20513,7 @@ unsorted:
   - python3-guessit 
   - python3-guzzle_sphinx_theme 
   - python3-gv 
+  - python3-gvm-tools 
   - python3-gwcs 
   - python3-h11 
   - python3-h5netcdf 
@@ -20699,6 +20727,7 @@ unsorted:
   - python3-knack 
   - python3-kombu 
   - python3-kopano 
+  - python3-korean-lunar-calendar 
   - python3-kubernetes 
   - python3-kwant: [x86_64] 
   - python3-l20n 
@@ -21228,6 +21257,7 @@ unsorted:
   - python3-premailer 
   - python3-presage 
   - python3-presagemate 
+  - python3-prestring 
   - python3-pretend 
   - python3-prewikka 
   - python3-proboscis 
@@ -21487,6 +21517,8 @@ unsorted:
   - python3-pytest-openfiles 
   - python3-pytest-ordering 
   - python3-pytest-parallel 
+  - python3-pytest-percent 
+  - python3-pytest-plus 
   - python3-pytest-profiling 
   - python3-pytest-pycodestyle 
   - python3-pytest-pyramid-server 
@@ -21548,6 +21580,7 @@ unsorted:
   - python3-python-gflags 
   - python3-python-gitlab 
   - python3-python-gnupg 
+  - python3-python-gvm 
   - python3-python-jenkins 
   - python3-python-jose 
   - python3-python-json-logger 
@@ -21730,6 +21763,7 @@ unsorted:
   - python3-sarge 
   - python3-sas7bdat 
   - python3-sasl 
+  - python3-sat-stac 
   - python3-scales 
   - python3-scandir 
   - python3-schedule 
@@ -22036,6 +22070,7 @@ unsorted:
   - python3-uniseg 
   - python3-unittest-mixins 
   - python3-unittest-xml-reporting 
+  - python3-unittest2pytest 
   - python3-unpaddedbase64 
   - python3-untokenize 
   - python3-upm 
