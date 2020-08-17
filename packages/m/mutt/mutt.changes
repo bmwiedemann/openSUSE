@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 15 06:32:50 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mutt 1.14.6:
+  * fix bug where atimes were not being properly reset for mailbox
+    entries
+  * Remove $ssl_starttls check for IMAP PREAUTH
+  * Don't check IMAP PREAUTH encryption if $tunnel is in use
+
+-------------------------------------------------------------------
 Mon Jun 22 13:57:52 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Update to 1.14.4 - bug-fix release (boo#1173197, CVE-2020-14954) 
