@@ -1,7 +1,7 @@
 #
 # spec file for package reveng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           reveng
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        An arbitrary-precision CRC calculator and algorithm finder
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
-URL:            http://reveng.sourceforge.net/
+URL:            https://reveng.sourceforge.io
 Source:         http://sourceforge.net/projects/%{name}/files/%{version}/%{name}-%{version}.tar.xz
 Patch0:         reveng-dont-strip.patch
 Patch1:         reveng-obey-cflags.patch
