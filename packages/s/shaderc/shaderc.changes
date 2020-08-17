@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 17 01:07:43 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to release 2020.2:
+  * Support both posix and non-posix MinGW toolchains.
+  * Support optionally building Tint tooling for WGSL.
+  * Add -h option to glslc, spvc; same as --help.
+  * Update to Glslang generator 9.
+  * Add interface to support 16-bit types in HLSL
+  * Add glslc hidden experimental option -mfmt=wgsl; requires Tint.
+  * Add minimum buffer size for Dawn reflection.
+- Changes from release 2020.1:
+  * Added warning signs about unsupported downloads.
+  * Removed Singleton pattern around access to glslang.
+  * Added concept of comparison sampler to API.
+  * Added support for options.hlsl.nonwritable_uav_texture_as_srv.
+  * Support forcing storage buffers to be always declared as UAV.
+- Rebase 0001-Use-system-third-party-libs.patch.
+
+-------------------------------------------------------------------
 Wed Apr  8 11:59:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.0

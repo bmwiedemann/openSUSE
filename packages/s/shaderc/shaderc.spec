@@ -18,7 +18,7 @@
 
 Name:           shaderc
 %define lname libshaderc_shared1
-Version:        2020.0
+Version:        2020.2
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -65,7 +65,7 @@ Shaderc wraps around core functionality in glslang and SPIRV-Tools
 
 %prep
 %autosetup -p1
-echo "\"%{version}\"" > glslc/src/build-version.inc
+echo "\"%version\"" >glslc/src/build-version.inc
 
 %build
 %cmake -DSHADERC_SKIP_TESTS=ON
