@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  6 08:33:09 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.42:
+  * Closed a potential issue with "libcap/psx" Go package and errno
+  * Documentation updates
+  * Minor optimization for cap_to_text() and (*cap.Set).String()
+  * Discovered and added a missing function (*cap.Set).SetNSOwner() to achieve parity with libcap
+  * Multiple fixes
+  * Support Go module abstraction
+  * A new kernel capability: CAP_BPF
+  * Better support for cross-compilation
+  * pam_cap now honors PAM_REINITIALIZE_CRED
+  * implements cap_launch functionality
+
+-------------------------------------------------------------------
 Sat Feb 15 21:24:26 CET 2020 - tiwai@suse.de
 
 - Update to version 2.32:

@@ -260,4 +260,22 @@
     <comment></comment>
     <requestid>774610</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b39966304c1df1bb00aaae0ccd324050</srcmd5>
+    <version>2.42</version>
+    <time>1597658399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.42:
+  * Closed a potential issue with &quot;libcap/psx&quot; Go package and errno
+  * Documentation updates
+  * Minor optimization for cap_to_text() and (*cap.Set).String()
+  * Discovered and added a missing function (*cap.Set).SetNSOwner() to achieve parity with libcap
+  * Multiple fixes
+  * Support Go module abstraction
+  * A new kernel capability: CAP_BPF
+  * Better support for cross-compilation
+  * pam_cap now honors PAM_REINITIALIZE_CRED
+  * implements cap_launch functionality</comment>
+    <requestid>825941</requestid>
+  </revision>
 </revisionlist>
