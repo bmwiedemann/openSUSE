@@ -1,0 +1,12 @@
+[Unit]
+Description=Google Compute Engine Set Multi-Queue
+After=local-fs.target network.target
+Wants=local-fs.target network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/google_set_multiqueue
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target
