@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 16 13:20:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.9.9:
+  * Additional per-thread statistics are shown when --verbose is specified along with --stats
+  * --dynamic-sleep-adjustment
+  * ddcutil no longer supports AMD's old proprietary display driver fglrx
+
+-------------------------------------------------------------------
 Mon May 25 07:26:37 UTC 2020 - Simon Lees <simonf.lees@suse.com>
 
 - Update to ddcutil 0.9.8
