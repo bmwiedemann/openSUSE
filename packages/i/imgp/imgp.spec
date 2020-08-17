@@ -1,7 +1,7 @@
 #
 # spec file for package imgp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           imgp
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        Image resizer and rotator
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Convertors
-Url:            https://github.com/jarun/imgp
+URL:            https://github.com/jarun/imgp
 Source0:        https://github.com/jarun/imgp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
