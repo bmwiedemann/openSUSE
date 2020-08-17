@@ -1,7 +1,7 @@
 #
 # spec file for package fox16
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define         lname	libFOX-1_6-0
+
 Name:           fox16
-%define lname	libFOX-1_6-0
-Version:        1.6.54
+Version:        1.6.57
 Release:        0
 Summary:        Shared Libraries for the FOX Toolkit
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
-Url:            http://www.fox-toolkit.org/
-
-Source0:        http://ftp.fox-toolkit.org/pub/fox-%{version}.tar.gz
+URL:            http://www.fox-toolkit.org/
+Source0:        ftp://ftp.fox-toolkit.org/pub/fox-%{version}.tar.gz
 Source1:        calculator.png
 Source2:        pathfinder.png
 Source3:        adie.png
@@ -45,30 +45,18 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1220
-BuildRequires:  pkgconfig(glu)
-%endif
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(glu)
 #
 # SUSE requires
 #
 %if 0%{?suse_version}
 BuildRequires:  cups-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  xorg-x11-devel
-%if 0%{?suse_version} >= 1020
 BuildRequires:  xorg-x11-Mesa-devel
+BuildRequires:  xorg-x11-devel
 BuildRequires:  xorg-x11-libXext-devel
 BuildRequires:  xorg-x11-libXfixes-devel
-%else
-BuildRequires:  Mesa-devel
-BuildRequires:  XFree86-Mesa
-BuildRequires:  XFree86-Mesa-devel
-BuildRequires:  XFree86-devel
-BuildRequires:  XFree86-libs
-BuildRequires:  xorg-x11-libs
-%endif
 %endif
 #
 # Mandriva Requires
@@ -92,6 +80,7 @@ BuildRequires:  libXft-devel
 BuildRequires:  libXi-devel
 BuildRequires:  xorg-x11-devel
 %endif
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 FOX is a C++-based library for graphical user interface development.
@@ -102,17 +91,21 @@ idle processing, automatic GUI updating, as well as OpenGL/Mesa for 3D
 graphics. Subclassing of basic FOX widgets allows for easy extension
 beyond the built-in widgets by application writers.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        Shared libraries for the FOX toolkit 1.6
 Group:          System/Libraries
-Provides:       fox = %version
+Provides:       fox = %{version}-%{release}
 # Added O/P in 13.2
-Provides:       libfox1_6 = %version-%release
-Obsoletes:      libfox1_6 < %version
+Provides:       libfox1_6 = %{version}-%{release}
+Obsoletes:      libfox1_6 < %{version}
 
-%description -n %lname
+%description -n %{lname}
 This package contains the shared libraries needed
 by applications compiled with the FOX GUI Toolkit.
+
+%if 0%{?centos_version} >= 800
+%global debug_package %{nil}
+%endif
 
 %package devel
 Summary:        Development Files and Documentation for the FOX GUI Toolkit 1.6
@@ -128,11 +121,9 @@ Requires:       libjpeg-devel
 Requires:       libpng-devel
 Requires:       libtiff-devel
 Requires:       xorg-x11-devel
-%if 0%{?suse_version} > 1220
-Requires:       pkgconfig(glu)
-%endif
 Requires:       zlib-devel
 Provides:       fox-devel = %{version}-%{release}
+Requires:       pkgconfig(glu)
 #
 # SUSE requires
 #
@@ -140,8 +131,6 @@ Provides:       fox-devel = %{version}-%{release}
 Requires:       expat
 Requires:       libbz2-devel
 Requires:       libexpat-devel
-Requires:       xorg-x11-libs
-%if 0%{?suse_version} >= 1020
 Requires:       xorg-x11-Mesa-devel
 Requires:       xorg-x11-libX11-devel
 Requires:       xorg-x11-libXau-devel
@@ -149,18 +138,13 @@ Requires:       xorg-x11-libXdmcp-devel
 Requires:       xorg-x11-libXext-devel
 Requires:       xorg-x11-libXfixes-devel
 Requires:       xorg-x11-libXrender-devel
-%else
-Requires:       Mesa-devel
-Requires:       XFree86-Mesa
-Requires:       XFree86-Mesa-devel
-Requires:       XFree86-devel
-Requires:       XFree86-libs
-%endif
+Requires:       xorg-x11-libs
 %endif
 #
 # Fedora Requires
 #
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version}
+Requires:       bzip2-devel
 Requires:       cups-devel
 Requires:       libGLU-devel
 Requires:       libXext-devel
@@ -179,9 +163,7 @@ compiler, and manual pages.
 %package doc
 Summary:        Documentation for the FOX Toolkit 1.6
 Group:          Documentation/HTML
-%if 0%{?suse_version} >= 1130 || !0%{?suse_version}
 BuildArch:      noarch
-%endif
 
 %description doc
 FOX is a C++-based library for graphical user interface development.
@@ -191,9 +173,9 @@ The doc subpackage contains the HTML documentation to the FOX toolkit 1.6.
 %package devel-static
 Summary:        Static Libraries for the FOX Toolkit 1.6
 Group:          Development/Languages/C and C++
-Provides:       %name-static = %version-%release
-Obsoletes:      %name-static < 1.6.36
-Requires:       %name-devel = %version
+Requires:       %{name}-devel = %{version}
+Provides:       %{name}-static = %{version}-%{release}
+Obsoletes:      %{name}-static < 1.6.36
 # skip dependency checks required by libtool .la files => skip-check-libtool-deps
 
 %description devel-static
@@ -221,11 +203,16 @@ applications, including:
 
 %prep
 %setup -q -n fox-%{version}
-%patch1 -p0
-%patch2 -p0
+%patch1
+%patch2
 
 %build
 autoreconf -fi
+%if 0%{?centos_version} >= 800
+export CFLAGS="%optflags -fPIC"
+export CXXFLAGS="%optflags -fPIC"
+export LDFLAGS="-fPIC"
+%endif
 %configure  \
     --enable-threadsafe \
     --enable-release \
@@ -245,7 +232,7 @@ autoreconf -fi
 make %{?_smp_mflags}
 
 %install
-%makeinstall
+%make_install
 # install docu
 pushd doc
 doxygen -u doxygen.cfg
@@ -261,21 +248,19 @@ install -m644 ADDITIONS AUTHORS LICENSE* README TRACING index.html %{buildroot}%
 # install desktop files for example applications
 %if 0%{?suse_version}
 mkdir -p %{buildroot}%{_datadir}/{applications,pixmaps}
-install -m 644 %SOURCE1 %{buildroot}%{_datadir}/pixmaps/
-install -m 644 %SOURCE2 %{buildroot}%{_datadir}/pixmaps/
-install -m 644 %SOURCE3 %{buildroot}%{_datadir}/pixmaps/
-install -m 644 %SOURCE5 %{buildroot}%{_datadir}/applications/
-install -m 644 %SOURCE6 %{buildroot}%{_datadir}/applications/
-install -m 644 %SOURCE7 %{buildroot}%{_datadir}/applications/
+install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/pixmaps/
+install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/
+install -m 644 %{SOURCE3} %{buildroot}%{_datadir}/pixmaps/
+install -m 644 %{SOURCE5} %{buildroot}%{_datadir}/applications/
+install -m 644 %{SOURCE6} %{buildroot}%{_datadir}/applications/
+install -m 644 %{SOURCE7} %{buildroot}%{_datadir}/applications/
 %suse_update_desktop_file calculator
 %suse_update_desktop_file pathfinder
 %suse_update_desktop_file adie
 %endif
 
-%post   -n %lname -p /sbin/ldconfig
-
-%postun -n %lname -p /sbin/ldconfig
-
+%post   -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 %post devel
 test -f %{_bindir}/fox-config || ln -s fox16-config %{_bindir}/fox-config
 test -f %{_bindir}/reswrap || ln -s reswrap16 %{_bindir}/reswrap
@@ -285,8 +270,9 @@ test -f %{_mandir}/man1/reswrap.1.gz || ln -s reswrap16.1.gz %{_mandir}/man1/res
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/%{name}
 
-%files -n %lname
-%defattr(-, root, root)
+%files -n %{lname}
+%defattr(-,root,root)
+%license LICENSE*
 %{_libdir}/libFOX-*.so.*
 %{_libdir}/libCHART-*.so.*
 
@@ -294,7 +280,7 @@ test -f %{_mandir}/man1/reswrap.1.gz || ln -s reswrap16.1.gz %{_mandir}/man1/res
 %defattr(-,root,root)
 %{_bindir}/reswrap
 %{_bindir}/fox-config
-%{_mandir}/man1/reswrap.1*
+%{_mandir}/man1/reswrap.1%{?ext_man}
 %{_includedir}/fox-*/
 %{_libdir}/pkgconfig/fox.pc
 %{_libdir}/libFOX-*.la

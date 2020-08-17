@@ -291,4 +291,20 @@
   + Fixed typo in FXString::vformat.cpp.</comment>
     <requestid>495849</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a42324959f15c0b96443728051b06ec8</srcmd5>
+    <version>1.6.57</version>
+    <time>1597658557</time>
+    <user>dimstar_suse</user>
+    <comment>- package license files in library package
+- ran spec-cleaner
+
+- Update to 1.6.57:
+  + Libtool flags added on behalf of FXRuby builds and missing 
+    UNICODE flag added for CYGWIN32 build.
+  + Problem fixed in FXString vformat().
+  + Fix FXMemoryStream position() API: error code was set moving 
+    stream position to end of buffer.</comment>
+    <requestid>826895</requestid>
+  </revision>
 </revisionlist>
