@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Aug 16 21:27:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.11.1:
+  - Always write the output files encoded in UTF-8, explicitly. This is already the
+    default on most Unix systems, but it was not on Windows.
+  - All symlinks and 0-sized files in projects are now ignored.
+  - The licenses CAL-1.0 and CAL-1.0-Combined-Work-Exception contain an SPDX tag
+    within themselves. Files that are named after these licenses are now ignored.
+  - Fixed a bug where `addheader` wouldn't properly apply the template on
+    `.license` files if the `.license` file was non-empty, but did not contain
+    valid SPDX tags.
+  - Add support for autoconf comment style (listed as m4).
+    + Cython (`.pyx`, `.pxd`)
+    + Sass and SCSS (`.sass`, `.scss`)
+    + XSL (`.xsl`)
+    + Mailmap (`.mailmap`)
+  - Added `--single-line` and `--multi-line` flags to `addheader`. These flags
+    force a certain comment style.
+  - Added support for Mercurial 4.3+.
+  - A pre-commit hook has been added.
+  - When an incorrect SPDX identifier is forwarded to `download` or `init`, the
+    tool now suggests what you might have meant.
+  - Under the hood, a lot of code that has to do with Git and Mercurial was moved
+    into its own module.
+  - Fixed a bug with `addheader --explicit-license` that would result in
+    `file.license.license` if `file.license` already existed.
+  - Fixed a Windows-only bug to do with calling subprocesses.
+  - Fixed a rare bug that would trigger when a directory is both ignored and
+    contains a `.git` file.
+
+-------------------------------------------------------------------
 Thu Jan 23 16:17:07 UTC 2020 - Carmen Bianca Bakker <carmen@carmenbianca.eu>
 
 - Update to version 0.8.0:

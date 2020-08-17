@@ -18,8 +18,8 @@
 
 
 Name:           reuse
-Version:        0.8.0
-Release:        1%{?dist}
+Version:        0.11.1
+Release:        0
 Summary:        A tool for compliance with the REUSE recommendations
 License:        GPL-3.0-or-later AND CC-BY-SA-4.0 AND Apache-2.0 AND CC0-1.0
 Group:          Development/Languages/Python
