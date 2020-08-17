@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-snappy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,15 @@ Release:        0
 Summary:        Python library for the snappy compression library
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/andrix/python-snappy
+URL:            https://github.com/andrix/python-snappy
 Source:         https://files.pythonhosted.org/packages/source/p/python-snappy/python-snappy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(snappy)
-# SECTION test requirements
-BuildRequires:  %{python_module nose}
-# /SECTION
 %python_subpackages
 
 %description
