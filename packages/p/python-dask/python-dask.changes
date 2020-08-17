@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Aug 15 16:59:24 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.23.0:
+  * Array
+    + Reduce np.zeros, ones, and full array size with broadcasting
+      (:pr:`6491`) Matthias Bussonnier
+    + Add missing meta= for trim in map_overlap (:pr:`6494`) Peter
+      Andreas Entschev
+  * Bag
+    + Bag repartition partition size (:pr:`6371`) joshreback
+  * Core
+    + Scalar.__dask_layers__() to return self._name instead of
+      self.key (:pr:`6507`) Mads R. B. Kristensen
+    + Update dependencies correctly in fuse_root optimization
+      (:pr:`6508`) Mads R. B. Kristensen
+  * DataFrame
+    + Adds items to dataframe (:pr:`6503`) Thomas J Fan
+    + Include compression in write_table call (:pr:`6499`) Julia
+      Signell
+    + Fixed warning in nonempty_series (:pr:`6485`) Tom Augspurger
+    + Intelligently determine partitions based on type of first arg
+      (:pr:`6479`) Matthew Rocklin
+    + Fix pyarrow mkdirs (:pr:`6475`) Julia Signell
+    + Fix duplicate parquet output in to_parquet (:pr:`6451`)
+      michaelnarodovitch
+  * Documentation
+    + Fix documentation da.histogram (:pr:`6439`) Roberto Panai
+    + Add agg nunique example (:pr:`6404`) Ray Bell
+    + Fixed a few typos in the SQL docs (:pr:`6489`) Mike McCarty
+    + Docs for SQLing (:pr:`6453`) Martin Durant
+
+-------------------------------------------------------------------
+Sat Aug  1 22:09:59 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.22.0:
+  * Array
+    + Compatibility for NumPy dtype deprecation (:pr:`6430`) Tom
+      Augspurger
+  * Core
+    + Implement sizeof for some bytes-like objects (:pr:`6457`) John A
+      Kirkham
+    + HTTP error for new fsspec (:pr:`6446`) Martin Durant
+    + When RecursionError is raised, return uuid from tokenize
+      function (:pr:`6437`) Julia Signell
+    + Install deps of upstream-dev packages (:pr:`6431`) Tom
+      Augspurger
+    + Use updated link in setup.cfg (:pr:`6426`) Zhengnan
+  * DataFrame
+    + Add single quotes around column names if strings (:pr:`6471`)
+      Gil Forsyth
+    + Refactor ArrowEngine for better read_parquet performance
+      (:pr:`6346`) Richard (Rick) Zamora
+    + Add tolist dispatch (:pr:`6444`) GALI PREM SAGAR
+    + Compatibility with pandas 1.1.0rc0 (:pr:`6429`) Tom Augspurger
+    + Multi value pivot table (:pr:`6428`) joshreback
+    + Duplicate argument definitions in to_csv docstring (:pr:`6411`)
+      Jun Han (Johnson) Ooi
+  * Documentation
+    + Add utility to docs to convert YAML config to env vars and back
+      (:pr:`6472`) Jacob Tomlinson
+    + Fix parameter server rendering (:pr:`6466`) Scott Sievert
+    + Fixes broken links (:pr:`6403`) Jim Circadian
+    + Complete parameter server implementation in docs (:pr:`6449`)
+      Scott Sievert
+    + Fix typo (:pr:`6436`) Jack Xiaosong Xu
+
+-------------------------------------------------------------------
 Sat Jul 18 18:12:13 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.21.0:
