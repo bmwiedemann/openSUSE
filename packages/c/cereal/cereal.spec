@@ -1,7 +1,7 @@
 #
 # spec file for package cereal
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,38 +13,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cereal
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        A header-only C++11 serialization library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://uscilab.github.io/cereal/
+URL:            https://uscilab.github.io/cereal/
 Source0:        https://github.com/USCiLab/cereal/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/USCiLab/cereal/issues/338
-# PATCH-FIX-UPSTREAM - 8b8f5814e292e03bb5b07333a0e634ef0481c85b.patch - fix unstable test
-Patch0:         https://github.com/USCiLab/cereal/commit/8b8f5814e292e03bb5b07333a0e634ef0481c85b.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-BuildRequires:  gcc-c++ >= 4.8
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_test-devel
 %else
 BuildRequires:  boost-devel
 %endif
-BuildRequires:  cmake
 
 %description
-cereal is a header-only C++11 serialization library. cereal takes arbitrary 
+cereal is a header-only C++11 serialization library. cereal takes arbitrary
 data types and reversibly turns them into different representations, such as
-compact binary encodings, XML, or JSON. cereal was designed to be fast, 
-light-weight, and easy to extend - it has no external dependencies and can be 
+compact binary encodings, XML, or JSON. cereal was designed to be fast,
+light-weight, and easy to extend - it has no external dependencies and can be
 easily bundled with other code or used standalone.
 
 %package devel
@@ -53,31 +47,30 @@ Group:          Development/Libraries/C and C++
 BuildArch:      noarch
 
 %description devel
-cereal is a header-only C++11 serialization library. cereal takes arbitrary 
+cereal is a header-only C++11 serialization library. cereal takes arbitrary
 data types and reversibly turns them into different representations, such as
-compact binary encodings, XML, or JSON. cereal was designed to be fast, 
-light-weight, and easy to extend - it has no external dependencies and can be 
+compact binary encodings, XML, or JSON. cereal was designed to be fast,
+light-weight, and easy to extend - it has no external dependencies and can be
 easily bundled with other code or used standalone.
 
 This package contains development headers and libraries for the cereal library
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{cmake} -DSKIP_PORTABILITY_TEST=ON -DWITH_WERROR=OFF
-make %{?_smp_mflags}
+%cmake -DSKIP_PORTABILITY_TEST=ON -DWITH_WERROR=OFF
+%make_build
 
 %install
 make -C build install DESTDIR=%{buildroot}
 
 %check
-make -C build test
+%make_build -C build test
 
 %files devel
-%defattr(-,root,root,-)
-%doc LICENSE README.md
+%license LICENSE
+%doc README.md
 %{_includedir}/cereal
 %{_datadir}/cmake/cereal
 
