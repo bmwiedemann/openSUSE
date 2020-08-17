@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyotp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyotp
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Python One Time Password Library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/pyotp/pyotp
+URL:            https://github.com/pyotp/pyotp
 Source:         https://files.pythonhosted.org/packages/source/p/pyotp/pyotp-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +49,7 @@ or multi-factor (MFA) authentication methods in web applications and in other sy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest
 
 %files %{python_files}
 %license LICENSE

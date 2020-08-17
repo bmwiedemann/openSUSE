@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  7 13:13:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.4.0
+  * Fix data type for at(for_time) (#85)
+  * Add support for parsing provisioning URIs (#84)
+  * Raise error when trying to generate secret that is too short (The
+    secret must be at least 128 bits)
+  * Add random_hex function (#82)
+  * Drop Python 2.7
+
+-------------------------------------------------------------------
 Tue Jul 30 12:00:33 UTC 2019 - pgajdos@suse.com
 
 - version update to 2.3.0
