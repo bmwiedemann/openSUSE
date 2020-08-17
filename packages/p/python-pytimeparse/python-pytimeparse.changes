@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 21:09:10 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove %bcond_without  test
+- Replace nose with pytest
+- Tidy spec
+
+-------------------------------------------------------------------
 Tue Dec  4 12:53:15 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

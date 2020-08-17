@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytimeparse
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
 Name:           python-pytimeparse
 Version:        1.1.8
 Release:        0
 Summary:        Time expression parser
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/wroberts/pytimeparse
+URL:            https://github.com/wroberts/pytimeparse
 Source:         https://files.pythonhosted.org/packages/source/p/pytimeparse/pytimeparse-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module nose}
-%endif
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -60,6 +56,7 @@ datetime module in the standard library.
 
 %prep
 %setup -q -n pytimeparse-%{version}
+sed -i '/nose/d' setup.py
 
 %build
 %python_build
@@ -68,13 +65,10 @@ datetime module in the standard library.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+%pytest pytimeparse/tests/test*.py
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.rst
 %{python_sitelib}/*

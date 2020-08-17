@@ -17,4 +17,12 @@ https://build.opensuse.org/request/show/605895</comment>
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659623</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cbe066dde0b72dcb77ec57eb0c98f7d5</srcmd5>
+    <version>1.1.8</version>
+    <time>1597668018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827208</requestid>
+  </revision>
 </revisionlist>
