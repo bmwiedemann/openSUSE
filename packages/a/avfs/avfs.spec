@@ -17,7 +17,7 @@
 
 
 Name:           avfs
-Version:        1.1.0
+Version:        1.1.3
 Release:        0
 Summary:        AVFS - an archive look-inside filesystem
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -122,6 +122,7 @@ rm -vf %{buildroot}/%{_libdir}/libavfs.la
 %{_includedir}/avfs.h
 %{_includedir}/virtual.h
 %{_libdir}/libavfs.so
+%{_libdir}/pkgconfig/avfs.pc
 
 %files -n libavfs0
 %{_libdir}/libavfs.so.0
