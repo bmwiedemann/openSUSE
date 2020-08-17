@@ -1,7 +1,7 @@
 #
 # spec file for package xiccd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xiccd
-Version:        0.2.4
+Version:        0.3.0
 Release:        0
 Summary:        X11 ICC Daemon
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
-Url:            https://github.com/agalakhov/xiccd
+URL:            https://github.com/agalakhov/xiccd
 Source:         https://github.com/agalakhov/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -49,39 +49,18 @@ few.
 
 %prep
 %setup -q
-# XDG autostart.
-cat > %{name}.desktop << EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=X11 ICC Daemon
-GenericName=X color management daemon
-GenericName[en_GB]=X colour management daemon
-Comment=Applies color management profiles to your session
-Comment[en_GB]=Applies colour management profiles to your session
-Categories=Utility;
-Exec=%{name}
-Icon=preferences-system
-StartupNotify=false
-Terminal=false
-NoDisplay=true
-EOF
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 
-rm %{buildroot}%{_datadir}/applications/%{name}.desktop
-install -Dpm 0644 %{name}.desktop \
-  %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}.desktop
-
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc ChangeLog README
 %{_sysconfdir}/xdg/autostart/
 %{_bindir}/%{name}
 %{_mandir}/man8/%{name}.8%{?ext_man}
