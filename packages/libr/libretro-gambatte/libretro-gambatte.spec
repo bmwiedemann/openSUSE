@@ -17,7 +17,7 @@
 
 
 Name:           libretro-gambatte
-Version:        0~git20200207
+Version:        0~git20200630
 Release:        0
 Summary:        Gambatte libretro core for GameBoy Color emulation
 License:        GPL-2.0-only

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 08 09:32:25 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200630:
+  * Buildfix
+  * Buildfixes for iOS
+  * Buildfix for MSVC 2003
+  * Fix build for MSVC
+  * Update libretro-common
+  * Update
+  * Update
+  * Update
+  * Update libretro-common
+  * Game Boy palette corrected
+  * Authentic palettes derived from original hardware screens (pt. 2)
+
+-------------------------------------------------------------------
 Sat Feb 08 12:59:23 UTC 2020 - i@guoyunhe.me
 
 - Remove gambatte.libretro which is now provided by libretro-core-info package
