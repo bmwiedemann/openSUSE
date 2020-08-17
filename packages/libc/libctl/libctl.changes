@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:36:31 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update Source URL, moved to https://github.com/NanoComp/libctl.
+
+-------------------------------------------------------------------
+Sun Aug 16 17:59:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * New `make_slanted_prism` functions to make a prism with
+    a given sidewall angle (gh#NanoComp/libctl#53).
+  * Defined `LIBCTL_MAJOR_VERSION` etc. in `ctlgeom.h` header file
+    when using stand-alone libctlgeom.
+  * Bugfix in point-in-prism test (gh#NanoComp/libctl#49).
+  * `geom_object_volume` function to get the volume of a 3d
+    object (accelerates `box_overlap_with_object` for objects
+    completely within a box) (gh#NanoComp/libctl#45).
+  * `ctl_printf_callback` so that callers can capture stdout
+    (gh#NanoComp/libctl#39).
+
+-------------------------------------------------------------------
 Tue Feb 19 09:33:56 UTC 2019 - jbrielmaier@suse.de
 
 - Update to version 4.2.0

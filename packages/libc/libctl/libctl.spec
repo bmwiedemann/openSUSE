@@ -1,7 +1,7 @@
 #
 # spec file for package libctl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           libctl
-Version:        4.2.0
+Version:        4.5.0
 Release:        0
 %define somajor 5
 Summary:        A guile Library for Scientific Simulations
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
-Url:            http://ab-initio.mit.edu/wiki/index.php/Libctl
-Source0:        https://github.com/stevengj/libctl/releases/download/v%{version}/libctl-%{version}.tar.gz
+URL:            http://ab-initio.mit.edu/wiki/index.php/Libctl
+Source0:        https://github.com/NanoComp/libctl/releases/download/v%{version}/libctl-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-fortran
