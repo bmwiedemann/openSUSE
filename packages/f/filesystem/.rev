@@ -1123,4 +1123,14 @@
     <comment></comment>
     <requestid>823109</requestid>
   </revision>
+  <revision rev="148" vrev="31">
+    <srcmd5>46fb49ca2184adc0d8a0dfa49a65cc6c</srcmd5>
+    <version>MACRO</version>
+    <time>1597658384</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore init.d/*.local ghost files from aaa_base and remove
+  /etc/init.d (it's part of insserv-compat since a long time)
+  [jsc#SMO-14] (forwarded request 825381 from kukuk)</comment>
+    <requestid>825382</requestid>
+  </revision>
 </revisionlist>

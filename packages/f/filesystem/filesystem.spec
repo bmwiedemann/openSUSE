@@ -188,7 +188,7 @@ NON_EXISTING_DIR=
 for FILE in `rpm -ql aaa_base` ; do
     test -d $FILE && continue
     case $FILE in
-      /sbin/init.d*|/usr/share/doc/support/*|/lib/mkinitrd/scripts/*)
+      /etc/init.d/*.local|/usr/share/doc/support/*|/lib/mkinitrd/scripts/*)
              continue
              ;;
       /usr/share/doc/packages/aaa_base/*|/usr/share/licenses/aaa_base/*|/lib/aaa_base/*|/usr/lib/base-scripts/*)

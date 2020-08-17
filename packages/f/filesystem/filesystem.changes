@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 10 12:14:40 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Ignore init.d/*.local ghost files from aaa_base and remove
+  /etc/init.d (it's part of insserv-compat since a long time)
+  [jsc#SMO-14]
+
+-------------------------------------------------------------------
+Tue Jul 28 15:40:52 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove SuSEfirewall2 directories, it's gone
+
+-------------------------------------------------------------------
 Tue Jul 28 07:52:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove /selinux (obsoleted by /sys/fs/selinux)
