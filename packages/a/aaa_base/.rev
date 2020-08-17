@@ -3797,4 +3797,29 @@
     <user>dimstar_suse</user>
     <comment>Revert due to https://bugzilla.opensuse.org/show_bug.cgi?id=1174858</comment>
   </revision>
+  <revision rev="472" vrev="1">
+    <srcmd5>a0ee45b54f080db08c34138e616214bb</srcmd5>
+    <version>84.87+git20200804.d7fb210</version>
+    <time>1597658409</time>
+    <user>dimstar_suse</user>
+    <comment>- Let's own /etc/init.d/ as it is gone from package filesystem 
+
+- Don't create/ship halt.local, systemd support for it was dropped.
+
+- Update to version 84.87+git20200804.d7fb210:
+  * bashrc: fix bash: -s: command not found
+
+- Update to version 84.87+git20200804.00680c3:
+  * Add proper quoting to last change
+  * add screen.xterm-256color to DIR_COLORS
+
+- Update to version 84.87+git20200708.f5e90d7:
+  * check for Packages.db and use this instead of Packages
+    (boo#1171762)
+  * Add also support for /usr/etc/profile.d for tcsh
+  * Do add some support for /usr/etc/profile.d
+
+- Better support of Midnight Commander (bsc#1170527)</comment>
+    <requestid>826262</requestid>
+  </revision>
 </revisionlist>

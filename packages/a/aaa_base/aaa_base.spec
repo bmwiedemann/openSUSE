@@ -23,7 +23,7 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20200507.e2243a4
+Version:        84.87+git20200804.d7fb210
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
@@ -123,9 +123,8 @@ esac
 # make sure it does not creep in again
 test -d $RPM_BUILD_ROOT/root/.gnupg && exit 1
 mkdir -p $RPM_BUILD_ROOT/etc/init.d
-for i in boot.local after.local halt.local ; do
-  echo "#!bin/bash" > $RPM_BUILD_ROOT/etc/init.d/$i
-  chmod 755 $RPM_BUILD_ROOT/etc/init.d/$i
+for i in boot.local after.local ; do
+  touch $RPM_BUILD_ROOT/etc/init.d/$i
 done
 #
 install -d -m 755 %buildroot%{_libexecdir}/initscripts/legacy-actions
@@ -198,9 +197,9 @@ mkdir -p %{buildroot}%{_fillupdir}
 /etc/profile.d/ls.zsh
 %config /etc/shells
 %config /etc/ttytype
+%dir /etc/init.d/
 %ghost /etc/init.d/boot.local
 %ghost /etc/init.d/after.local
-%ghost /etc/init.d/halt.local
 %ghost %config /etc/inittab
 # don't forget to also change aaa_base.post, boot.cleanup
 # and /etc/permissions!
