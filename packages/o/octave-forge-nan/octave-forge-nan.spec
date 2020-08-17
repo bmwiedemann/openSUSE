@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-nan
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  nan
 Name:           octave-forge-%{octpkg}
-Version:        3.4.5
+Version:        3.5.0
 Release:        0
 Summary:        A statistics and machine learning toolbox
 License:        GPL-3.0-or-later
@@ -42,6 +42,9 @@ This is part of Octave-Forge project.
 
 %install
 %octave_pkg_install
+
+# Spurious exec bit
+chmod -x %{buildroot}%{_datadir}/octave/packages/nan-%{version}/fishers_exact_test.m
 
 %check
 %octave_pkg_test
