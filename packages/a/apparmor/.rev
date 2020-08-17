@@ -1909,4 +1909,13 @@ The correct message about the refreshed patch is:
   from its new sddm location (boo#1174290, boo#1174293) (forwarded request 821970 from cboltz)</comment>
     <requestid>821972</requestid>
   </revision>
+  <revision rev="140" vrev="6">
+    <srcmd5>bd3e8d769dd99f65e619f7bc4ed58454</srcmd5>
+    <version>2.13.4</version>
+    <time>1597658368</time>
+    <user>dimstar_suse</user>
+    <comment>- sevdb-caps-mr589.diff: add new capabilities CAP_BPF and CAP_PERFMON
+  to severity.db (lp#1890547) (forwarded request 824912 from cboltz)</comment>
+    <requestid>824913</requestid>
+  </revision>
 </revisionlist>

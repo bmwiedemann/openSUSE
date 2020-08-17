@@ -74,6 +74,9 @@ Patch10:        ./usr-etc-abstractions-base-nameservice.diff
 # allow /{,var/}run/user/*/xauth_* r, in abstractions/X (submitted upstream 2020-07-20 https://gitlab.com/apparmor/apparmor/-/merge_requests/581 (master), https://gitlab.com/apparmor/apparmor/-/merge_requests/582 (2.11..2.13))
 Patch11:        abstractions-X-xauth-mr582.diff
 
+# add CAP_BPF and CAP_PERFMON to severity.db (merged upstream 2020-08-07 https://gitlab.com/apparmor/apparmor/-/merge_requests/589 (2.11..master))
+Patch12:        sevdb-caps-mr589.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix /lib/apparmor
@@ -370,6 +373,7 @@ SubDomain.
 %endif
 
 %patch11 -p1
+%patch12 -p1
 
 %build
 %define _lto_cflags %{nil}

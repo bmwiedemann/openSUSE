@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  7 21:01:02 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- sevdb-caps-mr589.diff: add new capabilities CAP_BPF and CAP_PERFMON
+  to severity.db (lp#1890547)
+
+-------------------------------------------------------------------
 Mon Jul 20 18:42:02 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - add abstractions-X-xauth-mr582.diff to allow reading the xauth file
