@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+ 		<param name="scm">git</param>
+		<param name="url">https://gitlab.freedesktop.org/whot/libei/</param>
+		<param name="revision">master</param>
+		<param name="parent-tag">5e649f682ab3f404919717b8757c9c8ebcfde52f</param>
+		<param name="versionformat">0+git@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

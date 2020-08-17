@@ -1,0 +1,37 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-08-13 11:07:06.143460258 +0200
+
+unversioned libraries suck.
+
+diff --git a/meson.build b/meson.build
+index 11cc511..41d140f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -45,7 +45,8 @@ src_libei = [
+ lib_libei = shared_library('ei',
+     src_libei,
+     dependencies: [dep_libutil, dep_protobuf],
+-    install: true
++    install: true,
++    soversion: 'suse0'
+ )
+ install_headers('src/libei.h')
+ 
+@@ -69,7 +70,8 @@ lib_libeis = shared_library('eis',
+     'src/libeis-fd.c',
+     proto_headers,
+     dependencies: [dep_libutil, dep_protobuf],
+-    install: true
++    install: true,
++    soversion: 'suse0'
+ )
+ install_headers('src/libeis.h')
+ 
+@@ -91,6 +93,7 @@ lib_libreis = shared_library('reis',
+     dependencies: [dep_libutil, dep_protobuf],
+     install: true,
+     include_directories: 'src',
++    soversion: 'suse0'
+ )
+ install_headers('src/libreis.h')
+ 
