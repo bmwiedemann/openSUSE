@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug 16 01:03:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- udpate to 2.3.1:
+ * Improved cmake popt handling to find popt dependencies using PkgConfig.
+ * Tidied internal code and improved tests for netint.[ch], tube.c, and
+   hashtable.h.
+ * Improved C99 compatibility. Add `-std=c99 -pedantic` to `CMAKE_C_FLAGS` for
+   gcc and clang. Fix all C99 warnings by making all code C99 compliant. Tidy
+   all CMake checks, `#cmakedefines`, and `#includes`. Fix 64bit support for
+   mdfour checksums (texierp, dbaarda,
+ * Usage clarified in rdiff (1) man page. (AaronM04,
+ * Fix #176 hangs calculating deltas for files larger than 4GB.
+ * Add RabinKarp rollsum support and make it the default. RabinKarp is a much
+   better rolling hash, which reduces the risk of hash collision corruption
+   and speeds up delta calculations. The rdiff cmd gets a new `-R
+   (rollsum|rabinkarp)` argument with the default being `rabinkarp`, Use `-R
+   rollsum` to generate backwards-compatible signatures. (dbaarda,
+   https://github.com/librsync/librsync/issues/3)
+ * Use single-byte literal commands for small inserts in deltas. This makes
+   each small insert use 1 less byte in deltas. (dbaarda,
+   https://github.com/librsync/librsync/issues/120)
+ * Change rs_file_size() to report -1 instead of 0 for unknown file sizes
+ * Add cmake BUILD_SHARED_LIBS option for static library support.
+ * Fix compile errors and add .gitignore entries for MSVS 2019. Fixes
+
+-------------------------------------------------------------------
 Fri Sep 13 07:20:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.0:
