@@ -3633,4 +3633,19 @@
 - update staging to 5.14 release</comment>
     <requestid>823964</requestid>
   </revision>
+  <revision rev="314" vrev="1">
+    <srcmd5>3986792f14dc47cba1e3fea083f53f0d</srcmd5>
+    <version>5.15</version>
+    <time>1597658525</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.15 development release
+  - Initial implementation of the XACT Engine libraries.
+  - Beginnings of a math library in MSVCRT based on Musl.
+  - Still more restructuration of the console support.
+  - Direct Input performance improvements.
+  - Exception handling fixes on x86-64.
+  - Various bug fixes.
+- update staging to 5.15 release</comment>
+    <requestid>827041</requestid>
+  </revision>
 </revisionlist>

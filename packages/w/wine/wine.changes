@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 15 06:36:05 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.15 development release
+  - Initial implementation of the XACT Engine libraries.
+  - Beginnings of a math library in MSVCRT based on Musl.
+  - Still more restructuration of the console support.
+  - Direct Input performance improvements.
+  - Exception handling fixes on x86-64.
+  - Various bug fixes.
+- update staging to 5.15 release
+
+-------------------------------------------------------------------
 Sat Aug  1 13:01:26 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.14 development release
