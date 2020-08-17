@@ -17,7 +17,7 @@
 
 
 Name:           retroarch-assets
-Version:        0~git20200617
+Version:        0~git20200807
 Release:        0
 Summary:        RetroArch Assets
 License:        CC-BY-4.0
