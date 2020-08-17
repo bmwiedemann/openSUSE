@@ -17,7 +17,7 @@
 
 
 Name:           sqliteodbc
-Version:        0.9996
+Version:        0.9998
 Release:        0
 Summary:        ODBC driver for SQLite
 License:        BSD-2-Clause
