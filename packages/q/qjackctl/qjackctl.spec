@@ -1,7 +1,7 @@
 #
 # spec file for package qjackctl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           qjackctl
-Version:        0.5.7
+Version:        0.6.3
 Release:        0
 Summary:        Graphical User Interface to Control JACK Servers
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://qjackctl.sf.net
+URL:            http://qjackctl.sf.net
 Source:         http://prdownloads.sourceforge.net/qjackctl/qjackctl-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -78,10 +78,12 @@ install -Dm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/32x32
 %dir %{_datadir}/icons/hicolor/32x32/apps
+%dir %{_datadir}/icons/hicolor/scalable/apps
 %dir %{_datadir}/metainfo
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/32x32/apps/%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/metainfo/%{name}.appdata.xml
 %doc %{_mandir}/man?/%{name}.*
 

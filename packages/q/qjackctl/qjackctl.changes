@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Aug 16 00:07:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.6.3:
+  Clock source and Self connect restriction options
+  have been added to Setup / Settings / Advanced
+  - Added preliminary support for JACK CV signal-type
+  ports and JACK OSC event-type ports (Graph only).
+  - Left-clicking on the system-tray icon now simply
+  toggles the main widget visibility, disregarding
+  if already hidden undercover to other windows.
+  - Graph nodes and ports are now presented with some
+  gradient background.
+  - Fixed Setup dialog Cancel (or close) behavior when
+  Settings > Parameters > Frames/Period (aka. buffer-
+  size) it's the only setting that's changed.
+  - Early fixing to build for Qt >= 5.15.0.
+  - A scalable (.svg) icon version has been added.
+  - Make man page compression reproducible (after request
+  by Jelle van der Waa, while on the Vee-Ones, thanks).
+  - Ditching deprecated QTime methods for QElapsedTimer's
+  (in compliance to Qt >= 5.14.0).
+  - Custom color (palette) theme editor introduced; color
+  (palette) theme changes are now effective immediately,
+  except on default.
+  - Second attempt to fix the yet non-official though
+  CMake build configuration.
+  - When using autotools and ./configure --with-qt=...,
+  it is also necessary to adjust the PKG_CONFIG_PATH
+  environment variable (after a merge request by plcl
+  aka. Pedro López-Cabanillas, while on qmidinet,
+  thanks).
+  - Graph: avoid self-connecting over their own ports
+  when client nodes are selected as a whole group;
+  also try to match port-types in a oderly fashion
+  when connecting multiple selected ports.
+  - Fix HiDPI display screen effective support (Qt >= 5.6).
+  - Command line arguments (--start, --preset=[label] and
+  --active-patchbay=[path]) are passed and take effect
+  on the current singleton/unique application instance,
+  when enabled and already running.
+
+-------------------------------------------------------------------
 Sat Apr 13 08:21:34 UTC 2019 - ecsos@opensuse.org
 
 - Update to 0.5.7
