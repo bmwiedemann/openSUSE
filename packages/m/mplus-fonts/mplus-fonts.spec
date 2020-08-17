@@ -1,7 +1,7 @@
 #
 # spec file for package mplus-fonts
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mplus-fonts
-Version:        1.0.63
+Version:        1.0.63a
 Release:        0
-%define mplusname mplus-TESTFLIGHT-063
+%define mplusname mplus-TESTFLIGHT-063a
 Summary:        Font set incorporating all Kanji until level 2, and latin glyphs
 License:        SUSE-mplus
 Group:          System/X11/Fonts
-Url:            https://mplus-fonts.osdn.jp/
+URL:            https://mplus-fonts.osdn.jp/
 
 Source0:        %{mplusname}.tar.xz
 BuildRequires:  fontpackages-devel

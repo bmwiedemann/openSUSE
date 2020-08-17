@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 15 07:54:11 UTC 2020 - hella <scythe041@gmail.com>
+
+- Updated to testflight 063a
+  * Added glyphs from full width Roman numerals U+2160 to U+217F for fixed
+    width fonts M+ M and MN.
+  * Fixed the problem that some symbols are not displayed during vertical
+    writing.
+  * Added the glyphs from Box Drawing U+2504 to U+250B.
+
+-------------------------------------------------------------------
 Sun Mar 18 22:05:50 UTC 2018 - jengelh@inai.de
 
 - Update descriptions.
