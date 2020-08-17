@@ -1,7 +1,7 @@
 #
 # spec file for package vmtouch
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           vmtouch
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
-License:        BSD-3-Clause
 Summary:        Portable file system cache diagnostics and control
-Url:            http://hoytech.com/vmtouch/
+License:        BSD-3-Clause
 Group:          System/Utilities
+URL:            http://hoytech.com/vmtouch/
 Source:         https://github.com/hoytech/vmtouch/archive/v%{version}.tar.gz#/vmtouch-%{version}.tar.gz
 BuildRequires:  gcc
-BuildRequires:  perl
 BuildRequires:  make
+BuildRequires:  perl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -47,3 +48,5 @@ make PREFIX="$b"%{_prefix} MANDIR="$b"%{_mandir}/man8 install
 %doc CHANGES README.md TODO
 %{_bindir}/vmtouch
 %{_mandir}/man8/vmtouch.8%{ext_man}
+
+%changelog
