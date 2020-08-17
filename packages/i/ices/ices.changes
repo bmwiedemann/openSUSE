@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 15 23:12:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Support for RoarAudio input
+  * Updated Documentation (Closes: #1238)
+  * Fixed double shout_close() (Closes: #720)
+  * Reduced error to warning in case of duplicate serial number.
+  * Fixed handling of <reconnectattempts> when set to zero (Closes: #735)
+  * Did some code cleanup and hardening (Closes: #1795)
+  * Enabled compiler warnings (Closes: #1796)
+  * Added <retry-initial> (Closes: #994)
+  * Upated handling of empty strings in config file (Closes: #1875)
+
+-------------------------------------------------------------------
 Sat Oct 15 04:47:07 UTC 2011 - coolo@suse.com
 
 - add libtool as buildrequire to make the spec file more reliable
