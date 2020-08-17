@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sat Aug 15 17:02:26 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.5.5:
+  * Uniform indentation in pytest parameterize
+  * Remove test case with overlapping index
+  * Cleanup
+  * Update is_dataframe_like function
+  * Update docstring for custreamz accelerated Kafka reader
+
+- changes from version 0.5.4:
+  * CodeCov
+  * Cleanup
+  * Add flaky marker for tests
+  * Change variable to with_state, add doc strings
+  * Retrigger + Cleanup
+  * Additional tests for codecov
+  * Flake8 remove ambigious variable name
+  * Remove unnecessary timedelta cast
+  * Docs indentation fix
+  * Fix groupby-mean and add individual groupby-start state for
+    sdf.groupby.agg({}) patterns
+  * Add pd.Timedelta for cudf compatibility
+  * Cleanup unnecessary parameters for start state
+  * Fix flake8
+  * Fix placement of tests
+  * Add spaces
+  * Remove empty lines
+  * Remove print statement
+  * Remove dask-workerspaces
+  * Fix indent
+  * Uncomment rolling aggs tests
+  * Correct order of parameters in rolling SDF
+  * Windowed-groupby aggs with start parameter and a test
+  * Window aggs with start parameter and a test
+  * Simpler parameters — Rolling aggs with start stateand tests
+  * Rolling aggs with start stateand tests
+  * Tests for groupby-aggs and reductions with start state
+  * Groupby aggs & simple aggs SDF start parameter added
+  * Merge pull request #331 from chinmaychandak/kafka_cudf_ck
+  * Update doc string
+  * Elaborate temporary steps to install custreamz
+  * Update doc string for accelerated Kafka datasource (2)
+  * Update doc string links
+  * Add pragma no cover to .coveragerc
+  * Badge for gpuCI, elaborate doc string, no-coverage for GPU
+    branches
+  * Remove ValueError
+  * Revert async test changes
+  * updated Dockerfile based on feedback to use conda for wget and vim
+    installs instead of OS package manager
+  * Remove incorrect package from yml file
+  * Move to Python 3.7
+  * Cleanup dask workerspace
+  * Add pytest-tornasync to dependencies
+  * Fix new line
+  * Remove dask locks
+  * Add async def to Dask test with @gen_cluster
+  * Formatting
+  * Remove print statments and bare excepts
+  * Fix indent
+  * reuse metadata() util in test_unique_metadata test
+  * pass metadata when using LRU too, fixes #327
+
+-------------------------------------------------------------------
 Sat Apr 25 16:26:25 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
