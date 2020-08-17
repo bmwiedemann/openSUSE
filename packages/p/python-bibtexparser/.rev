@@ -31,4 +31,13 @@
     <comment>- Added explanation in SPEC file</comment>
     <requestid>817852</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8b105a019aba124de4ae8bd1bb2577ea</srcmd5>
+    <version>1.1.0</version>
+    <time>1597659014</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary BR on devel.
+- Don't build python2 on Tumbleweed.</comment>
+    <requestid>827275</requestid>
+  </revision>
 </revisionlist>

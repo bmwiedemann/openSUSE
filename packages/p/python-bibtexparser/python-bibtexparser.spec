@@ -17,7 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  python2
+%if 0%{?suse_version} > 1500
+%define skip_python2 1
+%endif
 Name:           python-bibtexparser
 Version:        1.1.0
 Release:        0
@@ -28,7 +30,6 @@ URL:            https://github.com/sciunto-org/python-bibtexparser
 Source:         https://github.com/sciunto-org/python-bibtexparser/archive/v%{version}.tar.gz#/python-bibtexparser-%{version}.tar.gz
 # https://github.com/sciunto-org/python-bibtexparser/pull/259
 Patch0:         python-bibtexparser-remove-unittest2.patch
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +41,7 @@ BuildRequires:  %{python_module future >= 0.16.0}
 BuildRequires:  %{python_module pyparsing >= 2.0.3}
 BuildRequires:  %{python_module pytest}
 # Required for assertLogs unavailable in 2.7 unittest
-%if %{with python2}
+%if "%{python_flavor}" == "python2"
 BuildRequires:  python-unittest2
 %endif
 # /SECTION
