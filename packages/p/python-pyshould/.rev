@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>827204</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3c4779036964c0f7b22d7bc1dfa93bf4</srcmd5>
+    <version>0.7.1</version>
+    <time>1597675294</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't force pytest, when the easiest way is just to follow
+  the flow and go with the unittest runner.</comment>
+    <requestid>827347</requestid>
+  </revision>
 </revisionlist>

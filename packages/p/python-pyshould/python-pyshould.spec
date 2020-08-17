@@ -33,7 +33,6 @@ Requires:       python-hamcrest
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hamcrest}
-BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -54,8 +53,6 @@ the standard AssertionError.
 %prep
 %setup -q -n %{modname}-%{version}
 sed -i '/nose/d' setup.py
-# Remove __init__.py to help 15.x
-rm tests/__init__.py
 
 %build
 %python_build
@@ -68,7 +65,10 @@ rm tests/__init__.py
 }
 
 %check
-%pytest tests/*.py
+# %%pyunittest is still not available in TW, so we have to expand it manually
+%{python_expand export PYTHONPATH=$PYTHONPATH:%{buildroot}%{$python_sitelib} PYTHONDONTWRITEBYTECODE=1
+$python -munittest -v
+}
 
 %files %{python_files}
 %doc README.md
