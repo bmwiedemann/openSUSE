@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Mon Aug 17 07:03:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix signature verification by using github archive
+
+-------------------------------------------------------------------
+Tue Aug 11 08:12:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.1.0
