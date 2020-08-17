@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:30:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.111
+  * completion fixes
+  * improve help texts
+
+-------------------------------------------------------------------
+Thu Oct 17 17:50:08 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Fri Mar  9 10:39:29 CET 2018 - ndas@suse.de
 
 - use pkgconfig as it allows OBS to pick packages optimized for building.

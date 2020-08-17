@@ -1,7 +1,7 @@
 #
 # spec file for package driverctl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%global commit	3c668744f2242e453fdcd6dca36d3e1d82d0367a
 Name:           driverctl
-Version:        0.95
+Version:        0.111
 Release:        0
 Summary:        Device driver control utility
 License:        LGPL-2.0-only
-Group:          System/Management
 URL:            https://gitlab.com/driverctl/driverctl
-Source0:        archive.tar.gz
-
+Source0:        https://gitlab.com/driverctl/driverctl/-/archive/%{version}/driverctl-%{version}.tar.gz
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 Requires:       coreutils
 Requires:       udev
 BuildArch:      noarch
@@ -51,9 +50,10 @@ created by driverctl are persistent across system reboots
 by default.
 
 %prep
-%setup -q -n %{name}-%{version}-%{commit}
+%setup -q
 
 %build
+%make_build
 
 %install
 %make_install
@@ -64,6 +64,7 @@ by default.
 %{_sbindir}/driverctl
 %{_udevrulesdir}/*.rules
 %{_udevrulesdir}/../vfio_name
+%{_unitdir}/driverctl@.service
 %dir %{_sysconfdir}/driverctl.d
 %{_datadir}/bash-completion/
 %{_mandir}/man8/driverctl.8*
