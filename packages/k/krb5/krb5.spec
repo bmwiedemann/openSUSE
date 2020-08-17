@@ -276,8 +276,10 @@ rm -rf %{buildroot}%{_datadir}/examples
 # manually remove test plugin since configure doesn't support disabling it at build time
 rm -f %{buildroot}/%{_libdir}/krb5/plugins/preauth/test.so
 
+%if "%{_lto_cflags}" != ""
 # Don't add the lto flags to the public link flags.
 sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
+%endif
 
 %find_lang mit-krb5
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 17:38:11 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Don't fail if %{_lto_cflags} is empty
+
+-------------------------------------------------------------------
 Fri Jun 12 08:38:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not mangle libexecdir, bindir, sbindir and datadir: there is
