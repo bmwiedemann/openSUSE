@@ -341,4 +341,13 @@ prerequisite for new python submission</comment>
   * Add pyunittest and pyunittest_arch macros</comment>
     <requestid>820838</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a84df7c1da197239e5d951acbe4a7e22</srcmd5>
+    <version>20200806.f44d3ac</version>
+    <time>1597658327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200806.f44d3ac:
+  * fix unittest macros</comment>
+    <requestid>824570</requestid>
+  </revision>
 </revisionlist>
