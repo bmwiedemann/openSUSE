@@ -27,7 +27,6 @@ URL:            https://github.com/sumerc/yappi
 Source:         https://files.pythonhosted.org/packages/source/y/yappi/yappi-%{version}.tar.gz
 BuildRequires:  %{python_module contextvars}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
