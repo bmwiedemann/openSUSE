@@ -22,7 +22,7 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 %define php_major_version       %(php -r "echo PHP_MAJOR_VERSION;")
 Name:           roundcubemail
-Version:        1.4.7
+Version:        1.4.8
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        GPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
@@ -37,8 +37,8 @@ Source5:        %{name}.logrotate
 Source6:        https://roundcube.net/download/pubkey.asc#/%{name}.keyring
 Source7:        https://github.com/roundcube/%{name}/releases/download/%{version}/%{name}-%{version}-complete.tar.gz.asc
 Source8:        robots.txt
-# PATCH-FIX-OPENSUSE roundcubemail-1.1-beta-config_dir.patch -- use the general config directory /etc
-Patch0:         %{name}-%{version}-config_dir.patch
+# PATCH-FIX-OPENSUSE roundcubemail-config_dir.patch -- use the general config directory /etc
+Patch0:         %{name}-config_dir.patch
 BuildRequires:  apache2-devel
 BuildRequires:  pcre-devel
 BuildRequires:  php

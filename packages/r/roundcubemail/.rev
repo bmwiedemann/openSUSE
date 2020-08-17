@@ -575,4 +575,20 @@
     <comment>update to 1.4.7 with security fix</comment>
     <requestid>821954</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>4f6875168fafe3d7d994311e4d062761</srcmd5>
+    <version>1.4.8</version>
+    <time>1597658752</time>
+    <user>dimstar_suse</user>
+    <comment>- finally renamed roundcubemail-1.4.8-config_dir.patch to 
+  roundcubemail-config_dir.patch to avoid additional roundtrip 
+  times with each submission:
+  + removed roundcubemail-1.4.7-config_dir.patch
+  + added  roundcubemail-config_dir.patch
+
+- update to 1.4.8 with security fixes:
+ * Fix cross-site scripting (XSS) via HTML messages with malicious svg content (CVE-2020-16145)
+ * Fix cross-site scripting (XSS) via HTML messages with malicious math content</comment>
+    <requestid>826894</requestid>
+  </revision>
 </revisionlist>
