@@ -28,13 +28,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/matrix-org/%{name}
 Source0:        https://files.pythonhosted.org/packages/source/s/signedjson/%{modname}-%{version}.tar.gz
 Patch0:         no-importlib-on-py38.patch
-BuildRequires:  %{python_module PyNaCl >= 0.3.0}
-BuildRequires:  %{python_module canonicaljson >= 1.0.0}
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module typing_extensions >= 3.5}
-BuildRequires:  %{python_module unpaddedbase64 >= 1.0.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyNaCl >= 0.3.0
@@ -43,6 +37,14 @@ Requires:       python-importlib-metadata
 Requires:       python-typing_extensions >= 3.5
 Requires:       python-unpaddedbase64 >= 1.0.1
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module PyNaCl >= 0.3.0}
+BuildRequires:  %{python_module canonicaljson >= 1.0.0}
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing_extensions >= 3.5}
+BuildRequires:  %{python_module unpaddedbase64 >= 1.0.1}
+# /SECTION
 %if %{with python2}
 BuildRequires:  python2-typing >= 3.5
 %endif
@@ -69,10 +71,10 @@ Features:
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/%{modname}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE
