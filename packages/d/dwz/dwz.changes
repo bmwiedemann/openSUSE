@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  5 08:16:04 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix error: source 0 defined multiple times.
+
+-------------------------------------------------------------------
+Wed Aug  5 08:00:30 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Silence warning "dwz-rpmlintrc is not mentioned in spec files".
+
+-------------------------------------------------------------------
+Wed Aug  5 06:49:52 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Add dwz-rpmlintrc.  Add comment to NoSource directive.
+
+-------------------------------------------------------------------
 Fri Jan 24 17:08:55 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Fix segfault in die_cu [swo#25456].

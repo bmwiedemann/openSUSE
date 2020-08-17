@@ -1,7 +1,7 @@
 #
 # spec file for package dwz
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ Group:          Development/Tools/Building
 #Git-Clone:	git://sourceware.org/git/dwz
 #Git-Web:	https://sourceware.org/git/?p=dwz.git;a=summary
 Source:         dwz-%{version}.tar.xz
-Url:            https://sourceware.org/dwz/
+URL:            https://sourceware.org/dwz/
 BuildRequires:  libelf-devel
 BuildRequires:  xz
 %if %{build_testsuite}
@@ -70,8 +70,14 @@ BuildRequires:  binutils-gold
 %endif
 
 %if !%{build_main}
+# It's a bit pointless to ship two identical source packages, one for dwz and
+# one for dwz-testsuite.  So we make the second one small by excluding the
+# source archive.  We could do the same for the patches with NoPatch, but the
+# gain is smaller there and looks more cumbersome to maintain.
 NoSource:       0
 %endif
+
+Source1:        dwz-rpmlintrc
 
 Patch1:         dwz-update-version-copyright-message.patch
 Patch2:         dwz-fix-die-no-multifile-propagation.patch
