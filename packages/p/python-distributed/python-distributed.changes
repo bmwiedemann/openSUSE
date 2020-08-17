@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Aug 15 17:00:33 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.23.0:
+  * Tidy up exception traceback in TCP Comms (GH#4042) Krishan Bhasin
+  * Angle on the x-axis labels (GH#4030) Mathieu Dugré
+  * Always set RMM’s strides in the header (GH#4039) jakirkham
+  * Fix documentation upload_file (GH#4038) Roberto Panai
+  * Update UCX tests for new handshake step (GH#4036) jakirkham
+  * Add test for informative errors in serialization cases (GH#4029)
+    Matthew Rocklin
+  * Add compression, pickle protocol to comm contexts (GH#4019)
+    Matthew Rocklin
+  * Make GPU plots robust to not having GPUs (GH#4008) Matthew Rocklin
+  * Update PendingDeprecationWarning with correct version number
+    (GH#4025) Matthias Bussonnier
+  * Install PyTorch on CI (GH#4017) jakirkham
+  * Try getting cluster dashboard_link before asking scheduler
+    (GH#4018) Matthew Rocklin
+  * Ignore writeable frames with builtin array (GH#4016) jakirkham
+  * Just extend frames2 by frames (GH#4015) jakirkham
+  * Serialize builtin array (GH#4013) jakirkham
+  * Use cuDF’s assert_eq (GH#4014) jakirkham
+  * Clear function cache whenever we upload a new file (GH#3993) Jack
+    Xiaosong Xu
+  * Emmit warning when assign/comparing string with Status Enum
+    (GH#3875) Matthias Bussonnier
+  * Track mutable frames (GH#4004) jakirkham
+  * Improve bytes and bytearray serialization (GH#4009) jakirkham
+  * Fix memory histogram values in dashboard (GH#4006) Willi Rath
+
+-------------------------------------------------------------------
+Sat Aug  1 22:12:29 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.22.0:
+  * Only call frame_split_size when there are frames (GH#3996)
+    jakirkham
+  * Fix failing test_bandwidth (GH#3999) jakirkham
+  * Handle sum of memory percentage when memory_limit is 0 (GH#3984)
+    Julia Signell
+  * Drop msgpack pre-0.5.2 compat code (GH#3977) jakirkham
+  * Revert to localhost for local IP if no network available (GH#3991)
+    Matthew Rocklin
+  * Add missing backtick in inline directive. (GH#3988) Matthias
+    Bussonnier
+  * Warn when threads_per_worker is set to zero (GH#3986) Julia
+    Signell
+  * Use memoryview in unpack_frames (GH#3980) jakirkham
+  * Iterate over list of comms (GH#3959) Matthew Rocklin
+  * Streamline pack_frames/unpack_frames frames (GH#3973) jakirkham
+  * Always attempt to create dask-worker-space folder and continue if
+    it exists (GH#3972) Jendrik Jördening
+  * Use merge_frames with host memory only (GH#3971) jakirkham
+  * Simplify pack_frames_prelude (GH#3961) jakirkham
+  * Use continuation prompt for proper example parsing (GH#3966)
+    Matthias Bussonnier
+  * Ensure writable frames (GH#3967) jakirkham
+
+-------------------------------------------------------------------
 Sat Jul 18 18:13:10 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.21.0:
