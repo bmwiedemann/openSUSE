@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 12 03:11:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.99030
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99030  Aug 7 2020 Chase Venters
+      - Fix whois server for .in (India)
+
+-------------------------------------------------------------------
 Wed Jul  1 03:11:22 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.99029
