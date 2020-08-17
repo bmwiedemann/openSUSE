@@ -1,7 +1,7 @@
 #
 # spec file for package wimlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define so_version 15
 Name:           wimlib
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        Library to extract, create, modify, and mount WIM files
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND CC0-1.0
 Group:          Development/Libraries/C and C++
 URL:            https://wimlib.net
 Source:         https://wimlib.net/downloads/wimlib-%{version}.tar.gz
-Patch0:         mkwinpeimg-syslinux-modules-may-be-in-usr-share-sysl.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fuse)
@@ -71,7 +70,6 @@ the Windows Imaging Format (WIM files).
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %configure --disable-static \

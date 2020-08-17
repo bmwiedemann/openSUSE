@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 16 11:43:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.13.2:
+  Prevented miscompilation with gcc 10 at -O3
+  Avoided some compiler warnings with gcc 9 and later.
+  The 'mkwinpeimg' script now also looks for syslinux modules in
+  /usr/share/syslinux, to handle where openSUSE installs them.
+  Removed obsolete packaging files from the source tree.
+- remove mkwinpeimg-syslinux-modules-may-be-in-usr-share-sysl.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jul 18 06:27:58 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - add mkwinpeimg-syslinux-modules-may-be-in-usr-share-sysl.patch

@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>716229</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f5b970d276aa757ec242211d5023df16</srcmd5>
+    <version>1.13.2</version>
+    <time>1597658651</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.2:
+  Prevented miscompilation with gcc 10 at -O3
+  Avoided some compiler warnings with gcc 9 and later.
+  The 'mkwinpeimg' script now also looks for syslinux modules in
+  /usr/share/syslinux, to handle where openSUSE installs them.
+  Removed obsolete packaging files from the source tree.
+- remove mkwinpeimg-syslinux-modules-may-be-in-usr-share-sysl.patch (upstream)</comment>
+    <requestid>827013</requestid>
+  </revision>
 </revisionlist>
