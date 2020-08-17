@@ -458,6 +458,8 @@ Prefer: -FAudio-devel-32bit
 Prefer: -ImageMagick-devel-32bit                      
 Prefer: -Mesa-libd3d-devel-32bit                      
 Prefer: -Mesa-libglapi-devel-32bit                    
+Prefer: -Mesa-libEGL-devel-32bit
+Prefer: -Mesa-libGL-devel-32bit
 Prefer: -NetworkManager-devel-32bit                   
 Prefer: -aalib-devel-32bit                            
 Prefer: -adolc-devel-32bit                            
