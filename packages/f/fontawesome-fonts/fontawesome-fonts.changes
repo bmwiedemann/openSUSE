@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 14:24:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.14.0:
+  * Corrected rendering issue with the tripadvisor brand icon in Windows 10 #16817
+  * Corrected unicode values that were outside the Unicode Private Use Area (PUA) #16804
+
+-------------------------------------------------------------------
 Tue Jul 14 13:14:47 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - fix webfont path (boo#1174093)
