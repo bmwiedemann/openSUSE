@@ -2,7 +2,7 @@
 # spec file for package pkgconf
 #
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -168,12 +168,15 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 install -pm 0755 %{SOURCE1} %{buildroot}%{_bindir}/%{pkgconf_target_platform}-pkg-config
 
 sed -e "s|@TARGET_PLATFORM@|%{pkgconf_target_platform}|" \
+    -e "s|@PKGCONF_LIBDIRS_LOCAL@|/usr/local/%{_lib}/pkgconfig:/usr/local/share/pkgconfig:%{pkgconf_libdirs}|" \
+    -e "s|@PKGCONF_SYSLIBDIR_LOCAL@|/usr/local/%{_lib}:%{_libdir}|" \
+    -e "s|@PKGCONF_SYSINCDIR_LOCAL@|/usr/local/include:%{_includedir}|" \
     -e "s|@PKGCONF_LIBDIRS@|%{pkgconf_libdirs}|" \
     -e "s|@PKGCONF_SYSLIBDIR@|%{_libdir}|" \
     -e "s|@PKGCONF_SYSINCDIR@|%{_includedir}|" \
     -i %{buildroot}%{_bindir}/%{pkgconf_target_platform}-pkg-config
 
-ln -sf pkgconf %{buildroot}%{_bindir}/pkg-config
+ln -sr %{buildroot}%{_bindir}/%{pkgconf_target_platform}-pkg-config %{buildroot}%{_bindir}/pkg-config
 
 # Link pkg-config(1) to pkgconf(1)
 echo ".so man1/pkgconf.1" > %{buildroot}%{_mandir}/man1/pkg-config.1

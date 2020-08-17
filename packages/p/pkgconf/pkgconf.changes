@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 10 05:03:07 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Add /usr/local paths to pkg-config(1) search path for non RPM builds (boo#1175039)
+
+-------------------------------------------------------------------
 Mon Jun 15 08:30:00 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to 1.7.3
