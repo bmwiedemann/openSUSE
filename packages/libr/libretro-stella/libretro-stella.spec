@@ -17,10 +17,10 @@
 
 
 Name:           libretro-stella
-Version:        0~git20200216
+Version:        0~git20200804
 Release:        0
 Summary:        Stella libretro core for Atari 2600 emulation
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
