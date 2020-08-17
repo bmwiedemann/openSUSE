@@ -1,7 +1,7 @@
 #
 # spec file for package python-asciimatics
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,8 @@ BuildRequires:  %{python_module Pillow >= 2.7.0}
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyfiglet >= 0.7.2}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wcwidth}
 # /SECTION
 %python_subpackages
@@ -65,7 +65,7 @@ sed -i '/setup_requires/d' setup.py
 
 %check
 # test_image_files requires specific version of Pillow
-%python_exec -m nose -v -e test_image_files
+%pytest -rs -k 'not test_image_files'
 
 %files %{python_files}
 %doc CHANGES.rst README.rst doc/source/*.rst doc/source/*.png
