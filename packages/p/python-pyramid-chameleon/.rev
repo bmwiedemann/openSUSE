@@ -23,4 +23,12 @@
     <comment>- Fix version req on pyramid</comment>
     <requestid>795620</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9022e19004af575a046d2adb54989471</srcmd5>
+    <version>0.3</version>
+    <time>1597668005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827179</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 21:29:52 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace nose with pytest
+- Replace fix-test___call__spec_alreadyregistered.patch with
+  descriptive test exclusion
+
+-------------------------------------------------------------------
 Mon Apr 20 06:03:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix version req on pyramid
