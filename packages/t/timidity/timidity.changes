@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 15 13:44:52 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.15.0:
+     Add support for segment play option (-G, --segment) with a great
+      contribution by Yotam Medini <yotam.medini@gmail.com>.
+    * Add metronome indicator in dumb interface trace mode.
+    * Let libao backend set ao options via TIMIDITY_AO_OPTIONS
+      environment variable.
+    * Fix for CVE-2009-0179, CVE-2009-3996, CVE-2010-2546 and
+      CVE-2010-2971.
+    * Fix for CVE-2017-11546 (bsc#1081694)
+    * Support for Tcl/Tk 8.6.
+    * Improve Windows MIDI driver.
+    * ...and many other bug fixes.
+
+-------------------------------------------------------------------
 Mon Feb  3 16:41:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

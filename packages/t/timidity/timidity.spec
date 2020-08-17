@@ -25,7 +25,7 @@ Name:           timidity
 Summary:        Software Synthesizer and MIDI Player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 URL:            http://timidity.sourceforge.net/
 %define my_provides /tmp/my-provides
