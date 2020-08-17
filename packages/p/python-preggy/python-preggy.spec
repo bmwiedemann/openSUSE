@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/preggy/preggy-%
 # https://github.com/heynemann/preggy/issues/32 re LICENSE
 Patch0:         split-readme.patch
 BuildRequires:  %{python_module Unidecode}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -45,6 +45,7 @@ Part of the pyVows test framework.
 %prep
 %setup -q -n preggy-%{version}
 %patch0 -p1
+sed -i "s/'nose', //" setup.py
 sed -i '/^#!/d' preggy/__main__.py
 
 %build
@@ -55,7 +56,7 @@ sed -i '/^#!/d' preggy/__main__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m nose
+%pytest
 
 %files %{python_files}
 %license LICENSE
