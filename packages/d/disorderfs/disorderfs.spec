@@ -1,7 +1,7 @@
 #
 # spec file for package disorderfs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           disorderfs
-Version:        0.5.5
+Version:        0.5.10
 Release:        0
 Summary:        FUSE filesystem that introduces non-determinism
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
-Url:            https://packages.debian.org/sid/disorderfs
-Source0:        https://reproducible-builds.org/_lfs/releases/%{name}/%{name}-%{version}.tar.bz2
-Source1:        https://reproducible-builds.org/_lfs/releases/%{name}/%{name}-%{version}.tar.bz2.asc
+URL:            https://packages.debian.org/sid/disorderfs
+Source0:        http://deb.debian.org/debian/pool/main/d/disorderfs/disorderfs_%{version}.orig.tar.gz
+Source1:        https://reproducible-builds.org/_lfs/releases/disorderfs/disorderfs-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
@@ -49,7 +49,8 @@ make %{?_smp_mflags}
 %make_install PREFIX=%{_prefix}
 
 %files
-%doc COPYING README NEWS
+%license COPYING
+%doc README NEWS
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 17 10:55:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.5.10:
+  * Use "directory entries" over "dirents" in human-readable output/log messages.
+  * Don't attempt to drop groups in multi-user mode when we are not root
+  * Ignore the return values to fsyncdir to ensure (for example) dpkg(1) can "flush" /var/lib/dpkg
+  * Move test execution logic into Makefile to not require a separate script
+
+-------------------------------------------------------------------
 Thu Oct 25 07:57:26 UTC 2018 - bwiedemann@suse.com
 
 - Update to 0.5.5
