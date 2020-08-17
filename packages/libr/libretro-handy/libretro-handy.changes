@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 08 09:53:47 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200625:
+  * libretro: Add CORE_DIR to include path
+  * color depth no restart, add 555 format
+  * use blargg blip buffer
+  * fix superclip renderer
+  * fix mikie irq
+
+-------------------------------------------------------------------
 Sat Feb 08 13:08:02 UTC 2020 - i@guoyunhe.me
 
 - Remove handy.libretro which is now provided by libretro-core-info package

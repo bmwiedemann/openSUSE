@@ -17,10 +17,10 @@
 
 
 Name:           libretro-handy
-Version:        0~git20200107
+Version:        0~git20200625
 Release:        0
 Summary:        Handy libretro core for Atari Lynx
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
