@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 11 12:06:30 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200811:
+  * regtest: support new getcap output format in libcap-2.42
+  * regtest: print individual test case errors to stderr
+
+-------------------------------------------------------------------
 Mon Jul 27 12:18:04 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 20200727:

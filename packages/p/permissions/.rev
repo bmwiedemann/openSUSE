@@ -1277,4 +1277,14 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * screen: remove now unused /var/run/uscreens</comment>
     <requestid>822971</requestid>
   </revision>
+  <revision rev="140" vrev="20">
+    <srcmd5>ea190d99a4c9d6c0ce106f9354cb08c4</srcmd5>
+    <version>unknown</version>
+    <time>1597658394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200811:
+  * regtest: support new getcap output format in libcap-2.42
+  * regtest: print individual test case errors to stderr</comment>
+    <requestid>825923</requestid>
+  </revision>
 </revisionlist>
