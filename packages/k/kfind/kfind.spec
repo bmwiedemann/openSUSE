@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kfind
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        KDE Find File Utility
 License:        GPL-2.0-or-later
@@ -68,14 +68,6 @@ KFind allows you to search for directories and files.
   %endif
 
   %suse_update_desktop_file org.kde.kfind          System Filesystem core
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %license COPYING*
