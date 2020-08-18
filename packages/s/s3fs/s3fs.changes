@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 10 17:28:22 UTC 2020 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.87
+  + use correct content-type when complete multipart upload
+  + Fixed a bug of stats cache compression
+  + Fixed the truncation bug of stat file for cache file
+  + Improved strictness of cache file stats(file)
+  + Fixed insufficient upload size for mix multipart upload
+  + Warn about missing MIME types instead of exiting
+  + Not abort process by exception threw from s3fs_strtoofft
+  + Support Google Cloud Storage headers
+  + Added a parameter to output body to curldbg option
+  + Fix renames of open files with nocopyapi option
+  + Relink cache stats file atomically via rename
+  + Ignore case when comparing ETags
+  + Retry with exponential backoff during 500 error
+  + Fixed a bug about serializing from cache file
+  + Fixed about ParallelMixMultipartUpload
+  + Add support for glacier storage class
+  + Fixed upload error about mixuploading sparse file and truncating file
+  + Added SIGUSR1 option for cache file integrity test
+  + Change default stat_cache_expire
+
+-------------------------------------------------------------------
 Wed Feb  5 21:38:42 UTC 2020 - Julio González Gil <julio@juliogonzalez.es>
 
 - Update to version 1.86
