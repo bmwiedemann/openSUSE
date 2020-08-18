@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalarm
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -56,7 +56,6 @@ BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5KdepimDBusInterfaces)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5MailCommon)
 BuildRequires:  cmake(KF5MailTransport)
