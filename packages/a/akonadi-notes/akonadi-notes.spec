@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-notes
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Library to implement management of notes in Akonadi
 License:        LGPL-2.1-or-later
@@ -87,11 +87,11 @@ library in other applications.
 %postun -n libKF5AkonadiNotes5 -p /sbin/ldconfig
 
 %files -n libKF5AkonadiNotes5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiNotes.so.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_includedir}/Akonadi
 %dir %{_kf5_includedir}/akonadi
 %{_kf5_includedir}/Akonadi/Notes/
@@ -103,7 +103,7 @@ library in other applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
