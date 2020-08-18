@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 07:14:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.13:
+  * Ogawa:  Google generously setup AutoFuzz and it found several issues when
+  reading maliciously created files.  These issues reported issues are fixed:
+  253-258, 269-272, 282, 283 (PR266)
+  * AbcImport: Add support for connecting MFnData::kFloatArray.
+  * Fix issue where WFObjConvert headers were being put in the wrong place when
+   installed. (Issue 264)
+  * Partly address Issue 265 by making some adjustments to the Doxyfile and remove
+  a very old reference to MD5Hash in the very old Houdini SOP.
+
+-------------------------------------------------------------------
 Thu Nov 21 17:53:37 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 1.7.12

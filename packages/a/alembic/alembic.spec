@@ -1,7 +1,7 @@
 #
 # spec file for package alembic
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,8 @@
 
 
 %define libname libAlembic1_7
-
 Name:           alembic
-Version:        1.7.12
+Version:        1.7.13
 Release:        0
 Summary:        Computer graphics interchange framework
 License:        BSD-3-Clause
@@ -69,11 +68,11 @@ you will need to install %{name}-devel.
     -DUSE_BINARIES=OFF \
     -DUSE_TESTS=OFF
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
-rm -r %{buildroot}/usr/lib/cmake
+rm -r %{buildroot}%{_prefix}/lib/cmake
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
