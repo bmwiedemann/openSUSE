@@ -124,4 +124,12 @@ kipi-plugins will not be part of digikam 6.0.0 anymore, but it is still used by 
     <comment>20.04.3 release</comment>
     <requestid>820205</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>78fa9c54787446ab9c154cab978e3fce</srcmd5>
+    <version>20.08.0</version>
+    <time>1597751893</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826424</requestid>
+  </revision>
 </revisionlist>
