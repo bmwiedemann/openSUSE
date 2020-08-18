@@ -37,8 +37,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cryptography >= 2.3}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module olefile >= 0.45}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -60,7 +60,8 @@ wc -c msoffcrypto/method/xor_obfuscation.py | sed -n '/^0/{s/^0\s//;p}' | xargs 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m nose --with-doctest
+# pytest creates an illegitimate doctest case for __main__ which then fails
+%pytest --doctest-modules -k 'not __main__'
 
 %post
 %python_install_alternative msoffcrypto-tool

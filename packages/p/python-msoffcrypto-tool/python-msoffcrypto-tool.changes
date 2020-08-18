@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 16 15:25:25 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace nose with pytest
+
+-------------------------------------------------------------------
 Mon May 25 06:50:54 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
