@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kompare
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -97,6 +97,7 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_applicationsdir}/org.kde.kompare.desktop
 %{_kf5_appstreamdir}/
 %{_kf5_bindir}/kompare
+%{_kf5_debugdir}/kompare.categories
 %{_kf5_iconsdir}/hicolor/*/*/kompare.*
 %{_kf5_libdir}/libkomparedialogpages.so.*
 %{_kf5_libdir}/libkompareinterface.so.*
