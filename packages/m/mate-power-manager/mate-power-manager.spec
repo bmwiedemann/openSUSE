@@ -18,7 +18,7 @@
 
 %define _version 1.24
 Name:           mate-power-manager
-Version:        1.24.1
+Version:        1.24.2
 Release:        0
 Summary:        MATE Desktop UPower policy management
 License:        GPL-2.0-only
