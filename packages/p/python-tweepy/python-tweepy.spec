@@ -1,7 +1,7 @@
 #
 # spec file for package python-tweepy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,8 @@ URL:            https://github.com/tweepy/tweepy
 Source:         https://github.com/tweepy/tweepy/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module PySocks >= 1.5.7}
 BuildRequires:  %{python_module mock >= 1.0.1}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.11.1}
 BuildRequires:  %{python_module requests-oauthlib >= 0.7.0}
 BuildRequires:  %{python_module setuptools}
@@ -49,6 +49,7 @@ API, and streaming API.
 
 %prep
 %setup -q -n tweepy-%{version}
+sed -i 's/from nose import SkipTest/from unittest import SkipTest/' tests/test_api.py
 
 %build
 %python_build
@@ -58,10 +59,12 @@ API, and streaming API.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Sadly tests need access to twitter api
-#%%python_expand nosetests-%{$python_bin_suffix} -v tests.test_cursors tests.test_api tests.test_utils
+export USE_REPLAY=1
+# TweepyAuthTests, test_filter_track, test_sample, test_sitestream, test_userstream and test_exp_backoff fail due to network
+%pytest -rs -k 'not (TweepyAuthTests or test_filter_track or test_sample or test_sitestream or test_userstream or test_exp_backoff)'
 
 %files %{python_files}
+%doc README.md CHANGELOG.md docs/*.rst
 %license LICENSE
 %{python_sitelib}/*
 
