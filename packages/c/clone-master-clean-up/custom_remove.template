@@ -5,8 +5,8 @@
 # use cases.
 # See some examples for additional needed clean ups below.
 # 
-# Please copy the template file '/var/adm/clone-master-clean-up/custom_remove.template'
-# to '/var/adm/clone-master-clean-up/custom_remove' and un-comment the parts
+# Please copy the template file '/usr/share/clone-master-clean-up/custom_remove.template'
+# to '/etc/clone-master-clean-up/custom_remove' and un-comment the parts
 # you need or add additional parts, which will fit your needs.
 # Please be careful, the template file will be changed during future package
 # updates. So do NOT change the content. It will get lost. Always make changes

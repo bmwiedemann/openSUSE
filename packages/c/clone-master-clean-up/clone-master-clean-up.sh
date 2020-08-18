@@ -17,7 +17,7 @@ trap 'err_exit $LINENO' ERR
 [ "$UID" != "0" ] && echo 'Please run this program as root user.' && exit 1
 
 echo 'The script will delete all SSH keys, log data, and more. Type YES and enter to proceed.'
-read answer
+read -r answer
 [ "$answer" != "YES" ] && exit 1
 
 # source config file
@@ -29,7 +29,7 @@ else
 fi
 
 echo 'Wiping active swap devices/files (this may take a while)'
-while read swap_name discard; do
+while read -r swap_name discard; do
   uuid=$(env $(blkid -o export "$swap_name") printenv UUID)
   echo "Turning off swap device/file $swap_name (UUID $uuid)"
   swapoff "$swap_name"
@@ -78,8 +78,17 @@ systemctl restart systemd-journald
 mv journald.conf.bak journald.conf
 popd > /dev/null
 
-echo 'Clearing systemd machine ID file'
+echo 'Clearing machine ID file'
+# on distributions that support systemd
 truncate -s 0 /etc/machine-id
+# on distributions that do not support systemd
+[ ! -f /etc/machine-id ] && truncate -s 0 /var/lib/dbus/machine-id
+
+echo 'Removing Salt client ID'
+[ -f /etc/salt/minion_id ] && rm -f /etc/salt/minion_id
+
+echo 'Removing osad authentication configuration file and the system ID'
+rm -f /etc/sysconfig/rhn/{osad-auth.conf,systemid}
 
 echo 'Removing domain name and set host name from DHCP in network config'
 sed -i 's/^NETCONFIG_DNS_STATIC_SEARCHLIST=.*$/NETCONFIG_DNS_STATIC_SEARCHLIST=""/g' /etc/sysconfig/network/config
@@ -181,7 +190,7 @@ EOF
 fi
 
 echo 'Would you like to give root user a new password? Type YES to set a new password, otherwise simply press Enter.'
-read answer
+read -r answer
 [ "$answer" == "YES" ] && passwd root
 
 if [ "$CMCU_EC2" = "yes" ]; then
@@ -196,22 +205,22 @@ fi
 
 if [ "$CMCU_USERIDS" = "yes" ]; then
     echo "clean up user ids >= 1000"
-    for i in `awk -F ":" '$3 >= 1000 && $1 !~ /nobody/ {print $1}' /etc/passwd`; do
-        userdel -r $i
+    for i in $(awk -F ":" '$3 >= 1000 && $1 !~ /nobody/ {print $1}' /etc/passwd); do
+        userdel -r "$i"
     done
 fi
 
 echo "swap the uuid strings with dev strings in /etc/fstab"
 > /tmp/fstab.tmp
-while read disk remain; do
+while read -r disk remain; do
     case "$disk" in
     UUID=*)
         uuid=${disk#UUID=}
-        new_disk=`/usr/sbin/blkid -U $uuid`
+        new_disk=$(/usr/sbin/blkid -U "$uuid")
         ;;
     LABEL=*)
         label=${disk#LABEL=}
-        new_disk=`/usr/sbin/blkid -L $label`
+        new_disk=$(/usr/sbin/blkid -L "$label")
         ;;
     *)
         new_disk="$disk"
@@ -226,11 +235,11 @@ rm -rf /tmp/fstab.tmp
 
 echo "Clean up network files (except interfaces using dhcp boot protocol)"
 # additional files like bondig interfaces or vlans can be found in 
-# /var/adm/clone-master-clean-up/custom_remove.template
-for intf in `ls -1 /etc/sysconfig/network/ifcfg-eth*`; do
-    bprot=`grep "^BOOTPROTO=" $intf | sed "s/^BOOTPROTO=//"`
+# /usr/share/clone-master-clean-up/custom_remove.template
+for intf in /etc/sysconfig/network/ifcfg-eth*; do
+    bprot=$(grep "^BOOTPROTO=" "$intf" | sed "s/^BOOTPROTO=//")
     if ! [[ "$bprot" =~ dhcp ]]; then
-        rm -rf $intf
+        rm -rf "$intf"
     fi
 done
 if [ -d /var/lib/wicked ]; then

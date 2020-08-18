@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 12 15:44:30 UTC 2020 - abriel@suse.com
+
+- Bump version to 1.6
+- cleanup salt client ID and osad authentication configuration
+  file and the system ID
+  (bsc#1174147)
+- change the path of the template file in the comments of
+  custom_remove.template and clone-master-clean-up.sh
+  (jsc#TEAM-490)
+
+-------------------------------------------------------------------
 Tue Oct  8 13:24:41 UTC 2019 - abriel@suse.com
 
 - Bump version to 1.5
