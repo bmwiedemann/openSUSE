@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/hpc/Spindle.git</param>
+    <param name="filename">spindle</param>
+    <param name="versionformat">@PARENT_TAG@.git.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">481569239f021bd3720e4950125bbcb8018b7aa2</param>
+  </service>
+  <service name="recompress" mode="localonly">
+    <param name="file">spindle*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
