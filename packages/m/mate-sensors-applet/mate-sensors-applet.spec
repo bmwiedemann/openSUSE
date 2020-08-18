@@ -20,11 +20,10 @@
 %define sover   0
 %define _version 1.24
 Name:           mate-sensors-applet
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        MATE Desktop panel applet to display sensor readings
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
@@ -52,7 +51,6 @@ speeds and voltage readings under Linux.
 
 %package -n mate-applet-sensors
 Summary:        MATE Desktop panel applet to display sensor readings
-Group:          System/GUI/Other
 Requires:       mate-panel >= %{_version}
 Recommends:     libXNVCtrl
 Recommends:     mate-applet-sensors-lang
@@ -70,7 +68,6 @@ speeds and voltage readings under Linux.
 
 %package -n mate-applet-sensors-devel
 Summary:        Development files for mate-sensors-applet
-Group:          Development/Libraries/Other
 Requires:       %{soname}%{sover} = %{version}
 # mate-sensors-applet-devel was last used in openSUSE Leap 42.1.
 Provides:       %{name}-devel = %{version}
@@ -83,7 +80,6 @@ speeds and voltage readings under Linux.
 
 %package -n %{soname}%{sover}
 Summary:        MATE Desktop sensors applet shared libraries
-Group:          Development/Libraries/C and C++
 
 %description -n %{soname}%{sover}
 MATE Sensors Applet is an applet for the MATE Panel to display

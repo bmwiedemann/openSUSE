@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * Add git.mk to generate .gitignore.
+  * build: Prevents two consecutive slashes in plugin file path.
+  * build: Fix G_LOG_DOMAIN for sensors applet.
+  * sonypi-plugin.c: Make sonypi plugin portable to GNU/Hurd.
+  * libsensors-plugin: Port to GRegex.
+  * Replace g_malloc0 with g_new0 and g_strdup.
+  * build: Silent build warnings for distcheck.
+  * Use default MATE_COMPILE_WARNINGS level.
+  * build: Show configure summary.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0:
