@@ -23,10 +23,10 @@
 %endif
 
 %global unregisterised_archs s390 s390x riscv64
-%define full_version 8.10.1
+%define full_version 8.10.2
 
 Name:           ghc
-Version:        8.10.1
+Version:        8.10.2
 Release:        0
 URL:            https://www.haskell.org/ghc/
 Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
@@ -152,7 +152,7 @@ To install all of GHC install package ghc.
 %if %{defined ghclibdir}
 %ghc_lib_subpackage -d Cabal-3.2.0.0
 %ghc_lib_subpackage -d array-0.5.4.0
-%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.14.0.0
+%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.14.1.0
 %ghc_lib_subpackage -d binary-0.8.8.0
 %ghc_lib_subpackage -d bytestring-0.10.10.0
 %ghc_lib_subpackage -d containers-0.6.2.1
@@ -166,13 +166,13 @@ To install all of GHC install package ghc.
 %ghc_lib_subpackage -d ghc-compact-0.1.0.0
 %ghc_lib_subpackage -d ghc-heap-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghci-%{ghc_version_override}
-%ghc_lib_subpackage -d haskeline-0.8.0.0
+%ghc_lib_subpackage -d haskeline-0.8.0.1
 %ghc_lib_subpackage -d hpc-0.6.1.0
 %ghc_lib_subpackage -d libiserv-%{ghc_version_override}
 %ghc_lib_subpackage -d mtl-2.2.2
 %ghc_lib_subpackage -d parsec-3.1.14.0
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.8.2
+%ghc_lib_subpackage -d process-1.6.9.0
 %ghc_lib_subpackage -d stm-2.5.0.0
 %ghc_lib_subpackage -d template-haskell-2.16.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.4

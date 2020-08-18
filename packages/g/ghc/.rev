@@ -826,4 +826,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
 - drop fix-build-using-unregisterized-v8.4.patch</comment>
     <requestid>811492</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>71ac8124b75386d49a2355431aab18cd</srcmd5>
+    <version>8.10.2</version>
+    <time>1597746251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825369</requestid>
+  </revision>
 </revisionlist>

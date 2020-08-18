@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug  9 11:27:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 8.10.2
+ * Fixes a code generation bug resulting in incorrect code generation
+    for foreign calls with complex arguments
+ * Fixes a bug causing object merging to fail when the lld linker is in use
+ * Introduces a workaround for a Linux kernel bug in the implementation
+    of the timerfd mechanism
+ * Fixes a few specialiser regressions as well introduces a variety
+    of miscellaneous specialiser improvements
+ * Fixes a potential loss of sharing due to left operator sections
+ * Fix bootstrapping of GHC with the LLVM backend on x86-64
+ * few important correctness fixes for the low-latency garbage collector.
+
+-------------------------------------------------------------------
 Sun May 31 18:47:18 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - cleanup specfile from Leap 42 and older remrants
