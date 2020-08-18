@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konsole
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -138,7 +138,7 @@ Provides translations for the "%{name}" package.
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en
@@ -157,7 +157,7 @@ Provides translations for the "%{name}" package.
 
 %files part
 %license COPYING
-%doc README
+%doc README.md
 %dir %{_kf5_plugindir}
 %dir %{_kf5_servicesdir}
 %dir %{_kf5_servicetypesdir}
