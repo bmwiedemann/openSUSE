@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:33:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.6.10:
+  - update the configure script to handle some undocumented --enable-*
+    options that existed but were not expected to be used.
+  - fixed spelling in darrc comments
+  - fixed bug in dar_split that could occur in very rare conditions
+  - fixed EA support build failure due to what seems to be a change
+    in Linux kernel header
+  - fixed symbol conflict with s_host of in.h on omniOS platform
+
+-------------------------------------------------------------------
 Wed Apr 15 13:45:47 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.6.9
