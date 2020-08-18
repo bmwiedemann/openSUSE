@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:10:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * PresentationWidget: Fix screen switching at runtime
+  * Find built-in tool corresponding to quick tool at runtime (kde#424810)
+
+-------------------------------------------------------------------
+Sun Aug  2 08:01:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Add required Version key to kconf_update file (kde#424616)
+  * Test that 'Quick Annotations' is correctly populated
+  * Test enabled/disabled state of actions after a config reparsing
+  * Test enabled state  of "Quick Annotations" action
+  * Ensure "Quick annotations" action is always disabled on protected pdf (kde#424296)
+
+-------------------------------------------------------------------
+Sun Jul 19 10:06:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Jul  9 20:11:06 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
