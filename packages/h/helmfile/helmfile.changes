@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 17 15:38:34 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.125.7: Fix regression installing raw K8s manifests (#1417)
+  * a9aa7af (HEAD, tag: v0.125.7, origin/master, origin/HEAD, master)
+    Fix regression installing raw K8s manifests (#1417)
+  * 738409e Fix regression for helmfile template with helm v2 since
+    v0.125.4 (#1416)
+
+- v0.125.6: Revert filtering on repositories to be updated (#1412)
+  * ec87a39 (HEAD, tag: v0.125.6, origin/master, origin/HEAD, master)
+    Revert filtering on repositories to be updated (#1412)
+  * ab1c118 Bump chartify to v0.4.0 (#1409)
+  * c8c444d Add test case (#1410)
+
+- v0.125.5: Fix chart fetched by go-getter not to fail due to missing
+  dependencies
+  * 9a03d79 (HEAD, tag: v0.125.5, origin/master, origin/HEAD, master)
+    Fix chart fetched by go-getter not to fail due to missing
+    dependencies (#1408)
+
+- v0.125.4: Fix race on/sometimes missing postsync and cleanup hooks
+  (#1407)
+  * 0ef7e65 (HEAD, tag: v0.125.4, origin/master, origin/HEAD, master)
+    Fix race on/sometimes missing postsync and cleanup hooks (#1407)
+  * 61b61d3 Fix helmfile template with Helm 3 ignoring chart version
+    (#1406)
+  * 2710cb3 Fix go-getter URL in chart to actually work (#1405)
+  * 4d7fcd8 doc: ArgoCD integration (#1402)
+
+-------------------------------------------------------------------
 Thu Aug  6 07:37:04 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.125.3: Fix various issues in chart preparation (#1400)
