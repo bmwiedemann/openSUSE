@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaddressbook
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KdepimDBusInterfaces)
+BuildRequires:  cmake(KF5KaddressbookGrantlee)
 BuildRequires:  cmake(KF5KontactInterface)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Libkleo)
@@ -99,21 +99,22 @@ This package includes the user guide for KAddressbook in HTML format.
 
 %files
 %license COPYING COPYING.LIB COPYING.DOC
-%{_kf5_debugdir}/kaddressbook.categories
-%{_kf5_debugdir}/kaddressbook.renamecategories
 %dir %{_kf5_appstreamdir}/
+%dir %{_kf5_plugindir}/kontact5/
 %{_kf5_applicationsdir}/kaddressbook-importer.desktop
+%{_kf5_applicationsdir}/kaddressbook-view.desktop
 %{_kf5_applicationsdir}/org.kde.kaddressbook*.desktop
 %{_kf5_appstreamdir}/org.kde.kaddressbook.appdata.xml
 %{_kf5_bindir}/kaddressbook
+%{_kf5_debugdir}/kaddressbook.categories
+%{_kf5_debugdir}/kaddressbook.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/kaddressbook.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/kaddressbook.svg
 %{_kf5_libdir}/libkaddressbookprivate.so.*
 %{_kf5_plugindir}/kaddressbook_config_plugins.so
 %{_kf5_plugindir}/kaddressbookpart.so
-%{_kf5_plugindir}/kontact_kaddressbookplugin.so
+%{_kf5_plugindir}/kontact5/kontact_kaddressbookplugin.so
 %{_kf5_servicesdir}/kaddressbook_config_plugins.desktop
-%{_kf5_servicesdir}/kaddressbookpart.desktop
 %{_kf5_servicesdir}/kontact/
 %{_kf5_sharedir}/kaddressbook/
 %{_kf5_sharedir}/kconf_update/
