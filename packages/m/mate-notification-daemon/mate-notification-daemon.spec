@@ -18,7 +18,7 @@
 
 %define _version 1.24
 Name:           mate-notification-daemon
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        Notification daemon for MATE
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libwnck-3.0)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(x11)
 Recommends:     %{name}-lang
 Provides:       dbus(org.freedesktop.Notifications)
