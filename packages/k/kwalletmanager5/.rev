@@ -497,4 +497,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>20.04.3 release</comment>
     <requestid>820279</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>56e318480d98fdbc4a68058bc33049d1</srcmd5>
+    <version>20.08.0</version>
+    <time>1597744766</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826499</requestid>
+  </revision>
 </revisionlist>
