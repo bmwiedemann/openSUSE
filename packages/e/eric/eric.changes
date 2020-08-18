@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Aug 16 11:23:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.8
+  - bug fixes
+  - removed support for Python2
+  - removed support for Qt4 (PyQt4 and pyside)
+  -- added menu action for pip cache management
+  -- changed the dialog to allow the selection of checker categories
+  -- added several security related checks (ported from bandit)
+  -- extended the dialog to show a list of files still to be checked
+  -- updated pycodestyle to version 2.6.0
+  -- updated pyflakes to version 2.2.0
+  -- updated asttoken to version 2.0.4
+  - bug fixes
+  -- added a configurable URL entry color to indicate sites with certificate
+     issues
+  -- added code to ask for the title of a new bookmark folder
+  -- updated Pygments to 2.3.1
+
+-------------------------------------------------------------------
 Sat May  9 13:47:28 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 20.5:
