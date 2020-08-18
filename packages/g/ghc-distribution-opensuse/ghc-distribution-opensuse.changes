@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 14:56:13 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for min 4GB disk space only for some arches
+  aarch64 ppc64 ppc64le
+
+-------------------------------------------------------------------
 Tue Jun 16 11:14:01 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
