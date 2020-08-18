@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  6 07:56:57 UTC 2020 - psimons@suse.com
+
+- Update commonmark to version 0.1.0.2.
+  ## 0.1.0.2
+
+  * Fix tight/loose list detection with multiple blank lines at end (#56).
+
+-------------------------------------------------------------------
 Tue Aug  4 09:31:42 UTC 2020 - psimons@suse.com
 
 - Add commonmark at version 0.1.0.1.
