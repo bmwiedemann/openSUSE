@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:08:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Update to the latest breeze icon
+  * CMakeLists.txt: Set project VERSION for release tools
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 20.04.3:
+  * appdata.xml: Minor fixes for Flathub
+  * fix compilation
+
+-------------------------------------------------------------------
 Thu Jul  9 20:09:05 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
