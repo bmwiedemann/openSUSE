@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knotes
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gettext-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
@@ -81,7 +82,6 @@ ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  libboost_headers-devel
 
 %description
 KNotes is a note taking application for KDE.
@@ -131,7 +131,8 @@ KNotes is a note taking application for KDE.
 %{_kf5_notifydir}/akonadi_notes_agent.notifyrc
 %{_kf5_plugindir}/kcm_knote.so
 %{_kf5_plugindir}/kcm_knotessummary.so
-%{_kf5_plugindir}/kontact_knotesplugin.so
+%dir %{_kf5_plugindir}/kontact5/
+%{_kf5_plugindir}/kontact5/kontact_knotesplugin.so
 %{_kf5_servicesdir}/kcmknotessummary.desktop
 %{_kf5_servicesdir}/knote_*.desktop
 %{_kf5_servicesdir}/kontact/
