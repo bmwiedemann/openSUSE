@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Mon Jul  6 21:17:26 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.0.0:
+  * No release notes.
+- Re-enable octave support; compilation error seems to be fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Jun 30 09:30:36 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave support as compilation error with current swig.
+
+-------------------------------------------------------------------
+Sat Jun  6 12:09:59 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lal-implicit-conversion-XLALError.patch to fix an implicit
+  conversion error flagged by GCC 10.
+
+-------------------------------------------------------------------
+Fri May 15 13:07:39 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop ExclusiveArch: x86_64: recent versions build on other archs
+  just fine.
+- swig >= 4.0 is required when building octave support (for octave
+  >= 5.0).
+
+-------------------------------------------------------------------
+Thu Apr 23 13:33:00 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Requires: python-numpy, python-lscsoft-glue required by the
+  python module.
+
+-------------------------------------------------------------------
+Fri Apr  3 01:15:58 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.22.0.
+- Drop lal-build-octave44-with-swig3.patch: Incorporated upstream;
+  drop BuildRequires: libtool and don't run autoreconf before
+  configure required due to this patch.
+
+-------------------------------------------------------------------
+Sun Feb  2 22:59:09 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.21.0:
+  * O3b release
+- Rebase lal-build-octave44-with-swig3.patch to conform to
+  upstream's reworking for swig and octave version tests.
+
+-------------------------------------------------------------------
+Mon Sep 30 15:11:36 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build both python2 and python3 flavours.
+
+-------------------------------------------------------------------
+Mon Jul 22 12:25:58 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.20.2
+  * MKL FFT fixes
+- Changes from version 6.20.1:
+  * O3 point release.
+- Changes from version 6.20.0:
+  * O3 release.
+- Update shared lib package names in keeping with upstream so
+  versioning.
+- Rebase lal-build-octave44-with-swig3.patch to conform to
+  upstream's reworking for swig and octave version tests.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:32:33 UTC 2019 - badshah400@gmail.com
+
+- Switch builds to python2.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:28:59 UTC 2019 - badshah400@gmail.com
+
+- Add fftw3 and gsl to -devel package's Requires.
+- Drop -devel pkg requirement for octave-lal.
+
+-------------------------------------------------------------------
+Sun Jan 27 15:00:41 UTC 2019 - badshah400@gmail.com
+
+- Add zlib-devel Requires for -devel pkg: required for compiling
+  code that makes use of lalsupport.
+
+-------------------------------------------------------------------
+Sat Jan 26 21:27:42 UTC 2019 - badshah400@gmail.com
+
+- Update to version 6.19.1.
+
+-------------------------------------------------------------------
+Sat Jan 26 20:27:31 UTC 2019 - badshah400@gmail.com
+
+- Add _constraints file to ensure enough memory during building.
+
+-------------------------------------------------------------------
+Fri Jan 25 16:46:55 UTC 2019 - badshah400@gmail.com
+
+- Add lal-build-octave44-with-swig3.patch: allow building octave
+  bindings with swig 3.0.x rather than requiring swig 4.x.
+
+-------------------------------------------------------------------
+Wed Nov 28 17:20:43 UTC 2018 - badshah400@gmail.com
+
+- Update to version 6.19.0.
+- Drop patches incorporated upstream:
+  * lal-int-in-boolean-context.patch
+  * lal-implicit-fallthrough.patch
+  * lal-format-truncate.patch
+- New BuildRequires: python-numpy-devel
+- Update lalsupport shlib version: 11 -> 12.
+- Exclusively build on x86_64 arch; other archs not supported.
+- Update URL: upstream URL changed.
+
+-------------------------------------------------------------------
+Fri Jun 15 11:22:10 UTC 2018 - badshah400@gmail.com
+
+- Add patches from upstream to fix compilation against gcc >= 7.1:
+  * lal-int-in-boolean-context.patch: Avoid '*' in boolean
+    expressions to avoid int-in-boolean-context warnings from gcc.
+  * lal-implicit-fallthrough.patch: Avoid implict-fallthrough
+    warnings when compiling against GCC >= 7.
+  * lal-format-truncate.patch: GCC >= 7 does not allow snprintf()
+    return values to go unchecked when it believes there is a risk
+    of the result being truncated; update patch to include
+    additional fix.
+
+-------------------------------------------------------------------
+Fri Jun 15 11:22:07 UTC 2018 - badshah400@gmail.com
+
+- Initial package.
