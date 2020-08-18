@@ -25,13 +25,12 @@
 # of those fields
 #
 Name:           rubygem-vagrant-spec
-Version:        0.0.1.148cb63.git
+Version:        0.0.1.fe62938.git
 Release:        0
 Summary:        Tool and library for testing Vagrant plugins
 License:        MPL-2.0
 Group:          Development/Languages/Ruby
 URL:            https://github.com/mitchellh/vagrant-spec
-# MANUALLY modified:
 Source:         %{mod_full_name}.gem
 Source1:        gem2rpm.yml
 BuildRequires:  %{rubygem gem2rpm}
@@ -65,7 +64,7 @@ entire tool is geared very heavily towards RSpec.
   --doc-files="LICENSE.txt README.md" \
   -f
 # MANUAL
-find %{buildroot}/%{_libdir}/ruby/gems \( -name .gitignore -o -name .travis.yml \) | xargs rm
+find %{buildroot}/%{_libdir}/ruby/gems \( -name .gitignore -o -name .travis.yml -o -name .ci -o -name .github \) | xargs rm -rf
 %fdupes %{buildroot}/%{_libdir}/ruby/gems
 # /MANUAL
 
