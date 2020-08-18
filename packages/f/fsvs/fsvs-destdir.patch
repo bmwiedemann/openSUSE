@@ -1,6 +1,8 @@
---- src/Makefile.in.orig	2010-03-13 02:58:08.000000000 +0100
-+++ src/Makefile.in	2010-03-13 02:58:42.000000000 +0100
-@@ -88,7 +88,7 @@
+Index: src/Makefile.in
+===================================================================
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -90,7 +90,7 @@ exec_prefix= @exec_prefix@
  prefix	= @prefix@
  mandir	= @mandir@
  install:

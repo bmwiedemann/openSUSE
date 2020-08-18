@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:44:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.9:
+  - Various small fixes that got visible with new compiler versions and/or LLVM.
+  - Fixed URI canonicalization (UTF8)
+- refreshed patches fsvs-1.2.5-linking.patch, fsvs-destdir.patch
+
+-------------------------------------------------------------------
 Sat May 27 16:52:15 UTC 2017 - bwiedemann@suse.com
 
 - Update to 1.2.7

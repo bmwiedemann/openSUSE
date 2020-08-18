@@ -16,16 +16,16 @@ Index: src/Makefile.in
 ===================================================================
 --- src/Makefile.in.orig
 +++ src/Makefile.in
-@@ -16,7 +16,7 @@ HEADREV	:= "$Revision: 2478 $"
+@@ -16,7 +16,7 @@ HEADREV	:= "$Revision: 2506 $"
  VERSION	= $(shell  perl -e '($$r) = (q( $(HEADREV) ) =~ m:(\d+):); $$t= q( $(HEADURL) ) =~ m:/tags/([^/]+): ? $$1 : "trunk"; print "$$t:$$r\n";' )
  
  CFLAGS	:= @CFLAGS@
--CFLAGS	+= -Wall -funsigned-char -Os -DFSVS_VERSION='"$(VERSION)"'
-+CFLAGS	+= -Wall -funsigned-char -DFSVS_VERSION='"$(VERSION)"'
+-CFLAGS	+= -Wall -funsigned-char -Os -DFSVS_VERSION='"$(VERSION)"'  -Wno-deprecated-declarations
++CFLAGS	+= -Wall -funsigned-char -DFSVS_VERSION='"$(VERSION)"'  -Wno-deprecated-declarations
  LDFLAGS	:= @LDFLAGS@
  FSVS_LDFLAGS = $(LDFLAGS) -lsvn_subr-1 -lsvn_delta-1 -lsvn_ra-1 -lpcre -lgdbm -ldl
  EXTRALIBS	:= @EXTRALIBS@
-@@ -146,13 +146,13 @@ docs: $(MANDEST)/fsvs-howto-backup.5 $(M
+@@ -148,13 +148,13 @@ docs: $(MANDEST)/fsvs-howto-backup.5 $(M
  ################################ Rules ######################################
  %.o:	%.c
  	@echo "     CC $<"
@@ -41,7 +41,7 @@ Index: src/Makefile.in
  ifeq (@ENABLE_RELEASE@, 1)
  	-strip $@
  endif
-@@ -169,7 +169,7 @@ endif
+@@ -171,7 +171,7 @@ endif
  deps:	$(D_FILES)
  .%.d:	%.c
  	@echo "     deps for $<"

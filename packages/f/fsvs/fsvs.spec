@@ -1,7 +1,7 @@
 #
 # spec file for package fsvs
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           fsvs
-Version:        1.2.7
+Version:        1.2.9
 Release:        0
-Url:            http://fsvs.tigris.org/
 Summary:        Backup/Restore/Versioning of large Data Sets with Meta-Data
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
+URL:            http://fsvs.tigris.org/
 Source:         https://download.fsvs-software.org/fsvs-%{version}.tar.bz2
 Patch1:         fsvs-destdir.patch
 Patch2:         fsvs-1.2.5-linking.patch
@@ -47,7 +47,6 @@ BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  subversion-devel
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 FSVS is the abbreviation for “Fast System VerSioning”, and is pronounced
@@ -56,14 +55,7 @@ FSVS is the abbreviation for “Fast System VerSioning”, and is pronounced
 It is a complete backup/restore/versioning tool for all files in a directory
 tree or whole filesystems, with a subversionTM repository as the backend.
 
-You may think of it as some kind of tar or rsync with versioned storage. 
-
-
-
-
-Author:
--------
-    Philipp Marek <pmarek@tigris.org>
+You may think of it as some kind of tar or rsync with versioned storage.
 
 %prep
 %setup -q
@@ -75,24 +67,24 @@ Author:
 export CFLAGS="%{optflags} $(pkg-config --includes apr-1)"
 export CFLAGS="$CFLAGS -fno-strict-aliasing -fgnu89-inline"
 %configure --disable-silent-rules
-%__make %{?jobs:-j%{jobs}}
+%make_build
 
 %install
-%makeinstall
+%make_install
 
-%__rm -rf doc/develop
+rm -rf doc/develop
 echo -n >manfiles.lst
 for p in doc/*.{1,5}; do
     f="${p##*/}"
     m="${f##*.}"
-    %__install -D -m0644 "$p" "%{buildroot}%{_mandir}/man${m}/${f}"
-    %__rm "$p"
+    install -D -m0644 "$p" "%{buildroot}%{_mandir}/man${m}/${f}"
+    rm "$p"
     echo "%doc %{_mandir}/man${m}/${f}"'*' >>manfiles.lst
 done
 
 %files -f manfiles.lst
-%defattr(-,root,root)
-%doc doc CHANGES LICENSE README
+%license LICENSE
+%doc doc CHANGES README
 %{_bindir}/fsvs
 
 %changelog
