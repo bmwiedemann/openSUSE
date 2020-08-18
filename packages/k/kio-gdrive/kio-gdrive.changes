@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:09:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Add a Qt version check on deprecated usage of split.
+
+-------------------------------------------------------------------
+Sun Jul 19 12:22:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 1.3.0:
+  * Port away from deprecated split usage.
+  * Add missing const
+  * Add latest stable release to appdata.
+  * Port to RELEASE_SERVICE_VERSION automatic version
+  * When listing a directory or stat()ing, make sure the
+    account is present in accountsmanager.
+  * Port away from deprecated KRun::runUrl
+
+-------------------------------------------------------------------
 Wed Apr 15 10:28:49 UTC 2020 - wbauer@tmo.at
 
 - Update to 1.3.0
