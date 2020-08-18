@@ -55,4 +55,12 @@
   * Fix crash under debug cpython when mdb_cursor_open failed</comment>
     <requestid>750894</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f5d5689ed6de0ab4edc2e051c950e7d</srcmd5>
+    <version>0.99</version>
+    <time>1597744830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827393</requestid>
+  </revision>
 </revisionlist>
