@@ -8,11 +8,11 @@ Many users rely on this functionality.
  kmail/plugins/expertplugin/kmail_expertplugin.json | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/kmail/plugins/expertplugin/kmail_expertplugin.json b/kmail/plugins/expertplugin/kmail_expertplugin.json
-index 00c30484..17ed0772 100644
---- a/kmail/plugins/expertplugin/kmail_expertplugin.json
-+++ b/kmail/plugins/expertplugin/kmail_expertplugin.json
-@@ -24,7 +24,7 @@
+Index: kdepim-addons-19.03.60git.20200618T054224~f5464435/kmail/plugins/expertplugin/kmail_expertplugin.json
+===================================================================
+--- kdepim-addons-19.03.60git.20200618T054224~f5464435.orig/kmail/plugins/expertplugin/kmail_expertplugin.json	2020-06-18 05:42:24.000000000 +0200
++++ kdepim-addons-19.03.60git.20200618T054224~f5464435/kmail/plugins/expertplugin/kmail_expertplugin.json	2020-06-18 08:13:00.905991053 +0200
+@@ -29,7 +29,7 @@
          "Description[uk]": "За допомогою цього додатка можна увімкнути деякі дії для досвідчених користувачів.",
          "Description[x-test]": "xxThis plugin activates some expert actions.xx",
          "Description[zh_CN]": "此插件激活一些专家操作。",
@@ -21,6 +21,3 @@ index 00c30484..17ed0772 100644
          "Id": "kmailexpert",
          "Name": "Expert Plugin",
          "Name[ar]": "ملحقة الخبراء",
--- 
-2.19.1
-
