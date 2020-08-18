@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * plugin xsettings: Fix memory leak on delayed_toggle_bg_draw.
+  * mpris: Use namespace instead of a whitelist for player names.
+  * build: Silent build warnings for distcheck.
+  * housekeeping: Fix iconname of mate-disk-usage-analyzer.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.0):
