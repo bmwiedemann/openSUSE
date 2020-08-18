@@ -197,4 +197,22 @@
   PyString_FromStringAndSize in swig/charmap.i (needed for python3)</comment>
     <requestid>806039</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>09017380cd4e7aaee92b62d477b7acb4</srcmd5>
+    <version>0.24.2</version>
+    <time>1597756235</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.24.2:
+  * obexfs: Parse XML data with Expat library
+  * obexfs: Properly encode XML special characters
+  * obexfs: New option -r to specify root path
+  * obexfs: New option -S to simulate free space
+  * Fix probing
+  * Add support for Gigaset devices
+  * CMake improvements
+  * Fix build system bugs
+  * Replace CRC implementation in libbfb
+- remove obexftp-pkgconfig_requires.patch : upstream</comment>
+    <requestid>826917</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
-Index: obexftp-0.24-Source/swig/python/CMakeLists.txt
+Index: obexftp-0.24.2-Source/swig/python/CMakeLists.txt
 ===================================================================
---- obexftp-0.24-Source.orig/swig/python/CMakeLists.txt
-+++ obexftp-0.24-Source/swig/python/CMakeLists.txt
-@@ -36,13 +36,13 @@ swig_link_libraries ( obexftp-python
+--- obexftp-0.24.2-Source.orig/swig/python/CMakeLists.txt
++++ obexftp-0.24.2-Source/swig/python/CMakeLists.txt
+@@ -37,13 +37,13 @@ swig_link_libraries ( obexftp-python
  #
  execute_process (
    COMMAND ${PYTHON_EXECUTABLE} -c

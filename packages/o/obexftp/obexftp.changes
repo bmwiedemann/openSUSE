@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 16 00:27:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.24.2:
+  * obexfs: Parse XML data with Expat library
+  * obexfs: Properly encode XML special characters
+  * obexfs: New option -r to specify root path
+  * obexfs: New option -S to simulate free space
+  * Fix probing
+  * Add support for Gigaset devices
+  * CMake improvements
+  * Fix build system bugs
+  * Replace CRC implementation in libbfb
+- remove obexftp-pkgconfig_requires.patch : upstream
+
+-------------------------------------------------------------------
 Fri May 15 19:32:15 UTC 2020 - ldreier@vodafonemail.de
 
 - Build python bindings for python3 instead of for python2
