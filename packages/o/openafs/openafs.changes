@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:49:33 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to HEAD of git branch openafs-stable-1_8_x
+  * kernel 5.8 not supported by 1.8.6
+    and no official package-upates out yet. 
+
+-------------------------------------------------------------------
+Mon Aug 10 08:43:10 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- add patch remove-get_ds-usage.patch to fix building KMP on aarch64 
+
+-------------------------------------------------------------------
 Wed Jul  1 08:53:44 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to official 1.8.6

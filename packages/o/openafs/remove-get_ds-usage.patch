@@ -1,0 +1,22 @@
+--- openafs-1.8.6/src/afs/LINUX/osi_file.c.orig	2020-08-10 10:24:28.386857043 +0200
++++ openafs-1.8.6/src/afs/LINUX/osi_file.c	2020-08-10 10:24:50.323153971 +0200
+@@ -388,7 +388,7 @@
+     if (uiop->uio_seg == AFS_UIOSYS) {
+ 	/* Switch into user space */
+ 	old_fs = get_fs();
+-	set_fs(get_ds());
++	set_fs(KERNEL_DS);
+     }
+ #endif /* AFS_FILE_NEEDS_SET_FS */
+ 
+--- openafs-1.8.6/src/afs/LINUX/osi_compat.orig	2020-08-10 10:23:11.657811615 +0200
++++ openafs-1.8.6/src/afs/LINUX/osi_compat.h	2020-08-10 10:23:32.138091746 +0200
+@@ -323,7 +323,7 @@
+     mm_segment_t old_fs = get_fs();
+     int ret;
+ 
+-    set_fs(get_ds());
++    set_fs(KERNEL_DS);
+     ret = sockp->ops->setsockopt(sockp, level, name, val, len);
+     set_fs(old_fs);
+ 
