@@ -589,4 +589,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>20.04.3 release</comment>
     <requestid>820113</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>e59be4ae0e4bbb3c692c94ff4abe61c3</srcmd5>
+    <version>20.08.0</version>
+    <time>1597744521</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826332</requestid>
+  </revision>
 </revisionlist>

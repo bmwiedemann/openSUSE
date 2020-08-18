@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -30,7 +30,6 @@ Group:          System/GUI/KDE
 URL:            https://akonadi-project.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 Source99:       akonadi-server-rpmlintrc
-BuildRequires:  cmake >= 3.5.0
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
@@ -179,13 +178,9 @@ service.
     %find_lang %{name} --with-man --all-name
   %endif
 
-%post
-/sbin/ldconfig
-%mime_database_post
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%mime_database_postun
+%postun -p /sbin/ldconfig
 
 %post -n libKF5AkonadiWidgets5 -p /sbin/ldconfig
 %postun -n libKF5AkonadiWidgets5 -p /sbin/ldconfig
@@ -199,7 +194,7 @@ service.
 %postun -n libKF5AkonadiXml5 -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc AUTHORS
 %config %{_kf5_sysconfdir}/xdg/akonadi/mysql-global-mobile.conf
 %config %{_kf5_sysconfdir}/xdg/akonadi/mysql-global.conf
@@ -225,31 +220,31 @@ service.
 %{_kf5_debugdir}/akonadi.*categories
 
 %files -n libKF5AkonadiAgentBase5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiAgentBase.so.*
 
 %files -n libKF5AkonadiCore5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiCore.so.*
 
 %files -n libKF5AkonadiWidgets5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiWidgets.so.*
 
 %files -n libKF5AkonadiPrivate5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiPrivate.so.*
 
 %files -n libKF5AkonadiXml5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiXml.so.*
 
 %files sqlite
-%license COPYING*
+%license LICENSES/*
 %{_kf5_plugindir}/sqldrivers/
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_cmakedir}
 %{_kf5_bindir}/akonadi2xml
 %{_kf5_dbusinterfacesdir}/org.freedesktop.Akonadi.*.xml
@@ -275,7 +270,7 @@ service.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
