@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kleopatra
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        KDE Key Manager
 License:        GPL-2.0-or-later
@@ -54,8 +54,8 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Recommends:     paperkey
+Recommends:     %{name}-lang
 Obsoletes:      kleopatra5 < %{version}
 Provides:       kleopatra5 = %{version}
 %if %{with lang}
