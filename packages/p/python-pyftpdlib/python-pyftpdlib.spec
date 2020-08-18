@@ -18,8 +18,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Tests randomly fail: https://github.com/giampaolo/pyftpdlib/issues/386
-%bcond_with     test
 %bcond_without python2
 Name:           python-pyftpdlib
 Version:        1.5.6
@@ -29,10 +27,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/giampaolo/pyftpdlib/
 Source:         https://files.pythonhosted.org/packages/source/p/pyftpdlib/pyftpdlib-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pysendfile}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -66,11 +64,15 @@ write very asynchronous FTP servers with Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Note: Do not remove tests. Other packages import them
 
-%if %{with test}
 %check
+# Tests reported as randomly failing in 2016 against v1.5.0:
+# https://github.com/giampaolo/pyftpdlib/issues/386
+# If they re-occur, please update the issue with backtraces,
+# and disable only related tests.
 export PYTHONPATH=$PWD
-%python_exec pyftpdlib/test/runner.py
-%endif
+printf '[pytest]\naddopts = -rs -v -k "not (TestFtpStoreDataTLSMixin and test_rest_on_stor) and not (TestFtpStoreDataTLSMixin and test_stor_ascii)"' > pytest.ini
+# %%pytest des not work. The tests parse CLI args and fail if there are any unknown program args
+%python_exec -m pytest
 
 %post
 %python_install_alternative ftpbench
