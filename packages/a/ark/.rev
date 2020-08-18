@@ -1008,4 +1008,12 @@
   * 0001-Fix-vulnerability-to-path-traversal-attacks.patch</comment>
     <requestid>824154</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>2d738e842790ae63b47d3bcf025e1e85</srcmd5>
+    <version>20.08.0</version>
+    <time>1597744539</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826336</requestid>
+  </revision>
 </revisionlist>

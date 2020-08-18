@@ -1,8 +1,39 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:08:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Tue Aug  4 19:54:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Fix vulnerability to path traversal attacks
+- Drop 0001-Fix-vulnerability-to-path-traversal-attacks.patch,
+  Merged upstream
+
+-------------------------------------------------------------------
 Mon Aug  3 13:31:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to prevent directory traversal (boo#1174773, CVE-2020-16116)
   * 0001-Fix-vulnerability-to-path-traversal-attacks.patch
+
+-------------------------------------------------------------------
+Sun Jul 19 10:03:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 20.04.3:
+  * Minor fixes for Flathub submission
+  * Port to KIO::ApplicationLauncherJob
+  * clirar: Remove unnecessary QRegularExpression in readExtractLine()
+  * Optimize LoadJob::onNewEntry
+  * libarchive backend: display permissions in octal format
 
 -------------------------------------------------------------------
 Thu Jul  9 20:08:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
