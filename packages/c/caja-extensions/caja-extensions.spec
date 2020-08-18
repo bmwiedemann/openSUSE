@@ -18,7 +18,7 @@
 
 %define _version 1.24
 Name:           caja-extensions
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        Set of extensions for Caja, the MATE file manager
 License:        GPL-2.0-or-later
