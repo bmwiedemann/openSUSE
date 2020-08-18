@@ -17,16 +17,16 @@
 
 
 Name:           xtl
-Version:        0.6.13
+Version:        0.6.16
 Release:        0
 Summary:        The x template library
 License:        BSD-3-Clause
 URL:            https://github.com/xtensor-stack/xtl
 Source:         https://github.com/xtensor-stack/xtl/archive/%{version}.tar.gz#/xtl-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  cmake(nlohmann_json)
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
+BuildRequires:  cmake(nlohmann_json)
 
 %description
 Basic tools (containers, algorithms) used by other quantstack packages.
