@@ -1,7 +1,7 @@
 #
 # spec file for package yaics
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _version 0.5-2
-%define _rev    44979a56d9c659be68c10794cec501f29f5b942b
 Name:           yaics
-Version:        0.5.2
+Version:        0.6
 Release:        0
 Summary:        A simple GNU social client written in C++/Qt
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://gitlab.com/stigatle/yaics
-Source:         https://gitlab.com/stigatle/%{name}/repository/archive.tar.gz?ref=%{_version}#/%{name}-%{version}.tar.gz
+URL:            https://gitlab.com/stigatle/yaics
+Source:         https://gitlab.com/stigatle/yaics/-/archive/%{version}-1/yaics-%{version}-1.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -44,11 +42,11 @@ Yaics is a simple GNU social client written in C++ and Qt and
 licensed under the GNU GPL 3.0 (or later).
 
 %prep
-%setup -q -n %{name}-%{_version}-%{_rev}
+%setup -q -n %{name}-%{version}-1
 
 %build
 %qmake5 PREFIX=%{_prefix}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %qmake5_install
@@ -62,8 +60,8 @@ make %{?_smp_mflags} V=1
 %icon_theme_cache_postun
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/*.png
