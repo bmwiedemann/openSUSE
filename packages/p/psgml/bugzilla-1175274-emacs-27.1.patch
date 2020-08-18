@@ -1,0 +1,30 @@
+There is no (process-kill-without-query) anymore, use
+(set-process-query-on-exit-flag) instead.
+
+---
+ psgml-edit.el |    2 +-
+ psgml-jade.el |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- psgml-edit.el
++++ psgml-edit.el	2020-08-18 11:37:26.469311227 +0000
+@@ -1974,7 +1974,7 @@ characters in the current coding system.
+ 			   (process (start-process 
+ 				     (format "%s background" handler)
+ 				     nil handler file)))
+-		      (process-kill-without-query process))))
++		      (set-process-query-on-exit-flag process nil))))
+ 	      (error "Don't know how to handle notation '%s'." notation)))
+ 	   (text (progn
+        
+--- psgml-jade.el
++++ psgml-jade.el	2020-08-18 11:37:36.901126421 +0000
+@@ -347,7 +347,7 @@ by EXTENSION, if non-nil."
+     (erase-buffer)
+   (let ((process (start-process (concat name " background")
+ 				nil "/bin/sh" "-c" command)))
+-    (process-kill-without-query process))))
++    (set-process-query-on-exit-flag process nil))))
+   
+ (defun sgml-run-command (name command file error-regexp)
+   "Hook for `sgml-command-list'."

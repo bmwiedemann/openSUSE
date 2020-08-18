@@ -1,7 +1,7 @@
 #
 # spec file for package psgml
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,7 @@ Patch6:         tdtd-dtd-patch
 Patch7:         xxml-indentation.diff
 Patch8:         flavour.patch
 Patch9:         psgml-texinfo-6.7.patch
+Patch10:        bugzilla-1175274-emacs-27.1.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 URL:            http://sourceforge.net/projects/psgml/
@@ -102,6 +103,7 @@ cp -p %{SOURCE8} .
 cp -p %{S:9} .
 %patch -p 1 -P 6
 %patch8
+%patch10 -p0
 
 %build
 ./configure --prefix=%{_prefix} --infodir=%{_infodir}
