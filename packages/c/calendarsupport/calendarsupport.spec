@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           calendarsupport
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -36,6 +36,7 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)
 BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KF5AkonadiNotes)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Codecs)
