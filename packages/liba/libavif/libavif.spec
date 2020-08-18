@@ -16,12 +16,12 @@
 #
 
 
-%bcond_with aom
+%bcond_without aom
 
-%define lib_name libavif5
+%define lib_name libavif6
 
 Name:           libavif
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(rav1e)
 
 %if %{with aom}
-BuildRequires:  pkgconfig(aom) >= 1.1.0
+BuildRequires:  pkgconfig(aom) >= 2.0.0
 %endif
 
 %description

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 17 13:35:27 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.8.1
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+- Enabled AOM support (default)
+
+-------------------------------------------------------------------
 Tue Jul 21 06:05:19 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.8.0
