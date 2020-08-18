@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konqueror
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -138,6 +138,9 @@ Development package for the konqueror libraries.
 %dir %{_kf5_datadir}
 %dir %{_kf5_plugindir}
 %dir %{_kf5_servicesdir}
+%dir %{_kf5_sharedir}/konqsidebartng
+%dir %{_kf5_sharedir}/konqsidebartng/entries
+%dir %{_kf5_sharedir}/konqsidebartng/plugins
 %dir %{_kf5_sharedir}/kcontrol
 %dir %{_kf5_sharedir}/kcontrol/pics
 %dir %{_kf5_sharedir}/khtml
@@ -192,31 +195,56 @@ Development package for the konqueror libraries.
 %files -n konqueror-plugins
 %license COPYING*
 %{_kf5_bindir}/fsview
+%config %{_kf5_configdir}/konqsidebartngrc
+%{_kf5_debugdir}/akregatorplugin.categories
+%{_kf5_debugdir}/fsview.categories
 %{_kf5_plugindir}/fsviewpart.so
-%{_kf5_sharedir}/fsview/
 %{_kf5_iconsdir}/hicolor/*/apps/fsview.png
 %{_kf5_servicesdir}/fsview_part.desktop
+%{_kf5_libdir}/libkonqsidebarplugin.so.*
 %{_kf5_plugindir}/akregatorkonqfeedicon.so
 %{_kf5_plugindir}/babelfishplugin.so
 %{_kf5_plugindir}/khtmlsettingsplugin.so
 %{_kf5_plugindir}/dirfilterplugin.so
+%{_kf5_plugindir}/kcm_history.so
+%{_kf5_plugindir}/konq_sidebar.so
+%{_kf5_plugindir}/konqsidebar_bookmarks.so
+%{_kf5_plugindir}/konqsidebar_history.so
+%{_kf5_plugindir}/konqsidebar_places.so
+%{_kf5_plugindir}/konqsidebar_tree.so
 %{_kf5_plugindir}/konq_shellcmdplugin.so
 %{_kf5_plugindir}/autorefresh.so
 %{_kf5_plugindir}/kimgallery.so
 %{_kf5_plugindir}/searchbarplugin.so
+%{_kf5_plugindir}/uachangerplugin.so
 %{_kf5_iconsdir}/*/*/actions/imagegallery.png
 %{_kf5_iconsdir}/*/*/actions/babelfish.*
 %{_kf5_sharedir}/akregator/
+%{_kf5_sharedir}/konqsidebartng/entries/bookmarks.desktop
+%{_kf5_sharedir}/konqsidebartng/entries/fonts.desktop
+%{_kf5_sharedir}/konqsidebartng/entries/history.desktop
+%{_kf5_sharedir}/konqsidebartng/entries/home.desktop
+%{_kf5_sharedir}/konqsidebartng/entries/places.desktop
+%{_kf5_sharedir}/konqsidebartng/entries/remote.desktop
+%{_kf5_sharedir}/konqsidebartng/entries/root.desktop
+%{_kf5_sharedir}/konqsidebartng/entries/services.desktop
+%{_kf5_sharedir}/konqsidebartng/entries/settings.desktop
+%{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_bookmarks.desktop
+%{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_history.desktop
+%{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_places.desktop
+%{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_tree.desktop
 %{_kf5_sharedir}/khtml/kpartplugins/akregator_konqfeedicon.*
 %{_kf5_sharedir}/khtml/kpartplugins/plugin_babelfish.*
 %{_kf5_sharedir}/khtml/kpartplugins/plugin_translator.*
 %{_kf5_sharedir}/khtml/kpartplugins/autorefresh.*
 %{_kf5_sharedir}/khtml/kpartplugins/khtmlsettingsplugin.*
+%{_kf5_sharedir}/khtml/kpartplugins/uachangerplugin.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/akregator_konqfeedicon.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_babelfish.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_translator.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/autorefresh.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/khtmlsettingsplugin.*
+%{_kf5_sharedir}/kwebkitpart/kpartplugins/uachangerplugin.*
 %{_kf5_sharedir}/webenginepart/kpartplugins/akregator_konqfeedicon.desktop
 %{_kf5_sharedir}/webenginepart/kpartplugins/akregator_konqfeedicon.rc
 %{_kf5_sharedir}/webenginepart/kpartplugins/autorefresh.desktop
@@ -225,8 +253,12 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/webenginepart/kpartplugins/khtmlsettingsplugin.rc
 %{_kf5_sharedir}/webenginepart/kpartplugins/plugin_babelfish.rc
 %{_kf5_sharedir}/webenginepart/kpartplugins/plugin_translator.desktop
+%{_kf5_sharedir}/webenginepart/kpartplugins/uachangerplugin.*
 %{_kf5_servicesdir}/akregator_konqplugin.desktop
-%{_kf5_debugdir}/akregatorplugin.categories
+%{_kf5_servicesdir}/kcmhistory.desktop
+%{_kf5_servicesdir}/konq_sidebartng.desktop
+%dir %{_kf5_kxmlguidir}/fsview
+%{_kf5_kxmlguidir}/fsview/fsview_part.rc
 %config %{_kf5_configdir}/translaterc
 %dir %{_kf5_sharedir}/dolphinpart
 %{_kf5_sharedir}/dolphinpart/kpartplugins/
@@ -236,7 +268,9 @@ Development package for the konqueror libraries.
 #doc README
 %{_kf5_cmakedir}/KF5Konq/
 %{_kf5_libdir}/libKF5Konq.so
+%{_kf5_libdir}/libkonqsidebarplugin.so
 %{_kf5_includedir}/
+%{_includedir}/konqsidebarplugin.h
 
 %if %{with lang}
 %files lang -f %{name}.lang
