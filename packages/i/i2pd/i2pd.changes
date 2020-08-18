@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Aug 17 21:39:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.32.1:
+  - Read explicit peers in tunnels config
+  - Generation of tags for detached sessions
+  - Non-updating LeaseSet1
+  - Start when deprecated websocket options present in i2pd.conf
+  - Multiple encryption types for local destinations
+  - Next key and tagset for ECIES-X25519-AEAD-Ratchet
+  - NTCP2 through SOCKS proxy
+  - Throw error message if any port to bind is occupied
+  - gzip parameter for UDP tunnels
+  - Show ECIES-X25519-AEAD-Ratchet sessions and tags on the web console
+  - Simplified implementation of gzip for no compression mode
+  - Allow ECIES-X25519-AEAD-Ratchet session restart after 2 minutes
+  - Added logrotate config for rpm package
+  - Select peers for client tunnels among routers >= 0.9.36
+  - Check ECIES flag for encrypted lookup reply
+  - Streaming MTU size 1812 for ECIES-X25519-AEAD-Ratchet
+  - Don't calculate checksum for Data message send through ECIES-X25519-AEAD-Ratchet
+  - Catch network connectivity status for Windows
+  - Stop as soon as no more transit tunnels during graceful shutdown for Android
+  - RouterInfo gzip compression level depends on size
+  - Send response to received datagram from ECIES-X25519-AEAD-Ratchet session
+  - Update webconsole functional
+  - Increased max transit tunnels limit
+  - Reseeds list
+  - Dropped windows support in cmake
+  - Correct timestamp check for LeaseSet2
+  - Encrypted leaseset without authentication
+  - Change SOCKS proxy connection response for clients without socks5h support (#1336)
+
+-------------------------------------------------------------------
 Mon Apr 13 04:00:18 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.31.0:

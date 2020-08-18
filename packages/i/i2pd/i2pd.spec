@@ -1,7 +1,7 @@
 #
 # spec file for package i2pd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.31.0
+Version:        2.32.1
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause
 Group:          Productivity/Networking/System
-URL:            http://i2pd.website
+URL:            https://i2pd.website
 Source0:        https://github.com/PurpleI2P/i2pd/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         i2pd-2.19.0-apparmor.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libminiupnpc-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(zlib)
+Requires(pre):  shadow
+Suggests:       logrotate
+%{?systemd_requires}
 %if 0%{?suse_version} < 1500
 BuildRequires:  boost-devel
 %else
@@ -38,13 +45,6 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 %endif
-BuildRequires:  libminiupnpc-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libssl)
-BuildRequires:  pkgconfig(zlib)
-Suggests:       logrotate
-Requires(pre):  shadow
-%{?systemd_requires}
 
 %description
 The Invisible Internet Protocol (I2P) is a universal anonymous network layer. All
@@ -55,7 +55,7 @@ This package contains a C++ implementation of an I2P router.
 
 %prep
 %setup -q
-%patch0 -p2
+%patch0 -p1
 
 cp contrib/debian/i2pd.service i2pd.service.in
 cp contrib/debian/i2pd.tmpfile i2pd.tmpfile.in
@@ -71,7 +71,7 @@ pushd build
     -DWITH_LIBRARY=OFF \
     -DWITH_UPNP=ON \
     -DBUILD_SHARED_LIBS=OFF
-make -j1
+%make_build -j1
 popd
 
 %install
@@ -124,7 +124,8 @@ exit 0
 %service_del_postun %{name}.service
 
 %files
-%doc ChangeLog LICENSE README.md
+%license LICENSE
+%doc ChangeLog README.md
 %{_sbindir}/i2pd
 %dir %{_sysconfdir}/apparmor.d
 %config %{_sysconfdir}/apparmor.d/usr.sbin.i2pd
