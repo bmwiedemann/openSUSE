@@ -1,0 +1,14 @@
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+    <disk>
+      <size unit="G">5</size>
+    </disk>
+    </hardware>
+  </overwrite>
+</constraints>

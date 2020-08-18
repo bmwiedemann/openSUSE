@@ -137,10 +137,10 @@ Requires:       %{shlib} = %{version}
 Requires:       hdf5-devel
 Requires:       lapack-devel
 Requires:       libboost_python3-devel
+Requires:       readline-devel
 Requires:       pkgconfig(cfitsio)
 Requires:       pkgconfig(fftw3)
 Requires:       pkgconfig(ncurses)
-Requires:       readline-devel
 Requires:       pkgconfig(wcslib)
 
 %description devel
