@@ -1,7 +1,7 @@
 #
 # spec file for package pamixer
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Dakota Williams <raineforest@raineforest.me>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pamixer
-Version:        1.3.1
+Version:        1.4
 Release:        0
 Summary:        PulseAudio commandline mixer
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Mixers
-Url:            https://github.com/cdemoulins/pamixer
+URL:            https://github.com/cdemoulins/pamixer
 Source0:        https://github.com/cdemoulins/pamixer/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_program_options-devel
@@ -39,7 +39,7 @@ of the sinks.
 
 %build
 export CXXFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
