@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jul 24 06:52:07 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.5.0: 
+  * [docs] fix broken links, add new links, fix typos, add templates
+  * [tx] many fixes related to uninitialized variables, buffer/stack overflows,
+    etc.
+  * [makeotf] Drop Multiple Master in OpenType support
+  * [checkoutlinesufo] Improve overlap removal
+  * [fontsetplot, ttfdecomponentizer] Fix proofing issues
+  * [requirements] remove dependency on standalone cu2qu (integrated into
+    fontTools 4.7.0)
+  * [makeinstancesufo] fix `use-varlib` flag, check for extrapolation/warn when
+    using varLib
+  * [makeotf] update a misleading comment regarding how CodePageRange bits are
+    set
+  * [sfntedit, sfntdiff] fix failures with long file/pathnames
+  * [tx] don't write FontMatrix in CFF2 FontDict
+  * [makeotf, makeotfexe] STAT table updates and improvements
+  * [makeotf] Check for PostScript name in FontMenuNameDB
+  * [autohint, stemhist] **REMOVED FROM AFDKO** (use psautohint/psstemhist)
+  * [makeotfexe] fix stack buffer overflow and use-after-free issues
+  * [mergefonts] fix stack buffer overflow issue
+  * [spot] fix heap buffer overflow issue
+- Update BuildRequires/Requires
+- No longer install 2 removed binaries
+
+-------------------------------------------------------------------
 Fri Jun 12 13:44:19 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to skip tests that fail in i586. See

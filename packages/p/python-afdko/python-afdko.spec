@@ -27,11 +27,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-afdko%{psuffix}
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Adobe Font Development Kit for OpenType
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/adobe-type-tools/afdko
 Source:         https://files.pythonhosted.org/packages/source/a/afdko/afdko-%{version}.tar.gz
 Patch0:         skip-tests-failing-on-i586.patch
@@ -41,14 +40,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-FontTools >= 4.10.2
+Requires:       python-FontTools >= 4.13.0
 Requires:       python-booleanOperations >= 0.9.0
-Requires:       python-cu2qu >= 1.6.7
-Requires:       python-defcon >= 0.6.0
+Requires:       python-defcon >= 0.7.2
 Requires:       python-fontMath >= 0.6.0
-Requires:       python-lxml >= 4.5.1
+Requires:       python-lxml >= 4.5.2
 Requires:       python-mutatorMath >= 3.0.1
-Requires:       python-psautohint >= 2.0.1
+Requires:       python-psautohint >= 2.1.0
 Requires:       python-ufoProcessor >= 1.9.0
 Requires:       python-ufonormalizer >= 0.4.1
 Requires:       python-zopfli >= 0.1.4
@@ -59,15 +57,14 @@ Provides:       adobe-afdko
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Brotli >= 1.0.1}
-BuildRequires:  %{python_module FontTools >= 4.8.1}
+BuildRequires:  %{python_module FontTools >= 4.13.0}
 BuildRequires:  %{python_module afdko}
 BuildRequires:  %{python_module booleanOperations >= 0.9.0}
-BuildRequires:  %{python_module cu2qu >= 1.6.7}
-BuildRequires:  %{python_module defcon >= 0.6.0}
+BuildRequires:  %{python_module defcon >= 0.7.2}
 BuildRequires:  %{python_module fontMath >= 0.6.0}
-BuildRequires:  %{python_module lxml >= 4.5.1}
+BuildRequires:  %{python_module lxml >= 4.5.2}
 BuildRequires:  %{python_module mutatorMath >= 3.0.1}
-BuildRequires:  %{python_module psautohint >= 2.0.1}
+BuildRequires:  %{python_module psautohint >= 2.1.0}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ufoProcessor >= 1.9.0}
@@ -100,9 +97,9 @@ export TMPDIR=tmp
 mv %{buildroot}%{_bindir}/tx  %{buildroot}%{_bindir}/afdko-tx
 
 for binary in detype1 makeotfexe mergefonts rotatefont sfntdiff sfntedit \
-              spot afdko-tx type1 autohint buildcff2vf buildmasterotfs \
+              spot afdko-tx type1 buildcff2vf buildmasterotfs \
               comparefamily checkoutlinesufo makeotf makeinstancesufo \
-              otc2otf otf2otc otf2ttf stemhist ttfcomponentizer \
+              otc2otf otf2otc otf2ttf ttfcomponentizer \
               ttfdecomponentizer ttxn charplot digiplot fontplot \
               fontplot2 fontsetplot hintplot waterfallplot ; do
    %python_clone -a %{buildroot}%{_bindir}/$binary
@@ -114,18 +111,18 @@ ln -s -f %{_sysconfdir}/alternatives/tx %{buildroot}%{_bindir}/tx
 
 %post
 %{python_install_alternative makeotf detype1 makeotfexe mergefonts rotatefont
-  sfntdiff sfntedit spot afdko-tx type1 autohint buildcff2vf buildmasterotfs
+  sfntdiff sfntedit spot afdko-tx type1 buildcff2vf buildmasterotfs
   comparefamily checkoutlinesufo makeinstancesufo otc2otf otf2otc otf2ttf
-  stemhist ttfcomponentizer ttfdecomponentizer ttxn charplot digiplot
+  ttfcomponentizer ttfdecomponentizer ttxn charplot digiplot
   fontplot fontplot2 fontsetplot hintplot waterfallplot}
 
 %{_sbindir}/update-alternatives --install %{_bindir}/tx tx %{_bindir}/afdko-tx 20
 
 %postun
 %{python_uninstall_alternative makeotf detype1 makeotfexe mergefonts rotatefont
-  sfntdiff sfntedit spot afdko-tx type1 autohint buildcff2vf buildmasterotfs
+  sfntdiff sfntedit spot afdko-tx type1 buildcff2vf buildmasterotfs
   comparefamily checkoutlinesufo makeinstancesufo otc2otf otf2otc otf2ttf
-  stemhist ttfcomponentizer ttfdecomponentizer ttxn charplot digiplot
+  ttfcomponentizer ttfdecomponentizer ttxn charplot digiplot
   fontplot fontplot2 fontsetplot hintplot waterfallplot}
 
 if [ ! -e %{_bindir}/afdko-tx ] ; then
@@ -146,7 +143,6 @@ fi
 %python_alternative %{_bindir}/spot
 %python_alternative %{_bindir}/afdko-tx
 %python_alternative %{_bindir}/type1
-%python_alternative %{_bindir}/autohint
 %python_alternative %{_bindir}/buildcff2vf
 %python_alternative %{_bindir}/buildmasterotfs
 %python_alternative %{_bindir}/comparefamily
@@ -156,7 +152,6 @@ fi
 %python_alternative %{_bindir}/otc2otf
 %python_alternative %{_bindir}/otf2otc
 %python_alternative %{_bindir}/otf2ttf
-%python_alternative %{_bindir}/stemhist
 %python_alternative %{_bindir}/ttfcomponentizer
 %python_alternative %{_bindir}/ttfdecomponentizer
 %python_alternative %{_bindir}/ttxn
