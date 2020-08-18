@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-apps-libs
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -95,30 +95,17 @@ The development package for the kdepim-apps-libs libraries
 %license COPYING*
 %{_kf5_includedir}/
 %{_kf5_cmakedir}/KF5KaddressbookImportExport/
-%{_kf5_libdir}/cmake/KF5FollowupReminder/
 %{_kf5_libdir}/cmake/KF5KaddressbookGrantlee/
-%{_kf5_libdir}/cmake/KF5KdepimDBusInterfaces/
-%{_kf5_libdir}/cmake/KF5SendLater/
-%{_kf5_libdir}/libKF5FollowupReminder.so
 %{_kf5_libdir}/libKF5KaddressbookGrantlee.so
 %{_kf5_libdir}/libKF5KaddressbookImportExport.so
-%{_kf5_libdir}/libKF5KdepimDBusInterfaces.so
-%{_kf5_libdir}/libKF5SendLater.so
-%{_kf5_mkspecsdir}/qt_FollowupReminder.pri
 %{_kf5_mkspecsdir}/qt_KaddressbookGrantlee.pri
 %{_kf5_mkspecsdir}/qt_KaddressbookImportExport.pri
-%{_kf5_mkspecsdir}/qt_KdepimDBusInterfaces.pri
-%{_kf5_mkspecsdir}/qt_SendLater.pri
 
 %files
 %license COPYING*
 %{_kf5_debugdir}/kdepim-apps-lib.categories
-%{_kf5_debugdir}/kdepim-apps-lib.renamecategories
-%{_kf5_libdir}/libKF5FollowupReminder.so.*
 %{_kf5_libdir}/libKF5KaddressbookGrantlee.so.*
 %{_kf5_libdir}/libKF5KaddressbookImportExport.so.*
-%{_kf5_libdir}/libKF5KdepimDBusInterfaces.so.*
-%{_kf5_libdir}/libKF5SendLater.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang

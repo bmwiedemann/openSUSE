@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:08:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Readd KF5KIO check it seems that it creates configure pb
+  * Drop no longer needed dependencies
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 20.04.3:
+  * Kill libKF5SendLater library
+  * Kill libKF5FollowupReminder library
+  * Remove the now unused KdepimDBusInterface library
+  * Fix includes. Use uppercase includes
+  * Fix includes
+
+-------------------------------------------------------------------
 Thu Jul  9 20:09:19 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
