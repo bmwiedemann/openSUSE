@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 11 08:24:15 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200811.7a216cd0:
+  * fix tests
+  * repoid monitor: monitoring events from openSUSE:Jump
+  * gocd: remove Leap config and enable Jump project to pipeline if needed
+  * conf: general config for openSUSE Jump
+  * TTM: enable Jump project on totest manager and remove old main project
+
+-------------------------------------------------------------------
+Tue Aug 11 08:21:38 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200811.41fe9c2f:
+  * Add MicroOSNG setup
+
+-------------------------------------------------------------------
+Mon Aug 10 08:00:21 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200810.6e220f02:
+  * Remove SLE-15-SP2 setup
+
+-------------------------------------------------------------------
 Thu Jul 16 12:47:26 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200716.558f783b:
