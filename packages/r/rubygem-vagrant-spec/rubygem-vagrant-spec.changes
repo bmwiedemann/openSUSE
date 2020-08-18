@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 17 16:32:16 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Update to fe62938
+
+  * Run workflow on ubuntu image
+  * Update common.sh ci script
+  * Remove childprocess constraint
+  * Add a scenario for rebooting with provisioner
+  * Test: guest can write back to default synced folder
+  * Test synced folder persists after guest reboot
+  * Just load common.sh
+
+-------------------------------------------------------------------
 Thu May  7 12:11:06 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Update to 148cb63
