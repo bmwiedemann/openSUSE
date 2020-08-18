@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-img2pdf
-Version:        0.3.4
+Version:        0.4.0
 Release:        0
 Summary:        Python module for converting images to PDF via direct JPEG inclusion
 License:        LGPL-3.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
 Requires:       python-pdfrw
+Requires:       python-pikepdf
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -39,6 +40,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pdfrw}
+BuildRequires:  %{python_module pikepdf}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

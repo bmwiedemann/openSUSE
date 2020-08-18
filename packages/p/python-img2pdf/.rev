@@ -61,4 +61,25 @@
     <comment></comment>
     <requestid>808787</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7aff401daab4263ac55569feaced996a</srcmd5>
+    <version>0.4.0</version>
+    <time>1597756223</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0:
+   - replace --without-pdfrw by --engine=internal or --engine=pdfrw
+   - add pikepdf as additional rendering engine and add --engine=pikepdf
+   - support for creating PDF/A-1b compliant PDF using the --pdfa option
+     (this also requires the presence of an ICC profile somewhere on the system)
+   - support for images with embedded ICC profile as input
+   - rewrite tests
+      * use pytest via tox
+      * use pikepdf instead of pdfrw
+      * use imagemagick json output instead of identify -verbose
+   - format all code with black
+   - fix tests for Fedora on arm64
+   - remove all Python 2 support
+   - disable pdfrw by default</comment>
+    <requestid>827038</requestid>
+  </revision>
 </revisionlist>
