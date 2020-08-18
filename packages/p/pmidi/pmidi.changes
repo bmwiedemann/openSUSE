@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 17 20:16:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * Fixes a bug reported to debian from the mayhem project.
+  * Some minor compilation warnings and man page fix.
+
+-------------------------------------------------------------------
 Mon Sep 23 15:11:29 UTC 2013 - stephan.barth@suse.com
 
 - update to version 1.7.0. This is mainly a bugfix release.

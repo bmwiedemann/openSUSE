@@ -1,7 +1,7 @@
 #
 # spec file for package pmidi
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,49 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pmidi
+Version:        1.7.1
+Release:        0
+Summary:        A Command Line MIDI Player for ALSA
+License:        GPL-2.0-only
+Group:          Productivity/Multimedia/Sound/Midi
+URL:            http://www.parabola.demon.co.uk/alsa/pmidi.html
+Source:         https://sourceforge.net/projects/pmidi/files/pmidi/%{version}/pmidi-%{version}.tar.gz
 BuildRequires:  alsa-devel
 BuildRequires:  automake
-Summary:        A Command Line MIDI Player for ALSA
-License:        GPL-2.0
-Group:          Productivity/Multimedia/Sound/Midi
-Version:        1.7.0
-Release:        0
-Source:         pmidi-%{version}.tar.gz
-Url:            http://www.parabola.demon.co.uk/alsa/pmidi.html
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 pmidi is a command line MIDI player for ALSA.
 
-
-
-Authors:
---------
-    Steve Ratcliffe <steve@parabola.demon.co.uk>
-
 %prep
-%setup
+%setup -q
 
 %build
 autoreconf -fi
 %configure --with-included-glib
-make
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-
-%clean
-[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
+%make_install
 
 %files
-%defattr(-,root,root)
 %{_bindir}/*
-%doc AUTHORS COPYING ChangeLog NEWS README
-%doc %{_mandir}/man*/*
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
+%{_mandir}/man*/*
 
 %changelog

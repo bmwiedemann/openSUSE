@@ -116,4 +116,14 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4d4b1f6541e04ba40c6f6593bd92f328</srcmd5>
+    <version>1.7.1</version>
+    <time>1597744852</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * Fixes a bug reported to debian from the mayhem project.
+  * Some minor compilation warnings and man page fix.</comment>
+    <requestid>827418</requestid>
+  </revision>
 </revisionlist>
