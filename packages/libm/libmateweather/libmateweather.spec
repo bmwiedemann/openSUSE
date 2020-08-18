@@ -19,7 +19,7 @@
 %define sover   1
 %define _version 1.24
 Name:           libmateweather
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        MATE Weather
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

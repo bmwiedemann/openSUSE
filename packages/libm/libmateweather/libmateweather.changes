@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * locations: Update cities in Thailand.
+  * po-locations: Upgrade extract.xsl after migrating to gettext.
+  * Revert "avoid deprecated soup_session_async_new".
+  * Locations: America/Godthab was renamed to America/Nuuk.
+  * build: Silent build warnings for distcheck.
+  * build: Use default MATE_COMPILE_WARNINGS level.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0:
