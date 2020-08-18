@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  3 06:54:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.0:
+  Language:
+  * Added support for Docker File
+  * Added support for Jupyter Notebooks
+  New feature:
+  * Add exclude OPTION (#178)
+  Misc:
+  * Accept LICENCE... as license file name
+  * Better descriptions for flags and options
+  * Remove Bright Colors (#179)
+
+-------------------------------------------------------------------
 Wed Apr 22 08:10:55 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add GPL-2.0-only (zstd dependency)

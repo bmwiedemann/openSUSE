@@ -17,13 +17,13 @@
 
 
 Name:           onefetch
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Git repository summary on your terminal
 License:        MIT AND GPL-2.0-only
 Group:          System/X11/Terminals
 URL:            https://github.com/o2sh/onefetch
-Source0:        https://github.com/o2sh/onefetch/archive/v2.2.0.tar.gz
+Source0:        https://github.com/o2sh/onefetch/archive/v%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  cargo
 BuildRequires:  rust
