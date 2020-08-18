@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           libkdepim
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -101,7 +101,6 @@ Summary:        Development package for libkdepim
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 Requires:       libKF5Libkdepim5 = %{version}
-Requires:       libKF5LibkdepimAkonadi5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5AkonadiContact)
 
@@ -111,18 +110,12 @@ The development package for the libkdepim libraries
 %files devel
 %license COPYING*
 %{_kf5_cmakedir}/KF5Libkdepim/
-%{_kf5_cmakedir}/KF5LibkdepimAkonadi/
 %{_kf5_cmakedir}/MailTransportDBusService/
 %{_kf5_includedir}/Libkdepim/
-%{_kf5_includedir}/LibkdepimAkonadi/
 %{_kf5_includedir}/libkdepim/
 %{_kf5_includedir}/libkdepim_version.h
-%{_kf5_includedir}/libkdepimakonadi/
-%{_kf5_includedir}/libkdepimakonadi_version.h
 %{_kf5_libdir}/libKF5Libkdepim.so
-%{_kf5_libdir}/libKF5LibkdepimAkonadi.so
 %{_kf5_mkspecsdir}/qt_Libkdepim.pri
-%{_kf5_mkspecsdir}/qt_LibkdepimAkonadi.pri
 
 %files
 %license COPYING*
@@ -131,17 +124,10 @@ The development package for the libkdepim libraries
 %{_kf5_dbusinterfacesdir}/org.kde.addressbook.service.xml
 %{_kf5_dbusinterfacesdir}/org.kde.mailtransport.service.xml
 %{_kf5_plugindir}/designer/
-%{_kf5_plugindir}/kcm_ldap.so
-%{_kf5_servicesdir}/kcmldap.desktop
-%{_kf5_sharedir}/kdepimwidgets/
 
 %files -n libKF5Libkdepim5
 %license COPYING*
 %{_kf5_libdir}/libKF5Libkdepim.so.*
-
-%files -n libKF5LibkdepimAkonadi5
-%license COPYING*
-%{_kf5_libdir}/libKF5LibkdepimAkonadi.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
