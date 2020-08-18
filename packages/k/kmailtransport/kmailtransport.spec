@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmailtransport
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
@@ -104,7 +104,7 @@ to develop KDE PIM applications.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_configkcfgdir}
 %{_kf5_debugdir}/kmailtransport.categories
 %{_kf5_debugdir}/kmailtransport.renamecategories
@@ -115,15 +115,15 @@ to develop KDE PIM applications.
 %{_kf5_servicesdir}/kcm_mailtransport.desktop
 
 %files -n libKF5MailTransport5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5MailTransport.so.5*
 
 %files -n libKF5MailTransportAkonadi5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5MailTransportAkonadi.so.5*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5MailTransport/
 %{_kf5_includedir}/MailTransport/
 %{_kf5_includedir}/MailTransportAkonadi/
@@ -139,7 +139,7 @@ to develop KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
