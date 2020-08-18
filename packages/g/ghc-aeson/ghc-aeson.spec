@@ -19,7 +19,7 @@
 %global pkg_name aeson
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.2.0
+Version:        1.5.3.0
 Release:        0
 Summary:        Fast JSON parsing and encoding
 License:        BSD-3-Clause
@@ -30,12 +30,14 @@ BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-base-compat-batteries-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-data-fix-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-dlist-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
+BuildRequires:  ghc-strict-devel
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
