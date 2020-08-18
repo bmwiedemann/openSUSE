@@ -18,14 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-textX
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Meta-language for DSL implementation inspired by Xtext
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://textx.github.io/textX/stable/
 Source:         https://github.com/igordejanovic/textX/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_tests_setupcfg.path -- based on https://github.com/textX/textX/pull/272.patch without changelog
+Patch0:         fix_tests_setupcfg.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Arpeggio >= 1.9.0
@@ -62,6 +65,7 @@ ambiguities, unlimited lookahead, interpreter style of work.
 sed -i '0,/#!\/usr\/bin\/env/ d' examples/hello_world/hello.py
 # do not hardcode deps
 sed -i -e 's:click==:click>=:g' setup.py
+%patch0 -p1
 
 %build
 %python_build
@@ -98,6 +102,7 @@ popd
 pushd tests/functional/registration/projects/flow_codegen
 %python_install
 popd
+%python_expand install -m 0644 textx/textx.tx %{buildroot}%{$python_sitelib}/textx/
 %python_clone -a %{buildroot}%{_bindir}/textx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/textx
 

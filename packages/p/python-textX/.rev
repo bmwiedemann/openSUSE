@@ -123,4 +123,41 @@
     <comment></comment>
     <requestid>806971</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>64ed54be376dcb8006dfe17057927def</srcmd5>
+    <version>2.2.0</version>
+    <time>1597755931</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.2.0:
+ - Added:
+  - Initial docs for Jinja code generator support (from
+    [textX-jinja](https://github.com/textX/textX-jinja)) ([#264]).
+  - Analyzing grammars programmatically as plain textX models
+    (`grammar_model_from_str/file`) ([#235])
+  - Initial `startproject` scaffolding (from
+    [textX-dev](https://github.com/textX/textX-dev)) docs ([#234])
+  - Generator helper functions `get_output_filename` and `gen_file` ([#233])
+  - `textx version` command ([#219])
+  - Versions for languages/packages in `list-languages` and `list-generators`
+    commands ([#228])
+  - Added the ability to specify extra parameters during `model_from_file` or
+    `model_from_str` and to define which extra parameters exist in the
+    meta-model ([#243]).
+ - Fixed:
+  - Fixed several instances of invalid truthiness checking. Thanks
+    markusschmaus@GitHub ([#250])
+  - Fixed applying multiple grammar rule modifiers ([#246])
+  - Fixed exception on calling `check` CLI command with relative path name.
+  - Fixed return value of textx generate and check commands: we return a failure
+    on error now ([#222])
+  - Fixed type checking for references to builtin elements ([#218])
+ - Changed:
+  - User classes can now be immutable (e.g. `attr.frozen`) or can use
+    `__slots__`. Thanks markusschmaus@GitHub ([#256, #260, #261])
+  - Cleanup of setup configuration and install scripts [#231]
+  - Dot/PlantUML rendering of meta-models: remove rendering of base types,
+    improve rendering of required/optional, render match rules as a single
+    table. ([#225])</comment>
+    <requestid>825373</requestid>
+  </revision>
 </revisionlist>
