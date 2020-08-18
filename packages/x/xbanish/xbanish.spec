@@ -1,7 +1,7 @@
 #
 # spec file for package xbanish
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xbanish
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Program to hide the mouse cursor when typing
 License:        BSD-3-Clause
