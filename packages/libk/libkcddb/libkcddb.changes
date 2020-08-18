@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:10:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Sun Aug  2 08:00:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * fix tests: they have increased the version of this cd
+  * CDDB::statusCode: Don't crash if tokenlist is empty (kde#424646)
+
+-------------------------------------------------------------------
+Sun Jul 19 10:05:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 20.04.3:
+  * activated signal of QComboBox is overloaded, wrap it in QOverloaded
+  * Remove the KF5CddbWidgets library
+  * Modernize connect syntax
+
+-------------------------------------------------------------------
 Thu Jul  9 20:10:46 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3

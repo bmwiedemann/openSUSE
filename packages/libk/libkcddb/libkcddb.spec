@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkcddb
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
@@ -60,7 +60,6 @@ Summary:        Development files for KDE CDDB library
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libKF5Cddb5 = %{version}
-Requires:       libKF5CddbWidgets5 = %{version}
 Obsoletes:      libkcddb5-devel < %{version}
 Provides:       libkcddb5-devel = %{version}
 
@@ -76,13 +75,6 @@ Recommends:     %{name}
 The KDE Compact Disc DataBase library provides an API for
 applications to fetch and submit audio CD
 information over the Internet.
-
-%package -n libKF5CddbWidgets5
-Summary:        CDDB widgets library for KDE Applications
-Group:          System/Libraries
-
-%description -n libKF5CddbWidgets5
-This package includes the libkcddb widgets library.
 
 %lang_package
 
@@ -102,8 +94,6 @@ This package includes the libkcddb widgets library.
 
 %post -n libKF5Cddb5   -p /sbin/ldconfig
 %postun -n libKF5Cddb5 -p /sbin/ldconfig
-%post -n libKF5CddbWidgets5   -p /sbin/ldconfig
-%postun -n libKF5CddbWidgets5 -p /sbin/ldconfig
 
 %files
 %license COPYING*
@@ -118,17 +108,12 @@ This package includes the libkcddb widgets library.
 %license COPYING*
 %{_kf5_libdir}/libKF5Cddb.so.*
 
-%files -n libKF5CddbWidgets5
-%license COPYING*
-%{_kf5_libdir}/libKF5CddbWidgets.so.*
-
 %files devel
 %license COPYING*
 %{_kf5_cmakedir}/KF5Cddb/
 %{_kf5_includedir}/KCddb
 %{_kf5_includedir}/kcddb_version.h
 %{_kf5_libdir}/libKF5Cddb.so
-%{_kf5_libdir}/libKF5CddbWidgets.so
 %{_kf5_mkspecsdir}/qt_KCddb.pri
 
 %if %{with lang}
