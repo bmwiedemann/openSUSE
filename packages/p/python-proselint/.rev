@@ -63,4 +63,17 @@
     <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
     <requestid>800653</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>04bceead3c7ce4e495cd16d2680d943f</srcmd5>
+    <version>0.10.2</version>
+    <time>1597756229</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace the sed command from the previous commit with
+  the proper patch remove_nose.patch and send it upstream
+  (gh#amperser/proselint#1097).
+- Replace unittest+nose with pytest
+- Tidy spec
+</comment>
+    <requestid>827089</requestid>
+  </revision>
 </revisionlist>

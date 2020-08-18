@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 16 17:49:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace the sed command from the previous commit with
+  the proper patch remove_nose.patch and send it upstream
+  (gh#amperser/proselint#1097).
+
+-------------------------------------------------------------------
+Sun Aug 16 16:47:49 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace unittest+nose with pytest
+- Tidy spec
+
+-------------------------------------------------------------------
 Wed May  6 09:49:35 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.
