@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           pimcommon
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -33,6 +33,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  libxslt-devel
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiContact)
+BuildRequires:  cmake(KF5AkonadiSearch)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Completion)
@@ -45,7 +46,9 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IMAP)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Ldap)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5NewStuff)
