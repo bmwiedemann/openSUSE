@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krdc
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
@@ -111,7 +111,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_servicesdir}/krdc_vnc_config.desktop
 %{_kf5_servicesdir}/rdp.protocol
 %{_kf5_servicesdir}/vnc.protocol
-%{_kf5_sharedir}/krdc/
 %{_kf5_appstreamdir}/org.kde.krdc.appdata.xml
 
 %files devel
