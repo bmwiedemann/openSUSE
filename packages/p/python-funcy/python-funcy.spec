@@ -1,7 +1,7 @@
 #
 # spec file for package python-funcy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-funcy
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Functional tools for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/Suor/funcy
+URL:            https://github.com/Suor/funcy
 Source:         https://files.pythonhosted.org/packages/source/f/funcy/funcy-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
