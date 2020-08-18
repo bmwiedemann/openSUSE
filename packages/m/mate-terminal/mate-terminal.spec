@@ -18,13 +18,14 @@
 
 %define _version 1.24
 Name:           mate-terminal
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        MATE Desktop terminal emulator
 License:        GPL-3.0-or-later
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  mate-common >= %{_version}
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools

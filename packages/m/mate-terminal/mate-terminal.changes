@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * build: Silent build warnings for distcheck.
+  * build: Do not override the default value for
+    MATE_COMPILE_WARNINGS.
+  * Fix searching in terminal window.
+  * Fix url highlighting due to deprecation of
+    vte_terminal_match_add_gregex.
+  * terminal-screen: Prevent a crash on bad term spawn due to
+    redundant frees.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.0):
