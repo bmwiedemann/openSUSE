@@ -18,7 +18,7 @@
 
 %define _version 1.24
 Name:           mate-applets
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        A set of applets for the MATE Desktop
 License:        GFDL-1.1-only AND GPL-2.0-or-later

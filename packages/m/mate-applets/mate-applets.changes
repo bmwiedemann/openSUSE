@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * battstat: Fix memory leak.
+  * charpick: Fix memory leak.
+  * multiload: Fix memory leak.
+  * build: silent build warnings for distcheck.
+  * cpufreq: generate missing 256x256 and 64x64 icons from svg
+    file.
+  * eyes: generate missing 256x256 and 64x64 icons from svg file.
+  * netspeed: don't define MATELOCALEDIR.
+  * build: drop unused matelocaledir variable.
+  * drivemount: Remove global variable.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.0):
