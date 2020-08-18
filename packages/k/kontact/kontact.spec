@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontact
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KontactInterface)
 BuildRequires:  cmake(KF5Libkdepim)
+BuildRequires:  cmake(KF5PimCommonAkonadi)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5DBus)
