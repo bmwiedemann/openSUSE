@@ -22,7 +22,7 @@
 %define sover_slab 0
 %define _version 1.24
 Name:           mate-control-center
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        MATE Desktop control center
 License:        GPL-2.0-or-later

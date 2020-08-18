@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * mate-theme-info: Use of memory after it is freed.
+  * build: Silent build warnings for distcheck.
+  * Use default MATE_COMPILE_WARNINGS level.
+  * Port libslab_handle_g_error to the built-in GLib logging
+    framework.
+  * mate-about-me: Fix memory leak.
+  * appearance: Fix memory leak.
+  * Do not collect the translation for Icon.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.1):
