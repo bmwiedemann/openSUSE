@@ -396,13 +396,21 @@ unsorted:
   - akka 
   - akka-javadoc 
   - akonadi-calendar-devel 
+  - akonadi-calendar-tools: [i586] 
+  - akonadi-calendar-tools-lang: [i586] 
   - akonadi-contact-devel 
+  - akonadi-import-wizard: [i586] 
   - akonadi-import-wizard-devel 
+  - akonadi-import-wizard-lang: [i586] 
   - akonadi-mime-devel 
   - akonadi-notes-devel 
+  - akonadi-search: [i586] 
   - akonadi-search-devel 
+  - akonadi-search-lang: [i586] 
   - akonadi-server-devel 
   - akonadiconsole 
+  - akregator: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - akregator-lang: [i586] 
   - alac 
   - alac-devel 
   - alacarte 
@@ -1535,7 +1543,9 @@ unsorted:
   - calc-devel 
   - calcurse 
   - calcurse-lang 
+  - calendarsupport: [i586] 
   - calendarsupport-devel 
+  - calendarsupport-lang: [i586] 
   - calibre 
   - calligra 
   - calligra-devel 
@@ -2948,7 +2958,9 @@ unsorted:
   - evemu-devel 
   - eventstat 
   - eventstat-bash-completion 
+  - eventviews: [i586] 
   - eventviews-devel 
+  - eventviews-lang: [i586] 
   - evieproto-devel 
   - evince-devel 
   - evince-plugin-psdocument 
@@ -4586,6 +4598,8 @@ unsorted:
   - ghc-store-core-devel 
   - ghc-streaming-commons 
   - ghc-streaming-commons-devel 
+  - ghc-strict 
+  - ghc-strict-devel 
   - ghc-syb 
   - ghc-syb-devel 
   - ghc-system-fileio 
@@ -6241,7 +6255,9 @@ unsorted:
   - imv 
   - imwheel 
   - imx-usb-loader 
+  - incidenceeditor: [i586] 
   - incidenceeditor-devel 
+  - incidenceeditor-lang: [i586] 
   - include-what-you-use 
   - include-what-you-use-tools 
   - indent 
@@ -7033,6 +7049,8 @@ unsorted:
   - kdelibs4support-devel-32bit: [x86_64] 
   - kdenlive 
   - kdenlive-lang 
+  - kdepim-addons: [i586] 
+  - kdepim-addons-lang: [i586] 
   - kdepim-apps-libs-devel 
   - kdesdk-scripts 
   - kdesdk-scripts-kf5-porting 
@@ -7241,6 +7259,7 @@ unsorted:
   - kitemviews-devel 
   - kitemviews-devel-32bit: [x86_64] 
   - kiten-devel 
+  - kitinerary: [i586] 
   - kitinerary-devel 
   - kitty 
   - kiwi-boot-descriptions 
@@ -7278,6 +7297,11 @@ unsorted:
   - klftools-devel 
   - klickety 
   - klickety-lang 
+  - kmail: [i586] 
+  - kmail-account-wizard: [i586] 
+  - kmail-account-wizard-lang: [i586] 
+  - kmail-application-icons: [i586] 
+  - kmail-lang: [i586] 
   - kmailtransport-devel 
   - kmarkdownwebview 
   - kmarkdownwebview-lang 
@@ -7350,6 +7374,8 @@ unsorted:
   - kopano-webapp-webappmanual 
   - kopano-webapp-zdeveloper 
   - kopete-devel 
+  - korganizer: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - korganizer-lang: [i586] 
   - kpackage-32bit: [x86_64] 
   - kpackage-devel 
   - kpackage-devel-32bit: [x86_64] 
@@ -7364,6 +7390,7 @@ unsorted:
   - kphotoalbum 
   - kphotoalbum-lang 
   - kpimtextedit-devel 
+  - kpkpass: [i586] 
   - kpkpass-devel 
   - kplotting-devel 
   - kplotting-devel-32bit: [x86_64] 
@@ -7379,7 +7406,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -7430,7 +7456,9 @@ unsorted:
   - ktextwidgets-devel-32bit: [x86_64] 
   - ktimetracker 
   - ktimetracker-lang 
+  - ktnef: [i586] 
   - ktnef-devel 
+  - ktnef-lang: [i586] 
   - ktoblzcheck 
   - ktoblzcheck-devel 
   - ktorrent 
@@ -7561,6 +7589,7 @@ unsorted:
   - ladspa-zam-plugins 
   - laf-plugin 
   - laf-plugin-javadoc 
+  - lal-devel 
   - lame-doc 
   - lame-mp3rtp 
   - lammps 
@@ -7614,6 +7643,7 @@ unsorted:
   - ldap-sdk-javadoc 
   - ldapfuse 
   - ldapvi 
+  - ldas-tools-cmake 
   - ldb-tools 
   - ldc 
   - ldc-bash-completion 
@@ -7901,7 +7931,7 @@ unsorted:
   - libKF5BalooEngine5-32bit: [x86_64] 
   - libKF5Bookmarks5-32bit: [x86_64] 
   - libKF5CalendarEvents5-32bit: [x86_64] 
-  - libKF5CddbWidgets5 
+  - libKF5CalendarSupport5: [i586] 
   - libKF5Codecs5-32bit: [x86_64] 
   - libKF5Completion5-32bit: [x86_64] 
   - libKF5ConfigCore5-32bit: [x86_64] 
@@ -7915,11 +7945,14 @@ unsorted:
   - libKF5Declarative5-32bit: [x86_64] 
   - libKF5DocTools5-32bit: [x86_64] 
   - libKF5Emoticons5-32bit: [x86_64] 
+  - libKF5EventViews5: [i586] 
   - libKF5GlobalAccel5-32bit: [x86_64] 
+  - libKF5Gravatar5: [i586] 
   - libKF5GuiAddons5-32bit: [x86_64] 
   - libKF5I18n5-32bit: [x86_64] 
   - libKF5IconThemes5-32bit: [x86_64] 
   - libKF5IdleTime5-32bit: [x86_64] 
+  - libKF5IncidenceEditor5: [i586] 
   - libKF5ItemModels5-32bit: [x86_64] 
   - libKF5ItemViews5-32bit: [x86_64] 
   - libKF5JS5-32bit: [x86_64] 
@@ -7933,6 +7966,9 @@ unsorted:
   - libKF5KDGantt2-5 
   - libKF5KGeoMap10_0_0 
   - libKF5KHtml5-32bit: [x86_64] 
+  - libKF5MailCommon5: [i586] 
+  - libKF5MailImporter5: [i586] 
+  - libKF5MailImporterAkonadi5: [i586] 
   - libKF5MediaPlayer5 
   - libKF5MediaPlayer5-32bit: [x86_64] 
   - libKF5ModemManagerQt-devel 
@@ -7958,9 +7994,11 @@ unsorted:
   - libKF5SonnetUi5-32bit: [x86_64] 
   - libKF5Style5-32bit: [x86_64] 
   - libKF5Su5-32bit: [x86_64] 
+  - libKF5Syndication5: [i586] 
   - libKF5SyntaxHighlighting5-32bit: [x86_64] 
   - libKF5TextWidgets5-32bit: [x86_64] 
   - libKF5ThreadWeaver5-32bit: [x86_64] 
+  - libKF5Tnef5: [i586] 
   - libKF5UnitConversion5-32bit: [x86_64] 
   - libKF5Vkontakte2 
   - libKF5Wallet5-32bit: [x86_64] 
@@ -7972,10 +8010,15 @@ unsorted:
   - libKF5XmlRpcClient5 
   - libKF5XmlRpcClient5-32bit: [x86_64] 
   - libKF5XmlRpcClient5-lang 
+  - libKGantt2: [i586] 
   - libKPimGAPIBlogger5 
   - libKPimGAPIDrive5 
   - libKPimGAPILatitude5 
   - libKPimGAPIMaps5 
+  - libKPimImportWizard5: [i586] 
+  - libKPimItinerary5: [i586] 
+  - libKPimItinerary5-lang: [i586] 
+  - libKPimPkPass5: [i586] 
   - libKPropertyCore3-4 
   - libKPropertyWidgets3-4 
   - libKReport3-4 
@@ -8419,6 +8462,7 @@ unsorted:
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
   - libYODA-1_8_3 
+  - libZXingCore1: [i586] 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -8644,7 +8688,7 @@ unsorted:
   - libavformat58_45-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif5 
+  - libavif6 
   - libavogadrolibs-suse0 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
@@ -8945,7 +8989,7 @@ unsorted:
   - libcangjie-devel 
   - libcangjie-tools 
   - libcangjie2 
-  - libcantorlibs24 
+  - libcantorlibs27 
   - libcap-devel 
   - libcap-ng-devel 
   - libcap-ng-utils 
@@ -9598,7 +9642,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla7 
+  - libfilezilla8 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -9957,7 +10001,9 @@ unsorted:
   - libgraphblas3 
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
+  - libgravatar: [i586] 
   - libgravatar-devel 
+  - libgravatar-lang: [i586] 
   - libgromacs4 
   - libgroove-devel 
   - libgroove4 
@@ -10548,6 +10594,7 @@ unsorted:
   - libkeduvocdocument-devel 
   - libkexiv2-devel 
   - libkeybinder0 
+  - libkgantt-lang: [i586] 
   - libkgapi-devel 
   - libkgeomap 
   - libkgeomap-devel 
@@ -10594,7 +10641,9 @@ unsorted:
   - libkscreen2-plugin-32bit: [x86_64] 
   - libksi-devel 
   - libksi1 
+  - libksieve: [i586] 
   - libksieve-devel 
+  - libksieve-lang: [i586] 
   - libksysguard5-32bit: [x86_64] 
   - libksysguard5-devel 
   - libksysguard5-devel-32bit: [x86_64] 
@@ -10607,6 +10656,8 @@ unsorted:
   - libkwnn0 
   - libkyotocabinet-devel 
   - libkyotocabinet16-32bit: [x86_64] 
+  - liblal20 
+  - liblalsupport14 
   - liblammps0 
   - liblangtag-devel 
   - liblangtag-doc 
@@ -10866,7 +10917,7 @@ unsorted:
   - libmenu-cache3 
   - libmesode-devel 
   - libmesode0 
-  - libmetacity1 
+  - libmetacity3 
   - libmetal-devel 
   - libmetal0 
   - libmetalink-devel 
@@ -11571,6 +11622,7 @@ unsorted:
   - libphobos2-0_87 
   - libphobos2-ldc92 
   - libphonenumber-devel 
+  - libphonenumber8: [i586] 
   - libphonon4qt5-32bit: [x86_64] 
   - libphysfs-devel 
   - libphysfs1 
@@ -12424,7 +12476,7 @@ unsorted:
   - libskk0-32bit: [x86_64] 
   - libslang2-32bit: [x86_64] 
   - libslirp-devel 
-  - libslopy7_4 
+  - libslopy7_5 
   - libslurm35: [x86_64] 
   - libsmartcols-devel 
   - libsmartcols-devel-static 
@@ -14069,10 +14121,14 @@ unsorted:
   - madplay 
   - madplay-lang 
   - maelstrom 
+  - mailcommon: [i586] 
   - mailcommon-devel 
+  - mailcommon-lang: [i586] 
   - maildir-utils 
   - mailgraph 
+  - mailimporter: [i586] 
   - mailimporter-devel 
+  - mailimporter-lang: [i586] 
   - mailprocessing 
   - mailutils-devel 
   - mailutils-imap4d 
@@ -14455,6 +14511,8 @@ unsorted:
   - mayavi-doc 
   - mayavi-jupyter 
   - mbedtls-devel 
+  - mbox-importer: [i586] 
+  - mbox-importer-lang: [i586] 
   - mbuffer 
   - mcabber 
   - mcabber-devel 
@@ -14512,7 +14570,9 @@ unsorted:
   - meson-test 
   - meson-tools 
   - meson-vim 
+  - messagelib: [i586] 
   - messagelib-devel 
+  - messagelib-lang: [i586] 
   - metacity 
   - metacity-devel 
   - metacity-lang 
@@ -16232,6 +16292,7 @@ unsorted:
   - octave-forge-tisean 
   - octave-forge-tsa 
   - octave-forge-vrml 
+  - octave-lal 
   - octave-mathgl 
   - octave-nlopt_optimize 
   - octave-openEMS 
@@ -16353,14 +16414,11 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -17162,6 +17220,7 @@ unsorted:
   - pdf2djvu-lang 
   - pdf2svg 
   - pdfgrep 
+  - pdftk 
   - pdns 
   - pdns-backend-geoip 
   - pdns-backend-godbc 
@@ -18546,6 +18605,10 @@ unsorted:
   - pijul-zsh-completion 
   - pilot 
   - pilot-link 
+  - pim-data-exporter: [i586] 
+  - pim-data-exporter-lang: [i586] 
+  - pim-sieve-editor: [i586] 
+  - pim-sieve-editor-lang: [i586] 
   - pimcommon-devel 
   - pin 
   - pinentry-emacs 
@@ -20074,6 +20137,7 @@ unsorted:
   - python3-csscompressor 
   - python3-cssselect2 
   - python3-cssutils 
+  - python3-cstruct 
   - python3-csvkit 
   - python3-ctypescrypto 
   - python3-ctypeslib2 
@@ -20183,6 +20247,7 @@ unsorted:
   - python3-django-crispy-forms 
   - python3-django-debreach 
   - python3-django-debug-toolbar 
+  - python3-django-dj-inmemorystorage 
   - python3-django-environ 
   - python3-django-extensions 
   - python3-django-extra-views 
@@ -20515,6 +20580,7 @@ unsorted:
   - python3-gv 
   - python3-gvm-tools 
   - python3-gwcs 
+  - python3-gwyfile 
   - python3-h11 
   - python3-h5netcdf 
   - python3-h5py 
@@ -20526,6 +20592,7 @@ unsorted:
   - python3-hatch 
   - python3-hawkauthlib 
   - python3-hawkey 
+  - python3-hcloud 
   - python3-hdf5storage 
   - python3-heatclient 
   - python3-helpdev 
@@ -20733,6 +20800,7 @@ unsorted:
   - python3-l20n 
   - python3-labelImg 
   - python3-labels 
+  - python3-lal 
   - python3-lancet-ioam 
   - python3-langdetect 
   - python3-langtable 
@@ -20865,6 +20933,7 @@ unsorted:
   - python3-mailman-web 
   - python3-mailman3-fedmsg-plugin 
   - python3-mailmanclient 
+  - python3-main-wrapper 
   - python3-managesieve 
   - python3-mando 
   - python3-manilaclient 
@@ -20941,6 +21010,7 @@ unsorted:
   - python3-msoffcrypto-tool 
   - python3-msrest 
   - python3-msrestazure 
+  - python3-mss 
   - python3-mujson 
   - python3-mulpyplexer 
   - python3-multi_key_dict 
@@ -21010,6 +21080,7 @@ unsorted:
   - python3-nose-random 
   - python3-nose-timer 
   - python3-nose2 
+  - python3-nose2pytest 
   - python3-nose_warnings_filters 
   - python3-nosexcover 
   - python3-notebook 
@@ -21661,6 +21732,7 @@ unsorted:
   - python3-qtdatavis3d-qt5 
   - python3-qtwebengine-qt5 
   - python3-quantities 
+  - python3-quantum-blackbird 
   - python3-queuelib 
   - python3-quicktions 
   - python3-radon 
@@ -21763,6 +21835,7 @@ unsorted:
   - python3-sarge 
   - python3-sas7bdat 
   - python3-sasl 
+  - python3-sat-search 
   - python3-sat-stac 
   - python3-scales 
   - python3-scandir 
@@ -21780,6 +21853,7 @@ unsorted:
   - python3-scipy_1_5_2-gnu-hpc: [x86_64] 
   - python3-scp 
   - python3-screeninfo 
+  - python3-screenplain 
   - python3-scripttest 
   - python3-scrypt 
   - python3-scspell3k 
@@ -21815,6 +21889,7 @@ unsorted:
   - python3-shodan 
   - python3-shortuuid 
   - python3-sidecar 
+  - python3-sidpy 
   - python3-sievelib 
   - python3-sigal 
   - python3-signedjson 
@@ -22113,6 +22188,7 @@ unsorted:
   - python3-vispy 
   - python3-vistir 
   - python3-visvis 
+  - python3-vncdotool 
   - python3-vobject 
   - python3-voila 
   - python3-voluptuous 
@@ -22168,6 +22244,7 @@ unsorted:
   - python3-wxPython 
   - python3-wxPython-lang 
   - python3-xapian 
+  - python3-xapian-haystack 
   - python3-xapp 
   - python3-xarray 
   - python3-xattr 
@@ -22175,6 +22252,7 @@ unsorted:
   - python3-xcb-proto-devel 
   - python3-xcffib 
   - python3-xdis 
+  - python3-xdoctest 
   - python3-xerox 
   - python3-xhtml2pdf 
   - python3-xkbgroup 
@@ -25276,6 +25354,8 @@ unsorted:
   - spice-up-lang 
   - spice-vdagent 
   - spice-webdavd 
+  - spindle: [x86_64] 
+  - spindle-devel: [x86_64] 
   - spirv-cross 
   - spirv-headers 
   - spirv-tools 
@@ -34015,6 +34095,7 @@ unsorted:
   - u2f-server 
   - u3-tool 
   - uacme 
+  - ubi_reader 
   - ubuntu-fonts 
   - ubuntu-mate-icon-theme 
   - ubuntu-mate-wallpapers 
@@ -35051,6 +35132,7 @@ unsorted:
   - xz-java-javadoc 
   - xz-static-devel 
   - yafc 
+  - yaffshiv 
   - yaics 
   - yajl 
   - yamagi-quake2 
