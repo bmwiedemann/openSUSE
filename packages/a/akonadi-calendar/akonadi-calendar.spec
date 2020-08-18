@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-calendar
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -102,7 +102,7 @@ Development package for akonadi-calendar.
 %postun -n libKF5AkonadiCalendar5 -p /sbin/ldconfig
 
 %files -n libKF5AkonadiCalendar5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiCalendar.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
@@ -115,7 +115,7 @@ Development package for akonadi-calendar.
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_includedir}/Akonadi
 %dir %{_kf5_includedir}/akonadi
 %{_kf5_includedir}/Akonadi/Calendar/
@@ -127,7 +127,7 @@ Development package for akonadi-calendar.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
