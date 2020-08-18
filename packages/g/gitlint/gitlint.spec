@@ -1,7 +1,7 @@
 #
 # spec file for package gitlint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,26 @@
 #
 
 
-%define         modname gitlint
-Name:           %{modname}
-Version:        0.11.0
+Name:           gitlint
+Version:        0.13.1
 Release:        0
 Summary:        Git commit message linter checking
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/jorisroovers/%{modname}
-Source:         https://pypi.io/packages/source/g/%{modname}/%{modname}-%{version}.tar.gz
+URL:            https://github.com/jorisroovers/%{name}
+Source:         https://pypi.io/packages/source/g/%{name}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE relax-requirements.patch -- relax requirements to work with openSUSE
 Patch0:         relax-requirements.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Requires:       python-arrow >= 0.10.0
 Requires:       python-click >= 6.7
 Requires:       python-sh >= 1.12.14
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,7 +46,7 @@ found useful throughout the years. Gitlint has sane defaults, but you can
 also easily customize it to your own liking.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p1
 
 %build
@@ -56,19 +54,18 @@ also easily customize it to your own liking.
 
 %install
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/%{modname}
+%python_clone -a %{buildroot}%{_bindir}/%{name}
 %fdupes %{buildroot}%{_prefix}
 
 %post
-%python_install_alternative %{modname}
+%python_install_alternative gitlint
 
 %postun
-%python_uninstall_alternative {modname}
+%python_uninstall_alternative gitlint
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc LICENSE
+%license LICENSE
 %{python_sitelib}/*
-%python_alternative %{_bindir}/%{modname}
+%python_alternative %{_bindir}/%{name}
 
 %changelog

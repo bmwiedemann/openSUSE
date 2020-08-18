@@ -15,4 +15,21 @@
     <comment></comment>
     <requestid>713565</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c4aeb8b5dea11058491dd1ea7478bf6</srcmd5>
+    <version>0.13.1</version>
+    <time>1597746330</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.1:
+  * Patch to enable --staged flag for pre-commit.
+  * Minor doc updates (#109)
+  Revert Commits are now recognized and ignored by default (#99)
+  --staged flag: gitlint can now detect meta-data (such as author details, changed files, etc) of staged/pre-commits. Useful when you use gitlint's commit-msg hook or precommit (#105)
+  * New branch properties on GitCommit and GitContext, useful when writing your own user-defined rules: commit.branches and commit.context.current_branch (#108)
+  * Python 3.8 support
+  * Python 3.4 no longer supported. Python 3.4 has reached EOL and an increasing
+  * Gitlint no longer crashes when acting on empty repositories (this only occurred in specific circumstances).
+  * Under-the-hood: dependencies updated, unit and integration test improvements, migrated from TravisCI to Github Actions.</comment>
+    <requestid>827516</requestid>
+  </revision>
 </revisionlist>
