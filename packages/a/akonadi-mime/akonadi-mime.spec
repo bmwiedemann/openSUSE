@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-mime
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
@@ -97,12 +97,12 @@ in KDE PIM applications.
 %postun -n libKF5AkonadiMime5 -p /sbin/ldconfig
 
 %files -n libKF5AkonadiMime5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiMime.so.*
 %{_kf5_debugdir}/*.categories
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_configkcfgdir}
 %{_kf5_configkcfgdir}/specialmailcollections.kcfg
 %{_kf5_mkspecsdir}/qt_AkonadiMime.pri
@@ -116,7 +116,7 @@ in KDE PIM applications.
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_includedir}/Akonadi
 %dir %{_kf5_includedir}/akonadi
 %{_kf5_includedir}/Akonadi/KMime/
@@ -127,7 +127,7 @@ in KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
