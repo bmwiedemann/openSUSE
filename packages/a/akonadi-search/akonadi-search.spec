@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-search
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -98,28 +98,29 @@ package contains aditional command line utilities. Development files.
 %postun -n libKF5AkonadiSearch -p /sbin/ldconfig
 
 %files -n libKF5AkonadiSearch
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiSearchCore.so.*
 %{_kf5_libdir}/libKF5AkonadiSearchPIM.so.*
 %{_kf5_libdir}/libKF5AkonadiSearchXapian.so.*
 %{_kf5_libdir}/libKF5AkonadiSearchDebug.so.*
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/akonadi-search.categories
 %{_kf5_debugdir}/akonadi-search.renamecategories
 %dir %{_kf5_sharedir}/akonadi
 %dir %{_kf5_sharedir}/akonadi/agents
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/krunner
 %{_kf5_bindir}/akonadi_indexing_agent
 %{_kf5_plugindir}/akonadi/
 %{_kf5_plugindir}/kcm_krunner_pimcontacts.so
-%{_kf5_plugindir}/krunner_pimcontacts.so
-%{_kf5_servicesdir}/plasma-krunner-pimcontacts.desktop
+%{_kf5_plugindir}/kf5/krunner/krunner_pimcontacts.so
 %{_kf5_servicesdir}/plasma-krunner-pimcontacts_config.desktop
 %{_kf5_sharedir}/akonadi/agents/akonadiindexingagent.desktop
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_includedir}
 %{_kf5_includedir}/*.h
 %{_kf5_includedir}/AkonadiSearch/
@@ -131,7 +132,7 @@ package contains aditional command line utilities. Development files.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
