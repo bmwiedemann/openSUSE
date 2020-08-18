@@ -37,6 +37,7 @@ BuildRequires:  libtiff-devel
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
+BuildRequires:  par
 BuildRequires:  texinfo
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
@@ -110,6 +111,7 @@ Patch59:        xemacs-21.5.34-alsaplay.patch
 Patch60:        xemacs-21.5.34-sbrk.patch
 # PATCH-FIX-SUSE fix make build race
 Patch61:        xemacs-21.5.34-boo1115177.patch
+Patch62:        xemacs-libX11-boo1175028.patch
 Requires(pre):  permissions
 Requires:       ctags
 Requires:       efont-unicode
@@ -204,6 +206,7 @@ echo Use xfs, that is XFontSet support for internationalized menubar.
 %patch59 -p1
 %patch60 -p0
 %patch61 -p0
+%patch62 -p0
 %patch0 -p1
 find lisp/ etc/ -name '*.elc' | xargs -r rm -f
 find . -name CVS -type d | xargs rm -rf

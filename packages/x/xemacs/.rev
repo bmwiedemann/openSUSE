@@ -658,4 +658,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>793915</requestid>
   </revision>
+  <revision rev="92" vrev="19">
+    <srcmd5>c1ac584c0b237daf66a873bb7a0063cc</srcmd5>
+    <version>21.5.34</version>
+    <time>1597744896</time>
+    <user>dimstar_suse</user>
+    <comment>- Require par at build time 
+
+- Add patch xemacs-libX11-boo1175028.patch as a try to fix also boo#1175028</comment>
+    <requestid>827492</requestid>
+  </revision>
 </revisionlist>

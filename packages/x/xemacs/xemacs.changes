@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 17 06:40:55 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Require par at build time 
+
+-------------------------------------------------------------------
+Thu Aug 13 07:55:54 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch xemacs-libX11-boo1175028.patch as a try to fix also boo#1175028
+
+-------------------------------------------------------------------
 Tue Apr  7 14:21:09 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Require info and mkeinfo at build time 
