@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           korganizer
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
@@ -51,7 +51,6 @@ BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5IncidenceEditor)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KdepimDBusInterfaces)
 BuildRequires:  cmake(KF5KontactInterface)
 BuildRequires:  cmake(KF5Ldap)
 BuildRequires:  cmake(KF5Libkdepim)
@@ -137,7 +136,8 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %{_kf5_libdir}/libkorganizer_interfaces.so.*
 %{_kf5_libdir}/libkorganizerprivate.so.*
 %{_kf5_plugindir}/kcm_*.so
-%{_kf5_plugindir}/kontact_*.so
+%dir %{_kf5_plugindir}/kontact5/
+%{_kf5_plugindir}/kontact5/kontact_*.so
 %{_kf5_plugindir}/korganizerpart.so
 %{_kf5_servicesdir}/kcm*.desktop
 %{_kf5_servicesdir}/kontact/
@@ -150,6 +150,7 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %{_kf5_sharedir}/korganizer/
 %dir %{_kf5_sharedir}/dbus-1/services/
 %{_kf5_sharedir}/dbus-1/services/org.kde.korganizer.service
+%{_kf5_sharedir}/dbus-1/services/org.kde.korgac.service
 
 %if %{with lang}
 %files lang -f %{name}.lang
