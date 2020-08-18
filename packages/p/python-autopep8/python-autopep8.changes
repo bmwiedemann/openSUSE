@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 15 16:46:41 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.5.4:
+  * Merge pull request #565 from hhatto/fix-issue-564
+  * ignore SyntaxWarning in Python3.8+ when calling built-in compile()
+    method
+  * fix pytest command
+  * fix coverage and upload codecov
+  * install depends
+  * flake8 target only autopep8.py
+  * Fix pycodestyle
+  * Revert formatting changes outside scope of this feature
+  * Move the on-off tests to under unit-tests
+  * Correct line number weirdness
+  * Add tests
+  * Improved efficiency of search for enabled/disable
+  * added basic on-off functionality to autopep8
+  * Merge pull request #553 from hhatto/issue-551
+  * fix: ignoring w292 with in-place option
+
+-------------------------------------------------------------------
 Tue Jun  9 07:39:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.3:

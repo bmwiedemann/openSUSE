@@ -185,4 +185,12 @@
   * Fix hangup E122 fixed method with backslash ( #540 , #541 )</comment>
     <requestid>812802</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ffdcb8578b5396dcbfbd31c41895b81a</srcmd5>
+    <version>1.5.4</version>
+    <time>1597756099</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826935</requestid>
+  </revision>
 </revisionlist>
