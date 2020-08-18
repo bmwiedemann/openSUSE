@@ -1,7 +1,7 @@
 #
 # spec file for package inotify-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           inotify-tools
-Version:        3.20.1
+Version:        3.20.2.2
 Release:        0
 Summary:        Tools for inotify
 License:        GPL-2.0-only
 Group:          System/Monitoring
-Url:            https://github.com/rvoicilas/inotify-tools/wiki/
+URL:            https://github.com/rvoicilas/inotify-tools/wiki/
 Source:         http://github.com/rvoicilas/inotify-tools/archive/%{version}.tar.gz
-# PATCH-FIX-OPENSUSE inotify-return.patch -- add a forgotten return value
-Patch0:         inotify-return.patch
-# PATCH-FIX-OPENSUSE inotify-tools-no-timestamp-in-doc.patch bmwiedemann -- Normalize timestamps in man page - https://github.com/rvoicilas/inotify-tools/pull/97
-Patch1:         inotify-tools-no-timestamp-in-doc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -71,8 +67,6 @@ utilities for the kernel facility inotify.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 ./autogen.sh

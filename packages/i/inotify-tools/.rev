@@ -35,4 +35,17 @@
     <comment></comment>
     <requestid>697039</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d2691f06e1ff50170c85a2e383859b6f</srcmd5>
+    <version>3.20.2.2</version>
+    <time>1597756239</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.20.2:
+  * New maintainer 
+  * Fix potential buffer overflow
+  * gcc 9 support
+- remove inotify-tools-no-timestamp-in-doc.patch
+  inotify-return.patch (merged upstream)</comment>
+    <requestid>826943</requestid>
+  </revision>
 </revisionlist>
