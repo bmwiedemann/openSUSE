@@ -460,6 +460,8 @@ Prefer: -Mesa-libd3d-devel-32bit
 Prefer: -Mesa-libglapi-devel-32bit                    
 Prefer: -Mesa-libEGL-devel-32bit
 Prefer: -Mesa-libGL-devel-32bit
+Prefer: -Mesa-libGLESv2-devel-32bit
+Prefer: -Mesa-libGLESv1_CM-devel-32bit
 Prefer: -NetworkManager-devel-32bit                   
 Prefer: -aalib-devel-32bit                            
 Prefer: -adolc-devel-32bit                            
