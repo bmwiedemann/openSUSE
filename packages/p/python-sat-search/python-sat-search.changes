@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Aug 17 07:06:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the download url
+
+-------------------------------------------------------------------
+Mon Aug 10 11:48:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in pytest-runner as it is deprecated
+
+-------------------------------------------------------------------
+Sat Aug  1 16:24:24 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update spec file to use python alternative.
+
+-------------------------------------------------------------------
+Sun Jul 26 12:16:56 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release.
