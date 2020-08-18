@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           spectacle
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -124,7 +124,7 @@ screenshot capture program by KDE.
 
 %files doc
 %license COPYING.DOC
-%doc README
+%doc README.md
 %doc %lang(en) %{_kf5_htmldir}/en/spectacle/
 
 %if %{with lang}
