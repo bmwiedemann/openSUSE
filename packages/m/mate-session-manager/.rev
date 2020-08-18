@@ -238,4 +238,12 @@
     <comment>- Update to version 1.24.0.</comment>
     <requestid>780538</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>47005ad75a36595a8b04b5f16ae44015</srcmd5>
+    <version>1.24.1</version>
+    <time>1597756343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.1.</comment>
+    <requestid>827428</requestid>
+  </revision>
 </revisionlist>
