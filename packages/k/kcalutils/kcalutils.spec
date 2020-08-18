@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalutils
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
@@ -95,13 +95,13 @@ to develop applications wanting to use kcalutils.
 %postun -n libKF5CalendarUtils5 -p /sbin/ldconfig
 
 %files -n libKF5CalendarUtils5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5CalendarUtils.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5CalendarUtils/
 %{_kf5_includedir}/KCalUtils/
 %{_kf5_includedir}/kcalutils_version.h
@@ -109,12 +109,12 @@ to develop applications wanting to use kcalutils.
 %{_kf5_mkspecsdir}/qt_KCalUtils.pri
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_libdir}/grantlee/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
