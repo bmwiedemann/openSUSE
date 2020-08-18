@@ -1,7 +1,7 @@
 #
 # spec file for package anthy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ Patch2:         anthy-last-command-char-xemacs.patch
 Patch3:         bugzilla-224463-comparison-with-string-literal.patch
 # PATCH-FIX-OPENSUSE anthy-use-last-command-event.diff bnc#849211 tiwai@suse.de
 Patch4:         anthy-use-last-command-event.diff
+Patch5:         bugzilla-1175274-emacs-27.1.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 %if %{with emacs}
@@ -86,6 +87,7 @@ to develop applications that require libanthy.
 %patch2 -p 1
 %patch3 -p 1
 %patch4 -p 1
+%patch5 -p 0
 
 %build
 autoreconf --force --install

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 18 11:19:51 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch bugzilla-1175274-emacs-27.1.patch
+  There is no (process-kill-without-query) anymore, use
+  (set-process-query-on-exit-flag) instead (boo#1175274).
+
+-------------------------------------------------------------------
 Thu Jun 13 07:07:00 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix baselibs.conf: the library was split out as libanthy0 with
