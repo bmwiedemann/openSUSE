@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           step
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        An interactive physics simulator
 License:        GPL-2.0-or-later
@@ -46,7 +46,6 @@ BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Xml)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
@@ -54,6 +53,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 BuildRequires:  libqt5-linguist-devel
 %endif
+Recommends:     %{name}-lang
 
 %description
 Step is an interactive physical simulator. The user first places some
