@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kig
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Interactive Geometry
 License:        GPL-2.0-or-later
@@ -29,6 +29,8 @@ Group:          Productivity/Scientific/Math
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  kf5-filesystem
+BuildRequires:  libboost_python3-devel
+BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -47,13 +49,6 @@ BuildRequires:  cmake(Qt5Test) >= 5.2.0
 BuildRequires:  cmake(Qt5XmlPatterns) >= 5.2.0
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if 0%{?suse_version} > 1500
-BuildRequires:  libboost_python3-devel
-BuildRequires:  python3-devel
-%else
-BuildRequires:  libboost_python-devel
-BuildRequires:  python-devel
-%endif
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
@@ -72,7 +67,7 @@ drawing mathematical figures and including them in other documents.
 %setup -q
 
 %build
-  %cmake_kf5 -d build
+  %cmake_kf5 -d build -- -DBoost_NO_BOOST_CMAKE=ON
   %cmake_build
 
 %install
