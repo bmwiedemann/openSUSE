@@ -1,7 +1,7 @@
 #
 # spec file for package btfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           btfs
-Version:        2.20
+Version:        2.22
 Release:        0
 Summary:        A BitTorrent file system based on FUSE
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/File-Sharing
 URL:            https://github.com/johang/%{name}
 Source:         https://github.com/johang/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  autoconf

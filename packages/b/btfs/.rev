@@ -71,4 +71,15 @@
   * btplay: Change shebang to python3</comment>
     <requestid>726824</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4647dc99492e989f05cb23e3e49721f7</srcmd5>
+    <version>2.22</version>
+    <time>1597756259</time>
+    <user>dimstar_suse</user>
+    <comment>- 2.22
+  * bug fixes
+
+- Remove obsolete Groups tag (fate#326485)</comment>
+    <requestid>827076</requestid>
+  </revision>
 </revisionlist>
