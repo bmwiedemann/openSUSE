@@ -1,7 +1,7 @@
 #
 # spec file for package python-zipstream
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-zipstream
 Version:        1.1.4
 Release:        0
 Summary:        Zipfile generator
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            https://github.com/allanlei/python-zipstream
-Source:         https://files.pythonhosted.org/packages/source/z/zipstream/zipstream-%{version}.tar.gz
+URL:            https://github.com/allanlei/python-zipstream
+Source:         https://github.com/allanlei/python-zipstream/archive/v%{version}.tar.gz#/zipstream-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module nose}
-%endif
 BuildArch:      noarch
-
+BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
@@ -43,7 +39,7 @@ the archive to e.g. web clients without needing to store the archive on
 disk first.
 
 %prep
-%setup -q -n zipstream-%{version}
+%setup -q -n python-zipstream-%{version}
 
 %build
 %python_build
@@ -52,8 +48,12 @@ disk first.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
-%defattr(-,root,root,-)
+%doc README.markdown
+%license LICENSE
 %{python_sitelib}/*
 
 %changelog

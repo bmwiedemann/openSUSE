@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 16 02:25:00 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite, replacing nose with pytest
+
+-------------------------------------------------------------------
 Tue Dec  4 12:56:26 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
