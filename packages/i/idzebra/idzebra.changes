@@ -1,3 +1,37 @@
+------------------------------------------------------------------
+Sun Aug 16 13:35:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.4:
+  Avoid useless debug info for facet handling ZEB-682
+  Perform reverse mapping for facets ZEB-601
+  Update to Expat 2.2.3
+  Update to Expat 2.2.3 on Windows installer
+  Use Expat 2.2.2 on Windows installer ZEB-676
+  Fix 'make -j no check' by serializing some tests that weren't
+  supposed to be run in parallel.
+  Add support for user-defined groups in mod-dom filter. A group can
+  be generated with <group>-indexing element with property unit.  Unit
+  is one of the known Z39.50 proximity units and defaults to "element"
+  if omitted. This can be searched with @prox 0 0 0 0 k 8 which boils
+  down to "same known unit=element".
+  Fix compilation with Tcl 8.6 and later. Closes #4
+  Zebra SCM moved to GitHub https://github.com/indexdata/idzebra
+  Make packages for Ubuntu 15.10/Wily Werewolf.
+  Fix incorrect scan terms with result set limit. Closes #1
+  Fix documentation of of chr's equivalent directive ZEB-672
+  And add a few tests for the behavior.
+  Allow @attr 2=102 for numeric index
+  Upgrade to debhelper version 7
+  Not upgrading to version 9 now. It would move libraries and modules
+  to /usr/lib/{arch}.
+  Many documentation fixes. Thanks to David Crossley.
+  Build: Remove Debian squeeze. Add CentOS 7. Remove Ubuntu Saucy.
+  Add Ubuntu Vivid.
+  Fix modulePath for examples ZEB-665
+  Fix typo in path to oai-pmh example
+
+- remove idzebra-2.0.55-tcl-8.5-abuild.patch (upstream)
+
 -------------------------------------------------------------------
 Mon Feb  9 10:16:26 UTC 2015 - zaitor@opensuse.org
 

@@ -1,7 +1,7 @@
 #
 # spec file for package idzebra
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           idzebra
-Version:        2.0.60
+Version:        2.1.4
 Release:        0
 Summary:        Fielded Free Text Engine with a Z39.50 Frontend
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
-Url:            http://www.indexdata.com/zebra/
+URL:            http://www.indexdata.com/zebra/
 Source:         http://ftp.indexdata.com/pub/zebra/%{name}-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM marguerite@opensuse.org - tcl_interp->errorline/result is depreciated in tcl 8.5
-Patch:          idzebra-2.0.55-tcl-8.5-abuild.patch
 BuildRequires:  libexpat-devel
 BuildRequires:  libyaz-devel
 BuildRequires:  openssl-devel
@@ -33,7 +31,6 @@ BuildRequires:  readline-devel
 BuildRequires:  tcl-devel
 BuildRequires:  tcpd-devel
 Requires:       yaz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Zebra is a fielded free text indexing and retrieval engine with a
@@ -63,12 +60,11 @@ free text indexing and retrieval engine with a Z39.50 front-end.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 CFLAGS="%{optflags} -fno-strict-aliasing" \
 %configure --disable-static --with-pic --with-yazconfig=%{_bindir}
-make %{?_smp_mflags}
+%make_build
 for f in examples/marcxml/*.x?l; do
   tr -d '\15' <$f >$f.tmp && mv $f.tmp $f
 done
@@ -77,7 +73,7 @@ done
 %ifarch ix86
   # 2004-11-17 07:44:55 CET -ke-
   # there are problems with killing zebrasrv reliably
-  make check
+  %make_build check
 %endif
 
 %install
@@ -93,7 +89,7 @@ mkdir html
 #ln -sf zebra.html html/index.html
 cp doc/*html html
 #cp doc/*.pdf .
-%define DOCFILES README LICENSE.* NEWS
+%define DOCFILES README.md LICENSE.* NEWS
 #*.pdf
 {
   echo "<html><head><title>%{name} documentation directory</title></head>"
@@ -114,7 +110,7 @@ pushd %{buildroot}
   cp -a usr/share/idzebra*/tab/* etc/idzebra
   rm -fr usr/share/idzebra*/tab
   pushd %{buildroot}%{_datadir}/idzebra
-  ln -sf ../../../etc/idzebra tab
+  ln -sf ../../..%{_sysconfdir}/idzebra tab
   popd
 popd
 rm examples/*/Makefile*
@@ -123,11 +119,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 find examples -type f -name '*.pl' -exec chmod -x {} \;
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %dir %{_datadir}/idzebra
 %{_datadir}/idzebra/tab
 %config %{_sysconfdir}/idzebra
@@ -141,13 +135,11 @@ find examples -type f -name '*.pl' -exec chmod -x {} \;
 %{_mandir}/*/*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*.so
 %{_includedir}/*
 %{_datadir}/aclocal/*
 
 %files doc
-%defattr(-,root,root)
 %doc %{DOCFILES}
 %doc index.html html
 %doc examples
