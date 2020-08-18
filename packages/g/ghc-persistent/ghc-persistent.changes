@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 15:45:37 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints min 4GB disk space for few arches
+  aarch64 ppc64 ppc64le
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:36 UTC 2020 - psimons@suse.com
 
 - Add persistent at version 2.10.5.2.
