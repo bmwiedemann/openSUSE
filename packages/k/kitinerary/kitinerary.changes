@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:09:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * Silence an unused function warning
+  * Fix class/struct declaration mismatch
+  * Fix build with latest Poppler
+  * Fix build with zxing 1.1.0 (kde#424853)
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Fix the side-effects of openSUSE adding an Asia/Beijing timezone
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Jul  9 20:09:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3

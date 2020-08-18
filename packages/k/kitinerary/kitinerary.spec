@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kitinerary
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -97,18 +97,19 @@ to build programs that use the kitinerary library.
 %postun -n libKPimItinerary5 -p /sbin/ldconfig
 
 %files
-%license COPYING.LIB
+%license LICENSES/*
 %{_kf5_libexecdir}/kitinerary-extractor
 %dir %{_kf5_sharedir}/mime
 %dir %{_kf5_sharedir}/mime/packages
 %{_kf5_sharedir}/mime/packages/application-vnd-kde-itinerary.xml
 
 %files -n libKPimItinerary5
-%license COPYING.LIB
+%license LICENSES/*
 %{_kf5_libdir}/libKPimItinerary.so.*
 %{_kf5_debugdir}/*.categories
 
 %files devel
+%license LICENSES/*
 %dir %{_includedir}/KPim/
 %{_includedir}/KPim/KItinerary/
 %{_includedir}/KPim/kitinerary/
