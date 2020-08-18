@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dynaconf
-Version:        2.2.3
+Version:        3.0.0
 Release:        0
 Summary:        The dynamic configurator for your Python Project
 License:        MIT
 URL:            https://github.com/rochacbruno/dynaconf
-Source:         https://github.com/rochacbruno/dynaconf/archive/%{version}.tar.gz
-Patch0:         box-4.0.patch
+Source:         https://github.com/rochacbruno/dynaconf/archive/%{version}.tar.gz#/dynaconf-%{version}.tar.gz
+Patch0:         redis-server-url.patch
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,6 +53,7 @@ BuildRequires:  %{python_module python-box}
 BuildRequires:  %{python_module python-dotenv}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module toml}
+BuildRequires:  redis
 # /SECTION
 %python_subpackages
 
@@ -64,8 +65,9 @@ The dynamic configurator for your Python Project
 %patch0 -p1
 
 # require running docker with the server
-rm tests/test_redis.py
 rm tests/test_vault.py
+
+rm -r dynaconf/vendor/
 
 %build
 %python_build
@@ -76,6 +78,12 @@ rm tests/test_vault.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+mkdir ~/bin
+%python_expand cp -p %{buildroot}%{_bindir}/dynaconf-%{$python_bin_suffix} ~/bin/dynaconf
+export PATH=~/bin:$PATH
+export LANG=en_US.UTF-8
+/usr/sbin/redis-server &
+export REDIS_URL=http://127.0.0.1:6379
 %pytest tests/
 
 %post

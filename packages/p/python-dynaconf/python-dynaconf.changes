@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:53:55 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Devendor the runtime package
+- Activate redis tests using redis-server-url.patch
+- Remove box-4.0.patch merged upstream
+- Update to v3.0.0
+  * Breaking change: Envless by default
+  * See https://github.com/rochacbruno/dynaconf/blob/master/CHANGELOG.md
+    for other changes
+
+-------------------------------------------------------------------
 Tue May 26 07:22:48 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
