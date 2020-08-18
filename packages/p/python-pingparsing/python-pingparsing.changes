@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug  9 15:52:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.0
+  * Make it possible to parse ping timeouts includes timestamps.
+  * Add --addopts option to the CLI.
+  * Add -O option to ping execution when --timestamp option is
+    specified on Linux.
+  * Set default serializer for timestamps of ICMP replies.
+
+-------------------------------------------------------------------
 Wed May 20 07:26:14 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
