@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:53:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.23.0:
+  + Added reader/writer locks
+  - fz::mkdir can now return the the longest created path in case of partial failures
+
+-------------------------------------------------------------------
 Wed May 13 08:55:24 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.22.0
