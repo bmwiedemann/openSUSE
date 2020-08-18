@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200817" schemaversion="4.1">
+<image name="OBS__openSUSE___20200818" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200817</productvar>
+      <productvar name="VERSION">20200818</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200817,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200818,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200817/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200818/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -75,12 +75,8 @@
       <repopackage name="adwaita-qt5"/>
       <repopackage name="agrep"/>
       <repopackage name="akonadi-calendar-lang"/>
-      <repopackage name="akonadi-calendar-tools"/>
-      <repopackage name="akonadi-calendar-tools-lang"/>
       <repopackage name="akonadi-contact"/>
       <repopackage name="akonadi-contact-lang"/>
-      <repopackage name="akonadi-import-wizard"/>
-      <repopackage name="akonadi-import-wizard-lang"/>
       <repopackage name="akonadi-mime"/>
       <repopackage name="akonadi-mime-lang"/>
       <repopackage name="akonadi-notes-lang"/>
@@ -88,13 +84,9 @@
       <repopackage name="akonadi-plugin-contacts"/>
       <repopackage name="akonadi-plugin-kalarmcal"/>
       <repopackage name="akonadi-plugin-mime"/>
-      <repopackage name="akonadi-search"/>
-      <repopackage name="akonadi-search-lang"/>
       <repopackage name="akonadi-server"/>
       <repopackage name="akonadi-server-lang"/>
       <repopackage name="akonadi-server-sqlite"/>
-      <repopackage name="akregator"/>
-      <repopackage name="akregator-lang"/>
       <repopackage name="alpine"/>
       <repopackage name="alsa"/>
       <repopackage name="alsa-firmware"/>
@@ -287,8 +279,6 @@
       <repopackage name="ca-certificates-mozilla"/>
       <repopackage name="cabextract"/>
       <repopackage name="calamaris"/>
-      <repopackage name="calendarsupport"/>
-      <repopackage name="calendarsupport-lang"/>
       <repopackage name="calligra-extras-filemanagertemplates"/>
       <repopackage name="canberra-gtk-play"/>
       <repopackage name="canna-libs"/>
@@ -482,8 +472,6 @@
       <repopackage name="espeak"/>
       <repopackage name="etags"/>
       <repopackage name="ethtool"/>
-      <repopackage name="eventviews"/>
-      <repopackage name="eventviews-lang"/>
       <repopackage name="evince"/>
       <repopackage name="evince-lang"/>
       <repopackage name="evince-plugin-comicsdocument"/>
@@ -999,8 +987,6 @@
       <repopackage name="ImageMagick"/>
       <repopackage name="ImageMagick-config-7-SUSE"/>
       <repopackage name="ImageMagick-extra"/>
-      <repopackage name="incidenceeditor"/>
-      <repopackage name="incidenceeditor-lang"/>
       <repopackage name="indic-fonts"/>
       <repopackage name="info"/>
       <repopackage name="info-std"/>
@@ -1159,8 +1145,6 @@
       <repopackage name="kdelibs4support-lang"/>
       <repopackage name="kdenetwork-filesharing"/>
       <repopackage name="kdenetwork-filesharing-lang"/>
-      <repopackage name="kdepim-addons"/>
-      <repopackage name="kdepim-addons-lang"/>
       <repopackage name="kdepim-apps-libs"/>
       <repopackage name="kdepim-apps-libs-lang"/>
       <repopackage name="kdepim-runtime"/>
@@ -1274,7 +1258,6 @@
       <repopackage name="kitemmodels-imports"/>
       <repopackage name="kiten"/>
       <repopackage name="kiten-lang"/>
-      <repopackage name="kitinerary"/>
       <repopackage name="kiwi-pxeboot"/>
       <repopackage name="kjumpingcube"/>
       <repopackage name="kjumpingcube-lang"/>
@@ -1289,11 +1272,6 @@
       <repopackage name="kmag-lang"/>
       <repopackage name="kmahjongg"/>
       <repopackage name="kmahjongg-lang"/>
-      <repopackage name="kmail"/>
-      <repopackage name="kmail-account-wizard"/>
-      <repopackage name="kmail-account-wizard-lang"/>
-      <repopackage name="kmail-application-icons"/>
-      <repopackage name="kmail-lang"/>
       <repopackage name="kmailtransport"/>
       <repopackage name="kmailtransport-lang"/>
       <repopackage name="kmenuedit5"/>
@@ -1337,8 +1315,6 @@
       <repopackage name="konversation-lang"/>
       <repopackage name="kopete"/>
       <repopackage name="kopete-lang"/>
-      <repopackage name="korganizer"/>
-      <repopackage name="korganizer-lang"/>
       <repopackage name="kpackage"/>
       <repopackage name="kpackage-lang"/>
       <repopackage name="kpartx"/>
@@ -1349,10 +1325,10 @@
       <repopackage name="kpeoplevcard"/>
       <repopackage name="kpimtextedit"/>
       <repopackage name="kpimtextedit-lang"/>
-      <repopackage name="kpkpass"/>
       <repopackage name="kqtquickcharts"/>
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
+      <repopackage name="krb5-client"/>
       <repopackage name="krdc"/>
       <repopackage name="krdc-lang"/>
       <repopackage name="krename"/>
@@ -1398,8 +1374,6 @@
       <repopackage name="ktexteditor-lang"/>
       <repopackage name="ktimer"/>
       <repopackage name="ktimer-lang"/>
-      <repopackage name="ktnef"/>
-      <repopackage name="ktnef-lang"/>
       <repopackage name="ktouch"/>
       <repopackage name="ktouch-lang"/>
       <repopackage name="ktuberling"/>
@@ -1852,8 +1826,6 @@
       <repopackage name="libgraphene-1_0-0"/>
       <repopackage name="libgraphite2-3"/>
       <repopackage name="libgraphviz6"/>
-      <repopackage name="libgravatar"/>
-      <repopackage name="libgravatar-lang"/>
       <repopackage name="libgrilo-0_3-0"/>
       <repopackage name="libgrlnet-0_3-0"/>
       <repopackage name="libgrlpls-0_3-0"/>
@@ -2047,7 +2019,6 @@
       <repopackage name="libKF5Bookmarks5-lang"/>
       <repopackage name="libKF5CalendarCore5"/>
       <repopackage name="libKF5CalendarEvents5"/>
-      <repopackage name="libKF5CalendarSupport5"/>
       <repopackage name="libKF5CalendarUtils5"/>
       <repopackage name="libKF5Cddb5"/>
       <repopackage name="libKF5Codecs5"/>
@@ -2073,12 +2044,10 @@
       <repopackage name="libKF5DNSSD5-lang"/>
       <repopackage name="libKF5DocTools5"/>
       <repopackage name="libKF5Emoticons5"/>
-      <repopackage name="libKF5EventViews5"/>
       <repopackage name="libKF5GlobalAccel5"/>
       <repopackage name="libKF5GlobalAccel5-lang"/>
       <repopackage name="libKF5GlobalAccelPrivate5"/>
       <repopackage name="libKF5GrantleeTheme5"/>
-      <repopackage name="libKF5Gravatar5"/>
       <repopackage name="libKF5GuiAddons5"/>
       <repopackage name="libKF5Holidays5"/>
       <repopackage name="libKF5Holidays5-lang"/>
@@ -2089,7 +2058,6 @@
       <repopackage name="libKF5IdentityManagement5"/>
       <repopackage name="libKF5IdleTime5"/>
       <repopackage name="libKF5IMAP5"/>
-      <repopackage name="libKF5IncidenceEditor5"/>
       <repopackage name="libKF5ItemModels5"/>
       <repopackage name="libKF5ItemViews5"/>
       <repopackage name="libKF5ItemViews5-lang"/>
@@ -2111,11 +2079,7 @@
       <repopackage name="libKF5KontactInterface5"/>
       <repopackage name="libKF5Ldap5"/>
       <repopackage name="libKF5Libkdepim5"/>
-      <repopackage name="libKF5LibkdepimAkonadi5"/>
       <repopackage name="libKF5Libkleo5"/>
-      <repopackage name="libKF5MailCommon5"/>
-      <repopackage name="libKF5MailImporter5"/>
-      <repopackage name="libKF5MailImporterAkonadi5"/>
       <repopackage name="libKF5MailTransport5"/>
       <repopackage name="libKF5MailTransportAkonadi5"/>
       <repopackage name="libKF5Mbox5"/>
@@ -2155,13 +2119,11 @@
       <repopackage name="libKF5Style5"/>
       <repopackage name="libKF5Su5"/>
       <repopackage name="libKF5Su5-lang"/>
-      <repopackage name="libKF5Syndication5"/>
       <repopackage name="libKF5SyntaxHighlighting5"/>
       <repopackage name="libKF5SyntaxHighlighting5-lang"/>
       <repopackage name="libKF5TextWidgets5"/>
       <repopackage name="libKF5TextWidgets5-lang"/>
       <repopackage name="libKF5ThreadWeaver5"/>
-      <repopackage name="libKF5Tnef5"/>
       <repopackage name="libKF5Torrent6"/>
       <repopackage name="libKF5UnitConversion5"/>
       <repopackage name="libKF5UnitConversion5-lang"/>
@@ -2172,8 +2134,6 @@
       <repopackage name="libKF5WindowSystem5-lang"/>
       <repopackage name="libKF5XmlGui5"/>
       <repopackage name="libKF5XmlGui5-lang"/>
-      <repopackage name="libkgantt-lang"/>
-      <repopackage name="libKGantt2"/>
       <repopackage name="libkgapi-lang"/>
       <repopackage name="libkioarchive5"/>
       <repopackage name="libkipi-data"/>
@@ -2190,17 +2150,11 @@
       <repopackage name="libKPimGAPIContacts5"/>
       <repopackage name="libKPimGAPICore5"/>
       <repopackage name="libKPimGAPITasks5"/>
-      <repopackage name="libKPimImportWizard5"/>
-      <repopackage name="libKPimItinerary5"/>
-      <repopackage name="libKPimItinerary5-lang"/>
-      <repopackage name="libKPimPkPass5"/>
       <repopackage name="libKPimSMTP5"/>
       <repopackage name="libksane-lang"/>
       <repopackage name="libksba8"/>
       <repopackage name="libkscreen2-plugin"/>
       <repopackage name="libKScreenLocker5"/>
-      <repopackage name="libksieve"/>
-      <repopackage name="libksieve-lang"/>
       <repopackage name="libksysguard5"/>
       <repopackage name="libksysguard5-helper"/>
       <repopackage name="libksysguard5-imports"/>
@@ -2418,7 +2372,6 @@
       <repopackage name="libpfs2"/>
       <repopackage name="libpgm-5_2-0"/>
       <repopackage name="libphodav-2_0-0"/>
-      <repopackage name="libphonenumber8"/>
       <repopackage name="libphonon4qt5"/>
       <repopackage name="libpinyin-data"/>
       <repopackage name="libpinyin13"/>
@@ -3043,7 +2996,6 @@
       <repopackage name="libzmq5"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzvbi0"/>
-      <repopackage name="libZXingCore1"/>
       <repopackage name="libzypp"/>
       <repopackage name="libzypp-plugin-appdata"/>
       <repopackage name="lifecycle-data-openSUSE"/>
@@ -3086,10 +3038,6 @@
       <repopackage name="m17n-db"/>
       <repopackage name="m17n-db-lang"/>
       <repopackage name="m4"/>
-      <repopackage name="mailcommon"/>
-      <repopackage name="mailcommon-lang"/>
-      <repopackage name="mailimporter"/>
-      <repopackage name="mailimporter-lang"/>
       <repopackage name="mailutils"/>
       <repopackage name="mailx"/>
       <repopackage name="make"/>
@@ -3107,8 +3055,6 @@
       <repopackage name="mate-calc"/>
       <repopackage name="mate-calc-lang"/>
       <repopackage name="mbimcli-bash-completion"/>
-      <repopackage name="mbox-importer"/>
-      <repopackage name="mbox-importer-lang"/>
       <repopackage name="mc"/>
       <repopackage name="mc-lang"/>
       <repopackage name="mdadm"/>
@@ -3127,8 +3073,6 @@
       <repopackage name="Mesa-libGL1"/>
       <repopackage name="Mesa-libglapi0"/>
       <repopackage name="Mesa-libva"/>
-      <repopackage name="messagelib"/>
-      <repopackage name="messagelib-lang"/>
       <repopackage name="metamail"/>
       <repopackage name="metatheme-adwaita-common"/>
       <repopackage name="metatheme-breeze-common"/>
@@ -3343,6 +3287,9 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
+      <repopackage name="openafs"/>
+      <repopackage name="openafs-client"/>
+      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc"/>
       <repopackage name="opencc-data"/>
@@ -3629,10 +3576,6 @@
       <repopackage name="pidgin-plugin-skypeweb"/>
       <repopackage name="pidgin-plugin-telegram"/>
       <repopackage name="pigz"/>
-      <repopackage name="pim-data-exporter"/>
-      <repopackage name="pim-data-exporter-lang"/>
-      <repopackage name="pim-sieve-editor"/>
-      <repopackage name="pim-sieve-editor-lang"/>
       <repopackage name="pimcommon"/>
       <repopackage name="pimcommon-lang"/>
       <repopackage name="pinentry"/>
