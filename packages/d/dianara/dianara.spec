@@ -1,7 +1,7 @@
 #
 # spec file for package dianara
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name   Dianara
 Name:           dianara
-Version:        1.4.1
+Version:        1.4.3
 Release:        0
 Summary:        Pump.io social network desktop client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            https://gitlab.com/dianara/dianara-dev
+URL:            http://dianara.nongnu.org/
 Source:         https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-v%{version}.tar.gz
 %if 0%{?suse_version} <= 1320
 Source1:        %{name}.changes
@@ -60,7 +60,7 @@ make %{?_smp_mflags} V=1
 %install
 %qmake5_install
 
-%suse_update_desktop_file -r %{name} Network InstantMessaging
+%suse_update_desktop_file -r org.nongnu.%{name} Network InstantMessaging
 
 %if 0%{?suse_version} < 1500
 %post
@@ -76,10 +76,10 @@ make %{?_smp_mflags} V=1
 %license LICENSE
 %doc CHANGELOG README TRANSLATING
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.nongnu.%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.nongnu.%{name}.appdata.xml
 %{_mandir}/man1/dianara.1%{?ext_man}
 
 %changelog

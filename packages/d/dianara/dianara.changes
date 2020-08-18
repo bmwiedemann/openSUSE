@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Aug 16 13:30:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.4.3:
+  - Added optional spell checking support, using KDE's Sonnet.
+   It will be enabled if Sonnet's development packages are installed when
+   building the program (unless CONFIG+=NO_KF5 is used).
+ - Added optional character picker, using KDE's KCharSelect widget.
+   It will be enabled if the development packages for KWidgetsAddons are
+   installed when building the program (unless CONFIG+=NO_KF5 is used).
+ - Adapted AppStream-related file naming and IDs to current standards.
+ - Changed more dialogs to follow the environment's button order.
+ - More code refactoring.
+ - Changed OK/Cancel buttons in several dialogs to follow environment style.
+ - Code refactoring and optimizations.
+ - Fixed a corner case where a post deleted by its author, while a comment
+   was being composed, would block timeline updates until program restart.
+ - When a post is cancelled, abort possible ongoing file upload immediately.
+ - Fixed Cancel button being disabled while sending a comment.
+ - Fixed a pagination bug that would set the wrong page number if a timeline
+   update had failed previously.
+ - Other minor fixes.
+
+-------------------------------------------------------------------
 Sat Aug 18 09:26:50 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 1.4.1:
