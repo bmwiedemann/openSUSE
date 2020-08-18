@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkexiv2
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later
@@ -82,6 +82,7 @@ metadata.
 %license COPYING*
 %doc README
 %{_kf5_libdir}/libKF5KExiv2.so.*
+%{_kf5_debugdir}/libkexiv2.categories
 
 %files devel
 %license COPYING*
