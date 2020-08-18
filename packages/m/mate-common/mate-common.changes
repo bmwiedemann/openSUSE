@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.2:
+  * mate-compiler-flags: Add -Wno-unused-parameter to maximise C++
+    warnings.
+  * mate-compiler-flags: Disable -Wno-unused and -Wno-sign-compare.
+
+-------------------------------------------------------------------
 Wed Apr  2 16:35:45 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.1:

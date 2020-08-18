@@ -18,7 +18,7 @@
 
 %define _version 1.24
 Name:           mate-common
-Version:        1.24.1
+Version:        1.24.2
 Release:        0
 Summary:        Common scripts and macros to develop with MATE
 License:        GPL-3.0-or-later
