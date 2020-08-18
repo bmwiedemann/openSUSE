@@ -57,23 +57,30 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.6
+%define upstream_version git-179a418ea5063785a23e4faf35134f063a6f3e1c
 
 Name:           openafs
 
-Version:        1.8.6
+Version:        1.8.6.1
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
 Group:          System/Filesystems
 URL:            http://www.openafs.org/
 
-Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
-Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
-Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
-Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
-Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
-Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
+#Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
+#Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
+#Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
+#Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
+#Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
+#Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
+Source0:        openafs-%{upstream_version}-src.tar.bz2
+Source1:        openafs-%{upstream_version}-doc.tar.bz2
+Source2:        openafs-%{upstream_version}-src.tar.bz2.md5
+Source3:        openafs-%{upstream_version}-doc.tar.bz2.md5 
+Source4:        openafs-%{upstream_version}-src.tar.bz2.sha256
+Source5:        openafs-%{upstream_version}-doc.tar.bz2.sha256
+
 Source10:       README.SUSE.openafs
 Source15:       logrotate.openafs-server
 Source18:       RELNOTES-%{upstream_version}
@@ -97,6 +104,8 @@ Patch3:         dir_layout.patch
 Patch4:         openafs-1.8.x.ncurses6.patch
 # PATCH-SUSE-SPECIFIC make KMP work again 
 Patch5:         add_arch_to_linux_kernel_make.patch
+# PATCH-SUSE-SPECIFIC make KMP work on aarch64 
+Patch6:         remove-get_ds-usage.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 #
@@ -308,6 +317,7 @@ done
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 ./regen.sh
 
