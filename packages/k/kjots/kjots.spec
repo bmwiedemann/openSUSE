@@ -26,6 +26,8 @@ URL:            http://www.kde.org
 Source0:        http://download.kde.org/stable/kjots/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-bookmarks-actions.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Install-the-kontact-plugin-into-kontact5.patch
 BuildRequires:  akonadi-server-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  grantlee5-devel
@@ -86,7 +88,8 @@ This package contains KJOTS, a note taking application for KDE using Akonadi.
 %_kf5_sharedir/kjots/
 %_kf5_iconsdir/hicolor/*/apps/kjots.*
 %_kf5_iconsdir/oxygen/*/actions/edit-delete-page.*
-%{_kf5_plugindir}/kontact_kjotsplugin.so
+%dir %{_kf5_plugindir}/kontact5/
+%{_kf5_plugindir}/kontact5/kontact_kjotsplugin.so
 %{_datadir}/kontact/
 %{_kf5_servicesdir}/kontact/
 

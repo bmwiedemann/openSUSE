@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 23 11:09:08 UTC 2020 - wbauer@tmo.at
+
+- Add Install-the-kontact-plugin-into-kontact5.patch to fix build
+  with kontactinterface 20.08
+
+-------------------------------------------------------------------
 Mon Apr 20 11:08:57 UTC 2020 - wbauer@tmo.at
 
 - Add Fix-bookmarks-actions.patch to fix "Ambiguous shortcuts"
