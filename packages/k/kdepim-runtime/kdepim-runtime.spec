@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-runtime
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -53,7 +53,10 @@ BuildRequires:  cmake(KF5Holidays) >= %{kf5_version}
 BuildRequires:  cmake(KF5IMAP)
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5ItemModels) >= %{kf5_version}
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Ldap)
+BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5Mbox)
 BuildRequires:  cmake(KF5Mime)
@@ -111,13 +114,9 @@ use PIM applications.
   %endif
   rm -rvf %{buildroot}%{_kf5_libdir}/*.so
 
-%post
-/sbin/ldconfig
-%mime_database_post
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%mime_database_postun
+%postun -p /sbin/ldconfig
 
 %files
 %license COPYING*
