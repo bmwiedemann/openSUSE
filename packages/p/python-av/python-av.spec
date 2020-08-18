@@ -27,15 +27,17 @@ URL:            https://github.com/mikeboers/PyAV
 Source:         https://files.pythonhosted.org/packages/source/a/av/av-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  libavutil-devel >= 4.3
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavutil)
+Requires:       python-numpy
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -47,6 +49,12 @@ Pythonic bindings for FFmpeg's libraries.
 %prep
 %setup -q -n av-%{version}
 
+# doctests and timeout require network to setup tests
+rm tests/test_doctests.py tests/test_timeout.py
+
+# All tests using fate_suite require fetching data from http://fate.ffmpeg.org/fate-suite/
+sed -Ei 's/(from .common import .*), fate_suite(, .*)?/\1\2\ndef fate_suite(*a):\n  import unittest; raise unittest.SkipTest\n/' tests/test_*.py
+
 %build
 %python_build
 
@@ -55,15 +63,17 @@ Pythonic bindings for FFmpeg's libraries.
 %python_clone -a %{buildroot}%{_bindir}/pyav
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%check
-# Sadly needs full ffmpeg with all the codec support so we have to skip
-#%%python_exec setup.py test
-
 %post
 %python_install_alternative pyav
 
 %postun
 %python_uninstall_alternative pyav
+
+%check
+mv av .av
+# Skipping 4 tests requiring mpeg4 codec
+%pytest_arch tests -k 'not (test_codec_mpeg4 or test_encoding_with_pts or test_stream_index or test_video_default_options)'
+mv .av av
 
 %files %{python_files}
 %license LICENSE.txt

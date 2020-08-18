@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 15 08:35:33 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing runtime dependency on numpy
+- Require ffmpeg 4.3
+- Re-activate test suite, removing nose
+
+-------------------------------------------------------------------
 Wed Jun 24 01:24:35 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 8.0.2:
