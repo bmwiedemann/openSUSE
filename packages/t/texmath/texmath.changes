@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 21 12:31:04 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for PowerPC avoid "no space left on device" build error
+
+-------------------------------------------------------------------
 Tue Jun 16 11:14:56 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
