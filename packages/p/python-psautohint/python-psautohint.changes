@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 17 20:57:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.0
+  * no changelog available
+
+-------------------------------------------------------------------
 Tue May 26 08:12:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Setup.py says they need 3.32.0 FontTools but in reality they
