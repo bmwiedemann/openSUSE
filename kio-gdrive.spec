@@ -16,16 +16,23 @@
 #
 
 
+%define kf5_version 5.71.0
+# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
+%{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio-gdrive
-Version:        1.3.0
+Version:        20.08.0
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://community.kde.org/KIO_GDrive
-Source:         https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules >= 5.48.0
+URL:            https://www.kde.org
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  intltool
 BuildRequires:  cmake(KAccounts) >= 20.03.80
 BuildRequires:  cmake(KF5DocTools) >= 5.48.0
@@ -54,7 +61,7 @@ This can be Dolphin or Gwenview or Konqueror.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -67,13 +74,13 @@ This can be Dolphin or Gwenview or Konqueror.
 %license COPYING
 %doc README.md README.packagers
 %doc %lang(en) %{_kf5_htmldir}/en/kioslave5/gdrive/
+%dir %{_kf5_sharedir}/remoteview
+%{_kf5_appstreamdir}/org.kde.kio_gdrive.metainfo.xml
+%{_kf5_notifydir}/gdrive.notifyrc
 %{_kf5_plugindir}/kaccounts/
 %{_kf5_plugindir}/kf5/
-%dir %{_datadir}/remoteview
-%{_datadir}/remoteview/gdrive-network.desktop
-%{_kf5_appstreamdir}/org.kde.kio_gdrive.metainfo.xml
-%{_datadir}/accounts/
-%{_kf5_notifydir}/gdrive.notifyrc
+%{_kf5_sharedir}/accounts/
+%{_kf5_sharedir}/remoteview/gdrive-network.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
