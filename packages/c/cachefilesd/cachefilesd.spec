@@ -1,7 +1,7 @@
 #
 # spec file for package cachefilesd
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cachefilesd
-Version:        0.10.5
+Version:        0.10.10
 Release:        0
 Summary:        CacheFiles userspace management daemon
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Daemons
-Url:            http://people.redhat.com/~dhowells/fscache/
+URL:            https://people.redhat.com/~dhowells/fscache/
 Source:         http://people.redhat.com/~dhowells/fscache/%{name}-%{version}.tar.bz2
 Patch0:         cachefilesd-autotools.patch
 Patch1:         cachefilesd-config.patch
 Patch2:         cachefilesd-loadmod.patch
 Patch3:         cachefilesd-monitoring-howto-update.patch
-Patch4:         fix-cpu-spin.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libkmod-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
 %description
@@ -47,16 +45,15 @@ caching framework for mounted filesystems.
 %patch1
 %patch2
 %patch3 -p1
-%patch4 -p1
-autoreconf -fiv
 
 %build
+autoreconf -fiv
 %configure \
     --with-systemdsystemunitdir=%{_unitdir}
-make %{?_smp_mflags} %{?smp_mflags}
+%make_build %{?smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 mkdir -p %{buildroot}%{_localstatedir}/cache/fscache
 install -m 644 cachefilesd.service %{buildroot}%{_unitdir}/cachefilesd.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -74,7 +71,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %service_del_postun %{name}.service
 
 %files
-%defattr(-, root, root)
 %doc README *.txt
 %{_mandir}/man?/*
 %{_sbindir}/cachefilesd

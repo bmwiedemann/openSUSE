@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 12:45:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.10:
+  * no changelog available 
+  - remove fix-cpu-spin.patch (solved differently upstream)
+
+-------------------------------------------------------------------
 Mon Oct  5 00:00:00 CEST 2015 - bmwiedemann@suse.de
 
 - replace sources with compressed tarball

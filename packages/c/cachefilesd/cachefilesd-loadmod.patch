@@ -1,6 +1,8 @@
+Index: cachefilesd.c
+===================================================================
 --- cachefilesd.c.orig
 +++ cachefilesd.c
-@@ -50,6 +50,7 @@
+@@ -53,6 +53,7 @@
  #include <sys/time.h>
  #include <sys/vfs.h>
  #include <sys/stat.h>
@@ -8,17 +10,17 @@
  
  typedef enum objtype {
  	OBJTYPE_INDEX,
-@@ -278,6 +279,9 @@ int main(int argc, char *argv[])
- 	char *line, *cp;
+@@ -292,6 +293,9 @@ int main(int argc, char *argv[])
  	long page_size;
- 	int _cachefd, nullfd, opt, loop, open_max, nodaemon = 0;
+ 	int _cachefd, nullfd, opt, loop, open_max;
+ 	bool nodaemon = false;
 +	struct kmod_ctx *ctx;
 +	struct kmod_module *mod;
 +	int kmod_status;
  
  	/* handle help request */
  	if (argc == 2 && strcmp(argv[1], "--help") == 0)
-@@ -344,6 +348,29 @@ int main(int argc, char *argv[])
+@@ -366,6 +370,29 @@ int main(int argc, char *argv[])
  	/* just in case... */
  	sync();
  
@@ -48,6 +50,8 @@
  	/* open the devfile or the procfile on fd 3 */
  	_cachefd = open(devfile, O_RDWR);
  	if (_cachefd < 0) {
+Index: configure.ac
+===================================================================
 --- configure.ac.orig
 +++ configure.ac
 @@ -29,6 +29,8 @@ AC_SUBST([systemdsystemunitdir], [$with_
@@ -59,6 +63,8 @@
  # Checks for typedefs, structures, and compiler characteristics.
  AC_TYPE_SIZE_T
  AC_TYPE_SSIZE_T
+Index: Makefile.am
+===================================================================
 --- Makefile.am.orig
 +++ Makefile.am
 @@ -8,7 +8,8 @@ endif

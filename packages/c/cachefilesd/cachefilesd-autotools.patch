@@ -1,3 +1,5 @@
+Index: configure.ac
+===================================================================
 --- /dev/null
 +++ configure.ac
 @@ -0,0 +1,42 @@
@@ -43,6 +45,8 @@
 +
 +AC_CONFIG_FILES([Makefile])
 +AC_OUTPUT
+Index: Makefile.am
+===================================================================
 --- /dev/null
 +++ Makefile.am
 @@ -0,0 +1,14 @@
@@ -61,6 +65,8 @@
 +dist_man8_MANS = cachefilesd.8
 +dist_man5_MANS = cachefilesd.conf.5
 \ No newline at end of file
+Index: cachefilesd.c
+===================================================================
 --- cachefilesd.c.orig
 +++ cachefilesd.c
 @@ -27,9 +27,10 @@
@@ -69,12 +75,14 @@
  
 +#include "config.h"
 +
- #define CACHEFILESD_VERSION "0.10.2"
+ #define CACHEFILESD_VERSION "0.10.10"
  
 -#define _GNU_SOURCE
  #include <stdarg.h>
+ #include <stdbool.h>
  #include <stdio.h>
- #include <stdlib.h>
+Index: cachefilesd.service
+===================================================================
 --- cachefilesd.service.orig
 +++ cachefilesd.service
 @@ -2,9 +2,7 @@
@@ -83,7 +91,7 @@
  [Service]
 -Type=simple
 -ExecStartPre=-/sbin/modprobe -qab cachefiles
--ExecStart=/sbin/cachefilesd -n -f /etc/cachefilesd.conf
+-ExecStart=/usr/sbin/cachefilesd -n -f /etc/cachefilesd.conf
 +ExecStart=/usr/sbin/cachefilesd -s -n
  
  [Install]
