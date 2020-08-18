@@ -18,7 +18,7 @@
 
 %define _libver 4
 Name:           qhexedit2
-Version:        0.8.7
+Version:        0.8.9
 Release:        0
 Summary:        Qt-based hex editor
 License:        LGPL-2.0-only
