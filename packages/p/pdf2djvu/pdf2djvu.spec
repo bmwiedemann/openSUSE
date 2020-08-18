@@ -17,7 +17,7 @@
 
 
 Name:           pdf2djvu
-Version:        0.9.17
+Version:        0.9.17.1
 Release:        0
 Summary:        PDF to DjVu Converter
 License:        GPL-2.0-only
