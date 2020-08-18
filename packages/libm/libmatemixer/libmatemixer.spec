@@ -19,7 +19,7 @@
 %define sover   0
 %define _version 1.24
 Name:           libmatemixer
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        Mixer library for MATE Desktop
 License:        LGPL-2.1-or-later
