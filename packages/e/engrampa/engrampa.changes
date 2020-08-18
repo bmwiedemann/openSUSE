@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * Avoid memory leak in java utils.
+  * build: Silent build warnings for distcheck.
+  * engrampa.appdata.xml: Recursive acronyms for .iso, .rpm
+    filetypes.
+  * autoconf: Get zstd mime type using libmagic if enabled.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.2):
