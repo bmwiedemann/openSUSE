@@ -696,4 +696,12 @@
     <comment>20.04.3 release</comment>
     <requestid>820204</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>c47a435a8891a24ee13eba6a8f595271</srcmd5>
+    <version>20.08.0</version>
+    <time>1597744705</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826421</requestid>
+  </revision>
 </revisionlist>
