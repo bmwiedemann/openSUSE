@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  7 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update splitmix to version 0.1.0.1.
+  # 0.1.0.1
+
+  - Add `INLINEABLE` pragmas to `bitmaskWithRejection*` functions
+  - Support GHC-9.0
+
+-------------------------------------------------------------------
 Tue Jul  7 11:19:12 UTC 2020 - psimons@suse.com
 
 - Update splitmix to version 0.1.
