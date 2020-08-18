@@ -46,6 +46,7 @@ Patch2:         feature-suse-disable-offline-menu.patch
 Patch3:         feature-wizard-auto-lang.patch
 Patch4:         feature-wizard-keylayout-from-sys.patch
 Patch5:         feature-qt-apps-gtk2-theme.patch
+Patch6:         libddcutil.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -86,8 +87,13 @@ Requires:       efl
 Requires:       elementary
 Requires:       enlightenment-branding = 0.1
 Requires:       evas-generic-loaders
+%if 0%{?suse_version} > 1500
+# dlopened at runtime
+Requires:       libddcutil3
+%else
 # dlopened at runtime
 Requires:       libddcutil2
+%endif
 # Require a Icon theme that will be detected by enlghtenment
 Requires:       oxygen-icon-theme
 # We use xdg-terminal, xdg-open and xdg-su in various places
@@ -170,7 +176,6 @@ Development files of Enlightenment package.
 
 %package branding-upstream
 Summary:        Enlightenment files for upstream branding
-# this uses elementary version number not enlightenment
 Group:          System/GUI/Other
 Requires:       enlightenment-theme-upstream
 Conflicts:      terminology-theme-openSUSE
@@ -211,6 +216,9 @@ Documentation of Enlightenment in form of man pages.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%if 0%{?suse_version} > 1500
+%patch6 -p1
+%endif
 
 # Copy In new Network Wizard
 rm src/modules/wizard/page_110.c

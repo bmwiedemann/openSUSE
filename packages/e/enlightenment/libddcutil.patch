@@ -1,0 +1,13 @@
+Index: enlightenment-0.24.2/src/bin/system/e_system_ddc.c
+===================================================================
+--- enlightenment-0.24.2.orig/src/bin/system/e_system_ddc.c
++++ enlightenment-0.24.2/src/bin/system/e_system_ddc.c
+@@ -302,7 +302,7 @@ err:
+ static Eina_Bool
+ _ddc_init(void)
+ {
+-   ddc_lib = dlopen("libddcutil.so.2", RTLD_NOW | RTLD_LOCAL);
++   ddc_lib = dlopen("libddcutil.so.3", RTLD_NOW | RTLD_LOCAL);
+    if (!ddc_lib) return EINA_FALSE;
+ #define SYM(_x) \
+    do { \
