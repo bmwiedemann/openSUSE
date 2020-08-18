@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pylast
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        A python interface to Last.fm
 License:        Apache-2.0

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  7 13:57:07 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 3.3.0
+  * `User.get_now_playing`: Add album and cover image to info (#330) @hugovk
+  * Improve handling of error responses from the API (#327) @spiritualized
+  * Deprecate `Artist.get_cover_image`, they're no longer available from Last.fm (#332) @hugovk
+  * Fix `artist.get_bio_content()` to return `None` if bio is empty (#326) @hugovk
+
+-------------------------------------------------------------------
 Fri Mar 20 11:07:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 3.2.1
