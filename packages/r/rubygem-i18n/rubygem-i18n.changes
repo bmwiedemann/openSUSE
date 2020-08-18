@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:46:18 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.8.5
+
+  * Fixed an issue where users could not use their own custom fallback classes - #536
+
+  1.8.4:
+
+  * Fixed issue where fallbacks were not working when I18n.fallbacks was an array - #534
+  * Fixed conditional around deprecating constant of INTERPOLATION_PATTERN - #531
+
+-------------------------------------------------------------------
 Fri Jun  5 10:15:22 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.8.3
