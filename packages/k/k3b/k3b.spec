@@ -21,7 +21,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application for KDE
 License:        GPL-2.0-or-later
@@ -137,15 +137,9 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 
 %fdupes -s %{buildroot}
 
-%post
-/sbin/ldconfig
-%desktop_database_post
-%icon_theme_cache_post
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%desktop_database_postun
-%icon_theme_cache_postun
+%postun -p /sbin/ldconfig
 
 %files
 %license COPYING*
