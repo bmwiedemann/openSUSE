@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:09:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- No code change since 20.07.80
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 20.04.3:
+  * Const'ify
+  * Fix coding style
+  * Port to QRandomGenerator from KRandom::random
+  * We depend against kf5.71
+  * USe QVector
+  * Add missing Q_REQUIRED_RESULT
+  * Make it compile against 5.71 without deprecated method
+  * Fix error during merging
+  * Use QLatin1Char('/') here
+  * Fix includes. Use uppercase includes
+
+-------------------------------------------------------------------
 Thu Jul  9 20:09:34 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
