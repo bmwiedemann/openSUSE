@@ -495,4 +495,12 @@
     <comment>20.04.3 release</comment>
     <requestid>820291</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9bd85a22bc6f4daf9abb5c7b59f46912</srcmd5>
+    <version>20.08.0</version>
+    <time>1597751999</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826511</requestid>
+  </revision>
 </revisionlist>
