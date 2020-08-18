@@ -698,4 +698,12 @@ I would be grateful.
     <comment>20.04.3 release</comment>
     <requestid>820174</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>086ffd08436b4ed910c3ba6825a76945</srcmd5>
+    <version>20.08.0</version>
+    <time>1597751857</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826394</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:08:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * Fix clip monitor zoom not reset when changing clip, and zone incorrect on zoom
+  * Missing fix for FreeBSD in last commit (fix broken localization)
+  * Attempt to fix UI translations broken. (kde#424967)
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes since 20.04.3, only listing bugfixes:
+  * Ensure auto-saved file is newer than project before proposing to recover data. (kde#424016)
+  * Archive project: fix clip with speed effect url not updated, resulting in missing clip message. (kde#422135)
+  * integrate clip rating with undo/redo. (kde#421552)
+  * Locate clip: select file in file manager (kde#421365)
+  * Fix glitch in bin item selection, causing some actions to be disabled (kde#420628)
+  * Fix freeze when changing bin selection (kde#419604)
+
+-------------------------------------------------------------------
 Thu Jul  9 20:09:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3

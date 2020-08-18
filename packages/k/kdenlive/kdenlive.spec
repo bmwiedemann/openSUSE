@@ -19,12 +19,12 @@
 %define mlt_version 6.20.0
 %define melt_path %(pkg-config --variable=meltbin mlt-framework)
 %define mlt_soname %(pkg-config --variable=moduledir mlt-framework | sed 's/.*-\\([0-9]\\+\\)/\\1/')
-%define kf5_version 5.45.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -128,16 +128,6 @@ work.
 %endif
 %fdupes -s %{buildroot}
 rm -fr %{buildroot}%{_datadir}/doc/Kdenlive
-
-%post
-%icon_theme_cache_post
-%mime_database_post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%mime_database_postun
-%icon_theme_cache_postun
 
 %files
 %defattr(0644,root,root,0755)
