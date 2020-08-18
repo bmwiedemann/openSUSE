@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akregator
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
@@ -119,7 +119,8 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %{_kf5_libdir}/libakregatorprivate.so.*
 %{_kf5_notifydir}/akregator.notifyrc
 %{_kf5_plugindir}/akregator*.so
-%{_kf5_plugindir}/kontact_akregatorplugin.so
+%dir %{_kf5_plugindir}/kontact5/
+%{_kf5_plugindir}/kontact5/kontact_akregatorplugin.so
 %{_kf5_servicesdir}/akregator_*.desktop
 %{_kf5_servicesdir}/feed.protocol
 %{_kf5_servicesdir}/kontact/
