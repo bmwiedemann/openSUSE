@@ -17,7 +17,7 @@
 
 
 Name:           zutils
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Collection of utilities for dealing with compressed files
 License:        GPL-2.0-or-later

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 17 11:55:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.9:
+  * zcmp.cc zdiff.cc: Read standard input only if requested.
+  * zdiff.cc (main): Pass options '-W' and '-y' to diff.
+  * zutils.cc (test_format): Detect bzip2 and lzip files better.
+  * ztest.cc (main): Continue testing if any input file is a terminal.
+  If verbosity >= 1, print number of files that failed the test.
+  * zcat.cc zgrep.cc ztest.cc (main): Check return value of close( infd ).
+  * zutils.cc (good_status): Ignore trailing data remaining in feeder.
+  * zupdate.cc (zupdate_file): Support new and old lzip option '-o'.
+  Keep combined extensions: tgz, tbz, tbz2, txz --> tlz.
+  Quote file names in zcmp_command to allow file names with spaces.
+  * *.cc (main): Set a valid invocation_name even if argc == 0.
+  * zutils.texi: Improve descriptions of zcat, zcmp, and zdiff.
+
+-------------------------------------------------------------------
 Wed Apr 22 06:23:09 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.8:
