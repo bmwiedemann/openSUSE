@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mailimporter
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM
 License:        GPL-2.0-or-later
@@ -36,8 +36,10 @@ BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5PimCommonAkonadi)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
