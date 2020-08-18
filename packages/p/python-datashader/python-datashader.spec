@@ -24,7 +24,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-datashader
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause

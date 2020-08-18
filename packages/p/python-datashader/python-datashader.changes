@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:55:28 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.11.1:
+  * Fixes support for cuDF 0.13 and Numba 0.48 (#933)
+  * Fixes for cuDF support on Numba>=0.51 (#934, #947)
+  * Fixes tile generation using aggregators with output of boolean
+    dtype (#949)
+  * Fixes for CI and build infrastructure (#935, #948, #951)
+  * Updates to docstrings (b1349e3, #950)
+
+-------------------------------------------------------------------
 Wed May 27 07:06:34 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.11.0
