@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           messagelib
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -124,7 +124,7 @@ This package contains source headers for messagelib.
 %postun -p /sbin/ldconfig
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5MessageComposer/
 %{_kf5_cmakedir}/KF5MessageCore/
 %{_kf5_cmakedir}/KF5MessageList/
@@ -143,7 +143,7 @@ This package contains source headers for messagelib.
 %{_kf5_mkspecsdir}/qt_*.pri
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/messagelib.categories
 %{_kf5_debugdir}/messagelib.renamecategories
 %{_kf5_knsrcfilesdir}/messageviewer_header_themes.knsrc
@@ -167,7 +167,7 @@ This package contains source headers for messagelib.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:10:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * Fix some SPDX license identifiers
+
+-------------------------------------------------------------------
+Sun Aug  2 08:01:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Make sure that url is not empty
+  * Fix crash
+  * Fix size threshold for "big email" codepath (kde#387061)
+  * Only search for KF5AkonadiContact once
+  * Use KF5_MIN_VERSION to find KF5NewStuff, not KMIME_LIB_VERSION
+  * Fix crash when we reply to an invalid email
+
+-------------------------------------------------------------------
+Sun Jul 19 10:06:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes since 20.04.3, only listing bugfixes:
+  * Add field "Folder" to theme content items and to message tool tip (kde#420644)
+
+-------------------------------------------------------------------
 Thu Jul  9 20:11:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
