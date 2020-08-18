@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 09:09:15 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Tweak Cabal file to accept latest ansi-terminal version.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:13:42 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.

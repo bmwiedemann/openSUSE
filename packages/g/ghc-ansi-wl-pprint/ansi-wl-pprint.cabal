@@ -1,7 +1,7 @@
 cabal-version:       >= 1.10
 name:                ansi-wl-pprint
 version:             0.6.9
-x-revision:          1
+x-revision:          2
 
 category:            User Interfaces, Text
 synopsis:            The Wadler/Leijen Pretty Printer for colored ANSI terminal output
@@ -46,7 +46,7 @@ library
     -- see also notes in Text.PrettyPrint.ANSI.Leijen
     build-depends: semigroups >= 0.18.5 && < 0.20
 
-  build-depends: ansi-terminal >= 0.9.1 && < 0.11
+  build-depends: ansi-terminal >= 0.9.1 && < 0.12
   build-depends: base >= 4.3 && < 5
 
   if impl(ghc >= 7.4)
