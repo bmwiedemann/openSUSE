@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 16 02:31:58 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite, replacing nose with pytest
+
+-------------------------------------------------------------------
 Fri Oct 18 12:17:58 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.5.1

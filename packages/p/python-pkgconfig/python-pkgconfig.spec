@@ -1,7 +1,7 @@
 #
 # spec file for package python-pkgconfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,14 @@ Release:        0
 Summary:        Interface Python with pkg-config
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/matze/pkgconfig
-Source:         https://files.pythonhosted.org/packages/source/p/pkgconfig/pkgconfig-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+URL:            https://github.com/matze/pkgconfig
+Source:         https://github.com/matze/pkgconfig/archive/v%{version}.tar.gz#/pkgconfig-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       pkgconfig
 BuildArch:      noarch
@@ -40,6 +42,7 @@ command line tool and supports Python 2.6+.
 
 %prep
 %setup -q -n pkgconfig-%{version}
+%dephell_gensetup
 
 %build
 %python_build
@@ -47,6 +50,9 @@ command line tool and supports Python 2.6+.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %license LICENSE
