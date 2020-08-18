@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 10 08:46:55 UTC 2020 - psimons@suse.com
+
+- Update ghc-lib-parser-ex to version 8.10.0.16.
+  ## 8.10.0.16 released 2020-08-08
+  - Update to ghc-8.10.2.
+
+  ## 0.20200801 released 2020-08-01
+  - Update to `ghc-lib-0.20200801`
+
+  ## 8.8.6.1 released 2020-07-16
+
+  ## 0.20200704 released 2020-07-04
+  - New function `isImportQualifiedPost`
+
+-------------------------------------------------------------------
 Mon Jul  6 13:50:59 UTC 2020 - psimons@suse.com
 
 - Update ghc-lib-parser-ex to version 8.10.0.15.
