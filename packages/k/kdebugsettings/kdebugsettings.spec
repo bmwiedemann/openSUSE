@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdebugsettings
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later
@@ -77,12 +77,11 @@ from verbose to completely silent.
 %files
 %license COPYING*
 %{_kf5_appstreamdir}/org.kde.kdebugsettings.appdata.xml
-%{_kf5_debugdir}/kde.categories
 %{_kf5_debugdir}/kde.renamecategories
 %{_kf5_applicationsdir}/org.kde.kdebugsettings.desktop
 %{_kf5_bindir}/kdebugsettings
 %{_kf5_debugdir}/kdebugsettings.categories
-%{_kf5_libdir}/libkdebugsettings.so.%{version}
+%{_kf5_libdir}/libkdebugsettings.so.*
 %{_kf5_libdir}/libkdebugsettings.so.5
 
 %if %{with lang}

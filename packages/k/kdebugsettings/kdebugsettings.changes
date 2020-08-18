@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:08:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- No code change since 20.07.80
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 20.04.3:
+  * Fix clazy compile
+  * Exclude it
+  * Fix gitlab
+  * Add file extension
+  * We depend against 5.68 now
+  * Fix warning found by cppcheck
+  * Readd it I maintain it so it's my problem
+
+-------------------------------------------------------------------
 Thu Jul  9 20:09:11 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
