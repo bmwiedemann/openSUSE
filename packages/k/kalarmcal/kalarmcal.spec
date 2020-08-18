@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalarmcal
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Library for handling kalarm calendar data
 License:        LGPL-2.1-or-later
@@ -96,13 +96,13 @@ to develop applications wanting to use kalarmcal.
 %postun -n libKF5AlarmCalendar5 -p /sbin/ldconfig
 
 %files
-%license COPYING.LIB
+%license LICENSES/*
 %doc README DESIGN.html
 %{_kf5_debugdir}/kalarmcal.categories
 %{_kf5_debugdir}/kalarmcal.renamecategories
 
 %files -n libKF5AlarmCalendar5
-%license COPYING.LIB
+%license LICENSES/*
 %doc README DESIGN.html
 %{_kf5_libdir}/libKF5AlarmCalendar.so.*
 
@@ -114,7 +114,7 @@ to develop applications wanting to use kalarmcal.
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_kalarm.desktop
 
 %files devel
-%license COPYING.LIB
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5AlarmCalendar/
 %{_kf5_libdir}/libKF5AlarmCalendar.so
 %{_kf5_includedir}/KAlarmCal/
@@ -123,7 +123,7 @@ to develop applications wanting to use kalarmcal.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
