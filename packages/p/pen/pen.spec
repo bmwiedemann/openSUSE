@@ -1,7 +1,7 @@
 #
 # spec file for package pen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pen
-Version:        0.26.1
+Version:        0.34.1
 Release:        0
 Summary:        A simple load balancer for TCP-based protocols
 License:        GPL-2.0-or-later

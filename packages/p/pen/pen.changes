@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Aug 17 20:00:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.34.1:
+  * Corrected typo in pen.c per suggestion by Belinda Liu.
+  * Merged pull request from Vincent Bernat for OpenSSL 1.1.0 compatibility.
+  * Allow setting local address for upstream connections. This fixes issue #31.
+  * Fixed issue #30: UDP not working in combination with a configuration file.
+  * In epoll.c: check for EPOLLHUP.
+  * In dsr.c: always use our real mac address, to avoid confusing switches.
+  * Cleaned up code residue surrounded by "#if 0".
+  * Added CS_HALFDEAD for UDP streams that haven't seen traffic in a while.
+  * Bug in pending_and_closing: don't modify the list we're looping over.
+  * Updated pen manpage.
+  * Added transparent UDP test case to testsuite.sh.
+  * Contribution from Talik Eichinger: add X-Forwarded-Proto when doing
+  * SSL decryption.
+  * Added tarpit test case to testsuite.sh.
+  * Tarpit functionality to be used with the DSR mode.
+  * pen.1: removed obsolete -S option, updated defaults for -x and -L.
+  * In failover_server: sanity checks to failover routine.
+  * In add_client: add the initial server to .client as well as .initial.
+  * In failover_server: changed abuse_server to ABUSE_SERVER and emerg_server
+  * to EMERG_SERVER, to handle their default NO_SERVER values.
+  * See issue #19 on Github.
+  * At the suggestion from Marcos Vinicius Rogowski, the hash algorith
+  * will now include the client port number if the -r (roundrobin)
+  * option is used. See https://github.com/UlricE/pen/pull/18
+  * Released 0.31.0.
+  * Officially released 0.30.1.
+  * Fixed IP-based client tracking.
+  * Removed unnecessary #include <pen.h> in dlist.c
+  * Released 0.30.0.
+  * Added UDP mode for Direct Server Return.
+  * Updated configure.ac for compatibility with CentOS 6.
+  * Added #ifdef around SSLv3 initialization code in ssl, as
+  * Released 0.29.0.
+  * Transparent reverse proxy support for Linux, FreeBSD and OpenBSD.
+  * Allow the client table size to be updated on the fly. Default size still 2048.
+  * Introduced the macro NO_SERVER to be used instead of -1 to signify
+  * Fixed cosmetic bug in startup code which required port to be specified
+  * Released 0.28.0.
+  * Numerous updates to support the madness that is Windows.
+  * Fix from Vincent Bernat: segfault when not using SSL.
+  * DSR support using Netmap on FreeBSD.
+  * Replaced all calls to perror with debug(..., strerror(errno);
+  * More refactoring: broke out conn.[ch], client.[ch], server.[ch],
+  * Broke out public definitions for dsr into dsr.h.
+  * Added dsr.c
+  * Bug in copy_down affecting SSL connections fixed.
+  * Updated ocsp stapling to be compatible with server name indication.
+  * SSL code broken out into ssl.[ch]. SSL context creation broken
+  * OCSP stapling. New command ssl_ocsp_response filename
+  * New command ssl_client_renegotiation_interval specifies the
+  * Enabled SSL session resumption.
+  * Added ssl_option no_tlsv1.1 and ssl_option no_tlsv1.2 to disable
+  * Released 0.27.3.
+  * Added autoconf check that the ECDHE is available and not disabled.
+  * Support for ECDHE cipher suites.
+  * New commands ssl_option and ssl_ciphers to individually disable
+  * Updated penctl.1 with the new command.
+  * New knob to tweak max number of pending nonblocking connection
+  * Released 0.27.2.
+  * Moved dlist prototypes to dlist.h.
+  * Added check to close idle connections after a period of inactivity.
+  * Moved git repository to GitHub..
+  * New feature: dummy server. Rather than acting as a proxy,
+  * Yet Another command: abort_on_error|no abort_on_error makes
+  * New feature: "reliable idling". Pen will make and maintain a
+
+-------------------------------------------------------------------
 Thu Mar 14 12:08:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Feed through spec-cleaner. Trim undesirable author list.
