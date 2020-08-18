@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -46,7 +46,6 @@ BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5FollowupReminder)
 BuildRequires:  cmake(KF5Gravatar)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -55,7 +54,6 @@ BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5KdepimDBusInterfaces)
 BuildRequires:  cmake(KF5KontactInterface)
 BuildRequires:  cmake(KF5Ldap)
 BuildRequires:  cmake(KF5LibKSieve)
@@ -73,7 +71,6 @@ BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5PimTextEdit)
-BuildRequires:  cmake(KF5SendLater)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
@@ -197,8 +194,9 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_plugindir}/kcm_kmailsummary.so
 %{_kf5_plugindir}/kcm_kontactsummary.so
 %{_kf5_plugindir}/kmailpart.so
-%{_kf5_plugindir}/kontact_kmailplugin.so
-%{_kf5_plugindir}/kontact_summaryplugin.so
+%dir %{_kf5_plugindir}/kontact5/
+%{_kf5_plugindir}/kontact5/kontact_kmailplugin.so
+%{_kf5_plugindir}/kontact5/kontact_summaryplugin.so
 %{_kf5_plugindir}/akonadi/config/archivemailagentconfig.so
 %{_kf5_plugindir}/akonadi/config/followupreminderagentconfig.so
 %{_kf5_servicesdir}/kcmkmailsummary.desktop
