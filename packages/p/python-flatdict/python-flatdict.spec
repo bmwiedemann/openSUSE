@@ -26,7 +26,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/gmr/flatdict
 Source:         https://github.com/gmr/flatdict/archive/%{version}.tar.gz#/flatdict-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module nose2}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +48,7 @@ Python module for interacting with nested dicts as a single level dict with deli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m nose
+%pytest tests.py
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst
