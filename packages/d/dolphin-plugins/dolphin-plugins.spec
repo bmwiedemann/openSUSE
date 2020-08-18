@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin-plugins
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Version control plugins for Dolphin
 License:        GPL-2.0-or-later
@@ -32,11 +32,13 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(DolphinVcs)
+BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
@@ -77,6 +79,7 @@ RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %license COPYING*
 %dir %{_kf5_configkcfgdir}
+%dir %{_kf5_plugindir}/kf5/kfileitemaction
 %{_kf5_appstreamdir}/org.kde.dolphin-plugins.metainfo.xml
 %{_kf5_configkcfgdir}/fileviewgitpluginsettings.kcfg
 %{_kf5_configkcfgdir}/fileviewhgpluginsettings.kcfg
@@ -86,6 +89,7 @@ RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_plugindir}/fileviewgitplugin.so
 %{_kf5_plugindir}/fileviewhgplugin.so
 %{_kf5_plugindir}/fileviewsvnplugin.so
+%{_kf5_plugindir}/kf5/kfileitemaction/mountisoaction.so
 %{_kf5_servicesdir}/fileviewbazaarplugin.desktop
 %{_kf5_servicesdir}/fileviewdropboxplugin.desktop
 %{_kf5_servicesdir}/fileviewgitplugin.desktop
