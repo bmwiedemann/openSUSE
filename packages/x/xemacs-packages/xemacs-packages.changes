@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 06:32:32 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add par and info to requirement at build time 
+
+-------------------------------------------------------------------
 Mon Jul  3 13:03:20 UTC 2017 - bwiedemann@suse.com
 
 - Use gzip -n to not add timestamps to .gz headers
