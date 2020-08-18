@@ -20,7 +20,7 @@
 %define _version 1.24
 %define sover   4
 Name:           libmatekbd
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        MATE Desktop keyboard configuration libraries
 License:        LGPL-2.1-or-later
@@ -96,7 +96,6 @@ NOCONFIGURE=1 mate-autogen
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
-
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
