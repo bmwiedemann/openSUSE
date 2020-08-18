@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 10 08:12:10 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use wxGTK3 instead of wxWidgets (GTK2), for better HiDPI and
+  Wayland support.
+
+-------------------------------------------------------------------
 Tue Jun 16 12:09:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - This is mainly a cosmetic update so that the package gets rebuilt

@@ -51,7 +51,7 @@ BuildRequires:  openvdb-devel >= 5
 BuildRequires:  openvdb-tools
 BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-devel >= 3.1
+BuildRequires:  wxGTK3-devel >= 3.1
 BuildRequires:  pkgconfig(libudev)
 Requires:       noto-sans-fonts
 
@@ -73,7 +73,8 @@ sed -i 's/UNKNOWN/OpenSUSE/' version.inc
   export CFLAGS="%optflags -mfpmath=sse -msse2"
   export CXXFLAGS="$CFLAGS"
 %endif
-%cmake -DSLIC3R_FHS=1
+%cmake -DSLIC3R_FHS=1 \
+  -DSLIC3R_GTK=3
 %cmake_build
 
 %install
