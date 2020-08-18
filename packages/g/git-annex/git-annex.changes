@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Tue Aug 11 02:00:33 UTC 2020 - psimons@suse.com
+
+- Update git-annex to version 8.20200810.
+  git-annex (8.20200810) upstream; urgency=medium
+
+    * Added support for external backend programs. So if you want a hash
+      that git-annex doesn't support, or something stranger, you can write a
+      small program to implement it.
+    * Fix a bug in find --branch in the previous version.
+    * importfeed: Fix reversion that caused some '.' in filenames to be
+      replaced with '_'
+    * Fix a lock file descriptor leak that could occur when running commands
+      like git-annex add with -J. Bug was introduced as part of a different FD
+      leak fix in version 6.20160318.
+    * Fix a hang when using git-annex with an old openssh 7.2p2, which had
+      some weird inheriting of ssh FDs by sshd. Bug was introduced in
+      git-annex version 7.20200202.7.
+    * move, copy --to: Sped up seeking files by 2x.
+    * drop: Sped up seeking files to drop by 2x, and also some performance
+      improvements to checking numcopies.
+    * Deal with unusual IFS settings in the shell scripts for linux
+      standalone and OSX app.
+      Thanks, Yaroslav Halchenko
+    * Avoid complaining that a file with "is beyond a symbolic link"
+      when the filepath is absolute and the symlink in question is not
+      actually inside the git repository.
+    * Slightly sped up the linux standalone bundle.
+    * Support building with dlist-1.0
+
+- Drop obsolete 0001-fix-build-with-dlist-1.0.patch.
+
+-------------------------------------------------------------------
+Thu Aug  6 07:58:47 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Apply 0001-fix-build-with-dlist-1.0.patch to add support for
+  building with dlist version 1.x.
+
+-------------------------------------------------------------------
+Tue Jul 21 08:29:13 UTC 2020 - psimons@suse.com
+
+- Update git-annex to version 8.20200720.1.
+  git-annex (8.20200720.1) upstream; urgency=medium
+
+    * Fix a bug in find --batch in the previous version.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 20 Jul 2020 19:39:11 -0400
+
+  git-annex (8.20200720) upstream; urgency=medium
+
+    * import: Added --no-content option, which avoids downloading files
+      from a special remote. Currently only supported by the directory
+      special remote.
+    * Honor annex.largefiles when importing a tree from a special remote.
+      (Except for when --no-content is used.)
+    * Fix a deadlock that could occur after git-annex got an unlocked
+      file, causing the command to hang indefinitely. Known to happen on
+      vfat filesystems, possibly others.
+    * Build with the http-client-restricted and git-lfs libraries when
+      available, otherwise use the vendored copy as before.
+    * testremote: Fix over-allocation of resources and bad caching,
+      including starting up a large number of external special remote processes.
+      (Regression introduced in version 8.20200501)
+    * test: Fix some test cases that assumed git's default branch name.
+    * importfeed: Added some additional --template variables:
+      itempubyear, itempubmonth, itempubday, itempubhour,
+      itempubminute, itempubsecond.
+    * Made several special remotes support locking content on them,
+      which allows dropping from other special remotes in some situations
+      where it was not possible before. Supported special remotes:
+      S3 (with versioning=yes), git-lfs, tahoe
+    * Fix reversion that broke passing annex.* and remote.*.annex-*
+      git configs with -c. (Since version 8.20200330.)
+    * Bring back git-annex branch read cache. This speeds up some operations,
+      eg git-annex sync --content --all gets 20% faster.
+    * Fix a recently introduced bug that could cause a "fork: resource exhausted"
+      after getting several thousand files.
+    * Sped up the --all option by 2x to 16x by using git cat-file --buffer.
+      Thanks to Lukey for finding this optimisation.
+    * Sped up seeking for annexed files to operate on by a factor of nearly 2x.
+    * Sped up sync --content by 2x and other commands like fsck --fast and
+      whereis by around 50%, by using git cat-file --buffer.
+    * importfeed: Made checking known urls step around 15% faster.
+    * fsck: Detect if WORM keys contain a carriage return, and recommend
+      upgrading the key. (git-annex could have maybe created such keys back
+      in 2013).
+    * When on an adjust --hide-missing branch, fix handling of files that
+      have been deleted but the deletion is not yet staged.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 20 Jul 2020 14:40:51 -0400
+
+-------------------------------------------------------------------
 Thu Jun 18 02:00:26 UTC 2020 - psimons@suse.com
 
 - Update git-annex to version 8.20200617.
