@@ -731,4 +731,12 @@ Please add to Staging:I project where giflib 5.1.0 is being tested.</comment>
     <comment>20.04.3 release</comment>
     <requestid>820242</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>1253f878568f89d0942e19b123fb1e85</srcmd5>
+    <version>20.08.0</version>
+    <time>1597744750</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826462</requestid>
+  </revision>
 </revisionlist>
