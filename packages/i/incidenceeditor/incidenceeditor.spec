@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           incidenceeditor
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -47,6 +47,7 @@ BuildRequires:  cmake(KF5Ldap)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5PimCommonAkonadi)
 BuildRequires:  cmake(Qt5Test) >= 5.4.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 Recommends:     %{name}-lang
