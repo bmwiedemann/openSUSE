@@ -25,9 +25,12 @@ Summary:        A linter for prose
 License:        BSD-3-Clause
 URL:            https://github.com/amperser/proselint
 Source:         https://files.pythonhosted.org/packages/source/p/proselint/proselint-%{version}.tar.gz
-# test_weasel_words_misc is empty in this release, and `setup.py test` doesnt recognise nose's SkipTest
+# test_weasel_words_misc is empty in release v0.10.2, and contains nose.SkipTest
 Patch0:         disable-empty-test.patch
 Patch1:         test-use-sys-executable.patch
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#amperser/proselint#1097 mcepl@suse.com
+# this patch makes things totally awesome
+Patch2:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,19 +38,19 @@ Requires:       python-click
 Requires:       python-dbm
 Requires:       python-future
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 %if %{with python2}
 BuildRequires:  python-mock
 %endif
 # /SECTION
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -60,8 +63,8 @@ existing tools.
 
 %prep
 %setup -q -n proselint-%{version}
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
+
 sed -i -e '/^#!\//, 1d' proselint/*.py
 
 %build
@@ -72,14 +75,18 @@ sed -i -e '/^#!\//, 1d' proselint/*.py
 %python_clone -a %{buildroot}%{_bindir}/proselint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-%python_exec setup.py test
-
 %post
 %python_install_alternative proselint
 
 %postun
 %python_uninstall_alternative proselint
+
+%check
+mkdir ~/bin
+export PATH=~/bin:$PATH
+%{python_expand cp %{buildroot}%{_bindir}/proselint-%{$python_bin_suffix} ~/bin/proselint
+PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest
+}
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
