@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           palapeli
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Jigsaw puzzle game
 License:        GPL-2.0-or-later
@@ -97,13 +97,9 @@ This package contains the development files for Palapeli.
 %endif
   %suse_update_desktop_file -r org.kde.palapeli          Game BoardGame
 
-%post
-/sbin/ldconfig
-%mime_database_post
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%mime_database_postun
+%postun -p /sbin/ldconfig
 
 %files
 %license COPYING*
