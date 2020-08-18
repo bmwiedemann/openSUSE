@@ -1,0 +1,124 @@
+From 1588abed3fb4a43b26b4a28736894e8410028e26 Mon Sep 17 00:00:00 2001
+From: Roberto De Almeida <roberto@dealmeida.net>
+Date: Fri, 12 Oct 2018 22:36:24 -0700
+Subject: [PATCH 1/3] Fix unit tests in Python 3.5
+
+---
+ src/pydap/handlers/dap.py               | 12 ++++++------
+ src/pydap/lib.py                        | 15 +++++++++++----
+ src/pydap/tests/test_lib.py             |  3 +++
+ src/pydap/tests/test_responses_ascii.py |  1 -
+ 4 files changed, 20 insertions(+), 11 deletions(-)
+
+Index: Pydap-3.2.2/src/pydap/handlers/dap.py
+===================================================================
+--- Pydap-3.2.2.orig/src/pydap/handlers/dap.py
++++ Pydap-3.2.2/src/pydap/handlers/dap.py
+@@ -323,7 +323,7 @@ def unpack_sequence(stream, template):
+         dtype = np.dtype([("", c.dtype, c.shape) for c in cols])
+         marker = stream.read(4)
+         while marker == START_OF_SEQUENCE:
+-            rec = np.fromstring(stream.read(dtype.itemsize), dtype=dtype)[0]
++            rec = np.frombuffer(stream.read(dtype.itemsize), dtype=dtype)[0]
+             if not sequence:
+                 rec = rec[0]
+             yield rec
+@@ -363,14 +363,14 @@ def convert_stream_to_list(stream, parse
+     out = []
+     response_dtype = DAP2_response_dtypemap(parser_dtype)
+     if shape:
+-        n = np.fromstring(stream.read(4), DAP2_ARRAY_LENGTH_NUMPY_TYPE)[0]
++        n = np.frombuffer(stream.read(4), DAP2_ARRAY_LENGTH_NUMPY_TYPE)[0]
+         count = response_dtype.itemsize * n
+         if response_dtype.char in 'S':
+             # Consider on 'S' and not 'SU' because
+             # response_dtype.char should never be
+             data = []
+             for _ in range(n):
+-                k = np.fromstring(stream.read(4),
++                k = np.frombuffer(stream.read(4),
+                                   DAP2_ARRAY_LENGTH_NUMPY_TYPE)[0]
+                 data.append(stream.read(k))
+                 stream.read(-k % 4)
+@@ -380,7 +380,7 @@ def convert_stream_to_list(stream, parse
+             stream.read(4)  # read additional length
+             try:
+                 out.append(
+-                    np.fromstring(
++                    np.frombuffer(
+                         stream.read(count), response_dtype)
+                     .astype(parser_dtype).reshape(shape))
+             except ValueError as e:
+@@ -403,13 +403,13 @@ def convert_stream_to_list(stream, parse
+         # Consider on 'S' and not 'SU' because
+         # response_dtype.char should never be
+         # 'U'
+-        k = np.fromstring(stream.read(4), DAP2_ARRAY_LENGTH_NUMPY_TYPE)[0]
++        k = np.frombuffer(stream.read(4), DAP2_ARRAY_LENGTH_NUMPY_TYPE)[0]
+         out.append(text_type(stream.read(k).decode('ascii')))
+         stream.read(-k % 4)
+     # usual data
+     else:
+         out.append(
+-            np.fromstring(stream.read(response_dtype.itemsize), response_dtype)
++            np.frombuffer(stream.read(response_dtype.itemsize), response_dtype)
+             .astype(parser_dtype)[0])
+         if response_dtype.char == "B":
+             # Unsigned Byte type is packed to multiples of 4 bytes:
+Index: Pydap-3.2.2/src/pydap/lib.py
+===================================================================
+--- Pydap-3.2.2.orig/src/pydap/lib.py
++++ Pydap-3.2.2/src/pydap/lib.py
+@@ -1,10 +1,11 @@
+ """Basic functions related to the DAP spec."""
+ import operator
+ 
++import numpy as np
+ from pkg_resources import get_distribution
+ from six.moves.urllib.parse import quote as quote_
+ from six.moves import reduce, zip_longest
+-from six import binary_type, MAXSIZE
++from six import binary_type, MAXSIZE, string_types
+ 
+ from .exceptions import ConstraintExpressionError
+ 
+@@ -123,6 +124,13 @@ def quote(name):
+ 
+ def encode(obj):
+     """Return an object encoded to its DAP representation."""
++    # fix for Python 3.5, where strings are being encoded as numbers
++    if (
++        isinstance(obj, string_types) or
++        isinstance(obj, np.ndarray) and obj.dtype.char in 'SU'
++    ):
++        return '"{0}"'.format(obj)
++
+     try:
+         return '%.6g' % obj
+     except:
+Index: Pydap-3.2.2/src/pydap/tests/test_lib.py
+===================================================================
+--- Pydap-3.2.2.orig/src/pydap/tests/test_lib.py
++++ Pydap-3.2.2/src/pydap/tests/test_lib.py
+@@ -66,6 +66,9 @@ class TestEncode(unittest.TestCase):
+         """Other objects are encoded according to their ``repr``."""
+         self.assertEqual(encode({}), '"{}"')
+ 
++    def test_numpy_string(self):
++        self.assertEqual(encode(np.array('1', dtype='<U1')), '"1"')
++
+ 
+ class TestFixSlice(unittest.TestCase):
+ 
+Index: Pydap-3.2.2/src/pydap/tests/test_responses_ascii.py
+===================================================================
+--- Pydap-3.2.2.orig/src/pydap/tests/test_responses_ascii.py
++++ Pydap-3.2.2/src/pydap/tests/test_responses_ascii.py
+@@ -41,7 +41,6 @@ class TestASCIIResponseSequence(unittest
+ 
+     def test_headers(self):
+         """Test headers from the response."""
+-        print(self.res.text)
+         self.assertEqual(
+             self.res.headers,
+             ResponseHeaders([

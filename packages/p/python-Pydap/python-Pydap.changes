@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 15 06:06:47 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Apply merged_pr_173.patch to fix Python 3
+- Re-add gsw as a BuildRequires and Recommends as the middleware
+  requires it
+- Re-activate test suite, removing nose
+
+-------------------------------------------------------------------
 Mon Apr 20 10:48:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

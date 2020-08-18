@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-Pydap
 Version:        3.2.2
 Release:        0
@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pydap/pydap
 Source:         https://files.pythonhosted.org/packages/source/P/Pydap/Pydap-%{version}.tar.gz
+Patch0:         merged_pr_173.patch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PasteDeploy}
 BuildRequires:  %{python_module WebOb}
@@ -33,26 +34,19 @@ BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module coards}
 BuildRequires:  %{python_module docopt}
-BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module gunicorn}
+BuildRequires:  %{python_module gsw}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module netCDF4}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pytest >= 2.8}
 BuildRequires:  %{python_module pytest-attrib}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.4}
 BuildRequires:  fdupes
-%if %{with python2}
-BuildRequires:  python-mock
-BuildRequires:  python-singledispatch
-%endif
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-gsw
 Requires:       python-Jinja2
 Requires:       python-WebOb
 Requires:       python-beautifulsoup4
@@ -64,16 +58,11 @@ Requires(postun): update-alternatives
 Recommends:     python-PasteDeploy
 Recommends:     python-coards
 Recommends:     python-gunicorn
+Recommends:     python-gsw
 Recommends:     python-lxml
 Recommends:     python-netCDF4
 Recommends:     python-requests
 BuildArch:      noarch
-%ifpython3
-Recommends:     python-gsw
-%endif
-%ifpython2
-Requires:       python-singledispatch
-%endif
 %python_subpackages
 
 %description
@@ -86,6 +75,8 @@ Opendap server, implemented as a WSGI application.
 
 %prep
 %setup -q -n Pydap-%{version}
+%patch0 -p1
+
 rm -f docs/_build/html/.buildinfo
 %fdupes docs/_build/html
 
@@ -106,7 +97,10 @@ rm -f docs/_build/html/.buildinfo
 %python_uninstall_alternative pydap dods
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python setup.py nosetests || :
+# test_timeout requires network
+# test_body & test_iteration errors: https://github.com/pydap/pydap/issues/214
+# test_iter_data i586 errirs: https://github.com/pydap/pydap/issues/215
+%pytest -k 'not test_timeout and not (TestDODSResponseNestedSequence and test_body) and not (TestDODSResponseNestedSequence and test_iteration) and not (test_iter_data and (test_dtype or test_nested_dtype))'
 
 %files %{python_files}
 %doc CONTRIBUTORS.md NEWS.md README.md docs/_build/html
