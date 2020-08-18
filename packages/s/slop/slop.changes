@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 11:40:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 7.5:
+  * Added --nodrag option
+  * Selections can be moved by holding the space-bar mid-drag!
+
+-------------------------------------------------------------------
 Wed Nov  7 15:16:08 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 7.4 [boo#1113605]

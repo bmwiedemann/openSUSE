@@ -1,7 +1,7 @@
 #
 # spec file for package slop
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           slop
-%define lname	libslopy7_4
-Version:        7.4
+%define lname	libslopy7_5
+Version:        7.5
 Release:        0
 Summary:        Tool to query for a screen region selection
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            https://github.com/naelstrof/slop
+URL:            https://github.com/naelstrof/slop
 Source0:        https://github.com/naelstrof/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -77,8 +77,8 @@ popd
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING README.md
+%license COPYING
+%doc README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/*.1*
 
