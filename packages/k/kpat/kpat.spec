@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpat
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
@@ -88,12 +88,6 @@ more. The game has nice graphics and many different carddecks.
     %{kf5_find_htmldocs}
   %endif
   %suse_update_desktop_file -r org.kde.kpat          Game CardGame
-
-%post
-%mime_database_post
-
-%postun
-%mime_database_postun
 
 %files
 %license COPYING COPYING.DOC
