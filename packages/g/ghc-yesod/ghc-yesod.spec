@@ -18,7 +18,7 @@
 
 %global pkg_name yesod
 Name:           ghc-%{pkg_name}
-Version:        1.6.0.2
+Version:        1.6.1.0
 Release:        0
 Summary:        Creation of type-safe, RESTful web applications
 License:        MIT
@@ -31,9 +31,9 @@ BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-fast-logger-devel
+BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-monad-logger-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-shakespeare-devel
 BuildRequires:  ghc-streaming-commons-devel
 BuildRequires:  ghc-template-haskell-devel
