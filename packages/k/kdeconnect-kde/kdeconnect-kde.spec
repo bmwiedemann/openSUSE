@@ -20,7 +20,7 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -32,8 +32,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
 Source101:      kdeconnect-kde-firewalld.xml
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Use-ecm_qt_declare_logging_category-to-declare-the-l.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -93,11 +91,11 @@ ZSH command line completion support for %{name}.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -138,38 +136,40 @@ install -D -m 0644 %{SOURCE101} \
 %endif
 %dir %{_datadir}/Thunar
 %dir %{_datadir}/contractor
+%dir %{_datadir}/deepin
+%dir %{_datadir}/deepin/dde-file-manager
+%dir %{_datadir}/deepin/dde-file-manager/oem-menuextensions
 %dir %{_datadir}/nautilus-python
+%dir %{_kf5_appstreamdir}
 %dir %{_libexecdir}/firewalld
 %dir %{_libexecdir}/firewalld/services
 %{_datadir}/Thunar/sendto/
 %{_datadir}/contractor/kdeconnect.contract
+%{_datadir}/deepin/dde-file-manager/oem-menuextensions/kdeconnect-dde.desktop
 %{_datadir}/nautilus-python/extensions/
-%{_libexecdir}/firewalld/services/%{name}.xml
-%{_kf5_libdir}/libkdeconnect*.so.*
-%{_kf5_plugindir}/
 %{_kf5_applicationsdir}/*.desktop
-%dir %{_kf5_iconsdir}/hicolor/256x256
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%{_kf5_iconsdir}/hicolor/*/apps/kdeconnect*
-%{_kf5_libdir}/libexec/
-%{_kf5_servicesdir}/
-%{_kf5_notifydir}/
-%{_kf5_servicetypesdir}/
-%{_kf5_sharedir}/plasma/
-%{_kf5_qmldir}/
+%{_kf5_appstreamdir}/org.kde.kdeconnect.kcm.appdata.xml
 %{_kf5_bindir}/kdeconnect-app
 %{_kf5_bindir}/kdeconnect-cli
 %{_kf5_bindir}/kdeconnect-handler
 %{_kf5_bindir}/kdeconnect-indicator
 %{_kf5_bindir}/kdeconnect-settings
 %{_kf5_bindir}/kdeconnect-sms
-%{_kf5_sharedir}/dbus-1/services/org.kde.kdeconnect.service
 %{_kf5_configdir}/autostart/org.kde.kdeconnect.daemon.desktop
-%{_kf5_iconsdir}/hicolor/*/status/*
-%{_kf5_htmldir}/en/kdeconnect/
-%dir %{_kf5_appstreamdir}
-%{_kf5_appstreamdir}/org.kde.kdeconnect.kcm.appdata.xml
 %{_kf5_debugdir}/kdeconnect-kde.categories
+%{_kf5_htmldir}/en/kdeconnect/
+%{_kf5_iconsdir}/hicolor/*/apps/kdeconnect*
+%{_kf5_iconsdir}/hicolor/*/status/*
+%{_kf5_libdir}/libexec/
+%{_kf5_libdir}/libkdeconnect*.so.*
+%{_kf5_notifydir}/
+%{_kf5_plugindir}/
+%{_kf5_qmldir}/
+%{_kf5_servicesdir}/
+%{_kf5_servicetypesdir}/
+%{_kf5_sharedir}/dbus-1/services/org.kde.kdeconnect.service
+%{_kf5_sharedir}/plasma/
+%{_libexecdir}/firewalld/services/%{name}.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
