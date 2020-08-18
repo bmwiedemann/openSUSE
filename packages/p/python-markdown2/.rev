@@ -66,4 +66,18 @@ of Markdown.</comment>
     <comment></comment>
     <requestid>801323</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fbdc310d3dc4e6c9b156b7ae7af0c5c1</srcmd5>
+    <version>2.3.9</version>
+    <time>1597756307</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.9:
+  - [pull #335] Added header support for wiki tables
+  - [pull #336] Reset _toc when convert is run
+  - [pull #353] XSS fix
+  - [pull #350] XSS fix
+- remove 0001-Fix-for-issue-348-incomplete-tags-with-punctuation-a.patch,
+  0002-Fixed-code-highlighting-unit-tests.patch (upstream)</comment>
+    <requestid>827270</requestid>
+  </revision>
 </revisionlist>

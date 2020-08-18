@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 17 07:51:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.3.9:
+  - [pull #335] Added header support for wiki tables
+  - [pull #336] Reset _toc when convert is run
+  - [pull #353] XSS fix
+  - [pull #350] XSS fix
+- remove 0001-Fix-for-issue-348-incomplete-tags-with-punctuation-a.patch,
+  0002-Fixed-code-highlighting-unit-tests.patch (upstream)
+
+-------------------------------------------------------------------
 Thu May  7 14:35:38 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Add patch to fix unsanitized input for cross-site scripting (boo#1171379)

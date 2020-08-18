@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-markdown2
-Version:        2.3.8
+Version:        2.3.9
 Release:        0
 Summary:        A Python implementation of Markdown
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/trentm/python-markdown2
 Source:         https://files.pythonhosted.org/packages/source/m/markdown2/markdown2-%{version}.tar.gz
-Patch0:         0001-Fix-for-issue-348-incomplete-tags-with-punctuation-a.patch
-Patch1:         0002-Fixed-code-highlighting-unit-tests.patch
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,8 +44,6 @@ header-ids.
 
 %prep
 %setup -q -n markdown2-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %python_build
