@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * build: Silent build warnings for distcheck.
+  * build: Use MATE_COMPILE_WARNINGS = yes as default.
+  * mate-about.desktop: Do not collect the translation for Icon.
+  * mate-about: Remove unused variable "window".
+  * Remove GTimeVal deprecation warning for GLib 2.61.2+.
+  * Make the build reproducible.
+  * build: Add meson config files to EXTRA_DIST.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.1):

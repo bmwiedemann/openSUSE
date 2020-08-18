@@ -21,7 +21,7 @@
 %define typelib typelib-1_0-MateDesktop-2_0
 %define _version 1.24
 Name:           mate-desktop
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        Library with common API for various MATE modules
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
