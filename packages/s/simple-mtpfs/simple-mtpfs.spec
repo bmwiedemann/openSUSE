@@ -1,7 +1,7 @@
 #
 # spec file for package simple-mtpfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           simple-mtpfs
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Simple MTP fuse filesystem driver
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/phatina/simple-mtpfs
-Source:         http://github.com/phatina/simple-mtpfs/archive/%{name}-%{version}.tar.gz
+Source:         https://github.com/phatina/simple-mtpfs/archive/v%{version}.tar.gz
 BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -41,7 +42,7 @@ The practical effect of this is that the end user can seamlessly interact with
 MTP device files.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q
 
 %build
 autoreconf -fvi
