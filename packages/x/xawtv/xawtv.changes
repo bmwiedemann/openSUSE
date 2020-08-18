@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Aug 17 16:42:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- skip group verify on v4l-conf
+
+-------------------------------------------------------------------
+Mon Aug 17 07:38:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.107:
+  * Solve build issues with gcc 10.1
+  * Check if file exists before opening it
+  * Use standard c99 designated initializers
+  * Show if lirc is enabled or not when configuring it
+  * Don't need need to call abs() for rdrift and vdrift
+  * Get rid of an unused function at flt-smooth
+  * Use hexa for non-printable codes at ntsc-cc code
+  * Move -Llibng to LD_FLAGS at makefile
+  * Add xawtv3 to Tavis CI build integration
+  * Get rid of VIDIOC_G_PARM ioctl
+  * Remove an unused file from git and ignore auto-generated files
+  * Get rid of V4L1 support, as V4L1 API got removed from Kernel in 2010.
+  * Update videodev2.h file to a later version
+  * Update the error code at vbi-gui to reflect the name of the V4L2 ioctl
+  * Fix fbtv application for it to properly handle camera bytesperpage
+    aligments and to properly display texts over over the camera
+    streaming screen
+  * add fbtv support for modern console fonts
+  * fix fbtv output when byterperline is greater than the number of
+    filled bytes
+  * add help for fbtv and improve its man page
+  * allow using just the font name on fbtv
+  * Cleanup most warnings when building it, fixing some potential bugs
+  * Add support for AC_HEADER_MAJOR, in order to support upcoming
+    glibc versions
+  * Allow ./configure --disable-alsa to compile when alsa is available
+  * x11: get rid of deprecated XKeycodeToKeysym function
+  * get rid of unused libXp at Makefile
+  * disable DGA if client is not local, fixing usage over ssh
+  * Drop supplementary group IDs when dropping privileges
+  * Add desktop and appdata files for xawtv, motv and mtt
+  * Fix mtt not being able to tune tv channels
+  * Remove superfluous ; add end of functions
+  * Add a workaround for bttv kernel driver planar fmt width bug
+  * Allow setting alsa_latency from ~/.xawtv
+  * Fix not being able to get a larger latency on capture devices with small
+    max period sizes
+  * prefer CAP_STREAMING over CAP_READWRITE
+  * Fix segfault under certain conditions
+
+- remove xawtv-fixblitframesegfault.patch, fix-build-with-recent-glibc.patch,
+  v4l-conf-fix-CVE-2020-13696.patch, gcc-10.patch (all upstream)
+
+-------------------------------------------------------------------
 Wed Jun  3 10:31:36 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add gcc-10.patch: fixes multiple definitions of global variables across the

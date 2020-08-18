@@ -21,7 +21,7 @@
 %endif
 
 Name:           xawtv
-Version:        3.103
+Version:        3.107
 Release:        0
 Summary:        Video4Linux TV application (Athena)
 License:        GPL-2.0-or-later
@@ -32,12 +32,6 @@ Source1:        xawtv.desktop
 Source2:        motv.desktop
 # PATCH-FIX-OPENSUSE v4l-conf_non-position-independent-executable_fix.patch asterios.dramis@gmail.com -- Fix non-position-independent-executable rpmlint warning for v4l-conf
 Patch0:         v4l-conf_non-position-independent-executable_fix.patch
-# PATCH-SENT-UPSTREAM to hdegoede
-Patch1:         xawtv-fixblitframesegfault.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         fix-build-with-recent-glibc.patch
-Patch3:         v4l-conf-fix-CVE-2020-13696.patch
-Patch4:         gcc-10.patch
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel
 BuildRequires:  gcc-c++
@@ -153,10 +147,6 @@ as well.
 %prep
 %setup -q
 %patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -239,7 +229,7 @@ desktop-file-install %{SOURCE2}
 
 %files -n v4l-conf
 %license COPYING
-%verify(not mode) %attr(4750,root,video) %{_bindir}/v4l-conf
+%verify(not mode group) %attr(4750,root,video) %{_bindir}/v4l-conf
 %{_mandir}/man8/v4l-conf.8%{?ext_man}
 %doc %lang(es) %{_mandir}/es/man8/v4l-conf.8.gz
 
