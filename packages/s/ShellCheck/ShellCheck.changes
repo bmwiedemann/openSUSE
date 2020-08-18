@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 13:27:52 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints default min disk space to 4GB and
+  memory constraints that differ per architecture.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:13:33 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
