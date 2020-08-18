@@ -49,4 +49,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>787234</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9c387943b977ca1f245f34f590190a56</srcmd5>
+    <version>2.0.1</version>
+    <time>1597755886</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.0.1:
+ - Documentation: add search example
+ - edit_ticket: handle empty responses
+ - fix UnicodeDecodeError in logging code for non-text attachments</comment>
+    <requestid>825344</requestid>
+  </revision>
 </revisionlist>

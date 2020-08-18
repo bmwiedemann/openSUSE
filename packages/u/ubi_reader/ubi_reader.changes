@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Aug 13 21:21:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Rename package python-ubi_reader -> ubi_reader
+- Update to version 0.6.3
+  * Added ubireader_list_files script 
+
+-------------------------------------------------------------------
+Sat Sep  8 18:50:05 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 0.6.0

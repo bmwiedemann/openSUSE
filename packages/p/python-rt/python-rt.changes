@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug  8 12:16:55 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.0.1:
+ - Documentation: add search example
+ - edit_ticket: handle empty responses
+ - fix UnicodeDecodeError in logging code for non-text attachments
+
+-------------------------------------------------------------------
 Sun Mar 15 10:43:52 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.0.0:
