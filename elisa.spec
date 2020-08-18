@@ -16,11 +16,11 @@
 #
 
 
-%define qt5_version 5.10.0
-%define kf5_version 5.48.0
+%define qt5_version 5.11.0
+%define kf5_version 5.64.0
 %bcond_without lang
 Name:           elisa
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
