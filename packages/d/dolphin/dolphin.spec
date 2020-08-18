@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin
-Version:        20.04.3
+Version:        20.08.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -104,7 +104,6 @@ This package contains the libraries used by Dolphin and Konqueror.
 
 %if %{with lang}
 %package -n %{name}-part-lang
-# FIXME: consider using %%lang_package macro
 Summary:        Translations for package %{name}
 Group:          System/Localization
 Requires:       %{name}-part = %{version}
@@ -120,8 +119,7 @@ Provides translations for the "%{name}" package.
 %endif
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -146,7 +144,7 @@ Provides translations for the "%{name}" package.
 
 %files
 %license COPYING*
-%doc README
+%doc README.md
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en
@@ -164,13 +162,14 @@ Provides translations for the "%{name}" package.
 
 %files part
 %license COPYING*
-%doc README
-%config %{_kf5_configdir}/servicemenu.knsrc
+%doc README.md
 %dir %{_kf5_configkcfgdir}
 %dir %{_kf5_plugindir}
 %dir %{_kf5_servicesdir}
 %dir %{_kf5_servicetypesdir}
 %{_kf5_configkcfgdir}/dolphin_*.kcfg
+%{_kf5_debugdir}/dolphin.categories
+%{_kf5_knsrcfilesdir}/servicemenu.knsrc
 %{_kf5_libdir}/libdolphinprivate.so.*
 %{_kf5_plugindir}/dolphinpart.so
 %{_kf5_plugindir}/kcm_dolphin*.so
@@ -180,17 +179,15 @@ Provides translations for the "%{name}" package.
 %{_kf5_servicesdir}/kcmdolphinservices.desktop
 %{_kf5_servicesdir}/kcmdolphinviewmodes.desktop
 %{_kf5_servicetypesdir}/fileviewversioncontrolplugin.desktop
-#{_kf5_sharedir}/dolphinpart/
-%{_kf5_debugdir}/dolphin.categories
 
 %files -n libdolphinvcs5
 %license COPYING*
-%doc README
+%doc README.md
 %{_kf5_libdir}/libdolphinvcs.so.*
 
 %files devel
 %license COPYING*
-%doc README
+%doc README.md
 %{_includedir}/dolphinvcs_export.h
 %{_kf5_cmakedir}/DolphinVcs/
 %{_kf5_libdir}/libdolphinvcs.so

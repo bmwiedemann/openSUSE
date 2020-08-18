@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:08:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * [search] Close tags menu after click when there
+    is only one tag (kde#424873)
+  * Remove MaximumSize entry from kdeglobals when setting
+    the preview file size limit to "No limit" (kde#424403)
+
+-------------------------------------------------------------------
+Sun Aug  2 07:58:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Fix "Show folders, tabs, and window state from last time" feature (kde#422300)
+  * Fix deprecated knsrc file location
+
+-------------------------------------------------------------------
+Sun Jul 19 10:03:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes since 20.04.3, only listing bugfixes:
+  * Fix selection rect after porting from QFontMetrics::width() (kde#421973)
+  * [search] Do not update text input when it has focus (kde#423328)
+  * Places: Use Solid::Device::DisplayName for DisplayRole (kde#415281)
+  * Provide ability to configure size cut-off for local file previews (kde#331240)
+  * Status bar: Hide the space free bar when size is unknown (kde#420027)
+  * Prevents showing StatJob Progress info (kde#422121)
+  * Move search and filter bar close buttons to the right (kde#421372)
+  * Keep name readable on drag to matching background (kde#405266)
+  * [Details mode] Allow to fill the column size of directories with actual size (kde#190580)
+  * Information Panel: show early icons for folders (kde#420340)
+
+-------------------------------------------------------------------
 Thu Jul  9 20:08:34 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
