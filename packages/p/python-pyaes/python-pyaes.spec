@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyaes
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,20 +23,19 @@ Release:        0
 Summary:        Pure-Python Implementation of the AES block-cipher
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/ricmoo/pyaes/
+URL:            https://github.com/ricmoo/pyaes/
 Source:         https://files.pythonhosted.org/packages/source/p/pyaes/pyaes-%{version}.tar.gz
-BuildArch:      noarch
-BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pycrypto}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pycrypto
-
+BuildArch:      noarch
 %python_subpackages
 
 %description
-A pure-Python implementation of the AES (FIPS-197) block-cipher algorithm and common modes of operation (CBC, CFB, CTR, ECB, OFB) with no dependencies beyond standard Python libraries. See README.md for API reference and details.
+A pure-Python implementation of the AES (FIPS-197) block-cipher algorithm
+and common modes of operation (CBC, CFB, CTR, ECB, OFB) with no dependencies
+beyond standard Python libraries. See README.md for API reference and details.
 
 %prep
 %setup -q -n pyaes-%{version}
@@ -49,11 +48,14 @@ A pure-Python implementation of the AES (FIPS-197) block-cipher algorithm and co
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m nose
+%python_expand for test in tests/*.py; do PYTHONPATH=%{buildroot}%{$python_sitelib} $python $test; done | tee output.log
+if grep -q passed=False output.log; then
+  false
+fi
 
-%files %python_files
-%defattr(-,root,root,-)
+%files %{python_files}
+%doc README.md
+%license LICENSE.txt
 %{python_sitelib}/*
-%doc LICENSE.txt README.md
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 14 15:01:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix test suite invocation, removing nose
+- Tidy spec
+
+-------------------------------------------------------------------
 Fri Nov 17 16:41:57 UTC 2017 - mimi.vx@gmail.com
 
 - update to 1.6.1
