@@ -503,4 +503,12 @@
     <comment>20.04.3 release</comment>
     <requestid>820140</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>42b165c443d0bd97c67af551dc937fec</srcmd5>
+    <version>20.08.0</version>
+    <time>1597744624</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826360</requestid>
+  </revision>
 </revisionlist>
