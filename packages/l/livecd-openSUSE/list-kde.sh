@@ -26,7 +26,6 @@ buildignore gnome-keyring
 source "$PWD/list-installer.sh"
 
 buildignore oxygen5-icon-theme-large
-buildignore gwenview5
 # Needs ibus data files and color emoji fonts, too big.
 buildignore plasma5-desktop-emojier
 
@@ -42,6 +41,10 @@ buildignore patterns-kde-kde_games
 buildignore patterns-kde-kde_utilities
 install kcharselect
 
+# Pulls in docbook and friends, ~50MiB.
+# Excludedocs is enabled, so documentation is broken anyway
+buildignore kdoctools
+
 # Moved here from list-common.sh, too big for x11
 install xf86-video-vmware i686,x86_64
 
@@ -53,11 +56,9 @@ buildignore gdb
 buildignore gimp-lang
 buildignore hugin
 buildignore icewm
-buildignore kate-lang
 buildignore kmahjongg-lang
 buildignore konversation-lang
 buildignore libproxy1-pacrunner-webkit
-buildignore okular-lang
 buildignore vlc-lang
 
 install partitionmanager

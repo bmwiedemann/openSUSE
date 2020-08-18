@@ -9,6 +9,13 @@ Mon Aug 10 07:01:34 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 - Drop xorg-x11-fonts-legacy from the rescue CD: hunt for space.
 
 -------------------------------------------------------------------
+Mon Aug  3 09:30:59 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Add back okular-lang, kate-lang and gwenview
+- list-kde: Drop kdoctools and deps
+- config.sh: Forcibly remove adwaita-icon-theme for kde
+
+-------------------------------------------------------------------
 Mon Aug  3 07:16:00 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop okular-lang from the KDE Live CD - hunting for space
