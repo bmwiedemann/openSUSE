@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * Fixes incorrect parenthesis handling.
+  * build: Silent build warnings for distcheck.
+  * Use default MATE_COMPILE_WARNINGS level.
+  * math-buttons: Add space character after inverse trigonometric
+    functions.
+  * mate-calc.desktop: Do not collect the translation for Icon.
+  * Read authors (updated) from mate-calc.about.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0:

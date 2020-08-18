@@ -18,7 +18,7 @@
 
 %define _version 1.24
 Name:           mate-calc
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        MATE Desktop calculator application
 License:        GPL-2.0-or-later
