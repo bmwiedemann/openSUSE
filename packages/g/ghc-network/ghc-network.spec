@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-network
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name network
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.1.1
+Version:        3.1.2.0
 Release:        0
 Summary:        Low-level networking interface
 License:        BSD-3-Clause
@@ -28,11 +28,13 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
+BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-rpm-macros
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-temporary-devel
 %endif
 
 %description
