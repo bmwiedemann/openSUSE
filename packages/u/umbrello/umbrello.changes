@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:10:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * New feature allowing word wrapping in use case texts
+    when resizing and entering line breaks (kde#424863)
+
+-------------------------------------------------------------------
+Sun Aug  2 08:01:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * cmake: fix umbrello version
+  * cmake: Fix build issue with kdevelop 5.2.1 on Ubuntu 18.04 (kde#424794)
+
+-------------------------------------------------------------------
+Sun Jul 19 10:06:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 20.04.3:
+  * release-windows-packages: add command line options --tarversion to specify different tar ball version
+  * release-windows-packages: add command for updating obs package
+  * release-windows-package: add variable for running osc
+  * tab 2 spaces
+  * Fix compiler warning
+  * Coverity check CID 268401: Copy into fixed size buffer (STRING_OVERFLOW)
+  * Switch to https for bugs.kde.org
+
+-------------------------------------------------------------------
 Thu Jul  9 20:11:19 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
