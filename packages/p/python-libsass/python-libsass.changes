@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 13:42:32 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.20.0, linking against libsass 3.6.4 
+
+-------------------------------------------------------------------
 Mon May 25 06:50:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

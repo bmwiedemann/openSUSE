@@ -19,7 +19,7 @@
 %define _name   libsass-python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libsass
-Version:        0.19.4
+Version:        0.20.0
 Release:        0
 Summary:        Python binding for libsass
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libsass-devel
+BuildRequires:  libsass-devel >= 3.6.4
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-six
@@ -51,7 +51,7 @@ A straightforward binding of libsass for Python. Compile Sass/SCSS in Python
 with no Ruby stack at all!
 
 %prep
-%setup -q -n %{_name}-%{version}
+%setup -q -n libsass-python-%{version}
 
 %build
 export SYSTEM_SASS=true
