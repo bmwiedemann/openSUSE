@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyglet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,6 @@
 
 %define         X_display         :98
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
-%bcond_with     pytest_helpers
-
 %ifarch %{arm} aarch64 x86_64 %{ix86} ppc64le
 %bcond_without  gtk2
 %bcond_without  test
@@ -32,45 +29,39 @@
 %bcond_with     test
 %bcond_with     gtk2
 %endif
-
-# Set _version to 1.4 for 1.4.0betas and hg default
-%define _version 1.3.2
+%define skip_python2 1
+%bcond_with     pytest_helpers
 Name:           python-pyglet
-Version:        1.3.2
+Version:        1.5.7
 Release:        0
 Summary:        Windowing and multimedia library
-# 1.3.2 contains a vendored old pypng
 License:        BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/pyglet/pyglet
-Source0:        https://files.pythonhosted.org/packages/source/p/pyglet/pyglet-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pyglet/pyglet-%{version}.zip
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE pyglet-1.2.4-fix-image-import.patch -- fix "import Image"
 Patch0:         pyglet-1.2.4-fix-image-import.patch
-%if "%{_version}" == "1.3.2"
-Patch1:         pypng-license.patch
-%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 Requires:       Mesa-dri
-Requires:       config(Mesa)
+Requires:       libxcb-glx0
 Requires:       python-Pillow
 Requires:       python-future
-Requires:       libxcb-glx0
-%if "%{_version}" == "1.4"
 Requires:       python-pypng
-%endif
+Requires:       config(Mesa)
 Recommends:     alsa-lib
 Recommends:     fontconfig
 Recommends:     freetype
 Recommends:     libGLU1
 Recommends:     libopenal0
+BuildArch:      noarch
 %if %{with gtk2}
 Recommends:     gtk2
 %endif
-BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module future}
@@ -108,33 +99,21 @@ developing games and other visually-rich applications.
 %prep
 %setup -q -n pyglet-%{version}
 %patch0
-%if "%{_version}" == "1.3.2"
-%patch1 -p1
-%endif
 
 # Can't be used for commercial purposes
 rm -r examples/noisy/
 
-# Not needed, and interferes with test discovery
-rm -r pyglet/extlibs/future/
-rm -r tests/extlibs/future/ tests/extlibs/mock.py
-
 # Windows only, and is a vendored module
 rm pyglet/font/win32*.py examples/font_comparison.py
 
-%if "%{_version}" == "1.4"
 # De-vendoring pypng-ing results in failures in v1.3.2, as it is using pypng an earlier pypng:
 # AttributeError: 'module' object has no attribute 'Writer'
 # pyglet 1.4 is using the latest pypng 0.0.19, the same version as python-pypng package
 rm pyglet/extlibs/png.py
 sed -i 's/import pyglet.extlibs.png as pypng/import png as pypng/' pyglet/image/codecs/png.py
-%endif
 
 # Files unneccessary for Linux runtimes
 rm -r \
-%if "%{_version}" == "1.3.2"
-  pyglet/*/carbon.py pyglet/input/carbon_*.py pyglet/window/carbon/ pyglet/image/codecs/quicktime.py tests/unit/test_osx.py \
-%endif
   pyglet/gl/lib_agl.py pyglet/gl/lib_wgl.py pyglet/gl/wgl*.py \
   pyglet/*/cocoa.py pyglet/*/quartz.py pyglet/*/win32.py \
   pyglet/input/darwin_hid.py pyglet/input/directinput.py pyglet/input/wintab.py \
@@ -152,12 +131,7 @@ sed -i 's/^\( *\).*gdkpixbuf2.*/\1pass/' pyglet/image/codecs/__init__.py
 # Allow invocation using unittest discover -vv --start-directory tests/xyz/
 # https://bitbucket.org/pyglet/pyglet/issues/231/allow-invocation-using-unittest-discover
 sed -i 's/from \.\.\./from tests./' \
-%if "%{_version}" == "1.3.2"
-  tests/interactive/window/test_window_multisample.py \
-%endif
-%if "%{_version}" == "1.4"
   tests/unit/media/test_listener.py \
-%endif
   tests/integration/image/test_gdkpixbuf2.py \
   tests/interactive/image/test_image.py
 
@@ -172,18 +146,12 @@ sed -i 's/arial/freeserif/g;s/Arial/FreeSerif/g' \
   tests/unit/test_text.py \
   tests/integration/platform/test_linux_fontconfig.py \
   tests/integration/font/*.py \
-  tests/interactive/font/*.py
 
 ## Unit tests
 
 # Convert to a mark, so it can be deselected, bypassing error-for-skips
 sed -i "s/@unittest.skip('Requires changes to events from fork by Leif')/@pytest.mark.leif_fork/" tests/unit/test_events.py
 sed -i 's/import unittest/import unittest, pytest/' tests/unit/test_events.py
-
-%if "%{_version}" == "1.3.2"
-# https://bitbucket.org/pyglet/pyglet/issues/224/mediatest_playerplayertestcasetest_delete
-sed -i 's/test_delete/_test_delete/' tests/unit/media/test_player.py
-%endif
 
 # https://bitbucket.org/pyglet/pyglet/issues/223/clock-test-failures
 # Occasional errors on all platforms, and test_clock.py fails on Python 2 only
@@ -212,7 +180,7 @@ rm -f tests/integration/graphics/test_retained_drawing*.py \
 
 # Fix missing interactive_test_base
 # See https://bitbucket.org/pyglet/pyglet/issues/234/interactive_test_base-is-missing
-sed -i '/interactive_test_base/d' tests/run.py tests/interactive/__init__.py
+sed -i '/interactive_test_base/d' tests/interactive/__init__.py
 rm tests/base/test_interactive_test_base.py
 
 # Final tidy up
@@ -225,7 +193,7 @@ find pyglet -name "*.py" -exec dos2unix "{}" "+"
 
 chmod a+x examples/synthesizer.py examples/soundspace/soundspace.py examples/game/version*/asteroid.py
 
-dos2unix examples/opengl_3.py examples/tablet.py
+dos2unix examples/tablet.py
 
 %build
 %python_build
@@ -290,16 +258,8 @@ fi
 
 %files %{python_files}
 %license LICENSE
-%if "%{_version}" == "1.3.2"
-%license LICENSE.pypng
-%endif
-%doc NOTICE README RELEASE_NOTES
-%ifpython2
-%{_defaultdocdir}/python{,2}-pyglet/examples/
-%endif
-%ifpython3
+%doc NOTICE README.md RELEASE_NOTES
 %{_defaultdocdir}/python3-pyglet/examples/
-%endif
 %{python_sitelib}/pyglet
 %{python_sitelib}/pyglet-%{version}-py*.egg-info
 
