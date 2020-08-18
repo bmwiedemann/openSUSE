@@ -1,7 +1,7 @@
 #
 # spec file for package python-scales
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,10 @@ URL:            https://www.github.com/Cue/scales
 Source:         https://files.pythonhosted.org/packages/source/s/scales/scales-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/Cue/scales/master/LICENSE
 Patch0:         python38.patch
-BuildRequires:  %{python_module nose}
+# PATCH-FEATURE-UPSTREAM clean_testsuite.patch gh#Cue/scales#50 mcepl@suse.com
+# clean up test suite
+Patch1:         clean_testsuite.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -41,8 +44,10 @@ Statistic generator for python processes
 
 %prep
 %setup -q -n scales-%{version}
-%patch0 -p1
+%autopatch -p1
+
 cp %{SOURCE99} .
+sed -i '/nose/d' setup.py
 
 %build
 %python_build
@@ -52,7 +57,7 @@ cp %{SOURCE99} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE

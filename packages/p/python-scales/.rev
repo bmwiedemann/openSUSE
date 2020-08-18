@@ -16,4 +16,14 @@
   * python38.patch</comment>
     <requestid>729907</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0a73b7d04582bbce33abae21c6c69dc1</srcmd5>
+    <version>1.0.9</version>
+    <time>1597756093</time>
+    <user>dimstar_suse</user>
+    <comment>- Add clean_testsuite.patch (gh#Cue/scales#50).
+
+- Replace nose with pytest</comment>
+    <requestid>826844</requestid>
+  </revision>
 </revisionlist>
