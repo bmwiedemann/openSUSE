@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <service>
   <short>SUSE YaST DRBD</short>
-  <description>This allows you to open various ports related to SUSE YaST DRBD. Port 7788 and higher is recommend.</description>
+  <description>This allows you to open various ports related to SUSE
+		  YaST DRBD including Linstor support. Ports 3366/3367 are for
+		  lnstor satellite, ports 3370/3376/3377 are for linstor controller,
+		  and port 3371 is for linstor-controller when using HTTPS REST-API.
+		  Port 7788 is the default port for DRBD connection. Ports 7788 and
+		  higher are recommend to resource connections.
+  </description>
   <port protocol="tcp" port="7788"/>
+  <port protocol="tcp" port="3366"/>
+  <port protocol="tcp" port="3367"/>
+  <port protocol="tcp" port="3370"/>
+  <port protocol="tcp" port="3371"/>
+  <port protocol="tcp" port="3376"/>
+  <port protocol="tcp" port="3377"/>
 </service>

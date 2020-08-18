@@ -17,32 +17,25 @@
 
 
 %define _fwdefdir %{_libexecdir}/firewalld/services
-
 Name:           yast2-drbd
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        YaST2 - DRBD Configuration
 License:        GPL-2.0-or-later
 Group:          System/YaST
-Url:            https://github.com/yast/yast-drbd
-
+URL:            https://github.com/yast/yast-drbd
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        drbd.firewalld.xml
-
+BuildRequires:  firewall-macros
 BuildRequires:  ruby
 BuildRequires:  update-desktop-files
 # SuSEFirewall2 replaced by Firewalld(fate#323460)
-BuildRequires:  firewall-macros
 BuildRequires:  yast2 >= 4.0.39
 BuildRequires:  yast2-devtools >= 4.2.2
-
-# SuSEFirewall2 replaced by Firewalld(fate#323460)
 Requires:       drbd >= 9.0
 Requires:       yast2 >= 4.0.39
 Requires:       yast2-ruby-bindings >= 1.0.0
-
 Supplements:    autoyast(drbd)
-
 BuildArch:      noarch
 
 %description
@@ -61,7 +54,7 @@ used on high availability (HA) clusters.
 %yast_metainfo
 
 mkdir -p %{buildroot}%{_fwdefdir}
-install -m 644 %{S:1} %{buildroot}%{_fwdefdir}/drbd.xml
+install -m 644 %{SOURCE1} %{buildroot}%{_fwdefdir}/drbd.xml
 
 %post
 %firewalld_reload

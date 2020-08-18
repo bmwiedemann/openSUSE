@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 11 03:00:24 UTC 2020 - nick wang <nwang@suse.com>
+
+- Open ports for DRBD linstor packages (bsc#1175434)
+- 4.3.2
+
+-------------------------------------------------------------------
 Mon Aug 10 17:56:45 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(drdb) into the spec file
