@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:08:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * appdata: more general doc URL
+
+-------------------------------------------------------------------
+Sun Aug  2 07:58:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- No code change since 20.07.80
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 20.04.3:
+  * Unselect effect when selecting the currently selected effect (kde#421618)
+  * Don't try to load effects before we even have a sample image
+  * Make sure the video directory is available as we start recording (kde#423216)
+  * Notify when a video could not be moved
+  * code improvement
+  * fix/workaround for #422847
+  * Port to Kirigami.PlaceholderMessage
+  * Port deprecated methods
+  * Set minimum window size
+
+-------------------------------------------------------------------
 Thu Jul  9 20:08:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.3
