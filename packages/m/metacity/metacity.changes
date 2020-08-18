@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.37.1 (changes since 3.36.0):
+  * Fix fullscreen regression.
+  * Do not unfocus on new window.
+  * Don't append "(as superuser)" to window title for flatpak apps.
+  * Remove shade, stick, above and appmenu buttons.
+  * Fix memory leak in MetaGroup.
+  * Remove reduced-resources setting.
+  * Remove unused metacity-window-demo.
+  * Remove theme docs.
+  * Update translations.
+- Add metacity-3.37.1-fix-vulkan-build.patch: Fix compositor-vulkan
+  build (commit 99361f28c8763ea4569b5ae9876028d53ac9a234).
+
+-------------------------------------------------------------------
 Tue Mar 17 16:49:37 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.36.0:

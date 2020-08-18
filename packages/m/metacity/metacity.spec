@@ -17,15 +17,17 @@
 
 
 %define soname  libmetacity
-%define sover   1
-%define _version 3.36
+%define sover   3
+%define _version 3.37
 Name:           metacity
-Version:        3.36.0
+Version:        3.37.1
 Release:        0
 Summary:        Window Manager for the MATE and GNOME Flashback desktops
 License:        GPL-2.0-or-later
 URL:            https://wiki.gnome.org/Projects/Metacity
 Source:         https://download.gnome.org/sources/metacity/%{_version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM metacity-3.37.1-fix-vulkan-build.patch alberts.muktupavels@gmail.com -- Fix compositor-vulkan build (commit 99361f28).
+Patch0:         metacity-3.37.1-fix-vulkan-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
@@ -52,6 +54,7 @@ BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender) >= 0.0
+BuildRequires:  pkgconfig(xres)
 Requires:       zenity
 Recommends:     %{name}-lang
 Provides:       windowmanager
@@ -99,7 +102,7 @@ This package contains all necessary include files and libraries
 needed to develop applications that require libmetacity.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -139,12 +142,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files tools
 %{_bindir}/metacity-theme-viewer
-%{_bindir}/metacity-window-demo
-%dir %{_datadir}/metacity
-%dir %{_datadir}/metacity/icons
-%{_datadir}/metacity/icons/metacity-window-demo.png
 %{_mandir}/man1/metacity-theme-viewer.1%{?ext_man}
-%{_mandir}/man1/metacity-window-demo.1%{?ext_man}
 
 %files devel
 %{_includedir}/metacity/
