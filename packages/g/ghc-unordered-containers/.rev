@@ -169,4 +169,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>version update</comment>
     <requestid>819592</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1d634fcf04be4bee221f70bb9041e4c9</srcmd5>
+    <version>0.2.12.0</version>
+    <time>1597746290</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>825803</requestid>
+  </revision>
 </revisionlist>
