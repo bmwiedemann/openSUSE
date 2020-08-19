@@ -1,7 +1,7 @@
 #
 # spec file for package ofono
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Sergey Kondakov <virtuousfox@gmail.com>.
 # Copyright (c) 2014 Bernd Wachter <bwachter@lart.info>.
 #
@@ -78,7 +78,7 @@ Scripts for testing oFono and its functionality.
   --enable-pie \
   --enable-threads \
   --enable-test \
-  --with-systemdunitdir="%{_libexecdir}/systemd/system"
+  --with-systemdunitdir="%{_unitdir}"
 make %{?_smp_mflags} V=1
 
 %install
@@ -86,8 +86,8 @@ make %{?_smp_mflags} V=1
 
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
-mkdir -p %{buildroot}%{_libexecdir}/systemd/system/network.target.wants
-ln -s ../ofono.service %{buildroot}%{_libexecdir}/systemd/system/network.target.wants/ofono.service
+mkdir -p %{buildroot}%{_unitdir}/network.target.wants
+ln -s ../ofono.service %{buildroot}%{_unitdir}/network.target.wants/ofono.service
 
 %pre
 %service_add_pre ofono.service
@@ -108,8 +108,8 @@ ln -s ../ofono.service %{buildroot}%{_libexecdir}/systemd/system/network.target.
 %{_sbindir}/rc%{name}
 %{_mandir}/man8/ofonod.8%{?ext_man}
 %{_unitdir}/ofono.service
-%{_libexecdir}/systemd/system/network.target.wants/ofono.service
-%dir %{_libexecdir}/systemd/system/network.target.wants
+%dir %{_unitdir}/network.target.wants
+%{_unitdir}/network.target.wants/ofono.service
 %config %{_sysconfdir}/ofono/
 %config %{_sysconfdir}/dbus-1/system.d/ofono.conf
 

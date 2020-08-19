@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:47:38 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix invalid usage of %{_libexecdir} to reference systemd owned
+  directories.
+
+-------------------------------------------------------------------
 Fri Nov  1 11:38:56 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.31:
