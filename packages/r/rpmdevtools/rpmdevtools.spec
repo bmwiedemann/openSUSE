@@ -82,7 +82,7 @@ cp -a %{SOURCE1} template.init
 sed -i "s/spectool/rpmdev-spectool/g" rpmdevtools.bash-completion.in spectool.in
 
 %build
-%configure --libdir=%{_libexecdir}
+%configure
 %make_build
 
 %install
