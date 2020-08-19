@@ -266,8 +266,8 @@ install -m 644 release/libcelt0.so.0.*.* "%{buildroot}%{_libdir}/mumble"
 # server
 install -D -m 0755 release/murmurd "%{buildroot}%{_sbindir}/murmurd"
 %if %{with systemd}
-mkdir -p %{buildroot}%{_libexecdir}/tmpfiles.d
-cat >> %{buildroot}%{_libexecdir}/tmpfiles.d/mumble-server.conf <<EOF
+mkdir -p %{buildroot}%{_tmpfilesdir}
+cat >> %{buildroot}%{_tmpfilesdir}/mumble-server.conf <<EOF
 d %{_localstatedir}/run/mumble-server 0755 mumble-server mumble-server -
 EOF
 #
@@ -330,7 +330,7 @@ getent passwd mumble-server >/dev/null || \
 
 %post server
 %if %{with systemd}
-systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/mumble-server.conf || true
+systemd-tmpfiles --create %{_tmpfilesdir}/mumble-server.conf || true
 %service_add_post mumble-server.service
 %else
 %fillup_and_insserv mumble-server
@@ -364,8 +364,7 @@ systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/mumble-server.conf || true
 %config %{_sysconfdir}/dbus-1/system.d/mumble-server.conf
 %config(noreplace) %{_sysconfdir}/mumble-server.ini
 %if %{with systemd}
-%dir %{_libexecdir}/tmpfiles.d
-%{_libexecdir}/tmpfiles.d/mumble-server.conf
+%{_tmpfilesdir}/mumble-server.conf
 %{_unitdir}/mumble-server.service
 %else
 %{_initddir}/mumble-server
