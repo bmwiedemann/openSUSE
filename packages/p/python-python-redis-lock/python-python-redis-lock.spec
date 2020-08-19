@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-redis-lock
 Version:        3.6.0
