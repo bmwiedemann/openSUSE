@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Aug 19 14:35:25 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.67c
+  - Support for improved afl++ snapshot module:                                                                                                                                              
+    https://github.com/AFLplusplus/AFL-Snapshot-LKM                                                                                                                                          
+  - Due to the instrumentation needing more memory, the initial memory sizes                                                                                                                 
+    for -m have been increased                                                                                                                                                               
+  - afl-fuzz:                                                                                                                                                                                
+     - added -F option to allow -M main fuzzers to sync to foreign fuzzers,                                                                                                                  
+       e.g. honggfuzz or libfuzzer                                                                                                                                                           
+     - added -b option to bind to a specific CPU                                                                                                                                             
+     - eliminated CPU affinity race condition for -S/-M runs                                                                                                                                 
+     - expanded havoc mode added, on no cycle finds add extra splicing and                                                                                                                   
+       MOpt into the mix                                                                                                                                                                     
+     - fixed a bug in redqueen for strings and made deterministic with -s                                                                                                                    
+  - llvm_mode:                                                                                                                                                                               
+     - now supports llvm 12                                                                                                                                                                  
+     - support for AFL_LLVM_ALLOWLIST/AFL_LLVM_DENYLIST (previous                                                                                                                            
+       AFL_LLVM_WHITELIST and AFL_LLVM_INSTRUMENT_FILE are deprecated and                                                                                                                    
+       are matched to AFL_LLVM_ALLOWLIST). The format is compatible to llvm                                                                                                                  
+       sancov, and also supports function matching :)                                                                                                                                        
+     - added neverzero counting to trace-pc/pcgard                                                                                                                                           
+     - fixes for laf-intel float splitting (thanks to mark-griffin for                                                                                                                       
+       reporting)                                                                                                                                                                            
+     - fixes for llvm 4.0                                                                                                                                                                    
+     - skipping ctors and ifuncs for instrumentation                                                                                                                                         
+     - LTO: switch default to the dynamic memory map, set AFL_LLVM_MAP_ADDR                                                                                                                  
+            for a fixed map address (eg. 0x10000)                                                                                                                                            
+     - LTO: improved stability for persistent mode, no other instrumentation                                                                                                                 
+            has that advantage                                                                                                                                                               
+     - LTO: fixed autodict for long strings                                                                                                                                                  
+     - LTO: laf-intel and redqueen/cmplog are now applied at link time                                                                                                                       
+            to prevent llvm optimizing away the splits                                                                                                                                       
+     - LTO: autodictionary mode is a fixed default now                                                                                                                                       
+     - LTO: instrim instrumentation disabled, only classic support used                                                                                                                      
+            as it is always better                                                                                                                                                           
+     - LTO: env var AFL_LLVM_DOCUMENT_IDS=file will document which edge ID                                                                                                                   
+            was given to which function during compilation                                                                                                                                   
+     - LTO: single block functions were not implemented by default, fixed                                                                                                                    
+     - LTO: AFL_LLVM_SKIP_NEVERZERO behaviour was inversed, fixed                                                                                                                            
+     - setting AFL_LLVM_LAF_SPLIT_FLOATS now activates                                                                                                                                       
+       AFL_LLVM_LAF_SPLIT_COMPARES                                                                                                                                                           
+     - support for -E and -shared compilation runs                                                                                                                                           
+  - added honggfuzz mangle as a custom mutator in custom_mutators/honggfuzz                                                                                                                  
+  - added afl-frida gum solution to examples/afl_frida (mostly imported                                                                                                                      
+    from https://github.com/meme/hotwax/)                                                                                                                                                    
+  - small fixes to afl-plot, afl-whatsup and man page creation                                                                                                                               
+  - new README, added FAQ                                                                                                                                                                    
+
+-------------------------------------------------------------------
 Thu Jul  2 09:59:38 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.66c
