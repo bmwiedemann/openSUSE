@@ -17,7 +17,7 @@
 
 
 Name:           python-PyCBC
-Version:        1.16.7
+Version:        1.16.8
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
@@ -85,6 +85,7 @@ sed -E -i "1 s|^#\!\s*/usr/bin/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir}/
 
 %files %{python_files}
 %python3_only %{_bindir}/*
-%{python_sitearch}/*
+%{python_sitearch}/pycbc/
+%{python_sitearch}/PyCBC-%{version}-py%{python_version}.egg-info/
 
 %changelog
