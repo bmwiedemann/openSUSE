@@ -21,17 +21,15 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           irqbalance
-Version:        1.6.0+git20200317.0348a3b
+Version:        1.7.0
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/Irqbalance/irqbalance
-#Source:         https://github.com/Irqbalance/irqbalance/archive/v%%{version}.tar.gz
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/Irqbalance/irqbalance/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source3:        sysconfig.irqbalance
 Patch1:         Set-fd-limit.patch
-Patch2:         Correct-capitalizing-in-service-file.patch
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -39,8 +37,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
 Requires(pre):  %fillup_prereq
-ExcludeArch:    s390 s390x
 Recommends:     %{name}-ui
+ExcludeArch:    s390 s390x
 %{?systemd_requires}
 %ifnarch %{arm}
 BuildRequires:  libnuma-devel
@@ -65,7 +63,7 @@ Text UI for the IRQ balance daemon.
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure
-make %{?_smp_mflags} LDFLAGS="-Wl,-z,relro,-z,now" CFLAGS="%{optflags} -fPIE -pie $(ncurses6-config --cflags)" LDFLAGS="$(ncurses6-config --libs)"
+%make_build LDFLAGS="-Wl,-z,relro,-z,now" CFLAGS="%{optflags} -fPIE -pie $(ncurses6-config --cflags)" LDFLAGS="$(ncurses6-config --libs)"
 cp %{SOURCE3} .
 
 %install

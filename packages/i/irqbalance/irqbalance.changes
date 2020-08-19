@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Aug 16 14:14:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Strlen checking for IRQBALANCE_BANNED_CPU env var
+  * Typo cleanup in SOCKET_TMPFS
+  * consolidation of numa node creation on non-numa systems
+  * fix uninitialized use of package_mask in affinity setup
+  * use num_online_cpus instead of core_count
+  * fix a null ptr crash in do_one_cpu
+  * make list searching common from glib
+  * fix a calloc parameter bug
+  * remove some unused variables
+  * use g_list_free_full
+  * remove redundant call to free_cl_opts
+  * fix some resource leaks in main()
+  * fix some use after free issues in check_for_irq_ban
+  * fix resource leaks in irqballance-ui, and in add_one_node
+- remove Correct-capitalizing-in-service-file.patch: upstream
+
+-------------------------------------------------------------------
 Thu Jun 18 11:10:20 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Corrected mis-spelling (wrong CamelCase) of "EnvironmentFile"
