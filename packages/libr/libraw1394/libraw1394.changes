@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 00:59:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.2
+  - Fix build with some alternative C libraries and with some older
+  build environments.  No functional changes.
+
+-------------------------------------------------------------------
 Sat Nov 14 15:14:55 UTC 2015 - jengelh@inai.de
 
 - Update to new upstream release 2.2.1

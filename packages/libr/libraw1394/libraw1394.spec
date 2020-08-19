@@ -1,7 +1,7 @@
 #
 # spec file for package libraw1394
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libraw1394
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        A Firewire Interface library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.dennedy.org/libraw1394/
-
-#Git-Web:	https://git.kernel.org/cgit/libs/ieee1394/libraw1394.git/
-#Git-Clone:	git://git.kernel.org/pub/scm/libs/ieee1394/libraw1394
-Source:         https://www.kernel.org/pub/linux/libs/ieee1394/%name-%version.tar.xz
-Source2:        https://www.kernel.org/pub/linux/libs/ieee1394/%name-%version.tar.sign
-Source3:        %name.keyring
+URL:            http://www.dennedy.org/libraw1394/
+Source:         https://www.kernel.org/pub/linux/libs/ieee1394/%{name}-%{version}.tar.xz
+Source2:        https://www.kernel.org/pub/linux/libs/ieee1394/%{name}-%{version}.tar.sign
+Source3:        %{name}.keyring
 Source4:        baselibs.conf
 Patch0:         libraw1394.no-isodump.patch
 Patch1:         libraw1394-exports.patch
 BuildRequires:  libtool
 BuildRequires:  openjade-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libraw1394 provides direct access to the connected 1394 buses to
@@ -77,10 +73,10 @@ libraw1394.
 
 %package tools
 Summary:        Command-line utilties to manipulate IEEE1394 devices
-Group:          Hardware/Other
 # added on 2015-11-14
-Obsoletes:      %name < %version-%release
-Provides:       %name = %version-%release
+Group:          Hardware/Other
+Obsoletes:      %{name} < %{version}-%{release}
+Provides:       %{name} = %{version}-%{release}
 
 %description tools
 Command-line utilities to inspect and send IEEE 1394 isochronous
@@ -94,31 +90,28 @@ packets, and to test the basic functionality of raw1394.
 %build
 autoreconf --force --install
 %configure --disable-static
-make %{?_smp_mflags} all
+%make_build all
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 # empty dependency libs
 rm -f %{buildroot}%{_libdir}/libraw1394.la
 
 %post 11 -p /sbin/ldconfig
-
 %postun 11 -p /sbin/ldconfig
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS COPYING* NEWS README
+%license COPYING*
+%doc AUTHORS NEWS README
 %{_bindir}/testlibraw
 %{_bindir}/dumpiso
 %{_bindir}/sendiso
 %{_mandir}/man1/*
 
 %files 11
-%defattr(-,root,root)
 %{_libdir}/libraw1394.so.11*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/libraw1394
 %{_libdir}/libraw1394.so
 %{_libdir}/pkgconfig/libraw1394.pc
