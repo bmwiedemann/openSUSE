@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 19 13:13:02 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.22.1:
+  - Accept storyUrl with title in it for
+    adapter_webnovelcom. Addresses #520
+  - Fix adapter_mcstoriescom getSiteExampleURLs()
+  - Remove outdated rejecturls from plugin prefs--replaced by
+    rejecturls_date last 18+ month back.
+  - Fix for adapter_quotevcom site changes.
+  - Fix adapter_harrypotterfanfictioncom desc parse for
+    site change.
+  - Changes for Python3 deprecation warnings (mostly) from
+    eschwartz
+  - Normalize literotica.com URLs to www.literotica.com
+  - New Site: scribblehub.com - Thanks, mavi0!
+  - Fixes for site changes: adapter_ficbooknet
+  - Change INI error link blue color in dark mode.
+  - Add 'Series [0]' option for new anthologies.
+  - For anthologies, look for common val in numbered series00
+    if not all share 'series'.
+
+-------------------------------------------------------------------
 Sat Aug  1 13:50:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.21.0:
