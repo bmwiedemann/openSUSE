@@ -22,13 +22,6 @@
 %else
 %define with_systemd 0
 %endif
-%if %{with_systemd}
-%if 0%{?suse_version} < 1230
-%define _unitdir /lib/systemd/system
-%else
-%define _unitdir %{_libexecdir}/systemd/system
-%endif
-%endif
 Name:           privoxy
 Version:        3.0.28
 Release:        0

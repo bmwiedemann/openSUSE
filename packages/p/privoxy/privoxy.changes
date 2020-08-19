@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 10:03:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Stop trying to mangle _unitdir: this is defined in all supported
+  distros.
+
+-------------------------------------------------------------------
 Mon Feb  3 15:47:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
