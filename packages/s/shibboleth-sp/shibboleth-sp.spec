@@ -17,13 +17,6 @@
 
 
 %define libvers 8
-%global _tmpfilesdir %{_libexecdir}/tmpfiles.d
-# tmpfiles_create macro doesn't exist for openSUSE:Leap:42.1
-%if %{undefined tmpfiles_create}
-  %define tmpfiles_create() \
-  %{_bindir}/systemd-tmpfiles --create %{?*} || : \
-  %{nil}
-%endif
 %define runuser shibd
 %define realname shibboleth
 %define pkgdocdir %{_docdir}/%{realname}
