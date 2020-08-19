@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 18 03:14:08 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.024
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.024 2020-08-17 12:07:01+02:00
+
+      - Parser: fix flow mappings on one line
+      - Improve utility tools yamlpp-load(-dump) (add new options --merge,
+        --perl and --module) #35
+      - Minor improvements to emitter scalar style output
+      - Emitter supports flow style
+      - Support for preserving flow style in Loader/Dumper
+      - Create preserved nodes from scratch with preserved_* methods
+      - Minor fixes for the Perl schema and globs
+      - Update testsuite to data-2020-08-01
+
+-------------------------------------------------------------------
 Fri Jul 10 09:45:38 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.023
