@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Aug 15 22:11:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20200505:
+    * Version 1.7, Unicode 13.0, French version 1.3 is at Unicode 13.0,
+      and including python library wrapper 'uninameslist', version 0.2.
+      The French version was updated from version 10.0 to 13.0 shortly
+      after Unicode's release - this is a big effort and congratulation
+      to the French team! This version updates the main library to also
+      include access to libuninameslist-fr. To include this access, you
+      need to use './configure --enable-frenchlib'
+      This is the first step in adding other languages if anyone wants
+      to add more languages.
+      The default functions remain as English to retain common grounds
+      which is necessary for scripting, and/or file-sharing purposes.
+    * Version 1.5, Unicode 12.1, French version 1.2 is at Unicode 10.0.
+      Contains Official 12.1 codes.
+    * Version 1.4, Unicode 12.1, French version 1.2 is at Unicode 10.0.
+      Not completely 12.1.0, created too early before official version
+      was announced later in month. This version contains beta 12.1.0d1
+    * Version 1.3, Unicode 11.0, French version 1.2 is at Unicode 10.0.
+    * Library internal definitions personalized to allow more than one
+      library to be loaded at a time. Base library maintains same names
+      for backwards compatibility with older programs.
+    * Optional python wrapper available for directly accessing library.
+      Use python's pip to install wrapper (requires pip and wheel).
+    * Unicode 11.0_Beta (Nameslist.txt 11_Beta for review until Apr23).
+    * Added Python wrapper and names2 functions.
+    * Version 1.2, Unicode 10.0, French version is now also 10.0.0.
+    * Added function calls to French version to allow use of one or more
+      libraries at the same (Dynamic library linking needs testing since
+      added 'FR' may be issue with older programs expecting same name).
+    * Added more "make check" to include checking French library.
+    * Version 1.1, Unicode 10.0, French version is 7.0(2014-06-22).
+    * Added "make check" to allow for automatic library test and verify.
+    * Unicode 10.0_Beta (Nameslist.txt 10_Beta for review until Apr30).
+    * Version 1.0, Unicode 9.0, French version is 7.0(2014-06-22).
+    * Corrected library to report correctly as next version up. This is
+      probably a significant change, therefore bumped both libraries to
+      start at 1.0 even though backwards compatibility remains the same,
+      otherwise would have become version_0.6 (and French version_0.4).
+    * Removed the excessively long package name, which you'll note as a
+      so-bump change with Fedora and also Debian in naming this package.
+    * Version 0.5. Unicode 8.0. French version is 7.0(2014-06-22).
+
+-------------------------------------------------------------------
 Tue Nov 14 15:00:49 UTC 2017 - dimstar@opensuse.org
 
 - Add pkgconfig BuildRequires: allow the rpm dep generator to

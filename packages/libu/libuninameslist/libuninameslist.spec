@@ -1,7 +1,7 @@
 #
 # spec file for package libuninameslist
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define real_version 0.4.20140731
-
+%define somajor 1
 Name:           libuninameslist
-Version:        20140731
+Version:        20200413
 Release:        0
-%define somajor 0
 Summary:        A library providing Unicode character names and annotations
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            https://github.com/fontforge/libuninameslist
-# As previous version was higher number than latest release from new project,
-# we have to use the release date as version
-Source0:        https://github.com/fontforge/libuninameslist/archive/%{real_version}.tar.gz
+URL:            https://github.com/fontforge/libuninameslist
+Source0:        https://github.com/fontforge/libuninameslist/archive/%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libuninameslist provides Unicode name and annotation data from the official Unicode Character Database.
@@ -54,30 +49,28 @@ Requires:       %{name}%{somajor} = %{version}
 This package contains header files for %{name}.
 
 %prep
-%setup -q -n %{name}-%{real_version}
+%setup -q
 
 %build
 autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-%makeinstall
-find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{name}%{somajor} -p /sbin/ldconfig
-
 %postun -n %{name}%{somajor} -p /sbin/ldconfig
 
-%files -n %{name}%{somajor}
-%defattr(-,root,root)
-%doc LICENSE
-%{_libdir}/*.so.%{somajor}*
+%files -n libuninameslist%{somajor}
+%license LICENSE
+%{_libdir}/libuninameslist.so.%{somajor}*
 
 %files devel
-%defattr(-,root,root)
-%{_libdir}/*.so
+%{_libdir}/libuninameslist.so
 %{_libdir}/pkgconfig/libuninameslist.pc
-%{_includedir}/*
+%{_mandir}/man3/libuninameslist.3*
+%{_includedir}/uninameslist.h
 
 %changelog
