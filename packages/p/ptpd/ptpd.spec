@@ -1,7 +1,7 @@
 #
 # spec file for package ptpd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Implementation of the Precision Time protocol (IEEE 1588)
 License:        BSD-3-Clause
 Group:          System/Daemons
-Url:            https://github.com/ptpd/ptpd
+URL:            https://github.com/ptpd/ptpd
 Source0:        https://github.com/ptpd/ptpd/archive/ptpd-%{version}.tar.gz
 Source1:        ptpd2.service
 Source3:        conf.sysconfig.ptpd
@@ -97,7 +97,7 @@ touch %{buildroot}%{_localstatedir}/log/ptpd2_kernelclock.drift
 %{_mandir}/man5/ptpd2.conf.5%{?ext_man}
 %{_mandir}/man8/ptpd2.8%{?ext_man}
 %{_datadir}/ptpd
-%{_libexecdir}/systemd/system/ptpd2.service
+%{_unitdir}/ptpd2.service
 %{_fillupdir}/*
 %config %ghost %{_localstatedir}/log/ptpd2_kernelclock.drift
 
