@@ -167,4 +167,21 @@
   * Upgrade go version to 1.14.4 #8660</comment>
     <requestid>826108</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cfc71f0d7120c003ae8b0ee6ca3ce3fb</srcmd5>
+    <version>1.12.3</version>
+    <time>1597856402</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.3:
+  * Make waiting for Host configurable via --wait-timeout flag #8948
+  * Ignore localhost proxy started with scheme. #8885
+  * Improve error handling for validating memory limits #8959
+  * Skip validations if --force is supplied #8969
+  * Fix handling of parseIP error #8820
+  * GCP Auth Addon: Exit with better error messages #8932
+  * Add warning for ingress addon enabled with driver of none #8870
+  * Update Japanese translation #8967
+  * Fix for a few typos in polish translations #8950</comment>
+    <requestid>827880</requestid>
+  </revision>
 </revisionlist>

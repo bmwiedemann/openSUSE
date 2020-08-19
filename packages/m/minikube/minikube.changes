@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 19 12:17:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.12.3:
+  * Make waiting for Host configurable via --wait-timeout flag #8948
+  * Ignore localhost proxy started with scheme. #8885
+  * Improve error handling for validating memory limits #8959
+  * Skip validations if --force is supplied #8969
+  * Fix handling of parseIP error #8820
+  * GCP Auth Addon: Exit with better error messages #8932
+  * Add warning for ingress addon enabled with driver of none #8870
+  * Update Japanese translation #8967
+  * Fix for a few typos in polish translations #8950 
+   
+-------------------------------------------------------------------
 Wed Aug 12 20:59:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.12.2:
