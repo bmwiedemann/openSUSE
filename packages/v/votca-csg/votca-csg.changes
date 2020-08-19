@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 14:31:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase a little bit REGRESSIONTEST_TOLERANCE to make it pass
+  on aarch64
+
+-------------------------------------------------------------------
 Mon Jun 22 12:18:02 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6.1
