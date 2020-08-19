@@ -82,8 +82,8 @@ autoreconf -i -f
 
 %install
 %make_install
-mkdir -p %{buildroot}%{_libexecdir}/firewalld/services
-install -m 0644 %{SOURCE1} %{buildroot}%{_libexecdir}/firewalld/services/
+mkdir -p %{buildroot}%{_prefix}/lib/firewalld/services
+install -m 0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/
 rm %{buildroot}%{_sysconfdir}/shairport-sync.conf.sample
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -110,9 +110,9 @@ getent passwd %{name} >/dev/null || %{_sbindir}/useradd --system -c "%{name} Use
 %license LICENSES
 %config(noreplace) %{_sysconfdir}/shairport-sync.conf
 %{_bindir}/%{name}
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/airplay-server.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/airplay-server.xml
 %{_mandir}/man7/shairport-sync.7%{?ext_man}
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
