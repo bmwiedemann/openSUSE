@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 19 13:09:26 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fix whitespace
+- Drop grub2-x86_64-xen and xen-libs, not needed
+- Switch to kernel-firmware-all everywhere
+
+-------------------------------------------------------------------
 Wed Aug  5 14:14:52 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add Controller-SelfInstall flavour for self installation on

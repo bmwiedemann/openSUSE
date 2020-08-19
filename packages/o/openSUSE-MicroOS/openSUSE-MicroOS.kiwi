@@ -34,8 +34,8 @@
         </profile>
         <profile name="Vagrant" description="Vagrant" arch="aarch64">
             <requires profile="Vagrant_aarch64"/>
-    </profile>
-    <profile name="SelfInstall" description="Self Installing Image" arch="x86_64"/>
+        </profile>
+        <profile name="SelfInstall" description="Self Installing Image" arch="x86_64"/>
         <!-- Images (flavor + platform) -->
         <profile name="ContainerHost-kvm-and-xen" description="MicroOS with Podman for KVM and HVM Xen" arch="x86_64">
             <requires profile="kvm-and-xen_x86_64"/>
@@ -500,7 +500,7 @@
             <vagrantconfig provider="libvirt" virtualsize="24"/>
             <size unit="G">24</size>
         </type>
-        </preferences>
+    </preferences>
     <preferences profiles="SelfInstall">
         <version>16.0.0</version>
         <packagemanager>zypper</packagemanager>
@@ -593,10 +593,8 @@
         <package name="patterns-microos-apparmor"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen,kvm-and-xen_x86_64,kvm-and-xen_aarch64">
-        <!-- XEN specific packages -->
+        <!-- KVM and Xen specific packages -->
         <package name="xen-tools-domU" arch="x86_64"/>
-        <package name="grub2-x86_64-xen" arch="x86_64"/>
-        <package name="xen-libs" arch="x86_64"/>
         <package name="qemu-guest-agent"/>
     </packages>
     <packages type="image" profiles="VMware">
@@ -624,7 +622,7 @@
         <package name="u-boot-rpiarm64" arch="aarch64"/>
         <package name="dracut-kiwi-oem-repart"/>
         <package name="bcm43xx-firmware"/>
-        <package name="kernel-firmware"/><!-- Fix choice between kernel-firmware and kernel-firmware-all -->
+        <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
         <package name="wireless-tools"/>
         <package name="wpa_supplicant"/>
     </packages>
@@ -635,7 +633,7 @@
         <package name="u-boot-rpi2" arch="armv7l"/>
         <package name="dracut-kiwi-oem-repart"/>
         <package name="bcm43xx-firmware"/>
-        <package name="kernel-firmware"/><!-- Fix choice between kernel-firmware and kernel-firmware-all -->
+        <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
         <package name="wireless-tools"/>
         <package name="wpa_supplicant"/>
     </packages>
@@ -645,8 +643,8 @@
     </packages>
     <packages type="image" profiles="SelfInstall">
         <package name="dracut-kiwi-oem-repart"/>
-	<package name="dracut-kiwi-oem-dump"/>
-	<package name="kernel-firmware-all"/>	
+        <package name="dracut-kiwi-oem-dump"/>
+        <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
     </packages>
     <packages type="bootstrap">
         <package name="udev"/>
