@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 10:42:16 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Sat Jul 11 09:56:15 UTC 2020 - seife+obs@b1-systems.com
 
 - Update to version 6+git20200420.9d7ddda:

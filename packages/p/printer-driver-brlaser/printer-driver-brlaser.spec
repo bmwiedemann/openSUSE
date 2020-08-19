@@ -102,9 +102,9 @@ install -Dm644 build/ppd/* -t %{buildroot}%{_datadir}/cups/model/brlaser
 %defattr(-,root,root)
 %license COPYING
 %doc README.md
-%dir %{_libexecdir}/cups
-%dir %{_libexecdir}/cups/filter
-%{_libexecdir}/cups/filter/rastertobrlaser
+%dir %{_prefix}/lib/cups
+%dir %{_prefix}/lib/cups/filter
+%{_prefix}/lib/cups/filter/rastertobrlaser
 %dir %{_datadir}/cups
 %dir %{_datadir}/cups/model
 %{_datadir}/cups/model/brlaser
