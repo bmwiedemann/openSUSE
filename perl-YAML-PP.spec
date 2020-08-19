@@ -17,7 +17,7 @@
 
 
 Name:           perl-YAML-PP
-Version:        0.023
+Version:        0.024
 Release:        0
 %define cpan_name YAML-PP
 Summary:        YAML 1.2 processor
@@ -40,7 +40,7 @@ Requires:       perl(Module::Load)
 %description
 YAML::PP is a modular YAML processor.
 
-It aims to support 'YAML 1.2' and 'YAML 1.1'. See http://yaml.org/. Some
+It aims to support 'YAML 1.2' and 'YAML 1.1'. See https://yaml.org/. Some
 (rare) syntax elements are not yet supported and documented below.
 
 YAML is a serialization language. The YAML input is called "YAML Stream". A
@@ -78,7 +78,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md examples Makefile.dev README
+%doc Changes CONTRIBUTING.md examples Makefile.dev README.md
 %license LICENSE
 
 %changelog
