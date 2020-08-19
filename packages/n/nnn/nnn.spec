@@ -17,7 +17,7 @@
 
 
 Name:           nnn
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause

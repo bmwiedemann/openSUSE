@@ -17,7 +17,7 @@
 
 
 Name:           firejail
-Version:        0.9.62
+Version:        0.9.62.4
 Release:        0
 Summary:        Linux namepaces sandbox program
 License:        GPL-2.0-only
@@ -27,10 +27,6 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source1:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz.asc
 # PATCH-FIX-OPENSUSE firejail-0.9.62-fix-usr-etc.patch -- https://github.com/netblue30/firejail/issues/3145 two patches combined, source see file
 Patch0:         firejail-0.9.62-fix-usr-etc.patch
-# PATHCH-FIX-UPSTREAM fix-CVE-2020-17367 -- fixes boo#1174986
-Patch1:         https://github.com/netblue30/firejail/commit/2c734d6350ad321fccbefc5ef0382199ac331b37.patch#/fix-CVE-2020-17367.patch
-# PATHCH-FIX-UPSTREAM fix-CVE-2020-17368 -- fixes boo#1174986
-Patch2:         https://github.com/netblue30/firejail/commit/34193604fed04cad2b7b6b0f1a3a0428afd9ed5b.patch#/fix-CVE-2020-17368.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
@@ -49,8 +45,6 @@ Linux namespace support. It supports sandboxing specific users upon login.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' contrib/fj-mkdeb.py contrib/fjclip.py contrib/fjdisplay.py contrib/fjresize.py contrib/sort.py
 
 %build
@@ -84,7 +78,7 @@ exit 0
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/*
 %config %{_sysconfdir}/apparmor.d/firejail-default
-%config %{_sysconfdir}/apparmor.d/local/firejail-local
+%config %{_sysconfdir}/apparmor.d/local/firejail-default
 %dir %{_sysconfdir}/apparmor.d
 %dir %{_sysconfdir}/apparmor.d/local
 

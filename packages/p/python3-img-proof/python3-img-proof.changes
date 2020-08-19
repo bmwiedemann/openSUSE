@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 18 19:53:54 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v6.0.0 (2020-08-18)
+  + Use post init workflow.
+  + Break connection loop on certain exceptions.
+  + Create empty console log method for ssh backend. 
+
+-------------------------------------------------------------------
 Thu Aug  6 20:56:41 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v5.3.0 (2020-08-06)

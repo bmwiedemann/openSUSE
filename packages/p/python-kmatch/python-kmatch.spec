@@ -1,7 +1,7 @@
 #
 # spec file for package python-kmatch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,17 @@ Release:        0
 Summary:        A language for matching/validating/filtering Python dictionaries
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/ambitioninc/kmatch
+URL:            https://github.com/ambitioninc/kmatch
 Source:         https://files.pythonhosted.org/packages/source/k/kmatch/kmatch-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module coverage >= 3.7.1}
-BuildRequires:  %{python_module mock >= 1.0.1}
-BuildRequires:  %{python_module nose >= 1.3.0}
-# /SECTION
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module mock >= 1.0.1}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -44,6 +43,11 @@ with logical operators.
 
 %prep
 %setup -q -n kmatch-%{version}
+sed -i '/nose/d' setup.py
+dos2unix README.rst LICENSE
+chmod a-x README.rst LICENSE
+rm -r *.egg-info
+mv kmatch/tests/ .tests
 
 %build
 %python_build
@@ -53,7 +57,8 @@ with logical operators.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+mv .tests tests
+%pytest tests/*_tests.py
 
 %files %{python_files}
 %doc README.rst

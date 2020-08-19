@@ -59,4 +59,17 @@
     <comment></comment>
     <requestid>783673</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>236ec347769000985bba36bbf27c420b</srcmd5>
+    <version>5.1.0</version>
+    <time>1597855920</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 827599 from glaubitz)</comment>
+    <requestid>827653</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define         sover 6
 Name:           libvpx
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later

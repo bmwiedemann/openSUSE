@@ -1,7 +1,7 @@
 #
 # spec file for package libidn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libidn12
 Name:           libidn
-Version:        1.35
+Version:        1.36
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN)
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND Apache-2.0
@@ -28,7 +28,6 @@ Source0:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libidn&download=1#/%{name}.keyring
 Source3:        baselibs.conf
-Patch0:         disable-rwlock-test.patch
 BuildRequires:  pkgconfig
 Requires(post): %{install_info_prereq}
 
@@ -105,7 +104,6 @@ IDNA is supported.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure \

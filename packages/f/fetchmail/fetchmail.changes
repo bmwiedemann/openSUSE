@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 08:10:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix invalid usage of libexecdir where %_tmpfilesdir was meant to
+  be used.
+
+-------------------------------------------------------------------
 Sun Feb  2 08:25:32 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - pwdutils is gone long time ago

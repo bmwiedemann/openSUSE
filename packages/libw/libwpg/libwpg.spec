@@ -1,7 +1,7 @@
 #
 # spec file for package libwpg
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libwpg-0_3-3
 Name:           libwpg
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Library to read and parse graphics in WordPerfect Graphics format
-License:        LGPL-2.1+ AND MPL-2.0+
+License:        LGPL-2.1-or-later AND MPL-2.0+
 Group:          Productivity/Publishing/Word
-Url:            http://libwpg.sourceforge.net/
+URL:            http://libwpg.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++

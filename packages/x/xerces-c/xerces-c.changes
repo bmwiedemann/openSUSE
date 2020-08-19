@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 15 19:33:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * Custom HTTP headers missing with CURL NetAccessor 
+  * Type Confusion from DTDGrammar to SchemaGrammar
+  * Patch to build with older GCC
+   * fix build without pthread
+   * XMLUTF8Transcoder: One multibyte UTF8 character is swallowed from the srcData when the resulting surrogate pair does not fit in toFill at the end
+   * Postpone freeing the memory being used by CURL
+   * Memory leak in ValueVectorOf
+   * There is an error in the parameters of the ThreadTtest8 script in Apache xerces-c++ XML's tests/script
+   * Incorrect symbolic links created for Linux static library and MacOS static and shared libraries
+   * invalid windows version check for `onXPOrLater`
+   * Handle surrogate pairs when reading a QName instead of ASSERTing
+   * Janitor.hpp fails to compile on Solaris with Solaris Studio 12.2 and 12.4
+   * undef symbols on HPUX for ArrayJanitor
+   * DOM tests crash on AIX
+   * XMLChar with NEED_TO_GEN_TABLE has 2 buffer out of bounds reads
+   * Including Xerces_autoconf_config.hpp on Windows fails due to undefined ssize_t
+
+-------------------------------------------------------------------
 Wed Feb 12 08:44:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fixup rpmlint warning about installed Makefiles

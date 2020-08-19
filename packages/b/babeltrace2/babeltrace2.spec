@@ -19,7 +19,7 @@
 %define soname  libbabeltrace2
 %define sover   0
 Name:           babeltrace2
-Version:        2.0.1
+Version:        2.0.3
 Release:        0
 Summary:        Common Trace Format Babel Tower
 License:        MIT AND GPL-2.0-only

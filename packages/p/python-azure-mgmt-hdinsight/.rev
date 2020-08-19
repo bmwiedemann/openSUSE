@@ -51,4 +51,15 @@
     <comment></comment>
     <requestid>821939</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20b6345ad24d0973c60b91aef81de692</srcmd5>
+    <version>1.7.0</version>
+    <time>1597855935</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 827602 from glaubitz)</comment>
+    <requestid>827655</requestid>
+  </revision>
 </revisionlist>

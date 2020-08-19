@@ -135,4 +135,16 @@
 - Update Requires from setup.py (forwarded request 821922 from glaubitz)</comment>
     <requestid>821948</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5fa0dc5de13f44f5b36a6e2118d7442e</srcmd5>
+    <version>2.10.1</version>
+    <time>1597855972</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (boo#1175289)
+  + Version 2.10.1
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update Requires from setup.py (forwarded request 827683 from glaubitz)</comment>
+    <requestid>827685</requestid>
+  </revision>
 </revisionlist>

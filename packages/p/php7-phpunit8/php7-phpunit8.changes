@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 08:15:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %_rpmmacrodir instead of wrong %{_libexecdir}/rpm/macros.d
+  (libexecdir changes to /usr/libexec).
+
+-------------------------------------------------------------------
 Sun Dec 15 11:30:33 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update package to release 8.5.0

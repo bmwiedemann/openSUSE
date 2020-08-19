@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 16 00:14:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.12
+  * Corrected text output in FW activation history
+  * nvme: allow addr family to recognize loop
+  * Add log page CA parsing
+  * nvme status code updates based nvme spec v1.4
+  * Provide documentation for log page directory WDC plugin command 
+  * Fix status displayed by vs-telemetry-controller-option wdc plugin
+  * fabrics: ignore hostnqn file if its empty
+
+-------------------------------------------------------------------
 Mon Jan 27 07:11:47 UTC 2020 - hare@suse.com
 
 - Update to version 1.10.1+git9.872e6b0:

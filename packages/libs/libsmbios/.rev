@@ -319,4 +319,15 @@ SPDX format (http://www.spdx.org/licenses) (forwarded request 116746 from babelw
     <comment></comment>
     <requestid>767260</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>878506b341d0b595014fb6441a74d1e6</srcmd5>
+    <version>2.4.3</version>
+    <time>1597855524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.3
+  * Fixes for WMI based communications
+  * Fixes for battery controls
+  * Fixes for some segfaults and error handling</comment>
+    <requestid>826926</requestid>
+  </revision>
 </revisionlist>

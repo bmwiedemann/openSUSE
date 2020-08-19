@@ -1302,4 +1302,41 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     <comment></comment>
     <requestid>765871</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>af908a32fa24cdc346e022b59824b238</srcmd5>
+    <version>1.12.20</version>
+    <time>1597855478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.20
+  * On Unix, avoid a use-after-free if two usernames have the same
+    numeric uid. In older versions this could lead to a crash (denial of
+    service) or other undefined behaviour, possibly including incorrect
+    authorization decisions if &lt;policy group=...&gt; is used.
+    Like Unix filesystems, D-Bus' model of identity cannot distinguish
+    between users of different names with the same numeric uid, so this
+    configuration is not advisable on systems where D-Bus will be used.
+    Thanks to Daniel Onaca.
+    (dbus#305, dbus!166; Simon McVittie)
+- From 1.12.18
+  * CVE-2020-12049: If a message contains more file descriptors than can
+    be sent, close those that did get through before reporting error.
+    Previously, a local attacker could cause the system dbus-daemon (or
+    another system service with its own DBusServer) to run out of file
+    descriptors, by repeatedly connecting to the server and sending fds that
+    would get leaked.
+    Thanks to Kevin Backhouse of GitHub Security Lab.
+    (dbus#294, GHSL-2020-057; Simon McVittie)
+  * Fix a crash when the dbus-daemon is terminated while one or more
+    monitors are active (dbus#291, dbus!140; Simon McVittie)
+  * The dbus-send(1) man page now documents --bus and --peer instead of
+    the old --address synonym for --peer, which has been deprecated since
+	the introduction of --bus and --peer in 1.7.6
+	(fd.o #48816, dbus!115; Chris Morin)
+  * Fix a wrong environment variable name in dbus-daemon(1)
+    (dbus#275, dbus!122; Mubin, Philip Withnall)
+  * Fix formatting of dbus_message_append_args example
+	(dbus!126, Felipe Franciosi)
+  * Avoid a test failure on Linux when built in a container as uid 0, but</comment>
+    <requestid>826904</requestid>
+  </revision>
 </revisionlist>

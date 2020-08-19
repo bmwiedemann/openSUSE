@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 15 23:03:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.9.4:
+  * use optflags for building
+  * Remove NULL sentinels from test runner
+  * Reject interior blanks in Content-Length
+  * Disallow empty Content-Length
+  * Speed up http_parser loop
+  * Fix bad pointer arithmetic
+  * Support multi-coding Transfer-Encoding
+
+- remove makefile.patch: we want to build with -Werror
+
+-------------------------------------------------------------------
 Fri Nov  3 10:01:08 UTC 2017 - mimi.vx@gmail.com
 
 - move out from gyp

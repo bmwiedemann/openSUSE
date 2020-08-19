@@ -1,7 +1,7 @@
 #
 # spec file for package nvme-cli
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           nvme-cli
-Version:        1.10.1+git9.872e6b0
+Version:        1.12
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
 Group:          Hardware/Other
-Url:            https://github.com/linux-nvme/nvme-cli
-Source:         %{name}-%{version}.tar.xz
+URL:            https://github.com/linux-nvme/nvme-cli
+Source:         https://github.com/linux-nvme/nvme-cli/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        nvme-cli-rpmlintrc
 # downstream patches:
 Patch102:       0102-nvme-cli-Add-script-to-determine-host-NQN.patch

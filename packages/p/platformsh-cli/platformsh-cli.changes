@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 18 22:37:26 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.62.0:
+  * Release v3.62.0
+  * Apply feature flag to the --force-invite option
+  * Handle mongodb URIs in relationships (#975)
+  * Show the stderr of every shell command, if in debug mode (#972)
+  * Retry fetching the activity log stream (#973)
+  * Support force-sending an invitation (#976)
+
+-------------------------------------------------------------------
 Thu Aug 13 18:32:04 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.61.0:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  7 09:21:27 MDT 2020 - carnold@suse.com
+
+- Update database to version 20200804
+- Drop patches included in new tarball
+  add-opensuse-leap-15.2-support.patch
+  add-sle15sp2-support.patch
+
+-------------------------------------------------------------------
 Wed Jul  1 07:06:24 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Add fix-tumbleweed-order.patch: ensure x86_64 is listed before

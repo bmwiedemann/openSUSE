@@ -23,12 +23,11 @@
 %endif
 %bcond_without selinux
 Name:           dbus-1-x11
-Version:        1.12.16
+Version:        1.12.20
 Release:        0
 Summary:        D-Bus Message Bus System
 License:        GPL-2.0-or-later OR AFL-2.1
-Group:          System/Daemons
-URL:            http://dbus.freedesktop.org/
+URL:            https://dbus.freedesktop.org/
 Source0:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz
 Source1:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz.asc
 Source2:        dbus-1.keyring
@@ -41,14 +40,14 @@ Patch1:         feature-suse-do-autolaunch.patch
 Patch2:         feature-suse-refuse-manual-start-stop.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  libcap-ng-devel
-BuildRequires:  libexpat-devel
+BuildRequires:  libexpat-devel >= 2.1.0
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(x11)
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
-Supplements:    packageand(dbus-1:libX11-6)
+Supplements:    (dbus-1 and libX11-6)
 Provides:       dbus-launch
 %if %{with selinux}
 BuildRequires:  libselinux-devel
@@ -88,7 +87,7 @@ export V=1
     --with-systemdsystemunitdir=%{_unitdir} \
     --with-systemduserunitdir=%{_userunitdir} \
     --with-x
-make %{?_smp_mflags}
+%make_build
 
 %install
 tdir=$(mktemp -d)

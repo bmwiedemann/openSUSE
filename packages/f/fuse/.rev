@@ -543,4 +543,17 @@
     <comment></comment>
     <requestid>697568</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>f3bf9aebef3429bbe6ad7d704d914679</srcmd5>
+    <version>2.9.9</version>
+    <time>1597855623</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.9:
+  * Added OpenAFS to whitelist (so users can now mount FUSE filesystems on mountpoints within OpenAFS filesystems).
+  * Added a test of seekdir to test_syscalls.
+  * Fixed readdir bug when non-zero offsets are given to filler and the
+  filesystem client, after reading a whole directory, re-reads it from a
+  non-zero offset e. g. by calling seekdir followed by readdir.</comment>
+    <requestid>827055</requestid>
+  </revision>
 </revisionlist>

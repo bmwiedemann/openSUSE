@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 16 01:10:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.4.3
+  * Fixes for WMI based communications
+  * Fixes for battery controls
+  * Fixes for some segfaults and error handling
+
+-------------------------------------------------------------------
 Fri Jan 10 21:44:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Move /usr/share/locale/en from the -lang package to the main

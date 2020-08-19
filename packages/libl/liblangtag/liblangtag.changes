@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 15 23:16:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.6.3:
+  Fix possible null argument for %s directive
+  Add ax_check_enable_debug.m4 to satisfy requirement
+  enable round tripping ca@valencia locale string back to ca@valencia again
+  coverity: fix memory leaks on failure
+  coverity: fix more memory leaks
+
+-------------------------------------------------------------------
 Wed May 30 10:19:55 UTC 2018 - tchvatal@suse.com
 
 - Version update to 0.6.2:

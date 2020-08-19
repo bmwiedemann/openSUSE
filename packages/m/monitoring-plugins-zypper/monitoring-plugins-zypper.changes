@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 10 14:58:53 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to 1.98.6 (fixes boo#1173872)
+  Beside other, small updates, this release includes first support for the
+  rolling release named openSUSE Tumbleweed.
+
+  Per default, a Tumbleweed installation which is older than 30 days will trigger
+  a warning state - and an installation older than 60 days will trigger a
+  critical state. You can fine tune this behavior with the new command line
+  options --tw_outdated_warn and --tw_outdated_crit.
+
+  Other changes:
+  * use proper Copyright
+  * use Perl modules: POSIX and Time::Local
+  * die, if release-file could not be opened
+  * get rid of get_distribution_from_os_release() function: use 
+    get_distribution() for all cases
+  * new test_tumbleweed() and check_returncode() functions (internal)
+  * trim quotation marks in trim() function
+  * added some os-release files for testing
+- Recommend perl only on openSUSE based distributions
+- Require needed Perl modules: Getopt::Long, POSIX, Time::Local
+
+-------------------------------------------------------------------
 Fri Jul  3 08:16:21 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to 1.98.5

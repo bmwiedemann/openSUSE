@@ -396,4 +396,31 @@
     ARCH_* defines have been removed in favor of VPX_ARCH_*.</comment>
     <requestid>762837</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>338578e0d9bc62db26645011612e323a</srcmd5>
+    <version>1.9.0</version>
+    <time>1597855345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0
+  This release adds support for NV12, a separate library for rate control, as
+  well as incremental improvements.
+  - Upgrading:
+    NV12 support is added to this release.
+    A new interface is added for VP9 rate control. The new library libvp9rc.a
+    must be linked by applications.
+    Googletest is updated to v1.10.0.
+    simple_encode.cc is compiled into a new library libsimple_encode.a with
+    CONFIG_RATE_CTRL.
+  - Enhancement:
+    Various changes to improve VP9 SVC, rate control, quality and speed to real
+    time encoding.
+  - Bug fixes:
+    Fix key frame update refresh simulcast flexible svc.
+    Fix to disable_16x16part speed feature for real time encoding.
+    Fix some signed integer overflows for VP9 rate control.
+    Fix initialization of delta_q_uv.
+    Fix condition in regulate_q for cyclic refresh.
+    Various fixes to dynamic resizing for VP9 SVC.</comment>
+    <requestid>826291</requestid>
+  </revision>
 </revisionlist>

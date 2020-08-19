@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 19 04:29:27 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.0:
+  * A command like wormhole send /dev/fd0 can send the contents of the named
+    block device (USB stick, SD card, floppy, etc), resulting in a plain file
+    on the other side. (#323)
+  * Change "accept this file?" default answer from no to yes. (#327 #330 #331)
+  * Actually use tempfile for large directory transfers. This fixes a
+    five-year old bug which prevents transfers of directories larger than
+    available RAM by finally really building the temporary zipfile on
+    disk. (#379)
+  * Accept 'wss' for TLS-protected relay connections, which default to port
+    443 if no other port is accepted. A future release will change the public
+    relay to use TLS. (#144)
+  * Drop support for python3.4
+  * Stall --verify long enough to send the verifier. This fixes a bug when
+    both sides use --verify, the receiver uses tab-completion, the sender
+    sees the verifier and waits for the user to confirm, but the receiver
+    cannot show the verifier (enabling that confirmation) until the sender
+    approves the transfer. (#349) 
+
+-------------------------------------------------------------------
 Wed Mar 25 08:12:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the update-alternatives to provide py2 variant too bsc#1152403

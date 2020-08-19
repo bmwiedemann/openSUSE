@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 22:57:57 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We can finally use %pyunittest macro
+
+-------------------------------------------------------------------
 Wed May 27 09:36:32 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

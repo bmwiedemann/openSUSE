@@ -1,7 +1,7 @@
 #
 # spec file for package php7-phpunit8
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,13 +54,13 @@ cp %{SOURCE3} %{SOURCE4} .
 install -d -m 0750 %{buildroot}%{_bindir}
 install -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/phpunit
 # Install macros specific for this version of PHPUnit to be used by other applications
-install -d -m 0750 %{buildroot}%{_libexecdir}/rpm/macros.d
-install -m 0644 %{SOURCE5} %{buildroot}%{_libexecdir}/rpm/macros.d/macros.phpunit
+install -d -m 0750 %{buildroot}%{_rpmmacrodir}
+install -m 0644 %{SOURCE5} %{buildroot}%{_rpmmacrodir}/macros.phpunit
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/phpunit
-%{_libexecdir}/rpm/macros.d/macros.phpunit
+%{_rpmmacrodir}/macros.phpunit
 
 %changelog

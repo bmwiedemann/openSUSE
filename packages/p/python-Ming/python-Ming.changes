@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug 15 09:37:39 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Improve Summary
+- Add %license from upstream repository
+- Replace nose with pytest
+- Tidy spec
+- Remove Recommends python-python-spidermonkey which is not buildable
+- Remove pymongo-reqs.patch merged upstream
+- Replace 0001-disable_test_gridfs.patch with inline "rm" command
+- Update to v0.10.2
+  * Fix error using save() and no _id
+  * MIM: Avoid errors from _ensure_orig_key when positional $ is used
+- from v0.10.1
+  * fix situation with gridfs indexes and MIM
+  * fix validate=False and update some MIM params to match pymongo closer
+- from v0.10.0
+  * Support for PyMongo 3.10
+  * Support for Python 3.8
+  * Removed start_request/end_request from MIM
+  * Added Cursor.close to MIM
+  * Moved testing from nose to unittest
+
+-------------------------------------------------------------------
 Thu Mar 26 15:58:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.9.2

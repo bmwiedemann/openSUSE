@@ -1,11 +1,11 @@
-Index: osinfo-db-20200529/os/microsoft.com/win-2k19.xml
+Index: osinfo-db-20200804/os/microsoft.com/win-2k19.xml
 ===================================================================
---- osinfo-db-20200529.orig/os/microsoft.com/win-2k19.xml
-+++ osinfo-db-20200529/os/microsoft.com/win-2k19.xml
-@@ -29,6 +29,23 @@
- 
+--- osinfo-db-20200804.orig/os/microsoft.com/win-2k19.xml
++++ osinfo-db-20200804/os/microsoft.com/win-2k19.xml
+@@ -30,6 +30,22 @@
+     <derives-from id="http://microsoft.com/win/2k16"/>
+     <upgrades id="http://microsoft.com/win/2k16"/>
      <release-date>2018-10-02</release-date>
- 
 +    <media arch="x86_64">
 +      <variant id="standard"/>
 +      <iso>
@@ -22,7 +22,6 @@ Index: osinfo-db-20200529/os/microsoft.com/win-2k19.xml
 +        <l10n-language regex="true" l10n-language-map="http://microsoft.com/win/7/l10n-language">[A-Z0-9]*_([A-Z]*)</l10n-language>
 +      </iso>
 +    </media>
-+
      <resources arch="x86_64">
        <minimum>
          <cpu>1400000000</cpu>

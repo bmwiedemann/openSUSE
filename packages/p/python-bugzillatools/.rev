@@ -90,4 +90,13 @@
     <comment></comment>
     <requestid>809829</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>7a51e7663b1f5ce174cedf7026ef8507</srcmd5>
+    <version>0.5.5</version>
+    <time>1597856127</time>
+    <user>dimstar_suse</user>
+    <comment>- We can finally use %pyunittest macro
+</comment>
+    <requestid>827696</requestid>
+  </revision>
 </revisionlist>

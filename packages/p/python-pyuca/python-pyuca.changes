@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 22:42:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We can finally use %pyunittest macro
+
+-------------------------------------------------------------------
 Wed Aug 12 23:31:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Run SPEC file through spec-cleaner

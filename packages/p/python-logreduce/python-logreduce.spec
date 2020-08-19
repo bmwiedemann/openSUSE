@@ -50,7 +50,6 @@ BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module alembic}
 BuildRequires:  %{python_module gear}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -80,13 +79,24 @@ failed logs:
 %prep
 %setup -q -n logreduce-%{version}
 sed -i -e 's,flake8.*,,' test-requirements.txt
+rm logreduce/server/web/.keep
+sed -i '1{/^#!/d}' logreduce/cmd.py logreduce/mqtt/cmd.py
+
+# CherryPy 10.1 and lower requires nose in cherrypy/test/helper.py needed by test_api.py
+# As of logreduce 0.5.2, upstream doesnt restrict the cherrypy version,
+# so remove test_api.py (which has only two tests) if any python has older CherryPy
+%{python_expand if $python -c 'import cherrypy,sys,distutils.version; sys.exit(distutils.version.LooseVersion(cherrypy.__version__) < distutils.version.LooseVersion("10.2"))' ; then
+  rm -f logreduce/tests/test_api.py
+fi}
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/logreduce/tests/
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 %pytest

@@ -64,7 +64,7 @@ sed -i "/.bugzillarc.sample/d" setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -munittest discover -v
+%pyunittest
 
 %post
 %python_install_alternative bugzilla

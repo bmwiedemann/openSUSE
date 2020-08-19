@@ -362,4 +362,19 @@
     <comment></comment>
     <requestid>758531</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7f2a96b97a69845b9b496a34c235b97d</srcmd5>
+    <version>3.0.8</version>
+    <time>1597855420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.8:
+  * Fix for icalattach_new_from_data() and the 'free_fn' argument.
+  * Fix if recurrencetype contains both COUNT and UNTIL (only
+    output UNTIL in the RRULE).
+- Replace gcc-c++ with generic c++_compiler BuildRequires.
+- Use cmake_build macro, forcing single thread building is no
+  longer needed. This breaks support for SLE12SP4, but that one is
+  superseeded by SP5 anyway.</comment>
+    <requestid>826857</requestid>
+  </revision>
 </revisionlist>

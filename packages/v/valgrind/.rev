@@ -1201,4 +1201,15 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     values is also improved on some architectures.</comment>
     <requestid>816789</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>fc813fa1548d2d24df179166a3be1a4d</srcmd5>
+    <version>3.16.1</version>
+    <time>1597855545</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.16.1:
+  * PPC sync instruction L field should only be 2 bits in ISA 3.0
+  * vex: the `impossible' happened: expr_is_guardable: unhandled expr
+- remove 0001-Power-PC-Fix-extraction-of-the-L-field-for-sync-inst.patch (upstream)</comment>
+    <requestid>826927</requestid>
+  </revision>
 </revisionlist>

@@ -47,4 +47,20 @@
     <comment></comment>
     <requestid>539235</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7d03927fab6ba18d56795a0ed71e6261</srcmd5>
+    <version>2.9.4</version>
+    <time>1597855493</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.4:
+  * use optflags for building
+  * Remove NULL sentinels from test runner
+  * Reject interior blanks in Content-Length
+  * Disallow empty Content-Length
+  * Speed up http_parser loop
+  * Fix bad pointer arithmetic
+  * Support multi-coding Transfer-Encoding
+- remove makefile.patch: we want to build with -Werror</comment>
+    <requestid>826905</requestid>
+  </revision>
 </revisionlist>

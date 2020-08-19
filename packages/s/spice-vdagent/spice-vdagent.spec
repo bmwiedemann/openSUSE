@@ -106,13 +106,11 @@ fi
 %defattr(-,root,root)
 %doc CHANGELOG.md README.md
 %license COPYING
-%dir %{_libexecdir}/udev
-%dir %{_libexecdir}/udev/rules.d
 %ghost /run/spice-vdagentd
-%{_libexecdir}/udev/rules.d/70-spice-vdagentd.rules
+%{_udevrulesdir}/70-spice-vdagentd.rules
 %{_unitdir}/spice-vdagentd.service
 %{_unitdir}/spice-vdagentd.socket
-%{_libexecdir}/tmpfiles.d/spice-vdagentd.conf
+%{_tmpfilesdir}/spice-vdagentd.conf
 %{_bindir}/spice-vdagent
 %{_sbindir}/spice-vdagentd
 %{_sbindir}/rcspice-vdagentd

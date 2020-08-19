@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 18 11:56:54 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix install on %arm:
+  * ignition-fix-arm32-installation.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 09:27:01 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Fixed "ignition presets not applied" (boo#1172510)

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 18 21:25:40 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release (boo#1175289)
+  + Version 2.10.1
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Jul 20 14:42:00 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

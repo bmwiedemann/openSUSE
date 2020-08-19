@@ -1,7 +1,7 @@
 #
 # spec file for package libical
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,9 @@
 %define name_ext %{nil}
 %bcond_with glib
 %endif
+
 Name:           libical%{name_ext}
-Version:        3.0.7
+Version:        3.0.8
 Release:        0
 %if %{without glib}
 Summary:        An Implementation of Basic iCAL Protocols
@@ -38,16 +39,18 @@ License:        MPL-2.0 OR LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 %endif
 URL:            https://github.com/libical/libical
-Source:         https://github.com/libical/libical/releases/download/v%{version}/libical-%{version}.tar.gz
+Source:         %{url}/releases/download/v%{version}/libical-%{version}.tar.gz
 Source2:        baselibs.conf
 Source3:        libical-rpmlintrc
+
 Patch1:         0001-vcc.y-factor-out-hexdigit-conversion.patch
 Patch2:         0002-vcc.y-fix-infinite-loop-with-lower-case-hex-digits.patch
 Patch3:         0003-vcc.y-fix-infinite-loop-with-non-hex-digits.patch
 Patch4:         0004-vobject.c-vCard-Unicode-reading-support.patch
 Patch5:         0005-vcc.y-do-not-ignore-field-separator-in-QUOTED-PRINTA.patch
+
+BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.1
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(icu-i18n)
 %if %{with glib}
@@ -164,7 +167,7 @@ This package provides the gobject-introspection bindings for libical-glib.
   -DICAL_GLIB=false \
 %endif
   -DSHARED_ONLY=true
-make -j1
+%cmake_build
 
 %install
 %cmake_install

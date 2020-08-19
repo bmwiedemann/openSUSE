@@ -82,10 +82,9 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 %{_bindir}/iwmon
 %{_sbindir}/rc%{name}
 %{_libexecdir}/%{name}/
-%dir %{_libexecdir}/modules-load.d/
-%{_libexecdir}/modules-load.d/pkcs8.conf
-%dir %{_libexecdir}/systemd/network
-%{_libexecdir}/systemd/network/80-iwd.link
+%{_prefix}/lib/modules-load.d/pkcs8.conf
+%dir %{_prefix}/lib/systemd/network
+%{_prefix}/lib/systemd/network/80-iwd.link
 %{_unitdir}/%{name}.service
 %dir %{_datadir}/dbus-1/system.d/
 %{_datadir}/dbus-1/system.d/%{name}*.conf

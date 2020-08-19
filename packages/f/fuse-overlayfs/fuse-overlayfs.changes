@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 16 15:05:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- udpate to 1.1.2
+  - fix build issues with libmusl.
+  - fix memory leak when creating whiteout files.
+  - fix lookup for overflow uid when it is different than the overflow gid.
+
+-------------------------------------------------------------------
 Wed Jun 24 13:10:52 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to v1.1.0

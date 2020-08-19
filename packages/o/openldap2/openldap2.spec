@@ -44,7 +44,6 @@ URL:            https://www.openldap.org
 Source:         https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version_main}.tgz
 Source1:        slapd.conf
 Source2:        slapd.conf.olctemplate
-Source3:        DB_CONFIG
 Source4:        sasl-slapd.conf
 Source5:        README.module-loading
 Source6:        schema2ldif
@@ -369,7 +368,6 @@ install -m 755 %{SOURCE6} %{buildroot}%{_sbindir}/schema2ldif
 install -m 755 %{SOURCE17} %{buildroot}%{_sbindir}
 mkdir -p  %{buildroot}%{_tmpfilesdir}/
 install -m 644 %{SOURCE18} %{buildroot}%{_tmpfilesdir}/
-install -m 644 %{SOURCE3}  %{buildroot}/usr/lib/openldap/
 
 # Install ppolicy check module
 make -C contrib/slapd-modules/ppolicy-check-password STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libexecdir}" install
@@ -473,7 +471,6 @@ fi
 %config(noreplace) %attr(640, root, ldap) %{_sysconfdir}/openldap/slapd.conf.olctemplate
 %config %attr(640, root, ldap) %{_sysconfdir}/openldap/slapd.conf.default
 %config %attr(640, root, ldap) %{_sysconfdir}/openldap/slapd.conf.example
-%config(noreplace) %attr(640, ldap, ldap) /usr/lib/openldap/DB_CONFIG
 %dir %{_libdir}/openldap
 %dir /usr/lib/openldap
 %dir %{_sysconfdir}/sasl2

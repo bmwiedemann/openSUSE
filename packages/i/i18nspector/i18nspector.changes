@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 15 17:19:48 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.25.9.
+  * Drop support for Python < 3.4.
+  * Fix compatibility with Python 3.9.
+  * Fix spelling and grammar in tag descriptions.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
 Tue Apr  9 06:46:22 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.25.8.

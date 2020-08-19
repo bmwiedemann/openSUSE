@@ -93,7 +93,7 @@ popd
 
 ln -s service %{buildroot}%{_sbindir}/rcthermald
 install -D -m 0755 -t %{buildroot}%{_sbindir}/ tools/thermald_set_pref.sh
-install -D -m 0644 -t %{buildroot}%{_libexecdir}/modules-load.d/ %{SOURCE1}
+install -D -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
 install -D -m 0644 -t %{buildroot}%{_fillupdir}/ %{SOURCE3}
 
@@ -128,8 +128,8 @@ install -D -m 0644 -t %{buildroot}%{_datadir}/pixmaps/ %{SOURCE11}
 %{_fillupdir}/sysconfig.%{name}
 %{_mandir}/man5/thermal-conf.xml.5%{?ext_man}
 %{_mandir}/man8/thermald.8%{?ext_man}
-%dir %{_libexecdir}/modules-load.d
-%{_libexecdir}/modules-load.d/thermald.conf
+%dir %{_prefix}/lib/modules-load.d
+%{_prefix}/lib/modules-load.d/thermald.conf
 %{_sbindir}/rcthermald
 %{_sbindir}/thermald
 %{_sbindir}/thermald_set_pref.sh

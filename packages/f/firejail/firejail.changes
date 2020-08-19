@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 19 06:15:16 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.9.62.4
+  * fix AppArmor broken in the previous release
+  * miscellaneous fixes
+
+-------------------------------------------------------------------
+Thu Aug 13 06:13:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.9.62.2
+  * fix CVE-2020-17367
+  * fix CVE-2020-17368
+  * additional hardening and bug fixes
+- Remove fix-CVE-2020-17368.patch
+- Remove fix-CVE-2020-17367.patch
+
+-------------------------------------------------------------------
 Sat Aug  8 16:56:43 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Add patches fix-CVE-2020-17367.patch and fix-CVE-2020-17368.patch to fix CVE-2020-17367 and CVE-2020-17368 and boo#1174986

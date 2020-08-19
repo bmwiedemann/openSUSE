@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 16 14:10:25 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate test suite replacing nose with pytest
+- Remove tests from runtime package
+- dos2unix several files
+- Tidy spec
+
+-------------------------------------------------------------------
 Wed Jul 24 08:26:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.0:

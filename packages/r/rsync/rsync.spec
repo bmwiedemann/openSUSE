@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%bcond_without xxhash
+%else
+%bcond_with xxhash
+%endif
+
 Name:           rsync
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
@@ -36,10 +42,9 @@ Source10:       http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz.asc
 Source11:       http://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz.asc
 Source12:       %{name}.keyring
 Patch0:         rsync-no-libattr.patch
-#PATCH-FIX-SUSE boo#922710 slp
-Patch1:         rsync-add_back_use_slp_directive.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  c++_compiler
 BuildRequires:  libacl-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  libzstd-devel
@@ -47,8 +52,10 @@ BuildRequires:  openslp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
+%if %{with xxhash}
+BuildRequires:  pkgconfig(libxxhash) >= 0.8.0
+%endif
 BuildRequires:  pkgconfig(openssl)
 Requires(post): grep
 Requires(post): sed
@@ -68,24 +75,24 @@ for backups and mirroring and as an improved copy command for everyday use.
 %setup -q -b 1
 rm -f zlib/*.h
 
-patch -p1 < patches/acls.diff
-patch -p1 < patches/xattrs.diff
 patch -p1 < patches/slp.diff
 
-# fate#312479
-patch -p1 < patches/time-limit.diff
-
 %patch0 -p1
-%patch1 -p1
 
 %build
 autoreconf -fiv
 export CFLAGS="%{optflags} -fPIC -DPIC -fPIE"
-export LDFLAGS="-Wl,-z,relro,-z,now -pie"
+export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
 %configure \
   --with-included-popt=no \
   --with-included-zlib=no \
   --disable-debug \
+%if !%{with xxhash}
+  --disable-xxhash\
+%endif
+%ifarch x86_64
+  --enable-simd \
+%endif
   --enable-slp \
   --enable-acl-support \
   --enable-xattr-support

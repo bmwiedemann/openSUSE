@@ -143,4 +143,20 @@
     <comment></comment>
     <requestid>795907</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b06043dbda77ce405a27a0f3c154a2b6</srcmd5>
+    <version>0.2.5</version>
+    <time>1597855469</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.5:
+  * Allow question marks in plain scalars in flow collections
+  * Emitter: Don't output trailing space for empty scalar nodes
+  * Emitter: Output space after an alias mapping key
+  * Add -h and --flow (on|off|keep) to run-*-test-suite
+  * Remove unnecessary include and malloc
+  * Add specific files back to .gitignore
+  * Output error position in run-parser-test-suite.c
+  * A couple patches to improve test suite support</comment>
+    <requestid>826902</requestid>
+  </revision>
 </revisionlist>

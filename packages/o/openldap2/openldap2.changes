@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 15 06:56:27 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop obsolete, not working DB_CONFIG
+- Remove init.d header from start script, does not work
+- Use bash for start script as syntax is not POSIX sh supported
+- Remove UPDATE_NEEDED section in start script, does never match
+
+-------------------------------------------------------------------
+Sat Aug 15 06:36:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove remaining rc.status usage in start script
+
+-------------------------------------------------------------------
 Wed Aug 12 06:16:42 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - updated to 2.4.51

@@ -17,7 +17,7 @@
 
 
 Name:           wine-nine-standalone
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Wine Gallium Nine Standalone version
 License:        LGPL-2.1-or-later

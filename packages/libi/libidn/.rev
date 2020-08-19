@@ -427,4 +427,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>706040</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>17ffba658a0fa9b2d36c5d20b6eaee4a</srcmd5>
+    <version>1.36</version>
+    <time>1597855460</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.36:
+  ** Fix unlikely memory leak in idna_to_unicode_4z4z().
+  ** Check codepoint validity in punycode_decode() and punycode_decode().
+  ** tld: Add U+00EF to .nl TLD table.
+  ** Indent code.
+  ** Translation fixes.
+  ** Update gnulib files.
+  ** API and ABI is backwards compatible with the previous version.
+- remove disable-rwlock-test.patch (builds fine again)</comment>
+    <requestid>826897</requestid>
+  </revision>
 </revisionlist>

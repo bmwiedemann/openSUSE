@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Aug 18 11:46:09 UTC 2020 - Marius Kittler <marius.kittler@suse.com>
+
+- Prevent the build system to download Go modules which would require an
+  internet connection during the build
+- Update to 1.8.0
+  - The 1.8.0 release
+    - adds the experimental copyRangeMethod config on folders, for use on
+      filesystems with copy-on-write support. Please see
+      https://docs.syncthing.net/advanced/folder-copyrangemethod.html for
+      details.
+    - adds TCP hole punching, used to establish high performance TCP
+      connections in certain NAT scenarios where only relay or QUIC
+      connections could be used previously.
+    - adds a configuration to file versioning for how often to run cleanup.
+      This defaults to once an hour, but is configurable from very
+      frequently to never.
+  - The 1.7.0 release performs a database migration to optimize for clusters
+    with many devices.
+  - The 1.6.0 release performs a database schema migration, and adds the
+    BlockPullOrder, DisableFsync and MaxConcurrentWrites folder
+    options to the configuration schema. The LocalChangeDetected event no
+    longer has the action set to added for new files, instead showing modified
+    for all local file changes.
+  - The 1.5.0 release changes the default location for the index database under
+    some circumstances. Two new flags can also be used to affect the
+    location of the configuration (-config) and database (-data)
+    separately. The old -home flag is equivalent to setting both of these
+    to the same directory. When no flags are given the following logic is
+    used to determine the data location:
+
+    If a database exists in the old default location, that location is
+    still used. This means existing installations are not affected by this
+    change.
+    If $XDG_DATA_HOME is set, use $XDG_DATA_HOME/syncthing.
+    If ~/.local/share/syncthing exists, use that location.
+    Use the old default location.
+
+-------------------------------------------------------------------
 Wed Apr  8 07:50:58 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 1.4.2:

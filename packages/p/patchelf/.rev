@@ -91,4 +91,15 @@
   * Lots of bug fixes see https://github.com/NixOS/patchelf/commits/master</comment>
     <requestid>726292</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6a5a64742fd7130118961fa93a67d09b</srcmd5>
+    <version>0.11</version>
+    <time>1597855509</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11:
+  * More modern C++ has avoided a memory leak  
+  * force-rpath is now consistently used
+  * new --output flag</comment>
+    <requestid>826921</requestid>
+  </revision>
 </revisionlist>

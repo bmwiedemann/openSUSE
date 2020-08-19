@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  1 10:30:21 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- add 0001-fix-hebrew-iso-code.patch to change obsolete hebrew language
+  code from iw to he
+
+-------------------------------------------------------------------
 Mon Jul 27 13:25:05 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - add pkgconfig file

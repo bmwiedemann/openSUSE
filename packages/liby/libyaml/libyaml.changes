@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 15 22:27:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.2.5:
+  * Allow question marks in plain scalars in flow collections
+  * Emitter: Don't output trailing space for empty scalar nodes
+  * Emitter: Output space after an alias mapping key
+  * Add -h and --flow (on|off|keep) to run-*-test-suite
+  * Remove unnecessary include and malloc
+  * Add specific files back to .gitignore
+  * Output error position in run-parser-test-suite.c
+  * A couple patches to improve test suite support
+
+-------------------------------------------------------------------
 Mon Apr 20 14:45:18 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 0.2.4

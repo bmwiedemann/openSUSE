@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 16 01:27:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Update to 0.27.3:
+  * Bug and security fixes
+  * UNIX suppport
+  * Support for building with C++11 and C++14
+  * Revised build and test environments
+  * Revised documentation
+  * Improved charset handling in UserComment
+  * Other improvements 
+
+-------------------------------------------------------------------
 Fri Apr 17 11:26:29 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use C++11 for building instead of C++98. Googletest 1.10 is no

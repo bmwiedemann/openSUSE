@@ -74,4 +74,15 @@
     CHANGELOG.md file provided with this package</comment>
     <requestid>822662</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5fe15ac1eea15a21e6ca5b4cf24910f7</srcmd5>
+    <version>10.2.0</version>
+    <time>1597855954</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 10.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 827604 from glaubitz)</comment>
+    <requestid>827657</requestid>
+  </revision>
 </revisionlist>

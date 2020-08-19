@@ -1,11 +1,11 @@
-Index: osinfo-db-20200529/os/opensuse.org/opensuse-tumbleweed.xml
+Index: osinfo-db-20200804/os/opensuse.org/opensuse-tumbleweed.xml
 ===================================================================
---- osinfo-db-20200529.orig/os/opensuse.org/opensuse-tumbleweed.xml	2020-05-29 13:07:41.000000000 +0200
-+++ osinfo-db-20200529/os/opensuse.org/opensuse-tumbleweed.xml	2020-07-01 09:04:20.344096387 +0200
-@@ -51,16 +51,6 @@
+--- osinfo-db-20200804.orig/os/opensuse.org/opensuse-tumbleweed.xml
++++ osinfo-db-20200804/os/opensuse.org/opensuse-tumbleweed.xml
+@@ -54,16 +54,6 @@
+       <name xml:lang="fr">openSUSE Tumbleweed (Kubic)</name>
      </variant>
- 
-     
+     <!-- DVD Image -->
 -    <media arch="i686">
 -      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-i586-Current.iso</url>
 -      <iso>
@@ -19,12 +19,11 @@ Index: osinfo-db-20200529/os/opensuse.org/opensuse-tumbleweed.xml
      <media arch="x86_64">
        <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso</url>
        <iso>
-@@ -71,13 +61,10 @@
+@@ -74,18 +64,17 @@
        <kernel>boot/x86_64/loader/linux</kernel>
        <initrd>boot/x86_64/loader/initrd</initrd>
      </media>
--
--    
+-    <!-- Network Image -->
      <media arch="i686">
 -      <variant id="netinst"/>
 -      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-i586-Current.iso</url>
@@ -35,7 +34,14 @@ Index: osinfo-db-20200529/os/opensuse.org/opensuse-tumbleweed.xml
          <system-id>LINUX</system-id>
          <publisher-id>SUSE LINUX GmbH</publisher-id>
        </iso>
-@@ -95,6 +84,17 @@
+       <kernel>boot/i386/loader/linux</kernel>
+       <initrd>boot/i386/loader/initrd</initrd>
+     </media>
++    <!-- Network Image -->
+     <media arch="x86_64">
+       <variant id="netinst"/>
+       <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso</url>
+@@ -97,6 +86,17 @@
        <kernel>boot/x86_64/loader/linux</kernel>
        <initrd>boot/x86_64/loader/initrd</initrd>
      </media>
@@ -50,6 +56,6 @@ Index: osinfo-db-20200529/os/opensuse.org/opensuse-tumbleweed.xml
 +      <kernel>boot/i386/loader/linux</kernel>
 +      <initrd>boot/i386/loader/initrd</initrd>
 +    </media>
- 
-     
+     <!-- Kubic -->
      <media arch="x86_64">
+       <variant id="kubic"/>

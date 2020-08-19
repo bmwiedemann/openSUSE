@@ -63,6 +63,7 @@ Requires:       gstreamer-plugins-good
 Requires:       pulseaudio
 Requires:       pulseaudio-utils
 Requires:       python3-Pillow
+Requires:       python3-cairo
 Requires:       python3-dbus-python
 Requires:       python3-gobject-Gdk
 Requires:       python3-gst
@@ -119,6 +120,7 @@ connections, and also the xpra html5 client.
 find -name '*.py' \
      -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
 sed -i "1 s|^#!/usr/bin/env python\b|#!%__python3|" cups/xpraforwarder
+sed -i "1 s|^/usr/bin/bash|#!$(which bash)|" scripts/xpra_udev_product_version
 install -m0644 %{SOURCE1} -t xdg
 # set fillup dir
 sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
@@ -200,7 +202,7 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_bindir}/xpra_launcher
 %{_bindir}/xpra_signal_listener
 %{_bindir}/xpra_udev_product_version
-%{_libexecdir}/udev/rules.d/71-xpra-virtual-pointer.rules
+%{_udevrulesdir}/71-xpra-virtual-pointer.rules
 %{_libexecdir}/xpra/auth_dialog
 %{_libexecdir}/xpra/gnome-open
 %{_libexecdir}/xpra/gvfs-open

@@ -1,10 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug  7 06:47:00 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Updated to version 3.2.3
+  * Fixes a memory usage regression introduced in 3.2.2
+  * Too many changes to list, see included NEWS.md file.
+- acls.diff, time-limit.diff and xattrs.diff are now upstream.
+- Drop rsync-add_back_use_slp_directive.patch, included in upstream
+  slp.diff
+
+-------------------------------------------------------------------
+Wed Aug  5 05:23:42 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add BR on c++_compiler needed for SIMD support
+- Add --enable-simd configure option on x86_64
+
+-------------------------------------------------------------------
+Wed Aug  5 05:10:51 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Change BR on xxhash-devel to pkgconfig(libxxhash) and depend
+  on xxhash >= 0.8.0 since this is needed for XXH3
+- Use xxhash only on suse_version >= 1550 since xxhash 0.8.0 is not
+  available elsewhere.
+
+-------------------------------------------------------------------
 Tue Jul  7 08:59:17 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Updated to version 3.2.2
   * Too many changes to list, see included NEWS.md file.
 - Add BR on pkgconfig(openssl), rsync now uses openssl for MD4/MD5
-- Add BR on libzstd-devel and liblz4-devel to enabled lz4 and zstd
+- Add BR on libzstd-devel and liblz4-devel to enable lz4 and zstd
   compression support.
 - Add BR on xxhash-devel to enable xxhash checksum support.
 - Refresh rsync-add_back_use_slp_directive.patch

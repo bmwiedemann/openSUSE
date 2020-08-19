@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 15 21:33:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.36:
+  ** Fix unlikely memory leak in idna_to_unicode_4z4z().
+  ** Check codepoint validity in punycode_decode() and punycode_decode().
+  ** tld: Add U+00EF to .nl TLD table.
+  ** Indent code.
+  ** Translation fixes.
+  ** Update gnulib files.
+  ** API and ABI is backwards compatible with the previous version.
+- remove disable-rwlock-test.patch (builds fine again)
+
+-------------------------------------------------------------------
 Tue Mar 12 16:16:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add provides/obsoletes on libdn bsc#1092034

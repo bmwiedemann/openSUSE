@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 18:09:43 UTC 2020 - James Oakley <jfunk@funktronics.ca>
+
+- Fix duplicate uperl in psgi plugin with wth gcc 10 (uwsgi-2.0.18-psgi-fix-duplicate-uperl.patch)
+
+-------------------------------------------------------------------
 Sat May 16 16:33:23 UTC 2020 - James Oakley <jfunk@funktronics.ca>
 
 - Fix greenlet dependency for Python 3

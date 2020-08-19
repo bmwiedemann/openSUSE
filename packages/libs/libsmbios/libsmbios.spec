@@ -18,15 +18,14 @@
 
 %define libname libsmbios_c2
 Name:           libsmbios
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        SMBIOS table library and utilities
 License:        GPL-2.0-or-later OR OSL-2.1
 Group:          Hardware/Other
 URL:            https://github.com/dell/libsmbios
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/dell/libsmbios/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  chrpath
@@ -55,10 +54,7 @@ Dell specific SMBIOS tables.
 %package -n %{libname}
 Summary:        SMBIOS table interface library
 Group:          System/Libraries
-Recommends:     %{name}-lang = %{version}
-# For the above lang package to be resolvable
 Provides:       %{name} = %{version}
-Obsoletes:      libsmbios2
 
 %description -n %{libname}
 libsmbios provides a library to interface with the SMBIOS tables. It
@@ -80,7 +76,7 @@ This package provides a Python interface to libsmbios
 %package -n smbios-utils
 Summary:        Utilities that use libsmbios
 Group:          System/Management
-Recommends:     %{name}-lang
+Recommends:     %{name}-lang = %{version}
 Recommends:     python3-smbios-utils = %{version}
 # Give away the bin subpkg and just pull them all here instead of playing with
 # metapackages
@@ -164,7 +160,7 @@ ln -s smbios-wireless-ctl %{buildroot}/%{_sbindir}/dellWirelessCtl
 ln -s smbios-lcd-brightness %{buildroot}/%{_sbindir}/dellLcdBrightness
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

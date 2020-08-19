@@ -1,0 +1,12 @@
+--- a/Lib/test/test_subprocess.py
++++ b/Lib/test/test_subprocess.py
+@@ -230,7 +230,8 @@
+                      "time.sleep(3600)"],
+                     # Some heavily loaded buildbots (sparc Debian 3.x) require
+                     # this much time to start and print.
+-                    timeout=3)
++                    # OBS might require even more
++                    timeout=10)
+             self.fail("Expected TimeoutExpired.")
+         self.assertEqual(c.exception.output, b'BDFL')
+

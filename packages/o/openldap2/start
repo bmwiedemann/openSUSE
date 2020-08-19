@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 # Copyright (c) 1997-2000 SuSE GmbH Nuernberg, Germany.
 # Copyright (c) 2002 SuSE Linux AG Nuernberg, Germany.
 # Copyright (c) 2006 SUSE LINUX Products GmbH, Nuernberg, Germany.
@@ -6,18 +6,6 @@
 # Author: Carsten Hoeger
 #         Ralf Haferkamp
 #
-# /etc/init.d/ldap
-#
-### BEGIN INIT INFO
-# Provides:       ldap
-# Required-Start: $network $remote_fs
-# Required-Stop: $network $remote_fs
-# Default-Start:  3 5
-# Default-Stop:   0 1 2 6
-# Short-Description: OpenLDAP Server (slapd)
-# Description: Start and Stop the OpenLDAP Server (slapd) to
-#      provide LDAP directory services.
-### END INIT INFO
 
 # Determine the base and follow a runlevel link name.
 base=${0##*/}
@@ -33,20 +21,6 @@ SLAPD_CONFIG_ARG="-F /etc/openldap/slapd.d"
 SLAPD_PID_DIR="/var/run/slapd/"
 
 test -x $SLAPD_BIN || exit 5
-
-# Shell functions sourced from /etc/rc.status:
-#      rc_check         check and set local and overall rc status
-#      rc_status        check and set local and overall rc status
-#      rc_status -v     ditto but be verbose in local rc status
-#      rc_status -v -r  ditto and clear the local rc status
-#      rc_failed        set local and overall rc status to failed
-#      rc_failed <num>  set local and overall rc status to <num><num>
-#      rc_reset         clear local rc status (overall remains)
-#      rc_exit          exit appropriate to overall rc status
-. /etc/rc.status
-
-# First reset status of this service
-rc_reset
 
 function init_ldap_listener_urls(){
     case "$OPENLDAP_START_LDAP" in
@@ -142,16 +116,6 @@ GROUP_CMD=""
 [ ! "x$OPENLDAP_CONFIG_BACKEND" = "xldap" ] && SLAPD_CONFIG_ARG="-f /etc/openldap/slapd.conf"
 
 
-if [ -f /etc/openldap/UPDATE_NEEDED ]; then
-    rc_failed 6
-    echo "  The configuration of your LDAP server needs to be updated."
-    echo "  Please see /usr/share/doc/packages/openldap2/README.update"
-    echo "  for details."
-    echo "  After the update please remove the file:"
-    echo "    /etc/openldap/UPDATE_NEEDED"
-    rc_status -v
-    exit
-fi
 # chown backend directories if OPENLDAP_CHOWN_DIRS ist set
 if [ "$(echo "$OPENLDAP_CHOWN_DIRS" | tr 'A-Z' 'a-z')" = "yes" ]; then
     if [ -n "$OPENLDAP_USER" -o -n "$OPENLDAP_GROUP" ]; then

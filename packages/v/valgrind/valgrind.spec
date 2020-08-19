@@ -29,7 +29,7 @@
 %bcond_without docs
 
 Name:           valgrind%{?psuffix}
-Version:        3.16.0
+Version:        3.16.1
 Release:        0
 Summary:        Memory Management Debugger
 License:        GPL-2.0-or-later AND GFDL-1.2-only
@@ -39,8 +39,6 @@ Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
 # https://bugs.kde.org/show_bug.cgi?id=390553
 # https://github.com/olafhering/valgrind/compare/olh-base-master...olh-fixes-master
 Patch0:         valgrind.xen.patch
-# PATCH-FIX-UPSTREAM 0001-Power-PC-Fix-extraction-of-the-L-field-for-sync-inst.patch
-Patch1:         0001-Power-PC-Fix-extraction-of-the-L-field-for-sync-inst.patch
 Patch2:         armv6-support.diff
 Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch

@@ -25,7 +25,7 @@
 %endif
 
 Name:           exiv2
-Version:        0.27.2
+Version:        0.27.3
 Release:        0
 Summary:        Tool to access image Exif metadata
 License:        GPL-2.0-or-later AND BSD-3-Clause
@@ -186,7 +186,7 @@ done
 
 %files
 %doc doc/ChangeLog doc/cmd.txt
-%license COPYING COPYING-CMAKE-SCRIPTS
+%license COPYING
 %{_bindir}/exiv2
 %{_mandir}/man1/*
 

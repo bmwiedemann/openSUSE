@@ -1,7 +1,7 @@
 #
 # spec file for package libwpd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define libname libwpd-0_10-10
 Name:           libwpd
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        Library for importing WordPerfect documents
 License:        LGPL-2.1-or-later AND MPL-2.0+
 Group:          Productivity/Publishing/Word
 URL:            http://libwpd.sourceforge.net
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
-Patch0:         0001-Resolves-rhbz-1643752-bounds-check-m_currentTable-ac.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -86,7 +85,6 @@ supported: html, raw, text
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"

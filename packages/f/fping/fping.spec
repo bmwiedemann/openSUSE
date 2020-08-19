@@ -17,7 +17,7 @@
 
 
 Name:           fping
-Version:        4.4
+Version:        5.0
 Release:        0
 Summary:        A program to ping multiple hosts
 License:        MIT

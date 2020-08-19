@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:46:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add failing-on-i586.patch to disable failing i586 test
+
+-------------------------------------------------------------------
 Tue Aug 11 07:51:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to disable test failing in sandbox:

@@ -1,0 +1,252 @@
+From 1608a6788633d19884c5e867b50e35724acba10b Mon Sep 17 00:00:00 2001
+From: Eitan Isaacson <eitan@monotonous.org>
+Date: Thu, 6 Oct 2016 13:15:04 -0700
+Subject: [PATCH] Change Hebrew ISO 639-1 code to "he"
+Upstream: submitted(https://github.com/CLD2Owners/cld2/pull/50)
+
+---
+ internal/cld2_unittest.cc                          |  3 +--
+ internal/cld2_unittest_full.cc                     |  3 +--
+ internal/cld_generated_score_quad_octa_0122.cc     |  3 +--
+ internal/cld_generated_score_quad_octa_0122_2.cc   |  3 +--
+ internal/cld_generated_score_quad_octa_1024_256.cc |  3 +--
+ internal/cld_generated_score_quad_octa_2.cc        |  3 +--
+ internal/compact_lang_det_hint_code.cc             | 12 +++++-------
+ internal/generated_language.cc                     | 10 +++++-----
+ internal/generated_language.h                      |  2 +-
+ internal/unittest_data.h                           |  4 ++--
+ 10 files changed, 19 insertions(+), 27 deletions(-)
+
+diff --git a/internal/cld2_unittest.cc b/internal/cld2_unittest.cc
+index 2a8fa1d..96260b2 100644
+--- a/internal/cld2_unittest.cc
++++ b/internal/cld2_unittest.cc
+@@ -104,7 +104,7 @@ static const TestPair kTestPair[] = {
+   {GANDA, kTeststr_lg_Latn},
+   {GERMAN, kTeststr_de_Latn},
+   {HAITIAN_CREOLE, kTeststr_ht_Latn},
+-  {HEBREW, kTeststr_iw_Hebr},
++  {HEBREW, kTeststr_he_Hebr},
+   {HINDI, kTeststr_hi_Deva},
+   {HMONG, kTeststr_blu_Latn},
+   {HUNGARIAN, kTeststr_hu_Latn},
+@@ -450,4 +450,3 @@ int main(int argc, char** argv) {
+   return CLD2::RunTests(flags, get_vector);
+ #endif
+ }
+-
+diff --git a/internal/cld2_unittest_full.cc b/internal/cld2_unittest_full.cc
+index 2648a57..7bd3a60 100644
+--- a/internal/cld2_unittest_full.cc
++++ b/internal/cld2_unittest_full.cc
+@@ -135,7 +135,7 @@ static const TestPair kTestPair[] = {
+   {HAITIAN_CREOLE,  kTeststr_ht_Latn},
+   {HAUSA,  kTeststr_ha_Latn},
+   {HAWAIIAN,  kTeststr_haw_Latn},
+-  {HEBREW,  kTeststr_iw_Hebr},
++  {HEBREW,  kTeststr_he_Hebr},
+   {HINDI,  kTeststr_hi_Deva},
+   {HMONG,  kTeststr_blu_Latn},
+   {HUNGARIAN,  kTeststr_hu_Latn},
+@@ -412,4 +412,3 @@ int main(int argc, char** argv) {
+ 
+   return CLD2::RunTests(flags, get_vector);
+ }
+-
+diff --git a/internal/cld_generated_score_quad_octa_0122.cc b/internal/cld_generated_score_quad_octa_0122.cc
+index 7e6b81a..cca1b09 100644
+--- a/internal/cld_generated_score_quad_octa_0122.cc
++++ b/internal/cld_generated_score_quad_octa_0122.cc
+@@ -35,7 +35,7 @@ extern const short kAvgDeltaOctaScore[kAvgDeltaOctaScoreSize] = {
+   1245,    0,    0,    0,  // 3 FINNISH fi
+    873,    0,    0,    0,  // 4 FRENCH fr
+   1146,    0,    0,    0,  // 5 GERMAN de
+-     0,    0,    0,  901,  // 6 HEBREW iw
++     0,    0,    0,  901,  // 6 HEBREW he
+    736,    0,    0,    0,  // 7 ITALIAN it
+      0,    0,    0, 3100,  // 8 Japanese ja
+      0,    0,    0, 3669,  // 9 Korean ko
+@@ -646,4 +646,3 @@ extern const short kAvgDeltaOctaScore[kAvgDeltaOctaScoreSize] = {
+ };
+ 
+ }       // End namespace CLD2
+-
+diff --git a/internal/cld_generated_score_quad_octa_0122_2.cc b/internal/cld_generated_score_quad_octa_0122_2.cc
+index 2eb5316..8416b86 100644
+--- a/internal/cld_generated_score_quad_octa_0122_2.cc
++++ b/internal/cld_generated_score_quad_octa_0122_2.cc
+@@ -26,7 +26,7 @@ extern const short kAvgDeltaOctaScore[kAvgDeltaOctaScoreSize] = {
+   1306,    0,    0,    0,  // 3 FINNISH fi
+   1033,    0,    0,    0,  // 4 FRENCH fr
+   1306,    0,    0,    0,  // 5 GERMAN de
+-     0,    0,    0,  776,  // 6 HEBREW iw
++     0,    0,    0,  776,  // 6 HEBREW he
+    960,    0,    0,    0,  // 7 ITALIAN it
+      0,    0,    0, 3100,  // 8 Japanese ja
+      0,    0,    0, 3669,  // 9 Korean ko
+@@ -637,4 +637,3 @@ extern const short kAvgDeltaOctaScore[kAvgDeltaOctaScoreSize] = {
+ };
+ 
+ }       // End namespace CLD2
+-
+diff --git a/internal/cld_generated_score_quad_octa_1024_256.cc b/internal/cld_generated_score_quad_octa_1024_256.cc
+index 80ba935..3e7aaa0 100644
+--- a/internal/cld_generated_score_quad_octa_1024_256.cc
++++ b/internal/cld_generated_score_quad_octa_1024_256.cc
+@@ -63,7 +63,7 @@ extern const short kAvgDeltaOctaScore[614 * 4] = {
+   1221,    0,    0,    0,  // 3 FINNISH fi
+    837,    0,    0,    0,  // 4 FRENCH fr
+   1035,    0,    0,    0,  // 5 GERMAN de
+-     0,    0,    0,  935,  // 6 HEBREW iw
++     0,    0,    0,  935,  // 6 HEBREW he
+    609,    0,    0,    0,  // 7 ITALIAN it
+      0,    0,    0, 3348,  // 8 Japanese ja
+      0,    0,    0, 3688,  // 9 Korean ko
+@@ -674,4 +674,3 @@ extern const short kAvgDeltaOctaScore[614 * 4] = {
+ };
+ 
+ }       // End namespace CLD2
+-
+diff --git a/internal/cld_generated_score_quad_octa_2.cc b/internal/cld_generated_score_quad_octa_2.cc
+index 76996f9..140c074 100644
+--- a/internal/cld_generated_score_quad_octa_2.cc
++++ b/internal/cld_generated_score_quad_octa_2.cc
+@@ -35,7 +35,7 @@ extern const short kAvgDeltaOctaScore[kAvgDeltaOctaScoreSize] = {
+   1245,    0,    0,    0,  // 3 FINNISH fi
+    873,    0,    0,    0,  // 4 FRENCH fr
+   1146,    0,    0,    0,  // 5 GERMAN de
+-     0,    0,    0,  901,  // 6 HEBREW iw
++     0,    0,    0,  901,  // 6 HEBREW he
+    736,    0,    0,    0,  // 7 ITALIAN it
+      0,    0,    0, 3100,  // 8 Japanese ja
+      0,    0,    0, 3669,  // 9 Korean ko
+@@ -646,4 +646,3 @@ extern const short kAvgDeltaOctaScore[kAvgDeltaOctaScoreSize] = {
+ };
+ 
+ }       // End namespace CLD2
+-
+diff --git a/internal/compact_lang_det_hint_code.cc b/internal/compact_lang_det_hint_code.cc
+index 32fb8bf..9bde8a8 100644
+--- a/internal/compact_lang_det_hint_code.cc
++++ b/internal/compact_lang_det_hint_code.cc
+@@ -174,7 +174,7 @@ static const LangTagLookup kCLDLangTagsHintTable1[kCLDTable1Size] = {
+   {"haitian_creole", "ht", HAITIAN_CREOLE + W10, 0},
+   {"hausa", "ha", HAUSA + W10, 0},
+   {"hawaiian", "haw", HAWAIIAN + W10, 0},
+-  {"hebrew", "iw", HEBREW + W10, 0},
++  {"hebrew", "he", HEBREW + W10, 0},
+   {"hindi", "hi", HINDI + W10, MARATHI - W4},
+   {"hn-in", "hi", HINDI + W10, MARATHI - W4},
+   {"hungarian", "hu", HUNGARIAN + W10, 0},
+@@ -447,9 +447,9 @@ static const LangTagLookup kCLDLangTagsHintTable2[kCLDTable2Size] = {
+   {"ha", "ha", HAUSA + W10, 0},
+   {"hat", "ht", HAITIAN_CREOLE + W10, 0},   // Haiti
+   {"haw", "haw", HAWAIIAN + W10, 0},
+-  {"hb", "iw", HEBREW + W10, 0},
+-  {"he", "iw", HEBREW + W10, 0},
+-  {"heb", "iw", HEBREW + W10, 0},
++  {"hb", "he", HEBREW + W10, 0},
++  {"he", "he", HEBREW + W10, 0},
++  {"heb", "he", HEBREW + W10, 0},
+   {"hi", "hi", HINDI + W10, MARATHI - W4},
+   {"hk", "zhT", CHINESE_T + W10, 0},          // Hong Kong
+   {"hr", "hr", CROATIAN + W10, 0},
+@@ -473,7 +473,7 @@ static const LangTagLookup kCLDLangTagsHintTable2[kCLDTable2Size] = {
+   {"it", "it", ITALIAN + W10, 0},
+   {"ita", "it", ITALIAN + W10, 0},
+   {"iu", "iu,ik", INUKTITUT + W10, INUPIAK + W10},        // 1:2
+-  {"iw", "iw", HEBREW + W10, 0},
++  {"iw", "he", HEBREW + W10, 0},
+ 
+   {"ja", "ja", JAPANESE + W10, 0},
+   {"jp", "ja", JAPANESE + W10, 0},          // Japan
+@@ -1647,5 +1647,3 @@ string GetLangTagsFromHtml(const char* utf8_body, int32 utf8_body_len,
+ }       // End namespace CLD2
+ 
+ //==============================================================================
+-
+-
+diff --git a/internal/generated_language.cc b/internal/generated_language.cc
+index bae283a..dc4df67 100644
+--- a/internal/generated_language.cc
++++ b/internal/generated_language.cc
+@@ -32,7 +32,7 @@ extern const char* const kLanguageToName[kLanguageToNameSize] = {
+   "FINNISH",               // 3 fi
+   "FRENCH",                // 4 fr
+   "GERMAN",                // 5 de
+-  "HEBREW",                // 6 iw
++  "HEBREW",                // 6 he
+   "ITALIAN",               // 7 it
+   "Japanese",              // 8 ja
+   "Korean",                // 9 ko
+@@ -651,7 +651,7 @@ extern const char* const kLanguageToCode[kLanguageToCodeSize] = {
+   "fi",    // 3 FINNISH
+   "fr",    // 4 FRENCH
+   "de",    // 5 GERMAN
+-  "iw",    // 6 HEBREW
++  "he",    // 6 HEBREW
+   "it",    // 7 ITALIAN
+   "ja",    // 8 Japanese
+   "ko",    // 9 Korean
+@@ -1270,7 +1270,7 @@ extern const char* const kLanguageToCName[kLanguageToCNameSize] = {
+   "FINNISH",               // 3 fi
+   "FRENCH",                // 4 fr
+   "GERMAN",                // 5 de
+-  "HEBREW",                // 6 iw
++  "HEBREW",                // 6 he
+   "ITALIAN",               // 7 it
+   "JAPANESE",              // 8 ja
+   "KOREAN",                // 9 ko
+@@ -1890,7 +1890,7 @@ extern const FourScripts kLanguageToScripts[kLanguageToScriptsSize] = {
+   {ULScript_Latin, None, None, None, },  // 3 fi
+   {ULScript_Latin, None, None, None, },  // 4 fr
+   {ULScript_Latin, None, None, None, },  // 5 de
+-  {ULScript_Hebrew, None, None, None, },  // 6 iw
++  {ULScript_Hebrew, None, None, None, },  // 6 he
+   {ULScript_Latin, None, None, None, },  // 7 it
+   {ULScript_Hani, None, None, None, },  // 8 ja
+   {ULScript_Hani, None, None, None, },  // 9 ko
+@@ -2510,7 +2510,7 @@ extern const uint8 kLanguageToPLang[kLanguageToPLangSize] = {
+     4,  // 3 fi
+     5,  // 4 fr
+     6,  // 5 de
+-    1,  // 6 iw
++    1,  // 6 he
+     7,  // 7 it
+     2,  // 8 ja
+     3,  // 9 ko
+diff --git a/internal/generated_language.h b/internal/generated_language.h
+index 0b31ee6..4e9dbc4 100644
+--- a/internal/generated_language.h
++++ b/internal/generated_language.h
+@@ -35,7 +35,7 @@ typedef enum {
+   FINNISH                      = 3,  // fi
+   FRENCH                       = 4,  // fr
+   GERMAN                       = 5,  // de
+-  HEBREW                       = 6,  // iw
++  HEBREW                       = 6,  // he
+   ITALIAN                      = 7,  // it
+   JAPANESE                     = 8,  // ja
+   KOREAN                       = 9,  // ko
+diff --git a/internal/unittest_data.h b/internal/unittest_data.h
+index 0cdafc5..567b215 100644
+--- a/internal/unittest_data.h
++++ b/internal/unittest_data.h
+@@ -112,7 +112,7 @@ const char* kTeststr_ik_Latn = "sabvaqjuktuq sabvaba atiqaqpa atiqaqpa ibiq iebi
+ const char* kTeststr_is_Latn = " a afköst leitarorða þinna leitarorð neikvæð leitarorð auglýsingahópa byggja upp aðallista yfir ný leitarorð fyrir auglýsingahópana og skoða ítarleg gögn um árangur leitarorða eins og samkeppni auglýsenda og leitarmagn er krafist notkun";
+ const char* kTeststr_it_Latn = " a causa di un intervento di manutenzione del sistema fino alle ore circa ora legale costa del pacifico del novembre le campagne esistenti continueranno a essere pubblicate come di consueto anche durante questo breve periodo di inattività ci scusiamo per";
+ const char* kTeststr_iu_Cans = "ᐃᑯᒪᒻᒪᑦ ᕿᓈᖏᓐᓇᓲᖑᒻᒪᑦ ᑎᑎᖅᑕᓕᒫᖅᓃᕕᑦ ᑎᑦᕆᐊᑐᓐᖏᑦᑕᑎᑦ ᑎᑎᖅᑕᑉᐱᑦ ᓯᕗᓂᖓᓂ ᑎᑎᖅᖃᖅ ᑎᑎᕆᐊᑐᓐᖏᑕᐃᑦ ᕿᓂᓲᖑᔪᒍᑦ ᑎᑎᖅᑕᓕᒫᖅᓃᕕᑦ";
+-const char* kTeststr_iw_Hebr = " או לערוך את העדפות ההפצה אנא עקוב אחרי השלבים הבאים כנס לחשבון האישי שלך ב";
++const char* kTeststr_he_Hebr = " או לערוך את העדפות ההפצה אנא עקוב אחרי השלבים הבאים כנס לחשבון האישי שלך ב";
+ const char* kTeststr_ja_Hani = " このペ ジでは アカウントに指定された予算の履歴を一覧にしています それぞれの項目には 予算額と特定期間のステ タスが表示されます 現在または今後の予算を設定するには";
+ const char* kTeststr_jw_Latn = " account ten server niki kalian username meniko tanpo judul cacahe account nggonanmu wes pol pesen mu wes diguwak pesenan mu wes di simpen sante wae pesenan mu wes ke kirim mbuh tekan ora pesenan e ke kethok pesenan mu wes ke kirim mbuh tekan ora pesenan";
+ const char* kTeststr_ka_Geor = " ა ბირთვიდან მიღებული ელემენტი მენდელეევის პერიოდულ სიტემაში გადაინაცვლებს ორი უჯრით";
+@@ -362,7 +362,7 @@ const char* kTeststr_ik_Latn = "sabvaqjuktuq sabvaba atiqaqpa atiqaqpa ibiq iebi
+ const char* kTeststr_is_Latn = " a afk\xC3\xB6st leitaror\xC3\xB0\x61 \xC3\xBEinna leitaror\xC3\xB0 neikv\xC3\xA6\xC3\xB0 leitaror\xC3\xB0 augl\xC3\xBDsingah\xC3\xB3pa byggja upp a\xC3\xB0\x61llista yfir n\xC3\xBD leitaror\xC3\xB0 fyrir augl\xC3\xBDsingah\xC3\xB3pana og sko\xC3\xB0\x61 \xC3\xADtarleg g\xC3\xB6gn um \xC3\xA1rangur leitaror\xC3\xB0\x61 eins og samkeppni augl\xC3\xBDsenda og leitarmagn er krafist notkun";
+ const char* kTeststr_it_Latn = " a causa di un intervento di manutenzione del sistema fino alle ore circa ora legale costa del pacifico del novembre le campagne esistenti continueranno a essere pubblicate come di consueto anche durante questo breve periodo di inattivit\xC3\xA0 ci scusiamo per";
+ const char* kTeststr_iu_Cans = "\xE1\x90\x83\xE1\x91\xAF\xE1\x92\xAA\xE1\x92\xBB\xE1\x92\xAA\xE1\x91\xA6 \xE1\x95\xBF\xE1\x93\x88\xE1\x96\x8F\xE1\x93\x90\xE1\x93\x87\xE1\x93\xB2\xE1\x96\x91\xE1\x92\xBB\xE1\x92\xAA\xE1\x91\xA6 \xE1\x91\x8E\xE1\x91\x8E\xE1\x96\x85\xE1\x91\x95\xE1\x93\x95\xE1\x92\xAB\xE1\x96\x85\xE1\x93\x83\xE1\x95\x95\xE1\x91\xA6 \xE1\x91\x8E\xE1\x91\xA6\xE1\x95\x86\xE1\x90\x8A\xE1\x91\x90\xE1\x93\x90\xE1\x96\x8F\xE1\x91\xA6\xE1\x91\x95\xE1\x91\x8E\xE1\x91\xA6 \xE1\x91\x8E\xE1\x91\x8E\xE1\x96\x85\xE1\x91\x95\xE1\x91\x89\xE1\x90\xB1\xE1\x91\xA6 \xE1\x93\xAF\xE1\x95\x97\xE1\x93\x82\xE1\x96\x93\xE1\x93\x82 \xE1\x91\x8E\xE1\x91\x8E\xE1\x96\x85\xE1\x96\x83\xE1\x96\x85 \xE1\x91\x8E\xE1\x91\x8E\xE1\x95\x86\xE1\x90\x8A\xE1\x91\x90\xE1\x93\x90\xE1\x96\x8F\xE1\x91\x95\xE1\x90\x83\xE1\x91\xA6 \xE1\x95\xBF\xE1\x93\x82\xE1\x93\xB2\xE1\x96\x91\xE1\x94\xAA\xE1\x92\x8D\xE1\x91\xA6 \xE1\x91\x8E\xE1\x91\x8E\xE1\x96\x85\xE1\x91\x95\xE1\x93\x95\xE1\x92\xAB\xE1\x96\x85\xE1\x93\x83\xE1\x95\x95\xE1\x91\xA6";
+-const char* kTeststr_iw_Hebr = " \xD7\x90\xD7\x95 \xD7\x9C\xD7\xA2\xD7\xA8\xD7\x95\xD7\x9A \xD7\x90\xD7\xAA \xD7\x94\xD7\xA2\xD7\x93\xD7\xA4\xD7\x95\xD7\xAA \xD7\x94\xD7\x94\xD7\xA4\xD7\xA6\xD7\x94 \xD7\x90\xD7\xA0\xD7\x90 \xD7\xA2\xD7\xA7\xD7\x95\xD7\x91 \xD7\x90\xD7\x97\xD7\xA8\xD7\x99 \xD7\x94\xD7\xA9\xD7\x9C\xD7\x91\xD7\x99\xD7\x9D \xD7\x94\xD7\x91\xD7\x90\xD7\x99\xD7\x9D \xD7\x9B\xD7\xA0\xD7\xA1 \xD7\x9C\xD7\x97\xD7\xA9\xD7\x91\xD7\x95\xD7\x9F \xD7\x94\xD7\x90\xD7\x99\xD7\xA9\xD7\x99 \xD7\xA9\xD7\x9C\xD7\x9A \xD7\x91";
++const char* kTeststr_he_Hebr = " \xD7\x90\xD7\x95 \xD7\x9C\xD7\xA2\xD7\xA8\xD7\x95\xD7\x9A \xD7\x90\xD7\xAA \xD7\x94\xD7\xA2\xD7\x93\xD7\xA4\xD7\x95\xD7\xAA \xD7\x94\xD7\x94\xD7\xA4\xD7\xA6\xD7\x94 \xD7\x90\xD7\xA0\xD7\x90 \xD7\xA2\xD7\xA7\xD7\x95\xD7\x91 \xD7\x90\xD7\x97\xD7\xA8\xD7\x99 \xD7\x94\xD7\xA9\xD7\x9C\xD7\x91\xD7\x99\xD7\x9D \xD7\x94\xD7\x91\xD7\x90\xD7\x99\xD7\x9D \xD7\x9B\xD7\xA0\xD7\xA1 \xD7\x9C\xD7\x97\xD7\xA9\xD7\x91\xD7\x95\xD7\x9F \xD7\x94\xD7\x90\xD7\x99\xD7\xA9\xD7\x99 \xD7\xA9\xD7\x9C\xD7\x9A \xD7\x91";
+ const char* kTeststr_ja_Hani = " \xE3\x81\x93\xE3\x81\xAE\xE3\x83\x9A \xE3\x82\xB8\xE3\x81\xA7\xE3\x81\xAF \xE3\x82\xA2\xE3\x82\xAB\xE3\x82\xA6\xE3\x83\xB3\xE3\x83\x88\xE3\x81\xAB\xE6\x8C\x87\xE5\xAE\x9A\xE3\x81\x95\xE3\x82\x8C\xE3\x81\x9F\xE4\xBA\x88\xE7\xAE\x97\xE3\x81\xAE\xE5\xB1\xA5\xE6\xAD\xB4\xE3\x82\x92\xE4\xB8\x80\xE8\xA6\xA7\xE3\x81\xAB\xE3\x81\x97\xE3\x81\xA6\xE3\x81\x84\xE3\x81\xBE\xE3\x81\x99 \xE3\x81\x9D\xE3\x82\x8C\xE3\x81\x9E\xE3\x82\x8C\xE3\x81\xAE\xE9\xA0\x85\xE7\x9B\xAE\xE3\x81\xAB\xE3\x81\xAF \xE4\xBA\x88\xE7\xAE\x97\xE9\xA1\x8D\xE3\x81\xA8\xE7\x89\xB9\xE5\xAE\x9A\xE6\x9C\x9F\xE9\x96\x93\xE3\x81\xAE\xE3\x82\xB9\xE3\x83\x86 \xE3\x82\xBF\xE3\x82\xB9\xE3\x81\x8C\xE8\xA1\xA8\xE7\xA4\xBA\xE3\x81\x95\xE3\x82\x8C\xE3\x81\xBE\xE3\x81\x99 \xE7\x8F\xBE\xE5\x9C\xA8\xE3\x81\xBE\xE3\x81\x9F\xE3\x81\xAF\xE4\xBB\x8A\xE5\xBE\x8C\xE3\x81\xAE\xE4\xBA\x88\xE7\xAE\x97\xE3\x82\x92\xE8\xA8\xAD\xE5\xAE\x9A\xE3\x81\x99\xE3\x82\x8B\xE3\x81\xAB\xE3\x81\xAF";
+ const char* kTeststr_jw_Latn = " account ten server niki kalian username meniko tanpo judul cacahe account nggonanmu wes pol pesen mu wes diguwak pesenan mu wes di simpen sante wae pesenan mu wes ke kirim mbuh tekan ora pesenan e ke kethok pesenan mu wes ke kirim mbuh tekan ora pesenan";
+ const char* kTeststr_ka_Geor = " \xE1\x83\x90 \xE1\x83\x91\xE1\x83\x98\xE1\x83\xA0\xE1\x83\x97\xE1\x83\x95\xE1\x83\x98\xE1\x83\x93\xE1\x83\x90\xE1\x83\x9C \xE1\x83\x9B\xE1\x83\x98\xE1\x83\xA6\xE1\x83\x94\xE1\x83\x91\xE1\x83\xA3\xE1\x83\x9A\xE1\x83\x98 \xE1\x83\x94\xE1\x83\x9A\xE1\x83\x94\xE1\x83\x9B\xE1\x83\x94\xE1\x83\x9C\xE1\x83\xA2\xE1\x83\x98 \xE1\x83\x9B\xE1\x83\x94\xE1\x83\x9C\xE1\x83\x93\xE1\x83\x94\xE1\x83\x9A\xE1\x83\x94\xE1\x83\x94\xE1\x83\x95\xE1\x83\x98\xE1\x83\xA1 \xE1\x83\x9E\xE1\x83\x94\xE1\x83\xA0\xE1\x83\x98\xE1\x83\x9D\xE1\x83\x93\xE1\x83\xA3\xE1\x83\x9A \xE1\x83\xA1\xE1\x83\x98\xE1\x83\xA2\xE1\x83\x94\xE1\x83\x9B\xE1\x83\x90\xE1\x83\xA8\xE1\x83\x98 \xE1\x83\x92\xE1\x83\x90\xE1\x83\x93\xE1\x83\x90\xE1\x83\x98\xE1\x83\x9C\xE1\x83\x90\xE1\x83\xAA\xE1\x83\x95\xE1\x83\x9A\xE1\x83\x94\xE1\x83\x91\xE1\x83\xA1 \xE1\x83\x9D\xE1\x83\xA0\xE1\x83\x98 \xE1\x83\xA3\xE1\x83\xAF\xE1\x83\xA0\xE1\x83\x98\xE1\x83\x97";

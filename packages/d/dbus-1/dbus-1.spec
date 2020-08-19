@@ -19,15 +19,13 @@
 %define with_systemd 1
 %define _name   dbus
 %define _libname libdbus-1-3
-
 %bcond_without selinux
 Name:           dbus-1
-Version:        1.12.16
+Version:        1.12.20
 Release:        0
 Summary:        D-Bus Message Bus System
 License:        GPL-2.0-or-later OR AFL-2.1
-Group:          System/Daemons
-URL:            http://dbus.freedesktop.org/
+URL:            https://dbus.freedesktop.org/
 Source0:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz
 Source1:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz.asc
 Source2:        dbus-1.keyring
@@ -40,11 +38,8 @@ Patch1:         feature-suse-do-autolaunch.patch
 # Patch-Feature-opensuse sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
 Patch2:         feature-suse-refuse-manual-start-stop.patch
 BuildRequires:  audit-devel
-BuildRequires:  autoconf-archive
-BuildRequires:  doxygen
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libexpat-devel >= 2.1.0
-BuildRequires:  libtool
 BuildRequires:  permissions
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
@@ -56,27 +51,19 @@ Requires(post): update-alternatives
 Requires(pre):  permissions
 Requires(preun): update-alternatives
 Provides:       dbus-launch
+%sysusers_requires
 %if %{with selinux}
 BuildRequires:  libselinux-devel
 %endif
-%sysusers_requires
 
 %package -n %{_libname}
 Summary:        Library package for D-Bus
-Group:          Development/Libraries/Other
 
 %package devel
 Summary:        Developer package for D-Bus
-Group:          Development/Libraries/Other
 Requires:       %{_libname} = %{version}
 Requires:       dbus-1 = %{version}
 Requires:       glibc-devel
-
-%package devel-doc
-Summary:        Developer documentation package for D-Bus
-Group:          Development/Libraries/Other
-Requires:       dbus-1 = %{version}
-BuildArch:      noarch
 
 %description
 D-Bus is a message bus system, a simple way for applications to talk to
@@ -102,21 +89,12 @@ a general one-to-one message passing framework, which can be used by
 any two apps to communicate directly (without going through the message
 bus daemon).
 
-%description devel-doc
-D-Bus is a message bus system, a simple way for applications to talk to
-one another. D-BUS supplies both a system daemon and a
-per-user-login-session daemon. Also, the message bus is built on top of
-a general one-to-one message passing framework, which can be used by
-any two apps to communicate directly (without going through the message
-bus daemon).
-
 %prep
 %setup -q -n %{_name}-%{version}
 %autopatch -p1
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> Doxyfile.in
-autoreconf -fi
 # We use -fpie/-pie for the whole build; this is the recommended way to harden
 # the build upstream, see discussion in fdo#46570
 export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC -fpie"
@@ -127,7 +105,7 @@ export V=1
     --disable-static \
     --libexecdir=%{_libexecdir}/dbus-1 \
     --enable-inotify \
-    --enable-doxygen-docs \
+    --disable-doxygen-docs \
 %if %{with selinux}
     --enable-selinux \
 %endif
@@ -140,17 +118,14 @@ export V=1
     --with-systemdsystemunitdir=%{_unitdir} \
     --with-systemduserunitdir=%{_userunitdir} \
     --without-x
-make %{?_smp_mflags}
+%make_build
 # The original dbus sysusers config does not create our account,
 # overwrite it with our user definition
 cp %{SOURCE5} bus/sysusers.d/dbus.conf
 %sysusers_generate_pre %{SOURCE5} messagebus
 
-doxygen -u && doxygen
-./cleanup-man-pages.sh
-
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -161,9 +136,6 @@ mv -f %{buildroot}/%{_bindir}/dbus-launch %{buildroot}%{_bindir}/dbus-launch.nox
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service  %{buildroot}/%{_sbindir}/rcdbus
 install -d %{buildroot}/run/dbus
-mkdir -p %{buildroot}/%{_datadir}/susehelp/meta/Development/Libraries/
-install -m 0644 %{SOURCE4} \
-    %{buildroot}/%{_datadir}/susehelp/meta/Development/Libraries/dbus-1.desktop
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
 mkdir -p %{buildroot}/lib/dbus-1/system-services
 
@@ -174,9 +146,6 @@ for i in %{_sysconfdir}/dbus-1/session.d %{_sysconfdir}/dbus-1/system.d \
 done
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/dbus
-
-# don't ship executables in doc
-chmod -x %{buildroot}%{_datadir}/doc/dbus/examples/GetAllMatchRules.py
 
 # Link the binaries that were in /bin back to /bin for compat (maybe remove for SLE-16)
 # Currently required to make upower work together with systemd
@@ -195,12 +164,13 @@ ln -s -f %{_sysconfdir}/alternatives/dbus-launch %{buildroot}%{_bindir}/dbus-lau
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
+rm -Rf %{buildroot}%{_datadir}/doc/dbus
+
 %verifyscript -n dbus-1
 %verify_permissions -e %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
 
 %post -n %{_libname} -p /sbin/ldconfig
 %postun -n %{_libname} -p /sbin/ldconfig
-
 %pre -f messagebus.pre
 %service_add_pre dbus.service dbus.socket
 
@@ -311,31 +281,5 @@ fi
 %{_libdir}/pkgconfig/dbus-1.pc
 %{_libdir}/cmake/
 %{_datadir}/xml/dbus-1
-
-%files devel-doc
-%dir %{_datadir}/doc/dbus
-%dir %{_datadir}/doc/dbus/examples
-%{_datadir}/doc/dbus/api/
-%doc %{_datadir}/doc/dbus/dbus-faq.html
-%doc %{_datadir}/doc/dbus/dbus-specification.html
-%doc %{_datadir}/doc/dbus/dbus-test-plan.html
-%doc %{_datadir}/doc/dbus/dbus-tutorial.html
-%doc %{_datadir}/doc/dbus/diagram.*
-%doc %{_datadir}/doc/dbus/system-activation.txt
-%doc %{_datadir}/doc/dbus/dbus-cleanup-sockets.1.html
-%doc %{_datadir}/doc/dbus/dbus-daemon.1.html
-%doc %{_datadir}/doc/dbus/dbus-launch.1.html
-%doc %{_datadir}/doc/dbus/dbus-run-session.1.html
-%doc %{_datadir}/doc/dbus/dbus-monitor.1.html
-%doc %{_datadir}/doc/dbus/dbus-send.1.html
-%doc %{_datadir}/doc/dbus/dbus-uuidgen.1.html
-%doc %{_datadir}/doc/dbus/dbus.devhelp2
-%doc %{_datadir}/doc/dbus/dbus-test-tool.1.html
-%doc %{_datadir}/doc/dbus/dbus-update-activation-environment.1.html
-%doc %{_datadir}/doc/dbus/examples/GetAllMatchRules.py
-%doc %{_datadir}/doc/dbus/examples/example-session-disable-stats.conf
-%doc %{_datadir}/doc/dbus/examples/example-system-enable-stats.conf
-%doc doc/*.txt doc/file-boilerplate.c doc/TODO
-%{_datadir}/susehelp
 
 %changelog

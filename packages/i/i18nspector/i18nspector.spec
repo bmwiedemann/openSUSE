@@ -1,7 +1,7 @@
 #
 # spec file for package i18nspector
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           i18nspector
-Version:        0.25.8
+Version:        0.25.9
 Release:        0
 Summary:        Tool for Checking gettext POT/PO/MO Files
 License:        MIT
 Group:          Development/Tools/Other
-URL:            http://jwilk.net/software/i18nspector
+URL:            https://jwilk.net/software/i18nspector
 Source0:        https://github.com/jwilk/i18nspector/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/jwilk/i18nspector/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  python3-devel >= 3.3.3
+BuildRequires:  python3-devel >= 3.4
 # Requires for tests.
 BuildRequires:  python3-curses
 BuildRequires:  python3-nose
@@ -37,7 +37,7 @@ Requires:       python3-polib
 Requires:       python3-rply
 BuildArch:      noarch
 %if 0%{?suse_version} && 0%{?suse_version} < 1230
-Requires:       python3 >= 3.3.3
+Requires:       python3 >= 3.4
 %endif
 
 %description
@@ -62,7 +62,7 @@ cd %{buildroot}%{_datadir}/%{name}/
 %py3_compile .
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %files
 %license doc/LICENSE

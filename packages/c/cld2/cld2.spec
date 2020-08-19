@@ -27,6 +27,8 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/CLD2Owners/cld2
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 0001-fix-hebrew-iso-code.patch buschmann23@opensuse.org -- use correct ISO 639-1 language code for Hebrew
+Patch1:         0001-fix-hebrew-iso-code.patch
 # https://code.google.com/p/cld2/issues/detail?id=29
 Source2:        CMakeLists.txt
 Source3:        cld2.pc.in
@@ -59,6 +61,7 @@ This subpackage contains the headers for cld2.
 
 %prep
 %setup -q
+%patch1 -p1
 cp %{SOURCE2} .
 cp %{SOURCE3} .
 

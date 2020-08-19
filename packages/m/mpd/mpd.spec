@@ -218,8 +218,8 @@ install -d \
 install -m 0644 %{SOURCE1} README.mpd
 cp -a "%{SOURCE2}" "%{buildroot}%{_docdir}/%{name}/"
 ln -s service %{buildroot}%{_sbindir}/rcmpd
-rm %{buildroot}%{_libexecdir}/systemd/user/mpd.socket
-ln -s ../system/mpd.socket %{buildroot}%{_libexecdir}/systemd/user/mpd.socket
+rm %{buildroot}%{_userunitdir}/mpd.socket
+ln -s ../system/mpd.socket %{buildroot}%{_userunitdir}/mpd.socket
 
 %pre
 # add mpd user only when installing first time
@@ -249,7 +249,7 @@ getent passwd mpd >/dev/null || useradd -r -g audio -d %{_localstatedir}/lib/mpd
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_unitdir}/mpd.service
 %{_unitdir}/mpd.socket
-%{_libexecdir}/systemd/user/mpd.socket
+%{_userunitdir}/mpd.socket
 %{_userunitdir}/mpd.service
 
 %changelog

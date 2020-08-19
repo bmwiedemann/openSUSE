@@ -102,9 +102,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 cp fetchmail.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/fetchmail
 mkdir -p %{buildroot}/sbin
 mkdir -p %{buildroot}/%{_unitdir}
-mkdir -p %{buildroot}/%{_libexecdir}/tmpfiles.d
+mkdir -p %{buildroot}/%{_tmpfilesdir}
 install -m 0644 %{SOURCE6} %{buildroot}/%{_unitdir}/%{name}.service
-install -m 0644 %{SOURCE7} %{buildroot}/%{_libexecdir}/tmpfiles.d/%{name}.conf
+install -m 0644 %{SOURCE7} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 install -m 0755 %{SOURCE8} %{buildroot}/%{_libexecdir}/%{name}-systemd-exec
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
@@ -160,7 +160,7 @@ make %{?_smp_mflags} check
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 %{_libexecdir}/%{name}-systemd-exec
-%{_libexecdir}/tmpfiles.d/%{name}.conf
+%{_tmpfilesdir}/%{name}.conf
 %{_fillupdir}/sysconfig.%{name}
 
 %files -n fetchmailconf

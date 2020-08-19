@@ -18,40 +18,40 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Ming
-Version:        0.9.2
+Version:        0.10.2
 Release:        0
-Summary:        Bringing order to Mongo since 2009
+Summary:        Database mapping layer for MongoDB on Python
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://merciless.sourceforge.net
+URL:            https://github.com/TurboGears/Ming
 Source:         https://files.pythonhosted.org/packages/source/M/Ming/Ming-%{version}.tar.gz
-Patch0:         0001-disable_test_gridfs.patch
-Patch1:         pymongo-reqs.patch
+Source1:        https://raw.githubusercontent.com/TurboGears/Ming/master/LICENSE.txt
 BuildRequires:  %{python_module FormEncode >= 1.2.1}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module mock >= 0.8.0}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pymongo >= 2.4}
+BuildRequires:  %{python_module pymongo >= 3.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pymongo >= 3.0
 Requires:       python-pytz
 Requires:       python-six >= 1.6.1
 Recommends:     python-FormEncode >= 1.2.1
-Recommends:     python-python-spidermonkey >= 0.0.10
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Database mapping layer for MongoDB on Python. Includes schema enforcement and some facilities for schema migration.
+Database mapping layer for MongoDB on Python.
+Includes schema enforcement and some facilities for schema migration.
 
 %prep
 %setup -q -n Ming-%{version}
-%patch0 -p1
-%patch1 -p1
+cp %{SOURCE1} .
+
+# gridfs fails
+rm ming/tests/test_gridfs.py
 
 %build
 %python_build
@@ -61,11 +61,12 @@ Database mapping layer for MongoDB on Python. Includes schema enforcement and so
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py -q test
+# Real tests require running mongo instance
+%pytest -rs -k 'not (TestMappingReal or TestRealBasicMapping or TestRealMongoRelation)'
 
 %files %{python_files}
 %doc README.rst
-# no license available, neither in the tarball nor upstream
+%license LICENSE.txt
 %{python_sitelib}/*
 
 %changelog

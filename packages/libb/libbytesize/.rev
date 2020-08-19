@@ -23,4 +23,41 @@
     <comment></comment>
     <requestid>656672</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2917adcea915d58cdbcbdcd864d31b22</srcmd5>
+    <version>2.4</version>
+    <time>1597855629</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4:
+  * remove msgcat dependency
+  * Translated using Weblate (Bengali (India))
+  * Add Travis build status badge
+  * Update translation files
+  * add translation platform widget
+  * Translated using Weblate (Turkish)
+  * Fix memory leak in bs_size_new_from_str
+  * Update translation files
+  * src/gettext: fix warning if gettext is already present
+  * fix build on shells where test == fails
+  * Require the same version of python3-bytesize in libbytesize-tools
+  * New minor release of the libbytesize library. There are only two bugfixes in this release.
+  * Full list of changes
+  * fix out of tree build failure
+  * Fix return value for round_to_nearest when using Size
+  * New bytesize calculator bssize has been added.
+  * Code has been ported from PCRE to PCRE2.
+  * Python 2 support has been removed.
+  * Run all libbytesize tests from one script
+  * Add all &quot;public&quot; python API symbols to __init__.py
+  * Allow running tests using installed library
+  * Remove Python 2 support
+  * Port to pcre2
+  * Add support for floor division by a non-integer number in Python
+  * Add a simple bytesize calculator tool
+  * Add tools to autotools and packaging
+  * Exit with 1 from configure if there were failures
+  * Add a summary to the end of ./configure output
+  * Only support modulo between two Size instances</comment>
+    <requestid>827096</requestid>
+  </revision>
 </revisionlist>

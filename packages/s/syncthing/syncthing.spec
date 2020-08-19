@@ -17,7 +17,7 @@
 
 
 Name:           syncthing
-Version:        1.4.2
+Version:        1.8.0
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
@@ -51,31 +51,32 @@ joined to the syncthing relay pool or private.
 %setup -q -n %{name}
 
 %build
-export BUILD_USER=abuild
-export BUILD_HOST=openSUSE
-mkdir -p build/src/ build/vendor/
-export GOPATH="$PWD/build:$PWD/build/vendor"
+# move source archive which is extracted as "syncthing" to be "src/github.com/syncthing/syncthing"
+cd ..
+install -d "src/github.com/syncthing/"
+mv %{name} "src/github.com/syncthing/"%{name}
+mkdir syncthing
+cd "$PWD/src/github.com/syncthing/"%{name}
 
-mkdir -p build/src/github.com/%{name}/%{name}
-ls | sed '/^build$/d' | xargs cp -at build/src/github.com/%{name}/%{name}
-cp -a vendor build/vendor/src
+# set build environment, in particular use "-mod=vendor" to use the Go modules from the source archive's vendor dir
+export BUILD_USER=abuild BUILD_HOST=openSUSE
+export CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}"
+export GOFLAGS="-trimpath -mod=vendor"
 
-pushd build/src/github.com/%{name}/%{name}/
 # build and install stcli which has no dedicated target and can not be built with -no-upgrade
 go run build.go -version v%{version} install all
 # build and install syncthing without automatic updates
 go run build.go -no-upgrade -version v%{version} install
 # build and install strelaysrv without automatic updates
 go run build.go -no-upgrade -version v%{version} install strelaysrv
-popd
 
 %install
-install -Dpm 0755 build/src/github.com/%{name}/%{name}/bin/%{name} \
-  %{buildroot}%{_bindir}/%{name}
-install -Dpm 0755 build/src/github.com/%{name}/%{name}/bin/stcli \
-  %{buildroot}%{_bindir}/stcli
-install -Dpm 0755 build/src/github.com/%{name}/%{name}/bin/strelaysrv \
-  %{buildroot}%{_bindir}/strelaysrv
+st_dir=$PWD
+cd ../src/github.com/syncthing/%{name}
+mv LICENSE AUTHORS CONDUCT.md CONTRIBUTING.md README.md "$st_dir"
+install -Dpm 0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
+install -Dpm 0755 bin/stcli %{buildroot}%{_bindir}/stcli
+install -Dpm 0755 bin/strelaysrv %{buildroot}%{_bindir}/strelaysrv
 install -dm 0750 %{buildroot}/%{_localstatedir}/lib/strelaysrv
 install -Dpm 0644 cmd/strelaysrv/etc/linux-systemd/strelaysrv.service \
   %{buildroot}%{_unitdir}/strelaysrv.service

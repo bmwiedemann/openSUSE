@@ -37,7 +37,7 @@ Requires:       python-azure-mgmt-alertsmanagement >= 0.2.0
 Requires:       python-azure-mgmt-apimanagement < 1.0.0
 Requires:       python-azure-mgmt-apimanagement >= 0.1.0
 Requires:       python-azure-mgmt-appconfiguration < 1.0.0
-Requires:       python-azure-mgmt-appconfiguration >= 0.4.0
+Requires:       python-azure-mgmt-appconfiguration >= 0.5.0
 Requires:       python-azure-mgmt-applicationinsights < 1.0.0
 Requires:       python-azure-mgmt-applicationinsights >= 0.3.0
 Requires:       python-azure-mgmt-attestation < 1.0.0
@@ -54,8 +54,8 @@ Requires:       python-azure-mgmt-billing < 1.0.0
 Requires:       python-azure-mgmt-billing >= 0.2.0
 Requires:       python-azure-mgmt-botservice < 1.0.0
 Requires:       python-azure-mgmt-botservice >= 0.1.0
-Requires:       python-azure-mgmt-cdn < 5.0.0
-Requires:       python-azure-mgmt-cdn >= 4.0.0
+Requires:       python-azure-mgmt-cdn < 6.0.0
+Requires:       python-azure-mgmt-cdn >= 5.1.0
 Requires:       python-azure-mgmt-cognitiveservices < 7.0.0
 Requires:       python-azure-mgmt-cognitiveservices >= 6.2.0
 Requires:       python-azure-mgmt-commerce < 2.0.0
@@ -72,8 +72,8 @@ Requires:       python-azure-mgmt-containerservice < 10.0.0
 Requires:       python-azure-mgmt-containerservice >= 9.0.1
 Requires:       python-azure-mgmt-core < 2.0.0
 Requires:       python-azure-mgmt-core >= 1.0.0
-Requires:       python-azure-mgmt-cosmosdb < 1.0.0
-Requires:       python-azure-mgmt-cosmosdb >= 0.15.0
+Requires:       python-azure-mgmt-cosmosdb < 2.0.0
+Requires:       python-azure-mgmt-cosmosdb >= 1.0.0
 Requires:       python-azure-mgmt-costmanagement < 1.0.0
 Requires:       python-azure-mgmt-costmanagement >= 0.2.0
 Requires:       python-azure-mgmt-databricks < 1.0.0
@@ -107,7 +107,7 @@ Requires:       python-azure-mgmt-frontdoor >= 0.3.0
 Requires:       python-azure-mgmt-hanaonazure < 1.0.0
 Requires:       python-azure-mgmt-hanaonazure >= 0.12.0
 Requires:       python-azure-mgmt-hdinsight < 2.0.0
-Requires:       python-azure-mgmt-hdinsight >= 1.5.1
+Requires:       python-azure-mgmt-hdinsight >= 1.7.0
 Requires:       python-azure-mgmt-healthcareapis < 1.0.0
 Requires:       python-azure-mgmt-healthcareapis >= 0.1.0
 Requires:       python-azure-mgmt-imagebuilder < 1.0.0
@@ -153,7 +153,7 @@ Requires:       python-azure-mgmt-monitor >= 0.11.0
 Requires:       python-azure-mgmt-msi < 2.0.0
 Requires:       python-azure-mgmt-msi >= 1.0.0
 Requires:       python-azure-mgmt-netapp < 1.0.0
-Requires:       python-azure-mgmt-netapp >= 0.10.0
+Requires:       python-azure-mgmt-netapp >= 0.12.0
 Requires:       python-azure-mgmt-network < 12.0.0
 Requires:       python-azure-mgmt-network >= 11.0.0
 Requires:       python-azure-mgmt-notificationhubs < 3.0.0
@@ -181,7 +181,7 @@ Requires:       python-azure-mgmt-relay >= 0.1.0
 Requires:       python-azure-mgmt-reservations < 1.0.0
 Requires:       python-azure-mgmt-reservations >= 0.3.1
 Requires:       python-azure-mgmt-resource < 11.0.0
-Requires:       python-azure-mgmt-resource >= 10.1.0
+Requires:       python-azure-mgmt-resource >= 10.2.0
 Requires:       python-azure-mgmt-resourcegraph < 3.0.0
 Requires:       python-azure-mgmt-resourcegraph >= 2.0.0
 Requires:       python-azure-mgmt-scheduler < 3.0.0

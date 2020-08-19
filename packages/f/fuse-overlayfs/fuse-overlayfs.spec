@@ -17,13 +17,13 @@
 
 
 Name:           fuse-overlayfs
-Version:        1.1.0
+Version:        1.1.2
 Release:        0
 Summary:        FUSE implementation for overlayfs
 License:        GPL-3.0-only
 Group:          System/Management
 URL:            https://github.com/containers/fuse-overlayfs
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/containers/fuse-overlayfs/archive/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fuse3-devel

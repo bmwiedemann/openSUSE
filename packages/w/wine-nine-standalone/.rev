@@ -27,4 +27,13 @@
  - Fix for WINE &gt;= 5.14</comment>
     <requestid>827042</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cca68de94f742db0fb4f41809db8f754</srcmd5>
+    <version>0.7</version>
+    <time>1597856198</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.7
+  - Fix restoring the initial video mode</comment>
+    <requestid>827736</requestid>
+  </revision>
 </revisionlist>

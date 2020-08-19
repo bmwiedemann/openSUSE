@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 16 14:26:28 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary build dependency nose, deselecting two tests
+  when testing against CherryPy 10.1 or lower
+- Remove tests from runtime library
+- Remove installed .keep files and remove hashbangs in library
+
+-------------------------------------------------------------------
 Wed Apr 15 08:50:43 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.5.2

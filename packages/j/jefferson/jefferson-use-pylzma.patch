@@ -1,0 +1,34 @@
+diff --git a/setup.py b/setup.py
+index 4814b96..a422844 100755
+--- a/setup.py
++++ b/setup.py
+@@ -13,7 +13,7 @@ setup(
+     url='https://github.com/sviehb/jefferson',
+     license='MIT',
+ 
+-    requires=['cstruct'],
++    requires=['cstruct', 'pylzma'],
+     packages=['jefferson'],
+     package_dir={'jefferson': 'src/jefferson'},
+     scripts=['src/scripts/jefferson'],
+diff --git a/src/jefferson/jffs2_lzma.py b/src/jefferson/jffs2_lzma.py
+index 1f87a1b..58467cb 100755
+--- a/src/jefferson/jffs2_lzma.py
++++ b/src/jefferson/jffs2_lzma.py
+@@ -1,6 +1,6 @@
+ import struct
+ 
+-import lzma
++import pylzma
+ 
+ LZMA_BEST_LC = 0
+ LZMA_BEST_LP = 0
+@@ -17,5 +17,5 @@ DICT_SIZE = 0x2000
+ def decompress(data, outlen):
+     lzma_header = struct.pack('<BIQ', PROPERTIES, DICT_SIZE, outlen)
+     lzma_data = lzma_header + data
+-    decompressed = lzma.decompress(lzma_data)
+-    return decompressed
+\ No newline at end of file
++    decompressed = pylzma.decompress(lzma_data)
++    return decompressed

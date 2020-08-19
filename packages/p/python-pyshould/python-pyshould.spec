@@ -65,10 +65,7 @@ sed -i '/nose/d' setup.py
 }
 
 %check
-# %%pyunittest is still not available in TW, so we have to expand it manually
-%{python_expand export PYTHONPATH=$PYTHONPATH:%{buildroot}%{$python_sitelib} PYTHONDONTWRITEBYTECODE=1
-$python -munittest -v
-}
+%pyunittest
 
 %files %{python_files}
 %doc README.md

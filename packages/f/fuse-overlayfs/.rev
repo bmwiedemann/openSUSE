@@ -95,4 +95,15 @@
     <comment></comment>
     <requestid>819290</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c5e1322a7d48a0f223df3b4165bc686c</srcmd5>
+    <version>1.1.2</version>
+    <time>1597855617</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 1.1.2
+  - fix build issues with libmusl.
+  - fix memory leak when creating whiteout files.
+  - fix lookup for overflow uid when it is different than the overflow gid.</comment>
+    <requestid>827054</requestid>
+  </revision>
 </revisionlist>

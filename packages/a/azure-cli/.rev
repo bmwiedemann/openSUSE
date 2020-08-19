@@ -163,4 +163,16 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 821923 from glaubitz)</comment>
     <requestid>821949</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>44ac3b1caf45e2df2b929db71a8dab8d</srcmd5>
+    <version>2.10.1</version>
+    <time>1597855984</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (boo#1175289)
+  + Version 2.10.1
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 827684 from glaubitz)</comment>
+    <requestid>827686</requestid>
+  </revision>
 </revisionlist>

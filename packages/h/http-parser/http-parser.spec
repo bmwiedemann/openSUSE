@@ -1,7 +1,7 @@
 #
 # spec file for package http-parser
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define soname 2_7_1
+%define soname 2_9
 %define libname libhttp_parser%{soname}
 Name:           http-parser
-Version:        2.7.1
+Version:        2.9.4
 Release:        0
 Summary:        HTTP request/response parser for C
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/nodejs/http-parser
+URL:            https://github.com/nodejs/http-parser
 Source0:        https://github.com/nodejs/http-parser/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         makefile.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -72,27 +71,27 @@ Development headers and libraries for http-parser.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-make %{?_smp_mflags} PREFIX=%{_prefix} library
+%make_build PREFIX=%{_prefix} CFLAGS_FAST_EXTRA="%{optflags}" library
 
 %install
-make PREFIX=%{_prefix} DESTDIR=%{buildroot} LIBDIR=%{_libdir}  install
+%make_install PREFIX=%{_prefix} DESTDIR=%{buildroot} LIBDIR=%{_libdir}
 chmod a-x  %{buildroot}/%{_includedir}/*.h
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%doc AUTHORS LICENSE-MIT README.md
+%license LICENSE-MIT
+%doc README.md
 %{_libdir}/libhttp_parser.so.*
 
 %files devel
-%{_includedir}/*
+%{_includedir}/http_parser.h
 %{_libdir}/libhttp_parser.so
 
 %changelog

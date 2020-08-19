@@ -50,7 +50,7 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python -munittest discover -v
+%pyunittest test
 
 %files %{python_files}
 %license LICENSE*

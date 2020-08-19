@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() %{!?skip_python2:python-%{**}} %{!?skip_python3:python3-%{**}}}
 %define modname magic-wormhole
 Name:           python-magic-wormhole
-Version:        0.11.2
+Version:        0.12.0
 Release:        0
 Summary:        Tool for transferring files through a secure channel
 License:        MIT

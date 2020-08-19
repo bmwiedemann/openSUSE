@@ -127,4 +127,12 @@
   * fix leak in test</comment>
     <requestid>613023</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3efe39d45a7442fd9f1cd26fb75d10e1</srcmd5>
+    <version>0.6.3</version>
+    <time>1597855599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826983</requestid>
+  </revision>
 </revisionlist>

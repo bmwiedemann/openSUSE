@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug 15 06:04:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SQLite 3.33.0:
+  * Support for UPDATE FROM following the PostgreSQL syntax
+  * Increase the maximum size of database files to 281 TB
+  * Extend the PRAGMA integrity_check statement so that it can
+    optionally be limited to verifying just a single table and its
+    indexes, rather than the entire database file.
+  * Add the decimal extension for doing arbitrary-precision decimal
+    arithmetic
+  * Enhancements to the ieee754 extension for working with IEEE 754
+    binary64 numbers
+  * cli: Add four new output modes: "box", "json", "markdown",
+    and "table"
+  * cli: The "column" output mode automatically expands columns to
+    contain the longest output row and automatically turns
+    ".header" on if it has not been previously set
+  * cli: The "quote" output mode honors ".separator"
+  * cli: The decimal extension and the ieee754 extension are
+    built-in to the CLI 
+  * multiple query planner improvements
+
+-------------------------------------------------------------------
 Sat Jun 20 11:11:01 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SQLite 3.32.3:

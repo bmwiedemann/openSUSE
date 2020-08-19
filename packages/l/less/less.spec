@@ -17,7 +17,7 @@
 
 
 Name:           less
-Version:        562
+Version:        563
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        GPL-3.0-or-later OR BSD-2-Clause

@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.9.1
+Version:        2.10.1
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -45,7 +45,7 @@ Patch1:         ac_use-python3-by-default.patch
 BuildRequires:  %{short_name} = %{version}
 %else
 BuildRequires:  azure-cli-command-modules-nspkg >= 2.0
-BuildRequires:  azure-cli-core >= 2.2.0
+BuildRequires:  azure-cli-core >= 2.10.1
 BuildRequires:  azure-cli-nspkg >= 3.0.3
 BuildRequires:  fdupes
 BuildRequires:  python3-Fabric >= 2.4
@@ -60,14 +60,14 @@ BuildRequires:  python3-azure-keyvault >= 1.1
 BuildRequires:  python3-azure-loganalytics >= 0.1.0
 BuildRequires:  python3-azure-mgmt-advisor >= 2.0.1
 BuildRequires:  python3-azure-mgmt-apimanagement >= 0.1.0
-BuildRequires:  python3-azure-mgmt-appconfiguration >= 0.4.0
+BuildRequires:  python3-azure-mgmt-appconfiguration >= 0.5.0
 BuildRequires:  python3-azure-mgmt-applicationinsights >= 0.1.1
 BuildRequires:  python3-azure-mgmt-authorization >= 0.52.0
 BuildRequires:  python3-azure-mgmt-batch >= 9.0.0
 BuildRequires:  python3-azure-mgmt-batchai >= 2.0
 BuildRequires:  python3-azure-mgmt-billing >= 0.2
 BuildRequires:  python3-azure-mgmt-botservice >= 0.2.0
-BuildRequires:  python3-azure-mgmt-cdn >= 4.1.0rc1
+BuildRequires:  python3-azure-mgmt-cdn >= 5.0.0
 BuildRequires:  python3-azure-mgmt-cognitiveservices >= 6.2.0
 BuildRequires:  python3-azure-mgmt-compute >= 13.0
 BuildRequires:  python3-azure-mgmt-consumption >= 2.0
@@ -83,7 +83,7 @@ BuildRequires:  python3-azure-mgmt-devtestlabs >= 4.0
 BuildRequires:  python3-azure-mgmt-dns >= 2.1
 BuildRequires:  python3-azure-mgmt-eventgrid >= 3.0.0rc7
 BuildRequires:  python3-azure-mgmt-eventhub >= 4.0.0
-BuildRequires:  python3-azure-mgmt-hdinsight >= 1.5.1
+BuildRequires:  python3-azure-mgmt-hdinsight >= 1.6.0
 BuildRequires:  python3-azure-mgmt-imagebuilder >= 0.4.0
 BuildRequires:  python3-azure-mgmt-iotcentral >= 3.0.0
 BuildRequires:  python3-azure-mgmt-iothub >= 0.12.0
@@ -96,9 +96,9 @@ BuildRequires:  python3-azure-mgmt-managementgroups >= 0.1
 BuildRequires:  python3-azure-mgmt-maps >= 0.1.0
 BuildRequires:  python3-azure-mgmt-marketplaceordering >= 0.1
 BuildRequires:  python3-azure-mgmt-media >= 2.1.0
-BuildRequires:  python3-azure-mgmt-monitor >= 0.10.0
+BuildRequires:  python3-azure-mgmt-monitor >= 0.11.0
 BuildRequires:  python3-azure-mgmt-msi >= 0.2
-BuildRequires:  python3-azure-mgmt-netapp >= 0.8.0
+BuildRequires:  python3-azure-mgmt-netapp >= 0.11.0
 BuildRequires:  python3-azure-mgmt-network >= 11.0.0
 BuildRequires:  python3-azure-mgmt-policyinsights >= 0.5.0
 BuildRequires:  python3-azure-mgmt-privatedns >= 0.1.0
@@ -139,7 +139,7 @@ BuildRequires:  python3-vsts-cd-manager >= 1.0.0
 BuildRequires:  python3-websocket-client >= 0.56.0
 BuildRequires:  python3-xmltodict >= 0.12
 Requires:       azure-cli-command-modules-nspkg >= 2.0
-Requires:       azure-cli-core >= 2.2.0
+Requires:       azure-cli-core >= 2.10.1
 Requires:       azure-cli-nspkg >= 3.0.3
 Requires:       python3-Fabric >= 2.4
 Requires:       python3-PyYAML >= 5.1
@@ -156,14 +156,14 @@ Requires:       python3-azure-loganalytics >= 0.1.0
 Requires:       python3-azure-loganalytics >= 0.1.0
 Requires:       python3-azure-mgmt-advisor >= 2.0.1
 Requires:       python3-azure-mgmt-apimanagement >= 0.1.0
-Requires:       python3-azure-mgmt-appconfiguration >= 0.4.0
+Requires:       python3-azure-mgmt-appconfiguration >= 0.5.0
 Requires:       python3-azure-mgmt-applicationinsights >= 0.1.1
 Requires:       python3-azure-mgmt-authorization >= 0.52.0
 Requires:       python3-azure-mgmt-batch >= 9.0.0
 Requires:       python3-azure-mgmt-batchai >= 2.0
 Requires:       python3-azure-mgmt-billing >= 0.2
 Requires:       python3-azure-mgmt-botservice >= 0.2.0
-Requires:       python3-azure-mgmt-cdn >= 4.1.0rc1
+Requires:       python3-azure-mgmt-cdn >= 5.0.0
 Requires:       python3-azure-mgmt-cognitiveservices >= 6.2.0
 Requires:       python3-azure-mgmt-compute >= 13.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
@@ -179,7 +179,7 @@ Requires:       python3-azure-mgmt-devtestlabs >= 2.2
 Requires:       python3-azure-mgmt-dns >= 2.1
 Requires:       python3-azure-mgmt-eventgrid >= 3.0.0rc7
 Requires:       python3-azure-mgmt-eventhub >= 4.0.0
-Requires:       python3-azure-mgmt-hdinsight >= 1.5.1
+Requires:       python3-azure-mgmt-hdinsight >= 1.6.0
 Requires:       python3-azure-mgmt-imagebuilder >= 0.4.0
 Requires:       python3-azure-mgmt-iotcentral >= 3.0.0
 Requires:       python3-azure-mgmt-iothub >= 0.12.0
@@ -192,9 +192,9 @@ Requires:       python3-azure-mgmt-managementgroups >= 0.1
 Requires:       python3-azure-mgmt-maps >= 0.1.0
 Requires:       python3-azure-mgmt-marketplaceordering >= 0.1
 Requires:       python3-azure-mgmt-media >= 2.1.0
-Requires:       python3-azure-mgmt-monitor >= 0.10.0
+Requires:       python3-azure-mgmt-monitor >= 0.11.0
 Requires:       python3-azure-mgmt-msi >= 0.2
-Requires:       python3-azure-mgmt-netapp >= 0.8.0
+Requires:       python3-azure-mgmt-netapp >= 0.11.0
 Requires:       python3-azure-mgmt-network >= 11.0.0
 Requires:       python3-azure-mgmt-policyinsights >= 0.5.0
 Requires:       python3-azure-mgmt-privatedns >= 0.1.0

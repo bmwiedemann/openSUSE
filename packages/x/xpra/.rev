@@ -183,4 +183,15 @@
     <comment></comment>
     <requestid>824983</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>154b83e8ccc9381b0aeb08be7fb4e36e</srcmd5>
+    <version>4.0.3</version>
+    <time>1597856308</time>
+    <user>dimstar_suse</user>
+    <comment>- Use proper location of bash in script shebang
+- Add runtime requirement
+- Use %{_udevrulesdir} consistently throughout the .spec.
+</comment>
+    <requestid>827904</requestid>
+  </revision>
 </revisionlist>

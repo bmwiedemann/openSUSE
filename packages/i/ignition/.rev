@@ -230,4 +230,12 @@ Allows mounting a device multiple times, e.g. to mount several subvolumes from a
 </comment>
     <requestid>825960</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>45d0b5bb7860b8c77f5c0191afcfa72d</srcmd5>
+    <version>2.6.0</version>
+    <time>1597856211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827733</requestid>
+  </revision>
 </revisionlist>

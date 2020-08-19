@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:40:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.0:
+  - In non-quiet loop and count mode, a line is printed for every lost packet
+    8.8.8.8 : xmt/rcv/%loss = 2/2/0%, min/avg/max = 12.3/12.5/12.8
+    8.8.8.7 : xmt/rcv/%loss = 2/0/100%
+  - The returned size in bytes now always excludes the IP header, so if before it
+    reported '84 bytes' e.g. when using 'fping -l', now it reports '64 bytes'.
+    This is to make the reported size consistent with ping(8) from iputils and
+    also with fping when pinging a IPv6 host (which never included the IPv6
+    header size).
+  - The number of sent pings is only counted when the pings are received or have
+    timed out, ensuring that the loss ratio will be always correct. This makes it
+    possible, for example, to use loop mode (-l) with interval statistics (-Q)
+    and a timeout larger than period, without having the issue that initially
+    some pings would be reported as missing (#193)
+  - Improved precision of measurements from 10us to 1us (#136, thanks @tycho)
+  - The reported size of received packets is now always correct on Linux even for
+    packets > 4096 bytes.
+
+-------------------------------------------------------------------
 Sun Jul 26 18:11:49 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fping 4.4:

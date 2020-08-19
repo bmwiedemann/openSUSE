@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 22:32:35 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We can finally use %pyunittest macro
+
+-------------------------------------------------------------------
 Mon Aug 17 12:38:29 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't force pytest, when the easiest way is just to follow

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 15 22:00:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.3:
+  - Drop outdated MSVC project files.
+  - Fix a couple of issues found by oss-fuzz.
+  - Fix some potential memory leaks.
+  - Use a bit less memory when parsing WP5/WP6 documents with images.
+  - Switch from --enable-werror to --disable-werror as configure default.
+  - Fix a potential out-of-bounds data access. (rhbz#1643752)
+- remove 0001-Resolves-rhbz-1643752-bounds-check-m_currentTable-ac.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Nov 13 09:40:49 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop tm markers, these are undesired by legal.

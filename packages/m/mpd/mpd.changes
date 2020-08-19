@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:40:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix typo in previous commit.
+
+-------------------------------------------------------------------
+Wed Aug 19 09:12:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_userunitdir} consistently in the spec file.
+
+-------------------------------------------------------------------
 Tue Jul  7 06:32:18 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.21.25

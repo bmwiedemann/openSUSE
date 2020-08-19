@@ -39,27 +39,28 @@ Source21:       ignition-userconfig-timeout-arm.conf
 Patch1:         0001-fix-install-permissions.patch
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
 Patch3:         0003-fix-i386-build.patch
+Patch4:         ignition-fix-arm32-installation.patch
+BuildRequires:  dracut
+BuildRequires:  golang(API) >= 1.12
+BuildRequires:  libblkid-devel
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  update-bootloader-rpm-macros
 Requires:       %{name}-dracut-grub2
 Requires:       dracut
 Requires:       virt-what
-Provides:       ignition-dracut = 0.0+git20200722.98ed51d
-Obsoletes:      ignition-dracut < 0.0+git20200722.98ed51d
+Recommends:     %{_sbindir}/groupadd
+Recommends:     %{_sbindir}/sgdisk
+Recommends:     %{_sbindir}/useradd
+Recommends:     %{_sbindir}/usermod
 Recommends:     /sbin/mkfs.btrfs
 Recommends:     /sbin/mkfs.ext4
 Recommends:     /sbin/mkfs.vfat
 Recommends:     /sbin/mkfs.xfs
 Recommends:     /sbin/mkswap
 Recommends:     /sbin/udevadm
-Recommends:     /usr/sbin/groupadd
-Recommends:     /usr/sbin/sgdisk
-Recommends:     /usr/sbin/useradd
-Recommends:     /usr/sbin/usermod
 Suggests:       /sbin/mdadm
-BuildRequires:  dracut
-BuildRequires:  libblkid-devel
-BuildRequires:  systemd-rpm-macros
-BuildRequires:  update-bootloader-rpm-macros
-BuildRequires:  golang(API) >= 1.12
+Provides:       ignition-dracut = 0.0+git20200722.98ed51d
+Obsoletes:      ignition-dracut < 0.0+git20200722.98ed51d
 %{update_bootloader_requires}
 
 %description
@@ -88,6 +89,7 @@ which creates firstboot_happened after the first boot.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 mkdir dracut/30ignition-microos grub systemd_suse
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8}
@@ -106,7 +108,7 @@ sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build
 env VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distro.selinuxRelabel=false -X github.com/coreos/ignition/v2/internal/distro.writeAuthorizedKeysFragment=false ' bash -x ./build
 
 %install
-make -o all install DESTDIR="${RPM_BUILD_ROOT}"
+make -o all install DESTDIR=%{buildroot}
 
 install -d %{buildroot}%{_sysconfdir}/grub.d
 install -d %{buildroot}%{_prefix}/lib/systemd/system/ignition-firstboot-complete.service.d

@@ -1,7 +1,7 @@
 #
 # spec file for package libqxp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global apiversion 0.0
 %global pkgextension 0_0-0
 Name:           libqxp
-Version:        0.0.1
+Version:        0.0.2
 Release:        0
 Summary:        Library to import QuarkXPress documents
 License:        MPL-2.0
@@ -116,7 +116,7 @@ make %{?_smp_mflags} check
 %{_libdir}/%{name}-%{apiversion}.so.*
 
 %files devel
-%doc ChangeLog COPYING
+%license COPYING
 %{_includedir}/%{name}-%{apiversion}
 %{_libdir}/%{name}-%{apiversion}.so
 %{_libdir}/pkgconfig/%{name}-%{apiversion}.pc
