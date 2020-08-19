@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:42:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build on leap as we require too new django for py2
+
+-------------------------------------------------------------------
 Wed Jul  1 12:27:13 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 4.0.0
