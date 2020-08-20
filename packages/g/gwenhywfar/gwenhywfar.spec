@@ -18,13 +18,13 @@
 
 %define libversion 79
 %define devversion 5
-%define devrelease 5.3
+%define devrelease 5.4
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
 %bcond_with configure
 Name:           gwenhywfar
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

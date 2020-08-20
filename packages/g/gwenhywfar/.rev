@@ -883,4 +883,18 @@
     <comment>5.3.0</comment>
     <requestid>792516</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>550eccaf5021079eaa64682861ea513e</srcmd5>
+    <version>5.4.0</version>
+    <time>1597955636</time>
+    <user>dimstar_suse</user>
+    <comment>- replace tarball with upstream one so that download_files verfication
+  passes 
+
+- Update to 5.4.0
+  + Introduce more generic approach to XML using libxml2
+  + Straighten Qt dependencies
+  + Bugfixes</comment>
+    <requestid>828186</requestid>
+  </revision>
 </revisionlist>

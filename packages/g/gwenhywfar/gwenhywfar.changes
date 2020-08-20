@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 18 20:27:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- replace tarball with upstream one so that download_files verfication
+  passes 
+
+-------------------------------------------------------------------
+Wed Jul 29 12:58:41 UTC 2020 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 5.4.0
+  + Introduce more generic approach to XML using libxml2
+  + Straighten Qt dependencies
+  + Bugfixes
+
+-------------------------------------------------------------------
 Wed Apr  8 07:15:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.3.0. No changelog.
