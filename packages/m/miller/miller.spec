@@ -17,7 +17,7 @@
 
 
 Name:           miller
-Version:        5.8.0
+Version:        5.9.0
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause

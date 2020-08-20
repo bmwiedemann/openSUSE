@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 19 20:26:12 UTC 2020 - aloisio@gmx.com
+
+- Update to version 5.9.0
+  * You can now save common defaults in a ~/.mlrrc. For example,
+    if you normally process CSV files, you can say that in your
+    ~/.mlrrc and you can leave off the --csv flag from your mlr
+    commands. 
+
+-------------------------------------------------------------------
 Tue Aug  4 06:57:04 UTC 2020 - aloisio@gmx.com
 
 - Update to version 5.8.0
