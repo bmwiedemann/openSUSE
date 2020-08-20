@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test2-Suite
-Version:        0.000130
+Version:        0.000132
 Release:        0
 %define cpan_name Test2-Suite
 Summary:        Distribution with a rich set of tools built upon the Test2
@@ -35,13 +35,13 @@ BuildRequires:  perl(Module::Pluggable) >= 2.7
 BuildRequires:  perl(Scope::Guard)
 BuildRequires:  perl(Sub::Info) >= 0.002
 BuildRequires:  perl(Term::Table) >= 0.013
-BuildRequires:  perl(Test2::API) >= 1.302158
+BuildRequires:  perl(Test2::API) >= 1.302176
 Requires:       perl(Importer) >= 0.024
 Requires:       perl(Module::Pluggable) >= 2.7
 Requires:       perl(Scope::Guard)
 Requires:       perl(Sub::Info) >= 0.002
 Requires:       perl(Term::Table) >= 0.013
-Requires:       perl(Test2::API) >= 1.302158
+Requires:       perl(Test2::API) >= 1.302176
 %{perl_requires}
 
 %description
