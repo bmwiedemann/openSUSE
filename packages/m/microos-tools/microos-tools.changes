@@ -1,10 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug 18 14:33:56 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.4
+  - fixes for autorelabel in initrd
+  - Use systemds tmpfiles.d/tmp.conf to relabel /tmp and cleanup
+    /tmp after 10 days and /var/tmp after 30 days
+
+-------------------------------------------------------------------
+Tue Aug 18 08:45:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't install tmp.mount.d/selinux.conf on Factory [bsc#1175379]
+
+-------------------------------------------------------------------
+Fri Aug 14 08:56:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add tmp.mount for SUSE MicroOS 5.0 [jsc#SMO-2]
+
+-------------------------------------------------------------------
 Wed Aug 12 07:32:04 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.3
-  - overwrite tmp.mount options with SELinux label for /tmp
-  - Add generator to label mount points if required
-  - Add dracut module to relabel core system if required
+  - SELinux support [jsc#SMO-15]
+    - overwrite tmp.mount options with SELinux label for /tmp
+    - Add generator to label mount points if required
+    - Add dracut module to relabel core system if required
   - Add locale-check to reset locale to system default if the one
     set by SSH does not exist [bsc#1156175]
   - Set TMPDIR for salt to not use /tmp (preparation for noexec)

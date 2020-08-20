@@ -17,13 +17,14 @@
 
 
 Name:           microos-tools
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/kubic-project/microos-tools
 Source:         microos-tools-%{version}.tar.xz
+Source1:        tmp.mount
 Source99:       microos-tools-rpmlintrc
 BuildRequires:  distribution-release
 BuildRequires:  pkgconfig
@@ -44,6 +45,9 @@ Files, scripts and directories for openSUSE Kubic.
 
 %install
 %make_install
+%if 0%{?suse_version} <= 1500
+install -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/
+%endif
 
 %pre
 %service_add_pre setup-systemd-proxy-env.service printenv.service
@@ -75,11 +79,13 @@ Files, scripts and directories for openSUSE Kubic.
 %{_unitdir}/setup-systemd-proxy-env.service
 %dir %{_unitdir}/sysinit.target.wants
 %{_unitdir}/sysinit.target.wants/MicroOS-firstboot.service
-%dir %{_unitdir}/tmp.mount.d
-%{_unitdir}/tmp.mount.d/selinux.conf
+%if 0%{?suse_version} <= 1500
+%{_unitdir}/tmp.mount
+%endif
 %dir %{_unitdir}/salt-minion.service.d
 %{_unitdir}/salt-minion.service.d/TMPDIR.conf
 %{_tmpfilesdir}/salt-minion-tmpdir.conf
+%{_tmpfilesdir}/tmp.conf
 %{_sysctldir}/30-corefiles.conf
 %{_libexecdir}/MicroOS-firstboot
 %{_sbindir}/setup-systemd-proxy-env

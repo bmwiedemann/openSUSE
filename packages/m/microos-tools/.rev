@@ -89,4 +89,24 @@
   - Set TMPDIR for salt to not use /tmp (preparation for noexec) (forwarded request 826035 from kukuk)</comment>
     <requestid>826036</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>05f9d44dabbe7cc43487d6bd09819a80</srcmd5>
+    <version>2.4</version>
+    <time>1597955248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4
+  - fixes for autorelabel in initrd
+  - Use systemds tmpfiles.d/tmp.conf to relabel /tmp and cleanup
+    /tmp after 10 days and /var/tmp after 30 days
+
+- Don't install tmp.mount.d/selinux.conf on Factory [bsc#1175379]
+
+- Add tmp.mount for SUSE MicroOS 5.0 [jsc#SMO-2]
+
+  - SELinux support [jsc#SMO-15]
+    - overwrite tmp.mount options with SELinux label for /tmp
+    - Add generator to label mount points if required
+    - Add dracut module to relabel core system if required</comment>
+    <requestid>827614</requestid>
+  </revision>
 </revisionlist>
