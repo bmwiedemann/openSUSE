@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Tue Aug 18 12:42:53 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.3.0:
+  * Fix issue with install and upgrade running all hooks
+  * bump version to v3.3
+  * fix(template):Issue:helm template with --output-dir (#8156)
+  * Adding v4 link
+  * Updating for today's actual milestone practices
+  * fix(cmd): display warnings on stderr
+  * Determine chart digest by manifest (#8249)
+  * Fix some go-lint warnings
+  * Fix golint issue
+  * feat(comp): Complete revision for rollback command
+  * fix template command use --show-only flags error in windows environment
+  * version bump
+  * remove s390x arch check
+  * feat(comp): Provide completion for --version flag
+  * chore(Makefile): Remove unused variable
+  * Improve the extractor and add tests (#8317)
+  * Add HelmVersion to Capabilities
+  * feat(cmd): Subcommands for the completion command
+  * fix(chartutil): do not set helpers.tpl filetype for vim
+  * Add unit test case
+  * feat(comp): Move custom completions to Cobra 1.0
+  * fix(doc): generic description for --version/verify
+  * Fix description is ignore when installed with upgrade
+  * Add unit test for man-in-the-middle attack on pull
+  * chore(helm): Avoid confusion in command usage
+  * Fix crashing `helm chart list` with large list
+  * Show errors when linting for Chart.yaml version and appVersion fields of type non-string
+  * ref(tests): localize unit test fixtures to package
+  * Fix issue with unhandled error on Stat
+  * Removing legacy completions.bash file
+  * Using flags instead of persistent flags on status
+  * Removing tiller language
+  * Added s390x support
+  * add kind_sorter support for SecretList
+  * Fix unit test
+  * Fix repo cache setting
+  * Update the Helm version docs
+  * Revert "group command for easy read"
+  * Catching a potential panic in strval parsing
+  * Recovering from panic that can occur with make
+  * Fixing error with strvals parsing
+  * ref(pkg/chartutil): use minimal in-memory fixtures
+  * feat: Detect missing selector during lint
+  * Add new line to fix code formatting in doc
+  * fix(comp): Prepare plugin completion for Cobra 1.0
+  * feat(test): Update golangci-lint to 1.27.0
+  * chore(*): Fix formatting
+  * Fixing PAX Header handling (#8086)
+  * fix: upgrade using --force shoud not run patch logic (#8000)
+  * feat(getter): add timeout option (#7950)
+  * fix security mailing list address
+  * bump DefaultCapabilities to 1.18
+  * bump to kubernetes 1.18.2
+  * scripts: do not use optional 'which' command in get-helm installation (#8048)
+  * feat: make the linter coalesce the passed-in values before running values tests (#7984)
+  * Removed scheme
+  * Fixes repo parsing
+  * Fixes repo parsing
+  * Set DisableCompression to true to disable unwanted httpclient transformation
+  * Update lint deprecation list
+  * refactor: alter constant `pluginFileName` to `PluginFileName`
+  * Fixing argument to be lower case
+  * docs: fix capitalization in a few help messages
+  * bump version to v3.2
+  * fix: removed strict template errors in linter (#8017)
+  * Add checking of length of resourceList before creating of deleting
+  * fix: use correct regular expression for Kubernetes names (#8013)
+  * feat: implement deprecation warnings in helm lint (#7986)
+  * added option --insecure-skip-tls-verify for helm install, addresses #7875
+  * added option --insecure-skip-tls-verify for helm pull, addresses #7875
+  * polish to keep the same log style
+  * Fix markdown table in helm command doc
+  * feat: lint the names of templated resources (#8011)
+  * Adding Helm env vars where XDG exposed
+  * Fix : Prints empty list in json/yaml is no repositories are present (#7949)
+  * Updating CONTRIBUTING to match current practice
+  * Adding PR template from dev-v2 branch
+  * Add unit test for pkg/chart/chart.go
+  * fix: write index.yaml file atomically (#7954)
+  * test: add test for bom test data integrity
+  * Fixing docs from version to appVersion (#7975)
+  * Modify Circle config to use Go 1.14 (#7980)
+  * fix(pkg/cli): ensure correct configuration from kubeconfig file
+  * fix(cmd/env): make helm env command respect cli flags (#7978)
+  * fix(*): remove bom in utf files when loading chart files (#6081)
+  * Helm upgrades with --reuse-values and nil user values -- with tests (#7959)
+  * fix(pkg/plugin): copy plugins directly to the data directory (#7962)
+  * fix linting error with lookup function (#7969)
+  * Parse reference templates in predictable order (#7702)
+  * group command for easy read
+  * fs_test: use os.Getuid() instead user.Current() to determine if a test is executed with root privileges.
+  * fix(helm): allow a previously failed release to be upgraded (#7653)
+  * Updating get stripts to skip pre-releases
+  * fix(pkg/kube): continue deleting objects when one fails
+  * Add comments about release Version variable
+  * fixed to mirror master
+  * removed panic, and replaced with error
+  * fix test
+  * added config file string
+  * Fix a typo "update" -> "updates" (#7346)
+  * fix(cmd): Fixes logging on action conf init error (#6909)
+  * Remove duplicated words (#7336)
+
+-------------------------------------------------------------------
 Fri Jul 17 08:44:30 UTC 2020 - manfred.h@gmx.net
 
 - Add bash and zsh completion sub-packages
