@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug 16 17:14:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.12.0:
+  * fix deleteLease
+  * Use publicIP lookup iface if --public-ip indicated
+  * kubernetes 1.16 cni error
+  * Add cniVersion to general CNI plugin configuration.
+  * Needs to clear NodeNetworkUnavailable flag on Kubernetes
+  * Replaces gorillalabs go-powershell with bhendo/go-powershell
+  * Make VXLAN device learning attribute configurable
+  * change nodeSelector to nodeAffinity and schedule the pod to linux node
+  * This PR adds the cni version to the cni-conf.yaml inside the kube-flannel-cfg configmap
+  * EnableNonPersistent flag for Windows Overlay networks
+  * snap package.
+  * Update lease with DR Mac
+  * main.go: add the "net-config-path" flag
+  * Deploy Flannel with unprivileged PSP
+  * Enable local host to local pod connectivity in Windows VXLAN
+  * Update hcsshim for HostRoute policy in Windows VXLAN
+
+-------------------------------------------------------------------
 Tue Oct 29 13:30:38 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use Tumbleweed Kubic flannel containers instead of devel:kubic 
