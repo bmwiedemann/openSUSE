@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-turbo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,26 +13,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           deepin-turbo
 Version:        0.0.3
 Release:        0
-License:        LGPL-2.1+
 Summary:        A screenshot tool
-Url:            https://github.com/linuxdeepin/deepin-turbo
+License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Convertors
+URL:            https://github.com/linuxdeepin/deepin-turbo
 Source:         https://github.com/linuxdeepin/deepin-turbo/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-return-type-Werror.patch hillwood@opensuse.org - Fix return type Werror check
 Patch0:         fix-return-type-Werror.patch
-BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(dtkwidget)
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(dtkwidget)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
@@ -75,7 +76,7 @@ The deepin-turbo-devel package contains the header files for deepin-turbo.
 %{_bindir}/%{name}-single-instance
 %{_bindir}/%{name}-invoker
 %{_libexecdir}/%{name}
-%{_libexecdir}/systemd/user/%{name}-booster-dtkwidget.service
+%{_userunitdir}/%{name}-booster-dtkwidget.service
 %{_libdir}/lib%{name}.so
 
 %files devel
@@ -83,4 +84,3 @@ The deepin-turbo-devel package contains the header files for deepin-turbo.
 %{_includedir}/%{name}
 
 %changelog
-

@@ -15,4 +15,12 @@
     <comment>- Fix return type Werror check, add fix-return-type-Werror.patch (forwarded request 720754 from hillwood)</comment>
     <requestid>720755</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>db671d71c84641e0763e4f1d7605aa01</srcmd5>
+    <version>0.0.3</version>
+    <time>1597955383</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %{_userunitdir} instead of abusing %{_libexecdir}…. (forwarded request 827816 from dimstar)</comment>
+    <requestid>827963</requestid>
+  </revision>
 </revisionlist>
