@@ -1,7 +1,7 @@
 #
 # spec file for package apcupsd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,6 @@ Patch11:        apcupsd-3.14.8-systemd.patch
 Patch13:        apcupsd-3.14.9-fixgui.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
-BuildRequires:  distribution-release
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -121,7 +120,10 @@ cp -a %{SOURCE2} %{SOURCE4} .
 	--enable-modbus-usb \
 	--enable-test \
 	--with-cgi-bin=%{apache_datadir}/cgi-bin \
-	--with-distname=$(grep ID_LIKE %{_sysconfdir}/os-release | cut -d = -f 2 | tr -d '"')
+%if 0%{?suse_version}
+	--with-distname=suse \
+%endif
+        %nil
 make %{?_smp_mflags}
 
 %install
@@ -142,16 +144,16 @@ dos2unix -o examples/status/SmartUPS-vs-650.status examples/snoopdecode.c exampl
 %fdupes -s examples/rpt/
 
 rm -r %{buildroot}/%{_datadir}/hal
-mkdir -p %{buildroot}%{_libexecdir}/systemd/system-sleep
-sed "s:@PWRFAILDIR@:%{_sysconfdir}/%{name}:g" <%{name}.hibernate >%{buildroot}%{_libexecdir}/systemd/system-sleep/apcupsd.sh
-chmod +x %{buildroot}%{_libexecdir}/systemd/system-sleep/apcupsd.sh
+mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-sleep
+sed "s:@PWRFAILDIR@:%{_sysconfdir}/%{name}:g" <%{name}.hibernate >%{buildroot}%{_prefix}/lib/systemd/system-sleep/apcupsd.sh
+chmod +x %{buildroot}%{_prefix}/lib/systemd/system-sleep/apcupsd.sh
 
 mkdir -p %{buildroot}%{_fillupdir}
 cp %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
 # systemd support and remove initd support for opensuse 12.2 and higher
 install -p -D -m644 %{name}.service %{buildroot}%{_unitdir}/%{name}.service
-install -p -D -m755 %{name}_shutdown %{buildroot}%{_libexecdir}/systemd/system-shutdown/%{name}_shutdown
+install -p -D -m755 %{name}_shutdown %{buildroot}%{_prefix}/lib/systemd/system-shutdown/%{name}_shutdown
 rm %{buildroot}%{_initddir}/%{name}
 
 install -d %{buildroot}%{_sysconfdir}/logrotate.d
@@ -198,8 +200,8 @@ rm -f etc/init.d/apcupsd-early-powerdown
 %{_sbindir}/smtp
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
-%{_libexecdir}/systemd/system-shutdown/%{name}_shutdown
-%{_libexecdir}/systemd/system-sleep/%{name}.sh
+%{_prefix}/lib/systemd/system-shutdown/%{name}_shutdown
+%{_prefix}/lib/systemd/system-sleep/%{name}.sh
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/changeme
 %config(noreplace) %{_sysconfdir}/%{name}/commfailure
