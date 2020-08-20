@@ -27,7 +27,6 @@ URL:            https://github.com/embree/embree
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
-BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(glfw3)
@@ -59,7 +58,6 @@ specifically compiled for Blender Cycles needs.
 %setup -q
 
 %build
-%limit_build -m 3900
 # we need fat lto objects here
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CXXFLAGS="%{optflags}"
