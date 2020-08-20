@@ -18,7 +18,7 @@
 
 
 Name:           udpspeeder
-Version:        20200714.0
+Version:        20200818.0
 Release:        0
 Summary:        A tunnel which can improve network quality by using FEC
 # Bundled libev is licenced under GPL-3.0+ or BSD-2-Clause

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 19:33:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20200818.0
+  * Fixed FATAL:kernel too old on x86 amd64 and possibly arm.
+
+-------------------------------------------------------------------
 Thu Jul 16 17:39:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 20200714.0
