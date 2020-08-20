@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:40:19 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.21:
+  Added:
+  * Added --test-reporter REPORTER command-line option to send an
+    example report using any configured notification service
+  * JobBase now has main_thread_enter() and main_thread_exit() functions
+    that can be overridden by subclasses to run code in the main thread
+    before and after processing of a job
+  Removed:
+  * The --test-slack command line option has been removed, you can test
+    your Slack reporter configuration using --test-reporter slack
+  Changed:
+  * The browser job now uses Pyppeteer instead of Requests-HTML for
+    rendering pages while executing JavaScript; this makes JavaScript
+    execution work properly
+  Fixed:
+  * Applying legacy hooks.py filters 
+
+-------------------------------------------------------------------
+Thu Jul 30 06:21:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.20:
+  Added:
+  * A job can now have a diff_filter set, which works the same way as
+    the normal filter (and has the same filters available), but applies
+    to the diff output instead of the page content (can be tested with
+    --test-diff-filter, needs 2 or more historic snapshots in the cache)
+  * Documentation now has a section on the configuration settings
+    (--edit-config)
+  * New filter: ocr to convert text in images to plaintext
+    (using Tesseract OCR)
+  * New reporters:
+    - ifttt to send an event to If This Then That (ifttt.com)
+      (#512, by Florian Gaultier)
+    - xmpp to send a message using the XMPP (Jabber)
+      protocol (#533, by Thorben Günther)
+  Changed:
+  * The urlwatch script (Git only) now works when run from different paths
+  * Chunking of strings (e.g. for Slack and Telegram) now adds
+    numbering (e.g. (1/2)) to the messages (only if a message is split
+    into multiple parts)
+  * Unit tests have been migrated from nose to pytest and moved from
+    test/ to lib/urlwatch/tests/
+  * The css and xpath filters now accept skip and maxitems as subfilter
+  * The shellpipe filter now inherits all environment variables
+    (e.g. $PATH) of the urlwatch process
+  Fixed:
+  * The html2text method lynx now treats any subfilters with a
+    non-null value as command-line argument -key value (previously
+    only the value true was treated like this, and any other values
+    were silently dropped)
+
+-------------------------------------------------------------------
+Sat Jul 18 08:41:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.19:
+  Added:
+  * Documentation is now available at urlwatch.readthedocs.io and
+    shipped in the source tarball under docs/; filter examples in
+    the docs are unit-tested
+  New filters:
+  * reverse: Reverse input items (default: line-based) with optional separator
+  * pdf2text: Convert PDF files to plaintext (must be first filter in chain)
+  * shellpipe: Filter text with arbitrary command-line utilities / shell scripts
+  * FilterBase API improvements for specifying subfilters:
+    - Add __supported_subfilters__ for sub filter checking and --features output
+    - Add __default_subfilter__ to map value-only parameters to
+      dict parameters, for example the grep filter now has a default
+      subfilter named re
+  * Support for using Redis as a cache backend via --cache=redis://localhost:6379/
+  Fixed:
+  * Declare updated Python 3.5 dependency in setup.py
+  Changed:
+  * Filter improvements:
+    - sort: Add reverse option to reverse the sorting order
+    - sort: Add separator option to specify item separator (default is still line-based)
+    - beautify: The jsbeautifier (for <script> tags) and cssbeautifier
+      (for <style> tags) module dependencies are now optional
+      if they are not installed, beautify only works on the HTML
+    - Most filters that only had unnamed subfilters (e.g. grep)
+      now have a named default subfilter
+  * Reporter improvements:
+    - pushover: The message priority can now be configured
+    - Travis CI: Set pycodestyle version to 2.6.0 to avoid CI breakage
+      when new style checks are added
+    - Diff results are now runtime cached on a per-job basis, which shouldn't
+      affect behavior, but could be observed by an external diff_tool
+      running at most once per job instead of multiple times
+    - Jobs with a custom diff_tool or a shellpipe filter are now ignored
+      if jobs.yaml has the world-writable bit (o+w) set or is not owned by
+      the current user (does not apply to Windows); previously only shell
+      jobs were ignored if the permissions/owners were wrong
+  Deprecated:
+  * String-based filter definitions (e.g. html2text,grep:Current.*version,strip)
+    are now deprecated, it is recommended to use YAML-based dictionary-style listing
+    of filters, which is more flexible, easier to read and write and more structured
+
+-------------------------------------------------------------------
 Mon May  4 06:46:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.18:
