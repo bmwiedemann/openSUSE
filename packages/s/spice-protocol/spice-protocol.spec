@@ -17,14 +17,14 @@
 
 
 Name:           spice-protocol
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        SPICE-protocol definitions
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://www.spice-space.org/
-Source:         https://www.spice-space.org/download/releases/%{name}-%{version}.tar.bz2
-Source1:        https://www.spice-space.org/download/releases/%{name}-%{version}.tar.bz2.sig
+Source:         https://www.spice-space.org/download/releases/spice-protocol-%{version}.tar.xz
+Source1:        https://www.spice-space.org/download/releases/spice-protocol-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 BuildRequires:  meson >= 0.41.0
 BuildRequires:  pkgconfig

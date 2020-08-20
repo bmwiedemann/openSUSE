@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 17 14:47:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.14.2:
+  * Removed Autoconf support, only Meson is available
+  * Removed foreign-menu and controller interfaces
+  * Deprecated CELT support
+  * Generate MingW packages building the RPM
+  * Allows for the agent to pass back a more specific error to the client
+  * Add quality indicators messages
+
+-------------------------------------------------------------------
 Mon Mar  9 19:35:56 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update to version 0.14.1
