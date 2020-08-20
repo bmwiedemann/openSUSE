@@ -38,10 +38,12 @@ Patch0:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-EasyProcess
+Requires:       python-decorator
+Requires:       python-path.py
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module EasyProcess}
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module entrypoint2 = %{version}}
 BuildRequires:  %{python_module path.py}
