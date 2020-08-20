@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 17 11:04:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.9 
+  * Use slow path if stdin is a tty
+  * Use bold for keyboard shortcuts in dmenu.1
+  * Fix cursor drawn position with wide glyphs
+
+-------------------------------------------------------------------
 Thu Mar  5 13:18:45 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
 
 - revert back to 4.8

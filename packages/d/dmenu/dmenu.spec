@@ -17,7 +17,7 @@
 
 
 Name:           dmenu
-Version:        4.8
+Version:        4.9
 Release:        0
 Summary:        A generic and efficient menu for X
 License:        MIT
