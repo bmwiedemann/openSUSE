@@ -1,5 +1,7 @@
---- Makefile.old	2020-03-30 15:08:59.872948876 +0200
-+++ Makefile	2020-03-30 15:10:08.284903853 +0200
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
 @@ -1,6 +1,6 @@
  NAME    := k9s
  PACKAGE := github.com/derailed/$(NAME)
@@ -7,15 +9,13 @@
 +#GIT     := $(shell git rev-parse --short HEAD)
  SOURCE_DATE_EPOCH ?= $(shell date +%s)
  DATE    := $(shell date -u -d @${SOURCE_DATE_EPOCH} +%FT%T%Z)
- VERSION  ?= v0.17.6
-@@ -18,8 +18,8 @@
+ VERSION  ?= v0.21.7
+@@ -18,7 +18,7 @@ cover:  ## Run test coverage suite
  	@go tool cover --html=cov.out
  
- build:     ## Builds the CLI
+ build:  ## Builds the CLI
 -	@go build \
--	-ldflags "-w -s -X ${PACKAGE}/cmd.version=${VERSION} -X ${PACKAGE}/cmd.commit=${GIT} -X ${PACKAGE}/cmd.date=${DATE}" \
 +	@go build  -mod vendor -buildmode=pie \
-+	-ldflags "-X ${PACKAGE}/cmd.version=${VERSION} -X ${PACKAGE}/cmd.commit=${GIT} -X ${PACKAGE}/cmd.date=${DATE}" \
+ 	-ldflags "-w -s -X ${PACKAGE}/cmd.version=${VERSION} -X ${PACKAGE}/cmd.commit=${GIT} -X ${PACKAGE}/cmd.date=${DATE}" \
  	-a -tags netgo -o execs/${NAME} main.go
  
- img:  ## Build Docker Image
