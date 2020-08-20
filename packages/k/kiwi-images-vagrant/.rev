@@ -41,4 +41,12 @@
     <comment>Only modify /etc/vimrc in config.sh if it exists</comment>
     <requestid>813159</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>60e2d510807543dc50e7fa1013e67509</srcmd5>
+    <version>1.0</version>
+    <time>1597955017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827253</requestid>
+  </revision>
 </revisionlist>

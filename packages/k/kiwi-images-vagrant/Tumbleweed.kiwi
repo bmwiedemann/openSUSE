@@ -60,6 +60,7 @@
         <package name="bindfs"/>
         <package name="ca-certificates"/>
         <package name="ca-certificates-mozilla"/>
+        <package name="command-not-found"/>
         <package name="curl"/>
         <package name="iputils"/>
         <package name="vim"/>

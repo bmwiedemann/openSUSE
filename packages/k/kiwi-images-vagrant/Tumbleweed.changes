@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:33:45 UTC 2020 - Marco Varlese <marco.varlese@suse.com>
+
+- Added package "command-not-found" to offer an easy way to users
+  to find missing packages and find those by known exec command
+
+-------------------------------------------------------------------
 Wed Jun 10 10:10:35 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Only modify /etc/vimrc in config.sh if it exists
