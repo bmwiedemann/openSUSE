@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 17 11:58:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5:
+  - uacme: -l option to allow selecting alternate chain
+  - ualpn: mbedtls_x509_crt_parse_der_with_ext_cb support
+
+-------------------------------------------------------------------
 Sun May 31 17:22:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.1
