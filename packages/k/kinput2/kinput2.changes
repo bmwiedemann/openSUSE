@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 12:43:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Fri Mar  2 18:59:15 UTC 2018 - crrodriguez@opensuse.org
 
 - Replace xorg-x11-devel buildrequires by pkgconfig(x11),

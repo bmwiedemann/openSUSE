@@ -112,7 +112,7 @@ popd
 %{_bindir}/*
 %{_datadir}/X11/app-defaults
 %doc %{_mandir}/*/*
-%dir %{_libexecdir}/X11/ccdef/
-%{_libexecdir}/X11/ccdef/*
+%dir %{_prefix}/lib/X11/ccdef/
+%{_prefix}/lib/X11/ccdef/*
 
 %changelog
