@@ -86,12 +86,15 @@
 %bcond_without rls
 %endif
 
+# Do not use parallel codegen in order to 
+#   a) not exhaust memory on build-machines and 
+#   b) generate the fastest possible binary
+# at the cost of longer build times for this package
+%define codegen_units --set rust.codegen-units=1
 # Debuginfo can exhaust memory on these architecture workers
 %ifarch  %{arm} %{ix86}
-%define codegen_units --set rust.codegen-units=2
 %define debug_info --disable-debuginfo --disable-debuginfo-only-std --disable-debuginfo-tools --disable-debuginfo-lines
 %else
-%define codegen_units --set rust.codegen-units=0
 %define debug_info --enable-debuginfo --disable-debuginfo-only-std --enable-debuginfo-tools --disable-debuginfo-lines
 %endif
 

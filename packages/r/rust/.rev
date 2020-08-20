@@ -491,4 +491,12 @@
 - Pacify source validator</comment>
     <requestid>826667</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>7adb4c1390487d6bd1a03a00b6446907</srcmd5>
+    <version>1.44.1</version>
+    <time>1597955102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827353</requestid>
+  </revision>
 </revisionlist>

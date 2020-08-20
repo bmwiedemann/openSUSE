@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 14 12:00:58 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Set codeunits=1 for all archs to avoid OOM-kills and produce 
+  the fastest possible compiler-binaries (at the cost of 
+  build-times for this package) 
+
+-------------------------------------------------------------------
 Thu Aug 13 13:38:23 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Pacify source validator
