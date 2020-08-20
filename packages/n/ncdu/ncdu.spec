@@ -17,7 +17,7 @@
 
 
 Name:           ncdu
-Version:        1.15
+Version:        1.15.1
 Release:        0
 Summary:        NCurses Disk Usage
 License:        MIT

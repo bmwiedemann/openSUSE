@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:54:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.15.1
+  - (Linux) Fix build on older Linux systems (Christian Göttsche)
+  - (MacOS) Revert "Exclude firmlinks by default" behavior (until we have a better solution)
+  - (MacOS) Add --exclude-firmlinks option to opt-in to the above behavior
+ 
+-------------------------------------------------------------------
 Sat Jun  6 12:28:31 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 1.15
