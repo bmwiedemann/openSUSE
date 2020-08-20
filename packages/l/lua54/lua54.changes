@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 18 14:49:56 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add patch for CVE-2020-15945, boo#1174540 (un-numbered)
+
+-------------------------------------------------------------------
+Mon Aug 17 10:00:04 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add upstream patches 9,10,11,12
+  * Patch 9: CVE-2020-24342, boo#1175339
+  * Patch 10: CVE-2020-24371, boo#1175449
+  * Patch 11: CVE-2020-24370, boo#1175448
+  * Patch 12: CVE-2020-24369, boo#1175447
+
+-------------------------------------------------------------------
 Mon Jul 20 11:00:56 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add upstream patches 7 & 8
