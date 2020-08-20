@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 02:00:46 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.5.11
+  * Include pillar example file in package 
+
+-------------------------------------------------------------------
 Wed Jul 15 10:30:22 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Add hana active/active resources to the cluster template
