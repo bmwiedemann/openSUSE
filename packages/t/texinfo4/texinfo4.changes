@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 13:03:17 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Remove links sub package and generate links in lilypond build.
+
+-------------------------------------------------------------------
 Thu May  7 09:00:39 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Added links package to help lilypond-doc build use this package.

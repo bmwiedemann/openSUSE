@@ -27,4 +27,13 @@ copy config.guess, config.sub from texinfo to texi2html sources
 </comment>
     <requestid>801111</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>db2481193016ef298f6d4dbbac145a37</srcmd5>
+    <version>4.13a</version>
+    <time>1597955563</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove links sub package and generate links in lilypond build.
+</comment>
+    <requestid>828113</requestid>
+  </revision>
 </revisionlist>
