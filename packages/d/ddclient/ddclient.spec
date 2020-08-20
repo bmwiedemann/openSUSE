@@ -94,7 +94,7 @@ getent passwd %{name} >/dev/null || \
 %doc COPY* README* examples
 %config(noreplace) %attr(600,%{name},root) %{_sysconfdir}/%{name}.conf
 %{_unitdir}/%{name}.service
-%{_libexecdir}/tmpfiles.d/ddclient.conf
+%{_tmpfilesdir}/ddclient.conf
 %ghost %dir %attr(755,%{name},%{name}) /run/%{name}
 %{_sbindir}/%{name}
 %{_sbindir}/rc%{name}
