@@ -1,7 +1,7 @@
 #
 # spec file for package memkind
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           memkind
 Summary:        User Extensible Heap Manager
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
-Url:            http://memkind.github.io/memkind
+URL:            http://memkind.github.io/memkind
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -42,21 +42,15 @@ BuildRequires:  numactl-devel
 %define docdir %{_defaultdocdir}/%{namespace}-%{version}
 %endif
 
-# x86_64 is the only arch memkind will build due to its
-# current dependency on SSE4.2 CRC32 instruction which
-# is used to compute thread local storage arena mappings
-# with polynomial accumulations via GCC's intrinsic _mm_crc32_u64
-# For further info check:
-# - /lib/gcc/<target>/<version>/include/smmintrin.h
-# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=36095
-# - http://en.wikipedia.org/wiki/SSE4
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 ppc64 ppc64le s390x
 
 # default values if version is a tagged release on github
 %{!?commit: %define commit %{version}}
 %{!?buildsubdir: %define buildsubdir %{namespace}-%{commit}}
 Source0:        https://github.com/%{namespace}/%{namespace}/archive/v%{commit}/%{buildsubdir}.tar.gz
 Patch0:         memkind-fix-build.diff
+# Upstream patch for GCC10 support. Will be available in 1.10.1
+Patch1:         Add-missing-includes.patch
 
 %description
 The memkind library is an user extensible heap manager built on top
@@ -91,18 +85,18 @@ Header files for building applications with libmemkind.
 
 %prep
 %setup -q -n memkind-%{version}
-%patch0 -p1
+%patch0
+%patch1
 
 %build
 
 export JE_PREFIX=jemk_
-./build_jemalloc.sh
 
 # Build memkind lib and tools
 cd %{_builddir}/%{buildsubdir}
 echo %{version} > %{_builddir}/%{buildsubdir}/VERSION
 test -f configure || ./autogen.sh
-./configure CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" --prefix=%{_prefix} --libdir=%{_libdir} --includedir=%{_includedir} --sbindir=%{_sbindir} --mandir=%{_mandir} --docdir=%{_docdir}/%{namespace} --disable-static
+%configure --docdir=%{_docdir}/%{namespace} --disable-static
 %{__make} %{?_smp_mflags}
 
 %install
@@ -124,28 +118,23 @@ rm -f %{buildroot}/%{_mandir}/man7/autohbw.*
 %doc %{_docdir}/%{namespace}/VERSION
 %dir %{_docdir}/%{namespace}
 %{_bindir}/%{namespace}-hbw-nodes
+%{_bindir}/%{namespace}-auto-dax-kmem-nodes
 %{_mandir}/man1/memkind-hbw-nodes.1.*
+%{_mandir}/man1/memkind-auto-dax-kmem-nodes.1.*
 
 %files -n libmemkind0
 %{_libdir}/lib%{namespace}.so.*
 
-%define internal_include memkind/internal
-
 %files devel
 %defattr(-,root,root,-)
-%dir %{_includedir}/memkind
-%dir %{_includedir}/%{internal_include}
 %{_includedir}/hbwmalloc.h
 %{_includedir}/hbw_allocator.h
 %{_includedir}/memkind_deprecated.h
+%{_includedir}/memkind_allocator.h
 %{_includedir}/pmem_allocator.h
 %{_libdir}/lib%{namespace}.so
 %{_libdir}/pkgconfig/memkind.pc
 %{_includedir}/%{namespace}.h
-%{_includedir}/%{internal_include}/%{namespace}*.h
-%{_includedir}/%{internal_include}/heap_manager.h
-%{_includedir}/%{internal_include}/tbb_mem_pool_policy.h
-%{_includedir}/%{internal_include}/tbb_wrapper.h
 %{_mandir}/man3/hbwmalloc.3.*
 %{_mandir}/man3/hbwallocator.3.*
 %{_mandir}/man3/%{namespace}*.3.*

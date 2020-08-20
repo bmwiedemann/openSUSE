@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 18 08:19:30 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Enable memkind builds for ppc64, ppc64le and s390x
+- Update memking to version 1.10.0 with these changes:
+  * Provided another way to use Persistent Memory in memkind (MEMKIND_DAX_KMEM_* kinds)
+  * Added C++ allocator for static kinds (including MEMKIND_DAX_KMEM_* kinds)
+  * Provided an interface to get memkind allocation statistics
+  * Provided a method to reduce fragmentation - memkind_defrag_reallocate()
+  * Added support for background thread
+  * Updated internally used jemalloc to upstream version 5.2.1
+  * Extended hbw interface with hbw_malloc_usable_size()
+  *  Simplified building process
+- Rebase memkind-fix-build.diff .
+- Backport Add-missing-includes.patch from upstream to fix compilation
+  with GCC10
+- Use %configure for building
+
+-------------------------------------------------------------------
 Tue Dec 10 13:47:21 UTC 2019 - matz@suse.com
 
 - Update memkind to version 1.9.0 (jsc#SLE-8598 aka jsc#SLE-8515,
