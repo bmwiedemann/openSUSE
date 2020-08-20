@@ -407,4 +407,18 @@
     <comment></comment>
     <requestid>750323</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>fd5e721d47061f1f4446198cc2499efc</srcmd5>
+    <version>170</version>
+    <time>1597954981</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 170:
+  * mcelog: Add Cometlake client model numbers
+  * mcelog: Do not start mcelog service if edac_mce_amd module is loaded
+  * mcelog: Decode and print stepping from cpuid
+  * mcelog: Add &quot;kflags&quot; field to &quot;struct mce&quot;
+  * Add reporter tracking to trigger-invoking functions.
+  * mcelog: Add decode for MCi_MISC from 10nm memory controller</comment>
+    <requestid>827098</requestid>
+  </revision>
 </revisionlist>

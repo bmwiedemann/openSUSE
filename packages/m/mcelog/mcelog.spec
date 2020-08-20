@@ -1,7 +1,7 @@
 #
 # spec file for package mcelog
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           mcelog
-Version:        1.66
+Version:        170
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only
 Group:          System/Monitoring
-Url:            http://www.mcelog.org/
-Source:         %{name}-%{version}.tar.xz
+URL:            https://mcelog.org/
+Source:         https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-%{version}.tar.gz
 Source2:        mcelog.sysconfig
 Source3:        mcelog.systemd
 Source5:        mcelog.tmpfiles
@@ -46,11 +45,11 @@ Patch10:        patches/add-f16h-support.patch
 Patch11:        mcelog-socket-path.patch
 Patch12:        fix_setgroups_missing_call.patch
 BuildRequires:  libesmtp-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 Requires:       logrotate
 Requires(pre):  %fillup_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %ix86 x86_64
+ExclusiveArch:  %{ix86} x86_64
 %{?systemd_requires}
 
 %description
@@ -66,7 +65,8 @@ In addition, it allows decoding machine check kernel panic messages.
 %autosetup
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -fpie -pie"
+echo "%{version}" > .os_version
+%make_build CFLAGS="%{optflags} -fpie -pie"
 
 %install
 export prefix=%{buildroot}%{_prefix}
