@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 20 16:13:55 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1597940025.1be33b62:
+  * Remove unnecesary parameter on a git call in tidy
+  * Fix warnings in _stop_video_encoder
+  * Mock start_serial_grab in t/29-backend-generalhw.t to avoid failures
+  * Add unit test for generalhw backend
+  * Improve coding style in generalhw backend
+  * Improve error handling when running commands in generalhw backend
+  * t: Fix regex for warning (multiline)
+  * Improve error handling of D-Bus calls to contain full context in any case
+  * Pass remaining frames to external video encoder as well
+  * Close video encoder pipes and wait for it to finalize the video before exiting
+
+-------------------------------------------------------------------
 Tue Aug 11 11:26:04 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1597142445.a3a8b489:
