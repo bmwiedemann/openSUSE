@@ -228,4 +228,12 @@ Updated to version 0.3:
 - Split documentation subpackage from main package</comment>
     <requestid>637871</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ca8b848eb1441c32dc5eb18dd7593e3f</srcmd5>
+    <version>0.3.11</version>
+    <time>1597955026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827260</requestid>
+  </revision>
 </revisionlist>

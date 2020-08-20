@@ -1,7 +1,7 @@
 #
 # spec file for package dblatex
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dblatex
-Version:        0.3.10
+Version:        0.3.11
 Release:        0
 Summary:        DocBook to LaTeX Publishing
 License:        GPL-2.0-only
@@ -30,8 +30,8 @@ BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  grep
 BuildRequires:  libxslt-tools
-BuildRequires:  python2-base
 BuildRequires:  python-rpm-macros
+BuildRequires:  python2-base
 BuildRequires:  pyxml
 BuildRequires:  texlive-epstopdf
 BuildRequires:  texlive-latex
