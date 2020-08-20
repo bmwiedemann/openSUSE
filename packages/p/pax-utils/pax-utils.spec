@@ -1,7 +1,7 @@
 #
 # spec file for package pax-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           pax-utils
-Version:        1.2.4
+Version:        1.2.6
 Release:        0
 Summary:        Tools to Check ELF Files for Security Relevant Properties
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
-Url:            http://www.gentoo.org/proj/en/hardened/pax-utils.xml
+URL:            http://www.gentoo.org/proj/en/hardened/pax-utils.xml
 Source:         https://ftp.halifax.rwth-aachen.de/gentoo/distfiles/pax-utils-%{version}.tar.xz
 # backports
 # openSUSE patches
