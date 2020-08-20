@@ -735,4 +735,41 @@
     <comment></comment>
     <requestid>805149</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>3c4bc276e765e66f522002aee0342cdc</srcmd5>
+    <version>12.4.0</version>
+    <time>1597954982</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 12.4.0:
+  * All commands: Display statistics in color by default when the
+      output is connected to a terminal.
+  * sar: Now pretty-print all device names by default (that is to
+      say, you no longer need to use option -p with option -d for that).
+  * cifsiostat, iostat, sar: Add new --pretty option (this option
+      makes the reports easier to read when long item names are used).
+  * iostat: No longer use sysstat.ioconf file to determine the name
+      of the devices. This file gave a wrong name for some devices
+      with big minor numbers.
+  * iostat, sar: Make device name consistent between both of them.
+  * configure: Add new option &quot;--enable-use-crond&quot; to use standard
+      cron daemon even if systemd is installed.
+  * configure: Use AC_COMPILE_IFELSE instead of old AC_TRY_COMPILE
+      macro. Remove other obsolete autoconf macros.
+  * configure: Add new option &quot;delay_range=&quot;. Used by sa2 script
+      to wait for a random delay.
+  * configure: Fix --enable-debuginfo option.
+  * sa1: Insert a comment in daily datafile on system suspend/resume.
+  * sa2: Wait for a random delay before running to prevent massive
+      I/O burst on some systems.
+  * sar: Fix typo in manual page.
+  * sar, iostat, cifsiostat, mpstat, pidstat, tapestat and sa1 manual
+      pages updated.
+  * Update style for all manual pages.
+  * Compress manual pages by default when they are installed.
+  * Makefile: Remove all reports and date files (even those compressed
+      with another program than gzip) when told to do so.
+  * Add pcp help file to be used with iconfig script.
+  * Update Travis script (now calls do_test script).</comment>
+    <requestid>827123</requestid>
+  </revision>
 </revisionlist>

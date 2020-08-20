@@ -1,8 +1,8 @@
-Index: sysstat-11.6.1/sa1.in
+Index: sysstat-12.4.0/sa1.in
 ===================================================================
---- sysstat-11.6.1.orig/sa1.in
-+++ sysstat-11.6.1/sa1.in
-@@ -22,15 +22,21 @@ then
+--- sysstat-12.4.0.orig/sa1.in
++++ sysstat-12.4.0/sa1.in
+@@ -29,8 +29,14 @@ then
  	SADC_OPTIONS="${SADC_OPTIONS} -D"
  fi
  
@@ -15,22 +15,23 @@ Index: sysstat-11.6.1/sa1.in
 +trap "/bin/rm -f $LOCKFILE" EXIT
 +
  [ "$1" = "--boot" ] && shift && BOOT=y || BOOT=n
- if [ $# = 0 ] && [ "${BOOT}" = "n" ]
- then
+ [ "$1" = "--sleep" ] && shift && SLEEP=y || SLEEP=n
+ if [ "${SLEEP}" = "y" ]
+@@ -41,7 +47,7 @@ then
  # Note: Stats are written at the end of previous file *and* at the
  # beginning of the new one (when there is a file rotation) only if
  # outfile has been specified as '-' on the command line...
 -	exec ${ENDIR}/sadc -F -L ${SADC_OPTIONS} 1 1 ${SA_DIR}
-+	 ${ENDIR}/sadc -F -L ${SADC_OPTIONS} 1 1 ${SA_DIR}
++	${ENDIR}/sadc -F -L ${SADC_OPTIONS} 1 1 ${SA_DIR}
  else
 -	exec ${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
-+	 ${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
++	${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
  fi
-Index: sysstat-11.6.1/sa2.in
+Index: sysstat-12.4.0/sa2.in
 ===================================================================
---- sysstat-11.6.1.orig/sa2.in
-+++ sysstat-11.6.1/sa2.in
-@@ -43,6 +43,17 @@ ENDIR=@bindir@
+--- sysstat-12.4.0.orig/sa2.in
++++ sysstat-12.4.0/sa2.in
+@@ -59,6 +59,17 @@ fi
  
  [ -f "${DFILE}" ] || exit 0
  cd ${ENDIR}

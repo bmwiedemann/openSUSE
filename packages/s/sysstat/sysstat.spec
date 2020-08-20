@@ -17,13 +17,13 @@
 
 
 Name:           sysstat
-Version:        12.3.3
+Version:        12.4.0
 Release:        0
 Summary:        Sar and Iostat Commands for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://github.com/sysstat/sysstat 
-Source:         https://github.com/sysstat/sysstat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz 
+URL:            https://github.com/sysstat/sysstat
+Source:         https://github.com/sysstat/sysstat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        isag.desktop
 # PATCH-FIX-OPENSUSE should be upstreamed
 # add locking to scripts sa1 and sa2 (bnc#7861)
@@ -162,6 +162,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcsysstat
 %{_unitdir}/sysstat-collect.timer
 %{_unitdir}/sysstat-summary.service
 %{_unitdir}/sysstat-summary.timer
+%{_prefix}/lib/systemd/system-sleep/sysstat.sleep
 %dir %{_localstatedir}/log/sa
 %{_sbindir}/rcsysstat
 
