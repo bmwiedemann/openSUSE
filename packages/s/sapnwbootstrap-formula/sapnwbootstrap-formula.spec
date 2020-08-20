@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           sapnwbootstrap-formula
-Version:        0.4.4+git.1594058536.82f1049
+Version:        0.5.1+git.1597913457.86e3b88
 Release:        0
 Summary:        SAP Netweaver platform deployment formula
 License:        Apache-2.0
@@ -52,6 +52,7 @@ mkdir -p %{buildroot}%{fdir}/states/%{fname}
 mkdir -p %{buildroot}%{fdir}/metadata/%{fname}
 cp -R %{fname} %{buildroot}%{fdir}/states
 cp -R %{ftemplates} %{buildroot}%{fdir}/states/%{fname}
+cp pillar.example %{buildroot}%{fdir}/states/%{fname}
 cp -R form.yml %{buildroot}%{fdir}/metadata/%{fname}
 if [ -f metadata.yml ]
 then
