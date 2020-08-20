@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           httpie
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        CLI, cURL-like tool for humans
 License:        BSD-3-Clause
