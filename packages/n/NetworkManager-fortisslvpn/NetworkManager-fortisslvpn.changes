@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 14:08:44 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require the same version ppp at runtime as we had during build
+  time. We got away with the missing Requires as NM itself requires
+  ppp, so 'a version' was always installed at least. But we need to
+  guarantee the version at runtime matches the one we built against
+  (boo#1175106).
+
+-------------------------------------------------------------------
 Fri May  1 09:13:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Set the path for the VPN service name file correctly to

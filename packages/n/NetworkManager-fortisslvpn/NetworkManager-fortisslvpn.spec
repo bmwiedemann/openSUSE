@@ -39,6 +39,11 @@ BuildRequires:  pkgconfig(libnma) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
 Requires:       openfortivpn >= 1.11.0
+# the pppd plugin are strict on the version, see boo#1175106
+# ppe is transient already required by NM directly, but we need
+# the versioned dep here to ensure a rebuild in case of ppp
+# version changes
+%requires_eq    ppp
 
 %description
 This package contains software for integrating Fortinet compatible

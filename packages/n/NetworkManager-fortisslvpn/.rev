@@ -33,4 +33,16 @@ If openfortivpn is not installed, vpn can not be started. (forwarded request 743
   %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799453 from dimstar)</comment>
     <requestid>799490</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0677b6225ee2cee4227d90d847a98f6d</srcmd5>
+    <version>1.2.10</version>
+    <time>1597955620</time>
+    <user>dimstar_suse</user>
+    <comment>- Require the same version ppp at runtime as we had during build
+  time. We got away with the missing Requires as NM itself requires
+  ppp, so 'a version' was always installed at least. But we need to
+  guarantee the version at runtime matches the one we built against
+  (boo#1175106). (forwarded request 826295 from dimstar)</comment>
+    <requestid>828180</requestid>
+  </revision>
 </revisionlist>
