@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:00:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix usage of %{_libexecdir} when %{_tmpfilesdir} was meant to be
+  used.
+
+-------------------------------------------------------------------
 Wed Jul 15 08:49:30 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - opendkim calls openssl, make sure the command is there

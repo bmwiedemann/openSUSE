@@ -264,7 +264,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # install the init script
 %if %{with systemd}
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
-install -D -m 0644 %{SOURCE4} %{buildroot}%{_libexecdir}/tmpfiles.d/%{name}.conf
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %else
 install -D -m 0755 %{SOURCE5} %{buildroot}%{_sysconfdir}/%{name}/init.d/%{name}
@@ -302,7 +302,7 @@ getent passwd %{name} >/dev/null || \
 
 %post
 %if %{with systemd}
-systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/%{name}.conf || true
+systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
 %service_add_post %{name}.service
 %endif
 
@@ -367,7 +367,7 @@ systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/%{name}.conf || true
 %{_sbindir}/rc%{name}
 %if %{with systemd}
 %{_unitdir}/%{name}.service
-%{_libexecdir}/tmpfiles.d/%{name}.conf
+%{_tmpfilesdir}/%{name}.conf
 %ghost /run/opendkim
 %else
 %{_sysconfdir}/%{name}/init.d/%{name}
