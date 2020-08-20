@@ -53,6 +53,7 @@ Python.
 %build
 export CFLAGS="%{optflags}"
 export BLOSC_DIR=%{_prefix}
+export DISABLE_BLOSC_AVX2=1
 %python_exec setup.py build_clib
 %python_exec setup.py build_ext --inplace
 %python_build

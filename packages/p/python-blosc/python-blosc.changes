@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 18:37:32 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Disable AVX2 to avoid compile-time CPU-detection (boo#1100677)
+
+-------------------------------------------------------------------
 Fri Jul 17 07:17:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on all archs
