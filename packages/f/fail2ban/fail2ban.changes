@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:04:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_tmpfilesdir} consistently throughout the .spec.
+
+-------------------------------------------------------------------
 Thu May 21 07:49:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.11.1:

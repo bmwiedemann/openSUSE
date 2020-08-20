@@ -183,8 +183,8 @@ install -d -m 755 %{buildroot}%{_localstatedir}/run/%{name}
 install -d -m 755 %{buildroot}%{_unitdir}
 install -p -m 644 files/%{name}.service.in %{buildroot}%{_unitdir}/%{name}.service
 
-install -d -m 755 %{buildroot}%{_libexecdir}/tmpfiles.d/
-install -p -m 644 %{SOURCE5} %{buildroot}%{_libexecdir}/tmpfiles.d/%{name}.conf
+install -d -m 755 %{buildroot}%{_tmpfilesdir}
+install -p -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 ln -sf service %{buildroot}%{_sbindir}/rc%{name}
 
