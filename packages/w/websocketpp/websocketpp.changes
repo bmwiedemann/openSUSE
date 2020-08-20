@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 12:29:24 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Sat May 16 14:54:49 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.8.2:

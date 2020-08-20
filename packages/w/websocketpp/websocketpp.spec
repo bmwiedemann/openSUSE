@@ -82,8 +82,8 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/pkgconfig/websocketpp.pc
 %license COPYING
 %doc changelog.md readme.md roadmap.md
 %{_includedir}/websocketpp
-%{_libexecdir}/cmake
-%{_libexecdir}/cmake/websocketpp
+%{_prefix}/lib/cmake
+%{_prefix}/lib/cmake/websocketpp
 %{_datadir}/pkgconfig/websocketpp.pc
 
 %changelog
