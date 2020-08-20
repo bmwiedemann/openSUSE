@@ -133,8 +133,8 @@ install -D -m 0644 contrib/varlink/io.podman.service %{buildroot}%{_unitdir}/io.
 install -D -m 0644 contrib/varlink/io.podman.socket %{buildroot}%{_unitdir}/io.podman.socket
 
 # Add podman modprobe.d drop-in config
-mkdir -p %{buildroot}%{_libexecdir}/modules-load.d
-install -m 0644 -t %{buildroot}%{_libexecdir}/modules-load.d/ %{SOURCE1}
+mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
+install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 
 # README.SUSE is SLES specifc currently
 %if !0%{?is_opensuse}
@@ -153,8 +153,8 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 # Manpages
 %{_mandir}/man1/podman*.1*
 # Configs
-%dir %{_libexecdir}/modules-load.d
-%{_libexecdir}/modules-load.d/podman.conf
+%dir %{_prefix}/lib/modules-load.d
+%{_prefix}/lib/modules-load.d/podman.conf
 # Completion
 %{_datadir}/bash-completion/completions/podman
 %{_sysconfdir}/zsh_completion.d/_podman

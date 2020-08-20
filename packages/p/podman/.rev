@@ -535,4 +535,12 @@
     <comment></comment>
     <requestid>825972</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>3e7fb0b4f3e090ee5fa64c401ae6d66e</srcmd5>
+    <version>2.0.4</version>
+    <time>1597955274</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct invalid use of %{_libexecdir} to ensure files should be in /usr/lib</comment>
+    <requestid>827668</requestid>
+  </revision>
 </revisionlist>
