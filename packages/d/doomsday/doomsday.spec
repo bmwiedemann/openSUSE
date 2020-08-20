@@ -23,7 +23,6 @@ Summary:        The Doomsday Engine: DOOM/Hertic/Hexen port with pretty graphics
 License:        GPL-2.0-or-later AND GPL-2.0-only AND SUSE-GPL-2.0-with-linking-exception AND BSD-3-Clause AND LGPL-3.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            http://dengine.net/
-
 Source:         http://downloads.sf.net/deng/doomsday-%version.tar.gz
 Source2:        %name-rpmlintrc
 Patch1:         doomsday-no-abs-icon.patch
@@ -54,16 +53,17 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zzip-zlib-config)
+# Mesa 9.2 has OpenGL 3.1, and doomsday 2.0 needs that.
+Requires:       Mesa-libGL1 >= 9.2
+Recommends:     timidity
+Recommends:     timidity-eawpats
 # Doomsday uses a modified version of assimp, so no pkgconfig(assimp) here :-(
-Provides:       bundled(assimp) = 3.3.1
-Recommends:     timidity timidity-eawpats
 Provides:       jdoom = %version-%release
 Provides:       jheretic = %version-%release
 Provides:       jhexen = %version-%release
+Provides:       bundled(assimp) = 3.3.1
 Obsoletes:      deng < %version-%release
 Provides:       deng = %version-%release
-# Mesa 9.2 has OpenGL 3.1, and doomsday 2.0 needs that.
-Requires:       Mesa-libGL1 >= 9.2
 
 %description
 The Doomsday Engine is a source port with support for Doom, Heretic,
@@ -72,9 +72,8 @@ and Hexen. It does not support BOOM extensions.
 %package launcher
 Summary:        Graphical launcher for Doomsday
 Group:          Amusements/Games/3D/Shoot
-Requires:       %name = %version
 BuildRequires:  python
-%py_requires
+Requires:       %name = %version
 Requires:       python-wxWidgets
 BuildArch:      noarch
 
@@ -89,7 +88,11 @@ settings for launching a particular game (e.g., Doom).
 
 %build
 pushd doomsday
-%cmake -DCMAKE_SKIP_RPATH:BOOL=ON
+%cmake \
+%ifarch aarch64 %arm
+  -DDENG_OPENGL_API=GLES3 \
+%endif
+  -DCMAKE_SKIP_RPATH:BOOL=ON
 make -O %{?_smp_mflags}
 
 %install

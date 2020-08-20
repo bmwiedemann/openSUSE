@@ -211,4 +211,12 @@
     <comment>- Add -DCMAKE_SKIP_RPATH</comment>
     <requestid>789502</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>defe8407850a6e12b4e3e85f6b60ba46</srcmd5>
+    <version>2.2.2</version>
+    <time>1597955540</time>
+    <user>dimstar_suse</user>
+    <comment>- Use openGL ES 3 for aarch64 and %arm</comment>
+    <requestid>828120</requestid>
+  </revision>
 </revisionlist>
