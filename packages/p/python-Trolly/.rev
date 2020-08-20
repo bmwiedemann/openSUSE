@@ -64,4 +64,15 @@
     <comment>- Run through spec-cleaner</comment>
     <requestid>746340</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>4f4185ed5501ac09ef3b730c96f6760f</srcmd5>
+    <version>0.2.2</version>
+    <time>1597955313</time>
+    <user>dimstar_suse</user>
+    <comment>- Just give up on the test suite as a bad job.
+
+- Work with completely failing test suite
+  (gh#its-rigs/Trolly#46).</comment>
+    <requestid>828129</requestid>
+  </revision>
 </revisionlist>

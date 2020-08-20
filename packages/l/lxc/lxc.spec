@@ -74,6 +74,10 @@ Requires:       rsync
 Recommends:     build
 Recommends:     criu >= 2.0
 
+Patch1:         0001-templates-lxc-download.in-fix-wrong-if-condition-use.patch
+Patch2:         0002-templates-lxc-download.in-make-shellcheck-happy.patch
+Patch3:         0003-templates-lxc-download.in-use-GPG-option-receive-key.patch
+
 %description
 LXC is the well-known and heavily tested low-level Linux container runtime.
 
@@ -129,6 +133,10 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup
+
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 ./autogen.sh

@@ -1,7 +1,7 @@
 #
 # spec file for package docker-distribution
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,28 @@
 #
 
 
+%define goipath github.com/docker/distribution
+%define registry_user registry
+%define registry_group registry
+
 Name:           docker-distribution
 Version:        2.7.1
 Release:        0
 Summary:        The Docker toolset to pack, ship, store, and deliver content
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/docker/distribution
+URL:            https://github.com/docker/distribution
 Source0:        distribution-%{version}.tar.xz
 Source1:        registry-configuration.yml
 Source2:        registry.service
-Source3:        registry.SuSEfirewall2
 Source4:        README-registry.SUSE
+# PATCH-FIX-UPSTREAM https://github.com/docker/distribution/pull/2879
+Patch0:         0001-Fix-s3-driver-for-supporting-ceph-radosgw.patch
+# PATCH-FIX-UPSTREAM https://github.com/docker/distribution/pull/3204
+Patch1:         0002-Relax-filesystem-driver-folder-permissions-to-0777-cont.patch
 BuildRequires:  go >= 1.11
+BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64 s390x aarch64 %arm ppc64le
 
 %description
@@ -54,20 +61,19 @@ Registry server for Docker (hosting/delivering of repositories and images).
 
 %prep
 %setup -q -n distribution-%{version}
+%patch0 -p1
+%patch1 -p1
 cp %{SOURCE4} .
 
 %build
-export GOPATH=$PWD/go
-mkdir -p $GOPATH/src/github.com/docker
-
-# Copy the vendor directory into the GOPATH.
-cp -r $PWD/vendor/* $GOPATH/src
-ln -s $PWD $GOPATH/src/github.com/docker/distribution
-
-make %{?_smp_mflags} binaries
+%goprep %{goipath}
+export CGO_ENABLED=0
+%define buildtags "include_oss include_gcs"
+%define ldflags "-s -w -X %{goipath}/version.Version=v%{version} -X %{goipath}/version.Package=%{goipath}"
+%gobuild -ldflags %{ldflags} -tags %{buildtags} cmd/registry
 
 %install
-install -D -m755 bin/registry %{buildroot}/%{_bindir}/registry
+%goinstall
 install -D -m644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/registry/config.yml
 install -d  %{buildroot}%{_localstatedir}/lib/docker-registry
 
@@ -78,12 +84,13 @@ install -Dd -m 0755  %{buildroot}%{_sbindir}
 install -D  -m 0644  %{SOURCE2} %{buildroot}%{_unitdir}/registry.service
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcregistry
 
-#
-# install SuSEfirewall2 rules
-#
-install -Dpm 0644  %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/registry
-
 %pre registry
+getent group %{registry_group} >/dev/null || groupadd -r %{registry_group}
+getent passwd %{registry_user} >/dev/null || useradd -r -g %{registry_group} \
+  -d %{_localstatedir}/lib/registry \
+  -s /sbin/nologin \
+  -c "user for docker-registry" \
+  %{registry_user}
 %service_add_pre registry.service
 
 %post registry
@@ -100,11 +107,10 @@ install -Dpm 0644  %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2
 %{_bindir}/registry
 %{_sbindir}/rcregistry
 %{_unitdir}/registry.service
-%config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/registry
 %config %{_sysconfdir}/registry
 %config(noreplace) %{_sysconfdir}/registry/config.yml
 %doc README.md README-registry.SUSE
 %license LICENSE
-%{_localstatedir}/lib/docker-registry
+%attr(-,%{registry_user},%{registry_group}) %{_localstatedir}/lib/docker-registry
 
 %changelog

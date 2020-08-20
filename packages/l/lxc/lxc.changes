@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  8 18:37:19 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- add patches from upstream:
+  * 0001-templates-lxc-download.in-fix-wrong-if-condition-use.patch
+  * 0002-templates-lxc-download.in-make-shellcheck-happy.patch
+  * 0003-templates-lxc-download.in-use-GPG-option-receive-key.patch
+
+-------------------------------------------------------------------
 Tue May 12 19:39:38 UTC 2020 - Pavol Cupka <palica@liguros.net>
 
 - Update to LXC 4.0.2

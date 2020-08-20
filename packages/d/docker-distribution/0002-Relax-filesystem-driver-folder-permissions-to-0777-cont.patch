@@ -1,0 +1,27 @@
+commit a789d064102816ed12c56e5fac365a623f1abd12
+Author: Stefan Nica <snica@suse.com>
+Date:   Fri Jul 10 12:31:01 2020 +0200
+
+    Relax filesystem driver folder permissions to 0777 (cont)
+    
+    There was a previous PR relaxing the filsystem driver permissions
+    for files and folders to 0666 and 0777 respectively [1][2], but it was
+    incomplete. This is required to get the registry to honor the umask
+    value.
+    
+    [1] https://github.com/docker/distribution/pull/1304/
+    [2] https://github.com/docker/distribution/issues/1295
+
+diff --git a/registry/storage/driver/filesystem/driver.go b/registry/storage/driver/filesystem/driver.go
+index 8fc9d1ca..ef6cc972 100644
+--- a/registry/storage/driver/filesystem/driver.go
++++ b/registry/storage/driver/filesystem/driver.go
+@@ -260,7 +260,7 @@ func (d *driver) Move(ctx context.Context, sourcePath string, destPath string) e
+ 		return storagedriver.PathNotFoundError{Path: sourcePath}
+ 	}
+ 
+-	if err := os.MkdirAll(path.Dir(dest), 0755); err != nil {
++	if err := os.MkdirAll(path.Dir(dest), 0777); err != nil {
+ 		return err
+ 	}
+ 

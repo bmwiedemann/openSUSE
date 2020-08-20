@@ -5,6 +5,8 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/registry serve /etc/registry/config.yml
+User=registry
+Group=registry
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,63 @@
+From f87772650309d03049310dd7d623449554a10147 Mon Sep 17 00:00:00 2001
+From: Eohyung Lee <liquidnuker@gmail.com>
+Date: Wed, 25 Apr 2018 23:31:07 +0900
+Subject: [PATCH 1/2] Fix s3 driver for supporting ceph radosgw
+
+Radosgw does not support S3 `GET Bucket` API v2 API but v1.
+This API has backward compatibility, so most of this API is working
+correctly but we can not get `KeyCount` in v1 API and which is only
+for v2 API.
+
+Signed-off-by: Eohyung Lee <liquidnuker@gmail.com>
+---
+ registry/storage/driver/s3-aws/s3.go | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/registry/storage/driver/s3-aws/s3.go b/registry/storage/driver/s3-aws/s3.go
+index 126a07f6b..1f610f796 100644
+--- a/registry/storage/driver/s3-aws/s3.go
++++ b/registry/storage/driver/s3-aws/s3.go
+@@ -970,8 +970,16 @@ func (d *driver) doWalk(parentCtx context.Context, objectCount *int64, path, pre
+ 	defer done("s3aws.ListObjectsV2Pages(%s)", path)
+ 	listObjectErr := d.S3.ListObjectsV2PagesWithContext(ctx, listObjectsInput, func(objects *s3.ListObjectsV2Output, lastPage bool) bool {
+ 
+-		*objectCount += *objects.KeyCount
+-		walkInfos := make([]walkInfoContainer, 0, *objects.KeyCount)
++		var count int64
++		if objects.KeyCount != nil {
++			count = *objects.KeyCount
++			*objectCount += *objects.KeyCount
++		} else {
++			count = int64(len(objects.Contents) + len(objects.CommonPrefixes))
++			*objectCount += count
++		}
++
++		walkInfos := make([]walkInfoContainer, 0, count)
+ 
+ 		for _, dir := range objects.CommonPrefixes {
+ 			commonPrefix := *dir.Prefix
+
+From c18c6c33b24010b3bfd3c49539f44c49681b4981 Mon Sep 17 00:00:00 2001
+From: Thomas Berger <loki@lokis-chaos.de>
+Date: Fri, 15 Mar 2019 21:05:21 +0100
+Subject: [PATCH 2/2] S3 Driver: added comment for missing KeyCount workaround
+
+Signed-off-by: Thomas Berger <loki@lokis-chaos.de>
+---
+ registry/storage/driver/s3-aws/s3.go | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/registry/storage/driver/s3-aws/s3.go b/registry/storage/driver/s3-aws/s3.go
+index 1f610f796..4b6c50d7b 100644
+--- a/registry/storage/driver/s3-aws/s3.go
++++ b/registry/storage/driver/s3-aws/s3.go
+@@ -971,6 +971,9 @@ func (d *driver) doWalk(parentCtx context.Context, objectCount *int64, path, pre
+ 	listObjectErr := d.S3.ListObjectsV2PagesWithContext(ctx, listObjectsInput, func(objects *s3.ListObjectsV2Output, lastPage bool) bool {
+ 
+ 		var count int64
++		// KeyCount was introduced with version 2 of the GET Bucket operation in S3.
++		// Some S3 implementations don't support V2 now, so we fall back to manual
++		// calculation of the key count if required
+ 		if objects.KeyCount != nil {
+ 			count = *objects.KeyCount
+ 			*objectCount += *objects.KeyCount

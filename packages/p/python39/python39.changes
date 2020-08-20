@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Jul 21 09:53:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed CVE-2019-20907_tarfile-inf-loop.patch: fixed in upstream
+- Removed recursion.tar: contained in upstream
+- Update to 3.9.0b5:
+  - bpo-41304: Fixes python3x._pth being ignored on Windows, caused 
+    by the fix for bpo-29778 (CVE-2020-15801).
+  - bpo-41162: Audit hooks are now cleared later during
+    finalization to avoid missing events.
+  - bpo-29778: Ensure python3.dll is loaded from correct locations 
+    when Python is embedded (CVE-2020-15523).
+  - bpo-39603: Prevent http header injection by rejecting control 
+    characters in http.client.putrequest(…).
+  - bpo-41295: Resolve a regression in CPython 3.8.4 where defining
+    “__setattr__” in a multi-inheritance setup and 
+    calling up the hierarchy chain could fail if builtins/extension
+    types were involved in the base types.
+  - bpo-41247: Always cache the running loop holder when running 
+    asyncio.set_running_loop.
+  - bpo-41252: Fix incorrect refcounting in 
+    _ssl.c’s _servername_callback().
+  - bpo-41215: Use non-NULL default values in the PEG parser 
+    keyword list to overcome a bug that was '
+    preventing Python from being properly compiled when using the
+    XLC compiler. Patch by Pablo Galindo.
+  - bpo-41218: Python 3.8.3 had a regression where compiling with 
+    ast.PyCF_ALLOW_TOP_LEVEL_AWAIT would 
+    aggressively mark list comprehension with CO_COROUTINE. Now only
+    list comprehension making use of async/await will tagged as so.
+  - bpo-41175: Guard against a NULL pointer dereference within 
+    bytearrayobject triggered by the bytearray() + bytearray() operation.
+  - bpo-39960: The “hackcheck” that prevents sneaking around a type’s 
+    __setattr__() by calling the superclass method was 
+    rewritten to allow C implemented heap types.
+  - bpo-41288: Unpickling invalid NEWOBJ_EX opcode with the 
+    C implementation raises now UnpicklingError instead of crashing.
+  - bpo-39017: Avoid infinite loop when reading specially crafted 
+    TAR files using the tarfile module (CVE-2019-20907, bsc#1174091).
+  - bpo-41235: Fix the error handling in ssl.SSLContext.load_dh_params().
+  - bpo-41207: In distutils.spawn, restore expectation that 
+    DistutilsExecError is raised when the command is not found.
+  - bpo-39168: Remove the __new__ method of typing.Generic.
+  - bpo-41194: Fix a crash in the _ast module: it can no longer be 
+    loaded more than once. It now uses a global state rather than a module state.
+  - bpo-39384: Fixed email.contentmanager to allow set_content() to set a 
+    null string.
+  - bpo-41300: Save files with non-ascii chars. 
+    Fix regression released in 3.9.0b4 and 3.8.4.
+  - bpo-37765: Add keywords to module name completion list. 
+    Rewrite Completions section of IDLE doc.
+  - bpo-40170: Revert PyType_HasFeature() change: it reads 
+    again directly the PyTypeObject.tp_flags 
+    member when the limited C API is not used, rather than always calling 
+    PyType_GetFlags() which hides implementation details.
+
+-------------------------------------------------------------------
 Mon Jul 20 12:06:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2019-20907_tarfile-inf-loop.patch fixing bsc#1174091

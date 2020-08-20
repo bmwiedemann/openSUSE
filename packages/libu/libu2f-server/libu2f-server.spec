@@ -1,7 +1,7 @@
 #
 # spec file for package libu2f-server
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,10 @@ Release:        0
 Summary:        Yubico Universal 2nd Factor (U2F) Server C Library
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Security
-Url:            https://developers.yubico.com/
+URL:            https://developers.yubico.com/
 Source0:        https://developers.yubico.com/libu2f-server/Releases/%{name}-%{version}.tar.xz
 Source1:        https://developers.yubico.com/libu2f-server/Releases/%{name}-%{version}.tar.xz.sig
+Patch0:         json-c-update.patch
 BuildRequires:  gengetopt
 BuildRequires:  help2man
 BuildRequires:  libhidapi-devel
@@ -71,7 +72,7 @@ Requires:       %{name}%{soname} = %{version}
 Command line tool that implements the server-side of the Universal 2nd Factor (U2F) protocol
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static

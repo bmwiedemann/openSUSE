@@ -86,7 +86,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.0b4
+Version:        3.9.0b5
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -102,8 +102,6 @@ Source10:       pre_checkin.sh
 Source11:       skipped_tests.py
 Source19:       idle3.desktop
 Source20:       idle3.appdata.xml
-# For Patch 32
-Source32:       recursion.tar
 Source99:       python.keyring
 # The following files are not used in the build.
 # They are listed here to work around missing functionality in rpmbuild,
@@ -140,10 +138,6 @@ Patch29:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-UPSTREAM bsc1167501-invalid-alignment.patch gh#python/cpython#19133 mcepl@suse.com
 # Fix wrong misalignment of pointer to vectorcallfunc
 Patch31:        bsc1167501-invalid-alignment.patch
-# PATCH-FIX-UPSTREAM CVE-2019-20907_tarfile-inf-loop.patch bsc#1174091 mcepl@suse.com
-# avoid possible infinite loop in specifically crafted tarball (CVE-2019-20907)
-# REQUIRES SOURCE 32
-Patch32:        CVE-2019-20907_tarfile-inf-loop.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -397,10 +391,7 @@ other applications.
 %patch27 -p1
 %patch29 -p1
 %patch31 -p1
-%patch32 -p1
 
-# For patch 32
-cp -v %{SOURCE32} Lib/test/recursion.tar
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

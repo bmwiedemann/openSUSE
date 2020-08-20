@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Aug 12 19:28:23 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200805:
+  * [Vita] workaround multiple symbols
+  * Add header guards
+  * unai: Change fast lighting default to 'disabled'
+  * lightrec/plugin.c: Use logging interface instead of printf
+  * Add debug-level log function
+  * Fix crash on retrying mission in driver (#165)
+  * Update custom-issue-report.md
+  * Update mouse device support, add mouse sensitivity option
+  * lightrec: fix race that could cause a freeze during load/reset
+  * Add Sony Mouse Controller support
+  * libchdr: Update to latest upstream
+  * Add support for frontend message interface v1
+  * Fix interpreter-only build (DYNAREC=0)
+  * plugins/dfinput: Silence warnings
+  * Silence some warnings
+  * Android: Support for new lightrec api
+  * Update Lightrec API
+  * Update deps/lightrec
+  * Minimize logs when loading a cheevos-compatible content
+  * Cleanup retro_run()
+  * Update libretro.c
+  * Hide other inputs from core options
+  * libretro.c: Change indents from tabs to spaces
+  * More core option fixes
+  * Update .gitignore
+  * Fixed bug where MSB of a 15-bit BGR color could corrupt green value. Also added documentation.
+
+-------------------------------------------------------------------
 Sun May 10 07:12:59 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200507:

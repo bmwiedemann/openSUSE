@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Aug 18 19:43:21 UTC 2020 - Stefan Nica <snica@suse.com>
+
+- Add 0002-Relax-filesystem-driver-folder-permissions-to-0777-cont.patch
+to get the registry to honor the umask when creating new folders
+(https://github.com/docker/distribution/pull/3204)
+
+- Add 0001-Fix-s3-driver-for-supporting-ceph-radosgw.patch
+(https://github.com/docker/distribution/pull/2879)
+
+-------------------------------------------------------------------
+Fri Jul 31 19:35:10 UTC 2020 - Stefan Nica <snica@suse.com>
+
+- include OSS and GCS backend drivers in the build
+
+-------------------------------------------------------------------
+Tue Jul 28 14:00:03 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove registry.SuSEfirewall2, SuSEfirewall2 does not exist anymore
+
+-------------------------------------------------------------------
+Fri Jul 24 13:42:41 CEST 2020 - jsuchome@suse.com
+
+- enabled changesgenerate option to automatically generate changes 
+
+-------------------------------------------------------------------
+Tue Jul  7 21:44:45 UTC 2020 - Stefan Nica <snica@suse.com>
+
+- Run registry as non-privileged user
+
+-------------------------------------------------------------------
+Thu Jun 25 22:58:30 UTC 2020 - Stefan Nica <snica@suse.com>
+
+- Reworked the RPM spec to use the golang-packaging macros instead
+of the provided Makefile
+
+-------------------------------------------------------------------
 Fri Feb  7 08:30:49 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on %arm (which include armv6), not only on armv7

@@ -1,7 +1,7 @@
 #
 # spec file for package python-selectors2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Back-ported, durable, and portable selectors
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://www.github.com/SethMichaelLarson/selectors2
+URL:            https://www.github.com/SethMichaelLarson/selectors2
 Source:         https://files.pythonhosted.org/packages/source/s/selectors2/selectors2-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
@@ -41,7 +41,7 @@ Back-ported, durable, and portable selectors
 %prep
 %setup -q -n selectors2-%{version}
 # bump the tolerance
-sed -i -e 's:TOLERANCE = 0.5:TOLERANCE = 2:g' tests/support.py
+sed -i -e 's:TOLERANCE = 0.5:TOLERANCE = 2.1:g' tests/support.py
 
 %build
 %python_build

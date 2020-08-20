@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 14:07:24 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Bump the tolerance even more
+
+-------------------------------------------------------------------
 Tue Sep 17 09:45:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Bump the tolerance even more for the flaky OBS runtime

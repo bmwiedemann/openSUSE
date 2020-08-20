@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Aug 12 19:30:49 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200810:
+  * Update Makefile
+  * Backport Lakka patch
+  * Updated built shaders to reflect source changes
+  * Fix incorrect jagged edges with masked textures
+  * Correctly clamp coordinates with xBr and SABR
+  * Fixes Haiku build with LightRec
+  * Reset state of memory card when loading a new one
+  * Reset state of memory card when formatting after loading a blank card
+  * Renamed state.cpp to state.c
+  * Cleanup
+  * Cleanups
+  * Cleanup
+  * Update libretro-common
+  * Add missing header
+  * Update
+  * Update  libretro-common
+  * Fix memory leak
+  * Format memory card properly
+  * Make dynamically switching memory cards work with autosave
+  * libretro: android: Fix hw compilation
+  * Prevent buffer over-read when saving states
+  * Fix failed assert when asked to clear an empty rect
+  * added track textures option
+  * Logging optimizations
+  * Add dumped feature
+  * Makefile tweaks
+  * updated prebuilt shaders
+  * wip so far
+  * Implement ability to dynamically switch memory cards
+
+-------------------------------------------------------------------
 Fri Jun 12 19:23:08 UTC 2020 - i@guoyunhe.me
 
 - Require GCC >= 4.9 because of a bug in 4.8. See

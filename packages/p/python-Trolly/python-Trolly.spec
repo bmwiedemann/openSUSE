@@ -1,7 +1,7 @@
 #
 # spec file for package python-Trolly
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,9 @@ initial work.
 
 %if %{with test}
 %check
-%python_exec -munittest discover
+# Completely hopeless, tests are run over the trello.com, so they
+# require network connection. Even upstream doesn't consider
+# them correct. gh#its-rigs/Trolly#46
 %endif
 
 %files %{python_files}

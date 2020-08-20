@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Aug 12 19:10:53 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200812:
+  * Fix iOS build.
+  * Use git describe in Windows installers.
+  * Clean Win32 install scripts.
+  * Automatically insert version in Cydia's package control file.
+  * Use same versioning system in Android APK.
+  * Use git describe to obtain a version number.
+  * Make message a warning.
+  * Implement CdStandby.
+  * Update Android build environment.
+  * Reset TLB handlers on initialization.
+  * Implement TLBR & move TLBWI.
+  * Add basic TLB support.
+  * Properly initialize out links.
+  * Greatly improve block link bookkeeping algorithm.
+  * Simplify cached block handling in EE executor.
+  * Add implementation for TLBWI.
+  * Rename FileIoHandler2240 to FileIoHandler2200.
+  * Add scan path for jailbroken iOS devices.
+  * Update Dependencies submodule.
+  * Update Xcode version used on TravisCI for iOS.
+  * Add function to enable some FP exceptions (for debugging purposes).
+  * Adjust external clock timer divider (multiplied by 2).
+  * Flush image transfer if we get a register write.
+  * Mask frame buffer and depth buffer write addresses.
+  * Add missing transfer case.
+  * Fix some issues in GetBucketLocation.
+  * Update Framework submodule.
+  * Fix GCC10 build.
+  * Fix code style.
+  * Increase delay a bit.
+  * Change the mechanism used to delay MCSERV's GetInfo response.
+  * Add missing D1_ASRx registers.
+  * Handle transfers to VU micro memory that might wrap around the address space.
+  * Add project generation scripts for VS2019.
+  * Add delay to MCSERV's GetInfo.
+  * "Triangle" typo.
+  * Prevent crashing when we can't get a file stream.
+  * We're done reading when we got 0 bytes from the file.
+  * Use proper open modes.
+  * Simulate the debugger being detached when quitting the app.
+  * Code style fixes.
+  * Add blending mode 1221 on OpenGL.
+  * Only enable colorOutputWhite if alpha blending is enabled.
+  * Fix blending mode 1201 on OpenGL.
+  * Implement 1201 blending mode in D3D9.
+  * Keep alpha since source alpha is always written to framebuffer.
+  * Implement blending mode 1221 on D3D9.
+  * Add missing blending formulae in D3D9.
+  * Ensure that all drawing has completed before we do a local 2 local transfer
+  * Handle CGSH_OpenGL::ProcessLocalToLocalTransfer texture write
+  * Convert some temporaries into variables.
+  * use gcc 10
+  * fix linux builds, we only need to link directly against libinotify.so on FreeBSD (perhaps other variants?)
+  * Fix FreeBSD linking
+  * Fix pselect call
+  * update GamePadDeviceListener to support FreeBSD
+  * update GamePadInputEventListener to support FreeBSD
+  * add freebsd travis ci
+  * remove branching from FCOR/FCAND/FCEQ
+  * print the path when it fails to open
+  * map host0 device to host
+  * add rom0 device
+
+-------------------------------------------------------------------
 Wed Jun 10 18:55:05 UTC 2020 - i@guoyunhe.me
 
 - Add BuildRequires: Mesa-libGLESv3-devel to fix arm build

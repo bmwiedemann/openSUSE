@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 16:37:30 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Change recommended PlayStation core:
+  * libretro-beetle-psx-hw for x86 and ppc
+  * libretro-pcsx-rearmed for arm
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:58 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Change broken libretro-blastem to libretro-picodrive

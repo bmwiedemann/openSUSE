@@ -18,7 +18,7 @@
 
 %define bname ykman-gui
 Name:           yubikey-manager-qt
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Graphical application for configuring a YubiKey
 License:        BSD-2-Clause
@@ -45,14 +45,14 @@ Requires:       python3-yubikey-manager >= 1.0.1
 A graphical application for configuring a YubiKey over all transport modes..
 
 %prep
-%setup -q -n yubikey-manager-qt
+%setup -q -n %{name}-%{name}-%{version}
 # Fix build for Leap 15 and SLE 15
 sed -i 's|python |python3 |g' ykman-cli/ykman-cli.pro
 sed -i 's|python |python3 |g' ykman-gui/ykman-gui.pro
 
 %build
-qmake-qt5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_LFLAGS+="%optflags" CONFIG+="hide_symbols" QMAKE_STRIP="/bin/true";
-make %{?_smp_mflags}
+%qmake5
+%make_build
 
 %install
 make install INSTALL_ROOT="%{buildroot}";

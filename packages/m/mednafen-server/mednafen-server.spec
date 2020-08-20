@@ -48,7 +48,7 @@ mkdir -p %{buildroot}%{_sbindir}
 ln -fs %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_user}
 install -Dm644 %{SOURCE1} %{buildroot}%{_unitdir}/%{_user}.service
 install -Dm664 standard.conf %{buildroot}%{_home}/%{name}.conf
-install -Dm644 %{SOURCE2} %{buildroot}%{_libexecdir}/firewalld/services/%{_user}.xml
+install -Dm644 %{SOURCE2} %{buildroot}%{_prefix}/lib/firewalld/services/%{_user}.xml
 
 %pre
 getent group %{_group} >/dev/null 2>/dev/null || %{_sbindir}/groupadd -r %{_group}
@@ -71,9 +71,9 @@ getent passwd %{_user} >/dev/null 2>/dev/null || %{_sbindir}/useradd -rc 'User f
 %{_bindir}/%{name}
 %{_sbindir}/rc%{_user}
 %{_unitdir}/%{_user}.service
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/%{_user}.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/%{_user}.xml
 %dir %attr(-,%{_user},%{_group}) %{_home}
 
 %changelog

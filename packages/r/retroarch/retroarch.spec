@@ -124,7 +124,11 @@ Recommends:     libretro-yabause
 Recommends:     libretro-flycast
 
 # Sony PlayStation (PSX)
+%ifarch armv6l armv6hl armv7l armv7hl aarch64
 Recommends:     libretro-pcsx-rearmed
+%else
+Recommends:     libretro-beetle-psx-hw
+%endif
 # Sony PlayStation 2 (PS2)
 Recommends:     libretro-play
 # Sony PlayStation Portable (PSP)
