@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug 19 10:08:27 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.5:
+  * New features:
+    - Option available in Preferences for playback of chord symbols
+    - Mid-staff instrument changes now do almost everything
+      automatically
+    - Support for Orca (Linux) screenreader
+    - Hairpins, voltas, and other lines now adapt anchor points
+      when dragged
+    - Splash screen displays progress messages while loading MuseScore
+    - Diatonic pitch up/down (keep degree alterations) shortcuts
+    - Select Similar Elements: Same Beat
+    - New Score Wizard now automatically numbers instruments
+    - Property for beam style of tremolo (all strokes attached to
+      stem)
+    - Style for hiding brackets which span to a single staff when
+      empty staves are hidden
+    - Properties and styles for measure number positioning, including
+      cantered and below staff
+    - Property and style for position of multimeasure rest numbers
+    - Property for fretboard diagram rotation
+  * Improvements and fixes.
+    For details see :
+      https://github.com/musescore/MuseScore/releases/tag/v3.5
+- update correct-revision.patch
+
+-------------------------------------------------------------------
 Mon Apr 27 19:18:01 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Normalize timestamps in .workspace zip files
