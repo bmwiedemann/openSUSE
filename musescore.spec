@@ -17,11 +17,11 @@
 
 
 %define         rname mscore
-%define         version_lesser 3.4
+%define         version_lesser 3.5
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        3.4.2
+Version:        3.5
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Musescore code license is GPL-2.0
@@ -62,7 +62,6 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
-# TODO: why does it fail with qtwebengine?
 BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(Qt5WebEngineCore)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
@@ -176,7 +175,6 @@ install -p -m 644 share/sound/README.md               %{buildroot}%docdir/README
 install -p -m 644 share/locale/README.md              %{buildroot}%docdir/README.md.locale
 install -p -m 644 share/instruments/README.md         %{buildroot}%docdir/README.md.instruments
 install -p -m 644 share/wallpaper/COPYRIGHT           %{buildroot}%docdir/COPYING.wallpaper
-install -p -m 644 zerberus/README                     %{buildroot}%docdir/README.zerberus
 
 %fdupes %{buildroot}/%{_prefix}
 
