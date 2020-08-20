@@ -17,10 +17,10 @@
 #
 
 
-%define pnpver 16
+%define pnpver 17
 %define ixmlver 11
 Name:           libupnp
-Version:        1.12.1
+Version:        1.14.0
 Release:        0
 Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ URL:            https://github.com/pupnp/pupnp
 Source:         https://github.com/pupnp/pupnp/releases/download/release-%version/%name-%version.tar.bz2
 Source2:        https://github.com/pupnp/pupnp/releases/download/release-%version/%name-%version.tar.bz2.sha1
 Source3:        baselibs.conf
-Patch1:         0001-Fixes-177-NULL-pointer-dereference-in-FindServiceCon.patch
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 
