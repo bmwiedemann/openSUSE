@@ -19,11 +19,11 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 %define libname lib%{name}
-%define short_version  8.9
-%define short_version_ 8_9
+%define short_version  8.10
+%define short_version_ 8_10
 %define somajor 42
 Name:           vips
-Version:        8.9.2
+Version:        8.10.0
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
