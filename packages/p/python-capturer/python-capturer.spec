@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without     test
 Name:           python-capturer
 Version:        3.0
 Release:        0
@@ -29,12 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/c/capturer/captur
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module coverage >= 4.2}
 BuildRequires:  %{python_module humanfriendly >= 8.0}
 BuildRequires:  %{python_module pytest >= 3.0.4}
-BuildRequires:  %{python_module pytest-cov >= 2.4.0}
-%endif
 Requires:       python-humanfriendly >= 8.0
 BuildArch:      noarch
 
@@ -59,14 +54,11 @@ but definitely won't work on Windows (due to the use of the platform dependent
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 export LANG=en_US.UTF-8
 %pytest capturer/tests.py
-%endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/*
