@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jul 16 18:38:50 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Clean spec file.
+
+-------------------------------------------------------------------
+Mon Jun 29 12:00:00 UTC 2020 - cunix@mail.de
+
+- Update to version 0.26:
+  * Support for Autotools removed in the next release.
+  * update-desktop-database
+    + Fix erroneous installation as "desktop-file-update"
+      when using the Meson build system
+
+- Update to version 0.25:
+  * common
+    + Add Meson build system
+  * desktop-file-validate
+    + Allow desktop file spec version 1.4.
+    + Make it possible to deprecate keys starting with "X-".
+    + Add the "Implements" field from spec version 1.2.
+    + Add the "PrefersNonDefaultGPU" key and deprecate "X-KDE-RunOnDiscreteGpu".
+    + Set locale for correct output message encoding.
+    + Add coloured output support.
+    + Fix parsing of escaped double quote in quoted strings.
+    + Add GNOME Flashback, GNOME Classic desktops.
+
+- desktop-file-utils-suse-keys.patch rebased.
+
+- Switched to Meson build system.
+
+- "--with-lispdir" deleted because no build loop anymore visible.
+
+- "install_man_desktop-file-edit_as_symlink.patch" added to install
+  duplicated manual page as a symlink instead of a file copy with
+  help from added script "install_man.py".
+
+-------------------------------------------------------------------
 Wed Jul 31 21:17:49 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 0.24:
