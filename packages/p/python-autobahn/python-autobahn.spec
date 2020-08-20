@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch %arm aarch64
+%bcond_with nvx_support
+%else
+%bcond_without nvx_support
+%endif
 
 %{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
 %define skip_python2 1
@@ -92,23 +97,30 @@ asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 rm autobahn/test/test_rng.py
 
 %build
+%if %{with nvx_support}
 export AUTOBAHN_USE_NVX=true
+%endif
 export CFLAGS="%{optflags}"
 %python_build
 
 %install
+%if %{with nvx_support}
 export AUTOBAHN_USE_NVX=true
+%endif
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/wamp
 %python_clone -a %{buildroot}%{_bindir}/xbrnetwork
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+%if %{with nvx_support}
+# It tries to test NVX, even if disabled
 %check
 export USE_ASYNCIO=true
 export AUTOBAHN_USE_NVX=true
 export PYTHONDONTWRITEBYTECODE=1
 export PY_IGNORE_IMPORTMISMATCH=1
 %pytest_arch
+%endif
 
 %post
 %python_install_alternative wamp xbrnetwork

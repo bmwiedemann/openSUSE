@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:47:52 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not use NVX on %arm and aarch64
+
+-------------------------------------------------------------------
 Thu Jul 23 14:42:38 UTC 2020 - Berthold Gunreben <azouhr@opensuse.org>
 
 - Add patch to include correct <arch>intrin.h for s390
