@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:33:09 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Thu Jun 25 11:22:38 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Link .exe files with --no-insert-timestamp option

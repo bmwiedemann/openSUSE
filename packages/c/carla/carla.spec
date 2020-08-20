@@ -42,7 +42,6 @@ BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  filesystem
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  memory-constraints
 # for extra native plugins
 BuildRequires:  non-ntk-fluid
 BuildRequires:  pkgconfig
@@ -121,7 +120,6 @@ win32 and wine32 binaries for handling ms win32 vst plugins
 %build
 #remove -m64 from the build
 %define optflags -O2 -Wall -D_FORTIFY_SOURCE=2 -funwind-tables -fasynchronous-unwind-tables -Werror=return-type -flto=auto
-%limit_build -m 1000
 export CXXFLAGS="%{optflags}"
 export CFLAGS="%{optflags}"
 
