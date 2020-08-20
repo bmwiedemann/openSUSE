@@ -66,8 +66,8 @@ make %{?_smp_mflags} \
 # fix permissions
 chmod 644 %{buildroot}%{_mandir}/man1/*
 # Fix udev dirs
-mkdir -p %{buildroot}%{_libexecdir}/udev
-mv %{buildroot}/lib/udev/js-set-enum-leds %{buildroot}%{_libexecdir}/udev/js-set-enum-leds
+mkdir -p %{buildroot}%{_prefix}/lib/udev
+mv %{buildroot}/lib/udev/js-set-enum-leds %{buildroot}%{_prefix}/lib/udev/js-set-enum-leds
 mkdir -p %{buildroot}%{_udevrulesdir}
 mv %{buildroot}/lib/udev/rules.d/80-stelladaptor-joystick.rules %{buildroot}%{_udevrulesdir}/80-stelladaptor-joystick.rules
 rm %{buildroot}/%{_bindir}/inputattach \
@@ -95,7 +95,7 @@ rm %{buildroot}/%{_bindir}/inputattach \
 %{_mandir}/man1/jstest.1%{ext_man}
 %{_mandir}/man1/evdev-joystick.1%{ext_man}
 %{_datadir}/joystick/
-%{_libexecdir}/udev/js-set-enum-leds
+%{_prefix}/lib/udev/js-set-enum-leds
 %{_udevrulesdir}/80-stelladaptor-joystick.rules
 
 %changelog
