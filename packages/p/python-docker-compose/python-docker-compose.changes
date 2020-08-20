@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:17:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.26.2:
+  - Enforce `docker-py` 4.2.2 as minimum version when installing with pip
+  - Bump `docker-py` from 4.2.1 to 4.2.2
+  - Fix context load for non-docker endpoints
+- remove no-restrict-upper.patch (just uncaping stuff downstream is
+  likely cause problems)
+
+-------------------------------------------------------------------
 Tue Jun 16 06:29:10 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.26.0: 

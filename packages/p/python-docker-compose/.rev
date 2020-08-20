@@ -127,4 +127,17 @@
     + Bump minor Linux and MacOSX dependencies</comment>
     <requestid>814831</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>08498c2831c00defb293f2151be5ed87</srcmd5>
+    <version>1.26.2</version>
+    <time>1597955602</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.2:
+  - Enforce `docker-py` 4.2.2 as minimum version when installing with pip
+  - Bump `docker-py` from 4.2.1 to 4.2.2
+  - Fix context load for non-docker endpoints
+- remove no-restrict-upper.patch (just uncaping stuff downstream is
+  likely cause problems)</comment>
+    <requestid>828154</requestid>
+  </revision>
 </revisionlist>

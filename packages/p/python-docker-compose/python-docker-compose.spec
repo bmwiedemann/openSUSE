@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-docker-compose
-Version:        1.26.0
+Version:        1.26.2
 Release:        0
 Summary:        Tool to define and run complex applications using Docker
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://pypi.python.org/pypi/docker-compose
 Source0:        https://files.pythonhosted.org/packages/source/d/docker-compose/docker-compose-%{version}.tar.gz
-Patch0:         no-restrict-upper.patch
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module cached-property >= 1.2.0}
 BuildRequires:  %{python_module ddt >= 1.2.2}
@@ -46,19 +45,19 @@ BuildRequires:  python-rpm-macros
 Requires:       docker
 Requires:       python-PySocks >= 1.5.6
 Requires:       python-PyYAML >= 3.10
-Requires:       python-cached-property >= 1.3.0
+Requires:       python-cached-property >= 1.2.0
 Requires:       python-chardet >= 3.0.4
 Requires:       python-distro >= 1.5.0
-Requires:       python-docker >= 3.7.0
+Requires:       python-docker >= 4.2.2
 Requires:       python-docker-pycreds >= 0.3.0
 Requires:       python-dockerpty >= 0.4.1
-Requires:       python-docopt >= 0.6.2
+Requires:       python-docopt >= 0.6.1
 Requires:       python-idna >= 2.5
-Requires:       python-jsonschema >= 2.6.0
+Requires:       python-jsonschema >= 2.5.1
 Requires:       python-python-dotenv >= 0.13.0
 Requires:       python-requests >= 2.20.0
 Requires:       python-six >= 1.3.0
-Requires:       python-texttable >= 0.9.1
+Requires:       python-texttable >= 0.9.0
 Requires:       python-websocket-client >= 0.32.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -98,7 +97,6 @@ Previously known as Fig.
 
 %prep
 %setup -q -n docker-compose-%{version}
-%patch0 -p1
 
 %build
 %python_build
