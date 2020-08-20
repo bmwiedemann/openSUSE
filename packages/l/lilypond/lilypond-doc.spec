@@ -17,6 +17,10 @@
 
 
 %bcond_without docbuild
+%if 0%{?is_backports} && 0%{?sle_version} == 150200
+#"%%_project" == "openSUSE:Backports:SLE-15-SP2:Update"
+ExcludeArch:    x86 x86_64 aarch64 ppc64le s390x
+%endif
 
 %define ver     2.20
 %define plevel  0
@@ -68,7 +72,7 @@ BuildRequires:  makeinfo >= 6.1
 BuildRequires:  mc
 BuildRequires:  mftrace
 BuildRequires:  netpbm
-BuildRequires:  pango-devel >= 1.12
+BuildRequires:  pango-devel >= 1.6.0
 BuildRequires:  perl
 BuildRequires:  rsync
 BuildRequires:  t1utils
@@ -98,7 +102,7 @@ BuildArch:      noarch
 # NOTE: when lilypond documentation build with texinfo 5.x is fixed by upstream remove the 4s from makeinfo,
 # NOTE: texinfo and update buildrequires with:
 #BuildRequires: texi2html
-BuildRequires:  texinfo4-links
+BuildRequires:  texinfo4
 %endif
 
 %description
@@ -201,6 +205,15 @@ popd
 for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
+mkdir -p $HOME/bin
+export PATH=$HOME/bin:$PATH
+echo $PATH
+pushd $HOME/bin
+for i in `ls -1 %{_bindir}/*texi*4`
+do ln -sf ${i} $(basename --suffix 4 ${i})
+done
+popd
+ls -l $HOME/bin
 
 #chmod 644 Documentation/pictures/*.png
 # export GS_LIB="/home/$USER/.fonts" is a work around for bnc#568280

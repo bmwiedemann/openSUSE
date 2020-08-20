@@ -312,4 +312,14 @@
 </comment>
     <requestid>824690</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>782c49c3b4744c71bf256ac9ee9d5010</srcmd5>
+    <version>2.20.0</version>
+    <time>1597955558</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency on texinfo4-links package and generate the
+  links in the spec file instead.
+</comment>
+    <requestid>828112</requestid>
+  </revision>
 </revisionlist>
