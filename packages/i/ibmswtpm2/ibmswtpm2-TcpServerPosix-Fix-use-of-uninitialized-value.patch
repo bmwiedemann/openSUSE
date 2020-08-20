@@ -1,0 +1,30 @@
+From 03efa66788ca4828392664c4f6123ad4f190c865 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 17 Aug 2020 19:28:51 +0200
+Subject: [PATCH] TcpServerPosix: Fix use of uninitialized value.
+
+ReadUINT32 does not modify the output when it fails. Do not use the
+output in that case.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ src/TcpServerPosix.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/TcpServerPosix.c b/src/TcpServerPosix.c
+index 20fcb29352a2..5bcc47aaeac7 100644
+--- a/src/TcpServerPosix.c
++++ b/src/TcpServerPosix.c
+@@ -278,7 +278,8 @@ PlatformServer(
+ 		      {
+ 			  UINT32 actHandle;
+ 			  ok = ReadUINT32(s, &actHandle);
+-			  WriteUINT32(s, _rpc__ACT_GetSignaled(actHandle));
++			  if(ok)
++			      WriteUINT32(s, _rpc__ACT_GetSignaled(actHandle));
+ 			  break;
+ 		      }
+ 		  default:
+-- 
+2.26.2
+

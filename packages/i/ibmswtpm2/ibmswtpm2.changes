@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 17 16:59:04 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to upstream version 1637
+  * fixes build of ibmtss 1.5.0
+  * Refresh makefile.patch
+  * Drop upstreamed patches
+    - ibmswtpm2-fix-uninitialized.patch
+    - ibmswtpm2-fix-empty-decrypt.patch
+  * Fix use of uninitialized value:
+    + ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
+    + ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
+
+-------------------------------------------------------------------
 Mon Dec 23 12:06:22 UTC 2019 - mgerstner <matthias.gerstner@suse.com>
 
 - Add ibmswtpm2-fix-empty-decrypt.patch: Fix a corner case in the emulator

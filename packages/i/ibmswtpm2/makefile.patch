@@ -1,8 +1,6 @@
-Index: ibmswtpm2-1119/src/makefile
-===================================================================
---- ibmswtpm2-1119.orig/src/makefile	2018-01-16 12:46:54.412486803 +0100
-+++ ibmswtpm2-1119/src/makefile	2018-01-16 12:48:38.498125716 +0100
-@@ -41,17 +41,17 @@
+--- ibmswtpm2-1637.orig/src/makefile	2019-12-19 23:35:43.000000000 +0100
++++ ibmswtpm2-1637/src/makefile	2020-08-17 18:56:34.607550789 +0200
+@@ -40,10 +40,10 @@
  
  CC = /usr/bin/gcc
  
@@ -12,15 +10,16 @@ Index: ibmswtpm2-1119/src/makefile
 -	-Werror -Wsign-compare \
 -	 -c -ggdb -O0 			\
 +	-Werror -Wsign-compare -Wno-unused-value -Wno-aggressive-loop-optimizations \
-+	 -c -ggdb -O 			\
++	 -c -ggdb			\
  	-DTPM_POSIX			\
  	-D_POSIX_			\
- 	-DTPM_NUVOTON			\
- 	-I../utils			\
- 	-I.
+ 	-DTPM_NUVOTON
+@@ -54,7 +54,7 @@
+ #	--coverage			\
+ #	-fprofile-arcs -ftest-coverage
  
 -LNFLAGS = -ggdb 			\
 +LNFLAGS += -ggdb 			\
- 	-DTPM_POSIX			\
- 	-DTPM_NUVOTON			\
  	-lcrypto			\
+ 	-lpthread			\
+ 	-lrt				\
