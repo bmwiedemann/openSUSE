@@ -106,8 +106,8 @@ install -d -m 755 \
 install -m 644 -D %{SOURCE3} %{buildroot}/%{_unitdir}/%{name}.service
 install -m 644 -D %{SOURCE6} %{buildroot}/%{_unitdir}/%{name}-master.service
 install -m 644 %{SOURCE5} %{buildroot}%{_datadir}/tor/defaults-torrc
-install -d -m 0755 %{buildroot}%{_libexecdir}/tmpfiles.d/
-install -m 0644 %{SOURCE4} %{buildroot}%{_libexecdir}/tmpfiles.d/%{name}.conf
+install -d -m 0755 %{buildroot}%{_tmpfilesdir}/
+install -m 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 ln -s -f service %{buildroot}%{_sbindir}/rc%{name}
 
 # sample config files
@@ -134,7 +134,7 @@ getent passwd %{toruser} >/dev/null || useradd -r -g %{torgroup} -d %{home_dir} 
 %post
 %fillup_only
 %service_add_post tor.service
-systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/tor.conf || :
+systemd-tmpfiles --create %{_tmpfilesdir}/tor.conf || :
 
 %preun
 %service_del_preun tor.service
@@ -158,7 +158,7 @@ systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/tor.conf || :
 %attr(0750,%{toruser},%{torgroup}) %dir %{_localstatedir}/log/%{name}
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-master.service
-%{_libexecdir}/tmpfiles.d/%{name}.conf
+%{_tmpfilesdir}/%{name}.conf
 %{_sbindir}/rc%{name}
 
 %changelog

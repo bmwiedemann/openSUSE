@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:49:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_tmpfilesdir} instead of abusing %{_libexecdir}/tmpfiles.d.
+
+-------------------------------------------------------------------
 Thu Jul  9 17:27:13 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.3.6
