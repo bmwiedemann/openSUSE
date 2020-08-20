@@ -28,6 +28,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  gcc-c++
 BuildRequires:  make
+ExcludeArch:    armv6l armv6hl
 
 %description
 Flycast is a multi-platform Sega Dreamcast emulator. This package is for
@@ -37,6 +38,13 @@ RetroArch/libretro front-end.
 %setup -q
 
 %build
+%ifarch aarch64
+export platform=classic_armv8_a35
+%endif
+%ifarch %arm
+export ARCH=arm
+export platform=classic_armv7_a7
+%endif
 make
 
 %install
