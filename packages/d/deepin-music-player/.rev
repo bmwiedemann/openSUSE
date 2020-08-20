@@ -210,4 +210,12 @@
     <comment>- Support Qt 5.15, add deepin-music-Qt-5_15.patch (forwarded request 815515 from hillwood)</comment>
     <requestid>815516</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>ccf3a0edb7d2d67fd12042cd2eb8131c</srcmd5>
+    <version>5.0.1</version>
+    <time>1597955377</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075) (forwarded request 827887 from gmbr3)</comment>
+    <requestid>827962</requestid>
+  </revision>
 </revisionlist>

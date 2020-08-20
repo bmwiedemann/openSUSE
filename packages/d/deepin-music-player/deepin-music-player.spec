@@ -144,9 +144,9 @@ make %{?_smp_mflags}
 %qmake5_install
 
 %ifnarch i386 i486 i586 i686 athlon %{arm}
-    mv %{buildroot}%{_libexecdir}/*.so* %{buildroot}%{_libdir}
-    mv %{buildroot}%{_libexecdir}/pkgconfig %{buildroot}%{_libdir}/pkgconfig
-    rm -rf %{buildroot}%{_libexecdir}
+    mv %{buildroot}%{_prefix}/lib/*.so* %{buildroot}%{_libdir}
+    mv %{buildroot}%{_prefix}/lib/pkgconfig %{buildroot}%{_libdir}/pkgconfig
+    rm -rf %{buildroot}%{_prefix}/lib
 %endif
 
 # Remove invalid developement files.
