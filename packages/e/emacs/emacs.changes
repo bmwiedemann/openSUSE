@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 18 09:22:51 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Switch Emacs.FontBackend setting off (boo#1175372)
+
+-------------------------------------------------------------------
+Sun Aug 16 16:53:39 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Some specfile cleanup: remove checks obsoleted by the portable dumper
+
+-------------------------------------------------------------------
+Sat Aug 15 06:26:39 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patch emacs-27.1-home.patch from mailing list
+  to add missing slashes on finding ~/Emacs 
+
+-------------------------------------------------------------------
 Fri Aug 14 08:01:27 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Provide for all three emacs layouts, that are emacs-nox, emacs-x11,

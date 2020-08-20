@@ -8,8 +8,8 @@ Emacs.menu*.font:		-*-helvetica-bold-r-normal--12-*-*-*-p-*-iso8859-*
 ! With GNU Emacs 24 Xft is used, therefore no fontsets are required. If you
 ! like to use fontsets you have to disable "FontBackend" and enable "Font".
 ! If Xft fails then X font scheme (including fontsets) is used as fallback.
-Emacs.FontBackend:		xft,x
-!!Emacs.Font:			fontset-16
+!! Emacs.FontBackend:		xft,x
+!! Emacs.Font:			fontset-16
 Emacs*Fontset-0:\
 	-*-fixed-medium-r-*--16-*-*-*-*-*-fontset-16,\
 	latin-iso8859-1:-*-fixed-medium-r-*--16-*-iso8859-1,\

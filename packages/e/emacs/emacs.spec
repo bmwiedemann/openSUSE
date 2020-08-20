@@ -175,6 +175,7 @@ Patch23:        emacs-25.1-custom-fonts.patch
 Patch24:        emacs-25.2-ImageMagick7.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
+Patch27:        emacs-27.1-home.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -288,6 +289,7 @@ and most assembler-like syntaxes.
 %patch24 -p1 -b .imag
 %patch25 -p0 -b .xft
 %patch26 -p0 -b .fmt
+%patch27 -p0 -b .home
 %patch   -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
@@ -321,22 +323,6 @@ fi
 %else
 autoreconf -fiv -I $PWD -I $PWD/m4
 %endif
-
-# make sure that the binaries work (pagesize on build must be the same as on target, bnc#726769)
-%ifarch ppc ppc64 ia64
-%if %(getconf PAGESIZE) != 65536
-%error "Error: wrong build host, PAGESIZE must be 65536"
-exit 1
-%endif
-%endif
-  exec_shield=0
-  if test -e /proc/sys/kernel/exec-shield; then
-      read -t 1 exec_shield < /proc/sys/kernel/exec-shield
-  fi
-  if test $exec_shield -ne 0 ; then
-      echo Sorry, Execution Shield exists and is enabled 1>&2
-      exit 1
-  fi
 
   cflags ()
   {
@@ -484,31 +470,12 @@ fi
 ##(($1 > 4 || ($1 == 4 && $2 > 4))) && COMP="$COMP --enable-link-time-optimization"
 ##IFS="$OIFS"
 
-make_mchkoff ()
-{
-    local OMC=$MALLOC_CHECK_
-    unset MALLOC_CHECK_
-    if test -n "${1}" ; then
-	setarch $(uname -m) -R make ${1+"$@"}
-	set -- $(src/emacs -batch --eval "(print pure-space-overflow)")
-	test "$1" = "nil" || exit 1
-    fi
-    make -C src/ versionclean
-    setarch $(uname -m) -R make
-    set -- $(src/emacs -batch --eval "(print pure-space-overflow)")
-    test "$1" = "nil" || exit 1
-    if test -n "$OMC" ; then
-	MALLOC_CHECK_=$OMC
-	export MALLOC_CHECK_
-    fi
-}
-
 # new giflib5 does not have this function and it is unused anyway...
 ac_cv_lib_gif_EGifPutExtensionLast=yes
 export ac_cv_lib_gif_EGifPutExtensionLast
 
 CFLAGS="$CFLAGS $SMALL" ./configure ${COMP} ${PREFIX} ${NOX11} ${SYS} --with-dumping=pdumper
-make_mchkoff bootstrap
+make bootstrap
 make -C lisp/ updates compile
 for i in `find site-lisp/ -name '*.el'`; do
     src/emacs -batch -q --no-site -f batch-byte-compile $i; \
@@ -518,13 +485,13 @@ cp src/emacs.pdmp emacs-nox.pdmp
 make distclean
 #
 CFLAGS="$CFLAGS $LARGE" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
-make_mchkoff
+make
 cp src/emacs emacs-gtk
 cp src/emacs.pdmp emacs-gtk.pdmp
 make distclean
 #
 CFLAGS="$CFLAGS $LARGE" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
-make_mchkoff
+make
 cp src/emacs emacs-x11
 cp src/emacs.pdmp emacs-x11.pdmp
 
