@@ -1,10 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <constraints>
   <hardware>
-     <disk>
+    <disk>
       <size unit="G">24</size>
     </disk>
     <physicalmemory>
       <size unit="G">2</size>
     </physicalmemory>
+    <memoryperjob>
+      <size unit="M">2000</size>
+    </memoryperjob>
   </hardware>
 </constraints>

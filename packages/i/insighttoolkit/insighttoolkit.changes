@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:52:30 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Thu Jul 30 15:58:02 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to make build results independent

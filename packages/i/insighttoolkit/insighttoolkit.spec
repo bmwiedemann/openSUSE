@@ -50,7 +50,6 @@ BuildRequires:  gdcm-devel
 BuildRequires:  gtest
 BuildRequires:  hdf5-devel
 BuildRequires:  libnsl-devel
-BuildRequires:  memory-constraints
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
@@ -120,7 +119,6 @@ This package provides the modules for ITK's python bindings.
 %autosetup -p1 -n %{tarname}-%{version}
 
 %build
-%limit_build -m 2000
 
 # Enabling BUILD_TESTING requires KWStyle, not available for openSUSE
 %cmake \
