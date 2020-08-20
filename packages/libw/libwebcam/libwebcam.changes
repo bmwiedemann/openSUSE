@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:35:52 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Fri Jul 31 20:22:59 UTC 2015 - dmitry_r@opensuse.org
 
 - Update to version 0.2.5

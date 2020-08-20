@@ -86,8 +86,8 @@ make %{?_smp_mflags}
 rm -rf %{buildroot}%{_libdir}/*.a
 # fix up after dirty tarball
 find %{buildroot} -name '*~' -exec rm -f '{}' \;
-mkdir -p %{buildroot}/%{_libexecdir}
-mv %{buildroot}/lib/udev %{buildroot}/%{_libexecdir}/udev
+mkdir -p %{buildroot}%{_prefix}/lib
+mv %{buildroot}/lib/udev %{buildroot}%{_prefix}/lib/udev
 
 %post -n %{name}%{so_ver} -p /sbin/ldconfig
 
@@ -99,8 +99,8 @@ mv %{buildroot}/lib/udev %{buildroot}/%{_libexecdir}/udev
 %{_bindir}/uvcdynctrl*
 %{_datadir}/uvcdynctrl
 %{_datadir}/man/man1/*
-%{_libexecdir}/udev/uvcdynctrl
-%{_libexecdir}/udev/rules.d/*.rules
+%{_prefix}/lib/udev/uvcdynctrl
+%{_udevrulesdir}/*.rules
 
 %files -n %{name}%{so_ver}
 %defattr(-,root,root,-)
