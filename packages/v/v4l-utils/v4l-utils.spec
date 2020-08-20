@@ -24,7 +24,7 @@
 %define so_ver 0
 %define sname v4l-utils
 Name:           v4l-utils%{?psuffix}
-Version:        1.18.1
+Version:        1.20.0
 Release:        0
 Summary:        Utilities for video4linux
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-2.0-only
@@ -241,6 +241,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_sysconfdir}/rc_keymaps/
 %config(noreplace) %{_sysconfdir}/rc_maps.cfg
 %{_udevdir}/rc_keymaps
+%dir %{_unitdir}/systemd-udevd.service.d
+%{_unitdir}/systemd-udevd.service.d/50-rc_keymap.conf
 %{_udevrulesdir}/70-infrared.rules
 %{_bindir}/cx18-ctl
 %{_bindir}/cec-compliance
