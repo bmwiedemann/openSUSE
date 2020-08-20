@@ -16,7 +16,7 @@
 #
 
 
-%define _dracutmodulesdir %{_libexecdir}/dracut/modules.d
+%define _dracutmodulesdir %{_prefix}/lib/dracut/modules.d
 Name:           sedutil
 Version:        1.15.1
 Release:        0
@@ -57,10 +57,10 @@ make %{?_smp_mflags}
 %install
 %make_install 
 
-install -m 0755 -d %{buildroot}/%{_dracutmodulesdir}/00sedutil/
-install -m 0755 %{SOURCE1} %{buildroot}/%{_dracutmodulesdir}/00sedutil/
-install -m 0755 %{SOURCE2} %{buildroot}/%{_dracutmodulesdir}/00sedutil/
-install -m 0755 %{SOURCE3} %{buildroot}/%{_sbindir}/
+install -m 0755 -d %{buildroot}%{_dracutmodulesdir}/00sedutil/
+install -m 0755 %{SOURCE1} %{buildroot}%{_dracutmodulesdir}/00sedutil/
+install -m 0755 %{SOURCE2} %{buildroot}%{_dracutmodulesdir}/00sedutil/
+install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/
 
 %files
 %defattr(-,root,root)
@@ -69,8 +69,8 @@ install -m 0755 %{SOURCE3} %{buildroot}/%{_sbindir}/
 %{_mandir}/man8/sedutil-cli.8*
 %{_sbindir}/sedutil-cli
 %{_sbindir}/linuxpba
-%dir %{_libexecdir}/dracut
-%dir %{_libexecdir}/dracut/modules.d
+%dir %{_prefix}/lib/dracut
+%dir %{_dracutmodulesdir}
 %dir %{_dracutmodulesdir}/00sedutil/
 %{_dracutmodulesdir}/00sedutil/module-setup.sh
 %{_dracutmodulesdir}/00sedutil/linuxpba.sh

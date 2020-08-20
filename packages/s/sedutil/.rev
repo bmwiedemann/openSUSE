@@ -7,4 +7,12 @@
     <comment>New package see https://en.opensuse.org/SDB:Self_Encrypting_Drive  </comment>
     <requestid>638996</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>814c9f8f5bd76dabdb239e1389b32094</srcmd5>
+    <version>1.15.1</version>
+    <time>1597955361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827966</requestid>
+  </revision>
 </revisionlist>
