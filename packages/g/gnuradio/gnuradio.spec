@@ -55,7 +55,6 @@ BuildRequires:  libgsm-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libmpir-devel
 BuildRequires:  log4cpp-devel
-BuildRequires:  memory-constraints
 BuildRequires:  orc
 BuildRequires:  pkgconfig
 BuildRequires:  portaudio-devel
@@ -169,7 +168,6 @@ sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxyg
 find  gr-utils/python/modtool/templates/gr-newmod -name CMakeLists.txt -exec mv '{}' '{}.tmpl' \;
 
 %build
-%limit_build -m 2000
 %cmake \
 %ifarch armv6l armv6hl
   -Dhave_mfpu_neon=0 \

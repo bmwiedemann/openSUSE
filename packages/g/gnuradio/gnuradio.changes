@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:33:58 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Thu Apr 30 17:49:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update completely changed the way their tarballs are signed
