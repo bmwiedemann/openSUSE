@@ -1,0 +1,31 @@
+From b8dc92b32bc87b127b1679f4b4a4f987d1e1d080 Mon Sep 17 00:00:00 2001
+From: Victor Stinner <vstinner@redhat.com>
+Date: Mon, 11 Mar 2019 16:47:10 +0100
+Subject: [PATCH] bpo-36263: Fix hashlib.scrypt()
+
+Fix hashlib.scrypt(): pass the salt when validating arguments.
+---
+ .../next/Library/2019-03-11-16-52-09.bpo-36263.IzB4p5.rst   | 1 +
+ Modules/_hashopenssl.c                                      | 6 +++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+ create mode 100644 Misc/NEWS.d/next/Library/2019-03-11-16-52-09.bpo-36263.IzB4p5.rst
+
+--- /dev/null
++++ b/Misc/NEWS.d/next/Library/2019-03-11-16-52-09.bpo-36263.IzB4p5.rst
+@@ -0,0 +1 @@
++Fix :func:`hashlib.scrypt`: pass the salt when validating arguments.
+--- a/Modules/_hashopenssl.c
++++ b/Modules/_hashopenssl.c
+@@ -831,7 +831,11 @@ _hashlib_scrypt_impl(PyObject *module, P
+     }
+ 
+     /* let OpenSSL validate the rest */
+-    retval = EVP_PBE_scrypt(NULL, 0, NULL, 0, n, r, p, maxmem, NULL, 0);
++    retval = EVP_PBE_scrypt(
++        NULL, 0,
++        (const unsigned char *)salt->buf, (size_t)salt->len,
++        n, r, p, maxmem,
++        NULL, 0);
+     if (!retval) {
+         /* sorry, can't do much better */
+         PyErr_SetString(PyExc_ValueError,

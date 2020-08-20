@@ -1,0 +1,125 @@
+commit c11b93fd5e04c2541954ba7bc7b17027742edad1
+Author: Bernhard M. Wiedemann <githubbmw@lsmod.de>
+Date:   Wed Jan 31 11:17:10 2018 +0100
+
+    bpo-30693: zip+tarfile: sort directory listing (#2263)
+    
+    tarfile and zipfile now sort directory listing to generate tar and zip archives
+    in a more reproducible way.
+    
+    See also https://reproducible-builds.org/docs/stable-inputs/ on that topic.
+
+--- a/Doc/library/tarfile.rst
++++ b/Doc/library/tarfile.rst
+@@ -467,6 +467,9 @@ be finalized; only the internally used f
+       The *exclude* parameter is deprecated, please use the *filter* parameter
+       instead.
+ 
++   .. versionchanged:: 3.6.4
++      Recursion adds entries in sorted order.
++
+ 
+ .. method:: TarFile.addfile(tarinfo, fileobj=None)
+ 
+--- a/Doc/library/zipfile.rst
++++ b/Doc/library/zipfile.rst
+@@ -466,7 +466,7 @@ The :class:`PyZipFile` constructor takes
+       :file:`\*.pyc` are added at the top level.  If the directory is a
+       package directory, then all :file:`\*.pyc` are added under the package
+       name as a file path, and if any subdirectories are package directories,
+-      all of these are added recursively.
++      all of these are added recursively in sorted order.
+ 
+       *basename* is intended for internal use only.
+ 
+@@ -499,6 +499,9 @@ The :class:`PyZipFile` constructor takes
+       .. versionchanged:: 3.6.2
+          The *pathname* parameter accepts a :term:`path-like object`.
+ 
++      .. versionchanged:: 3.6.4
++         Recursion sorts directory entries.
++
+ 
+ .. _zipinfo-objects:
+ 
+--- a/Lib/tarfile.py
++++ b/Lib/tarfile.py
+@@ -1954,7 +1954,7 @@ class TarFile(object):
+         elif tarinfo.isdir():
+             self.addfile(tarinfo)
+             if recursive:
+-                for f in os.listdir(name):
++                for f in sorted(os.listdir(name)):
+                     self.add(os.path.join(name, f), os.path.join(arcname, f),
+                             recursive, exclude, filter=filter)
+ 
+--- a/Lib/test/test_tarfile.py
++++ b/Lib/test/test_tarfile.py
+@@ -1129,6 +1129,30 @@ class WriteTest(WriteTestBase, unittest.
+         finally:
+             support.rmdir(path)
+ 
++    # mock the following:
++    #  os.listdir: so we know that files are in the wrong order
++    @unittest.mock.patch('os.listdir')
++    def test_ordered_recursion(self, mock_listdir):
++        path = os.path.join(TEMPDIR, "directory")
++        os.mkdir(path)
++        open(os.path.join(path, "1"), "a").close()
++        open(os.path.join(path, "2"), "a").close()
++        mock_listdir.return_value = ["2", "1"]
++        try:
++            tar = tarfile.open(tmpname, self.mode)
++            try:
++                tar.add(path)
++                paths = []
++                for m in tar.getmembers():
++                    paths.append(os.path.split(m.name)[-1])
++                self.assertEqual(paths, ["directory", "1", "2"]);
++            finally:
++                tar.close()
++        finally:
++            support.unlink(os.path.join(path, "1"))
++            support.unlink(os.path.join(path, "2"))
++            support.rmdir(path)
++
+     def test_gettarinfo_pathlike_name(self):
+         with tarfile.open(tmpname, self.mode) as tar:
+             path = pathlib.Path(TEMPDIR) / "file"
+--- a/Lib/zipfile.py
++++ b/Lib/zipfile.py
+@@ -1860,7 +1860,7 @@ class PyZipFile(ZipFile):
+                 if self.debug:
+                     print("Adding", arcname)
+                 self.write(fname, arcname)
+-                dirlist = os.listdir(pathname)
++                dirlist = sorted(os.listdir(pathname))
+                 dirlist.remove("__init__.py")
+                 # Add all *.py files and package subdirectories
+                 for filename in dirlist:
+@@ -1885,7 +1885,7 @@ class PyZipFile(ZipFile):
+                 # This is NOT a package directory, add its files at top level
+                 if self.debug:
+                     print("Adding files from directory", pathname)
+-                for filename in os.listdir(pathname):
++                for filename in sorted(os.listdir(pathname)):
+                     path = os.path.join(pathname, filename)
+                     root, ext = os.path.splitext(filename)
+                     if ext == ".py":
+@@ -2042,7 +2042,7 @@ def main(args = None):
+             elif os.path.isdir(path):
+                 if zippath:
+                     zf.write(path, zippath)
+-                for nm in os.listdir(path):
++                for nm in sorted(os.listdir(path)):
+                     addToZip(zf,
+                              os.path.join(path, nm), os.path.join(zippath, nm))
+             # else: ignore
+--- /dev/null
++++ b/Misc/NEWS.d/next/Library/2017-11-27-15-09-49.bpo-30693.yC4mJ7.rst
+@@ -0,0 +1 @@
++The ZipFile class now recurses directories in a reproducible way.
+--- /dev/null
++++ b/Misc/NEWS.d/next/Library/2017-11-27-15-09-49.bpo-30693.yC4mJ8.rst
+@@ -0,0 +1 @@
++The TarFile class now recurses directories in a reproducible way.

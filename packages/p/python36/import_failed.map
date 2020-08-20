@@ -1,0 +1,7 @@
+python36-curses: curses _curses _curses_panel
+python36-dbm: dbm _dbm _gdbm
+python36-idle: idlelib
+python36-testsuite: test _ctypes_test _testbuffer _testcapi _testinternalcapi _testimportmultiple _testmultiphase xxlimited
+python36-tk: tkinter _tkinter
+python36-tools: turtledemo
+python36: sqlite3 readline _sqlite3 nis

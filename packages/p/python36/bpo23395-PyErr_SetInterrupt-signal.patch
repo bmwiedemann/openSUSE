@@ -1,0 +1,160 @@
+From d823eee619c0e7c1a9bc5b0caa0d0fa4734ac052 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Thu, 23 May 2019 22:30:00 +0200
+Subject: [PATCH] bpo-23395: Fix PyErr_SetInterrupt if the SIGINT signal is
+ ignored or not handled (GH-7778)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+``_thread.interrupt_main()`` now avoids setting the Python error status if the ``SIGINT`` signal is ignored or not handled by Python.
+(cherry picked from commit 608876b6b1eb59538e6c29671a733033fb8b5be7)
+
+Co-authored-by: Matěj Cepl <mcepl@cepl.eu>
+---
+ Doc/c-api/exceptions.rst                      | 12 +++----
+ Doc/library/_thread.rst                       |  8 +++--
+ Lib/test/test_threading.py                    | 35 +++++++++++++++++++
+ Misc/ACKS                                     |  2 +-
+ .../2016-07-27-11-06-43.bpo-23395.MuCEX9.rst  |  2 ++
+ Modules/signalmodule.c                        | 13 ++++---
+ 6 files changed, 59 insertions(+), 13 deletions(-)
+ create mode 100644 Misc/NEWS.d/next/Library/2016-07-27-11-06-43.bpo-23395.MuCEX9.rst
+
+--- a/Doc/c-api/exceptions.rst
++++ b/Doc/c-api/exceptions.rst
+@@ -504,13 +504,13 @@ Signal Handling
+       single: SIGINT
+       single: KeyboardInterrupt (built-in exception)
+ 
+-   This function simulates the effect of a :const:`SIGINT` signal arriving --- the
+-   next time :c:func:`PyErr_CheckSignals` is called,  :exc:`KeyboardInterrupt` will
+-   be raised.  It may be called without holding the interpreter lock.
+-
+-   .. % XXX This was described as obsolete, but is used in
+-   .. % _thread.interrupt_main() (used from IDLE), so it's still needed.
++   Simulate the effect of a :const:`SIGINT` signal arriving. The next time
++   :c:func:`PyErr_CheckSignals` is called,  the Python signal handler for
++   :const:`SIGINT` will be called.
+ 
++   If :const:`SIGINT` isn't handled by Python (it was set to
++   :data:`signal.SIG_DFL` or :data:`signal.SIG_IGN`), this function does
++   nothing.
+ 
+ .. c:function:: int PySignal_SetWakeupFd(int fd)
+ 
+--- a/Doc/library/_thread.rst
++++ b/Doc/library/_thread.rst
+@@ -57,8 +57,12 @@ It defines the following constants and f
+ 
+ .. function:: interrupt_main()
+ 
+-   Raise a :exc:`KeyboardInterrupt` exception in the main thread.  A subthread can
+-   use this function to interrupt the main thread.
++   Simulate the effect of a :data:`signal.SIGINT` signal arriving in the main
++   thread. A thread can use this function to interrupt the main thread.
++
++   If :data:`signal.SIGINT` isn't handled by Python (it was set to
++   :data:`signal.SIG_DFL` or :data:`signal.SIG_IGN`), this function does
++   nothing.
+ 
+ 
+ .. function:: exit()
+--- a/Lib/test/test_threading.py
++++ b/Lib/test/test_threading.py
+@@ -16,6 +16,7 @@ import unittest
+ import weakref
+ import os
+ import subprocess
++import signal
+ 
+ from test import lock_tests
+ from test import support
+@@ -1162,6 +1163,7 @@ class BoundedSemaphoreTests(lock_tests.B
+ class BarrierTests(lock_tests.BarrierTests):
+     barriertype = staticmethod(threading.Barrier)
+ 
++
+ class MiscTestCase(unittest.TestCase):
+     def test__all__(self):
+         extra = {"ThreadError"}
+@@ -1169,5 +1171,38 @@ class MiscTestCase(unittest.TestCase):
+         support.check__all__(self, threading, ('threading', '_thread'),
+                              extra=extra, blacklist=blacklist)
+ 
++
++class InterruptMainTests(unittest.TestCase):
++    def test_interrupt_main_subthread(self):
++        # Calling start_new_thread with a function that executes interrupt_main
++        # should raise KeyboardInterrupt upon completion.
++        def call_interrupt():
++            _thread.interrupt_main()
++        t = threading.Thread(target=call_interrupt)
++        with self.assertRaises(KeyboardInterrupt):
++            t.start()
++            t.join()
++        t.join()
++
++    def test_interrupt_main_mainthread(self):
++        # Make sure that if interrupt_main is called in main thread that
++        # KeyboardInterrupt is raised instantly.
++        with self.assertRaises(KeyboardInterrupt):
++            _thread.interrupt_main()
++
++    def test_interrupt_main_noerror(self):
++        handler = signal.getsignal(signal.SIGINT)
++        try:
++            # No exception should arise.
++            signal.signal(signal.SIGINT, signal.SIG_IGN)
++            _thread.interrupt_main()
++
++            signal.signal(signal.SIGINT, signal.SIG_DFL)
++            _thread.interrupt_main()
++        finally:
++            # Restore original handler
++            signal.signal(signal.SIGINT, handler)
++
++
+ if __name__ == "__main__":
+     unittest.main()
+--- a/Misc/ACKS
++++ b/Misc/ACKS
+@@ -247,7 +247,7 @@ Donn Cave
+ Charles Cazabon
+ Jesús Cea Avión
+ Per Cederqvist
+-Matej Cepl
++Matěj Cepl
+ Carl Cerecke
+ Octavian Cerna
+ Michael Cetrulo
+--- /dev/null
++++ b/Misc/NEWS.d/next/Library/2016-07-27-11-06-43.bpo-23395.MuCEX9.rst
+@@ -0,0 +1,2 @@
++``_thread.interrupt_main()`` now avoids setting the Python error status
++if the ``SIGINT`` signal is ignored or not handled by Python.
+--- a/Modules/signalmodule.c
++++ b/Modules/signalmodule.c
+@@ -1561,13 +1561,18 @@ PyErr_CheckSignals(void)
+ }
+ 
+ 
+-/* Replacements for intrcheck.c functionality
+- * Declared in pyerrors.h
+- */
++/* Simulate the effect of a signal.SIGINT signal arriving. The next time
++   PyErr_CheckSignals is called,  the Python SIGINT signal handler will be
++   raised.
++
++   Missing signal handler for the SIGINT signal is silently ignored. */
+ void
+ PyErr_SetInterrupt(void)
+ {
+-    trip_signal(SIGINT);
++    if ((Handlers[SIGINT].func != IgnoreHandler) &&
++        (Handlers[SIGINT].func != DefaultHandler)) {
++        trip_signal(SIGINT);
++    }
+ }
+ 
+ void

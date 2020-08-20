@@ -1,0 +1,26 @@
+Notes for packagers of Python3
+==============================
+
+0. Faster build turnaround
+--------------------------
+
+By default, python builds with profile-guided optimization. This needs
+an additional run of the test suite and it is generally slow.
+PGO build takes around 50 minutes.
+
+For development, use "--without profileopt" option to disable PGO. This
+shortens the build time to ~5 minutes including test suite.
+
+1. import_failed.map
+----------------------
+
+This is a mechanism installed as part of python3-base, that places shim modules
+on python's path (through a generated zzzz-import-failed-hooks.pth file, so that
+it is imported as much at the end as makes sense; and an _import_failed subdir
+of /usr/lib/pythonX.Y). Then when the user tries to import a module that is part
+of a subpackage, the ImportError will contain a helpful message telling them
+which missing subpackage to install.
+
+This can sometimes cause problems on non-standard configurations, if the pth
+gets included too early (for instance if you are using a script to include all
+pths by hand in some strange order). Just something to look out for.

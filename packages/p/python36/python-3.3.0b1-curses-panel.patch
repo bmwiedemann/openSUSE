@@ -1,0 +1,13 @@
+Index: Modules/_curses_panel.c
+===================================================================
+--- Modules/_curses_panel.c.orig	2012-06-26 22:19:53.000000000 +0200
++++ Modules/_curses_panel.c	2012-08-02 14:56:23.000000000 +0200
+@@ -14,7 +14,7 @@
+ 
+ #include "py_curses.h"
+ 
+-#include <panel.h>
++#include <ncurses/panel.h>
+ 
+ typedef struct {
+     PyObject *PyCursesError;

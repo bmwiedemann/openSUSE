@@ -1,0 +1,12 @@
+--- a/Lib/test/test_os.py
++++ b/Lib/test/test_os.py
+@@ -614,7 +614,8 @@ class UtimeTests(unittest.TestCase):
+         else:
+             # bpo-30649: PPC64 Fedora 3.x buildbot requires
+             # at least a delta of 14 ms
+-            delta = 0.020
++            # 0.020 is still too little for out slow buildbots.
++            delta = 0.030
+         st = os.stat(self.fname)
+         msg = ("st_time=%r, current=%r, dt=%r"
+                % (st.st_mtime, current, st.st_mtime - current))

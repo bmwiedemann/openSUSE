@@ -1,0 +1,41 @@
+From 0d6dde67a01878b0d708b4216e2b31f1c76544fb Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sat, 25 Feb 2017 06:42:28 +0100
+Subject: [PATCH] allow for reproducible builds of python packages
+
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+Background:
+In some distributions like openSUSE, binary rpms contain precompiled .pyc files.
+
+And packages like amqp or twisted dynamically generate .py files at build time
+so those have the current time and that timestamp gets embedded
+into the .pyc file header.
+When we then adapt file timestamps in rpms to be constant,
+the timestamp in the .pyc header will no more match
+the .py timestamp in the filesystem.
+The software will still work, but it will not use the .pyc file as it should.
+---
+ Lib/py_compile.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Lib/py_compile.py b/Lib/py_compile.py
+index 11c5b50..62dcdc7 100644
+--- a/Lib/py_compile.py
++++ b/Lib/py_compile.py
+@@ -137,6 +137,10 @@ def compile(file, cfile=None, dfile=None, doraise=False, optimize=-1):
+     except FileExistsError:
+         pass
+     source_stats = loader.path_stats(file)
++    sde = os.environ.get('SOURCE_DATE_EPOCH')
++    if sde and source_stats['mtime'] > int(sde):
++        source_stats['mtime'] = int(sde)
++        os.utime(file, (source_stats['mtime'], source_stats['mtime']))
+     bytecode = importlib._bootstrap_external._code_to_bytecode(
+             code, source_stats['mtime'], source_stats['size'])
+     mode = importlib._bootstrap_external._calc_mode(file)
+-- 
+2.10.2
+

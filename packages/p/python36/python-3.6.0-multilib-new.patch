@@ -1,0 +1,268 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -4768,12 +4768,26 @@ AC_MSG_CHECKING(LDVERSION)
+ LDVERSION='$(VERSION)$(ABIFLAGS)'
+ AC_MSG_RESULT($LDVERSION)
+ 
++# platlibdir must be defined before LIBPL definition
++AC_MSG_CHECKING(for custom platlibdir)
++AC_ARG_WITH(custom-platlibdir,
++    [AS_HELP_STRING([--with-custom-platlibdir=<libdirname>],
++        [set the platlibdir name to a custom string])],
++    [],
++    [with_custom_platlibdir=yes])
++AS_CASE($with_custom_platlibdir,
++    [yes],[platlibdir=`basename ${libdir}`],
++    [no],[platlibdir=lib],
++    [platlibdir=$with_custom_platlibdir])
++AC_MSG_RESULT($platlibdir)
++AC_SUBST(platlibdir)
++
+ dnl define LIBPL after ABIFLAGS and LDVERSION is defined.
+ AC_SUBST(PY_ENABLE_SHARED)
+ if test x$PLATFORM_TRIPLET = x; then
+-  LIBPL='$(prefix)'"/lib/python${VERSION}/config-${LDVERSION}"
++  LIBPL='$(prefix)'"/${platlibdir}/python${VERSION}/config-${LDVERSION}"
+ else
+-  LIBPL='$(prefix)'"/lib/python${VERSION}/config-${LDVERSION}-${PLATFORM_TRIPLET}"
++  LIBPL='$(prefix)'"/${platlibdir}/python${VERSION}/config-${LDVERSION}-${PLATFORM_TRIPLET}"
+ fi
+ AC_SUBST(LIBPL)
+ 
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -133,13 +133,16 @@ exec_prefix=	@exec_prefix@
+ # Install prefix for data files
+ datarootdir=    @datarootdir@
+ 
++# Name of "lib" directory under prefix
++platlibdir=	@platlibdir@
++
+ # Expanded directories
+ BINDIR=		@bindir@
+ LIBDIR=		@libdir@
+ MANDIR=		@mandir@
+ INCLUDEDIR=	@includedir@
+ CONFINCLUDEDIR=	$(exec_prefix)/include
+-SCRIPTDIR=	$(prefix)/lib
++SCRIPTDIR=	@libdir@
+ ABIFLAGS=	@ABIFLAGS@
+ 
+ # Detailed destination directories
+@@ -746,6 +749,7 @@ Modules/getpath.o: $(srcdir)/Modules/get
+ 		-DEXEC_PREFIX='"$(exec_prefix)"' \
+ 		-DVERSION='"$(VERSION)"' \
+ 		-DVPATH='"$(VPATH)"' \
++		-DPLATLIBDIR='"$(platlibdir)"' \
+ 		-o $@ $(srcdir)/Modules/getpath.c
+ 
+ Programs/python.o: $(srcdir)/Programs/python.c
+--- a/Modules/getpath.c
++++ b/Modules/getpath.c
+@@ -51,9 +51,10 @@
+  * pybuilddir.txt.  If the landmark is found, we're done.
+  *
+  * For the remaining steps, the prefix landmark will always be
+- * lib/python$VERSION/os.py and the exec_prefix will always be
+- * lib/python$VERSION/lib-dynload, where $VERSION is Python's version
+- * number as supplied by the Makefile.  Note that this means that no more
++ * $lib/python$VERSION/os.py and the exec_prefix will always be
++ * $lib/python$VERSION/lib-dynload, where $VERSION is Python's version
++ * number and $lib is PLATLIBDIR as supplied by the Makefile. (usually
++ * "lib", "lib32" or "lib64").  Note that this means that no more
+  * build directory checking is performed; if the first step did not find
+  * the landmarks, the assumption is that python is running from an
+  * installed setup.
+@@ -82,7 +83,7 @@
+  * containing the shared library modules is appended.  The environment
+  * variable $PYTHONPATH is inserted in front of it all.  Finally, the
+  * prefix and exec_prefix globals are tweaked so they reflect the values
+- * expected by other code, by stripping the "lib/python$VERSION/..." stuff
++ * expected by other code, by stripping the "$lib/python$VERSION/..." stuff
+  * off.  If either points to the build directory, the globals are reset to
+  * the corresponding preprocessor variables (so sys.prefix will reflect the
+  * installation location, even though sys.path points into the build
+@@ -101,8 +102,8 @@
+ #endif
+ 
+ 
+-#if !defined(PREFIX) || !defined(EXEC_PREFIX) || !defined(VERSION) || !defined(VPATH)
+-#error "PREFIX, EXEC_PREFIX, VERSION, and VPATH must be constant defined"
++#if !defined(PREFIX) || !defined(EXEC_PREFIX) || !defined(VERSION) || !defined(VPATH) || !defined(PLATLIBDIR)
++#error "PREFIX, EXEC_PREFIX, VERSION, VPATH and PLATLIBDIR must be constant defined"
+ #endif
+ 
+ #ifndef LANDMARK
+@@ -494,7 +495,7 @@ calculate_path(void)
+     _pythonpath = Py_DecodeLocale(PYTHONPATH, NULL);
+     _prefix = Py_DecodeLocale(PREFIX, NULL);
+     _exec_prefix = Py_DecodeLocale(EXEC_PREFIX, NULL);
+-    lib_python = Py_DecodeLocale("lib/python" VERSION, NULL);
++    lib_python = Py_DecodeLocale(PLATLIBDIR "/python" VERSION, NULL);
+ 
+     if (!_pythonpath || !_prefix || !_exec_prefix || !lib_python) {
+         Py_FatalError(
+--- a/Lib/distutils/command/install.py
++++ b/Lib/distutils/command/install.py
+@@ -30,7 +30,7 @@ WINDOWS_SCHEME = {
+ INSTALL_SCHEMES = {
+     'unix_prefix': {
+         'purelib': '$base/lib/python$py_version_short/site-packages',
+-        'platlib': '$platbase/lib/python$py_version_short/site-packages',
++        'platlib': '$platbase/$platlibdir/python$py_version_short/site-packages',
+         'headers': '$base/include/python$py_version_short$abiflags/$dist_name',
+         'scripts': '$base/bin',
+         'data'   : '$base',
+@@ -284,7 +284,7 @@ class install(Command):
+         # about needing recursive variable expansion (shudder).
+ 
+         py_version = sys.version.split()[0]
+-        (prefix, exec_prefix) = get_config_vars('prefix', 'exec_prefix')
++        (prefix, exec_prefix, platlibdir) = get_config_vars('prefix', 'exec_prefix', 'platlibdir')
+         try:
+             abiflags = sys.abiflags
+         except AttributeError:
+@@ -301,6 +301,7 @@ class install(Command):
+                             'sys_exec_prefix': exec_prefix,
+                             'exec_prefix': exec_prefix,
+                             'abiflags': abiflags,
++                            'platlibdir': platlibdir,
+                            }
+ 
+         if HAS_USER_SITE:
+--- a/Lib/distutils/sysconfig.py
++++ b/Lib/distutils/sysconfig.py
+@@ -129,8 +129,9 @@ def get_python_lib(plat_specific=0, stan
+             prefix = plat_specific and EXEC_PREFIX or PREFIX
+ 
+     if os.name == "posix":
++        libdir = plat_specific and get_config_var("platlibdir") or "lib"
+         libpython = os.path.join(prefix,
+-                                 "lib", "python" + get_python_version())
++                                 libdir, "python" + get_python_version())
+         if standard_lib:
+             return libpython
+         else:
+--- a/Lib/sysconfig.py
++++ b/Lib/sysconfig.py
+@@ -20,10 +20,10 @@ __all__ = [
+ 
+ _INSTALL_SCHEMES = {
+     'posix_prefix': {
+-        'stdlib': '{installed_base}/lib/python{py_version_short}',
+-        'platstdlib': '{platbase}/lib/python{py_version_short}',
++        'stdlib': '{installed_base}/{platlibdir}/python{py_version_short}',
++        'platstdlib': '{platbase}/{platlibdir}/python{py_version_short}',
+         'purelib': '{base}/lib/python{py_version_short}/site-packages',
+-        'platlib': '{platbase}/lib/python{py_version_short}/site-packages',
++        'platlib': '{platbase}/{platlibdir}/python{py_version_short}/site-packages',
+         'include':
+             '{installed_base}/include/python{py_version_short}{abiflags}',
+         'platinclude':
+--- a/Lib/pydoc.py
++++ b/Lib/pydoc.py
+@@ -63,6 +63,7 @@ import pkgutil
+ import platform
+ import re
+ import sys
++import sysconfig
+ import time
+ import tokenize
+ import urllib.parse
+@@ -395,9 +396,7 @@ class Doc:
+ 
+     docmodule = docclass = docroutine = docother = docproperty = docdata = fail
+ 
+-    def getdocloc(self, object,
+-                  basedir=os.path.join(sys.base_exec_prefix, "lib",
+-                                       "python%d.%d" %  sys.version_info[:2])):
++    def getdocloc(self, object, basedir=sysconfig.get_path('stdlib')):
+         """Return the location of module docs or None"""
+ 
+         try:
+--- a/Lib/site.py
++++ b/Lib/site.py
+@@ -304,9 +304,15 @@ def getsitepackages(prefixes=None):
+         seen.add(prefix)
+ 
+         if os.sep == '/':
+-            sitepackages.append(os.path.join(prefix, "lib",
++            from sysconfig import get_config_var
++            platlibdir = get_config_var("platlibdir")
++            sitepackages.append(os.path.join(prefix, platlibdir,
+                                         "python%d.%d" % sys.version_info[:2],
+                                         "site-packages"))
++            if platlibdir != "lib":
++                sitepackages.append(os.path.join(prefix, "lib",
++                                            "python%d.%d" % sys.version_info[:2],
++                                            "site-packages"))
+         else:
+             sitepackages.append(prefix)
+             sitepackages.append(os.path.join(prefix, "lib", "site-packages"))
+--- a/Lib/trace.py
++++ b/Lib/trace.py
+@@ -53,6 +53,7 @@ import linecache
+ import os
+ import re
+ import sys
++import sysconfig
+ import token
+ import tokenize
+ import inspect
+@@ -670,9 +671,8 @@ def main():
+     opts = parser.parse_args()
+ 
+     if opts.ignore_dir:
+-        rel_path = 'lib', 'python{0.major}.{0.minor}'.format(sys.version_info)
+-        _prefix = os.path.join(sys.base_prefix, *rel_path)
+-        _exec_prefix = os.path.join(sys.base_exec_prefix, *rel_path)
++        _prefix = sysconfig.get_path("stdlib")
++        _exec_prefix = sysconfig.get_path("platstdlib")
+ 
+     def parse_ignore_dir(s):
+         s = os.path.expanduser(os.path.expandvars(s))
+--- a/Lib/test/test_site.py
++++ b/Lib/test/test_site.py
+@@ -264,8 +264,9 @@ class HelperFunctionsTests(unittest.Test
+             self.assertEqual(dirs[1], wanted)
+         elif os.sep == '/':
+             # OS X non-framework builds, Linux, FreeBSD, etc
+-            self.assertEqual(len(dirs), 1)
+-            wanted = os.path.join('xoxo', 'lib',
++            platlibdir = sysconfig.get_config_var('platlibdir')
++            self.assertTrue(len(dirs) in (1,2))
++            wanted = os.path.join('xoxo', platlibdir,
+                                   'python%d.%d' % sys.version_info[:2],
+                                   'site-packages')
+             self.assertEqual(dirs[0], wanted)
+--- a/Lib/test/test_sysconfig.py
++++ b/Lib/test/test_sysconfig.py
+@@ -279,6 +279,7 @@ class TestSysConfig(unittest.TestCase):
+         # is similar to the global posix_prefix one
+         base = get_config_var('base')
+         user = get_config_var('userbase')
++        platlibdir = get_config_var("platlibdir")
+         # the global scheme mirrors the distinction between prefix and
+         # exec-prefix but not the user scheme, so we have to adapt the paths
+         # before comparing (issue #9100)
+@@ -293,8 +294,19 @@ class TestSysConfig(unittest.TestCase):
+                 # before comparing
+                 global_path = global_path.replace(sys.base_prefix, sys.prefix)
+                 base = base.replace(sys.base_prefix, sys.prefix)
++
++            if platlibdir != "lib":
++                platbase = os.path.join(base, platlibdir)
++                purebase = os.path.join(base, "lib")
++                userlib = os.path.join(user, "lib")
++                # replace platbase first because usually purebase is a prefix of platbase
++                # /usr/lib is prefix of /usr/lib64 and would get replaced first
++                modified_path = global_path.replace(platbase, userlib, 1).replace(purebase, userlib, 1)
++            else:
++                modified_path = global_path.replace(base, user, 1)
++
+             user_path = get_path(name, 'posix_user')
+-            self.assertEqual(user_path, global_path.replace(base, user, 1))
++            self.assertEqual(user_path, modified_path)
+ 
+     def test_main(self):
+         # just making sure _main() runs and returns things in the stdout
