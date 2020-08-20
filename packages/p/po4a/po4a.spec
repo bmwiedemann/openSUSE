@@ -1,7 +1,7 @@
 #
 # spec file for package po4a
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           po4a
-Version:        0.57
+Version:        0.61
 Release:        0
 Summary:        Framework to translate documentation and other materials
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            https://po4a.org/
+URL:            https://po4a.org/
 Source:         https://github.com/mquinson/po4a/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  docbook-xsl-stylesheets
@@ -32,9 +32,9 @@ BuildRequires:  perl-SGMLS >= 1.03ii
 BuildRequires:  perl-Term-ReadKey
 BuildRequires:  perl-Text-WrapI18N
 BuildRequires:  perl-Unicode-LineBreak
+BuildRequires:  perl-YAML-Tiny
 BuildRequires:  perl-base
 BuildRequires:  perl-gettext >= 1.01
-BuildRequires:  perl-YAML-Tiny
 
 # for test suite
 BuildRequires:  docbook_4
@@ -77,7 +77,7 @@ perl Build.PL installdirs=vendor
 
 %check
 # requires texlive, which is too heavy for the package
-rm t/19-tex.t
+rm -rf t/fmt-tex.t t/fmt/tex
 
 #run the tests
 ./Build test
@@ -101,5 +101,6 @@ rm -rf %{buildroot}
 %dir %{_mandir}/pt
 %dir %{_mandir}/uk
 %dir %{_mandir}/zh_CHS
+%dir %{_mandir}/sr_Cyrl
 
 %changelog

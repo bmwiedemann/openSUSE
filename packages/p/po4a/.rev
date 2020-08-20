@@ -139,4 +139,38 @@
     <comment></comment>
     <requestid>750391</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>83e0c0dee0849b423d9fa85093db09d2</srcmd5>
+    <version>0.61</version>
+    <time>1597955215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.61
+po4a tool:
+ * Robustify --srcdir and --destdir: When building the schroot package,
+ these paths happen to be soft links to the same directory, making po4a
+ believe that the POT file is specified twice (to the same value). po4a
+ is now ignoring these dups.
+ 
+Translations:
+Updated: Chinese, Czech, Dutch, French, German, Portuguese, Portuguese
+(Brazil), Serbian and Ukrainian.
+- Update to version 0.60
+Asciidoc:
+ * Introduce &quot;compat&quot; option to parse like asciidoc or asciidoctor.
+Text (and Markdown):
+ * Fix the support of nested lists.
+Other:
+ * Remove the experimental C extension that was never built, distributed,
+ tested nor modified since 2007.
+ 
+XML:
+ * Provide a meaningful message when the translators butcher the &lt;placeholder&gt;
+ attributes instead of truncating the file.
+ 
+Translations:
+Updated: Chinese, Croatian, Dutch, French, German, Norwegian Bokmål, Portuguese
+(Brazil), Serbian and Ukrainian.
+</comment>
+    <requestid>827371</requestid>
+  </revision>
 </revisionlist>

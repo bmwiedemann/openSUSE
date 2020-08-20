@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Aug 16 23:52:34 UTC 2020 - Pau Garcia Quiles <pau.garcia@suse.com>
+
+- Update to version 0.61
+
+po4a tool:
+
+ * Robustify --srcdir and --destdir: When building the schroot package,
+ these paths happen to be soft links to the same directory, making po4a
+ believe that the POT file is specified twice (to the same value). po4a
+ is now ignoring these dups.
+ 
+Translations:
+
+Updated: Chinese, Czech, Dutch, French, German, Portuguese, Portuguese
+(Brazil), Serbian and Ukrainian.
+
+-------------------------------------------------------------------
+Sun Aug 16 22:27:18 UTC 2020 - Pau Garcia Quiles <pau.garcia@suse.com>
+
+- Update to version 0.60
+
+Asciidoc:
+
+ * Introduce "compat" option to parse like asciidoc or asciidoctor.
+
+Text (and Markdown):
+
+ * Fix the support of nested lists.
+
+Other:
+
+ * Remove the experimental C extension that was never built, distributed,
+ tested nor modified since 2007.
+ 
+XML:
+
+ * Provide a meaningful message when the translators butcher the <placeholder>
+ attributes instead of truncating the file.
+ 
+Translations:
+
+Updated: Chinese, Croatian, Dutch, French, German, Norwegian Bokmål, Portuguese
+(Brazil), Serbian and Ukrainian.
+
+-------------------------------------------------------------------
 Fri Nov 22 12:18:01 UTC 2019 - Luiz Fernando Ranghetti <elchevive68@gmail.com>
 
 - updated to version 0.57
