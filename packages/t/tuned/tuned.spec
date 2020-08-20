@@ -16,9 +16,7 @@
 #
 
 
-%{!?_tmpfilesdir:%global _tmpfilesdir %{_libexecdir}/tmpfiles.d}
-
-%define         profile_dir %{_prefix}/lib/%{name}
+%define         profile_dir %{_libexecdir}/%{name}
 
 Name:           tuned
 Version:        2.13.0

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:30:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Dot not mangle _tmpfilesdir: all half-way decent distros define
+  this already.
+- Define profile_dir as %{_libexecdir}/%{name}: stay closer in line
+  with what upstream actually coded (with the change of libexecdir
+  to /usr/libexec in Tumbleweed, we are in the equal path now).
+
+-------------------------------------------------------------------
 Thu Jun 11 14:34:09 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 2.13.0. Note that the previous version was not
