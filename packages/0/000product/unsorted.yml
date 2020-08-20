@@ -1353,6 +1353,7 @@ unsorted:
   - bs-update 
   - bs1770gain 
   - bs2b-tools 
+  - bscalc 
   - bsdiff 
   - bsdtar 
   - bsf 
@@ -6649,6 +6650,7 @@ unsorted:
   - jdom2-javadoc 
   - jedit 
   - jedit-javadoc 
+  - jefferson 
   - jemalloc 
   - jemalloc-devel 
   - jemmy 
@@ -10347,8 +10349,8 @@ unsorted:
   - libhts-devel-32bit: [x86_64] 
   - libhts3 
   - libhts3-32bit: [x86_64] 
-  - libhttp_parser2_7_1 
-  - libhttp_parser2_7_1-32bit: [x86_64] 
+  - libhttp_parser2_9 
+  - libhttp_parser2_9-32bit: [x86_64] 
   - libhttrack2 
   - libhubbub-devel 
   - libhubbub-doc 
@@ -11793,6 +11795,8 @@ unsorted:
   - libpythia8lhapdf6 
   - libpython2_7-1_0-32bit: [x86_64] 
   - libpython3_8-1_0-32bit: [x86_64] 
+  - libpython3_9-1_0 
+  - libpython3_9-1_0-32bit: [x86_64] 
   - libqalculate-devel 
   - libqb-devel 
   - libqb-devel-32bit: [x86_64] 
@@ -12942,7 +12946,7 @@ unsorted:
   - libunicap2 
   - libunicap2-32bit: [x86_64] 
   - libuninameslist-devel 
-  - libuninameslist0 
+  - libuninameslist1 
   - libunique1-devel 
   - libunistring-devel 
   - libunistring-devel-32bit: [x86_64] 
@@ -13874,6 +13878,7 @@ unsorted:
   - lua51-loadkit 
   - lua51-lpeg 
   - lua51-lpeg-doc 
+  - lua51-lpeg_patterns 
   - lua51-lua-dbus 
   - lua51-lua-ev 
   - lua51-lua-ev-devel 
@@ -13920,6 +13925,7 @@ unsorted:
   - lua53-loadkit 
   - lua53-lpeg 
   - lua53-lpeg-doc 
+  - lua53-lpeg_patterns 
   - lua53-lua-dbus 
   - lua53-lua-ev 
   - lua53-lua-ev-devel 
@@ -13966,6 +13972,7 @@ unsorted:
   - lua54-loadkit 
   - lua54-lpeg 
   - lua54-lpeg-doc 
+  - lua54-lpeg_patterns 
   - lua54-lua-dbus 
   - lua54-lua-ev 
   - lua54-lua-ev-devel 
@@ -19707,6 +19714,7 @@ unsorted:
   - python3-autoflake 
   - python3-automaton 
   - python3-autopep8 
+  - python3-autoray 
   - python3-autoupgrade-ng 
   - python3-av 
   - python3-avahi 
@@ -21377,6 +21385,7 @@ unsorted:
   - python3-pyRFC3339 
   - python3-pyRXP 
   - python3-pyScss 
+  - python3-pyUSID 
   - python3-pyVows 
   - python3-pyacoustid 
   - python3-pyaes 
@@ -21667,7 +21676,7 @@ unsorted:
   - python3-python-openid-cla 
   - python3-python-openid-teams 
   - python3-python-pam 
-  - python3-python-prctl: [x86_64] 
+  - python3-python-prctl 
   - python3-python-pseudorandom 
   - python3-python-ptrace 
   - python3-python-qdatamatrix 
@@ -21802,6 +21811,7 @@ unsorted:
   - python3-roifile 
   - python3-rollbar 
   - python3-rope 
+  - python3-rpcq 
   - python3-rply 
   - python3-rpmconf 
   - python3-rpmfile 
@@ -22327,6 +22337,19 @@ unsorted:
   - python38-idle 
   - python38-testsuite 
   - python38-tools 
+  - python39 
+  - python39-32bit: [x86_64] 
+  - python39-base 
+  - python39-base-32bit: [x86_64] 
+  - python39-curses 
+  - python39-dbm 
+  - python39-devel 
+  - python39-doc 
+  - python39-doc-devhelp 
+  - python39-idle 
+  - python39-testsuite 
+  - python39-tk 
+  - python39-tools 
   - pytorch-converters: [x86_64] 
   - pytorch-examples: [x86_64] 
   - pyzo 
