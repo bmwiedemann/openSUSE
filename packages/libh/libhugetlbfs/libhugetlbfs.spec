@@ -1,7 +1,7 @@
 #
 # spec file for package libhugetlbfs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define my_make_flags V=1 CFLAGS="%{optflags} -fPIC" BUILDTYPE=NATIVEONLY PREFIX=%{_prefix} LIBDIR32=%{_libdir} DESTDIR=%{buildroot}
 Name:           libhugetlbfs
-Version:        2.21
+Version:        2.22
 Release:        0
 Summary:        Helper library for the Huge Translation Lookaside Buffer Filesystem
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            https://github.com/libhugetlbfs/libhugetlbfs
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://github.com/libhugetlbfs/libhugetlbfs
+Source0:        https://github.com/libhugetlbfs/libhugetlbfs/releases/download/%{version}/libhugetlbfs-%{version}.tar.gz 
 Source1:        baselibs.conf
 Patch2:         libhugetlbfs.s390.patch
 Patch4:         libhugetlbfs.tests-malloc.patch
 Patch7:         libhugetlbfs_ia64_fix_missing_test.patch
-Patch8:         libhugetlbfs_fix_tests.patch
 Patch14:        disable-rw-on-non-ldscripts.diff
 Patch15:        zero_filesize_segment.patch
 BuildRequires:  doxygen
@@ -65,7 +64,6 @@ The testsuite for libhugetlbfs. Binaries can be found in
 %patch2 -p1
 %patch4 -p1
 %patch7 -p1
-%patch8 -p1
 %patch14
 %patch15 -p1
 

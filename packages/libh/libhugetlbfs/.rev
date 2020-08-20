@@ -391,4 +391,22 @@ D fix_plt_extrasz_always_returning_0_on_ppc64le.patch
 - Remove patch &quot;ignore-perl-modules.diff&quot;</comment>
     <requestid>639569</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b02ab3068e4d428eff966692ad16447f</srcmd5>
+    <version>2.22</version>
+    <time>1597955179</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.22:
+  * Library now verifies if slices are supported on PPC
+  * ld.hugetlbfs now supports multiple page sizes on PPC64
+  * Various GCC warning cleanups
+  * setup script converted to Python 3
+  * Tests are only run on online CPUs and only if a sufficient number are
+  available
+  * task-size-overrun now searches empty address space more efficiently
+  * Tests that do not link the library are run for default page sizes only
+  * Test runner now uses Python 3
+- remove libhugetlbfs_fix_tests.patch (upstream)</comment>
+    <requestid>827356</requestid>
+  </revision>
 </revisionlist>
