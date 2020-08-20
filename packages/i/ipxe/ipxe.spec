@@ -17,7 +17,7 @@
 
 
 Name:           ipxe
-Version:        1.0.0+git20190929.3fe683eb
+Version:        1.20.1+git20200817.ef2c844d
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
@@ -26,20 +26,29 @@ Url:            http://ipxe.org/
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  /usr/bin/mkisofs
 BuildRequires:  binutils-devel
+%ifarch aarch64
+%if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
+BuildRequires:  cross-x86_64-gcc7
+%else
+BuildRequires:  cross-x86_64-gcc10
+%endif
+%endif
 %ifarch x86_64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-aarch64-gcc7
 %else
-BuildRequires:  cross-aarch64-gcc9
+BuildRequires:  cross-aarch64-gcc10
 %endif
 %endif
 BuildRequires:  perl
+%ifarch %{ix86} x86_64
 BuildRequires:  syslinux
+%endif
 BuildRequires:  xz-devel
 # ix86 does not have a cross-x86_64 gcc available so it can't build
 # the x86_64 ipxe code. As a result of which, the support for ix86
 # is more limited.
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  %{ix86} x86_64 aarch64
 
 %description
 iPXE is a network bootloader. It provides a direct
@@ -70,8 +79,11 @@ make_ipxe() {
         VERSION=%{version} "$@"
 }
 
+%ifarch %{ix86} x86_64
 make_ipxe bin-i386-efi/ipxe.efi
 make_ipxe bin-i386-efi/snp.efi
+%endif
+
 %ifarch x86_64
 # ix86 can't cross-compile
 make_ipxe bin-x86_64-efi/ipxe.efi
@@ -79,17 +91,32 @@ make_ipxe bin-x86_64-efi/snp.efi
 make_ipxe CROSS="aarch64-suse-linux-" bin-arm64-efi/snp.efi
 %endif # x86_64
 
-make_ipxe bin/undionly.kpxe bin/ipxe.{dsk,iso,usb,lkrn}
+%ifarch aarch64
+make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/ipxe.efi
+make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/snp.efi
+make_ipxe bin-arm64-efi/snp.efi
+%endif
+
+
+make_ipxe \
+%ifnarch %{ix86} x86_64
+  CROSS="x86_64-suse-linux-" \
+%endif
+  bin/undionly.kpxe bin/ipxe.{dsk,iso,usb,lkrn}
 
 %install
 mkdir -p %{buildroot}/%{_datadir}/%{name}/
 mkdir -p %{buildroot}/%{_datadir}/%{name}.efi/
 
+#%ifarch %{ix86} x86_64
 install -D -m0644 src/bin/undionly.kpxe %{buildroot}/%{_datadir}/%{name}/
 install -D -m0644 src/bin/ipxe.{iso,usb,dsk,lkrn} %{buildroot}/%{_datadir}/%{name}/
+#%endif
+%ifarch %{ix86} x86_64
 install -D -m0644 src/bin-i386-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-i386.efi
 install -D -m0644 src/bin-i386-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-i386.efi
-%ifarch x86_64
+%endif
+%ifnarch %{ix86}
 install -D -m0644 src/bin-x86_64-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-x86_64.efi
 install -D -m0644 src/bin-x86_64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-x86_64.efi
 install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-arm64.efi
@@ -98,18 +125,24 @@ install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp
 %files bootimgs
 %defattr(-,root,root)
 %dir %{_datadir}/%{name}
+#%ifarch %{ix86} x86_64
 %{_datadir}/%{name}/ipxe.iso
 %{_datadir}/%{name}/ipxe.usb
 %{_datadir}/%{name}/ipxe.dsk
 %{_datadir}/%{name}/ipxe.lkrn
+#%endif
+%ifarch %{ix86} x86_64
 %{_datadir}/%{name}/ipxe-i386.efi
 %{_datadir}/%{name}/snp-i386.efi
-%ifarch x86_64
+%endif
+%ifnarch %{ix86}
 %{_datadir}/%{name}/ipxe-x86_64.efi
 %{_datadir}/%{name}/snp-x86_64.efi
 %{_datadir}/%{name}/snp-arm64.efi
 %endif
+#%ifarch %{ix86} x86_64
 %{_datadir}/%{name}/undionly.kpxe
+#%endif
 %license COPYING COPYING.GPLv2 COPYING.UBDL
 
 %changelog

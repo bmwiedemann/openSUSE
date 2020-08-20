@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Aug 20 18:52:31 UTC 2020 - bwiedemann@suse.com
+
+- Update to version 1.20.1+git20200817.ef2c844d:
+  * [efi] Attempt NII initialisation both with and without cable detection
+  * [efi] Use device path to locate filesystem from which we were loaded
+  * [efi] Match EDK2 numbering for USB ports
+  * [comboot] Fix stack pointer retrieval after COM32 binary returns
+  * [efi] Check the status code from AllocatePool()
+  * [cmdline] Add "--timeout" parameter to "ifconf" command
+  * [intelx] Added PCI_ROM entry for Intel x553/x557-AT and x553 (SFP+) NICs
+  * [intel] Set INTEL_NO_PHY_RST on i218v
+  * [intel] Add INTEL_NO_PHY_RST for I218LM
+  * [deflate] Fix typo in comment describing length codes
+  * [build] Fix a GNUism that FreeBSD's sed(1) cannot deal with
+  * [wpa] Fix erroneous debug message in wpa_derive_ptk
+  * [libc] Fix memcmp() to return proper values
+  * [pcbios] Take alignment into account when checking for available space
+  * [pcbios] Fix "out of memory" detection when expanding bottom area
+  * [libgcc] Change __divmoddi4 from int64 [unknown] to int64_t
+  * [build] Fix default target in sdsk image
+  * [dns] Use all configured DNS servers
+  * [xfer] Remove address family from definition of a socket opener
+  * [sfc] Add PCI ID for Solarflare SFC9120 and Solarflare SFC9140
+  * [efi] Claim SNP devices early in efi_download_start()
+  * [efi] Ensure NUL byte is at lowest address within stack cookie
+  * [efi] Distribute available entropy within stack cookie
+  * [libc] Add bit-rotation functions for unsigned long values
+  * [efi] Avoid setting direction flag on EFI platforms
+  * [libc] Provide an unoptimised generic_memcpy_reverse()
+  * [crypto] Avoid temporarily setting direction flag in bigint_is_geq()
+  * [usb] Leave port enabled after a failed device registration
+  * [axge] Reapply USB device configuration when opening network device
+  * [xhci] Increase link state settling delay to 100ms
+  * [usb] Avoid unnecessary calls to usb_hub_set_drvdata()
+  * [xhci] Set link state to RxDetect after disabling USB3 root hub port
+  * [usb] Do not attempt to disable USB3 hub ports
+  * [usb] Add missing usb_recycle() for completed hub interrupt transfers
+  * [usb] Clear device endpoint halt before resetting host endpoint
+  * [axge] Handle non-gigabit link speeds
+  * [efi] Raise TPL during driver entry point
+  * [efi] Detect and disable seriously broken EFI_RNG_PROTOCOL implementations
+  * [build] Disable position-independent code for ARM64 EFI builds
+  * [golan] Add explicit type casts for nodnic_queue_pair_type
+  * [intel] Avoid spurious compiler warning on GCC 10
+  * [build] Be explicit about -fcommon compiler directive
+  * [ocsp] Accept SHA1 certID responses even if SHA1 is not enabled
+  * [efi] Enable stack protection where possible
+  * [parseopt] Treat empty integer strings in user input as invalid
+  * [util] Treat empty integer strings as invalid
+  * [snp] Retry initialisation if link is reported as down
+  * [crypto] Disable MD5 as an OID-identifiable algorithm by default
+  * [crypto] Ensure that test code drags in required ASN.1 object identifiers
+  * [crypto] Allow algorithms to be included without being OID-identifiable
+  * [tls] Default to supporting only TLSv1.1 or above
+  * [tls] Allow a minimum TLS protocol version to be specified
+  * [efi] Attempt to connect our driver directly if ConnectController fails
+  * [uri] Avoid appearing to access final byte of a potentially empty string
+  * [efi] Work around UEFI specification bug in LoadImage for SAN boot
+  * [efi] Work around UEFI specification bug in LoadImage
+  * [png] Fix potential integer overflow
+  * [bnxt] Add driver support for Broadcom NetXtreme-E Adapters
+  * [efi] Disambiguate errors returned by ConnectController
+  * [int13con] Create log partition only when CONSOLE_INT13 is enabled
+  * [bios] Define macros for constructing partition table entries
+  * [iscsi] Eliminate variable-length stack allocation in URI parsing
+  * [iscsi] Eliminate variable-length stack allocations in CHAP handlers
+  * [settings] Eliminate variable-length stack allocation
+  * [slam] Allow for the possibility of IPv6 multicast addresses
+  * [slam] Eliminate variable-length stack allocation
+  * [infiniband] Eliminate variable-length stack allocation
+  * [tftp] Eliminate unnecessary variable-length stack allocation
+  * [travis] Ensure that most recent tag is always available
+  * [build] Construct full version number automatically from git revision
+  * [snp] Set EFI_SIMPLE_NETWORK_RECEIVE_MULTICAST bit as per UEFI spec
+  * [snp] Try promiscuous multicast receive filter if the regular one fails
+  * [peerdist] Allow for the use of a hosted cache server
+  * [peerdist] Allow PeerDist to be globally enabled or disabled
+
+-------------------------------------------------------------------
+Tue Jul 21 13:19:27 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on aarch64
+
+-------------------------------------------------------------------
 Fri Oct 25 12:34:08 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update cross compiler to GCC 9

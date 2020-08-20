@@ -73,4 +73,12 @@ to make it compile on Factory again</comment>
     <comment></comment>
     <requestid>742973</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0f1957fb880d374c61e08385f7cb6bd6</srcmd5>
+    <version>1.20.1+git20200817.ef2c844d</version>
+    <time>1597955706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828296</requestid>
+  </revision>
 </revisionlist>
