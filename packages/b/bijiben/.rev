@@ -400,4 +400,12 @@
     <comment>New stable release (forwarded request 819444 from iznogood)</comment>
     <requestid>819957</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9fd57d482118bc9d33e900521e46c8ed</srcmd5>
+    <version>3.36.3</version>
+    <time>1597955067</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 826883 from iznogood)</comment>
+    <requestid>827289</requestid>
+  </revision>
 </revisionlist>
