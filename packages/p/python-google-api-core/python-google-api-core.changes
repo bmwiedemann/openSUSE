@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:02:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable test test___call___and_execute_retry_hitting_deadline
+  to make leap buildable
+
+-------------------------------------------------------------------
 Tue Jun  2 16:14:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.17.0:

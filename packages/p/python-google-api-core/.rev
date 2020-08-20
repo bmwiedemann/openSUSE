@@ -121,4 +121,13 @@
   * consume part of StreamingResponseIterator to support failure while under a retry context (#10206) (2b103b6)</comment>
     <requestid>810893</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>c7d73c706dce80925236e523f2529b1d</srcmd5>
+    <version>1.17.0</version>
+    <time>1597955453</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable test test___call___and_execute_retry_hitting_deadline
+  to make leap buildable</comment>
+    <requestid>828031</requestid>
+  </revision>
 </revisionlist>

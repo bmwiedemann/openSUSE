@@ -73,7 +73,8 @@ Core Library for Google Client Libraries
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test___call___and_execute_retry_hitting_deadline - broken on Leap with old mock
+%pytest -k 'not test___call___and_execute_retry_hitting_deadline'
 
 %files %{python_files}
 %license LICENSE
