@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 08:28:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use proper %{_udevrulesdir} instead of (wrong)
+  %{_libexecdir}/udev/rules.d.
+
+-------------------------------------------------------------------
 Wed Mar 25 09:01:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to new upstream version 2.4.12:

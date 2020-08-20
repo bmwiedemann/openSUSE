@@ -58,7 +58,7 @@ popd
 %install
 pushd src
 python3 setup.py install --root=%{buildroot} --prefix=/usr
-install -m 644 -D -t %{buildroot}%{_libexecdir}/udev/rules.d build_data/linux/%{name}/lib/udev/rules.d/99-tinkerforge-brickv.rules
+install -m 644 -D -t %{buildroot}%{_udevrulesdir} build_data/linux/%{name}/lib/udev/rules.d/99-tinkerforge-brickv.rules
 install -m 644 -D -t %{buildroot}/usr/share/pixmaps build_data/linux/%{name}/usr/share/pixmaps/brickv-icon.png
 install -m 644 -D -t %{buildroot}/usr/share/applications build_data/linux/%{name}/usr/share/applications/%{name}.desktop
 popd
@@ -69,7 +69,7 @@ popd
 %doc src/changelog README.rst
 %{_bindir}/%{name}
 %{python3_sitelib}/brickv*
-%{_libexecdir}/udev/rules.d/*.rules
+%{_udevrulesdir}/*.rules
 /usr/share/pixmaps/*
 /usr/share/applications/*
 
