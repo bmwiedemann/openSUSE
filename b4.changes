@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:30:13 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.5.2+2:
+  * Require that a trailer is at least 2 chars long
+  * Cover letters may not have a diffstat
+- add requests to Requires
+
+-------------------------------------------------------------------
 Tue Jul 28 11:07:40 UTC 2020 - jslaby@suse.com
 
 - Update to version 0.5.2:
