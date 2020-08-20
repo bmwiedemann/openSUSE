@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:06:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 2.5.3:
+  * New --format option fields %a (basename) and %p (path)
+  * fast incremental stdin search
+  * updated --gitignore-files handling of negated globs
+
+-------------------------------------------------------------------
 Sun Aug 16 09:10:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 2.5.2:
