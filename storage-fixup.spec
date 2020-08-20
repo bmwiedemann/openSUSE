@@ -55,7 +55,7 @@ its lifespan.
 %install
 %make_install
 install -D -p -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/storage-fixup.service
-install -D -p -m 755 %{SOURCE2} %{buildroot}%{_libexecdir}/systemd/system-sleep/storage-fixup
+install -D -p -m 755 %{SOURCE2} %{buildroot}%{_prefix}/lib/systemd/system-sleep/storage-fixup
 
 %pre
 if /usr/bin/chkconfig boot.storage-fixup 2>/dev/null | grep -q on; then
@@ -81,8 +81,8 @@ fi
 %doc LICENSE
 %config(noreplace) %{_sysconfdir}/storage-fixup.conf
 %{_unitdir}/storage-fixup.service
-%dir %{_libexecdir}/systemd/system-sleep/
-%{_libexecdir}/systemd/system-sleep/storage-fixup
+%dir %{_prefix}/lib/systemd/system-sleep/
+%{_prefix}/lib/systemd/system-sleep/storage-fixup
 %{_sbindir}/storage-fixup
 %{_mandir}/man8/storage-fixup.8*
 
