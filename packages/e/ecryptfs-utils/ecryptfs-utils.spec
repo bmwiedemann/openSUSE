@@ -1,7 +1,7 @@
 #
 # spec file for package ecryptfs-utils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           ecryptfs-utils
 Version:        111
 Release:        0
 Summary:        Userspace Utilities for ecryptfs
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Security
-Url:            http://ecryptfs.org/
+URL:            http://ecryptfs.org/
 Source0:        http://launchpad.net/ecryptfs/trunk/%{version}/+download/ecryptfs-utils_%{version}.orig.tar.gz
 Source1:        baselibs.conf
 Source2:        ecryptfs-mount-private.png
@@ -114,8 +114,8 @@ mv %{buildroot}/%{_datadir}/%{name}/ecryptfs-setup-private.desktop %{buildroot}/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 #we need ecryptfs kernel module
-mkdir -p %{buildroot}%{_libexecdir}/modules-load.d/
-echo -e "# ecryptfs module is needed before ecryptfs mount, so mount helper can \n# check for file name encryption support\necryptfs" >%{buildroot}%{_libexecdir}/modules-load.d/ecryptfs.conf
+mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d/
+echo -e "# ecryptfs module is needed before ecryptfs mount, so mount helper can \n# check for file name encryption support\necryptfs" >%{buildroot}%{_prefix}/lib/modules-load.d/ecryptfs.conf
 
 %verifyscript
 %verify_permissions -e /sbin/mount.ecryptfs_private
@@ -153,8 +153,8 @@ fi
 #{python_sitelib}/ecryptfs-utils
 #{python_sitearch}/ecryptfs-utils
 %{_datadir}/applications/*.desktop
-%dir %{_libexecdir}/modules-load.d
-%{_libexecdir}/modules-load.d/*
+%dir %{_prefix}/lib/modules-load.d
+%{_prefix}/lib/modules-load.d/*
 
 %files -n %{lname}
 %defattr(-, root, root)
