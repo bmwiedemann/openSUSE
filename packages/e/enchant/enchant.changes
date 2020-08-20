@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug  5 21:50:14 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.2.8:
+  + Add a provider back-end for Nuspell. Nuspell is a new
+    spell-checker whose development has been supported by the
+    Mozilla foundation. It is backwards-compatible with Hunspell
+    and Myspell dictionaries, while supporting a wider range of
+    language peculiarities, improved suggestions, and easier
+    maintainability of the code-base.
+  + Doxygen documentation generation is now supported for Enchant.
+  + The command-line parsing of the “enchant” program has been made
+    more friendly and reliable. The -L flag (show line numbers),
+    which had not been working for some time, has been fixed.
+  + A buffer overflow in personal wordlist handling has been fixed.
+  + Minor improvements were made to the tests.
+- Changes in version 2.2.7:
+  + Fix some memory leaks in the hunspell and aspell providers.
+- Changes in version 2.2.6:
+  + Treat PWL as text, not binary.
+- Run spec-cleaner: Remove package groups.
+
+-------------------------------------------------------------------
 Mon Apr 13 07:36:20 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Enable aspell support on SLE to synchronize with Leap.

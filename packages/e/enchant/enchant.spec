@@ -17,11 +17,10 @@
 
 
 Name:           enchant
-Version:        2.2.5
+Version:        2.2.8
 Release:        0
 Summary:        Generic Spell Checking Library
 License:        LGPL-2.1-or-later
-Group:          Productivity/Text/Spell
 URL:            https://abiword.github.io/enchant/
 Source:         https://github.com/AbiWord/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -38,7 +37,6 @@ with different spell checking libraries.
 
 %package tools
 Summary:        Command line tools for the Enchant spell checking library
-Group:          Productivity/Text/Spell
 
 %description tools
 A library providing an efficient extensible abstraction for dealing
@@ -49,7 +47,6 @@ This package provides command-line tools to interact with enchant.
 %package data
 Summary:        Data files for libenchant
 # enchant up to version 1.6.1 was not packaged properly according the SLPP
-Group:          Productivity/Text/Spell
 Conflicts:      libenchant1 < 1.6.1
 
 %description data
@@ -60,7 +57,6 @@ This package provides data/configuration files for libenchant.
 
 %package -n enchant-2-backend-aspell
 Summary:        Aspell backend for the Enchant spell checking library
-Group:          Productivity/Text/Spell
 Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libaspell.so))
 Provides:       enchant-2-backend
 
@@ -71,7 +67,6 @@ libraries.
 
 %package -n enchant-2-backend-hunspell
 Summary:        Hunspell backend for the Enchant spell checking library
-Group:          Productivity/Text/Spell
 Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libhunspell.so))
 Provides:       enchant-2-backend
 
@@ -82,7 +77,6 @@ libraries.
 
 %package -n enchant-2-backend-voikko
 Summary:        Voikko backend for the Enchant spell checking library
-Group:          Productivity/Text/Spell
 Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libvoikko.so))
 Provides:       enchant-2-backend
 Provides:       locale(libenchant-2-2:fi)
@@ -94,7 +88,6 @@ libraries.
 
 %package -n libenchant-2-2
 Summary:        Generic Spell Checking Library
-Group:          System/Libraries
 Requires:       enchant-2-backend
 Requires:       enchant-data >= %{version}
 Suggests:       enchant-2-backend-hunspell
@@ -105,7 +98,6 @@ with different spell checking libraries.
 
 %package devel
 Summary:        Development files for the Enchant spell checking library
-Group:          Development/Libraries/C and C++
 Requires:       glib2-devel
 Requires:       libenchant-2-2 = %{version}
 Requires:       libstdc++-devel
@@ -121,7 +113,7 @@ to develop applications that require these.
 %configure \
     --disable-static \
     --with-aspell
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
