@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 16 13:04:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.05:
+  * Exclude Timeshift directory (Github #121)
+  * Added Help button in Analysis to explain its purpose
+    (Github #122)
+  * Updated language files: English (en_UK), Galician (gl),
+    Ukrainian (uk), French (fr), Afrikans (af), Hebrew (he),
+    Chinese (zh_TW)
+  * Add Encrypted.PDF as clean (Github #120). Also, remove alert-
+    encrypted-* options
+  * Add set LC_TIME (Gitlab commit a7b3a31c)
+  * More README cleanup
+  * Updated language files: Dutch (nl), Afrikans (af),
+    Indonesian (id), English (en_UK)
+  * Bug fix affecting manual updates
+  * Update year (2019 -> 2020)
+  * Clean up man page
+  * Heuristic scanning made an option rather than a default
+  * Fix icon mismatch in the Scheduler
+  * Fix icon glitch in Update
+  * Updated language files: English (en_UK), Indonesian (id),
+    Swedish (sv) (Launchpad #1688469)
+
+-------------------------------------------------------------------
 Mon Feb  3 10:50:34 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 6.0.2
