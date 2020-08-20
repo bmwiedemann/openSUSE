@@ -16,12 +16,6 @@
 #
 
 
-%if %( pkg-config --modversion udev ) > 190
-%define _udevrulesdir %{_libexecdir}/udev/rules.d
-%else
-%define _udevrulesdir /lib/udev/rules.d
-%endif
-
 Name:           pcsc-ccid
 %define _name ccid
 Version:        1.4.33
@@ -87,7 +81,8 @@ sed 's:GROUP="pcscd":GROUP="scard":' <src/92_pcscd_ccid.rules >%{buildroot}/%{_u
 %files
 %defattr(-,root,root)
 # NEWS is empty
-%doc AUTHORS ChangeLog COPYING LICENSE.openct README.md README.towitoko contrib/Kobil_mIDentity_switch/README_Kobil_mIDentity_switch.txt SCARDGETATTRIB.txt
+%doc AUTHORS ChangeLog README.md README.towitoko contrib/Kobil_mIDentity_switch/README_Kobil_mIDentity_switch.txt SCARDGETATTRIB.txt
+%license COPYING LICENSE.openct 
 %config (noreplace) %{_sysconfdir}/reader.conf.d/*
 %{ifddir}/*
 %{_udevrulesdir}/*.rules

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 10:29:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rely on _udevrulesdir as provided by the distros.
+
+-------------------------------------------------------------------
 Sat Jun 27 08:27:04 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Version 1.4.33
