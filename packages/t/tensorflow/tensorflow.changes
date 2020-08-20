@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:07:34 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+- Use only 1300MB for memoryperjob.
+
+-------------------------------------------------------------------
 Wed Aug 12 23:52:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Replace pypi.python.org Source URL with the canonical files.pythonhosted.org

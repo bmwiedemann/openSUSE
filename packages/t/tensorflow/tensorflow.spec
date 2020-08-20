@@ -193,7 +193,6 @@ BuildRequires:  libnsync-devel
 BuildRequires:  libpng16-compat-devel
 BuildRequires:  libpng16-devel
 BuildRequires:  lmdb-devel
-BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  pcre-devel
 BuildRequires:  protobuf-devel
@@ -452,7 +451,6 @@ export CC_PREFIX=ccache
 export CC_OPT_FLAGS=$CXXFLAGS
 ln -sf  /.ccache/ ~/.ccache
 %if !%{is_lite}
-%limit_build -m 6200
 %endif
 
 %if %{is_lite}
