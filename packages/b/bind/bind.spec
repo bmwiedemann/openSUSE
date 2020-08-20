@@ -95,7 +95,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libidn2)
-BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       %{name}-chrootenv
@@ -317,8 +316,7 @@ export CFLAGS="%{optflags} -DNO_VERSION_DATE"
 	--with-pic \
 	--disable-openssl-version-check \
 	--with-tuning=large \
-	--without-geoip \
-	--with-geoip2 \
+	--with-geoip \
 	--with-dlopen \
 	--with-gssapi=yes \
 	--disable-isc-spnego \

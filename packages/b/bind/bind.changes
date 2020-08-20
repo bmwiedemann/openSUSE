@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  6 12:35:10 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Added "/etc/bind.keys" to NAMED_CONF_INCLUDE_FILES in
+  /etc/sysconfig/named to suppress warning message re
+  missing file.
+  [vendor-files.tar.bz2, bsc#1173983]
+
+-------------------------------------------------------------------
 Tue Jul 21 14:06:51 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to version bind-9.16.5
