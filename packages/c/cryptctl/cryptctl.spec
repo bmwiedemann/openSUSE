@@ -83,7 +83,7 @@ install -D -m 0644 ospackage/svc/cryptctl-client.service %{buildroot}/%{_unitdir
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rccryptctl-server
 
 # One udev rule
-install -D -m 0644 ospackage/udev/99-cryptctl-auto-unlock.rules %{buildroot}/%{_libexecdir}/udev/rules.d/99-cryptctl-auto-unlock.rules
+install -D -m 0644 ospackage/udev/99-cryptctl-auto-unlock.rules %{buildroot}/%{_udevrulesdir}/99-cryptctl-auto-unlock.rules
 
 # Runtime and TLS certificate dir
 install -d -m 0700 %{buildroot}/%{_localstatedir}/lib/%{name}
@@ -115,7 +115,7 @@ install -d -m 0700 %{buildroot}/%{_sysconfdir}/%{name}/servertls
 %{_unitdir}/cryptctl-server.service
 %{_unitdir}/cryptctl-client.service
 %{_unitdir}/cryptctl-auto-unlock@.service
-%{_libexecdir}/udev/rules.d/99-cryptctl-auto-unlock.rules
+%{_udevrulesdir}/99-cryptctl-auto-unlock.rules
 %doc %{SRCDIR}/LICENSE
 
 %changelog

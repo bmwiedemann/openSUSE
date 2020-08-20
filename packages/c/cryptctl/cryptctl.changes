@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:54:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_udevrulesdir} instead of abusing %{_libexecdir}.
+
+-------------------------------------------------------------------
 Mon Feb  3 12:13:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd|udev) instead of systemd and udev:
@@ -8,7 +13,7 @@ Mon Feb  3 12:13:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Thu Nov 23 13:44:21 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
