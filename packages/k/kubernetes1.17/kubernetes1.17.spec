@@ -275,9 +275,9 @@ install -d %{buildroot}%{_localstatedir}/lib/kubelet
 install -d %{buildroot}/%{volume_plugin_dir}
 
 # Add kubeadm modprobe.d and sysctl.d drop-in configs
-mkdir -p %{buildroot}%{_libexecdir}/modules-load.d
+mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
 mkdir -p %{buildroot}%{_sysctldir}
-install -m 0644 -t %{buildroot}%{_libexecdir}/modules-load.d/ %{SOURCE23}
+install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE23}
 install -m 0644 -t %{buildroot}%{_sysctldir} %{SOURCE24}
 
 # Create kubeadm systemd unit drop-in
@@ -372,8 +372,8 @@ fi
 %files kubeadm
 %doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md
 %{_unitdir}/kubelet.service.d/10-kubeadm.conf
-%dir %{_libexecdir}/modules-load.d
-%{_libexecdir}/modules-load.d/kubeadm.conf
+%dir %{_prefix}/lib/modules-load.d
+%{_prefix}/lib/modules-load.d/kubeadm.conf
 %{_sysctldir}/90-kubeadm.conf
 %license LICENSE
 %{_bindir}/kubeadm

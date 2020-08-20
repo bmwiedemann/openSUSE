@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 15:08:59 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Correct invalid use of %{_libexecdir} to ensure files should be in /usr/lib 
+
+-------------------------------------------------------------------
 Fri Aug 14 15:23:38 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.17.11:
