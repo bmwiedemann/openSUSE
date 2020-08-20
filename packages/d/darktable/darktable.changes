@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 11 10:19:56 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.2.1
+  * full changelog: https://github.com/darktable-org/darktable/releases/tag/release-3.2.1
+  * highlights:
+    + The lighttable view has been rewritten and the filmstrip reworked
+    + The lighttable modules have improved user interaction
+    + A complete overhaul of the CSS has been done
+    + The Color Picker and Location modules are updated to better fit
+      into the new UI
+    + The preference dialog has been fully reviewed and reorganized to propose
+      a better look and require less scrolling
+    + The new negadoctor module has been added to help inverting negative films
+    + A new histogram display called RGB Parade has been added
+    + The metadata feature has been made generic internally and has new features
+    + Image change detection has been made more reliable
+    + A new down-sampling preference has been introduced for faster response
+      in darkroom
+    + Filmic RGB is updated to v4
+
+-------------------------------------------------------------------
 Wed Apr 29 14:19:58 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update dsc file and debian archive 

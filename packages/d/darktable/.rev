@@ -1369,4 +1369,12 @@ Togan
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>800785</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>74dd40c6146a54b48985e93ed1ca9923</srcmd5>
+    <version>3.2.1</version>
+    <time>1597955548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828145</requestid>
+  </revision>
 </revisionlist>

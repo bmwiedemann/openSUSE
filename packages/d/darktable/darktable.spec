@@ -55,10 +55,10 @@
 %endif
 
 Name:           darktable
-Version:        3.0.2
+Version:        3.2.1
 Release:        0
 %define pkg_name darktable
-%define pkg_version 3.0.2
+%define pkg_version 3.2.1
 URL:            http://www.darktable.org/
 Source0:        %{pkg_name}-%{pkg_version}.tar.xz
 Source1:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual.pdf
