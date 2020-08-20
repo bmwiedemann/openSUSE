@@ -57,7 +57,6 @@ with the correct digits.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}/%{_datadir}
-%fdupes -s %{buildroot}/%{_libexecdir}
 
 %files
 %license COPYING

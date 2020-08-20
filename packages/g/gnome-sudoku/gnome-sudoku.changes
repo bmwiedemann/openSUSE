@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 08:58:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Stop calling -%fdupes on %{buildroot}/%{_libexecdir}: no files
+  are being installed to this location.
+
+-------------------------------------------------------------------
 Fri Mar  6 12:01:12 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.0:

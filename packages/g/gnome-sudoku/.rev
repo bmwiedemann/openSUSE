@@ -289,4 +289,13 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795067 from iznogood)</comment>
     <requestid>795218</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>cccd1e89d129d27872c61ed0c43ea279</srcmd5>
+    <version>3.36.0</version>
+    <time>1597955631</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop calling -%fdupes on %{buildroot}/%{_libexecdir}: no files
+  are being installed to this location. (forwarded request 827763 from dimstar)</comment>
+    <requestid>828185</requestid>
+  </revision>
 </revisionlist>
