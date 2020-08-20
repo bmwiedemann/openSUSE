@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-sound-recorder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.46
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.6
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
+Requires:       gjs
 Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
