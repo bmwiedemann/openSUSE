@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  6 08:22:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add no-forced-sse.patch, cure execution of illegal instruction
+  in i586 firefox.
+
+-------------------------------------------------------------------
 Wed Jul 29 15:18:24 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.28.4 (boo#1174662):

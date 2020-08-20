@@ -1,0 +1,37 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-01-30 14:15:51.612533365 +0100
+
+cmake tests whether the compiler can emit SSE, which is the wrongest of all
+options. (At the very least, a build system would check the buildhost's actual
+CPU feature set; while not great, there are convincable usecases for doing
+that.)
+
+Disable unconditional emission of -msse2 into the command line.
+On x86_64 where SSE2 is always available, gcc already implies -msse2
+anyway, so there should not be anything lost by removing this block
+of makefilery.
+
+---
+ Source/cmake/WebKitCompilerFlags.cmake |    9 ---------
+ 1 file changed, 9 deletions(-)
+
+Index: webkitgtk-2.26.3/Source/cmake/WebKitCompilerFlags.cmake
+===================================================================
+--- webkitgtk-2.26.3.orig/Source/cmake/WebKitCompilerFlags.cmake
++++ webkitgtk-2.26.3/Source/cmake/WebKitCompilerFlags.cmake
+@@ -137,15 +137,6 @@ if (COMPILER_IS_GCC_OR_CLANG)
+     if (CMAKE_COMPILER_IS_GNUCXX)
+         WEBKIT_PREPEND_GLOBAL_COMPILER_FLAGS(-Wno-expansion-to-defined)
+     endif ()
+-
+-    # Force SSE2 fp on x86 builds.
+-    if (WTF_CPU_X86 AND NOT CMAKE_CROSSCOMPILING)
+-        WEBKIT_PREPEND_GLOBAL_COMPILER_FLAGS(-msse2 -mfpmath=sse)
+-        include(DetectSSE2)
+-        if (NOT SSE2_SUPPORT_FOUND)
+-            message(FATAL_ERROR "SSE2 support is required to compile WebKit")
+-        endif ()
+-    endif ()
+ endif ()
+ 
+ if (COMPILER_IS_GCC_OR_CLANG AND NOT MSVC)

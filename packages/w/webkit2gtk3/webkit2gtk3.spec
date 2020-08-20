@@ -45,6 +45,8 @@ Source99:       webkit2gtk3.keyring
 Patch0:         webkit2gtk3-fdo-soname.patch
 # PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
 Patch1:         webkit-process.patch
+# PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
+Patch2:         no-forced-sse.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -274,6 +276,7 @@ A small test browswer from webkit, useful for testing features.
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
 %patch1 -p1
 %endif
+%patch2 -p1
 
 %build
 %define _lto_cflags %{nil}

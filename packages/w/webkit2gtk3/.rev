@@ -819,4 +819,13 @@
     <comment>- Update to version 2.28.4 (boo#1174662): (forwarded request 823473 from mgorse)</comment>
     <requestid>823594</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>16e11d277911cc41f212906cfe1d56b1</srcmd5>
+    <version>2.28.4</version>
+    <time>1597955079</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-forced-sse.patch, cure execution of illegal instruction
+  in i586 firefox.</comment>
+    <requestid>827290</requestid>
+  </revision>
 </revisionlist>
