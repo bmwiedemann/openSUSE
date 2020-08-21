@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 11 22:23:16 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- findutils.keyring: Update GPG keys of Bob Proulx.
+Prompted by an error of 'osc service localrun download_files'.
+
+-------------------------------------------------------------------
 Thu Jun 11 11:54:57 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - findutils.spec: Avoid conditional Patch definition as this breaks

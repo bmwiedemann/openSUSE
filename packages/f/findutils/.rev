@@ -527,4 +527,14 @@ cross-platform building from source RPMs.
 </comment>
     <requestid>814281</requestid>
   </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>e64a2aa89be7f58d7b4b9a1c0a0ce785</srcmd5>
+    <version>4.7.0</version>
+    <time>1598029313</time>
+    <user>dimstar_suse</user>
+    <comment>- findutils.keyring: Update GPG keys of Bob Proulx.
+Prompted by an error of 'osc service localrun download_files'.
+</comment>
+    <requestid>826080</requestid>
+  </revision>
 </revisionlist>
