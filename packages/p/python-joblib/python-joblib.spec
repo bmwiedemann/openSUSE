@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/joblib/joblib
 Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%{version}.tar.gz
+Patch1:         disable_test_on_big_endian.patch
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil}
@@ -55,6 +56,7 @@ Joblib can handle large data and has specific optimizations for `numpy` arrays.
 
 %prep
 %setup -q -n joblib-%{version}
+%patch1 -p1
 
 %build
 %python_build

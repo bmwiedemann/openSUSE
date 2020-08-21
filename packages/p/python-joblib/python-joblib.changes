@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 08:40:04 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- New disable_test_on_big_endian.patch as per upstream issue
+  https://github.com/joblib/joblib/issues/279
+
+-------------------------------------------------------------------
 Sat Jul 18 09:12:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.16.0
