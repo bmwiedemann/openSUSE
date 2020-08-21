@@ -114,7 +114,7 @@ install -D -m 0644 %{SOURCE100} \
 %endif
 # firewalld config file
 install -D -m 0644 %{SOURCE101} \
-    %{buildroot}%{_libexecdir}/firewalld/services/%{name}.xml
+    %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.app.desktop Network RemoteAccess
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop Network RemoteAccess
@@ -141,8 +141,9 @@ install -D -m 0644 %{SOURCE101} \
 %dir %{_datadir}/deepin/dde-file-manager/oem-menuextensions
 %dir %{_datadir}/nautilus-python
 %dir %{_kf5_appstreamdir}
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/%{name}.xml
 %{_datadir}/Thunar/sendto/
 %{_datadir}/contractor/kdeconnect.contract
 %{_datadir}/deepin/dde-file-manager/oem-menuextensions/kdeconnect-dde.desktop
@@ -169,7 +170,6 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kdeconnect.service
 %{_kf5_sharedir}/plasma/
-%{_libexecdir}/firewalld/services/%{name}.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
