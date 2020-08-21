@@ -1,7 +1,7 @@
 #
 # spec file for package vsftpd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Release:        0
 Summary:        Very Secure FTP Daemon - Written from Scratch
 License:        SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Networking/Ftp/Servers
-Url:            https://security.appspot.com/vsftpd.html
+URL:            https://security.appspot.com/vsftpd.html
 Source0:        https://security.appspot.com/downloads/%{name}-%{version}.tar.gz
 Source1:        %{name}.pam
 Source2:        %{name}.logrotate
@@ -180,7 +180,7 @@ ln -sf %{_initddir}/%{name} %{buildroot}/%{_sbindir}/rc%{name}
 %endif
 # install firewall information file
 %if %{use_firewalld}
-install -D -m 644 %{SOURCE11} %{buildroot}%{_libexecdir}/firewalld/services/%{name}.xml
+install -D -m 644 %{SOURCE11} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 %else
 install -d %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/
 install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
@@ -243,9 +243,9 @@ getent passwd ftpsecure >/dev/null || useradd -r -g nobody -s /bin/false -c "Sec
 %doc REWARD SPEED TODO SECURITY TUNING SIZE FAQ EXAMPLE
 %doc README.SUSE
 %if %{use_firewalld}
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/%{name}.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/%{name}.xml
 %else
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
 %endif

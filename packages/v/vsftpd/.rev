@@ -810,4 +810,12 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
     <comment></comment>
     <requestid>754435</requestid>
   </revision>
+  <revision rev="72" vrev="21">
+    <srcmd5>913601e97568fbc2e3c25a86e64f28d1</srcmd5>
+    <version>3.0.3</version>
+    <time>1598029283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827923</requestid>
+  </revision>
 </revisionlist>
