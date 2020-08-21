@@ -86,8 +86,8 @@ install -D -p -m 0644  %{SOURCE1} \
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-server
 
 # autoload nbd module
-install -d -m 755 %{buildroot}%{_libexecdir}/modules-load.d/
-echo "nbd" > %{buildroot}%{_libexecdir}/modules-load.d/%{name}.conf
+install -d -m 755 %{buildroot}%{_prefix}/lib/modules-load.d/
+echo "nbd" > %{buildroot}%{_prefix}/lib/modules-load.d/%{name}.conf
 
 #echo "#Port	file	options" > $RPM_BUILD_ROOT/etc/nbd-server.conf
 mkdir -p %{buildroot}%{_sysconfdir}/nbd-server
@@ -98,7 +98,7 @@ install -D -p -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}-ser
 
 # install firewall information file
 %if %{use_firewalld}
-install -D -m 644 %{SOURCE10} %{buildroot}%{_libexecdir}/firewalld/services/%{name}.xml
+install -D -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 %endif
 
 %post
@@ -155,13 +155,13 @@ fi
 %ghost %config(noreplace) %{_sysconfdir}/nbd-server/config
 %ghost %config(noreplace) %{_sysconfdir}/nbd-server/allow
 %config %{_sysconfdir}/nbd-server/config.example
-%dir %{_libexecdir}/modules-load.d/
-%{_libexecdir}/modules-load.d/nbd.conf
+%dir %{_prefix}/lib/modules-load.d/
+%{_prefix}/lib/modules-load.d/nbd.conf
 %{_fillupdir}/sysconfig.%{name}-server
 %if %{use_firewalld}
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/%{name}.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/%{name}.xml
 %endif
 
 %changelog

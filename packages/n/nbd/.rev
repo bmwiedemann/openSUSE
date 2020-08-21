@@ -418,4 +418,12 @@ Should go into 12.2 as well. (forwarded request 127441 from a_jaeger)</comment>
     <comment></comment>
     <requestid>786152</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>bb2cb894688d211a406867c7d39c4ac8</srcmd5>
+    <version>3.20</version>
+    <time>1598029298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828024</requestid>
+  </revision>
 </revisionlist>
