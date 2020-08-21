@@ -573,4 +573,12 @@
     <comment></comment>
     <requestid>823128</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>06b918589354e60e60bd01107126f220</srcmd5>
+    <version>5.7.0</version>
+    <time>1598029275</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075) (forwarded request 827894 from gmbr3)</comment>
+    <requestid>827896</requestid>
+  </revision>
 </revisionlist>

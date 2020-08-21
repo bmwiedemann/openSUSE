@@ -16,7 +16,7 @@
 #
 
 
-%define _dracutmodulesdir %{_libexecdir}/dracut/modules.d
+%define _dracutmodulesdir %{_prefix}/lib/dracut/modules.d
 # make sure we use systemd services on products where it is available
 %if 0%{?suse_version} >= 1210
 %bcond_without systemd
@@ -188,8 +188,8 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %license LICENSES/GPL-2.0 LICENSES/LGPL-2.1
 %endif
 %endif
-%dir %{_libexecdir}/dracut
-%dir %{_libexecdir}/dracut/modules.d
+%dir %{_prefix}/lib/dracut
+%dir %{_prefix}/lib/dracut/modules.d
 %dir %{_dracutmodulesdir}/95suse-xfs/
 %{_dracutmodulesdir}/95suse-xfs/dracut-fsck-help.txt
 %{_dracutmodulesdir}/95suse-xfs/module-setup.sh
