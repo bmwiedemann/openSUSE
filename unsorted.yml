@@ -11794,6 +11794,8 @@ unsorted:
   - libpythia8 
   - libpythia8lhapdf6 
   - libpython2_7-1_0-32bit: [x86_64] 
+  - libpython3_6m1_0 
+  - libpython3_6m1_0-32bit: [x86_64] 
   - libpython3_8-1_0-32bit: [x86_64] 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit: [x86_64] 
@@ -12115,7 +12117,7 @@ unsorted:
   - libreoffice-l10n-bs 
   - libreoffice-l10n-ca 
   - libreoffice-l10n-ca_valencia 
-  - libreoffice-l10n-ckb: [x86_64] 
+  - libreoffice-l10n-ckb 
   - libreoffice-l10n-cy 
   - libreoffice-l10n-dgo 
   - libreoffice-l10n-dsb 
@@ -12814,7 +12816,7 @@ unsorted:
   - libtinyb0 
   - libtinygettext0 
   - libtinyobjloader1 
-  - libtinyxml2-6 
+  - libtinyxml2-8 
   - libtirpc-devel 
   - libtls20-32bit: [x86_64] 
   - libtntdb-devel 
@@ -12956,7 +12958,7 @@ unsorted:
   - libupb0 
   - libupm1 
   - libupnp-devel 
-  - libupnp16-32bit: [x86_64] 
+  - libupnp17-32bit: [x86_64] 
   - libupower-glib-devel 
   - liburcu-devel 
   - liburcu6-32bit: [x86_64] 
@@ -18965,6 +18967,14 @@ unsorted:
   - ppsspp-common 
   - ppsspp-headless 
   - ppsspp-qt 
+  - pqiv 
+  - pqiv-ffmpeg 
+  - pqiv-gdkpixbuf 
+  - pqiv-libarchive 
+  - pqiv-poppler 
+  - pqiv-spectre 
+  - pqiv-wand 
+  - pqiv-webp 
   - praat 
   - pragha-plugins-devel 
   - prboom-plus 
@@ -20974,6 +20984,7 @@ unsorted:
   - python3-metaextract 
   - python3-metakernel 
   - python3-metamagic.json 
+  - python3-methodtools 
   - python3-mimesis 
   - python3-minidb 
   - python3-minio 
@@ -21548,6 +21559,7 @@ unsorted:
   - python3-pyte 
   - python3-pytesseract 
   - python3-pytest 
+  - python3-pytest-aiofiles 
   - python3-pytest-aiohttp 
   - python3-pytest-arraydiff 
   - python3-pytest-astropy 
@@ -22240,6 +22252,7 @@ unsorted:
   - python3-whitenoise 
   - python3-whois_similarity_distance 
   - python3-wikipedia 
+  - python3-wirerope 
   - python3-wiring 
   - python3-wolframalpha 
   - python3-wptools 
@@ -22330,6 +22343,19 @@ unsorted:
   - python3-zstandard 
   - python3-zstd 
   - python3-zxcvbn 
+  - python36 
+  - python36-32bit: [x86_64] 
+  - python36-base 
+  - python36-base-32bit: [x86_64] 
+  - python36-curses 
+  - python36-dbm 
+  - python36-devel 
+  - python36-doc 
+  - python36-doc-devhelp 
+  - python36-idle 
+  - python36-testsuite 
+  - python36-tk 
+  - python36-tools 
   - python38-32bit: [x86_64] 
   - python38-base-32bit: [x86_64] 
   - python38-devel 
@@ -25966,7 +25992,6 @@ unsorted:
   - texi2roff 
   - texinfo 
   - texinfo4 
-  - texinfo4-links 
   - texlive 
   - texlive-12many 
   - texlive-12many-doc 
@@ -34097,7 +34122,7 @@ unsorted:
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Unique-1_0 
   - typelib-1_0-Urfkill-0_0 
-  - typelib-1_0-Vips-8_9 
+  - typelib-1_0-Vips-8_10 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
