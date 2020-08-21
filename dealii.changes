@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 17 08:50:56 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- for ppc64 (BE) increase memlim from 2k to 3k in spec file
+  to avoid build failure in OBS.
+
+-------------------------------------------------------------------
+Tue Jul  7 12:13:27 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add dealii-build-with-muparser-2.3.2.patch: Fix muparser 2.3.2
+  version detection and thus build (gh#dealii/dealii#10548).
+- Drop Group tags.
+
+-------------------------------------------------------------------
 Wed Jun  3 19:22:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim conjecture from description.
