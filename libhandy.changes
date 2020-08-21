@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 18 14:01:44 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove meson_build libhandy-doc call: it was a NOP and fails with
+  meson 0.55.
+
+-------------------------------------------------------------------
 Fri May  8 11:34:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add libhandy-adapt-glade-3-36.patch: Fix build with new glade
