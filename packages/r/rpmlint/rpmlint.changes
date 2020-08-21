@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 14 06:43:39 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
+
+- add user "jvb", "jibri", "jicofo" and group "jitsi" for Jitsi
+  videomeeting service 
+
+-------------------------------------------------------------------
 Fri Jul 31 10:29:00 UTC 2020 - matthias.gerstner@suse.com
 
 - Update of rpmlint-checks to version master:
