@@ -30,6 +30,7 @@ URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
 
 Source:         %name-%version.tar.xz
+Patch1:         0001-build-set-SOVERSION-on-all-libraries.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes

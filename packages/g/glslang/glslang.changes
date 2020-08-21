@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 15:06:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-build-set-SOVERSION-on-all-libraries.patch
+
+-------------------------------------------------------------------
 Thu Aug 13 07:32:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.15.3847 (6c7beeafa)

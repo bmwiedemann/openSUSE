@@ -186,4 +186,12 @@
     <comment>- Update to release 10.15.3847 (6c7beeafa)</comment>
     <requestid>826206</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b75be1cb139a7030933fce20f3aa6cf1</srcmd5>
+    <version>10.15.3847</version>
+    <time>1598029167</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-set-SOVERSION-on-all-libraries.patch</comment>
+    <requestid>827649</requestid>
+  </revision>
 </revisionlist>
