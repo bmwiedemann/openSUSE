@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 02:02:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * huge list of changes, see included ChangeLog
+- remove imlib2-bswap.patch: obsolete
+
+-------------------------------------------------------------------
 Fri Oct  5 00:56:21 UTC 2017 - sflees@suse.de
 
 - Update to 1.5.1

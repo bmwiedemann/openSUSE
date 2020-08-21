@@ -1,7 +1,7 @@
 #
 # spec file for package imlib2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define lname	libImlib2-1
 Name:           imlib2
-Version:        1.5.1
+Version:        1.7.0
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
 Group:          Development/Libraries/X11
-Url:            http://sourceforge.net/projects/enlightenment/
+URL:            https://sourceforge.net/projects/enlightenment/
 Source:         http://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.bz2
-Patch1:         imlib2-bswap.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  freetype2-devel
@@ -41,7 +40,6 @@ BuildRequires:  xorg-x11-libXext-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bzip2)
 Recommends:     imlib2-loaders
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Imlib2 is an advanced replacement library for libraries like libXpm
@@ -99,12 +97,11 @@ jpeg, png, pnm, tga, tiff, xpm
 
 %prep
 %setup -q
-%patch1
 
 %build
 autoreconf -fiv
 %configure \
-%ifarch %ix86
+%ifarch %{ix86}
 	--enable-mmx \
 %else
 	--disable-mmx \
@@ -118,7 +115,7 @@ autoreconf -fiv
 	--enable-shared \
 	--enable-visibility-hiding \
 	--disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -137,11 +134,13 @@ sed -i -e 's@-lfreetype@@g' -e 's@-lz@@g' -e 's@-lXext@@g' -e 's@-ldl@@g' -e 's@
 
 %files
 %defattr(-,root,root,0755)
-%doc AUTHORS README COPYING doc/index.html
+%license COPYING
+%doc AUTHORS README doc/index.html
 %doc doc/imlib2.gif doc/blank.gif
 %{_bindir}/imlib2_bumpmap
 %{_bindir}/imlib2_colorspace
 %{_bindir}/imlib2_conv
+%{_bindir}/imlib2_load
 %{_bindir}/imlib2_poly
 %{_bindir}/imlib2_show
 %{_bindir}/imlib2_test
@@ -151,7 +150,6 @@ sed -i -e 's@-lfreetype@@g' -e 's@-lz@@g' -e 's@-lXext@@g' -e 's@-ldl@@g' -e 's@
 %{_datadir}/imlib2/*
 
 %files -n %{lname}
-%defattr(-,root,root)
 %{_libdir}/libImlib2.so.1*
 
 %files devel
@@ -162,12 +160,10 @@ sed -i -e 's@-lfreetype@@g' -e 's@-lz@@g' -e 's@-lXext@@g' -e 's@-ldl@@g' -e 's@
 %{_bindir}/imlib2-config
 
 %files filters
-%defattr(-,root,root)
 %attr(755,root,root) %dir %{_libdir}/imlib2
 %attr(755,root,root) %{_libdir}/imlib2/filters
 
 %files loaders
-%defattr(-,root,root)
 %attr(755,root,root) %dir %{_libdir}/imlib2
 %attr(755,root,root) %{_libdir}/imlib2/loaders
 
