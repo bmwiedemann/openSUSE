@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 26 15:22:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 1.18:
+  * fix an ugly and ancient security issue with popt failing to drop privileges on alias exec from a SUID/SGID program
+  * perform rudimentary sanity checks when reading in popt config files
+  * collect accumulated misc fixes (memleaks etc) from distros
+  * convert translations to utf-8 encoding
+  * convert old postscript documentation to pdf
+  * dust off ten years worth of autotools sediment
+  * reorganize and clean up the source tree for clarity
+  * remove the obnoxious splint annotations from the sources
+- popt-alignment-checks.patch removed: contained in upstream
+- popt-libc-updates.patch changed: to be compatible with new version.
+
+-------------------------------------------------------------------
 Mon Feb 10 12:53:55 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - fix URLs, rpm5.org is no more

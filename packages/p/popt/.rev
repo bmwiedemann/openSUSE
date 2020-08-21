@@ -300,4 +300,12 @@ New spdx.org license list now contains an official entry for X11 (forwarded requ
     <comment></comment>
     <requestid>774150</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6b3e54749cc09b40e60a1cda37719437</srcmd5>
+    <version>1.18</version>
+    <time>1598029334</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826912</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           popt
-Version:        1.16
+Version:        1.18
 Release:        0
 #!BuildIgnore:  rpmlint-Factory
 Summary:        A C library for parsing command line parameters
@@ -26,13 +26,12 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.rpm.org/
 
 #CVS-Clone:	-d :pserver:anonymous@rpm5.org:/cvs co popt
-Source:         http://ftp.rpm.org/mirror/popt/popt-%{version}.tar.gz
+Source:         http://ftp.rpm.org/popt/releases/popt-1.x/popt-%{version}.tar.gz
 Source2:        baselibs.conf
+Patch:          popt-libc-updates.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Patch0:         popt-libc-updates.patch
-Patch1:         popt-alignment-checks.patch
 
 %description
 Popt is a C library for parsing command line parameters.  Popt was
@@ -70,23 +69,17 @@ for developing programs which use the popt C library. It contains the
 API documentation of the popt library, too.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm %{buildroot}%{_libdir}/libpopt.la
 
-%if "%{_libdir}" != "%{_prefix}/lib"
-install -d -m755 %{buildroot}/%{_libdir}/pkgconfig
-mv %{buildroot}%{_prefix}/lib/pkgconfig/%{name}.pc %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc
-%endif
 
 %find_lang %{name}
 

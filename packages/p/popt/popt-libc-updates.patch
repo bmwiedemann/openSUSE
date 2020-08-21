@@ -1,114 +1,43 @@
 Index: configure.ac
 ===================================================================
---- configure.ac.orig
-+++ configure.ac
-@@ -21,7 +21,7 @@ AC_SUBST(LT_AGE, 8)
- ALL_LINGUAS="cs da de eo es fi fr ga gl hu id is it ja ko lv nb nl pl pt ro ru sk sl sv th tr uk vi wa zh_TW zh_CN"
- 
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,6 @@
+ AM_INIT_AUTOMAKE([1.10 foreign -Wall])
+
  AC_PROG_CC_STDC
 -AC_PROG_CC
-+AC_USE_SYSTEM_EXTENSIONS
- 
- AC_PROG_INSTALL
- AC_PROG_LIBTOOL
-@@ -40,13 +40,12 @@ else
- fi
- AC_SUBST(TARGET)
- 
--CFLAGS="$CFLAGS -D_GNU_SOURCE -D_REENTRANT"
-+CFLAGS="$CFLAGS -D_REENTRANT"
- 
- AC_GCC_TRADITIONAL
- AC_SYS_LARGEFILE
- 
- AC_ISC_POSIX
--AM_C_PROTOTYPES
- 
- AC_CHECK_HEADERS(float.h fnmatch.h glob.h langinfo.h libintl.h mcheck.h unistd.h)
- 
-@@ -82,7 +81,7 @@ AC_ARG_ENABLE(build-gcov,
- AC_CHECK_FUNC(setreuid, [], [
-     AC_CHECK_LIB(ucb, setreuid, [if echo $LIBS | grep -- -lucb >/dev/null ;then :; else LIBS="$LIBS -lc -lucb" USEUCB=y;fi])
- ])
--AC_CHECK_FUNCS(getuid geteuid iconv mtrace __secure_getenv setregid stpcpy strerror vasprintf srandom)
-+AC_CHECK_FUNCS(getuid geteuid iconv mtrace __secure_getenv secure_getenv setregid stpcpy strerror vasprintf srandom)
- 
- AM_GNU_GETTEXT([external])
- AM_ICONV_LINK
-Index: system.h
+ AC_USE_SYSTEM_EXTENSIONS
+ AM_PROG_AR
+
+Index: src/system.h
 ===================================================================
---- system.h.orig
-+++ system.h
-@@ -1,10 +1,9 @@
- /**
+--- a/src/system.h
++++ b/src/system.h
+@@ -2,9 +2,7 @@
   * \file popt/system.h
   */
-+#pragma once
- 
+
 -#ifdef HAVE_CONFIG_H
  #include "config.h"
 -#endif
- 
- #if defined (__GLIBC__) && defined(__LCLINT__)
- /*@-declundef@*/
-@@ -42,6 +41,7 @@ extern __const __int32_t *__ctype_touppe
- #include <libc.h>
+
+ #include <ctype.h>
+
+@@ -57,6 +55,8 @@
+ #define getenv(_s)	secure_getenv(_s)
+ #elif defined(HAVE___SECURE_GETENV)
+ #define	getenv(_s)	__secure_getenv(_s)
++#else
++#error neither secure_getenv nor __secure_getenv is available
  #endif
- 
-+#pragma GCC visibility push(hidden)
- /*@-incondefs@*/
- /*@mayexit@*/ /*@only@*/ /*@out@*/ /*@unused@*/
- void * xmalloc (size_t size)
-@@ -77,6 +77,8 @@ static inline char * stpcpy (char *dest,
- }
- #endif
- 
-+#pragma GCC visibility pop
-+
- /* Memory allocation via macro defs to get meaningful locations from mtrace() */
- #if defined(HAVE_MCHECK_H) && defined(__GNUC__)
- #define	vmefail()	(fprintf(stderr, "virtual memory exhausted.\n"), exit(EXIT_FAILURE), NULL)
-@@ -91,8 +93,12 @@ static inline char * stpcpy (char *dest,
- #define	xstrdup(_str)	strdup(_str)
- #endif  /* defined(HAVE_MCHECK_H) && defined(__GNUC__) */
- 
--#if defined(HAVE___SECURE_GETENV) && !defined(__LCLINT__)
--#define	getenv(_s)	__secure_getenv(_s)
-+#ifndef HAVE_SECURE_GETENV
-+#  ifdef HAVE___SECURE_GETENV
-+#    define secure_getenv __secure_getenv
-+#  else
-+#    error neither secure_getenv nor __secure_getenv is available
-+#  endif
- #endif
- 
+
  #if !defined(__GNUC__) && !defined(__attribute__)
-Index: Makefile.am
+
+Index: src/popt.c
 ===================================================================
---- Makefile.am.orig
-+++ Makefile.am
-@@ -14,7 +14,7 @@ EXTRA_DIST = config.rpath lookup3.c auto
- 
- SUBDIRS = po . auto
- 
--AM_CPPFLAGS = -I. -I$(top_srcdir)
-+AM_CPPFLAGS = -include $(top_srcdir)/system.h -I. -I$(top_srcdir)
- 
- noinst_HEADERS = poptint.h system.h
- 
-@@ -37,7 +37,7 @@ noinst_SCRIPTS = testit.sh
- TESTS_ENVIRONMENT = \
- test1="$(top_builddir)/test1"
- 
--TESTS = $(top_srcdir)/testit.sh
-+TESTS = testit.sh
- 
- include_HEADERS = popt.h
- 
-Index: popt.c
-===================================================================
---- popt.c.orig
-+++ popt.c
+--- a/src/popt.c
++++ b/src/popt.c
 @@ -197,7 +197,7 @@ poptContext poptGetContext(const char *
      con->execAbsolute = 1;
      con->arg_strip = NULL;
@@ -144,10 +73,10 @@ Index: popt.c
        default:
  	return POPT_("unknown error");
      }
-Index: poptconfig.c
+Index: src/poptconfig.c
 ===================================================================
---- poptconfig.c.orig
-+++ poptconfig.c
+--- a/src/poptconfig.c
++++ b/src/poptconfig.c
 @@ -540,7 +540,7 @@ int poptReadDefaultConfig(poptContext co
      if (rc) goto exit;
  #endif
@@ -157,43 +86,3 @@ Index: poptconfig.c
  	char * fn = malloc(strlen(home) + 20);
  	if (fn != NULL) {
  	    (void) stpcpy(stpcpy(fn, home), "/.popt");
-Index: poptint.h
-===================================================================
---- poptint.h.orig
-+++ poptint.h
-@@ -11,6 +11,8 @@
- 
- #include <stdint.h>
- 
-+#pragma GCC visibility push(hidden)
-+
- /**
-  * Wrapper to free(3), hides const compilation noise, permit NULL, return NULL.
-  * @param p		memory to free
-@@ -149,6 +151,8 @@ struct poptContext_s {
-     pbm_set * arg_strip;
- };
- 
-+#pragma GCC visibility pop
-+
- #if defined(POPT_fprintf)
- #define	POPT_dgettext	dgettext
- #else
-@@ -182,6 +186,8 @@ extern char *nl_langinfo (nl_item __item
- #endif
- #endif
- 
-+#pragma GCC visibility push(hidden)
-+
- #if defined(HAVE_DCGETTEXT) && !defined(__LCLINT__)
- char *POPT_dgettext(const char * dom, const char * str)
- 	/*@*/;
-@@ -200,6 +206,8 @@ const char *POPT_next_char (/*@returned@
- 
- #endif
- 
-+#pragma GCC visibility pop
-+
- #if defined(ENABLE_NLS) && defined(HAVE_LIBINTL_H)
- #include <libintl.h>
- #endif
