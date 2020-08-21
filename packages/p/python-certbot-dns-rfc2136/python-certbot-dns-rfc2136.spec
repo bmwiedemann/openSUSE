@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certbot-dns-rfc2136
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        RFC 2136 DNS Authenticator plugin for Certbot
 License:        Apache-2.0
@@ -53,7 +53,7 @@ RFC 2136 DNS Authenticator plugin for Certbot.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test || :
+%pytest
 
 %files %{python_files}
 %doc README.rst
