@@ -176,7 +176,7 @@ ln -s service %{buildroot}%{_sbindir}/rcflatpak-system-helper
 mv %{buildroot}/%{_datadir}/polkit-1/rules.d/{,60-}org.freedesktop.Flatpak.rules
 
 %if !%{support_environment_generators}
-rm -Rf %{buildroot}%{_libexecdir}/systemd/user-environment-generators/
+rm -Rf %{buildroot}%{_systemd_user_env_generator_dir}
 %endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
@@ -246,8 +246,8 @@ fi
 %{_userunitdir}/flatpak-portal.service
 %ghost %dir %{_localstatedir}/lib/flatpak
 %if %{support_environment_generators}
-%dir %{_prefix}/lib/systemd/user-environment-generators
-%{_prefix}/lib/systemd/user-environment-generators/60-flatpak
+%dir %{_systemd_user_env_generator_dir}
+%{_systemd_user_env_generator_dir}/60-flatpak
 %else
 # Own dirs so we don't have to depend on gdm for building.
 %dir %{_datadir}/gdm/
