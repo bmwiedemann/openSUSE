@@ -17,7 +17,7 @@
 
 
 Name:           perl-YAML-LibYAML-API
-Version:        0.009
+Version:        0.010
 Release:        0
 %define cpan_name YAML-LibYAML-API
 Summary:        Wrapper around the C libyaml library
@@ -30,7 +30,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.98
-BuildRequires:  perl(YAML::PP) >= 0.018
+BuildRequires:  perl(YAML::PP) >= 0.024
 BuildRequires:  perl(YAML::PP::Common)
 Requires:       perl(YAML::PP::Common)
 %{perl_requires}

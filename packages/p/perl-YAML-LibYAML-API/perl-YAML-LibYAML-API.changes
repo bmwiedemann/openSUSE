@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 20 03:11:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.010
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  0.010 2020-08-19 22:39:12+02:00
+
+      - Update to libyaml 0.2.5
+      - Fix constants for flow style/block style
+      - Emitter: Support flow style collections
+
+-------------------------------------------------------------------
 Sun May 17 03:14:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 0.009
