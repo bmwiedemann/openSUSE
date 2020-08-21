@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certbot-dns-linode
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Linode DNS Authenticator plugin for Certbot
 License:        Apache-2.0
@@ -56,7 +56,7 @@ records using Linode's DNS API.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

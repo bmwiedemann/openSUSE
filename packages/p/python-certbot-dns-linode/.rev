@@ -97,4 +97,13 @@
     <comment>certbot version bump</comment>
     <requestid>820656</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ef0f0ee6bbaf8c2cb674465c8c57de78</srcmd5>
+    <version>1.7.0</version>
+    <time>1598030052</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.0
+  * The Linode DNS plugin now waits 120 seconds for DNS propagation, instead of 1200.</comment>
+    <requestid>828470</requestid>
+  </revision>
 </revisionlist>

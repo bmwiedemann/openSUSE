@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 08:42:59 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.7.0
+  * The Linode DNS plugin now waits 120 seconds for DNS propagation, instead of 1200.
+
+-------------------------------------------------------------------
 Mon Jul 13 08:40:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.6.0
