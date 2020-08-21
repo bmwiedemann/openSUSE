@@ -1,7 +1,7 @@
 #
 # spec file for package openCOLLADA
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,14 +23,14 @@
 %global upname OpenCOLLADA
 %global libname libopenCOLLADA
 Name:           openCOLLADA
-Version:        1.6.63
+Version:        1.6.68
 Release:        0
 #1_%%{shortcommit}
 Summary:        Collada 3D import and export libraries
 #https://github.com/KhronosGroup/OpenCOLLADA/archive/v1.6.43.tar.gz
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://collada.org/mediawiki/index.php/OpenCOLLADA
+URL:            https://collada.org/mediawiki/index.php/OpenCOLLADA
 ## https://github.com/KhronosGroup/OpenCOLLADA/archive/%%{commit}/
 Source0:        https://github.com/KhronosGroup/%{upname}/archive/v%{version}.tar.gz#/%{upname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM use proper paths in cmake for install

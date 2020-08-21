@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:13:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix invalid usage of %{_libexecdir}.
+
+-------------------------------------------------------------------
 Wed Nov 13 08:05:39 UTC 2019 - Jiri Bohac <jbohac@suse.cz>
 
 - the previous fix for (bsc#1149037) did not work correctly, fix it

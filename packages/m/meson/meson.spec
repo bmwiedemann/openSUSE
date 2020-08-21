@@ -28,7 +28,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.54.3
+Version:        0.55.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -41,16 +41,8 @@ Source2:        meson.keyring
 Patch0:         meson-suse-ify-macros.patch
 # PATCH-FIX-OPENSUSE meson-test-installed-bin.patch dimstar@opensuse.org -- We want the test suite to run against /usr/bin/meson coming from our meson package.
 Patch1:         meson-test-installed-bin.patch
-# PATCH-FIX-OPENSUSE meson-restore-python3.4.patch -- Restore Python 3.4 support (reverts commit 0538009).
-Patch2:         meson-restore-python3.4.patch
-# PATCH-FIX-OPENSUSE meson-suse-fix-llvm-3.8.patch -- Fix LLVM 3.8 tests.
-Patch3:         meson-suse-fix-llvm-3.8.patch
-# PATCH-FIX-OPENSUSE meson-fix-gcc48.patch sor.alexei@meowr.ru -- Fix GCC 4.8 handling for openSUSE Leap 42.x.
-Patch4:         meson-fix-gcc48.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
-Patch5:         meson-distutils.patch
-# PATCH-FIX-UPSTREAM meson-fix-gnome-test.patch bsc#1173025 mgorse@suse.com -- fix GNOME test that sometimes fails.
-Patch6:         meson-fix-gnome-test.patch
+Patch2:         meson-distutils.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -167,15 +159,9 @@ This package provides support for meson.build files in Vim.
 %setup -q -n meson-%{version}
 %patch0 -p1
 %patch1 -p1
-%if 0%{?suse_version} < 1500
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%endif
 %if !%{with setuptools}
-%patch5 -p1
+%patch2 -p1
 %endif
-%patch6 -p1
 
 # We do not have gmock available at this moment - can't run the test suite for it
 rm -r "test cases/frameworks/3 gmock" \

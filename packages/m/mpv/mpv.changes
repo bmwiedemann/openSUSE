@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 21 12:03:12 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.20200820T203717.b16a6cb6c6:
+  * client API: note about libswscale corrupting memory
+  * wayland: conditionally commit surface on resize
+  * player: add --subs-with-matching-audio option
+  * wayland: refactor geometry/window handling
+  * stream: Implement slice:// for reading slices of streams
+  * wayland: reset geometry on reconfig if fullscreen
+  * wayland: soften GNOME warning
+
+-------------------------------------------------------------------
 Mon Aug 17 10:48:15 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20200816T162900.486516f723:

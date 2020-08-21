@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:33:21 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Fri Jun  5 17:10:44 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Drop conditional macro application for Leap 15.2

@@ -17,21 +17,23 @@
 
 
 Name:           volatility3
-Version:        1.0.0+beta.1
+Version:        v1.0.0~git.20200818T091513.73f3c217
 Release:        0
 Summary:        Volatile memory artifact extraction utility framework
 #License:        BSD-2-Clause-Patent and CC-PDDC
 License:        BSD-2-Clause-Patent
 Group:          Development/Libraries/Python
 URL:            http://www.volatilityfoundation.org/
-Source:         https://github.com/volatilityfoundation/volatility3/archive/v1.0.0-beta.1.tar.gz
+Source:         %{name}-%{version}.tar.xz
 #Patch0:         python-volality-2.6.1_fixbuild.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(python3)
+Requires:       capstone >= 3.0.0
 Requires:       python3-distorm3
+Requires:       python3-pefile >= 2017.8.1
 Requires:       python3-pycryptodome
-Requires:       python3-yara
+Requires:       python3-yara >= 3.8.0
 #used in script vol_genprofile for generation of linux profile
 #Requires:       libdwarf-tools
 
@@ -54,8 +56,7 @@ the system being investigated but offer visibilty into the runtime
 state of the system.
 
 %prep
-%setup -q -n volatility3-1.0.0-beta.1
-sed -i 's/\r//' README.txt
+%setup -q
 sed -i 's/\r//' doc/make.bat
 
 %build
@@ -69,10 +70,9 @@ python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
 %files
 %defattr(-,root,root)
 %license LICENSE.txt
-%doc doc README.txt
+%doc doc README.md
 %{python3_sitelib}/volatility
-%{python3_sitelib}/volatility-1.0.0b1-py3.8.egg-info
-%{python3_sitelib}/development
+%{python3_sitelib}/volatility-*.egg-info
 /usr/bin/vol
 /usr/bin/volshell
 

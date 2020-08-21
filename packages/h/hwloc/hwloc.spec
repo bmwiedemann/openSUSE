@@ -1,7 +1,7 @@
 #
 # spec file for package hwloc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,24 @@
 
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
-Url:            http://www.open-mpi.org/projects/hwloc/
-Source0:        https://download.open-mpi.org/release/hwloc/v2.1/%{name}-%{version}.tar.bz2
+URL:            https://www.open-mpi.org/projects/hwloc/
+Source0:        https://download.open-mpi.org/release/hwloc/v2.2/hwloc-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libnuma-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -44,10 +46,7 @@ Requires:       perl-JSON
 Requires:       perl-base >= 5.18.2
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%ifnarch s390 s390x i586 aarch64 %{arm}
-BuildRequires:  libnuma-devel
-%endif
+%{?systemd_ordering}
 
 %description
 The Portable Hardware Locality (hwloc) software package provides
@@ -86,9 +85,7 @@ This package contains the run time libraries for hwloc.
 %package data
 Summary:        Run time data for hwloc
 Group:          Development/Libraries/C and C++
-%if 0%{?sle_version} > 120300 || 0%{?is_opensuse}
 BuildArch:      noarch
-%endif
 
 %description data
 This package contains the run time data for the hwloc.
@@ -96,22 +93,20 @@ This package contains the run time data for the hwloc.
 %package doc
 Summary:        Documentation for hwloc
 Group:          Documentation/Other
-%if 0%{?sle_version} > 120300 || 0%{?is_opensuse}
 BuildArch:      noarch
-%endif
 
 %description doc
 This package contains the documentation for hwloc.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 autoreconf -fvi
 
 %configure \
     --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -124,11 +119,9 @@ rm -rf %{buildroot}%{_datadir}/doc/
 
 # This binary is built only for intel architectures
 %ifarch %{ix86} x86_64
-mkdir -p %{buildroot}%{_libexecdir}/systemd/system
-mv %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service %{buildroot}%{_libexecdir}/systemd/system/hwloc-dump-hwdata.service
-%else
-rm %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service
+install -D -m 644 %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service %{buildroot}%{_unitdir}/hwloc-dump-hwdata.service
 %endif
+rm %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service
 
 %fdupes -s %{buildroot}/%{_mandir}/man1
 %fdupes -s %{buildroot}/%{_mandir}/man7
@@ -136,20 +129,37 @@ rm %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service
 %check
 #XXX: this is weird, but make check got broken by removing doxygen-doc/man above
 #     the only one fix is to install documentation by hand, or to ignore check error
-make %{?_smp_mflags} check || :
+%make_build check || :
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
+%ifarch %{ix86} x86_64
+%pre
+%service_add_pre hwloc-dump-hwdata.service
+%endif
+
 %post
+%ifarch %{ix86} x86_64
+%service_add_post hwloc-dump-hwdata.service
+%endif
 %desktop_database_post
 
+%ifarch %{ix86} x86_64
+%preun
+%service_del_preun hwloc-dump-hwdata.service
+%endif
+
 %postun
+%ifarch %{ix86} x86_64
+%service_del_postun hwloc-dump-hwdata.service
+%endif
+
 %desktop_database_postun
 
 %files
-%defattr(-, root, root, -)
-%doc AUTHORS COPYING NEWS README VERSION
+%license COPYING
+%doc NEWS README VERSION
 %{_mandir}/man1/hwloc*
 %{_mandir}/man1/lstopo*
 %{_bindir}/hwloc*
@@ -158,11 +168,10 @@ make %{?_smp_mflags} check || :
 %{_sysconfdir}/bash_completion.d/hwloc-completion.bash
 %ifarch %{ix86} x86_64
 %attr(0755,root,root) %{_sbindir}/hwloc-dump-hwdata
-%{_libexecdir}/systemd/system/hwloc-dump-hwdata.service
+%{_unitdir}/hwloc-dump-hwdata.service
 %endif
 
 %files devel
-%defattr(-, root, root, -)
 %{_mandir}/man7/hwloc*
 %{_includedir}/hwloc
 %{_includedir}/hwloc.h
@@ -170,11 +179,9 @@ make %{?_smp_mflags} check || :
 %{_libdir}/pkgconfig/hwloc.pc
 
 %files -n %{lname}
-%defattr(-, root, root, -)
 %{_libdir}/libhwloc*so.*
 
 %files data
-%defattr(-, root, root, -)
 %dir %{_datadir}/hwloc
 %dir %{_datadir}/hwloc/hwloc-ps.www
 %{_datadir}/hwloc/hwloc.dtd
@@ -184,7 +191,6 @@ make %{?_smp_mflags} check || :
 %{_datadir}/hwloc/hwloc-ps.www/*
 
 %files doc
-%defattr(-, root, root, -)
 %doc ./doc/doxygen-doc/html/*
 %{_mandir}/man3/*
 

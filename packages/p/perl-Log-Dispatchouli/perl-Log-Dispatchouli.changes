@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 13 03:11:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.021
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  2.021     2020-08-12 11:48:57-04:00 America/New_York
+          - add another experimental means to replace how Syslog output is set up
+
+  2.020     2020-02-06 13:45:44-05:00 America/New_York (TRIAL RELEASE)
+          - add stdio_dispatcher_class, so you can subclass the Screen dispatcher
+            for stderr and stdio; this is experimental!
+
+-------------------------------------------------------------------
 Tue Jul 30 05:13:32 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.019

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 21 06:15:41 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.7.1:
+  * Deprecations:
+    + `marshmallow.pprint` is deprecated and will be removed in marshmallow 4 (:issue:`1588`).
+  * Features:
+    + Add ``validators.ContainsNoneOf`` (:issue:`1528`).
+  * Bug fixes:
+    + Fix typing in ``class_registry`` (:pr:`1574`). Thanks :user:`mahenzon`.
+    + Fix passing ``only`` and ``exclude`` to ``Nested`` with an ordered ``Schema`` (:pr:`1627`).
+    + ``fields.Boolean`` correctly serializes non-hashable types (:pr:`1633`).
+- Refresh patch python-marshmallow-no-version-warning.patch
+
+-------------------------------------------------------------------
 Wed Apr  1 09:10:03 UTC 2020 - pgajdos@suse.com
 
 - version update to 3.5.1

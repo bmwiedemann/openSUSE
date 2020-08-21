@@ -18,15 +18,13 @@
 
 %define soname  4
 Name:           source-highlight
-Version:        3.1.8
+Version:        3.1.9
 Release:        0
 Summary:        Source Code Highlighter with Support for Many Languages
 License:        GPL-3.0
 Group:          Productivity/Publishing/Other
 Url:            http://www.gnu.org/software/src-highlite
 Source0:        ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-%{version}.tar.gz
-Source1:        ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-%{version}.tar.gz.sig
-Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        source-highlight-apache2.conf
 Patch2:         source-highlight-doxygen_disable_timestamp_in_footer.patch

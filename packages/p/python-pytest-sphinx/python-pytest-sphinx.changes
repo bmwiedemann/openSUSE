@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 21 12:55:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.3.1
+  * Adapt to importmode API changes in pytest-6.0
+  * Adapt to Node API changes in pytest-5.4 (Fixes #11)
+  * Add support for python 3.8 (Fixes #15)
+  * Add support for skipif option in testoutput directive (Fixes #17)
+  * Add support for skipif option in testcode directive (Fixes #21)
+  * A ValueError is raised if the text inside the directives is not properly
+    formatted.
+  * Ignore the option :hide: in directives (Fixes #19)
+  * Fix detection of block boundaries in parser.
+
+-------------------------------------------------------------------
 Fri Jun  5 13:57:25 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Package doesn't work with pytest 5.*

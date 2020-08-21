@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:21:45 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.1.1
+- drop python-sigal-test_image-gif-dimension.patch
+- fix deps and test deps
+ * Compatibility with Pillow 7.2
+ * Fix issue with encrypt template and some Jinja2 versions
+ * Bug fixes and UI improvements for encrypt plugin
+ * Add setting to use relative symbolic links
+ * Add a setting to force image output format
+ * Use natural sorting thanks to the natsort package 
+ * Make sure that read-only files can be copied
+ * Improve performance when reading metadata
+
+-------------------------------------------------------------------
 Tue May 19 11:16:12 UTC 2020 - pgajdos@suse.com
 
 - fix testsuite

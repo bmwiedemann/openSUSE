@@ -1,7 +1,7 @@
 #
 # spec file for package libofx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libofx
-Version:        0.9.12
+Version:        0.9.15
 Release:        0
 Summary:        OFX Command Parser and API
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
 URL:            http://libofx.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/libofx/libofx/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM libofx-CVE-2017-14731.patch dimstar@opensuse.org -- Fix a buffer overflow
-Patch0:         libofx-CVE-2017-14731.patch
 BuildRequires:  curl-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -65,7 +63,6 @@ This subpackage contains the header files for the C API.
 
 %prep
 %setup -q
-%patch0 -p1
 chmod -x doc/ofx_sample_files/ofx_spec160_stmtrs_example.sgml
 
 %build

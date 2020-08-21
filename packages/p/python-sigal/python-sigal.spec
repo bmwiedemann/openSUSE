@@ -18,41 +18,46 @@
 
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-sigal
-Version:        2.0
+Version:        2.1.1
 Release:        0
 Summary:        Static gallery generator
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/saimn/sigal
 Source:         https://files.pythonhosted.org/packages/source/s/sigal/sigal-%{version}.tar.gz
-# https://github.com/saimn/sigal/commit/538f535b5ea1cca4ec52bff6cff15da015bdfa64
-Patch0:         python-sigal-test_image-gif-dimension.patch
+BuildRequires:  %{python_module Brotli}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module Markdown}
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module blinker}
+BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module feedgenerator}
+BuildRequires:  %{python_module natsort}
+BuildRequires:  %{python_module pilkit}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module zopfli}
 BuildRequires:  fdupes
+BuildRequires:  ffmpeg
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-Markdown
 Requires:       python-Pillow
 Requires:       python-blinker
 Requires:       python-click
+Requires:       python-natsort
 Requires:       python-pilkit
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       python-boto
-Suggests:       python-cssmin
+Suggests:       python-Brotli
+Suggests:       python-zopfli
+Suggests:       python-cryptography
+Suggests:       python-feedgenerator
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module Markdown}
-BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module pilkit}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  ffmpeg
-%endif
 %python_subpackages
 
 %description
@@ -70,7 +75,6 @@ image resizing, thumbnail creation and HTML page generation.
 
 %prep
 %setup -q -n sigal-%{version}
-%patch0 -p1
 
 %build
 %python_build

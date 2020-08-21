@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 18 12:32:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly call %meson_build in the %build section: It was never
+  needed (but should have been there) before as the %meson_install
+  macro would perform a project rebuild. However, most recent
+  versions of meson have changed the %meson_install macro to use
+  `--no-rebuild`, exposing then this issue on our spec file.
+
+-------------------------------------------------------------------
 Mon Jun  1 12:44:42 MDT 2020 - carnold@suse.com
 
 - Update to version 1.8.0

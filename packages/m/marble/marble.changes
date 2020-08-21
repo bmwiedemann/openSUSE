@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 21 05:56:35 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with default min 3GB physicalmemory
+
+-------------------------------------------------------------------
 Sun Aug  9 09:10:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.08.0

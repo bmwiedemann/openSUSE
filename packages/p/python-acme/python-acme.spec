@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define libname acme
 Name:           python-%{libname}
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -49,6 +49,9 @@ Requires:       python-pytz
 Requires:       python-requests >= 2.6.0
 Requires:       python-requests-toolbelt >= 0.3.0
 Requires:       python-six >= 1.9.0
+%ifpython2
+Requires:       python-mock
+%endif
 BuildArch:      noarch
 %if %{?suse_version} < 1500
 BuildRequires:  %{python_module devel}

@@ -382,4 +382,12 @@ remove Provides: locale(*:ja) to slim down</comment>
     <comment></comment>
     <requestid>699083</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>926825dbcfe91a1dfdd80b3aad1c003d</srcmd5>
+    <version>1.8.8</version>
+    <time>1598030373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828513</requestid>
+  </revision>
 </revisionlist>

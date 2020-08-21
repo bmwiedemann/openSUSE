@@ -524,4 +524,12 @@
     <comment></comment>
     <requestid>818346</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>2e4f859a0be24179bdceec0af64084ca</srcmd5>
+    <version>0.55.1</version>
+    <time>1598029355</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.55.1 - no regressions seen in GNOME:Next compared to 0.55.0 (forwarded request 827368 from dimstar)</comment>
+    <requestid>827369</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-vulture
-Version:        1.4
+Version:        2.1
 Release:        0
 Summary:        Python module for finding dead code
 License:        MIT
@@ -28,11 +28,13 @@ Source:         https://files.pythonhosted.org/packages/source/v/vulture/vulture
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-toml
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest > 3.2.3}
+BuildRequires:  %{python_module toml}
 # /SECTION
 %python_subpackages
 

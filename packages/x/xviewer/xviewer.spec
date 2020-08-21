@@ -17,12 +17,12 @@
 
 
 Name:           xviewer
-Version:        2.6.0
+Version:        2.6.2
 Release:        0
 Summary:        Fast and functional graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
-Url:            https://github.com/linuxmint/xviewer
+URL:            https://github.com/linuxmint/xviewer
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gnome-common
@@ -79,7 +79,7 @@ are simplicity and standards compliance.
 NOCONFIGURE=1 gnome-autogen.sh
 %configure \
   --libexecdir=%{_libexecdir}/%{name}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

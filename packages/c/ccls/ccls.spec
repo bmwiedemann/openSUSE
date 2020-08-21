@@ -34,7 +34,6 @@ Patch1:         0002-Adapt-llvmorg-10-init-12036-g3b9715cb2193-handleDecl.patch
 BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.8
 BuildRequires:  llvm-devel >= 7.0
-BuildRequires:  memory-constraints
 BuildRequires:  rapidjson-devel
 BuildRequires:  zlib-devel
 Requires:       clang >= 5.0
@@ -77,7 +76,6 @@ pushd .
 %cmake -DUSE_SYSTEM_RAPIDJSON=ON -DCLANG_LINK_CLANG_DYLIB=on
 
 # ccls currently consumes ~1GB of memory during compilation per thread
-%limit_build -m 1500
 %make_build
 popd
 

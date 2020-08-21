@@ -106,4 +106,12 @@
     <comment>bufix release</comment>
     <requestid>791416</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>085150f9f83e70563b84c6bc4902f890</srcmd5>
+    <version>5.0.9</version>
+    <time>1598030364</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>828500</requestid>
+  </revision>
 </revisionlist>

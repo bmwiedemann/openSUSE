@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-ISO8601
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,44 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-DateTime-Format-ISO8601
-Version:        0.08
+Version:        0.14
 Release:        0
 %define cpan_name DateTime-Format-ISO8601
 Summary:        Parses ISO8601 formats
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/DateTime-Format-ISO8601/
-Source0:        http://www.cpan.org/authors/id/J/JH/JHOBLITT/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DateTime) >= 0.18
+BuildRequires:  perl(DateTime) >= 1.45
 BuildRequires:  perl(DateTime::Format::Builder) >= 0.77
-BuildRequires:  perl(Module::Build) >= 0.380000
-Requires:       perl(DateTime) >= 0.18
+BuildRequires:  perl(Params::ValidationCompiler) >= 0.26
+BuildRequires:  perl(Specio) >= 0.18
+BuildRequires:  perl(Specio::Declare)
+BuildRequires:  perl(Specio::Exporter)
+BuildRequires:  perl(Specio::Library::Builtins)
+BuildRequires:  perl(Test2::V0)
+BuildRequires:  perl(Test::More) >= 1.302015
+BuildRequires:  perl(namespace::autoclean)
+BuildRequires:  perl(parent)
+Requires:       perl(DateTime) >= 1.45
 Requires:       perl(DateTime::Format::Builder) >= 0.77
-Recommends:     perl(File::Find::Rule) >= 0.24
-Recommends:     perl(Test::Distribution) >= 1.22
-Recommends:     perl(Test::Pod) >= 0.95
+Requires:       perl(Params::ValidationCompiler) >= 0.26
+Requires:       perl(Specio) >= 0.18
+Requires:       perl(Specio::Declare)
+Requires:       perl(Specio::Exporter)
+Requires:       perl(Specio::Library::Builtins)
+Requires:       perl(namespace::autoclean)
+Requires:       perl(parent)
 %{perl_requires}
 
 %description
@@ -48,18 +60,20 @@ will be supported in a later release.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-./Build test
+make test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+%perl_make_install
+%perl_process_packlist
 %perl_gen_filelist
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes LICENSE README Todo
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md Todo
+%license LICENSE
 
 %changelog

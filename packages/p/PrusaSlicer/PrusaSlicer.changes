@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:50:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- revert the memoryperjob change. The build process really acquires
+  that much memory per job and the workers cannot provide 3GB per
+  CPU core. Sadly, we are limited by memory not by CPU cores.
+- require 11 GB of RAM. This allows us to run 3 jobs in parallel and
+  can be provided by all architectures
+
+-------------------------------------------------------------------
+Thu Aug 20 09:03:33 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+- Use only 1GB for memoryperjob.
+
+-------------------------------------------------------------------
 Mon Aug 10 08:12:10 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use wxGTK3 instead of wxWidgets (GTK2), for better HiDPI and

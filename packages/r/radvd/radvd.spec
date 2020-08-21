@@ -1,7 +1,7 @@
 #
 # spec file for package radvd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Release:        0
 Summary:        Router ADVertisement Daemon for IPv6
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Routing
-Url:            http://v6web.litech.org/radvd
+URL:            http://v6web.litech.org/radvd
 Source0:        http://www.litech.org/radvd/dist/%{name}-%{version}.tar.xz
 Source2:        sysconfig.radvd
 Source3:        system-user-radvd.conf
@@ -86,7 +86,7 @@ install -m 644 /dev/null %{buildroot}%{_sysconfdir}/radvd.conf
 install -D -m 644 %{SOURCE3} %{buildroot}%{_sysusersdir}/system-user-radvd.conf
 
 install -D -m 0644 redhat/systemd/radvd.service %{buildroot}%{_unitdir}/%{name}.service
-install -D -m 0644 redhat/systemd/radvd-tmpfs.conf %{buildroot}%{_libexecdir}/tmpfiles.d/%name.conf
+install -D -m 0644 redhat/systemd/radvd-tmpfs.conf %{buildroot}%{_tmpfilesdir}/%name.conf
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcradvd
 
 %pre -f radvd.pre
@@ -150,8 +150,7 @@ install -d -m 755 -o radvd /run/radvd
 %doc radvd.conf.example
 %{_sbindir}/rcradvd
 %{_unitdir}/%{name}.service
-%dir %{_libexecdir}/tmpfiles.d
-%{_libexecdir}/tmpfiles.d/%{name}.conf
+%{_tmpfilesdir}/%{name}.conf
 %{_sysusersdir}/system-user-radvd.conf
 
 %changelog

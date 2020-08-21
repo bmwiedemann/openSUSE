@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Mon Aug 17 07:12:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Update to 4.0.2:
+  - BUGFIX: Use-after-free bug in PE module (#1287).
+  - BUGFIX: Incorrect errors in rules when a single rule is badly
+    formatted (#1294).
+  - BUGFIX: Assertion failed with rules that have invalid syntax
+    (#1295).
+  - BUGFIX: Integer overflow causing missed matches on files larger
+    than 2GB (#1304).
+  - BUGFIX: Crashes in Mac OS while scanning binaries with a
+    signature that can't be verified (#1309).
+
+- Update to 4.0.1:
+  - Update sandboxed API (#1276)
+  - BUGFIX: Fix regression in exports parsing in PE module
+    (2bf67e6)
+  - BUGFIX: Fix unaligned accesses in ARM (e1654ae)
+
+- Update to 4.0.0:
+  - New string modifiers base64 and base64wide (#1185).
+  - New string modifier private (#1096)
+  - Iterators for dictionaries and arrays (#1141).
+  - Multiple API changes.
+  - Memory footprint greatly reduced, specially when compiling
+    large numbers of rules.
+  - New commmand-line option --scan-list (#1261).
+  - Added pdb_path field to "pe" module.
+  - Added export_details array to "pe" module.
+  - Added exports_index functions to "pe" module.
+  - Improvements to "cuckoo" module.
+  - BUGFIX: PE files with multiple signatures are parsed correctly
+    (#940).
+  - BUGFIX: Fix PE rich header parsing (#1164).
+  - BUGFIX: Buffer overruns in "dotnet" module (#1167, #1173).
+
+- Bump .so version
+
+- Update to 3.11.0:
+  - Duplicated string modifiers are now an error.
+  - More flexible “xor” modifier.
+  - Implement “private” strings (#1096)
+  - Add “field_offsets” to “dotnet” module.
+  - Implement “crc32” functions in “hash” module.
+  - Improvements to “rich_signature” functions in “pe” module.
+  - Implement sandboxed API using SAPI
+  - BUGFIX: Some regexp character classes not matching correctly
+    when used with “nocase” modifier (#1117)
+  - BUGFIX: Reduce the number of ERROR_TOO_MANY_RE_FIBERS errors
+    for certain hex pattern containing large jumps (#1107)
+  - BUGFIX: Buffer overrun in “dotnet” module (#1108)
+  - BUGFIX: Segfault in certain Windows versions (#1068)
+  - BUGFIX: Memory leak while attaching to a process fails (#1070)
+
+- Update to 3.10.0:
+  - Optimize integer range loops by exiting earlier when possible.
+  - Cache the result of PE module’s imphash function in order to
+    improve performance.
+  - Harden virtual machine against malicious code.
+  - BUGFIX: “xor” modifier not working as expected if not
+    accompanied by “ascii” (#1053).
+  - BUGFIX: \s and \S character classes in regular expressions now
+    include vertical tab, new line, carriage return and form feed
+    characters.
+  - BUGFIX: Regression bug in hex strings containing wildcards
+    (#1025).
+  - BUGFIX: Buffer overrun in “elf” module.
+  - BUGFIX: Buffer overrun in “dotnet” module.
+
+- Update to 3.9.0:
+  - Improve scan performance for certain strings.
+  - Reduce stack usage.
+  - Prevent inadvertent use of compiled rules by forcing the use of
+    -C when using yara command-line tool.
+  - BUGFIX: Buffer overflow in "dotnet" module.
+  - BUGFIX: Internal error when running multiple instances of YARA
+    in Mac OS X. (#945)
+  - BUGFIX: Regexp regression when using nested quantifiers {x,y}
+    for certain values of x and y. (#1018)
+  - BUGFIX: High RAM consumption in "pe" module while parsing
+    certain files.(0c8b461)
+  - BUGFIX: Denial of service when using "dex" module. Found by the
+    Cisco Talos team. (#1023)
+  - BUGFIX: Issues with comments inside hex strings.
+
+- Update to 3.8.1:
+  - BUGFIX: Some combinations of boolean command-line flags were
+    broken in version 3.8.0.
+  - BUGFIX: While reporting errors that occur at the end of the
+    file, the file name appeared as null.
+  - BUGFIX: dex module now works in big-endian architectures.
+  - BUGFIX: Keep ABI compatibility by keeping deprecated functions
+    visible.
+
+- Update to 3.8.0:
+  - Scanner API
+  - New “xor” modifier for strings
+  - New fields and functions in PE module.
+  - Add functions “min” and “max” to math module.
+  - Make compiled.
+  - yara and yaracsupport reading rules from stdin by using - as
+    the file name.
+  - Rule compilation is faster.
+  - BUGFIX: Regression in regex engine. /ba{3}b/ was matching
+    “baaaab”.
+  - BUGFIX: Function yr_compiler_add_fd() was reading only the
+    first 1024 bytes of the file.
+  - BUGFIX: Wrong calculation of sha256 hashes in Windows when
+    using native crypto API.
+  - Lots of more bug fixes.
+
+-------------------------------------------------------------------
 Tue May 22 10:30:37 UTC 2018 - tchvatal@suse.com
 
 - Update to 3.7.1:

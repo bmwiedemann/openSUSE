@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>789799</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>26f44d2e3ac71a099f9f54ff5390f6fe</srcmd5>
+    <version>5.1.2</version>
+    <time>1598030179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.2
+ * Refcount bug in C lib causing intermittent segfaults on shutdown
+ * Fractional seconds parsing in datetimes</comment>
+    <requestid>828448</requestid>
+  </revision>
 </revisionlist>

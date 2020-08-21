@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
@@ -67,12 +68,14 @@
 %define shlib_debug libdeal_II_g%{shlibver}%{?my_suffix}
 # /SECTION
 
+%define memlim 2000
 # LTO CAUSES aarch64 BUILDS TO TIME OUT; IT ALSO REQUIRES ~4GB PER THREAD
 %ifarch aarch64
 %define _lto_cflags %{nil}
 %define memlim 4000
-%else
-%define memlim 2000
+%endif
+%ifarch ppc64
+%define memlim 3000
 %endif
 
 Name:           %{pname}
@@ -80,9 +83,10 @@ Version:        9.2.0
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://www.dealii.org/
 Source0:        https://github.com/dealii/dealii/releases/download/v%{version}/%{srcname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM dealii-build-with-muparser-2.3.2.patch gh#dealii/dealii#10548 badshah400@gmail.com -- Fix muparser 2.3.2 version detection
+Patch0:         dealii-build-with-muparser-2.3.2.patch
 # NOTE: serial arpack-ng even if parpack is available (see gh#dealii/dealii#10197)
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel
@@ -116,10 +120,10 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 %endif
 %if %{with mpi}
-BuildRequires:  parpack%{my_suffix}-devel
-BuildRequires:  scalapack%{my_suffix}-devel
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-config
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-devel
+BuildRequires:  parpack%{my_suffix}-devel
+BuildRequires:  scalapack%{my_suffix}-devel
 %endif
 %if %{with python}
 BuildRequires:  libboost_python3-devel
@@ -134,7 +138,6 @@ partial differential equations using adaptive finite elements.
 
 %package -n %{shlib}
 Summary:        A generic C++ finite element library
-Group:          System/Libraries
 
 %description -n %{shlib}
 deal.II is a C++ program library targeted at the computational solution of
@@ -144,7 +147,6 @@ This package provides the shared library for deal.II.
 
 %package -n deal_II%{?my_suffix}-devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
 Provides:       %{name}%{?my_suffix}-devel = %{version}
 

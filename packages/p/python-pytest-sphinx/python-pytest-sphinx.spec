@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pytest-sphinx
-Version:        0.2.2
+Version:        0.3.1
 Release:        0
 Summary:        Doctest plugin for pytest with support for Sphinx-specific doctest-directives
 License:        BSD-3-Clause
 URL:            https://github.com/thisch/pytest-sphinx
-Source:         https://github.com/thisch/pytest-sphinx/archive/v0.2.2.tar.gz#/pytest-sphinx-%{version}.tar.gz
+Source:         https://github.com/thisch/pytest-sphinx/archive/v%{version}.tar.gz#/pytest-sphinx-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,10 +34,11 @@ BuildArch:      noarch
 Requires:       python-enum34
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest4 >= 3.1.1}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pytest >= 3.1.1}
 %if %{with python2}
 BuildRequires:  python2-enum34
+BuildRequires:  python2-mock
 %endif
 # /SECTION
 %python_subpackages

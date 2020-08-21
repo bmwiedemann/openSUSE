@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:58:40 UTC 2020 - hpj@urpla.net
+
+- Update to version v1.0.0~git.20200818T091513.73f3c217:
+  - too many to list here. See:
+    https://github.com/volatilityfoundation/volatility3/compare/v1.0.0-beta.1...master
+- Switch to tar_scm _service (disabled)
+- Add more requirements
+
+-------------------------------------------------------------------
 Sat May  2 22:09:34 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to volatility3 version v1.0.0-beta.1

@@ -19,16 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-minio
-Version:        5.0.8
+Version:        6.0.0
 Release:        0
 Summary:        Minio library for Amazon S3 compatible cloud storage
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/minio/minio-py
 Source:         https://files.pythonhosted.org/packages/source/m/minio/minio-%{version}.tar.gz
-# https://github.com/minio/minio-py/issues/865
-Source1:        https://raw.githubusercontent.com/minio/minio-py/master/minio/credentials/config.json.sample
-Source2:        https://raw.githubusercontent.com/minio/minio-py/master/minio/credentials/credentials.sample
+# https://github.com/minio/minio-py/issues/961
+Source1:        https://raw.githubusercontent.com/minio/minio-py/master/tests/unit/config.json.sample
+Source2:        https://raw.githubusercontent.com/minio/minio-py/master/tests/unit/credentials.sample
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,7 +66,7 @@ sed -i -e '/configparser/d' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-cp %{SOURCE1} %{SOURCE2} minio/credentials
+cp %{SOURCE1} %{SOURCE2} tests/unit
 %pytest
 
 %files %{python_files}

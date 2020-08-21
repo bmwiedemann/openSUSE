@@ -139,4 +139,32 @@
     <comment></comment>
     <requestid>744097</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ef26e47fcb61c8805e1f79a510899628</srcmd5>
+    <version>2.2.0</version>
+    <time>1598029436</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * API
+    + Add hwloc_bitmap_singlify_by_core() to remove SMT from a given cpuset,
+      thanks to Florian Reynier for the suggestion.
+    + Add --enable-32bits-pci-domain to stop ignoring PCI devices with domain
+      &gt;16bits (e.g. 10000:02:03.4). Enabling this option breaks the library ABI.
+      Thanks to Dylan Simon for the help.
+  * Backends
+    + Add support for Linux cgroups v2.
+    + Add NUMA support for FreeBSD.
+    + Add get_last_cpu_location support for FreeBSD.
+    + Remove support for Intel Xeon Phi (MIC, Knights Corner) co-processors.
+  * Tools
+    + Add --uid to filter the hwloc-ps output by uid on Linux.
+    + Add a GRAPHICAL OUTPUT section in the manpage of lstopo.
+  * Misc
+    + Use the native dlopen instead of libltdl,
+      unless --disable-plugin-dlopen is passed at configure time. 
+- install systemd files using systemd macros and register it on install
+  with systemd
+- build against libnuma on all architectures</comment>
+    <requestid>828324</requestid>
+  </revision>
 </revisionlist>

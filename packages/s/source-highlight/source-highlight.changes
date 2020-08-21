@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 20 19:31:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.1.9:
+  * changed esc.style to work better with dark theme terminals
+  * updated C and C++ to more recent standards
+  * fixed zsh.lang
+  * added new Python keywords
+  * added Rust
+  * added ixpe
+  * added vim
+- remove keyring as sig no longer is available
+
+-------------------------------------------------------------------
 Thu Feb  2 14:51:06 UTC 2017 - adam.majer@suse.de
 
 - use individual libboost-*-devel packages instead of boost-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:09:23 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Mon Jun 22 12:27:47 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6.1

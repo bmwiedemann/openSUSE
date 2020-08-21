@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 20 21:43:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.9.15:
+- Fix segfault on uninitialized iconv
+- Make file format less stringent
+- Minor fixes in the build system
+- Fix proprietary tags striping eating the content of the previous tag if
+  proprietary tag is in the middle of the line
+- Don't output invalid line numbers on the console before SGML processing starts
+- Fix potential heap overflow
+  - Fix crash on some malformed ofx files
+  - Fix crash in ofxconnect on missing command line arguments
+  - Fix for daylight savings time handling
+  - Easier compile on macos:  obey LIBTOOLIZE env variable, and fallback to glibtoolize
+  - Fix compile on win32 (mingw-w64)
+  - Performance an reliability fixes in header parsing
+  - Strip CATEGORY tag added by Chase bank
+- remove libofx-CVE-2017-14731.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Apr 19 07:18:36 UTC 2018 - jengelh@inai.de
 
 - Trim history from description. Remove ineffective --with-pic

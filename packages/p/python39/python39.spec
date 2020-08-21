@@ -290,8 +290,8 @@ Provides:       %{python_pkg_name}-importlib-metadata = %{version}
 # python-importlib_resources is a backport of 3.7 behaviour into older pythons
 Provides:       %{python_pkg_name}-importlib_resources = %{version}
 %if %{primary_interpreter}
-Provides:       python3-base = %{version}
 Provides:       python3-asyncio = %{version}
+Provides:       python3-base = %{version}
 Obsoletes:      python3-asyncio < %{version}
 Provides:       python3-typing = %{version}
 Obsoletes:      python3-typing < %{version}
@@ -317,14 +317,14 @@ database and UI toolkits support.
 %package -n %{python_pkg_name}-tools
 Summary:        Python Utility and Demonstration Scripts
 Requires:       %{python_pkg_name}-base = %{version}
-Provides:       %{python_pkg_name}-demo = %{version}
 Provides:       %{python_pkg_name}-2to3 = %{version}
+Provides:       %{python_pkg_name}-demo = %{version}
 %if %{primary_interpreter}
-Provides:       python3-tools = %{version}
-Provides:       python3-demo = %{version}
 Provides:       python3-2to3 = %{version}
-Obsoletes:      python3-demo < %{version}
+Provides:       python3-demo = %{version}
+Provides:       python3-tools = %{version}
 Obsoletes:      python3-2to3 < %{version}
+Obsoletes:      python3-demo < %{version}
 %endif
 
 %description -n %{python_pkg_name}-tools
@@ -391,7 +391,6 @@ other applications.
 %patch27 -p1
 %patch29 -p1
 %patch31 -p1
-
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -510,7 +509,7 @@ export PYTHONPATH="$(pwd -P)/Lib"
 # Use timeout, like make target buildbottest
 # We cannot run tests parallel, because osc build environment doesn’t
 # have /dev/shm
-%make_build -j1 test TESTOPTS="-u curses -v -x $EXCLUDE --timeout=1200"
+%make_build -j1 test TESTOPTS="-u curses -v -x $EXCLUDE --timeout=3000"
 # use network, be verbose:
 #make test TESTOPTS="-l -u network -v"
 %endif

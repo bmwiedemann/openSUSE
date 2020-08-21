@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 21 08:37:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.7.0
+  * Third-party plugins can be used without prefix (plugin_name instead of dist_name:plugin_name):
+    this concerns the plugin name, CLI flags, and keys in credential files.
+    The prefixed form is still supported but is deprecated, and will be removed in a future release.
+  * We deprecated support for Python 3.5 in Certbot and its ACME library.
+    Support for Python 3.5 will be removed in the next major release of Certbot.
+
+-------------------------------------------------------------------
 Mon Jul 13 08:34:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 1.6.0

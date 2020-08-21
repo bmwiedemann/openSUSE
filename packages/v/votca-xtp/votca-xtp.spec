@@ -44,7 +44,6 @@ BuildRequires:  libxc-devel
 BuildRequires:  pkg-config
 BuildRequires:  votca-csg-devel = %{version}
 # for hdf5
-BuildRequires:  memory-constraints
 BuildRequires:  zlib-devel
 
 #exact same version is needed
@@ -109,7 +108,6 @@ sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/"
 
 %build
 %{cmake} -DCMAKE_SKIP_RPATH:BOOL=OFF -DLIB=%{_lib} -DBUILD_MANPAGES=ON -DENABLE_TESTING=ON
-%limit_build -m 2000
 %cmake_build
 
 %install

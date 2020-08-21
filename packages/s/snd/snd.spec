@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch aarch64
+%define _lto_cflags %{nil}
+%endif
 
 %ifarch %{ix86} x86_64 %{ppc} ppc64 ppc64le
 # The jack support has some inline assembly, but only for x86/ppc

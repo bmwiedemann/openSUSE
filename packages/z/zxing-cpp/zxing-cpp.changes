@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Aug 16 19:19:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.1.0
+  * Add Python binding
+  * Bug fixes from upstream XZing project
+  * Many performance improvements for 1D readers
+  * More meta-data exported when reading specific format
+  * Minor bug fixes and improvements for corner cases
+  * Improve DataMatrix encoder
+  * Add interface to simplify basic usage
+  * WASM API to support pixels array as input
+  * Few minor bug fixes
+  * A new and (hopefully) 'future proof' single ReadBarcode entry point
+    into the decoding functionality.
+  * The LuminanceSource based API is now deprecated but still compiles.
+  * A new BarcodeFormats flag type to specify the set of barcodes to look for.
+  * Deprecated unrelyable Result::resultPoints in favor of well defined
+    Result::position.
+  * Deprecated Result::metadata() -> ORIENTATION in favor
+    of Result::orientation.
+  * New Binarizer enum in DecodeHints to specify the binarizer for
+    the ReadBarcode API.
+  * New DecodeHints::isPure property to speed up detection for
+    'pure' input use-cases.
+  * New 'unified' CMake structure to build (most) of the project from
+    the top-level project.
+  * New ZXingReader and ZXingWriter example code also meant for distributing.
+  * New simplified and consistent Python API (breaking change)
+  * ReedSolomon error detection code 2x speedup.
+  * Enable basic MaxiCode support.
+  * Fix coutry-code metatdata decoding for UPC/EAN codes.
+  * Slightly improved QRCode detection for rotated symbols.
+  * Faster PDF417 decoder.
+  * Lots of minor code readability and general cleanup improvements.
+- Drop patches:
+  * add-missing-includes-of-stdexcept-header.patch
+  * fix-library-installation-and-versioning.patch
+
+-------------------------------------------------------------------
 Thu Dec  5 08:57:46 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add add-missing-includes-of-stdexcept-header.patch

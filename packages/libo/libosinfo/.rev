@@ -382,4 +382,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>812735</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>d6e62995e90b4387488d078448f5dee2</srcmd5>
+    <version>1.8.0</version>
+    <time>1598029367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827588</requestid>
+  </revision>
 </revisionlist>

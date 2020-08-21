@@ -18,7 +18,7 @@
 
 
 Name:           jc
-Version:        1.11.1
+Version:        1.13.4
 Release:        0
 Summary:        JSON CLI output utility
 License:        MIT
@@ -28,14 +28,14 @@ Source:         https://github.com/kellyjonbrazil/jc/archive/v%{version}.tar.gz#
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
-Requires:       python3-Pygments >= 2.4.2
+Requires:       python3-Pygments >= 2.3.0
 Requires:       python3-ifconfig-parser >= 0.0.5
 Requires:       python3-ruamel.yaml >= 0.15.0
 Requires:       python3-xmltodict >= 0.12.0
 Recommends:     jq
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  python3-Pygments >= 2.4.2
+BuildRequires:  python3-Pygments >= 2.3.0
 BuildRequires:  python3-ifconfig-parser >= 0.0.5
 BuildRequires:  python3-pytest
 BuildRequires:  python3-ruamel.yaml >= 0.15.0
@@ -61,7 +61,7 @@ python3 -m pytest -v
 
 %files
 %license LICENSE.md
-%doc changelog.txt README.md
+%doc CHANGELOG README.md
 %{_bindir}/jc
 %{python3_sitelib}/jc*
 

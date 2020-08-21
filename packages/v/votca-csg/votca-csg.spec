@@ -41,7 +41,6 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
-BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
  #for hdf5
 BuildRequires:  python3-txt2tags
@@ -148,7 +147,6 @@ tar -xzf %{S:1}
 
 %build
 %{cmake} -DWITH_RC_FILES=OFF -DCMAKE_SKIP_RPATH:BOOL=OFF -DWITH_H5MD=ON -DWITH_GMX=ON -DENABLE_TESTING=ON -DREGRESSIONTEST_TOLERANCE="2.1e-5"
-%limit_build -m 2000
 %cmake_build
 
 %install

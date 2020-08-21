@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-click-plugins
 Version:        1.1.1
 Release:        0
-Summary:        An extension for click to register CLI commands via setuptools entry-points
+Summary:        Click extension to register CLI commands via setuptools entry-points
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/click-contrib/click-plugins
+URL:            https://github.com/click-contrib/click-plugins
 Source:         https://files.pythonhosted.org/packages/source/c/click-plugins/click-plugins-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-%if %{with test}
 BuildRequires:  %{python_module click >= 3.0}
 BuildRequires:  %{python_module pytest}
-%endif
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-click >= 3.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
-Use a decorator to get setuptools entry points that allows others to use your commandline utility as a home for their related sub-commands. You get to choose where these sub-commands or sub-groups can be registered but the plugin developer gets to choose they ARE registered. You could have all plugins register alongside the core commands, in a special sub-group, across multiple sub-groups, or some combination.
+Use a decorator to get setuptools entry points that allows others
+to use your commandline utility as a home for their related sub-commands.
+You get to choose where these sub-commands or sub-groups can be registered
+but the plugin developer gets to choose they ARE registered.
+You could have all plugins register alongside the core commands,
+in a special sub-group, across multiple sub-groups, or some combination.
 
 %prep
 %setup -q -n click-plugins-%{version}
@@ -50,19 +51,18 @@ Use a decorator to get setuptools entry points that allows others to use your co
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+export LANG=en_US.UTF-8
+%pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc AUTHORS.txt CHANGES.md README.rst
 %if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
 %%license LICENSE.txt
 %else
-%doc LICENSE.txt
+%license LICENSE.txt
 %endif
 %{python_sitelib}/*
 

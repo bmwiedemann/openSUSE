@@ -251,4 +251,27 @@ Not sure I solved this one the best way possible, comments wanted. (forwarded re
     <comment></comment>
     <requestid>598062</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>77b72ade9df0cea80fcb81a88af73863</srcmd5>
+    <version>0.9.15</version>
+    <time>1598029581</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.15:
+- Fix segfault on uninitialized iconv
+- Make file format less stringent
+- Minor fixes in the build system
+- Fix proprietary tags striping eating the content of the previous tag if
+  proprietary tag is in the middle of the line
+- Don't output invalid line numbers on the console before SGML processing starts
+- Fix potential heap overflow
+  - Fix crash on some malformed ofx files
+  - Fix crash in ofxconnect on missing command line arguments
+  - Fix for daylight savings time handling
+  - Easier compile on macos:  obey LIBTOOLIZE env variable, and fallback to glibtoolize
+  - Fix compile on win32 (mingw-w64)
+  - Performance an reliability fixes in header parsing
+  - Strip CATEGORY tag added by Chase bank
+- remove libofx-CVE-2017-14731.patch (upstream)</comment>
+    <requestid>828308</requestid>
+  </revision>
 </revisionlist>

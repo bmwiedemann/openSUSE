@@ -60,4 +60,12 @@ tools.</comment>
     <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
     <requestid>793949</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>44a211b0323487fb36b411b7d9955b84</srcmd5>
+    <version>1.3</version>
+    <time>1598029704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828291</requestid>
+  </revision>
 </revisionlist>

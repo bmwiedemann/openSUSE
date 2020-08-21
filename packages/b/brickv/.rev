@@ -32,4 +32,27 @@
     <comment></comment>
     <requestid>828025</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da4b5e01e72c00a376705f7918aba754</srcmd5>
+    <version>2.4.14</version>
+    <time>1598029739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream version 2.4.14:
+  - Fix monoflop handling to cover full uint32 duration range
+  - Better indicate disconnected state
+  - Highlight timeout error counter &gt; 0 in bold red
+  - Fix slider/spinbox mismatch on auto-reconnect in DC Brick plugin
+  - Avoid UI jumps on value changes in Energy Monitor Bricklet plugin
+  - Add extra checkbox to avoid accidental port number changes
+  - Handle all errors while downloading firmware updates
+  version 2.4.13:
+  - Fix race condition in RED Brick program state tracking
+  - Report actual cause for connection errors
+  - Don't reset RED Brick tab on every enumerate callback (fixes tab reset on
+    selecting the Server Monitoring tab)
+  - Ensure that all dialogs have proper close buttons
+  - Fix close buttons for for detached tabs
+  - Fix race condition in RED Brick overview sorting</comment>
+    <requestid>828389</requestid>
+  </revision>
 </revisionlist>

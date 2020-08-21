@@ -16,23 +16,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           kokkos
 Version:        3.1.01
-%define         sover 3
 Release:        0
+%define         sover 3
 Summary:        A C++ Performance Portability Programming 
 #no support for 32-bit archs https://github.com/kokkos/kokkos/issues/2312
-ExcludeArch: %ix86 %arm
- 
 License:        BSD-3-Clause
+Group:          System/Libraries
+ExcludeArch:    %ix86 %arm
+
 URL:            https://github.com/kokkos/kokkos
 Source0:        https://github.com/kokkos/kokkos/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
- 
-BuildRequires:  gcc-c++
+
 BuildRequires:  cmake >= 3.0
+BuildRequires:  gcc-c++
 BuildRequires:  hwloc-devel
-BuildRequires:  memory-constraints
- 
+
 %global kokkos_desc \
 Kokkos Core implements a programming model in C++ for writing performance \
 portable applications targeting all major HPC platforms. For that purpose \
@@ -40,10 +41,10 @@ it provides abstractions for both parallel execution of code and data \
 management.  Kokkos is designed to target complex node architectures with \
 N-level memory hierarchies and multiple types of execution resources. It \
 currently can use OpenMP, Pthreads and CUDA as backend programming models.
- 
+
 %description
 %{kokkos_desc}
- 
+
 %package -n libkokkos%sover
 Summary:        Kokkos library
 Group:          System/Libraries
@@ -52,20 +53,22 @@ Group:          System/Libraries
 %{kokkos_desc}
 
 This package contains the kokkos library.
-  
+
 %package devel
 Summary:        Development package for  %{name} packages
-Requires:       libkokkos%sover = %{version}-%{release}
+Group:          System/Libraries
 Requires:       hwloc-devel
+Requires:       libkokkos%sover = %{version}-%{release}
 Conflicts:      trilinos-devel
+
 %description devel
 %{kokkos_desc}
- 
+
 This package contains the development files of %{name}.
- 
+
 %prep
 %setup -q
- 
+
 %build
 %{cmake} \
   -DKokkos_ENABLE_TESTS=On \
@@ -76,12 +79,11 @@ This package contains the development files of %{name}.
   -DKokkos_ENABLE_SERIAL=ON \
   -DKokkos_ENABLE_HWLOC=ON \
   ..
-%limit_build -m 2000
 %cmake_build
- 
+
 %install
 %cmake_install
- 
+
 %check
 LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$PWD/build/core/unit_test:${LD_LIBRARY_PATH}" make -C build test CTEST_OUTPUT_ON_FAILURE=1 %{?testargs}
 
@@ -92,11 +94,11 @@ LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$PWD/build/core/unit_test:${LD_LIBRARY_
 %doc README.md
 %license LICENSE
 %{_libdir}/libkokkos*.so.%{sover}*
- 
+
 %files devel
 %{_libdir}/libkokkos*.so
 %{_libdir}/cmake/Kokkos
 %{_includedir}/kokkos
 %{_bindir}/nvcc_wrapper
- 
+
 %changelog

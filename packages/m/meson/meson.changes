@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Aug 17 09:45:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.55.1:
+  + find_library: Print type of library not found.
+  + interpreter: Don't force fallback when subproject failed to
+    configure.
+  + Various fixes around cmake integration.
+  + mdata: Generate mesondata.py from */data folders.
+  + mdata: remove setuptools and use mesondata instead.
+- Drop meson-pr7461-remove-setuptools-dependency.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sun Jul 26 15:59:52 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Remove %_smp_build_ncpus in meson-suse-ify-macros.patch.
+- Drop broken meson-restore-python3.4.patch,
+  meson-suse-fix-llvm-3.8.patch, meson-fix-gcc48.patch.
+
+-------------------------------------------------------------------
+Wed Jul 22 17:51:19 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add meson-pr7461-remove-setuptools-dependency.patch: Fixes forced
+  requirement on setuptools (gh#mesonbuild/meson#7461).
+
+-------------------------------------------------------------------
+Wed Jul 15 09:00:59 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.55.0
+  + rpath removal now more careful
+  + Added ability to specify targets in `meson compile`
+  + Added test protocol for gtest
+  + meson.add_*_script methods accept new types
+  + Native and cross files now support string and list concatenation
+  + Ability to configure CMake subprojects with meson.subproject_options
+  + find_program: Fixes when the program has been overridden by executable
+  + Response files enabled on Linux
+  + `unstable-kconfig` module renamed to `unstable-keyval`
+  + Config tool based dependencies no longer search PATH for cross compiling
+  + String concatenation in meson_options.txt
+  + Clang coverage support
+  + Implicit dependency fallback
+  + Added ability to specify backend arguments in `meson compile`
+- Removed meson-fix-gnome-test.patch: contained in upstream
+- Changed meson-suse-ify-macros.patch: to be compatible with new
+  version
+
+-------------------------------------------------------------------
 Fri Jun 26 16:51:35 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add meson-fix-gnome-test.patch: fix GNOME test that sometimes

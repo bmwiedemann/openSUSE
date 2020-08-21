@@ -67,7 +67,13 @@ It also works with Mach3, LinuxCNC and Machinekit controllers.
 sed -i 's/UNKNOWN/OpenSUSE/' version.inc
 
 %build
-%limit_build -m 4096
+# The build process really acquires that much memory per job. We are
+# limited by memory not by CPU cores. Using memoryperjob in _constraints cannot
+# provide any workers on some architectures. This is still better than not using
+# parallel building at all.
+# https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.build_job_constraints.html
+# https://en.opensuse.org/openSUSE:Specfile_guidelines#Parallel_make
+%limit_build -m 3072
 # sse2 flags for 32-bit: see gh#prusa3d/PrusaSlicer#3781 
 %ifarch %ix86
   export CFLAGS="%optflags -mfpmath=sse -msse2"

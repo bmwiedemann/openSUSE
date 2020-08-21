@@ -1,7 +1,7 @@
 #
 # spec file for package uim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,15 @@ Release:        0
 Summary:        A multilingual input method framework
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND (BSD-3-Clause OR LGPL-2.0-only)
 Group:          System/I18n/Japanese
-Url:            https://github.com/uim/uim
+URL:            https://github.com/uim/uim
 Source0:        https://github.com/uim/uim/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        suse-start-uim.el
 Source2:        xemacs-auto-autoloads.el
 Source3:        etc-x11-xim.d-uim
 Source4:        baselibs.conf
 Patch2:         uim-fix-crash-in-firefox.diff
+Patch3:         bugzilla-1175274-emacs-27.1.patch
+Patch4:         uim-fix-multiple_declaration.diff
 BuildRequires:  canna-devel
 BuildRequires:  emacs-x11
 BuildRequires:  fdupes
@@ -105,6 +107,8 @@ Contains Qt5 input module plugin for uim
 %prep
 %setup -q
 %patch2 -p1
+%patch3 -p0
+%patch4 -p0
 cp emacs/README README.emacs
 iconv -f euc-jp -t utf-8 < emacs/README.ja > README.ja.emacs
 

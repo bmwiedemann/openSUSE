@@ -98,7 +98,6 @@ libhandy widgets in Glade.
 	-Dglade_catalog=enabled \
 	%{nil}
 %meson_build
-%meson_build libhandy-doc
 
 %install
 %meson_install

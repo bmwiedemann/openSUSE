@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:47:34 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
+
+- Update to 7.72.0 [bsc#1175109, CVE-2020-8231]
+  * Changes:
+    - content_encoding: add zstd decoding support
+    - CURL_PUSH_ERROROUT: allow the push callback to fail the parent stream
+    - CURLINFO_EFFECTIVE_METHOD: added
+  * Bugfixes:
+    - CVE-2020-8231: libcurl: wrong connect-only connection
+    - curl-config: ignore REQUIRE_LIB_DEPS in --libs output
+    - curl: improve the existing file check with -J
+    - curl_multi_setopt: fix compiler warning "result is always false"
+    - curl_version_info.3: CURL_VERSION_KERBEROS4 is deprecated
+    - docs: Add video link to docs/CONTRIBUTE.md
+    - docs: clarify MAX_SEND/RECV_SPEED functionality
+    - ftp: don't do ssl_shutdown instead of ssl_close
+    - ftpserver: don't verify SMTP MAIL FROM names
+    - getinfo: reset retry-after value in initinfo
+    - gnutls: repair the build with 'CURL_DISABLE_PROXY'
+    - gtls: survive not being able to get name/issuer
+    - h2: repair trailer handling
+    - http2: close the http2 connection when no more requests may be sent
+    - http2: fix nghttp2_strerror -> nghttp2_http2_strerror in debug messages
+    - libssh2: s/ssherr/sftperr/
+    - mprintf: Fix dollar string handling
+    - mprintf: Fix stack overflows
+    - multi_remove_handle: close unused connect-only connections
+    - ngtcp2: adapt to error code rename
+    - ngtcp2: adjust to recent sockaddr updates
+    - ngtcp2: update to modified qlog callback prototype
+    - ntlm: free target_info before (re-)malloc
+    - page-header: provide protocol details in the curl.1 man page
+    - quiche: handle calling disconnect twice
+    - setopt: unset NOBODY switches to GET if still HEAD
+    - smtp_parse_address: handle blank input string properly
+    - socks: use size_t for size variable
+    - tls-max.d: this option is only for TLS-using connections
+    - tlsv1.3.d. only for TLS-using connections
+    - tool_getparam: make --krb option work again
+    - transfer: fix data_pending for builds with both h2 and h3 enabled
+    - transfer: fix memory-leak with CURLOPT_CURLU in a duped handle
+    - transfer: move retrycount from connect struct to easy handle
+    - url: fix CURLU and location following
+
+-------------------------------------------------------------------
 Wed Jul  1 12:59:25 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 7.71.1

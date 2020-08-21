@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-marshmallow
-Version:        3.5.1
+Version:        3.7.1
 Release:        0
 Summary:        ORM/ODM/framework-agnostic library to convert datatypes from/to Python types
 License:        MIT AND BSD-3-Clause
@@ -28,6 +28,7 @@ URL:            https://marshmallow.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/m/marshmallow/marshmallow-%{version}.tar.gz
 # https://github.com/humitos/sphinx-version-warning/issues/22
 Patch0:         python-marshmallow-no-version-warning.patch
+BuildRequires:  %{python_module autodocsumm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

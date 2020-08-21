@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 12:37:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch uim-fix-multiple_declaration.diff to avoid multiple
+  declaration of GCROOTS_jmp_buf 
+
+-------------------------------------------------------------------
+Tue Aug 18 11:19:51 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch bugzilla-1175274-emacs-27.1.patch
+  There is no (process-kill-without-query) anymore, use
+  (set-process-query-on-exit-flag) instead (boo#1175274).
+
+-------------------------------------------------------------------
 Sat Apr 13 13:31:32 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Stop packaging the Qt4 frontend for openSUSE Factory.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:43:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Resubmit for SLE (jsc#SLE-12826)
+
+-------------------------------------------------------------------
 Tue Apr 14 14:52:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.

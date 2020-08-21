@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:41:28 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Increase testsuite timeout to account for super long running
+  test_peg_generator
+
+-------------------------------------------------------------------
 Tue Jul 21 09:53:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Removed CVE-2019-20907_tarfile-inf-loop.patch: fixed in upstream

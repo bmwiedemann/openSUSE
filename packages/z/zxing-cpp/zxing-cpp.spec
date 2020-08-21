@@ -1,7 +1,7 @@
 #
 # spec file for package zxing-cpp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,41 @@
 
 %define sover 1
 Name:           zxing-cpp
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        Library for processing 1D and 2D barcodes
 License:        Apache-2.0 AND Zlib AND LGPL-2.1-with-Qt-Company-Qt-exception-1.1
 Group:          Development/Languages/C and C++
 URL:            https://github.com/nu-book/zxing-cpp/
 Source0:        https://github.com/nu-book/zxing-cpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch1:         fix-library-installation-and-versioning.patch
-Patch2:         add-missing-includes-of-stdexcept-header.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 
 %description
 ZXing ("zebra crossing") is an multi-format 1D/2D barcode image
 processing library. This package provides a C++ implementation.
+
+%package -n libZXing%{sover}
+Summary:        Library for processing 1D and 2D barcodes
+Group:          System/Libraries
+# called libZXing in the 1.1.0 update
+Provides:       libZXingCore%{sover} = %{version}
+Obsoletes:      libZXingCore%{sover} < %{version}
+
+%description -n libZXing%{sover}
+ZXing ("zebra crossing") is an multi-format 1D/2D barcode image
+processing library. This package provides a C++ implementation.
+
+%package devel
+Summary:        Header files for zxing, a library for processing 1D and 2D barcodes
+Group:          Development/Languages/C and C++
+Requires:       libZXing%{sover} = %{version}
+
+%description devel
+ZXing ("zebra crossing") is an multi-format 1D/2D barcode image
+processing library. This package provides header files to use ZXing in
+other applications.
 
 %prep
 %autosetup -p1
@@ -45,37 +64,20 @@ processing library. This package provides a C++ implementation.
 %install
 %cmake_install
 
-%package -n libZXingCore%{sover}
-Summary:        Library for processing 1D and 2D barcodes
-Group:          System/Libraries
+%post -n libZXing%{sover} -p /sbin/ldconfig
+%postun -n libZXing%{sover} -p /sbin/ldconfig
 
-%description -n libZXingCore%{sover}
-ZXing ("zebra crossing") is an multi-format 1D/2D barcode image
-processing library. This package provides a C++ implementation.
-
-%post -n libZXingCore%{sover} -p /sbin/ldconfig
-%postun -n libZXingCore%{sover} -p /sbin/ldconfig
-
-%files -n libZXingCore%{sover}
+%files -n libZXing%{sover}
 %doc README.md
 %license LICENSE.*
-%{_libdir}/libZXingCore.so.%{sover}
-%{_libdir}/libZXingCore.so.%{sover}.*
-
-%package devel
-Summary:        Header files for zxing, a library for processing 1D and 2D barcodes
-Group:          Development/Languages/C and C++
-Requires:       libZXingCore%{sover} = %{version}
-
-%description devel
-ZXing ("zebra crossing") is an multi-format 1D/2D barcode image
-processing library. This package provides header files to use ZXing in
-other applications.
+%{_libdir}/libZXing.so.%{sover}
+%{_libdir}/libZXing.so.%{sover}.*
 
 %files devel
 %license LICENSE.*
 %{_includedir}/ZXing/
 %{_libdir}/cmake/ZXing/
-%{_libdir}/libZXingCore.so
+%{_libdir}/libZXing.so
+%{_libdir}/pkgconfig/zxing.pc
 
 %changelog

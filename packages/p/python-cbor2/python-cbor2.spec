@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cbor2
-Version:        5.1.0
+Version:        5.1.2
 Release:        0
 Summary:        Pure Python CBOR (de)serializer with extensive tag support
 License:        MIT
@@ -51,16 +51,11 @@ export LANG=en_US.UTF8
 
 %check
 export LANG=en_US.UTF8
-%pytest
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%ifpython2
-%{python_sitelib}/*
-%endif
-%ifpython3
 %{python_sitearch}/*
-%endif
 
 %changelog

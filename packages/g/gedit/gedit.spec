@@ -74,6 +74,7 @@ options, autosave, and plugins.
 %package -n python3-gedit
 Summary:        Python bindings for gedit
 Group:          Development/Languages/Python
+BuildArch:      noarch
 
 %description -n python3-gedit
 Gedit is a UTF-8 text editor for the GNOME
@@ -173,7 +174,7 @@ translation-update-upstream po %{name}
 
 %if %{with python_bindings}
 %files -n python3-gedit
-%{python3_sitearch}/gi/
+%{python3_sitelib}/gi/
 %endif
 
 %files devel

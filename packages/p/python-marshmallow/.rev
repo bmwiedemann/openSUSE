@@ -110,4 +110,21 @@
     <comment></comment>
     <requestid>790511</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8d576e3e582e579f1e1ce99f599668ff</srcmd5>
+    <version>3.7.1</version>
+    <time>1598029639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.1:
+  * Deprecations:
+    + `marshmallow.pprint` is deprecated and will be removed in marshmallow 4 (:issue:`1588`).
+  * Features:
+    + Add ``validators.ContainsNoneOf`` (:issue:`1528`).
+  * Bug fixes:
+    + Fix typing in ``class_registry`` (:pr:`1574`). Thanks :user:`mahenzon`.
+    + Fix passing ``only`` and ``exclude`` to ``Nested`` with an ordered ``Schema`` (:pr:`1627`).
+    + ``fields.Boolean`` correctly serializes non-hashable types (:pr:`1633`).
+- Refresh patch python-marshmallow-no-version-warning.patch</comment>
+    <requestid>828384</requestid>
+  </revision>
 </revisionlist>

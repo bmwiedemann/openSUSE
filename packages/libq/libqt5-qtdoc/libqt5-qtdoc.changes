@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 21 11:11:52 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- In _constraints set default min 10GB disk space for all arches
+
+-------------------------------------------------------------------
 Tue May 26 09:52:17 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to version 5.15.0:

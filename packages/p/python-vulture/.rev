@@ -64,4 +64,12 @@
   * Check code with black and pyupgrade.</comment>
     <requestid>794478</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>af9b38e9e2512ef6f6073cc0ef1b5ef2</srcmd5>
+    <version>2.1</version>
+    <time>1598029615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828348</requestid>
+  </revision>
 </revisionlist>

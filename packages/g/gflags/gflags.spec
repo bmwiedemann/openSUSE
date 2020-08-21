@@ -1,7 +1,7 @@
 #
 # spec file for package gflags
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           gflags
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Library for commandline flag processing
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/gflags/gflags
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
@@ -38,7 +37,6 @@ they're used.
 
 %package -n libgflags2
 Summary:        Library for commandline flag processing
-Group:          System/Libraries
 
 %description -n libgflags2
 The gflags package contains a library that implements commandline
@@ -49,7 +47,6 @@ they're used.
 
 %package devel
 Summary:        Development files for gflags library
-Group:          Development/Libraries/C and C++
 Requires:       libgflags2 = %{version}
 
 %description devel
@@ -57,7 +54,6 @@ This package contains headers and build system meta files.
 
 %package devel-static
 Summary:        Statically linked development libraries for gflags
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 
 %description devel-static
@@ -77,7 +73,7 @@ export CFLAGS CXXFLAGS
 	-DBUILD_TESTING:BOOL=ON \
 	-DCMAKE_BUILD_TYPE=Release
 
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 
 %install
 %cmake_install

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:06:22 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to version 5.1.2
+ * Refcount bug in C lib causing intermittent segfaults on shutdown
+ * Fractional seconds parsing in datetimes
+
+-------------------------------------------------------------------
 Mon Mar 30 12:59:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 5.1.0

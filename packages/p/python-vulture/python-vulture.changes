@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 20 21:06:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.1
+  * Treat `getattr/hasattr(obj, "constant_string", ...)` as a reference
+    to `obj.constant_string`
+  * Fix false positives when assigning to `x.some_name` but reading via
+    `some_name`, at the cost of potential false negatives
+  * Allow reading options from `pyproject.toml`
+- from v2.0
+  * Parse `# type: ...` comments if on Python 3.8+
+  * Bump minimum Python version to 3.6. The last Vulture release that
+    supports Python 2.7 and Python 3.5 is version 1.6.
+  * Consider all files under `test` or `tests` directories test files
+  * Ignore `logging.Logger.propagate` attribute
+- from v1.6
+  * Differentiate between functions and methods
+  * Move from Travis to GitHub actions
+- from v1.5
+  * Support flake8 "noqa" error codes F401 (unused import) and F841
+    (unused local variable)
+  * Detect unreachable code in conditional expressions
+
+-------------------------------------------------------------------
 Thu Apr 16 07:49:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.4:

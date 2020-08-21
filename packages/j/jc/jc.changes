@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Aug 13 19:54:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.13.4
+  * Update crontab and crontab-u parsers to tighten up variable
+    detection
+  * Update ping parser to tighten linux/bsd detection
+- Update to version 1.13.3
+  * Update ping parser for Raspberry Pi compatibility
+- Update to versino 1.13.2
+  * Add key/value file parser (wrapper for ini parser)
+  * Add date command parser
+  * Update traceroute parser to more gracefully handle missing
+    header row
+  * Update traceroute parser to handle annotations
+  * Update traceroute parser to only return successful probes
+- Update to versino 1.13.1
+  * Add route -6 tests
+- Update to version 1.13.0
+  * Add ping and ping6 command parser tested on linux
+  * Add traceroute and traceroute6 command parser tested on linux
+  * Add tracepath command parser tested on linux
+  * Update ini parser to support files only containing key/value
+    pairs
+  * Update uname parser exception with a hint to use "uname -a"
+  * Update route parser to support IPv6 tables
+- Update to version 1.12.1
+  * Fix tests when using older version of pygments library
+- Update to version 1.12.0
+  * Add sysctl command parser tested on linux
+  * Update the cli code to allow older versions of the pygments
+    library (2.3.0) for debian packaging
+  * Code cleanup on the cli
+  * Add tests for the cli
+  * Vendorize cgitb as tracebackplus for verbose debug messages
+- Update to version 1.11.8
+  * Add verbose debug option using -dd argument
+- Update to version 1.11.7
+  * Fix iptables parser issue which would not output the last
+    chain
+- Update to version 1.11.6
+  * Improve and standardize empty data check for all parsers
+- Update to version 1.11.5
+  * Update airport_s parser to fix error on parsing empty data
+  * Update arp parser to fix error on parsing empty data
+  * Update blkid parser to fix error on parsing empty data
+  * Update crontab parser to fix error on parsing empty data
+  * Update crontab_u parser to fix error on parsing empty data
+  * Update df parser to fix error on parsing empty data
+  * Update free parser to fix error on parsing empty data
+  * Update lsblk parser to fix error on parsing empty data
+  * Update lsmod parser to fix error on parsing empty data
+  * Update mount parser to fix error on parsing empty data
+  * Update netstat parser to fix error on parsing empty data
+  * Update ntpq parser to fix error on parsing empty data
+  * Update ps parser to fix error on parsing empty data
+  * Update route parser to fix error on parsing empty data
+  * Update systemctl parser to fix error on parsing empty data
+  * Update systemctl_lj parser to fix error on parsing empty data
+  * Update systemctl_ls parser to fix error on parsing empty data
+  * Update systemctl_luf parser to fix error on parsing empty data
+  * Update uptime parser to fix error on parsing empty data
+  * Update w parser to fix error on parsing empty data
+  * Update xml parser to fix error on parsing empty data
+  * Add tests to all parsers for no data condition
+  * Update ss parser to fix integer fields
+- Update to version 1.11.4
+  * Update ls parser to fix error on parsing an empty directory
+- Update to version 1.11.3
+  * Add local parser plugin feature
+- Update to version 1.11.2
+  * Update netstat parser to add route_flags_pretty field
+  * Update netstat parser to strip whitespace from state field
+  * Update route parser to add flags_pretty field
+  * Update w parser to strip whitespace from what field
+
+-------------------------------------------------------------------
 Tue May 26 19:29:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.11.1

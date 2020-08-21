@@ -921,4 +921,19 @@
     for the complete changelog.</comment>
     <requestid>827389</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>f2126a6d00955d08d3846a2acb923666</srcmd5>
+    <version>0.32.0+git.20200820T203717.b16a6cb6c6</version>
+    <time>1598030225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200820T203717.b16a6cb6c6:
+  * client API: note about libswscale corrupting memory
+  * wayland: conditionally commit surface on resize
+  * player: add --subs-with-matching-audio option
+  * wayland: refactor geometry/window handling
+  * stream: Implement slice:// for reading slices of streams
+  * wayland: reset geometry on reconfig if fullscreen
+  * wayland: soften GNOME warning</comment>
+    <requestid>828460</requestid>
+  </revision>
 </revisionlist>
