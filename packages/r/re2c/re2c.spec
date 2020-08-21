@@ -17,7 +17,7 @@
 
 
 Name:           re2c
-Version:        1.3
+Version:        2.0.2
 Release:        0
 Summary:        Tool for generating C-based recognizers from regular expressions
 License:        SUSE-Public-Domain
@@ -60,7 +60,9 @@ make check %{?_smp_mflags}
 %doc CHANGELOG
 %doc examples/
 %{_bindir}/re2c
+%{_bindir}/re2go
 %{_mandir}/man1/re2c.1%{?ext_man}
+%{_mandir}/man1/re2go.1.gz
 %dir %{_datadir}/re2c
 %dir %{_datadir}/re2c/stdlib
 %{_datadir}/re2c/stdlib/unicode_categories.re

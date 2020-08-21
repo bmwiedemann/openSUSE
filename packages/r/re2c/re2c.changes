@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:10:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.0.2:
+  * Go backend. The new Go code generation backend can be used either
+    with a --lang go re2c option, or as a standalone re2go binary 
+  * Free-form generic API. Generic API now supports two styles
+  * Improved reuse mode and start conditions
+  * Backwards incompatible changes:
+    + Generic APIs YYSHIFT/YYSHIFTSTAG/YYSHIFTMTAG have been added
+    + Generic APIs YYSTAGPD/YYMTAGPD have been removed
+    + The re2c:flags:type-header option now treats the header filename
+      as relative to the output directory
+    + Some internal labels have been renamed, in particular the
+      yyFillLabel prefix has been replaced with yyfill
+
+-------------------------------------------------------------------
 Wed Feb  5 08:52:11 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.3:
