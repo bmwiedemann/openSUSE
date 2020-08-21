@@ -201,7 +201,7 @@ ln nginx-munin-master/README.org README.nginx
 ln munin-gsa-master/README.md README.gsa
 
 # firewalld
-install -D -m 644 %{SOURCE6} %{buildroot}%{_libexecdir}/firewalld/services/munin-node.xml
+install -D -m 644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/munin-node.xml
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -442,8 +442,8 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %attr(0755, munin, munin) %dir %{dbdir}
 %attr(0775, nobody, nobody) %dir %{dbdir}/plugin-state
 %ghost /run/munin
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/munin-node.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/munin-node.xml
 
 %changelog
