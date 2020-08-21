@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:30:41 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1597912216.78e1dbb92:
+  * Dependency cron 200820
+  * Omit files in the test root from test search
+  * Make openqa-cli set a non-zero exit code on failures
+  * Dependency cron 200818
+  * Make global search more responsive
+  * Implement test search route and results view
+  * Improve error messages when cloning a job
+  * Simplify `can_be_duplicated`
+
+-------------------------------------------------------------------
 Sun Aug 16 03:26:34 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1597409476.5b230be31:
