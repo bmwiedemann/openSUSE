@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Aug 19 06:19:13 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.0.0: 
+  * fix pydoc of all public methods in minio/api.py (#941) (08/03/20) (Bala FA)
+  * Create CNAME (08/02/20) (Harshavardhana)
+  * fix: doc rendering issue (#938) (07/17/20) (Andrei Vukolov)
+  * Add object version-ID support (#923) (07/11/20) (Bala FA)
+  * Added expiry_delta in IAM (#935) (07/09/20) (Felipe Ballesteros)
+  * Less memory allocation with put_object() (#930) (06/19/20) (Anis Elleuch)
+  * mention when proxy to be used (#928) (06/01/20) (Harshavardhana)
+  * refactor minio.credentials (#901) (05/31/20) (Bala FA)
+  * simplify constants definition and usage (#927) (05/29/20) (Bala FA)
+  * fix trace to be printed before and after execution (#926)
+    (05/25/20) (Bala FA)
+  * change encoding of x-amz-copy-source in copy_object (#912)
+    (05/09/20) (John Flickinger)
+  * fix isort errors (#904) (05/03/20) (Bala FA)
+  * simplify functional tests (#898) (04/30/20) (Bala FA)
+  * add isort to keep imports sorted (#897) (04/20/20) (Bala FA)
+  * add support for AssumeRole STS provider (#874) (04/16/20) (Brian Thorne)
+  * Allow signing requests for services other than s3 in sign v4 (#893) (04/16/20) (Brian Thorne)
+  * preserve x-amz-content-sha256 if specified in presign_v4 (#870)
+    (04/13/20) (Vanessasaurus)
+  * Rename urlencode and urldecode to quote and unquote (#875)
+    (04/11/20) (Brian Thorne)
+  * move to latest release for windows CI (#884) (04/10/20) (Harshavardhana)
+  * Update MANIFEST.in to generate a complete sdist (#856) (04/08/20) (Denis Laxalde)
+  * Adds missing 'minio/credentials/*.sample' files (#866)
+    (04/06/20) (ebozduman)
+  * remove deprecated cElementTree (04/07/20) (Karthikeyan Singaravelan)
+  * fix github actions error while checking out (#869) (04/06/20) (kannappanr)
+- Update SOURCE1 and SOURCE2 to pull from tests/unit, the upstream path
+  changed.
+
+-------------------------------------------------------------------
 Wed Apr  1 08:39:08 UTC 2020 - pgajdos@suse.com
 
 - version update to 5.0.8
