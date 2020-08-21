@@ -21,7 +21,7 @@
 %define         majorver 3.6
 Name:           gnuhealth
 
-Version:        %{majorver}.4
+Version:        %{majorver}.5
 Release:        0
 
 # List of additional build dependencies
