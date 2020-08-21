@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 19 03:13:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.998
+   see /usr/share/doc/packages/perl-Redis/Changes
+
+  1.998     2020-08-18 11:04:12+02:00 Europe/Paris
+    * remove test expression that is problematic on OpenBSD and NetBSD
+  1.997     2020-80-17 10:03:00+01:00 Europe/Paris
+    * various travis fixes
+    * #112 applied
+    * enable unix socket tests by enabling them in the local test server
+    * #144: change exists into defined
+    * #146: Fix sentinel option typo
+
+-------------------------------------------------------------------
 Fri Mar  6 03:10:55 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.996
