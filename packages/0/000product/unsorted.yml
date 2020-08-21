@@ -8464,7 +8464,7 @@ unsorted:
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
   - libYODA-1_8_3 
-  - libZXingCore1: [i586] 
+  - libZXing1: [i586] 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -13468,7 +13468,7 @@ unsorted:
   - libxmlrpc_server_cgi3 
   - libxmlrpc_server_pstream++8 
   - libxmlrpc_util++8 
-  - libxmlrpc_util3 
+  - libxmlrpc_util4 
   - libxmlsec1-gcrypt1 
   - libxmlsec1-gnutls1 
   - libxmltooling-devel 
@@ -13513,7 +13513,7 @@ unsorted:
   - libyang-extentions 
   - libyang1 
   - libyara-devel 
-  - libyara3 
+  - libyara4 
   - libyate6 
   - libyaz-devel 
   - libyaz-devel-32bit: [x86_64] 
@@ -20388,6 +20388,7 @@ unsorted:
   - python3-empy 
   - python3-enaml 
   - python3-encore 
+  - python3-enforce-pep8 
   - python3-entrypoint2 
   - python3-entrypoints 
   - python3-environ-config 
@@ -21426,6 +21427,7 @@ unsorted:
   - python3-pycxx 
   - python3-pycxx-devel 
   - python3-pydantic 
+  - python3-pydash 
   - python3-pydata-google-auth 
   - python3-pydbus 
   - python3-pydenticon 
@@ -21925,6 +21927,7 @@ unsorted:
   - python3-siphashc 
   - python3-sklearn-pandas 
   - python3-skyfield 
+  - python3-slackclient 
   - python3-sleekxmpp 
   - python3-slimit 
   - python3-slixmpp 
@@ -22231,6 +22234,7 @@ unsorted:
   - python3-warlock 
   - python3-watchdog 
   - python3-watchdog-doc 
+  - python3-watchgod 
   - python3-watchman 
   - python3-watermark 
   - python3-wcwidth 
