@@ -3822,4 +3822,23 @@
 - Better support of Midnight Commander (bsc#1170527)</comment>
     <requestid>826262</requestid>
   </revision>
+  <revision rev="473" vrev="1">
+    <srcmd5>7032f12da96d1c3a918ab63f84b46011</srcmd5>
+    <version>84.87+git20200818.b9dd70f</version>
+    <time>1598167147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200818.b9dd70f:
+  * backup-rpmdb: exit if zypp.pid is there and running
+    (bug#1161239)
+
+- Update to version 84.87+git20200818.5220a5f:
+  * profile and csh.login: on s390x set TERM to dumb on serial console
+  * etc/profile add some missing ;; in case esac statements
+  * refresh_initrd call modprobe as /sbin/modprobe (bug#1011548)
+  * DIR_COLORS: merge TERM entries with list from (bug#1006973)
+  * sort TERM entries in etc/DIR_COLORS
+  * DIR_COLORS add TERM rxvt-unicode-256color (bug#1006973)
+  * Rename path() to _path() to avoid using a general name.</comment>
+    <requestid>827591</requestid>
+  </revision>
 </revisionlist>

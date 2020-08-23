@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 18 12:57:04 UTC 2020 - ro@suse.de
+
+- Update to version 84.87+git20200818.b9dd70f:
+  * backup-rpmdb: exit if zypp.pid is there and running
+    (bug#1161239)
+
+-------------------------------------------------------------------
+Tue Aug 18 12:08:52 UTC 2020 - ro@suse.de
+
+- Update to version 84.87+git20200818.5220a5f:
+  * profile and csh.login: on s390x set TERM to dumb on serial console
+  * etc/profile add some missing ;; in case esac statements
+  * refresh_initrd call modprobe as /sbin/modprobe (bug#1011548)
+  * DIR_COLORS: merge TERM entries with list from (bug#1006973)
+  * sort TERM entries in etc/DIR_COLORS
+  * DIR_COLORS add TERM rxvt-unicode-256color (bug#1006973)
+  * Rename path() to _path() to avoid using a general name.
+
+-------------------------------------------------------------------
 Wed Aug 12 07:00:07 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Let's own /etc/init.d/ as it is gone from package filesystem 
