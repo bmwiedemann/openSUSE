@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Aug 16 16:59:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * Do not enter ncurses mode when --immediate option given.
+  * Fix logging/memory corruption bug when using --log with --immediate.
+  * Break mtime ties using ctime when sorting by time.
+  * Reduce number of calls to stat(), for speed.
+  * Clear last command status when new command is entered.
+  * Rename cs command ("clear all selections") from cs to csel.
+  * Rename igs command ("invert selections") from igs to isel.
+  * Add "prune" command as synonym for DELETE key.
+  * Clear selections after deleting files via prune/DELETE.
+  * Fix dependency issues when fdupes is configured to not use ncurses.
+- build without ncurses for now until buildcycles can be solved
+
+-------------------------------------------------------------------
+Fri Jun  5 23:42:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Drop old specfile constructs.
+
+-------------------------------------------------------------------
+Fri May 22 08:27:11 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v2.0.0
+  * Add ncurses mode for interactive file deletion (plain mode still available via --plain or ./configure).
+  * Add --minsize option.
+  * Add --maxsize option.
+  * Add --time option.
+  * Add --order=ctime option.
+  * Add --log option.
+  * Use configure script for installation (Autotools/Automake).
+- Remove fdupes-makefile.patch
+
+-------------------------------------------------------------------
 Thu Apr 16 21:07:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Make package building even on platforms, where _rpmmacrodir

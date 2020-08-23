@@ -15,40 +15,31 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-# Upstream calls this version 1.6.1, but that version number is *lower* than
-# previously released ones, like 1.51, so we mangle the number to keep
-# continuity: https://github.com/adrianlopezroche/fdupes/issues/74.
-%global upstream_version 1.6.1
-
 %{?!_rpmmacrodir:%define _rpmmacrodir /usr/lib/rpm/macros.d}
 
 Name:           fdupes
-Version:        1.61
+Version:        2.1.2
 Release:        0
-Summary:        Identifying or deleting duplicate files
+Summary:        Tool to identify or delete duplicate files
 License:        MIT
 Group:          Productivity/Archiving/Compression
 Url:            https://github.com/adrianlopezroche/fdupes
-Source0:        https://github.com/adrianlopezroche/fdupes/archive/v%{upstream_version}.tar.gz#/%{name}-%{upstream_version}.tar.gz
+Source0:        https://github.com/adrianlopezroche/fdupes/releases/download/v%{version}/fdupes-%{version}.tar.gz
 Source1:        macros.fdupes
-#PATCH-FIX-SUSE: fix patch according distro's needs
-Patch0:         fdupes-makefile.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 FDUPES is a program for identifying or deleting duplicate files
 residing within specified directories.
 
 %prep
-%setup -q -n %{name}-%{upstream_version}
-%patch0
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} COMPILER_OPTIONS="%{optflags}"
+%configure --without-ncurses
+%make_build
 
 %install
-install -D -m755 %{name} %{buildroot}%{_bindir}/%{name}
-install -D -m644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+%make_install
 install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.%{name}
 
 %check
@@ -58,7 +49,6 @@ install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.%{name}
 ./%{name} --size testdir
 
 %files
-%defattr(-, root, root)
 %doc CHANGES
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1*
