@@ -43,7 +43,6 @@ Patch14:        Drop_backwards_test-Nuuk.patch
 
 BuildRequires:  autoconf213
 BuildRequires:  gcc-c++
-BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  python-xml
@@ -131,7 +130,6 @@ cd build_OPT.OBJ
     --enable-posix-nspr-emulation \
 
 # do not eat all memory
-%limit_build -m 1300
 
 %make_build
 
