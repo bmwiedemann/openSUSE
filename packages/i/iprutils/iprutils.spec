@@ -16,19 +16,20 @@
 #
 
 
-%define revision 1
+%define vmajor 2
+%define vminor 4
+%define vpatch 19
+%define tag rel-%{vmajor}-%{vminor}-%{vpatch}
 Name:           iprutils
 # NOTE: package's changelog is hidden in % changelog section
 # in file iprutils/spec/iprutils.spec
-Version:        2.4.18
+Version:        %{vmajor}.%{vminor}.%{vpatch}
 Release:        0
 Summary:        Utilities for the IBM Power Linux RAID Adapters
 License:        CPL-1.0
 Group:          Hardware/Other
-URL:            https://sourceforge.net/projects/iprdd
-Source0:        https://sourceforge.net/projects/iprdd/files/iprutils%%20for%%202.6%%20kernels/%{version}/%{name}-%{version}.%{revision}.tar.gz
-Patch0:         iprutils.fix_ncurses_cflags_var.patch
-Patch1:         bsc1165878-free-raid-cmd-head-list.patch 
+URL:            https://github.com/bjking1/iprutils/releases
+Source:         https://github.com/bjking1/iprutils/archive/%{tag}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -48,15 +49,12 @@ Provides a suite of utilities to manage and configure SCSI devices
 supported by the ipr SCSI storage device driver.
 
 %prep
-%setup -q -n %{name}-%{version}.%{revision}
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{name}-%{tag}
 
 %build
 export CPPFLAGS="$(pkg-config ncurses form --cflags)"
 export LIBS="$(pkg-config ncurses form --libs)"
-aclocal
-automake --add-missing
+source ./bootstrap.sh
 autoreconf
 %configure --sbindir=%{_sbindir} --libdir=%{_libdir} --disable-static
 make %{?_smp_mflags}

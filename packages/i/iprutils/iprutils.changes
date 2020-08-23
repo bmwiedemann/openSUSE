@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 10 12:29:41 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- version update to 2.4.19 (jsc#SLE-13632)
+  - Fixup format_req to no always return true
+  - Fix quoting of ncurses flags
+  - Free the raid_cmd_head list before creating the raid menu
+  - fix iprdump sigserv on non-existing dump file
+  - Add support for descriptor format sense data
+- remove upstreamed patches
+  - iprutils.fix_ncurses_cflags_var.patch
+  - bsc1165878-free-raid-cmd-head-list.patch
+- update project URL.
+
+-------------------------------------------------------------------
 Tue Apr 21 11:52:14 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Without freeing the raid_cmd_head list before creating the raid menu,
