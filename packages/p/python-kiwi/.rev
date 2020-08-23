@@ -1424,4 +1424,12 @@
     <comment>Bump to 9.21.3</comment>
     <requestid>818264</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>25d8fe39adec28b9e1477fd24682b34c</srcmd5>
+    <version>9.21.7</version>
+    <time>1598167144</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>827565</requestid>
+  </revision>
 </revisionlist>

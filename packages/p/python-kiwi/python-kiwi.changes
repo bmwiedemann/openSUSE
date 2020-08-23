@@ -1,4 +1,298 @@
 -------------------------------------------------------------------
+Tue Aug 11 12:33:45 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.6 → 9.21.7
+
+-------------------------------------------------------------------
+Tue Aug 11 12:21:08 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed archlinux integration test build
+
+  The setup of the locale via systemd-firstboot --locale=en_US.UTF-8
+  failed on archlinux with the error message Locale en_US.UTF-8 is not
+  installed. This commit sets the locale explicitly
+
+-------------------------------------------------------------------
+Tue Aug 11 12:11:57 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed GCE integration test build
+
+  nothing provides google-compute-engine-init
+
+-------------------------------------------------------------------
+Tue Aug 11 11:56:00 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed bootloader grub copy SameFileError exception
+
+  Only copy the file if the given source and destination are
+  not the same file
+
+-------------------------------------------------------------------
+Tue Aug 11 11:54:50 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Simplify build_status helper
+
+  Instead of a static list with all integration test build names
+  only maintain a list of integration test build project names
+
+-------------------------------------------------------------------
+Tue Aug 11 11:08:56 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.5 → 9.21.6
+
+-------------------------------------------------------------------
+Fri Jul 24 17:49:47 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Skip filesystem check for XFS prior xfs_grow
+
+  running xfs_repair check isn't strictly necessary before resizing,
+  and in some cases it may even prevent resizing by giving an error
+  that would be cleared through mounting the fs (e.g. when the fs
+  wasn't cleanly umounted, and thus letting xfs recover and replay
+  its journal). Given that xfs can only grow online (while being mounted),
+  this is sufficient to ensure that the fs is in a state where it
+  can be resized. This is related to bsc#1174009
+
+-------------------------------------------------------------------
+Fri Jul 24 13:17:53 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed code logic in resize_filesystem method
+
+  resize_filesystem runs fs-check on the filesytem prior to
+  resize. This check however should not be done if the filesystem
+  got deployed on a ramdisk. For that purpose the _is_ramdisk_device
+  method exists. The logic in the method as well as the call
+  were wrong. This in the end lead to a correct logic but is
+  completely confusing. This commit fixes and simplifies the
+  _is_ramdisk_device method and corrects the caller logic
+
+-------------------------------------------------------------------
+Wed Jul 22 22:33:15 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Make sure kernel options are respected by grub
+
+  Set options variable in grub loader/entries to match the
+  kiwi image description setup. This adaption currently
+  happens only when building in OBS because in this env
+  the options setup done by grub is a complete mess.
+
+-------------------------------------------------------------------
+Wed Jul 22 20:04:04 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed root replace for grub menu entries
+
+  The root device spec in the grub boot/loader/entries/*.conf
+  files when building in OBS is not matching the loop mapped
+  image root device but matches the root device of the OBS worker.
+  Very strange behavior and of course wrong. Because of that
+  the expression to replace the wrong device with the correct
+  one must be a regular expression and cannot be based on the
+  loop mapped image root device.
+
+-------------------------------------------------------------------
+Wed Jul 22 15:50:33 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed path to search for grub menu entries
+
+-------------------------------------------------------------------
+Wed Jul 22 11:32:28 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed scope of remove_hierarchy
+
+  The remove_hierarchy method walked through the entire path
+  it was given. That included the root path which is beyond
+  its scope. This Fixes #1515
+
+-------------------------------------------------------------------
+Wed Jul 22 10:36:24 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed corrections in BootLoaderSpec grub config
+
+  Distributions like Fedora RawHide or CentOS8 applies to the
+  grub BootLoaderSpec as described here:
+
+  https://www.freedesktop.org/wiki/Specifications/BootLoaderSpec
+
+  Part of the spec is that menu entries are handled in extra files
+  below /boot/loader/entries. Unfortunately the grub2-mkconfig code
+  has still no clue how to find the correct root device in special
+  environments like obs workers or in overlay systems. To fixup the
+  result of grub2-mkconfig there is code in kiwi which needs to be
+  adapted because the file that contains the wrong information is
+  now no longer grub.cfg but some /boot/loader/entries/*.conf file.
+  This commit solves the issue.
+
+-------------------------------------------------------------------
+Thu Jul 16 11:27:34 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed grub setup in EFI/BOOT directory
+
+  kiwi copied the same grub.cfg file as it exists in boot/grub2
+  to the efi path. This is wrong as the setup in the efi boot
+  directory is used to enable normal grub loading and not providing
+  the user grub configuration. In addition the changes here makes
+  sure that the early grub boot code is placed into the system
+  in any EFI case except for secure boot when shim-install is
+  present. If shim-install is present it also creates the early
+  grub boot setup such that kiwi doesn't have to do it.
+  This Fixes #1491 and Fixes bsc#1172908
+
+-------------------------------------------------------------------
+Wed Jul 15 16:56:28 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Use rsync in inplace transfer mode
+
+  Using the --inplace option in rsync helps to save space on
+  syncing the rootfs data and prevents e.g OBS workers from
+  running out of VM space when transfering root filesystem
+  data. Also using --inplace allows to keep hardlinks intact.
+  This is related to bsc#1096738
+
+-------------------------------------------------------------------
+Wed Jul 15 14:38:47 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Don't keep copy of grub2-install in the system
+
+  To prevent shim-install from calling grub2-install in uefi mode
+  kiwi temporary replaces the tool by a noop. This acts as a
+  workaround for an issue in shim-install. However the workaround
+  left a file copy of grub2-install in the system which should
+  not happen. This commit Fixes bsc#1173226 and Fixes #1490
+
+-------------------------------------------------------------------
+Tue Jul 14 17:23:28 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Rename CentOS 7 test and add CentOS 8 test
+
+  This commit renames the CentOS 7 test and adds a new CentOS 8 test
+
+  Related to #1468
+
+-------------------------------------------------------------------
+Tue Jul 14 12:30:56 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Update Ubuntu and Debian image tests
+
+  This commit updates Ubuntu test to Focal distribution and adds an
+  additional Debian Buster image test.
+
+  Related to #1468
+
+-------------------------------------------------------------------
+Mon Jul 13 10:21:49 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Include CentOS vendor in grub2 configuration
+
+  This commit ensures the vendor files for grubenv consider CentOS
+  vendoring.
+
+-------------------------------------------------------------------
+Wed Jul 08 10:18:15 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed documentation for OEM swap partition
+
+  A swap partition in an OEM deployment is only created if
+  that is explicitly requested via the oem-swap element
+
+-------------------------------------------------------------------
+Wed Jul 08 10:03:39 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.4 → 9.21.5
+
+-------------------------------------------------------------------
+Wed Jul 08 06:53:11 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Do not create a md5 checksum output file for archive images
+
+  This commit removes the creation of the md5 file that includes a
+  checksum of the image binary for the `tbz` image type. Removing it
+  as this is the only image type that includes it as part of the result
+  and because the bundle procedure already creates a sha256 file out of
+  the results, so there is still the chance to produce validation
+  checksums.
+
+-------------------------------------------------------------------
+Fri Jul 03 20:23:47 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Document output files KIWI produces
+
+  This commits adds a chapter to describe the ouput files that are part
+  of any image build.
+
+-------------------------------------------------------------------
+Fri Jul 03 10:33:05 CEST 2020 - Christian Schneemann <schneemann@b1-systems.de>
+
+- Fixed oem recovery tar parameter order
+
+  Reorder tar parameters
+
+  When building an oem-image with oem-recovery set to true a tar error appears saying:
+  "The following options were used after any non-optional arguments in archive create or
+  update mode". This commit fixes the order of arguments to tar to avoid the error condition.
+  Fixes #1501
+
+-------------------------------------------------------------------
+Thu Jul 02 16:11:24 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed tox min version
+
+-------------------------------------------------------------------
+Thu Jul 02 15:49:23 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Cleanup setup.py
+
+  The way kiwi uses setup.py assumes that pip runs this script
+  like a spec file in rpm is processed. However this is not the
+  case given that pip implicitly creates a static zip file called
+  wheel which looses all the code logic done in setup.py. Therefore
+  setup.py should not contain code that needs to run at install
+  time. Of course this change comes with an effect which is that
+  the following files will not be available when installing kiwi
+  from pip:
+
+  * man pages: /usr/share/man/man8/...
+  * command completion: /etc/bash_completion.d/kiwi-ng.sh
+  * kiwi default config file: /etc/kiwi.yml
+  * package docs: /usr/share/doc/packages/kiwi-ng/...
+  (kiwi.pdf, LICENSE, README)
+
+  kiwi stays fully functional without this information. It is
+  expected that the installation of kiwi as a service will
+  be done by a package and its package manager. When using kiwi
+  from pip it is designed to provide a python module but not
+  a complete user application. The way pip and wheels interact
+  with each other seems to demonstrate that pip is not a
+  package manager but more a python module manager.
+
+  This Fixes #1415
+
+-------------------------------------------------------------------
+Thu Jul 02 09:13:04 CEST 2020 - Thomas Schraitle <tom_schr@web.de>
+
+- Describe targets in tox.ini
+
+  * Make use of description to show them with "tox -av"
+  * Use comments as "description" lines
+  * Define minimal tox version (3.5.0)
+
+-------------------------------------------------------------------
+Wed Jul 01 22:08:12 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.3 → 9.21.4
+
+-------------------------------------------------------------------
+Fri Jun 26 18:59:13 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor FileSystem Factory
+
+  With regards to Issue #1486 a discussion came up that the
+  way factories are implemented are questionable when thinking
+  about strong typing for the public kiwi interface. This
+  commit refactors the FileSystem factory to be a real factory
+  and to add type hints such that its use from an api perspective
+  is clear and enforced.
+
+-------------------------------------------------------------------
 Thu Jun 25 16:42:49 CEST 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.21.2 → 9.21.3
@@ -38,6 +332,24 @@ Thu Jun 18 12:27:04 CEST 2020 - David Cassany <dcassany@suse.com>
 Wed Jun 17 17:22:09 CEST 2020 - Bo Maryniuk <bogdan.maryniuk@elektrobit.com>
 
 - Add missing decorator for static methods
+
+-------------------------------------------------------------------
+Tue Jun 16 14:15:56 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation in content and structure
+
+  This commit adds a documentation for the KIWI XML description.
+  In contrast to the former auto generated code from the XML
+  schema this document can now finally be used as a reference.
+  Along with that new chapter all auto generated and static
+  html content as been deleted. Also all helper scripts around
+  the proprietary oxygen tool and our schema doc generator
+  has been deleted. Auto generating this information does not
+  lead to a reference guide people can really work with.
+  As a consequence to these changes this commit also includes
+  some changes of the structure such that no information written
+  by other people in the past gets lost. This Fixes #1421
+  and Fixes #1474
 
 -------------------------------------------------------------------
 Mon Jun 15 15:18:28 CEST 2020 - Marcus Schäfer <ms@suse.de>
