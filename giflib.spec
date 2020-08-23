@@ -1,7 +1,7 @@
 #
 # spec file for package giflib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,14 @@
 
 %define lname   libgif7
 Name:           giflib
-Version:        5.1.4
+Version:        5.2.1
 Release:        0
 Summary:        A Library for Working with GIF Images
 License:        MIT
-Group:          Development/Libraries/C and C++
-Url:            http://giflib.sf.net/
-Source:         http://downloads.sf.net/giflib/%{name}-%{version}.tar.bz2
+URL:            http://giflib.sf.net/
+Source:         http://downloads.sf.net/giflib/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-Patch1:         giflib-visibility.patch
-Patch2:         giflib-automake-1_13.patch
-Patch3:         giflib-CVE-2016-3977.patch
-Patch4:         fix-autoconf11.patch
 BuildRequires:  libtool >= 2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This Library allows manipulating GIF Image files. Since the LZW patents
@@ -39,7 +33,6 @@ have expired, giflib can again be used instead of libungif.
 
 %package -n %{lname}
 Summary:        A Library for Working with GIF Images
-Group:          System/Libraries
 
 %description -n %{lname}
 This Library allows manipulating GIF Image files. Since the LZW patents
@@ -47,7 +40,6 @@ have expired, giflib can again be used instead of libungif.
 
 %package progs
 Summary:        Tools for Working with the GIF Library
-Group:          Productivity/Graphics/Convertors
 Provides:       ungif = %{version}
 Obsoletes:      ungif < %{version}
 
@@ -56,7 +48,6 @@ A tool for converting GIFs to various formats.
 
 %package devel
 Summary:        Library for Working with GIF Images - Files Mandatory for Development
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -64,16 +55,10 @@ This Library allows manipulating GIF Image files. Since the LZW patents
 have expired, giflib can again be used instead of libungif.
 
 %prep
-%setup -q
+%autosetup
 for file in `find util -name "*.c"`; do
 	touch -r $file $file.stamp
 done
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%if 0%{?suse_version} <= 1110
-%patch4 -p1
-%endif
 
 # USE __TIMESTAMP__ instead of __DATE__ , __TIME__
 # this change is pointless unless we preserve the original
@@ -84,39 +69,33 @@ for file in `find util -name "*.c"`; do
     rm -v $file.stamp
 done
 
-mkdir -p m4; autoreconf -fiv
-
 %build
-%configure \
-    --disable-silent-rules \
-    --disable-static \
-    --with-pic \
-    --x-libraries=%{_libdir}
+export CFLAGS="%optflags"
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install PREFIX="%{_prefix}" LIBDIR="%{_libdir}"
 find %{buildroot} -type f -name "*.la" -delete -print
 find doc -name "Makefile*" -print -delete
 
-%post -n %{lname} -p /sbin/ldconfig
+# Drop static library
+rm -f %{buildroot}%{_libdir}/libgif.a
 
+%post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
 %license COPYING
 %{_libdir}/lib*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/gif_lib.h
 %{_libdir}/lib*.so
 
 %files progs
-%defattr(-,root,root)
 %license COPYING
 %doc NEWS README doc
 %{_bindir}/*
+%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog
