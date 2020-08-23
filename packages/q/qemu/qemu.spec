@@ -125,6 +125,10 @@ Source13:       supported.s390.txt
 Source14:       50-seabios-256k.json
 Source15:       60-seabios-128k.json
 Source200:      qemu-rpmlintrc
+Source201:      qemu-ga-ref.html
+Source202:      qemu-ga-ref.txt
+Source203:      qemu-qmp-ref.html
+Source204:      qemu-qmp-ref.txt
 Source300:      bundles.tar.xz
 Source301:      update_git.sh
 Source302:      config.sh
@@ -176,6 +180,9 @@ Patch00039:     test-add-mapping-from-arch-of-i686-to-qe.patch
 Patch00040:     roms-Makefile-enable-cross-compile-for-b.patch
 Patch00041:     configure-remove-pkgversion-from-CONFIG_.patch
 Patch00042:     docs-add-SUSE-support-statements-to-html.patch
+Patch00043:     s390x-Fix-stringop-truncation-issue-repo.patch
+Patch00044:     Revert-qht-constify-qht_statistics_init.patch
+Patch00045:     qht-Revert-some-constification-in-qht.c.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -189,6 +196,7 @@ Patch02004:     golan-Add-explicit-type-casts-for-nodnic.patch
 Patch02005:     stub-out-the-SAN-req-s-in-int13.patch
 Patch02006:     ipxe-Makefile-fix-issues-of-build-reprod.patch
 Patch02007:     Do-not-apply-WORKAROUND_CFLAGS-for-host-.patch
+Patch02008:     help-compiler-out-by-initializing-array.patch
 # Patches applied in roms/sgabios/:
 Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
 Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
@@ -723,6 +731,7 @@ Summary:        Baum braille chardev support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_docdir/%name/qemu-ga-ref.html
 %{qemu_module_conflicts}
 
 %description chardev-baum
@@ -733,6 +742,7 @@ Summary:        QXL display support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_docdir/%name/qemu-ga-ref.txt
 %{qemu_module_conflicts}
 
 %description hw-display-qxl
@@ -743,20 +753,24 @@ Summary:        USB redirection support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_docdir/%name/qemu-qmp-ref.html
 %{qemu_module_conflicts}
 
 %description hw-usb-redirect
 This package contains a module for USB redirection support.
 
+%if 0%{?is_opensuse}
 %package hw-usb-smartcard
 Summary:        USB smartcard support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_docdir/%name/qemu-qmp-ref.txt
 %{qemu_module_conflicts}
 
 %description hw-usb-smartcard
 This package contains a modules for USB smartcard support.
+%endif
 
 %package ui-curses
 Summary:        Curses based UI support for QEMU
@@ -989,6 +1003,9 @@ This package provides a service file for starting and stopping KSM.
 %if %{legacy_qemu_kvm} && 0%{?is_opensuse} == 0
 %patch00042 -p1
 %endif
+%patch00043 -p1
+%patch00044 -p1
+%patch00045 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1006,6 +1023,7 @@ This package provides a service file for starting and stopping KSM.
 %ifarch aarch64
 %patch02007 -p1
 %endif
+%patch02008 -p1
 %patch03000 -p1
 %patch03001 -p1
 %patch08000 -p1
@@ -1670,7 +1688,13 @@ install -D -p -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/qemu-ga@.service
 install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/ksm.service
 %endif
 %ifarch s390x
-install -D -m 0644 %{SOURCE2} %{buildroot}%_libexecdir/modules-load.d/kvm.conf
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/modules-load.d/kvm.conf
+%endif
+install -D -m 0644 %{SOURCE201} %{buildroot}%_docdir/%name/qemu-ga-ref.html
+install -D -m 0644 %{SOURCE202} %{buildroot}%_docdir/%name/qemu-ga-ref.txt
+install -D -m 0644 %{SOURCE203} %{buildroot}%_docdir/%name/qemu-qmp-ref.html
+%if 0%{?is_opensuse}
+install -D -m 0644 %{SOURCE204} %{buildroot}%_docdir/%name/qemu-qmp-ref.txt
 %endif
 %fdupes -s %{buildroot}
 
@@ -1915,7 +1939,7 @@ fi
 %dir %_sysconfdir/%name/firmware
 %if %{kvm_available}
 %ifarch s390x
-%_libexecdir/modules-load.d/kvm.conf
+%{_prefix}/lib/modules-load.d/kvm.conf
 %endif
 /usr/lib/udev/rules.d/80-kvm.rules
 %endif
@@ -2086,24 +2110,32 @@ fi
 
 %files chardev-baum
 %defattr(-, root, root)
+%dir %_docdir/%name
 %dir %_libdir/%name
 %_libdir/%name/chardev-baum.so
+%_docdir/%name/qemu-ga-ref.html
 
 %files hw-display-qxl
 %defattr(-, root, root)
+%dir %_docdir/%name
 %dir %_libdir/%name
 %_libdir/%name/hw-display-qxl.so
+%_docdir/%name/qemu-ga-ref.txt
 
 %files hw-usb-redirect
 %defattr(-, root, root)
+%dir %_docdir/%name
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-redirect.so
+%_docdir/%name/qemu-qmp-ref.html
 
 %if 0%{?is_opensuse}
 %files hw-usb-smartcard
 %defattr(-, root, root)
+%dir %_docdir/%name
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-smartcard.so
+%_docdir/%name/qemu-qmp-ref.txt
 %endif
 
 %files ui-curses

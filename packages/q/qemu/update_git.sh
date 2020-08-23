@@ -706,10 +706,14 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
         fi
     else
         SOURCE_VERSION=$MAJOR_VERSION.$MINOR_VERSION.$X
-        if [ "$NEXT_RELEASE_IS_MAJOR" = "0" ]; then
-            GIT_BRANCH=opensuse-$MAJOR_VERSION.$[$MINOR_VERSION+1]
+        if [ "$X" = "0"  ]; then
+            GIT_BRANCH=opensuse-$MAJOR_VERSION.$[$MINOR_VERSION]
         else
-            GIT_BRANCH=opensuse-$[MAJOR_VERSION+1].0
+            if [ "$NEXT_RELEASE_IS_MAJOR" = "0" ]; then
+                GIT_BRANCH=opensuse-$MAJOR_VERSION.$[$MINOR_VERSION+1]
+            else
+                GIT_BRANCH=opensuse-$[MAJOR_VERSION+1].0
+            fi
         fi
     fi
     WRITE_LOG=0

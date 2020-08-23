@@ -1,0 +1,83 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Thu, 13 Aug 2020 13:16:13 -0600
+Subject: qht: Revert some constification in qht.c
+
+This change partially addresses https://bugs.launchpad.net/qemu/+bug/1886155
+where a pre-release gcc 11 warns about const qualifier abuse.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ include/qemu/qht.h |  4 ++--
+ util/qht.c         | 12 ++++++------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/include/qemu/qht.h b/include/qemu/qht.h
+index 2e2d6bca932c83bea993850b60f8..6484837487b012cbfc63b6c6e39e 100644
+--- a/include/qemu/qht.h
++++ b/include/qemu/qht.h
+@@ -104,7 +104,7 @@ bool qht_insert(struct qht *ht, void *p, uint32_t hash, void **existing);
+  * Returns the corresponding pointer when a match is found.
+  * Returns NULL otherwise.
+  */
+-void *qht_lookup_custom(const struct qht *ht, const void *userp, uint32_t hash,
++void *qht_lookup_custom(struct qht *ht, const void *userp, uint32_t hash,
+                         qht_lookup_func_t func);
+ 
+ /**
+@@ -115,7 +115,7 @@ void *qht_lookup_custom(const struct qht *ht, const void *userp, uint32_t hash,
+  *
+  * Calls qht_lookup_custom() using @ht's default comparison function.
+  */
+-void *qht_lookup(const struct qht *ht, const void *userp, uint32_t hash);
++void *qht_lookup(struct qht *ht, const void *userp, uint32_t hash);
+ 
+ /**
+  * qht_remove - remove a pointer from the hash table
+diff --git a/util/qht.c b/util/qht.c
+index a5a332d98998209875a47ebfdeee..9515bf7506d351230739e1bdb588 100644
+--- a/util/qht.c
++++ b/util/qht.c
+@@ -484,10 +484,10 @@ bool qht_reset_size(struct qht *ht, size_t n_elems)
+ }
+ 
+ static inline
+-void *qht_do_lookup(const struct qht_bucket *head, qht_lookup_func_t func,
++void *qht_do_lookup(struct qht_bucket *head, qht_lookup_func_t func,
+                     const void *userp, uint32_t hash)
+ {
+-    const struct qht_bucket *b = head;
++    struct qht_bucket *b = head;
+     int i;
+ 
+     do {
+@@ -511,7 +511,7 @@ void *qht_do_lookup(const struct qht_bucket *head, qht_lookup_func_t func,
+ }
+ 
+ static __attribute__((noinline))
+-void *qht_lookup__slowpath(const struct qht_bucket *b, qht_lookup_func_t func,
++void *qht_lookup__slowpath(struct qht_bucket *b, qht_lookup_func_t func,
+                            const void *userp, uint32_t hash)
+ {
+     unsigned int version;
+@@ -524,10 +524,10 @@ void *qht_lookup__slowpath(const struct qht_bucket *b, qht_lookup_func_t func,
+     return ret;
+ }
+ 
+-void *qht_lookup_custom(const struct qht *ht, const void *userp, uint32_t hash,
++void *qht_lookup_custom(struct qht *ht, const void *userp, uint32_t hash,
+                         qht_lookup_func_t func)
+ {
+-    const struct qht_bucket *b;
++    struct qht_bucket *b;
+     const struct qht_map *map;
+     unsigned int version;
+     void *ret;
+@@ -547,7 +547,7 @@ void *qht_lookup_custom(const struct qht *ht, const void *userp, uint32_t hash,
+     return qht_lookup__slowpath(b, func, userp, hash);
+ }
+ 
+-void *qht_lookup(const struct qht *ht, const void *userp, uint32_t hash)
++void *qht_lookup(struct qht *ht, const void *userp, uint32_t hash)
+ {
+     return qht_lookup_custom(ht, userp, hash, ht->cmp);
+ }

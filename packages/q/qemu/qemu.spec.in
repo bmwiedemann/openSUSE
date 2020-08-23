@@ -122,6 +122,10 @@ Source13:       supported.s390.txt
 Source14:       50-seabios-256k.json
 Source15:       60-seabios-128k.json
 Source200:      qemu-rpmlintrc
+Source201:      qemu-ga-ref.html
+Source202:      qemu-ga-ref.txt
+Source203:      qemu-qmp-ref.html
+Source204:      qemu-qmp-ref.txt
 Source300:      bundles.tar.xz
 Source301:      update_git.sh
 Source302:      config.sh
@@ -656,6 +660,7 @@ Summary:        Baum braille chardev support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_docdir/%name/qemu-ga-ref.html
 %{qemu_module_conflicts}
 
 %description chardev-baum
@@ -666,6 +671,7 @@ Summary:        QXL display support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_docdir/%name/qemu-ga-ref.txt
 %{qemu_module_conflicts}
 
 %description hw-display-qxl
@@ -676,20 +682,24 @@ Summary:        USB redirection support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_docdir/%name/qemu-qmp-ref.html
 %{qemu_module_conflicts}
 
 %description hw-usb-redirect
 This package contains a module for USB redirection support.
 
+%if 0%{?is_opensuse}
 %package hw-usb-smartcard
 Summary:        USB smartcard support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_docdir/%name/qemu-qmp-ref.txt
 %{qemu_module_conflicts}
 
 %description hw-usb-smartcard
 This package contains a modules for USB smartcard support.
+%endif
 
 %package ui-curses
 Summary:        Curses based UI support for QEMU
@@ -1535,7 +1545,13 @@ install -D -p -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/qemu-ga@.service
 install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/ksm.service
 %endif
 %ifarch s390x
-install -D -m 0644 %{SOURCE2} %{buildroot}%_libexecdir/modules-load.d/kvm.conf
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/modules-load.d/kvm.conf
+%endif
+install -D -m 0644 %{SOURCE201} %{buildroot}%_docdir/%name/qemu-ga-ref.html
+install -D -m 0644 %{SOURCE202} %{buildroot}%_docdir/%name/qemu-ga-ref.txt
+install -D -m 0644 %{SOURCE203} %{buildroot}%_docdir/%name/qemu-qmp-ref.html
+%if 0%{?is_opensuse}
+install -D -m 0644 %{SOURCE204} %{buildroot}%_docdir/%name/qemu-qmp-ref.txt
 %endif
 %fdupes -s %{buildroot}
 
@@ -1780,7 +1796,7 @@ fi
 %dir %_sysconfdir/%name/firmware
 %if %{kvm_available}
 %ifarch s390x
-%_libexecdir/modules-load.d/kvm.conf
+%{_prefix}/lib/modules-load.d/kvm.conf
 %endif
 /usr/lib/udev/rules.d/80-kvm.rules
 %endif
@@ -1951,24 +1967,32 @@ fi
 
 %files chardev-baum
 %defattr(-, root, root)
+%dir %_docdir/%name
 %dir %_libdir/%name
 %_libdir/%name/chardev-baum.so
+%_docdir/%name/qemu-ga-ref.html
 
 %files hw-display-qxl
 %defattr(-, root, root)
+%dir %_docdir/%name
 %dir %_libdir/%name
 %_libdir/%name/hw-display-qxl.so
+%_docdir/%name/qemu-ga-ref.txt
 
 %files hw-usb-redirect
 %defattr(-, root, root)
+%dir %_docdir/%name
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-redirect.so
+%_docdir/%name/qemu-qmp-ref.html
 
 %if 0%{?is_opensuse}
 %files hw-usb-smartcard
 %defattr(-, root, root)
+%dir %_docdir/%name
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-smartcard.so
+%_docdir/%name/qemu-qmp-ref.txt
 %endif
 
 %files ui-curses

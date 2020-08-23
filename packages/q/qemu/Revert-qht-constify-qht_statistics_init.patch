@@ -1,0 +1,55 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Thu, 13 Aug 2020 13:07:56 -0600
+Subject: Revert "qht: constify qht_statistics_init"
+
+This reverts commit 6579f10779b5b5ed2e978e7b8cae7bcbf8665254.
+
+This change partially addresses https://bugs.launchpad.net/qemu/+bug/1886155
+where a pre-release gcc 11 warns about const qualifier abuse.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ include/qemu/qht.h | 2 +-
+ util/qht.c         | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/include/qemu/qht.h b/include/qemu/qht.h
+index 758c7ac6c89978ee762e9d946584..2e2d6bca932c83bea993850b60f8 100644
+--- a/include/qemu/qht.h
++++ b/include/qemu/qht.h
+@@ -211,7 +211,7 @@ void qht_iter_remove(struct qht *ht, qht_iter_bool_func_t func, void *userp);
+  * When done with @stats, pass the struct to qht_statistics_destroy().
+  * Failing to do this will leak memory.
+  */
+-void qht_statistics_init(const struct qht *ht, struct qht_stats *stats);
++void qht_statistics_init(struct qht *ht, struct qht_stats *stats);
+ 
+ /**
+  * qht_statistics_destroy - Destroy a &struct qht_stats
+diff --git a/util/qht.c b/util/qht.c
+index 67e5d5b9163f5f33e41f76a7cd26..a5a332d98998209875a47ebfdeee 100644
+--- a/util/qht.c
++++ b/util/qht.c
+@@ -900,9 +900,9 @@ bool qht_resize(struct qht *ht, size_t n_elems)
+ }
+ 
+ /* pass @stats to qht_statistics_destroy() when done */
+-void qht_statistics_init(const struct qht *ht, struct qht_stats *stats)
++void qht_statistics_init(struct qht *ht, struct qht_stats *stats)
+ {
+-    const struct qht_map *map;
++    struct qht_map *map;
+     int i;
+ 
+     map = atomic_rcu_read(&ht->map);
+@@ -919,8 +919,8 @@ void qht_statistics_init(const struct qht *ht, struct qht_stats *stats)
+     stats->head_buckets = map->n_buckets;
+ 
+     for (i = 0; i < map->n_buckets; i++) {
+-        const struct qht_bucket *head = &map->buckets[i];
+-        const struct qht_bucket *b;
++        struct qht_bucket *head = &map->buckets[i];
++        struct qht_bucket *b;
+         unsigned int version;
+         size_t buckets;
+         size_t entries;

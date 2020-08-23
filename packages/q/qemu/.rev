@@ -2016,4 +2016,31 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
 </comment>
     <requestid>825863</requestid>
   </revision>
+  <revision rev="179" vrev="2">
+    <srcmd5>fc5cdf75d8dc31d52a9318732a07bd6d</srcmd5>
+    <version>5.1.0</version>
+    <time>1598167245</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix compilation errors seen with pre-release gcc 11
+  qht-Revert-some-constification-in-qht.c.patch
+  Revert-qht-constify-qht_statistics_init.patch
+  help-compiler-out-by-initializing-array.patch
+  s390x-Fix-stringop-truncation-issue-repo.patch
+- Add Split-Provides mechanism, using doc files which were moved
+  in v5.1.0. This allows for the new subpackages to be selected for
+  install when the v5.0.0 qemu is updated. These new subpackages are
+  not marked as &quot;Required&quot; by any packages, in an effort to reduce
+  the dependencies of the core qemu components (boo#1175320)
+  v5.0.0 qemu file mapping is provided as follows:
+  subpackage            continuity file provided (files are dummies)
+  ==========            ============================================
+  qemu-chardev-baum     /usr/share/doc/packages/qemu/qemu-ga-ref.html
+  qemu-hw-display-qxl   /usr/share/doc/packages/qemu/qemu-ga-ref.txt
+  qemu-hw-usb-redirect  /usr/share/doc/packages/qemu/qemu-qmp-ref.html
+  qemu-hw-usb-smartcard /usr/share/doc/packages/qemu/qemu-qmp-ref.txt
+- Fix wrong usage of %{_libexecdir} for systemd owned paths below
+  %{_prefix}/lib.
+</comment>
+    <requestid>828230</requestid>
+  </revision>
 </revisionlist>

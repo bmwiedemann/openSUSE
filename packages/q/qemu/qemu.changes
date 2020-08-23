@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Aug 20 13:19:12 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix compilation errors seen with pre-release gcc 11
+  qht-Revert-some-constification-in-qht.c.patch
+  Revert-qht-constify-qht_statistics_init.patch
+  help-compiler-out-by-initializing-array.patch
+  s390x-Fix-stringop-truncation-issue-repo.patch
+- Add Split-Provides mechanism, using doc files which were moved
+  in v5.1.0. This allows for the new subpackages to be selected for
+  install when the v5.0.0 qemu is updated. These new subpackages are
+  not marked as "Required" by any packages, in an effort to reduce
+  the dependencies of the core qemu components (boo#1175320)
+  v5.0.0 qemu file mapping is provided as follows:
+  subpackage            continuity file provided (files are dummies)
+  ==========            ============================================
+  qemu-chardev-baum     /usr/share/doc/packages/qemu/qemu-ga-ref.html
+  qemu-hw-display-qxl   /usr/share/doc/packages/qemu/qemu-ga-ref.txt
+  qemu-hw-usb-redirect  /usr/share/doc/packages/qemu/qemu-qmp-ref.html
+  qemu-hw-usb-smartcard /usr/share/doc/packages/qemu/qemu-qmp-ref.txt
+
+-------------------------------------------------------------------
+Tue Aug 18 15:29:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix wrong usage of %{_libexecdir} for systemd owned paths below
+  %{_prefix}/lib.
+
+-------------------------------------------------------------------
 Tue Aug 11 20:05:25 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update to v5.1.0: See http://wiki.qemu.org/ChangeLog/5.1
