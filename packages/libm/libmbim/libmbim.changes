@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 19 12:23:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Upate to version 1.24.2:
+  + libmbim-glib:
+    - Fixed several issues in the logic that merges the service
+      subscribe list.
+    - Improved message reading logic to skip malformed MBIM
+      messages (e.g. AT URCs emitted wrongly in the MBIM port by
+      some Cinterion modules).
+
+-------------------------------------------------------------------
 Fri Jun 19 08:50:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.24
