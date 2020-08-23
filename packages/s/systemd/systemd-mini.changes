@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 10:24:37 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit 6d6d92930acad63f9b9029c305a672c32c550d2d (include merge of v245.7)
+
+  797ad47d3e vconsole-setup: downgrade log message when setting font fails on dummy console (bsc#1172195 bsc#1173539)
+  [...]
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/b12cd8b89b4bccfcf972b47153a2b01cd7775932...6d6d92930acad63f9b9029c305a672c32c550d2d
+
+- Drop 0001-Revert-job-Don-t-mark-as-redundant-if-deps-are-relev.patch
+
+  Upstream finally reverted it and it's part of both v245.7 and master.
+
+-------------------------------------------------------------------
 Tue Jul 28 13:38:09 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Restore default upstream tmp.mount (/tmp as tmpfs) behaviour (boo#1173461)
+- Restore default upstream tmp.mount (/tmp as tmpfs) behaviour (boo#1173461)  
 
 -------------------------------------------------------------------
 Wed Jun 24 06:33:33 UTC 2020 - Franck Bui <fbui@suse.com>

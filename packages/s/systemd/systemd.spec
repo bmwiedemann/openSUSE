@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.48.gb12cd8b89b
+%define suse_version +suse.49.g6d6d92930a
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -53,7 +53,7 @@
 
 Name:           systemd
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        245.6
+Version:        245.7
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -164,7 +164,6 @@ Source102:      scripts-systemd-migrate-sysconfig-i18n.sh
 # broken in upstream and need an urgent fix. Even in this case, the
 # patches are temporary and should be removed as soon as a fix is
 # merged by upstream.
-Patch1:         0001-Revert-job-Don-t-mark-as-redundant-if-deps-are-relev.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
