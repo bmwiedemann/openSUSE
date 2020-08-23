@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 20 12:12:12 UTC 2020 - ohering@suse.de
+
+- Allow daemon restart again (bsc#1116957)
+  Since some time the kernel moved from netlink sockets to char
+  devices, which is supposed to handle a connection reopen for the
+  kernel<->daemon interface
+
+-------------------------------------------------------------------
 Wed Jul 22 12:12:12 UTC 2020 - ohering@suse.de
 
 - Remove dependency to network-online.target now that gethostname

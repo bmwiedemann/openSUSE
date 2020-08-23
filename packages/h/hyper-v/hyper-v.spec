@@ -135,12 +135,8 @@ ConditionVirtualization=microsoft
 
 [Service]
 Environment="PATH=%{helper_dir}/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-# Restart appears to work, but its unsupported
-# Reboot required until kernel-user protocol is fixed
-ExecStartPre=/usr/bin/mkdir /run/%{hv_kvp_daemon}
 ExecStart=${bindir}/%{hv_kvp_daemon} --no-daemon
-ExecReload=/usr/bin/false
-Restart=no
+Restart=on-failure
 
 [Install]
 WantedBy=default.target
@@ -153,12 +149,8 @@ Description=Hyper-V VSS Daemon
 ConditionVirtualization=microsoft
 
 [Service]
-# Restart appears to work, but its unsupported
-# Reboot required until kernel-user protocol is fixed
-ExecStartPre=/usr/bin/mkdir /run/%{hv_vss_daemon}
 ExecStart=${bindir}/%{hv_vss_daemon} --no-daemon
-ExecReload=/usr/bin/false
-Restart=no
+Restart=on-failure
 
 [Install]
 WantedBy=default.target
@@ -172,6 +164,7 @@ ConditionVirtualization=microsoft
 
 [Service]
 ExecStart=${bindir}/%{hv_fcopy_daemon} --no-daemon
+Restart=on-failure
 
 [Install]
 WantedBy=default.target
