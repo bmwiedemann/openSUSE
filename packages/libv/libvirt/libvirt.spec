@@ -336,6 +336,10 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         2edd63a0-fix-virFileSetCOW-logic.patch
+Patch1:         82bb167f-dont-cache-devmapper-major.patch
+Patch2:         feb8564a-handle-no-devmapper.patch
+Patch3:         53d9af1e-ignore-devmapper-open-errors.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -875,6 +879,10 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1

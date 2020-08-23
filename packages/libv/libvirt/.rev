@@ -3624,4 +3624,22 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>824562</requestid>
   </revision>
+  <revision rev="309" vrev="2">
+    <srcmd5>72b3d47e0e6a0204a5b6dd760cb94aa1</srcmd5>
+    <version>6.6.0</version>
+    <time>1598167242</time>
+    <user>dimstar_suse</user>
+    <comment>A few bug fixes for libvirt 6.6.0.
+
+- virdevmapper: Handle kernel without device-mapper support
+  82bb167f-dont-cache-devmapper-major.patch,
+  feb8564a-handle-no-devmapper.patch,
+  53d9af1e-ignore-devmapper-open-errors.patch
+  boo#1175465
+
+- util: Fix logic in virFileSetCOW
+  2edd63a0-fix-virFileSetCOW-logic.patch
+  boo#1175463</comment>
+    <requestid>828226</requestid>
+  </revision>
 </revisionlist>
