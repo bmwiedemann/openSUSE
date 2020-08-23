@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit-Qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,13 @@
 
 %define libpk   libpackagekitqt5-1
 Name:           PackageKit-Qt
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Simple software installation management software
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            http://packagekit.org/
 Source:         https://github.com/hughsie/PackageKit-Qt/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-pkg-config-include-path.patch
-Patch2:         0002-Fix-some-documentation-typos.patch
-Patch3:         0003-Make-sure-the-build-is-done-as-c-11.patch
 # PATCH-FIX-UPSTREAM boo#1103678
 Patch4:         0001-Fix-PackageKit-not-emitting-network-state-changed-signal.patch
 BuildRequires:  PackageKit-devel >= %{version}
@@ -83,7 +79,7 @@ cd build
 cmake \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   ..
-make %{?_smp_mflags}
+%make_build
 
 %install
 cd build

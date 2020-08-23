@@ -167,4 +167,20 @@ Comment: something is rotten with the license. I don't believe it's
     <comment></comment>
     <requestid>687768</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b2170c4c590be80ed161e7b15fd39eab</srcmd5>
+    <version>1.0.2</version>
+    <time>1598167236</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Fix documentation (Aleix Pol)
+  * Fix pkg-config include path (Matthias Klumpp)
+  * Fix some documentation typos (Pekka Vuorela)
+  * Make sure the build is done as c++11 (Pekka Vuorela)
+  * Map DBusError::AccessDenied to Transaction::ErrorNotAuthorized (Raine Makelainen)
+- remove 0001-Fix-pkg-config-include-path.patch
+  0002-Fix-some-documentation-typos.patch
+  0003-Make-sure-the-build-is-done-as-c-11.patch: upstream (forwarded request 827411 from dirkmueller)</comment>
+    <requestid>828184</requestid>
+  </revision>
 </revisionlist>

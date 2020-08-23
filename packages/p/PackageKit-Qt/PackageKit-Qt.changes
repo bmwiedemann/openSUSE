@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 17 19:06:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Fix documentation (Aleix Pol)
+  * Fix pkg-config include path (Matthias Klumpp)
+  * Fix some documentation typos (Pekka Vuorela)
+  * Make sure the build is done as c++11 (Pekka Vuorela)
+  * Map DBusError::AccessDenied to Transaction::ErrorNotAuthorized (Raine Makelainen)
+- remove 0001-Fix-pkg-config-include-path.patch
+  0002-Fix-some-documentation-typos.patch
+  0003-Make-sure-the-build-is-done-as-c-11.patch: upstream
+
+-------------------------------------------------------------------
 Wed Mar  6 18:10:58 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to use the NetworkManager dbus signal when PackageKit is
