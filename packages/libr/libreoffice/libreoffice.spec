@@ -147,7 +147,6 @@ BuildRequires:  libserializer
 BuildRequires:  libtool
 BuildRequires:  lpsolve-devel
 BuildRequires:  make
-BuildRequires:  memory-constraints
 BuildRequires:  openldap2-devel
 BuildRequires:  pentaho-libxml
 BuildRequires:  pentaho-reporting-flow-engine
@@ -1000,7 +999,6 @@ echo "HTML_TIMESTAMP = NO" >> odk/docs/idl/Doxyfile
 # Strip lto from %_lto_cflags as the project has --enable-lto option
 %define _lto_cflags %{nil}
 # do not eat all memory
-%limit_build -m 1200
 # make sure that JAVA_HOME is set correctly
 source %{_sysconfdir}/profile.d/alljava.sh
 # use RPM_OPT_FLAGS, ...

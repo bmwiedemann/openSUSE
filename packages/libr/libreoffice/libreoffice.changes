@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:55:05 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Mon Aug 17 06:42:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 7.0.1.1:
