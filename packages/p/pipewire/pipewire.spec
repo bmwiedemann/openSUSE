@@ -22,7 +22,7 @@
 %global provfind sh -c "grep -v -e 'libpulse.*\\.so' -e 'libjack.*\\.so' | %__find_provides"
 %global __find_provides %provfind
 
-%define sover 0_3_8
+%define sover 0_3_9
 %define apiver 0.3
 %define apiver_str 0_3
 %define spa_ver 0.2
@@ -36,7 +36,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
