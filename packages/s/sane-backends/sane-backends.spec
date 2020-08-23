@@ -24,7 +24,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
-# Cf. the comment about 'libusb' at .configure below:
 BuildRequires:  libv4l-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  pkgconfig
@@ -44,7 +43,7 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        SANE (Scanner Access Now Easy) Scanner Drivers
 License:        GPL-2.0-or-later AND SUSE-GPL-2.0+-with-sane-exception AND SUSE-Public-Domain
 Group:          Hardware/Scanner
-Version:        1.0.29
+Version:        1.0.30
 Release:        0
 URL:            http://www.sane-project.org/
 # Unfortunately, the first version does not build, as it does not contain a prebuilt configure,
@@ -52,7 +51,7 @@ URL:            http://www.sane-project.org/
 # https://gitlab.com/sane-project/backends/issues/248
 # Use the version including a semi-random hash instead, which is a dist tarball
 # Source0:        https://gitlab.com/sane-project/backends/-/archive/%%{version}/backends-%%{version}.tar.gz#/sane-backends-%%{version}.tar.gz
-Source0:        https://gitlab.com/sane-project/backends/uploads/54f858b20a364fc35d820df935a86478/sane-backends-1.0.29.tar.gz
+Source0:        https://gitlab.com/sane-project/backends/uploads/c3dd60c9e054b5dee1e7b01a7edc98b0/sane-backends-1.0.30.tar.gz
 # Source100... is SUSE specific stuff:
 # Source102 is the OpenSLP registration file for the saned:
 Source102:      sane.reg
@@ -168,6 +167,16 @@ accidentally disabled when only one scanner was disconnected.
 If you do not like automated driver activation, do not install this
 package or remove it when it is already installed.
 
+%package -n sane-saned
+Summary:        Sane network server
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
+Group:          Hardware/Scanner
+Provides:       sane-backends:%{_sbindir}/saned
+Conflicts:      %{name} < %{version}
+
+%description -n sane-saned
+Saned allows access to locally attached scanners over the network.
+
 %prep
 %setup -q
 # Patch2 sane-backends.builttime.patch avoids build-compare noise
@@ -201,14 +210,7 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE -DGIMP_ENABLE_COMPAT_CRUFT=1 -fno-stric
 export LDFLAGS="-L/%_lib $LDFLAGS"
 # Enable pthread instead of fork (used in Debian since Feb 2009 and no issues so far),
 # see https://bugzilla.novell.com/show_bug.cgi?id=633780
-# Enable libusb-1.0 support which is available since sane-backends 1.0.20
-# and libusb-1_0 is available at least since openSUSE 11.1.
-# On all systems, the --enable-libusb* flags (in particular --enable-libusb_1_0 ) are now ignored.
-# Instead, the --with-usb and --without-usb flags now control support.
-# When neither is given, USB support will be enabled if possible and disabled otherwise.
-# If --with-usb is requested but not possible, ./configure will fail.
-# There is no support to prefer libusb-0.1 over libusb-1.0.
-# When libusb-1.0 is not found, libusb-0.1 will be tried.
+#
 # Without converting API spec to supported output formats PostScript, PDF, HTML
 # i.e. use none of --with_api_ps --with_api_pdf --with_api_html cf. configure.ac
 # because converting the API spec needs tons of stuff in the build system
@@ -346,10 +348,6 @@ bash %{SOURCE201} >autoconfig.rules
 # Install the scanner autoconfiguration udev rules file:
 install -d %{buildroot}%{_udevrulesdir}
 install -m644 autoconfig.rules %{buildroot}%{_udevrulesdir}/56-sane-backends-autoconfig.rules
-# Since version 1.0.19 there is udev and HAL support.
-# Therefore the old/outdated hotplug stuff is dropped (was never used by openSUSE).
-# Neither tools/hotplug/libsane.usermap nor tools/hotplug/libusbscanner is installed.
-# Also the evil-hack init-script "sane-dev" is no longer provided.
 # Regarding udev:
 # Modify the generated tools/udev/libsane.rules file as follows:
 # All GROUP="scanner" are replaced by GROUP="lp".
@@ -364,17 +362,13 @@ install -m644 autoconfig.rules %{buildroot}%{_udevrulesdir}/56-sane-backends-aut
 # to place a paper on the scanner) so that both kind of devices
 # should usually require the same kind of security.
 sed -i -e 's/GROUP="scanner"/GROUP="lp"/' tools/udev/libsane.rules
-# Regarding SUBSYSTEM=="usb" see the Novell/Suse Bugzilla bug
-# https://bugzilla.novell.com/show_bug.cgi?id=294161#c11
-sed -i -e '/^SUBSYSTEM/s/"usb_device"/"usb"/' tools/udev/libsane.rules
 # Regarding ATTRS{} (formerly SYSFS{}) versus ATTR{} see the Novell/Suse Bugzilla bug
 # https://bugzilla.novell.com/show_bug.cgi?id=436085#c0
 # but for SCSI scanners "ATTRS" is mandatory see the Novell/Suse Bugzilla bug
 # https://bugzilla.novell.com/show_bug.cgi?id=681146#c20
 # so that "ATTRS" is replaced by "ATTR" only for USB scanners.
+# Upstream: https://gitlab.com/sane-project/backends/-/issues/341
 sed -i -e '/^LABEL="libsane_usb_rules_begin"/,/^LABEL="libsane_usb_rules_end"/s/ATTRS/ATTR/g' tools/udev/libsane.rules
-# Disable all ENV{DEVTYPE} lines because we (Suse/Novell) do not need them.
-sed -i -e 's/^ENV{DEVTYPE}/# ENV{DEVTYPE}/' tools/udev/libsane.rules
 # Disable entries for USB scanners which are "unsupported"
 # but keep the entries for models for which the support status
 # is "complete", "good", "basic", "minimal", "untested"
@@ -406,15 +400,9 @@ do if grep -q "^ATTR.idVendor.==$m" tools/udev/libsane.rules
         sed -i -e "/^ATTR.idVendor.==$m/Is/^ATTR/# ATTR/" tools/udev/libsane.rules
    fi
 done
-# Newer udev versions complain about NAME="%k" usage with warning messages like
-#  'udevd[1234]: NAME="%k" is superfluous and breaks kernel supplied names...'
-sed -i -e 's/NAME="%k", //' tools/udev/libsane.rules
 # Add an entry for "SCSI processor EPSON Perfection1640",
 # see https://bugzilla.novell.com/show_bug.cgi?id=681146#c43
 sed -i -e '/^# Epson Perfection 636S /i# Epson Perfection 1640\nKERNEL=="sg[0-9]*", ATTRS{type}=="3", ATTRS{vendor}=="EPSON", ATTRS{model}=="Perfection1640", MODE="0664", GROUP="lp", ENV{libsane_matched}="yes"' tools/udev/libsane.rules
-# Add a wildcard entry for any "SCSI processor EPSON SCANNER*"
-# see http://lists.alioth.debian.org/pipermail/sane-devel/2011-June/028739.html
-sed -i -e '/^# Epson Perfection 2450 /i# Any SCSI processor EPSON SCANNER...\nKERNEL=="sg[0-9]*", ATTRS{type}=="3", ATTRS{vendor}=="EPSON", ATTRS{model}=="SCANNER*", MODE="0664", GROUP="lp", ENV{libsane_matched}="yes"' tools/udev/libsane.rules
 # Install the udev rules file:
 install -m644 tools/udev/libsane.rules %{buildroot}%{_udevrulesdir}/55-libsane.rules
 # Service files:
@@ -434,7 +422,7 @@ rm %{buildroot}%{_defaultdocdir}/sane-backends/{README.aix,README.beos,README.da
 # https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros#.25find_lang
 %find_lang sane-backends
 
-%pre
+%pre -n sane-saned
 if [ $1 = 2 ] ; then
     # In case of an upgrade the erroneously created as directories saned.socket and saned@.service
     # must be removed, otherwise the upgrade will fail,
@@ -449,26 +437,30 @@ if [ $1 = 2 ] ; then
 fi
 %service_add_pre saned.socket
 
-%post
+%post -n sane-saned
 %service_add_post saned.socket
 
-%preun
+%preun -n sane-saned
 %service_del_preun saned.socket
 
-%postun
+%postun -n sane-saned
 %service_del_postun saned.socket
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files -f sane-backends.lang
-%defattr(-,root,root)
-%dir %{_sysconfdir}/sane.d
-%config(noreplace) %{_sysconfdir}/sane.d/*.conf
+%files -n sane-saned
 %dir %{_sysconfdir}/slp.reg.d
 %config(noreplace) %{_sysconfdir}/slp.reg.d/*
-%{_udevrulesdir}/55-libsane.rules
 %{_sbindir}/saned
+%{_unitdir}/saned@.service
+%{_unitdir}/saned.socket
+%doc %{_mandir}/man8/saned.8.gz
+
+%files -f sane-backends.lang
+%dir %{_sysconfdir}/sane.d
+%config(noreplace) %{_sysconfdir}/sane.d/*.conf
+%{_udevrulesdir}/55-libsane.rules
 %{_bindir}/scanimage
 %{_bindir}/sane-find-scanner
 %{_bindir}/gamma4scanimage
@@ -476,8 +468,6 @@ fi
 %{_datadir}/sane/
 %{_libdir}/sane/
 %exclude %{_libdir}/sane/libsane-dll.so.*
-%{_unitdir}/saned@.service
-%{_unitdir}/saned.socket
 #dir /var/lock/sane
 %doc %{_defaultdocdir}/sane-backends/
 %doc %{_mandir}/man1/scanimage.1.gz
@@ -485,7 +475,6 @@ fi
 %doc %{_mandir}/man1/gamma4scanimage.1.gz
 %doc %{_mandir}/man5/sane-*.5.gz
 %doc %{_mandir}/man7/sane.7.gz
-%doc %{_mandir}/man8/saned.8.gz
 
 %files -n %{libname}
 %dir %{_libdir}/sane/
@@ -495,7 +484,6 @@ fi
 %{_libdir}/libsane.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/sane-config
 %{_includedir}/sane/
 %{_libdir}/libsane.so
@@ -503,7 +491,6 @@ fi
 %doc %{_mandir}/man1/sane-config.1.gz
 
 %files autoconfig
-%defattr(-,root,root)
 %{_udevrulesdir}/56-sane-backends-autoconfig.rules
 
 %changelog

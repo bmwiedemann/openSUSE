@@ -730,4 +730,12 @@ The LICENSE file in the sane-backends packages explains the licensing of the pac
 </comment>
     <requestid>778823</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>6e3c544341d5c8a72c79c394d6a262ab</srcmd5>
+    <version>1.0.30</version>
+    <time>1598167264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828255</requestid>
+  </revision>
 </revisionlist>

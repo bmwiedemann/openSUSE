@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 18 15:15:05 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.0.30:
+  * epson2: fixes CVE-2020-12867 (GHSL-2020-075) and several memory
+    management issues found while addressing that CVE
+  * epsonds: addresses out-of-bound memory access issues to fix
+    CVE-2020-12862 (GHSL-2020-082) and CVE-2020-12863 (GHSL-2020-083),
+    addresses a buffer overflow fixing CVE-2020-12865 (GHSL-2020-084)
+    and disables network autodiscovery to mitigate CVE-2020-12866
+    (GHSL-2020-079), CVE-2020-12861 (GHSL-2020-080) and CVE-2020-12864
+    (GHSL-2020-081).  Note that this backend does not support network
+    scanners to begin with.
+  * magicolor: fixes a floating point exception and uninitialized data
+    read
+  * fixes an overflow in sanei_tcp_read()
+- Move saned to a separate package
+- Cleanup spec file, remove some obsolete mangling of udev rules
+
+-------------------------------------------------------------------
 Thu Feb 20 20:00:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Move udev rules from /etc/udev/ to /usr/udev.
