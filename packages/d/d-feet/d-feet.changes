@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 28 16:53:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Build as noarch again, with new meson version it works again.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:06:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
