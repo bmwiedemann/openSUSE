@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 15 23:50:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.12.6
+  * Warn about GCC 4 being too old
+  * Use size_t for malloc sizes
+
+-------------------------------------------------------------------
 Wed Feb 13 17:57:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Update description with parts

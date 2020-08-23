@@ -1,7 +1,7 @@
 #
 # spec file for package pngquant
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           pngquant
-Version:        2.12.2
+Version:        2.12.6
 Release:        0
 Summary:        Tool for lossy compression of PNG images
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
-Url:            https://pngquant.org/
-Source:         https://pngquant.org/%{name}-%{version}-src.tar.gz
+URL:            https://pngquant.org/
+Source:         https://github.com/kornelski/pngquant/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(imagequant) >= %{version}
 BuildRequires:  pkgconfig(lcms2)
@@ -54,7 +54,7 @@ web browsers, and have better fallback in IE6 than 24-bit PNGs.
 	--extra-cflags='%{optflags}' \
 	--with-libimagequant=%{_libdir} \
 	--with-openmp
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
