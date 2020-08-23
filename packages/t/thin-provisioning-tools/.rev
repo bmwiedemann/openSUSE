@@ -174,4 +174,20 @@
   * Mostly internal changes</comment>
     <requestid>723103</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>97908b586740fae627fbaaaecdfcc8ae</srcmd5>
+    <version>0.9.0</version>
+    <time>1598167158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0:
+  * New support tools: thin_metadata_{pack,unpack}.
+  * thin_check can now check metadata snapshots.
+  * some metadata space map bug fixes.
+  * thin_check --auto-repair
+  * Stop thin_dump --repair/thin_repair ignoring under populated nodes.
+- Drop no longer needed patches:
+  * boost_168.patch
+  * ft-lib_bcache-rename-raise-raise_.patch</comment>
+    <requestid>828047</requestid>
+  </revision>
 </revisionlist>

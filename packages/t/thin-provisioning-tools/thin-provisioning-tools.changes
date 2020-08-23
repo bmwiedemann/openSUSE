@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:19:34 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.0:
+  * New support tools: thin_metadata_{pack,unpack}.
+  * thin_check can now check metadata snapshots.
+  * some metadata space map bug fixes.
+  * thin_check --auto-repair
+  * Stop thin_dump --repair/thin_repair ignoring under populated nodes.
+- Drop no longer needed patches:
+  * boost_168.patch
+  * ft-lib_bcache-rename-raise-raise_.patch
+
+-------------------------------------------------------------------
 Tue Aug 13 14:53:11 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.8.5

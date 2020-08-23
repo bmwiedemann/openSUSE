@@ -1,7 +1,7 @@
 #
 # spec file for package thin-provisioning-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,19 @@
 
 
 Name:           thin-provisioning-tools
-Version:        0.8.5
+Version:        0.9.0
 Release:        0
 Summary:        Thin Provisioning Tools
 License:        GPL-3.0-only
 Group:          System/Base
 URL:            https://github.com/jthornber/thin-provisioning-tools/
 Source0:        https://github.com/jthornber/thin-provisioning-tools/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         boost_168.patch
-# PATCH-FIX-UPSTREAM https://github.com/jthornber/thin-provisioning-tools/commit/6332962ee866f5289de87ab70cd3db863298982c.patch
-Patch2:         ft-lib_bcache-rename-raise-raise_.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libaio-devel
 BuildRequires:  libboost_headers-devel
+BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -44,7 +42,7 @@ Conflicts:      device-mapper < 1.02.115
 A suite of tools for thin provisioning on Linux.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 autoreconf -fiv
