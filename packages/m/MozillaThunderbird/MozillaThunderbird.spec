@@ -75,7 +75,6 @@ BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
 BuildRequires:  libnotify-devel
-BuildRequires:  memory-constraints
 BuildRequires:  mozilla-nspr-devel >= 4.21
 BuildRequires:  mozilla-nss-devel >= 3.44.4
 BuildRequires:  nasm >= 2.13
@@ -327,7 +326,6 @@ echo "export RUSTFLAGS=\"$RUSTFLAGS\""
 echo ""
 cat << EOF
 %else
-%limit_build -m 2000
 export MOZ_DEBUG_FLAGS="-pipe"
 cat << EOF > $MOZCONFIG
 %endif
