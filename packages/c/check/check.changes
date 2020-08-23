@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:02:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.15.2:
+  * Fix fail* APIs, regression from 0.15.1
+  * Fix warning in ptr macros with pointer to integer cast
+  * Fix various warnings in Check's unit tests
+  * Replace gnu_printf with printf in format __attribute__
+  * Fix warnings from Check's macros: "warning: too many arguments for format"
+  * Fix format specifiers that do not match the argument types
+  * Define CK_ATTRIBUTE_FORMAT for GCC >= 2.95.3, to make use of
+  ‘gnu_printf’ format attribute
+  * Refactor tests to fix signed - unsigned conversions
+  * Refactor some Check internals to use proper interger types
+  * Implement missing mutual exclusion for Windows hosts
+
+-------------------------------------------------------------------
 Tue May  5 12:33:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.14.0:

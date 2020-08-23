@@ -278,4 +278,23 @@
   * Various CMake related changes (forwarded request 800363 from polslinux)</comment>
     <requestid>800801</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>987f1c04aacebba449e4e826084e428a</srcmd5>
+    <version>0.15.2</version>
+    <time>1598167235</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.2:
+  * Fix fail* APIs, regression from 0.15.1
+  * Fix warning in ptr macros with pointer to integer cast
+  * Fix various warnings in Check's unit tests
+  * Replace gnu_printf with printf in format __attribute__
+  * Fix warnings from Check's macros: &quot;warning: too many arguments for format&quot;
+  * Fix format specifiers that do not match the argument types
+  * Define CK_ATTRIBUTE_FORMAT for GCC &amp;gt;= 2.95.3, to make use of
+  ‘gnu_printf’ format attribute
+  * Refactor tests to fix signed - unsigned conversions
+  * Refactor some Check internals to use proper interger types
+  * Implement missing mutual exclusion for Windows hosts (forwarded request 827323 from dirkmueller)</comment>
+    <requestid>828182</requestid>
+  </revision>
 </revisionlist>

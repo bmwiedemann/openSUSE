@@ -18,7 +18,7 @@
 
 %define libname libcheck0
 Name:           check
-Version:        0.14.0
+Version:        0.15.2
 Release:        0
 Summary:        Unit Test Framework for C
 License:        LGPL-2.1-or-later
