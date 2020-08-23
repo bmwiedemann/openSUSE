@@ -24841,6 +24841,7 @@ unsorted:
   - sane-backends-32bit: [x86_64] 
   - sane-backends-devel 
   - sane-backends-devel-32bit: [x86_64] 
+  - sane-saned 
   - sanlk-reset 
   - sanlock 
   - sanlock-devel 
