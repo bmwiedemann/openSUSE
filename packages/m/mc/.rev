@@ -714,4 +714,20 @@ SLE* needs fixing anyway (forwarded request 206981 from dnh)</comment>
 - Remove mc-no-common.patch (forwarded request 785833 from polslinux)</comment>
     <requestid>792958</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>ff5d9a534af214f7f586c44e26045a8e</srcmd5>
+    <version>4.8.25</version>
+    <time>1598167266</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.25
+  * Avoid subshell warning for standalone mcedit/mcview/mcdiffview run from mc
+  * Implement chattr command (change ext{2,3,4}fs extended attributes)
+  * New syntax highlighting: Kotlin and ino
+  * File highlighting updates
+  * Lots of other fixes
+- Updated mc-ext-audio.patch
+- Updated mc-extd-sound.patch
+- Removed mc-rpm.patch</comment>
+    <requestid>828287</requestid>
+  </revision>
 </revisionlist>

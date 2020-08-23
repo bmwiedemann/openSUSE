@@ -17,7 +17,7 @@
 
 
 Name:           mc
-Version:        4.8.24
+Version:        4.8.25
 Release:        0
 Summary:        Midnight Commander
 License:        GPL-3.0-or-later
@@ -32,7 +32,6 @@ Source6:        http://ftp.midnight-commander.org/%{name}-%{version}.sha256
 Patch0:         mc-fix_lib_search_path.patch
 Patch12:        mc-wrapper.patch
 Patch16:        mc-esc-seq.patch
-Patch17:        mc-rpm.patch
 Patch20:        mc-f-keys.patch
 Patch21:        mc-extfs-helpers-deb.patch
 # add patch. bnc#856501
@@ -102,7 +101,6 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE6} | head -n1 | cut -c1-64`  %{SOU
 %patch71
 %patch12 -p1
 %patch16
-%patch17 -p1
 %patch20
 %patch21
 %patch22 -p1

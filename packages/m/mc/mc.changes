@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 27 15:00:00 UTC 2020 - Andre C. Barros <andre.cbarros@yahoo.com>
+
+- Update to 4.8.25
+  * Avoid subshell warning for standalone mcedit/mcview/mcdiffview run from mc
+  * Implement chattr command (change ext{2,3,4}fs extended attributes)
+  * New syntax highlighting: Kotlin and ino
+  * File highlighting updates
+  * Lots of other fixes
+
+- Updated mc-ext-audio.patch
+- Updated mc-extd-sound.patch
+- Removed mc-rpm.patch
+
+-------------------------------------------------------------------
 Tue Mar 17 07:57:20 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.8.24
