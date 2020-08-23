@@ -33,7 +33,6 @@ Patch1:         polari-fix-log-spam.patch
 
 BuildRequires:  gjs >= 1.57.3
 BuildRequires:  meson >= 0.43.0
-BuildRequires:  mozjs60
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4

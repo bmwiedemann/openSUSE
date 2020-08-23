@@ -344,4 +344,14 @@
     <comment></comment>
     <requestid>822577</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>20b53bd333a023bb978ab4d9962a9e8a</srcmd5>
+    <version>3.36.3</version>
+    <time>1598167252</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop mozjs68 BuildRequires: it is only required to syntax check
+  the .js files during build. As we use pristine upstream sources,
+  we can assume them to be tested by the CI already. (forwarded request 828158 from dimstar)</comment>
+    <requestid>828236</requestid>
+  </revision>
 </revisionlist>

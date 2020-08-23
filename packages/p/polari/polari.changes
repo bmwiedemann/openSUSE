@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:51:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop mozjs68 BuildRequires: it is only required to syntax check
+  the .js files during build. As we use pristine upstream sources,
+  we can assume them to be tested by the CI already.
+
+-------------------------------------------------------------------
 Sat Jul 18 19:15:46 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add polari-fix-log-spam.patch: Quiet down unneeded warnings.
