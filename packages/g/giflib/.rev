@@ -311,4 +311,41 @@
     <comment></comment>
     <requestid>648854</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c312bdec267312de1d60a9dc9a80e799</srcmd5>
+    <version>5.2.1</version>
+    <time>1598167110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.1
+  * In gifbuild.c, avoid a core dump on no color map.
+  * Restore inadvertently removed library version numbers in Makefile.
+- Changes in version 5.2.0
+  * The undocumented and deprecated GifQuantizeBuffer() entry point
+    has been moved to the util library to reduce libgif size and attack
+    surface. Applications needing this function are couraged to link the
+    util library or make their own copy.
+  * The following obsolete utility programs are no longer installed:
+    gifecho, giffilter, gifinto, gifsponge. These were either installed in
+    error or have been obsolesced by modern image-transformmation tools
+    like ImageMagick convert. They may be removed entirely in a future
+    release.
+  * Address SourceForge issue #136: Stack-buffer-overflow in gifcolor.c:84
+  * Address SF bug #134: Giflib fails to slurp significant number of gifs
+  * Apply SPDX convention for license tagging.
+- Changes in version 5.1.9
+  * The documentation directory now includes an HTMlified version of the
+    GIF89 standard, and a more detailed description of how LZW compression
+    is applied to GIFs.
+  * Address SF bug #129: The latest version of giflib cannot be build on windows.
+  * Address SF bug #126: Cannot compile giflib using c89
+- Changes in version 5.1.8
+  * Address SF bug #119: MemorySanitizer: FPE on unknown address
+  * Address SF bug #125: 5.1.7: xmlto is still required for tarball
+  * Address SF bug #124: 5.1.7: ar invocation is not crosscompile compatible
+  * Address SF bug #122: 5.1.7 installs manpages to wrong directory
+  * Address SF bug #121: make: getversion: Command not found
+  * Address SF bug #120: 5.1.7 does not build a proper library - no 
+- Changes in version 5.1.7</comment>
+    <requestid>826859</requestid>
+  </revision>
 </revisionlist>
