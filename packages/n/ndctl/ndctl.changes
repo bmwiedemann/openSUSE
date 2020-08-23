@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 10 09:25:52 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to v69 (jsc#SLE-13824, jsc#SLE-12770, jsc#SLE-15065):
+  * infoblock: Set the default alignment to the platform alignment
+  * libndctl/papr_scm: Add support for reporting "life_used_percentage" metric
+  * Skip region filtering if numa_node attribute is not present
+  * libndctl,papr_scm: Implement support for PAPR_PDSM_HEALTH
+  * miscellaneous bugfixes
+
+- Removed ndctl-Documentation-use-includes-in-more-ndctl-command-pag.patch
+
+-------------------------------------------------------------------
+Tue Jul 14 08:24:42 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Clarify documentation about filtering options (bsc#1173861)
+  + ndctl-Documentation-use-includes-in-more-ndctl-command-pag.patch
+
+-------------------------------------------------------------------
 Fri May 15 12:21:34 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v68:

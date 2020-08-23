@@ -20,14 +20,13 @@
 %define lname libndctl6
 %define dname libndctl-devel
 Name:           ndctl
-Version:        68
+Version:        69
 Release:        0
 Summary:        Manage "libnvdimm" subsystem devices (Non-volatile Memory)
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/pmem/ndctl
-# Snapshot tarball can be created using: ./make-git-shapshot.sh [gitcommit]
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/pmem/ndctl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch9:         %{name}-namespace-skip-zero-namespaces-when-processing.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
