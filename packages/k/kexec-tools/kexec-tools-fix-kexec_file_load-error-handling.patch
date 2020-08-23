@@ -1,9 +1,10 @@
 From 0ec1fd23847ba103f967e3377e2a1b13712cff6e Mon Sep 17 00:00:00 2001
 From: Petr Tesarik <ptesarik@suse.com>
 Date: Thu, 12 Mar 2020 20:12:12 +0100
-Upstream: not yet, patch sent 2020-03-12 
 Subject: Fix kexec_file_load(2) error handling
 References: bsc#1166105
+Upstream: merged
+Git-commit: 4f77da6340356de40af70473d3c3ae6ec663fbdf
 
 The handling of kexec_file_load() error conditions needs some
 improvement.

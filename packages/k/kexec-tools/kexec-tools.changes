@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 09:36:21 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make kexec-bootloader work without 'which' package (boo#1172501)
+
+-------------------------------------------------------------------
 Fri Apr  3 12:11:16 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - kexec-tools-Remove-duplicated-variable-declarations.patch:

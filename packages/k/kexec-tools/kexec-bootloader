@@ -189,12 +189,6 @@ if ($initrd && ! -f $initrd) {
     exit(1);
 }
 
-# Do we have kexec?
-if (system("which kexec &>/dev/null") != 0) {
-    print STDERR "kexec not available. Install kexec-tools.\n";
-    exit(1);
-}
-
 # build the command list
 my $cmd = "kexec";
 

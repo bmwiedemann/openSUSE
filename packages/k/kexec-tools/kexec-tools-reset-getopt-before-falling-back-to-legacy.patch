@@ -1,9 +1,10 @@
 From dadafc4664c7b78ea1561ccca33986c9639106ec Mon Sep 17 00:00:00 2001
 From: Petr Tesarik <ptesarik@suse.com>
 Date: Fri, 13 Mar 2020 14:54:00 +0100
-Upstream: not yet, patch sent 2020-03-13
 Subject: Reset getopt before falling back to legacy syscall
 References: bsc#1166105
+Upstream: merged
+Git-commit: 9cf721279f6cb0dec09c8752e471f15fb662406b
 
 The modules may need to parse the arguments again after
 kexec_file_load(2) failed, but getopt is not reset.

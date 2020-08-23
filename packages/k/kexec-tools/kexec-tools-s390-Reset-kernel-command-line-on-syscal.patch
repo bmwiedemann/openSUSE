@@ -2,7 +2,8 @@ From: Petr Tesarik <ptesarik@suse.com>
 Date: Fri, 3 Apr 2020 13:12:00 +0200
 Subject: kexec-tools: s390: Reset kernel command line on syscall fallback
 References: bsc#1167868
-Upstream: submitted 2020-04-03
+Upstream: merged
+Git-commit: 5dc72ded6050a5bb161e3b832867e660c9ca009e
 
 The command line is duplicated on s390 if kexec_file_load(2) is not
 implemented. That's because the corresponding variable is not reset
