@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 10:27:40 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.2:
+  + build: various fixes for LTO.
+  + dhcp6: export and handle the DHCPv6 FQDN option.
+  + core: fix reapply for bond options.
+  + core: improve "connection.wait-device-timeout" to handle
+    matching devices not only by interface name and fix race.
+  + libnm,core: support "clsact" qdisc.
+  + dhcp4: fix bug in internal DHCP client on big endian systems.
+
+-------------------------------------------------------------------
+Thu Aug 13 08:54:28 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own the two empty directories pre-up.d and pre-down.d in
+  /usr/lib/NetworkManager/dispatcher.d (boo#1173713).
+
+-------------------------------------------------------------------
 Mon Jul 13 18:48:22 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.0:

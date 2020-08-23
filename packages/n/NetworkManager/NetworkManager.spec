@@ -22,7 +22,7 @@
 %define with_cacert_patch 0
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           NetworkManager
-Version:        1.26.0
+Version:        1.26.2
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later
@@ -332,6 +332,8 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %dir %{_prefix}/lib/NetworkManager
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d
+%dir %{_prefix}/lib/NetworkManager/dispatcher.d/pre-up.d
+%dir %{_prefix}/lib/NetworkManager/dispatcher.d/pre-down.d
 %dir %{_prefix}/lib/NetworkManager/VPN
 %{_prefix}/lib/NetworkManager/dispatcher.d/90-nm-cloud-setup.sh
 %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d/90-nm-cloud-setup.sh
