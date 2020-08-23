@@ -66,7 +66,6 @@ Patch18:        skip-i586-failing-tests.patch
 
 BuildRequires:  autoconf213
 BuildRequires:  gcc-c++
-BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  python-xml
@@ -190,7 +189,6 @@ cd build_OPT.OBJ
     --disable-jemalloc \
 
 # do not eat all memory
-%limit_build -m 1300
 
 %make_build
 

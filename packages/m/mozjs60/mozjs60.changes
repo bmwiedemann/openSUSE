@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:58:05 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Wed Mar 25 12:12:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix building with just python2 interpreter available.
