@@ -1,7 +1,7 @@
 #
 # spec file for package fpc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%global sname fpc
 %if "%{flavor}" == ""
 %else
 %global psuffix -%{flavor}
+%endif
+
+%ifarch aarch64 ppc64le ppc64 ppc
+# Bootstrap the compiler for a new architecture. Set this to 0 after we've bootstrapped.
+%bcond_without bootstrap
+%else
+%bcond_with bootstrap
 %endif
 
 %ifarch %arm
 # We use hardfloat on ARM
 %define fpcopt -dFPC_ARMHF -k--build-id -k-z -knoexecstack
 %else
+%ifarch ppc64le
+%define fpcopt -Cb- -Caelfv2 -k--build-id -k-z -knoexecstack
+%else
 %define fpcopt -k--build-id -k-z -knoexecstack
+%endif
 %endif
 %define fpcdebugopt -gl
 
@@ -43,6 +53,9 @@
 %ifarch x86_64
 %define ppcname ppcx64
 %endif
+%ifarch ppc64le
+%define ppcname ppcppc64
+%endif
 %ifarch ppc64
 %define ppcname ppcppc64
 %endif
@@ -50,63 +63,57 @@
 %define ppcname ppc386
 %endif
 
-# Current stable version does not support aarch64, so use beta version
-%ifarch aarch64
-# 3.1.1 = 3.1~svn39346
-%define fpcversion 3.1.1
-%else
-%define fpcversion 3.0.4
-%endif
-%define stableversion 3.0.4
-
 Name:           fpc%{?psuffix}
-Version:        %{fpcversion}
+Version:        3.2.0
 Release:        0
 %if "%{flavor}" == ""
 Summary:        Free Pascal Compiler
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Languages/Other
 %else
 Summary:        Freepascal Compiler documentation
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Documentation/Other
 %endif
-Url:            https://www.freepascal.org/
-# Stable version
-Source:         %{sname}build-%{stableversion}.tar.gz
-# Current stable version does not support aarch64, so use beta version
-# from ftp://ftp.freepascal.org/pub/fpc/snapshot/v31/source/
-Source2:        %{sname}build.zip
-Source90:       %{sname}-rpmlintrc
-Patch0:         update-fpcdocs.patch
-Patch1:         fpc-fix_aarch64.patch
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+URL:            https://www.freepascal.org/
+Source:         fpcbuild-%{version}.tar.gz
+Source1:        fpc-3.2.0-aarch64.zip
+Source2:        fpc-3.2.0-ppc64le.zip
+Source3:        fpc-3.2.0-ppc64.zip
+Source4:        fpc-3.2.0-ppc.zip
+Source90:       fpc-rpmlintrc
+Patch0:         fpc-fix-library-paths-on-aarch64.patch
 BuildRequires:  binutils
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
+%if %{without bootstrap}
 BuildRequires:  fpc
+%else
+%if "%{flavor}" == "doc"
+BuildRequires:  fpc
+%else
+BuildRequires:  unzip
+%endif
+%endif
 BuildRequires:  glibc-devel
 %if "%{flavor}" == "doc"
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-makeindex
 BuildRequires:  texlive-pdftex
+BuildRequires:  texlive-ucs
 BuildRequires:  tex(8r.enc)
 BuildRequires:  tex(a4.sty)
+BuildRequires:  tex(enumitem.sty)
 BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(float.sty)
 BuildRequires:  tex(hyperref.sty)
 BuildRequires:  tex(pcrr8t.tfm)
-BuildRequires:  tex(ptmr8t.tfm)
 BuildRequires:  tex(phvr8t.tfm)
+BuildRequires:  tex(ptmr8t.tfm)
 BuildRequires:  tex(syntax.sty)
 BuildRequires:  tex(tabularx.sty)
 BuildRequires:  tex(times.sty)
 %endif
-%ifarch aarch64
-BuildRequires:  unzip
-%endif
 Requires:       binutils
-ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc ppc64
+ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc ppc64 ppc64le
 
 %if "%{flavor}" == ""
 %description
@@ -141,25 +148,28 @@ The fpc-src package contains the sources of Freepascal, for
 documentation or automatical-code generation purposes.
 
 %prep
-%ifnarch aarch64
-%setup -q -n %{sname}build-%{stableversion}
+%setup -q -n fpcbuild-%{version}
 %patch0 -p1
-%else
-%setup -Tcq -b2 -n %{sname}build
-%patch1 -p1
+
+%if %{with bootstrap}
+%if "%{flavor}" == ""
+%ifarch aarch64
+unzip %{SOURCE1}
+%endif
+%ifarch ppc64le
+unzip %{SOURCE2}
+%endif
+%ifarch ppc64
+unzip %{SOURCE3}
+%endif
+%ifarch ppc
+unzip %{SOURCE4}
+%endif
+%endif
 %endif
 
 # Remove files with license problems (which are not used on Linux)
-rm -f fpcsrc/packages/nvapi/nvapi.pas
-
-# Fix permissions (fix rpmlint warning "script-without-shebang")
-chmod 644 fpcsrc/packages/cocoaint/utils/doc/Make\ Cocoa\ Headers.txt
-chmod 644 fpcsrc/packages/cocoaint/utils/doc/Make\ Single\ Header.txt
-chmod 644 fpcsrc/packages/cocoaint/utils/doc/Make\ iPhone\ Headers.txt
-chmod 644 fpcsrc/packages/cocoaint/utils/parser.php
-chmod 644 fpcsrc/packages/libvlc/src/vlc.pp
-chmod 644 fpcsrc/packages/fcl-stl/tests/gtreetest.pp
-chmod 644 fpcsrc/packages/fcl-stl/src/gtree.pp
+rm -f fpcsrc/packages/nvapi/src/nvapi.pas
 
 # Copy needed source files by external packages in a new directory (to be included in the fpc-src subpackage)
 install -dm 0755 fpc-src
@@ -174,7 +184,11 @@ date --date=@${SOURCE_DATE_EPOCH:-0} +'\date{%B %Y}' > fpcdocs/date.inc
 
 %build
 %if "%{flavor}" == ""
+%if %{with bootstrap}
+STARTPP=$(pwd)/fpc-%{version}-%{_arch}/bin/%{ppcname}
+%else
 STARTPP=%{ppcname}
+%endif
 
 pushd fpcsrc
 
@@ -185,10 +199,6 @@ make %{?_smp_mflags} compiler_cycle FPC=${STARTPP} OPT='%{fpcopt} %{fpcdebugopt}
 make %{?_smp_mflags} rtl_clean rtl_smart FPC=${NEWPP} OPT='%{fpcopt}'
 make %{?_smp_mflags} packages_smart \
 		FPC=${NEWPP} OPT='%{fpcopt}'
-%ifnarch aarch64
-make %{?_smp_mflags} ide_all \
-		FPC=${NEWPP} OPT='%{fpcopt} %{fpcdebugopt}'
-%endif
 make %{?_smp_mflags} utils_all \
      FPC=${NEWPP} OPT='%{fpcopt} %{fpcdebugopt}'
 popd
@@ -217,9 +227,6 @@ make compiler_distinstall ${INSTALLOPTS}
 make utils_distinstall    ${INSTALLOPTS}
 make rtl_distinstall      ${INSTALLOPTS}
 make packages_distinstall ${INSTALLOPTS}
-%ifnarch aarch64
-make ide_distinstall      ${INSTALLOPTS}
-%endif
 popd
 
 pushd install
@@ -278,9 +285,8 @@ chmod 755 %{buildroot}%{_datadir}/fpcsrc/rtl/netware/convertimp
 %else
 make -C fpcdocs pdfinstall \
         FPC=fpc \
-        INSTALL_DOCDIR=%{buildroot}%{_defaultdocdir}/%{sname}
+        INSTALL_DOCDIR=%{buildroot}%{_defaultdocdir}/fpc
 %endif
-
 
 %if "%{flavor}" == ""
 %files
@@ -296,8 +302,9 @@ make -C fpcdocs pdfinstall \
 %dir %{_sysconfdir}/fppkg
 %config(noreplace) %{_sysconfdir}/fppkg/default
 %{_bindir}/*
+%{_libdir}/libpas2jslib.so*
 %{_libdir}/%{name}/
-%ifarch x86_64
+%ifarch x86_64 aarch64 ppc64 ppc64le
 /usr/lib/%{name}/
 %endif
 
@@ -312,8 +319,8 @@ make -C fpcdocs pdfinstall \
 
 %else
 %files
-%docdir %{_defaultdocdir}/%{sname}
-%doc %{_defaultdocdir}/%{sname}/*.pdf
+%docdir %{_defaultdocdir}/fpc
+%doc %{_defaultdocdir}/fpc/*.pdf
 %endif
 
 %changelog

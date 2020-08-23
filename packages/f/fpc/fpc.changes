@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Aug 18 09:00:15 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop '%elifarch' usage for now since it is not well supported 
+  by the source validator, see:
+  https://github.com/openSUSE/obs-service-source_validator/issues/85
+
+-------------------------------------------------------------------
+Mon Aug 17 15:38:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix doc building when bootstrap is used
+
+-------------------------------------------------------------------
+Mon Aug 17 15:23:42 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix bootstrap handling
+
+-------------------------------------------------------------------
+Tue Jun 30 08:39:31 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.0
+  * Changes see https://wiki.freepascal.org/User_Changes_3.2.0
+- Enable bootstrap for aarch64, ppc, ppc64, ppc64le
+  * Add bootstrap binary archives
+    + fpc-3.2.0-aarch64.zip
+    + fpc-3.2.0-ppc.zip
+    + fpc-3.2.0-ppc64.zip
+    + fpc-3.2.0-ppc64le.zip
+- Drop old git snapshot source for aarch64 build
+  * fpcbuild.zip
+- Add patch to fix library paths on aarch64
+  * fpc-fix-library-paths-on-aarch64.patch
+- Drop patches for issues fixed upstream
+  * fpc-fix_aarch64.patch
+  * update-fpcdocs.patch
+
+-------------------------------------------------------------------
 Wed Aug 28 17:56:57 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use _multibuild for building the doc subpackage. This removes e.g.

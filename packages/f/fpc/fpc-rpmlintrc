@@ -1,4 +1,5 @@
 addFilter("statically-linked-binary")
+addFilter("shlib-policy-name-error")
 
 addFilter("devel-file-in-non-devel-package .*/fpc/.*/units/.*-linux/.*.a")
 addFilter("devel-file-in-non-devel-package .*/fpcsrc/.*/.*.a")

@@ -62,4 +62,12 @@
 - Remove defattr and BuildRoot from spec file.</comment>
     <requestid>726979</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b6d1048b7b1f6138d95f3de9fa104c3</srcmd5>
+    <version>3.2.0</version>
+    <time>1598167117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827537</requestid>
+  </revision>
 </revisionlist>
