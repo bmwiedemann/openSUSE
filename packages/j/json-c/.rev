@@ -207,4 +207,41 @@ Added one by one changes for patches in the changes
     <comment></comment>
     <requestid>815425</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3417029a765b3bcfe5631d0fa3949e20</srcmd5>
+    <version>0.15</version>
+    <time>1598167113</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15: 
+  * Deprecate `array_list_new()` in favor of `array_list_new2()`
+  * Remove the THIS_FUNCTION_IS_DEPRECATED define.
+  * Remove config.h.win32
+  * Add a `JSON_TOKENER_ALLOW_TRAILING_CHARS` flag to allow multiple objects
+    to be parsed even when `JSON_TOKENER_STRICT` is set.
+  * Add `json_object_new_array_ext(int)` and `array_list_new_2(int)` to allow
+     arrays to be allocated with the exact size needed, when known.
+  * Add `json_object_array_shrink()` (and `array_list_shrink()`) and use it in 
+     json_tokener to minimize the amount of memory used.
+  * Add a json_parse binary, for use in testing changes (not installed, but 
+     available in the apps directory).
+  * Split the internal json_object structure into several sub-types, one for
+     each json_type (json_object_object, json_object_string, etc...).
+    This improves memory usage and speed, with the benchmark under
+     bench/ report 5.8% faster test time and 6%(max RSS)-12%(peak heap)
+     less memory usage.
+    Memory used just for json_object structures decreased 27%, so use cases
+     with fewer arrays and/or strings would benefit more.
+  * Minimize memory usage in array handling in json_tokener by shrinking
+     arrays to the exact number of elements parsed.  On bench/ benchmark:
+     9% faster test time, 39%(max RSS)-50%(peak heap) less memory usage.
+     Add json_object_array_shrink() and array_list_shrink() functions.
+  * #616 - Parsing of surrogate pairs in unicode escapes now properly handles
+     incremental parsing.
+  * Fix incremental parsing of numbers, especially those with exponents, e.g.
+     so parsing &quot;[0&quot;, &quot;e+&quot;, &quot;-]&quot; now properly returns an error.
+    Strict mode now rejects missing exponents (&quot;0e&quot;).
+  * Successfully return number objects at the top level even when they are
+     followed by a &quot;-&quot;, &quot;.&quot; or &quot;e&quot;.  This makes parsing things like &quot;123-45&quot;</comment>
+    <requestid>827515</requestid>
+  </revision>
 </revisionlist>
