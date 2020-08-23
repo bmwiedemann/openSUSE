@@ -1317,4 +1317,14 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>New stable release (forwarded request 826555 from iznogood)</comment>
     <requestid>826639</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>958a3121aae3064a8b61f3943b834055</srcmd5>
+    <version>3.36.5</version>
+    <time>1598167254</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch:
+  don't use libGLESv2.so but libGLESv2.so.2 for COGL driver
+  (boo#1175559 glgo#GNOME/mutter!1282). (forwarded request 828234 from fcrozat)</comment>
+    <requestid>828237</requestid>
+  </revision>
 </revisionlist>

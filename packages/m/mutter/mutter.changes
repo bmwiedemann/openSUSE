@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:34:43 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Add mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch:
+  don't use libGLESv2.so but libGLESv2.so.2 for COGL driver
+  (boo#1175559 glgo#GNOME/mutter!1282).
+
+-------------------------------------------------------------------
 Wed Aug 12 21:08:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.5:
