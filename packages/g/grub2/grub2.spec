@@ -321,6 +321,14 @@ Patch712:       0009-script-Avoid-a-use-after-free-when-redefining-a-func.patch
 # overflows in initrd size handling
 Patch713:       0010-linux-Fix-integer-overflows-in-initrd-size-handling.patch
 Patch714:       0001-kern-mm.c-Make-grub_calloc-inline.patch
+# bsc#1174421 VUL-0: CVE-2020-15705: grub2: linuxefi: fail kernel validation
+# without shim protocol
+Patch715:       0001-linuxefi-fail-kernel-validation-without-shim-protoco.patch
+Patch716:       0002-cmdline-Provide-cmdline-functions-as-module.patch
+# bsc#1172745 L3: SLES 12 SP4 - Slow boot of system after updated kernel -
+# takes 45 minutes after grub to start loading kernel
+Patch717:       0001-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
+Patch718:       0002-ieee1275-powerpc-enables-device-mapper-discovery.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -637,6 +645,10 @@ swap partition while in resuming
 %patch712 -p1
 %patch713 -p1
 %patch714 -p1
+%patch715 -p1
+%patch716 -p1
+%patch717 -p1
+%patch718 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15

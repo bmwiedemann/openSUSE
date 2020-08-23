@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 21 04:40:48 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Add fibre channel device's ofpath support to grub-ofpathname and search hint
+  to speed up root device discovery (bsc#1172745)
+  * 0001-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
+  * 0002-ieee1275-powerpc-enables-device-mapper-discovery.patch
+
+-------------------------------------------------------------------
+Tue Aug 18 06:02:21 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Fix for CVE-2020-15705 (bsc#1174421) 
+  * 0001-linuxefi-fail-kernel-validation-without-shim-protoco.patch
+  * 0002-cmdline-Provide-cmdline-functions-as-module.patch
+
+-------------------------------------------------------------------
 Thu Aug 13 06:41:16 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Make grub-calloc inline to avoid symbol not found error as the system may not

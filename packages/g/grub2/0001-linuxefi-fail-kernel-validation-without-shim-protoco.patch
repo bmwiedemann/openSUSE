@@ -1,0 +1,53 @@
+From 1b4f4b2f5cd9b804a5bb66861b659d05d9a4f35a Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 17 Aug 2020 17:09:01 +0800
+Subject: [PATCH 1/2] linuxefi: fail kernel validation without shim protocol.
+
+If certificates that signed grub are installed into db, grub can be
+booted directly. It will then boot any kernel without signature
+validation. The booted kernel will think it was booted in secureboot
+mode and will implement lockdown, yet it could have been tampered.
+
+This version of the patch skips calling verification, when booted
+without secureboot.
+
+CVE-2020-15705
+
+Reported-by: Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>
+Also-by: Dimitri John Ledkov <xnox@ubuntu.com>
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/loader/i386/efi/linux.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
+index 61b2d5177..8017e8c05 100644
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -172,6 +172,23 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+       goto fail;
+     }
+ 
++  if (grub_efi_secure_boot())
++    {
++      grub_dl_t mod;
++
++      mod = grub_dl_get ("shim_lock");
++      if (!mod)
++	{
++	  grub_error (GRUB_ERR_ACCESS_DENIED, N_("shim_lock module is not loaded"));
++	  goto fail;
++	}
++      if (!grub_dl_is_persistent (mod))
++	{
++	  grub_error (GRUB_ERR_ACCESS_DENIED, N_("shim_lock protocol is not available"));
++	  goto fail;
++	}
++    }
++
+   file = grub_file_open (argv[0], GRUB_FILE_TYPE_LINUX_KERNEL);
+   if (! file)
+     goto fail;
+-- 
+2.26.2
+

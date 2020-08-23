@@ -1,0 +1,54 @@
+From 42cb0ebbffd660608612f9e32150a6596c6933c4 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 17 Aug 2020 17:25:56 +0800
+Subject: [PATCH 2/2] cmdline: Provide cmdline functions as module
+
+The command line processing is needed by many loader modules, hence we should
+make it a sharable one rather than belonging to linux loader. This can cut the
+dependency to linux module among multiple loaders like multiboot linuxefi and
+so on to make custom boot image much more flexible to compose.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/Makefile.core.def | 6 +++++-
+ grub-core/lib/cmdline.c     | 3 +++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index c413267a0..6045da47b 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1790,7 +1790,6 @@ module = {
+   riscv64 = loader/riscv/linux.c;
+   emu = loader/emu/linux.c;
+   common = loader/linux.c;
+-  common = lib/cmdline.c;
+ };
+ 
+ module = {
+@@ -2518,3 +2517,8 @@ module = {
+   common = commands/i386/wrmsr.c;
+   enable = x86;
+ };
++
++module = {
++  name = cmdline;
++  common = lib/cmdline.c;
++};
+diff --git a/grub-core/lib/cmdline.c b/grub-core/lib/cmdline.c
+index ed0b149dc..bd392e30f 100644
+--- a/grub-core/lib/cmdline.c
++++ b/grub-core/lib/cmdline.c
+@@ -19,6 +19,9 @@
+ 
+ #include <grub/lib/cmdline.h>
+ #include <grub/misc.h>
++#include <grub/dl.h>
++
++GRUB_MOD_LICENSE ("GPLv3+");
+ 
+ static unsigned int check_arg (char *c, int *has_space)
+ {
+-- 
+2.26.2
+
