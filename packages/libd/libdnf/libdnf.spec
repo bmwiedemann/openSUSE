@@ -41,9 +41,15 @@ Group:          Development/Libraries/C and C++
 Url:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
-# PATCH-FIX-OPENSUSE: Fix libdnf build with static libsolvext
+# Backports from upstream
+## Fix libdnf tests to build against check >= 0.15
+## From: https://github.com/rpm-software-management/libdnf/commit/4f3f747cdf3e5d7ab0dadc4f25bca56fb16ce923
+Patch0001:      0001-tests-Fix-incorrect-usage-of-the-fail_unless-macro.patch
+
+# openSUSE specific fixes
+## Fix libdnf build with static libsolvext
 Patch1000:      libdnf-0.48.0-with-static-libsolvext.patch
-# PATCH-FIX-OPENSUSE: Switch default reposdir to /etc/dnf/repos.d
+## Switch default reposdir to /etc/dnf/repos.d
 Patch1001:      libdnf-0.39.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch
 
 BuildRequires:  cmake

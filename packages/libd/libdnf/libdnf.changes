@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 21 07:56:01 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport fix from upstream to fix building against check >= 0.15
+  + Patch: 0001-tests-Fix-incorrect-usage-of-the-fail_unless-macro.patch
+- Clean up spec comments about patches
+
+-------------------------------------------------------------------
 Tue Jul  7 11:13:56 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 0.48.0

@@ -331,4 +331,14 @@
   + Add patch: libdnf-0.48.0-with-static-libsolvext.patch</comment>
     <requestid>819222</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>1b353c3674a4e9fd055ba31c481a1cd2</srcmd5>
+    <version>0.48.0</version>
+    <time>1598167270</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport fix from upstream to fix building against check &gt;= 0.15
+  + Patch: 0001-tests-Fix-incorrect-usage-of-the-fail_unless-macro.patch
+- Clean up spec comments about patches</comment>
+    <requestid>828393</requestid>
+  </revision>
 </revisionlist>
