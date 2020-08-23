@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 21 06:29:49 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints min 4GB  disk space
+  and 4GB min physicalmemory for x86_64 ppc64 ppc64le
+
+-------------------------------------------------------------------
+Thu Aug 20 15:39:43 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Avoid build error for ppc64le as reported by boo#1175502
+
+-------------------------------------------------------------------
 Sat Jan 25 14:07:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

@@ -65,6 +65,19 @@ free software projects.
 %autosetup -p1
 
 %build
+# bypass error https://bugzilla.opensuse.org/show_bug.cgi?id=1175502
+# to avoid cargo reported error if config.guess has been changed
+# by build macro.
+%ifarch ppc64le
+guessname='src/libbacktrace/config.guess'
+cfgguess="./vendor/backtrace-sys/$guessname"
+chkjson='./vendor/backtrace-sys/.cargo-checksum.json'
+if [[ -f $cfgguess ]] && [[ -f $chkjson ]]; then
+  chksum=`sha256sum $cfgguess |sed -e 's/ .*//'`
+  grep -q $guessname $chkjson && grep -q $chksum $chkjson || sed -i -e "s#\($guessname.:.\)[0-9a-f]*#\1$chksum#" $chkjson
+fi
+%endif
+
 %define _lto_cflags %{nil}
 %meson
 %meson_build
