@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 14 11:27:12 MDT 2020 - carnold@suse.com
+
+- Add support for openSUSE Leap 15.3 and SLE15-SP3
+  add-leap15.3-support.patch
+  add-sle15sp3-support.patch
+
+-------------------------------------------------------------------
 Fri Aug  7 09:21:27 MDT 2020 - carnold@suse.com
 
 - Update database to version 20200804

@@ -31,6 +31,9 @@ Patch24:        add-win-2k19-media-info.patch
 Patch25:        fix-sle15sp1-volume-id-string.patch
 Patch26:        SLE-add-info-about-UEFI-support.patch
 Patch27:        fix-tumbleweed-order.patch
+Patch28:        add-leap15.3-support.patch
+Patch29:        add-sle15sp3-support.patch
+
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 
@@ -47,6 +50,8 @@ provisioning of new virtual machines
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
+%patch28 -p1
+%patch29 -p1
 
 %build
 cd %{_builddir}
