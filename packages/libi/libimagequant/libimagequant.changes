@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 15 23:47:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.12.6:
+  * Use size_t for malloc_sizes
+- remove gcc9-Update-const-var-openmp-const-var-handling.patch (upstream)
+
+-------------------------------------------------------------------
 Tue May 14 08:55:03 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add gcc9-Update-const-var-openmp-const-var-handling.patch in order

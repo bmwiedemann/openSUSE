@@ -1,7 +1,7 @@
 #
 # spec file for package libimagequant
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define sover   0
 %define libname %{name}%{sover}
 Name:           libimagequant
-Version:        2.12.2
+Version:        2.12.6
 Release:        0
 Summary:        Palette quantization library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Url:            https://pngquant.org/lib/
+URL:            https://pngquant.org/lib/
 Source:         https://github.com/ImageOptim/libimagequant/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         gcc9-Update-const-var-openmp-const-var-handling.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(lcms2)
 
@@ -53,7 +52,6 @@ C library for conversion of RGBA images to 8-bit indexed-color
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 # This is not an autoconf configure, but the script simply ignores parameters it does not know
