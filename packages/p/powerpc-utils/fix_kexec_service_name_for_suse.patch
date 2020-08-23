@@ -1,0 +1,40 @@
+--- powerpc-utils-1.3.7/scripts/update_flash	2020/07/29 11:58:57	1.1
++++ powerpc-utils-1.3.7/scripts/update_flash	2020/07/29 11:59:10
+@@ -131,7 +131,7 @@
+ 	fi
+ 
+ 	# kexec service is running
+-	systemctl status kexec.service | grep -w "active" >/dev/null 2>&1
++	systemctl status kexec-load.service | grep -w "active" >/dev/null 2>&1
+ 	if [ $? -eq 0 ]; then
+ 		return 0
+ 	fi
+@@ -141,7 +141,7 @@
+ 
+ # Stop kexec service
+ stop_kexec_service() {
+-	systemctl stop kexec.service >/dev/null 2>&1
++	systemctl stop kexec-load.service >/dev/null 2>&1
+ 	if [ $? -ne 0 ]; then
+ 		echo "update_flash: Failed to stop kexec service."
+ 		error $E_KEXEC "Please stop kexec service and retry."
+--- powerpc-utils-1.3.7/scripts/update_flash_nv	2020/07/29 11:59:14	1.1
++++ powerpc-utils-1.3.7/scripts/update_flash_nv	2020/07/29 11:59:23
+@@ -170,7 +170,7 @@
+ 	fi
+ 
+ 	# kexec service is running
+-	systemctl status kexec.service | grep -w "active" >/dev/null 2>&1
++	systemctl status kexec-load.service | grep -w "active" >/dev/null 2>&1
+ 	if [ $? -eq 0 ]; then
+ 		return 0
+ 	fi
+@@ -180,7 +180,7 @@
+ 
+ # Stop kexec service
+ stop_kexec_service() {
+-	systemctl stop kexec.service >/dev/null 2>&1
++	systemctl stop kexec-load.service >/dev/null 2>&1
+ 	if [ $? -ne 0 ]; then
+ 		echo "update_flash: Failed to stop kexec service."
+ 		error $E_KEXEC "Please stop kexec service and retry."

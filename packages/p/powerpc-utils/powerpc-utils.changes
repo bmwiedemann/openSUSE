@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 29 14:00:04 CEST 2020 - ro@suse.de
+
+- add patch fix_kexec_service_name_for_suse.patch
+  on SUSE the service is called kexec-load.service instead
+  of kexec.service (bsc#1174666)
+
+-------------------------------------------------------------------
 Fri Jun 26 14:48:23 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - ofpathname: Fix lookup of disk partitions (bsc#1173403 ltc#186427)

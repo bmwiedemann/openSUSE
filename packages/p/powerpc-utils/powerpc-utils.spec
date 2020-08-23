@@ -40,6 +40,7 @@ Patch10:        bsc1171892-get-rid-of-trainling-NUL.patch
 Patch11:        Fix-ofpathname-Could-not-retrieve-logical-device-nam.patch
 Patch12:        ofpathname-Fix-udevadm-location.patch
 Patch13:        ofpathname-make-goto_dir-canonicalize-directory-argu.patch
+Patch14:        fix_kexec_service_name_for_suse.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel
@@ -79,6 +80,7 @@ utilities for maintaining and enabling certain features of Linux on Power.
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %build
 autoreconf -fvi
