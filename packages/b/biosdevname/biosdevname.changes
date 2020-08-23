@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 13 16:41:27 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Add support for SMBIOS 3.
+  * biosdevname-Add-SMBIOS-3.x-support.patch
+- Fix URL in specfile. It should be readable to developers.
+
+-------------------------------------------------------------------
+Thu Aug 13 11:35:43 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Read DMI info rom sysfs (bsc#1174491).
+  * biosdevname-Add-buffer-read-helper-using-read-explicitly.patch
+  * biosdevname-Read-DMI-entries-from-sys-firmware-dmi-tables-DMI.patch
+
+-------------------------------------------------------------------
 Wed Jan 22 10:57:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel: allow

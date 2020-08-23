@@ -23,7 +23,7 @@ Release:        0
 Summary:        Udev helper for naming devices per BIOS names
 License:        GPL-2.0-only
 Group:          System/Base
-URL:            https://github.com/dell/%{name}
+URL:            https://github.com/dell/biosdevname
 Source0:        %{name}-%{version}.tar.xz
 Patch1:         ignore-broken-BIOSes
 Patch2:         whitelist-dell
@@ -31,6 +31,9 @@ Patch3:         udev-rule-path.patch
 Patch4:         biosdevname-pic.patch
 Patch5:         biosdevname-dom0.patch
 Patch6:         dmidecode-prevent-infinite-recursion.patch
+Patch7:         biosdevname-Add-buffer-read-helper-using-read-explicitly.patch
+Patch8:         biosdevname-Read-DMI-entries-from-sys-firmware-dmi-tables-DMI.patch
+Patch9:         biosdevname-Add-SMBIOS-3.x-support.patch
 BuildRequires:  automake
 BuildRequires:  pciutils-devel
 BuildRequires:  pkg-config
@@ -65,12 +68,7 @@ You can enable/disable usage of biosdevname with boot option
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autopatch -p1
 
 %build
 sed -i -e 's#@@BIOSDEVNAME_RULEDEST@@#'%{_udevrulesdir}'/71-biosdevname.rules#' configure.ac
