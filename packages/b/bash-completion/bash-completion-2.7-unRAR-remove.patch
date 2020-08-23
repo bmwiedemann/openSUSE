@@ -4,18 +4,20 @@ Due legal issue the unRAR part of 7z had been removed (boo#1077978, boo#1090515)
  completions/7z |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
---- completions/7z
-+++ completions/7z	2018-04-24 09:17:49.392549710 +0000
-@@ -71,7 +71,7 @@ _7z()
+Index: bash-completion-2.11/completions/7z
+===================================================================
+--- bash-completion-2.11.orig/completions/7z
++++ bash-completion-2.11/completions/7z
+@@ -76,7 +76,7 @@ _7z()
              else
-                 COMPREPLY=( $(compgen -P${cur:0:2} -W '7z apm arj bzip2 cab
+                 COMPREPLY=($(compgen -P${cur:0:2} -W '7z apm arj bzip2 cab
                      chm cpio cramfs deb dmg elf fat flv gzip hfs iso lzh lzma
 -                    lzma86 macho mbr mslz mub nsis ntfs pe ppmd rar rpm
 +                    lzma86 macho mbr mslz mub nsis ntfs pe ppmd rpm
                      squashfs swf swfc tar udf vhd wim xar xz z zip' \
-                     -- "${cur:2}") )
+                     -- "${cur:2}"))
              fi
-@@ -105,7 +105,7 @@ _7z()
+@@ -110,7 +110,7 @@ _7z()
          #     (assumption: extensions are all lowercase)
          [[ $mode == w ]] &&
              _filedir '@(7z|bz2|swf|?(g)tar|?(t)[bglx]z|tb?(z)2|wim)' ||

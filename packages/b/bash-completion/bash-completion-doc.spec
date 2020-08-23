@@ -16,15 +16,14 @@
 #
 
 
-Name:           bash-completion-doc
 %define _name bash-completion
 # WARNING: Never edit this file!!! Edit bash-completion.spec and call pre_checkin.sh to update bash-completion-doc.spec.
 # Always set %%build_doc to 0 before submit to OBS.
-Version:        2.10
+Name:           bash-completion-doc
+Version:        2.11
 Release:        0
 Summary:        The Documentation of Programmable Completion for Bash
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/scop/bash-completion/
 Source0:        https://github.com/scop/bash-completion/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        bash-completion-rpmlintrc
@@ -36,10 +35,10 @@ Patch1:         tar-completion.patch
 Patch2:         PS1-completion-boo903362.patch
 # PATCH-FIX-SUSE boo#905348 -- tab completion with shell variable changes command line with backslash
 Patch3:         FOO-dir-completion-boo905348.patch
-# PATCH-FIX-SUSE boo#889319
-Patch5:         ls-completion-boo889319.patch
 # PATCH-FIX-SUSE
 Patch4:         qdbus-qt5.patch
+# PATCH-FIX-SUSE boo#889319
+Patch5:         ls-completion-boo889319.patch
 # PATCH-FIX-SUSE boo#940835
 Patch6:         backtick-completion-boo940835.patch
 # PATCH-FIX-SUSE bsc#946875
@@ -51,12 +50,12 @@ Patch9:         rm-completion-smart-boo958462.patch
 # PATCH-FIX-SUSE boo#963140
 Patch10:        backticks-bsc963140.patch
 # PATCH-FIX-SUSE boo#1090515
-Patch12:        bash-completion-2.7-unRAR-remove.patch
+Patch11:        bash-completion-2.7-unRAR-remove.patch
 # PATCH-FIX-SUSE boo#1167952
-Patch13:        bash-completion-fix-missing-directory-completion-with-filename-pattern.patch
+Patch12:        bash-completion-fix-missing-directory-completion-with-filename-pattern.patch
 BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 Provides:       bash-completion:%{_defaultdocdir}/%{_name}/AUTHORS
 BuildArch:      noarch
 
@@ -65,20 +64,7 @@ This package contains the package documentation file of the
 package bash-completion.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -b .p0
-%patch1 -b .p1
-%patch2 -b .p2
-%patch3 -b .p3
-%patch4 -b .p4 -p1
-%patch5 -b .p5
-%patch6 -b .p6
-%patch7 -b .p7 -p1
-%patch8 -b .p8
-%patch9 -b .p9
-%patch10 -b .p10 -p1
-%patch12 -b .p12 -p0
-%patch13 -b .p13 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %configure
@@ -96,7 +82,6 @@ install -m 0644 AUTHORS %{buildroot}%{_defaultdocdir}/%{_name}/
 install -m 0644 README.md  %{buildroot}%{_defaultdocdir}/%{_name}/README
 
 %files
-%defattr(-,root,root)
 %dir %{_defaultdocdir}/%{_name}
 %{_defaultdocdir}/%{_name}/AUTHORS
 %{_defaultdocdir}/%{_name}/README

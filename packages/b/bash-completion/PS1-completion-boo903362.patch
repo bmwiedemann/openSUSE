@@ -2,8 +2,10 @@
  bash_completion.sh.in |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- bash_completion.sh.in
-+++ bash_completion.sh.in	2017-07-04 07:42:39.171304553 +0000
+Index: bash-completion-2.11/bash_completion.sh.in
+===================================================================
+--- bash-completion-2.11.orig/bash_completion.sh.in
++++ bash-completion-2.11/bash_completion.sh.in
 @@ -1,6 +1,6 @@
  # shellcheck shell=sh disable=SC1091,SC2039,SC2166
  # Check for interactive bash and that we haven't already been sourced.
@@ -11,4 +13,4 @@
 +if [[ -n "${BASH_VERSION-}" && $- = *i* && -z "${BASH_COMPLETION_VERSINFO-}" ]]; then
  
      # Check for recent enough version of bash.
-     if [ "${BASH_VERSINFO[0]}" -gt 4 ] || \
+     if [ "${BASH_VERSINFO[0]}" -gt 4 ] ||

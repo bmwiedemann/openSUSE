@@ -2,17 +2,19 @@
  bash_completion |   47 ++++++++++++++++++++++++++++++++++++++++++++++-
  1 file changed, 46 insertions(+), 1 deletion(-)
 
---- bash_completion
-+++ bash_completion	2017-07-04 07:44:47.556933294 +0000
-@@ -555,6 +555,7 @@ _filedir()
+Index: bash-completion-2.11/bash_completion
+===================================================================
+--- bash-completion-2.11.orig/bash_completion
++++ bash-completion-2.11/bash_completion
+@@ -566,6 +566,7 @@ _filedir()
      local IFS=$'\n'
  
-     _tilde "$cur" || return
+     _tilde "${cur-}" || return
 +    _dollar "$cur" || return
  
      local -a toks
-     local reset
-@@ -1006,6 +1007,41 @@ _tilde()
+     local reset arg=${1-}
+@@ -1044,6 +1045,42 @@ _tilde()
      return $result
  }
  
@@ -51,10 +53,11 @@
 +    ((glob == 0)) && shopt -u extglob
 +    return ${#COMPREPLY[@]}
 +}
- 
++
  # Expand variable starting with tilde (~)
  # We want to expand ~foo/... to /home/foo/... to avoid problems when
-@@ -1720,7 +1756,16 @@ complete -F _known_hosts traceroute traceroute6 \
+ # word-to-complete starting with a tilde is fed to commands and ending up
+@@ -1810,7 +1847,16 @@ complete -F _known_hosts traceroute trac
  _cd()
  {
      local cur prev words cword

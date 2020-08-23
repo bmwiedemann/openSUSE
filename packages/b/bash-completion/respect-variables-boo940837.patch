@@ -8,9 +8,11 @@ commands like `ls' to go further in its completion chain.
  bash_completion |   15 +++++++++++++--
  1 file changed, 13 insertions(+), 2 deletions(-)
 
---- bash_completion
-+++ bash_completion	2017-07-04 07:47:32.437889150 +0000
-@@ -1886,8 +1886,19 @@ _complete_as_root()
+Index: bash-completion-2.11/bash_completion
+===================================================================
+--- bash-completion-2.11.orig/bash_completion
++++ bash-completion-2.11/bash_completion
+@@ -2034,8 +2034,19 @@ _complete_as_root()
  
  _longopt()
  {
@@ -31,4 +33,4 @@ commands like `ls' to go further in its completion chain.
 +    fi
  
      case "${prev,,}" in
-         --help|--usage|--version)
+         --help | --usage | --version)
