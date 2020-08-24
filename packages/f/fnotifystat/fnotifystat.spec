@@ -18,7 +18,7 @@
 
 
 Name:           fnotifystat
-Version:        0.02.05
+Version:        0.02.06
 Release:        0
 Summary:        File activity monitoring tool
 License:        GPL-2.0-or-later
