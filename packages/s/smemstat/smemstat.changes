@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:48:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.02.08:
+  * zero ws struct to clear static analysis warnings
+
+-------------------------------------------------------------------
 Sun Mar  8 13:10:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Supplement against bash-completion, not bash

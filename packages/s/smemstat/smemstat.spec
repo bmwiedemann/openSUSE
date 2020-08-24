@@ -18,7 +18,7 @@
 
 
 Name:           smemstat
-Version:        0.02.07
+Version:        0.02.08
 Release:        0
 Summary:        Memory usage monitoring tool
 License:        GPL-2.0-or-later
