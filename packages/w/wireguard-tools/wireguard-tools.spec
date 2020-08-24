@@ -18,7 +18,7 @@
 
 
 Name:           wireguard-tools
-Version:        1.0.20200513
+Version:        1.0.20200820
 Release:        0
 Summary:        WireGuard userspace tools
 License:        GPL-2.0-only

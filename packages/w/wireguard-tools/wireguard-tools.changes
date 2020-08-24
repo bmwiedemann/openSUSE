@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 22 20:44:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200820
+  * ipc: split into separate files per-platform
+  * wincompat: fold random into genkey
+  * systemd: add reload target to systemd unit
+  * man: wg-quick: use syncconf instead of addconf for strip example
+  * pubkey: isblank is a subset of isspace
+  * ctype: use non-locale-specific ctype.h
+  * wg-quick: wait on process substitutions
+
+-------------------------------------------------------------------
 Thu May 14 14:45:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20200513
