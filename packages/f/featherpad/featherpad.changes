@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 24 08:04:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.0:
+  * An optional selection highlighting (Preferences → Text →
+    Selection highlighting; also, see Help).
+  * A menu item for converting all text tabs to spaces.
+  * An option for pasting file paths instead of opening files
+    that are copied and pasted into FeatherPad (which is the
+	default behavior).
+  * Highlight only the first 1000 replacements if there are more.
+  * Added a simple syntax highlighting for Haxe (by using
+    JS highlighting).
+  * Fixes and code cleanup.
+
+-------------------------------------------------------------------
 Thu Jun 11 12:08:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.2:
