@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:38:52 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.1.2
+
+  Drop patches (integrated upstream):
+  * 0001-Revert-back-to-development-versiongemspec-file..patch
+  * 0002-Use-the-same-version-of-Nokogiri-as-Vagrant.patch
+  * 0003-Update-fog-core-to-latest-version.patch
+
+  v0.1.2:
+
+  * #1110 prune_nfs_exports.rb:18:in call': undefined method info' for nil:NilClass
+
+  v0.1.1
+
+  * Merge pull request #1111 from AmedeeBulle/issue-1110
+
+  v0.1.0
+
+  * Improve Fedora installation procedure (#1101)
+
+-------------------------------------------------------------------
 Tue May 12 15:29:44 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Switch to Ruby 2.6 for Tumbleweed
