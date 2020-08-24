@@ -1,18 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <constraints>
   <hardware>
-   <disk>
-    <size unit="G">20</size>
-   </disk>
-   <physicalmemory>
+    <disk>
+      <size unit="G">20</size>
+    </disk>
+    <physicalmemory>
       <size unit="G">2</size>
-   </physicalmemory>
-   <memory>
+    </physicalmemory>
+    <memory>
       <size unit="G">4</size>
-   </memory>
+    </memory>
+    <memoryperjob>
+      <size unit="M">1300</size>
+    </memoryperjob>
   </hardware>
-
   <overwrite>
-  <!-- x86_64 has extra features like embree -->
     <conditions>
       <arch>x86_64</arch>
     </conditions>
@@ -22,7 +24,6 @@
       </memory>
     </hardware>
   </overwrite>
-
   <overwrite>
     <conditions>
       <arch>ppc64</arch>

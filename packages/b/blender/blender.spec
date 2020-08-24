@@ -48,7 +48,7 @@
 %define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.83.4
+Version:        2.83.5
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -104,7 +104,6 @@ BuildRequires:  libspnav-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  llvm-devel
 BuildRequires:  lzo-devel
-BuildRequires:  memory-constraints
 BuildRequires:  openal-soft-devel
 BuildRequires:  pcre-devel
 BuildRequires:  perl-Text-Iconv
@@ -239,7 +238,6 @@ rm -rf extern/libopenjpeg
 for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
-%limit_build -m 1300
 echo "optflags: " %{optflags}
 # Find python3 version and abiflags
 export psver=$(pkg-config python3 --modversion)

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Aug 22 11:07:20 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 2.83.5
+  - FCurve editor crash when zooming out to limit [T79254]
+  - Crash displaying the same mesh in two windows [T79260]
+  - Fix interface artifacts on Intel GPUs [388639243053]
+  - Outliner “Make Single User” crash [T79187]
+  - Eevee cubemaps shows black [T79158]
+  - Smooth brushes crasing in dyntopo [T79007]
+  - Too much memory usage rendering animation with persistent
+    images [T78537]
+  - CLOG writes/reads outside allocated memory. [T78730]
+  - Crash converting curve to mesh [T79207]
+  - Fix usercount not decrementing in
+    `gpencil_stroke_separate_exec` [4251a87bf60e]
+  - UV select-linked failure to de-select [T46568]
+  - GPencil weight paint crash when painting over modifier
+    generated [T78884]
+  - Workbench: Fix broken id pass [38e9a349defc]
+  - Workbench: Object color mode broken if more than 4096 objects
+    [T79509]
+  - GPUShader: compile error on AWS Elastic Graphics [T79246]
+  - Blend file corrupted during save caused by high Cubemap Size
+    [T78529]
+  - EEVEE: LightCache: Add warning if the cache cannot be saved
+    [fce71a255cb9]
+  - Crash loading nested set-scenes [T79575]
+  - Fix crash switching render slots when there is only one slot
+    [a9e0aeaf653d]
+  - Triangulate quads with ‘Beauty’ can make zero area faces
+    [T79482]
+  - “Add plane > align” causes crash when certain rigs are in the
+    scene [T77847]
+  - Crash when changing View Layer while VR session runs [T79324]
+  - Video Sequencer image sequence strip source path breaks
+    [T79676]
+  - Crash rendering grease pencil from compositor with multiple
+    scenes [T77885]
+  - EEVEE: Crash on Macos due to lightcache baking [T79703]
+
+-------------------------------------------------------------------
+Thu Aug 20 08:32:54 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Fri Aug  7 08:57:31 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 2.83.4
