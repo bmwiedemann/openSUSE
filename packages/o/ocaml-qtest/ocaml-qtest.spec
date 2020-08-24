@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-qtest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-qtest
-Version:        2.10
+Version:        2.11
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Inline (Unit) Tests for OCaml
 License:        GPL-3.0-or-later
 Group:          Development/Languages/OCaml
-URL:            https://github.com/vincent-hugot/qtest
+URL:            https://opam.ocaml.org/packages/qtest
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(qcheck)
 
