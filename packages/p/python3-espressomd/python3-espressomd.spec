@@ -35,15 +35,13 @@
 %define pkgname espresso
 %define modname %{pkgname}md
 Name:           python3-%{modname}
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            http://espressomd.org
 Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{version}/%{pkgname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 3427.patch - fix test on 586 - https://github.com/espressomd/espresso/pull/3427
-Patch0:         3427.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
@@ -81,13 +79,14 @@ systems, for example DNA and lipid membranes.
 
 %prep
 %setup -q -n %{pkgname}
-%patch0 -p1
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 # gh#espressomd/espresso#3396
 %define _lto_cflags %{nil}
 
+#force usage of shared hdf5
+export HDF5_USE_SHLIB=yes
 # overwrite .so linker flags on SUSE distros: drop --no-undefined
 # we don't install {i,}pypresso scripts as they aren't needed when installing in /usr
 %cmake \
