@@ -18,7 +18,7 @@
 
 %define have_systemd 1
 %define dmaj 5.2
-%define dmin 5.2.6
+%define dmin 5.2.7
 # Warn users for upgrading configuration but only on major or minor version changes
 %define conf_need_update 0
 #2017+ New fillup location
@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           shorewall
-Version:        5.2.6
+Version:        5.2.7
 Release:        0
 Summary:        An iptables-based firewall for Linux systems
 License:        GPL-2.0-only

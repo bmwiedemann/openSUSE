@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:27:03 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 5.2.7
+  + **Upgrade your configuration**
+  https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.7/releasenotes.txt
+  + Previously, it was not possible to classify traffic by destination
+    IP address when using an Intermediate Functional Block (IFB) for
+    traffic shaping. This is because such classification takes place
+    before the traffic passes through the mangle PREROUTING chain.
+    Such filtering is now possible by setting the 'connmark' option in
+    the tcdevices file. This option causes the current connection mark
+    to be copied to the packet mark prior to filtering, thus allowing
+    the packet mark to be used for classification.
+    This change adds a new CONNMARK_ACTION capability which is
+    required to be able to specify the 'connmark' option.
+  + The tcpri file now supports ?FORMAT 2 which inserts an SPORT
+    column directly to the right of the PORT column. As part of this
+    change, the PORT column is renamed to DPORT while allowing both
+    'port' and 'dport' to be used in the alternate input format. See
+    shorewall-tcpri(5) and
+    http://shorewall.org/simple_traffic_shaping.html for additional
+    information.
+  + The Simple TC document is now linked to FAQs 97 and 97a. 
+
+-------------------------------------------------------------------
 Tue Jul  7 11:31:48 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 5.2.6
