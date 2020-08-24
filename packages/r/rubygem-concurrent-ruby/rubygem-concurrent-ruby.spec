@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-concurrent-ruby
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 %define mod_name concurrent-ruby
 %define mod_full_name %{mod_name}-%{version}
@@ -51,7 +51,7 @@ patterns.
 
 %install
 %gem_install \
-  --doc-files="CHANGELOG.md LICENSE.md README.md" \
+  --doc-files="CHANGELOG.md LICENSE.txt README.md" \
   -f
 
 %gem_packages
