@@ -927,4 +927,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>openSUSE-MicroOS -&gt; MicroOS</comment>
     <requestid>821492</requestid>
   </revision>
+  <revision rev="128" vrev="126">
+    <srcmd5>77770b6275416840db3073c901e59062</srcmd5>
+    <version>unknown</version>
+    <time>1598264260</time>
+    <user>dimstar_suse</user>
+    <comment>Add skelcd* to the FTP tree so building live images against openSUSE:Tumbleweed is possible</comment>
+  </revision>
 </revisionlist>
