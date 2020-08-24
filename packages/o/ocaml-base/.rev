@@ -24,4 +24,13 @@
 - Require current ocaml-rpm-macros</comment>
     <requestid>777963</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9d9139adfbf571f2911865b66359507</srcmd5>
+    <version>0.14.0</version>
+    <time>1598274358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.0
+  See included CHANGES.md for details</comment>
+    <requestid>828680</requestid>
+  </revision>
 </revisionlist>

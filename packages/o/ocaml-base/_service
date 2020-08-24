@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-base</param>
-    <param name="revision">9f1001c0024257d3a63940a47efd11058300bcfa</param>
+    <param name="revision">b333879831027292802556282855e60a472660e2</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/janestreet/base.git</param>
