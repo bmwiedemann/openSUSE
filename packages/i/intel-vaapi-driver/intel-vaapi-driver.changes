@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 15 21:14:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Bump version to 2.4.1 for maintenance release
+  * Fix compiler errors with gcc 10
+  * Relax the compressed frames minimum size restriction for VP9 encoder
+  - remove U_Fix-HEVCe-kernel-compile-error-on-gcc10.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jun  9 10:38:34 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Fix-HEVCe-kernel-compile-error-on-gcc10.patch

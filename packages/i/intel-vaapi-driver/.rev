@@ -118,4 +118,12 @@ vaapi-intel-driver needs to be dropped then.</comment>
   * fixed build against gcc10, which uses -fno-common by default</comment>
     <requestid>812865</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f28cd72b2e9027b6a433fd1c7741529f</srcmd5>
+    <version>2.4.1</version>
+    <time>1598274339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828744</requestid>
+  </revision>
 </revisionlist>

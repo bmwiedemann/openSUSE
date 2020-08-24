@@ -17,7 +17,7 @@
 
 
 Name:           intel-vaapi-driver
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Intel Driver for Video Acceleration (VA) API for Linux
 License:        MIT AND EPL-1.0
@@ -26,8 +26,6 @@ URL:            https://github.com/intel/%{name}/
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.bz2
 Source1:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.bz2.sha1sum
 Source2:        baselibs.conf
-Patch0:         U_Fix-HEVCe-kernel-compile-error-on-gcc10.patch
-
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
