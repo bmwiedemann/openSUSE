@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-gettext
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           ocaml-gettext
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml library for i18n
 License:        SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
-Url:            https://github.com/gildor478/ocaml-gettext
+URL:            https://opam.ocaml.org/packages/gettext
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(camomile)
 BuildRequires:  ocamlfind(compiler-libs.common)
+BuildRequires:  ocamlfind(cppo)
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(fileutils)
 BuildRequires:  ocamlfind(oUnit)
@@ -39,12 +40,12 @@ Requires:       ocaml-camomile-data
 #
 Obsoletes:      ocaml-gettext-camomile < %{version}-%{release}
 Obsoletes:      ocaml-gettext-stub < %{version}-%{release}
-Obsoletes:      ocaml-gettext-stub-devel < %{version}-%{release}
 Obsoletes:      ocaml-gettext-stub-debuginfo < %{version}-%{release}
+Obsoletes:      ocaml-gettext-stub-devel < %{version}-%{release}
 Provides:       ocaml-gettext-camomile = %{version}-%{release}
 Provides:       ocaml-gettext-stub = %{version}-%{release}
-Provides:       ocaml-gettext-stub-devel = %{version}-%{release}
 Provides:       ocaml-gettext-stub-debuginfo = %{version}-%{release}
+Provides:       ocaml-gettext-stub-devel = %{version}-%{release}
 
 %description
 Ocaml-gettext provides support for internationalization of Ocaml

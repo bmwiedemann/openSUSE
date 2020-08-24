@@ -35,4 +35,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>746701</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a208711d8e71caed76920d83716daea</srcmd5>
+    <version>0.4.2</version>
+    <time>1598274392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.2
+  Compatibility with OCaml 4.11</comment>
+    <requestid>828685</requestid>
+  </revision>
 </revisionlist>
