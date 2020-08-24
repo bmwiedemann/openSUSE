@@ -37,4 +37,13 @@
 - Update to version 2.2.1</comment>
     <requestid>777975</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>262f268c920efe65e7538bc75d3d01c5</srcmd5>
+    <version>2.2.3</version>
+    <time>1598274506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.3
+  Increase timeouts for slow architecture</comment>
+    <requestid>828700</requestid>
+  </revision>
 </revisionlist>

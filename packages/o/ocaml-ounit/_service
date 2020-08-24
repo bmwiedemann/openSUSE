@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/gildor478/ounit.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">2.2.2</param>
-    <param name="revision">v2.2.2</param>
     <param name="filename">ocaml-ounit</param>
+    <param name="revision">84086bd161e400a99e5cb9cf14b2eabb19ad32de</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/gildor478/ounit.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
