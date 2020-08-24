@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Aug 22 23:26:54 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.15:
+  * Fixes an issue with the variable font, where some software would not 
+    list the various weights correctly. #308
+  * Fixes an issue with rendering on Windows with ClearType where some glyphs 
+    using advanced OpenType features (component transformations) would render 
+    incorrectly, with a slight vertical offset. #251
+  * Improvements to Elfdalian, improving the /yogonek and /eth glyphs #285
+  * Improvements to /eth U+00F0 glyph f7924a2#commitcomment-41610142
+- Change in 3.14:
+  * Fixes position of ring at bottom of /Aringbelow U+1E00. #266
+  * Fixes interpolation issues with /omegatitlocyrillic /omega and /pisymbolgreek. #272
+  * Fixes an issue with /dotmacroncomb.cn used by glyphs like /Adotmacron. #298
+  * Adds /bitcoin glyph U+20BF. #284
+  * Adds /insertionsymbol U+2380. #290
+  * Adds specialized glyphs /Aringogonek, /aringogonek, /Yogonek and /yogonek to 
+    fully support Elfdalian script. #285
+  * Adds U+EE01, a vertically-centered colon used by Android on the lock screen #212
+  * Improves kerning of /quotedblright,/quoteright and /period,/comma. #299
+  * Improves design of "Theta" U+03F4, U+0398 and "Fita" U+0472, U+0473. #263, #264
+  * Improves design of /yhook and use /ucyrillic in /Ukcyrillic /ukcyrillic. #273
+  * Improves design of /dzaltone and /dzcurl. #268
+  * Improves design of /percent, /perthousand and /pertenthousand glyphs. #237
+  * Improves variable-font metadata (STAT table). #265
+  * Improves (tunes) calt case substitutions, e.g. "x -X". #251
+  * Changes codepoint mapping of /q.sups from U+146B to private-area U+E163. #275
+
+-------------------------------------------------------------------
 Sat Apr 11 08:44:17 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.13:

@@ -17,7 +17,7 @@
 
 
 Name:           inter-fonts
-Version:        3.13
+Version:        3.15
 Release:        0
 Summary:        The Inter font family
 License:        OFL-1.1
