@@ -50,25 +50,25 @@ gcc %{optflags} javaclassname.c -o javaclassname
 
 %install
 # a basic directory structure
-install -d -m 0755 %{buildroot}/%{_datadir}/{applications,pixmaps}
-install -d -m 0755 %{buildroot}/%{_libexecdir}/binfmt.d
-install -d -m 0755 %{buildroot}/%{_bindir}/
-install -d -m 0755 %{buildroot}/%{_mandir}/man1
+install -d -m 0755 %{buildroot}%{_datadir}/{applications,pixmaps}
+install -d -m 0755 %{buildroot}%{_binfmtdir}
+install -d -m 0755 %{buildroot}%{_bindir}/
+install -d -m 0755 %{buildroot}%{_mandir}/man1
 # wrappers
-install -m 0755 javaclassname %{buildroot}/%{_bindir}/
-install -m 0755 *wrapper %{buildroot}/%{_bindir}/
+install -m 0755 javaclassname %{buildroot}%{_bindir}/
+install -m 0755 *wrapper %{buildroot}%{_bindir}/
 # desktop menu
 install -m 0644 share/java.png %{buildroot}%{_datadir}/pixmaps/java.png
 install -m 0644 share/*desktop %{buildroot}%{_datadir}/applications/
 for wrapper in jarwrapper javawrapper javawswrapper; do
     # init binfmt.d snippet
-    install -m 0644 ${wrapper}.conf %{buildroot}%{_libexecdir}/binfmt.d/
+    install -m 0644 ${wrapper}.conf %{buildroot}%{_binfmtdir}/
     %suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/$wrapper.desktop Technology Java
 done
 # manual page
-mv docs/%{name}.1 %{buildroot}/%{_mandir}/man1
+mv docs/%{name}.1 %{buildroot}%{_mandir}/man1
 (
-cd %{buildroot}/%{_mandir}/man1
+cd %{buildroot}%{_mandir}/man1
 for alias in jarwrapper javawrapper javawswrapper javaclassname; do
     ln -sf %{name}.1 $alias.1
 done
@@ -88,8 +88,8 @@ done
 %doc docs/
 %attr(755,root,root) %{_bindir}/*
 # Avoid dependency on systemd
-%dir %{_libexecdir}/binfmt.d/
-%{_libexecdir}/binfmt.d/*.conf
+%dir %{_binfmtdir}
+%{_binfmtdir}/*.conf
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
 %{_mandir}/man1/*
