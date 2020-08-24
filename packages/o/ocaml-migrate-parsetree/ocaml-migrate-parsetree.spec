@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-migrate-parsetree
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-migrate-parsetree
-Version:        1.6.0
+Version:        1.7.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Library for conversion between different OCaml parsetrees versions
@@ -27,7 +27,7 @@ URL:            https://opam.ocaml.org/packages/ocaml-migrate-parsetree
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(ppx_derivers)
 BuildRequires:  ocamlfind(result)

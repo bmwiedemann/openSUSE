@@ -112,4 +112,12 @@
 - Require current ocaml-rpm-macros</comment>
     <requestid>780710</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a42d65ad91e6397d615c4aa9ee8b71e0</srcmd5>
+    <version>1.7.3</version>
+    <time>1598274402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.3, for ocaml-4.11</comment>
+    <requestid>828686</requestid>
+  </revision>
 </revisionlist>
