@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Aug 22 21:19:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.21
+  Fixed:
+  * Skeletons not on level 3 did not behave like skeletons.
+  * Don't crash if the intro music is interrupted by Tab in PC
+    Speaker mode.
+  * Don't switch to PC Speaker mode if there is a mod name in the
+    replay file.
+  * Don't draw the right edge of loose floors on the left side of a
+    potion or sword.
+  * A guard standing on a door top (with floor) should not become
+    inactive.
+  * Left jump (top-left) didn't work on some gamepads.
+  * Replaying from the command line did not work if there were no
+    replay files in the replay folder.
+  Done:
+  * Detect guard skill customizations in PRINCE.EXE. (Used in
+    Illusions of Persia, for example.)
+  * Added support for gamecontrollerdb.txt file.
+  * Detect changes of the shadow's starting positions and
+    automatic moves in PRINCE.EXE.
+  * Added "Restart Game" to the pause menu, so now it's possible
+    to restart the game using a controller.
+  * Added fast forward.
+  Added:
+  * You can now use quicksave and quickload while recording a
+    replay.
+- Drop patch:
+  * 184.patch (fixed by upstream)
+
+-------------------------------------------------------------------
 Wed Oct 23 15:31:43 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Do not longer use rpm macros that are not longer needed on
