@@ -1,12 +1,12 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-dune</param>
-    <param name="revision">c3756d15308d7cbb7f61f232038d822f21713a8b</param>
+    <param name="revision">85b4e16bd6c310811fcc206d3d0cbb391eb8b81c</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/dune.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">

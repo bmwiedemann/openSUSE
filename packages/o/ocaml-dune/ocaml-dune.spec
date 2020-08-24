@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-dune
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           ocaml-dune
-Version:        2.5.0
+Version:        2.7.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        A composable build system for OCaml
 License:        MIT
 Group:          Development/Languages/OCaml
-Url:            https://opam.ocaml.org/packages/dune
+URL:            https://opam.ocaml.org/packages/dune
 Source:         %{name}-%{version}.tar.xz
 Requires:       ocamlfind(compiler-libs)
-BuildRequires:  ocaml(ocaml_base_version) >= 4.07
+BuildRequires:  ocaml-rpm-macros >= 20200514
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocamlfind(compiler-libs)
-BuildRequires:  ocaml-rpm-macros >= 20200220
 
 %description
 A composable build system for OCaml
