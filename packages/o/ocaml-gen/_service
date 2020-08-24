@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-gen</param>
-    <param name="revision">runtest-0.5.2</param>
+    <param name="revision">runtest-0.5.3</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/olafhering/ocaml-gen.git</param>

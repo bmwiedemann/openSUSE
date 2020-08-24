@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-gen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,22 @@
 
 
 Name:           ocaml-gen
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Simple, efficient iterators for OCaml
 License:        BSD-2-Clause
 Group:          Development/Languages/OCaml
-URL:            https://github.com/c-cube/gen
+URL:            https://opam.ocaml.org/packages/gen
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(bytes)
+BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(qcheck)
 BuildRequires:  ocamlfind(qtest)
-BuildRequires:  ocamlfind(oUnit)
 
 %description
 Iterators for OCaml, both restartable and consumable.
