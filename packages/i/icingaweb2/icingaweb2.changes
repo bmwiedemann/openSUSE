@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 22 15:00:54 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.8.2
+  
+  Notice: This is a security release. 
+          It is recommended to immediately upgrade to this release.
+
+  You can find all issues related to this release on the respective 
+  milestone.
+
+  * Path Traversal Vulnerability
+    The vulnerability in question allows an attacker to access 
+    arbitrary files which are readable by the process running 
+    Icinga Web 2. Technical details can be found at the 
+    corresponding CVE-2020-24368 and in the issue below.
+
+    - Possible path traversal when serving static image files #4226
+
+  * Broken Negated Filters with PostgreSQL
+    We've also included a small non-security related fix. Searching
+    for e.g. servicegroup!=support leads to an error instead of the
+    desired result when using a PostgreSQL database.
+
+    - Single negated membership filter fails with PostgreSQL #4196
+
+-------------------------------------------------------------------
 Mon Jun 29 12:39:00 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.8.1
