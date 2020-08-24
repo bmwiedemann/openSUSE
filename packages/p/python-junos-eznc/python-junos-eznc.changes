@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:14:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.2
+  * juniper_junos_system fails when (vmhost) rebooting MX204 router
+  * Testcase failing in PyEZ after ncclient upgrade
+  * Wheel support for version integrated with versioneer.
+  * rpc-reply during reboot parsing gives error
+
+-------------------------------------------------------------------
 Fri Jul 31 20:30:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.1
