@@ -32,4 +32,13 @@
 - Remove ocaml-pcre-warnings.patch</comment>
     <requestid>780712</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a8341b06cd2513aa6f07358dc97e50b1</srcmd5>
+    <version>7.4.6</version>
+    <time>1598274517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.4.6
+  Remove build dependency on Base</comment>
+    <requestid>828701</requestid>
+  </revision>
 </revisionlist>
