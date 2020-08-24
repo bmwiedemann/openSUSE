@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 22:03:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.7
+  * Implement Record.__getitem__()
+- Update to version 5.0.6
+  * Fixes issue when calling attributes by their dict keys where
+    we only returned the key's name instead of its value.
+
+-------------------------------------------------------------------
 Thu Jul 16 15:20:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.0.5
