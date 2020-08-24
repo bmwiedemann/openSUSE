@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 22 12:59:34 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.4.8
+
+  # 1.4.8
+
+  * [Prevent FallbackScan from polluting exception cause](https://github.com/Shopify/bootsnap/pull/314)
+
+  # 1.4.7
+
+  * Various performance enhancements
+  * Fix race condition in heavy concurrent load scenarios that would cause bootsnap to raise
+
+-------------------------------------------------------------------
 Tue Mar  3 11:01:39 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.4.6
