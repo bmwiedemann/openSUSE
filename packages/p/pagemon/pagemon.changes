@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 17 19:27:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.01.20:
+  * initialize memory before usage 
+
+-------------------------------------------------------------------
 Sun Mar  8 13:20:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Supplement against bash-completion, not bash
