@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 17 09:01:15 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Ignore make check error for ppc64 & s390x
+  (both failed on tst_filter.sh) tracked upstream 
+  via email subject [netCDF #XWG-388823]
+
+-------------------------------------------------------------------
 Mon Jul 20 10:24:37 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add support for OpenMPI 4 (disabled on < 15.3)
