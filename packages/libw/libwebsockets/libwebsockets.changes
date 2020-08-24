@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 22:49:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.20:
+  * mbedtls: only free crt_parse when something came back
+  * lejp: enable negative integers
+  * context_destroy: backport event-lib fixes from master
+  * libevent: enforce no event state duplication
+  * multipart: quote boundary
+  * clean: additional-lws_intptr_t
+  * ss: add api test with ctest integration
+  * PEER_LIMITS: make sure to close socketfd on deny
+  * unix domain: fix path name length
+  * libev: fix destroy path and example typo
+  * ss: make sure to use LWS_WRITE_HTTP_FINAL with SS EOM flag
+  * h2: client: do not apply host header if h2 negotiated by alpn
+  * strexp: reset out offset each time
+
+-------------------------------------------------------------------
 Tue Mar 10 19:32:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.1
