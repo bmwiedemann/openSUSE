@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ptmap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ocaml-ptmap
 Version:        2.0.4
 Release:        0
@@ -22,11 +23,12 @@ Release:        0
 Summary:        Maps over integers implemented as Patricia trees
 License:        LGPL-2.1-or-later WITH OCaml-linking-exception
 Group:          Development/Languages/OCaml
-URL:            https://github.com/backtracking/ptmap
+URL:            https://opam.ocaml.org/packages/ptmap
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         ptmap-ocaml-4.11.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(qcheck)
 BuildRequires:  ocamlfind(qtest)
@@ -41,7 +43,6 @@ from a paper by Chris Okasaki.
 Summary:        Development files for %{name}
 Group:          Development/Languages/OCaml
 Requires:       %{name} = %{version}
-
 
 %description    devel
 The %{name}-devel package contains libraries and signature files for

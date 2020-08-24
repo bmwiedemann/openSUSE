@@ -21,4 +21,12 @@ It is a dependency of the next version of Haxe (4.0.0).</comment>
 - Remove 97849cd31363ac80306d714915d76dc5a06672cb.patch</comment>
     <requestid>777978</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9e4506365994846dde791dceb2e139e9</srcmd5>
+    <version>2.0.4</version>
+    <time>1598274418</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle OCaml 4.11 with ptmap-ocaml-4.11.patch</comment>
+    <requestid>828690</requestid>
+  </revision>
 </revisionlist>
