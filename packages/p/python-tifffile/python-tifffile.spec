@@ -57,13 +57,9 @@ sed -i 's/\r//' README.rst
 
 %install
 %python_install
-for p in %{packagename} ; do
-    %python_clone -a %{buildroot}%{_bindir}/$p
-done
+%python_clone -a %{buildroot}%{_bindir}/%{packagename}
+%python_clone -a %{buildroot}%{_bindir}/lsm2bin
 
-for p in lsm2bin ; do
-    %python_clone -a %{buildroot}%{_bindir}/$p
-done
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %prepare_alternative %{packagename}
