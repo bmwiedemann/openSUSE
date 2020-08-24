@@ -18,7 +18,7 @@
 
 
 Name:           powerstat
-Version:        0.02.23
+Version:        0.02.24
 Release:        0
 Summary:        Laptop power measuring tool
 License:        GPL-2.0-only
