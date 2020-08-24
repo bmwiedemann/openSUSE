@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 23 03:27:05 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1598001550.b38db760a:
+  * Dependency cron 200821
+  * Fix JavaScript warnings detected by jshint
+  * Add example for restarting a job in help of client
+  * Show the real dependency status on the web UI
+  * Improve coding style in code for test overview row
+  * Use data attributes to render dependency info in test result overview
+  * Fix 'Use of uninitialized $filename' in search API
+
+-------------------------------------------------------------------
 Thu Aug 20 08:30:41 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1597912216.78e1dbb92:
