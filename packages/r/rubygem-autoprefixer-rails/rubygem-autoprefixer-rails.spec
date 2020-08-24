@@ -24,23 +24,23 @@
 #
 
 Name:           rubygem-autoprefixer-rails
-Version:        9.8.5
+Version:        9.8.6.2
 Release:        0
 %define mod_name autoprefixer-rails
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.0}
+BuildRequires:  %{ruby >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ai/autoprefixer-rails
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        Parse CSS and add vendor prefixes to CSS rules usingvalues from the
+Summary:        Parse CSS and add vendor prefixes to CSS rules using values from the
 License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-Parse CSS and add vendor prefixes to CSS rules usingvalues from the Can I Use
+Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use
 website.
 
 %prep
