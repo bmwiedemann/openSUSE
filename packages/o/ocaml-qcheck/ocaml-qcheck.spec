@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-qcheck
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,21 @@
 %bcond_with     ocaml_alcotest
 
 Name:           ocaml-qcheck
-Version:        0.10
+Version:        0.14
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        QuickCheck inspired property-based testing for OCaml
 License:        BSD-2-Clause
 Group:          Development/Languages/OCaml
 
-URL:            https://github.com/c-cube/qcheck
+URL:            https://opam.ocaml.org/packages/qcheck
 Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(bytes)
-BuildRequires:  ocamlfind(oUnit)
+BuildRequires:  ocamlfind(ounit2)
 BuildRequires:  ocamlfind(unix)
 %if %{with ocaml_alcotest}
 BuildRequires:  ocamlfind(alcotest)
