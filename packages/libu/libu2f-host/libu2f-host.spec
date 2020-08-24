@@ -1,7 +1,7 @@
 #
 # spec file for package libu2f-host
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Productivity/Networking/Security
 URL:            https://developers.yubico.com/
 Source0:        https://developers.yubico.com/libu2f-host/Releases/%{name}-%{version}.tar.xz
 Source1:        https://developers.yubico.com/libu2f-host/Releases/%{name}-%{version}.tar.xz.sig
+Patch0:         json-c-update.patch
 BuildRequires:  libhidapi-devel
 BuildRequires:  libtool
 BuildRequires:  libzip
@@ -74,7 +75,7 @@ Group:          Productivity/Networking/Security
 Documentation files for the host side of the U2F protocol.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static --with-openssl --with-udevrulesdir=%{_udevrulesdir}
