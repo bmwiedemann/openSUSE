@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-camlp5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           ocaml-camlp5
-Version:        7.11
+Version:        7.12
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
 License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
-URL:            https://camlp5.github.io/
+URL:            https://opam.ocaml.org/packages/camlp5
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(compiler-libs)
 
 %description
