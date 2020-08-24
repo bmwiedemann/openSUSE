@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bcrypt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bcrypt
-Version:        3.1.13
+Version:        3.1.15
 Release:        0
 %define mod_name bcrypt
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/codahale/bcrypt-ruby
+URL:            https://github.com/codahale/bcrypt-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-bcrypt-rpmlintrc
 Source2:        gem2rpm.yml
