@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 21 13:08:31 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.18
+  - Fixes an important symlink handling bug in ch-tug and ch-grow.
+    Prior to version 0.18, if a pulled image contained a symlink in one 
+    layer and then a regular file at the same path in a subsequent layer, 
+    the *target* of the symlink would be overwritten even if it was 
+    not within the image; i.e., unpacking inappropriately followed 
+    the symlink. This allows a crafted image to overwrite any file 
+    writeable by the invoking user.
+    Because Charliecloud is unprivileged, other files on the system, 
+    e.g. system files, are unaffected.
+  - ch-grow: --version and --help work w/o dependencies installed 
+    new switch --list to list images
+    now gives diagnostics for syntax errors and unsupported instructions
+    WORKDIR now supports relative paths (#786)
+    no longer crashes if input doesn’t end in newline (#474)
+  - miscellaneous bug fixes and improvements
+  - Full changelogs at https://groups.io/g/charliecloud/message/104
+    and https://groups.io/g/charliecloud/message/105 
+- Replace python2-base with python3-base.
+- Update recommends used by ch-grow/ch-build
+- Readd patch for hardcoded paths:
+ * Replace-hardcode-path.patch
+-------------------------------------------------------------------
 Fri Jun 26 11:52:23 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.16

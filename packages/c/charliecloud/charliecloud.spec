@@ -17,18 +17,24 @@
 
 
 Name:           charliecloud
-Version:        0.16
+Version:        0.18
 Release:        0
 Summary:        User-defined software stacks (UDSS) for HPC centers
 License:        Apache-2.0
 Group:          Productivity/Clustering/Computing
 URL:            https://hpc.github.io/charliecloud/
 Source0:        https://github.com/hpc/charliecloud/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  python2-base
-# Docker and buildah are not needed to run charliecloud but can be 
+Patch0:         Replace-hardcode-path.patch
+BuildRequires:  python3-base
+# Recommend for ch-grow
 # used to build images
 Recommends:     docker
 Recommends:     buildah >= 1.11.2
+Recommends:     python3-requests >= 2.6.0
+Recommends:     squashfs >= 4.2
+%if !(0%{?sle_version} <= 120400 && 0%{?is_backports})
+Recommends:     python3-lark-parser >= 0.7.1
+%endif
 # Build the documentation
 %if !(0%{?sle_version} <= 120400 && 0%{?is_backports})
 BuildRequires:  python3-Sphinx
@@ -73,6 +79,7 @@ This package provides example files for Charliecloud.
 
 %prep
 %setup -q
+%patch0 -p 1
 
 %build
 %configure --disable-test
