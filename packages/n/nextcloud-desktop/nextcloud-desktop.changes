@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Aug 21 07:26:59 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 3.0.0
+  - #1886 Move the proxyfiles to libsync where they make more sense
+  - #1939 Major multi monitor improvements and rewrite of tray window positioning
+  - #2093 Add photothumb.db to sync-exclude.lst
+  - #2099 Ease access to main dialog
+  - #2106 Fix libsync exports for proxy changes in #1886
+  - #2110 Darken menu border color
+  - #2119 Fix SEGV (due to circular ownership) at exit
+  - #2126 Slightly simplify code for Systray positioning
+  - #2127 ConfigFile security: Migrate Proxy password to keychain
+  - #2128 Fix subfolder encryption scheme
+  - #2139 Fix e2ee folder sync connection
+  - #2144 Fix e2ee upload lock starvation
+  - #2145 Repair and improve logging
+  - #2150 Fix e2e moves handling
+  - #2159 Reach out to the contentItem inside of the ListView to find the width
+  - #2167 Fix url decoding for folder encryption status
+  - #2168 Display the correct default permissions when creating a share.
+  - #2177 Share link display the correct permissions for files and folders.
+  - #2183 Prevent empty FileMap in local csync to be processed if folder not empty
+  - #2188 Move existing syncjournal db files from client ver <2.7
+  - #2201 Disable parallelism for e2e remote mkdir jobs
+  - #2209 Fix pause sync states
+  - #2211 Logo update for 2.7
+  - #2213 Drone: Upload AppImage to GitHub using nextcloud-desktop-bot
+  - #2215 Change ownCloud reference to Nextcloud
+  - #2224 Update CI for Qt 5.12.9
+  - #2227 Support png for branded clients systray
+  - #2245 Fix #2243
+  - #2248 There won't be a 2.7, this is called 3.0 instead
+  - #2257 [stable-3.0] Restore E2EE old key storage format compatibility
+  - #2259 [stable-3.0] Keep the E2EE info message around to allow displaying mnemonic
+
+
+-------------------------------------------------------------------
 Thu Jul  9 17:43:21 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.6.5

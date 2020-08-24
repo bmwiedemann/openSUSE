@@ -1,6 +1,7 @@
---- a/doc/conf.py
-+++ b/doc/conf.py
-@@ -124,7 +124,7 @@ html_static_path = ['_shared_assets/stat
+diff -burNE desktop-3.0.0.orig/doc/conf.py desktop-3.0.0/doc/conf.py
+--- desktop-3.0.0.orig/doc/conf.py	2020-08-21 22:36:32.434056247 +0200
++++ desktop-3.0.0/doc/conf.py	2020-08-21 22:36:57.345005233 +0200
+@@ -124,7 +124,7 @@
  
  # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
  # using the given strftime format.
@@ -9,9 +10,10 @@
  
  # If true, SmartyPants will be used to convert quotes and dashes to
  # typographically correct entities.
---- a/src/libsync/theme.cpp
-+++ b/src/libsync/theme.cpp
-@@ -319,11 +319,9 @@ QString Theme::gitSHA1() const
+diff -burNE desktop-3.0.0.orig/src/libsync/theme.cpp desktop-3.0.0/src/libsync/theme.cpp
+--- desktop-3.0.0.orig/src/libsync/theme.cpp	2020-08-21 22:36:34.789956849 +0200
++++ desktop-3.0.0/src/libsync/theme.cpp	2020-08-21 22:36:57.349005064 +0200
+@@ -338,11 +338,9 @@
      const QString gitSha1(QLatin1String(GIT_SHA1));
      devString = QCoreApplication::translate("nextcloudTheme::about()",
          "<p><small>Built from Git revision <a href=\"%1\">%2</a>"
