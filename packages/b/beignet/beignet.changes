@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:32:42 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Thu Jun  4 19:21:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Use LLVM7 on Leap 15.2 / SLE15 SP2 or later (boo#1172362)

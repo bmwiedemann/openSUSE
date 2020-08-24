@@ -31,7 +31,6 @@ Patch2:         beignet-disable-NegAddOptimization.patch
 Patch3:         0004-Enable-Coffee-Lake-support.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  memory-constraints
 BuildRequires:  ncurses-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
@@ -75,7 +74,6 @@ rm README.md
 cp docs/Beignet.mdwn README.md
 
 %build
-%limit_build -m 2000
 %cmake \
 	-DLLVM_INSTALL_DIR=%{_bindir}/
 %cmake_build
