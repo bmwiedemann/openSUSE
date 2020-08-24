@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:56:39 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.23.0
+  * New Features
+    - Kobo driver: Add support for new firmware. Also add 
+      recognition of 'Kobo Plus' subscription books
+    - Edit book: Allow customizing the base background/foreground 
+      and link colors for the preview window.
+    - Quickview panel: Add actions to the context menu to search 
+      for book in library, open in viewer, etc.
+    - Allow forcing calibre to remember the column width for the On
+      device column by right clicking the header of the column
+    - Template language: Add functions to perform math operations 
+      to convert fractional numbers to integers
+  * Bug Fixes
+    - Content server: Fix Esc key not working in several views.
+    - Fix unable to delete default value for custom columns of 
+      boolean type, once set
+    - EPUB Output: When splitting dont consider files with only 
+      a single character empty
+    - Comments editor: Fix syntax coloring for HTML view in dark 
+      mode
+    - Book list: When a series column is not wide enough, elide 
+      text in the middle so that the series number is visible
+    
+-------------------------------------------------------------------
 Fri Jul 31 08:05:36 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.22.0
