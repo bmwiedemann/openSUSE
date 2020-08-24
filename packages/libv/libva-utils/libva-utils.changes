@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 15 22:30:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * test: cast VA_STATUS_ERROR_UNKNOWN to VAStatus type
+  * test/fixture: fix GCC 10.0.1 error with drmDevicePaths
+
+-------------------------------------------------------------------
 Thu Apr  9 19:34:00 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 2.7.1:
