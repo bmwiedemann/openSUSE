@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 22 20:14:51 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Fix libfilezilla requirement version.
+
+-------------------------------------------------------------------
+Sun Aug 16 11:12:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.49.1:
+  - Fixed selection changes not being reflected in the Site Manager in some circumstances
+  - Fixed retrying initial connection attempts
+  - MSW: Tab bar icons now scale on high-DPI displays
+  - The sizing and spacing of several dialogs has been improved on high-DPI displays
+  - MSW: Fix visual glitches when changing the selected site in the Site Manager
+  - When creating a new tab, the pane sizes are now inherited from the previous tab.
+  - macOS: Additional fixes for handling Cmd+V, Cmd+C and Cmd+X in text input controls
+  - Refactored internal settings and option handling
+
+-------------------------------------------------------------------
 Wed May 20 07:08:00 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.48.1
