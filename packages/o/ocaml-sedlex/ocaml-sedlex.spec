@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sedlex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           ocaml-sedlex
-Version:        2.1
+Version:        2.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode-friendly lexer generator
 License:        MIT
 Group:          Development/Languages/OCaml
-URL:            https://github.com/ocaml-community/sedlex
+URL:            https://opam.ocaml.org/packages/sedlex
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(gen)
 BuildRequires:  ocamlfind(ocaml-migrate-parsetree)
-BuildRequires:  ocamlfind(ppx_tools_versioned.metaquot_405)
+BuildRequires:  ocamlfind(ppx_tools_versioned.metaquot_408)
 BuildRequires:  ocamlfind(uchar)
 
 %description

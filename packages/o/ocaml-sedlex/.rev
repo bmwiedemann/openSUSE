@@ -45,4 +45,13 @@ It is a dependency of the next version of Haxe(4.0.0).</comment>
   usage of dune release profile</comment>
     <requestid>777982</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5c9c8d69571a7bee2e862d41f68e6c8b</srcmd5>
+    <version>2.2</version>
+    <time>1598274445</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2
+  Support for OCaml 4.08</comment>
+    <requestid>828694</requestid>
+  </revision>
 </revisionlist>
