@@ -1,5 +1,7 @@
-From: Jan Engelhardt <jengelh@inai.de>
-Date: 2015-02-03 00:43:03.433735818 +0100
+Orig-From: Jan Engelhardt <jengelh@inai.de>
+Orig-Date: 2015-02-03 00:43:03.433735818 +0100
+From: Paolo Stivanin <info@paolostivanin.com>
+Date: 2020-06-17 08:54:21+0000
 
 muparser broke the ABI between 2.2.3 and 2.2.4 by changing.
 The abidiff(1) report from libabigail:
@@ -12,37 +14,16 @@ The abidiff(1) report from libabigail:
         alignment changed from 64 to 32 bits
 
 Work around this messup by using the full version as unique SONAME.
----
- Makefile.in               |    6 +++---
- build/autoconf/aclocal.m4 |    5 +++--
- 2 files changed, 6 insertions(+), 5 deletions(-)
 
-Index: muparser-2.2.4/Makefile.in
-===================================================================
---- muparser-2.2.4.orig/Makefile.in
-+++ muparser-2.2.4/Makefile.in
-@@ -143,7 +143,7 @@ COND_WINDOWS_IMPLIB_1___muParser_dll___i
- @COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@__muParser_dll___targetsuf3 \
- @COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@	= .2.2.4.$(SO_SUFFIX)
- @COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@__muParser_dll___targetsuf3 \
--@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@	= .$(SO_SUFFIX).2
-+@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@	= .$(SO_SUFFIX).2.2.6
- @COND_USE_SOVERCYGWIN_1_USE_SOVERSION_1@__muParser_dll___targetsuf3 \
- @COND_USE_SOVERCYGWIN_1_USE_SOVERSION_1@	= -2.$(SO_SUFFIX)
- @COND_USE_SOVERSION_0@__muParser_dll___targetsuf3 = .$(SO_SUFFIX)
-Index: muparser-2.2.4/build/autoconf/aclocal.m4
-===================================================================
---- muparser-2.2.4.orig/build/autoconf/aclocal.m4
-+++ muparser-2.2.4/build/autoconf/aclocal.m4
-@@ -1317,8 +1317,9 @@ AC_DEFUN([AC_BAKEFILE_SHARED_VERSIONS],
-             SONAME_FLAG="-Wl,-soname,"
-         fi
-         USE_SOVERSION=1
--        USE_SOVERLINUX=1
--        USE_SOTWOSYMLINKS=1
-+        USE_SOVERLINUX=0
-+        USE_SOVERSOLARIS=1
-+        USE_SOTWOSYMLINKS=0
-       ;;
+diff -ru a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-06-17 10:52:15.574640873 +0200
++++ b/CMakeLists.txt	2020-06-17 00:09:53.000000000 +0200
+@@ -74,7 +74,7 @@
+ endif()
+ set_target_properties(muparser PROPERTIES
+     VERSION ${MUPARSER_VERSION}
++    SOVERSION ${MUPARSER_VERSION}
+-    SOVERSION ${MUPARSER_VERSION_MAJOR}
+ )
  
-       *-*-solaris2* )
+ # Install the export set for use with the install-tree

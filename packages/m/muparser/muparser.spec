@@ -1,7 +1,7 @@
 #
 # spec file for package muparser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,17 @@
 
 
 Name:           muparser
-%define lname	libmuparser2_2_6
-Version:        2.2.6.1
+%define lname	libmuparser2_3_2
+Version:        2.3.2
 Release:        0
 Summary:        A math parser library
 License:        MIT
 Group:          Productivity/Scientific/Math
 URL:            http://muparser.beltoforion.de/
-
 Source:         https://github.com/beltoforion/muparser/archive/v%{version}.tar.gz
+Patch0:         muparser-abiversion.diff
 Source1:        baselibs.conf
-Patch1:         muparser-optflags.patch
-Patch2:         muparser-abiversion.diff
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -63,14 +60,12 @@ precalculating constant parts of the expression.
 %autosetup -p1
 
 %build
-sh build/autoconf/acregen.sh
-%configure --enable-samples --enable-shared
-# bakafile not parallel sife - duh
-make -j1
+%cmake \
+    -DCMAKE_INSTALL_PREFIX=%{_prefix}
+%cmake_build
 
 %install
-%make_install
-rm -f "%buildroot/%_libdir"/*.la
+%cmake_install
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

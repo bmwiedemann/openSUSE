@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 17 08:54:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.3.2:
+  * using OpenMP is now the default settings for cmake based builds
+  * added optimization for trivial expressions
+  * introduced a maximum length for expressions (5000 Character)
+  * introduced a maximum length for identifiers (100 Characters)
+  * removed the MUP_MATH_EXCEPTION macro and related functionality
+  * removed ParserStack.h (replaced with std::stack)
+  * removed macros for defining E and PI (replaced with a static constants)
+  * the MUP_ASSERT macro is no longer removed in release builds
+    for better protection against segmentation faults
+- Updated muparser-abiversion.diff as the project is now using cmake
+- Removed muparser-optflags.patch as the project is now using cmake
+  and the Makefile.in file no longer exists
+
+-------------------------------------------------------------------
 Sat Aug 24 16:24:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Specfile modernization.
