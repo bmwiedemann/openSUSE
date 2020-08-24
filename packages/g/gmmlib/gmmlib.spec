@@ -19,7 +19,7 @@
 %global somajor 11
 %global libname libigdgmm%{somajor}
 Name:           gmmlib
-Version:        20.1.1
+Version:        20.2.3
 Release:        0
 Summary:        Intel(R) Graphics Memory Management Library Package
 License:        MIT
