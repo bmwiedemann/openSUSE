@@ -48,4 +48,13 @@
 - Remove bogus Requires/Provides override</comment>
     <requestid>778947</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>84e2450c15812088f959d92c239cc7aa</srcmd5>
+    <version>7.12</version>
+    <time>1598274367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.12
+  cover ocaml-4.11</comment>
+    <requestid>828681</requestid>
+  </revision>
 </revisionlist>
