@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ppx_tools_versioned
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-ppx_tools_versioned
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Tools for authors of ppx rewriters
 License:        MIT
 Group:          Development/Languages/OCaml
-Url:            https://github.com/ocaml-ppx/ppx_tools_versioned
+URL:            https://opam.ocaml.org/packages/ppx_tools_versioned
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(ocaml-migrate-parsetree)
 
 %description
