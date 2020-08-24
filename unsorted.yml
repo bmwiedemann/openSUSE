@@ -9644,7 +9644,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla8 
+  - libfilezilla9 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -11068,8 +11068,8 @@ unsorted:
   - libmunge2 
   - libmunge2-32bit: [x86_64] 
   - libmunit0suse0 
-  - libmuparser2_2_6 
-  - libmuparser2_2_6-32bit: [x86_64] 
+  - libmuparser2_3_2 
+  - libmuparser2_3_2-32bit: [x86_64] 
   - libmuparserx4_0_8 
   - libmusicbrainz-devel 
   - libmusicbrainz4-32bit: [x86_64] 
@@ -14811,6 +14811,7 @@ unsorted:
   - mm-common-docs 
   - mmc-utils 
   - mmdblookup 
+  - mmtf-cpp-devel 
   - mmv 
   - moarvm 
   - moarvm-devel 
@@ -20077,6 +20078,7 @@ unsorted:
   - python3-cli-helpers 
   - python3-click-aliases 
   - python3-click-completion 
+  - python3-click-default-group 
   - python3-click-didyoumean 
   - python3-click-help-colors 
   - python3-click-log 
@@ -20115,6 +20117,7 @@ unsorted:
   - python3-colour 
   - python3-combi 
   - python3-commentjson 
+  - python3-compat-patcher-core 
   - python3-compizconfig 
   - python3-concurrentloghandler 
   - python3-configargparse 
