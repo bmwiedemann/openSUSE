@@ -18,13 +18,13 @@
 
 %define fontname Libertinus
 Name:           libertinus-fonts
-Version:        6.12
+Version:        7.000
 Release:        0
 Summary:        Libertinus font family
 License:        OFL-1.1
 Group:          System/X11/Fonts
-URL:            https://github.com/alif-type/libertinus
-Source0:        https://github.com/alif-type/libertinus/releases/download/v%{version}/%{fontname}-%{version}.zip
+URL:            https://github.com/alerque/libertinus
+Source0:        https://github.com/alerque/libertinus/releases/download/v%{version}/%{fontname}-%{version}.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -40,7 +40,7 @@ Libertinus font family: serif, sans and mono. It is a fork of the Linux Libertin
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}/
-install -m 0644 *.otf %{buildroot}%{_ttfontsdir}
+install -m 0644 static/OTF/*.otf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 23 20:29:55 UTC 2020 - Benedikt Fein <benedikt.fein@gmail.com>
+
+- Update to 7.000
+  * Adopt maintenance of project and update foundry, docs, URLs, etc. (alerque)
+  * Change version scheme to be OpenFV compatible with 3 digit minor version.
+  * Use Fontship to build all fonts and generate release packages.
+  * Filter out generated font artifacts from source repository.
+
+-------------------------------------------------------------------
 Sun Jun 28 19:06:37 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 6.12:
