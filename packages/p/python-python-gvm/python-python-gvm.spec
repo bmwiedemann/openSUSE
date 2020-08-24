@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-python-gvm
-Version:        1.6.0
+Version:        20.8.0
 Release:        0
 Summary:        Library to communicate with remote servers over GMP or OSP
 License:        GPL-3.0-only
