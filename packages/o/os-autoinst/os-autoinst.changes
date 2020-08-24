@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 23 03:26:20 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1598002649.7e971f2c:
+  * Add `-pix_fmt` parameter in example for EXTERNAL_VIDEO_ENCODER_CMD
+
+-------------------------------------------------------------------
 Thu Aug 20 16:13:55 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1597940025.1be33b62:
