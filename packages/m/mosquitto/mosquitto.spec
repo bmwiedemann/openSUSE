@@ -20,7 +20,7 @@
 %define c_lib   libmosquitto1
 %define cpp_lib libmosquittopp1
 Name:           mosquitto
-Version:        1.6.11
+Version:        1.6.12
 Release:        0
 Summary:        A MQTT v3.1/v3.1.1 Broker
 License:        EPL-1.0
