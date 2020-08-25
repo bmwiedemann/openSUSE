@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certifi
-Version:        2020.4.5.1
+Version:        2020.6.20
 Release:        0
 Summary:        Python package for providing Mozilla's CA Bundle
 License:        MPL-2.0
@@ -37,11 +37,11 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This installable Python package contains a CA Bundle that you can reference
-in your Python code. This is useful for verifying HTTP requests, for example.
+Certifi provides Mozilla's carefully curated collection of Root Certificates
+for validating the trustworthiness of SSL certificates while verifying the
+identity of TLS hosts. It has been extracted from the Requests project.
 
-This is the same CA Bundle which ships with the Requests codebase, and is
-derived from Mozilla Firefox's canonical set.
+Note that on SUSE packages the used CA bundle is actually the system bundle
 
 %prep
 %setup -q -n certifi-%{version}
@@ -68,7 +68,8 @@ derived from Mozilla Firefox's canonical set.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# no upstream tests found
+# There are no upstream unit tests https://github.com/certifi/python-certifi/issues/136
+# Please check that downstream packages like python-requests still build after an update of certifi
 
 %files %{python_files}
 %license LICENSE
