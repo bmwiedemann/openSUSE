@@ -33,7 +33,7 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dbm}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -42,6 +42,7 @@ A hack on top of 2to3 for modernizing Python code.
 
 %prep
 %setup -q -n python-modernize-%{version}
+sed -i '/nose/d' setup.py
 
 %build
 %python_build
@@ -52,7 +53,7 @@ A hack on top of 2to3 for modernizing Python code.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative python-modernize
