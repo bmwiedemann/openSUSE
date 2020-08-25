@@ -18,17 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geventhttpclient
-Version:        1.3.1
+Version:        1.4.4
 Release:        0
 Summary:        HTTP client library for gevent
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/gwik/geventhttpclient
 Source:         https://files.pythonhosted.org/packages/source/g/geventhttpclient/geventhttpclient-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/gwik/geventhttpclient/master/LICENSE-MIT
-Patch0:         gevent-mark-tests.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module dpkt}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
@@ -54,15 +53,12 @@ APIs like Twitter's.
 
 %prep
 %setup -q -n geventhttpclient-%{version}
-%patch0 -p1
-cp %{SOURCE1} .
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitearch}/geventhttpclient/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -70,6 +66,7 @@ cp %{SOURCE1} .
 %pytest_arch -m 'not online' -k 'not test_cookielib_compatibility'
 
 %files %{python_files}
+%doc README.mdown
 %license LICENSE-MIT
 %{python_sitearch}/*
 

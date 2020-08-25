@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug  1 05:08:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove gevent-mark-tests.patch and LICENSE-MIT that are
+  now incorporated upstream
+- Update to v1.4.4
+  * Add kwargs to exception objects representation
+- from v1.4.3
+  * Fix Unhandled UnicodeDecodeError exception if response with
+    status 400 and request contains binary payload
+- from v1.4.0
+  * httpparser: update http parser to 2.9.4
+
+-------------------------------------------------------------------
 Tue Jan 14 11:07:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - skip test test_cookielib_compatibility as it is borked upstream

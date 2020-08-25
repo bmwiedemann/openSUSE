@@ -15,4 +15,12 @@
     <comment>- skip test test_cookielib_compatibility as it is borked upstream</comment>
     <requestid>764250</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb691842090cc052b54bcc0f5d09bb6c</srcmd5>
+    <version>1.4.4</version>
+    <time>1598351948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828407</requestid>
+  </revision>
 </revisionlist>
