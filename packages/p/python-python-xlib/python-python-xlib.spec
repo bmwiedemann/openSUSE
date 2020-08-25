@@ -26,12 +26,12 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-xlib/python-xlib
 Source:         https://files.pythonhosted.org/packages/source/p/python-xlib/python-xlib-%{version}.tar.bz2
-
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
@@ -52,7 +52,8 @@ The Python X Library is intended to be a fully functional X client
 library for Python programs.
 
 %prep
-%autosetup -n python-xlib-%{version} -p1
+%setup -q -n python-xlib-%{version}
+dos2unix CHANGELOG.md README.rst TODO
 
 %build
 %python_build
@@ -62,7 +63,7 @@ library for Python programs.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand xvfb-run --server-args "-screen 0 1920x1080x24" $python runtests.py
+%python_expand xvfb-run --server-args "-screen 0 1920x1080x24" $python -m pytest -rs
 
 %files %{python_files}
 %license LICENSE
