@@ -387,4 +387,12 @@
   * green.ssl: redundant set_nonblocking() caused SSLWantReadError</comment>
     <requestid>798871</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b05a356bf5dce2a07d17f5b9b5a0875f</srcmd5>
+    <version>0.26.1</version>
+    <time>1598351906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828006</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Aug 19 15:28:03 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- do not run test on python 2 (sadly no real macro expansion
+  possible to allow run but failok with ||:)
+- disable test discovery dir recursion gh#eventlet/eventlet#638
+- simplify the pytest call, no test file deletions
+
+-------------------------------------------------------------------
+Mon Aug 17 09:38:44 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pr_639.patch which fixes eventlet using dnspython 2.0.0
+- Add remove_nose_part_2.patch to complete the removal of nose
+- Activate test suite with 958 test cases passing on Tumbleweed
+
+-------------------------------------------------------------------
+Mon Aug 17 07:49:25 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't limit the upper version of dnspython.
+
+-------------------------------------------------------------------
+Fri Aug 14 21:30:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add newdnspython.patch which makes eventlet work with new
+  dnspython 2.0.0.
+
+-------------------------------------------------------------------
+Thu Aug 13 16:07:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to remove dependency on nose (gh#eventlet/eventlet#638).
+
+-------------------------------------------------------------------
+Thu Aug 13 14:07:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.26.1:
+  * pin dnspython <2.0.0 https://github.com/eventlet/eventlet/issues/619
+  * Fix compatibility with SSLContext usage >= Python 3.7
+  * wsgi: Fix header capitalization on py3
+  * Fix #508: Py37 Deadlock ThreadPoolExecutor (#598)
+  * drop Python 3.4 support
+  * Fix misc SyntaxWarning's under Python 3.8
+  * Remove unnecessary assignment in _recv_loop (#601)
+
+-------------------------------------------------------------------
 Wed Apr 29 10:49:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.25.2:

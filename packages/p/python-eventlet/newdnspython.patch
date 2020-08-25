@@ -1,0 +1,42 @@
+--- a/eventlet/support/greendns.py
++++ b/eventlet/support/greendns.py
+@@ -313,7 +313,7 @@ class ResolverProxy(object):
+         self.clear()
+ 
+     def clear(self):
+-        self._resolver = dns.resolver.Resolver(filename=self._filename)
++        self._resolver = dns.resolver.Resolver(filename=self._filename, configure=False)
+         self._resolver.cache = dns.resolver.LRUCache()
+ 
+     def query(self, qname, rdtype=dns.rdatatype.A, rdclass=dns.rdataclass.IN,
+--- a/tests/greendns_test.py
++++ b/tests/greendns_test.py
+@@ -885,7 +885,7 @@ class TinyDNSTests(tests.LimitedTestCase
+         # https://github.com/eventlet/eventlet/issues/499
+         # None means we don't want the server to find the IP
+         with tests.dns_tcp_server(None) as dnsaddr:
+-            resolver = Resolver()
++            resolver = Resolver(configure=False)
+             resolver.nameservers = [dnsaddr[0]]
+             resolver.nameserver_ports[dnsaddr[0]] = dnsaddr[1]
+ 
+@@ -896,7 +896,7 @@ class TinyDNSTests(tests.LimitedTestCase
+         # https://github.com/eventlet/eventlet/issues/499
+         expected_ip = "192.168.1.1"
+         with tests.dns_tcp_server(expected_ip) as dnsaddr:
+-            resolver = Resolver()
++            resolver = Resolver(configure=False)
+             resolver.nameservers = [dnsaddr[0]]
+             resolver.nameserver_ports[dnsaddr[0]] = dnsaddr[1]
+             response = resolver.query('host.example.com', 'a', tcp=True)
+--- a/setup.py
++++ b/setup.py
+@@ -15,7 +15,7 @@ setuptools.setup(
+     url='http://eventlet.net',
+     packages=setuptools.find_packages(exclude=['benchmarks', 'tests', 'tests.*']),
+     install_requires=(
+-        'dnspython >= 1.15.0, < 2.0.0',
++        'dnspython >= 1.15.0',
+         'greenlet >= 0.3',
+         'monotonic >= 1.4',
+         'six >= 1.10.0',
