@@ -35,7 +35,7 @@ BuildRequires:  python-ipaddress
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -48,6 +48,7 @@ subnets (IPv4 or IPv6).
 
 %prep
 %setup -q -n maxminddb-%{version}
+sed -i '/nose/d' setup.py
 
 %build
 export CFLAGS="%{optflags}"
@@ -58,7 +59,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE
