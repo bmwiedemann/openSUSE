@@ -1,7 +1,7 @@
 #
 # spec file for package python-case
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,7 @@ URL:            http://github.com/celery/case
 Source:         https://files.pythonhosted.org/packages/source/c/case/case-%{version}.tar.gz
 Patch0:         remove_unittest2.patch
 Patch1:         remove_coverage.patch
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mock >= 2.0
@@ -54,8 +51,7 @@ Python unittest Utilities.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-%python_exec setup.py test
+#%%check no tests exist https://github.com/celery/case/issues/8
 
 %files %{python_files}
 %license LICENSE
