@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 22:52:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We can finally use %pyunittest macro
+
+-------------------------------------------------------------------
 Wed Mar 11 17:29:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2 available

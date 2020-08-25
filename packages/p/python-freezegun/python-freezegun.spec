@@ -59,7 +59,7 @@ time by mocking the datetime module.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -munittest discover -v
+%pyunittest
 
 %files %{python_files}
 %license LICENSE

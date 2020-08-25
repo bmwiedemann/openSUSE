@@ -89,4 +89,13 @@
 - drop remove_dependency_on_mock.patch</comment>
     <requestid>783995</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6fb8ec85f7c57ec9c8b67b3ecef4c1c6</srcmd5>
+    <version>0.3.15</version>
+    <time>1598351885</time>
+    <user>dimstar_suse</user>
+    <comment>- We can finally use %pyunittest macro
+</comment>
+    <requestid>827695</requestid>
+  </revision>
 </revisionlist>
