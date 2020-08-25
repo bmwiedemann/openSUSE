@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyquery
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module WebOb > 1.1.9}
 BuildRequires:  %{python_module WebTest}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 %endif
 %python_subpackages
@@ -70,7 +70,7 @@ XML and HTML manipulation.
 %if %{with test}
 %check
 # Disable tests which perform live fetch
-%python_exec -m nose tests -e test_get
+%pytest -k 'not test_get' tests
 %endif
 
 %if !%{with test}
