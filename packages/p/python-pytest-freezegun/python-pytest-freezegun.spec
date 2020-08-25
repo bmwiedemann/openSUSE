@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-freezegun
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pytest-freezegun
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
-License:        MIT
 Summary:        Fixtures in freeze_time
-Url:            https://github.com/ktosiek/pytest-freezegun
+License:        MIT
 Group:          Development/Languages/Python
-#Source:         https://files.pythonhosted.org/packages/source/p/pytest-freezegun/pytest-freezegun-%{version}.zip
+URL:            https://github.com/ktosiek/pytest-freezegun
 Source:         https://github.com/ktosiek/pytest-freezegun/archive/%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-freezegun > 0.3
+Requires:       python-pytest >= 3.0.0
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module freezegun > 0.3}
 BuildRequires:  %{python_module pytest >= 3.0.0}
 # /SECTION
-BuildRequires:  unzip
-BuildRequires:  fdupes
-Requires:       python-freezegun > 0.3
-Requires:       python-pytest >= 3.0.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
