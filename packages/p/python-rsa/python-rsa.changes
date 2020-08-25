@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 16 21:04:02 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace setup.py test with pytest
+- Remove %bcond_without tests
+
+-------------------------------------------------------------------
 Tue Jun 23 15:36:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to v 4.6.0 (bsc#1172389)

@@ -17,18 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without tests
 Name:           python-rsa
 Version:        4.6
 Release:        0
 Summary:        Pure-Python RSA Implementation
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://stuvel.eu/rsa
+URL:            https://stuvel.eu/rsa
 Source:         https://files.pythonhosted.org/packages/source/r/rsa/rsa-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module mypy}
-BuildRequires:  %{python_module pyasn1 >= 0.1.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,9 +33,12 @@ Requires(post): update-alternatives
 Requires(pre):  coreutils
 Requires(preun): update-alternatives
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  %{python_module nose}
-%endif
+# SECTION test requirements
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module mypy}
+BuildRequires:  %{python_module pyasn1 >= 0.1.3}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -72,11 +71,9 @@ export LC_ALL=en_US.utf8
 %preun
 %python_uninstall_alternative pyrsa-priv2pub
 
-%if %{with tests}
 %check
 export LC_ALL=en_US.utf8
-%python_exec setup.py test
-%endif
+%pytest
 
 %files %{python_files}
 %license LICENSE
