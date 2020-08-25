@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asn1crypto
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        ASN.1 parser and serializer for Python
 License:        MIT
