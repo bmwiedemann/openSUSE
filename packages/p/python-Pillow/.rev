@@ -389,4 +389,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
 </comment>
     <requestid>824544</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>6c62df57b383f5bfe2f29b9e5cff456b</srcmd5>
+    <version>7.2.0</version>
+    <time>1598351893</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Leap</comment>
+    <requestid>827807</requestid>
+  </revision>
 </revisionlist>

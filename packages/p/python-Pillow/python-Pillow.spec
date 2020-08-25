@@ -28,7 +28,7 @@ URL:            https://python-pillow.org/
 Source:         https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module olefile}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tk}
 BuildRequires:  fdupes
