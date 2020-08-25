@@ -17,8 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Disable tests, they are so slow that OBS thinks the build died.
-%bcond_with tests
+# Disable tests, they are very slow/halt on many arch
+%ifarch x86_64
+%bcond_without  tests
+%else
+%bcond_with     tests
+%endif
 Name:           python-pyzmq
 Version:        19.0.2
 Release:        0
@@ -34,11 +38,10 @@ BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module gevent}
 # Test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pexpect}
-BuildRequires:  %{python_module py}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module tornado}
@@ -77,6 +80,12 @@ Development libraries and headers needed to build software using %{name}.
 # Fix non-executable script rpmlint warning:
 find examples zmq -name "*.py" -exec sed -i "s|#\!\/usr\/bin\/env python||" {} \;
 
+# Remove non-deterministic authentication test
+# This fails to connect randomly
+rm -rf zmq/tests/test_auth.py
+sed -i '/from zmq.tests.test_auth/d' zmq/tests/asyncio/_test_asyncio.py
+sed -i 's/TestThreadAuthentication/object/' zmq/tests/asyncio/_test_asyncio.py
+
 %patch1
 
 %build
@@ -89,12 +98,8 @@ export CFLAGS="%{optflags}"
 
 %if %{with tests}
 %check
-# Remove non-deterministic authentication test
-# This fails to connect randomly
-rm -rf zmq/tests/test_auth.py
-
 %python_exec setup.py build_ext --inplace
-%python_exec setup.py test
+%pytest
 %endif
 
 %files %{python_files}
