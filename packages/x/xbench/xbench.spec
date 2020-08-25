@@ -23,7 +23,7 @@
 %define _xorg7pixmaps include
 %define _xorg7libshare share
 %define _xorg7_xkb %{_datadir}/X11/xkb
-%define _xorg7_termcap %{_libexecdir}/X11/etc
+%define _xorg7_termcap %{_prefix}/lib/X11/etc
 %define _xorg7_serverincl %{_includedir}/xorg
 %define _xorg7_fonts %{_datadir}/fonts
 %define _xorg7_prefix /usr

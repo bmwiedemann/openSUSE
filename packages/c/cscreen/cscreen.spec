@@ -82,7 +82,7 @@ install -Dm755 src/%{name} %{buildroot}/%{_bindir}/%{name}
 install -Dm755 src/%{name}_update_config.sh %{buildroot}/%{_bindir}/cscreen_update_config.sh
 
 mkdir -p %{buildroot}%{_localstatedir}/log/screen/old
-mkdir -pm770 %{buildroot}/%{HOMEDIR}
+mkdir -pm700 %{buildroot}/%{HOMEDIR}
 mkdir -pm700 %{buildroot}/%{HOMEDIR}/.ssh
 
 
@@ -149,7 +149,7 @@ fi
 %attr(644,%{USERNAME}, %{GROUPNAME}) %dir %{_localstatedir}/log/screen
 %attr(644,%{USERNAME}, %{GROUPNAME}) %dir %{_localstatedir}/log/screen/old
 %attr(644,%{USERNAME}, %{GROUPNAME}) %{_fillupdir}/sysconfig.%{name}
-%attr(770,%{USERNAME}, %{GROUPNAME}) %dir %{HOMEDIR}
+%attr(700,%{USERNAME}, %{GROUPNAME}) %dir %{HOMEDIR}
 %attr(700,%{USERNAME}, %{GROUPNAME}) %dir %{HOMEDIR}/.ssh
 %attr(644,%{USERNAME}, %{GROUPNAME}) %config(noreplace) %{_sysconfdir}/%{name}rc
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}

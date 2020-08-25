@@ -17,7 +17,7 @@
 
 
 Name:           goffice
-Version:        0.10.47
+Version:        0.10.48
 Release:        0
 Summary:        GLib/GTK+ Set of Document-Centric Objects and Utilities
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -58,8 +58,8 @@ save documents, undo and redo.
 
 %package -n libgoffice-0_10-10
 Summary:        GLib/GTK+ Set of Document-Centric Objects and Utilities
-Group:          System/Libraries
 # To make lang package installable
+Group:          System/Libraries
 Provides:       %{name} = %{version}
 
 %description -n libgoffice-0_10-10

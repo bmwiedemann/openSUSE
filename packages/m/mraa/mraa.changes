@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 24 14:41:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_prefix}/lib instead of %{_libexecdir} (boo#1174075).
+
+-------------------------------------------------------------------
 Fri Jun 12 08:19:57 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10

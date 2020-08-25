@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rich
-Version:        5.0.0
+Version:        5.2.1
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
@@ -32,7 +32,6 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module colorama >= 0.4.0}
 BuildRequires:  %{python_module commonmark >= 0.9.0}
-BuildRequires:  %{python_module pprintpp >= 0.4.0}
 BuildRequires:  %{python_module pygments >= 2.6.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4}
@@ -40,7 +39,6 @@ BuildRequires:  %{python_module typing_extensions >= 3.7.4}
 BuildRequires:  fdupes
 Requires:       python-colorama >= 0.4.0
 Requires:       python-commonmark >= 0.9.0
-Requires:       python-pprintpp >= 0.4.0
 Requires:       python-pygments >= 2.6.0
 Requires:       python-typing_extensions >= 3.7.4
 %if %{python_version_nodots} < 37

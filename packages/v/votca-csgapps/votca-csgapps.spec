@@ -17,7 +17,7 @@
 #
 
 Name:       votca-csgapps
-Version:    1.6.1
+Version:    1.6.2
 %define     uversion %{version}
 Release:    0
 Summary:    VOTCA coarse-graining engine applications
@@ -56,7 +56,7 @@ This package contains sample applications of the VOTCA Coarse Graining Engine.
 %fdupes %{buildroot}%{_prefix}
 
 %check
-make -C build test CTEST_OUTPUT_ON_FAILURE=1
+%ctest
 
 %files
 %doc README.md

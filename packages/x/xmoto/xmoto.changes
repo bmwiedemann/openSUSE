@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 17 15:49:05 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.6.1
+ * macOS and FreeBSD support is back!
+ * Automated release builds for Linux/macOS/Windows
+ * Added support for macOS Bundles
+ * Improved level load times
+ * Improved Russian translation
+ * Bug fixes:
+ * Fixed a locale bug where the game would crash with
+   locales using comma (,) as the decimal separator
+ * No more crashing on non-existent db entries
+   when migrating from an old version
+ * Build system changed from autotools to CMake
+ * Support for both cross-compilation and native builds for Win32
+ * Easy packaging for each supported platform
+ * FreeBSD and macOS support temporarily dropped
+ * Minor changes:
+ * Chat history is now shown when the chat box is opened
+ * Checkpoint color in ugly mode matches minimap
+ * Some code fixes
+ * glext.h dropped in favor of a proper GL loader
+ * Bug fixes:
+ * Favorite levels can be viewed again
+ * Safe mode now stays on after restarting a level
+ * remove several warnings (including replacing hash_map by unordered_map)
+- remove xmoto-0.5.11-pointer-comparison.patch xmoto-0.5.5-basedir.patch xmoto-nobuild_date.patch 
+ (upstream)
+
+-------------------------------------------------------------------
 Fri Aug 25 09:44:47 UTC 2017 - wbauer@tmo.at
 
 - Explicitly BuildRequire lua 5.1 on Tumbleweed to fix build

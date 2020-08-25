@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak-builder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flatpak-builder
-Version:        1.0.9
+Version:        1.0.11
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later

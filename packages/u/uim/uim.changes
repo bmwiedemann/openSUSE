@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 21 18:05:04 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- riscv.patch: Add support for RISC-V to libgcroots
+
+-------------------------------------------------------------------
 Tue Aug 18 12:37:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch uim-fix-multiple_declaration.diff to avoid multiple

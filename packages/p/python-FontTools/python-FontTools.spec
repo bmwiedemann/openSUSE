@@ -38,7 +38,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-brotlipy >= 0.7.0
+Requires:       python-Brotli >= 1.0.1
 Requires:       python-fs >= 2.4.11
 Requires:       python-lxml >= 4.0
 Requires:       python-scipy >= 1.5.1
@@ -52,7 +52,7 @@ BuildArch:      noarch
 %if "%{flavor}" == "test"
 BuildRequires:  zip
 # SECTION test requirements
-BuildRequires:  %{python_module brotlipy >= 0.7.0}
+BuildRequires:  %{python_module Brotli >= 1.0.1}
 BuildRequires:  %{python_module fs >= 2.4.11}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.5.1}

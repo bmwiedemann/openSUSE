@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 18:59:23 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.2
+  - move CI to GitHub Actions ([gh#votca/xtp#512],
+    [gh#votca/xtp#514], [gh#votca/xtp#516], [gh#votca/xtp#519])
+  - add more checks to the dft_parse_part ([gh#votca/xtp#521])
+  - make unit tests work in parallel ([gh#votca/xtp#530])
+
+-------------------------------------------------------------------
 Thu Aug 20 09:09:23 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.

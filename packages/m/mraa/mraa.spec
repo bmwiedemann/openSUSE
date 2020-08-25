@@ -161,7 +161,7 @@ This package contains examples for %{name}.
 %install
 %cmake_install
 install -d %{buildroot}%{_javadir}
-mv %{buildroot}%{_libexecdir}/java/mraa.jar %{buildroot}%{_javadir}/%{name}.jar
+mv %{buildroot}%{_prefix}/lib/java/mraa.jar %{buildroot}%{_javadir}/%{name}.jar
 
 %check
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}

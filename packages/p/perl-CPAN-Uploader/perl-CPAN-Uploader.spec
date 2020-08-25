@@ -17,7 +17,7 @@
 
 
 Name:           perl-CPAN-Uploader
-Version:        0.103014
+Version:        0.103015
 Release:        0
 %define cpan_name CPAN-Uploader
 Summary:        Upload things to the CPAN

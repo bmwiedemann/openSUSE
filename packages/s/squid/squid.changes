@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 24 11:38:09 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- squid 4.13:
+  * Enforce token characters for field-name (#700)
+  * Fix livelocking in peerDigestHandleReply (#698) (bsc#1175671)
+  * Improve Transfer-Encoding handling (#702)
+    (bsc#1175665, CVE-2020-15811)
+  * Forbid obs-fold and bare CR whitespace in framing header fields (#701)
+  * Source Format Enforcement
+  * Enforce token characters for field-name (#700)
+    (bsc#1175664, CVE-2020-15810)
+  * Do not stall while debugging a scan of an empty store_table (#699)
+  * Fix livelocking in peerDigestHandleReply (#698)
+  * Honor on_unsupported_protocol for intercepted https_port (#689)
+  * Bug #5051: Some collapsed revalidation responses never expire (#683)
+  * SslBump: Support parsing GREASEd (and future) TLS handshakes (#663)
+
+-------------------------------------------------------------------
 Fri Jul 24 15:03:53 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Change pinger and basic_pam_auth helper to use standard permissions.

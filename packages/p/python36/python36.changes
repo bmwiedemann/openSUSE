@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 21 15:14:15 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-support.patch: bpo-33377: add triplets for mips-r6 and riscv
+  (#6655)
+- riscv64-ctypes.patch: bpo-35847: RISC-V needs CTYPES_PASS_BY_REF_HACK
+  (GH-11694)
+- Update list of tests to exclude under qemu linux-user
+
+-------------------------------------------------------------------
 Thu Aug 20 08:53:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update the python keyring

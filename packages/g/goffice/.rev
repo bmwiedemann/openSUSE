@@ -818,4 +818,12 @@ The canonical license of the spec file should be GPL-2.0 (forwarded request 1011
     <comment> (forwarded request 802395 from iznogood)</comment>
     <requestid>802670</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>42a61cec46ac83bc8744674c9d8d1275</srcmd5>
+    <version>0.10.48</version>
+    <time>1598340901</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, not buildtested (forwarded request 828240 from iznogood)</comment>
+    <requestid>828952</requestid>
+  </revision>
 </revisionlist>

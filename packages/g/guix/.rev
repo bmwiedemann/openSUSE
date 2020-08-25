@@ -204,4 +204,12 @@ Will fail to build until all programms requiring guile will be rebuild, due to t
 </comment>
     <requestid>825158</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>56327def3e7f8adce004a1ad5e9c4773</srcmd5>
+    <version>1.1.0</version>
+    <time>1598340999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828959</requestid>
+  </revision>
 </revisionlist>

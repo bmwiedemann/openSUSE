@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 24 15:15:15 UTC 2020 - olaf@aepfle.de
+
+- Adjust permissions for ~_cscreen
+
+-------------------------------------------------------------------
 Wed Jun 10 09:45:43 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
 - Do not try to chmod  /run/uscreens/S-cscreen on update

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 24 08:38:32 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1598257562.570eb99d:
+  * Fix: bootstrap: revert ssh_merge function for compatibility(bsc#1175057)
+  * Dev: behave: adjust functional test for sbd config process changes
+  * Dev: unittest: adjust unit test cases for sbd config process changes
+  * Fix: bootstrap: adjust sbd config process to fix bug on sbd stage(bsc#1175057)
+
+-------------------------------------------------------------------
 Tue Jul 28 13:02:41 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1595940615.c452cc00:

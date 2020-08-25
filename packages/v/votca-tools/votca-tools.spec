@@ -18,7 +18,7 @@
 
 
 Name:           votca-tools
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 %define         uversion %{version}
 %define         sover 6
@@ -91,7 +91,7 @@ sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/"
 sed -i '1s@env @@' %{buildroot}/%{_bindir}/votca_compare
 
 %check
-make -C build test CTEST_OUTPUT_ON_FAILURE=1 %{?testargs}
+%ctest
 
 %files
 %{_bindir}/votca_*

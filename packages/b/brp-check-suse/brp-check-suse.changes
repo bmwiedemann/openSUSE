@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 17 14:56:06 UTC 2020 - ro@suse.de
+
+- Update to version 84.87+git20200817.346e853:
+  * added NO_BRP_PERMISSIONS and NO_BRP_ROOTFS (bug#968153)
+
+-------------------------------------------------------------------
+Fri Jul 31 07:15:51 UTC 2020 - coolo@suse.com
+
+- Update to version 84.87+git20200731.3af0c0a:
+  * Make links *to* /etc/aternatives absolute links (#33)
+  * Sort input file list (#32)
+
+-------------------------------------------------------------------
 Sun May 10 18:35:45 UTC 2020 - coolo@suse.com
 
 - Update to version 84.87+git20200510.8ff16cf:

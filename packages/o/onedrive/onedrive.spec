@@ -20,6 +20,13 @@
 %{!?_userunitdir: %{expand: %%global _userunitdir %{_unitdir}/../user}}
 %define docdir %{_defaultdocdir}/%{name}
 
+# DMD is available only on x86*. Use LDC otherwise.
+%ifarch %{ix86} x86_64
+%bcond_without dcompiler_dmd
+%else
+%bcond_with dcompiler_dmd
+%endif
+
 Name:           onedrive
 Version:        2.4.3
 Release:        0
@@ -28,10 +35,15 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://github.com/abraunegg/onedrive/
 Source0:        %{name}-%{version}.tar.gz
+%if %{with dcompiler_dmd}
 BuildRequires:  dmd
+BuildRequires:  phobos-devel-static
+%else
+BuildRequires:  ldc
+BuildRequires:  ldc-phobos-devel
+%endif
 BuildRequires:  help2man
 BuildRequires:  libcurl-devel
-BuildRequires:  phobos-devel-static
 BuildRequires:  sqlite3-devel
 Recommends:     logrotate
 Suggests:       onedrive-completition-bash

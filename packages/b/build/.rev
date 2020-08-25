@@ -1247,4 +1247,36 @@ Stephan Kulow (2):
 - Support rpm's %include statement (EXPERIMENTAL, known limitations)</comment>
     <requestid>807799</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>56eb23a4075a7366944a13bc182a6975</srcmd5>
+    <version>20200520</version>
+    <time>1598340707</time>
+    <user>dimstar_suse</user>
+    <comment>- fix factory version in config file bsc#1170956
+- add missing ignores for Leap 15.2 bsc#1174854
+- fix sysrq handling for KVM builds
+- avoid double removal of obscpio files
+- docker:
+  * support builds using USER root statements
+  * proper error handling when obs-docker-support gets called as 
+    non-root
+  * helm build target support
+  * support milestone handling
+- support repo files without types set (SLE 15 SP2 zypp)
+- add default substitute for system-packages:repo-creation
+- Support recursive kiwi profile usage
+
+- fix dependencies for Fedora 33
+- Set $YAML::XS::LoadBlessed = 0 for Appimage/Snapcraft
+- add a new variable to track build time needed for ccache eviction
+- create folder for ccache archive to be copied before rsync
+- also package pkg-config files by default into baselibs. (bsc#1172563 etc)
+- Use shorter kernel flag for mitigations
+- Ignore, if shutdown behavior changed by build in z/VM
+- Control disk-space consumption while creating ccache archive
+- cleaning ccache
+- create folders before trying to copy ccache.tar
+- Genreadte .packages and .basepackages files for docker builds</comment>
+    <requestid>828094</requestid>
+  </revision>
 </revisionlist>

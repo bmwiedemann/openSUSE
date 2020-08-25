@@ -970,4 +970,12 @@
     <comment> (forwarded request 802396 from iznogood)</comment>
     <requestid>802671</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>5c87f5273c4156d9c3fc1491c61ce9f8</srcmd5>
+    <version>1.12.48</version>
+    <time>1598340911</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, not buildtested (forwarded request 828252 from iznogood)</comment>
+    <requestid>828953</requestid>
+  </revision>
 </revisionlist>

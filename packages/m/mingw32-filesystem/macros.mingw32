@@ -43,6 +43,7 @@
 %_mingw32_as              %{_mingw32_target}-as
 %_mingw32_dlltool         %{_mingw32_target}-dlltool
 %_mingw32_dllwrap         %{_mingw32_target}-dllwrap
+%_mingw32_fc              %{_mingw32_target}-gfortran
 %_mingw32_gcov            %{_mingw32_target}-gcov
 %_mingw32_gprof           %{_mingw32_target}-gprof
 %_mingw32_ld              %{_mingw32_target}-ld
@@ -73,7 +74,7 @@
 %_mingw32_debug_package(n:) \
 %package %{-n:-n %{-n*}-}debug \
 Summary: Debug information for package %{name} \
-Group: Development/Debug \
+Group: Development/Sources \
 BuildArch: noarch \
 %description %{-n:-n %{-n*}-}debug \
 This package provides debug information for package %{name}.\
@@ -184,32 +185,3 @@ package or when debugging this package.\
 
 # deprecated, use _mingw32_make_install (unix variant is named %make_install)
 %_mingw32_makeinstall %_mingw32_make_install
-
-# internal macro used by related filesystem packages
-%__mingw32_cmake %{_mingw32_env} ; \
-  cmake \\\
-        -DCMAKE_SYSTEM_NAME="Windows" \\\
-        -DCMAKE_VERBOSE_MAKEFILE=ON \\\
-        -DCMAKE_BUILD_TYPE="RelWithDebInfo" \\\
-        -DCMAKE_INSTALL_PREFIX:PATH=%{_mingw32_prefix} \\\
-        -DCMAKE_INSTALL_LIBDIR:PATH=%{_mingw32_libdir} \\\
-        -DBIN_INSTALL_DIR=%{_mingw32_bindir} \\\
-        -DINCLUDE_INSTALL_DIR:PATH=%{_mingw32_includedir} \\\
-        -DLIB_INSTALL_DIR:PATH=%{_mingw32_libdir} \\\
-        -DSHARE_INSTALL_DIR:PATH=%{_mingw32_datadir} \\\
-        -DSYSCONF_INSTALL_DIR:PATH=%{_mingw32_sysconfdir} \\\
-        -DSHARE_INSTALL_PREFIX:PATH=%{_mingw32_datadir} \\\
-        -DBUILD_SHARED_LIBS:BOOL=ON \\\
-        -DCMAKE_C_COMPILER="%{_bindir}/%{_mingw32_cc}" \\\
-        -DCMAKE_CXX_COMPILER="%{_bindir}/%{_mingw32_cxx}" \\\
-        -DCMAKE_RC_COMPILER="%{_bindir}/%{_mingw32_windres}" \\\
-        -DCMAKE_FIND_ROOT_PATH="%{_mingw32_prefix}" \\\
-        -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \\\
-        -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \\\
-        -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER
-
-# cmake > 3.13.1 requires setting source dir 
-%_mingw32_cmake %{__mingw32_cmake} .
-
-%_mingw32_cmake_install %{_mingw32_env} ; \
-  make VERBOSE=1 DESTDIR=%{buildroot} install/fast

@@ -171,4 +171,12 @@
     <comment></comment>
     <requestid>742524</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ecc7b5c8e49c925d5eb5ce28fec225e2</srcmd5>
+    <version>1.0.11</version>
+    <time>1598340928</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 828672 from iznogood)</comment>
+    <requestid>828951</requestid>
+  </revision>
 </revisionlist>

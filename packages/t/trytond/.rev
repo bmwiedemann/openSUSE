@@ -376,4 +376,13 @@
     <comment>version update</comment>
     <requestid>828498</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>34851a0f7e581845052cb77122d5fe8e</srcmd5>
+    <version>5.0.25</version>
+    <time>1598340833</time>
+    <user>dimstar_suse</user>
+    <comment>- changed trytond.conf to listen to all interfaces 
+</comment>
+    <requestid>828936</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 22 22:09:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.2.1
+  * Fixed underscore with display hook
+- Update to version 5.2.0
+  * Added crop argument to Console.print
+  * Added "ignore" overflow method
+  * Added multiple characters per rule
+- Update to version 5.1.2
+  * Further optimized pretty printing ~5X.
+- Update to version 5.1.1
+  * Optimized pretty printing ~3X faster
+- Update to version 5.1.0
+  Added
+  * Added Text.cell_len
+  * Added helpful message regarding unicode decoding errors
+  * Added display hook with pretty.install()
+  Fixed
+  * Fixed deprecation warnings re backslash
+  * Fixed repr highlighting of scientific notation, e.g. 1e100
+  Changed
+  * Implemented pretty printing, and removed pprintpp from
+    dependencies
+  * Optimized Text.join
+
+-------------------------------------------------------------------
 Sat Aug  8 04:47:19 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v5.0.0

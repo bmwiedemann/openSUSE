@@ -862,4 +862,25 @@ from the squid 3.x changelog</comment>
     <comment></comment>
     <requestid>825214</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>843d2b2f7bda61c8e872dee8fc096331</srcmd5>
+    <version>4.13</version>
+    <time>1598340818</time>
+    <user>dimstar_suse</user>
+    <comment>- squid 4.13:
+  * Enforce token characters for field-name (#700)
+  * Fix livelocking in peerDigestHandleReply (#698) (bsc#1175671)
+  * Improve Transfer-Encoding handling (#702)
+    (bsc#1175665, CVE-2020-15811)
+  * Forbid obs-fold and bare CR whitespace in framing header fields (#701)
+  * Source Format Enforcement
+  * Enforce token characters for field-name (#700)
+    (bsc#1175664, CVE-2020-15810)
+  * Do not stall while debugging a scan of an empty store_table (#699)
+  * Fix livelocking in peerDigestHandleReply (#698)
+  * Honor on_unsupported_protocol for intercepted https_port (#689)
+  * Bug #5051: Some collapsed revalidation responses never expire (#683)
+  * SslBump: Support parsing GREASEd (and future) TLS handshakes (#663)</comment>
+    <requestid>828922</requestid>
+  </revision>
 </revisionlist>

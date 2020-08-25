@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 24 15:40:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.9.2:
+  * mkdir: fixed exit code with -f option.
+  * ftp: made ftp:use-pret setting tri-boolean.
+  * get/mget/put/mput: don't try next files after error if cmd:fail-exit is true.
+  * get/mget: fixed -O option with remote URL and xfer:use-temp-file being true.
+  * mirror: disallow empty patterns; don't delete "..".
+  * mirror: fixed --on-change with --reverse.
+  * sftp: fixed a bug with truncated files when packets are reordered (finally).
+
+-------------------------------------------------------------------
 Thu Jan 16 06:00:42 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 4.9.1

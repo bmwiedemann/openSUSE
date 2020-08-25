@@ -17,14 +17,14 @@
 
 
 Name:           gemrb
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        Game engine made with pre-rendered background
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/RPG
 URL:            http://www.gemrb.org/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(python) >= 2.3
+BuildRequires:  pkgconfig(python) 
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
@@ -52,7 +52,7 @@ You will need the original game files of Baldur's Gate and the Icewind
 Dale series or Planescape: Torment to play.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 rm -Rf CMakeCache.txt CMakeFiles/

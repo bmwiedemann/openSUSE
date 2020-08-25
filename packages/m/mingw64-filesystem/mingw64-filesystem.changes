@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 20 12:06:28 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add missing Fortran case into macros.mingw64* (boo#1173990)
+
+-------------------------------------------------------------------
+Sun Aug 16 04:26:24 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix warning about non standard group (boo#1173189)
+- Make cmake package support to be more in sync with native package
+  * Add mingw64-cmake.prov and mingw64-cmake.attr ported from native
+    cmake package to support generating mingw64(cmake:xxx) dependencies
+    required by newer KDE Frameworks 5 and other packages.
+  * Move out cmake related macros from macros.mingw64 into macros.mingw64-cmake
+  * Define macro _mingw64_cmake_build
+  * Fix deprecated call to %make_jobs
+  CMake support may be better located in a package named mingw64-cross-cmake
+  but need to be used here until the deprecated dependency generator provided
+  by this package is converted to sets of *.attr/*.prov files.
+- Add additional man languages 'id' and 'uk' used by KDE Frameworks5 packages
+
+-------------------------------------------------------------------
 Sun Apr 19 17:39:26 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Process debuginfo in a reproducible way (boo#1041090)

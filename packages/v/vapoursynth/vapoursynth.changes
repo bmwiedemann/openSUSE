@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 24 08:07:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 52:
+  * updated visual studio 2019 runtime version
+  * updated zimg
+  * updated vsrepo with support for python wheel packages
+  * vsgenstubs is now included with vsrepo
+  * fixed maximum for 16 bit input with diagonal filters and optimizations
+  * fixed deadlock in fmserial filters introduced in r51
+  * fixed more averageframes bugs
+
+-------------------------------------------------------------------
 Tue Aug 11 09:45:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 51:

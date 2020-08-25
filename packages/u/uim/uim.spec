@@ -31,6 +31,7 @@ Source4:        baselibs.conf
 Patch2:         uim-fix-crash-in-firefox.diff
 Patch3:         bugzilla-1175274-emacs-27.1.patch
 Patch4:         uim-fix-multiple_declaration.diff
+Patch5:         riscv.patch
 BuildRequires:  canna-devel
 BuildRequires:  emacs-x11
 BuildRequires:  fdupes
@@ -109,6 +110,7 @@ Contains Qt5 input module plugin for uim
 %patch2 -p1
 %patch3 -p0
 %patch4 -p0
+%patch5 -p1
 cp emacs/README README.emacs
 iconv -f euc-jp -t utf-8 < emacs/README.ja > README.ja.emacs
 

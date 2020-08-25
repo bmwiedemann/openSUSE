@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:46:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.47:
+  + Add axis title to chart in histogram tool.
+  + Fix line end marker roundtrip through strict ODF.
+  + Improve export of line markers to ODF for interoperability.
+  + Improve line marker handling on import.
+  + Fix LaTeX export.
+  + When reading an ODF file make all sheets of equal size.
+  + Fix xlsx object non-import crash.
+  + Fix in-place graph data problem.
+  + Port to Python3.
+  + Fix performance issue with sample_datasource.
+  + Fix partial-line issue with sample_datasource.
+  + Fix load of in-place graph data with extra ()s.
+  + Fix Ctrl-; cursor position.
+  + Fix ssconvert --merge-to problem.
+  + Fix sheet size paste problem.
+  + Speed up really large auto-filters.
+  + Fix 2038 problem on quit.
+  + Improve tests.
+  + Improve dependency tracking for implicit intersection.
+  + Fix format dialog issue.
+  + Re-tune style quad tree.
+  + Re-tune dependency bucket system.
+  + Fix global name parsing problem with non-uniform sheet sizing.
+  + Avoid style dependency redraw during file load.
+  + Tend to dead kittens.
+  + Fix metadata dialog.
+  + Fix potential 64-bit problem with signals.
+  + Fix GnmRange introspection.
+
+-------------------------------------------------------------------
 Sat May  9 22:54:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.46:

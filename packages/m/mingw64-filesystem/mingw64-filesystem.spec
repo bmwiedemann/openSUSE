@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-filesystem
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define debug_package %{nil}
 Name:           mingw64-filesystem
-Version:        20191217
+Version:        20200816
 Release:        0
 Summary:        MinGW base filesystem and environment
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries
-Url:            http://hg.et.redhat.com/misc/fedora-mingw--devel/
+URL:            http://hg.et.redhat.com/misc/fedora-mingw--devel/
 Source0:        COPYING
 Source1:        macros.mingw64
 Source2:        mingw64.sh
@@ -36,6 +36,9 @@ Source8:        mingw64-install-post.sh
 Source9:        mingw64-find-lang.sh
 Source10:       languages
 Source11:       languages.man
+Source12:       mingw64-cmake.prov
+Source13:       mingw64-cmake.attr
+Source14:       macros.mingw64-cmake
 Provides:       mingw64(dbghelp.dll)
 Provides:       mingw64(mpr.dll)
 Provides:       mingw64(odbccp32.dll)
@@ -48,6 +51,7 @@ Provides:       mingw64(d2d1.dll)
 Provides:       mingw64(d3d11.dll)
 Provides:       mingw64(dwrite.dll)
 Requires:       mingw64-cross-breakpad-tools
+Requires:       python3
 Requires:       rpm
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -87,6 +91,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/profile.d/
 
 mkdir -p %{buildroot}%{_sysconfdir}/rpm
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/macros.mingw64
+install -m 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/rpm/macros.mingw64-cmake
 
 mkdir -p %{buildroot}%{_sysconfdir}/rpmlint
 install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/rpmlint/
@@ -138,6 +143,12 @@ install -m 0755 %{SOURCE5} %{buildroot}%{_libexecdir}/rpm
 install -m 0755 %{SOURCE8} %{buildroot}%{_libexecdir}/rpm
 install -m 0755 %{SOURCE9} %{buildroot}%{_libexecdir}/rpm
 
+# cmake support
+mkdir -p %{buildroot}%{_libexecdir}/rpm
+install -m 0755 %{SOURCE12} %{buildroot}%{_libexecdir}/rpm
+mkdir -p %{buildroot}%{_libexecdir}/rpm/fileattrs
+install -m 0755 %{SOURCE13} %{buildroot}%{_libexecdir}/rpm/fileattrs
+
 # Create the locale directories:
 while read LANG ; do
   mkdir -p %{buildroot}%{_prefix}/x86_64-w64-mingw32/sys-root/mingw/share/locale/$LANG/LC_MESSAGES
@@ -155,8 +166,11 @@ done < %{SOURCE11}
 %defattr(-,root,root,-)
 %doc COPYING
 %config %{_sysconfdir}/rpm/macros.mingw64
+%config %{_sysconfdir}/rpm/macros.mingw64-cmake
 %config %{_sysconfdir}/profile.d/mingw64.sh
 %config %{_sysconfdir}/rpmlint/mingw64-rpmlint.config
+%config %{_libexecdir}/rpm/mingw64-cmake.prov
+%config %{_libexecdir}/rpm/fileattrs/mingw64-cmake.attr
 %{_bindir}/mingw64-*
 %{_libexecdir}/mingw64-scripts
 %{_prefix}/x86_64-w64-mingw32/

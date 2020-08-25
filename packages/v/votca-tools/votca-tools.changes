@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 18:08:56 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.2
+  - format code with clang-10 ([gh#votca/tools#278])
+  - move CI to GitHub Actions ([gh#votca/tools#280],
+    [gh#votca/tools#285], [gh#votca/tools#287])
+  - fix build with mkl ([gh#votca/tools#283])
+
+-------------------------------------------------------------------
 Mon Jun 22 12:11:56 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6.1

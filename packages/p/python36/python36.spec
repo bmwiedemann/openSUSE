@@ -155,6 +155,10 @@ Patch33:        bpo36263-Fix_hashlib_scrypt.patch
 # PATCH-FIX-UPSTREAM CVE-2019-9674-zip-bomb.patch bsc#1162825 mcepl@suse.com
 # Improve documentation warning against the possible zip bombs
 Patch35:        CVE-2019-9674-zip-bomb.patch
+# PATCH-FIX-UPSTREAM riscv64-support.patch bpo-33377: add triplets for mips-r6 and riscv (#6655)
+Patch36:        riscv64-support.patch
+# PATCH-FIX-UPSTREAM riscv64-ctypes.patch bpo-35847: RISC-V needs CTYPES_PASS_BY_REF_HACK (GH-11694)
+Patch37:        riscv64-ctypes.patch
 ### COMMON-PATCH-END ###
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -307,8 +311,8 @@ Provides:       %{python_pkg_name}-importlib-metadata = %{version}
 # python-importlib_resources is a backport of 3.7 behaviour into older pythons
 Provides:       %{python_pkg_name}-importlib_resources = %{version}
 %if %{primary_interpreter}
-Provides:       python3-base = %{version}
 Provides:       python3-asyncio = %{version}
+Provides:       python3-base = %{version}
 Obsoletes:      python3-asyncio < %{version}
 Provides:       python3-typing = %{version}
 Obsoletes:      python3-typing < %{version}
@@ -334,14 +338,14 @@ database and UI toolkits support.
 %package -n %{python_pkg_name}-tools
 Summary:        Python Utility and Demonstration Scripts
 Requires:       %{python_pkg_name}-base = %{version}
-Provides:       %{python_pkg_name}-demo = %{version}
 Provides:       %{python_pkg_name}-2to3 = %{version}
+Provides:       %{python_pkg_name}-demo = %{version}
 %if %{primary_interpreter}
-Provides:       python3-tools = %{version}
-Provides:       python3-demo = %{version}
 Provides:       python3-2to3 = %{version}
-Obsoletes:      python3-demo < %{version}
+Provides:       python3-demo = %{version}
+Provides:       python3-tools = %{version}
 Obsoletes:      python3-2to3 < %{version}
+Obsoletes:      python3-demo < %{version}
 %endif
 
 %description -n %{python_pkg_name}-tools
@@ -415,6 +419,8 @@ other applications.
 %patch32 -p1
 %patch33 -p1
 %patch35 -p1
+%patch36 -p1
+%patch37 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -510,7 +516,7 @@ EXCLUDE="$EXCLUDE test_multiprocessing_forkserver"
 EXCLUDE="$EXCLUDE test_faulthandler"
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build} > 0
-EXCLUDE="$EXCLUDE test_asyncio test_multiprocessing_fork test_multiprocessing_forkserver test_multiprocessing_main_handling test_multiprocessing_spawn test_threading test_threadedtempfile test_io test_posix test_ioctl test_mmap test_openpty test_pty test_time test_subprocess test_asyncore test_asyncio test_os test_faulthandler"
+EXCLUDE="$EXCLUDE test_multiprocessing_forkserver test_multiprocessing_spawn test_posix test_os test_socket"
 # qemu bug (siginterrupt handling)
 EXCLUDE="$EXCLUDE test_signal"
 %endif

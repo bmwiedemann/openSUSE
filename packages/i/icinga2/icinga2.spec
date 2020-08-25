@@ -55,7 +55,7 @@
 %endif
 
 %if "%{_vendor}" == "suse"
-%define plugindir %{_libexecdir}/nagios/plugins/
+%define plugindir %{icinga2_plugindir}
 %define apachename apache2
 %define apacheconfdir  %{_sysconfdir}/apache2/conf.d
 %define apacheuser wwwrun
@@ -101,6 +101,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if "%{_vendor}" == "suse"
 PreReq:         permissions
 Requires:       logrotate
+BuildRequires:  nagios-rpm-macros
 %endif
 Requires:       %{name}-bin = %{version}-%{release}
 Requires:       %{name}-common = %{version}-%{release}

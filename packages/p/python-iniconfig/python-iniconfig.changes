@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Aug 24 13:03:36 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Initial packaging (v1.0.1)
+- Build the tests separately because it deadlocks with pytest

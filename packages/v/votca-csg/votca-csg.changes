@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 22 18:28:13 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.2
+  - move CI to GitHub Actions ([gh#votca/csg#563],
+    [gh#votca/csg#567], [gh#votca/csg#569])
+  - add max scaling parameter to pressure correction
+    ([gh#votca/csg#565])
+  - fix test dependencies for parallel ctest ([gh#votca/csg#573])
+  - fix multicomponent imc ([gh#votca/csg#579],
+    [gh#votca/csg#581])
+
+-------------------------------------------------------------------
 Thu Aug 20 09:08:53 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.

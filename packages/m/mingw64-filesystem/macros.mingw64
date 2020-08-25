@@ -43,6 +43,7 @@
 %_mingw64_as              %{_mingw64_target}-as
 %_mingw64_dlltool         %{_mingw64_target}-dlltool
 %_mingw64_dllwrap         %{_mingw64_target}-dllwrap
+%_mingw64_fc              %{_mingw64_target}-gfortran
 %_mingw64_gcov            %{_mingw64_target}-gcov
 %_mingw64_gprof           %{_mingw64_target}-gprof
 %_mingw64_ld              %{_mingw64_target}-ld
@@ -73,7 +74,7 @@
 %_mingw64_debug_package(n:) \
 %package %{-n:-n %{-n*}-}debug \
 Summary: Debug information for package %{name} \
-Group: Development/Debug \
+Group: Development/Sources \
 BuildArch: noarch \
 %description %{-n:-n %{-n*}-}debug \
 This package provides debug information for package %{name}.\
@@ -183,32 +184,3 @@ package or when debugging this package.\
 
 # deprecated, use _mingw64_make_install (unix variant is named %make_install)
 %_mingw64_makeinstall %_mingw64_make_install
-
-# internal macro used by related filesystem packages
-%__mingw64_cmake %{_mingw64_env} ; \
-  cmake \\\
-        -DCMAKE_SYSTEM_NAME="Windows" \\\
-        -DCMAKE_VERBOSE_MAKEFILE=ON \\\
-        -DCMAKE_BUILD_TYPE="RelWithDebInfo" \\\
-        -DCMAKE_INSTALL_PREFIX:PATH=%{_mingw64_prefix} \\\
-        -DCMAKE_INSTALL_LIBDIR:PATH=%{_mingw64_libdir} \\\
-        -DBIN_INSTALL_DIR=%{_mingw64_bindir} \\\
-        -DINCLUDE_INSTALL_DIR:PATH=%{_mingw64_includedir} \\\
-        -DLIB_INSTALL_DIR:PATH=%{_mingw64_libdir} \\\
-        -DSHARE_INSTALL_DIR:PATH=%{_mingw64_datadir} \\\
-        -DSYSCONF_INSTALL_DIR:PATH=%{_mingw64_sysconfdir} \\\
-        -DSHARE_INSTALL_PREFIX:PATH=%{_mingw64_datadir} \\\
-        -DBUILD_SHARED_LIBS:BOOL=ON \\\
-        -DCMAKE_C_COMPILER="%{_bindir}/%{_mingw64_cc}" \\\
-        -DCMAKE_CXX_COMPILER="%{_bindir}/%{_mingw64_cxx}" \\\
-        -DCMAKE_RC_COMPILER="%{_bindir}/%{_mingw64_windres}" \\\
-        -DCMAKE_FIND_ROOT_PATH="%{_mingw64_prefix}" \\\
-        -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \\\
-        -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \\\
-        -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER
-
-# cmake > 3.13.1 requires setting source dir 
-%_mingw64_cmake %{__mingw64_cmake} .
-
-%_mingw64_cmake_install %{_mingw64_env} ; \
-  make VERBOSE=1 DESTDIR=%{buildroot} install/fast

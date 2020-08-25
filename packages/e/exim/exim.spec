@@ -100,6 +100,7 @@ Source30:       eximstats-html-update.py
 Source31:       eximstats.conf
 Source32:       eximstats.conf-2.2
 Source40:       exim.service
+Source41:       exim_db.8.gz
 Patch0:         exim-tail.patch
 Patch1:         gnu_printf.patch
 Patch2:         patch-exim-4.94+fixes-0e8319c3edebfec2158fbaa4898af27cb3225c99
@@ -346,6 +347,8 @@ cp -p %{S:1} $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.exim
 install -m 0644 %{S:2} $RPM_BUILD_ROOT/etc/logrotate.d/exim
 # man pages
 mv doc/exim.8 $RPM_BUILD_ROOT/%{_mandir}/man8/
+cp $RPM_SOURCE_DIR/exim_db.8.gz $RPM_BUILD_ROOT/%{_mandir}/man8
+gunzip $RPM_BUILD_ROOT/%{_mandir}/man8/exim_db.8.gz
 pod2man --center=EXIM --section=8 $RPM_BUILD_ROOT/usr/sbin/eximstats > $RPM_BUILD_ROOT/%{_mandir}/man8/eximstats.8
 for i in \
 	sendmail \

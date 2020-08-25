@@ -541,4 +541,17 @@ Lets break everything :)
   * Get rid of the unmaintained and buggy desktop file check (#14)</comment>
     <requestid>802526</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>7495a94f2e6f9f36c9376bf0ff179b6d</srcmd5>
+    <version>84.87+git20200817.346e853</version>
+    <time>1598340692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200817.346e853:
+  * added NO_BRP_PERMISSIONS and NO_BRP_ROOTFS (bug#968153)
+
+- Update to version 84.87+git20200731.3af0c0a:
+  * Make links *to* /etc/aternatives absolute links (#33)
+  * Sort input file list (#32)</comment>
+    <requestid>827370</requestid>
+  </revision>
 </revisionlist>

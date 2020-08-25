@@ -99,7 +99,8 @@ export GUILE_WARN_DEPRECATED
 	   --disable-silent-rules \
      --with-bash-completion-dir=%{_datadir}/bash-completion/completions
 # guile 2.2.6 core dumps while build guix with more then 3 threads. See https://issues.guix.gnu.org/issue/36811
-make -j3
+# building in parallel makes build results nondeterministic (boo#1170378)
+make
 
 %install
 %make_install

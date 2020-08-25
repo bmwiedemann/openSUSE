@@ -17,7 +17,7 @@
 
 
 Name:           gnumeric
-Version:        1.12.47
+Version:        1.12.48
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only

@@ -397,10 +397,11 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 %post
 %{post_rb}
 
-%transfiletriggerin -- %{dirname:%{vagrant_plugin_spec}}/
+#FIXME: use %%transfiletriggerin/-un once boo#1041742 gets resolved
+%filetriggerin -- %{dirname:%{vagrant_plugin_spec}}/
 %{transfiletriggerin_rb}
 
-%transfiletriggerun -- %{dirname:%{vagrant_plugin_spec}}/
+%filetriggerun -- %{dirname:%{vagrant_plugin_spec}}/
 %{transfiletriggerun_rb}
 
 %files

@@ -17,6 +17,7 @@ sed "s/['\"]/\\\&/g" >"$filelist"
 dlls=$(grep '\.dll$' "$filelist")
 pcs=$(grep '\.pc$' "$filelist")
 libs=$(grep '\.a$' "$filelist")
+cmakes=$(grep '[cC]onfig.cmake$' "$filelist")
 
 for f in $dlls; do
     [ ! -f "$f" ] && continue
@@ -33,6 +34,11 @@ for h in $libs; do
     [ ! -f "$h" ] && continue
     libname=`basename "$h" | sed 's#^lib##g' | sed 's#\.dll\.#\.#g' | sed 's#\.a##g'`
 	echo "$target(lib:$libname)"
+done
+
+for h in $cmakes; do
+    [ ! -f "$h" ] && continue
+    echo $h | /usr/lib/rpm/mingw64-cmake.prov
 done
 
 rm "$filelist"

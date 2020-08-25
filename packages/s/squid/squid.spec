@@ -26,7 +26,7 @@
 %endif
 
 Name:           squid
-Version:        4.12
+Version:        4.13
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later

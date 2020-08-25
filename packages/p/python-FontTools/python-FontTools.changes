@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 08:48:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Switch from brotlipy to Brotli (bsc#1175303)
+
+-------------------------------------------------------------------
 Thu Aug 13 06:57:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 4.13.0

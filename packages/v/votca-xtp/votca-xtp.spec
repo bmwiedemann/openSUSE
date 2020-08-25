@@ -18,7 +18,7 @@
 
 
 Name:           votca-xtp
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 %define         uversion %{version}
 %define         sover 6

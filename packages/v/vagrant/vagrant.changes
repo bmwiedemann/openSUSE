@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 11:19:38 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Use %%filetriggerin/-un until boo#1041742 gets resolved
+
+-------------------------------------------------------------------
 Mon May 18 14:17:46 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Use the correct ruby in the vagrant binstub as well
