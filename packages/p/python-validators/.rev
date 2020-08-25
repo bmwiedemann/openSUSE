@@ -110,4 +110,18 @@
   * Added support for emojis and more IDNA URLs</comment>
     <requestid>821364</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>790bbc30c91dc514272e17d1a4502df9</srcmd5>
+    <version>0.18.0</version>
+    <time>1598351899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0:
+  * Added bitcoin address validator
+Changes from 0.17.0 to 0.17.1:
+  * Fixed python_requires using twine
+Changes from 0.16.0 to 0.17.0:
+  * Fix URL validator ip_last_octet regex
+</comment>
+    <requestid>827972</requestid>
+  </revision>
 </revisionlist>
