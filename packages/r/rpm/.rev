@@ -2199,4 +2199,16 @@ See bugzilla 1167537 for the gory details.</comment>
   ocaml(NAME) = HASH is now handled in ocaml-rpm-macros (bsc#1154874)</comment>
     <requestid>817222</requestid>
   </revision>
+  <revision rev="282" vrev="7">
+    <srcmd5>47d15f14d134d5076f7bf0fdb0a91e54</srcmd5>
+    <version>4.15.1</version>
+    <time>1598340676</time>
+    <user>dimstar_suse</user>
+    <comment>- Default to zstd compression (level 19).
+  * modified patch: macrosin.diff
+
+- Set %_libexecdir to /usr/libexec
+  * modified patch: platformin.diff</comment>
+    <requestid>819007</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  6 16:35:40 CEST 2020 - Martin Liška <mliska@suse.cz>
+
+- Default to zstd compression (level 19).
+  * modified patch: macrosin.diff
+
+-------------------------------------------------------------------
+Mon Jul  6 15:49:28 CEST 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Set %_libexecdir to /usr/libexec
+  * modified patch: platformin.diff
+
+-------------------------------------------------------------------
 Thu Jun 18 18:32:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - temporarily back out change of  %_libexecdir to /usr/libexec
