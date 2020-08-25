@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 10:23:37 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.42
+  * Added ``-q``/``--quiet`` command line argument. This will reduce the
+    verbosity of informational output, e.g. for use in a CI pipeline.
+  * Rewrote the ignore logic to be more compatible with setuptools.  This 
+    might have introduced some regressions, so please file bugs!  One side
+    effect of this is that ``--ignore`` (or the ``ignore`` setting in the
+    config file) is now handled the same way as ``global-exclude`` in a
+    ``MANIFEST.in``, which means:
+    - it's matched anywhere in the file tree
+    - it's ignored if it matches a directory
+  * Drop Python 2.7 support.
+- from v0.41
+  * Support `PEP 517`_, i.e. packages using pyproject.toml
+  * Ignore subcommand stderr unless the subcommand fails.
+
+-------------------------------------------------------------------
 Mon May 25 10:59:13 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

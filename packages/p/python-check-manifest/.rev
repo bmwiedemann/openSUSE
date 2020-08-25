@@ -67,4 +67,12 @@ Needed for python3-jupyter_ipython</comment>
     <comment></comment>
     <requestid>808800</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a9663dd84c2091fb55cfc5eeaf6fc279</srcmd5>
+    <version>0.42</version>
+    <time>1598351923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828149</requestid>
+  </revision>
 </revisionlist>
