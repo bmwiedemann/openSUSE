@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 24 05:03:36 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.0:
+  * Require xxHash version >= v0.8.0
+  * Upgrade xxHash to v0.8.0
+  * XXH3 hashes: `xxh3_64`, `xxh3_128`, and their oneshot functions
+
+-------------------------------------------------------------------
 Tue Jul 21 11:23:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.4
