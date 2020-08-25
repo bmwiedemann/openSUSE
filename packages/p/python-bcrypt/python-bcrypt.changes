@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 20 12:46:59 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 3.2.0
+ * add type hints to top level functions
+ * drop support for python 3.5 and older
+ * drop legacy code
+
+-------------------------------------------------------------------
 Wed May 13 11:20:23 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Relax the setuptools dependency on 40.8.0 to 40.5.0 since that

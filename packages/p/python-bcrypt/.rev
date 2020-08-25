@@ -68,4 +68,15 @@
     <comment></comment>
     <requestid>805265</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f528213e98c2a0fea0d6b09659be29a9</srcmd5>
+    <version>3.2.0</version>
+    <time>1598351938</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0
+ * add type hints to top level functions
+ * drop support for python 3.5 and older
+ * drop legacy code</comment>
+    <requestid>828187</requestid>
+  </revision>
 </revisionlist>

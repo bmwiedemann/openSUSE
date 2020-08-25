@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-bcrypt
-Version:        3.1.7
+Version:        3.2.0
 Release:        0
 Summary:        BSD type 2a and 2b password hashing
 License:        Apache-2.0
