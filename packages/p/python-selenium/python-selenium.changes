@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:30:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package x_ignore_nofocus.so on supported architectures only
+
+-------------------------------------------------------------------
 Wed Jun 24 10:38:52 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on aarch64 %arm

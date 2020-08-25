@@ -55,8 +55,11 @@ supported, as well as the Selenium 1.0 bindings.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-# Avoid 64bit runtime dependencies on 32bit architectures:
-%ifarch %{ix86} %arm
+# Do not package .so built for foreign architectures
+%ifnarch %{ix86} x86_64
+%python_expand rm %{buildroot}%{$python_sitelib}/selenium/webdriver/firefox/x86/x_ignore_nofocus.so
+%endif
+%ifnarch x86_64
 %python_expand rm %{buildroot}%{$python_sitelib}/selenium/webdriver/firefox/amd64/x_ignore_nofocus.so
 %endif
 
