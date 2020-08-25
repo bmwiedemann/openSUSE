@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 19 04:17:27 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.4.2:
+  * Fixed #1383: Known other does not work anymore with .editorconfig.
+  * Fixed: Regression in first known party path expansion.
+  * Fixed #1381: --combine-as loses # noqa in different circumstances.
+  * Implemented #1373: support for length sort only of direct (AKA
+    straight) imports.
+  * Fixed #1321: --combine-as loses # noqa.
+  * Fixed #1375: --dont-order-by-type CLI broken. 
+
+-------------------------------------------------------------------
 Sat Aug  8 12:21:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 5.3.2:

@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-isort%{psuffix}
-Version:        5.3.2
+Version:        5.4.2
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
