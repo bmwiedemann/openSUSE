@@ -38,6 +38,7 @@
 
 ##### WARNING: please do not edit this auto generated spec file. Use the Mesa.spec! #####
 %define drivers 1
+# when changing libglvnd to 1, ensure to enable the dependencies in baselibs.conf
 %define libglvnd 0
 
 %if 0%{?suse_version} >= 1330
@@ -46,7 +47,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.1.4
+%define _version 20.1.6
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -114,7 +115,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        20.1.4
+Version:        20.1.6
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
