@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 14 12:54:39 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove %bcond_without test and activate test suite
+- Update to v1.3.2
+  * No changelog available
+    See https://github.com/ponty/PyVirtualDisplay/compare/0.2.5...1.3.2
+
+-------------------------------------------------------------------
 Mon Mar  2 04:20:32 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 -  Update to 0.2.5:

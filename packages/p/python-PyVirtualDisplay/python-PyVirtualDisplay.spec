@@ -17,33 +17,43 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-PyVirtualDisplay
-Version:        0.2.5
+Version:        1.3.2
 Release:        0
 Summary:        Python wrapper for Xvfb, Xephyr and Xvnc
 License:        BSD-2-Clause
 URL:            https://github.com/ponty/PyVirtualDisplay
 Source:         https://files.pythonhosted.org/packages/source/P/PyVirtualDisplay/PyVirtualDisplay-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-EasyProcess
 Requires:       xorg-x11-Xvfb
-Recommends:     xorg-x11-Xvnc
+Suggests:       xorg-x11-Xvnc
 Suggests:       xorg-x11-server-extra
 BuildArch:      noarch
-%if %{with test}
+# SECTION test requirements
 BuildRequires:  %{python_module EasyProcess}
-BuildRequires:  %{python_module nose}
-%endif
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module entrypoint2}
+BuildRequires:  %{python_module path.py}
+BuildRequires:  %{python_module pyscreenshot}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module vncdotool >= 0.13.0}
+BuildRequires:  maim
+BuildRequires:  xmessage
+BuildRequires:  xorg-x11-server-extra
+BuildRequires:  xvfb-run
+# /SECTION
 %python_subpackages
 
 %description
-PyVirtualDisplay is a python wrapper for Xvfb, Xephyr and Xvnc
+PyVirtualDisplay is a python wrapper for Xvfb, Xephyr and Xvnc.
 
 %prep
 %setup -q -n PyVirtualDisplay-%{version}
+sed -i 's/from backports import tempfile/import tempfile/' tests/test_xvnc.py
 
 %build
 %python_build
@@ -52,19 +62,13 @@ PyVirtualDisplay is a python wrapper for Xvfb, Xephyr and Xvnc
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-mkdir tester
-pushd tester
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -B -m nose pyvirtualdisplay
-}
-popd
-%endif
+# xvnc omitted due to "vncext: pseudocolour not supported"
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run --server-args "-screen 0 1920x1080x24" $python -m pytest tests -rs -k 'not (examples or smart or xvnc)'
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.md
 %{python_sitelib}/*
 
 %changelog
