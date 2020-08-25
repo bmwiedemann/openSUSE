@@ -17,54 +17,65 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%define skip_python2 1
+%bcond_with ringdisabled
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+# Magic for OBS Staging. Only build the flavors required by
+# other packages in the ring.
+%if %{with ringdisabled}
+ExclusiveArch:  do_not_build
+%endif
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
 Name:           python-hypothesis%{psuffix}
-Version:        5.19.0
+Version:        5.24.2
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
-URL:            https://github.com/HypothesisWorks/hypothesis-python
-Source:         https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM failing-test_array_values_are_unique_high_collision.patch gh#HypothesisWorks/hypothesis#2447 mcepl@suse.com
-# Skip failing test on i586.
-Patch0:         failing-test_array_values_are_unique_high_collision.patch
-BuildRequires:  %{python_module setuptools >= 36}
+URL:            https://github.com/HypothesisWorks/hypothesis
+# Source is the `hypothesis-python` subdir of the Github repository.
+# Edit the `_service` file and run `osc service runall` for updates.
+Source:         hypothesis-python-%{version}
+%if 0%{?suse_version} >= 1500
+BuildRequires:  %{pythons >= 3.5.2}
+%else
+BuildRequires:  %{python_module base >= 3.5.2}
+%endif
+BuildRequires:  %{python_module setuptools >= 36.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 19.3.0
-Requires:       python-sortedcontainers >= 2.2.2
-Recommends:     python-Django >= 3.0.7
-Recommends:     python-dpcontracts >= 0.6.0
-Recommends:     python-lark-parser >= 0.8.9
+Requires:       python-attrs >= 19.2.0
+Requires:       python-sortedcontainers >= 2.1.0
+Recommends:     python-Django >= 2.2
+Recommends:     python-dpcontracts >= 0.4
+Recommends:     python-lark-parser >= 0.6.5
 Recommends:     python-numpy >= 1.9.0
 Recommends:     python-pandas >= 0.19
-Recommends:     python-pytest >= 5.4.3
-Recommends:     python-python-dateutil >= 2.8.1
+Recommends:     python-pytest >= 4.3
+Recommends:     python-python-dateutil >= 1.4
 Recommends:     python-pytz >= 2014.1
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 3.0.7}
-BuildRequires:  %{python_module attrs >= 19.3.0}
+BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module attrs >= 19.2.0}
+BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module dpcontracts >= 0.6.0}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module hypothesis >= %{version}}
-BuildRequires:  %{python_module lark-parser >= 0.8.9}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module hypothesis = %{version}}
+BuildRequires:  %{python_module lark-parser >= 0.6.5}
 BuildRequires:  %{python_module numpy >= 1.9.0}
-BuildRequires:  %{python_module pexpect >= 4.8.0}
-BuildRequires:  %{python_module pytest >= 5.4.3}
-BuildRequires:  %{python_module python-dateutil >= 2.8.1}
-BuildRequires:  %{python_module sortedcontainers >= 2.2.2}
+BuildRequires:  %{python_module pandas >= 0.19}
+BuildRequires:  %{python_module pexpect}
+BuildRequires:  %{python_module pytest >= 4.3}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module python-dateutil >= 1.4}
+BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
 BuildRequires:  %{python_module typing_extensions}
 %endif
 # /SECTION
@@ -82,38 +93,36 @@ PyPy3 until they support a 3.3 compatible version of the language). It does *not
 work on Jython or on Python 3.0 through 3.2.
 
 %prep
-%setup -q -n hypothesis-hypothesis-python-%{version}/hypothesis-python
-%autopatch -p1
-
-# the django fails to initialize
-rm -r tests/django
-# do not pull in pandas as a dep in ring1; it slows down things too much
-rm -r tests/pandas
+%setup -q -n %{_sourcedir}/hypothesis-python-%{version} -T -D
+# gh#HypothesisWorks/hypothesis#2447: make sure arr==0.0 is an array on 32-bit
+sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_gen_data.py
 
 %build
+%if !%{with test}
 %python_build
+%endif
 
 %install
 %if !%{with test}
 %python_install
-%{python_expand \
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/hypothesis/
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/hypothesis/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %check
 %if %{with test}
-# test_prints_statistics_given_option_under_xdist - wrong xdist opts
-%pytest tests -k "not test_prints_statistics_given_option_under_xdist"
+# theses tests try to write into global python_sitelib
+# https://github.com/HypothesisWorks/hypothesis/issues/2546
+skiptests="test_updating_the_file_include_new_shrinkers"
+skiptests+=" or test_can_learn_to_normalize_the_unnormalized"
+%pytest tests -n auto -p pytester --runpytest=subprocess -k "not ($skiptests)"
 %endif
 
 %if !%{with test}
 %files %{python_files}
-%license ../LICENSE.txt
-%doc ../CITATION README.rst docs/changes.rst
-%{python_sitelib}/hypothesis*
+%license LICENSE.txt
+%doc README.rst
+%{python_sitelib}/hypothesis
+%{python_sitelib}/hypothesis-%{version}-py*.egg-info
 %endif
 
 %changelog

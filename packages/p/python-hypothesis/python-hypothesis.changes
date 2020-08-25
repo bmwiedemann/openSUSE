@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Wed Aug 12 20:51:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 5.24.2
+  * This release improves shrink quality by allowing Hypothesis to
+    automatically learn new shrink passes for difficult to shrink
+    tests.
+  * The automatic learning is not currently accessible in user code
+    (it still needs significant work on robustness and performance
+    before it is ready for that), but this release includes learned
+    passes that should improve shrinking quality for tests which
+    use any of the text(), hypothesis.strategies.floats,
+    hypothesis.strategies.datetimes, hypothesis.strategies.emails,
+    and complex_numbers() strategies.
+- Update to version 5.24.1
+  * This patch updates some docstrings, without changing runtime
+    behaviour. 
+- add comment about source archive
+
+-------------------------------------------------------------------
+Tue Aug 11 12:28:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 5.24.0
+  * The functions() strategy has a new argument pure=True, 
+    which ensures that the same return value is generated 
+    for identical calls to the generated function (issue 
+    #2538).
+  * Thanks to Zac Hatfield-Dodds and Nikita Sobolev for this 
+    feature!
+- Update to version 5.23.12
+  * This release removes a number of Hypothesis's internal 
+    "shrink passes" - transformations it makes to a 
+    generated test case during shrinking - which appeared to 
+    be redundant with other transformations.
+  * It is unlikely that you will see much impact from this. 
+    If you do, it will likely show up as a change in 
+    shrinking performance (probably slower, maybe faster), 
+    or possibly in worse shrunk results. If you encounter 
+    the latter, please let us know.
+- remove rpmlintrc again
+- use only github source repository (python subdir) in obscpio
+
+-------------------------------------------------------------------
+Sat Aug  8 08:41:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Use PyPI source for package and test it with tests from the
+  Github repository -- source hypothesis-python-tests-5.23.11 
+  as direct CPIO archive hypothesis-python-tests-5.23.11.obscpio
+  created by (locally run) obs_scm service
+- Reenable django and pandas tests
+- With ringdisabled, do not run test flavor at all
+- Require and use pytest-xdist in tests
+  * Reenables the one skipped test
+  * Trims total build time by a large factor despite now running
+    pandas and django tests too!
+- Drop failing-test_array_values_are_unique_high_collision.patch
+  * Fix the test instead gh#HypothesisWorks/hypothesis#2447    
+- python-hypothesis-rpmlintrc -- filter empty types file
+- Sync requirements versions to setup.py 
+  * newer versions probably came from wrong interpretation of
+    upstream's version pinning
+- Update to version 5.23.11 
+  * This release fixes a bug in some internal Hypothesis support 
+    code. It has no user visible impact.    
+- Update to version 5.23.10
+  * This release improves the quality of shrunk test cases in some 
+    special cases. Specifically, it should get shrinking unstuck in 
+    some scenarios which require simultaneously changing two parts 
+    of the generated test case.    
+- Update to version 5.23.9
+  * This release improves the performance of some internal support 
+    code. It has no user visible impact, as that code is not 
+    currently run during normal Hypothesis operation.
+- Update to version 5.23.8
+  * This release adds a heuristic to detect when shrinking has 
+    finished despite the fact that there are many more possible 
+    transformations to try. This will be particularly useful for 
+    tests where the minimum failing test case is very large despite 
+    there being many smaller test cases possible, where it is 
+    likely to speed up shrinking dramatically.    
+  * In some cases it is likely that this will result in worse 
+    shrunk test cases. In those cases rerunning the test will 
+    result in further shrinking.    
+- Update to version 5.23.7
+  * This release makes some performance improvements to shrinking. 
+    They should only be noticeable for tests that are currently 
+    particularly slow to shrink.
+- Update to version 5.23.6
+  * This patch adds some more internal functions to support a new 
+    feature we're working on, like version 5.18.3. There is still 
+    no user-visible changes yet.
+- Update to version 5.23.5  
+  * This release makes some changes to internal support code that 
+    is not currently used in production Hypothesis. It has no user 
+    visible effect at present.
+- Update to version 5.23.4
+  * This release improves shrinking quality in some special cases.
+- Update to version 5.23.3  
+  * This release fixes issue #2507, where lazy evaluation meant 
+    that the values drawn from a sampled_from() strategy could 
+    depend on mutations of the sampled sequence that happened after 
+    the strategy was constructed.
+- Update to version 5.23.2
+  * This patch fixes issue #2462, a bug in our handling of 
+    unittest.TestCase.subTest(). Thanks to Israel Fruchter for 
+    fixing this at the EuroPython sprints!
+- Update to version 5.23.1
+  * This release improves the behaviour of the characters() 
+    strategy when shrinking, by changing which characters are 
+    considered smallest to prefer more "normal" ascii 
+    characters where available.
+- Update to version 5.23.0  
+  * The default print_blob setting is now smarter. It defaults to 
+    True in CI and False for local development.    
+  * Thanks to Hugo van Kemenade for implementing this feature at 
+    the EuroPython sprints!
+- Update to version 5.22.0 
+  * The slices() strategy can now generate slices for empty 
+    sequences, slices with negative start and stop indices (from 
+    the end of the sequence), and step=None in place of step=1.    
+  * Thanks to Sangarshanan for implementing this feature at the 
+    EuroPython sprints!
+- Update to version 5.21.0   
+  * This release ensures that tests which raise RecursionError are 
+    not reported as flaky simply because we run them from different 
+    initial stack depths (issue #2494).
+- Update to version 5.20.4
+  * This release improves the performance of the sample method on 
+    objects obtained from randoms() when use_true_random=False. 
+    This should mostly only be noticeable when the sample size is a 
+    large fraction of the population size, but may also help avoid 
+    health check failures in some other cases.
+- Update to version 5.20.3
+  * This release makes some internal changes for testing purposes 
+    and should have no user visible effect.
+- Update to version 5.20.2
+  * This release fixes a small caching bug in Hypothesis internals 
+    that may under some circumstances have resulted in a less 
+    diverse set of test cases being generated than was intended.    
+  * Fixing this problem revealed some performance problems that 
+    could occur during targeted property based testing, so this 
+    release also fixes those. Targeted property-based testing 
+    should now be significantly faster in some cases, but this may 
+    be at the cost of reduced effectiveness.
+- Update to version 5.20.1
+  * This patch updates our formatting to use isort 5. There is no 
+    user-visible change.
+- Update to version 5.20.0
+  * The basic_indices() strategy can now generate bare indexers in 
+    place of length-one tuples. Thanks to Andrea for this patch!
+- Update to version 5.19.3
+  * This patch removes an internal use of distutils in order to 
+    avoid this setuptools warning for some users.
+- Update to version 5.19.2
+  * This patch contains a small internal refactoring with no 
+    user-visible impact.  
+    Thanks to Andrea for writing this at the SciPy 2020 Sprints!
+- Update to version 5.19.1
+  * This release slightly improves shrinking behaviour. This should 
+    mainly only impact stateful tests, but may have some minor 
+    positive impact on shrinking collections (lists, sets, etc).
+
+-------------------------------------------------------------------
 Thu Jul  2 16:44:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 5.19.0:

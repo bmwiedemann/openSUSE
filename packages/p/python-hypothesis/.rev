@@ -474,4 +474,12 @@ This version fixes the license naming issue.</comment>
     fraction of the runtime for non-trivial tests.</comment>
     <requestid>818623</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9a1db84af9a9b7bf556efa61eaf3e074</srcmd5>
+    <version>5.24.2</version>
+    <time>1598351773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826724</requestid>
+  </revision>
 </revisionlist>
