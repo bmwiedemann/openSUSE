@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 21 15:27:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_failing_tests.patch to skip tests failing because of
+  incomplete emulation of the environment in osc build
+  environment (gh#giampaolo/psutil#1635).
+
+-------------------------------------------------------------------
 Sat Mar 14 07:25:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.7.0:

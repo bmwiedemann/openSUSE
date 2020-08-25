@@ -32,6 +32,9 @@ URL:            https://github.com/giampaolo/psutil
 Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%{version}.tar.gz
 Patch0:         skip-flaky-i586.patch
 Patch1:         skip-obs.patch
+# PATCH-FIX-UPSTREAM skip_failing_tests.patch gh#giampaolo/psutil#1635 mcepl@suse.com
+# skip tests failing because of incomplete emulation of the environment in osc build
+Patch2:         skip_failing_tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

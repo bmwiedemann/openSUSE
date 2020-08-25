@@ -1,0 +1,29 @@
+--- a/psutil/tests/test_linux.py
++++ b/psutil/tests/test_linux.py
+@@ -1500,6 +1500,8 @@ class TestSensorsBattery(unittest.TestCa
+             self.assertIsNone(psutil.sensors_battery().power_plugged)
+             assert m.called
+ 
++    @unittest.skipUnless(os.path.exists('/sys/class/power_supply/BAT0/energy_now'),
++                         'Missing /sys/class/power_supply/BAT0/energy_now file.')
+     def test_emulate_no_base_files(self):
+         # Emulate a case where base metrics files are not present,
+         # in which case we're supposed to get None.
+@@ -1511,6 +1513,8 @@ class TestSensorsBattery(unittest.TestCa
+                     IOError(errno.ENOENT, "")):
+                 self.assertIsNone(psutil.sensors_battery())
+ 
++    @unittest.skipUnless(os.path.exists('/sys/class/power_supply/BAT0/energy_full'),
++                         'Missing /sys/class/power_supply/BAT0/energy_full file.')
+     def test_emulate_energy_full_0(self):
+         # Emulate a case where energy_full files returns 0.
+         with mock_open_content(
+@@ -1518,6 +1522,8 @@ class TestSensorsBattery(unittest.TestCa
+             self.assertEqual(psutil.sensors_battery().percent, 0)
+             assert m.called
+ 
++    @unittest.skipUnless(os.path.exists('/sys/class/power_supply/BAT0/energy_full'),
++                         'Missing /sys/class/power_supply/BAT0/energy_full file.')
+     def test_emulate_energy_full_not_avail(self):
+         # Emulate a case where energy_full file does not exist.
+         # Expected fallback on /capacity.
