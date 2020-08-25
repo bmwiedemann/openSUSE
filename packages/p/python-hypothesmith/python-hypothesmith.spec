@@ -18,23 +18,42 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-Name:           python-hypothesmith
-Version:        0.0.6
+# no release tags in repository, but we need LICENSE and tests not
+# packaged in PyPI source https://github.com/Zac-HD/hypothesmith/issues/5
+%define commithash 6124cd71317add93500e0cb04c98cf5606adedea
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-hypothesmith%{psuffix}
+Version:        0.1.4
 Release:        0
 Summary:        Hypothesis strategies for generating Python programs, something like CSmith
 License:        MPL-2.0
 URL:            https://github.com/Zac-HD/hypothesmith
 Source:         https://files.pythonhosted.org/packages/source/h/hypothesmith/hypothesmith-%{version}.tar.gz
-# https://github.com/Zac-HD/hypothesmith/issues/5
-Source1:        https://raw.githubusercontent.com/Zac-HD/hypothesmith/master/LICENSE
+Source1:        https://github.com/Zac-HD/hypothesmith/archive/%{commithash}.tar.gz#/hypothesmith-gh-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module hypothesis >= 4.36.0}
-BuildRequires:  %{python_module lark-parser >= 0.7.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-hypothesis >= 4.36.0
+Requires:       python-base >= 3.6
+Requires:       python-hypothesis >= 5.23.7
 Requires:       python-lark-parser >= 0.7.2
+Requires:       python-libcst >= 0.3.8
+%if %{with test}
+BuildRequires:  %{python_module black}
+BuildRequires:  %{python_module hypothesis >= 5.23.7}
+BuildRequires:  %{python_module lark-parser >= 0.7.2}
+BuildRequires:  %{python_module libcst >= 0.3.8}
+BuildRequires:  %{python_module parso}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,22 +61,33 @@ BuildArch:      noarch
 Hypothesis strategies for generating Python programs, something like CSmith.
 
 %prep
-%setup -q -n hypothesmith-%{version}
-cp %{SOURCE1} .
+%setup -q -n hypothesmith-%{version} -b 1
+cp -r ../hypothesmith-%{commithash}/{LICENSE,CHANGELOG.md,tests} .
 
 %build
+%if !%{with test}
 %python_build
+%endif
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-# https://github.com/Zac-HD/hypothesmith/issues/5
+%if %{with test}
+# multibuild: test the source dir, nothing is installed
+export PYTHONPATH=$(pwd)/src
+%pytest -n auto
+%endif
 
+%if !%{with test}
 %files %{python_files}
-%doc README.md
+%doc README.md CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/hypothesmith
+%{python_sitelib}/hypothesmith-%{version}-py*.egg-info
+%endif
 
 %changelog
