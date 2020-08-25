@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 13:34:27 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Use modernize to fix Python 2 only syntax in runtime code
+- Re-activate test suite by switching from nose to pytest
+- Tidy spec
+
+-------------------------------------------------------------------
 Tue Dec  4 12:48:18 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

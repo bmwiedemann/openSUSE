@@ -1,7 +1,7 @@
 #
 # spec file for package python-funcparserlib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without tests
 Name:           python-funcparserlib
 Version:        0.3.6
 Release:        0
 Summary:        Recursive descent parsing library based on functional combinators
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://code.google.com/p/funcparserlib/
+URL:            https://code.google.com/p/funcparserlib/
 Source:         https://files.pythonhosted.org/packages/source/f/funcparserlib/funcparserlib-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-2to3
+BuildRequires:  python3-modernize
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  %{python_module nose}
-%endif
 %python_subpackages
 
 %description
@@ -57,6 +54,8 @@ as well as a tiny lexer generator for token position tracking.
 
 %prep
 %setup -q -n funcparserlib-%{version}
+python-modernize -nw funcparserlib/
+sed -i "s/ur'/r'/" funcparserlib/tests/*.py
 
 %build
 %python_build
@@ -65,14 +64,8 @@ as well as a tiny lexer generator for token position tracking.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}
 %check
-pushd doc
-%{python_expand export PYHONPATH=%{buildroot}%{$python_sitelib}
-nosetests-%{$python_bin_suffix} -m funcparserlib
-}
-popd
-%endif
+%pytest
 
 %files %{python_files}
 %license LICENSE
