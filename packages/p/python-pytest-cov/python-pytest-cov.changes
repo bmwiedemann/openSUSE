@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 21 14:16:07 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.10.1
+  * Support for ``pytest-xdist`` 2.0, which breaks compatibility with ``pytest-xdist`` before 1.22.3 (from 2017).
+  * Fixed the ``LocalPath has no attribute startswith`` failure that occurred when using the ``pytester`` plugin
+    in inline mode.
+  * Dropped support for Python 3 < 3.4, Pytest < 3.5 and Coverage < 4.4.
+
+-------------------------------------------------------------------
 Mon Jun 29 09:21:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.10.0

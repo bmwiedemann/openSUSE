@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-cov
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        MIT
