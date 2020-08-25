@@ -53,6 +53,7 @@ Requires:       python-tomlkit >= 0.5.3
 Requires:       python-vistir >= 0.3.0
 BuildArch:      noarch
 %ifpython2
+Requires:       python-backports.tempfile
 Requires:       python-scandir
 Requires:       python-typing
 %endif
@@ -72,7 +73,6 @@ BuildRequires:  %{python_module pep517 >= 0.5.0}
 BuildRequires:  %{python_module pip-shims}
 BuildRequires:  %{python_module plette}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six >= 1.11.0}
@@ -80,6 +80,7 @@ BuildRequires:  %{python_module tomlkit >= 0.5.3}
 BuildRequires:  %{python_module twine}
 BuildRequires:  %{python_module vistir >= 0.3.0}
 %if %{with python2}
+BuildRequires:  python-backports.tempfile
 BuildRequires:  python-scandir
 BuildRequires:  python-typing
 %endif
@@ -110,6 +111,8 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LANG=en_US.UTF-8
+
 # many tests need internet https://github.com/sarugaku/requirementslib/issues/145
 # most tests are marked properly
 skip_tests="needs_internet"
@@ -124,9 +127,15 @@ skip_tests+=" or test_ast_parser_handles_exceptions"
 cat >> tests/conftest.py <<EOF
 
 from hypothesis import settings
-settings.register_profile("obs", deadline=1000)
+try:
+    settings.register_profile("obs", deadline=1000)
+except TypeError:
+    settings.register_profile("obs", settings(deadline=1000))
 EOF
-%pytest tests -k "not ($skip_tests)" --hypothesis-profile=obs
+%{python_expand PYTHON_VERSION=%{$python_version}
+if [[ ${PYTHON_VERSION:0:1} -eq 3 ]]; then
+  PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest tests -k "not ($skip_tests)" --hypothesis-profile=obs
+fi}
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst docs/quickstart.rst

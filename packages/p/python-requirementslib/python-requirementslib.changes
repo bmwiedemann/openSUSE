@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 04:42:13 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove build dependency on pytest-xdist
+- Add runtime dependency on python2-backports.tempfile
+- Fix injected conftest.py to support older hypothesis
+- Disable running test suite on Python 2 due to hypothesis version
+  incompatibility
+- Re-add LANG in %check
+
+-------------------------------------------------------------------
 Tue Jul 14 13:35:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - reenable offline unit tests
