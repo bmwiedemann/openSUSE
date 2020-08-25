@@ -1,7 +1,7 @@
 #
 # spec file for package python-pkginfo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,16 @@ Release:        0
 Summary:        Python package for querying metadatdata from sdists/bdists/installed packages
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://pypi.python.org/pypi/pkginfo/
+URL:            https://pypi.python.org/pypi/pkginfo/
 Source:         https://files.pythonhosted.org/packages/source/p/pkginfo/pkginfo-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
-Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
