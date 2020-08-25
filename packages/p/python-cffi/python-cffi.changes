@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 12:13:23 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.14.2
+ * CPython 3 on Windows: we again try to compile with Py_LIMITED_API by default 
+
+-------------------------------------------------------------------
 Mon Aug 10 08:10:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.14.1:

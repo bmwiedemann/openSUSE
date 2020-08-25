@@ -286,4 +286,13 @@
   * and a few other minor changes and bug fixes.</comment>
     <requestid>825281</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0081c1828b83a870a368d9b4a057fbde</srcmd5>
+    <version>1.14.2</version>
+    <time>1598351929</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.2
+ * CPython 3 on Windows: we again try to compile with Py_LIMITED_API by default</comment>
+    <requestid>828166</requestid>
+  </revision>
 </revisionlist>
