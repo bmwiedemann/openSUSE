@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Aug 16 17:45:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update package description
+- Fix the butchered python-certifi-shipped-requests-cabundle.patch
+  broken by last update.
+- Add comment about missing tests gh#certifi/python-certifi#136
+
+-------------------------------------------------------------------
+Sat Aug 15 17:09:57 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update line numbers and whitespace in patch
+
+- update to version 2020.6.20:
+  * Updates in enabled CAs
+
+- changes from version 2020.04.05.2:
+  * Document policy for cert addition (#127)
+  * Clarify trust origin is Mozilla (#126)
+  * Fix where() so that it works with importlib.resources when
+    available
+  * Goodbye python 2
+
+-------------------------------------------------------------------
 Wed Jun  3 11:12:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2020.4.5.1:
