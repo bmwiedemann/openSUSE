@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:30:43 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Revert to working test suite, re-adding use-pkg-config.patch,
+  and replace nose with pytest
+
+-------------------------------------------------------------------
 Tue Mar 10 11:56:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove patch use-pkg-config.patch as we don't need to tweak

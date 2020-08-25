@@ -24,9 +24,13 @@ Summary:        Python module to allow customization of the process title
 License:        BSD-3-Clause
 URL:            https://github.com/dvarrazzo/py-setproctitle/
 Source:         https://files.pythonhosted.org/packages/source/s/setproctitle/setproctitle-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Test build/harness helper; heavily revised in next release jayvdb@gmail.com
+Patch0:         use-pkg-config.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module modernize}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-tools
@@ -40,6 +44,8 @@ the OpenSSH Server for example.
 
 %prep
 %setup -q -n setproctitle-%{version}
+%autopatch -p1
+python-modernize -nw tests
 
 %build
 export CFLAGS="%{optflags}"
@@ -50,11 +56,11 @@ export CFLAGS="%{optflags}"
 
 %check
 export LANG=en_US.UTF-8
-# The tests actually fail under python3 and upstream does load of magic to get
-# them operational, lets wait a bit for them to sort it out
-#%%{python_expand export PYTHONPATH=$(pwd):%{buildroot}%{$python_sitearch}
-#%%make_build PYTHON=$python check
-#}
+%{python_expand export PYTHON=$python
+PYTHON_MAJOR=${PYTHON:6:1}
+make tests/pyrun${PYTHON_MAJOR}
+PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m pytest -v
+}
 
 %files %{python_files}
 %doc HISTORY.rst README.rst
