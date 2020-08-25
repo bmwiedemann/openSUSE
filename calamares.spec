@@ -147,6 +147,8 @@ Calamares installer. "Look and feel" files are simplified upstream files.
 Meanwhile configuration files adopted to work with openSUSE and SUSE
 based custom appliances.
 
+%lang_package
+
 %prep
 %autosetup -N
 cp -f %{SOURCE3} src/branding/default/
@@ -196,8 +198,7 @@ chmod +x %{buildroot}%{_libdir}/%{name}/modules/unpackfs/runtests.sh
 # in the standard search path, see responses of authors in
 # https://github.com/calamares/calamares/issues/729
 
-%files -f %{name}-python.lang 
-#%%files -f %%{name}-dummypythonqt.lang
+%files
 %license LICENSE
 %doc AUTHORS
 %{_mandir}/*/*
@@ -217,6 +218,9 @@ chmod +x %{buildroot}%{_libdir}/%{name}/modules/unpackfs/runtests.sh
 %{_libdir}/%{name}/lib%{name}.so
 %{_libdir}/%{name}/modules/
 %exclude %{_libdir}/%{name}/modules/webview/
+
+%files lang -f %{name}-python.lang
+#%%files -f %%{name}-dummypythonqt.lang
 
 %files webview
 %license LICENSE
