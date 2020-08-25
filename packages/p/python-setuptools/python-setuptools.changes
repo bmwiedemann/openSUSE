@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 13 11:03:41 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 44.1.0
+  * Set sys.argv[0] in setup script run by build_meta.__legacy__
+  * Fix for Python 4: replace unsafe six.PY3 with six.PY2
+  * Fixed a bug in the “setuptools.finalize_distribution_options” hook
+     that lead to ignoring the order attribute of entry points managed
+     by this hook.
+ * Avoid loading working set during Distribution.finalize_options prior
+     to invoking _install_setup_requires, broken since v42.0.0.
+
+-------------------------------------------------------------------
 Tue Jun 23 15:41:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - use local source dir for pytest imports

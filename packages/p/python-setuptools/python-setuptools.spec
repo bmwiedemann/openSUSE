@@ -28,7 +28,7 @@
 %endif
 %bcond_without python2
 Name:           python-setuptools%{psuffix}
-Version:        44.0.0
+Version:        44.1.1
 Release:        0
 Summary:        Enhancements to distutils for building and distributing Python packages
 License:        MIT

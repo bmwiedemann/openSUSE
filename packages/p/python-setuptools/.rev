@@ -723,4 +723,19 @@
     <comment></comment>
     <requestid>816632</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c300b86a4b137b862ab486823479359b</srcmd5>
+    <version>44.1.1</version>
+    <time>1598351768</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 44.1.0
+  * Set sys.argv[0] in setup script run by build_meta.__legacy__
+  * Fix for Python 4: replace unsafe six.PY3 with six.PY2
+  * Fixed a bug in the “setuptools.finalize_distribution_options” hook
+     that lead to ignoring the order attribute of entry points managed
+     by this hook.
+ * Avoid loading working set during Distribution.finalize_options prior
+     to invoking _install_setup_requires, broken since v42.0.0.</comment>
+    <requestid>826260</requestid>
+  </revision>
 </revisionlist>
