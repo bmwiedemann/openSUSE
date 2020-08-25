@@ -29,6 +29,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,7 +51,7 @@ defaults out of the box.
 
 %check
 export LANG=en_US.UTF-8
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest --tb=short}
+%pytest --tb=short
 
 %files %{python_files}
 %license LICENSE.rst
