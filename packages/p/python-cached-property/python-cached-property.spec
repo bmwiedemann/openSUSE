@@ -22,13 +22,14 @@ Version:        1.5.1
 Release:        0
 Summary:        A decorator for caching properties in classes
 License:        BSD-3-Clause
+Group:          Development/Libraries/Python
 URL:            https://github.com/pydanny/cached-property
 Source:         https://files.pythonhosted.org/packages/source/c/cached-property/cached-property-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM skip test that rely on wrong freezegun behaviour
 # https://github.com/pydanny/cached-property/pull/125
 Patch0:         freezegun-skip.patch
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,6 +44,7 @@ and 3.
 %prep
 %setup -q -n cached-property-%{version}
 %patch0 -p1
+printf 'import sys\nif sys.version_info < (3, 0): collect_ignore = ["tests/test_async_cached_property.py", "tests/test_coroutine_cached_property.py"]' > conftest.py
 
 %build
 %python_build
@@ -52,7 +54,7 @@ and 3.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v -e 'test_(async|coroutine)_cached_property'
+%pytest
 
 %files %{python_files}
 %license LICENSE

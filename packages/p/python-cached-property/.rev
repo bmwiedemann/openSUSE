@@ -56,4 +56,12 @@
     <comment>- Fix build without python2 available</comment>
     <requestid>784145</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6cbb3d414adad9b9208aeb5522e5b50e</srcmd5>
+    <version>1.5.1</version>
+    <time>1598351871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827222</requestid>
+  </revision>
 </revisionlist>
