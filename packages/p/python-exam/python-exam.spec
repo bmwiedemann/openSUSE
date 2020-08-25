@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-exam
 Version:        0.10.6
 Release:        0
@@ -26,13 +25,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/fluxx/exam
 Source:         https://files.pythonhosted.org/packages/source/e/exam/exam-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/Fluxx/exam/master/LICENSE
 # https://github.com/Fluxx/exam/pull/50
 Patch0:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-%if %{with test}
 BuildRequires:  %{python_module mock}
-%endif
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 %ifpython2
 Requires:       python-mock
@@ -52,6 +51,7 @@ conventions and adhering to the unit testing interface.
 %prep
 %setup -q -n exam-%{version}
 %patch0 -p1
+cp %{SOURCE1} .
 
 %build
 %python_build
@@ -60,14 +60,13 @@ conventions and adhering to the unit testing interface.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %python_exec -m unittest discover -s tests/ -v
-%endif
+%pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
+%license LICENSE
 %{python_sitelib}/*
 
 %changelog
