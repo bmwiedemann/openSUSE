@@ -1,7 +1,7 @@
 #
 # spec file for package python-lockfile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/openstack/pylockfile
 Source:         https://files.pythonhosted.org/packages/source/l/lockfile/lockfile-%{version}.tar.gz
 Patch0:         %{name}-empty_ident.patch
-BuildRequires:  %{python_module nose}
+Patch1:         convert-to-unittest.patch
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -47,16 +49,18 @@ production-quality code.
 %setup -q -n lockfile-%{version}
 # current thread has ident = None, which causes a TypeError
 # http://code.google.com/p/pylockfile/issues/detail?id=8
-%patch0 -p1 -b .empty_ident
+%patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m nose
+%pytest
 
 %files %{python_files}
 %license LICENSE
