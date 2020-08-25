@@ -1,7 +1,7 @@
-Index: GitPython-3.1.0.1582544583.8c9da73/git/test/test_util.py
+Index: GitPython-3.1.7.1594621338.176838a3/test/test_util.py
 ===================================================================
---- GitPython-3.1.0.1582544583.8c9da73.orig/git/test/test_util.py
-+++ GitPython-3.1.0.1582544583.8c9da73/git/test/test_util.py
+--- GitPython-3.1.7.1594621338.176838a3.orig/test/test_util.py
++++ GitPython-3.1.7.1594621338.176838a3/test/test_util.py
 @@ -165,9 +165,7 @@ class TestUtils(TestBase):
          self.assertRaises(IOError, wait_lock._obtain_lock)
          elapsed = time.time() - start

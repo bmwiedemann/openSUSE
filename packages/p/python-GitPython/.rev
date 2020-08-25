@@ -276,4 +276,33 @@
   * Improve unfortunate wording</comment>
     <requestid>814539</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>81fd9751a92884fe69d85f918230b225</srcmd5>
+    <version>3.1.7.1594621338.176838a3</version>
+    <time>1598351918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.7.1594621338.176838a3:
+- refresed test-skips.patch and test_blocking_lock_file-extra-time.patch
+- used pytest as test runner
+  * bump patch level
+  * Fixed broken file paths.
+  * bump patch level
+  * test: add installation test
+  * tools: update tool scripts after moving tests
+  * MANIFEST.in: update to exclude tests
+  * setup.py: exclude all test files
+  * tests: move to root dir
+  * bump patch level
+  * Revert moving tests out of 'git' folder, related to #1030
+  * bump patch level
+  * tools: update tool scripts after moving tests
+  * MANIFEST.in: update to exclude tests
+  * setup.py: exclude all test files
+  * tests: move to root dir
+  * Add Ram Rachum to AUTHORS
+  * Fix exception causes all over the codebase
+  * Fix exception causes in 7 modules
+  * Fix exception causes in cmd.py</comment>
+    <requestid>828143</requestid>
+  </revision>
 </revisionlist>

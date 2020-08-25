@@ -1,7 +1,7 @@
-Index: GitPython-3.1.0.1582544583.8c9da73/git/test/test_base.py
+Index: GitPython-3.1.7.1594621338.176838a3/test/test_base.py
 ===================================================================
---- GitPython-3.1.0.1582544583.8c9da73.orig/git/test/test_base.py
-+++ GitPython-3.1.0.1582544583.8c9da73/git/test/test_base.py
+--- GitPython-3.1.7.1594621338.176838a3.orig/test/test_base.py
++++ GitPython-3.1.7.1594621338.176838a3/test/test_base.py
 @@ -111,7 +111,7 @@ class TestBase(TestBase):
          assert not rw_repo.config_reader("repository").getboolean("core", "bare")
          assert osp.isdir(osp.join(rw_repo.working_tree_dir, 'lib'))
@@ -11,10 +11,10 @@ Index: GitPython-3.1.0.1582544583.8c9da73/git/test/test_base.py
      @with_rw_and_rw_remote_repo('0.1.6')
      def test_with_rw_remote_and_rw_repo(self, rw_repo, rw_remote_repo):
          assert not rw_repo.config_reader("repository").getboolean("core", "bare")
-Index: GitPython-3.1.0.1582544583.8c9da73/git/test/test_remote.py
+Index: GitPython-3.1.7.1594621338.176838a3/test/test_remote.py
 ===================================================================
---- GitPython-3.1.0.1582544583.8c9da73.orig/git/test/test_remote.py
-+++ GitPython-3.1.0.1582544583.8c9da73/git/test/test_remote.py
+--- GitPython-3.1.7.1594621338.176838a3.orig/test/test_remote.py
++++ GitPython-3.1.7.1594621338.176838a3/test/test_remote.py
 @@ -4,6 +4,7 @@
  # This module is part of GitPython and is released under
  # the BSD License: http://www.opensource.org/licenses/bsd-license.php
@@ -40,10 +40,10 @@ Index: GitPython-3.1.0.1582544583.8c9da73/git/test/test_remote.py
      def test_fetch_error(self):
          rem = self.rorepo.remote('origin')
          with self.assertRaisesRegex(GitCommandError, "[Cc]ouldn't find remote ref __BAD_REF__"):
-Index: GitPython-3.1.0.1582544583.8c9da73/git/test/test_submodule.py
+Index: GitPython-3.1.7.1594621338.176838a3/test/test_submodule.py
 ===================================================================
---- GitPython-3.1.0.1582544583.8c9da73.orig/git/test/test_submodule.py
-+++ GitPython-3.1.0.1582544583.8c9da73/git/test/test_submodule.py
+--- GitPython-3.1.7.1594621338.176838a3.orig/test/test_submodule.py
++++ GitPython-3.1.7.1594621338.176838a3/test/test_submodule.py
 @@ -420,12 +420,13 @@ class TestSubmodule(TestBase):
      def test_base_bare(self, rwrepo):
          self._do_base_tests(rwrepo)

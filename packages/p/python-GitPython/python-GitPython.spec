@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-GitPython
-Version:        3.1.3.1590895281.24cd6da
+Version:        3.1.7.1594621338.176838a3
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
@@ -29,6 +29,7 @@ Patch0:         test-skips.patch
 Patch1:         test_blocking_lock_file-extra-time.patch
 BuildRequires:  %{python_module ddt >= 1.1.1}
 BuildRequires:  %{python_module gitdb >= 4.0.1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module smmap >= 3.0.1}
 BuildRequires:  fdupes
@@ -62,7 +63,6 @@ sed -i -e '/tox/d' -e '/flake8/d' -e '/coverage/d' test-requirements.txt
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/git/test/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -78,7 +78,7 @@ export GIT_PYTHON_TEST_GIT_REPO_BASE=${PWD}
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 
-%python_exec setup.py test --test-suite=git.test
+%pytest -k 'not test_installation' test 
 
 %files %{python_files}
 %license LICENSE
