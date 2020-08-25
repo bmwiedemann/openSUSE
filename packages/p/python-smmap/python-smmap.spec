@@ -24,7 +24,7 @@ Summary:        A pure git implementation of a sliding window memory map manager
 License:        BSD-2-Clause
 URL:            https://github.com/gitpython-developers/smmap
 Source:         https://files.pythonhosted.org/packages/source/s/smmap/smmap-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -55,7 +55,7 @@ dos2unix README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %license LICENSE
