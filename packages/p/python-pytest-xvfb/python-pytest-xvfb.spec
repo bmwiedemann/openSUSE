@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-xvfb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-xvfb
-Version:        1.2.0
+Version:        2.0.0
 Release:        0
 Summary:        Pytest plugin to run Xvfb for tests
 License:        MIT
 URL:            https://github.com/The-Compiler/pytest-xvfb
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-xvfb/pytest-xvfb-%{version}.tar.gz
-BuildRequires:  %{python_module PyVirtualDisplay >= 0.2.1}
+# https://github.com/The-Compiler/pytest-xvfb/pull/26
+Source1:        https://raw.githubusercontent.com/The-Compiler/pytest-xvfb/master/LICENSE
+BuildRequires:  %{python_module PyVirtualDisplay >= 0.3}
 BuildRequires:  %{python_module pytest >= 2.8.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
-Requires:       python-PyVirtualDisplay >= 0.2.1
+Requires:       python-PyVirtualDisplay >= 0.3
 Requires:       python-pytest >= 2.8.1
 Requires:       xdpyinfo
 Recommends:     xorg-x11-server
@@ -54,6 +56,8 @@ benefits of Xvfb locally.
 
 %prep
 %setup -q -n pytest-xvfb-%{version}
+rm tests/test_xvfb_windows.py
+cp %{SOURCE1} .
 
 %build
 %python_build
