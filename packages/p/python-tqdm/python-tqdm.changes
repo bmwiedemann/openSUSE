@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 15 16:43:55 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.48.2:
+  * fix notebook formatting
+
+- changes from version 4.48.1:
+  * fix ANSI escape codes breaking tqdm.write (#692, #777)
+  * fix long-lived strongref (#1007,
+    https://bugs.python.org/issue39093)
+  * fix cli --version crash on missing git/refs/heads (#635)
+  * fix contrib.tenumerate ignoring total (#1017)
+  * fix potential deep => shallow kwargs copy issues
+  * improve notebook display for unknown total (#1015)
+  * make asyncio inherit from std rather than auto
+  * make auto multi-inherit from autonotebook, asyncio on Python3.5+
+  * misc documentation & examples updates
+    + mention docker-compose requirements (#771)
+  * misc linting & tidy
+  * misc minor testing framework updates
+
+-------------------------------------------------------------------
 Sat Jul 18 17:53:20 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.48.0:
