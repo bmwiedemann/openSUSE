@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
 Name:           python-elasticsearch
 Version:        7.6.0
 Release:        0
@@ -26,22 +25,19 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elastic/elasticsearch-py
 Source:         https://github.com/elastic/elasticsearch-py/archive/%{version}.tar.gz
+BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pyaml}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.0.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module urllib3 >= 1.21.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
 Requires:       python-urllib3 >= 1.21.1
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nosexcover}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pyaml}
-BuildRequires:  %{python_module requests >= 2.0.0}
-BuildRequires:  %{python_module urllib3 >= 1.21.1}
-%endif
 %python_subpackages
 
 %description
@@ -52,6 +48,7 @@ to be opinion-free and very extendable.
 %prep
 %setup -q -n elasticsearch-py-%{version}
 rm README.rst
+sed -i 's/from nose.plugins.skip import SkipTest/from unittest import SkipTest/' test_elasticsearch/test_helpers.py
 
 %build
 %python_build
@@ -60,10 +57,8 @@ rm README.rst
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_expand nosetests-%{$python_bin_suffix}
-%endif
+%pytest -rs
 
 %files %{python_files}
 %license LICENSE

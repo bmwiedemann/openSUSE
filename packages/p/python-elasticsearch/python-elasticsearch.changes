@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 12:33:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace nose with pytest
+- Remove %bcond_without test
+- Tidy spec
+
+-------------------------------------------------------------------
 Mon Apr  6 07:52:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 7.6.0
