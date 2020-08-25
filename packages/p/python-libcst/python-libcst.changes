@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Fri Aug 21 09:43:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild in order to avoid buildcycles
+
+-------------------------------------------------------------------
+Sat Aug  8 04:41:45 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Removed tests depending on optional dependency pyre
+- Update to v0.3.9
+  * Support string type annotations in RemoveUnusedImports
+  * Add scope to ImportAlias
+  * Add scope to ClassDef
+  * Fixed all pyre related errors
+  * Fixed enclosing attribute for attributes in call arguments
+
+-------------------------------------------------------------------
+Thu Aug  6 09:47:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Enhance codegen to support varied versions of isort
+- Update to v0.3.8 
+  * Handle type subscripts when applying annotations
+  * Added FullRepoManager cache property
+  * Added optional args for tox commands
+  * Only remove trailing comma if the last alias is removed
+  * Fixed inserting imports after module docstring
+  * Fixed ParenthesizedWhitespace before params in FuncDef
+  * Fixed validation for ImportAlias and Try statements
+  * Fixed NotEqual position issue
+  * Fixed minor typo in scope_provider.py
+
+-------------------------------------------------------------------
+Sat Jul  4 03:47:40 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.3.7
