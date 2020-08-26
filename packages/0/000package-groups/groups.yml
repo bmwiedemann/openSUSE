@@ -226,6 +226,7 @@ dvd:
   - dynamic-wallpapers-11x: [locked]
   - python-doc-pdf: [locked]
   - wine-gecko: [locked]
+  - qemu-extra: [locked]
 
   # trying to get a working DVD: [locked]
   - mono-devel: [locked]

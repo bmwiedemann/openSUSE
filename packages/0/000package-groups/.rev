@@ -934,4 +934,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Add skelcd* to the FTP tree so building live images against openSUSE:Tumbleweed is possible</comment>
   </revision>
+  <revision rev="129" vrev="127">
+    <srcmd5>8770315d707d9cdedc3d4e3e60021baf</srcmd5>
+    <version>unknown</version>
+    <time>1598466490</time>
+    <user>dimstar_suse</user>
+    <comment>Drop qemu-extra from the DVD</comment>
+  </revision>
 </revisionlist>
