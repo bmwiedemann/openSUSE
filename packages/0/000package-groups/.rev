@@ -941,4 +941,10 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Drop qemu-extra from the DVD</comment>
   </revision>
+  <revision rev="130" vrev="128">
+    <srcmd5>d08e99ef349e8f9bcf4bd69db876d638</srcmd5>
+    <version>unknown</version>
+    <time>1598466804</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

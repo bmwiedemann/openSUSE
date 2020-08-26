@@ -227,6 +227,7 @@ dvd:
   - python-doc-pdf: [locked]
   - wine-gecko: [locked]
   - qemu-extra: [locked]
+  - ktuberling: [locked]
 
   # trying to get a working DVD: [locked]
   - mono-devel: [locked]
