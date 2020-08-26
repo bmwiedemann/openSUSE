@@ -257,4 +257,12 @@
     <user>dimstar_suse</user>
     <comment>- Drop kde_imaging from the DVD (okular and krita are rather big).</comment>
   </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>9213c3f651b97646a2755d22ccda1702</srcmd5>
+    <version>20170319</version>
+    <time>1598466595</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop kde_imaging and technical_writing from the DVD (need space
+  after we now compress zstd).</comment>
+  </revision>
 </revisionlist>

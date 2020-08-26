@@ -540,7 +540,6 @@ Requires:       pattern() = print_server
 Requires:       pattern() = rest_cd_core
 Requires:       pattern() = sw_management
 Requires:       pattern() = sw_management_gnome
-Requires:       pattern() = technical_writing
 Requires:       pattern() = transactional_base
 Requires:       pattern() = x11
 Requires:       pattern() = xfce
