@@ -6983,7 +6983,9 @@ unsorted:
   - kalarm-lang 
   - kalarmcal-devel 
   - kalgebra-mobile 
+  - kalzium 
   - kalzium-devel 
+  - kalzium-lang 
   - kamerka 
   - kamerka-lang 
   - kamoso 
@@ -7414,7 +7416,9 @@ unsorted:
   - kreport-devel 
   - kreport-lang 
   - kristall 
+  - krita 
   - krita-devel 
+  - krita-lang 
   - krita-plugin-gmic 
   - kronometer 
   - kross-32bit: [x86_64] 
@@ -8057,6 +8061,7 @@ unsorted:
   - libOpenCOLLADAFramework0_3 
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
+  - libOpenColorIO1 
   - libOpenIPMI0 
   - libOpenImageDenoise0: [x86_64] 
   - libOpenImageIO2_1 
@@ -11300,6 +11305,7 @@ unsorted:
   - libopenal0 
   - libopenal0-32bit: [x86_64] 
   - libopenal1-32bit: [x86_64] 
+  - libopenbabel5 
   - libopenbabel5-32bit: [x86_64] 
   - libopenblas-gnu-hpc 
   - libopenblas-gnu-hpc-devel 
@@ -11970,6 +11976,7 @@ unsorted:
   - libquadmath0-gcc9 
   - libquadmath0-gcc9-32bit: [x86_64] 
   - libquagga_pb0 
+  - libquazip5-1 
   - libquicktime 
   - libquicktime-32bit: [x86_64] 
   - libquicktime-devel 
@@ -12789,6 +12796,7 @@ unsorted:
   - libtinyb0 
   - libtinygettext0 
   - libtinyobjloader1 
+  - libtinyxml0 
   - libtinyxml2-8 
   - libtirpc-devel 
   - libtls20-32bit: [x86_64] 
@@ -13478,6 +13486,7 @@ unsorted:
   - libyami-devel 
   - libyami-utils: [x86_64] 
   - libyami1 
+  - libyaml-cpp0_6 
   - libyaml-devel 
   - libyang-cpp-devel 
   - libyang-cpp1 

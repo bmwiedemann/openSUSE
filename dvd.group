@@ -1070,8 +1070,6 @@
     <package name="kalarmcal-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kalgebra" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kalgebra-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kalzium" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kalzium-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kamera-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
     <package name="kanagram" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kanagram-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1342,8 +1340,6 @@
     <package name="kreversi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krfb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krfb-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="krita" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="krita-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kross" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kross-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kruler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1598,7 +1594,6 @@
     <package name="libMagickCore-7_Q16HDRI7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickWand-7_Q16HDRI7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libOkteta3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libOpenColorIO1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libQt5Bluetooth5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libQt5Bluetooth5-imports" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libQt5Concurrent5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2453,7 +2448,6 @@
     <package name="libonig5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libopal3_10_10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libopenal1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libopenbabel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libopenblas_pthreads0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopencc2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libopenconnect5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2609,7 +2603,6 @@
     <package name="libqt5-qtwebengine" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libqt5-qtxmlpatterns-imports" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libquadmath0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libquazip5-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libquicktime0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libquorum5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libquvi-0_9-0_9_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2797,7 +2790,6 @@
     <package name="libtheoraenc1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libthunarx-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libtiff5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libtinyxml0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtls20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
@@ -2996,7 +2988,6 @@
     <package name="libxxhash0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyajl2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyaml-cpp0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libyelp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyui-ncurses-pkg13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyui-ncurses13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
