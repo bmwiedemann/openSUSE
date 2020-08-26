@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 26 18:26:08 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop kde_imaging from the DVD (okular and krita are rather big).
+
+-------------------------------------------------------------------
 Wed Jul  8 07:10:42 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop LXDE from the DVD; It was actually not on the DVD until

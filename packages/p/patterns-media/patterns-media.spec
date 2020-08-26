@@ -504,7 +504,6 @@ Requires:       pattern() = kde
 Requires:       pattern() = kde_edutainment
 Requires:       pattern() = kde_games
 Requires:       pattern() = kde_ide
-Requires:       pattern() = kde_imaging
 Requires:       pattern() = kde_internet
 Requires:       pattern() = kde_multimedia
 Requires:       pattern() = kde_office
