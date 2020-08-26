@@ -58,12 +58,14 @@
       <repopackage name="apparmor-abstractions" arch="x86_64"/>
       <repopackage name="apparmor-parser" arch="x86_64"/>
       <repopackage name="apparmor-profiles" arch="x86_64"/>
+      <repopackage name="apparmor-utils" arch="x86_64"/>
       <repopackage name="attr" arch="x86_64"/>
       <repopackage name="audit" arch="x86_64"/>
       <repopackage name="autofs" arch="x86_64"/>
       <repopackage name="babeltrace" arch="x86_64"/>
       <repopackage name="bash"/>
       <repopackage name="bc" arch="x86_64"/>
+      <repopackage name="bcache-tools" arch="x86_64"/>
       <repopackage name="biosdevname" arch="x86_64"/>
       <repopackage name="blog"/>
       <repopackage name="boost-license1_71_0" arch="x86_64"/>
@@ -80,11 +82,14 @@
       <repopackage name="ca-certificates-mozilla" arch="x86_64"/>
       <repopackage name="catatonit" arch="x86_64"/>
       <repopackage name="ceph-common" arch="x86_64"/>
+      <repopackage name="certstrap" arch="x86_64"/>
       <repopackage name="checkpolicy" arch="x86_64"/>
       <repopackage name="chkstat"/>
       <repopackage name="chrony" arch="x86_64"/>
       <repopackage name="chrony-pool-openSUSE" arch="x86_64"/>
       <repopackage name="cilium-k8s-yaml" arch="x86_64"/>
+      <repopackage name="cloud-init" arch="x86_64"/>
+      <repopackage name="cloud-init-config-MicroOS" arch="x86_64"/>
       <repopackage name="cni" arch="x86_64"/>
       <repopackage name="cni-plugins" arch="x86_64"/>
       <repopackage name="conmon" arch="x86_64"/>
@@ -92,22 +97,30 @@
       <repopackage name="containers-systemd" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="cpio"/>
+      <repopackage name="cracklib" arch="x86_64"/>
+      <repopackage name="cracklib-dict-full" arch="x86_64"/>
       <repopackage name="cri-o" arch="x86_64"/>
       <repopackage name="cri-o-kubeadm-criconfig" arch="x86_64"/>
       <repopackage name="cri-tools" arch="x86_64"/>
+      <repopackage name="cryptsetup" arch="x86_64"/>
       <repopackage name="curl"/>
       <repopackage name="cyrus-sasl" arch="x86_64"/>
       <repopackage name="cyrus-sasl-gssapi" arch="x86_64"/>
       <repopackage name="dbus-1"/>
       <repopackage name="dbus-1-glib" arch="x86_64"/>
       <repopackage name="device-mapper" arch="x86_64"/>
+      <repopackage name="dhcp" arch="x86_64"/>
+      <repopackage name="dhcp-client" arch="x86_64"/>
       <repopackage name="diffutils" arch="x86_64"/>
+      <repopackage name="dmidecode" arch="x86_64"/>
       <repopackage name="dosfstools" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-ima" arch="x86_64"/>
+      <repopackage name="e2fsprogs" arch="x86_64"/>
       <repopackage name="ebtables" arch="x86_64"/>
       <repopackage name="efibootmgr" arch="x86_64"/>
       <repopackage name="elfutils"/>
+      <repopackage name="etcdctl" arch="x86_64"/>
       <repopackage name="ethtool" arch="x86_64"/>
       <repopackage name="evmctl" arch="x86_64"/>
       <repopackage name="fcoe-utils" arch="x86_64"/>
@@ -123,15 +136,19 @@
       <repopackage name="gio-branding-openSUSE" arch="x86_64"/>
       <repopackage name="glib2-tools" arch="x86_64"/>
       <repopackage name="glibc"/>
+      <repopackage name="glibc-locale" arch="x86_64"/>
       <repopackage name="glibc-locale-base" arch="x86_64"/>
       <repopackage name="gpg2" arch="x86_64"/>
+      <repopackage name="gptfdisk" arch="x86_64"/>
       <repopackage name="grep"/>
+      <repopackage name="growpart" arch="x86_64"/>
       <repopackage name="grub2" arch="x86_64"/>
       <repopackage name="grub2-branding-openSUSE" arch="x86_64"/>
       <repopackage name="grub2-i386-pc" arch="x86_64"/>
       <repopackage name="grub2-snapper-plugin" arch="x86_64"/>
       <repopackage name="grub2-x86_64-efi" arch="x86_64"/>
       <repopackage name="gzip"/>
+      <repopackage name="haproxy" arch="x86_64"/>
       <repopackage name="haveged" arch="x86_64"/>
       <repopackage name="health-checker" arch="x86_64"/>
       <repopackage name="health-checker-plugins-kubic" arch="x86_64"/>
@@ -140,11 +157,14 @@
       <repopackage name="helm" arch="x86_64"/>
       <repopackage name="hostname" arch="x86_64"/>
       <repopackage name="hwinfo" arch="x86_64"/>
+      <repopackage name="hyper-v" arch="x86_64"/>
+      <repopackage name="info" arch="x86_64"/>
       <repopackage name="iproute2" arch="x86_64"/>
       <repopackage name="ipset" arch="x86_64"/>
       <repopackage name="iptables" arch="x86_64"/>
       <repopackage name="iputils" arch="x86_64"/>
       <repopackage name="irqbalance" arch="x86_64"/>
+      <repopackage name="iscsiuio" arch="x86_64"/>
       <repopackage name="issue-generator" arch="x86_64"/>
       <repopackage name="k9s" arch="x86_64"/>
       <repopackage name="kail" arch="x86_64"/>
@@ -153,9 +173,41 @@
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
       <repopackage name="kernel-default-base" arch="x86_64"/>
+      <repopackage name="kernel-firmware-all" arch="x86_64"/>
+      <repopackage name="kernel-firmware-amdgpu" arch="x86_64"/>
+      <repopackage name="kernel-firmware-ath10k" arch="x86_64"/>
+      <repopackage name="kernel-firmware-atheros" arch="x86_64"/>
+      <repopackage name="kernel-firmware-bluetooth" arch="x86_64"/>
+      <repopackage name="kernel-firmware-bnx2" arch="x86_64"/>
+      <repopackage name="kernel-firmware-brcm" arch="x86_64"/>
+      <repopackage name="kernel-firmware-chelsio" arch="x86_64"/>
+      <repopackage name="kernel-firmware-dpaa2" arch="x86_64"/>
+      <repopackage name="kernel-firmware-i915" arch="x86_64"/>
+      <repopackage name="kernel-firmware-intel" arch="x86_64"/>
+      <repopackage name="kernel-firmware-iwlwifi" arch="x86_64"/>
+      <repopackage name="kernel-firmware-liquidio" arch="x86_64"/>
+      <repopackage name="kernel-firmware-marvell" arch="x86_64"/>
+      <repopackage name="kernel-firmware-media" arch="x86_64"/>
+      <repopackage name="kernel-firmware-mediatek" arch="x86_64"/>
+      <repopackage name="kernel-firmware-mellanox" arch="x86_64"/>
+      <repopackage name="kernel-firmware-mwifiex" arch="x86_64"/>
+      <repopackage name="kernel-firmware-network" arch="x86_64"/>
+      <repopackage name="kernel-firmware-nfp" arch="x86_64"/>
+      <repopackage name="kernel-firmware-nvidia" arch="x86_64"/>
+      <repopackage name="kernel-firmware-platform" arch="x86_64"/>
+      <repopackage name="kernel-firmware-prestera" arch="x86_64"/>
+      <repopackage name="kernel-firmware-qlogic" arch="x86_64"/>
+      <repopackage name="kernel-firmware-radeon" arch="x86_64"/>
+      <repopackage name="kernel-firmware-realtek" arch="x86_64"/>
+      <repopackage name="kernel-firmware-serial" arch="x86_64"/>
+      <repopackage name="kernel-firmware-sound" arch="x86_64"/>
+      <repopackage name="kernel-firmware-ti" arch="x86_64"/>
+      <repopackage name="kernel-firmware-ueagle" arch="x86_64"/>
+      <repopackage name="kernel-firmware-usb-network" arch="x86_64"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils" arch="x86_64"/>
       <repopackage name="kmod"/>
+      <repopackage name="kpartx" arch="x86_64"/>
       <repopackage name="krb5"/>
       <repopackage name="kube-prometheus-k8s-yaml" arch="x86_64"/>
       <repopackage name="kubectl-who-can" arch="x86_64"/>
@@ -167,7 +219,11 @@
       <repopackage name="kubernetes1.18-kubeadm" arch="x86_64"/>
       <repopackage name="kubernetes1.18-kubelet" arch="x86_64"/>
       <repopackage name="kubernetes1.18-kubelet-common" arch="x86_64"/>
+      <repopackage name="kubic-haproxycfg" arch="x86_64"/>
+      <repopackage name="kubicctl" arch="x86_64"/>
+      <repopackage name="kubicd" arch="x86_64"/>
       <repopackage name="kured-k8s-yaml" arch="x86_64"/>
+      <repopackage name="kustomize" arch="x86_64"/>
       <repopackage name="less" arch="x86_64"/>
       <repopackage name="libacl1"/>
       <repopackage name="libaio1" arch="x86_64"/>
@@ -196,7 +252,9 @@
       <repopackage name="libcom_err2"/>
       <repopackage name="libconfig11" arch="x86_64"/>
       <repopackage name="libcontainers-common" arch="x86_64"/>
+      <repopackage name="libcrack2" arch="x86_64"/>
       <repopackage name="libcrypt1"/>
+      <repopackage name="libcrypto46" arch="x86_64"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcurl4"/>
       <repopackage name="libdb-4_8" arch="x86_64"/>
@@ -225,11 +283,14 @@
       <repopackage name="libfuse3-3" arch="x86_64"/>
       <repopackage name="libgcc_s1"/>
       <repopackage name="libgcrypt20"/>
+      <repopackage name="libgdbm6" arch="x86_64"/>
+      <repopackage name="libgdbm_compat4" arch="x86_64"/>
       <repopackage name="libgio-2_0-0" arch="x86_64"/>
       <repopackage name="libglib-2_0-0" arch="x86_64"/>
       <repopackage name="libgmodule-2_0-0" arch="x86_64"/>
       <repopackage name="libgmp10"/>
       <repopackage name="libgobject-2_0-0" arch="x86_64"/>
+      <repopackage name="libgomp1" arch="x86_64"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11" arch="x86_64"/>
       <repopackage name="libhavege2" arch="x86_64"/>
@@ -249,6 +310,7 @@
       <repopackage name="libldb2" arch="x86_64"/>
       <repopackage name="liblldp_clif1" arch="x86_64"/>
       <repopackage name="liblmdb-0_9_24" arch="x86_64"/>
+      <repopackage name="libltdl7" arch="x86_64"/>
       <repopackage name="liblttng-ust0" arch="x86_64"/>
       <repopackage name="liblua5_3-5"/>
       <repopackage name="liblvm2cmd2_03" arch="x86_64"/>
@@ -262,6 +324,8 @@
       <repopackage name="libmnl0" arch="x86_64"/>
       <repopackage name="libmodman1" arch="x86_64"/>
       <repopackage name="libmount1"/>
+      <repopackage name="libmpath0" arch="x86_64"/>
+      <repopackage name="libmspack0" arch="x86_64"/>
       <repopackage name="libncurses6"/>
       <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
       <repopackage name="libnetfilter_cthelper0" arch="x86_64"/>
@@ -277,6 +341,7 @@
       <repopackage name="libnss_usrfiles2"/>
       <repopackage name="libnuma1" arch="x86_64"/>
       <repopackage name="liboath0" arch="x86_64"/>
+      <repopackage name="libopeniscsiusr0_2_0" arch="x86_64"/>
       <repopackage name="libopenssl1_1"/>
       <repopackage name="libp11-kit0" arch="x86_64"/>
       <repopackage name="libpath_utils1" arch="x86_64"/>
@@ -284,12 +349,14 @@
       <repopackage name="libpciaccess0" arch="x86_64"/>
       <repopackage name="libpcre1"/>
       <repopackage name="libpcre2-8-0"/>
+      <repopackage name="libpgm-5_2-0" arch="x86_64"/>
       <repopackage name="libpkgconf3"/>
       <repopackage name="libpng16-16" arch="x86_64"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libprocps8" arch="x86_64"/>
       <repopackage name="libproxy1" arch="x86_64"/>
       <repopackage name="libpsl5"/>
+      <repopackage name="libpwquality1" arch="x86_64"/>
       <repopackage name="libpython3_8-1_0" arch="x86_64"/>
       <repopackage name="libqrencode4"/>
       <repopackage name="librados2" arch="x86_64"/>
@@ -298,21 +365,26 @@
       <repopackage name="libreadline8"/>
       <repopackage name="libref_array1" arch="x86_64"/>
       <repopackage name="libreiserfscore0" arch="x86_64"/>
+      <repopackage name="libressl" arch="x86_64"/>
       <repopackage name="librgw2" arch="x86_64"/>
+      <repopackage name="librpmbuild9" arch="x86_64"/>
       <repopackage name="libsasl2-3"/>
       <repopackage name="libseccomp2"/>
       <repopackage name="libselinux1"/>
       <repopackage name="libsemanage1"/>
       <repopackage name="libsepol1"/>
+      <repopackage name="libsgutils2-1_45-2" arch="x86_64"/>
       <repopackage name="libslirp0" arch="x86_64"/>
       <repopackage name="libslp1" arch="x86_64"/>
       <repopackage name="libsmartcols1"/>
       <repopackage name="libsnapper5" arch="x86_64"/>
       <repopackage name="libsnappy1"/>
+      <repopackage name="libsodium23" arch="x86_64"/>
       <repopackage name="libsolv-tools" arch="x86_64"/>
       <repopackage name="libsqlite3-0" arch="x86_64"/>
       <repopackage name="libssh-config"/>
       <repopackage name="libssh4"/>
+      <repopackage name="libssl48" arch="x86_64"/>
       <repopackage name="libsss_certmap0" arch="x86_64"/>
       <repopackage name="libsss_idmap0" arch="x86_64"/>
       <repopackage name="libsss_nss_idmap0" arch="x86_64"/>
@@ -326,26 +398,35 @@
       <repopackage name="libtextstyle0" arch="x86_64"/>
       <repopackage name="libtirpc-netconfig"/>
       <repopackage name="libtirpc3"/>
+      <repopackage name="libtls20" arch="x86_64"/>
       <repopackage name="libtss2-esys0" arch="x86_64"/>
       <repopackage name="libtss2-mu0" arch="x86_64"/>
       <repopackage name="libtss2-rc0" arch="x86_64"/>
       <repopackage name="libtss2-sys0" arch="x86_64"/>
       <repopackage name="libudev1"/>
       <repopackage name="libunistring2"/>
+      <repopackage name="libunwind" arch="x86_64"/>
       <repopackage name="liburcu6" arch="x86_64"/>
       <repopackage name="libusb-1_0-0" arch="x86_64"/>
       <repopackage name="libutempter0"/>
       <repopackage name="libuuid1"/>
       <repopackage name="libverto1"/>
+      <repopackage name="libvmtools0" arch="x86_64"/>
       <repopackage name="libwrap0" arch="x86_64"/>
       <repopackage name="libx86emu3" arch="x86_64"/>
       <repopackage name="libxml2-2" arch="x86_64"/>
       <repopackage name="libxml2-tools" arch="x86_64"/>
+      <repopackage name="libxmlsec1-1" arch="x86_64"/>
+      <repopackage name="libxmlsec1-openssl1" arch="x86_64"/>
+      <repopackage name="libxslt1" arch="x86_64"/>
       <repopackage name="libxtables12" arch="x86_64"/>
       <repopackage name="libxxhash0" arch="x86_64"/>
       <repopackage name="libyajl2" arch="x86_64"/>
+      <repopackage name="libyaml-0-2" arch="x86_64"/>
       <repopackage name="libz1"/>
       <repopackage name="libzck1" arch="x86_64"/>
+      <repopackage name="libzio1" arch="x86_64"/>
+      <repopackage name="libzmq5" arch="x86_64"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzypp" arch="x86_64"/>
       <repopackage name="logrotate" arch="x86_64"/>
@@ -358,13 +439,16 @@
       <repopackage name="MicroOS-release-appliance"/>
       <repopackage name="microos-tools" arch="x86_64"/>
       <repopackage name="mokutil" arch="x86_64"/>
+      <repopackage name="multipath-tools" arch="x86_64"/>
       <repopackage name="ncurses-utils"/>
       <repopackage name="net-tools" arch="x86_64"/>
       <repopackage name="netcfg"/>
       <repopackage name="nfs-client" arch="x86_64"/>
       <repopackage name="nfs-client-provisioner-k8s-yaml" arch="x86_64"/>
       <repopackage name="oath-toolkit-xml" arch="x86_64"/>
+      <repopackage name="open-iscsi" arch="x86_64"/>
       <repopackage name="open-lldp" arch="x86_64"/>
+      <repopackage name="open-vm-tools" arch="x86_64"/>
       <repopackage name="openssh"/>
       <repopackage name="openssl" arch="x86_64"/>
       <repopackage name="openssl-1_1" arch="x86_64"/>
@@ -373,6 +457,7 @@
       <repopackage name="p11-kit-tools" arch="x86_64"/>
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
+      <repopackage name="pam_pwquality" arch="x86_64"/>
       <repopackage name="patterns-base-apparmor" arch="x86_64"/>
       <repopackage name="patterns-base-base" arch="x86_64"/>
       <repopackage name="patterns-base-bootloader" arch="x86_64"/>
@@ -381,14 +466,22 @@
       <repopackage name="patterns-containers-container_runtime_kubernetes" arch="x86_64"/>
       <repopackage name="patterns-containers-kubeadm" arch="x86_64"/>
       <repopackage name="patterns-containers-kubernetes_utilities" arch="x86_64"/>
+      <repopackage name="patterns-containers-kubic_admin" arch="x86_64"/>
+      <repopackage name="patterns-containers-kubic_loadbalancer" arch="x86_64"/>
+      <repopackage name="patterns-containers-kubic_worker" arch="x86_64"/>
+      <repopackage name="patterns-microos-alt_onlyDVD" arch="x86_64"/>
       <repopackage name="patterns-microos-apparmor" arch="x86_64"/>
       <repopackage name="patterns-microos-base" arch="x86_64"/>
       <repopackage name="patterns-microos-basesystem" arch="x86_64"/>
+      <repopackage name="patterns-microos-cloud" arch="x86_64"/>
       <repopackage name="patterns-microos-defaults" arch="x86_64"/>
       <repopackage name="patterns-microos-hardware" arch="x86_64"/>
       <repopackage name="patterns-microos-ima_evm" arch="x86_64"/>
+      <repopackage name="patterns-microos-onlyDVD" arch="x86_64"/>
       <repopackage name="patterns-microos-selinux" arch="x86_64"/>
       <repopackage name="patterns-microos-sssd_ldap" arch="x86_64"/>
+      <repopackage name="perl" arch="x86_64"/>
+      <repopackage name="perl-apparmor" arch="x86_64"/>
       <repopackage name="perl-base"/>
       <repopackage name="perl-Bootloader"/>
       <repopackage name="permissions"/>
@@ -405,27 +498,64 @@
       <repopackage name="psmisc" arch="x86_64"/>
       <repopackage name="purge-kernels-service" arch="x86_64"/>
       <repopackage name="python-rpm-macros" arch="x86_64"/>
+      <repopackage name="python3-apparmor" arch="x86_64"/>
       <repopackage name="python3-appdirs" arch="x86_64"/>
+      <repopackage name="python3-asn1crypto" arch="x86_64"/>
+      <repopackage name="python3-attrs" arch="x86_64"/>
       <repopackage name="python3-audit" arch="x86_64"/>
+      <repopackage name="python3-Babel" arch="x86_64"/>
+      <repopackage name="python3-blinker" arch="x86_64"/>
       <repopackage name="python3-ceph-argparse" arch="x86_64"/>
       <repopackage name="python3-ceph-common" arch="x86_64"/>
       <repopackage name="python3-cephfs" arch="x86_64"/>
+      <repopackage name="python3-certifi" arch="x86_64"/>
+      <repopackage name="python3-cffi" arch="x86_64"/>
+      <repopackage name="python3-chardet" arch="x86_64"/>
+      <repopackage name="python3-configobj" arch="x86_64"/>
+      <repopackage name="python3-cryptography" arch="x86_64"/>
       <repopackage name="python3-decorator" arch="x86_64"/>
+      <repopackage name="python3-distro" arch="x86_64"/>
+      <repopackage name="python3-ecdsa" arch="x86_64"/>
+      <repopackage name="python3-idna" arch="x86_64"/>
       <repopackage name="python3-ipy" arch="x86_64"/>
+      <repopackage name="python3-Jinja2" arch="x86_64"/>
+      <repopackage name="python3-jsonpatch" arch="x86_64"/>
+      <repopackage name="python3-jsonpointer" arch="x86_64"/>
+      <repopackage name="python3-jsonschema" arch="x86_64"/>
+      <repopackage name="python3-M2Crypto" arch="x86_64"/>
+      <repopackage name="python3-MarkupSafe" arch="x86_64"/>
+      <repopackage name="python3-msgpack" arch="x86_64"/>
       <repopackage name="python3-networkx" arch="x86_64"/>
+      <repopackage name="python3-oauthlib" arch="x86_64"/>
       <repopackage name="python3-ordered-set" arch="x86_64"/>
       <repopackage name="python3-packaging" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-PrettyTable" arch="x86_64"/>
+      <repopackage name="python3-psutil" arch="x86_64"/>
+      <repopackage name="python3-py" arch="x86_64"/>
+      <repopackage name="python3-pyasn1" arch="x86_64"/>
+      <repopackage name="python3-pycparser" arch="x86_64"/>
+      <repopackage name="python3-PyJWT" arch="x86_64"/>
+      <repopackage name="python3-pyOpenSSL" arch="x86_64"/>
       <repopackage name="python3-pyparsing" arch="x86_64"/>
+      <repopackage name="python3-pyrsistent" arch="x86_64"/>
+      <repopackage name="python3-pyserial" arch="x86_64"/>
+      <repopackage name="python3-pytz" arch="x86_64"/>
+      <repopackage name="python3-PyYAML" arch="x86_64"/>
+      <repopackage name="python3-pyzmq" arch="x86_64"/>
       <repopackage name="python3-rados" arch="x86_64"/>
       <repopackage name="python3-rbd" arch="x86_64"/>
+      <repopackage name="python3-requests" arch="x86_64"/>
       <repopackage name="python3-rgw" arch="x86_64"/>
+      <repopackage name="python3-rpm" arch="x86_64"/>
+      <repopackage name="python3-salt" arch="x86_64"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
       <repopackage name="python3-semanage" arch="x86_64"/>
       <repopackage name="python3-setools" arch="x86_64"/>
       <repopackage name="python3-setuptools" arch="x86_64"/>
       <repopackage name="python3-six" arch="x86_64"/>
+      <repopackage name="python3-urllib3" arch="x86_64"/>
+      <repopackage name="python3-zypp-plugin" arch="x86_64"/>
       <repopackage name="python38" arch="x86_64"/>
       <repopackage name="python38-base" arch="x86_64"/>
       <repopackage name="rakkess" arch="x86_64"/>
@@ -441,8 +571,13 @@
       <repopackage name="rpm-config-SUSE"/>
       <repopackage name="rsync" arch="x86_64"/>
       <repopackage name="runc" arch="x86_64"/>
+      <repopackage name="salt" arch="x86_64"/>
+      <repopackage name="salt-master" arch="x86_64"/>
+      <repopackage name="salt-minion" arch="x86_64"/>
+      <repopackage name="salt-standalone-formulas-configuration" arch="x86_64"/>
       <repopackage name="sed"/>
       <repopackage name="selinux-tools" arch="x86_64"/>
+      <repopackage name="sg3_utils" arch="x86_64"/>
       <repopackage name="shadow"/>
       <repopackage name="shared-mime-info" arch="x86_64"/>
       <repopackage name="shim" arch="x86_64"/>
@@ -471,25 +606,32 @@
       <repopackage name="tallow" arch="x86_64"/>
       <repopackage name="tar" arch="x86_64"/>
       <repopackage name="terminfo-base"/>
+      <repopackage name="tftpboot-installation-openSUSE-MicroOS-x86_64" arch="x86_64"/>
       <repopackage name="thin-provisioning-tools" arch="x86_64"/>
       <repopackage name="timezone" arch="x86_64"/>
       <repopackage name="toolbox" arch="x86_64"/>
       <repopackage name="transactional-update" arch="x86_64"/>
       <repopackage name="transactional-update-zypp-config" arch="x86_64"/>
+      <repopackage name="ucode-amd" arch="x86_64"/>
+      <repopackage name="ucode-intel" arch="x86_64"/>
       <repopackage name="udev"/>
       <repopackage name="update-alternatives"/>
       <repopackage name="util-linux"/>
       <repopackage name="util-linux-systemd" arch="x86_64"/>
+      <repopackage name="vim" arch="x86_64"/>
       <repopackage name="vim-data-common" arch="x86_64"/>
       <repopackage name="vim-small" arch="x86_64"/>
       <repopackage name="weave-k8s-yaml" arch="x86_64"/>
       <repopackage name="which" arch="x86_64"/>
       <repopackage name="wicked" arch="x86_64"/>
       <repopackage name="wicked-service" arch="x86_64"/>
+      <repopackage name="wpa_supplicant" arch="x86_64"/>
       <repopackage name="xen-libs" arch="x86_64"/>
+      <repopackage name="xfsprogs" arch="x86_64"/>
       <repopackage name="xtables-plugins" arch="x86_64"/>
       <repopackage name="xz"/>
       <repopackage name="yast2-logs" arch="x86_64"/>
+      <repopackage name="yomi-formula" arch="x86_64"/>
       <repopackage name="zypper" arch="x86_64"/>
       <repopackage name="zypper-needs-restarting" arch="x86_64"/>
       <repopackage name="MicroOS-release" addarch="x86_64"/>
