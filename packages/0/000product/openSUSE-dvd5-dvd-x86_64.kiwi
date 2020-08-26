@@ -1106,8 +1106,6 @@
       <repopackage name="kalarmcal-lang"/>
       <repopackage name="kalgebra"/>
       <repopackage name="kalgebra-lang"/>
-      <repopackage name="kalzium"/>
-      <repopackage name="kalzium-lang"/>
       <repopackage name="kamera-lang"/>
       <repopackage name="kanagram"/>
       <repopackage name="kanagram-lang"/>
@@ -1379,8 +1377,6 @@
       <repopackage name="kreversi-lang"/>
       <repopackage name="krfb"/>
       <repopackage name="krfb-lang"/>
-      <repopackage name="krita"/>
-      <repopackage name="krita-lang"/>
       <repopackage name="kross"/>
       <repopackage name="kross-lang"/>
       <repopackage name="kruler"/>
@@ -2475,10 +2471,8 @@
       <repopackage name="libonig5"/>
       <repopackage name="libopal3_10_10"/>
       <repopackage name="libopenal1"/>
-      <repopackage name="libopenbabel5"/>
       <repopackage name="libopenblas_pthreads0"/>
       <repopackage name="libopencc2"/>
-      <repopackage name="libOpenColorIO1"/>
       <repopackage name="libopenconnect5"/>
       <repopackage name="libopeniscsiusr0_2_0"/>
       <repopackage name="libopenjp2-7"/>
@@ -2688,7 +2682,6 @@
       <repopackage name="libQt5XmlPatterns5"/>
       <repopackage name="libQtQuick5"/>
       <repopackage name="libquadmath0"/>
-      <repopackage name="libquazip5-1"/>
       <repopackage name="libquicktime0"/>
       <repopackage name="libquorum5"/>
       <repopackage name="libquvi-0_9-0_9_4"/>
@@ -2910,7 +2903,6 @@
       <repopackage name="libthunarx-3-0"/>
       <repopackage name="libtiff5"/>
       <repopackage name="libtiff5-32bit" arch="x86_64"/>
-      <repopackage name="libtinyxml0"/>
       <repopackage name="libtirpc-netconfig"/>
       <repopackage name="libtirpc3"/>
       <repopackage name="libtirpc3-32bit" arch="x86_64"/>
@@ -3200,7 +3192,6 @@
       <repopackage name="libxxhash0"/>
       <repopackage name="libyajl2"/>
       <repopackage name="libyaml-0-2"/>
-      <repopackage name="libyaml-cpp0_6"/>
       <repopackage name="libyelp0"/>
       <repopackage name="libyui-ncurses-pkg13"/>
       <repopackage name="libyui-ncurses13"/>
