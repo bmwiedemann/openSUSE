@@ -228,6 +228,8 @@ dvd:
   - wine-gecko: [locked]
   - qemu-extra: [locked]
   - ktuberling: [locked]
+  - kalzium: [locked]
+  - krita: [locked]
 
   # trying to get a working DVD: [locked]
   - mono-devel: [locked]
