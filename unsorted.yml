@@ -583,6 +583,7 @@ unsorted:
   - apache-commons-httpclient-manual 
   - apache-commons-imaging 
   - apache-commons-imaging-javadoc 
+  - apache-commons-io 
   - apache-commons-io-javadoc 
   - apache-commons-jexl 
   - apache-commons-jexl-javadoc 
@@ -614,6 +615,7 @@ unsorted:
   - apache-ivy 
   - apache-ivy-javadoc 
   - apache-logging-parent 
+  - apache-pdfbox 
   - apache-pdfbox-javadoc 
   - apache-portlet-1_0-api 
   - apache-portlet-1_0-api-javadoc 
@@ -2382,6 +2384,7 @@ unsorted:
   - dbh-devel 
   - dblatex 
   - dblatex-doc 
+  - dbsplit-tools 
   - dbus-1-devel 
   - dbus-1-devel-32bit: [x86_64] 
   - dbus-1-devel-doc 
@@ -2536,6 +2539,7 @@ unsorted:
   - diy-devel: [x86_64] 
   - diy-mpich-devel: [x86_64] 
   - djvu2pdf 
+  - djvulibre 
   - djvulibre-djview4 
   - djvulibre-doc 
   - dkgpg 
@@ -2564,14 +2568,19 @@ unsorted:
   - dnsmeter 
   - dnstracer 
   - docbook-css-stylesheets 
+  - docbook-dsssl-stylesheets 
   - docbook-simple 
   - docbook-toys 
   - docbook-utils 
   - docbook-utils-minimal 
   - docbook-xml-slides 
+  - docbook-xml-website 
   - docbook-xsl-pdf2index 
   - docbook2x 
   - docbook2x-doc 
+  - docbook5-xsl-stylesheets 
+  - docbook_3 
+  - docbook_5 
   - docbook_5-doc 
   - docker 
   - docker-bash-completion 
@@ -4956,6 +4965,7 @@ unsorted:
   - glassfish-jsp-api-javadoc 
   - glassfish-jsp-javadoc 
   - glassfish-master-pom 
+  - glassfish-servlet-api 
   - glassfish-servlet-api-javadoc 
   - glassfish-transaction-api 
   - glassfish-transaction-api-javadoc 
@@ -7469,6 +7479,8 @@ unsorted:
   - ktp-send-file-lang 
   - ktp-text-ui 
   - ktp-text-ui-lang 
+  - ktuberling 
+  - ktuberling-lang 
   - kube-prometheus-k8s-yaml: [i586] 
   - kube-prometheus-sources 
   - kuberlr 
@@ -16970,6 +16982,7 @@ unsorted:
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
+  - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
   - patterns-devel-base-devel_basis-32bit 
@@ -18334,6 +18347,7 @@ unsorted:
   - perl-XML-Atom-SimpleFeed 
   - perl-XML-Bare 
   - perl-XML-CommonNS 
+  - perl-XML-DOM 
   - perl-XML-DOM-XPath 
   - perl-XML-Entities 
   - perl-XML-Feed 
@@ -18348,6 +18362,7 @@ unsorted:
   - perl-XML-NodeFilter 
   - perl-XML-Parser-Lite 
   - perl-XML-RSS 
+  - perl-XML-RegExp 
   - perl-XML-SAX-Expat 
   - perl-XML-SAX-ExpatXS 
   - perl-XML-SAX-Writer 
@@ -18389,6 +18404,7 @@ unsorted:
   - perl-libconfigfile 
   - perl-libintl-perl 
   - perl-libprelude 
+  - perl-libxml-perl 
   - perl-local-lib 
   - perl-marisa 
   - perl-mousex-getopt 
@@ -19013,6 +19029,7 @@ unsorted:
   - protoc-gen-validate-source 
   - proxychains-ng 
   - prun-ohpc 
+  - psgml 
   - psgplay 
   - psi+ 
   - psi+-data 
@@ -22355,12 +22372,14 @@ unsorted:
   - qcustomplot-doc 
   - qd-devel 
   - qdirstat 
+  - qdox 
   - qdox-javadoc 
   - qelectrotech 
   - qemacs 
   - qemu-audio-alsa 
   - qemu-audio-pa 
   - qemu-audio-sdl 
+  - qemu-extra 
   - qemu-linux-user 
   - qemu-ovmf-x86_64-debug: [x86_64] 
   - qemu-testsuite 
@@ -22615,6 +22634,7 @@ unsorted:
   - regexp 
   - reiser4progs 
   - reiser4progs-devel 
+  - relaxngDatatype 
   - relaxngcc 
   - relaxngcc-javadoc 
   - release-compare 
@@ -24765,6 +24785,7 @@ unsorted:
   - s-tui 
   - s3backer 
   - s3fs 
+  - sablot 
   - sablot-devel 
   - sac-javadoc 
   - sacad 
@@ -24813,6 +24834,7 @@ unsorted:
   - sawfish-pager 
   - sawfish-sounds 
   - sax3 
+  - saxon6 
   - saxon6-aelfred 
   - saxon6-demo 
   - saxon6-fop 
@@ -25559,6 +25581,7 @@ unsorted:
   - suse-prime-bbswitch 
   - suse-xsl-stylesheets 
   - suseprime-appindicator 
+  - svg-schema 
   - svg-schema-doc 
   - svgcleaner 
   - svgcleaner-gui 
@@ -25742,6 +25765,8 @@ unsorted:
   - tecla-devel 
   - tecnoballz 
   - teeworlds 
+  - tei-roma 
+  - tei-xsl-stylesheets 
   - tei_4 
   - telegraf 
   - telegram-desktop: [x86_64] 
@@ -33752,6 +33777,7 @@ unsorted:
   - tracker-devel 
   - trader 
   - trader-lang 
+  - trang 
   - transconnect 
   - transfig 
   - transifex-client 
@@ -34737,6 +34763,7 @@ unsorted:
   - x3270 
   - x86info 
   - xalan-c 
+  - xalan-j2 
   - xalan-j2-demo 
   - xalan-j2-manual 
   - xalan-j2-xsltc 
@@ -34822,6 +34849,7 @@ unsorted:
   - xengine 
   - xerces-c 
   - xerces-c-doc 
+  - xerces-j2 
   - xerces-j2-demo 
   - xerces-j2-javadoc 
   - xev 
@@ -34951,6 +34979,9 @@ unsorted:
   - xmldb-api-javadoc 
   - xmldb-api-sdk 
   - xmldb-common 
+  - xmlformat 
+  - xmlgraphics-batik 
+  - xmlgraphics-batik-css 
   - xmlgraphics-batik-demo 
   - xmlgraphics-batik-javadoc 
   - xmlgraphics-batik-rasterizer 
@@ -34958,7 +34989,9 @@ unsorted:
   - xmlgraphics-batik-squiggle 
   - xmlgraphics-batik-svgpp 
   - xmlgraphics-batik-ttf2svg 
+  - xmlgraphics-commons 
   - xmlgraphics-commons-javadoc 
+  - xmlgraphics-fop 
   - xmlrpc-c-devel 
   - xmlsec1 
   - xmlsec1-devel 
@@ -34966,8 +34999,10 @@ unsorted:
   - xmlsec1-gnutls-devel 
   - xmlsec1-nss-devel 
   - xmlsec1-openssl-devel 
+  - xmlstarlet: [i586] 
   - xmlstreambuffer 
   - xmlstreambuffer-javadoc 
+  - xmlto 
   - xmltoman 
   - xmltooling-schemas 
   - xmlunit 
@@ -35079,6 +35114,7 @@ unsorted:
   - xsession 
   - xsetmode 
   - xsetpointer 
+  - xslide 
   - xsm 
   - xsom 
   - xsom-javadoc 
