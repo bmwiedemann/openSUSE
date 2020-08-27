@@ -7454,4 +7454,16 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>coolo</user>
     <comment>reduce the 15.0:update files</comment>
   </revision>
+  <revision rev="1241" vrev="1241">
+    <srcmd5>238a0b84ec3c0fcc72d9687a8aba04f6</srcmd5>
+    <version>unknown</version>
+    <time>1598572397</time>
+    <user>staging-bot</user>
+  </revision>
+  <revision rev="1242" vrev="1242">
+    <srcmd5>4820a4b334fa690fedff15a2f21ab537</srcmd5>
+    <version>unknown</version>
+    <time>1598572398</time>
+    <user>staging-bot</user>
+  </revision>
 </revisionlist>
