@@ -7419,4 +7419,11 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <time>1598382679</time>
     <user>staging-bot</user>
   </revision>
+  <revision rev="1236" vrev="1236">
+    <srcmd5>375b35e1543aab3a8a7c7d5ee2e31968</srcmd5>
+    <version>unknown</version>
+    <time>1598522931</time>
+    <user>coolo</user>
+    <comment>merge old factory snapshots into one file</comment>
+  </revision>
 </revisionlist>

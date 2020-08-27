@@ -348,7 +348,6 @@ Ignore: sed:info
 Ignore: tar:info
 Ignore: util-linux:info
 
-
 # Let's speed up things: We don't need Mesa-dri and Mesa-gallium in the build system
 Ignore: Mesa:Mesa-dri
 Ignore: Mesa:Mesa-gallium
@@ -377,6 +376,9 @@ Prefer: -suse-build-key
 # Set postfix as the 'default' smtp_daemon (virtual symbol provided by all MTAs)
 Prefer: postfix
 # Give the worker any default apache2-MPM for apache2- chosing 'prefork' (alternatives are -event and -worker, dep-wise they are equal)
+
+# Python3 exists in multiple versions - we currently favor 3.8 (our default):
+Prefer: -python36 -python39
 
 # prefer the PHP5 variants over PHP7
 Prefer: php5-ctype
@@ -592,6 +594,7 @@ Prefer: -lapack-devel-32bit
 Prefer: -lapacke-devel-32bit                          
 Prefer: -libBox2D-devel-32bit                         
 Prefer: -libFS-devel-32bit                            
+Prefer: -libGLw-devel-32bit
 Prefer: -libHX-devel-32bit                            
 Prefer: -libICE-devel-32bit                           
 Prefer: -libKF5NetworkManagerQt-devel-32bit           
@@ -603,6 +606,7 @@ Prefer: -libQt5DBus-devel-32bit
 Prefer: -libQt5Gui-devel-32bit                        
 Prefer: -libQt5Network-devel-32bit                    
 Prefer: -libQt5OpenGL-devel-32bit                     
+Prefer: -libQt5OpenGLExtensions-devel-static-32bit
 Prefer: -libQt5PrintSupport-devel-32bit               
 Prefer: -libQt5Sql-devel-32bit                        
 Prefer: -libQt5Test-devel-32bit                       
@@ -839,6 +843,7 @@ Prefer: -syntax-highlighting-devel-32bit
 Prefer: -telepathy-qt5-devel-32bit                    
 Prefer: -threadweaver-devel-32bit                     
 Prefer: -tslib-devel-32bit                            
+Prefer: -unixODBC-devel-32bit
 Prefer: -utempter-devel-32bit                         
 Prefer: -vkd3d-devel-32bit                            
 Prefer: -vulkan-devel-32bit                           
