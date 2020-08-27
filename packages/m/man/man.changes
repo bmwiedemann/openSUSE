@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 07:38:06 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Set libexecdir at build time for wrapper (boo#1175813)
+- Do the same in mandb.service
+
+-------------------------------------------------------------------
 Mon Jun 15 07:49:33 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Allow user man to execute the do_mandb script (boo#1172876)

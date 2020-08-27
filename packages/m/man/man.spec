@@ -185,7 +185,7 @@ printer (using groff).
     done
     patch --backup --suffix=.s10 ${FUZZ+"--fuzz=$FUZZ"} -p0 < %{SOURCE10}
     gcc $CFLAGS -I gl/lib/ -I include/ --include config.h -D LOCALEDIR="\"%{_datarootdir}/locale\"" \
-	-o wrapper %{SOURCE5} -L gl/lib/.libs/ -lgnu
+	-D  LIBEXECDIR="\"%{_libexecdir}\"" -o wrapper %{SOURCE5} -L gl/lib/.libs/ -lgnu
 
 %check
 if ! make check; then
@@ -263,6 +263,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if 0%{?suse_version} >= 1500
     install -m 0644 %{SOURCE8} %{buildroot}%{_unitdir}/
     install -m 0644 %{SOURCE9} %{buildroot}%{_unitdir}/
+    sed -ri 's|@@LIBEXECDIR@@|%{_libexecdir}|' %{buildroot}%{_unitdir}/mandb.service
 %endif
 %endif
 

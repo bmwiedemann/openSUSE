@@ -44,6 +44,9 @@
 
 #include "manconfig.h"
 
+#ifndef LIBEXECDIR
+# define LIBEXECDIR "/usr/lib"
+#endif
 
 /* this list is used to authenticate the program running.
  * it is fixed at compile time to avoid a full class of 
@@ -59,8 +62,8 @@ static struct {
   { "_man",	"src/man",	"man"	},
   { "_mandb",	"src/mandb",	"man"	},
 #endif
-  { "man",	"/usr/lib/man-db/man",		"man"	},
-  { "mandb",	"/usr/lib/man-db/mandb",	"man"	},
+  { "man",	LIBEXECDIR "/man-db/man",		"man"	},
+  { "mandb",	LIBEXECDIR "/man-db/mandb",	"man"	},
   { 0,		0,				0,	}};
 
 char *program_name;

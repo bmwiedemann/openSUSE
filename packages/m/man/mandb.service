@@ -9,4 +9,4 @@ Group=man
 Type=oneshot
 Nice=5
 IOSchedulingClass=idle
-ExecStart=/usr/lib/man-db/do_mandb
+ExecStart=@@LIBEXECDIR@@/man-db/do_mandb
