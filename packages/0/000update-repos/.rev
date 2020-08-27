@@ -7426,4 +7426,18 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>coolo</user>
     <comment>merge old factory snapshots into one file</comment>
   </revision>
+  <revision rev="1237" vrev="1237">
+    <srcmd5>6d0a4921fb6ef1f3e31a4bf3d358caae</srcmd5>
+    <version>unknown</version>
+    <time>1598534792</time>
+    <user>coolo</user>
+    <comment>merge old factory:non_oss files into one</comment>
+  </revision>
+  <revision rev="1238" vrev="1238">
+    <srcmd5>8f0c6c76556cd4344687143ebe31fb67</srcmd5>
+    <version>unknown</version>
+    <time>1598536699</time>
+    <user>coolo</user>
+    <comment>merge 42.3:update files into one (it's out of maintenance)</comment>
+  </revision>
 </revisionlist>

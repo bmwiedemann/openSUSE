@@ -30,10 +30,8 @@
    url: http://downloadcontent.opensuse.org/distribution/leap/42.3/repo/non-oss
 - 42.3:update:
    url: http://downloadcontent.opensuse.org/update/leap/42.3/oss
-   refresh: true
 - 42.3:non-oss:update:
    url: http://downloadcontent.opensuse.org/update/leap/42.3/non-oss
-   refresh: true
 - 42.2:
    url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/leap/42.2/repo/oss/
 - 42.2:non-oss:
