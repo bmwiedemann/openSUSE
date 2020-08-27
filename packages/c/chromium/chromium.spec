@@ -51,7 +51,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        84.0.4147.125
+Version:        84.0.4147.135
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -139,7 +139,6 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libjpeg-devel >= 8.1
 BuildRequires:  libpng-devel
-BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja >= 1.7.2
@@ -466,7 +465,6 @@ keeplibs=(
     third_party/sqlite
     third_party/swiftshader
     third_party/swiftshader/third_party/astc-encoder
-    third_party/swiftshader/third_party/llvm-7.0
     third_party/swiftshader/third_party/llvm-subzero
     third_party/swiftshader/third_party/marl
     third_party/swiftshader/third_party/subzero
@@ -567,8 +565,6 @@ ln -sfn %{_bindir}/$CXX $HOME/bin/g++
 export PATH="$HOME/bin/:$PATH"
 %endif
 %endif
-# do not eat all memory
-%limit_build -m 2600
 
 # Set system libraries to be used
 gn_system_libraries=(
@@ -733,12 +729,12 @@ ninja -v %{?_smp_mflags} -C out/Release chrome chromedriver
 
 %install
 mkdir -p %{buildroot}%{_libdir}/chromium
-mkdir -p %{buildroot}%{_libexecdir}/
+mkdir -p %{buildroot}%{_prefix}/lib/
 mkdir -p %{buildroot}%{_bindir}
 install -m 755 %{SOURCE100} %{buildroot}%{_bindir}/chromium
 
 # x86_64 capable systems need this
-sed -i "s|%{_libexecdir}/chromium|%{_libdir}/chromium|g" %{buildroot}%{_bindir}/chromium
+sed -i "s|%{_prefix}/lib/chromium|%{_libdir}/chromium|g" %{buildroot}%{_bindir}/chromium
 
 mkdir -p %{buildroot}%{_mandir}/man1/
 pushd out/Release

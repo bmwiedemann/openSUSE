@@ -5,8 +5,11 @@
       <size unit="G">16</size>
     </disk>
     <physicalmemory>
-    <size unit="G">8</size>
+      <size unit="G">8</size>
     </physicalmemory>
+    <memoryperjob>
+      <size unit="M">2600</size>
+    </memoryperjob>
   </hardware>
   <overwrite>
     <conditions>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 27 06:36:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not use libexec as we use /usr/lib as a target folder
+
+-------------------------------------------------------------------
+Fri Aug 21 08:12:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the build by removing expectation of llvm-7.0
+
+-------------------------------------------------------------------
+Thu Aug 20 07:29:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 84.0.4147.135 (bsc#1175505):
+  * CVE-2020-6556: Heap buffer overflow in SwiftShader
+
+-------------------------------------------------------------------
+Wed Aug 19 14:27:55 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use new _constraint memoryperjob.
+
+-------------------------------------------------------------------
 Wed Aug 12 12:00:41 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add chromium-disable-parallel-gold.patch in order to disable

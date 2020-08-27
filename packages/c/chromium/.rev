@@ -3059,4 +3059,19 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment></comment>
     <requestid>826031</requestid>
   </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>642a5e72d00922cfac55ff85e8e2928e</srcmd5>
+    <version>84.0.4147.135</version>
+    <time>1598532173</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use libexec as we use /usr/lib as a target folder
+
+- Fix the build by removing expectation of llvm-7.0
+
+- Update to 84.0.4147.135 (bsc#1175505):
+  * CVE-2020-6556: Heap buffer overflow in SwiftShader
+
+- Use new _constraint memoryperjob.</comment>
+    <requestid>829898</requestid>
+  </revision>
 </revisionlist>
