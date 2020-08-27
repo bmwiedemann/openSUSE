@@ -266,7 +266,7 @@ It maps common x11vnc arguments to x0vncserver arguments.
 %patch12 -p1
 %patch13 -p1
 
-cp -r /usr/src/xserver/* unix/xserver/
+cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver
 patch -p1 < ../xserver120.patch
 popd
@@ -285,8 +285,8 @@ autoreconf -fi
         --disable-xorg --disable-xnest --disable-xvfb --disable-dmx \
         --disable-xwin --disable-xephyr --disable-kdrive --with-pic \
         --disable-static --disable-xinerama \
-        --with-xkb-path="/usr/share/X11/xkb" \
-        --with-xkb-output="/var/lib/xkb/compiled" \
+        --with-xkb-path="%{_datadir}/X11/xkb" \
+        --with-xkb-output="%{_sharedstatedir}/xkb/compiled" \
         --enable-glx --enable-dri \
 %ifnarch s390 s390x
 	--enable-dri2 \
@@ -297,7 +297,7 @@ autoreconf -fi
         --without-dtrace \
         --disable-unit-tests \
         --disable-devel-docs \
-        --with-fontrootdir=/usr/share/fonts \
+        --with-fontrootdir=%{_datadir}/fonts \
         --disable-selective-werror
 make %{?_smp_mflags} V=1
 popd
@@ -312,50 +312,50 @@ popd
 
 %make_install
 
-mv $RPM_BUILD_ROOT/usr/bin/vncviewer $RPM_BUILD_ROOT/usr/bin/vncviewer-tigervnc
-mv $RPM_BUILD_ROOT/usr/share/man/man1/vncviewer.1 $RPM_BUILD_ROOT/usr/share/man/man1/vncviewer-tigervnc.1
+mv %{buildroot}%{_bindir}/vncviewer %{buildroot}%{_bindir}/vncviewer-tigervnc
+mv %{buildroot}%{_datadir}/man/man1/vncviewer.1 %{buildroot}%{_datadir}/man/man1/vncviewer-tigervnc.1
 
 pushd unix/xserver
 %make_install
 popd
 
 pushd java
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/vnc/classes
-install -m755 VncViewer.jar $RPM_BUILD_ROOT%{_datadir}/vnc/classes
+mkdir -p %{buildroot}%{_datadir}/vnc/classes
+install -m755 VncViewer.jar %{buildroot}%{_datadir}/vnc/classes
 popd
 
 %ifnarch s390x
-install -D -m 644 %{SOURCE4} $RPM_BUILD_ROOT/usr/share/X11/xorg.conf.d/10-libvnc.conf
+install -D -m 644 %{SOURCE4} %{buildroot}%{_datadir}/X11/xorg.conf.d/10-libvnc.conf
 %endif
 
 %if %{use_firewalld}
-install -D -m 644 %{SOURCE17} $RPM_BUILD_ROOT%{_libexecdir}/firewalld/services/tigervnc.xml
-install -D -m 644 %{SOURCE18} $RPM_BUILD_ROOT%{_libexecdir}/firewalld/services/tigervnc-https.xml
+install -D -m 644 %{SOURCE17} %{buildroot}%{_prefix}/lib/firewalld/services/tigervnc.xml
+install -D -m 644 %{SOURCE18} %{buildroot}%{_prefix}/lib/firewalld/services/tigervnc-https.xml
 %else
-install -D -m 644 %{SOURCE5} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-server
-install -D -m 644 %{SOURCE6} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-httpd
+install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-server
+install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-httpd
 %endif
 
 # only package as %doc (boo#1173045)
 cp %{SOURCE7} .
-install -D -m 755 %{SOURCE8} $RPM_BUILD_ROOT%{_bindir}/vncpasswd.arg
-install -D -m 644 %{SOURCE9} $RPM_BUILD_ROOT%{_distconfdir}/pam.d/vnc
-install -D -m 644 %{SOURCE11} $RPM_BUILD_ROOT%{_datadir}/vnc/classes
+install -D -m 755 %{SOURCE8} %{buildroot}%{_bindir}/vncpasswd.arg
+install -D -m 644 %{SOURCE9} %{buildroot}%{_distconfdir}/pam.d/vnc
+install -D -m 644 %{SOURCE11} %{buildroot}%{_datadir}/vnc/classes
 %if 0%{?suse_version} >= 1315
-ln -s -f %{_sysconfdir}/alternatives/vncviewer $RPM_BUILD_ROOT%{_bindir}/vncviewer
-ln -s -f %{_sysconfdir}/alternatives/vncviewer.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/vncviewer.1.gz
+ln -s -f %{_sysconfdir}/alternatives/vncviewer %{buildroot}%{_bindir}/vncviewer
+ln -s -f %{_sysconfdir}/alternatives/vncviewer.1.gz %{buildroot}%{_mandir}/man1/vncviewer.1.gz
 %endif
 
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxvnc
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxvnc-novnc
 
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/vnc
+mkdir -p %{buildroot}%{_sysconfdir}/vnc
 
-mkdir -p $RPM_BUILD_ROOT%{_libexecdir}/vnc
-install -D -m 755 %{SOURCE10} $RPM_BUILD_ROOT%{_libexecdir}/vnc
+mkdir -p %{buildroot}%{_libexecdir}/vnc
+install -D -m 755 %{SOURCE10} %{buildroot}%{_libexecdir}/vnc
 
-install -D -m 755 %{SOURCE12} $RPM_BUILD_ROOT%{_bindir}/x11vnc
+install -D -m 755 %{SOURCE12} %{buildroot}%{_bindir}/x11vnc
 
 install -D %{SOURCE13} -m 0444 %{buildroot}%{_unitdir}/xvnc@.service
 install -D %{SOURCE14} -m 0444 %{buildroot}%{_unitdir}/xvnc.socket
@@ -363,7 +363,7 @@ install -D %{SOURCE15} -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.service
 install -D %{SOURCE16} -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.socket
 install -D %{SOURCE19} -m 0444 %{buildroot}%{_unitdir}/xvnc.target
 
-rm -rf $RPM_BUILD_ROOT/usr/share/doc/tigervnc-*
+rm -rf %{buildroot}%{_datadir}/doc/tigervnc-*
 
 %find_lang '%{name}'
 
@@ -377,7 +377,7 @@ rm -rf $RPM_BUILD_ROOT/usr/share/doc/tigervnc-*
 %postun
 %if 0%{?suse_version} >= 1315
 if [ "$1" = 0 ] ; then
-   "%_sbindir/update-alternatives" --remove vncviewer /usr/bin/vncviewer-tigervnc
+   "%{_sbindir}/update-alternatives" --remove vncviewer %{_bindir}/vncviewer-tigervnc
 fi
 %endif
 
@@ -385,7 +385,7 @@ fi
 %service_add_pre xvnc.socket
 
 getent group %{vncgroup} > /dev/null || groupadd -r %{vncgroup} || :
-getent passwd %{vncuser} > /dev/null || useradd -r -g %{vncgroup} -d /var/lib/empty -s /sbin/nologin -c "user for VNC" %{vncuser} || :
+getent passwd %{vncuser} > /dev/null || useradd -r -g %{vncgroup} -d %{_sharedstatedir}/empty -s /sbin/nologin -c "user for VNC" %{vncuser} || :
 # add vnc user to shadow group. (bsc#980326)
 # more details about the reasoning in bsc#1162951
 usermod -G shadow -a %{vncuser} || :
@@ -400,12 +400,12 @@ usermod -G shadow -a %{vncuser} || :
 # If there is old xinetd configuration file and VNC service was enabled, enable the systemd service too.
 # Once we are done, RPM will rename the file to /etc/xinetd.d/vnc.rpmsave, so this won't happen
 # during future updates.
-if [ -e /etc/xinetd.d/vnc ] && awk '
+if [ -e %{_sysconfdir}/xinetd.d/vnc ] && awk '
   BEGIN { in_vnc1_section = 0 }
   /service.*vnc1/ { in_vnc1_section = 1 }
   in_vnc1_section && /disable\s*=\s*yes/ { exit 1 }
   in_vnc1_section && /}/ { exit 0 }
-  ' /etc/xinetd.d/vnc;
+  ' %{_sysconfdir}/xinetd.d/vnc;
 then
   echo "Found old xinetd configuration with enabled VNC service. Enabling xvnc.socket."
   systemctl enable xvnc.socket
@@ -442,30 +442,30 @@ fi
 %ghost %{_bindir}/vncviewer
 %{_bindir}/vncviewer-tigervnc
 %doc LICENCE.TXT README.rst
-%ghost %_mandir/man1/vncviewer.1.gz
-%doc %_mandir/man1/vncviewer-tigervnc.1.gz
+%ghost %{_mandir}/man1/vncviewer.1.gz
+%doc %{_mandir}/man1/vncviewer-tigervnc.1.gz
 %if 0%{?suse_version} >= 1315
-%ghost %_sysconfdir/alternatives/vncviewer
-%ghost %_sysconfdir/alternatives/vncviewer.1.gz
+%ghost %{_sysconfdir}/alternatives/vncviewer
+%ghost %{_sysconfdir}/alternatives/vncviewer.1.gz
 %endif
 
-%dir %_datadir/icons/hicolor/16x16
-%dir %_datadir/icons/hicolor/16x16/apps
-%dir %_datadir/icons/hicolor/22x22
-%dir %_datadir/icons/hicolor/22x22/apps
-%dir %_datadir/icons/hicolor/24x24
-%dir %_datadir/icons/hicolor/24x24/apps
-%dir %_datadir/icons/hicolor/32x32
-%dir %_datadir/icons/hicolor/32x32/apps
-%dir %_datadir/icons/hicolor/48x48
-%dir %_datadir/icons/hicolor/48x48/apps
-%dir %_datadir/icons/hicolor/scalable
-%dir %_datadir/icons/hicolor/scalable/apps
+%dir %{_datadir}/icons/hicolor/16x16
+%dir %{_datadir}/icons/hicolor/16x16/apps
+%dir %{_datadir}/icons/hicolor/22x22
+%dir %{_datadir}/icons/hicolor/22x22/apps
+%dir %{_datadir}/icons/hicolor/24x24
+%dir %{_datadir}/icons/hicolor/24x24/apps
+%dir %{_datadir}/icons/hicolor/32x32
+%dir %{_datadir}/icons/hicolor/32x32/apps
+%dir %{_datadir}/icons/hicolor/48x48
+%dir %{_datadir}/icons/hicolor/48x48/apps
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
 
-%_datadir/icons/hicolor/*/apps/tigervnc.png
-%_datadir/icons/hicolor/scalable/apps/tigervnc.svg
+%{_datadir}/icons/hicolor/*/apps/tigervnc.png
+%{_datadir}/icons/hicolor/scalable/apps/tigervnc.svg
 
-%_datadir/applications/vncviewer.desktop
+%{_datadir}/applications/vncviewer.desktop
 
 %files -n xorg-x11-Xvnc
 %doc LICENCE.TXT README.rst vnc.reg
@@ -490,13 +490,13 @@ fi
 %{_unitdir}/xvnc.target
 %{_sbindir}/rcxvnc
 
-%exclude /var/lib/xkb/compiled/README.compiled
+%exclude %{_sharedstatedir}/xkb/compiled/README.compiled
 
 %if %{use_firewalld}
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/tigervnc.xml
-%{_libexecdir}/firewalld/services/tigervnc-https.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/tigervnc.xml
+%{_prefix}/lib/firewalld/services/tigervnc-https.xml
 %else
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-server
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-httpd
@@ -516,17 +516,17 @@ fi
 
 %ifarch s390 s390x
 # These would be in xorg-x11-Xvnc-module, but we don't build that on s390
-%exclude /usr/%{_lib}/xorg/protocol.txt
-%exclude /usr/%{_lib}/xorg/modules/extensions/libvnc.la
-%exclude /usr/%{_lib}/xorg/modules/extensions/libvnc.so
+%exclude %{_libdir}/xorg/protocol.txt
+%exclude %{_libdir}/xorg/modules/extensions/libvnc.la
+%exclude %{_libdir}/xorg/modules/extensions/libvnc.so
 %endif
 
 %ifnarch s390 s390x
 %files -n xorg-x11-Xvnc-module
-%exclude /usr/%{_lib}/xorg/protocol.txt
-%exclude /usr/%{_lib}/xorg/modules/extensions/libvnc.la
+%exclude %{_libdir}/xorg/protocol.txt
+%exclude %{_libdir}/xorg/modules/extensions/libvnc.la
 %{_libdir}/xorg/modules/extensions/libvnc.so
-/usr/share/X11/xorg.conf.d/10-libvnc.conf
+%{_datadir}/X11/xorg.conf.d/10-libvnc.conf
 %endif
 
 %files -n xorg-x11-Xvnc-novnc
