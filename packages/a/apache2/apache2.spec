@@ -697,8 +697,8 @@ popd
 
 # install firewall information file
 %if %{use_firewalld}
-install -D -m 644 %{SOURCE49} %{buildroot}%{_libexecdir}/firewalld/services/%{name}.xml
-install -D -m 644 %{SOURCE50} %{buildroot}%{_libexecdir}/firewalld/services/%{name}-ssl.xml
+install -D -m 644 %{SOURCE49} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
+install -D -m 644 %{SOURCE50} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}-ssl.xml
 %else
 install -d %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/
 install -m 644 %{SOURCE51} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
@@ -885,10 +885,10 @@ rm %{buildroot}/%{sysconfdir}/*.test
 %{_datadir}/%{name}/script-helpers
 %{_datadir}/%{name}/sysconf_addword
 %if %{use_firewalld}
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/%{name}.xml
-%{_libexecdir}/firewalld/services/%{name}-ssl.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/%{name}.xml
+%{_prefix}/lib/firewalld/services/%{name}-ssl.xml
 %else
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}-ssl

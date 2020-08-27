@@ -1725,4 +1725,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>826679</requestid>
   </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>db149f1db97f6e0b415aa2dafa9e33bd</srcmd5>
+    <version>2.4.46</version>
+    <time>1598532129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829974</requestid>
+  </revision>
 </revisionlist>
