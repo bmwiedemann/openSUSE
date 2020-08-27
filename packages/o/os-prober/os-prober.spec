@@ -1,7 +1,7 @@
 #
 # spec file for package os-prober
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Probes disks on the system for installed operating systems
 License:        GPL-2.0-or-later
 Group:          System/Boot
-Url:            https://salsa.debian.org/installer-team/os-prober
+URL:            https://salsa.debian.org/installer-team/os-prober
 Source0:        https://salsa.debian.org/installer-team/os-prober/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        COPYING-note.txt
 # move newns binary outside of os-prober subdirectory, so that debuginfo
@@ -134,7 +134,7 @@ install -m 0755 -d %{buildroot}%{_bindir}
 install -m 0755 -d %{buildroot}%{_localstatedir}/lib/%{name}
 
 install -m 0755 -p os-prober linux-boot-prober %{buildroot}%{_bindir}
-install -m 0755 -Dp newns %{buildroot}%{_libexecdir}/newns
+install -m 0755 -Dp newns %{buildroot}%{_prefix}/lib/newns
 install -m 0644 -Dp common.sh %{buildroot}%{_datadir}/%{name}/common.sh
 
 %ifarch m68k
@@ -152,24 +152,24 @@ ARCH=x86
 
 for probes in os-probes os-probes/mounted os-probes/init \
               linux-boot-probes linux-boot-probes/mounted; do
-        install -m 755 -d %{buildroot}%{_libexecdir}/$probes
-        cp -a $probes/common/* %{buildroot}%{_libexecdir}/$probes
+        install -m 755 -d %{buildroot}%{_prefix}/lib/$probes
+        cp -a $probes/common/* %{buildroot}%{_prefix}/lib/$probes
         if [ -e "$probes/$ARCH" ]; then
-                cp -a $probes/$ARCH/* %{buildroot}%{_libexecdir}/$probes
+                cp -a $probes/$ARCH/* %{buildroot}%{_prefix}/lib/$probes
         fi
 done
 if [ "$ARCH" = x86 ]; then
         install -m 755 -p os-probes/mounted/powerpc/20macosx \
-            %{buildroot}%{_libexecdir}/os-probes/mounted
+            %{buildroot}%{_prefix}/lib/os-probes/mounted
 fi
 
 %files
 %defattr(-,root,root,-)
 %doc README TODO debian/copyright debian/changelog COPYING-note.txt
 %{_bindir}/*
-%{_libexecdir}/linux-boot-probes
-%{_libexecdir}/newns
-%{_libexecdir}/os-probes
+%{_prefix}/lib/linux-boot-probes
+%{_prefix}/lib/newns
+%{_prefix}/lib/os-probes
 %{_datadir}/%{name}
 %{_localstatedir}/lib/%{name}
 

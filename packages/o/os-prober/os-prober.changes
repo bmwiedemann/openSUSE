@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 27 08:39:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Install os-prober files to %{_prefix}/lib: os-prober and all its
+  subscripts have /usr/lib hardcoded, so changing the location on
+  the fly is no good idea (boo#1175815).
+
+-------------------------------------------------------------------
 Tue Aug 13 08:12:58 UTC 2019 - Michael Chang <mchang@suse.com>
 
 - Fix duplicated distro detected on btrfs multiple device (bsc#1142858)
