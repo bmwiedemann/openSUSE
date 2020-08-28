@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Gtk3
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,26 +23,23 @@ Release:        0
 Summary:        Perl interface to the 3.x series of the gtk+ toolkit
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Cairo::GObject) >= 1.000
 BuildRequires:  perl(Glib::Object::Introspection) >= 0.043
 BuildRequires:  perl(Test::Simple) >= 0.96
+BuildRequires:  typelib(Gtk) = 3.0
+%if 0%{?sle_version} >= 150200 && 0%{?is_opensuse} || 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
+BuildRequires:  typelib(GdkPixdata) = 2.0
+%endif
 Requires:       perl(Cairo::GObject) >= 1.000
 Requires:       perl(Glib::Object::Introspection) >= 0.043
 Requires:       perl(Test::Simple) >= 0.96
+BuildArch:      noarch
 %{perl_requires}
-# MANUAL BEGIN
-BuildRequires:  typelib(Gtk) = 3.0
-%if 0%{?suse_version} >= 01550
-BuildRequires:  typelib(GdkPixdata) = 2.0
-%endif
-# MANUAL END
 
 %description
 The 'Gtk3' module allows a Perl developer to use the gtk+ graphical user
@@ -75,7 +72,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc NEWS perl-gtk3.doap README
 %license LICENSE
 

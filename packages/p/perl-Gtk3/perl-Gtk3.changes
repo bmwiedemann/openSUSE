@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 24 16:52:08 UTC 2020 - malcolmlewis@opensuse.org
+
+- Fix requires on typelib(GdkPixdata) for SLE 15+, Leap 15.2 and
+  greater.
+- Update cpanspec.yml for requires as well.
+
+-------------------------------------------------------------------
 Wed Mar 18 03:10:02 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.037
