@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:36:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on non-x86 by dropping -fcf-protection flag 
+  on non-x86 architectures
+
+-------------------------------------------------------------------
 Sun Aug 16 01:27:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - Update to 0.27.3:

@@ -16,14 +16,6 @@
 #
 
 
-# there is a test failure on ARM & PPC
-# upstream issue: https://github.com/Exiv2/exiv2/issues/933
-%ifarch x86_64
-%{bcond_without tests}
-%else
-%{bcond_with tests}
-%endif
-
 Name:           exiv2
 Version:        0.27.3
 Release:        0
@@ -46,6 +38,14 @@ BuildRequires:  libexpat-devel
 BuildRequires:  libxslt
 BuildRequires:  python3-base
 BuildRequires:  zlib-devel
+Recommends:     %{name}-lang = %{version}
+# there is a test failure on ARM & PPC
+# upstream issue: https://github.com/Exiv2/exiv2/issues/933
+%ifarch x86_64
+%{bcond_without tests}
+%else
+%{bcond_with tests}
+%endif
 %if %{with tests}
 # testsuite:
 BuildRequires:  dos2unix
@@ -54,7 +54,6 @@ BuildRequires:  gtest
 BuildRequires:  libxml2-tools
 BuildRequires:  which
 %endif
-Recommends:     %{name}-lang = %{version}
 
 %description
 Exiv2 is a command line utility to access image metadata from tags like
@@ -104,6 +103,10 @@ documentation in HTML format.
 # Upstream will switch to C++11 with 0.28.0, but googletest requires C++11
 # See https://github.com/Exiv2/exiv2/issues/1163
 sed -i -e 's/CXX_STANDARD 98/CXX_STANDARD 11/' cmake/mainSetup.cmake
+%ifnarch %{ix86} x86_64
+# Drop -fcf-protection flag on architectures which do not support it
+sed -i -e 's/-fcf-protection//' cmake/compilerFlags.cmake
+%endif
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -172,7 +175,7 @@ for t in \
     xmpsample \
     ; do
     rm -f %{buildroot}%{_bindir}/${t}
-    rm -f %{buildroot}/usr/lib/debug%{_bindir}/${t}*
+    rm -f %{buildroot}%{_prefix}/lib/debug%{_bindir}/${t}*
 done
 %endif
 
