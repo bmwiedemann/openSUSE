@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioeventlet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ Summary:        Asyncio event loop scheduling callbacks in eventlet
 License:        Apache-2.0
 URL:            https://pypi.org/project/aioeventlet/
 Source:         https://files.pythonhosted.org/packages/source/a/aioeventlet/aioeventlet-%{version}.tar.gz
+# pr_1.patch is Python 3.7+ support
+Patch0:         pr_1.patch
+BuildRequires:  %{python_module eventlet}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-eventlet
@@ -51,12 +55,22 @@ parallel.
 
 %prep
 %setup -q -n aioeventlet-%{intver}
+%patch0 -p1
 
 %build
 %python_build
 
 %install
 %python_install
+
+%check
+# Python 2 requires trollius which is not in devel project,
+# and test setup fails on Python 3.6 as it tries to reach live DNS server
+%{python_expand PYTHON_VERSION=%{$python_version_nodots}
+if [[ ${PYTHON_VERSION:0:1} -eq 3 && ${PYTHON_VERSION:1:2} -gt 6 ]]; then
+  # Some tests in test_eventlet.py halt
+  $python -m pytest -k 'EventletTests or test_wrap_invalid_type or test_wrap_greenlet_dead or test_wrap_greenlet_running or test_greenlet'
+fi}
 
 %files %{python_files}
 %license COPYING
