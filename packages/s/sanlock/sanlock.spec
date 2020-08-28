@@ -28,13 +28,13 @@
 %endif
 %bcond_without python2
 Name:           sanlock
-Version:        3.8.1
+Version:        3.8.2
 Release:        0
 Summary:        A shared disk lock manager
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://pagure.io/sanlock
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        sysconfig.sanlock
 Source2:        sysconfig.wdmd
 Source3:        fence_sanlockd.init
@@ -44,7 +44,6 @@ Patch100:       sanlock-SCHED_RESET_ON_FORK-undefined.patch
 Patch101:       sanlock-python-prefix.patch
 Patch102:       suse-systemd.patch
 Patch103:       suse-no-date-time.patch
-Patch104:       sanlock-lto-disable-fpie.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  libaio-devel
 BuildRequires:  pkgconfig
@@ -131,7 +130,6 @@ common sanlock lockspace.
 %patch101
 %patch102 -p1
 %patch103 -p1
-%patch104 -p1
 
 %build
 # upstream does not require configure
