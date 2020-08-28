@@ -18,13 +18,13 @@
 
 %define sover 3
 Name:           libArcus
-Version:        4.6.1
+Version:        4.6.2
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://github.com/Ultimaker/%name
-Source:         %name-%{version}.tar.xz
+Source:         https://github.com/Ultimaker/libArcus/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - use Qt5 sip import name, taken from Fedora
 Patch0:         libArcus-3.5.1-PyQt5.sip.patch
 BuildRequires:  cmake >= 3.6
