@@ -15,11 +15,6 @@ Thu Aug 20 07:29:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
   * CVE-2020-6556: Heap buffer overflow in SwiftShader
 
 -------------------------------------------------------------------
-Wed Aug 19 14:27:55 UTC 2020 - Martin Liška <mliska@suse.cz>
-
-- Use new _constraint memoryperjob.
-
--------------------------------------------------------------------
 Wed Aug 12 12:00:41 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add chromium-disable-parallel-gold.patch in order to disable

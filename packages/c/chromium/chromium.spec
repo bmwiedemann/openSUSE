@@ -139,6 +139,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libjpeg-devel >= 8.1
 BuildRequires:  libpng-devel
+BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja >= 1.7.2
@@ -565,6 +566,8 @@ ln -sfn %{_bindir}/$CXX $HOME/bin/g++
 export PATH="$HOME/bin/:$PATH"
 %endif
 %endif
+# do not eat all memory
+%limit_build -m 2600
 
 # Set system libraries to be used
 gn_system_libraries=(
