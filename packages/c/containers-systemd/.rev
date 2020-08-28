@@ -110,4 +110,20 @@
     (container-registry-systemd#2)</comment>
     <requestid>810841</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>93f0163040236c4214f8aa5a5e9275ce</srcmd5>
+    <version>0.0+git20200828.7cc6e97</version>
+    <time>1598642349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200828.7cc6e97:
+  * Add support for postfix container
+
+- Update to version 0.0+git20200825.e6c35ce:
+  * Allow extra args for podman for the ldap container
+
+- Update to version 0.0+git20200824.8ed78c3:
+  * New files to support OpenLDAP
+  * Adjust documentation</comment>
+    <requestid>830274</requestid>
+  </revision>
 </revisionlist>

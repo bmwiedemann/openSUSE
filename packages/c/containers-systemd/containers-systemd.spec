@@ -16,8 +16,8 @@
 #
 
 
-%define containers bind dhcp-server haproxy mariadb nginx squid
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-haproxy.service container-mariadb.service container-nginx.service container-image-prune.timer squid.service
+%define containers bind dhcp-server haproxy mariadb nginx openldap postfix squid
+%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-haproxy.service container-mariadb.service container-nginx.service container-openldap.service container-postfix.service container-squid.service container-image-prune.timer
 
 %if %{undefined service_del_postun_without_restart}
 %define service_del_postun_without_restart() \
@@ -26,7 +26,7 @@ DISABLE_RESTART_ON_UPDATE=1 \
 %endif
 
 Name:           containers-systemd
-Version:        0.0+git20200602.25da9c0
+Version:        0.0+git20200828.7cc6e97
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
@@ -64,6 +64,14 @@ install -m 644 container-image-prune.timer %{buildroot}%{_unitdir}/
 mkdir -p %{buildroot}%{_sysconfdir}/mariadb-secrets
 for i in MYSQL_ROOT_PASSWORD MYSQL_ROOT_HOST MYSQL_DATABASE MYSQL_USER MYSQL_PASSWORD; do
   touch %{buildroot}%{_sysconfdir}/mariadb-secrets/$i
+done
+mkdir -p %{buildroot}%{_sysconfdir}/openldap-secrets
+for i in LDAP_ADMIN_PASSWORD LDAP_CONFIG_PASSWORD; do
+  touch %{buildroot}%{_sysconfdir}/openldap-secrets/$i
+done
+mkdir -p %{buildroot}%{_sysconfdir}/postfix-secrets
+for i in SMTP_PASSWORD LDAP_MAIL_READER_PASSWORD; do
+  touch %{buildroot}%{_sysconfdir}/postfix-secrets/$i
 done
 
 %pre
@@ -110,6 +118,20 @@ done
 %{_distconfdir}/default/container-nginx
 %{_sbindir}/rccontainer-nginx
 %ghost %dir /srv/nginx
+%{_unitdir}/container-openldap.service
+%{_distconfdir}/default/container-openldap
+%{_sbindir}/rccontainer-openldap
+%ghost %dir /srv/openldap
+%dir %attr(0700,root,root) %{_sysconfdir}/openldap-secrets
+%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/openldap-secrets/LDAP_ADMIN_PASSWORD
+%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/openldap-secrets/LDAP_CONFIG_PASSWORD
+%{_unitdir}/container-postfix.service
+%{_distconfdir}/default/container-postfix
+%{_sbindir}/rccontainer-postfix
+%ghost %dir /srv/postfix
+%dir %attr(0700,root,root) %{_sysconfdir}/postfix-secrets
+%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/postfix-secrets/SMTP_PASSWORD
+%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/postfix-secrets/LDAP_MAIL_READER_PASSWORD
 %{_unitdir}/container-squid.service
 %{_distconfdir}/default/container-squid
 %{_sbindir}/rccontainer-squid

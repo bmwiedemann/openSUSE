@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:27:44 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200828.7cc6e97:
+  * Add support for postfix container
+
+-------------------------------------------------------------------
+Tue Aug 25 11:50:22 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200825.e6c35ce:
+  * Allow extra args for podman for the ldap container
+
+-------------------------------------------------------------------
+Mon Aug 24 14:16:49 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200824.8ed78c3:
+  * New files to support OpenLDAP
+  * Adjust documentation
+
+-------------------------------------------------------------------
 Tue Jun 02 12:43:51 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.0+git20200602.25da9c0:
