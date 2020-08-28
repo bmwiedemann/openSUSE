@@ -5178,4 +5178,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>squashfs fix &amp; 5.8.2 &amp; 5.8.1</comment>
     <requestid>827824</requestid>
   </revision>
+  <revision rev="552" vrev="1">
+    <srcmd5>47a322a36a9e66e7fe066e4549d5572c</srcmd5>
+    <version>5.8.4</version>
+    <time>1598642173</time>
+    <user>dimstar_suse</user>
+    <comment>5.8.4 &amp; 5.8.3 &amp; other fixes</comment>
+    <requestid>829729</requestid>
+  </revision>
 </revisionlist>

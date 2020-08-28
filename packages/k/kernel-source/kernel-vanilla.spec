@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.8
-%define patchversion 5.8.2
+%define patchversion 5.8.4
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.8.2
+Version:        5.8.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g71b519a
+Release:        <RELEASE>.g64fe492
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-71b519a05d3da3124d5976f579be3903d0cd81a7
-Provides:       kernel-srchash-71b519a05d3da3124d5976f579be3903d0cd81a7
+Provides:       kernel-%build_flavor-base-srchash-64fe49267bb946fd4ad7a26a8334a15918ead4ab
+Provides:       kernel-srchash-64fe49267bb946fd4ad7a26a8334a15918ead4ab
 # END COMMON DEPS
-Provides:       %name-srchash-71b519a05d3da3124d5976f579be3903d0cd81a7
+Provides:       %name-srchash-64fe49267bb946fd4ad7a26a8334a15918ead4ab
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
