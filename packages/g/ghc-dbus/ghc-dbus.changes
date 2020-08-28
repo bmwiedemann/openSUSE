@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:42:26 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:37 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Sun Jun 28 02:00:34 UTC 2020 - psimons@suse.com
 
 - Update dbus to version 1.2.16.
