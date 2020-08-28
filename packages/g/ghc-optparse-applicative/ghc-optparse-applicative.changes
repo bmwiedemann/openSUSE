@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:45:37 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Thu Aug 13 15:56:41 UTC 2020 - psimons@suse.com
+
+- Update optparse-applicative to version 0.16.0.0.
+  ## Version 0.16.0.0 (14 Aug 2020)
+
+  - Add `Options.Applicative.NonEmpty.some1` function, which
+    parses options the same as `some1` from base, but doesn't
+    cause duplicates in the usage texts.
+
+  - Further improve help text generation in the presence
+    of optional values when nesting is involved, and many and
+    some when displayed with a suffix.
+
+  - Add "global" options to the usage texts for subcommands.
+    When using subcommands, a "global options" section can
+    now appear below the options and commands sections.
+
+    Global options are *off* by default, to enable them, use
+    the `helpShowGlobals` modifier.
+
+    The `noGlobal` builder will suppress a single option being
+    displayed in the global options list.
+
+    Fixes issues:
+      * \# 175 - List detailed subparser documentation with `--help`
+      * \# 294 - Displaying global options when listing options for a command.
+      * \# 359 - Subcommand help text lacks required parent command arguments
+
+  - Allow the `--help` option to take the name of a command.
+    Usage without any arguments is the same, but now, when an
+    argument is given, if it is the name of a currently
+    reachable command, the help text for that command will
+    be show.
+
+    Fixes issues:
+      * \# 379 - cmd --help subcmd is not the same as cmd subcmd --help
+
+  - Updated dependency bounds.
+
+  - Add builder for the all positional parser policy.
+
+  - Remove deprecated functions
+      * nullOption
+      * execParserMaybe
+      * customExecParserMaybe
+
+-------------------------------------------------------------------
 Tue Jun 16 11:14:25 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.

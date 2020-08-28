@@ -19,13 +19,12 @@
 %global pkg_name optparse-applicative
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.15.1.0
+Version:        0.16.0.0
 Release:        0
 Summary:        Utilities and combinators for parsing command line options
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-wl-pprint-devel
 BuildRequires:  ghc-process-devel
@@ -39,11 +38,12 @@ BuildRequires:  ghc-bytestring-devel
 
 %description
 Optparse-applicative is a haskell library for parsing options on the command
-line, providing a powerful applicative interface for composing these options.
+line, and providing a powerful applicative interface for composing them.
 
 optparse-applicative takes care of reading and validating the arguments passed
 to the command line, handling and reporting errors, generating a usage line, a
-comprehensive help screen, and enabling context-sensitive bash completions.
+comprehensive help screen, and enabling context-sensitive bash, zsh, and fish
+completions.
 
 See the included README for detailed instructions and examples, which is also
 available on github <https://github.com/pcapriotti/optparse-applicative>.
@@ -60,8 +60,7 @@ This package provides the Haskell %{pkg_name} library development
 files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
