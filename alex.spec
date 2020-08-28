@@ -1,7 +1,7 @@
 #
 # spec file for package alex
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ module containing code for scanning text efficiently. It is similar to the tool
 lex or flex for C/C++.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %ghc_bin_build
