@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug 27 18:32:40 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 20.2.1
+  * Samples: Fixed #2190. rotate_opencl plugin switched to recent
+    version of OpenCL C++ headers, validated with OpenCL-CLHPP
+    v2.0.12 and OpenCL-Headers v2020.06.16 / Intel® SDK for OpenCL™
+    Applications for Windows* 2020.2.487.
+
+-------------------------------------------------------------------
+Thu Aug 27 18:04:40 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 20.2.0
+  * bugfixes and improvements
+  * includes: Build system does not enforce specific instruction 
+    set (issue#2047, boo#1167346)
+- supersedes u_buildfix-for-gcc10.patch
+
+-------------------------------------------------------------------
+Mon Aug  3 09:03:23 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Move samples into a new subpackage
+- The library does not depend on the tools, drop Requires
+- Apply patch unconditionally, use %autosetup
+- Move LICENSE to library package
+- Make the sover part of %files
+- Don't bother building tests, they're not run anyway
+
+-------------------------------------------------------------------
 Mon Mar 16 12:40:37 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_buildfix-for-gcc10.patch

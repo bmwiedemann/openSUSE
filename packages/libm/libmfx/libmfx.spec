@@ -16,9 +16,10 @@
 #
 
 
+%global sover 1
 Name:           libmfx
-%define lname   libmfx1
-Version:        19.4.0
+%define lname   libmfx%{sover}
+Version:        20.2.1
 Release:        0
 Summary:        The Intel Media SDK
 License:        MIT
@@ -26,7 +27,6 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/Intel-Media-SDK/MediaSDK
 Source0:        https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-%{version}.tar.gz
 Patch0:         cmake-sle12.patch
-Patch1:         u_buildfix-for-gcc10.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7-c++
@@ -47,7 +47,6 @@ platforms. The implementation is written in C++11, with parts in C-for-Media
 %package -n %lname
 Summary:        The Intel Media SDK
 Group:          System/Libraries
-Requires:       %{name}
 
 %description -n %lname
 The Intel Media SDK provides a plain C API to access hardware-accelerated
@@ -64,12 +63,15 @@ Requires:       %lname = %version
 This package contains the development headers and pkgconfig files for
 the Intel Media SDK.
 
+%package samples
+Summary:        Examples for the Intel Media SDK
+Group:          Development/Languages/C and C++
+
+%description samples
+This package contains example applications for the Intel Media SDK.
+
 %prep
-%setup -q -n MediaSDK-intel-mediasdk-%{version}
-%if 0%{?suse_version} < 1500
-%patch0 -p1
-%endif
-%patch1 -p1
+%autosetup -p1 -n MediaSDK-intel-mediasdk-%{version}
 
 %build
 mkdir -p build 
@@ -84,7 +86,7 @@ cmake \
 -DENABLE_WAYLAND:BOOL=ON \
 -DENABLE_TEXTLOG:BOOL=ON \
 -DENABLE_STAT:BOOL=ON \
--DBUILD_TESTS:BOOL=ON \
+-DBUILD_TESTS:BOOL=OFF \
 -DBUILD_TOOLS:BOOL=ON \
 -DENABLE_ITT:BOOL=OFF \
 -DBUILD_KERNELS:BOOL=OFF \
@@ -107,26 +109,31 @@ rmdir %{buildroot}/%{_datadir}/mfx/samples
 
 %files
 %doc CHANGELOG.md CODEOWNERS README.md
-%license LICENSE 
 %{_bindir}/asg-hevc
 %{_bindir}/hevc_fei_extractor
+%{_bindir}/mfx-tracer-config
 
 %files -n %lname
-%{_libdir}/libmfx.so.*
-%{_libdir}/libmfxhw64.so.*
+%license LICENSE 
+%{_libdir}/libmfx.so.%{sover}
+%{_libdir}/libmfx.so.%{sover}.*
+%{_libdir}/libmfxhw64.so.%{sover}
+%{_libdir}/libmfxhw64.so.%{sover}.*
+%{_libdir}/libmfx-tracer.so.%{sover}
+%{_libdir}/libmfx-tracer.so.%{sover}.*
 %dir %{_libdir}/mfx
 %{_libdir}/mfx/libmfx_*_hw64.so
-%dir %{_libdir}/mfx/samples/
-%{_libdir}/mfx/samples/*
-%exclude %{_libdir}/mfx/samples/libvpp_plugin.a
 %dir %{_datadir}/mfx
 %{_datadir}/mfx/plugins.cfg
+
+%files samples
+%{_libdir}/mfx/samples/
 
 %files devel
 %{_includedir}/mfx/
 %{_libdir}/libmfx.so
 %{_libdir}/libmfxhw64.so
+%{_libdir}/libmfx-tracer.so
 %{_libdir}/pkgconfig/*.pc
-%{_libdir}/mfx/samples/libvpp_plugin.a
 
 %changelog

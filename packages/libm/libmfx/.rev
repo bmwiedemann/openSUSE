@@ -64,4 +64,29 @@
   * fixes build against gcc10 (boo#1166609)</comment>
     <requestid>785623</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8cfaa5c3f92046d702d0809799979a00</srcmd5>
+    <version>20.2.1</version>
+    <time>1598642124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.2.1
+  * Samples: Fixed #2190. rotate_opencl plugin switched to recent
+    version of OpenCL C++ headers, validated with OpenCL-CLHPP
+    v2.0.12 and OpenCL-Headers v2020.06.16 / Intel® SDK for OpenCL™
+    Applications for Windows* 2020.2.487.
+
+- Update to version 20.2.0
+  * bugfixes and improvements
+  * includes: Build system does not enforce specific instruction 
+    set (issue#2047, boo#1167346)
+- supersedes u_buildfix-for-gcc10.patch
+
+- Move samples into a new subpackage
+- The library does not depend on the tools, drop Requires
+- Apply patch unconditionally, use %autosetup
+- Move LICENSE to library package
+- Make the sover part of %files
+- Don't bother building tests, they're not run anyway</comment>
+    <requestid>830070</requestid>
+  </revision>
 </revisionlist>
