@@ -57,7 +57,7 @@ This package provides the Haskell %{pkg_name} library
 development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 cabal-tweak-dep-ver http-client '< 0.7' '< 1'
 
 %build
