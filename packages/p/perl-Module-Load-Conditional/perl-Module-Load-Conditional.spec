@@ -17,7 +17,7 @@
 
 
 Name:           perl-Module-Load-Conditional
-Version:        0.72
+Version:        0.74
 Release:        0
 %define cpan_name Module-Load-Conditional
 Summary:        Looking up module information / loading at runtime
