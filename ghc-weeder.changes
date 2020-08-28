@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 19 06:39:29 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with min 6GB disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:38 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:19:06 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Tweak Cabal file to accept latest version of optparse-applicative.
+
+-------------------------------------------------------------------
 Wed Jul  1 02:00:26 UTC 2020 - psimons@suse.com
 
 - Update weeder to version 2.1.0.

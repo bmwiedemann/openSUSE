@@ -56,7 +56,8 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
+sed -i -e 's#optparse-applicative \^>= 0\.14\.3\.0 || \^>= 0\.15\.1\.0#optparse-applicative < 1#' weeder.cabal
 
 %build
 %ghc_lib_build
