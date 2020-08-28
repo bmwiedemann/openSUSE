@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:44:06 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Sun Jun 21 02:00:47 UTC 2020 - psimons@suse.com
 
 - Update base16-bytestring to version 0.1.1.7.
