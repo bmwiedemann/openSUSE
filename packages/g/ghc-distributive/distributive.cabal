@@ -1,7 +1,7 @@
 name:          distributive
 category:      Data Structures
 version:       0.6.2
-x-revision: 1
+x-revision: 2
 license:       BSD3
 cabal-version: >= 1.8
 license-file:  LICENSE
@@ -65,7 +65,7 @@ library
   build-depends:
     base                >= 4   && < 5,
     base-orphans        >= 0.5.2 && < 1,
-    transformers        >= 0.2 && < 0.6
+    transformers        >= 0.3 && < 0.6
 
   if !impl(ghc >= 7.8) && !impl(ghcjs)
     build-depends: transformers-compat >= 0.3 && < 1
