@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
@@ -69,6 +69,7 @@ rm -f setup.cfg
 %if %{with test}
 %check
 export LANG=en_US.UTF8
+export PY_IGNORE_IMPORTMISMATCH=1
 # README.rst contains Python 3 only imports
 %pytest --doctest-plus --doctest-rst -k 'not README.rst'
 %endif
