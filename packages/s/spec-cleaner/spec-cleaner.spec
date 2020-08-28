@@ -64,10 +64,10 @@ python3 -m pytest -k "not webtest"
 %files
 %license COPYING
 %{_bindir}/%{name}
-%dir %{_libexecdir}/obs/
-%dir %{_libexecdir}/obs/service/
-%{_libexecdir}/obs/service/clean_spec_file
-%{_libexecdir}/obs/service/clean_spec_file.service
+%dir %{_prefix}/lib/obs/
+%dir %{_prefix}/lib/obs/service/
+%{_prefix}/lib/obs/service/clean_spec_file
+%{_prefix}/lib/obs/service/clean_spec_file.service
 %dir %{python3_sitelib}/spec_cleaner/
 %{python3_sitelib}/spec_cleaner/__init__.py
 %{python3_sitelib}/spec_cleaner/__main__.py
@@ -104,7 +104,7 @@ python3 -m pytest -k "not webtest"
 %{_datadir}/%{name}/tex_conversions.txt
 
 %files format_spec_file
-%{_libexecdir}/obs/service/format_spec_file
-%{_libexecdir}/obs/service/format_spec_file.service
+%{_prefix}/lib/obs/service/format_spec_file
+%{_prefix}/lib/obs/service/format_spec_file.service
 
 %changelog

@@ -699,4 +699,12 @@
   * Do not choke on multiline string macros</comment>
     <requestid>814878</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>4ce2d26a8878c0187761988b73c4475d</srcmd5>
+    <version>1.2.0</version>
+    <time>1598651138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829739</requestid>
+  </revision>
 </revisionlist>
