@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:44:54 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:47:49 UTC 2020 - psimons@suse.com
 
 - Add fsnotify at version 0.3.0.1.
