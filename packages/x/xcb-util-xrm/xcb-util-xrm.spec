@@ -1,7 +1,7 @@
 #
 # spec file for package xcb-util-xrm
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define clib    libxcb-xrm0
 Name:           xcb-util-xrm
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        XCB utility module for the X Resource Manager
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/Airblader/%{name}
+URL:            https://github.com/Airblader/%{name}
 Source:         https://github.com/Airblader/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  m4
 BuildRequires:  pkgconfig
