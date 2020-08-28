@@ -61,7 +61,7 @@ This package provides the Haskell %{pkg_name} library development
 files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 cabal-tweak-dep-ver aeson '< 1.5' '< 2'
 
 %build

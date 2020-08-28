@@ -1,3 +1,13 @@
+-------------------------------------------------------------------
+Wed Aug 19 08:15:34 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:43 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
 ------------------------------------------------------------------
 Tue Jun  9 10:14:33 UTC 2020 - psimons@suse.com
 
