@@ -336,7 +336,7 @@ ln -sf %{_bindir}/mu-mail %{buildroot}%{_sysconfdir}/alternatives/mail
 ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/Mail.1%{?ext_man}
 ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/mail.1%{?ext_man}
 
-%fdupes -s %{buildroot}%{_libexecdir}/python*/site-packages/mailutils/
+%fdupes -s %{buildroot}%{python3_sitelib}/mailutils/
 
 %find_lang %{name}
 
