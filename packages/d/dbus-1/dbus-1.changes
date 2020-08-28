@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 21 22:09:46 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Require diffutils in post so that cmp is available
+
+-------------------------------------------------------------------
 Thu Jul 16 21:28:10 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.12.20

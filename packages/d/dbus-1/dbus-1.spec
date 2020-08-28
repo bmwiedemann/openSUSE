@@ -48,6 +48,7 @@ BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires(post): %{_libname} = %{version}
 Requires(post): update-alternatives
+Requires(post): diffutils
 Requires(pre):  permissions
 Requires(preun): update-alternatives
 Provides:       dbus-launch

@@ -1339,4 +1339,12 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
   * Avoid a test failure on Linux when built in a container as uid 0, but</comment>
     <requestid>826904</requestid>
   </revision>
+  <revision rev="163" vrev="2">
+    <srcmd5>d87b0af86e5de030a778640a670203ab</srcmd5>
+    <version>1.12.20</version>
+    <time>1598651091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828602</requestid>
+  </revision>
 </revisionlist>
