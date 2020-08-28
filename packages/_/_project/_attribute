@@ -221,7 +221,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
-jobs_num: 228
+jobs_num: 225
 openqa_group: openSUSE Tumbleweed
 openqa_server: https://openqa.opensuse.org
 product_repo: images
@@ -398,10 +398,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20200825'
+    <value>failed: ''
 published: '20200824'
 publishing: '20200824'
-testing: '20200825'
+testing: '20200826'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
