@@ -1,7 +1,7 @@
 #
 # spec file for package snappy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libsnappy1
 Name:           snappy
-Version:        1.1.7
+Version:        1.1.8
 Release:        0
 Summary:        A compressor/decompressor library favoring time
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/google/snappy/
+URL:            https://github.com/google/snappy/
 Source0:        https://github.com/google/snappy/archive/%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         snappy-pcfile.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  lzo-devel
@@ -68,7 +67,6 @@ This package holds the development files for snappy.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %cmake
@@ -93,6 +91,5 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PA
 %{_libdir}/libsnappy.so
 %dir %{_libdir}/cmake/Snappy/
 %{_libdir}/cmake/Snappy/*
-%{_libdir}/pkgconfig/snappy.pc
 
 %changelog

@@ -59,4 +59,16 @@
     <comment></comment>
     <requestid>574330</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a682cd295dbb06d62ae1a6b919b3cc65</srcmd5>
+    <version>1.1.8</version>
+    <time>1598642071</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.8:
+  * Small performance improvements.
+  * Removed snappy::string alias for std::string.
+  * Improved CMake configuration.
+- remove snappy-pcfile.patch (never went upstream)</comment>
+    <requestid>829564</requestid>
+  </revision>
 </revisionlist>
