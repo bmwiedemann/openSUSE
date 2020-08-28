@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 25 06:53:29 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Create version 0.3.9
+- Fix issue when secondary registration fails after a successful
+  SSFS files copy process. Now the registration return code will
+  be checked in the new call (bsc#1175709)
+
+-------------------------------------------------------------------
 Fri Mar 27 18:15:37 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Create version 0.3.8
