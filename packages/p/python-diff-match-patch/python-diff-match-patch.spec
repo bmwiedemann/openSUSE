@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-diff-match-patch
-Version:        20181111
+Version:        20200713
 Release:        0
 Summary:        Repackaging of Google's Diff Match and Patch libraries
 License:        Apache-2.0

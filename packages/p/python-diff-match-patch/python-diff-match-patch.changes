@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 19 17:37:55 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 20200713
+  * Pulls in upstream change to use raw strings for regex
+  * Updates to how the package builds, tests, and runs lint
+  * Uses PEP 517/518 metadata for build requirements/backend
+  * Formatting improvements, including use of isort
+
+-------------------------------------------------------------------
 Tue Jan 28 13:15:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Provide/obsolete diff_match_patch package name as it is not
