@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 21 15:20:46 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Strip debugging symbols prior to running unit tests. Some tests
+  cause too much memory usage when debug symbols are enabled.
+
+-------------------------------------------------------------------
+Mon Aug 10 16:37:44 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Explicitly add -fno-strict-aliasing to CFLAGS to fix compilation
+  on Aarch64 with gcc10 (bsc#1172686)
+
+-------------------------------------------------------------------
 Wed Jul 22 12:27:31 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 12.22.0:

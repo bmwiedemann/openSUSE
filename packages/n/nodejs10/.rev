@@ -337,4 +337,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>823430</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>3eecd84ade7fc9d5a827edb5f6b7abe3</srcmd5>
+    <version>10.22.0</version>
+    <time>1598651072</time>
+    <user>dimstar_suse</user>
+    <comment>- Strip debugging symbols prior to running unit tests. Some tests
+  cause too much memory usage when debug symbols are enabled.
+
+- Explicitly add -fno-strict-aliasing to CFLAGS to fix compilation
+  on Aarch64 with gcc10 (bsc#1172686)</comment>
+    <requestid>828544</requestid>
+  </revision>
 </revisionlist>

@@ -118,7 +118,7 @@ Release:        0
 Summary:        Evented I/O for V8 JavaScript
 License:        MIT
 Group:          Development/Languages/NodeJS
-Url:            https://nodejs.org
+URL:            https://nodejs.org
 Source:         https://nodejs.org/dist/v%{version}/node-v%{version}.tar.xz
 Source1:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt
 Source2:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt.sig
@@ -406,8 +406,8 @@ find deps/zlib -name *.[ch] -delete
 
 # percent-configure pulls in something that confuses node's configure
 # script, so we'll do it thus:
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
 export LDFLAGS="%{?build_ldflags}"
 
 %if 0%{?cc_exec:1}
@@ -454,6 +454,10 @@ find doc/api -type f -exec chmod 0644 {} +
 
 %install
 . %{SOURCE20}
+
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
+export LDFLAGS="%{?build_ldflags}"
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}
@@ -536,6 +540,10 @@ mkdir -p %{buildroot}%{_defaultlicensedir}
 %endif
 
 %check
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
+export LDFLAGS="%{?build_ldflags}"
+
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}
 export CXX=%{?cpp_exec}
@@ -545,6 +553,8 @@ export NODE_TEST_NO_INTERNET=1
 %if %{node_version_number} >= 12
 find test \( -name \*.out -or -name \*.js \) -exec sed -i 's,Use `node ,Use `node%{node_version_number} ,' {} \;
 %endif
+
+strip node%{node_version_number}
 
 ln addon-rpm.gypi deps/npm/node_modules/node-gyp/addon-rpm.gypi
 # Tarball doesn't have eslint package distributed, so disable some tests
