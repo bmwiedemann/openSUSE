@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:45:05 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Sun Aug 16 02:01:35 UTC 2020 - psimons@suse.com
+
+- Update hslua-module-text to version 0.3.0.
+  ## 0.3.0 -- 2020-08-15
+
+  - Use self-documenting module. This allows to include
+    documentation with the module definition, and to auto-generate
+    documentation from that. Requires hslua-1.2.0 or newer.
+
+  - Run CI tests with all GHC 8 versions, test stack builds.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:14:12 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.

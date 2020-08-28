@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-module-text
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hslua-module-text
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Lua module for text
 License:        MIT
@@ -33,6 +33,7 @@ BuildRequires:  ghc-text-devel
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-lua-devel
 %endif
 
 %description
@@ -50,7 +51,7 @@ This package provides the Haskell %{pkg_name} library development
 files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
