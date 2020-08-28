@@ -19,7 +19,7 @@
 %global pkg_name cabal2spec
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Convert Cabal files into rpm spec files
 License:        GPL-3.0-or-later
@@ -62,7 +62,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{name} library development files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %ghc_lib_build
