@@ -33,6 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Conflicts:      html2text
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,6 +46,9 @@ Markdown (a text-to-HTML format).
 # remove useless shebang
 sed -i '/^#!/d' %{upname}/__init__.py
 
+# remove executable bits from egg files
+rm -r *.egg-info/
+
 %build
 %python_build
 
@@ -53,9 +57,6 @@ sed -i '/^#!/d' %{upname}/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/%{upname}
-
-# remove executable bits from egg files
-%python_expand chmod -x %{buildroot}%{$python_sitelib}/%{upname}-*.egg-info/*
 
 %post
 %python_install_alternative html2text
@@ -73,5 +74,6 @@ export LANG=en_US.UTF-8
 %doc README.md AUTHORS.rst ChangeLog.rst
 %python_alternative %{_bindir}/%{upname}
 %{python_sitelib}/*
+%{python_sitelib}/*.egg-info/
 
 %changelog
