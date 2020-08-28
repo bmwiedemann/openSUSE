@@ -1,7 +1,7 @@
 #
 # spec file for package libxls
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libxls
 %define lname libxlsreader1
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Library for Parsing Excel (XLS) Files
 License:        BSD-2-Clause
@@ -61,7 +61,7 @@ CSV format, more suitable for parsing.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

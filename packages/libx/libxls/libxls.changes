@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:54:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.3:
+  * Allow truncated XLS files
+  * Fix long-standing "extra column" bug #73
+  * Support for RSTRING records (rich-text cells in older
+    BIFF5 files) tidyverse/readxl#611 
+
+-------------------------------------------------------------------
 Sun Dec  1 21:01:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package for openSUSE
