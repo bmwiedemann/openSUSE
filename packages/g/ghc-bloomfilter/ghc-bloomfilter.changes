@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:44:11 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:37 UTC 2020 - psimons@suse.com
 
 - Add bloomfilter at version 2.0.1.0.
