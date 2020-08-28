@@ -19,7 +19,7 @@
 %global pkg_name dlist
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.0.8
+Version:        1.0
 Release:        0
 Summary:        Difference lists
 License:        BSD-3-Clause
@@ -33,9 +33,7 @@ BuildRequires:  ghc-QuickCheck-devel
 %endif
 
 %description
-Difference lists are a list-like type supporting O(1) append. This is
-particularly useful for efficient logging and pretty printing (e.g.
-with the Writer monad), where list append quickly becomes too expensive.
+List-like types supporting O(1) append and snoc operations.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -48,7 +46,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
@@ -66,9 +64,9 @@ This package provides the Haskell %{pkg_name} library development files.
 %ghc_pkg_recache
 
 %files -f %{name}.files
-%license LICENSE
+%license license.md
 
 %files devel -f %{name}-devel.files
-%doc ChangeLog.md README.md
+%doc changelog.md readme.md
 
 %changelog

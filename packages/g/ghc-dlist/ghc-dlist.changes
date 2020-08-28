@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:44:40 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Wed Aug 12 08:10:13 UTC 2020 - psimons@suse.com
+
+- Update dlist to version 1.0.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:14:02 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
