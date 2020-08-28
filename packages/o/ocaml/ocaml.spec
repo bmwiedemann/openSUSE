@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Andrew Psaltis <ampsaltis at gmail dot com>
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
@@ -18,7 +18,7 @@
 #
 
 
-%define ocaml_base_version 4.10
+%define ocaml_base_version 4.11
 #
 # This ensures that the find_provides/find_requires calls ocamlobjinfo correctly.
 # handle built-in ocaml helper from rpm-build, and helper from ocaml-rpm-macros
@@ -59,15 +59,16 @@
 	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
 	%{nil}
 %endif
+%global  _buildshell /bin/bash
 %bcond_with ocaml_make_testsuite
 
 Name:           ocaml
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
-Url:            http://www.ocaml.org
+URL:            http://www.ocaml.org
 Source0:        http://caml.inria.fr/pub/distrib/ocaml-%{ocaml_base_version}/ocaml-%{version}.tar.xz
 Source2:        rpmlintrc
 Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
@@ -75,8 +76,8 @@ BuildRequires:  autoconf
 BuildRequires:  binutils-devel
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  pkgconfig
 BuildRequires:  ocaml-rpm-macros >= 20200514
+BuildRequires:  pkgconfig
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %{version}-%{release}
 Obsoletes:      ocaml-docs
@@ -177,8 +178,12 @@ configure_target='--enable-native-compiler'
 %else
 configure_target='--disable-native-compiler'
 %endif
-export EXTRA_CFLAGS='-Werror=implicit-function-declaration -Werror=return-type'
-bash -x autogen
+extra_cflags=()
+extra_cflags+=( '-Werror=implicit-function-declaration' )
+extra_cflags+=( '-Werror=return-type' )
+extra_cflags+=( '-Wno-deprecated-declarations' )
+export EXTRA_CFLAGS="${extra_cflags[@]}"
+bash -x tools/autogen
 %ifarch %arm
 : OCaml issue #9431
 triple_fault=`/bin/sh build-aux/config.guess`
@@ -188,7 +193,7 @@ configure_target="${configure_target} --host=${triple_fault} --build=${triple_fa
 %configure \
 	${configure_target} \
 	--libdir=%{ocaml_standard_library}
-%make_build -j1
+%make_build
 #
 pushd testsuite
 tee checker.sh <<'_EOF_'
@@ -465,6 +470,7 @@ done
 %{ocaml_standard_library}/caml
 %{ocaml_standard_library}/Makefile.config
 %{ocaml_standard_library}/VERSION
+%{ocaml_standard_library}/eventlog_metadata
 %{ocaml_standard_library}/extract_crc
 %{ocaml_standard_library}/camlheader
 %{ocaml_standard_library}/camlheader_ur
