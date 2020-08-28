@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Jul 29 10:20:58 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
-- Update to v2.0.20
+- Update to v2.0.20 (bsc#1175821)
   - journald: fix logging container name
   - container logging: Implement none driver - "off", "null" or
     "none" all work.
