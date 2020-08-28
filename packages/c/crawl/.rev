@@ -296,4 +296,22 @@
     <comment></comment>
     <requestid>794404</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2313b2810d5dedb6da62de1d4d9431ba</srcmd5>
+    <version>0.25.1</version>
+    <time>1598642481</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.25.1
+ * Change log see https://github.com/crawl/crawl/releases
+ Highlights
+ * Spells in many schools have been redesigned to make the schools
+   more distinct.
+ * Acquirement scrolls have been despoilered, offering the player
+   a choice of generated items.
+ * Effects from spell miscasts, god wrath, death curses, and Zot
+   traps have been overhauled for consistency and simplicity.
+- remove CVE-2020-11722.patch (fixed upstream)
+</comment>
+    <requestid>829547</requestid>
+  </revision>
 </revisionlist>

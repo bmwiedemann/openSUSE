@@ -11,26 +11,24 @@ Subject: [PATCH 3/3] Add an appdata.xml file for Linux software galleries
  crawl-ref/source/linux/crawl.appdata.xml | 32 ++++++++++++++++++++++++++++++++
  2 files changed, 36 insertions(+)
 
-diff --git a/crawl-ref/source/Makefile b/crawl-ref/source/Makefile
-index d325e67b8d..e5345eb3f2 100644
---- a/crawl-ref/source/Makefile
-+++ b/crawl-ref/source/Makefile
-@@ -1445,6 +1445,10 @@ install-linux-desktop:
+Index: stone_soup-0.25.1/source/Makefile
+===================================================================
+--- stone_soup-0.25.1.orig/source/Makefile
++++ stone_soup-0.25.1/source/Makefile
+@@ -1473,7 +1473,8 @@ endif
+ 	$(COPY) linux/crawl.desktop $(prefix_fp)/share/applications
  	[ -d $(prefix_fp)/share/icons/hicolor/scalable/apps ] || mkdir -p $(prefix_fp)/share/icons/hicolor/scalable/apps
  	$(COPY) linux/crawl.svg $(prefix_fp)/share/icons/hicolor/scalable/apps
- 
-+install-linux-appdata:
+-
 +	[ -d $(prefix_fp)/share/appdata ] || mkdir -p $(prefix_fp)/share/appdata
 +	$(COPY) linux/crawl.appdata.xml $(prefix_fp)/share/appdata
-+
- clean: clean-rltiles clean-webserver clean-android clean-monster
- 	+$(MAKE) -C $(UTIL) clean
- 	$(RM) $(GAME) $(GAME).exe $(GENERATED_FILES) $(EXTRA_OBJECTS) libw32c.o\
-diff --git a/crawl-ref/source/linux/crawl.appdata.xml b/crawl-ref/source/linux/crawl.appdata.xml
-new file mode 100644
-index 0000000000..d19914f3f6
+ ifeq ($(GAME),crawl.exe)
+ 	$(SED) -i 's/$$/\r/' `find $(datadir_fp) -iname '*.txt' -or -iname '*.des'`
+ endif
+Index: stone_soup-0.25.1/source/linux/crawl.appdata.xml
+===================================================================
 --- /dev/null
-+++ b/crawl-ref/source/linux/crawl.appdata.xml
++++ stone_soup-0.25.1/source/linux/crawl.appdata.xml
 @@ -0,0 +1,32 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<component type="desktop">
@@ -64,6 +62,3 @@ index 0000000000..d19914f3f6
 +  <url type="homepage">http://crawl.develz.org/</url>
 +  <update_contact>crawl-ref-discuss@lists.sourceforge.net</update_contact>
 +</component>
--- 
-2.11.0
-

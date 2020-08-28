@@ -17,36 +17,33 @@
 #
 
 
-%define major_ver 0.24
 %define about Crawl is a fun game in the grand tradition of games like Rogue, Hack, and Moria.\
 Your objective is to travel deep into a subterranean cave complex and retrieve the Orb of Zot, \
 which is guarded by many horrible and hideous creatures.
 Name:           crawl
-Version:        %{major_ver}.0
+Version:        0.25.1
 Release:        0
 Summary:        Roguelike dungeon exploration game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/RPG
 URL:            https://crawl.develz.org/
-Source:         https://crawl.develz.org/release/%{major_ver}/stone_soup-%{version}-nodeps.tar.xz
-# PATCH-FIX-UPSTREAM https://github.com/crawl/crawl/pull/464
+Source:         https://github.com/crawl/crawl/releases/download/%{version}/stone_soup-%{version}-nodeps.tar.xz
 Patch0:         desktop.patch
 Patch1:         icon.patch
 Patch2:         appdata.patch
-# PATCH-FIX-UPSTREAM CVE-2020-11722, boo#1169381, disable LUA loadstring
-Patch3:         CVE-2020-11722.patch
 BuildRequires:  dejavu-fonts
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
 BuildRequires:  lua51-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pngcrush
-BuildRequires:  python
-BuildRequires:  python-PyYAML
+BuildRequires:  python3
+BuildRequires:  python3-PyYAML
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(freetype2)
@@ -93,10 +90,9 @@ These are the data files for Dungeon Crawl Stone Soup.
 
 %prep
 %setup -q -n stone_soup-%{version}
-%patch0 -p2
-%patch1 -p2
-%patch2 -p2
-%patch3 -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 cd source
@@ -133,7 +129,6 @@ fi
 %make_install -C source prefix=%{_prefix} bin_prefix=bin DATADIR=%{_datadir}/%{name} BINDIR=%{_bindir} TILES=y
 install -D -m0644 docs/%{name}.6 %{buildroot}%{_mandir}/man6/%{name}.6
 install -D -m0755 source/crawl-sdl %{buildroot}%{_bindir}/crawl-sdl
-make DESTDIR=%{buildroot} prefix=%{_prefix} install-linux-desktop install-linux-appdata -C source
 %fdupes %{buildroot}%{_datadir}/%{name}
 
 %post
