@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 24 20:04:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.8.0:
+  ** New input methods are added.
+  
+  mr-remigton.mim: Marathi input method for remington layout
+  mr-typewriter.mim: Marathi input method for typewriter layout
+  ne-rom-translit.mim: Nepali input method with roman transliteration
+  ne-trad.mim: Nepali input method for traditional layout
+  kn-optitransv2.mim: Kannada input method by the OPTITRANS transliteration system
+  hi-optitransv2.mim: Hindi input method  by the OPTITRANS transliteration system
+  ml-enhanced-inscript.mim: Malayalam input method for enhanced inscript layout
+  ** This input method is largely augmented.
+  lsymbol.mim: Add many symbols.
+  uk-kbd.mim: renamed from ua-kbd to uk-kbd
+  zh-zhuyin.mim: renamed from zh-bopomofo to zh-zhuyin
+
+-------------------------------------------------------------------
 Sat Feb 22 19:36:12 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.
