@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-weblate-schemas
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        A collection of schemas used by Weblate
 License:        GPL-3.0-or-later
