@@ -1,7 +1,7 @@
 #
 # spec file for package liboping
 #
-# Copyright (c) 2016 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           liboping
-Version:        1.9.0
-Release:        0
 %define         soname 0
+Name:           liboping
+Version:        1.10.0
+Release:        0
 Summary:        Multiple Host Ping Library that supports ICMPv4 and ICMPv6
+License:        LGPL-2.1-only
+Group:          System/Libraries
+URL:            https://verplant.org/liboping/
 Source:         http://verplant.org/liboping/files/liboping-%{version}.tar.bz2
 Source2:        baselibs.conf
 Source99:       %{name}-rpmlintrc
 Patch1:         liboping-perl_vendor.patch
-Patch2:         liboping-conditional_IPV6_TCLASS.patch
-Url:            http://verplant.org/liboping/
-Group:          System/Libraries
-License:        LGPL-2.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf >= 2.65
 BuildRequires:  automake
-BuildRequires:  gcc  
+BuildRequires:  gcc
 BuildRequires:  glibc-devel
+BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
-BuildRequires:  pkg-config
-BuildRequires:  libtool
+BuildRequires:  pkgconfig
 
 %description
 liboping is a C library for measuring network latency using ICMP echo
@@ -48,6 +46,7 @@ transparently for the programmer and user.
 
 %package -n liboping%{soname}
 Summary:        Multiple Host Ping Library that supports ICMPv4 and ICMPv6
+License:        LGPL-2.1-only
 Group:          System/Libraries
 Provides:       liboping = %{version}-%{release}
 
@@ -63,8 +62,9 @@ command line.
 
 %package -n liboping-devel
 Summary:        Multiple Host Ping Library that supports ICMPv4 and ICMPv6
-Requires:       %{name} = %{version}-%{release}
+License:        LGPL-2.1-only
 Group:          Development/Libraries/Other
+Requires:       %{name} = %{version}-%{release}
 
 %description -n liboping-devel
 liboping is a C library for measuring network latency using ICMP echo
@@ -78,9 +78,9 @@ This package is not needed at runtime.
 
 %package -n oping
 Summary:        Multiple Host Ping that supports ICMPv4 and ICMPv6
-Requires:       %{name} = %{version}-%{release}
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Other
-License:        GPL-2.0
+Requires:       %{name} = %{version}-%{release}
 
 %description -n oping
 oping is for measuring network latency using ICMP echo requests. It can send
@@ -89,9 +89,9 @@ monitoring applications. Both IPv4 and IPv6 are supported transparently.
 
 %package -n noping
 Summary:        Multiple Host Ping that supports ICMPv4 and ICMPv6
-Requires:       %{name} = %{version}-%{release}
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Other
-License:        GPL-2.0
+Requires:       %{name} = %{version}-%{release}
 
 %description -n noping
 noping continuously pings lists of hosts, displays ping statistics "live"
@@ -99,6 +99,7 @@ and highlights aberrant round-trip times.
 
 %package -n perl-Net-Oping
 Summary:        Multiple Host Ping that supports ICMPv4 and ICMPv6
+License:        LGPL-2.1-only
 Group:          Development/Libraries/Perl
 Requires:       perl = %{perl_version}
 
@@ -110,60 +111,54 @@ transparently.
 
 %prep
 %setup -q
-%patch1 -p0
-%patch2 -p1
+%patch1
 
-%__sed -i 's/-Werror//g' src/Makefile*
+sed -i 's/-Werror//g' src/Makefile*
 # Do not use versioned automake binary for backward compatibility
-%__sed -i 's/-${am__api_version}//g' configure
+sed -i 's/-${am__api_version}//g' configure
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 aclocal && automake
 %configure \
     --with-perl-bindings="INSTALLDIRS=vendor"
-%__make -C bindings perl/Makefile
+%make_build -C bindings perl/Makefile
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-%__sed -e 's|perl5/site_perl/|perl5/vendor_perl/|g' bindings/perl/Makefile
-%makeinstall
-%__rm "%{buildroot}%{_libdir}"/*.la
+sed -e 's|perl5/site_perl/|perl5/vendor_perl/|g' bindings/perl/Makefile
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %perl_process_packlist
 
-%__rm -f "%{buildroot}/var/adm/perl-modules/%{name}"
+rm -f "%{buildroot}%{_localstatedir}/adm/perl-modules/%{name}"
 
 %post   -n liboping%{soname} -p /sbin/ldconfig
-
 %postun -n liboping%{soname} -p /sbin/ldconfig
 
 %files -n liboping%{soname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_libdir}/liboping.so.%{soname}
 %{_libdir}/liboping.so.%{soname}.*.*
 
 %files -n liboping-devel
-%defattr(-,root,root)
 %{_includedir}/oping.h
 %{_libdir}/liboping.so
 %{_libdir}/liboping.a
 %{_libdir}/pkgconfig/liboping.pc
-%{_mandir}/man3/*.3%{ext_man}
+%{_mandir}/man3/*.3%{?ext_man}
 
 %files -n oping
-%defattr(-,root,root)
 %{_bindir}/oping
-%{_mandir}/man8/oping.8%{ext_man}
+%{_mandir}/man8/oping.8%{?ext_man}
 
 %files -n noping
-%defattr(-,root,root)
 %{_bindir}/noping
 
 %files -n perl-Net-Oping
-%defattr(-,root,root)
 %dir %{perl_vendorarch}/Net
 %{perl_vendorarch}/Net/Oping.pm
 %dir %{perl_vendorarch}/auto/Net

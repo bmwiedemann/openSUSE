@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:51:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Build system: Search the "rt" library for clock_gettime(). This
+    fixes build issues on Mac OS X. Thanks to Yann E. Morni for this
+    fix. #9
+  * Build system: The "--with[out]-ncurses" option has been added and
+    allows to enforce/disable the building of "noping". Thanks to Thomas
+    Deutschmann for the patch. #15
+  * Build system: Compatibility code to work with pkg-config < 0.27 has
+    been added. #22
+  * liboping: Creation of ICMPv4 packets has been fixed: due to an
+    incorrect sizeof() the payload may have been prefixed by 20 zero
+    bytes, resulting in larger packets than desired.
+  * liboping: The number of file descriptors used has been reduced to at
+    most two (from one per host). This and a few other optimizations
+    significantly improve performance.
+  * oping, noping: Handling of the "-O" command line flag has been
+    fixed.
+  * oping, noping: The "-b" option has been added and enables a bell
+    whenever an echo reply is received.
+  * noping: The background color has been changed to use the terminal
+    default.
+  * noping: The ability to add hosts after noping has started (the "a"
+    key) has been added.
+- remove liboping-conditional_IPV6_TCLASS.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Sep 10 20:22:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use -ffat-lto-objects when building static libraries.
