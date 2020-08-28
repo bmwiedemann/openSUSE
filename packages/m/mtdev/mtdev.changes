@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 25 09:27:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * adjust for 64bit time_t for 32bit architectures
+  * Use a macro for `nlongs` so it can be used in constant expression
+  * mtdev-matching.c: declare global variables static
+  * mtdev-mapgen.c: declare init_caps() static
+  * caps.c: declare mtdev_set_slots() static
+
+-------------------------------------------------------------------
 Sat Feb 28 09:55:25 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.1.5
