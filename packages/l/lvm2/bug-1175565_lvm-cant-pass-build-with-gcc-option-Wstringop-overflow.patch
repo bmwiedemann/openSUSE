@@ -1,0 +1,56 @@
+From c082344068ac0b080c5f3d97e0272952a665813b Mon Sep 17 00:00:00 2001
+From: Zhao Heming <heming.zhao@suse.com>
+Date: Thu, 20 Aug 2020 23:21:11 +0800
+Subject: [PATCH] change zero-sized array to fexlible array
+
+this change make gcc happy with compiling option: [-Wstringop-overflow=]
+
+Signed-off-by: Zhao Heming <heming.zhao@suse.com>
+---
+ device_mapper/libdm-common.c | 2 +-
+ lib/activate/fs.c            | 2 +-
+ libdm/libdm-common.c         | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/device_mapper/libdm-common.c b/device_mapper/libdm-common.c
+index bc691d6..3627457 100644
+--- a/device_mapper/libdm-common.c
++++ b/device_mapper/libdm-common.c
+@@ -1445,7 +1445,7 @@ struct node_op_parms {
+ 	char *old_name;
+ 	int warn_if_udev_failed;
+ 	unsigned rely_on_udev;
+-	char names[0];
++	char names[];
+ };
+ 
+ static void _store_str(char **pos, char **ptr, const char *str)
+diff --git a/lib/activate/fs.c b/lib/activate/fs.c
+index b2c99fc..96f7df6 100644
+--- a/lib/activate/fs.c
++++ b/lib/activate/fs.c
+@@ -313,7 +313,7 @@ struct fs_op_parms {
+ 	char *lv_name;
+ 	char *dev;
+ 	char *old_lv_name;
+-	char names[0];
++	char names[];
+ };
+ 
+ static void _store_str(char **pos, char **ptr, const char *str)
+diff --git a/libdm/libdm-common.c b/libdm/libdm-common.c
+index d75c704..d587c32 100644
+--- a/libdm/libdm-common.c
++++ b/libdm/libdm-common.c
+@@ -1443,7 +1443,7 @@ struct node_op_parms {
+ 	char *old_name;
+ 	int warn_if_udev_failed;
+ 	unsigned rely_on_udev;
+-	char names[0];
++	char names[];
+ };
+ 
+ static void _store_str(char **pos, char **ptr, const char *str)
+-- 
+1.8.3.1
+

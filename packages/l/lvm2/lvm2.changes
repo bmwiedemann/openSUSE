@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Thu Aug 20 04:49:00 UTC 2020 - heming.zhao@suse.com
+
+- lvm can't pass build with gcc option Wstringop-overflow (bsc#1175565)
+  + bug-1175565_lvm-cant-pass-build-with-gcc-option-Wstringop-overflow.patch
+
+- lvm2.spec
+  + add obsoletes version for passing build
+  + remove config item '--with-cluster=internal' for lvmlockd package
+
+-------------------------------------------------------------------
+Mon Aug 10 07:11:00 UTC 2020 - heming.zhao@suse.com
+
+- Update to LVM2.2.03.10
+
+  WHATS_NEW from 2.03.06 to 2.03.10:
+  Version 2.03.10 - 09th August 2020
+  ==================================
+    Add writecache and integrity support to lvmdbusd.
+    Generate unique cachevol name when default required from lvcreate.
+    Converting RAID1 volume to one with same number of legs now succeeds with a
+    warning.
+    Fix conversion to raid from striped lagging type.
+    Fix conversion to 'mirrored' mirror log with larger regionsize.
+    Zero pool metadata on allocation (disable with allocation/zero_metadata=0).
+    Failure in zeroing or wiping will fail command (bypass with -Zn, -Wn).
+    Add lvcreate of new cache or writecache lv with single command.
+    Fix running out of free buffers for async writing for larger writes.
+    Add integrity with raid capability.
+    Fix support for lvconvert --repair used by foreign apps (i.e. Docker).
+  
+  Version 2.03.09 - 26th March 2020
+  =================================
+    Fix formating of vdopool (vdo_slab_size_mb was smaller by 2 bits).
+    Fix showing of a dm kernel error when uncaching a volume with cachevol.
+  
+  Version 2.03.08 - 11th February 2020
+  ====================================
+    Prevent problematic snapshots of writecache volumes.
+    Add error handling for failing allocation in _reserve_area().
+    Fix memleak in syncing of internal cache.
+    Fix pvck dump_current_text memleak.
+    Fix lvmlockd result code on error path for _query_lock_lv().
+    Update pvck man page and help output.
+    Reject invalid writecache high/low_watermark setting.
+    Report writecache status.
+    Accept more output lines from vdo_format.
+    Prohibit reshaping of stacked raid LVs.
+    Avoid running cache input arg validation when creating vdo pool.
+    Prevent raid reshaping of stacked volumes.
+    Added VDO lvmdbusd methods for enable/disable compression & dedupe.
+    Added VDO lvmdbusd method for converting LV to VDO pool.
+  
+  Version 2.03.07 - 30th November 2019
+  ====================================
+    Subcommand in vgck for repairing headers and metadata.
+    Ensure minimum required region size on striped RaidLV creation.
+    Fix resize of thin-pool with data and metadata of different segtype.
+    Improve mirror type leg splitting.
+    Improve error path handling in daemons on shutdown.
+    Fix activation order when removing merged snapshot.
+    Experimental VDO support for lvmdbusd.
+  
+  Version 2.03.06 - 23rd October 2019
+  ===================================
+    Add _cpool suffix to cache-pool LV name when used by caching LV.
+    No longer store extra UUID for cmeta and cdata cachevol layer.
+    Enhance activation of cache devices with cachevols.
+    Add _cvol in list of protected suffixes and start use it with DM UUID.
+    Rename LV converted to cachevol to use _cvol suffix.
+    Use normal LVs for wiping of cachevols.
+    Reload cleanered cache DM only with cleaner policy.
+    Fix cmd return when zeroing of cachevol fails.
+    Extend lvs to show all VDO properties.
+    Preserve VDO write policy with vdopool.
+    Increase default vdo bio threads to 4.
+    Continue report when cache_status fails.
+    Add support for DM_DEVICE_GET_TARGET_VERSION into device_mapper.
+    Fix cmirrord usage of header files from device_mapper subdir.
+    Allow standalone activation of VDO pool just like for thin-pools.
+    Activate thin-pool layered volume as 'read-only' device.
+    Ignore crypto devices with UUID signature CRYPT-SUBDEV.
+    Enhance validation for thin and cache pool conversion and swapping.
+    Improve internal removal of cached devices.
+    Synchronize with udev when dropping snapshot.
+    Add missing device synchronization point before removing pvmove node.
+    Correctly set read_ahead for LVs when pvmove is finished.
+    Remove unsupported OPTIONS+="event_timeout" udev rule from 11-dm-lvm.rules.
+    Prevent creating VGs with PVs with different logical block sizes.
+    Fix metadata writes from corrupting with large physical block size.
+
+  WHATS_NEW_DM from 1.02.164 to 1.02.173:
+  Version 1.02.173 - 09th August 2020
+  ===================================
+    Add support for VDO in blkdeactivate script.
+  
+  Version 1.02.171 - 26th March 2020
+  ==================================
+    Fix dm_list interators with gcc 10 optimization (-ftree-pta).
+    Dmeventd handles timer without looping on short intervals.
+  
+  Version 1.02.169 - 11th February 2020
+  =====================================
+    Enhance error messages for device creation.
+  
+  Version 1.02.167 - 30th November 2019
+  =====================================
+  
+  Version 1.02.165 - 23rd October 2019
+  ====================================
+    Add support for DM_DEVICE_GET_TARGET_VERSION.
+    Add debug of dmsetup udevcomplete with hexa print DM_COOKIE_COMPLETED.
+    Fix versioning of dm_stats_create_region and dm_stats_create_region.
+
+- Drop patches that have been merged into upstream
+  - bug-1122666_devices-drop-open-error-message.patch
+  - bug-1150021_01-scanning-open-devs-rw-when-rescanning-for-write.patch
+  - bug-1149408_Fix-rounding-writes-up-to-sector-size.patch
+  - bug-1149408_vgcreate-vgextend-restrict-PVs-with-mixed-block-size.patch
+  - bug-1152378-md-component-detection-for-differing-PV-and-device-s.patch
+  - bug-1152378-pvscan-fix-PV-online-when-device-has-a-different-siz.patch
+  - jcs-SLE5498_pvscan-allow-use-of-noudevsync-option.patch
+  - bug-1154655_udev-remove-unsupported-OPTIONS-event_timeout-rule.patch
+  - bug-1158628_01-tests-replaces-grep-q-usage.patch
+  - bug-1158628_02-tests-fix-ra-checking.patch
+  - bug-1158628_03-tests-simplify-some-var-settings.patch
+  - bug-1158628_04-pvmove-correcting-read_ahead-setting.patch
+  - bug-1158628_05-activation-add-synchronization-point.patch
+  - bug-1158628_06-pvmove-add-missing-synchronization.patch
+  - bug-1158628_07-activation-extend-handling-of-pending_delete.patch
+  - bug-1158628_08-lv_manip-add-synchronizations.patch
+  - bug-1158628_09-lvconvert-improve-validation-thin-and-cache-pool-con.patch
+  - bug-1158628_10-thin-activate-layer-pool-aas-read-only-LV.patch
+  - bug-1158628_11-tests-mdadm-stop-in-test-cleanup.patch
+  - bug-1158628_12-test-increase-size-of-raid10-LV-allowing-tests-to-su.patch
+  - bug-1158628_13-lvconvert-fix-return-value-when-zeroing-fails.patch
+  - bug-1158628_14-tests-add-extra-settle.patch
+  - bug-1158628_15-test-Fix-handling-leftovers-from-previous-tests.patch
+  - bug-1158861_01-config-remove-filter-typo.patch
+  - bug-1158861_02-config-Fix-default-option-which-makes-no-sense.patch
+  - bug-1158861_03-vgchange-don-t-fail-monitor-command-if-vg-is-exporte.patch
+  - bug-1158861_04-fix-duplicate-pv-size-check.patch
+  - bug-1158861_05-hints-fix-copy-of-filter.patch
+  - bug-1158861_06-fix-segfault-for-invalid-characters-in-vg-name.patch
+  - bug-1158861_07-vgck-let-updatemetadata-repair-mismatched-metadata.patch
+  - bug-1158861_08-hints-fix-mem-leaking-buffers.patch
+  - bug-1158861_09-pvcreate-pvremove-fix-reacquiring-global-lock-after.patch
+  - bug-1150021_02-bcache-add-bcache_abort.patch
+  - bug-1150021_03-label-Use-bcache_abort_fd-to-ensure-blocks-are-no-lo.patch
+  - bug-1150021_04-bcache-add-unit-test.patch
+  - bug-1150021_05-bcache-bcache_invalidate_fd-only-remove-prefixes-on.patch
+  - bug-1150021_06-fix-dev_unset_last_byte-after-write-error.patch
+  - bug-1157736-add-suggestion-message-for-mirror-LVs.patch
+  - bug-1171907-lvremove-remove-attached-cachevol-with-removed-LV.patch
+  - bug-1172566_cachevol-use-cachepool-code-for-metadata-size.patch
+
+- lvm2.spec
+  + Correct lvm2.spec 'Source' & 'Source42' URL
+  + enable feature --with-writecache=internal
+
+
+-------------------------------------------------------------------
 Fri Jun 12 01:28:08 UTC 2020 - heming.zhao@suse.com
 
 - problem with LVM cache (data loss) (bsc#1172566)
