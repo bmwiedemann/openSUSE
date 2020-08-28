@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:43:55 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Mon Aug 10 08:46:53 UTC 2020 - psimons@suse.com
 
 - Update aeson to version 1.5.3.0.
