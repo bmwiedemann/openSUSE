@@ -29,6 +29,10 @@ Source:         http://www.lua.org/ftp/lua-%{version}.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE tweak the buildsystem to produce what is needed for SUSE
 Patch0:         lua-build-system.patch
+# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.3.5
+Patch1:         upstream-bugs.patch
+# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.0
+Patch2:         upstream-bugs-backport-lua54.patch
 BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
@@ -75,7 +79,7 @@ application.
 Summary:        The Lua integration library
 # Compat as libtool changes the soname
 Group:          System/Libraries
-%ifarch aarch64 x86_64 ppc64 ppc64le s390x
+%ifarch aarch64 x86_64 ppc64 ppc64le s390x riscv64
 Provides:       liblua.so.5.3()(64bit)
 %else
 Provides:       liblua.so.5.3
