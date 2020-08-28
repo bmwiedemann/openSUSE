@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 26 10:37:17 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add vulkan device selection layer and vulkan overlay layer to
+  baselibs for 32bit versions on 64bit architectures.
+
+-------------------------------------------------------------------
+Tue Aug 25 06:32:03 UTC 2020 - Aaron Dominick <aaron.zakhrov@gmail.com>
+
+- Add vulkan device selection layer and vulkan overlay layer
+
+-------------------------------------------------------------------
+Tue Aug 25 05:30:39 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- specfile/baselibs.conf cleanup
+  * no longer support Mesa build without libglvnd
+  * removed empty packages Mesa-libGLESv1_CM1 and Mesa-libGLESv2-2
+
+-------------------------------------------------------------------
 Sun Aug 23 18:08:13 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 20.1.6
