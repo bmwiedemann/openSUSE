@@ -42,6 +42,11 @@
 %define with_mroonga 0
 %define with_rocksdb 0
 %endif
+%if 0%{?is_opensuse}
+%define with_galera 1
+%else
+%define with_galera 0
+%endif
 # Define python interpreter version
 %if 0%{?suse_version} >= 1500
 %define python_path %{_bindir}/python3
@@ -51,7 +56,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.4.13
+Version:        10.4.14
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -73,13 +78,13 @@ Source19:       macros.mariadb-test
 Source50:       suse_skipped_tests.list
 Source51:       mariadb-rpmlintrc
 Patch1:         mariadb-10.2.4-logrotate.patch
-Patch3:         mariadb-10.1.1-mysqld_multi-features.patch
-Patch7:         mariadb-10.0.15-logrotate-su.patch
-Patch8:         mariadb-10.2.4-fortify-and-O.patch
-Patch9:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
-Patch10:        mariadb-10.4.12-harden_setuid.patch
-Patch11:        mariadb-10.4.12-fix-install-db.patch
-Patch12:        mariadb-10.5-fix-prevent-optimizing-out-buf-argument-in-ch.patch
+Patch2:         mariadb-10.1.1-mysqld_multi-features.patch
+Patch3:         mariadb-10.0.15-logrotate-su.patch
+Patch4:         mariadb-10.2.4-fortify-and-O.patch
+Patch5:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
+Patch6:         mariadb-10.4.12-harden_setuid.patch
+Patch7:         mariadb-10.4.12-fix-install-db.patch
+Patch8:         mariadb-10.5-fix-prevent-optimizing-out-buf-argument-in-ch.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -112,6 +117,8 @@ BuildRequires:  procps
 # Some tests and myrocks_hotbackup script need python3
 BuildRequires:  python3
 BuildRequires:  sqlite
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 # Tests requires time and ps and some perl modules
 # Keep in sync with Requires of mysql-testsuite
@@ -133,11 +140,6 @@ BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Time::HiRes)
 # Do not ever switch away from BuildRequires: pkgconfig(libsystemd); BuildRequires systemd/systemd-devel causes build cycles
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  sysuser-shadow
-BuildRequires:  sysuser-tools
-# Require mysql user
-Requires(pre):  user(mysql)
-Requires:       user(mysql)
 #!BuildIgnore:  user(mysql)
 # Required by rcmysql
 Requires:       %{name}-client
@@ -148,7 +150,10 @@ Requires:       /bin/hostname
 Requires:       perl-base
 # myrocks_hotbackup needs MySQLdb - if we want to use it under python3, we need python3-mysqlclient
 Requires:       python3-mysqlclient
+Requires:       user(mysql)
 Requires(post): permissions
+# Require mysql user
+Requires(pre):  user(mysql)
 Recommends:     logrotate
 Conflicts:      mariadb-server
 Conflicts:      mysql
@@ -243,6 +248,7 @@ Obsoletes:      mysql-client < %{version}
 %description client
 This package contains the standard clients for MariaDB.
 
+%if 0%{with_galera} > 0
 %package galera
 Summary:        The configuration files and scripts for galera replication
 Group:          Productivity/Databases/Tools
@@ -264,6 +270,7 @@ Conflicts:      mariadb-tools <= 10.1.25
 %description galera
 This package contains configuration files and scripts that are
 needed for running MariaDB Galera Cluster.
+%endif
 
 %package errormessages
 Summary:        The error messages files required by server, client and libmariadbd
@@ -360,13 +367,13 @@ PAM module.
 # Remove JAR files from the tarball (used for testing from the source)
 find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch1
+%patch2
 %patch3
-%patch7
-%patch8
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+%patch4
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -449,8 +456,10 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DWITH_HANDLERSOCKET_STORAGE_ENGINE=1                        \
        -DWITH_INNODB_MEMCACHED=ON                                   \
        -DWITH_EMBEDDED_SERVER=true                                  \
+%if 0%{with_galera} > 0
        -DWITH_WSREP=ON                                              \
        -DWITH_INNODB_DISALLOW_WRITES=1                              \
+%endif
        -DWITH_LIBARCHIVE=ON                                         \
        -DWITH_MARIABACKUP=ON                                        \
        -DCOMPILATION_COMMENT="MariaDB package"                      \
@@ -470,7 +479,7 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DCMAKE_SKIP_RPATH=OFF                                       \
        -DCMAKE_SKIP_INSTALL_RPATH=ON                                \
        -Wno-dev "$@" ..
-make %{?_smp_mflags}
+%make_build
 nm --numeric-sort sql/mysqld > sql/mysqld.sym
 cd ..
 %sysusers_generate_pre %{SOURCE12} mysql
@@ -582,8 +591,10 @@ if [ -f scripts/mysqlaccess.conf ] ; then
     echo '%config(noreplace) %attr(0640, root, mysql) %{_sysconfdir}/mysqlaccess.conf' >> mariadb-client.files
 fi
 
+%if 0%{with_galera} > 0
 # mariadb-galera.files
 filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera.files
+%endif
 
 # mariadb-bench.files
 filelist mysqlslap mariadb-slap >mariadb-bench.files
@@ -668,9 +679,11 @@ ln -s mysqlcheck '%{buildroot}'%{_bindir}/mysqloptimize
 rm -rf '%{buildroot}'%{_sysconfdir}/my.cnf.d
 install -d -m 755 '%{buildroot}'%{_sysconfdir}/my.cnf.d
 
+%if 0%{with_galera} > 0
 # Install galera config file and script
 install -p -m 644 build/support-files/wsrep.cnf %{buildroot}%{_sysconfdir}/my.cnf.d/50-galera.cnf
 install -p -m 755 build/scripts/galera_new_cluster %{buildroot}%{_bindir}/galera_new_cluster
+%endif
 
 # Documentation that was copied to wrong folder
 rm -f '%{buildroot}'%{_datadir}/doc/* 2> /dev/null || true
@@ -700,16 +713,16 @@ cd build
 %if 0%{run_testsuite} > 0
 cd mysql-test
 ./mysql-test-run.pl \
-    --parallel=%{?jobs:%{jobs}} \
-    --force \
-    --retry=0 \
-    --ssl \
-    --suite-timeout=720 \
-    --testcase-timeout=30 \
-    --mysqld=--binlog-format=mixed \
-    --force-restart \
-    --shutdown-timeout=60 \
-    --max-test-fail=0 \
+    --parallel=%{?jobs:%{jobs}}     \
+    --force                         \
+    --retry=3                       \
+    --ssl                           \
+    --suite-timeout=900             \
+    --testcase-timeout=30           \
+    --mysqld=--binlog-format=mixed  \
+    --force-restart                 \
+    --shutdown-timeout=60           \
+    --max-test-fail=0               \
 %if 0%{ignore_testsuite_result} > 0
     || :
 %else
@@ -719,7 +732,6 @@ cd mysql-test
 
 # client does not require server and needs the user too
 %pre client -f mysql.pre
-
 %pre
 %service_add_pre mariadb.service
 
@@ -880,11 +892,13 @@ exit 0
 %{_libdir}/mysql/plugin/dialog_examples.so
 %{_sysusersdir}/mysql-user.conf
 
+%if 0%{with_galera} > 0
 %files galera -f mariadb-galera.files
 %doc Docs/README.wsrep
 %config(noreplace) %{_sysconfdir}/my.cnf.d/50-galera.cnf
 %{_datadir}/mysql/systemd/use_galera_new_cluster.conf
 %{_datadir}/mysql/wsrep_notify
+%endif
 
 %files errormessages -f mariadb-errormessages.files
 %{_datadir}/%{name}/*/errmsg.sys

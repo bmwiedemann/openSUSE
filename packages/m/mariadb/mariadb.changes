@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 12 16:43:40 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 10.4.14 [bsc#1175596]
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10414-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10414-changelog
+  * fixes for the following security vulnerabilities: none
+  * the update fixes [bsc#1174559] and [bsc#1173516] (MariaDB crashes
+    at db_sync from Keystone)
+- refresh mariadb-10.2.4-fortify-and-O.patch
+- fix patch sequence
+- run spec-cleaner
+- build galera for openSUSE only
+- update suse_skipped_tests.list
+- tune the testsuite to avoid randomly failing tests
+
+-------------------------------------------------------------------
 Mon Aug  3 07:49:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix installed .service files to follow the /usr/lib ->

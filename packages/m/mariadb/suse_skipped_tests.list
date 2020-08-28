@@ -45,15 +45,5 @@ main.gis_notembedded                             : since 10.4.10 - all
 funcs_1.is_columns_mysql                         : since 10.4.10 - all 
 sys_vars.tcp_nodelay                             : since 10.4.10 - all
 oqgraph.social                                   : since 10.4.12 - i586 (MDEV-22280)
-sys_vars.have_rtree_keys_basic                   : since 10.4.13 - x86_64
-main.func_int                                    : since 10.4.13 - i586
-perfschema.dml_tlws_by_table                     : since 10.4.13 - x86_64
-sys_vars.aria_used_for_temp_tables_basic         : since 10.4.13 - ppc64
-main.subselect_no_opts                           : since 10.4.13 - aarch64
-igcol.main_mysqldump                             : since 10.4.13 - aarch64
-main.timezone_grant                              : since 10.4.13 - ppc64
-perfschema.ddl_setup_consumers                   : since 10.4.13 - i586 
-main.subselect_sj_nonmerged                      : since 10.4.13 - i586
-sys_vars.innodb_encryption_rotation_iops_basic   : since 10.4.13 - i586
 main.symlink-myisam-11902                        : since 10.4.13 - i586
-sys_vars.innodb_fast_shutdown_basic              : since 10.4.13 - i586 
+main.ssl_system_ca                               : since 10.4.14 - all
