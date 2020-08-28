@@ -26,7 +26,7 @@ Summary:        An implementation of the GDAL data model
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://www.KEALib.org/
-Source0:        https://bitbucket.org/chchrsc/kealib/downloads/%{sourcename}-%{version}.tar.gz
+Source0:        https://github.com/ubarsc/kealib/releases/download/%{sourcename}-%{version}/%{sourcename}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.10
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
@@ -95,7 +95,7 @@ cp ../build/include/libkea/kea-config.h ../include/libkea/kea-config.h
 %cmake_install
 
 %if %__isa_bits == 64
-mv %{buildroot}%{_libexecdir} %{buildroot}/%{_libdir}
+mv %{buildroot}%{_prefix}/lib %{buildroot}/%{_libdir}
 %endif
 
 %check
