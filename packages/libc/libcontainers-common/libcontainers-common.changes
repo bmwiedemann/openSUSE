@@ -28,7 +28,7 @@ Fri Jun 19 09:57:44 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
   ship the some mounts.conf default configuration on both platforms.
   As the sources for the mount point do not exist on openSUSE by
   default this config will basically have no effect on openSUSE.
-  (jsc#SLE-12122)
+  (jsc#SLE-12122, bsc#1175821) 
 
 -------------------------------------------------------------------
 Wed Jun  3 14:37:20 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
