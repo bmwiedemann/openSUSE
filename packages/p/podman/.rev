@@ -543,4 +543,12 @@
     <comment>- Correct invalid use of %{_libexecdir} to ensure files should be in /usr/lib</comment>
     <requestid>827668</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>1ffbcf301317beaaab883492492d4070</srcmd5>
+    <version>2.0.5</version>
+    <time>1598642137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830230</requestid>
+  </revision>
 </revisionlist>
