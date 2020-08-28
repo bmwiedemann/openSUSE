@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:45:01 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Thu Jul 23 12:41:08 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints default 4GB disk space
