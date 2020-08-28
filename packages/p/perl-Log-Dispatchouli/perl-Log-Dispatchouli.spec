@@ -17,7 +17,7 @@
 
 
 Name:           perl-Log-Dispatchouli
-Version:        2.021
+Version:        2.022
 Release:        0
 %define cpan_name Log-Dispatchouli
 Summary:        Simple wrapper around Log::Dispatch

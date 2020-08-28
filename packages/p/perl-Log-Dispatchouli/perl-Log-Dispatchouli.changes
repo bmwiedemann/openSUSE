@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 25 03:08:02 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.022
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  2.022     2020-08-24 13:50:15-04:00 America/New_York
+          - don't duplicate pid in syslog!
+
+-------------------------------------------------------------------
 Thu Aug 13 03:11:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.021
