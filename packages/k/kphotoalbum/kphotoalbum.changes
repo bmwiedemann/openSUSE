@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Aug 10 07:33:08 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.7.0
+  * Code cleanup:
+    + Removed old macros in favor of C++11 features
+    + Fixed all deprecation warnings emerged with Qt 5.14
+    + Updated old SIGNAL() and SLOT() connects
+  * Change: We now no longer depend on libkgeomap and now use
+    Marble directly to display geographic information for images
+    and maps
+  * Change: Store thumbnail size in thumbnail cache. Warning: After
+    the thumbnail cache was converted to the new format, older
+    versions of KPhotoAlbum can no longer read it!
+  * Change: Remove fake password-protection from privacy lock. Even
+    with the warning message it might give somebody a false sense
+    of security.
+  * Change: Don't display HTML export themes missing a name
+  * Bugfix: Make sure tag groups are always added to tag list as
+    well (kde#423334)
+  * Bugfix: Fix crash when changing the toolbar
+  * Bugfix: Fix handling of negation in searches (kde#334672)
+  * Bugfix: Consistent UI even with dark color schemes
+  * Bugfix: Fix behavior of refresh button (introduced in version
+    5.5)
+  * Bugfix: Fix crash when images are deleted while the viewer
+    window is open
+  * Bugfix: Always show deletion dialog when closing the viewer and
+    images are marked for deletion
+  * Bugfix: Fix crash when dragging an image beyond the last
+    thumbnail (kde#418251)
+  * Bugfix: Fix computation of cell height
+  * Bugfix: kpa-merge should not fail if an item of id 0 exists in
+    an index file
+  * Bugfix: Fix crash when ffmpeg can not extract video thumbnails
+    (kde#422555)
+  * Bugfix: Removing a token no longer makes it disappear from the
+    annotation dialog (kde#423978)
+  * Bugfix: Sanitize input for the Tokens category, make Folder and
+    Media Type categories read-only (kde#423979)
+  * Deprecation: Remove support for KIPI plugins
+  * Deprecation: Drop python2 API and associated python scripts
+  * Enhancement: Experimental: offer options for image search tuning
+  * Enhancement: Smaller improvements to the import dialog
+  * Feature: Support for custom color schemes. Note: This feature
+    replaces the custom background color for the thumbnail view.
+  * Feature: Add new utility kpa-thumbnailtool
+- Add Fix-build-with-Qt-versions-before-5.12.patch to make it build
+  on Leap 15.1
+
+-------------------------------------------------------------------
 Wed Feb 12 09:35:50 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.6.1

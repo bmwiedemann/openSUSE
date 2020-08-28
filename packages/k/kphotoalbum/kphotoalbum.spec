@@ -17,14 +17,16 @@
 
 
 Name:           kphotoalbum
-Version:        5.6.1
+Version:        5.7.0
 Release:        0
 Summary:        A photo administration utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.kphotoalbum.org/
 Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  cmake >= 3.2.0
+# PATCH-FIX-UPSTREAM
+Patch:          Fix-build-with-Qt-versions-before-5.12.patch
+BuildRequires:  cmake >= 3.3.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libexiv2-devel
@@ -39,20 +41,19 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KDcraw)
-BuildRequires:  cmake(KF5KGeoMap)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kipi)
 BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Marble)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets) >= 5.9.0
 BuildRequires:  cmake(Qt5Xml)
-Requires:       kipi-plugins
 Requires:       sqlite3
+Recommends:     marble
 
 %description
 KPhotoAlbum is a tool to help describe images, and to search in the pile
@@ -64,6 +65,7 @@ an image from a special place, or even both.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %cmake_kf5 -d build
@@ -83,10 +85,12 @@ an image from a special place, or even both.
 %doc ChangeLog README.md
 %{_kf5_applicationsdir}/*
 %{_kf5_bindir}/*
-%{_kf5_iconsdir}/??color/*/*/*.png
+%{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_configdir}/kphotoalbumrc
 %{_kf5_htmldir}/en/kphotoalbum/
 %{_kf5_kxmlguidir}/kphotoalbum/
+%{_kf5_libdir}/libkpabase.so
+%{_kf5_libdir}/libkpathumbnails.so
 %{_kf5_sharedir}/kphotoalbum/
 %{_kf5_appstreamdir}/org.kde.kphotoalbum.appdata.xml
 
