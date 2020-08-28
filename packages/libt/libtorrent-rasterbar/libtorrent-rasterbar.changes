@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 21 06:20:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.9
+  * add macro TORRENT_CXX11_ABI for clients building with C++14
+    against libtorrent build with C++11
+  * refreshed m4 scripts for autotools
+  * removed deprecated wstring overloads on non-windows systems
+  * drop dependency on Unicode's ConvertUTF code (which had a
+    license incompatible with Debian)
+  * fix bugs exposed on big-endian systems
+  * fix detection of hard-links not being supported by filesystem
+  * fixed resume data regression for seeds with prio 0 files
+
+-------------------------------------------------------------------
 Tue Aug  4 17:29:38 UTC 2020 - aloisio@gmx.com
 
 - Update to version 1.2.8
