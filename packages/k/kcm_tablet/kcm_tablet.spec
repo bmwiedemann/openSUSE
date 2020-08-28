@@ -28,6 +28,8 @@ URL:            https://cgit.kde.org/wacomtablet.git/
 Source:         https://download.kde.org/stable/%{rname}/%{version}/%{rname}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-build-with-Qt-5.15.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Check-for-index-validity-when-switching-tablet-type.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files

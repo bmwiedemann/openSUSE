@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 09:58:46 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add patch to fix a possible crash in kde_wacom_tabletfinder
+  (kde#423420, boo#1175126):
+  * Check-for-index-validity-when-switching-tablet-type.patch
+
+-------------------------------------------------------------------
 Thu Jun  4 14:01:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.15:
