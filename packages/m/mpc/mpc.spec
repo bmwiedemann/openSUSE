@@ -1,7 +1,7 @@
 #
 # spec file for package mpc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           mpc
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        MPC multiple-precision complex shared library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.multiprecision.org/mpc/
+URL:            http://www.multiprecision.org/mpc/
 Source0:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz.sig
 Source2:        %{name}.keyring

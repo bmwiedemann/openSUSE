@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 24 08:07:46 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to version 1.2.0.
+  The release features the new functions mpc_sum and mpc_dot and
+  several bug fixes, in particular to make functions more robust
+  if the user reduces the exponent range. It also contains the tool
+  mpcheck for easier comparison with computations by the C library
+  on standard precision floating-point numbers.
+
+-------------------------------------------------------------------
 Fri Aug  2 08:15:32 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.
