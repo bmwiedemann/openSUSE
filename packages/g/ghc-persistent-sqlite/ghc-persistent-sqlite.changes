@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:11:25 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:42 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:13 UTC 2020 - psimons@suse.com
 
 - Add persistent-sqlite at version 2.10.6.2.
