@@ -18,19 +18,16 @@
 
 %define sonum	2
 Name:           libevdev
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        A wrapper library for evdev devices
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://xorg.freedesktop.org/
-#Git-Web:	http://cgit.freedesktop.org/libevdev
-#Git-Clone:	git://anongit.freedesktop.org/libevdev
 Source0:        http://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
 Source1:        http://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch0:         n_buildfix_for_opensuse_12_2.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -76,9 +73,6 @@ Aditional utilities for libevdev library
 
 %prep
 %setup -q
-%if 0%{?suse_version} < 1230
-%patch0 -p1
-%endif
 
 %build
 %configure \

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 01:38:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.9.1
+  * no changelog available
+- remove n_buildfix_for_opensuse_12_2.patch: obsolete 
+
+-------------------------------------------------------------------
 Mon Apr  6 09:22:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.0 (no changelog)
