@@ -19,14 +19,13 @@
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.32.1
+Version:        2.33.0
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause
 Group:          Productivity/Networking/System
 URL:            https://i2pd.website
 Source0:        https://github.com/PurpleI2P/i2pd/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         i2pd-2.19.0-apparmor.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -55,7 +54,6 @@ This package contains a C++ implementation of an I2P router.
 
 %prep
 %setup -q
-%patch0 -p1
 
 cp contrib/debian/i2pd.service i2pd.service.in
 cp contrib/debian/i2pd.tmpfile i2pd.tmpfile.in

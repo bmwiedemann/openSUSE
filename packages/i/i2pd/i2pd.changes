@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug 26 00:51:37 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.33.0:
+  * Shared transient addresses
+  * crypto.ratchet.inboundTags paramater
+  * Multiple encryption keys through I2CP
+  * Pre-calculated x25519 ephemeral keys
+  * Change datagram routing path if nothing comes back in 10
+    seconds
+  * Shared routing path for datagram session
+  * UDP tunnels send mix of repliable and raw datagrams in bulk
+  * Encrypt SSU packet again upon resend
+  * Start new tunnel message if remaining buffer is too small
+  * Use LeaseSet2 for ECIES-X25519-AEAD-Ratchet automatically
+  * Save new ECIES-X25519-AEAD-Ratchet session with NSR tagset
+  * Generate random padding lengths for ECIES-X25519-AEAD-Ratchet
+    in bulk
+  * Webconsole layout
+  * Reseed servers list
+  * Don't connect through terminated SAM destination
+  * Differentiate UDP server sessions by port
+  * ECIES-X25519-AEAD-Ratchet through I2CP
+  * Don't save invalid address to AddressBook
+  * ECDSA signatures names in SAM
+  * AppArmor profile
+- Drop i2pd-2.19.0-apparmor.patch
+
+-------------------------------------------------------------------
 Mon Aug 17 21:39:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.32.1:
