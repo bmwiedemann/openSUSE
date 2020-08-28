@@ -1,7 +1,7 @@
 cabal-version:       1.12
 name:                hackage-security
 version:             0.6.0.1
-x-revision:          1
+x-revision: 2
 
 synopsis:            Hackage security library
 description:         The hackage security library provides both server and
@@ -117,7 +117,7 @@ library
                        bytestring        >= 0.9     && < 0.11,
                        Cabal             >= 1.14    && < 1.26
                                       || >= 2.0     && < 2.6
-                                      || >= 3.0     && < 3.5,
+                                      || >= 3.0     && < 3.6,
                        containers        >= 0.4     && < 0.7,
                        ed25519           >= 0.0     && < 0.1,
                        filepath          >= 1.2     && < 1.5,
