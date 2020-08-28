@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipdeptree
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pipdeptree
-Version:        0.13.2
+Version:        1.0.0
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT
@@ -60,7 +60,7 @@ tar -xzf %{SOURCE1}
 
 %check
 # Two tests fail due to https://github.com/naiquevin/pipdeptree/issues/116
-%python_exec -m pytest -k 'not test_render_tree_exclude and not test_render_tree_exclude_reverse'
+%pytest --ignore tests/virtualenvs/ -k 'not test_render_tree_exclude and not test_render_tree_exclude_reverse'
 
 %post
 %{python_install_alternative pipdeptree}
