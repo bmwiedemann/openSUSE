@@ -51,7 +51,6 @@ BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
-BuildRequires:  memory-constraints
 # OpenJPEGTargets.cmake erroneously requires the binaries
 BuildRequires:  openjpeg2
 BuildRequires:  tbb-devel
@@ -179,7 +178,6 @@ cp opencv_contrib-%{version}/LICENSE LICENSE.contrib
 rm -f doc/packaging.txt
 
 %build
-%limit_build -m 1000
 # Dynamic dispatch: https://github.com/opencv/opencv/wiki/CPU-optimizations-build-options
 # x86: disable SSE on 32bit, do not dispatch AVX and later - SSE3
 #      is the highest extension available on any non-64bit x86 CPU
