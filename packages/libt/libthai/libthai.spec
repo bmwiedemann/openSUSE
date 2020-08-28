@@ -1,7 +1,7 @@
 #
 # spec file for package libthai
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libthai
-Version:        0.1.27
+Version:        0.1.28
 Release:        0
 Summary:        Thai Language Support Routines
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://linux.thai.net/plone/TLWG/libthai/
+URL:            https://linux.thai.net/plone/TLWG/libthai/
 Source:         https://linux.thai.net/pub/thailinux/software/libthai/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  libdatrie-devel
@@ -82,7 +82,7 @@ software using libthai.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
