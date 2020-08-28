@@ -19,7 +19,7 @@
 %global pkg_name hslua
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Bindings to Lua, an embeddable scripting language
 License:        MIT
@@ -61,7 +61,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %define cabal_configure_options -f-system-lua

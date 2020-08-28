@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:45:04 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Sun Aug 16 02:01:37 UTC 2020 - psimons@suse.com
+
+- Update hslua to version 1.2.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hslua-1.2.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sun Jun 28 02:00:44 UTC 2020 - psimons@suse.com
 
 - Update hslua to version 1.1.2.
