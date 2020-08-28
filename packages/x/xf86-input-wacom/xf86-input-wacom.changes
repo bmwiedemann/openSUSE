@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 25 14:13:05 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- reenabled
+  * %{?systemd_ordering}
+  * %{x11_abi_xinput_req}
+  which has mistakely been disabled by the previous update ...
+
+-------------------------------------------------------------------
+Tue Aug 25 11:03:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to version 0.39.0:
+  * Recognize new MobileStudio Pro PID
+  * Ignore ABS_MISC as a source of device type information for AES pens
+  * tools: Fix potential buffer overflow when reading from serial tablet
+  * Handle multitouch mode up at the very start wcmGestureFilter
+  * Perform a few cleanups in wcmTouchFilter.c
+  * Change default gesture mode: touchpad=on, touchscreen=off
+  * Support new MobileStudio Pro for older kernels
+  * Trigger scroll and zoom gestures immediately after they are detected
+  * Revert "Reset wcmGestureState to current device state upon gesture start"
+  * Do not start scroll gesture if fingers are moving opposite directions
+  * Minor cleanups for wcmFingerScroll and wcmFingerZoom
+  * Use wcmScrollDistance as scroll threshold; recognize scrolling more consistently
+  * Overhaul calculation of default scroll, zoom, and spread distances
+  * Prevent spurious right-clicks at the end of very short scroll and zoom gestures
+  * Do not wait wcmTapTime to enter scroll or zoom mode
+  * Use a proxout height of 30 for all stylus devices
+  * Allow CursorProximity to take effect even if distance == 0 on tablet surface
+  * Allow use of proxout feature for any relative tablet tool (stylus, eraser, cursor)
+  * Change wcmCursorProxoutDist from a common to a private property
+  * Add support for Surface Go and Nuvision Solo 10 Draw
+  * Fix panscroll when using non-default tablet area
+- remove U_Change-default-gesture-mode-touchpad-on-touchscreen-.patch (upstream) 
+
+-------------------------------------------------------------------
 Thu Jul 16 10:29:11 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_disable-touchscreen.patch
