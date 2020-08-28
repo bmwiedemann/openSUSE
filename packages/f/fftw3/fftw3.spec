@@ -25,11 +25,7 @@
 %define _ver 3_3_8
 
 #For non HPC builds only
-%ifarch ppc ppc64
-%define mpi_implem openmpi
-%else
 %define mpi_implem openmpi2
-%endif
 
 %bcond_with ringdisabled
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 13:00:52 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Remove specific mpi_implemen define for ppc/ppc64 (was openmpi)
+  to use same openmpi2 as other architectures.
+
+-------------------------------------------------------------------
 Mon Jul 20 18:34:40 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add gnu compiler support up to gcc9.
