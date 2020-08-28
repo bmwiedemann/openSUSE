@@ -167,4 +167,41 @@
     <comment></comment>
     <requestid>548044</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1f378a50b6ee033360d2e2ab64e65ca0</srcmd5>
+    <version>0.12.1</version>
+    <time>1598642038</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.1:
+  * Fix: tls-compat.h exposes compiler-dependent public configuration
+  * Fix: tap array subscript has type char warning
+  * tls-compat.h: introduce DEFINE_URCU_TLS_INIT
+  * Use _umtx_op for futex on FreeBSD
+  * Add FreeBSD, DragonFly to syscall-compat.h
+  * urcu-bp: perform thread registration on urcu_bp_register_thread
+  * Require automake &gt;= 1.12
+  * cds_lfht_is_node_deleted parameter can be marked const
+  * Fix: provide errno as argument to urcu_die()
+  * Fix: rculfhash worker needs to unblock to SIGRCU
+  * Cleanup: test_perthreadlock_timing: handle pthread mutex errors
+  * Fix: SONAME bump to 6.1.0
+  * Cleanup: remove unused variable from configure.ac check
+  * Fix: urcu/futex.h: users of struct timespec should include time.h
+  * Bump library version to 6:0:1
+  * Cleanup: update code layout to fix old gcc warning
+  * Fix: typo CPPLAGS in examples Makefile
+  * Harmonize pprint macro across projects
+  * Check for TLS support after CC detection
+  * Update macros from the autotools archive
+  * tap-driver.sh: flush stdout after each test result
+  * Update dead link in lgpl-relicensing.txt
+  * Add multiflavor compat identifiers
+  * Cleanup: missing sign compare fixes
+  * Cleanup: enable signed/unsigned compare compiler warning
+  * Cleanup: compiler warning on 32-bit architectures
+  * config.h.in: rename CONFIG_RCU_MULTIFLAVOR to CONFIG_RCU_HAVE_MULTIFLAVOR
+  * rculfhash: implement iterator debugging config option
+  * Fix: examples silent rules on Solaris</comment>
+    <requestid>829532</requestid>
+  </revision>
 </revisionlist>
