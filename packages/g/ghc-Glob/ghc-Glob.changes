@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:43:46 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Mon Jul 20 02:00:58 UTC 2020 - psimons@suse.com
 
 - Update Glob to version 0.10.1.
