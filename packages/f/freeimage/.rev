@@ -55,4 +55,18 @@
     <comment></comment>
     <requestid>808812</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>31258f2d733ac4524ed5efe872c9f2b9</srcmd5>
+    <version>3.18.0</version>
+    <time>1598641952</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with libraw 0.20 (libraw_0_20.patch)
+
+Try again, as last submit somehow didn't include last change, what the f**k?
+
+I copied the fix from gentoo. I tried to verify if that is fine, but libraw neither documents this change in changelog nor is the history conclusive. Change comes in one big &quot;Merge development branch to master&quot; without any reference to the individual commits.
+
+freeimage development seems dead and maybe should be replaced if possible.</comment>
+    <requestid>828999</requestid>
+  </revision>
 </revisionlist>

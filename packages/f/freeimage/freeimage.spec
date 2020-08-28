@@ -23,8 +23,8 @@ Version:        3.18.0
 Release:        0
 Summary:        Multi-format Image Decoder Library
 License:        GPL-2.0-only OR GPL-3.0-only
-URL:            http://freeimage.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/freeimage/FreeImage%{tarver}.zip
+URL:            https://freeimage.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/freeimage/FreeImage%{tarver}.zip
 Patch0:         unbundle.patch
 # PATCH-FIX-OPENSUSE doxygen.patch asterios.dramis@gmail.com -- Fix documentation building (Based on patch from Fedora)
 Patch1:         doxygen.patch
@@ -33,6 +33,8 @@ Patch3:         makefiles_fixes.patch
 Patch4:         freeimage-no-return-in-nonvoid.patch
 Patch5:         CVE-2019-12211_2019-12213.patch
 Patch6:         bigendian.patch
+# PATCH-FIX-UPSTREAM: compile with libraw 0.20.0 - https://734724.bugs.gentoo.org/attachment.cgi?id=651956
+Patch7:         libraw_0_20.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  jxrlib-devel
@@ -92,6 +94,7 @@ multithreading safe.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # Remove bundled libs to make sure these don't get used during compile
 rm -rf Source/LibPNG/ Source/LibRawLite/ Source/OpenEXR/ Source/ZLib/ Source/LibOpenJPEG/ Source/LibJPEG/
