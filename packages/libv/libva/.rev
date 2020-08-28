@@ -544,4 +544,12 @@ ARM builds fine. (forwarded request 141176 from Guillaume_G)</comment>
     executed to fix #355</comment>
     <requestid>792964</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1540dedb3403e7203f3ceb13eca9d048</srcmd5>
+    <version>2.8.0</version>
+    <time>1598642004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829060</requestid>
+  </revision>
 </revisionlist>
