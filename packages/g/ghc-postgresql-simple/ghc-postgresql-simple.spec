@@ -70,7 +70,7 @@ This package provides the Haskell %{pkg_name} library development
 files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
