@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:02:23 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Sat Jun 13 22:03:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.3.0
