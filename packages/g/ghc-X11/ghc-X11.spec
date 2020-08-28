@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-X11
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name X11
 Name:           ghc-%{pkg_name}
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        A binding to the X11 graphics library
 License:        BSD-3-Clause
@@ -59,7 +59,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
