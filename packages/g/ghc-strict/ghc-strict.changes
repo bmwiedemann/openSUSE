@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:46:06 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Tue Aug 11 09:28:18 UTC 2020 - psimons@suse.com
 
 - Add strict at version 0.4.
