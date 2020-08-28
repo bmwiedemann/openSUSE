@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:43:57 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Tue Jun  9 10:27:07 UTC 2020 - psimons@suse.com
 
 - Add alsa-mixer at version 0.3.0.
