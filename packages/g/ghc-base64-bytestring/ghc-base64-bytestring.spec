@@ -19,7 +19,7 @@
 %global pkg_name base64-bytestring
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.0.0
+Version:        1.2.0.0
 Release:        0
 Summary:        Fast base64 encoding and decoding for ByteStrings
 License:        BSD-3-Clause
@@ -41,7 +41,10 @@ BuildRequires:  ghc-test-framework-quickcheck2-devel
 %description
 This package provides support for encoding and decoding binary data according
 to 'base64' (see also <https://tools.ietf.org/html/rfc4648 RFC 4648>) for
-strict and lazy ByteStrings.
+strict and lazy ByteStrings
+
+For a fuller-featured and better-performing Base64 library, see the
+<https://hackage.haskell.org/package/base64 base64> package.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -55,7 +58,7 @@ This package provides the Haskell %{pkg_name} library development
 files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build

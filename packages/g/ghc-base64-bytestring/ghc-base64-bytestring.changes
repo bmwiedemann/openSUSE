@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:44:07 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Sat Aug 15 02:02:13 UTC 2020 - psimons@suse.com
+
+- Update base64-bytestring to version 1.2.0.0.
+  # 1.2.0.0
+
+  * Security fix: reject non-canonical base64 encoded values - ([#38](https://github.com/haskell/base64-bytestring/pull/38)) fixing issue [#24](https://github.com/haskell/base64-bytestring/issues/24).
+
+  * Security fix: reject bytestrings with improper padding that can be "completed" by the unpadded-Base64url workflow, and homogenize error messages ([#33](https://github.com/haskell/base64-bytestring/pull/33))
+
+  * Test coverage expanded to 98% of the library. All critical paths covered.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:10:56 UTC 2020 - psimons@suse.com
 
 - Update base64-bytestring to version 1.1.0.0.

@@ -94,4 +94,12 @@ This fixes gh-4.</comment>
     <comment>version update</comment>
     <requestid>815042</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f0d4a7abb15f63e00b77b0e262f53289</srcmd5>
+    <version>1.2.0.0</version>
+    <time>1598642762</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829189</requestid>
+  </revision>
 </revisionlist>
