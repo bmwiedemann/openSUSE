@@ -18,7 +18,7 @@
 
 %global pkg_name monad-logger
 Name:           ghc-%{pkg_name}
-Version:        0.3.34
+Version:        0.3.35
 Release:        0
 Summary:        A class of monads which can log messages
 License:        MIT
@@ -59,7 +59,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build

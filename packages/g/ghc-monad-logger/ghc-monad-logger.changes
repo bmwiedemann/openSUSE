@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:45:29 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Thu Aug 13 02:00:25 UTC 2020 - psimons@suse.com
+
+- Update monad-logger to version 0.3.35.
+  ## 0.3.35
+
+  * Add Hackage status badge
+  * Document `Loc` [#26](https://github.com/snoyberg/monad-logger/pull/26)
+
+-------------------------------------------------------------------
 Wed Jul  8 02:00:26 UTC 2020 - psimons@suse.com
 
 - Update monad-logger to version 0.3.34.
