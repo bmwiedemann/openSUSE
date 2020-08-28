@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 27 06:58:37 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Fix verification requested but nobody cares error when loading external
+  module in secure boot off (bsc#1175766)
+  * 0001-shim_lock-Disable-GRUB_VERIFY_FLAGS_DEFER_AUTH-if-se.patch
+
+-------------------------------------------------------------------
+Sat Aug 22 02:41:49 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Make consistent check to enable relative path on btrfs (bsc#1174567)
+  * 0001-Unify-the-check-to-enable-btrfs-relative-path.patch
+
+-------------------------------------------------------------------
 Fri Aug 21 04:40:48 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Add fibre channel device's ofpath support to grub-ofpathname and search hint

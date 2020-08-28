@@ -1,0 +1,41 @@
+From a60cfeacdeefb21215d35c4cad025e57de900352 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 27 Aug 2020 13:18:25 +0800
+Subject: [PATCH] shim_lock: Disable GRUB_VERIFY_FLAGS_DEFER_AUTH if secure
+ boot off
+
+The GRUB_VERIFY_FLAGS_DEFER_AUTH is enabled regardless secure boot
+status that will cause error [1] on loading external grub modules if
+secure boot turned off in which shim protocol itself did not verify
+images so should not request verification for external modules either.
+
+This patch fixed the problem by adding the secure boot status check
+before requesting other verifiers to verify external module, therefore
+external module loading can work after shim_lock module loaded and
+secure boot turned off.
+
+[1] error: verification requested but nobody cares:
+(hd0,gpt10)/boot/grub2/x86_64-efi/linux.mod.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/efi/shim_lock.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/commands/efi/shim_lock.c b/grub-core/commands/efi/shim_lock.c
+index 764098cfc..18d121297 100644
+--- a/grub-core/commands/efi/shim_lock.c
++++ b/grub-core/commands/efi/shim_lock.c
+@@ -82,7 +82,8 @@ shim_lock_init (grub_file_t io, enum grub_file_type type,
+ 
+     case GRUB_FILE_TYPE_ACPI_TABLE:
+     case GRUB_FILE_TYPE_DEVICE_TREE_IMAGE:
+-      *flags = GRUB_VERIFY_FLAGS_DEFER_AUTH;
++      if (grub_efi_secure_boot())
++	*flags = GRUB_VERIFY_FLAGS_DEFER_AUTH;
+ 
+       return GRUB_ERR_NONE;
+ 
+-- 
+2.26.2
+

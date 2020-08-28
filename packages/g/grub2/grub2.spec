@@ -329,6 +329,8 @@ Patch716:       0002-cmdline-Provide-cmdline-functions-as-module.patch
 # takes 45 minutes after grub to start loading kernel
 Patch717:       0001-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
 Patch718:       0002-ieee1275-powerpc-enables-device-mapper-discovery.patch
+Patch719:       0001-Unify-the-check-to-enable-btrfs-relative-path.patch
+Patch720:       0001-shim_lock-Disable-GRUB_VERIFY_FLAGS_DEFER_AUTH-if-se.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -649,6 +651,8 @@ swap partition while in resuming
 %patch716 -p1
 %patch717 -p1
 %patch718 -p1
+%patch719 -p1
+%patch720 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15
