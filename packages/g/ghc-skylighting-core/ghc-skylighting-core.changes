@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 06:55:08 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:03 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Sun Jun 21 02:00:49 UTC 2020 - psimons@suse.com
 
 - Update skylighting-core to version 0.8.5.
