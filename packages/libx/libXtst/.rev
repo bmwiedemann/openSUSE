@@ -78,4 +78,12 @@
   + Out of boundary access and endless loop in libXtst</comment>
     <requestid>438261</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>605fedd195e8b67721354aff63b08c68</srcmd5>
+    <version>1.2.3</version>
+    <time>1598651098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828734</requestid>
+  </revision>
 </revisionlist>

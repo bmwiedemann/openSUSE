@@ -1,7 +1,7 @@
 #
 # spec file for package libXtst
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Xlib-based client API for the XTEST and RECORD extensions
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXtst
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXtst/
@@ -53,6 +53,8 @@ X protocol and arbitrary X extension protocol.
 %package -n %lname
 Summary:        Xlib-based client API for the XTEST and RECORD extensions
 Group:          System/Libraries
+# Make electron apps happy
+Provides:       libXtst = %{version}
 
 %description -n %lname
 The XTEST extension is a minimal set of client and server extensions

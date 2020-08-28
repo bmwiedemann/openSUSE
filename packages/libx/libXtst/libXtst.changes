@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 10 10:32:26 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add a Provides: libXtst = %{version} to the library subpackage
+  to make pre-packaged electron apps happy.
+
+-------------------------------------------------------------------
 Wed Nov  2 10:38:17 UTC 2016 - sndirsch@suse.com
 
 - tagged baselibs.conf as source in specfile
