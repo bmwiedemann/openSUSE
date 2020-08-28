@@ -24,7 +24,7 @@ Summary:        JSON to YAML Adapter
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-HsYAML-devel
 BuildRequires:  ghc-aeson-devel
@@ -60,9 +60,8 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver aeson '^>= 1.4.0.0' '< 2'
 
 %build
 %ghc_lib_build
