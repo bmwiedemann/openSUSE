@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 07:50:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.2.2
+  * Added Pytest 6 support. (#26)
+
+-------------------------------------------------------------------
 Mon Sep  9 09:18:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.2.1:
