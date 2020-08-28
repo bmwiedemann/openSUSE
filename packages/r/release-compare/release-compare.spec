@@ -44,6 +44,9 @@ Note: you need to use a releasetarget definition in your OBS repository
 mkdir -p $RPM_BUILD_ROOT/usr/lib/build/ $RPM_BUILD_ROOT/%_defaultdocdir/%name
 install -m 0755 %SOURCE2 $RPM_BUILD_ROOT/usr/lib/build/
 
+%check
+bash -n $RPM_BUILD_ROOT/usr/lib/build/obsgendiff || exit 1
+
 %files
 /usr/lib/build
 

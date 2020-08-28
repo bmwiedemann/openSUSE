@@ -25,41 +25,84 @@
 out=/.build.packages/obsgendiff
 outreleased=/.build.packages/obsgendiff.released
 
-echo "Running obsgendiff data differ..."
+eol=$'\n'
 
-# extract released obsgendiff aggregates
-for obsgendiff in /.build.packages/SOURCES/*.obsgendiff; do
-  [ -e "$obsgendiff" ] || continue
-  mkdir -p "${outreleased}"
-  tar xfv "$obsgendiff" -C "${outreleased}"
-done
+echo "Running obsgendiff data differ..."
 
 # create changelogs based on the packaged rpms
 mkdir -p $out/{changelogs,disturl}
-for packages in /.build.packages/KIWI/*.packages; do
-  cat "$packages" | while read line; do
-    IFS='|' read -r -a a <<< "$line"
-    name="${a[0]}"
-    rpm="${name}.rpm"
+for report in /.build.packages/OTHER/*.report; do
 
-    # only the worker knows where it was downloaded from....
-    file=`find /.build.packages/SOURCES/repos/ -name $rpm`
-    rpm -qp "$file" --changelog 2>/dev/null > $out/changelogs/${name}
-    rpm -qp "$file" --qf '%{DISTURL}\n' 2>/dev/null > $out/disturl/${name}
+  # skip source and debug media
+  [ "$report" = "${report/-Media2/}" ] || continue
+  [ "$report" = "${report/-Media3/}" ] || continue
+
+  # find and extract right obsgendiff archive
+  oldobsgendiff=${report%.report}.obsgendiff
+  oldobsgendiff=/.build.packages/SOURCES/${oldobsgendiff##*/}
+  oldobsgendiff=`echo ${oldobsgendiff/-Build*-/-Build*-}` # find old build number
+  if [ -e "$oldobsgendiff" ]; then
+    echo "Extracting $oldobsgendiff"
+    mkdir -p "${outreleased}"
+    tar xf "$oldobsgendiff" -C "${outreleased}"
+  else
+    echo "WARNING no old obsgendiff found: $oldobsgendiff"
+  fi
+
+  sed -n -e 's,.*<binary .*obs:\(//.*\)</binary>,\1,p' "$report" | while read disturl; do
+
+     rpm="${disturl##*/}"
+     name="${rpm%-*}"
+     name="${name%-*}"
+
+     # only the worker knows where it was downloaded from....
+     # the disturl may contained a different build repo
+     file=`echo /.build.packages/SOURCES/repos/*/*/*/$rpm`
+     file="${file//${eol}*/}" # bash internal "head -n 1"
+
+     LC_ALL=C.UTF-8 rpm -qp "$file" --changelog --nodigest --nosignature 2>/dev/null > $out/changelogs/${name}
+     echo "$disturl" > $out/disturl/${name}
   done
 
   # create archive
-  cd $out
-  gendiff=${packages%.packages}.obsgendiff
-  tar cfJ /.build.packages/OTHER/${gendiff##*/} *
-  cd -
+  pushd $out
+  gendiff=${report%.report}.obsgendiff
+  tar cfJ /.build.packages/OTHER/${gendiff##*/} .
+  popd
+
+  # create diff to released archive
+  # NOTE: it had to be published or it won't exist
+  if [ -d "${outreleased}" ]; then
+    changelog=/.build.packages/OTHER/ChangeLog.${report##*/}
+    changelog=${changelog%.report}.txt
+    echo ""> $changelog
+  
+    # removed packages
+    echo "Removed packages">> $changelog
+    echo "================">> $changelog
+    echo "">> $changelog
+  
+    find "$outreleased/changelogs/" -type f | sort | sed "s,^$outreleased/changelogs/,," | while read file; do
+      [ -e "${out}/changelogs/$file" ] || echo " - ${file##*::}" >> $changelog
+    done
+    echo "">> $changelog
+  
+    # new packages
+    echo "New packages">> $changelog
+    echo "============">> $changelog
+    echo "">> $changelog
+    find "$out/changelogs/" -type f | sort | sed "s,^$out/changelogs/,," | while read file; do
+      [ -e "${outreleased}/changelogs/$file" ] || echo " - ${file##*::}" >> $changelog
+    done
+    echo "">> $changelog
+  
+    # changed packages
+    echo "Package updates">> $changelog
+    echo "===============">> $changelog
+    echo "">> $changelog
+    diff -ur "${outreleased}/changelogs/" "$out/changelogs/" | grep -v '^Only in ' | grep '^[+-]' | grep -v '^--- ' | sed 's,^+++ .*/\([^\t]*\).*$,\1,' >> $changelog
+  fi
+
 done
-
-# create diff to released archive
-# NOTE: it had to be published or it won't exist
-if [ -d "${outreleased}" ]; then
-  diff -urN "${outreleased}/" "$out/" > /.build.packages/OTHER/changelog.diff
-fi
-
 exit 0
 
