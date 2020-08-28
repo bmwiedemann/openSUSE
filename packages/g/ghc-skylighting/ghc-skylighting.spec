@@ -24,12 +24,18 @@ Summary:        Syntax highlighting library
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-binary-devel
+BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-pretty-show-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-skylighting-core-devel
+BuildRequires:  ghc-text-devel
 
 %description
 Skylighting is a syntax highlighting library with support for over one hundred
@@ -51,13 +57,15 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
+%define cabal_configure_options -fexecutable
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+%ghc_fix_rpath %{pkg_name}-%{version}
 
 %post devel
 %ghc_pkg_recache
@@ -67,6 +75,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %files -f %{name}.files
 %license LICENSE
+%{_bindir}/%{pkg_name}
 
 %files devel -f %{name}-devel.files
 %doc README.md changelog.md
