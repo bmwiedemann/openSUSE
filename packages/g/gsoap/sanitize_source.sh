@@ -13,14 +13,14 @@ if ! which hardlink >/dev/null; then
 	exit 1;
 fi;
 
-version="2.8.102"
+version="2.8.106"
 shortver="2.8" # agh...
 if [ ! -e "gsoap_$version.zip" ]; then
 	wget -c "http://downloads.sf.net/gsoap2/gsoap_$version.zip"
 fi
 
 rm -Rf "gsoap-$shortver" "gsoap-$version"
-unzip "gsoap_$version.zip"
+unzip -q "gsoap_$version.zip"
 
 # Someone failed at sane version number tagging.
 mv "gsoap-$shortver" "gsoap-$version"
@@ -42,4 +42,4 @@ rm -Rf "gsoap-$version/gsoap/VisualStudio2005"
 hardlink "gsoap-$version"
 find "gsoap-$version" -print0 | sort -z | \
 	tar --no-recur --null -T- --owner=root --group=root --use=xz \
-	-cvf "gsoap-$version.tar.xz"
+	-cf "gsoap-$version.tar.xz"

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 24 07:12:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.106
+  * Improved WSSE plugin to correct a digest verification issue
+    when the signed XML parts use default `xmlns` bindings in
+    elements that are not qualified.
+  * Minor update for struct/class `char *` and `wchar_t *`
+    members declared with explicit default/fixed values: if the
+    corresponding XML element value is absent in the XML payload
+    then their deserialized value will be NULL (instead of the
+    default value as in prior versions). Note that empty XML
+    element values in the XML payload always produce default
+    values.
+  * New soapcpp2 option `-z4` to revert to the old behavior
+    concerning char/wchar.
+
+-------------------------------------------------------------------
+Sun May 24 20:21:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.103
+  * Minor changes for enhanced platform portability.
+
+-------------------------------------------------------------------
 Fri May 15 09:35:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.102
