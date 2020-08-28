@@ -17,7 +17,7 @@
 
 
 Name:           xf86-input-wacom
-Version:        0.37.0
+Version:        0.39.0
 Release:        0
 Summary:        Wacom input driver for the Xorg X server
 License:        GPL-2.0-or-later
@@ -28,7 +28,6 @@ Patch7:         n_01-Add-option-to-enable-logging.patch
 Patch8:         n_02-Log-PROXIMITY-LOW-LEVEL-events.patch
 Patch9:         n_03-Log-PRESSURE-low-level-events.patch
 Patch10:        n_04-Log-BUTTON-HIGH-LEVEL-events.patch
-Patch11:        U_Change-default-gesture-mode-touchpad-on-touchscreen-.patch
 Patch12:        n_disable-touchscreen.patch
 # For directory ownership
 BuildRequires:  libtool
@@ -55,7 +54,6 @@ Provides:       x11-input-wacom = %{version}
 Obsoletes:      x11-input-wacom < %{version}
 Provides:       x11-input-wacom-tools = %{version}
 Obsoletes:      x11-input-wacom-tools < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390 s390x
 %{?systemd_ordering}
 %{x11_abi_xinput_req}
@@ -79,7 +77,6 @@ wacom is an X input driver and utilities for Wacom devices.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 %patch12 -p1
 
 %build
