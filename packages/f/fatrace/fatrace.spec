@@ -1,7 +1,7 @@
 #
 # spec file for package fatrace
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Philipp Thomas <pth@suse.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           fatrace
-Version:        0.13
+Version:        0.15
 Release:        0
 Summary:        System wide file access event reporting utility
 License:        GPL-3.0-or-later
 Group:          System/Monitoring
 URL:            https://launchpad.net/fatrace
-Source:         https://launchpad.net/fatrace/trunk/%{version}/+download/%{name}-%{version}.tar.bz2
+Source:         https://launchpad.net/fatrace/trunk/%{version}/+download/%{name}-%{version}.tar.xz
 BuildRequires:  glibc-devel
 
 %description
@@ -43,7 +43,7 @@ provided.
 %setup -q
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}" PREFIX="%{_prefix}"
+%make_build CFLAGS="%{optflags}" PREFIX="%{_prefix}"
 
 %install
 %make_install CFLAGS="%{optflags}" PREFIX="%{_prefix}"
