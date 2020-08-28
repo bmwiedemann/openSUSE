@@ -20,10 +20,10 @@
 %define asan_build    0
 
 %define tar_name LibRaw
-%define lver    19
+%define lver    20
 %define lname	libraw%{lver}
 Name:           libraw
-Version:        0.19.5
+Version:        0.20.0
 Release:        0
 Summary:        Library for reading RAW files obtained from digital photo cameras
 License:        CDDL-1.0 OR LGPL-2.1-only
@@ -31,9 +31,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.libraw.org/
 #Git-Clone:	git://github.com/LibRaw/LibRaw
 Source:         https://www.libraw.org/data/%tar_name-%version.tar.gz
-Patch1:         libraw-Add-Sony-ILCE-7M3.patch
-# CVE-2020-15503 [bsc#1173674], lack of thumbnail size range check can lead to buffer overflow
-Patch2:         libraw-CVE-2020-15503.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -103,8 +100,6 @@ against LibRaw. LibRaw does not provide dynamic libraries.
 
 %prep
 %setup -q -n %{tar_name}-%{version}
-%patch1 -p1
-%patch2 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

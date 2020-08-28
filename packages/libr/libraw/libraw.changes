@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:58:33 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- version update to 0.20.0
+  * Camera Format support
+    + Canon CR3
+    + GoPro (via GPR SDK)
+    + Panasonic 14-bit
+    + Fujifilm compressed/16bit
+    + Rapsberry Pi RAW+JPEG format (if USE_6BY9RPI defined)
+  * Camera support (+59, 1131 total)
+    + Canon: PowerShot G5 X Mark II, G7 X Mark III, SX70 HS,
+    + EOS R, EOS RP, EOS 90D, EOS 250D,  EOS M6 Mark II, EOS M50, EOS M200
+    + EOS 1DX Mark III (lossless files only)
+    + DJI Mavic Air, Osmo Action
+    + FujiFilm GFX 100, X-A7, X-Pro3, X100V,
+      X-T4 (uncompressed/lossless compressed only), X-T200
+    + GoPro Fusion, HERO5, HERO6, HERO7, HERO8
+    + Hasselblad L1D-20c, X1D II 50C
+    + Leica D-LUX7, Q-P, Q2, V-LUX5, C-Lux / CAM-DC25, SL2, M10 Monochrom
+    + Nikon D780, Z50, P950
+    + Olympus TG-6, E-M5 Mark III, E-PL10, E-M1 Mark III,
+    + Panasonic DC-FZ1000 II, DC-G90, DC-S1, DC-S1R, DC-S1H, DC-TZ95
+    + PhaseOne IQ4 150MP
+    + Ricoh GR III
+    + Sony A7R IV, A9 II, ILCE-6100, ILCE-6600, RX0 II, RX100 VII
+    + Zenit M
+  * minor/unsorted changes
+    + Add support for zlib during configure
+    + Fixed multiple problems found by OSS-Fuzz
+    + Lots of changes in imgdata.makernotes
+    + DNG whitelevel calculated via BitsPerSample if not set via tags
+    + DNG: support for LinearDNG w/ BlackLevelRepeat.. pattern
+    + better support for Nikon Coolscan 16-bit NEF files
+    + Bayer images: ensure that even margins have the same COLOR()
+      for both the active sensor area and the full sensor area.
+    + fixed several bugs
+- removed libraw-Add-Sony-ILCE-7M3.patch
+- removed libraw-CVE-2020-15503.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 14:20:04 UTC 2020 - pgajdos@suse.com
 
 - security update

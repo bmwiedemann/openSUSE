@@ -582,4 +582,12 @@
   + libraw-CVE-2020-15503.patch</comment>
     <requestid>819256</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>be304ff5aa2b51a26995e35e79b769da</srcmd5>
+    <version>0.20.0</version>
+    <time>1598641918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824129</requestid>
+  </revision>
 </revisionlist>
