@@ -28,7 +28,6 @@ URL:            https://nlohmann.github.io/json/
 Source:         https://github.com/nlohmann/json/archive/v%{version}.tar.gz#/json-%{version}.tar.gz
 Patch0:         gcc10-fix.patch
 BuildRequires:  cmake >= 3.1
-BuildRequires:  memory-constraints
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7-c++
 %else
@@ -39,7 +38,7 @@ BuildRequires:  gcc-c++
 C++11 header-only JSON class
 
 %package devel
-Summary:        C++11 headeri-only JSON class
+Summary:        C++11 header-only JSON class
 Group:          Development/Libraries/C and C++
 Requires:       libstdc++-devel
 
@@ -59,7 +58,6 @@ export CXX="g++-7"
   -DJSON_BuildTests:BOOL=ON \
   -DNLOHMANN_JSON_CONFIG_INSTALL_DIR="%{_libdir}/cmake/nlohmann_json"
 # require 2GB mem per thread
-%limit_build
 %make_jobs
 
 %install

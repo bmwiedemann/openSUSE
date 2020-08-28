@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:43:37 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Fix typo in summary: headeri -> header
+
+-------------------------------------------------------------------
+Thu Aug 20 09:00:48 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Tue Apr 14 06:04:52 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add gcc10-fix.patch in order to fix build with GCC 10.
