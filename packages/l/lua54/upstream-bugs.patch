@@ -145,6 +145,17 @@
    luai_userstateresume(L, nargs);
 --- a/src/lundump.c
 +++ b/src/lundump.c
+@@ -120,7 +120,10 @@ static TString *loadStringN (LoadState *S, Proto *p) {
+   }
+   else {  /* long string */
+     ts = luaS_createlngstrobj(L, size);  /* create string */
++    setsvalue2s(L, L->top, ts);  /* anchor it ('loadVector' can GC) */
++    luaD_inctop(L);
+     loadVector(S, getstr(ts), size);  /* load directly in final place */
++    L->top--;  /* pop string */
+   }
+   luaC_objbarrier(L, p, ts);
+   return ts;
 @@ -205,8 +205,9 @@ static void loadUpvalues (LoadState *S, Proto *f) {
    n = loadInt(S);
    f->upvalues = luaM_newvectorchecked(S->L, n, Upvaldesc);
@@ -368,3 +379,14 @@
          }
          updatebase(ci);  /* function has new base after adjustment */
          vmbreak;
+--- a/src/ltm.c
++++ b/src/ltm.c
+@@ -240,7 +240,7 @@ void luaT_adjustvarargs (lua_State *L, int nfixparams, CallInfo *ci,
+   int actual = cast_int(L->top - ci->func) - 1;  /* number of arguments */
+   int nextra = actual - nfixparams;  /* number of extra arguments */
+   ci->u.l.nextraargs = nextra;
+-  checkstackGC(L, p->maxstacksize + 1);
++  luaD_checkstack(L, p->maxstacksize + 1);
+   /* copy function to the top of the stack */
+   setobjs2s(L, L->top++, ci->func);
+   /* move fixed parameters to the top of the stack */

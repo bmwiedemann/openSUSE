@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 18:24:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add final part of patch for CVE-2020-15888, boo#1174367
+- Add upstream patch 13
+
+-------------------------------------------------------------------
 Tue Aug 18 14:49:56 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add patch for CVE-2020-15945, boo#1174540 (un-numbered)
