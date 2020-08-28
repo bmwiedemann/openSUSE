@@ -64,8 +64,7 @@ software by automating the fetching, configuration, compilation and
 installation of Haskell libraries and programs.
 
 %prep
-%setup -q
-%patch01 -p2
+%autosetup -p2
 
 %build
 %ghc_bin_build
