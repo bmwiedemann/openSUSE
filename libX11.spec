@@ -17,7 +17,7 @@
 
 
 Name:           libX11
-Version:        1.6.9
+Version:        1.6.12
 Release:        0
 Summary:        Core X11 protocol client library
 License:        MIT
@@ -33,12 +33,7 @@ Patch0:         p_khmer-compose.diff
 Patch1:         p_xlib_skip_ext_env.diff
 # PATCH-FIX-UPSTREAM en-locales.diff fdo#48596 bnc#388711 -- Add missing data for more en locales
 Patch2:         en-locales.diff
-Patch21:        U_001-ChangeTheData_lenParameterOf_XimAttributeToValueToCARD16.patch
-Patch22:        U_002-FixIntegerOverflowsIn_XimAttributeToValue.patch
-Patch23:        U_003-FixMoreUncheckedLengths.patch
-Patch24:        U_004-FixSignedLengthValuesIn_XimGetAttributeID.patch
-Patch25:        U_005-ZeroOutBuffersInFunctions.patch
-Patch26:        U_006-Fix-size-calculation-in-_XimAttributeToValue.patch
+
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -142,12 +137,6 @@ test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 %patch0
 %patch1
 %patch2
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
 
 %build
 %configure \

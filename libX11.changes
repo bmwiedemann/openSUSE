@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 25 21:24:32 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.6.12
+  * Fix an integer overflow in init_om() [CVE-2020-14363, boo#1175239]
+
+-------------------------------------------------------------------
+Sat Aug 15 17:30:24 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 1.6.11:
+  A collection of random and security fixes.
+- Remove patches included in this release:
+  + U_001-ChangeTheData_lenParameterOf_XimAttributeToValueToCARD16.patch
+  + U_002-FixIntegerOverflowsIn_XimAttributeToValue.patch
+  + U_003-FixMoreUncheckedLengths.patch
+  + U_004-FixSignedLengthValuesIn_XimGetAttributeID.patch
+  + U_005-ZeroOutBuffersInFunctions.patch
+  + U_006-Fix-size-calculation-in-_XimAttributeToValue.patch
+- Adapt patch p_xlib_skip_ext_env.diff to work with the new version
+
+-------------------------------------------------------------------
 Tue Aug  4 16:33:45 CEST 2020 - tiwai@suse.de
 
 - U_006-Fix-size-calculation-in-_XimAttributeToValue.patch:
