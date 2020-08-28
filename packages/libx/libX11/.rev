@@ -270,4 +270,24 @@ additions, including new UTF-8 compose sequences for:
     (CVE-2020-14344, bsc#1174628) (forwarded request 824349 from tiwai)</comment>
     <requestid>824353</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f8ee86578d0fd322a96fe288c032a5bf</srcmd5>
+    <version>1.6.12</version>
+    <time>1598651106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.12
+  * Fix an integer overflow in init_om() [CVE-2020-14363, boo#1175239]
+
+- Update to version 1.6.11:
+  A collection of random and security fixes.
+- Remove patches included in this release:
+  + U_001-ChangeTheData_lenParameterOf_XimAttributeToValueToCARD16.patch
+  + U_002-FixIntegerOverflowsIn_XimAttributeToValue.patch
+  + U_003-FixMoreUncheckedLengths.patch
+  + U_004-FixSignedLengthValuesIn_XimGetAttributeID.patch
+  + U_005-ZeroOutBuffersInFunctions.patch
+  + U_006-Fix-size-calculation-in-_XimAttributeToValue.patch
+- Adapt patch p_xlib_skip_ext_env.diff to work with the new version</comment>
+    <requestid>829641</requestid>
+  </revision>
 </revisionlist>
