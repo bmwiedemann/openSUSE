@@ -586,4 +586,12 @@
     <comment></comment>
     <requestid>827872</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>1ef33160b689868165b0229988a8e3dd</srcmd5>
+    <version>1.8.2</version>
+    <time>1598642304</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 828670 from iznogood)</comment>
+    <requestid>828950</requestid>
+  </revision>
 </revisionlist>
