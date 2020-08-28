@@ -157,4 +157,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>version update</comment>
     <requestid>819570</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b6b38417858caacb7ac3d0037cbc6d85</srcmd5>
+    <version>0.8.2.7</version>
+    <time>1598642784</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829196</requestid>
+  </revision>
 </revisionlist>
