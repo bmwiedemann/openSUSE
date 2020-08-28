@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 22 20:18:17 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.12.1
+  + Validate path read from repomd.xml (rh#1868639, CVE-2020-14352)
+
+-------------------------------------------------------------------
 Tue Jul  7 10:38:49 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Upgrade to 1.12.0

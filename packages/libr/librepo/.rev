@@ -157,4 +157,13 @@
   + Download sources work when at least one of specified is working (rh#1775184)</comment>
     <requestid>819220</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7aac26ca3b1b5c270f55e7a1f41cb148</srcmd5>
+    <version>1.12.1</version>
+    <time>1598651096</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.12.1
+  + Validate path read from repomd.xml (rh#1868639, CVE-2020-14352)</comment>
+    <requestid>828723</requestid>
+  </revision>
 </revisionlist>
