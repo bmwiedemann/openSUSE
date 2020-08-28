@@ -52,7 +52,7 @@ hand (or using hsc2hs), this ensures that C functions are imported with the
 correct Haskell types.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %ghc_bin_build
