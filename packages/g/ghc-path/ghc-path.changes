@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 21 11:18:51 UTC 2020 - psimons@suse.com
+
+- Update path to version 0.8.0.
+  0.8.0
+    * Rerelease of 0.7.1 with better version number
+
+  0.7.1:
+  	* Test with GHC 8.8.2, 8.8.3, 8.10.1.
+  	* Export SomeBase constructor.
+  	* Fix Lift severe Lift instance bug
+
+-------------------------------------------------------------------
 Mon Dec 30 03:01:20 UTC 2019 - psimons@suse.com
 
 - Update path to version 0.7.0.
