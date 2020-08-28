@@ -19,7 +19,7 @@
 %global pkg_name http-client
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.1
+Version:        0.7.2.1
 Release:        0
 Summary:        An HTTP client engine
 License:        MIT
@@ -70,7 +70,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
