@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:45:42 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Tue Jul 28 15:45:37 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints min 4GB disk space for few arches
