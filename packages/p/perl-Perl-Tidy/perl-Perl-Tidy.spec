@@ -17,7 +17,7 @@
 
 
 Name:           perl-Perl-Tidy
-Version:        20200619
+Version:        20200822
 Release:        0
 #Upstream: GPL-1.0-or-later
 %define cpan_name Perl-Tidy
@@ -67,7 +67,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc bbs.t BUGS.md CHANGES.md docs examples pm2pl README.md
+%doc BUGS.md CHANGES.md docs examples pm2pl README.md
 %license COPYING
 
 %changelog
