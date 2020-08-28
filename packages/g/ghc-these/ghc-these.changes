@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:46:17 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Wed Jul 15 02:00:25 UTC 2020 - psimons@suse.com
 
 - Update these to version 1.1.1.1.
