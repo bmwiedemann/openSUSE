@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ocaml-rpm-macros
-Version:        20200514
+Version:        20200820
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
 Group:          Development/Languages/OCaml
-Url:            https://build.opensuse.org/project/show/devel:languages:ocaml
+URL:            https://build.opensuse.org/project/show/devel:languages:ocaml
 Source0:        ocaml-ocaml.rpm.prov_req.attr.sh
 Source1:        ocaml-findlib.rpm.prov_req.attr.sh
 
@@ -40,7 +41,7 @@ Source1:        ocaml-findlib.rpm.prov_req.attr.sh
 %define do_opt 1
 %endif
 %if %{without ocaml_force_enable_ocaml_opt}
-%ifarch %{arm} aarch64 %{ix86} ppc ppc64 ppc64le s390x x86_64
+%ifarch %{arm} aarch64 %{ix86} ppc ppc64 ppc64le riscv64 s390x x86_64
 %define do_opt 1
 %endif
 %endif
@@ -127,10 +128,22 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 # Other unknown files are shown on stdout
 %%ocaml_create_file_list \
 	> %%{name}.files ;\
+	> %%{name}.files.changes ;\
 	> %%{name}.files.devel ;\
 	> %%{name}.files.ldsoconf ;\
 	> %%{name}.files.license ;\
 	> %%{name}.files.unhandled ;\
+	for changes in \\\
+	CHANGELOG.md \\\
+	CHANGES \\\
+	CHANGES.md \\\
+	CHANGES.txt \\\
+	ChangeLog \\\
+	Changelog \\\
+	;\
+	do\
+	  test -f "${changes}" && echo "%%%%doc ${changes}" >> '%%{name}.files.changes' ;\
+	done ;\
 	for license in \\\
 	COPYING \\\
 	COPYING.txt \\\
@@ -299,12 +312,17 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	/\\/opam$/{\
 		files_devel($0)\
 	}\
+	# Some Coq files\
+	/\\/[^/]+\.v$/{\
+		files_devel($0)\
+	}\
 	#\
 	# record unknown paths\
 	files_unhandled($0)\
 	END {\
 	;\
 	}' ;\
+	cat '%%{name}.files.changes' >> '%%{name}.files' ;\
 	cat '%%{name}.files.license' >> '%%{name}.files' ;\
 	if test -s %%{name}.files.ldsoconf ;\
 	then\
