@@ -140,4 +140,13 @@
     <comment>- Use test -x instead of -f (forwarded request 788124 from kukuk)</comment>
     <requestid>788125</requestid>
   </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>f6e2abaf402d4fee71a2aa485faf7f37</srcmd5>
+    <version>20170617</version>
+    <time>1598642183</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't add group nogroup to user nobody, as many daemons misuse
+  'nogroup' as own group (forwarded request 828854 from kukuk)</comment>
+    <requestid>828855</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 18:35:50 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't add group nogroup to user nobody, as many daemons misuse
+  'nogroup' as own group
+
+-------------------------------------------------------------------
 Wed Mar 25 10:10:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use test -x instead of -f
