@@ -1,7 +1,7 @@
 #
 # spec file for package sakura
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           sakura
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        Terminal Emulator based on the VTE Library
 License:        GPL-2.0-or-later
 URL:            https://launchpad.net/sakura
-Source:         https://launchpad.net/sakura/trunk/%{version}/+download/sakura-%{version}.tar.gz
+Source:         https://launchpad.net/sakura/trunk/%{version}/+download/sakura-%{version}.tar.bz2
 Patch0:         sakura-icon.patch
 Patch1:         sakura-fix_pod2man.patch
 # to convert SVG to PNG:

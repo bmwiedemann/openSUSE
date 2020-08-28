@@ -34,4 +34,12 @@
 - fix dependencies</comment>
     <requestid>745462</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6878a086dfadde686818e673897da7d7</srcmd5>
+    <version>3.7.1</version>
+    <time>1598642536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829132</requestid>
+  </revision>
 </revisionlist>
