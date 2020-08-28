@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 16 22:39:47 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 9.28.0:
+  dcraw - revision 1.478
+  * Caught up on two years' worth of new cameras.
+- Update upstream URL to new address
+- Add patches for CVEs:
+  * dcraw-CVE-2017-13735.patch (CVE-2017-13735, bsc#1056170)
+  * dcraw-CVE-2017-14608.patch (CVE-2017-14608, bsc#1063798)
+  * dcraw-CVE-2018-19655.patch (CVE-2018-19655, bsc#1117896)
+  * dcraw-CVE-2018-5801.patch (CVE-2018-5801, bsc#1084690)
+- Run spec-cleaner
+  * Remove package groups
+
+-------------------------------------------------------------------
 Mon Jul 22 08:18:01 UTC 2019 - mvetter@suse.com
 
 - bsc#1142308: Drop dependency on libjasper

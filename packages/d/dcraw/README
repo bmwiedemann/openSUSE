@@ -1,4 +1,4 @@
-http://www.cybercom.net/~dcoffin/dcraw/:
+https://www.dechifro.org/dcraw/:
 
    [1]Back to Dave Coffin's Home Page
 
@@ -71,7 +71,7 @@ http://www.cybercom.net/~dcoffin/dcraw/:
    execute permission.
      * [17]dcraw.c -- decodes raw photos, extracts thumbnails, and
        displays metadata
-       Supports 688 cameras at last count. Compile with "gcc -o dcraw -O4
+       Supports 731 cameras at last count. Compile with "gcc -o dcraw -O4
        dcraw.c -lm -ljasper -ljpeg -llcms2" or "gcc -o dcraw -O4 dcraw.c
        -lm -DNODEPS". Run with no arguments to see a usage message. Don't
        complain that 16-bit output is too dark -- read the [18]FAQ!
@@ -465,6 +465,7 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Canon EOS 50D
      * Canon EOS 60D
      * Canon EOS 70D
+     * Canon EOS 77D / 9000D
      * Canon EOS 80D
      * Canon EOS 300D / Digital Rebel / Kiss Digital
      * Canon EOS 350D / Digital Rebel XT / Kiss Digital N
@@ -477,11 +478,14 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Canon EOS 700D / Digital Rebel T5i / Kiss Digital X7i
      * Canon EOS 750D / Digital Rebel T6i / Kiss Digital X8i
      * Canon EOS 760D / Digital Rebel T6s / Kiss Digital X9
+     * Canon EOS 800D / Digital Rebel T7i / Kiss Digital X9i
      * Canon EOS 100D / Digital Rebel SL1 / Kiss Digital X7
      * Canon EOS 1000D / Digital Rebel XS / Kiss Digital F
      * Canon EOS 1100D / Digital Rebel T3 / Kiss Digital X50
      * Canon EOS 1200D / Digital Rebel T5 / Kiss Digital X70
      * Canon EOS 1300D / Digital Rebel T6 / Kiss Digital X80
+     * Canon EOS 1500D / Digital Rebel T7 / Kiss Digital X90 / EOS 2000D
+     * Canon EOS 3000D / Digital Rebel T100 / EOS 4000D
      * Canon EOS C500
      * Canon EOS D2000C
      * Canon EOS M
@@ -564,15 +568,19 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Fuji X-E1
      * Fuji X-E2
      * Fuji X-E2S
+     * Fuji X-H1
      * Fuji X-M1
      * Fuji X-S1
      * Fuji X-T1
+     * Fuji X-T2
      * Fuji X-T10
+     * Fuji X-T20
      * Fuji XF1
      * Fuji XQ1
      * Fuji XQ2
      * Fuji X100
-     * Fuji X100s
+     * Fuji X100F
+     * Fuji X100S
      * Fuji X100T
      * Fuji X10
      * Fuji X20
@@ -584,6 +592,7 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Hasselblad H3D
      * Hasselblad H4D
      * Hasselblad V96C
+     * Hasselblad X1D
      * Imacon Ixpress 16-megapixel
      * Imacon Ixpress 22-megapixel
      * Imacon Ixpress 39-megapixel
@@ -649,6 +658,7 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Leaf Valeo 22
      * Leaf Volare
      * Leica C (Typ 112)
+     * Leica CL
      * Leica Digilux 2
      * Leica Digilux 3
      * Leica D-LUX2
@@ -662,11 +672,14 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Leica M Monochrom (Typ 246)
      * Leica M8
      * Leica M9
+     * Leica M10
      * Leica Q (Typ 116)
      * Leica R8
      * Leica S (Typ 007)
      * Leica SL (Typ 601)
      * Leica T (Typ 701)
+     * Leica TL
+     * Leica TL2
      * Leica V-LUX1
      * Leica V-LUX2
      * Leica V-LUX3
@@ -733,10 +746,12 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Nikon D800
      * Nikon D800E
      * Nikon D810
+     * Nikon D850
      * Nikon D3000
      * Nikon D3100
      * Nikon D3200
      * Nikon D3300
+     * Nikon D3400
      * Nikon D5000
      * Nikon D5100
      * Nikon D5200
@@ -745,6 +760,7 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Nikon D7000
      * Nikon D7100
      * Nikon D7200
+     * Nikon D7500
      * Nikon 1 AW1
      * Nikon 1 J1
      * Nikon 1 J2
@@ -814,10 +830,12 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Olympus E-520
      * Olympus E-620
      * Olympus E-M1
+     * Olympus E-M1 Mark II
      * Olympus E-M5
-     * Olympus E-M5MarkII
+     * Olympus E-M5 Mark II
      * Olympus E-M10
-     * Olympus E-M10MarkII
+     * Olympus E-M10 Mark II
+     * Olympus E-M10 Mark III
      * Olympus E-P1
      * Olympus E-P2
      * Olympus E-P3
@@ -828,6 +846,8 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Olympus E-PL3
      * Olympus E-PL5
      * Olympus E-PL7
+     * Olympus E-PL8
+     * Olympus E-PL9
      * Olympus E-PM1
      * Olympus E-PM2
      * Olympus PEN-F
@@ -842,6 +862,7 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Olympus SP570UZ
      * Olympus STYLUS1
      * Olympus TG-4
+     * Olympus TG-5
      * Olympus XZ-1
      * Olympus XZ-2
      * Olympus XZ-10
@@ -855,12 +876,14 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Panasonic DMC-FZ40
      * Panasonic DMC-FZ50
      * Panasonic DMC-FZ70
+     * Panasonic DC-FZ80
      * Panasonic DMC-FZ100
      * Panasonic DMC-FZ150
      * Panasonic DMC-FZ200
      * Panasonic DMC-FZ300
      * Panasonic DMC-FZ330
      * Panasonic DMC-FZ1000
+     * Panasonic DMC-FZ2000
      * Panasonic DMC-FX150
      * Panasonic DMC-G1
      * Panasonic DMC-G2
@@ -868,6 +891,8 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Panasonic DMC-G5
      * Panasonic DMC-G6
      * Panasonic DMC-G7
+     * Panasonic DC-G9
+     * Panasonic DMC-G80
      * Panasonic DMC-GF1
      * Panasonic DMC-GF2
      * Panasonic DMC-GF3
@@ -878,12 +903,15 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Panasonic DMC-GH2
      * Panasonic DMC-GH3
      * Panasonic DMC-GH4
+     * Panasonic DC-GH5
      * Panasonic DMC-GM1
      * Panasonic DMC-GM5
      * Panasonic DMC-GX1
      * Panasonic DMC-GX7
      * Panasonic DMC-GX8
+     * Panasonic DC-GX9
      * Panasonic DMC-GX80
+     * Panasonic DC-GX800
      * Panasonic DMC-L1
      * Panasonic DMC-L10
      * Panasonic DMC-LC1
@@ -893,10 +921,13 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Panasonic DMC-LX3
      * Panasonic DMC-LX5
      * Panasonic DMC-LX7
+     * Panasonic DMC-LX15
      * Panasonic DMC-LX100
      * Panasonic DMC-TZ61
      * Panasonic DMC-TZ80
+     * Panasonic DC-TZ90
      * Panasonic DMC-TZ100
+     * Panasonic DC-TZ200
      * Panasonic DMC-ZS40
      * Pentax *ist D
      * Pentax *ist DL
@@ -918,10 +949,12 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Pentax K-5 II
      * Pentax K-5 II s
      * Pentax K-50
+     * Pentax K-70
      * Pentax K-500
      * Pentax K-7
      * Pentax K-S1
      * Pentax K-S2
+     * Pentax KP
      * Pentax Optio S
      * Pentax Optio S4
      * Pentax Optio 33WR
@@ -1000,15 +1033,19 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * SMaL Ultra-Pocket 5
      * Sony DSC-F828
      * Sony DSC-R1
+     * Sony DSC-RX0
      * Sony DSC-RX1
      * Sony DSC-RX1R
      * Sony DSC-RX1RM2
      * Sony DSC-RX10
      * Sony DSC-RX10M2
+     * Sony DSC-RX10M3
+     * Sony DSC-RX10M4
      * Sony DSC-RX100
      * Sony DSC-RX100M2
      * Sony DSC-RX100M3
      * Sony DSC-RX100M4
+     * Sony DSC-RX100M5
      * Sony DSC-V3
      * Sony DSLR-A100
      * Sony DSLR-A200
@@ -1027,17 +1064,22 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Sony DSLR-A900
      * Sony ILCA-68
      * Sony ILCA-77M2
-     * Sony ILCE-7M2
+     * Sony ILCA-99M2
      * Sony ILCE-7
+     * Sony ILCE-7M2
+     * Sony ILCE-7M3
      * Sony ILCE-7R
      * Sony ILCE-7RM2
+     * Sony ILCE-7RM3
      * Sony ILCE-7S
      * Sony ILCE-7SM2
+     * Sony ILCE-9
      * Sony ILCE-3000
      * Sony ILCE-5000
      * Sony ILCE-5100
      * Sony ILCE-6000
      * Sony ILCE-6300
+     * Sony ILCE-6500
      * Sony ILCE-QX1
      * Sony NEX-3
      * Sony NEX-3N
@@ -1060,63 +1102,65 @@ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg
      * Sony SLT-A99V
      * Sony XCD-SX910CR
      * STV680 VGA
+     * Xiro Xplorer V
+     * YI M1
      __________________________________________________________________
 
 References
 
-   1. http://www.cybercom.net/~dcoffin/
-   2. http://www.cybercom.net/~dcoffin/dcraw/plate_large.jpg
-   3. http://www.cybercom.net/~dcoffin/dcraw/index_eo.html
-   4. http://www.cybercom.net/~dcoffin/dcraw/index_pt.html
-   5. http://www.cybercom.net/~dcoffin/dcraw/index_de.html
-   6. http://www.cybercom.net/~dcoffin/dcraw/index_ru.html
+   1. https://www.dechifro.org/
+   2. https://www.dechifro.org/dcraw/plate_large.jpg
+   3. https://www.dechifro.org/dcraw/index_eo.html
+   4. https://www.dechifro.org/dcraw/index_pt.html
+   5. https://www.dechifro.org/dcraw/index_de.html
+   6. https://www.dechifro.org/dcraw/index_ru.html
    7. http://science-all.com/dcraw.html
    8. http://gphoto.sourceforge.net/
-   9. http://www.cybercom.net/~dcoffin/dcraw/dcraw.c
-  10. http://www.cybercom.net/~dcoffin/resume.html
+   9. https://www.dechifro.org/dcraw/dcraw.c
+  10. https://www.dechifro.org/resume.html
   11. http://www.outbackphoto.com/artofraw/raw_07/essay.html
   12. http://news.cnet.com/Nikons-photo-encryption-reported-broken/2100-1030_3-5679848.html
   13. http://www.dpreview.com/news/0504/05042701davecoffininterview.asp
   14. http://www.editorsguild.com/v2/magazine/archives/0705/cover_story.htm
   15. http://archive.is/0FyJw
   16. https://web.archive.org/web/20121015035554/http://www.ladinamo.org/english/raw-format-the-captive-photo.php
-  17. http://www.cybercom.net/~dcoffin/dcraw/dcraw.c
-  18. http://www.cybercom.net/~dcoffin/dcraw/#faq
-  19. http://www.cybercom.net/~dcoffin/dcraw/dcraw.1.html
-  20. http://www.cybercom.net/~dcoffin/dcraw/rawphoto.c
+  17. https://www.dechifro.org/dcraw/dcraw.c
+  18. https://www.dechifro.org/dcraw/#faq
+  19. https://www.dechifro.org/dcraw/dcraw.1.html
+  20. https://www.dechifro.org/dcraw/rawphoto.c
   21. http://ufraw.sourceforge.net/
   22. http://homepages.ihug.co.nz/~peps/
-  23. http://www.cybercom.net/~dcoffin/dcraw/.badpixels
-  24. http://www.cybercom.net/~dcoffin/dcraw/RCS/dcraw.c,v
+  23. https://www.dechifro.org/dcraw/.badpixels
+  24. https://www.dechifro.org/dcraw/RCS/dcraw.c,v
   25. http://www.cs.purdue.edu/homes/trinkle/RCS/
-  26. http://www.cybercom.net/~dcoffin/dcraw/parse.c
-  27. http://www.cybercom.net/~dcoffin/dcraw/clean_crw.c
-  28. http://www.cybercom.net/~dcoffin/dcraw/fujiturn.c
-  29. http://www.cybercom.net/~dcoffin/dcraw/fuji_green.c
-  30. http://www.cybercom.net/~dcoffin/dcraw/decompress.c
-  31. http://www.cybercom.net/~dcoffin/dcraw/sony_clear.c
-  32. http://www.cybercom.net/~dcoffin/dcraw/archive/
-  33. http://www.cybercom.net/~dcoffin/dcraw/dcraw_eo.1.html
-  34. http://www.cybercom.net/~dcoffin/dcraw/dcraw_ru.1.html
-  35. http://www.cybercom.net/~dcoffin/dcraw/dcraw_fr.1.html
-  36. http://www.cybercom.net/~dcoffin/dcraw/dcraw_it.1.html
-  37. http://www.cybercom.net/~dcoffin/dcraw/dcraw_de.1.html
-  38. http://www.cybercom.net/~dcoffin/dcraw/dcraw_pt.1.html
-  39. http://www.cybercom.net/~dcoffin/dcraw/dcraw_es.1.html
-  40. http://www.cybercom.net/~dcoffin/dcraw/dcraw_nl.1.html
-  41. http://www.cybercom.net/~dcoffin/dcraw/dcraw_pl.1.html
-  42. http://www.cybercom.net/~dcoffin/dcraw/dcraw_hu.1.html
-  43. http://www.cybercom.net/~dcoffin/dcraw/dcraw_cs.1.html
-  44. http://www.cybercom.net/~dcoffin/dcraw/dcraw_sv.1.html
-  45. http://www.cybercom.net/~dcoffin/dcraw/dcraw_ca.1.html
-  46. http://www.cybercom.net/~dcoffin/dcraw/dcraw_da.1.html
-  47. http://www.cybercom.net/~dcoffin/dcraw/dcraw_ro.1.html
-  48. http://www.cybercom.net/~dcoffin/dcraw/dcraw_ja.1.html
-  49. http://www.cybercom.net/~dcoffin/dcraw/dcraw_zh_TW.1.html
-  50. http://www.cybercom.net/~dcoffin/dcraw/dcraw_zh_CN.1.html
-  51. http://www.cybercom.net/~dcoffin/dcraw/msdos/
-  52. http://www.cybercom.net/~dcoffin/dcraw/dcraw.1
-  53. http://www.cybercom.net/~dcoffin/dcraw/dcraw_eo.po
+  26. https://www.dechifro.org/dcraw/parse.c
+  27. https://www.dechifro.org/dcraw/clean_crw.c
+  28. https://www.dechifro.org/dcraw/fujiturn.c
+  29. https://www.dechifro.org/dcraw/fuji_green.c
+  30. https://www.dechifro.org/dcraw/decompress.c
+  31. https://www.dechifro.org/dcraw/sony_clear.c
+  32. https://www.dechifro.org/dcraw/archive/
+  33. https://www.dechifro.org/dcraw/dcraw_eo.1.html
+  34. https://www.dechifro.org/dcraw/dcraw_ru.1.html
+  35. https://www.dechifro.org/dcraw/dcraw_fr.1.html
+  36. https://www.dechifro.org/dcraw/dcraw_it.1.html
+  37. https://www.dechifro.org/dcraw/dcraw_de.1.html
+  38. https://www.dechifro.org/dcraw/dcraw_pt.1.html
+  39. https://www.dechifro.org/dcraw/dcraw_es.1.html
+  40. https://www.dechifro.org/dcraw/dcraw_nl.1.html
+  41. https://www.dechifro.org/dcraw/dcraw_pl.1.html
+  42. https://www.dechifro.org/dcraw/dcraw_hu.1.html
+  43. https://www.dechifro.org/dcraw/dcraw_cs.1.html
+  44. https://www.dechifro.org/dcraw/dcraw_sv.1.html
+  45. https://www.dechifro.org/dcraw/dcraw_ca.1.html
+  46. https://www.dechifro.org/dcraw/dcraw_da.1.html
+  47. https://www.dechifro.org/dcraw/dcraw_ro.1.html
+  48. https://www.dechifro.org/dcraw/dcraw_ja.1.html
+  49. https://www.dechifro.org/dcraw/dcraw_zh_TW.1.html
+  50. https://www.dechifro.org/dcraw/dcraw_zh_CN.1.html
+  51. https://www.dechifro.org/dcraw/msdos/
+  52. https://www.dechifro.org/dcraw/dcraw.1
+  53. https://www.dechifro.org/dcraw/dcraw_eo.po
   54. http://www.acdsystems.com/
   55. http://www.adobe.com/products/photoshop/cameraraw.html
   56. http://www.br-software.com/
@@ -1178,10 +1222,10 @@ References
  112. http://www.delorie.com/djgpp/
  113. http://www.trnicely.net/misc/vista.html
  114. http://www.sno.phy.queensu.ca/~phil/exiftool/
- 115. http://www.cybercom.net/~dcoffin/dcraw/scan.c
- 116. http://www.cybercom.net/~dcoffin/dcraw/read_ndf.c
+ 115. https://www.dechifro.org/dcraw/scan.c
+ 116. https://www.dechifro.org/dcraw/read_ndf.c
  117. http://partners.adobe.com/asn/developer/PDFS/TN/TIFF6.pdf
- 118. http://www.cybercom.net/~dcoffin/N4378.pdf
+ 118. https://www.dechifro.org/N4378.pdf
  119. http://www.adobe.com/products/dng/pdfs/dng_spec.pdf
  120. http://xyrion.org/ciff/
  121. http://web.archive.org/web/20070317042320/http://www.x3f.info/technotes/FileDocs/X3F_Format.pdf
@@ -1189,13 +1233,13 @@ References
  123. http://www.imaging-resource.com/MFR1.HTM
  124. http://www.rawsamples.ch/
  125. http://dl.maptools.org/dl/libtiff/tiff-3.8.2.tar.gz
- 126. http://www.cybercom.net/~dcoffin/dcraw/libtiff.patch
- 127. http://www.cybercom.net/~dcoffin/dcraw/elphel_dng.c
+ 126. https://www.dechifro.org/dcraw/libtiff.patch
+ 127. https://www.dechifro.org/dcraw/elphel_dng.c
  128. http://www.adobe.com/products/dng/main.html
  129. http://www.adobe.com/products/photoshop/main.html
  130. http://cinepaint.sourceforge.net/
- 131. http://www.cybercom.net/~dcoffin/dcraw/ahd_maze.png
- 132. http://www.cybercom.net/~dcoffin/dcraw/vng_grid.png
+ 131. https://www.dechifro.org/dcraw/ahd_maze.png
+ 132. https://www.dechifro.org/dcraw/vng_grid.png
  133. http://netpbm.sourceforge.net/
  134. http://www.imagemagick.org/
  135. http://www.faqs.org/docs/artu/multiprogramchapter.html

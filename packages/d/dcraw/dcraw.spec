@@ -1,7 +1,7 @@
 #
 # spec file for package dcraw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,43 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dcraw
-Version:        9.27.0
+Version:        9.28.0
 Release:        0
 Summary:        Raw Digital Photo Decoding
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Convertors
-Url:            http://www.cybercom.net/~dcoffin/dcraw/
+URL:            https://www.dechifro.org/dcraw/
 #*** NOTE: run "sh update_dcraw" to update to latest version of the following sources ("wget", "rcs" and "lynx" packages are required for the update).
-Source0:        http://www.cybercom.net/~dcoffin/dcraw/archive/%{name}-%{version}.tar.gz
+Source0:        https://www.dechifro.org/dcraw/archive/dcraw-%{version}.tar.gz
 Source1:        README
 # http://www.cybercom.net/~dcoffin/dcraw/.badpixels
 Source2:        badpixels
-Source3:        http://www.cybercom.net/~dcoffin/dcraw/clean_crw.c
-Source4:        http://www.cybercom.net/~dcoffin/dcraw/fuji_green.c
-Source5:        http://www.cybercom.net/~dcoffin/dcraw/fujiturn.c
-Source6:        http://www.cybercom.net/~dcoffin/dcraw/parse.c
-Source7:        http://www.cybercom.net/~dcoffin/dcraw/rawphoto.c
+Source3:        https://www.dechifro.org/dcraw/clean_crw.c
+Source4:        https://www.dechifro.org/dcraw/fuji_green.c
+Source5:        https://www.dechifro.org/dcraw/fujiturn.c
+Source6:        https://www.dechifro.org/dcraw/parse.c
+Source7:        https://www.dechifro.org/dcraw/rawphoto.c
 #***
 Source100:      README.openSUSE
 Source101:      update_dcraw
 # PATCH-FIX-OPENSUSE fuji_green.c_fix_gcc_warnings.patch asterios.dramis@gmail.com -- Fix gcc implicit declaration warning
 Patch0:         fuji_green.c_fix_gcc_warnings.patch
+# PATCH-FIX-UPSTREAM dcraw-CVE-2017-13735.patch
+Patch1:         dcraw-CVE-2017-13735.patch
+# PATCH-FIX-UPSTREAM dcraw-CVE-2017-14608.patch
+Patch2:         dcraw-CVE-2017-14608.patch
+# PATCH-FIX-UPSTREAM dcraw-CVE-2018-19655.patch
+Patch3:         dcraw-CVE-2018-19655.patch
+# PATCH-FIX-UPSTREAM dcraw-CVE-2018-5801.patch
+Patch4:         dcraw-CVE-2018-5801.patch
 BuildRequires:  gettext-runtime
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 Recommends:     %{name}-lang = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Command line tools for raw digital photo decoding and processing.
@@ -53,6 +59,10 @@ Command line tools for raw digital photo decoding and processing.
 %setup -q -n %{name}
 cp -a %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 %patch0
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -fstack-protector-all"
@@ -114,7 +124,6 @@ mv badpixels .badpixels
 %find_lang %{name} --with-man
 
 %files
-%defattr(-,root,root,-)
 %doc .badpixels README README.openSUSE rawphoto.c
 %{_bindir}/clean_crw
 %{_bindir}/dcparse
@@ -122,10 +131,9 @@ mv badpixels .badpixels
 %{_bindir}/fuji_green
 %{_bindir}/fujiturn
 %{_bindir}/fujiturn16
-%{_mandir}/man1/dcraw.1%{ext_man}
+%{_mandir}/man1/dcraw.1%{?ext_man}
 
 %files lang -f %{name}.lang
-%defattr(-,root,root,-)
 %dir %{_mandir}/ca
 %dir %{_mandir}/ca/man1
 %dir %{_mandir}/cs
