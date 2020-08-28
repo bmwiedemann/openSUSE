@@ -43,7 +43,6 @@
 %global license_lgplv2plus	LGPL-2.0+
 %global license_lgplv21plus	LGPL-2.1+
 %global license_mit	        MIT
-%global _libexecdir             %{_libdir}
 %else
 %global pcp_gr			Applications/System
 %global lib_pkg			pcp-libs
@@ -2982,8 +2981,8 @@ fi
 %dir %{_datadir}/pcp
 %dir %{_localstatedir}/lib/pcp
 %if 0%{?suse_version}
-%dir %{_libdir}/pcp
-%dir %{_libdir}/pcp/bin
+%dir %{_libexecdir}/pcp
+%dir %{_libexecdir}/pcp/bin
 %endif
 %dir %{_localstatedir}/lib/pcp/config
 %if 0%{?suse_version}

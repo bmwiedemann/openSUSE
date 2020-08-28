@@ -420,4 +420,14 @@
     <comment></comment>
     <requestid>817939</requestid>
   </revision>
+  <revision rev="54" vrev="41">
+    <srcmd5>389d3cf891071f28981f9c533c7e5ac2</srcmd5>
+    <version>7.6</version>
+    <time>1598642241</time>
+    <user>dimstar_suse</user>
+    <comment>- font-alias 1.0.4 and font-misc-ethiopic 1.0.4
+  * These minor maintenance releases roll up the past decade's
+    worth of fixes &amp; cleanups.</comment>
+    <requestid>828817</requestid>
+  </revision>
 </revisionlist>

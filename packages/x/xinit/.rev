@@ -278,4 +278,12 @@
     XDG_SESSION_TYPE to 'x11' (boo#1163262)</comment>
     <requestid>787767</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>122b277a26c6ce4af034e6782fabf6c3</srcmd5>
+    <version>1.4.1</version>
+    <time>1598642235</time>
+    <user>dimstar_suse</user>
+    <comment>- xinitrc: SuSE --&gt; SUSE (boo#1175123)</comment>
+    <requestid>828808</requestid>
+  </revision>
 </revisionlist>

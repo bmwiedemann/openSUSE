@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:55:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.46.1:
+  + Revert an unintentional PangoRenderer abi break in 1.46.0.
+  + Various small fixes.
+
+-------------------------------------------------------------------
+Tue Aug 11 12:11:55 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.46.0:
+  + Undo a recent change
+  + test-break: Add a legend
+  + test-break: Improve output
+  + Adjust "Since" tags to refer to 1.46
+- Changes from version 1.45.5:
+  + Fix g-i annotation of pango_parse_color_with_alpha and add since tag
+  + Bump the version
+  + tests: Add tests for pango_parse_color_with_alpha
+  + Export pango_parse_color_with_alpha
+  + pango-color: Tweak semantics of _pango_parse_color_with_alpha
+- Changes from version 1.45.4:
+  + testsuite: Don't use g_test_skip
+  + Add a reproducer for a pidgin crash
+  + layout: Avoid a crash with short strings
+  + Remove hb-glib use
+  + Fix a few memory leaks in tests
+  + Initialise out arguments
+  + pangocoretext: Fix Cairo scaling
+  + fcfontmap: Always reject unsupported font formats
+  + pango-attributes.c: Fix on older compilers
+
+-------------------------------------------------------------------
+Tue Jun 30 07:42:08 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.45.3:
+  + Fix pango_attr_list_change
+  + Fix crashes with empty attribute lists
+  + Fix several crashes in gtk2 applications
+  + Revert an unintentional introspection API change
+  + Include HarfBuzz when igenerating introspection data
+  + Undo PangoFontsetSimple deprecation
+  + Annotation fixes for various apis
+  + Add api to compare attribute lists
+  + Update data tables to Unicode 13.0
+  + Various test improvements
+  + Require GLib 2.60
+  + Some new font enumeration apis:
+    pango_font_map_get_family
+    pango_font_family_get_face
+    pango_font_face_get_family
+    pango_font_get_face
+  + Support for line-wide underlines
+  + Support for overlines
+
+-------------------------------------------------------------------
 Wed Nov 27 13:48:56 UTC 2019 - dimstar@opensuse.org
 
 - Update to version 1.44.7+11:

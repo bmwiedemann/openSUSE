@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 23 18:16:59 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- font-alias 1.0.4 and font-misc-ethiopic 1.0.4
+  * These minor maintenance releases roll up the past decade's
+    worth of fixes & cleanups.
+
+-------------------------------------------------------------------
 Mon Jun 29 13:57:51 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use ttf-converter 1.0.6 to build an  Italic version of

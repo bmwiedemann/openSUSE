@@ -54,7 +54,7 @@ Source18:       http://xorg.freedesktop.org/archive/individual/font/font-isas-mi
 Source19:       http://xorg.freedesktop.org/archive/individual/font/font-jis-misc-1.0.3.tar.bz2
 Source20:       http://xorg.freedesktop.org/archive/individual/font/font-micro-misc-1.0.3.tar.bz2
 Source21:       http://xorg.freedesktop.org/archive/individual/font/font-misc-cyrillic-1.0.3.tar.bz2
-Source22:       http://xorg.freedesktop.org/archive/individual/font/font-misc-ethiopic-1.0.3.tar.bz2
+Source22:       http://xorg.freedesktop.org/archive/individual/font/font-misc-ethiopic-1.0.4.tar.bz2
 Source23:       http://xorg.freedesktop.org/archive/individual/font/font-misc-meltho-1.0.3.tar.bz2
 Source24:       http://xorg.freedesktop.org/archive/individual/font/font-misc-misc-1.1.2.tar.bz2
 Source25:       http://xorg.freedesktop.org/archive/individual/font/font-mutt-misc-1.0.3.tar.bz2
@@ -68,7 +68,7 @@ Source32:       http://xorg.freedesktop.org/archive/individual/font/encodings-1.
 Source33:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-100dpi-1.0.4.tar.bz2
 Source34:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2
 Source35:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-type1-1.0.4.tar.bz2
-Source36:       http://xorg.freedesktop.org/archive/individual/font/font-alias-1.0.3.tar.bz2
+Source36:       http://xorg.freedesktop.org/archive/individual/font/font-alias-1.0.4.tar.bz2
 Source100:      README.converted
 %if "%{flavor}" == "converted"
 Source1000:     https://pwu.fedorapeople.org/fonts/convertbitmap/convertfont.py

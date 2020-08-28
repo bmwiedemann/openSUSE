@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 24 07:06:40 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version s20200821
+  https://github.com/iputils/iputils/releases/tag/s20200821
+- Remove BuildRequires libopenssl-devel (added md5 implementation thus not needed)
+- Remove patches from this release
+  (arping-revert-partially-fix-sent-vs-received-package.patch,
+  arping-fix-f-quit-on-first-reply-regression.patch)
+
+-------------------------------------------------------------------
 Fri Aug 14 14:18:41 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Remove 2 old patches (iputils-sec-ping-unblock.diff, iputils-ping-interrupt.diff)

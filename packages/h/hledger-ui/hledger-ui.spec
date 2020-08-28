@@ -65,7 +65,7 @@ of Ledger, and one of the leading implementations of Plain Text Accounting.
 Read more at: <https://hledger.org>.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %ghc_bin_build

@@ -1,7 +1,7 @@
 #
 # spec file for package pango
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.44.7+11
+Version:        1.46.1
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(cairo) >= 1.12.10
 BuildRequires:  pkgconfig(fontconfig) >= 2.11.91
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi) >= 0.19.7
-BuildRequires:  pkgconfig(glib-2.0) >= 2.59.2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.60
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.59.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 2.0
@@ -172,6 +172,8 @@ cp %{SOURCE2} %{buildroot}%_rpmmacrodir
 %{_libdir}/pkgconfig/pangocairo.pc
 %{_libdir}/pkgconfig/pangoft2.pc
 %{_libdir}/pkgconfig/pangoxft.pc
+%{_libdir}/pkgconfig/pangofc.pc
+%{_libdir}/pkgconfig/pangoot.pc
 %{_datadir}/gir-1.0/Pango-1.0.gir
 %{_datadir}/gir-1.0/PangoCairo-1.0.gir
 %{_datadir}/gir-1.0/PangoFT2-1.0.gir

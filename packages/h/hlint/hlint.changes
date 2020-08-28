@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 08:18:33 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:52 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Thu Jun 25 02:00:26 UTC 2020 - psimons@suse.com
 
 - Update hlint to version 3.1.6.

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 25 07:15:46 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (c0746a1beb1ba073c7981eb09f), git583.
+  * Fixes ABI breakage for as-base CDTORs of final classes.  [gcc#95428]
+
+-------------------------------------------------------------------
+Mon Aug 24 06:32:38 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (d523b5201cce1796717a8ca669), git580.
+  * Includes gcc10-streamer-backports1.patch and
+    gcc10-streamer-backports2.patch.
+  * Includes fixes for LTO ICE [bsc#1175168] and aarc64 128bit
+    CAS miscompilation [bsc#1174753].
+
+-------------------------------------------------------------------
 Wed Aug  5 12:08:32 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-10 branch head (dda1e9d08434def88ed86557d0), git501.

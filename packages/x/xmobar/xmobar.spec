@@ -19,7 +19,7 @@
 %global pkg_name xmobar
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.35.1
+Version:        0.36
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -93,7 +93,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{name} library development files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %define cabal_configure_options -fall_extensions

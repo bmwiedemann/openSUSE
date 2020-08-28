@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 20 21:51:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Fix regression in handling retry, enforce_for_root, and
+    local_users_only options introduced with the previous
+    release.
+
+-------------------------------------------------------------------
 Mon May 18 11:20:41 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Register with pam-config in %post(un)

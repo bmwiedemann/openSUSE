@@ -132,4 +132,12 @@
     <comment>- Register with pam-config in %post(un) (forwarded request 807113 from favogt)</comment>
     <requestid>807575</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5d8ac85951b1df989343d1e604b3b55d</srcmd5>
+    <version>1.4.2</version>
+    <time>1598642254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828874</requestid>
+  </revision>
 </revisionlist>

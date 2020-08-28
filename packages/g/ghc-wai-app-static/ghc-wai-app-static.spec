@@ -19,13 +19,12 @@
 %global pkg_name wai-app-static
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.7.1
+Version:        3.1.7.2
 Release:        0
 Summary:        WAI application for static serving
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-blaze-html-devel
@@ -75,8 +74,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build

@@ -168,7 +168,7 @@ Supplements:    (%{name} and bash-completion)
 Optional dependency offering bash completion for git-annex
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %define cabal_configure_options -ftestsuite

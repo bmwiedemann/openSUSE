@@ -87,7 +87,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{name} library development files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %define cabal_configure_options -fexecutable

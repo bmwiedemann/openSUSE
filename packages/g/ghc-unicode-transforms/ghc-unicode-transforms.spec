@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-unicode-transforms
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %global pkg_name unicode-transforms
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.6
+Version:        0.3.7
 Release:        0
 Summary:        Unicode normalization
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-bitarray-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
@@ -34,11 +33,12 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-getopt-generics-devel
+BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-split-devel
 %endif
 
 %description
-Fast Unicode 12.1.0 normalization in Haskell (NFC, NFKC, NFD, NFKD).
+Fast Unicode 13.0.0 normalization in Haskell (NFC, NFKC, NFD, NFKD).
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -52,7 +52,7 @@ This package provides the Haskell %{pkg_name} library development
 files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build

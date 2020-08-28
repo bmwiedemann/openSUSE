@@ -17,7 +17,7 @@
 
 
 Name:           iputils
-Version:        s20190709
+Version:        s20200821
 Release:        0
 Summary:        IPv4 and IPv6 Networking Utilities
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -25,14 +25,11 @@ Group:          Productivity/Networking/Other
 URL:            https://github.com/iputils/iputils
 Source0:        https://github.com/iputils/iputils/archive/%{version}.tar.gz
 Source1:        rarpd.service
-Patch3:         arping-revert-partially-fix-sent-vs-received-package.patch
-Patch4:         arping-fix-f-quit-on-first-reply-regression.patch
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  docbook_5
 BuildRequires:  iso_ent
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
-BuildRequires:  libopenssl-devel
 BuildRequires:  meson
 BuildRequires:  opensp
 BuildRequires:  perl-SGMLS

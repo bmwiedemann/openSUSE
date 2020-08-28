@@ -1,7 +1,7 @@
 #
 # spec file for package OpenIPMI
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,12 @@
 %endif
 
 Name:           OpenIPMI
-Version:        2.0.28
+Version:        2.0.29
 Release:        0
 Summary:        Service processor access via IPMI
 License:        LGPL-2.1-or-later
 Group:          System/Monitoring
-Url:            http://openipmi.sourceforge.net
+URL:            http://openipmi.sourceforge.net
 Source0:        http://prdownloads.sourceforge.net/openipmi/%{name}-%{version}.tar.gz
 Source1:        sysconfig.ipmi
 Source2:        ipmi.service

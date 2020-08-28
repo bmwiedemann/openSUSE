@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 10:16:31 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Wed Jan  1 11:09:16 UTC 2020 - psimons@suse.com
 
 - Revise cabal build file to specify more accurate dependencies.

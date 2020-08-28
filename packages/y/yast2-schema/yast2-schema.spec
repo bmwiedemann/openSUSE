@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.3.4
+Version:        4.3.5
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -70,7 +70,8 @@ BuildRequires:  yast2-printer
 BuildRequires:  yast2-proxy
 # registration is available only where suse connect is also available
 %ifnarch s390 %ix86
-BuildRequires:  yast2-registration
+# release_type element is not mandatory
+BuildRequires:  yast2-registration >= 4.3.8
 %endif
 # Package available for S390 only
 %ifarch s390 s390x

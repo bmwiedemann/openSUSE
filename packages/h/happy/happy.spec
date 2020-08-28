@@ -1,7 +1,7 @@
 #
 # spec file for package happy
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ Happy generates Haskell code to parse the grammar. Happy works in a similar way
 to the 'yacc' tool for C.
 
 %prep
-%setup -q
+%autosetup
 find . -type f -exec chmod -x {} +
 
 %build

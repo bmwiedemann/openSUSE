@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 23 15:38:01 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- xinitrc: SuSE --> SUSE (boo#1175123) 
+
+-------------------------------------------------------------------
 Tue Mar 24 11:41:07 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - /etc/X11/xinit/xinitrc.common  

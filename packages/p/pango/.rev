@@ -916,4 +916,56 @@
     <comment>Submit it now - this is the pango version I build-tested python-gtk against (forwarded request 751349 from dimstar)</comment>
     <requestid>751368</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>147a72d3909a6e6d97121f25996d1bdb</srcmd5>
+    <version>1.46.1</version>
+    <time>1598642299</time>
+    <user>dimstar_suse</user>
+    <comment>Not sure if the distro is ready for this one yet, but subbing anyway!
+
+- Update to version 1.46.1:
+  + Revert an unintentional PangoRenderer abi break in 1.46.0.
+  + Various small fixes.
+- Update to version 1.46.0:
+  + Undo a recent change
+  + test-break: Add a legend
+  + test-break: Improve output
+  + Adjust &quot;Since&quot; tags to refer to 1.46
+- Changes from version 1.45.5:
+  + Fix g-i annotation of pango_parse_color_with_alpha and add since tag
+  + Bump the version
+  + tests: Add tests for pango_parse_color_with_alpha
+  + Export pango_parse_color_with_alpha
+  + pango-color: Tweak semantics of _pango_parse_color_with_alpha
+- Changes from version 1.45.4:
+  + testsuite: Don't use g_test_skip
+  + Add a reproducer for a pidgin crash
+  + layout: Avoid a crash with short strings
+  + Remove hb-glib use
+  + Fix a few memory leaks in tests
+  + Initialise out arguments
+  + pangocoretext: Fix Cairo scaling
+  + fcfontmap: Always reject unsupported font formats
+  + pango-attributes.c: Fix on older compilers
+- Update to 1.45.3:
+  + Fix pango_attr_list_change
+  + Fix crashes with empty attribute lists
+  + Fix several crashes in gtk2 applications
+  + Revert an unintentional introspection API change
+  + Include HarfBuzz when igenerating introspection data
+  + Undo PangoFontsetSimple deprecation
+  + Annotation fixes for various apis
+  + Add api to compare attribute lists
+  + Update data tables to Unicode 13.0
+  + Various test improvements
+  + Require GLib 2.60
+  + Some new font enumeration apis:
+    pango_font_map_get_family
+    pango_font_family_get_face
+    pango_font_face_get_family
+    pango_font_get_face
+  + Support for line-wide underlines
+  + Support for overlines (forwarded request 828263 from iznogood)</comment>
+    <requestid>828949</requestid>
+  </revision>
 </revisionlist>

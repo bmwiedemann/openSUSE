@@ -86,7 +86,7 @@ annual interest rates. > syntax: '[(Date1,Rate1),(Date2,Rate2),...]' >
 German BGB288.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %ghc_bin_build

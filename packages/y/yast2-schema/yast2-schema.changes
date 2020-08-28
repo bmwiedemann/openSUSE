@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 24 11:38:34 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Element 'release_type' is not mandatory (bsc#1175682).
+- 4.3.5
+
+-------------------------------------------------------------------
 Tue Jul 28 14:07:48 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the schema definition for the add_on_products and

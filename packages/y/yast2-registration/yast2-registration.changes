@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 24 11:31:58 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: the release_type element is not mandatory
+  (bsc#1175682).
+- 4.3.8
+
+-------------------------------------------------------------------
 Thu Aug 13 11:24:33 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Improved skipping message in the first boot mode, the first boot

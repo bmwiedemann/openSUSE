@@ -19,7 +19,7 @@
 %global pkg_name yaml
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.11.4.0
+Version:        0.11.5.0
 Release:        0
 Summary:        Support for parsing and rendering YAML documents
 License:        BSD-3-Clause
@@ -67,7 +67,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build

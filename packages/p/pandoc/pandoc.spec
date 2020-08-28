@@ -139,7 +139,10 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{name} library development files.
 
 %prep
-%setup -q
+%autosetup
+cabal-tweak-dep-ver base64-bytestring '< 1.2' '< 2'
+cabal-tweak-dep-ver hslua '< 1.2' '< 2'
+cabal-tweak-dep-ver hslua-module-text '< 0.3' '< 1'
 
 %build
 %ghc_lib_build
