@@ -1,0 +1,64 @@
+From 9c60785e8aa4d38174a5bbdb071d40658b4b6027 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 15 Jul 2020 10:09:31 +0200
+Subject: [PATCH] Disable some plugins
+
+- The updateinfo plugin only works when
+using the installer
+
+- The clangformat plugin requires a clang patch
+which was never accepted upstream [1]
+
+- The qlitehtml plugin causes installation issues.
+The documentation can already be browsed using
+either QtWebEngine or QTextBrowser.
+
+[1] https://reviews.llvm.org/D53072
+---
+ src/plugins/CMakeLists.txt      | 2 --
+ src/plugins/help/CMakeLists.txt | 9 ---------
+ 2 files changed, 11 deletions(-)
+
+diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
+index 70f8f420..300b1bc9 100644
+--- a/src/plugins/CMakeLists.txt
++++ b/src/plugins/CMakeLists.txt
+@@ -7,7 +7,6 @@ add_subdirectory(serialterminal)
+ add_subdirectory(helloworld)
+ add_subdirectory(imageviewer)
+ add_subdirectory(marketplace)
+-add_subdirectory(updateinfo)
+ add_subdirectory(welcome)
+ 
+ # Level 2: (only depends on Level 1 and below)
+@@ -41,7 +40,6 @@ add_subdirectory(vcsbase)
+ # Level 5:
+ add_subdirectory(bazaar)
+ add_subdirectory(beautifier)
+-add_subdirectory(clangformat)
+ add_subdirectory(clangrefactoring)
+ add_subdirectory(clearcase)
+ add_subdirectory(cmakeprojectmanager)
+diff --git a/src/plugins/help/CMakeLists.txt b/src/plugins/help/CMakeLists.txt
+index 4d5fd232..64f8bd4e 100644
+--- a/src/plugins/help/CMakeLists.txt
++++ b/src/plugins/help/CMakeLists.txt
+@@ -52,15 +52,6 @@ extend_qtc_plugin(Help
+     webenginehelpviewer.h
+ )
+ 
+-if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/qlitehtml/litehtml/CMakeLists.txt)
+-  add_subdirectory(qlitehtml)
+-else()
+-  find_package(litehtml QUIET)
+-  if (TARGET litehtml)
+-    add_subdirectory(qlitehtml)
+-  endif()
+-endif()
+-
+ extend_qtc_plugin(Help
+   CONDITION TARGET litehtml AND TARGET qlitehtml
+   FEATURE_INFO "litehtml help viewer"
+-- 
+2.27.0
+

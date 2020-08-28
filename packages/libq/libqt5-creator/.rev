@@ -777,4 +777,13 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
   * Fixed persistence of license template setting (forwarded request 811670 from cgiboudeaux)</comment>
     <requestid>812944</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>6e8b2e47697e167ec9d656d3f6870bc2</srcmd5>
+    <version>4.13.0</version>
+    <time>1598642368</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.13.0
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.13.0.md (forwarded request 829981 from cgiboudeaux)</comment>
+    <requestid>829987</requestid>
+  </revision>
 </revisionlist>

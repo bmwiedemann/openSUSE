@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Aug 27 11:10:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.13.0
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.13.0.md
+
+-------------------------------------------------------------------
+Thu Aug  6 07:37:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.13.0-beta2
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.13.0.md
+- Drop 0001-Fix-build-with-yaml-cpp-installed-and-CMake-3.11.patch
+  Merged upstream
+
+-------------------------------------------------------------------
+Tue Jul 14 12:39:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.13.0-beta1
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.13.0.md
+- Use CMake for building qt-creator
+- Update 0001-Fix-build-with-openSUSE-clang9-package.patch
+- Add 0001-Disable-some-plugins.patch to disable building of three plugins:
+  * updateinfo works when using the Qt installer
+  * clangformat requires a Clang patch which was never accepted
+    upstream
+  * qlitehtml has installation issues.
+- Add patch to fix build with CMake < 3.11:
+  * 0001-Fix-build-with-yaml-cpp-installed-and-CMake-3.11.patch
+
+-------------------------------------------------------------------
 Fri Jun  5 06:13:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable LTO. This is causing a build error.
