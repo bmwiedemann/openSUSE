@@ -30,4 +30,16 @@
     <comment>1</comment>
     <requestid>417225</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>539cf5f66b61d36ebd30d9121f2616f3</srcmd5>
+    <version>0.2.4</version>
+    <time>1598651124</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the compilation to actually work
+
+- update to 0.2.4:
+  * Tests: Fix memory leak
+  * Tests: Fix read before start of unused expected buffer</comment>
+    <requestid>829747</requestid>
+  </revision>
 </revisionlist>
