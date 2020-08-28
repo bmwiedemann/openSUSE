@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:45:24 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Sat Aug 15 02:02:15 UTC 2020 - psimons@suse.com
+
+- Update math-functions to version 0.3.4.1.
+  ## Changes in 0.3.4.1
+
+    * Precision of `incompleteGamma` improved.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:10:52 UTC 2020 - psimons@suse.com
 
 - Update math-functions to version 0.3.4.0.
