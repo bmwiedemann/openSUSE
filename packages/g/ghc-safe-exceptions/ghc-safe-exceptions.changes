@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 24 02:00:43 UTC 2020 - psimons@suse.com
+
+- Update safe-exceptions to version 0.1.7.1.
+  # ChangeLog for safe-exceptions
+
+  ## 0.1.7.1
+
+  * Doc update
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:56 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Tue Jun  9 10:27:04 UTC 2020 - psimons@suse.com
 
 - Add safe-exceptions at version 0.1.7.0.
