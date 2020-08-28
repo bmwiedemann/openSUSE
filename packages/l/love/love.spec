@@ -18,14 +18,13 @@
 
 %bcond_without mpg123
 Name:           love
-Version:        11.2
+Version:        11.3
 Release:        0
 Summary:        2D gaming engine written in Lua
 License:        Zlib
 Group:          Development/Languages/Other
 URL:            http://love2d.org/
-Source:         https://bitbucket.org/rude/love/downloads/%{name}-%{version}-linux-src.tar.gz
-Patch0:         love-11.2-return.patch
+Source:         https://github.com/love2d/love/releases/download/%{version}/love-%{version}-linux-src.tar.gz
 Patch1:         remove-duplicate-typedef.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -57,7 +56,6 @@ LÖVE is a framework for making 2D games in Lua.
 
 %prep
 %setup -q
-%patch0 -p1
 %if %{__isa_bits} == 32
 %patch1 -p1
 %endif
