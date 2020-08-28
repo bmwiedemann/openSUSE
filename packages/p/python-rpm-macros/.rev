@@ -350,4 +350,14 @@ prerequisite for new python submission</comment>
   * fix unittest macros</comment>
     <requestid>824570</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f51120306c9d17dc02b416fc06f5c04a</srcmd5>
+    <version>20200824.8fa42a7</version>
+    <time>1598642196</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200824.8fa42a7:
+  * Drop -v from the pyunittest macros
+</comment>
+    <requestid>828863</requestid>
+  </revision>
 </revisionlist>
