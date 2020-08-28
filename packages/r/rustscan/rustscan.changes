@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sun Aug  9 13:27:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  Features
+  * New terminal user interface. Much prettier and easier to read
+  * Port randomisation (so it's not a sequential hit of multiple
+    ports)
+  Maintenance
+  * Created macros to easily report information back to the user
+  * Reduced size of error messages (boy were they long smirk_cat )
+  * More tests
+- Update to version 1.6.0
+  * Added multiple IP support. This is in extremely early stage,
+    but it works.
+  Maintenance
+  * Fixed help menu bugs and quiet mode not working bugs.
+
+-------------------------------------------------------------------
+Tue Aug  4 17:31:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.2
+  * Added --appdirs flag to find the appdirs location.
+  * Refactored batch size to fix #58.
+  * Fixed bug where appdirs wasn't pointing to the complete
+    directory.
+  * Fixed bug where automatic ulimit lowering wasn't working on
+    systems with extremely low ulimits (< 250).
+
+-------------------------------------------------------------------
+Sat Aug  1 16:13:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.4.0
