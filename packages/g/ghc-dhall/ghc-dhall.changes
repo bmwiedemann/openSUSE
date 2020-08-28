@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:59:20 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:38 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Aug 18 09:43:56 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Tweak Cabal file to accept latest version of optparse-applicative.
+
+-------------------------------------------------------------------
 Mon Aug 13 10:37:00 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Relax overspecified dependency on ansi-terminal.

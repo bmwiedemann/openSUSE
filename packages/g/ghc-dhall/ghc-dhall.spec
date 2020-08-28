@@ -117,10 +117,11 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
 cabal-tweak-dep-ver prettyprinter '< 1.7' '< 2'
 cabal-tweak-dep-ver ansi-terminal '< 0.11' '< 1'
+cabal-tweak-dep-ver optparse-applicative '< 0.16' '< 1'
 
 %build
 %ghc_lib_build
