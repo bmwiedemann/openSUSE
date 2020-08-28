@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:44:31 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Mon Jun 22 02:00:23 UTC 2020 - psimons@suse.com
 
 - Update cryptonite to version 0.27.
