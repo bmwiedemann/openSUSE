@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 24 19:59:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.8.0:
+  This release is just for bug fixing. 
+
+- remove m17n-lib-1.7.0-fix-crash-in-marathi-transliteration.patch,
+  m17n-lib-fix-warnings.diff: upstream
+
+-------------------------------------------------------------------
 Sat Aug 12 16:17:23 UTC 2017 - jengelh@inai.de
 
 - Fix RPM groups.
