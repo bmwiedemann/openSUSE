@@ -25,7 +25,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://www.colm.net/open-source/colm/
 
-#Git-Clone:     git://colm.net/colm
+#Git-Clone:     https://github.com/adrian-thurston/colm
 Source:         https://www.colm.net/files/colm/%name-%version.tar.gz
 Patch1:         shadow.diff
 Patch2:         reproducible.diff
@@ -91,19 +91,16 @@ rm -f "$b/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libcolm*-0.13*.so
 
 %files devel
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %_bindir/colm
 %_includedir/*
 %_libdir/libcolm.so
 %_datadir/vim/
 
 %files doc
-%defattr(-,root,root)
 %_docdir/%name/
 
 %changelog

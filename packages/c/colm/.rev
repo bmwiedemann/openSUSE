@@ -48,4 +48,12 @@
     <comment>- Add reproducible.diff</comment>
     <requestid>799165</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>63813116a672ad0ea0fa3eb1a0ccc5e7</srcmd5>
+    <version>0.13.0.7</version>
+    <time>1598651120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Git URL. Trim old specfile constructs.</comment>
+    <requestid>829734</requestid>
+  </revision>
 </revisionlist>
