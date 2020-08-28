@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug 22 02:01:49 UTC 2020 - psimons@suse.com
+
+- Update extra to version 1.7.6.
+  1.7.6, released 2020-08-21
+      #66, add lots of functions to Data.Foldable.Extra (anyM etc)
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:48 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Thu Aug 13 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update extra to version 1.7.5.
+  1.7.5, released 2020-08-12
+      #65, add Data.Foldable.Extra
+      #65, add sum', product', sumOn' and productOn'
+
+-------------------------------------------------------------------
 Thu Jul 16 02:00:23 UTC 2020 - psimons@suse.com
 
 - Update extra to version 1.7.4.

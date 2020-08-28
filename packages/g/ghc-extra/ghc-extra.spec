@@ -19,7 +19,7 @@
 %global pkg_name extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.4
+Version:        1.7.6
 Release:        0
 Summary:        Extra functions I use
 License:        BSD-3-Clause
@@ -60,7 +60,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
