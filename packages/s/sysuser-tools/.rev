@@ -71,4 +71,13 @@
     <comment></comment>
     <requestid>788122</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>4ec21ae57814f0ad1e09c6f0cb5aea7a</srcmd5>
+    <version>3.0</version>
+    <time>1598651068</time>
+    <user>dimstar_suse</user>
+    <comment>- Packages providing users need /usr/bin/cat installed to create
+  them. Add that to the PreRequires. (forwarded request 828539 from kukuk)</comment>
+    <requestid>828540</requestid>
+  </revision>
 </revisionlist>

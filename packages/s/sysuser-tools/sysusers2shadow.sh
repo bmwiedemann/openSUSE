@@ -58,7 +58,7 @@ do
 				run /usr/sbin/useradd -r -s /sbin/nologin -c "$3" -d "${homedir}" $ARGUMENTS
 			fi
 		elif [ -x "$busybox" ]; then
-			/usr/bin/getent group "$1" >> /dev/null || $busybox addgroup "$1"
+			/usr/bin/getent group "$1" >> /dev/null || $busybox addgroup -S "$1"
 
 			if ! /usr/bin/getent passwd "$1" >> /dev/null; then
 				run $busybox adduser -S -H -s /sbin/nologin -g "$3" -G "$1" -h "${homedir}" $ARGUMENTS

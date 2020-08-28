@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 21 15:09:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Packages providing users need /usr/bin/cat installed to create
+  them. Add that to the PreRequires.
+
+-------------------------------------------------------------------
+Fri Aug 21 12:43:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create system groups for system users
+
+-------------------------------------------------------------------
 Wed Mar 25 07:53:55 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Fix bug introduced by simplification of check for useradd -g
