@@ -1,4 +1,4 @@
-From 4e3cbf84fa999d4c7ff380639e788dd0c6b42f44 Mon Sep 17 00:00:00 2001
+From df0ce1039f881c35bdc78ce91d1944be5384b593 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 14 Jan 2020 14:20:40 +0100
 Subject: [PATCH 2/3] Don't install pandoc and mathjax
@@ -50,5 +50,5 @@ index 31d0ee2227..4739b4068a 100644
     install(DIRECTORY "resources/pdfjs"
             DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
 -- 
-2.27.0
+2.28.0
 

@@ -85,9 +85,9 @@
 
 %global rstudio_version_major 1
 %global rstudio_version_minor 3
-%global rstudio_version_patch 1056
+%global rstudio_version_patch 1073
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash 5a4dee980c998d9a270a83b582b367126f3914cf
+%global rstudio_git_revision_hash 718e6d75b094658d999495534badf55fb2ce0047
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
@@ -149,7 +149,6 @@ BuildRequires:  libboost_thread-devel          >= 1.69
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  make
 BuildRequires:  mathjax
-BuildRequires:  memory-constraints
 BuildRequires:  pam-devel
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
@@ -272,7 +271,6 @@ sed -i 's@gwt_build ALL@gwt_build@g' src/gwt/CMakeLists.txt
 %build
 %sysusers_generate_pre %{SOURCE4} %{name}-server
 
-%limit_build -m 1500
 export RSTUDIO_VERSION_MAJOR=%{rstudio_version_major}
 export RSTUDIO_VERSION_MINOR=%{rstudio_version_minor}
 export RSTUDIO_VERSION_PATCH=%{rstudio_version_patch}
