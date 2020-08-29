@@ -1,6 +1,7 @@
 #
 # spec file for package jpnevulator
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           jpnevulator
-Version:        2.3.4
+Version:        2.3.6
 Release:        0
 Summary:        Serial Sniffer
 License:        GPL-2.0-only
@@ -25,7 +26,6 @@ Group:          Hardware/Modem
 URL:            http://jpnevulator.snarl.nl/
 #Git-Clone:     https://github.com/snarlistic/jpnevulator
 Source:         https://github.com/snarlistic/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         jpnevulator-obey-cflags.patch
 
 %description
 jpnevulator is a serial sniffer. It can be used to send data on a
@@ -43,7 +43,6 @@ way the data is displayed.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
