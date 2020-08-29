@@ -1,4 +1,3 @@
-# TODO: find out if all that nodejs stuff is needed
 addFilter("hidden-file-or-dir.*components")
 addFilter("script-without-shebang.*components")
 addFilter("non-executable-script.*components")
