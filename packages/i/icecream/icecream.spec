@@ -101,8 +101,8 @@ make %{?_smp_mflags} V=1
 %make_install templatesdir=%{_fillupdir}
 # firewalld instead of SuSEfirewall2
 rm -R %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d
-install -m644 -p -D %{SOURCE1} %{buildroot}%{_libexecdir}/firewalld/services/iceccd.xml
-install -m644 -p -D %{SOURCE4} %{buildroot}%{_libexecdir}/firewalld/services/icecc-scheduler.xml
+install -m644 -p -D %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/iceccd.xml
+install -m644 -p -D %{SOURCE4} %{buildroot}%{_prefix}/lib/firewalld/services/icecc-scheduler.xml
 # unit files and wrappers
 install -m644 -p -D %{SOURCE2} %{buildroot}%{_unitdir}/iceccd.service
 install -m755 -p -D %{SOURCE3} %{buildroot}%{_libexecdir}/icecc/iceccd-wrapper
@@ -169,9 +169,9 @@ fi
 %{_libexecdir}/icecc
 %exclude %{_libexecdir}/icecc/bin/clang
 %exclude %{_libexecdir}/icecc/bin/clang++
-%dir %{_libexecdir}/firewalld/
-%dir %{_libexecdir}/firewalld/services/
-%{_libexecdir}/firewalld/services/icecc*.xml
+%dir %{_prefix}/lib/firewalld/
+%dir %{_prefix}/lib/firewalld/services/
+%{_prefix}/lib/firewalld/services/icecc*.xml
 %{_unitdir}/icecc*.service
 %{_tmpfilesdir}/icecream.conf
 %if 0%{?suse_version}
