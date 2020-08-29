@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 25 08:27:52 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.4.1
+  * Fix numpy error ``ValueError: Seed must be between 0 and 2**32 - 1`` when
+    passed a seed outside of this range.
+- Add upstream patch pytest6.patch to fix tests
+
+-------------------------------------------------------------------
 Tue Jun  9 07:47:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.4.0:

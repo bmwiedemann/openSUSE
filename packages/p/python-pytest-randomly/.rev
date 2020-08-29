@@ -84,4 +84,12 @@
   * Provide a faker_seed fixture to set the seed for tests using faker's pytest fixtures (as per its docs).</comment>
     <requestid>812812</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>41237bd2997853e3ec5bdfbe48220e9c</srcmd5>
+    <version>3.4.1</version>
+    <time>1598725902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829136</requestid>
+  </revision>
 </revisionlist>
