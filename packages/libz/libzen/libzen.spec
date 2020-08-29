@@ -1,7 +1,7 @@
 #
 # spec file for package libzen
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover	0
 Name:           libzen
-Version:        0.4.37
+Version:        0.4.38
 Release:        0
 Summary:        C++ utility library
 License:        Zlib
 Group:          Development/Libraries/C and C++
-Url:            http://zenlib.sourceforge.net/
+URL:            http://zenlib.sourceforge.net/
 Source:         https://mediaarea.net/download/source/%{name}/%{version}/%{name}_%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  doxygen
