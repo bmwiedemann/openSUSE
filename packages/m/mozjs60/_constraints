@@ -11,4 +11,16 @@
       <size unit="M">1300</size>
     </memoryperjob>
   </hardware>
+  <overwrite>
+    <conditions>
+    <arch>ppc</arch>
+    <arch>ppc64</arch>
+    <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <memoryperjob>
+        <size unit="M">0</size>
+      </memoryperjob>
+    </hardware>
+  </overwrite>
 </constraints>

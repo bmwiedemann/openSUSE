@@ -75,6 +75,9 @@ BuildRequires:  pkgconfig(zlib)
 %if %{with system_icu}
 BuildRequires:  pkgconfig(icu-i18n)
 %endif
+%ifarch ppc ppc64 ppc64le
+BuildRequires:  memory-constraints
+%endif
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions
@@ -189,6 +192,9 @@ cd build_OPT.OBJ
     --disable-jemalloc \
 
 # do not eat all memory
+%ifarch ppc ppc64 ppc64le
+%limit_build -m 1300
+%endif
 
 %make_build
 
