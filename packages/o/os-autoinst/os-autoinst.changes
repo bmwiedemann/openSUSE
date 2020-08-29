@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:34:20 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1598452450.166a4d00:
+  * Write command server code in a more compact way
+  * Improve logging in command server
+  * spec file: Pass %{_unitdir} to CMake build script
+  * spec file: Do not abuse %{_libexecdir} for '/usr/lib'
+  * Improve error handling of Git utilities
+  * Pass the error message as reason if isotovideo fails
+
+-------------------------------------------------------------------
 Sun Aug 23 03:26:20 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1598002649.7e971f2c:
