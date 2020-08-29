@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 24 22:06:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.1
+  * Fixed a bug causing FANS1/A ErrorInformation message elements
+    to be decoded incorrectly.
+
+-------------------------------------------------------------------
 Tue Apr  7 12:24:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rename acars-examples to acars2-examples, conflicting with
