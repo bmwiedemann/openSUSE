@@ -31,7 +31,7 @@
   boo#1162853: '20200312'
   boo#1163655: '20200218'
   boo#1163766: '20200414'
-  boo#1164313: '20200825'
+  boo#1164313: '20200826'
   boo#1166657: '20200405'
   boo#1167245: '20200327'
   boo#1167332: '20200319'
@@ -41,7 +41,7 @@
   boo#1168371: '20200331'
   boo#1168629: '20200415'
   boo#1168849: '20200428'
-  boo#1169797: '20200825'
+  boo#1169797: '20200826'
   boo#1169855: '20200814'
   boo#1169874: '20200501'
   boo#1170553: '20200511'
@@ -76,13 +76,14 @@
   boo#1174499: '20200728'
   boo#1174680: '20200826'
   boo#1174797: '20200805'
-  boo#1175108: '20200824'
+  boo#1175108: '20200826'
   boo#1175238: '20200826'
   boo#1175308: '20200818'
   boo#1175317: '20200826'
   boo#1175425: '20200817'
   boo#1175674: '20200826'
   boo#1175903: '20200826'
+  boo#1175907: '20200826'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
   bsc#1170555: '20200427'
@@ -148,7 +149,7 @@
   poo#66331: '20200710'
   poo#66373: '20200502'
   poo#66580: '20200627'
-  poo#66784: '20200825'
+  poo#66784: '20200826'
   poo#66967: '20200802'
   poo#67183: '20200622'
   poo#67216: '20200526'
@@ -161,11 +162,11 @@
   poo#68116: '20200813'
   poo#68522: '20200708'
   poo#68818: '20200825'
-  poo#69373: '20200824'
+  poo#69373: '20200826'
   poo#69475: '20200824'
   poo#69508: '20200817'
   poo#69679: '20200826'
-  poo#69688: '20200824'
+  poo#69688: '20200826'
   poo#69703: '20200806'
   poo#69706: '20200806'
   poo#69709: '20200806'
@@ -173,8 +174,8 @@
   poo#69994: '20200825'
   poo#70090: '20200823'
   poo#70231: '20200826'
-  poo#70336: '20200825'
-  poo#70387: '20200825'
+  poo#70336: '20200826'
+  poo#70387: '20200826'
   poo#70597: '20200826'
 </value>
   </attribute>
@@ -219,7 +220,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20200826</value>
+    <value>20200828</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -400,9 +401,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20200826'
-published: '20200824'
-publishing: '20200824'
+    <value>failed: ''
+published: '20200826'
+publishing: '20200826'
 testing: '20200826'
 </value>
   </attribute>
