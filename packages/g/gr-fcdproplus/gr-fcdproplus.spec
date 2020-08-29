@@ -1,7 +1,7 @@
 #
 # spec file for package gr-fcdproplus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname libgnuradio-fcdproplus
 %define sover 3_8_0
 Name:           gr-fcdproplus
-Version:        3.8~git.20190817
+Version:        3.8~git.20200811
 Release:        0
 Summary:        Fcdproplus Linux addon for gnuradio
 License:        GPL-3.0-only
@@ -40,6 +40,7 @@ BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
+BuildRequires:  libhidapi-devel
 BuildRequires:  libmpir-devel
 BuildRequires:  orc
 BuildRequires:  pkgconfig

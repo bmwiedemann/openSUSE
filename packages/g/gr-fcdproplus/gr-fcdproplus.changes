@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 28 18:57:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Fix _service file
+
+-------------------------------------------------------------------
+Wed Aug 26 13:44:21 UTC 2020 - matwey.kornilov@gmail.com
+
+- Do not use bundled libhidapi library (Requires: libhidapi-devel)
+- Update to version 3.8~git.20200811:
+  * Fixed compilation with boost-1.73.0
+  * Update README.md
+
+-------------------------------------------------------------------
 Thu Sep 19 01:03:23 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.8~git.20190817:
