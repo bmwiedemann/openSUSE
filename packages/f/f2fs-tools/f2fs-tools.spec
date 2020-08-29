@@ -1,7 +1,7 @@
 #
 # spec file for package f2fs-tools
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           f2fs-tools
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Utilities for the Flash-friendly Filesystem (F2FS)
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -34,25 +34,24 @@ BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(uuid)
 Supplements:    filesystem(f2fs)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Utilities needed to create and maintain so-called Flash-Friendly (F2)
 filesystems.
 
-%package -n libf2fs7
+%package -n libf2fs8
 Summary:        Library to manipulate F2 filesystems
 Group:          System/Libraries
 
-%description -n libf2fs7
+%description -n libf2fs8
 This package contains a shared library used for manipulation of F2
 filesystems.
 
-%package -n libf2fs_format6
+%package -n libf2fs_format7
 Summary:        Library to create F2 filesystems
 Group:          System/Libraries
 
-%description -n libf2fs_format6
+%description -n libf2fs_format7
 This package contains a shared library to format F2 filesystems.
 
 %package compat
@@ -67,15 +66,14 @@ needed for programs that assume these locations.
 %package devel
 Summary:        Development files for f2fs
 Group:          Development/Languages/C and C++
-Requires:       libf2fs7 = %version
-Requires:       libf2fs_format6 = %version
+Requires:       libf2fs8 = %version
+Requires:       libf2fs_format7 = %version
 
 %description devel
 This package contains development files for %name.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -93,20 +91,20 @@ ln -sf "%_sbindir"/{defrag.f2fs,dump.f2fs,f2fstat,fibmap.f2fs,fsck.f2fs,mkfs.f2f
 cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
 	"%buildroot/%_includedir/"
 
-%post   -n libf2fs7 -p /sbin/ldconfig
-%postun -n libf2fs7 -p /sbin/ldconfig
-%post   -n libf2fs_format6 -p /sbin/ldconfig
-%postun -n libf2fs_format6 -p /sbin/ldconfig
+%post   -n libf2fs8 -p /sbin/ldconfig
+%postun -n libf2fs8 -p /sbin/ldconfig
+%post   -n libf2fs_format7 -p /sbin/ldconfig
+%postun -n libf2fs_format7 -p /sbin/ldconfig
 
 %files
 %license COPYING
 %_sbindir/*
 %_mandir/man8/*
 
-%files -n libf2fs7
+%files -n libf2fs8
 %_libdir/libf2fs.so.*
 
-%files -n libf2fs_format6
+%files -n libf2fs_format7
 %_libdir/libf2fs_format.so.*
 
 %files compat

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 26 13:41:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14
+  * f2fs_io: add copy command
+  * fsck: Check fsync data always for zoned block devices
+  * fsck: Check write pointer consistency of open zones
+  * fsck: Check write pointer consistency of non-open zones
+  * fsck.f2fs: Enable user-space cache
+  * f2fs-tools: support data compression
+  * dump.f2fs: print more info of inode layout
+  * resize.f2fs: add option for large_nat_bitmap feature
+  * f2fs-tools: Casefolded Encryption support
+  * mkfs.f2fs: allow setting volume UUID manually
+  * f2fs-tools: zns zone-capacity support
+  * mkfs.f2fs: add -T flag
+  * mkfs.f2fs: add -r (fake_seed) flag
+
+-------------------------------------------------------------------
 Mon Dec 16 23:10:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.13
