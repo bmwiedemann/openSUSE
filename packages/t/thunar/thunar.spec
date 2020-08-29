@@ -173,7 +173,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %dir %{_libexecdir}/Thunar
 %{_libexecdir}/Thunar/ThunarBulkRename
 %{_libexecdir}/Thunar/thunar-sendto-email
-%{_libexecdir}/systemd/user/thunar.service
+%{_userunitdir}/thunar.service
 %{_libdir}/thunarx-3
 %{_libdir}/xfce4/panel/plugins/libthunar-tpa.so
 %{_datadir}/Thunar
