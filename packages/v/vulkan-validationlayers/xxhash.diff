@@ -1,0 +1,43 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-08-29 10:10:12.022296526 +0200
+
+Avoid the installation of a custom xxhash.h header. Since vk_*.h header files
+still include xxhash.h (and now would source the system xxhash instead of the
+bundled one), it makes sense to build ValidationLayers itself with the system
+xxhash as well, so that the ABI matches.
+
+---
+ layers/CMakeLists.txt |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+Index: Vulkan-ValidationLayers/layers/CMakeLists.txt
+===================================================================
+--- Vulkan-ValidationLayers.orig/layers/CMakeLists.txt
++++ Vulkan-ValidationLayers/layers/CMakeLists.txt
+@@ -61,8 +61,6 @@ if(BUILD_LAYER_SUPPORT_FILES)
+         vk_layer_utils.h
+         vk_layer_utils.cpp
+         vk_loader_platform.h
+-        xxhash.h
+-        xxhash.c
+         generated/vk_validation_error_messages.h
+         generated/vk_layer_dispatch_table.h
+         generated/vk_dispatch_table_helper.h
+@@ -195,7 +193,7 @@ set(CORE_VALIDATION_LIBRARY_FILES
+     shader_validation.cpp
+     shader_validation.h
+     gpu_validation.cpp
+-    xxhash.c)
++)
+ 
+ set(OBJECT_LIFETIMES_LIBRARY_FILES
+     generated/object_tracker.cpp
+@@ -253,7 +251,7 @@ if(BUILD_LAYERS)
+     target_include_directories(VkLayer_khronos_validation PRIVATE ${GLSLANG_SPIRV_INCLUDE_DIR})
+     target_include_directories(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_INCLUDE_DIR})
+     target_include_directories(VkLayer_khronos_validation PRIVATE ${SPIRV_HEADERS_INCLUDE_DIR})
+-    target_link_libraries(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_LIBRARIES})
++    target_link_libraries(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_LIBRARIES} -lxxhash)
+ 
+     # The output file needs Unix "/" separators or Windows "\" separators On top of that, Windows separators actually need to be doubled
+     # because the json format uses backslash escapes

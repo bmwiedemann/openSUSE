@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug 29 08:12:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add xxhash.diff.
+
+-------------------------------------------------------------------
+Thu Aug 20 16:08:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.151
+  * Add renderpass compat checks for FDM and Multiview use
+  * Add vkCmdResolveImage size VUIDs
+
+-------------------------------------------------------------------
+Thu Aug 20 09:09:54 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
+Wed Aug 19 11:24:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Produce and install support header files [boo#1175024]
+- Add ver.diff
+
+-------------------------------------------------------------------
 Sun Aug  9 10:10:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.148

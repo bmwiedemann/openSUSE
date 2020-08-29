@@ -1,0 +1,27 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-08-19 13:21:33.156157310 +0200
+
+We do not want static archives in openSUSE, so need to turn on SHARED mode.
+As a result, a version needs to be added.
+---
+ CMakeLists.txt |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: Vulkan-ValidationLayers-1.2.148/CMakeLists.txt
+===================================================================
+--- Vulkan-ValidationLayers-1.2.148.orig/CMakeLists.txt
++++ Vulkan-ValidationLayers-1.2.148/CMakeLists.txt
+@@ -320,11 +320,12 @@ set(SCRIPTS_DIR "${PROJECT_SOURCE_DIR}/s
+ # files directly in layers.
+ 
+ add_library(VkLayer_utils
+-            STATIC
++            SHARED
+             layers/vk_layer_config.cpp
+             layers/vk_layer_extension_utils.cpp
+             layers/vk_layer_utils.cpp
+             layers/vk_format_utils.cpp)
++set_target_properties(VkLayer_utils PROPERTIES OUTPUT_NAME "VkLayer_utils-@PACKAGE_VERSION@")
+ target_link_libraries(VkLayer_utils PUBLIC Vulkan::Headers)
+ if(WIN32)
+     target_compile_definitions(VkLayer_utils PUBLIC _CRT_SECURE_NO_WARNINGS)
