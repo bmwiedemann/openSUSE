@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 26 06:30:00 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Move quassel.pid from /var/run to /run
+
+-------------------------------------------------------------------
 Mon Jan 27 10:50:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.14:

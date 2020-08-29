@@ -6,7 +6,7 @@ After=mysql.service
 
 [Service]
 EnvironmentFile=-/etc/sysconfig/quasselcore
-PIDFile=/var/run/quassel.pid
+PIDFile=/run/quassel.pid
 User=quasselcore
 ExecStart=/usr/bin/quasselcore --listen=${QUASSELCORE_LISTEN} --port=${QUASSELCORE_PORT} --configdir=/var/lib/quasselcore --logfile=/var/log/quassel/quasselcore
 
