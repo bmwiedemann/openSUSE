@@ -1,7 +1,7 @@
 #
 # spec file for package sbd
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Lars Marowsky-Bree
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,13 +22,23 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+%ifarch s390x s390
+# minimum timeout on LPAR diag288 watchdog is 15s
+%global watchdog_timeout_default 15
+%else
+%global watchdog_timeout_default 5
+%endif
+
+%global sync_resource_startup_default no
+%global sync_resource_startup_sysconfig no
+
 Name:           sbd
-Version:        1.4.1+20200113.4b617a1
+Version:        1.4.1+20200819.4a02ef2
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
-Url:            https://github.com/ClusterLabs/sbd
+URL:            https://github.com/ClusterLabs/sbd
 Source:         %{name}-%{version}.tar.xz
 Patch1:         bsc#1140065-Fix-sbd-cluster-exit-if-cmap-is-disconnected.patch
 BuildRequires:  autoconf
@@ -64,15 +74,12 @@ regression-testing sbd.
 %prep
 %autosetup -n %{name}-%{version} -p1
 
-%ifarch s390x s390
-sed -i src/sbd.sysconfig -e "s/Default: 5/Default: 15/"
-sed -i src/sbd.sysconfig -e "s/SBD_WATCHDOG_TIMEOUT=5/SBD_WATCHDOG_TIMEOUT=15/"
-%endif
-
 %build
 ./autogen.sh
 
-%configure
+%configure --with-watchdog-timeout-default=%{watchdog_timeout_default} \
+           --with-sync-resource-startup-default=%{sync_resource_startup_default} \
+           --with-sync-resource-startup-sysconfig=%{sync_resource_startup_sysconfig}
 make %{?_smp_mflags}
 
 %install

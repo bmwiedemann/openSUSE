@@ -375,4 +375,35 @@ the sources.</comment>
 - Fix node name parameter in manpage (bsc#963674) (forwarded request 767636 from yan_gao)</comment>
     <requestid>767637</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8234ab40d9cf058d63f8bf768d1fc511</srcmd5>
+    <version>1.4.1+20200819.4a02ef2</version>
+    <time>1598726527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1+20200819.4a02ef2:
+- sbd-pacemaker: stay with basic string handling
+- build: use configure for watchdog-default-timeout &amp;amp; others
+
+- Update to version 1.4.1+20200807.7c21899:
+- sbd-inquisitor: refuse to start if any of the configured device names is invalid (bsc#1174915)
+
+- Update to version 1.4.1+20200727.1117c6b:
+- make syncing of pacemaker resource startup configurable
+- sbd-pacemaker: sync with pacemakerd for robustness
+
+- Update to version 1.4.1+20200727.971affb:
+- sbd-cluster: match qdevice-sync_timeout against wd-timeout
+- Rebase:
+  * bsc#1140065-Fix-sbd-cluster-exit-if-cmap-is-disconnected.patch
+
+- Update to version 1.4.1+20200624.cee826a:
+- sbd-pacemaker: handle new no_quorum_demote (rh#1850078)
+
+- Update to version 1.4.1+20200306.9571749:
+- scheduling: overhaul the whole thing (bsc#1143064)
+
+- Update to version 1.4.1+20200130.7e958a9:
+- Doc: add environment section to man-page (forwarded request 830057 from yan_gao)</comment>
+    <requestid>830058</requestid>
+  </revision>
 </revisionlist>
