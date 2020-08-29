@@ -15,16 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           google-guest-oslogin
-Version:        20200507.00
+Version:        20200819.00
 Release:        0
 Summary:        Google Cloud Guest OS Login
 License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://github.com/GoogleCloudPlatform/guest-oslogin
 Source0:        %{name}-%{version}.tar.gz
-Requires:       pam
 Requires:       openssh
+Requires:       pam
 Requires(post): glibc
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315
 BuildRequires:  boost-devel

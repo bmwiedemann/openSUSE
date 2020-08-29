@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:27:35 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200819.00 (bsc#1175740, bsc#1175741)
+  * deny non-2fa users (#37)
+  * use asterisks instead (#39)
+  * set passwords to ! (#38)
+  * correct index 0 bug (#36)
+  * Support security key generated OTP challenges. (#35)
+
+-------------------------------------------------------------------
 Fri Jul 24 13:40:56 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - No post action for ssh
