@@ -1,7 +1,7 @@
 #
 # spec file for package libvdpau-va-gl
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           libvdpau-va-gl
 Version:        0.4.2
 Release:        0
 Summary:        VDPAU driver with OpenGL/VAAPI backend
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
-Url:            https://github.com/i-rinat/libvdpau-va-gl
+URL:            https://github.com/i-rinat/libvdpau-va-gl
 Source:         https://github.com/i-rinat/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
@@ -96,13 +96,24 @@ make %{?_smp_mflags} V=1
 %install
 %cmake_install
 
+%if 0%{?suse_version} >= 1550
+mkdir -p %{buildroot}%{_distconfdir}/profile.d
+install -Dpm 0644 %{name}.sh %{buildroot}%{_distconfdir}/profile.d/%{name}.sh
+install -Dpm 0644 %{name}.csh %{buildroot}%{_distconfdir}/profile.d/%{name}.csh
+%else
 install -Dpm 0644 %{name}.sh %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
 install -Dpm 0644 %{name}.csh %{buildroot}%{_sysconfdir}/profile.d/%{name}.csh
+%endif
 
 %files -n %{soname}%{sover}
 %defattr(-,root,root)
 %doc ChangeLog LICENSE README.md
+%if 0%{?suse_version} >= 1550
+%dir %{_distconfdir}/profile.d
+%config %{_distconfdir}/profile.d/%{name}.*sh
+%else
 %config %{_sysconfdir}/profile.d/%{name}.*sh
+%endif
 %{_libdir}/vdpau/
 
 %changelog

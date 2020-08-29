@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>440400</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bdfd01b5bf994cf85ad392d66d2d92f3</srcmd5>
+    <version>0.4.2</version>
+    <time>1598726584</time>
+    <user>dimstar_suse</user>
+    <comment>- moved profiles for setting env variable VDPAU_DRIVER to
+  /usr/etc/profiles.d on TW (boo#1173040)</comment>
+    <requestid>830259</requestid>
+  </revision>
 </revisionlist>
