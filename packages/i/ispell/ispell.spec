@@ -1,7 +1,7 @@
 #
 # spec file for package ispell
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Name:           ispell
 BuildRequires:  bison
 BuildRequires:  ncurses-devel
 BuildRequires:  words
-Url:            http://www.lasr.cs.ucla.edu/geoff/ispell.html
+URL:            http://www.lasr.cs.ucla.edu/geoff/ispell.html
 PreReq:         fillup fileutils
 Provides:       spell
 Requires:       ispell_dictionary
@@ -135,59 +135,59 @@ dictionary are included in the source package of ispell.
   DESTDIR=%{buildroot}
   export DESTDIR
   mkdir -p %{buildroot}/usr/doc/packages/ispell
-  mkdir -p %{buildroot}%{_libexecdir}/ispell/emacs
+  mkdir -p %{buildroot}%{_prefix}/lib/ispell/emacs
   mkdir -p %{buildroot}%{_fillupdir}
   mkdir -p %{buildroot}/var/lib/dict
   make install DESTDIR=%{buildroot}
   rm -f %{buildroot}/usr/share/emacs/site-lisp/ispell.el*
-  install -m 0444 suse/ispell-emacs-menu.el 	%{buildroot}%{_libexecdir}/ispell/
-  install -m 0444 suse/emacs/american.el	%{buildroot}%{_libexecdir}/ispell/emacs/
-  install -m 0444 suse/emacs/british.el		%{buildroot}%{_libexecdir}/ispell/emacs/
-  install -m 0444 suse/emacs/english.el		%{buildroot}%{_libexecdir}/ispell/emacs/
-  rm -f %{buildroot}%{_libexecdir}/ispell/british.hash
-  rm -f %{buildroot}%{_libexecdir}/ispell/american.hash
-  ln -sf britishxlg.hash  %{buildroot}%{_libexecdir}/ispell/british.hash
-  ln -sf americanxlg.hash %{buildroot}%{_libexecdir}/ispell/american.hash
-  mv %{buildroot}%{_libexecdir}/ispell/english.aff %{buildroot}%{_libexecdir}/ispell/american.aff
-  cp -a %{buildroot}%{_libexecdir}/ispell/american.aff %{buildroot}%{_libexecdir}/ispell/british.aff
-  install -m 755 %{S:1} %{buildroot}%{_libexecdir}/ispell/update
+  install -m 0444 suse/ispell-emacs-menu.el 	%{buildroot}%{_prefix}/lib/ispell/
+  install -m 0444 suse/emacs/american.el	%{buildroot}%{_prefix}/lib/ispell/emacs/
+  install -m 0444 suse/emacs/british.el		%{buildroot}%{_prefix}/lib/ispell/emacs/
+  install -m 0444 suse/emacs/english.el		%{buildroot}%{_prefix}/lib/ispell/emacs/
+  rm -f %{buildroot}%{_prefix}/lib/ispell/british.hash
+  rm -f %{buildroot}%{_prefix}/lib/ispell/american.hash
+  ln -sf britishxlg.hash  %{buildroot}%{_prefix}/lib/ispell/british.hash
+  ln -sf americanxlg.hash %{buildroot}%{_prefix}/lib/ispell/american.hash
+  mv %{buildroot}%{_prefix}/lib/ispell/english.aff %{buildroot}%{_prefix}/lib/ispell/american.aff
+  cp -a %{buildroot}%{_prefix}/lib/ispell/american.aff %{buildroot}%{_prefix}/lib/ispell/british.aff
+  install -m 755 %{S:1} %{buildroot}%{_prefix}/lib/ispell/update
   install -m 644 %{S:2} %{buildroot}%{_fillupdir}/
   mkdir -p %{buildroot}/var/lib/dict
-  ln -sf %{_libexecdir}/ispell/american.hash %{buildroot}/var/lib/dict/english.hash
-  ln -sf %{_libexecdir}/ispell/american.aff  %{buildroot}/var/lib/dict/english.aff
-  rm -f  %{buildroot}%{_libexecdir}/ispell/english.hash
-  rm -f  %{buildroot}%{_libexecdir}/ispell/english.aff
-  ln -sf /var/lib/dict/english.hash    %{buildroot}%{_libexecdir}/ispell/
-  ln -sf /var/lib/dict/english.aff     %{buildroot}%{_libexecdir}/ispell/
+  ln -sf %{_prefix}/lib/ispell/american.hash %{buildroot}/var/lib/dict/english.hash
+  ln -sf %{_prefix}/lib/ispell/american.aff  %{buildroot}/var/lib/dict/english.aff
+  rm -f  %{buildroot}%{_prefix}/lib/ispell/english.hash
+  rm -f  %{buildroot}%{_prefix}/lib/ispell/english.aff
+  ln -sf /var/lib/dict/english.hash    %{buildroot}%{_prefix}/lib/ispell/
+  ln -sf /var/lib/dict/english.aff     %{buildroot}%{_prefix}/lib/ispell/
   rm -f %{buildroot}%{_bindir}/defmt-*
 
 %post
 %{fillup_only}
 
 %post -n ispell-american
-if test -z "$YAST_IS_RUNNING" -a -x %{_libexecdir}/ispell/update ; then
-    %{_libexecdir}/ispell/update
+if test -z "$YAST_IS_RUNNING" -a -x %{_prefix}/lib/ispell/update ; then
+    %{_prefix}/lib/ispell/update
 fi
 
 %postun -n ispell-american
-if test -z "$YAST_IS_RUNNING" -a -x %{_libexecdir}/ispell/update ; then
-    %{_libexecdir}/ispell/update
+if test -z "$YAST_IS_RUNNING" -a -x %{_prefix}/lib/ispell/update ; then
+    %{_prefix}/lib/ispell/update
 fi
 
 %post -n ispell-british
-if test -z "$YAST_IS_RUNNING" -a -x %{_libexecdir}/ispell/update ; then
-    %{_libexecdir}/ispell/update
+if test -z "$YAST_IS_RUNNING" -a -x %{_prefix}/lib/ispell/update ; then
+    %{_prefix}/lib/ispell/update
 fi
 
 %postun -n ispell-british
-if test -z "$YAST_IS_RUNNING" -a -x %{_libexecdir}/ispell/update ; then
-    %{_libexecdir}/ispell/update
+if test -z "$YAST_IS_RUNNING" -a -x %{_prefix}/lib/ispell/update ; then
+    %{_prefix}/lib/ispell/update
 fi
 
 %files
 %defattr(-, root, root)
 %doc suse/LIESMICH suse/README
-%dir %{_libexecdir}/ispell
+%dir %{_prefix}/lib/ispell
 %{_bindir}/buildhash
 %{_bindir}/findaffix
 %{_bindir}/icombine
@@ -197,12 +197,12 @@ fi
 %{_bindir}/sq
 %{_bindir}/tryaffix
 %{_bindir}/unsq
-%{_libexecdir}/ispell/ispell-emacs-menu.el
-%dir %{_libexecdir}/ispell/emacs
-%{_libexecdir}/ispell/emacs/english.el
-%{_libexecdir}/ispell/english.hash
-%{_libexecdir}/ispell/english.aff
-%attr(0755,root,root) %{_libexecdir}/ispell/update
+%{_prefix}/lib/ispell/ispell-emacs-menu.el
+%dir %{_prefix}/lib/ispell/emacs
+%{_prefix}/lib/ispell/emacs/english.el
+%{_prefix}/lib/ispell/english.hash
+%{_prefix}/lib/ispell/english.aff
+%attr(0755,root,root) %{_prefix}/lib/ispell/update
 %{_fillupdir}/sysconfig.ispell
 %verify(not link mtime) /var/lib/dict/english.hash
 %verify(not link mtime) /var/lib/dict/english.aff 
@@ -217,18 +217,18 @@ fi
 
 %files -n ispell-american
 %defattr(-, root, root)
-%{_libexecdir}/ispell/american.hash
-%{_libexecdir}/ispell/americanmed.hash
-%{_libexecdir}/ispell/americanxlg.hash
-%{_libexecdir}/ispell/emacs/american.el
-%{_libexecdir}/ispell/american.aff
+%{_prefix}/lib/ispell/american.hash
+%{_prefix}/lib/ispell/americanmed.hash
+%{_prefix}/lib/ispell/americanxlg.hash
+%{_prefix}/lib/ispell/emacs/american.el
+%{_prefix}/lib/ispell/american.aff
 
 %files -n ispell-british
 %defattr(-, root, root)
-%{_libexecdir}/ispell/british.hash
-%{_libexecdir}/ispell/britishmed.hash
-%{_libexecdir}/ispell/britishxlg.hash
-%{_libexecdir}/ispell/emacs/british.el
-%{_libexecdir}/ispell/british.aff
+%{_prefix}/lib/ispell/british.hash
+%{_prefix}/lib/ispell/britishmed.hash
+%{_prefix}/lib/ispell/britishxlg.hash
+%{_prefix}/lib/ispell/emacs/british.el
+%{_prefix}/lib/ispell/british.aff
 
 %changelog

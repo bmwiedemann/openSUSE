@@ -264,4 +264,16 @@
     <comment>- Avoid `set -e' in munchlist (boo#1075882)</comment>
     <requestid>564193</requestid>
   </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>eff437b32044d9d9db41047f7efebd8e</srcmd5>
+    <version>3.4.00</version>
+    <time>1598726121</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %{_prefix}/lib instead of %{_libexecdir}: the path is
+  hardcoded in quite a few scripts, config files and the
+  documentation (boo#1174075).
+
+- Replace references to /var/adm/fillup-templates with new (forwarded request 828925 from dimstar)</comment>
+    <requestid>829691</requestid>
+  </revision>
 </revisionlist>
