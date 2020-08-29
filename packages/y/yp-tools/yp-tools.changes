@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 29 10:18:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use /usr/share/yp and /usr/libexec/yp
+
+-------------------------------------------------------------------
 Tue Mar 27 15:43:48 CEST 2018 - kukuk@suse.de
 
 - Update to version 4.2.3

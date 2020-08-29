@@ -232,4 +232,12 @@
   - Lower compiler warnings [bsc#1084633]</comment>
     <requestid>591643</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>302e53a7e13bfb4ee34a06e084cbee34</srcmd5>
+    <version>4.2.3</version>
+    <time>1598726524</time>
+    <user>dimstar_suse</user>
+    <comment>- Use /usr/share/yp and /usr/libexec/yp</comment>
+    <requestid>830459</requestid>
+  </revision>
 </revisionlist>
