@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 26 20:02:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.11.0:
+  * Add allow_interfaces and deny_interfaces configuration options 
+  * Add support to notify avahi-daemon and mdnsd of resolv.conf changes
+
+-------------------------------------------------------------------
 Thu Oct 31 17:25:39 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.9.2

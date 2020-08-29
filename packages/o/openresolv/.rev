@@ -17,4 +17,14 @@
     <comment></comment>
     <requestid>745103</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ae8a3ad7790cf8359064c5df232a8bd</srcmd5>
+    <version>3.11.0</version>
+    <time>1598726269</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.0:
+  * Add allow_interfaces and deny_interfaces configuration options 
+  * Add support to notify avahi-daemon and mdnsd of resolv.conf changes</comment>
+    <requestid>829832</requestid>
+  </revision>
 </revisionlist>
