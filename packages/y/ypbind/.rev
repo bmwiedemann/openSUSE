@@ -456,4 +456,15 @@
   - strip down /etc/sysconfig/ypbind to a generic option list only</comment>
     <requestid>769012</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>47658dba06d2245541b9beb055e6ef0a</srcmd5>
+    <version>2.7.2</version>
+    <time>1598726697</time>
+    <user>dimstar_suse</user>
+    <comment>- Use /usr/etc/default and /etc/default instead of sysconfig
+- Cleanup ypbind-systemd-pre
+
+- Use /usr/libexec in ypbind.service</comment>
+    <requestid>830462</requestid>
+  </revision>
 </revisionlist>

@@ -1,32 +1,27 @@
 #!/bin/sh
 #
-# ypbind-domain
+# Setup proper domainname before starting ypbind daemon
 #
-# description: This is part of former ypbind init script, which is used 
-#              to setup proper domainname before starting ypbind daemon 
-#              itself.
 
-mydomain=`domainname`
-if [ "$mydomain" = "(none)" -o "x$mydomain" = "x" ]; then
+mydomain=$(domainname)
+if [ "$mydomain" = "(none)" ] || [ "x$mydomain" = "x" ]; then
 	test -f /etc/defaultdomain && {
 	    read DOMAINNAME < /etc/defaultdomain
 	}
 
  	if [ "x$DOMAINNAME" != 'x' ]; then
- 		echo "$DOMAINNAME\n"
- 		domainname $DOMAINNAME
+ 		domainname "$DOMAINNAME"
  	else
- 		echo "\nError: NIS domain not specified.\n"
+ 		echo "ERROR: NIS domain not specified." >&2
  		exit 1
  	fi
 fi
 
 ## If we don't have a yp.conf file, skip starting of
 ## ypbind and return with "program not configured"
-## if you add the -broadcast Option later, comment this out.
-if [ ! -f /etc/yp.conf -a ! -f /run/netconfig/yp.conf -a "$YPBIND_BROADCAST" != "yes" ] ; then
+if [ ! -f /etc/yp.conf ] && [ ! -f /run/netconfig/yp.conf ] ; then
 # Tell the user this has skipped
-  echo -n " . . . . . . . . . . ${attn}yp.conf not found${norm}"
+  echo " ERROR: yp.conf not found" >&2
   exit 1
 fi
 

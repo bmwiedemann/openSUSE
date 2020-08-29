@@ -1,7 +1,7 @@
 #
 # spec file for package ypbind
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018, 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source:         %{name}-mt-%{version}.tar.xz
 Source2:        ypbind.service
 Source3:        ypbind-systemd-pre
 Source4:        ypbind.conf
+Source5:        ypbind.default
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnsl) >= 1.0.1
 BuildRequires:  pkgconfig(libsystemd)
@@ -33,7 +34,7 @@ BuildRequires:  pkgconfig(libtirpc) >= 1.0.1
 Requires:       libnss_nis2
 Requires:       rpcbind
 Requires:       yp-tools
-Requires(post): %fillup_prereq
+Requires(post): /usr/bin/grep
 
 %description
 This package provides the ypbind daemon. The ypbind daemon binds NIS
@@ -51,10 +52,9 @@ programs.
 make  %{?_smp_mflags}
 
 %install
-mkdir -p %{buildroot}%{_fillupdir}
 %make_install
-# Install rc.config add-on
-install -m 644 etc/sysconfig.ypbind %{buildroot}%{_fillupdir}
+# Install default/ypbind
+install -D -m 644 %{SOURCE5}  %{buildroot}%{_prefix}/etc/default/ypbind
 # Create dummy yp.conf
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/yp.conf
@@ -73,9 +73,13 @@ install -m 644 %{SOURCE4} %{buildroot}%{_prefix}/lib/tmpfiles.d/
 %service_add_pre ypbind.service
 
 %post
-%{fillup_only -n ypbind}
 %service_add_post ypbind.service
 %tmpfiles_create ypbind.conf
+if [ -f /etc/sysconfig/ypbind ]; then
+    # migrate variables from sysconfig to default
+    grep ^YPBIND_OPTIONS= /etc/sysconfig/ypbind > /etc/default/ypbind
+    mv /etc/sysconfig/ypbind /etc/sysconfig/ypbind.rpmsave
+fi
 
 %preun
 %service_del_preun ypbind.service
@@ -90,7 +94,7 @@ fi
 %license COPYING
 %doc NEWS README
 %ghost %config(noreplace) %{_sysconfdir}/yp.conf
-%{_fillupdir}/sysconfig.ypbind
+%{_prefix}/etc/default/
 %{_mandir}/man5/yp.conf.5%{ext_man}
 %{_mandir}/man8/ypbind.8%{ext_man}
 %{_sbindir}/ypbind

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 29 10:07:34 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use /usr/etc/default and /etc/default instead of sysconfig
+- Cleanup ypbind-systemd-pre
+
+-------------------------------------------------------------------
+Sat Aug 29 07:06:40 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use /usr/libexec in ypbind.service
+
+-------------------------------------------------------------------
 Fri Jan 31 09:50:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.7.2

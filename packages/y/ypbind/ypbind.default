@@ -1,0 +1,5 @@
+# To overwrite variables, create a file /etc/default/ypbind with the 
+# variables which should be changed.
+
+# Extra options for ypbind.
+YPBIND_OPTIONS=""
