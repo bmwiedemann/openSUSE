@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 29 14:54:55 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Adjust ckb-next-systemd.patch to the change for %_libexecdir
+
+-------------------------------------------------------------------
 Mon Jun  8 07:44:47 UTC 2020 - aloisio@gmx.com
 
 - Add ckb-next-gcc10.patch
