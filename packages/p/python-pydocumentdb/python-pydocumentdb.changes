@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 22:05:24 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Use %patch instead %patch0 to fix build on older distributions
+
+-------------------------------------------------------------------
 Tue Mar  3 12:41:42 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

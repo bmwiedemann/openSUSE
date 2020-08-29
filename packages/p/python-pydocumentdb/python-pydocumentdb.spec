@@ -46,7 +46,7 @@ This package has been tested with Python 2.7, 3.3, 3.4 and 3.5.
 
 %prep
 %setup -q -n pydocumentdb-%{version}
-%patch0 -p1
+%patch -p1
 
 %build
 %python_build
