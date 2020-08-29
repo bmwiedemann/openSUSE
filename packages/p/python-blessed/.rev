@@ -67,4 +67,14 @@
 - Do not pull extra pytest deps and use even latest pytest</comment>
     <requestid>800586</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ca88ccebafb3cbe3ddf7066638067911</srcmd5>
+    <version>1.17.10</version>
+    <time>1598726069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.10:
+  * bugfix: Now imports on 3.10+
+  * bugfix: Fix detection of shift+arrow keys when using tmux. :ghissue:`178`.</comment>
+    <requestid>829688</requestid>
+  </revision>
 </revisionlist>

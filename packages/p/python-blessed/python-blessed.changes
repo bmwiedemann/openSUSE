@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 26 06:48:05 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.17.10:
+  * bugfix: Now imports on 3.10+
+  * bugfix: Fix detection of shift+arrow keys when using tmux. :ghissue:`178`.
+
+-------------------------------------------------------------------
 Wed May  6 07:22:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.17.5:
