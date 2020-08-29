@@ -8346,6 +8346,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-5 
+  - libVkLayer_utils-1_2_151 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -9555,7 +9556,7 @@ unsorted:
   - libexttextcat-devel 
   - libexttextcat-tools 
   - libf2c0 
-  - libf2fs_format6 
+  - libf2fs_format7 
   - libfabric 
   - libfabric-devel 
   - libfabric-devel-32bit: [x86_64] 
@@ -9922,7 +9923,7 @@ unsorted:
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
   - libgnuastro9 
-  - libgnuradio-3_8_1 
+  - libgnuradio-3_8_2 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
@@ -10317,7 +10318,7 @@ unsorted:
   - libhidapi-hidraw0 
   - libhidapi-libusb0 
   - libhinawa-devel 
-  - libhinawa1 
+  - libhinawa2 
   - libhivex0: [i586] 
   - libhmac-devel 
   - libhmac-tools 
@@ -11400,7 +11401,7 @@ unsorted:
   - libortp15-32bit: [x86_64] 
   - libosdCPU3_4_3 
   - libosinfo-devel 
-  - libosip2 
+  - libosip2-12 
   - libosip2-devel 
   - liboslcomp1_11 
   - liboslexec1_11 
@@ -12275,7 +12276,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_7_0 
+  - librssguard-3_7_1 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -14117,6 +14118,7 @@ unsorted:
   - mailcommon-devel 
   - maildir-utils 
   - mailgraph 
+  - mailgraph-apache 
   - mailimporter-devel 
   - mailprocessing 
   - mailutils-devel 
@@ -16318,6 +16320,10 @@ unsorted:
   - onedrive-completion-zsh 
   - onefetch 
   - oneko 
+  - ongres-scram 
+  - ongres-scram-client 
+  - ongres-scram-javadoc 
+  - ongres-scram-parent 
   - oniguruma-devel 
   - onnx-backend-test 
   - onnx-devel 
@@ -19363,7 +19369,6 @@ unsorted:
   - python2-aexpect 
   - python2-appindicator 
   - python2-arabic-reshaper 
-  - python2-azure-datalake-store 
   - python2-geopy 
   - python2-keyrings.alt 
   - python2-libfwsi 
@@ -20319,6 +20324,7 @@ unsorted:
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
   - python3-dns-lexicon 
+  - python3-dnslib 
   - python3-docformatter 
   - python3-docker 
   - python3-docker-compose 
@@ -20383,8 +20389,7 @@ unsorted:
   - python3-espressomd 
   - python3-esptool 
   - python3-et_xmlfile 
-  - python3-etcd 
-  - python3-etcd-test 
+  - python3-etcd: [x86_64] 
   - python3-ethtool 
   - python3-evdev 
   - python3-evemu 
@@ -20488,7 +20493,6 @@ unsorted:
   - python3-furl 
   - python3-fuse 
   - python3-fusepy 
-  - python3-future 
   - python3-futurist 
   - python3-fuzzywuzzy 
   - python3-fysom 
@@ -20687,6 +20691,7 @@ unsorted:
   - python3-ironic-inspector-client 
   - python3-ironicclient 
   - python3-isc_dhcp_leases 
+  - python3-iso3166 
   - python3-iso8601 
   - python3-isodate 
   - python3-isort 
@@ -21537,6 +21542,7 @@ unsorted:
   - python3-pysofaconventions 
   - python3-pysol-cards 
   - python3-pysolr 
+  - python3-pyspnego 
   - python3-pysrt 
   - python3-pyssim 
   - python3-pystache 
@@ -21974,6 +21980,7 @@ unsorted:
   - python3-splinter 
   - python3-spotipy 
   - python3-spyder-kernels 
+  - python3-spyder-terminal 
   - python3-spyder-unittest 
   - python3-sqlalchemy-migrate 
   - python3-sqlite-utils 
@@ -25418,7 +25425,6 @@ unsorted:
   - spyder-line-profiler 
   - spyder-memory-profiler 
   - spyder-notebook 
-  - spyder-terminal 
   - sql-parser-devel 
   - sqlcipher 
   - sqlcipher-devel 
@@ -34573,6 +34579,7 @@ unsorted:
   - vulkan-headers 
   - vulkan-tools 
   - vulkan-validationlayers 
+  - vulkan-validationlayers-devel 
   - w3c-markup-validator 
   - w3c-markup-validator-libs 
   - w3m-inline-image 
