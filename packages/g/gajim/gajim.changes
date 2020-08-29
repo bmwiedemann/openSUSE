@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Aug 26 19:53:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * Rewritten network code
+  * Support for WebSocket (RFC 7395)
+  * Improved proxy handling
+  * Group chat pages (invite, information, nickname, subject, etc.)
+  * Group chat creation window
+  * Updated account creation assistant
+  * Updated assistants for password changing and account removal
+  * Updated server info window (connection details)
+  * Updated theme manager
+  * Default avatars (XEP-0392)
+  * Paste images from clipboard
+  * Contrast and color improvements for both light and dark themes
+  * Removed 'Invisible' status
+  * Removed FuzzyClock feature
+  * ServerInfo: Display status address
+  * Add block and spam reporting in various places
+  * Roster: Allow to add contacts from `Not in contact list` group via DND
+  * Roster: Allow sending message to serveral groups
+  * Groupchat/Chat: Rework DND
+  * Groupchat: Display recent history from the database
+  * Status Selector was reworked
+  * Status Change dialog was reworked
+  * Preferences: Added Setting to toggle the use of a keyring
+  * Windows/Mac: Gajim notifys now about new updates
+  * ServerInfo: Show more details about the current connection
+  * bugfixes
+- remove ssl_use_system_certs.patch (obsolete)
+
+-------------------------------------------------------------------
 Sun Jan  5 14:46:17 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - add ssl_use_system_certs.patch (boo#1159017):

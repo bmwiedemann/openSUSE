@@ -16,16 +16,14 @@
 #
 
 
-%define _version 1.1
 Name:           gajim
-Version:        1.1.3
+Version:        1.2.2
 Release:        0
 Summary:        XMPP client written in Python and Gtk3
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/%{_version}/%{name}-%{version}.tar.bz2
-Patch:          ssl_use_system_certs.patch
+Source:         https://gajim.org/downloads/1.2/gajim-%{version}.tar.gz
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -103,7 +101,6 @@ Features:
 
 %prep
 %setup -q
-%autopatch -p1
 sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
 
 # FIXME: Some leftover.
