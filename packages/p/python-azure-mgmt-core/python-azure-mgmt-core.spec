@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-core
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Microsoft Azure Management Core Library
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.4.0
+Requires:       python-azure-core >= 1.7.0
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Conflicts:      python-azure-sdk <= 2.0.0
@@ -54,9 +54,12 @@ be installed automatically when you install other SDKs.
 %setup -q -n azure-mgmt-core-%{version}
 
 %build
+# Required for Python2 builds
+export LANG=en_US.UTF-8
 %python_build
 
 %install
+export LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
