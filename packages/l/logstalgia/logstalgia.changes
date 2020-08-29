@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 26 16:30:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1.2:
+ * Fixed compatibility with GLM 0.9.9.0.
+ * Fixed rendering of FreeMonoBold with FreeType2 2.8 by disabling hinting.
+ * Updated fonts.
+
+-------------------------------------------------------------------
 Fri Nov 17 13:03:10 UTC 2017 - astieger@suse.com
 
 - logstalgia 1.0.9:

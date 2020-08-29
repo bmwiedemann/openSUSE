@@ -1,7 +1,7 @@
 #
 # spec file for package logstalgia
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           logstalgia
-Version:        1.0.9
+Version:        1.1.2
 Release:        0
 Summary:        A website access log visualization tool
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
-Url:            http://logstalgia.io/
+URL:            https://logstalgia.io/
 Source:         https://github.com/acaudwell/Logstalgia/releases/download/logstalgia-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ftgl-devel
 BuildRequires:  gcc-c++
@@ -56,13 +56,14 @@ are missed and pass through.
 %build
 %configure \
   --enable-ttf-font-dir=%{_datadir}/fonts/truetype
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%doc COPYING README THANKS ChangeLog
+%license COPYING
+%doc README THANKS ChangeLog
 %{_mandir}/man1/logstalgia*
 %{_bindir}/logstalgia
 %{_datadir}/logstalgia/
