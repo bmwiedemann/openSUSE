@@ -89,7 +89,7 @@ export CFLAGS="%{optflags} -fcommon"
 %cmake \
   -DWANT_SVN_STAMP=OFF
 # unforce link against libcurl.a
-find . -name link.txt -exec sed -ie 's!%{_libexecdir}/libcurl.a!-lcurl!g' {} \;
+find . -name link.txt -exec sed -ie 's!%{_prefix}/lib/libcurl.a!-lcurl!g' {} \;
 find . -name link.txt -exec sed -ie 's!%{_libdir}/libcurl.a!-lcurl!g' {} \;
 %cmake_build
 
