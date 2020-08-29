@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 27 08:41:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 1.0.20200827
+  * wg-quick: android: use iproute2 to bring up interface instead 
+    of ndc
+  * Revert "wg-quick: wait on process substitutions"
+
+-------------------------------------------------------------------
 Sat Aug 22 20:44:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20200820
