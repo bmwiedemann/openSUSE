@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 29 02:16:38 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.62.2:
+  * Release v3.62.2
+  * SSH diagnostics fixes
+  * Diagnose whether MFA is required for a failed SSH connection (#974)
+  * Release v3.62.1
+  * Trigger prompt=select_account after the "Log in anyway?" question, in browser login command
+  * Increase drush alias command timeout
+
+-------------------------------------------------------------------
 Tue Aug 18 22:37:26 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.62.0:
