@@ -1,7 +1,7 @@
 #
 # spec file for package gtypist
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,14 @@ Name:           gtypist
 Version:        2.9.5
 Release:        0
 Summary:        Universal typing tutor
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Amusements/Teaching/Other
-Url:            http://gnu.org/software/gtypist/
+URL:            http://gnu.org/software/gtypist/
 
 Source:         http://ftp.gnu.org/gnu/gtypist/%name-%version.tar.xz
 Source2:        http://ftp.gnu.org/gnu/gtypist/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 Patch1:         escdelay.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  ncurses-devel
 BuildRequires:  xz
@@ -49,7 +48,7 @@ a regular basis. Its main features are:
 
 * Users can navigate through lessons through an easy to use arrow key
   based menu interface. 'vi' up, down, left and right keys can be
-  used too!
+  used too.
 
 %package lang
 Summary:        Language files for package gtypist
@@ -64,16 +63,14 @@ a regular basis.
 This subpackage contain the translations for the package gtypist.
 
 %prep
-%setup -q 
-%patch -P 1 -p1
+%autosetup -p1
 
 %build 
 %configure
 make %{?_smp_mflags}
 
 %install
-b="%buildroot";
-make install DESTDIR="$b"
+%make_install
 %find_lang %name
 
 %post
@@ -87,7 +84,6 @@ for i in "%_infodir"/gtypist*.gz; do
 done;
 
 %files
-%defattr(-,root,root)
 %_bindir/gtypist
 %_bindir/typefortune
 %_datadir/gtypist/
@@ -96,6 +92,5 @@ done;
 %_datadir/man/man1/typefortune.1*
 
 %files lang -f %name.lang
-%defattr(-,root,root)
 
 %changelog

@@ -69,4 +69,12 @@
     <comment>- Add escdelay.diff to work around unintended use of ncurses API</comment>
     <requestid>333141</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>55ce9677bb8ae15e9c9e5b65e33e5488</srcmd5>
+    <version>2.9.5</version>
+    <time>1598726019</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove old rpm recipe constructs.</comment>
+    <requestid>829637</requestid>
+  </revision>
 </revisionlist>

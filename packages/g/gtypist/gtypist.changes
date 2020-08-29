@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 20:58:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old rpm recipe constructs.
+
+-------------------------------------------------------------------
 Wed Sep 23 10:21:45 UTC 2015 - jengelh@inai.de
 
 - Add escdelay.diff to work around unintended use of ncurses API
