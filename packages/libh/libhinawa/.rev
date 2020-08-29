@@ -16,4 +16,12 @@ Will (might) be required by the next alsa-utils package.</comment>
     <comment></comment>
     <requestid>663808</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5878f5f275478e9891fab66a393ec808</srcmd5>
+    <version>2.1.0</version>
+    <time>1598726147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829731</requestid>
+  </revision>
 </revisionlist>

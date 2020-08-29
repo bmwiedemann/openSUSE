@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 26 13:04:59 CEST 2020 - tiwai@suse.de
+
+- Updated to version 2.0.0:
+  Major version updates includes refactoring and code cleanup to
+  dismiss obsoleted stuffs added by period of version 1, toward
+  better language bindings such as Python 3 and Rust.
+- Updated to version 2.1.0:
+  Minor version update so that some symbols are newly available as
+  public API.
+- Update subpackage SO version: libhinawa2
+- Update URL
+
+-------------------------------------------------------------------
 Tue Jan  8 17:38:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Rectify SRPM group. Update descriptions.

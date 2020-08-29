@@ -1,7 +1,7 @@
 #
 # spec file for package libhinawa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           libhinawa
-Version:        1.1.0
+Version:        2.1.0
 Release:        0
 Summary:        I/O library for IEEE 1394 asynchronous transactions
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/takaswie/libhinawa
-Source0:        https://github.com/takaswie/libhinawa/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/takaswie/libhinawa/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/alsa-project/libhinawa
+Source0:        https://github.com/alsa-project/libhinawa/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
@@ -36,18 +35,18 @@ BuildRequires:  pkgconfig(gobject-2.0)
 I/O library for IEEE 1394 asynchronous transactions to/from units on the bus,
 with GObject Introspection.
 
-%package -n libhinawa1
+%package -n libhinawa2
 Summary:        I/O library for IEEE 1394 asynchronous transactions
 Group:          System/Libraries
 
-%description -n libhinawa1
+%description -n libhinawa2
 I/O library for IEEE 1394 asynchronous transactions to/from units on the bus,
 with GObject Introspection.
 
 %package devel
 Summary:        Header files for libhinawa, a lib for IEEE 1394 async transactions
 Group:          Development/Libraries/C and C++
-Requires:       libhinawa1 = %{version}
+Requires:       libhinawa2 = %{version}
 
 %description devel
 This package contains all necessary include files and libraries needed
@@ -56,7 +55,7 @@ to develop applications that require libhinawa.
 %package -n typelib-1_0-Hinawa-2_0
 Summary:        Introspection bindings for libhinawa
 Group:          System/Libraries
-Requires:       libhinawa1 = %{version}
+Requires:       libhinawa2 = %{version}
 
 %description -n typelib-1_0-Hinawa-2_0
 This package provides the GObject Introspection bindings for libhinawa,
@@ -77,19 +76,19 @@ cp README* %{buildroot}%{_docdir}/%{name}
 mv %{buildroot}%{_datadir}/gtk-doc/html/hinawa \
    %{buildroot}%{_docdir}/%{name}/html
 
-%post -n libhinawa1 -p /sbin/ldconfig
-%postun -n libhinawa1 -p /sbin/ldconfig
+%post -n libhinawa2 -p /sbin/ldconfig
+%postun -n libhinawa2 -p /sbin/ldconfig
 
-%files -n libhinawa1
-%{_libdir}/libhinawa.so.1
-%{_libdir}/libhinawa.so.1.*
+%files -n libhinawa2
+%{_libdir}/libhinawa.so.2
+%{_libdir}/libhinawa.so.2.*
 
 %files devel
 %doc %{_docdir}/%{name}
 %{_includedir}/libhinawa
 %{_datadir}/gir-1.0/*.gir
 %{_libdir}/libhinawa.so
-%{_libdir}/pkgconfig/libhinawa.pc
+%{_libdir}/pkgconfig/*.pc
 
 %files -n typelib-1_0-Hinawa-2_0
 %{_libdir}/girepository-1.0/*
