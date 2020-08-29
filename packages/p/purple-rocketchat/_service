@@ -1,9 +1,9 @@
 <services>
   <service mode="disabled" name="tar_scm">
-    <param name="scm">hg</param>
-    <param name="url">https://bitbucket.org/EionRobb/purple-rocketchat</param>
+    <param name="scm">git</param>
+    <param name="url">https://github.com/EionRobb/purple-rocketchat</param>
     <param name="filename">purple-rocketchat</param>
-    <param name="versionformat">0.0+hg{date|localdate|shortdate}</param>
+    <param name="versionformat">0.0+git.%ci</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

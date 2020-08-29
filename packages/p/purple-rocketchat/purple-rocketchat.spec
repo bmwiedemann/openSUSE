@@ -18,12 +18,12 @@
 
 %define _name   rocketchat
 Name:           purple-rocketchat
-Version:        0.0+hg20200403
+Version:        0.0+git.20200717T223247
 Release:        0
 Summary:        RocketChat protocol plugin for libpurple
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
-URL:            https://bitbucket.org/EionRobb/purple-rocketchat
+URL:            https://github.com/EionRobb/purple-rocketchat
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28.0
