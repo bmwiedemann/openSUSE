@@ -1,7 +1,7 @@
 #
 # spec file for package entangle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           entangle
-Version:        2.0
+Version:        3.0
 Release:        0
 Summary:        Tethered shooting & control of digital cameras
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            https://entangle-photo.org
+URL:            https://entangle-photo.org
 Source0:        https://www.entangle-photo.org/download/sources/%{name}-%{version}.tar.xz
 Source1:        https://www.entangle-photo.org/download/sources/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -158,16 +158,16 @@ rm -rf %{buildroot}%{_datadir}/gir-1.0
 /sbin/ldconfig
 
 %files
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.rst
 %{_bindir}/%{name}
 %{_libdir}/lib%{name}_backend.so.*
 %{_libdir}/lib%{name}_frontend.so.*
-%{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.entangle_photo.Manager.desktop
+%{_datadir}/metainfo/org.entangle_photo.Manager.metainfo.xml
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/sRGB.icc
 %{_datadir}/glib-2.0/schemas/org.%{name}-photo.manager.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/%{name}*.??g
+%{_datadir}/icons/hicolor/*/apps/*entangle*.??g
 %{_mandir}/man?/%{name}.?%{ext_man}
 %license COPYING
 

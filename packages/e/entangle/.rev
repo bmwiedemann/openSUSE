@@ -211,4 +211,40 @@
 - entangle-desktop.patch: dropped, included desktop file is ok</comment>
     <requestid>676684</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a4d97f80009f66550870d9ee5593a747</srcmd5>
+    <version>3.0</version>
+    <time>1598726496</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed filelists after update to make it build.
+
+- update to 3.0:
+ * Ensure picture directory is an absolute path
+ * Add ability to flip image during preview
+ * Fix warnings about string length
+ * Convert appdata file to metainfo and add missing info
+ * Another attempt to fix build deps on enum headers
+ * Display remaining shot count &amp; ETA in repeat shooter
+   plugin
+ * Remove use of deprecated GObject macros
+ * Remove use of deprecated GLib APIs
+ * Ensure glib min version checks at build time
+ * Convert to use GObject macros for declaring boilerplate
+ * Bulk reformat code using clang-format rules
+ * Force a default filename pattern if setting is invalid
+ * Validate filename pattern when updating preferences
+ * Rename desktop file and icon file to match application ID
+ * Add ability to render text mesages over image
+ * Add a countdown timer for photobox plugin capture
+ * Disable context menu in image browser when photobox plugin
+   is active
+ * Run live view when counting down to capturein photobox
+   plugin
+ * Fix crash releasing popup windows
+ * Add context menu option for opening popup image window
+ * Drop drag support for opening popup image window
+ * Display greeting when opening popup image window
+ * Display greeting when entering photobox plugin</comment>
+    <requestid>830024</requestid>
+  </revision>
 </revisionlist>
