@@ -14,4 +14,21 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1f7ab0a6c5568f5bf28e43e4a6ebde60</srcmd5>
+    <version>1.9</version>
+    <time>1598726031</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not expect which to be in /bin:
+  * hardcoded.patch
+
+- update to 1.9:
+  * openbsd support
+  * Enable sanitize target for new gccs and clang
+  * cope with Apple clang version
+  * Add support for INCLUDEDIR
+  * Fix Build/HOST confusion
+  * Fix quotation in case expansion for make selection</comment>
+    <requestid>829743</requestid>
+  </revision>
 </revisionlist>
