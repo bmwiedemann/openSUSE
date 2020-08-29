@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:51:43 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Correct firewall directory for %_libexecdir changes (bsc#1174075)
+- 4.3.3
+
+-------------------------------------------------------------------
 Mon Aug 11 03:00:24 UTC 2020 - nick wang <nwang@suse.com>
 
 - Open ports for DRBD linstor packages (bsc#1175434)
