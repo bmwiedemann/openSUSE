@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Aug 26 17:48:08 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
+
+- Update fetchmail.keyring file
+- Use %{_prefix}/lib instead of %{_libexecdir}
+
+-------------------------------------------------------------------
+Mon Aug 24 12:59:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.4.8:
+  * Add a test program fm_realpath, and a t.realpath script, neither to be
+    installed. These will test resolution of the current working directory.
+  * TRANSLATION UPDATES
+  * Plug memory leaks when parts of the configuration (defaults, rcfile, command 
+    line) override one another.
+  * fetchmail terminated the placeholder command string too late and included
+    garbage from the heap at the end of the string. Workaround: don't use place-
+    holders %h or %p in the --plugin string. Bug added in 6.4.0 when merging
+    Gitlab merge request !5 in order to fix an input buffer overrun.
+    Faulty commit 418cda65f752e367fa663fd13884a45fcbc39ddd.
+  * Fetchmail now checks for errors when trying to read the .idfile
+  * Fetchmail's error messages that reports that the defaults entry isn't the 
+    first was made more precise. It could be misleading if there was a poll or
+    skip statement before the defaults.
+  * Fetchmail documentation was updated to require OpenSSL 1.1.1.
+    OpenSSL 1.0.2 reached End Of Life status at the end of the year 2019.
+    Fetchmail will tolerate, but warn about, 1.0.2 for now on the assumption that 
+    distributors backport security fixes as the need arises.
+    Fetchmail will also warn if another SSL library that is API-compatible
+    with OpenSSL lacks TLS v1.3 support.
+  * If the trust anchor is missing, fetchmail refers the user to README.SSL.
+  * The AC_DECLS(getenv) check was removed, its only user was broken and not 
+    accounting for that AC_DECLS always defines HAVE_DECL_... to 0 or 1, so
+    fetchmail never declared a missing getenv() symbol (it was testing with 
+    #ifdef).  Remove the backup declaration. getenv is mandated by SUSv2 anyways.
+  * fetchmailconf now supports Python 3 and currently requires the "future" 
+    package, see https://pypi.org/project/future/.
+  * fetchmailconf: The minimum supported version is now Python 2.7.13, but it is 
+    recommended to use at least 2.7.16 (due to its massive SSL updates).
+    Older Python versions may check SSL certificates not strictly enough,
+    which may cause fetchmail to complain later, if the certificate verify fails.
+  * fetchmailconf now autoprobes SSL-wrapped connections (ports 993 and 995 for 
+    IMAP and POP3) as well and by preference.
+  * fetchmailconf now defaults newly created users to "ssl" if either of the
+    existing users sets ssl, or if the server has freshly been probed and
+    found supporting ssl.
+    There is a caveat: adding a user to an existing server without probing it
+    again may skip adding ssl. (This does not prevent STARTTLS.)
+  * Fix three bugs in fetchmail.man (one unterminated string to .IP macro, one
+    line that ran into a .PP macro, .TH date format), and remove one .br request 
+    from inside the table, which is unsupported by FreeBSD 12's mandoc(1) formatter.
+  * Further man page fixes and additions by Chris Mayo and Gregor Zattler.
+  * When evaluating the need for STARTTLS in non-default configurations (SSL 
+    certificate validation turned off), fetchmail would only consider --sslproto 
+    tls1 as requiring STARTTLS, now all non-empty protocol versions do.
+  * fetchmailconf now properly writes "no sslcertck" if sslcertck is disabled.
+  * fetchmailconf now catches and reports OS errors (including DNS errors) when 
+    autoprobing.
+  * fetchmailconf received a host of other bugfixes, see the Git commit log.
+
+-------------------------------------------------------------------
 Wed Aug 19 08:10:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix invalid usage of libexecdir where %_tmpfilesdir was meant to

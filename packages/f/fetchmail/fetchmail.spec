@@ -22,13 +22,13 @@
 %endif
 
 Name:           fetchmail
-Version:        6.4.1
+Version:        6.4.8
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
-URL:            http://www.fetchmail.info/
-Source:         https://sourceforge.net/projects/fetchmail/files/branch_6.4/%{name}-%{version}.tar.xz
-#Source1:        https://sourceforge.net/projects/fetchmail/files/branch_6.4/%%{name}-%%{version}.tar.xz.asc
+URL:            https://www.fetchmail.info/
+Source:         https://sourceforge.net/projects/%{name}/files/branch_6.4/%{name}-%{version}.tar.xz
+Source1:        https://sourceforge.net/projects/%{name}/files/branch_6.4/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.logrotate
 Source3:        sysconfig.%{name}
 Source5:        %{name}.keyring
@@ -69,6 +69,7 @@ is included in the fetchmailconf package.
 %package -n fetchmailconf
 Summary:        Fetchmail Configuration Utility
 Requires:       %{name} = %{version}
+Requires:       python3-future
 Requires:       python3-tk
 
 %description -n fetchmailconf
@@ -105,7 +106,7 @@ mkdir -p %{buildroot}/%{_unitdir}
 mkdir -p %{buildroot}/%{_tmpfilesdir}
 install -m 0644 %{SOURCE6} %{buildroot}/%{_unitdir}/%{name}.service
 install -m 0644 %{SOURCE7} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
-install -m 0755 %{SOURCE8} %{buildroot}/%{_libexecdir}/%{name}-systemd-exec
+install -m 0755 %{SOURCE8} %{buildroot}/%{_prefix}/lib/%{name}-systemd-exec
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
 touch %{buildroot}%{_sysconfdir}/fetchmailrc
@@ -159,7 +160,7 @@ make %{?_smp_mflags} check
 %config(noreplace) %{_sysconfdir}/logrotate.d/fetchmail
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
-%{_libexecdir}/%{name}-systemd-exec
+%{_prefix}/lib/%{name}-systemd-exec
 %{_tmpfilesdir}/%{name}.conf
 %{_fillupdir}/sysconfig.%{name}
 
