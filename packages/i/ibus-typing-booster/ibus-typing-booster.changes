@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 27 12:55:21 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.9.6
+- Make translations of 'Edit key bindings for command “%s”' work
+- Don't hide emoji-picker.desktop from AppStream (by Gunnar Hjalmarsson)
+- Translation update from Weblate for pt_BR, sv (100%)
+
+-------------------------------------------------------------------
 Wed Aug 05 10:41:33 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.9.5
