@@ -811,4 +811,13 @@ Feature Improvements
     <comment>Bug number fixes only</comment>
     <requestid>788266</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>ded2b72735f445c7b7478753d46ff451</srcmd5>
+    <version>3.0.21</version>
+    <time>1598726155</time>
+    <user>dimstar_suse</user>
+    <comment>- freeradius-server-radiusd-logrotate.patch: fix permissions in
+  logrotate global section (bsc#1170505, bsc#1174905)</comment>
+    <requestid>829736</requestid>
+  </revision>
 </revisionlist>

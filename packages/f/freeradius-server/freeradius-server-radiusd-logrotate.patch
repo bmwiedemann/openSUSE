@@ -1,8 +1,14 @@
-Index: freeradius-server-3.0.14/suse/radiusd-logrotate
+Index: freeradius-server-3.0.21/suse/radiusd-logrotate
 ===================================================================
---- freeradius-server-3.0.14.orig/suse/radiusd-logrotate
-+++ freeradius-server-3.0.14/suse/radiusd-logrotate
-@@ -16,13 +16,18 @@ notifempty
+--- freeradius-server-3.0.21.orig/suse/radiusd-logrotate
++++ freeradius-server-3.0.21/suse/radiusd-logrotate
+@@ -11,19 +11,23 @@ missingok
+ compress
+ delaycompress
+ notifempty
+-su radiusd radiusd
+ 
+ #
  #  The main server log
  #
  /var/log/radius/radius.log {
@@ -21,7 +27,7 @@ Index: freeradius-server-3.0.14/suse/radiusd-logrotate
  	nocreate
  	size=+1024k
  }
-@@ -31,6 +36,7 @@ notifempty
+@@ -32,6 +36,7 @@ su radiusd radiusd
  #  SQL log files
  #
  /var/log/radius/sqllog.sql {
@@ -29,7 +35,7 @@ Index: freeradius-server-3.0.14/suse/radiusd-logrotate
  	nocreate
  	size=+2048k
  }
-@@ -43,6 +49,7 @@ notifempty
+@@ -44,6 +49,7 @@ su radiusd radiusd
  # second technique, you will need another cron job that removes old
  # detail files.  You do not need to comment out the below for method #2.
  /var/log/radius/radacct/*/detail {

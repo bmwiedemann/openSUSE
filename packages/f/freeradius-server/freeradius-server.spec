@@ -55,7 +55,7 @@ Release:        0
 Summary:        RADIUS Server
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Networking/Radius/Servers
-Url:            http://www.freeradius.org/
+URL:            http://www.freeradius.org/
 Source:         ftp://ftp.freeradius.org/pub/freeradius/%{name}-%{version}.tar.bz2
 Source99:       ftp://ftp.freeradius.org/pub/freeradius/%{name}-%{version}.tar.bz2.sig
 # keyring downloaded via link @ ftp://ftp.freeradius.org/pub/freeradius/README

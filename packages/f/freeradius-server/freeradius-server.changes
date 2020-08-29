@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 11:32:15 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- freeradius-server-radiusd-logrotate.patch: fix permissions in
+  logrotate global section (bsc#1170505, bsc#1174905)
+
+-------------------------------------------------------------------
 Tue Mar 24 15:31:22 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - update to 3.0.21 (jsc#SLE-11896)
