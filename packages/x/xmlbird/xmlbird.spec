@@ -1,7 +1,7 @@
 #
 # spec file for package xmlbird
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname libxmlbird
 %define sover 1
 Name:           xmlbird
-Version:        1.2.10
+Version:        1.2.11
 Release:        0
 Summary:        XML parser
 License:        LGPL-3.0-or-later
