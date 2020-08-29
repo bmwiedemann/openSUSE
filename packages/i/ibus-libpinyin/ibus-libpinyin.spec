@@ -18,10 +18,10 @@
 
 
 Name:           ibus-libpinyin
-Version:        1.11.92
+Version:        1.11.93
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/ibus-libpinyin
 Source0:        https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
@@ -49,7 +49,8 @@ BuildRequires:  pkgconfig(lua)
 %endif
 
 %description
-It includes a Chinese Pinyin input method and a Chinese ZhuYin (Bopomofo) input method based on libpinyin for IBus.
+It includes a Chinese Pinyin input method and a Chinese ZhuYin (Bopomofo) input
+method based on libpinyin for IBus.
 
 %prep
 %setup -q
@@ -87,13 +88,14 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/%{name}/base.lua
 %{_datadir}/%{name}/user.lua
 %{_datadir}/%{name}/db/english.db
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/libpinyin.appdata.xml
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/db
+%dir %{_datadir}/metainfo
 %{_datadir}/%{name}/icons
 %{_datadir}/%{name}/setup
+%{_datadir}/%{name}/network.txt
 %{_datadir}/%{name}/db/strokes.db
+%{_datadir}/metainfo/libpinyin.appdata.xml
 %{_datadir}/ibus
 %{_datadir}/glib-2.0/schemas/com.github.libpinyin.ibus-libpinyin.gschema.xml
 

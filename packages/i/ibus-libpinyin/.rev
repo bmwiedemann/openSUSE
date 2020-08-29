@@ -240,4 +240,15 @@
   * Fix bugs</comment>
     <requestid>789028</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>952292cc0ef22aeee75edc974459f6df</srcmd5>
+    <version>1.11.93</version>
+    <time>1598726283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.11.93
+  * switch to use GPLv3+ license
+  * support network dictionary
+  * bug fixes (forwarded request 829919 from hillwood)</comment>
+    <requestid>829920</requestid>
+  </revision>
 </revisionlist>
