@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 19:00:52 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.9.2:
+  * Fixing some issues with tree overlay in Freemind and
+    Freeplane imports.
+  * Fixing application crash when exporting to Freemind.
+  * Merge branch 'freeplane_crash'
+
+-------------------------------------------------------------------
 Thu Jul 16 18:37:38 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.9.1:
