@@ -24,12 +24,12 @@ Summary:        A non-persistent in-memory data storage backend for Django
 License:        BSD-3-Clause
 URL:            https://github.com/waveaccounting/dj-inmemorystorage
 Source:         https://files.pythonhosted.org/packages/source/d/dj-inmemorystorage/dj-inmemorystorage-%{version}.tar.gz
-BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django
+Requires:       python-Django >= 1.11
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
