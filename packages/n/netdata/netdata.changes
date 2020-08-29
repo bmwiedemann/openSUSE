@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 26 19:08:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.24.0:
+ * The v1.24.0 release of the Netdata Agent brings enhancements to the breadth of metrics we collect with a new generic Prometheus/OpenMetrics collector and enhanced storage and querying with a new multi-host database mode.
+
+* Add generic Prometheus/OpenMetrics collector (#9644, @ilyam8)
+* Add locking between different collectors for the same application, implemented in different technologies (#9584, @vlvkobal), (#9564, @ilyam8)
+* Implement multihost database (#9556, @stelfrag)
+* Add alarms for FreeBSD interface errors (#8340, @lassebm)
+* Many bugfixes, see https://github.com/netdata/netdata/releases/tag/v1.24.0
+
+-------------------------------------------------------------------
 Thu Jul 16 15:57:11 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to v1.23.2:
