@@ -1,7 +1,7 @@
 #
 # spec file for package python-QtPy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,16 +27,14 @@ URL:            https://github.com/spyder-ide/qtpy
 Source:         https://files.pythonhosted.org/packages/source/Q/QtPy/QtPy-%{version}.tar.gz
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  xvfb-run
 Requires:       python-qt5
-Requires:       python-sip
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  xvfb-run
 # /SECTION
 %python_subpackages
 
@@ -53,32 +51,30 @@ Basically, you write your code as if you were using PyQt5 but import qt from
 %prep
 %setup -q -n QtPy-%{version}
 sed -i 's/\r$//' LICENSE.txt
+rm qtpy/tests/runtests.py
 
 %build
 %python_build
 
 %install
 %python_install
-%{python_expand chmod a+x %{buildroot}%{$python_sitelib}/qtpy/tests/runtests.py
-sed -i "s|^#!%{_bindir}/env python$|#!%__$python|" %{buildroot}%{$python_sitelib}/qtpy/tests/runtests.py
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/qtpy/tests/
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/qtpy/tests/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export QT_HASH_SEED=0
 export PYTHONDONTWRITEBYTECODE=1
 mkdir empty
 pushd empty
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-xvfb-run --server-args="-screen 0 1920x1080x24" py.test-%{$python_bin_suffix} ../qtpy/tests/
+%{python_expand # pytest-xvfb unfortunately fails here
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+xvfb-run --server-args="-screen 0 1920x1080x24" pytest-%{$python_bin_suffix} -v ../qtpy/tests/
 }
 popd
 
 %files %{python_files}
 %doc AUTHORS.md CHANGELOG.md README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/qtpy
+%{python_sitelib}/QtPy-%{version}-py*.egg-info
 
 %changelog
