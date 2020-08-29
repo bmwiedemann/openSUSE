@@ -26,6 +26,9 @@ License:        MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/jab/bidict
 Source:         https://files.pythonhosted.org/packages/source/b/bidict/bidict-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM dont-limit-versions.patch mcepl@suse.com
+# yet another evidence that upper limit on versions is bad idea
+Patch0:         dont-limit-versions.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,7 +48,7 @@ BuildArch:      noarch
 Bidirectional map implementation and related functionality.
 
 %prep
-%setup -q -n bidict-%{version}
+%autosetup -p1 -n bidict-%{version}
 
 %build
 export LANG=en_US.UTF-8
