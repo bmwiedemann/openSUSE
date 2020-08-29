@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 26 07:23:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.14:
+  * Fix another Fuzzer issue with Ogawa::IData allocating too much memory
+  because of a malicious file.  Add tests for Fuzzer issues:
+  24846, 24853, 24598, 25051, and 25081. (PR296)
+  * Remove Murmur3 from the LICENSE.txt since it was moved into the public domain
+  a while ago, and is reflected as such in the code. (Issue 292)
+  * Fix uninitialized member variable in OTypedGeomParam. (PR290)
+  * Remove some unused local functions. (Issue 293)
+
+-------------------------------------------------------------------
 Tue Aug 18 07:14:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.7.13:
