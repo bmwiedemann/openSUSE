@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 17 11:51:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.2.8:
+  * released version, includes the cherry picks
+- remove 695c0881101435a57d24c84d04cbcb79eec49903.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Jun  5 14:14:14 UTC 2020 - olaf@aepfle.de
 
 - Add 695c0881101435a57d24c84d04cbcb79eec49903.patch to fix build

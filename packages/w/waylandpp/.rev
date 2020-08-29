@@ -25,4 +25,12 @@
     <comment>- Add 695c0881101435a57d24c84d04cbcb79eec49903.patch to fix build</comment>
     <requestid>811846</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>36b2a7c7c4ce639168d3229d5892cfc4</srcmd5>
+    <version>0.2.8</version>
+    <time>1598726434</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830119</requestid>
+  </revision>
 </revisionlist>

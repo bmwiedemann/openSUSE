@@ -1,7 +1,7 @@
 #
 # spec file for package waylandpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 0
 
 Name:           waylandpp
-Version:        0.2.7.20191014T190311.4007255
+Version:        0.2.8
 Release:        0
 Summary:        Wayland C++ bindings
 License:        BSD-2-Clause AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/NilsBrause/waylandpp
+URL:            https://github.com/NilsBrause/waylandpp
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         695c0881101435a57d24c84d04cbcb79eec49903.patch
-BuildRequires:  cmake >= 3.13
+BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(egl)
@@ -35,6 +34,9 @@ BuildRequires:  pkgconfig(pugixml) >= 1.4
 BuildRequires:  pkgconfig(wayland-client) >= 1.11.0
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
+%if 0%{?sle_version} == 150100
+BuildRequires:  Mesa-KHR-devel
+%endif
 
 %description
 Wayland C++ bindings
