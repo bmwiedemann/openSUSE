@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 29 02:59:26 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.5. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-5-has-been-released/8824
+  boo#1175910
+
+  + Initial support for OVN virtual networks
+  + Initial bpf syscall interception
+  * Support for native terminal device allocation
+  * VGA console now working on Windows
+  * Improved handling of remote storage pools
+  * forkdns and forkproxy now running under AppArmor confinement
+  + lxc move now let’s you select a cluster target too
+
+-------------------------------------------------------------------
 Sat Aug  1 07:14:32 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.4. The full upstream changelog is available from:
