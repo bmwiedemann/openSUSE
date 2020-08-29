@@ -30,7 +30,7 @@ Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
 Group:          System/Boot
-Source:         shim-15+git47-lp152.4.3.1.x86_64.rpm
+Source:         shim-15+git47-lp152.4.5.1.x86_64.rpm
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 

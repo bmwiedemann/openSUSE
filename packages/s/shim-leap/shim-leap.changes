@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 27 07:27:54 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim to 15+git47-lp152.4.5.1 from openSUSE Leap 15.2
+  + shim-install: install MokManager to \EFI\boot to process the
+    pending MOK request (bsc#1175626, bsc#1175656)
+
+-------------------------------------------------------------------
 Tue Aug 11 06:36:37 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update shim to 15+git47-lp152.4.3.1 from openSUSE Leap 15.2
