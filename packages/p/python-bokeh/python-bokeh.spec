@@ -17,14 +17,14 @@
 
 
 # Tests fail due to missing git data,
-# and building the JS from source doesn't work (tested as of version 2.0.2)
+# and building the JS from source doesn't work (tested as of version 2.2.0)
 %bcond_with    tests
 
 # PACKAGE NO LONGER SUPPORTS PYTHON2
 %define skip_python2 1
 
 Name:           python-bokeh
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -42,6 +42,7 @@ BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module packaging >= 16.8}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
+BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module tornado >= 5}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4}
 %endif
@@ -53,6 +54,7 @@ Requires:       python-PyYAML >= 3.10
 Requires:       python-numpy >= 1.11.3
 Requires:       python-packaging >= 16.8
 Requires:       python-python-dateutil >= 2.1
+Requires:       python-selenium
 Requires:       python-tornado >= 5
 Requires:       python-typing_extensions >= 3.7.4
 Requires(post): update-alternatives

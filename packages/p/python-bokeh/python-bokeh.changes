@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug 25 19:27:08 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.0:
+  * Features:
+    - gh#bokeh/bokeh#3653: [component: server] Use a different
+      error for "can't open socket" vs "404".
+    - gh#bokeh/bokeh#6864: [component: bokehjs] DataTable autoEdit
+      expose.
+    - gh#bokeh/bokeh#8595: [component: bokehjs] [Feature request]
+      Allow DataTable to take its natural height.
+    - gh#bokeh/bokeh#8924: [component: bokehjs] Allow to derive
+      ColorBar's low/high from data.
+    - gh#bokeh/bokeh#9169: [FEATURE] SVG export for gridplot.
+    - gh#bokeh/bokeh#9654: [FEATURE] Iterate over submodels of a
+      model and draw submodel graph.
+    - gh#bokeh/bokeh#9956: [component: bokehjs] [FEATURE]
+      varea_stack support in bokehjs.
+    - gh#bokeh/bokeh#10179: [component: bokehjs] [FEATURE] Allow
+      any number in spinner using step=None.
+    - gh#bokeh/bokeh#10265: [FEATURE] Add a DocumentReady event.
+    - gh#bokeh/bokeh#10374: [FEATURE] Allow defining custom format
+      for NaNs in DataTable NumberFormatter.
+    - gh#bokeh/bokeh#10066: [component: bokehjs] Add support for
+      copying canvas to clipboard.
+    - gh#bokeh/bokeh#10353: Enhancements for DataTable.
+  * Bug fixes and tasks: Too many to list, see
+    <https://github.com/bokeh/bokeh/blob/2.2.0/CHANGELOG>.
+- Add Requires: python-selenium, required for image I/O functions;
+  add to BuildRequires when testing is enabled (doesn't currently
+  work because needs data from the internet).
+
+-------------------------------------------------------------------
 Wed Jun 24 02:00:53 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 2.1.1
