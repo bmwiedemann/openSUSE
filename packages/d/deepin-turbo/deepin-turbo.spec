@@ -75,7 +75,7 @@ The deepin-turbo-devel package contains the header files for deepin-turbo.
 %license COPYING.LESSER
 %{_bindir}/%{name}-single-instance
 %{_bindir}/%{name}-invoker
-%{_libexecdir}/%{name}
+%{_prefix}/lib/%{name}
 %{_userunitdir}/%{name}-booster-dtkwidget.service
 %{_libdir}/lib%{name}.so
 

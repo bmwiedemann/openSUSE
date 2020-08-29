@@ -23,4 +23,12 @@
     <comment>- Use %{_userunitdir} instead of abusing %{_libexecdir}…. (forwarded request 827816 from dimstar)</comment>
     <requestid>827963</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ba92f41ac125dc55bd849c147a634750</srcmd5>
+    <version>0.0.3</version>
+    <time>1598726660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830428</requestid>
+  </revision>
 </revisionlist>
