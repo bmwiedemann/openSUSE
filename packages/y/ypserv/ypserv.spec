@@ -1,7 +1,7 @@
 #
 # spec file for package ypserv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018, 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,22 +15,16 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
 Name:           ypserv
 Version:        4.1
 Release:        0
 Summary:        YP - (NIS)-Server
 License:        GPL-2.0-only
-Group:          Productivity/Networking/NIS
 URL:            https://github.com/thkukuk/ypserv
 Source:         ypserv-%{version}.tar.xz
-Source1:        ypserv.init
-Source2:        yppasswdd.init
-Source3:        ypxfrd.init
-Source4:        sysconfig.ypserv
+Source1:        default.yppasswdd
+Source2:        default.ypserv
+Source3:        default.ypxfrd
 Source6:        ypserv.service
 Source7:        yppasswdd.service
 Source8:        ypxfrd.service
@@ -43,11 +37,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(libtirpc)
-Requires:       gawk
+Requires:       /usr/bin/gawk
 Requires:       make
 Requires:       rpcbind
-Requires(post): %fillup_prereq
-%{?systemd_requires}
+Requires(post): /usr/bin/grep
 
 %description
 The Network Information Service (NIS) provides a simple network
@@ -76,19 +69,21 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-mkdir -p %{buildroot}%{_fillupdir}
+mkdir -p %{buildroot}%{_sysconfdir}
 mkdir -p %{buildroot}%{_libexecdir}/yp
+mkdir -p %{buildroot}%{_datadir}/yp
 mkdir -p %{buildroot}%{_unitdir}
-mkdir -p %{buildroot}%{_initddir}
 DOCDIR=%{_defaultdocdir}/yp
 install -d -m 755 $RPM_BUILD_ROOT${DOCDIR}
 install -d -m 755 $RPM_BUILD_ROOT${DOCDIR}/ypserv
 #install contrib/ypslave $RPM_BUILD_ROOT/usr/sbin
-install -m 644 etc/ypserv.conf %{buildroot}%{_sysconfdir}/
-install -m 644 etc/securenets %{buildroot}%{_libexecdir}/yp/securenets.example
-mv %{buildroot}%{_localstatedir}/yp/Makefile %{buildroot}%{_libexecdir}/yp/ypMakefile
-# install sysconfig.ypserv
-install -m 644 %{SOURCE4} %{buildroot}%{_fillupdir}
+install -m 644 etc/ypserv.conf %{buildroot}%{_datadir}/yp/
+install -m 644 etc/securenets %{buildroot}%{_datadir}/yp/securenets.example
+mv %{buildroot}%{_localstatedir}/yp/Makefile %{buildroot}%{_datadir}/yp/ypMakefile
+# install default files
+install -D -m 644 %{SOURCE1} %{buildroot}%{_prefix}/etc/default/yppasswdd
+install -D -m 644 %{SOURCE2} %{buildroot}%{_prefix}/etc/default/ypserv
+install -D -m 644 %{SOURCE3} %{buildroot}%{_prefix}/etc/default/ypxfrd
 # install ypserv.conf in tmpfiles.d
 mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
 install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/tmpfiles.d/ypserv.conf
@@ -111,10 +106,18 @@ rm %{buildroot}%{_prefix}/lib*/yp/match_printcap
 %service_add_pre ypxfrd.service
 
 %post
-%{fillup_only -n ypserv}
 %service_add_post ypserv.service
 %service_add_post yppasswdd.service
 %service_add_post ypxfrd.service
+if [ -f /etc/sysconfig/ypserv ]; then
+    grep ^YPSERV_ARGS= /etc/sysconfig/ypserv > /etc/default/ypserv
+    grep ^YPXFRD_ARGS= /etc/sysconfig/ypserv > /etc/default/ypxfrd
+    grep ^YPPASSWDD_ARGS= /etc/sysconfig/ypserv >> /etc/default/yppasswdd
+    grep ^YPPWD_SRCDIR= /etc/sysconfig/ypserv >> /etc/default/yppasswdd
+    grep ^YPPWD_CHFN= /etc/sysconfig/ypserv >> /etc/default/yppasswdd
+    grep ^YPPWD_CHSH= /etc/sysconfig/ypserv >> /etc/default/yppasswdd
+    mv /etc/sysconfig/ypserv /etc/sysconfig/ypserv.rpmsave
+fi
 
 %preun
 %service_del_preun ypserv.service
@@ -140,12 +143,15 @@ fi
 %files
 %license COPYING
 %doc NEWS README
-%{_fillupdir}/sysconfig.ypserv
-%config(noreplace) %{_sysconfdir}/ypserv.conf
+%{_prefix}/etc/default/yppasswdd
+%{_prefix}/etc/default/ypserv
+%{_prefix}/etc/default/ypxfrd
 %dir %{_libexecdir}/yp
 %{_libexecdir}/yp/yppasswdd-systemd-exec
-%{_libexecdir}/yp/securenets.example
-%{_libexecdir}/yp/ypMakefile
+%dir %{_datadir}/yp
+%{_datadir}/yp/securenets.example
+%{_datadir}/yp/ypMakefile
+%{_datadir}/yp/ypserv.conf
 %{_prefix}/lib/tmpfiles.d/ypserv.conf
 %{_unitdir}/ypserv.service
 %{_unitdir}/yppasswdd.service

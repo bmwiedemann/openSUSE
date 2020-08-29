@@ -1,0 +1,6 @@
+# To overwrite variables, create a file /etc/default/ypserv with
+# the variables which should be changed.
+
+# Additional arguments for ypserv. See manual page
+# for possible options.
+YPSERV_ARGS=""

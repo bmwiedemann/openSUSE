@@ -11,15 +11,6 @@
  
  # These are commands which this Makefile needs to properly rebuild the
  # NIS databases. Don't change these unless you have a good reason.
-@@ -62,7 +63,7 @@
- # taken from YPSRCDIR.
- #
- YPSRCDIR = /etc
--YPPWDDIR = /etc
-+YPPWDDIR = $(shell . /etc/sysconfig/ypserv; echo $$YPPWD_SRCDIR)
- YPBINDIR = @YPBINDIR@
- YPSBINDIR = @SBINDIR@
- YPDIR = @YPMAPDIR@
 @@ -107,8 +108,9 @@
  # If you don't want some of these maps built, feel free to comment
  # them out from this list.

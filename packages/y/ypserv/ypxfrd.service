@@ -6,7 +6,8 @@ After=network.target rpcbind.service ypserv.service
 [Service]
 Type=notify
 NotifyAccess=all
-EnvironmentFile=-/etc/sysconfig/ypserv
+EnvironmentFile=-/usr/etc/default/ypxfrd
+EnvironmentFile=-/etc/default/ypxfrd
 ExecStart=/usr/sbin/rpc.ypxfrd -f $YPXFRD_ARGS
 
 [Install]
