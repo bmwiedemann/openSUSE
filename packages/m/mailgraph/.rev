@@ -47,4 +47,12 @@
     <comment>fix for boo#1138214 (forwarded request 760089 from computersalat)</comment>
     <requestid>760090</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>8fe3668885cb53cb12e1f171437d5f40</srcmd5>
+    <version>1.14</version>
+    <time>1598726548</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830134</requestid>
+  </revision>
 </revisionlist>
