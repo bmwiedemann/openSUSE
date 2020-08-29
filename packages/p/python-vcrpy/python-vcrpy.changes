@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:54:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.1.0:
+  * Add support for httpx!! (thanks @herdigiorgi)
+  * Add the new allow_playback_repeats option (thanks @tysonholub)
+  * Several aiohttp improvements (cookie support, multiple headers with same
+    key) (Thanks @pauloromeira)
+  * Use enums for record modes (thanks @aaronbannin)
+  * Bugfix: Do not redirect on 304 in aiohttp (Thanks @royjs)
+  * Bugfix: Fix test suite by switching to mockbin (thanks @jairhenrique)
+
+-------------------------------------------------------------------
 Mon Apr 20 07:29:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove patch 0001-Revert-v4.0.x-Remove-legacy-python-and-add-python3.8.patch

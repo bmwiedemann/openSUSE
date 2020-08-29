@@ -78,4 +78,19 @@
   as we dropped py2 integration support on Tumbleweed</comment>
     <requestid>795684</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>77bd4b213212f4e90c92180ece8e81cd</srcmd5>
+    <version>4.1.0</version>
+    <time>1598726566</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0:
+  * Add support for httpx!! (thanks @herdigiorgi)
+  * Add the new allow_playback_repeats option (thanks @tysonholub)
+  * Several aiohttp improvements (cookie support, multiple headers with same
+    key) (Thanks @pauloromeira)
+  * Use enums for record modes (thanks @aaronbannin)
+  * Bugfix: Do not redirect on 304 in aiohttp (Thanks @royjs)
+  * Bugfix: Fix test suite by switching to mockbin (thanks @jairhenrique)</comment>
+    <requestid>830210</requestid>
+  </revision>
 </revisionlist>
