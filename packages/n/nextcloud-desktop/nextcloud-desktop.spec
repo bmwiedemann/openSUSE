@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -54,6 +54,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(cloudproviders)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(openssl) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
@@ -222,6 +223,9 @@ done
 %dir %{_datadir}/icons/hicolor/1024x1024/
 %dir %{_datadir}/icons/hicolor/1024x1024/apps/
 %{_datadir}/icons/hicolor/*/apps/Nextcloud*.*
+%dir %{_datadir}/cloud-providers/
+%{_datadir}/cloud-providers/com.nextcloudgmbh.Nextcloud.ini
+%{_datadir}/dbus-1/services/com.nextcloudgmbh.Nextcloud.service
 
 %files lang
 %{_datadir}/nextcloud/i18n/

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 28 17:58:16 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.1
+  - desktop#2300 Support client builds on VS2019 (QLinkedList is deprecated)
+  - desktop#2302 Do not build for Eoan
+  - desktop#2288 Windows shell extensions: Use custom GUIDs via CMake and prepare MSI reg
+  - desktop#2292 Present sharing of E2EE files from the main dialog too
+  - desktop#2292 Disable context menu actions for E2EE files and folders
+  - desktop#2281 Show the "Display mnemonic" button only when we know e2e is supported
+  - desktop#2278 Make sure we don't assert when calling fileStatus
+- Enable libcloudprovider again.
+
+-------------------------------------------------------------------
 Fri Aug 21 07:26:59 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update to 3.0.0
