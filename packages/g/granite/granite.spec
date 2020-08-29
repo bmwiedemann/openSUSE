@@ -21,7 +21,7 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 Name:           granite
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        An extension of GTK+ libraries
 License:        LGPL-3.0-or-later AND LGPL-3.0-or-later
