@@ -25,15 +25,16 @@
 %define   import_path     v2ray.com/core
 
 Name:           v2ray-core
-Version:        4.26.0
+Version:        4.27.4
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
 Group:          Productivity/Networking/Web/Proxy
-URL:            https://github.com/v2ray/v2ray-core
-Source0:        https://github.com/v2ray/v2ray-core/archive/v%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/v2fly/v2ray-core
+Source0:        https://github.com/v2fly/v2ray-core/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        v2ray.service
+Source3:        v2ray@.service
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
@@ -80,12 +81,13 @@ mv %{_builddir}/go/bin/main %{_builddir}/go/bin/v2ctl
 %gosrc
 %gofilelist
 
-install -d %{buildroot}%{_datadir}/%{name}
-install -m0644 release/config/geoip.dat %{buildroot}%{_datadir}/%{name}/
-install -m0644 release/config/geosite.dat %{buildroot}%{_datadir}/%{name}/
+install -d %{buildroot}%{_datadir}/%{project}
+install -m0644 release/config/geoip.dat %{buildroot}%{_datadir}/%{project}/
+install -m0644 release/config/geosite.dat %{buildroot}%{_datadir}/%{project}/
 
 install -d %{buildroot}%{_unitdir}
 install -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/
+install -m0644 %{SOURCE3} %{buildroot}%{_unitdir}/
 
 install -d %{buildroot}%{_sysconfdir}/%{project}
 install -m0644 release/config/*.json %{buildroot}%{_sysconfdir}/%{project}/
@@ -96,16 +98,16 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
 %fdupes %{buildroot}
 
 %pre
-%service_add_pre %{project}.service
+%service_add_pre %{project}.service %{project}@.service
 
 %post
-%service_add_post %{project}.service
+%service_add_post %{project}.service %{project}@.service
 
 %preun
-%service_del_preun %{project}.service
+%service_del_preun %{project}.service %{project}@.service
 
 %postun
-%service_del_postun %{project}.service
+%service_del_postun %{project}.service %{project}@.service
 
 %files
 %doc README.md
@@ -113,9 +115,10 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
 %{_bindir}/v2ray
 %{_bindir}/v2ctl
 %{_unitdir}/%{project}.service
+%{_unitdir}/%{project}@.service
 %dir %{_sysconfdir}/%{project}
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/*
+%dir %{_datadir}/%{project}
+%{_datadir}/%{project}/*
 %config(noreplace) %{_sysconfdir}/%{project}/*.json
 %{_sbindir}/rcv2ray
 

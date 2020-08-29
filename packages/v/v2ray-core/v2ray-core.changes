@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Aug 29 03:26:28 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.27.4
+  * Features
+    - Dotless domain support in built-in DNS @Vigilans
+    - Support source port matching in routing config @Vigilans
+    - Make HTTP outbound 0-rtt @darhwa
+    - Add asset location auto search @vcptr
+    - Add PROXY protocol support to TCP & WebSocket inbound @lucifer9 and @rprx
+    - VLESS PREVIEW 1.5 @rprx
+  * Fixs
+    - Amending domain matcher with returning array of all matches @Vigilans
+    - Refactor DNS Server to record original rule of domain matchers @Vigilans
+    - New Systemd unit file @dctxmei
+    - Fix: logging empty rules & DNS @Loyalsoldier
+    - Fix a typo @dikaixu1999
+    - Shadowsocks Detection defense @studentmain and @xiaokangwang
+    - Update Old file @Loyalsoldier
+  * Breaking Changes
+    - VLESS fallback -> fallbacks,
+    see https://www.v2fly.org/config/protocols/vless.html
+    - Route matching order changes
+  * Warning
+    - In version v4.28.0 and later, VMess AEAD will be enabled when alterId is
+    set to 0
+- Update in 4.27.0
+  * Feature
+    - VLESS PREVIEW 1.3 https://www.v2fly.org/config/protocols/vless.html
+  * Fix
+    - Shadowsocks supports cipher as None @yuhan6665
+    - Add access log for Dokodemo inbound @lucifer9
+    - Some typo fixes @DuckSoft
+    - Add Linux riscv64 release @rprx
+    - Fix the error of missing curl in Dockerfile @kallydev
+    - GitHub Actions push to docker hub @kallydev
+    - Optimize SO_REUSEPORT implementation @Vigilans
+    - DOH supports HTTP/2 @darhwa
+    - Apply Sockopt from inbound config to Dokodemo Tproxy's response connection
+   @Vigilans
+  * Breaking Change
+    - VMessAEAD has been updated and needs both client and server to be the same
+    version for it to work.
+    - Release file structure changes.
+  * Warning
+    - In version v4.28.0 and later, VMess AEAD will be enabled when alterId is
+    set to 0
+
+-------------------------------------------------------------------
 Sun Aug  2 09:20:46 UTC 2020 - Sam Yu <ytz1995@hotmail.com>
 
 - Fix out-of-box usability
