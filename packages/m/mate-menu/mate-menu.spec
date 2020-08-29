@@ -80,7 +80,7 @@ python3 setup.py install \
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
-%{_libexecdir}/%{name}/
+%{_prefix}/lib/%{name}/
 %{python3_sitelib}/%{_name}/
 %{python3_sitelib}/%{_name}-*
 %{_datadir}/%{name}/

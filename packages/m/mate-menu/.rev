@@ -168,4 +168,12 @@
     <comment>- Update to version 20.04.1.</comment>
     <requestid>780258</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1ecbd951ba41b0d38d2d52264b0786b2</srcmd5>
+    <version>20.04.1</version>
+    <time>1598726383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830054</requestid>
+  </revision>
 </revisionlist>
