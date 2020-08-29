@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 17:45:58 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to remove dependency on nose
+  (gh#jplana/python-etcd#274).
+
+-------------------------------------------------------------------
 Thu Apr 12 18:34:09 CEST 2018 - kukuk@suse.de
 
 - Convert to singlespec (build python2 and python3 package) (bsc#1095835)

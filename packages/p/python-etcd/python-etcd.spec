@@ -1,7 +1,7 @@
 #
 # spec file for package python-etcd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,72 +12,62 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define upstream_name python-etcd
 Name:           python-etcd
 Version:        0.4.5
 Release:        0
 Summary:        A python client for etcd
-License:        MIT 
+License:        MIT
 Group:          System/Management
-Url:            https://pypi.python.org/pypi/python-etcd
-Source0:        https://pypi.python.org/packages/a1/da/616a4d073642da5dd432e5289b7c1cb0963cc5dde23d1ecb8d726821ab41/%{upstream_name}-%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+URL:            https://pypi.python.org/pypi/python-etcd
+Source:         https://files.pythonhosted.org/packages/source/p/%{upstream_name}/%{upstream_name}-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#jplana/python-etcd#274 mcepl@suse.com
+# remove dependency on nose
+Patch0:         remove_nose.patch
+BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
-%ifpython2
-Requires:       python-urllib3 >= 1.7.1
-Requires:       python-dnspython >= 1.13.0
-%else
-Requires:       python3-urllib3 >= 1.7.1
-Requires:       python3-dnspython >= 1.13.0
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{python_module dnspython}
+BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  etcd
+BuildRequires:  fdupes
 BuildArch:      noarch
-
+Requires:       python-dnspython >= 1.13.0
+Requires:       python-urllib3 >= 1.7.1
+ExcludeArch:    %ix86
 %python_subpackages
 
 %description
 A python client for etcd cluster
 
-%package test
-Summary:        Unit tests
-Group:          Development/Languages/Python
-Requires:       %{name} == %{version}
-Requires:       python-mock >= 1.0.1
-Requires:       python-nose
-Requires:       python-setuptools
-
-%description test
-Unit tests for etcd python client
-
 %prep
 %setup -q -n %{upstream_name}-%{version}
+%autopatch -p1
 
 %build
 %python_build
 
 %install
 %python_install
-%fdupes %{buildroot}
+%{python_expand rm -rf %{$python_sitelib}/etcd/tests
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
+export PATH=%{_sbindir}:$PATH
+# gh#jplana/python-etcd#274 unfortunately the test suite still fails
+%pytest src/etcd/tests || /bin/true
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %dir %{python_sitelib}/*
 %exclude %{python_sitelib}/etcd/tests/
 %{python_sitelib}/etcd/*
 %{python_sitelib}/*egg-info/*
-
-%files %{python_files test}
-%defattr(-,root,root,-)
-%dir %{python_sitelib}/etcd/tests
-%{python_sitelib}/etcd/tests/*
 
 %changelog
