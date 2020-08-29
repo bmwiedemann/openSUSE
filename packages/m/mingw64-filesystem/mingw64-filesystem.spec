@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-filesystem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 %define debug_package %{nil}
+%define _rpmlibdir    %{_prefix}/lib/rpm
 Name:           mingw64-filesystem
-Version:        20200816
+Version:        20200825
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
-Group:          Development/Libraries
-URL:            http://hg.et.redhat.com/misc/fedora-mingw--devel/
+Group:          Development/Libraries/Other
+Url:            http://hg.et.redhat.com/misc/fedora-mingw--devel/
 Source0:        COPYING
 Source1:        macros.mingw64
 Source2:        mingw64.sh
@@ -31,7 +32,7 @@ Source3:        mingw64-find-debuginfo.sh
 Source4:        mingw64-find-requires.sh
 Source5:        mingw64-find-provides.sh
 Source6:        mingw64-scripts.sh
-Source7:        mingw64-rpmlint.config
+Source7:        mingw64-rpmlintrc
 Source8:        mingw64-install-post.sh
 Source9:        mingw64-find-lang.sh
 Source10:       languages
@@ -47,7 +48,7 @@ Provides:       mingw64(uxtheme.dll)
 # TODO: The available DLL's can be identified by the
 # available import libraries of the mingw64-runtime package.
 # needed by mingw64-libqt5-qtbase 
-Provides:       mingw64(d2d1.dll) 
+Provides:       mingw64(d2d1.dll)
 Provides:       mingw64(d3d11.dll)
 Provides:       mingw64(dwrite.dll)
 Requires:       mingw64-cross-breakpad-tools
@@ -77,6 +78,8 @@ sed 's/@VERSION@/%{version}/' < %{SOURCE4} > mingw64-find-requires.sh
 mkdir -p %{buildroot}
 
 mkdir -p %{buildroot}%{_prefix}/lib
+
+mkdir -p %{buildroot}%{_libexecdir}
 install -m 755 %{SOURCE6} %{buildroot}%{_libexecdir}/mingw64-scripts
 
 mkdir -p %{buildroot}%{_bindir}
@@ -94,7 +97,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/macros.mingw64
 install -m 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/rpm/macros.mingw64-cmake
 
 mkdir -p %{buildroot}%{_sysconfdir}/rpmlint
-install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/rpmlint/
+install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/rpmlint/mingw64-rpmlint.config
 
 mkdir -p %{buildroot}%{_prefix}/x86_64-w64-mingw32
 
@@ -136,18 +139,17 @@ mkdir -p %{buildroot}%{_prefix}/x86_64-w64-mingw32/sys-root/mingw/share/man
 mkdir -p %{buildroot}%{_prefix}/x86_64-w64-mingw32/sys-root/mingw/share/man/man{1,2,3,4,5,6,7,8,9,n}
 
 # NB. NOT _libdir
-mkdir -p %{buildroot}%{_libexecdir}/rpm
-install -m 0755 %{SOURCE3} %{buildroot}%{_libexecdir}/rpm
-install -m 0755 %{SOURCE4} %{buildroot}%{_libexecdir}/rpm
-install -m 0755 %{SOURCE5} %{buildroot}%{_libexecdir}/rpm
-install -m 0755 %{SOURCE8} %{buildroot}%{_libexecdir}/rpm
-install -m 0755 %{SOURCE9} %{buildroot}%{_libexecdir}/rpm
+mkdir -p %{buildroot}%{_rpmlibdir}
+install -m 0755 %{SOURCE3} %{buildroot}%{_rpmlibdir}
+install -m 0755 %{SOURCE4} %{buildroot}%{_rpmlibdir}
+install -m 0755 %{SOURCE5} %{buildroot}%{_rpmlibdir}
+install -m 0755 %{SOURCE8} %{buildroot}%{_rpmlibdir}
+install -m 0755 %{SOURCE9} %{buildroot}%{_rpmlibdir}
 
 # cmake support
-mkdir -p %{buildroot}%{_libexecdir}/rpm
-install -m 0755 %{SOURCE12} %{buildroot}%{_libexecdir}/rpm
-mkdir -p %{buildroot}%{_libexecdir}/rpm/fileattrs
-install -m 0755 %{SOURCE13} %{buildroot}%{_libexecdir}/rpm/fileattrs
+install -m 0755 %{SOURCE12} %{buildroot}%{_rpmlibdir}
+mkdir -p %{buildroot}%{_rpmlibdir}/fileattrs
+install -m 0644 %{SOURCE13} %{buildroot}%{_rpmlibdir}/fileattrs
 
 # Create the locale directories:
 while read LANG ; do
@@ -169,12 +171,12 @@ done < %{SOURCE11}
 %config %{_sysconfdir}/rpm/macros.mingw64-cmake
 %config %{_sysconfdir}/profile.d/mingw64.sh
 %config %{_sysconfdir}/rpmlint/mingw64-rpmlint.config
-%config %{_libexecdir}/rpm/mingw64-cmake.prov
-%config %{_libexecdir}/rpm/fileattrs/mingw64-cmake.attr
+%{_rpmlibdir}/mingw64-cmake.prov
+%{_rpmlibdir}/fileattrs/mingw64-cmake.attr
 %{_bindir}/mingw64-*
 %{_libexecdir}/mingw64-scripts
 %{_prefix}/x86_64-w64-mingw32/
-%{_libexecdir}/rpm/mingw64-*
+%{_rpmlibdir}/mingw64-*
 %dir %{_prefix}/x86_64-w64-mingw32/sys-root/mingw/lib/cmake
 
 %changelog

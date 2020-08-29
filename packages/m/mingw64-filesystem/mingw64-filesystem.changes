@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 25 19:27:01 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20200825
+- Fix
+  * W: non-etc-or-var-file-marked-as-conffile /usr/libexec/rpm/fileattrs/mingw64-cmake.attr
+  * W: non-etc-or-var-file-marked-as-conffile /usr/libexec/rpm/mingw64-cmake.prov
+  * W: script-without-shebang /usr/libexec/rpm/fileattrs/mingw64-cmake.attr
+  * W: non-standard-group Development/Libraries
+  * installing mingw64-scripts on Tumbleweed
+  * not using present rpmlint config for building this package
+
+-------------------------------------------------------------------
 Thu Aug 20 12:06:28 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Add missing Fortran case into macros.mingw64* (boo#1173990)
