@@ -1,7 +1,7 @@
 #
 # spec file for package tinyproxy
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tinyproxy
-Version:        1.8.4
+Version:        1.10.0
 Release:        0
 Summary:        Minimalist WWW proxy
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
-Url:            https://banu.com/tinyproxy/
-
-#Git-Clone:	git://git.banu.com/tinyproxy
-#Source:         https://banu.com/pub/tinyproxy/1.8/%name-%version.tar.bz2
-#1.8.4 made from Git tag
-Source:         %name-%version.tar.xz
+URL:            https://tinyproxy.github.io/
+Source:         https://github.com/tinyproxy/tinyproxy/releases/download/%version/tinyproxy-%version.tar.xz
 Source1:        %name.logrotate
 Patch1:         tinyproxy-conf.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -47,19 +42,18 @@ deployments where a full featured HTTP proxy is required, but the
 system resources for a larger proxy are unavailable.
 
 %prep
-%setup -qn %name
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
-%configure
-make %{?_smp_mflags}
+%configure --bindir="%_prefix/sbin"
+%make_build
 
 %install
 %make_install
 b="%buildroot"
-install -d -m0750 "%buildroot/var/log/%name"
-install -D -m0644 "%{S:1}" "$b/%_sysconfdir/logrotate.d/%name"
+install -d -m0750 "$b/%_localstatedir/log/%name"
+install -D -m0644 "%SOURCE1" "$b/%_sysconfdir/logrotate.d/%name"
 
 mkdir -p "$b/%_unitdir" "$b/%_prefix/lib/tmpfiles.d"
 cat >>"$b/%_unitdir/tinyproxy.service" <<-EOF
@@ -68,7 +62,7 @@ cat >>"$b/%_unitdir/tinyproxy.service" <<-EOF
 	After=network.target named.service nss-lookup.service
 	[Service]
 	Type=simple
-	ExecStart=/usr/sbin/tinyproxy -d
+	ExecStart=%_sbindir/tinyproxy -d
 	CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID
 	[Install]
 	WantedBy=multi-user.target
@@ -76,13 +70,16 @@ EOF
 cat >>"$b/%_prefix/lib/tmpfiles.d/tinyproxy.conf" <<-EOF
 	d /run/tinyproxy 0755 tinyproxy tinyproxy -
 EOF
+install -d -m 755 "$b/%_sbindir"
 ln -sf service "$b/%_sbindir/rc%name"
 
+rm -rf "$b%_datadir/doc/%name"
+
 %pre
-getent group tinyproxy >/dev/null || groupadd -r tinyproxy || :
+getent group tinyproxy >/dev/null || groupadd -r tinyproxy
 getent passwd tinyproxy >/dev/null || \
 	useradd -c "Tinyproxy" -d "%_datadir/%name" -g tinyproxy \
-	-r -s /bin/false tinyproxy || :
+	-r -s /bin/false tinyproxy
 %service_add_pre tinyproxy.service
 
 %post
@@ -96,14 +93,16 @@ systemd-tmpfiles --create tinyproxy.conf || :
 %service_del_postun tinyproxy.service
 
 %files
-%defattr(-,root,root)
-%config(noreplace) %_sysconfdir/*.conf
+%doc NEWS README README.md
+%dir %_sysconfdir/%name
+%config(noreplace) %_sysconfdir/%name/*.conf
 %config %_sysconfdir/logrotate.d/%name
-%_sbindir/*
+%_sbindir/tinyproxy
+%_sbindir/rctinyproxy
 %_mandir/man*/*
 %_datadir/%name
 %_unitdir/*.service
 %_prefix/lib/tmpfiles.d/
-%attr(750,%name,root) /var/log/%name
+%attr(750,%name,root) %_localstatedir/log/%name
 
 %changelog

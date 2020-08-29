@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Aug 25 19:19:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not suppress errors from groupadd/useradd
+
+-------------------------------------------------------------------
+Thu Aug 20 13:36:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Configuration file has moved from /etc/tinyproxy.conf to
+    /etc/tinyproxy/tinyproxy.conf.
+  * Add support for basic HTTP authentication
+  * Add socks upstream support
+  * Log to stdout if no logfile is specified
+  * Activate reverse proxy by default
+  * Support bind with transparent mode
+  * Allow multiple listen statements in the configuration
+  * Fix CVE-2017-11747: Create PID file before dropping privileges.
+  * Fix CVE-2012-3505: algorithmic complexity DoS in hashmap
+  * Bugfixes
+  * BB#110: fix algorithmic complexity DoS in hashmap
+  * BB#106: fix CONNECT requests with IPv6 literal addresses as host
+  * BB#116: fix invalid free for GET requests to ipv6 literal address
+  * BB#115: Drop supplementary groups
+  * BB#109: Fix crash (infinite loop) when writing to log file fails
+  * BB#74: Create log and pid files after we drop privs
+  * BB#83: Use output of id instead of $USER
+   
+-------------------------------------------------------------------
 Tue Jan  6 10:12:12 UTC 2015 - jengelh@inai.de
 
 - Provide service file instead of script
