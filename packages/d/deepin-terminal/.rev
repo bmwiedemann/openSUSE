@@ -31,4 +31,12 @@
     <comment>- Support Leap 15.2 (forwarded request 773372 from hillwood)</comment>
     <requestid>773373</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5e977dbf21e24d9ace0db2200f5205b7</srcmd5>
+    <version>3.2.6</version>
+    <time>1598726663</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075) (forwarded request 829996 from gmbr3)</comment>
+    <requestid>830429</requestid>
+  </revision>
 </revisionlist>

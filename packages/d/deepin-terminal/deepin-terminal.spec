@@ -97,10 +97,10 @@ make %{?_smp_mflags}
 %doc README.md CHANGELOG.md
 %license LICENSE
 %dir %{_datadir}/%{name}
-%dir %{_libexecdir}/%{name}
+%dir %{_prefix}/lib/%{name}
 %{_bindir}/%{name}
-%{_libexecdir}/%{name}/ssh_login.sh
-%{_libexecdir}/%{name}/zssh
+%{_prefix}/lib/%{name}/ssh_login.sh
+%{_prefix}/lib/%{name}/zssh
 %{_datadir}/%{name}/style.css
 %{_datadir}/%{name}/theme
 %{_datadir}/%{name}/image
