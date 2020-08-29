@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 27 03:10:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.010005
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010005	2020-08-26
+
+   - Improvements to $AvoidCallbacks support for
+     Type::Tiny::{Class,Role,Duck,Enum,Union,Intersection}, and LaxNum, Ref,
+     RegexpRef, FileHandle, Object, Overload, and Tied types from
+     Types::Standard.
+
+-------------------------------------------------------------------
 Wed Aug 19 03:15:37 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.010004
