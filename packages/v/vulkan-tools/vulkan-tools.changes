@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:32:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.151
+  * vulkaninfo: fix device ext list having bad items
+  * vulkaninfo: add `--summary` option that shows basic system info
+  * Add support for VK_EXT_directfb_surface extension
+
+-------------------------------------------------------------------
 Sun Aug  9 10:09:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.148
