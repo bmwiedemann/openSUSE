@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-pycodestyle
-Version:        2.1.3
+Version:        2.2.0
 Release:        0
 Summary:        Pytest plugin to run pycodestyle
 License:        MIT
