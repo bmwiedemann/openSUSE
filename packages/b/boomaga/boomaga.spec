@@ -122,7 +122,7 @@ fi
 %{_datadir}/dbus-1/services/org.boomaga.service
 %{_datadir}/icons/hicolor/*/*/%{name}.*
 %{_datadir}/mime/packages/%{name}.xml
-%{_libexecdir}/cups/backend/%{name}
+%{_prefix}/lib/cups/backend/%{name}
 %{_mandir}/man?/*
 
 %files lang -f %{name}.lang
