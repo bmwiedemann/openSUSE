@@ -110,7 +110,7 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} install
 
 install -Dm 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/sysctl.d/60-ocserv.conf
 %if 0%{suse_version} >= 1500
-install -D -m 644 %{SOURCE6} %{buildroot}%{_libexecdir}/firewalld/services/ocserv.xml
+install -D -m 644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/ocserv.xml
 %endif
 
 install -d %{buildroot}%{_sysconfdir}/ocserv/certificates
@@ -149,9 +149,9 @@ install -m 0644 doc/systemd/socket-activated/ocserv.service %{buildroot}%{_unitd
 %config %{_sysconfdir}/ocserv
 %config(noreplace) %{_sysconfdir}/sysctl.d/60-ocserv.conf
 %if 0%{suse_version} >= 1500
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/ocserv.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/ocserv.xml
 %endif
 %{_bindir}/occtl
 %{_bindir}/ocpasswd
