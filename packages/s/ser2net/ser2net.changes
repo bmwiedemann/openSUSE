@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 24 21:11:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.2
+  * Add user lists, so you can specify which users are allowed to
+    use which connections.
+  * Split up dataxfer.c into smaller files, since it was far too
+    large.
+  * Converted to SPDX license identifiers in the files.
+  * tcpd on the controller interface had the wrong name, make it
+    the same as the 3.5 release.
+
+-------------------------------------------------------------------
 Sun Aug  9 14:31:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
-- Update to version 4.2.0
+- Update to version 4.2.1
   controller:
   * Added a yaml mode for the controller interface. This should
     make having a program talk to the controller much easier.
