@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-nose
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-nose
-Version:        1.4.6
+Version:        1.4.7
 Release:        0
 Summary:        Django test runner that uses python-nose
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module dj-database-url}
 BuildRequires:  %{python_module nose >= 1.2.1}
-BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

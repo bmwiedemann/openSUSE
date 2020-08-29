@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 26 12:52:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.4.7
+  * Document Django 2.2 support, no changes needed
+  * Move project to `Jazzband.co <https://jazzband.co>`_
+  * Fix fixture loading on MySQL
+
+-------------------------------------------------------------------
 Tue Dec 11 14:34:31 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias from descriptions.
