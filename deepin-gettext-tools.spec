@@ -57,7 +57,7 @@ make install \
              %{?_smp_mflags}
 
 #Fix permission
-chmod +x %{buildroot}%{_libexecdir}/%{name}/*.py
+chmod +x %{buildroot}%{_prefix}/lib/%{name}/*.py
 
 %files
 %defattr(-,root,root)
@@ -66,9 +66,9 @@ chmod +x %{buildroot}%{_libexecdir}/%{name}/*.py
 %{_bindir}/deepin-desktop-ts-convert
 %{_bindir}/deepin-update-pot
 %{_bindir}/deepin-policy-ts-convert
-%dir %{_libexecdir}/%{name}
-%{_libexecdir}/%{name}/generate_mo.py
-%{_libexecdir}/%{name}/update_pot.py
+%dir %{_prefix}/lib/%{name}
+%{_prefix}/lib/%{name}/generate_mo.py
+%{_prefix}/lib/%{name}/update_pot.py
 
 %changelog
 
