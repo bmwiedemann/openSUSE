@@ -2,7 +2,7 @@
 # spec file for package python-junos-eznc
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-junos-eznc
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
