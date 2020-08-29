@@ -268,4 +268,12 @@
   * Fix for the compile-time AsciiDoc check (implemented by Brandon Munger).</comment>
     <requestid>710934</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9ca0ed9527052f78ef5c726a0c45585d</srcmd5>
+    <version>4.6.0</version>
+    <time>1598726011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829617</requestid>
+  </revision>
 </revisionlist>

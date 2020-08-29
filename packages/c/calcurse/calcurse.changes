@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 16 17:27:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * XDG base directory support: While using ~/.calcurse/ is still supported for
+  backwards compatibility, we recommend putting your configuration files in
+  ~/.config/calcurse/ and your data files in ~/.local/share/calcurse/ instead
+  (implemented by Nitroretro).
+  * Configurable text for empty days
+  * Support RET to set the todo item priority to 0
+  * Various improvements in iCal imports
+  * Escape necessary characters in SUMMARY on export (implemented by Kelvin Jackson).
+  * Update notification bar properly when certain recurrent appointments are deleted (implemented by Lars Henriksen).
+  * Fix save of interactively imported data (implemented by Lars Henriksen).
+  * Restore ability to edit recurrent items without exceptions (reported and fixed by Lars Henriksen).
+  * Fix monthly and yearly recurrence algorithms for frequencies greater than one (reported and fixed by Lars Henriksen).
+  * Fix DST issues (reported by Lars Henriksen and others, fixed by Lars Henriksen). 
+
+-------------------------------------------------------------------
 Tue Jun 18 16:56:25 UTC 2019 - mvetter@suse.com
 
 - Update to 4.5.0:
