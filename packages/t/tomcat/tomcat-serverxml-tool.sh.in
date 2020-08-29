@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JAR=/usr/lib/tomcat/serverxmltool.jar
+JAR=@LIBEXECDIR@/tomcat/serverxmltool.jar
 SERVERXML=/etc/tomcat/server.xml
 
 function usage {

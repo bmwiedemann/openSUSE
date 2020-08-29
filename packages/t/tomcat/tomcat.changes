@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 26 06:04:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid hardcoding /usr/lib as libexecdir
+
+-------------------------------------------------------------------
 Wed Jul 29 20:48:14 UTC 2020 - Matei Albu <malbu@suse.com>
 
 - Don't give write permissions for the tomcat group on files and

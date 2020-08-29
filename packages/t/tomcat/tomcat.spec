@@ -65,7 +65,7 @@ Source30:       tomcat-preamble
 Source31:       tomcat-server
 Source32:       tomcat-named.service
 Source33:       tomcat-serverxml-tool.tar.gz
-Source34:       tomcat-serverxml-tool.sh
+Source34:       tomcat-serverxml-tool.sh.in
 Source1000:     tomcat-rpmlintrc
 Source1001:     https://archive.apache.org/dist/tomcat/tomcat-%{major_version}/v%{version}/src/%{packdname}.tar.gz.asc
 Source1002:     %{name}.keyring
@@ -579,7 +579,8 @@ EOF
 
 # Install tool used to edit server.xml
 pushd %{_builddir}/tomcat-serverxml-tool
-install -m 0755 %{SOURCE34} \
+cat %{SOURCE34} | sed 's#@LIBEXECDIR@#%{_libexecdir}#g' >tomcat-serverxml-tool.sh
+install -m 0755 tomcat-serverxml-tool.sh \
     %{buildroot}%{_libexecdir}/%{name}/serverxml-tool.sh
 cp serverxmltool.jar %{buildroot}%{_libexecdir}/%{name}/
 popd
