@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 21 13:45:31 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Fix provides directive (bsc#1175609, bsc#1175610)
+  + The provides directive must set a version or update does not work
+    as expected
+
+-------------------------------------------------------------------
 Mon Aug  3 20:44:15 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 5.1.2 (bsc#1173357, bsc#1174847)

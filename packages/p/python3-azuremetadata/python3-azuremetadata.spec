@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define upstream_name azuremetadata
 Name:           python3-azuremetadata
 Version:        5.1.2
+Release:        0
 # Packaged renamed in SLE15
-Provides:       azuremetadata
+Provides:       azuremetadata = %{version}
 Obsoletes:      azuremetadata < 5.0.0
 Conflicts:      regionServiceClientConfigAzure <= 0.0.4
 Conflicts:      regionServiceClientConfigSAPAzure <= 1.0.1
-Release:        0
 Summary:        Python module for collecting instance metadata from Azure
 License:        GPL-3.0-or-later
 Group:          System/Management
-Url:            https://github.com/SUSE-Enceladus/azuremetadata
+URL:            https://github.com/SUSE-Enceladus/azuremetadata
 Source0:        %{name}-%{version}.tar.bz2
 Requires:       python3
 Recommends:     util-linux
