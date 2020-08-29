@@ -207,4 +207,12 @@
     <comment>- Update to version 20.04.0.</comment>
     <requestid>780262</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>929009d46be8aa036683ba8c36325984</srcmd5>
+    <version>20.04.0</version>
+    <time>1598726391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830055</requestid>
+  </revision>
 </revisionlist>

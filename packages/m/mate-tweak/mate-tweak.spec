@@ -84,7 +84,7 @@ python3 setup.py install \
   --prefix=%{_prefix}
 
 # Give gi-find-deps.sh a bait.
-ln -s %{_bindir}/%{name} %{buildroot}%{_libexecdir}/%{name}/%{name}.py
+ln -s %{_bindir}/%{name} %{buildroot}%{_prefix}/lib/%{name}/%{name}.py
 
 %fdupes %{buildroot}%{python3_sitelib}/
 %find_lang %{name}
@@ -94,7 +94,7 @@ ln -s %{_bindir}/%{name} %{buildroot}%{_libexecdir}/%{name}/%{name}.py
 %doc README.md
 %{_bindir}/%{name}
 %{_bindir}/marco-*
-%{_libexecdir}/%{name}/
+%{_prefix}/lib/%{name}/
 %{python3_sitelib}/%{_name}-*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/marco-*.desktop
