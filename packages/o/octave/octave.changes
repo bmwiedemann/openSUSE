@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:01:26 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Mon Feb 17 13:17:38 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Avoid stealing SIGCHLD from QProcess::waitForFinished, which

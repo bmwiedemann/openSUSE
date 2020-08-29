@@ -84,7 +84,6 @@ BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
 # required for help/doc called from the tests
 BuildRequires:  makeinfo
-BuildRequires:  memory-constraints
 %if %{with imagemagick}
 BuildRequires:  pkgconfig(ImageMagick++)
 %else
@@ -218,7 +217,6 @@ This package contains documentation for Octave.
 sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{SOURCE3}
 
 %build
-%limit_build -m 700
 
 # rebuild makefiles after Patch0
 autoreconf -i -s -f
