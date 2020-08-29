@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 08:43:06 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Require pkgconfig(gl) for the devel package to supply needed
+  include GL/gl.h
+
+-------------------------------------------------------------------
 Wed Mar 25 21:26:36 UTC 2020 - Simon Puchert <simonpuchert@alice.de>
 
 - Update to version 3.3.2

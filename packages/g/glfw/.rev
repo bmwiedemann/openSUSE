@@ -94,4 +94,14 @@
     <comment></comment>
     <requestid>789824</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>39a13a550e0f57fad9b33d68c086a6bb</srcmd5>
+    <version>3.3.2</version>
+    <time>1598726131</time>
+    <user>dimstar_suse</user>
+    <comment>- Require pkgconfig(gl) for the devel package to supply needed
+  include GL/gl.h
+</comment>
+    <requestid>829717</requestid>
+  </revision>
 </revisionlist>

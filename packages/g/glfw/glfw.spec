@@ -66,6 +66,7 @@ Summary:        Development files for GLFW, an OpenGL application framework
 Group:          Development/Libraries/C and C++
 Requires:       cmake
 Requires:       libglfw%{sover} = %{version}
+Requires:       pkgconfig(gl)
 
 %description -n libglfw-devel
 GLFW is a framework for OpenGL application development. It is a
