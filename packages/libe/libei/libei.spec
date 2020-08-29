@@ -29,11 +29,11 @@ Source:         %name-%version.tar.xz
 Patch1:         system-munit.diff
 Patch2:         ver.diff
 BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  protobuf-c
 BuildRequires:  pkgconfig(libprotobuf-c)
-BuildRequires:  pkgconfig(protobuf-lite)
 BuildRequires:  pkgconfig(munit)
-BuildRequires:  ninja
+BuildRequires:  pkgconfig(protobuf-lite)
 
 %description
 libei is a library for Emulated Input, targeting the Wayland stack.
@@ -60,6 +60,7 @@ libei is a library for Emulated Input, targeting the Wayland stack.
 
 %build
 %meson --includedir="%_includedir/%name"
+%meson_build
 
 %install
 %meson_install
