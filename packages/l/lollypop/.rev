@@ -1423,4 +1423,19 @@
     artist view (glgo#World/lollypop#2513).</comment>
     <requestid>825548</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>c73ae4e83ca0ddb22e24cb6a0bc81700</srcmd5>
+    <version>1.3.6</version>
+    <time>1598726522</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.6:
+  * Bug fixes.
+
+- Update to version 1.3.5:
+  * Fix wrong lyrics displayed (glgo#World/lollypop#2517).
+  * Fix a crash (glgo#World/lollypop#2516).
+- Update meson dependency version.
+- Add missing dependency on python3-gst.</comment>
+    <requestid>830346</requestid>
+  </revision>
 </revisionlist>

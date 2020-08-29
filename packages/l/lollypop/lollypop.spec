@@ -17,7 +17,7 @@
 
 
 Name:           lollypop
-Version:        1.3.4
+Version:        1.3.6
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  desktop-file-utils
 BuildRequires:  intltool
 BuildRequires:  itstool
-BuildRequires:  meson >= 0.41
+BuildRequires:  meson >= 0.46
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
@@ -43,6 +43,7 @@ Requires:       python3-beautifulsoup4
 Requires:       python3-cairo
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
+Requires:       python3-gst
 Recommends:     easytag
 Recommends:     kid3-cli
 Recommends:     youtube-dl
@@ -86,7 +87,7 @@ search results from %{name}.
 
 %prep
 %autosetup -p1
-# Don't use env interpreter so that the rpm dependency detection work
+# Don't use env interpreter so that the rpm dependency detection works
 sed -i 's;/usr/bin/env python3;/usr/bin/python3;' lollypop.in search-provider/lollypop-sp.in
 
 %build
