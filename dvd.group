@@ -400,8 +400,8 @@
     <package name="dhcp-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dialog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="diffutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="diffutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="diffutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="diffutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ding" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ding-dict-de_en" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dirmngr" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1912,7 +1912,7 @@
     <package name="libdrm-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libdrm2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdrm_amdgpu1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdrm_intel1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libdrm_intel1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdrm_nouveau2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdrm_radeon1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdrpm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2188,6 +2188,7 @@
     <package name="libhandle1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libhandy-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhangul1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libharfbuzz-gobject0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libharfbuzz-icu0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libhavege2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2484,7 +2485,7 @@
     <package name="libpcaudio0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpci3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpciaccess-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libpciaccess0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpciaccess0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcre1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpcre2-16-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2612,7 +2613,7 @@
     <package name="librasqal3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librav1e0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libraw1394-11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libraw19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libraw20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librcc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librcd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librdf0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4801,6 +4802,7 @@
     <package name="typelib-1_0-GtkClutter-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GtkSource-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Handy-0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-HarfBuzz-0_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="typelib-1_0-IBus-1_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="typelib-1_0-JavaScriptCore-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Json-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5449,7 +5451,6 @@
     <package name="liblttng-ust0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="liblz4-1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="liblzma5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libmfx" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmfx1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmount1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libndctl6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->

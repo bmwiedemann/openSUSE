@@ -93,8 +93,6 @@ unsorted:
   - Mesa-libGL1-32bit: [x86_64] 
   - Mesa-libGLESv1_CM-devel 
   - Mesa-libGLESv1_CM-devel-32bit: [x86_64] 
-  - Mesa-libGLESv1_CM1 
-  - Mesa-libGLESv2-2 
   - Mesa-libGLESv2-devel 
   - Mesa-libGLESv2-devel-32bit: [x86_64] 
   - Mesa-libGLESv3-devel 
@@ -107,6 +105,10 @@ unsorted:
   - Mesa-libglapi-devel 
   - Mesa-libglapi-devel-32bit: [x86_64] 
   - Mesa-libglapi0-32bit: [x86_64] 
+  - Mesa-vulkan-device-select 
+  - Mesa-vulkan-device-select-32bit: [x86_64] 
+  - Mesa-vulkan-overlay 
+  - Mesa-vulkan-overlay-32bit: [x86_64] 
   - MicroOS-release-appliance-kubic 
   - MicroOS-release-dvd 
   - MicroOS-release-kubic-dvd 
@@ -10016,7 +10018,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_102 
+  - libgsoap-2_8_106 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue-devel 
@@ -10138,7 +10140,6 @@ unsorted:
   - libhandy-devel 
   - libhangul-devel 
   - libhangul1-32bit: [x86_64] 
-  - libharfbuzz-gobject0 
   - libharfbuzz-gobject0-32bit: [x86_64] 
   - libharfbuzz-icu0-32bit: [x86_64] 
   - libharfbuzz-subset0 
@@ -10906,7 +10907,9 @@ unsorted:
   - libmetis_5_1_0-gnu-hpc 
   - libmetrics-devel 
   - libmetrics0 
-  - libmfx-devel: [x86_64] # devel package of dvd:libmfx 
+  - libmfx: [x86_64] 
+  - libmfx-devel: [x86_64] # devel package of dvd:libmfx1 
+  - libmfx-samples: [x86_64] 
   - libmgl-fltk7_5_0 
   - libmgl-glut7_5_0 
   - libmgl-mpi7_5_0 
@@ -11528,7 +11531,6 @@ unsorted:
   - libparpack2-openmpi3 
   - libparpack2-openmpi3-32bit: [x86_64] 
   - libparserutils-devel 
-  - libparserutils-doc 
   - libparserutils0 
   - libparted0-32bit: [x86_64] 
   - libpasswdqc0 
@@ -20111,6 +20113,7 @@ unsorted:
   - python3-coreschema 
   - python3-cotyledon 
   - python3-cov-core 
+  - python3-covdefaults 
   - python3-coverage 
   - python3-coverage-config-reload-plugin 
   - python3-coverage-env-plugin 
@@ -20233,6 +20236,7 @@ unsorted:
   - python3-django-braces 
   - python3-django-ckeditor 
   - python3-django-classy-tags 
+  - python3-django-codemod 
   - python3-django-collectd-rest 
   - python3-django-compressor 
   - python3-django-contrib-comments 
@@ -21972,6 +21976,7 @@ unsorted:
   - python3-spyder-kernels 
   - python3-spyder-unittest 
   - python3-sqlalchemy-migrate 
+  - python3-sqlite-utils 
   - python3-sqlitedict 
   - python3-sqlparse 
   - python3-sqlsoup 
@@ -24781,6 +24786,7 @@ unsorted:
   - rust-srpm-macros 
   - rust-std-static 
   - rustfmt 
+  - rustscan 
   - rxp 
   - rxtx-java 
   - rxtx-java-javadoc 
@@ -34064,7 +34070,6 @@ unsorted:
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
-  - typelib-1_0-HarfBuzz-0_0 
   - typelib-1_0-Hinawa-2_0 
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
