@@ -1,7 +1,7 @@
 #
 # spec file for package libosip2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define soname libosip2-12
+
 Name:           libosip2
-Version:        5.0.0
+Version:        5.1.1
 Release:        0
-Summary:        Implementation of SIP--RFC 3261
-License:        LGPL-2.1+
+Summary:        Implementation of SIP (RFC 3261)
+License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
-Url:            http://www.fsf.org/software/osip/osip.html
+URL:            http://www.fsf.org/software/osip/osip.html
 Source:         http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         libosip2-5.0.0.patch
-Patch1:         SIP_body_len_underflow.patch
 BuildRequires:  docbook2x
-BuildRequires:  gcc-c++
+BuildRequires:  gcc
 BuildRequires:  gperf
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is the GNU oSIP library. It has been designed to provide the
@@ -40,10 +39,20 @@ Internet community with a simple way to support the Session Initiation
 Protocol. SIP is described in the RFC 3261, which is available at
 http://www.ietf.org/rfc/rfc3261.txt.
 
+%package -n %{soname}
+Summary:        Implementation of SIP (RFC 3261)
+Group:          System/Libraries
+
+%description -n %{soname}
+This is the GNU oSIP library. It has been designed to provide the
+Internet community with a simple way to support the Session Initiation
+Protocol. SIP is described in the RFC 3261, which is available at
+http://www.ietf.org/rfc/rfc3261.txt.
+
 %package devel
-Summary:        Implementation of SIP--RFC 3261
+Summary:        Header files for the GNU SIP implementation
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       %{soname} = %{version}
 Requires:       glibc-devel
 Provides:       libosip2:/usr/include/osip2/osip.h
 
@@ -56,36 +65,29 @@ http://www.ietf.org/rfc/rfc3261.txt.
 %prep
 %setup -q
 %patch0
-%patch1 -p2
 
 %build
-%if 0%{?suse_version} >= 1300
-# autotools on sle11 are to old for this
 autoreconf -fiv
-%endif
 %configure \
   --enable-pthread \
   --enable-mt \
   --enable-sysv \
   --enable-gperf \
-  --disable-static \
-  --with-pic
+  --disable-static
 make %{?_smp_mflags}
 
 %install
-%makeinstall
+%make_install
 rm -f %{buildroot}%{_libdir}/*.la
 
-%post -p /sbin/ldconfig
+%post -n %{soname} -p /sbin/ldconfig
 
-%postun -p /sbin/ldconfig
+%postun -n %{soname} -p /sbin/ldconfig
 
-%files
-%defattr(-,root,root)
+%files -n %{soname}
 %{_libdir}/lib*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/osipparser2
 %{_includedir}/osip2
 %{_libdir}/lib*.so

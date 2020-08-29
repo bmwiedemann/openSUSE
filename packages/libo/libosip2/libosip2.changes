@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:26:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop old specfile constructs and excess Provides lines.
+
+-------------------------------------------------------------------
+Sat Aug 15 23:40:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.1.1:
+  * fix vulnerability report: Authentication-Info or Proxy-Authentication-Info are affected by a buffer overflow when building sip messages.
+  * fix vulnerability report: when boundary only contains one quote, strncpy will use the unsigned value of -1 as size parameter.
+  * fix: avoid several memory leaks detected in the SDP parser upon invalid SDP formats.
+  * fix bug #57467: infinite loop in sdp_message_a_attribute_del_at_index
+  * fix bug #56071: Heap-buffer-overflow in osip_util_replace_all_lws function in osip_message_parse.c
+  * fix to reject any non compliant answer with missing version digits.
+
+-------------------------------------------------------------------
+Wed Feb  5 18:30:36 UTC 2020 - David Sugar <tychosoft@gmail.com>
+
+- Update to 5.1.0
+  * See package, very many changes since prior 5.0.0 release.
+- drop patch already in 5.1.0
+  SIP_body_len_underflow.patch
+- make package so library naming compliant with opensuse library versioning
+- pre-requisite for updating to libeXosip2 5.1.0
+
+-------------------------------------------------------------------
 Thu Apr 20 16:14:57 CEST 2017 - ro@suse.de
 
 - drop patch already in 5.0.0
@@ -54,7 +80,7 @@ Thu Apr 20 15:38:40 CEST 2017 - ro@suse.de
   * improve android time compensation.
 - rename libosip2-4.1.0.patch to libosip2-5.0.0.patch
 - drop libosip2-4.1.0-pthread.patch, obsolete
- 
+
 
 -------------------------------------------------------------------
 Sun May 25 21:03:52 UTC 2014 - fisiu@opensuse.org
@@ -157,7 +183,7 @@ Tue Dec 18 11:38:04 CET 2007 - mskibbe@suse.de
 -------------------------------------------------------------------
 Wed May 16 15:15:22 CEST 2007 - ro@suse.de
 
-- branch off devel package 
+- branch off devel package
 
 -------------------------------------------------------------------
 Wed Jan 25 21:37:38 CET 2006 - mls@suse.de
@@ -188,10 +214,10 @@ Tue Jan 13 18:13:26 CET 2004 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Oct 20 18:26:01 CEST 2003 - ro@suse.de
 
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Fri Sep 26 00:46:50 CEST 2003 - ro@suse.de
 
-- package created version 2.0.3-cvs 
+- package created version 2.0.3-cvs
 
