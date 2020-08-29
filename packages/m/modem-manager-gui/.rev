@@ -70,4 +70,22 @@
     <comment></comment>
     <requestid>746766</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8f1e998b8e9fe8ecec119da66a3b312b</srcmd5>
+    <version>0.0.20</version>
+    <time>1598726351</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.20:
+  * Various fixes of memory management errors
+  * Fixes in help formatting
+  * Fix for building without Appindicator package
+  * Switch from libappindicator to libayatana-appindicator
+  * Deprecation of GNOME application menu and GTimeVal
+  * Fix in procfs parser
+  * More secure polkit interaction
+  * Translations update
+  * Version 0.0.20 release
+- remove fix-crash.patch (upstream)</comment>
+    <requestid>829958</requestid>
+  </revision>
 </revisionlist>

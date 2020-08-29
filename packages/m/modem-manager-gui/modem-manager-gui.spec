@@ -1,7 +1,7 @@
 #
 # spec file for package modem-manager-gui
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           modem-manager-gui
-Version:        0.0.19.1
+Version:        0.0.20
 Release:        0
 Summary:        Modem Manager GUI
 License:        GPL-3.0-or-later
 Group:          Hardware/Mobile
-Url:            http://linuxonly.ru/cms/page.php?7
+URL:            http://linuxonly.ru/cms/page.php?7
 Source:         http://download.tuxfamily.org/gsf/source/modem-manager-gui-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE E: env-script-interpreter (Badness: 9)
 # /etc/NetworkManager/dispatcher.d/95-mmgui-timestamp-notifier /usr/bin/env python3
@@ -33,10 +33,6 @@ Source:         http://download.tuxfamily.org/gsf/source/modem-manager-gui-%{ver
 # Alternatively, if the file should not be executed, then ensure that it is not
 # marked as executable or don't install it in a path that is reserved for executables.
 Patch0:         95-mmgui-timestamp-notifier.diff
-# PATCH-FIX-OPENSUSE bnc#1154301 Fix memory corruption because of wrong strsep()
-# usage. Fix segfault in strftime_l() because of timestamps from future.
-Patch1:         fix-crash.patch
-
 BuildRequires:  fdupes
 BuildRequires:  gdbm-devel
 BuildRequires:  itstool >= 1.2
@@ -67,9 +63,8 @@ Current features:
 %lang_package
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0
-%patch1 -p1
 
 %build
 %configure
