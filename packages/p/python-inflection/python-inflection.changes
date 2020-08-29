@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 08:35:11 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.5.1:
+ - fix: type hint config so they are available to mypy
+   @sanzoghenzo correctly pointed out that a `py.typed` file alone wasn't
+   enough to get the typing working, we also need to move inflection into
+   a package. fixes: #49
+
+-------------------------------------------------------------------
 Tue Jul 28 12:05:16 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.5.0:
