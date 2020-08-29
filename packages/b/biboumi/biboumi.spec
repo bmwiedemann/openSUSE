@@ -1,7 +1,7 @@
 #
 # spec file for package biboumi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 Tomáš Čech <sleep_walker@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           biboumi
-Version:        8.3
+Version:        8.5
 Release:        0
 Summary:        XMPP to IRC gateway
 License:        Zlib
 Group:          Productivity/Networking/IRC
 URL:            https://biboumi.louiz.org/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://git.louiz.org/biboumi/snapshot/biboumi-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git
@@ -67,7 +67,7 @@ It provides the following features:
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install

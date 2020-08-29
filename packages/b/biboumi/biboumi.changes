@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 26 19:30:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.5:
+  * Fix a build failure with GCC 10
+  * Fix a possible crash that could be caused by a very well timed identd query
+
+-------------------------------------------------------------------
 Fri Jun  1 22:43:35 UTC 2018 - benedikt@g5r.eu
 
 - Update to biboumi 8.3
