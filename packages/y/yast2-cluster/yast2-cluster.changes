@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 25 01:18:40 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1175648, fix UI label switch to turn off csync2 service
+- Version 4.3.3
+
+-------------------------------------------------------------------
+Wed Aug 19 09:51:43 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Correct firewall directory for %_libexecdir changes (bsc#1174075)
+- Version 4.3.2
+
+-------------------------------------------------------------------
 Mon Aug 10 17:05:37 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(cluster) into the spec file
