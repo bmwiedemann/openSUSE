@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 27 15:34:50 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1598542474.92e6c60c3:
+  * Use find in find_most_recent_event to only get one result
+  * Revert "Downgrade chromedriver to fix running Selenium tests within CI"
+  * Fix scheduling directly chained dependencies when not all children restarted
+  * Improve scheduler code (log messages, more compact style)
+  * Deduplicate test distribution listings in search
+  * Search job templates by name or description
+  * Add IPv6 support for localhost uploads
+  * Make localhost uploads from worker to webui faster
+  * Fix PRODUCT issue when trigger a particular job
+  * Add gru download assets by using job settings
+  * packaging: do not abuse %{_libexecdir} for systemd directories
+  * Merge module search results from the same file
+
+-------------------------------------------------------------------
 Sun Aug 23 03:27:05 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1598001550.b38db760a:
