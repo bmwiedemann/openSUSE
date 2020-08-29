@@ -1,7 +1,7 @@
 #
 # spec file for package translate-shell
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           translate-shell
-Version:        0.9.6.11
+Version:        0.9.6.12
 Release:        0
 Summary:        Command line translator using various online services as backends
 License:        Unlicense

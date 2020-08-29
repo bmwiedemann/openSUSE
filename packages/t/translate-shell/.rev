@@ -111,4 +111,15 @@
     <comment></comment>
     <requestid>731692</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>70dbf9201abe9aa73c854338d05038d8</srcmd5>
+    <version>0.9.6.12</version>
+    <time>1598726248</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.6.12
+  * Bing Microsoft Translator: fixed (#340)
+  * Added a Docker image (#336)
+  * Fixed other minor issues (#345, #339)</comment>
+    <requestid>829823</requestid>
+  </revision>
 </revisionlist>
