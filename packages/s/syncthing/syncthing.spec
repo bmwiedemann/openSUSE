@@ -27,7 +27,7 @@ Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}
 Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.14
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 

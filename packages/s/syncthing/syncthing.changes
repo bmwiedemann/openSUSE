@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 11:44:33 UTC 2020 - Marius Kittler <marius.kittler@suse.com>
+
+- Fix Leap build by requiring at least Go 1.14
+
+-------------------------------------------------------------------
 Tue Aug 18 11:46:09 UTC 2020 - Marius Kittler <marius.kittler@suse.com>
 
 - Prevent the build system to download Go modules which would require an
