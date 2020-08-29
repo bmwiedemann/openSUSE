@@ -1,6 +1,7 @@
---- Makefile.orig	2019-02-17 20:50:16.874724096 +0100
-+++ Makefile	2019-02-17 20:53:40.400556018 +0100
-@@ -19,7 +19,7 @@
+diff -Naur atop-2.5.0.orig/Makefile atop-2.5.0/Makefile
+--- atop-2.5.0.orig/Makefile	2020-07-30 23:18:00.229258992 +0200
++++ atop-2.5.0/Makefile	2020-07-30 23:22:03.727237162 +0200
+@@ -20,7 +20,7 @@
  PMPATH2  = /usr/lib64/pm-utils/sleep.d
  PMPATHD  = /usr/lib/systemd/system-sleep
  
@@ -9,7 +10,7 @@
  OBJMOD0  = version.o
  OBJMOD1  = various.o  deviate.o   procdbase.o
  OBJMOD2  = acctproc.o photoproc.o photosyst.o  rawlog.o ifprop.o parseable.o
-@@ -45,7 +45,7 @@
+@@ -46,7 +46,7 @@
  		$(CC) atopconvert.o -o atopconvert -lz $(LDFLAGS)
  
  netlink.o:	netlink.c
@@ -18,8 +19,8 @@
  
  clean:
  		rm -f *.o atop atopacctd atopconvert
-@@ -144,19 +144,19 @@
- 		then	mkdir -p $(DESTDIR)$(ROTPATH);	fi
+@@ -155,19 +155,19 @@
+ 		chmod 644      		$(DESTDIR)$(DEFPATH)/atop
  		#
  		cp atop   		$(DESTDIR)$(BINPATH)/atop
 -		chown root		$(DESTDIR)$(BINPATH)/atop
@@ -40,5 +41,5 @@
 -		chown root		$(DESTDIR)$(BINPATH)/atopconvert
 +		#chown root		$(DESTDIR)$(BINPATH)/atopconvert
  		chmod 0711 		$(DESTDIR)$(BINPATH)/atopconvert
- 		cp atop.daily    	$(DESTDIR)$(SCRPATH)
- 		chmod 0711 	 	$(DESTDIR)$(SCRPATH)/atop.daily
+ 		cp man/atop.1    	$(DESTDIR)$(MAN1PATH)
+ 		cp man/atopsar.1 	$(DESTDIR)$(MAN1PATH)

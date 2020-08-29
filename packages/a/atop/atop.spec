@@ -2,7 +2,7 @@
 #
 # spec file for package atop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 The openSUSE Project.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -20,14 +20,14 @@
 
 
 Name:           atop
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Monitor for System Resources and Process Activity
 License:        GPL-2.0-only
-Group:          System/Monitoring
-URL:            http://www.atoptool.nl/
-Source:         http://www.atoptool.nl/download/atop-%{version}.tar.gz
+URL:            https://www.atoptool.nl/
+Source0:        http://www.atoptool.nl/download/atop-%{version}.tar.gz
 Source1:        atop.desktop
+Source2:        atop.default
 Source99:       atop-rpmlintrc
 Patch1:         atop-makefile.patch
 BuildRequires:  gcc
@@ -54,11 +54,7 @@ and only shows the deviations since the previous interval.
 
 %package daemon
 Summary:        System Resource and Process Monitoring History Daemon
-Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
-Requires(post): permissions
-Recommends:     cron
-Recommends:     logrotate
 
 %description daemon
 Atop is an ASCII full-screen performance monitor, similar to the top
@@ -75,25 +71,24 @@ This subpackage contains the permanent monitoring daemon, to store history
 information about processes and system resources.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} \
+%make_build \
     	  OPTFLAGS="%{optflags} -fstack-protector" \
     	  CC="gcc"
 
 %install
 install -d "%{buildroot}%{_sbindir}"
+install -d "%{buildroot}%{_sysconfdir}/default"
+install -Dp -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/default/atop
+
 make systemdinstall DESTDIR=%{buildroot}
 
 rm -f "%{buildroot}%{_localstatedir}/log/atop"/*
 
 install -D -m0644 "atop.service" "%{buildroot}%{_usr}/lib/systemd/system/%{name}.service"
 install -D -m0644 "atopgpu.service" "%{buildroot}%{_usr}/lib/systemd/system/atopgpu.service"
-
-install -D -m 0644 atop.cronsystemd "%{buildroot}%{_sysconfdir}/cron.d/%{name}"
-
 install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.desktop"
 %if 0%{?suse_update_desktop_file:1}
 %suse_update_desktop_file -r "%{name}" System Monitor
@@ -102,28 +97,24 @@ install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.de
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatopacct
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatopgpu
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatop-rotate
 
 %pre daemon
-%service_add_pre atop.service atopgpu.service atopacct.service
+%service_add_pre atop.service atopgpu.service atopacct.service atop-rotate.service
 
 %post daemon
-%service_add_post atop.service atopgpu.service atopacct.service
-%set_permissions /etc/cron.d
+%service_add_post atop.service atopgpu.service atopacct.service atop-rotate.service
 
 %postun daemon
-%service_del_postun atop.service atopgpu.service atopacct.service
+%service_del_postun atop.service atopgpu.service atopacct.service atop-rotate.service
 
 %preun daemon
-%service_del_preun atop.service atopgpu.service atopacct.service
-
-%verifyscript daemon
-%verify_permissions -e /etc/cron.d
+%service_del_preun atop.service atopgpu.service atopacct.service atop-rotate.service
 
 %files
 %license COPYING
 %doc README
 %attr(0755,root,root) %{_bindir}/atop
-%dir %{_datadir}/%{name}
 %{_bindir}/atopsar
 %{_bindir}/atopconvert
 %{_bindir}/atop-%{version}
@@ -137,22 +128,21 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatopgpu
 %files daemon
 %license COPYING
 %doc README
-%config(noreplace) %{_sysconfdir}/logrotate.d/psaccs_atop
-%config(noreplace) %{_sysconfdir}/logrotate.d/psaccu_atop
-%dir %{_sysconfdir}/cron.d
-%config(noreplace) %{_sysconfdir}/cron.d/%{name}
-%{_datadir}/%{name}/atop.daily
+%config(noreplace)%{_sysconfdir}/default/atop
 %{_localstatedir}/log/atop
 %{_usr}/lib/systemd/system/%{name}.service
 %{_mandir}/man8/atopacctd.8%{?ext_man}
 %{_mandir}/man8/atopgpud.8%{?ext_man}
 %{_usr}/lib/systemd/system/atopacct.service
 %{_usr}/lib/systemd/system/atopgpu.service
+%{_prefix}/lib/systemd/system/atop-rotate.service
+%{_prefix}/lib/systemd/system/atop-rotate.timer
 %dir %{_usr}/lib/systemd/system-sleep
 %{_usr}/lib/systemd/system-sleep/atop-pm.sh
 %{_sbindir}/atopacctd
 %{_sbindir}/atopgpud
 %{_sbindir}/rcatopacct
+%{_sbindir}/rcatop-rotate
 %{_sbindir}/rc%{name}
 %{_sbindir}/rcatopgpu
 

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jul 31 20:26:06 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.5.0 
+  Modifications for atop:
+  * Avoid using perf counters in VM
+    New option 'perfevents' in the atoprc file to define if the Instructions
+	Per Cycle (IPC) should be retrieved via the 'perf' counters. Specify
+	value 'auto' (default), 'enable' or 'disable'. In case of 'auto', the
+	Instructions Per Cycle counter will not be retrieved on VMs due to the
+	overhead of reading this counter in a guest.
+  * Improve daily rotation of logfile for systemd-based systems.
+    Exchange the files /etc/cron.d/atop, /etc/logrotate.d/psaccs_atop,
+	/etc/logrotate.d/psaccu_atop, /usr/share/atop/atop.daily,
+	/var/log/atop/dummy_after and /var/log/atop/dummy_before by
+	atop-rotate.service and atop-rotate.timer.
+  * Bug fixes:
+    Correction of PSI value 'io full'.
+    Use smaps_rollup (if present) instead of smaps for better performance.
+    Use writev instead of 3 single writes to avoid logfile corruption.
+    Modified handling of error messages (remain visible after window is
+	closed).
+    Correct CID for containers created by Kubernetes.
+    Allow reading a logfile via a named pipe (non-seekable).
+  Modifications for atopconvert:
+  * Show version of input file (even if only one parameter specified).
+  General:
+  * The format of the raw file is compatible with version 2.4.
+- Run spec-cleaner
+- Remove requires for cron and logrotate now that there is systemd service
+  and timers handling logrotation
+- Remove Requires(post) for permissions since atop does not use cron files anymore
+- Refresh patch:
+  * atop-makefile.patch
+- Add atop defaults in /etc/default/atop
+
+-------------------------------------------------------------------
 Tue Aug 20 11:32:08 CEST 2019 - kukuk@suse.de
 
 - Package /etc/cron.d, as this is now part of cron which we don't
