@@ -22,7 +22,7 @@
 Name:           python-grpcio
 Version:        1.30.0
 Release:        0
-Summary:        HTTP/2-based RPC framework
+Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://grpc.io
@@ -43,9 +43,9 @@ Suggests:       python-futures >= 2.2.0
 %python_subpackages
 
 %description
-gRPC is a modern, open source, high-performance remote procedure call (RPC)
-framework that can run anywhere. gRPC enables client and server applications to
-communicate transparently, and simplifies the building of connected systems.
+gRPC is a remote procedure call (RPC) framework. gRPC enables client
+and server applications to communicate, and enables the building of
+connected systems.
 
 %prep
 %setup -q -n grpcio-%{version}
