@@ -1,7 +1,7 @@
 #
 # spec file for package git-test
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Michael Moese <michael.moese@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,20 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           git-test
-Version:        1.0.2
+Version:        1.0.4
 Release:        0
 Summary:        Git extension to conveniently test all distinct versions
 License:        Apache-2.0
 Group:          Development/Tools/Version Control
-Url:            https://github.com/spotify/git-test
+URL:            https://github.com/spotify/git-test
 Source:         https://github.com/spotify/git-test/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Requires:       git-core
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -43,9 +42,9 @@ install -D -p -m 0755 git-test   %{buildroot}%{_bindir}/git-test
 install -D -p -m 0644 git-test.1 %{buildroot}%{_mandir}/man1/git-test.1
 
 %files
-%defattr(-,root,root)
-%doc LICENSE  README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/git-test
-%{_mandir}/man1/git-test.1%{ext_man}
+%{_mandir}/man1/git-test.1%{?ext_man}
 
 %changelog
