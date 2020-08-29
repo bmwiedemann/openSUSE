@@ -56,4 +56,13 @@ only support libva support.</comment>
   (boo#1171923)</comment>
     <requestid>811263</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>19cd3d2fcae3ac679d39714eee43e6cb</srcmd5>
+    <version>0.7.4</version>
+    <time>1598726581</time>
+    <user>dimstar_suse</user>
+    <comment>- moved profiles for setting env variables LIBVA_DRIVER_NAME and
+  VDPAU_DRIVER to /usr/etc/profiles.d on TW (boo#1173036)</comment>
+    <requestid>830257</requestid>
+  </revision>
 </revisionlist>

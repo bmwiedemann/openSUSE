@@ -70,13 +70,24 @@ make %{?_smp_mflags}
 %install
 make install DESTDIR=%{buildroot} %{?_smp_mflags}
 find %{buildroot} -name '*.la' -delete
+%if 0%{?suse_version} >= 1550
+mkdir -p %{buildroot}%{_distconfdir}/profile.d
+install -Dm 0644 %{name}.sh %{buildroot}%{_distconfdir}/profile.d/%{name}.sh
+install -Dm 0644 %{name}.csh %{buildroot}%{_distconfdir}/profile.d/%{name}.csh
+%else
 install -Dm 0644 %{name}.sh %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
 install -Dm 0644 %{name}.csh %{buildroot}%{_sysconfdir}/profile.d/%{name}.csh
+%endif
 
 %files
 %doc README COPYING AUTHORS NEWS
 %dir %{_libdir}/dri
 %{_libdir}/dri/*.so
+%if 0%{?suse_version} >= 1550
+%dir %{_distconfdir}/profile.d
+%config %{_distconfdir}/profile.d/%{name}.*sh
+%else
 %config %{_sysconfdir}/profile.d/%{name}.*sh
+%endif
 
 %changelog

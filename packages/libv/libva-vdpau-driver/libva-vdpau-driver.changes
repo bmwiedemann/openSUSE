@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 10:39:37 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved profiles for setting env variables LIBVA_DRIVER_NAME and
+  VDPAU_DRIVER to /usr/etc/profiles.d on TW (boo#1173036)
+
+-------------------------------------------------------------------
 Thu Jun  4 04:08:35 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - in addition to setting LIBVA_DRIVER_NAME to 'vdpau' also set 
