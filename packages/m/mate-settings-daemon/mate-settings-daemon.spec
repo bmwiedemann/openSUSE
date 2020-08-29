@@ -103,7 +103,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/%{name}/
 %{_datadir}/polkit-1/actions/org.mate.settingsdaemon.datetimemechanism.policy
 %{_datadir}/glib-2.0/schemas/*.xml
-%{_libexecdir}/udev/rules.d/61-%{name}-rfkill.rules
+%{_udevrulesdir}/61-%{name}-rfkill.rules
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_mandir}/man?/msd-*.?%{?ext_man}
 
