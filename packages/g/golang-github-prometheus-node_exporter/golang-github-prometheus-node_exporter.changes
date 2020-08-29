@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug 21 11:53:46 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
+
+- Update to 1.0.1
+  * Changes to build specification
+    + Modify spec: update golang version to 1.14
+    + Remove update tarball script
+    + Add _service file to allow for updates via `osc service disabledrun`  
+  * Bug fixes
+    + [BUGFIX] filesystem_freebsd: Fix label values #1728
+    + [BUGFIX] Update prometheus/procfs to fix log noise #1735
+    + [BUGFIX] Fix build tags for collectors #1745
+    + [BUGFIX] Handle no data from powersupplyclass #1747, #1749
+
+- Update to 1.0.0
+  * Bug fixes
+    + [BUGFIX] Read /proc/net files with a single read syscall #1380
+    + [BUGFIX] Renamed label state to name on node_systemd_service_restart_total. #1393
+    + [BUGFIX] Fix netdev nil reference on Darwin #1414
+    + [BUGFIX] Strip path.rootfs from mountpoint labels #1421
+    + [BUGFIX] Fix seconds reported by schedstat #1426
+    + [BUGFIX] Fix empty string in path.rootfs #1464
+    + [BUGFIX] Fix typo in cpufreq metric names #1510
+    + [BUGFIX] Read /proc/stat in one syscall #1538
+    + [BUGFIX] Fix OpenBSD cache memory information #1542
+    + [BUGFIX] Refactor textfile collector to avoid looping defer #1549
+    + [BUGFIX] Fix network speed math #1580
+    + [BUGFIX] collector/systemd: use regexp to extract systemd version #1647
+    + [BUGFIX] Fix initialization in perf collector when using multiple CPUs #1665
+    + [BUGFIX] Fix accidentally empty lines in meminfo_linux #1671
+  * Several enhancements
+    + See https://github.com/prometheus/node_exporter/releases/tag/v1.0.0
+ 
+-------------------------------------------------------------------
 Thu Feb 20 20:25:26 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.0.0-rc.0
