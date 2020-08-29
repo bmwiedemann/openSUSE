@@ -18,13 +18,13 @@
 
 
 Name:           openmw
-Version:        0.45+git.20200318
+Version:        0.46.0
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
 Group:          Amusements/Games/RPG
 URL:            https://www.openmw.org
-Source:         openmw-0.45+git.20200318.tar.xz
+Source:         https://github.com/OpenMW/openmw/archive/%{name}-%{version}.tar.gz
 Source2:        %{name}.rpmlintrc
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
@@ -86,7 +86,7 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
  * customisable GUI
 
 %prep
-%setup -q
+%setup -q -n openmw-openmw-%{version}
 cp 'files/mygui/DejaVu Font License.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
@@ -131,8 +131,8 @@ mkdir -p %{buildroot}/%{_datadir}/appdata
 mv %{buildroot}/%{_datadir}/metainfo/* %{buildroot}/%{_datadir}/appdata/
 rm -Rf %{buildroot}/%{_datadir}/metainfo
 
-%suse_update_desktop_file %{name}
-%suse_update_desktop_file %{name}-cs
+%suse_update_desktop_file org.openmw.launcher
+%suse_update_desktop_file org.openmw.cs
 %fdupes %{buildroot}%{_datadir}
 
 %post
