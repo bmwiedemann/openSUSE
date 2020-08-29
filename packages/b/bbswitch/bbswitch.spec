@@ -65,15 +65,15 @@ export INSTALL_MOD_DIR=updates
 for flavor in %{flavors_to_build}; do
         make -C %{kernel_source $flavor} %{?linux_make_arch} modules_install M=$PWD/obj/$flavor
 done
-install -dm755 %{buildroot}%{_libexecdir}/modules-load.d
-echo "bbswitch" >> %{buildroot}%{_libexecdir}/modules-load.d/bbswitch.conf
+install -dm755 %{buildroot}%{_prefix}/lib/modules-load.d
+echo "bbswitch" >> %{buildroot}%{_prefix}/lib/modules-load.d/bbswitch.conf
 install -dm755 %{buildroot}%{_sysconfdir}/modprobe.d/
 echo "options bbswitch load_state=0 unload_state=1" >> %{buildroot}%{_sysconfdir}/modprobe.d/50-bbswitch.conf
 
 %files
 %doc source/COPYING source/README.md source/NEWS
-%dir %{_libexecdir}//modules-load.d
-%config %{_libexecdir}/modules-load.d/bbswitch.conf
+%dir %{_prefix}/lib/modules-load.d
+%{_prefix}/lib/modules-load.d/bbswitch.conf
 %config %{_sysconfdir}/modprobe.d/50-bbswitch.conf
 
 %changelog
