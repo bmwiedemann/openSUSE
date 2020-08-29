@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 10:15:53 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved profiles for setting env variable LIBVA_DRIVER_NAME to
+  /usr/etc/profiles.d on TW (boo#1173006)
+
+-------------------------------------------------------------------
 Tue Apr 14 11:26:27 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_20.1.1-build-fixes.patch

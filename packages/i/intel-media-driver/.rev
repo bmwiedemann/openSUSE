@@ -119,4 +119,13 @@ versions of libva(2)</comment>
 - Rebase Werror-initialize-in-right-order.patch</comment>
     <requestid>793851</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d39ad57fb0c4bbd91fe6d3336e4b3d5d</srcmd5>
+    <version>20.1.1</version>
+    <time>1598726574</time>
+    <user>dimstar_suse</user>
+    <comment>- moved profiles for setting env variable LIBVA_DRIVER_NAME to
+  /usr/etc/profiles.d on TW (boo#1173006)</comment>
+    <requestid>830256</requestid>
+  </revision>
 </revisionlist>
