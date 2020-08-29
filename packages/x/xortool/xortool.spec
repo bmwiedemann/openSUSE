@@ -17,16 +17,17 @@
 
 
 Name:           xortool
-Version:        0.98+git20191025
+Version:        0.99
 Release:        0
 Summary:        A tool to analyze multi-byte xor cipher
 License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/hellman/xortool
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/hellman/xortool/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-docopt
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildArch:      noarch
 
 %description
