@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:20:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.56:
+  - Various text files converted to Markdown format.
+  - Support for realpath(3) implementations incompatible
+    with POSIX.1-2008, such as 4.4BSD or Solaris.
+  - Support for engines without PRNG seeding methods (thx to
+    Petr Mikhalitsyn).
+  - Retry unsuccessful port binding on configuration
+    file reload.
+  - Thread safety fixes in SSL_SESSION object handling.
+  - Terminate clients on exit in the FORK threading model.
+
+-------------------------------------------------------------------
 Tue Mar 10 08:28:06 UTC 2020 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 
 - Fixup stunnel.conf handling:
