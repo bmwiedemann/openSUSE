@@ -22,16 +22,13 @@
 %bcond_with system_sqlite
 %endif
 Name:           fossil
-Version:        2.11.1
+Version:        2.12.1
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://www.fossil-scm.org/
 Source:         https://www.fossil-scm.org/index.html/uv/%{name}-src-%{version}.tar.gz
-Patch1:         fossil-2.7-remove_date_time.patch
-# PATCH-FIX-UPSTREAM https://fossil-scm.org/fossil/info/1a894c08206f4c71bcc3
-Patch2:         fossil-2.11-reproducible.patch
 BuildRequires:  fuse-devel
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
@@ -54,11 +51,9 @@ these features:
 %setup -q
 # test package version and source version match
 grep -qFx %{version} VERSION
-%patch1 -p1
-%patch2 -p1
 
 %build
-export CFLAGS="%{optflags} -DFOSSIL_BUILD_EPOCH=${SOURCE_DATE_EPOCH:-42}"
+export CFLAGS="%{optflags}"
 # FIXME: you should use the %%configure macro
 ./configure \
         --prefix=%{_prefix} \
@@ -71,9 +66,11 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+install -D -m 644 -t %{buildroot}%{_mandir}/man1 fossil.1
 
 %files
 %license COPYRIGHT-BSD2.txt
 %{_bindir}/fossil
+%{_mandir}/*/*
 
 %changelog

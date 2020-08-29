@@ -274,4 +274,21 @@
     <comment></comment>
     <requestid>819486</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>03a5b9ae9bb893a8d2efa635332bbe84</srcmd5>
+    <version>2.12.1</version>
+    <time>1598726215</time>
+    <user>dimstar_suse</user>
+    <comment>- fossil 2.12.1:
+  * CVE-2020-24614: Remote authenticated users with check-in or
+    administrative privileges could have executed arbitrary code
+    [boo#1175760]
+- Remove fossil-2.11-reproducible.patch: Upstream integrated the
+  patch and improved it to also recognize SOURCE_DATE_EPOCH.
+- Remove fossil-2.7-remove_date_time.patch: OBS now sets
+  SOURCE_DATE_EPOCH and gcc recognizes it, so the removal of
+  __DATE__ and __TIME__ is not needed anymore.
+- Package the fossil.1 manual page.</comment>
+    <requestid>829798</requestid>
+  </revision>
 </revisionlist>
