@@ -44,7 +44,6 @@ BuildRequires:  liblcms2-devel
 BuildRequires:  libpano-devel >= 2.9.19
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  memory-constraints
 %if %{with hsi}
 BuildRequires:  python-wxWidgets >= 3
 BuildRequires:  swig
@@ -95,7 +94,6 @@ mv src/translations/cs_CZ.po src/translations/cs.po
 	-DCMAKE_SKIP_RPATH:BOOL=OFF \
 	..
 
-%limit_build
 %cmake_build
 
 %install
