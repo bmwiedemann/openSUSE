@@ -55,4 +55,16 @@
     <comment></comment>
     <requestid>761252</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>93232bde817c5097904b51dfffc6cd35</srcmd5>
+    <version>0.0.49</version>
+    <time>1598726111</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.0.49
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Move python-futures from BuildRequires to Requires as it is a runtime dependency</comment>
+    <requestid>829782</requestid>
+  </revision>
 </revisionlist>

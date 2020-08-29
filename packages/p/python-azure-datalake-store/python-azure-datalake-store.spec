@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-datalake-store
-Version:        0.0.48
+Version:        0.0.49
 Release:        0
 Summary:        Microsoft Azure Data Lake Store Client Library
 License:        MIT
@@ -30,12 +30,12 @@ BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%ifpython2
-BuildRequires:  python-futures
-%endif
 Requires:       python-adal >= 0.4.2
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cffi
+%ifpython2
+Requires:       python-futures
+%endif
 Requires:       python-requests >= 2.20.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
