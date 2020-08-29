@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 24 11:59:57 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 6:
+  * Back out fallback icon support which does not work as intended
+  * Add Italian translations
+  * Add French translations
+  * Add Danish translations
+  * Fix incorrect translation
+
+-------------------------------------------------------------------
 Wed Jun 10 14:26:33 UTC 2020 - Vinzenz Vietzke <vinz@vinzv.de>
 
 - Adding patch org.guido-berhoerster.code.package-update-indicator.desktop.in.patch 

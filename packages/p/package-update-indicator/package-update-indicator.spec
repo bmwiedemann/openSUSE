@@ -1,7 +1,7 @@
 #
 # spec file for package package-update-indicator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           package-update-indicator
-Version:        5
+Version:        6
 Release:        0
 Summary:        Package update status notification applet
 License:        MIT
