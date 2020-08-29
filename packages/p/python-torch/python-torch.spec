@@ -104,7 +104,6 @@ BuildRequires:  leveldb-devel
 BuildRequires:  libnuma-devel
 BuildRequires:  libopenblas_pthreads-devel
 BuildRequires:  lmdb-devel
-BuildRequires:  memory-constraints
 BuildRequires:  ninja
 BuildRequires:  openblas-devel
 BuildRequires:  openssl-devel
@@ -240,7 +239,6 @@ rmdir python-peachpy/
   export MAX_JOBS=%{?jobs} \
 
 %buildvars
-%limit_build -m 2000
 %python_build
 
 %install
