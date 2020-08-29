@@ -61,7 +61,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-qtimageformats-devel
-BuildRequires:  memory-constraints
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-devel
@@ -144,7 +143,6 @@ The service also provides APIs to independent developers.
 %patch1 -p1
 
 %build
-%limit_build -m 2048
 %if %{with fixed_gcc}
 export CC=/usr/bin/gcc-9
 export CXX=/usr/bin/g++-9
