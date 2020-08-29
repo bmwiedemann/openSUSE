@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 28 15:56:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.3
+  Bugs fixed:
+  * vmhost single re based image upgrade is failing while reboot.
+
+-------------------------------------------------------------------
 Sat Aug 22 14:14:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.2
