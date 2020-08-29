@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Aug 25 18:50:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 2.0.1
+  * Fixed build failure with gcc version 10.
+
+-------------------------------------------------------------------
+Mon Aug 24 22:07:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  * Major overhaul of the output subsystem. The new architecture
+    is modular, multithreaded and can easily be extended with new
+    output drivers. It also allows using multiple outputs
+    simultaneously.
+  * New output configuration scheme. --output-file --daily,
+    --hourly and --output-acars-pp options have been removed.
+    All outputs are now configured using --output option.
+    Adjusting command line parameters is therefore required to run
+    the program. Run dumpvdl2 --output help for instructions or
+    see "Output configuration" section in README.md for details
+    and examples.
+  * Support for streaming messages over network using UDP/IP.
+  * Support for streaming messages over network using ZeroMQ
+    publisher sockets. Requires libzmq library.
+  * Support for storing AVLC frames as raw data (without decoding)
+    in binary files for archiving purposes. File contents can
+    then be decoded anytime later, as if the frames were just
+  * received from the air. Requires protobuf-c library.
+  * Minor bugfixes.
+
+-------------------------------------------------------------------
 Sun Jul  5 15:30:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.10.1
