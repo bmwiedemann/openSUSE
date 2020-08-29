@@ -1,7 +1,7 @@
 #
 # spec file for package ragel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        MIT
 Group:          Development/Tools/Other
 URL:            https://www.colm.net/open-source/ragel/
 
-#Git-Clone:	git://colm.net/ragel
+#Git-Clone:	https://github.com/adriandt/ragel
 Source:         https://www.colm.net/files/ragel/%name-%version.tar.gz
 Source2:        %name.keyring
 BuildRequires:  automake

@@ -87,4 +87,12 @@
     <comment>- Update to new upstream release 7.0.0.12</comment>
     <requestid>725395</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1c02dabb287802dd943262fac13f6d90</srcmd5>
+    <version>7.0.0.12</version>
+    <time>1598726197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Git URL.</comment>
+    <requestid>829760</requestid>
+  </revision>
 </revisionlist>
