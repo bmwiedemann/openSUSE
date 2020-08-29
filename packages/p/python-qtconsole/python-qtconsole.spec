@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-qtconsole
-Version:        4.7.5
+Version:        4.7.6
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -43,7 +43,6 @@ Requires:       python-ipykernel >= 4.1
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
-Requires:       python-sip
 Requires:       python-traitlets
 Provides:       python-jupyter_qtconsole = %{version}
 Obsoletes:      python-jupyter_qtconsole < %{version}
@@ -55,12 +54,9 @@ BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 4.1}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client >= 4.1}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module sip}
 BuildRequires:  %{python_module traitlets}
 # /SECTION
 %python_subpackages
@@ -114,9 +110,17 @@ desktop-file-edit --set-icon="JupyterQtConsole" jupyter-qtconsole.desktop
 %suse_update_desktop_file -i -r jupyter-qtconsole "System;TerminalEmulator;"
 popd
 
+%python_clone -a %{buildroot}%{_bindir}/jupyter-qtconsole
+
 %check
 export QT_QPA_PLATFORM="offscreen"
 %pytest
+
+%post -n jupyter-qtconsole
+%python_install_alternative jupyter-qtconsole
+
+%postun -n jupyter-qtconsole
+%python_uninstall_alternative jupyter-qtconsole
 
 %files %{python_files}
 %license LICENSE
@@ -125,7 +129,7 @@ export QT_QPA_PLATFORM="offscreen"
 
 %files -n jupyter-qtconsole
 %license LICENSE
-%{_bindir}/jupyter-qtconsole
+%python_alternative %{_bindir}/jupyter-qtconsole
 %{_datadir}/applications/jupyter-qtconsole.desktop
 %{_datadir}/icons/hicolor/scalable/apps/JupyterQtConsole.svg
 

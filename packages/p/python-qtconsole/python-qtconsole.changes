@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 28 16:30:17 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 4.7.6
+  * Replace qApp with QApplication.instance().
+  * Fix QFontMetrics.width deprecation. 
+- use alternatives for entry point
+- SIP is not used anymore
+
+-------------------------------------------------------------------
 Wed Jul  1 08:54:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 4.7.5
