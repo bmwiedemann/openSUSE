@@ -1,7 +1,7 @@
 #
 # spec file for package python-pelican
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,39 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pelican
-Version:        4.2.0
+Version:        4.5.0
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
 Group:          Development/Languages/Python
-Url:            http://getpelican.com/
+URL:            http://getpelican.com/
 Source:         https://files.pythonhosted.org/packages/source/p/pelican/pelican-%{version}.tar.gz
-Patch0:         fix-python3-incompatibility.patch
-BuildRequires:  %{python_module Jinja2 >= 2.7}
+BuildRequires:  %{python_module Jinja2 >= 2.11}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module Unidecode}
 BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module docutils >= 0.15}
 BuildRequires:  %{python_module feedgenerator >= 1.9}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module pytz >= 0a}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2 >= 2.7
+Requires:       python-Jinja2 >= 2.11
 Requires:       python-Pygments
 Requires:       python-Unidecode
 Requires:       python-blinker
-Requires:       python-docutils
+Requires:       python-docutils >= 0.15
 Requires:       python-feedgenerator >= 1.9
 Requires:       python-python-dateutil
-Requires:       python-pytz
-Requires:       python-six >= 1.4
+Requires:       python-pytz >= 0a
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       asciidoc
-Suggests:       python-Markdown
+Suggests:       python-Markdown >= 3.1.1
 Suggests:       python-typogrify
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -80,7 +78,6 @@ Pelican currently supports:
 
 %prep
 %setup -q -n pelican-%{version}
-%autopatch -p1
 
 # remove useless shebang
 sed -i '1d' \
@@ -91,6 +88,8 @@ sed -i '1d' \
     pelican/tools/pelican_quickstart.py
 # remove executable bit, this is not a script
 chmod -x pelican/tools/templates/publishconf.py.jinja2
+# remove macos hidden temporary files
+rm pelican/themes/.DS_Store pelican/themes/notmyidea/.DS_Store
 
 %build
 %python_build
@@ -99,12 +98,12 @@ chmod -x pelican/tools/templates/publishconf.py.jinja2
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-for p in pelican pelican-import pelican-quickstart pelican-themes ; do
+for p in pelican pelican-import pelican-plugins pelican-quickstart pelican-themes; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 
 %post
-%python_install_alternative pelican pelican-import pelican-quickstart pelican-themes
+%python_install_alternative pelican pelican-import pelican-plugins pelican-quickstart pelican-themes
 
 %postun
 %python_uninstall_alternative pelican
@@ -114,6 +113,7 @@ done
 %doc CONTRIBUTING.rst LICENSE README.rst THANKS docs/*
 %python_alternative %{_bindir}/pelican
 %python_alternative %{_bindir}/pelican-import
+%python_alternative %{_bindir}/pelican-plugins
 %python_alternative %{_bindir}/pelican-quickstart
 %python_alternative %{_bindir}/pelican-themes
 %{python_sitelib}/pelican
