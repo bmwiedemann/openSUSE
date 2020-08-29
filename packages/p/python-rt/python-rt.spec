@@ -29,7 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/r/rt/rt-%{version
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-nose
 Requires:       python-requests
 Requires:       python-six
 BuildArch:      noarch
