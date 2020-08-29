@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:27:16 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200626.00 (bsc#1175740, bsc#1175741)
+  * Updates the udev rules for local SSD disks. (#9)
+  * Fix tx affinity logic when number of CPUs is above 32 (#6)
+
+-------------------------------------------------------------------
 Fri Jul 24 13:07:43 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Switch udev requires to pkgconfig to allow the build service to use

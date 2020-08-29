@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           google-guest-configs
-Version:        20200626.00
+Version:        20200731.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0
