@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           lsp-plugins
-Version:        1.1.22
+Version:        1.1.24
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-only AND Zlib
