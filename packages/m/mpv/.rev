@@ -936,4 +936,36 @@
   * wayland: soften GNOME warning</comment>
     <requestid>828460</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>49f71689f5231527de6781d82840290a</srcmd5>
+    <version>0.32.0+git.20200827T184057.fc6c209cbd</version>
+    <time>1598726514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200827T184057.fc6c209cbd:
+  * f_demux_in: log EOF &quot;recovery&quot;
+  * f_decoder_wrapper: pass through EOF after EOF
+  * player: fix video paused condition on VO creation
+  * filter: add a helper
+  * audio: clarify set_pause() documentation
+  * audio: adjust frame clipping for spdif formats
+  * audio: remove unused ring.h includes
+  * player: fix swapped debug output
+  * vo_gpu: EGL: fix transparency on X11/EGL/Mesa
+  * vo_gpu: EGL: slightly better debug logging of EGL configs
+  * ao/pulse: create the stream corked
+  * wayland: always update sbc for presentation time
+  * Revert &quot;demux_lavf: always give libavformat the filename when probing&quot;
+  * audio: remove delay debug logging
+  * wayland: simplify presentation time
+  * demux_mf: actually report errors
+  * player: do not loop if there's nothing to loop
+  * options: do not accept &quot;:&quot; as separator anymore in key/value lists
+  * cocoa-cb: force layer update on resize
+  * mac: add icc profile and ambient light sensor support
+  * mac: use config cache und wakeup for mac option runtime changes
+  * mac: make ontop level runtime changeable
+  * mac: properly guard and unwrap an optional value
+  * cocoa-cb: generalisation of backend independent parts</comment>
+    <requestid>830193</requestid>
+  </revision>
 </revisionlist>

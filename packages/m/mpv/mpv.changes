@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:00:34 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.20200827T184057.fc6c209cbd:
+  * f_demux_in: log EOF "recovery"
+  * f_decoder_wrapper: pass through EOF after EOF
+  * player: fix video paused condition on VO creation
+  * filter: add a helper
+  * audio: clarify set_pause() documentation
+  * audio: adjust frame clipping for spdif formats
+  * audio: remove unused ring.h includes
+  * player: fix swapped debug output
+  * vo_gpu: EGL: fix transparency on X11/EGL/Mesa
+  * vo_gpu: EGL: slightly better debug logging of EGL configs
+  * ao/pulse: create the stream corked
+  * wayland: always update sbc for presentation time
+  * Revert "demux_lavf: always give libavformat the filename when probing"
+  * audio: remove delay debug logging
+  * wayland: simplify presentation time
+  * demux_mf: actually report errors
+  * player: do not loop if there's nothing to loop
+  * options: do not accept ":" as separator anymore in key/value lists
+  * cocoa-cb: force layer update on resize
+  * mac: add icc profile and ambient light sensor support
+  * mac: use config cache und wakeup for mac option runtime changes
+  * mac: make ontop level runtime changeable
+  * mac: properly guard and unwrap an optional value
+  * cocoa-cb: generalisation of backend independent parts
+
+-------------------------------------------------------------------
 Fri Aug 21 12:03:12 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20200820T203717.b16a6cb6c6:
