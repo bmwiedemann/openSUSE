@@ -1,7 +1,7 @@
 #
 # spec file for package cim-schema
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cim-schema
-Version:        2.50.0
+Version:        2.53.0
 Release:        0
 Summary:        Common Information Model (CIM) Schema
 License:        SUSE-DMTF
 Group:          System/Management
-Url:            http://www.dmtf.org/
-Source0:        http://www.dmtf.org/sites/default/files/cim/cim_schema_v2500/cim_schema_%{version}Experimental-MOFs.zip
+URL:            http://www.dmtf.org/
+Source0:        http://www.dmtf.org/sites/default/files/cim/cim_schema_v2530/cim_schema_%{version}Experimental-MOFs.zip
 Source1:        loadmof.sh
 Source2:        rmmof.sh
 BuildRequires:  unzip
