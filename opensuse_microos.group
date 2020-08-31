@@ -5,9 +5,9 @@
     <package name="MicroOS-release-appliance" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="bash" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="blog" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
+    <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
+    <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="chkstat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -24,7 +24,6 @@
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kdump" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -39,7 +38,6 @@
     <package name="libattr1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libaudit1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libblkid1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libbz2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcap-ng0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcap2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -133,7 +131,6 @@
     <package name="systemd-presets-common-SUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="systemd-sysvinit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="sysuser-shadow" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="sysvinit-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -180,6 +177,7 @@
     <package name="bc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="bcache-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="biosdevname" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="blog" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="bluedevil5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="bluez" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -198,6 +196,7 @@
     <package name="btrfsprogs-udev-rules" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="bubblewrap" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
+    <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="busybox-psmisc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -342,6 +341,7 @@
     <package name="gtk3-schema" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="gtk3-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="gweather-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="hack-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="haveged" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="health-checker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -353,7 +353,6 @@
     <package name="hwinfo" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="hyper-v" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="info" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
-    <package name="insserv-compat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="iproute2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="ipset" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="iptables" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -603,6 +602,7 @@
     <package name="libavformat58_45" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libavutil56_51" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libbasicobjects0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
+    <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libboost_thread1_71_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1309,6 +1309,7 @@
     <package name="systemd-logger" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="systemsettings5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="sysvinit-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="tallow" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="tar" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="tftpboot-installation-openSUSE-MicroOS-x86_64" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->

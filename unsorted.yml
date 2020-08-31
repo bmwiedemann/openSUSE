@@ -727,6 +727,7 @@ unsorted:
   - arping2 
   - arprec-devel 
   - arpwatch-ethercodes-build 
+  - artha 
   - artifacts 
   - artifacts-validator 
   - artikulate 
@@ -1386,6 +1387,8 @@ unsorted:
   - budgie-desktop-lang 
   - budgie-haste-applet 
   - budgie-haste-applet-lang 
+  - budgie-screensaver 
+  - budgie-screensaver-lang 
   - budgie-screenshot-applet 
   - budgie-screenshot-applet-lang 
   - buffer 
@@ -1408,11 +1411,11 @@ unsorted:
   - busybox-attr 
   - busybox-bc 
   - busybox-bind-utils 
+  - busybox-bzip2 
   - busybox-cpio 
   - busybox-diffutils 
   - busybox-dos2unix 
   - busybox-ed 
-  - busybox-gzip 
   - busybox-hostname 
   - busybox-iproute2 
   - busybox-iputils 
@@ -1439,6 +1442,7 @@ unsorted:
   - busybox-time 
   - busybox-traceroute 
   - busybox-tunctl 
+  - busybox-unzip 
   - busybox-util-linux 
   - busybox-vi 
   - busybox-vlan 
@@ -2425,6 +2429,7 @@ unsorted:
   - ddccontrol-lang 
   - ddcutil 
   - ddgr 
+  - ddrescueview 
   - dds2tar 
   - deadbeef 
   - deadbeef-devel 
@@ -5790,7 +5795,6 @@ unsorted:
   - gwenhywfar-devel 
   - gwenhywfar-lang 
   - gwenhywfar-tools 
-  - gyp 
   - gypsy 
   - gzdoom 
   - gzrt 
@@ -6528,7 +6532,7 @@ unsorted:
   - java-15-openjdk-accessibility 
   - java-15-openjdk-demo 
   - java-15-openjdk-devel 
-  - java-15-openjdk-headless 
+  - java-15-openjdk-headless: [i586] 
   - java-15-openjdk-javadoc 
   - java-15-openjdk-jmods 
   - java-15-openjdk-src 
@@ -7113,7 +7117,7 @@ unsorted:
   - kernel-default-devel 
   - kernel-devel 
   - kernel-docs-html 
-  - kernel-firmware 
+  - kernel-firmware: [i586] 
   - kernel-kvmsmall: [x86_64] 
   - kernel-kvmsmall-devel: [x86_64] 
   - kernel-macros 
@@ -10449,7 +10453,7 @@ unsorted:
   - libirrecord0 
   - libirs-devel 
   - libirs1601-32bit: [x86_64] 
-  - libisc1605-32bit: [x86_64] 
+  - libisc1606-32bit: [x86_64] 
   - libisccc1600-32bit: [x86_64] 
   - libisccfg1600-32bit: [x86_64] 
   - libiscsi-devel 
@@ -14539,8 +14543,6 @@ unsorted:
   - megaglest 
   - megaglest-data 
   - megatools 
-  - meld 
-  - meld-lang 
   - melody 
   - melody-lang 
   - melt 
@@ -15977,6 +15979,7 @@ unsorted:
   - nvme-cli-regress-script 
   - nvmetcli 
   - nvptx-tools: [x86_64] 
+  - nwg-launchers 
   - nxtvepg 
   - o2locktop 
   - o2scl-devel 
@@ -20585,6 +20588,7 @@ unsorted:
   - python3-gvm-tools 
   - python3-gwcs 
   - python3-gwyfile 
+  - python3-gyp 
   - python3-h11 
   - python3-h5netcdf 
   - python3-h5py 
@@ -34072,7 +34076,6 @@ unsorted:
   - typelib-1_0-Gtk-4_0 
   - typelib-1_0-GtkFrdp-0_1 
   - typelib-1_0-GtkLayerShell-0_1 
-  - typelib-1_0-GtkSource-3_0 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
