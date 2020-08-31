@@ -1,7 +1,7 @@
 #
 # spec file for package python-apiron
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,11 +21,10 @@
 %define skip_python2 1
 %define modname apiron
 Name:           python-%{modname}
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Apiron helps you cook a tasty client for RESTful APIs
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ithaka/apiron
 Source:         https://files.pythonhosted.org/packages/source/a/apiron/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pytest-cov}

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 31 04:37:49 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.1.0:
+  * Ability to specify proxies for a Service definition so all calls to the
+    service use the defined proxies
+  * Ability to specify auth for a Service definition so all calls to the
+    service use the defined authentication
+  * Ability to specify return_raw_response_object at the endpoint level,
+    overridden by any value specified at call time 
+
+-------------------------------------------------------------------
 Tue Dec  3 07:57:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop needless service, one can call the command directly:
