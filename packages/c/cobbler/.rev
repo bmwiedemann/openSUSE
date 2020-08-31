@@ -1143,4 +1143,12 @@ D fixes-a-template-rendering-error.patch
   * Enabled a lot of tests, removed some and implemented new. (#2202)</comment>
     <requestid>812949</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>d1f2323924bffe1371af2b4c51a5b4df</srcmd5>
+    <version>3.1.2</version>
+    <time>1598885532</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830136</requestid>
+  </revision>
 </revisionlist>
