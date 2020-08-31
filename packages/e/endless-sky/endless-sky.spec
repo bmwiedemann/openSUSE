@@ -27,6 +27,8 @@ Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE fix-data-path.patch -- Fix installation path of data
 Patch0:         fix-data-path.patch
+# PATCH-FIX-UPSTREAM https://github.com/endless-sky/endless-sky/commit/bc3cab5992694547f9c6c067b5579ef06224781b#diff-b7ed3e337d47b8f4fe8af4f35db75efd
+Patch1:         string-include.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -53,6 +55,7 @@ find some friendly aliens whose culture is more civilized than your own...
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden"

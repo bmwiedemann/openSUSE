@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>808618</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>00c359a4675854ec255e9351980b4515</srcmd5>
+    <version>0.9.12</version>
+    <time>1598885523</time>
+    <user>dimstar_suse</user>
+    <comment>fix the build</comment>
+    <requestid>830512</requestid>
+  </revision>
 </revisionlist>
