@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 28 13:48:06 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- support rpmlint installed in /usr/bin/ as well
+- fix local build for armv6hl
+- Extract generated chart from the tarball instead of using the recipe
+
+-------------------------------------------------------------------
 Thu Aug 20 08:07:30 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - fix factory version in config file bsc#1170956
@@ -28,7 +35,7 @@ Thu Jul 23 05:38:24 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 - Control disk-space consumption while creating ccache archive
 - cleaning ccache
 - create folders before trying to copy ccache.tar
-- Genreadte .packages and .basepackages files for docker builds
+- Generate .packages and .basepackages files for docker builds
 
 -------------------------------------------------------------------
 Sun May 17 14:32:52 UTC 2020 - coolo@suse.com

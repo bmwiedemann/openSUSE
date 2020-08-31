@@ -1279,4 +1279,17 @@ Stephan Kulow (2):
 - Genreadte .packages and .basepackages files for docker builds</comment>
     <requestid>828094</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>926d1459fe153937c0e6f47963fad276</srcmd5>
+    <version>20200828</version>
+    <time>1598885256</time>
+    <user>dimstar_suse</user>
+    <comment>- support rpmlint installed in /usr/bin/ as well
+- fixing build for armv6hl
+- Extract generated chart from the tarball instead of using the recipe
+
+Note: the armv6 build failures atm are complete independend of
+the topic this fix is providing and not specific to build package</comment>
+    <requestid>830294</requestid>
+  </revision>
 </revisionlist>
