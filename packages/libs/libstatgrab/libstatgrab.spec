@@ -1,7 +1,7 @@
 #
 # spec file for package libstatgrab
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname  10
-
 Name:           libstatgrab
-Version:        0.91
+Version:        0.92
 Release:        0
 Summary:        Interface to System Statistics
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.i-scream.org/libstatgrab/
-Source:         ftp://ftp.i-scream.org/pub/i-scream/libstatgrab/libstatgrab-%{version}.tar.gz
+URL:            https://libstatgrab.org/
+Source:         https://github.com/libstatgrab/libstatgrab/releases/download/LIBSTATGRAB_0_92/libstatgrab-%{version}.tar.gz
 Source1:        statgrab.desktop
 Source2:        saidar.desktop
 Source3:        baselibs.conf
@@ -42,7 +41,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The libstatgrab library provides an easy-to-use interface for accessing system
@@ -56,7 +54,7 @@ the statistics.
 
 %package -n %{name}%{soname}
 Summary:        Library for %{name}
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 
 %description -n %{name}%{soname}
@@ -64,7 +62,7 @@ Library for package libstatgrab.
 
 %package devel
 Summary:        Development Environment for %{name}
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{soname} = %{version}
 
@@ -73,7 +71,7 @@ Development environment for libstatgrab (headers, library links, static library)
 
 %package -n statgrab
 Summary:        Portable System Statistics Tools
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
 Requires:       %{name}%{soname} = %{version}
 
@@ -87,7 +85,7 @@ to use statgrab.
 
 %package -n saidar
 Summary:        Portable System Statistics Tools
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
 Requires:       %{name}%{soname} = %{version}
 
@@ -104,16 +102,16 @@ that can't easily make C function calls.
 autoreconf -fi
 
 %configure \
-	--docdir=/usr/share/doc/packages/%{name} \
+	--docdir=%{_docdir}/%{name} \
 	--enable-statgrab \
 	--enable-saidar \
 	--disable-examples \
 	--disable-setuid-binaries \
 	--disable-setgid-binaries \
 	--disable-static \
-	--with-curses-prefix=/usr/include/
+	--with-curses-prefix=%{_includedir}/
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -123,8 +121,8 @@ rm -f %{buildroot}%{_libdir}/%{name}.la
 
 # install Desktop file
 mkdir -p  %{buildroot}%{_datadir}/applications
-install -Dm 0644 %{S:1} %{buildroot}%{_datadir}/applications/
-install -Dm 0644 %{S:2} %{buildroot}%{_datadir}/applications/
+install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/
+install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/
 
 %if 0%{?suse_version}
     %suse_update_desktop_file -r saidar System Monitor
@@ -137,39 +135,34 @@ rm -fr examples/Makefile*
 cp -a examples %{buildroot}%{_docdir}/%{name}/examples/
 
 %post -n %{name}%{soname} -p /sbin/ldconfig
-
 %postun -n %{name}%{soname} -p /sbin/ldconfig
 
 %files -n %{name}%{soname}
-%defattr(-,root,root)
 %{_libdir}/%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}
 %{_includedir}/statgrab.h
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/%{name}.so
-%{_mandir}/man3/sg_*.3%{ext_man}
-%{_mandir}/man3/statgrab.3%{ext_man}
-%{_mandir}/man3/%{name}.3%{ext_man}
+%{_mandir}/man3/sg_*.3%{?ext_man}
+%{_mandir}/man3/statgrab.3%{?ext_man}
+%{_mandir}/man3/%{name}.3%{?ext_man}
 
 %files -n statgrab
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/statgrab
 %{_bindir}/statgrab-make-mrtg-config
 %{_bindir}/statgrab-make-mrtg-index
-%{_mandir}/man1/statgrab.1%{ext_man}
-%{_mandir}/man1/statgrab-make-mrtg-config.1%{ext_man}
-%{_mandir}/man1/statgrab-make-mrtg-index.1%{ext_man}
+%{_mandir}/man1/statgrab.1%{?ext_man}
+%{_mandir}/man1/statgrab-make-mrtg-config.1%{?ext_man}
+%{_mandir}/man1/statgrab-make-mrtg-index.1%{?ext_man}
 %{_datadir}/applications/statgrab.desktop
 
 %files -n saidar
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/saidar
-%{_mandir}/man1/saidar.1%{ext_man}
+%{_mandir}/man1/saidar.1%{?ext_man}
 %{_datadir}/applications/saidar.desktop
 
 %changelog
