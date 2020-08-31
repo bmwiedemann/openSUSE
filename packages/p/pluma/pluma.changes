@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 31 02:16:04 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.24.1
+  * Translations update
+  * build: silent build warnings for distcheck
+  * help: Remove Open Location from shortcut keys table
+  * build: do not override the default value for MATE_COMPILE_WARNINGS
+  * Use user page on github when user email is private
+  * Update authors
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.1):

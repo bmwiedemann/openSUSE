@@ -18,13 +18,15 @@
 
 %define typelib typelib-1_0-Pluma-1_0
 %define _version 1.24
+
 Name:           pluma
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        Text editor for the MATE desktop
 License:        GPL-2.0-or-later
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source99:       https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz.sha256sum
 BuildRequires:  fdupes
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
@@ -39,7 +41,6 @@ BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(sm)
 Requires:       mate-desktop-gsettings-schemas
-Recommends:     %{name}-lang
 # mate-text-editor was last used in openSUSE 13.1.
 Provides:       mate-text-editor = %{version}
 Obsoletes:      mate-text-editor < %{version}

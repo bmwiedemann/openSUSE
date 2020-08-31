@@ -190,4 +190,18 @@
     <comment>- Update to version 1.24.0.</comment>
     <requestid>780548</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7ed443136b467f7f4836ca9902f73fe5</srcmd5>
+    <version>1.24.1</version>
+    <time>1598885412</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.24.1
+  * Translations update
+  * build: silent build warnings for distcheck
+  * help: Remove Open Location from shortcut keys table
+  * build: do not override the default value for MATE_COMPILE_WARNINGS
+  * Use user page on github when user email is private
+  * Update authors (forwarded request 830620 from hillwood)</comment>
+    <requestid>830621</requestid>
+  </revision>
 </revisionlist>
