@@ -893,15 +893,11 @@ Prefer: python3-msgpack
 # We have opencv and opencv3 - as usual, the unversioned one should win
 Prefer: opencv-devel
 
-# python3-pytest should win over python3-pytest4 since pytest5 is python3 only
-Prefer: python3-pytest4
-
-# we need to fix python3-pytest4 conflicts with python3-pytest
-# otherwise will breaks staging process
-# Prefer: python3-pytest python3-pytest4 python3-pytest3
+# python3-pytest should win over the other python3-pytest<n> variants
+Prefer: python3-pytest
 
 # There is python3-Django and python3-Django1 - as usual, we favor the unversioned one
-Prefer: python3-Django
+Prefer: -python3-Django1
 
 # Help OBS over the openssl-1_1_0 -> openssl-1_1 rename; OBS keeps the -32bit lingering around
 # https://github.com/openSUSE/open-build-service/issues/4373
@@ -1457,7 +1453,7 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-yast-rake
 
 Macros:
 %pythons  %{?!skip_python3:python3}
-skip_python2 1
+%skip_python2 1
 %_without_python2 1
 
 # This method for generating python_modules gets too deep to expand at about 5 python flavors.
