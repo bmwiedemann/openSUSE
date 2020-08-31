@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  5 19:14:45 UTC 2020 - David Sugar <tychosoft@gmail.com>
+
+- Update to 5.1.0
+  * critical security issues
+  * See package, very many long neglected bug fixes
+  * directly supports openssl 1.0.2-1.1.1 (and libressl) without patching
+- drop no longer needed openssl patch
+  openssl110-fix.patch
+- now requires libosip2 >= 5.1.0
+- now requires c-ares for proper resolver functionality
+- license was actually gpl-2.0-or-later, confirmed from sources and headers
+
+-------------------------------------------------------------------
 Fri Apr 20 09:57:05 UTC 2018 - hpj@urpla.net
 
 - apply openssl110-fix.patch for Leap >= 15.0 only
@@ -177,16 +190,16 @@ Wed Apr  2 15:30:51 CEST 2008 - hvogel@suse.de
 -------------------------------------------------------------------
 Thu Feb 28 12:24:46 CET 2008 - ro@suse.de
 
-- fix build with current libosip2 (MD5... -> osip_MD5...) 
+- fix build with current libosip2 (MD5... -> osip_MD5...)
 
 -------------------------------------------------------------------
 Thu Jan 10 09:07:31 CET 2008 - mskibbe@suse.de
 
 - use --disable-static
-- detaillize files section 
+- detaillize files section
 
 -------------------------------------------------------------------
 Tue Dec 18 15:32:43 CET 2007 - mskibbe@suse.de
 
-- create package 
+- create package
 

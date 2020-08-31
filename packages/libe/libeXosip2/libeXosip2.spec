@@ -1,7 +1,7 @@
 #
 # spec file for package libeXosip2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname libeXosip2-12
 
 Name:           libeXosip2
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Extended osip2 library
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            http://savannah.nongnu.org/projects/exosip/
+URL:            http://savannah.nongnu.org/projects/exosip/
 Source:         http://download.savannah.nongnu.org/releases/exosip/libexosip2-%{version}.tar.gz
-Patch0:         openssl110-fix.patch
+BuildRequires:  c-ares-devel
+BuildRequires:  gcc
 BuildRequires:  glibc-devel
+BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libosip2) >= 5.0.0
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(libosip2) >= 5.1.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -49,8 +50,8 @@ Summary:        Extended osip2 library
 Group:          Development/Libraries/C and C++
 Requires:       %{soname} = %{version}
 Requires:       glibc-devel
-Requires:       pkgconfig(libosip2)
-Requires:       pkgconfig(openssl)
+Requires:       libosip2-devel >= 5.1.0
+Requires:       openssl-devel
 Provides:       %{soname}-devel = %{version}
 
 %description devel
@@ -58,9 +59,6 @@ Extended library for the osip2 protocol.
 
 %prep
 %setup -q -n libexosip2-%{version}
-%if 0%{?suse_version} >= 1330 
-%patch0 -p0
-%endif
 
 %build
 %configure \

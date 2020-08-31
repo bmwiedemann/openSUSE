@@ -187,4 +187,12 @@ exosip API: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=709860 (forwarded r
     <comment></comment>
     <requestid>600359</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>79ce1b541fc68515d34fbb004f5607a8</srcmd5>
+    <version>5.1.0</version>
+    <time>1598885269</time>
+    <user>dimstar_suse</user>
+    <comment>Updated to 5.1.0, fixed dependencies (forwarded request 770392 from dyfet)</comment>
+    <requestid>826221</requestid>
+  </revision>
 </revisionlist>
