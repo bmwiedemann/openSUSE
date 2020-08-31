@@ -17,14 +17,13 @@
 
 
 Name:           honggfuzz
-Version:        2.1
+Version:        2.3.1
 Release:        0
 Summary:        Security-oriented fuzzer with various analysis options
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://honggfuzz.com
 Source:         https://github.com/google/honggfuzz/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-fix-some-m32-compilation-issues-type-casting.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  zlib-devel
@@ -36,7 +35,6 @@ evolutionary, feedback-driven fuzzing based on code coverage
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -48,7 +46,7 @@ install -Dpm 0755 %{name} \
 
 %files
 %license COPYING
-%doc CHANGELOG CONTRIBUTING README.md
+%doc CHANGELOG CONTRIBUTING.md README.md
 %{_bindir}/%{name}
 
 %changelog
