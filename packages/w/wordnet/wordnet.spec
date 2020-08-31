@@ -1,7 +1,7 @@
 #
 # spec file for package wordnet
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define dbver 3.1
 %define sover 3
 %define lib_name libWN%{sover}
-
+%define _lto_cflags %{nil}
 Name:           wordnet
 Version:        3.0
 Release:        0
 Summary:        A lexical database for the English language
 License:        MIT
 Group:          Productivity/Office/Dictionary
-Url:            http://wordnet.princeton.edu
+URL:            https://wordnet.princeton.edu
 Source0:        http://wordnetcode.princeton.edu/3.0/WordNet-%{version}.tar.bz2
 # Updated dict files as drop-in replacement
 Source1:        http://wordnetcode.princeton.edu/wn%{dbver}.dict.tar.gz
@@ -49,7 +49,6 @@ BuildRequires:  xorg-x11-devel
 BuildRequires:  xorg-x11-libXext-devel
 Requires:       tcl
 Requires:       tk
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 WordNet is a large lexical database of English.
@@ -115,7 +114,7 @@ autoreconf -i
 CFLAGS="%{optflags} -DUSE_INTERP_RESULT"
 %configure --enable-static=no --prefix=%{_datadir}/wordnet-%{version}/
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install DESTDIR=%{buildroot}
@@ -137,23 +136,21 @@ cp -pr ../dict %{buildroot}%{_datadir}/%{name}-%{version}/dict
 %postun -n %{lib_name} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README doc/{html,ps,pdf}
+%license COPYING
+%doc AUTHORS ChangeLog README doc/{html,ps,pdf}
 %{_bindir}/wishwn
 %{_bindir}/wn
 %{_bindir}/wnb
-%{_mandir}/man1/*.1%{ext_man}
-%{_mandir}/man5/*.5%{ext_man}
-%{_mandir}/man7/*.7%{ext_man}
+%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man5/*.5%{?ext_man}
+%{_mandir}/man7/*.7%{?ext_man}
 %{_datadir}/%{name}-%{version}/
 
 %files -n %{lib_name}
-%defattr(-,root,root)
 %{_libdir}/libWN.so.%{sover}*
 
 %files devel
-%defattr(-,root,root,-)
-%{_mandir}/man3/*.3%{ext_man}
+%{_mandir}/man3/*.3%{?ext_man}
 %{_includedir}/wn.h
 %{_libdir}/libWN.so
 

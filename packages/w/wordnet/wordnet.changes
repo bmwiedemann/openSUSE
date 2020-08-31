@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 21:43:28 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable LTO since it causes segmentation faults when running.
+- Run spec-cleaner to clean up specfile.
+
+-------------------------------------------------------------------
 Tue May 23 22:11:08 UTC 2017 - jengelh@inai.de
 
 - Remove not-so-relevant parts from descriptions.
