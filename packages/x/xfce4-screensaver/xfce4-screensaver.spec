@@ -93,7 +93,7 @@ NOCONFIGURE=1 ./autogen.sh
 %license COPYING COPYING.LGPL COPYING.LIB
 %doc README.md NEWS TODO ChangeLog
 %dir %{_sysconfdir}/xdg/menus
-%dir %{_prefix}/lib/xfce4-screensaver
+%dir %{_libexecdir}/xfce4-screensaver
 %dir %{_datadir}/applications/screensavers
 %dir %{_datadir}/desktop-directories
 %config %{_sysconfdir}/xdg/autostart/xfce4-screensaver.desktop
@@ -103,11 +103,11 @@ NOCONFIGURE=1 ./autogen.sh
 %{_bindir}/xfce4-screensaver-command
 %{_bindir}/xfce4-screensaver-configure
 %{_bindir}/xfce4-screensaver-preferences
-%{_prefix}/lib/xfce4-screensaver-dialog
-%{_prefix}/lib/xfce4-screensaver-gl-helper
-%{_prefix}/lib/xfce4-screensaver/floaters
-%{_prefix}/lib/%{name}/popsquares
-%{_prefix}/lib/%{name}/slideshow
+%{_libexecdir}/xfce4-screensaver-dialog
+%{_libexecdir}/xfce4-screensaver-gl-helper
+%{_libexecdir}/xfce4-screensaver/floaters
+%{_libexecdir}/%{name}/popsquares
+%{_libexecdir}/%{name}/slideshow
 %{_datadir}/applications/screensavers/xfce-floaters.desktop
 %{_datadir}/applications/xfce4-screensaver-preferences.desktop
 %{_datadir}/applications/screensavers/xfce-personal-slideshow.desktop
