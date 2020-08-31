@@ -299,4 +299,12 @@
   included in update</comment>
     <requestid>819306</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c0a8f1de430de549cc826923131836de</srcmd5>
+    <version>2.6.1</version>
+    <time>1598885553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830591</requestid>
+  </revision>
 </revisionlist>
