@@ -24,7 +24,7 @@
 # Package-wide golang version
 %define go_version 1.13
 %define go_tool go
-%define _version 1.0.0-rc91
+%define _version 1.0.0-rc92
 %define project github.com/opencontainers/runc
 
 # enable libseccomp for sle >= sle12sp2
@@ -41,7 +41,7 @@
 %endif
 
 Name:           runc
-Version:        1.0.0~rc91
+Version:        1.0.0~rc92
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
