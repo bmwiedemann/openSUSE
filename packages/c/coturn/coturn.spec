@@ -119,7 +119,7 @@ install -Dpm 0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -Dpm 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/
 install -Dpm 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -Dpm 0644 %{SOURCE6} %{buildroot}%{_libexecdir}/firewalld/services/%{name}.xml
+install -Dpm 0644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 install -Dpm 0644 %{SOURCE7} %{buildroot}%{_docdir}/%{name}/
 %if %{with apparmor}
 install -Dpm 0644 %{SOURCE8} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.turnserver
@@ -181,9 +181,9 @@ systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %{_sysusersdir}/%{name}-user.conf
 %{_sbindir}/rc%{name}
 %{_fillupdir}/sysconfig.coturn
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/coturn.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/coturn.xml
 
 %{_bindir}/turnserver
 %{_bindir}/turnadmin
