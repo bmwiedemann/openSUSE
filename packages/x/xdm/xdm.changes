@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Aug 28 10:22:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /sbin/startproc: with systemd no longer pulling in
+  sysvinit-tools. we are responsible for our own deps. /sbin/pidof
+  and /sbin/startproc both were presented by sysvinit-tools. but
+  the sole presence of the /sbin/pidof dep is not sufficient, as
+  this can be provided by various packages (e.g.
+  busybox-sysvinit-tools, which then does not provide startproc).
+  Spelling the deps out ensures that we get the right package set
+  installed.
+
+-------------------------------------------------------------------
+Thu Aug 27 11:36:48 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop insserv-compat dependency when display-manager.service is used
+    
+  insserv-compat is going to be dropped soon or later on systems with
+  systemd as init system.
+    
+  It was only needed by /usr/lib/X11/display-manager script that uses
+  rc_status to pretty print the status of a command.
+    
+  Since this script is intended to be used by display-manager.service
+  and not called directly by users and systemd has already its own
+  mechanism to report status, the use of rc_status doesn't seem to be
+  useful.
+    
+  The exit failure status for each command has been preserved.
+
+-------------------------------------------------------------------
+Wed Aug 26 17:23:18 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop commands in /usr/lib/X11/display-manager that are never used by systemd
+    
+  Assuming that this script is only called from
+  display-manager.service unit, some commands of the scripts are
+  either never used or redundant with systemd functionalities.
+
+  More specifically, there's no need to redefine a "stop" command as
+  this is one basic command that systemd implements already.
+    
+  Also convert "reload" to make use of $MAINPID exported by systemd
+  which should be slighly more reliable and hence stop relying on
+  killproc that might be removed in the future.
+
+-------------------------------------------------------------------
+Wed Aug 26 13:39:08 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Replace /var/run with /run as /var/run is obsolete since quite some
+  time now.
+
+-------------------------------------------------------------------
 Thu Jul 16 05:13:42 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - readd insserv-compat also when using systemd due to missing

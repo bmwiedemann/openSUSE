@@ -1,6 +1,5 @@
 [Unit]
 Description=X Display Manager
-Requires=var-run.mount
 Conflicts=getty@tty7.service plymouth-quit.service
 After=ypbind.service gpm.service time-sync.target winbind.service acpid.service
 Wants=remote-fs.target dbus.socket systemd-user-sessions.service systemd-logind.service
@@ -9,9 +8,8 @@ OnFailure=plymouth-quit.service
 
 [Service]
 Type=forking
-PIDFile=/var/run/displaymanager.pid
+PIDFile=/run/displaymanager.pid
 ExecStart=/usr/lib/X11/display-manager start
-ExecStop=/usr/lib/X11/display-manager stop
 ExecReload=/usr/lib/X11/display-manager reload
 KillMode=process
 

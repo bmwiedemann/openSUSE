@@ -797,4 +797,12 @@
   /etc/rc.status, etc. (boo#1174180)</comment>
     <requestid>821182</requestid>
   </revision>
+  <revision rev="83" vrev="9">
+    <srcmd5>2fdc2d78103ec1d82f7b816f14017946</srcmd5>
+    <version>1.1.12</version>
+    <time>1598886894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830260</requestid>
+  </revision>
 </revisionlist>

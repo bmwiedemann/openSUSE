@@ -72,10 +72,13 @@ BuildRequires:  pkgconfig(xtrans)
 BuildRequires:  firewall-macros
 %endif
 Requires:       /sbin/pidof
+Requires:       /sbin/startproc
 %if 0%{?with_systemd}
 Requires:       %fillup_prereq
 %endif
+%if 0%{?suse_version} < 1315
 Requires:       insserv-compat
+%endif
 Requires:       logrotate
 Requires:       sessreg
 Requires:       xconsole
