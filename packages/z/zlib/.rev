@@ -662,4 +662,16 @@ Passed the spec file through spec cleaner (forwarded request 116645 from worldci
     <comment></comment>
     <requestid>824669</requestid>
   </revision>
+  <revision rev="78" vrev="15">
+    <srcmd5>5c894aef0a3883f45bb05d88d4a60bc8</srcmd5>
+    <version>1.2.11</version>
+    <time>1598885251</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix compression level switching
+  bsc#1175811 bsc#1175830 bsc#1175831
+  * zlib-compression-switching.patch
+
+- Set -DDFLTCC_LEVEL_MASK=0x7e on s390/s390x jsc#13776</comment>
+    <requestid>830216</requestid>
+  </revision>
 </revisionlist>

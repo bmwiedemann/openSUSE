@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:58:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix compression level switching
+  bsc#1175811 bsc#1175830 bsc#1175831
+  * zlib-compression-switching.patch
+
+-------------------------------------------------------------------
+Thu Aug 27 06:55:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Set -DDFLTCC_LEVEL_MASK=0x7e on s390/s390x jsc#13776
+
+-------------------------------------------------------------------
 Thu Aug  6 08:36:48 UTC 2020 - Lidong Zhong <lidong.zhong@suse.com>
 
 - Permit a deflateParams() parameter change as soon as possible(bsc#1174736)

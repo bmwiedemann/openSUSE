@@ -43,6 +43,7 @@ Patch4:         410.patch
 Patch5:         zlib-no-version-check.patch
 Patch6:         bsc1174736-DFLTCC_LEVEL_MASK-set-to-0x1ff.patch
 Patch7:         bsc1174551-fxi-imcomplete-raw-streams.patch
+Patch8:         zlib-compression-switching.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -126,12 +127,17 @@ developing applications which use minizip.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 cp %{SOURCE4} .
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export LDFLAGS="-Wl,-z,relro,-z,now"
-export CFLAGS="%{optflags}"
+%ifarch s390x s390
+  export CFLAGS="%{optflags} -DDFLTCC_LEVEL_MASK=0x7e"
+%else
+  export CFLAGS="%{optflags}"
+%endif
 # For sure not autotools build
 CC="cc" ./configure \
     --shared \
