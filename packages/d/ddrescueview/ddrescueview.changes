@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sat Aug 29 08:44:36 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add use-getters-for-fields-in-other-classes.patch to fix build
+- add pie.patch to use PIE for linking
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb  4 11:32:28 UTC 2018 - sebix+novell.com@sebix.at
+
+- specfile:
+ * use sed instead of dos2unix
+ * use %setup's -c flag to deal with the source tarball structure
+
+-------------------------------------------------------------------
+Sat Feb  3 09:34:25 UTC 2018 - sebix+novell.com@sebix.at
+
+- initial package for version 0.4~alpha3
