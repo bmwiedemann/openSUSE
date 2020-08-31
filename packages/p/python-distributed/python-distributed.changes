@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Aug 29 15:53:08 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.25.0:
+  * Update for black (GH#4081) Tom Augspurger
+  * Provide informative error when connecting an older version of Dask
+    (GH#4076) Matthew Rocklin
+  * Simplify pack_frames (GH#4068) jakirkham
+  * Simplify frame_split_size (GH#4067) jakirkham
+  * Use list.insert to add prelude up front (GH#4066) jakirkham
+  * Graph helper text (GH#4064) Julia Signell
+  * Graph dashboard: Reset container data if task number is too large
+    (GH#4056) Florian Jetter
+  * Ensure semaphore picks correct IOLoop for threadpool workers
+    (GH#4060) Florian Jetter
+  * Add cluster log method (GH#4051) Jacob Tomlinson
+  * Cleanup more exception tracebacks (GH#4054) Krishan Bhasin
+  * Improve documentation of scheduler.locks options (GH#4062) Florian
+    Jetter
+
+- changes from version 2.24.0:
+  * Move toolbar to above and fix y axis (#4043) Julia Signell
+  * Make behavior clearer for how to get worker dashboard (#4047)
+    Julia Signell
+  * Worker dashboard clean up (#4046) Julia Signell
+  * Add a default argument to the datasets and a possibility to
+    override datasets (#4052) Nils Braun
+  * Discover HTTP endpoints (#3744) Martin Durant
+
+-------------------------------------------------------------------
 Sat Aug 15 17:00:33 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.23.0:
