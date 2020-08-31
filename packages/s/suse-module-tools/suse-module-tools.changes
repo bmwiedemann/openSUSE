@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:43:20 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.4:
+  * spec: rework dependencies
+
+-------------------------------------------------------------------
 Fri Jun  5 15:28:50 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Reverted back to tar_scm source service

@@ -347,4 +347,13 @@
   (obs_scm doesn't work well for Ring0 packages) (forwarded request 811878 from mwilck)</comment>
     <requestid>811879</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>dd7a59a09a07314be6000e4a05aceaba</srcmd5>
+    <version>15.3.4</version>
+    <time>1598885244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.3.4:
+  * spec: rework dependencies</comment>
+    <requestid>829944</requestid>
+  </revision>
 </revisionlist>
