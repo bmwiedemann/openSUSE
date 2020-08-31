@@ -1,20 +1,13 @@
-Make build reproducible
-
-when linking binaries with g++, order of input files
-influences ordering of functions in the output
-
-See https://reproducible-builds.org/ for why this matters.
-
-Index: caps-0.4.4/Makefile
+Index: caps-0.9.26/Makefile
 ===================================================================
---- caps-0.4.4.orig/Makefile
-+++ caps-0.4.4/Makefile
-@@ -17,7 +17,7 @@ LDFLAGS = $(_LDFLAGS) $(CFLAGS)
- PLUG = caps
- VERSION = 0.4.4
+--- caps-0.9.26.orig/Makefile
++++ caps-0.9.26/Makefile
+@@ -18,7 +18,7 @@ LDFLAGS += $(_LDFLAGS) $(CFLAGS)
  
--SOURCES = $(wildcard *.cc)
-+SOURCES = $(sort $(wildcard *.cc))
+ PLUG = caps
+ 
+-SOURCES = $(wildcard *.cc) $(wildcard dsp/*.cc)
++SOURCES = $(sort $(wildcard *.cc)) $(sort($(wildcard dsp/*.cc))
  OBJECTS	= $(SOURCES:.cc=.o) 
  HEADERS = $(wildcard *.h) $(wildcard dsp/*.h) $(wildcard util/*.h) $(wildcard dsp/tonestack/*.h)
  
