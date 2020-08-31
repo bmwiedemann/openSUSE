@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug 28 09:38:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /sbin/start_daemon: both init scripts, the one used in
+  systemd context as well as legacy sysv, make use of start_daemon.
+
+-------------------------------------------------------------------
+Tue Aug 18 12:13:49 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.6
+  Fixes five vilnerabilities:
+  5481.   [security]      "update-policy" rules of type "subdomain" were
+                          incorrectly treated as "zonesub" rules, which allowed
+                          keys used in "subdomain" rules to update names outside
+                          of the specified subdomains. The problem was fixed by
+                          making sure "subdomain" rules are again processed as
+                          described in the ARM. (CVE-2020-8624) [GL #2055]
+
+  5480.   [security]      When BIND 9 was compiled with native PKCS#11 support, it
+                          was possible to trigger an assertion failure in code 
+                          determining the number of bits in the PKCS#11 RSA public
+                          key with a specially crafted packet. (CVE-2020-8623)
+                          [GL #2037]
+
+  5479.   [security]      named could crash in certain query resolution scenarios
+                          where QNAME minimization and forwarding were both 
+                          enabled. (CVE-2020-8621) [GL #1997]
+
+  5478.   [security]      It was possible to trigger an assertion failure by
+                          sending a specially crafted large TCP DNS message.
+                          (CVE-2020-8620) [GL #1996]
+
+  5476.   [security]      It was possible to trigger an assertion failure when 
+                          verifying the response to a TSIG-signed request.
+                          (CVE-2020-8622) [GL #2028]
+  For the less severe bugs fixed, see the CHANGES file.
+  [bsc#1175443, CVE-2020-8624, CVE-2020-8623, CVE-2020-8621,
+   CVE-2020-8620, CVE-2020-8622]
+
+-------------------------------------------------------------------
 Thu Aug  6 12:35:10 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Added "/etc/bind.keys" to NAMED_CONF_INCLUDE_FILES in

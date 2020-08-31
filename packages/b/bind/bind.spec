@@ -24,7 +24,7 @@
 %define libdns libdns%{dns_sonum}
 %define irs_sonum 1601
 %define libirs libirs%{irs_sonum}
-%define isc_sonum 1605
+%define isc_sonum 1606
 %define libisc libisc%{isc_sonum}
 %define isccc_sonum 1600
 %define libisccc libisccc%{isccc_sonum}
@@ -60,7 +60,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.5
+Version:        9.16.6
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -106,6 +106,8 @@ Provides:       bind9 = %{version}
 Provides:       dns_daemon
 Obsoletes:      bind8 < %{version}
 Obsoletes:      bind9 < %{version}
+# named.init (systemd) and init/named both call start_daemon, so unconditional require it
+Requires:       /sbin/start_daemon
 %if %{with_systemd}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
@@ -524,6 +526,7 @@ fi
 %{_datadir}/bind/ldapdump
 %ghost %{_rundir}/named
 %{_fillupdir}/sysconfig.named-named
+%attr(1775,root,named) %dir %{_var}/lib/named
 %dir %{_var}/lib/named/master
 %attr(-,named,named) %dir %{_var}/lib/named/dyn
 %attr(-,named,named) %dir %{_var}/lib/named/slave
@@ -559,7 +562,6 @@ fi
 %if %{with_systemd}
 %{_prefix}/lib/tmpfiles.d/bind-chrootenv.conf
 %endif
-%attr(1775,root,named) %dir %{_var}/lib/named
 %dir %{_var}/lib/named%{_sysconfdir}
 %dir %{_var}/lib/named%{_sysconfdir}/named.d
 %dir %{_var}/lib/named/dev
