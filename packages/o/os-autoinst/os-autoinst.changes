@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 30 03:26:24 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1598623827.924c995d:
+  * Show only one newline between serial output lines
+  * Write tests for mouse_drag
+  * Disable python3-yamllint when building for SLE < 15 SP2
+  * Write tests for _calculate_clickpoint
+  * Add `mouse_drag` subroutine to support click and drag in tests
+
+-------------------------------------------------------------------
 Wed Aug 26 14:34:20 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1598452450.166a4d00:
