@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug 29 13:04:13 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 1.2
+  + Much better gamepad support
+  + New settings to customize the game's camera
+  + A new "Cartoon" theme
+  + An improved online rating system. Online rankings have been reset to go along with it.
+  + The game's window can now be resized in-game without going in the options
+  + The minimap now shows basketballs
+  + Any addon kart can now be used online even if other players don't have it.
+  + Three improved karts: a new Kiki kart and improved Pidgin and Puffy karts
+  + Add support for IPv6 LAN servers
+  + Improved server creation speed and performance
+  + In-game creation of a racing server is now possible on iOS devices
+  + An improved tutorial with free-flow racing
+  + Support for SVG icons
+  + New tips for soccer mode
+  + Team chat for team games
+  
+-------------------------------------------------------------------
 Thu Jan 23 08:57:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on non-x86 architectures

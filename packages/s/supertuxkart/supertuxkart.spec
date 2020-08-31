@@ -18,15 +18,15 @@
 
 #
 Name:           supertuxkart
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        A 3D kart racing game
 License:        GPL-2.0-or-later AND GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Amusements/Games/3D/Race
-URL:            http://supertuxkart.sourceforge.net/
-Source:         https://downloads.sourceforge.net/project/supertuxkart/SuperTuxKart/%{version}/supertuxkart-%{version}-src.tar.xz
+URL:            https://supertuxkart.net/
+Source:         https://github.com/supertuxkart/stk-code/releases/download/%{version}/supertuxkart-%{version}-src.tar.xz
 # Geeko kart add-on (CC-BY 3.0)
-Source1:        http://stkaddons.net/dl/14e6ba25b17f0d.zip
+Source1:        14e6ba25b17f0d.zip
 Source9:        supertuxkart.6
 BuildRequires:  cmake >= 3
 BuildRequires:  fdupes
@@ -59,6 +59,7 @@ BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-data = %{version}
@@ -88,7 +89,7 @@ BuildArch:      noarch
 Data files for SuperTuxKart a Free 3d kart racing game.
 
 %prep
-%setup -q -n %{name}-%{version}-src
+%setup -q -n SuperTuxKart-%{version}-src
 find -name '*~' -delete -print
 find -name '.git*' -type f -delete -print
 rm -rfv ./.github
