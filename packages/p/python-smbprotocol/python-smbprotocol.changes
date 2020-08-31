@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 25 12:38:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.0
+  * Speed up logging statements for large messages like a read and
+    write message.
+  * Changed authentication dep to pyspnego that handles all the
+    authentication work.
+  * Fixed up authentication against hosts that don't present the
+    initial GSSAPI token like Azure File Storage.
+  * Added specific exception types for every 'NtStatus' value to
+    make it easier to catch only specific exceptions.
+  * Added the following exceptions  to the list of known exception
+    codes:
+      * 'STATUS_NETWORK_NAME_DELETED'
+      * 'STATUS_NOT_FOUND'
+      * 'STATUS_PATH_NOT_COVERED'
+      * 'STATUS_DFS_UNAVAILABLE'
+      * 'STATUS_SERVER_UNAVAILABLE'
+  * Fix session key generation when creating a new session from
+    an existing connection object.
+
+-------------------------------------------------------------------
 Wed Dec 11 20:00:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.1

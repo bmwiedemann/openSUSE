@@ -1,7 +1,7 @@
 #
 # spec file for package python-smbprotocol
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smbprotocol
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        SMBv2/v3 client for Python 2 and 3
 License:        MIT
@@ -27,19 +27,16 @@ URL:            https://github.com/jborean93/smbprotocol
 #Source:         https://files.pythonhosted.org/packages/source/s/smbprotocol/smbprotocol-%%{version}.tar.gz
 Source:         https://github.com/jborean93/smbprotocol/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography >= 2.0}
-BuildRequires:  %{python_module ntlm-auth}
-BuildRequires:  %{python_module pyasn1}
+BuildRequires:  %{python_module pyspnego}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.0
-Requires:       python-ntlm-auth
-Requires:       python-pyasn1
+Requires:       python-pyspnego
 Requires:       python-six
 Suggests:       python-gssapi >= 1.4.1
-Suggests:       python-ordereddict
 BuildArch:      noarch
 %python_subpackages
 
