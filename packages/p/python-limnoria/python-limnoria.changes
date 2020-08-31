@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Aug 30 10:27:19 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2020-08-30:
+  * Herald:
+    - Throttle default heralds.
+    - Use time.monotonic instead of time.time.
+  * DDG:
+    - Fix redirect detection.
+    - Add region and safeSearch configs.
+    - Add region test.
+  * callbacks:
+    - don't crash when the prefix is from network services.
+    - add comments to findCallbacksForArgs.
+  * utils.net:
+    - always check fingerprints if they are set, even if
+      verifyCertificates is False.
+    - Do not disable TLS certificate check when
+      authorityCertificate is set.
+  * Autocomplete:
+    - Initial implementation.
+    - Fix name of response tag.
+    - Only return the end of the current word (or the next one if
+      the current word is finished).
+    - return only the common prefix + one word.
+    - more readable test failures.
+    - configure Black.
+  * ChannelLogger:
+    - Fix regression preventing outgoing messages from being logged.
+    - rewrite relayed messages echoed by the server
+    - Fix typo in variable name.
+    - update comment
+  * irclib: Don't error when 004 is missing umodes and chanmodes.
+  * Selectable User-Agent for HTTP requests
+    (gh#ProgVal/Limnoria#1423)
+  * Fix typo. HttpUserAgent -> HttpUserAgents
+    (gh#ProgVal/Limnoria#1424)
+  * userAgents: avoid potential IndexError
+  * Google: Set User-Agent override. (gh#ProgVal/Limnoria#1426)
+  * Factoids: Add --author filtering to @search.
+  * Rename IrcCallback.echo_message to IrcCallback.echoMessage.
+- Use limnoria-%{version}.ext naming scheme for source instead of
+  python-limnoria-%{version}.ext
+
+-------------------------------------------------------------------
 Thu Jul  9 19:43:29 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2020-07-01:

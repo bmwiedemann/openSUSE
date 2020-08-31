@@ -18,15 +18,15 @@
 
 %define skip_python2 1
 %define appname limnoria
-%define srcver 2020-07-01
+%define srcver 2020-08-30
 Name:           python-limnoria
-Version:        2020.07.01
+Version:        2020.08.30
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ProgVal/Limnoria
-Source:         https://github.com/ProgVal/Limnoria/archive/master-%{srcver}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/ProgVal/Limnoria/archive/master-%{srcver}.tar.gz#/%{appname}-%{version}.tar.gz
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module chardet}
