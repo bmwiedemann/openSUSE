@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 29 06:05:50 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.16 development release
+  - Support for x86 AVX registers.
+  - Some ARM64 fixes for macOS.
+  - Still more restructuration of the console support.
+  - Various bug fixes.
+- update staging to 5.16 release
+
+-------------------------------------------------------------------
 Sat Aug 15 06:36:05 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.15 development release

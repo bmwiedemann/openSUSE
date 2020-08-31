@@ -3648,4 +3648,17 @@
 - update staging to 5.15 release</comment>
     <requestid>827041</requestid>
   </revision>
+  <revision rev="315" vrev="1">
+    <srcmd5>041e6acb485fb54dbac3bfe00fef9315</srcmd5>
+    <version>5.16</version>
+    <time>1598885393</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.16 development release
+  - Support for x86 AVX registers.
+  - Some ARM64 fixes for macOS.
+  - Still more restructuration of the console support.
+  - Various bug fixes.
+- update staging to 5.16 release</comment>
+    <requestid>830566</requestid>
+  </revision>
 </revisionlist>
