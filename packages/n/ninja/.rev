@@ -252,4 +252,13 @@
     <comment></comment>
     <requestid>769935</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>30a4585e4e2e9dfeea8216a7187ec37b</srcmd5>
+    <version>1.10.1</version>
+    <time>1598886881</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10.1:
+  * https://groups.google.com/g/ninja-build/c/QQM54eAhrjU/m/q5zn_zTlAQAJ</comment>
+    <requestid>829043</requestid>
+  </revision>
 </revisionlist>
