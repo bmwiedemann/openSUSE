@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:47:40 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.4:
+  * Fix google#166, Allow space before C++11 attributes
+  * Fix #156: sed/gsed output parameter rejected
+  * Fix #156: sed/gsed output without other stdout information
+  * improvements to regression tests 
+
+-------------------------------------------------------------------
 Wed Jul  1 04:34:56 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on textfixtures. 

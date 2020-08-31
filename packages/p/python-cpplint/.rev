@@ -68,4 +68,16 @@
    * Fix runtime warning: Close files after reading contents</comment>
     <requestid>817961</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c2a56d1997e894d3b3dc8f133a4ccf11</srcmd5>
+    <version>1.5.4</version>
+    <time>1598885459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.4:
+  * Fix google#166, Allow space before C++11 attributes
+  * Fix #156: sed/gsed output parameter rejected
+  * Fix #156: sed/gsed output without other stdout information
+  * improvements to regression tests</comment>
+    <requestid>830677</requestid>
+  </revision>
 </revisionlist>
