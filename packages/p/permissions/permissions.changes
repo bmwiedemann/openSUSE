@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 26 12:33:11 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 20200826:
+  * mtr-packet: stop requiring dialout group
+  * etc/permissions: fix mtr permission
+  * list_permissions: improve output format
+  * list_permissions: support globbing in --path argument
+  * list_permissions: implement simplifications suggested in PR#92
+  * list_permissions: new tool for better path configuration overview
+
+-------------------------------------------------------------------
 Tue Aug 11 12:06:30 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 20200811:

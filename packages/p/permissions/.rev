@@ -1287,4 +1287,18 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * regtest: print individual test case errors to stderr</comment>
     <requestid>825923</requestid>
   </revision>
+  <revision rev="141" vrev="21">
+    <srcmd5>eb5603e320e9a0b460303df5cacaf253</srcmd5>
+    <version>unknown</version>
+    <time>1598885238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200826:
+  * mtr-packet: stop requiring dialout group
+  * etc/permissions: fix mtr permission
+  * list_permissions: improve output format
+  * list_permissions: support globbing in --path argument
+  * list_permissions: implement simplifications suggested in PR#92
+  * list_permissions: new tool for better path configuration overview</comment>
+    <requestid>829800</requestid>
+  </revision>
 </revisionlist>
