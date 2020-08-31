@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Aug 27 12:51:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Adjust %pre and %post for the restoration of upstream tmp.mount (boo#1175779)
+
+-------------------------------------------------------------------
+Wed Aug 26 09:46:46 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit a4e393eecb9dbe140a6c7d57419c291d786155cf
+
+  d8e3bd4e22 Revert "core: don't send SIGKILL to user@.service immediatly during shutdown"
+
+-------------------------------------------------------------------
+Tue Aug 25 14:32:16 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop requirement on 'sysvinit-tools'
+
+  It was used to workaround bug #886599 by explicitly calling
+  vhangup(8) from getty@.service so when this service was stopped a
+  virtually hangup on the specified terminal when were stopped to give
+  the shell a few seconds to save its history.
+
+  But this workaround was dropped since it had no effect (SLE12-GM was
+  released with it but was still suffering from the bug) and was
+  replaced by commit e9db43d5910717a108, which was released from v226
+  and backported to SLE12/SLE12-SP1.
+
+-------------------------------------------------------------------
 Thu Aug 20 10:24:37 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Import commit 6d6d92930acad63f9b9029c305a672c32c550d2d (include merge of v245.7)

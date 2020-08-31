@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.49.g6d6d92930a
+%define suse_version +suse.51.ga4e393eecb
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -123,7 +123,6 @@ Requires:       kbd
 Requires:       kmod >= 15
 Requires:       netcfg >= 11.5
 Requires:       systemd-presets-branding
-Requires:       sysvinit-tools
 Requires:       udev = %{version}-%{release}
 Requires:       util-linux >= 2.27.1
 Requires:       group(lock)
@@ -787,12 +786,7 @@ cat %{S:14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 # a %pre that needs to be run during the build. systemd is one of them
 # so keep the section even if it's empty.
 %pre
-if [ $1 -gt 1 ] ; then
-        case "$(systemctl show -pFragmentPath tmp.mount)" in
-        FragmentPath=/usr/lib/systemd/system/tmp.mount)
-                ln -sf %{_datadir}/systemd/tmp.mount /etc/systemd/system/ || :
-        esac
-fi
+:
 
 %post
 # Make /etc/machine-id an empty file during package installation. On
@@ -869,6 +863,13 @@ fi
 #
 # It's run only once.
 %{_prefix}/lib/systemd/scripts/migrate-sysconfig-i18n.sh || :
+
+# Previous versions had tmp.mount moved to /usr/share/systemd/tmp.mount.
+# It could be symlinked into /etc to make /tmp a tmpfs. The file does not exist anymore,
+# so migrate the link to the new location.
+if [ "$(readlink -f %{_sysconfdir}/systemd/system/tmp.mount)" = "%{_datadir}/systemd/tmp.mount" ] ; then
+        ln -sf %{_unitdir}/tmp.mount %{_sysconfdir}/systemd/system/tmp.mount
+fi
 
 %postun
 %systemd_postun
