@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Aug 29 05:38:23 UTC 2020 - Arun Persaud <arun@gmx.de
+
+- update to version 2.7.1:
+  * Fixes
+    + Improve performance of docker hooks by removing slow ps call
+        #1572 PR by @rkm.
+        #1569 issue by @asottile.
+    + Fix un-healthy() invalidation followed by install being reported
+      as un-healthy().
+        #1576 PR by @asottile.
+        #1575 issue by @jab.
+    + Fix rare file race condition on windows with os.replace()
+        #1577 PR by @asottile.
+
+- changes from version 2.7.0:
+  * Features
+    + Produce error message if an environment is immediately unhealthy
+        #1535 PR by @asottile.
+    + Add --no-allow-missing-config option to init-templatedir
+        #1539 PR by @singergr.
+    + Add warning for old list-style configuration
+        #1544 PR by @asottile.
+    + Allow pre-commit to succeed on a readonly store.
+        #1570 PR by @asottile.
+        #1536 issue by @asottile.
+  * Fixes
+    + Fix error messaging when the store directory is readonly
+        #1546 PR by @asottile.
+        #1536 issue by @asottile.
+    + Improve diff performance with many hooks
+        #1566 PR by @jhenkens.
+        #1564 issue by @jhenkens.
+
+-------------------------------------------------------------------
 Sun Jul 19 03:46:47 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Ignore one test failure to fix builds
