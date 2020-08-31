@@ -35,9 +35,9 @@ class CMakeParser:
                 version = self.resolveCMakeModuleVersion(modulePath, cmakeModule, lowercase)
 
                 if version:
-                   print("mingw32(cmake:%s) = %s" % (cmakeModule, version))
+                   print("mingw64(cmake:%s) = %s" % (cmakeModule, version))
                 else:
-                   print("mingw32(cmake:%s)" % cmakeModule)
+                   print("mingw64(cmake:%s)" % cmakeModule)
 
     def parseCmakeModuleConfig(self, configFile):
         paths = configFile.rsplit("/", 3)
