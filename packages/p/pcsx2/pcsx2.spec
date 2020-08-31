@@ -289,6 +289,7 @@ This package contains Traditional Chinese translations for PCSX2
   -DUSER_CMAKE_CXX_FLAGS="-Wno-narrowing" \
   -DXDG_STD=ON \
   -DPACKAGE_MODE=ON \
+  -DDISABLE_ADVANCE_SIMD=ON \
   -DPLUGIN_DIR="%{_libdir}/%{name}" \
   -DGAMEINDEX_DIR="%{_datadir}/%{name}" \
   -DGLSL_SHADER_DIR="%{_datadir}/%{name}" \
