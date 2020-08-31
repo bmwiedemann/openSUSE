@@ -398,4 +398,14 @@
   + Patch: 0101-Use-WhiteNoise-to-serve-static-assets-for-the-Pagure.patch</comment>
     <requestid>824337</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1fb2142a2f63cfa254c5cdf980edb0f9</srcmd5>
+    <version>5.11.3</version>
+    <time>1598885510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.11.3
+  + Fix the model around the boards so it works with mariadb/mysql
+  + Add new endpoints to the API documentation</comment>
+    <requestid>830601</requestid>
+  </revision>
 </revisionlist>

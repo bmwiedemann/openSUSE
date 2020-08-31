@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 30 14:25:21 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 5.11.3
+  + Fix the model around the boards so it works with mariadb/mysql
+  + Add new endpoints to the API documentation
+
+-------------------------------------------------------------------
 Tue Aug  4 13:00:36 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 5.11.2
