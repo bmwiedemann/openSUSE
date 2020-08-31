@@ -1,7 +1,7 @@
 #
 # spec file for package gyp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 SUSE LINUX Products GmbH, Nurenberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,24 +13,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gyp
-Version:        0+git.20171012
+Version:        0+git.20200512
 Release:        0
 Summary:        Generate Your Projects
 License:        BSD-3-Clause
 Group:          Development/Tools/Building
-Url:            https://gyp.gsrc.io
+URL:            https://gyp.gsrc.io
 Source:         %{name}-%{version}.tar.xz
 Patch0:         gyp-rpmoptflags.patch
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python2-devel
-BuildRequires:  python2-setuptools
-Requires:       python2-setuptools
+Requires:       ninja
+Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Provides:       gyp = %{version}
+Obsoletes:      gyp < %{version}
 BuildArch:      noarch
+%python_subpackages
 
 %description
 GYP is a tool to generates native Visual Studio, Xcode and SCons and/or make
@@ -48,15 +53,23 @@ sed -i '/^#!/d' ./pylib/%{name}/*.py
 sed -i '/^#!/d' ./pylib/%{name}/generator/*.py
 
 %build
-python2 setup.py build
+%python_build
 
 %install
-python2 setup.py install --root %{buildroot} --prefix=%{_prefix}
-%fdupes -s %{buildroot}%{python_sitelib}
+%python_install
+%python_clone -a %{buildroot}%{_bindir}/gyp
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%files
-%doc AUTHORS LICENSE
-%{_bindir}/%{name}
+%post
+%python_install_alternative gyp
+
+%postun
+%python_uninstall_alternative gyp
+
+%files %{python_files}
+%license LICENSE
+%doc AUTHORS
+%python_alternative %{_bindir}/gyp
 %{python_sitelib}/*
 
 %changelog

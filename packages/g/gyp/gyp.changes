@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Aug 31 08:51:44 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Convert to singlespec
+- Update to version 0+git.20200512:
+  * Add support for CLANG_ENABLE_OBJC_WEAK
+  * Prevent propogation to configurations of nested 'dependent-settings' directives
+  * Add .tbd to the .xcodeproj generator’s extension map
+  * fix encoding issues with inputs for better Python 3 support
+  * fix make output checks under C locale
+  * Fix Python 3 incompatibilities
+  * Add missing b'' qualifier from da63cb0f.
+  * Misc python3 fixes in xcode_emulation.
+  * Fix incorrect depfile path relativization
+  * Add flake8 checks to travis configuration.
+  * Changes for windows and easy xml to get gyp to run under python 3.
+  * More miscellaneous fixes for Python3 compatibility.
+  * src,win: add VS2019 version
+  * Fixes needed for Python3 on Win32.
+  * Fix one dangling utf8 decode call needed for python 3.
+  * Mostly mechanical changes for Python3 support.
+  * Update simple_copy.py for Python3 types.
+  * Use ast module instead of compiler module for parsing files.
+  * Make Visual Studio 2017 Community Edition work w/ GYP.
+  * Add a copyright header to TestCmd.py.
+  * Fix issue with missing resources in Xcode ui tests targets.
+  * Patch GYP so that building with Xcode 10 works.
+  * infra: remove cq.cfg, which is no longer used.
+  * Make Travis build only the master branch
+  * Disable some tests that fail on bots to try to get a green build
+  * and try clang
+  * readd osx
+  * try a wrapper script
+  * see if ninja is getting pulled
+  * see if ninja is getting pulled
+  * try other order for sync:
+  * try exporting PATH and only build ninja for now
+  * fiddling with directories
+  * set +x  on buildbot/travis-checkout.sh
+  * add copyright to .sh
+  * .
+  * osx
+  * .
+  * Add prototype of Travis config
+
+-------------------------------------------------------------------
 Thu Nov  2 16:04:35 UTC 2017 - mpluskal@suse.com
 
 - Update to version 0+git.20171012:

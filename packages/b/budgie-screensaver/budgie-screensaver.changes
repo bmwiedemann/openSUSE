@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Aug 28 11:27:18 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Initial packaging version 20190923
+- Add patches from gnome-screensaver in openSUSE 12.3 :)
+  * gnome-screensaver-suse-pam.patch
+  * gnome-screensaver-helper.patch (bgo#640647)
+  * gnome-screensaver-xvkbd-on-lock.patch
+  * gnome-screensaver-multihead-unlock.patch (bnc#444157,bgo#455118)
+- Add remove-old-automake-macros.patch: fix Automake problems

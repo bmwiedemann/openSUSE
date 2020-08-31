@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -35,6 +35,8 @@ Patch1:         Rework-grab-and-ungrab-keys.patch
 Patch2:         mutter-3-35-91.patch
 # PATCH-FIX-UPSTREAM: Allow budgie-desktop and gnome-shell to coexist gh#solus-project/budgie-desktop#1984
 Patch3:         gnome-coexistance.patch
+# PATCH-FIX-OPENSUSE: Create a clean separation between Budgie and GNOME desktops
+Patch4:         desktop-override.patch
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.41.2
 BuildRequires:  pkgconfig
@@ -68,8 +70,8 @@ Requires:       ibus
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
 Requires:       gnome-control-center
-Requires:       gnome-software
-#Recommends:     gnome-screensaver
+Requires:       budgie-screensaver
+Recommends:     gnome-software
 Recommends:     NetworkManager-applet
 Recommends:     gnome-backgrounds
 Recommends:     budgie-desktop-doc
@@ -148,9 +150,6 @@ Private library for Budgie desktop to link against.
 export LANG=en_US.UTF-8
 %meson_install
 
-# GNOME Screensaver missing in openSUSE
-rm %{buildroot}/%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
-
 # Correct vala directory
 mkdir -pv %{buildroot}%{_datadir}/vala-%{vala_version}/
 mv %{buildroot}%{_datadir}/vala/* %{buildroot}%{_datadir}/vala-%{vala_version}/
@@ -193,6 +192,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
 %{_libdir}/budgie-desktop
+%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_sysconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 

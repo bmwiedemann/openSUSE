@@ -1,0 +1,58 @@
+From 87456bcef88083443e9c968fe209a46e8500de80 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <callumjfarmer13@gmail.com>
+Date: Fri, 28 Aug 2020 17:25:29 +0100
+Subject: [PATCH] Patch4 (#14)
+
+* Patch3 (#11)
+
+* Patch2 (#8)
+
+* Patch1 (#3)
+
+* Update configure.ac
+
+* Update configure.ac
+
+* Patch1 (#7)
+
+* Update configure.ac
+
+* Update configure.ac
+
+* Update configure.ac
+
+* Update configure.ac
+
+* Update configure.ac
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c573924..942457e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,6 +5,7 @@ AC_INIT([gnome-screensaver],
+         [3.6.1],
+         [http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-screensaver])
+ 
++AC_CONFIG_MACRO_DIRS([m4])
+ AC_CONFIG_SRCDIR(src/gnome-screensaver.c)
+ 
+ AM_INIT_AUTOMAKE([1.10 no-dist-gzip dist-xz tar-ustar])
+@@ -33,7 +34,7 @@ GETTEXT_PACKAGE=gnome-screensaver
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of default gettext domain])
+ 
+-AM_GLIB_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
+ GLIB_GSETTINGS
+ 
+ # Dependencies
+@@ -91,7 +92,6 @@ SAVER_LIBS="$ALL_X_LIBS"
+ 
+ AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
+ 
+-GNOME_COMPILE_WARNINGS(yes)
+ 
+ # Optional dependencies for the theme engines

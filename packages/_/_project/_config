@@ -99,6 +99,13 @@ Prefer: installation-images-openSUSE installation-images-debuginfodeps-openSUSE
 # Since not all packages care, we only add it where needed (instead of preinstall)
 Substitute: netcfg netcfg libnss_usrfiles2
 
+# Enable ccache for a selection of packages:
+BuildFlags: useccache:glib2
+BuildFlags: useccache:gtk3
+BuildFlags: useccache:gtk3:doc
+BuildFlags: useccache:webkit2gtk3
+BuildFlags: useccache:NetworkManager
+
 # switch to kiwi v8
 Prefer: python3-kiwi
 Conflict: python3-kiwi:libsystemd0-mini

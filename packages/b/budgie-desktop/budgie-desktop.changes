@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 29 21:34:45 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add desktop-override.patch from Debian: fixes overlap between 
+  Budgie and GNOME in gschema
+
+-------------------------------------------------------------------
+Sat Aug 29 12:04:30 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add budgie-screensaver to Requires
+- Change gnome-software from Requires to Recommends:
+  * Asked for by S. B. <sb56637@gmail.com>
+
+-------------------------------------------------------------------
 Thu Aug 13 11:55:45 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Change gnome-control-center from Recommends to Requires:
