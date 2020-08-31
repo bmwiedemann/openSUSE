@@ -18,12 +18,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if %{?suse_version} > 1500
-%define skip_python2 1
-%bcond_with python2
-%else
-%bcond_without python2
-%endif
 %bcond_without python2
 Name:           python-pyramid
 Version:        1.10.4

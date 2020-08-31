@@ -131,4 +131,13 @@
     <comment></comment>
     <requestid>818272</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>d6e54b2fe19f347ace4c1b6e79c1f053</srcmd5>
+    <version>1.10.4</version>
+    <time>1598885503</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conditionaling of bcond with_python2 as it ain't needed
+</comment>
+    <requestid>830693</requestid>
+  </revision>
 </revisionlist>

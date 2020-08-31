@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 31 10:02:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove conditionaling of bcond with_python2 as it ain't needed
+
+-------------------------------------------------------------------
 Thu Jul  2 09:07:37 UTC 2020 - pgajdos@suse.com
 
 - use %pytest macro, drop dependency on nose
