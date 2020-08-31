@@ -1,7 +1,7 @@
 #
 # spec file for package libverto
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover   1
 Name:           libverto
-Version:        0.2.6
+Version:        0.3.1
 Release:        0
 Summary:        Main loop abstraction library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://fedorahosted.org/libverto
-Source:         http://fedorahosted.org/releases/l/i/%{name}/%{name}-%{version}.tar.gz
+URL:            https://github.com/latchset/libverto
+Source:         https://github.com/latchset/libverto/releases/download/%{version}/libverto-%{version}.tar.gz
 Source1:        baselibs.conf
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 libverto provides a way for libraries to expose asynchronous
@@ -74,7 +74,7 @@ for developing applications that use libverto.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -82,17 +82,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -name '*.so.*T' -delete
 
 %post -n libverto%{sover} -p /sbin/ldconfig
-
 %postun -n libverto%{sover} -p /sbin/ldconfig
 
 %files -n libverto%{sover}
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
 %{_libdir}/%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/verto.h
 %{_includedir}/verto-module.h
 %{_libdir}/%{name}.so
