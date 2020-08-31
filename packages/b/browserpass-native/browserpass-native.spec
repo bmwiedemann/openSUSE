@@ -53,6 +53,6 @@ rm -rf %{buildroot}/usr/share/{doc,licenses}
 %license LICENSE
 %doc README.md
 %{_bindir}/browserpass
-%{_libexecdir}/browserpass
+%{_prefix}/lib/browserpass
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 29 11:45:29 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Fix %{_libexecdir} misuse
+
+-------------------------------------------------------------------
 Fri Jul 10 03:47:25 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.0.7
