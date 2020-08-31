@@ -33,6 +33,9 @@
 %_sysctldir /usr/lib/sysctl.d
 %_ntpunitsdir /usr/lib/systemd/ntp-units.d
 %_binfmtdir /usr/lib/binfmt.d
+%_environmentdir /usr/lib/environment.d
+%_modulesloaddir /usr/lib/modules-load.d
+%_modprobedir /usr/lib/modprobe.d
 %_systemdgeneratordir /usr/lib/systemd/system-generators
 %_systemdusergeneratordir /usr/lib/systemd/user-generators
 %_systemd_system_env_generator_dir /usr/lib/systemd/system-environment-generators
