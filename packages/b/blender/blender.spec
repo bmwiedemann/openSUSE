@@ -244,11 +244,8 @@ export psver=$(pkg-config python3 --modversion)
 export pver=$(pkg-config python3 --modversion)$(python3-config --abiflags)
 mkdir -p build && pushd build
 
-# FIXME: This comes from a stupid osc spec formatter
-# blender's flags are complex enough already without %%cmake macro spamming the build log.
-# It also puts _smp_mflags where it shouldn't, I had to write make -j1 to stop it.
 # NOTE: Don't use cmake macro.
-#
+# openvdb >= 7.1.0 requires C++14 features
 # lean against build_files/cmake/config/blender_release.cmake
 cmake ../ \
 %if 0%{?debugbuild} == 1
@@ -261,6 +258,7 @@ cmake ../ \
       -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC -fopenmp " \
       -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC -fopenmp" \
 %endif
+      -DCMAKE_CXX_STANDARD=14 \
       -DCMAKE_VERBOSE_MAKEFILE=ON \
       -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
       -DCMAKE_EXE_LINKER_FLAGS:STRING="-pie" \

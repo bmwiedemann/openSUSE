@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 29 06:18:38 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- openvdb >= 7.1.0 interface requires C++14 in order to build
+  successfully.  
+
+-------------------------------------------------------------------
 Sat Aug 22 11:07:20 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 2.83.5
