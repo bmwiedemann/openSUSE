@@ -410,4 +410,12 @@ the other licenses are consolidated into the GPL license of the derived binary (
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>792639</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f21f77310de48352370eafbb6e077deb</srcmd5>
+    <version>1.22</version>
+    <time>1598885418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830689</requestid>
+  </revision>
 </revisionlist>

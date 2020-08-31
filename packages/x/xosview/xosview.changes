@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 26 08:40:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.22:
+  * Fix build on arm by not including sys/io.h
+  * Add conditional code for v_cache_count 
+- update xosview-1.19.dif: remove armv7l conditional as this
+  went upstream
+
+-------------------------------------------------------------------
 Thu Apr  2 06:20:41 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Let it build even on amrv7l 

@@ -18,17 +18,7 @@
 
 %define _appdefdir  %{_datadir}/X11/app-defaults
 Name:           xosview
-BuildRequires:  autoconf
-BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xpm)
-# NOTE: We don't want this dependency and desktop-data-SuSE is in all
-# desktop selections.
-#Requires:    desktop-data-SuSE
-# /usr/bin/xrdb
-Requires:       xrdb
-Version:        1.21
+Version:        1.22
 Release:        0
 Summary:        System Load Information
 License:        GPL-2.0-or-later
@@ -45,13 +35,21 @@ Patch10:        xosview-1.19-appdef.patch
 Patch11:        xosview-1.16-diskstat.patch
 # PATCH-FIX-SUSE: allow more than one maybe not exsting lmstemp resource entry
 Patch12:        xosview-1.21-lmstemp.patch
+BuildRequires:  autoconf
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xpm)
+# NOTE: We don't want this dependency and desktop-data-SuSE is in all
+# desktop selections.
+#Requires:    desktop-data-SuSE
+# /usr/bin/xrdb
 # NOTE: We don't want this dependency and desktop-data-SuSE is in all
 # desktop selections.
 #Requires:    desktop-data-SuSE
 # /usr/bin/xrdb
 Requires:       xrdb
 Requires(post): sed
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A small program which is mostly configurable using resources via
@@ -75,8 +73,8 @@ case "%{optflags}" in
 	OPTFLAGS="$OPTFLAGS -fno-const-strings"
     fi
 esac
-make %{?_smp_mflags} clean
-make %{?_smp_mflags} PLATFORM=linux OPTFLAGS="$OPTFLAGS" PREFIX=%{_prefix} USE_SYSCALLS=1
+%make_build clean
+%make_build PLATFORM=linux OPTFLAGS="$OPTFLAGS" PREFIX=%{_prefix} USE_SYSCALLS=1
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -112,7 +110,6 @@ do
 done
 
 %files
-%defattr(-,root,root)
 %{_datadir}/pixmaps/xosview.png
 %dir %{_datadir}/icons/hicolor/
 %dir %{_datadir}/icons/hicolor/32x32/
@@ -123,7 +120,7 @@ done
 %{_bindir}/xosview.bin
 %dir %{_appdefdir}
 %config %verify(not md5 size mtime) %{_appdefdir}/XOsview
-%{_mandir}/man1/xosview.1%{ext_man}
+%{_mandir}/man1/xosview.1%{?ext_man}
 %dir %{_docdir}/xosview/
 %doc %{_docdir}/xosview/README
 %doc %{_docdir}/xosview/README.linux
