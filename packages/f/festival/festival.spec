@@ -212,6 +212,9 @@ getent passwd %{name} >/dev/null || \
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
 %{_libexecdir}/%{name}
+%if 0%{?suse_version} > 1500
+%{_prefix}/lib/%{name}
+%endif
 %{_datadir}/%{name}
 %{_mandir}/man1/*
 %{_fillupdir}/*

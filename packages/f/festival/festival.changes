@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:15:06 UTC 2020 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Removed unnecessary and unexpected "_link".
+- Updated .spec file according to the Tumbleweed's change
+  (%{_libexecdir} was changed from /usr/lib to /usr/libexec).
+
+-------------------------------------------------------------------
 Fri Jun 19 08:16:21 UTC 2020 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Added speech_tools-null-fragile.patch and

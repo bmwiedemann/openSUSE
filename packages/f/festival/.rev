@@ -272,4 +272,13 @@ into sibling directories. (forwarded request 163507 from Andreas_Schwab)</commen
   it causes SIGSEGV in text2wave (boo#1173193). (forwarded request 816237 from belphegor_belbel)</comment>
     <requestid>816238</requestid>
   </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>04516e151a17a918e47c43dc060c0ac8</srcmd5>
+    <version>2.5.0</version>
+    <time>1598885401</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated .spec file according to the Tumbleweed's change
+  (%{_libexecdir} was changed from /usr/lib to /usr/libexec).</comment>
+    <requestid>830681</requestid>
+  </revision>
 </revisionlist>
