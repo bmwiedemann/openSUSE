@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 30 08:04:00 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Fix library path where %{_libexecdir} points to %{_prefix}/libexec
+  like in Tumbleweed, instead use %{_prefix}/lib as library path since
+  pass looks for plugins under /usr/lib/password-store 
+
+-------------------------------------------------------------------
 Mon Nov 19 09:57:54 UTC 2018 - Karol Babioch <kbabioch@suse.com>
 
 - Update to version 1.2.0

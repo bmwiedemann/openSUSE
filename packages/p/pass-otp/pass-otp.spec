@@ -1,7 +1,7 @@
 #
 # spec file for package pass-otp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ More information may be found in the pass-otp(1) man page.
 %build
 
 %install
-%make_install LIBDIR=%{_libexecdir}
+%make_install LIBDIR=%{_prefix}/lib
 install -Dpm 0644 %{buildroot}%{_sysconfdir}/bash_completion.d/pass-otp \
   %{buildroot}%{_datadir}/bash-completion/completions/pass-otp
 rm %{buildroot}%{_sysconfdir}/bash_completion.d/pass-otp
@@ -52,7 +52,7 @@ rm %{buildroot}%{_sysconfdir}/bash_completion.d/pass-otp
 %{_mandir}/man?/%{name}.?%{ext_man}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{_libexecdir}/password-store
+%{_prefix}/lib/password-store
 %{_datadir}/bash-completion/completions/pass-otp
 
 %changelog
