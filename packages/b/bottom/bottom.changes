@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Aug 30 13:10:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.7
+  * Just a single bug fix, where searching by command name was
+    broken.
+- Update to version 0.4.6
+  * Minor update, with some bug fixes, changes, and new features.
+    Most of the work done was refactoring and updating old, weird
+    code.
+  Features
+  * Allow using P to toggle between the processes' base name and
+    the processes' full name
+  * Added sorting capabilities for any column. Using s will open
+    up a menu allowing you to select which column you want to sort
+    by.
+  * Added I to invert the current process sort.
+  * Added the ability to toggle between mem% and actual memory
+    values by using % in the process widget:
+  * Support searching processes by state (i.e. state=sleeping).
+  * Added WASD as an alternative method to moving between widgets.
+  * Made e also escape expanded widgets (so e expands, then
+    pressing e again will shrink the widget, like if you had pressed
+    ESC).
+  Changes
+  * Dropped MSRV (for now), mainly supporting stable and newer
+    versions of Rust.
+  Bug fixes
+  * Fixed bug in basic mode where the battery widget was placed
+    incorrectly.
+  * Fixed a bug caused by hitting Enter when a process kill fails,
+    breaking future process kills.
+  * Fix bug caused by incorrectly reading the /proc/{pid}/stats file.
+- Update to version 0.4.5
+  * Minor update to match needing to update on crates.io.  No changes.
+
+-------------------------------------------------------------------
+Mon Jul  6 06:40:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.4
+  Features
+  * Added process states to the processes widget.
+  Bug Fixes
+  * Fixed a bug where bottom would incorrectly read the wrong
+    values to calculate the read/write columns for processes
+    in Linux.
+  * Fixed a bug where OR operations in the process query wouldn't
+    properly for some cases.
+  * Improved process query overall
+  Changes
+  * Showing average CPU is now on by default. Disable it via flag.
+  * Removed CPU filtering. I didn't like it and had planned on
+    rolling out this change with an alternative, more usable CPU
+    widget system. Note, if you liked it, let me know, it's easy
+    to add back in as an option but for now, I ripped it out since
+    it was causing more headaches.
+  * show_disabled_data flag and option are also removed as they
+    are now irrelevant.
+  * Made the CPU entry you're scrolling over highlight even when
+    you're not on the widget.
+
+-------------------------------------------------------------------
 Fri May 15 08:50:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.3
