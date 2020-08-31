@@ -17,24 +17,16 @@
 
 
 Name:           htop
-Version:        2.2.0
+Version:        3.0.0
 Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://hisham.hm/htop
-Source0:        https://hisham.hm/htop/releases/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hisham.hm/htop/releases/%{version}/%{name}-%{version}.tar.gz.asc
+URL:            https://htop.dev
+Source0:        https://github.com/htop-dev/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        %{name}.keyring
-Patch0:         htop-desktop-file-fix-thoenig-01.patch
-# PATCH-FIX-OPENSUSE htop-script-python3.patch
-Patch1:         htop-script-python3.patch
-# PATCH-FIX-UPSTREAM This broke with commit db05ba61065f64b59d0014518be0786b5439e54c -- allow args for specific options
-Patch2:         htop-2.2.0-fix-option-string.patch
-# PATCH-FIX-UPSTREAM Make sure the auto-regenerated headers (after scripts/MakeHeader.py) actually compile
-Patch3:         htop-2.2.0-fix-linux-process-ordering.patch
-# PATCH-FIX-OPENSUSE htop-2.2.0-gcc10.patch https://github.com/hishamhm/htop/pull/981
-Patch4:         htop-2.2.0-gcc10.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
@@ -50,6 +42,8 @@ better 'top' and requires ncurses.
 
 %prep
 %autosetup -p1
+# Standard release tarball is not provided https://github.com/htop-dev/htop/issues/31
+autoreconf -fi
 
 %build
 %configure \

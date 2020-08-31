@@ -432,4 +432,12 @@
   * htop-2.2.0-gcc10.patch</comment>
     <requestid>811678</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>419c59a5443e7e6091947f693b02d729</srcmd5>
+    <version>3.0.0</version>
+    <time>1598885383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830684</requestid>
+  </revision>
 </revisionlist>

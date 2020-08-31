@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Aug 29 19:17:23 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 3.0.0
+  * Add simple, optional vim key mapping mode
+  * Support more than 2 smaller CPU meter columns
+  * Support Linux proportional set size metrics
+  * Support Linux pressure stall information metrics
+  * New display option to show CPU frequency in CPU meters
+  * Update Linux sysfs battery discovery for recent kernels
+  * Add hardware topology information in the affinity panel
+  * Add timestamp reporting to the strace screen
+  * Added an option to disable the mouse
+  * Without an argument -u uses $USER value automatically
+  * Support less(1) search navigation shortcuts
+  * Support ZFS ARC statistics
+  * Report values larger than 100 terabytes
+  * Widen ST_UID (UID) column to allow for UIDs > 9999
+  * BUGFIX: fix makefiles for building with clang
+  * BUGFIX: fix <sys/sysmacros.h> major() usage
+  * BUGFIX: correctly identify other types of zombie process
+  * BUGFIX: improve follow-process handling in some situations
+  * BUGFIX: fix custom meters reverting to unexpected setting
+  * BUGFIX: close pipe after running lsof(1)
+  * BUGFIX: meters honour setting of counting CPUs from 0/1
+- Drop htop-2.2.0.tar.gz.asc - no sig provided
+- Upstreamed patches removed:
+  * Drop htop-2.2.0-fix-linux-process-ordering.patch
+  * Drop htop-2.2.0-fix-option-string.patch
+  * Drop htop-2.2.0-gcc10.patch
+  * Drop htop-desktop-file-fix-thoenig-01.patch
+  * Drop htop-script-python3.patch
+
+-------------------------------------------------------------------
 Fri Jun  5 07:07:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10:
