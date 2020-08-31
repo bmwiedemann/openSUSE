@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 31 04:58:58 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.2: 
+  * add PyType_Ready usage, issue #66
+  * speedup search() for bitarrays with length 1 in sparse bitarrays,
+    see issue #67
+  * add tests
+  * support signed integers in `util.ba2int()` and `util.int2ba()`,
+    see issue #85
+  * deprecate `.length()` in favor of `len()`
+  * Use `Py_ssize_t` for bitarray index.  This means that on 32bit
+    systems, the maximun number of elements in a bitarray is 2 GBits.
+    We used to have a special 64bit index type for all architectures, but
+    this prevented us from using Python's sequence, mapping and number
+    methods, and made those method lookups slow.
+  * speedup slice operations when step size = 1 (if alignment allows
+    copying whole bytes)
+  * Require equal endianness for operations: `&`, `|`, `^`, `&=`, `|=`, `^=`.
+    This should have always been the case but was overlooked in the past.
+  * raise TypeError when tring to create bitarray from boolean
+  * This will be last release to still support Python 2.6 (which was retired
+    in 2013).  We do NOT plan to stop support for Python 2.7 anytime soon.
+
+-------------------------------------------------------------------
 Wed Aug  5 00:59:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.2:
