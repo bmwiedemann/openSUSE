@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:08:52 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.5.0 final
+
+  * Enable AM_SILENT_RULES by default
+  * Fix cross-compilation with pkg-config
+  * Fix a bunch of compiler warnings
+  * Remove unused macro files
+  * Add continuous integration builds
+
+-------------------------------------------------------------------
 Fri May 30 14:57:59 UTC 2014 - opensuse@dstoecker.de
 
 - fix description to be UTF-8

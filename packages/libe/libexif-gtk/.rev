@@ -144,4 +144,17 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ab8b78f01b10dd9fcf7a0cb79b27426b</srcmd5>
+    <version>0.5.0</version>
+    <time>1598885620</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.5.0 final
+  * Enable AM_SILENT_RULES by default
+  * Fix cross-compilation with pkg-config
+  * Fix a bunch of compiler warnings
+  * Remove unused macro files
+  * Add continuous integration builds</comment>
+    <requestid>830728</requestid>
+  </revision>
 </revisionlist>

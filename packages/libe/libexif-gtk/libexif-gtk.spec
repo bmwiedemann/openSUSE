@@ -1,7 +1,7 @@
 #
 # spec file for package libexif-gtk
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libexif-gtk
+BuildRequires:  automake
+BuildRequires:  gettext
 BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  libexif-devel
-Url:            http://libexif.sourceforge.net/
+BuildRequires:  libtool
+URL:            http://libexif.sourceforge.net/
 Summary:        GTK Widgets for Viewing EXIF Information
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Libraries
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        https://downloads.sourceforge.net/project/libexif/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://github.com/libexif/%{name}/archive/v%{version}.tar.gz
 Requires:       libexif-gtk5 = %{version}
 
 %description
@@ -57,6 +61,7 @@ JPEG images created by some digital cameras.
 %setup -q
 
 %build
+bash ./autogen.sh
 %configure --with-pic \
 	--disable-static
 make %{?jobs:-j%jobs}
@@ -70,19 +75,19 @@ make %{?jobs:-j%jobs}
 
 %postun -p /sbin/ldconfig -n libexif-gtk5
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING
+%license COPYING
+%doc ChangeLog
 
 %files -n libexif-gtk5 -f %{name}-5.lang
+%license COPYING
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %files devel
 %defattr(-,root,root)
+%license COPYING
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/libexif-gtk
