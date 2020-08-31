@@ -1,7 +1,7 @@
 #
 # spec file for package qscintilla-qt5
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sonum   15
 %define debug_package_requires libqscintilla2_qt5-%{sonum} = %{version}-%{release}
 Name:           qscintilla-qt5
-Version:        2.11.3
+Version:        2.11.5
 Release:        0
 Summary:        C++ Editor Class Library
 License:        GPL-3.0-only

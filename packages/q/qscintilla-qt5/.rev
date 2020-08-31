@@ -93,4 +93,17 @@
 </comment>
     <requestid>748812</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fdb8a0c0e9a129a708f7060604ab1b33</srcmd5>
+    <version>2.11.5</version>
+    <time>1598885405</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.11.5
+ *  The bundled .api files are now included in Python wheels if the
+    QScintilla.api file is enabled.
+ * Bug fixes.
+- Tumbleweed skips python2 builds automatically no need to
+   hack python_module</comment>
+    <requestid>830619</requestid>
+  </revision>
 </revisionlist>

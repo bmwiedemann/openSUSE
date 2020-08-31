@@ -1,7 +1,7 @@
 #
 # spec file for package python-qscintilla-qt5
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qscintilla-qt5
-Version:        2.11.3
+Version:        2.11.5
 Release:        0
 Summary:        Python  Bindings for the C++ Editor Class Library
 License:        GPL-3.0-only
@@ -39,9 +39,6 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 Requires:       %{name}-sip = %{version}
 Requires:       python-sip(api) = %{python_sip_api_ver}
 %requires_ge    python-qt5
-%ifpython2
-%requires_ge    python2-qt5
-%endif
 %python_subpackages
 
 %description
