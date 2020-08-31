@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 30 03:27:08 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1598626423.017efa727:
+  * Bump max_redirects in OpenQA::Downloader to 5
+
+-------------------------------------------------------------------
 Thu Aug 27 15:34:50 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1598542474.92e6c60c3:
