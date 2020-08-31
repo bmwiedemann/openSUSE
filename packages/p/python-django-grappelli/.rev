@@ -180,4 +180,12 @@
  * Improved: Changed bodyclass in order to allow adding more attributes.</comment>
     <requestid>812886</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0c07a9b5421c0a016d421098aa16ec96</srcmd5>
+    <version>2.14.2</version>
+    <time>1598885605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830722</requestid>
+  </revision>
 </revisionlist>

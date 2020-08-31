@@ -50,6 +50,7 @@ A jazzy skin for the Django Admin-Interface.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+PYTHONPATH=.
 export PYTHONDONTWRITEBYTECODE=1
 export DJANGO_SETTINGS_MODULE=test_project.settings
 # test_related_lookup - uses unicode literals that break on py2
