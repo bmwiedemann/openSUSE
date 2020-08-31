@@ -1,7 +1,7 @@
 #
 # spec file for package patchutils
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           patchutils
-Version:        0.3.4
+Version:        0.4.2
 Release:        0
 Summary:        A Collection of Tools for Manipulating Patch Files
 License:        GPL-2.0-or-later
@@ -25,7 +25,6 @@ Group:          Productivity/File utilities
 URL:            http://cyberelk.net/tim/software/patchutils/
 Source0:        http://cyberelk.net/tim/data/patchutils/stable/%{name}-%{version}.tar.xz
 Source1:        http://cyberelk.net/tim/data/patchutils/stable/%{name}-%{version}.tar.xz.sig
-Patch0:         %{name}-0.2.30-tailsyntax.diff
 Patch2:         rediff-hunk-init-fix.diff
 BuildRequires:  automake
 Requires:       diffutils
@@ -49,7 +48,7 @@ files in a patch. Rediff corrects hand-edited patches.
 %make_build
 
 %check
-make --jobs=1 check
+%make_build --jobs=1 check
 
 %install
 %make_install
@@ -58,8 +57,26 @@ install -m 0644 -t %{buildroot}%{_mandir}/man1/ doc/*.1
 
 %files
 %license COPYING
-%doc AUTHORS BUGS ChangeLog NEWS README TODO
-%{_bindir}/*
+%doc BUGS README
+%{_bindir}/combinediff
+%{_bindir}/dehtmldiff
+%{_bindir}/editdiff
+%{_bindir}/espdiff
+%{_bindir}/filterdiff
+%{_bindir}/fixcvsdiff
+%{_bindir}/flipdiff
+%{_bindir}/gitdiff
+%{_bindir}/gitdiffview
+%{_bindir}/grepdiff
+%{_bindir}/interdiff
+%{_bindir}/lsdiff
+%{_bindir}/patchview
+%{_bindir}/recountdiff
+%{_bindir}/rediff
+%{_bindir}/splitdiff
+%exclude %{_bindir}/svndiff
+%exclude %{_bindir}/svndiffview
+%{_bindir}/unwrapdiff
 %{_mandir}/man1/*.1%{?ext_man}
 
 %changelog

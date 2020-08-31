@@ -183,4 +183,19 @@
 - Modernise spec file</comment>
     <requestid>757360</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d4a2ee9ba4806305af6e1ea1501f87c6</srcmd5>
+    <version>0.4.2</version>
+    <time>1598885230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.2:
+  * Fixed a packaging issue
+  * New patchview mode with accompanying scripts.
+  * New grepdiff option --only-match.
+  * New filterdiff option --remove-timestamps.
+  * Assorted other fixes and improvements. 
+- remove patchutils-0.2.30-tailsyntax.diff: obsolete
+- skip svndiff tools as those conflict with subversion</comment>
+    <requestid>829595</requestid>
+  </revision>
 </revisionlist>
