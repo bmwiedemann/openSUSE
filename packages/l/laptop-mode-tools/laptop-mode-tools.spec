@@ -17,7 +17,7 @@
 
 
 %{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
-%{!?_udevdir:%global _udevdir  %{_libexecdir}/udev}
+%{!?_udevdir:%global _udevdir  %{_udevrulesdir}/..}
 
 Name:           laptop-mode-tools
 Version:        1.73.1
@@ -80,7 +80,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rclaptop-mode
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rclmt-poll
 
 # remove pm-utils hook: as soon as DESTDIR is defined, the hook is always installed
-rm -rf %{buildroot}%{_libexecdir}/pm-utils
+rm -rf %{buildroot}%{_prefix}/lib/pm-utils
 
 # Fix insufficient category definition
 %suse_update_desktop_file -r laptop-mode-tools Settings HardwareSettings
