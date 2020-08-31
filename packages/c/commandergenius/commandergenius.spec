@@ -17,7 +17,7 @@
 
 
 Name:           commandergenius
-Version:        2.4.6
+Version:        2.5.5
 Release:        0
 Summary:        An open clone of the Commander Keen engines
 License:        GPL-2.0-only
@@ -50,6 +50,8 @@ It has 4-player cooperative mode and six difficulty modes.
 
 %build
 %cmake \
+  -DBUILD_STATIC_LIBS:BOOL=ON \
+  -DBUILD_SHARED_LIBS:BOOL=OFF \
   -DCMAKE_INSTALL_PREFIX="%_prefix" \
   -DAPPDIR="%_bindir"
 %make_jobs
