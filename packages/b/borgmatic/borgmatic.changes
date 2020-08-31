@@ -1,14 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:35:40 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.5.10
+  * #347: Add hooks that run for the "extract" action:
+    "before_extract" and "after_extract".
+  * #350: Fix traceback when a configuration directory is
+    non-readable due to directory permissions.
+  * Add documentation navigation links on left side of all
+    documentation pages.
+  * Clarify documentation on configuration overrides, specifically
+    the portion about list syntax:
+    http://torsion.org/borgmatic/docs/how-to/make-per-application-backups/#configuration-overrides
+  * Clarify documentation overview of monitoring options:
+    http://torsion.org/borgmatic/docs/how-to/monitor-your-backups/
+
+-------------------------------------------------------------------
 Tue Jul 28 06:57:42 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 1.5.9
-* #300: Add “borgmatic export-tar” action to export an archive to a
-  tar-formatted file or stream.
-* #339: Fix for intermittent timing-related test failure of logging
-  function.
-* Clarify database documentation about excluding named pipes and
-  character/block devices to prevent
-  hangs.
+  * #300: Add “borgmatic export-tar” action to export an archive to
+    a tar-formatted file or stream.
+  * #339: Fix for intermittent timing-related test failure of
+    logging function.
+  * Clarify database documentation about excluding named pipes and
+    character/block devices to prevent hangs.
 
 -------------------------------------------------------------------
 Tue Jul  7 09:38:32 UTC 2020 - Martin Rey <mrey@suse.com>
