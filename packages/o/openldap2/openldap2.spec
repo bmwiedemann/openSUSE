@@ -22,17 +22,11 @@
 %endif
 
 %define run_test_suite 0
-%define version_main 2.4.51
-
-%if %{suse_version} >= 1310 && %{suse_version} != 1315
-%define  _rundir /run/slapd
-%else
-%define  _rundir /var/run/slapd
-%endif
-
+%define version_main 2.4.52
 %define name_ppolicy_check_module ppolicy-check-password
 %define version_ppolicy_check_module 1.2
 %define ppolicy_docdir %{_docdir}/openldap-%{name_ppolicy_check_module}-%{version_ppolicy_check_module}
+%define slapdrundir %{_rundir}/slapd
 
 Name:           openldap2
 Summary:        An open source implementation of the Lightweight Directory Access Protocol
@@ -55,6 +49,7 @@ Source14:       slapd.service
 Source16:       sysconfig.openldap
 Source17:       openldap_update_modules_path.sh
 Source18:       openldap2.conf
+Source19:       ldap-user.conf
 Patch1:         0001-ITS-8866-slapo-unique-to-return-filter-used-in-diagn.patch
 Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
@@ -77,19 +72,19 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  libtool
 BuildRequires:  openslp-devel
+BuildRequires:  sysuser-tools
 BuildRequires:  unixODBC-devel
-%if %{suse_version} >= 1310 && %{suse_version} != 1315
 # avoid cycle with krb5
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(systemd)
 %if %{suse_version} < 1500
 %{?systemd_requires}
 %endif
-%endif
 Requires:       libldap-2_4-2 = %{version_main}
 Recommends:     cyrus-sasl
 Conflicts:      openldap
-PreReq:         %fillup_prereq /usr/sbin/useradd /usr/sbin/groupadd /usr/bin/grep
+PreReq:         %fillup_prereq
+%sysusers_requires
 
 %description
 OpenLDAP is a client and server reference implementation of the
@@ -142,9 +137,7 @@ to do any programming.
 %package -n libldap-data
 Summary:        Configuration file for system-wide defaults for all uses of libldap
 Group:          Productivity/Networking/LDAP/Clients
-%if 0%{?suse_version} != 1110
 BuildArch:      noarch
-%endif
 
 %description -n libldap-data
 The subpackage contains a configuration file used to set system-wide defaults
@@ -175,9 +168,7 @@ trace         traces overlay invocation
 Summary:        OpenLDAP Documentation
 Group:          Documentation/Other
 Provides:       openldap2:/usr/share/doc/packages/openldap2/drafts/README
-%if 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description doc
 The OpenLDAP Admin Guide plus a set of OpenLDAP related IETF internet drafts.
@@ -274,7 +265,7 @@ export STRIP=""
         --sysconfdir=%{_sysconfdir} \
         --libdir=%{_libdir} \
         --libexecdir=%{_libdir} \
-        --localstatedir=%{_rundir} \
+        --localstatedir=%{slapdrundir} \
         --enable-wrappers=no \
         --enable-spasswd \
         --enable-modules \
@@ -315,6 +306,8 @@ make -C contrib/slapd-modules/smbk5pwd %{?_smp_mflags} "sysconfdir=%{_sysconfdir
 
 # Build ppolicy-check-password module
 make -C contrib/slapd-modules/%{name_ppolicy_check_module} %{?_smp_mflags} "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}"
+# Create ldap user
+%sysusers_generate_pre %{SOURCE19} ldap
 
 %check
 %if %run_test_suite
@@ -368,6 +361,8 @@ install -m 755 %{SOURCE6} %{buildroot}%{_sbindir}/schema2ldif
 install -m 755 %{SOURCE17} %{buildroot}%{_sbindir}
 mkdir -p  %{buildroot}%{_tmpfilesdir}/
 install -m 644 %{SOURCE18} %{buildroot}%{_tmpfilesdir}/
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE19} %{buildroot}%{_sysusersdir}/
 
 # Install ppolicy check module
 make -C contrib/slapd-modules/ppolicy-check-password STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libexecdir}" install
@@ -412,7 +407,7 @@ install -m 644 servers/slapd/slapd.ldif \
 rm -f %{buildroot}/etc/openldap/DB_CONFIG.example
 rm -f %{buildroot}/etc/openldap/schema/README
 rm -f %{buildroot}/etc/openldap/slapd.ldif*
-rm -f %{buildroot}%{_rundir}/openldap-data/DB_CONFIG.example
+rm -f %{buildroot}%{slapdrundir}/openldap-data/DB_CONFIG.example
 mv servers/slapd/back-sql/rdbms_depend servers/slapd/back-sql/examples
 
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcslapd
@@ -434,17 +429,10 @@ ln -fs libldap_r.so "%{buildroot}%{_libdir}/libldap.so"
 gcc -shared -o "%{buildroot}%{_libdir}/libldap-2.4.so.2" -Wl,--no-as-needed \
        -Wl,-soname -Wl,libldap-2.4.so.2 -L "%{buildroot}%{_libdir}" -lldap_r
 
-%pre
-getent group ldap >/dev/null || /usr/sbin/groupadd -g 70 -o -r ldap
-getent passwd ldap >/dev/null || /usr/sbin/useradd -r -o -g ldap -u 76 -s /bin/false -c "User for OpenLDAP" -d /var/lib/ldap ldap
+%pre -f ldap.pre
 %service_add_pre slapd.service
 
 %post
-if [ ${1:-0} -gt 1 ] && [ -f %{_libdir}/sasl2/slapd.conf ] ; then
-  cp /etc/sasl2/slapd.conf /etc/sasl2/slapd.conf.rpmnew
-  cp %{_libdir}/sasl2/slapd.conf /etc/sasl2/slapd.conf
-fi
-
 if [ ${1:-0} -gt 1 ] && [ ! -f /var/adm/openldap_modules_path_updated ] ; then
     /usr/sbin/openldap_update_modules_path.sh
 fi
@@ -512,8 +500,9 @@ fi
 /usr/lib/openldap/start
 %{_unitdir}/slapd.service
 %{_tmpfilesdir}/%{name}.conf
+%{_sysusersdir}/ldap-user.conf
 %dir %attr(0750, ldap, ldap) %{_sharedstatedir}/ldap
-%ghost %attr(0750, ldap, ldap) %{_rundir}
+%ghost %attr(0750, ldap, ldap) %{slapdrundir}
 %doc %{_mandir}/man8/sl*
 %doc %{_mandir}/man5/slapd.*
 %doc %{_mandir}/man5/slapd-bdb.*

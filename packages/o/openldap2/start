@@ -7,10 +7,6 @@
 #         Ralf Haferkamp
 #
 
-# Determine the base and follow a runlevel link name.
-base=${0##*/}
-link=${base#*[SK][0-9][0-9]}
-
 test -f /etc/sysconfig/openldap && . /etc/sysconfig/openldap
 
 SLAPD_BIN=/usr/sbin/slapd

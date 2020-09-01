@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 28 22:06:57 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- updated to 2.4.52
+
+OpenLDAP 2.4.52 (2020/08/28)
+  Added libldap LDAP_OPT_X_TLS_REQUIRE_SAN option (ITS#9318)
+  Added libldap OpenSSL support for multiple EECDH curves (ITS#9054)
+  Added slapd OpenSSL support for multiple EECDH curves (ITS#9054)
+  Fixed librewrite malloc/free corruption (ITS#9249)
+  Fixed libldap hang when using UDP and server down (ITS#9328)
+  Fixed slapd syncrepl rare deadlock due to network issues (ITS#9324)
+  Fixed slapd syncrepl regression that could trigger an assert (ITS#9329)
+  Fixed slapd-mdb index error with collapsed range (ITS#9135)
+
+-------------------------------------------------------------------
+Thu Aug 20 16:39:54 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Switch from shadow to sysusers to generate ldap account
+- Remove if's for code older than SLE12 (Even SLE12 builds no longer)
+- Remove 12 years old sasl2 migration code
+
+-------------------------------------------------------------------
 Sat Aug 15 06:56:27 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop obsolete, not working DB_CONFIG
