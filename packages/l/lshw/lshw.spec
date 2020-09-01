@@ -31,6 +31,8 @@ Source2:        lshw.png
 Patch1:         lshw-fix-segfault-in-apfs-volume-code.patch
 # PATCH-FIX-UPSTREAM - https://github.com/lyonel/lshw/pull/52 - boo#1169668
 Patch2:         lshw-fix-mmc.patch
+# PATCH-FIX-UPSTREAM - https://github.com/lyonel/lshw/commit/3775782808e8b9b8aa72ed2ce23e145433e193cf - boo#1172156
+Patch3:         lshw-fix-ppc.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel

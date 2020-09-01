@@ -179,4 +179,13 @@ factory)</comment>
     <comment></comment>
     <requestid>797213</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>7aaf2532519118ee8292bdfb5cd60aa6</srcmd5>
+    <version>B.02.19.2</version>
+    <time>1598983689</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix detection of ppc products - boo#1172156
+  * lshw-fix-ppc.patch</comment>
+    <requestid>830704</requestid>
+  </revision>
 </revisionlist>
