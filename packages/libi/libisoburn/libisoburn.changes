@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 20 13:42:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Bug fix: -disk_pattern on -add ./ -- mistook "./" for the root directory
+  * Bug fix: -disk_pattern on -add "" -- yielded SIGSEGV
+  * Bug fix: -osirrox "concat_split_on" worked only together with -split_size
+	     larger than 0. Thanks William Willems.
+  * New API calls isoburn_igopt_set_part_type_guid(),
+    isoburn_igopt_get_part_type_guid(), isoburn_igopt_set_iso_type_guid(),
+    isoburn_igopt_get_iso_type_guid()
+  * Enabled GPT type GUIDs with -append_partition,
+    -boot_image any iso_mbr_part_type=, and -as mkisofs -iso_mbr_part_type
+  * Made libisoburn and GNU xorriso ready for building out-of-source.
+    Thanks Ross Burton.
+
+-------------------------------------------------------------------
 Thu Nov  1 20:01:27 UTC 2018 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to 1.5.0:
