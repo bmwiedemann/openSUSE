@@ -16,22 +16,20 @@
 #
 
 
-%bcond_with php
 %define php_extension_dir %(php-config --extension-dir)
-%bcond_with mono
-
 %if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
-%bcond_with sphinx
 %define phpver php7
 %define phppkg php7
-%else
 %bcond_with sphinx
+%else
 %define phpver php5
 %define phppkg php
+%bcond_with sphinx
 %endif
-
+%bcond_with php
+%bcond_with mono
 Name:           xapian-bindings
-Version:        1.4.15
+Version:        1.4.17
 Release:        0
 Summary:        Bindings for xapian
 License:        GPL-2.0-only
@@ -48,23 +46,21 @@ BuildRequires:  java-devel
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 BuildRequires:  libxapian-devel = %{version}
-%if %{with mono}
-BuildRequires:  mono-devel
-%endif
-
-%if %{with php}
-BuildRequires:  %{phpver}-devel
-%endif
-BuildRequires:  pkg-config
-%if %{with sphinx}
-BuildRequires:  python3-Sphinx
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  ruby-devel
 BuildRequires:  tcl-devel
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if %{with mono}
+BuildRequires:  mono-devel
+%endif
+%if %{with php}
+BuildRequires:  %{phpver}-devel
+%endif
+%if %{with sphinx}
+BuildRequires:  python3-Sphinx
+%endif
 
 %description
 Xapian is a probabilistic information retrieval library. It offers an
@@ -122,7 +118,7 @@ which use Xapian.
 
 %package -n xapian-csharp
 Summary:        Files needed for developing C# applications which use Xapian
-Group:          Development/Languages/Mono
+Group:          Development/Languages/Other
 Requires:       mono-core
 
 %description -n xapian-csharp
@@ -158,35 +154,25 @@ autoreconf -vfi
     --with-csharp \
 %endif
     --docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 make install DESTDIR=%{?buildroot} %{?_smp_mflags}
 
 %files -n python3-xapian
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog HACKING NEWS README TODO
-%if 0%{suse_version} < 1500 && !0%{?is_opensuse}
-%doc COPYING
-%else
 %license COPYING
-%endif
 %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/python3/
 %{python3_sitearch}/xapian/
 
 %if %{with php}
 %files -n %{phppkg}-xapian
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog HACKING NEWS README TODO
-%if 0%{suse_version} < 1500 && !0%{?is_opensuse}
-%doc COPYING
-%else
 %license COPYING
-%endif
 %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/php/
 %{php_extension_dir}/xapian.so
@@ -194,39 +180,24 @@ make install DESTDIR=%{?buildroot} %{?_smp_mflags}
 %endif
 
 %files -n ruby-xapian
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog HACKING NEWS README TODO
-%if 0%{suse_version} < 1500 && !0%{?is_opensuse}
-%doc COPYING
-%else
 %license COPYING
-%endif
 %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/ruby/
 %{_libdir}/ruby/site_ruby/%{rb_ver}/%{rb_arch}/_xapian.so
 %{_libdir}/ruby/site_ruby/%{rb_ver}/xapian.rb
 
 %files -n tcl8-xapian
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog HACKING NEWS README TODO
-%if 0%{suse_version} < 1500 && !0%{?is_opensuse}
-%doc COPYING
-%else
 %license COPYING
-%endif
 %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/tcl8/
 %{_libdir}/tcl/xapian%{version}/
 
 %if %{with mono}
 %files -n xapian-csharp
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog HACKING NEWS README TODO
-%if 0%{suse_version} < 1500 && !0%{?is_opensuse}
-%doc COPYING
-%else
 %license COPYING
-%endif
 %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/csharp/
 %{_libdir}/_XapianSharp.so
