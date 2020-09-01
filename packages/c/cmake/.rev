@@ -1565,4 +1565,18 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>823810</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>f3461c4ad94b410ec67d06a6460cfefc</srcmd5>
+    <version>3.18.2</version>
+    <time>1598983452</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.18.2:
+  * The default value of :variable:`CMAKE_AUTOMOC_PATH_PREFIX` was changed to
+  ``OFF`` because this feature can break existing projects that have
+  identically named header files in different include directories.
+  This restores compatibility with behavior of CMake 3.15 and below.
+  * The :manual:`Compile Features &lt;cmake-compile-features(7)&gt;` functionality
+  was updated for MSVC 19.27 as mentioned above.</comment>
+    <requestid>830697</requestid>
+  </revision>
 </revisionlist>

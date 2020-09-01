@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 24 19:02:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.18.2:
+  * The default value of :variable:`CMAKE_AUTOMOC_PATH_PREFIX` was changed to
+  ``OFF`` because this feature can break existing projects that have
+  identically named header files in different include directories.
+  This restores compatibility with behavior of CMake 3.15 and below.
+  * The :manual:`Compile Features <cmake-compile-features(7)>` functionality
+  was updated for MSVC 19.27 as mentioned above.
+
+-------------------------------------------------------------------
 Fri Jul 31 16:44:08 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cmake 3.18.1:
