@@ -1,7 +1,7 @@
 #
 # spec file for package libdatrie
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libdatrie
-Version:        0.2.10
+Version:        0.2.12
 Release:        0
 Summary:        Double-Array Trie Library
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            https://linux.thai.net/~thep/datrie/datrie.html
+URL:            https://linux.thai.net/~thep/datrie/datrie.html
 Source:         https://linux.thai.net/pub/thailinux/software/libthai/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  autoconf-archive
@@ -62,7 +62,7 @@ autoreconf -fiv
 %configure \
         --disable-static \
         --with-html-docdir=%{_docdir}/libdatrie/html
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -74,12 +74,13 @@ mv %{buildroot}%{_datadir}/doc/libdatrie/README.migration %{buildroot}%{_docdir}
 %postun -n libdatrie1 -p /sbin/ldconfig
 
 %files -n libdatrie1
-%doc AUTHORS ChangeLog COPYING README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_libdir}/libdatrie.so.1*
 
 %files devel
 %{_bindir}/trietool*
-%{_mandir}/man*/trietool*.1%{ext_man}
+%{_mandir}/man*/trietool*.1%{?ext_man}
 %{_includedir}/datrie/
 %{_libdir}/libdatrie.so
 %{_libdir}/pkgconfig/datrie-0.2.pc
