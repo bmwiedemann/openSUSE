@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 31 22:11:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.0
+  * NewDriver: Netgear ProSafe
+  * Minor change to Netgear Prosafe
+  * Support for Adtran OS
+  * Changed SSH terminal height in CiscoXrBase
+  * XR commit comment change
+  * Fix broken "enable" on Nokia SR-OS driver
+  * Adding SR-OS to the tests
+  * Fix WLC conn_timeout issue
+  * Improve Session Preparation Behavior
+  * Performance Improvements for IOS and IOS-XE
+
+-------------------------------------------------------------------
 Sat Aug  1 13:36:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.0
