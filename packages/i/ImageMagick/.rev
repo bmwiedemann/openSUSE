@@ -2733,4 +2733,25 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * sanity check of affine matrix when drawing.</comment>
     <requestid>825763</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>5b0bbd992060a6164515b018e4da57db</srcmd5>
+    <version>7.0.10.28</version>
+    <time>1598983511</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  fix inkscape commandline [bsc#1174272]
+  + ImageMagick-inkscape-commandilne.patch
+
+- fix bsc#1106272 
+- added patches
+  fix https://github.com/ImageMagick/ImageMagick/commit/029fb3425ecf82e8b30c060e38a135d1d3e76bb3
+  + ImageMagick-set-correct-colorspace.patch
+
+- version update to 7.0.10.28
+  * Distorted clip path after -extent (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2414).
+  * Paths in Photoshop EPS files are corrupted on conversion (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2413).</comment>
+    <requestid>830885</requestid>
+  </revision>
 </revisionlist>

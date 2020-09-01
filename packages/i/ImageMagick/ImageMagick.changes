@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 31 16:56:25 UTC 2020 - pgajdos@suse.com
+
+- added patches
+  fix inkscape commandline [bsc#1174272]
+  + ImageMagick-inkscape-commandilne.patch
+
+-------------------------------------------------------------------
+Mon Aug 31 13:30:24 UTC 2020 - pgajdos@suse.com
+
+- fix bsc#1106272 
+- added patches
+  fix https://github.com/ImageMagick/ImageMagick/commit/029fb3425ecf82e8b30c060e38a135d1d3e76bb3
+  + ImageMagick-set-correct-colorspace.patch
+
+-------------------------------------------------------------------
+Mon Aug 31 07:56:37 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.28
+  * Distorted clip path after -extent (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2414).
+  * Paths in Photoshop EPS files are corrupted on conversion (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2413).
+
+-------------------------------------------------------------------
 Tue Aug 11 10:35:44 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.10.27
