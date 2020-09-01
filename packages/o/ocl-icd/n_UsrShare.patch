@@ -1,0 +1,20 @@
+Common subdirectories: ocl-icd-2.2.12.orig/m4 and ocl-icd-2.2.12/m4
+diff -u -p ocl-icd-2.2.12.orig/ocl_icd_loader.c ocl-icd-2.2.12/ocl_icd_loader.c
+--- ocl-icd-2.2.12.orig/ocl_icd_loader.c	2020-08-22 18:35:11.229578000 +0200
++++ ocl-icd-2.2.12/ocl_icd_loader.c	2020-08-22 20:31:52.943988000 +0200
+@@ -583,8 +583,15 @@ static void __initClIcd( void ) {
+   const char* dir_path=getenv("OCL_ICD_VENDORS");
+   const char* vendor_path=getenv("OPENCL_VENDOR_PATH");
+   if (! vendor_path || vendor_path[0]==0) {
++    struct stat buf;
++    int ret;
+     vendor_path=ETC_OPENCL_VENDORS;
+     debug(D_DUMP, "OPENCL_VENDOR_PATH unset or empty. Using hard-coded path '%s'", vendor_path);
++    ret=stat(vendor_path, &buf);
++    if (ret != 0) {
++      debug(D_WARN, "Cannot stat '%s'. Trying /usr/share/OpenCL/vendors", vendor_path);
++      vendor_path="/usr/share/OpenCL/vendors";
++    }
+   } else {
+     debug(D_DUMP, "OPENCL_VENDOR_PATH set to '%s', using it", vendor_path);
+   }

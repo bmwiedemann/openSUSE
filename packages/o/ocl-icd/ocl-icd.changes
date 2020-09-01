@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 31 19:03:27 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- added patch markups to specfile for better documentation
+
+-------------------------------------------------------------------
+Sat Aug 22 16:49:25 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_UsrShare.patch
+  * first try /etc/OpenCL/vendors, then /usr/share/OpenCL/vendors
+  (boo#1173005, comment#8)
+- supersedes configure option --enable-custom-vendordir
+
+-------------------------------------------------------------------
 Tue Jun 23 18:18:54 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - switch from /usr/etc/OpenCL/vendors to /usr/share/OpenCL/vendors

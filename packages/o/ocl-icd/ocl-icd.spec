@@ -26,6 +26,8 @@ Source:         https://github.com/OCL-dev/ocl-icd/archive/v%{version}/%{name}-%
 Source1:        baselibs.conf
 # PATCH-FIx-UPSTREAM ocl-icd-gcc10.patch dimstar@opensuse.org -- Fix build with gcc10
 Patch0:         ocl-icd-gcc10.patch
+# PATCH-FEATURE-OPENSUSE n_UsrShare.patch boo#1173005, comment#8
+Patch1:         n_UsrShare.patch
 BuildRequires:  libtool
 BuildRequires:  opencl-headers >= 2.2
 BuildRequires:  pkgconfig
@@ -73,7 +75,7 @@ use ocl-icd for ICD functionality.
 
 %build
 ./bootstrap
-%configure --enable-custom-vendordir=%{_datadir}/OpenCL/vendors
+%configure
 %make_build stamp-generator stamp-generator-dummy
 %make_build
 
