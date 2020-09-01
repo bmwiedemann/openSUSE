@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 01 11:27:11 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1598884221.1f13f38a9:
+  * Add missing exit call to openqa-cli
+  * Dependency cron 200831
+  * Fix nightly dependency checker
+  * Display serial results similar to external parser results
+  * Remove unused PNG icons
+  * Simplify insertion of preview container within test details page
+  * Emit jobgroup_create/update with an ID
+  * Refactor tools/tidy
+  * Refactor searching perl modules and job templates
+
+-------------------------------------------------------------------
 Sun Aug 30 03:27:08 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1598626423.017efa727:
