@@ -18,12 +18,13 @@
 
 %define _version 1.24
 Name:           mate-system-monitor
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        MATE Desktop system monitor
 License:        GPL-2.0-or-later
 URL:            https://mate-desktop.org/
-Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source0:        https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source99:       https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz.sha256sum
 # PATCH-FIX-OPENSUSE mate-system-monitor-xdgsu.patch sor.alexei@meowr.ru -- Use xdg-su instead of gksu.
 Patch0:         %{name}-xdgsu.patch
 # PATCH-FEATURE-OPENSUSE mate-system-monitor-glib-2.54.patch -- Restore GLib 2.54 support.
@@ -46,7 +47,6 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       polkit
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
 %description

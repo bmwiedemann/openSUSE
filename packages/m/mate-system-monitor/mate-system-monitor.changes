@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:18:00 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.24.1
+  * Translations update
+  * sendto: Fix evolution command for sending an email
+  * build: silent build warnings for distcheck
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.22.1):

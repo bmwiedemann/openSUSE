@@ -158,4 +158,15 @@
     <comment>- Update to version 1.24.0.</comment>
     <requestid>780540</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5df16da1680bbaa5e3c69fe21ddef400</srcmd5>
+    <version>1.24.1</version>
+    <time>1598983722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.24.1
+  * Translations update
+  * sendto: Fix evolution command for sending an email
+  * build: silent build warnings for distcheck (forwarded request 830676 from hillwood)</comment>
+    <requestid>830822</requestid>
+  </revision>
 </revisionlist>
