@@ -967,4 +967,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Space...</comment>
   </revision>
+  <revision rev="134" vrev="132">
+    <srcmd5>e5d3f709ab557c4352c13232bc670f30</srcmd5>
+    <version>unknown</version>
+    <time>1598975155</time>
+    <user>dimstar_suse</user>
+    <comment>Some more shrinking</comment>
+  </revision>
 </revisionlist>

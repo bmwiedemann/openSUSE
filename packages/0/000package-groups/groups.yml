@@ -306,7 +306,6 @@ dvd:
   - klettres: [locked]
 
   # additional packages not picked
-  - apache-parent
   - atftp
   - bcm20702a1-firmware
   - bcm43xx-firmware
@@ -319,9 +318,6 @@ dvd:
   - icewm-lite
   - lifecycle-data-openSUSE
   - mokutil: [x86_64]
-  - mtd-utils
-  - nut
-  - nut-cgi
   - openafs-client
   - pcsc-acr38
   - pcsc-asedriveiiie-usb
@@ -345,8 +341,6 @@ dvd:
   - virtualbox-guest-tools
   - virtualbox-guest-x11
   - xen-tools-domU
-  - xml-commons-apis
-  - xml-commons-resolver
   # used in staging tests
   - yast2-nfs-server
   - bind
