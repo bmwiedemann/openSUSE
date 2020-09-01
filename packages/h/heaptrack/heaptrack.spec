@@ -1,7 +1,7 @@
 #
 # spec file for package heaptrack
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,17 @@ Release:        0
 Summary:        Heap Memory Allocation Profiler
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
-Url:            https://userbase.kde.org/Heaptrack
+URL:            https://userbase.kde.org/Heaptrack
 Source0:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-compile-on-32bit.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  libboost_iostreams-devel
+BuildRequires:  libboost_program_options-devel
 BuildRequires:  libdwarf-devel
 BuildRequires:  libunwind-devel
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(KChart) >= 2.6.0
@@ -44,41 +47,12 @@ BuildRequires:  cmake(KF5ThreadWeaver)
 BuildRequires:  cmake(Qt5Core) >= 5.2.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  pkgconfig(libzstd) 
+BuildRequires:  pkgconfig(libzstd)
 Recommends:     %{name}-lang
 Suggests:       heaptrack-gui
-%if 0%{?suse_version} >= 1330
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_program_options-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 A memory profiler for Linux, tracking heap allocations.
-
-%if %{with lang}
-%lang_package
-%endif
-
-%prep
-%setup -q
-%autopatch -p1
-
-# Disable building tests, they're not used and post-build-checks trips over it
-sed -i"" '/add_subdirectory(tests)/d' CMakeLists.txt
-
-%build
-  %cmake_kf5 -d build
-  %make_jobs
-
-%install
-  %make_install -C build
-  %if %{with lang}
-    %find_lang %{name} --all-name
-  %endif
-  # Fixup desktop file
-  %suse_update_desktop_file org.kde.heaptrack Development Profiling
 
 %package devel
 Summary:        Development files for the Heaptrack API
@@ -97,12 +71,40 @@ Requires:       %{name} = %{version}
 %description gui
 A Qt5/KF5 based GUI for Heaptrack.
 
+%if %{with lang}
+%lang_package
+%endif
+
+%prep
+%setup -q
+%autopatch -p1
+
+# Disable building tests, they're not used and post-build-checks trips over it
+sed -i"" '/add_subdirectory(tests)/d' CMakeLists.txt
+
+%build
+%if %{_lib} == lib64
+extra_opts="-DLIB_SUFFIX=64"
+%endif
+
+%cmake_kf5 -d build -- $extra_opts
+
+%cmake_build
+
+%install
+  %kf5_makeinstall -C build
+  %if %{with lang}
+    %find_lang %{name} --all-name
+  %endif
+  # Fixup desktop file
+  %suse_update_desktop_file org.kde.heaptrack Development Profiling
+
 %files
 %license COPYING*
 %doc README.md
 %{_kf5_bindir}/heaptrack
 %{_kf5_bindir}/heaptrack_print
-%{_libexecdir}/heaptrack
+%{_libdir}/heaptrack/
 
 %files devel
 %license COPYING*

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 31 15:38:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the plugins installation directory.
+
+-------------------------------------------------------------------
 Wed Jan 29 10:59:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Enable zstd support
