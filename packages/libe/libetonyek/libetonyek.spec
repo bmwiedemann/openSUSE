@@ -1,7 +1,7 @@
 #
 # spec file for package libetonyek
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MPL-2.0
 Group:          Productivity/Publishing/Word
 URL:            https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM: https://gerrit.libreoffice.org/c/libetonyek/+/94450
+Patch0:         0001-add-missing-include-for-std-for_each.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -89,6 +91,7 @@ This package contains tools to work with Apple Keynote presentations
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fvi

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 21:24:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add 0001-add-missing-include-for-std-for_each.patch to fix build
+  issue with newer boost 
+
+-------------------------------------------------------------------
 Tue Aug 20 10:17:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.1.9:
