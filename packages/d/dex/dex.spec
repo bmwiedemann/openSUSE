@@ -1,7 +1,7 @@
 #
 # spec file for package dex
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dex
-Version:        0.7
+Version:        0.9.0
 Release:        0
 Summary:        DesktopEntry Execution
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
-Url:            https://github.com/jceb/dex
+URL:            https://github.com/jceb/dex
 Source:         https://github.com/jceb/dex/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  python3-Sphinx
 Requires:       python3
