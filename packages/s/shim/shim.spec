@@ -79,6 +79,8 @@ Patch6:         gcc9-fix-warnings.patch
 Patch7:         shim-fix-gnu-efi-3.0.11.patch
 # PATCH-FIX-UPSTREAM shim-bsc1173411-only-check-efi-var-on-sb.patch bsc#1173411 glin@suse.com -- Make EFI variable copying check only fatal on SB systems
 Patch8:         shim-bsc1173411-only-check-efi-var-on-sb.patch
+# PATCH-FIX-UPSTREAM shim-bsc1175509-tpm2-fixes.patch bsc#1175509 glin@suse.com -- Upstream fixes for the TPM2 measurement
+Patch9:         shim-bsc1175509-tpm2-fixes.patch
 # PATCH-FIX-OPENSUSE shim-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
 Patch100:       shim-opensuse-cert-prompt.patch
 BuildRequires:  gnu-efi >= 3.0.3
@@ -128,6 +130,7 @@ The source code of UEFI shim loader
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 %if 0%{?is_opensuse} == 1
 %patch100 -p1
 %endif

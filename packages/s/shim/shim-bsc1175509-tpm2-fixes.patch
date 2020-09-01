@@ -1,0 +1,205 @@
+From 551bab0a7c3199cad3bd1273d57e98e54bdf2ce9 Mon Sep 17 00:00:00 2001
+From: Matthew Garrett <mjg59@google.com>
+Date: Tue, 11 Dec 2018 15:25:44 -0800
+Subject: [PATCH 1/4] Remove call to TPM2 get_event_log()
+
+Calling the TPM2 get_event_log causes the firmware to start logging
+events to the final events table, but implementations may also continue
+logging to the boot services event log. Any OS that wishes to
+reconstruct the full PCR state must already look at both the final
+events log and the boot services event log, so if this call is made
+anywhere other than immediately before ExitBootServices() then the OS
+must deduplicate events that occur in both, complicating things
+immensely.
+
+Linux already has support for copying up the boot services event log
+across the ExitBootServices() boundary, so there's no reason to make
+this call. Remove it.
+
+Signed-off-by: Matthew Garrett <mjg59@google.com>
+(cherry picked from commit fd7c3bd920ba39082cb7c619afb7203d150a4cd3)
+---
+ tpm.c | 46 ----------------------------------------------
+ 1 file changed, 46 deletions(-)
+
+diff --git a/tpm.c b/tpm.c
+index 674e69b..f07362c 100644
+--- a/tpm.c
++++ b/tpm.c
+@@ -70,41 +70,6 @@ static BOOLEAN tpm2_present(EFI_TCG2_BOOT_SERVICE_CAPABILITY *caps,
+ 	return FALSE;
+ }
+ 
+-static inline EFI_TCG2_EVENT_LOG_BITMAP
+-tpm2_get_supported_logs(efi_tpm2_protocol_t *tpm,
+-			EFI_TCG2_BOOT_SERVICE_CAPABILITY *caps,
+-			BOOLEAN old_caps)
+-{
+-	if (old_caps)
+-		return ((TREE_BOOT_SERVICE_CAPABILITY *)caps)->SupportedEventLogs;
+-
+-	return caps->SupportedEventLogs;
+-}
+-
+-/*
+- * According to TCG EFI Protocol Specification for TPM 2.0 family,
+- * all events generated after the invocation of EFI_TCG2_GET_EVENT_LOG
+- * shall be stored in an instance of an EFI_CONFIGURATION_TABLE aka
+- * EFI TCG 2.0 final events table. Hence, it is necessary to trigger the
+- * internal switch through calling get_event_log() in order to allow
+- * to retrieve the logs from OS runtime.
+- */
+-static EFI_STATUS trigger_tcg2_final_events_table(efi_tpm2_protocol_t *tpm2,
+-						  EFI_TCG2_EVENT_LOG_BITMAP supported_logs)
+-{
+-	EFI_TCG2_EVENT_LOG_FORMAT log_fmt;
+-	EFI_PHYSICAL_ADDRESS start;
+-	EFI_PHYSICAL_ADDRESS end;
+-	BOOLEAN truncated;
+-
+-	if (supported_logs & EFI_TCG2_EVENT_LOG_FORMAT_TCG_2)
+-		log_fmt = EFI_TCG2_EVENT_LOG_FORMAT_TCG_2;
+-	else
+-		log_fmt = EFI_TCG2_EVENT_LOG_FORMAT_TCG_1_2;
+-
+-	return tpm2->get_event_log(tpm2, log_fmt, &start, &end, &truncated);
+-}
+-
+ static EFI_STATUS tpm_locate_protocol(efi_tpm_protocol_t **tpm,
+ 				      efi_tpm2_protocol_t **tpm2,
+ 				      BOOLEAN *old_caps_p,
+@@ -166,17 +131,6 @@ static EFI_STATUS tpm_log_event_raw(EFI_PHYSICAL_ADDRESS buf, UINTN size,
+ #endif
+ 	} else if (tpm2) {
+ 		EFI_TCG2_EVENT *event;
+-		EFI_TCG2_EVENT_LOG_BITMAP supported_logs;
+-
+-		supported_logs = tpm2_get_supported_logs(tpm2, &caps, old_caps);
+-
+-		efi_status = trigger_tcg2_final_events_table(tpm2,
+-							     supported_logs);
+-		if (EFI_ERROR(efi_status)) {
+-			perror(L"Unable to trigger tcg2 final events table: %r\n",
+-			       efi_status);
+-			return efi_status;
+-		}
+ 
+ 		event = AllocatePool(sizeof(*event) + logsize);
+ 		if (!event) {
+-- 
+2.28.0
+
+
+From 03cb410a51e808179e9d991057fb94a526ac269a Mon Sep 17 00:00:00 2001
+From: Chris Coulson <chris.coulson@canonical.com>
+Date: Sat, 22 Jun 2019 15:33:03 +0100
+Subject: [PATCH 2/4] tpm: Fix off-by-one error when calculating event size
+
+tpm_log_event_raw() allocates a buffer for the EFI_TCG2_EVENT structure
+that is one byte larger than necessary, and sets event->Size accordingly.
+The result of this is that the event data recorded in the log differs
+from the data that is measured to the TPM (it has an extra zero byte
+at the end).
+
+(cherry picked from commit 8a27a4809a6a2b40fb6a4049071bf96d6ad71b50)
+---
+ tpm.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/tpm.c b/tpm.c
+index f07362c..516fb87 100644
+--- a/tpm.c
++++ b/tpm.c
+@@ -131,8 +131,10 @@ static EFI_STATUS tpm_log_event_raw(EFI_PHYSICAL_ADDRESS buf, UINTN size,
+ #endif
+ 	} else if (tpm2) {
+ 		EFI_TCG2_EVENT *event;
++		UINTN event_size = sizeof(*event) - sizeof(event->Event) +
++			logsize;
+ 
+-		event = AllocatePool(sizeof(*event) + logsize);
++		event = AllocatePool(event_size);
+ 		if (!event) {
+ 			perror(L"Unable to allocate event structure\n");
+ 			return EFI_OUT_OF_RESOURCES;
+@@ -142,7 +144,7 @@ static EFI_STATUS tpm_log_event_raw(EFI_PHYSICAL_ADDRESS buf, UINTN size,
+ 		event->Header.HeaderVersion = 1;
+ 		event->Header.PCRIndex = pcr;
+ 		event->Header.EventType = type;
+-		event->Size = sizeof(*event) - sizeof(event->Event) + logsize + 1;
++		event->Size = event_size;
+ 		CopyMem(event->Event, (VOID *)log, logsize);
+ 		if (hash) {
+ 			/* TPM 2 systems will generate the appropriate hash
+-- 
+2.28.0
+
+
+From 6b57ed99e1925728166017863ad849408cddf55d Mon Sep 17 00:00:00 2001
+From: Chris Coulson <chris.coulson@canonical.com>
+Date: Sat, 22 Jun 2019 15:37:29 +0100
+Subject: [PATCH 3/4] tpm: Define EFI_VARIABLE_DATA_TREE as packed
+
+tpm_measure_variable() calculates VarLogSize by adding the size of VarName
+and VarData to the size of EFI_VARIABLE_DATA_TREE, and then subtracting
+the size of the UnicodeName and VariableData members. This results in a
+calculation that is 5 bytes larger than necessary because it doesn't take
+in to account the padding of these members. The effect of this is that
+shim measures an additional 5 zero bytes when measuring UEFI variables
+(at least on 64-bit architectures).
+
+Byte packing EFI_VARIABLE_DATA_TREE fixes this.
+
+(cherry picked from commit 7e4d3f1c8c730a5d3f40729cb285b5d8c7b241af)
+---
+ tpm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tpm.c b/tpm.c
+index 516fb87..c0617bb 100644
+--- a/tpm.c
++++ b/tpm.c
+@@ -233,7 +233,7 @@ typedef struct {
+ 	UINT64 VariableDataLength;
+ 	CHAR16 UnicodeName[1];
+ 	INT8 VariableData[1];
+-} EFI_VARIABLE_DATA_TREE;
++} __attribute__ ((packed)) EFI_VARIABLE_DATA_TREE;
+ 
+ static BOOLEAN tpm_data_measured(CHAR16 *VarName, EFI_GUID VendorGuid, UINTN VarSize, VOID *VarData)
+ {
+-- 
+2.28.0
+
+
+From 85a8c568dde4d608a7c9cc5b0283bdc36e677947 Mon Sep 17 00:00:00 2001
+From: Chris Coulson <chris.coulson@canonical.com>
+Date: Thu, 26 Sep 2019 20:01:01 +0100
+Subject: [PATCH 4/4] tpm: Don't log duplicate identical events
+
+According to the comment in tpm_measure_variable ("Don't measure something that we've already measured"), shim
+shouldn't measure duplicate events if they are identical, which also aligns with section 2.3.4.8 of the TCG PC
+Client Platform Firmware Profile Specification ("If it has been measured previously, it MUST NOT be measured
+again"). This is currently broken because tpm_data_measured() uses the return value of CompareGuid() incorrectly.
+
+(cherry picked from commit 103adc89ce578a23cbdbd195c5dc5e329b85b854)
+---
+ tpm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tpm.c b/tpm.c
+index c0617bb..196b93c 100644
+--- a/tpm.c
++++ b/tpm.c
+@@ -241,7 +241,7 @@ static BOOLEAN tpm_data_measured(CHAR16 *VarName, EFI_GUID VendorGuid, UINTN Var
+ 
+ 	for (i=0; i<measuredcount; i++) {
+ 		if ((StrCmp (VarName, measureddata[i].VariableName) == 0) &&
+-		    (CompareGuid (&VendorGuid, measureddata[i].VendorGuid)) &&
++		    (CompareGuid (&VendorGuid, measureddata[i].VendorGuid) == 0) &&
+ 		    (VarSize == measureddata[i].Size) &&
+ 		    (CompareMem (VarData, measureddata[i].Data, VarSize) == 0)) {
+ 			return TRUE;
+-- 
+2.28.0
+

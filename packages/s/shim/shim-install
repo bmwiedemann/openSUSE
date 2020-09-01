@@ -260,6 +260,8 @@ if test "$clean" = "yes"; then
     if test "$update_boot" = "yes"; then
         rm -f "${efibootdir}/${def_boot_efi}"
         rm -f "${efibootdir}/fallback.efi"
+        # bsc#1175626, bsc#1175656 also clean up MokManager
+        rm -f "${efibootdir}/MokManager.efi"
     fi
     if test "$no_nvram" = no && test -n "$bootloader_id"; then
         # Delete old entries from the same distributor.
@@ -296,6 +298,11 @@ if test "$update_boot" = "yes"; then
     cp "${source_dir}/shim.efi" "${efibootdir}/${def_boot_efi}"
     if test "$removable" = "no"; then
         cp "${source_dir}/fallback.efi" "${efibootdir}"
+        # bsc#1175626, bsc#1175656 Since shim 15, loading MokManager becomes
+        # mandatory if a MOK request exists. Copy MokManager to \EFI\boot so
+        # that boot*.efi can load MokManager to process the request instead
+        # of shutting down the system immediately.
+        cp "${source_dir}/MokManager.efi" "${efibootdir}"
     fi
 fi
 
