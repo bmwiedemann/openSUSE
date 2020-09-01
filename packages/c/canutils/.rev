@@ -70,4 +70,13 @@
   to unbreak build with modern linux-glibc-devel.</comment>
     <requestid>726104</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>123b3581183c795ee81bf16a12eb1b84</srcmd5>
+    <version>2020.02.04.g119</version>
+    <time>1598983631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020.04.02.g119 (ea844bdc5e)
+  * Rename jcat et al to j1939cat</comment>
+    <requestid>831043</requestid>
+  </revision>
 </revisionlist>
