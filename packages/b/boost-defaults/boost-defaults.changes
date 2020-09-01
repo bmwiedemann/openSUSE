@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 27 09:20:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- remove python2 variants, no longer available
+- fix dependency on libboost_mpi_python 
+
+-------------------------------------------------------------------
+Fri Aug 21 20:03:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update for Boost 1.74.0 
+
+-------------------------------------------------------------------
 Fri Apr 17 07:58:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2 available by generating the py2

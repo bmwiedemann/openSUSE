@@ -16,11 +16,11 @@
 #
 
 
-%bcond_without python2
 Name:           boost-defaults
-Version:        1.71.0
+Version:        1.74.0
 Release:        0
-%define boost_version 1_71_0
+%define python3X python38
+%define boost_version 1_74_0
 Summary:        Default Boost C++ Libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
@@ -234,31 +234,10 @@ Development headers for Boost.Graph parallel boost library.
 
 This package installs the default Boost version of the library.
 
-%package     -n libboost_mpi_python-devel
-Summary:        Development library for Boost.MPI Python 2.7 serialization
-Group:          Development/Libraries/C and C++
-Requires:       libboost_mpi_python-py2_7-%{boost_version}-devel
-
-%description -n libboost_mpi_python-devel
-This package contains the Boost.MPI development library for Python 2.7
-serialization interface.
-
-This package installs the default Boost version of the library.
-
-%package     -n python-boost_parallel_mpi
-Summary:        Python 2.7 bindings for Boost.Parallel.MPI library
-Group:          Development/Languages/Python
-Requires:       python2-boost_parallel_mpi%{boost_version}
-
-%description -n python-boost_parallel_mpi
-This package contains the Boost.Parallel.MPI bindings for Python 2.7
-
-This package installs the default Boost version of the library.
-
 %package     -n libboost_mpi_python3-devel
 Summary:        Development library for Boost.MPI Python 3.x serialization
 Group:          Development/Libraries/C and C++
-Requires:       libboost_mpi_python-py3-%{boost_version}-devel
+Requires:       libboost_mpi_%{python3X}-py3-%{boost_version}-devel
 
 %description -n libboost_mpi_python3-devel
 This package contains the Boost.MPI development library for Python 3.x
@@ -296,28 +275,6 @@ Requires:       libboost_program_options%{boost_version}-devel
 %description -n libboost_program_options-devel
 This package contains development headers for Boost.ProgramOptions
 library.
-
-This package installs the default Boost version of the library.
-
-%package     -n libboost_python-devel
-Summary:        Development headers for Boost.Python library
-Group:          Development/Libraries/C and C++
-Requires:       libboost_python-py2_7-%{boost_version}-devel
-
-%description -n libboost_python-devel
-Development headers for Boost::Python library for the default version of
-python.
-
-This package installs the default Boost version of the library.
-
-%package     -n libboost_numpy-devel
-Summary:        Development headers for Boost.Python.NumPy library
-Group:          Development/Libraries/C and C++
-Requires:       libboost_numpy-py2_7-%{boost_version}-devel
-
-%description -n libboost_numpy-devel
-Development headers for Boost::Python::NumPy library for the default version of
-python.
 
 This package installs the default Boost version of the library.
 
@@ -514,16 +471,6 @@ cp %{SOURCE1} .
 %files -n libboost_graph_parallel-devel
 %doc README
 
-%if %{with python2}
-%files -n libboost_mpi_python-devel
-%doc README
-%endif
-
-%if %{with python2}
-%files -n python-boost_parallel_mpi
-%doc README
-%endif
-
 %files -n libboost_mpi_python3-devel
 %doc README
 
@@ -535,16 +482,6 @@ cp %{SOURCE1} .
 
 %files -n libboost_program_options-devel
 %doc README
-
-%if %{with python2}
-%files -n libboost_python-devel
-%doc README
-%endif
-
-%if %{with python2}
-%files -n libboost_numpy-devel
-%doc README
-%endif
 
 %files -n libboost_python3-devel
 %doc README

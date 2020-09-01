@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>794850</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>523946b9e56a873b894369f90060a96c</srcmd5>
+    <version>1.74.0</version>
+    <time>1598983360</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 variants, no longer available
+- fix dependency on libboost_mpi_python 
+
+- update for Boost 1.74.0</comment>
+    <requestid>829939</requestid>
+  </revision>
 </revisionlist>
