@@ -81,4 +81,12 @@ to make it compile on Factory again</comment>
     <comment></comment>
     <requestid>828296</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>44a4bfc32604c7ec363e9b7a2d9049b0</srcmd5>
+    <version>1.20.1+git20200817.ef2c844d</version>
+    <time>1598983840</time>
+    <user>dimstar_suse</user>
+    <comment>- update url</comment>
+    <requestid>831026</requestid>
+  </revision>
 </revisionlist>

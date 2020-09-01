@@ -1,7 +1,7 @@
 #
 # spec file for package ipxe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
 Group:          System/Boot
-Url:            http://ipxe.org/
+URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  /usr/bin/mkisofs
 BuildRequires:  binutils-devel
@@ -96,7 +96,6 @@ make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/ipxe.efi
 make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/snp.efi
 make_ipxe bin-arm64-efi/snp.efi
 %endif
-
 
 make_ipxe \
 %ifnarch %{ix86} x86_64
