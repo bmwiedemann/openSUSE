@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PDF-API2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-PDF-API2
-Version:        2.037
+Version:        2.038
 Release:        0
 %define cpan_name PDF-API2
 Summary:        Facilitates the creation and modification of PDF files
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SS/SSIMMS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -36,6 +36,7 @@ BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Memory::Cycle)
 Requires:       perl(Compress::Zlib) >= 1.0
 Requires:       perl(Font::TTF)
+Recommends:     perl(PDF::API2::XS)
 %{perl_requires}
 
 %description

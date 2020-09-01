@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  1 03:09:29 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.038
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.038     2020-08-31
+
+      - Use PDF::API2::XS or Image::PNG::Libpng, if either is installed, to speed
+        up inclusion of PNG files with an alpha channel by an order of magnitude
+        (written by Rob Scovell, sponsored by prayerletters.com).
+
+-------------------------------------------------------------------
 Thu Feb  6 03:09:32 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.037
