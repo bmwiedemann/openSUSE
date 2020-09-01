@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep 01 09:50:00 CEST 2020 - lnussel@suse.com
+
+- activate snapperd using systemd service
+
+-------------------------------------------------------------------
+Mon Aug 31 17:18:14 CEST 2020 - aschnell@suse.com
+
+- fix LVM setup for volume groups and logical volumes with one
+  character long names (gh#openSUSE/snapper#465)
+
+-------------------------------------------------------------------
+Fri Aug 28 11:06:23 CEST 2020 - aschnell@suse.com
+
+- improved error messages for wrong command line options and
+  arguments (bsc#1150156)
+
+-------------------------------------------------------------------
+Thu Aug 27 12:04:44 CEST 2020 - aschnell@suse.com
+
+- call fsync after writing snapshot info file (bsc#1078336)
+- version 0.8.13
+
+-------------------------------------------------------------------
 Thu Jul 23 11:52:31 CEST 2020 - aschnell@suse.com
 
 - fixed error when using mksubvolume to create /tmp (bsc#1174401)
