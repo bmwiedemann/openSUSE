@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  1 12:12:14 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- i586 build ignore libexec setting for some reason, so added
+  conditional for this in the file list
+
+-------------------------------------------------------------------
+Mon Aug 31 21:25:21 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Install helper apps into %{_libexecdir} and not into /usr/lib
+
+-------------------------------------------------------------------
 Mon Mar 16 10:02:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:

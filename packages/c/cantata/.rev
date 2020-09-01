@@ -202,4 +202,15 @@
     <comment></comment>
     <requestid>785572</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>73df13aa6555c4a967d9133229164f68</srcmd5>
+    <version>2.4.1</version>
+    <time>1598983852</time>
+    <user>dimstar_suse</user>
+    <comment>- i586 build ignore libexec setting for some reason, so added
+  conditional for this in the file list
+
+- Install helper apps into %{_libexecdir} and not into /usr/lib</comment>
+    <requestid>831107</requestid>
+  </revision>
 </revisionlist>

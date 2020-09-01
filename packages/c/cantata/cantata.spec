@@ -29,7 +29,7 @@ Patch0:         fix-translations-with-qt5.diff
 # PATCH-FIX-UPSTREAM: [PATCH] Correctly set 'storeLyricsInMpdDir' config item, UI was
 # setting wrong config item. Cantatan issue #1576
 Patch1:         correct-path-saved-lyrics.patch
-# PATCH-FIX-UPSTREAM
+# PATCH_FIX-UPSTREAM: gh#CDrummond/cantata#1575
 Patch2:         0001-Correctly-handle-changing-Basic-mode-music-folder.patch
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
@@ -101,7 +101,8 @@ information, please refer to the main README.
 %autosetup -p1
 
 %build
-%cmake -DENABLE_REMOTE_DEVICES=OFF \
+%cmake -DCANTATA_HELPERS_LIB_DIR=%{_libexecdir} \
+    -DENABLE_REMOTE_DEVICES=OFF \
     -DENABLE_CATEGORIZED_VIEW=OFF
 %cmake_build
 
@@ -116,7 +117,11 @@ information, please refer to the main README.
 %files
 %license LICENSE
 %{_bindir}/%{name}
+%ifarch i586
+/usr/lib/%{name}/
+%else
 %{_libexecdir}/%{name}/
+%endif
 %{_datadir}/%{name}
 %exclude %{_datadir}/%{name}/translations/
 %{_datadir}/applications/%{name}.desktop
