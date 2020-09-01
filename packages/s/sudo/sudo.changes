@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 10:10:10 UTC 2020 - olaf@aepfle.de
+
+- This rpm packages decides about the permissions of /etc/sudoers.d
+
+-------------------------------------------------------------------
 Fri Jul 24 08:47:34 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.2:

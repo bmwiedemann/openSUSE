@@ -195,7 +195,7 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_mandir}/man8/sudo_sendlog.8%{?ext_man}
 
 %config(noreplace) %attr(0440,root,root) %{_sysconfdir}/sudoers
-%dir %{_sysconfdir}/sudoers.d
+%attr(0750,root,root) %dir %{_sysconfdir}/sudoers.d
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sudo.conf
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sudo_logsrvd.conf
 %if %{defined use_usretc}
