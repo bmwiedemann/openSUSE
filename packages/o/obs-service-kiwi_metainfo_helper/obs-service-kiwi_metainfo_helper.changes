@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 27 07:12:48 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fix grammar, update README and .service. Technically the name
+  should be changed as well, but that's just cosmetic.
+
+-------------------------------------------------------------------
+Tue Aug 25 11:10:50 UTC 2020 - Stefan Nica <snica@suse.com>
+
+- Also allow working on Chart.yaml
+
+-------------------------------------------------------------------
 Tue Jul  7 13:53:33 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add explicit fallback for chroot builds

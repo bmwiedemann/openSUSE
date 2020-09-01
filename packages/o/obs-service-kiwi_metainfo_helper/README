@@ -2,7 +2,8 @@ obs-service-kiwi_metainfo_helper
 ================================
 
 This service can be enabled to run during buildtime, when it will edit the
-kiwi image description to replace placeholders with build-specific metainfo.
+build recipe (.kiwi, Dockerfile, Chart.yaml) to replace placeholders with
+build-specific metainfo.
 
 | Placeholder        | Value                                      | Example                                                                                       |
 |--------------------|--------------------------------------------|-----------------------------------------------------------------------------------------------|

@@ -19,7 +19,7 @@
 Name:           obs-service-kiwi_metainfo_helper
 Version:        0.0
 Release:        0
-Summary:        Service for substituting various variables in kiwi recipes
+Summary:        Service for substituting various variables in build recipes
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://build.opensuse.org
@@ -37,7 +37,7 @@ BuildArch:      noarch
 
 %description
 This service can be used during buildtime to gain access to various variables
-in kiwi recipes.
+in build recipes.
 
 %prep
 %setup -q -D -T -n .
