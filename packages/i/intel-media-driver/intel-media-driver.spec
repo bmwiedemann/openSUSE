@@ -19,7 +19,7 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        20.1.1
+Version:        20.2.0
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        MIT AND BSD-3-Clause
@@ -29,6 +29,7 @@ Source:         https://github.com/intel/media-driver/archive/intel-media-%{vers
 Source1:        generate-supplements.sh
 Patch1:         Werror-initialize-in-right-order.patch
 Patch2:         u_20.1.1-build-fixes.patch
+Patch3:         u_20.2.0-build-fixes.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -37,6 +38,7 @@ BuildRequires:  pkgconfig(libva) >= 1.7.0
 BuildRequires:  pkgconfig(pciaccess)
 ExclusiveArch:  x86_64
 
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00000A84sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00001602sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00001606sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d0000160Asv*sd*bc*sc*i*)
@@ -106,6 +108,13 @@ Supplements:    modalias(xorg-x11-server:pci:v00008086d00003EA6sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00003EA7sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00003EA8sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00003EA9sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00004500sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00004541sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00004551sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00004571sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00004E51sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00004E61sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00004E71sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00005902sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00005906sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00005908sv*sd*bc*sc*i*)
@@ -119,6 +128,7 @@ Supplements:    modalias(xorg-x11-server:pci:v00008086d00005916sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00005917sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d0000591Asv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d0000591Bsv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d0000591Csv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d0000591Dsv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d0000591Esv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00005921sv*sd*bc*sc*i*)
@@ -143,10 +153,13 @@ Supplements:    modalias(xorg-x11-server:pci:v00008086d00005A5Asv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00005A5Csv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00005A84sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00005A85sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d000087C0sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d000087CAsv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A50sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A51sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A52sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A53sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A54sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A56sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A57sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A58sv*sd*bc*sc*i*)
@@ -156,6 +169,17 @@ Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A5Bsv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A5Csv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A5Dsv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00008A71sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009A40sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009A49sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009A59sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009A60sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009A68sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009A70sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009A78sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009AC0sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009AC9sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009AD9sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009AF8sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009B21sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009B41sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BA0sv*sd*bc*sc*i*)
@@ -170,10 +194,13 @@ Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BC0sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BC2sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BC4sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BC5sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BC6sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BC8sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BCAsv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BCBsv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BCCsv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BE6sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00009BF6sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d0000FF05sv*sd*bc*sc*i*)
 
 %description
@@ -208,6 +235,7 @@ chmod -x media-driver/*.md
 pushd media-driver
 %patch1 -p1
 %patch2 -p2
+%patch3 -p1
 popd
 
 %define __sourcedir media-driver
