@@ -24,6 +24,7 @@ function usage
 	-u 	organisational unit		"$U"
 	-n	fully qualified domain name	$CN (hostname -f)
 	-e 	email address of webmaster	webmaster@$CN
+	-a	subject alternative name	$altName
 	-y      days server cert is valid for   $srvdays
 	-Y      days CA cert is valid for       $CAdays
 	-d	run in debug mode			
@@ -61,10 +62,11 @@ fi
 	O="SUSE Linux Web Server"
        CN=$FQHOSTNAME
     email=webmaster@$FQHOSTNAME
+  altName=DNS:$CN
    CAdays=$((365 * 6))
   srvdays=$((365 * 2))
 
-while getopts C:N:c:s:l:o:u:n:e:y:Y:dh OPT; do
+while getopts C:N:c:s:l:o:u:n:e:a:y:Y:dh OPT; do
     case $OPT in
         N) comment=$OPTARG;;
         c) C=$OPTARG;;
@@ -74,6 +76,7 @@ while getopts C:N:c:s:l:o:u:n:e:y:Y:dh OPT; do
         o) O=$OPTARG;;
         n) CN=$OPTARG;;
         e) email=$OPTARG;;
+        a) altName=$OPTARG;;
 	y) srvdays=$OPTARG;;
 	Y) CAdays=$OPTARG;;
         d) set -x;;
@@ -84,7 +87,7 @@ done
 
 GO_LEFT="\033[80D"
 GO_MIDDLE="$GO_LEFT\033[15C"
-for i in comment C ST L U O CN email srvdays CAdays; do 
+for i in comment C ST L U O CN email altName srvdays CAdays; do 
 	eval "echo -e $i\"$GO_MIDDLE\" \$$i;"
 done
 
@@ -156,7 +159,7 @@ CN                     = $CN
 emailAddress           = $email
 
 [ x509v3 ]
-subjectAltName         = DNS:$CN
+subjectAltName         = $altName
 nsComment              = $comment
 nsCertType             = server
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 31 11:08:16 UTC 2020 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- gensslcert: add -a argument to override default SAN value
+
+-------------------------------------------------------------------
+Tue Aug 31 09:07:44 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Provide mod_ssl to keep compatibility with other distributions.
+  Now obsoletes mod_ssl < %{version} instead of mod_ssl < 2.8.16.
+
+-------------------------------------------------------------------
 Thu Aug 27 11:33:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Install firewalld service files to %{_prefix}/lib/firewalld, NOT

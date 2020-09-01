@@ -201,7 +201,8 @@ Provides:       suse_maintenance_mmn_%{suse_maintenance_mmn}
 Obsoletes:      %{name}-mod_macro <= 1.2.1
 Provides:       apache = %{version}
 Obsoletes:      apache < 1.3.29
-Obsoletes:      mod_ssl < 2.8.16
+Provides:       mod_ssl = %{version}
+Obsoletes:      mod_ssl < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1210
 BuildRequires:  pkgconfig
