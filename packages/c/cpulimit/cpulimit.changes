@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 21:26:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.6:
+  * Fixed indentation to avoid compiler warnings. No functional change.
+  * Updated manual page to warn against using -m on a script.
+
+-------------------------------------------------------------------
 Sun Feb 18 08:34:12 UTC 2018 - avindra@opensuse.org
 
 - new upstream version 2.5

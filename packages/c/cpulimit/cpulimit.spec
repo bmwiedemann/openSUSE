@@ -2,7 +2,7 @@
 #
 # spec file for package cpulimit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cpulimit
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Limit the CPU Usage of a Process
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://limitcpu.sourceforge.net/
+URL:            http://limitcpu.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/limitcpu/%{name}-%{version}.tar.gz
 Patch0:         %{name}-2.2-do_not_forget_version.patch
 BuildRequires:  gcc
@@ -46,15 +46,16 @@ which can be found at http://cpulimit.sourceforge.net
 %patch0 -p1
 
 %build
-make %{?_smp_mflags} \
+%make_build \
     CFLAGS="%{optflags}"
 
 %install
 %make_install PREFIX=%{buildroot}/%{_prefix}
 
 %files
-%doc LICENSE CHANGELOG README TODO
+%license LICENSE
+%doc CHANGELOG README
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
