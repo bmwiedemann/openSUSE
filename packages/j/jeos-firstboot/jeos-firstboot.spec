@@ -17,7 +17,7 @@
 
 
 Name:           jeos-firstboot
-Version:        0.0+git20200508.d0ccd48
+Version:        0.0+git20200827.e920a15
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
