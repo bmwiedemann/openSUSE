@@ -17,10 +17,10 @@
 
 
 Name:           perl-DateTime-Locale
-Version:        1.260000
+Version:        1.280000
 Release:        0
-%define cpan_version 1.26
-Provides:       perl(DateTime::Locale) = 1.260000
+%define cpan_version 1.28
+Provides:       perl(DateTime::Locale) = 1.280000
 %define cpan_name DateTime-Locale
 Summary:        Localization support for DateTime.pm
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -40,13 +40,15 @@ BuildRequires:  perl(File::ShareDir::Install) >= 0.06
 BuildRequires:  perl(IPC::System::Simple)
 BuildRequires:  perl(List::Util) >= 1.45
 BuildRequires:  perl(Params::ValidationCompiler) >= 0.13
+BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Specio::Declare)
 BuildRequires:  perl(Specio::Library::String)
-BuildRequires:  perl(Test::Fatal)
+BuildRequires:  perl(Test2::Plugin::NoWarnings)
+BuildRequires:  perl(Test2::Plugin::UTF8)
+BuildRequires:  perl(Test2::Require::Module)
+BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(Test::File::ShareDir::Dist)
-BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(Test::Requires)
-BuildRequires:  perl(Test::Warnings)
+BuildRequires:  perl(Test::More) >= 1.302015
 BuildRequires:  perl(namespace::autoclean) >= 0.19
 Requires:       perl(Dist::CheckConflicts) >= 0.02
 Requires:       perl(File::ShareDir)

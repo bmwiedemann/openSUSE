@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 29 03:10:10 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+
+  1.28     2020-08-28
+  - Move a test that was added in 1.27 to xt. This test is a sensitive to small
+    variations in error message text, and testing it locally and in CI is
+    sufficient. Reported by Kent Fredric. GH #27.
+  1.27     2020-08-28
+  - The $locale->locale_data method now returns a deep clone of the locale's
+    data. This allows you to safely modify any elements of the returned hash
+    without breaking the original locale. Implemented by Alexander Pankoff. GH
+    #26.
+  - We now support loading locale data from relative directories in
+    @INC. Implemented by Alexander Pankoff. GH #25.
+  - When loading locale data, we now check $! for read errors, as well as
+    checking for an error eval'ing the file's contents in $@. Fixed by Alexander
+    Pankoff. GH #24.
+
+-------------------------------------------------------------------
 Sat Jul  4 03:08:59 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.26
