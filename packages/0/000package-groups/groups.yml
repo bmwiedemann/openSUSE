@@ -268,6 +268,7 @@ dvd:
   ## More space needed - 2017-02-02
   - ant: [locked]
   - java-1_8_0-openjdk-devel: [locked]
+  - java-15-openjdk-headless: [locked]
 
   ## wow, we run out of space... drop 40MB of cjk fonts:
   - noto-sans-cjk-fonts: [locked]
