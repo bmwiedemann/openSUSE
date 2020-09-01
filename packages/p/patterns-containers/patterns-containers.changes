@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 31 12:58:20 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- kubeadm pattern now requires kuberlr to facilitate transparent multi-version kubectl useage 
+
+-------------------------------------------------------------------
 Mon Jun 29 09:50:02 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Remove duplicate word in description of kubic_admin pattern
