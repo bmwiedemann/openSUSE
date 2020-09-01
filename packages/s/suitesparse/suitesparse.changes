@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep  1 07:36:34 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to SuiteSparse 5.8.1
+    * SLIP_LU v1.0.2: resolved issue #51: build error with clang 10
+    * GraphBLAS v3.3.3: bug fix (GraphBLAS issue #13)
+    * SLIP_LU v1.0.1 added: for solving Ax=b exactly.  Requires
+        the GNU GMP and MPRF libraries.
+    * GraphBLAS v3.3.1: see the GraphBLAS/Doc/Changlog
+    * replaced UFget with ssget: affects nearly all packages:
+        UMFPACK, KLU, CHOLMOD, CXSparse/CSparse, etc,
+        but their version numbers are left unchanged since it affects
+        the MATLAB tests only, not the compiled libraries.
+    * ssget v2.2.0: better URL redirects
+    * updates to SuiteSparse build system
+
+-------------------------------------------------------------------
+Tue Aug 18 15:52:29 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Call %limit_build macro in spec to avoid oom build failure
+  for ppc64le and aarch64
+- Add _constraints with default 5GB min physicalmemory
+  and 7GB for ppc64/ppc64le
+
+-------------------------------------------------------------------
 Thu Mar 19 22:49:23 UTC 2020 - Christoph G <foss@grueninger.de>
 
 - Update to SuiteSparse 5.7.1

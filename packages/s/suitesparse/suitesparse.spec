@@ -26,9 +26,9 @@ Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        5.7.1
+Version:        5.8.1
 Release:        0
-URL:            http://faculty.cse.tamu.edu/davis/suitesparse.html
+URL:            https://people.engr.tamu.edu/davis/suitesparse.html
 Source0:        https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v%{version}.tar.gz#/SuiteSparse-%{version}.tar.gz
 Source2:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE build_csparse_shared.patch -- Build CSparse as a shared library
@@ -44,9 +44,12 @@ BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-fortran
+BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
 BuildRequires:  m4
+BuildRequires:  memory-constraints
 BuildRequires:  metis-devel
+BuildRequires:  mpfr-devel
 BuildRequires:  tbb-devel
 %if %{with openblas}
 BuildRequires:  openblas-devel
@@ -59,16 +62,17 @@ BuildRequires:  openblas-devel
 %define colamdver    2.9.6
 %define csparsever   3.2.0
 %define cxsparsever  3.2.0
-%define graphblasver 3.2.0
+%define graphblasver 3.3.3
 %define kluver       1.3.9
 %define ldlver       2.2.6
 %define mongoosever  2.0.3
 %define rbiover      2.2.6
+%define slipluver    1.0.2
 %define spqrver      2.0.9
 %define umfpackver   5.7.8
 # Your need define even it's just the same as main package
 # or the %%build loop will override %%version with umfpack's version.
-%define configver    5.7.1
+%define configver    5.8.1
 %define csparsemajor %(echo "%{csparsever}" | cut -d "." -f1)
 %define amdlib       %(echo "libamd%{amdver}"                  | cut -d "." -f1)
 %define btflib       %(echo "libbtf%{btfver}"                  | cut -d "." -f1)
@@ -83,6 +87,7 @@ BuildRequires:  openblas-devel
 %define ldllib       %(echo "libldl%{ldlver}"                  | cut -d "." -f1)
 %define mongooselib  %(echo "libmongoose%{mongoosever}"        | cut -d "." -f1)
 %define rbiolib      %(echo "librbio%{rbiover}"                | cut -d "." -f1)
+%define sliplulib    %(echo "libsliplu%{slipluver}"            | cut -d "." -f1)
 %define spqrlib      %(echo "libspqr%{spqrver}"                | cut -d "." -f1)
 %define umfpacklib   %(echo "libumfpack%{umfpackver}"          | cut -d "." -f1)
 %define configlib    %(echo "libsuitesparseconfig%{configver}" | cut -d "." -f1)
@@ -115,6 +120,7 @@ Requires:       %{klulib}       = %{kluver}
 Requires:       %{ldllib}       = %{ldlver}
 Requires:       %{mongooselib}  = %{mongoosever}
 Requires:       %{rbiolib}      = %{rbiover}
+Requires:       %{sliplulib}     = %{slipluver}
 Requires:       %{spqrlib}      = %{spqrver}
 Requires:       %{umfpacklib}   = %{umfpackver}
 Requires:       metis-devel
@@ -159,6 +165,8 @@ Provides:       libmongoose-devel          = %{mongoosever}
 Obsoletes:      libmongoose-devel          < %{mongoosever}
 Provides:       librbio-devel              = %{rbiover}
 Obsoletes:      librbio-devel              < %{rbiover}
+Provides:       libsliplu-devel            = %{slipluver}
+Obsoletes:      libsliplu-devel            < %{slipluver}
 Provides:       libspqr-devel              = %{spqrver}
 Obsoletes:      libspqr-devel              < %{spqrver}
 Provides:       libumfpack-devel           = %{umfpackver}
@@ -483,6 +491,27 @@ Version 2.0+ is written in C.
 
 RBio is part of the SuiteSparse sparse matrix suite.
 
+%package -n %{sliplulib}
+Version:        %{slipluver}
+Release:        0
+Summary:        SLIP LU, A Sparse Left-Looking Integer Preserving LU Factorization
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+Provides:       %(echo "libsliplu-%{slipluver}" | tr . _) = %{version}
+Obsoletes:      %(echo "libsliplu-%{slipluver}" | tr . _) < %{version}
+
+%description -n %{sliplulib}
+SLIP LU is software package used to solve a sparse systems of linear equations
+exactly using the Sparse Left-looking Integer-Preserving LU factorization.
+
+SLIP LU solves a sparse system of linear equations using a given input
+matrix and right hand side vector file. This code can output the final
+solution to a user specified output file in either double precision or
+full precision rational numbers. If you intend to use SLIP LU within
+another program, refer to examples for help with this.
+
+SLIP LU is part of the SuiteSparse sparse matrix suite.
+
 %package -n %{spqrlib}
 Version:        %{spqrver}
 Release:        0
@@ -579,6 +608,13 @@ rm SPQR/Doc/spqr.pdf
 %patch775418 -p1
 
 %build
+%ifarch ppc64le aarch64
+%define limitbuild 1500
+%limit_build -m %{limitbuild}
+%define JOBS %{jobs}
+%define _lto_cflags -flto=%{jobs}
+%endif
+
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %if 0%{?suse_version} < 1500
 export CC=gcc-7
@@ -689,6 +725,9 @@ popd
 %post   -n %{rbiolib} -p /sbin/ldconfig
 %postun -n %{rbiolib} -p /sbin/ldconfig
 
+%post   -n %{sliplulib} -p /sbin/ldconfig
+%postun -n %{sliplulib} -p /sbin/ldconfig
+
 %post   -n %{spqrlib} -p /sbin/ldconfig
 %postun -n %{spqrlib} -p /sbin/ldconfig
 
@@ -771,6 +810,7 @@ popd
 %doc GraphBLAS/Doc/GraphBLAS_UserGuide.pdf
 %license GraphBLAS/Doc/ChangeLog GraphBLAS/Doc/License.txt
 %{_libdir}/libgraphblas.so.*
+%{_libdir}/libgraphblasdemo.so.*
 
 %files -n %{klulib}
 %doc KLU/README.txt
@@ -803,6 +843,13 @@ popd
 %doc RBio/Doc/ChangeLog
 %license RBio/Doc/License.txt RBio/Doc/gpl.txt
 %{_libdir}/librbio.so.*
+
+%files -n %{sliplulib}
+%doc SLIP_LU/README.md
+%doc SLIP_LU/Doc/SLIP_LU_UserGuide.pdf
+%license SLIP_LU/License/license.txt SLIP_LU/License/GPLv2.txt
+%license SLIP_LU/License/lesserv3.txt SLIP_LU/License/CONTRIBUTOR-LICENSE.txt
+%{_libdir}/libsliplu.so.*
 
 %files -n %{spqrlib}
 %doc SPQR/README.txt
