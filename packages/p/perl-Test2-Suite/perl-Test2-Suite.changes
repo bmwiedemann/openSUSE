@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 03:12:21 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000135
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000135  2020-08-16 21:44:24-07:00 America/Los_Angeles
+      - No changes since last trial
+  0.000134  2020-08-15 13:11:30-07:00 America/Los_Angeles (TRIAL RELEASE)
+      - Fix 5.8 support
+  0.000133  2020-08-14 21:59:19-07:00 America/Los_Angeles (TRIAL RELEASE)
+      - Add summary of missing/extra elements in compare diagnostics
+
+-------------------------------------------------------------------
 Fri Aug  7 03:14:58 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000132
