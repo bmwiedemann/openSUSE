@@ -122,7 +122,6 @@
       <repopackage name="anjuta-extras-lang"/>
       <repopackage name="anjuta-lang"/>
       <repopackage name="apache-commons-logging"/>
-      <repopackage name="apache-parent"/>
       <repopackage name="apache2"/>
       <repopackage name="apache2-doc"/>
       <repopackage name="apache2-example-pages"/>
@@ -1074,7 +1073,6 @@
       <repopackage name="iw"/>
       <repopackage name="java-11-openjdk"/>
       <repopackage name="java-11-openjdk-headless"/>
-      <repopackage name="java-14-openjdk-headless" arch="x86_64"/>
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
@@ -2043,7 +2041,6 @@
       <repopackage name="libip6tc2"/>
       <repopackage name="libipmiconsole2"/>
       <repopackage name="libipmidetect0"/>
-      <repopackage name="libipmimonitoring6"/>
       <repopackage name="libipset13"/>
       <repopackage name="libiptcdata"/>
       <repopackage name="libiptcdata-lang"/>
@@ -2557,7 +2554,6 @@
       <repopackage name="libportaudio2"/>
       <repopackage name="libpostproc55_7"/>
       <repopackage name="libpotrace0"/>
-      <repopackage name="libpowerman0"/>
       <repopackage name="libpq5"/>
       <repopackage name="libpresage1"/>
       <repopackage name="libprocps8"/>
@@ -2941,7 +2937,6 @@
       <repopackage name="libunwind"/>
       <repopackage name="libupnp17"/>
       <repopackage name="libupower-glib3"/>
-      <repopackage name="libupsclient1"/>
       <repopackage name="liburcu6"/>
       <repopackage name="libUsageEnvironment3"/>
       <repopackage name="libusb-0_1-4"/>
@@ -3402,7 +3397,6 @@
       <repopackage name="mpt-firmware"/>
       <repopackage name="mpt-status"/>
       <repopackage name="msr-safe-kmp-default"/>
-      <repopackage name="mtd-utils"/>
       <repopackage name="mtdev-devel"/>
       <repopackage name="mtools"/>
       <repopackage name="mtr"/>
@@ -3516,8 +3510,6 @@
       <repopackage name="numactl" arch="x86_64"/>
       <repopackage name="numad" arch="x86_64"/>
       <repopackage name="numlockx"/>
-      <repopackage name="nut"/>
-      <repopackage name="nut-cgi"/>
       <repopackage name="nvme-cli"/>
       <repopackage name="ocfs2-tools"/>
       <repopackage name="ofl"/>
@@ -5415,7 +5407,6 @@
       <repopackage name="xlockmore"/>
       <repopackage name="xmessage"/>
       <repopackage name="xml-commons-apis"/>
-      <repopackage name="xml-commons-resolver"/>
       <repopackage name="xmlcharent"/>
       <repopackage name="xmlstarlet" arch="x86_64"/>
       <repopackage name="xmodmap"/>

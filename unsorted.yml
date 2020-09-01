@@ -617,6 +617,7 @@ unsorted:
   - apache-ivy 
   - apache-ivy-javadoc 
   - apache-logging-parent 
+  - apache-parent 
   - apache-pdfbox 
   - apache-pdfbox-javadoc 
   - apache-portlet-1_0-api 
@@ -6524,7 +6525,7 @@ unsorted:
   - java-14-openjdk-accessibility 
   - java-14-openjdk-demo 
   - java-14-openjdk-devel 
-  - java-14-openjdk-headless: [i586] 
+  - java-14-openjdk-headless 
   - java-14-openjdk-javadoc 
   - java-14-openjdk-jmods 
   - java-14-openjdk-src 
@@ -10439,6 +10440,7 @@ unsorted:
   - libipa_hbac-devel 
   - libipa_hbac0 
   - libiperf0 
+  - libipmimonitoring6 
   - libipopt0: [x86_64] 
   - libipq-devel 
   - libipq0 
@@ -11691,6 +11693,7 @@ unsorted:
   - libportaudiocpp0 
   - libportmidi0 
   - libpostproc55_7-32bit: [x86_64] 
+  - libpowerman0 
   - libpq5-32bit: [x86_64] 
   - libpqos-devel 
   - libpqos4 
@@ -12948,6 +12951,7 @@ unsorted:
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
   - libupower-glib-devel 
+  - libupsclient1 
   - liburcu-devel 
   - liburcu6-32bit: [x86_64] 
   - liburfkill-glib-devel 
@@ -15067,6 +15071,7 @@ unsorted:
   - msv-xmlgen 
   - msv-xsdlib 
   - mt-st 
+  - mtd-utils 
   - mtdev 
   - mtools-doc 
   - mtp-tools 
@@ -15971,6 +15976,8 @@ unsorted:
   - nuoveXT2-icon-theme 
   - nuspell 
   - nuspell-devel 
+  - nut 
+  - nut-cgi 
   - nut-devel 
   - nut-drivers-net 
   - nvdock 
@@ -34982,6 +34989,7 @@ unsorted:
   - xml-commons-apis-bootstrap 
   - xml-commons-apis-javadoc 
   - xml-commons-apis-manual 
+  - xml-commons-resolver 
   - xml-commons-resolver-bootstrap 
   - xml-commons-resolver-javadoc 
   - xml-commons-which-bootstrap 
