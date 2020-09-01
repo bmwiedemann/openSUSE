@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  1 04:48:00 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.21.0:
+  * bidict now provides type hints
+  * Add bidict.MutableBidirectionalMapping ABC
+  * Drop Python 3.5 support
+  * Remove bidict.compat module
+  * Remove APIs deprecated in previous releases 
+- Drop dont-limit-versions.patch, included upstream
+
+-------------------------------------------------------------------
 Tue Aug 18 18:56:46 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add dont-limit-versions.patch … don't limit the upper

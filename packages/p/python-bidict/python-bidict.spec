@@ -19,16 +19,12 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bidict
-Version:        0.19.0
+Version:        0.21.0
 Release:        0
 Summary:        Bidirectional map implementation for Python
 License:        MPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jab/bidict
 Source:         https://files.pythonhosted.org/packages/source/b/bidict/bidict-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM dont-limit-versions.patch mcepl@suse.com
-# yet another evidence that upper limit on versions is bad idea
-Patch0:         dont-limit-versions.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -57,4 +57,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>830126</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>40925b719a78fb4cd9151bb834ae8abe</srcmd5>
+    <version>0.21.0</version>
+    <time>1598983794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21.0:
+  * bidict now provides type hints
+  * Add bidict.MutableBidirectionalMapping ABC
+  * Drop Python 3.5 support
+  * Remove bidict.compat module
+  * Remove APIs deprecated in previous releases 
+- Drop dont-limit-versions.patch, included upstream</comment>
+    <requestid>830940</requestid>
+  </revision>
 </revisionlist>
