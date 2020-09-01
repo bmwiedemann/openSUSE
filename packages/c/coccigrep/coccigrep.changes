@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 31 13:17:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.20:
+  - Fix a python3 comptability issue
+  - Add grep color mode
+  - Fix multiple matches on one line
+  - This release fixes #19 and improve matching capabilities
+  - Address a issue with pygments installation on Python 2 and fix parallel execution
+  - Some light fixes on the documentation and a cleaner setup.py so the project looks decent on Pypi.
+
+-------------------------------------------------------------------
 Mon Jun 18 08:22:13 UTC 2018 - opensuse-packaging@opensuse.org
 
 - Update to version 1.17+git.20180322:

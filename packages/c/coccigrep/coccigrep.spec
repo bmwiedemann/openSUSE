@@ -1,7 +1,7 @@
 #
 # spec file for package coccigrep
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           coccigrep
-Version:        1.17+git.20180322
+Version:        1.20
 Release:        0
 Summary:        Semantic grep tool for C, based on coccinelle
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://home.regit.org/software/coccigrep/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source:         %{name}-%{version}.tar.xz
-
+URL:            https://github.com/regit/coccigrep
+Source:         https://github.com/regit/coccigrep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  xz
@@ -51,17 +49,14 @@ gzip -c coccigrep.1 > coccigrep.1.gz
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
-install -d $RPM_BUILD_ROOT/%{_mandir}/man1/
-install -m 644 coccigrep.1.gz $RPM_BUILD_ROOT/%{_mandir}/man1/
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+install -d %{buildroot}/%{_mandir}/man1/
+install -m 644 coccigrep.1.gz %{buildroot}/%{_mandir}/man1/
 
 %files
-%defattr(-,root,root,-)
-%doc LICENSE README.rst ChangeLog
+%license LICENSE
+%doc README.rst ChangeLog
 %{python3_sitelib}/*
 %{_bindir}/coccigrep
-%{_mandir}/man1/coccigrep.1*
+%{_mandir}/man1/coccigrep.1%{?ext_man}
 
 %changelog
