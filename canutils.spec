@@ -18,16 +18,16 @@
 
 Name:           canutils
 Summary:        Utilities for Controller Area Networks from the Linux-CAN project
-License:        GPL-2.0-only AND GPL-2.0-or-later AND BSD-3-Clause
+License:        GPL-2.0-only AND BSD-3-Clause
 Group:          Hardware/Other
-Version:        2018.02.0
+Version:        2020.02.04.g119
 Release:        0
 URL:            https://github.com/linux-can/can-utils
 
-Source:         https://github.com/linux-can/can-utils/archive/v%version.tar.gz
-Patch1:         0001-fix-include-to-find-SIOCGSTAMP-with-latest-kernel.patch
+Source:         can-utils-%version.tar.xz
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  xz
 Obsoletes:      canutils-linuxcan
 Provides:       canutils-linuxcan
 
