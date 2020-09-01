@@ -1,7 +1,7 @@
 #
 # spec file for package intelhex
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,10 +22,10 @@ Release:        0
 Summary:        Library for Intel HEX Files Manipulations
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
-Url:            https://github.com/bialix/intelhex
+URL:            https://github.com/bialix/intelhex
 Source:         https://github.com/bialix/intelhex/archive/%{version}.zip
 BuildRequires:  dos2unix
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  unzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -54,11 +54,11 @@ inspecting data, and “hexmerge.py” merges multiple HEX files into one.
 %setup -q
 
 %build
-python setup.py\
+python3 setup.py\
 	build
 
 %install
-python setup.py\
+python3 setup.py\
 	install\
 	--prefix=%{_prefix}\
 	--root=$RPM_BUILD_ROOT
