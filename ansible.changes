@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  1 08:44:17 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.13 with many bug fixes, most notably:
+  * A security issue was addressed in the "dnf" module, which previously
+    did not check GPG signatures of packages.
+  * A bug in the "cron" module was fixed. In some cases prior to this
+    fix, the module would inadvertently remove cron entries.
+- removed obsolete fix-cron-regression-71207.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 12:44:52 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - added fix-cron-regression-71207.patch
