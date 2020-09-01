@@ -52,4 +52,12 @@
   * resolve symlinks in cache</comment>
     <requestid>804909</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ddcfd06252085917340df5273823075</srcmd5>
+    <version>2.4.0</version>
+    <time>1598983835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831050</requestid>
+  </revision>
 </revisionlist>

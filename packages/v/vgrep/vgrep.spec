@@ -21,7 +21,7 @@
 # Project name when using go tooling.
 %define project github.com/vrothberg/vgrep
 Name:           vgrep
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Frontend for git-grep and grep
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/vrothberg/vgrep
 Source0:        https://github.com/vrothberg/vgrep/archive/v%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  golang(API) >= 1.6
+BuildRequires:  golang(API) >= 1.13
 Requires:       git-core
 Requires:       grep
 
@@ -55,7 +55,7 @@ cp -avr * $HOME/go/src/%{project}
 
 # Build the binary.
 cd $HOME/go/src/%{project}
-go build -o ./build/vgrep -buildmode=pie -ldflags "-s -w -X main.version=%{version}"
+go build -mod=vendor -o ./build/vgrep -buildmode=pie -ldflags "-s -w -X main.version=%{version}"
 
 %install
 # Install the binary.
