@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-PyLaTeX
-Version:        1.3.2
+Version:        1.3.4
 Release:        0
 Summary:        A Python library for creating LaTeX files and snippets
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/JelteF/PyLaTeX
 Source:         https://github.com/JelteF/PyLaTeX/archive/v%{version}.tar.gz#/PyLaTeX-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM denose.patch gh#JelteF/PyLaTeX#294 mcepl@suse.com
