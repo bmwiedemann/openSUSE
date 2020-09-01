@@ -26,6 +26,8 @@ dvd:
   - kernel-vanilla: [locked]
   - kernel-kvmsmall: [locked]
   - kernel-debug: [locked]
+  # We add the kernel-firmware-* packages
+  - kernel-firmware: [locked]
   - dummy-release: [locked]
   - MicroOS-release: [locked]
   - patterns-microos-basesystem: [locked]

@@ -954,4 +954,10 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Drop krita and kalzium from the dvd</comment>
   </revision>
+  <revision rev="132" vrev="130">
+    <srcmd5>fe73ba0d2a48ca2bc8f20b5ba37cf729</srcmd5>
+    <version>unknown</version>
+    <time>1598972862</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
