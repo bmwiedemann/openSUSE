@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Whether to build libdmmp
 # Default YES except for SLE12 / Leap 42
 %if 0%{?suse_version} >= 1500
@@ -38,7 +39,7 @@
 %define _sysdir usr/lib
 
 Name:           multipath-tools
-Version:        0.8.4+43+suse.908383f
+Version:        0.8.4+183+suse.1817ce2
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -53,15 +54,15 @@ Source3:        dm-parts.conf
 Source4:        libmpathpersist-example.c
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
-BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  libaio-devel
+BuildRequires:  pkgconfig(devmapper)
 %if 0%{?with_libdmmp} == 1
 BuildRequires:  pkgconfig(json-c)
 %endif
-BuildRequires:  pkgconfig(liburcu)
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(liburcu)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 %if 0%{?with_check} == 1
@@ -70,7 +71,7 @@ BuildRequires:  pkgconfig(cmocka)
 # For regenerate-initrd-posttrans
 # For now, we still need to require suse-module-tools
 # See https://github.com/openSUSE/rpm-config-SUSE/pull/6
-BuildRequires:	suse-module-tools
+BuildRequires:  suse-module-tools
 Requires(post):	suse-module-tools
 Requires:       device-mapper >= 1.2.78
 Requires:       kpartx
@@ -161,8 +162,10 @@ cp %{SOURCE4} .
 
 %if 0%{?with_check} == 1
 %check
-cd tests
-make %{_make_output_sync} %{?_smp_mflags}
+# ld fails to resolve cmocka's __wrap symbols with -flto
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88643
+%define _lto_cflags %{nil}
+make OPTFLAGS="%{optflags}" %{_make_output_sync} %{?_smp_mflags} test
 %endif
 
 %install
@@ -194,13 +197,16 @@ install -m 644 -D %{SOURCE3} %{buildroot}/usr/lib/dracut/dracut.conf.d/dm-parts.
 exit 0
 
 %preun
-%service_del_preun multipathd.service
-%service_del_preun -n multipathd.socket
+%service_del_preun multipathd.service multipathd.socket
 
 %postun
 %{?regenerate_initrd_post}
 %service_del_postun multipathd.service
+%if 0%{?suse_version} >= 1550
+%service_del_postun_without_restart multipathd.socket
+%else
 %service_del_postun -n multipathd.socket
+%endif
 
 %posttrans
 %{?regenerate_initrd_posttrans}

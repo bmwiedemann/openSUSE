@@ -1323,4 +1323,41 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
     '!^(sd[a-z]|dasd[a-z]|nvme[0-9])' (forwarded request 813227 from mwilck)</comment>
     <requestid>813238</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>1b2c7ac52bb9ff11b2e819c60cba3bd4</srcmd5>
+    <version>0.8.4+183+suse.1817ce2</version>
+    <time>1598983572</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.4+183+suse.1817ce2:
+  Added reviewed upstream fix for multipath crash
+  * multipath: get_dm_mpvec: discard broken maps
+
+- Update to version 0.8.4+180+suse.50a2698:
+  * Fix memory access / leak issues found with valgrind
+
+- Update to version 0.8.4+170+suse.801341f:
+  * libmultipath: tests: fix bitfield tests
+  * Spec file: disable LTO for %check (bsc#1133122)
+
+- Update to version 0.8.4+167+suse.70bef90: 
+  Pull in reviewed upstream changes
+- Bug fixes
+  * libmultipath: add consistency check for alias settings (bsc#1172429)
+  * libmultipath: select_action(): don't drop map if alias clashes (bsc#1172429)
+  * libmultipath: refuse reloading an existing map with different WWID
+    (bsc#1172429)
+  * libmultipath: select_action(): force udev reload for uninitialized maps
+    (bsc#1172157)
+  * multipathd: uev_trigger(): handle incomplete ADD events (bsc#1172157)
+  * improve logging for failure to set dev_loss_tmo (bsc#1173060, bsc#1173064)
+  * libmultipath: add device to hwtable.c (bsc#1174026)
+- New features
+  * multipath: add -D option to skip multipathd delegation
+  * multipath: delegate flushing maps to multipathd
+  * multipathd: add &quot;del maps&quot; multipathd command
+- Other changes
+  * cleanup disassemble_map() code path
+  * multipath-tools: introduce INIT_REMOVED state</comment>
+    <requestid>829945</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Aug 27 09:35:56 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+183+suse.1817ce2:
+  Added reviewed upstream fix for multipath crash
+  * multipath: get_dm_mpvec: discard broken maps
+
+-------------------------------------------------------------------
+Wed Aug 26 10:01:17 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+180+suse.50a2698:
+  * Fix memory access / leak issues found with valgrind
+
+-------------------------------------------------------------------
+Fri Aug 21 22:28:33 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+170+suse.801341f:
+  * libmultipath: tests: fix bitfield tests
+  * Spec file: disable LTO for %check (bsc#1133122)
+
+-------------------------------------------------------------------
+Thu Aug 20 19:20:59 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+167+suse.70bef90: 
+  Pull in reviewed upstream changes
+- Bug fixes
+  * libmultipath: add consistency check for alias settings (bsc#1172429)
+  * libmultipath: select_action(): don't drop map if alias clashes (bsc#1172429)
+  * libmultipath: refuse reloading an existing map with different WWID
+    (bsc#1172429)
+  * libmultipath: select_action(): force udev reload for uninitialized maps
+    (bsc#1172157)
+  * multipathd: uev_trigger(): handle incomplete ADD events (bsc#1172157)
+  * improve logging for failure to set dev_loss_tmo (bsc#1173060, bsc#1173064)
+  * libmultipath: add device to hwtable.c (bsc#1174026)
+- New features
+  * multipath: add -D option to skip multipathd delegation
+  * multipath: delegate flushing maps to multipathd
+  * multipathd: add "del maps" multipathd command
+- Other changes
+  * cleanup disassemble_map() code path
+  * multipath-tools: introduce INIT_REMOVED state
+  * logging improvements
+  * fix "multipathd show devices"
+  * libmultipath: remove uevent listener failback
+  * libmultipath: create bitfield abstraction
+  * libmultipath: count pending paths as active on loads
+  * kpartx: handle alternate bsd disklabel location
+- Lots of minor fixes and cleanups
+- Spec file: use %service_del_postun_without_restart macro
+
+-------------------------------------------------------------------
 Wed Jun 10 10:56:49 UTC 2020 - mwilck@suse.com
 
 - Update to version 0.8.4+43+suse.908383f:
