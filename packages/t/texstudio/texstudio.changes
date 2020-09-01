@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 26 18:36:41 UTC 2020 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Update to version 3.0.0
+  * speed up document parsing, should result in faster document load times
+  * spell checking is done asynchronously
+  * custom verbatim/math env highlighting abandoned for a cwl based approach
+  * better dark-mode support
+
+-------------------------------------------------------------------
 Thu Jan 23 13:18:25 UTC 2020 - info@ebner-markus.de
 - Update to version 2.12.22
   * fixes garbled symbols in OSX

@@ -1,7 +1,7 @@
 #
 # spec file for package texstudio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           texstudio
-Version:        2.12.22
+Version:        3.0.0
 Release:        0
 Summary:        LaTeX Editor
 License:        GPL-2.0-only AND GPL-3.0-only AND Apache-2.0 AND MPL-1.1
@@ -68,7 +68,7 @@ rm -f %{buildroot}%{_datadir}/texstudio/{AUTHORS,COPYING,CHANGELOG.txt}
 %{_datadir}/texstudio/
 %{_datadir}/applications/texstudio.desktop
 %{_datadir}/icons/hicolor/scalable/apps/texstudio.svg
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/texstudio.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/texstudio.appdata.xml
 
 %changelog
