@@ -17,7 +17,7 @@
 
 
 %define year    2020
-%define month   08
+%define month   09
 
 Name:           xtables-geoip
 Version:        %year%{month}01
