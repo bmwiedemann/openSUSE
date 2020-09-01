@@ -220,7 +220,7 @@ Recommends:     %{python}-six
 Recommends:     sshpass
 %endif
 Name:           ansible
-Version:        2.9.12
+Version:        2.9.13
 Release:        0
 Summary:        SSH-based configuration management, deployment, and task execution system
 License:        GPL-3.0-or-later
@@ -229,7 +229,6 @@ URL:            https://ansible.com/
 Source:         https://releases.ansible.com/ansible/ansible-%{version}.tar.gz
 Source1:        https://releases.ansible.com/ansible/ansible-%{version}.tar.gz.sha
 Source99:       ansible-rpmlintrc
-Patch1:         fix-cron-regression-71207.patch
 BuildArch:      noarch
 # extented documentation
 %if 0%{?with_docs}
@@ -289,7 +288,6 @@ automatically.
 
 %prep
 %setup -q -n ansible-%{version}
-%patch1 -p1
 
 for file in .git_keep .travis.yml ; do
   find . -name "$file" -delete

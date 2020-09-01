@@ -787,4 +787,12 @@ numbers for further reference.
     <comment>update to 2.9.12 including back-port patch fixing a regression in 2.9.12</comment>
     <requestid>826038</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>867c1d0eece677f1513bc3c3c27daba5</srcmd5>
+    <version>2.9.13</version>
+    <time>1598983850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831030</requestid>
+  </revision>
 </revisionlist>
