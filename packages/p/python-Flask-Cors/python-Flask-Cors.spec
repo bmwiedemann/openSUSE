@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Cors
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Cors
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 Summary:        A Flask extension adding a decorator for CORS support
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/corydolphin/flask-cors
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Cors/Flask-Cors-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-Disable-ACL_ORIGIN-check.patch boo#1154808
-Patch1:         0001-Disable-ACL_ORIGIN-check.patch
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +44,6 @@ making cross-origin AJAX possible.
 
 %prep
 %setup -q -n Flask-Cors-%{version}
-%patch1 -p1
 
 %build
 %python_build

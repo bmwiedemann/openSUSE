@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  1 09:23:10 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.0.9:
+  * Escape path before evaluating resource rules. Prior to this,
+    flask-cors incorrectly evaluated CORS resource matching before
+    path expansion. E.g. "/api/../foo.txt" would incorrectly match
+    resources for "/api/*" whereas the path actually expands
+    simply to "/foo.txt" (CVE-2020-25032, boo#1175986)
+- Remove patch which is no longer required when using (at least)
+  Flask 1.1, which is the case in Factory:
+  * 0001-Disable-ACL_ORIGIN-check.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 12:20:25 UTC 2019 - Petr Cervinka <petr@cervinka.net>
 
 - Add patch 0001-Disable-ACL_ORIGIN-check.patch to disable failing 
