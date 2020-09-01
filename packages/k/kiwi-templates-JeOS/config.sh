@@ -126,14 +126,6 @@ sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.c
 #--------------------------------------
 sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
 
-#======================================
-# Configure Raspberry Pi specifics
-#--------------------------------------
-if [[ "$kiwi_profiles" == *"RaspberryPi"* ]]; then
-        # Also show WLAN interfaces in /etc/issue. Remove once https://github.com/thkukuk/issue-generator/pull/4 accepted
-        baseUpdateSysConfig /etc/sysconfig/issue-generator NETWORK_INTERFACE_REGEX '^[bew]'
-fi
-
 # Not compatible with set -e
 baseCleanMount || true
 

@@ -131,4 +131,16 @@
   (bsc#1096738)</comment>
     <requestid>820626</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>6f18fe915dc30199acd603f2facb847f</srcmd5>
+    <version>84.87</version>
+    <time>1598983613</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the tmp subvolume (boo#1173461, jsc#PM-1898)
+
+- issue-generator got fixed, so drop the workaround for RPi
+
+- Add zypper-needs-restarting (bsc#1173548)</comment>
+    <requestid>830200</requestid>
+  </revision>
 </revisionlist>

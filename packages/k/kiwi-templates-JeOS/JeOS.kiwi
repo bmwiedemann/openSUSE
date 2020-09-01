@@ -37,7 +37,6 @@
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
-                <volume name="tmp"/>
                 <volume name="opt"/>
                 <volume name="srv"/>
                 <volume name="boot/grub2/i386-pc"/>
@@ -71,7 +70,6 @@
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
-                <volume name="tmp"/>
                 <volume name="opt"/>
                 <volume name="srv"/>
                 <volume name="boot/grub2/i386-pc"/>
@@ -129,7 +127,6 @@
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
-                <volume name="tmp"/>
                 <volume name="opt"/>
                 <volume name="srv"/>
                 <volume name="boot/grub2/i386-pc"/>
@@ -164,7 +161,6 @@
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
-                <volume name="tmp"/>
                 <volume name="opt"/>
                 <volume name="srv"/>
                 <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
@@ -214,6 +210,7 @@
         <package name="live-add-yast-repos"/>
         <!-- <package name="rsyslog"/> for SLE -->
         <package name="systemd-logger"/> <!-- for openSUSE -->
+        <package name="zypper-needs-restarting"/> <!-- Some deployment script use this (bsc#1173548) -->
     </packages>
 
     <!-- Not needed in OpenStack as it uses XFS and cloud-init -->
