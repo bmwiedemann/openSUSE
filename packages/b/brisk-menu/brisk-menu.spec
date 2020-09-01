@@ -17,7 +17,7 @@
 
 
 Name:           brisk-menu
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Modern, efficient menu for MATE
 License:        GPL-2.0-or-later AND CC-BY-SA-4.0
@@ -42,7 +42,7 @@ Recommends:     %{name}-lang
 Modern, efficient menu for the MATE Desktop Environment.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%setup -q -n %{name}-%{version}
 
 %lang_package
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 31 13:43:30 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- update version to 0.6.2
+  * frontend: Allow keyboard navigation
+  * applet: Re-create applet menu when changing window-type
+  * backend: Hide menu when rebuilding menu items
+  * Update translations. 
+
+-------------------------------------------------------------------
 Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.6.1 (changes since 0.5.0):

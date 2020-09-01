@@ -47,4 +47,16 @@
     <comment>- Update to version 0.6.1.</comment>
     <requestid>780243</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>af8686ae4d7b8773c936c1f9235587a0</srcmd5>
+    <version>0.6.2</version>
+    <time>1598983726</time>
+    <user>dimstar_suse</user>
+    <comment>- update version to 0.6.2
+  * frontend: Allow keyboard navigation
+  * applet: Re-create applet menu when changing window-type
+  * backend: Hide menu when rebuilding menu items
+  * Update translations. (forwarded request 830834 from hillwood)</comment>
+    <requestid>830835</requestid>
+  </revision>
 </revisionlist>
