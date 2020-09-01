@@ -64,7 +64,7 @@ It also works with Mach3, LinuxCNC and Machinekit controllers.
 
 %prep
 %setup -q -n %{name}-version_%{version}
-sed -i 's/UNKNOWN/OpenSUSE/' version.inc
+sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.inc
 
 %build
 # The build process really acquires that much memory per job. We are
@@ -85,6 +85,17 @@ sed -i 's/UNKNOWN/OpenSUSE/' version.inc
 
 %install
 %cmake_install
+
+# https://github.com/prusa3d/PrusaSlicer/issues/4691
+# Since the binary segfaults under Wayland, we have to wrap it.
+mv %{buildroot}%{_bindir}/prusa-slicer %{buildroot}%{_bindir}/prusa-slicer.wrapped
+cat >> %{buildroot}%{_bindir}/prusa-slicer <<'END'
+#!/bin/sh
+export GDK_BACKEND=x11
+exec %{_bindir}/prusa-slicer.wrapped "$@"
+END
+chmod 755 %{buildroot}%{_bindir}/prusa-slicer
+
 for res in 32 128 192; do
   mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${res}x${res}/apps/
   ln -sr %{buildroot}%{_datadir}/%{name}/icons/%{name}_${res}px.png \
@@ -137,6 +148,7 @@ find %{buildroot}%{_datadir}/%{name}/localization -type d | sed '
 
 %files -f lang-files
 %{_bindir}/prusa-slicer
+%{_bindir}/prusa-slicer.wrapped
 %dir %{_datadir}/%{name}/
 %{_datadir}/%{name}/{icons,models,profiles,shaders,udev}/
 %{_datadir}/icons/hicolor/32x32/apps/%{name}.png

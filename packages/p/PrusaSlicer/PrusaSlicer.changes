@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:46:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- enforce GDK_BACKEND=x11 by indroducing the same wrapper as Fedora
+  gh#prusa3d/PrusaSlicer#4691
+
+-------------------------------------------------------------------
 Thu Aug 20 15:50:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - revert the memoryperjob change. The build process really acquires
