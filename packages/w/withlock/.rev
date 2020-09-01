@@ -67,4 +67,16 @@
     <comment>1</comment>
     <requestid>312046</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>35ad89a123dfa64bf015ef9c1008b685</srcmd5>
+    <version>0.5</version>
+    <time>1598983731</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5
+- modernize for Python 2 and 3 compatibility
+  thanks to Patch by Jan Beran jberan|redhat.com
+  (2.7 or newer; 0.4 for Python 2.4+2.5 is archived in attic/)
+  Added: fix-use-python3.patch</comment>
+    <requestid>830850</requestid>
+  </revision>
 </revisionlist>

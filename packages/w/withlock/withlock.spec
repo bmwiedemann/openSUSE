@@ -1,7 +1,7 @@
 #
 # spec file for package withlock
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           withlock
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        A locking wrapper script
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/poeml/withlock
-Requires:       python
-Source0:        http://mirrorbrain.org/files/releases/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/poeml/withlock
+Source0:        %{name}-%{version}.tar.gz
+Patch0:         fix-use-python3.patch
+Requires:       python3
 BuildArch:      noarch
 
 %description
@@ -38,20 +38,19 @@ never require a cleanup, as after a reboot. Thus, the wrapper is safe and easy
 to use, and much better than implementing half-hearted locking within scripts.
 
 %prep
-%setup
+%autosetup -p1
 
 %build
-#
-%install
-make DESTDIR=%{buildroot} prefix=%{_prefix} install 
+# nop
 
-%clean
-rm -rf %{buildroot}
+%install
+install -D -m 0755 -t %{buildroot}%{_bindir}/ %{name}
+install -D -m 0644 -t %{buildroot}%{_mandir}/man1/ %{name}.1
 
 %files
-%defattr(-, root, root)
-%doc %{_defaultdocdir}/%{name}
+%license LICENSE-2.0.txt
+%doc README.md withlock.1.html
 %{_bindir}/%{name}
-%doc %{_mandir}/man1/*
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
