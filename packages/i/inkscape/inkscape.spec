@@ -27,6 +27,8 @@ Source:         https://media.inkscape.org/dl/resources/file/%{name}-%{version}.
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
+# PATCH-FIX-UPSTREAM inkscape-include-atomic.patch https://gitlab.com/inkscape/inkscape/-/issues/1798 -- Fix build with Boost 1.74
+Patch0:         inkscape-include-atomic.patch
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
@@ -118,9 +120,9 @@ Inkscape is a vector graphics editor.
 
 %prep
 %setup -q -n %{name}-%{_version}
+%patch0 -p1
 
 %build
-%define _lto_cflags %{nil}
 %ifarch %{arm}
 export LDFLAGS+="-Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %endif

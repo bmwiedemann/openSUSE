@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 24 09:46:20 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable again LTO. It should work now.
+
+-------------------------------------------------------------------
+Mon Aug 24 08:45:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add inkscape-include-atomic.patch: Fix build with Boost 1.74,
+  where we can no longer rely on boost bringing the atomic header
+  into the game.
+
+-------------------------------------------------------------------
 Thu Jun 11 09:17:36 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add memory limit _constraints for ppc64le to avoid oom build failure
