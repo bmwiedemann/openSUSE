@@ -36,7 +36,7 @@ Reviewed-by: David Disseldorp <ddiss@suse.de>
 +    # RBDStorageObject private stuff
 +
 +    def __init__(self, name, dev=None, wwn=None, readonly=False,
-+                 write_back=False):
++                 write_back=False, index=None):
 +        '''
 +        A RBDIOStorageObject can be instantiated in two ways:
 +            - B{Creation mode}: If I{dev} is specified, the underlying configFS
@@ -62,14 +62,14 @@ Reviewed-by: David Disseldorp <ddiss@suse.de>
 +        '''
 +
 +        if dev is not None:
-+            super(RBDStorageObject, self).__init__(name, 'create')
++            super(RBDStorageObject, self).__init__(name, 'create', index)
 +            try:
 +                self._configure(dev, wwn, readonly)
 +            except:
 +                self.delete()
 +                raise
 +        else:
-+            super(RBDStorageObject, self).__init__(name, 'lookup')
++            super(RBDStorageObject, self).__init__(name, 'lookup', index)
 +
 +    def _configure(self, dev, wwn, readonly):
 +        self._check_self()

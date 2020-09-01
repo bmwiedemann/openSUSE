@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 27 02:10:59 UTC 2020 - Matthew Oliver <moliver@suse.com>
+
+- Updated the rbd-support.patch (bsc#1175808):
+  * Fixed the signiture of the RBDStorageObject to match changes made
+    to parent StorageObject class.
+
+-------------------------------------------------------------------
 Tue Jun 30 17:49:04 UTC 2020 - lduncan@suse.com
 
 - Update to version v2.1.73 (bsc#1173257 CVE-2020-14019):
