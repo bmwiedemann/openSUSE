@@ -1,7 +1,7 @@
 #
 # spec file for package libotf
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libotf
-Version:        0.9.13
+Version:        0.9.16
 Release:        0
 Summary:        Library for Handling OpenType Fonts
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/I18n/Japanese
-Url:            http://www.m17n.org/libotf/
+URL:            http://www.m17n.org/libotf/
 Source0:        http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
 Source1:        http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz.sig
 Source99:       baselibs.conf
 Patch0:         libotf-warning-fixes.diff
-# patch not sent upstream, because m17n.org is currently down
-Patch1:         libotf-automake-1.13.diff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(freetype2)
@@ -40,11 +38,11 @@ BuildRequires:  pkgconfig(xt)
 Library for handling OpenType fonts,especially those needed for CJK and other non-Latin
 languages.
 
-%package -n libotf0
+%package -n libotf1
 Summary:        Shared library for libotf
 Group:          System/I18n/Japanese
 
-%description -n libotf0
+%description -n libotf1
 Library for handling OpenType fonts,especially those needed for CJK and other non-Latin
 languages.
 
@@ -60,7 +58,6 @@ to develop applications that require %{name}.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 autoreconf -fvi
@@ -68,19 +65,21 @@ autoreconf -fvi
   --disable-static \
   --disable-silent-rules
 make %{?_smp_mflags}
+chmod a-x NEWS README ChangeLog
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libotf0 -p /sbin/ldconfig
-%postun -n libotf0 -p /sbin/ldconfig
+%post -n libotf1 -p /sbin/ldconfig
+%postun -n libotf1 -p /sbin/ldconfig
 
 %files
-%doc AUTHORS COPYING NEWS README ChangeLog
+%license COPYING
+%doc NEWS README ChangeLog
 %{_bindir}/*
 
-%files -n libotf0
+%files -n libotf1
 %{_libdir}/libotf.so.*
 
 %files devel
