@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(libelf) >= 0.154
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(uuid)
-ExclusiveArch:  %ix86 x86_64 aarch64 ppc64le ppc64 s390x
+ExclusiveArch:  %ix86 x86_64 aarch64 ppc64le ppc64 riscv64 s390x
 
 %description
 This project provides trace read and write libraries, as well as a
