@@ -209,4 +209,12 @@
     <comment>- Fix fdupes call</comment>
     <requestid>784575</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>05ac09133d2bff9a29f21a5b9fdaca15</srcmd5>
+    <version>0.4.9</version>
+    <time>1598983912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831130</requestid>
+  </revision>
 </revisionlist>

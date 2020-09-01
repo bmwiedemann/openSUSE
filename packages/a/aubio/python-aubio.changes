@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  1 09:05:38 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Make aubiocut a slave of aubio alternative, so the alternative
+  symlink is updated in %post (for example, to fix a dangling
+  symlink to an old python version)
+
+-------------------------------------------------------------------
 Fri Mar 13 08:42:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call

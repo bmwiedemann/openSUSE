@@ -61,7 +61,7 @@ Its features include segmenting a sound file before each of its attacks, perform
 %pytest_arch -k 'not (test_meltohz or test_hztomel)'
 
 %post
-%python_install_alternative aubio
+%{python_install_alternative aubio aubiocut}
 
 %postun
 %python_uninstall_alternative aubio
