@@ -18,12 +18,12 @@
 
 %define skip_python2 1
 Name:           python-django-silk
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT
 URL:            https://github.com/jazzband/django-silk
-Source:         https://github.com/jazzband/django-silk/archive/%{version}.tar.gz#/django-silk-%{version}.tar.gz
+Source:         django-silk-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module Jinja2 >= 2.8}
 BuildRequires:  %{python_module Pillow >= 3.2}
@@ -33,9 +33,11 @@ BuildRequires:  %{python_module gprof2dot >= 2017.09.19}
 BuildRequires:  %{python_module python-dateutil >= 2.4}
 BuildRequires:  %{python_module pytz > 2014.2}
 BuildRequires:  %{python_module requests >= 2.10}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlparse >= 0.1.19}
 BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
 Requires:       python-Jinja2 >= 2.8

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 31 10:57:01 UTC 2020 - mcalabkova@suse.com
+
+- Update to version 4.1.0:
+  * #427 Passed wsgi request to SILKY_PYTHON_PROFILER_FUNC
+  * Release 4.1.0
+  * Update README.md django-silk is tested with Django 3.1
+  * Make compatible with Django 3.1
+  * Fix force_text RemovedInDjango40Warning
+  * Extra line removed
+  * 配置silk使用非'default'的数据库时Clear DB错误
+  * Capture entire key name during cleansing in _mask_credentials (#414)
+  * Replace the call to re.findall with re.sub in _mask_credentials so (#413)
+  * Wrap re.sub() in try-except. If credentials ends with "\" (for example: "--password=123456\") re.sub() fails with error "bad escape (end of pattern)".
+- Switch to obs service to silence setuptools_scm error
+
+-------------------------------------------------------------------
+Fri Apr  3 10:31:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.1:
+  * Restructured clear db HTML #399 (nasirhjafri)
+  * JS workflow cleanup #397 (nasirhjafri)
+  * Refactor QA setup #393 (aleksihakli)
+
+-------------------------------------------------------------------
 Thu Feb 20 09:08:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.0.0:
