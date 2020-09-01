@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 17 09:51:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.0.13:
+  * CVE-2020-13999 (bsc#1173070)
+
+  libEMF (aka ECMA-234 Metafile Library) through 1.0.12 is vulnerable to
+  Integer overflow condition in libemf.cpp:ScaleviewportExtEx function
+  leading to Denial of Service
+  VulnerabilityType : Integer Overflow
+
+-------------------------------------------------------------------
 Wed May 27 23:58:38 UTC 2020 - Jason Sikes <jsikes@suse.com>
 
 - Upgrade to version 1.0.12
