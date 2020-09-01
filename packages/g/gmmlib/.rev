@@ -75,4 +75,13 @@
     <comment></comment>
     <requestid>828748</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6358723eb4f0417ab7cd78f817dab6d1</srcmd5>
+    <version>20.2.5</version>
+    <time>1598983768</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.2.5
+  * No upstream changelog available (needed for jira#SLE/SLE-12712)</comment>
+    <requestid>830886</requestid>
+  </revision>
 </revisionlist>
