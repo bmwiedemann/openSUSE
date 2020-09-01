@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  1 09:41:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.1
+  * Fix a minor bug where the initial position could be
+    traversed twice.
+  * Add the +FCS_HARD_CODE_STATE_DEPTH_FIELD+ compile time option.
+  * Code cleanups.
+
+-------------------------------------------------------------------
 Tue Jul 14 07:57:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.24.0. Changes since 5.22.1:

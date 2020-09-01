@@ -19,7 +19,7 @@
 %define soversion 0
 %define libname libfreecell-solver
 Name:           freecell-solver
-Version:        5.24.0
+Version:        6.0.1
 Release:        0
 Summary:        A Freecell Solver
 License:        MIT
@@ -36,6 +36,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-pysol-cards
 BuildRequires:  python3-random2
 BuildRequires:  python3-six
+BuildRequires:  cmake(Rinutils)
+BuildRequires:  perl(Moo)
 BuildRequires:  perl(Path::Tiny)
 
 %description

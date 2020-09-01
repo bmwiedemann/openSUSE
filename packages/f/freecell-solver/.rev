@@ -36,4 +36,16 @@
   Check the NEWS.asciidoc file for the full list of changes.</comment>
     <requestid>820836</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>214e89a32ee43ae6f84864e4812aa703</srcmd5>
+    <version>6.0.1</version>
+    <time>1598983830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.1
+  * Fix a minor bug where the initial position could be
+    traversed twice.
+  * Add the +FCS_HARD_CODE_STATE_DEPTH_FIELD+ compile time option.
+  * Code cleanups.</comment>
+    <requestid>831036</requestid>
+  </revision>
 </revisionlist>
