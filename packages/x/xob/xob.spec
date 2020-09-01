@@ -1,7 +1,7 @@
 #
 # spec file for package xob
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xob
-Version:        0.1.1
+Version:        0.2
 Release:        0
 Summary:        Overlay volume (or anything) bar for the X Window System
 License:        GPL-3.0-only
