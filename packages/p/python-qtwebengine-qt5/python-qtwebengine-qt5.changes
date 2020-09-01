@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep  1 17:09:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix single line patch info for update-timeline.patch
+- remove the skip python2 tumbleweed hack. Tumbleweed/Factory repos
+  take care of it by themselves
+- Update might fix boo#1176023
+
+-------------------------------------------------------------------
+Sat Aug 29 08:04:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update update-timeline.patch
+
+-------------------------------------------------------------------
+Thu Aug 27 19:44:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 5.15.0
+  * Added support for Qt v5.15.0.
+- v5.14.0 added support for Qt v5.14.0 in December 2019
+- The source location has changed to PyPI
+
+-------------------------------------------------------------------
+Fri Mar 13 12:46:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop building the python2 package for openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
 Sat Dec  7 08:25:49 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update update-timeline.patch for Qt 5.14.

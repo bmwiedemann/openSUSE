@@ -46,4 +46,12 @@ Required for python-AnyQt</comment>
     <comment>- Update update-timeline.patch for Qt 5.14.</comment>
     <requestid>754866</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dcf1059e11764b8e4b4c961e445aa781</srcmd5>
+    <version>5.15.0</version>
+    <time>1598983905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831269</requestid>
+  </revision>
 </revisionlist>
