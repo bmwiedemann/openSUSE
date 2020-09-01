@@ -1074,7 +1074,7 @@
       <repopackage name="iw"/>
       <repopackage name="java-11-openjdk"/>
       <repopackage name="java-11-openjdk-headless"/>
-      <repopackage name="java-15-openjdk-headless" arch="x86_64"/>
+      <repopackage name="java-14-openjdk-headless" arch="x86_64"/>
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
@@ -1197,7 +1197,6 @@
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
       <repopackage name="kernel-docs"/>
-      <repopackage name="kernel-firmware" arch="x86_64"/>
       <repopackage name="kernel-firmware-all"/>
       <repopackage name="kernel-firmware-amdgpu"/>
       <repopackage name="kernel-firmware-ath10k"/>
