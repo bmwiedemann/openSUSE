@@ -1,7 +1,7 @@
 #
 # spec file for package pcb
 #
-# Copyright (c) 2015-2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pcb
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        CAD Program for the Design of Printed Circuit Boards
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Electronics
 
-Url:            http://pcb.geda-project.org/
+URL:            http://pcb.geda-project.org/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 
 BuildRequires:  ImageMagick

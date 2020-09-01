@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  5 13:36:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- updated to bugfix release 4.2.2
+  * This is a hot fix and bugfixes release (no pcb file format change).
+    This release is required as the User Manual didn't build with
+    ghostscript versions newer than 9.27, as these newer versions
+    require an additional argument --permit-file-read for input files
+
+-------------------------------------------------------------------
 Tue Dec 31 19:55:14 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - updated to a new features and bugfixes release 4.2.1

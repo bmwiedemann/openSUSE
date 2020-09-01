@@ -139,4 +139,12 @@ http://lists.opensuse.org/opensuse-factory/2012-12/msg00538.html</comment>
     <comment></comment>
     <requestid>760514</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>33e5553da8cc48ce2b92707bc8837d08</srcmd5>
+    <version>4.2.2</version>
+    <time>1598983654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830451</requestid>
+  </revision>
 </revisionlist>
