@@ -17,7 +17,7 @@
 
 
 Name:           xapian-core
-Version:        1.4.15
+Version:        1.4.17
 Release:        0
 Summary:        The Xapian Probabilistic Information Retrieval Library
 License:        GPL-2.0-only
