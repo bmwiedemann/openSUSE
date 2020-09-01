@@ -100,11 +100,12 @@ Prefer: installation-images-openSUSE installation-images-debuginfodeps-openSUSE
 Substitute: netcfg netcfg libnss_usrfiles2
 
 # Enable ccache for a selection of packages:
+BuildFlags: useccache:NetworkManager
 BuildFlags: useccache:glib2
 BuildFlags: useccache:gtk3
 BuildFlags: useccache:gtk3:doc
+BuildFlags: useccache:llvm9
 BuildFlags: useccache:webkit2gtk3
-BuildFlags: useccache:NetworkManager
 
 # switch to kiwi v8
 Prefer: python3-kiwi
@@ -158,6 +159,7 @@ FileProvides: /usr/sbin/usermod shadow
 FileProvides: /usr/bin/wish tk
 FileProvides: /usr/bin/awk gawk
 FileProvides: /usr/bin/host bind-utils
+FileProvides: /sbin/start_daemon sysvinit-tools
 
 Preinstall: aaa_base attr bash coreutils diffutils
 Preinstall: filesystem fillup glibc grep

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  1 07:07:55 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Install sysvinit-tools: required by gdm (for pidof and startproc).
+
+-------------------------------------------------------------------
 Mon Aug 10 07:38:01 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - config.sh: Forcibly remove adwaita-icon-theme for kde and Rescue CD

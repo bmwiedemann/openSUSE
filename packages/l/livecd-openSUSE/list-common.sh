@@ -85,6 +85,7 @@ buildignore xorg-x11-essentials
 buildignore xorg-x11-server-extra
 # config.sh enables autologin and configures the display-manager
 install xdm
+install sysvinit-tools
 # We already have a different desktop
 buildignore icewm
 # We have enough fonts already

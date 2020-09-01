@@ -203,6 +203,7 @@
     <package name="aaa_base" replaces="xorg-x11-server-extra"/>
     <ignore name="xorg-x11-server-extra"/>
     <package name="xdm"/>
+    <package name="sysvinit-tools"/>
     <package name="aaa_base" replaces="icewm"/>
     <ignore name="icewm"/>
     <package name="aaa_base" replaces="baekmuk-ttf-fonts"/>

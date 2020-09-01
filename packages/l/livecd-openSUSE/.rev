@@ -961,4 +961,11 @@
     <comment></comment>
     <requestid>827557</requestid>
   </revision>
+  <revision rev="118" vrev="118">
+    <srcmd5>7e4c3d79746b6a3f0c2775b0705eb153</srcmd5>
+    <version>unknown</version>
+    <time>1598944106</time>
+    <user>dimstar_suse</user>
+    <comment>- Install sysvinit-tools: required by gdm (for pidof and startproc).</comment>
+  </revision>
 </revisionlist>
