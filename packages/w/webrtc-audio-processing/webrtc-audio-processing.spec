@@ -2,7 +2,7 @@
 #
 # spec file for package webrtc-audio-processing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,12 +21,12 @@
 %define soname      1
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 Name:           webrtc-audio-processing
-Version:        0.3
+Version:        0.3.1
 Release:        0
 Summary:        Real-Time Communication Library for Web Browsers
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            http://www.freedesktop.org/software/pulseaudio/webrtc-audio-processing/
+URL:            https://www.freedesktop.org/software/pulseaudio/webrtc-audio-processing/
 Source:         http://freedesktop.org/software/pulseaudio/webrtc-audio-processing/webrtc-audio-processing-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAN big_endian_support.patch https://bugs.freedesktop.org/show_bug.cgi?id=95738
@@ -44,7 +44,6 @@ BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 WebRTC is an open source project that enables web browsers with Real-Time
@@ -100,31 +99,28 @@ sed -i 's/\r$//' AUTHORS
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
-%makeinstall
+%make_install
 
-rm -f "%{buildroot}%{_libdir}"/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n libwebrtc_audio_processing%{soname} -p /sbin/ldconfig
-
 %postun -n libwebrtc_audio_processing%{soname} -p /sbin/ldconfig
 
 %files -n libwebrtc_audio_processing%{soname}
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README.md UPDATING.md
+%license COPYING
+%doc AUTHORS NEWS README.md UPDATING.md
 %{_libdir}/libwebrtc_audio_processing.so.%{soname}
 %{_libdir}/libwebrtc_audio_processing.so.%{soname}.*.*
 
 %files -n libwebrtc_audio_processing-devel
-%defattr(-,root,root)
 %{_includedir}/webrtc_audio_processing
 %{_libdir}/libwebrtc_audio_processing.so
 %{_libdir}/pkgconfig/webrtc-audio-processing.pc
 
 %files -n libwebrtc_audio_processing-devel-static
-%defattr(-,root,root)
 %{_libdir}/libwebrtc_audio_processing.a
 
 %changelog

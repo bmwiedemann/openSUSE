@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 17 15:30:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.3.1:
+  * doc: file invalid reference to pulseaudio mailing list
+  * various build system fixes
+- spec-cleaner run
+ 
+-------------------------------------------------------------------
 Fri Aug  2 08:23:00 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.
