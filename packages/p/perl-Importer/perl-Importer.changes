@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 17 03:09:07 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.026
+   see /usr/share/doc/packages/perl-Importer/Changes
+
+  0.026     2020-08-16 14:24:02-07:00 America/Los_Angeles
+
+      - Work with strict on by default
+
+-------------------------------------------------------------------
 Mon Feb 19 06:32:30 UTC 2018 - coolo@suse.com
 
 - updated to 0.025
