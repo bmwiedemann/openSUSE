@@ -974,4 +974,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Some more shrinking</comment>
   </revision>
+  <revision rev="135" vrev="133">
+    <srcmd5>757a90d5a0e1af7a342580e71818657b</srcmd5>
+    <version>unknown</version>
+    <time>1598975322</time>
+    <user>dimstar_suse</user>
+    <comment>No java-14</comment>
+  </revision>
 </revisionlist>
