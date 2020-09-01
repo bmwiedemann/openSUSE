@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 21 14:17:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.12.1:
+  * Fix BTC, BYN, and BYR exchange rates
+  * Fix exchange rates update time
+  * Fix parsing of negative power in function arguments without
+    parenthesis
+  * Add arcsin, arccos, arsinh, arcosh, etc. as names for inverse
+    trigonometric and hyperbolic functions
+  * Interpret sin^-1, cos^-1, etc. as inverse functions
+    (arcsin, arccos, etc.)
+  * Add deftorad() and totient() functions
+
+-------------------------------------------------------------------
 Wed Jul 29 11:58:55 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.12.0:
