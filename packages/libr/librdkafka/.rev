@@ -77,4 +77,41 @@
     <comment></comment>
     <requestid>790014</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0f057397ed9d21134e785690eb066b89</srcmd5>
+    <version>1.5.0</version>
+    <time>1598983470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update library v1.3.0 -&gt; 1.5.0
+ * Improved broker connection error reporting with more useful information and
+   hints on the cause of the problem.
+ * Consumer: Propagate errors when subscribing to unavailable topics (#1540)
+ * Producer: Add `batch.size` producer configuration property (#638)
+ * Add `topic.metadata.propagation.max.ms` to allow newly manually created
+   topics to be propagated throughout the cluster before reporting them
+   as non-existent. This fixes race issues where CreateTopics() is
+   quickly followed by produce().
+ * Prefer least idle connection for periodic metadata refreshes, et.al.,
+   to allow truly idle connections to time out and to avoid load-balancer-killed
+   idle connection errors (#2845)
+ * Added `rd_kafka_event_debug_contexts()` to get the debug contexts for
+   a debug log line (by @wolfchimneyrock).
+ * Added Test scenarios which define the cluster configuration.
+ * Added MinGW-w64 builds (@ed-alertedh, #2553)
+ * `./configure --enable-XYZ` now requires the XYZ check to pass,
+   and `--disable-XYZ` disables the feature altogether (@benesch)
+ * Added `rd_kafka_produceva()` which takes an array of produce arguments
+   for situations where the existing `rd_kafka_producev()` va-arg approach
+   can't be used.
+ * Added `rd_kafka_message_broker_id()` to see the broker that a message
+   was produced or fetched from, or an error was associated with.
+ * Added RTT/delay simulation to mock brokers.
+ * Subscribing to non-existent and unauthorized topics will now propagate
+   errors `RD_KAFKA_RESP_ERR_UNKNOWN_TOPIC_OR_PART` and
+   `RD_KAFKA_RESP_ERR_TOPIC_AUTHORIZATION_FAILED` to the application through
+   the standard consumer error (the err field in the message object).
+ * Consumer will no longer trigger auto creation of topics,
+   `allow.auto.create.topics=true` may be used to re-enable the old deprecated</comment>
+    <requestid>830730</requestid>
+  </revision>
 </revisionlist>

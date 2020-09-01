@@ -24,7 +24,7 @@
 
 %define libname %{name}1
 Name:           librdkafka
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        A library for changing configuration files
 License:        BSD-2-Clause
@@ -88,16 +88,23 @@ find %{buildroot} -name '*.a' -delete -print
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%doc README.md CONFIGURATION.md
-%license LICENSE
+%defattr(-,root,root,-)
+%{_docdir}/../%{name}
+%doc %attr(0644,root,root) %{_docdir}/../%{name}/README.md
+%doc %attr(0644,root,root) %{_docdir}/../%{name}/CONFIGURATION.md
+%doc %attr(0644,root,root) %{_docdir}/../%{name}/INTRODUCTION.md
+%doc %attr(0644,root,root) %{_docdir}/../%{name}/STATISTICS.md
+%license %attr(0644,root,root) %{_docdir}/../%{name}/LICENSE
+%license %attr(0644,root,root) %{_docdir}/../%{name}/LICENSES.txt
 %{_libdir}/librdkafka.so.*
 %{_libdir}/librdkafka++.so.*
 
 %files devel
-%dir %{_includedir}/librdkafka
-%attr(0644,root,root) %{_includedir}/librdkafka/*
-%attr(0755,root,root) %{_libdir}/librdkafka.so
-%attr(0755,root,root) %{_libdir}/librdkafka++.so
+%defattr(-,root,root,-)
+%dir %{_includedir}/%{name}
+%attr(0644,root,root) %{_includedir}/%{name}/*
+%{_libdir}/librdkafka.so
+%{_libdir}/librdkafka++.so
 %{_libdir}/pkgconfig/rdkafka.pc
 %{_libdir}/pkgconfig/rdkafka++.pc
 %{_libdir}/pkgconfig/rdkafka-static.pc

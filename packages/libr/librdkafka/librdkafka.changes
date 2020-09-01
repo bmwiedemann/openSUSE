@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Aug 21 12:36:30 UTC 2020 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update library v1.3.0 -> 1.5.0
+ * Improved broker connection error reporting with more useful information and
+   hints on the cause of the problem.
+ * Consumer: Propagate errors when subscribing to unavailable topics (#1540)
+ * Producer: Add `batch.size` producer configuration property (#638)
+ * Add `topic.metadata.propagation.max.ms` to allow newly manually created
+   topics to be propagated throughout the cluster before reporting them
+   as non-existent. This fixes race issues where CreateTopics() is
+   quickly followed by produce().
+ * Prefer least idle connection for periodic metadata refreshes, et.al.,
+   to allow truly idle connections to time out and to avoid load-balancer-killed
+   idle connection errors (#2845)
+ * Added `rd_kafka_event_debug_contexts()` to get the debug contexts for
+   a debug log line (by @wolfchimneyrock).
+ * Added Test scenarios which define the cluster configuration.
+ * Added MinGW-w64 builds (@ed-alertedh, #2553)
+ * `./configure --enable-XYZ` now requires the XYZ check to pass,
+   and `--disable-XYZ` disables the feature altogether (@benesch)
+ * Added `rd_kafka_produceva()` which takes an array of produce arguments
+   for situations where the existing `rd_kafka_producev()` va-arg approach
+   can't be used.
+ * Added `rd_kafka_message_broker_id()` to see the broker that a message
+   was produced or fetched from, or an error was associated with.
+ * Added RTT/delay simulation to mock brokers.
+ * Subscribing to non-existent and unauthorized topics will now propagate
+   errors `RD_KAFKA_RESP_ERR_UNKNOWN_TOPIC_OR_PART` and
+   `RD_KAFKA_RESP_ERR_TOPIC_AUTHORIZATION_FAILED` to the application through
+   the standard consumer error (the err field in the message object).
+ * Consumer will no longer trigger auto creation of topics,
+   `allow.auto.create.topics=true` may be used to re-enable the old deprecated
+   functionality.
+ * The default consumer pre-fetch queue threshold `queued.max.messages.kbytes`
+   has been decreased from 1GB to 64MB to avoid excessive network usage for low
+   and medium throughput consumer applications. High throughput consumer
+   applications may need to manually set this property to a higher value.
+ * The default consumer Fetch wait time has been increased from 100ms to 500ms
+   to avoid excessive network usage for low throughput topics.
+ * If OpenSSL is linked statically, or `ssl.ca.location=probe` is configured,
+   librdkafka will probe known CA certificate paths and automatically use the
+   first one found. This should alleviate the need to configure
+   `ssl.ca.location` when the statically linked OpenSSL's OPENSSLDIR differs
+   from the system's CA certificate path.
+ * The heuristics for handling Apache Kafka < 0.10 brokers has been removed to
+   improve connection error handling for modern Kafka versions.
+   Users on Brokers 0.9.x or older should already be configuring
+   `api.version.request=false` and `broker.version.fallback=...` so there
+   should be no functional change.
+ * The default producer batch accumulation time, `linger.ms`, has been changed
+   from 0.5ms to 5ms to improve batch sizes and throughput while reducing
+   the per-message protocol overhead.
+   Applications that require lower produce latency than 5ms will need to
+   manually set `linger.ms` to a lower value.
+ * librdkafka's build tooling now requires Python 3.x (python3 interpreter).
+
+- Update install location of doc/license files
+
+-------------------------------------------------------------------
 Wed Mar 25 22:10:10 UTC 2020 - R. Tyler Croy <rtyler@brokenco.de>
 
 -  Add v1.3.0 which includes a number of properties and bugfixes over 1.1.0
