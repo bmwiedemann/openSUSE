@@ -66,7 +66,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.12
+Version:        6.1.13
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later
@@ -179,8 +179,8 @@ Patch135:       fix-missing-includes-with-qt-5.15.patch
 Patch136:       fixes_for_gcc10.patch
 # Fix for changes in GSOAP 2.8.103
 Patch137:       handle_gsoap_208103.patch
-# Fixes for kernel 5.8
-Patch138:       fixes_for_5.8.patch
+# Fixes for kernel 5.9
+Patch138:       fixes_for_5.9.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 
@@ -282,7 +282,8 @@ Recommends:     %{name}-gui = %{version}
 #rename from ose version:
 Provides:       %{name}-ose = %{version}
 Obsoletes:      %{name}-ose < %{version}
-%endif # main_package
+# end of main_package
+%endif
 
 ### Requirements for virtualbox-kmp ###
 %if %{kmp_package}
@@ -291,7 +292,8 @@ BuildRequires:  libxml2-devel
 %kernel_module_package -t %{_builddir}/virtualbox-kmp-template -p %{SOURCE7} -n virtualbox -f %{SOURCE5} -x kdump um xen pae xenpae pv
 Obsoletes:      virtualbox-guest-kmp
 Obsoletes:      virtualbox-host-kmp
-%endif # kmp_package
+# end of kmp_package
+%endif
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
@@ -446,13 +448,15 @@ Virtual Network Computing (VNC) is a graphical desktop sharing system that uses 
 protocol (RFB) to remotely control another computer. When this optional feature is desired, it is installed
 as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 ###########################################
-%endif # main_package
+# main_package
+%endif
 
 ### Description of virtualbox-kmp ###
 %if %{kmp_package}
 %description
 This package contains the kernel-modules that VirtualBox uses to create or run virtual machines.
-%endif # kmp_package
+# kmp_package
+%endif
 
 %prep
 %setup -q -n VirtualBox-%{version}
@@ -514,7 +518,8 @@ cp %{SOURCE97} README.build
 cp %{SOURCE10} LocalConfig.kmk
 #copy autostart doc
 cp %{SOURCE20} README.autostart
-%endif # main_package
+# main_package
+%endif
 
 #
 ##########################
@@ -675,7 +680,6 @@ install -m 755 VBoxEFI*.fd			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxSysInfo.sh			%{buildroot}%{_vbox_instdir}
 install -m 644 *.so		 		%{buildroot}%{_vbox_instdir}
 install -m 644 *.r0 				%{buildroot}%{_vbox_instdir}
-rm components/VBoxREM.so
 install -m 644 components/*			%{buildroot}%{_vbox_instdir}/components/
 # install languages
 install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
@@ -1084,7 +1088,8 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_datadir}/licenses
 %{_datadir}/licenses/LICENSE.vnc
 
-%endif # main_package
+# main_package
+%endif
 
 ### %build and %install sections of virtualbox-kmp ### 
 %if %{kmp_package}
@@ -1218,6 +1223,7 @@ do
     	    make -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor modules_install M=$PWD/modules_build_dir/$flavor/$module_name
     	done
 done
-%endif # kmp_package
+# kmp_package
+%endif
 
 %changelog

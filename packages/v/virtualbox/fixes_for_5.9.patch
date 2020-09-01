@@ -1,0 +1,179 @@
+Index: VirtualBox-6.1.12/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+===================================================================
+--- VirtualBox-6.1.12.orig/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
++++ VirtualBox-6.1.12/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+@@ -137,7 +137,10 @@
+ #include <linux/interrupt.h>
+ #include <linux/completion.h>
+ #include <linux/compiler.h>
+-#ifndef HAVE_UNLOCKED_IOCTL /* linux/fs.h defines this */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 9, 0)
++#define HAVE_UNLOCKED_IOCTL 1	/* defined in linux/fs.h for kernels before 5.9 */
++#endif
++#ifndef HAVE_UNLOCKED_IOCTL
+ # include <linux/smp_lock.h>
+ #endif
+ /* For the shared folders module */
+Index: VirtualBox-6.1.12/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+===================================================================
+--- VirtualBox-6.1.12.orig/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
++++ VirtualBox-6.1.12/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+@@ -1102,8 +1102,10 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser
+          */
+         else
+             rc = get_user_pages_remote(
++#if    LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0)
+                                 pTask,                  /* Task for fault accounting. */
+-                                pTask->mm,              /* Whose pages. */
++#endif
++				pTask->mm,              /* Whose pages. */
+                                 R3Ptr,                  /* Where from. */
+                                 cPages,                 /* How many pages. */
+ # if GET_USER_PAGES_API >= KERNEL_VERSION(4, 9, 0)
+Index: VirtualBox-6.1.12/src/VBox/Runtime/r0drv/linux/thread2-r0drv-linux.c
+===================================================================
+--- VirtualBox-6.1.12.orig/src/VBox/Runtime/r0drv/linux/thread2-r0drv-linux.c
++++ VirtualBox-6.1.12/src/VBox/Runtime/r0drv/linux/thread2-r0drv-linux.c
+@@ -92,8 +92,12 @@ DECLHIDDEN(int) rtThreadNativeSetPriorit
+             return VERR_INVALID_PARAMETER;
+     }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0)
+     sched_setscheduler(current, iSchedClass, &Param);
+ #else
++    sched_set_fifo_low(current);
++#endif
++#else
+     RT_NOREF_PV(enmType);
+ #endif
+     RT_NOREF_PV(pThread);
+Index: VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_drv.c
+===================================================================
+--- VirtualBox-6.1.12.orig/src/VBox/Additions/linux/drm/vbox_drv.c
++++ VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_drv.c
+@@ -263,8 +263,13 @@ static const struct file_operations vbox
+ 	.read = drm_read,
+ };
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0)
+ static int vbox_master_set(struct drm_device *dev,
+ 			   struct drm_file *file_priv, bool from_open)
++#else
++static void vbox_master_set(struct drm_device *dev,
++			    struct drm_file *file_priv, bool from_open)
++#endif
+ {
+ 	struct vbox_private *vbox = dev->dev_private;
+ 
+Index: VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_fb.c
+===================================================================
+--- VirtualBox-6.1.12.orig/src/VBox/Additions/linux/drm/vbox_fb.c
++++ VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_fb.c
+@@ -405,7 +405,11 @@ void vbox_fbdev_fini(struct drm_device *
+ 				vbox_bo_unpin(bo);
+ 			vbox_bo_unreserve(bo);
+ 		}
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 9, 0)
++		drm_gem_object_put(afb->obj);
++#else
+ 		drm_gem_object_put_unlocked(afb->obj);
++#endif
+ 		afb->obj = NULL;
+ 	}
+ 	drm_fb_helper_fini(&fbdev->helper);
+Index: VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_main.c
+===================================================================
+--- VirtualBox-6.1.12.orig/src/VBox/Additions/linux/drm/vbox_main.c
++++ VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_main.c
+@@ -40,14 +40,19 @@
+ #include <VBoxVideoVBE.h>
+ 
+ #include "hgsmi_channels.h"
++#include <linux/version.h>
++
+ 
+ static void vbox_user_framebuffer_destroy(struct drm_framebuffer *fb)
+ {
+ 	struct vbox_framebuffer *vbox_fb = to_vbox_framebuffer(fb);
+ 
+ 	if (vbox_fb->obj)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0)
+ 		drm_gem_object_put_unlocked(vbox_fb->obj);
+-
++#else
++		drm_gem_object_put(vbox_fb->obj);
++#endif
+ 	drm_framebuffer_cleanup(fb);
+ 	kfree(fb);
+ }
+@@ -221,7 +226,11 @@ static struct drm_framebuffer *vbox_user
+ err_free_vbox_fb:
+ 	kfree(vbox_fb);
+ err_unref_obj:
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0)
+ 	drm_gem_object_put_unlocked(obj);
++#else
++	drm_gem_object_put(obj);
++#endif
+ 	return ERR_PTR(ret);
+ }
+ 
+@@ -588,7 +597,11 @@ int vbox_dumb_create(struct drm_file *fi
+ 		return ret;
+ 
+ 	ret = drm_gem_handle_create(file, gobj, &handle);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0)
+ 	drm_gem_object_put_unlocked(gobj);
++#else
++	drm_gem_object_put(gobj);
++#endif
+ 	if (ret)
+ 		return ret;
+ 
+Index: VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_drv.h
+===================================================================
+--- VirtualBox-6.1.12.orig/src/VBox/Additions/linux/drm/vbox_drv.h
++++ VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_drv.h
+@@ -364,6 +364,9 @@ struct vbox_bo {
+ #else
+ 	struct ttm_place placements[3];
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 9, 0)
++	uint64_t offset;
++#endif
+ 	int pin_count;
+ };
+ 
+Index: VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_mode.c
+===================================================================
+--- VirtualBox-6.1.12.orig/src/VBox/Additions/linux/drm/vbox_mode.c
++++ VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_mode.c
+@@ -887,8 +887,11 @@ out_unmap_bo:
+ out_unreserve_bo:
+ 	vbox_bo_unreserve(bo);
+ out_unref_obj:
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0)
+ 	drm_gem_object_put_unlocked(obj);
+-
++#else
++	drm_gem_object_put(obj);
++#endif
+ 	return ret;
+ }
+ 
+Index: VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_ttm.c
+===================================================================
+--- VirtualBox-6.1.12.orig/src/VBox/Additions/linux/drm/vbox_ttm.c
++++ VirtualBox-6.1.12/src/VBox/Additions/linux/drm/vbox_ttm.c
+@@ -453,7 +453,11 @@ err_free_vboxbo:
+ 
+ static inline u64 vbox_bo_gpu_offset(struct vbox_bo *bo)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0)
+ 	return bo->bo.offset;
++#else
++	return bo->offset;
++#endif
+ }
+ 
+ int vbox_bo_pin(struct vbox_bo *bo, u32 pl_flag, u64 *gpu_addr)

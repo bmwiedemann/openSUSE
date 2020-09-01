@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Aug 28 20:56:29 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Pseudo version bump to 6.1.13, which is NOT an Oracle release.
+
+  Update VB sources to run under kernel 5.8.0+ with no modifications to the
+  kernel. These sources are derived from r85883 of the Oracle svn repository.
+  For operations with USB{2,3}, the extension pack for revision 140056 must
+  be installed. Once Oracle releases 6.1.14, then the extension pack and
+  VB itself will have the same revision number.
+
+  File "fixes_for_5.8.patch" is removed as that part was fixed upstream.
+  Fixes boo#1175201.
+
+-------------------------------------------------------------------
+Thu Aug 20 16:40:59 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Modify fixes_for_5.9.patch.
+
+-------------------------------------------------------------------
+Thu Aug 20 05:09:36 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build for kernel 5.9. File "fixes_for_5.9.patch" is added.
+
+-------------------------------------------------------------------
+Sat Aug  8 01:14:12 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Delete temporary USBpassthru test patch.
+
+-------------------------------------------------------------------
+Fri Aug  7 22:19:20 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Apply Oracle changes for kernel 5.8.
+
+-------------------------------------------------------------------
 Wed Jul 15 18:52:28 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.12 (released July 14 2020 by Oracle)
