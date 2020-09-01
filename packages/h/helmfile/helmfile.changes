@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 31 12:20:16 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.125.9: Merge pull request #1442 from roboll/fix-duplicate-with-kubectx-per-r…
+  * c575587 (HEAD, tag: v0.125.9, origin/master, origin/HEAD, master)
+    Merge pull request #1442 from roboll/fix-duplicate-with-kubectx-per-release
+  * f2dfa7c Fix kubeContext not taken into account for release uniqueness
+  * 41cd1fe Fix race while running helm dep build on local chart (#1439)
+  * 94e01b7 Bump chartify to 0.4.2 (#1437)
+  * 85e7798 Update to the latest version of helm-diff plugin (#1430)
+  * b42e847 Fix race while running helm dep build on local chart
+
+- v0.125.8: Fix regression in helmfile deps (#1431)
+  * 14e2b9e (HEAD, tag: v0.125.8, origin/master, origin/HEAD, master)
+    Fix regression in helmfile deps (#1431)
+  * 90a4122 fix: panic when using helm v3.3 (#1427) (#1428)
+
+-------------------------------------------------------------------
 Mon Aug 17 15:38:34 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.125.7: Fix regression installing raw K8s manifests (#1417)
