@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:44:46 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Update to v1.2.2
+  * Added print_command to run
+  * widget_builder now only lets you assign classes.
+    The name will be consistent with the image escape system
+  * data: will now be correctly handled
+  * Added layer config option
+  * Added layer config option
+  * The img "escapes" should now correctly deal with HiDPI
+  * Wofi now loads modes multi-threaded, this should decrease startup times
+  * Added --search
+  * Added support for the PrefersNonDefaultGPU desktop entry flag
+  * Wofi will now keep its percentage size even when moving between monitors
+  * Added display_generic option to drun
+  * Added img-noscale
+  * Added support for purism virtual keyboards
+  * Added key_hide_search
+  * Added key_expand
+  * Added alacritty to the default terminal list
+  * Added page up/down support
+  * number of other fixes
+
+-------------------------------------------------------------------
 Thu Jun  4 15:46:59 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Switch from URL-based Source line to _service file
