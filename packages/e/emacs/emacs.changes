@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug 28 13:38:54 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Be sure that /usr/share/emacs/site-lisp/site-start.d/ is in
+  the load path as otherwise we might catch some not seen errors
+
+-------------------------------------------------------------------
+Mon Aug 24 11:14:22 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Correct paths for emacs manual page on the fly 
+
+-------------------------------------------------------------------
+Fri Aug 21 10:27:50 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch pdump.patch from Andreas Schwab as it allows to
+  rename the executable name in emacs.sh
+
+-------------------------------------------------------------------
+Fri Aug 21 08:54:57 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Correct manual page of emacs, that is remove ``local/``
+- Make sure that the emacs spawned by the emacs script does use
+  its default pdumper image file
+- Avoid warning about permissions on /var/lib/games
+
+-------------------------------------------------------------------
+Thu Aug 20 09:08:33 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Disable patch emacs-24.4-glibc.patch to see if this fix boo#1175487 
+- Require git at build time as used by rebuilding byte compiled lisp files
+- Load pcase and easy-mmode at dump time from emacs-lisp path
+
+-------------------------------------------------------------------
 Tue Aug 18 09:22:51 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Switch Emacs.FontBackend setting off (boo#1175372)

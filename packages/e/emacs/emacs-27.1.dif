@@ -9,7 +9,7 @@
  lisp/cmuscheme.el               |    3 -
  lisp/international/mule-cmds.el |    1 
  lisp/net/ange-ftp.el            |    8 +--
- lisp/site-load.el               |   41 ++++++++++++++++
+ lisp/site-load.el               |   45 ++++++++++++++++++
  lisp/speedbar.el                |    1 
  lisp/textmodes/ispell.el        |   82 ++++++++++++++++++++++++++++++++-
  site-lisp/term/func-keys.el     |   33 +++++++++++++
@@ -17,7 +17,7 @@
  site-lisp/term/kvt.el           |   97 ++++++++++++++++++++++++++++++++++++++++
  site-lisp/term/linux.el         |   79 ++++++++++++++++++++++++++++++++
  site-lisp/term/locale.el        |   13 +++++
- 18 files changed, 471 insertions(+), 32 deletions(-)
+ 18 files changed, 475 insertions(+), 32 deletions(-)
 
 --- Makefile.in
 +++ Makefile.in	2020-08-11 10:21:15.194072175 +0000
@@ -278,9 +278,9 @@
  (defun ange-ftp-add-cms-host (host)
 --- lisp/site-load.el
 +++ lisp/site-load.el	2020-08-11 10:17:21.106266385 +0000
-@@ -0,0 +1,41 @@
+@@ -0,0 +1,45 @@
 +;;;;
-+;;; emacs20.xx/lisp/site-load.el
++;;; emacs-27.1/lisp/site-load.el
 +;;; Copyright (c) 1995,96,98,99 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
 +;;;
 +;;; Autor: Werner Fink  <werner@suse.de>, No warranty of any kind
@@ -304,6 +304,10 @@
 +;;   lisp/delsel.elc lisp/lpr.elc added to src/Makefile.in for DOCumentation
 +;;
 +;;;;
++(garbage-collect)
++
++(load "emacs-lisp/pcase")
++(load "emacs-lisp/easy-mmode")
 +(garbage-collect)
 +
 +(load "lpr")

@@ -39,6 +39,7 @@ BuildRequires:  fontconfig-devel
 BuildRequires:  fonts-config
 BuildRequires:  freetype2-devel
 BuildRequires:  giflib-devel
+BuildRequires:  git
 BuildRequires:  gpm-devel
 BuildRequires:  gtk3-devel
 # Used for installtion of info pages as well as to
@@ -158,7 +159,7 @@ Source6:        ftp://ftp.gnu.org/gnu/emacs/emacs-%{version}.tar.xz.sig
 Source7:        %{name}.keyring
 Source8:        emacs-%{version}-pdf.tar.xz
 Patch:          emacs-27.1.dif
-# PATCH-FIX-UPSTREAM Adjust to GnuPG 2.1 key listing change
+# Currently disabled
 Patch2:         emacs-24.4-glibc.patch
 Patch4:         emacs-24.3-asian-print.patch
 Patch5:         emacs-24.4-ps-bdf.patch
@@ -168,6 +169,7 @@ Patch11:        emacs-24.4-xim.patch
 Patch12:        emacs-24.3-x11r7.patch
 Patch15:        emacs-24.3-iconic.patch
 Patch16:        emacs-24.4-flyspell.patch
+Patch22:        pdump.patch
 Patch23:        emacs-25.1-custom-fonts.patch
 # this patch works with both ImageMagick-6 and ImageMagick-7 for us,
 # but that is because we ship /usr/include/ImageMagick-7/wand compat
@@ -276,7 +278,7 @@ and most assembler-like syntaxes.
 
 %prep
 %setup -q -b 2
-%patch2  -p0 -b .glibc
+#%patch2  -p0 -b .glibc
 %patch4  -p0 -b .print
 %patch5  -p0 -b .psbdf
 %patch7  -p0 -b .psmu
@@ -285,6 +287,7 @@ and most assembler-like syntaxes.
 %patch12 -p0 -b .x11r7
 %patch15 -p0 -b .iconic
 %patch16 -p0 -b .flyspell
+%patch22 -p0 -b .pd
 %patch23 -p0 -b .custfnt
 %patch24 -p1 -b .imag
 %patch25 -p0 -b .xft
@@ -444,6 +447,7 @@ DESKTOP="--with-x \
 	 --without-xft \
 	 --without-libotf \
 	 --without-m17n-flt \
+	 --without-harfbuzz \
 "
    COMP="--disable-build-details \
 %if %{with mailutils}
@@ -474,24 +478,24 @@ fi
 ac_cv_lib_gif_EGifPutExtensionLast=yes
 export ac_cv_lib_gif_EGifPutExtensionLast
 
-CFLAGS="$CFLAGS $SMALL" ./configure ${COMP} ${PREFIX} ${NOX11} ${SYS} --with-dumping=pdumper
-make bootstrap
-make -C lisp/ updates compile
-for i in `find site-lisp/ -name '*.el'`; do
-    src/emacs -batch -q --no-site -f batch-byte-compile $i; \
+CFLAGS="$CFLAGS $SMALL -DPDMP_BASE='\"emacs-nox\"'" ./configure ${COMP} ${PREFIX} ${NOX11} ${SYS} --with-dumping=pdumper
+make bootstrap V=1
+make -C lisp/ updates compile V=1
+for i in $(find site-lisp/ -name '*.el'); do
+    EMACSLOADPATH='' src/emacs -batch -q --no-site -f batch-byte-compile $i
 done
 cp src/emacs emacs-nox
 cp src/emacs.pdmp emacs-nox.pdmp
 make distclean
 #
-CFLAGS="$CFLAGS $LARGE" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
-make
+CFLAGS="$CFLAGS $LARGE -DPDMP_BASE='\"emacs-gtk\"'" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
+make %{?_smp_mflags}
 cp src/emacs emacs-gtk
 cp src/emacs.pdmp emacs-gtk.pdmp
 make distclean
 #
-CFLAGS="$CFLAGS $LARGE" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
-make
+CFLAGS="$CFLAGS $LARGE -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
+make %{?_smp_mflags}
 cp src/emacs emacs-x11
 cp src/emacs.pdmp emacs-x11.pdmp
 
@@ -502,7 +506,7 @@ make -C etc/refcards/
 
 #
 pushd ../site-lisp/
-../emacs-%{version}/src/emacs -batch -q --no-site -f batch-byte-compile *.el
+EMACSLOADPATH='' ../emacs-%{version}/src/emacs -batch -q --no-site -f batch-byte-compile *.el
 rm -vf site-start.elc
 rm -vf site-start.el.orig
 popd
@@ -513,6 +517,7 @@ PATH=/sbin:$PATH
 ##
 VERSION=%{version}
 eval $(sed -rn "/^configuration=/p" config.log)
+sed -ri 's@/usr/lib/X11/fonts@/usr/share/fonts@g;s@(/usr/)local/(info|share|lib)@\1\2@;s@\$VERSION@%{version}@g;s@\$ARCH@'${configuration}'@g' doc/man/emacs.1
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_prefix}/lib/emacs/%{version}/${configuration}
 install -m 0755 emacs-nox %{buildroot}%{_bindir}
@@ -3258,7 +3263,7 @@ fi
 %dir %{_datadir}/emacs/site-lisp/site-start.d/
 %{_mandir}/man1/*.1%{ext_man}
 %exclude %{_mandir}/man1/*tags.1%{ext_man}
-%dir %attr(770,games,games) %{_localstatedir}/games/emacs
+%dir %attr(775,games,games) %{_localstatedir}/games/emacs
 %attr(660,games,games) %{_localstatedir}/games/emacs/snake-scores
 %attr(660,games,games) %{_localstatedir}/games/emacs/tetris-scores
 

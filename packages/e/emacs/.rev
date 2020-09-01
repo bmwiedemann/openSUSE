@@ -1476,4 +1476,27 @@
   to add missing slashes on finding ~/Emacs</comment>
     <requestid>827545</requestid>
   </revision>
+  <revision rev="150" vrev="3">
+    <srcmd5>feb7c7a0b19ab1a66cf0a7e02d8546b2</srcmd5>
+    <version>27.1</version>
+    <time>1598983368</time>
+    <user>dimstar_suse</user>
+    <comment>- Be sure that /usr/share/emacs/site-lisp/site-start.d/ is in
+  the load path as otherwise we might catch some not seen errors
+
+- Correct paths for emacs manual page on the fly 
+
+- Add patch pdump.patch from Andreas Schwab as it allows to
+  rename the executable name in emacs.sh
+
+- Correct manual page of emacs, that is remove ``local/``
+- Make sure that the emacs spawned by the emacs script does use
+  its default pdumper image file
+- Avoid warning about permissions on /var/lib/games
+
+- Disable patch emacs-24.4-glibc.patch to see if this fix boo#1175487 
+- Require git at build time as used by rebuilding byte compiled lisp files
+- Load pcase and easy-mmode at dump time from emacs-lisp path</comment>
+    <requestid>830281</requestid>
+  </revision>
 </revisionlist>
