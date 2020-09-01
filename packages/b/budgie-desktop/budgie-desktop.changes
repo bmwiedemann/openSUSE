@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 31 21:55:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add nemo-instead-of-nautilus.patch: Nautilus doesn't have support
+  for desktop icons anymore
+- Add nemo to Requires for desktop icons
+
+-------------------------------------------------------------------
 Sat Aug 29 21:34:45 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add desktop-override.patch from Debian: fixes overlap between 

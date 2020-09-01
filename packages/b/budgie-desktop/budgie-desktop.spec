@@ -27,6 +27,7 @@ URL:            https://getsol.us/solus/experiences/
 Source:         https://github.com/solus-project/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/solus-project/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Source3:        budgie-desktop-nemo-autostart.desktop
 # PATCH-FIX-UPSTREAM: Add support for mutter 3.36 gh#solus-project/budgie-desktop#1918
 Patch:          support-libmutter6.patch
 # PATCH-FIX-UPSTREAM: Resolve losing keyboard shortcuts on login gh#solus-project/budgie-desktop#1907
@@ -37,6 +38,8 @@ Patch2:         mutter-3-35-91.patch
 Patch3:         gnome-coexistance.patch
 # PATCH-FIX-OPENSUSE: Create a clean separation between Budgie and GNOME desktops
 Patch4:         desktop-override.patch
+# PATCH-FIX-OPENSUSE: Use nemo instead of nautilus for desktop icons
+Patch5:         nemo-instead-of-nautilus.patch
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.41.2
 BuildRequires:  pkgconfig
@@ -71,6 +74,7 @@ Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
 Requires:       gnome-control-center
 Requires:       budgie-screensaver
+Requires:       nemo
 Recommends:     gnome-software
 Recommends:     NetworkManager-applet
 Recommends:     gnome-backgrounds
@@ -143,7 +147,7 @@ Private library for Budgie desktop to link against.
 %autosetup -p1
 
 %build
-%meson -Dwith-desktop-icons=none
+%meson
 %meson_build
 
 %install
@@ -159,6 +163,9 @@ rm -Rf %{buildroot}%{_datadir}/vala/
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
+
+# nemo autostart
+cp %{SOURCE3} %{buildroot}%{_sysconfdir}/xdg/autostart
 
 %find_lang %{name}
 
@@ -194,6 +201,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_libdir}/budgie-desktop
 %{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_sysconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
+%{_sysconfdir}/xdg/autostart/budgie-desktop-nemo-autostart.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 
 %files -n libraven0
