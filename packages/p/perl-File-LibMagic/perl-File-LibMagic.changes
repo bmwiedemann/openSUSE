@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 30 03:07:44 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-File-LibMagic/Changes
+
+  1.23     2020-08-28
+
+  - Fixed a bug with the Makefile.PL that caused every call to "make" to
+    recompile the object file for the package's XS code. Reported by Kent
+    Fredric. GH #28.
+
+-------------------------------------------------------------------
 Mon Apr 27 03:09:04 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.22
