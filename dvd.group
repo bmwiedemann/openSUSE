@@ -5360,8 +5360,7 @@
     <package name="gtk2-tools-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="guestfs-data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="java-15-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:apache-parent -->
-    <package name="kernel-firmware" supportstatus="unsupported"/> <!-- reason: dvd:bcm20702a1-firmware -->
+    <package name="java-14-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:apache-parent -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="ldmtool" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lib389" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->

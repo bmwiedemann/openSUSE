@@ -6524,7 +6524,7 @@ unsorted:
   - java-14-openjdk-accessibility 
   - java-14-openjdk-demo 
   - java-14-openjdk-devel 
-  - java-14-openjdk-headless 
+  - java-14-openjdk-headless: [i586] 
   - java-14-openjdk-javadoc 
   - java-14-openjdk-jmods 
   - java-14-openjdk-src 
@@ -6532,7 +6532,7 @@ unsorted:
   - java-15-openjdk-accessibility 
   - java-15-openjdk-demo 
   - java-15-openjdk-devel 
-  - java-15-openjdk-headless: [i586] 
+  - java-15-openjdk-headless 
   - java-15-openjdk-javadoc 
   - java-15-openjdk-jmods 
   - java-15-openjdk-src 
@@ -7117,7 +7117,7 @@ unsorted:
   - kernel-default-devel 
   - kernel-devel 
   - kernel-docs-html 
-  - kernel-firmware: [i586] 
+  - kernel-firmware 
   - kernel-kvmsmall: [x86_64] 
   - kernel-kvmsmall-devel: [x86_64] 
   - kernel-macros 
