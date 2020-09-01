@@ -177,4 +177,20 @@
     <comment>Add fix-bsc975503.diff bsc#975503, fdo#97091</comment>
     <requestid>421899</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4328f1f80e7c4f938166efaa75e87a58</srcmd5>
+    <version>0.2.9</version>
+    <time>1598983245</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.9:
+  * Fixed lots of crashes, memory leaks with malformed
+  documents (Albert Astals Cid, Randy)
+  * Ghostscript 9.24 is now required (Christian Persch)
+  * Hide internal symbols (Christian Persch)
+  * Added &quot;(libspectre)&quot; to the error messages to be clear where the
+  messages come from (Caolán McNamara)
+  * Fixed clang warnings (Albert Astals Cid) 
+- fix-bsc975503.diff: refresh</comment>
+    <requestid>828315</requestid>
+  </revision>
 </revisionlist>

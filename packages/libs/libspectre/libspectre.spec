@@ -1,7 +1,7 @@
 #
 # spec file for package libspectre
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Url:            http://libspectre.freedesktop.org/
-
+%define debug_package_requires libspectre1 = %{version}-%{release}
 Name:           libspectre
-Version:        0.2.8
+Version:        0.2.9
 Release:        0
 Summary:        Library for Rendering PostScript Documents
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
+URL:            https://libspectre.freedesktop.org/
 Source0:        http://libspectre.freedesktop.org/releases/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-bsc975503.diff bsc#975503 fdo#97091 -- Parse ps files ignoring EOF comments which would stop parsing too soon in documents with embedded EPS files.
 Patch0:         fix-bsc975503.diff
-%define debug_package_requires libspectre1 = %{version}-%{release}
 BuildRequires:  ghostscript-devel
 BuildRequires:  ghostscript-library
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 libspectre is a small library for rendering Postscript documents. It
@@ -51,7 +49,7 @@ Postscript documents.
 Summary:        Library for Rendering PostScript Documents
 Group:          Development/Libraries/C and C++
 Requires:       libspectre1 >= %{version}
-%requires_eq ghostscript-devel
+%requires_eq    ghostscript-devel
 
 %description -n libspectre-devel
 libspectre is a small library for rendering Postscript documents. It
@@ -64,25 +62,19 @@ Postscript documents.
 
 %build
 %configure --disable-static --enable-shared
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %post -n libspectre1 -p /sbin/ldconfig
-
 %postun -n libspectre1 -p /sbin/ldconfig
 
-%clean
-rm -rf %{buildroot}
-
 %files -n libspectre1
-%defattr(-, root, root)
-%doc COPYING
+%license COPYING
 %{_libdir}/libspectre.so.1*
 
 %files -n libspectre-devel
-%defattr(-, root, root)
 %{_includedir}/libspectre
 %{_libdir}/libspectre.la
 %{_libdir}/libspectre.so

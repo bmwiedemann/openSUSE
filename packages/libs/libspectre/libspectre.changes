@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 20 22:01:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.2.9:
+  * Fixed lots of crashes, memory leaks with malformed
+  documents (Albert Astals Cid, Randy)
+
+  * Ghostscript 9.24 is now required (Christian Persch)
+
+  * Hide internal symbols (Christian Persch)
+
+  * Added "(libspectre)" to the error messages to be clear where the
+  messages come from (Caolán McNamara)
+  * Fixed clang warnings (Albert Astals Cid) 
+- fix-bsc975503.diff: refresh
+
+-------------------------------------------------------------------
 Tue Aug 23 14:39:44 UTC 2016 - alarrosa@suse.com
 
 - Add fix-bsc975503.diff to fix handling of PostScript files with
