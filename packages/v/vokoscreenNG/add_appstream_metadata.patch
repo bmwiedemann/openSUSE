@@ -74,11 +74,10 @@ diff --git a/src/vokoscreenNG.pro b/src/vokoscreenNG.pro
 index 69bc5a33..fdf7fd07 100644
 --- a/src/vokoscreenNG.pro
 +++ b/src/vokoscreenNG.pro
-@@ -152,3 +152,28 @@ include(loadExtensions/loadExtensions.pri)
- 
+@@ -156,5 +156,30 @@ include(loadExtensions/loadExtensions.pri)
  # systrayAlternative
  include(systrayAlternative/systrayAlternative.pri)
-+
+ 
 +unix:!macx {
 +  isEmpty(PREFIX) {
 +    PREFIX = /usr/local
@@ -103,3 +102,6 @@ index 69bc5a33..fdf7fd07 100644
 +
 +  INSTALLS += target icon desktop appdata
 +}
++
+ # ciscoOpenh264
+ # include( ciscoOpenh264/ciscoOpenh264.pri)

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  1 09:20:36 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.6
+  * Added buffer for audio encoder
+  * Added high-4:4:4 profile for x264 encoder
+  * Added quality slider for vaapih264
+  * Added slice mode, num-slices and max-slice-sice buffers
+    for openh264
+  * Fixed quality slider values on openh264
+
+-------------------------------------------------------------------
 Fri Jul 31 11:08:46 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.0.4
