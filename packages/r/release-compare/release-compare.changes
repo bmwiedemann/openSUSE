@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  1 08:57:42 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.1
+  * added support for Dockerfile builds
+- use git repo as resource
+
+-------------------------------------------------------------------
+Mon Aug 31 09:11:03 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- support also plain kiwi builds
+
+-------------------------------------------------------------------
 Wed Aug 26 13:44:48 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - write changelogs in UTF-8 encoding

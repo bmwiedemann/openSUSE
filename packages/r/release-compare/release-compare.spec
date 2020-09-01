@@ -18,13 +18,12 @@
 
 Name:           release-compare
 Summary:        Release Compare Script
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/release-compare
-Version:        0.1
+Version:        0.3.1
 Release:        0
-Source1:        COPYING
-Source2:        obsgendiff
+Source:         %name-%version.tar.xz
 BuildArch:      noarch
 
 %description
@@ -36,18 +35,20 @@ Note: you need to use a releasetarget definition in your OBS repository
 
 
 %prep
-%setup -q -c -T
+%setup -q
 
 %build
 
 %install
 mkdir -p $RPM_BUILD_ROOT/usr/lib/build/ $RPM_BUILD_ROOT/%_defaultdocdir/%name
-install -m 0755 %SOURCE2 $RPM_BUILD_ROOT/usr/lib/build/
+install -m 0755 obsgendiff $RPM_BUILD_ROOT/usr/lib/build/
 
 %check
+# basic syntax check
 bash -n $RPM_BUILD_ROOT/usr/lib/build/obsgendiff || exit 1
 
 %files
+%license LICENSE
 /usr/lib/build
 
 %changelog
