@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 03:17:12 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.47
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.47      2020-08-18 15:27:27Z
+      - Only add cookies from the jar if there aren't cookies in the request
+        (GH#347) (Doug Bell and Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Jun 25 03:11:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.46
