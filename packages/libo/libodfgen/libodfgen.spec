@@ -1,7 +1,7 @@
 #
 # spec file for package libodfgen
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define libname libodfgen-0_1-1 
+%define libname libodfgen-0_1-1
 Name:           libodfgen
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        Library to generate ODF documents from libwpd's and libwpg's api calls
-License:        LGPL-2.1+ and MPL-2.0+
+License:        LGPL-2.1-or-later AND MPL-2.0+
 Group:          Productivity/Publishing/Word
-Url:            http://libwpd.sourceforge.net
+URL:            http://libwpd.sourceforge.net
 Source:         http://downloads.sourceforge.net/project/libwpd/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(librevenge-0.0)
 BuildRequires:  pkgconfig(librevenge-stream-0.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libodfgen is a general purpose library designed to generate ODF documents
@@ -76,34 +75,30 @@ export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 	--docdir=%{_docdir}/%{name}-devel/html \
 	--with-sharedptr=c++11
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %fdupes -s %{buildroot}
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 %doc ChangeLog
-%doc COPYING.LGPL
-%doc COPYING.MPL
+%license COPYING.LGPL
+%license COPYING.MPL
 %doc NEWS
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libodfgen*.pc
 %{_includedir}/libodfgen*
 
 %files devel-doc
-%defattr(-,root,root,-)
 %dir %{_docdir}/%{name}-devel
 %doc %{_docdir}/%{name}-devel/html/
 
