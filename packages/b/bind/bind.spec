@@ -106,14 +106,14 @@ Provides:       bind9 = %{version}
 Provides:       dns_daemon
 Obsoletes:      bind8 < %{version}
 Obsoletes:      bind9 < %{version}
-# named.init (systemd) and init/named both call start_daemon, so unconditional require it
-Requires:       /sbin/start_daemon
 %if %{with_systemd}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+# named.init (systemd) calls start_daemon, so require it when using systemd
+Requires:       (/sbin/start_daemon if systemd)
 %{?systemd_ordering}
 %sysusers_requires
 %else
