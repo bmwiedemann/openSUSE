@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 11:17:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon to allow building against GCC10 
+
+-------------------------------------------------------------------
 Sun Jun 10 08:37:45 UTC 2018 - antoine.belvire@opensuse.org
 
 - Update to version 0.9.10:

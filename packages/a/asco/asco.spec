@@ -1,7 +1,7 @@
 #
 # spec file for package asco
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A SPICE Circuit Optimizer
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Electronics
-Url:            http://asco.sourceforge.net/
+URL:            http://asco.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/asco/ASCO-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM asco-0.4.10-fix-implicit-declaration.patch
 Patch0:         asco-0.4.10-fix-implicit-declaration.patch
@@ -59,6 +59,9 @@ tar -zxf Autotools.tar.gz
 touch NEWS
 
 %build
+# workaround for GCC10 build failure
+export CFLAGS="%(echo %{optflags}) -fcommon"
+export CXXFLAGS="$CFLAGS"
 autoreconf -fi
 %configure
 make %{?_smp_mflags}
