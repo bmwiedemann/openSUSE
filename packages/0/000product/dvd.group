@@ -116,7 +116,6 @@
     <package name="anjuta-extras-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="anjuta-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="apache-commons-logging" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="apache-parent" supportstatus="unsupported"/> <!-- reason: dvd:apache-parent -->
     <package name="apache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-example-pages" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -2002,7 +2001,7 @@
     <package name="libfreebl3-hmac" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfreecell-solver0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfreehand-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libfreeipmi17" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
+    <package name="libfreeipmi17" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libfreerdp2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfreetype6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfreshclam2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -2219,7 +2218,6 @@
     <package name="libip6tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libipmiconsole2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libipmidetect0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libipmimonitoring6" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
     <package name="libipset13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2525,7 +2523,6 @@
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpostproc55_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
-    <package name="libpowerman0" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2824,7 +2821,6 @@
     <package name="libunwind" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libupnp17" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libupower-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libupsclient1" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
     <package name="liburcu6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusb-0_1-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3174,7 +3170,6 @@
     <package name="mpt-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="mpt-status" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="msr-safe-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="mtd-utils" supportstatus="unsupported"/> <!-- reason: dvd:mtd-utils -->
     <package name="mtdev-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mtr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
@@ -3264,8 +3259,6 @@
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ntp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="nut" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
-    <package name="nut-cgi" supportstatus="unsupported"/> <!-- reason: dvd:nut-cgi -->
     <package name="nvme-cli" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="ocfs2-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ofl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -4651,7 +4644,7 @@
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="system-user-upsd" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
+    <package name="system-user-upsd" supportstatus="unsupported"/> <!-- reason: dvd:system-user-upsd -->
     <package name="system-user-uucp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-wwwrun" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5104,7 +5097,6 @@
     <package name="xlockmore" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xmessage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xml-commons-apis" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="xml-commons-resolver" supportstatus="unsupported"/> <!-- reason: dvd:xml-commons-resolver -->
     <package name="xmlcharent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xmodmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xorg-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5360,7 +5352,6 @@
     <package name="gtk2-tools-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="guestfs-data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="java-14-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:apache-parent -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="ldmtool" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lib389" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
