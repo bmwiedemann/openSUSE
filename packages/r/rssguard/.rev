@@ -197,4 +197,28 @@
     <comment></comment>
     <requestid>829554</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dcc07d82e9f87e60eedcf97f782b16f1</srcmd5>
+    <version>3.7.2</version>
+    <time>1598983856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.2
+  Added:
+  * Parent item/folder in add category/feed dialog is now
+    correctly preselected according to current feed's list
+    selection.
+  * Icons of parent item/folder are now correctly displayed in
+    add feed/category dialogs.
+  * Ability to update only feeds with custom auto-update policy
+    set.
+  * Enhanced feed's list context menus, now displays &quot;Add
+    feed/category here&quot;.
+  Fixed/changed:
+  * Fixed build on ARM machines.
+- Dropped fix-mimesis-for-arm.patch (merged upstream)
+- Fix build on %arm and aarch64:
+  * fix-mimesis-for-arm.patch
+</comment>
+    <requestid>831119</requestid>
+  </revision>
 </revisionlist>
