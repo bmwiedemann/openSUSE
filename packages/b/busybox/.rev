@@ -627,4 +627,14 @@
     <comment>- Enable SELinux for the dynamic version</comment>
     <requestid>826044</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>ca5d42d1887fd90f69c6ea8ca30467ee</srcmd5>
+    <version>1.32.0</version>
+    <time>1598983284</time>
+    <user>dimstar_suse</user>
+    <comment>- Set CONFIG_FIRST_SYSTEM_ID to 101 as we use 100 already as fixed
+  ID for a system account.
+- Require group &quot;nogroup&quot; (used by adduser) (forwarded request 828493 from kukuk)</comment>
+    <requestid>828495</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 21 11:56:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set CONFIG_FIRST_SYSTEM_ID to 101 as we use 100 already as fixed
+  ID for a system account.
+- Require group "nogroup" (used by adduser)
+
+-------------------------------------------------------------------
 Wed Aug 12 13:43:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enable SELinux for the dynamic version
