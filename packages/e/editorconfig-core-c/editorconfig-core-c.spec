@@ -27,6 +27,8 @@ Source:         https://github.com/editorconfig/editorconfig-core-c/archive/v%{v
 Source99:       baselibs.conf
 Patch0:         editorconfig-core-c-0.12.1-install_paths.patch
 Patch1:         editorconfig-core-c-0.12.1-no_timestamp.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-fix-prevent-buffer-overflow-74.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  doxygen
 BuildRequires:  pkgconfig
@@ -82,9 +84,7 @@ file format and supported text editors, see the EditorConfig website.
 This package contains files for developing and building with %{name}
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake \
