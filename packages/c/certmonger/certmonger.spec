@@ -1,6 +1,7 @@
 #
 # spec file for package certmonger
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,45 +18,44 @@
 
 
 Name:           certmonger
-Version:        0.79.9
+Version:        0.79.11
 Release:        0
 Summary:        Certificate status monitor and PKI enrollment client
-
 License:        GPL-3.0-or-later
+
 URL:            http://pagure.io/certmonger/
 Source0:        http://releases.pagure.org/certmonger/certmonger-%{version}.tar.gz
 Patch0002:      0002-certmonger-return-type.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gettext-devel
-BuildRequires:  gcc
-BuildRequires:  openldap2-devel
-BuildRequires:  krb5-devel
-BuildRequires:  libidn2-devel
+BuildRequires:  dbus-1
 BuildRequires:  dbus-1-devel
-BuildRequires:  mozilla-nspr-devel
-BuildRequires:  mozilla-nss-devel
-BuildRequires:  openssl-devel
-BuildRequires:  libuuid-devel
+BuildRequires:  diffutils
+BuildRequires:  dos2unix
+BuildRequires:  expect
+BuildRequires:  gcc
+BuildRequires:  gettext-devel
+BuildRequires:  krb5-devel
+BuildRequires:  libcurl-devel
+BuildRequires:  libfreebl3-hmac
+BuildRequires:  libidn2-devel
+BuildRequires:  libsoftokn3-hmac
 BuildRequires:  libtalloc-devel
 BuildRequires:  libtevent-devel
-BuildRequires:  libcurl-devel
+BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  xmlrpc-c-devel
-BuildRequires:  diffutils
-BuildRequires:  expect
-BuildRequires:  mozilla-nss-tools
+BuildRequires:  mozilla-nspr-devel
+BuildRequires:  mozilla-nss-devel
 BuildRequires:  mozilla-nss-sysinit
-BuildRequires:  libsoftokn3-hmac
-BuildRequires:  libfreebl3-hmac
+BuildRequires:  mozilla-nss-tools
+BuildRequires:  openldap2-devel
 BuildRequires:  openssl
-BuildRequires:  dbus-1
-BuildRequires:  dos2unix
-BuildRequires:  which
-BuildRequires:  python3-dbus-python
+BuildRequires:  openssl-devel
 BuildRequires:  popt-devel
-
+BuildRequires:  python3-dbus-python
+BuildRequires:  which
+BuildRequires:  xmlrpc-c-devel
 
 Requires:       dbus-1
 Requires(post): dbus-1
