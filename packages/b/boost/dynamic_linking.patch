@@ -1,7 +1,7 @@
-Index: boost_1_70_0/libs/test/build/Jamfile.v2
+Index: boost_1_74_0/libs/test/build/Jamfile.v2
 ===================================================================
---- boost_1_70_0.orig/libs/test/build/Jamfile.v2
-+++ boost_1_70_0/libs/test/build/Jamfile.v2
+--- boost_1_74_0.orig/libs/test/build/Jamfile.v2
++++ boost_1_74_0/libs/test/build/Jamfile.v2
 @@ -95,7 +95,7 @@ lib boost_test_exec_monitor
    : # sources
      $(TEST_EXEC_MON_SOURCES).cpp
@@ -11,10 +11,10 @@ Index: boost_1_70_0/libs/test/build/Jamfile.v2
    : # default build
    : # usage-requirements
      <link>shared:<define>BOOST_TEST_DYN_LINK=1
-Index: boost_1_70_0/libs/exception/build/Jamfile.v2
+Index: boost_1_74_0/libs/exception/build/Jamfile.v2
 ===================================================================
---- boost_1_70_0.orig/libs/exception/build/Jamfile.v2
-+++ boost_1_70_0/libs/exception/build/Jamfile.v2
+--- boost_1_74_0.orig/libs/exception/build/Jamfile.v2
++++ boost_1_74_0/libs/exception/build/Jamfile.v2
 @@ -7,7 +7,7 @@
  
  project boost/exception
@@ -24,10 +24,10 @@ Index: boost_1_70_0/libs/exception/build/Jamfile.v2
      ;
  
  lib boost_exception : clone_current_exception_non_intrusive.cpp ;
-Index: boost_1_70_0/libs/chrono/build/Jamfile.v2
+Index: boost_1_74_0/libs/chrono/build/Jamfile.v2
 ===================================================================
---- boost_1_70_0.orig/libs/chrono/build/Jamfile.v2
-+++ boost_1_70_0/libs/chrono/build/Jamfile.v2
+--- boost_1_74_0.orig/libs/chrono/build/Jamfile.v2
++++ boost_1_74_0/libs/chrono/build/Jamfile.v2
 @@ -93,7 +93,7 @@ project boost/chrono
          <toolset>sun:<define>__typeof__=__typeof__
  
@@ -46,10 +46,10 @@ Index: boost_1_70_0/libs/chrono/build/Jamfile.v2
      ;
  
  boost-install boost_chrono ;
-Index: boost_1_70_0/libs/system/build/Jamfile.v2
+Index: boost_1_74_0/libs/system/build/Jamfile.v2
 ===================================================================
---- boost_1_70_0.orig/libs/system/build/Jamfile.v2
-+++ boost_1_70_0/libs/system/build/Jamfile.v2
+--- boost_1_74_0.orig/libs/system/build/Jamfile.v2
++++ boost_1_74_0/libs/system/build/Jamfile.v2
 @@ -11,7 +11,7 @@ project boost/system
      : source-location ../src
      : usage-requirements  # pass these requirement to dependents (i.e. users)
@@ -68,10 +68,10 @@ Index: boost_1_70_0/libs/system/build/Jamfile.v2
     ;
  
  boost-install boost_system ;
-Index: boost_1_70_0/libs/timer/build/Jamfile.v2
+Index: boost_1_74_0/libs/timer/build/Jamfile.v2
 ===================================================================
---- boost_1_70_0.orig/libs/timer/build/Jamfile.v2
-+++ boost_1_70_0/libs/timer/build/Jamfile.v2
+--- boost_1_74_0.orig/libs/timer/build/Jamfile.v2
++++ boost_1_74_0/libs/timer/build/Jamfile.v2
 @@ -13,7 +13,7 @@ project boost/timer
        <library>/boost/chrono//boost_chrono
      : usage-requirements  # pass these requirement to dependants (i.e. users)
@@ -90,11 +90,11 @@ Index: boost_1_70_0/libs/timer/build/Jamfile.v2
     ;
  
  boost-install boost_timer ;
-Index: boost_1_70_0/libs/filesystem/build/Jamfile.v2
+Index: boost_1_74_0/libs/filesystem/build/Jamfile.v2
 ===================================================================
---- boost_1_70_0.orig/libs/filesystem/build/Jamfile.v2
-+++ boost_1_70_0/libs/filesystem/build/Jamfile.v2
-@@ -11,7 +11,7 @@ project boost/filesystem
+--- boost_1_74_0.orig/libs/filesystem/build/Jamfile.v2
++++ boost_1_74_0/libs/filesystem/build/Jamfile.v2
+@@ -54,7 +54,7 @@ project boost/filesystem
      : source-location ../src
      : usage-requirements # pass these requirement to dependents (i.e. users)
        <link>shared:<define>BOOST_FILESYSTEM_DYN_LINK=1
@@ -103,10 +103,10 @@ Index: boost_1_70_0/libs/filesystem/build/Jamfile.v2
      ;
  
  SOURCES =
-@@ -28,7 +28,7 @@ SOURCES =
- lib boost_filesystem
-     : $(SOURCES).cpp
-     : <link>shared:<define>BOOST_FILESYSTEM_DYN_LINK=1
+@@ -75,7 +75,7 @@ lib boost_filesystem
+     : <define>BOOST_FILESYSTEM_SOURCE
+       <include>../src
+       <link>shared:<define>BOOST_FILESYSTEM_DYN_LINK=1
 -      <link>static:<define>BOOST_FILESYSTEM_STATIC_LINK=1
 +#      <link>static:<define>BOOST_FILESYSTEM_STATIC_LINK=1
      :

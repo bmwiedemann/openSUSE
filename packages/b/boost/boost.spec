@@ -16,13 +16,14 @@
 #
 
 
-%define ver 1.71.0
-%define _ver 1_71_0
-%define package_version 1_71_0
+%define ver 1.74.0
+%define _ver 1_74_0
+%define package_version 1_74_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
 %define short_version 1_56
+%define python3X python38
 %define pname boost
 %bcond_with    build_docs
 %bcond_without package_pdf
@@ -32,10 +33,6 @@
 
 %define package_name boost%{library_version}
 %define my_docdir %{_docdir}/boost%{library_version}
-
-%if 0%{?suse_version} < 1500
-  %define python2_sitearch %{python_sitearch}
-%endif
 
 # We can't have these inside the "@BUILD_FLAVOR@" because then quilt
 # can't understand the spec file. If only @BUILD_FLAVOR@ was a normal macro....
@@ -57,12 +54,7 @@ ExclusiveArch:  do_not_build
 %define build_base 0
 %define name_suffix -extra
 %bcond_without python3
-%bcond_without python2
-%ifarch ia64 hppa
-%bcond_with mpi
-%else
 %bcond_without mpi
-%endif
 %endif
 
 %if "@BUILD_FLAVOR@" == "gnu-hpc"
@@ -85,12 +77,11 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %undefine c_f_ver
 %bcond_without hpc
 %bcond_without mpi
-%bcond_without python2
 %bcond_without python3
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
+ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 %endif
 
@@ -103,12 +94,11 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
 %undefine c_f_ver
 %bcond_without hpc
 %bcond_without mpi
-%bcond_without python2
 %bcond_without python3
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
+ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 %endif
 
@@ -120,12 +110,11 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
 %undefine c_f_ver
 %bcond_without hpc
 %bcond_without mpi
-%bcond_without python2
 %bcond_without python3
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
+ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 %endif
 
@@ -137,12 +126,11 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
 %undefine c_f_ver
 %bcond_without hpc
 %bcond_without mpi
-%bcond_without python2
 %bcond_without python3
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
+ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 %endif
 
@@ -168,15 +156,13 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
 %define package_includedir %{hpc_includedir}
 %define base_name %{hpc_package_name %_ver}
 %define package_name %{hpc_package_name %_ver}
-%define package_python2_sitearch %hpc_python_sitearch
 %define package_python3_sitearch %{_hpc_python_sysconfig_path /usr/bin/python3 platlib %{?hpc_prefix}}
 %else
 %define package_prefix %{_prefix}
 %define package_bindir %{_bindir}
 %define package_libdir %{_libdir}
-%define package_includedir %{_includedir} 
+%define package_includedir %{_includedir}
 %define base_name boost%{name_suffix}
-%define package_python2_sitearch %python2_sitearch
 %define package_python3_sitearch %python3_sitearch
 %endif
 
@@ -188,9 +174,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
 %endif
 
 Name:           %{base_name}
-Version:        1.71.0
+Version:        1.74.0
 Release:        0
-%define library_version 1_71_0
+%define library_version 1_74_0
 
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
@@ -207,22 +193,20 @@ Source101:      symbol_diff.sh
 Source102:      README.boost-devel
 Patch1:         boost-thread.patch
 Patch2:         boost-no_type_punning.patch
-Patch3:         boost-no_segfault_in_Regex_filter.patch
 Patch4:         boost-pool_check_overflow.patch
 Patch5:         boost-strict_aliasing.patch
 Patch6:         boost-use_std_xml_catalog.patch
 Patch7:         boost-rpmoptflags-only.patch
 Patch9:         boost-aarch64-flags.patch
 Patch10:        boost-disable-pch-on-aarch64.patch
-Patch13:        boost-visibility.patch
 Patch15:        boost-1.57.0-python-abi_letters.patch
 Patch16:        boost-1.55.0-python-test-PyImport_AppendInittab.patch
 Patch17:        python_mpi.patch
 Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
-Patch23:        3ecbf83f.patch
-Patch24:        riscv-support.patch
+Patch21:        boost-remove-cmakedir.patch
 BuildRequires:  fdupes
+BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libicu-devel
@@ -234,22 +218,12 @@ BuildRequires:  gcc-c++
 %endif
 %if ! %{build_base}
 BuildRequires:  dos2unix
-%if %{with python2}
-BuildRequires:  python2-devel
-%if %{with python_numpy}
-%if 0%{?suse_version} >= 1500
-BuildRequires:  python2-numpy-devel
-%else
-BuildRequires:  python-numpy-devel
-%endif
-%endif # numpy2
-%endif # python2
 %if %{with python3}
 BuildRequires:  python3-devel
 %if %{with python_numpy}
 BuildRequires:  python3-numpy-devel
-%endif # numpy3
-%endif # python3
+%endif
+%endif
 %if %{with build_docs}
 BuildRequires:  docbook
 BuildRequires:  docbook-xsl-stylesheets
@@ -257,11 +231,11 @@ BuildRequires:  doxygen
 BuildRequires:  libxslt-tools
 BuildRequires:  texlive-latex
 %endif
-%endif # ! build_base
+%endif
 %if %{with hpc}
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  suse-hpc
 %hpc_requires
 %if %{with mpi}
@@ -325,6 +299,7 @@ Requires:       libboost_iostreams%{library_version}-devel
 Requires:       libboost_locale%{library_version}-devel
 Requires:       libboost_log%{library_version}-devel
 Requires:       libboost_math%{library_version}-devel
+Requires:       libboost_nowide%{library_version}-devel
 Requires:       libboost_program_options%{library_version}-devel
 Requires:       libboost_random%{library_version}-devel
 Requires:       libboost_regex%{library_version}-devel
@@ -349,13 +324,10 @@ Requires:       libboost_fiber%{library_version}-devel
 Requires:       libboost_graph_parallel%{library_version}-devel
 Requires:       libboost_mpi%{library_version}-devel
 %endif
-%if %{with python2}
-Requires:       libboost_python-py2_7-%{library_version}-devel
-%endif
 %if %{with python3}
 Requires:       libboost_python-py3-%{library_version}-devel
 %endif
-%endif #hpc
+%endif
 %description -n %{package_name}-devel
 This package contains all that is needed to develop/compile
 applications that use the Boost C++ libraries. For documentation see
@@ -367,20 +339,10 @@ Summary:        Boost.MPI Python 3.x serialization library
 Group:          System/Libraries
 Requires:       %{package_name}
 
-%description -n %{package_name}-python3 
+%description -n %{package_name}-python3
 This package contains the Boost.MPI Python 3.x serialization
 inteface.
-%package     -n %{package_name}-python2
-Summary:        Boost.MPI Python 2.x serialization library
-Group:          System/Libraries
-Requires:       %{package_name}
-
-%description -n %{package_name}-python2 
-This package contains the Boost.MPI Python 2.x serialization
-inteface.
-
-
-%endif # hpc
+%endif
 
 %package     -n boost%{library_version}-jam
 Summary:        A Boost Make Replacement
@@ -730,9 +692,6 @@ Requires:       libboost_serialization%{library_version}-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_mpi-devel-impl
 Provides:       libboost_mpi-devel-impl = %{version}
-%if %{with python2}
-Requires:       libboost_python-py2_7-%{library_version}-devel
-%endif
 %if %{with python3}
 Requires:       libboost_python-py3-%{library_version}-devel
 %endif
@@ -761,58 +720,43 @@ Provides:       libboost_graph_parallel-devel-impl = %{version}
 %description -n libboost_graph_parallel%{library_version}-devel
 Development headers for Boost.Graph parallel boost library.
 
-%package     -n libboost_mpi_python-py2_7-%{library_version}
-Summary:        Boost.MPI Python serialization library
+%package     -n libboost_nowide%{library_version}
+Summary:        Boost.Nowide runtime libraries
 Group:          System/Libraries
 Requires:       boost-license%{library_version}
 
-%description -n libboost_mpi_python-py2_7-%{library_version}
-This package contains the Boost.MPI Python 2.7 serialization library
+%description -n libboost_nowide%{library_version}
+This package contains the Boost.Math Runtime libraries.
 
-%package     -n libboost_mpi_python-py2_7-%{library_version}-devel
-Summary:        Development library for Boost.MPI Python 2.7 serialization
+%package     -n libboost_nowide%{library_version}-devel
+Summary:        Development headers for Boost.Nowide libraries
 Group:          Development/Libraries/C and C++
-Requires:       libboost_mpi%{library_version}-devel = %{version}
-Requires:       libboost_mpi_python-py2_7-%{library_version} = %{version}
-Requires:       libboost_python-py2_7-%{library_version} = %{version}
-Conflicts:      boost-devel < 1.63
-Conflicts:      libboost_mpi_python-devel-impl
-Provides:       libboost_mpi_python-devel-impl = %{version}
+Provides:       boost-nowide-devel = 10.0.2.1
+Obsoletes:      boost-nowide-devel < 10.0.2.1
 
-%description -n libboost_mpi_python-py2_7-%{library_version}-devel
-This package contains the Boost.MPI development library for Python 2.7
-serialization interface.
+%description -n libboost_nowide%{library_version}-devel
+Development headers for Boost.Nowide* boost libraries.
 
-%package     -n python2-boost_parallel_mpi%{library_version}
-Summary:        Python 2.7 bindings for Boost.Parallel.MPI library
-Group:          Development/Languages/Python
-Conflicts:      python-boost_parallel_mpi-impl
-Provides:       python-boost_parallel_mpi%{library_version} = %{version}
-Provides:       python-boost_parallel_mpi-impl = %{version}
-
-%description -n python2-boost_parallel_mpi%{library_version}
-This package contains the Boost.Parallel.MPI bindings for Python 2.7
-
-%package     -n libboost_mpi_python-py3-%{library_version}
+%package     -n libboost_mpi_%{python3X}-py3-%{library_version}
 Summary:        Boost.MPI Python 3.x serialization library
 Group:          System/Libraries
 Requires:       boost-license%{library_version}
 
-%description -n libboost_mpi_python-py3-%{library_version}
+%description -n libboost_mpi_%{python3X}-py3-%{library_version}
 This package contains the Boost.MPI Python 3.x serialization
 inteface.
 
-%package     -n libboost_mpi_python-py3-%{library_version}-devel
+%package     -n libboost_mpi_%{python3X}-py3-%{library_version}-devel
 Summary:        Development library for Boost.MPI Python 3.x serialization
 Group:          Development/Libraries/C and C++
 Requires:       libboost_mpi%{library_version}-devel = %{version}
-Requires:       libboost_mpi_python-py3-%{library_version} = %{version}
+Requires:       libboost_mpi_%{python3X}-py3-%{library_version} = %{version}
 Requires:       libboost_python-py3-%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_mpi_python3-devel-impl
 Provides:       libboost_mpi_python3-devel-impl = %{version}
 
-%description -n libboost_mpi_python-py3-%{library_version}-devel
+%description -n libboost_mpi_%{python3X}-py3-%{library_version}-devel
 This package contains the Boost.MPI development library for Python 3.x
 serialization interface
 
@@ -867,50 +811,6 @@ Provides:       libboost_program_options-devel-impl = %{version}
 %description -n libboost_program_options%{library_version}-devel
 This package contains development headers for Boost.ProgramOptions
 library.
-
-%package     -n libboost_python-py2_7-%{library_version}
-Summary:        Boost.Python runtime library
-Group:          System/Libraries
-Requires:       boost-license%{library_version}
-
-%description -n libboost_python-py2_7-%{library_version}
-This package contains the Boost::Python runtime library for default
-version of python.
-
-%package     -n libboost_python-py2_7-%{library_version}-devel
-Summary:        Development headers for Boost.Python library
-Group:          Development/Libraries/C and C++
-Requires:       libboost_headers%{library_version}-devel = %{version}
-Requires:       libboost_python-py2_7-%{library_version} = %{version}
-Conflicts:      boost-devel < 1.63
-Conflicts:      libboost_python-devel-impl
-Provides:       libboost_python-devel-impl = %{version}
-
-%description -n libboost_python-py2_7-%{library_version}-devel
-Development headers for Boost::Python library for the default version of
-python.
-
-%package     -n libboost_numpy-py2_7-%{library_version}
-Summary:        Boost.Python.NumPy runtime library
-Group:          System/Libraries
-Requires:       boost-license%{library_version}
-
-%description -n libboost_numpy-py2_7-%{library_version}
-This package contains the Boost::Python::NumPy runtime library for default
-version of python.
-
-%package     -n libboost_numpy-py2_7-%{library_version}-devel
-Summary:        Development headers for Boost.Python.NumPy library
-Group:          Development/Libraries/C and C++
-Requires:       libboost_headers%{library_version}-devel = %{version}
-Requires:       libboost_numpy-py2_7-%{library_version} = %{version}
-Conflicts:      boost-devel < 1.63
-Conflicts:      libboost_numpy-devel-impl
-Provides:       libboost_numpy-devel-impl = %{version}
-
-%description -n libboost_numpy-py2_7-%{library_version}-devel
-Development headers for Boost::Python::NumPy library for the default version of
-python.
 
 %package     -n libboost_python-py3-%{library_version}
 Summary:        Boost.Python runtime library
@@ -1209,9 +1109,6 @@ tasks.
 %if %{with hpc}
 %{hpc_master_package}
 %{hpc_master_package devel}
-%if %{with python2}
-%{hpc_master_package python2}
-%endif
 %if %{with python3}
 %{hpc_master_package python3}
 %endif
@@ -1223,21 +1120,18 @@ tasks.
 find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {} +
 %patch1 -p1
 %patch2
-%patch3
 %patch4
 %patch5
 %patch6 -p1
 %patch7
 %patch9 -p1
 %patch10 -p1
-%patch13
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
 %patch20 -p1
-%patch23 -p1
-%patch24 -p1
+%patch21 -p1
 
 %build
 find . -type f -exec chmod u+w {} +
@@ -1263,7 +1157,7 @@ LIBRARIES_FLAGS+=" --without-fiber"
 %endif
 EOF
 
-%else # ! build_base
+%else
 
 # Since boost build system is broken and incable of handling multiple python versions,
 # we need to build boost piece by piece. First time to build all the non-python bits,
@@ -1303,7 +1197,7 @@ module load gnu %mpi_flavor
 # alias boost_python_alias : : <library>/boost/python//boost_python ;
 cat << EOF >user-config.jam
 EOF
-%endif # ! build_base
+%endif
 
 # bootstrap b2
 ./bootstrap.sh \
@@ -1315,31 +1209,6 @@ EOF
 . ./.build
 
 %if ! %{build_base}
-
-# Build boost base PYTHON and MPI, installed in python staging
-cp user-config.jam user-config-py.jam
-cat << EOF >> user-config-py.jam
-using python
-     : %{py_ver}
-     : %{_bindir}/python2
-     : %{_includedir}/python%{py_ver}
-     : %{_libdir}/python%{py_ver}
-     :
-     :
-     ;
-%if %{with mpi}
-using mpi ;
-%endif
-EOF
-
-%if %{with python2}
-./b2 -d+2 -q --user-config=./user-config-py.jam \
-    --build-type=minimal --build-dir=./python-build \
-    --python-buildid=py2.7 \
-    --stagedir=./python-stage %{?_smp_mflags} \
-    $PY_LIBRARIES_FLAGS \
-    threading=multi link=shared runtime-link=shared stage
-%endif # with python2
 
 # Build boost python3 and MPI, installed in python3 staging
 %if %{with python3}
@@ -1368,8 +1237,8 @@ EOF
     --python-buildid=py3 \
     --stagedir=./python3-stage %{?_smp_mflags} \
     $PY_LIBRARIES_FLAGS \
-    threading=multi link=shared runtime-link=shared stage
-%endif # python3
+    python=%{python3_version} threading=multi link=shared runtime-link=shared stage
+%endif
 
 %if %{with build_docs}
 cat << EOF >>user-config.jam
@@ -1389,7 +1258,7 @@ EOF
 echo 'using mpi ;' >> ./user-config.jam
 %endif
 
-%endif # ! build_base
+%endif
 
 # This is run for both mini and non-mini build
 ./b2 -d+2 -q --user-config=./user-config.jam \
@@ -1404,16 +1273,6 @@ echo 'using mpi ;' >> ./user-config.jam
 # Can't be too careful!
 cp %{SOURCE101} .
 chmod +x symbol_diff.sh
-%if %{with python3}
-#./symbol_diff.sh python3-stage/lib/libboost_mpi.so           stage/lib/libboost_mpi.so
-#./symbol_diff.sh python3-stage/lib/libboost_serialization.so stage/lib/libboost_serialization.so
-%endif
-%if %{with python2}
-#./symbol_diff.sh python-stage/lib/libboost_serialization.so  stage/lib/libboost_serialization.so
-#./symbol_diff.sh python-stage/lib/libboost_mpi.so            stage/lib/libboost_mpi.so
-%endif
-#./symbol_diff.sh python-stage/lib/libboost_serialization.so  stage/lib/libboost_serialization.so
-#./symbol_diff.sh python-stage/lib/libboost_mpi.so            stage/lib/libboost_mpi.so
 
 # Build documentation
 %if ! %{with hpc}
@@ -1427,9 +1286,9 @@ popd
 cd doc
 ./b2 --user-config=../user-config.jam --v2 man %{?_smp_mflags}
 %endif
-%endif # ! hpc
+%endif
 
-%endif # ! build_base
+%endif
 
 %install
 
@@ -1458,18 +1317,7 @@ module load gnu %mpi_flavor
     threading=multi link=shared runtime-link=shared install
 %endif
 
-%if %{with python2}
-./b2 -d+2 -q --user-config=./user-config-py.jam \
-    --build-type=minimal --build-dir=./python-build \
-    --python-buildid=py2.7 \
-    --prefix=%{buildroot}%{package_prefix} --exec-prefix=%{buildroot}%{package_bindir} \
-    --libdir=%{buildroot}%{package_libdir} --includedir=%{buildroot}%{package_includedir} \
-    --stagedir=./python-stage %{?_smp_mflags} \
-    $PY_LIBRARIES_FLAGS \
-    threading=multi link=shared runtime-link=shared install
 %endif
-
-%endif # ! build_base
 
 # Generic install
 ./b2 -d+2 -q \
@@ -1485,33 +1333,21 @@ module load gnu %mpi_flavor
 ! $(ldd %{buildroot}%{package_libdir}/*.so* | grep python\\.)
 
 %if ! %{build_base}
-%if %{with python2}
-rm -r %{buildroot}%{package_libdir}/libboost_python.so
-rm -r %{buildroot}%{package_libdir}/libboost_mpi_python.so
-ln -s libboost_mpi_python-py2_7.so %{buildroot}%{package_libdir}/libboost_mpi_python.so
-ln -s libboost_python-py2_7.so     %{buildroot}%{package_libdir}/libboost_python.so
-%endif
 
 %if %{with python3}
 ! $(ldd %{buildroot}%{package_libdir}/*.so* | grep python3-\\.)
 ln -s libboost_python-py3.so       %{buildroot}%{package_libdir}/libboost_python3.so
 %endif
 
-# Move Python libraries over to proper places
-%if %{with python2}
-mkdir -p %{buildroot}%{package_python2_sitearch}/boost/parallel/mpi/
-mv %{buildroot}/%{package_libdir}/mpi.so %{buildroot}%{package_python2_sitearch}/boost/parallel/mpi/
-install -m 0644 libs/mpi/build/__init__.py %{buildroot}%{package_python2_sitearch}/boost/parallel/mpi/
-install -m 0644 %{SOURCE11} %{buildroot}%{package_python2_sitearch}/boost/parallel
-install -m 0644 %{SOURCE11} %{buildroot}%{package_python2_sitearch}/boost
-%endif
-
 %if %{with python3}
 mkdir -p %{buildroot}%{package_python3_sitearch}/boost/parallel/mpi/
-mv %{buildroot}/%{package_libdir}/mpi.*so %{buildroot}%{package_python3_sitearch}/boost/parallel/mpi/mpi.%{py3_soflags}.so
 install -m 0644 libs/mpi/build/__init__.py %{buildroot}%{package_python3_sitearch}/boost/parallel/mpi/
 install -m 0644 %{SOURCE11} %{buildroot}%{package_python3_sitearch}/boost/parallel
 install -m 0644 %{SOURCE11} %{buildroot}%{package_python3_sitearch}/boost
+%if ! %{with hpc}
+mv %{buildroot}%{_libdir}/boost-python3.8/mpi.%{py3_soflags}.so %{buildroot}%{package_python3_sitearch}/mpi.%{py3_soflags}.so
+rmdir %{buildroot}%{_libdir}/boost-python3.8
+%endif
 %endif
 
 %if ! %{with hpc}
@@ -1533,8 +1369,8 @@ chmod -x ../boost_1_56_pdf/*.pdf
 mkdir -p %{buildroot}%{package_bindir}
 install -m 0755 dist/bin/quickbook %{buildroot}%{package_bindir}/quickbook
 %endif
-%endif # ! hpc
-%endif # ! build_base
+%endif
+%endif
 
 %if %{build_base} || %{with hpc}
 mkdir -p %{buildroot}%{package_bindir}
@@ -1566,13 +1402,12 @@ mkdir -p %{buildroot}%{my_docdir}
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 mkdir -p %{buildroot}%{_defaultlicensedir}
 %endif
-%else  # ! build_base
+%else
 # duplicate from boost-base flavour
 rm %{buildroot}%{package_libdir}/cmake/BoostDetectToolset-%{version}.cmake
 rm -r %{buildroot}%{package_libdir}/cmake/Boost-%{version}
 rm -r %{buildroot}%{package_libdir}/cmake/boost_headers-%{version}
 rm -r %{buildroot}%{package_libdir}/cmake/boost_{w,}serialization-%{version}
-rm -r %{buildroot}%{package_libdir}/cmake/mpi-%{version}
 
 rm -rf %{buildroot}%{package_libdir}/libboost_numpy.so{,.%{version}}
 rm -rf %{buildroot}%{package_libdir}/libboost_mpi_python.so.%{version}
@@ -1583,10 +1418,6 @@ rm %{buildroot}%{package_libdir}/libboost_{w,}serialization*
 rmdir --ignore-fail-on-non-empty %{buildroot}%{package_libdir}
 %fdupes %{buildroot}%{my_docdir}
 %endif
-
-# Remove bad files - no -f on purpose, so we see when we they fix it.
-rm %{buildroot}%{package_libdir}/*.so.1
-rm %{buildroot}%{package_libdir}/*.so.1.71
 
 %if %{with hpc}
 %hpc_write_modules_files
@@ -1618,9 +1449,6 @@ prepend-path    CPATH               %{hpc_includedir}
 prepend-path    C_INCLUDE_PATH      %{hpc_includedir}
 prepend-path    CPLUS_INCLUDE_PATH  %{hpc_includedir}
 }
-if ([file isdirectory  %{package_python2_sitearch}]) {
-prepend-path    PYTHONPATH          %{package_python2_sitearch}
-}
 if ([file isdirectory  %{package_python3_sitearch}]) {
 prepend-path    PYTHONPATH          %{package_python3_sitearch}
 }
@@ -1648,6 +1476,7 @@ EOF
 %post -n libboost_thread%{library_version} -p /sbin/ldconfig
 %post -n libboost_type_erasure%{library_version} -p /sbin/ldconfig
 %post -n libboost_math%{library_version} -p /sbin/ldconfig
+%post -n libboost_nowide%{library_version} -p /sbin/ldconfig
 %post -n libboost_graph%{library_version} -p /sbin/ldconfig
 %post -n libboost_stacktrace%{library_version} -p /sbin/ldconfig
 %post -n libboost_system%{library_version} -p /sbin/ldconfig
@@ -1656,13 +1485,7 @@ EOF
 %post -n libboost_chrono%{library_version} -p /sbin/ldconfig
 %post -n libboost_locale%{library_version} -p /sbin/ldconfig
 %post -n libboost_timer%{library_version} -p /sbin/ldconfig
-%else  # ! build_base
-%if %{with python2}
-%post -n libboost_python-py2_7-%{library_version} -p /sbin/ldconfig
-%if %{with python_numpy}
-%post -n libboost_numpy-py2_7-%{library_version} -p /sbin/ldconfig
-%endif
-%endif
+%else
 
 %if %{with python3}
 %post -n libboost_python-py3-%{library_version} -p /sbin/ldconfig
@@ -1674,16 +1497,13 @@ EOF
 %if %{with mpi}
 %post -n libboost_mpi%{library_version} -p /sbin/ldconfig
 %post -n libboost_graph_parallel%{library_version} -p /sbin/ldconfig
-%if %{with python2}
-%post -n libboost_mpi_python-py2_7-%{library_version} -p /sbin/ldconfig
-%endif
 
 %if %{with python3}
-%post -n libboost_mpi_python-py3-%{library_version} -p /sbin/ldconfig
+%post -n libboost_mpi_%{python3X}-py3-%{library_version} -p /sbin/ldconfig
 %endif
 %endif
 
-%endif # ! build_base
+%endif
 %if %{with hpc}
 %post -n %base_name -p /sbin/ldconfig
 %endif
@@ -1706,6 +1526,7 @@ EOF
 %postun -n libboost_thread%{library_version} -p /sbin/ldconfig
 %postun -n libboost_type_erasure%{library_version} -p /sbin/ldconfig
 %postun -n libboost_math%{library_version} -p /sbin/ldconfig
+%postun -n libboost_nowide%{library_version} -p /sbin/ldconfig
 %postun -n libboost_graph%{library_version} -p /sbin/ldconfig
 %postun -n libboost_stacktrace%{library_version} -p /sbin/ldconfig
 %postun -n libboost_system%{library_version} -p /sbin/ldconfig
@@ -1714,13 +1535,7 @@ EOF
 %postun -n libboost_chrono%{library_version} -p /sbin/ldconfig
 %postun -n libboost_locale%{library_version} -p /sbin/ldconfig
 %postun -n libboost_timer%{library_version} -p /sbin/ldconfig
-%else # ! build_base
-%if %{with python2}
-%postun -n libboost_python-py2_7-%{library_version} -p /sbin/ldconfig
-%if %{with python_numpy}
-%postun -n libboost_numpy-py2_7-%{library_version} -p /sbin/ldconfig
-%endif
-%endif
+%else
 
 %if %{with python3}
 %postun -n libboost_python-py3-%{library_version} -p /sbin/ldconfig
@@ -1732,16 +1547,13 @@ EOF
 %if %{with mpi}
 %postun -n libboost_mpi%{library_version} -p /sbin/ldconfig
 %postun -n libboost_graph_parallel%{library_version} -p /sbin/ldconfig
-%if %{with python2}
-%postun -n libboost_mpi_python-py2_7-%{library_version} -p /sbin/ldconfig
-%endif
 
 %if %{with python3}
-%postun -n libboost_mpi_python-py3-%{library_version} -p /sbin/ldconfig
+%postun -n libboost_mpi_%{python3X}-py3-%{library_version} -p /sbin/ldconfig
 %endif
 %endif
 
-%endif # build_base
+%endif
 
 %if %{with hpc}
 %postun -n %{base_name} -p /sbin/ldconfig
@@ -1756,9 +1568,6 @@ EOF
 %dir %{hpc_install_path}
 %package_libdir
 %exclude %package_libdir/*.so
-%if %{with python2}
-%exclude %package_python2_sitearch
-%endif
 %if %{with python3}
 %exclude %package_python3_sitearch
 %endif
@@ -1766,12 +1575,8 @@ EOF
 %files -n %{package_name}-devel
 %package_includedir
 %package_libdir/*.so
-%if %{with python2}
-%files -n %{package_name}-python2 
-%package_python2_sitearch
-%endif
 %if %{with python3}
-%files -n %{package_name}-python3 
+%files -n %{package_name}-python3
 %package_python3_sitearch
 %endif
 
@@ -1814,7 +1619,7 @@ EOF
 %{package_libdir}/cmake/boost_coroutine-%{version}/*
 %{package_libdir}/libboost_coroutine.so
 
-%endif # if with build_context
+%endif
 
 %files -n libboost_contract%{library_version}
 %{package_libdir}/libboost_contract.so.%{version}
@@ -1843,7 +1648,7 @@ EOF
 %{package_libdir}/cmake/boost_fiber_numa-%{version}/*
 %{package_libdir}/libboost_fiber.so
 
-%endif # with boost_fiber
+%endif
 
 %files -n libboost_filesystem%{library_version}
 %{package_libdir}/libboost_filesystem.so.%{version}
@@ -1890,10 +1695,8 @@ EOF
 %{package_libdir}/libboost_math_tr1.so.%{version}
 
 %files -n libboost_math%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_math-%{version}
 %dir %{package_libdir}/cmake/boost_math_c99*-%{version}
 %dir %{package_libdir}/cmake/boost_math_tr1*-%{version}
-%{package_libdir}/cmake/boost_math-%{version}/*
 %{package_libdir}/cmake/boost_math_c99*-%{version}/*
 %{package_libdir}/cmake/boost_math_tr1*-%{version}/*
 %{package_libdir}/libboost_math_c99f.so
@@ -1902,6 +1705,16 @@ EOF
 %{package_libdir}/libboost_math_tr1f.so
 %{package_libdir}/libboost_math_tr1l.so
 %{package_libdir}/libboost_math_tr1.so
+
+%files -n libboost_nowide%{library_version}
+%{package_libdir}/libboost_nowide.so.%{version}
+
+%files -n libboost_nowide%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_nowide-%{version}
+%{package_libdir}/cmake/boost_nowide-%{version}/boost_nowide-config.cmake
+%{package_libdir}/cmake/boost_nowide-%{version}/boost_nowide-config-version.cmake
+%{package_libdir}/cmake/boost_nowide-%{version}/libboost_nowide-variant-shared.cmake
+%{package_libdir}/libboost_nowide.so
 
 %files -n libboost_test%{library_version}
 %{package_libdir}/libboost_prg_exec_monitor.so.%{version}
@@ -1926,13 +1739,13 @@ EOF
 %dir %{package_libdir}/cmake/boost_program_options-%{version}
 %{package_libdir}/cmake/boost_program_options-%{version}/*
 %{package_libdir}/libboost_program_options.so
-%endif # build_base
+%endif
 
 %if ! %{build_base}
 
 %if %{with mpi}
 %files -n libboost_mpi%{library_version}
-%{package_libdir}/libboost_mpi.so.%{version}
+%{package_libdir}/libboost_mpi.so.1*
 
 %files -n libboost_mpi%{library_version}-devel
 %dir %{package_libdir}/cmake
@@ -1941,7 +1754,7 @@ EOF
 %{package_libdir}/libboost_mpi.so
 
 %files -n libboost_graph_parallel%{library_version}
-%{package_libdir}/libboost_graph_parallel.so.%{version}
+%{package_libdir}/libboost_graph_parallel.so.1*
 
 %files -n libboost_graph_parallel%{library_version}-devel
 %dir %{package_libdir}/cmake
@@ -1949,37 +1762,15 @@ EOF
 %{package_libdir}/cmake/boost_graph_parallel-%{version}/*
 %{package_libdir}/libboost_graph_parallel.so
 
-%if %{with python2}
-%files -n libboost_mpi_python-py2_7-%{library_version}
-%{package_libdir}/libboost_mpi_python-py2_7.so.%{version}
-
-%files -n libboost_mpi_python-py2_7-%{library_version}-devel
-%dir %{package_libdir}/cmake
-%dir %{package_libdir}/cmake/boost_mpi_python-%{version}
-%{package_libdir}/cmake/boost_mpi_python-%{version}/*
-%{package_libdir}/libboost_mpi_python-py2_7.so
-%{package_libdir}/libboost_mpi_python.so
-
-%files -n python2-boost_parallel_mpi%{library_version}
-%dir %{package_python2_sitearch}/boost
-%dir %{package_python2_sitearch}/boost/parallel
-%dir %{package_python2_sitearch}/boost/parallel/mpi
-%{package_python2_sitearch}/boost/__init__.py
-%{package_python2_sitearch}/boost/parallel/__init__.py
-%{package_python2_sitearch}/boost/parallel/mpi/__init__.py
-%{package_python2_sitearch}/boost/parallel/mpi/mpi.so
-%endif # with python2
-
 %if %{with python3}
-%files -n libboost_mpi_python-py3-%{library_version}
-%{package_libdir}/libboost_mpi_python-py3.so.%{version}
+%files -n libboost_mpi_%{python3X}-py3-%{library_version}
+%{package_libdir}/libboost_mpi_%{python3X}-py3.so.%{version}
 
-%files -n libboost_mpi_python-py3-%{library_version}-devel
-%if ! %{with python2}
+%files -n libboost_mpi_%{python3X}-py3-%{library_version}-devel
 %dir %{package_libdir}/cmake/boost_mpi_python-%{version}
 %{package_libdir}/cmake/boost_mpi_python-%{version}/*
 %endif
-%{package_libdir}/libboost_mpi_python-py3.so
+%{package_libdir}/libboost_mpi_%{python3X}-py3.so
 
 %files -n python3-boost_parallel_mpi%{library_version}
 %dir %{package_python3_sitearch}/boost
@@ -1988,36 +1779,12 @@ EOF
 %{package_python3_sitearch}/boost/__init__.py
 %{package_python3_sitearch}/boost/parallel/__init__.py
 %{package_python3_sitearch}/boost/parallel/mpi/__init__.py
-%{package_python3_sitearch}/boost/parallel/mpi/mpi.%{py3_soflags}.so
-
-%endif # with python3
-%endif # with mpi
-
-%if %{with python2}
-%files -n libboost_python-py2_7-%{library_version}
-%{package_libdir}/libboost_python-py2_7.so.%{version}
-
-%files -n libboost_python-py2_7-%{library_version}-devel
-##%dir %{package_libdir}/cmake/boost_python-%{version}
-##%{package_libdir}/cmake/boost_python-%{version}/*
-%{package_libdir}/libboost_python.so
-%{package_libdir}/libboost_python-py2_7.so
-
-%if %{with python_numpy}
-%files -n libboost_numpy-py2_7-%{library_version}
-%{package_libdir}/libboost_numpy-py2_7.so.%{version}
-
-%files -n libboost_numpy-py2_7-%{library_version}-devel
-##%dir %{package_libdir}/cmake/boost_numpy-%{version}
-##%{package_libdir}/cmake/boost_numpy-%{version}/*
-%{package_libdir}/libboost_numpy-py2_7.so
-
-%endif # with numpy
-%endif # with python2
+%{package_python3_sitearch}/mpi.%{py3_soflags}.so
+%endif
 
 %if %{with python3}
 %files -n libboost_python-py3-%{library_version}
-%{package_libdir}/libboost_python-py3.so.%{version}
+%{package_libdir}/libboost_python-py3.so.1*
 
 %files -n libboost_python-py3-%{library_version}-devel
 %dir %{package_libdir}/cmake
@@ -2028,7 +1795,7 @@ EOF
 
 %if %{with python_numpy}
 %files -n libboost_numpy-py3-%{library_version}
-%{package_libdir}/libboost_numpy-py3.so.%{version}
+%{package_libdir}/libboost_numpy-py3.so.1*
 
 %files -n libboost_numpy-py3-%{library_version}-devel
 %dir %{package_libdir}/cmake
@@ -2036,9 +1803,9 @@ EOF
 %{package_libdir}/cmake/boost_numpy-%{version}/*
 %{package_libdir}/libboost_numpy-py3.so
 
-%endif  # with numpy
-%endif  # with python3
-%endif  # ! build_base
+%endif
+%endif
+%endif
 
 %if %{build_base}
 %files -n libboost_serialization%{library_version}
@@ -2140,7 +1907,7 @@ EOF
 %dir %{package_libdir}/cmake/boost_type_erasure-%{version}
 %{package_libdir}/cmake/boost_type_erasure-%{version}/*
 %{package_libdir}/libboost_type_erasure.so
-%endif # if build_base
+%endif
 
 %if ! %{build_base}
 %if %{with boost_devel}
@@ -2172,7 +1939,7 @@ EOF
 %files -n %{package_name}-quickbook
 %{package_bindir}/quickbook
 %endif
-%endif # ! build_base
+%endif
 
 %if %{build_base}
 %files -n libboost_headers%{library_version}-devel
@@ -2192,6 +1959,6 @@ EOF
 %endif
 
 %endif
-%endif # without hpc
+%endif
 
 %changelog

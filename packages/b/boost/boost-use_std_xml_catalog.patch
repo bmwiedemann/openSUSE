@@ -1,8 +1,8 @@
-Index: boost_1_56_0/tools/build/src/tools/boostbook.jam
+Index: boost_1_74_0/tools/build/src/tools/boostbook.jam
 ===================================================================
---- boost_1_56_0.orig/tools/build/src/tools/boostbook.jam
-+++ boost_1_56_0/tools/build/src/tools/boostbook.jam
-@@ -548,40 +548,7 @@ rule generate-xml-catalog ( target : sou
+--- boost_1_74_0.orig/tools/build/src/tools/boostbook.jam
++++ boost_1_74_0/tools/build/src/tools/boostbook.jam
+@@ -546,40 +546,7 @@ rule generate-xml-catalog ( target : sou
          "  <rewriteURI uriStartString=\"http://www.boost.org/tools/boostbook/dtd/\" rewritePrefix=\"file://$(boostbook-dtd-dir)/\"/>"
          : true ;
  

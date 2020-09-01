@@ -1,8 +1,8 @@
-Index: boost_1_71_0/tools/build/src/tools/python.jam
+Index: boost_1_74_0/tools/build/src/tools/python.jam
 ===================================================================
---- boost_1_71_0.orig/tools/build/src/tools/python.jam
-+++ boost_1_71_0/tools/build/src/tools/python.jam
-@@ -99,7 +99,7 @@ py3-version = ;
+--- boost_1_74_0.orig/tools/build/src/tools/python.jam
++++ boost_1_74_0/tools/build/src/tools/python.jam
+@@ -102,7 +102,7 @@ py3-version = ;
  #   using python : 2.3 : /usr/local/bin/python ;
  #
  rule init ( version ? : cmd-or-prefix ? : includes * : libraries ?
@@ -11,7 +11,7 @@ Index: boost_1_71_0/tools/build/src/tools/python.jam
  {
      project.push-current $(.project) ;
  
-@@ -112,7 +112,7 @@ rule init ( version ? : cmd-or-prefix ?
+@@ -115,7 +115,7 @@ rule init ( version ? : cmd-or-prefix ?
          }
      }
  
@@ -20,7 +20,7 @@ Index: boost_1_71_0/tools/build/src/tools/python.jam
  
      project.pop-current ;
  }
-@@ -507,7 +507,7 @@ local rule probe ( python-cmd )
+@@ -510,7 +510,7 @@ local rule probe ( python-cmd )
  # have a value based on the information given.
  #
  local rule compute-default-paths ( target-os : version ? : prefix ? :
@@ -29,7 +29,7 @@ Index: boost_1_71_0/tools/build/src/tools/python.jam
  {
      exec-prefix ?= $(prefix) ;
  
-@@ -668,7 +668,7 @@ rule version-suffix ( version )
+@@ -671,7 +671,7 @@ rule version-suffix ( version )
  
  # Declare a target to represent Python's library.
  #
@@ -38,7 +38,7 @@ Index: boost_1_71_0/tools/build/src/tools/python.jam
  {
      # Compute the representation of Python version in the name of Python's
      # library file.
-@@ -692,13 +692,13 @@ local rule declare-libpython-target ( ve
+@@ -695,13 +695,13 @@ local rule declare-libpython-target ( ve
      }
  
      # Declare it.
@@ -54,7 +54,7 @@ Index: boost_1_71_0/tools/build/src/tools/python.jam
  {
      local prefix ;
      local exec-prefix ;
-@@ -714,6 +714,7 @@ local rule configure ( version ? : cmd-o
+@@ -717,6 +717,7 @@ local rule configure ( version ? : cmd-o
          extension-suffix ?= _d ;
      }
      extension-suffix ?= "" ;
@@ -62,7 +62,7 @@ Index: boost_1_71_0/tools/build/src/tools/python.jam
  
      local cmds-to-try ;
  
-@@ -789,7 +790,7 @@ local rule configure ( version ? : cmd-o
+@@ -792,7 +793,7 @@ local rule configure ( version ? : cmd-o
                      exec-prefix = $(sys.exec_prefix) ;
  
                      compute-default-paths $(target-os) : $(sys.version) :
@@ -71,7 +71,7 @@ Index: boost_1_71_0/tools/build/src/tools/python.jam
  
                      version = $(sys.version) ;
                      interpreter-cmd ?= $(cmd) ;
-@@ -970,7 +971,7 @@ local rule configure ( version ? : cmd-o
+@@ -973,7 +974,7 @@ local rule configure ( version ? : cmd-o
      }
      else
      {

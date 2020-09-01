@@ -27,10 +27,10 @@ MPI module needs to reference correct python
 ~         <library>boost_mpi_python
 ~         <library>boost_mpi
 ~         <library>/mpi//mpi [ mpi.extra-requirements ]
-Index: boost_1_69_0/libs/python/Jamfile
+Index: boost_1_74_0/libs/python/Jamfile
 ===================================================================
---- boost_1_69_0.orig/libs/python/Jamfile
-+++ boost_1_69_0/libs/python/Jamfile
+--- boost_1_74_0.orig/libs/python/Jamfile
++++ boost_1_74_0/libs/python/Jamfile
 @@ -36,9 +36,10 @@ local rule split-version ( version )
  # For example, Boost.Python built for Python 2.7 uses the suffix "27"
  rule version-suffix ( version )
@@ -45,21 +45,15 @@ Index: boost_1_69_0/libs/python/Jamfile
  }
  
  
-Index: boost_1_69_0/libs/mpi/build/Jamfile.v2
+Index: boost_1_74_0/tools/build/src/tools/python.jam
 ===================================================================
---- boost_1_69_0.orig/libs/mpi/build/Jamfile.v2
-+++ boost_1_69_0/libs/mpi/build/Jamfile.v2
-@@ -42,9 +42,10 @@ local rule split-version ( version )
+--- boost_1_74_0.orig/tools/build/src/tools/python.jam
++++ boost_1_74_0/tools/build/src/tools/python.jam
+@@ -664,6 +664,7 @@ local rule system-library-dependencies (
  # For example, Boost.Python built for Python 2.7 uses the suffix "27"
  rule version-suffix ( version )
  {
--    local major-minor = [ split-version $(version) ] ;
--    local suffix = $(major-minor:J="") ;
--    return $(suffix) ;
-+    #local major-minor = [ split-version $(version) ] ;
-+    #local suffix = $(major-minor:J="") ;
-+    #return $(suffix) ;
 +    return "" ;
- }
- 
- 
+     local major-minor = [ split-version $(version) ] ;
+     local suffix = $(major-minor:J="") ;
+     return $(suffix) ;

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Aug 27 09:15:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- fix nothing provides libboost_mpi_python-py3-1_74_0 
+
+-------------------------------------------------------------------
+Fri Aug 21 20:06:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- provide/obsolete boost-nowide 10.0.2 
+
+-------------------------------------------------------------------
+Mon Aug 17 17:23:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.74.0:
+  * adds Boost.NoWide
+  * see https://www.boost.org/users/history/version_1_72_0.html
+  * see https://www.boost.org/users/history/version_1_73_0.html
+  * see https://www.boost.org/users/history/version_1_74_0.html
+- remove riscv-support.patch, 3ecbf83f.patch (upstream)
+- remove boost-visibility.patch,
+  boost-no_segfault_in_Regex_filter.patch (obsolete, will never go upstream)
+- add boost-remove-cmakedir.patch (remove buildroot embedding in cmake files)
+- remove python 2.7, it is 2020 after all
+
+-------------------------------------------------------------------
 Thu Mar 12 10:18:33 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Fix packaging errors in cases where python2 is disabled and
