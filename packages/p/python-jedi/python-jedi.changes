@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 11:04:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Exclude pytest 6 gh#davidhalter/jedi#1660
+
+-------------------------------------------------------------------
 Fri Jul 17 21:43:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.17.2
