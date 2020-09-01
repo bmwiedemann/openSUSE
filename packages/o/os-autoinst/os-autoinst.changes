@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 01 11:26:28 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1598949244.a169fcf1:
+  * Improve error handling when connection to QMP socket
+
+-------------------------------------------------------------------
 Sun Aug 30 03:26:24 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1598623827.924c995d:
