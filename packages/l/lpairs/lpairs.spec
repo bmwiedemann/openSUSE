@@ -1,7 +1,7 @@
 #
 # spec file for package lpairs
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lpairs
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Classical memory game
-License:        GPL-2.0
-Group:          Amusements/Games/Arcade/LogicGame
-Url:            http://lgames.sourceforge.net/index.php?project=LPairs
-Source0:        http://downloads.sourceforge.net/lgames/%{name}-%{version}.tar.gz
-%if 0%{?suse_version}
+License:        GPL-2.0-only
+Group:          Amusements/Games/Logic
+URL:            http://lgames.sourceforge.net/index.php?project=LPairs
+Source0:        https://downloads.sourceforge.net/lgames/%{name}-%{version}.tar.gz
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(sdl)
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
-%endif
-BuildRequires:  pkgconfig(sdl)
 
 %description
 LPairs is a classical memory game. This means you have to find pairs of
@@ -42,15 +41,17 @@ will be counted but there is no highscore chart or limit to this.
 sed -i 's|games/lpairs|lpairs|' configure
 
 %build
-
-export CFLAGS="%{optflags} -fgnu89-inline"
+# FIXME: Package suffers from c11/inline issues
+# Workaround by appending -std=gnu89 to CFLAGS
+# Proper fix would be to fix the source-code
+export CFLAGS="%{optflags} -std=gnu89"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
-make DESTDIR=%{buildroot} install
-%find_lang %name
+%make_install
+%find_lang %{name}
 
 # install icon
 install -Dm 0644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
@@ -58,14 +59,12 @@ install -Dm 0644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 # install desktop
 install -Dm 0644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-    %fdupes -s %{buildroot}%{_prefix}
-%endif
+%suse_update_desktop_file %{name}
+%fdupes -s %{buildroot}%{_prefix}
 
-%files -f %name.lang
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING ChangeLog README
+%files -f %{name}.lang
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png

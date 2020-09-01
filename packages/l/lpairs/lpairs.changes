@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 31 17:28:09 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.0.5
+  - reduced delay to prevent event loop from dying (2018/11/02 MS) 
+  - fixed compiler warnings and errors (2018/11/02 MS)
+  - improved ingame font (2015/04/12 MS)
+  - always choose set from all icons (2015/04/12 MS)
+  - added animation for removing cards (2015/04/12 MS)
+- Run spec-cleaner
+- Fix Group Tag
+
+-------------------------------------------------------------------
 Wed Jun 24 09:46:17 UTC 2015 - dimstar@opensuse.org
 
 - Add -fgnu89-inline to CFLAGS to fix build with gcc5.
