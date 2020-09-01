@@ -80,4 +80,17 @@
     <comment></comment>
     <requestid>774349</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff2b6dbba77ff6e46903c0a0044d758c</srcmd5>
+    <version>2.24</version>
+    <time>1598983260</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 2.24:
+  * VDO plugin has been deprecated in this release (functionality replaced by LVM VDO) 
+  * support for creating and managing LVM VDO volumes added
+  * support for unlocking of BitLocker-compatible format BITLK added
+  * new functions for (un)freezing filesystems added
+  * test suite can now be run against installed version of libblockdev</comment>
+    <requestid>828318</requestid>
+  </revision>
 </revisionlist>
