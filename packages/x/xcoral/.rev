@@ -145,4 +145,12 @@
   * xcoral-arraysubscript.patch</comment>
     <requestid>777702</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6eefe6ab1067a806903637adec73686d</srcmd5>
+    <version>3.49.8</version>
+    <time>1598983741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830847</requestid>
+  </revision>
 </revisionlist>

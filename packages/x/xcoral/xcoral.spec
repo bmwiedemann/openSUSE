@@ -16,15 +16,16 @@
 #
 
 
-%define         real_ver %{version}-8
 Name:           xcoral
-Version:        3.48
+Version:        3.49.8
 Release:        0
 Summary:        X11 Editor with C/C++/Java Browser
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            http://xcoral.free.fr/
-Source:         http://xcoral.free.fr/xcoral-%{real_ver}.tar.gz
+Source:         http://xcoral.free.fr/xcoral-%{version}.tar.gz
+Patch0:         xcoral-compile.patch
+BuildRequires:  libXft-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xt)
@@ -42,7 +43,7 @@ Further information about Xcoral and SMAC is available in the detailed
 online help system (also available Postscript format).
 
 %prep
-%autosetup -n %{name}-%{real_ver}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %configure
@@ -62,7 +63,6 @@ install -Dpm 0644 SmacLib/xcoralrc.lf \
 
 %files
 %doc Doc/*
-%doc FIXES
 %config(noreplace) %{_sysconfdir}/skel/.xcoralrc
 %{_bindir}/xcoral
 %{_libdir}/xcoral

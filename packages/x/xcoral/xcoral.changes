@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 31 14:14:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.49.8:
+  * this new release uses TrueType/Type1 fonts to replace the old X11 fonts 
+- update xcoral-compile.patch: refresh
+
+-------------------------------------------------------------------
+Mon Jun  8 21:32:48 CEST 2020 - ma@suse.com
+
+- Update to version 3.49.6
+
+-------------------------------------------------------------------
 Thu Feb 20 13:39:10 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.48-8:
