@@ -288,8 +288,8 @@ make DESTDIR=%{buildroot} LD_RUN_PATH="%{_libdir}" install_vendor
 rm -f `find %{buildroot}%{_libdir}/perl*/ -name perllocal.pod -type f`
 rm -f `find %{buildroot}%{_libdir}/perl*/ -name .packlist -type f`
 # perl modules are in lib even on 64 bit arch
-rm -f `find %{buildroot}%{_libexecdir}/perl*/ -name perllocal.pod -type f`
-rm -f `find %{buildroot}%{_libexecdir}/perl*/ -name .packlist -type f`
+rm -f `find %{buildroot}%{_prefix}/lib/perl*/ -name perllocal.pod -type f`
+rm -f `find %{buildroot}%{_prefix}/lib/perl*/ -name .packlist -type f`
 rm -f %{buildroot}%{_localstatedir}/adm/perl-modules/GraphicsMagick
 %endif
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 09:00:35 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Tue Jun  2 12:57:34 UTC 2020 - pgajdos@suse.com
 
 - security update
