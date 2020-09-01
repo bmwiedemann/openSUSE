@@ -1,7 +1,7 @@
 #
 # spec file for package libqxmpp
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 3
 Name:           libqxmpp
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
