@@ -225,4 +225,12 @@ Let's see which package is missing in ringX for test flavor</comment>
   * Fixed #1375: --dont-order-by-type CLI broken.</comment>
     <requestid>827700</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>413086bd380b1ae21da7d1a3cda6da89</srcmd5>
+    <version>5.4.2</version>
+    <time>1598983605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829966</requestid>
+  </revision>
 </revisionlist>

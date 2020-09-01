@@ -32,8 +32,9 @@ Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
 URL:            https://timothycrosley.github.io/isort/
+# only PyPI archive contains setup.py
 Source:         https://files.pythonhosted.org/packages/source/i/isort/isort-%{version}.tar.gz
-# tests and test data are not packaged for PyPI, get them from git sources
+# ... but test data are not packaged for PyPI, get them from git sources
 Source1:        https://github.com/timothycrosley/isort/archive/%{version}.tar.gz#/isort-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -41,6 +42,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     python-hypothesmith
 Recommends:     python-pip-api
 Recommends:     python-pipreqs
 Recommends:     python-requirementslib >= 1.5.4
@@ -50,7 +52,11 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hypothesis-auto}
+BuildRequires:  %{python_module hypothesmith}
+# we cannot just use the source dir on test flavor because tests expect the
+# installed entrypoint (through alternatives)
 BuildRequires:  %{python_module isort = %{version}}
+BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
@@ -73,11 +79,14 @@ imports. It requires Python 3.6+ to run but supports formatting Python 2 code
 too.
 
 %prep
-%if !%{with test}
 %setup -q -n isort-%{version}
 chmod -x LICENSE
-%else
-%setup -q -n isort-%{version} -T -b 1
+%if %{with test}
+tar -x --strip-components=1 -f %{SOURCE1} \
+    isort-%{version}/example_isort_formatting_plugin \
+    isort-%{version}/example_shared_isort_profile \
+    isort-%{version}/.isort.cfg \
+    isort-%{version}/setup.cfg
 %endif
 
 %if !%{with test}
@@ -98,9 +107,9 @@ chmod -x LICENSE
 %{python_expand # create egg-info for example projects
 for exampledir in example_shared_isort_profile example_isort_formatting_plugin; do
   pushd $exampledir
-  # no exact environment as upstreams devel project
+  # don't enforce exact same environment as upstream's devel project
   rm poetry.lock
-  # no dependency download, we have it by BuildRequires
+  # no dependency download, we have them all by BuildRequires
   sed -i '/tool.poetry.dependencies/,/^$/ d' pyproject.toml
   poetry-%{$python_bin_suffix} install
   # append current dir, only use colon if not empty
@@ -108,8 +117,7 @@ for exampledir in example_shared_isort_profile example_isort_formatting_plugin; 
   popd
 done
 }
-# no test_hypothesmith because no libcst because no pyre-check
-%pytest -W "ignore::UserWarning" -W "ignore::DeprecationWarning" --ignore tests/test_hypothesmith.py
+%pytest -W "ignore::UserWarning" -W "ignore::DeprecationWarning"
 %endif
 
 %if !%{with test}
@@ -120,6 +128,7 @@ done
 %python_uninstall_alternative isort
 
 %files %{python_files}
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/isort
 %{python_sitelib}/isort
