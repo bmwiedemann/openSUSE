@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Fri Aug 28 13:01:23 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Introduce kubernetes$FOO-client-common package to make -client truely parralel installable
+
+-------------------------------------------------------------------
+Thu Aug 27 11:42:58 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.19.0:
+  * Updating EndpointSliceMirroring controller to listen for Service changes
+  * test(kuberuntime): deflake TestRemoveContainer
+  * build: Update to go-runner:buster-v2.0.0
+  * build: Migrate go-runner image building to k/release
+  * Reserve Static IP in Ingress test
+  * Add rbac patch permissions for system:controller:glbc ingresses/status
+  * Update json-patch to v4.9.0 tagged release
+  * synchronize agnhost image / app version
+  * track agnhost version in dependencies.yaml
+  * Make sampleAndWaterMarkHistograms not fall very far behind
+  * fix e2e test
+  * etcd 3.4.12
+  * Deflake TestServiceRegistryUpdateDryRun test
+  * Fixing a flaky EndpointSliceMirroring integration test
+  * Updating EndpointSlice controller to wait for all caches to be synced
+  * Deflake TestSubresourcePatch
+  * Speed up master reconciler tests
+  * Remove flaky audit e2e test
+  * Fix building with GOFLAGS=-v
+  * Fix issue in evaluating symlink path for subpath
+  * move ixdy to emeritus
+  * move krzyzacy to emeritus
+  * Fix bug for inconsistent lists served from etcd
+  * publishing: Drop 'go' field from 'controller-manager' 'master' branch
+  * publishing: Use go1.15.0 as default version
+  * publishing: Use go1.13.15 for 1.18, 1.17, and 1.16 release branches
+  * Refactor locks on registeredNodesLocks
+  * fix(pluginwatcher): watch socket dir before traversing it
+  * test(kubectl): deflake run_kubectl_apply_tests
+  * upgrade rules_docker
+  * Fix validation of ingress rules with wildcard host
+  * Add missing changelog entries for v1.18.7
+  * Add missing changelog entries for v1.17.10
+  * Keep track of remaining pods when a node is deleted.
+  * Remove direct accesses to cache's node map
+  * CHANGELOG: Update directory for v1.18.8 release
+  * [go115] Require go1.15 in build helper scripts
+  * CHANGELOG: Update directory for v1.17.11 release
+  * Add sigs for root folders
+  * CHANGELOG: Update directory for v1.16.14 release
+  * [go1.15] Update to go1.15
+  * [go1.15] hack/tools: Update to k/repo-infra@v0.0.12 (supports go1.15.0)
+  * [go1.15] build: Update to k/repo-infra@v0.0.12 (supports go1.15.0)
+  * [e2e]Bind csi driver namespace to test namespace to avoid namespace collision
+  * Promote spiffxp to build/ approver
+  * Updating EndpointSlice controllers to return if error encountered
+  * e2e storage: avoid flaky test failure when watch dies
+  * Validate ingress TLS secretName in v1
+  * e2e services wait for endpoint and endpoint slices
+  * [Flaky test]kubectl log test never restart pod
+  * cluster/images/etcd: Build etcd@3.4.9-3 using debian-base@v2.1.3
+  * build: Update to debian-base@v2.1.3 and debian-iptables@v12.1.2
+  * Updating EndpointSlice e2e tests to accept duplicate EndpointSlices
+  * test(endpoints): deflake TestWatchHTTPTimeout
+  * Sync cache before starting scheduler test
+  * forget the pod when the reserve plugins fail
+  * Update SMD to v4.0.1 and kube-openapi
+  * Wait for mock CSI Driver bringup to perform e2e test
+  * scheduler_perf: label nodes for pod affinity
+  * Skip LB test per schedulable node count
+  * fix(azure): set default value of VmssVirtualMachinesCacheTTLInSeconds during init to prevent data race
+  * [go1.15] Update to go1.15rc2
+  * generated: hack/update-hack-tools.sh && hack/update-vendor.sh
+  * [go1.15] hack/tools: Update to k/repo-infra@v0.0.11 (supports go1.15rc2)
+  * [go1.15] build: Update to k/repo-infra@v0.0.11 (supports go1.15rc2)
+  * Sign up dims for additional review roles
+  * Update to json-patch 4.8.0
+  * Deflake LimitRange e2e test
+  * Add test cluster check when starting csi proxy
+  * [go1.15] Use errors.As to unwrap net errors
+  * Fix namespace controller cleanup orphaning
+  * Add LabelSelector validation in Pod Affinity/AntiAffinity Filter and Score plugins
+  * Add tests for out of band attachments
+  * Add missing termination metrics to priority-and-fairness handler
+  * e2e delete namespaces after finish
+  * Add missing ppc64le architecture in the get-kube* scripts
+  * Requeue service after endpoint deletion
+  * Do not evict pods which tolerate all NoExecute taints
+  * fix: deflake run_kubectl_apply_tests
+  * Deflake TestUpdateNodeStatusWithLease - guard cached machineInfo
+  * CHANGELOG: Update directory for v1.19.0-rc.4 release
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.0-rc.4
+  * Fix /readyz to contain informer-sync
+  * Move bgrant0607 to emeritus status.
+  * Update e2e csi images to k8s.gcr.io
+  * Deflake scheduler PostBind integration test
+  * cloud-node-lifecycle controller: add missing instancev2 calls for node exists and node shutdown
+  * cloud provider: remove redundant implementation of InstanceMetadataByProviderID since instanceV2 is disabled for all providers
+  * cloud provider: remove provider ID references and improve documentation
+  * test/e2e: fail test rather than flooding logs if PVC watch is closed prematurely
+  * fix TestVolumeBinding unit test
+  * Deflake TestExpectationsOnRecreate
+  * Add kind/regression label to the pull request template
+  * Update Cluster Autoscaler version to 1.19.0
+  * Make AttachDisk idempotent again
+  * integration: Wait for PV to be available
+  * Fixing memory leak in EndpointSliceMirroring EndpointSlice tracker
+  * Fix an issue when rotated logs of dead containers are not removed.
+  * Remove unuseful error message about updating pod conditions not owned by kubelet
+  * Makefile: update test-e2e-node help
+
+-------------------------------------------------------------------
+Wed Aug 26 08:18:37 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Initial Packaging 

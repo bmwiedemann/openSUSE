@@ -1,0 +1,11 @@
+--- kubernetes-orig/cmd/kubeadm/app/util/version.go	2020-03-16 16:53:48.277941771 +0100
++++ kubernetes/cmd/kubeadm/app/util/version.go	2020-03-16 17:08:46.753358788 +0100
+@@ -38,7 +38,7 @@
+ )
+ 
+ var (
+-	kubeReleaseBucketURL  = "https://dl.k8s.io"
++	kubeReleaseBucketURL  = "https://kubic.opensuse.org"
+ 	kubeReleaseRegex      = regexp.MustCompile(`^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)([-0-9a-zA-Z_\.+]*)?$`)
+ 	kubeReleaseLabelRegex = regexp.MustCompile(`(k8s-master|((latest|stable)+(-[1-9](\.[1-9]([0-9])?)?)?))\z`)
+ 	kubeBucketPrefixes    = regexp.MustCompile(`^((release|ci|ci-cross)/)?([-\w_\.+]+)$`)
