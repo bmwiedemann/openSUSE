@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:34:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1:
+  * Support the change of the reference implementation to version 1.1.1
+  * Fixing the problem of left / right confusion common in many old SOFA files
+  * Support many more HDF features which are used in recent implementations of netcdf 
+
+-------------------------------------------------------------------
 Tue Feb 11 16:12:41 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.0

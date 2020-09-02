@@ -57,4 +57,16 @@
 </comment>
     <requestid>773490</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d294460c01c1af8ed1fa54e6bd234e8</srcmd5>
+    <version>1.1</version>
+    <time>1599088058</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1:
+  * Support the change of the reference implementation to version 1.1.1
+  * Fixing the problem of left / right confusion common in many old SOFA files
+  * Support many more HDF features which are used in recent implementations of netcdf 
+</comment>
+    <requestid>829597</requestid>
+  </revision>
 </revisionlist>
