@@ -256,7 +256,6 @@ BuildRequires:  libjpeg62-devel
 BuildRequires:  libpng16-compat-devel
 BuildRequires:  libpng16-devel
 BuildRequires:  lmdb-devel
-BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  pcre-devel
 # Requiring 3.9.1 which is the actual one in Leap 15.2
@@ -475,7 +474,6 @@ popd
 
 %build
 %if !%{is_lite}
-%limit_build -m 6000
 %endif
 
 %if %{is_lite}

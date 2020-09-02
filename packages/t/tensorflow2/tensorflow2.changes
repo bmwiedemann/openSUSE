@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:06:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lower memoryperjob to 1300 MB (as done for tensorflow)
+
+-------------------------------------------------------------------
+Thu Aug 20 09:06:46 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Thu Jun 25 12:00:33 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - fixed build with json_cpp 1.9.3 (bsc#1173314)
