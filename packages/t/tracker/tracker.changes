@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 25 16:13:22 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.5:
+  + Add 'tracker export' subcommand to ease migration to 3.x.
+  + Use correct signature for DBusSignalCallback.
+  + Get the systemd user unit dir from pkg-config.
+  + Replace sensitive terms.
+  + Updated translations.
+- Drop tracker-Use-correct-signature.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu May 14 12:41:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add tracker-ontology-upgrades.patch:  libtracker-data: Improve

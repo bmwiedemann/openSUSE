@@ -21,17 +21,17 @@
 %define RPMTrackerAPI 2_0
 
 Name:           tracker
-Version:        2.3.4
+Version:        2.3.5
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker/2.3/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM tracker-Use-correct-signature.patch -- tracker-store: Use correct signature for DBusSignalCallback
-Patch0:         tracker-Use-correct-signature.patch
+
 # PATCH-FIX-UPSTREAM tracker-ontology-upgrades.patch boo#1170587 dimstar@opensuse.org -- Fix ontology migration from very old tracker versions
 Patch1:         tracker-ontology-upgrades.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.46.0
@@ -262,6 +262,7 @@ rm -f %{buildroot}%{_libdir}/tracker-%{TrackerAPI}/libtracker-common.a
 %{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.Store.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.gschema.xml
 %{_mandir}/man1/tracker-daemon.1%{ext_man}
+%{_mandir}/man1/tracker-export.1%{ext_man}
 %{_mandir}/man1/tracker-index.1%{ext_man}
 %{_mandir}/man1/tracker-info.1%{ext_man}
 %{_mandir}/man1/tracker-reset.1%{ext_man}

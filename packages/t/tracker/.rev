@@ -1089,4 +1089,12 @@
   changes over single valued ontology properties (boo#1170587). (forwarded request 805596 from dimstar)</comment>
     <requestid>805783</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>065c27459c13aa803cceff1bf454790a</srcmd5>
+    <version>2.3.5</version>
+    <time>1599088351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830192</requestid>
+  </revision>
 </revisionlist>
