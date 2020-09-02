@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  2 10:34:41 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.27.5
+  * Features
+    - Parse X-Forwarded-For in http transport @lucifer9
+  * Fix
+    - Fix according to staticcheck result @Loyalsoldier
+    - Fix: Bound check when accessing DNS server's ipIndexMap @Vigilans
+    - Refine code @Loyalsoldier
+  * Warning
+    - In version v4.28.0 and later, VMess AEAD will be enabled when alterId is
+    set to 0
+
+-------------------------------------------------------------------
 Sat Aug 29 03:26:28 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update version to 4.27.4
