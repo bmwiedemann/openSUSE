@@ -1,7 +1,7 @@
 #
 # spec file for package autoyast2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,12 +22,12 @@
 %endif
 
 Name:           autoyast2
-Version:        4.3.35
+Version:        4.3.43
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-autoinstallation
+URL:            https://github.com/yast/yast-autoinstallation
 
 Source0:        autoyast2-%{version}.tar.bz2
 Source1:        autoyast_en_html.tar.bz2
@@ -41,8 +41,8 @@ BuildRequires:  libxml2-tools
 # xsltproc for AutoinstClass
 BuildRequires:  libxslt
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
-# AutoYaST issue handling
-BuildRequires:  yast2 >= 4.3.2
+# AutoYaST ElementPath class
+BuildRequires:  yast2 >= 4.3.20
 # FileSystems.read_default_subvol_from_target
 BuildRequires:  yast2-country
 BuildRequires:  yast2-network >= 3.1.145
@@ -66,8 +66,8 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 Requires:       autoyast2-installation = %{version}
 Requires:       libxslt
-# XML.validate
-Requires:       yast2 >= 4.3.8
+# AutoYaST ElementPath class
+Requires:       yast2 >= 4.3.20
 Requires:       yast2-core
 Requires:       yast2-country >= 3.1.13
 # Moving security module to first installation stage
@@ -130,8 +130,8 @@ Requires:       yast2-transfer >= 2.21.0
 # storage-ng based version
 Requires:       yast2-update >= 3.3.0
 Requires:       yast2-xml
-# "transact_by" key in PkgPropertiesAll()
-Requires:       yast2-pkg-bindings >= 4.0.7
+# RPM dependencies in Pkg.Resolvables
+Requires:       yast2-pkg-bindings >= 4.3.0
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 Provides:       yast2-trans-autoinst
