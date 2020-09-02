@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/ClusterLabs/libqb.git</param>
-    <param name="changesrevision">a5216040d337521c1c8ae7bb7ceb1846c7042505</param>
+    <param name="changesrevision">416caf2b922c85d36f6653771e795261b60da843</param>
   </service>
 </servicedata>

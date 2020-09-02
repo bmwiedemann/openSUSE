@@ -247,4 +247,12 @@
 - enable building / shipping of libqb-tests.rpm (bsc#1131328)</comment>
     <requestid>690890</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3111a53de2977d87392424774ba5e962</srcmd5>
+    <version>2.0.1+20200729.416caf2</version>
+    <time>1599088382</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 830253 from yan_gao)</comment>
+    <requestid>830254</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Aug 26 10:29:23 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.1+20200729.416caf2 (v2.0.1):
+- unix.c: use posix_fallocate() (#409)
+- doxygen2man: Tidy RETURN VALUE
+- doxygen2man - Print structure descriptions (where available) (#408)
+- Make manpages (#405)
+- doxygen2man: Fix a couple of the worst coverity errors (#404)
+- doxygen2man - Lots of new features & fixes for parsing libqb manpages (#402)
+- array: More locking fixes (#400)
+- log: Fix threading races (#396)
+- Some bugs spotted by coverity (#399)
+
+-------------------------------------------------------------------
+Mon May 04 11:22:11 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.0+20200504.803d924 (v2.0.0):
+- log: journal: fix forgotten syslog reload when flipped from journal
+- Let remote_tempdir() assume a NUL-terminated name
+- Make it impossible to truncate or overflow the connection description
+- master: Issue 390: Clarify documentation of qb_loop_timer_expire_time_get and provide new function to return previously documented behavior (#391) (gh#ClusterLabs/libqb#390)
+
+-------------------------------------------------------------------
+Mon May 04 11:20:23 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.9.1+20200318.93f9975 (v1.9.1):
+- Doxygen2man (#388)
+- trie: Don't assume that chars are unsigned < 126 (#386)
+- list: fix list handling for gcc10 (#383)
+- Set correct ownership if qb_ipcs_connection_auth_set() has been used (gh#ClusterLabs/libqb#369, rh#1836146)
+- Allow group access to the IPC directory
+- Errors are represented as negative values
+
+-------------------------------------------------------------------
+Mon May 04 11:17:51 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.9.0+20191211.51a03aa (v1.9.0):
+- lib: Fix some minor warnings from newer compilers
+- ipc: Always initialize response struct
+- ringbuffer: fix mistaken errno handling around _rb_chunk_reclaim
+- array,log: Never set errno to a negative value
+- log: Set errno when qb_log_target_alloc() fails
+- ipc: Remove kqueue EOF log message
+- ipc: fix force-filesystem-sockets
+- IPC: server: avoid temporary channel priority loss, up to deadlock-worth (rh#1718773)
+- ipc: Use mkdtemp for more secure IPC files
+
+-------------------------------------------------------------------
+Wed Jun 19 11:39:27 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.0.3+20190408.7cd7b06:
+- ipc: fixes (CVE-2019-12779, bsc#1137835)
+- Merge:
+  * bsc#1137835-0002-ipc-fixes.patch
+
+- ipc: use O_EXCL on SHM files, and randomize the names (CVE-2019-12779, bsc#1137835)
+- Merge:
+  * bsc#1137835-0001-ipc-use-O_EXCL-on-SHM-files-and-randomize-the-names.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 16:48:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop manual requires from libqb-tests.

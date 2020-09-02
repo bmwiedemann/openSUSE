@@ -1,7 +1,7 @@
 #
 # spec file for package libqb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %bcond_without check
 %bcond_without testsrpm
+%bcond_without doxygen2man
 
 Name:           libqb
-Version:        1.0.3+20190326.a521604
+Version:        2.0.1+20200729.416caf2
 Release:        0
 Summary:        An IPC library for high performance servers
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/ClusterLabs/libqb
+URL:            https://github.com/ClusterLabs/libqb
 Source0:        %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Patch1:         libqb-configure-package-version.patch
@@ -46,18 +47,18 @@ BuildRequires:  procps
 libqb is a library providing high performance client server reusable
 features. It provides logging, tracing, IPC, and polling.
 
-%package -n libqb20
+%package -n libqb100
 Summary:        An IPC library for high performance servers
 Group:          System/Libraries
 
-%description -n libqb20
+%description -n libqb100
 libqb is a library providing high performance client server reusable
 features. It provides logging, tracing, IPC, and polling.
 
 %package	devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       libqb20 = %{version}-%{release}
+Requires:       libqb100 = %{version}-%{release}
 
 %description devel
 libqb is a library providing high performance client server reusable
@@ -103,11 +104,11 @@ fi
 find %{buildroot} -name '*.la' -delete
 rm -rf %{buildroot}%{_datadir}/doc
 
-%post -n libqb20 -p /sbin/ldconfig
+%post -n libqb100 -p /sbin/ldconfig
 
-%postun -n libqb20 -p /sbin/ldconfig
+%postun -n libqb100 -p /sbin/ldconfig
 
-%files -n libqb20
+%files -n libqb100
 %doc COPYING
 %{_libdir}/libqb.so.*
 
@@ -137,5 +138,22 @@ Group:          Development/Tools/Other
 
 %description	tests
 The %{name}-tests package contains the %{name} test suite.
+
+
+%if %{with doxygen2man}
+%package	-n doxygen2man
+Summary:        tool to generate man pages from Doxygen XML files
+Group:          Development/Libraries
+Requires:       libqb100 = %{version}-%{release}
+BuildRequires:  pkgconfig(libxml-2.0)
+
+%files -n doxygen2man
+%{_bindir}/doxygen2man
+%{_mandir}/man1/doxygen2man.1*
+%doc COPYING
+
+%description	-n doxygen2man
+The doxygen2man package contains the doxygen2man utility.
+%endif
 
 %changelog
