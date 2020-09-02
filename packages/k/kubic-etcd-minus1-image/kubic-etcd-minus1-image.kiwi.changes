@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Sep  2 11:30:55 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- add %PKG_VERSION%-1 tag to work with hardcoded kubernetes tag requirements
+
+-------------------------------------------------------------------
+Tue Sep  1 15:46:06 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Initial Packaging 
