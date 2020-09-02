@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 28 14:57:34 UTC 2020 - Kirk Allan <kallan@suse.com>
+
+- Update to 11.1.5 (build 16724464) (boo#1175573)
+  + This source release rolls up the SDMP fixes release post 11.1.0.
+  + Fix serveral Coverity reported issues.
+  + Address github issues:
+      https://github.com/vmware/open-vm-tools/issues/451
+      https://github.com/vmware/open-vm-tools/issues/429
+      https://github.com/vmware/open-vm-tools/issues/428
+- Drop unnecessary patch:
+  - gcc10-warning.patch
+  - sdmp-get-version.patch
+  - sdmp-netstat-to-ss.patch
+  - sdmp-warnings.patch
+
+-------------------------------------------------------------------
 Thu Jun 18 18:10:23 UTC 2020 - Kirk Allan <kallan@suse.com>
 
 - jsc#ECO-2164 for update 11.1.0 (build 16036546) (boo#1171764)

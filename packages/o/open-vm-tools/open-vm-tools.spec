@@ -40,8 +40,8 @@
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
-%define bldnum  16036546
-Version:        11.1.0
+%define bldnum  16724464
+Version:        11.1.5
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -135,11 +135,7 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64
 #Upstream patches
-Patch0:         gcc10-warning.patch
-Patch1:         pam-vmtoolsd.patch
-Patch2:         sdmp-warnings.patch
-Patch3:         sdmp-get-version.patch
-Patch4:         sdmp-netstat-to-ss.patch
+Patch0:         pam-vmtoolsd.patch
 
 %if 0%{?suse_version} >= 1500
 %systemd_ordering
@@ -220,10 +216,6 @@ if you intend to create own plugins for vmtoolsd.
 sed -i -e "s/\r//" README
 #Upstream patches
 %patch0 -p2
-%patch1 -p2
-%patch2 -p2
-%patch3 -p2
-%patch4 -p2
 
 %build
 %if %{with_X}
