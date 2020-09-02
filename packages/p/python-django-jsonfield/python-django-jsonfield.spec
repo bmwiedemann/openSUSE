@@ -52,6 +52,7 @@ store validated JSON in your model.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE="tests.settings"
 %pytest
 
