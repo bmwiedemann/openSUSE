@@ -363,10 +363,10 @@ rm -rf $BUNDLE_DIR
         sed -E -i 's/(^index [a-f0-9]{28})[a-f0-9]{12}([.][.][a-f0-9]{28})[a-f0-9]{12}( [0-9]{6}$)/\1\2\3/' $i
 	BASENAME=$(basename $i)
         if [ "$FIVE_DIGIT_POTENTIAL" = "1" ]; then
-            if [[ $BASENAME =~ [[:digit:]]{5}.* ]]; then
+            if [[ "$BASENAME" =~ ^[[:digit:]]{5}.* ]]; then
                 :
             else
-                BASENAME=0$BASENAME
+                BASENAME=0"$BASENAME"
             fi
 	fi
         if [[ "$NUMBERED_PATCHES" = "0" ]]; then
@@ -374,23 +374,23 @@ rm -rf $BUNDLE_DIR
         else
 	    KEEP_COUNT=40
 	fi
-        tail -n +2 $i > $CMP_DIR/${BASENAME:0:$KEEP_COUNT}.patch
+        tail -n +2 $i > $CMP_DIR/"${BASENAME:0:$KEEP_COUNT}".patch
 	rm $i
     done
     if [[ "$NUMBERED_PATCHES" = "0" ]]; then
         for i in [0-9]*.patch; do
-            osc rm --force $i
+            osc rm --force "$i"
         done
 # make sure that w/out the numbered prefixes, the patchnames are all unique
         mkdir checkdir
         for i in $CMP_DIR/*; do
             BASENAME=$(basename $i)
-	    FINALNAME=${BASENAME:4+$FIVE_DIGIT_POTENTIAL+1:40+1+5}
-	    if [[ -e checkdir/$FINALNAME ]]; then
+	    FINALNAME="${BASENAME:4+$FIVE_DIGIT_POTENTIAL+1:40+1+5}"
+	    if [[ -e checkdir/"$FINALNAME" ]]; then
 	        echo "ERROR! Patch name $FINALNAME is not unique! Please modify patch subject to achieve uniqueness"
 	        exit 1
             fi
-	    cp $i checkdir/$FINALNAME
+	    cp $i checkdir/"$FINALNAME"
         done
         CHECK_DIR=checkdir
 	cp $CMP_DIR/*.patch .
@@ -404,10 +404,10 @@ rm -rf $BUNDLE_DIR
     fi
     for i in $CHECK_DIR/*; do
         BASENAME=$(basename $i)
-        if [ -e $BASENAME ]; then
-            if cmp -s $i $BASENAME; then
-                touch --reference=$BASENAME $i
-                rm $BASENAME
+        if [ -e "$BASENAME" ]; then
+            if cmp -s "$i" "$BASENAME"; then
+                touch --reference="$BASENAME" "$i"
+                rm "$BASENAME"
                 let UNCHANGED_COUNT+=1
             else
                 if [ "${BASENAME:0:1+$FIVE_DIGIT_POTENTIAL}" = "$CHECK_PREFIX" ]; then
@@ -432,7 +432,7 @@ rm -rf $BUNDLE_DIR
         NUMBERED_PATCH_RE="^[[:digit:]]{5}-.*[.]patch$"
     fi
     for i in *.patch; do
-	if [[ $i =~ $NUMBERED_PATCH_RE ]]; then
+	if [[ "$i" =~ $NUMBERED_PATCH_RE ]]; then
             if [[ "$NUMBERED_PATCHES" = "1" ]]; then
                 osc rm --force $i
                 echo "  $i" >> qemu.changes.deleted

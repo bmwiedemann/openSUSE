@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Sep  1 18:10:17 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- For SLE15-SP3, note that this update to v5.1.0 is a step towards
+  fulfilling jsc#SLE-13689, which asks for qemu v5.2.0 or higher
+
+-------------------------------------------------------------------
+Wed Aug 26 21:46:05 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix some shell syntax in update_git.sh, esp. an issue exposed by
+  the most recent patch added
+
+-------------------------------------------------------------------
+Tue Aug 25 22:42:27 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix OOB access while processing USB packets (CVE-2020-14364
+  bsc#1175441)
+  usb-fix-setup_len-init-CVE-2020-14364.patch
+- Re-sync openSUSE and SUSE SLE qemu packages. This changes file
+  is the openSUSE one with this entry providing the intervening
+  SLE CVE, JIRA, and bugzilla references, which are still addressed
+  in this package, and not yet called out in this changes file.
+* CVE-2020-1983  CVE-2020-10761 CVE-2020-13361 CVE-2020-13362
+  CVE-2020-13659 CVE-2020-13800
+* bsc#1167816 bsc#1170940 boo#1171712 bsc#1172383 bsc#1172384
+  bsc#1172386 bsc#1172495 bsc#1172710
+* Patches dropped (SLE) (included in current release tarball):
+  exec-set-map-length-to-zero-when-returni.patch
+  i386-acpi-Remove-_HID-from-the-SMBus-ACP.patch
+  megasas-use-unsigned-type-for-reply_queu.patch
+
+-------------------------------------------------------------------
 Thu Aug 20 13:19:12 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix compilation errors seen with pre-release gcc 11

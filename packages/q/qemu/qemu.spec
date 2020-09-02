@@ -183,6 +183,7 @@ Patch00042:     docs-add-SUSE-support-statements-to-html.patch
 Patch00043:     s390x-Fix-stringop-truncation-issue-repo.patch
 Patch00044:     Revert-qht-constify-qht_statistics_init.patch
 Patch00045:     qht-Revert-some-constification-in-qht.c.patch
+Patch00046:     usb-fix-setup_len-init-CVE-2020-14364.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1006,6 +1007,7 @@ This package provides a service file for starting and stopping KSM.
 %patch00043 -p1
 %patch00044 -p1
 %patch00045 -p1
+%patch00046 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
