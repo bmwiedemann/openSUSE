@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  1 21:20:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- support boost >= 1.73
+  * PrusaSlicer-pr4340-boost-1-73.patch gh#prusa3d/PrusaSlicer#4340
+  * fixes gh#prusa3d/PrusaSlicer#4264
+
+-------------------------------------------------------------------
 Tue Sep  1 11:46:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - enforce GDK_BACKEND=x11 by indroducing the same wrapper as Fedora

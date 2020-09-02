@@ -25,6 +25,8 @@ Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
+# PATCH-FIX-UPSTREAM https://github.com/prusa3d/PrusaSlicer/pull/4340
+Patch0:         PrusaSlicer-pr4340-boost-1-73.patch
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2
 BuildRequires:  cmake
@@ -64,6 +66,7 @@ It also works with Mach3, LinuxCNC and Machinekit controllers.
 
 %prep
 %setup -q -n %{name}-version_%{version}
+%patch0 -p1
 sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.inc
 
 %build
