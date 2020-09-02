@@ -62,6 +62,7 @@ BuildRequires:  pkcs11-helper-devel >= 1.11
 BuildRequires:  xz
 Requires:       iproute2
 Requires:       pkcs11-helper >= 1.11
+Requires:       sysvinit-tools
 %if %{with_systemd}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)

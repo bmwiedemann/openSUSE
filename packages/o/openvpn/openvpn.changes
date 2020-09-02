@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 26 17:12:44 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Modernize openvpn.service
+  * /var/run has been obsoleted since a long time.
+  * on reload, send HUP signal directly rather than relying on
+    killproc to look for the main process.
+
+-------------------------------------------------------------------
+Wed Aug 26 17:00:43 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Explicitly requires sysvinit-tools as some of the tools shipped by
+  this package are used in various places regardless of whether
+  openvpn is built for systemd or non systemd systems.
+
+  For the context: sysvinit-tools was pulled in by systemd since 2014
+  but it's no longer the case so better to be safe than sorry.
+
+-------------------------------------------------------------------
 Wed Mar  4 07:30:38 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Fix inconsistency in openvpn.service:
