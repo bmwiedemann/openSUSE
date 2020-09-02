@@ -8,7 +8,6 @@ spec:
   - name: busybox
     image: registry.opensuse.org/opensuse/busybox
     command:
-      - sleep
-      - "3600"
+      - pause
     imagePullPolicy: Always
   restartPolicy: Always

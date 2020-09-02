@@ -1,5 +1,5 @@
 #
-# spec file for package netcfg
+# spec file for package busybox-k8s-yaml
 #
 # Copyright (c) 2020 SUSE LLC
 #
