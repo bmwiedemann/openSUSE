@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  2 16:29:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.9:
+  - Fix breakage due to changes required in POST method
+  - Support wayland native copier `wl-copy` for url copy
+  - Unblock GUI browsers on WSL
+  - Update auto-generated package list
+  - Skip broken Arch Linux packaging (https://github.com/BytePackager issue #204)
+  - Bump version
+  - Update docs
+ 
+-------------------------------------------------------------------
 Thu Oct 24 20:15:07 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 1.7:
