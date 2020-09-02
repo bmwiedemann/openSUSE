@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:07:52 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Recognize installed_product and installed_product_version as
+  legal elements of rules.xml files (boo#1176089).
+- 4.3.43
+
+-------------------------------------------------------------------
+Wed Sep  2 14:58:25 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Add to erb templates more helpers (bsc#1175735)
+
+-------------------------------------------------------------------
+Tue Sep  1 11:32:48 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use <script> elements instead of <listentry> when exporting the
+  <postpartitioning-scripts> section (related to bsc#1175714).
+- Saving log files of postpartitioning-scripts (bsc#1145269)
+  (schubi@suse.de).
+- 4.3.42
+
+-------------------------------------------------------------------
+Thu Aug 27 13:20:00 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the AutoYaST storage UI (related to bsc#1175680).
+- 4.3.41
+
+-------------------------------------------------------------------
+Wed Aug 26 10:31:54 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Unify profile element paths (bsc#1175680).
+- 4.3.40
+
+-------------------------------------------------------------------
+Wed Aug 26 08:17:59 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bnc#1174133
+  - do not crash with internal error when the profile contains
+    corrupted signature_handling option
+- 4.3.39
+
+-------------------------------------------------------------------
+Tue Aug 25 14:17:31 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Add ability to use erb template as dynamic autoyast profile
+  (bsc#1175735)
+- 4.3.38
+
+-------------------------------------------------------------------
+Tue Aug 25 07:33:20 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Speed up finding the "autoyast()" supplements by filtering
+  packages directly on the lilbzypp level (bsc#1175317, related to
+  bsc#1146494)
+- 4.3.37
+
+-------------------------------------------------------------------
+Mon Aug 24 13:44:00 CEST 2020 - schubi@suse.de
+
+- Reporting an error if an corrupted AY configuration file has been
+  read (bsc#160975).
+- 4.3.36
+
+-------------------------------------------------------------------
 Thu Aug 13 07:04:06 UTC 2020 - Michal Filka <mfilka@suse.com>
 
 - bsc#1173624
