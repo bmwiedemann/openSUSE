@@ -2102,4 +2102,41 @@
   * bmo#1645199 - Remove AddTrust root certificates.</comment>
     <requestid>823327</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>29af52cb501c3adaa7cc263bdfb2d727</srcmd5>
+    <version>3.55</version>
+    <time>1599088080</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.55
+  Notable changes
+  * P384 and P521 elliptic curve implementations are replaced with
+    verifiable implementations from Fiat-Crypto [0] and ECCKiila [1].
+  * PK11_FindCertInSlot is added. With this function, a given slot
+    can be queried with a DER-Encoded certificate, providing performance
+    and usability improvements over other mechanisms. (bmo#1649633)
+  * DTLS 1.3 implementation is updated to draft-38. (bmo#1647752)
+  Relevant Bugfixes
+  * bmo#1631583 (CVE-2020-6829, CVE-2020-12400) - Replace P384 and
+    P521 with new, verifiable implementations from Fiat-Crypto and ECCKiila.
+  * bmo#1649487 - Move overzealous assertion in VFY_EndWithSignature.
+  * bmo#1631573 (CVE-2020-12401) - Remove unnecessary scalar padding.
+  * bmo#1636771 (CVE-2020-12403) - Explicitly disable multi-part
+    ChaCha20 (which was not functioning correctly) and more strictly
+    enforce tag length.
+  * bmo#1649648 - Don't memcpy zero bytes (sanitizer fix).
+  * bmo#1649316 - Don't memcpy zero bytes (sanitizer fix).
+  * bmo#1649322 - Don't memcpy zero bytes (sanitizer fix).
+  * bmo#1653202 - Fix initialization bug in blapitest when compiled
+    with NSS_DISABLE_DEPRECATED_SEED.
+  * bmo#1646594 - Fix AVX2 detection in makefile builds.
+  * bmo#1649633 - Add PK11_FindCertInSlot to search a given slot
+    for a DER-encoded certificate.
+  * bmo#1651520 - Fix slotLock race in NSC_GetTokenInfo.
+  * bmo#1647752 - Update DTLS 1.3 implementation to draft-38.
+  * bmo#1649190 - Run cipher, sdr, and ocsp tests under standard test cycle in CI.
+  * bmo#1649226 - Add Wycheproof ECDSA tests.
+  * bmo#1637222 - Consistently enforce IV requirements for DES and 3DES.
+  * bmo#1067214 - Enforce minimum PKCS#1 v1.5 padding length in</comment>
+    <requestid>829609</requestid>
+  </revision>
 </revisionlist>
