@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 28 13:01:23 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Introduce kubernetes$FOO-client-common package to make -client truely parralel installable
+
+-------------------------------------------------------------------
+Thu Aug 20 14:40:53 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Harmonise macro names, use baseversionminus1 across all k8s packages for previous version number
+
+-------------------------------------------------------------------
+Thu Aug 20 11:44:52 UTC 2020 - Jean-Philippe Evrard <jevrard@suse.com>
+
+- Remove old macro on maxcriversion, with the new relaxed constraints
+
+-------------------------------------------------------------------
+Thu Aug 20 10:32:33 UTC 2020 - Jean-Philippe Evrard <jevrard@suse.com>
+
+- Relax constraints on kubeadm
+
+-------------------------------------------------------------------
 Tue Aug 18 15:08:59 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Correct invalid use of %{_libexecdir} to ensure files should be in /usr/lib 

@@ -17,10 +17,9 @@
 
 
 %{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
-# maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
-%define maxcriversion 1.19
 # baseversion - version of kubernetes for this package
 %define baseversion 1.18
+%define baseversionminus1 1.17
 
 Name:           kubernetes%{baseversion}
 Version:        1.18.8
@@ -143,15 +142,12 @@ Group:          System/Management
 Provides:       kubernetes-kubeadm-provider = %{version}
 Conflicts:      kubernetes-kubeadm-provider
 Requires:       cri-runtime
-# Kubeadm 1.15.0 requires cri-tools 1.14.0 or higher (see changelog)
-Requires:       cri-tools >= 1.14.0
 Requires:       ebtables
 Requires:       ethtool
 Requires:       kubernetes-kubeadm-criconfig
 Requires:       socat
 Requires(pre):  shadow
-Requires:       kubernetes%{baseversion}-kubelet
-Conflicts:      cri-tools >= %{maxcriversion}
+Requires:       (kubernetes%{baseversion}-kubelet or kubernetes%{baseversionminus1}-kubelet)
 
 %description kubeadm
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
@@ -161,12 +157,23 @@ kubeadm bootstrapping tool
 Summary:        Kubernetes client tools
 Group:          System/Management
 Provides:       kubernetes-client-provider = %{version}
+Requires:       kubernetes-client-common >= %{version} 
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     bash-completion
 
 %description client
 Kubernetes client tools like kubectl.
+
+%package client-common
+Summary:        Kubernetes client tools common files
+Group:          System/Management
+Requires:       kubernetes%{baseversion}-client
+Provides:       kubernetes-client-common = %{version}
+Conflicts:      kubernetes-client-common
+Recommends:     bash-completion
+
+%description client-common
+Kubernetes client tools common files
 
 %prep
 %setup -q -n kubernetes-%{version}
@@ -293,12 +300,12 @@ ln -s -f %{_sysconfdir}/alternatives/kubectl %{buildroot}%{_bindir}/kubectl
 
 %fdupes -s %{buildroot}
 
-%post client
+%post client-common
 export baseversion="%{baseversion}"
 %{_sbindir}/update-alternatives \
   --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} ${baseversion/./}
 
-%postun client
+%postun client-common
 if [ ! -f %{_bindir}/kubectl%{baseversion} ] ; then
   update-alternatives --remove kubectl %{_bindir}/kubectl%{baseversion}
 fi
@@ -385,11 +392,15 @@ fi
 %files client
 %doc README.md CONTRIBUTING.md
 %license LICENSE
-%{_mandir}/man1/kubectl.1%{?ext_man}
-%{_mandir}/man1/kubectl-*
 %{_bindir}/kubectl
 %{_bindir}/kubectl%{baseversion}
 %ghost %_sysconfdir/alternatives/kubectl
+
+%files client-common
+%doc README.md CONTRIBUTING.md
+%license LICENSE
+%{_mandir}/man1/kubectl.1%{?ext_man}
+%{_mandir}/man1/kubectl-*
 %{_datadir}/bash-completion/completions/kubectl
 
 %changelog
