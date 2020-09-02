@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 11:30:06 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- add %PKG_VERSION%-1 tag to work with hardcoded kubernetes tag requirements
+
+-------------------------------------------------------------------
+Tue Sep  1 15:44:31 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Rework package to use kubernetes-etcd metapackage 
+
+-------------------------------------------------------------------
 Fri Nov  8 22:09:48 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add LICENSE file

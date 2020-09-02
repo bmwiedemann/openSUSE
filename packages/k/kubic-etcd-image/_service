@@ -4,7 +4,7 @@
         <param name="file">kubic-etcd-image.kiwi</param>
         <param name="regex">%PKG_VERSION%</param>
         <param name="parse-version">patch</param>
-        <param name="package">etcd-for-k8s-image</param>
+        <param name="package">kubernetes-etcd</param>
     </service>
     <service mode="buildtime" name="kiwi_label_helper"/>
 </services>

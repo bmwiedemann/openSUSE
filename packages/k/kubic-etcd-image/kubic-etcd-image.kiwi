@@ -4,8 +4,8 @@
 
 <image schemaversion="6.9" name="kubic-etcd-image" xmlns:suse_label_helper="com.suse.label_helper">
   <description type="system">
-    <author>Thorsten Kukuk</author>
-    <contact>kukuk@suse.com</contact>
+    <author>Richard Brown</author>
+    <contact>rbrown@suse.com</contact>
     <specification>Image containing etcd for openSUSE Kubic.</specification>
   </description>
   <preferences>
@@ -15,8 +15,8 @@
       <containerconfig
         name="kubic/etcd"
         tag="latest"
-        additionaltags="%PKG_VERSION%,%PKG_VERSION%-0,%PKG_VERSION%-0.%RELEASE%"
-        maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%-0,%PKG_VERSION%-0.%RELEASE%,%PKG_VERSION%-1,%PKG_VERSION%-1.%RELEASE%"
+        maintainer="Richard Brown &lt;rbrown@suse.com&gt;">
         <expose>
           <port number="2379"/>
           <port number="2380"/>
@@ -34,7 +34,7 @@
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE Kubic etcd container</history>
+        <history author="Richard Brown &lt;rbrown@suse.com&gt;">openSUSE Kubic etcd container</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>
@@ -45,7 +45,7 @@
     <source path="obsrepositories:/"/>
   </repository>
   <packages type="bootstrap">
-    <package name="etcd-for-k8s-image"/>
+    <package name="kubernetes-etcd"/>
     <!-- package name="kubernetes-etcd-migrate"/ -->
   </packages>
 </image>
