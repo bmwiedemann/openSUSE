@@ -1,7 +1,7 @@
 #
 # spec file for package libspiro
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sonum   1
 Name:           libspiro
-Version:        20190731
+Version:        20200505
 Release:        0
 Summary:        A clothoid to bezier spline converter
 License:        GPL-2.0-or-later
@@ -73,14 +73,14 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %postun -n %{name}%{sonum} -p /sbin/ldconfig
 
 %files -n %{name}%{sonum}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README* 
+%license COPYING
+%doc ChangeLog README* 
 %{_libdir}/lib*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
+%{_mandir}/man3/libspiro.3*
 %{_libdir}/pkgconfig/*.pc
 
 %changelog

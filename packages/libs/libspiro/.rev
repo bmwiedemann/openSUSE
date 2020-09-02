@@ -68,4 +68,12 @@
   * Toggle switch ncq added, to allow further control of output results.</comment>
     <requestid>758168</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ff8862b4bcdb5d06dc03856c380dfd48</srcmd5>
+    <version>20200505</version>
+    <time>1599088325</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830130</requestid>
+  </revision>
 </revisionlist>
