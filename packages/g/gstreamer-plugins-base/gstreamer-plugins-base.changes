@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 26 20:12:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend PackageKit-gstreamer-plugin: that package
+  already supplements the combination of gstreamer-plugins-base
+  and packagekit.
+
+-------------------------------------------------------------------
 Fri May  1 17:42:26 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Remove is_opensuse conditionals / really enable orc on SLE 15
-  (jsc#SLE-12265). 
+  (jsc#SLE-12265).
 
 -------------------------------------------------------------------
 Fri Mar  6 08:42:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

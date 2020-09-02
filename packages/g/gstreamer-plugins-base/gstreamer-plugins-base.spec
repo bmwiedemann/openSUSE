@@ -108,7 +108,6 @@ BuildRequires:  pkgconfig(graphene-1.0)
 BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig(wayland-egl) >= 1.0
 Requires:       %{gstreamer_plugins_base_req}
-Recommends:     PackageKit-gstreamer-plugin
 Supplements:    gstreamer
 # Generic name, never used in SuSE:
 Provides:       gst-plugins-base = %{version}
