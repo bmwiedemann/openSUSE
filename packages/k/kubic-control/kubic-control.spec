@@ -17,7 +17,7 @@
 
 
 Name:           kubic-control
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Simple setup tool for kubernetes
 License:        Apache-2.0

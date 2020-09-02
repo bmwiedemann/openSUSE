@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:37:20 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.10.2
+  - Fix apiserver argument handling in multi-master mode
+  - Minor bug fixes
+  - kubicctl: align options
+
+-------------------------------------------------------------------
 Mon Jul 20 15:13:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.10.1
