@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep  1 23:57:08 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.4
+  * Security
+    - prevent XSS and open redirect on OIDC session management OP iframe,
+      introducing generic OIDCRedirectURLsAllowed primitive; thanks Andrew Brady
+    - add OIDCStateCookiePrefix primitive for the state cookie prefix to anonymise the state cookie name
+  * Bugfixes
+    - fix double Set-Cookie behaviour when using OIDCSessionType client-cookie,
+      calling the session info hook and writing out a session update (twice); thanks @deisser
+    - reverse order of creating HTML response and writing the (client-type)
+      session cookie in the session info hook so the session data is actually saved; thanks @deisser
+    - delete state cookie when it cannot be decoded/decrypted
+    - avoid an Apache authorisation error and HTTP 500 when logout is triggered by a different RP
+  * Features
+    - add conditional expression to OIDCUnAuthAction to override auto-detection of
+      non-browser requests; see #479; thanks @raro42 and @marcstern
+  * Other
+    - fixes for various compiler warnings/issues (older and newer versions of GCC)
+    - add grant_types to dynamic client registration request [OIDC conformance test suite]
+    - don't send access_token in user info request when method is set to POST
+      [OIDC conformance test suite]
+    - add recommended cache headers on backchannel logout response
+      https://openid.net/specs/openid-connect-backchannel-1_0.html#rfc.section.2.8 [OIDC conformance test suite]
+    - allow Content-Type check on backchannel logout to have postfixes (utf-8 etc.) [OIDC conformance test suite]
+
+-------------------------------------------------------------------
 Tue Aug 11 08:20:49 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 2.4.3
