@@ -1737,4 +1737,12 @@ Add:  dracut_git_v034_to_head.patch</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>816862</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>f22c71ce6929bffd6fdb2ca422e559b4</srcmd5>
+    <version>050+suse.75.g266a76d9</version>
+    <time>1599088308</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830111</requestid>
+  </revision>
 </revisionlist>

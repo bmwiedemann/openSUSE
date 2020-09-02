@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 19 14:32:51 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 050+suse.75.g266a76d9: 
+  * net-lib.sh: support infiniband network mac addresses (bsc#996146)
+  * 95iscsi: use ip_params_for_remote_addr() (bsc#1167494)
+  * 95nfs: use ip_params_for_remote_addr() (bsc#1167494)
+  * dracut-functions: add ip_params_for_remote_addr() helper (bsc#1167494)
+
+-------------------------------------------------------------------
+Thu Jul 09 10:11:27 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 050+suse.71.g390f4d72:
+  * 01fips: modprobe failures during manual module loading is not fatal (bsc#1169997)
+  * 91zipl: parse-zipl.sh: honor SYSTEMD_READY (bsc#1165828)
+  * 95iscsi: fix ipv6 target discovery (bsc#1172807)
+  * 35network-legacy: correct conditional for creating did-setup file (bsc#1172807)
+
+-------------------------------------------------------------------
 Wed Jun 17 14:38:52 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 050+suse.67.g28be2f36:
