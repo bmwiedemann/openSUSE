@@ -1,7 +1,7 @@
 #
 # spec file for package bwidget
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bwidget
 BuildRequires:  dos2unix
 BuildRequires:  tcl
-Version:        1.9.9
+Version:        1.9.14
 Release:        0
 Summary:        A Set of Megawidgets for Tcl/Tk
-Url:            http://sourceforge.net/projects/tcllib/
 License:        BSD-3-Clause
 Group:          Development/Libraries/Tcl
+URL:            https://core.tcl-lang.org/bwidget
 BuildArch:      noarch
 Requires:       tk
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        http://downloads.sourceforge.net/project/tcllib/BWidget/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/tcllib/files/BWidget/%{version}/bwidget-%{version}.tar.gz
 
 %description
 Add useful and nice-looking widgets to your interfaces with the BWidget
