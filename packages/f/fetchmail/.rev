@@ -675,4 +675,12 @@ reviewed ok
     <comment></comment>
     <requestid>830042</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>19a256ecea62533f379b3f91ec8a64b1</srcmd5>
+    <version>6.4.8</version>
+    <time>1599088547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831200</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 10:08:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- De-hardcode /usr/lib path for launch executable (bsc#1174075)
+- Spec file cleanups
+
+-------------------------------------------------------------------
 Wed Aug 26 17:48:08 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
 
 - Update fetchmail.keyring file

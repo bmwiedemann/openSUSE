@@ -98,15 +98,17 @@ make %{?_smp_mflags} LDFLAGS="-pie"
 
 %install
 %make_install
-ln -sf fetchmail.1.gz %{buildroot}/%{_mandir}/man1/fetchmailconf.1.gz
+ln -sf fetchmail.1.gz %{buildroot}%{_mandir}/man1/fetchmailconf.1.gz
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 cp fetchmail.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/fetchmail
 mkdir -p %{buildroot}/sbin
-mkdir -p %{buildroot}/%{_unitdir}
-mkdir -p %{buildroot}/%{_tmpfilesdir}
-install -m 0644 %{SOURCE6} %{buildroot}/%{_unitdir}/%{name}.service
-install -m 0644 %{SOURCE7} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
-install -m 0755 %{SOURCE8} %{buildroot}/%{_prefix}/lib/%{name}-systemd-exec
+mkdir -p %{buildroot}%{_unitdir}
+mkdir -p %{buildroot}%{_tmpfilesdir}
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE6}
+install -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
+install -m 0644 %{SOURCE7} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+mkdir -p %{buildroot}%{_libexecdir}
+install -m 0755 %{SOURCE8} %{buildroot}%{_libexecdir}/%{name}-systemd-exec
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
 touch %{buildroot}%{_sysconfdir}/fetchmailrc
@@ -160,7 +162,7 @@ make %{?_smp_mflags} check
 %config(noreplace) %{_sysconfdir}/logrotate.d/fetchmail
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
-%{_prefix}/lib/%{name}-systemd-exec
+%{_libexecdir}/%{name}-systemd-exec
 %{_tmpfilesdir}/%{name}.conf
 %{_fillupdir}/sysconfig.%{name}
 
