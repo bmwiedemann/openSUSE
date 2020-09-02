@@ -14,4 +14,13 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f9eb291e1a48e21d940625a9dc50929c</srcmd5>
+    <version>0.4.3</version>
+    <time>1599088607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.3:
+  * Fixes build with new netsurf-buildsystem</comment>
+    <requestid>831411</requestid>
+  </revision>
 </revisionlist>
