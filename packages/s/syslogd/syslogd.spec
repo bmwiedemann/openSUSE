@@ -1,7 +1,7 @@
 #
 # spec file for package syslogd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Release:        0
 Summary:        The Syslog daemon
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-Url:            http://www.infodrom.org/projects/sysklogd/
+URL:            http://www.infodrom.org/projects/sysklogd/
 Source:         http://www.infodrom.org/projects/sysklogd/download/sysklogd-%{version}.tar.gz
 Source1:        logrotate.syslog
 Source2:        sysconfig.syslogd
@@ -361,7 +361,7 @@ rm -f %{_sysconfdir}/systemd/system/multi-user.target.wants/syslog.service
 %files
 %defattr(-,root,root)
 %{_fillupdir}/sysconfig.syslogd
-%config %verify(not mode) %{_sysconfdir}/syslog.conf
+%config %verify(not mode) %attr(0600,root,root) %{_sysconfdir}/syslog.conf
 %{_mandir}/man5/syslog.conf.5%{ext_man}
 %{_mandir}/man8/syslogd.8%{ext_man}
 %{_mandir}/man8/sysklogd.8%{ext_man}

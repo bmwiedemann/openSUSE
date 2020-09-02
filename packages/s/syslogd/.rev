@@ -755,4 +755,12 @@
   preserve file system ACLs (forwarded request 780003 from stroeder)</comment>
     <requestid>782991</requestid>
   </revision>
+  <revision rev="93" vrev="792">
+    <srcmd5>dc62ba0360fe3de99cdb8a8a7b87e0e1</srcmd5>
+    <version>unknown</version>
+    <time>1599088320</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830112</requestid>
+  </revision>
 </revisionlist>

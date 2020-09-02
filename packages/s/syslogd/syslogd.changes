@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:15:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Set permission also in file list for /etc/syslog.conf 
+
+-------------------------------------------------------------------
 Thu Feb 27 18:10:13 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Removed create option from logrotate.syslog to let logrotate
