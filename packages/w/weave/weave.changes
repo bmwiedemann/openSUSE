@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 14 11:22:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.7.0
+  - https://github.com/weaveworks/weave/releases/tag/v2.7.0
+  - obsoletes vendor.tar.xz
+
+-------------------------------------------------------------------
 Tue Jun 30 12:54:05 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.6.5

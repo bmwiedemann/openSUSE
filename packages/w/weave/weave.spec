@@ -17,14 +17,13 @@
 
 
 Name:           weave
-Version:        2.6.5
+Version:        2.7.0
 Release:        0
 Summary:        Pod Network Add-On
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/weaveworks/weave
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
 Source2:        weave-daemonset-k8s-1.11.yaml
 # This package contains the content of a container image, so yes,
 # this includes the home directory and the database.
@@ -101,8 +100,6 @@ container runtimes.
 
 %prep
 %setup -q
-rm -rf vendor
-tar xf %{SOURCE1}
 %patch0 -p1
 %patch1 -p1
 
