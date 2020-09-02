@@ -479,4 +479,16 @@
     <comment></comment>
     <requestid>799886</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8c5a79f2fd7f49b62662c53b759ac840</srcmd5>
+    <version>3.36.3.1</version>
+    <time>1599088712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.36.3.1:
+  + Fixed handling of pinned, invalid TLS certificates:
+    CVE-2020-24661.
+  + Build bug fixes.
+  + Updated translations. (forwarded request 830035 from iznogood)</comment>
+    <requestid>831450</requestid>
+  </revision>
 </revisionlist>
