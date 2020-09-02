@@ -654,4 +654,19 @@ require it nevertheless
   * The internal release automatic script requires python 3.</comment>
     <requestid>823326</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>d1b65d276f72c235819ba112761e4f64</srcmd5>
+    <version>4.27</version>
+    <time>1599088075</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.27
+  * the macOS platform code for shared library loading was
+    changed to support macOS 11.
+    If the absolute path parameter given to PR_LoadLibrary
+    begins with either /System/ or /usr/lib/ then no test is
+    performed if the library exists at a file.
+  * An include statement for a Windows system library header
+    was added</comment>
+    <requestid>829608</requestid>
+  </revision>
 </revisionlist>

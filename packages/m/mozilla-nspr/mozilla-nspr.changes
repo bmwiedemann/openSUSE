@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 22 06:38:40 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 4.27
+  * the macOS platform code for shared library loading was
+    changed to support macOS 11.
+    If the absolute path parameter given to PR_LoadLibrary
+    begins with either /System/ or /usr/lib/ then no test is
+    performed if the library exists at a file.
+  * An include statement for a Windows system library header
+    was added
+
+-------------------------------------------------------------------
 Thu Jul 23 13:26:57 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to version 4.26

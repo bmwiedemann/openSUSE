@@ -18,7 +18,7 @@
 
 
 Name:           mozilla-nspr
-Version:        4.26
+Version:        4.27
 Release:        0
 Summary:        Netscape Portable Runtime
 License:        MPL-2.0
