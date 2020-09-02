@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-ncurses
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libyui-ncurses
-Version:        2.56.1
+Version:        2.56.2
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 
@@ -38,7 +38,7 @@ BuildRequires:  pkg-config
 BuildRequires:  %{libyui_devel_version}
 BuildRequires:  ncurses-devel
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui - Character Based User Interface
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/Libraries
@@ -57,7 +57,7 @@ Provides:       yast2-ncurses = 2.42.0
 Obsoletes:      yast2-ncurses < 2.42.0
 Provides:       yui_backend = %{so_version}
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui - Character Based User Interface
 Group:          System/Libraries
 
@@ -80,7 +80,7 @@ Requires:       glibc-devel
 Requires:       libstdc++-devel
 Requires:       ncurses-devel
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui-ncurses header files
 Group:          Development/Languages/C and C++
 
@@ -94,7 +94,7 @@ This package has very few dependencies.
 
 %package tools
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui-ncurses tools
 # conflict with libyui-ncurses8, /usr/bin/libyui-terminal was originally there
 Group:          System/Libraries

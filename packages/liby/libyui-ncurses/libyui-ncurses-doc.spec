@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-ncurses-doc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@
 %define so_version 13
 
 Name:           %{parent}-doc
-Version:        2.56.1
+Version:        2.56.2
 Release:        0
 Source:         %{parent}-%{version}.tar.bz2
 
@@ -35,7 +35,7 @@ BuildRequires:  texlive-latex
 # YLabel::setAutoWrap()
 BuildRequires:  libyui-devel >= 3.10.0
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui-ncurses documentation
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          Documentation/HTML
