@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  1 17:01:46 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.15.1 (released 2020-09-01) includes security fixes to the
+  net/http/cgi, net/http/fcgi packages.
+  CVE-2020-24553
+  Refs boo#1175132 go1.15 release tracking
+  * boo#1176031 CVE-2020-24553
+  * go#41165 net/http/cgi,net/http/fcgi: Cross-Site Scripting (XSS) when Content-Type is not specified
+
+-------------------------------------------------------------------
 Wed Aug 11 23:53:56 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.15 (released 2020-08-11) Go 1.15 is a major release of Go.
