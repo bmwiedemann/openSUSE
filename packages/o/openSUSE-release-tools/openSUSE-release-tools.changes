@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 26 10:32:44 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200826.3b33c0a6:
+  * Revert "Retrieve packages download statistics"
+
+-------------------------------------------------------------------
+Wed Aug 26 08:51:32 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200826.f6a30eed:
+  * Bugfixes
+  * [metrics-access] Fix packages path
+  * Optimize searching access logs
+  * Parse and count packages
+
+-------------------------------------------------------------------
+Thu Aug 20 13:39:56 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200820.30a5ec58:
+  * bugowner.py: fix typo
+  * bugowner.py: switch to python3
+
+-------------------------------------------------------------------
 Tue Aug 11 08:24:15 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200811.7a216cd0:
