@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:52:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2020.09.01:
+  * Daemon mode (-d switch) does not fork anymore.
+  * Fix crash on completion.
+
+-------------------------------------------------------------------
 Tue Aug  4 13:11:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2020.08.04:

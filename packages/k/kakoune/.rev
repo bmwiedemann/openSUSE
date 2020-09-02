@@ -202,4 +202,14 @@
     on more complex option types.</comment>
     <requestid>824335</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6e76355d4cf26fc6bd220365d80372cb</srcmd5>
+    <version>2020.09.01</version>
+    <time>1599088576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.09.01:
+  * Daemon mode (-d switch) does not fork anymore.
+  * Fix crash on completion.</comment>
+    <requestid>831368</requestid>
+  </revision>
 </revisionlist>
