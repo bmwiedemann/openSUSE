@@ -134,6 +134,7 @@ Patch37:        compiler-rt-sanitizer-ipc-perm.patch
 # PATCH-FIX-UPSTREAM fix-ppcle64-build.patch -- Fix ppcle64 build with newer GCC
 Patch38:        fix-ppcle64-build.patch
 BuildRequires:  binutils-devel >= 2.21.90
+BuildRequires:  ccache
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -187,13 +188,13 @@ Requires:       libstdc++-devel
 Requires:       libtool
 Requires:       llvm%{_sonum}-LTO-devel
 Requires:       llvm%{_sonum}-gold
+Requires:       pkgconfig
+Conflicts:      llvm-devel-provider < %{version}
+Provides:       llvm-devel-provider = %{version}
+Conflicts:      cmake(LLVM)
 %if %{with polly}
 Requires:       llvm%{_sonum}-polly-devel
 %endif
-Requires:       pkgconfig
-Conflicts:      llvm-devel-provider < %{version}
-Conflicts:      cmake(LLVM)
-Provides:       llvm-devel-provider = %{version}
 %if %{with ffi}
 Requires:       pkgconfig(libffi)
 %endif
@@ -230,8 +231,8 @@ Requires:       libLTO%{_sonum}
 Requires:       libclang%{_sonum}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     clang-tools
 Recommends:     clang%{_sonum}-doc
+Recommends:     clang-tools
 Recommends:     libstdc++-devel
 Suggests:       libc++-devel
 
@@ -247,22 +248,22 @@ Requires:       clang%{_sonum}
 # Some binaries used to be in the clang package.
 Conflicts:      clang5
 Conflicts:      clang6
-OrderWithRequires: clang7
-OrderWithRequires: clang8
 # hmaptool used to be contained in the llvm package.
 Conflicts:      llvm5
 Conflicts:      llvm6
-OrderWithRequires: llvm7
-OrderWithRequires: llvm8
-Provides:       clang%{_sonum}-checker
-Conflicts:      scan-build < %{version}
-Conflicts:      scan-view < %{version}
-Provides:       llvm%{_sonum}-emacs-plugins
-Provides:       scan-build = %{version}
-Provides:       scan-view = %{version}
 Conflicts:      emacs-llvm < %{version}
 Provides:       emacs-llvm = %{version}
+Conflicts:      scan-build < %{version}
+Provides:       scan-build = %{version}
+Conflicts:      scan-view < %{version}
+Provides:       scan-view = %{version}
 Conflicts:      vim-plugin-llvm < %{version}
+Provides:       clang%{_sonum}-checker
+Provides:       llvm%{_sonum}-emacs-plugins
+OrderWithRequires: clang7
+OrderWithRequires: clang8
+OrderWithRequires: llvm7
+OrderWithRequires: llvm8
 
 %description -n clang-tools
 This package contains tools and scripts for using Clang, including:
@@ -303,12 +304,12 @@ This package contains the clang (C language) frontend for LLVM.
 Summary:        Documentation for Clang
 Group:          Documentation/HTML
 Conflicts:      clang-doc-provider < %{version}
+Provides:       clang-doc-provider = %{version}
 # The docs used to be contained in the devel package.
 Conflicts:      clang5-devel
 Conflicts:      clang6-devel
 Conflicts:      clang7-devel
 Conflicts:      clang8-devel
-Provides:       clang-doc-provider = %{version}
 BuildArch:      noarch
 
 %description -n clang%{_sonum}-doc
@@ -341,9 +342,9 @@ Summary:        Gold linker plugin for LLVM
 # Avoid multiple provider errors
 Group:          Development/Tools/Building
 Requires:       libLLVM%{_sonum}
+Supplements:    (clang%{_sonum} and binutils-gold)
 Conflicts:      llvm-gold-provider < %{version}
 Provides:       llvm-gold-provider = %{version}
-Supplements:    packageand(clang%{_sonum}:binutils-gold)
 
 %description gold
 This package contains the Gold linker plugin for LLVM.
@@ -409,7 +410,7 @@ of the C++ standard library, targeting C++11.
 %package        vim-plugins
 Summary:        Vim plugins for LLVM
 Group:          Productivity/Text/Editors
-Supplements:    packageand(llvm%{_sonum}:vim)
+Supplements:    (llvm%{_sonum} and vim)
 Conflicts:      vim-plugin-llvm < %{version}
 Provides:       vim-plugin-llvm = %{version}
 BuildArch:      noarch
@@ -645,6 +646,7 @@ mv libcxxabi-%{version}.src projects/libcxxabi
 
 %build
 %define _lto_cflags %{nil}
+ccache -o compiler_check=content
 
 # Use optflags, but:
 # 1) Remove the -D_FORTIFY_SOURCE=2 because llvm does not build correctly with
@@ -729,6 +731,7 @@ fi
     -DLLVM_INCLUDE_TESTS:BOOL=OFF \
     -DLLVM_ENABLE_ASSERTIONS=OFF \
     -DLLVM_TARGETS_TO_BUILD=Native \
+    -DLLVM_CCACHE_BUILD=ON \
 %if %{with gold}
     -DLLVM_USE_LINKER=gold \
 %endif
@@ -774,6 +777,7 @@ export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
     -DCMAKE_CXX_FLAGS="$flags" \
     -DLLVM_PARALLEL_COMPILE_JOBS="$max_compile_jobs" \
     -DLLVM_PARALLEL_LINK_JOBS="$max_link_jobs" \
+    -DLLVM_CCACHE_BUILD=ON \
 %if %{with thin_lto}
     -DLLVM_ENABLE_LTO=Thin \
     -DCMAKE_AR="${LLVM_AR}" \
@@ -1020,7 +1024,7 @@ EOF
 for script in %{buildroot}%{_bindir}/{clang-{format,tidy}-diff,git-clang-format,\
 hmaptool,run-{clang-tidy,find-all-symbols},scan-{build,view},opt-{diff,stats,viewer}} \
         %{buildroot}%{python3_sitelib}/optrecord.py; do
-    sed -i '1s|/usr/bin/env *|%{_bindir}/|;1s|/usr/bin/python$|%{_bindir}/python3|' $script
+    sed -i '1s|/usr/bin/env *|%{_bindir}/|;1s|python$|python3|' $script
 done
 
 # Remove executable bit where not needed.
