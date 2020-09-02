@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 20:13:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to prevent path traversal (boo#1175857, CVE-2020-24654):
+  * 0001-Pass-the-ARCHIVE_EXTRACT_SECURE_SYMLINKS-flag-to-lib.patch
+
+-------------------------------------------------------------------
 Sun Aug  9 09:08:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.08.0
