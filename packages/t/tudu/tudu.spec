@@ -1,7 +1,7 @@
 #
 # spec file for package tudu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           tudu
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        A command line interface tasks manager
 License:        GPL-3.0-only
 Group:          Productivity/Office/Organizers
 URL:            https://code.meskio.net/tudu/
 Source:         https://code.meskio.net/%{name}/%{name}-%{version}.tar.gz
+# Fix configure check which fails due to openSUSE using -Werror=return-value
+Patch1:         configure-check.patch
 BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  ncurses-devel
@@ -35,6 +37,7 @@ as categories and priorities.
 
 %prep
 %setup -q
+%patch1
 
 %build
 %configure
