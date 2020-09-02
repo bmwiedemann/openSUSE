@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 25 20:18:36 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200825:
+  * Save/load DIRECT qword buffer state.
+  * Handle DIRECT commands with partial qword transfers.
+  * Cleanup.
+  * Save/load pendingMicroProgram state.
+  * Make delayed MSCAL handling more robust.
+  * Enable DELAYED_MSCAL.
+  * Improve handling of GIF RegList.
+  * Implement HIGHLIGHT texture function.
+  * Increase draw area size.
+  * pselect changes the contents of fd_set inplace, so they need to be reset when used in a loop
+  * Set the currently selected Vulkan device in settings dialog.
+
+-------------------------------------------------------------------
 Wed Aug 12 19:17:07 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200812:
