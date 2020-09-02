@@ -1128,4 +1128,12 @@ provide distro defaults in a sane way. (forwarded request 71353 from lnussel)</c
   * procps-ng-3.3.8-top.1.diff</comment>
     <requestid>756713</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>180d452dea721ebe840ab5daa23835ee</srcmd5>
+    <version>3.3.16</version>
+    <time>1599088157</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable pidof by default (forwarded request 829746 from kukuk)</comment>
+    <requestid>829779</requestid>
+  </revision>
 </revisionlist>

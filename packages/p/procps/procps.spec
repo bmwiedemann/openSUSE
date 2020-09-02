@@ -1,7 +1,7 @@
 #
 # spec file for package procps
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define somajor 8
 %define libname libprocps%{somajor}
 %bcond_with     bin2usr
-%bcond_with     pidof
+%bcond_without  pidof
 Name:           procps
 Version:        3.3.16
 Release:        0

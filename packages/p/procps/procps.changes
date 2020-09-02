@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 26 12:01:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable pidof by default
+
+-------------------------------------------------------------------
 Wed Dec 11 13:53:07 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to procps-ng-3.3.16
