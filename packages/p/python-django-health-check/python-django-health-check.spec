@@ -56,6 +56,7 @@ sed -i -e '/sphinx/d' -e '/pytest-runner/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.testapp.settings
 %pytest
 
