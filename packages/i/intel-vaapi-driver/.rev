@@ -126,4 +126,12 @@ vaapi-intel-driver needs to be dropped then.</comment>
     <comment></comment>
     <requestid>828744</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>885c0fb3d4d614c9c41f0069c1c87b96</srcmd5>
+    <version>2.4.1</version>
+    <time>1599088406</time>
+    <user>dimstar_suse</user>
+    <comment>- version 2.4.1 needed for jira#SLE/SLE-12712</comment>
+    <requestid>831316</requestid>
+  </revision>
 </revisionlist>
