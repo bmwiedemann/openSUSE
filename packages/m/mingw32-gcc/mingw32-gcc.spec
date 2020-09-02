@@ -56,7 +56,6 @@ Requires:       mingw32-cpp >= %{version}
 Requires:       mingw32-headers
 Requires:       mingw32-runtime
 Requires:       mingw32-winpthreads-devel
-BuildArch:      noarch
 %if %{include_ada}
 BuildRequires:  gcc-ada
 BuildRequires:  mingw32-cross-gcc-ada >= %{version}

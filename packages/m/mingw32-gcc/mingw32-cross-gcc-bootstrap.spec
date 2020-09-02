@@ -16,7 +16,7 @@
 #
 
 
-%define __os_install_post %{_libexecdir}/rpm/brp-compress %{nil}
+%define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 Name:           mingw32-cross-gcc-bootstrap
 Version:        9.2.0
 Release:        0

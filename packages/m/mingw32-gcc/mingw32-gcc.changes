@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 22 09:33:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Cannot be noarch, otherwise it makes mingw32-libssp0 (and others)
+  available on other architectures, which is wrong.
+
+-------------------------------------------------------------------
 Mon Jan  6 12:19:01 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Update multibuild package names: mingw64* -> mingw32*

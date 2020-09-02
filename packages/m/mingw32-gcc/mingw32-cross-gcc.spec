@@ -16,7 +16,7 @@
 #
 
 
-%define __os_install_post %{_libexecdir}/rpm/brp-compress %{nil}
+%define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 %define include_ada 0
 Name:           mingw32-cross-gcc
 Version:        9.2.0
