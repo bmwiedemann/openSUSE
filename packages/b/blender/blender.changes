@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:21:17 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Adjust spec to
+  - require gcc9-c++ at least
+  - align configuration with official builds
+  - prepare for usd and openxr additions (TBD)
+  - add support for NVIDIA compute_75 platform
+  - prepare for NVIDIA OptiX support
+- Add SUSE-NVIDIA-OptiX-rendering.txt
+
+-------------------------------------------------------------------
+Mon Aug 31 20:35:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.90.0
+  https://www.blender.org/download/releases/2-90/
+  https://wiki.blender.org/wiki/Reference/Release_Notes/2.90
+- some features from the C++ stdlib require C++17. bump std version
+  to it.
+- refreshed make_python_3.6_compatible.patch
+
+-------------------------------------------------------------------
 Sat Aug 29 06:18:38 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - openvdb >= 7.1.0 interface requires C++14 in order to build

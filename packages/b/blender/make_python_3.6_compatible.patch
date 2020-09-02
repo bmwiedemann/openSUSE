@@ -1,8 +1,8 @@
-Index: blender-2.83.1/CMakeLists.txt
+Index: blender-2.90.0/CMakeLists.txt
 ===================================================================
---- blender-2.83.1.orig/CMakeLists.txt
-+++ blender-2.83.1/CMakeLists.txt
-@@ -738,8 +738,8 @@ if(WITH_PYTHON)
+--- blender-2.90.0.orig/CMakeLists.txt
++++ blender-2.90.0/CMakeLists.txt
+@@ -760,8 +760,8 @@ if(WITH_PYTHON)
    # Do this before main 'platform_*' checks,
    # because UNIX will search for the old Python paths which may not exist.
    # giving errors about missing paths before this case is met.
@@ -13,10 +13,10 @@ Index: blender-2.83.1/CMakeLists.txt
    endif()
  
    file(GLOB RESULT "${CMAKE_SOURCE_DIR}/release/scripts/addons")
-Index: blender-2.83.1/source/blender/python/intern/bpy_rna.c
+Index: blender-2.90.0/source/blender/python/intern/bpy_rna.c
 ===================================================================
---- blender-2.83.1.orig/source/blender/python/intern/bpy_rna.c
-+++ blender-2.83.1/source/blender/python/intern/bpy_rna.c
+--- blender-2.90.0.orig/source/blender/python/intern/bpy_rna.c
++++ blender-2.90.0/source/blender/python/intern/bpy_rna.c
 @@ -8863,8 +8863,9 @@ static PyObject *pyrna_register_class(Py
  
    /* Call classed register method.
@@ -60,13 +60,13 @@ Index: blender-2.83.1/source/blender/python/intern/bpy_rna.c
      }
    }
  
-Index: blender-2.83.1/source/blender/python/intern/bpy_capi_utils.h
+Index: blender-2.90.0/source/blender/python/intern/bpy_capi_utils.h
 ===================================================================
---- blender-2.83.1.orig/source/blender/python/intern/bpy_capi_utils.h
-+++ blender-2.83.1/source/blender/python/intern/bpy_capi_utils.h
-@@ -21,8 +21,8 @@
- #ifndef __BPY_CAPI_UTILS_H__
- #define __BPY_CAPI_UTILS_H__
+--- blender-2.90.0.orig/source/blender/python/intern/bpy_capi_utils.h
++++ blender-2.90.0/source/blender/python/intern/bpy_capi_utils.h
+@@ -20,8 +20,8 @@
+ 
+ #pragma once
  
 -#if PY_VERSION_HEX < 0x03070000
 -#  error "Python 3.7 or greater is required, you'll need to update your Python."
@@ -74,4 +74,4 @@ Index: blender-2.83.1/source/blender/python/intern/bpy_capi_utils.h
 +#  error "Python 3.6 or greater is required, you'll need to update your Python."
  #endif
  
- struct EnumPropertyItem;
+ #ifdef __cplusplus

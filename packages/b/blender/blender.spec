@@ -31,6 +31,10 @@
 %bcond_without osl
 %bcond_without system_audaspace
 
+# TBD
+%bcond_with usd
+%bcond_with openxr
+
 %if 0%{?suse_version} < 1550
 %bcond_without python_36
 %endif
@@ -48,7 +52,7 @@
 %define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.83.5
+Version:        2.90.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -59,11 +63,12 @@ Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
 Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
 Source2:        geeko.blend
 Source3:        geeko.README
-Source4:        blender-sample
+Source4:        %{name}-sample
 Source8:        %{name}.appdata.xml
 Source9:        SUSE-NVIDIA-GPU-rendering.txt
+Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
-# only rely on patch availibility, if python_36 is requested
+# PATCH-FIX-OPENSUSE Python 3.6 compatibility
 Patch0:         make_python_3.6_compatible.patch
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch1:         reproducible.patch
@@ -80,7 +85,11 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  distribution-release
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
+%if 0%{?gcc_version} < 10
+BuildRequires:  gcc9-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gettext-tools
 BuildRequires:  graphviz
 BuildRequires:  help2man
@@ -102,6 +111,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libspnav-devel
 BuildRequires:  libtiff-devel
+BuildRequires:  libtool
 BuildRequires:  llvm-devel
 BuildRequires:  lzo-devel
 BuildRequires:  openal-soft-devel
@@ -186,7 +196,7 @@ Requires(post):    hicolor-icon-theme
 Requires(postun):  hicolor-icon-theme
 Provides:       %{name}-%{_suffix} = %{version}
 # current locale handling doesn't create locale(..) provides correctly
-Recommends:     %name-lang = %version 
+Recommends:     %name-lang = %version
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
@@ -245,7 +255,6 @@ export pver=$(pkg-config python3 --modversion)$(python3-config --abiflags)
 mkdir -p build && pushd build
 
 # NOTE: Don't use cmake macro.
-# openvdb >= 7.1.0 requires C++14 features
 # lean against build_files/cmake/config/blender_release.cmake
 cmake ../ \
 %if 0%{?debugbuild} == 1
@@ -255,10 +264,14 @@ cmake ../ \
       -DWITH_MEM_VALGRIND:BOOL=ON \
       -DWITH_ASSERT_ABORT:BOOL=ON \
 %else
-      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC -fopenmp " \
+      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC -fopenmp" \
       -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC -fopenmp" \
+      -DWITH_MEM_VALGRIND:BOOL=OFF \
+      -DWITH_ASSERT_ABORT:BOOL=OFF \
 %endif
-      -DCMAKE_CXX_STANDARD=14 \
+      -DCMAKE_CXX_STANDARD=17 \
+      -DWITH_LLVM:BOOL=ON \
+      -DLLVM_LIBRARY:FILE=%{_libdir}/libLLVM.so \
       -DCMAKE_VERBOSE_MAKEFILE=ON \
       -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
       -DCMAKE_EXE_LINKER_FLAGS:STRING="-pie" \
@@ -282,6 +295,7 @@ cmake ../ \
       -DWITH_CYCLES:BOOL=ON \
 %if %{with osl}
       -DWITH_CYCLES_OSL:BOOL=ON \
+      -DOSL_SHADER_HINT:PATH=%{_datadir}/OpenShadingLanguage \
 %endif
 %if %{with embree}
       -DWITH_CYCLES_EMBREE:BOOL=ON \
@@ -295,7 +309,6 @@ cmake ../ \
       -DWITH_LIBMV_SCHUR_SPECIALIZATIONS:BOOL=ON \
       -DWITH_COMPOSITOR:BOOL=ON \
       -DWITH_FREESTYLE:BOOL=ON \
-      -DWITH_GHOST_XDND:BOOL=ON \
       -DWITH_IK_SOLVER:BOOL=ON \
       -DWITH_IK_ITASC:BOOL=ON \
       -DWITH_IMAGE_CINEON:BOOL=ON \
@@ -306,12 +319,11 @@ cmake ../ \
       -DWITH_IMAGE_TIFF:BOOL=ON \
       -DWITH_INPUT_NDOF:BOOL=ON \
       -DWITH_INTERNATIONAL:BOOL=ON \
-      -DWITH_JACK:BOOL=ON \
       -DWITH_LZMA:BOOL=ON \
       -DWITH_LZO:BOOL=ON \
       -DWITH_SYSTEM_LZO:BOOL=ON \
-      -DWITH_MOD_FLUID:BOOL=ON \
       -DWITH_MOD_REMESH:BOOL=ON \
+      -DWITH_MOD_FLUID:BOOL=ON \
 %ifnarch x86_64
       -DWITH_MOD_OCEANSIM:BOOL=OFF \
 %else
@@ -351,15 +363,28 @@ cmake ../ \
       -DWITH_QUADRIFLOW:BOOL=ON \
       -DWITH_SDL:BOOL=ON \
       -DWITH_TBB:BOOL=ON \
+%if %{with usd}
+      -DWITH_USD:BOOL=ON \
+%endif
+%if 0%{?is_opensuse} == 1
+      -DWITH_MEM_JEMALLOC:BOOL=ON \
+%endif
+      -DWITH_JACK:BOOL=ON \
       -DWITH_SYSTEM_GLEW:BOOL=ON \
+      -DWITH_DOC_MANPAGE:BOOL=ON \
+      -DWITH_GHOST_XDND:BOOL=ON \
       -DWITH_X11_XINPUT:BOOL=ON \
       -DWITH_X11_XF86VMODE:BOOL=ON \
-      -DWITH_DOC_MANPAGE:BOOL=ON \
+%if %{with openxr}
+      -DWITH_XR_OPENXR:BOOL=ON \
+%endif
       -DCYCLES_CUDA_BINARIES:BOOL=ON \
       -DCYCLES_CUBIN_COMPILER:BOOL=OFF \
-      -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75"
+      -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75;compute_75" \
+      -DWITH_CYCLES_DEVICE_OPTIX:BOOL=ON \
+      -DOPTIX_ROOT_DIR:PATH=/opt/nvidia/optix
 
-make %{_smp_mflags}
+make %{?_smp_mflags}
 
 %install
 echo "release version = %{_version}"
@@ -382,8 +407,9 @@ install -D -m 0755 %{SOURCE4} %{buildroot}%{_bindir}/
 # install appdata file
 mkdir -p %{buildroot}%{_datadir}/appdata/
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_datadir}/appdata/
-# GPU rendering text
+# GPU and OptiX rendering texts
 install -D -m 0644 %{SOURCE9} %{buildroot}%{_docdir}/%{name}/
+install -D -m 0644 %{SOURCE10} %{buildroot}%{_docdir}/%{name}/
 
 chmod -f 0644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
 
