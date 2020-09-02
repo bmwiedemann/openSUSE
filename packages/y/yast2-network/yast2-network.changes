@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 26 12:35:44 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Unify profile element paths (bsc#1175680).
+- 4.3.17
+
+-------------------------------------------------------------------
+Tue Aug 11 12:13:34 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(host,networking,remote)
+  into the spec file in order to install this packages if the
+  section has been defined in the AY configuration file (bsc#1146494).
+- 4.3.16
+
+-------------------------------------------------------------------
 Wed Jul 29 10:47:01 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: do not crash when the <host> section is present

@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-network
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-network
-Version:        4.3.15
+Version:        4.3.17
 Release:        0
 Summary:        YaST2 - Network Configuration
 License:        GPL-2.0-only
@@ -33,8 +33,9 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 #for install task
 BuildRequires:  yast2-storage-ng
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
-# NetworkService.use
-BuildRequires:  yast2 >= 4.3.9
+# AutoYaST ElementPath class
+BuildRequires:  yast2 >= 4.3.20
+
 BuildRequires:  yast2-packager >= 4.0.18
 # Product control need xml agent
 BuildRequires:  yast2-xml
@@ -48,8 +49,8 @@ PreReq:         /bin/rm
 Requires:       sysconfig >= 0.80.0
 Requires:       yast2-proxy
 Requires:       yast2-storage-ng
-# NetworkService.use
-Requires:       yast2 >= 4.3.9
+# AutoYaST ElementPath class
+Requires:       yast2 >= 4.3.20
 # Packages::vnc_packages
 Requires:       augeas-lenses
 Requires:       yast2-packager >= 4.0.18
@@ -71,6 +72,8 @@ Conflicts:      autoyast2 < 4.3.23
 
 Obsoletes:      yast2-network-devel-doc <= 3.1.154
 Provides:       yast2-network-devel-doc = %{version}
+
+Supplements:    autoyast(host,networking,remote)
 
 BuildArch:      noarch
 
