@@ -17,14 +17,22 @@
 
 
 # baseversion - base version of kubernetes for this package
-%define baseversion 1.18
+%define baseversion 1.19
 # baseversionminus1 - previous base version of kubernetes
-%define baseversionminus1 1.17
+%define baseversionminus1 1.18
 # versionminus1 - full previous version of kubernetes, including point revision
-%define versionminus1 1.17.11
+%define versionminus1 1.18.8
+# etcdversion - version of etcd
+%define etcdversion 3.4.9
+# etcdversionminus1 - version of etcd for versionminus1
+%define etcdversionminus1 3.4.3
+# corednsversion - version of coredns
+%define corednsversion 1.7.0
+# corednsversionminus1 - version of coredns for versionminus1
+%define corednsversionminus1 1.6.7
 
 Name:           kubernetes
-Version:        1.18.8
+Version:        1.19.0
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -126,6 +134,7 @@ kubelet daemon
 Summary:        Kubernetes kubeadm bootstrapping tool
 Group:          System/Management
 Requires:       kubernetes%{baseversion}-kubeadm = %{VERSION}
+Requires:       kubernetes%{baseversion}-kubelet
 Requires:       kubernetes%{baseversionminus1}-kubelet
 
 %description kubeadm
@@ -139,6 +148,42 @@ Requires:       kubernetes%{baseversion}-client = %{VERSION}
 
 %description client
 Kubernetes client tools like kubectl.
+
+%package etcd
+Summary:        Kubernetes etcd daemon for container images
+Group:          System/Management
+Version:        %{etcdversion}
+Requires:       etcd-for-k8s%{baseversion}
+
+%description etcd
+This subpackage contains the etcd binary for Kubic images
+
+%package etcd-minus1
+Summary:        Kubernetes etcd daemon for container images
+Group:          System/Management
+Version:        %{etcdversionminus1}
+Requires:       etcd-for-k8s%{baseversionminus1}
+
+%description etcd-minus1
+This subpackage contains the etcd binary for Kubic images
+
+%package coredns
+Summary:        Kubernetes coredns daemon for container images
+Group:          System/Management
+Version:        %{corednsversion}
+Requires:       coredns-for-k8s%{baseversion}
+
+%description coredns
+This subpackage contains the coredns binary for Kubic images
+
+%package coredns-minus1
+Summary:        Kubernetes coredns daemon for container images
+Group:          System/Management
+Version:        %{corednsversionminus1}
+Requires:       coredns-for-k8s%{baseversionminus1}
+
+%description coredns-minus1
+This subpackage contains the coredns binary for Kubic images
 
 %prep
 #Not Needed
@@ -160,6 +205,12 @@ echo "This is a dummy package to provide a dependency on supported kubernetes ve
 %files proxy
 %doc README
 
+%files etcd
+%doc README
+
+%files coredns
+%doc README
+
 %files apiserver-minus1
 %doc README
 
@@ -170,6 +221,12 @@ echo "This is a dummy package to provide a dependency on supported kubernetes ve
 %doc README
 
 %files proxy-minus1
+%doc README
+
+%files etcd-minus1
+%doc README
+
+%files coredns-minus1
 %doc README
 
 %files kubelet

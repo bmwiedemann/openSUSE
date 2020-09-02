@@ -621,4 +621,21 @@
     <comment></comment>
     <requestid>826702</requestid>
   </revision>
+  <revision rev="67" vrev="7">
+    <srcmd5>3daffb9c71d8ab65cfd6f78d7edc48d2</srcmd5>
+    <version>unknown</version>
+    <time>1599088472</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce -etcd, -etcdminus1, -coredns and -corednsminus1
+  subpackages. This is so etcd and coredns container images can be
+  made for specific kubernetes versions.
+
+- Bump to kubernetes 1.19.0 
+
+- kubernetes-kubeadm now requires kubernetes%{baseversion}-kubelet
+  and kubernetes%{baseversionminus1}-kubelet. This is to ensure both 
+  are installed on Kubic even though kubernetes{%baseversion}-kubeadm
+  only hard requires either kubelet.</comment>
+    <requestid>831242</requestid>
+  </revision>
 </revisionlist>

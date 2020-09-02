@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep  1 15:22:48 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Introduce -etcd, -etcdminus1, -coredns and -corednsminus1
+  subpackages. This is so etcd and coredns container images can be
+  made for specific kubernetes versions.
+
+-------------------------------------------------------------------
+Thu Aug 27 15:13:22 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Bump to kubernetes 1.19.0 
+
+-------------------------------------------------------------------
+Thu Aug 20 14:41:27 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- kubernetes-kubeadm now requires kubernetes%{baseversion}-kubelet
+  and kubernetes%{baseversionminus1}-kubelet. This is to ensure both 
+  are installed on Kubic even though kubernetes{%baseversion}-kubeadm
+  only hard requires either kubelet.
+
+-------------------------------------------------------------------
 Fri Aug 14 15:16:31 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Bump to kubernetes 1.18.8 and 1.17.11 
