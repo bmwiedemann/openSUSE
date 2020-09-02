@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug 27 10:37:14 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed accidentaly broken dependencies (related to bsc#1175317)
+- 4.3.24
+
+-------------------------------------------------------------------
+Thu Aug 27 09:20:42 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Yet another unit test architecture fix :-(
+  (related to bsc#1175317)
+- 4.3.23
+
+-------------------------------------------------------------------
+Thu Aug 27 08:30:07 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fix for the previous change: fixed unit test failure on non
+  x86_64 archs (related to bsc#1175317)
+- 4.3.22
+
+-------------------------------------------------------------------
+Wed Aug 26 08:22:45 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Y2Packager::Resolvable.find(): improved error handling,
+  added more unit tests (related to bsc#1175317)
+- 4.3.21
+
+-------------------------------------------------------------------
+Tue Aug 25 09:46:20 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Unify profile element paths (bsc#1175680).
+- 4.3.20
+
+-------------------------------------------------------------------
 Tue Jul 28 14:27:40 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - XML: do not export the system ID if it is not defined

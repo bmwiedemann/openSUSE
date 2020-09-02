@@ -1,7 +1,7 @@
 #
 # spec file for package yast2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2
-Version:        4.3.19
+Version:        4.3.24
 Release:        0
 Summary:        YaST2 Main Package
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-yast2
+URL:            https://github.com/yast/yast-yast2
 
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        yast2-rpmlintrc
@@ -49,8 +49,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:simpleidn)
 # Needed already in build time
 BuildRequires:  yast2-core >= 2.18.12
 BuildRequires:  yast2-devtools >= 3.1.10
-# Pkg.Resolvables()
-BuildRequires:  yast2-pkg-bindings >= 4.2.0
+# RPM dependency filters in Pkg.Resolvables()
+BuildRequires:  yast2-pkg-bindings >= 4.3.0
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 # for XML module
 BuildRequires:  rubygem(%rb_default_ruby_abi:nokogiri)
@@ -88,8 +88,8 @@ Requires:       yast2-core >= 2.23.0
 Requires:       yast2-hardware-detection
 # for SLPAPI.pm
 Requires:       yast2-perl-bindings
-# Pkg.Resolvables()
-Requires:       yast2-pkg-bindings >= 4.2.0
+# RPM dependency filters in Pkg.Resolvables()
+Requires:       yast2-pkg-bindings >= 4.3.0
 # for y2start
 Requires:       yast2-ruby-bindings >= 3.2.10
 # new UI::SetApplicationTitle
