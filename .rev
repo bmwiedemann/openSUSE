@@ -477,4 +477,12 @@
     <comment>v15.2.4 (forwarded request 818632 from smithfarm)</comment>
     <requestid>818633</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>8fca295e5dd3c25b027aa97162939899</srcmd5>
+    <version>16.0.0.4862+g8ac6038555</version>
+    <time>1599088393</time>
+    <user>dimstar_suse</user>
+    <comment>16.0.0 (forwarded request 830282 from smithfarm)</comment>
+    <requestid>830283</requestid>
+  </revision>
 </revisionlist>

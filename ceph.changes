@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:37:48 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.0.0-4862-g8ac6038555:
+  + rebase on tip of upstream "master" branch, SHA1 46c912978aa6a0b0f67094a27933c7bea829e6c9
+
+-------------------------------------------------------------------
+Fri Aug 28 12:23:00 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- checkin.sh: build only one frontend language (English) by default, to speed
+  up tarball generation 
+
+-------------------------------------------------------------------
+Wed Aug 26 11:57:23 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.4-822-g24d833526b 
+  + rebase on tip of upstream "octopus" branch, SHA1 0887d548597b9d2381de42c1cc8a5c01d264ae8b
+
+-------------------------------------------------------------------
+Mon Aug 10 10:30:37 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Update to 15.2.4.557+g4ac763f0b3
+  + rebase on tip of upstream "octopus" branch, SHA1 96411838ef6fef9a5285ca4d5c0708e6a599632e
+
+-------------------------------------------------------------------
+Sun Aug  9 21:21:15 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.4-511-g40953bf9d6
+  + rebase on tip of upstream "octopus" branch, SHA1 f3b8bc0d11ca4f8167615007645759e905b1ada5
+
+-------------------------------------------------------------------
+Sun Jul 26 11:04:15 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.4-465-g5e8d9ae6bd
+  + rebase on tip of upstream "octopus" branch, SHA1 213e2c803b4f68c9f0b33119c64638a6813d2692
+
+-------------------------------------------------------------------
+Fri Jul 17 16:08:29 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.4-381-g734ae877b4:
+  + rebase on tip of upstream "octopus" branch, SHA1 d0da4070a19a55ebe9c55904d6da2ad38833aae0
+
+-------------------------------------------------------------------
+Wed Jul 15 17:05:19 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.4-342-g6987dec446:
+  + cmake: add empty RPATH to ceph-diff-sorted
+
+-------------------------------------------------------------------
+Tue Jul 14 18:08:04 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.4-337-g55cec95eaf:
+  + rebase on tip of upstream "octopus" branch, SHA1 405556b2629d8274dea2e14ee017c70a7dfb24a1
+  + Monitoring: Use downstream container images
+
+-------------------------------------------------------------------
 Fri Jul  3 17:06:22 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 15.2.4-89-g583fe198f6:
