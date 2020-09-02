@@ -646,4 +646,41 @@
     (Execute ./configure with --with-gui=beos option.) (See doc/en/README.beos)</comment>
     <requestid>758149</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3e1736d9b2aa0dad7091526c34e40b41</srcmd5>
+    <version>3.9.0</version>
+    <time>1599088700</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.9.0
+  * Support CSI&gt;4;1m.
+  * Support uniscribe for libotl on win32.
+  * Support SCP by Shift+DnD on HaikuOS.
+  * Support xdg-shell on wayland.
+  * Support DEC Technical character set.
+  * Support input of unicode characters on mlterm-fb.
+  * Support ormode of Sixel Graphics.
+  * Update unicode property table (generated from UnicodeData.txt and
+    EastAsianWidth.txt) to version 12.1.0.
+  * Mlconfig configures files in ~/.mlterm directly if it starts without options
+    or with --file option.
+  * Change DA1 response.
+    \x1b[?63;1;2;3;4;7;29c -&gt; \x1b[?63;1;2;3;4;6;7;15;18;22;29c
+  * geometry / -g option works on HaikuOS.
+  * Add vte 0.60 API symbols to libvte compatible library.
+  * Merge patches:
+    https://sourceforge.net/p/mlterm/bugs/78/
+    https://sourceforge.net/p/mlterm/patches/25/attachment/typos.diff
+  * Bug fixes:
+    Fix a bug which disabled to change the value of &quot;logsize&quot; option from &quot;0&quot; to &quot;unlimited&quot;.
+    Fix segfault when &quot;snapshot&quot; command of OSC 5379 is executed.
+    Fix mouse tracking position if &quot;use_ot_layout = true&quot;.
+    Fix segfault when mlterm-sdl2 starts with -im=uim option.
+    Fix a bug which makes mlterm-sdl2 on win32 stop starting mlconfig.
+    Fix compiling error on HaikuOS + gcc-x86.
+    Fix http://twitter.com/hamano/status/1177087752208183296
+    Fix a bug which disabled clipping of DECDHL in cairo. (Enbugged at 3.8.6)
+- deleted patches
+  - mlterm-cast.patch (upstreamed)</comment>
+    <requestid>831439</requestid>
+  </revision>
 </revisionlist>

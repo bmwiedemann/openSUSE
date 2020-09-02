@@ -1,7 +1,7 @@
 #
 # spec file for package mlterm
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mlterm
-Version:        3.8.9
+Version:        3.9.0
 Release:        0
 Summary:        Multilingual Terminal Emulator for X
 License:        BSD-3-Clause
@@ -26,9 +26,6 @@ URL:            http://mlterm.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/mlterm/01release/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source10:       %{name}.desktop
 Patch0:         etc.patch
-# PATCH-FIX-UPSTREAM: portability issues reported by rpmlint
-# https://sourceforge.net/p/mlterm/bugs/78/
-Patch1:         mlterm-cast.patch
 BuildRequires:  canna-devel
 BuildRequires:  coreutils
 BuildRequires:  fwnn-devel
@@ -136,7 +133,6 @@ A plugin to use the m17n input methods directly from mlterm.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 rm -rf doc/{en,ja}/*win32
 
