@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-cross-gcc-bootstrap
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define __os_install_post %{_libexecdir}/rpm/brp-compress %{nil}
+%define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 Name:           mingw64-cross-gcc-bootstrap
 Version:        9.2.0
 Release:        0
@@ -44,6 +44,7 @@ Requires:       mingw64-cross-cpp-bootstrap >= %{version}
 Requires:       mingw64-filesystem
 Requires:       mingw64-headers
 Requires:       mingw64-headers-dummy-pthread
+ExclusiveArch:  %ix86 x86_64
 
 %description
 MinGW Windows cross-compiler (GCC) for C

@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-cross-gcc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define __os_install_post %{_libexecdir}/rpm/brp-compress %{nil}
+%define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 %define include_ada 0
 Name:           mingw64-cross-gcc
 Version:        9.2.0
@@ -54,6 +54,7 @@ Conflicts:      mingw64-cross-gcc-bootstrap
 %if %{include_ada}
 BuildRequires:  gcc-ada
 %endif
+ExclusiveArch:  %ix86 x86_64
 
 %description
 MinGW Windows cross-compiler (GCC) for C

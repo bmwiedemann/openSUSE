@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-gcc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,11 +56,11 @@ Requires:       mingw64-cpp >= %{version}
 Requires:       mingw64-headers
 Requires:       mingw64-runtime
 Requires:       mingw64-winpthreads-devel
-BuildArch:      noarch
 %if %{include_ada}
 BuildRequires:  gcc-ada
 BuildRequires:  mingw64-cross-gcc-ada >= %{version}
 %endif
+ExclusiveArch:  %ix86 x86_64
 
 %description
 MinGW Windows compiler (GCC) for C
