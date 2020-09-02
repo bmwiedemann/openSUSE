@@ -38,4 +38,17 @@
     <comment>1</comment>
     <requestid>515245</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e4041e81679d9a88cb1ef7001093fe7d</srcmd5>
+    <version>0.9.1</version>
+    <time>1599088620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * Many bugfixes around
+  * support for new netsurf-buildsystem toolset
+- Rebase libcss-buildopts.patch to this release
+- Add patch to fix missing inlcudes:
+  * fix-test-includes.patch</comment>
+    <requestid>831415</requestid>
+  </revision>
 </revisionlist>

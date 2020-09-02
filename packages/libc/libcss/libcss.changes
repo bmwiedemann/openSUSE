@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 09:03:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.1:
+  * Many bugfixes around
+  * support for new netsurf-buildsystem toolset
+- Rebase libcss-buildopts.patch to this release
+- Add patch to fix missing inlcudes:
+  * fix-test-includes.patch
+
+-------------------------------------------------------------------
 Tue Aug  8 19:39:14 UTC 2017 - jengelh@inai.de
 
 - Fix RPM groups.
