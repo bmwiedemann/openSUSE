@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 25 16:15:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.4:
+  + Block image/ktx files in 90-gstreamer-image-generic.rule.
+  + Set a deadline of 30 seconds for extraction tasks.
+  + Remove generic gstreamer-based image extraction codepath.
+  + Several fixes to libav-based extractor.
+  + Replace sensitive words.
+  + Get the systemd user unit dir from pkg-config.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 10 19:37:06 UTC 2020 - mgorse@suse.com
 
 - Update to version 2.3.3:

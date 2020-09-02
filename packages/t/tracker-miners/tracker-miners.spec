@@ -17,7 +17,7 @@
 
 
 Name:           tracker-miners
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
@@ -25,7 +25,6 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker-miners/2.3/%{name}-%{version}.tar.xz
 
-# PATCH-FIX-UPSTREAM tracker-miners-set-cpu-io-nice.patch -- Set cpu/io/nice settings before glib/gio
 # PATCh-FIX-UPSTREAM tracker-miners-bsc1165635-crawl-timestamp.patch boo#1165635 mgorse@suse.com -- properly set crawl timestamp.
 Patch0:         tracker-miners-bsc1165635-crawl-timestamp.patch
 
