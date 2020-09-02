@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 24 12:05:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use more appropriate %{_prefix}/lib for firewalld service
+  definitions (boo#1174075).
+
+-------------------------------------------------------------------
 Mon May 25 12:43:49 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 2.7.0

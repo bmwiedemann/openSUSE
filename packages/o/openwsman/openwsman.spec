@@ -450,8 +450,8 @@ install -m 755 build/etc/init/openwsmand.sh %{buildroot}/%{_sysconfdir}/init.d/o
 ln -sf %{_sysconfdir}/init.d/openwsmand %{buildroot}/%{_sbindir}/rcopenwsmand
 %endif
 %if 0%{?has_firewalld}
-mkdir -p %{buildroot}/%{_libexecdir}/firewalld/services
-install -D -m 644 %{S:5} %{buildroot}/%{_libexecdir}/firewalld/services/%{name}.xml
+mkdir -p %{buildroot}/%{_prefix}/lib/firewalld/services
+install -D -m 644 %{S:5} %{buildroot}/%{_prefix}/lib/firewalld/services/%{name}.xml
 %else
 install -D -m 644 %{S:3} %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/openwsman
 %endif
@@ -596,9 +596,9 @@ rm -f /var/log/wsmand.log
 %attr(0755,root,root) %{_sysconfdir}/openwsman/owsmangencert.sh
 %config %{_sysconfdir}/pam.d/openwsman
 %if 0%{?has_firewalld}
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/%{name}.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/%{name}.xml
 %else
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/openwsman
 %endif
