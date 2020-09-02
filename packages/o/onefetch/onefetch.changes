@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:14:56 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- avoid build error for ppc64le as reported by boo#1175502
+
+-------------------------------------------------------------------
 Mon Aug  3 06:54:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.0:
