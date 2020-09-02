@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.6.7
+Version:        1.7.0
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
