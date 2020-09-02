@@ -105,4 +105,12 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
     only in config file (boo#1173047)</comment>
     <requestid>819750</requestid>
   </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>aec3d8b8d2b73f32467c4a6015f3d8c4</srcmd5>
+    <version>1.0.2</version>
+    <time>1599088716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831454</requestid>
+  </revision>
 </revisionlist>

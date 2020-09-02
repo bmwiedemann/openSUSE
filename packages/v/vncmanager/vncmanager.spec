@@ -105,6 +105,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcvncmanager
 
 %files
 %defattr(-,root,root)
+%license LICENSE
 %doc vncmanager.conf README.md
 %{_bindir}/vncmanager
 %{_unitdir}/vncmanager.service
@@ -112,6 +113,5 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcvncmanager
 %dir %attr(0755,%{vncuser},%{vncuser}) %{_sysconfdir}/vnc
 /usr/lib/tmpfiles.d/%{name}.conf
 %ghost %dir /run/vncmanager
-%doc LICENSE
 
 %changelog

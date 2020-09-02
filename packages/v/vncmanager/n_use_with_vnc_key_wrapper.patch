@@ -8,7 +8,7 @@ Index: vncmanager-1.0.1/vncmanager.service.in
  [Service]
  User=vnc
 -ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/vncmanager
-+ExecStart=/usr/lib/vnc/with-vnc-key.sh @CMAKE_INSTALL_FULL_BINDIR@/vncmanager
++ExecStart=@CMAKE_INSTALL_FULL_LIBEXECDIR@/vnc/with-vnc-key.sh @CMAKE_INSTALL_FULL_BINDIR@/vncmanager
  
  [Install]
  WantedBy=multi-user.target

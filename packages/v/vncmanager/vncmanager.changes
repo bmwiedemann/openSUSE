@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 11:58:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update n_use_with_vnc_key_wrapper.patch: use libexecdir as the
+  path to with-vnc-key.sh (boo#1176064).
+
+-------------------------------------------------------------------
 Thu Jul  9 14:33:21 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_use_port_5901.patch
