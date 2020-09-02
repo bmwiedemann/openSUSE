@@ -442,4 +442,14 @@
   Fix error on first activation of packagehub extension (bsc#1124318)</comment>
     <requestid>741836</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f02e831038531a439751429884acb15b</srcmd5>
+    <version>0.3.26</version>
+    <time>1599088363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.26
+  - Extend the YaST API in order to access to the package search
+    functionality (jsc#SLE-9109)</comment>
+    <requestid>830241</requestid>
+  </revision>
 </revisionlist>
