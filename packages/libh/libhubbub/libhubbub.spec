@@ -16,24 +16,21 @@
 #
 
 
+%global make_vars COMPONENT_TYPE=lib-shared PREFIX=%{_prefix} LIBDIR=%{_lib} CC=cc Q=
+%global build_vars OPTCFLAGS='%{optflags}' OPTLDFLAGS="$RPM_LD_FLAGS"
 Name:           libhubbub
-Version:        0.3.0
+Version:        0.3.7
 Release:        0
 Summary:        An HTML5 compliant parsing library
 License:        MIT
-Group:          Development/Libraries/C and C++
-URL:            http://www.netsurf-browser.org/projects/hubbub/
+URL:            https://www.netsurf-browser.org/projects/hubbub/
 Source:         http://download.netsurf-browser.org/libs/releases/%{name}-%{version}-src.tar.gz
-Patch0:         libhubbub-0.3.0-notimestamp.patch
-Patch1:         0001-workaround-fail-on-ppc64.patch
-Patch2:         0001-do-not-use-deprecated-is_error.patch
-BuildRequires:  check-devel
-BuildRequires:  doxygen
-BuildRequires:  libjson-c-devel >= 0.11
-BuildRequires:  libparserutils-devel >= 0.2.0
+Patch0:         0001-do-not-use-deprecated-is_error.patch
 BuildRequires:  netsurf-buildsystem >= 1.1
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(check)
+BuildRequires:  pkgconfig(json-c) >= 0.11
+BuildRequires:  pkgconfig(libparserutils) >= 0.2.0
 
 %description
 Hubbub is an HTML5 compliant parsing library, written in C. It was
@@ -41,7 +38,6 @@ developed as part of the NetSurf project.
 
 %package -n libhubbub0
 Summary:        An HTML5 compliant parsing library
-Group:          System/Libraries
 
 %description -n libhubbub0
 Hubbub is an HTML5 compliant parsing library, written in C. It was
@@ -62,62 +58,36 @@ Features:
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       libhubbub0 = %{version}-%{release}
 
 %description devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package doc
-Summary:        Documentation of %{name} API
-Group:          Documentation
-%if 0%{?suse_version} >= 1120
-BuildArch:      noarch
-%endif
-
-%description doc
-The %{name}-doc package contains documentation files for %{name}.
-
-%global make_vars COMPONENT_TYPE=lib-shared PREFIX=%{_prefix} LIBDIR=%{_lib} Q=
-%global build_vars OPTCFLAGS='%{optflags}' OPTLDFLAGS="$RPM_LD_FLAGS"
-
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 sed -i -e s@-Werror@@ Makefile
 
 %build
-make %{?_smp_mflags} %{make_vars} %{build_vars}
-make %{?_smp_mflags} docs %{make_vars}
+%make_build %{make_vars} %{build_vars}
 
 %install
-make install DESTDIR=%{buildroot} %{make_vars}
+%make_install %{make_vars}
 
 %post -n libhubbub0 -p /sbin/ldconfig
-
 %postun -n libhubbub0 -p /sbin/ldconfig
 
 %check
-make %{?_smp_mflags} test %{make_vars}
+%make_build test %{make_vars} %{build_vars}
 
 %files -n libhubbub0
-%defattr(-,root,root)
+%license COPYING
 %{_libdir}/%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/hubbub
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
-
-%files doc
-%defattr(-,root,root)
-%doc COPYING README
-%doc docs/Architecture docs/Macros docs/Todo docs/Treebuilder docs/Updated
-%doc build/docs/html
 
 %changelog

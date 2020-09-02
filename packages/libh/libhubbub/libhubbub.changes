@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 09:19:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.7:
+  * Fixes build with new netsurf-buildsystem pkg
+- Remove non applicable patches:
+  * 0001-workaround-fail-on-ppc64.patch
+- Do not bother with doxygen as the docu is online:
+  * libhubbub-0.3.0-notimestamp.patch
+
+-------------------------------------------------------------------
 Mon Jul  6 05:52:15 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

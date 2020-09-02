@@ -46,4 +46,17 @@
     <comment>Fix tests and thus the build</comment>
     <requestid>818893</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>daeba950e69baf5eb2c0f2dedd101111</srcmd5>
+    <version>0.3.7</version>
+    <time>1599088614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.7:
+  * Fixes build with new netsurf-buildsystem pkg
+- Remove non applicable patches:
+  * 0001-workaround-fail-on-ppc64.patch
+- Do not bother with doxygen as the docu is online:
+  * libhubbub-0.3.0-notimestamp.patch</comment>
+    <requestid>831413</requestid>
+  </revision>
 </revisionlist>
