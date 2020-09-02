@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-notifyd
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Simple Notification Daemon for Xfce
 License:        GPL-2.0-only
@@ -90,8 +90,7 @@ rm -rf %{buildroot}
 %license COPYING
 %{_bindir}/xfce4-notifyd-config
 %{_datadir}/applications/xfce4-notifyd-config.desktop
-%{_datadir}/dbus-1/services/org.xfce.xfce4-notifyd.Notifications.service
-%{_datadir}/icons/hicolor/*/apps/xfce4-notifyd.*
+%{_datadir}/icons/hicolor/*/apps/org.xfce.notification.*
 %{_datadir}/icons/hicolor/scalable/status/notification-*symbolic.svg
 %dir %{_datadir}/themes/*
 %dir %{_datadir}/themes/*/xfce-notify-4.0
@@ -101,9 +100,8 @@ rm -rf %{buildroot}
 %{_libexecdir}/xfce4/notifyd/xfce4-notifyd
 %{_libdir}/xfce4/panel/plugins/libnotification-plugin.so
 %{_datadir}/xfce4/panel/plugins/notification-plugin.desktop
+%{_sysconfdir}/xdg/autostart/xfce4-notifyd.desktop
 %doc %{_mandir}/man1/xfce4-notifyd-config.1*
-# Leap 42.1 does not know _userunitdir...
-%{!?_userunitdir:/usr/lib/systemd/user}%{?_userunitdir}/xfce4-notifyd.service
 
 %files lang -f %{name}.lang
 

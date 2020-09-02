@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep  1 09:46:17 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.6.2
+  * Switch to new app icon and rDNS icon name
+  * Default to session autostart instead of DBus
+    (gxo#apps/xfce4-notifyd#27)
+  * Add configurable log size limit (default: 100)
+  * Make buttons on non-1st notifications work
+  * panel-plugin: Add option to hide "Clear log" dialog
+  * log: properly handle iso8601 timestamps
+  * log: Use SHA-1 data hash in icon cache paths (bxo#16825)
+  * log: Improve performance of adding notifications (bxo#14865)
+  * log: Refactor log keyfile element insertion into a separate function
+  * Fix GTimeVal deprecation (bxo#16805)
+  * Remove unused expire_timeout variable
+  * Fix memory leaks
+  * settings: Switch to symbolic close icon
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue May  5 16:18:27 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 0.6.1
