@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Aug 31 17:11:17 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- version 2.8.0 needed for jira#SLE/SLE-12712 
+
+-------------------------------------------------------------------
+Sat Aug 15 21:11:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * trace: enable return value trace for successful function call
+  * trace: divide va_TraceEndPicture to two seperate function
+  * trace: add support for VAProfileHEVCSccMain444_10
+  * fix:Fixes file descriptor leak
+  * add fourcc code for P012 format
+  * travis: Add a test that code files don't have the exec bit set
+  * Remove the execute bit from all source code files
+  * meson: Allow for libdir and includedir to be absolute paths
+  * trace: Fix format string warnings
+  * fix:Fix clang warning (reading garbage)
+  * add definition to enforce both reflist not empty
+  * trace: List correct field names in va_TraceVAPictureParameterBufferHEVC
+  * change the return value to be UNIMPLEMENTED when the function pointer is NULL
+  * remove check of vaPutSurface implementation
+  * Add new slice structure flag for CAPS reporting
+  * VA/X11: VAAPI driver mapping for iris DRI driver
+  * VA/X11: enable driver candidate selection for DRI2
+  * Add SCC flags to enable/disable features
+  * fix: Fix HDR10 MaxCLL and MaxFALL documentation
+  * Add VAProfileHEVCSccMain444_10 for HEVC
+  * change the compatible list to be dynamic one
+  * trace:Convert VAProfileAV1Profile0 VAProfileAV1Profile1 to string
+
+-------------------------------------------------------------------
 Fri Apr 10 15:14:22 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.7.0
