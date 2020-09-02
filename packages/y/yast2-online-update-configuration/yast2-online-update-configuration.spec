@@ -17,7 +17,7 @@
 
 
 Name:           yast2-online-update-configuration
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        Configuration of Online Update
 License:        GPL-2.0-only
