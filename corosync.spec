@@ -42,9 +42,6 @@
 %define buildib 1
 %endif
 %endif
-%if 0%{?suse_version}
-%define _libexecdir %{_libdir}
-%endif
 
 Name:           corosync
 Summary:        The Corosync Cluster Engine and Application Programming Interfaces
@@ -287,7 +284,8 @@ fi
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE SECURITY
+%doc SECURITY
+%license LICENSE
 %{_sbindir}/corosync
 %{_sbindir}/corosync-keygen
 %{_sbindir}/corosync-cmapctl

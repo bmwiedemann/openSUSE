@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 10:18:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Stop mangling libexecdir: it's not needed at all.
+
+-------------------------------------------------------------------
 Wed Apr 22 14:13:26 UTC 2020 - XinLiang <XLiang@suse.com>
 
 - Revoke the patch bug-1163460-totemip-Add-support-for-sin6_scope_id.patch
