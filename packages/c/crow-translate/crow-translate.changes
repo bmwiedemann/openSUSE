@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Sep  1 19:18:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.1
+  Added
+  * Uyghur localization.
+  * Google: Kinyarwanda, Oriya, Tatar, Turkmen and Uyghur languages.
+  Changed
+  * All GUI slots now available via D-Bus.
+  * Fix saving selected languages.
+- Update to version 2.5.0
+  Added
+  * Add the ability to display only language code on buttons.
+  Changed
+  * Fix crash at startup with specified languages for Qt < 5.14.
+  * Fix Yandex SID parsing.
+  * Fix paths in configuration (some settings will be lost).
+
+-------------------------------------------------------------------
+Sat Jul  4 08:50:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.1
+  * Do not reset languages after reloading settings.
+  * Fix duplicated default swap shortcut.
+  * Improve global shortcuts error logging.
+  * Linux: Fix .desktop file name.
+
+-------------------------------------------------------------------
+Tue Jun 30 10:29:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  Added
+  * --brief option to print only translations.
+  * The ability to add, remove or reorder used languages.
+  * Swap languages shortcut.
+  Changed
+  * Use https instead of http for all engines.
+  * --audio-only option now only plays text.
+  * Automatic translation disabled by default.
+- Add patch:
+  * Fix-install-path.patch
+- Switch from qmake to cmake
+
+-------------------------------------------------------------------
 Sun May 10 18:36:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.2

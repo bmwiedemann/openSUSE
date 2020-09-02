@@ -18,7 +18,7 @@
 
 
 Name:           crow-translate
-Version:        2.3.2
+Version:        2.5.1
 Release:        0
 Summary:        A Qt GUI for Google, Yandex and Bing translators
 # QOnlineTranslator is licensed under GPL-3.0
@@ -30,6 +30,8 @@ Group:          Productivity/Networking/Web/Frontends
 URL:            https://crow-translate.github.io/
 #Git-Clone:     https://github.com/crow-translate/crow-translate.git
 Source:         %{name}-%{version}.tar.xz
+Patch0:         Fix-install-path.patch
+BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist-devel
@@ -45,20 +47,30 @@ text using Google, Yandex and Bing written with Qt5.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%qmake5
+%cmake \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DBUILD_STATIC_LIBS=ON
 %make_jobs
 
 %install
-%qmake5_install
+%cmake_install
 mv %{buildroot}/%{_datadir}/applications/io.crow_translate.CrowTranslate.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file -i %{name} Office Dictionary Network
+# remove icons with unusual sizes
+rm -rf %{buildroot}%{_datadir}/icons/hicolor/150x150
+rm -rf %{buildroot}%{_datadir}/icons/hicolor/310x310
+rm -rf %{buildroot}%{_datadir}/icons/hicolor/44x44
 
 %files
 %license COPYING
-%doc CHANGELOG.md README.md
+%doc README.md
 %{_bindir}/crow
+%dir %{_datadir}/crow-translate
+%dir %{_datadir}/crow-translate/crow-translate
+%{_datadir}/crow-translate/crow-translate/translations
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/*
 
