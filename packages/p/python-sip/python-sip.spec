@@ -1,7 +1,7 @@
 #
 # spec file for package python-sip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define python_sip_api 12.7
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sip
-Version:        4.19.19
+Version:        4.19.24
 Release:        0
 Summary:        SIP tool to use python sip bindings
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
