@@ -254,4 +254,41 @@
     <comment></comment>
     <requestid>811256</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8bdc48c39ce291ec32850f9fd389fc15</srcmd5>
+    <version>1.26.4</version>
+    <time>1599088174</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.4:
+ * Added new message collections support, so that users can select which
+   messages to include in the built library during configure with the
+   --enable-collection option. Three predefined sets are given:
+   ** minimal: the bare minimum messages required to control connectivity.
+   ** basic: all messages and indications that ModemManager requires.
+   ** full: all supported messages and indications.
+   Users can install custom collections under data/ and reference them in
+   the same way as the predefined sets. E.g. installing a new
+   data/qmi-collection-custom.json set can be enabled during configure with
+   --enable-collection=custom.
+ * Added new GObject Introspection support in the library
+ * Implemented new QRTR backend support, disabled by default. This new backend
+   allows to perform QMI operations on systems with the Qualcomm IPC router
+ * Added 5GNR radio access technology support, with new enum values in both the
+   DMS and NAS services.
+ * New services:
+   ** New 'GMS' (Telit General Modem Service) service, for now just implementing
+      basic test get/set value commands.
+   ** New 'DSD' (Data System Determination) service, implementing methods to get
+      and set default bearer APN settings.
+ * New request/response/indications:
+   ** dms: implement &quot;Get MAC Address&quot; request/response.
+   ** dms: renamed &quot;Dell Get Firmware Version&quot; to &quot;Foxconn Get Firmware Version&quot;
+      as the command applies not only to the Dell-branded variant, but also to
+      the generic Foxconn-branded models. The old APIs are kept available but
+      flagged as deprecated.
+   ** loc: implement &quot;Set NMEA Types&quot; request/response.
+   ** loc: implement &quot;Get NMEA Types&quot; request/response.
+   ** uim: implement &quot;Switch Slot&quot; request/response.</comment>
+    <requestid>829824</requestid>
+  </revision>
 </revisionlist>
