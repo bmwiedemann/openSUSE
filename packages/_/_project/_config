@@ -30,6 +30,8 @@ Type: kiwi
 Repotype: none
 Patterntype: none
 Prefer: openSUSE-release-ftp
+Support: release-compare
+BuildFlags: obsgendiff
 %endif
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:zSystems"
 Repotype: none
