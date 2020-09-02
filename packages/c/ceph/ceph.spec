@@ -86,11 +86,6 @@
 %{!?python3_pkgversion: %global python3_pkgversion 3}
 %{!?python3_version_nodots: %global python3_version_nodots 3}
 %{!?python3_version: %global python3_version 3}
-%if 0%{?rhel} == 7
-%define __python %{__python3}
-%endif
-# unify libexec for all targets
-%global _libexecdir %{_exec_prefix}/lib
 
 # disable dwz which compresses the debuginfo
 %global _find_debuginfo_dwz_opts %{nil}
@@ -99,7 +94,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	15.2.4.89+g583fe198f6
+Version:	16.0.0.4862+g8ac6038555
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -115,7 +110,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-15.2.4-89-g583fe198f6.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.0.0-4862-g8ac6038555.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -137,17 +132,11 @@ BuildRequires:	checkpolicy
 BuildRequires:	selinux-policy-devel
 %endif
 BuildRequires:	gperf
-%if 0%{?rhel} == 7
-BuildRequires:  cmake3 > 3.5
-%else
 BuildRequires:  cmake > 3.5
-%endif
 BuildRequires:	cryptsetup
 BuildRequires:	fuse-devel
-%if 0%{?rhel} == 7
-# devtoolset offers newer make and valgrind-devel, but the old ones are good
-# enough.
-BuildRequires:	devtoolset-8-gcc-c++ >= 8.3.1-3.1
+%if 0%{with seastar}
+BuildRequires:	gcc-toolset-9-gcc-c++ >= 9.2.1-2.3
 %else
 BuildRequires:	gcc-c++
 %endif
@@ -198,35 +187,14 @@ BuildRequires:  librdkafka-devel
 %if 0%{with make_check}
 BuildRequires:  jq
 BuildRequires:	libuuid-devel
-%if 0%{?rhel} == 7
-BuildRequires:	python%{python3_version_nodots}-bcrypt
-BuildRequires:	python%{python3_version_nodots}-nose
-BuildRequires:	python%{python3_version_nodots}-requests
-BuildRequires:	python%{python3_version_nodots}-dateutil
-%else
 BuildRequires:	python%{python3_pkgversion}-bcrypt
 BuildRequires:	python%{python3_pkgversion}-nose
 BuildRequires:	python%{python3_pkgversion}-pecan
 BuildRequires:	python%{python3_pkgversion}-requests
 BuildRequires:	python%{python3_pkgversion}-dateutil
-%endif
-%if 0%{?rhel} == 7
-BuildRequires:	python%{python3_version_nodots}-six
-BuildRequires:	python%{python3_version_nodots}-virtualenv
-%else
-BuildRequires:	python%{python3_pkgversion}-six
 BuildRequires:	python%{python3_pkgversion}-virtualenv
-%endif
-%if 0%{?rhel} == 7
-BuildRequires:	python%{python3_version_nodots}-coverage
-%else
 BuildRequires:	python%{python3_pkgversion}-coverage
-%endif
-%if 0%{?rhel} == 7
-BuildRequires:	python%{python3_version_nodots}-pyOpenSSL
-%else
 BuildRequires:	python%{python3_pkgversion}-pyOpenSSL
-%endif
 BuildRequires:	socat
 %endif
 %if 0%{with seastar}
@@ -239,6 +207,18 @@ BuildRequires:  protobuf-devel
 BuildRequires:  ragel
 BuildRequires:  systemtap-sdt-devel
 BuildRequires:  yaml-cpp-devel
+%if 0%{?fedora} || 0%{?rhel} >= 8
+BuildRequires:  fmt-devel
+BuildRequires:  libubsan
+BuildRequires:  libasan
+BuildRequires:  libatomic
+%if 0%{with seastar}
+BuildRequires:  gcc-toolset-9-annobin
+BuildRequires:  gcc-toolset-9-libubsan-devel
+BuildRequires:  gcc-toolset-9-libasan-devel
+BuildRequires:  gcc-toolset-9-libatomic-devel
+%endif
+%endif
 %endif
 #################################################################################
 # distro-conditional dependencies
@@ -282,11 +262,7 @@ BuildRequires:  CUnit-devel
 BuildRequires:  redhat-lsb-core
 BuildRequires:	python%{python3_pkgversion}-devel
 BuildRequires:	python%{python3_pkgversion}-setuptools
-%if 0%{?rhel} == 7
-BuildRequires:	python%{python3_version_nodots}-Cython
-%else
 BuildRequires:	python%{python3_pkgversion}-Cython
-%endif
 BuildRequires:	python%{python3_pkgversion}-prettytable
 BuildRequires:	python%{python3_pkgversion}-sphinx
 BuildRequires:	lz4-devel >= 1.7
@@ -302,21 +278,12 @@ BuildRequires:	xmlsec1-nss
 %endif
 BuildRequires:	xmlsec1-openssl
 BuildRequires:	xmlsec1-openssl-devel
-%if 0%{?rhel} == 7
-BuildRequires:	python%{python3_version_nodots}-jwt
-BuildRequires:	python%{python3_version_nodots}-scipy
-%else
 BuildRequires:	python%{python3_pkgversion}-cherrypy
 BuildRequires:	python%{python3_pkgversion}-jwt
 BuildRequires:	python%{python3_pkgversion}-routes
 BuildRequires:	python%{python3_pkgversion}-scipy
 BuildRequires:	python%{python3_pkgversion}-werkzeug
-%endif
-%if 0%{?rhel} == 7
-BuildRequires:	python%{python3_version_nodots}-pyOpenSSL
-%else
 BuildRequires:	python%{python3_pkgversion}-pyOpenSSL
-%endif
 %endif
 %if 0%{?suse_version}
 BuildRequires:	libxmlsec1-1
@@ -492,15 +459,9 @@ Group:          System/Filesystems
 %endif
 Requires:       ceph-base = %{_epoch_prefix}%{version}-%{release}
 Requires:       ceph-mgr-modules-core = %{_epoch_prefix}%{version}-%{release}
-%if 0%{?rhel} == 7
-Requires:       python%{python3_version_nodots}-six
-%else
-Requires:       python%{python3_pkgversion}-six
-%endif
 %if 0%{?weak_deps}
 Recommends:	ceph-mgr-dashboard = %{_epoch_prefix}%{version}-%{release}
 Recommends:	ceph-mgr-diskprediction-local = %{_epoch_prefix}%{version}-%{release}
-Recommends:	ceph-mgr-diskprediction-cloud = %{_epoch_prefix}%{version}-%{release}
 Recommends:	ceph-mgr-k8sevents = %{_epoch_prefix}%{version}-%{release}
 Recommends:	ceph-mgr-cephadm = %{_epoch_prefix}%{version}-%{release}
 Recommends:	python%{python3_pkgversion}-influxdb
@@ -550,32 +511,13 @@ Group:          System/Filesystems
 %endif
 Requires:       ceph-mgr = %{_epoch_prefix}%{version}-%{release}
 Requires:       python%{python3_pkgversion}-numpy
-Requires:       python3-scipy
-%if 0%{?rhel} == 7
-Requires:       numpy
-Requires:       scipy
+%if 0%{?fedora} || 0%{?suse_version}
+Requires:       python%{python3_pkgversion}-scikit-learn
 %endif
+Requires:       python3-scipy
 %description mgr-diskprediction-local
 ceph-mgr-diskprediction-local is a ceph-mgr module that tries to predict
 disk failures using local algorithms and machine-learning databases.
-
-%package mgr-diskprediction-cloud
-Summary:        Ceph Manager module for cloud-based disk failure prediction
-BuildArch:      noarch
-%if 0%{?suse_version}
-Group:          System/Filesystems
-%endif
-Requires:       ceph-mgr = %{_epoch_prefix}%{version}-%{release}
-%if 0%{without python2}
-Requires:       python3-grpcio
-Requires:       python3-protobuf
-%else
-Requires:       python2-grpcio
-Requires:       python2-protobuf
-%endif
-%description mgr-diskprediction-cloud
-ceph-mgr-diskprediction-cloud is a ceph-mgr module that tries to predict
-disk failures using services in the Google cloud.
 
 %package mgr-modules-core
 Summary:        Ceph Manager modules which are always enabled
@@ -583,19 +525,11 @@ BuildArch:      noarch
 %if 0%{?suse_version}
 Group:          System/Filesystems
 %endif
-%if 0%{?rhel} == 7
-Requires:       python%{python3_version_nodots}-bcrypt
-Requires:       python%{python3_version_nodots}-pyOpenSSL
-Requires:       python%{python3_version_nodots}-requests
-Requires:       python%{python3_version_nodots}-PyYAML
-Requires:       python%{python3_version_nodots}-dateutil
-%else
 Requires:       python%{python3_pkgversion}-bcrypt
 Requires:       python%{python3_pkgversion}-pecan
 Requires:       python%{python3_pkgversion}-pyOpenSSL
 Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-dateutil
-%endif
 %if 0%{?fedora} || 0%{?rhel} >= 8
 Requires:       python%{python3_pkgversion}-cherrypy
 Requires:       python%{python3_pkgversion}-pyyaml
@@ -754,6 +688,7 @@ Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
 Requires:	lvm2
 Requires:	sudo
 Requires:	libstoragemgmt
+Requires:	python%{python3_pkgversion}-ceph-common = %{_epoch_prefix}%{version}-%{release}
 %description osd
 ceph-osd is the object storage daemon for the Ceph distributed file
 system.  It is responsible for storing objects on a local file system
@@ -995,6 +930,12 @@ descriptions, and submitting the command to the appropriate daemon.
 
 %package -n python%{python3_pkgversion}-ceph-common
 Summary:	Python 3 utility libraries for Ceph
+%if 0%{?fedora} || 0%{?rhel} >= 8
+Requires:       python%{python3_pkgversion}-pyyaml
+%endif
+%if 0%{?suse_version}
+Requires:       python%{python3_pkgversion}-PyYAML
+%endif
 %if 0%{?suse_version}
 Group:		Development/Libraries/Python
 %endif
@@ -1123,15 +1064,15 @@ This package provides Ceph’s default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-15.2.4-89-g583fe198f6
+%autosetup -p1 -n ceph-16.0.0-4862-g8ac6038555
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=48200
 %define _lto_cflags %{nil}
 
-%if 0%{?rhel} == 7
-. /opt/rh/devtoolset-8/enable
+%if 0%{with seastar}
+. /opt/rh/gcc-toolset-9/enable
 %endif
 
 %if 0%{with cephfs_java}
@@ -1154,6 +1095,11 @@ export CFLAGS="$RPM_OPT_FLAGS"
 export CXXFLAGS="$RPM_OPT_FLAGS"
 export LDFLAGS="$RPM_LD_FLAGS"
 test "$RPM_LD_FLAGS" && echo "RPM_LD_FLAGS == $RPM_LD_FLAGS" || echo "RPM_LD_FLAGS is empty"
+
+%if 0%{with seastar}
+# seastar uses longjmp() to implement coroutine. and this annoys longjmp_chk()
+export CXXFLAGS=$(echo $RPM_OPT_FLAGS | sed -e 's/-Wp,-D_FORTIFY_SOURCE=2//g')
+%endif
 
 # Parallel build settings ...
 CEPH_MFLAGS_JOBS="%{?_smp_mflags}"
@@ -1181,11 +1127,7 @@ env | sort
 
 mkdir build
 cd build
-%if 0%{?rhel} == 7
-CMAKE=cmake3
-%else
 CMAKE=cmake
-%endif
 ${CMAKE} .. \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
@@ -1195,6 +1137,7 @@ ${CMAKE} .. \
     -DCMAKE_INSTALL_MANDIR=%{_mandir} \
     -DCMAKE_INSTALL_DOCDIR=%{_docdir}/ceph \
     -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir} \
+    -DCMAKE_INSTALL_SYSTEMD_SERVICEDIR=%{_unitdir} \
     -DWITH_MANPAGE=ON \
     -DWITH_PYTHON3=%{python3_version} \
     -DWITH_MGR_DASHBOARD_FRONTEND=OFF \
@@ -1269,6 +1212,12 @@ make DESTDIR=%{buildroot} install
 # we have dropped sysvinit bits
 rm -f %{buildroot}/%{_sysconfdir}/init.d/ceph
 popd
+
+%if 0%{with seastar}
+# package crimson-osd with the name of ceph-osd
+install -m 0755 %{buildroot}%{_bindir}/crimson-osd %{buildroot}%{_bindir}/ceph-osd
+%endif
+
 install -m 0644 -D src/etc-rbdmap %{buildroot}%{_sysconfdir}/ceph/rbdmap
 %if 0%{?fedora} || 0%{?rhel}
 install -m 0644 -D etc/sysconfig/ceph %{buildroot}%{_sysconfdir}/sysconfig/ceph
@@ -1277,12 +1226,13 @@ install -m 0644 -D etc/sysconfig/ceph %{buildroot}%{_sysconfdir}/sysconfig/ceph
 install -m 0644 -D etc/sysconfig/ceph %{buildroot}%{_fillupdir}/sysconfig.%{name}
 %endif
 install -m 0644 -D systemd/ceph.tmpfiles.d %{buildroot}%{_tmpfilesdir}/ceph-common.conf
-install -m 0644 -D systemd/50-ceph.preset %{buildroot}%{_libexecdir}/systemd/system-preset/50-ceph.preset
+install -m 0644 -D systemd/50-ceph.preset %{buildroot}%{_presetdir}/50-ceph.preset
 mkdir -p %{buildroot}%{_sbindir}
 install -m 0644 -D src/logrotate.conf %{buildroot}%{_sysconfdir}/logrotate.d/ceph
 chmod 0644 %{buildroot}%{_docdir}/ceph/sample.ceph.conf
 install -m 0644 -D COPYING %{buildroot}%{_docdir}/ceph/COPYING
 install -m 0644 -D etc/sysctl/90-ceph-osd.conf %{buildroot}%{_sysctldir}/90-ceph-osd.conf
+install -m 0755 -D src/tools/rbd_nbd/rbd-nbd_quiesce %{buildroot}%{_libexecdir}/rbd-nbd/rbd-nbd_quiesce
 
 install -m 0755 src/cephadm/cephadm %{buildroot}%{_sbindir}/cephadm
 mkdir -p %{buildroot}%{_sharedstatedir}/cephadm
@@ -1362,7 +1312,7 @@ rm -rf %{buildroot}
 %{_bindir}/cephfs-data-scan
 %{_bindir}/cephfs-journal-tool
 %{_bindir}/cephfs-table-tool
-%{_libexecdir}/systemd/system-preset/50-ceph.preset
+%{_presetdir}/50-ceph.preset
 %{_sbindir}/ceph-create-keys
 %dir %{_libexecdir}/ceph
 %{_libexecdir}/ceph/ceph_common.sh
@@ -1391,6 +1341,8 @@ rm -rf %{buildroot}
 %dir %{python3_sitelib}/ceph_volume
 %{python3_sitelib}/ceph_volume/*
 %{python3_sitelib}/ceph_volume-*
+%{python3_sitelib}/ceph_lvm*
+%{python3_sitelib}/ceph_volume_lvm*
 %{_mandir}/man8/ceph-deploy.8*
 %{_mandir}/man8/ceph-create-keys.8*
 %{_mandir}/man8/ceph-run.8*
@@ -1615,9 +1567,6 @@ fi
 %dir %{_datadir}/ceph/mgr
 %{_datadir}/ceph/mgr/mgr_module.*
 %{_datadir}/ceph/mgr/mgr_util.*
-%if 0%{?rhel} == 7
-%{_datadir}/ceph/mgr/__pycache__
-%endif
 %{_unitdir}/ceph-mgr@.service
 %{_unitdir}/ceph-mgr.target
 %attr(750,ceph,ceph) %dir %{_localstatedir}/lib/ceph/mgr
@@ -1689,19 +1638,6 @@ if [ $1 -eq 1 ] ; then
     /usr/bin/systemctl try-restart ceph-mgr.target >/dev/null 2>&1 || :
 fi
 
-%files mgr-diskprediction-cloud
-%{_datadir}/ceph/mgr/diskprediction_cloud
-
-%post mgr-diskprediction-cloud
-if [ $1 -eq 1 ] ; then
-    /usr/bin/systemctl try-restart ceph-mgr.target >/dev/null 2>&1 || :
-fi
-
-%postun mgr-diskprediction-cloud
-if [ $1 -eq 1 ] ; then
-    /usr/bin/systemctl try-restart ceph-mgr.target >/dev/null 2>&1 || :
-fi
-
 %files mgr-modules-core
 %dir %{_datadir}/ceph/mgr
 %{_datadir}/ceph/mgr/alerts
@@ -1712,15 +1648,16 @@ fi
 %{_datadir}/ceph/mgr/insights
 %{_datadir}/ceph/mgr/iostat
 %{_datadir}/ceph/mgr/localpool
+%{_datadir}/ceph/mgr/mds_autoscaler
 %{_datadir}/ceph/mgr/orchestrator
 %{_datadir}/ceph/mgr/osd_perf_query
-%{_datadir}/ceph/mgr/osd_support
 %{_datadir}/ceph/mgr/pg_autoscaler
 %{_datadir}/ceph/mgr/progress
 %{_datadir}/ceph/mgr/prometheus
 %{_datadir}/ceph/mgr/rbd_support
 %{_datadir}/ceph/mgr/restful
 %{_datadir}/ceph/mgr/selftest
+%{_datadir}/ceph/mgr/snap_schedule
 %{_datadir}/ceph/mgr/status
 %{_datadir}/ceph/mgr/telegraf
 %{_datadir}/ceph/mgr/telemetry
@@ -1925,6 +1862,8 @@ fi
 %files -n rbd-nbd
 %{_bindir}/rbd-nbd
 %{_mandir}/man8/rbd-nbd.8*
+%dir %{_libexecdir}/rbd-nbd
+%{_libexecdir}/rbd-nbd/rbd-nbd_quiesce
 
 %files radosgw
 %{_bindir}/ceph-diff-sorted
@@ -1985,6 +1924,7 @@ fi
 %files osd
 %{_bindir}/ceph-clsinfo
 %{_bindir}/ceph-bluestore-tool
+%{_bindir}/ceph-erasure-code-tool
 %{_bindir}/ceph-objectstore-tool
 %{_bindir}/ceph-osdomap-tool
 %{_bindir}/ceph-osd
@@ -2123,6 +2063,8 @@ fi
 %if %{with lttng}
 %{_libdir}/librbd_tp.so.*
 %endif
+%dir %{_libdir}/ceph/librbd
+%{_libdir}/ceph/librbd/libceph_*.so*
 
 %post -n librbd1 -p /sbin/ldconfig
 
@@ -2140,7 +2082,6 @@ fi
 
 %files -n librgw2
 %{_libdir}/librgw.so.*
-%{_libdir}/librgw_admin_user.so.*
 %if %{with lttng}
 %{_libdir}/librgw_op_tp.so.*
 %{_libdir}/librgw_rados_tp.so.*
@@ -2153,10 +2094,8 @@ fi
 %files -n librgw-devel
 %dir %{_includedir}/rados
 %{_includedir}/rados/librgw.h
-%{_includedir}/rados/librgw_admin_user.h
 %{_includedir}/rados/rgw_file.h
 %{_libdir}/librgw.so
-%{_libdir}/librgw_admin_user.so
 %if %{with lttng}
 %{_libdir}/librgw_op_tp.so
 %{_libdir}/librgw_rados_tp.so
@@ -2182,6 +2121,8 @@ fi
 %dir %{_includedir}/cephfs
 %{_includedir}/cephfs/libcephfs.h
 %{_includedir}/cephfs/ceph_ll_client.h
+%dir %{_includedir}/cephfs/metrics
+%{_includedir}/cephfs/metrics/Types.h
 %{_libdir}/libcephfs.so
 
 %files -n python%{python3_pkgversion}-cephfs
@@ -2212,7 +2153,6 @@ fi
 %{_bindir}/ceph_bench_log
 %{_bindir}/ceph_kvstorebench
 %{_bindir}/ceph_multi_stress_watch
-%{_bindir}/ceph_erasure_code
 %{_bindir}/ceph_erasure_code_benchmark
 %{_bindir}/ceph_omapbench
 %{_bindir}/ceph_objectstore_bench
@@ -2359,4 +2299,3 @@ exit 0
 %config %{_sysconfdir}/prometheus/ceph/ceph_default_alerts.yml
 
 %changelog
-# nospeccleaner
