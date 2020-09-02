@@ -42,7 +42,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        1.20.8+0
+Version:        1.20.9
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -250,8 +250,6 @@ Patch1505:      U_xwayland-Allow-passing-a-fd.patch
 
 Patch1600:      U_glamor_egl-Reject-OpenGL-2.1-early-on.patch
 
-Patch1174633:   U_FixForZDI-11426.patch
-
 %description
 This package contains the X.Org Server.
 
@@ -400,8 +398,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1503 -p1
 %patch1505 -p1
 %patch1600 -p1
-
-%patch1174633 -p1
 
 %build
 %define _lto_cflags %{nil}

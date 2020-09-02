@@ -3443,4 +3443,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
      on pixmap allocation (ZDI-CAN-11426, CVE-2020-14347, bsc#1174633)</comment>
     <requestid>823797</requestid>
   </revision>
+  <revision rev="385" vrev="1">
+    <srcmd5>fe2e97b9407fae6c76ee4cb4fe680997</srcmd5>
+    <version>1.20.9</version>
+    <time>1599088203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830096</requestid>
+  </revision>
 </revisionlist>

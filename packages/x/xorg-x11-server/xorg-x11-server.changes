@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Aug 27 19:29:29 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.20.9:
+  * Fix XRecordRegisterClients() Integer underflow
+  * Fix XkbSelectEvents() integer underflow
+  * Fix XIChangeHierarchy() integer underflow
+  * Correct bounds checking in XkbSetNames()
+  * linux: Fix platform device probe for DT-based PCI
+  * linux: Fix platform device PCI detection for complex bus topologies
+  * linux: Make platform device probe less fragile
+  * fix for ZDI-11426
+  * xfree86: add drm modes on non-GTF panels
+  * present: Check valid region in window mode flips
+  * xwayland: Handle NULL xwl_seat in xwl_seat_can_emulate_pointer_warp
+  * xwayland: Propagate damage x1/y1 coordinates in xwl_present_flip
+  * doc: Update URLs in Xserver-DTrace.xml
+  * xwayland: Use a fixed DPI value for core protocol
+  * xwayland: only use linux-dmabuf if format/modifier was advertised
+  * hw/xfree86: Avoid cursor use after free
+  * Update URL's in man pages
+  * xwayland: Disable the MIT-SCREEN-SAVER extension when rootless
+  * xwayland: Hold a pixmap reference in struct xwl_present_event
+  * randr: Check rrPrivKey in RRHasScanoutPixmap()
+  * modesetting: Fix front_bo leak at drmmode_xf86crtc_resize on XRandR rotation
+  * xwayland: Store xwl_tablet_pad in its own private key
+  * xwayland: Initialise values in xwlVidModeGetGamma()
+  * xwayland: Fix crashes when there is no pointer
+  * xwayland: Clear private on device removal
+  * xwayland: Free all remaining events in xwl_present_cleanup
+  * xwayland: Always use xwl_present_free_event for freeing Present events
+  * present/wnmd: Free flip_queue entries in present_wnmd_clear_window_flip
+  * present/wnmd: Keep pixmap pointer in present_wnmd_clear_window_flip
+  * xwayland: import DMA-BUFs with GBM_BO_USE_RENDERING only
+  * xwayland: Fix infinite loop at startup
+  * modesetting: Disable pageflipping when using a swcursor
+  * dix: do not send focus event when grab actually does not change
+- Drop patches fixed upstream:
+  * U_0001-Correct-bounds-checking-in-XkbSetNames.patch
+  * U_0002-Fix-XIChangeHierarchy-integer-underflow.patch
+  * U_0003-Fix-XkbSelectEvents-integer-underflow.patch
+  * U_0004-Fix-XRecordRegisterClients-Integer-underflow.patch
+  * U_FixForZDI-11426.patch
+
+-------------------------------------------------------------------
+Tue Aug 25 15:46:49 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_0001-Correct-bounds-checking-in-XkbSetNames.patch
+  * Correct bounds checking in XkbSetNames() 
+    [CVE-2020-14345 / ZDI 11428, boo#1174635]
+- U_0002-Fix-XIChangeHierarchy-integer-underflow.patch
+  * Fix XIChangeHierarchy() integer underflow
+    [CVE-2020-14346 / ZDI-CAN-11429, boo#1174638]
+- U_0003-Fix-XkbSelectEvents-integer-underflow.patch
+  * Fix XkbSelectEvents() integer underflow
+    [CVE-2020-14361 / ZDI-CAN 11573, boo#1174910]
+- U_0004-Fix-XRecordRegisterClients-Integer-underflow.patch
+  * Fix XRecordRegisterClients() Integer underflow
+    [CVE-2020-14362 / ZDI-CAN-11574, boo#1174913]
+
+-------------------------------------------------------------------
 Fri Jul 31 19:54:05 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_FixForZDI-11426.patch
