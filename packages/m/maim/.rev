@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>758654</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d033a7d53b9c64411d569687c8e9f199</srcmd5>
+    <version>5.6.3</version>
+    <time>1599088106</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.3
+ * Do not consider root window's children as window frames
+ * Add explicit TTY redirect error
+ * Add support for the slop nodrag option (forwarded request 829611 from mimi_vx)</comment>
+    <requestid>829612</requestid>
+  </revision>
 </revisionlist>
