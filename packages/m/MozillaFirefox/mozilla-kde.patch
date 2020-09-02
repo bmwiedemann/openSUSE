@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  43647626f7204e312a4e38cac0414a461b06667f
+# Parent  a22a4c4e41107a0809c33a83e9d14916738c5a82
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4570,25 +4571,37 @@ nsresult Preferences::InitInitialObjects
+@@ -4530,25 +4531,37 @@ nsresult Preferences::InitInitialObjects
    // application pref files for backwards compatibility.
    static const char* specialFiles[] = {
  #if defined(XP_MACOSX)
@@ -69,7 +69,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4634,17 +4647,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4594,17 +4607,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -91,7 +91,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -117,16 +117,20 @@ EXPORTS.mozilla += [
+@@ -118,16 +118,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(['!' + g for g in gen_h])
  
@@ -157,7 +157,7 @@ diff --git a/python/mozbuild/mozpack/chrome/manifest.py b/python/mozbuild/mozpac
 diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloads/moz.build
 --- a/toolkit/components/downloads/moz.build
 +++ b/toolkit/components/downloads/moz.build
-@@ -46,10 +46,14 @@ XPCOM_MANIFESTS += [
+@@ -45,10 +45,14 @@ XPCOM_MANIFESTS += [
  
  if CONFIG['MOZ_PLACES']:
      EXTRA_JS_MODULES += [
@@ -302,7 +302,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -384,21 +387,50 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -381,21 +384,50 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  
@@ -338,7 +338,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
 +    url += nsPrintfCString("%d", aPort);
 +  }
 +  nsTArray<nsCString> command;
-+  command.AppendElement( NS_LITERAL_CSTRING( "GETPROXY" ));
++  command.AppendElement( "GETPROXY"_ns );
 +  command.AppendElement( url );
 +  nsTArray<nsCString> result;
 +  if( !nsKDEUtils::command( command, &result ) || result.Length() != 1 )
@@ -454,8 +454,8 @@ new file mode 100644
 +static bool getKdeSupport()
 +    {
 +    nsTArray<nsCString> command;
-+    command.AppendElement( NS_LITERAL_CSTRING( "CHECK" ));
-+    command.AppendElement( NS_LITERAL_CSTRING( MAKE_STR( KMOZILLAHELPER_VERSION )));
++    command.AppendElement( "CHECK"_ns );
++    command.AppendElement( "KMOZILLAHELPER_VERSION"_ns );
 +    bool kde = nsKDEUtils::command( command );
 +#ifdef DEBUG_KDE
 +    fprintf( stderr, "KDE RUNNING %d\n", kde );
@@ -991,7 +991,7 @@ new file mode 100644
 +nsKDERegistry::HandlerExists(const char *aProtocolScheme)
 +{
 +    nsTArray<nsCString> command;
-+    command.AppendElement( NS_LITERAL_CSTRING( "HANDLEREXISTS" ));
++    command.AppendElement( "HANDLEREXISTS"_ns );
 +    command.AppendElement( nsAutoCString( aProtocolScheme ));
 +    return nsKDEUtils::command( command );
 +}
@@ -1000,7 +1000,7 @@ new file mode 100644
 +nsKDERegistry::LoadURL(nsIURI *aURL)
 +{
 +    nsTArray<nsCString> command;
-+    command.AppendElement( NS_LITERAL_CSTRING( "OPEN" ));
++    command.AppendElement( "OPEN"_ns );
 +    nsCString url;
 +    aURL->GetSpec( url );
 +    command.AppendElement( url );
@@ -1016,7 +1016,7 @@ new file mode 100644
 +                                     nsAString& aDesc)
 +{
 +    nsTArray<nsCString> command;
-+    command.AppendElement( NS_LITERAL_CSTRING( "GETAPPDESCFORSCHEME" ));
++    command.AppendElement( "GETAPPDESCFORSCHEME"_ns );
 +    command.AppendElement( aScheme );
 +    nsTArray<nsCString> output;
 +    if( nsKDEUtils::command( command, &output ) && output.Length() == 1 )
@@ -1029,7 +1029,7 @@ new file mode 100644
 +{
 +    NS_ASSERTION(aFileExt[0] != '.', "aFileExt shouldn't start with a dot");
 +    nsTArray<nsCString> command;
-+    command.AppendElement( NS_LITERAL_CSTRING( "GETFROMEXTENSION" ));
++    command.AppendElement( "GETFROMEXTENSION"_ns );
 +    command.AppendElement( aFileExt );
 +    return GetFromHelper( command );
 +}
@@ -1038,7 +1038,7 @@ new file mode 100644
 +nsKDERegistry::GetFromType(const nsACString& aMIMEType)
 +{
 +    nsTArray<nsCString> command;
-+    command.AppendElement( NS_LITERAL_CSTRING( "GETFROMTYPE" ));
++    command.AppendElement( "GETFROMTYPE"_ns );
 +    command.AppendElement( aMIMEType );
 +    return GetFromHelper( command );
 +}
@@ -1171,9 +1171,9 @@ diff --git a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/uriloader/exthandler
 +    bool supports;
 +    if( NS_SUCCEEDED( GetHasDefaultHandler( &supports )) && supports ) {
 +      nsTArray<nsCString> command;
-+      command.AppendElement( NS_LITERAL_CSTRING( "OPEN" ));
++      command.AppendElement( "OPEN"_ns );
 +      command.AppendElement( nativePath );
-+      command.AppendElement( NS_LITERAL_CSTRING( "MIMETYPE" ));
++      command.AppendElement( "MIMETYPE"_ns );
 +      command.AppendElement( mSchemeOrType );
 +      if( nsKDEUtils::command( command ))
 +        return NS_OK;
@@ -1214,7 +1214,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  #include "nsIFileStreams.h"
  #include "nsILineInputStream.h"
  #include "nsIFile.h"
-@@ -1022,17 +1022,17 @@ nsresult nsOSHelperAppService::GetHandle
+@@ -1019,17 +1019,17 @@ nsresult nsOSHelperAppService::GetHandle
  
  nsresult nsOSHelperAppService::OSProtocolHandlerExists(
      const char* aProtocolScheme, bool* aHandlerExists) {
@@ -1233,7 +1233,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
      nsCOMPtr<nsIHandlerService> handlerSvc =
          do_GetService(NS_HANDLERSERVICE_CONTRACTID, &rv);
      if (NS_SUCCEEDED(rv) && handlerSvc) {
-@@ -1042,17 +1042,17 @@ nsresult nsOSHelperAppService::OSProtoco
+@@ -1039,17 +1039,17 @@ nsresult nsOSHelperAppService::OSProtoco
    }
  
    return rv;
@@ -1252,7 +1252,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  
  NS_IMETHODIMP nsOSHelperAppService::IsCurrentAppOSDefaultForProtocol(
      const nsACString& aScheme, bool* _retval) {
-@@ -1139,17 +1139,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1136,17 +1136,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
    nsresult rv =
        LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                 minorType, mime_types_description, true);
@@ -1271,7 +1271,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  
      rv = LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                    minorType, mime_types_description, false);
-@@ -1251,17 +1251,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1247,17 +1247,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
  
    // Now look up our extensions
    nsAutoString extensions, mime_types_description;
@@ -1294,7 +1294,6 @@ diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
 @@ -133,16 +133,17 @@ include('/ipc/chromium/chromium-config.m
- 
  FINAL_LIBRARY = 'xul'
  
  LOCAL_INCLUDES += [
@@ -1302,6 +1301,7 @@ diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
      '/layout/generic',
      '/layout/xul',
      '/other-licenses/atk-1.0',
+     '/third_party/cups/include',
 +    '/toolkit/xre',
      '/widget',
      '/widget/headless',
@@ -1534,10 +1534,10 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
 +        }
 +    command.AppendElement( title );
 +    if( mMode == nsIFilePicker::modeOpenMultiple )
-+        command.AppendElement( NS_LITERAL_CSTRING( "MULTIPLE" ));
++        command.AppendElement( "MULTIPLE"_ns );
 +    if( PRInt32 xid = windowToXid( mParentWidget ))
 +        {
-+        command.AppendElement( NS_LITERAL_CSTRING( "PARENT" ));
++        command.AppendElement( "PARENT"_ns );
 +        nsAutoCString parent;
 +        parent.AppendInt( xid );
 +        command.AppendElement( parent );
@@ -1625,11 +1625,11 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
 +    title.Adopt(ToNewUTF8String(mTitle));
 +
 +    nsTArray<nsCString> command;
-+    command.AppendElement( NS_LITERAL_CSTRING( "APPSDIALOG" ));
++    command.AppendElement( "APPSDIALOG"_ns );
 +    command.AppendElement( title );
 +    if( PRInt32 xid = windowToXid( mParentWidget ))
 +        {
-+        command.AppendElement( NS_LITERAL_CSTRING( "PARENT" ));
++        command.AppendElement( "PARENT"_ns );
 +        nsAutoCString parent;
 +        parent.AppendInt( xid );
 +        command.AppendElement( parent );
@@ -1703,25 +1703,25 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
    int argc;
  
    bool ischrome;
-@@ -394,16 +395,17 @@ void ParseManifest(NSLocationType aType,
-   NS_NAMED_LITERAL_STRING(kRemoteEnabled, "remoteenabled");
-   NS_NAMED_LITERAL_STRING(kRemoteRequired, "remoterequired");
-   NS_NAMED_LITERAL_STRING(kApplication, "application");
-   NS_NAMED_LITERAL_STRING(kAppVersion, "appversion");
-   NS_NAMED_LITERAL_STRING(kGeckoVersion, "platformversion");
-   NS_NAMED_LITERAL_STRING(kOs, "os");
-   NS_NAMED_LITERAL_STRING(kOsVersion, "osversion");
-   NS_NAMED_LITERAL_STRING(kABI, "abi");
-+  NS_NAMED_LITERAL_STRING(kDesktop, "desktop");
-   NS_NAMED_LITERAL_STRING(kProcess, "process");
+@@ -393,16 +394,17 @@ void ParseManifest(NSLocationType aType,
+   constexpr auto kRemoteEnabled = u"remoteenabled"_ns;
+   constexpr auto kRemoteRequired = u"remoterequired"_ns;
+   constexpr auto kApplication = u"application"_ns;
+   constexpr auto kAppVersion = u"appversion"_ns;
+   constexpr auto kGeckoVersion = u"platformversion"_ns;
+   constexpr auto kOs = u"os"_ns;
+   constexpr auto kOsVersion = u"osversion"_ns;
+   constexpr auto kABI = u"abi"_ns;
++  constexpr auto kDesktop = u"desktop"_ns;
+   constexpr auto kProcess = u"process"_ns;
  #if defined(MOZ_WIDGET_ANDROID)
-   NS_NAMED_LITERAL_STRING(kTablet, "tablet");
+   constexpr auto kTablet = u"tablet"_ns;
  #endif
  
-   NS_NAMED_LITERAL_STRING(kMain, "main");
-   NS_NAMED_LITERAL_STRING(kContent, "content");
+   constexpr auto kMain = u"main"_ns;
+   constexpr auto kContent = u"content"_ns;
  
-@@ -449,39 +451,44 @@ void ParseManifest(NSLocationType aType,
+@@ -448,39 +450,44 @@ void ParseManifest(NSLocationType aType,
          CopyUTF8toUTF16(s, abi);
          abi.Insert(char16_t('_'), 0);
          abi.Insert(osTarget, 0);
@@ -1739,17 +1739,17 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
      nsTextFormatter::ssprintf(osVersion, u"%ld.%ld", info.dwMajorVersion,
                                info.dwMinorVersion);
    }
-+  desktop = NS_LITERAL_STRING("win");
++  desktop = u"win"_ns;
  #  pragma warning(pop)
  #elif defined(MOZ_WIDGET_COCOA)
    SInt32 majorVersion = nsCocoaFeatures::macOSVersionMajor();
    SInt32 minorVersion = nsCocoaFeatures::macOSVersionMinor();
    nsTextFormatter::ssprintf(osVersion, u"%ld.%ld", majorVersion, minorVersion);
-+  desktop = NS_LITERAL_STRING("macosx");
++  desktop = u"macosx"_ns);
  #elif defined(MOZ_WIDGET_GTK)
    nsTextFormatter::ssprintf(osVersion, u"%ld.%ld", gtk_major_version,
                              gtk_minor_version);
-+  desktop = nsKDEUtils::kdeSession() ? NS_LITERAL_STRING("kde") : NS_LITERAL_STRING("gnome");
++  desktop = nsKDEUtils::kdeSession() ? u"kde"_ns : u"gnome"_ns;
  #elif defined(MOZ_WIDGET_ANDROID)
    bool isTablet = false;
    if (mozilla::AndroidBridge::Bridge()) {
@@ -1757,7 +1757,7 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
          "android/os/Build$VERSION", "RELEASE", osVersion);
      isTablet = java::GeckoAppShell::IsTablet();
    }
-+  desktop = NS_LITERAL_STRING("android");
++  desktop = u"android"_ns;
  #endif
  
    if (XRE_IsContentProcess()) {
@@ -1766,7 +1766,7 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
      process = kMain;
    }
  
-@@ -568,25 +575,27 @@ void ParseManifest(NSLocationType aType,
+@@ -567,25 +574,27 @@ void ParseManifest(NSLocationType aType,
      TriState stOsVersion = eUnspecified;
      TriState stOs = eUnspecified;
      TriState stABI = eUnspecified;
@@ -1794,7 +1794,7 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
          continue;
        }
  
-@@ -623,17 +632,17 @@ void ParseManifest(NSLocationType aType,
+@@ -622,17 +631,17 @@ void ParseManifest(NSLocationType aType,
        }
  
        LogMessageWithContext(
@@ -1907,7 +1907,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #endif
 +  if(nsKDEUtils::kdeSupport()) {
 +    nsTArray<nsCString> command;
-+    command.AppendElement( NS_LITERAL_CSTRING("REVEAL") );
++    command.AppendElement( "REVEAL"_ns );
 +    command.AppendElement( mPath );
 +    return nsKDEUtils::command( command ) ? NS_OK : NS_ERROR_FAILURE;
 +  }
@@ -1927,7 +1927,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #ifdef MOZ_WIDGET_GTK
 +  if( nsKDEUtils::kdeSupport()) {
 +    nsTArray<nsCString> command;
-+    command.AppendElement( NS_LITERAL_CSTRING("OPEN") );
++    command.AppendElement( "OPEN"_ns );
 +    command.AppendElement( mPath );
 +    return nsKDEUtils::command( command ) ? NS_OK : NS_ERROR_FAILURE;
 +  }

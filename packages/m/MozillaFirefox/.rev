@@ -4558,4 +4558,41 @@
 - removed obsolete patch</comment>
     <requestid>823315</requestid>
   </revision>
+  <revision rev="318" vrev="1">
+    <srcmd5>60fd6c4479055996606079fda4d10289</srcmd5>
+    <version>80.0</version>
+    <time>1599088116</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 80.0
+  MFSA 2020-36 (bsc#1175686)
+  * CVE-2020-15663 (bmo#1643199)
+    Downgrade attack on the Mozilla Maintenance Service could
+    have resulted in escalation of privilege
+  * CVE-2020-15664 (bmo#1658214)
+    Attacker-induced prompt for extension installation
+  * CVE-2020-12401 (bmo#1631573)
+    Timing-attack on ECDSA signature generation
+  * CVE-2020-6829 (bmo#1631583)
+    P-384 and P-521 vulnerable to an electro-magnetic side
+    channel attack on signature generation
+  * CVE-2020-12400 (bmo#1623116)
+    P-384 and P-521 vulnerable to a side channel attack on
+    modular inversion
+  * CVE-2020-15665 (bmo#1651636)
+    Address bar not reset when choosing to stay on a page after
+    the beforeunload dialog is shown
+  * CVE-2020-15666 (bmo#1450853)
+    MediaError message property leaks cross-origin response
+    status
+  * CVE-2020-15667 (bmo#1653371)
+    Heap overflow when processing an update file
+  * CVE-2020-15668 (bmo#1651520)
+    Data Race when reading certificate information
+  * CVE-2020-15670 (bmo#1651001, bmo#1651449, bmo#1653626,
+    bmo#1656957)
+    Memory safety bugs fixed in Firefox 80 and Firefox ESR 78.2
+- requires
+  * NSPR 4.27</comment>
+    <requestid>829621</requestid>
+  </revision>
 </revisionlist>
