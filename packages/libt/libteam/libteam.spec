@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           libteam
-Version:        1.29
+Version:        1.31
 Release:        0
 Summary:        Utilities for controlling 802.1AX team network device
 License:        LGPL-2.1+

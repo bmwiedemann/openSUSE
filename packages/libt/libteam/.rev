@@ -151,4 +151,18 @@
     <comment>- Update to upstream release 1.29</comment>
     <requestid>726118</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>72362cf2c6ab69307014f897fabdf3fd</srcmd5>
+    <version>1.31</version>
+    <time>1599088053</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.31:
+  * teamd: fix build error in expansion of macro teamd_log_dbgx  
+  * teamd/lacp: fix segfault due to NULL pointer dereference
+  * teamd: fix possible race in master ifname callback
+  * Fix ifinfo_link_with_port race condition with newlink 
+  * Skip setting the same hwaddr to a lag port if not needed
+  * teamd/lacp: silence ignore none LACP frames</comment>
+    <requestid>829586</requestid>
+  </revision>
 </revisionlist>
