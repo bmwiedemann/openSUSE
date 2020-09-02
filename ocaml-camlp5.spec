@@ -25,7 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/camlp5
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  ocaml
+BuildRequires:  ocaml <= 4.11.1
 BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  ocamlfind(compiler-libs)
 
@@ -46,6 +46,12 @@ This package contains the development files.
 %setup -q
 
 %build
+pushd ocaml_stuff
+test -e '4.11.1' || ln -s 4.11.0 "$_"
+popd
+pushd ocaml_src/lib/versdep
+test -e '4.11.1.ml' || ln -s 4.11.0.ml "$_"
+popd
 ./configure \
 	--mandir %{_mandir}
 make %{?_smp_mflags} out
@@ -60,7 +66,6 @@ cp -Lavit %{buildroot}%{ocaml_standard_library}/camlp5 etc/META
 %ocaml_create_file_list
 
 %files -f %{name}.files
-%doc CHANGES DEVEL UPGRADING
 %{_bindir}/*
 %{_mandir}/*/*
 

@@ -57,4 +57,12 @@
   cover ocaml-4.11</comment>
     <requestid>828681</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9a49182da030e9b929fb1905d8b09a6e</srcmd5>
+    <version>7.12</version>
+    <time>1599088572</time>
+    <user>dimstar_suse</user>
+    <comment>- Cover ocaml-4.11.1</comment>
+    <requestid>831370</requestid>
+  </revision>
 </revisionlist>
