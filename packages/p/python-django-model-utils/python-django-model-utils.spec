@@ -52,6 +52,7 @@ Django model mixins and utilities.
 
 %check
 # skip JoinManagerTest tests as they need proper DB (pgsql/mysql)
+export PYTHONPATH=.
 %pytest -k 'not JoinManagerTest'
 
 %files %{python_files}

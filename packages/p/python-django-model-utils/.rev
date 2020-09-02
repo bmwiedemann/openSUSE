@@ -140,4 +140,12 @@
   * Add support for Django 3.0</comment>
     <requestid>761368</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d4bc6d16bc35116e6d9a488463f2898e</srcmd5>
+    <version>4.0.0</version>
+    <time>1599088672</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test execution</comment>
+    <requestid>831417</requestid>
+  </revision>
 </revisionlist>
