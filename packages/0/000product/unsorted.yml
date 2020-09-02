@@ -595,7 +595,6 @@ unsorted:
   - apache-commons-lang-javadoc 
   - apache-commons-lang3 
   - apache-commons-lang3-javadoc 
-  - apache-commons-logging: [i586] 
   - apache-commons-math 
   - apache-commons-math-javadoc 
   - apache-commons-net 
@@ -3241,7 +3240,6 @@ unsorted:
   - fips 
   - fipscheck 
   - fipscheck-devel 
-  - firebird: [i586] 
   - firebird-doc 
   - firebird-examples 
   - firebird-server 
@@ -3309,7 +3307,6 @@ unsorted:
   - fluidsynth 
   - fluidsynth-devel 
   - fluidsynth-dssi 
-  - flute: [i586] 
   - flute-javadoc 
   - fluxbox 
   - fluxbox-styles-upstream 
@@ -5076,8 +5073,6 @@ unsorted:
   - gnome-doc-utils 
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
-  - gnome-documents: [i586] 
-  - gnome-documents-lang: [i586] 
   - gnome-dvb-daemon 
   - gnome-dvb-daemon-lang 
   - gnome-epub-thumbnailer 
@@ -5117,7 +5112,6 @@ unsorted:
   - gnome-nibbles 
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
-  - gnome-online-miners: [i586] 
   - gnome-packagekit-extras 
   - gnome-passwordsafe 
   - gnome-passwordsafe-lang 
@@ -5142,7 +5136,6 @@ unsorted:
   - gnome-shell-extensions-common 
   - gnome-shell-extensions-common-lang 
   - gnome-shell-search-provider-boxes 
-  - gnome-shell-search-provider-documents: [i586] 
   - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-gnome-calendar 
   - gnome-shell-search-provider-gnome-recipes 
@@ -5334,7 +5327,6 @@ unsorted:
   - google-cabin-fonts 
   - google-caladea-fonts 
   - google-cardo-fonts 
-  - google-carlito-fonts: [i586] 
   - google-exo-fonts 
   - google-gson 
   - google-gson-javadoc 
@@ -8471,7 +8463,6 @@ unsorted:
   - libabigail0 
   - libabiword-3_0 
   - libabiword-3_0-devel 
-  - libabw-0_1-1: [i586] 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -8711,7 +8702,6 @@ unsorted:
   - libb64-devel 
   - libbabl-0_1-0-32bit: [x86_64] 
   - libbamf3-2 
-  - libbase: [i586] 
   - libbase-javadoc 
   - libbaseencode-devel 
   - libbaseencode1 
@@ -8829,7 +8819,6 @@ unsorted:
   - libboost_coroutine1_74_0-32bit: [x86_64] 
   - libboost_coroutine1_74_0-devel 
   - libboost_date_time-devel 
-  - libboost_date_time1_74_0: [i586] 
   - libboost_date_time1_74_0-32bit: [x86_64] 
   - libboost_date_time1_74_0-devel 
   - libboost_fiber-devel 
@@ -8837,7 +8826,6 @@ unsorted:
   - libboost_fiber1_74_0-32bit: [x86_64] 
   - libboost_fiber1_74_0-devel 
   - libboost_filesystem-devel 
-  - libboost_filesystem1_74_0: [i586] 
   - libboost_filesystem1_74_0-32bit: [x86_64] 
   - libboost_filesystem1_74_0-devel 
   - libboost_graph-devel 
@@ -8854,7 +8842,6 @@ unsorted:
   - libboost_iostreams1_74_0-32bit: [x86_64] 
   - libboost_iostreams1_74_0-devel 
   - libboost_locale-devel 
-  - libboost_locale1_74_0: [i586] 
   - libboost_locale1_74_0-32bit: [x86_64] 
   - libboost_locale1_74_0-devel 
   - libboost_log-devel 
@@ -9044,7 +9031,6 @@ unsorted:
   - libcdirectory-devel 
   - libcdirectory1 
   - libcdk5 
-  - libcdr-0_1-1: [i586] 
   - libcdr-devel 
   - libcdr-devel-doc 
   - libcdr-tools 
@@ -9128,10 +9114,7 @@ unsorted:
   - libcloudproviders-devel 
   - libcloudproviders0 
   - libclthreads2 
-  - libclucene-contribs-lib1: [i586] 
-  - libclucene-core1: [i586] 
   - libclucene-core1-32bit: [x86_64] 
-  - libclucene-shared1: [i586] 
   - libclucene-shared1-32bit: [x86_64] 
   - libclutter-1_0-0-32bit: [x86_64] 
   - libclutter-gst-3_0-0-32bit: [x86_64] 
@@ -9140,7 +9123,6 @@ unsorted:
   - libclzma-suse0 
   - libcmap4-32bit: [x86_64] 
   - libcmark0_29_0 
-  - libcmis-0_5-5: [i586] 
   - libcmis-c-0_5-5 
   - libcmis-c-devel 
   - libcmis-devel 
@@ -9456,7 +9438,6 @@ unsorted:
   - libdxfrw-devel 
   - libdxfrw-tools 
   - libdxfrw0 
-  - libe-book-0_1-1: [i586] 
   - libe-book-devel 
   - libe-book-devel-doc 
   - libe-book-tools 
@@ -9507,7 +9488,6 @@ unsorted:
   - libenet7 
   - libeot-devel 
   - libeot-tools 
-  - libeot0: [i586] 
   - libepc-1_0-2 
   - libepc-devel 
   - libepc-lang 
@@ -9516,7 +9496,6 @@ unsorted:
   - libeppic-devel 
   - libepub-devel 
   - libepub0-32bit: [x86_64] 
-  - libepubgen-0_1-1: [i586] 
   - libepubgen-devel 
   - libepubgen-devel-doc 
   - liberasurecode-devel 
@@ -9528,7 +9507,6 @@ unsorted:
   - libesedb1 
   - libesmtp-devel 
   - libestr-devel 
-  - libetonyek-0_1-1: [i586] 
   - libetonyek-devel 
   - libetonyek-devel-doc 
   - libetonyek-tools 
@@ -9579,8 +9557,6 @@ unsorted:
   - libext2fs-devel-32bit: [x86_64] 
   - libext2fs-devel-static 
   - libext2fs2-32bit: [x86_64] 
-  - libexttextcat: [i586] 
-  - libexttextcat-2_0-0: [i586] 
   - libexttextcat-devel 
   - libexttextcat-tools 
   - libf2c0 
@@ -9603,7 +9579,6 @@ unsorted:
   - libfastjson-devel 
   - libfastlz1 
   - libfbclient-devel 
-  - libfbclient2: [i586] 
   - libfbclient2-32bit: [x86_64] 
   - libfcache-devel 
   - libfcache1 
@@ -9710,9 +9685,7 @@ unsorted:
   - libfoma0 
   - libfontenc-devel-32bit: [x86_64] 
   - libfontenc1-32bit: [x86_64] 
-  - libfonts: [i586] 
   - libfonts-javadoc 
-  - libformula: [i586] 
   - libformula-javadoc 
   - libfparser-4_5_2 
   - libfplll6 
@@ -9729,7 +9702,6 @@ unsorted:
   - libfreefare-devel 
   - libfreefare-tools 
   - libfreefare0 
-  - libfreehand-0_1-1: [i586] 
   - libfreehand-devel 
   - libfreehand-devel-doc 
   - libfreehand-tools 
@@ -10381,7 +10353,6 @@ unsorted:
   - libhyphen0-32bit: [x86_64] 
   - libi2c0 
   - libi2c0-devel 
-  - libib_util: [i586] 
   - libib_util-32bit: [x86_64] 
   - libib_util-devel 
   - libibdm1 
@@ -10506,7 +10477,6 @@ unsorted:
   - libitpp8 
   - libivykis0 
   - libiw-devel 
-  - libixion-0_15-0: [i586] 
   - libixion-devel 
   - libixion-tools 
   - libixml11-32bit: [x86_64] 
@@ -10679,7 +10649,6 @@ unsorted:
   - liblammps0 
   - liblangtag-devel 
   - liblangtag-doc 
-  - liblangtag1: [i586] 
   - liblapack3-32bit: [x86_64] 
   - liblapacke3 
   - liblapacke3-32bit: [x86_64] 
@@ -10692,7 +10661,6 @@ unsorted:
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
   - liblaszip8 
   - liblaszip_api8 
-  - liblayout: [i586] 
   - liblayout-javadoc 
   - liblazy-devel 
   - liblazy1 
@@ -10776,7 +10744,6 @@ unsorted:
   - liblo10k1-0 
   - liblo7 
   - liblo7-32bit: [x86_64] 
-  - libloader: [i586] 
   - libloader-javadoc 
   - libloadpng44-devel 
   - libloadpng4_4 
@@ -10807,7 +10774,6 @@ unsorted:
   - liblouis-devel 
   - liblouis-doc 
   - liblouis-tools 
-  - liblpsolve55-0: [i586] 
   - liblqr-1-0-32bit: [x86_64] 
   - liblqr-devel 
   - liblrdf-devel 
@@ -11063,7 +11029,6 @@ unsorted:
   - libmsiecf1 
   - libmspack-devel 
   - libmspack0-32bit: [x86_64] 
-  - libmspub-0_1-1: [i586] 
   - libmspub-devel 
   - libmspub-devel-doc 
   - libmspub-tools 
@@ -11098,7 +11063,6 @@ unsorted:
   - libmusicbrainz4-32bit: [x86_64] 
   - libmusicbrainz5-1-32bit: [x86_64] 
   - libmusicbrainz5-devel 
-  - libmwaw-0_3-3: [i586] 
   - libmwaw-devel 
   - libmwaw-devel-doc 
   - libmwaw-tools 
@@ -11113,7 +11077,6 @@ unsorted:
   - libmysqlcppconn7 
   - libmysqlcppconn8-2 
   - libmysqlcppconn8-devel 
-  - libmythes-1_2-0: [i586] 
   - libnanomsg5 
   - libnautilus-extension1-32bit: [x86_64] 
   - libnauty-2_7_rc2 
@@ -11271,8 +11234,6 @@ unsorted:
   - libntlm-devel 
   - libnuma-devel 
   - libnuma1-32bit: [x86_64] 
-  - libnumbertext-1_0-0: [i586] 
-  - libnumbertext-data: [i586] 
   - libnumbertext-devel 
   - libnumbertext-tools 
   - libnuspell3 
@@ -11300,7 +11261,6 @@ unsorted:
   - libobrender32 
   - libobt2 
   - libode8 
-  - libodfgen-0_1-1: [i586] 
   - libodfgen-devel 
   - libodfgen-devel-doc 
   - libodp-122_0_0: [x86_64] 
@@ -11436,7 +11396,6 @@ unsorted:
   - libopusenc0 
   - liborc-0_4-0-32bit: [x86_64] 
   - liborcania2_1 
-  - liborcus-0_15-0: [i586] 
   - liborcus-devel 
   - liborcus-tools 
   - liborigin-devel 
@@ -11545,7 +11504,6 @@ unsorted:
   - libpackagekit-glib2-18-32bit: [x86_64] 
   - libpackagekit-glib2-devel 
   - libpackagekit-glib2-devel-32bit: [x86_64] 
-  - libpagemaker-0_0-0: [i586] 
   - libpagemaker-devel 
   - libpagemaker-devel-doc 
   - libpagemaker-tools 
@@ -11863,7 +11821,6 @@ unsorted:
   - libqpid-proton-proactor1 
   - libqpid-proton10 
   - libqrcodegen1 
-  - libqrcodegencpp1: [i586] 
   - libqrencode4-32bit: [x86_64] 
   - libqrupdate1 
   - libqsastime0 
@@ -12050,7 +12007,6 @@ unsorted:
   - libqxmpp-doc 
   - libqxmpp3 
   - libqxmpp3-32bit: [x86_64] 
-  - libqxp-0_0-0: [i586] 
   - libqxp-devel 
   - libqxp-doc 
   - libqxp-tools 
@@ -12067,7 +12023,6 @@ unsorted:
   - libraqm0 
   - librasqal-devel 
   - librasqal-devel-doc 
-  - librasqal3: [i586] 
   - librasqal3-32bit: [x86_64] 
   - libratbag-devel 
   - libratbag-tools 
@@ -12088,7 +12043,6 @@ unsorted:
   - librcc0-32bit: [x86_64] 
   - librcd-devel 
   - librcd0-32bit: [x86_64] 
-  - librdf0: [i586] 
   - librdf0-32bit: [x86_64] 
   - librdkafka-devel 
   - librdmacm-utils 
@@ -12132,21 +12086,11 @@ unsorted:
   - librelp-devel 
   - librelp0 
   - librem0 
-  - libreoffice: [i586] 
-  - libreoffice-base: [i586] 
-  - libreoffice-base-drivers-firebird: [i586] 
   - libreoffice-base-drivers-postgresql 
-  - libreoffice-branding-openSUSE: [i586] 
   - libreoffice-branding-upstream 
-  - libreoffice-calc: [i586] 
   - libreoffice-calc-extensions 
-  - libreoffice-draw: [i586] 
-  - libreoffice-filters-optional: [i586] 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
-  - libreoffice-gnome: [i586] 
-  - libreoffice-gtk3: [i586] 
-  - libreoffice-impress: [i586] 
   - libreoffice-l10n-af 
   - libreoffice-l10n-am 
   - libreoffice-l10n-ar 
@@ -12163,24 +12107,16 @@ unsorted:
   - libreoffice-l10n-ca 
   - libreoffice-l10n-ca_valencia 
   - libreoffice-l10n-ckb 
-  - libreoffice-l10n-cs: [i586] 
   - libreoffice-l10n-cy 
-  - libreoffice-l10n-da: [i586] 
-  - libreoffice-l10n-de: [i586] 
   - libreoffice-l10n-dgo 
   - libreoffice-l10n-dsb 
   - libreoffice-l10n-dz 
-  - libreoffice-l10n-el: [i586] 
-  - libreoffice-l10n-en: [i586] 
-  - libreoffice-l10n-en_GB: [i586] 
   - libreoffice-l10n-en_ZA 
   - libreoffice-l10n-eo 
-  - libreoffice-l10n-es: [i586] 
   - libreoffice-l10n-et 
   - libreoffice-l10n-eu 
   - libreoffice-l10n-fa 
   - libreoffice-l10n-fi 
-  - libreoffice-l10n-fr: [i586] 
   - libreoffice-l10n-fur 
   - libreoffice-l10n-fy 
   - libreoffice-l10n-ga 
@@ -12192,11 +12128,8 @@ unsorted:
   - libreoffice-l10n-hi 
   - libreoffice-l10n-hr 
   - libreoffice-l10n-hsb 
-  - libreoffice-l10n-hu: [i586] 
   - libreoffice-l10n-id 
   - libreoffice-l10n-is 
-  - libreoffice-l10n-it: [i586] 
-  - libreoffice-l10n-ja: [i586] 
   - libreoffice-l10n-ka 
   - libreoffice-l10n-kab 
   - libreoffice-l10n-kk 
@@ -12227,11 +12160,8 @@ unsorted:
   - libreoffice-l10n-om 
   - libreoffice-l10n-or 
   - libreoffice-l10n-pa 
-  - libreoffice-l10n-pl: [i586] 
-  - libreoffice-l10n-pt_BR: [i586] 
   - libreoffice-l10n-pt_PT 
   - libreoffice-l10n-ro 
-  - libreoffice-l10n-ru: [i586] 
   - libreoffice-l10n-rw 
   - libreoffice-l10n-sa_IN 
   - libreoffice-l10n-sat 
@@ -12262,21 +12192,13 @@ unsorted:
   - libreoffice-l10n-vec 
   - libreoffice-l10n-vi 
   - libreoffice-l10n-xh 
-  - libreoffice-l10n-zh_CN: [i586] 
-  - libreoffice-l10n-zh_TW: [i586] 
   - libreoffice-l10n-zu 
   - libreoffice-librelogo 
-  - libreoffice-mailmerge: [i586] 
-  - libreoffice-math: [i586] 
   - libreoffice-officebean 
-  - libreoffice-pyuno: [i586] 
-  - libreoffice-qt5: [i586] 
   - libreoffice-sdk 
   - libreoffice-sdk-doc 
   - libreoffice-voikko 
-  - libreoffice-writer: [i586] 
   - libreoffice-writer-extensions 
-  - libreofficekit: [i586] 
   - libreofficekit-devel 
   - librep 
   - librep-devel 
@@ -12286,7 +12208,6 @@ unsorted:
   - libreplaygain1 
   - librepo-devel 
   - librepo0 
-  - librepository: [i586] 
   - librepository-javadoc 
   - librepute1 
   - libressl-devel 
@@ -12497,7 +12418,6 @@ unsorted:
   - libserd-0-0-32bit: [x86_64] 
   - libserf-devel 
   - libserialdv1 
-  - libserializer: [i586] 
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
@@ -12664,7 +12584,6 @@ unsorted:
   - libsss_nss_idmap-devel 
   - libsss_simpleifp-devel 
   - libsss_simpleifp0 
-  - libstaroffice-0_0-0: [i586] 
   - libstaroffice-devel 
   - libstaroffice-devel-doc 
   - libstaroffice-tools 
@@ -13293,7 +13212,6 @@ unsorted:
   - libwpg-devel 
   - libwpg-devel-doc 
   - libwpg-tools 
-  - libwps-0_4-4: [i586] 
   - libwps-devel 
   - libwps-tools 
   - libwrap0-32bit: [x86_64] 
@@ -13540,7 +13458,6 @@ unsorted:
   - libxmlrpc_util4 
   - libxmlsec1-gcrypt1 
   - libxmlsec1-gnutls1 
-  - libxmlsec1-nss1: [i586] 
   - libxmltooling-devel 
   - libxmltooling-lite8 
   - libxmltooling8 
@@ -13621,7 +13538,6 @@ unsorted:
   - libyui-qt-rest-api13 
   - libyui-rest-api-devel 
   - libyui-rest-api13 
-  - libzapojit-0_0-0: [i586] 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -13653,7 +13569,6 @@ unsorted:
   - libzita-convolver4-32bit: [x86_64] 
   - libzita-resampler1 
   - libzlui0_99 
-  - libzmf-0_0-0: [i586] 
   - libzmf-devel 
   - libzmf-devel-doc 
   - libzmf-tools 
@@ -15360,20 +15275,12 @@ unsorted:
   - myspell-ca_ES_valencia 
   - myspell-ca_FR 
   - myspell-ca_IT 
-  - myspell-cs_CZ: [i586] 
-  - myspell-da_DK: [i586] 
-  - myspell-de: [i586] 
   - myspell-de_AT 
   - myspell-de_CH 
-  - myspell-de_DE: [i586] 
-  - myspell-dictionaries: [i586] 
-  - myspell-el_GR: [i586] 
-  - myspell-en: [i586] 
   - myspell-en_AU 
   - myspell-en_BS 
   - myspell-en_BZ 
   - myspell-en_CA 
-  - myspell-en_GB: [i586] 
   - myspell-en_GH 
   - myspell-en_IE 
   - myspell-en_IN 
@@ -15383,10 +15290,8 @@ unsorted:
   - myspell-en_NZ 
   - myspell-en_PH 
   - myspell-en_TT 
-  - myspell-en_US: [i586] 
   - myspell-en_ZA 
   - myspell-en_ZW 
-  - myspell-es: [i586] 
   - myspell-es_AR 
   - myspell-es_BO 
   - myspell-es_CL 
@@ -15395,7 +15300,6 @@ unsorted:
   - myspell-es_CU 
   - myspell-es_DO 
   - myspell-es_EC 
-  - myspell-es_ES: [i586] 
   - myspell-es_GT 
   - myspell-es_HN 
   - myspell-es_MX 
@@ -15411,7 +15315,6 @@ unsorted:
   - myspell-fr_BE 
   - myspell-fr_CA 
   - myspell-fr_CH 
-  - myspell-fr_FR: [i586] 
   - myspell-fr_LU 
   - myspell-fr_MC 
   - myspell-gd_GB 
@@ -15424,19 +15327,13 @@ unsorted:
   - myspell-he_IL 
   - myspell-hi_IN 
   - myspell-hr_HR 
-  - myspell-hu_HU: [i586] 
   - myspell-id 
   - myspell-id_ID 
   - myspell-is 
   - myspell-is_IS 
-  - myspell-it_IT: [i586] 
   - myspell-kmr_Latn 
   - myspell-kmr_Latn_SY 
   - myspell-kmr_Latn_TR 
-  - myspell-lightproof-en: [i586] 
-  - myspell-lightproof-hu_HU: [i586] 
-  - myspell-lightproof-pt_BR: [i586] 
-  - myspell-lightproof-ru_RU: [i586] 
   - myspell-lo_LA 
   - myspell-lt_LT 
   - myspell-lv_LV 
@@ -15447,13 +15344,10 @@ unsorted:
   - myspell-nn_NO 
   - myspell-no 
   - myspell-oc_FR 
-  - myspell-pl_PL: [i586] 
   - myspell-pt_AO 
-  - myspell-pt_BR: [i586] 
   - myspell-pt_PT 
   - myspell-ro 
   - myspell-ro_RO 
-  - myspell-ru_RU: [i586] 
   - myspell-si_LK 
   - myspell-sk_SK 
   - myspell-sl_SI 
@@ -17356,9 +17250,7 @@ unsorted:
   - peksystray 
   - pen 
   - pencil 
-  - pentaho-libxml: [i586] 
   - pentaho-libxml-javadoc 
-  - pentaho-reporting-flow-engine: [i586] 
   - pentaho-reporting-flow-engine-javadoc 
   - percona-toolkit 
   - perf 
@@ -24923,7 +24815,6 @@ unsorted:
   - s3fs 
   - sablot 
   - sablot-devel 
-  - sac: [i586] 
   - sac-javadoc 
   - sacad 
   - saidar 
@@ -25717,8 +25608,6 @@ unsorted:
   - suse-prime-bbswitch 
   - suse-xsl-stylesheets 
   - suseprime-appindicator 
-  - sushi: [i586] 
-  - sushi-lang: [i586] 
   - svg-schema 
   - svg-schema-doc 
   - svgcleaner 
@@ -34121,8 +34010,6 @@ unsorted:
   - typelib-1_0-Eek-0_90 
   - typelib-1_0-Entangle-0_1 
   - typelib-1_0-Eom-1_0 
-  - typelib-1_0-EvinceDocument-3_0: [i586] 
-  - typelib-1_0-EvinceView-3_0: [i586] 
   - typelib-1_0-FPrint-2_0 
   - typelib-1_0-Farstream-0_2 
   - typelib-1_0-Fcitx-1_0 
@@ -34132,7 +34019,6 @@ unsorted:
   - typelib-1_0-FolksTracker-0_6 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
-  - typelib-1_0-GData-0_0: [i586] 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GMime-2_6 
   - typelib-1_0-GMime-3_0 
@@ -34242,7 +34128,6 @@ unsorted:
   - typelib-1_0-Tepl-4 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TimezoneMap-1_0 
-  - typelib-1_0-TrackerControl-2_0: [i586] 
   - typelib-1_0-TrackerMiner-2_0 
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-Uhm-0_0 
@@ -34258,7 +34143,6 @@ unsorted:
   - typelib-1_0-XreaderDocument-1_5 
   - typelib-1_0-XreaderView-1_5 
   - typelib-1_0-Zeitgeist-2_0 
-  - typelib-1_0-Zpj-0_0: [i586] 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
@@ -35097,7 +34981,6 @@ unsorted:
   - xmgrace-devel 
   - xmh 
   - xmined 
-  - xml-commons-apis: [i586] 
   - xml-commons-apis-bootstrap 
   - xml-commons-apis-javadoc 
   - xml-commons-apis-manual 
