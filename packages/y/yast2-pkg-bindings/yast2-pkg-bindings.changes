@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 24 11:53:42 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Improved Pkg::Resolvables() call to allow filtering by RPM
+  dependencies (provides, obsoletes,...) (related to bsc#1175317)
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Jul 22 16:02:16 CEST 2020 - aschnell@suse.com
 
 - Expand URL when libzypp expects an expanded URL. Fixes weird zypp
