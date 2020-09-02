@@ -160,4 +160,12 @@ no _service here, yo stupid bot</comment>
     <comment>- Update to release 1.14.3 [boo#1160257]</comment>
     <requestid>761811</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>422c9cef2b479f245270dea506ff1a97</srcmd5>
+    <version>1.14.7</version>
+    <time>1599088136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.14.7</comment>
+    <requestid>829652</requestid>
+  </revision>
 </revisionlist>
