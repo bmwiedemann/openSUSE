@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Aug 29 08:12:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update update-timeline.patch
+
+-------------------------------------------------------------------
+Thu Aug 27 18:31:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 5.15.0 
+  * Added support for Qt v5.15.0.
+  * Added the QtQuick3D module.
+  * Added a callStaticMethod() overload to QAndroidJniObject that 
+    takes a QJsonDocument as the method argument and returns another
+    QJsonDocument.
+  * Added the missing QMultimedia control classes.
+  * pyuic5 now supports QUndoView.
+- v5.14.2 3rd April 2020
+  * Added the missing QTextCodec.convertFromUnicode().
+  * Added the OpenGL ES bindings.
+  * Added QFlags.__index__().
+- v5.14.1 6th January 2020
+  * This is a bug fix release.
+- v5.14.0 18th December 2019
+  * Added support for Qt v5.14.0.
+- Source URL moved to PyPI
+- refresh 0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
+ 
+-------------------------------------------------------------------
 Fri Mar 13 12:39:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Stop building python2-qt5 for openSUSE Tumbleweed.

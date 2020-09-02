@@ -451,4 +451,31 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>- Stop building python2-qt5 for openSUSE Tumbleweed.</comment>
     <requestid>784633</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6100119e9ed16484c0871c89c7212f20</srcmd5>
+    <version>5.15.0</version>
+    <time>1599088410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update update-timeline.patch
+
+- Update to 5.15.0 
+  * Added support for Qt v5.15.0.
+  * Added the QtQuick3D module.
+  * Added a callStaticMethod() overload to QAndroidJniObject that 
+    takes a QJsonDocument as the method argument and returns another
+    QJsonDocument.
+  * Added the missing QMultimedia control classes.
+  * pyuic5 now supports QUndoView.
+- v5.14.2 3rd April 2020
+  * Added the missing QTextCodec.convertFromUnicode().
+  * Added the OpenGL ES bindings.
+  * Added QFlags.__index__().
+- v5.14.1 6th January 2020
+  * This is a bug fix release.
+- v5.14.0 18th December 2019
+  * Added support for Qt v5.14.0.
+- Source URL moved to PyPI
+- refresh 0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch</comment>
+    <requestid>830435</requestid>
+  </revision>
 </revisionlist>

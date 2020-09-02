@@ -18,9 +18,11 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
+# define a default so that quilt does not fail
+%define pyname python
+
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
-%define pyname python
 %endif
 
 %if "%{flavor}" == "python3"
@@ -41,20 +43,20 @@ ExclusiveArch:  do_not_build
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           %{pname}
-Version:        5.13.2
+Version:        5.15.0
 Release:        0
 Summary:        Python bindings for Qt 5
 License:        SUSE-GPL-2.0-with-FLOSS-exception OR GPL-3.0-only OR NonFree
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
-Source:         https://www.riverbankcomputing.com/static/Downloads/PyQt5/%{version}/PyQt5-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
 Source99:       python-qt5-rpmlintrc
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt5.
-Patch1:         disable-rpaths.diff
+Patch0:         disable-rpaths.diff
 # PATCH-FIX-UPSTREAM
-Patch2:         update-timeline.patch
+Patch1:         update-timeline.patch
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
-Patch3:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
+Patch2:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
 BuildRequires:  %{python_module dbus-python-devel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module sip-devel >= 4.19.19}
