@@ -17,7 +17,7 @@
 
 
 Name:           perl-Module-ScanDeps
-Version:        1.28
+Version:        1.29
 Release:        0
 %define cpan_name Module-ScanDeps
 Summary:        Recursively scan Perl code for dependencies
