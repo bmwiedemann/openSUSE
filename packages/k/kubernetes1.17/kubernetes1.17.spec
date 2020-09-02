@@ -17,10 +17,9 @@
 
 
 %{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
-# maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
-%define maxcriversion 1.19
 # baseversion - version of kubernetes for this package
 %define baseversion 1.17
+%define baseversionminus1 1.16
 
 Name:           kubernetes%{baseversion}
 Version:        1.17.11
@@ -144,15 +143,12 @@ Group:          System/Management
 Provides:       kubernetes-kubeadm-provider = %{version}
 Conflicts:      kubernetes-kubeadm-provider
 Requires:       cri-runtime
-# Kubeadm 1.15.0 requires cri-tools 1.14.0 or higher (see changelog)
-Requires:       cri-tools >= 1.14.0
 Requires:       ebtables
 Requires:       ethtool
 Requires:       kubernetes-kubeadm-criconfig
 Requires:       socat
 Requires(pre):  shadow
-Requires:       kubernetes%{baseversion}-kubelet
-Conflicts:      cri-tools >= %{maxcriversion}
+Requires:       (kubernetes%{baseversion}-kubelet or kubernetes%{baseversionminus1}-kubelet)
 
 %description kubeadm
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
@@ -161,6 +157,9 @@ kubeadm bootstrapping tool
 %package client
 Summary:        Kubernetes client tools
 Group:          System/Management
+Provides:       kubernetes-client-provider = %{version}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 
 %description client
 Kubernetes client tools like kubectl.
