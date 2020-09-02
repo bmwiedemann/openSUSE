@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 09:43:49 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Re-enable service table sorting (bsc#1165388, bsc#1174615).
+- 4.3.5
+
+-------------------------------------------------------------------
 Mon Aug 10 18:06:31 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(services_manager) into the
