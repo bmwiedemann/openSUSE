@@ -1,7 +1,7 @@
 #
 # spec file for package cowsay
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@
 %{?!perl_requires:%define perl_requires() Requires: perl = %{perl_version}}
 %endif
 Name:           cowsay
-Version:        3.03
+Version:        3.04
 Release:        0
 Summary:        Configurable talking cow (and some other creatures)
-License:        GPL-1.0-or-later OR Artistic-1.0
+License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
-URL:            http://nog.net/~tony/warez/
-Source:         http://nog.net/~tony/warez/%{name}-%{version}.tar.gz
-Source1:        http://nog.net/~tony/warez/%{name}-%{version}.tar.gz.sig
-Source2:        http://nog.net/~tony/tony-monroe-gpgkey.txt#/cowsay.keyring
+URL:            https://github.com/tnalpgge/rank-amateur-cowsay
+Source:         https://github.com/tnalpgge/rank-amateur-cowsay/archive/cowsay-%{version}.tar.gz
 Patch0:         one-eye.patch
 Patch1:         chami.patch
 BuildRequires:  bash
@@ -42,7 +40,7 @@ much as the figlet program does, and it written in the same spirit
 of silliness.
 
 %prep
-%setup -q
+%setup -q -n rank-amateur-cowsay-%{name}-%{version}
 sed -i "s|,\$%{nil}PREFIX,|,%{_prefix},|" install.sh
 %patch0 -p1
 %patch1 -p1
