@@ -25,6 +25,13 @@ Group:          System/GUI/Other
 URL:            https://tools.suckless.org/dmenu/
 Source:         http://dl.suckless.org/tools/%{name}-%{version}.tar.gz
 Patch0:         dmenu-optflags.patch
+# These patches are taken from upstream at https://git.suckless.org/dmenu/
+Patch1:         0001-Close-when-the-embedding-window-is-destroyed.patch
+Patch2:         0002-fix-crash-when-XOpenIM-returns-NULL.patch
+Patch3:         0003-make-dmenu_path-script-executable.patch
+Patch4:         0004-improve-xopenim-error-message.patch
+Patch5:         0005-revert-IME-support.patch
+Patch6:         0006-Fix-memory-leaks-in-drw.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(x11)
