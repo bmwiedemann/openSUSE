@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Aug 27 09:17:59 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#767
+- removed some unnecessary null pointer checks
+- 4.3.40
+
+--------------------------------------------------------------------
 Wed Jul 29 12:24:18 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#765
