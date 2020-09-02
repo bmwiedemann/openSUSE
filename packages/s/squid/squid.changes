@@ -3,7 +3,8 @@ Mon Aug 24 11:38:09 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - squid 4.13:
   * Enforce token characters for field-name (#700)
-  * Fix livelocking in peerDigestHandleReply (#698) (bsc#1175671)
+  * Fix livelocking in peerDigestHandleReply (#698)
+    (bsc#1175671, CVE-2020-24606)
   * Improve Transfer-Encoding handling (#702)
     (bsc#1175665, CVE-2020-15811)
   * Forbid obs-fold and bare CR whitespace in framing header fields (#701)

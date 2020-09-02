@@ -883,4 +883,12 @@ from the squid 3.x changelog</comment>
   * SslBump: Support parsing GREASEd (and future) TLS handshakes (#663)</comment>
     <requestid>828922</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>2849409a6770df45268e0e6527060744</srcmd5>
+    <version>4.13</version>
+    <time>1599088435</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>831407</requestid>
+  </revision>
 </revisionlist>
