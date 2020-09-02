@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  2 10:36:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add patches to support boost >= 1.73
+
+  Add patches:
+  * 0004-add-support-for-boost-1.73.patch
+  * 0005-Add-additional-includes-for-aarch64.patch
+
+  Rebase patches:
+  * 0001-Unbundle-mathjax-and-pandoc.patch
+  * 0002-Don-t-install-pandoc-and-mathjax.patch
+  * 0003-Fix-rstudio-exec-path.patch
+
+-------------------------------------------------------------------
 Thu Aug 20 09:05:25 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.

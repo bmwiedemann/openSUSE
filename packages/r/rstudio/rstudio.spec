@@ -120,6 +120,9 @@ Patch0:         0001-Unbundle-mathjax-and-pandoc.patch
 # shorten the installation time a bit by not installing mathjax
 Patch1:         0002-Don-t-install-pandoc-and-mathjax.patch
 Patch2:         0003-Fix-rstudio-exec-path.patch
+# https://github.com/rstudio/rstudio/pull/7011
+Patch3:         0004-add-support-for-boost-1.73.patch
+Patch4:         0005-Add-additional-includes-for-aarch64.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
