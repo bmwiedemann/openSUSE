@@ -13,6 +13,7 @@
   </hardware>
   <overwrite>
     <conditions>
+      <arch>ppc</arch>
       <arch>ppc64</arch>
       <arch>ppc64le</arch>
     </conditions>
@@ -20,6 +21,9 @@
       <physicalmemory>
         <size unit="M">8192</size>
       </physicalmemory>
+      <memoryperjob>
+        <size unit="M">0</size>
+      </memoryperjob>
     </hardware>
   </overwrite>
 </constraints>

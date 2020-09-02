@@ -51,6 +51,9 @@ BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(icu-i18n) >= 63.1
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(zlib)
+%ifarch ppc ppc64 ppc64le
+BuildRequires:  memory-constraints
+%endif
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions
@@ -130,6 +133,9 @@ cd build_OPT.OBJ
     --enable-posix-nspr-emulation \
 
 # do not eat all memory
+%ifarch ppc ppc64 ppc64le
+%limit_build -m 1300
+%endif
 
 %make_build
 
