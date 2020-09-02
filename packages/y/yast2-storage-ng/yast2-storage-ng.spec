@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-storage-ng
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-storage-ng
-Version:        4.3.14
+Version:        4.3.15
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-storage-ng
+URL:            https://github.com/yast/yast-storage-ng
 
 Source:         %{name}-%{version}.tar.bz2
 
 # UF_PMEM and UF_NVME
 BuildRequires:  libstorage-ng-ruby >= 4.3.30
 BuildRequires:  update-desktop-files
-# AutoYaST issue handling
-BuildRequires:  yast2 >= 4.3.2
+# AutoYaST ElementPath class
+BuildRequires:  yast2 >= 4.3.20
 BuildRequires:  yast2-devtools >= 4.2.2
 # for AbortException and handle direct abort
 BuildRequires:  yast2-ruby-bindings >= 4.0.6
@@ -50,8 +50,9 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:parallel_tests)
 Requires:       findutils
 # UF_PMEM and UF_NVME
 Requires:       libstorage-ng-ruby >= 4.3.30
-# Updated Xen detection
-Requires:       yast2 >= 4.3.6
+# AutoYaST issue handling
+Requires:       yast2 >= 4.3.20
+
 # Y2Packager::Repository
 Requires:       yast2-packager >= 3.3.7
 # for AbortException and handle direct abort

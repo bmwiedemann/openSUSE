@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 10:08:03 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Unify profile element paths (bsc#1175680).
+- 4.3.15
+
+-------------------------------------------------------------------
 Thu Aug  6 12:00:08 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - AutoinstProposal now properly reports the proposal as failed when
@@ -231,6 +237,8 @@ Mon Mar  9 09:53:50 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: show an error when no suitable physical volumes are
   found for a given volume group (bsc#1162043).
+- AutoYaST: do not append a suffix to LVM Volume Group names unless it
+  is needed (bsc#1115749).
 - 4.2.94
 
 -------------------------------------------------------------------
