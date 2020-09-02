@@ -1,56 +1,99 @@
 <?xml version="1.0"?>
-<!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+<!DOCTYPE catalog PUBLIC
+  "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN"
+  "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
   <group id="docbook_5">
+
+    <!-- Version 5.0 -->
     <public publicId="-//OASIS//DTD DocBook XML 5.0//EN" uri="file:///usr/share/xml/docbook/schema/dtd/5.0/docbook.dtd"/>
     <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.0" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
-    <rewriteURI uriStartString="http://www.oasis-open.org/docbook/xml/5.0" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
+
+    <rewriteURI         uriStartString="http://www.oasis-open.org/docbook/xml/5.0"      rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
     <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.0/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
-    <rewriteURI uriStartString="http://www.oasis-open.org/docbook/xml/5.0/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
+    <rewriteURI         uriStartString="http://www.oasis-open.org/docbook/xml/5.0/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
     <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.0/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
-    <rewriteURI uriStartString="http://www.oasis-open.org/docbook/xml/5.0/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
+    <rewriteURI         uriStartString="http://www.oasis-open.org/docbook/xml/5.0/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
     <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.0/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
-    <rewriteURI uriStartString="http://www.oasis-open.org/docbook/xml/5.0/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
-    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.0" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
-    <rewriteURI uriStartString="http://www.docbook.org/xml/5.0" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
+    <rewriteURI         uriStartString="http://www.oasis-open.org/docbook/xml/5.0/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
+
+    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.0"      rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.0"      rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
     <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.0/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
-    <rewriteURI uriStartString="http://www.docbook.org/xml/5.0/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.0/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
     <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.0/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
-    <rewriteURI uriStartString="http://www.docbook.org/xml/5.0/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.0/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
     <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.0/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
-    <rewriteURI uriStartString="http://www.docbook.org/xml/5.0/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
-    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.0" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
-    <rewriteURI uriStartString="http://docbook.org/xml/5.0" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
-    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.0/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
-    <rewriteURI uriStartString="http://docbook.org/xml/5.0/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
-    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.0/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
-    <rewriteURI uriStartString="http://docbook.org/xml/5.0/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
-    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.0/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
-    <rewriteURI uriStartString="http://docbook.org/xml/5.0/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
-    <public publicId="-//OASIS//DTD DocBook XML 5.1//EN" uri="file:///usr/share/xml/docbook/schema/dtd/5.1/docbook.dtd"/>
-    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.1" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.1"/>
-    <rewriteURI uriStartString="http://www.oasis-open.org/docbook/xml/5.1" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.1"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.0/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.0"          rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.0"          rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.0"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.0/rng/"     rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.0/rng/"     rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.0/"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.0/xsd/"     rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.0/xsd/"     rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.0/"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.0/sch/"     rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.0/sch/"     rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.0/"/>
+
+    <system systemId="http://www.oasis-open.org/docbook/xml/5.0/docbook.nvdl" uri="file:///usr/share/xml/docbook/schema/nvdl/5.0/docbook.nvdl"/>
+    <system systemId="http://docbook.org/xml/5.0/docbook.nvdl"                uri="file:///usr/share/xml/docbook/schema/nvdl/5.0/docbook.nvdl"/>
+    <system systemId="http://www.docbook.org/xml/5.0/docbook.nvdl"            uri="file:///usr/share/xml/docbook/schema/nvdl/5.0/docbook.nvdl"/>
+
+
+    <!-- Version 5.1 -->
     <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.1/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
-    <rewriteURI uriStartString="http://www.oasis-open.org/docbook/xml/5.1/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
-    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.1/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.1/"/>
-    <rewriteURI uriStartString="http://www.oasis-open.org/docbook/xml/5.1/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.1/"/>
+    <rewriteURI         uriStartString="http://www.oasis-open.org/docbook/xml/5.1/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
     <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.1/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
-    <rewriteURI uriStartString="http://www.oasis-open.org/docbook/xml/5.1/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
-    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.1" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.1"/>
-    <rewriteURI uriStartString="http://www.docbook.org/xml/5.1" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.1"/>
-    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.1/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
-    <rewriteURI uriStartString="http://www.docbook.org/xml/5.1/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
-    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.1/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.1/"/>
-    <rewriteURI uriStartString="http://www.docbook.org/xml/5.1/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.1/"/>
-    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.1/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
-    <rewriteURI uriStartString="http://www.docbook.org/xml/5.1/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
-    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.1" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.1"/>
-    <rewriteURI uriStartString="http://docbook.org/xml/5.1" rewritePrefix="file:///usr/share/xml/docbook/schema/dtd/5.1"/>
-    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.1/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
-    <rewriteURI uriStartString="http://docbook.org/xml/5.1/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
-    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.1/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.1/"/>
-    <rewriteURI uriStartString="http://docbook.org/xml/5.1/xsd/" rewritePrefix="file:///usr/share/xml/docbook/schema/xsd/5.1/"/>
-    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.1/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
-    <rewriteURI uriStartString="http://docbook.org/xml/5.1/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
+    <rewriteURI         uriStartString="http://www.oasis-open.org/docbook/xml/5.1/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
+
+    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.1/rng/"            rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.1/rng/"            rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
+    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.1/sch/"            rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.1/sch/"            rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.1/rng/"                rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.1/rng/"                rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.1/"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.1/sch/"                rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.1/sch/"                rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.1/"/>
+
+    <system systemId="http://www.oasis-open.org/docbook/xml/5.1/docbook.nvdl"           uri="file:///usr/share/xml/docbook/schema/nvdl/5.1/docbook.nvdl"/>
+    <system systemId="http://docbook.org/xml/5.1/docbook.nvdl"                          uri="file:///usr/share/xml/docbook/schema/nvdl/5.1/docbook.nvdl"/>
+    <system systemId="http://www.docbook.org/xml/5.1/docbook.nvdl"                      uri="file:///usr/share/xml/docbook/schema/nvdl/5.1/docbook.nvdl"/>
+
+
+    <!-- Version 5.2 -->
+    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2/"/>
+    <rewriteURI         uriStartString="http://www.oasis-open.org/docbook/xml/5.2/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2/"/>
+    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2/"/>
+
+    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.2/rng/"            rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2/"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.2/rng/"            rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2/"/>
+    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.2/sch/"            rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2/"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.2/sch/"            rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2/"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.2/rng/"                rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2/"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.2/rng/"                rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2/"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.2/sch/"                rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2/"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.2/sch/"                rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2/"/>
+
+    <system systemId="http://www.oasis-open.org/docbook/xml/5.2/docbook.nvdl"           uri="file:///usr/share/xml/docbook/schema/nvdl/5.2/docbook.nvdl"/>
+    <system systemId="http://docbook.org/xml/5.2/docbook.nvdl"                          uri="file:///usr/share/xml/docbook/schema/nvdl/5.2/docbook.nvdl"/>
+    <system systemId="http://www.docbook.org/xml/5.2/docbook.nvdl"                      uri="file:///usr/share/xml/docbook/schema/nvdl/5.2/docbook.nvdl"/>
+
+    <!-- Version 5.2b10a2 -->
+    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2b10a2/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2b10a2/"/>
+    <rewriteURI         uriStartString="http://www.oasis-open.org/docbook/xml/5.2b10a2/rng/" rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2b10a2/"/>
+    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2b10a2/sch/" rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2b10a2/"/>
+    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.2b10a2/rng/"            rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2b10a2/"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.2b10a2/rng/"            rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2b10a2/"/>
+    <rewriteSystem systemIdStartString="http://www.docbook.org/xml/5.2b10a2/sch/"            rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2b10a2/"/>
+    <rewriteURI         uriStartString="http://www.docbook.org/xml/5.2b10a2/sch/"            rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2b10a2/"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.2b10a2/rng/"                rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2b10a2/"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.2b10a2/rng/"                rewritePrefix="file:///usr/share/xml/docbook/schema/rng/5.2b10a2/"/>
+    <rewriteSystem systemIdStartString="http://docbook.org/xml/5.2b10a2/sch/"                rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2b10a2/"/>
+    <rewriteURI         uriStartString="http://docbook.org/xml/5.2b10a2/sch/"                rewritePrefix="file:///usr/share/xml/docbook/schema/sch/5.2b10a2/"/>
+
+    <system systemId="http://www.oasis-open.org/docbook/xml/5.2b10a2/docbook.nvdl"           uri="file:///usr/share/xml/docbook/schema/nvdl/5.2b10a2/docbook.nvdl"/>
+    <system systemId="http://docbook.org/xml/5.2b10a2/docbook.nvdl"                          uri="file:///usr/share/xml/docbook/schema/nvdl/5.2b10a2/docbook.nvdl"/>
+    <system systemId="http://www.docbook.org/xml/5.2b10a2/docbook.nvdl"                      uri="file:///usr/share/xml/docbook/schema/nvdl/5.2b10a2/docbook.nvdl"/>
+
   </group>
 </catalog>

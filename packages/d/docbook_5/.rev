@@ -207,4 +207,35 @@ See any of the files in the docs/ subdirectory (section on notices and ip toward
 </comment>
     <requestid>555499</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0ee185d128752d5ae32da6f17cad29d1</srcmd5>
+    <version>5.2b10a2</version>
+    <time>1599088416</time>
+    <user>dimstar_suse</user>
+    <comment>Sorry, had to fix changelog and improve spec file (this is the last change):
+
+* Spec improvements:
+  move creating of compatibility links (5.2b10a2 -&gt; 5.2) from spec
+  file into Makefile
+
+* Update to version 5.2b10a2:
+ - Added a transform attribute to the resource element (as an alternative to grammar).
+ - Removed the grammar attribute from output.
+ - Added a danger admonition.
+ - Added a legalsection sectioning element. Allow legalsection in legalnotice.
+ - Added an otherclass attribute to article as an alternative to the enumerated class values.
+ - Added a formalgroup element to contain several formal objects (for example, subfigures in a figure).
+ - Relaxed the content model of abstract to include non-paragraph block elements.
+ - Added multimediaparams to imagedata.
+ - Added a buildtarget inline.
+ - Allow funcdef to contain an explicit void.
+ - Allow paramdef to contain modifiers.
+ - Allow fieldsynopsis, methodsynopsis, and methodparam to contain more than one type.
+ - Extended the content model of type so that it can represent union and intersection types. Added a class attribute to type.
+ - Allow numbered sections (sect1, sect2, etc.) to contain refentry.
+ - Added interface to the enumerated values in the class attribute of systemitem.- 
+ - Fix XML catalog to allow both www.docbook.org and docbook.org as URIs.
+</comment>
+    <requestid>830837</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package docbook_5
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define schemaversions 5.0 5.1
-%define lastschemaversion 5.1
+%define schemaversions 5.0 5.1 5.2b10a2
+%define lastschemaversion 5.2b10a2
 #
 Name:           docbook_5
-Version:        5.1.0
+Version:        5.2b10a2
 Release:        0
 Summary:        DocBook Schemas (DTD, RELAX NG, W3C Schema) for Version 5.x
 License:        SUSE-Oasis-Specification-Notice
 Group:          Productivity/Publishing/DocBook
-Url:            http://www.oasis-open.org/docbook/
+URL:            https://www.oasis-open.org/docbook/
 # XML Catalog Entry
 Source1:        %{name}.xml
 Source2:        %{name}-README.SUSE
 # DocBook Sources
 Source3:        docbook-5.0-docs.tar.bz2
 Source4:        docbook-5.1-docs.tar.bz2
-Source5:        Makefile
+Source6:        Makefile
 # DB 5.0
 Source500:      docbook-5.0.tar.bz2
 # DB 5.1
 Source510:      docbook-5.1.tar.bz2
 #
+Source520:      docbook_5.2b10a2.tar.bz2
 # PATCH-FIX-OPENSUSE docbook_5-nvdl.patch change path to schema files
 Patch501:       %{name}-nvdl.patch
-
 #
 BuildRequires:  fdupes
 BuildRequires:  sgml-skel
@@ -83,11 +83,12 @@ The documentation for the DocBook 5.x specification (%{schemaversions})
 %prep
 %setup -q -n %{name} -c -T
 # Copy catalog, README, and Makefile
-cp -p %{SOURCE1} %{SOURCE2} %{SOURCE5} .
+cp -p %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 
 # Unpack the sources:
 tar -xf %{SOURCE500}
 tar -xf %{SOURCE510}
+tar -xf %{SOURCE520}
 # Unpack the documentation:
 tar -xf %{SOURCE3}
 tar -xf %{SOURCE4}
@@ -131,9 +132,17 @@ update-xml-catalog
 %{xml_docbook_xsd_dir}/5.0
 %{xml_docbook_nvdl_dir}/5.0
 # 5.1
-%{xml_docbook_rng_dir}/%{lastschemaversion}
+%{xml_docbook_rng_dir}/5.1
+%{xml_docbook_sch_dir}/5.1
+%{xml_docbook_nvdl_dir}/5.1
+#5.2b10a2
 %{xml_docbook_sch_dir}/%{lastschemaversion}
+%{xml_docbook_rng_dir}/%{lastschemaversion}
 %{xml_docbook_nvdl_dir}/%{lastschemaversion}
+#5.2
+%{xml_docbook_sch_dir}/5.2
+%{xml_docbook_rng_dir}/5.2
+%{xml_docbook_nvdl_dir}/5.2
 # Upgrade stylesheet
 %{xml_docbook_style_dir}/upgrade
 #
