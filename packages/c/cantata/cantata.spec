@@ -101,8 +101,7 @@ information, please refer to the main README.
 %autosetup -p1
 
 %build
-%cmake -DCANTATA_HELPERS_LIB_DIR=%{_libexecdir} \
-    -DENABLE_REMOTE_DEVICES=OFF \
+%cmake -DENABLE_REMOTE_DEVICES=OFF \
     -DENABLE_CATEGORIZED_VIEW=OFF
 %cmake_build
 
@@ -117,11 +116,7 @@ information, please refer to the main README.
 %files
 %license LICENSE
 %{_bindir}/%{name}
-%ifarch i586
-/usr/lib/%{name}/
-%else
-%{_libexecdir}/%{name}/
-%endif
+%{_prefix}/lib/%{name}/
 %{_datadir}/%{name}
 %exclude %{_datadir}/%{name}/translations/
 %{_datadir}/applications/%{name}.desktop
