@@ -64,6 +64,7 @@ rm setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=django_test_settings
 %pytest
 
