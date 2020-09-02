@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:42:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.9.4
+  * PR 238 - PR: Set get_local_scope correctly while debugging,
+    by @impact27
+  * PR 235 - PR: Set debug state correctly on exception,
+    by @impact27
+  * PR 233 - PR: Don't save file in runcell, by @impact27
+- Version 1.9.3
+  * Require dask[distributed] for tests, by @bnavigator (236)
+
+-------------------------------------------------------------------
 Fri Jul 10 17:57:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.9.2

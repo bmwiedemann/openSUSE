@@ -377,4 +377,12 @@
 - add scipy and dask-distributed to test requirements</comment>
     <requestid>820033</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>665419142ca32e89c8d6259b5e9ed048</srcmd5>
+    <version>1.9.4</version>
+    <time>1599088734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831480</requestid>
+  </revision>
 </revisionlist>
