@@ -64,4 +64,12 @@
     <comment>- xz won't be needed for the build</comment>
     <requestid>280525</requestid>
   </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>79b6ed1ef552a4a072c0562ea6522aef</srcmd5>
+    <version>1.6.6</version>
+    <time>1599088696</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>831422</requestid>
+  </revision>
 </revisionlist>

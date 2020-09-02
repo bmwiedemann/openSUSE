@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 26 09:31:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop historic build recipe constructs.
+
+-------------------------------------------------------------------
 Fri Jan  9 00:41:30 UTC 2015 - jengelh@inai.de
 
 - xz won't be needed for the build

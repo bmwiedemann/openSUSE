@@ -1,7 +1,7 @@
 #
 # spec file for package gaa
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,13 @@ Name:           gaa
 Version:        1.6.6
 Release:        0
 Summary:        GAA Argument Analyzer and Code Generator
-License:        GPL-2.0+
-Group:          Development/Libraries/C and C++
-#Group: code generators
-Url:            http://gaa.sf.net/
+License:        GPL-2.0-or-later
+Group:          Development/Tools/Building
+URL:            http://gaa.sf.net/
 
 Source:         http://downloads.sf.net/gaa/%name-%version.tar.gz
 Patch1:         gaa-getline.diff
 Patch2:         gaa-parser.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  flex
 
@@ -38,8 +36,7 @@ code which then analyze the arguments and creates program help
 descriptions.
 
 %prep
-%setup -q
-%patch -P 1 -P 2 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static
@@ -50,9 +47,9 @@ make -j1 gaadocdir="%_docdir/%name"
 %make_install gaadocdir="%_docdir/%name"
 
 %files
-%defattr(-,root,root)
 %_bindir/gaa
 %_datadir/%name/
 %_docdir/%name/
+%license COPYING
 
 %changelog
