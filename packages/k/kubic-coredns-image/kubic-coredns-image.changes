@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 11:29:55 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Remove unnecessary 'v' prefix in version tag
+
+-------------------------------------------------------------------
+Tue Sep  1 15:42:11 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Rework package to use kubernetes-coredns metapackage 
+
+-------------------------------------------------------------------
 Mon Jul 22 21:07:27 CEST 2019 - kukuk@suse.de
 
 - Update kiwi file with labels and use busybox on openSUSE
