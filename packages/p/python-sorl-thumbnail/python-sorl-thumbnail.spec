@@ -78,6 +78,7 @@ Features at a glance
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings.pil
 %pytest -k 'not TemplateTestCaseB and not test_image_file_deserialize'
 export DJANGO_SETTINGS_MODULE=tests.settings.imagemagick
