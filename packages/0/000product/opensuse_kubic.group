@@ -280,11 +280,12 @@
     <package name="kubernetes-client" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="kubernetes-kubeadm" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="kubernetes-kubelet" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="kubernetes1.17-kubelet" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="kubernetes1.18-client" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="kubernetes1.18-kubeadm" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="kubernetes1.18-kubelet" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="kubernetes1.18-kubelet-common" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="kubernetes1.19-client" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="kubernetes1.19-client-common" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="kubernetes1.19-kubeadm" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="kubernetes1.19-kubelet" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="kubernetes1.19-kubelet-common" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="kubic-haproxycfg" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_loadbalancer -->
     <package name="kubicctl" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_worker -->
     <package name="kubicd" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_admin -->
