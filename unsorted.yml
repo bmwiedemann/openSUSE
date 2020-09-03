@@ -2051,6 +2051,10 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
+  - coredns-for-k8s1.18 
+  - coredns-for-k8s1.18-extras 
+  - coredns-for-k8s1.19 
+  - coredns-for-k8s1.19-extras 
   - coreutils-single 
   - coreutils-testsuite 
   - corosync 
@@ -2632,6 +2636,7 @@ unsorted:
   - dovecot23-fts-solr 
   - dovecot23-fts-squat 
   - doxygen 
+  - doxygen2man 
   - doxywizard 
   - dpdk: [x86_64] 
   - dpdk-devel: [x86_64] 
@@ -2954,7 +2959,8 @@ unsorted:
   - espeakedit 
   - etc-update 
   - etcd: [x86_64] 
-  - etcd-for-k8s-image: [x86_64] 
+  - etcd-for-k8s1.18: [x86_64] 
+  - etcd-for-k8s1.19: [x86_64] 
   - etckeeper 
   - etckeeper-bash-completion 
   - etckeeper-zsh-completion 
@@ -7495,7 +7501,11 @@ unsorted:
   - kubernetes-apiserver-minus1: [x86_64] 
   - kubernetes-controller-manager: [x86_64] 
   - kubernetes-controller-manager-minus1: [x86_64] 
+  - kubernetes-coredns: [x86_64] 
+  - kubernetes-coredns-minus1: [x86_64] 
   - kubernetes-dns 
+  - kubernetes-etcd: [x86_64] 
+  - kubernetes-etcd-minus1: [x86_64] 
   - kubernetes-node-image-pause 
   - kubernetes-pause 
   - kubernetes-proxy: [x86_64] 
@@ -7507,13 +7517,22 @@ unsorted:
   - kubernetes1.17-client: [x86_64] 
   - kubernetes1.17-controller-manager: [x86_64] 
   - kubernetes1.17-kubeadm: [x86_64] 
+  - kubernetes1.17-kubelet: [x86_64] 
   - kubernetes1.17-kubelet-common: [x86_64] 
   - kubernetes1.17-proxy: [x86_64] 
   - kubernetes1.17-scheduler: [x86_64] 
   - kubernetes1.18-apiserver: [x86_64] 
+  - kubernetes1.18-client: [x86_64] 
+  - kubernetes1.18-client-common: [x86_64] 
   - kubernetes1.18-controller-manager: [x86_64] 
+  - kubernetes1.18-kubeadm: [x86_64] 
+  - kubernetes1.18-kubelet-common: [x86_64] 
   - kubernetes1.18-proxy: [x86_64] 
   - kubernetes1.18-scheduler: [x86_64] 
+  - kubernetes1.19-apiserver: [x86_64] 
+  - kubernetes1.19-controller-manager: [x86_64] 
+  - kubernetes1.19-proxy: [x86_64] 
+  - kubernetes1.19-scheduler: [x86_64] 
   - kubic-locale-archive 
   - kubic-pause 
   - kuiviewer 
@@ -10341,7 +10360,6 @@ unsorted:
   - libhttp_parser2_9-32bit: [x86_64] 
   - libhttrack2 
   - libhubbub-devel 
-  - libhubbub-doc 
   - libhubbub0 
   - libhugetlbfs-32bit: [x86_64] 
   - libhugetlbfs-devel 
@@ -11792,7 +11810,7 @@ unsorted:
   - libqb-devel-32bit: [x86_64] 
   - libqb-tests 
   - libqb-tools 
-  - libqb20-32bit: [x86_64] 
+  - libqb100-32bit: [x86_64] 
   - libqca-qt5-devel 
   - libqcow-devel 
   - libqcow-tools 
@@ -19219,6 +19237,7 @@ unsorted:
   - python-chewing 
   - python-cinderclient-doc 
   - python-cliff-doc 
+  - python-cloud-sptheme-doc 
   - python-congressclient-doc 
   - python-cotyledon-doc 
   - python-curses 
@@ -20078,6 +20097,7 @@ unsorted:
   - python3-clinkgrammar 
   - python3-clint 
   - python3-cloud-init-seed 
+  - python3-cloud-sptheme 
   - python3-cloudflare 
   - python3-cloudpickle 
   - python3-cluster 
@@ -21971,6 +21991,7 @@ unsorted:
   - python3-sphinxcontrib-autoprogram-doc 
   - python3-sphinxcontrib-blockdiag 
   - python3-sphinxcontrib-documentedlist 
+  - python3-sphinxcontrib-fulltoc 
   - python3-sphinxcontrib-github-alt 
   - python3-sphinxcontrib-httpdomain 
   - python3-sphinxcontrib-issuetracker 
@@ -34903,7 +34924,6 @@ unsorted:
   - xfce4-mixer-plugin 
   - xfce4-multiload-nandhp-plugin 
   - xfce4-netspeed-plugin 
-  - xfce4-notifyd-branding-upstream 
   - xfce4-notifyd-theme-adapta 
   - xfce4-notifyd-theme-plata 
   - xfce4-panel-branding-upstream 

@@ -42,12 +42,12 @@
     <package name="OpenPrintingPPDs-ghostscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="OpenPrintingPPDs-hpijs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="OpenPrintingPPDs-postscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
-    <package name="PackageKit" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="PackageKit-backend-zypp" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="PackageKit-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="PackageKit-gstreamer-plugin" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="PackageKit-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="PackageKit-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="PackageKit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="PackageKit-backend-zypp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="PackageKit-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="PackageKit-gstreamer-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="PackageKit-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="PackageKit-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="QGnomePlatform" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="WindowMaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="WindowMaker-themes" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2470,7 +2470,7 @@
     <package name="libotf1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libotr5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libp11-kit0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libpackagekit-glib2-18" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpackagekit-glib2-18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpackagekitqt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpagemaker-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpango-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2573,7 +2573,7 @@
     <package name="libpython3_8-1_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpyzy-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libqalculate21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libqb20" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libqb100" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libqca-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqca-qt5-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqgpgme7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2720,7 +2720,7 @@
     <package name="libsodium23" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsoftokn3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsoftokn3-hmac" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsolv-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libsolv-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsord-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsoup-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2995,7 +2995,7 @@
     <package name="libz3-4_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libzapojit-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libzck1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libzck1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzebra1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="libzeitgeist-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libzhuyin-1_1-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3009,7 +3009,7 @@
     <package name="libzmq5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libzypp" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libzypp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lifecycle-data-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lightdm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
@@ -3032,7 +3032,7 @@
     <package name="lsb-release" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-laptop -->
     <package name="lskat" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lskat-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="lsof" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="lsof" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lsscsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lua53" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lua53-luasocket" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5025,7 +5025,8 @@
     <package name="xfce4-notes-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-notes-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-notifyd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="xfce4-notifyd-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="xfce4-notifyd-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="xfce4-notifyd-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-notifyd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-panel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-panel-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
