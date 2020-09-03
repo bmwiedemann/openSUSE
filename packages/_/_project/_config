@@ -91,10 +91,6 @@ Substitute: build-packages:iso !systemd-mini !udev-mini !krb5-mini !libsystemd0-
 # create conflicts for packages installed into the target image
 Substitute: kiwi python3-kiwi
 
-# Help our staging process to fixup installation-images as a workaround. Do not touch the devel prj space
-%if "%_repository" == "standard" || "%_repository" == "ports"
-Substitute: dmz-icon-theme-cursors dmz-icon-theme-cursors insserv-compat
-%endif
 Prefer: installation-images-openSUSE installation-images-debuginfodeps-openSUSE
 
 # Packages that need netcfg will also require libnss_usrfiles2, as a few files moved from /etc to /usr/etc
