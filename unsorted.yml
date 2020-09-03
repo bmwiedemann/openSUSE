@@ -1665,7 +1665,6 @@ unsorted:
   - ceph-mgr: [x86_64] 
   - ceph-mgr-cephadm: [x86_64] 
   - ceph-mgr-dashboard: [x86_64] 
-  - ceph-mgr-diskprediction-cloud: [x86_64] 
   - ceph-mgr-diskprediction-local: [x86_64] 
   - ceph-mgr-k8sevents: [x86_64] 
   - ceph-mgr-modules-core: [x86_64] 
@@ -9059,7 +9058,7 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres1 
   - libcerf-devel 
@@ -12030,8 +12029,8 @@ unsorted:
   - libqxp-tools 
   - libqxtglobalshortcut0 
   - libradcli4 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libragel0 
   - libraptor-devel 
@@ -12054,7 +12053,7 @@ unsorted:
   - libraw1394-devel-32bit: [x86_64] 
   - libraw1394-tools 
   - libraylib301 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -12284,7 +12283,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime1 
@@ -22591,7 +22590,7 @@ unsorted:
   - radeontop 
   - radeontop-lang 
   - radiotray-ng 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
@@ -34924,6 +34923,7 @@ unsorted:
   - xfce4-mixer-plugin 
   - xfce4-multiload-nandhp-plugin 
   - xfce4-netspeed-plugin 
+  - xfce4-notifyd-branding-upstream 
   - xfce4-notifyd-theme-adapta 
   - xfce4-notifyd-theme-plata 
   - xfce4-panel-branding-upstream 
