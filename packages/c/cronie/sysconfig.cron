@@ -22,7 +22,7 @@ DAILY_TIME=""
 # 0 to skip this. This is for users who will power off their system.
 #
 # There is a fixed max. of 14 days set,  if you want to override this
-# change MAX_NOT_RUN_FORCE in /usr/lib/cron/run-crons
+# change MAX_NOT_RUN_FORCE in /usr/libexec/cron/run-crons
 MAX_NOT_RUN="5"
 
 ## Type:	yesno

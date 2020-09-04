@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 31 14:25:09 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Use the new value of %_libexecdir macro (/usr/lib -> /usr/libexec)
+  in crontab and other occurences: [bsc#1175934]
+  * cronie-anacron-1.4.7-run-crons.patch
+  * run-crons
+  * sample.root
+  * sysconfig.cron
+
+-------------------------------------------------------------------
 Tue Jun 23 10:38:53 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add an example job definition to sample.root 
