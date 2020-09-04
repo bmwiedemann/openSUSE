@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-napalm
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Network Automation and Programmability Abstraction Layer
 License:        Apache-2.0
@@ -36,8 +36,8 @@ Requires:       python-ciscoconfparse
 Requires:       python-future
 Requires:       python-junos-eznc >= 2.2.1
 Requires:       python-netaddr
-Requires:       python-netmiko >= 2.4.2
-Requires:       python-paramiko >= 2.4.2
+Requires:       python-netmiko >= 3.1.0
+Requires:       python-paramiko >= 2.6.0
 Requires:       python-pyeapi >= 0.8.2
 Requires:       python-requests >= 2.7.0
 Requires:       python-scp
@@ -56,8 +56,8 @@ BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module junos-eznc >= 2.2.1}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module netmiko >= 2.4.2}
-BuildRequires:  %{python_module paramiko >= 2.4.2}
+BuildRequires:  %{python_module netmiko >= 3.1.0}
+BuildRequires:  %{python_module paramiko >= 2.6.0}
 BuildRequires:  %{python_module pyeapi >= 0.8.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.7.0}

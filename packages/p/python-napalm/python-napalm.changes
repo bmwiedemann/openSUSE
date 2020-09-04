@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  3 18:55:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.0
+  New features
+  * [EOS] Add get_vlans getter.
+  * [NX-OS] Feature/nxos ssh get_interfaces_counters.
+  Bug fixes and behaviour changes
+  * [IOS] get_network_instances fixes, see #1095 for more details.
+  * [IOS-XR] get_route_to fix pyIOSXR.exceptions.XMLCLIError for
+    some versions.
+  * [EOS] Fix get_arp_table for static ARP records.
+  * [EOS] Add EOS-4.23+ translation for show environment temperature.
+  * [IOS] Update get_probe code to make it work it IOS XE 16.12.x.
+
+-------------------------------------------------------------------
 Mon Jul 27 18:36:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.1.0
