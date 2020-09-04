@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 03 19:27:15 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1599154152.074365e18:
+  * Add generic phrase to 'died' reason if there's no more information
+  * Fix tools/tidy
+  * Treat as success when schedule_iso() cannot find product-arch combination
+  * Emit worker_register event w/o caps or job ID's
+  * Replace tools/update-deps with symlink to subrepo
+  * Add external/os-autoinst-common subrepo
+  * Unify code for displaying test modules
+  * docs: Align gre tunnel script with real use case
+  * Extract duplicate common worker result files definition
+  * Render serial results inline when collapsed
+  * Improve coding style in t/04-scheduler.t
+  * Surface scheduled product not found in the web UI
+
+-------------------------------------------------------------------
 Tue Sep 01 11:27:11 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1598884221.1f13f38a9:
