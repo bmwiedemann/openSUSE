@@ -1,0 +1,17 @@
+[Unit]
+Description=Reverse proxy designed for Prometheus exporters
+Documentation=https://github.com/QubitProducts/exporter_exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+User=prometheus
+EnvironmentFile=-/etc/sysconfig/prometheus-exporter_exporter
+ExecStart=/usr/bin/exporter_exporter -config.file /etc/exporter_exporter.yaml -config.dirs /etc/exporter_exporter.d $EXPEXP_FLAGS
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target
