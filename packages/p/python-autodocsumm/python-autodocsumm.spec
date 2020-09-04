@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-autodocsumm
-Version:        0.1.13
+Version:        0.2.0
 Release:        0
 Summary:        Extended sphinx autodoc including automatic autosummaries
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/Chilipp/autodocsumm
 Source:         https://github.com/Chilipp/autodocsumm/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel}
