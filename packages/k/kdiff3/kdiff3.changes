@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep  3 11:53:51 UTC 2020 - wbauer@tmo.at
+
+- Update to 1.8.4:
+ * Fix typos in man page (kde#424177)
+ * Fix compare over network with KIO (kde#408119)
+ * Restore contextmenu for Windows Explorer
+
+-------------------------------------------------------------------
+Thu Aug 27 09:31:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Jun 25 11:49:33 UTC 2020 - wbauer@tmo.at
 
 - Update to 1.8.3:

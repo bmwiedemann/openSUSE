@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdiff3
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
@@ -62,7 +62,7 @@ KDiff3 is a program that:
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -71,26 +71,26 @@ KDiff3 is a program that:
   %find_lang %{name} %{name}.lang --with-man
   %find_lang diff_ext %{name}.lang
   %find_lang kdiff3fileitemactionplugin %{name}.lang
-  %kf5_find_htmldocs
+  %{kf5_find_htmldocs}
 %endif
   %fdupes %{buildroot}
 
 %files
 %license COPYING
+%dir %{_kf5_iconsdir}/hicolor/256x256
+%dir %{_kf5_iconsdir}/hicolor/256x256/apps
+%doc %lang(en) %{_kf5_htmldir}/en/kdiff3
+%doc %lang(en) %{_kf5_mandir}/man1/kdiff3.1%{?ext_man}
 %{_kf5_applicationsdir}/org.kde.kdiff3.desktop
 %{_kf5_appstreamdir}/org.kde.kdiff3.appdata.xml
 %{_kf5_bindir}/kdiff3
-%dir %{_kf5_iconsdir}/hicolor/256x256
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %{_kf5_iconsdir}/hicolor/*/apps/kdiff3.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/kdiff3.svgz
 %{_kf5_kxmlguidir}/kdiff3/
 %{_kf5_kxmlguidir}/kdiff3part/
-%{_kf5_plugindir}/kf5/parts/
 %{_kf5_plugindir}/kf5/kfileitemaction/
+%{_kf5_plugindir}/kf5/parts/
 %{_kf5_servicesdir}/kdiff3part.desktop
-%doc %lang(en) %{_kf5_mandir}/man1/kdiff3.1%{?ext_man}
-%doc %lang(en) %{_kf5_htmldir}/en/kdiff3
 
 %if %{with lang}
 %files lang -f %{name}.lang
