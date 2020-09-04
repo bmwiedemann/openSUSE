@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Thu Sep  3 09:33:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- mkl-dnn is not available on %{ix86}, so do not enable it there
+
+-------------------------------------------------------------------
+Thu Sep  3 08:31:49 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of python Macros: %python_subpackages and %python_files
+
+-------------------------------------------------------------------
+Wed Sep  2 16:37:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable Python binding
+
+-------------------------------------------------------------------
+Wed Sep  2 13:39:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable UnitTests (only when LLVM is enabled as it is a requirement)
+
+-------------------------------------------------------------------
+Tue Sep  1 19:01:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build
+
+-------------------------------------------------------------------
+Thu Jul 30 07:22:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Dep is dlpack-devel, not dlpack
+
+-------------------------------------------------------------------
+Wed Jul 29 13:58:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable mkldnn on non-x86
+- Add dep to dlpack
+- Update to 0.6.1
+
+-------------------------------------------------------------------
+Mon Jun  1 07:46:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by mxnet
