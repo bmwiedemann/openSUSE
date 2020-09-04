@@ -259,4 +259,18 @@
   * Security improvements and bugfixes</comment>
     <requestid>790837</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5ad42e206f37fa368c071899ea30e3c6</srcmd5>
+    <version>2.23.0</version>
+    <time>1599209494</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not run testsuite in parallel - its not reliable
+
+- update to 2.23.0:
+  a lot of changes see https://github.com/ARMmbed/mbedtls/releases/tag/v2.23.0
+  * Fix a side channel vulnerability in modular exponentiation that could reveal an RSA private key used in a secure enclave. Noticed by Sangho Lee, Ming-Wei Shih, Prasun Gera, Taesoo Kim and Hyesoon Kim (Georgia Institute of Technology); and Marcus Peinado (Microsoft Research). Reported by Raoul Strackx (Fortanix) in #3394.
+  * Fix side channel in mbedtls_ecp_check_pub_priv() and mbedtls_pk_parse_key() / mbedtls_pk_parse_keyfile() (when loading a private key that didn't include the uncompressed public key), as well as mbedtls_ecp_mul() / mbedtls_ecp_mul_restartable() when called with a NULL f_rng argument. An attacker with access to precise enough timing and memory access information (typically an untrusted operating system attacking a secure enclave) could fully recover the ECC private key. Found and reported by Alejandro Cabrera Aldaya and Billy Brumley.
+  * Fix issue in Lucky 13 counter-measure that could make it ineffective when hardware accelerators were used (using one of the MBEDTLS_SHAxxx_ALT macros). This would cause the original Lucky 13 attack to be possible in those configurations, allowing an active network attacker to recover plaintext after repeated timing measurements under some conditions. Reported and fix suggested by Luc Perneel in #3246.</comment>
+    <requestid>830740</requestid>
+  </revision>
 </revisionlist>

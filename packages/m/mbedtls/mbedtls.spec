@@ -16,17 +16,17 @@
 #
 
 
-%define lib_tls    libmbedtls12
-%define lib_crypto libmbedcrypto3
-%define lib_x509   libmbedx509-0
+%define lib_tls    libmbedtls13
+%define lib_crypto libmbedcrypto5
+%define lib_x509   libmbedx509-1
 Name:           mbedtls
-Version:        2.16.5
+Version:        2.23.0
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://tls.mbed.org
-Source:         https://tls.mbed.org/download/%{name}-%{version}-apache.tgz
+Source:         https://github.com/ARMmbed/mbedtls/archive/v%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  ninja
@@ -109,8 +109,10 @@ sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
 %cmake_install
 
 %check
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{_builddir}/%{name}-%{version}/build/library
-%ctest
+# parallel execution fails
+# %%ctest
+pushd build
+%{_bindir}/ctest --output-on-failure --force-new-ctest-process -j1
 
 %post -n %{lib_tls}      -p /sbin/ldconfig
 %post -n %{lib_crypto}   -p /sbin/ldconfig
@@ -123,7 +125,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{_builddir}/%{name}-%{version}/build/li
 %license LICENSE
 %doc ChangeLog README.md
 %dir %{_includedir}/mbedtls
+%dir %{_includedir}/psa
 %{_includedir}/mbedtls/*.h
+%{_includedir}/psa/*.h
 %{_libdir}/libmbedtls.so
 %{_libdir}/libmbedcrypto.so
 %{_libdir}/libmbedx509.so
