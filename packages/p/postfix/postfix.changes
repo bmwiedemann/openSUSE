@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 31 13:38:04 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.5.7
+  * Fixed random certificate verification failures with
+    "smtp_tls_connection_reuse = yes", because tlsproxy(8) was using
+    the wrong global TLS context for connections that use DANE or
+    non-DANE trust anchors.
+
+-------------------------------------------------------------------
+Tue Aug 25 13:54:40 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move ldap into an own sub-package like all other databases
+- Move manual pages to correct sub-package
+
+-------------------------------------------------------------------
+Fri Aug 21 08:44:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use sysusers.d to create system accounts
+- Remove wrong %config for systemd directory content
+
+-------------------------------------------------------------------
 Sun Aug  9 06:55:01 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use the correct signature file for source verification

@@ -31,15 +31,17 @@
 %define pf_html_directory    %{_docdir}/%{name}-doc/html
 %define pf_sample_directory  %{_docdir}/%{name}-doc/samples
 %define pf_data_directory    %{_localstatedir}/lib/%{name}
+%if 0%{?suse_version} < 1330
 %define pf_uid               51
 %define pf_gid               51
 %define maildrop_gid         59
-%define mail_group	         mail
+%define vmusr                vmail
+%define vmgid                303
+%define vmid                 303
+%define vmdir                /srv/maildirs
+%endif
+%define mail_group           mail
 %define conf_backup_dir      %{_localstatedir}/adm/backup/%{name}
-%define vmusr vmail
-%define vmgid 303
-%define vmid 303
-%define vmdir /srv/maildirs
 %define unitdir %{_prefix}/lib/systemd
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -52,8 +54,9 @@
 %bcond_with    lmdb
 %bcond_with    libnsl
 %endif
+%bcond_without ldap
 Name:           postfix
-Version:        3.5.6
+Version:        3.5.7
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
@@ -67,6 +70,8 @@ Source3:        %{name}-mysql.tar.bz2
 Source4:        postfix.keyring
 Source10:       %{name}-rpmlintrc
 Source11:       check_mail_queue
+Source12:       postfix-user.conf
+Source13:       postfix-vmail-user.conf
 Patch1:         %{name}-no-md5.patch
 Patch2:         pointer_to_literals.patch
 Patch3:         ipv6_disabled.patch
@@ -86,7 +91,9 @@ BuildRequires:  libicu-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  m4
 BuildRequires:  mysql-devel
+%if %{with ldap}
 BuildRequires:  openldap2-devel
+%endif
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
@@ -97,7 +104,6 @@ Requires:       iproute2
 Requires(post): permissions
 Requires(pre):  %fillup_prereq
 Requires(pre):  permissions
-Requires(pre):  shadow
 Conflicts:      exim
 Conflicts:      sendmail
 Provides:       smtp_daemon
@@ -109,9 +115,13 @@ BuildRequires:  lmdb-devel
 BuildRequires:  libnsl-devel
 %endif
 %if 0%{?suse_version} >= 1330
+BuildRequires:  sysuser-tools
 Requires:       system-user-nobody
 Requires:       group(%{mail_group})
 Requires(pre):  group(%{mail_group})
+%sysusers_requires
+%else
+Requires(pre):  shadow
 %endif
 
 %description
@@ -138,7 +148,11 @@ This package contains the documentation for %{name}
 Summary:        Postfix plugin to support MySQL maps
 Group:          Productivity/Networking/Email/Servers
 Requires(pre):  %{name} = %{version}
+%if 0%{?suse_version} >= 1330
+%sysusers_requires
+%else
 Requires(pre):  shadow
+%endif
 
 %description mysql
 Postfix plugin to support MySQL maps. This library will be loaded by
@@ -153,6 +167,18 @@ Requires(pre):  %{name} = %{version}
 Postfix plugin to support PostgreSQL maps. This library will be loaded
 by starting %{name} if you'll access a postmap which is stored in
 PostgreSQL.
+
+%if %{with ldap}
+%package      ldap
+Summary:        Postfix LDAP map support
+Group:          Productivity/Networking/Email/Servers
+Requires:       %{name} = %{version}
+Provides:       postfix:/usr/lib/postfix/postfix-ldap.so
+
+%description ldap
+This provides support for LDAP maps in Postfix. If you plan to use LDAP
+maps with Postfix, you need this.
+%endif
 
 %if %{with lmdb}
 %package      lmdb
@@ -197,8 +223,10 @@ else
   export AUXLIBS="${AUXLIBS} -lssl -lcrypto"
 fi
 #
+%if %{with ldap}
 export CCARGS="${CCARGS} -DHAS_LDAP -DLDAP_DEPRECATED=1 -DUSE_LDAP_SASL"
 export AUXLIBS_LDAP="-lldap -llber"
+%endif
 #
 export CCARGS="${CCARGS} -DHAS_PCRE"
 export AUXLIBS_PCRE="-lpcre"
@@ -240,13 +268,14 @@ make makefiles pie=yes shared=yes dynamicmaps=yes \
   config_directory=%{_sysconfdir}/%{name} \
   SHLIB_RPATH="-Wl,-rpath,%{pf_shlib_directory} -Wl,-z,relro,-z,now"
 make %{?_smp_mflags}
+%if 0%{?suse_version} >= 1330
+# Create postfix user
+%sysusers_generate_pre %{SOURCE12} postfix
+%sysusers_generate_pre %{SOURCE13} vmail
+%endif
 # ---------------------------------------------------------------------------
 
 %install
-groupadd -g %{pf_gid} -o -r %{name} 2> /dev/null || :
-groupadd -g %{maildrop_gid} -o -r maildrop 2> /dev/null || :
-useradd -r -o -g %{name} -u %{pf_uid} -s /bin/false -c "Postfix Daemon" -d /%{pf_queue_directory} %{name} 2> /dev/null || :
-usermod -a -G %{maildrop_gid},%{mail_group} %{name} 2> /dev/null || :
 mkdir -p %{buildroot}/%{_libdir}
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp conf/* %{buildroot}%{_sysconfdir}/%{name}
@@ -378,8 +407,22 @@ do
 done
 # ---------------------------------------------------------------------------
 install -m 755 %{SOURCE11} %{buildroot}%{_sbindir}/
+%if 0%{?suse_version} >= 1330
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
+install -m 644 %{SOURCE13} %{buildroot}%{_sysusersdir}/
+%endif
 
+%if 0%{?suse_version} >= 1330
+%pre -f postfix.pre
+%else
 %pre
+getent group %{name} >/dev/null || groupadd -g %{pf_gid} -o -r %{name}
+getent group maildrop >/dev/null || groupadd -g %{maildrop_gid} -o -r maildrop
+getent passwd %{name} >/dev/null || useradd -r -o -g %{name} -u %{pf_uid} -s /bin/false -c "Postfix Daemon" -d /%{pf_queue_directory} %{name}
+usermod -a -G %{maildrop_gid},%{mail_group} %{name}
+%endif
+
 %service_add_pre %{name}.service
 
 VERSIONTEST=$(test -x usr/sbin/postconf && usr/sbin/postconf proxy_read_maps 2>/dev/null || :)
@@ -390,12 +433,11 @@ if [ -z "$VERSIONTEST" -a -f %{pf_queue_directory}/pid/master.pid ]; then
      exit 1
   fi
 fi
-getent group %{name} >/dev/null || groupadd -g %{pf_gid} -o -r %{name}
-getent group maildrop >/dev/null || groupadd -g %{maildrop_gid} -o -r maildrop
-getent passwd %{name} >/dev/null || useradd -r -o -g %{name} -u %{pf_uid} -s /bin/false -c "Postfix Daemon" -d /%{pf_queue_directory} %{name}
-usermod -a -G %{maildrop_gid},%{mail_group} %{name}
 # ---------------------------------------------------------------------------
 
+%if 0%{?suse_version} >= 1330
+%pre mysql -f vmail.pre
+%else
 %pre mysql
 #echo "PARAM_pre: "$1
 # on `rpm -ivh` PARAM is 1
@@ -409,6 +451,7 @@ if [ "$1" = "1" ]; then
     useradd -c "maildirs chef" -d %{vmdir} -g %{vmusr} -u %{vmid} -r -s /bin/false %{vmusr}
   fi
 fi
+%endif
 # ---------------------------------------------------------------------------
 
 %preun
@@ -516,7 +559,6 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/canonical
 %config(noreplace) %{_sysconfdir}/%{name}/header_checks
 %config(noreplace) %{_sysconfdir}/%{name}/helo_access
-%config(noreplace) %{_sysconfdir}/%{name}/ldap_aliases.cf
 %config(noreplace) %{_sysconfdir}/%{name}/main.cf
 %config(noreplace) %{_sysconfdir}/%{name}/master.cf
 %attr(0750,root,root) %config %{_sysconfdir}/%{name}/post-install
@@ -543,7 +585,7 @@ fi
 %dir %{_sysconfdir}/%{name}/ssl/certs
 %{_sysconfdir}/%{name}/ssl/cacerts
 %dir %{pf_shlib_directory}/systemd
-%config %attr(0755,root,root) %{pf_shlib_directory}/systemd/*
+%attr(0755,root,root) %{pf_shlib_directory}/systemd/*
 %{_unitdir}/%{name}.service
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postqueue
@@ -571,7 +613,6 @@ fi
 %{_libexecdir}/sendmail
 %dir %{pf_shlib_directory}
 %{pf_shlib_directory}/*[^.so]
-%{pf_shlib_directory}/%{name}-ldap.so
 %{pf_shlib_directory}/%{name}-pcre.so
 %{pf_shlib_directory}/lib%{name}-dns.so
 %{pf_shlib_directory}/lib%{name}-global.so
@@ -583,6 +624,10 @@ fi
 
 %{conf_backup_dir}
 %dir %attr(0700,%{name},root) %{pf_data_directory}
+%exclude %{_mandir}/man5/ldap_table.5*
+%exclude %{_mandir}/man5/lmdb_table.5*
+%exclude %{_mandir}/man5/mysql_table.5*
+%exclude %{_mandir}/man5/pgsql_table.5*
 %{_mandir}/man?/*%{?ext_man}
 %dir %attr(0755,root,root) /%{pf_queue_directory}
 %dir %attr(0700,%{name},root) /%{pf_queue_directory}/active
@@ -598,6 +643,9 @@ fi
 %dir %attr(0700,%{name},root) /%{pf_queue_directory}/trace
 %dir %attr(0730,%{name},maildrop) /%{pf_queue_directory}/maildrop
 %dir %attr(0710,%{name},maildrop) /%{pf_queue_directory}/public
+%if 0%{?suse_version} >= 1330
+%{_sysusersdir}/postfix-user.conf
+%endif
 
 %files devel
 %{_includedir}/%{name}/
@@ -611,13 +659,26 @@ fi
 %config(noreplace) %attr(640, root, %{name}) %{_sysconfdir}/%{name}/*_maps.cf
 %config(noreplace) %{_sysconfdir}/%{name}/main.cf-mysql
 %{pf_shlib_directory}/%{name}-mysql.so
+%{_mandir}/man5/mysql_table.5%{?ext_man}
+%if 0%{?suse_version} >= 1330
+%{_sysusersdir}/postfix-vmail-user.conf
+%endif
 
 %files postgresql
 %{pf_shlib_directory}/%{name}-pgsql.so
+%{_mandir}/man5/pgsql_table.5%{?ext_man}
+
+%if %{with ldap}
+%files ldap
+%config(noreplace) %{_sysconfdir}/%{name}/ldap_aliases.cf
+%{pf_shlib_directory}/%{name}-ldap.so
+%{_mandir}/man5/ldap_table.5%{?ext_man}
+%endif
 
 %if %{with lmdb}
 %files lmdb
 %{pf_shlib_directory}/%{name}-lmdb.so
+%{_mandir}/man5/lmdb_table.5%{?ext_man}
 %endif
 
 %changelog

@@ -1766,4 +1766,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>825266</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>e17d0b42769dc0a21cec3e3b6c8bcd54</srcmd5>
+    <version>3.5.7</version>
+    <time>1599209567</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.5.7</comment>
+    <requestid>830871</requestid>
+  </revision>
 </revisionlist>
