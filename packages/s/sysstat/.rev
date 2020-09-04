@@ -772,4 +772,13 @@
   * Update Travis script (now calls do_test script).</comment>
     <requestid>827123</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>7d293f3425f52d0e11ff1027ca5d9582</srcmd5>
+    <version>12.4.0</version>
+    <time>1599209700</time>
+    <user>dimstar_suse</user>
+    <comment>- update sysstat-8.1.6-sa1sa2lock.diff: also remove locking on
+  sleep/resume (bsc#1175913)</comment>
+    <requestid>831125</requestid>
+  </revision>
 </revisionlist>
