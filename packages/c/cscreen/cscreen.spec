@@ -31,15 +31,13 @@ BuildRequires:  pkgconfig(systemd)
 Requires(pre):  %insserv_prereq
 %endif
 Name:           cscreen
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        Console screen
 License:        BSD-4-Clause
 Group:          System/Management
 URL:            https://github.com/openSUSE/cscreen
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  screen
-BuildRequires:  sudo
 Recommends:     logrotate
 Requires:       mailx
 Requires:       screen
@@ -49,6 +47,7 @@ Requires(postun): /usr/bin/rm
 PreReq:         %fillup_prereq
 PreReq:         shadow
 BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package allows to run multiple consoles in one 'screen' and
@@ -121,6 +120,7 @@ getent passwd %{USERNAME} >/dev/null || \
 
 %postun
 %if %{?has_systemd}
+DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun %{name}d.service
 %else
 %restart_on_update %{name}d
@@ -134,8 +134,11 @@ if [ -d /run/uscreens/S-cscreen ];then
 fi
 
 %files
+%defattr(-,root,root)
 %doc docs/motd_example
+%if 0%{?suse_version} > 1315
 %license License
+%endif
 %{_bindir}/%{name}
 %{_bindir}/cscreen_update_config.sh
 %if %{?has_systemd}
@@ -145,9 +148,10 @@ fi
 %endif
 %{_sbindir}/rc%{name}d
 
-%{_sysconfdir}/sudoers.d/cscreen
-%attr(644,%{USERNAME}, %{GROUPNAME}) %dir %{_localstatedir}/log/screen
-%attr(644,%{USERNAME}, %{GROUPNAME}) %dir %{_localstatedir}/log/screen/old
+%attr(0750,root,root) %dir %{_sysconfdir}/sudoers.d
+%attr(0640,root,root) %config %{_sysconfdir}/sudoers.d/cscreen
+%attr(755,%{USERNAME}, %{GROUPNAME}) %dir %{_localstatedir}/log/screen
+%attr(755,%{USERNAME}, %{GROUPNAME}) %dir %{_localstatedir}/log/screen/old
 %attr(644,%{USERNAME}, %{GROUPNAME}) %{_fillupdir}/sysconfig.%{name}
 %attr(700,%{USERNAME}, %{GROUPNAME}) %dir %{HOMEDIR}
 %attr(700,%{USERNAME}, %{GROUPNAME}) %dir %{HOMEDIR}/.ssh

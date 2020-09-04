@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 25 10:10:10 UTC 2020 - olaf@aepfle.de
+
+- version 0.8
+- Fix shell syntax in FORCE_UPDATE test
+- add defattr
+- Wrap %license
+- add BuildRoot
+- Move lock file from /etc/cscreenrc_allow_update to /dev/shm/.cscreenrc_allow_update
+- Set DISABLE_RESTART_ON_UPDATE=yes
+- carry permissions of sudoers.d content
+- Remove BuildRequires screen and sudo
+- Add hint how to use SCREEN_OWNER with systemd
+- Adjust default username in sysv rccscreen
+- Adjust comment in cscreen to refer to default username
+- mark sudoers as config to preserve local modifications
+- Use correct user _cscreen for logrotate.conf
+- Add execute permissions to /var/log/screen
+
+-------------------------------------------------------------------
 Mon Aug 24 15:15:15 UTC 2020 - olaf@aepfle.de
 
 - Adjust permissions for ~_cscreen
