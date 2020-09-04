@@ -23,18 +23,19 @@
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        3.0.8
+Version:        3.1
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
-Source:         https://www.djangoproject.com/m/releases/3.0/Django-%{version}.tar.gz
+Source:         https://www.djangoproject.com/m/releases/3.1/Django-%{version}.tar.gz
 Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
 Patch0:         i18n_test.patch
 Patch1:         test_clear_site_cache-sort.patch
-Patch2:         fix-selenium-test.patch
+# PATCH-FIX-OPENSUSE i18n_test_extraction.patch
+Patch2:         i18n_test_extraction.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}

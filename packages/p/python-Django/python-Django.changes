@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 11 07:48:29 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 3.1
+  * Asynchronous views and middleware support
+  * JSONField for all supported database backends
+  * DEFAULT_HASHING_ALGORITHM settings¶
+  * Read https://docs.djangoproject.com/en/3.1/releases/3.1/
+- Drop fix-selenium-test.patch. Already upstream.
+- Add i18n_test_extraction.patch to support xgettext 0.21
+
+-------------------------------------------------------------------
+Thu Aug  6 11:36:36 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 3.0.9
+ * Allowed setting the SameSite cookie flag in HttpResponse.delete_cookie()
+ * Fixed crash when sending emails to addresses with display names longer than
+    75 chars on Python 3.6.11+, 3.7.8+, and 3.8.4+
+
+-------------------------------------------------------------------
 Wed Jul  8 11:52:27 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 3.0.8
