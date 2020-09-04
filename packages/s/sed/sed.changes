@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 31 07:00:11 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- gnulib-test-avoid-FP-perror-strerror.patch: Add patch to
+  avoid false-positive error in gnulib tests 'test-perror2' and
+  'test-strerror_r', visible on armv7l.
+- sed.spec: Reference the patch.
+
+-------------------------------------------------------------------
 Sun Jan 19 09:27:45 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU sed 4.8:

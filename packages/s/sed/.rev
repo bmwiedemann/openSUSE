@@ -251,4 +251,12 @@ There are no &quot;GPL-3.0 only&quot; licenses in sed (forwarded request 95033 f
     <comment></comment>
     <requestid>765864</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>42608e4d25268ac5e44d380bb168747b</srcmd5>
+    <version>4.8</version>
+    <time>1599209622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830986</requestid>
+  </revision>
 </revisionlist>

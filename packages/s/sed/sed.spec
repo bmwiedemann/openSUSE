@@ -28,6 +28,7 @@ Source1:        https://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 # PATCH-FIX-SLE sed-dont_close_twice.patch bnc@880817 tcech@suse.cz -- Fix double close.
 Patch0:         sed-dont_close_twice.patch
+Patch1:         gnulib-test-avoid-FP-perror-strerror.patch
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
 Requires(post): %{install_info_prereq}
@@ -45,6 +46,7 @@ occurrences of a string within a file.
 %prep
 %setup -q
 %patch0 -p1
+%patch1
 
 %build
 %define warn_flags -Wall -Wstrict-prototypes -Wpointer-arith -Wformat-security
