@@ -1,7 +1,7 @@
 #
 # spec file for package btrfsmaintenance
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,19 +22,14 @@
 %endif
 
 Name:           btrfsmaintenance
-Version:        0.4.2
+Version:        0.5
 Release:        0
 Summary:        Scripts for btrfs periodic maintenance tasks
 License:        GPL-2.0-only
 Group:          System/Base
-Url:            https://github.com/kdave/btrfsmaintenance
+URL:            https://github.com/kdave/btrfsmaintenance
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        btrfs-defrag-plugin.sh
-Patch1:         0001-README-document-impact-of-balance-quota-groups.patch
-Patch2:         0002-sysconfig-reduce-default-balance-usage-thresholds-fa.patch
-Patch3:         0003-sysconfig-document-using-systemd.time-7-for-frequenc.patch
-Patch4:         0004-btrfsmaintenance-refresh-cron.sh-validate-periods-fo.patch
-Patch5:         0005-btrfs-defrag-plugin-remove-dependency-on-zypp-plugin.patch
 BuildRequires:  pkgconfig(systemd)
 Requires:       btrfsprogs
 Requires:       libzypp(plugin:commit)
@@ -49,11 +44,6 @@ for snapper).
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 cp %{SOURCE1} .
 
 %build
@@ -84,8 +74,8 @@ install -m 755 -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcbtrfsmaintenance-refresh
 
 # zypp plugin
-install -m 755 -d %{buildroot}%{_libexecdir}/zypp/plugins/commit
-install -m 755 -D btrfs-defrag-plugin.sh %{buildroot}%{_libexecdir}/zypp/plugins/commit
+install -m 755 -d %{buildroot}%{_prefix}/lib/zypp/plugins/commit
+install -m 755 -D btrfs-defrag-plugin.sh %{buildroot}%{_prefix}/lib/zypp/plugins/commit
 
 # config
 install -m 755 -d %{buildroot}%{_fillupdir}
@@ -113,10 +103,10 @@ install -m 644 -D sysconfig.btrfsmaintenance %{buildroot}%{_fillupdir}
 %{_fillupdir}/sysconfig.btrfsmaintenance
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
-%dir %{_libexecdir}/zypp/
-%dir %{_libexecdir}/zypp/plugins
-%dir %{_libexecdir}/zypp/plugins/commit
-%{_libexecdir}/zypp/plugins/commit/btrfs-defrag-plugin.sh
+%dir %{_prefix}/lib/zypp/
+%dir %{_prefix}/lib/zypp/plugins
+%dir %{_prefix}/lib/zypp/plugins/commit
+%{_prefix}/lib/zypp/plugins/commit/btrfs-defrag-plugin.sh
 %{_unitdir}/btrfsmaintenance-refresh.path
 %{_unitdir}/btrfsmaintenance-refresh.service
 %{_unitdir}/btrfs-balance.service

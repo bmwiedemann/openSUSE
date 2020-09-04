@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:01:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
+Thu Jul 30 00:00:00 CEST 2020 - dsterba@suse.cz
+
+- update to version 0.5
+  - sysconfig:
+    - change defaults of MUSAGE and DUSAGE for balance task to do less work,
+      with a script to switch from existing unmodified defaults to new ones
+    - document systemd.timer syntax
+  - make balance, scrub, and trim mutually exclusive tasks
+  - service file updates:
+    - delete Install section
+  - defrag-plugin:
+    - switch to python3
+    - add alternative shell implementation of the plugin
+  - installation docs update
+- Removed patches (upstream):
+  - 0001-README-document-impact-of-balance-quota-groups.patch
+  - 0002-sysconfig-reduce-default-balance-usage-thresholds-fa.patch
+  - 0003-sysconfig-document-using-systemd.time-7-for-frequenc.patch
+  - 0004-btrfsmaintenance-refresh-cron.sh-validate-periods-fo.patch
+  - 0005-btrfs-defrag-plugin-remove-dependency-on-zypp-plugin.patch
+
+-------------------------------------------------------------------
 Tue Jun 11 16:34:56 CEST 2019 - dsterba@suse.cz
 
 - spec: fix typo in macro name
