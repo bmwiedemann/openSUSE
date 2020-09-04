@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  2 14:35:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 4.1.5 
+  * Add natural sorting for variables in the Variable Explorer.
+  * Add shortcut to open files in the Editor in the operating
+    system file explorer.
+  * Add an option to run lines of code when entering the debugger.
+    This is present in Preferences > IPython console > Startup.
+  * Fix error when opening projects.
+  * Fix error when hovering in the Editor caused by Kite.
+  * Don't save files when running cells.
+  * Several improvements to the user experience of Files.
+- skip another failing test on Leap
+  
+-------------------------------------------------------------------
 Fri Aug  7 18:20:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - singlespec automatic conversion of "Requires: python-*" does not

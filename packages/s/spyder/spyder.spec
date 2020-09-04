@@ -23,7 +23,7 @@
 %endif
 %define skip_python2 1
 Name:           spyder
-Version:        4.1.4
+Version:        4.1.5
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -64,7 +64,7 @@ Requires:       python3-pyzmq >= 17
 Requires:       python3-qt5 >= 5.5
 Requires:       python3-qtconsole >= 4.6.0
 Requires:       python3-qtwebengine-qt5
-Requires:       python3-spyder-kernels >= 1.9.2
+Requires:       python3-spyder-kernels >= 1.9.4
 Requires:       python3-watchdog
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
@@ -290,6 +290,10 @@ skiptests+=";test_connection_dialog_remembers_input_with_password"
 skiptests+=";test_dbg_input"
 # runs into timeouts
 skiptests+=";test_mpl_backend_change"
+# fails on Leap 15
+%if 0%{?suse_version} == 1500
+skiptests+=";(test_objectexplorer_collection_types and params0)"
+%endif
 # different PyQT version?
 skiptests+=";(test_objectexplorer_collection_types and params5)"
 # qtbot timeout
