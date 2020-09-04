@@ -17,10 +17,10 @@
 # needssslcertforbuild
 
 
-%define ovs_lname libopenvswitch-2_13-0
-%define ovn_lname libovn-20_03-0
-%define ovs_version 2.13.0
-%define ovn_version 20.03.0
+%define ovs_lname libopenvswitch-2_14-0
+%define ovn_lname libovn-20_06-0
+%define ovs_version 2.14.0
+%define ovn_version 20.06.2
 %define ovs_dir ovs-%{ovs_version}
 %define ovn_dir ovn-%{ovn_version}
 %define rpmstate %{_rundir}/openvswitch-rpm-state-

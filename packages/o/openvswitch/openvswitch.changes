@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  1 13:50:47 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Update openvswitch to 2.13.0. For a list of changes, check
+  https://github.com/openvswitch/ovs/blob/v2.14.0/NEWS 
+- Update OVN to 20.06.2. For a list of changes, check
+  https://github.com/ovn-org/ovn/blob/v20.06.2/NEWS 
+
+-------------------------------------------------------------------
 Mon Jun 15 13:21:22 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Fix preserving old default OVS_USER_ID for users that removed the
