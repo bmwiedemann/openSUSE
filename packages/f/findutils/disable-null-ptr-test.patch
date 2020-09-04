@@ -1,7 +1,11 @@
-diff --git a/gnulib-tests/test-canonicalize.c b/gnulib-tests/test-canonicalize.c
-index 8d1ff86..0f3c5e3 100644
---- a/gnulib-tests/test-canonicalize.c
-+++ b/gnulib-tests/test-canonicalize.c
+---
+ gnulib-tests/test-canonicalize.c |    4 ----
+ 1 file changed, 4 deletions(-)
+
+Index: gnulib-tests/test-canonicalize.c
+===================================================================
+--- gnulib-tests/test-canonicalize.c.orig
++++ gnulib-tests/test-canonicalize.c
 @@ -71,10 +71,6 @@ main (void)
      ASSERT (result2 == NULL);
      ASSERT (errno == ENOENT);

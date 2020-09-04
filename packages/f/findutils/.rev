@@ -537,4 +537,14 @@ Prompted by an error of 'osc service localrun download_files'.
 </comment>
     <requestid>826080</requestid>
   </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>1764b29457a3e1afd9d4e3c64ef6e4a8</srcmd5>
+    <version>4.7.0</version>
+    <time>1599209587</time>
+    <user>dimstar_suse</user>
+    <comment>- findutils-gnulib-test-avoid-FP-perror-strerror.patch: Add patch to
+  avoid false-positive error in gnulib tests 'test-perror2' and
+  'test-strerror_r', visible on armv7l.</comment>
+    <requestid>830936</requestid>
+  </revision>
 </revisionlist>

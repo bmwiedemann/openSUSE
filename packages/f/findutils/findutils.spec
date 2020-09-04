@@ -46,6 +46,7 @@ Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{
 Patch0:         findutils-xautofs.patch
 Patch1:         disable-null-ptr-test.patch
 Patch2:         findutils-gnulib-disable-test-float.patch
+Patch3:         findutils-gnulib-test-avoid-FP-perror-strerror.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # BuildRequire dejagnu for 'runtest' to execute all tests.
@@ -76,12 +77,15 @@ useful for finding things on your system.
 %prep
 %setup -q
 %patch0
-%patch1 -p1
+%patch1
 
 %ifarch ppc ppc64le
 # Disable gnulib test 'test-float' temporarily as it fails on ppc and ppc64le.
 %patch2
 %endif
+
+# Avoid FP error in gnulib tests 'test-perror2' and 'test-strerror_r'.
+%patch3
 
 %build
 %if 0%{?qemu_user_space_build}
