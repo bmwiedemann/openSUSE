@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 30 17:39:08 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix usage of update-alternatives (boo#1175919).
+
+-------------------------------------------------------------------
+Thu Aug 27 12:59:12 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Don't recommend groff-full to avoid pulling in ghostscript etc.
+  groff-full installs itself when there's groff and
+  ghostscript-library installed.
+
+-------------------------------------------------------------------
 Thu Aug 27 07:38:06 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Set libexecdir at build time for wrapper (boo#1175813)

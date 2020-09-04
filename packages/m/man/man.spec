@@ -79,15 +79,12 @@ PreReq:         coreutils
 PreReq:         fillup
 Requires(post): update-alternatives
 Requires(posttrans): systemd
+Requires(postun): update-alternatives
 Requires(pre):  group(man)
 Requires(pre):  user(man)
-Requires(preun): update-alternatives
 Provides:       man_db
 %if 0%{?suse_version} < 1500
 Requires:       cron
-%endif
-%if 0%{?suse_version} > 1300
-Recommends:     groff-full
 %endif
 
 %description
@@ -289,7 +286,7 @@ test -d var/catman/ && rm -rf var/catman/ || true
 %endif
 %endif
 # Remark: soelim(1)     is part of package groff or mandoc and
-#         makewhatis(8) is part of package makewaht or mandoc
+#         makewhatis(8) is part of package makewhat or mandoc
 %{_sbindir}/update-alternatives --quiet --force \
 	--install %{_bindir}/man     man     %{_libexecdir}/man-db/wrapper 1010 \
 	--slave   %{_bindir}/apropos apropos %{_libexecdir}/man-db/whatis \
@@ -305,10 +302,6 @@ test -d var/catman/ && rm -rf var/catman/ || true
 %service_del_preun mandb.service mandb.timer
 %endif
 %endif
-if test $1 -eq 0
-then
-	%{_sbindir}/update-alternatives --quiet --remove man %{_bindir}/man
-fi
 
 %postun
 /sbin/ldconfig
@@ -318,6 +311,9 @@ fi
 %service_del_postun mandb.service mandb.timer
 %endif
 %endif
+if [ ! -f %{_libexecdir}/man-db/wrapper ] ; then
+   update-alternatives --quiet --remove man %{_libexecdir}/man-db/wrapper
+fi
 
 %posttrans
 %{?tmpfiles_create:%tmpfiles_create %{_prefix}/lib/tmpfiles.d/man-db.conf}

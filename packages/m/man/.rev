@@ -771,4 +771,12 @@
 - Do the same in mandb.service</comment>
     <requestid>829918</requestid>
   </revision>
+  <revision rev="83" vrev="12">
+    <srcmd5>b15f011d6a92f96074c7d6aada680a2b</srcmd5>
+    <version>2.8.4</version>
+    <time>1599209626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831052</requestid>
+  </revision>
 </revisionlist>
