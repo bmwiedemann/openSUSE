@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:49:22 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on architectures where char is 
+  unsigned (%arm, aarch64):
+  * fcoe-utils-fix-arm.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 17:24:06 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Handle NIC names longer than 7 characters for the output of

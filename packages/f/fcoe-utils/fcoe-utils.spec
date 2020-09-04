@@ -38,6 +38,8 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Patch1:         Handle-NIC-names-longer-than-7-characters.patch
+# PATCH-FIX-UPSTREAM - https://github.com/openSUSE/fcoe-utils/pull/14
+Patch2:         fcoe-utils-fix-arm.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
@@ -49,6 +51,7 @@ connections.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 autoreconf -vi
