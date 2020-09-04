@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  1 07:38:13 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.8:
+  * Add configure support for editline
+  * SQLDriversW was ignoring user config
+  * SQLDataSources Fix termination character
+  * Fix for pooling seg fault
+  * Make calling SQLSetStmtAttrW call the W function in the driver is its there
+  * Try and fix race condition clearing system odbc.ini file
+  * Remove trailing space from isql/iusql SQL
+  * When setting connection attributes set before connect also check if the W entry poins can be used
+  * Try calling the W error functions first if available in the driver
+  * Add iconvperdriver configure option to allow calling unicode_setup in SQLAllocHandle
+  * iconv handles was being lost when reusing pooled connection
+  * Catch null copy in iniPropertyInsert
+  * Fix a few leaks 
+- Remove unixODBC-2.3.7-warning-cleanup.patch: upstreamed
+
+-------------------------------------------------------------------
 Wed Oct 24 14:37:58 UTC 2018 - mvetter@suse.com
 
 - Update to 2.3.7:

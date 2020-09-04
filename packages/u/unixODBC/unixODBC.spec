@@ -1,7 +1,7 @@
 #
 # spec file for package unixODBC
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           unixODBC
-Version:        2.3.7
+Version:        2.3.8
 Release:        0
 Summary:        ODBC driver manager with some drivers included
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Databases/Tools
-Url:            http://www.unixodbc.org/
+URL:            http://www.unixodbc.org/
 Source0:        ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        unixODBC-rpmlintrc
@@ -31,8 +31,6 @@ Patch2:         unixODBC-gccwarnings.patch
 # https://github.com/lurcher/unixODBC/issues/8
 Patch3:         unixODBC-2.3.1-libodbcinst-exports.patch
 Patch4:         unixODBC-2.3.6-declarations.patch 
-# https://github.com/lurcher/unixODBC/issues/18
-Patch5:         unixODBC-2.3.7-warning-cleanup.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  gcc-c++
@@ -62,7 +60,6 @@ Includes for ODBC development (based on unixODBC).
 %patch2
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 perl -i -pe 's{^ACLOCAL_AMFLAGS.*}{}' Makefile.am

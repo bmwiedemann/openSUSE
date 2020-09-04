@@ -297,4 +297,26 @@
 </comment>
     <requestid>644353</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a792a54d23c517f9891aa2d6812beac5</srcmd5>
+    <version>2.3.8</version>
+    <time>1599209614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.8:
+  * Add configure support for editline
+  * SQLDriversW was ignoring user config
+  * SQLDataSources Fix termination character
+  * Fix for pooling seg fault
+  * Make calling SQLSetStmtAttrW call the W function in the driver is its there
+  * Try and fix race condition clearing system odbc.ini file
+  * Remove trailing space from isql/iusql SQL
+  * When setting connection attributes set before connect also check if the W entry poins can be used
+  * Try calling the W error functions first if available in the driver
+  * Add iconvperdriver configure option to allow calling unicode_setup in SQLAllocHandle
+  * iconv handles was being lost when reusing pooled connection
+  * Catch null copy in iniPropertyInsert
+  * Fix a few leaks 
+- Remove unixODBC-2.3.7-warning-cleanup.patch: upstreamed</comment>
+    <requestid>830983</requestid>
+  </revision>
 </revisionlist>
