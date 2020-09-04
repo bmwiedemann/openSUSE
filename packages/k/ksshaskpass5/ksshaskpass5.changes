@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  1 13:31:09 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop suse-tweaks.diff, overwrite KDE_INSTALL_BINDIR instead
+  (boo#1175991)
+- Some spec cleanup
+
+-------------------------------------------------------------------
+Tue Sep  1 11:38:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.5
+- No code changes since 5.19.4
+
+-------------------------------------------------------------------
 Tue Jul 28 13:45:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.4
