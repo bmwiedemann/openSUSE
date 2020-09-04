@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  3 11:13:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 7.0.1.2:
+  * RC2 release of 7.0.1
+
+-------------------------------------------------------------------
+Tue Aug 25 08:24:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update BR to match up configure.ac
+
+-------------------------------------------------------------------
 Thu Aug 20 08:55:05 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.

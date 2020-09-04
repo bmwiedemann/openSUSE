@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        7.0.1.1
+Version:        7.0.1.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -195,7 +195,7 @@ BuildRequires:  pkgconfig(libfreehand-0.1)
 BuildRequires:  pkgconfig(liblangtag)
 BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.16
-BuildRequires:  pkgconfig(libnumbertext) >= 1.0.5
+BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
 BuildRequires:  pkgconfig(liborcus-0.15)
 BuildRequires:  pkgconfig(libpagemaker-0.0)
