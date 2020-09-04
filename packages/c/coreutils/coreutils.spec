@@ -137,6 +137,9 @@ Patch800:       coreutils-ls-restore-8.31-behavior-on-removed-dirs.patch
 
 Patch820:       coreutils-gnulib-disable-test-float.patch
 
+# Avoid FP error in gnulib tests 'test-perror2' and 'test-strerror_r'.
+Patch840:       gnulib-test-avoid-FP-perror-strerror.patch
+
 # ================================================
 %description
 These are the GNU core utilities.  This package is the union of
@@ -196,6 +199,8 @@ This package contains the documentation for the GNU Core Utilities.
 # Disable gnulib test 'test-float' temporarily as it fails on ppc and ppc64le.
 %patch820
 %endif
+
+%patch840
 
 # ================================================
 %build

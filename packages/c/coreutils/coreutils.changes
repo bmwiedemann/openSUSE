@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 31 07:14:12 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- gnulib-test-avoid-FP-perror-strerror.patch: Add patch to
+avoid false-positive error in gnulib tests 'test-perror2' and
+'test-strerror_r', visible on armv7l.
+- coreutils.spec: Reference the patch.
+
+-------------------------------------------------------------------
 Thu Jul 16 11:23:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop suse-module-tools BuildRequires: this was used for the macro
