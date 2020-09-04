@@ -45,6 +45,8 @@ Source2:        https://keybase.io/dustymabe/pgp_keys.asc#/%{name}.keyring
 Source3:        testsuite.sh
 # FIX-OPENSUSE use the Tumbleweed.$(uname -m) vagrant box instead of fedora/*-cloud-base
 Patch0:         0001-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
+# PATCH-FIX-OPENSUSE vagrant-sshfs-libexecdir.patch -- Use /usr/libexecdir/ssh to find sftp-server
+Patch1:         vagrant-sshfs-libexecdir.patch
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  vagrant >= 1.9.1
