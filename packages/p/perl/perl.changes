@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  5 09:19:11 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move macros.perl to /usr/lib/rpm/macros.d
+
+-------------------------------------------------------------------
 Fri Jun  5 11:54:19 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec

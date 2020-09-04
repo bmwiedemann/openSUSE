@@ -970,4 +970,12 @@ e.g. https://build.opensuse.org/package/show/devel:languages:perl/perl-Pod-Parse
     <comment>- Fixes for %_libexecdir changing to /usr/libexec (forwarded request 811779 from gmbr3)</comment>
     <requestid>811783</requestid>
   </revision>
+  <revision rev="117" vrev="5">
+    <srcmd5>5b76b8b8fd1fa98f65d848035d7e5742</srcmd5>
+    <version>5.30.1</version>
+    <time>1599209532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830758</requestid>
+  </revision>
 </revisionlist>

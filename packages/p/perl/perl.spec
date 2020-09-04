@@ -1,7 +1,7 @@
 #
 # spec file for package perl
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -243,7 +243,7 @@ install -m 555 savelibperl.so $cpa/CORE/libperl.so
 install -m 444 saveConfig.pm $cpa/Config.pm
 install -m 444 saveConfig_heavy.pl $cpa/Config_heavy.pl
 # install macros.perl file
-install -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/rpm/macros.perl
+install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmconfigdir}/macros.d/macros.perl
 pushd %{_includedir}
 ( rpm -ql glibc-devel | fgrep '.h'
   find %{_includedir}/asm/ -name \*.h
@@ -367,7 +367,7 @@ EOF
 %exclude %{_bindir}/perl%{pversion}
 %{_bindir}/*
 /usr/lib/perl5/*
-%config %{_sysconfdir}/rpm/macros.perl
+%{_rpmconfigdir}/macros.d/macros.perl
 
 %files doc
 %doc README.macros
