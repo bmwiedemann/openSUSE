@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 31 08:16:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.0:
+  * Fix KeyError: 'win10_theme' on Linux (#880)
+  * Fix file_wipe() for special files (#875)
+  * Fix SyntaxWarning: "is not" with a literal. (#902)
+  * Open files with FILE_FLAG_BACKUP_SEMANTICS (#337)
+  * Use encoding='utf-8' when opening json/xml files (#874)
+  * Worker generator should be added using default prior (#881)
+  * Update translations
+
+-------------------------------------------------------------------
 Mon May 18 08:17:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependencies:
