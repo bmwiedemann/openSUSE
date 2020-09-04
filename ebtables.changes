@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  2 14:23:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have the source .service file hold a placeholder for LIBEXECDIR,
+  which we replace during build/install phase, allowing the package
+  to be used no matter what value %{_libexecdir} has.
+
+-------------------------------------------------------------------
+Tue Sep  1 12:11:49 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- replace /usr/lib with /usr/libexec in .service files to follow
+  %_libexecdir macro changes
+
+-------------------------------------------------------------------
 Tue May  5 10:15:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Revert last /bin/bash -> /bin/sh change

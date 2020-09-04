@@ -87,6 +87,7 @@ mkdir -p "%{buildroot}/%{_sysconfdir}/init.d"
 mkdir -p %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}%{_unitdir}
 install -p %_sourcedir/ebtables.service %{buildroot}%{_unitdir}/
+sed -i "s|@LIBEXECDIR@|%{_libexecdir}|g" %{buildroot}%{_unitdir}/*.service
 chmod -x %{buildroot}%{_unitdir}/*.service
 mkdir -p %{buildroot}%{_libexecdir}
 install -m0755 %_sourcedir/ebtables.systemd %{buildroot}%{_libexecdir}/%{name}-helper
@@ -129,7 +130,8 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc COPYING ChangeLog
+%license COPYING
+%doc ChangeLog
 %{_mandir}/man8/ebtables*.8*
 %{_libexecdir}/%{name}-helper
 %{_unitdir}/%{name}.service
