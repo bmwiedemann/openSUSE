@@ -12,9 +12,6 @@ FESTIVAL_OPTIONS=""
 #
 # Shall the festival server run in the chroot jail /var/lib/festival?
 #
-# Each time you start festival with the init script, /etc/festival.conf will be
-# copied to /var/lib/festival/etc/.
-# 
 FESTIVAL_RUN_CHROOTED="yes"
 
 ## Type:           string
@@ -22,6 +19,14 @@ FESTIVAL_RUN_CHROOTED="yes"
 ## ServiceRestart: ntp
 #
 # If the festival server runs in the chroot jail these files will be
-# copied to /var/lib/festival/ besides the default of /etc/festival.scm
+# copied to $FESTIVAL_CHROOT_PREFIX besides the default of /etc/festival.scm
 #
 FESTIVAL_CHROOT_FILES=""
+
+## Type:           string
+## Default:        "/usr/share/festival"
+#
+# festival chroot directory.
+#
+FESTIVAL_CHROOT_PREFIX="/usr/share/festival"
+

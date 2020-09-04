@@ -281,4 +281,12 @@ into sibling directories. (forwarded request 163507 from Andreas_Schwab)</commen
   (%{_libexecdir} was changed from /usr/lib to /usr/libexec).</comment>
     <requestid>830681</requestid>
   </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>e92e9af3006875786945a9db3b909209</srcmd5>
+    <version>2.5.0</version>
+    <time>1599210638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831981</requestid>
+  </revision>
 </revisionlist>

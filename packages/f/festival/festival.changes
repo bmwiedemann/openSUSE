@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Sep  4 04:57:39 UTC 2020 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Removed "rcfestival" and added almost equivalent functionality
+  to systemd unit file (thanks to Franck Bui <fbui@suse.com>).
+- Removed %stop_on_removal and %restart_on_update from .spec,
+  which is not needed anymore.
+
+-------------------------------------------------------------------
+Wed Sep  2 19:02:15 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- /var/run has been obsoleted by /run since a long time.
+
+-------------------------------------------------------------------
+Wed Sep  2 18:45:18 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop dependency on insserv-compat
+
+  insserv-compat is going to be dropped soon or later on systems with
+  systemd as init system.
+    
+  It was only needed by /usr/lib/festival/server that uses rc_status
+  to pretty print the status of a command.
+    
+  Since this script is intended to be used by festival.service only
+  and not called directly by users and systemd has already its own
+  mechanism to report status, the use of rc_status doesn't seem to be
+  useful.
+    
+  Also there's no point in using %insserv_cleanup in %postun as this
+  package doesn't ship any sysv init script.
+
+-------------------------------------------------------------------
 Mon Aug 31 06:15:06 UTC 2020 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Removed unnecessary and unexpected "_link".

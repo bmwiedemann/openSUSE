@@ -33,7 +33,6 @@ Source2:        http://festvox.org/packed/%{name}/2.5/festlex_CMU.tar.gz
 Source3:        http://festvox.org/packed/%{name}/2.5/voices/festvox_kallpc16k.tar.gz
 Source4:        http://festvox.org/packed/%{name}/2.5/festlex_POSLEX.tar.gz
 Source5:        sysconfig.%{name}
-Source6:        rc%{name}
 Source7:        http://festvox.org/packed/%{name}/2.5/voices/festvox_rablpc16k.tar.gz
 # systemd unit file
 Source8:        %{name}.systemd
@@ -59,7 +58,6 @@ Patch20:        festival-null-fragile.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-Requires(pre):  insserv-compat
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 
@@ -167,8 +165,6 @@ install -m 644 include/unix/*h %{buildroot}%{_includedir}/unix
 # install libs
 install -Dm 644 ../%{name}/src/lib/libFestival.a  %{buildroot}/%{_libdir}/libFestival.a
 install -m 644 lib/lib*.a %{buildroot}%{_libdir}
-# install init script
-install -m 755 -D %{SOURCE6} %{buildroot}%{_usr}/lib/%{name}/server
 install -d %{buildroot}%{_sbindir}
 ln -sf /sbin/service %{buildroot}%{_sbindir}/rc%{name}
 # install systemd unit file
@@ -191,12 +187,9 @@ getent passwd %{name} >/dev/null || \
 %service_add_post %{name}.service
 
 %preun
-%stop_on_removal %{name}
 %service_del_preun %{name}.service
 
 %postun
-%restart_on_update %{name}
-%insserv_cleanup
 %service_del_postun %{name}.service
 
 %files
@@ -212,9 +205,6 @@ getent passwd %{name} >/dev/null || \
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
 %{_libexecdir}/%{name}
-%if 0%{?suse_version} > 1500
-%{_prefix}/lib/%{name}
-%endif
 %{_datadir}/%{name}
 %{_mandir}/man1/*
 %{_fillupdir}/*

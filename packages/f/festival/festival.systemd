@@ -5,17 +5,12 @@ After=time-sync.target
 Wants=remote-fs.target
 
 [Service]
-Type=forking
-Restart=no
-TimeoutSec=5min
-IgnoreSIGPIPE=no
+Type=simple
+EnvironmentFile=-/etc/sysconfig/festival
 KillMode=process
-GuessMainPID=no
-RemainAfterExit=yes
-SuccessExitStatus=5 6
-ExecStart=/usr/lib/festival/server start
-ExecStop=/usr/lib/festival/server stop
-ExecReload=/usr/lib/festival/server reload
+ExecStartPre=/bin/bash -c "[ \"$FESTIVAL_RUN_CHROOTED\" = yes ] && for configfile in /etc/festival.scm $FESTIVAL_CHROOT_FILES; do test -d $FESTIVAL_CHROOT_PREFIX/$${configfile%/*} || mkdir -p $FESTIVAL_CHROOT_PREFIX/$${configfile%/*}; cp -auL $${configfile} $FESTIVAL_CHROOT_PREFIX/$${configfile%/*}; done"
+ExecStart=/bin/bash -c "exec /usr/bin/festival $FESTIVAL_OPTIONS --server $( [ \"$FESTIVAL_RUN_CHROOTED\" = yes ] && echo --libdir / --uid festival --chroot \"$FESTIVAL_CHROOT_PREFIX\" )"
+ExecReload=/usr/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
