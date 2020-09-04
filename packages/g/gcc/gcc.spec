@@ -429,8 +429,8 @@ for program in \
         gfortran \
 	gccgo \
 %if %{build_ada}
-	gnat gnatbind gnatbl gnatchop gnatclean gnatfind gnatkr \
-	gnatlink gnatls gnatmake gnatname gnatprep gnatxref gprmake \
+	gnat gnatbind gnatchop gnatclean gnatfind gnatkr \
+	gnatlink gnatls gnatmake gnatname gnatprep gnatxref \
 %endif
 %if %{build_d}
 	gdc \
@@ -564,7 +564,6 @@ fi
 %defattr(-,root,root)
 %{_prefix}/bin/gnat
 %{_prefix}/bin/gnatbind
-%{_prefix}/bin/gnatbl
 %{_prefix}/bin/gnatchop
 %{_prefix}/bin/gnatclean
 %{_prefix}/bin/gnatfind
@@ -575,7 +574,6 @@ fi
 %{_prefix}/bin/gnatname
 %{_prefix}/bin/gnatprep
 %{_prefix}/bin/gnatxref
-%{_prefix}/bin/gprmake
 %endif
 
 %files -n libstdc++-devel

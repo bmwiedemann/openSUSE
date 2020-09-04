@@ -529,4 +529,12 @@ from GCC 6).
 - Switch gcc to default 10.</comment>
     <requestid>806858</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>77b7b6b0966225cf8bbcc2d396c42600</srcmd5>
+    <version>10</version>
+    <time>1599209609</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove gnatbl and gprmake links (forwarded request 830802 from Andreas_Schwab)</comment>
+    <requestid>830974</requestid>
+  </revision>
 </revisionlist>

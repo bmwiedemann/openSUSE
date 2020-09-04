@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 31 12:48:21 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Remove gnatbl and gprmake links
+
+-------------------------------------------------------------------
 Mon May 18 09:08:26 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Sync separate_bi{32,64} macros with the GCC side, honoring
