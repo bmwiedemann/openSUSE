@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>748563</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7310fde3ac4feff563184576813a8167</srcmd5>
+    <version>5.15.0</version>
+    <time>1599210568</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the superfluous Tumbleweed python2 hack
+- Update to 5.15.0 
+  * Added support for Qt v5.15.0.
+- v5.14.0 added support for Qt v5.14.0 in December 2019
+- The source location has changed to PyPI
+- Stop building the python2 package for openSUSE Tumbleweed.
+</comment>
+    <requestid>831619</requestid>
+  </revision>
 </revisionlist>

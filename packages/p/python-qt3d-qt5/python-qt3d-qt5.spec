@@ -1,7 +1,7 @@
 #
 # spec file for package python-qt3d-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qt3d-qt5
-Version:        5.13.1
+Version:        5.15.0
 Release:        0
 Summary:        Python bindings for the Qt5 3D framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtchart/intro
-Source:         https://www.riverbankcomputing.com/static/Downloads/PyQt3D/%{version}/PyQt3D-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt3D/PyQt3D-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module qt5-devel}
-BuildRequires:  %{python_module sip-devel >= 4.19.1}
+BuildRequires:  %{python_module sip-devel >= 4.19.4}
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt53DAnimation)
 BuildRequires:  pkgconfig(Qt53DCore)
