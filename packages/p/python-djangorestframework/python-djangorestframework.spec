@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-djangorestframework%{psuffix}
-Version:        3.11.0
+Version:        3.11.1
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
@@ -53,9 +53,9 @@ BuildRequires:  %{python_module Markdown >= 2.6.11}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module coreapi >= 2.3.1}
 BuildRequires:  %{python_module coreschema >= 0.0.4}
-BuildRequires:  %{python_module django-guardian >= 1.4.9}
+BuildRequires:  %{python_module django-guardian >= 2.2.0}
 BuildRequires:  %{python_module psycopg2}
-BuildRequires:  %{python_module pytest-django >= 3.3.2}
+BuildRequires:  %{python_module pytest-django >= 3.9.0}
 BuildRequires:  python3-django-filter >= 1.1.0
 %endif
 %python_subpackages

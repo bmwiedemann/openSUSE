@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  3 07:57:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.11.1
+  * update Django for APIs book to 3.0 edition
+  * decode base64 credentials as utf8; adjust tests
+  * Remove compat urls for Django < 2.0
+
+-------------------------------------------------------------------
 Mon Jan  6 13:35:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.11.0:
