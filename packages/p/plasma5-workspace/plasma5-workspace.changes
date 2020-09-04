@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:38:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.5
+- Changes since 5.19.4:
+  * [logout screen] Set implicit widths on OK and Cancel buttons
+  * KDisplayManager: Work without $DISPLAY set
+
+-------------------------------------------------------------------
 Tue Jul 28 13:45:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.4
