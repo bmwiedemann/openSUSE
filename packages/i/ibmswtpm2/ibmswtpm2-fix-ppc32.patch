@@ -1,0 +1,13 @@
+diff -ur ibmswtpm2-1637.orig/src/LibSupport.h ibmswtpm2-1637/src/LibSupport.h
+--- ibmswtpm2-1637.orig/src/LibSupport.h	2020-05-27 21:35:29.000000000 +0200
++++ ibmswtpm2-1637/src/LibSupport.h	2020-09-01 14:32:06.752690872 +0200
+@@ -75,7 +75,8 @@
+ #       define RADIX_BITS                      64
+ #   elif defined(__i386__) || defined(__i386) || defined(i386)		\
+     || defined(_WIN32) || defined(_M_IX86)				\
+-    || defined(_M_ARM) || defined(__arm__) || defined(__thumb__)
++    || defined(_M_ARM) || defined(__arm__) || defined(__thumb__)	\
++    || defined(__powerpc__)
+ #       define RADIX_BITS                      32
+ #   else
+ #       error Unable to determine RADIX_BITS from compiler environment

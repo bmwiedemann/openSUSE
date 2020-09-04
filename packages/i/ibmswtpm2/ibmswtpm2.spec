@@ -35,6 +35,7 @@ Source:         https://sourceforge.net/projects/ibmswtpm2/files/ibmtpm%{version
 Patch:          makefile.patch
 Patch1:         ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
 Patch2:         ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
+Patch3:         ibmswtpm2-fix-ppc32.patch
 BuildRequires:  libopenssl-devel >= 1.0
 
 %description

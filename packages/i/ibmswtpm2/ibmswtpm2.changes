@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 12:34:41 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix ppc32 build.
+  + ibmswtpm2-fix-ppc32.patch
+
+-------------------------------------------------------------------
 Mon Aug 17 16:59:04 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to upstream version 1637
