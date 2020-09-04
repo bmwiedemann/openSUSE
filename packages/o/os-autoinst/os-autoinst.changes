@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 03 19:26:31 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1599143921.f85dd213:
+  * Remove external/ dir in .spec
+  * Replace tools/update-deps with symlink to subrepo
+  * Add external/os-autoinst-common subrepo
+  * Fix tools/tidy
+  * Fix error handling for QMP connection when invoking QEMU twice
+  * Update perltidy to 20200822
+  * Refactor tools/tidy
+
+-------------------------------------------------------------------
 Tue Sep 01 11:26:28 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1598949244.a169fcf1:

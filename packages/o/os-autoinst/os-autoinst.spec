@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1598949244.a169fcf1
+Version:        4.6.1599143921.f85dd213
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -145,6 +145,7 @@ make %{?_smp_mflags} INSTALLDIRS=vendor
 %make_install INSTALLDIRS=vendor
 # remove internal tools
 rm -r %{buildroot}/usr/lib/os-autoinst/tools/
+rm -r %{buildroot}/usr/lib/os-autoinst/external/
 %else
 %cmake_install install-openvswitch
 %endif
