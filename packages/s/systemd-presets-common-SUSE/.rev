@@ -108,4 +108,12 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <user>dimstar_suse</user>
     <comment>Revert, see https://bugzilla.opensuse.org/show_bug.cgi?id=1038403#c4</comment>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>d2c51890167ff490ff804806b7654c78</srcmd5>
+    <version>15</version>
+    <time>1599209659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831123</requestid>
+  </revision>
 </revisionlist>

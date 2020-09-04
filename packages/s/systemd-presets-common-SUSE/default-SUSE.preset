@@ -9,7 +9,8 @@ enable btrfs-balance.timer
 enable btrfs-defrag.timer
 enable btrfs-scrub.timer
 enable btrfs-trim.timer
-enable btrfsmaintenance-refresh.service
+disable btrfsmaintenance-refresh.service
+enable btrfsmaintenance-refresh.path
 enable ca-certificates.path
 enable check-battery.timer
 enable cron.service
