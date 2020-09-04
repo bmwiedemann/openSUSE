@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.19.4
+Version:        5.19.5
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
