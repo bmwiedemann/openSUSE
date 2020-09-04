@@ -345,4 +345,41 @@
      (Kevin Hendricks)</comment>
     <requestid>813452</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>13b33ba11d7156e82950685ea47d6b26</srcmd5>
+    <version>0.20.5</version>
+    <time>1599209773</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.5:
+   * Print a clearer exception when setup.py is executed on Python &lt; 3.5.
+   * Send an empty pack to clients if they requested objects, even if they
+     already have those objects. Thanks to Martijn Pieters for
+     the detailed bug report.
+   * porcelain.pull: Don't ask for objects that we already have.
+   * Add LCA implementation. (Kevin Hendricks)
+   * Add functionality for finding the merge base. (Kevin Hendricks)
+   * Check for diverged branches during push.
+   * Check for fast-forward during pull. (Jelmer Vernooĳ, #666)
+   * Return a SendPackResult object from
+     GitClient.send_pack(). (Jelmer Vernooĳ)
+   * ``GitClient.send_pack`` now sets the ``ref_status`` attribute
+     on its return value to a dictionary mapping ref names
+     to error messages. Previously, it raised UpdateRefsError
+     if any of the refs failed to update.
+     (Jelmer Vernooĳ, #780)
+   * Add a ``porcelain.Error`` object that most errors in porcelain
+     derive from. (Jelmer Vernooĳ)
+   * Fix argument parsing in dulwich command-line app.
+     (Jelmer Vernooĳ, #784)
+   * Add support for remembering remote refs after push/pull.
+     (Jelmer Vernooĳ, #752)
+   * Support passing tree and output encoding to
+     dulwich.patch.unified_diff. (Jelmer Vernooĳ, #763)
+   * Fix pushing of new refs over HTTP(S) when there are
+     no new objects to be sent.
+     (Jelmer Vernooĳ, #739)
+   * Raise new error HTTPUnauthorized when the server sends
+     back a 401. The client can then retry with credentials.</comment>
+    <requestid>819989</requestid>
+  </revision>
 </revisionlist>
