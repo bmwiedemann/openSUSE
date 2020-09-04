@@ -40,7 +40,7 @@
 %define python_version %(c=%{_version}; echo ${c:0:3})
 # based on the current source tarball
 %define python_version_abitag %(c=%{python_version}; echo ${c//./})
-# FIXME %define python_version_soname %(c=%{python_version}; echo ${c//./_})
+# FIXME %%define python_version_soname %%(c=%%{python_version}; echo ${c//./_})
 %define         python_version_soname   3_9
 %if 0%(test -n "%{tar_suffix}" && echo 1)
 %define _version %(echo "%{_version}~%{tar_suffix}")
@@ -49,9 +49,10 @@
 %define tarversion %{version}
 %endif
 %define         python_pkg_name python39
-# Will provide the pyton3-* provides
+# Will provide the python3-* provides
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
+# We don't process beta signs well
 %define         folderversion 3.9.0
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
@@ -80,13 +81,14 @@
 # pyexpat.cpython-35m-armv7-linux-gnueabihf
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
+# deadlocks on test_faulthandler and blocks the build
 %if 0%{?qemu_user_space_build}
 %bcond_with profileopt
 %else
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.0b5
+Version:        3.9.0rc1
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -102,7 +104,7 @@ Source10:       pre_checkin.sh
 Source11:       skipped_tests.py
 Source19:       idle3.desktop
 Source20:       idle3.appdata.xml
-Source99:       python.keyring
+Source99:       https://www.python.org/static/files/pubkeys.txt#/python.keyring
 # The following files are not used in the build.
 # They are listed here to work around missing functionality in rpmbuild,
 # which would otherwise exclude them from distributed src.rpm files.
@@ -398,7 +400,7 @@ sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
 # fix shebangs - convert /usr/local/bin/python and /usr/bin/env/python to /usr/bin/python3
 for dir in Lib Tools; do
     # find *.py, filter to files that contain bad shebangs
-    # break up "/""usr" like this to prevent replacing with %{_prefix}
+    # break up "/""usr" like this to prevent replacing with %%{_prefix}
     find $dir -name '*.py' -type f -print0 \
         | xargs -0 grep -lE '^#! *(/''usr/.*bin/(env +)?)?python' \
         | xargs sed -r -i -e '1s@^#![[:space:]]*(/''usr/(local/)?bin/(env +)?)?python([0-9]+(\.[0-9]+)?)?@#!%{_bindir}/python3@'
@@ -413,7 +415,7 @@ rm Lib/site-packages/README.txt
 
 %build
 %if %{with doc}
-TODAY_DATE=`date -r %{SOURCE0} "+%B %d, %Y"`
+TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 # TODO use not date of tarball but date of latest patch
 
 cd Doc
@@ -946,7 +948,7 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %endif
 # executables
 %attr(755, root, root) %{_bindir}/pydoc%{python_version}
-# %attr(755, root, root) %{_bindir}/python%{python_abi}
+# %%attr(755, root, root) %%{_bindir}/python%%{python_abi}
 %attr(755, root, root) %{_bindir}/python%{python_version}
 # endif for if base
 %endif
