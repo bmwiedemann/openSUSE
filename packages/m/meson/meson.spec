@@ -43,6 +43,8 @@ Patch0:         meson-suse-ify-macros.patch
 Patch1:         meson-test-installed-bin.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch2:         meson-distutils.patch
+# PATCH-FIX-UPSTREAM pr7648-fix-lchmod-check-for-glibc-2.32.patch gh#mesonbuild/meson#7648
+Patch3:         pr7648-fix-lchmod-check-for-glibc-2.32.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -162,6 +164,7 @@ This package provides support for meson.build files in Vim.
 %if !%{with setuptools}
 %patch2 -p1
 %endif
+%patch3 -p1
 
 # We do not have gmock available at this moment - can't run the test suite for it
 rm -r "test cases/frameworks/3 gmock" \

@@ -532,4 +532,12 @@
     <comment>Update to 0.55.1 - no regressions seen in GNOME:Next compared to 0.55.0 (forwarded request 827368 from dimstar)</comment>
     <requestid>827369</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>c0160b83159b62774a6e7bcbe6371ce3</srcmd5>
+    <version>0.55.1</version>
+    <time>1599209547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830796</requestid>
+  </revision>
 </revisionlist>
