@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:38:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.5
+- Changes since 5.19.4:
+  * Revert "[Folder view] Fix binding loop on width" (kde#423511)
+  * Hardcode icons for default plasma components
+
+-------------------------------------------------------------------
 Tue Jul 28 13:45:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.4
