@@ -15,7 +15,7 @@ Index: openssl-1.0.2k/openssl.ld
 ===================================================================
 --- /dev/null
 +++ openssl-1.0.2k/openssl.ld
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,18 @@
 +OPENSSL_1.0.0 {
 +	global:
 +		*;
@@ -25,6 +25,11 @@ Index: openssl-1.0.2k/openssl.ld
 +	global:
 +		SSL_CTX_set_next_proto_select_cb;
 +} OPENSSL_1.0.0;
++
++OPENSSL_1.0.1_EC {
++    global:
++	    EC*;
++};
 +
 +OPENSSL_1.0.2 {
 +} OPENSSL_1.0.1;
@@ -33,7 +38,7 @@ Index: openssl-1.0.2k/engines/openssl.ld
 ===================================================================
 --- /dev/null
 +++ openssl-1.0.2k/engines/openssl.ld
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,18 @@
 +OPENSSL_1.0.0 {
 +	global:
 +		*;
@@ -43,6 +48,11 @@ Index: openssl-1.0.2k/engines/openssl.ld
 +	global:
 +		SSL_CTX_set_next_proto_select_cb;
 +} OPENSSL_1.0.0;
++
++OPENSSL_1.0.1_EC {
++    global:
++	    EC*;
++};
 +
 +OPENSSL_1.0.2 {
 +} OPENSSL_1.0.1;
@@ -51,7 +61,7 @@ Index: openssl-1.0.2k/engines/ccgost/openssl.ld
 ===================================================================
 --- /dev/null
 +++ openssl-1.0.2k/engines/ccgost/openssl.ld
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,18 @@
 +OPENSSL_1.0.0 {
 +	global:
 +		*;
@@ -61,6 +71,11 @@ Index: openssl-1.0.2k/engines/ccgost/openssl.ld
 +	global:
 +		SSL_CTX_set_next_proto_select_cb;
 +} OPENSSL_1.0.0;
++
++OPENSSL_1.0.1_EC {
++    global:
++	    EC*;
++};
 +
 +OPENSSL_1.0.2 {
 +} OPENSSL_1.0.1;

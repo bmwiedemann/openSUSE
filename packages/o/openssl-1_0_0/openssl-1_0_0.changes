@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 18 09:39:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add libopenssl10 package with libcrypto.so.10 and libssl.so.10
+  libraries built with --default-symver and the following patch
+  so we can provide the same symbols as other distros in a
+  compatible package (bsc#1175429):
+  * openssl-1.0.2e-rpmbuild.patch
+- Update patch to add OPENSSL_1.0.1_EC symbol (bsc#1175429):
+  * openssl-1.0.0-version.patch
+
+-------------------------------------------------------------------
 Fri Dec 20 21:39:42 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 1.0.2u [bsc#1158809, CVE-2019-1551]

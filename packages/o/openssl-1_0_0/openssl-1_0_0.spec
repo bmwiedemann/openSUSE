@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_0_0
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,6 +93,8 @@ Patch79:        openssl-CVE-2018-0737-fips.patch
 Patch80:        openssl-One_and_Done.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
+# compat patches to build with soversion 10 (bsc#1175429)
+Patch200:       openssl-1.0.2e-rpmbuild.patch
 BuildRequires:  bc
 BuildRequires:  ed
 BuildRequires:  pkgconfig
@@ -120,6 +122,21 @@ OpenSSL is a software library to be used in applications that need to
 secure communications over computer networks against eavesdropping or
 need to ascertain the identity of the party at the other end.
 OpenSSL contains an implementation of the SSL and TLS protocols.
+
+%package -n libopenssl10
+Summary:        Secure Sockets and Transport Layer Security
+License:        OpenSSL
+Group:          Productivity/Networking/Security
+
+%description -n libopenssl10
+OpenSSL is a software library to be used in applications that need to
+secure communications over computer networks against eavesdropping or
+need to ascertain the identity of the party at the other end.
+OpenSSL contains an implementation of the SSL and TLS protocols.
+
+This package contains libcrypto.so.10 and libssl.so.10 symlinks and
+provided capabilities usually provided by other distributions for
+compatibility with third party packages.
 
 %package -n libopenssl1_0_0-steam
 Summary:        Secure Sockets and Transport Layer Security for steam
@@ -247,6 +264,16 @@ pushd ../steam > /dev/null
 %patch100 -p1
 popd > /dev/null
 
+# create copy to build compat .so.10 library
+mkdir ../compat
+cp -aR * ../compat/
+
+# apply compat patches
+pushd ../compat > /dev/null
+%patch200 -p1
+sed -i -e "s/-Wl,--version-script=openssl.ld/-Wl,--default-symver,--version-script=openssl.ld/" Configure
+popd > /dev/null
+
 %build
 %ifarch armv5el armv5tel
 export MACHINE=armv5el
@@ -255,7 +282,7 @@ export MACHINE=armv5el
 export MACHINE=armv6l
 %endif
 
-for i in . ../steam; do
+for i in . ../steam ../compat; do
 pushd $i
 ./config \
     threads shared no-rc5 no-idea \
@@ -387,10 +414,19 @@ install -D -m 0755 libcrypto.so.1.0.0 %{buildroot}%{steamlibdir}/libcrypto.so.1.
 install -D -m 0755 libssl.so.1.0.0 %{buildroot}%{steamlibdir}/libssl.so.1.0.0
 popd > /dev/null
 
+# install the compat content with soname 10 to keep
+# compatibility with other distros (bsc#1175429)
+pushd ../compat > /dev/null
+install -D -m 0755 libcrypto.so.10 %{buildroot}%{_libdir}/libcrypto.so.10
+install -D -m 0755 libssl.so.10 %{buildroot}%{_libdir}/libssl.so.10
+popd > /dev/null
+
 %post -n libopenssl1_0_0 -p /sbin/ldconfig
 %postun -n libopenssl1_0_0 -p /sbin/ldconfig
 %post -n libopenssl1_0_0-steam -p /sbin/ldconfig
 %postun -n libopenssl1_0_0-steam -p /sbin/ldconfig
+%post -n libopenssl10 -p /sbin/ldconfig
+%postun -n libopenssl10 -p /sbin/ldconfig
 
 %files -n libopenssl1_0_0
 %license LICENSE
@@ -398,6 +434,11 @@ popd > /dev/null
 %{_libdir}/libcrypto.so.%{num_version}
 %dir %{_libdir}/engines-1.0
 %{_libdir}/engines-1.0
+
+%files -n libopenssl10
+%license LICENSE
+%{_libdir}/libssl.so.10
+%{_libdir}/libcrypto.so.10
 
 %files -n libopenssl1_0_0-steam
 %license LICENSE
