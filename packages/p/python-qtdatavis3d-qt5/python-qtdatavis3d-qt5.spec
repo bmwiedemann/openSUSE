@@ -1,7 +1,7 @@
 #
 # spec file for package python-qtdatavis3d-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,19 @@
 #
 
 
+%if 0%{?suse_version} <= 1500
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%else
+%{?!python_module:%define python_module() python3-%{**}}
+%endif
 Name:           python-qtdatavis3d-qt5
-Version:        5.13.1
+Version:        5.15.0
 Release:        0
 Summary:        Python bindings for the Qt5 Data Visualization library
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtdatavisualization/intro
-Source:         https://www.riverbankcomputing.com/static/Downloads/PyQtDataVisualization/%{version}/PyQtDataVisualization-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQtDataVisualization/PyQtDataVisualization-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module sip-devel >= 4.19.1}
