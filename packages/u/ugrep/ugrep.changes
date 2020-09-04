@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  3 11:44:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 2.5.5:
+  * build improvements
+  * workaround missing lz4 macro
+  * updated Dockerfile
+  * updated tests
+
+-------------------------------------------------------------------
 Thu Aug 20 11:06:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 2.5.3:
