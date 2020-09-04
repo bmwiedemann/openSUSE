@@ -813,4 +813,12 @@
   * Don't remove find, gzip and cpio (forwarded request 787533 from kukuk)</comment>
     <requestid>788583</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>4a3485b6f3eb8ce8addc029ac559fde7</srcmd5>
+    <version>84.87+git20200819.5847424</version>
+    <time>1599209617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830984</requestid>
+  </revision>
 </revisionlist>

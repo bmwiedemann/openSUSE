@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 24 16:17:32 CEST 2020 - ro@suse.de
+
+- add the abuild user to the trusted group so that
+  fusermount works (boo#1159963) 
+
+-------------------------------------------------------------------
+Wed Aug 19 08:42:27 UTC 2020 - ro@suse.de
+
+- Update to version 84.87+git20200819.5847424:
+  * Revert "50-check-permissions use --level option of chkstat"
+
+-------------------------------------------------------------------
+Tue Aug 18 12:15:36 UTC 2020 - ro@suse.de
+
+- Update to version 84.87+git20200818.e4ffaa8:
+  * 50-check-permissions use --level option of chkstat
+    (boo#1159963)
+
+-------------------------------------------------------------------
 Mon Mar 23 11:08:48 UTC 2020 - kukuk@suse.com
 
 - Update to version 84.87+git20200323.45c6eba:

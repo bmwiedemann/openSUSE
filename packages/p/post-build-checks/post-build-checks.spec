@@ -16,13 +16,13 @@
 #
 
 
-%define version_unconverted 84.87+git20200323.45c6eba
+%define version_unconverted 84.87+git20200819.5847424
 
 Name:           post-build-checks
 Summary:        post checks for build after rpms have been created
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Version:        84.87+git20200323.45c6eba
+Version:        84.87+git20200819.5847424
 Release:        0
 PreReq:         aaa_base permissions sed
 Requires:       aaa_base-malloccheck
@@ -73,10 +73,16 @@ chmod 755 $RPM_BUILD_ROOT/usr/lib/build/checks-data/check*
 if ! test -e /.buildenv; then
     exit 0
 fi
+# change the PERMISSION set to "secure"
 sed -i -e "s@^PERMISSION_SECURITY=.*@PERMISSION_SECURITY=\"secure\"@" /etc/sysconfig/security
+# add the abuild user to the trusted group so that fusermount works
+usermod -G trusted -a abuild || true
+# set the timezone to UTC
 if [ -f /etc/sysconfig/clock ] ; then
 sed -i -e "s@^TIMEZONE=.*@TIMEZONE=\"UTC\"@" /etc/sysconfig/clock
 fi
+# and add the ugly workaround to override the output of uname -v
+# to match the installed kernel sources
 UNAME=/bin/uname
 if test -f /usr/bin/uname ; then
     UNAME=/usr/bin/uname
