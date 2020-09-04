@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:11:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add dav1d-nasm-2.15.patch: Fix compilation with nasm 2.15.
+
+-------------------------------------------------------------------
 Mon Jun 22 08:13:31 UTC 2020 - aloisio@gmx.com
 
 - Update to version 0.7.1
