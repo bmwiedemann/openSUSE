@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:38:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.5
+- Changes since 5.19.4:
+  * [ksgrd] Correctly handle monitors list changing
+
+-------------------------------------------------------------------
 Tue Jul 28 13:45:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.4
