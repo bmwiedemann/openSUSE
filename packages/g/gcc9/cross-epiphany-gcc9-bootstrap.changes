@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  3 06:42:37 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to releases/gcc-9 head (9790fa53b48f3a48e0f7a7ad), git1684.
+  * Includes fix for performance regression on powerpc [bsc#1176097]
+
+-------------------------------------------------------------------
 Mon Apr  6 06:16:10 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to releases/gcc-9 head (6db837a5288ee3ca5ec504fbd5a76581).
