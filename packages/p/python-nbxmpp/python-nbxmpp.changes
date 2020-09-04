@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep  3 07:44:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.0.2 (bsc#1176101):
+  * Client: Expose more information about the connection
+  * Client: set_ignored_tls_errors() allow to pass None
+  * Add method to disable stream management
+  * TCP: Set input/output closed on finalize()
+  * TCP: Catch Runtime error
+  * Perform UTS46 mapping on domain names
+  * Add XEP-0377 support
+  * MUC: Return message id when using inivite()
+  * OMEMO: Correctly parse prekey value
+  * Client: Determine protocol and type correctly if a custom host is used
+  * Smacks: Don't fail on saving error replies
+  * Library rewritten in most parts
+  * Replace BOSH with Websocket
+  * Add new example client
+  * Many other improvements
+  * Currently no Client Cert support
+
+-------------------------------------------------------------------
 Thu May 23 05:21:13 UTC 2019 - mvetter@suse.com
 
 - Update to 0.6.10:

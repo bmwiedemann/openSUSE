@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbxmpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        0.6.10
+Version:        1.0.2
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
@@ -62,7 +62,7 @@ This packages provides documentation of Nbxmpp API.
 %{python_sitelib}/%{_name}-*
 
 %files %{python_files doc}
-%doc ChangeLog README
-%doc doc/apidocs/ doc/examples/
+%doc ChangeLog README.md
+%doc %{_name}/examples/
 
 %changelog

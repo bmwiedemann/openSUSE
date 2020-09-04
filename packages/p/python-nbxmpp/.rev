@@ -196,4 +196,28 @@ Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</c
     <comment></comment>
     <requestid>704963</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ef2292c8be4ca9ac86adf052fea67e52</srcmd5>
+    <version>1.0.2</version>
+    <time>1599210669</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2 (bsc#1176101):
+  * Client: Expose more information about the connection
+  * Client: set_ignored_tls_errors() allow to pass None
+  * Add method to disable stream management
+  * TCP: Set input/output closed on finalize()
+  * TCP: Catch Runtime error
+  * Perform UTS46 mapping on domain names
+  * Add XEP-0377 support
+  * MUC: Return message id when using inivite()
+  * OMEMO: Correctly parse prekey value
+  * Client: Determine protocol and type correctly if a custom host is used
+  * Smacks: Don't fail on saving error replies
+  * Library rewritten in most parts
+  * Replace BOSH with Websocket
+  * Add new example client
+  * Many other improvements
+  * Currently no Client Cert support</comment>
+    <requestid>831611</requestid>
+  </revision>
 </revisionlist>
