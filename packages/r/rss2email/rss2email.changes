@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep  3 02:19:30 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.12.2:
+  * Fix bug `AttributeError: 'NoneType' object has no attribute
+    'close'` (#126)
+
+- changes from version 3.12.1 :
+  * Fix calling opmlexport without arguments
+
+- changes from version 3.12:
+  * Drop support for EOL Python 3.4, add support for Python 3.8
+  * Add List_ID and List_Post headers to the generated emails
+  * Add a new `reply-changes` setting
+  * Improve configurability of text wrapping for the emails
+  * Use `platform.node()` instead of "dev.null.invalid" in
+    "Message-ID" header
+  * Improve locking support for when multiple rss2email instances are
+    run in parallel
+  * Fix handling of __VERSION__ and __URL__ in user-agent strings
+  * Fix opmlexport
+
+-------------------------------------------------------------------
 Sun Dec 29 22:19:38 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.11:

@@ -1,7 +1,7 @@
 #
 # spec file for package rss2email
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rss2email
-Version:        3.11
+Version:        3.12.2
 Release:        0
 Summary:        Receive RSS feeds by email
 License:        GPL-2.0-only OR GPL-3.0-only
