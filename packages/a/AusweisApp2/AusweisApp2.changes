@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep  3 11:31:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.20.2
+    * It is now possible to paste a PIN/CAN/PUK using the common methods of
+      the operating system in use, enabling the use of password managers.
+    * Fixed an issue on Android 9 and older which prevented switching the
+      screen to the WiFi settings on some devices.
+    * Some help texts have been improved.
+    * A tooltip has been added to the Windows installer for the firewall settings.
+    * Search performance in the provider screen has been improved.
+    * Fixed an issue on Android where an error message was shown incorrectly when
+      the ID card was presented to the card reader before starting authentication.
+    * Display fonts have been improved on OnePlus devices.
+    * On macOS, the app will now use the integrated graphics adapter if possible.
+    * Small bug fixes.
+    * Support for Android NDK 21.3 and SDK cmdline-tools 2.1 has been added.
+    * Fixed a compatibility issue with Qt 5.10.
+    * Fixed an issue where an incorrect text was shown in comfort mode when using
+      a smartphone with the CAN-allowed function.
+    * Fixed an issue on Android where the feedback screen was incorrectly shown
+      after using the external SDK.
+    * Documentation for the integrated SDK on Android has been extended to include
+      logging facilities and App Bundles.
+    * Use of more inclusive terminology, the terms "blacklist" and "suppressions"
+      have been removed or renamed.
+
+-------------------------------------------------------------------
 Wed Jun 24 21:17:59 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
