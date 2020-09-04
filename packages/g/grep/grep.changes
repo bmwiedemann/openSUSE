@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 31 10:23:23 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- gnulib-test-avoid-FP-perror-strerror.patch: Add patch to
+  avoid false-positive error in gnulib tests 'test-perror2' and
+  'test-strerror_r', visible on armv7l.
+
+-------------------------------------------------------------------
 Wed Jul  1 03:30:01 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use deterministic profile.sh script to make package build

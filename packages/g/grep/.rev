@@ -614,4 +614,14 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment>Use deterministic profile.sh script to make package build reproducible (boo#1040589) (forwarded request 817958 from bmwiedemann)</comment>
     <requestid>818103</requestid>
   </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>53de9757cee951bd625a16721e6e728a</srcmd5>
+    <version>3.4</version>
+    <time>1599209541</time>
+    <user>dimstar_suse</user>
+    <comment>- gnulib-test-avoid-FP-perror-strerror.patch: Add patch to
+  avoid false-positive error in gnulib tests 'test-perror2' and
+  'test-strerror_r', visible on armv7l.</comment>
+    <requestid>830790</requestid>
+  </revision>
 </revisionlist>
