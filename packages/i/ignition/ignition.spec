@@ -41,13 +41,12 @@ Patch2:         0002-allow-multiple-mounts-of-same-device.patch
 Patch3:         0003-fix-i386-build.patch
 Patch4:         ignition-fix-arm32-installation.patch
 BuildRequires:  dracut
-BuildRequires:  golang(API) >= 1.12
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-bootloader-rpm-macros
+BuildRequires:  golang(API) >= 1.12
 Requires:       %{name}-dracut-grub2
 Requires:       dracut
-Requires:       virt-what
 Recommends:     %{_sbindir}/groupadd
 Recommends:     %{_sbindir}/sgdisk
 Recommends:     %{_sbindir}/useradd

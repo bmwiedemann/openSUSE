@@ -19,7 +19,7 @@ install() {
         "/usr/sbin/ignition-enable-network"
     inst_script "$moddir/ignition-setup-user-suse.sh" \
         "/usr/sbin/ignition-setup-user-suse"
-    inst_multiple awk virt-what /usr/lib/virt-what-cpuid-helper id which dmidecode
+    inst_multiple awk systemd-detect-virt
 }
 
 installkernel() {

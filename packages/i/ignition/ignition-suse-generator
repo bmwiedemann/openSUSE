@@ -24,10 +24,10 @@ EOF
 fi
 
 if [ -z "${PLATFORM_ID}" ]; then
-    platform="$(virt-what)"
+    platform="$(systemd-detect-virt)"
     case "${platform}" in
         *vmware*)     platform="vmware" ;;
-        *virtualbox*) platform="virtualbox" ;;
+        *oracle*)     platform="virtualbox" ;;
         *kvm*|*qemu*) platform="qemu" ;;
         *)            platform="metal" ;;
     esac
