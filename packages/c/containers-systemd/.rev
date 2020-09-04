@@ -126,4 +126,13 @@
   * Adjust documentation</comment>
     <requestid>830274</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>60277a97da7fef00bdca6d9885412246</srcmd5>
+    <version>0.0+git20200901.c31b0cc</version>
+    <time>1599209643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200901.c31b0cc:
+  * Add LDAP_TLS_VERIFY_CLIENT, use &quot;organization&quot;</comment>
+    <requestid>831097</requestid>
+  </revision>
 </revisionlist>
