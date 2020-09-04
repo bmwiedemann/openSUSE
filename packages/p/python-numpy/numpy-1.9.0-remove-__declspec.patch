@@ -15,7 +15,7 @@ safely removed.
 
 --- a/numpy/core/setup_common.py
 +++ b/numpy/core/setup_common.py
-@@ -168,7 +168,7 @@ OPTIONAL_FUNCTION_ATTRIBUTES = [('__attr
+@@ -186,7 +186,7 @@ OPTIONAL_FUNCTION_ATTRIBUTES = [('__attr
                                  ]
  
  # variable attributes tested via "int %s a" % attribute

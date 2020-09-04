@@ -11,7 +11,7 @@ Index: numpy-1.16.4/numpy/f2py/tests/test_return_character.py
      code = """
         function t0(value)
 @@ -87,6 +88,7 @@ cf2py    intent(out) ts
-         self.check_function(getattr(self.module, name))
+         self.check_function(getattr(self.module, name), name)
  
  
 +@pytest.mark.skip(reason="Test broken on s390x")

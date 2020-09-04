@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_18_1
+%define _ver 1_19_0
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
@@ -70,7 +70,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 Name:           %{package_name}
-Version:        1.18.4
+Version:        1.19.1
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
@@ -84,10 +84,11 @@ Patch1:         numpy-1.9.0-remove-__declspec.patch
 # # PATCH-FIX-SLE fix-py34-tests.patch -- python 3.4 support
 Patch3:         fix-py34-tests.patch
 Patch4:         s390x.patch
-BuildRequires:  %{python_module Cython >= 0.29.13}
+BuildRequires:  %{python_module Cython >= 0.29.21}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hypothesis >= 5.12.0}
+BuildRequires:  %{python_module pytest >= 5.4.2}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  python-rpm-macros
@@ -254,7 +255,7 @@ pushd testing
 %ifarch ppc64 ppc64le
 %define skiptest -k "not test_generalized_sq"
 %endif
-%pytest_arch -n auto --pyargs numpy %{buildroot}%{$python_sitearch}/numpy %{?skiptest}
+%pytest_arch -n auto --pyargs numpy %{buildroot}%{python_sitearch}/numpy %{?skiptest}
 popd
 %endif
 %if %{without hpc}
