@@ -29,7 +29,6 @@ Patch0:         xdg-dp-port-pipewire-3-api.patch
 Patch1:         0001-Fix-use-after-free-in-xdg_get_app_info_from_pid.patch
 Patch2:         0002-add-AssumedAppArmorLabel-key-to-D-Bus-service-files.patch
 Patch3:         0003-Fix-criticals-if-no-default-handler-for-desired-type.patch
-
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
@@ -45,6 +44,9 @@ BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.2.90
 BuildRequires:  pkgconfig(libportal)
 # Break cycle: we buildrequire flatpak, and flatpak has a requires on xdg-desktop-portal
 #!BuildIgnore:  xdg-desktop-portal
+# xdg-dfesktop-portal calls out to fusermount (in $PATH) (boo#1175899)
+# document-portal/document-portal-fuse.c: char *umount_argv[] = { "fusermount", "-u", "-z", (char *) path, NULL };
+Requires:       %{_bindir}/fusermount
 
 %description
 A portal frontend service for Flatpak and possibly other desktop containment frameworks.

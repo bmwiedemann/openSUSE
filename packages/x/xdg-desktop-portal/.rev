@@ -153,4 +153,15 @@
     <comment>- Fixes for %_libexecdir changing to /usr/libexec (forwarded request 819204 from gmbr3)</comment>
     <requestid>819954</requestid>
   </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>f88693566bfc651f8687b5d4ad32f210</srcmd5>
+    <version>1.6.0</version>
+    <time>1599209552</time>
+    <user>dimstar_suse</user>
+    <comment>- Require /usr/bin/fusermount: xdg-document-portal calls out to the
+  binary. Without it, files or dirs can be selected, but
+  whatever is done with or in them, will not have any effect
+  (boo#1175899).</comment>
+    <requestid>830851</requestid>
+  </revision>
 </revisionlist>
