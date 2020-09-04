@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 28 09:20:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to not cycle
+
+-------------------------------------------------------------------
+Fri Aug 28 08:37:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to enforce cythonization:
+  * always-cythonize.patch
+- Add patch to locate zopfli headers properly:
+  * zopfli-headers.patch
+
+-------------------------------------------------------------------
+Fri Aug 28 08:20:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2020.5.30:
+  * pythhon3 only
+  * add support for more codecs
+
+-------------------------------------------------------------------
 Mon May 25 10:59:24 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

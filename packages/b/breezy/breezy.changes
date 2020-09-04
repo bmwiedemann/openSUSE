@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 27 11:42:03 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Patches from upstream to build with Dulwich 0.20.5:
+  * 7551_7550.diff
+  * 0001-Fix-tests-with-newer-dulwich.patch
+  * 0002-Fix-more-tests.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 11:19:14 UTC 2020 - pgajdos@suse.com
 
 - version update to 3.1.0

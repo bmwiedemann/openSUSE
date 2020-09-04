@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  1 15:37:52 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add patch fix-tests.patch
+
+-------------------------------------------------------------------
 Tue May 19 09:27:39 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

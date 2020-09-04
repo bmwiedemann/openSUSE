@@ -23,12 +23,10 @@ Version:        19.10b0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
-URL:            https://github.com/ambv/black
+URL:            https://github.com/psf/black
 Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
-Patch0:         fix-tests.patch
 BuildRequires:  %{python_module aiohttp >= 3.3.2}
-# TODO: needed for blackd
-#BuildRequires:  %{python_module aiohttp-cors}
+BuildRequires:  %{python_module aiohttp_cors}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module attrs >= 18.1.0}
 BuildRequires:  %{python_module base >= 3.6}
@@ -45,8 +43,7 @@ BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 3.3.2
-# TODO: needed for blackd
-#Requires:       python-aiohttp-cors
+Requires:       python-aiohttp_cors
 Requires:       python-appdirs
 Requires:       python-attrs >= 18.1.0
 Requires:       python-click >= 6.5
@@ -74,8 +71,6 @@ also recognizes YAPF's block comments to the same effect.
 
 %prep
 %setup -q -n black-%{version}
-%patch0 -p1
-rm -rf %{pypi_name}.egg-info
 
 %build
 %python_build
@@ -83,16 +78,20 @@ rm -rf %{pypi_name}.egg-info
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/black
+%python_clone -a %{buildroot}%{_bindir}/blackd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-# TODO: missing aiohttp-cors (not in distribution and tests failing)
-rm %{buildroot}/%{_bindir}/blackd
 
 %check
 # test_expression_diff - sometimes fails on async timing in OBS
-%pytest -k 'not test_expression_diff'
+skiptests="test_expression_diff"
+# https://github.com/psf/black/issues/1109
+if [ $(python3 -c 'import sys; print(sys.byteorder)') == 'big' ]; then
+skiptests+=" or test_python2"
+fi
+%pytest -k "not ($skiptests)"
 
 %post
-%python_install_alternative black
+%python_install_alternative black blackd
 
 %postun
 %python_uninstall_alternative black
@@ -100,8 +99,13 @@ rm %{buildroot}/%{_bindir}/blackd
 %files %{python_files}
 %doc README.md
 %python_alternative %{_bindir}/black
-#%%python_alternative %%{_bindir}/blackd
+%python_alternative %{_bindir}/blackd
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/_black_version.py*
+%{python_sitelib}/black.py*
+%{python_sitelib}/blackd.py*
+%{python_sitelib}/blib2to3
+%{python_sitelib}/black-%{version}-py*.egg-info
+%pycache_only %{python_sitelib}/__pycache__/*
 
 %changelog

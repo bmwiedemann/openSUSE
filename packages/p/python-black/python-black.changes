@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 24 21:56:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update URL
+- python-aiohttp_cors is now available --> install blackd 
+- skip python2 test on big endian platforms gh#psf/black#1109
+- drop fix-tests.patch
+
+-------------------------------------------------------------------
 Wed May 27 09:36:28 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

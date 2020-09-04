@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:05:51 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 6.0.1
+- drop tidy-up-embeddedfile.patch
+ * new major release, please check:
+     https://docs.pytest.org/en/stable/changelog.html for all changes
+
+-------------------------------------------------------------------
 Mon Aug  3 21:04:38 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - nose is actually not required: the test suite happily skips over tests

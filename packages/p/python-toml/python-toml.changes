@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 31 08:53:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to not cycle with numpy
+
+-------------------------------------------------------------------
 Mon Jun  8 10:32:52 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.1
- * update testdata
+  * update testdata
 
 -------------------------------------------------------------------
 Thu Mar 12 07:30:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

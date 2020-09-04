@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pytest-isort
 Version:        1.1.0
 Release:        0
@@ -24,8 +25,9 @@ Summary:        Plugin for pytest to perform isort checks
 License:        BSD-3-Clause
 URL:            https://github.com/moccu/pytest-isort/
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-isort/pytest-isort-%{version}.tar.gz
+Patch0:         pytest6.patch
 BuildRequires:  %{python_module isort >= 4.0}
-BuildRequires:  %{python_module pytest >= 3.5}
+BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,6 +41,7 @@ This is a py.test plugin to check import ordering using isort.
 
 %prep
 %setup -q -n pytest-isort-%{version}
+%patch0 -p1
 
 %build
 %python_build

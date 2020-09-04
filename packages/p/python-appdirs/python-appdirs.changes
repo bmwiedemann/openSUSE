@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 23:32:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We can finally use %pyunittest macro
+
+-------------------------------------------------------------------
 Tue Jun  2 16:46:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.4.4:

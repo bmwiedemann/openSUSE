@@ -26,6 +26,13 @@ Source:         https://files.pythonhosted.org/packages/source/b/breezy/breezy-%
 # PATCH-FIX-UPSTREAM 7531_7530.diff lp#1882589 mcepl@suse.com
 # Fix handling of a particular kind of broken committer id
 Patch1:         7531_7530.diff
+# PATCH-FIX-UPSTREAM 7551_7550.diff lp#1890354 alarrosa@suse.com
+# Add support for new push interface in Dulwich >= 0.20.4
+Patch2:         7551_7550.diff
+# PATCH-FIX-UPSTREAM 0001-Fix-tests-with-newer-dulwich.patch lp#1890354 alarrosa@suse.com
+Patch3:         0001-Fix-tests-with-newer-dulwich.patch
+# PATCH-FIX-UPSTREAM 0002-Fix-more-tests.patch lp#1890354 alarrosa@suse.com
+Patch4:         0002-Fix-more-tests.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 28 09:56:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Stop assuming that %{_libexecdir} == /usr/lib (boo#1174075).
+
+-------------------------------------------------------------------
 Tue Aug 11 14:02:17 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Enable support for SNAPPY compression. 

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Aug 25 11:33:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v0.3.10
+  Added
+  * Handle string annotations in ScopeProvider #373
+  * Add is_annotation subtype for Access inreferences. #372
+  Updated
+  * Call pyre query with noninteractive logging #371
+  * Replace matchers with explicit visitation in gatherers #366
+  * Include missing test data in install #365
+  Fixed
+  * Spaces around walrus operator are not required #368
+  * SaveMachedNode now matches with trailing empty wildcards #356
+  * Correctly extract wildcard matchers #355
+- clean specfile multibuild
+- don't require own package on test flavor
+- require dataclasses for Python 3.6 distros
+- despite gh#Instagram/LibCST#365 says it's fixed, we still need to
+  regenerate the code for tests
+  => don't skip tests which actually pass after codegen
+- can use plain unittest again, same as upstream
+- define skip_python2 for Leap repositories
+
+-------------------------------------------------------------------
 Fri Aug 21 09:43:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild in order to avoid buildcycles

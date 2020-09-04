@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 URL:            http://babel.pocoo.org/
 Source:         https://files.pythonhosted.org/packages/source/B/Babel/Babel-%{version}.tar.gz
 Patch0:         python383.patch
+Patch1:         pytest6.patch
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module py >= 1.4.14}
 BuildRequires:  %{python_module pytest >= 2.3.5}
@@ -53,6 +54,7 @@ A collection of tools for internationalizing Python applications.
 %prep
 %setup -q -n Babel-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build

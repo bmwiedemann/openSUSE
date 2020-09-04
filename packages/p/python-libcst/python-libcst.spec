@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,31 +27,35 @@
 %bcond_with test
 %endif
 Name:           python-libcst%{psuffix}
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
 Summary:        Python 3.5+ concrete syntax tree with AST-like properties
 License:        MIT
 URL:            https://github.com/Instagram/LibCST
 Source:         https://files.pythonhosted.org/packages/source/l/libcst/libcst-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/Instagram/LibCST/master/libcst/codemod/tests/codemod_formatter_error_input.py.txt
-# all the deps over setuptools are for the generateor fix
-BuildRequires:  %{python_module black}
+# isort needed for the code regeneration, code mod also on non test flavor
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing-inspect >= 0.4.0}
-BuildRequires:  %{python_module typing_extensions >= 3.7.4.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.2
 Requires:       python-typing-inspect >= 0.4.0
 Requires:       python-typing_extensions >= 3.7.4.2
 BuildArch:      noarch
+%if %{python_version_nodots} < 37
+Requires:       python-dataclasses
+%endif
 %if %{with test}
+%if %{python_version_nodots} < 37
+BuildRequires:  %{python_module dataclasses}
+%endif
 BuildRequires:  %{python_module PyYAML >= 5.2}
+# black needed for tests and the code regeneration
+BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hypothesis >= 4.36.0}
 BuildRequires:  %{python_module hypothesmith >= 0.0.4}
-BuildRequires:  %{python_module libcst >= %{version}}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-inspect >= 0.4.0}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4.2}
 %endif
 %python_subpackages
 
@@ -59,10 +64,10 @@ A concrete syntax tree with AST-like properties for Python 3.5+ programs.
 
 %prep
 %setup -q -n libcst-%{version}
-cp %{SOURCE1} libcst/codemod/tests/
+# fix executable
 sed -i 's/"python"/"python3"/' libcst/codemod/tests/test_codemod_cli.py
 # https://github.com/Instagram/LibCST/issues/331
-[ isort --version | grep "VERSION 4" ] || sed -i 's/"isort", "-y"/"isort"/' libcst/codegen/generate.py
+isort --version | grep "VERSION 4" || sed -i 's/"isort", "-y"/"isort"/' libcst/codegen/generate.py
 
 # Depends on optional pyre
 rm \
@@ -73,30 +78,25 @@ rm \
 # Test result depends on pyre
 sed -i 's/"error: .* stack:",/"Transformed 1 files successfully.",/' libcst/codemod/tests/test_codemod_cli.py
 
+%if !%{with test}
 %build
 %python_build
+%endif
 
 %install
 %if !%{with test}
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
+
+%if %{with test}
+%check
 %{python_expand # https://github.com/Instagram/LibCST/issues/331
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -m libcst.codegen.generate visitors
 $python -m libcst.codegen.generate return_types
 $python -m libcst.codegen.generate matchers
-
-rm -r %{buildroot}%{$python_sitelib}/libcst/tests/ \
-      %{buildroot}%{$python_sitelib}/libcst/*/tests/ \
-      %{buildroot}%{$python_sitelib}/libcst/*/*/tests/
-
-%fdupes %{buildroot}%{$python_sitelib}
 }
-%endif
-
-%check
-%if %{with test}
-# the two tests pass in non-multibuild setup, just skip them here
-%pytest -k 'not test_codegen_clean_return_types and not test_codegen_clean_visitor_functions'
+%pyunittest -v
 %endif
 
 %if !%{with test}

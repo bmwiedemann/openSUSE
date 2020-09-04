@@ -1,0 +1,13 @@
+Index: imagecodecs-2020.5.30/setup.py
+===================================================================
+--- imagecodecs-2020.5.30.orig/setup.py
++++ imagecodecs-2020.5.30/setup.py
+@@ -71,7 +71,7 @@ if 'sdist' in sys.argv:
+ 
+ 
+ OPTIONS = {
+-    'cythonize': sys.version_info >= (3, 10),
++    'cythonize': True,
+     'include_dirs': ['imagecodecs'],
+     'library_dirs': [],
+     'libraries': ['m'] if sys.platform != 'win32' else [],

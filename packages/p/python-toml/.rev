@@ -151,4 +151,14 @@
  * update testdata</comment>
     <requestid>812543</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fc2962a3a0e0a7a48d4347c8b3688b6c</srcmd5>
+    <version>0.10.1</version>
+    <time>1599210122</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to not cycle with numpy
+
+  * update testdata</comment>
+    <requestid>830705</requestid>
+  </revision>
 </revisionlist>

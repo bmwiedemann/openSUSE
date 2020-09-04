@@ -25,15 +25,21 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%global skip_python2 1
+%define skip_python2 1
 Name:           python-sphinxcontrib-websupport%{psuffix}
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-websupport
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-websupport/sphinxcontrib-websupport-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Jinja2
+Requires:       python-docutils
+Requires:       python-six
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module SQLAlchemy}
@@ -45,13 +51,6 @@ BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sphinxcontrib-websupport >= %{version}}
 BuildRequires:  %{python_module xapian}
 %endif
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2
-Requires:       python-docutils
-Requires:       python-six
-BuildArch:      noarch
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
 Recommends:     python-Sphinx
 Suggests:       python-SQLAlchemy

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 29 16:14:09 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 7.18.0:
+  * IPython 7.18 is a minor release that mostly contains bugfixes.
+    + CRLF is now handled by magics my default; solving some issues
+      due to copy pasting on windows. :ghpull:`12475`
+    + Requiring pexpect >=4.3 as we are Python 3.7+ only and earlier
+      version of pexpect will be incompatible. :ghpull:`12510`
+    + Minimum jedi version is now 0.16. :ghpull:`12488`
+
+-------------------------------------------------------------------
 Sat Aug  1 22:10:57 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 7.17.0:

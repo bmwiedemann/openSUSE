@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/r/raven/raven-%{v
 # https://github.com/getsentry/raven-python/issues/1284
 Patch0:         remove-unittest2.patch
 Patch1:         pytest4.patch
+Patch2:         fix-tests.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Flask >= 0.8}
 BuildRequires:  %{python_module Flask-Login >= 0.2.0}

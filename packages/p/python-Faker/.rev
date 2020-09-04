@@ -207,4 +207,12 @@
  * Add es_ES currency provider.</comment>
     <requestid>819620</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ab28ad7bb6555322826bf25909c946f8</srcmd5>
+    <version>4.1.2</version>
+    <time>1599209967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830016</requestid>
+  </revision>
 </revisionlist>

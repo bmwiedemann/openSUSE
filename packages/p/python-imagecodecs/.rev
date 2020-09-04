@@ -31,4 +31,21 @@
     <comment></comment>
     <requestid>808789</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>76e7b60d9ef2bebb88fa9a8fc26dacab</srcmd5>
+    <version>2020.5.30</version>
+    <time>1599210066</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to not cycle
+
+- Add patch to enforce cythonization:
+  * always-cythonize.patch
+- Add patch to locate zopfli headers properly:
+  * zopfli-headers.patch
+
+- Update to 2020.5.30:
+  * pythhon3 only
+  * add support for more codecs</comment>
+    <requestid>830235</requestid>
+  </revision>
 </revisionlist>

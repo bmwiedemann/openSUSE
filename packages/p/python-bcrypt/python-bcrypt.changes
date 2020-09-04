@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 22:04:24 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Disable Python2 support to fix the build on older distributions
+
+-------------------------------------------------------------------
 Thu Aug 20 12:46:59 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 3.2.0

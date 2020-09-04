@@ -133,4 +133,12 @@
     <comment>- We need at least pytest 4.x series</comment>
     <requestid>802914</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ec22b1b5e1ebdf00fdd69a662c7919b8</srcmd5>
+    <version>0.17.2</version>
+    <time>1599209820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826034</requestid>
+  </revision>
 </revisionlist>

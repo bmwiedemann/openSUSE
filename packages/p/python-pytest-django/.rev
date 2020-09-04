@@ -129,4 +129,12 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
   * pytest_addoption: use group.addoption (#833)</comment>
     <requestid>791158</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>dec93a63532d327795494b2eff6ccfc9</srcmd5>
+    <version>3.9.0</version>
+    <time>1599210226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831465</requestid>
+  </revision>
 </revisionlist>

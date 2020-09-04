@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:15:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip tests that fail with html5lib 1.1 ref the upstream ticket
+
+-------------------------------------------------------------------
 Wed May  6 07:12:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.1.5:
-  * * replace missing ``setuptools`` dependency with ``packaging``. Thank you Benjamin Peterson.
+  * replace missing ``setuptools`` dependency with ``packaging``. Thank you Benjamin Peterson.
 
 -------------------------------------------------------------------
 Wed Apr  1 11:18:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>

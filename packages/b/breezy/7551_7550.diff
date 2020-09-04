@@ -1,0 +1,197 @@
+=== modified file 'breezy/git/branch.py'
+--- a/breezy/git/branch.py	2020-05-06 00:45:15 +0000
++++ b/breezy/git/branch.py	2020-06-21 02:49:35 +0000
+@@ -137,6 +137,7 @@
+         updates = {}
+         conflicts = []
+         source_tag_refs = self.source.branch.get_tag_refs()
++        ref_to_tag_map = {}
+ 
+         def get_changed_refs(old_refs):
+             ret = dict(old_refs)
+@@ -150,6 +151,7 @@
+                     ret[ref_name] = unpeeled
+                     updates[tag_name] = self.target.branch.repository.lookup_foreign_revision_id(
+                         peeled)
++                    ref_to_tag_map[ref_name] = tag_name
+                     self.target.branch._tag_refs = None
+                 else:
+                     conflicts.append(
+@@ -158,8 +160,14 @@
+                          self.target.branch.repository.lookup_foreign_revision_id(
+                              old_refs[ref_name])))
+             return ret
+-        self.target.branch.repository.controldir.send_pack(
++        result = self.target.branch.repository.controldir.send_pack(
+             get_changed_refs, lambda have, want: [])
++        if result is not None and not isinstance(result, dict):
++            for ref, error in result.ref_status.items():
++                if error:
++                    warning('unable to update ref %s: %s',
++                            ref, error)
++                    del updates[ref_to_tag_map[ref]]
+         return updates, set(conflicts)
+ 
+ 
+@@ -1170,6 +1178,7 @@
+                 isinstance(target, RemoteGitBranch))
+ 
+     def _basic_push(self, overwrite, stop_revision, tag_selector=None):
++        from .remote import RemoteGitError
+         result = GitBranchPushResult()
+         result.source_branch = self.source
+         result.target_branch = self.target
+@@ -1201,9 +1210,17 @@
+                     continue
+                 refs[tag_name_to_ref(name)] = sha
+             return refs
+-        self.target.repository.send_pack(
++        dw_result = self.target.repository.send_pack(
+             get_changed_refs,
+             self.source.repository._git.generate_pack_data)
++        if dw_result is not None and not isinstance(dw_result, dict):
++            error = dw_result.ref_status.get(self.target.ref)
++            if error:
++                raise RemoteGitError(error)
++            for ref, error in dw_result.ref_status.items():
++                if error:
++                    trace.warning('unable to open ref %s: %s',
++                                  ref, error)
+         return result
+ 
+ 
+
+=== modified file 'breezy/git/interrepo.py'
+--- a/breezy/git/interrepo.py	2020-02-18 03:11:01 +0000
++++ b/breezy/git/interrepo.py	2020-06-21 02:49:35 +0000
+@@ -90,6 +90,7 @@
+     )
+ from .remote import (
+     RemoteGitRepository,
++    RemoteGitError,
+     )
+ from .unpeel_map import (
+     UnpeelMap,
+@@ -377,8 +378,16 @@
+             return ret
+         self._warn_slow()
+         with self.source_store.lock_read():
+-            new_refs = self.target.send_pack(
++            result = self.target.send_pack(
+                 git_update_refs, self.source_store.generate_lossy_pack_data)
++            if result is not None and not isinstance(result, dict):
++                for ref, error in result.ref_status.items():
++                    if error:
++                        raise RemoteGitError(
++                            'unable to update ref %r: %s' % (ref, error))
++                new_refs = result.refs
++            else:  # dulwich < 0.20.3
++                new_refs = result
+         # FIXME: revidmap?
+         return revidmap, self.old_refs, new_refs
+ 
+
+=== modified file 'breezy/git/remote.py'
+--- a/breezy/git/remote.py	2020-06-12 17:44:18 +0000
++++ b/breezy/git/remote.py	2020-06-21 02:49:35 +0000
+@@ -441,10 +441,10 @@
+                 format=(format.encode('ascii') if format else None),
+                 subdirs=subdirs,
+                 prefix=(prefix.encode('utf-8') if prefix else None))
++        except HangupException as e:
++            raise parse_git_hangup(self.transport.external_url(), e)
+         except GitProtocolError as e:
+             raise parse_git_error(self.transport.external_url(), e)
+-        except HangupException as e:
+-            raise parse_git_hangup(self.transport.external_url(), e)
+         finally:
+             if pb is not None:
+                 pb.finished()
+@@ -465,10 +465,10 @@
+             self._refs = remote_refs_dict_to_container(
+                 result.refs, result.symrefs)
+             return result
++        except HangupException as e:
++            raise parse_git_hangup(self.transport.external_url(), e)
+         except GitProtocolError as e:
+             raise parse_git_error(self.transport.external_url(), e)
+-        except HangupException as e:
+-            raise parse_git_hangup(self.transport.external_url(), e)
+         finally:
+             if pb is not None:
+                 pb.finished()
+@@ -488,10 +488,10 @@
+             return self._client.send_pack(
+                 self._client_path, get_changed_refs_wrapper,
+                 generate_pack_data, progress)
++        except HangupException as e:
++            raise parse_git_hangup(self.transport.external_url(), e)
+         except GitProtocolError as e:
+             raise parse_git_error(self.transport.external_url(), e)
+-        except HangupException as e:
+-            raise parse_git_hangup(self.transport.external_url(), e)
+         finally:
+             if pb is not None:
+                 pb.finished()
+@@ -520,7 +520,11 @@
+ 
+         def generate_pack_data(have, want, ofs_delta=False):
+             return pack_objects_to_data([])
+-        self.send_pack(get_changed_refs, generate_pack_data)
++        result = self.send_pack(get_changed_refs, generate_pack_data)
++        if result is not None and not isinstance(result, dict):
++            error = result.ref_status.get(refname)
++            if error:
++                raise RemoteGitError(error)
+ 
+     @property
+     def user_url(self):
+@@ -663,7 +667,18 @@
+                 else:
+                     return source_store.generate_pack_data(
+                         have, want, progress=progress, ofs_delta=ofs_delta)
+-            new_refs = self.send_pack(get_changed_refs, generate_pack_data)
++            dw_result = self.send_pack(get_changed_refs, generate_pack_data)
++            if not isinstance(dw_result, dict):
++                new_refs = dw_result.refs
++                error = dw_result.ref_status.get(actual_refname)
++                if error:
++                    raise RemoteGitError(error)
++                for ref, error in dw_result.ref_status.items():
++                    if error:
++                        trace.warning('unable to open ref %s: %s',
++                                      ref, error)
++            else:  # dulwich < 0.20.4
++                new_refs = dw_result
+         push_result.new_revid = repo.lookup_foreign_revision_id(
+             new_refs[actual_refname])
+         if old_sha is not None:
+@@ -982,7 +997,12 @@
+ 
+         def generate_pack_data(have, want, ofs_delta=False):
+             return pack_objects_to_data([])
+-        self.repository.send_pack(get_changed_refs, generate_pack_data)
++        result = self.repository.send_pack(
++            get_changed_refs, generate_pack_data)
++        if result and not isinstance(result, dict):
++            error = result.ref_status.get(ref)
++            if error:
++                raise RemoteGitError(error)
+ 
+ 
+ class RemoteGitBranch(GitBranch):
+@@ -1066,7 +1086,12 @@
+             return {self.ref: sha}
+         def generate_pack_data(have, want, ofs_delta=False):
+             return pack_objects_to_data([])
+-        self.repository.send_pack(get_changed_refs, generate_pack_data)
++        result = self.repository.send_pack(
++            get_changed_refs, generate_pack_data)
++        if result is not None and not isinstance(result, dict):
++            error = result.ref_status.get(self.ref)
++            if error:
++                raise RemoteGitError(error)
+         self._sha = sha
+ 
+ 
+

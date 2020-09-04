@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sybil
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Automated testing of examples in documentation
 License:        MIT
@@ -34,7 +34,6 @@ BuildRequires:  python-rpm-macros
 Recommends:     python-pytest
 Suggests:       python-nose
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -55,7 +54,7 @@ sed -i '/build=/d;/coveralls/d' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest
+%pytest
 
 %files %{python_files}
 %doc README.rst docs/changes.rst

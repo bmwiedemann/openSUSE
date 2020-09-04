@@ -36,7 +36,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/dephell/dephell
 Source:         https://files.pythonhosted.org/packages/source/d/dephell/dephell-%{version}.tar.gz
 Source1:        macros.py-dephell
+# PATCH-FIX-OPENSUSE we don't pin package versions
 Patch0:         never-pin-deps.patch
+# PATCH-FIX-UPSTREAM support the pytest 6 entrypoints. Part of https://github.com/dephell/dephell/pull/458 
+Patch1:         https://github.com/dephell/dephell/commit/b34011c04e49562b5afe3e946f01024ad5629ac1.patch#/dephell-pytest6.patch
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  bash
@@ -142,8 +145,8 @@ test, build graph, show outdated, audit. Manage venvs, build package, bump versi
 %prep
 %setup -q -n dephell-%{version}
 %patch0 -p1
+%patch1 -p1
 
-find tests -type d -name __pycache__ | xargs rm -rf
 sed -i -e '1i #!/bin/sh' dephell/templates/docker_prepare.sh
 
 %package rpm-macros

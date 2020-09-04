@@ -25,6 +25,10 @@ Summary:        A Django plugin for py.test
 License:        BSD-3-Clause
 URL:            https://github.com/pytest-dev/pytest-django
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/pytest-django-%{version}.tar.gz
+# fix tests
+Patch0:         ignore-warnings.patch
+# PATCH-FIX-UPSTREAM fix test failure with pytest 6, is part of https://github.com/pytest-dev/pytest-django/pull/855
+Patch1:         https://github.com/pytest-dev/pytest-django/commit/3f03d0a7890e987086042b42db346e47398ffed3.patch#/pytest-django-pytest6.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm >= 1.11.1}
@@ -61,6 +65,8 @@ that are already present in pytest:
 
 %prep
 %setup -q -n pytest-django-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
@@ -72,7 +78,8 @@ that are already present in pytest:
 %check
 # memory operations failed in OBS not localy, thus skip them
 export DJANGO_SETTINGS_MODULE=pytest_django_test.settings_sqlite
-%python_expand PYTHONPATH=$(pwd) py.test-%{$python_bin_suffix} -v tests/ -k 'not (test_sqlite_in_memory_used or test_django_assert_num_queries_db or test_django_assert_max_num_queries_db)'
+export PYTHONPATH=$(pwd)
+%pytest -v tests/ -k 'not (test_sqlite_in_memory_used or test_django_assert_num_queries_db or test_django_assert_max_num_queries_db)'
 
 %files %{python_files}
 %license LICENSE

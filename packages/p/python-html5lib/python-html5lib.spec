@@ -18,19 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-html5lib
-Version:        1.0.1
+Version:        1.1
 Release:        0
 Summary:        HTML parser based on the WHAT-WG Web Applications 1
 License:        MIT
 URL:            https://github.com/html5lib/html5lib-python
 Source:         https://files.pythonhosted.org/packages/source/h/html5lib/html5lib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pytest4-mhroncok.patch gh#html5lib/html5lib-python#429 mcepl@suse.com
-# This patch makes testsuite pass with pytest4
-Patch0:         pytest4-mhroncok.patch
-Patch1:         collections-abc.patch
-Patch2:         pytest5.patch
+# PATCH-FIX_UPSTREAM https://github.com/html5lib/html5lib-python/commit/2c19b9899ab3a3e8bd0ca35e5d78544334204169 Use Node.from_parent() constructor to support pytest 6
+Patch0:         pytest6.patch
 BuildRequires:  %{python_module Genshi}
-BuildRequires:  %{python_module datrie}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 4.0}

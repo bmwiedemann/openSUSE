@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 31 08:56:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.20:
+  * Many bugfixes around
+- Add patch to fix tests:
+  * vox-tests.patch
+
+-------------------------------------------------------------------
 Tue Jul 21 11:38:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.9.18

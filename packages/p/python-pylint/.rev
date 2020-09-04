@@ -199,4 +199,12 @@
   work with both versions of isort.</comment>
     <requestid>820769</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>126b492fa54dcde663e98a2c11b8d310</srcmd5>
+    <version>2.6.0</version>
+    <time>1599209836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829032</requestid>
+  </revision>
 </revisionlist>

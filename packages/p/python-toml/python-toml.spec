@@ -17,7 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-toml
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-toml%{psuffix}
 Version:        0.10.1
 Release:        0
 Summary:        Python module which parses and emits TOML
@@ -28,13 +36,15 @@ Source:         https://files.pythonhosted.org/packages/source/t/toml/toml-%{ver
 Source1:        https://github.com/BurntSushi/toml-test/archive/280497f.tar.gz#/toml-test-280497f.tar.gz
 # Missing file https://github.com/uiri/toml/pull/231
 Source2:        https://raw.githubusercontent.com/uiri/toml/%{version}/test.toml
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
+%endif
 %python_subpackages
 
 %description
@@ -63,17 +73,22 @@ cp %{SOURCE2} .
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export LANG=en_US.UTF-8
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
-# See https://github.com/uiri/toml/issues/216 re change log
 %license LICENSE
 %doc README.rst
 %{python_sitelib}
+%endif
 
 %changelog

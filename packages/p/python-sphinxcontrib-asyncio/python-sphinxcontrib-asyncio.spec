@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-asyncio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sphinxcontrib-asyncio
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Sphinx extension to support coroutines in markup
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/aio-libs/sphinxcontrib-asyncio
+URL:            https://github.com/aio-libs/sphinxcontrib-asyncio
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-asyncio/sphinxcontrib-asyncio-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module setuptools}

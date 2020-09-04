@@ -241,4 +241,12 @@
 - Do not bother with documentation package, it is all available online</comment>
     <requestid>807190</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>2828c7889dc3fbbd8078fd7b2ca10164</srcmd5>
+    <version>2.8.0</version>
+    <time>1599209958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830015</requestid>
+  </revision>
 </revisionlist>

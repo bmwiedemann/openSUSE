@@ -17,25 +17,32 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pytest-xdist
-Version:        1.32.0
+Version:        2.1.0
 Release:        0
 Summary:        Distributed testing and loop-on-failing for py.test
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-xdist
 Source0:        https://files.pythonhosted.org/packages/source/p/pytest-xdist/pytest-xdist-%{version}.tar.gz
+# This is actually revert of something upstream wanted to do a long time ago, but was waiting for the rest of pytest to sync with them.
+# It is only a terminology change, but one that has personal meaning for many people. On the other hand, it was breaking compatibility with pytest < 6.
+# In my opinion it would be inadequate to send this patch upstream.
+Patch0:         reintroduce-slave-terminology.patch
+# minor compatibility revert
+Patch1:         0001-Revert-Remove-compat-for-pytest-6.patch
 BuildRequires:  %{python_module execnet >= 1.1}
 BuildRequires:  %{python_module filelock}
+BuildRequires:  %{python_module psutil >= 3.0.0}
 BuildRequires:  %{python_module pytest >= 4.4.0}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet >= 1.1
 Requires:       python-pytest >= 4.4.0
 Requires:       python-pytest-forked
-Requires:       python-six
+Suggests:       python-psutil >= 3.0.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,6 +72,7 @@ You may specify different Python versions and interpreters.
 
 %prep
 %setup -q -n pytest-xdist-%{version}
+%autopatch -p1
 sed -i 's/\r//' README.rst
 
 %build
@@ -78,7 +86,7 @@ sed -i 's/\r//' README.rst
 %pytest
 
 %files %{python_files}
-%doc CHANGELOG.rst ISSUES.txt README.rst
+%doc CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/xdist
 %{python_sitelib}/pytest_xdist-%{version}-py%{python_version}.egg-info

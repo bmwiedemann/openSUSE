@@ -19,25 +19,22 @@
 %define packagename tifffile
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with test
 Name:           python-tifffile
 Version:        2020.5.30
 Release:        0
 Summary:        Read and write TIFF(r) files
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://www.lfd.uci.edu/~gohlke/
 Source:         https://github.com/cgohlke/tifffile/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module numpy >= 1.11.3}
+BuildRequires:  %{python_module imagecodecs >= 2020.2.18}
+BuildRequires:  %{python_module numpy >= 1.15.1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module imagecodecs}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click
-Requires:       python-numpy >= 1.11.3
-Suggests:       python-matplotlib >= 2.2
-Requires:       python-imagecodecs
+Requires:       python-imagecodecs >= 2020.2.18
+Requires:       python-numpy >= 1.15.1
+Recommends:     python-matplotlib >= 3.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,7 +57,6 @@ sed -i 's/\r//' README.rst
 %python_clone -a %{buildroot}%{_bindir}/%{packagename}
 %python_clone -a %{buildroot}%{_bindir}/lsm2bin
 
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %prepare_alternative %{packagename}
 %prepare_alternative lsm2bin
@@ -74,7 +70,8 @@ sed -i 's/\r//' README.rst
 %python_uninstall_alternative lsm2bin
 
 %check
-# Test need network connection.
+# skip online tests and tests that OOM
+%pytest -k 'not (test_issue_infinite_loop or test_func_pformat_xml or test_filehandle_seekable or test_write_compress_lerc or test_write_imagej_raw or test_write_bigtiff)'
 
 %files %{python_files}
 %doc README.rst

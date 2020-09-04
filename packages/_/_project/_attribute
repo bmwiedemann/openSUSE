@@ -87,6 +87,8 @@
   boo#1175907: '20200828'
   boo#1176002: '20200902'
   boo#1176064: '20200901'
+  boo#1176158: '20200902'
+  boo#1176168: '20200902'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
   bsc#1170555: '20200427'
@@ -226,7 +228,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20200902</value>
+    <value>20200904</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -238,6 +240,8 @@ totest_images_repo: appliances
 products:
   container:
   - ceph-csi-image:
+    - x86_64
+  - ceph-graphana-image:
     - x86_64
   - ceph-image:
     - x86_64
@@ -290,6 +294,8 @@ products:
     - x86_64
   - kubic-rbac-manager-image:
     - x86_64
+  - kubic-velero-image:
+    - x86_64
   - kubic-weave-kube-image:
     - x86_64
   - kubic-weave-npc-image:
@@ -309,6 +315,8 @@ products:
   - opensuse-nfs-server-image:
     - x86_64
   - opensuse-nginx-image:
+    - x86_64
+  - opensuse-openldap-image:
     - x86_64
   - opensuse-postfix-image:
     - x86_64
@@ -358,6 +366,8 @@ products:
     - x86_64
   - openSUSE-MicroOS:ContainerHost-OpenStack-Cloud:
     - x86_64
+  - openSUSE-MicroOS:ContainerHost-SelfInstall:
+    - x86_64
   - openSUSE-MicroOS:ContainerHost-Vagrant:
     - x86_64
   - openSUSE-MicroOS:ContainerHost-VMware:
@@ -387,6 +397,10 @@ products:
   - opensuse-tumbleweed-image:lxc:
     - i586
     - x86_64
+  - openSUSE-Tumbleweed-Yomi:livecd:
+    - x86_64
+  - openSUSE-Tumbleweed-Yomi:pxeboot:
+    - x86_64
   livecds:
   - livecd-tumbleweed-kde:
     - i586
@@ -411,9 +425,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20200902'
-published: '20200901'
-publishing: '20200901'
+    <value>failed: ''
+published: '20200902'
+publishing: '20200902'
 testing: '20200902'
 </value>
   </attribute>

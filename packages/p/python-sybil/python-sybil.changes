@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 27 15:29:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.0
+  * Support pytest 6
+  * Have sybil support nested directories of source files
+  * Support a sequence of patterns rather than just one.
+
+-------------------------------------------------------------------
 Thu Apr  2 07:26:04 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.3.0

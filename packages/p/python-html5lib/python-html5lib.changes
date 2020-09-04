@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 27 14:03:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.1
+  * Drop support for Python 3.3 and 3.4.
+  * Try to import from ``collections.abc`` to remove DeprecationWarning and ensure
+    ``html5lib`` keeps working in future Python versions. (#403)
+  * Drop optional ``datrie`` dependency. (#442)
+- Drop merged patches:
+  * pytest4-mhroncok.patch
+  * collections-abc.patch
+  * pytest5.patch
+- Add upstream patch pytest6.patch
+
+-------------------------------------------------------------------
 Fri May 29 09:17:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix run with pytest5:

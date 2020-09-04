@@ -58,7 +58,7 @@ cp -r appdirs.egg-info \
 }
 
 %check
-%python_exec -munittest discover -v
+%pyunittest
 
 %files %{python_files}
 %license LICENSE.txt

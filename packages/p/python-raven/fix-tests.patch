@@ -1,0 +1,37 @@
+Index: raven-6.10.0/tests/contrib/django/views.py
+===================================================================
+--- raven-6.10.0.orig/tests/contrib/django/views.py
++++ raven-6.10.0/tests/contrib/django/views.py
+@@ -1,7 +1,7 @@
+ from __future__ import absolute_import
+ 
+ from django.http import HttpResponse
+-from django.shortcuts import get_object_or_404, render_to_response
++from django.shortcuts import get_object_or_404, render
+ from raven.contrib.django.models import client
+ 
+ import logging
+@@ -41,7 +41,7 @@ def decorated_raise_exc(request):
+ 
+ 
+ def template_exc(request):
+-    return render_to_response('error.html')
++    return render(None, 'error.html')
+ 
+ 
+ def logging_request_exc(request):
+Index: raven-6.10.0/tests/contrib/test_celery.py
+===================================================================
+--- raven-6.10.0.orig/tests/contrib/test_celery.py
++++ raven-6.10.0/tests/contrib/test_celery.py
+@@ -61,9 +61,7 @@ class CeleryLoggingHandlerTestCase(TestC
+         # remove any existing handlers and restore
+         # them when complete
+         self.root = logging.getLogger()
+-        for handler in self.root.handlers:
+-            self.root.removeHandler(handler)
+-            self.addCleanup(self.root.addHandler, handler)
++        self.root.handlers = [] # so uggly
+ 
+     def test_handler_added(self):
+         # Given: there are no handlers configured

@@ -77,4 +77,12 @@
   First of several incremental releases to catch up on maintenance.</comment>
     <requestid>810912</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7c900e818e95e4182e4a6300a82f434b</srcmd5>
+    <version>1.4.4</version>
+    <time>1599210025</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830125</requestid>
+  </revision>
 </revisionlist>

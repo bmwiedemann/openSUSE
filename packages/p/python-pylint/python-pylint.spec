@@ -20,16 +20,13 @@
 %bcond_without tests
 %define skip_python2 1
 Name:           python-pylint
-Version:        2.5.3
+Version:        2.6.0
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/pycqa/pylint
 Source:         https://files.pythonhosted.org/packages/source/p/pylint/pylint-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM both_isort_4_5.patch gh#PyCQA/pylint#3725 mcepl@suse.com
-# allow using both isort 4 and 5
-Patch0:         both_isort_4_5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -72,7 +69,6 @@ feature.
 
 %prep
 %setup -q -n pylint-%{version}
-%autopatch -p1
 
 # fix test: ignore unexpected message gh#PyCQA/pylint#3635
 sed -i 's/import matplotlib.pyplot as plt/&  # pylint: disable=no-name-in-module/' tests/functional/u/undefined_variable.py

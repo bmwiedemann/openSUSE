@@ -17,50 +17,71 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define         skip_python2 1
-Name:           python-imagecodecs
-Version:        2019.5.22
+Name:           python-imagecodecs%{psuffix}
+Version:        2020.5.30
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://www.lfd.uci.edu/~gohlke/
 Source:         https://files.pythonhosted.org/packages/source/i/imagecodecs/imagecodecs-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module blosc}
-BuildRequires:  %{python_module lz4}
-BuildRequires:  %{python_module matplotlib >= 2.2}
-BuildRequires:  %{python_module numpy-devel >= 1.11.3}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scikit-image}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module zstd}
+Patch0:         always-cythonize.patch
+Patch1:         zopfli-headers.patch
+BuildRequires:  %{python_module Cython >= 0.29.19}
+BuildRequires:  %{python_module numpy-devel >= 1.15.1}
+BuildRequires:  %{python_module setuptools >= 18.0}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  jxrlib-devel
-BuildRequires:  libjpeg62-devel
-BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(blosc)
-BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(liblz4)
-BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(zlib)
-Requires:       python-numpy >= 1.11.3
+Requires:       python-numpy >= 1.15.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-blosc
 Recommends:     python-lz4
-Recommends:     python-matplotlib >= 2.2
+Recommends:     python-matplotlib >= 3.1
+Recommends:     python-tifffile >= 2020.5.25
 Recommends:     python-zstd
+%if %{with test}
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module blosc}
+BuildRequires:  %{python_module imagecodecs >= %{version}}
+BuildRequires:  %{python_module lz4}
+BuildRequires:  %{python_module matplotlib >= 3.1}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module tifffile >= 2020.5.25}
+BuildRequires:  %{python_module zstd}
+%else
+BuildRequires:  gcc-c++
+BuildRequires:  giflib-devel
+BuildRequires:  jxrlib-devel
+BuildRequires:  libaec-devel
+BuildRequires:  libzopfli-devel
+BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+BuildRequires:  snappy-devel
+BuildRequires:  pkgconfig(blosc)
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libbrotlicommon)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(zlib)
+%endif
 %python_subpackages
 
 %description
@@ -75,28 +96,35 @@ Delta, XOR Delta, Floating Point Predictor, and Bitorder reversal.
 
 %prep
 %setup -q -n imagecodecs-%{version}
+%autopatch -p1
+
 dos2unix README.rst
-# prevent ImportError in CLI due to missing tifffile
-sed -i '/from tifffile import imshow/d' imagecodecs/__main__.py
 
 %build
+%if !%{with test}
 export CFLAGS="%{optflags}"
 %python_build
+%endif
 
 %install
+%if !%{with test}
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/imagecodecs
 %{python_expand rm -rf %{buildroot}%{$python_sitearch}/imagecodecs/licenses/
 %fdupes %{buildroot}%{$python_sitearch}
 }
+%endif
 
 %check
+%if %{with test}
 mv imagecodecs __imagecodecs
 # Should add --doctest-modules %%{buildroot}%%{$python_sitearch}/imagecodecs/imagecodecs.py
 # however doctests are currently broken
 %pytest_arch tests
 mv __imagecodecs imagecodecs
+%endif
 
+%if !%{with test}
 %post
 %python_install_alternative imagecodecs
 
@@ -108,5 +136,6 @@ mv __imagecodecs imagecodecs
 %doc README.rst
 %python_alternative %{_bindir}/imagecodecs
 %{python_sitearch}/*
+%endif
 
 %changelog

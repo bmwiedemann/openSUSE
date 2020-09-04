@@ -302,4 +302,13 @@
     <comment></comment>
     <requestid>820510</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>cff3811188c2eca0fa42f9bc86f3b7c7</srcmd5>
+    <version>3.8.3</version>
+    <time>1599210183</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with pytest 6:
+  * pytest6.patch</comment>
+    <requestid>830733</requestid>
+  </revision>
 </revisionlist>

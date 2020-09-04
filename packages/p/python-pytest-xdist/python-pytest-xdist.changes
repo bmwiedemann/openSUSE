@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug 31 13:01:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.1.0
+  * New ``pytest_xdist_auto_num_workers`` hook can be implemented by plugins 
+    or ``conftest.py`` files to control the number of workers when 
+    ``--numprocesses=auto`` is given in the command-line.
+  * ``psutil`` has proven to make ``pytest-xdist`` installation in certain 
+    platforms and containers problematic, so to use it for automatic number 
+    of CPUs detection users need to install the ``psutil`` extra
+- Add patches to keep compatibility with older pytests:
+  * reintroduce-slave-terminology.patch
+  * 0001-Revert-Remove-compat-for-pytest-6.patch
+
+-------------------------------------------------------------------
+Tue Aug 25 08:12:22 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.0
+  * Drop backward-compatibility "slave" aliases related to worker nodes.  We deliberately 
+    moved away from this terminology years ago, and it seems like the right time to finish 
+    the deprecation and removal process.
+  * ``pytest-xdist`` no longer supports Python 2.7.
+  * New functions ``xdist.is_xdist_worker``, ``xdist.is_xdist_master``, ``xdist.get_xdist_worker_id``, 
+    to easily identify the current node.
+  * When using ``-n auto``, count the number of physical CPU cores instead of logical ones.
+  * ``pytest-xdist`` now requires ``pytest>=6.0``.
+  
+-------------------------------------------------------------------
 Wed May 13 09:10:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not do symlinks

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 11:42:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.1.0
+  * Use new --code-highlight=no in pytest 6 (and prevent tests from failing)
+
+-------------------------------------------------------------------
 Wed Apr 29 15:01:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switching off the failing coloring tests, it looks like

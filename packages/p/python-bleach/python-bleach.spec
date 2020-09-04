@@ -67,7 +67,8 @@ rm -rf bleach/_vendor
 
 %check
 # gh#mozilla/bleach#503
-%pytest -k 'not test_uri_value_allowed_protocols'
+# https://github.com/mozilla/bleach/issues/543
+%pytest -k 'not (test_uri_value_allowed_protocols or test_bleach_html_parser or test_css_parsing_gauntlet_regex_backtracking)'
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:19:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix test failure with pytest 6
+  * pytest-django-pytest6.patch
+  * The patched call signature looks weird, but it works as intended
+  * Patch is part of gh#pytest-dev/pytest-django#855
+- Replace deprecated py.test call with %pytest macro
+
+-------------------------------------------------------------------
+Mon Aug 24 11:50:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Fix build with ignore-warnings.patch
+
+-------------------------------------------------------------------
 Fri Apr  3 10:20:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.9.0:

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pygments-pytest
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        A pygments lexer for pytest output
 License:        MIT
@@ -50,7 +50,7 @@ This library provides a pygments lexer called "pytest".
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not (test_different_test_types or test_too_long_summary_line or test_deprecated_raises_exec_failure or test_blank_code_line)'
+%pytest
 
 %files %{python_files}
 %doc README.md

@@ -85,10 +85,10 @@ for %{libname}.
 rm -rf %{buildroot}%{_libdir}/libblosc.a
 
 # Put .pc files in right directory
-if [ "%{_libdir}" != "%{_libexecdir}" ] ; then
+if [ "%{_libdir}" != "%{_prefix}/lib" ] ; then
 mkdir -p %{buildroot}%{_libdir}
-mv %{buildroot}%{_libexecdir}/pkgconfig %{buildroot}%{_libdir}/pkgconfig
-rm -d %{buildroot}%{_libexecdir}
+mv %{buildroot}%{_prefix}/lib/pkgconfig %{buildroot}%{_libdir}/pkgconfig
+rm -d %{buildroot}%{_prefix}/lib
 fi
 
 %check

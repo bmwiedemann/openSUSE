@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:59:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable testsuite
+
+-------------------------------------------------------------------
+Fri Aug 28 08:50:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Match up versioning to whats in setup.py
+
+-------------------------------------------------------------------
 Sat Aug 22 07:28:47 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Clean up spec file.

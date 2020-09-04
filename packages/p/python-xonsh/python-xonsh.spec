@@ -19,12 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xonsh
-Version:        0.9.18
+Version:        0.9.20
 Release:        0
 Summary:        Python-powered, cross-platform, Unix-gazing shell
 License:        BSD-2-Clause
 URL:            https://github.com/xonsh/xonsh
 Source:         https://files.pythonhosted.org/packages/source/x/xonsh/xonsh-%{version}.tar.gz
+Patch0:         vox-tests.patch
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module prompt_toolkit >= 2.0}
@@ -54,6 +55,13 @@ The language is a superset of Python 3.5+ with additional shell primitives.
 
 %prep
 %setup -q -n xonsh-%{version}
+%autopatch -p1
+
+# remove bundled prompt_toolkit
+rm -r xonsh/vended_ptk/
+
+# do not run flake8 check
+sed -i -e '/python -m flake8/d' run-tests.xsh
 
 %build
 %python_build
@@ -70,7 +78,7 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 # test_man_completion needs installed manpages
 # test_xonsh_no_close_fds the makefile fails to compile
 %{python_expand export PYTHONPATH=":%{buildroot}%{$python_sitelib}"
-$python -m xonsh run-tests.xsh -k 'not (test_man_completion or test_xonsh_no_close_fds)'}
+$python -m xonsh run-tests.xsh -v -k 'not (test_man_completion or test_xonsh_no_close_fds)'}
 
 %post
 %python_install_alternative xonsh-cat

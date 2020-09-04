@@ -111,4 +111,12 @@ Add remove-unittest2.patch fixing the code.</comment>
     <comment></comment>
     <requestid>807269</requestid>
   </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>951dce79964aa74bfdd1e7d35a60ec62</srcmd5>
+    <version>6.10.0</version>
+    <time>1599210203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831399</requestid>
+  </revision>
 </revisionlist>

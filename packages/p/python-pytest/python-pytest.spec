@@ -27,24 +27,25 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        5.4.3
+Version:        6.0.1
 Release:        0
 Summary:        Python testing tool with autodiscovery and detailed asserts
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
-Patch0:         tidy-up-embeddedfile.patch
 BuildRequires:  %{python_module setuptools >= 40.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 17.4.0
 Requires:       python-importlib-metadata >= 0.12
+Requires:       python-iniconfig
 Requires:       python-more-itertools >= 4.0.0
 Requires:       python-packaging
 Requires:       python-pluggy >= 0.12
-Requires:       python-py >= 1.5.0
+Requires:       python-py >= 1.8.2
 Requires:       python-setuptools
+Requires:       python-toml
 Requires:       python-wcwidth
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -56,6 +57,7 @@ BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module hypothesis >= 3.56}
 BuildRequires:  %{python_module importlib-metadata >= 0.12}
+BuildRequires:  %{python_module iniconfig}
 BuildRequires:  %{python_module mock}
 # nose is really not REQUIRED, the test suite skips over particular
 # tests, when the package is not available.
@@ -67,6 +69,7 @@ BuildRequires:  %{python_module pytest >= %{version}}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module xmlschema}
 BuildRequires:  lsof
 %endif
@@ -90,7 +93,6 @@ pytest is a cross-project Python testing tool. It provides:
 
 %prep
 %setup -q -n pytest-%{version}
-%autopatch -p1
 
 %build
 %python_build

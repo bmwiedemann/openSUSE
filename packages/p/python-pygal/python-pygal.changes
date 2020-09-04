@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 15:15:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add patch pytest6.patch
+
+-------------------------------------------------------------------
 Wed Nov  6 15:16:36 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add patch pytest4.patch to make the test suite compatible with

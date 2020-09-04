@@ -18,7 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%define skip_python2 1
 Name:           python-bcrypt
 Version:        3.2.0
 Release:        0
@@ -42,11 +42,7 @@ Requires:       python-six >= 1.4.1
 %requires_eq    python-cffi
 Provides:       python-py-bcrypt = %{version}
 Obsoletes:      python-py-bcrypt < %{version}
-# This is intended as a drop-in replacement for py-bcrypt
-%ifpython2
-Provides:       %{oldpython}-py-bcrypt = %{version}
-Obsoletes:      %{oldpython}-py-bcrypt < %{version}
-%endif
+
 %python_subpackages
 
 %description

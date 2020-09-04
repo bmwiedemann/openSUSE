@@ -84,4 +84,13 @@
     <comment></comment>
     <requestid>823185</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>840d986af614a8675dd9f6bde68f5e5f</srcmd5>
+    <version>1.2.4</version>
+    <time>1599210153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.4:
+  * Import PickleHTMLBuilder from sphinxcontrib-serializinghtml package</comment>
+    <requestid>830709</requestid>
+  </revision>
 </revisionlist>

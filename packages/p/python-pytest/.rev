@@ -860,4 +860,16 @@
 </comment>
     <requestid>824226</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>121cbe8c20e3d1a20422eb96a5258b0e</srcmd5>
+    <version>6.0.1</version>
+    <time>1599209889</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.1
+- drop tidy-up-embeddedfile.patch
+ * new major release, please check:
+     https://docs.pytest.org/en/stable/changelog.html for all changes
+</comment>
+    <requestid>829560</requestid>
+  </revision>
 </revisionlist>

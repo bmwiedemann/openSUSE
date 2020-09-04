@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 11:53:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add patch pytest6.patch to fix tests
+- Drop python2 because newer pytest is needed
+
+-------------------------------------------------------------------
 Sat Jul 11 23:13:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 1.1.0:

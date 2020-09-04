@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Patch0:         python38.patch
 # PATCH-FIX-UPSTREAM pytest4.patch gh#Kozea/pygal#340 mcepl@suse.com
 # yes, THIS is what makes this test suite pytest4+ compatible!
 Patch1:         pytest4.patch
+Patch2:         pytest6.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pyquery}
