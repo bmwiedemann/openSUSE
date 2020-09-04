@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 31 12:58:07 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add riscv64 to ExclusiveArch
+
+-------------------------------------------------------------------
 Wed Feb 26 14:29:32 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.5.8 (changes since 1.5.6):
