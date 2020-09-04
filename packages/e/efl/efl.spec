@@ -377,6 +377,13 @@ Requires:       efl = %{version}
 %description -n elua
 A set of efl bindings for the LuaJIT environment.
 
+%package -n ecore_imf-module-scim
+Summary:        SCIM module for Ecore
+License:        BSD-2-Clause
+
+%description -n ecore_imf-module-scim
+SCIM input method module for Ecore.
+
 %package -n evas-generic-loaders
 Summary:        Set of generic loaders for Evas
 License:        GPL-2.0-or-later
@@ -473,6 +480,7 @@ make all your applications use the same icon set as the enlightenment
 dark (upstream) theme.
 
 Icon themes to match the openSUSE Enlightenment themes are also available.
+
 
 %prep
 %setup -q
@@ -635,6 +643,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if %{generic_players_present}
 %exclude %{_libdir}/emotion/generic_players/
 %endif
+# separated SCIM dependencies from the main package
+%exclude %{_libdir}/ecore_imf/modules/scim
 
 %doc AUTHORS ChangeLog COPYING NEWS README
 %{_bindir}/*
@@ -745,6 +755,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n elua
 %{_datadir}/elua
+
+%files -n ecore_imf-module-scim
+%{_libdir}/ecore_imf/modules/scim
 
 %files -n enlightenment-theme-upstream
 %{_datadir}/elementary/themes/default.edj
