@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:48:01 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop dependency on insserv-compat
+
+  The sysvinit script is not shipped so this dependency on this
+  obsolete package is not needed and can be removed.
+
+-------------------------------------------------------------------
 Mon Aug 17 11:19:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.6.1:

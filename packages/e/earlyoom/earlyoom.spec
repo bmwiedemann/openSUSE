@@ -32,7 +32,6 @@ Source11:       %{name}.sysconfig
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
-Requires(post): insserv-compat
 Recommends:     libnotify%{?suse_version:-tools}
 Conflicts:      oomd
 
