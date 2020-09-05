@@ -18,7 +18,7 @@
 
 %define libver  7
 Name:           wcslib
-Version:        7.3
+Version:        7.3.1
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
@@ -61,8 +61,8 @@ applications that use %{name}.
 
 %package        doc
 Summary:        Documentation for %{name} library
-Group:          Documentation/Other
 # libwcs-doc was last used in version 5.15
+Group:          Documentation/Other
 Provides:       libwcs-doc = %{version}
 Obsoletes:      libwcs-doc <= 5.15
 BuildArch:      noarch
