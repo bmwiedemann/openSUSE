@@ -275,4 +275,12 @@
 - remove ssl_use_system_certs.patch (obsolete)</comment>
     <requestid>829831</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>837db3c3d6c238f596c0a11d1ef80739</srcmd5>
+    <version>1.2.2</version>
+    <time>1599343274</time>
+    <user>dimstar_suse</user>
+    <comment>- tighten requirements (bsc#1176101)</comment>
+    <requestid>831612</requestid>
+  </revision>
 </revisionlist>

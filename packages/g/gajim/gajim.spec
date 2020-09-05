@@ -37,14 +37,14 @@ BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       ca-certificates-mozilla
 Requires:       python3 >= 3.5.0
-Requires:       python3-cairo
 Requires:       python3-cssutils >= 1.0.2
 Requires:       python3-docutils
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
-Requires:       python3-nbxmpp >= 0.6.9
+Requires:       python3-nbxmpp >= 1.0.2
 Requires:       python3-precis-i18n >= 1.0.0
-Requires:       python3-pyOpenSSL >= 0.12
+Requires:       python3-pyOpenSSL >= 16.2
+Requires:       python3-pycairo >= 1.16.0
 Requires:       python3-pycurl
 Requires:       python3-xml
 Recommends:     %{name}-lang
