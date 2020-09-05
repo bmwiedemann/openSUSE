@@ -435,7 +435,9 @@ Requires:       cryptsetup
 Requires:       glibc-locale
 Requires:       iscsiuio
 Requires:       kernel-firmware
+Requires:       lvm2
 Requires:       multipath-tools
+Requires:       nvme-cli
 Requires:       open-iscsi
 %ifarch %ix86 x86_64
 Requires:       hyper-v
@@ -446,7 +448,6 @@ Requires:       tftpboot-installation-openSUSE-MicroOS-%{_arch}
 %ifarch %ix86 x86_64
 Requires:       ucode-amd
 Requires:       ucode-intel
-Requires:       vim
 %endif
 Requires:       wpa_supplicant
 Requires:       xfsprogs

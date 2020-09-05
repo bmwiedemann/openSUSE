@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:23:54 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove vim as we use now vim-small
+
+-------------------------------------------------------------------
+Wed Sep  2 12:02:59 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add lvm2 and nvme-cli to the medium as YaST may need them
+  [bsc#1175841]
+
+-------------------------------------------------------------------
 Fri Jul 31 15:42:39 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
 
 - GNOME desktop pattern:

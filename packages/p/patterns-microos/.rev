@@ -179,4 +179,15 @@
     <comment></comment>
     <requestid>824000</requestid>
   </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>324d15895cd512fca0e18b4db83d01b0</srcmd5>
+    <version>5.0</version>
+    <time>1599343193</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove vim as we use now vim-small
+
+- Add lvm2 and nvme-cli to the medium as YaST may need them
+  [bsc#1175841]</comment>
+    <requestid>831621</requestid>
+  </revision>
 </revisionlist>
