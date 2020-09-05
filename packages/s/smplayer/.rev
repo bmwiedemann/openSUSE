@@ -319,4 +319,12 @@
     <comment>- Update to version 20.4.2.</comment>
     <requestid>794261</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bd1be108df54e330feeda3748950818f</srcmd5>
+    <version>20.6.0</version>
+    <time>1599343476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832503</requestid>
+  </revision>
 </revisionlist>

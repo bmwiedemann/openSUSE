@@ -17,7 +17,7 @@
 
 
 Name:           smplayer
-Version:        20.4.2
+Version:        20.6.0
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
@@ -55,13 +55,7 @@ Requires:       mpv >= 0.6.2
 Recommends:     smplayer-lang
 Recommends:     smplayer-skins
 Suggests:       smplayer-themes
-# smplayer-core was last used in openSUSE 13.2.
-Provides:       smplayer-core = %{version}
-Obsoletes:      smplayer-core < %{version}
-# smplayer-qt5 was last used in openSUSE 13.2.
-Provides:       smplayer-qt5 = %{version}
-Obsoletes:      smplayer-qt5 < %{version}
-Obsoletes:      smplayer-qt5-lang < %{version}
+Recommends:     youtube-dl
 
 %description
 SMPlayer is a front-end for MPV/MPlayer, from basic features like

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep  5 12:19:58 UTC 2020 - aloisio@gmx.com
+
+- Update to version 20.6
+ * The internal YouTube code has been removed. Now SMPlayer uses
+   an external application to get the video URLs.
+ * The shuffle option in the playlist does shuffle the items of
+   the playlist.
+
+-------------------------------------------------------------------
 Wed Apr 15 15:23:03 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 20.4.2 (changes since 19.10.2+svn20200307):
