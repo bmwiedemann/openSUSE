@@ -18,7 +18,7 @@
 
 %define shlib libphodav-2_0-0
 Name:           phodav
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        A WebDAV server using libsoup
 License:        LGPL-2.0-or-later

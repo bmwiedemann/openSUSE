@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>800102</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eac17d60efa2b7858a1ba8e680d907f6</srcmd5>
+    <version>2.5</version>
+    <time>1599343152</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 830037 from iznogood)</comment>
+    <requestid>831452</requestid>
+  </revision>
 </revisionlist>
