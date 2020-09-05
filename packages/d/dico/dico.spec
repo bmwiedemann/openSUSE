@@ -19,7 +19,7 @@
 %define         sover 2
 %define         lib_name lib%{name}%{sover}
 Name:           dico
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        Flexible modular implementation of DICT server (RFC 2229)
 License:        GPL-3.0-or-later
@@ -46,6 +46,7 @@ Requires:       m4
 Requires(post): info
 Requires(preun): info
 Recommends:     %{name}-modules
+%lang_package
 
 %description
 GNU Dico is a flexible modular implementation of DICT server (RFC 2229). In
@@ -104,6 +105,7 @@ export CFLAGS="%{optflags} -fcommon"
 %install
 %make_install
 find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
+%find_lang %{name}
 
 %post -n %{lib_name} -p /sbin/ldconfig
 %postun -n %{lib_name} -p /sbin/ldconfig
@@ -129,6 +131,8 @@ find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 %{_mandir}/man1/dico.1%{?ext_man}
 %{_mandir}/man5/dicod.conf.5%{?ext_man}
 %{_mandir}/man8/dicod.8%{?ext_man}
+
+%files lang -f %{name}.lang
 
 %files -n %{lib_name}
 %{_libdir}/libdico.so.%{sover}*

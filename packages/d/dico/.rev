@@ -51,4 +51,12 @@
 - Fix building with gcc10</comment>
     <requestid>813458</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fb88523193316ec9961bc792ecd7ac0c</srcmd5>
+    <version>2.10</version>
+    <time>1599343346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832113</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  4 10:24:20 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- dico 2.10:
+  * Fix compilation with gcc 10
+  * Restore po files
+
+-------------------------------------------------------------------
 Thu Jun 11 10:13:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.9
