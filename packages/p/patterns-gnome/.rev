@@ -184,4 +184,15 @@
     <comment>- add gnome-packagekit recommends to gnome_basic pattern for SLE and Leap (bsc#1164858 and bsc#1081584) (forwarded request 794653 from suntorytimed)</comment>
     <requestid>794793</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>cb689f321b7348ace24cf0baf690fc05</srcmd5>
+    <version>20200416</version>
+    <time>1599301948</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop a few suggests, making the DVD a bit smaller (no change on
+  default installed systems):
+  + dasher
+  + gnome-backgrounds (50MB RPM)
+  + python-gobject-devel</comment>
+  </revision>
 </revisionlist>

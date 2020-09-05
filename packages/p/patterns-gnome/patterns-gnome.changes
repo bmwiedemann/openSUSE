@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep  5 10:31:13 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop a few suggests, making the DVD a bit smaller (no change on
+  default installed systems):
+  + dasher
+  + gnome-backgrounds (50MB RPM)
+  + python-gobject-devel
+
+-------------------------------------------------------------------
 Thu Apr 16 16:59:13 UTC 2020 - Stefan Weiberg <sweiberg@suse.com>
 
 - add gnome-packagekit recommends to gnome_basic pattern for SLE

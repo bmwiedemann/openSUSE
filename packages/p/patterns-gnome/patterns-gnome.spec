@@ -39,11 +39,11 @@ This particular package contains all the Gnome patterns.
 %pattern_development
 Summary:        GNOME Development
 Group:          Metapackages
+Provides:       patterns-openSUSE-devel_gnome = %{version}
 Provides:       pattern() = devel_gnome
 Provides:       pattern-icon() = pattern-gnome-devel
 Provides:       pattern-order() = 3160
 Provides:       pattern-visible()
-Provides:       patterns-openSUSE-devel_gnome = %{version}
 Obsoletes:      patterns-openSUSE-devel_gnome < %{version}
 Requires:       pattern() = devel_C_C++
 Requires:       pattern() = gnome_basis
@@ -81,7 +81,6 @@ Recommends:     tracker-devel
 Recommends:     vala
 Recommends:     vte-devel
 Recommends:     yelp-tools
-Suggests:       python-gobject-devel
 
 %description devel_gnome
 GNOME development packages.
@@ -216,8 +215,6 @@ Recommends:     totem-browser-plugin
 Recommends:     tracker-miner-evolution
 # #302492
 Suggests:       brasero
-Suggests:       dasher
-Suggests:       gnome-backgrounds
 # bnc#698250
 Suggests:       gnome-color-manager
 %else
@@ -272,9 +269,9 @@ Provides:       patterns-openSUSE-gnome_basis = %{version}
 Obsoletes:      patterns-openSUSE-gnome_basis < %{version}
 Recommends:     pattern() = gnome_basis_opt
 %endif
-Requires:       pattern() = x11
 Requires:       gdm
 Requires:       gnome-session
+Requires:       pattern() = x11
 # from data/COMMON-DESKTOP
 Recommends:     desktop-data
 Recommends:     desktop-file-utils
@@ -365,9 +362,9 @@ Requires:       pattern() = x11
 %else
 Requires:       pattern() = x11_enhanced
 %endif
+Requires:       gsettings-backend-dconf
 Requires:       pattern() = basesystem
 Requires:       pattern() = gnome_basis
-Requires:       gsettings-backend-dconf
 # bsc#1065945
 Recommends:     brasero
 Recommends:     evince
@@ -412,11 +409,11 @@ applications installed (File Manager, Web Browser).
 %pattern_graphicalenvironments
 Summary:        GNOME Base System
 Group:          Metapackages
+Provides:       patterns-openSUSE-gnome_basis_opt = %{version}
 Provides:       pattern() = gnome_basis_opt
 Provides:       pattern-extends() = gnome_basis
 Provides:       pattern-icon() = pattern-gnome
 Provides:       pattern-order() = 1420
-Provides:       patterns-openSUSE-gnome_basis_opt = %{version}
 Obsoletes:      patterns-openSUSE-gnome_basis_opt < %{version}
 Requires:       pattern() = x11
 # #394406
@@ -440,11 +437,11 @@ Base packages for the GNOME desktop environment.
 %pattern_gnomedesktop
 Summary:        GNOME Games
 Group:          Metapackages
+Provides:       patterns-openSUSE-gnome_games = %{version}
 Provides:       pattern() = gnome_games
 Provides:       pattern-extends() = games
 Provides:       pattern-icon() = pattern-gnome
 Provides:       pattern-order() = 2100
-Provides:       patterns-openSUSE-gnome_games = %{version}
 Obsoletes:      patterns-openSUSE-gnome_games < %{version}
 Recommends:     gnome-chess
 Recommends:     gnome-mahjongg
@@ -475,10 +472,10 @@ GNOME Games
 %pattern_gnomedesktop
 Summary:        GNOME Integrated Development Environment
 Group:          Metapackages
+Provides:       patterns-openSUSE-gnome_ide = %{version}
 Provides:       pattern() = gnome_ide
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 2060
-Provides:       patterns-openSUSE-gnome_ide = %{version}
 Obsoletes:      patterns-openSUSE-gnome_ide < %{version}
 # from data/GNOME-IDE
 Recommends:     devhelp
@@ -548,11 +545,11 @@ Handling of digital photos and graphics
 %pattern_gnomedesktop
 Summary:        GNOME Internet
 Group:          Metapackages
+Provides:       patterns-openSUSE-gnome_internet = %{version}
 Provides:       pattern() = gnome_internet
 Provides:       pattern-extends() = gnome
 Provides:       pattern-icon() = package_network
 Provides:       pattern-order() = 2420
-Provides:       patterns-openSUSE-gnome_internet = %{version}
 Obsoletes:      patterns-openSUSE-gnome_internet < %{version}
 Recommends:     NetworkManager-openconnect-gnome
 #
@@ -597,11 +594,11 @@ GNOME Internet Applications
 %pattern_gnomedesktop
 Summary:        GNOME Multimedia
 Group:          Metapackages
+Provides:       patterns-openSUSE-gnome_multimedia = %{version}
 Provides:       pattern() = gnome_multimedia
 Provides:       pattern-extends() = multimedia
 Provides:       pattern-icon() = pattern-gnome
 Provides:       pattern-order() = 2200
-Provides:       patterns-openSUSE-gnome_multimedia = %{version}
 Obsoletes:      patterns-openSUSE-gnome_multimedia < %{version}
 #
 # Packages that really make sense
@@ -644,11 +641,11 @@ GNOME Multimedia
 %pattern_gnomedesktop
 Summary:        GNOME Office
 Group:          Metapackages
+Provides:       patterns-openSUSE-gnome_office = %{version}
 Provides:       pattern() = gnome_office
 Provides:       pattern-extends() = office
 Provides:       pattern-icon() = pattern-gnome
 Provides:       pattern-order() = 2240
-Provides:       patterns-openSUSE-gnome_office = %{version}
 Obsoletes:      patterns-openSUSE-gnome_office < %{version}
 Requires:       pattern() = gnome_basis
 # from data/GNOME-Office
@@ -681,11 +678,11 @@ GNOME Office
 %pattern_gnomedesktop
 Summary:        GNOME Utilities
 Group:          Metapackages
+Provides:       patterns-openSUSE-gnome_utilities = %{version}
 Provides:       pattern() = gnome_utilities
 Provides:       pattern-extends() = gnome
 Provides:       pattern-icon() = pattern-gnome
 Provides:       pattern-order() = 2280
-Provides:       patterns-openSUSE-gnome_utilities = %{version}
 Obsoletes:      patterns-openSUSE-gnome_utilities < %{version}
 Requires:       pattern() = gnome_basis
 #
@@ -739,11 +736,11 @@ GNOME Utilities
 %pattern_basetechnologies
 Summary:        YaST GNOME User Interfaces
 Group:          Metapackages
+Provides:       patterns-openSUSE-gnome_yast = %{version}
 Provides:       pattern() = gnome_yast
 Provides:       pattern-extends() = yast2_basis
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1260
-Provides:       patterns-openSUSE-gnome_yast = %{version}
 Obsoletes:      patterns-openSUSE-gnome_yast < %{version}
 Requires:       libyui-qt-pkg
 Requires:       yast2-control-center-qt
@@ -764,11 +761,11 @@ Graphical YaST user interfaces for the GNOME desktop.
 %pattern_basetechnologies
 Summary:        Package Management - Graphical Tools for GNOME
 Group:          Metapackages
+Provides:       patterns-openSUSE-sw_management_gnome = %{version}
 Provides:       pattern() = sw_management_gnome
 Provides:       pattern-extends() = sw_management
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1780
-Provides:       patterns-openSUSE-sw_management_gnome = %{version}
 Obsoletes:      patterns-openSUSE-sw_management_gnome < %{version}
 Requires:       pattern() = sw_management
 Requires:       pattern() = x11
