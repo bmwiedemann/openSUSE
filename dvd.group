@@ -663,8 +663,6 @@
     <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gmenudbusmenuproxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="gnome-backgrounds" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="gnome-backgrounds-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gnome-bluetooth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-bluetooth-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-builder" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
