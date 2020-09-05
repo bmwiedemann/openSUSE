@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep  3 09:24:31 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 20.1.7
+  * seventh bugfix release for the 20.1 branch
+
+-------------------------------------------------------------------
+Wed Sep  2 10:14:00 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- switched to llvm9 usage for Leap/SLE15 since llvm10 is not (yet)
+  in Leap/SLE15
+
+-------------------------------------------------------------------
+Mon Aug 31 19:36:31 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- version 20.1.6 needed for jira#SLE/SLE-12880, jira#SLE/SLE-12882 
+
+-------------------------------------------------------------------
+Mon Aug 31 19:12:50 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- use again /etc/OpenCL/vendors for openSUSE Leap, i.e. use
+  /usr/etc/OpenCL/vendors only for Tumbleweed
+
+-------------------------------------------------------------------
 Wed Aug 26 10:37:17 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add vulkan device selection layer and vulkan overlay layer to

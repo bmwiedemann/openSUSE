@@ -40,7 +40,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.1.6
+%define _version 20.1.7
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -108,7 +108,7 @@
 %endif
 
 Name:           Mesa
-Version:        20.1.6
+Version:        20.1.7
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -209,7 +209,7 @@ BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %if 0%{?suse_version} >= 1550
 BuildRequires:  llvm-devel >= 10.0.0
 %else
-BuildRequires:  llvm10-devel
+BuildRequires:  llvm9-devel
 %endif
 %endif
 
@@ -217,7 +217,7 @@ BuildRequires:  llvm10-devel
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel >= 10.0.0
 %else
-BuildRequires:  clang10-devel
+BuildRequires:  clang9-devel
 %endif
 BuildRequires:  libclc
 %endif
@@ -745,7 +745,9 @@ egl_platforms=x11,drm,surfaceless,wayland
 %endif
 %if 0%{with_opencl}
             -Dgallium-opencl=icd \
+%if 0%{?suse_version} >= 1550
             --sysconfdir=%{_datadir} \
+%endif
 %endif
             -Ddri-search-path=%{_libdir}/dri \
 %if 0%{with_llvm}
@@ -1082,9 +1084,15 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 
 %if 0%{with_opencl}
 %files -n Mesa-libOpenCL
+%if 0%{?suse_version} >= 1550
 %dir %{_datadir}/OpenCL
 %dir %{_datadir}/OpenCL/vendors
 %{_datadir}/OpenCL/vendors/mesa.icd
+%else
+%dir %{_sysconfdir}/OpenCL
+%dir %{_sysconfdir}/OpenCL/vendors
+%{_sysconfdir}/OpenCL/vendors/mesa.icd
+%endif
 %{_libdir}/libMesaOpenCL.so*
 %endif
 
