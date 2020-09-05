@@ -199,4 +199,12 @@
     <comment>- Update to release 1.2.148</comment>
     <requestid>825155</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b0320795ccc6dda13f2fc199dab248de</srcmd5>
+    <version>1.2.151</version>
+    <time>1599343029</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>831292</requestid>
+  </revision>
 </revisionlist>
