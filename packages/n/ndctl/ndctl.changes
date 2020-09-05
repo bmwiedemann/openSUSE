@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:27:10 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Suppress ENXIO when processing all namespaces (jsc#SLE-13321, bsc#1175851, ltc#187867).
+  + ndctl-namespace-Suppress-ENXIO-when-processing-all-n.patch
+
+-------------------------------------------------------------------
 Mon Aug 10 09:25:52 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
-- Update to v69 (jsc#SLE-13824, jsc#SLE-12770, jsc#SLE-15065):
+- Update to v69 (jsc#SLE-13824, jsc#SLE-12770, jsc#SLE-15065, jsc#SLE-15484,
+                jsc#SLE-15485, bsc#1175052, ltc#186863, bsc#1174969, ltc#185845):
   * infoblock: Set the default alignment to the platform alignment
   * libndctl/papr_scm: Add support for reporting "life_used_percentage" metric
   * Skip region filtering if numa_node attribute is not present

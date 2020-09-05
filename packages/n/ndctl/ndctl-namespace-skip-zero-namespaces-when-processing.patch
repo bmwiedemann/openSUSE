@@ -4,6 +4,8 @@ Date: Fri, 3 Apr 2020 19:38:33 +0200
 Subject: [PATCH] ndctl/namespace: skip zero namespaces when processing all
  namespaces.
 
+Upstream: submitted https://patchwork.kernel.org/patch/11681433/
+
 The kernel always creates zero length namespace with uuid 0 in each
 region.
 
@@ -14,17 +16,18 @@ The user can still specify the namespace by name directly in case
 processing it is desirable.
 
 Fixes: #41
-
+Reviewed-by: Santosh S <santosh@fossix.org>
+Tested-by: Harish Sriram <harish@linux.ibm.com>
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 ---
  ndctl/namespace.c | 16 +++++++++++++---
  1 file changed, 13 insertions(+), 3 deletions(-)
 
 diff --git a/ndctl/namespace.c b/ndctl/namespace.c
-index 0550580707e8..6f4a4b5b8883 100644
+index e734248c9752..3fabe4799d75 100644
 --- a/ndctl/namespace.c
 +++ b/ndctl/namespace.c
-@@ -2128,9 +2128,19 @@ static int do_xaction_namespace(const char *namespace,
+@@ -2171,9 +2171,19 @@ static int do_xaction_namespace(const char *namespace,
  			ndctl_namespace_foreach_safe(region, ndns, _n) {
  				ndns_name = ndctl_namespace_get_devname(ndns);
  
@@ -48,5 +51,5 @@ index 0550580707e8..6f4a4b5b8883 100644
  				case ACTION_DISABLE:
  					rc = ndctl_namespace_disable_safe(ndns);
 -- 
-2.23.0
+2.28.0
 

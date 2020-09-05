@@ -28,6 +28,7 @@ Group:          Hardware/Other
 URL:            https://github.com/pmem/ndctl
 Source0:        https://github.com/pmem/ndctl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch9:         %{name}-namespace-skip-zero-namespaces-when-processing.patch
+Patch13:        %{name}-namespace-Suppress-ENXIO-when-processing-all-n.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  keyutils-devel
