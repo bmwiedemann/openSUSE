@@ -1,7 +1,7 @@
 #
 # spec file for package libmowgli2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/atheme/libmowgli-2
 
 Source:         https://github.com/atheme/libmowgli-2/archive/v%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  libopenssl-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libssl)
 
 %description
 mowgli is a development framework for C (like GLib) which provides
@@ -69,7 +67,7 @@ block allocator.
 This package holds the development files for libmowgli v2.
 
 %prep
-%setup -qn libmowgli-2-%version
+%autosetup -n libmowgli-2-%version -p1
 
 %build
 if [ ! -e configure ]; then
@@ -78,7 +76,7 @@ fi
 %configure
 # They are still on so.0, but functions were added
 echo 'V_%version { global: *; };' >mowgli2.sym
-make %{?_smp_mflags} LDFLAGS="-Wl,--version-script=$PWD/mowgli2.sym"
+%make_build LDFLAGS="-Wl,--version-script=$PWD/mowgli2.sym"
 
 %install
 %make_install
@@ -87,12 +85,11 @@ make %{?_smp_mflags} LDFLAGS="-Wl,--version-script=$PWD/mowgli2.sym"
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libmowgli-2.so.0*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS COPYING doc/BOOST README
+%doc doc/BOOST README
+%license COPYING
 %_includedir/libmowgli-2
 %_libdir/libmowgli-2.so
 %_libdir/pkgconfig/libmowgli-2.pc
