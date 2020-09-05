@@ -1,7 +1,7 @@
 #
 # spec file for package blockout
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,17 +20,15 @@ Name:           blockout
 Version:        2.5
 Release:        0
 Summary:        A free clone of the original BlockOut DOS game
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Amusements/Games/Action/Arcade
-Url:            http://blockout.net/
+URL:            http://blockout.net/
 
-Source:         http://downloads.sf.net/blockout/bl25-src.tar.gz
-Source2:        http://downloads.sf.net/blockout/bl25-linux-x86.tar.gz
+Source:         https://downloads.sf.net/blockout/bl25-src.tar.gz
+Source2:        https://downloads.sf.net/blockout/bl25-linux-x86.tar.gz
 Patch1:         automake.diff
 Patch2:         compilefixes.diff
 Patch3:         bl2home.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -47,13 +45,12 @@ accurately as possible.
 
 %prep
 # images, sounds, are in #2.
-%setup -qn BL_SRC -a2
-%patch -P 1 -P 2 -P 3 -p1
+%autosetup -n BL_SRC -p1 -a2
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 d="%buildroot/%_datadir/%name"
@@ -63,7 +60,6 @@ mv blockout/{images,sounds} "$d/"
 find "$d/" -type f -exec chmod a-x "{}" "+"
 
 %files
-%defattr(-,root,root)
 %_bindir/blockout
 %_datadir/%name/
 

@@ -52,4 +52,12 @@
     <comment>- Update to new upstream release 2.5</comment>
     <requestid>294672</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3b5552763b5e9db2e2c9c0dda36e7866</srcmd5>
+    <version>2.5</version>
+    <time>1599343453</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim outdated specfile constructs.</comment>
+    <requestid>832494</requestid>
+  </revision>
 </revisionlist>
