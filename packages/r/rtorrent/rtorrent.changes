@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 14:21:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop old specfile constructs.
+
+-------------------------------------------------------------------
 Fri Jan 24 12:13:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add missing require on useradd.

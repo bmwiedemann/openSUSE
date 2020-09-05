@@ -62,4 +62,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>769058</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>38d294f3c097e44227cd5596b1631a4b</srcmd5>
+    <version>0.9.8</version>
+    <time>1599343450</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop old specfile constructs.</comment>
+    <requestid>832211</requestid>
+  </revision>
 </revisionlist>
