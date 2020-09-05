@@ -54,27 +54,34 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec) >= 51.53
 BuildRequires:  pkgconfig(libavformat) >= 52.12
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(lilv-0) >= 0.16
-BuildRequires:  pkgconfig(lv2)
+BuildRequires:  pkgconfig(lilv-0) >= 0.24.6
+BuildRequires:  pkgconfig(lv2) >= 1.16.0
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(serd-0) >= 0.30.2
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(sord-0) >= 0.16.4
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(soxr)
-BuildRequires:  pkgconfig(suil-0) >= 0.8.2
+BuildRequires:  pkgconfig(sratom-0) >= 0.6.4
+BuildRequires:  pkgconfig(suil-0)  >= 0.10.6
 BuildRequires:  pkgconfig(twolame)
 BuildRequires:  pkgconfig(vamp-hostsdk)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
+# WARNING lilv-0 >= 0.24.6;lv2 >= 1.16.0;serd-0 >= 0.30.2;sord-0 >= 0.16.4;sratom-0 >= 0.6.4;suil-0 >= 0.10.6
+# check these versions after every update otherwise audacity builds libsuil itself.
+
 # This would require to patch our portaudio package with "PortMixer"... an extra API that never got integrated in PortAudio.
 #BuildRequires:  portaudio-devel
 Recommends:     %{name}-lang
-# WARNING Nothing provides libavutil without a suffix
-Requires:       %{name}-plugins = %{version}
+# Nothing provides libavutil without a suffix
 Requires:       ffmpeg
 Requires:       libmp3lame0
+Provides:       %{name}-plugins = %{version}
+Obsoletes:      %{name}-plugins <= 2.4.2
 #Doesn't build for 32 bit anymore
 ExcludeArch:    i586
 
@@ -86,15 +93,6 @@ AU, IRCAM, MP, and Ogg Vorbis. Wave data larger than the available
 physical memory size can be edited.
 
 %lang_package
-
-%package plugins
-Summary:        Enhancments for Audacity
-Group:          Productivity/Multimedia/Sound
-Requires:       %{name} =  %{version}
-
-%description plugins
-This package contains extra plugins for audacity.
-
 
 %prep
 %setup -q -n %{name}-Audacity-%{version}
@@ -132,12 +130,15 @@ fi
 export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb"
 export CXXFLAGS="$CFLAGS -std=gnu++11"
 %cmake \
-       -Duse_lame:STRING=system
+       -Duse_lame:STRING=system \
+       -Daudacity_use_ffmpeg:STRING=linked
 
 make %{?_smp_mflags}
 
 %install
 %cmake_install
+mkdir -p %{buildroot}%{_libdir}/%{name}
+find %{buildroot}%{_datadir} -name "*.so" -print -exec mv {} %{buildroot}%{_libdir}/%{name}/ \;
 
 # E-mail wrote to feedback@audacityteam.org.
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes/
@@ -146,18 +147,16 @@ mv -f %{buildroot}%{_datadir}/pixmaps/gnome-mime-application-x-audacity-project.
 rm -rf %{buildroot}%{_datadir}/pixmaps/
 rm -rf %{buildroot}%{_datadir}/doc
 cp -v lib-src/portmixer/LICENSE.txt portmixer.LICENSE.txt
-%find_lang %{name}
 
-%files plugins
-%license LICENSE.txt
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/suil*.so
+%find_lang %{name}
 
 %files
 %defattr(-,root,root)
 %doc README.txt
 %license LICENSE.txt LICENSE_NYQUIST.txt portmixer.LICENSE.txt
 %{_bindir}/%{name}
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/mod-script-pipe.so
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*

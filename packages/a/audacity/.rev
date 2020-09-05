@@ -841,4 +841,20 @@ Added audacity-misc-errors.patch to fix various errors picked up by rpmlint.
     <comment></comment>
     <requestid>818998</requestid>
   </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>703ea873deaddab84cad542aeb0bf676</srcmd5>
+    <version>2.4.2</version>
+    <time>1599343246</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove libavformat symlink and remove the plugins sub package.
+  The symlink is obsoleted by linking to ffmpeg rather than
+  dlopening it. The plugins were caused by the wrong suil version.
+- Add _constraints for min 6GB physicalymemory for ppc64/ppc64le
+- Link to ffmpeg rather than dlopening it.
+- Create symlink for libavformat, audacity looks for the major
+  version only and this no longer exists in openSUSE after 
+  ffmpeg-4.3.1. See boo#1175205
+</comment>
+    <requestid>830589</requestid>
+  </revision>
 </revisionlist>

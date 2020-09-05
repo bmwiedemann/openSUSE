@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:15:45 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Remove libavformat symlink and remove the plugins sub package.
+  The symlink is obsoleted by linking to ffmpeg rather than
+  dlopening it. The plugins were caused by the wrong suil version.
+
+-------------------------------------------------------------------
+Wed Aug 26 15:25:22 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for min 6GB physicalymemory for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Wed Aug 26 12:45:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Link to ffmpeg rather than dlopening it.
+
+-------------------------------------------------------------------
+Thu Aug 20 13:28:49 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Create symlink for libavformat, audacity looks for the major
+  version only and this no longer exists in openSUSE after 
+  ffmpeg-4.3.1. See boo#1175205
+
+-------------------------------------------------------------------
 Sun Jul  5 13:07:34 UTC 2020 - Markus Reckwerth <marec@detebe.org>
 
 - fixing dependencies for leap 15.2
