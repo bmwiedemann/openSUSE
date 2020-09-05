@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:58:31 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Self-update improvement: write the list of updated packages to
+  the /.packages.self_update file in the inst-sys (bsc#1175614)
+- 4.3.16
+
+-------------------------------------------------------------------
 Mon Aug 24 09:35:13 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - save random pool to /var/lib/systemd/random-seed (bsc#1174964)
