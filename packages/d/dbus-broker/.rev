@@ -55,4 +55,12 @@
     <comment>- Update to release 23</comment>
     <requestid>803328</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5191d363b2875f1e2ed66b47cb7fe433</srcmd5>
+    <version>24</version>
+    <time>1599343408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 24</comment>
+    <requestid>832351</requestid>
+  </revision>
 </revisionlist>

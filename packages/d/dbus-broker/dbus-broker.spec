@@ -17,7 +17,7 @@
 
 
 Name:           dbus-broker
-Version:        23
+Version:        24
 Release:        0
 Summary:        XDG-conforming message bus implementation
 License:        Apache-2.0
