@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  2 00:06:42 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to v2.0.6
+  * Fixed a bug where running systemd in a container on a cgroups v1 system would fail.
+  * Fixed a bug where /etc/passwd could be re-created every time a container
+    is restarted if the container's /etc/passwd did not contain an entry
+    for the user the container was started as.
+  * Fixed a bug where containers without an /etc/passwd file specifying
+    a non-root user would not start.
+  * Fixed a bug where the --remote flag would sometimes not make
+    remote connections and would instead attempt to run Podman locally.
+
+-------------------------------------------------------------------
 Tue Aug 25 07:01:13 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to v2.0.5 (bsc#1175821)
