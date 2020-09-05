@@ -103,4 +103,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>- Update to new upstream release 1.2</comment>
     <requestid>264487</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c8b8f2981e6835326fecac703b108139</srcmd5>
+    <version>1.3</version>
+    <time>1599343392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.3</comment>
+    <requestid>832104</requestid>
+  </revision>
 </revisionlist>

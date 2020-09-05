@@ -1,7 +1,7 @@
 #
 # spec file for package parkverbot
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           parkverbot
-Version:        1.2
+Version:        1.3
 Release:        0
-Url:            http://parkverbot.sf.net/
 Summary:        Daemon to prevent hard disk head parking in rotational media
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Base
+URL:            https://inai.de/projects/parkverbot/
 
-#Git-Clone:	git://git.code.sf.net/p/parkverbot/parkverbot
-Source:         http://downloads.sf.net/parkverbot/%name-%version.tar.xz
-Source2:        http://downloads.sf.net/parkverbot/%name-%version.tar.asc
+#Git-Clone:	git://git.inai.de/parkverbot
+Source:         https://inai.de/files/parkverbot/%name-%version.tar.xz
+Source2:        https://inai.de/files/parkverbot/%name-%version.tar.asc
 Source3:        %name.keyring
-BuildRequires:  pkgconfig >= 0.23
+BuildRequires:  pkg-config >= 0.23
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libHX) >= 3.12
-%if 0%{?suse_version} >= 1310
-BuildRequires:  systemd-rpm-macros
-%endif
-%if 0%{?suse_version} >= 1220 && 0%{?suse_version} < 1310
-BuildRequires:  systemd
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Modern rotational hard disks have a misfeature involving the regular
@@ -51,23 +45,31 @@ order to keep the hardware from going to its head-unloaded idle
 state.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --with-unitdir="%_unitdir"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
+%pre
+%service_add_pre parkverbot.service
+
+%post
+%service_add_post parkverbot.service
+
+%preun
+%service_del_preun parkverbot.service
+
+%postun
+%service_del_postun parkverbot.service
+
 %files
-%defattr(-,root,root)
 %_sbindir/parkverbot
 %_mandir/man*/parkverbot*
-%if 0%{?_unitdir:1}
-%_unitdir/parkverbot@.service
-%_unitdir/parkverbot.service
-%endif
-%doc LICENSE.GPL2
+%_unitdir/parkverbot*.service
+%license LICENSE.GPL2
 
 %changelog
