@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  1 08:42:45 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use a boolean dep to avoid use of %{is_opensuse}. The prjconf
+  selects which one to use this way.
+- Bump version to 0.1
+
+-------------------------------------------------------------------
 Thu Aug 27 07:12:48 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Fix grammar, update README and .service. Technically the name
@@ -7,7 +14,7 @@ Thu Aug 27 07:12:48 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 -------------------------------------------------------------------
 Tue Aug 25 11:10:50 UTC 2020 - Stefan Nica <snica@suse.com>
 
-- Also allow working on Chart.yaml
+- Also allow working on Chart.yaml (jsc#CAPS-5)
 
 -------------------------------------------------------------------
 Tue Jul  7 13:53:33 UTC 2020 - Fabian Vogt <fvogt@suse.com>
@@ -18,7 +25,7 @@ Tue Jul  7 13:53:33 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 -------------------------------------------------------------------
 Tue May  5 09:19:56 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
-- Also allow working on Dockerfile
+- Also allow working on Dockerfile (jsc#CAPS-10)
 
 -------------------------------------------------------------------
 Mon May  4 13:40:20 UTC 2020 - Fabian Vogt <fvogt@suse.com>

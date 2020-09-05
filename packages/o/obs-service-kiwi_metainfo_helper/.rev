@@ -45,4 +45,17 @@
 - Also allow working on Chart.yaml</comment>
     <requestid>829911</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9b84e48826e2fa0668320d0f0ed385a2</srcmd5>
+    <version>0.1</version>
+    <time>1599343172</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a boolean dep to avoid use of %{is_opensuse}. The prjconf
+  selects which one to use this way.
+- Bump version to 0.1
+
+- Also allow working on Chart.yaml (jsc#CAPS-5)
+- Also allow working on Dockerfile (jsc#CAPS-10)</comment>
+    <requestid>831457</requestid>
+  </revision>
 </revisionlist>
