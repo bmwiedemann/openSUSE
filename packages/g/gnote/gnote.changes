@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  2 02:36:36 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnote-enabling-addin-for-opened-notes.patch: noteaddin: Fix
+  newly enabled addin not working for opened(bsc#1075342,
+  glgo#GNOME/gnote!11).
+
+-------------------------------------------------------------------
 Sun Jun 28 10:46:23 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:

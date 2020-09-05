@@ -1,0 +1,31 @@
+From 1c295905251aaa5d031531392eab5575da2d87b9 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Wed, 2 Sep 2020 09:11:07 +0800
+Subject: [PATCH] noteaddin: Fix newly enabled addin not working for opened
+ notes
+
+---
+ src/noteaddin.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/noteaddin.cpp b/src/noteaddin.cpp
+index 612bc8d8..ddb60ca0 100644
+--- a/src/noteaddin.cpp
++++ b/src/noteaddin.cpp
+@@ -39,7 +39,13 @@ namespace gnote {
+       sigc::mem_fun(*this, &NoteAddin::on_note_opened_event));
+     initialize();
+     if(m_note->is_opened()) {
++      NoteWindow * window = get_window();
++
+       on_note_opened();
++      /* Connect these two signals here, because signal_opened won't emit for
++       * opening already opened notes. */
++      window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_foregrounded));
++      window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_backgrounded));
+     }
+   }
+ 
+-- 
+2.25.4
+

@@ -27,6 +27,8 @@ Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
 Source0:        https://download.gnome.org/sources/gnote/%{base_version}/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
+# PATCH-FIX-UPSTREAM gnote-enabling-addin-for-opened-notes.patch bsc#1075342, glgo#GNOME/gnote!11 noteaddin: Fix newly enabled addin not working for opened.
+Patch0:         gnote-enabling-addin-for-opened-notes.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
