@@ -80,6 +80,11 @@ fi
 if [ -f %{_sysconfdir}/zypp/zypp.conf ]; then
     sed -i 's/^multiversion =.*/multiversion =/g' %{_sysconfdir}/zypp/zypp.conf
 fi
+# btrfsmaintainence uses as default "/", but that is read-only.
+# Change that to /.snapshots/
+for var in BTRFS_BALANCE_MOUNTPOINTS BTRFS_SCRUB_MOUNTPOINTS BTRFS_TRIM_MOUNTPOINTS; do
+    grep -q "${var}=\"/\"" /etc/sysconfig/btrfsmaintenance && sed -i "s|${var}=.*|${var}=\"/.snapshots\"|g" /etc/sysconfig/btrfsmaintenance
+done
 %{?update_bootloader_posttrans}
 exit 0
 

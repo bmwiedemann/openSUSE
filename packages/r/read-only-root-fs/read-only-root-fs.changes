@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 08:53:55 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Adjust btrfsmaintenance sysconfig to not use the read-only 
+  root filesystem [bsc#1176052]
+
+-------------------------------------------------------------------
 Thu Jul 30 17:50:08 UTC 2020 - iforster@suse.com
 
 - Update to version 1.0+git20200730.1243fd0:
