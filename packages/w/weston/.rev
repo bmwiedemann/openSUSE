@@ -189,4 +189,12 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
     <comment>- Update to new upstream release 8</comment>
     <requestid>770252</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2e5e948bb29ea5dd7ae4796de138f2fd</srcmd5>
+    <version>9</version>
+    <time>1599343421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9</comment>
+    <requestid>832369</requestid>
+  </revision>
 </revisionlist>

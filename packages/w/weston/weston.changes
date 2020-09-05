@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  4 11:55:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9
+  * A new kiosk shell allows to display regular desktop apps in an
+    always-fullscreen mode.
+  * DRM panel orientation property support.
+- Drop 0001-tests-test-runner-needs-wayland-client.patch (merged)
+
+-------------------------------------------------------------------
 Sun Jan 26 10:19:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 8

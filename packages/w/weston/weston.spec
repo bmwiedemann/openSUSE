@@ -18,9 +18,9 @@
 
 Name:           weston
 %define lname	libweston0
-%define major   8
-%define realver	8.0.0
-Version:        8
+%define major   9
+%define realver	9.0.0
+Version:        9
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        MIT AND CC-BY-SA-3.0
@@ -31,10 +31,10 @@ URL:            https://wayland.freedesktop.org/
 #Git-Web:	https://cgit.freedesktop.org/wayland/weston/
 Source:         https://wayland.freedesktop.org/releases/weston-%realver.tar.xz
 Source3:        %name.keyring
-Patch1:         0001-tests-test-runner-needs-wayland-client.patch
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake >= 1.11
 BuildRequires:  gcc-c++
+BuildRequires:  glibc-devel >= 2.27
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool >= 2.2
 BuildRequires:  libxml2-tools
@@ -172,7 +172,6 @@ popd
 %postun -n libweston-desktop-%major-0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %_bindir/w*
 %_libexecdir/%name-*
@@ -183,19 +182,15 @@ popd
 %_mandir/man?/*.*
 
 %files -n libweston-%major-0
-%defattr(-,root,root)
 %_libdir/libweston-%major.so.0*
 
 %files -n libweston-%major
-%defattr(-,root,root)
 %_libdir/libweston-%major/
 
 %files -n libweston-desktop-%major-0
-%defattr(-,root,root)
 %_libdir/libweston-desktop-%major.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/%name/
 %_libdir/pkgconfig/*.pc
 %_libdir/libweston*.so
