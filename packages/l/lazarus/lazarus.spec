@@ -25,7 +25,7 @@ Summary:        FreePascal RAD IDE and Component Library
 License:        GPL-2.0-only AND LGPL-2.0-only AND MPL-1.1
 Group:          Development/Languages/Other
 URL:            http://www.lazarus.freepascal.org/
-Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}-2.tar.gz
 # PATCH-FEATURE-UPSTREAM http://mantis.freepascal.org/view.php?id=31364
 Source1:        https://raw.githubusercontent.com/hughsie/fedora-appstream/developerapps/appdata-extra/desktop/lazarus.appdata.xml
 Source90:       %{name}-rpmlintrc
@@ -33,17 +33,22 @@ Source90:       %{name}-rpmlintrc
 Patch0:         %{name}-Makefile_patch.diff
 # PATCH-FIX-OPENSUSE lazarus.desktop.patch -- Fix desktop file
 Patch1:         lazarus.desktop.patch
-# PATCH-FIX-UPSTREAM lazarus-2.0.10-fpc304.patch
-Patch2:         lazarus-2.0.10-fpc304.patch
+BuildRequires:  dos2unix
+BuildRequires:  fdupes
+BuildRequires:  fpc >= 3.0.0
+BuildRequires:  fpc-src >= 3.0.0
+Requires:       fpc
+Requires:       fpc-src
+Requires:       gdb
+Requires(post): desktop-file-utils
+Requires(post): shared-mime-info
+Requires(postun): desktop-file-utils
+Requires(postun): shared-mime-info
 %if 0%{?suse_version} > 1210
 BuildRequires:  desktop-file-utils
 %else
 BuildRequires:  update-desktop-files
 %endif
-BuildRequires:  dos2unix
-BuildRequires:  fdupes
-BuildRequires:  fpc >= 3.0.0
-BuildRequires:  fpc-src >= 3.0.0
 %if 0%{?suse_version} >= 1140
 BuildRequires:  hicolor-icon-theme
 %endif
@@ -61,9 +66,6 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 %endif
-Requires:       fpc
-Requires:       fpc-src
-Requires:       gdb
 %if 0%{?sles_version} == 11
 Requires:       glib2-devel
 Requires:       gtk2-devel
@@ -71,11 +73,6 @@ Requires:       gtk2-devel
 Requires:       pkgconfig(glib-2.0)
 Requires:       pkgconfig(gtk+-2.0)
 %endif
-Requires(post): desktop-file-utils
-Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Lazarus is a Rapid Application Development
@@ -103,7 +100,6 @@ Development files for Free Pascal interface to Qt5.
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 # remove unneeded files
 rm -rf debian
@@ -140,7 +136,7 @@ if [ -n "$SOURCE_DATE_EPOCH" ] ; then
 fi
 
 # fix shebang
-find . \( -name "*.sh" -o -name "*.pl" \) -exec sed -i '1s|#!/usr/bin/env|%{_bindir}/|' {} +
+find . \( -name "*.sh" -o -name "*.pl" \) -exec sed -i '1s|#!%{_bindir}/env|%{_bindir}/|' {} +
 
 %build
 # Don't use -gs (use explicitly "stabs" debuginfo) for compiling lhelp but -g (use the default debuginfo type "dwarf") as in the rest of package's Makefiles
@@ -221,7 +217,7 @@ install -Dpm 0644 install/lazarus.desktop %{buildroot}%{_datadir}/applications/%
 install -Dpm 0644 install/%{name}-mime.xml %{buildroot}%{_datadir}/mime/packages/%{name}.xml
 
 # software gallery metadata
-install -Dpm 0644 %{S:1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 # configs
 install -dm 0755 %{buildroot}%{_sysconfdir}/%{name}
@@ -240,7 +236,7 @@ rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings
 %icon_theme_cache_post
 %desktop_database_post
 %else
-/usr/bin/update-mime-database %{_datadir}/mime &> /dev/null || :
+%{_bindir}/update-mime-database %{_datadir}/mime &> /dev/null || :
 %endif
 
 %postun
@@ -249,7 +245,7 @@ rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings
 %icon_theme_cache_postun
 %desktop_database_postun
 %else
-/usr/bin/update-mime-database %{_datadir}/mime &> /dev/null || :
+%{_bindir}/update-mime-database %{_datadir}/mime &> /dev/null || :
 %endif
 %endif
 
@@ -261,7 +257,7 @@ rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings
 
 %files
 %defattr(-,root,root,-)
-%doc %{_mandir}/man1/*
+%{_mandir}/man1/*
 %doc %{_defaultdocdir}/%{name}
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/environmentoptions.xml
@@ -286,12 +282,12 @@ rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings
 %if 0%{?sle_version} >= 120200 || 0%{?suse_version} > 1320
 %files -n libQt5Pas%{sover}
 %defattr(-,root,root,-)
-%doc lcl/interfaces/qt5/cbindings/COPYING.TXT
+%license lcl/interfaces/qt5/cbindings/COPYING.TXT
 %{_libdir}/libQt5Pas.so.%{sover}*
 
 %files -n libQt5Pas-devel
 %defattr(-,root,root,-)
-%doc lcl/interfaces/qt5/cbindings/COPYING.TXT
+%license lcl/interfaces/qt5/cbindings/COPYING.TXT
 %dir %{_datadir}/fpcsrc
 %dir %{_datadir}/fpcsrc/packages
 %dir %{_datadir}/fpcsrc/packages/qt5

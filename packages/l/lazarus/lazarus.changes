@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  4 13:20:40 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lazarus released a new 2.0.10 tarball (2.0.10-2) which just
+  includes the lazarus-2.0.10-fpc304.patch patch on top of the 
+  previous one. Use this new tarball and update the Source
+  URL accordingly
+- Drop upstreamed patch:
+  * lazarus-2.0.10-fpc304.patch 
+- Run specfile cleaner
+
+-------------------------------------------------------------------
 Wed Jul  8 17:15:55 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.10
