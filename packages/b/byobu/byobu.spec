@@ -93,7 +93,7 @@ sed -i 's,%{_bindir}/env python3,%{_bindir}/python3,' %{buildroot}%{_prefix}/lib
 %dir %{_sysconfdir}/%{name}/
 %config(noreplace) %{_sysconfdir}/%{name}/*
 %{_bindir}/*
-%{_libexecdir}/%{name}/
+%{_prefix}/lib/%{name}/
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/*.1%{?ext_man}
