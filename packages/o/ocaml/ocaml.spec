@@ -63,7 +63,7 @@
 %bcond_with ocaml_make_testsuite
 
 Name:           ocaml
-Version:        4.11.0
+Version:        4.11.1
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception

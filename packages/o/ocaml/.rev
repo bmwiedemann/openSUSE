@@ -726,4 +726,13 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
   See included Changes for benefits and breaking changes</comment>
     <requestid>828696</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>ae242bf3f2035b6cf1a69db0bf4a2703</srcmd5>
+    <version>4.11.1</version>
+    <time>1599343069</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.11.1
+  See included Changes for benefits and breaking changes</comment>
+    <requestid>831369</requestid>
+  </revision>
 </revisionlist>
