@@ -365,6 +365,7 @@ autoreconf --force --install
 	--enable-ldap \
 	--enable-soup \
 	--enable-curl \
+	--enable-bypass-lan \
 	--disable-static
 make %{?_smp_mflags}
 
@@ -445,7 +446,9 @@ echo 'd %{_rundir}/%{name} 0770 root root' > %{buildroot}%{_tmpfilesdir}/%{name}
 #
 install -c -m750 _fipscheck %{buildroot}/%{_libexecdir}/ipsec/
 install -c -m644 %{_sourcedir}/fips-enforce.conf \
-                 %{buildroot}/%{strongswan_configs}/charon/zzz_fips-enforce.conf
+                 %{buildroot}/%{strongswan_configs}/charon/zzz_fips-enforce.conf                 
+# disable bypass-lan plugin by default
+sed -i 's/\(load[ ]*=[ ]*\)yes/\1no/g' %{buildroot}/%{strongswan_configs}/charon/bypass-lan.conf
 # create fips hmac hashes _after_ install post run
 %{expand:%%global __os_install_post {%__os_install_post
 	for f in %{buildroot}/%{strongswan_libdir}/lib*.so.*.*.* \
@@ -713,6 +716,7 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/xauth-generic.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/xauth-pam.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/xcbc.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/bypass-lan.conf
 %dir %{strongswan_libdir}
 %if %{with integrity}
 %{strongswan_libdir}/libchecksum.so
@@ -828,6 +832,7 @@ fi
 %{strongswan_plugins}/libstrongswan-xcbc.so
 %{strongswan_plugins}/libstrongswan-curve25519.so
 %{strongswan_plugins}/libstrongswan-vici.so
+%{strongswan_plugins}/libstrongswan-bypass-lan.so
 %dir %{strongswan_datadir}
 %dir %{strongswan_templates}
 %dir %{strongswan_templates}/config
@@ -933,6 +938,7 @@ fi
 %{strongswan_templates}/config/plugins/xcbc.conf
 %{strongswan_templates}/config/plugins/curve25519.conf
 %{strongswan_templates}/config/plugins/vici.conf
+%{strongswan_templates}/config/plugins/bypass-lan.conf
 %if %{with systemd}
 %{strongswan_templates}/config/strongswan.d/charon-systemd.conf
 %endif
