@@ -67,10 +67,10 @@ if [ -e /etc/cloud/cloud.cfg ]; then
         # not useful for cloud
         systemctl mask systemd-firstboot.service
 
-        suseInsertService cloud-init-local
-        suseInsertService cloud-init
-        suseInsertService cloud-config
-        suseInsertService cloud-final
+        systemctl enable cloud-init-local
+        systemctl enable cloud-init
+        systemctl enable cloud-config
+        systemctl enable cloud-final
 else
         # Enable jeos-firstboot
         mkdir -p /var/lib/YaST2
@@ -113,7 +113,7 @@ fi
 # Enable chrony if installed
 #-------------------------------------
 if [ -f /etc/chrony.conf ]; then
-	suseInsertService chronyd
+	systemctl enable chronyd
 fi
 
 #======================================
@@ -125,8 +125,3 @@ sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.c
 # Disable installing documentation
 #--------------------------------------
 sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
-
-# Not compatible with set -e
-baseCleanMount || true
-
-exit 0

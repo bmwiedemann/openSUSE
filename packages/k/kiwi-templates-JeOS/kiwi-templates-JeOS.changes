@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 10:00:36 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop call of baseCleanMount, not necessary
+- Replace suseInsertService with direct systemctl enable
+
+-------------------------------------------------------------------
 Fri Aug 28 07:27:05 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop the tmp subvolume (boo#1173461, jsc#PM-1898)
