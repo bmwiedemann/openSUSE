@@ -18,6 +18,11 @@ Mon Aug  3 12:18:12 UTC 2020 - Adam Majer <adam.majer@suse.de>
 - versioned.patch: refreshed
 
 -------------------------------------------------------------------
+Tue Jul 28 07:13:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- avoid rpmbuild warnings on if/else/endif constructs
+
+-------------------------------------------------------------------
 Thu Jul  2 20:39:34 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 12.18.2:

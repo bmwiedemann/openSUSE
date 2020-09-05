@@ -304,4 +304,12 @@
   on Aarch64 with gcc10 (bsc#1172686)</comment>
     <requestid>826661</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>9613dc9dc1a66e518212cca8a8602aab</srcmd5>
+    <version>12.18.3</version>
+    <time>1599343428</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>832206</requestid>
+  </revision>
 </revisionlist>
