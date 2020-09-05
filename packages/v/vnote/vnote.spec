@@ -17,7 +17,7 @@
 
 
 Name:           vnote
-Version:        2.8.2
+Version:        2.10
 Release:        0
 Summary:        A Vim-inspired note-taking application, especially for Markdown
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://github.com/tamlok/vnote
 Source0:        %{name}-%{version}.tar.gz
 Source1:        hoedown-e63d216.zip
 Source2:        marked-f1ddca7.zip
-BuildRequires:  libqt5-qtbase-devel >= 5.7.1
+BuildRequires:  libqt5-qtbase-devel >= 5.9
 BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  unzip

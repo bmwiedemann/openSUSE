@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep  5 04:20:27 UTC 2020 - xia lei <emricg2@gmail.com>
+
+- update to version v2.10
+ * Add simple support for Git sync including push and pull.
+ You need to install Git and execute git init under the root of your notebook
+ root folder first.
+
+-------------------------------------------------------------------
 Sun Feb 16 05:37:25 UTC 2020 - Grover Chou <groverchout@gmail.com>
 
 - update to version v2.8.2
