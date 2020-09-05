@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,14 @@ Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception
 Group:          Productivity/Networking/File-Sharing
-Url:            http://github.com/rakshasa/libtorrent
+URL:            https://github.com/rakshasa/libtorrent
 
-Source:         https://github.com/rakshasa/rtorrent/releases/download/v%{rtorrentvers}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  autoconf
+Source:         https://github.com/rakshasa/rtorrent/releases/download/v%rtorrentvers/%name-%version.tar.gz
 BuildRequires:  automake
-BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
+BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkg-config
-BuildRequires:  gzip
 BuildRequires:  zlib-devel
 
 %description
@@ -63,7 +59,7 @@ directly from file pages to the network stack, and achieves 3x higher
 seed speeds than the official client on high-bandwidth links.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%optflags -fno-strict-aliasing"
@@ -71,21 +67,19 @@ export CXXFLAGS="$CFLAGS"
 export CXXFLAGS="$CXXFLAGS -std=gnu++11"
 autoreconf -fiv
 %configure --enable-ipv6 --with-posix-fallocate
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 find "%buildroot" -type f -name "*.la" -delete
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libtorrent.so.*
 
 %files -n %name-devel
-%defattr(-,root,root)
 %_includedir/torrent/
 %_libdir/libtorrent.so
 %_libdir/pkgconfig/libtorrent.pc

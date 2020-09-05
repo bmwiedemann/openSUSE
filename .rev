@@ -98,4 +98,12 @@
     <comment>Aaargh, this new interface lacks a lot of functionaility.... Awfull.</comment>
     <requestid>719868</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9eeab7dff8428b72877b4bea4c64f296</srcmd5>
+    <version>0.13.8</version>
+    <time>1599343448</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove outdated specfile constructs.</comment>
+    <requestid>832209</requestid>
+  </revision>
 </revisionlist>
