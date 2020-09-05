@@ -7,4 +7,41 @@
     <comment></comment>
     <requestid>513004</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fdbca1e438d09cba683f6d567f42d9b7</srcmd5>
+    <version>4.1.1</version>
+    <time>1599343318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.1:
+- enable tests
+  * Fix use of 'latest' param when querying jobs
+  * Drop a rogue word from `do_request` docstring, rewrap
+  * Tweak release script to use 'pypi' repo
+  * Handle YAML responses as well as JSON (#12)
+  * Add a 'parse' argument for `do_request` to skip parsing
+  * Add toml to CI requires (for coverage to read TOML config)
+  * tox: run `coverage xml` explicitly
+  * Improve the ugly sed hack fix for the coverage vs. tox venv issue
+  * Update release.sh to use pep517
+  * Add pyproject.toml to comply with PEP-517 / PEP-518
+  * black-ify code and add black to CI config
+  * Move source under src/ , fix tox config to run tests on package
+  * Use f-strings for string formatting
+  * Drop Python 2 support, and some Python 2-specific workarounds
+  * Have MANIFEST.in exclude itself
+  * Add a MANIFEST.in to exclude some stuff we don't want
+  * Fix tests to run on ancient pytest (I hope)
+  * Fix more brokenness in setup.py
+  * Fix release.sh for no spaces in setup.py setup()
+  * Drop duplicated description line in setup.py
+  * Update release.sh to use Python 3
+  * Drop WaitError exception
+  * find_clones: don't edit list while iterating it
+  * _add_auth_headers: don't modify the original request
+  * setup.py: don't import os, we don't use it
+  * setup.py: Remove runtime dependency on setuptools (@jayvdb) (#9)
+  * setup.py: more cleanups based on sample project
+  * setup.py: we don't use find_packages, don't import it (forwarded request 832036 from mimi_vx)</comment>
+    <requestid>832037</requestid>
+  </revision>
 </revisionlist>
