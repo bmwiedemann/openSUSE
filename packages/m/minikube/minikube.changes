@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep  4 08:48:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.13.0:
+  * Update default Kubernetes version to v1.19.0 tada #9050
+  * start: Support for mounting host volumes on start with docker driver #8159
+  * start: Add a machine readable reason to all error paths #9126
+  * stop: add --keep-context-active flag #9044
+  * kubectl: Invoke kubectl if minikube binary is named 'kubectl' #8872
+  * Bug fixes
+  * docker: Choose the appropriate bridge interface when multiple exist #9062
+  * cache: Fix "cache add" for local images by cherry-picking go-containerregistry fix #9160
+  * update-context: Fix nil pointer dereference #8989
+  * start: Fix --extra-config for scheduler/controllerManager by removing hardcoded values #9136
+  * start: Fix --memory flag parsing in minikube start #9033
+  * start: Improve overlay module check (behavior & UX) #9163
+  * gcp-auth addon: trim whitespace when setting gcp project id #9164
+  * cni: Allow flannel CNI to work with kicbase by fixing IP conflict #9046
+  * cni: fix multiple node calico-node not ready #9019
+  * kic: Retry fix_cgroup on failure #8974
+  * json: fix type for kubectl version mismatch to warning #9157
+  * json: fix type for latest minikube availability message #9109
+  * addon-manager: Add namespace to persistent volume path #9128
+  * ssh: respect native-ssh flag #8907
+
+-------------------------------------------------------------------
 Wed Aug 19 12:17:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.12.3:
