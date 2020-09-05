@@ -265,4 +265,15 @@
     <comment></comment>
     <requestid>722609</requestid>
   </revision>
+  <revision rev="37" vrev="300">
+    <srcmd5>42579335e649096e4a6dae43cb1a2aa5</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1599343118</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  fix do not enable application keypad mode [bsc#1158271]
+  + xiterm-no-keypad-application-mode.patch
+- big thanks to Stefan Hundhammer</comment>
+    <requestid>831448</requestid>
+  </revision>
 </revisionlist>

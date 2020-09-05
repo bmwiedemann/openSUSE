@@ -1,7 +1,7 @@
 #
 # spec file for package xiterm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,11 @@ Name:           xiterm
 Version:        0.5.20040304
 Release:        0
 Summary:        Internationalized Terminal Emulator for X11
-License:        SUSE-CPL-0.5
-Group:          System/X11/Terminals
 # cvs -d:pserver:anonymous@www.openi18n.org:/cvsroot login (no password to login)
 # cvs -d:pserver:anonymous@www.openi18n.org:/cvsroot co iterm
 # tar jcvf iterm-0.5.20040304.tar.bz2 iterm
+License:        SUSE-CPL-0.5
+Group:          System/X11/Terminals
 Source0:        iterm-0.5.20040304.tar.bz2
 Source1:        fonts.tar.bz2
 Patch0:         xiterm-fontset.patch
@@ -43,6 +43,8 @@ Patch9:         xiterm-asneeded-and-dso.patch
 Patch10:        xiterm-automake-1.13.patch
 Patch11:        implict-ptsname-decl.patch
 Patch12:        stropts.patch
+# do not enable application keypad mode [bsc#1158271]
+Patch13:        xiterm-no-keypad-application-mode.patch
 BuildRequires:  bdftopcf
 BuildRequires:  fribidi-devel
 BuildRequires:  gtk2-devel
@@ -92,8 +94,8 @@ An internationalized terminal emulator for GTK.
 
 %package -n libiterm1
 Summary:        Internationalized Terminal Emulator Library
-Group:          System/Libraries
 # ncurses provides an alternative /usr/share/terminfo/i/iterm, the files conflict though
+Group:          System/Libraries
 Conflicts:      terminfo-iterm
 # O/P added in 12.3
 Provides:       libiterm = %version-%release
@@ -115,8 +117,8 @@ Header files and development libraries for libiterm
 
 %package -n libXiterm1
 Summary:        Terminal emulator Xaw widget library based on libiterm
-Group:          System/Libraries
 # O/P added in 12.3
+Group:          System/Libraries
 Provides:       libXiterm = %version-%release
 Obsoletes:      libXiterm < %version-%release
 
@@ -146,6 +148,7 @@ Header files and development libraries for libXiterm
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 find . -name CVS -type d | xargs rm -rf
 find . -name .cvsignore -type f | xargs rm -f
 find . -type f | xargs chmod u+w
