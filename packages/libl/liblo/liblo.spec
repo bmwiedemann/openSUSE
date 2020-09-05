@@ -1,7 +1,7 @@
 #
 # spec file for package liblo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	liblo7
 Name:           liblo
-Version:        0.30
+Version:        0.31
 Release:        0
 Summary:        Open Sound Control implementation
 # was http://plugin.org.uk/liblo/
