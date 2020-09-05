@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep  5 10:43:56 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 1.9.2
+  * Fixed FileField UI bug
+- Remove test suite from runtime installation
+- Fix test suite execution
+
+-------------------------------------------------------------------
 Tue Jun  9 11:00:22 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 1.9.1

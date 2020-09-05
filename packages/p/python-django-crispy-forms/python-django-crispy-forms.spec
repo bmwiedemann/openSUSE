@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define mod_name django-crispy-forms
 Name:           python-%{mod_name}
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT
@@ -48,13 +48,15 @@ Django.
 %build
 %python_build
 
-%check
-export DJANGO_SETTINGS_MODULE=crispy_forms.tests.test_settings
-%pytest
-
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/crispy_forms/tests/
+%fdupes %{buildroot}%{$python_sitelib}
+}
+
+%check
+export DJANGO_SETTINGS_MODULE=crispy_forms.tests.test_settings
+%python_exec -m pytest -rs crispy_forms/tests/
 
 %files %{python_files}
 %license LICENSE.txt
