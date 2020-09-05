@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  2 08:39:24 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- add libbpf-Fix-libbpf-hashmap-on-I-LP32-architectures.patch
+
+-------------------------------------------------------------------
 Tue May 19 11:44:37 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Don't require libebl-plugins on suse_version >= 1550 

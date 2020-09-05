@@ -28,6 +28,7 @@ URL:            http://acmel.wordpress.com/
 Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
+Patch0:         libbpf-Fix-libbpf-hashmap-on-I-LP32-architectures.patch
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.170
 %if 0%{?suse_version} < 1550
