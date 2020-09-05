@@ -37,7 +37,6 @@ Source3:        prometheus-exporter_exporter.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.14
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %{go_nostrip}
 %{go_provides}
@@ -46,8 +45,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Reverse proxy designed for Prometheus exporters
 
 %prep
-%setup -q -n %{repo}-%{version}
-%setup -q -T -D -a 1 -n %{repo}-%{version}
+%autosetup -a1 -n %{repo}-%{version}
 
 %build
 %goprep %{import_path}
@@ -64,7 +62,7 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcprometheus-exporter_exporter
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/%{repo}.yaml
 install -d -m 0755 %{buildroot}%{_sysconfdir}/%{repo}.d
 
-%fdupes %{buildroot}
+%fdupes %{buildroot}/%{_prefix}
 
 %check
 %gotest --mod=vendor "" ...
@@ -84,7 +82,6 @@ getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %
 %service_del_postun prometheus-exporter_exporter.service
 
 %files -f file.lst
-%defattr(-,root,root,-)
 %doc README.md LICENSE
 %{_bindir}/%{repo}
 %{_unitdir}/prometheus-exporter_exporter.service

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  6 12:53:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old specfile constructs. Avoid double %setup. Avoid
+  fdupes across volumes.
+
+-------------------------------------------------------------------
 Thu Jul 30 13:23:06 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Migrate source service to obs_scm
