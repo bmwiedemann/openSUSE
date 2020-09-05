@@ -2110,6 +2110,7 @@ unsorted:
   - cracklib-devel 
   - cracklib-devel-32bit: [x86_64] 
   - cracklib-dict-small 
+  - cramfs-tools 
   - crash 
   - crash-devel 
   - crash-doc 
@@ -2776,6 +2777,7 @@ unsorted:
   - eclipse-swt-bootstrap: [x86_64] 
   - eclipse-swtchart: [x86_64] 
   - econnman 
+  - ecore_imf-module-scim 
   - ecryptfs-utils 
   - ecryptfs-utils-32bit: [x86_64] 
   - ecryptfs-utils-devel 
@@ -5286,6 +5288,7 @@ unsorted:
   - goffice-devel 
   - goffice-lang 
   - gojsontoyaml 
+  - golang-github-QubitProducts-exporter_exporter 
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
   - golang-github-docker-libnetwork 
@@ -6324,6 +6327,7 @@ unsorted:
   - intelhex 
   - inter-fonts 
   - interbench 
+  - interceptty 
   - intlfonts 
   - intlfonts-arabic-bitmap-fonts 
   - intlfonts-asian-bitmap-fonts 
@@ -11389,6 +11393,7 @@ unsorted:
   - libopenssl-1_1-devel 
   - libopenssl-1_1-devel-32bit: [x86_64] 
   - libopenssl-devel 
+  - libopenssl10 
   - libopenssl1_0_0 
   - libopenssl1_0_0-32bit: [x86_64] 
   - libopenssl1_0_0-hmac 
@@ -11402,7 +11407,7 @@ unsorted:
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
   - libopenvdb7_0 
-  - libopenvswitch-2_13-0 
+  - libopenvswitch-2_14-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
   - liboping0 
@@ -11502,7 +11507,7 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit: [x86_64] 
   - libovf-glib-devel 
-  - libovn-20_03-0 
+  - libovn-20_06-0 
   - libowncloudsync-devel 
   - libowncloudsync0 
   - liboyranos-alpha-devel 
@@ -11697,6 +11702,8 @@ unsorted:
   - libpolkit-qt5-1-devel 
   - libpolkit-qt5-1-devel-32bit: [x86_64] 
   - libpolkit0-32bit: [x86_64] 
+  - libpolyclipping-devel 
+  - libpolyclipping22 
   - libpoppler-cpp0-32bit: [x86_64] 
   - libpoppler-devel 
   - libpoppler-glib-devel 
@@ -18849,11 +18856,14 @@ unsorted:
   - poster 
   - postfish 
   - postfix-devel 
+  - postfix-ldap 
   - postfix-lmdb 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
   - postgresql-devel 
+  - postgresql-jdbc 
+  - postgresql-jdbc-javadoc 
   - postgresql-plperl 
   - postgresql-plpython 
   - postgresql-pltcl 
@@ -21138,8 +21148,8 @@ unsorted:
   - python3-numpy-devel 
   - python3-numpy-gnu-hpc 
   - python3-numpy-gnu-hpc-devel 
-  - python3-numpy_1_18_1-gnu-hpc 
-  - python3-numpy_1_18_1-gnu-hpc-devel 
+  - python3-numpy_1_19_0-gnu-hpc 
+  - python3-numpy_1_19_0-gnu-hpc-devel 
   - python3-numpydoc 
   - python3-nwdiag 
   - python3-nxapi-plumbing 
@@ -21668,7 +21678,6 @@ unsorted:
   - python3-pytest-virtualenv 
   - python3-pytest-xdist 
   - python3-pytest-xvfb 
-  - python3-pytest4 
   - python3-pytest5 
   - python3-python-afl 
   - python3-python-aiml 
@@ -22152,6 +22161,7 @@ unsorted:
   - python3-tri.struct 
   - python3-trustme 
   - python3-tsk 
+  - python3-tvm 
   - python3-tvtk 
   - python3-tvtk-doc 
   - python3-tweepy 
@@ -33966,6 +33976,8 @@ unsorted:
   - tuxpaint-stamps-vehicles 
   - tvbrowser 
   - tvheadend 
+  - tvm 
+  - tvm-devel 
   - tvtime 
   - tvtime-lang 
   - twemoji-color-font 
