@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep  3 17:16:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.2.23: 
+  * gpg: fix AHEAD preference list overflow boo#1176034 /  CVE-2020-25125
+  * gpg: fix possible segv in the key cleaning code
+  * gpgsm: fix a minor RFC2253 parser gub
+  * scdaemon: Fix a PIN verify failure on certain OpenPGP card
+    implementations
+
+-------------------------------------------------------------------
+Tue Sep  1 21:09:57 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.2.22:
+  * gpg: Change the default key algorithm to rsa3072
+  * gpg: Add regular expression support for Trust Signatures on
+    all platforms
+  * gpg: Ignore --personal-digest-prefs for ECDSA keys
+  * gpgsm: Make rsaPSS a de-vs compliant scheme
+  * gpgsm: Show also the SHA256 fingerprint in key listings
+  * gpgsm: Do not require a default keyring for --gpgconf-list
+  * gpg-agent: Default to extended key format and record the
+    creation time of keys
+    Add new option --disable-extended-key-format
+  * gpg-agent: Support the WAYLAND_DISPLAY envvar
+  * gpg-agent: Allow using --gpgconf-list even if HOME does not
+    exist
+  * gpg-agent: Make the Pinentry work even if the envvar TERM is
+    set to the empty string
+  * scdaemon: Add a workaround for Gnuk tokens <= 2.15 which
+    wrongly incremented the error counter when using the
+    "verify" command of "gpg --edit-key" with only the signature
+    key being present
+   * dirmngr: Better handle systems with disabled IPv6
+   * gpgpslit: Install tool.  It was not installed in the past to
+     avoid conflicts with the version installed by GnuPG 1.4
+   * gpgtar: Make --files-from and --null work as documented
+- drop gnupg-gpgme-t-encrypt-sym.patch, upstream
+
+-------------------------------------------------------------------
 Tue Jul 14 10:22:22 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix regression in latest gpg2 that makes gpgme fail to build [bsc#1174007]
