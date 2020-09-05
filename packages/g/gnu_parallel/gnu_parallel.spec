@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20200722
+Version:        20200822
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
@@ -55,7 +55,7 @@ This subpackage contains the documentation for Parallel.
 
 %build
 %configure --docdir="%_docdir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
