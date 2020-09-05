@@ -1,7 +1,7 @@
 #
 # spec file for package duply
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011-2019 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,11 @@
 
 
 Name:           duply
-Version:        2.2
+Version:        2.2.2
 Release:        0
 Summary:        A frontend for the "duplicity" backup program
 License:        GPL-2.0-only
-Url:            http://duply.net/
+URL:            http://duply.net/
 Source0:        https://sourceforge.net/projects/ftplicity/files/duply%20%28simple%20duplicity%29/2.2.x/%{name}_%{version}.tgz
 # MANUAL BEGIN
 Requires:       duplicity
