@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -479,6 +479,10 @@ cat > .our_xenversion <<_EOV_
 export WGET=$(type -P false)
 export FTP=$(type -P false)
 export GIT=$(type -P false)
+%ifarch aarch64
+# GCC10+ enables outline-atomics option by default and breaks the build, so disable it
+export CFLAGS="%{optflags} -mno-outline-atomics"
+%endif
 export EXTRA_CFLAGS_XEN_TOOLS="%{optflags}"
 export EXTRA_CFLAGS_QEMU_TRADITIONAL="%{optflags}"
 export SMBIOS_REL_DATE="$SMBIOS_REL_DATE"
@@ -1032,8 +1036,8 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/sbin/xen-hvmctx
 /usr/sbin/xen-lowmemd
 /usr/sbin/xen-kdd
-/usr/sbin/xenhypfs
 %endif
+/usr/sbin/xenhypfs
 /usr/sbin/xen-list
 /usr/sbin/xen-destroy
 /usr/sbin/xen-livepatch

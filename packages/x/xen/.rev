@@ -2475,4 +2475,12 @@
     <comment></comment>
     <requestid>824549</requestid>
   </revision>
+  <revision rev="289" vrev="2">
+    <srcmd5>a22a3cd13b20f2424f5bcf8694fb402f</srcmd5>
+    <version>4.14.0_02</version>
+    <time>1599343019</time>
+    <user>dimstar_suse</user>
+    <comment>Fix building aarch64 with gcc10. Fix copyright string.</comment>
+    <requestid>831266</requestid>
+  </revision>
 </revisionlist>

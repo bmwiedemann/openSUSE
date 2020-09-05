@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 12:28:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 with gcc10
+- Package xenhypfs for aarch64
+
+-------------------------------------------------------------------
 Wed Aug  5 19:30:23 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Correct license name
