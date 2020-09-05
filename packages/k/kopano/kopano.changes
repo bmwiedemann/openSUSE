@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  4 21:32:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.0.6
+  * dagent, gateway: drop server-side HTML filtering
+
+-------------------------------------------------------------------
 Wed May 20 16:08:19 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.0.5

@@ -17,10 +17,10 @@
 #
 
 
-%define version_unconverted 10.0.5
+%define version_unconverted 10.0.6
 
 Name:           kopano
-Version:        10.0.5
+Version:        10.0.6
 Release:        0
 Summary:        Groupware server suite
 License:        AGPL-3.0-only
@@ -30,10 +30,11 @@ Source:         kopanocore-%version.tar.xz
 Source3:        %name-rpmlintrc
 # Workaround obs-service-source_validator
 Source9:        debian.php7-mapi.triggers
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++ >= 6
 BuildRequires:  gettext-devel
+%ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 mips s390x
 BuildRequires:  gperftools-devel
+%endif
 BuildRequires:  gsoap-devel >= 2.8.73
 BuildRequires:  krb5-devel
 BuildRequires:  libcom_err-devel

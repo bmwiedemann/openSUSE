@@ -2,9 +2,9 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://stash.kopano.io/scm/kc/kopanocore.git</param>
-		<param name="revision">kopanocore-10.0.5</param>
-		<param name="parent-tag">kopanocore-10.0.5</param>
-		<param name="versionformat">10.0.5</param>
+		<param name="revision">kopanocore-10.0.6</param>
+		<param name="parent-tag">kopanocore-10.0.6</param>
+		<param name="versionformat">10.0.6</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>
