@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>774142</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1812ea634e34e98724b4692fc3bbb7d3</srcmd5>
+    <version>1.24</version>
+    <time>1599343183</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.24:
+  * Fix FTBFS on hurd-i386: Necessary functions disabled 
+  * Fix FTBFS with glibc 2.31 (conflicting gettimeofday prototype) 
+- remove glibc-2.31-fix.patch (upstream)</comment>
+    <requestid>831504</requestid>
+  </revision>
 </revisionlist>
