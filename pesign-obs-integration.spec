@@ -42,6 +42,7 @@ Patch6:         0001-sign-stage3.bin-from-s390-tools-with-sign-files-bsc-.patch
 # https://github.com/openSUSE/pesign-obs-integration/pull/18
 Patch7:         pesign-sign-s390x-kernel.patch
 Patch8:         0001-Enable-find_provides-and-requires.patch
+Patch9:         0001-Forward-_binary_payload-to-the-repackaged-rpm.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # suse-module-tools <= 15.0.10 contains modsign-verify
 Requires:       suse-module-tools >= 15.0.10
@@ -60,6 +61,7 @@ boot loader, kernel and kernel modules in the openSUSE Buildservice.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 

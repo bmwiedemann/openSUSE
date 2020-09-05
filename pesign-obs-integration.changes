@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 03:39:46 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add 0001-Forward-_binary_payload-to-the-repackaged-rpm.patch to
+  forward _binary_payload to the repackaged rpm (bsc#1175882)
+
+-------------------------------------------------------------------
 Fri Jul 17 07:25:34 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add 0001-Enable-find_provides-and-requires.patch (bsc#1114605)
