@@ -2,7 +2,7 @@
 # spec file for package yder
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2018-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define sover 1_4
 Name:           yder
-Version:        1.4.11
+Version:        1.4.12
 Release:        0
 Summary:        Logging library written in C
 # Example programs in subfolder examples/ are licensed under MIT

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  2 20:20:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.12
+  * Use `gmtime_r` instead of `localtime`
+  * Fix documentation typos
+
+-------------------------------------------------------------------
 Fri Jul  3 18:10:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.11
