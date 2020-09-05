@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Aug 25 21:05:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.31
+  * Fixed scrolling on loading new pages.
+  * Added Ctrl-'=' and Ctrl-'-' as shortcuts for zoom-in/out.
+  * The toolbar is now togglable.
+
+-------------------------------------------------------------------
+Sun Dec  7 00:56:45 UTC 2014 - jengelh@inai.de
+
+- Update to git snapshot 1.23+git568 to enable switching to
+  wxWidgets 3
+
+-------------------------------------------------------------------
+Sun Sep  1 08:56:03 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 1.23) for build.opensuse.org
