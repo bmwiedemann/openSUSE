@@ -31,13 +31,11 @@ BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
 
 %description
-Turn English phrases to C or C++ declarations Cdecl is a program
-which will turn English-like phrases such as "declare foo as array 5
-of pointer to function returning int" into C declarations such as
-"int (*foo[5])()". It can also translate the C into the
-pseudo-English. And it handles typecasts, too. Plus C++. And in this
-version it has command line editing and history with the GNU readline
-library.
+Cdecl is a program which will turn English-like phrases such as
+"declare foo as array 5 of pointer to function returning int" into C
+declarations such as "int (*foo[5])()" and vice-versa. It handles
+typecasts and C++ as well, and offers command line editing and
+history.
 
 %prep
 %autosetup -p1

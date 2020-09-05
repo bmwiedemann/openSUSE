@@ -178,4 +178,12 @@
     <comment>- Update to release 8.0</comment>
     <requestid>823578</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>a5000ae207cd41e7000c893bdbdbca38</srcmd5>
+    <version>8.0</version>
+    <time>1599343387</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix awkward grammar in description.</comment>
+    <requestid>832103</requestid>
+  </revision>
 </revisionlist>
