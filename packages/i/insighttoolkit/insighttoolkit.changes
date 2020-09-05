@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Aug 20 17:49:29 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.1:
+  * VtkGlue module-Provide support for VTK new cmake targets.
+  * Add VXL support for GCC 9.
+  * Use double-conversion's CMake targets.
+  * Fix for non-system double-conversion build.
+  * Patch missing const qualifier to GDCM dircos_comp comparison.
+  * Back-port gh#InsightSoftwareConsortium/ITK#1165 to support
+    Visual Studio 2019.
+  * Address bug with small size in output of SliceImageFilter.
+  * Update GDCM to latest on the release-2.8 branch.
+  * Don't use InsertElement which modifies MTime.
+  * Address buffer overflow with deprecated GDCM1 interface.
+  * update download location for pre-built ICU for Visual Studio.
+  * Duplicate ImageToImageFilter wrapping of ULL.
+  * Double scaling introduced in refactoring.
+  * Add missing const qualifier.
+  * Add StatisticsImageFilter::SetNumberOfStreamDivisions Python.
+  * Make column limit more stringent in the examples.
+  * CUFFTW paths were not being set and unnecessary FFTW files
+    used.
+  * Disable dynamic threading in noise filter.
+  * Added vcl compiler detection for GCC 10.x.
+  * Specify itk package in SWIG Python modules.
+  * Fix warning in PointSetToPointSetMetricv4
+    (gh#InsightSoftwareConsortium/ITK#1820).
+  * Fix segfault with empty CompositeTransforms.
+  * Fix additional segmentation faults with empty Composite.
+  * Address missing brace initializer warning.
+  * Address memory leak in CastSpatialOpbjectTest.
+  * Simplify itk.BlockMatchingImageFilter feature points PointSet
+    mangling.
+  * ITK_WRAP_PYTHON_PROCCESS to ITK_WRAP_PYTHON_PROCESS.
+  * Accept TemplateTypeError with fallback_only.
+  * Import C module from Python submodule.
+  * Fix Segfault in Delaunay Filter.
+  * ITKModuleExternal CMAKE_LIBRARY_OUTPUT_DIRECTORY when
+    wrapping.
+  * Avoid duplicate itk.PointSetD3 wrapping.
+  * Wrap ExtractImageFilter for UL.
+  * Use Numpy bridge with array of dimension 1.
+  * Restore LICENSE accidentally overwritten by a merge commit.
+  * Rename libPNG's license to match the original one.
+  * Support casting unsigned long pixel types in Python.
+  * Empty image support in image_from_xarray.
+  * Remove netnlib triangle classes.
+  * Remove License incompatible netlib files from vxl updates.
+  * improve helpers of itk.Filters.
+  * Do not reference FE_DIVBYZERO FE_INVALID with Emscripten.
+  * Add missing enumerate with multi-ndarray-output itk filters.
+  * Do not wrap unsigned char for connected component output.
+  * Fix issue gh#InsightSoftwareConsortium/ITK#1950,
+    ImageMaskSpatialObject access outside image buffer.
+  * Register Dask serialization functions for NDArrayITKBase.
+  * Add testing data content links for ITK 5.1.1.
+- Drop insighttoolkit-drop-netlib-triangle-files.patch:
+  incorporated upstream.
+- Disable builds for aarch64: Known Eigen+CastXML issue
+  [https://gitlab.com/libeigen/eigen/-/issues/1979].
+
+-------------------------------------------------------------------
 Thu Aug 20 08:52:30 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.

@@ -18,25 +18,21 @@
 
 
 %global __builder ninja
-%define tarname InsightToolkit
+%define tarname ITK
 %define baseversion 5.1
 %define libname lib%{name}5
 
 Name:           insighttoolkit
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Toolkit for scientific image processing, segmentation, and registration
-# NON-FREE FILES IN Modules/ThirdParty/VNL/src/vxl/v3p/netlib/ NOT USED BY ITK AND REMOVED BY Patch4
-# SEE NOTICE file, https://github.com/InsightSoftwareConsortium/ITK/pull/1913, and https://github.com/InsightSoftwareConsortium/ITK/pull/1920
 License:        Apache-2.0
 URL:            https://www.itk.org
-Source:         https://github.com/InsightSoftwareConsortium/ITK/releases/download/v%{version}/%{tarname}-%{version}.tar.gz
+Source:         https://github.com/InsightSoftwareConsortium/ITK/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM proper linking against math library [gh#InsightSoftwareConsortium/ITK#1867, gh#InsightSoftwareConsortium/ITK#1878]
 Patch1:         nrrdio-linking.patch
 # PATCH-FIX-UPSTREAM proper linking against math library [gh#InsightSoftwareConsortium/ITK#1867, gh#InsightSoftwareConsortium/ITK#1878]
 Patch3:         itklbfgs-linking.patch
-# PATCH-FIX-UPSTREAM insighttoolkit-drop-netlib-triangle-files.patch [gh#InsightSoftwareConsortium/ITK#1913] badshah400@gmail.com -- Drop netlib triangle files and any linking to them due to licensing issues; patch from upstream
-Patch4:         insighttoolkit-drop-netlib-triangle-files.patch
 # PATCH-FIX-OPENSUSE reproducible.patch boo#1100677 gh#InsightSoftwareConsortium/ITK#1939
 Patch100:       reproducible.patch
 BuildRequires:  CastXML-devel
@@ -67,6 +63,8 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
+# Builds currently fail on aarch64 due to known eigen+CastXML issues: https://gitlab.com/libeigen/eigen/-/issues/1979
+ExcludeArch:    aarch64
 
 %description
 The Insight Toolkit (ITK) is a toolkit for N-dimensional scientific
@@ -119,8 +117,7 @@ This package provides the modules for ITK's python bindings.
 %autosetup -p1 -n %{tarname}-%{version}
 
 %build
-
-# Enabling BUILD_TESTING requires KWStyle, not available for openSUSE
+# Tests disabled because no KWStyle pkg for openSUSE
 %cmake \
   -DITK_INSTALL_LIBRARY_DIR:PATH=%{_lib}/ \
   -DITK_INSTALL_INCLUDE_DIR:PATH=include/%{name}/ \
