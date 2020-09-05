@@ -18,13 +18,15 @@
 
 
 Name:           rclone
-Version:        1.52.3
+Version:        1.53.0
 Release:        0
 Summary:        Rsync for cloud storage
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://rclone.org/
 Source:         %{name}-%{version}.tar.xz
+# cd <folder>; go mod vendor ; tar cf vendor.tar.xz vendor
+Source1:        vendor.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  go >= 1.14
 
@@ -55,6 +57,7 @@ Zsh command line completion support for %{name}.
 
 %prep
 %setup -q
+%setup -q -D -T -a 1
 
 %build
 go build -o %{name} -mod=vendor -buildmode=pie
