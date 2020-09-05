@@ -1,7 +1,7 @@
 #
 # spec file for package kelbt
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,12 @@ Name:           kelbt
 Version:        0.16
 Release:        0
 Summary:        Backtracking LALR(1) parser generator
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-Url:            http://complang.org/kelbt/
+URL:            http://www.colm.net/files/kelbt/
 
 Source:         http://www.colm.net/files/kelbt/%name-%version.tar.gz
 Source2:        kelbt.txt
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gperf
@@ -39,21 +38,20 @@ backtracking at runtime. Kelbt is able to generate a parser for any
 context-free grammar that is free of hidden left recursion.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 install -pm0644 "%{S:2}" .
 export CXXFLAGS="%optflags -Wno-narrowing"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-b="%buildroot"
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc COPYING kelbt.txt
+%license COPYING
+%doc kelbt.txt
 %_bindir/kelbt
 
 %changelog
