@@ -1,7 +1,7 @@
 #
 # spec file for package suil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,15 +29,13 @@ If Suil supports a particular toolkit, then all hosts that use Suil will\
 support that toolkit.
 
 Name:           suil
-Version:        0.10.2
+Version:        0.10.6
 Release:        0
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 License:        ISC
 Group:          Development/Libraries/C and C++
 URL:            https://drobilla.net/software/suil/
 Source:         https://download.drobilla.net/suil-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM suil-wrong-cocoa-detection.patch
-Patch0:         suil-wrong-cocoa-detection.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel >= 3.14.0
@@ -83,6 +81,16 @@ Requires:       libsuil-0-0 = %{version}
 Supplements:    packageand(libQt5Widgets5:lv2)
 
 %description -n suil-plugin-qt5-in-gtk2
+Module plugin for:
+* Qt5 hosts displaying GTK2 LV2 GUIs using suil
+
+%package     -n suil-plugin-qt5-in-gtk3
+Summary:        Shared object for Qt5 hosts displaying GTK3 LV2 GUIs
+Group:          System/Libraries
+Requires:       libsuil-0-0 = %{version}
+Supplements:    packageand(libQt5Widgets5:lv2)
+
+%description -n suil-plugin-qt5-in-gtk3
 Module plugin for:
 * Qt5 hosts displaying GTK2 LV2 GUIs using suil
 
@@ -132,7 +140,6 @@ Module plugin for:
 
 %prep
 %setup -q
-%patch0 -p1
 # run waf with python 3
 find waflib -type f -name *.py -exec sed -i 's|/usr/bin/env python|%{_bindir}/python3|' {} \;
 sed -i 's|/usr/bin/env python|%{_bindir}/python3|' wscript waf waflib/waf
@@ -171,6 +178,11 @@ sed -i 's|/usr/bin/env python|%{_bindir}/python3|' wscript waf waflib/waf
 %license COPYING
 %doc README.md
 %{_libdir}/suil-0/libsuil_qt5_in_gtk2.so
+
+%files -n suil-plugin-qt5-in-gtk3
+%license COPYING
+%doc README.md
+%{_libdir}/suil-0/libsuil_qt5_in_gtk3.so
 
 %files -n suil-plugin-x11
 %license COPYING

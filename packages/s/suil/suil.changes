@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 15 20:48:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.6:
+  * Add no-cocoa configure flag
+  * Update build system
+  * Add support for Qt5 in Gtk3
+  * Add support for min/base size hints for X11 in Gtk (thanks Hermann Meyer)
+- Drop upstreamed patch suil-wrong-cocoa-detection.patch
+
+-------------------------------------------------------------------
 Tue Jan 28 21:26:23 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop bogus python(2)-qt5 runtime dependencies, python is only
