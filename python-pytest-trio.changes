@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 11:18:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add patch pytest6.patch to fix build
+
+-------------------------------------------------------------------
 Tue Jun  9 07:31:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.6.0:

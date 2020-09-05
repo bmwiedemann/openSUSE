@@ -25,6 +25,7 @@ Summary:        Pytest plugin for trio
 License:        MIT OR Apache-2.0
 URL:            https://github.com/python-trio/pytest-trio
 Source:         https://github.com/python-trio/pytest-trio/archive/v%{version}.tar.gz
+Patch0:         pytest6.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,8 +39,9 @@ BuildRequires:  %{python_module async_generator >= 1.9}
 BuildRequires:  %{python_module contextvars >= 2.1}
 BuildRequires:  %{python_module hypothesis >= 3.64}
 BuildRequires:  %{python_module outcome}
-BuildRequires:  %{python_module pytest >= 3.6}
 BuildRequires:  %{python_module pytest-cov}
+# we really need newer pytest in tests than is required by the package
+BuildRequires:  %{python_module pytest >= 6.0.0} 
 BuildRequires:  %{python_module trio >= 0.15.0}
 # /SECTION
 %python_subpackages
@@ -49,6 +51,7 @@ This is a pytest plugin to help you test projects that use Trio, a friendly libr
 
 %prep
 %setup -q -n pytest-trio-%{version}
+%patch0 -p1
 
 %build
 %python_build
