@@ -19,16 +19,15 @@
 
 %define sover 1
 Name:           brotli
-Version:        1.0.7
+Version:        1.0.9
 Release:        0
 Summary:        Lossless Compression Algorithm
 License:        MIT
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/google/brotli
-Source:         %url/archive/v%version.tar.gz#/%name-%version.tar.gz
+Source:         https://github.com/google/brotli/archive/v%version.tar.gz
 Source99:       baselibs.conf
-Patch:          brotli_Verbose-CLI+Shared-Brotli.patch
-Patch1:         brotli_Ensure-decompression-consumes-all-input.patch
+Patch1:         0001-Revert-Add-runtime-linker-path-to-pkg-config-files-7.patch
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  gzip
@@ -123,25 +122,20 @@ install -pm0644 docs/*.3 "%buildroot/%_mandir/man3/"
 %postun -n libbrotlienc%sover -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %_bindir/brotli
 %_mandir/man1/brotli.1*
 
 %files -n libbrotlicommon%sover
-%defattr(-,root,root)
 %_libdir/libbrotlicommon.so.*
 
 %files -n libbrotlidec%sover
-%defattr(-,root,root)
 %_libdir/libbrotlidec.so.*
 
 %files -n libbrotlienc%sover
-%defattr(-,root,root)
 %_libdir/libbrotlienc.so.*
 
 %files -n libbrotli-devel
-%defattr(-,root,root)
 %_includedir/brotli/
 %_libdir/libbrotlicommon.so
 %_libdir/libbrotlidec.so

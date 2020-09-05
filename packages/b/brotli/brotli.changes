@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep  1 13:56:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Revert-Add-runtime-linker-path-to-pkg-config-files-7.patch
+
+-------------------------------------------------------------------
+Thu Aug 27 14:32:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.0.9
+  * Fix integer overflow when input chunk is longer than
+    2GiB [boo#1175825]
+  * `brotli -v` now reports raw / compressed size
+  * decoder: minor speed / memory usage improvements
+  * encoder: fix rare access to uninitialized data in ring-buffer
+- Drop brotli_Ensure-decompression-consumes-all-input.patch,
+  brotli_Verbose-CLI+Shared-Brotli.patch (merged)
+
+-------------------------------------------------------------------
 Wed Aug 12 14:52:42 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Fix W: shared-lib-calls-exit /usr/lib64/libbrotlienc.so.1.0.7 
