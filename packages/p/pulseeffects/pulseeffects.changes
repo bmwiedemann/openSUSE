@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Aug 29 09:18:17 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.8.0
+  Added:
+  * Loudness plugin has been replaced with the new Loudness
+    Compensator by Linux Studio Plugins.
+  * The Stereo Tools and the Maximizer plugins can now be used
+    when applying effects to microphone signals.
+  * New parameters have been added to the following plugins:
+    Compressor, Gate and Limiter.
+  * Plugin user interfaces have been redesigned with
+    checkbutton list and new global output level meter for both
+    output and input pipelines.
+  * The user has now the ability to change the minimum and
+    maximum frequency in the spectrum user interface.
+  * New command line that allows to hide the window when
+    running PulseEffects in service mode. This will allow tray
+    applets to hide our window.
+  * Initial support to Equalizer APO presets.
+  * Improved Slovak and Czech Translations.
+  Removed:
+  * The spectrum scaling feature was removed as it leads to
+    wrong mouse hover values when used
+    https://github.com/wwmm/pulseeffects/issues/733. And
+    fixing this will require the addition of an amount of code
+    complexity that does not seem worth it.
+  Note to packagers:
+  * This release is using GTKMM 3.24 features and Linux Studio
+    Plugins >= `1.1.24`. If you can not use any of these
+    libraries do not upgrade to PulseEffects 4.8.0!
+  * MDA is not needed anymore as optional dependency.
+  version 4.7.3:
+  Added:
+  * PulseEffects now searches for presets in /etc/PulseEffects
+    and directories specified by \$XDG_CONFIG_DIRS environment
+    variable.
+  * Our interface now shows third party Plugins credits.
+  * Each plugin now has a reset button
+  * Improved convolver impulse response files plot
+  * Applications entry now have a blacklist button to make it
+    easier to blacklist an application the user does not want
+    effects to be applied.
+  Fixed:
+  * Fixed a severe memory leak that happened whenever the
+    window was closed.
+  * PulseEffects no longer crashes when an empty or corrupted
+    preset is provided.
+  * Fixed laxity setting not being applied in the deesser
+- Fixes boo#1171896
+
+-------------------------------------------------------------------
+Wed May 20 08:28:36 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.7.2
+  Added:
+  * Compatibility to Linux Studio Plugins `1.1.14`
+  * The convolver plugin now accepts the wav extension in the
+    impulse files.
+  * Checking exceptions in the main function.
+  * Headers deprecated in Boost 1.72 were replaced.
+  Notes to package maintainers: 
+  * As the `bypass` property in Linux Studio Plugins `1.1.14`
+    was renamed to `enabled` this new PulseEffects version
+    won't work with older Linux Studio Plugins versions.
+    Although I could add checks and somehow try to support both
+    versions this makes the code ugly. And I think that nowadays
+    upgrading LSP should not be hard. If it is do not upgrade to
+    PE `4.7.2`.
+- Fixes boo#1171896
+
+-------------------------------------------------------------------
 Tue Mar  3 07:03:59 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Spec cleanup

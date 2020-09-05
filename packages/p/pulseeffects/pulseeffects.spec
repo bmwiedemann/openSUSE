@@ -17,7 +17,7 @@
 
 
 Name:           pulseeffects
-Version:        4.7.1
+Version:        4.8.0
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -26,8 +26,8 @@ Source0:        https://github.com/wwmm/pulseeffects/archive/v%{version}.tar.gz#
 BuildRequires:  appstream-glib
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_filesystem-devel >= 1.72
+BuildRequires:  libboost_system-devel >= 1.72
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtkmm-3.0)
+BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.2.4
 BuildRequires:  pkgconfig(libbs2b)
 BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libpulse)
@@ -53,7 +53,6 @@ Recommends:     %{name}-lang
 Recommends:     ladspa-zam-plugins
 Recommends:     lv2-calf >= 0.90.1
 Recommends:     lv2-lsp-plugins
-Recommends:     mda-lv2
 Recommends:     rubberband-ladspa
 
 %description
