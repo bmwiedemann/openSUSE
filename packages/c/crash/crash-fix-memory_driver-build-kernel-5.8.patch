@@ -1,0 +1,111 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Subject: Fix memory driver module build with kernel 5.8+
+Upstream: submitted 2020-09-04
+
+Kernel commit fe557319aa06c23cffc9346000f119547e0f289a renamed
+probe_kernel_{read,write} to copy_{from,to}_kernel_nofault.
+
+I'm also adding inline function wrapper to allow building the
+module with older kernel versions.
+
+Additionally, commit 0493cb086353e786be56010780a0b7025b5db34c
+unexported probe_kernel_write(), so writing kernel memory is
+no longer possible from a module.
+
+Without this patch, build with kernel 5.8 and later fails:
+
+kbuild/default/crash.c: In function 'crash_write':
+kbuild/default/crash.c:189:12: error: implicit declaration of function 'probe_kernel_write'; did you mean 'kernel_write'? [-Werror=implicit-function-declaration]
+  189 |        if (probe_kernel_write(vaddr, buffer, count)) {
+      |            ^~~~~~~~~~~~~~~~~~
+      |            kernel_write
+kbuild/default/crash.c: In function 'crash_read':
+kbuild/default/crash.c:225:13: error: implicit declaration of function 'probe_kernel_read'; did you mean 'kernel_read'? [-Werror=implicit-function-declaration]
+  225 |         if (probe_kernel_read(buffer, vaddr, count)) {
+      |             ^~~~~~~~~~~~~~~~~
+      |             kernel_read
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ memory_driver/crash.c |   27 +++++++++++++++++++++++++--
+ 1 file changed, 25 insertions(+), 2 deletions(-)
+
+--- a/memory_driver/crash.c
++++ b/memory_driver/crash.c
+@@ -25,6 +25,7 @@
+  *****************************************************************************/
+ 
+ #include <linux/module.h>
++#include <linux/version.h>
+ #include <linux/types.h>
+ #include <linux/miscdevice.h>
+ #include <linux/init.h>
+@@ -37,6 +38,22 @@
+ 
+ extern int page_is_ram(unsigned long);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++
++#define CAN_WRITE_KERNEL	1
++
++static inline long copy_from_kernel_nofault(void *dst, const void *src, size_t size)
++{
++	return probe_kernel_read(dst, src, size);
++}
++
++static inline long copy_to_kernel_nofault(void *dst, const void *src, size_t size)
++{
++	return probe_kernel_write(dst, src, size);
++}
++
++#endif
++
+ #ifdef CONFIG_S390
+ /*
+  * For swapped prefix pages get bounce buffer using xlate_dev_mem_ptr()
+@@ -160,6 +177,8 @@ crash_llseek(struct file * file, loff_t
+ 	}
+ }
+ 
++#ifdef CAN_WRITE_KERNEL
++
+ static ssize_t
+ crash_write(struct file *file, const char *buf, size_t count, loff_t *poff)
+ {
+@@ -186,7 +205,7 @@ crash_write(struct file *file, const cha
+                return -EFAULT;
+        }
+ 
+-       if (probe_kernel_write(vaddr, buffer, count)) {
++       if (copy_to_kernel_nofault(vaddr, buffer, count)) {
+                unmap_virtual(page);
+                return -EFAULT;
+        }
+@@ -197,6 +216,8 @@ crash_write(struct file *file, const cha
+        return written;
+ }
+ 
++#endif
++
+ /*
+  *  Determine the page address for an address offset value,
+  *  get a virtual address for it, and copy it out.
+@@ -222,7 +243,7 @@ crash_read(struct file *file, char *buf,
+ 	 * Use bounce buffer to bypass the CONFIG_HARDENED_USERCOPY
+ 	 * kernel text restriction.
+ 	 */
+-        if (probe_kernel_read(buffer, vaddr, count)) {
++        if (copy_from_kernel_nofault(buffer, vaddr, count)) {
+                 unmap_virtual(page);
+                 return -EFAULT;
+         }
+@@ -294,7 +315,9 @@ static struct file_operations crash_fops
+ 	.owner = THIS_MODULE,
+ 	.llseek = crash_llseek,
+ 	.read = crash_read,
++#ifdef CAN_WRITE_KERNEL
+ 	.write = crash_write,
++#endif
+ 	.unlocked_ioctl = crash_ioctl,
+ 	.open = crash_open,
+ 	.release = crash_release,

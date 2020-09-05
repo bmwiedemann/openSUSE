@@ -1,0 +1,30 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Subject: Fix eppic extension build with recent binutils
+Upstream: submitted 2020-09-04
+
+The eppic extension defines eppicdebug and eppicppdebug, but these
+symbols are already defined in libeppic.
+
+Without this patch, the build fails like this:
+
+/usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: /usr/lib64/gcc/x86_64-suse-linux/10/../../../../lib64/libeppic.a(eppicpp.tab.o):(.bss+0x14): multiple definition of `eppicppdebug'; /tmp/ccy1G30m.o:(.bss+0x4): first defined here
+/usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: /usr/lib64/gcc/x86_64-suse-linux/10/../../../../lib64/libeppic.a(eppic.tab.o):(.bss+0x14): multiple definition of `eppicdebug'; /tmp/ccy1G30m.o:(.bss+0x0): first defined here
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ extensions/eppic/applications/crash/eppic.c |    3 ---
+ 1 file changed, 3 deletions(-)
+
+--- a/extensions/eppic/applications/crash/eppic.c
++++ b/extensions/eppic/applications/crash/eppic.c
+@@ -788,9 +788,6 @@ char *edit_help[]={
+ };
+ 
+ 
+-// these control debug mode when parsing (pre-processor and compile)
+-int eppicdebug, eppicppdebug;
+-
+ void
+ load_cmd(void)
+ {

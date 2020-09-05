@@ -1449,4 +1449,17 @@
     <comment></comment>
     <requestid>803050</requestid>
   </revision>
+  <revision rev="164" vrev="6">
+    <srcmd5>a60c31be5810229a11d3f4acb2480f8d</srcmd5>
+    <version>7.2.8</version>
+    <time>1599343360</time>
+    <user>dimstar_suse</user>
+    <comment>- Add eppic-remove-duplicate-symbols.patch
+  Fix eppic extension build.
+- Add crash-fix-memory_driver-build-kernel-5.8.patch
+  Fix memory driver build failure with kernels 5.8+.
+- Always build crash KMPs.
+</comment>
+    <requestid>832084</requestid>
+  </revision>
 </revisionlist>

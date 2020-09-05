@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep  4 10:53:39 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Add eppic-remove-duplicate-symbols.patch
+  Fix eppic extension build.
+
+-------------------------------------------------------------------
+Fri Sep  4 10:27:51 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Add crash-fix-memory_driver-build-kernel-5.8.patch
+  Fix memory driver build failure with kernels 5.8+.
+
+-------------------------------------------------------------------
+Thu Sep  3 13:18:53 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Always build crash KMPs.
+
+-------------------------------------------------------------------
 Wed May  6 14:37:27 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - remove bypass lto and add -mfull-toc for ppc64le to check boo#1146646
