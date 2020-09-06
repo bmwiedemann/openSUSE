@@ -2116,7 +2116,7 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
-  - crash-kmp-default: [x86_64] 
+  - crash-kmp-pae: [i586] 
   - crawl 
   - crawl-data 
   - crawl-sdl 
@@ -2502,6 +2502,7 @@ unsorted:
   - dianara 
   - dico 
   - dico-devel 
+  - dico-lang 
   - dico-modules 
   - dictd 
   - dictd-devel 
@@ -12665,7 +12666,7 @@ unsorted:
   - libsubtitleeditor-devel 
   - libsubtitleeditor0 
   - libsubunit0 
-  - libsuil-0-0 
+  - libsuil-0-0: [i586] 
   - libsundials3 
   - libsundials3-mvapich2 
   - libsundials3-openmpi1 
@@ -13204,9 +13205,9 @@ unsorted:
   - libwebsockets-devel 
   - libwebsockets16 
   - libwebvfx1 
-  - libweston-8 
-  - libweston-8-0 
-  - libweston-desktop-8-0 
+  - libweston-9 
+  - libweston-9-0 
+  - libweston-desktop-9-0 
   - libwget-devel 
   - libwget0 
   - libwhich 
@@ -20207,6 +20208,7 @@ unsorted:
   - python3-datadiff 
   - python3-datashader 
   - python3-dateparser 
+  - python3-dateutils 
   - python3-datrie 
   - python3-dbf 
   - python3-dbfread 
@@ -21028,6 +21030,7 @@ unsorted:
   - python3-mocket 
   - python3-mockito 
   - python3-mockldap 
+  - python3-model-bakery 
   - python3-modernize 
   - python3-mohawk 
   - python3-moksha-common 
@@ -23798,6 +23801,9 @@ unsorted:
   - ruby2.6-rubygem-ruby-openid-testsuite 
   - ruby2.6-rubygem-ruby-progressbar 
   - ruby2.6-rubygem-ruby-progressbar-doc 
+  - ruby2.6-rubygem-ruby-rc4 
+  - ruby2.6-rubygem-ruby-rc4-doc 
+  - ruby2.6-rubygem-ruby-rc4-testsuite 
   - ruby2.6-rubygem-ruby-shadow 
   - ruby2.6-rubygem-ruby-shadow-doc 
   - ruby2.6-rubygem-ruby2_keywords 
@@ -24624,6 +24630,8 @@ unsorted:
   - ruby2.7-rubygem-ruby-openid-doc 
   - ruby2.7-rubygem-ruby-openid-testsuite 
   - ruby2.7-rubygem-ruby-progressbar-doc 
+  - ruby2.7-rubygem-ruby-rc4-doc 
+  - ruby2.7-rubygem-ruby-rc4-testsuite 
   - ruby2.7-rubygem-ruby-shadow-doc 
   - ruby2.7-rubygem-ruby2_keywords-doc 
   - ruby2.7-rubygem-ruby_dep-doc 
@@ -25599,6 +25607,7 @@ unsorted:
   - suil-devel 
   - suil-plugin-gtk2-in-qt5 
   - suil-plugin-qt5-in-gtk2 
+  - suil-plugin-qt5-in-gtk3 
   - suil-plugin-x11 
   - suil-plugin-x11-in-gtk2 
   - suil-plugin-x11-in-gtk3 
@@ -34872,6 +34881,7 @@ unsorted:
   - xcb-util-wm-devel 
   - xcb-util-wm-devel-32bit: [x86_64] 
   - xcb-util-xrm-devel 
+  - xchm 
   - xclass 
   - xclass-devel 
   - xclipboard 
