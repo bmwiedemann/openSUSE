@@ -30,6 +30,7 @@ BuildRequires:  libxslt-tools
 BuildRequires:  perl-Module-Build >= 0.40
 BuildRequires:  perl-SGMLS >= 1.03ii
 BuildRequires:  perl-Term-ReadKey
+BuildRequires:  perl-Test-Pod
 BuildRequires:  perl-Text-WrapI18N
 BuildRequires:  perl-Unicode-LineBreak
 BuildRequires:  perl-YAML-Tiny
@@ -40,9 +41,10 @@ BuildRequires:  perl-gettext >= 1.01
 BuildRequires:  docbook_4
 BuildRequires:  iso_ent
 BuildRequires:  opensp
-BuildRequires:  perl-HTML-Parser
 
 Requires:       %{name}-lang = %{version}
+Requires:       perl-SGMLS
+Requires:       perl-YAML-Tiny
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %{perl_requires}
@@ -81,9 +83,6 @@ rm -rf t/fmt-tex.t t/fmt/tex
 
 #run the tests
 ./Build test
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(644,root,root,755)

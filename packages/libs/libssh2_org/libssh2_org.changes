@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 12:47:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop man and groff BuildRequires: both are no longer used in
+  current versions.
+
+-------------------------------------------------------------------
 Wed Oct 23 13:53:38 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Security fix: [bsc#1154862, CVE-2019-17498]

@@ -17,7 +17,7 @@
 
 
 Name:           afl
-Version:        2.67c
+Version:        2.68c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0

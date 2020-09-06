@@ -13,11 +13,11 @@ device with the same name that is being created.
  src/lxc/lxc_process.c    | 1 +
  3 files changed, 4 insertions(+)
 
-Index: libvirt-6.6.0/src/lxc/lxc_controller.c
+Index: libvirt-6.7.0/src/lxc/lxc_controller.c
 ===================================================================
---- libvirt-6.6.0.orig/src/lxc/lxc_controller.c
-+++ libvirt-6.6.0/src/lxc/lxc_controller.c
-@@ -2024,6 +2024,7 @@ static int virLXCControllerDeleteInterfa
+--- libvirt-6.7.0.orig/src/lxc/lxc_controller.c
++++ libvirt-6.7.0/src/lxc/lxc_controller.c
+@@ -2026,6 +2026,7 @@ static int virLXCControllerDeleteInterfa
          if (virNetDevVethDelete(ctrl->veths[i]) < 0)
              ret = -1;
      }
@@ -25,10 +25,10 @@ Index: libvirt-6.6.0/src/lxc/lxc_controller.c
  
      return ret;
  }
-Index: libvirt-6.6.0/src/lxc/lxc_driver.c
+Index: libvirt-6.7.0/src/lxc/lxc_driver.c
 ===================================================================
---- libvirt-6.6.0.orig/src/lxc/lxc_driver.c
-+++ libvirt-6.6.0/src/lxc/lxc_driver.c
+--- libvirt-6.7.0.orig/src/lxc/lxc_driver.c
++++ libvirt-6.7.0/src/lxc/lxc_driver.c
 @@ -66,6 +66,7 @@
  #include "virtime.h"
  #include "virtypedparam.h"
@@ -37,7 +37,7 @@ Index: libvirt-6.6.0/src/lxc/lxc_driver.c
  #include "virstring.h"
  #include "viraccessapicheck.h"
  #include "viraccessapichecklxc.h"
-@@ -3544,6 +3545,7 @@ lxcDomainAttachDeviceNetLive(virLXCDrive
+@@ -3546,6 +3547,7 @@ lxcDomainAttachDeviceNetLive(virLXCDrive
          case VIR_DOMAIN_NET_TYPE_NETWORK:
          case VIR_DOMAIN_NET_TYPE_ETHERNET:
              ignore_value(virNetDevVethDelete(veth));
@@ -45,7 +45,7 @@ Index: libvirt-6.6.0/src/lxc/lxc_driver.c
              break;
  
          case VIR_DOMAIN_NET_TYPE_DIRECT:
-@@ -3982,6 +3984,7 @@ lxcDomainDetachDeviceNetLive(virDomainOb
+@@ -3984,6 +3986,7 @@ lxcDomainDetachDeviceNetLive(virDomainOb
              virDomainAuditNet(vm, detach, NULL, "detach", false);
              goto cleanup;
          }
@@ -53,10 +53,10 @@ Index: libvirt-6.6.0/src/lxc/lxc_driver.c
          break;
  
          /* It'd be nice to support this, but with macvlan
-Index: libvirt-6.6.0/src/lxc/lxc_process.c
+Index: libvirt-6.7.0/src/lxc/lxc_process.c
 ===================================================================
---- libvirt-6.6.0.orig/src/lxc/lxc_process.c
-+++ libvirt-6.6.0/src/lxc/lxc_process.c
+--- libvirt-6.7.0.orig/src/lxc/lxc_process.c
++++ libvirt-6.7.0/src/lxc/lxc_process.c
 @@ -50,6 +50,7 @@
  #include "virstring.h"
  #include "virprocess.h"

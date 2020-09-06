@@ -1,9 +1,9 @@
 Adjust libvirt-guests service to conform to SUSE standards
 
-Index: libvirt-6.6.0/tools/libvirt-guests.sh.in
+Index: libvirt-6.7.0/tools/libvirt-guests.sh.in
 ===================================================================
---- libvirt-6.6.0.orig/tools/libvirt-guests.sh.in
-+++ libvirt-6.6.0/tools/libvirt-guests.sh.in
+--- libvirt-6.7.0.orig/tools/libvirt-guests.sh.in
++++ libvirt-6.7.0/tools/libvirt-guests.sh.in
 @@ -16,14 +16,13 @@
  # License along with this library.  If not, see
  # <http://www.gnu.org/licenses/>.
@@ -74,7 +74,7 @@ Index: libvirt-6.6.0/tools/libvirt-guests.sh.in
  # check if URI is reachable
  test_connect()
 @@ -108,7 +129,7 @@ list_guests() {
-     local list=$(run_virsh_c "$uri" list --uuid $persistent)
+     local list="$(run_virsh_c "$uri" list --uuid $persistent)"
  
      if [ $? -ne 0 ]; then
 -        RETVAL=1
@@ -84,7 +84,7 @@ Index: libvirt-6.6.0/tools/libvirt-guests.sh.in
  
 @@ -134,7 +155,7 @@ guest_is_on() {
  
-     guest_running=false
+     guest_running="false"
      if [ $? -ne 0 ]; then
 -        RETVAL=1
 +        rc_failed 1
@@ -104,7 +104,7 @@ Index: libvirt-6.6.0/tools/libvirt-guests.sh.in
 +
          eval_gettext "Resuming guests on \$uri URI..."; echo
          for guest in $list; do
-             local name=$(guest_name "$uri" "$guest")
+             local name="$(guest_name "$uri" "$guest")"
 @@ -418,7 +446,7 @@ shutdown_guests_parallel()
              timeout=$(($timeout - 1))
              if [ $timeout -le 0 ]; then
@@ -163,10 +163,10 @@ Index: libvirt-6.6.0/tools/libvirt-guests.sh.in
  esac
 -exit $RETVAL
 +rc_exit
-Index: libvirt-6.6.0/tools/libvirt-guests.sysconf
+Index: libvirt-6.7.0/tools/libvirt-guests.sysconf
 ===================================================================
---- libvirt-6.6.0.orig/tools/libvirt-guests.sysconf
-+++ libvirt-6.6.0/tools/libvirt-guests.sysconf
+--- libvirt-6.7.0.orig/tools/libvirt-guests.sysconf
++++ libvirt-6.7.0/tools/libvirt-guests.sysconf
 @@ -1,9 +1,14 @@
 +## Path: System/Virtualization/libvirt-guests
  # Customizations for the libvirt-guests.service systemd unit

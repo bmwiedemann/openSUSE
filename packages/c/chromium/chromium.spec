@@ -21,7 +21,7 @@
 %define __provides_exclude ^lib.*\\.so.*$
 %if 0%{?suse_version} > 1500
 %bcond_without system_icu
-%bcond_without system_vpx
+%bcond_with system_vpx
 %bcond_with wayland
 %else
 %bcond_with system_icu
@@ -51,14 +51,12 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        84.0.4147.135
+Version:        85.0.4183.83
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
 Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
-# we need to bundle this because we need py2 version until google switches to python3
-Source1:        https://www.x.org/releases/individual/proto/xcb-proto-1.14.tar.xz
 # Toolchain definitions
 Source30:       master_preferences
 Source100:      chromium-browser.sh
@@ -84,32 +82,27 @@ Patch13:        chromium-fix-char_traits.patch
 Patch14:        gpu-timeout.patch
 Patch15:        build-with-pipewire-0.3.patch
 Patch16:        chromium-82-gcc-constexpr.patch
-Patch18:        chromium-82-gcc-template.patch
 Patch20:        chromium-83-gcc-10.patch
 Patch21:        chromium-84-gcc-include.patch
-Patch22:        chromium-84-gcc-noexcept.patch
-Patch23:        chromium-84-gcc-template.patch
-Patch24:        chromium-84-gcc-unique_ptr.patch
 # Do not use unrar code, it is non-free
 Patch26:        chromium-norar.patch
 Patch27:        chromium-84-blink-disable-clang-format.patch
-Patch28:        chromium-84-AXObject-stl-iterator.patch
-Patch29:        chromium-84-base-has_bultin.patch
-Patch30:        chromium-84-FilePath-add-noexcept.patch
-Patch31:        chromium-84-fix-decltype.patch
-Patch32:        chromium-84-gcc-DOMRect-constexpr.patch
-Patch33:        chromium-84-gcc-use-brace-initializer.patch
-Patch34:        chromium-84-revert-manage-ManifestManagerHost-per-document.patch
-Patch35:        chromium-84-std-vector-const.patch
 # revert location on old GCC on 15.1, 15.2 gets it right tho
 Patch36:        no-location-leap151.patch
 Patch37:        chromium-84-mediaalloc.patch
-Patch38:        chromium-84-nss-include.patch
-Patch39:        chromium-84-ozone-include.patch
 Patch40:        chromium-blink-gcc-diagnostic-pragma.patch
 Patch41:        chromium-quiche-invalid-offsetof.patch
-Patch42:        chromium-clang_lto_visibility_public.patch
 Patch43:        system-libdrm.patch
+Patch44:        chromium-85-DelayNode-cast.patch
+Patch45:        chromium-85-FrameWidget-namespace.patch
+Patch46:        chromium-85-NearbyConnection-abstract.patch
+Patch47:        chromium-85-NearbyShareEncryptedMetadataKey-include.patch
+Patch48:        chromium-85-oscillator_node-cast.patch
+Patch49:        chromium-85-ostream-operator.patch
+Patch50:        chromium-85-ozone-include.patch
+Patch51:        chromium-85-sim_hash-include.patch
+Patch52:        chromium-disable-parallel-gold.patch
+Patch53:        chromium-lp151-old-drm.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -120,7 +113,6 @@ Patch101:       old-libva.patch
 Patch102:       chromium-vaapi-fix.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch200:       chromium-prop-codecs.patch
-Patch201:       chromium-disable-parallel-gold.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -294,9 +286,6 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %setup -q -n %{rname}-%{version}
 %autopatch -p1
 
-# bundle xcb-proto for python2
-tar xJf %{SOURCE1}
-
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
@@ -427,6 +416,7 @@ keeplibs=(
     third_party/node
     third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
     third_party/one_euro_filter
+    third_party/opencv
     third_party/openscreen
     third_party/openscreen/src/third_party/mozilla
     third_party/openscreen/src/third_party/tinycbor/src/src
@@ -466,6 +456,7 @@ keeplibs=(
     third_party/sqlite
     third_party/swiftshader
     third_party/swiftshader/third_party/astc-encoder
+    third_party/swiftshader/third_party/llvm-10.0
     third_party/swiftshader/third_party/llvm-subzero
     third_party/swiftshader/third_party/marl
     third_party/swiftshader/third_party/subzero
@@ -486,6 +477,7 @@ keeplibs=(
     third_party/widevine
     third_party/woff2
     third_party/wuffs
+    third_party/xcbproto
     third_party/zlib/google
     tools/grit/third_party/six
     url/third_party/mozilla
@@ -568,6 +560,12 @@ export PATH="$HOME/bin/:$PATH"
 %endif
 # do not eat all memory
 %limit_build -m 2600
+%if %{with lto}
+# reduce the threads for linking even more due to LTO eating ton of memory
+_link_threads=$(((%{jobs} - 2)))
+test "$_link_threads" -le 0 && _link_threads=1
+export LDFLAGS="-flto=$_link_threads --param lto-max-streaming-parallelism=1"
+%endif
 
 # Set system libraries to be used
 gn_system_libraries=(
@@ -603,8 +601,6 @@ build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_librarie
 # Create the configuration for GN
 # Available options: out/Release/gn args --list out/Release/
 myconf_gn=""
-# bundled xcb py2 variant
-myconf_gn+=" xcbproto_path=\"$PWD/xcb-proto-1.14/src\""
 myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" use_custom_libcxx=false"
@@ -654,8 +650,8 @@ myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
 %endif
 # ozone stuff
 %if %{with wayland}
-myconf_gn+=" use_system_minigbm=true use_xkbcommon=true"
 myconf_gn+=" use_system_libdrm=true"
+myconf_gn+=" use_system_minigbm=true use_xkbcommon=true"
 myconf_gn+=" use_ozone=true ozone_auto_platforms=false"
 myconf_gn+=" ozone_platform=\"x11\" ozone_platform_x11=true ozone_platform_gbm=true"
 myconf_gn+=" ozone_platform_wayland=true"

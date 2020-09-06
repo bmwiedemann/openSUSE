@@ -1,8 +1,8 @@
-Index: chromium-83.0.4103.61/media/BUILD.gn
+Index: chromium-85.0.4183.69/media/BUILD.gn
 ===================================================================
---- chromium-83.0.4103.61.orig/media/BUILD.gn
-+++ chromium-83.0.4103.61/media/BUILD.gn
-@@ -45,12 +45,6 @@ buildflag_header("media_buildflags") {
+--- chromium-85.0.4183.69.orig/media/BUILD.gn
++++ chromium-85.0.4183.69/media/BUILD.gn
+@@ -44,12 +44,6 @@ buildflag_header("media_buildflags") {
    ]
  }
  
@@ -15,11 +15,11 @@ Index: chromium-83.0.4103.61/media/BUILD.gn
  # Common configuration for targets in the media directory; these must not be
  # exported since things like USE_NEON and USE_CRAS have different meanings
  # elsewhere in the code base.
-Index: chromium-83.0.4103.61/third_party/webrtc/webrtc.gni
+Index: chromium-85.0.4183.69/third_party/webrtc/webrtc.gni
 ===================================================================
---- chromium-83.0.4103.61.orig/third_party/webrtc/webrtc.gni
-+++ chromium-83.0.4103.61/third_party/webrtc/webrtc.gni
-@@ -152,8 +152,7 @@ declare_args() {
+--- chromium-85.0.4183.69.orig/third_party/webrtc/webrtc.gni
++++ chromium-85.0.4183.69/third_party/webrtc/webrtc.gni
+@@ -156,8 +156,7 @@ declare_args() {
    #
    # Enabling H264 when building with MSVC is currently not supported, see
    # bugs.webrtc.org/9213#c13 for more info.
@@ -27,5 +27,5 @@ Index: chromium-83.0.4103.61/third_party/webrtc/webrtc.gni
 -      proprietary_codecs && !is_android && !is_ios && !(is_win && !is_clang)
 +  rtc_use_h264 = false
  
-   # By default, use normal platform audio support or dummy audio, but don't
-   # use file-based audio playout and record.
+   # Enable this flag to make webrtc::Mutex be implemented by absl::Mutex.
+   rtc_use_absl_mutex = false

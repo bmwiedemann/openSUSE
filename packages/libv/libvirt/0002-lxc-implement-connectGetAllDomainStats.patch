@@ -9,19 +9,20 @@ them using the existing API.
  src/lxc/lxc_driver.c | 138 +++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 138 insertions(+)
 
-Index: libvirt-6.6.0/src/lxc/lxc_driver.c
+Index: libvirt-6.7.0/src/lxc/lxc_driver.c
 ===================================================================
---- libvirt-6.6.0.orig/src/lxc/lxc_driver.c
-+++ libvirt-6.6.0/src/lxc/lxc_driver.c
-@@ -73,6 +73,7 @@
+--- libvirt-6.7.0.orig/src/lxc/lxc_driver.c
++++ libvirt-6.7.0/src/lxc/lxc_driver.c
+@@ -73,6 +73,8 @@
  #include "netdev_bandwidth_conf.h"
  #include "virsocket.h"
  #include "virutil.h"
++#include "viralloc.h"
 +#include "domain_stats.h"
  
  #define VIR_FROM_THIS VIR_FROM_LXC
  
-@@ -5065,6 +5066,128 @@ lxcDomainHasManagedSaveImage(virDomainPt
+@@ -5066,6 +5068,129 @@ lxcDomainHasManagedSaveImage(virDomainPt
      return ret;
  }
  
@@ -117,7 +118,8 @@ Index: libvirt-6.6.0/src/lxc/lxc_driver.c
 +            return -1;
 +    }
 +
-+    tmpstats = g_new0(virDomainStatsRecord, nvms + 1);
++    if (VIR_ALLOC_N(tmpstats, nvms + 1) < 0)
++        goto cleanup;
 +
 +    for (i = 0; i < nvms; i++) {
 +        virDomainStatsRecordPtr tmp = NULL;
@@ -150,7 +152,7 @@ Index: libvirt-6.6.0/src/lxc/lxc_driver.c
  
  /* Function Tables */
  static virHypervisorDriver lxcHypervisorDriver = {
-@@ -5162,6 +5285,7 @@ static virHypervisorDriver lxcHypervisor
+@@ -5163,6 +5288,7 @@ static virHypervisorDriver lxcHypervisor
      .nodeGetFreePages = lxcNodeGetFreePages, /* 1.2.6 */
      .nodeAllocPages = lxcNodeAllocPages, /* 1.2.9 */
      .domainHasManagedSaveImage = lxcDomainHasManagedSaveImage, /* 1.2.13 */

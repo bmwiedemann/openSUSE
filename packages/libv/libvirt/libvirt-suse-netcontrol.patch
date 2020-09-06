@@ -1,35 +1,7 @@
-Index: libvirt-6.6.0/configure.ac
+Index: libvirt-6.7.0/tools/virsh.c
 ===================================================================
---- libvirt-6.6.0.orig/configure.ac
-+++ libvirt-6.6.0/configure.ac
-@@ -289,6 +289,7 @@ LIBVIRT_ARG_LIBSSH
- LIBVIRT_ARG_LIBXML
- LIBVIRT_ARG_MACVTAP
- LIBVIRT_ARG_NETCF
-+LIBVIRT_ARG_NETCONTROL
- LIBVIRT_ARG_NLS
- LIBVIRT_ARG_NSS
- LIBVIRT_ARG_NUMACTL
-@@ -332,6 +333,7 @@ LIBVIRT_CHECK_LIBSSH
- LIBVIRT_CHECK_LIBXML
- LIBVIRT_CHECK_MACVTAP
- LIBVIRT_CHECK_NETCF
-+LIBVIRT_CHECK_NETCONTROL
- LIBVIRT_CHECK_NLS
- LIBVIRT_CHECK_NUMACTL
- LIBVIRT_CHECK_NWFILTER
-@@ -1011,6 +1013,7 @@ LIBVIRT_RESULT_LIBXL
- LIBVIRT_RESULT_LIBXML
- LIBVIRT_RESULT_MACVTAP
- LIBVIRT_RESULT_NETCF
-+LIBVIRT_RESULT_NETCONTROL
- LIBVIRT_RESULT_NLS
- LIBVIRT_RESULT_NSS
- LIBVIRT_RESULT_NUMACTL
-Index: libvirt-6.6.0/tools/virsh.c
-===================================================================
---- libvirt-6.6.0.orig/tools/virsh.c
-+++ libvirt-6.6.0/tools/virsh.c
+--- libvirt-6.7.0.orig/tools/virsh.c
++++ libvirt-6.7.0/tools/virsh.c
 @@ -547,6 +547,8 @@ virshShowVersion(vshControl *ctl G_GNUC_
      vshPrint(ctl, " Interface");
  # if defined(WITH_NETCF)
@@ -39,10 +11,10 @@ Index: libvirt-6.6.0/tools/virsh.c
  # elif defined(WITH_UDEV)
      vshPrint(ctl, " udev");
  # endif
-Index: libvirt-6.6.0/src/interface/interface_backend_netcf.c
+Index: libvirt-6.7.0/src/interface/interface_backend_netcf.c
 ===================================================================
---- libvirt-6.6.0.orig/src/interface/interface_backend_netcf.c
-+++ libvirt-6.6.0/src/interface/interface_backend_netcf.c
+--- libvirt-6.7.0.orig/src/interface/interface_backend_netcf.c
++++ libvirt-6.7.0/src/interface/interface_backend_netcf.c
 @@ -21,7 +21,12 @@
  
  #include <config.h>
@@ -154,10 +126,10 @@ Index: libvirt-6.6.0/src/interface/interface_backend_netcf.c
      if (virRegisterConnectDriver(&interfaceConnectDriver, false) < 0)
          return -1;
      if (virSetSharedInterfaceDriver(&interfaceDriver) < 0)
-Index: libvirt-6.6.0/src/interface/interface_driver.c
+Index: libvirt-6.7.0/src/interface/interface_driver.c
 ===================================================================
---- libvirt-6.6.0.orig/src/interface/interface_driver.c
-+++ libvirt-6.6.0/src/interface/interface_driver.c
+--- libvirt-6.7.0.orig/src/interface/interface_driver.c
++++ libvirt-6.7.0/src/interface/interface_driver.c
 @@ -30,8 +30,15 @@ interfaceRegister(void)
      if (netcfIfaceRegister() == 0)
          return 0;
@@ -175,71 +147,74 @@ Index: libvirt-6.6.0/src/interface/interface_driver.c
      if (udevIfaceRegister() == 0)
          return 0;
  #endif /* WITH_UDEV */
-Index: libvirt-6.6.0/m4/virt-netcontrol.m4
+Index: libvirt-6.7.0/meson.build
 ===================================================================
---- /dev/null
-+++ libvirt-6.6.0/m4/virt-netcontrol.m4
-@@ -0,0 +1,39 @@
-+dnl The libnetcontrol library
-+dnl
-+dnl Copyright (C) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
-+dnl
-+dnl This library is free software; you can redistribute it and/or
-+dnl modify it under the terms of the GNU Lesser General Public
-+dnl License as published by the Free Software Foundation; either
-+dnl version 2.1 of the License, or (at your option) any later version.
-+dnl
-+dnl This library is distributed in the hope that it will be useful,
-+dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
-+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+dnl Lesser General Public License for more details.
-+dnl
-+dnl You should have received a copy of the GNU Lesser General Public
-+dnl License along with this library.  If not, see
-+dnl <http://www.gnu.org/licenses/>.
-+dnl
+--- libvirt-6.7.0.orig/meson.build
++++ libvirt-6.7.0/meson.build
+@@ -1201,6 +1201,12 @@ if netcf_dep.found()
+   conf.set('WITH_NETCF', 1)
+ endif
+ 
++netcontrol_version = '0.2.0'
++netcontrol_dep = dependency('netcontrol', version: '>=' + netcontrol_version, require: get_option('netcontrol'))
++if netcontrol_dep.found()
++  conf.set('WITH_NETCONTROL', 1)
++endif
 +
-+AC_DEFUN([LIBVIRT_ARG_NETCONTROL],[
-+  LIBVIRT_ARG_WITH_FEATURE([NETCONTROL], [netcontrol], [check], [0.2.0])
-+])
-+
-+AC_DEFUN([LIBVIRT_CHECK_NETCONTROL],[
-+  LIBVIRT_CHECK_PKG([NETCONTROL], [netcontrol], [0.2.0])
-+
-+  if test "$with_netcontrol" = "yes" ; then
-+    old_CFLAGS="$CFLAGS"
-+    old_LIBS="$CFLAGS"
-+    CFLAGS="$CFLAGS $NETCONTROL_CFLAGS"
-+    LIBS="$LIBS $NETCONTROL_LIBS"
-+    CFLAGS="$old_CFLAGS"
-+    LIBS="$old_LIBS"
-+  fi
-+])
-+
-+AC_DEFUN([LIBVIRT_RESULT_NETCONTROL],[
-+  LIBVIRT_RESULT_LIB([NETCONTROL])
-+])
-Index: libvirt-6.6.0/src/interface/Makefile.inc.am
+ have_gnu_gettext_tools = false
+ if not get_option('nls').disabled()
+   have_gettext = cc.has_function('gettext')
+@@ -1632,10 +1638,10 @@ elif get_option('driver_hyperv').enabled
+   error('openwsman is required for the Hyper-V driver')
+ endif
+ 
+-if not get_option('driver_interface').disabled() and conf.has('WITH_LIBVIRTD') and (udev_dep.found() or netcf_dep.found())
++if not get_option('driver_interface').disabled() and conf.has('WITH_LIBVIRTD') and (udev_dep.found() or netcf_dep.found() or netcontrol_dep.found())
+   conf.set('WITH_INTERFACE', 1)
+ elif get_option('driver_interface').enabled()
+-  error('Requested the Interface driver without netcf or udev and libvirtd support')
++  error('Requested the Interface driver without netcf, netcontrol or udev and libvirtd support')
+ endif
+ 
+ if not get_option('driver_libxl').disabled() and conf.has('WITH_LIBVIRTD')
+@@ -2442,6 +2448,7 @@ libs_summary = {
+   'libxml': libxml_dep.found(),
+   'macvtap': conf.has('WITH_MACVTAP'),
+   'netcf': netcf_dep.found(),
++  'netcontrol': netcontrol_dep.found(),
+   'NLS': have_gnu_gettext_tools,
+   'nss': conf.has('WITH_NSS'),
+   'numactl': numactl_dep.found(),
+Index: libvirt-6.7.0/src/interface/meson.build
 ===================================================================
---- libvirt-6.6.0.orig/src/interface/Makefile.inc.am
-+++ libvirt-6.6.0/src/interface/Makefile.inc.am
-@@ -6,6 +6,7 @@ INTERFACE_DRIVER_SOURCES = \
- 	$(NULL)
+--- libvirt-6.7.0.orig/src/interface/meson.build
++++ libvirt-6.7.0/src/interface/meson.build
+@@ -2,7 +2,7 @@ interface_driver_sources = [
+   'interface_driver.c',
+ ]
  
- INTERFACE_DRIVER_NETCF_SOURCES = interface/interface_backend_netcf.c
-+INTERFACE_DRIVER_NETCONTROL_SOURCES = interface/interface_backend_netcf.c
- INTERFACE_DRIVER_UDEV_SOURCES = interface/interface_backend_udev.c
+-if conf.has('WITH_NETCF')
++if conf.has('WITH_NETCF') or conf.has('WITH_NETCONTROL')
+   interface_driver_sources += 'interface_backend_netcf.c'
+ endif
  
- DRIVER_SOURCE_FILES += $(addprefix $(srcdir)/,$(INTERFACE_DRIVER_SOURCES))
-@@ -38,6 +39,11 @@ libvirt_driver_interface_la_CFLAGS += $(
- libvirt_driver_interface_la_LIBADD += $(NETCF_LIBS)
- libvirt_driver_interface_la_SOURCES += $(INTERFACE_DRIVER_NETCF_SOURCES)
- endif WITH_NETCF
-+if WITH_NETCONTROL
-+libvirt_driver_interface_la_CFLAGS += $(NETCONTROL_CFLAGS)
-+libvirt_driver_interface_la_LIBADD += $(NETCONTROL_LIBS)
-+libvirt_driver_interface_la_SOURCES += $(INTERFACE_DRIVER_NETCONTROL_SOURCES)
-+endif WITH_NETCONTROL
- if WITH_UDEV
- libvirt_driver_interface_la_CFLAGS += $(UDEV_CFLAGS)
- libvirt_driver_interface_la_LIBADD += $(UDEV_LIBS)
+@@ -23,6 +23,7 @@ if conf.has('WITH_INTERFACE')
+       access_dep,
+       libnl_dep,
+       netcf_dep,
++      netcontrol_dep,
+       udev_dep,
+     ],
+     'link_args': [
+Index: libvirt-6.7.0/meson_options.txt
+===================================================================
+--- libvirt-6.7.0.orig/meson_options.txt
++++ libvirt-6.7.0/meson_options.txt
+@@ -30,6 +30,7 @@ option('libssh', type: 'feature', value:
+ option('libssh2', type: 'feature', value: 'auto', description: 'libssh2 support')
+ option('macvtap', type: 'feature', value: 'auto', description: 'enable macvtap device')
+ option('netcf', type: 'feature', value: 'auto', description: 'netcf support')
++option('netcontrol', type: 'feature', value: 'auto', description: 'netcontrol support')
+ option('nls', type: 'feature', value: 'auto', description: 'nls support')
+ option('numactl', type: 'feature', value: 'auto', description: 'numactl support')
+ option('openwsman', type: 'feature', value: 'auto', description: 'openwsman support')

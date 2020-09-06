@@ -1,7 +1,7 @@
-Index: AFLplusplus-2.63c/GNUmakefile
+Index: AFLplusplus-2.68c/GNUmakefile
 ===================================================================
---- AFLplusplus-2.63c.orig/GNUmakefile
-+++ AFLplusplus-2.63c/GNUmakefile
+--- AFLplusplus-2.68c.orig/GNUmakefile
++++ AFLplusplus-2.68c/GNUmakefile
 @@ -21,8 +21,8 @@ HASH=\#
  
  PREFIX     ?= /usr/local
@@ -11,5 +11,5 @@ Index: AFLplusplus-2.63c/GNUmakefile
 +HELPER_PATH = $(LIBEXEC_DIR)/afl
 +DOC_PATH    = $(DOC_DIR)/afl
  MISC_PATH   = $(PREFIX)/share/afl
- MAN_PATH    = $(PREFIX)/man/man8
+ MAN_PATH    = $(PREFIX)/share/man/man8
  

@@ -18,8 +18,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-Flask-Babel
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        i18n and l10n support for Flask
 License:        BSD-3-Clause
@@ -29,12 +30,16 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-Babel/Fla
 BuildRequires:  %{python_module Babel >= 2.3}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Jinja2 >= 2.5}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel >= 2.3
 Requires:       python-Flask
 Requires:       python-Jinja2 >= 2.5
+Requires:       python-pytz
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,11 +58,7 @@ the Python babel module as well as pytz.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-pushd tests
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-%python_exec tests.py
-}
-popd
+%pytest
 
 %files %{python_files}
 %license LICENSE

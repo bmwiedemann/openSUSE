@@ -1,7 +1,7 @@
 #
 # spec file for package libssh2_org
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        A library implementing the SSH2 protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://www.libssh2.org/
+URL:            https://www.libssh2.org/
 Source0:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.gz
 Source1:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.gz.asc
 Source2:        baselibs.conf
@@ -31,9 +31,7 @@ Source3:        libssh2_org.keyring
 Patch0:         libssh2-ocloexec.patch
 # PATCH-FIX-UPSTREAM bsc#1154862 CVE-2019-17498
 Patch1:         libssh2_org-CVE-2019-17498.patch
-BuildRequires:  groff
 BuildRequires:  libtool
-BuildRequires:  man
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)

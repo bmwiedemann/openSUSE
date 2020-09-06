@@ -19,15 +19,13 @@
 %define kf5_version 5.26.0
 %bcond_without lang
 Name:           heaptrack
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Heap Memory Allocation Profiler
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://userbase.kde.org/Heaptrack
 Source0:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-compile-on-32bit.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_iostreams-devel
@@ -77,7 +75,6 @@ A Qt5/KF5 based GUI for Heaptrack.
 
 %prep
 %setup -q
-%autopatch -p1
 
 # Disable building tests, they're not used and post-build-checks trips over it
 sed -i"" '/add_subdirectory(tests)/d' CMakeLists.txt

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep  5 17:10:21 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add patches to fix boo#1176016:
+  * replace-na-tray-with-carbontray.patch 
+    (gh#solus-project/budgie-desktop#1998)
+  * clean-up-carbontray.patch
+    (gh#solus-project/budgie-desktop#2002)
+  * fix-integration-issues-with-carbontray.patch
+    (gh#solus-project/budgie-desktop#2009)
+
+-------------------------------------------------------------------
 Mon Aug 31 21:55:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add nemo-instead-of-nautilus.patch: Nautilus doesn't have support

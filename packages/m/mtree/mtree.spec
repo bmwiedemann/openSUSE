@@ -1,7 +1,7 @@
 #
 # spec file for package mtree
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Archie L. Cobbs.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Tool for creating and verifying file hierarchies
 License:        BSD-3-Clause
 Group:          Productivity/File utilities
-Url:            https://github.com/archiecobbs/mtree-port
+URL:            https://github.com/archiecobbs/mtree-port
 Source:         https://github.com/archiecobbs/mtree-port/archive/%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -36,6 +36,9 @@ directory against a specification read from the standard input. Messages
 are written to the standard output for any files whose characteristics do
 not match the specifications, or which are missing from either the file
 hierarchy or the specification.
+
+Note: This is an older FreeBSD version of mtree; a newer NetBSD version
+is also available in the package "nmtree".
 
 %prep
 %setup -q -n mtree-port-%{version}

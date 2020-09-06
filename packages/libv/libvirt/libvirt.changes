@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep  2 17:18:34 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Enable the same hypervisor drivers for openSUSE and SLE
+  jsc#SLE-11772
+- spec: Enable the same storage drivers for openSUSE and SLE
+  jsc#SLE-11877
+
+-------------------------------------------------------------------
+Tue Sep  1 23:04:48 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Reprobe capabilities if the qemu modules directory changes
+  2ad009ea-qemu-check-modules-dir.patch
+  boo#1175320
+
+-------------------------------------------------------------------
+Tue Sep  1 19:59:58 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 6.7.0
+  - jsc#SLE-14253, jsc#SLE-15159
+  - CVE-2020-14339
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    2edd63a0-fix-virFileSetCOW-logic.patch,
+    82bb167f-dont-cache-devmapper-major.patch,
+    feb8564a-handle-no-devmapper.patch,
+    53d9af1e-ignore-devmapper-open-errors.patch,
+    support-managed-pci-xen-driver.patch,
+    disable-multipath-pr-tests.patch
+
+-------------------------------------------------------------------
 Wed Aug 19 19:36:52 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - virdevmapper: Handle kernel without device-mapper support

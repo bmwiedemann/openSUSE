@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  3 12:36:36 UTC 2020 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- Fix boo#1175977
+- Added missing Requires (perl-SGMLS and perl-YAML-Tiny) and BuildRequires
+  (perl-Test-Pod) and removed not used anymore (perl-HTML-Parser)
+
+-------------------------------------------------------------------
 Sun Aug 16 23:52:34 UTC 2020 - Pau Garcia Quiles <pau.garcia@suse.com>
 
 - Update to version 0.61

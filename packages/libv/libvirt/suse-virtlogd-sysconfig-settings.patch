@@ -1,9 +1,9 @@
 Adjust virtlogd sysconfig file to conform to SUSE standards
 
-Index: libvirt-6.6.0/src/logging/virtlogd.sysconf
+Index: libvirt-6.7.0/src/logging/virtlogd.sysconf
 ===================================================================
---- libvirt-6.6.0.orig/src/logging/virtlogd.sysconf
-+++ libvirt-6.6.0/src/logging/virtlogd.sysconf
+--- libvirt-6.7.0.orig/src/logging/virtlogd.sysconf
++++ libvirt-6.7.0/src/logging/virtlogd.sysconf
 @@ -1,3 +1,7 @@
 +## Path: System/Virtualization/virtlogd
 +

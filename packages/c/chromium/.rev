@@ -3088,4 +3088,62 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <user>dimstar_suse</user>
     <comment>Fixup last change</comment>
   </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>c42b9d3646d9d357c95f2451a28612af</srcmd5>
+    <version>85.0.4183.83</version>
+    <time>1599420928</time>
+    <user>dimstar_suse</user>
+    <comment>- Really update to .83 we accidentally included .69 beta release
+- Add patch trying to compile with old libdrm on Leap 15.1:
+  * chromium-lp151-old-drm.patch
+- Version update to 85.0.4183.83 bsc#1175757
+  * CVE-2020-6558: Insufficient policy enforcement in iOS
+  * CVE-2020-6559: Use after free in presentation API
+  * CVE-2020-6560: Insufficient policy enforcement in autofill
+  * CVE-2020-6561: Inappropriate implementation in Content Security Policy
+  * CVE-2020-6562: Insufficient policy enforcement in Blink
+  * CVE-2020-6563: Insufficient policy enforcement in intent handling.
+  * CVE-2020-6564: Incorrect security UI in permissions
+  * CVE-2020-6565: Incorrect security UI in Omnibox.
+  * CVE-2020-6566: Insufficient policy enforcement in media. 
+  * CVE-2020-6567: Insufficient validation of untrusted input in command line handling.
+  * CVE-2020-6568: Insufficient policy enforcement in intent handling.
+  * CVE-2020-6569: Integer overflow in WebUSB.
+  * CVE-2020-6570: Side-channel information leakage in WebRTC. 
+  * CVE-2020-6571: Incorrect security UI in Omnibox.
+- Use bundled vpx everywhere again as it fails to compile against
+  system version
+- Added patches:
+ *  chromium-85-DelayNode-cast.patch
+ *  chromium-85-FrameWidget-namespace.patch
+ *  chromium-85-NearbyConnection-abstract.patch
+ *  chromium-85-NearbyShareEncryptedMetadataKey-include.patch
+ *  chromium-85-oscillator_node-cast.patch
+ *  chromium-85-ostream-operator.patch
+ *  chromium-85-ozone-include.patch
+ *  chromium-85-sim_hash-include.patch
+- Removed patches:
+ *  chromium-82-gcc-template.patch
+ *  chromium-84-AXObject-stl-iterator.patch
+ *  chromium-84-FilePath-add-noexcept.patch
+ *  chromium-84-base-has_bultin.patch
+ *  chromium-84-fix-decltype.patch
+ *  chromium-84-gcc-DOMRect-constexpr.patch
+ *  chromium-84-gcc-noexcept.patch
+ *  chromium-84-gcc-template.patch
+ *  chromium-84-gcc-unique_ptr.patch
+ *  chromium-84-gcc-use-brace-initializer.patch
+ *  chromium-84-nss-include.patch
+ *  chromium-84-ozone-include.patch
+ *  chromium-84-revert-manage-ManifestManagerHost-per-document.patch
+ *  chromium-84-std-vector-const.patch
+ *  chromium-clang_lto_visibility_public.patch
+- Updated patches:
+ *  chromium-83-gcc-10.patch
+ *  chromium-84-gcc-include.patch
+ *  chromium-prop-codecs.patch
+ *  gcc-enable-lto.patch
+</comment>
+    <requestid>831606</requestid>
+  </revision>
 </revisionlist>

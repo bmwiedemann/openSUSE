@@ -10,22 +10,22 @@ Subject: [PATCH] GCC: fix includes for gcc-10
  ui/gfx/linux/drm_util_linux.h                                   | 2 ++
  5 files changed, 6 insertions(+)
 
-Index: chromium-84.0.4147.30/chrome/browser/search/background/ntp_backgrounds.h
+Index: chromium-85.0.4183.69/chrome/browser/search/background/ntp_backgrounds.h
 ===================================================================
---- chromium-84.0.4147.30.orig/chrome/browser/search/background/ntp_backgrounds.h
-+++ chromium-84.0.4147.30/chrome/browser/search/background/ntp_backgrounds.h
-@@ -6,6 +6,7 @@
- #define CHROME_BROWSER_SEARCH_BACKGROUND_NTP_BACKGROUNDS_H_
+--- chromium-85.0.4183.69.orig/chrome/browser/search/background/ntp_backgrounds.h
++++ chromium-85.0.4183.69/chrome/browser/search/background/ntp_backgrounds.h
+@@ -8,6 +8,7 @@
+ #include <stddef.h>
  
  #include <array>
 +#include <cstddef>
  
  class GURL;
  
-Index: chromium-84.0.4147.30/third_party/webrtc/call/rtx_receive_stream.h
+Index: chromium-85.0.4183.69/third_party/webrtc/call/rtx_receive_stream.h
 ===================================================================
---- chromium-84.0.4147.30.orig/third_party/webrtc/call/rtx_receive_stream.h
-+++ chromium-84.0.4147.30/third_party/webrtc/call/rtx_receive_stream.h
+--- chromium-85.0.4183.69.orig/third_party/webrtc/call/rtx_receive_stream.h
++++ chromium-85.0.4183.69/third_party/webrtc/call/rtx_receive_stream.h
 @@ -13,6 +13,7 @@
  
  #include <cstdint>
@@ -34,22 +34,22 @@ Index: chromium-84.0.4147.30/third_party/webrtc/call/rtx_receive_stream.h
  
  #include "call/rtp_packet_sink_interface.h"
  
-Index: chromium-84.0.4147.30/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h
+Index: chromium-85.0.4183.69/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h
 ===================================================================
---- chromium-84.0.4147.30.orig/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h
-+++ chromium-84.0.4147.30/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h
-@@ -12,6 +12,7 @@
- #define MODULES_AUDIO_PROCESSING_AEC3_CLOCKDRIFT_DETECTOR_H_
+--- chromium-85.0.4183.69.orig/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h
++++ chromium-85.0.4183.69/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h
+@@ -14,6 +14,7 @@
+ #include <stddef.h>
  
  #include <array>
 +#include <cstddef>
  
  namespace webrtc {
  
-Index: chromium-84.0.4147.30/ui/gfx/linux/drm_util_linux.h
+Index: chromium-85.0.4183.69/ui/gfx/linux/drm_util_linux.h
 ===================================================================
---- chromium-84.0.4147.30.orig/ui/gfx/linux/drm_util_linux.h
-+++ chromium-84.0.4147.30/ui/gfx/linux/drm_util_linux.h
+--- chromium-85.0.4183.69.orig/ui/gfx/linux/drm_util_linux.h
++++ chromium-85.0.4183.69/ui/gfx/linux/drm_util_linux.h
 @@ -9,6 +9,8 @@
  
  #include "ui/gfx/buffer_types.h"

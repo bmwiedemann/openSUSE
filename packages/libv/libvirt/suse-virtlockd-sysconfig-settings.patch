@@ -1,9 +1,9 @@
 Adjust virtlockd sysconfig file to conform to SUSE standards
 
-Index: libvirt-6.6.0/src/locking/virtlockd.sysconf
+Index: libvirt-6.7.0/src/locking/virtlockd.sysconf
 ===================================================================
---- libvirt-6.6.0.orig/src/locking/virtlockd.sysconf
-+++ libvirt-6.6.0/src/locking/virtlockd.sysconf
+--- libvirt-6.7.0.orig/src/locking/virtlockd.sysconf
++++ libvirt-6.7.0/src/locking/virtlockd.sysconf
 @@ -1,3 +1,7 @@
 +## Path: System/Virtualization/virtlockd
 +

@@ -926,4 +926,13 @@
   several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.9 (forwarded request 824687 from adkorte)</comment>
     <requestid>824689</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>582d0eda6e4d36fa36d3a253ac1aff06</srcmd5>
+    <version>7.4.10</version>
+    <time>1599421018</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.10: This is a bug fix release. See
+  https://www.php.net/ChangeLog-7.php#7.4.10 (forwarded request 831675 from adkorte)</comment>
+    <requestid>831677</requestid>
+  </revision>
 </revisionlist>

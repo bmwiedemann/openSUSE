@@ -37,7 +37,7 @@
 %define build_argon2 1
 %endif
 Name:           php7%{psuffix}
-Version:        7.4.9
+Version:        7.4.10
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01

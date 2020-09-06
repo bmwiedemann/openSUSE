@@ -1,9 +1,9 @@
 Adjust paths of OVMF firmwares on SUSE distros
 
-Index: libvirt-6.6.0/src/qemu/qemu.conf
+Index: libvirt-6.7.0/src/qemu/qemu.conf
 ===================================================================
---- libvirt-6.6.0.orig/src/qemu/qemu.conf
-+++ libvirt-6.6.0/src/qemu/qemu.conf
+--- libvirt-6.7.0.orig/src/qemu/qemu.conf
++++ libvirt-6.7.0/src/qemu/qemu.conf
 @@ -844,10 +844,9 @@
  # for x86_64 and i686, but it's AAVMF for aarch64. The libvirt default
  # follows this scheme.
@@ -18,11 +18,11 @@ Index: libvirt-6.6.0/src/qemu/qemu.conf
  #]
  
  # The backend to use for handling stdout/stderr output from
-Index: libvirt-6.6.0/src/qemu/qemu_conf.c
+Index: libvirt-6.7.0/src/qemu/qemu_conf.c
 ===================================================================
---- libvirt-6.6.0.orig/src/qemu/qemu_conf.c
-+++ libvirt-6.6.0/src/qemu/qemu_conf.c
-@@ -96,10 +96,9 @@ qemuDriverUnlock(virQEMUDriverPtr driver
+--- libvirt-6.7.0.orig/src/qemu/qemu_conf.c
++++ libvirt-6.7.0/src/qemu/qemu_conf.c
+@@ -97,10 +97,9 @@ qemuDriverUnlock(virQEMUDriverPtr driver
  
  #ifndef DEFAULT_LOADER_NVRAM
  # define DEFAULT_LOADER_NVRAM \
@@ -36,10 +36,10 @@ Index: libvirt-6.6.0/src/qemu/qemu_conf.c
  #endif
  
  
-Index: libvirt-6.6.0/src/security/virt-aa-helper.c
+Index: libvirt-6.7.0/src/security/virt-aa-helper.c
 ===================================================================
---- libvirt-6.6.0.orig/src/security/virt-aa-helper.c
-+++ libvirt-6.6.0/src/security/virt-aa-helper.c
+--- libvirt-6.7.0.orig/src/security/virt-aa-helper.c
++++ libvirt-6.7.0/src/security/virt-aa-helper.c
 @@ -479,7 +479,8 @@ valid_path(const char *path, const bool
          "/usr/share/ovmf/",              /* for OVMF images */
          "/usr/share/AAVMF/",             /* for AAVMF images */

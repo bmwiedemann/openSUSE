@@ -40,6 +40,12 @@ Patch3:         gnome-coexistance.patch
 Patch4:         desktop-override.patch
 # PATCH-FIX-OPENSUSE: Use nemo instead of nautilus for desktop icons
 Patch5:         nemo-instead-of-nautilus.patch
+# PATCH-FIX-UPSTREAM: gh#solus-project/budgie-desktop#1998 -- Fixes boo#1176016
+Patch6:         replace-na-tray-with-carbontray.patch
+# PATCH-FIX-UPSTREAM: gh#solus-project/budgie-desktop#2002 -- Fixes boo#1176016
+Patch7:         clean-up-carbontray.patch
+# PATCH-FIX-UPSTREAM: gh#solus-project/budgie-desktop#2009 -- Fixes boo#1176016
+Patch8:         fix-integration-issues-with-carbontray.patch
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.41.2
 BuildRequires:  pkgconfig

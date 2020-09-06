@@ -3,10 +3,10 @@ Disable TLS by default
 On SUSE distros, the default is for libvirtd to listen only on the
 Unix Domain Socket. The libvirt client still provides remote access
 via a SSH tunnel.
-Index: libvirt-6.6.0/src/remote/remote_daemon_config.c
+Index: libvirt-6.7.0/src/remote/remote_daemon_config.c
 ===================================================================
---- libvirt-6.6.0.orig/src/remote/remote_daemon_config.c
-+++ libvirt-6.6.0/src/remote/remote_daemon_config.c
+--- libvirt-6.7.0.orig/src/remote/remote_daemon_config.c
++++ libvirt-6.7.0/src/remote/remote_daemon_config.c
 @@ -99,7 +99,7 @@ daemonConfigNew(bool privileged G_GNUC_U
  
  #ifdef WITH_IP
@@ -16,10 +16,10 @@ Index: libvirt-6.6.0/src/remote/remote_daemon_config.c
  # else /* ! LIBVIRTD */
      data->listen_tls = false; /* Always honoured, --listen doesn't exist. */
  # endif /* ! LIBVIRTD */
-Index: libvirt-6.6.0/src/remote/libvirtd.conf.in
+Index: libvirt-6.7.0/src/remote/libvirtd.conf.in
 ===================================================================
---- libvirt-6.6.0.orig/src/remote/libvirtd.conf.in
-+++ libvirt-6.6.0/src/remote/libvirtd.conf.in
+--- libvirt-6.7.0.orig/src/remote/libvirtd.conf.in
++++ libvirt-6.7.0/src/remote/libvirtd.conf.in
 @@ -17,8 +17,8 @@
  # It is necessary to setup a CA and issue server certificates before
  # using this capability.

@@ -49,4 +49,13 @@
   * Use the toolbox name as the actual toolbox's hostname</comment>
     <requestid>824140</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8447bd9de5e23bddab58a6695f97b055</srcmd5>
+    <version>1.0+git20200831.d2d2e5d</version>
+    <time>1599420999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200831.d2d2e5d:
+  * Allow graphical applications from inside a user toolbox to run</comment>
+    <requestid>831617</requestid>
+  </revision>
 </revisionlist>

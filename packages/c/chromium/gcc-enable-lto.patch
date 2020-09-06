@@ -1,7 +1,7 @@
-Index: chromium-75.0.3770.142/build/config/BUILDCONFIG.gn
+Index: chromium-85.0.4183.69/build/config/BUILDCONFIG.gn
 ===================================================================
---- chromium-75.0.3770.142.orig/build/config/BUILDCONFIG.gn
-+++ chromium-75.0.3770.142/build/config/BUILDCONFIG.gn
+--- chromium-85.0.4183.69.orig/build/config/BUILDCONFIG.gn
++++ chromium-85.0.4183.69/build/config/BUILDCONFIG.gn
 @@ -130,6 +130,8 @@ declare_args() {
    # separate flags.
    is_official_build = false
@@ -11,7 +11,7 @@ Index: chromium-75.0.3770.142/build/config/BUILDCONFIG.gn
    # Whether we're a traditional desktop unix.
    is_desktop_linux = current_os == "linux"
  
-@@ -440,6 +442,12 @@ default_compiler_configs = [
+@@ -441,6 +443,12 @@ default_compiler_configs = [
    "//build/config/sanitizers:default_sanitizer_flags",
  ]
  
@@ -24,11 +24,11 @@ Index: chromium-75.0.3770.142/build/config/BUILDCONFIG.gn
  if (is_win) {
    default_compiler_configs += [
      "//build/config/win:default_crt",
-Index: chromium-75.0.3770.142/build/config/compiler/BUILD.gn
+Index: chromium-85.0.4183.69/build/config/compiler/BUILD.gn
 ===================================================================
---- chromium-75.0.3770.142.orig/build/config/compiler/BUILD.gn
-+++ chromium-75.0.3770.142/build/config/compiler/BUILD.gn
-@@ -1921,6 +1921,10 @@ if (is_win) {
+--- chromium-85.0.4183.69.orig/build/config/compiler/BUILD.gn
++++ chromium-85.0.4183.69/build/config/compiler/BUILD.gn
+@@ -1947,6 +1947,10 @@ if (is_win) {
    }
  }
  
@@ -39,13 +39,13 @@ Index: chromium-75.0.3770.142/build/config/compiler/BUILD.gn
  config("default_stack_frames") {
    if (is_posix || is_fuchsia) {
      if (enable_frame_pointers) {
-Index: chromium-75.0.3770.142/sandbox/linux/BUILD.gn
+Index: chromium-85.0.4183.69/sandbox/linux/BUILD.gn
 ===================================================================
---- chromium-75.0.3770.142.orig/sandbox/linux/BUILD.gn
-+++ chromium-75.0.3770.142/sandbox/linux/BUILD.gn
-@@ -256,6 +256,9 @@ component("seccomp_bpf") {
-     "//base",
+--- chromium-85.0.4183.69.orig/sandbox/linux/BUILD.gn
++++ chromium-85.0.4183.69/sandbox/linux/BUILD.gn
+@@ -250,6 +250,9 @@ component("seccomp_bpf") {
      "//base/third_party/dynamic_annotations",
+     "//sandbox:sandbox_buildflags",
    ]
 +  if (gcc_lto) {
 +    configs -= [ "//build/config/compiler:gcc_lto" ]

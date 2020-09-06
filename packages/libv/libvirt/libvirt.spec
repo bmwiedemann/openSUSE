@@ -21,9 +21,6 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-# libvirt does not support building in srcdir
-%define _vpath_builddir %{_target_platform}
-
 # The hypervisor drivers that run in libvirtd
 %define with_qemu          0%{!?_without_qemu:1}
 %define with_lxc           0%{!?_without_lxc:1}
@@ -31,14 +28,20 @@
 %define with_vbox          0%{!?_without_vbox:0}
 
 # Then the hypervisor drivers that run outside libvirtd, in libvirt.so
-%define with_openvz        0%{!?_without_openvz:1}
-%define with_vmware        0%{!?_without_vmware:1}
+
+# The esx driver is built for both openSUSE and SLE, but it is not supported
 %define with_esx           0%{!?_without_esx:1}
+# Until we have requests for them, disable building the vmware, hyperv and
+# openvz drivers
+%define with_vmware        0%{!?_without_vmware:0}
 %define with_hyperv        0%{!?_without_hyperv:0}
+%define with_openvz        0%{!?_without_openvz:0}
 
 # Then the secondary host drivers, which run inside libvirtd
 %define with_storage_rbd   0%{!?_without_storage_rbd:0}
 %define with_storage_sheepdog 0
+# The gluster storage backend is built for both openSUSE and SLE, but it is
+# not supported
 %define with_storage_gluster  0%{!?_without_storage_gluster:1}
 %define with_storage_iscsi_direct 0%{!?_without_storage_iscsi_direct:0}
 %define with_apparmor      0%{!?_without_apparmor:1}
@@ -48,9 +51,9 @@
 %define with_polkit_rules  1
 %define with_wireshark     0%{!?_without_wireshark:1}
 %define with_libssh2       0%{!?_without_libssh2:1}
+%define with_numactl       0%{!?_without_numactl:1}
 
 # A few optional bits off by default, we enable later
-%define with_numactl       0%{!?_without_numactl:0}
 %define with_numad         0%{!?_without_numad:0}
 %define with_firewalld     0%{!?_without_firewalld:0}
 %define with_firewalld_zone 0%{!?_without_firewalld_zone:0}
@@ -59,42 +62,19 @@
 
 # Set the OS / architecture specific special cases
 
-# Xen is available only on x86_64 and aarch64
-%ifnarch x86_64 aarch64
+# Xen is only available on x86_64
+%ifnarch x86_64
     %define with_libxl     0
 %endif
 
-# For SLE, further restrict Xen support to x86_64 only
-%if ! 0%{?is_opensuse}
-    %ifarch %arm aarch64
-        %define with_libxl 0
-    %endif
-%endif
-
 # Enable numactl for most architectures. Handle aarch64 separately
-%ifnarch s390 s390x %arm %ix86 aarch64
-    %define with_numactl   0%{!?_without_numactl:1}
-%endif
-
-# For aarch64, numactl is only available on newer than 1320, or SLE12
-# family newer than 120100
-%ifarch aarch64
-    %if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && ( 0%{?sle_version} > 120100 ) )
-        %define with_numactl 0%{!?_without_numactl:1}
-    %endif
+%ifarch s390 s390x %arm %ix86
+    %define with_numactl   0
 %endif
 
 # vbox is available only on i386 x86_64
 %ifnarch %{ix86} x86_64
     %define with_vbox      0
-%endif
-
-# Disable hypervisor drivers not supported in SLE
-%if ! 0%{?is_opensuse}
-    %define with_openvz    0
-    %define with_vbox      0
-    %define with_vmware    0
-    %define with_hyperv    0
 %endif
 
 # Enable firewalld support in newer code bases
@@ -134,22 +114,13 @@
 
 # For arm
 %ifarch aarch64
-# enable on anything newer than 1320, or SLE12 newer than 120100
-# use librbd-devel as build dependency
-    %if 0%{?suse_version} > 1320 || ( 0%{?is_opensuse} == 0 && 0%{?sle_version} > 120100 )
-        %define with_storage_rbd 0%{!?_without_storage_rbd:1}
-        %define with_rbd_lib     librbd-devel
-    %endif
-%endif
-
-# gluster storage backend is not supported in SLE
-%if ! 0%{?is_opensuse}
-    %define with_storage_gluster 0
+    %define with_storage_rbd 0%{!?_without_storage_rbd:1}
+    %define with_rbd_lib     librbd-devel
 %endif
 
 # libiscsi storage backend needs libiscsi >= 1.18.0 which is only available
 # in suse_version >= 1500
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1500
     %define with_storage_iscsi_direct 1
 %endif
 
@@ -185,7 +156,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.6.0
+Version:        6.7.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -217,10 +188,9 @@ Requires:       %{name}-libs = %{version}-%{release}
 
 # All build-time requirements. Run-time requirements are
 # listed against each sub-RPM
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  gettext-tools
-BuildRequires:  libtool
+BuildRequires:  meson >= 0.54.0
+BuildRequires:  ninja
 # Needed for virkmodtest in 'make check'
 BuildRequires:  modutils
 BuildRequires:  pkgconfig(systemd)
@@ -230,6 +200,8 @@ BuildRequires:  xen-devel
 %if %{with_qemu}
 # For managing ACLs
 BuildRequires:  libacl-devel
+# For qemu-bridge-helper, qemu-pr-helper
+BuildRequires:  qemu-tools
 %endif
 %if %{with_bash_completion}
 BuildRequires:  bash-completion-devel >= 2.0
@@ -283,6 +255,7 @@ BuildRequires:  open-iscsi
 BuildRequires:  libiscsi-devel
 %endif
 # For disk driver
+BuildRequires:  parted
 BuildRequires:  parted-devel
 # For Multipath support
 BuildRequires:  device-mapper-devel
@@ -336,10 +309,7 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         2edd63a0-fix-virFileSetCOW-logic.patch
-Patch1:         82bb167f-dont-cache-devmapper-major.patch
-Patch2:         feb8564a-handle-no-devmapper.patch
-Patch3:         53d9af1e-ignore-devmapper-open-errors.patch
+Patch0:         2ad009ea-qemu-check-modules-dir.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -360,19 +330,14 @@ Patch204:       suse-virtlogd-sysconfig-settings.patch
 Patch205:       suse-qemu-conf.patch
 Patch206:       suse-ovmf-paths.patch
 Patch207:       suse-apparmor-libnl-paths.patch
-Patch208:       support-managed-pci-xen-driver.patch
-Patch209:       libxl-support-block-script.patch
-Patch210:       qemu-apparmor-screenshot.patch
-Patch211:       libvirt-suse-netcontrol.patch
-Patch212:       lxc-wait-after-eth-del.patch
-Patch213:       suse-libxl-disable-autoballoon.patch
-Patch214:       suse-xen-ovmf-loaders.patch
-Patch215:       suse-bump-xen-version.patch
-Patch216:       disable-multipath-pr-tests.patch
-# SLES-Only patches
-%if ! 0%{?is_opensuse}
-Patch400:       virt-create-rootfs.patch
-%endif
+Patch208:       libxl-support-block-script.patch
+Patch209:       qemu-apparmor-screenshot.patch
+Patch210:       libvirt-suse-netcontrol.patch
+Patch211:       lxc-wait-after-eth-del.patch
+Patch212:       suse-libxl-disable-autoballoon.patch
+Patch213:       suse-xen-ovmf-loaders.patch
+Patch214:       suse-bump-xen-version.patch
+Patch215:       virt-create-rootfs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -648,9 +613,11 @@ Requires:       %{name}-daemon-driver-storage-iscsi = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage-logical = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage-mpath = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage-scsi = %{version}-%{release}
-%if %{with_storage_gluster}
-Requires:       %{name}-daemon-driver-storage-gluster = %{version}-%{release}
-%endif
+# Closing the Leap gap note:
+# Generally we would have a conditional 'Requires:' for daemon-driver-storage-gluster
+# similar to the other configurable storage backends, but gluster is not supported in
+# SLE. We'll build the backend so it is available but not require it as part of the
+# daemon-driver-storage metapackage
 %if %{with_storage_rbd}
 Requires:       %{name}-daemon-driver-storage-rbd = %{version}-%{release}
 %endif
@@ -880,9 +847,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -908,110 +872,109 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %patch213 -p1
 %patch214 -p1
 %patch215 -p1
-%patch216 -p1
-%if ! 0%{?is_opensuse}
-%patch400 -p1
-%endif
 
 %build
 %if %{with_qemu}
-    %define arg_qemu --with-qemu
+    %define arg_qemu -Ddriver_qemu=enabled
 %else
-    %define arg_qemu --without-qemu
+    %define arg_qemu -Ddriver_qemu=disabled
 %endif
 %if %{with_openvz}
-    %define arg_openvz --with-openvz
+    %define arg_openvz -Ddriver_openvz=enabled
 %else
-    %define arg_openvz --without-openvz
+    %define arg_openvz -Ddriver_openvz=disabled
 %endif
 %if %{with_lxc}
-    %define arg_lxc --with-lxc
+    %define arg_lxc -Ddriver_lxc=enabled
 %else
-    %define arg_lxc --without-lxc
+    %define arg_lxc -Ddriver_lxc=disabled
 %endif
 %if %{with_vbox}
-    %define arg_vbox --with-vbox
+    %define arg_vbox -Ddriver_vbox=enabled
 %else
-    %define arg_vbox --without-vbox
+    %define arg_vbox -Ddriver_vbox=disabled
 %endif
 %if %{with_esx}
-    %define arg_esx --with-esx
+    %define arg_esx -Ddriver_esx=enabled
 %else
-    %define arg_esx --without-esx
+    %define arg_esx -Ddriver_esx=disabled
 %endif
 %if %{with_vmware}
-    %define arg_vmware --with-vmware
+    %define arg_vmware -Ddriver_vmware=enabled
 %else
-    %define arg_vmware --without-vmware
+    %define arg_vmware -Ddriver_vmware=disabled
 %endif
 %if %{with_hyperv}
-    %define arg_hyperv --with-hyperv
+    %define arg_hyperv -Ddriver_hyperv=enabled
+    %define arg_openwsman -Dopenwsman=enabled
 %else
-    %define arg_hyperv --without-hyperv
+    %define arg_hyperv -Ddriver_hyperv=disabled
+    %define arg_openwsman -Dopenwsman=disabled
 %endif
 %if %{with_libxl}
-    %define arg_libxl --with-libxl
+    %define arg_libxl -Ddriver_libxl=enabled
 %else
-    %define arg_libxl --without-libxl
+    %define arg_libxl -Ddriver_libxl=disabled
 %endif
 %if %{with_storage_rbd}
-    %define arg_storage_rbd --with-storage-rbd
+    %define arg_storage_rbd -Dstorage_rbd=enabled
 %else
-    %define arg_storage_rbd --without-storage-rbd
+    %define arg_storage_rbd -Dstorage_rbd=disabled
 %endif
 %if %{with_storage_sheepdog}
-    %define arg_storage_sheepdog --with-storage-sheepdog
+    %define arg_storage_sheepdog -Dstorage_sheepdog=enabled
 %else
-    %define arg_storage_sheepdog --without-storage-sheepdog
+    %define arg_storage_sheepdog -Dstorage_sheepdog=disabled
 %endif
 %if %{with_storage_gluster}
-    %define arg_storage_gluster --with-storage-gluster
+    %define arg_storage_gluster -Dstorage_gluster=enabled
 %else
-    %define arg_storage_gluster --without-storage-gluster
+    %define arg_storage_gluster -Dstorage_gluster=disabled
 %endif
 %if %{with_storage_iscsi_direct}
-    %define arg_storage_iscsi_direct --with-storage-iscsi-direct
+    %define arg_storage_iscsi_direct -Dstorage_iscsi_direct=enabled
 %else
-    %define arg_storage_iscsi_direct --without-storage-iscsi-direct
+    %define arg_storage_iscsi_direct -Dstorage_iscsi_direct=disabled
 %endif
 %if %{with_numactl}
-    %define arg_numactl --with-numactl
+    %define arg_numactl -Dnumactl=enabled
 %else
-    %define arg_numactl --without-numactl
+    %define arg_numactl -Dnumactl=disabled
 %endif
 %if %{with_numad}
-    %define arg_numad --with-numad
+    %define arg_numad -Dnumad=enabled
 %else
-    %define arg_numad --without-numad
+    %define arg_numad -Dnumad=disabled
 %endif
 %if %{with_apparmor}
-    %define arg_apparmor --with-apparmor
-    %define arg_apparmor_profiles --with-apparmor-profiles
+    %define arg_apparmor -Dapparmor=enabled
+    %define arg_apparmor_profiles -Dapparmor_profiles=true
 %else
-    %define arg_apparmor --without-apparmor
+    %define arg_apparmor -Dapparmor=disabled
+    %define arg_apparmor_profiles -Dapparmor_profiles=false
 %endif
 %if %{with_sanlock}
-    %define arg_sanlock --with-sanlock
+    %define arg_sanlock -Dsanlock=enabled
 %else
-    %define arg_sanlock --without-sanlock
+    %define arg_sanlock -Dsanlock=disabled
 %endif
 %if %{with_firewalld}
-    %define arg_firewalld --with-firewalld
+    %define arg_firewalld -Dfirewalld=enabled
 %else
-    %define arg_firewalld --without-firewalld
+    %define arg_firewalld -Dfirewalld=disabled
 %endif
 %if %{with_firewalld_zone}
-    %define arg_firewalld_zone --with-firewalld-zone
+    %define arg_firewalld_zone -Dfirewalld_zone=enabled
 %else
-    %define arg_firewalld_zone --without-firewalld-zone
+    %define arg_firewalld_zone -Dfirewalld_zone=disabled
 %endif
 %if %{with_wireshark}
-    %define arg_wireshark --with-wireshark-dissector
+    %define arg_wireshark -Dwireshark_dissector=enabled
 %else
-    %define arg_wireshark --without-wireshark-dissector
+    %define arg_wireshark -Dwireshark_dissector=disabled
 %endif
 
-%define arg_selinux_mount --with-selinux-mount="/selinux"
+%define arg_selinux_mount -Dselinux_mount="/selinux"
 
 # UEFI firmwares
 # For SLE15 SP2 (Leap 15.2) and newer, use firmware descriptor files from the
@@ -1030,89 +993,75 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     LOADERS="$LOADERS:/usr/share/qemu/ovmf-x86_64-ms-code.bin:/usr/share/qemu/ovmf-x86_64-ms-vars.bin"
     # aarch64 UEFI firmwares
     LOADERS="$LOADERS:/usr/share/qemu/aavmf-aarch64-code.bin:/usr/share/qemu/aavmf-aarch64-vars.bin"
-    %define arg_loader_nvram --with-loader-nvram="$LOADERS"
+    %define arg_loader_nvram -Dloader-nvram="$LOADERS"
 %endif
 
-autoreconf -f -i
-%define _configure ../configure
-mkdir %{_vpath_builddir}
-cd %{_vpath_builddir}
-export CFLAGS="%{optflags}"
-export PYTHON=%{_bindir}/python3
-%configure --disable-static \
-	   --enable-dependency-tracking \
-	   --with-runstatedir=%{_rundir} \
+%meson \
+           --libexecdir=%{_libdir}/%{name} \
+           -Drunstatedir=%{_rundir} \
            %{?arg_qemu} \
            %{?arg_openvz} \
            %{?arg_lxc} \
            %{?arg_vbox} \
            %{?arg_libxl} \
-           --with-sasl \
-           --with-polkit \
-           --with-libvirtd \
+           -Dsasl=enabled \
+           -Dpolkit=enabled \
+           -Ddriver_libvirtd=enabled \
            %{?arg_esx} \
            %{?arg_hyperv} \
+           %{?arg_openwsman} \
            %{?arg_vmware} \
-           --without-vz \
-           --without-bhyve \
-           --with-remote-default-mode=legacy \
-           --with-interface \
-           --with-network \
-           --with-storage-fs \
-           --with-storage-lvm \
-           --with-storage-iscsi \
-           --with-storage-scsi \
-           --with-storage-disk \
-           --with-storage-mpath \
+           -Ddriver_vz=disabled \
+           -Ddriver_bhyve=disabled \
+           -Dremote_default_mode=legacy \
+           -Ddriver_interface=enabled \
+           -Ddriver_network=enabled \
+           -Dstorage_fs=enabled \
+           -Dstorage_lvm=enabled \
+           -Dstorage_iscsi=enabled \
+           -Dstorage_scsi=enabled \
+           -Dstorage_disk=enabled \
+           -Dstorage_mpath=enabled \
            %{?arg_storage_rbd} \
            %{?arg_storage_sheepdog} \
            %{?arg_storage_gluster} \
            %{?arg_storage_iscsi_direct} \
-           --without-storage-zfs \
-           --without-storage-vstorage \
+           -Dstorage_zfs=disabled \
+           -Dstorage_vstorage=disabled \
            %{?arg_numactl} \
            %{?arg_numad} \
-           --with-capng \
-           --with-fuse \
-           --without-netcf \
-           --with-netcontrol \
-           --with-selinux \
+           -Dcapng=enabled \
+           -Dfuse=enabled \
+           -Dnetcf=disabled \
+           -Dnetcontrol=enabled \
+           -Dselinux=enabled \
            %{?arg_selinux_mount} \
            %{?arg_apparmor} \
            %{?arg_apparmor_profiles} \
-           --with-udev \
-           --with-yajl \
+	   -Dhal=disabled \
+           -Dudev=enabled \
+           -Dyajl=enabled \
            %{?arg_sanlock} \
-           --with-libpcap \
-           --with-macvtap \
-           --with-audit \
-           --with-dtrace \
-           --with-driver-modules \
+           -Dlibpcap=enabled \
+           -Dmacvtap=enabled \
+           -Daudit=enabled \
+           -Ddtrace=enabled \
            %{?arg_firewalld} \
            %{?arg_firewalld_zone} \
            %{?arg_wireshark} \
-           --with-nss-plugin \
-           --libexecdir=%{_libdir}/%{name} \
-           --with-qemu-user=%{qemu_user} \
-           --with-qemu-group=%{qemu_group} \
+           -Dnss=enabled \
+           -Dqemu_user=%{qemu_user} \
+           -Dqemu_group=%{qemu_group} \
            %{?arg_loader_nvram} \
-           --without-login-shell \
-           --with-init-script=systemd \
-           ac_cv_path_MODPROBE=/sbin/modprobe \
-           ac_cv_path_UDEVADM=/sbin/udevadm \
-           ac_cv_path_SHOWMOUNT=/usr/sbin/showmount \
-           ac_cv_path_PARTED=/usr/sbin/parted \
-           ac_cv_path_QEMU_BRIDGE_HELPER=/usr/lib/qemu-bridge-helper
-%make_build HTML_DIR=%{_docdir}/%{name}
+           -Dlogin_shell=disabled \
+           -Dinit_script=systemd \
+	   %{nil}
+
+%meson_build
 
 %install
-cd %{_vpath_builddir}
-%make_install SYSTEMD_UNIT_DIR=%{_unitdir} HTML_DIR=%{_docdir}/%{name}
-cp ../examples/sh/virt-lxc-convert %{buildroot}/%{_bindir}
+%meson_install
 rm -f %{buildroot}/%{_libdir}/*.la
-%if %{with_wireshark}
-rm -f %{buildroot}/%{wireshark_plugindir}/libvirt.la
-%endif
 rm -f %{buildroot}/%{_libdir}/*.a
 rm -f %{buildroot}/%{_libdir}/%{name}/lock-driver/*.la
 rm -f %{buildroot}/%{_libdir}/%{name}/lock-driver/*.a
@@ -1122,6 +1071,9 @@ rm -f %{buildroot}/%{_libdir}/%{name}/storage-backend/*.la
 rm -f %{buildroot}/%{_libdir}/%{name}/storage-backend/*.a
 rm -f %{buildroot}/%{_libdir}/%{name}/storage-file/*.la
 rm -f %{buildroot}/%{_libdir}/%{name}/storage-file/*.a
+%if %{with_wireshark}
+rm -f %{buildroot}/%{wireshark_plugindir}/libvirt.la
+%endif
 # remove currently unsupported locale(s)
 for dir in %{buildroot}/usr/share/locale/*
 do
@@ -1235,23 +1187,7 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 %fdupes -s %{buildroot}
 
 %check
-cd tests
-SKIP_TESTS=""
-# virportallocatortest fails on aarch64 due to unsupported IPV6_V6ONLY flag
-%ifarch aarch64
-SKIP_TESTS="$SKIP_TESTS virportallocatortest"
-%endif
-for i in $SKIP_TESTS
-do
-  rm -f $i
-  printf 'int main(void) { return 0; }' > $i.c
-done
-cd ../%{_vpath_builddir}
-if ! %make_build check VIR_TEST_DEBUG=1
-then
-  cat tests/test-suite.log || true
-  exit 1
-fi
+VIR_TEST_DEBUG=1 %meson_test --no-suite syntax-check
 
 %pre daemon
 %{_bindir}/getent group libvirt >/dev/null || %{_sbindir}/groupadd -r libvirt
@@ -1777,11 +1713,8 @@ fi
 %{_datadir}/augeas/lenses/tests/test_libvirtd_lxc.aug
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_lxc.so
-%attr(0755, root, root) %{_bindir}/virt-lxc-convert
-    %if ! 0%{?is_opensuse}
 %{_bindir}/virt-create-rootfs
 %doc %{_mandir}/man1/virt-create-rootfs.1*
-    %endif
 %endif
 
 %if %{with_libxl}
@@ -1862,7 +1795,7 @@ fi
 %{_unitdir}/libvirt-guests.service
 %{_sbindir}/rclibvirt-guests
 
-%files libs -f %{_vpath_builddir}/%{name}.lang
+%files libs -f %{name}.lang
 %config(noreplace) %{_sysconfdir}/%{name}/libvirt.conf
 %config(noreplace) %{_sysconfdir}/%{name}/libvirt-admin.conf
 %{_libdir}/libvirt.so.*
@@ -1928,10 +1861,8 @@ fi
 %{_datadir}/%{name}/api/libvirt-lxc-api.xml
 
 %files doc
-%doc AUTHORS NEWS.rst README README.rst
+%doc AUTHORS NEWS.rst README.rst
 %license COPYING COPYING.LESSER
-%dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/*
 %dir %{_datadir}/doc/%{name}
 %doc %{_datadir}/doc/%{name}/*
 

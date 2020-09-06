@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep  5 16:08:27 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * skip python2 builds
+  * change to pytest
+  * added pytz as requirement (from setup.py)
+
+- update to version 2.0.0:
+  * Starting with version 2, flask-babel drops official support for
+    Python2.
+  * Tests moved from unittest to pytest (#163)
+  * Domain and caching support from Flask-BabelEx (#163)
+  * Documentation moved from python-hosted to Github Pages.
+  * CI moved from Travisci to Github Actions
+  * Small documentation improvements.
+  * Removed uncessary checks on get_translations() (#127, #126)
+  * localeselector and timezoneselector can be changed after creation.
+
+-------------------------------------------------------------------
 Sun Feb 16 05:57:42 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
