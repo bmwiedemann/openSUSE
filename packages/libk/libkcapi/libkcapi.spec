@@ -17,7 +17,7 @@
 
 
 Name:           libkcapi
-Version:        1.1.5
+Version:        1.2.0
 Release:        0
 Summary:        Linux Kernel Crypto API User Space Interface Library
 License:        GPL-2.0-only
