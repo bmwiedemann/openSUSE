@@ -338,6 +338,7 @@
     <package name="cpupower" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cracklib" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="crda" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:createrepo_c -->
     <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4385,6 +4386,7 @@
     <package name="ruby2.7-rubygem-ruby-libvirt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-ruby-openid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-ruby-progressbar" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-ruby-rc4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-ruby-shadow" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-ruby2_keywords" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-ruby_dep" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5328,7 +5330,6 @@
     <package name="apulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="audacity" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="audacity-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="audacity-plugins" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5481,6 +5482,7 @@
     <package name="libsmbldap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libstdc++6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libstdc++6-pp-gcc10-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libsuil-0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libsystemd0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtalloc2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
