@@ -1,13 +1,13 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f51c705..d081e3d 100644
+index 61148f9..8a5dcce 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -22,7 +22,7 @@ option(WARNINGS_AS_ERRORS "Treat compiler warnings as errors" ON)
- 
- set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
- 
--set(Boost_USE_STATIC_LIBS ON)
-+#set(Boost_USE_STATIC_LIBS ON)
- find_package(Boost 1.65 COMPONENTS program_options REQUIRED)
- find_package(SDL2 REQUIRED)
- find_package(SDL2_mixer REQUIRED)
+@@ -61,7 +61,7 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Emscripten")
+         "SHELL:-s USE_BOOST_HEADERS=1"
+     )
+ else()
+-    set(Boost_USE_STATIC_LIBS ON)
++    #set(Boost_USE_STATIC_LIBS ON)
+     find_package(Boost 1.65 COMPONENTS program_options REQUIRED)
+     find_package(SDL2 REQUIRED)
+     find_package(SDL2_mixer REQUIRED)

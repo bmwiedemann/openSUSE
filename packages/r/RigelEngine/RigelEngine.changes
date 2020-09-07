@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Sep  5 18:49:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.2
+  General improvements
+  * More robust sound format handling, fixing issues on some
+    platforms where the audio device does not support 16-bit signed
+    integer PCM output (e.g. web browsers)
+  * It's now possible to navigate the options menu using a keyboard
+  Gamepad support improvements
+  * All menus, including the options menu, can now be navigated via
+    gamepad.
+  * The highscore name entry screen can now be exited using a
+    gamepad.
+  * When in-game, the "start" button on a gamepad now brings up a
+    pause menu, allowing saving, loading, modifying options etc.
+    without needing a keyboard.
+  * When saving the game using a gamepad, a name is automatically
+    generated for the saved game to avoid the need for a keyboard.
+    The name contains episode, level, and difficulty.
+  Bug fixes
+  * When dying in a boss level after activating the boss, the music
+    was not reset back to the pre-boss music.
+  * The hint machine could be activated even without having the
+    hint globe (by pressing up)
+- Drop patch:
+  * rigelengine-fix-nlohmann-json-hpp.patch (included upstream)
+
+-------------------------------------------------------------------
 Mon Aug 31 12:23:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use openGL ES on %arm and aarch64
