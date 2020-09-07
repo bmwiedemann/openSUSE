@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:34:33 UTC 2020 - psimons@suse.com
+
+- Update yesod-core to version 1.6.18 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Aug 19 08:14:02 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 6GB min disk space for ppc64/ppc64le
