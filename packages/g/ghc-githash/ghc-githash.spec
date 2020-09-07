@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-githash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name githash
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.3.3
+Version:        0.1.4.0
 Release:        0
 Summary:        Compile git revision info into Haskell projects
 License:        BSD-3-Clause
@@ -52,7 +52,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
