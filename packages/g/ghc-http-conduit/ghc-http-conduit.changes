@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:34:32 UTC 2020 - psimons@suse.com
+
+- Update http-conduit to version 2.3.7.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Aug 19 09:39:21 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 6GB min disk space for ppc64/ppc64le
