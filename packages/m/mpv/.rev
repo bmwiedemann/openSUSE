@@ -968,4 +968,41 @@
   * cocoa-cb: generalisation of backend independent parts</comment>
     <requestid>830193</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>07cdc1bf79801e2a4f64794f39979721</srcmd5>
+    <version>0.32.0+git.20200904T003159.f57b90b069</version>
+    <time>1599507241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200904T003159.f57b90b069:
+  * options: fix a flags field
+  * ao_alsa: make partial writes an error message
+  * audio: fix stream-silence with push AOs (somewhat)
+  * encode: propagate errors to exit status properly
+  * ao_lavc: slightly simplify filter use
+  * client API: inactivate the opengl_cb API
+  * encode: disable unsupported media types automatically
+  * encode: remove early EOF failure handling
+  * audio: slightly simplify audio_start_ao()
+  * audio: reduce excessive logging of delayed audio start
+  * ao_alsa: log more information on short writes
+  * audio: do not show audio draining message when it does not make sense
+  * audio: do not wake up player when waiting for audio state and paused
+  * audio: fix AVFrame allocation (crash with opus encoding)
+  * DOCS/interface-changes: remove encoding mode deprecation entry
+  * player/playloop.c: reorder included headers per contribute.md
+  * ao_openal: restore working condition with new push API
+  * ao: remove unused field
+  * audio: fix inefficient behavior with ao_alsa, remove period_size field
+  * encode: undeprecate
+  * ring: remove this
+  * audio_buffer: remove this
+  * audio: refactor how data is passed to AO
+  * DOCS: fix minor issue on the --video-latency-hacks explanation
+  * Update compile-windows.md
+  * manpage: reorder sentence
+  * f_async_queue: add various helper functions
+  * f_async_queue: don't count EOF frames as samples
+  * f_async_queue: change reset behavior</comment>
+    <requestid>832587</requestid>
+  </revision>
 </revisionlist>
