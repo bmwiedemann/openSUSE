@@ -42,6 +42,7 @@ BuildRequires:  bc
 BuildRequires:  enchant-devel
 BuildRequires:  fdupes
 BuildRequires:  file-devel
+BuildRequires:  fontpackages-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hunspell-devel
 BuildRequires:  libboost_headers-devel
@@ -60,6 +61,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 #!BuildIgnore: lyx
+Requires:       %{name}-fonts
 Requires:       ImageMagick
 Requires:       ghostscript
 # Goal is to require/recommends (roughly) everything that is supported in the GUI of LyX
@@ -110,6 +112,7 @@ Recommends:     texlive-diagbox
 Recommends:     texlive-picinpar
 Recommends:     texlive-shapepar
 Recommends:     texlive-sidecap
+%reconfigure_fonts_prereq
 
 %description
 LyX is a document processor that encourages an approach to writing
@@ -124,6 +127,14 @@ document under "Help" on the menubar.
 LyX uses ImageMagick to deal with images. For security reasons
 (open)SUSE limits the functionaly of ImageMagick. See README.SUSE
 (in /usr/share/doc/packages/lyx/) for more information.
+
+%package fonts
+Summary:        Fonts for displaying math
+Group:          System/X11/Fonts
+BuildArch:      noarch
+
+%description fonts
+A collection of Math symbol fonts for LyX.
 
 %prep
 %setup -q
@@ -165,6 +176,11 @@ cp ANNOUNCE COPYING NEWS \
 mkdir -p $RPM_BUILD_ROOT$TEXMF/tex/latex
 ln -s %{_datadir}/lyx/tex $RPM_BUILD_ROOT$TEXMF/tex/latex/lyx
 
+# fonts
+install -m 0755 -d %{buildroot}%{_fontsdir}/lyx
+mv %{buildroot}%{_datadir}/lyx/fonts/*.ttf %{buildroot}%{_fontsdir}/lyx/
+rm -rf %{buildroot}%{_datadir}/lyx/fonts
+
 install -p -D -m 0644 lib/appdata.xml %{buildroot}%{_datadir}/appdata/lyx.appdata.xml
 
 install -p -D -m 0644 lib/scripts/bash_completion %{buildroot}%{_datadir}/bash-completion/completions/lyx
@@ -174,6 +190,8 @@ install -p -D -m 0644 lib/scripts/bash_completion %{buildroot}%{_datadir}/bash-c
 %fdupes -s %{buildroot}%{_prefix}
 
 %find_lang %{name}
+
+%reconfigure_fonts_scriptlets -c -n %{name}-fonts
 
 %post
 %desktop_database_post
@@ -202,5 +220,12 @@ install -p -D -m 0644 lib/scripts/bash_completion %{buildroot}%{_datadir}/bash-c
 %{_mandir}/man1/lyxclient.1%{?ext_man}
 %{_mandir}/man1/tex2lyx.1%{?ext_man}
 %{_datadir}/bash-completion/completions/lyx
+
+%files fonts
+%dir %{_fontsdir}
+%dir %{_fontsdir}/lyx
+%{_fontsdir}/lyx/*.ttf
+%doc lib/fonts/BaKoMaFontLicense.txt
+%doc lib/fonts/ReadmeBaKoMa4LyX.txt
 
 %changelog

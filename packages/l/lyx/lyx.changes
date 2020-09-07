@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  3 19:19:34 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Place the math fonts coming with LyX in a separate package and
+  install them in the system font directory. In this way fontconfig
+  finds them, which is half of the fix for the diplay of math fonts
+  in LyX. The other half comes with the next release
+
+-------------------------------------------------------------------
 Mon Jun 29 16:43:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - lyx 2.3.5.2:

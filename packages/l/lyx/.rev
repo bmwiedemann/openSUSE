@@ -790,4 +790,15 @@
     <comment></comment>
     <requestid>817758</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>114cf96ce9091c55f590897ebe3f081b</srcmd5>
+    <version>2.3.5.2</version>
+    <time>1599507347</time>
+    <user>dimstar_suse</user>
+    <comment>- Place the math fonts coming with LyX in a separate package and
+  install them in the system font directory. In this way fontconfig
+  finds them, which is half of the fix for the diplay of math fonts
+  in LyX. The other half comes with the next release</comment>
+    <requestid>832693</requestid>
+  </revision>
 </revisionlist>
