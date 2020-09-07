@@ -71,7 +71,7 @@ pencils, ink, or paint.
 %python_install
 
 %find_lang %{name} %{?no_lang_C}
-%fdupes %{buildroot}%{_libexecdir}/%{name}/
+%fdupes %{buildroot}%{_prefix}/lib/%{name}/
 %fdupes %{buildroot}%{_datadir}/icons/hicolor/
 
 %check
@@ -83,7 +83,7 @@ python3 setup.py test
 %{_bindir}/%{name}
 %{_datadir}/mypaint/
 %{_datadir}/icons/hicolor/*/*/*.*
-%{_libexecdir}/mypaint/
+%{_prefix}/lib/mypaint/
 %{_datadir}/thumbnailers/
 %{_bindir}/mypaint-ora-thumbnailer
 %{_datadir}/metainfo/mypaint.appdata.xml
