@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 08:36:36 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- kubernetes%{baseversion}-kubeadm now obsoletes kubernetes%{baseversionminus1}-kubeadm
+ 
+-------------------------------------------------------------------
 Fri Aug 28 13:01:23 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Introduce kubernetes$FOO-client-common package to make -client truely parralel installable
