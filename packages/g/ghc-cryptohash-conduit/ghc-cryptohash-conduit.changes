@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 13:34:50 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Mon Dec 23 07:52:44 UTC 2019 - psimons@suse.com
 
 - Add cryptohash-conduit at version 0.1.1.
