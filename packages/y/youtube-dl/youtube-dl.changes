@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  6 08:21:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.09.06
+  * nrktv: Improve video id extraction
+  * youtube Fix age gate content detection
+  * svtplay: Fix svt id extraction
+  * twitch: Rework extractors
+
+-------------------------------------------------------------------
 Tue Jul 28 08:43:35 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to release 2020.07.28

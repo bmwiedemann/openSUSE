@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Sep  6 08:21:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.09.06
+  * nrktv: Improve video id extraction
+  * youtube Fix age gate content detection
+  * svtplay: Fix svt id extraction
+  * twitch: Rework extractors
+
+-------------------------------------------------------------------
+Tue Jul 28 08:43:35 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 2020.07.28
+  * [youtube] Fix sigfunc name extraction
+  * [youtube] Improve description extraction 
+  * [wistia] Restrict embed regular expression
+  * [youtube] Prevent excess HTTP 301 
+  * [youtube:playlists] Extend URL regular expression
+  * [bellmedia] Add support for cp24.com clip URLs 
+  * [brightcove] Improve embed detection
+
+-------------------------------------------------------------------
 Sun Jun 28 14:38:22 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to release 2020.06.16.1

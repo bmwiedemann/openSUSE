@@ -19,7 +19,7 @@
 %define modname youtube-dl
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-youtube-dl
-Version:        2020.07.28
+Version:        2020.09.06
 Release:        0
 Summary:        A Python module for downloading from video sites for offline watching
 License:        SUSE-Public-Domain AND CC-BY-SA-3.0
@@ -43,12 +43,12 @@ youtube-dl is a python module to retrieve videos from
 YouTube.com and other video sites for later watching.
 
 %prep
-%setup -q -n %modname
+%autosetup -n %modname
+
+%build
 # remove shebang
 sed -e '1d' -i youtube_dl/__init__.py youtube_dl/__main__.py \
                youtube_dl/YoutubeDL.py youtube_dl/utils.py
-
-%build
 %python_build
 
 %install
