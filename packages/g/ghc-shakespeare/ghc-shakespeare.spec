@@ -19,7 +19,7 @@
 %global pkg_name shakespeare
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.24.1
+Version:        2.0.25
 Release:        0
 Summary:        A toolkit for making compile-time interpolated templates
 License:        MIT

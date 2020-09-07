@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 28 11:38:38 UTC 2020 - psimons@suse.com
+
+- Update shakespeare to version 2.0.25.
+  ### 2.0.25
+
+  * Support for GHC 9.0 [#254](https://github.com/yesodweb/shakespeare/pull/254)
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:00 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
