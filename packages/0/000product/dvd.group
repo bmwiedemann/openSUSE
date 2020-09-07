@@ -2046,11 +2046,11 @@
     <package name="libgeocode-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libges-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgexiv2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgfapi0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
+    <package name="libgfapi0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgfbgraph-0_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgfortran5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgfrpc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
-    <package name="libgfxdr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
+    <package name="libgfrpc0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libgfxdr0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgif7" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgimp-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgimpui-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2067,7 +2067,7 @@
     <package name="libgle3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libglusterfs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
+    <package name="libglusterfs0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libglvnd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libglyr1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgme0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2863,7 +2863,6 @@
     <package name="libvirt-daemon-driver-storage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libvirt-daemon-driver-storage-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libvirt-daemon-driver-storage-disk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
-    <package name="libvirt-daemon-driver-storage-gluster" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libvirt-daemon-driver-storage-iscsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libvirt-daemon-driver-storage-iscsi-direct" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libvirt-daemon-driver-storage-logical" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->

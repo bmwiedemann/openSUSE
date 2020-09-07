@@ -13098,6 +13098,7 @@ unsorted:
   - libvirt-daemon-config-network 
   - libvirt-daemon-config-nwfilter 
   - libvirt-daemon-driver-lxc: [i586] 
+  - libvirt-daemon-driver-storage-gluster 
   - libvirt-daemon-hooks 
   - libvirt-daemon-lxc: [i586] 
   - libvirt-dbus 
