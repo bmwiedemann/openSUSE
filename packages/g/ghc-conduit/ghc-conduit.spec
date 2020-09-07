@@ -19,7 +19,7 @@
 %global pkg_name conduit
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.2
+Version:        1.3.2.1
 Release:        0
 Summary:        Streaming data processing library
 License:        MIT
