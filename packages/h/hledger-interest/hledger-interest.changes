@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  4 02:01:38 UTC 2020 - psimons@suse.com
+
+- Update hledger-interest to version 1.6.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Wed Aug 19 07:42:01 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 6GB min disk space for ppc64/ppc64le
