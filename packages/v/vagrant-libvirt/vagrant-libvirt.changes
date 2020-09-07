@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  3 16:01:21 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Change dependency on qemu-kvm from Recommends to Requires
+
+-------------------------------------------------------------------
 Wed Aug 19 09:38:52 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.1.2

@@ -35,8 +35,8 @@ Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Requires:       libvirt
+Requires:       qemu-kvm
 Requires:       vagrant
-Recommends:     qemu-kvm
 BuildRequires:  vagrant
 
 BuildRequires:  %{ruby}
