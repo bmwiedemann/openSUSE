@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  4 02:29:56 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1176065, fail to get master id from cib xml in fence handler
+  Add patch crm-fence-peer-pacemaker2-issue2.patch
+
+-------------------------------------------------------------------
 Mon Jun  8 08:11:04 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1172641, fix the link error of setup_option.
