@@ -1,7 +1,7 @@
 #
 # spec file for package nauty
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           nauty
-%define lname   libnauty-2_7_rc2
-%define fuv      27rc2
-Version:        2.7~rc2
+%define lname   libnauty-2_7_1
+%define fuv      27r1
+Version:        2.7.1
 Release:        0
 Summary:        Tools for computing automorphism groups of graphs
 License:        Apache-2.0
@@ -74,7 +74,7 @@ rm -f makefile
 autoreconf -fi
 export CFLAGS="%optflags -Wno-unused"
 %configure --disable-popcnt
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -89,7 +89,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %license COPYRIGHT
 
 %files -n %lname
-%_libdir/libnauty*-2.7.rc2.so
+%_libdir/libnauty*-2.7.1.so
 
 %files devel
 %_includedir/nauty/

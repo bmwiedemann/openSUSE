@@ -127,7 +127,7 @@ Index: nauty27rc2/configure.ac
 @@ -1,5 +1,11 @@
  # Process this file with autoconf to produce a configure script.
 -AC_INIT(nauty-h.in)
-+AC_INIT([nauty], [2.7.rc2])
++AC_INIT([nauty], [2.7.1])
 +AC_CONFIG_AUX_DIR([build-aux])
 +AC_CONFIG_MACRO_DIR([m4])
 +AM_INIT_AUTOMAKE([-Wall foreign subdir-objects])

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  7 12:37:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.1
+  * The -B/--B switch of listg/countg is now
+    isomomorphism-invariant.
+
+-------------------------------------------------------------------
 Sat Aug 24 16:40:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 2.7~rc2
