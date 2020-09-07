@@ -232,7 +232,6 @@ install mpt-firmware
 install nano
 install ntfs-3g
 install open-iscsi
-install pcmciautils
 install pptp
 install quota
 install reiserfs
@@ -267,16 +266,18 @@ install xf86-video-voodoo
 install xfsdump
 install xfsprogs
 install xz
-#install yast2-trans-cs
-#install yast2-trans-da
 install yast2-trans-de
-#install yast2-trans-es
-#install yast2-trans-ja
-#install yast2-trans-pl
-#install yast2-trans-ru
-#install yast2-trans-sv
-#install yast2-trans-zh_CN
-#install yast2-trans-zh_TW
+if [ "$distro" = "leap" ]; then
+	install yast2-trans-cs
+	install yast2-trans-da
+	install yast2-trans-es
+	install yast2-trans-ja
+	install yast2-trans-pl
+	install yast2-trans-ru
+	install yast2-trans-sv
+	install yast2-trans-zh_CN
+	install yast2-trans-zh_TW
+fi
 install zd1211-firmware
 install zip
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:07:51 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Switch "leap" over to "Jump":
+  * Add back yast2-trans-*
+  * Don't replace vim with vim-small
+- Drop pcmciautils
+- Use set -eu in pre-checkin.sh
+
+-------------------------------------------------------------------
 Tue Sep  1 07:07:55 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Install sysvinit-tools: required by gdm (for pidof and startproc).

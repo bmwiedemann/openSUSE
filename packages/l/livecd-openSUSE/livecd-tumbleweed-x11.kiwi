@@ -352,7 +352,6 @@
     <package name="nano"/>
     <package name="ntfs-3g"/>
     <package name="open-iscsi"/>
-    <package name="pcmciautils"/>
     <package name="pptp"/>
     <package name="quota"/>
     <package name="reiserfs"/>
@@ -480,10 +479,10 @@
     <ignore name="accountsservice"/>
     <package name="aaa_base" replaces="MozillaFirefox"/>
     <ignore name="MozillaFirefox"/>
-    <package name="aaa_base" replaces="vim"/>
-    <ignore name="vim"/>
     <package name="aaa_base" replaces="vim-data"/>
     <ignore name="vim-data"/>
+    <package name="aaa_base" replaces="vim"/>
+    <ignore name="vim"/>
     <package name="vim-small"/>
     <package name="aaa_base" replaces="tcpdump"/>
     <ignore name="tcpdump"/>

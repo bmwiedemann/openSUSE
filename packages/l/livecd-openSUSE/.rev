@@ -968,4 +968,12 @@
     <user>dimstar_suse</user>
     <comment>- Install sysvinit-tools: required by gdm (for pidof and startproc).</comment>
   </revision>
+  <revision rev="119" vrev="119">
+    <srcmd5>ec6392f54189e4bd04f150f1fa5e83d7</srcmd5>
+    <version>unknown</version>
+    <time>1599507352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832726</requestid>
+  </revision>
 </revisionlist>
