@@ -131,6 +131,7 @@ License:        GPL-2.0-or-later
 Source:         %{name}-%{version}.tar.gz
 Source1:        cobbler.rpmlintrc
 BuildArch:      noarch
+Patch0:         cgi_parse_qs_is_deprecated.diff 
 
 BuildRequires:  git-core
 BuildRequires:  %{system_release_pkg}
@@ -188,13 +189,14 @@ Requires:       xorriso
 Requires:       %{py3_module_cheetah}
 Requires:       %{py3_module_dns}
 Requires:       python%{python3_pkgversion}-future
-Requires:       python%{python3_pkgversion}-ldap3
 Requires:       %{apache_mod_wsgi}
 Requires:       python%{python3_pkgversion}-netaddr
 Requires:       %{py3_module_pyyaml}
 Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-simplejson
 Requires:       python%{python3_pkgversion}-tornado
+Requires:       python%{python3_pkgversion}-distro
+Recommends:     python%{python3_pkgversion}-ldap3
 %endif
 
 
@@ -251,6 +253,7 @@ http://server/cobbler_web to configure the install server.
 
 %prep
 %setup
+%patch0 -p1
 
 %if 0%{?suse_version}
 # Set tftpboot location correctly for SUSE distributions

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep  7 14:31:58 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Adding tornado dependency for cobbler tftpd again.
+
+-------------------------------------------------------------------
+Mon Sep  7 12:29:16 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- cgi.parse_qs is deprecated. Using urllib instead.
+
+- Added:
+  * cgi_parse_qs_is_deprecated.diff
+
+-------------------------------------------------------------------
+Fri Sep  4 14:21:52 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Adds requirement for python-distro
+
+-------------------------------------------------------------------
+Fri Sep  4 13:15:34 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Removes Tornado as dependency and only recommends Ldap3
+
+-------------------------------------------------------------------
 Thu May 28 14:41:15 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
 - Bring changelog in sync with Uyuni:
