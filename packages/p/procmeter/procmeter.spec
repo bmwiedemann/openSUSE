@@ -79,12 +79,12 @@ make %{?_smp_mflags} INSTDIR=%{_prefix} CFLAGS="%{optflags}"
 %doc NEWS README
 %{_datadir}/applications/*.desktop
 %{_bindir}/*
-%{_libexecdir}/ProcMeter3/
+%{_prefix}/lib/ProcMeter3/
 %{_mandir}/man?/*
-%exclude %{_libexecdir}/ProcMeter3/example/
+%exclude %{_prefix}/lib/ProcMeter3/example/
 
 %files devel
 %{_includedir}/ProcMeter3/
-%{_libexecdir}/ProcMeter3/example/
+%{_prefix}/lib/ProcMeter3/example/
 
 %changelog
