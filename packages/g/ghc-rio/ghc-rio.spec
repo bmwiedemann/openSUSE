@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-rio
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name rio
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.14.1
+Version:        0.1.18.0
 Release:        0
 Summary:        A standard library for Haskell
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-microlens-devel
+BuildRequires:  ghc-microlens-mtl-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-process-devel
@@ -65,7 +66,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
