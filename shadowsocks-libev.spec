@@ -33,6 +33,11 @@ Source4:        %{name}-tunnel.service
 Source5:        %{name}-nat.service
 Source6:        %{name}-manager.service
 Source7:        %{name}-redir.service
+Source8:        %{name}-client@.service
+Source9:        %{name}-server@.service
+Source10:       %{name}-tunnel@.service
+Source11:       %{name}-nat@.service
+Source12:       %{name}-redir@.service
 BuildRequires:  libtool
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig(libcares)
@@ -118,6 +123,11 @@ install -m 644 %{SOURCE4} %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE6} %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE7} %{buildroot}%{_unitdir}
+install -m 644 %{SOURCE8} %{buildroot}%{_unitdir}
+install -m 644 %{SOURCE9} %{buildroot}%{_unitdir}
+install -m 644 %{SOURCE10} %{buildroot}%{_unitdir}
+install -m 644 %{SOURCE11} %{buildroot}%{_unitdir}
+install -m 644 %{SOURCE12} %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-client
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-server
@@ -125,6 +135,11 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-manager
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-nat
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-redir
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-client@
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-server@
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-nat@
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-redir@
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel@
 
 %pre
 %service_add_pre %{name}-server.service
@@ -133,6 +148,11 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel
 %service_add_pre %{name}-nat.service 
 %service_add_pre %{name}-redir.service
 %service_add_pre %{name}-tunnel.service
+%service_add_pre %{name}-server@.service
+%service_add_pre %{name}-client@.service
+%service_add_pre %{name}-nat@.service 
+%service_add_pre %{name}-redir@.service
+%service_add_pre %{name}-tunnel@.service
 
 %post
 %service_add_post %{name}-server.service
@@ -141,6 +161,11 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel
 %service_add_post %{name}-nat.service
 %service_add_post %{name}-redir.service
 %service_add_post %{name}-tunnel.service
+%service_add_post %{name}-server@.service
+%service_add_post %{name}-client@.service
+%service_add_post %{name}-nat@.service
+%service_add_post %{name}-redir@.service
+%service_add_post %{name}-tunnel@.service
 
 %preun
 %service_del_preun %{name}-server.service
@@ -149,6 +174,11 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel
 %service_del_preun %{name}-nat.service
 %service_del_preun %{name}-redir.service
 %service_del_preun %{name}-tunnel.service
+%service_del_preun %{name}-server@.service
+%service_del_preun %{name}-client@.service
+%service_del_preun %{name}-nat@.service
+%service_del_preun %{name}-redir@.service
+%service_del_preun %{name}-tunnel@.service
 
 %postun
 %service_del_postun %{name}-server.service 
@@ -157,6 +187,11 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel
 %service_del_postun %{name}-nat.service 
 %service_del_postun %{name}-redir.service
 %service_del_postun %{name}-tunnel.service
+%service_del_postun %{name}-server@.service 
+%service_del_postun %{name}-client@.service
+%service_del_postun %{name}-nat@.service 
+%service_del_postun %{name}-redir@.service
+%service_del_postun %{name}-tunnel@.service
 
 %post -n lib%{name}2 -p /sbin/ldconfig
 

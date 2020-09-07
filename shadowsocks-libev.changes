@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  6 11:35:49 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Fix shadowsocks-libev-tunnel.service
+- Add some systemd profiles 
+
+-------------------------------------------------------------------
 Tue Jun  9 16:03:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Revert back to the distro default compiler (i.e. GCC 10.1 on TW):

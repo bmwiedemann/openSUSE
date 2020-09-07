@@ -5,8 +5,8 @@ After=network.target
 
 [Service]
 Type=forking
-PIDFile=/var/run/shadowsocks-libev-tunnel.pid
-ExecStart=/usr/bin/ss-tunnel -c /etc/shadowsocks/shadowsocks-libev-config.json -f /var/run/shadowsocks-libev-tunnel.pid -u --fast-open
+PIDFile=/var/run/shadowsocks-libev-tunnel@%i.pid
+ExecStart=/usr/bin/ss-tunnel -c /etc/shadowsocks/%i.json -f /var/run/shadowsocks-libev-tunnel@%i.pid -u --fast-open
 Restart=on-failure
 
 [Install]
