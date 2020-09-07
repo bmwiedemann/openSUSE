@@ -37,7 +37,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       ca-certificates-mozilla
 Requires:       python3 >= 3.5.0
-Requires:       python3-cssutils >= 1.0.2
+Requires:       python3-css-parser
 Requires:       python3-docutils
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo

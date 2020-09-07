@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:57:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update from cssutils to css-parser (bsc#1176101)
+
+-------------------------------------------------------------------
 Thu Sep  3 07:54:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - tighten requirements (bsc#1176101) 

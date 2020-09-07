@@ -283,4 +283,12 @@
     <comment>- tighten requirements (bsc#1176101)</comment>
     <requestid>831612</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>f8ceabd591b385bdc559721dff2981ce</srcmd5>
+    <version>1.2.2</version>
+    <time>1599507379</time>
+    <user>dimstar_suse</user>
+    <comment>- update from cssutils to css-parser (bsc#1176101)</comment>
+    <requestid>832689</requestid>
+  </revision>
 </revisionlist>
