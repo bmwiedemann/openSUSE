@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious-Plugin-AssetPack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Mojolicious-Plugin-AssetPack
-Version:        2.08
+Version:        2.09
 Release:        0
 %define cpan_name Mojolicious-Plugin-AssetPack
 Summary:        Compress and convert css, less, sass, javascript and coffeescript files
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -40,30 +40,14 @@ Requires:       perl(Mojolicious) >= 7.17
 %{perl_requires}
 
 %description
-Mojolicious::Plugin::AssetPack is Mojolicious plugin for processing static
-assets. The idea is that JavaScript and CSS files should be served as one
-minified file to save bandwidth and roundtrip time to the server.
-
-Note that the main author have moved on to using
-Mojolicious::Plugin::Webpack instead, which uses https://webpack.js.org/
-under the hood, but is just as convenient to use as this plugin. It is very
-easy to try out Mojolicious::Plugin::Webpack, since it will detect your
-AssetPack based project automatically, and migrate them over to webpack
-once the plugin is loaded.
-
-There are many external tools for doing this, but integrating them with
-Mojolicious can be a struggle: You want to serve the source files directly
-while developing, but a minified version in production. This assetpack
-plugin will handle all of that automatically for you.
-
-Your application creates and refers to an asset by its topic (virtual asset
-name). The process of building actual assets from their components is
-delegated to "pipe objects". Please see
-Mojolicious::Plugin::AssetPack::Guides::Tutorial/Pipes for a complete list.
+Mojolicious::Plugin::AssetPack has a very limited feature set, especially
+when it comes to processing JavaScript. It is recommended that you switch
+to Mojolicious::Plugin::Webpack if you want to write modern JavaScript
+code.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
