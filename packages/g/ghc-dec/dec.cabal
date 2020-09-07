@@ -1,0 +1,51 @@
+cabal-version:      >=1.10
+name:               dec
+version:            0.0.3
+x-revision:         2
+synopsis:           Decidable propositions.
+category:           Data, Dependent Types
+description:
+  This package provides a @Dec@ type.
+  .
+  @
+  type Neg a = a -> Void
+  .
+  data Dec a
+  \    = Yes a
+  \    | No (Neg a)
+  @
+
+homepage:           https://github.com/phadej/vec
+bug-reports:        https://github.com/phadej/vec/issues
+license:            BSD3
+license-file:       LICENSE
+author:             Oleg Grenrus <oleg.grenrus@iki.fi>
+maintainer:         Oleg.Grenrus <oleg.grenrus@iki.fi>
+copyright:          (c) 2019 Oleg Grenrus
+build-type:         Simple
+extra-source-files: ChangeLog.md
+tested-with:
+  GHC ==7.8.4
+   || ==7.10.3
+   || ==8.0.2
+   || ==8.2.2
+   || ==8.4.4
+   || ==8.6.5
+   || ==8.8.3
+   || ==8.10.1
+
+source-repository head
+  type:     git
+  location: https://github.com/phadej/vec.git
+  subdir:   dec
+
+library
+  exposed-modules:  Data.Type.Dec
+  build-depends:    base >=4.7 && <4.15
+
+  if !impl(ghc >=7.10)
+    build-depends: void >=0.7.2 && <0.8
+
+  ghc-options:      -Wall -fprint-explicit-kinds
+  hs-source-dirs:   src
+  default-language: Haskell2010
