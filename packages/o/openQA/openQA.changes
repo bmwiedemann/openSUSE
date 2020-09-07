@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 06 03:27:01 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1599223479.ee2fc8e22:
+  * Import log_error used when removing asset from disk fails
+  * Always emit table_create with an ID
+  * Fix an issue when PRODUCTDIR includes specific word
+
+-------------------------------------------------------------------
 Thu Sep 03 19:27:15 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1599154152.074365e18:
