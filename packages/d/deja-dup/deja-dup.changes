@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep  5 22:07:32 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.7:
+  + Fixes a bug that prevented restoring from Google Drive accounts
+    if you haven't backed up yet.
+  + Drop "Version" key from desktop files, which broke some
+    parsers.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:06:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

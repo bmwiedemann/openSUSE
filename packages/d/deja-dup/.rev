@@ -481,4 +481,18 @@ So preferably for 13.1 as well.</comment>
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767334</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>36ca538b322c98bae10c439e8129b7f7</srcmd5>
+    <version>40.7</version>
+    <time>1599507342</time>
+    <user>dimstar_suse</user>
+    <comment>Minor bump - upstream have a new stable version out, but doing the minor bump for now.
+
+- Update to version 40.7:
+  + Fixes a bug that prevented restoring from Google Drive accounts
+    if you haven't backed up yet.
+  + Drop &quot;Version&quot; key from desktop files, which broke some
+    parsers. (forwarded request 832592 from iznogood)</comment>
+    <requestid>832687</requestid>
+  </revision>
 </revisionlist>
