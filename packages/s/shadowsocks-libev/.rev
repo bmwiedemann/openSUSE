@@ -133,4 +133,12 @@
     compatible to GCC10. (forwarded request 812982 from dimstar)</comment>
     <requestid>813075</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>8e89ec52b2087a2219cee0fbdf875b47</srcmd5>
+    <version>3.3.4</version>
+    <time>1599507285</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 832605 from hillwood)</comment>
+    <requestid>832606</requestid>
+  </revision>
 </revisionlist>
