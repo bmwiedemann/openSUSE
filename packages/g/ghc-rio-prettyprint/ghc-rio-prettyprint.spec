@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-rio-prettyprint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %global pkg_name rio-prettyprint
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.0
+Version:        0.1.1.0
 Release:        0
 Summary:        Pretty-printing for RIO
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-annotated-wl-pprint-devel
@@ -38,7 +37,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 
 %description
-Pretty-printing for RIO.
+Combine RIO's log capabilities with pretty printing.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -52,8 +51,7 @@ This package provides the Haskell %{pkg_name} library development
 files.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build

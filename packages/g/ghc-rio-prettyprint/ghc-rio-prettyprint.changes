@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:41:21 UTC 2020 - psimons@suse.com
+
+- Update rio-prettyprint to version 0.1.1.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu May  7 08:38:41 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Update Cabal file to get more accurate dependency information.
