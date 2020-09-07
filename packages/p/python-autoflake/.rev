@@ -40,4 +40,12 @@
   * no upstream changelog</comment>
     <requestid>730690</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>14cacf464a8994048d7e015a697f3f97</srcmd5>
+    <version>1.4</version>
+    <time>1599507305</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>832643</requestid>
+  </revision>
 </revisionlist>

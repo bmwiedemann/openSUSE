@@ -1,7 +1,7 @@
 #
 # spec file for package python-autoflake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-autoflake
-Version:        1.3.1
+Version:        1.4
 Release:        0
 Summary:        Program to removes unused Python imports and variables
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/myint/autoflake
 Source:         https://files.pythonhosted.org/packages/source/a/autoflake/autoflake-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -63,7 +63,7 @@ autoflake also removes useless pass statements.
 
 %check
 export $LANG=en_US.UTF-8
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative autoflake
