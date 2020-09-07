@@ -141,6 +141,7 @@ Summary:        Kubernetes kubeadm bootstrapping tool
 Group:          System/Management
 Provides:       kubernetes-kubeadm-provider = %{version}
 Conflicts:      kubernetes-kubeadm-provider
+Obsoletes:      kubernetes%{baseversionminus1}-kubeadm
 Requires:       cri-runtime
 Requires:       ebtables
 Requires:       ethtool
