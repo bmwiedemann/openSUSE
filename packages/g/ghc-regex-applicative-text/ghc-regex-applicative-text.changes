@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  4 13:44:10 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Fri Sep  4 13:43:22 UTC 2020 - psimons@suse.com
+
+- Update regex-applicative-text to version 0.1.0.1 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu May  7 08:38:40 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Update Cabal file to get more accurate dependency information.
