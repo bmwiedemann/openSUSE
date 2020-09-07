@@ -55,7 +55,7 @@
   boo#1171556: '20200511'
   boo#1171714: '20200602'
   boo#1171870: '20200517'
-  boo#1172013: '20200905'
+  boo#1172013: '20200906'
   boo#1172071: '20200523'
   boo#1172291: '20200528'
   boo#1172430: '20200810'
@@ -82,18 +82,18 @@
   boo#1175308: '20200818'
   boo#1175317: '20200901'
   boo#1175425: '20200817'
-  boo#1175674: '20200905'
+  boo#1175674: '20200906'
   boo#1175903: '20200904'
   boo#1175907: '20200828'
   boo#1176002: '20200902'
   boo#1176064: '20200901'
   boo#1176158: '20200905'
-  boo#1176168: '20200905'
+  boo#1176168: '20200906'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
   bsc#1170555: '20200427'
   bsc#1172876: '20200611'
-  bsc#1174539: '20200905'
+  bsc#1174539: '20200906'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   poo#50399: '20200128'
   poo#55715: '20200414'
@@ -185,7 +185,7 @@
   poo#70597: '20200831'
   poo#70897: '20200905'
   poo#70912: '20200905'
-  poo#71008: '20200905'
+  poo#71008: '20200906'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -247,6 +247,7 @@ products:
   - ceph-image:
     - x86_64
   - kubic-cilium-etcd-operator-image:
+    - i586
     - x86_64
   - kubic-cilium-image:
     - x86_64
@@ -296,6 +297,7 @@ products:
   - kubic-rbac-manager-image:
     - x86_64
   - kubic-velero-image:
+    - i586
     - x86_64
   - kubic-weave-kube-image:
     - x86_64
@@ -426,10 +428,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20200906'
 published: '20200905'
 publishing: '20200905'
-testing: '20200905'
+testing: '20200906'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
