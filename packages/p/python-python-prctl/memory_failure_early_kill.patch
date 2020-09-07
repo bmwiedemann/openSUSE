@@ -6,7 +6,7 @@ Index: python-prctl-1.7/test_prctl.py
          self.assertEqual(prctl.get_keepcaps(), False)
  
      @require('set_mce_kill')
-+    @unittest.skipIf(sys.maxsize <= 2**32, 'fails on 32 bit')
++    @unittest.skipIf(sys.maxsize <= 2**32 or arch == 's390x', 'no such file on this architecture')
      def test_mce_kill(self):
          """Test the MCE_KILL setting"""
          fd = open('/proc/sys/vm/memory_failure_early_kill')

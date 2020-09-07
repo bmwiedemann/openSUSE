@@ -1,0 +1,27 @@
+Index: python-prctl-1.7/_prctlmodule.c
+===================================================================
+--- python-prctl-1.7.orig/_prctlmodule.c
++++ python-prctl-1.7/_prctlmodule.c
+@@ -50,6 +50,7 @@ prctl_prctl(PyObject *self, PyObject *ar
+ {
+     long option = 0;
+     long arg = 0;
++    int intarg = 0;
+     char *argstr = NULL;
+     char name[17] = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+     int result;
+@@ -286,12 +287,12 @@ prctl_prctl(PyObject *self, PyObject *ar
+ #ifdef PR_GET_TID_ADDRESS
+         case(PR_GET_TID_ADDRESS):
+ #endif
+-            result = prctl(option, &arg, 0, 0, 0);
++            result = prctl(option, &intarg, 0, 0, 0);
+             if(result < 0) {
+                 PyErr_SetFromErrno(PyExc_OSError);
+                 return NULL;
+             }
+-            return PyInt_FromLong(arg);
++            return PyInt_FromLong(intarg);
+         case(PR_SET_NAME):
+         case(PR_GET_NAME):
+             result = prctl(option, name, 0, 0, 0);

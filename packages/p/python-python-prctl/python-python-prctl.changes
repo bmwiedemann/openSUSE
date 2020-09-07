@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  4 13:48:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Fixing arch-dependent test failures (bsc#1176085):
+  * renamed failing-on-i586.patch to memory_failure_early_kill.patch
+    * and modified it to skip the test also on s390x
+  * added bigendian.patch
+  * added powerpc.patch
+  * huge thanks to Michal Suchánek
+
+-------------------------------------------------------------------
 Wed Aug 19 07:46:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add failing-on-i586.patch to disable failing i586 test

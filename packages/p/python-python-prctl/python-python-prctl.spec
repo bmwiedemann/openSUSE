@@ -26,7 +26,9 @@ URL:            https://github.com/seveas/python-prctl
 Source:         https://files.pythonhosted.org/packages/source/p/python-prctl/python-prctl-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/seveas/python-prctl/master/COPYING
 Patch0:         disable-sandboxed-test.patch
-Patch1:         failing-on-i586.patch
+Patch1:         memory_failure_early_kill.patch
+Patch2:         bigendian.patch
+Patch3:         powerpc.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,8 +50,7 @@ and allows you to set the process name as seen in ps and top.
 
 %prep
 %setup -q -n python-prctl-%{version}
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
 cp %{SOURCE99} .
 
 %build
