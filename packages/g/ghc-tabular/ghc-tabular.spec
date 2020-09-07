@@ -18,7 +18,7 @@
 
 %global pkg_name tabular
 Name:           ghc-%{pkg_name}
-Version:        0.2.2.7
+Version:        0.2.2.8
 Release:        0
 Summary:        Two-dimensional data tables with rendering functions
 License:        BSD-3-Clause

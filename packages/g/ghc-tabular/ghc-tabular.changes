@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:36:11 UTC 2020 - psimons@suse.com
+
+- Update tabular to version 0.2.2.8.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:08 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
