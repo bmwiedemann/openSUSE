@@ -1,7 +1,0 @@
-<services>
-  <service name="download_url" mode='localonly'>
-    <param name="host">ftp.indexdata.dk</param>
-    <param name="protocol">http</param>
-    <param name="path">/pub/yaz/yaz-5.30.2.tar.gz</param>
-  </service>
-</services>

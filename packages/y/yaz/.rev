@@ -400,4 +400,16 @@
     <comment></comment>
     <requestid>802543</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d62e7d4449895cb2dd985cbef10f48fb</srcmd5>
+    <version>5.30.3</version>
+    <time>1599507301</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.30.3:
+  * Require getaddrinfo which has been available since 2003.
+  * Provide server host for SSL by using gnutls_server_name_set(3).
+  * Obey [host]:port notation for IPV6
+</comment>
+    <requestid>832677</requestid>
+  </revision>
 </revisionlist>
