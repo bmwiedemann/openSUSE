@@ -1,0 +1,22 @@
+commit 168c891195cc37cd3804754beba971271e761777
+Author: Ranjit Jhala <jhala@cs.ucsd.edu>
+Date:   Thu Aug 27 08:08:58 2020 -0700
+
+    bump diff version in .cabal
+---
+ liquidhaskell.cabal | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/liquidhaskell.cabal b/liquidhaskell.cabal
+index 815961ec9..f3ed15278 100644
+--- a/liquidhaskell.cabal
++++ b/liquidhaskell.cabal
+@@ -204,7 +204,7 @@ library
+                           KMeansHelper
+ 
+   build-depends:      base                 >= 4.11.1.0 && < 5
+-                    , Diff                 >= 0.3 && < 0.4
++                    , Diff                 >= 0.3 && < 0.5
+                     , aeson
+                     , binary
+                     , bytestring           >= 0.10
