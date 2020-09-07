@@ -1,11 +1,12 @@
-diff -Pdpru xyscan.orig/src/xyscanAbout.cpp xyscan/src/xyscanAbout.cpp
---- xyscan.orig/src/xyscanAbout.cpp	2010-11-29 07:04:43.000000000 +0300
-+++ xyscan/src/xyscanAbout.cpp	2012-08-12 15:13:27.901325171 +0400
+Index: xyscan/src/xyscanAbout.cpp
+===================================================================
+--- xyscan.orig/src/xyscanAbout.cpp
++++ xyscan/src/xyscanAbout.cpp
 @@ -28,7 +28,7 @@ using namespace std;
  xyscanAbout::xyscanAbout(QWidget* parent, Qt::WindowFlags fl)
      : QDialog(parent, fl),
        mTitlePixmap(":/images/xyscanSplash.png"),
--      mVersionText(QString(tr("Release ")) + QString(VERSION) + QString("   (") + QString(__DATE__) + QString(")"))
+-      mVersionText(QString(tr("Release ")) + QString(VERSION) + QString(" (") + QString(__DATE__) + QString(")"))
 +      mVersionText(QString(tr("Release ")) + QString(VERSION))
  {
      setModal(true);

@@ -1,7 +1,7 @@
 #
 # spec file for package xyscan
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           xyscan
-Version:        4.30
+Version:        4.50
 Release:        0
-Summary:        Data extractor from graphical plots
+Summary:        Data extractor for data points from graphical plots
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://rhig.physics.yale.edu/~ullrich/software/xyscan/
@@ -28,8 +28,10 @@ Source0:        http://rhig.physics.yale.edu/~ullrich/software/xyscan/Distributi
 Patch0:         no-build-date.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Charts)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
@@ -41,17 +43,17 @@ BuildRequires:  pkgconfig(poppler-qt5)
 Requires:       hicolor-icon-theme
 
 %description
-xyscan is a tool for scientist in the need to extract data points,
+xyscan is a tool for scientists in need of extracting data points,
 i.e. numeric values, from a plot.
 
 %package doc
 Summary:        Documentation for %{name}
-Group:          Documentation/Other
+Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description doc
-xyscan is a tool for scientist in the need to extract data points,
+xyscan is a tool for scientists in need of extracting data points,
 i.e. numeric values, from a plot.
 
 This package contains the documentation and help files for %{name}.

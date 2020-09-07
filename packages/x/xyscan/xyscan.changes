@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Sep  4 20:57:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.5.0 (4.50):
+  Most important change is probably the update of the error bar scan mechanism.
+  It is now possible to scan several x and y-errors (e.g. stat. and sys.
+  uncertainties) in one scan.
+
+  It now has a multi-lingual interface (French and German), although the
+  documentation remains available in English only.
+
+  Improvements were made to make full use of screens with a pixel device ratios >
+  1 (most modern high-resolution screens).
+
+  The status bar on the bottom now features an additional coordinate display on
+  the right.
+
+  A Significant Digits command was added to the Edit menu that allows to modify
+  the precision of the displayed coordinates and distances. This also affects the
+  numbers saved in a file (or ROOT macro).
+
+  CSV was added as a third possible format for saving scanned data. This allows
+  to import the data into spreadsheet applications such as Excel and Numbers.
+
+  A new experimental histogram display was added that shows the grayscale density
+  around the cursor. In certain cases this might help to place markers or scan
+  points more accurately.
+
+  The format of the data table can now be toggled between stretched and resized
+  to content and the alignment of the numbers can be toggled between left, right,
+  and center.
+
+-------------------------------------------------------------------
+Thu Dec  6 00:41:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Grammar fixes for the description.
+
+-------------------------------------------------------------------
 Tue Dec  4 21:12:09 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 4.3.0 (4.30)
