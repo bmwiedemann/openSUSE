@@ -16,21 +16,16 @@
 #
 
 
-%define         upstream_version_1  0.4%%20alpha%%203
-%define         upstream_version_2  0.4%%7Ealpha3
+%define         upstream_version_1  0.4%%20alpha%%204
+%define         upstream_version_2  0.4%%7Ealpha4
 Name:           ddrescueview
-Version:        0.4~alpha3
+Version:        0.4~alpha4
 Release:        0
 Summary:        Graphical viewer for GNU ddrescue mapfiles
 License:        GPL-3.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://sourceforge.net/projects/ddrescueview/
 Source:         https://sourceforge.net/projects/ddrescueview/files/Test%%20builds/v%{upstream_version_1}/ddrescueview-source-%{upstream_version_2}.tar.xz/download#/%{name}-%{version}.tar.xz
-Source1:        %{name}.desktop
-# PATCH-FIX-UPSTREAM use-getters-for-fields-in-other-classes.patch -- fixes compilation
-Patch0:         https://sourceforge.net/p/ddrescueview/tickets/_discuss/thread/bdbe07cc95/5526/attachment/use-getters-for-fields-in-other-classes.patch
-# PATCH-FIX-OPENSUSE pie.patch -- use PIE for linking
-Patch1:         pie.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  lazarus
 BuildRequires:  libQt5Pas-devel
@@ -40,9 +35,7 @@ BuildRequires:  update-desktop-files
 This small tool allows the user to graphically examine ddrescue's map files in a user friendly GUI application. The Main window displays a block grid with each block's color representing the block types it contains. Many people know this type of view from defragmentation programs.
 
 %prep
-%setup -q -c
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %name-source-%version
 chmod -x *.txt
 
 %build
@@ -58,9 +51,10 @@ sed -i 's/\r//' *.txt
 
 %install
 install -Dm 755 source/ddrescueview %{buildroot}%{_bindir}/%{name}
-install -Dm 644 resources/linux/ddrescueview.1 %{buildroot}%{_mandir}/man1/%{name}.1
-install -Dm 644 resources/linux/ddrescueview.xpm %{buildroot}%{_datadir}/pixmaps/%{name}.xpm
-install -Dm 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm 644 resources/linux/man/man1/ddrescueview.1 %{buildroot}%{_mandir}/man1/%{name}.1
+cp -r resources/linux/icons/ %{buildroot}%{_datadir}/
+install -Dm 644 resources/linux/applications/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+%suse_update_desktop_file %{name}
 
 %files
 %license gpl.txt
@@ -68,6 +62,6 @@ install -Dm 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.xpm
+%{_datadir}/icons/hicolor/
 
 %changelog
