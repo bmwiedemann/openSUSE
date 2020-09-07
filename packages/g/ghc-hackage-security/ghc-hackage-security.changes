@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  2 02:00:58 UTC 2020 - psimons@suse.com
+
+- Update hackage-security to version 0.6.0.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Aug 31 09:34:36 UTC 2020 - psimons@suse.com
+
+- Update hackage-security to version 0.6.0.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:56 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
