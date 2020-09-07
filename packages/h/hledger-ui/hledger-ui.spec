@@ -17,7 +17,7 @@
 
 
 Name:           hledger-ui
-Version:        1.18.1
+Version:        1.19
 Release:        0
 Summary:        Curses-style terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later

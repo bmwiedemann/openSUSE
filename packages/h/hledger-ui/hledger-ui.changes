@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep  3 02:00:59 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.19.
+  # 1.19 2020-09-01
+
+  - The --color/--colour=WHEN command line option, support for the
+    NO_COLOR environment variable, and smarter autodetection of colour
+    terminals have been added (#1296)
+
+  - -t and -l command line flags have been added as short forms of
+    --tree and --flat (#1286)
+
+  - Flat (AKA list) mode is now the default
+
+  - t now toggles tree mode, while T sets the "today" period (#1286)
+
+  - register: multicommodity amounts containing more than two
+    commodities are now elided
+
+  - register: a transaction dated outside the report period now is not
+    shown even if it has postings dated inside the report period.
+
+  - ESC now restores exactly the app's state at startup, which includes
+    clearing any report period limit (#1286)
+
+  - DEL/BS no longer changes the tree/list mode
+
+  - q now exits help before exiting the app (#1286)
+
+  - The help dialog's layout is improved
+
+-------------------------------------------------------------------
 Wed Aug 19 07:44:33 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 6GB min disk space for ppc64/ppc64le
