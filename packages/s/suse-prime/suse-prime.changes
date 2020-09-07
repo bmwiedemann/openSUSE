@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  7 15:29:58 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.7.15
+  * prime-select.sh:
+    move static X config files to /usr/share/prime; also make sure, 
+    that /etc/prime dir exists before trying to write configuration
+    to /etc/prime/current_type (boo#1173043)
+- adjusted specfile to new release
+
+-------------------------------------------------------------------
 Fri Jul 17 10:07:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.7.14

@@ -495,4 +495,17 @@ Latest changes:
     GPU's in nvidia mode (issue#52).</comment>
     <requestid>821478</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f9c62270d184dc63c3eaceb810eebf40</srcmd5>
+    <version>0.7.15</version>
+    <time>1599508868</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.7.15
+  * prime-select.sh:
+    move static X config files to /usr/share/prime; also make sure, 
+    that /etc/prime dir exists before trying to write configuration
+    to /etc/prime/current_type (boo#1173043)
+- adjusted specfile to new release</comment>
+    <requestid>832818</requestid>
+  </revision>
 </revisionlist>

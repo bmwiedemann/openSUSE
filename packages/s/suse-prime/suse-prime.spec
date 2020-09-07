@@ -17,7 +17,7 @@
 
 
 Name:           suse-prime
-Version:        0.7.14
+Version:        0.7.15
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops
 License:        SUSE-Public-Domain
@@ -58,17 +58,16 @@ Uses bbswitch to switch on/of power of NVIDIA GPU.
 :
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}/prime
-install -m 0644 xorg-intel.conf  %{buildroot}%{_sysconfdir}/prime/
-install -m 0644 xorg-intel-intel.conf  %{buildroot}%{_sysconfdir}/prime/
-install -m 0644 xorg-nvidia.conf %{buildroot}%{_sysconfdir}/prime/
-install -m 0644 xorg-nvidia-prime-render-offload.conf %{buildroot}%{_sysconfdir}/prime/
+mkdir -p %{buildroot}%{_datadir}/prime
+install -m 0644 xorg-intel.conf  %{buildroot}%{_datadir}/prime/
+install -m 0644 xorg-intel-intel.conf  %{buildroot}%{_datadir}/prime/
+install -m 0644 xorg-nvidia.conf %{buildroot}%{_datadir}/prime/
+install -m 0644 xorg-nvidia-prime-render-offload.conf %{buildroot}%{_datadir}/prime/
 mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d
 install -m 0644 09-nvidia-modprobe-bbswitch-G04.conf %{buildroot}%{_sysconfdir}/modprobe.d/
 install -m 0644 09-nvidia-modprobe-pm-G05.conf %{buildroot}%{_sysconfdir}/modprobe.d/
 mkdir -p %{buildroot}%{_unitdir}
 install -m 0644 prime-select.service %{buildroot}%{_unitdir}/
-echo       "undefined"         > %{buildroot}%{_sysconfdir}/prime/current_type
 install -D -m 0755 prime-select.sh %{buildroot}%{_sbindir}/prime-select
 mkdir -p %{buildroot}/usr/lib/dracut/dracut.conf.d/
 install -m 0644 90-nvidia-dracut-G05.conf %{buildroot}/usr/lib/dracut/dracut.conf.d/
@@ -129,12 +128,13 @@ exit 0
 %doc README.md
 %dir /usr/lib/dracut/
 %dir /usr/lib/dracut/dracut.conf.d/
-%{_sysconfdir}/prime
-%config %{_sysconfdir}/prime/xorg-intel.conf
-%config %{_sysconfdir}/prime/xorg-intel-intel.conf
-%config %{_sysconfdir}/prime/xorg-nvidia.conf
-%config %{_sysconfdir}/prime/xorg-nvidia-prime-render-offload.conf
-%config(noreplace) %{_sysconfdir}/prime/current_type
+%dir %{_datadir}/prime
+%{_datadir}/prime/xorg-intel.conf
+%{_datadir}/prime/xorg-intel-intel.conf
+%{_datadir}/prime/xorg-nvidia.conf
+%{_datadir}/prime/xorg-nvidia-prime-render-offload.conf
+%ghost %dir %{_sysconfdir}/prime
+%ghost %config(noreplace) %{_sysconfdir}/prime/current_type
 %{_sbindir}/prime-select
 %config %{_sysconfdir}/modprobe.d/09-nvidia-modprobe-pm-G05.conf
 /usr/lib/dracut/dracut.conf.d/90-nvidia-dracut-G05.conf
@@ -143,18 +143,19 @@ exit 0
 %if 0%{?is_opensuse}
 %files bbswitch
 %doc README.md
-%{_sysconfdir}/prime
-%config %{_sysconfdir}/prime/xorg-intel.conf
-%config %{_sysconfdir}/prime/xorg-intel-intel.conf
-%config %{_sysconfdir}/prime/xorg-nvidia.conf
-%config %{_sysconfdir}/prime/xorg-nvidia-prime-render-offload.conf
-%config(noreplace) %{_sysconfdir}/prime/current_type
+%dir %{_datadir}/prime
+%{_datadir}/prime/xorg-intel.conf
+%{_datadir}/prime/xorg-intel-intel.conf
+%{_datadir}/prime/xorg-nvidia.conf
+%{_datadir}/prime/xorg-nvidia-prime-render-offload.conf
+%ghost %dir %{_sysconfdir}/prime
+%ghost %config(noreplace) %{_sysconfdir}/prime/current_type
 %{_sbindir}/prime-select
 %{_sbindir}/rcprime-select
 %config %{_sysconfdir}/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
 %{_unitdir}/prime-select.service
 %else
-%exclude %config %{_sysconfdir}/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
+%exclude %config %{_datadir}/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
 %exclude %{_unitdir}/prime-select.service
 %exclude %{_sbindir}/rcprime-select
 %endif
