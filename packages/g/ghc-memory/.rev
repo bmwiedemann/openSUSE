@@ -151,4 +151,12 @@ new dep of securemem lib</comment>
     <comment>version update</comment>
     <requestid>829344</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>13185d40f3e5755d0d137a4392a48118</srcmd5>
+    <version>0.15.0</version>
+    <time>1599508981</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832294</requestid>
+  </revision>
 </revisionlist>
