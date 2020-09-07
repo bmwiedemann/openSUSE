@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Starter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Module-Starter
-Version:        1.76
+Version:        1.77
 Release:        0
 %define cpan_name Module-Starter
 Summary:        Simple starter kit for any module
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -32,10 +32,12 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Software::License) >= 0.103005
+BuildRequires:  perl(Test::More) >= 0.94
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version) >= 0.77
 Requires:       perl(Module::Runtime)
 Requires:       perl(Software::License) >= 0.103005
+Requires:       perl(Test::More) >= 0.94
 Requires:       perl(parent)
 Requires:       perl(version) >= 0.77
 %{perl_requires}
@@ -66,7 +68,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes getting-started.html README
+%doc Changes CONTRIBUTING.md getting-started.html prereqs.yml README
 %license LICENSE
 
 %changelog
