@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  4 13:48:36 UTC 2020 - psimons@suse.com
+
+- Update vector-binary-instances to version 0.2.5.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Sep  4 13:48:30 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Thu May  7 08:38:41 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Update Cabal file to get more accurate dependency information.
