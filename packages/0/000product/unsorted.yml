@@ -1472,6 +1472,7 @@ unsorted:
   - ca-certificates-steamtricks 
   - caasp-cli 
   - cabal-install 
+  - cabal-plan 
   - cabal2spec 
   - caca-utils 
   - cachefilesd 
@@ -2995,7 +2996,7 @@ unsorted:
   - exempi-tools 
   - exercism 
   - exfat-utils 
-  - exfatprogs: [x86_64] 
+  - exfatprogs 
   - exif 
   - exiftran 
   - exim 
@@ -3973,6 +3974,8 @@ unsorted:
   - ghc-appar-devel 
   - ghc-array 
   - ghc-array-devel 
+  - ghc-ascii-progress 
+  - ghc-ascii-progress-devel 
   - ghc-asn1-encoding 
   - ghc-asn1-encoding-devel 
   - ghc-asn1-parse 
@@ -4031,6 +4034,8 @@ unsorted:
   - ghc-bloomfilter-devel 
   - ghc-bootstrap 
   - ghc-bootstrap-helpers 
+  - ghc-boxes 
+  - ghc-boxes-devel 
   - ghc-brick 
   - ghc-brick-devel 
   - ghc-bsb-http-chunked 
@@ -4045,6 +4050,8 @@ unsorted:
   - ghc-bytestring-devel 
   - ghc-cabal-doctest 
   - ghc-cabal-doctest-devel 
+  - ghc-cabal-plan 
+  - ghc-cabal-plan-devel 
   - ghc-cabal2spec 
   - ghc-cabal2spec-devel 
   - ghc-call-stack 
@@ -4150,6 +4157,8 @@ unsorted:
   - ghc-data-fix-devel 
   - ghc-dbus 
   - ghc-dbus-devel 
+  - ghc-dec 
+  - ghc-dec-devel 
   - ghc-deepseq 
   - ghc-deepseq-devel 
   - ghc-dhall 
@@ -4172,6 +4181,8 @@ unsorted:
   - ghc-doctemplates-devel 
   - ghc-dotgen 
   - ghc-dotgen-devel 
+  - ghc-double-conversion 
+  - ghc-double-conversion-devel 
   - ghc-easy-file 
   - ghc-easy-file-devel 
   - ghc-echo 
@@ -4214,12 +4225,18 @@ unsorted:
   - ghc-file-embed-devel 
   - ghc-filelock 
   - ghc-filelock-devel 
+  - ghc-filemanip 
+  - ghc-filemanip-devel 
   - ghc-filepath 
   - ghc-filepath-bytestring 
   - ghc-filepath-bytestring-devel 
   - ghc-filepath-devel 
   - ghc-filepattern 
   - ghc-filepattern-devel 
+  - ghc-filtrable 
+  - ghc-filtrable-devel 
+  - ghc-fingertree 
+  - ghc-fingertree-devel 
   - ghc-foldl 
   - ghc-foldl-devel 
   - ghc-foundation 
@@ -4246,6 +4263,8 @@ unsorted:
   - ghc-ghc-heap-devel 
   - ghc-ghc-lib-parser-ex 
   - ghc-ghc-lib-parser-ex-devel 
+  - ghc-ghc-paths 
+  - ghc-ghc-paths-devel 
   - ghc-ghci 
   - ghc-ghci-devel 
   - ghc-ghcid 
@@ -4348,6 +4367,8 @@ unsorted:
   - ghc-infer-license-devel 
   - ghc-integer-logarithms 
   - ghc-integer-logarithms-devel 
+  - ghc-intern 
+  - ghc-intern-devel 
   - ghc-invariant 
   - ghc-invariant-devel 
   - ghc-iproute 
@@ -4389,6 +4410,10 @@ unsorted:
   - ghc-lifted-async-devel 
   - ghc-lifted-base 
   - ghc-lifted-base-devel 
+  - ghc-liquid-fixpoint 
+  - ghc-liquid-fixpoint-devel 
+  - ghc-liquidhaskell 
+  - ghc-liquidhaskell-devel 
   - ghc-logict 
   - ghc-logict-devel 
   - ghc-lucid 
@@ -4459,6 +4484,14 @@ unsorted:
   - ghc-old-time-devel 
   - ghc-open-browser 
   - ghc-open-browser-devel 
+  - ghc-optics 
+  - ghc-optics-core 
+  - ghc-optics-core-devel 
+  - ghc-optics-devel 
+  - ghc-optics-extra 
+  - ghc-optics-extra-devel 
+  - ghc-optics-th 
+  - ghc-optics-th-devel 
   - ghc-optional-args 
   - ghc-optional-args-devel 
   - ghc-optparse-applicative 
@@ -4573,6 +4606,8 @@ unsorted:
   - ghc-scientific-devel 
   - ghc-securemem 
   - ghc-securemem-devel 
+  - ghc-semialign 
+  - ghc-semialign-devel 
   - ghc-semigroupoids 
   - ghc-semigroupoids-devel 
   - ghc-semigroups 
@@ -4593,6 +4628,8 @@ unsorted:
   - ghc-silently-devel 
   - ghc-simple-sendfile 
   - ghc-simple-sendfile-devel 
+  - ghc-singleton-bool 
+  - ghc-singleton-bool-devel 
   - ghc-skein 
   - ghc-skein-devel 
   - ghc-skylighting 
@@ -4647,12 +4684,18 @@ unsorted:
   - ghc-terminal-size-devel 
   - ghc-terminfo 
   - ghc-terminfo-devel 
+  - ghc-test-framework 
+  - ghc-test-framework-devel 
+  - ghc-test-framework-hunit 
+  - ghc-test-framework-hunit-devel 
   - ghc-texmath 
   - ghc-texmath-devel 
   - ghc-text 
   - ghc-text-conversions 
   - ghc-text-conversions-devel 
   - ghc-text-devel 
+  - ghc-text-format 
+  - ghc-text-format-devel 
   - ghc-text-manipulate 
   - ghc-text-manipulate-devel 
   - ghc-text-metrics 
@@ -4697,6 +4740,8 @@ unsorted:
   - ghc-tls-devel 
   - ghc-tls-session-manager 
   - ghc-tls-session-manager-devel 
+  - ghc-topograph 
+  - ghc-topograph-devel 
   - ghc-torrent 
   - ghc-torrent-devel 
   - ghc-transformers 
@@ -10581,28 +10626,27 @@ unsorted:
   - libkdstatemachineeditor_view1_2_7 
   - libkdumpfile-devel 
   - libkdumpfile7 
-  - libkea-asiodns0 
-  - libkea-asiolink7 
+  - libkea-asiodns1 
+  - libkea-asiolink9 
   - libkea-cc8 
-  - libkea-cfgclient7 
-  - libkea-cryptolink4 
-  - libkea-database3 
-  - libkea-dhcp++13 
-  - libkea-dhcp_ddns1 
-  - libkea-dhcpsrv16 
-  - libkea-dns++3 
-  - libkea-eval11 
+  - libkea-cfgclient10 
+  - libkea-cryptolink5 
+  - libkea-database6 
+  - libkea-dhcp++19 
+  - libkea-dhcp_ddns3 
+  - libkea-dhcpsrv27 
+  - libkea-dns++5 
+  - libkea-eval12 
   - libkea-exceptions0 
-  - libkea-hooks7 
-  - libkea-http6 
-  - libkea-log4 
-  - libkea-mysql1 
-  - libkea-pgsql0 
-  - libkea-process4 
-  - libkea-stats3 
-  - libkea-threads2 
+  - libkea-hooks15 
+  - libkea-http7 
+  - libkea-log6 
+  - libkea-mysql6 
+  - libkea-pgsql4 
+  - libkea-process11 
+  - libkea-stats6 
   - libkea-util-io0 
-  - libkea-util7 
+  - libkea-util16 
   - libkea1_4 
   - libkeccak-devel 
   - libkeccak1 
@@ -11103,7 +11147,7 @@ unsorted:
   - libmysqlcppconn8-devel 
   - libnanomsg5 
   - libnautilus-extension1-32bit: [x86_64] 
-  - libnauty-2_7_rc2 
+  - libnauty-2_7_1 
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
@@ -13691,6 +13735,7 @@ unsorted:
   - linuxptp 
   - linuxrc 
   - linuxrc-devtools 
+  - liquidhaskell 
   - lirc-config 
   - lirc-core 
   - lirc-devel 
@@ -14124,6 +14169,7 @@ unsorted:
   - lxterminal-lang 
   - lynis 
   - lyx 
+  - lyx-fonts 
   - lz4 
   - lzfse-devel 
   - lzham_codec-devel 
@@ -25148,6 +25194,7 @@ unsorted:
   - shapelib 
   - shared-color-targets 
   - shellementary 
+  - shelltestrunner 
   - shepherd 
   - shepherd-bins 
   - shibboleth-sp 
