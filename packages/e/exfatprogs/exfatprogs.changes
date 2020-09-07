@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 12:21:56 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Remove ExclusiveArch, the code compiles on all arches cleanly now. 
+
+-------------------------------------------------------------------
 Mon Aug  3 05:50:37 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 1.0.4

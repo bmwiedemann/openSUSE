@@ -29,7 +29,6 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Conflicts:      exfat-utils
 Obsoletes:      libexfat0 < %{version}
-ExclusiveArch:  aarch64 x86_64
 
 %description
 A set of utilities for creating, checking, dumping and labelling exFAT file
