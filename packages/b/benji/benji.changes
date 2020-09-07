@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  7 08:04:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * Helm chart changes:
+    - Change chart's requirements to use URL based repository references.
+      This should help when deploying Benji via FluxCD's helm-operator (#89)
+    - Fix rendering error when specifying a nodeSelector, node
+      affinities or tolerations. (#90)
+    - Use API group rbac.authorization.k8s.io/v1 for RBAC related resources
+  * Add new transform module aes_256_gcm_ecc (#86)
+  * Add support for discovering RBD images provisioned by Ceph's CSI
+    provisioner to the benji-backup-pvc script (#91)
+
+-------------------------------------------------------------------
 Tue Jul 28 07:04:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.0:

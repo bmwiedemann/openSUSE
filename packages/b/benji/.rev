@@ -184,4 +184,21 @@
     configuration due to this change. See etc/benji.yaml for an example.</comment>
     <requestid>823070</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7fd4262a28a58f82055d4568699e808a</srcmd5>
+    <version>0.10.0</version>
+    <time>1599507336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * Helm chart changes:
+    - Change chart's requirements to use URL based repository references.
+      This should help when deploying Benji via FluxCD's helm-operator (#89)
+    - Fix rendering error when specifying a nodeSelector, node
+      affinities or tolerations. (#90)
+    - Use API group rbac.authorization.k8s.io/v1 for RBAC related resources
+  * Add new transform module aes_256_gcm_ecc (#86)
+  * Add support for discovering RBD images provisioned by Ceph's CSI
+    provisioner to the benji-backup-pvc script (#91)</comment>
+    <requestid>832695</requestid>
+  </revision>
 </revisionlist>
