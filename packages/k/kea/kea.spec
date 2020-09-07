@@ -16,44 +16,42 @@
 #
 
 
-%define asiodns_sover 0
-%define asiolink_sover 7
+%define asiodns_sover 1
+%define asiolink_sover 9
 %define cc_sover 8
-%define cfgclient_sover 7
-%define cryptolink_sover 4
-%define database_sover 3
-%define dhcppp_sover 13
-%define dhcp_ddns_sover 1
-%define dhcpsrv_sover 16
-%define dnspp_sover 3
-%define eval_sover 11
+%define cfgclient_sover 10
+%define cryptolink_sover 5
+%define database_sover 6
+%define dhcppp_sover 19
+%define dhcp_ddns_sover 3
+%define dhcpsrv_sover 27
+%define dnspp_sover 5
+%define eval_sover 12
 %define exceptions_sover 0
-%define hooks_sover 7
-%define http_sover 6
-%define log_sover 4
-%define mysql_sover 1
-%define pgsql_sover 0
-%define process_sover 4
-%define stats_sover 3
-%define threads_sover 2
+%define hooks_sover 15
+%define http_sover 7
+%define log_sover 6
+%define mysql_sover 6
+%define pgsql_sover 4
+%define process_sover 11
+%define stats_sover 6
 %define util_io_sover 0
-%define util_sover 7
-%define dl_ver 1.6.0
+%define util_sover 16
 %if 0%{?suse_version} >= 1500
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
 Group:          Productivity/Networking/Boot/Servers
 URL:            https://kea.isc.org/
-#Git-Clone:	git://github.com/isc-projects/kea
-Source:         https://ftp.isc.org/isc/kea/%dl_ver/kea-%dl_ver.tar.gz#/kea-%version.tar.gz
-Source2:        https://ftp.isc.org/isc/kea/%dl_ver/kea-%dl_ver.tar.gz.asc#/kea-%version.tar.gz.asc
+#Git-Clone:	https://github.com/isc-projects/kea
+Source:         https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz
+Source2:        https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz.asc
 # https://www.isc.org/pgpkey/
 Source3:        kea.keyring
 BuildRequires:  autoconf >= 2.59
@@ -84,9 +82,7 @@ BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  boost-devel
 %endif
-%if 0%{?suse_version} >= 1310
 BuildRequires:  systemd-rpm-macros
-%endif
 
 %description
 Kea is a new DHCPv4/DHCPv6 server being developed by ISC in C++, a
@@ -275,13 +271,6 @@ Group:          System/Libraries
 %description -n libkea-stats%stats_sover
 One of the many libraries the Kea DHCP server is composed of.
 
-%package -n libkea-threads%threads_sover
-Summary:        Kea DHCP thread abstraction library
-Group:          System/Libraries
-
-%description -n libkea-threads%threads_sover
-Kea's C++ wrapper library for pthreads and mutexes.
-
 %package -n libkea-util-io%util_io_sover
 Summary:        Kea I/O utility function library
 Group:          System/Libraries
@@ -325,7 +314,6 @@ Requires:       libkea-mysql%mysql_sover = %version
 Requires:       libkea-pgsql%pgsql_sover = %version
 Requires:       libkea-process%process_sover = %version
 Requires:       libkea-stats%stats_sover = %version
-Requires:       libkea-threads%threads_sover = %version
 Requires:       libkea-util%util_sover = %version
 Requires:       libkea-util-io%util_io_sover = %version
 # Bundy DHCP and Kea share the same origin, so conflict
@@ -335,7 +323,7 @@ Conflicts:      otheproviders(pkgconfig(dns++))
 Development files for the Kea DHCP server
 
 %prep
-%autosetup -p1 -n kea-%dl_ver
+%autosetup -p1 -n kea-%version
 
 %build
 export FREERADIUS_INCLUDE="%_includedir/freeradius"
@@ -442,8 +430,6 @@ systemd-tmpfiles --create kea.conf || :
 %postun -n libkea-process%process_sover -p /sbin/ldconfig
 %post   -n libkea-stats%stats_sover -p /sbin/ldconfig
 %postun -n libkea-stats%stats_sover -p /sbin/ldconfig
-%post   -n libkea-threads%threads_sover -p /sbin/ldconfig
-%postun -n libkea-threads%threads_sover -p /sbin/ldconfig
 %post   -n libkea-util-io%util_io_sover -p /sbin/ldconfig
 %postun -n libkea-util-io%util_io_sover -p /sbin/ldconfig
 %post   -n libkea-util%util_sover -p /sbin/ldconfig
@@ -522,9 +508,6 @@ systemd-tmpfiles --create kea.conf || :
 
 %files -n libkea-stats%stats_sover
 %_libdir/libkea-stats.so.%stats_sover.*
-
-%files -n libkea-threads%threads_sover
-%_libdir/libkea-threads.so.%threads_sover.*
 
 %files -n libkea-util-io%util_io_sover
 %_libdir/libkea-util-io.so.%util_io_sover.*

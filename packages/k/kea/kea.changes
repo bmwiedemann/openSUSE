@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep  5 22:02:39 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.0
+  * User-defined option definitions were not committed, which was
+    fixed.
+  * kea-dhcp4 now rejects inbound client messages that have
+    neither a hardware address nor a client identifier.
+  * Rather than within the 'dhcp-ddns' section, DDNS behavioral
+    parameters may now be specified at global, shared-network,
+    and subnet scopes.
+  * Added support of BOOTP leases with infinite valid lifetime.
+  * Added the -N command line switch that enables experimental
+    multi-threading support.
+
+-------------------------------------------------------------------
 Wed Apr 22 04:03:08 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to Python 3 Sphinx due to Python 2 removal. 
