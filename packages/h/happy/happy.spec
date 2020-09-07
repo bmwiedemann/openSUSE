@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           happy
-Version:        1.19.12
+Version:        1.20.0
 Release:        0
 Summary:        Happy is a parser generator for Haskell
 License:        BSD-2-Clause
