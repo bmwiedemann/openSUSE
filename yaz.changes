@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 26 08:21:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.30.3:
+  * Require getaddrinfo which has been available since 2003.
+  * Provide server host for SSL by using gnutls_server_name_set(3).
+  * Obey [host]:port notation for IPV6
+
+-------------------------------------------------------------------
 Wed May  6 08:34:14 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.30.2:

@@ -18,24 +18,23 @@
 
 %define         libname libyaz5
 Name:           yaz
-Version:        5.30.2
+Version:        5.30.3
 Release:        0
 Summary:        Z39.50 protocol server and client
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://www.indexdata.dk/yaz/
-Source:         %{name}-%{version}.tar.gz
+Source:         http://ftp.indexdata.dk/pub/yaz/yaz-%{version}.tar.gz
 Source2:        baselibs.conf
 BuildRequires:  gnutls-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  openssl-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains both a test-server and clients (normal & ssl) for
@@ -93,10 +92,10 @@ using the ANSI/NISO Z39.50 protocol for Information Retrieval.
            --with-icu \
 		   --disable-static \
 		   --with-pic
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 # Unwanted doc stuff
 rm -fr %{buildroot}%{_datadir}/doc
 rm -fr html
@@ -123,11 +122,9 @@ ln -sf introduction.html html/index.html
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc %{DOCFILES} ChangeLog
 %{_bindir}/yaz-client*
 %{_bindir}/yaz-iconv
@@ -153,18 +150,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/*/yaz-record-conv.*
 %{_mandir}/*/bib1-attr.*
 %dir %{_datadir}/yaz
-%{_datadir}/yaz/etc
+%{_datadir}/yaz%{_sysconfdir}
 
 %files doc
-%defattr(-,root,root)
 %doc index.html html
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %files -n libyaz-devel
-%defattr(-,root,root)
 %{_bindir}/yaz-config
 %{_bindir}/yaz-asncomp
 %{_includedir}/yaz
