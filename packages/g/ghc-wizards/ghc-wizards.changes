@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
+
+- Update wizards to version 1.0.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:39 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
