@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:34:37 UTC 2020 - psimons@suse.com
+
+- Update foldl to version 1.4.8 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:52 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
