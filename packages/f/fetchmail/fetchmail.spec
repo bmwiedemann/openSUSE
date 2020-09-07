@@ -18,11 +18,10 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           fetchmail
-Version:        6.4.8
+Version:        6.4.12
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
@@ -49,9 +48,9 @@ BuildRequires:  xz
 Requires:       logrotate
 Requires(pre):  %fillup_prereq
 Requires(pre):  coreutils
+Requires(pre):  group(daemon)
 Requires(pre):  shadow
 Suggests:       smtp_daemon
-Requires(pre):	group(daemon)
 %{?systemd_requires}
 
 %description
@@ -94,7 +93,7 @@ export CFLAGS="%{optflags} -fPIE"
 	--with-kerberos5 \
         --with-gssapi \
 	--with-ssl=%{_prefix}
-make %{?_smp_mflags} LDFLAGS="-pie"
+%make_build LDFLAGS="-pie"
 
 %install
 %make_install
@@ -123,15 +122,15 @@ rm -r contrib/gai*
 %find_lang %{name}
 
 %pre
-/usr/bin/getent passwd fetchmail >/dev/null || \
-  /usr/sbin/useradd -r -g daemon -s /bin/false \
+%{_bindir}/getent passwd fetchmail >/dev/null || \
+  %{_sbindir}/useradd -r -g daemon -s /bin/false \
   -c "mail retrieval daemon" -d %{_localstatedir}/lib/fetchmail fetchmail || :
 %service_add_pre %{name}.service
 
 %post
 %fillup_only
 %service_add_post %{name}.service
-if [ -x /usr/bin/systemd-tmpfiles ]; then
+if [ -x %{_bindir}/systemd-tmpfiles ]; then
 	systemd-tmpfiles --create %{name}.conf || :
 fi
 # Ensure that all files are readable by fetchmail with non-root UID.
@@ -149,7 +148,7 @@ if [ $1 = 0 ]; then
 fi
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files -f %{name}.lang
 %license COPYING
@@ -157,7 +156,7 @@ make %{?_smp_mflags} check
 %{_bindir}/fetchmail
 %dir %attr(0700, fetchmail, root) %{_localstatedir}/lib/fetchmail
 %ghost %attr(0600, fetchmail, root) %{_localstatedir}/log/fetchmail
-%{_mandir}/man1/fetchmail.1.gz
+%{_mandir}/man1/fetchmail.1%{?ext_man}
 %ghost %config(noreplace) %attr(0600, fetchmail, root) %{_sysconfdir}/fetchmailrc
 %config(noreplace) %{_sysconfdir}/logrotate.d/fetchmail
 %{_unitdir}/%{name}.service
@@ -168,7 +167,7 @@ make %{?_smp_mflags} check
 
 %files -n fetchmailconf
 %{_bindir}/fetchmailconf
-%{_mandir}/man1/fetchmailconf.1.gz
+%{_mandir}/man1/fetchmailconf.1%{?ext_man}
 %{python3_sitelib}/fetchmailconf.*
 %{python3_sitelib}/__pycache__/fetchmailconf*
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  4 20:22:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.4.12:
+  # REGRESSION FIX:
+  * configure: fetchmail 6.4.9 and 6.4.10 would miss checking for TLS v1.2 and
+  TLS v1.3 support if AC_LIB_LINKFLAGS came up with something such as
+  /path/to/libssl.so, rather than -lssl. (For instance on FreeBSD) 
+  * configure: fetchmail 6.4.9's configure was unable to pick up OpenSSL
+  if it wasn't announced by pkg-config, for instance, on FreeBSD
+
+-------------------------------------------------------------------
 Fri Aug 28 10:08:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - De-hardcode /usr/lib path for launch executable (bsc#1174075)
