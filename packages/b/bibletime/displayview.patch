@@ -1,0 +1,63 @@
+From 7700e93a345c202cd45cd4e72b77feb64fe33b80 Mon Sep 17 00:00:00 2001
+From: Gary Holmlund <gary.holmlund@gmail.com>
+Date: Tue, 4 Aug 2020 22:09:08 -0700
+Subject: [PATCH] Fix bug #260 Move DisplayView.qml to share/bibletime/qml
+
+diff --git a/cmake/BTApplication.cmake b/cmake/BTApplication.cmake
+index 2ccfd4d01..b8cd4df4e 100644
+--- a/cmake/BTApplication.cmake
++++ b/cmake/BTApplication.cmake
+@@ -179,10 +179,10 @@ INSTALL(FILES "docs/license.html"
+ # See QTBUG-55259, Affects windeployqt and macdeployqt
+ IF(APPLE)
+     INSTALL(FILES "src/frontend/display/modelview/DisplayView.qml"
+-        DESTINATION "${BT_BINDIR}/BibleTime.app/Contents/MacOS")
++        DESTINATION "${BT_BINDIR}/BibleTime.app/Contents/share/bibletime/qml")
+ ELSE()
+     INSTALL(FILES "src/frontend/display/modelview/DisplayView.qml"
+-        DESTINATION "${BT_BINDIR}/")
++        DESTINATION "${BT_DATAROOTDIR}/bibletime/qml")
+ ENDIF()
+ 
+ FILE(GLOB INSTALL_TMPL_LIST
+diff --git a/cmake/BTBinaryPackageMacOS.cmake b/cmake/BTBinaryPackageMacOS.cmake
+index 3d5b9b9c6..a5c920b43 100644
+--- a/cmake/BTBinaryPackageMacOS.cmake
++++ b/cmake/BTBinaryPackageMacOS.cmake
+@@ -13,7 +13,7 @@ IF(APPLE)
+         SET(BT_MAC_APP  "${CMAKE_INSTALL_PREFIX}/BibleTime.app")
+ 
+         INSTALL(CODE "
+-            EXECUTE_PROCESS(COMMAND ${QT_MACDEPLOYQT_EXECUTABLE} ${BT_MAC_APP}   -qmldir=${BT_MAC_APP}/Contents/MacOS)
++            EXECUTE_PROCESS(COMMAND ${QT_MACDEPLOYQT_EXECUTABLE} ${BT_MAC_APP}   -qmldir=${BT_MAC_APP}/Contents/share/bibletime/qml)
+         ")
+     ENDIF (CMAKE_BUILD_TYPE STREQUAL "Release")
+ 
+diff --git a/cmake/BTBinaryPackageWindows.cmake b/cmake/BTBinaryPackageWindows.cmake
+old mode 100644
+new mode 100755
+index 10c7e09bb..8fea71463
+--- a/cmake/BTBinaryPackageWindows.cmake
++++ b/cmake/BTBinaryPackageWindows.cmake
+@@ -27,7 +27,7 @@ IF(WIN32 AND NOT UNIX)
+ 
+     FIND_PROGRAM(QT_WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${QT_BIN_DIR}")
+     MESSAGE(STATUS "Running ${QT_WINDEPLOYQT_EXECUTABLE}")
+-    INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${QT_WINDEPLOYQT_EXECUTABLE} \"\${CMAKE_INSTALL_PREFIX}/bin/bibletime.exe\") ")
++    INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${QT_WINDEPLOYQT_EXECUTABLE} -qmldir \"\${CMAKE_INSTALL_PREFIX}/share/bibletime/qml\"    \"\${CMAKE_INSTALL_PREFIX}/bin/bibletime.exe\") ")
+ 
+     IF(CMAKE_BUILD_TYPE STREQUAL "Debug")
+         SET(ZLIB_LIBRARY ${ZLIB_LIBRARY_DEBUG})
+diff --git a/src/frontend/display/modelview/btquickwidget.cpp b/src/frontend/display/modelview/btquickwidget.cpp
+index 2966e947a..1be24db5b 100644
+--- a/src/frontend/display/modelview/btquickwidget.cpp
++++ b/src/frontend/display/modelview/btquickwidget.cpp
+@@ -36,7 +36,7 @@ BtQuickWidget::BtQuickWidget(BtQmlScrollView* parent)
+     setAcceptDrops(true);
+ 
+     namespace DU = util::directory;
+-    QString qmlFile = QCoreApplication::applicationDirPath() + "/" + "DisplayView.qml";
++    QString qmlFile = QCoreApplication::applicationDirPath() + "/../share/bibletime/qml/" + "DisplayView.qml";
+     setSource(QUrl::fromLocalFile(qmlFile));
+     setupScrollTimer();
+ }

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Aug 30 19:45:45 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.0:
+  Enhancements:
+  * Text windows now have continuous scrolling from the beginning
+    to end of a module. At the end of a chapter just keep scrolling
+    to see the next chapter.
+  * You don't have to open the Personal Commentary for writing. Edit
+    it in a normal text window or even when it is a parallel column in a text window.
+  * Automatic text scrolling up or down with variable speed and pause.
+  * Copy to clipboard by choosing the beginning and ending reference.
+  * A search filter was added in the "Install Works" page of the
+    Bookshelf Manager.
+  * You can select text from a single column when using parallel
+    texts in a window.
+  * Added a user interface to delete or create search indices.
+  * The first time the Bookshelf Manager is used in a session, the
+    remote libraries are updated.
+  * Improved popup menus and icons for module chooser buttons and
+    text window headers.
+  * Show module unlock information in about text when available.
+  * Improved unlocking of modules.
+  Bugs fixed:
+  * Locked Bible not unlocking properly.
+  * Place not being saved in Daily Devotional.
+  * Problems with MAG window references using hebrew modules OSHB
+    and OSMHB.
+  * Unable to create a search scope for deuterocanonical books.
+  * Searching with quotes not working.
+  * MAG windows Strongs references not working unless config
+    settings were saved.
+- Add displayview.patch
+
+-------------------------------------------------------------------
 Mon Nov 18 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - %make_jobs is depricated replaced by %cmake_build

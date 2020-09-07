@@ -1,7 +1,7 @@
 #
 # spec file for package bibletime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012-2014 Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,16 @@
 
 
 Name:           bibletime
-Version:        2.11.2
+Version:        3.0
 Release:        0
 Summary:        A Bible study tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
-Url:            http://www.bibletime.info/
+URL:            http://www.bibletime.info/
 Source0:        https://github.com/bibletime/bibletime/releases/download/v%{version}/bibletime-%{version}.tar.xz
 Source1:        bibletime-rpmlintrc
+# PATCH-FIX-UPSTREAM: Fix bug #260 Move DisplayView.qml to share/bibletime/qml
+Patch0:         displayview.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
@@ -42,6 +44,11 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(libclucene-core)
 BuildRequires:  pkgconfig(sword) >= 1.7
+# Dependencies for building documentation
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  fop
+BuildRequires:  libxslt-tools
+BuildRequires:  po4a
 Recommends:     sword-bible
 Recommends:     sword-commentary
 %if 0%{?suse_version} > 1325
@@ -63,29 +70,32 @@ write own notes, save, print etc.).
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake \
-  -Wno-dev
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/html/chunk.xsl \
+  -DBT_DOCBOOK_XSL_PDF_DOCBOOK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/fo/docbook.xsl
 %cmake_build
 
 %install
 %cmake_install
-# move the icon to a valid place (/usr/share/icons is not valid... it has to be in a theme; hicolor as the usual falback)
-# this is only a link pointing out of the icons
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
-mv %{buildroot}%{_datadir}/%{name}/icons/%{name}.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-# then link back the icon into the app directory
-ln -sf %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg %{buildroot}%{_datadir}/%{name}/icons/%{name}.svg
+
 %fdupes -s %{buildroot}
-sed -i "s|bibletime/handbook/index.html|bibletime/handbook/en/index.html|" %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file -r %{name} Education Humanities
+
+%suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/info.%{name}.BibleTime.desktop Education Humanities
 
 %files
+%doc ChangeLog README.md
+%license LICENSE
 %{_bindir}/bibletime
 %{_datadir}/icons/*
-%{_datadir}/applications/bibletime.desktop
+%{_datadir}/applications/info.%{name}.BibleTime.desktop
 %dir %{_datadir}/bibletime
 %{_datadir}/bibletime/*
+%dir %{_datadir}/doc/bibletime
+%{_datadir}/doc/bibletime/*
+%{_datadir}/metainfo/info.bibletime.BibleTime.metainfo.xml
 
 %changelog
