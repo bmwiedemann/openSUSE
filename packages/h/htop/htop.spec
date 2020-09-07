@@ -17,7 +17,7 @@
 
 
 Name:           htop
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later

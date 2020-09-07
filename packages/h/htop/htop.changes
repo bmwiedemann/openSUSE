@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep  6 19:55:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.1
+  * BUGFIX: Fix early exit with longer sysfs battery paths
+  * BUGFIX: Improve OOM output, fix sorting
+  * Rework check buttons and tree open/closed
+  * Add -U/--no-unicode option to disable unicode
+  * Improvements to the affinity panel
+
+-------------------------------------------------------------------
 Sat Aug 29 19:17:23 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 3.0.0
