@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  7 03:19:57 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.025
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.025 2020-09-06 22:14:07+02:00
+
+      - Emitter: Fix indentation issues for non-default indents
+      - Emitter: Add option 'width' for maximum columns
+      - Improve error message for unhandled reftypes
+
+-------------------------------------------------------------------
 Tue Aug 18 03:14:08 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.024
