@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep  5 03:26:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.010006
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010006	2020-09-04
+
+   [ Bug Fixes ]
+   - Eliminate recusion warnings when Type::Parser needs to parse complex
+     types.
+     Fixes RT#121957.
+     Diab Jerius++
+     <https://rt.cpan.org/Ticket/Display.html?id=121957>
+
+   [ Other ]
+   - Better handling of coercions for pre-declared types in Type::Library.
+     The type objects created before the type was properly defined will now
+     lazily attempt to find coercions from the properly defined type once it
+     becomes available.
+
+-------------------------------------------------------------------
 Thu Aug 27 03:10:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.010005
