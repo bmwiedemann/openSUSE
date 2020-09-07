@@ -19,13 +19,12 @@
 %global pkg_name hledger-lib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.18.1
+Version:        1.19
 Release:        0
 Summary:        A reusable library providing the core functionality of hledger
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Decimal-devel
 BuildRequires:  ghc-Glob-devel
@@ -42,7 +41,6 @@ BuildRequires:  ghc-cassava-megaparsec-devel
 BuildRequires:  ghc-cmdargs-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-data-default-devel
-BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-extra-devel
 BuildRequires:  ghc-fgl-devel
@@ -68,6 +66,7 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-timeit-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-uglymemo-devel
+BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-utf8-string-devel
 %if %{with tests}
 BuildRequires:  ghc-doctest-devel
@@ -96,7 +95,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

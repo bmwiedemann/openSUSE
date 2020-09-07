@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Sep  3 02:00:42 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.19.
+  # 1.19 2020-09-01
+
+  - Added a missing lower bound for aeson, making cabal installs more
+    reliable. (#1268)
+
+  - The Regex type alias has been replaced by the Regexp ADT, which
+    contains both the compiled regular expression (so is guaranteed to
+    be usable at runtime) and the original string (so can be serialised,
+    printed, compared, etc.) A Regexp also knows whether is it case
+    sensitive or case insensitive. The Hledger.Utils.Regex API has
+    changed. (#1312, #1330).
+
+  - Typeable and Data instances are no longer derived for hledger's
+    data types; they were redundant/no longer needed.
+
+  - NFData instances are no longer derived for hledger's data types.
+    This speeds up a full build by roughly 7%. But it means we can't
+    deep-evaluate hledger values, or time hledger code with Criterion.
+    https://github.com/simonmichael/hledger/pull/1330#issuecomment-684075129
+    has some ideas on this.
+
+  - Query no longer has a custom Show instance
+
+  - Hledger.Utils.String: quoteIfNeeded now actually escapes quotes in
+    strings. escapeQuotes was dropped. (Stephen Morgan)
+
+  - Hledger.Utils.Tree: dropped some old utilities
+
+  - Some fromIntegral calls have been replaced with safer code, removing
+    some potential for integer wrapping bugs (#1325, #1326)
+
+  - Parsing numbers with more than 255 decimal places now gives an error
+    instead of silently misparsing (#1326)
+
+  - Digit groups are now limited to at most 255 digits each. (#1326)
+
+  - Exponents are parsed as Integer rather than Int.
+    This means exponents greater than 9223372036854775807 or less than
+    -9223372036854775808 are now parsed correctly, in theory. (In
+    practice, very large exponents will cause hledger to eat all your
+    memory, so avoid them for now.) (#1326)
+
+  - AmountStyle's asprecision is now a sum type with Word8, instead of
+    an Int with magic values.
+
+  - DigitGroupStyle uses Word8 instead of Int.
+
+  - Partial helper function parsedate has been dropped, use fromGregorian instead.
+
+  - Partial helper function mkdatespan has been dropped.
+
+  - Helper function transaction now takes a Day instead of a date string. (Stephen Morgan)
+
+  - Old CPP directives made redundant by version bounds have been
+    removed. (Stephen Morgan)
+
+  - Smart dates are now represented by the SmartDate type, and are
+    always well formed. (Stephen Morgan)
+
+  - accountTransactionsReport (used for hledger aregister and
+    hledger-ui/hledger-web registers) now filters transactions more
+    thoroughly, so eg transactions dated outside the report period will
+    not be shown. Previously the transaction would be shown if it had
+    any posting dated inside the report period. Possibly some other
+    filter criteria now get applied that didn't before. I think on
+    balance this will give slightly preferable results.
+
+  - The old BalanceReport code has been dropped at last, replaced by
+    MultiBalanceReport so that all balance reports now use the same
+    code. (Stephen Morgan, #1256).
+
+    - The large multiBalanceReport function has been split up and refactored
+      extensively.
+    - Tabular data formerly represented as [[MixedAmount]] is now HashMap
+      AccountName (Map DateSpan Account). Reports with many columns are now faster.
+    - Calculating starting balances no longer calls the whole balanceReport,
+      just the first few functions.
+    - displayedAccounts is completely rewritten. Perhaps one subtle thing to
+      note is that in tree mode it no longer excludes nodes with zero inclusive
+      balance unless they also have zero exclusive balance.
+    - Simon's note: "I'll mark the passing of the old multiBalanceReport, into
+      which I poured many an hour :). It is in a way the heart (brain ?) of
+      hledger - the key feature of ledgerlikes (balance report) and a key
+      improvement introduced by hledger (tabular multiperiod balance reports)
+      ...
+      Thanks @Xitian9, great work."
+
+-------------------------------------------------------------------
+Mon Aug 31 09:34:31 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.18.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:01 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
