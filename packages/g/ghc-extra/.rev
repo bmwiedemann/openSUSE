@@ -253,4 +253,12 @@ are simple additions, filling out missing functionality.</comment>
     <comment>version update</comment>
     <requestid>829270</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>13187606bf3fd3e322aa5c3bb99d67fc</srcmd5>
+    <version>1.7.7</version>
+    <time>1599506567</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>831333</requestid>
+  </revision>
 </revisionlist>

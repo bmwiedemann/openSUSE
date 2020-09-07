@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 26 02:02:13 UTC 2020 - psimons@suse.com
+
+- Update extra to version 1.7.7.
+  1.7.7, released 2020-08-25
+      #67, defer to System.IO readFile', hGetContents' in GHC 9.0
+
+-------------------------------------------------------------------
 Sat Aug 22 02:01:49 UTC 2020 - psimons@suse.com
 
 - Update extra to version 1.7.6.
