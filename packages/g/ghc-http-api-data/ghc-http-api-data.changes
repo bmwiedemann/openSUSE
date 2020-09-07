@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 30 02:00:37 UTC 2020 - psimons@suse.com
+
+- Update http-api-data to version 0.4.2.
+  0.4.2
+  -----
+
+  * Add instances for `Const` and `Identity`
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:06 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
