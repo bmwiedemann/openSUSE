@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 11:00:51 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Wed Aug 19 12:58:54 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Use proper location of bash in script shebang

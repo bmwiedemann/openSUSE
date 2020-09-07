@@ -186,7 +186,7 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %dir %{_datadir}/xpra/content-categories
 %dir %{_datadir}/xpra/content-type
 %dir %{_datadir}/xpra/http-headers
-%dir %{_libexecdir}/xpra
+%dir %{_prefix}/lib/xpra
 %dir %{_sysconfdir}/pam.d
 %dir %{_sysconfdir}/xpra
 %dir %{_sysconfdir}/xpra/conf.d
@@ -203,10 +203,10 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_bindir}/xpra_signal_listener
 %{_bindir}/xpra_udev_product_version
 %{_udevrulesdir}/71-xpra-virtual-pointer.rules
-%{_libexecdir}/xpra/auth_dialog
-%{_libexecdir}/xpra/gnome-open
-%{_libexecdir}/xpra/gvfs-open
-%{_libexecdir}/xpra/xdg-open
+%{_prefix}/lib/xpra/auth_dialog
+%{_prefix}/lib/xpra/gnome-open
+%{_prefix}/lib/xpra/gvfs-open
+%{_prefix}/lib/xpra/xdg-open
 %{_sbindir}/rc%{name}
 %{python3_sitearch}/xpra
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
@@ -228,7 +228,7 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_datadir}/xpra/http-headers/00_nocache.txt
 %{_datadir}/xpra/http-headers/10_content_security_policy.txt
 %{_datadir}/xpra/icons
-%{_libexecdir}/cups/backend/xpraforwarder
+%{_prefix}/lib/cups/backend/xpraforwarder
 %{_mandir}/man1/xpra.1%{?ext_man}
 %{_mandir}/man1/xpra_launcher.1%{?ext_man}
 %{_sysusersdir}/xpra.conf
