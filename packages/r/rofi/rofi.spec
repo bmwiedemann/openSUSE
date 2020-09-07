@@ -1,7 +1,7 @@
 #
 # spec file for package rofi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rofi
-Version:        1.5.4
+Version:        1.6.0
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
 Group:          System/GUI/Other
-Url:            https://davedavenport.github.io/rofi/
+URL:            https://davedavenport.github.io/rofi/
 Source:         https://github.com/DaveDavenport/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch0:         xdg-terminal.patch
 # PATCH-FIX-SUSE
@@ -32,6 +32,7 @@ BuildRequires:  bison
 BuildRequires:  cairo-devel
 BuildRequires:  cppcheck
 BuildRequires:  flex >= 2.5.39
+BuildRequires:  libjpeg8-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbcommon-x11-devel
@@ -64,7 +65,7 @@ Development files and headers for rofi
 
 %build
 %configure --disable-check
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -81,6 +82,7 @@ make %{?_smp_mflags}
 %{_mandir}/man1/rofi-sensible-terminal.1%{?ext_man}
 %{_mandir}/man1/rofi-theme-selector.1%{?ext_man}
 %{_mandir}/man5/rofi-theme.5%{?ext_man}
+%{_mandir}/man5/rofi-script.5%{?ext_man}
 
 %files devel
 %{_includedir}/rofi/
