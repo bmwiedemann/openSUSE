@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  7 03:10:40 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.09
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-AssetPack/Changes
+
+  2.09 2020-09-07T08:56:50+0900
+   - Prevent JavaScript from runnning in 404 assets #140
+   - Slimmed down the bundled documentation
+
+-------------------------------------------------------------------
 Wed May  8 05:14:46 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.08
