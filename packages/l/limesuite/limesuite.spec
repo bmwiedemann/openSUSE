@@ -29,15 +29,15 @@ Group:          Productivity/Hamradio/Other
 URL:            https://myriadrf.org/projects/lime-suite/
 #Git-Clone:     https://github.com/myriadrf/LimeSuite.git
 Source:         https://github.com/myriadrf/LimeSuite/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM -- https://github.com/myriadrf/LimeSuite/pull/316
+Patch0:         0001-Allow-compilation-with-wxWidgets-STL-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gnuplot
-BuildRequires:  i2c-tools
 BuildRequires:  pkgconfig
-BuildRequires:  wxWidgets-3_0-nostl-devel
+BuildRequires:  wxGTK3-devel
 BuildRequires:  pkgconfig(SoapySDR) >= %{soapy_modver}
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(udev)
 
 %description
@@ -83,6 +83,7 @@ A Soapy module that supports LimeSDR devices within the Soapy API.
 
 %prep
 %setup -q -n LimeSuite-%{version}
+%patch0 -p1
 
 # HACK: set udev permissions to 666
 sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules

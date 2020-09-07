@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  6 00:13:04 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use wxGTK3 instead of wxWidgets (GTK2), allow building with
+  STL variant:
+  * 0001-Allow-compilation-with-wxWidgets-STL-build.patch
+- Remove irrelevant dependencies: i2c-tools, sqlite3
+
+-------------------------------------------------------------------
 Thu Aug  6 18:20:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 20.07.2
