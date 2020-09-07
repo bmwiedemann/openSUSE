@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ExifRead
-Version:        2.1.2
+Version:        2.3.1
 Release:        0
 Summary:        Module to read Exif metadata from TIFF and JPEG files
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/ExifRead/%{version}
-Source:         https://files.pythonhosted.org/packages/source/E/ExifRead/ExifRead-2.1.2.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/E/ExifRead/ExifRead-%{version}.tar.gz
 Source1:        https://github.com/ianare/exif-samples/archive/master.tar.gz#/exif-samples-master.tar.gz
-Patch0:         https://patch-diff.githubusercontent.com/raw/ianare/exif-py/pull/58.patch#/merged_pr_58.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +38,6 @@ A Python module to extract Exif metadata from TIFF and JPEG files.
 
 %prep
 %setup -q -n ExifRead-%{version} -a1
-%patch0 -p1
 
 %build
 %python_build
@@ -52,8 +49,8 @@ A Python module to extract Exif metadata from TIFF and JPEG files.
 
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-find exif-samples-master -name "*.tiff" -o -name "*.jpg" -exec $python %{buildroot}%{_bindir}/EXIF.py {} \;
-find exif-samples-master -name "*.tiff" -o -name "*.jpg" -exec $python %{buildroot}%{_bindir}/EXIF.py -dc {} \;
+find exif-samples-master -name "*.tiff" -o -name "*.jpg" -exec $python %{buildroot}%{_bindir}/EXIF.py-%{python_bin_suffix} {} \;
+find exif-samples-master -name "*.tiff" -o -name "*.jpg" -exec $python %{buildroot}%{_bindir}/EXIF.py-%{python_bin_suffix} -dc {} \;
 }
 
 %post

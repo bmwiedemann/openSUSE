@@ -15,4 +15,38 @@
     <comment></comment>
     <requestid>809389</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a7df2c724ced4f7f49ed5aa0a887a38e</srcmd5>
+    <version>2.3.1</version>
+    <time>1599507312</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1:
+  * Fix bug introduced with v2.3.0 in HEIC processing.
+  * Add notice on Python2 EOL
+  * Modernize code and improve testing, split up some huge functions
+  * Added support for webp file format (#116) by Grzegorz Ruciński
+  * Add linting
+  * Added missing IFD data type; correct spelling mistake (#119) by Piero
+    Toffanin
+  * Add syntax highlight for README (#117) by John Lin
+  * Add Python 3.8 to CI (#113) by 2*yo
+  * make HEIC exif extractor much more compatible (#109) by Tony Guo
+  * Add black level tag (#108)
+  * Use list instead of tuple for classifiers (#107) by Florian Preinstorfer
+  * Add support for Python 3.5, 3.6, 3.7
+  * Drop official support for Python 2.6, 3.2, 3.3
+  * Fix for string count equals 0 (issue #67)
+  * Rebasing of struct pull requests: closes #54, closes #60 by Christopher
+    Chavez
+  * Refactor to use Python's struct module for packing/unpacking by Dave Jones
+  * Support floating point fields&quot; by Reed Nightingale (reedbn)
+  * Raw images support by changing Tiff detection by xaumex
+  * Fix GPS information erroneously None (#96) by Christopher Chavez
+  * Initial HEIC support (Sam Rushing) 
+- Correct Source URL to not hardcode the version
+- Use python_bin_suffix to call correct script during check
+- Drop merged_pr_58.patch, included upstream
+- Refresh exif-samples-master.tar.gz</comment>
+    <requestid>832672</requestid>
+  </revision>
 </revisionlist>
