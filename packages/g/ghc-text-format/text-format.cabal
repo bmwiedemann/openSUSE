@@ -1,0 +1,86 @@
+name:           text-format
+version:        0.3.2
+x-revision:     2
+license:        BSD3
+license-file:   LICENSE
+homepage:       https://github.com/bos/text-format
+bug-reports:    https://github.com/bos/text-format/issues
+category:       Text
+author:         Bryan O'Sullivan <bos@serpentine.com>
+maintainer:     Bryan O'Sullivan <bos@serpentine.com>
+stability:      experimental
+synopsis:       Text formatting
+cabal-version:  >= 1.8
+build-type:     Simple
+description:
+    A text formatting library optimized for both ease of use and high
+    performance.
+
+tested-with:
+  GHC == 7.0.4
+   || == 7.2.2
+   || == 7.4.2
+   || == 7.6.3
+   || == 7.8.4
+   || == 7.10.3
+   || == 8.0.2
+   || == 8.2.2
+   || == 8.4.3
+   || == 8.6.5
+   || == 8.8.3
+   || == 8.10.1
+
+extra-source-files:
+    README.markdown
+    CHANGELOG.md
+    benchmarks/Makefile
+    benchmarks/*.c
+    benchmarks/*.hs
+
+flag developer
+  description: operate in developer mode
+  default: False
+  manual: True
+
+library
+  exposed-modules:
+    Data.Text.Format
+    Data.Text.Buildable
+    Data.Text.Format.Params
+    Data.Text.Format.Types
+    Data.Text.Format.Types.Internal
+
+  other-modules:
+    Data.Text.Format.Functions
+    Data.Text.Format.Int
+
+  build-depends:
+    array,
+    base >=4.3 && <4.15,
+    integer-gmp >= 0.2,
+    double-conversion >= 0.2.0.0,
+    ghc-prim,
+    old-locale,
+    text >= 0.11.0.8,
+    time,
+    transformers
+
+  if flag(developer)
+    ghc-options: -Werror
+    ghc-prof-options: -auto-all
+
+  ghc-options: -Wall
+
+  cpp-options: -DINTEGER_GMP
+
+  if !impl(ghc >= 8.0)
+    build-depends:
+      semigroups          >= 0.18.5  && < 0.20
+
+source-repository head
+  type:     git
+  location: https://github.com/hackage-trustees/text-format.git
+
+source-repository head
+  type:     mercurial
+  location: https://bitbucket.org/bos/text-format
