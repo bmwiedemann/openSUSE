@@ -18,12 +18,12 @@
 
 %define libname libsispmctl0
 Name:           sispmctl
-Version:        4.6
+Version:        4.7
 Release:        0
 Summary:        SIS-PM Control for Linux
 License:        GPL-2.0-only
 URL:            https://sourceforge.net/projects/sispmctl/
-Source0:        sispmctl-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/sispmctl/files/sispmctl/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch0:         sispmctl-fix-udev-group.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -51,7 +51,6 @@ Development files for the GEMBIRD Silver Shield PM device.
 %autopatch -p1
 
 %build
-./autogen.sh
 %configure \
   --disable-static \
   --enable-webless
@@ -59,6 +58,8 @@ Development files for the GEMBIRD Silver Shield PM device.
 
 %install
 %make_install
+# remove not needed files
+rm -r %{buildroot}%{_datadir}/doc/sispmctl/
 # Remove static libs
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -70,6 +71,7 @@ install -Dm 0644 examples/60-sispmctl.rules %{buildroot}%{_udevrulesdir}/60-sisp
 %files
 %{_mandir}/man1/sispmctl.1%{?ext_man}
 %license COPYING
+%doc README.md
 %{_bindir}/sispmctl
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/60-sispmctl.rules

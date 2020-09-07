@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 29 20:13:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 4.7
+  * Support scheduling on EG-PMS2
+  * Step up security in systemd service definition
+- Use sf.net source URL
+- Package README.md
+
+-------------------------------------------------------------------
 Wed Apr  1 12:56:30 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 4.6
