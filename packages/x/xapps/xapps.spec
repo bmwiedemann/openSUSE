@@ -180,7 +180,7 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %files mate
 %dir %{_datadir}/mate-panel/
 %dir %{_datadir}/mate-panel/applets/
-%{_prefix}/lib/xapps/
+%{_libexecdir}/xapps/
 %{_datadir}/dbus-1/services/org.mate.panel.applet.MateXAppStatusAppletFactory.service
 %{_datadir}/mate-panel/applets/org.x.MateXAppStatusApplet.mate-panel-applet
 

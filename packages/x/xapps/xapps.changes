@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:58:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Sun Mar 22 13:04:56 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Add gtkstatusicon-fix.patch, backport to fix crashing tray icon
