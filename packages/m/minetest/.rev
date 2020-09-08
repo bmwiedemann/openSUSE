@@ -136,4 +136,22 @@ New upstream version.</comment>
 </comment>
     <requestid>816473</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>713ef00ded822a1c95e5bf8486ae8049</srcmd5>
+    <version>5.3.0</version>
+    <time>1599598263</time>
+    <user>dimstar_suse</user>
+    <comment>- added patch to build .desktop file without 'PrefersNonDefaultGPU'
+  option on Leap 15.2 and below (old-desktopfile-standard.patch)
+- removed conditional build for very old openSUSE/SLES versions
+- add minetest-runtime provides
+- Update to version 5.3.0. 
+  (see https://dev.minetest.net/Changelog#5.2.0_.E2.86.92_5.3.0)
+  * Formspec improvements, including a scrolling GUI element
+  * Performance improvements to the Server and API
+  * Many bug fixes and small features
+- Now requires desktop-file-utils version &gt;= 0.25.
+</comment>
+    <requestid>832971</requestid>
+  </revision>
 </revisionlist>
