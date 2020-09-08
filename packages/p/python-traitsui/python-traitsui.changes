@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep  8 08:15:11 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.1
+  * Fix error from true division of integers for Qt RangeEditor and BoundsEditor
+    (#999, #1000)
+  * Fix handling of minimum and maximum datetimes in Qt DatetimeEditor (#803)
+  * Fix error in wx TabularEditor (#969)
+  * Fix wx panel error due to alignments (#829)
+  * Fix various issues in the demo application (#799, #808)
+  * Fix format_func not used when EnumEditor is initialized with static values
+    (#848)
+  * Fix demo application description (#850)
+  * Fix auto-add functionality in ListStrModel (#860)
+  * Fix segmentation fault for TabularModel (#871, #873)
+  * Fix event handling in ListStrEditor and TabularEditor for adding and removing
+    items (#875)
+  * Fix TabularAdapter crashes when column number reduces (#897)
+  * Fix theme pickling issue (#915)
+  * Fix error from example's tutor.py script (#813)
+- use pytest instead of nose for running tests
+
+-------------------------------------------------------------------
 Mon Jul 13 11:20:18 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 7.0.0

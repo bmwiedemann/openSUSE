@@ -20,7 +20,7 @@
 %define         X_display         ":98"
 %define skip_python2 1
 Name:           python-traitsui
-Version:        7.0.0
+Version:        7.0.1
 Release:        0
 Summary:        Traits-capable windowing framework
 # Source code is under BSD but images are under different licenses
@@ -44,7 +44,7 @@ Recommends:     python-wxWidgets
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module wxPython >= 4}
 BuildRequires:  Mesa-dri
@@ -87,7 +87,7 @@ sleep 10
 %{python_expand mkdir tester_%{$python_bin_suffix}
 pushd tester_%{$python_bin_suffix}
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-nosetests-%{$python_bin_suffix} -v traitsui.tests --exclude=wx --exclude=test_splitter_prefs_are_restored
+pytest-%{$python_bin_suffix} -v ../traitsui/tests -k 'not (wx or test_splitter_prefs_are_restored)'
 popd
 }
 
