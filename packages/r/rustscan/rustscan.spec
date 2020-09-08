@@ -1,6 +1,7 @@
 #
 # spec file for package rustscan
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           rustscan
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Fast network port scanner
 License:        GPL-3.0-or-later

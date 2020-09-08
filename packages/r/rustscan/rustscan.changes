@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 28 20:13:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  Features
+  * Allow randomised order for manual ports.
+  * Add --port and --range options.
+  * Added host resolution.
+  * Added accessible mode.
+  * Added port scanning strategy.
+  Maintenance
+  * Added the Git submodule for RustScan Scripting Engine
+  * Removed -A from Nmap.
+  * Added top 1k ports in config file.
+  * Excluded unnecessary files.
+  Fixed bugs
+  * GH#169, GH#165, GH#163, GH#153
+
+-------------------------------------------------------------------
 Sun Aug  9 13:27:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.1
