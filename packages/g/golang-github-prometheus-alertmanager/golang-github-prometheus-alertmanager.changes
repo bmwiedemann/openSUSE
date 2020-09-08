@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:43:59 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Fix permissions for /var/lib/prometheus to match
+  golang-github-prometheus-prometheus package. Otherwise the install check will
+  fail.
+
+-------------------------------------------------------------------
+Sat Jul 18 20:24:34 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.21.0
+  + Changes:
+    * [HipChat] Remove HipChat integration as it is end-of-life. #2282
+    * [amtool] Remove default assignment of environment variables. #2161
+    * [PagerDuty] Enforce 512KB event size limit. #2225
+  + Enhancements:
+    * [amtool] Add cluster command to show cluster and peer statuses. #2256
+    * Add redirection from / to the routes prefix when it isn't empty. #2235
+    * [Webhook] Add max_alerts option to limit the number of alerts included in the payload. #2274
+    * Improve logs for API v2, notifications and clustering. #2177 #2188 #2260 #2261 #2273
+  + Bugfixes:
+    * Fix child routes not inheriting their parent route's grouping when group_by: [...]. #2154
+    * [UI] Fix the receiver selector in the Alerts page when the receiver name contains regular expression metacharacters such as +. #2090
+    * Fix error message about start and end time validation. #2173
+    * Fix a potential race condition in dispatcher. #2208
+    * [API v2] Return an empty array of peers when the clustering is disabled. #2203
+    * Fix the registration of alertmanager_dispatcher_aggregation_groups and alertmanager_dispatcher_alert_processing_duration_seconds metrics. #2200
+    * Always retry notifications with back-off. #2290
+- Run spec-cleaner
+- Remove rpm group
+- Update to build with go1.14 for Factory (Tumbleweed)
+- Refresh example config from upstream
+
+-------------------------------------------------------------------
 Fri Aug  2 06:11:53 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
 
 - Add network-online (Wants and After) dependency to systemd unit bsc#1143913

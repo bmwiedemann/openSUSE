@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-alertmanager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,30 @@
 #
 
 
-%{go_nostrip}
-
 Name:           golang-github-prometheus-alertmanager
-Version:        0.16.2
+Version:        0.21.0
 Release:        0
 Summary:        Prometheus Alertmanager
 License:        Apache-2.0
-Group:          System/Management
-Url:            https://prometheus.io/
+URL:            https://prometheus.io/
 Source:         alertmanager-%{version}.tar.xz
 Source1:        prometheus-alertmanager.service
 Source2:        alertmanager.yml
 # Lifted from Debian's alertmanager package
 Patch1:         0001-Default-settings.patch
 BuildRequires:  fdupes
-BuildRequires:  go1.11
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
 Requires(pre):  shadow
+%{go_nostrip}
+%{?systemd_requires}
 %{go_provides}
+%if 0%{?suse_version} > 1500
+BuildRequires:  go1.14
+%else
+BuildRequires:  go1.11
+%endif
 
 %description
 The Alertmanager handles alerts sent by client applications such as the
@@ -62,7 +63,7 @@ install -D -m0755 %{_builddir}/alertmanager-%{version}/alertmanager %{buildroot}
 mv %{buildroot}%{_bindir}/alertmanager %{buildroot}%{_bindir}/prometheus-alertmanager
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/prometheus-alertmanager.service
 install -Dd -m 0755 %{buildroot}%{_sbindir}
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcprometheus-alertmanager
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcprometheus-alertmanager
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/prometheus/alertmanager.yml
 install -Dd -m 0755 %{buildroot}%{_sysconfdir}/prometheus/alertmanager_templates
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
@@ -85,15 +86,14 @@ getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %
 %service_del_postun prometheus-alertmanager.service
 
 %files -f file.lst
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
 %{_bindir}/prometheus-alertmanager
 %{_bindir}/amtool
 %{_unitdir}/prometheus-alertmanager.service
 %{_sbindir}/rcprometheus-alertmanager
-%dir %attr(0750, prometheus, prometheus) %{_localstatedir}/lib/prometheus
-%dir %attr(0750, prometheus, prometheus) %{_localstatedir}/lib/prometheus/alertmanager
+%dir %attr(0700, prometheus, prometheus) %{_localstatedir}/lib/prometheus
+%dir %attr(0700, prometheus, prometheus) %{_localstatedir}/lib/prometheus/alertmanager
 %dir %{_sysconfdir}/prometheus
 %dir %{_sysconfdir}/prometheus/alertmanager_templates
 %config(noreplace) %{_sysconfdir}/prometheus/alertmanager.yml
