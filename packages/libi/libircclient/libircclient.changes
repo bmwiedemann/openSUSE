@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 25 21:56:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.10:
+   * Fixed compatibility with OpenSSL 1.1.x (thanks Antoine Amarilli)
+   * Fixed a few minor Win32 compatibility bugs.
+   * Fixed an error if the TCP connection to the IRC server couldn't be established under 250ms.
+   * Fixed a potential deadlock caused by WSAStartup() being called in DllMain()
+- remove pdfgen.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Aug 28 09:08:00 UTC 2018 - adam.majer@suse.de
 
 - pdfgen.patch: use sphinx with latex to build documentation as

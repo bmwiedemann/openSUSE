@@ -1,7 +1,7 @@
 #
 # spec file for package libircclient
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname 1
 Name:           libircclient
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Library implementing client-server IRC protocol
 License:        LGPL-2.0-or-later
@@ -29,7 +29,6 @@ Source0:        http://sourceforge.net/projects/%{name}/files/%{name}/%{version}
 Patch0:         libircclient-memory-overflow.diff
 # PATCH-FIX-UPSTREAM libircclient-cipher-suite.patch bnc#857151
 Patch1:         libircclient-cipher-suite.diff
-Patch2:         pdfgen.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -73,12 +72,10 @@ It is designed to be small, fast, portable and compatible to RFC standards and m
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-export ac_cv_lib_ssl_SSL_library_init=yes
 %configure --enable-ipv6 --enable-openssl --enable-shared
 make %{?_smp_mflags}
 cd doc
