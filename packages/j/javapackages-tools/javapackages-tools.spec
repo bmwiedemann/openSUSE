@@ -48,7 +48,11 @@ BuildRequires:  fdupes
 BuildRequires:  perl
 BuildRequires:  rpm
 BuildRequires:  xmlto
+%if %{with python}
+BuildRequires:  javapackages-filesystem
+%else
 Requires:       javapackages-filesystem = %{version}-%{release}
+%endif
 # Used on too many places
 Provides:       jpackage-utils = %{version}
 Obsoletes:      %{name}-doc

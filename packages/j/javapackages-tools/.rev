@@ -255,4 +255,12 @@
     <comment>3.5.1</comment>
     <requestid>821264</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>968c4a6dc5c43c262f0a290554b6dbc7</srcmd5>
+    <version>5.3.1</version>
+    <time>1599598522</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on Staging:A</comment>
+    <requestid>832816</requestid>
+  </revision>
 </revisionlist>
