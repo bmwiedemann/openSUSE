@@ -67,7 +67,7 @@ package contains the library used by applications.
 %patch1 -p1
 
 %build
-make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fPIC" CC="gcc"
+make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fPIC" CC="gcc" libexecdir=%{_libexecdir}
 
 %install
 export DESTDIR=%{buildroot}

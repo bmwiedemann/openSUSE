@@ -257,4 +257,12 @@
   definition (forwarded request 800702 from pgajdos)</comment>
     <requestid>800705</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1cd5f7b0ad3ecd83abb76c2015286a97</srcmd5>
+    <version>1.2.0</version>
+    <time>1599598516</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed utempter location after libexecdir change (bsc#1175925) (forwarded request 831927 from msmeissn)</comment>
+    <requestid>831928</requestid>
+  </revision>
 </revisionlist>
