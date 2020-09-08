@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-rubocop-ast
-Version:        0.1.0
+Version:        0.3.0
 Release:        0
 Summary:        RuboCop tools to deal with Ruby code AST
 License:        MIT

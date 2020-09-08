@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:07:33 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.3.0:
+
+## 0.3.0 (2020-08-01)
+
+### New features
+
+* [#70](https://github.com/rubocop-hq/rubocop-ast/pull/70): Add `NextNode` ([@marcandre][])
+* [#85](https://github.com/rubocop-hq/rubocop-ast/pull/85): Add `IntNode#value` and `FloatNode#value`. ([@fatkodima][])
+* [#82](https://github.com/rubocop-hq/rubocop-ast/pull/82): `NodePattern`: Allow comments ([@marcandre][])
+* [#83](https://github.com/rubocop-hq/rubocop-ast/pull/83): Add `ProcessedSource#comment_at_line` ([@marcandre][])
+* [#83](https://github.com/rubocop-hq/rubocop-ast/pull/83): Add `ProcessedSource#each_comment_in_lines` ([@marcandre][])
+* [#84](https://github.com/rubocop-hq/rubocop-ast/pull/84): Add `Source::Range#line_span` ([@marcandre][])
+* [#87](https://github.com/rubocop-hq/rubocop-ast/pull/87): Add `CaseNode#branches` ([@marcandre][])
+
+### Bug fixes
+
+* [#70](https://github.com/rubocop-hq/rubocop-ast/pull/70): Fix arguments processing for `BreakNode` ([@marcandre][])
+* [#70](https://github.com/rubocop-hq/rubocop-ast/pull/70): **(Potentially breaking)** `BreakNode` and `ReturnNode` no longer include `MethodDispatchNode`. These methods were severely broken ([@marcandre][])
+
+### Changes
+
+* [#44](https://github.com/rubocop-hq/rubocop-ast/issue/44): **(Breaking)** Use `parser` flag `self.emit_forward_arg = true` by default. ([@marcandre][])
+* [#86](https://github.com/rubocop-hq/rubocop-ast/pull/86): `PairNode#delimiter` and `inverse_delimiter` now accept their argument as a named argument. ([@marcandre][])
+* [#87](https://github.com/rubocop-hq/rubocop-ast/pull/87): **(Potentially breaking)** Have `IfNode#branches` return a `nil` value if source has `else; end` ([@marcandre][])
+* [#72](https://github.com/rubocop-hq/rubocop-ast/pull/72): **(Potentially breaking)** `SuperNode/DefinedNode/YieldNode#arguments` now return a frozen array. ([@marcandre][])
+
+
+## 0.2.0 (2020-07-19)
+
+### New features
+
+* [#50](https://github.com/rubocop-hq/rubocop-ast/pull/50): Support find pattern matching for Ruby 2.8 (3.0) parser. ([@koic][])
+* [#55](https://github.com/rubocop-hq/rubocop-ast/pull/55): Add `ProcessedSource#line_with_comment?`. ([@marcandre][])
+* [#63](https://github.com/rubocop-hq/rubocop-ast/pull/63): NodePattern now supports patterns as arguments to predicate and functions. ([@marcandre][])
+* [#64](https://github.com/rubocop-hq/rubocop-ast/pull/64): Add `Node#global_const?`. ([@marcandre][])
+* [#28](https://github.com/rubocop-hq/rubocop-ast/issues/28): Add `struct_constructor?`, `class_definition?` and `module_definition?` matchers. ([@tejasbubane][])
+
+### Bug fixes
+
+* [#55](https://github.com/rubocop-hq/rubocop-ast/pull/55): Fix `ProcessedSource#commented?` for multi-line ranges. Renamed `contains_comment?` ([@marcandre][])
+* [#69](https://github.com/rubocop-hq/rubocop-ast/pull/69): **(Potentially breaking)** `RetryNode` has many errors. It is now a `Node`. ([@marcandre][])
+
+-------------------------------------------------------------------
 Mon Aug 17 14:35:55 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.1.0
