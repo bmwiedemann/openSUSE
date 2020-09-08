@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 19:24:14 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add use-signal-function-instead-of-sigignore.patch: sigignore
+  causes deprecation errors(gh#memcached/memcached#691)
+
+-------------------------------------------------------------------
 Sat Jun  6 05:37:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.6.6:

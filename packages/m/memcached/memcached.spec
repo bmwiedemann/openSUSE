@@ -39,6 +39,8 @@ Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        memcached-rpmlintrc
 Source4:        memcached.service
+# PATCH-FIX-UPSTREAM gh#memcached/memcached#691
+Patch:          use-signal-function-instead-of-sigignore.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
@@ -88,6 +90,7 @@ This package contains development files
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 autoreconf -fi
