@@ -59,8 +59,14 @@ function create_dir () {
     mkdir -m $MODE $RPM_BUILD_ROOT/$NAME
     echo "$XTRA%%dir %%attr($MODE,$OWNR,$GRUP) $NAME" >> filesystem.list
     case "$NAME" in
+        /tmp)
+            echo "q $NAME $MODE $OWNR $GRUP 10d" >> fs-tmp.conf
+            ;;
+        /var/tmp)
+            echo "d $NAME $MODE $OWNR $GRUP -" >> fs-var-tmp.conf
+            ;;
 	/var/*)
-	    echo "d $NAME $MODE $OWNR -" >> fs-var.conf
+	    echo "d $NAME $MODE $OWNR $GRUP -" >> fs-var.conf
 	    ;;
     esac
 }
@@ -204,7 +210,9 @@ test -n "$NON_EXISTING_DIR" && {
     echo NON_EXISTING_DIR=$NON_EXISTING_DIR
     exit 1
 }
+install -m 0644  fs-tmp.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-tmp.conf
 install -m 0644  fs-var.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-var.conf
+install -m 0644  fs-var-tmp.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-var-tmp.conf
 
 %pretrans -p <lua>
 os.remove ("/usr/include/X11")
@@ -231,6 +239,8 @@ if posix.stat("/var/lock.rpmsave.tmpx") then
 end
 
 %files -f filesystem.list
+/usr/lib/tmpfiles.d/fs-tmp.conf
 /usr/lib/tmpfiles.d/fs-var.conf
+/usr/lib/tmpfiles.d/fs-var-tmp.conf
 
 %changelog

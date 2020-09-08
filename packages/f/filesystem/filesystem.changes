@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:14:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Split /var/tmp out of fs-var.conf, new file is fs-var-tmp.conf.
+  Allows to override config to add cleanup options of /var/tmp
+  [bsc#1078466]
+- Create fs-tmp.conf to cleanup /tmp regular (required with tmpfs)
+  [bsc#1175519]
+- Fix bug about missing group in tmpfiles.d files
+- Generic cleanup:
+  - Remove /usr/local/games
+  - /etc/java was moved to javapackages-filesystem long ago
+  - Remove unused languages: en@IPA, it_CH, ja_JP.EUC, ja_JP.SJIS,
+    ja_JP.eucJP, nds_DE
+  - Remove %ghost entries for /tmp, /tmp is now tmpfs and the files
+    are handled by systemd since a long time
+
+-------------------------------------------------------------------
+Thu Sep  3 00:47:28 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add /usr/etc/default.
+
+-------------------------------------------------------------------
 Mon Aug 10 12:14:40 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Ignore init.d/*.local ghost files from aaa_base and remove
