@@ -1,7 +1,7 @@
 #
 # spec file for package gzip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,7 @@ export LDFLAGS="-pie"
 # added because of gzip-1.10-ibm_dfltcc_support.patch [jsc#SLE-5818]
 %ifarch s390x
 autoreconf -f -i
+export CFLAGS="$CFLAGS -DDFLTCC_LEVEL_MASK=0x7e"
 %endif
 %configure --disable-silent-rules \
   gl_cv_func_printf_directive_n=yes \

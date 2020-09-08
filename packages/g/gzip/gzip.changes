@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  2 14:12:24 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Enable DFLTCC compression for s390x for levels 1-6 (i. e. to make
+  it used by default) by adding -DDFLTCC_LEVEL_MASK=0x7e to CLFAGS.
+  [jsc#SLE-13775]
+
+-------------------------------------------------------------------
 Tue Aug 27 10:11:19 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - refresh gzip-1.10-ibm_dfltcc_support.patch to fix three data
