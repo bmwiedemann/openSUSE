@@ -17,7 +17,7 @@
 
 
 Name:           cozy
-Version:        0.6.18
+Version:        0.6.19
 Release:        0
 Summary:        Audio Book Player
 License:        GPL-3.0-only
@@ -40,6 +40,7 @@ Requires:       python3-gst
 Requires:       python3-magic
 Requires:       python3-mutagen
 Requires:       python3-peewee >= 3.9.6
+Requires:       python3-apsw
 Requires:       python3-pytaglib
 Requires:	python3-pytz
 Requires:	python3-requests
@@ -58,6 +59,7 @@ BuildRequires:  python3-mutagen
 BuildRequires:  python3-peewee >= 3.9.6
 BuildRequires:  python3-pytaglib
 BuildRequires:  python3-distro
+BuildRequires:  python3-apsw
 # /SECTION
 
 %description
@@ -81,7 +83,7 @@ Play and organize your audio book collection.
 
 %files
 %defattr(0644,root,root,0755)
-%license COPYING
+%license LICENSE
 %doc AUTHORS README.md
 %attr(0755,root,root) %{_bindir}/com.github.geigi.cozy
 %{_datadir}/applications/com.github.geigi.cozy.desktop

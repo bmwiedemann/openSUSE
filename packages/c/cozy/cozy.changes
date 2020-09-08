@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  7 17:23:41 UTC 2020 - Julian Geywitz <suse@geigi.de>
+
+Update to 0.6.19
+  * Multiple author and readers are now separated in the library view
+  * Increase maximum playback speed to 3x
+  * Fix: playback speed was not saved correctly under some circumstances, thanks to magnickolas
+  * Updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Thu Jul 16 18:32:49 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 0.6.18:

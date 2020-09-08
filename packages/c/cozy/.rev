@@ -115,4 +115,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>822756</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>97da8be8b5f2804d6847a5a3d1d98871</srcmd5>
+    <version>0.6.19</version>
+    <time>1599598025</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.6.19
+  * Multiple author and readers are now separated in the library view
+  * Increase maximum playback speed to 3x
+  * Fix: playback speed was not saved correctly under some circumstances, thanks to magnickolas
+  * Updated translations thanks to all of the translators!</comment>
+    <requestid>832836</requestid>
+  </revision>
 </revisionlist>
