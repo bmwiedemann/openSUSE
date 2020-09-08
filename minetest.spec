@@ -28,7 +28,7 @@
 %bcond_with postgresql
 %endif
 Name:           minetest
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        LGPL-2.1-or-later AND CC-BY-SA-3.0
@@ -39,8 +39,14 @@ Source1:        minetest-rpmlintrc
 Source2:        minetest@.service
 # PATCH-FIX-UPSTREAM - minetest-fix-luajit-include-path.diff -- Fixes the FindLuaJIT CMake module so it also looks for moonjit’s include path
 Patch0:         minetest-fix-luajit-include-path.patch
+# PATCH-FIX-OPENSUSE old-desktopfile-standard.patch dmueller@suse.com -- build without 'PrefersNonDefaultGPU' option in desktopfile on Leap 15.2 and below
+Patch1:         old-desktopfile-standard.patch
 BuildRequires:  cmake
+%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150200
 BuildRequires:  desktop-file-utils
+%else
+BuildRequires:  desktop-file-utils >= 0.25
+%endif
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -72,6 +78,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
 Requires:       opengl-games-utils
+Provides:       minetest-runtime = %{version}
 Recommends:     %{name}-lang
 Recommends:     minetest-game
 %if %{with leveldb}
@@ -82,11 +89,7 @@ BuildRequires:  leveldb-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hiredis)
 %else
-# Workaraund a bug in hiredis dependencies.
 BuildRequires:  hiredis-devel
-%if 0%{?suse_version} <= 1320 && 0%{?sle_version} < 120000
-BuildRequires:  libhiredis0_10
-%endif
 %endif
 %endif
 %if %{with postgresql}
@@ -110,6 +113,7 @@ License:        LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
 Requires:       %{name}-data = %{version}
 Requires(pre):  shadow
+Provides:       minetest-runtime = %{version}
 Recommends:     minetest-game
 %{?systemd_requires}
 
@@ -136,7 +140,10 @@ This package contains data for minetest and minetestserver.
 
 %prep
 %setup -q
-%autopatch -p1
+%patch0 -p1
+%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150200
+%patch1 -p1
+%endif
 
 # Purge bundled libraries.
 rm -rf lib
