@@ -17,33 +17,10 @@
 # needssslcertforbuild
 
 
-%define flavor @BUILD_FLAVOR@%{nil}
-
-%if "%{flavor}" == ""
-ExclusiveArch:  %{nil}
-%else
-%define branding_name %{flavor}
-%if "%{flavor}" == "SLE"
-%define build_SLE 1
-%else
-%define build_openSUSE 1
-%endif
-%endif
-
-%if (0%{?build_SLE} && 0%{?is_opensuse}) || (0%{?build_openSUSE} && ! 0%{?is_opensuse})
-# Don't build SLE branding on openSUSE and vice-versa
-ExclusiveArch:  %{nil}
-%endif
-
 %ifarch %{ix86} x86_64 aarch64
 %bcond_without efi_fw_update
 %else
 %bcond_with efi_fw_update
-%endif
-%if 0%{?build_openSUSE}
-%global efidir opensuse
-%else
-%global efidir sles
 %endif
 
 Name:           fwupd
@@ -59,6 +36,8 @@ Source:         %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
+# PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
+Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
 
 BuildRequires:  dejavu-fonts
 BuildRequires:  fish
@@ -205,8 +184,6 @@ done
   -Dplugin_nvme=false \
   -Dplugin_redfish=false \
   -Dplugin_uefi=false \
-%else
-  -Defi_os_dir="%{efidir}" \
 %endif
 %ifnarch %{ix86} x86_64
   -Dplugin_dell=false \
@@ -254,23 +231,19 @@ ln -s %{_libexecdir}/fwupd/efi/$FWUPD_EFI %{buildroot}/%{_libexecdir}/fwupd/efi/
 %post
 %udev_rules_update
 %service_add_post %{name}.service fwupd-offline-update.service
-%if %{with efi_fw_update}
-if [ -d "/boot/efi/EFI/%{efidir}" ]; then
-	# Create the directory for firwmare update capsules
-	mkdir -p /boot/efi/EFI/%{efidir}/fw
-	# Install the UEFI firmware update program
-	cp %{_libexecdir}/fwupd/efi/fwupd*.efi /boot/efi/EFI/%{efidir}
-fi
-%endif
 
 %postun
 %service_del_postun %{name}.service fwupd-offline-update.service
 %if %{with efi_fw_update}
-if [ "$1" = 0 ] && [ -d "/boot/efi/EFI/%{efidir}" ] ; then
-	# Remove all capsule files
-	rm -rf /boot/efi/EFI/%{efidir}/fw
-	# Remove the UEFI firmware update program
-	rm -f /boot/efi/EFI/%{efidir}/fwupd*.efi
+if [ -e /etc/os-release ]; then
+  . /etc/os-release
+  efi_distributor="$(echo "${NAME} ${VERSION}" | tr 'A-Z' 'a-z' | cut -d' ' -f1)"
+fi
+if [ "$1" = 0 ] && [ -d "/boot/efi/EFI/$efi_distributor" ]; then
+  # Remove all capsule files
+  rm -rf /boot/efi/EFI/"$efi_distributor"/fw
+  # Remove the UEFI firmware update program
+  rm -f /boot/efi/EFI/"$efi_distributor"/fwupd*.efi
 fi
 %endif
 

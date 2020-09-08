@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  2 10:18:55 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Add fwupd-jscSLE-11766-close-efidir-leap-gap.patch: Set SLE and
+  openSUSE esp os dir at runtime (jsc#SLE-11766)
+- Drop _multibuild and build option -Defi_os_dir="%{efidir}": with
+  the above patch fwupd can detect esp os dir dynamically
+- Update the efidir related %post and %postun scripts in spec file
+
+-------------------------------------------------------------------
 Thu Jul 30 14:52:34 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 1.4.5:

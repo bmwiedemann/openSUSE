@@ -255,4 +255,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>825269</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>95faad21008dff7c217469b2faf987a3</srcmd5>
+    <version>1.4.5</version>
+    <time>1599597802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831919</requestid>
+  </revision>
 </revisionlist>
