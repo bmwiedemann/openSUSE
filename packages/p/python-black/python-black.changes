@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:19:10 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Include change log and docs in package
+- Update to v20.8b1
+  * Explicitly depend on Click 7.1.2 or newer as `Black` no longer
+    works with versions older than 7.0
+- from v20.8b0
+  * Re-implemented support for explicit trailing commas: now it
+    works consistently within any bracket pair, including nested
+    structures
+  * Reindents docstrings when reindenting code around it
+  * Show colored diffs
+  * Supports Python 3.8 code, e.g. star expressions in return statements
+  * No longer normalizes capital R-string prefixes as those have a
+    community-accepted meaning
+  * Uses exit code 2 when specified configuration file doesn't exit
+  * Works on AWS Lambda
+  * Added `--force-exclude` argument
+  * Removed deprecated `--py36` option
+  * Fixed `--diff` output when EOF is encountered
+  * Fixed `# fmt: off` handling around decorators
+  * Fixed unstable formatting with some `# type: ignore` comments
+  * Fixed invalid removal on organizing brackets followed by indexing
+  * Introduced `black-primer`, a CI tool that allows us to run
+    regression tests against existing open source users of Black
+  * Introduced property-based fuzzing to our test suite based on
+    Hypothesis and Hypothersmith
+  * Implemented experimental and disabled by default long string
+    rewrapping hidden under a `--experimental-string-processing`
+    flag while it's being worked on; this is an undocumented and
+    unsupported feature
+  * Vim plugin prefer virtualenv packages over global packages
+ 
+-------------------------------------------------------------------
 Mon Aug 24 21:56:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update URL

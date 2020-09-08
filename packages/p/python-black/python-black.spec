@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-black
-Version:        19.10b0
+Version:        20.8b1
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
@@ -30,15 +30,15 @@ BuildRequires:  %{python_module aiohttp_cors}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module attrs >= 18.1.0}
 BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module click >= 6.5}
-BuildRequires:  %{python_module mypy_extensions}
-BuildRequires:  %{python_module pathspec}
+BuildRequires:  %{python_module click >= 7.1.2}
+BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
+BuildRequires:  %{python_module pathspec >= 0.6}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module regex}
+BuildRequires:  %{python_module regex >= 2020.1.8}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml >= 0.9.4}
-BuildRequires:  %{python_module typed-ast}
+BuildRequires:  %{python_module toml >= 0.10.1}
+BuildRequires:  %{python_module typed-ast >= 1.4.0}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,12 +46,12 @@ Requires:       python-aiohttp >= 3.3.2
 Requires:       python-aiohttp_cors
 Requires:       python-appdirs
 Requires:       python-attrs >= 18.1.0
-Requires:       python-click >= 6.5
-Requires:       python-mypy_extensions
-Requires:       python-pathspec
-Requires:       python-regex
-Requires:       python-toml >= 0.9.4
-Requires:       python-typed-ast
+Requires:       python-click >= 7.1.2
+Requires:       python-mypy_extensions >= 0.4.3
+Requires:       python-pathspec >= 0.6
+Requires:       python-regex >= 2020.1.8
+Requires:       python-toml >= 0.10.1
+Requires:       python-typed-ast >= 1.4.0
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -71,6 +71,7 @@ also recognizes YAPF's block comments to the same effect.
 
 %prep
 %setup -q -n black-%{version}
+sed -i '1{/#!/d}' src/black_primer/cli.py src/black_primer/lib.py
 
 %build
 %python_build
@@ -79,9 +80,17 @@ also recognizes YAPF's block comments to the same effect.
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/black
 %python_clone -a %{buildroot}%{_bindir}/blackd
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/black-primer
+%{python_expand cp src/black_primer/primer.json %{buildroot}%{$python_sitelib}/black_primer/
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
+# Copy one of the executable scripts into the PATH
+mkdir ~/bin
+cp $(ls %{buildroot}%{_bindir}/black-* | head -1) ~/bin/black
+export PATH=$PATH:~/bin
+
 # test_expression_diff - sometimes fails on async timing in OBS
 skiptests="test_expression_diff"
 # https://github.com/psf/black/issues/1109
@@ -91,20 +100,22 @@ fi
 %pytest -k "not ($skiptests)"
 
 %post
-%python_install_alternative black blackd
+%python_install_alternative black blackd black-primer
 
 %postun
 %python_uninstall_alternative black
 
 %files %{python_files}
-%doc README.md
+%doc README.md CHANGES.md docs/*.md docs/reference
+%license LICENSE
 %python_alternative %{_bindir}/black
 %python_alternative %{_bindir}/blackd
-%license LICENSE
+%python_alternative %{_bindir}/black-primer
 %{python_sitelib}/_black_version.py*
-%{python_sitelib}/black.py*
-%{python_sitelib}/blackd.py*
-%{python_sitelib}/blib2to3
+%{python_sitelib}/black_primer/
+%{python_sitelib}/black/
+%{python_sitelib}/blackd/
+%{python_sitelib}/blib2to3/
 %{python_sitelib}/black-%{version}-py*.egg-info
 %pycache_only %{python_sitelib}/__pycache__/*
 
