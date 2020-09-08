@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:28:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs and doubleshipping of docs.
+
+-------------------------------------------------------------------
 Mon Jul 16 09:36:52 UTC 2018 - kbabioch@suse.com
 
 - Update to 1.6:
- * Fix library requirements for HPUX.
+  * Fix library requirements for HPUX.
 
 -------------------------------------------------------------------
 Thu Feb 22 15:10:42 UTC 2018 - fvogt@suse.com
@@ -40,7 +45,7 @@ Thu Dec  1 16:22:27 UTC 2016 - astieger@suse.com
 Sat Apr 11 19:12:44 UTC 2015 - astieger@suse.com
 
 - npth 1.2:
- * Fix possible clobbering of ERRNO.
+  * Fix possible clobbering of ERRNO.
 
 -------------------------------------------------------------------
 Sun Nov  2 21:10:41 UTC 2014 - andreas.stieger@gmx.de

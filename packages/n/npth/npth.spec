@@ -1,7 +1,7 @@
 #
 # spec file for package npth
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,15 +23,14 @@ Release:        0
 Summary:        GNU Portable Threads library
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://gnupg.org/
-#DL-URL:        ftp://ftp.gnupg.org/gcrypt/npth/
+URL:            http://gnupg.org/
 #Git-Clone:	git://git.gnupg.org/npth
+#DL-URL:        ftp://ftp.gnupg.org/gcrypt/npth/
 Source:         ftp://ftp.gnupg.org/gcrypt/npth/%name-%version.tar.bz2
 Source2:        ftp://ftp.gnupg.org/gcrypt/npth/%name-%version.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
 Source4:        %name.keyring
 Source99:       %name.changes
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 nPth is a non-preemptive threads implementation using an API
@@ -61,33 +60,28 @@ similar to the one in GNU Pth.
 This subpackage contains the headers for npth.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 date=$(date -u "+%%Y-%%m-%%dT%%H:%%M+0000" -r %SOURCE99)
 %configure \
 	--enable-build-timestamp="$date"
-make %{?_smp_mflags}
+%make_build
 
 %install
-b="%buildroot"
 %make_install
 find "%buildroot" -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%license COPYING.LIB
-%doc AUTHORS NEWS ChangeLog README
 %_libdir/libnpth.so.0*
 
 %files devel
-%defattr(-,root,root)
 %license COPYING.LIB
 %doc AUTHORS NEWS ChangeLog README
 %_bindir/npth-config

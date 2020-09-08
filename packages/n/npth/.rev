@@ -125,4 +125,12 @@
  * Fix library requirements for HPUX.</comment>
     <requestid>623109</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>26d5dec1b3cbafb131b1b20ef3fa4f20</srcmd5>
+    <version>1.6</version>
+    <time>1599597941</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove old specfile constructs and doubleshipping of docs.</comment>
+    <requestid>832097</requestid>
+  </revision>
 </revisionlist>
