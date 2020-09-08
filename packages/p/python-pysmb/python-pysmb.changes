@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  6 09:48:19 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.2:
+  * Improve SMB URL handlers to support specifying server's
+    machine name and IP address (gh#miketeo/pysmb#162).
+  * Improvements to documentation on SMB URLs
+    (gh#miketeo/pysmb#160).
+
+-------------------------------------------------------------------
 Sat Aug  1 16:07:04 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.1:
