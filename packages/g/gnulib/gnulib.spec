@@ -142,15 +142,19 @@ make %{?_smp_mflags} check
 popd
 
 %install
-mkdir -p %{buildroot}%{_datadir}/%{name}
 mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_datadir}/%{name}
 mkdir -p %{buildroot}%{_datadir}/info
+mkdir -p %{buildroot}%{_datadir}/%{name}/doc
 mkdir -p %{buildroot}%{_docdir}/%{name}
 mkdir -p %{buildroot}%{_mandir}/man1
 
 cp -p check-module %{buildroot}%{_bindir}
 cp -p gnulib-tool %{buildroot}%{_bindir}
 cp -rp build-aux lib m4 modules config tests %{buildroot}%{_datadir}/%{name}/
+# relocatable.texi is needed during compilation of PSPP. See rh#1474792 and
+# https://src.fedoraproject.org/rpms/gnulib/c/cea2f6f12fe24479e282900341575352689d7cfe?branch=master
+cp -p doc/relocatable.texi %{buildroot}%{_datadir}/%{name}/doc
 
 cp -p doc/gnulib.info %{buildroot}%{_infodir}/
 cp -p doc/gnulib.html MODULES.html NEWS COPYING ChangeLog users.txt doc/COPYING* %{buildroot}%{_docdir}/%{name}/
