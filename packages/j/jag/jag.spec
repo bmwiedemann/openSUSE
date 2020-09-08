@@ -17,7 +17,7 @@
 
 
 Name:           jag
-Version:        0.3.7
+Version:        0.3.8
 Release:        0
 Summary:        Arcade and Puzzle 2D Game in which you have to break all the target pieces
 # jag.xlabsoft.com is down

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  8 10:39:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.3.8
+* Warning and deprecated functions fixed in GCC.
+  * game.pro: Changed to '-std=gnu++17' review.
+  * src/editor/jag-editor.pro: Changed to '-std=gnu++17' review.
+  * All themes have been removed, except the default theme for reasons that
+    are "freeware", but with additional Fasticon restrictions.
+  * Game configuration path changed.
+  * Changed the position of the XCloseDisplay line.
+  * About: Added contributor nickname.
+
+-------------------------------------------------------------------
 Fri May 29 16:17:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.3.7
