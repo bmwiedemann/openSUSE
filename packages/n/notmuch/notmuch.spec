@@ -18,7 +18,7 @@
 
 %define libversion 5
 Name:           notmuch
-Version:        0.30
+Version:        0.31
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
@@ -156,8 +156,9 @@ Requires:       emacs-el
 %build
 #hand-made configure script
 #zsh completion is a part of zsh itself
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+export CFLAGS="%{?build_cflags}%{?!build_cflags:%optflags}"
+export CXXFLAGS="%{?build_cxxflags}%{?!build_cxxflags:%optflags}"
+export LDFLAGS="${RPM_LD_FLAGS}"
 ./configure \
 %if %{without emacs}
   --without-emacs \
@@ -174,8 +175,7 @@ export CXXFLAGS="%{optflags}"
   --disable-dependency-tracking \
   --without-zsh-completion
 
-%{?make_build}
-%{?!make_build: make}
+%{make_build}
 
 #TODO: bindings - go, ruby
 pushd bindings
@@ -185,7 +185,7 @@ cp -r python python3
 pushd python3
 python3 setup.py build
 pushd docs
-make %{?_smp_mflags} dirhtml
+%{make_build} dirhtml
 rm -f build/dirhtml/.buildinfo
 popd
 popd
@@ -206,33 +206,14 @@ popd
 %if %{with tests}
 cp %{SOURCE3} test/test-databases
 
-# this test fails on PPC64 & PPC64LE
-# upstream knows about that
-%ifarch %{power64}
+# this test fails on PPC64 (see id:87o8mpr5w6.fsf@tethera.net)
+%ifarch ppc64
 export NOTMUCH_SKIP_TESTS="T360-symbol-hiding"
-%endif
-# FIXME: why does this test fail only on armv7l?
-%ifarch %{arm}
-export NOTMUCH_SKIP_TESTS="T600-named-queries"
-%endif
-
-# FIXME: T357-index-decryption throws std::bad_alloc on Leap 15.0 & 15.1
-%if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
-export NOTMUCH_SKIP_TESTS="T357-index-decryption ${NOTMUCH_SKIP_TESTS}"
-%endif
-
-# FIXME: these two tests use gdb which prints warnings with gdb <= 8 and
-# python 3.8 thereby breaking the diff
-# We silence the python warnings for now:
-# https://docs.python.org/3/using/cmdline.html#envvar-PYTHONWARNINGS
-# until we get a more recent version of gdb
-%if 0%{?suse_version} > 1500
-export PYTHONWARNINGS=ignore
 %endif
 
 # can only run the testsuite when debugging symbols are available (boo#1152451)
 if echo "%{optflags}"|grep -q '\-g'; then
-    make %{?_smp_mflags} check
+    %make_build check
 fi
 
 %endif

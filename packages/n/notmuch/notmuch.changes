@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:33:47 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.31
+
+  * skip a failing test on ppc64
+
+  What's new in notmuch 0.31
+  =========================
+
+  Emacs
+  -----
+
+  Notmuch now supports Emacs 27.1. You may need to set
+  `mml-secure-openpgp-sign-with-sender` and/or
+  `mml-secure-smime-sign-with-sender` to continue signing messages.
+
+  The minimum supported major version of GNU Emacs is now 25.1.
+
+  Add support for moving between threads after notmuch-tree-from-search-thread.
+
+  New `notmuch-unthreaded` mode (added in Notmuch 0.30)
+
+  Unthreaded view is a mode where each matching message is shown on a
+  separate line.
+
+  The main key entries to unthreaded view are
+
+  'u' enter a query to view in unthreaded mode (works in hello,
+  search, show and tree mode)
+
+  'U' view the current query in unthreaded mode (works from search,
+  show and tree)
+
+  Saved searches can also specify that they should open in unthreaded
+  view.
+
+  Currently it is not possible to specify the sort order: it will
+  always be newest first.
+
+  Notmuch-Mutt
+  ------------
+
+  The shell pipeline executed by notmuch-mutt, which symlinked matched
+  files to a maildir for mutt to access is replaced with internal perl
+  processing. This search operation is now more portable, and somewhat
+  faster.
+
+  Library
+  -------
+
+  Improve exception handling in the library. This should
+  largely eliminate terminations inside the library due to uncaught
+  exceptions or internal errors.  No doubt there are a few uncovered
+  code paths still; please report them as bugs.
+
+  Add `notmuch_message_get_flag_st` and
+  `notmuch_message_has_maildir_flag_st`, and deprecate the existing
+  non-status providing versions.
+
+  Move memory de-allocation from `notmuch_database_close` to
+  `notmuch_database_destroy`.
+
+  Handle relative filenames in `notmuch_database_index_file`, as
+  promised in the documentation.
+
+  Python Bindings
+  ---------------
+
+  Documentation for the python bindings is merged into the main
+  sphinx-doc documentation tree. The merged documentation can be built
+  with e.g. `make sphinx-html`
+
+  Dependencies
+  ------------
+
+  We now support building notmuch against Xapian 1.5 (the current
+  development version).
+
+  Test Suite
+  ----------
+
+  Test suite fixes for compatibility with Emacs 27.1.
+
+  Build System
+  ------------
+
+  Man pages are now compressed reproducibly.
+
+-------------------------------------------------------------------
+Mon Aug 31 16:25:00 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream pre-release 0.31~rc2
+
+-------------------------------------------------------------------
+Tue Aug 18 11:46:56 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream pre-release 0.31~rc1
+
+-------------------------------------------------------------------
+Mon Aug 17 08:34:31 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream pre-release 0.31~rc0
+
+-------------------------------------------------------------------
 Mon Jul  6 11:30:40 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.30
