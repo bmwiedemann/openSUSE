@@ -278,4 +278,17 @@
   * implements cap_launch functionality</comment>
     <requestid>825941</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5ef01b1a14304960de14f2ed6fc2e579</srcmd5>
+    <version>2.43</version>
+    <time>1599598513</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.43
+  * Linus' kernel tree defines CAP_CHECKPOINT_RESTORE (40) so support it.
+  * Fix the creation of the $(FAKEROOT)$(LIBDIR) for split install targets
+  * Clean up a binary from the distribution
+  * Added some more release time checks for non-git tracked files.
+  * Fix a deadlock in libpsx that surfaced with a set of compiler optimizations by removing the psx wrapping harder.</comment>
+    <requestid>831514</requestid>
+  </revision>
 </revisionlist>
