@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  7 16:12:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not build on armv6
+
+-------------------------------------------------------------------
+Mon Sep  7 16:10:18 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Regenerate baselib.conf for aarch64 as well, to fix build
+
+-------------------------------------------------------------------
 Sat Aug 29 06:05:50 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.16 development release
@@ -29,6 +39,11 @@ Sat Aug  1 13:01:26 UTC 2020 - Marcus Meissner <meissner@suse.com>
   - Beginnings of PE conversion of the MSVCRT libraries.
   - Various bug fixes.
 - update staging to 5.14 release
+
+-------------------------------------------------------------------
+Wed Jul 22 12:53:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Run fdupes to avoid dups on aarch64
 
 -------------------------------------------------------------------
 Sat Jul 18 06:37:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
