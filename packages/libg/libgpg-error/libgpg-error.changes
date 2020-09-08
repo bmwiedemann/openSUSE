@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  2 14:56:26 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
+
+- Update to 1.39:
+  * "gpg-error --lib-version" works again.
+  * New function gpgrt_fcancel as alternative to gpgrt_close. This
+    function avoid flushing out buffered data and also tries to delete
+    a newly created file.
+  * Update the gnupg project keyring
+  * Interface changes relative to the 1.38 release:
+    - gpgrt_fcancel: NEW.
+
+-------------------------------------------------------------------
 Sun May 31 10:09:34 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.38:
