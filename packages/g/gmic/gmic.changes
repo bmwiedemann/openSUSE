@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 10:33:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.9.2. No changelog.
+- Update 0001-Don-t-use-CMake-commands-not-available-in-CMake-3.9.patch
+
+-------------------------------------------------------------------
 Sun Jun 14 09:25:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.9.1. No changelog.

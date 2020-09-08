@@ -1,14 +1,28 @@
-From a913fd2cd5512723be26704d01d9a7e7039f3491 Mon Sep 17 00:00:00 2001
+From 60377bb25c4f1c8075e17310b00383a4761c9be0 Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Sun, 14 Jun 2020 14:57:05 +0200
 Subject: [PATCH] Don't use CMake commands not available in CMake 3.9
 
 ---
+ CMakeLists.txt       |  2 +-
  cmake/FindCImg.cmake | 24 +++++++++++++++---------
- 1 file changed, 15 insertions(+), 9 deletions(-)
+ 2 files changed, 16 insertions(+), 10 deletions(-)
 
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 537ea01..80960be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,7 +53,7 @@
+ #  knowledge of the CeCILL and CeCILL-C licenses and that you accept its terms.
+ #
+ 
+-cmake_minimum_required(VERSION 3.14.0)
++cmake_minimum_required(VERSION 3.9.0)
+ 
+ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
+   message("Build directory is equal to source directory. Binaries will be put in the src directory.")
 diff --git a/cmake/FindCImg.cmake b/cmake/FindCImg.cmake
-index fbc3f9c..47d1771 100644
+index b5c9005..cbbaba6 100644
 --- a/cmake/FindCImg.cmake
 +++ b/cmake/FindCImg.cmake
 @@ -65,7 +65,8 @@ if(ENABLE_CURL)
@@ -62,5 +76,5 @@ index fbc3f9c..47d1771 100644
 +  INTERFACE_LINK_LIBRARIES "${EXTRA_LIBRARY_TARGETS}"
 +)
 -- 
-2.27.0
+2.28.0
 

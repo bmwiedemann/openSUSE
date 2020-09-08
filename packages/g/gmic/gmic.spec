@@ -38,7 +38,7 @@
 %bcond_with opencv
 %endif
 Name:           gmic
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are

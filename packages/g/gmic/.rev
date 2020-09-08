@@ -82,4 +82,13 @@
 - Move the bash completion file to its own package</comment>
     <requestid>814571</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4654104c3df0b8d1285782820c8149e9</srcmd5>
+    <version>2.9.2</version>
+    <time>1599598267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.2. No changelog.
+- Update 0001-Don-t-use-CMake-commands-not-available-in-CMake-3.9.patch</comment>
+    <requestid>832960</requestid>
+  </revision>
 </revisionlist>
