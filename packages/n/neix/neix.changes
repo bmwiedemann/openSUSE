@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Sep  8 08:52:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.3:
+  * Add ncursesw detection
+  * Add unicode support
+  * Improve install process
+  * Add default feeds
+  * Copy default config files if no configuration found
+
+-------------------------------------------------------------------
+Tue Aug 25 09:14:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.2:
+  * Fix curl lib linking
+  * Use CMAKE_INSTALL_BINDIR for installing
+- Remove neix-link.patch: upstreamed
+- Remove neix-install.patch: upstreamed
+
+-------------------------------------------------------------------
+Mon Aug 24 08:21:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.1:
+  * Fix compile error on openSUSE (#1)
+  * Check for valid config entry count
+  * Some minor improvements
+- Add neix-link.patch
+- Add neix-install.patch
+
+-------------------------------------------------------------------
+Fri Aug 21 06:56:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of neix 0.1.0 for openSUSE
