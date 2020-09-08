@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep  4 16:07:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add python support, disabled for now as it does not install
+  files atm
+
+-------------------------------------------------------------------
+Fri Sep  4 14:56:36 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package libtimelineDecoderJson
+
+-------------------------------------------------------------------
+Thu Sep  3 11:18:40 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.08:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v20.08
+- Refresh patch:
+  * 0005-add-armnn-mobilenet-test-example.patch
+- Drop upstream patch:
+  * armnn-fix-catch.patch
+- Disable ONNX on Tumbleweed since there is a compatibility issue
+  with ONNX 1.7.0, see: https://github.com/ARM-software/armnn/issues/419
+
+-------------------------------------------------------------------
 Wed Jun 17 07:19:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build only where ComputeLibrary is built: 

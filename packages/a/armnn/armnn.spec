@@ -15,9 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 # Disable LTO until UnitTests passes with LTO enabled - https://github.com/ARM-software/armnn/issues/341
 %define _lto_cflags %{nil}
+
+# Disable Python binding for now
+%bcond_with PyArmnn
+
 %define target @BUILD_FLAVOR@%{nil}
 %if "%{target}" != ""
 %define package_suffix -%{target}
@@ -63,15 +66,16 @@
 %else  # suse_version
 %bcond_with armnn_tf
 %endif # suse_version
-# ONNX is available on Leap 15.2+/SLE15SP2+
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+# ONNX is available on Leap 15.2+/SLE15SP2+, but there is a compatibility issue
+# with ONNX 1.7.0 in Tumbleweed - https://github.com/ARM-software/armnn/issues/419
+%if 0%{?sle_version} >= 150200
 %bcond_without armnn_onnx
 %else
 %bcond_with armnn_onnx
 %endif
 %define version_major 20
-%define version_minor 05
-%define version_lib 21
+%define version_minor 08
+%define version_lib 22
 # Do not package ArmnnConverter and ArmnnQuantizer, by default
 %bcond_with armnn_tools
 # Enable CAFFE
@@ -85,8 +89,6 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/398
-Patch01:        armnn-fix-catch.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -152,6 +154,11 @@ BuildRequires:  tensorflow2-devel
 %else
 BuildRequires:  tensorflow-devel
 %endif
+%endif
+%if %{with PyArmnn}
+BuildRequires:  python3-devel
+BuildRequires:  python3-wheel
+BuildRequires:  swig >= 4
 %endif
 %if %{with compute_cl}
 Recommends:     Mesa-libOpenCL
@@ -263,7 +270,7 @@ modification – across Arm Cortex CPUs and Arm Mali GPUs.
 This package contains the libarmnn library from armnn.
 
 %package -n libarmnnBasePipeServer%{version_lib}%{?package_suffix}
-Summary:        libarmnn from armnn
+Summary:        libarmnnBasePipeServer from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
 Conflicts:      libarmnnBasePipeServer%{version_lib}
@@ -281,7 +288,7 @@ modification – across Arm Cortex CPUs and Arm Mali GPUs.
 This package contains the libarmnnBasePipeServer library from armnn.
 
 %package -n libtimelineDecoder%{version_lib}%{?package_suffix}
-Summary:        libarmnn from armnn
+Summary:        libtimelineDecoder from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
 Conflicts:      libtimelineDecoder%{version_lib}
@@ -290,6 +297,24 @@ Conflicts:      libtimelineDecoder%{version_lib}-opencl
 %endif
 
 %description -n libtimelineDecoder%{version_lib}%{?package_suffix}
+Arm NN is an inference engine for CPUs, GPUs and NPUs.
+It bridges the gap between existing NN frameworks and the underlying IP.
+It enables efficient translation of existing neural network frameworks,
+such as TensorFlow and Caffe, allowing them to run efficiently – without
+modification – across Arm Cortex CPUs and Arm Mali GPUs.
+
+This package contains the libtimelineDecoder library from armnn.
+
+%package -n libtimelineDecoderJson%{version_lib}%{?package_suffix}
+Summary:        libtimelineDecoderJson from armnn
+Group:          Development/Libraries/C and C++
+%if "%{target}" == "opencl"
+Conflicts:      libtimelineDecoderJson%{version_lib}
+%else
+Conflicts:      libtimelineDecoderJson%{version_lib}-opencl
+%endif
+
+%description -n libtimelineDecoderJson%{version_lib}%{?package_suffix}
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
@@ -398,7 +423,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 
 %prep
 %setup -q -n armnn-%{version}
-%patch1 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
@@ -407,7 +431,7 @@ This package contains the libarmnnOnnxParser library from armnn.
 %patch204 -p1
 %patch205 -p1
 # Add Boost log as downstream extra test requires it
-sed -i 's/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem program_options)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem log program_options)/' ./cmake/GlobalConfig.cmake
+sed -i 's/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework filesystem system program_options)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework filesystem system log program_options)/' ./cmake/GlobalConfig.cmake
 %endif
 
 %build
@@ -497,6 +521,13 @@ sed -i 's/-Werror//' ./cmake/GlobalConfig.cmake
 %else
   -DBUILD_UNIT_TESTS=OFF \
   -DBUILD_TESTS=OFF \
+%endif
+%if %{with PyArmnn}
+  -DBUILD_PYTHON_WHL=ON \
+  -DBUILD_PYTHON_SRC=ON \
+%else
+  -DBUILD_PYTHON_WHL=OFF \
+  -DBUILD_PYTHON_SRC=OFF \
 %endif
 %if %{with armnn_extra_tests}
   -DBUILD_ARMNN_EXAMPLES=ON
@@ -625,6 +656,9 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %files -n libtimelineDecoder%{version_lib}%{?package_suffix}
 %{_libdir}/libtimelineDecoder.so.*
 
+%files -n libtimelineDecoderJson%{version_lib}%{?package_suffix}
+%{_libdir}/libtimelineDecoderJson.so.*
+
 %if %{with armnn_flatbuffers}
 %files -n libarmnnSerializer%{version_lib}%{?package_suffix}
 %{_libdir}/libarmnnSerializer.so.*
@@ -680,6 +714,7 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_libdir}/libarmnn.so
 %{_libdir}/libarmnnBasePipeServer.so
 %{_libdir}/libtimelineDecoder.so
+%{_libdir}/libtimelineDecoderJson.so
 %if %{with armnn_flatbuffers}
 %{_libdir}/libarmnnSerializer.so
 %{_libdir}/libarmnnTfLiteParser.so
