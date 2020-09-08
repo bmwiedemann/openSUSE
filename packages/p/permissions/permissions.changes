@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 04 10:57:51 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200904:
+  * Add /usr/libexec for cockpit-session as new path
+  * physlock: whitelist with tight restrictions (bsc#1175720)
+
+-------------------------------------------------------------------
 Wed Aug 26 12:33:11 UTC 2020 - malte.kraus@suse.com
 
 - Update to version 20200826:

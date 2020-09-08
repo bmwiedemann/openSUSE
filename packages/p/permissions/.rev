@@ -1301,4 +1301,14 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * list_permissions: new tool for better path configuration overview</comment>
     <requestid>829800</requestid>
   </revision>
+  <revision rev="142" vrev="22">
+    <srcmd5>6d647b0d21cdb16771c1e05368c3ea1f</srcmd5>
+    <version>unknown</version>
+    <time>1599598518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200904:
+  * Add /usr/libexec for cockpit-session as new path
+  * physlock: whitelist with tight restrictions (bsc#1175720)</comment>
+    <requestid>832056</requestid>
+  </revision>
 </revisionlist>
