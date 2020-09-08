@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Sep  7 13:23:31 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.0:
+  *  Change channel order for s3fs test
+  *  Add aiobotocore to dpes for s3fs check
+  *  test_local: fix username not in home path (#253)
+  *  Tighten cacheFS if dir deleted and open_local behaviour
+  *  Add test and docs
+  *  Attempt at context for multiple files
+  *  #355 typo fixed
+  *  Fix race condition of lzma import when using threads
+  *  Small change to methods in async not to overwrite
+  *  remove debugging print
+  *  properly rewind MemoryFile
+  *  Make sync functions in asyn to avoid nedsted cals to sync()
+  *  Bail when unchaining if only one element
+  *  Update fsspec/tests/test_api.py
+  *  Fix local mv
+  *  Document async, and ensure docstrings
+  *  included smb:// in api docs
+  *  fix smbprotocol[kerberos] docs on smb://
+  *  smb:// wrap in SMBFileOpener instead of patching open_file
+  *  pass glob kwargs to super class from local fs
+  *  add test for local fs glob detail arg
+  *  improve docs for smb protocol
+  *  clean memfs
+  *  fix CI failure for remote black complaining extra commas
+  *  refactor smb functions from smv review issue
+  *  fixed many pylint nitpicks in smb suport modules
+  *  Remove chunk access; add mapper methods
+  *  fixed typo "gui" => "gid"
+  *  address review issues of smb:// protocol PR #340
+  *  Use downstream URL paths when using {block,file,simple}cache in the middle.
+  *  add smbprotocol as deps for the CI build
+  *  handle smb:// protocol using smbprotocol package
+  *  Implement maybe_sync and text for using http in async
+  *  Add "pipe" and async version
+  *  Fix caching (needed cat_file)
+  *  Set default clobber=True on impl register
+  *  Add docs, more methods and one test-ish
+  *  Use skip_instance_cache instead of using a fixture for blockcache_workflow test
+  *  Show that chaining zip::zip::file works
+  *  Reproduce #334 in a test case
+  *  Convert unpickled cached file blocks info from list to set.
+  *  Async restructure and back-n-forth
+  *  Show #333 can be replicated
+  *  Create a disable_fs_caching pytest fixture
+  *  Revert "Force MMapCache blocks to "set" type"
+  *  Use "/".join instead of os.path.join in tests.
+  *  Try to replicate the blockcache bug
+  *  Use self._parent instead of os.dirname
+  *  Remove ZipFS feature flag to use AbstractFS info implementation
+  *  Test find behavior for ZipFileSystem
+  *  Use fsspec.filesystem("zip", ...) instead of get_filesystem_cls("zip")(...)
+  *  Force MMapCache blocks to "set" type
+  *  Remove unused monkeypatch, and use 1000 instead of 1_000
+  *  Only use the base vs cache implementation when we compare the results directly
+  *  Add flag to select the old zip.info() implementation
+  *  Add pytest-benchmark as dev dependency
+  *  Add cached version of ZipFileSystem.info
+  *  Test implicit directories as well.
+  *  Add unit test for zip.info
+  *  Add s3fs dep (was there before?)
+  *  Use _get_kwargs_from_url when unchaining
+  *  Fix local file ops
+  *  Don't check exists in expand_path
+  *  Reduce cache miss on read-ahead
+  *  mismatch test & shutil.move
+  *  re-allow Path object
+  *  Add mcat to http
+  *  Add newline to openfile reduce
+  *  Test multi-download
+  *  fix memfs dir recursive and add test
+  *  Fix recursive and some memfs dirs
+  *  add aiohttp to test deps
+  *  Tighten up mkdir/rmdir for memfs
+  *  Fix cache for downloads
+  *  add doc example and test
+  *  Make simplecache writable
+  *  Add cache_type and cache_options to HTTPFileSystem constructore
+  *  Do unchain one level deeper
+  *  Make LocalFileOpener iterable
+  *  Fix pickling of LocalFileOpener
+
+-------------------------------------------------------------------
 Wed Jun 24 03:58:37 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.4:
