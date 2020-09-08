@@ -1,0 +1,56 @@
+diff --git a/.circleci/config.yml b/.circleci/config.yml
+index 6ae73bb..a5b583a 100644
+--- a/.circleci/config.yml
++++ b/.circleci/config.yml
+@@ -25,7 +25,7 @@ jobs:
+                 virtualenv -p "$(which python || which pypy)" ./venv
+             )
+             . venv/bin/activate
+-            pip install pytest mock
++            pip install pytest
+       - run:
+           name: Install project
+           command: |
+diff --git a/setup.py b/setup.py
+index 8940285..ea154e1 100644
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,7 @@ setup(
+     long_description_content_type='text/markdown',
+     packages=find_packages(),
+     install_requires=['six'],
+-    tests_require=['pytest', 'mock', 'tox'],
++    tests_require=['pytest', 'tox'],
+     zip_safe=True,
+     classifiers=[
+         'Development Status :: 5 - Production/Stable',
+diff --git a/tests/test_gsm.py b/tests/test_gsm.py
+index b6641fd..7760dc4 100644
+--- a/tests/test_gsm.py
++++ b/tests/test_gsm.py
+@@ -1,6 +1,6 @@
+ # -*- coding: utf8 -*-
+ 
+-import mock
++from unittest.mock import patch
+ from pytest import mark, raises
+ 
+ from smpplib import consts
+@@ -39,7 +39,7 @@ def test_make_parts_single(plaintext, encoding, expected_parts, expected_encodin
+     ]),
+ ])
+ def test_make_parts_multiple(plaintext, expected):
+-    with mock.patch('random.randint') as randint:
++    with patch('random.randint') as randint:
+         randint.return_value = 0x42
+         assert make_parts(plaintext) == (expected, consts.SMPP_ENCODING_DEFAULT, consts.SMPP_GSMFEAT_UDHI)
+ 
+@@ -49,7 +49,7 @@ def test_make_parts_multiple(plaintext, expected):
+     (b'12345', 2, [b'\x05\x00\x03\x42\x03\x0112', b'\x05\x00\x03\x42\x03\x0234', b'\x05\x00\x03\x42\x03\x035']),
+ ])
+ def test_make_parts_encoded(encoded_text, part_size, expected):
+-    with mock.patch('random.randint') as randint:
++    with patch('random.randint') as randint:
+         randint.return_value = 0x42
+         assert make_parts_encoded(encoded_text, part_size) == expected
+ 

@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Sep  7 07:26:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use a more meaningful description
+- Add patch:
+  * python-smpplib-use-unittest-mock.patch
+    Use 'unitest.mock' instead of the external mock package
+
+-------------------------------------------------------------------
+Mon Sep  7 05:49:43 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.1.0
+- Switch to singlespec
+- Package cleanup
+
+-------------------------------------------------------------------
+Sun Jul 31 19:23:06 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1456854982.ee4a653:
+  * fix Unknown SMPP command code
+
+-------------------------------------------------------------------
+Wed Jan 20 10:58:36 UTC 2016 - mardnh@gmx.de
+
+- initial package
+
