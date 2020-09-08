@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  3 15:52:03 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- fixed utempter location after libexecdir change (bsc#1175925)
+
+-------------------------------------------------------------------
 Wed May  6 12:15:39 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.2.0
