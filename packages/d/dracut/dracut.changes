@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:15:24 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Generate the tarball during buildtime. Tracking both the tarball
+  and the .obscpio combines the worst of both.
+
+-------------------------------------------------------------------
 Wed Aug 19 14:32:51 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 050+suse.75.g266a76d9: 

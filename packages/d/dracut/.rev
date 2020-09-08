@@ -1745,4 +1745,15 @@ Add:  dracut_git_v034_to_head.patch</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>830111</requestid>
   </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>b33866b87dc3040237c46388d0d8ce22</srcmd5>
+    <version>050+suse.75.g266a76d9</version>
+    <time>1599597931</time>
+    <user>dimstar_suse</user>
+    <comment>IMO localonly should also be replaced with &quot;disabled&quot; so that &quot;osc ci&quot; and &quot;osc build&quot; don't fetch updates all the time without asking.
+
+- Generate the tarball during buildtime. Tracking both the tarball
+  and the .obscpio combines the worst of both. (forwarded request 832081 from favogt)</comment>
+    <requestid>832091</requestid>
+  </revision>
 </revisionlist>

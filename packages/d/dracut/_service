@@ -8,10 +8,10 @@
     <param name="extract">suse/README.susemaint</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="tar" mode="localonly" />
-  <service name="recompress" mode="localonly">
+  <service name="set_version" mode="localonly" />
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="localonly" />
 </services>
