@@ -66,7 +66,7 @@ perl Makefile.PL INSTALLDIRS=vendor < /dev/null
 
 %perl_make_install
 %perl_process_packlist
-rm -rf %{buildroot}%{_libexecdir}
+rm -rf %{buildroot}%{_prefix}/lib
 rm -rf %{buildroot}/lib
 %if 0%{?suse_version} < 1130
 rm -rf %{buildroot}/%{perl_vendorarch}/auto/%{name}

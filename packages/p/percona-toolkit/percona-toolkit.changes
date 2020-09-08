@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:38:39 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Wed May 27 08:41:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Percona Toolkit 3.2.0:
