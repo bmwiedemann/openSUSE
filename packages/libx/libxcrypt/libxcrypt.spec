@@ -17,7 +17,7 @@
 
 
 Name:           libxcrypt
-Version:        4.4.15
+Version:        4.4.17
 Release:        0
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND SUSE-Public-Domain
@@ -42,6 +42,16 @@ Openwall Linux, 'crypt_rn', 'crypt_ra', 'crypt_gensalt',
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Libraries
+# Compatibility provides to help the transition from libowcrypt.so.1
+# to libcrypt.so.1, which provides all symbols of the former
+%ifarch x86_64 s390x ppc64le aarch64
+Provides:       libowcrypt.so.1()(64bit)
+Provides:       libowcrypt.so.1(OW_CRYPT_1.0)(64bit)
+%endif
+%ifarch i586
+Provides:       libowcrypt.so.1
+Provides:       libowcrypt.so.1(OW_CRYPT_1.0)
+%endif
 
 %description -n libcrypt1
 libxcrypt is a modern library for one-way hashing of passwords.  It

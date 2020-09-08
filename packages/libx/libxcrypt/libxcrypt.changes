@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:47:37 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add compatibility provides for SLE15
+- Update to version 4.4.17
+  * Salt string compatibility with generic implementations
+
+-------------------------------------------------------------------
 Mon Mar  2 09:50:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Update to version 4.4.15
