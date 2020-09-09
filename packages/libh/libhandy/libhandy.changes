@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Sep  9 07:12:28 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide %{name} = %{version} in shlib package in order to make
+  -lang package installable: needed as there is no main package.
+
+-------------------------------------------------------------------
+Fri Aug 28 09:55:47 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.90.0:
+  + Stop requiring the HANDY_USE_UNSTABLE_API guard.
+  + Stop transforming close buttons into back buttons for dialogs
+    on the desktop.
+  + Give some nice default and minimum sizes to
+    HdyPreferencesWindow.
+  + HdyCarousel:
+    - Add HdyCarouselIndicatorDots and HdyCarouselIndicatorLines.
+    - Drop the indicator-style, indicator-spacing, and
+      center-content properties.
+  + Revamp the colors of HdyAvatar and augment its colors number to
+    14.
+  + Set the default column and row spacing of HdyKeypad to 6
+    pixels.
+  + Don't present an arrow and a popover in HdyComboRow when its
+    model has less than 2 items.
+  + Support CSS sizing properties for HdySqueezer and
+    HdyViewSwitcher.
+  + Drop the icon-size properties of HdyViewSwitcher,
+    HdyViewSwitcherTitle  and HdyViewSwitcherBar.
+  + Give some horizontal margins to the view switcher of
+    HdyViewSwitcherTitle via CSS.
+  + Add all files back to tarballs except the debian directory.
+- Remove libhandy-adapt-glade-3-36.patch: Fixed upstream.
+- Update shlib suffix to 1_0 to reflect the API update from version
+  0.0.13.
+- Use new URL and git repository from GNOME's GitLab.
+
+-------------------------------------------------------------------
 Tue Aug 18 14:01:44 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove meson_build libhandy-doc call: it was a NOP and fails with

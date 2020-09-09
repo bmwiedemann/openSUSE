@@ -1,9 +1,8 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://source.puri.sm/Librem5/libhandy.git</param>
+    <param name="url">https://gitlab.gnome.org/GNOME/libhandy.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/v0.0.13</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">refs/tags/0.90.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service mode="buildtime" name="tar" />

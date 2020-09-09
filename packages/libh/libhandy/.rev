@@ -87,4 +87,13 @@
     <comment></comment>
     <requestid>827635</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>25f05c5a18b9c9da12300d1911d46521</srcmd5>
+    <version>0.90.0</version>
+    <time>1599666418</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide %{name} = %{version} in shlib package in order to make
+  -lang package installable: needed as there is no main package.</comment>
+    <requestid>833190</requestid>
+  </revision>
 </revisionlist>
