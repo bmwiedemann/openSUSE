@@ -28,7 +28,7 @@
 %define         github_user matrix-org
 %define         short_name canonicaljson
 Name:           python-%{short_name}%{psuffix}
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        Canonical JSON for Python
 License:        Apache-2.0
@@ -37,11 +37,11 @@ URL:            https://github.com/matrix-org/python-canonicaljson
 Source:         https://github.com/matrix-org/python-canonicaljson/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module frozendict >= 1.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module simplejson}
+BuildRequires:  %{python_module simplejson >= 3.14.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-frozendict >= 1.0
-Requires:       python-simplejson
+Requires:       python-simplejson >= 3.14.0
 Requires:       python-six
 BuildArch:      noarch
 %if %{with test}
