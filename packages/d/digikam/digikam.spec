@@ -19,7 +19,7 @@
 %define soversion 7
 %bcond_without lang
 Name:           digikam
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later

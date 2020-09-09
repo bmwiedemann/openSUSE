@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  8 11:33:35 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 7.1.0
+  * https://www.digikam.org/news/2020-09-06-7.1.0_release_announcement/
+- New features (from NEWS):
+QueueManager: Add new tool to fix hot pixels from images.
+QueueManager: Add new tool to apply texture over images.
+Metadata:     Better Exif and XMP metadata support with CR3 file
+              using libraw info parser.
+Metadata:     Add support of IPTC strings encoded as UTF-8 imported
+              to the database.
+- 318 bugs fixed
+
+------------------------------------------------------------------
 Sat Jul 25 06:33:55 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 7.0.0
