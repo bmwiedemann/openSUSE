@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep  6 03:09:14 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-List-AllUtils/Changes
+
+  0.18    2020-09-05
+  - Switched to GitHub Issues.
+  0.17    2020-09-05
+  - Fix pod formatting errors that hid some function documentation. Fixed by
+    Olaf Alders. GH #10.
+
+-------------------------------------------------------------------
 Mon Mar  2 03:09:38 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.16

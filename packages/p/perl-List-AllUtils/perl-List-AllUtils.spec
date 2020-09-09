@@ -1,7 +1,7 @@
 #
 # spec file for package perl-List-AllUtils
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-List-AllUtils
-Version:        0.16
+Version:        0.18
 Release:        0
 %define cpan_name List-AllUtils
 Summary:        Combines List::Util, List::SomeUtils and List::UtilsBy in one bite-sized[cut]
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
