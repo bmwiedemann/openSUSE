@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-pandas%{psuffix}
-Version:        1.0.5
+Version:        1.1.1
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -35,13 +35,12 @@ Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%{version}.tar.gz
 Source99:       pandas-pytest.ini
-# PATCH-FIX-UPSTREAM gh#pandas-dev/pandas#34991
-Patch0:         pandas-pr34991-npconstructor.patch
 BuildRequires:  %{python_module Cython >= 0.28.2}
 # test requirements
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module numpy >= 1.15.4}
+BuildRequires:  %{python_module numpy-devel >= 1.15.4}
 BuildRequires:  %{python_module openpyxl}
 BuildRequires:  %{python_module pyperclip}
 BuildRequires:  %{python_module setuptools >= 24.2.0}
@@ -49,8 +48,8 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-Cython >= 0.28.2
-Requires:       python-numpy >= 1.13.3
-Requires:       python-python-dateutil >= 2.6.1
+Requires:       python-numpy >= 1.15.4
+Requires:       python-python-dateutil >= 2.7.3
 Requires:       python-pytz >= 2015.4
 Recommends:     python-Bottleneck >= 1.2.1
 Recommends:     python-Jinja2
@@ -61,20 +60,20 @@ Recommends:     python-XlsxWriter >= 0.9.8
 Recommends:     python-beautifulsoup4 >= 4.6.0
 Recommends:     python-blosc
 Recommends:     python-fastparquet >= 0.2.1
-Recommends:     python-gcsfs >= 0.2.2
+Recommends:     python-gcsfs >= 0.6.0
 Recommends:     python-html5lib
 Recommends:     python-lxml >= 3.8.0
 Recommends:     python-matplotlib >= 2.2.2
 Recommends:     python-numexpr >= 2.6.2
 Recommends:     python-openpyxl >= 2.4.8
-Recommends:     python-pandas-gbq >= 0.8.0
+Recommends:     python-pandas-gbq >= 1.2.0
 Recommends:     python-psycopg2
 Recommends:     python-pyarrow >= 0.9.0
 Recommends:     python-pyperclip
 Recommends:     python-pyreadstat
 Recommends:     python-qt5
-Recommends:     python-scipy >= 0.19.0
-Recommends:     python-tables >= 3.4.2
+Recommends:     python-scipy >= 1.2.0
+Recommends:     python-tables >= 3.4.3
 Recommends:     python-xarray >= 0.8.2
 Recommends:     python-xlrd >= 1.1.0
 Recommends:     python-xlwt >= 1.2.0
@@ -94,7 +93,7 @@ BuildRequires:  %{python_module pandas = %{version}}
 BuildRequires:  %{python_module pytest >= 4.0.2}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module python-dateutil >= 2.6.1}
+BuildRequires:  %{python_module python-dateutil >= 2.7.3}
 BuildRequires:  %{python_module pytz >= 2015.4}
 BuildRequires:  %{python_module xlrd >= 1.1.0}
 BuildRequires:  %{python_module xlwt >= 1.2.0}
@@ -111,11 +110,6 @@ block for doing data analysis in Python.
 %prep
 %if !%{with test}
 %setup -q -n pandas-%{version}
-sed -i -e 's/\r//g'  pandas/tests/reshape/merge/test_merge.py
-%patch0 -p1
-sed -i -e '/^#!\//, 1d' pandas/core/computation/eval.py
-sed -i -e '/^#!\//, 1d' pandas/tests/io/generate_legacy_storage_files.py
-sed -i -e '/^#!\//, 1d' pandas/tests/plotting/common.py
 %endif
 
 %build
@@ -130,7 +124,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %{python_expand sed -i -e 's|"python", "-c",|"%{__$python}", "-c",|' %{buildroot}%{$python_sitearch}/pandas/tests/io/test_compression.py
 %fdupes %{buildroot}%{$python_sitearch}
 # can be removed for pandas >= 1.1 https://github.com/pandas-dev/pandas/pull/35146
-install %SOURCE99 %{buildroot}%{$python_sitearch}/pandas/pytest.ini 
+install %{SOURCE99} %{buildroot}%{$python_sitearch}/pandas/pytest.ini
 }
 %endif
 
@@ -146,6 +140,8 @@ export PYTHONDONTWRITEBYTECODE=1
 export PYTHONHASHSEED=1
 # tries to compile stuff in buildroot test_oo_optimizable
 SKIP_TESTS+=" or test_oo_optimizable"
+# tries to import system pandas, not the freshly build on
+SKIP_TESTS+=" or test_missing_required_dependency"
 %ifarch %{ix86}
 # https://github.com/pandas-dev/pandas/issues/29712
 SKIP_TESTS+=" or test_raw_roundtrip"

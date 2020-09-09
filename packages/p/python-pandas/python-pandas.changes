@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sat Sep  5 15:42:53 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated versions of some requirements, require numpy during build
+  * removed pandas-pr34991-npconstructor.patch, included upstream
+  * removed sed commands that are not needed anymore
+  * skip test to see if pandas is installed
+
+- update to version 1.1.1:
+  * Fixed regressions
+    + Fixed regression in CategoricalIndex.format() where, when
+      stringified scalars had different lengths, the shorter string
+      would be right-filled with spaces, so it had the same length as
+      the longest string (GH35439)
+    + Fixed regression in Series.truncate() when trying to truncate a
+      single-element series (GH35544)
+    + Fixed regression where DataFrame.to_numpy() would raise a
+      RuntimeError for mixed dtypes when converting to str (GH35455)
+    + Fixed regression where read_csv() would raise a ValueError when
+      pandas.options.mode.use_inf_as_na was set to True (GH35493)
+    + Fixed regression where pandas.testing.assert_series_equal()
+      would raise an error when non-numeric dtypes were passed with
+      check_exact=True (GH35446)
+    + Fixed regression in .groupby(..).rolling(..) where column
+      selection was ignored (GH35486)
+    + Fixed regression where DataFrame.interpolate() would raise a
+      TypeError when the DataFrame was empty (GH35598)
+    + Fixed regression in DataFrame.shift() with axis=1 and
+      heterogeneous dtypes (GH35488)
+    + Fixed regression in DataFrame.diff() with read-only data
+      (GH35559)
+    + Fixed regression in .groupby(..).rolling(..) where a segfault
+      would occur with center=True and an odd number of values
+      (GH35552)
+    + Fixed regression in DataFrame.apply() where functions that
+      altered the input in-place only operated on a single row
+      (GH35462)
+    + Fixed regression in DataFrame.reset_index() would raise a
+      ValueError on empty DataFrame with a MultiIndex with a
+      datetime64 dtype level (GH35606, GH35657)
+    + Fixed regression where pandas.merge_asof() would raise a
+      UnboundLocalError when left_index, right_index and tolerance
+      were set (GH35558)
+    + Fixed regression in .groupby(..).rolling(..) where a custom
+      BaseIndexer would be ignored (GH35557)
+    + Fixed regression in DataFrame.replace() and Series.replace()
+      where compiled regular expressions would be ignored during
+      replacement (GH35680)
+    + Fixed regression in aggregate() where a list of functions would
+      produce the wrong results if at least one of the functions did
+      not aggregate (GH35490)
+    + Fixed memory usage issue when instantiating large
+      pandas.arrays.StringArray (GH35499)
+  * Bug fixes
+    + Bug in Styler whereby cell_ids argument had no effect due to
+      other recent changes (GH35588) (GH35663)
+    + Bug in pandas.testing.assert_series_equal() and
+      pandas.testing.assert_frame_equal() where extension dtypes were
+      not ignored when check_dtypes was set to False (GH35715)
+    + Bug in to_timedelta() fails when arg is a Series with Int64
+      dtype containing null values (GH35574)
+    + Bug in .groupby(..).rolling(..) where passing closed with column
+      selection would raise a ValueError (GH35549)
+    + Bug in DataFrame constructor failing to raise ValueError in some
+      cases when data and index have mismatched lengths (GH33437)
+
+- changes from version 1.1.0:
+  * Enhancements
+    + KeyErrors raised by loc specify missing labels
+    + All dtypes can now be converted to "StringDtype"
+    + Non-monotonic PeriodIndex Partial String Slicing
+    + Comparing two `DataFrame` or two `Series` and summarizing the
+      differences
+    + Allow NA in groupby key
+    + Sorting with keys
+    + Fold argument support in Timestamp constructor
+    + Parsing timezone-aware format with different timezones in
+      to_datetime
+    + Grouper and resample now supports the arguments origin and
+      offset
+    + fsspec now used for filesystem handling
+  * see
+    https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.1.0.html
+    for complete list
+
+-------------------------------------------------------------------
 Wed Jul 22 10:04:49 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - support newest numpy by removing old test
