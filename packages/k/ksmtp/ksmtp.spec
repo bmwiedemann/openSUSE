@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ksmtp
-Version:        20.08.0
+Version:        20.08.1
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
