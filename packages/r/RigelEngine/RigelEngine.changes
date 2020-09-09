@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  8 13:33:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build on aarch64 and %arm:
+  * b413133c6b6e7837a4204f347cdaeccd41e187dc.patch
+  See: https://github.com/lethal-guitar/RigelEngine/pull/588
+
+-------------------------------------------------------------------
 Sat Sep  5 18:49:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.2
