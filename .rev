@@ -174,4 +174,12 @@
     <comment>- Update to 1.0.5</comment>
     <requestid>809930</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>1dda6c6a59a2e5dfeb749da12254a1de</srcmd5>
+    <version>1.0.5</version>
+    <time>1599666333</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove old specfile constructs.</comment>
+    <requestid>832354</requestid>
+  </revision>
 </revisionlist>
