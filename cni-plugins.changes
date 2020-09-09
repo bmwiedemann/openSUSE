@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:15:35 UTC 2020 - dmueller@suse.com
+
+- Update to version 0.8.7:
+  * Fix race condition in GetCurrentNS
+  * lo: CNI_IFNAME is no longer ignored
+  * cni: bump to 0.8.0
+  * Bump Go version to 1.13 and 1.14
+  * Add contact info
+  * Update firewall README.md CNI-ADMIN
+  * firewall: fix some typos in docs
+  * portmap DEL noop if no portMappings present
+  * flannel: remove net conf file after DEL succeed
+
+-------------------------------------------------------------------
 Wed Jun 17 08:38:27 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.6 (bsc#1172410 CVE-2020-10749)
