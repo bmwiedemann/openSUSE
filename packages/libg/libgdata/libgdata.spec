@@ -19,7 +19,7 @@
 # Update baselibs.conf when changing this
 %define _sover 22
 Name:           libgdata
-Version:        0.17.12
+Version:        0.17.13
 Release:        0
 Summary:        GLib-based library for accessing online service APIs using the GData protocol
 License:        LGPL-2.1-or-later
@@ -54,8 +54,8 @@ to access the common Google services, and has full asynchronous support.
 
 %package -n libgdata%{_sover}
 Summary:        GLib-based library for accessing online service APIs using the GData protocol
-Group:          System/Libraries
 # Needed for the lang package to be installable:
+Group:          System/Libraries
 Provides:       %{name} = %{version}
 
 %description -n libgdata%{_sover}
