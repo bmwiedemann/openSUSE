@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ark
-Version:        20.08.0
+Version:        20.08.1
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -30,8 +30,6 @@ URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Support-building-against-libarchive-3.3.2-again.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Pass-the-ARCHIVE_EXTRACT_SECURE_SYMLINKS-flag-to-lib.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libarchive-devel
