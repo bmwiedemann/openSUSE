@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Sep  9 07:24:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix typo
+
+-------------------------------------------------------------------
+Tue Sep  8 15:46:48 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Exclude %arm %{ix86} as tests fail
+
+-------------------------------------------------------------------
+Tue Sep  8 13:59:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Skip tests requiring opencl
+- Skip test requiring a specific arch
+
+-------------------------------------------------------------------
+Tue Sep  8 08:21:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Split cmake folder to not override it with python builds
+- Fix detection of this folder in the python modules:
+  * lib-finder-python-cmake.patch
+
+-------------------------------------------------------------------
+Tue Sep  8 07:04:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add provides/obsoletes on TVM
+
+-------------------------------------------------------------------
+Mon Sep  7 10:40:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build fails on Tumbleweed with llvm10, so use llvm9 - boo#1176220
+
+-------------------------------------------------------------------
+Mon Sep  7 09:40:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Expand properly the fdupes call
+- Fix headers install
+- Fix python pkg names
+- Fix python requires
+
+-------------------------------------------------------------------
+Thu Sep  3 16:26:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package nnvm and topi python packages
+
+-------------------------------------------------------------------
 Thu Sep  3 09:33:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - mkl-dnn is not available on %{ix86}, so do not enable it there

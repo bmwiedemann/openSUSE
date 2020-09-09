@@ -1,0 +1,27 @@
+Index: incubator-tvm-0.6.1/nnvm/python/nnvm/libinfo.py
+===================================================================
+--- incubator-tvm-0.6.1.orig/nnvm/python/nnvm/libinfo.py
++++ incubator-tvm-0.6.1/nnvm/python/nnvm/libinfo.py
+@@ -46,7 +46,7 @@ def find_lib_path():
+ 
+     api_path = os.path.join(base_path, '..', '..', 'lib')
+     cmake_build_path_win = os.path.join(base_path, '..', '..', '..', 'build', 'Release')
+-    cmake_build_path = os.path.join(base_path, '..', '..', '..', 'build')
++    cmake_build_path = os.path.join(base_path, '..', '..', '..', 'build_cmake')
+     install_path = os.path.join(base_path, '..', '..', '..')
+     dll_path = [base_path, api_path, cmake_build_path_win, cmake_build_path,
+                 install_path]
+@@ -61,11 +61,11 @@ def find_lib_path():
+     if sys.platform.startswith('win32'):
+         vs_configuration = 'Release'
+         if platform.architecture()[0] == '64bit':
+-            dll_path.append(os.path.join(base_path, '..', '..', '..', 'build', vs_configuration))
++            dll_path.append(os.path.join(base_path, '..', '..', '..', 'build_cmake', vs_configuration))
+             dll_path.append(os.path.join(base_path, '..', '..', '..', 'windows', 'x64',
+                                          vs_configuration))
+         else:
+-            dll_path.append(os.path.join(base_path, '..', '..', '..', 'build', vs_configuration))
++            dll_path.append(os.path.join(base_path, '..', '..', '..', 'build_cmake', vs_configuration))
+             dll_path.append(os.path.join(base_path, '..', '..', '..', 'windows', vs_configuration))
+         dll_path = [os.path.join(p, '%s.dll' % lib_name) for p in dll_path]
+     elif sys.platform.startswith('darwin'):
