@@ -99,7 +99,7 @@ Requires:       perl-Bootloader
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # For shim-install script
 Requires:       grub2-%{grubplatform}
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 shim is a trivial EFI application that, when run, attempts to open and
