@@ -23,7 +23,7 @@
 %endif
 
 Name:           libxkbcommon
-Version:        0.10.0
+Version:        1.0.0
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
@@ -35,9 +35,10 @@ Source:         https://xkbcommon.org/download/%name-%version.tar.xz
 Source2:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  meson
+BuildRequires:  meson >= 0.49
 BuildRequires:  pkg-config
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(wayland-client) >= 1.2.0
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.7
 BuildRequires:  pkgconfig(wayland-scanner)
@@ -96,6 +97,13 @@ Wayland and kmscon.
 This package contains the development headers for the library found
 in libxkbcommon.
 
+%package tools
+Summary:        Utilities from xkbcommon
+Group:          System/X11/Utilities
+
+%description tools
+xkbcommon tools for introspectino and debugging.
+
 %package x11-devel
 Summary:        Development files for the libxkbcommon-x11 library
 Group:          Development/Libraries/C and C++
@@ -109,8 +117,27 @@ users make sense of their keyboard input.
 This package contains the development headers for the library found
 in %name-x11-0.
 
+%package -n libxkbregistry0
+Summary:        Library for handling xkb descriptions
+Group:          System/Libraries
+
+%description -n libxkbregistry0
+libxkbregistry is a C library that lists available XKB models,
+layouts and variants for a given ruleset.
+
+%package -n libxkbregistry-devel
+Summary:        Header files for xkbregistry
+Group:          Development/Libraries/C and C++
+
+%description -n libxkbregistry-devel
+libxkbregistry is a C library that lists available XKB models,
+layouts and variants for a given ruleset.
+
+This is aimed at tools that provide a listing of available keyboard
+layouts to the user.
+
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if %{with x11}
@@ -118,6 +145,7 @@ ef=-Denable-x11=true
 %else
 ef=-Denable-x11=false
 %endif
+# bugzilla.opensuse.org/795968 for rationale
 %meson -Denable-docs=false --includedir="%_includedir/%name" $ef
 %meson_build
 
@@ -128,6 +156,8 @@ ef=-Denable-x11=false
 %postun -n libxkbcommon0 -p /sbin/ldconfig
 %post   -n libxkbcommon-x11-0 -p /sbin/ldconfig
 %postun -n libxkbcommon-x11-0 -p /sbin/ldconfig
+%post   -n libxkbregistry0 -p /sbin/ldconfig
+%postun -n libxkbregistry0 -p /sbin/ldconfig
 
 %files -n libxkbcommon0
 %license LICENSE
@@ -142,6 +172,11 @@ ef=-Denable-x11=false
 %_libdir/libxkbcommon.so
 %_libdir/pkgconfig/xkbcommon.pc
 
+%files tools
+%_bindir/xkbcli
+%_libexecdir/xkbcommon/
+%_mandir/man1/xkbcli*
+
 %if %{with x11}
 %files -n libxkbcommon-x11-0
 %license LICENSE
@@ -155,5 +190,12 @@ ef=-Denable-x11=false
 %_libdir/libxkbcommon-x11.so
 %_libdir/pkgconfig/xkbcommon-x11.pc
 %endif
+
+%files -n libxkbregistry0
+%_libdir/libxkbregistry.so.0*
+
+%files -n libxkbregistry-devel
+%_libdir/libxkbregistry.so
+%_libdir/pkgconfig/xkbregistry.pc
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep  6 19:33:06 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.0
+  * Now it is possible to add custom layouts and options at the
+    system (/etc) and user (~/.config) level, at least when
+    libxkbcommon is in use.
+  * libxkbregistry is a C library that lists available XKB
+    models, layouts and variants for a given ruleset. This is a
+    separate library (.so/.pc files) and aimed at tools that
+    provide a listing of available keyboard layouts to the user.
+  * Add an `xkbcli` command-line utility.
+
+-------------------------------------------------------------------
 Sun Jan 19 00:48:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.10.0
