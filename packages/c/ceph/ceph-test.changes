@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  3 17:51:07 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.0.0-4863-g5d95d9d41d:
+  + cmake: detect and use sigdescr_np() if available (bsc#1175266)
+
+-------------------------------------------------------------------
 Fri Aug 28 12:37:48 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.0.0-4862-g8ac6038555:
