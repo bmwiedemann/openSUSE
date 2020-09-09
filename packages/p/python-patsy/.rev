@@ -32,4 +32,12 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>645867</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4319e267717c4f69d01b17acd71e7a9b</srcmd5>
+    <version>0.5.1</version>
+    <time>1599667315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833202</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  9 07:23:26 UTC 2020 - pgajdos@suse.com
+
+- provide pullrequest url to previous change
+
+-------------------------------------------------------------------
+Tue Sep  8 12:58:21 UTC 2020 - pgajdos@suse.com
+
+- run tests
+- added patches
+  fix https://github.com/pydata/patsy/pull/162
+  + python-patsy-remove-nose.patch
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
 Thu Nov  1 06:38:50 UTC 2018 - Arun Persaud <arun@gmx.de>
 
 - specfile:
