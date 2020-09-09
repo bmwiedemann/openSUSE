@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  8 12:39:28 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to 1.8.2:
+  * Polish translation
+  * List names of translators in TRANSLATORS.md file in source,
+    as this contribution isn't directly reflected in git log
+  * During --makeconf warn about listening on port 6697 too, not only about 6667 (#1734)
+  * webadmin: When confirming deletion of a network and selecting No,
+    redirect to the edituser page instead of listusers page (#1751)
+  * Make more client command results translateable, which were missed before
+
+-------------------------------------------------------------------
 Sat Aug 15 13:30:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.8.1:
