@@ -1,7 +1,7 @@
 #
 # spec file for package python-paramiko
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-paramiko
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        SSH2 protocol library
 License:        LGPL-2.1-or-later
 Group:          Documentation/Other
 URL:            http://www.paramiko.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/paramiko/paramiko-%{version}.tar.gz
-Source1:        configs.tar.gz
 Patch0:         paramiko-test_extend_timeout.patch
 BuildRequires:  %{python_module PyNaCl >= 1.0.1}
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
@@ -72,7 +71,6 @@ This package contains the documentation.
 %prep
 %setup -q -n paramiko-%{version}
 %autopatch -p1
-tar -C tests/ -xzf %{SOURCE1}
 
 # Fix non-executable script rpmlint issue:
 find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;

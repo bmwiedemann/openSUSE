@@ -1,6 +1,6 @@
-diff -rc alpine-2.22/pico/basic.c alpine-2.22.WrtAcc/pico/basic.c
-*** alpine-2.22/pico/basic.c	2020-01-19 01:32:18.272513938 -0700
---- alpine-2.22.WrtAcc/pico/basic.c	2020-01-19 01:34:53.223471368 -0700
+diff -rc alpine-2.23/pico/basic.c alpine-2.23.WrtAcc/pico/basic.c
+*** alpine-2.23/pico/basic.c	2020-06-18 15:19:23.437319046 -0600
+--- alpine-2.23.WrtAcc/pico/basic.c	2020-06-18 16:08:12.541589518 -0600
 ***************
 *** 342,347 ****
 --- 342,530 ----
@@ -193,9 +193,9 @@ diff -rc alpine-2.22/pico/basic.c alpine-2.22.WrtAcc/pico/basic.c
   
   /* 
    * go forword to the end of the current paragraph
-diff -rc alpine-2.22/pico/composer.c alpine-2.22.WrtAcc/pico/composer.c
-*** alpine-2.22/pico/composer.c	2020-01-19 01:32:18.262514139 -0700
---- alpine-2.22.WrtAcc/pico/composer.c	2020-01-19 01:34:53.224471360 -0700
+diff -rc alpine-2.23/pico/composer.c alpine-2.23.WrtAcc/pico/composer.c
+*** alpine-2.23/pico/composer.c	2020-06-18 15:19:23.437319046 -0600
+--- alpine-2.23.WrtAcc/pico/composer.c	2020-06-18 16:08:12.545589528 -0600
 ***************
 *** 2015,2021 ****
   	tbufp = &strng[ods.p_len];
@@ -229,9 +229,9 @@ diff -rc alpine-2.22/pico/composer.c alpine-2.22.WrtAcc/pico/composer.c
                 case (CTRL|KEY_LEFT):     /* word skip left */
                   if(ods.p_ind > 0)       /* Scoot one char left if possible */
                     ods.p_ind--;
-diff -rc alpine-2.22/pico/display.c alpine-2.22.WrtAcc/pico/display.c
-*** alpine-2.22/pico/display.c	2020-01-19 01:32:18.428510798 -0700
---- alpine-2.22.WrtAcc/pico/display.c	2020-01-19 01:34:53.225471353 -0700
+diff -rc alpine-2.23/pico/display.c alpine-2.23.WrtAcc/pico/display.c
+*** alpine-2.23/pico/display.c	2020-06-18 15:19:23.437319046 -0600
+--- alpine-2.23.WrtAcc/pico/display.c	2020-06-18 16:08:12.545589528 -0600
 ***************
 *** 2196,2201 ****
 --- 2196,2206 ----
@@ -263,9 +263,9 @@ diff -rc alpine-2.22/pico/display.c alpine-2.22.WrtAcc/pico/display.c
   	    /* look for match in extra_v */
   	    for(i = 0; i < 12; i++)
   	      if(c && c == extra_v[i]){
-diff -rc alpine-2.22/pico/ebind.h alpine-2.22.WrtAcc/pico/ebind.h
-*** alpine-2.22/pico/ebind.h	2020-01-19 01:32:18.369511986 -0700
---- alpine-2.22.WrtAcc/pico/ebind.h	2020-01-19 01:34:53.226471345 -0700
+diff -rc alpine-2.23/pico/ebind.h alpine-2.23.WrtAcc/pico/ebind.h
+*** alpine-2.23/pico/ebind.h	2020-06-18 15:19:23.437319046 -0600
+--- alpine-2.23.WrtAcc/pico/ebind.h	2020-06-18 16:08:12.545589528 -0600
 ***************
 *** 61,67 ****
   #ifdef	MOUSE
@@ -319,9 +319,9 @@ diff -rc alpine-2.22/pico/ebind.h alpine-2.22.WrtAcc/pico/ebind.h
   #endif
   #endif
   	{CTRL|'A',		gotobol},
-diff -rc alpine-2.22/pico/efunc.h alpine-2.22.WrtAcc/pico/efunc.h
-*** alpine-2.22/pico/efunc.h	2020-01-19 01:32:18.308513213 -0700
---- alpine-2.22.WrtAcc/pico/efunc.h	2020-01-19 01:34:53.226471345 -0700
+diff -rc alpine-2.23/pico/efunc.h alpine-2.23.WrtAcc/pico/efunc.h
+*** alpine-2.23/pico/efunc.h	2020-06-18 15:19:23.437319046 -0600
+--- alpine-2.23.WrtAcc/pico/efunc.h	2020-06-18 16:08:12.545589528 -0600
 ***************
 *** 54,59 ****
 --- 54,62 ----
@@ -334,9 +334,9 @@ diff -rc alpine-2.22/pico/efunc.h alpine-2.22.WrtAcc/pico/efunc.h
   extern	int forwpage(int, int);
   extern	int backpage(int, int);
   extern  int scrollupline(int, int);
-diff -rc alpine-2.22/pico/main.c alpine-2.22.WrtAcc/pico/main.c
-*** alpine-2.22/pico/main.c	2020-01-19 01:32:18.322512932 -0700
---- alpine-2.22.WrtAcc/pico/main.c	2020-01-19 01:34:53.226471345 -0700
+diff -rc alpine-2.23/pico/main.c alpine-2.23.WrtAcc/pico/main.c
+*** alpine-2.23/pico/main.c	2020-06-18 15:19:23.437319046 -0600
+--- alpine-2.23.WrtAcc/pico/main.c	2020-06-18 16:08:12.545589528 -0600
 ***************
 *** 458,463 ****
 --- 458,469 ----

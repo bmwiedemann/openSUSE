@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  7 17:22:25 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.24.1
+  * Bugfixes and minor changes:
+    - fz::to_integral can now handle strongly typed enum return types
+
+-------------------------------------------------------------------
 Sat Aug 22 20:15:42 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.24.0

@@ -5,11 +5,11 @@
  pico/osdep/shell.c           |    3 +--
  4 files changed, 25 insertions(+), 2 deletions(-)
 
-Index: alpine-2.22/imap/src/c-client/mail.h
+Index: alpine-2.23/imap/src/c-client/mail.h
 ===================================================================
---- alpine-2.22.orig/imap/src/c-client/mail.h
-+++ alpine-2.22/imap/src/c-client/mail.h
-@@ -1914,6 +1914,14 @@ long INWAIT (long seconds);
+--- alpine-2.23.orig/imap/src/c-client/mail.h
++++ alpine-2.23/imap/src/c-client/mail.h
+@@ -1921,6 +1921,14 @@ long INWAIT (long seconds);
  int PSOUT (char *s);
  int PSOUTR (SIZEDTEXT *s);
  int PFLUSH (void);
@@ -22,12 +22,12 @@ Index: alpine-2.22/imap/src/c-client/mail.h
 +#define if(x) if((x))
 +#define while(x) while((x))
  
- /* XOAUTH Client-Side Support */
+ /* XOAUTH2 and AUTHBEARER Client-Side Support */
  
-Index: alpine-2.22/imap/src/osdep/unix/os_slx.h
+Index: alpine-2.23/imap/src/osdep/unix/os_slx.h
 ===================================================================
---- alpine-2.22.orig/imap/src/osdep/unix/os_slx.h
-+++ alpine-2.22/imap/src/osdep/unix/os_slx.h
+--- alpine-2.23.orig/imap/src/osdep/unix/os_slx.h
++++ alpine-2.23/imap/src/osdep/unix/os_slx.h
 @@ -69,3 +69,11 @@ int portable_utime (char *file,time_t ti
  #include "ftl.h"
  #include "nl.h"
@@ -40,10 +40,10 @@ Index: alpine-2.22/imap/src/osdep/unix/os_slx.h
 + */
 +#define if(x) if((x))
 +#define while(x) while((x))
-Index: alpine-2.22/include/system.h
+Index: alpine-2.23/include/system.h
 ===================================================================
---- alpine-2.22.orig/include/system.h
-+++ alpine-2.22/include/system.h
+--- alpine-2.23.orig/include/system.h
++++ alpine-2.23/include/system.h
 @@ -389,4 +389,12 @@ typedef int gid_t;
  # define LOCAL_PASSWD_CACHE
  #endif
@@ -57,10 +57,10 @@ Index: alpine-2.22/include/system.h
 +#define if(x) if((x))
 +#define while(x) while((x))
  #endif /* _SYSTEM_INCLUDED */
-Index: alpine-2.22/pico/osdep/shell.c
+Index: alpine-2.23/pico/osdep/shell.c
 ===================================================================
---- alpine-2.22.orig/pico/osdep/shell.c
-+++ alpine-2.22/pico/osdep/shell.c
+--- alpine-2.23.orig/pico/osdep/shell.c
++++ alpine-2.23/pico/osdep/shell.c
 @@ -98,7 +98,6 @@ bktoshell(int f, int n)
  
      if(gmode&MDSPWN){

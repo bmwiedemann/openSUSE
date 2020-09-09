@@ -68,7 +68,7 @@ rm -rf %{buildroot}%{_mandir}/fr_FR/
 %license COPYING COPYRIGHT
 %doc AUTHORS Changelog News README Todo
 %{_bindir}/rpmrebuild
-%{_libexecdir}/rpmrebuild
+%{_prefix}/lib/rpmrebuild
 %{_mandir}/fr/man1/*
 %{_mandir}/man1/*
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  7 13:44:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.23
+  * Implementation of XOAUTH2 authentication support for Outlook.
+  * Add support for the OAUTHBEARER authentication method in Gmail.
+  * Support for the SASL-IR IMAP extension.
+  * Alpine can pass an HTML message to an external web browser,
+    by using the "External" command in the ATTACHMENT INDEX
+    screen.
+- Drop extern.diff (merged)
+
+-------------------------------------------------------------------
 Sun Jun  7 10:48:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add extern.diff.

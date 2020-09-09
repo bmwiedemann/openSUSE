@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  4 10:25:17 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1176160, CVE-2020-14387]
+  * rsync-ssl: Verify the hostname in the certificate when using openssl.
+- Add rsync-CVE-2020-14387.patch
+
+-------------------------------------------------------------------
 Fri Aug  7 06:47:00 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Updated to version 3.2.3

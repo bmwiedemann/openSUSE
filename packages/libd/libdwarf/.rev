@@ -155,4 +155,41 @@
     <comment></comment>
     <requestid>720712</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9f3626bdc738821a8080e1d137528496</srcmd5>
+    <version>20200825</version>
+    <time>1599597880</time>
+    <user>dimstar_suse</user>
+    <comment>- move libdwarf headers back to the old location 
+
+- update to 20200825 (bsc#1142609, CVE-2019-14249)
+  libdwarf now reads .debug_gnu_pubtypes &amp; pubnames
+  (non-standard but gcc creates them in DWARF5)
+  via a small number of new functions
+  and dwarfdump  --print-debug-gnu prints both sections.
+  Verifying the .debug_info offsets is not yet done.
+  Dwarfdump now dumps DWARF5 .debug_rnglists and
+  .debug_loclists.  To handle DWARF5 there are
+  a small number of new functions. All existing
+  functions are still supported, but
+  to read DWARF5 some small changes are required.
+  In libdwarf see libdwarf2.1.pdf and also see
+  dwarfdump now takes much less malloc() to work, as measured
+  by valgrind --tool=massif  and massif-visualizer.
+  A dwarfdump run that did 2.2Gib of malloc/free before the changes
+  now does 1.4GiB.
+  libdwarf and dwarfdump now support DWARF5 .debug_rnglists.
+  The new interfaces are documented in libdwarf/libdwarf2.1.pdf.
+  The new option to dwarfdump is &quot;--print-raw-rnglists&quot;.
+  The code (dwarfdump/libdwarf), regressiontests,
+  and readelfobj directories and all their tests
+  are known to work on Linux(Ubuntu on x86_64 and i686), 
+  FreeBSD, MacOS Catalina (with Apple Command Line Tools),
+  and IBM s390 (Big Endian!) running Ubuntu Linux.
+  On Windows-MinGW the full regression tests
+  have not been tested, but 'make check' works
+  for dwarfdump/libdwarf (the current dwarfdump 
+  make check actually does run dwarfdump and</comment>
+    <requestid>832032</requestid>
+  </revision>
 </revisionlist>

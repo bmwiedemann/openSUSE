@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  7 17:24:05 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.50.0:
+  * Bugfixes and minor changes:
+    - Minor fixes to Tardigrade integration
+- Changes from 3.50.0-rc1:
+  * New features:
+    - Update Storj/Tardigrade integration, now based on the 
+      uplink-c library
+  * Bugfixes and minor changes:
+    - Fix layout issues in the Site Manager if switching protocol
+    - Restored natural sort option for file list sorting
+
+-------------------------------------------------------------------
 Sat Aug 22 20:14:51 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Fix libfilezilla requirement version.

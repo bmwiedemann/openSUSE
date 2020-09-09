@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep  6 11:10:49 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix for /usr/lib -> /usr/libexec migration.
+
+-------------------------------------------------------------------
 Fri Jul 31 10:35:51 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add 4G min disk space default in _constraints

@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Fri Sep  4 08:28:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- move libdwarf headers back to the old location 
+
+-------------------------------------------------------------------
+Wed Sep  2 18:02:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20200825 (bsc#1142609, CVE-2019-14249)
+  libdwarf now reads .debug_gnu_pubtypes & pubnames
+  (non-standard but gcc creates them in DWARF5)
+  via a small number of new functions
+  and dwarfdump  --print-debug-gnu prints both sections.
+  Verifying the .debug_info offsets is not yet done.
+  Dwarfdump now dumps DWARF5 .debug_rnglists and
+  .debug_loclists.  To handle DWARF5 there are
+  a small number of new functions. All existing
+  functions are still supported, but
+  to read DWARF5 some small changes are required.
+  In libdwarf see libdwarf2.1.pdf and also see
+  dwarfdump now takes much less malloc() to work, as measured
+  by valgrind --tool=massif  and massif-visualizer.
+  A dwarfdump run that did 2.2Gib of malloc/free before the changes
+  now does 1.4GiB.
+  libdwarf and dwarfdump now support DWARF5 .debug_rnglists.
+  The new interfaces are documented in libdwarf/libdwarf2.1.pdf.
+  The new option to dwarfdump is "--print-raw-rnglists".
+  The code (dwarfdump/libdwarf), regressiontests,
+  and readelfobj directories and all their tests
+  are known to work on Linux(Ubuntu on x86_64 and i686), 
+  FreeBSD, MacOS Catalina (with Apple Command Line Tools),
+  and IBM s390 (Big Endian!) running Ubuntu Linux.
+  On Windows-MinGW the full regression tests
+  have not been tested, but 'make check' works
+  for dwarfdump/libdwarf (the current dwarfdump 
+  make check actually does run dwarfdump and 
+  checks that dwarfdump basically works).
+  Now a --disable-libelf configure/build of libdwarf/dwarfdump
+  can read elf, mach-o DSYM, and PE executable/dll object files.
+  Such a build will not need or use libelf or elf.h .
+  The dwarfdump options that display Elf section headers
+  or relocation record data are not available in a 
+  --disable-libelf build. 
+  Nor is dwarfdump's support of reading archive files
+  available in a --disable-libelf build. 
+  This libdwarf detects corrupt Elf object files much sooner
+  than before, but does not explain what the corruption
+  really is. Use GNU readelf (or readelfobj, a project
+  on sourceforge) to get more detail about the problems found.  
+  See https://www.prevanders.net/dwarf.html for the git clone
+  command for readelfobj.
+  With --disable-libelf the --enable-dwarfgen option
+  does not work: the dwarfgen build will fail.
+  For building on machines without a usable elf.h or libelf
+  but possibly with a libelf.h visible, --disable-libelf
+  ensures the build won't use libelf or elf.h anywhere. 
+  -lz will be done if zlib.h is visible, independent of
+  libelf, libelf.h, and elf.h
+  If one has a standard Bourne shell (sh) available
+  (such as sh on MacOS and sh in MinGW on Windows)
+  one may be able to build libdwarf and dwarfdump natively
+  and they can read Mach-o dSYM and PE object files
+  to access DWARF information. 
+  This has NOT been tested under MacOS, so will likely
+  fail on MacOS.
+  No elf.h, libelf.h or zlib.h should be present. 
+  For example, the following
+  is known to work under MinGW and this general plan
+  applies to all builds including all builds with elf.h
+  and libelf:
+    mkdir test
+    cd test
+    #(copy the source tree into test, if from git
+    #the name of the top level will likely be 'code')
+    cd code
+   The pre-build dwarf_names.[hc] and the tag related
+  files are now part of the standard build so there is
+  no longer any two-stage aspect of the build. 
+  The build simply compiles files in the distribution.
+  If you use git to access the source be sure to
+  sh scripts/FIX-CONFIGURE-TIMES
+  to adjust the file timestamps as having timestamps
+  in the right relationships is vital and git
+  does not maintain timestamps.
+  The script is always safe to run. It takes about 30 seconds.
+  The complicated process of building certain .c and .h
+  files has been relegated to the few people updating
+  files libdwarf/libdwarf.h.in, libdwarf/dwarf_errmsg_list.h,
+  dwarfdump/tag_attr_ext.list,dwarfdump/tag_attr.list,
+  dwarfdump/tag_tree_ext.list, and dwarfdump/tag_tree.list.
+  For everyone else the build is simply compiling
+  the .c and .h files in the distribution. Simpler.
+    sh scripts/buildstandardsource.sh
+  creates these files.
+  dwarfdump can now dump mach-o (MacOS) dSYM dwarf.
+  All the usual libdwarf interfaces work.
+  A new libdwarf initialization call dwarf_init_path()
+  may be convenient for you to use.
+
+-------------------------------------------------------------------
 Fri Aug  2 07:05:36 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 15:25:03 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- libsodium is not strictly required, it is only required for the
+  argon password scheme. This is now no longer supported on sle12 
+
+-------------------------------------------------------------------
 Wed Aug 12 13:57:05 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.3.11.3 and pigeonhole to 0.5.11 (boo#1174920 boo#1174922 boo#1174923)

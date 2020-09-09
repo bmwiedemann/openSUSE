@@ -371,7 +371,7 @@ fi
 cmake \
       -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix}   \
       -DMathGL_INSTALL_LIB_DIR:PATH=%{_lib}   \
-      -DMathGL_INSTALL_CMAKE_DIR=%{_libdir}/cmake/mathgl   \
+      -DMathGL_INSTALL_CMAKE_DIR:PATH=%{_libdir}/cmake/mathgl   \
       -DTEXMFDIR:PATH=%{_datadir}/texmf/      \
       -DCMAKE_C_FLAGS="%{optflags}"	      \
       -DCMAKE_CXX_FLAGS="%{optflags}"	      \
@@ -423,7 +423,7 @@ install -m 644 texinfo/{classes.pdf,mgl_en.pdf} %{buildroot}%{_docdir}/%{name}/
 
 # move mgl.cgi
 install -d %{buildroot}/srv/www/cgi-bin/
-mv %{buildroot}%{_libexecdir}/cgi-bin/mgl.cgi %{buildroot}/srv/www/cgi-bin/mgl.cgi
+mv %{buildroot}%{_prefix}/lib/cgi-bin/mgl.cgi %{buildroot}/srv/www/cgi-bin/mgl.cgi
 
 # LaTeX package (based on TeXLive spec files)
 mkdir -p %{buildroot}%{_localstatedir}/adm/update-scripts

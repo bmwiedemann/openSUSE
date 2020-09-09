@@ -42,6 +42,7 @@ Source10:       http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz.asc
 Source11:       http://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz.asc
 Source12:       %{name}.keyring
 Patch0:         rsync-no-libattr.patch
+Patch1:         rsync-CVE-2020-14387.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
@@ -78,6 +79,7 @@ rm -f zlib/*.h
 patch -p1 < patches/slp.diff
 
 %patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf -fiv

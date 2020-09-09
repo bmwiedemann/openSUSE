@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:49:51 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Fri Feb 21 20:01:01 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 2.15

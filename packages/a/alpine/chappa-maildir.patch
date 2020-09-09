@@ -1,9 +1,9 @@
-diff -rc alpine-2.22/alpine/alpine.c alpine-2.22.maildir/alpine/alpine.c
-*** alpine-2.22/alpine/alpine.c	2020-01-19 01:32:20.090477474 -0700
---- alpine-2.22.maildir/alpine/alpine.c	2020-01-19 01:34:47.848512457 -0700
+diff -rc alpine-2.23/alpine/alpine.c alpine-2.23.maildir/alpine/alpine.c
+*** alpine-2.23/alpine/alpine.c	2020-06-18 15:19:23.469318992 -0600
+--- alpine-2.23.maildir/alpine/alpine.c	2020-06-18 16:08:07.725577079 -0600
 ***************
-*** 591,596 ****
---- 591,601 ----
+*** 597,602 ****
+--- 597,607 ----
       if(F_ON(F_MAILDROPS_PRESERVE_STATE, ps_global))
         mail_parameters(NULL, SET_SNARFPRESERVE, (void *) TRUE);
   
@@ -15,12 +15,12 @@ diff -rc alpine-2.22/alpine/alpine.c alpine-2.22.maildir/alpine/alpine.c
       rvl = 0L;
       if(pine_state->VAR_NNTPRANGE){
   	if(!SVAR_NNTPRANGE(pine_state, rvl, tmp_20k_buf, SIZEOF_20KBUF))
-diff -rc alpine-2.22/alpine/confscroll.c alpine-2.22.maildir/alpine/confscroll.c
-*** alpine-2.22/alpine/confscroll.c	2020-01-19 01:32:20.190475483 -0700
---- alpine-2.22.maildir/alpine/confscroll.c	2020-01-19 01:34:47.850512441 -0700
+diff -rc alpine-2.23/alpine/confscroll.c alpine-2.23.maildir/alpine/confscroll.c
+*** alpine-2.23/alpine/confscroll.c	2020-06-18 15:19:23.465318999 -0600
+--- alpine-2.23.maildir/alpine/confscroll.c	2020-06-18 16:08:07.729577089 -0600
 ***************
-*** 5557,5562 ****
---- 5557,5568 ----
+*** 5546,5551 ****
+--- 5546,5557 ----
   			  (void *)var->current_val.p);
       }
   #endif
@@ -33,11 +33,11 @@ diff -rc alpine-2.22/alpine/confscroll.c alpine-2.22.maildir/alpine/confscroll.c
       else if(revert && standard_radio_var(ps, var)){
   
   	cur_rule_value(var, TRUE, FALSE);
-diff -rc alpine-2.22/imap/src/c-client/mail.c alpine-2.22.maildir/imap/src/c-client/mail.c
-*** alpine-2.22/imap/src/c-client/mail.c	2020-01-19 01:32:23.162416684 -0700
---- alpine-2.22.maildir/imap/src/c-client/mail.c	2020-01-19 01:34:48.243509380 -0700
+diff -rc alpine-2.23/imap/src/c-client/mail.c alpine-2.23.maildir/imap/src/c-client/mail.c
+*** alpine-2.23/imap/src/c-client/mail.c	2020-06-18 15:19:23.457319012 -0600
+--- alpine-2.23.maildir/imap/src/c-client/mail.c	2020-06-18 16:08:07.729577089 -0600
 ***************
-*** 1046,1052 ****
+*** 1053,1059 ****
     MAILSTREAM *ts;
     char *s,*t,tmp[MAILTMPLEN];
     size_t i;
@@ -45,7 +45,7 @@ diff -rc alpine-2.22/imap/src/c-client/mail.c alpine-2.22.maildir/imap/src/c-cli
   				/* never allow names with newlines */
     if ((s = strpbrk (mailbox,"\015\012")) != NULL) {
       MM_LOG ("Can't create mailbox with such a name",ERROR);
---- 1046,1052 ----
+--- 1053,1059 ----
     MAILSTREAM *ts;
     char *s,*t,tmp[MAILTMPLEN];
     size_t i;
@@ -54,8 +54,8 @@ diff -rc alpine-2.22/imap/src/c-client/mail.c alpine-2.22.maildir/imap/src/c-cli
     if ((s = strpbrk (mailbox,"\015\012")) != NULL) {
       MM_LOG ("Can't create mailbox with such a name",ERROR);
 ***************
-*** 1070,1075 ****
---- 1070,1077 ----
+*** 1077,1082 ****
+--- 1077,1084 ----
       return NIL;
     }
   
@@ -65,8 +65,8 @@ diff -rc alpine-2.22/imap/src/c-client/mail.c alpine-2.22.maildir/imap/src/c-cli
     if ((mailbox[0] == '#') && ((mailbox[1] == 'd') || (mailbox[1] == 'D')) &&
         ((mailbox[2] == 'r') || (mailbox[2] == 'R')) &&
 ***************
-*** 1100,1105 ****
---- 1102,1114 ----
+*** 1107,1112 ****
+--- 1109,1121 ----
   	   (((*mailbox == '{') || (*mailbox == '#')) &&
   	    (stream = mail_open (NIL,mailbox,OP_PROTOTYPE | OP_SILENT))))
       d = stream->dtb;
@@ -80,12 +80,12 @@ diff -rc alpine-2.22/imap/src/c-client/mail.c alpine-2.22.maildir/imap/src/c-cli
     else if ((*mailbox != '{') && (ts = default_proto (NIL))) d = ts->dtb;
     else {			/* failed utterly */
       sprintf (tmp,"Can't create mailbox %.80s: indeterminate format",mailbox);
-diff -rc alpine-2.22/imap/src/c-client/mail.h alpine-2.22.maildir/imap/src/c-client/mail.h
-*** alpine-2.22/imap/src/c-client/mail.h	2020-01-19 01:32:23.166416605 -0700
---- alpine-2.22.maildir/imap/src/c-client/mail.h	2020-01-19 01:34:48.244509372 -0700
+diff -rc alpine-2.23/imap/src/c-client/mail.h alpine-2.23.maildir/imap/src/c-client/mail.h
+*** alpine-2.23/imap/src/c-client/mail.h	2020-06-18 15:19:23.457319012 -0600
+--- alpine-2.23.maildir/imap/src/c-client/mail.h	2020-06-18 16:08:07.729577089 -0600
 ***************
-*** 374,379 ****
---- 374,383 ----
+*** 379,384 ****
+--- 379,388 ----
   #define SET_SCANCONTENTS (long) 573
   #define GET_MHALLOWINBOX (long) 574
   #define SET_MHALLOWINBOX (long) 575
@@ -96,9 +96,9 @@ diff -rc alpine-2.22/imap/src/c-client/mail.h alpine-2.22.maildir/imap/src/c-cli
   
   /* Driver flags */
   
-diff -rc alpine-2.22/imap/src/osdep/unix/dummy.c alpine-2.22.maildir/imap/src/osdep/unix/dummy.c
-*** alpine-2.22/imap/src/osdep/unix/dummy.c	2020-01-19 01:32:22.660426553 -0700
---- alpine-2.22.maildir/imap/src/osdep/unix/dummy.c	2020-01-19 01:34:48.245509364 -0700
+diff -rc alpine-2.23/imap/src/osdep/unix/dummy.c alpine-2.23.maildir/imap/src/osdep/unix/dummy.c
+*** alpine-2.23/imap/src/osdep/unix/dummy.c	2020-06-18 15:19:23.449319026 -0600
+--- alpine-2.23.maildir/imap/src/osdep/unix/dummy.c	2020-06-18 16:08:07.729577089 -0600
 ***************
 *** 103,115 ****
    * Accepts: mailbox name
@@ -253,9 +253,9 @@ diff -rc alpine-2.22/imap/src/osdep/unix/dummy.c alpine-2.22.maildir/imap/src/os
     return T;			/* return success */
   }
   
-diff -rc alpine-2.22/imap/src/osdep/unix/maildir.c alpine-2.22.maildir/imap/src/osdep/unix/maildir.c
-*** alpine-2.22/imap/src/osdep/unix/maildir.c	2020-01-19 01:34:48.437507873 -0700
---- alpine-2.22.maildir/imap/src/osdep/unix/maildir.c	2020-01-19 01:34:48.249509333 -0700
+diff -rc alpine-2.23/imap/src/osdep/unix/maildir.c alpine-2.23.maildir/imap/src/osdep/unix/maildir.c
+*** alpine-2.23/imap/src/osdep/unix/maildir.c	2020-06-18 16:08:07.773577203 -0600
+--- alpine-2.23.maildir/imap/src/osdep/unix/maildir.c	2020-06-18 16:08:07.733577099 -0600
 ***************
 *** 0 ****
 --- 1,2671 ----
@@ -2930,9 +2930,9 @@ diff -rc alpine-2.22/imap/src/osdep/unix/maildir.c alpine-2.22.maildir/imap/src/
 +       LOCAL->uidtempfile = cpystr(tmp);
 +   }
 + }
-diff -rc alpine-2.22/imap/src/osdep/unix/maildir.h alpine-2.22.maildir/imap/src/osdep/unix/maildir.h
-*** alpine-2.22/imap/src/osdep/unix/maildir.h	2020-01-19 01:34:48.439507857 -0700
---- alpine-2.22.maildir/imap/src/osdep/unix/maildir.h	2020-01-19 01:34:48.250509325 -0700
+diff -rc alpine-2.23/imap/src/osdep/unix/maildir.h alpine-2.23.maildir/imap/src/osdep/unix/maildir.h
+*** alpine-2.23/imap/src/osdep/unix/maildir.h	2020-06-18 16:08:07.777577213 -0600
+--- alpine-2.23.maildir/imap/src/osdep/unix/maildir.h	2020-06-18 16:08:07.733577099 -0600
 ***************
 *** 0 ****
 --- 1,226 ----
@@ -3162,11 +3162,11 @@ diff -rc alpine-2.22/imap/src/osdep/unix/maildir.h alpine-2.22.maildir/imap/src/
 + void maildir_assign_uid(MAILSTREAM *stream, unsigned long msgno, unsigned long uid);
 + void maildir_uid_renew_tempfile(MAILSTREAM *stream);
 + 
-diff -rc alpine-2.22/imap/src/osdep/unix/Makefile alpine-2.22.maildir/imap/src/osdep/unix/Makefile
-*** alpine-2.22/imap/src/osdep/unix/Makefile	2020-01-19 01:32:22.615427440 -0700
---- alpine-2.22.maildir/imap/src/osdep/unix/Makefile	2020-01-19 01:34:48.250509325 -0700
+diff -rc alpine-2.23/imap/src/osdep/unix/Makefile alpine-2.23.maildir/imap/src/osdep/unix/Makefile
+*** alpine-2.23/imap/src/osdep/unix/Makefile	2020-06-18 15:19:23.453319019 -0600
+--- alpine-2.23.maildir/imap/src/osdep/unix/Makefile	2020-06-18 16:08:07.733577099 -0600
 ***************
-*** 147,153 ****
+*** 146,152 ****
   # However, mh needs to be before any sysinbox formats (such as mmdf or unix)
   # since otherwise INBOX won't work correctly when mh_allow_inbox is set.
   #
@@ -3174,7 +3174,7 @@ diff -rc alpine-2.22/imap/src/osdep/unix/Makefile alpine-2.22.maildir/imap/src/o
   CHUNKSIZE=65536
   
   # Normally no need to change any of these
---- 147,153 ----
+--- 146,152 ----
   # However, mh needs to be before any sysinbox formats (such as mmdf or unix)
   # since otherwise INBOX won't work correctly when mh_allow_inbox is set.
   #
@@ -3183,7 +3183,7 @@ diff -rc alpine-2.22/imap/src/osdep/unix/Makefile alpine-2.22.maildir/imap/src/o
   
   # Normally no need to change any of these
 ***************
-*** 156,162 ****
+*** 155,161 ****
   BINARIES=osdep.o mail.o misc.o newsrc.o smanager.o utf8.o utf8aux.o siglocal.o \
    dummy.o pseudo.o netmsg.o flstring.o fdstring.o \
    rfc822.o nntp.o smtp.o imap4r1.o http.o json.o pop3.o \
@@ -3191,7 +3191,7 @@ diff -rc alpine-2.22/imap/src/osdep/unix/Makefile alpine-2.22.maildir/imap/src/o
   CFLAGS=-g
   
   CAT=cat
---- 156,162 ----
+--- 155,161 ----
   BINARIES=osdep.o mail.o misc.o newsrc.o smanager.o utf8.o utf8aux.o siglocal.o \
    dummy.o pseudo.o netmsg.o flstring.o fdstring.o \
    rfc822.o nntp.o smtp.o imap4r1.o http.o json.o pop3.o \
@@ -3200,7 +3200,7 @@ diff -rc alpine-2.22/imap/src/osdep/unix/Makefile alpine-2.22.maildir/imap/src/o
   
   CAT=cat
 ***************
-*** 293,299 ****
+*** 292,298 ****
   
   cyg:	# Cygwin - note that most local file drivers don't work!!
   	$(BUILD) `$(CAT) SPECIALS` OS=$@ \
@@ -3208,7 +3208,7 @@ diff -rc alpine-2.22/imap/src/osdep/unix/Makefile alpine-2.22.maildir/imap/src/o
   	SIGTYPE=psx CHECKPW=cyg LOGINPW=cyg CRXTYPE=std \
   	SPOOLDIR=/var \
   	ACTIVEFILE=/usr/local/news/lib/active \
---- 293,299 ----
+--- 292,298 ----
   
   cyg:	# Cygwin - note that most local file drivers don't work!!
   	$(BUILD) `$(CAT) SPECIALS` OS=$@ \
@@ -3217,8 +3217,8 @@ diff -rc alpine-2.22/imap/src/osdep/unix/Makefile alpine-2.22.maildir/imap/src/o
   	SPOOLDIR=/var \
   	ACTIVEFILE=/usr/local/news/lib/active \
 ***************
-*** 922,927 ****
---- 922,928 ----
+*** 921,926 ****
+--- 921,927 ----
   utf8aux.o: mail.h misc.h osdep.h utf8.h
   json.o: mail.h misc.h osdep.h utf8.h json.h
   http.o: mail.h misc.h osdep.h utf8.h http.h json.h
@@ -3226,9 +3226,9 @@ diff -rc alpine-2.22/imap/src/osdep/unix/Makefile alpine-2.22.maildir/imap/src/o
   
   # OS-dependent
   
-diff -rc alpine-2.22/imap/src/osdep/unix/os_cyg.h alpine-2.22.maildir/imap/src/osdep/unix/os_cyg.h
-*** alpine-2.22/imap/src/osdep/unix/os_cyg.h	2020-01-19 01:32:22.664426475 -0700
---- alpine-2.22.maildir/imap/src/osdep/unix/os_cyg.h	2020-01-19 01:34:48.251509318 -0700
+diff -rc alpine-2.23/imap/src/osdep/unix/os_cyg.h alpine-2.23.maildir/imap/src/osdep/unix/os_cyg.h
+*** alpine-2.23/imap/src/osdep/unix/os_cyg.h	2020-06-18 15:19:23.449319026 -0600
+--- alpine-2.23.maildir/imap/src/osdep/unix/os_cyg.h	2020-06-18 16:08:07.733577099 -0600
 ***************
 *** 47,52 ****
 --- 47,53 ----
@@ -3239,12 +3239,12 @@ diff -rc alpine-2.22/imap/src/osdep/unix/os_cyg.h alpine-2.22.maildir/imap/src/o
   #define geteuid Geteuid
   uid_t Geteuid (void);
   
-diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
-*** alpine-2.22/pith/conf.c	2020-01-19 01:32:18.678505766 -0700
---- alpine-2.22.maildir/pith/conf.c	2020-01-19 01:34:48.253509302 -0700
+diff -rc alpine-2.23/pith/conf.c alpine-2.23.maildir/pith/conf.c
+*** alpine-2.23/pith/conf.c	2020-06-18 15:19:23.461319005 -0600
+--- alpine-2.23.maildir/pith/conf.c	2020-06-18 16:08:07.737577110 -0600
 ***************
-*** 443,448 ****
---- 443,451 ----
+*** 449,454 ****
+--- 449,457 ----
   
   CONF_TXT_T cf_text_newsrc_path[] =		"Full path and name of NEWSRC file";
   
@@ -3255,8 +3255,8 @@ diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
   /*----------------------------------------------------------------------
   These are the variables that control a number of pine functions.  They
 ***************
-*** 649,654 ****
---- 652,661 ----
+*** 653,658 ****
+--- 656,665 ----
   	NULL,			cf_text_news_active},
   {"news-spool-directory",		0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
   	NULL,			cf_text_news_spooldir},
@@ -3268,8 +3268,8 @@ diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
   	NULL,			cf_text_upload_cmd},
   {"upload-command-prefix",		0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
 ***************
-*** 2322,2327 ****
---- 2329,2340 ----
+*** 2338,2343 ****
+--- 2345,2356 ----
         mail_parameters(NULL, SET_NEWSSPOOL,
   		      (void *)VAR_NEWS_SPOOL_DIR);
   
@@ -3283,8 +3283,8 @@ diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
       set_current_val(&vars[V_DEFAULT_SAVE_FOLDER], TRUE, TRUE);
       if(!VAR_DEFAULT_SAVE_FOLDER || !VAR_DEFAULT_SAVE_FOLDER[0])
 ***************
-*** 2954,2959 ****
---- 2967,2976 ----
+*** 2976,2981 ****
+--- 2989,2998 ----
   	 F_SORT_DEFAULT_SAVE_ALPHA, h_config_sort_save_alpha, PREF_FLDR, 0},
   	{"vertical-folder-list", "Use Vertical Folder List",
   	 F_VERTICAL_FOLDER_LIST, h_config_vertical_list, PREF_FLDR, 0},
@@ -3296,7 +3296,7 @@ diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
   /* Addr book */
   	{"combined-addrbook-display", "Combined Address Book Display",
 ***************
-*** 7068,7074 ****
+*** 7124,7130 ****
   	       int just_flip_value, EditWhich ew)
   {
       char      **vp, *p, **lval, ***alval;
@@ -3304,7 +3304,7 @@ diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
       char       *err;
       long	l;
   
---- 7085,7091 ----
+--- 7141,7147 ----
   	       int just_flip_value, EditWhich ew)
   {
       char      **vp, *p, **lval, ***alval;
@@ -3313,8 +3313,8 @@ diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
       long	l;
   
 ***************
-*** 7121,7126 ****
---- 7138,7150 ----
+*** 7177,7182 ****
+--- 7194,7206 ----
   
   	break;
   
@@ -3329,8 +3329,8 @@ diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
         case F_DATES_TO_LOCAL :
   	clear_index_cache(ps->mail_stream, 0);
 ***************
-*** 7911,7916 ****
---- 7935,7944 ----
+*** 7975,7980 ****
+--- 7999,8008 ----
   	return(h_config_newmailwidth);
         case V_NEWSRC_PATH :
   	return(h_config_newsrc_path);
@@ -3341,12 +3341,12 @@ diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
         case V_BROWSER :
   	return(h_config_browser);
         case V_HISTORY :
-diff -rc alpine-2.22/pith/conf.h alpine-2.22.maildir/pith/conf.h
-*** alpine-2.22/pith/conf.h	2020-01-19 01:32:19.489489496 -0700
---- alpine-2.22.maildir/pith/conf.h	2020-01-19 01:34:48.277509116 -0700
+diff -rc alpine-2.23/pith/conf.h alpine-2.23.maildir/pith/conf.h
+*** alpine-2.23/pith/conf.h	2020-06-18 15:19:23.461319005 -0600
+--- alpine-2.23.maildir/pith/conf.h	2020-06-18 16:08:07.737577110 -0600
 ***************
-*** 256,261 ****
---- 256,265 ----
+*** 260,265 ****
+--- 260,269 ----
   #define GLO_NEWS_ACTIVE_PATH	     vars[V_NEWS_ACTIVE_PATH].global_val.p
   #define VAR_NEWS_SPOOL_DIR	     vars[V_NEWS_SPOOL_DIR].current_val.p
   #define GLO_NEWS_SPOOL_DIR	     vars[V_NEWS_SPOOL_DIR].global_val.p
@@ -3357,12 +3357,12 @@ diff -rc alpine-2.22/pith/conf.h alpine-2.22.maildir/pith/conf.h
   #define VAR_DISABLE_DRIVERS	     vars[V_DISABLE_DRIVERS].current_val.l
   #define VAR_DISABLE_AUTHS	     vars[V_DISABLE_AUTHS].current_val.l
   #define VAR_REMOTE_ABOOK_METADATA    vars[V_REMOTE_ABOOK_METADATA].current_val.p
-diff -rc alpine-2.22/pith/conftype.h alpine-2.22.maildir/pith/conftype.h
-*** alpine-2.22/pith/conftype.h	2020-01-19 01:32:18.702505283 -0700
---- alpine-2.22.maildir/pith/conftype.h	2020-01-19 01:34:48.278509108 -0700
+diff -rc alpine-2.23/pith/conftype.h alpine-2.23.maildir/pith/conftype.h
+*** alpine-2.23/pith/conftype.h	2020-06-18 15:19:23.461319005 -0600
+--- alpine-2.23.maildir/pith/conftype.h	2020-06-18 16:08:07.737577110 -0600
 ***************
-*** 119,124 ****
---- 119,127 ----
+*** 118,123 ****
+--- 118,126 ----
   		, V_NEWSRC_PATH
   		, V_NEWS_ACTIVE_PATH
   		, V_NEWS_SPOOL_DIR
@@ -3373,8 +3373,8 @@ diff -rc alpine-2.22/pith/conftype.h alpine-2.22.maildir/pith/conftype.h
   		, V_UPLOAD_CMD_PREFIX
   		, V_DOWNLOAD_CMD
 ***************
-*** 400,405 ****
---- 403,411 ----
+*** 406,411 ****
+--- 409,417 ----
   	F_PASS_C1_CONTROL_CHARS,
   	F_SINGLE_FOLDER_LIST,
   	F_VERTICAL_FOLDER_LIST,
@@ -3384,9 +3384,9 @@ diff -rc alpine-2.22/pith/conftype.h alpine-2.22.maildir/pith/conftype.h
   	F_TAB_CHK_RECENT,
   	F_AUTO_REPLY_TO,
   	F_VERBOSE_POST,
-diff -rc alpine-2.22/pith/init.c alpine-2.22.maildir/pith/init.c
-*** alpine-2.22/pith/init.c	2020-01-19 01:32:18.764504035 -0700
---- alpine-2.22.maildir/pith/init.c	2020-01-19 01:34:48.278509108 -0700
+diff -rc alpine-2.23/pith/init.c alpine-2.23.maildir/pith/init.c
+*** alpine-2.23/pith/init.c	2020-06-18 15:19:23.465318999 -0600
+--- alpine-2.23.maildir/pith/init.c	2020-06-18 16:08:07.737577110 -0600
 ***************
 *** 408,413 ****
 --- 408,416 ----
@@ -3399,9 +3399,9 @@ diff -rc alpine-2.22/pith/init.c alpine-2.22.maildir/pith/init.c
              && strcmp(filename, folder_base)){
   #endif
   #endif
-diff -rc alpine-2.22/pith/pattern.c alpine-2.22.maildir/pith/pattern.c
-*** alpine-2.22/pith/pattern.c	2020-01-19 01:32:19.260494080 -0700
---- alpine-2.22.maildir/pith/pattern.c	2020-01-19 01:34:48.281509085 -0700
+diff -rc alpine-2.23/pith/pattern.c alpine-2.23.maildir/pith/pattern.c
+*** alpine-2.23/pith/pattern.c	2020-06-18 15:19:23.461319005 -0600
+--- alpine-2.23.maildir/pith/pattern.c	2020-06-18 16:08:07.741577120 -0600
 ***************
 *** 49,55 ****
   #include "../pith/icache.h"
@@ -3489,12 +3489,12 @@ diff -rc alpine-2.22/pith/pattern.c alpine-2.22.maildir/pith/pattern.c
       return(buf[0] != '\0');
   }
   
-diff -rc alpine-2.22/pith/pine.hlp alpine-2.22.maildir/pith/pine.hlp
-*** alpine-2.22/pith/pine.hlp	2020-01-19 01:32:19.035498584 -0700
---- alpine-2.22.maildir/pith/pine.hlp	2020-01-19 01:34:48.306508890 -0700
+diff -rc alpine-2.23/pith/pine.hlp alpine-2.23.maildir/pith/pine.hlp
+*** alpine-2.23/pith/pine.hlp	2020-06-18 15:19:23.461319005 -0600
+--- alpine-2.23.maildir/pith/pine.hlp	2020-06-18 16:08:07.749577141 -0600
 ***************
-*** 22897,22902 ****
---- 22897,22998 ----
+*** 23014,23019 ****
+--- 23014,23115 ----
   &lt;End of help on this topic&gt;
   </BODY>
   </HTML>
@@ -3598,8 +3598,8 @@ diff -rc alpine-2.22/pith/pine.hlp alpine-2.22.maildir/pith/pine.hlp
   <HTML>
   <HEAD>
 ***************
-*** 31036,31041 ****
---- 31132,31180 ----
+*** 31245,31250 ****
+--- 31341,31389 ----
   <P>
   &lt;End of help on this topic&gt;
   </BODY>
@@ -3649,9 +3649,9 @@ diff -rc alpine-2.22/pith/pine.hlp alpine-2.22.maildir/pith/pine.hlp
   </HTML>
   ====== h_config_verbose_post =====
   <HTML>
-diff -rc alpine-2.22/pith/send.c alpine-2.22.maildir/pith/send.c
-*** alpine-2.22/pith/send.c	2020-01-19 01:32:18.956500171 -0700
---- alpine-2.22.maildir/pith/send.c	2020-01-19 01:34:48.420508005 -0700
+diff -rc alpine-2.23/pith/send.c alpine-2.23.maildir/pith/send.c
+*** alpine-2.23/pith/send.c	2020-06-18 15:19:23.461319005 -0600
+--- alpine-2.23.maildir/pith/send.c	2020-06-18 16:08:07.761577172 -0600
 ***************
 *** 47,52 ****
 --- 47,55 ----
@@ -3680,9 +3680,9 @@ diff -rc alpine-2.22/pith/send.c alpine-2.22.maildir/pith/send.c
   	if(!(IS_REMOTE(tmp) || is_absolute_path(tmp))){
   	    /*
   	     * The mbox is relative to the home directory.
-diff -rc alpine-2.22/README.maildir alpine-2.22.maildir/README.maildir
-*** alpine-2.22/README.maildir	2020-01-19 01:34:48.441507842 -0700
---- alpine-2.22.maildir/README.maildir	2020-01-19 01:34:48.421507997 -0700
+diff -rc alpine-2.23/README.maildir alpine-2.23.maildir/README.maildir
+*** alpine-2.23/README.maildir	2020-06-18 16:08:07.777577213 -0600
+--- alpine-2.23.maildir/README.maildir	2020-06-18 16:08:07.761577172 -0600
 ***************
 *** 0 ****
 --- 1,149 ----

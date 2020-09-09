@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  4 06:29:23 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.7.2
+- drop configs.tar.gz
+ * Add missing test suite fixtures directory to MANIFEST.in
+ * Remove leading whitespace from OpenSSH RSA test suite static key fixture,
+ * Fix incorrect string formatting causing unhelpful error message annotation
+     when using Kerberos/GSSAPI.
+ * Fix incorrectly swapped order of p and q numbers when loading
+     OpenSSH-format RSA private keys.
+
+-------------------------------------------------------------------
 Sat Dec 21 17:11:48 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.7.1

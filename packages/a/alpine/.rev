@@ -390,4 +390,12 @@
     <comment></comment>
     <requestid>815524</requestid>
   </revision>
+  <revision rev="48" vrev="18">
+    <srcmd5>c4954387f91dd4b1c1a853d19e14be6b</srcmd5>
+    <version>unknown</version>
+    <time>1599598120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.23</comment>
+    <requestid>832801</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,30 @@
+From b918afb693a62938e8189a5d07b13df8007ae062 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Fri, 28 Aug 2020 19:15:42 +0200
+Subject: [PATCH] tools: move struct element before variable lenght list
+
+Move prio field before 'variable' struct array field.
+Interesting why this has not been catched yet.
+
+TODO: think about test case
+---
+ tools/tools.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/tools.h b/tools/tools.h
+index c3d780d..4b944e2 100644
+--- a/tools/tools.h
++++ b/tools/tools.h
+@@ -109,8 +109,8 @@ struct arg_values {
+ 
+ struct arg_value_group_list {
+         struct dm_list list;
+-        struct arg_values arg_values[0];
+ 	uint32_t prio;
++        struct arg_values arg_values[0];
+ };
+ 
+ #define PERMITTED_READ_ONLY 	0x00000002
+-- 
+1.8.3.1
+

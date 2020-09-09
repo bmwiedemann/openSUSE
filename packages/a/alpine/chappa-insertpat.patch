@@ -1,6 +1,6 @@
-diff -rc alpine-2.22/pico/display.c alpine-2.22.insertpat/pico/display.c
-*** alpine-2.22/pico/display.c	2020-01-19 01:32:18.428510798 -0700
---- alpine-2.22.insertpat/pico/display.c	2020-01-19 01:34:56.194449394 -0700
+diff -rc alpine-2.23/pico/display.c alpine-2.23.insertpat/pico/display.c
+*** alpine-2.23/pico/display.c	2020-06-18 15:19:23.437319046 -0600
+--- alpine-2.23.insertpat/pico/display.c	2020-06-18 16:08:14.569594756 -0600
 ***************
 *** 2205,2210 ****
 --- 2205,2222 ----
@@ -22,9 +22,9 @@ diff -rc alpine-2.22/pico/display.c alpine-2.22.insertpat/pico/display.c
   	  case (CTRL|'G') :			/* CTRL-G help		*/
   	    if(term.t_mrow == 0 && km_popped == 0){
   		movecursor(term.t_nrow-2, 0);
-diff -rc alpine-2.22/pico/search.c alpine-2.22.insertpat/pico/search.c
-*** alpine-2.22/pico/search.c	2020-01-19 01:32:18.347512428 -0700
---- alpine-2.22.insertpat/pico/search.c	2020-01-19 01:34:56.195449387 -0700
+diff -rc alpine-2.23/pico/search.c alpine-2.23.insertpat/pico/search.c
+*** alpine-2.23/pico/search.c	2020-06-18 15:19:23.437319046 -0600
+--- alpine-2.23.insertpat/pico/search.c	2020-06-18 16:08:14.569594756 -0600
 ***************
 *** 122,127 ****
 --- 122,131 ----

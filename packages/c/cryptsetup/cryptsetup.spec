@@ -22,7 +22,7 @@ Name:           cryptsetup2
 %else
 Name:           cryptsetup
 %endif
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.0-or-later

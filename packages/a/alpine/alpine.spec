@@ -19,16 +19,15 @@
 Name:           alpine
 # For debugging only:
 %define		build_vanilla		0
+Version:        2.23
+Release:        0
 Summary:        Mail User Agent
 License:        Apache-2.0
 Group:          Productivity/Networking/Email/Clients
-Version:        2.22
-Release:        0
 URL:            http://alpine.x10host.com/alpine/
 
 # direct download does not work for openSUSE:Factory
-# Source:         http://patches.freeiz.com/alpine/release/src/%name-%version.tar.xz
-Source:         %name-%version.tar.xz
+Source:         http://alpine.x10host.com/alpine/release/src/%name-%version.tar.xz
 Source1:        %name.png
 Source2:        %name.desktop
 Source9:        UPDATING.txt
@@ -41,7 +40,6 @@ Patch10:        pico-fix-spurious-undef-warnings.diff
 Patch20:        pine-expression-warnings.diff
 Patch60:        signal-and-panic-improvements.diff
 Patch61:        return-values.diff
-Patch62:        extern.diff
 #
 # Eduardo Chappa's patches.
 # http://patches.freeiz.com/alpine/
@@ -110,7 +108,7 @@ the bottom of the screen, and context-sensitive help is provided.
 
 %prep
 %setup -q
-%if !%{build_vanilla}
+%if !0%{?build_vanilla}
 #
 # This is here to support checking if any patches add new warnings:
 #
@@ -145,8 +143,7 @@ fi
 %patch20 -p1
 %patch60 -p1
 %patch61 -p1
-%patch62 -p1
-%endif # End of "if !{build_vanilla}"
+%endif
 
 %build
 #
@@ -202,7 +199,7 @@ perl -i -pe 's{(define SYSTYPE) "LNX"}{$1 "'"$tag"'"}g' include/config.h
 #
 # imap does not use CFLAGS from configure, needs EXTRACFLAGS/EXTRALDFLAGS:
 #
-make %{?_smp_mflags} EXTRACFLAGS="$CFLAGS" EXTRALDFLAGS="$EXTRALDFLAGS"
+%make_build EXTRACFLAGS="$CFLAGS" EXTRALDFLAGS="$EXTRALDFLAGS"
 
 %install
 %make_install

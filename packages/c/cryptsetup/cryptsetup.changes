@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep  4 09:49:31 CEST 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Update to 2.3.4:
+  * Fix a possible out-of-bounds memory write while validating LUKS2 data
+    segments metadata (CVE-2020-14382, boo#1176128).
+  * Ignore reported optimal IO size if not aligned to minimal page size.
+  * Added support for new no_read/write_wrokqueue dm-crypt options (kernel 5.9).
+  * Added support panic_on_corruption option for dm-verity devices (kernel 5.9).
+  * Support --master-key-file option for online LUKS2 reencryption
+  * Always return EEXIST error code if a device already exists.
+  * Fix a problem in integritysetup if a hash algorithm has dash in the name.
+  * Fix crypto backend to properly handle ECB mode.
+  * TrueCrypt/VeraCrypt compatible mode now supports the activation of devices
+    with a larger sector.
+  * LUKS2: Do not create excessively large headers.
+  * Fix unspecified sector size for BitLocker compatible mode.
+  * Fix reading key data size in metadata for BitLocker compatible mode.
+
+-------------------------------------------------------------------
 Thu May 28 18:43:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.3.3:

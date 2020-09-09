@@ -52,8 +52,10 @@ Release:        0
 %bcond_with    lzma
 %endif
 %if 0%{?suse_version} >= 1320
+%bcond_without argon
 %bcond_without lz4
 %else
+%bcond_with    argon
 %bcond_with    lz4
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -71,7 +73,9 @@ BuildRequires:  xz-devel
 %if %{with lz4}
 BuildRequires:  liblz4-devel
 %endif
+%if %{with argon}
 BuildRequires:  libsodium-devel
+%endif
 %if 0%{?suse_version} >= 1520
 BuildRequires:  libmysqlclient-devel
 %else

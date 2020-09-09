@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 03 08:16:00 UTC 2020 - heming.zhao@suse.com
+
+- lvm can't pass build with gcc option Wstringop-overflow (bsc#1175565)
+  - remove suse speical patch
+    - bug-1175565_lvm-cant-pass-build-with-gcc-option-Wstringop-overflow.patch
+  - add upstream patch
+    + bug-1175565_01-tools-move-struct-element-before-variable-lenght-lis.patch
+    + bug-1175565_02-gcc-change-zero-sized-array-to-fexlible-array.patch
+    + bug-1175565_03-gcc-zero-sized-array-to-fexlible-array-C99.patch
+
+-------------------------------------------------------------------
 Thu Aug 20 04:49:00 UTC 2020 - heming.zhao@suse.com
 
 - lvm can't pass build with gcc option Wstringop-overflow (bsc#1175565)

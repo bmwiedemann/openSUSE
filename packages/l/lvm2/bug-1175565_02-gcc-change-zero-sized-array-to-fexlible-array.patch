@@ -1,9 +1,9 @@
-From c082344068ac0b080c5f3d97e0272952a665813b Mon Sep 17 00:00:00 2001
+From cc2218b4014015bd2633454e683293851183e08c Mon Sep 17 00:00:00 2001
 From: Zhao Heming <heming.zhao@suse.com>
-Date: Thu, 20 Aug 2020 23:21:11 +0800
-Subject: [PATCH] change zero-sized array to fexlible array
+Date: Fri, 21 Aug 2020 00:05:04 +0800
+Subject: [PATCH] gcc: change zero-sized array to fexlible array
 
-this change make gcc happy with compiling option: [-Wstringop-overflow=]
+this patch makes gcc happy with compiling option: [-Wstringop-overflow=]
 
 Signed-off-by: Zhao Heming <heming.zhao@suse.com>
 ---
@@ -13,7 +13,7 @@ Signed-off-by: Zhao Heming <heming.zhao@suse.com>
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/device_mapper/libdm-common.c b/device_mapper/libdm-common.c
-index bc691d6..3627457 100644
+index b6d08f5..9b87e4e 100644
 --- a/device_mapper/libdm-common.c
 +++ b/device_mapper/libdm-common.c
 @@ -1445,7 +1445,7 @@ struct node_op_parms {
@@ -39,7 +39,7 @@ index b2c99fc..96f7df6 100644
  
  static void _store_str(char **pos, char **ptr, const char *str)
 diff --git a/libdm/libdm-common.c b/libdm/libdm-common.c
-index d75c704..d587c32 100644
+index 466c74b..a288297 100644
 --- a/libdm/libdm-common.c
 +++ b/libdm/libdm-common.c
 @@ -1443,7 +1443,7 @@ struct node_op_parms {

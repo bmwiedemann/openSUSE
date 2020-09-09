@@ -488,4 +488,12 @@
     <comment>- update to 2.3.11.3 and pigeonhole to 0.5.11 (boo#1174920 boo#1174922 boo#1174923)</comment>
     <requestid>826276</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>42a7210af6a49740b9f42964a23cff39</srcmd5>
+    <version>2.3.11.3</version>
+    <time>1599598139</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>832820</requestid>
+  </revision>
 </revisionlist>
