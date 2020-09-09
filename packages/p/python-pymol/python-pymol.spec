@@ -20,7 +20,7 @@
 %define oldpython python
 %define modname pymol-open-source
 Name:           python-pymol
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        A Molecular Viewer
 License:        Python-2.0
@@ -41,6 +41,7 @@ BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel
+BuildRequires:  netcdf-devel
 # BuildRequires:  libmsgpack-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libxml2-devel

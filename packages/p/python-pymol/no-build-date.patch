@@ -12,12 +12,12 @@ Patch removes including build date in binary
 
 --- a/create_shadertext.py
 +++ b/create_shadertext.py
-@@ -141,7 +141,7 @@ def create_buildinfo(outputdir, pymoldir
+@@ -133,7 +133,7 @@ def create_buildinfo(outputdir, pymoldir
+         print('''
  #define _PyMOL_BUILD_DATE %d
  #define _PYMOL_BUILD_GIT_SHA "%s"
- #define _PyMOL_BUILD_SVN_REV %d
--        ''' % (time.time(), sha, rev), file=out)
-+        ''' % (0, sha, rev), file=out)
+-        ''' % (time.time(), sha), file=out)
++        ''' % (0, sha), file=out)
  
  if __name__ == "__main__":
      create_shadertext(*sys.argv[1:6])
