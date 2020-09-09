@@ -18,17 +18,14 @@
 
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni-plugins
-
 Name:           cni-plugins
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        Container Network Interface plugins
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/containernetworking/plugins
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  go >= 1.11
-BuildRequires:  golang-packaging
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
@@ -36,7 +33,6 @@ BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.11
 Requires:       cni
 Requires(post): %fillup_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 # Make sure that the binary is not getting stripped.
 %{go_nostrip}
@@ -77,7 +73,6 @@ install -m 755 -d "%{buildroot}%{cni_doc_dir}"
 %{fillup_only -n %{name}}
 
 %files
-%defattr(-,root,root)
 %dir %{cni_doc_dir}
 %doc CONTRIBUTING.md
 %doc README.md
