@@ -36,7 +36,7 @@ Release:        0
 %else
 %if %node_version_number >= 10
 %define openssl_req_ver 1.1.0
-%else # node8 or older
+%else
 %define openssl_req_ver 1.0.2
 %endif
 %endif
@@ -94,7 +94,7 @@ Release:        0
 %else
 %bcond_with    binutils_gold
 %endif
-%endif # aarch64
+%endif
 
 # No binutils_gold on all versions of SLE 12 and Leap 42 (s390x).
 %ifarch s390x
@@ -103,7 +103,7 @@ Release:        0
 %else
 %bcond_with    binutils_gold
 %endif
-%endif # s390x
+%endif
 
 %ifarch s390
 %bcond_with    binutils_gold
@@ -219,7 +219,7 @@ BuildRequires:  python2
 %else
 BuildRequires:  python
 %endif
-%endif  # python3
+%endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
 BuildRequires:  group(nobody)
@@ -230,7 +230,7 @@ BuildRequires:  user(nobody)
 
 %if %node_version_number >= 8
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
-%else # older node doesn't support OpenSSL 1.1
+%else
 
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libopenssl-1_0_0-devel
@@ -238,8 +238,8 @@ BuildRequires:  libopenssl-1_0_0-devel
 BuildRequires:  openssl-devel >= %{openssl_req_ver}
 %endif
 
-%endif # older node doesn't support OpenSSL 1.1
-%endif # ! {with intree_openssl}
+%endif
+%endif
 
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.10.0
@@ -353,7 +353,7 @@ tar Jxvf %{SOURCE10}
 
 %if %{node_version_number} >= 10
 tar Jxvf %{SOURCE11}
-%endif # node_version_number
+%endif
 
 %patch3 -p1
 %if ! 0%{with intree_openssl}

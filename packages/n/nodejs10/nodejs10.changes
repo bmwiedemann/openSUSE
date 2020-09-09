@@ -11,6 +11,11 @@ Mon Aug 10 16:37:44 UTC 2020 - Adam Majer <adam.majer@suse.de>
   on Aarch64 with gcc10 (bsc#1172686)
 
 -------------------------------------------------------------------
+Tue Jul 28 07:13:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- avoid rpmbuild warnings on if/else/endif constructs
+
+-------------------------------------------------------------------
 Wed Jul 22 12:27:31 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 12.22.0:
