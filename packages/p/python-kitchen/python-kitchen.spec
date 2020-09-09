@@ -1,7 +1,7 @@
 #
 # spec file for package python-kitchen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,16 @@ Release:        0
 Summary:        Kitchen contains a cornucopia of useful code
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
-URL:            https://fedorahosted.org/kitchen/
+URL:            https://github.com/fedora-infra/kitchen/
 Source:         https://files.pythonhosted.org/packages/source/k/kitchen/kitchen-%{version}.tar.gz
+# https://github.com/fedora-infra/kitchen/pull/33
+Patch0:         python-kitchen-remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION tests
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -39,6 +41,7 @@ A bunch of useful python functions to be used in other projects.
 
 %prep
 %setup -q -n kitchen-%{version}
+%patch0 -p1
 sed -i '1s/^#!.*//' kitchen2/kitchen/pycompat24/base64/_base64.py
 
 %build
@@ -56,7 +59,7 @@ pushd kitchen2
 %else
 pushd kitchen3
 %endif
-nosetests-%{$python_version} -e test_internal_generate_combining_table
+$python -m pytest -k 'not test_internal_generate_combining_table'
 popd}
 
 %files %{python_files}
