@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:48:49 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Changes since 20.08.0:
+  * cmake: explicitly require KF5I18n
+
+-------------------------------------------------------------------
 Sun Aug  9 09:07:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.08.0
