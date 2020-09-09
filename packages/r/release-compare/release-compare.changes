@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  9 11:58:07 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.4
+   * avoid double Changelog txt suffix
+   * guess file names need to work with -Snapshot file names on factory
+   * work on source rpm name base only
+   * strip "first" lines of changes to hide the email adresses
+
+-------------------------------------------------------------------
+Wed Sep  2 12:59:41 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.3
+  * beautify diff of import packages
+
+-------------------------------------------------------------------
 Wed Sep  2 10:32:52 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.3.2
