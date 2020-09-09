@@ -1,0 +1,40 @@
+The upstream cockpit spec file is rather complex and ugly. It does
+contain information we need though, such as the bundled node
+modules. Therefore the package reuses the upstream spec file and
+applies openSUSE specifics that upstream doesn't accept on top. For
+that purpose a git repo tracks the spec file changes:
+https://github.com/lnussel/cockpit
+
+There' an opensuse-$VERSION branch for each release
+
+For simple fixes it's fine to just submit the spec file by OBS
+means, I'll retrofit in git. Don't worry about that.
+
+For version updates the git workflow really is needed to maintain
+mental health though.
+
+The following workflow is used to update the package to a newer
+version:
+
+- create a branch for the new version based on the old one:
+  git checkout -b opensuse-$NEW_VERSION opensuse-$OLD_VERSION
+- use interactive rebase to amend the commits marked as EDIT THIS:
+  git rebase -i $NEW_VERSION
+  * for the very fist commit download the new tarball and extract
+    the spec file from it. Copy the spec file over
+    tools/cockpit.spec. That is basically what changed between the
+    versions wrt spec file.
+  * the second one adjust the spec file to have $NEW_VERSION. For
+    whatever reason the upstream spec file alwas has version 0.
+  * the rest of the changes should just apply.
+- copy the spec file back into the OBS checkout and continue with
+  regular tasks related to updating packages.
+- If any further spec file changes were needed, copy the spec back
+  into the git tree and commit there. Amend and reorder as needed.
+- When done, push the git repo.
+
+Sending fixes upstream:
+
+if you have any changes that should go upstream, create a new, clean
+branch and cherry pick *one* commit into it. Upstream wants pull
+requests with only one commit 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:09:16 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- cockpit-ws: don't require systemd (allows to build a very small
+  cockpit-ws container)
+
+-------------------------------------------------------------------
+Mon Aug 31 15:46:35 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Add README.packaging for packagers
+
+-------------------------------------------------------------------
 Fri Aug 14 12:09:24 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - new version 225:
