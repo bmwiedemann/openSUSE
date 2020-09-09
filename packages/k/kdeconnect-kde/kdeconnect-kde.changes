@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:49:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Changes since 20.08.0:
+  * [kio] Mark Class as local (kde#413477)
+  * Reload remote commands model when commands change
+  * Define content margins for settings app
+  * appdata: use canonical help URL
+
+-------------------------------------------------------------------
 Wed Aug 19 10:51:24 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
