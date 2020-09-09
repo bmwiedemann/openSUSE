@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 02 06:12:34 UTC 2020 - jslaby@suse.com
+
+- Update to version 20200830:
+  * dtv-scan-tables: Full UK update
+  * dtv-scan-tables: add table for Slovenia
+  * dtv-scan-tables: frequency updates for Finland
+  * Add atsc/kr-Cable-8VSB
+  * dtv-scan-tables: add Dorfnetz for Liechtenstein
+  * Update dvb-t scan files for Ireland (ie-*)
+
+-------------------------------------------------------------------
 Tue Mar 31 10:53:58 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20200311:
