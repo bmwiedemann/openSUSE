@@ -95,4 +95,12 @@
   python3 only. (forwarded request 824103 from eeich)</comment>
     <requestid>824105</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dff65bec0d435736beffb544fbb75ade</srcmd5>
+    <version>1.8.3</version>
+    <time>1599667355</time>
+    <user>dimstar_suse</user>
+    <comment>- Grab updated spec file from upstream to fix Python2 handling. (forwarded request 833058 from eeich)</comment>
+    <requestid>833066</requestid>
+  </revision>
 </revisionlist>

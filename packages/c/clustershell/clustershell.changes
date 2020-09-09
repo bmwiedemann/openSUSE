@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  8 17:37:17 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Grab updated spec file from upstream to fix Python2 handling.
+
+-------------------------------------------------------------------
 Wed Jul 29 18:21:55 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Update to upstream release 1.8.3: 

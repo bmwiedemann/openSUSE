@@ -21,9 +21,6 @@
 %{!?python2_sitelib: %global python2_sitelib %{python_sitelib}}
 %{!?__python: %global __python python}
 %{!?__python2: %global __python2 %{__python}}
-%if ! 0%{?rhel} >= 8 && ! 0%{?suse_version} > 1550
-%define py2 1
-%endif
 
 %if 0%{?fedora} >= 22
 %{!?python2_pkgversion: %global python2_pkgversion 2}
@@ -43,6 +40,10 @@
 %{!?__python3: %global __python3 python3}
 %{!?python3_shortver: %global python3_shortver %(%{__python3} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 
+%if 0%{?rhel} < 8 &&  0%{?suse_version} <= 1500
+%define py2 1
+%endif
+
 %global srcname ClusterShell
 
 Name:           clustershell
@@ -50,17 +51,15 @@ Version:        1.8.3
 Release:        1%{?dist}
 Summary:        Python framework for efficient cluster administration
 License:        LGPL-2.1-or-later
-Group:          System Environment/Base
-%if 0%{?suse_version}
-%else
-%endif
+Group:          Productivity/Clustering/Computing
+
 URL:            http://cea-hpc.github.io/clustershell/
 Source0:        https://files.pythonhosted.org/packages/source/C/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
-%if 0%{!?py2:1}
-Requires:       python3-%{name} = %{version}-%{release}
-%else
+%if 0%{?py2}
 Requires:       python2-%{name} = %{version}-%{release}
+%else
+Requires:       python3-%{name} = %{version}-%{release}
 %endif
 %if 0%{?rhel} >= 7 || 0%{?fedora}
 Requires:       vim-filesystem
@@ -166,7 +165,6 @@ install -d %{buildroot}/%{vimdatadir}/{ftdetect,syntax}
 install -p -m 0644 doc/extras/vim/ftdetect/clustershell.vim %{buildroot}/%{vimdatadir}/ftdetect/
 install -p -m 0644 doc/extras/vim/syntax/clushconf.vim %{buildroot}/%{vimdatadir}/syntax/
 install -p -m 0644 doc/extras/vim/syntax/groupsconf.vim %{buildroot}/%{vimdatadir}/syntax/
-
 %{?suse_version:%fdupes %{buildroot}}
 
 %if 0%{?rhel}
@@ -216,7 +214,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %endif
 %doc ChangeLog README.md
-%if %{suse_version} >= 1500
+%if 0%{?suse_version} >= 1500
 %license COPYING.LGPLv2.1
 %else
 %doc COPYING.LGPLv2.1
