@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 31 14:21:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10:
+  * NULL terminate color buffer string to prevent usage of uninitialised memory
+  * Correctly display colors with aplha value < 100%
+  * Short option -v no longer shows current version but increases debug level
+    instead.
+  * Enable seccomp rules by default if libseccomp is found.
+  * Long options (--border-color, --background-color, --bar-color).
+  * Log output. Use -v increase verbosity.
+
+-------------------------------------------------------------------
 Wed Jul 29 16:24:18 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Improve spec file

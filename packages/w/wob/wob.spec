@@ -17,7 +17,7 @@
 
 
 Name:           wob
-Version:        0.8
+Version:        0.10
 Release:        0
 Summary:        A lightweight overlay volume/backlight/progress/anything bar for Wayland
 License:        ISC
@@ -26,9 +26,11 @@ URL:            https://github.com/francma/wob
 Source0:        https://github.com/francma/wob/releases/download/%{version}/wob-%{version}.tar.gz
 Source1:        https://github.com/francma/wob/releases/download/%{version}/wob-%{version}.tar.gz.sig
 Source2:        https://keys.openpgp.org/vks/v1/by-fingerprint/5C6DA024DDE27178073EA103F4B432D5D67990E3#/%{name}.keyring
+BuildRequires:  cmake
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  wayland-devel
+BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(scdoc)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
