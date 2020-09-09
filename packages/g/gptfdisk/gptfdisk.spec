@@ -24,13 +24,11 @@ License:        GPL-2.0-only
 Group:          System/Base
 URL:            http://rodsbooks.com/gdisk
 
-Source:         http://downloads.sf.net/%name/%name-%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://downloads.sf.net/%name/%name-%version.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(uuid)
-
 Obsoletes:      gdisk < %version-%release
 Provides:       gdisk = %version-%release
 
@@ -52,22 +50,21 @@ and enables changing primary vs. logical partition status. Also
 provides a few additional partition manipulation features.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-CFLAGS="%optflags" CXXFLAGS="%optflags" make %{?_smp_mflags}
+CFLAGS="%optflags" CXXFLAGS="%optflags" %make_build
 
 %install
-b="%buildroot";
-mkdir -p "$b/%_sbindir" "$b/%_mandir/man8";
-install -pm0755 fixparts {,c,s}gdisk "$b/%_sbindir/";
-install -pm0644 *.8 "$b/%_mandir/man8/";
+b="%buildroot"
+mkdir -p "$b/%_sbindir" "$b/%_mandir/man8"
+install -pm0755 fixparts {,c,s}gdisk "$b/%_sbindir/"
+install -pm0644 *.8 "$b/%_mandir/man8/"
 
 %check
 ./gdisk_test.sh
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc NEWS README
 %_sbindir/gdisk
@@ -78,7 +75,6 @@ install -pm0644 *.8 "$b/%_mandir/man8/";
 %_mandir/man8/sgdisk.8*
 
 %files fixparts
-%defattr(-,root,root)
 %_sbindir/fixparts
 %_mandir/man8/fixparts.8*
 
