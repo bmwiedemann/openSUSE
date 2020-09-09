@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%bcond_without nuspell
+%else
+%bcond_with nuspell
+%endif
 Name:           enchant
 Version:        2.2.8
 Release:        0
@@ -30,6 +35,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  hunspell-devel
 BuildRequires:  libvoikko-devel
+%if %{with nuspell}
+BuildRequires:  libboost_headers-devel
+BuildRequires:  nuspell-devel
+%endif
 
 %description
 A library providing an efficient extensible abstraction for dealing
@@ -72,6 +81,16 @@ Provides:       enchant-2-backend
 
 %description -n enchant-2-backend-hunspell
 Hunspell plugin for enchant, a library providing an efficient
+extensible abstraction for dealing with different spell checking
+libraries.
+
+%package -n enchant-2-backend-nuspell
+Summary:        Nuspell backend for the Enchant spell checking library
+Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libnuspell.so))
+Provides:       enchant-2-backend
+
+%description -n enchant-2-backend-nuspell
+Nuspell plugin for enchant, a library providing an efficient
 extensible abstraction for dealing with different spell checking
 libraries.
 
@@ -141,6 +160,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n enchant-2-backend-hunspell
 %dir %{_libdir}/enchant-2
 %{_libdir}/enchant-2/enchant_hunspell.so
+
+%if %{with nuspell}
+%files -n enchant-2-backend-nuspell
+%dir %{_libdir}/enchant-2
+%{_libdir}/enchant-2/enchant_nuspell.so
+%endif
 
 %files -n enchant-2-backend-voikko
 %dir %{_libdir}/enchant-2

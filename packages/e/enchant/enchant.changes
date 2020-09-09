@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 18 05:57:28 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Enable nuspell backend where it is available (openSUSE >= 1550):
+  + Introduce BuildRequires: nuspell-devel and
+    libboost_headers-devel.
+  + Split out new package enchant-2-backend-nuspell providing the
+    nuspell backend.
+
+-------------------------------------------------------------------
 Wed Aug  5 21:50:14 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.2.8:
