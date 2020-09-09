@@ -17,7 +17,7 @@
 
 
 Name:           perl-Log-Log4perl
-Version:        1.50
+Version:        1.52
 Release:        0
 %define cpan_name Log-Log4perl
 Summary:        Log4j implementation for Perl
@@ -30,8 +30,15 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(File::Path) >= 2.060600
-Requires:       perl(File::Path) >= 2.060600
+BuildRequires:  perl(File::Path) >= 2.070000
+Requires:       perl(File::Path) >= 2.070000
+Recommends:     perl(DBD::CSV) >= 0.33
+Recommends:     perl(DBD::SQLite)
+Recommends:     perl(DBI) >= 1.607
+Recommends:     perl(Log::Dispatch)
+Recommends:     perl(Log::Dispatch::FileRotate) >= 1.10
+Recommends:     perl(SQL::Statement) >= 1.20
+Recommends:     perl(XML::DOM) >= 1.29
 %{perl_requires}
 
 %description
