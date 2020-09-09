@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep  5 12:53:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.09.04
+  * sccs: get(1) and delta(1) now restore the removed newline at
+    the end of the last line if this was a SCCSv6 "^ANxxx" line
+    to support files not ending in a newline.
+  * sccs: The delta(1) command now correctly handles deltas where
+    the last difference hits the end of the history file.
+  * sccs: The delta(1) command now removes the e.file in case of
+    an error abort.
+
+-------------------------------------------------------------------
 Thu Aug 13 09:32:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.08.12

@@ -17,14 +17,14 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2020.08.12
+%global box_version	2020.09.04
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
-%global libfind_version 1.7
+%global libfind_version 1.8
 %global ved_version     1.7
-%define rver	2020-08-12
+%define rver	2020-09-04
 
 Name:           schily
 Version:        %box_version
@@ -571,7 +571,6 @@ rm -Rfv \
    $b/usr/bin/strar \
    $b/usr/bin/termcap \
    $b/usr/bin/translit \
-   $b/usr/bin/udiff \
    $b/usr/lib*/cpp \
    $b/usr/lib*/libmakestate.so \
    $b/usr/lib*/libmakestate.so.1.0 \
@@ -626,7 +625,6 @@ rm -Rfv \
    $b/usr/share/man/man1/tartest.1 \
    $b/usr/share/man/man1/termcap.1 \
    $b/usr/share/man/man1/translit.1 \
-   $b/usr/share/man/man1/udiff.1 \
    $b/usr/share/man/man3/getopt.3 \
    $b/usr/share/man/man3/getsubopt.3 \
    $b/usr/share/man/man3/starthandlecond.3 \
@@ -947,6 +945,8 @@ fi
 %_bindir/cdc
 %_bindir/comb
 %_bindir/delta
+%_bindir/fdiff
+%_bindir/fsdiff
 %_bindir/get
 %_bindir/help
 %_bindir/prs
@@ -958,6 +958,7 @@ fi
 %_bindir/sccscvt
 %_bindir/sccsdiff
 %_bindir/sccslog
+%_bindir/udiff
 %_bindir/unget
 %_bindir/val
 %_bindir/vc
@@ -967,6 +968,8 @@ fi
 %_mandir/man1/cdc.1*
 %_mandir/man1/comb.1*
 %_mandir/man1/delta.1*
+%_mandir/man1/fdiff.1*
+%_mandir/man1/fsdiff.1*
 %_mandir/man1/get.1*
 %_mandir/man1/help.1*
 %_mandir/man1/prs.1*
@@ -975,6 +978,7 @@ fi
 %_mandir/man1/rmdel.1*
 %_mandir/man1/sact.1*
 %_mandir/man1/sccs*.1*
+%_mandir/man1/udiff.1*
 %_mandir/man1/unget.1*
 %_mandir/man1/val.1*
 %_mandir/man1/vc.1*
