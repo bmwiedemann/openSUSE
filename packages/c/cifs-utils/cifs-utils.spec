@@ -44,11 +44,12 @@ Patch8:         0009-Zero-fill-the-allocated-memory-for-new-struct-cifs_n.patch
 Patch9:         0010-Zero-fill-the-allocated-memory-for-a-new-ACE.patch
 Patch10:        0011-fix-doublefree.patch
 Patch11:        0012-mount.cifs-Fix-invalid-free.patch
+Patch12:        0013-CVE-2020-14342-mount.cifs-fix-shell-command-injectio.patch
 
 # cifs-utils 6.8 switched to python for man page generation
 # we need to require either py2 or py3 package
 # some products do not have a py2/py3 versions
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 120000
+%if 0%{?suse_version} >= 1500
 BuildRequires:  python3-docutils
 %else
 BuildRequires:  python-docutils
@@ -132,6 +133,7 @@ cp -a ${RPM_SOURCE_DIR}/README.cifstab.migration .
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 10 06:56:11 UTC 2020 - Aurelien Aptel <aaptel@suse.com>
+
+- CVE-2020-14342: Shell command injection vulnerability in mount.cifs;
+  (bsc#1174477); (bso#14442); CVE-2020-14342.
+  * add 0013-CVE-2020-14342-mount.cifs-fix-shell-command-injectio.patch
+
+-------------------------------------------------------------------
 Wed Apr  8 10:36:15 UTC 2020 - Aurelien Aptel <aaptel@suse.com>
 
 - rst2man has been moved to python3-docutils in SLE12+, update
