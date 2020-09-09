@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  9 08:56:53 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- 9070.patch: backport compilation fix vs. latest Boost 1.74
+  based on https://github.com/PowerDNS/pdns/pull/9070
+
+-------------------------------------------------------------------
+Tue Sep  8 09:23:44 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.3.4
+  * fixes an issue where certain CNAMEs could lead to resolver failure
+  * fixes an issue with the hostname reported in Carbon messages
+  * allows for multiple recursor services to run under systemd
+- use HTTPS scheme for all URLs
+
+-------------------------------------------------------------------
 Fri Jul 17 12:19:37 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.3.3

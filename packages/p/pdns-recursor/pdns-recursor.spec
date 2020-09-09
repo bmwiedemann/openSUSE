@@ -35,7 +35,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -80,12 +80,13 @@ BuildRequires:  pkgconfig(libsystemd)
 %endif
 PreReq:         pdns-common
 #
-URL:            http://www.powerdns.com/
-Source:         http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
-Source10:       http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2.sig
+URL:            https://www.powerdns.com/
+Source:         https://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
+Source10:       https://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2.sig
 Source11:       https://powerdns.com/powerdns-keyblock.asc#/pdns-recursor.keyring
 Source1:        pdns-recursor.init
 Source2:        recursor.conf
+Patch1:         9070.patch
 #
 Summary:        Modern, advanced and high performance recursing/non authoritative nameserver
 License:        GPL-2.0-or-later
@@ -101,7 +102,7 @@ Authors:
     http://www.powerdns.com
 
 %prep
-%setup -n %{name}-%{version}
+%autosetup -n %{name}-%{version}
 
 %build
 autoreconf -fi
