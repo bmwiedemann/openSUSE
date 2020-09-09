@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Sep  5 16:42:02 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update required packages for tests according to setup.py
+
+- update to version 6.1.7
+  * Fixed launching non python kernels from a windows store installed
+    jupyter
+  * Silenced kill_kernel when kernel is already terminated
+  * Removed a number of python 2 code paths (thanks @rahulporuri)
+  * Documentation improvements around debug request/reply patterns
+
+- changes from version 6.1.6:
+  * Removed warnings in more cases for KernelManagers that use new
+    cleanup method (:ghpull:`560`)
+  * Some improved tests with a conversion to pytest pattern
+    (:ghpull:`561`)
+
+- changes from version 6.1.5:
+  * Gracefully Close ZMQ Context upon kernel shutdown to fix memory
+    leak (:ghpull:`548`)
+  * Fix for chained exceptions to preserve stacks (:ghpull:`552`,
+    :ghpull:`554`)
+  * Fix start_kernel error when passing kernel_id (:ghpull:`547`)
+  * Update to releasing docs (:ghpull:`543`)
+
+- changes from version 6.1.4:
+  * (Deleted release with incorrect local files)
+
+-------------------------------------------------------------------
 Sat Apr 25 17:16:52 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - Update to version 6.1.3:

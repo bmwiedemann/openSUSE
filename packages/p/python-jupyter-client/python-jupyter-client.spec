@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jupyter-client%{psuffix}
-Version:        6.1.3
+Version:        6.1.7
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
@@ -48,7 +48,12 @@ Obsoletes:      python-jupyter_client < %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
