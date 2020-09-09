@@ -18,7 +18,7 @@
 
 %global major   68
 Name:           mozjs%{major}
-Version:        68.9.0
+Version:        68.12.0
 Release:        0
 Summary:        MozJS, or SpiderMonkey, is Mozilla's JavaScript engine written in C and C++
 License:        MPL-2.0
