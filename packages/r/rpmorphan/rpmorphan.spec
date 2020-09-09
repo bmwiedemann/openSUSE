@@ -75,7 +75,7 @@ sed -i 's/^#\!\/usr\/bin\/env\ perl/#\!\/usr\/bin\/perl/' *.pl
 %{_mandir}/man1/rpmextra.1%{?ext_man}
 %{_mandir}/man1/rpmorphan.1%{?ext_man}
 %{_mandir}/man1/rpmusage.1%{?ext_man}
-%{_libexecdir}/rpmorphan/
+%{_prefix}/lib/rpmorphan/
 %dir %{_localstatedir}/lib/rpmorphan
 %{_localstatedir}/lib/rpmorphan/keep
 %ghost %config(noreplace) %{_localstatedir}/log/rpmorphan.log

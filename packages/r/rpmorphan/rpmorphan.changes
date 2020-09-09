@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:47:35 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Tue Dec  4 11:04:46 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Trim future intentions.
