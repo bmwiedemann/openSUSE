@@ -169,4 +169,12 @@
     <comment>Remove -lang recommends (forwarded request 768703 from dimstar)</comment>
     <requestid>768716</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c90f1044611ff955606b9dc597b9ec3e</srcmd5>
+    <version>1.8.4</version>
+    <time>1599666387</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.8.4 (forwarded request 832122 from dimstar)</comment>
+    <requestid>832500</requestid>
+  </revision>
 </revisionlist>
