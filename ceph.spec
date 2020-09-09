@@ -94,7 +94,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.0.0.4862+g8ac6038555
+Version:	16.0.0.4863+g5d95d9d41d
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -110,7 +110,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.0.0-4862-g8ac6038555.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.0.0-4863-g5d95d9d41d.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -1064,7 +1064,7 @@ This package provides Ceph’s default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.0.0-4862-g8ac6038555
+%autosetup -p1 -n ceph-16.0.0-4863-g5d95d9d41d
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:

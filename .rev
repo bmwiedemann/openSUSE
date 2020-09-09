@@ -485,4 +485,12 @@
     <comment>16.0.0 (forwarded request 830282 from smithfarm)</comment>
     <requestid>830283</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>0b9fc5d9c1029f551304c0239305c74e</srcmd5>
+    <version>16.0.0.4863+g5d95d9d41d</version>
+    <time>1599666310</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1175266 (forwarded request 832136 from smithfarm)</comment>
+    <requestid>832137</requestid>
+  </revision>
 </revisionlist>
