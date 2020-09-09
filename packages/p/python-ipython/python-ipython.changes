@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep  5 16:19:34 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 7.18.1:
+  * Backport PR #12413: catch unrecoverable error
+  * Revert "Backport PR #12207 on branch 7.x (Bump jedi to at least
+    0.16.0 and fix deprecated function usage)"
+
+-------------------------------------------------------------------
 Sat Aug 29 16:14:09 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 7.18.0:

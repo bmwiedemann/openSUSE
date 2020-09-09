@@ -930,4 +930,16 @@
     <comment></comment>
     <requestid>830695</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7d6e1f291548f98b784961ef7d8c72b9</srcmd5>
+    <version>7.18.1</version>
+    <time>1599666405</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.18.1:
+  * Backport PR #12413: catch unrecoverable error
+  * Revert &quot;Backport PR #12207 on branch 7.x (Bump jedi to at least
+    0.16.0 and fix deprecated function usage)&quot;
+</comment>
+    <requestid>832538</requestid>
+  </revision>
 </revisionlist>

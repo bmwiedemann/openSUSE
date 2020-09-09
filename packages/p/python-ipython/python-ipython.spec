@@ -28,7 +28,7 @@
 %define         skip_python2 1
 %bcond_without  iptest
 Name:           python-ipython%{psuffix}
-Version:        7.18.0
+Version:        7.18.1
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -45,7 +45,7 @@ Requires:       python-Pygments
 Requires:       python-backcall
 Requires:       python-base >= 3.5
 Requires:       python-decorator
-Requires:       python-jedi >= 0.16
+Requires:       python-jedi >= 0.10
 Requires:       python-pexpect >= 4.6
 Requires:       python-pickleshare
 Requires:       python-prompt_toolkit < 3.1
