@@ -467,4 +467,12 @@ Newer versions will have the correct headers.</comment>
     <comment>20.08.0 release</comment>
     <requestid>826395</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c52ace22b6fd2acbbac2f5a3cefa3499</srcmd5>
+    <version>20.08.1</version>
+    <time>1599666849</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release 20.08.1</comment>
+    <requestid>831766</requestid>
+  </revision>
 </revisionlist>

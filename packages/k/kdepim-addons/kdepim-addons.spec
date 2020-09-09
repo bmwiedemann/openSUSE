@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-addons
-Version:        20.08.0
+Version:        20.08.1
 Release:        0
 Summary:        Addons for KDEPIM applications
 License:        GPL-2.0-only
