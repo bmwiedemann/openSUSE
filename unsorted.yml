@@ -8648,23 +8648,21 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute19: [x86_64] 
+  - libarm_compute20: [x86_64] 
   - libarmadillo9 
   - libarmadillo9-32bit: [x86_64] 
-  - libarmnn21: [x86_64] 
-  - libarmnn21-opencl: [x86_64] 
-  - libarmnnBasePipeServer21: [x86_64] 
-  - libarmnnBasePipeServer21-opencl: [x86_64] 
-  - libarmnnCaffeParser21: [x86_64] 
-  - libarmnnCaffeParser21-opencl: [x86_64] 
-  - libarmnnOnnxParser21: [x86_64] 
-  - libarmnnOnnxParser21-opencl: [x86_64] 
-  - libarmnnSerializer21: [x86_64] 
-  - libarmnnSerializer21-opencl: [x86_64] 
-  - libarmnnTfLiteParser21: [x86_64] 
-  - libarmnnTfLiteParser21-opencl: [x86_64] 
-  - libarmnnTfParser21: [x86_64] 
-  - libarmnnTfParser21-opencl: [x86_64] 
+  - libarmnn22: [x86_64] 
+  - libarmnn22-opencl: [x86_64] 
+  - libarmnnBasePipeServer22: [x86_64] 
+  - libarmnnBasePipeServer22-opencl: [x86_64] 
+  - libarmnnCaffeParser22: [x86_64] 
+  - libarmnnCaffeParser22-opencl: [x86_64] 
+  - libarmnnSerializer22: [x86_64] 
+  - libarmnnSerializer22-opencl: [x86_64] 
+  - libarmnnTfLiteParser22: [x86_64] 
+  - libarmnnTfLiteParser22-opencl: [x86_64] 
+  - libarmnnTfParser22: [x86_64] 
+  - libarmnnTfParser22-opencl: [x86_64] 
   - libarpack2 
   - libarpack2-32bit: [x86_64] 
   - libarprec0 
@@ -12082,6 +12080,8 @@ unsorted:
   - libqxp-doc 
   - libqxp-tools 
   - libqxtglobalshortcut0 
+  - librabbitmq-devel 
+  - librabbitmq4 
   - libradcli4 
   - librados-devel: [x86_64] # devel package of dvd:librados2 
   - libradospp-devel: [x86_64] # devel package of dvd:librados2 
@@ -12866,8 +12866,10 @@ unsorted:
   - libtiger-devel 
   - libtiger5 
   - libtiled1 
-  - libtimelineDecoder21: [x86_64] 
-  - libtimelineDecoder21-opencl: [x86_64] 
+  - libtimelineDecoder22: [x86_64] 
+  - libtimelineDecoder22-opencl: [x86_64] 
+  - libtimelineDecoderJson22: [x86_64] 
+  - libtimelineDecoderJson22-opencl: [x86_64] 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -15513,6 +15515,7 @@ unsorted:
   - neard-test 
   - neatvnc-devel 
   - nedit 
+  - neix 
   - neko 
   - neko-devel 
   - neko-mysql 
@@ -20011,6 +20014,7 @@ unsorted:
   - python3-bcc 
   - python3-bcolz 
   - python3-beautifulsoup4 
+  - python3-before-after 
   - python3-behave 
   - python3-bencode 
   - python3-beniget 
@@ -20324,6 +20328,7 @@ unsorted:
   - python3-django-avatar 
   - python3-django-bootstrap3 
   - python3-django-braces 
+  - python3-django-cacheops 
   - python3-django-ckeditor 
   - python3-django-classy-tags 
   - python3-django-codemod 
@@ -22014,6 +22019,7 @@ unsorted:
   - python3-smbprotocol 
   - python3-smbus 
   - python3-smmap 
+  - python3-smpplib 
   - python3-snimpy 
   - python3-snuggs 
   - python3-social-auth-app-django 
@@ -22639,6 +22645,7 @@ unsorted:
   - qxmledit-devel 
   - qxtglobalshortcut-devel 
   - r128gain 
+  - rabbitmq-c-tools 
   - rabbitmq-java-client 
   - rabbitmq-server 
   - rabbitmq-server-plugins 
