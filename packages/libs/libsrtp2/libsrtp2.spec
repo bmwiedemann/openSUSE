@@ -1,7 +1,7 @@
 #
 # spec file for package libsrtp2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libsrtp2
 %define lname	libsrtp2-1
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Secure Real-Time Transport Protocol (SRTP) library v2
 License:        BSD-3-Clause
@@ -62,11 +62,11 @@ Protocol (SRTP) originally authored by Cisco Systems, Inc.
 This subpackage contains the development headers.
 
 %prep
-%setup -qn libsrtp-%version
+%autosetup -p1 -n libsrtp-%version
 
 %build
 %configure --enable-openssl
-make shared_library %{?_smp_mflags}
+%make_build shared_library
 
 %install
 %make_install
@@ -87,12 +87,11 @@ sed -i 's|\(# *\(ifdef\|ifndef\|define\|endif */\*\) *\)\([A-Z0-9_]*_H\)\($\| *\
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libsrtp2.so.1
 
 %files devel
-%defattr(-,root,root)
-%doc CHANGES LICENSE README.md doc/*.txt
+%doc CHANGES README.md doc/*.txt
+%license LICENSE
 %_includedir/srtp2/
 %_libdir/libsrtp2.so
 %_libdir/pkgconfig/libsrtp2.pc
