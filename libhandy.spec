@@ -16,21 +16,21 @@
 #
 
 
-%define shlib %{name}-0_0-0
+%define so_major 1
+%define shlib %{name}-%{so_major}-0
+%define typelib typelib-1_0-Handy-%{so_major}_0
 
 Name:           libhandy
-Version:        0.0.13
+Version:        0.90.0
 Release:        0
 Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            https://source.puri.sm/Librem5/libhandy/
+URL:            https://gitlab.gnome.org/GNOME/libhandy
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM libhandy-adapt-glade-3-36.patch -- Fix build with new glade 3.36
-Patch0:         libhandy-adapt-glade-3-36.patch
 
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gladeui-2.0)
@@ -45,6 +45,7 @@ using GTK+/GNOME.
 %package -n %{shlib}
 Summary:        A GTK+ library to develop UI for mobile devices
 Group:          System/Libraries
+Provides:       %{name} = %{version}
 
 %description -n %{shlib}
 This package provides the shared library for libhandy, a library to
@@ -54,18 +55,18 @@ help with developing mobile UI using GTK+/GNOME.
 Summary:        Source and header files for %{name}
 Group:          Development/Libraries/GNOME
 Requires:       %{shlib} = %{version}
-Requires:       typelib-1_0-Handy-0_0 = %{version}
+Requires:       %{typelib} = %{version}
 
 %description devel
 This package provides the source and header files for writing
 software using %{name}, a library to help with developing mobile UI
 using GTK+/GNOME.
 
-%package -n typelib-1_0-Handy-0_0
+%package -n %{typelib}
 Summary:        Introspection bindings for libhandy
 Group:          System/Libraries
 
-%description -n typelib-1_0-Handy-0_0
+%description -n %{typelib}
 This package provides the GObject Introspection bindings for
 %{name}, a library to help with developing mobile UI using
 GTK+/GNOME.
@@ -74,7 +75,7 @@ GTK+/GNOME.
 Summary:        Glade catalog for libhandy
 Group:          Development/Tools/GUI Builders
 Requires:       glade
-Supplements:    packageand(glade:%{name}-devel)
+Supplements:    (glade and %{name}-devel)
 
 %description -n glade-catalog-libhandy
 libhandy is a library to help with developing UI for mobile devices
@@ -82,6 +83,8 @@ using GTK+/GNOME.
 
 This package provides a catalog for libhandy, to allow the use
 libhandy widgets in Glade.
+
+%lang_package
 
 %prep
 %autosetup -p1
@@ -101,6 +104,7 @@ libhandy widgets in Glade.
 
 %install
 %meson_install
+%find_lang %{name}
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -111,19 +115,21 @@ libhandy widgets in Glade.
 %files devel
 %license COPYING
 %doc AUTHORS README.md
-%{_includedir}/libhandy-0.0/
+%{_includedir}/libhandy-%{so_major}/
 %{_libdir}/libhandy-*.so
 %{_datadir}/gir-1.0/*.gir
-%{_libdir}/pkgconfig/libhandy-0.0.pc
+%{_libdir}/pkgconfig/libhandy-%{so_major}.pc
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libhandy-*
-%{_datadir}/gtk-doc/html/libhandy/
+%{_datadir}/gtk-doc/html/libhandy-%{so_major}/
 
-%files -n typelib-1_0-Handy-0_0
+%files -n %{typelib}
 %{_libdir}/girepository-1.0/*.typelib
 
 %files -n glade-catalog-libhandy
 %{_libdir}/glade/modules/*.so
 %{_datadir}/glade/catalogs/*.xml
+
+%files lang -f %{name}.lang
 
 %changelog
