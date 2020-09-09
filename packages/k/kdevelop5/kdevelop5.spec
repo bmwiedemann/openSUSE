@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,51 +17,50 @@
 
 
 %define rname   kdevelop
-%define libkdev_major 55
+%define libkdev_major 56
 Name:           kdevelop5
-Version:        5.5.2
+Version:        5.6.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
 Source0:        https://download.kde.org/stable/%{rname}/%{version}/src/%{rname}-%{version}.tar.xz
-BuildRequires:  grantlee5-devel
-BuildRequires:  karchive-devel
-BuildRequires:  kcmutils-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdeclarative-devel
 BuildRequires:  kdevelop5-pg-qt
-BuildRequires:  kdoctools-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kguiaddons-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemmodels-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kjobwidgets-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kparts-devel
-BuildRequires:  krunner-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libkomparediff2-devel
-BuildRequires:  libksysguard5-devel
 BuildRequires:  llvm-clang-devel
 BuildRequires:  okteta-devel
-BuildRequires:  pkgconfig
-BuildRequires:  plasma-framework-devel
-BuildRequires:  purpose-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  subversion-devel
-BuildRequires:  threadweaver-devel
+BuildRequires:  cmake(Grantlee5)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(KF5Purpose)
+BuildRequires:  cmake(KF5Runner)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5SysGuard)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5ThreadWeaver)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(LibKompareDiff2)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -112,10 +111,10 @@ with further external plugins supporting e.g. PHP or Python.
 Summary:        Base Package for Integrated Development Environments
 Group:          Development/Tools/IDE
 Requires:       libkdevplatform%{libkdev_major} = %{version}
+%requires_eq    grantlee5
 Recommends:     kdevplatform-lang
 Conflicts:      kdevplatform4
 Conflicts:      libkdevplatform4-devel
-%requires_eq    grantlee5
 
 %description -n kdevplatform
 This package contains the common plugins for integrated developments
@@ -135,10 +134,10 @@ environments based on the KDevelop framework.
 Summary:        Base Package for Integrated Development Environments: Build Environment
 Group:          Development/Tools/IDE
 Requires:       libkdevplatform%{libkdev_major} = %{version}
-Conflicts:      libkdevplatform4-devel
 # Not installed automatically
-Requires:       ktexteditor-devel
-Requires:       threadweaver-devel
+Requires:       cmake(KF5TextEditor)
+Requires:       cmake(KF5ThreadWeaver)
+Conflicts:      libkdevplatform4-devel
 
 %description -n kdevplatform-devel
 This package contains the development files for building integrated
@@ -148,7 +147,7 @@ developments environments based on the KDevelop framework.
 Summary:        Translations for package %{name}
 Group:          System/Localization
 Requires:       %{name} = %{version}
-Supplements:    packageand(bundle-lang-other:%{name})
+Supplements:    (bundle-lang-other and %{name})
 Conflicts:      kdevelop4-lang
 Provides:       %{name}-lang-all = %{version}
 # Available separately before, now included in kdevelop5 itself
@@ -163,7 +162,7 @@ Provides translations to the package %{name}
 Summary:        Translations for package kdevplatform
 Group:          System/Localization
 Requires:       kdevplatform = %{version}
-Supplements:    packageand(bundle-lang-other:kdevplatform)
+Supplements:    (bundle-lang-other and kdevplatform)
 Conflicts:      kdevplatform4-lang
 Provides:       kdevplatform-lang-all = %{version}
 BuildArch:      noarch
@@ -210,17 +209,20 @@ Provides translations to the package kdevplatform
 
 %files -n libkdevplatform%{libkdev_major}
 %license kdevplatform/COPYING*
-%{_kf5_libdir}/libKDevPlatform*.so.*
+%{_kf5_libdir}/libKDevPlatform*.so.%{libkdev_major}
+%{_kf5_libdir}/libKDevPlatform*.so.5.*
 
 %files
 %license COPYING*
 %doc README.md
+%dir %{_kf5_iconsdir}/hicolor/1024x1024
+%dir %{_kf5_iconsdir}/hicolor/1024x1024/apps
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %dir %{_kf5_iconsdir}/hicolor/512x512
 %dir %{_kf5_iconsdir}/hicolor/512x512/apps
-%dir %{_kf5_iconsdir}/hicolor/1024x1024
-%dir %{_kf5_iconsdir}/hicolor/1024x1024/apps
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/krunner
 %doc %lang(en) %{_kf5_htmldir}/en/kdevelop
 %exclude %{_kf5_iconsdir}/hicolor/*/actions/breakpoint.*
 %{_kf5_applicationsdir}/*kdevelop*.desktop
@@ -231,22 +233,26 @@ Provides translations to the package kdevplatform
 %{_kf5_iconsdir}/*/*/*/*
 %if %pkg_vcmp knewstuff-devel >= 5.57.0
 # It installs .knsrc files when built with knewstuff-devel >= 5.57.0
-%{_kf5_knsrcfilesdir}/*.knsrc
+%{_kf5_knsrcfilesdir}/kdevappwizard.knsrc
+%{_kf5_knsrcfilesdir}/kdevelop-qthelp.knsrc
+%{_kf5_knsrcfilesdir}/kdevfiletemplates.knsrc
 %endif
 %{_kf5_libdir}/cmake/KDevelop/
 %{_kf5_libdir}/libKDevCMakeCommon.so.*
 %{_kf5_libdir}/libKDevClangPrivate.so.*
 %{_kf5_libdir}/libKDevCompileAnalyzerCommon.so.*
+%{_kf5_libdir}/libKDevelopSessionsWatch.so
 %{_kf5_notifydir}/kdevelop.notifyrc
 %{_kf5_plasmadir}/
 %{_kf5_plugindir}/kdevplatform/
-%{_kf5_plugindir}/krunner_kdevelopsessions.so
-%{_kf5_plugindir}/plasma/
+%{_kf5_plugindir}/kf5/krunner/krunner_kdevelopsessions.so
 %{_kf5_prefix}/include/kdevelop/
 %{_kf5_qmldir}/
+%if %pkg_vcmp krunner-devel < 5.72.0
+# Only installed when built with krunner < 5.72.0
 %{_kf5_servicesdir}/kdevelopsessions.desktop
+%endif
 %{_kf5_servicesdir}/plasma-applet-kdevelopsessions.desktop
-%{_kf5_servicesdir}/plasma-dataengine-kdevelopsessions.desktop
 %{_kf5_sharedir}/kdevappwizard/
 %{_kf5_sharedir}/kdevclangsupport/
 %{_kf5_sharedir}/kdevcodegen/
@@ -279,8 +285,8 @@ Provides translations to the package kdevplatform
 
 %files -n kdevplatform-devel
 %license kdevplatform/COPYING*
-%{_kf5_libdir}/libKDevPlatform*.so
 %{_kf5_libdir}/cmake/KDevPlatform/
+%{_kf5_libdir}/libKDevPlatform*.so
 %{_kf5_prefix}/include/kdevplatform/
 
 %changelog

@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Sep  8 11:36:14 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.6.0
+  * Also highlight CMake 'Generating done' messages
+  * Do not remove project information when ChooseCMakeInterfaceJob
+    fails
+  * Fix a cmake test linker error with Qt 5.9
+  * Optimize CMakeManager::fileInformation for path lookups
+  * CMake: trim build dir parameters we read from configuration
+    files
+  * CMake: don't add .rule files to targets
+  * CMake: skip utility targets with empty sources
+  * Reload project when non-{generated,external} CMake file becomes
+    dirty
+  * CMake-file-api: query for and parse cmakeFiles
+  * Support grouping of cmake targets into sub folders
+  * Actually use the cmake-file-api for project import, if possible
+    (kde#417202)
+  * Increase error reporting on CLI when cmake import fails
+  * Actually parse the cmake-file-api response files
+  * Start implementation of cmake-file-api support
+  * Improve error handling when failing to create cmake build dir
+  * Take -U into account when extracting defines from compile flags
+  * Allow passing custom args to clang through clang-parser utility
+  * KDev-clang: don't skip unexposed declarations from different
+    files (kde#402066)
+  * Fix keyboard focus for plasmoid (kde#422774)
+  * Only reload sessions in dataengine when relevant files/paths
+    change
+  * Show empty sessions in data engine
+  * Sublime: fix tab bar base frame not being drawn between tabs
+    & view status
+  * Associate loaded breakpoints with a moving cursor (kde#424431)
+  * Make sure DebugController is initialized before UI is shown
+    (kde#424430)
+  * Remove "text/x-diff" alias from supported MIME types
+  * Support also new name KSysGuard of what was before named
+    KF5SysGuard
+  * Execute: remember the option to kill a process that is
+    already running
+  * Make compile with MSVC++ 19.24
+  * Optimize and improve environment variable expansion
+  * Support escaping backslash before dollar in environment
+    variables
+  * Consider catchpoint to be a code breakpoint
+  * Actually remove temporary item repository directories
+  * Workaround behavior change in
+    QUrl::adjusted(QUrl::NormalizePathSegments)
+  * Prevent recursion in environment variable expansion
+  * Don't crash when there is no documentation for a given URL
+  * Skip unexposed DecompositionDecl
+  * Allow expansion of custom defined variables inside other
+    variables
+  * Allow usePreview=true for user-created source formatter
+    styles
+  * Clean up AStyleFormatter declarations
+  * [Documentation] Allow link following between providers
+  * Only cache PCH and completion results for files opened in
+    editor
+  * Fix Ctrl+mouse_scroll zoom of documentation view
+  * Use data-error/warning/information icons to mark problems
+  * Fix resetting documentation view's zoom factor via Ctrl+0
+    shortcut
+  * Allow navigating with forward & back mouse buttons from CMake
+    and ManPage home pages
+  * Fix documentation view navigation via forward & back mouse
+    buttons
+  * Do not force update when reloading projects
+  * ProblemNavigationContext: fix pixel-scaled icons in problem
+    tooltip
+  * Jump to declaration when definition file doesn't belong to a
+    project
+  * Do not canonicalize paths to non-existent files
+  * Do not include end-of-line markers in build dir settings
+  * Don't crash when we fail to find a screen for the active
+    tooltip
+  * Unbreak duchainify
+  * Don't crash when signatures don't match in
+    AdaptSignatureAssistant
+
+-------------------------------------------------------------------
+Thu Aug 27 07:50:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Jun  2 14:13:17 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.5.2
