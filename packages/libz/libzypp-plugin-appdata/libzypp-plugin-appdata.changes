@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:46:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Install ASHelper to %{_prefix}/lib: the scripts hardcode this
+  path.
+
+-------------------------------------------------------------------
 Thu Mar 28 12:54:44 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only Recommend instead of require AppStream: Allow distros like

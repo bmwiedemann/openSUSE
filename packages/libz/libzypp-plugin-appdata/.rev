@@ -215,4 +215,13 @@
     <comment></comment>
     <requestid>689473</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>610318fa4998655419e89067e072d6e8</srcmd5>
+    <version>1.0.1+git.20180426</version>
+    <time>1599666382</time>
+    <user>dimstar_suse</user>
+    <comment>- Install ASHelper to %{_prefix}/lib: the scripts hardcode this
+  path. (forwarded request 832087 from dimstar)</comment>
+    <requestid>832499</requestid>
+  </revision>
 </revisionlist>

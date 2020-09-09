@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp-plugin-appdata
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -69,7 +69,7 @@ cp appdata-extra/*/* %{buildroot}%{_datadir}/appdata-extra/
 
 # Install AppData zypp plugin
 install -Dm 0755 InstallAppdata.py %{buildroot}%{_prefix}/lib/zypp/plugins/appdata/InstallAppdata
-install -Dm 0755 AsHelper.py %{buildroot}%{_libexecdir}/AsHelper
+install -Dm 0755 AsHelper.py %{buildroot}%{_prefix}/lib/AsHelper
 
 # Install zypper helper command
 install -Dm 0755 zypper-appstream-cache %{buildroot}%{_prefix}/lib/zypper/commands/zypper-appstream-cache
@@ -99,7 +99,7 @@ install -m 0644 appstream-sync-cache.service %{buildroot}%{_unitdir}
 %dir %{_prefix}/lib/zypper
 %dir %{_prefix}/lib/zypper/commands
 %{_prefix}/lib/zypper/commands/zypper-appstream-cache
-%{_libexecdir}/AsHelper
+%{_prefix}/lib/AsHelper
 %{_unitdir}/appstream-sync-cache.service
 
 %files -n openSUSE-appdata-extra
