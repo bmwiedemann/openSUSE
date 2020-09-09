@@ -1,7 +1,7 @@
 #
 # spec file for package xchm
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -35,6 +35,7 @@ display the topics tree, work with displayed pages history, print the
 current page, work with bookmarks, change fonts and fast search
 through all the pages of the loaded .chm document.
 
+%lang_package
 %prep
 %autosetup -p1
 
@@ -47,12 +48,14 @@ autoreconf -fi
 %make_install
 %find_lang xchm
 
-%files -f xchm.lang
+%files
 %_bindir/xchm
 %_datadir/applications/*
 %_datadir/icons/*
 %_datadir/metainfo/
 %_mandir/man1/*
 %license COPYING
+
+%files lang -f xchm.lang
 
 %changelog
