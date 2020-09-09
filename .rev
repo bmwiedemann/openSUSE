@@ -511,4 +511,19 @@
  * full changelog at http://www.paramiko.org/changelog.html</comment>
     <requestid>758748</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>5fa9171903902a9b95ca2a8778d0e533</srcmd5>
+    <version>2.7.2</version>
+    <time>1599597849</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.2
+- drop configs.tar.gz
+ * Add missing test suite fixtures directory to MANIFEST.in
+ * Remove leading whitespace from OpenSSH RSA test suite static key fixture,
+ * Fix incorrect string formatting causing unhelpful error message annotation
+     when using Kerberos/GSSAPI.
+ * Fix incorrectly swapped order of p and q numbers when loading
+     OpenSSH-format RSA private keys.</comment>
+    <requestid>832015</requestid>
+  </revision>
 </revisionlist>
