@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 16 14:04:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.1.6:
+  - add -fno-strict-aliasing flag
+  - handle if dmidecode is missing
+  - default to -V4 admin privilege for lan
+  - show & clear GetSOL error if present
+  - add decode_rv to ipmi_open errors
+  - handle sensor type 0x17 (RSA II, Mem1) for SFBug#31
+  - fixed (data1 & 0x0f) for BIOS POST events
+  - add decode_mem_default routine for AMI,HP mem events
+  - add acpi_ipmi module handling
+  - add invalid type/len check for mult-record area
+  - handle analog readings in HP discrete Fan sensors
+  - added more SuperMicro boot events
+  - ipv6 handling
+  - skip overflow message if len=0
+  - handle detecting NIC if default devnum is not 0
+  - workaround for Pigeon Point bad sa in SDR
+  - aarch64 fixes
+  - show version with usage (-?) if no subcommand
+- remove support for non-systemd distros, cleans up spec file
+- remove warnings.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Feb  3 13:59:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
