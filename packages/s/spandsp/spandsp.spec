@@ -1,7 +1,7 @@
 #
 # spec file for package spandsp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,9 +83,7 @@ and a complete software FAX machine.
 Summary:        Documentation for the libspandsp API
 License:        LGPL-2.1-only AND GPL-2.0-only
 Group:          Documentation/HTML
-%if 0%{?suse_version} >= 1130
 BuildArch:      noarch
-%endif
 
 %description doc
 This package contains documentation for the libspandsp API.
@@ -106,11 +104,11 @@ autoreconf -fiv
 %endif
 	--disable-static \
 	--enable-doc
-make %{?_smp_mflags}
+%make_build
 
 %check
 %if 0%{?tests}
-make check %{?_smp_mflags}
+%make_build check
 %endif
 
 %install
