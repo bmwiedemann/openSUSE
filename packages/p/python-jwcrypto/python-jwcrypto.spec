@@ -1,7 +1,7 @@
 #
 # spec file for package python-jwcrypto
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jwcrypto
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        Python module package implementing JOSE Web standards
 License:        LGPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/latchset/jwcrypto
 Source:         https://files.pythonhosted.org/packages/source/j/jwcrypto/jwcrypto-%{version}.tar.gz
-BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module cryptography >= 2.3}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cryptography
+Requires:       python-cryptography >= 2.3
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,7 +54,7 @@ rm -rv %{buildroot}%{_datadir}/doc/jwcrypto
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand py.test-%{$python_bin_suffix} jwcrypto
+%pytest jwcrypto
 
 %files %{python_files}
 %{python_sitelib}/*

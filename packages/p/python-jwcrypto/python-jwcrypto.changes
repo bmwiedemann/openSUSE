@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep  6 19:25:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use constraints on the cryptography dependency
+
+-------------------------------------------------------------------
+Sun Sep  6 14:51:40 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to upstream release 0.8
+  * Fix some documentation typos
+  * Rename ambiguous variable
+  * Remove cap on sphinx version
+  * Fix okp key type import
+  * Add method to export Keys ans Sets as dictionaries
+  * Typo rectified
+  * Add secp256k1 curve
+
+-------------------------------------------------------------------
 Mon Mar 30 08:15:59 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to upstream release 0.7.0
