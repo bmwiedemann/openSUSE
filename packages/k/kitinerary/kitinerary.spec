@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kitinerary
-Version:        20.08.0
+Version:        20.08.1
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
