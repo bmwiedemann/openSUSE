@@ -62,6 +62,8 @@ Patch39:        subversion-fix-parallel-build-support-for-perl-bindings.patch
 Patch40:        subversion-perl-underlinking.patch
 Patch42:        gcc10-do-not-optimize-get_externals_to_pin.patch
 Patch45:        disable-fs-fs-pack-test.patch
+# PATCH-FIX-OPENSUSE SLE-11901
+Patch46:        remove-kdelibs4support-dependency.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel >= 2.2.0
 BuildRequires:  apache2-prefork
@@ -118,8 +120,6 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libsecret-1)
 %endif
 %if %{with kde}
-# for kf5-config
-BuildRequires:  kdelibs4support
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Wallet)
@@ -242,6 +242,7 @@ parameters and keywords for the svn command and other tools.
 %patch40 -p1
 %patch42 -p1
 %patch45 -p1
+%patch46 -p1
 
 # do not use 'env python'
 sed -i -e 's#/usr/bin/env python#/usr/bin/python3#' subversion/tests/cmdline/*.py

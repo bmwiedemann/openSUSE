@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  9 08:07:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix jira reference to SLE-11901
+
+-------------------------------------------------------------------
+Fri Sep  4 12:21:59 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to remove dependency on kdelibs4support just to run
+  kf5-config to find out that headers are in /usr/include and
+  libraries are in /usr/lib(64) (jsc#SLE-11901):
+  * remove-kdelibs4support-dependency.patch
+
+-------------------------------------------------------------------
 Mon Jul 27 15:09:50 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
