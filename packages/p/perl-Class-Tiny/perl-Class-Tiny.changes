@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep  5 03:07:12 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.008
+   see /usr/share/doc/packages/perl-Class-Tiny/Changes
+
+  1.008     2020-09-04 10:04:50-04:00 America/New_York
+      - No changes since 1.007
+  1.007     2020-09-02 07:02:55-04:00 America/New_York (TRIAL RELEASE)
+      [DOCUMENTATION]
+      - DEMOLISH docs incorrectly claimed that errors were thrown.  Updated to
+        say that errors are rethrown.
+
+-------------------------------------------------------------------
 Sun Sep 11 05:05:48 UTC 2016 - coolo@suse.com
 
 - updated to 1.006
