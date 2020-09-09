@@ -7,9 +7,6 @@
     <memory>
       <size unit="G">9</size>
     </memory>
-    <memoryperjob>
-      <size unit="M">2000</size>
-    </memoryperjob>
   </hardware>
   <overwrite>
     <conditions>

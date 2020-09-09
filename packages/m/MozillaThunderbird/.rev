@@ -3253,4 +3253,12 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
     <comment></comment>
     <requestid>828128</requestid>
   </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>cd21a5f0881ffaae7e99c7b49235e0b7</srcmd5>
+    <version>68.12.0</version>
+    <time>1599666439</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>832601</requestid>
+  </revision>
 </revisionlist>

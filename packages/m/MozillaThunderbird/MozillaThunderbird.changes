@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug 30 11:05:01 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.12.0
+  MFSA 2020-40 (bsc#1175686)
+  * CVE-2020-15663 (bmo#1643199)
+    Downgrade attack on the Mozilla Maintenance Service could have
+    resulted in escalation of privilege
+  * CVE-2020-15664 (bmo#1658214)
+    Attacker-induced prompt for extension installation
+  * CVE-2020-15669 (bmo#1656957)
+    Use-After-Free when aborting an operation
+
+-------------------------------------------------------------------
+Fri Aug 28 09:04:11 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Put back %limit_build macro usage to avoid build error PowerPC
+  (remove memoryperjob constraint)
+
+-------------------------------------------------------------------
 Thu Aug 20 08:57:15 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.

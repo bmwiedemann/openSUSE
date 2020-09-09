@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major           68
-%define mainver         %major.11.0
-%define orig_version    68.11.0
+%define mainver         %major.12.0
+%define orig_version    68.12.0
 %define orig_suffix     %{nil}
 %define update_channel  release
 %define source_prefix   thunderbird-%{mainver}
@@ -75,6 +75,7 @@ BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
 BuildRequires:  libnotify-devel
+BuildRequires:  memory-constraints
 BuildRequires:  mozilla-nspr-devel >= 4.21
 BuildRequires:  mozilla-nss-devel >= 3.44.4
 BuildRequires:  nasm >= 2.13
@@ -326,6 +327,7 @@ echo "export RUSTFLAGS=\"$RUSTFLAGS\""
 echo ""
 cat << EOF
 %else
+%limit_build -m 2000
 export MOZ_DEBUG_FLAGS="-pipe"
 cat << EOF > $MOZCONFIG
 %endif
