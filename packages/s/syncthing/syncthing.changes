@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  8 16:38:38 UTC 2020 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.9.0
+  - This release adds the advanced folder option caseSensitiveFS
+    (https://docs.syncthing.net/advanced/folder-caseSensitiveFS.html) to
+    disable the new safe handling of case insensitive filesystems. 
+
+-------------------------------------------------------------------
 Tue Aug 25 11:44:33 UTC 2020 - Marius Kittler <marius.kittler@suse.com>
 
 - Fix Leap build by requiring at least Go 1.14
