@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep  8 16:58:08 UTC 2020 - pgajdos@suse.com
+
+- version update to 20200726
+  - Rename PDFTextExtractionNotAllowedError to PDFTextExtractionNotAllowed to revert breaking change 
+  - Always try to get CMap, not only for identity encodings 
+  - Support for painting multiple rectangles at once 
+  - Validate image object in do_EI is a PDFStream 
+  - Hiding fallback xref by default from dumppdf.py output 
+  - Raise a warning instead of an error when extracting text from a non-extractable PDF 
+  - Switched from pycryptodome to cryptography package for AES decryption 
+  - Python3 shebang line to script in tools 
+  - Fix ordering of textlines within a textbox when `boxes_flow=None` 
+  - Allow boxes_flow LAParam to be passed as None, validate the input, and update documentation 
+  - Also accept file-like objects in high level functions `extract_text` and `extract_pages` 
+  - Text no longer comes in reverse order when advanced layout analysis is disabled 
+  - Updated misleading documentation for `word_margin` and `char_margin` 
+  - Ignore ValueError when converting font encoding differences 
+  - Grouping of text lines outside of parent container bounding box 
+  - Group text lines if they are centered 
+  - Python3 shebang line to script in tools 
+  - Fix ordering of textlines within a textbox when `boxes_flow=None` 
+- do not require nose for testing
+- added patches
+  fix https://github.com/pdfminer/pdfminer.six/pull/489
+  + python-pdfminer.six-remove-nose.patch
+
+-------------------------------------------------------------------
 Wed May 20 07:26:10 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

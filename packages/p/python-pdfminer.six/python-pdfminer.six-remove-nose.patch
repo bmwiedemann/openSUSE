@@ -1,0 +1,951 @@
+Index: pdfminer.six-20200726/Makefile
+===================================================================
+--- pdfminer.six-20200726.orig/Makefile	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/Makefile	2020-09-08 17:23:52.811565562 +0200
+@@ -55,4 +55,4 @@ $(CMAPDST)/to-unicode-Adobe-Korea1.pickl
+ 		$(CMAPDST) Adobe-Korea1 $(CMAPSRC)/cid2code_Adobe_Korea1.txt
+ 
+ test: cmap
+-	nosetests
++	pytest
+Index: pdfminer.six-20200726/setup.py
+===================================================================
+--- pdfminer.six-20200726.orig/setup.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/setup.py	2020-09-08 17:24:16.315707408 +0200
+@@ -18,7 +18,7 @@ setup(
+         'sortedcontainers',
+     ],
+     extras_require={
+-        "dev": ["nose", "tox"],
++        "dev": ["pytest", "tox"],
+         "docs": ["sphinx", "sphinx-argparse"],
+     },
+     description='PDF parser and analyzer',
+Index: pdfminer.six-20200726/tests/test_converter.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_converter.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_converter.py	2020-09-08 17:57:40.627803775 +0200
+@@ -1,24 +1,24 @@
+-from nose.tools import assert_equal
++import unittest
+ 
+ from pdfminer.converter import PDFLayoutAnalyzer
+ from pdfminer.layout import LTContainer
+ from pdfminer.pdfinterp import PDFGraphicState
+ 
+ 
+-class TestPaintPath():
++class TestPaintPath(unittest.TestCase):
+     def test_paint_path(self):
+         path = [('m', 6, 7), ('l', 7, 7)]
+         analyzer = self._get_analyzer()
+         analyzer.cur_item = LTContainer([0, 100, 0, 100])
+         analyzer.paint_path(PDFGraphicState(), False, False, False, path)
+-        assert_equal(len(analyzer.cur_item._objs), 1)
++        self.assertEqual(len(analyzer.cur_item._objs), 1)
+ 
+     def test_paint_path_mlllh(self):
+         path = [('m', 6, 7), ('l', 7, 7), ('l', 7, 91),  ('l', 6, 91), ('h',)]
+         analyzer = self._get_analyzer()
+         analyzer.cur_item = LTContainer([0, 100, 0, 100])
+         analyzer.paint_path(PDFGraphicState(), False, False, False, path)
+-        assert_equal(len(analyzer.cur_item), 1)
++        self.assertEqual(len(analyzer.cur_item), 1)
+ 
+     def test_paint_path_multiple_mlllh(self):
+         """Path from samples/contrib/issue-00369-excel.pdf"""
+@@ -30,7 +30,7 @@ class TestPaintPath():
+         analyzer = self._get_analyzer()
+         analyzer.cur_item = LTContainer([0, 100, 0, 100])
+         analyzer.paint_path(PDFGraphicState(), False, False, False, path)
+-        assert_equal(len(analyzer.cur_item._objs), 3)
++        self.assertEqual(len(analyzer.cur_item._objs), 3)
+ 
+     def _get_analyzer(self):
+         analyzer = PDFLayoutAnalyzer(None)
+Index: pdfminer.six-20200726/tests/test_encodingdb.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_encodingdb.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_encodingdb.py	2020-09-08 17:58:10.595984640 +0200
+@@ -4,154 +4,154 @@ See: https://github.com/adobe-type-tools
+ While not in the specification, lowercase unicode often occurs in pdf's.
+ Therefore lowercase unittest variants are added.
+ """
+-from nose.tools import assert_raises
++import unittest
+ 
+ from pdfminer.encodingdb import name2unicode, EncodingDB
+ from pdfminer.psparser import PSLiteral
+ 
+-
+-def test_name2unicode_name_in_agl():
+-    """The name "Lcommaaccent" has a single component,
+-    which is mapped to the string U+013B by AGL"""
+-    assert '\u013B' == name2unicode('Lcommaaccent')
+-
+-
+-def test_name2unicode_uni():
+-    """The components "Lcommaaccent," "uni013B," and "u013B"
+-    all map to the string U+013B"""
+-    assert '\u013B' == name2unicode('uni013B')
+-
+-
+-def test_name2unicode_uni_lowercase():
+-    """The components "Lcommaaccent," "uni013B," and "u013B"
+-    all map to the string U+013B"""
+-    assert '\u013B' == name2unicode('uni013b')
+-
+-
+-def test_name2unicode_uni_with_sequence_of_digits():
+-    """The name "uni20AC0308" has a single component,
+-    which is mapped to the string U+20AC U+0308"""
+-    assert '\u20AC\u0308' == name2unicode('uni20AC0308')
+-
+-
+-def test_name2unicode_uni_with_sequence_of_digits_lowercase():
+-    """The name "uni20AC0308" has a single component,
+-    which is mapped to the string U+20AC U+0308"""
+-    assert '\u20AC\u0308' == name2unicode('uni20ac0308')
+-
+-
+-def test_name2unicode_uni_empty_string():
+-    """The name "uni20ac" has a single component,
+-    which is mapped to a euro-sign.
+-
+-    According to the specification this should be mapped to an empty string,
+-    but we also want to support lowercase hexadecimals"""
+-    assert '\u20ac' == name2unicode('uni20ac')
+-
+-
+-def test_name2unicode_uni_empty_string_long():
+-    """The name "uniD801DC0C" has a single component,
+-    which is mapped to an empty string
+-
+-    Neither D801 nor DC0C are in the appropriate set.
+-    This form cannot be used to map to the character which is
+-    expressed as D801 DC0C in UTF-16, specifically U+1040C.
+-    This character can be correctly mapped by using the
+-    glyph name "u1040C.
+-    """
+-    assert_raises(KeyError, name2unicode, 'uniD801DC0C')
+-
+-
+-def test_name2unicode_uni_empty_string_long_lowercase():
+-    """The name "uniD801DC0C" has a single component,
+-    which is mapped to an empty string
+-
+-    Neither D801 nor DC0C are in the appropriate set.
+-    This form cannot be used to map to the character which is
+-    expressed as D801 DC0C in UTF-16, specifically U+1040C.
+-    This character can be correctly mapped by using the
+-    glyph name "u1040C."""
+-    assert_raises(KeyError, name2unicode, 'uniD801DC0C')
+-
+-
+-def test_name2unicode_uni_pua():
+-    """"Ogoneksmall" and "uniF6FB" both map to the string that corresponds to
+-     U+F6FB."""
+-    assert '\uF6FB' == name2unicode('uniF6FB')
+-
+-
+-def test_name2unicode_uni_pua_lowercase():
+-    """"Ogoneksmall" and "uniF6FB" both map to the string that corresponds to
+-     U+F6FB."""
+-    assert '\uF6FB' == name2unicode('unif6fb')
+-
+-
+-def test_name2unicode_u_with_4_digits():
+-    """The components "Lcommaaccent," "uni013B," and "u013B" all map to the
+-    string U+013B"""
+-    assert '\u013B' == name2unicode('u013B')
+-
+-
+-def test_name2unicode_u_with_4_digits_lowercase():
+-    """The components "Lcommaaccent," "uni013B," and "u013B" all map to the
+-    string U+013B"""
+-    assert '\u013B' == name2unicode('u013b')
+-
+-
+-def test_name2unicode_u_with_5_digits():
+-    """The name "u1040C" has a single component, which is mapped to the string
+-     U+1040C"""
+-    assert '\U0001040C' == name2unicode('u1040C')
+-
+-
+-def test_name2unicode_u_with_5_digits_lowercase():
+-    """The name "u1040C" has a single component, which is mapped to the string
+-     U+1040C"""
+-    assert '\U0001040C' == name2unicode('u1040c')
+-
+-
+-def test_name2unicode_multiple_components():
+-    """The name "Lcommaaccent_uni20AC0308_u1040C.alternate" is mapped to the
+-    string U+013B U+20AC U+0308 U+1040C"""
+-    assert '\u013B\u20AC\u0308\U0001040C' == \
+-           name2unicode('Lcommaaccent_uni20AC0308_u1040C.alternate')
+-
+-
+-def test_name2unicode_multiple_components_lowercase():
+-    """The name "Lcommaaccent_uni20AC0308_u1040C.alternate" is mapped to the
+-     string U+013B U+20AC U+0308 U+1040C"""
+-    assert '\u013B\u20AC\u0308\U0001040C' == \
+-           name2unicode('Lcommaaccent_uni20ac0308_u1040c.alternate')
+-
+-
+-def test_name2unicode_foo():
+-    """The name 'foo' maps to an empty string,
+-    because 'foo' is not in AGL,
+-    and because it does not start with a 'u.'"""
+-    assert_raises(KeyError, name2unicode, 'foo')
+-
+-
+-def test_name2unicode_notdef():
+-    """The name ".notdef" is reduced to an empty string (step 1)
+-    and mapped to an empty string (step 3)"""
+-    assert_raises(KeyError, name2unicode, '.notdef')
+-
+-
+-def test_name2unicode_pua_ogoneksmall():
+-    """"
+-    Ogoneksmall" and "uniF6FB" both map to the string
+-    that corresponds to U+F6FB."""
+-    assert '\uF6FB' == name2unicode('Ogoneksmall')
+-
+-
+-def test_name2unicode_overflow_error():
+-    assert_raises(KeyError, name2unicode, '226215240241240240240240')
+-
+-
+-def test_get_encoding_with_invalid_differences():
+-    """Invalid differences should be silently ignored
+-
+-    Regression test for https://github.com/pdfminer/pdfminer.six/issues/385
+-    """
+-    invalid_differences = [PSLiteral('ubuntu'), PSLiteral('1234')]
+-    EncodingDB.get_encoding('StandardEncoding', invalid_differences)
++class TestEncodingDB(unittest.TestCase):
++    def test_name2unicode_name_in_agl(self):
++        """The name "Lcommaaccent" has a single component,
++        which is mapped to the string U+013B by AGL"""
++        assert '\u013B' == name2unicode('Lcommaaccent')
++
++
++    def test_name2unicode_uni(self):
++        """The components "Lcommaaccent," "uni013B," and "u013B"
++        all map to the string U+013B"""
++        assert '\u013B' == name2unicode('uni013B')
++
++
++    def test_name2unicode_uni_lowercase(self):
++        """The components "Lcommaaccent," "uni013B," and "u013B"
++        all map to the string U+013B"""
++        assert '\u013B' == name2unicode('uni013b')
++
++
++    def test_name2unicode_uni_with_sequence_of_digits(self):
++        """The name "uni20AC0308" has a single component,
++        which is mapped to the string U+20AC U+0308"""
++        assert '\u20AC\u0308' == name2unicode('uni20AC0308')
++
++
++    def test_name2unicode_uni_with_sequence_of_digits_lowercase(self):
++        """The name "uni20AC0308" has a single component,
++        which is mapped to the string U+20AC U+0308"""
++        assert '\u20AC\u0308' == name2unicode('uni20ac0308')
++
++
++    def test_name2unicode_uni_empty_string(self):
++        """The name "uni20ac" has a single component,
++        which is mapped to a euro-sign.
++
++        According to the specification this should be mapped to an empty string,
++        but we also want to support lowercase hexadecimals"""
++        assert '\u20ac' == name2unicode('uni20ac')
++
++
++    def test_name2unicode_uni_empty_string_long(self):
++        """The name "uniD801DC0C" has a single component,
++        which is mapped to an empty string
++
++        Neither D801 nor DC0C are in the appropriate set.
++        This form cannot be used to map to the character which is
++        expressed as D801 DC0C in UTF-16, specifically U+1040C.
++        This character can be correctly mapped by using the
++        glyph name "u1040C.
++        """
++        self.assertRaises(KeyError, name2unicode, 'uniD801DC0C')
++
++
++    def test_name2unicode_uni_empty_string_long_lowercase(self):
++        """The name "uniD801DC0C" has a single component,
++        which is mapped to an empty string
++
++        Neither D801 nor DC0C are in the appropriate set.
++        This form cannot be used to map to the character which is
++        expressed as D801 DC0C in UTF-16, specifically U+1040C.
++        This character can be correctly mapped by using the
++        glyph name "u1040C."""
++        self.assertRaises(KeyError, name2unicode, 'uniD801DC0C')
++
++
++    def test_name2unicode_uni_pua(self):
++        """"Ogoneksmall" and "uniF6FB" both map to the string that corresponds to
++         U+F6FB."""
++        assert '\uF6FB' == name2unicode('uniF6FB')
++
++
++    def test_name2unicode_uni_pua_lowercase(self):
++        """"Ogoneksmall" and "uniF6FB" both map to the string that corresponds to
++         U+F6FB."""
++        assert '\uF6FB' == name2unicode('unif6fb')
++
++
++    def test_name2unicode_u_with_4_digits(self):
++        """The components "Lcommaaccent," "uni013B," and "u013B" all map to the
++        string U+013B"""
++        assert '\u013B' == name2unicode('u013B')
++
++
++    def test_name2unicode_u_with_4_digits_lowercase(self):
++        """The components "Lcommaaccent," "uni013B," and "u013B" all map to the
++        string U+013B"""
++        assert '\u013B' == name2unicode('u013b')
++
++
++    def test_name2unicode_u_with_5_digits(self):
++        """The name "u1040C" has a single component, which is mapped to the string
++         U+1040C"""
++        assert '\U0001040C' == name2unicode('u1040C')
++
++
++    def test_name2unicode_u_with_5_digits_lowercase(self):
++        """The name "u1040C" has a single component, which is mapped to the string
++         U+1040C"""
++        assert '\U0001040C' == name2unicode('u1040c')
++
++
++    def test_name2unicode_multiple_components(self):
++        """The name "Lcommaaccent_uni20AC0308_u1040C.alternate" is mapped to the
++        string U+013B U+20AC U+0308 U+1040C"""
++        assert '\u013B\u20AC\u0308\U0001040C' == \
++               name2unicode('Lcommaaccent_uni20AC0308_u1040C.alternate')
++
++
++    def test_name2unicode_multiple_components_lowercase(self):
++        """The name "Lcommaaccent_uni20AC0308_u1040C.alternate" is mapped to the
++         string U+013B U+20AC U+0308 U+1040C"""
++        assert '\u013B\u20AC\u0308\U0001040C' == \
++               name2unicode('Lcommaaccent_uni20ac0308_u1040c.alternate')
++
++
++    def test_name2unicode_foo(self):
++        """The name 'foo' maps to an empty string,
++        because 'foo' is not in AGL,
++        and because it does not start with a 'u.'"""
++        self.assertRaises(KeyError, name2unicode, 'foo')
++
++
++    def test_name2unicode_notdef(self):
++        """The name ".notdef" is reduced to an empty string (step 1)
++        and mapped to an empty string (step 3)"""
++        self.assertRaises(KeyError, name2unicode, '.notdef')
++
++
++    def test_name2unicode_pua_ogoneksmall(self):
++        """"
++        Ogoneksmall" and "uniF6FB" both map to the string
++        that corresponds to U+F6FB."""
++        assert '\uF6FB' == name2unicode('Ogoneksmall')
++
++
++    def test_name2unicode_overflow_error(self):
++        self.assertRaises(KeyError, name2unicode, '226215240241240240240240')
++
++
++    def test_get_encoding_with_invalid_differences(self):
++        """Invalid differences should be silently ignored
++
++        Regression test for https://github.com/pdfminer/pdfminer.six/issues/385
++        """
++        invalid_differences = [PSLiteral('ubuntu'), PSLiteral('1234')]
++        EncodingDB.get_encoding('StandardEncoding', invalid_differences)
+Index: pdfminer.six-20200726/tests/test_font_size.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_font_size.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_font_size.py	2020-09-08 17:32:43.314767223 +0200
+@@ -1,22 +1,25 @@
++import unittest
++
+ from helpers import absolute_sample_path
+ from pdfminer.high_level import extract_pages
+ from pdfminer.layout import LTChar, LTTextBox
+ 
+ 
+-def test_font_size():
+-    path = absolute_sample_path('font-size-test.pdf')
+-    for page in extract_pages(path):
+-        for text_box in page:
+-            if isinstance(text_box, LTTextBox):
+-                for line in text_box:
+-                    possible_number = line.get_text().strip()
+-                    if possible_number.isdigit():
+-                        expected_size = int(possible_number)
+-
+-                        for char in line:
+-                            if isinstance(char, LTChar):
+-                                actual_size = int(round(char.size))
+-                                print(char, actual_size, expected_size)
+-                                assert expected_size == actual_size
+-                    else:
+-                        print(repr(line.get_text()))
++class TestFontSize(unittest.TestCase):
++    def test_font_size(self):
++        path = absolute_sample_path('font-size-test.pdf')
++        for page in extract_pages(path):
++            for text_box in page:
++                if isinstance(text_box, LTTextBox):
++                    for line in text_box:
++                        possible_number = line.get_text().strip()
++                        if possible_number.isdigit():
++                            expected_size = int(possible_number)
++
++                            for char in line:
++                                if isinstance(char, LTChar):
++                                    actual_size = int(round(char.size))
++                                    print(char, actual_size, expected_size)
++                                    assert expected_size == actual_size
++                        else:
++                            print(repr(line.get_text()))
+Index: pdfminer.six-20200726/tests/test_pdfdocument.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_pdfdocument.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_pdfdocument.py	2020-09-08 18:03:35.153943407 +0200
+@@ -1,4 +1,4 @@
+-from nose.tools import raises
++import unittest
+ 
+ from helpers import absolute_sample_path
+ from pdfminer.pdfdocument import PDFDocument
+@@ -6,11 +6,10 @@ from pdfminer.pdfparser import PDFParser
+ from pdfminer.pdftypes import PDFObjectNotFound
+ 
+ 
+-class TestPdfDocument(object):
++class TestPdfDocument(unittest.TestCase):
+ 
+-    @raises(PDFObjectNotFound)
+     def test_get_zero_objid_raises_pdfobjectnotfound(self):
+         with open(absolute_sample_path('simple1.pdf'), 'rb') as in_file:
+             parser = PDFParser(in_file)
+             doc = PDFDocument(parser)
+-            doc.getobj(0)
++            self.assertRaises(PDFObjectNotFound, doc.getobj, 0)
+Index: pdfminer.six-20200726/tests/test_pdfencoding.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_pdfencoding.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_pdfencoding.py	2020-09-08 17:39:04.149065629 +0200
+@@ -2,7 +2,7 @@
+ 
+ # -*- coding: utf-8 -*-
+ 
+-import nose
++import unittest
+ 
+ from pdfminer.cmapdb import IdentityCMap, CMap, IdentityCMapByte
+ from pdfminer.pdffont import PDFCIDFont
+@@ -10,7 +10,7 @@ from pdfminer.pdftypes import PDFStream
+ from pdfminer.psparser import PSLiteral
+ 
+ 
+-class TestPDFEncoding():
++class TestPDFEncoding(unittest.TestCase):
+ 
+     def test_cmapname_onebyteidentityV(self):
+         stream = PDFStream({'CMapName': PSLiteral('OneByteIdentityV')}, '')
+@@ -109,5 +109,3 @@ class TestPDFEncoding():
+         assert isinstance(font.cmap, CMap)
+ 
+ 
+-if __name__ == '__main__':
+-    nose.runmodule()
+Index: pdfminer.six-20200726/tests/test_pdffont.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_pdffont.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_pdffont.py	2020-09-08 17:40:43.329664206 +0200
+@@ -1,21 +1,22 @@
+-from nose.tools import assert_equal, assert_greater
++import unittest
+ 
+ from pdfminer.pdffont import PDFCIDFont
+ from pdfminer.pdfinterp import PDFResourceManager
+ from pdfminer.psparser import PSLiteral
+ 
+ 
+-def test_get_cmap_from_pickle():
+-    """Test if cmap file is read from pdfminer/cmap
+-
+-    Regression test for https://github.com/pdfminer/pdfminer.six/issues/391
+-    """
+-    cmap_name = 'UniGB-UCS2-H'
+-    spec = {'Encoding': PSLiteral(cmap_name)}
+-    resource_manager = PDFResourceManager()
+-    font = PDFCIDFont(resource_manager, spec)
+-
+-    cmap = font.get_cmap_from_spec(spec, False)
+-
+-    assert_equal(cmap.attrs.get('CMapName'), cmap_name)
+-    assert_greater(len(cmap.code2cid), 0)
++class TestPdfFont(unittest.TestCase):
++    def test_get_cmap_from_pickle(self):
++        """Test if cmap file is read from pdfminer/cmap
++
++        Regression test for https://github.com/pdfminer/pdfminer.six/issues/391
++        """
++        cmap_name = 'UniGB-UCS2-H'
++        spec = {'Encoding': PSLiteral(cmap_name)}
++        resource_manager = PDFResourceManager()
++        font = PDFCIDFont(resource_manager, spec)
++
++        cmap = font.get_cmap_from_spec(spec, False)
++
++        self.assertEqual(cmap.attrs.get('CMapName'), cmap_name)
++        self.assertGreater(len(cmap.code2cid), 0)
+Index: pdfminer.six-20200726/tests/test_pdfminer_ccitt.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_pdfminer_ccitt.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_pdfminer_ccitt.py	2020-09-08 17:49:56.349001777 +0200
+@@ -1,9 +1,9 @@
+-from nose.tools import assert_equal
++import unittest
+ 
+ from pdfminer.ccitt import CCITTG4Parser
+ 
+ 
+-class TestCCITTG4Parser():
++class TestCCITTG4Parser(unittest.TestCase):
+     def get_parser(self, bits):
+         parser = CCITTG4Parser(len(bits))
+         parser._curline = [int(c) for c in bits]
+@@ -13,98 +13,98 @@ class TestCCITTG4Parser():
+     def test_b1(self):
+         parser = self.get_parser('00000')
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 0)
++        self.assertEqual(parser._curpos, 0)
+         return
+ 
+     def test_b2(self):
+         parser = self.get_parser('10000')
+         parser._do_vertical(-1)
+-        assert_equal(parser._curpos, 0)
++        self.assertEqual(parser._curpos, 0)
+         return
+ 
+     def test_b3(self):
+         parser = self.get_parser('000111')
+         parser._do_pass()
+-        assert_equal(parser._curpos, 3)
+-        assert_equal(parser._get_bits(), '111')
++        self.assertEqual(parser._curpos, 3)
++        self.assertEqual(parser._get_bits(), '111')
+         return
+ 
+     def test_b4(self):
+         parser = self.get_parser('00000')
+         parser._do_vertical(+2)
+-        assert_equal(parser._curpos, 2)
+-        assert_equal(parser._get_bits(), '11')
++        self.assertEqual(parser._curpos, 2)
++        self.assertEqual(parser._get_bits(), '11')
+         return
+ 
+     def test_b5(self):
+         parser = self.get_parser('11111111100')
+         parser._do_horizontal(0, 3)
+-        assert_equal(parser._curpos, 3)
++        self.assertEqual(parser._curpos, 3)
+         parser._do_vertical(1)
+-        assert_equal(parser._curpos, 10)
+-        assert_equal(parser._get_bits(), '0001111111')
++        self.assertEqual(parser._curpos, 10)
++        self.assertEqual(parser._get_bits(), '0001111111')
+         return
+ 
+     def test_e1(self):
+         parser = self.get_parser('10000')
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 1)
++        self.assertEqual(parser._curpos, 1)
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 5)
+-        assert_equal(parser._get_bits(), '10000')
++        self.assertEqual(parser._curpos, 5)
++        self.assertEqual(parser._get_bits(), '10000')
+         return
+ 
+     def test_e2(self):
+         parser = self.get_parser('10011')
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 1)
++        self.assertEqual(parser._curpos, 1)
+         parser._do_vertical(2)
+-        assert_equal(parser._curpos, 5)
+-        assert_equal(parser._get_bits(), '10000')
++        self.assertEqual(parser._curpos, 5)
++        self.assertEqual(parser._get_bits(), '10000')
+         return
+ 
+     def test_e3(self):
+         parser = self.get_parser('011111')
+         parser._color = 0
+         parser._do_vertical(0)
+-        assert_equal(parser._color, 1)
+-        assert_equal(parser._curpos, 1)
++        self.assertEqual(parser._color, 1)
++        self.assertEqual(parser._curpos, 1)
+         parser._do_vertical(-2)
+-        assert_equal(parser._color, 0)
+-        assert_equal(parser._curpos, 4)
++        self.assertEqual(parser._color, 0)
++        self.assertEqual(parser._curpos, 4)
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 6)
+-        assert_equal(parser._get_bits(), '011100')
++        self.assertEqual(parser._curpos, 6)
++        self.assertEqual(parser._get_bits(), '011100')
+         return
+ 
+     def test_e4(self):
+         parser = self.get_parser('10000')
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 1)
++        self.assertEqual(parser._curpos, 1)
+         parser._do_vertical(-2)
+-        assert_equal(parser._curpos, 3)
++        self.assertEqual(parser._curpos, 3)
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 5)
+-        assert_equal(parser._get_bits(), '10011')
++        self.assertEqual(parser._curpos, 5)
++        self.assertEqual(parser._get_bits(), '10011')
+         return
+ 
+     def test_e5(self):
+         parser = self.get_parser('011000')
+         parser._color = 0
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 1)
++        self.assertEqual(parser._curpos, 1)
+         parser._do_vertical(3)
+-        assert_equal(parser._curpos, 6)
+-        assert_equal(parser._get_bits(), '011111')
++        self.assertEqual(parser._curpos, 6)
++        self.assertEqual(parser._get_bits(), '011111')
+         return
+ 
+     def test_e6(self):
+         parser = self.get_parser('11001')
+         parser._do_pass()
+-        assert_equal(parser._curpos, 4)
++        self.assertEqual(parser._curpos, 4)
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 5)
+-        assert_equal(parser._get_bits(), '11111')
++        self.assertEqual(parser._curpos, 5)
++        self.assertEqual(parser._get_bits(), '11111')
+         return
+ 
+     def test_e7(self):
+@@ -112,8 +112,8 @@ class TestCCITTG4Parser():
+         parser._curpos = 2
+         parser._color = 1
+         parser._do_horizontal(2, 6)
+-        assert_equal(parser._curpos, 10)
+-        assert_equal(parser._get_bits(), '1111000000')
++        self.assertEqual(parser._curpos, 10)
++        self.assertEqual(parser._get_bits(), '1111000000')
+         return
+ 
+     def test_e8(self):
+@@ -121,19 +121,19 @@ class TestCCITTG4Parser():
+         parser._curpos = 1
+         parser._color = 0
+         parser._do_vertical(0)
+-        assert_equal(parser._curpos, 2)
++        self.assertEqual(parser._curpos, 2)
+         parser._do_horizontal(7, 0)
+-        assert_equal(parser._curpos, 9)
+-        assert_equal(parser._get_bits(), '101111111')
++        self.assertEqual(parser._curpos, 9)
++        self.assertEqual(parser._get_bits(), '101111111')
+         return
+ 
+     def test_m1(self):
+         parser = self.get_parser('10101')
+         parser._do_pass()
+-        assert_equal(parser._curpos, 2)
++        self.assertEqual(parser._curpos, 2)
+         parser._do_pass()
+-        assert_equal(parser._curpos, 4)
+-        assert_equal(parser._get_bits(), '1111')
++        self.assertEqual(parser._curpos, 4)
++        self.assertEqual(parser._get_bits(), '1111')
+         return
+ 
+     def test_m2(self):
+@@ -142,7 +142,7 @@ class TestCCITTG4Parser():
+         parser._do_vertical(-1)
+         parser._do_vertical(1)
+         parser._do_horizontal(1, 1)
+-        assert_equal(parser._get_bits(), '011101')
++        self.assertEqual(parser._get_bits(), '011101')
+         return
+ 
+     def test_m3(self):
+@@ -151,5 +151,5 @@ class TestCCITTG4Parser():
+         parser._do_pass()
+         parser._do_vertical(1)
+         parser._do_vertical(1)
+-        assert_equal(parser._get_bits(), '00000001')
++        self.assertEqual(parser._get_bits(), '00000001')
+         return
+Index: pdfminer.six-20200726/tests/test_pdfminer_crypto.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_pdfminer_crypto.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_pdfminer_crypto.py	2020-09-08 17:48:43.188560241 +0200
+@@ -1,7 +1,7 @@
+ """Test of various compression/encoding modules (previously in doctests)
+ """
+ import binascii
+-from nose.tools import assert_equal
++import unittest
+ 
+ from pdfminer.arcfour import Arcfour
+ from pdfminer.ascii85 import asciihexdecode, ascii85decode
+@@ -20,49 +20,49 @@ def dehex(b):
+     return binascii.unhexlify(b)
+ 
+ 
+-class TestAscii85():
++class TestAscii85(unittest.TestCase):
+     def test_ascii85decode(self):
+         """The sample string is taken from:
+         http://en.wikipedia.org/w/index.php?title=Ascii85"""
+-        assert_equal(ascii85decode(b'9jqo^BlbD-BleB1DJ+*+F(f,q'),
++        self.assertEqual(ascii85decode(b'9jqo^BlbD-BleB1DJ+*+F(f,q'),
+                      b'Man is distinguished')
+-        assert_equal(ascii85decode(b'E,9)oF*2M7/c~>'),
++        self.assertEqual(ascii85decode(b'E,9)oF*2M7/c~>'),
+                      b'pleasure.')
+ 
+     def test_asciihexdecode(self):
+-        assert_equal(asciihexdecode(b'61 62 2e6364   65'),
++        self.assertEqual(asciihexdecode(b'61 62 2e6364   65'),
+                      b'ab.cde')
+-        assert_equal(asciihexdecode(b'61 62 2e6364   657>'),
++        self.assertEqual(asciihexdecode(b'61 62 2e6364   657>'),
+                      b'ab.cdep')
+-        assert_equal(asciihexdecode(b'7>'),
++        self.assertEqual(asciihexdecode(b'7>'),
+                      b'p')
+ 
+ 
+-class TestArcfour():
++class TestArcfour(unittest.TestCase):
+     def test(self):
+-        assert_equal(hex(Arcfour(b'Key').process(b'Plaintext')),
++        self.assertEqual(hex(Arcfour(b'Key').process(b'Plaintext')),
+                      b'bbf316e8d940af0ad3')
+-        assert_equal(hex(Arcfour(b'Wiki').process(b'pedia')),
++        self.assertEqual(hex(Arcfour(b'Wiki').process(b'pedia')),
+                      b'1021bf0420')
+-        assert_equal(hex(Arcfour(b'Secret').process(b'Attack at dawn')),
++        self.assertEqual(hex(Arcfour(b'Secret').process(b'Attack at dawn')),
+                      b'45a01f645fc35b383552544b9bf5')
+ 
+ 
+-class TestLzw():
++class TestLzw(unittest.TestCase):
+     def test_lzwdecode(self):
+-        assert_equal(lzwdecode(b'\x80\x0b\x60\x50\x22\x0c\x0c\x85\x01'),
++        self.assertEqual(lzwdecode(b'\x80\x0b\x60\x50\x22\x0c\x0c\x85\x01'),
+                      b'\x2d\x2d\x2d\x2d\x2d\x41\x2d\x2d\x2d\x42')
+ 
+ 
+-class TestRunlength():
++class TestRunlength(unittest.TestCase):
+     def test_rldecode(self):
+-        assert_equal(rldecode(b'\x05123456\xfa7\x04abcde\x80junk'),
++        self.assertEqual(rldecode(b'\x05123456\xfa7\x04abcde\x80junk'),
+                      b'1234567777777abcde')
+ 
+ 
+-class TestRijndaelEncryptor():
++class TestRijndaelEncryptor(unittest.TestCase):
+     def test_RijndaelEncryptor(self):
+         key = dehex(b'00010203050607080a0b0c0d0f101112')
+         plaintext = dehex(b'506812a45f08c889b97f5980038b8359')
+-        assert_equal(hex(RijndaelEncryptor(key, 128).encrypt(plaintext)),
++        self.assertEqual(hex(RijndaelEncryptor(key, 128).encrypt(plaintext)),
+                      b'd8f532538289ef7d06b506a4fd5be9c9')
+Index: pdfminer.six-20200726/tests/test_pdfminer_psparser.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_pdfminer_psparser.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_pdfminer_psparser.py	2020-09-08 17:47:06.423976246 +0200
+@@ -1,13 +1,13 @@
+ import logging
+ 
+-from nose.tools import assert_equal
++import unittest
+ 
+ from pdfminer.psparser import KWD, LIT, PSBaseParser, PSStackParser, PSEOF
+ 
+ logger = logging.getLogger(__name__)
+ 
+ 
+-class TestPSBaseParser:
++class TestPSBaseParser(unittest.TestCase):
+     """Simplistic Test cases"""
+ 
+     TESTDATA = br'''%!PS
+@@ -92,11 +92,11 @@ func/a/b{(c)do*}def
+     def test_1(self):
+         tokens = self.get_tokens(self.TESTDATA)
+         logger.info(tokens)
+-        assert_equal(tokens, self.TOKENS)
++        self.assertEqual(tokens, self.TOKENS)
+         return
+ 
+     def test_2(self):
+         objs = self.get_objects(self.TESTDATA)
+         logger.info(objs)
+-        assert_equal(objs, self.OBJS)
++        self.assertEqual(objs, self.OBJS)
+         return
+Index: pdfminer.six-20200726/tests/test_tools_dumppdf.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_tools_dumppdf.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_tools_dumppdf.py	2020-09-08 17:45:02.647229236 +0200
+@@ -1,3 +1,5 @@
++import unittest
++
+ import warnings
+ from tempfile import NamedTemporaryFile
+ 
+@@ -17,7 +19,7 @@ def run(filename, options=None):
+         dumppdf.main(s.split(' ')[1:])
+ 
+ 
+-class TestDumpPDF():
++class TestDumpPDF(unittest.TestCase):
+     def test_simple1(self):
+         """dumppdf.py simple1.pdf raises a warning because it has no xref"""
+         with warnings.catch_warnings(record=True) as ws:
+Index: pdfminer.six-20200726/tests/test_tools_pdf2txt.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_tools_pdf2txt.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_tools_pdf2txt.py	2020-09-08 17:44:20.946977562 +0200
+@@ -1,3 +1,5 @@
++import unittest
++
+ import os
+ from shutil import rmtree
+ from tempfile import NamedTemporaryFile, mkdtemp
+@@ -17,7 +19,7 @@ def run(sample_path, options=None):
+         pdf2txt.main(s.split(' ')[1:])
+ 
+ 
+-class TestPdf2Txt():
++class TestPdf2Txt(unittest.TestCase):
+     def test_jo(self):
+         run('jo.pdf')
+ 
+@@ -104,7 +106,7 @@ class TestPdf2Txt():
+         run('encryption/rc4-128.pdf', '-P foo')
+ 
+ 
+-class TestDumpImages:
++class TestDumpImages(unittest.TestCase):
+ 
+     @staticmethod
+     def extract_images(input_file):
+Index: pdfminer.six-20200726/tests/test_utils.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_utils.py	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tests/test_utils.py	2020-09-08 17:43:28.830663039 +0200
+@@ -1,37 +1,37 @@
+-from nose.tools import assert_equal
++import unittest
+ 
+ from pdfminer.layout import LTComponent
+ from pdfminer.utils import Plane, shorten_str
+ 
+ 
+-class TestPlane:
++class TestPlane(unittest.TestCase):
+     def test_find_nothing_in_empty_bbox(self):
+         plane, _ = self.given_plane_with_one_object()
+         result = list(plane.find((50, 50, 100, 100)))
+-        assert_equal(result, [])
++        self.assertEqual(result, [])
+ 
+     def test_find_nothing_after_removing(self):
+         plane, obj = self.given_plane_with_one_object()
+         plane.remove(obj)
+         result = list(plane.find((0, 0, 100, 100)))
+-        assert_equal(result, [])
++        self.assertEqual(result, [])
+ 
+     def test_find_object_in_whole_plane(self):
+         plane, obj = self.given_plane_with_one_object()
+         result = list(plane.find((0, 0, 100, 100)))
+-        assert_equal(result, [obj])
++        self.assertEqual(result, [obj])
+ 
+     def test_find_if_object_is_smaller_than_gridsize(self):
+         plane, obj = self.given_plane_with_one_object(object_size=1,
+                                                       gridsize=100)
+         result = list(plane.find((0, 0, 100, 100)))
+-        assert_equal(result, [obj])
++        self.assertEqual(result, [obj])
+ 
+     def test_find_object_if_much_larger_than_gridsize(self):
+         plane, obj = self.given_plane_with_one_object(object_size=100,
+                                                       gridsize=10)
+         result = list(plane.find((0, 0, 100, 100)))
+-        assert_equal(result, [obj])
++        self.assertEqual(result, [obj])
+ 
+     @staticmethod
+     def given_plane_with_one_object(object_size=50, gridsize=50):
+@@ -42,14 +42,14 @@ class TestPlane:
+         return plane, obj
+ 
+ 
+-class TestFunctions(object):
++class TestFunctions(unittest.TestCase):
+     def test_shorten_str(self):
+         s = shorten_str('Hello there World', 15)
+-        assert_equal(s, 'Hello ... World')
++        self.assertEqual(s, 'Hello ... World')
+ 
+     def test_shorten_short_str_is_same(self):
+         s = 'Hello World'
+-        assert_equal(s, shorten_str(s, 50))
++        self.assertEqual(s, shorten_str(s, 50))
+ 
+     def test_shorten_to_really_short(self):
+-        assert_equal('Hello', shorten_str('Hello World', 5))
++        self.assertEqual('Hello', shorten_str('Hello World', 5))
+Index: pdfminer.six-20200726/tox.ini
+===================================================================
+--- pdfminer.six-20200726.orig/tox.ini	2020-07-26 15:14:15.000000000 +0200
++++ pdfminer.six-20200726/tox.ini	2020-09-08 17:27:56.365035449 +0200
+@@ -13,6 +13,6 @@ whitelist_externals =
+     flake8
+ commands =
+     flake8 pdfminer/ tools/ tests/ --count --statistics
+-    nosetests --nologcapture
++    pytest
+     python -m sphinx -b html docs/source docs/build/html
+     python -m sphinx -b doctest docs/source docs/build/doctest

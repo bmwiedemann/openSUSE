@@ -19,21 +19,26 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pdfminer.six
-Version:        20200124
+Version:        20200726
 Release:        0
 Summary:        PDF parser and analyzer
 License:        MIT
 URL:            https://github.com/pdfminer/pdfminer.six
 Source:         https://github.com/pdfminer/pdfminer.six/archive/%{version}.tar.gz#/pdfminer.six-%{version}.tar.gz
+# https://github.com/pdfminer/pdfminer.six/pull/489
+Patch0:         python-pdfminer.six-remove-nose.patch
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pycryptodome}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-chardet
+Requires:       python-cryptography
 Requires:       python-pycryptodome
 Requires:       python-six
 Requires:       python-sortedcontainers
@@ -58,6 +63,7 @@ of text analysis.
 
 %prep
 %setup -q -n pdfminer.six-%{version}
+%patch0 -p1
 sed -i -e '/^#!\//, 1d' pdfminer/psparser.py
 sed  -i '1i #!%{_bindir}/python3' tools/dumppdf.py tools/pdf2txt.py
 
