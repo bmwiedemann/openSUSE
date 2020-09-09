@@ -399,4 +399,12 @@
     <comment>20.08.0 release</comment>
     <requestid>826439</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a881bf4a8087681190fcd2d7a25c2563</srcmd5>
+    <version>20.08.1</version>
+    <time>1599666919</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release 20.08.1</comment>
+    <requestid>831813</requestid>
+  </revision>
 </revisionlist>
