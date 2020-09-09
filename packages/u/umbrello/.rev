@@ -1290,4 +1290,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>20.08.0 release</comment>
     <requestid>826541</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>cf883bc840559e0ec77d69b7d1b3cdcc</srcmd5>
+    <version>20.08.1</version>
+    <time>1599667262</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release 20.08.1</comment>
+    <requestid>831916</requestid>
+  </revision>
 </revisionlist>

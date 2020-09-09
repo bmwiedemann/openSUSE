@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:51:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Changes since 20.08.0:
+  * Compile fix
+  * Fix 'No display of foreign key constraints when opening a file' (kde#425285)
+  * Fix 'Double association in the diagram after renaming a foreign key constraint' (kde#425281)
+
+-------------------------------------------------------------------
 Sun Aug  9 09:10:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.08.0
