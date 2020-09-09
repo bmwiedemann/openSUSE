@@ -18,7 +18,7 @@
 
 %define rname kdev-python
 Name:           kdevelop5-plugin-python3
-Version:        5.5.2
+Version:        5.6.0
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later
@@ -28,17 +28,16 @@ Source0:        https://download.kde.org/stable/kdevelop/%{version}/src/%{rname}
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kdevelop5
-BuildRequires:  kdevplatform-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.4.3
 BuildRequires:  python3-devel >= 3.4.3
-BuildRequires:  threadweaver-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(KDevPlatform)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5ThreadWeaver)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       kdevelop5
 Recommends:     %{name}-lang
 Recommends:     python3-pep8
@@ -55,7 +54,7 @@ A KDevelop plugin which provides Python language support, including code complet
 Summary:        Translations for package %{name}
 Group:          System/Localization
 Requires:       %{name} = %{version}
-Supplements:    packageand(bundle-lang-other:%{name})
+Supplements:    (bundle-lang-other and %{name})
 Conflicts:      kdevelop4-plugin-python-lang
 Provides:       %{name}-lang-all = %{version}
 BuildArch:      noarch
@@ -68,8 +67,8 @@ Provides translations to the package %{name}
 
 %build
   %cmake_kf5 -d build
-  make %{?_smp_mflags} parser
-  %make_jobs
+  %make_build parser
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
