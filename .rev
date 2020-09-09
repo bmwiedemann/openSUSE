@@ -892,4 +892,12 @@
     <comment>20.08.0 release</comment>
     <requestid>826446</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>c49b13c579d59afe415ddbcf5e97e73f</srcmd5>
+    <version>20.08.1</version>
+    <time>1599666933</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release 20.08.1</comment>
+    <requestid>831819</requestid>
+  </revision>
 </revisionlist>
