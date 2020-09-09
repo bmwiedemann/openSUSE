@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  8 12:23:43 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Changed requirement for minetest-runtime to greater or equal,
+  since running the game in a higher engine version works as well.
+
+-------------------------------------------------------------------
+Tue Sep  8 11:20:59 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- require minetest-runtime
+
+-------------------------------------------------------------------
 Wed Jul 29 20:18:24 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to version 5.3.0

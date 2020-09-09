@@ -27,6 +27,7 @@ Source0:        https://github.com/minetest/minetest_game/archive/%{version}/min
 Source99:       minetest-game-rpmlintrc
 BuildRequires:  fdupes
 BuildArch:      noarch
+Requires:       minetest-runtime >= %{version}
 
 %description
 The main game for the Minetest game engine.
