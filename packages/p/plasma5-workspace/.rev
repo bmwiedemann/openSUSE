@@ -1421,4 +1421,13 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.19.5</comment>
     <requestid>831182</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>d324185db752186e1d4beccce10bbba8</srcmd5>
+    <version>5.19.5</version>
+    <time>1599666304</time>
+    <user>dimstar_suse</user>
+    <comment>- apply 0001-ksmserver-Use-UpdateLaunchEnvJob-to-sync-SESSION_MAN.patch,
+  that fixes the broken session restore (forwarded request 832124 from frispete)</comment>
+    <requestid>832134</requestid>
+  </revision>
 </revisionlist>

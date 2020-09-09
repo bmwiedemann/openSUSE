@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  4 10:42:01 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- apply 0001-ksmserver-Use-UpdateLaunchEnvJob-to-sync-SESSION_MAN.patch,
+  that fixes the broken session restore
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5

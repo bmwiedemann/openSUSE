@@ -48,6 +48,8 @@ Patch502:       0001-Ignore-default-sddm-face-icons.patch
 Patch503:       0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
 # PATCH-FEATURE-OPENSUSE
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
+# PATCH-FIX-UPSTREAM
+Patch510:       0001-ksmserver-Use-UpdateLaunchEnvJob-to-sync-SESSION_MAN.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
