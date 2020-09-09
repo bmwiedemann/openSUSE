@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:51:21 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- No code change since 20.08.0
+
+-------------------------------------------------------------------
 Fri Aug 21 05:56:35 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with default min 3GB physicalmemory
