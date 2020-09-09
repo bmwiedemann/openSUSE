@@ -1,13 +1,13 @@
-Index: edk2-edk2-stable201905/BaseTools/Source/C/Makefiles/header.makefile
+Index: edk2-edk2-stable202008/BaseTools/Source/C/Makefiles/header.makefile
 ===================================================================
---- edk2-edk2-stable201905.orig/BaseTools/Source/C/Makefiles/header.makefile
-+++ edk2-edk2-stable201905/BaseTools/Source/C/Makefiles/header.makefile
-@@ -75,7 +75,7 @@ else
+--- edk2-edk2-stable202008.orig/BaseTools/Source/C/Makefiles/header.makefile
++++ edk2-edk2-stable202008/BaseTools/Source/C/Makefiles/header.makefile
+@@ -88,7 +88,7 @@ else
  BUILD_CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -fwrapv \
  -fno-delete-null-pointer-checks -Wall -Werror \
  -Wno-deprecated-declarations -Wno-stringop-truncation -Wno-restrict \
 --Wno-unused-result -nostdlib -g
 +-Wno-unused-result -nostdlib -g -fPIE
  endif
- BUILD_LFLAGS =
- BUILD_CXXFLAGS = -Wno-unused-result
+ endif
+ ifeq ($(CXX), llvm)

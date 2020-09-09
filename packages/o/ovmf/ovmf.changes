@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Sep  7 03:55:46 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to edk2-stable202008
+  + MdeModulePkg/Library: add PEIM and SEC module type to
+    TpmMeasurementLibNull
+  + SecurityPkg/DxeImageVerificationLib: catch alignment overflow
+    (CVE-2019-14562) (bsc#1175476)
+  + OvmfPkg/CpuHotplugSmm: fix CPU hotplug race before and after
+    SMI broadcast
+  + SecurityPkg/Tcg2: handle PRE HASH and LOG ONLY
+  + MdePkg/Include: Add missing definition of SMBIOS type 42h in
+    SmBios.h
+  + MdePkg: UefiFileHandleLib: fix buffer overrun in
+    FileHandleReadLine()
+  + OvmfPkg: Add SEV-ES support
+  + MdeModulePkg/PartitionDxe: Fix the incorrect LBA size in child
+    hander
+  + MdeModulePkg/PartitionDxe: Revert changes for the special MBR
+  + MdeModulePkg/PartitionDxe: Put the UDF check ahead of MBR
+  + ShellPkg: smbiosview - Change some type 17 field values format
+  + CryptoPkg/OpensslLib: Upgrade OpenSSL to 1.1.1g
+  + MdeModulePkg: Upon BootOption failure, Destroy RamDisk memory
+    before RSC.
+  + OvmfPkg/LsiScsiDxe: Add support for LSI 53C895A
+  + MdeModulePkg/DisplayEngine: Add Debug message to show mismatch
+    menu info
+  + Add New Memory Attributes
+  + MdeModulePkg/PartitionDxe: Add already start check for child
+    hanldes
+  + MdeModulePkg/PartitionDxe: Skip the MBR that add for CD-ROM
+  + MdeModulePkg/PartitionDxe: Correct the MBR last block value
+  + MdeModulePkg/Variable/RuntimeDxe: Fix return status from
+    Reclaim()
+  + SecurityPkg/Tcg2Pei: Add missing PCRIndex in FvBlob event.
+  + SecurityPkg/Tcg2Dxe: Add PcdTcgPfpMeasurementRevision in
+    SpecId event.
+  + CryptoPkg/BaseCryptLib: Add MARCO to disable the deprecated
+    SHA1 and MD5
+  + ArmVirtPkg/NorFlashQemuLib: disable NOR flash DT nodes upon
+    discovery
+  + UefiCpuPkg/SecCore: Add pre-memory AP vector
+  + OvmfPkg: End timer interrupt later to avoid stack overflow
+    under load
+  + ArmPkg/PlatformBootManagerLib: regenerate boot options on
+    boot failure
+  + MdeModulePkg/StatusCodeHandler: do not output \n\r for string
+    data
+  + Revert "OvmfPkg: use generic QEMU image loader for secure boot
+    enabled ..."
+  + ArmVirtPkg/PrePi: use standard PeCoff routines for
+    self-relocation
+  + ArmVirtPkg: add FDF rule for self-relocating PrePi
+  + ArmPkg/ArmExceptionLib: use static buffer for sp_el0
+  + MdeModulePkg/SetupBrowserDxe: Do not reconnect driver with
+    form-update
+  + OvmfPkg/X86QemuLoadImageLib: handle EFI_ACCESS_DENIED from
+    LoadImage()
+  + OvmfPkg/Tcg2ConfigPei: generalize TPM2-only file-top comments
+  + ArmPkg: only attempt buildin MmCommunicationDxe for AArch64
+  + ArmPkg/PlatformBootManagerLib: don't connect all devices on
+    each boot
+  + ArmPkg/PlatformBootManagerLib: hide UEFI Shell as a regular
+    boot option
+  + MdeModulePkg/BootManagerUiLib: show inactive boot options
+  + ArmPkg/PlatformBootManagerLib: fall back to the UiApp on
+    boot failure
+  + ArmPkg/PlatformBootManagerLib: register 's' as UEFI Shell
+    hotkey
+  + ArmPkg/PlatformBootManagerLib: connect non-discoverable USB
+    hosts
+  + ArmPkg/ArmSvcLib: prevent speculative execution beyond svc
+  + ArmPkg/PlatformBootManagerLib: reject 'default' parity and
+    stop bit count
+  + ArmPkg/PlatformBootManagerLib: use static assertion for
+    console type
+- Update openssl to 1.1.1g
+- Drop openssl-fix-syntax-error.patch
+  + The new openssl already includes the fix.
+- Refresh ovmf-pie.patch and ovmf-disable-ia32-firmware-piepic.patch
+
+-------------------------------------------------------------------
 Wed Jul 22 16:01:04 UTC 2020 - Kai Liu <kai.liu@suse.com>
 
 - Fixed TPM support. TPM2_ENABLE & TPM2_CONFIG_ENABLE build flags

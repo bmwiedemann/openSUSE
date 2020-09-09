@@ -1,10 +1,10 @@
-Index: edk2-edk2-stable201905/BaseTools/Conf/tools_def.template
+Index: edk2-edk2-stable202008/BaseTools/Conf/tools_def.template
 ===================================================================
---- edk2-edk2-stable201905.orig/BaseTools/Conf/tools_def.template
-+++ edk2-edk2-stable201905/BaseTools/Conf/tools_def.template
-@@ -1738,7 +1738,7 @@ DEFINE GCC_AARCH64_RC_FLAGS        = -I
+--- edk2-edk2-stable202008.orig/BaseTools/Conf/tools_def.template
++++ edk2-edk2-stable202008/BaseTools/Conf/tools_def.template
+@@ -1954,7 +1954,7 @@ DEFINE GCC_DEPS_FLAGS              = -MM
  
- DEFINE GCC48_ALL_CC_FLAGS            = -g -fshort-wchar -fno-builtin -fno-strict-aliasing -Wall -Werror -Wno-array-bounds -ffunction-sections -fdata-sections -include AutoGen.h -fno-common -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings
+ DEFINE GCC48_ALL_CC_FLAGS            = DEF(GCC_ALL_CC_FLAGS) -ffunction-sections -fdata-sections -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings
  DEFINE GCC48_IA32_X64_DLINK_COMMON   = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x20
 -DEFINE GCC48_IA32_CC_FLAGS           = DEF(GCC48_ALL_CC_FLAGS) -m32 -march=i586 -malign-double -fno-stack-protector -D EFI32 -fno-asynchronous-unwind-tables -Wno-address
 +DEFINE GCC48_IA32_CC_FLAGS           = DEF(GCC48_ALL_CC_FLAGS) -m32 -march=i586 -malign-double -fno-stack-protector -D EFI32 -fno-asynchronous-unwind-tables -Wno-address -fno-pic -fno-pie
