@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-schema
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-schema
-Version:        4.3.5
+Version:        4.3.6
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
 
-Url:            https://github.com/yast/yast-schema
+URL:            https://github.com/yast/yast-schema
 
 # Dependencies needed to build the package
 BuildRequires:  jing
@@ -34,8 +34,8 @@ BuildRequires:  yast2-devtools
 # All packages providing RNG files for AutoYaST
 # in /usr/share/YaST2/schema/autoyast/rng/*.rng
 
-# make report elements and descendants optional
-BuildRequires:  autoyast2 >= 4.3.20
+# proper validation of installed{,_version} elements in rules.xml
+BuildRequires:  autoyast2 >= 4.3.43
 BuildRequires:  yast2
 # add_on_products and add_on_others types
 BuildRequires:  yast2-add-on >= 4.3.3

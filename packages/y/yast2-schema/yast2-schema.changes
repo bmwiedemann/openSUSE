@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:14:28 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Recognize installed_product and installed_product_version as
+  legal elements of rules.xml files (boo#1176089).
+- 4.3.6
+
+-------------------------------------------------------------------
 Mon Aug 24 11:38:34 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Element 'release_type' is not mandatory (bsc#1175682).
