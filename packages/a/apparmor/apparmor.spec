@@ -77,6 +77,10 @@ Patch11:        abstractions-X-xauth-mr582.diff
 # add CAP_BPF and CAP_PERFMON to severity.db (merged upstream 2020-08-07 https://gitlab.com/apparmor/apparmor/-/merge_requests/589 (2.11..master))
 Patch12:        sevdb-caps-mr589.diff
 
+# add /usr/libexec as a path for libvirt_leaseshelper script, jsc#SLE-14253
+# needs to go upstream
+Patch13:        libvirt-leaseshelper.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix /lib/apparmor
@@ -374,6 +378,7 @@ SubDomain.
 
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 
 %build
 %define _lto_cflags %{nil}

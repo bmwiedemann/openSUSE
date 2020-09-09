@@ -1918,4 +1918,17 @@ The correct message about the refreshed patch is:
   to severity.db (lp#1890547) (forwarded request 824912 from cboltz)</comment>
     <requestid>824913</requestid>
   </revision>
+  <revision rev="141" vrev="7">
+    <srcmd5>9e71d5225a6130ff4f656cabf64b4c07</srcmd5>
+    <version>2.13.4</version>
+    <time>1599666429</time>
+    <user>dimstar_suse</user>
+    <comment>This needs to go upstream but hoping someone here more familiar with
+apparmor and its dev processes can do that. If not please let me know
+and I can give it a stab.
+
+- libvirt-leaseshelper.patch: add /usr/libexec as a path to the
+  libvirt leaseshelper script (jsc#SLE-14253) (forwarded request 831960 from jfehlig)</comment>
+    <requestid>832593</requestid>
+  </revision>
 </revisionlist>
