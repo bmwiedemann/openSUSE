@@ -597,4 +597,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>20.08.0 release</comment>
     <requestid>826332</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>3ab1721c3a77a72171c2a9c8b29eeef5</srcmd5>
+    <version>20.08.1</version>
+    <time>1599666682</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release 20.08.1</comment>
+    <requestid>831705</requestid>
+  </revision>
 </revisionlist>

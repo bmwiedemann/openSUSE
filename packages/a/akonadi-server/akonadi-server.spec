@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        20.08.0
+Version:        20.08.1
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -30,6 +30,7 @@ Group:          System/GUI/KDE
 URL:            https://akonadi-project.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 Source99:       akonadi-server-rpmlintrc
+Patch0:         0001-AgentBase-Fix-crash-in-setOnline.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
@@ -166,7 +167,7 @@ service.
 %lang_package
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
   %cmake_kf5 -d build -- -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE -DQT_PLUGINS_DIR=%{_kf5_plugindir} -DINSTALL_APPARMOR=FALSE

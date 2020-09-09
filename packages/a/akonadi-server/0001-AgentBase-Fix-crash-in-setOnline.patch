@@ -1,0 +1,69 @@
+From 66d1135d127331fb3a2a7e047b0577d7e67d3dc2 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Wed, 2 Sep 2020 10:20:37 +0000
+Subject: [PATCH] AgentBase: Fix crash in setOnline
+
+When setOnline tries to access the mSettings member after the latter has
+been deleted we get a crash; mSettings is deleted in quit() or cleanup(),
+therefore it looks like a race condition: the Agent is about to quit, but
+some other code calls setOnline leading to a crash. It looks like this can
+happen in more than one way, e.g. via a dbus call (from AgentInstance), or
+via a sub-class of AgentBase calling setOnline directly. Use a bool member
+var, modelled after how AgentInstance uses a similar logic.
+
+BUG: 418844
+(cherry picked from commit 53574eb6fccc8f6a03dcea6c1ca1aa02dd895209)
+---
+ src/agentbase/agentbase.cpp | 8 ++++++++
+ src/agentbase/agentbase_p.h | 2 ++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/src/agentbase/agentbase.cpp b/src/agentbase/agentbase.cpp
+index 94d8ccc02..025f90c69 100644
+--- a/src/agentbase/agentbase.cpp
++++ b/src/agentbase/agentbase.cpp
+@@ -333,6 +333,7 @@ AgentBasePrivate::AgentBasePrivate(AgentBase *parent)
+     , mNeedsNetwork(false)
+     , mOnline(false)
+     , mDesiredOnlineState(false)
++    , mPendingQuit(false)
+     , mSettings(nullptr)
+     , mChangeRecorder(nullptr)
+     , mTracer(nullptr)
+@@ -1006,6 +1007,11 @@ void AgentBase::setNeedsNetwork(bool needsNetwork)
+ void AgentBase::setOnline(bool state)
+ {
+     Q_D(AgentBase);
++
++    if (d->mPendingQuit) {
++        return;
++    }
++
+     d->mDesiredOnlineState = state;
+     d->mSettings->setValue(QStringLiteral("Agent/DesiredOnlineState"), state);
+     setOnlineInternal(state);
+@@ -1126,6 +1132,8 @@ void AgentBase::quit()
+ 
+ void AgentBase::aboutToQuit()
+ {
++    Q_D(AgentBase);
++    d->mPendingQuit = true;
+ }
+ 
+ void AgentBase::cleanup()
+diff --git a/src/agentbase/agentbase_p.h b/src/agentbase/agentbase_p.h
+index a70846ce9..2353e7281 100644
+--- a/src/agentbase/agentbase_p.h
++++ b/src/agentbase/agentbase_p.h
+@@ -88,6 +88,8 @@ public:
+     bool mOnline;
+     bool mDesiredOnlineState;
+ 
++    bool mPendingQuit;
++
+     QSettings *mSettings = nullptr;
+ 
+     ChangeRecorder *mChangeRecorder = nullptr;
+-- 
+2.28.0
+
