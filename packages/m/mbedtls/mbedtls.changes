@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  7 01:37:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add workaround for failing builds (Python not found) due to
+  https://gitlab.kitware.com/cmake/cmake/-/issues/21168
+
+-------------------------------------------------------------------
 Mon Aug 31 10:41:19 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Do not run testsuite in parallel - its not reliable
