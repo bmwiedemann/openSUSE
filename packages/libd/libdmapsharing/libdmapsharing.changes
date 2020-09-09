@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep  5 20:44:48 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.9.10:
+  + No upstream changes/changelog/NEWS provided, please see git-log
+    at https://gitlab.gnome.org/GNOME/libdmapsharing
+- Pass disable-static to configure, do not build static lib.
+- Add new optional pkgconfig(gobject-introspection-1.0)
+  BuildRequires, build introspection support.
+- Package new introspection subpackage.
+
+-------------------------------------------------------------------
 Thu Sep 26 19:09:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 3.9.7:
