@@ -2263,7 +2263,7 @@
     <package name="libkdegames-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkdevplatform55" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libkdevplatform56" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkdsoap1_9_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkeduvocdocument-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libkerfuffle20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4249,6 +4249,7 @@
     <package name="ruby2.7-rubygem-metaclass" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-method_source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-micromachine" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-mime" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mime-types" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mime-types-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mime-types-data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
