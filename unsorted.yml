@@ -2854,6 +2854,7 @@ unsorted:
   - enchant-1-devel 
   - enchant-1-tools 
   - enchant-2-backend-aspell 
+  - enchant-2-backend-nuspell 
   - enchant-2-backend-voikko 
   - enchant-2-backend-voikko-32bit: [x86_64] 
   - enchant-devel 
@@ -4968,6 +4969,7 @@ unsorted:
   - glade-catalog-gtksourceview 
   - glade-catalog-gtksourceview4 
   - glade-catalog-libhandy 
+  - glade-catalog-libhandy0 
   - glade-catalog-libpeas 
   - glade-catalog-v3270 
   - glade-sharp2 
@@ -10210,7 +10212,10 @@ unsorted:
   - libhal1 
   - libhamlib++2 
   - libhamlib2 
+  - libhandy-1-0 
   - libhandy-devel 
+  - libhandy-lang 
+  - libhandy0-devel 
   - libhangul-devel 
   - libhangul1-32bit: [x86_64] 
   - libharfbuzz-gobject0-32bit: [x86_64] 
@@ -10934,12 +10939,12 @@ unsorted:
   - libmatroska7-32bit: [x86_64] 
   - libmaxminddb-devel 
   - libmaxminddb0-32bit: [x86_64] 
-  - libmbedcrypto3 
-  - libmbedcrypto3-32bit: [x86_64] 
-  - libmbedtls12 
-  - libmbedtls12-32bit: [x86_64] 
-  - libmbedx509-0 
-  - libmbedx509-0-32bit: [x86_64] 
+  - libmbedcrypto5 
+  - libmbedcrypto5-32bit: [x86_64] 
+  - libmbedtls13 
+  - libmbedtls13-32bit: [x86_64] 
+  - libmbedx509-1 
+  - libmbedx509-1-32bit: [x86_64] 
   - libmbim-devel 
   - libmca_common_dstore1 
   - libmcpp0 
@@ -12956,6 +12961,7 @@ unsorted:
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
   - libturris-spectator0 
+  - libtvm: [x86_64] 
   - libtwolame-devel 
   - libtwolame0-32bit: [x86_64] 
   - libu2f-host-devel 
@@ -13483,12 +13489,15 @@ unsorted:
   - libxine2-sdl 
   - libxkbcommon-devel 
   - libxkbcommon-devel-32bit: [x86_64] 
+  - libxkbcommon-tools 
   - libxkbcommon-x11-0-32bit: [x86_64] 
   - libxkbcommon-x11-devel 
   - libxkbcommon-x11-devel-32bit: [x86_64] 
   - libxkbcommon0-32bit: [x86_64] 
   - libxkbfile-devel-32bit: [x86_64] 
   - libxkbfile1-32bit: [x86_64] 
+  - libxkbregistry-devel 
+  - libxkbregistry0 
   - libxkbui-devel 
   - libxkbui-devel-32bit: [x86_64] 
   - libxkbui1 
@@ -20370,6 +20379,7 @@ unsorted:
   - python3-django-phonenumber-field 
   - python3-django-picklefield 
   - python3-django-pipeline 
+  - python3-django-polymorphic 
   - python3-django-push-notifications 
   - python3-django-pyscss 
   - python3-django-q 
@@ -22219,7 +22229,9 @@ unsorted:
   - python3-tri.struct 
   - python3-trustme 
   - python3-tsk 
-  - python3-tvm 
+  - python3-tvm: [x86_64] 
+  - python3-tvm-nnvm: [x86_64] 
+  - python3-tvm-topi: [x86_64] 
   - python3-tvtk 
   - python3-tvtk-doc 
   - python3-tweepy 
@@ -23526,6 +23538,9 @@ unsorted:
   - ruby2.6-rubygem-micromachine 
   - ruby2.6-rubygem-micromachine-doc 
   - ruby2.6-rubygem-micromachine-testsuite 
+  - ruby2.6-rubygem-mime 
+  - ruby2.6-rubygem-mime-doc 
+  - ruby2.6-rubygem-mime-testsuite 
   - ruby2.6-rubygem-mime-types 
   - ruby2.6-rubygem-mime-types-1 
   - ruby2.6-rubygem-mime-types-data 
@@ -24474,6 +24489,8 @@ unsorted:
   - ruby2.7-rubygem-method_source-testsuite 
   - ruby2.7-rubygem-micromachine-doc 
   - ruby2.7-rubygem-micromachine-testsuite 
+  - ruby2.7-rubygem-mime-doc 
+  - ruby2.7-rubygem-mime-testsuite 
   - ruby2.7-rubygem-mime-types-data-doc 
   - ruby2.7-rubygem-mime-types-doc 
   - ruby2.7-rubygem-mime-types-doc-1 
@@ -34042,8 +34059,7 @@ unsorted:
   - tuxpaint-stamps-vehicles 
   - tvbrowser 
   - tvheadend 
-  - tvm 
-  - tvm-devel 
+  - tvm-devel: [x86_64] 
   - tvtime 
   - tvtime-lang 
   - twemoji-color-font 
@@ -34097,6 +34113,7 @@ unsorted:
   - typelib-1_0-DbusmenuGtk-0_4 
   - typelib-1_0-DbusmenuGtk3-0_4 
   - typelib-1_0-Devhelp-3_0 
+  - typelib-1_0-Dmap-4_0 
   - typelib-1_0-EBackend-1_2 
   - typelib-1_0-EBook-1_2 
   - typelib-1_0-EBookContacts-1_2 
@@ -34179,6 +34196,7 @@ unsorted:
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
+  - typelib-1_0-Handy-1_0 
   - typelib-1_0-Hinawa-2_0 
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
@@ -34937,6 +34955,7 @@ unsorted:
   - xcb-util-wm-devel-32bit: [x86_64] 
   - xcb-util-xrm-devel 
   - xchm 
+  - xchm-lang 
   - xclass 
   - xclass-devel 
   - xclipboard 
