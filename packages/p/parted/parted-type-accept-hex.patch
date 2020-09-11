@@ -1,0 +1,15 @@
+--- parted-3.3/parted/ui.c	2020/08/25 16:28:53	1.1
++++ parted-3.3/parted/ui.c	2020/08/25 16:31:39
+@@ -926,7 +926,11 @@
+                 return 0;
+ 
+         errno = 0;
+-        ret = strtol (input, (char**) NULL, 10);
++
++        if (strstr(input, "0x") == input)
++                ret = strtol (input, (char**) NULL, 16);
++        else
++                ret = strtol (input, (char**) NULL, 10);
+         if (errno)
+                 goto error;
+ 

@@ -748,8 +748,8 @@ cp -a icudtl.dat %{buildroot}%{_libdir}/chromium/
 %endif
 
 %if %{with swiftshader}
-mkdir -p %{buildroot}%{_libdir}/chromium/swiftshader
-cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/swiftshader/
+mkdir -p %{buildroot}%{_libdir}/chromium
+cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/
 %endif
 
 # chromedriver
@@ -812,8 +812,7 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 %dir %{_datadir}/gnome-control-center/default-apps
 %{_libdir}/chromium/
 %if %{with swiftshader}
-%dir %{_libdir}/chromium/swiftshader/
-%{_libdir}/chromium/swiftshader/*.so
+%{_libdir}/chromium/*.so
 %endif
 %{_datadir}/applications/*.desktop
 %dir %{_datadir}/metainfo/

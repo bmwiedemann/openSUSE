@@ -182,4 +182,12 @@
   * Fix __mount_device wrapper</comment>
     <requestid>823207</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c5c75e93318f8c4f5a2f4f5146dd3762</srcmd5>
+    <version>0.0.1+git.1598948600.9a9eab0</version>
+    <time>1599770842</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>832952</requestid>
+  </revision>
 </revisionlist>

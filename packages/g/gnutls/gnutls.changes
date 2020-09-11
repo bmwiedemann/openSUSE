@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep  8 08:18:48 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.6.15
+ * libgnutls: Fixed "no_renegotiation" alert handling at incorrect timing.
+   [GNUTLS-SA-2020-09-04, CVSS: medium]
+ * libgnutls: If FIPS self-tests are failed, gnutls_fips140_mode_enabled() now
+   indicates that with a false return value (!1306).
+ * libgnutls: Under FIPS mode, the generated ECDH/DH public keys are checked
+   accordingly to SP800-56A rev 3 (!1295, !1299).
+ * libgnutls: gnutls_x509_crt_export2() now returns 0 upon success, rather than
+   the size of the internal base64 blob (#1025).
+ * libgnutls: Certificate verification failue due to OCSP must-stapling is not
+   honered is now correctly marked with the GNUTLS_CERT_INVALID flag
+ * libgnutls: The audit log message for weak hashes is no longer printed twice
+ * libgnutls: Fixed version negotiation when TLS 1.3 is enabled and TLS 1.2 is
+   disabled in the priority string. Previously, even when TLS 1.2 is explicitly
+   disabled with "-VERS-TLS1.2", the server still offered TLS 1.2 if TLS 1.3 is
+   enabled (#1054).
+- drop upstreamed patches:
+  * gnutls-detect_nettle_so.patch
+  * 0001-crypto-api-always-allocate-memory-when-serializing-i.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 09:15:45 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Correctly detect gmp, nettle, and hogweed libraries (bsc#1172666)

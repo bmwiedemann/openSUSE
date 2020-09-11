@@ -1,7 +1,7 @@
 #
 # spec file for package gperftools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Performance Tools for C++
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/gperftools/gperftools
+URL:            https://github.com/gperftools/gperftools
 Source0:        https://github.com/gperftools/gperftools/releases/download/gperftools-%{version}/gperftools-%{version}.tar.gz
 Patch1:         %{name}_fix_unassigned_malloc_in_unittest.patch
 Patch2:         %{name}_gcc46.patch
@@ -39,9 +39,10 @@ BuildRequires:  pkg-config
 %ifnarch s390
 BuildRequires:  valgrind-devel
 %endif
+# based on basictypes.h in the source tree
+ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 mips s390x
 Provides:       google-perftools
 Obsoletes:      google-perftools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The gperftools package contains some utilities to improve and analyze the
@@ -87,11 +88,7 @@ The gperftools-devel-static package contains static libraries for developing
 applications that use the gperftools package.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -109,7 +106,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing $VALGRIND_FL"
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n libprofiler0 -p /sbin/ldconfig
@@ -121,17 +118,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libtcmalloc4 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %{_bindir}/pprof
 %{_mandir}/man1/pprof.1.*
 %{_docdir}/%{name}
 
 %files -n libprofiler0
-%defattr(-,root,root)
 %{_libdir}/libprofiler.so.0*
 
 %files -n libtcmalloc4
-%defattr(-,root,root)
 %{_libdir}/libtcmalloc.so.4*
 %{_libdir}/libtcmalloc_debug.so.4*
 %{_libdir}/libtcmalloc_minimal.so.4*
@@ -139,7 +133,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libtcmalloc_and_profiler.so.4*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/google
 %{_includedir}/gperftools
 %{_libdir}/libprofiler.so
@@ -151,7 +144,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/*.pc
 
 %files devel-static
-%defattr(-,root,root)
 %{_libdir}/libprofiler.a
 %{_libdir}/libtcmalloc.a
 %{_libdir}/libtcmalloc_debug.a

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  7 08:12:29 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1176179, CVE-2020-24977]
+  * xmllint: global-buffer-overflow in xmlEncodeEntitiesInternal
+- Add patch libxml2-CVE-2020-24977.patch
+
+-------------------------------------------------------------------
 Wed May 27 12:09:35 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix invalid xmlns references since the fix for CVE-2019-19956 [bsc#1172021]

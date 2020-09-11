@@ -24,7 +24,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        20.08.0
+Version:        20.08.1
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later

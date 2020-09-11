@@ -1,0 +1,10 @@
+<constraints>
+	<hardware>
+		<disk>
+			<!-- mingw-cross-gcc-bootstrap 4376M -->
+			<!-- mingw-cross-gcc 7885M -->
+			<!-- mingw-gcc 9003M -->
+			<size unit="G">10</size>
+		</disk>
+	</hardware>
+</constraints>

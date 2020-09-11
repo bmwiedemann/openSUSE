@@ -116,21 +116,11 @@ make %{?_smp_mflags} docs
 # Updates must be tested manually.
 
 %install
+make DESTDIR=%{buildroot} PREFIX=/usr install
+make DESTDIR=%{buildroot} PREFIX=/usr install.completions
 
-# libpod
-cd $HOME/go/src/%{project}
-install -D -m 0755 bin/podman         %{buildroot}/%{_bindir}/podman
-install -D -m 0755 bin/podman-remote  %{buildroot}/%{_bindir}/podman-remote
-install -d %{buildroot}/%{_mandir}/man1
-install -m 0644 docs/build/man/podman*.1 %{buildroot}/%{_mandir}/man1
-install -D -m 0644 cni/87-podman-bridge.conflist %{buildroot}/%{_sysconfdir}/cni/net.d/87-podman-bridge.conflist
-install -D -m 0644 completions/bash/podman %{buildroot}/%{_datadir}/bash-completion/completions/podman
-install -D -m 0644 completions/zsh/_podman %{buildroot}%{_sysconfdir}/zsh_completion.d/_podman
-
-# podman varlink
-install -D -m 0644 contrib/varlink/podman.conf %{buildroot}/%{_tmpfilesdir}/podman.conf
-install -D -m 0644 contrib/varlink/io.podman.service %{buildroot}%{_unitdir}/io.podman.service
-install -D -m 0644 contrib/varlink/io.podman.socket %{buildroot}%{_unitdir}/io.podman.socket
+# packaged in libcontainers-common
+rm %{buildroot}/usr/share/man/man5/containers-mounts.conf.* %{buildroot}/usr/share/man/man5/oci-hooks.*
 
 # Add podman modprobe.d drop-in config
 mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
@@ -157,11 +147,11 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_prefix}/lib/modules-load.d/podman.conf
 # Completion
 %{_datadir}/bash-completion/completions/podman
-%{_sysconfdir}/zsh_completion.d/_podman
-# Varlink
-%{_tmpfilesdir}/podman.conf
-%{_unitdir}/io.podman.service
-%{_unitdir}/io.podman.socket
+%{_datadir}/zsh/site-functions/_podman
+%{_unitdir}/podman.service
+%{_unitdir}/podman.socket
+%{_userunitdir}/podman.service
+%{_userunitdir}/podman.socket
 %ghost /run/podman
 %ghost  %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-libpodconf
 %license LICENSE
@@ -171,20 +161,19 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %license LICENSE
 
 %pre
-%service_add_pre io.podman.service io.podman.socket
+%service_add_pre podman.service podman.socket
 # move away any old rpmsave config file to avoid having it re-activated again in
 # %posttrans
 test -f /etc/containers/libpod.conf.rpmsave && mv -v /etc/containers/libpod.conf.rpmsave /etc/containers/libpod.conf.rpmsave.old ||:
 
 %post
-%service_add_post io.podman.service io.podman.socket
-%tmpfiles_create %{_tmpfilesdir}/podman.conf
+%service_add_post podman.service podman.socket
 
 %preun
-%service_del_preun io.podman.service io.podman.socket
+%service_del_preun podman.service podman.socket
 
 %postun
-%service_del_postun io.podman.service io.podman.socket
+%service_del_postun podman.service podman.socket
 
 %posttrans
 # if libpod.conf.rpmsave was created move it back into place and set an update

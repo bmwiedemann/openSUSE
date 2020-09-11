@@ -21,7 +21,7 @@ Summary:        Release Compare Script
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/release-compare
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Source:         %name-%version.tar.xz
 BuildArch:      noarch

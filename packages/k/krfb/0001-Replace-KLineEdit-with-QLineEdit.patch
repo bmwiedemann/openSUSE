@@ -1,0 +1,84 @@
+From 58eab99e6b5fbcd7c9bb4f9a5f0bd5feb0b3edf3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 12 Aug 2020 18:27:23 +0200
+Subject: [PATCH] Replace KLineEdit with QLineEdit
+
+The password field uses none of the KLineEdit features like completion,
+so QLineEdit suffices.
+---
+ CMakeLists.txt      | 1 -
+ krfb/CMakeLists.txt | 1 -
+ krfb/mainwindow.cpp | 3 +--
+ krfb/mainwindow.h   | 4 ++--
+ 4 files changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index aadd4b7..bd9ed41 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,7 +29,6 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core DBus Widgets X11Extr
+ 
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     I18n
+-    Completion
+     Config
+     CoreAddons
+     Crash
+diff --git a/krfb/CMakeLists.txt b/krfb/CMakeLists.txt
+index a292226..43752b5 100644
+--- a/krfb/CMakeLists.txt
++++ b/krfb/CMakeLists.txt
+@@ -93,7 +93,6 @@ target_link_libraries (krfb
+                        ${X11_X11_LIB}
+                        ${X11_Xdamage_LIB}
+                        Qt5::Network
+-                       KF5::Completion
+                        KF5::CoreAddons
+                        KF5::DBusAddons
+                        KF5::DNSSD
+diff --git a/krfb/mainwindow.cpp b/krfb/mainwindow.cpp
+index 555d301..14924f6 100644
+--- a/krfb/mainwindow.cpp
++++ b/krfb/mainwindow.cpp
+@@ -21,7 +21,6 @@
+ #include <KMessageWidget>
+ #include <KStandardAction>
+ #include <KActionCollection>
+-#include <KLineEdit>
+ #include <KNewPasswordDialog>
+ #include <KPluginLoader>
+ #include <KPluginMetaData>
+@@ -107,7 +106,7 @@ MainWindow::MainWindow(QWidget *parent)
+     setAttribute(Qt::WA_DeleteOnClose, false);
+ 
+     m_passwordEditable = false;
+-    m_passwordLineEdit = new KLineEdit(this);
++    m_passwordLineEdit = new QLineEdit(this);
+     m_passwordLineEdit->setVisible(false);
+     m_passwordLineEdit->setAlignment(Qt::AlignHCenter);
+ 
+diff --git a/krfb/mainwindow.h b/krfb/mainwindow.h
+index 9f2939e..bbe69cd 100644
+--- a/krfb/mainwindow.h
++++ b/krfb/mainwindow.h
+@@ -15,7 +15,7 @@
+ 
+ #include <KXmlGuiWindow>
+ 
+-class KLineEdit;
++class QLineEdit;
+ 
+ class MainWindow : public KXmlGuiWindow
+ {
+@@ -43,7 +43,7 @@ class MainWindow : public KXmlGuiWindow
+     private:
+         Ui::MainWidget m_ui;
+         bool m_passwordEditable;
+-        KLineEdit *m_passwordLineEdit;
++        QLineEdit *m_passwordLineEdit;
+ };
+ 
+ #endif
+-- 
+2.28.0
+

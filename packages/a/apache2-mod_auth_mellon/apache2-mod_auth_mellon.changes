@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 10 14:19:03 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 0.17.0
+  * New option MellonSendExpectHeader (default On) which allows to
+    disable sending the Expect header in the HTTP-Artifact binding to
+    improve performance when the remote party does not support this
+    header.
+  * Set SameSite attribute to None on on the cookietest cookie.
+  * Bump default generated keysize to 3072 bits in
+    mellon_create_metadata
+  * Validate if the assertion ID has not been used earlier before
+    creating a new session.
+  * Release session cache after calling invalidate endpoint.
+  * In MellonCond directives, fix a bug that setting the NC option
+    would also activate substring match and that REG would activate
+    REF.
+  * Fix MellonCond substring match to actually match the substring on
+    the attribute value
+
+-------------------------------------------------------------------
 Thu Jun  4 11:00:04 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - update mod_auth_mellon-0.16.0-env-script-interpreter.patch

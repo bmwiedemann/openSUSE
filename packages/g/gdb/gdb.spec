@@ -344,7 +344,7 @@ BuildRequires:  babeltrace-devel
 BuildRequires:  babeltrace-devel
 %endif
 %endif
-%ifarch aarch64
+%ifarch aarch64 riscv64
 BuildRequires:  babeltrace-devel
 %endif
 

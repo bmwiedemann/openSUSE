@@ -41,4 +41,12 @@
     <comment>Remove -lang recommends (forwarded request 768700 from dimstar)</comment>
     <requestid>768712</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>68c5595e130f7b24d017903c53af1468</srcmd5>
+    <version>5.1.2</version>
+    <time>1599770716</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 832470 from iznogood)</comment>
+    <requestid>832812</requestid>
+  </revision>
 </revisionlist>

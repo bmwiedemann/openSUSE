@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  4 14:33:53 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.3.13:
+  + API addition: grl_related_keys_set_for_id().
+  + Fix trying to load .so.p files as plugins.
+  + Fix crash using get_plugins() from bindings.
+  + Several other fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 14 16:52:59 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 0.3.12:

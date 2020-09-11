@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  7 15:58:31 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- updated to 2.4.53
+
+OpenLDAP 2.4.53 (2020/09/07)
+  Added slapd syncrepl additional SYNC logging (ITS#9043)
+  Fixed slapd syncrepl segfault on NULL cookie on REFRESH (ITS#9282)
+  Fixed slapd syncrepl to use fresh connection on REFRESH fallback (ITS#9338)
+  Fixed slapo-ppolicy race condition for pwdFailureTime (ITS#9302,ITS#9334)
+  Build
+    Require OpenSSL 1.0.2 or later (ITS#9323)
+    Fixed libldap compilation issue with broken C compilers (ITS#9332)
+
+-------------------------------------------------------------------
 Fri Aug 28 22:06:57 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - updated to 2.4.52

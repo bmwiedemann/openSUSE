@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep  9 21:02:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Revert the ExclusiveArch/BuildArch. Having
+  mingw64-binutils.{aarch64,ppc64,etc.}.rpm with AMD64 PE binaries
+  is exactly the point of mingw64-* packages.
+
+-------------------------------------------------------------------
+Tue Jun  9 07:44:16 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add patches to fix (boo#920134)
+   * 0001-Fix-a-potential-infinite-loop-in-the-Windows-resourc.patch
+   * 0001-Fix-the-windmc-program-to-conform-to-the-behaviour-o.patch
+   (removed conflicting changelog entry)
+
+-------------------------------------------------------------------
+Fri Feb  7 08:59:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build only on x86* archs
+
+-------------------------------------------------------------------
+Sun Nov 24 06:20:07 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2.33.1 
+- Drop 0001-COFF-Check-for-symbols-defined-in-discarded-section.patch
+  Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Nov 20 13:40:31 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - inital package for Factory submission

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 10 02:03:46 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1599702667.157fc6b5:
+  * Dev: unittest: adjust unit test for checking sbd package installed
+  * Low: bootstrap: check whether sbd package installed
+  * Dev: unittest: Improve unit test for qdevice configuration
+  * Dev: behave: Improve qdevice functional test
+  * Low: bootstrap: Improve qdevice configure process * More reasonable naming for variables * More function docstrings * Move function to more reasonable location * Create functions to integrate similar functions inside one * Change big function to small one, more easier for unit test, like: * Refactor functions * Create utils.cluster_run_cmd function to avoid using crm cluster run directly in code
+
+-------------------------------------------------------------------
+Wed Sep 09 08:24:03 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1599639093.ba35c7d1:
+  * Dev: unittest: adjust unittest for swap keys with other nodes when join_ssh
+  * Low: bootstrap: swap keys with other nodes when join_ssh(bsc#1176178)
+
+-------------------------------------------------------------------
 Mon Aug 24 08:38:32 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1598257562.570eb99d:

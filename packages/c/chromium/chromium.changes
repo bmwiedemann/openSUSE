@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:53:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Move swiftshader stuff to chromium folder directly bsc#1176207
+
+-------------------------------------------------------------------
 Tue Sep  1 10:15:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Really update to .83 we accidentally included .69 beta release

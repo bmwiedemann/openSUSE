@@ -62,4 +62,18 @@
     <comment></comment>
     <requestid>577607</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>276d0427385e7560c2d9b41d586424bc</srcmd5>
+    <version>2.30</version>
+    <time>1599771178</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.30:
+  * Fix raw URLs with dpaste
+  * License under MIT
+  * Fix handling of bpaste urls.
+  * Fallback location regex confusion fix
+  * dd support for gitlab snippets
+  * Hardcode 'v4' on the help message's gitlab URL</comment>
+    <requestid>833390</requestid>
+  </revision>
 </revisionlist>

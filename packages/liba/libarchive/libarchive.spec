@@ -43,6 +43,7 @@ Source2:        libarchive.keyring
 Source1000:     baselibs.conf
 Patch1:         lib-suffix.patch
 Patch2:         fix-soversion.patch
+Patch3:         libarchive-3.4.3-fix_test_write_disk_secure.patch
 BuildRequires:  cmake
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel

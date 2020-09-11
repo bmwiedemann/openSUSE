@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  8 13:41:21 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Cleanup %install section to use "make install"
+- install missing systemd units for the new Rest API (bsc#1175957)
+  and a few man-pages that where missing before
+- Drop varlink API related bits (in favor of the new API)
+- fix install location for zsh completions
+
+-------------------------------------------------------------------
 Wed Sep  2 00:06:42 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to v2.0.6

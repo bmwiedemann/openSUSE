@@ -40,8 +40,9 @@ This package contains utilities for configuring the bcache Module.
 
 %build
 export SUSE_ASNEEDED=0
-make all CFLAGS="%optflags $(pkg-config blkid uuid smartcols --cflags) -std=gnu99" \
-	LDFLAGS="$(pkg-config blkid uuid smartcols --libs)" %{?_smp_mflags}
+%make_build all \
+	CFLAGS="%optflags $(pkg-config blkid uuid smartcols --cflags) -std=gnu99" \
+	LDFLAGS="$(pkg-config blkid uuid smartcols --libs)"
 
 %install
 b="%buildroot"
@@ -49,7 +50,7 @@ b="%buildroot"
 mkdir -p "$b"/{sbin,%_sbindir,%_mandir/man8,/lib/udev/rules.d}
 mkdir -p "$b/%_sysconfdir/initramfs-tools/scripts/init-premount"
 mkdir -p "$b/%_sysconfdir/initramfs-tools/hooks"
-make install DESTDIR="$b" DRACUTLIBDIR="%_libexecdir/dracut"
+%make_install DRACUTLIBDIR="%_prefix/lib/dracut"
 # Not used in openSUSE
 rm -Rf "$b/%_sysconfdir/initramfs-tools" "$b/%_prefix/lib/initcpio" \
 	"$b/%_datadir/initramfs-tools"
@@ -60,8 +61,8 @@ mv "$b/lib/udev" "$b/%_prefix/lib/"
 %_sbindir/bcache-super-show
 %_sbindir/make-bcache
 %_sbindir/bcache
+%_prefix/lib/dracut/
 %_prefix/lib/udev
-%_libexecdir/dracut/
 %_mandir/man8/*.8*
 %license COPYING
 

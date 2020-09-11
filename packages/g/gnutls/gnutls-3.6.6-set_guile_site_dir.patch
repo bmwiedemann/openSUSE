@@ -1,8 +1,8 @@
-Index: gnutls-3.6.6/configure
+Index: gnutls-3.6.15/configure
 ===================================================================
---- gnutls-3.6.6.orig/configure
-+++ gnutls-3.6.6/configure
-@@ -62868,7 +62868,7 @@
+--- gnutls-3.6.15.orig/configure	2020-09-08 10:24:22.362083215 +0200
++++ gnutls-3.6.15/configure	2020-09-08 10:24:28.510124171 +0200
+@@ -69365,7 +69365,7 @@ fi
  
    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for Guile site directory" >&5
  $as_echo_n "checking for Guile site directory... " >&6; }

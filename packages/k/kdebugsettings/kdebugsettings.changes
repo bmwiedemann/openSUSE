@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:49:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Changes since 20.08.0:
+  * Don't export QT_HASH_SEED and QT_NO_CPU_FEATURE anymore
+
+-------------------------------------------------------------------
 Sun Aug  9 09:08:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.08.0

@@ -17,7 +17,7 @@
 
 
 Name:           gnome-user-docs
-Version:        3.36.2
+Version:        3.36.6
 Release:        0
 Summary:        GNOME Desktop Documentation
 License:        CC-BY-3.0

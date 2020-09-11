@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:04:30 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Enable CTF support also for riscv64
+
+-------------------------------------------------------------------
 Tue Aug 11 09:56:29 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Restore License/Group.

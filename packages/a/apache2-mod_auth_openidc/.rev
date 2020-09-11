@@ -155,4 +155,16 @@ Bugfixes
     - allow Content-Type check on backchannel logout to have postfixes (utf-8 etc.) [OIDC conformance test suite] (forwarded request 831329 from stroeder)</comment>
     <requestid>831365</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0d522598e7996f62989f6fc8f3b43b61</srcmd5>
+    <version>2.4.4.1</version>
+    <time>1599771168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.4.1
+  * Bugfixes
+    - add SameSite=None attribute on cookie clearance / logout and make sure it works in OP iframes
+  * Packaging
+    - the libcjose &amp;gt;= 0.5.1 binaries that this module depends on are available from the &quot;Assets&quot; section in release 2.4.0 (forwarded request 833319 from stroeder)</comment>
+    <requestid>833400</requestid>
+  </revision>
 </revisionlist>

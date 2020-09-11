@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 29 13:23:05 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to rsyslog 8.2008.0
+  Way too many changes since 8.39.0 to be listed here.
+- Added custom unit file rsyslog.service because
+  systemd service file was removed from upstream project
+- Removed obsolete patches:
+  * 0001-satisfy-gcc-flag-fno-common.patch
+  * rsyslog-pgsql-pkg-config.patch
+  * rsyslog-unit.patch
+
+-------------------------------------------------------------------
 Sat Jul 11 05:22:59 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use systemd_ordering instead of requiring to make rsyslog useable

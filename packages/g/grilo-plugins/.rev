@@ -405,4 +405,12 @@
     <comment> (forwarded request 794963 from iznogood)</comment>
     <requestid>795154</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b130ff063299df768d1c1266ed206321</srcmd5>
+    <version>0.3.12</version>
+    <time>1599770719</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.12 - with dmap 4.0 (forwarded request 832549 from dimstar)</comment>
+    <requestid>832813</requestid>
+  </revision>
 </revisionlist>

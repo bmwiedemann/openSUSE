@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:49:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Changes since 20.08.0:
+  * Move data files into their own directory
+  * Ignore double click on a disabled template type
+  * Prevent double click selecting a disabled template type
+  * Bug 425751: Fix inability to create alarms from templates, or load templates in edit dialog (kde#425751)
+  * Bug 425751: Don't show spurious error message when deleting alarm template (kde#425751)
+  * Set correct version for KCalendarCore library
+  * Update from KDE4
+
+-------------------------------------------------------------------
 Sun Aug  9 09:08:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.08.0

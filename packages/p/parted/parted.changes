@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 18:24:26 CEST 2020 - ro@suse.de
+
+- re-add missing hunk to fix bsc#1164907
+  parted-type-accept-hex.patch
+  type on the cmdline could be specified in hex as 0x82
+
+-------------------------------------------------------------------
 Wed Apr  8 17:37:47 UTC 2020 - Anna Maresova <anicka@suse.com>
 
 - print maximum number of partitions for yast

@@ -35,6 +35,7 @@ BuildRequires:  meson
 BuildRequires:  wine
 BuildRequires:  wine-devel
 Obsoletes:      wine-nine < 4.2
+ExclusiveArch:  %{ix86} x86_64
 
 %description
 Gallium Nine allows to run any Direct3D 9 application with nearly no CPU

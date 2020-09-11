@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 11:31:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add timeout to tests (boo#1176232)
+
+-------------------------------------------------------------------
 Sat Aug 15 06:33:10 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Re-activate test suite on x86_64, replacing nose with pytest

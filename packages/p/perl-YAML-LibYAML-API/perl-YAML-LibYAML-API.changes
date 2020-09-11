@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  9 03:11:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.012
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  0.012 2020-09-08 12:55:03+02:00
+      - Remove local/ directory from tarball
+  0.011 2020-09-07 19:41:56+02:00
+      - Pass new option 'width' to libyaml
+
+-------------------------------------------------------------------
 Thu Aug 20 03:11:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.010

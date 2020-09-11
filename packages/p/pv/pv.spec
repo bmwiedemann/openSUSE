@@ -1,7 +1,7 @@
 #
 # spec file for package pv
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,24 +22,18 @@ Release:        0
 Summary:        PipeViewer - Monitor the Progress of Data through Pipes
 License:        Artistic-2.0
 Group:          System/Base
-Url:            http://ivarch.com/programs/pv.shtml
+URL:            http://ivarch.com/programs/pv.shtml
 
 Source:         http://ivarch.com/programs/sources/%name-%version.tar.bz2
 Source2:        http://ivarch.com/programs/sources/%name-%version.tar.bz2.txt
 Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc
 BuildRequires:  gettext
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
 BuildRequires:  intltool
 BuildRequires:  make
-%if 0%{?suse_version} && 0%{?suse_version} <= 1200
-# The testsuite wants the "usleep" utility
-BuildRequires:  sysvinit
-%else
 BuildRequires:  sysvinit-tools
-%endif
 
 %description
 PV ("Pipe Viewer") is a tool for monitoring the progress of data through a
@@ -49,23 +43,23 @@ it has taken, how near to completion it is, and an estimate of how long it
 will be until completion.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --enable-lfs --enable-nls --disable-debugging
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %find_lang %name
 
 %check
-make test
+%make_build test
 
 %files -f %name.lang
-%defattr(-,root,root)
-%doc README doc/COPYING doc/NEWS
+%license doc/COPYING
+%doc README doc/NEWS
 %_bindir/pv
-%doc %_mandir/man1/pv.1%ext_man
+%_mandir/man1/pv.1%ext_man
 
 %changelog

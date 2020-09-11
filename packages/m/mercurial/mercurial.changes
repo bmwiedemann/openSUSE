@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  3 12:24:59 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.5.1:
+  Regularly scheduled bug fix release.
+  
+  * bug fixes
+    + keepalive: Do not append _rbuf if _raw_readinto exists (issue6356)
+
+-------------------------------------------------------------------
 Tue Aug  4 11:05:43 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.5:

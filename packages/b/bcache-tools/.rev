@@ -88,4 +88,12 @@
     <comment>- Update to tag 1.1</comment>
     <requestid>765450</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4aa3fceed369ddb941ed0e0a5bb0541b</srcmd5>
+    <version>1.1</version>
+    <time>1599770873</time>
+    <user>dimstar_suse</user>
+    <comment>- Cure fallout from %_libexecdir change [boo#1174075, boo#1176244]</comment>
+    <requestid>832982</requestid>
+  </revision>
 </revisionlist>

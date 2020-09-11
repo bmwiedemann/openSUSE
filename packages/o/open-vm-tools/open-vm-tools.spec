@@ -73,7 +73,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pcre-devel
 BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 BuildRequires:  glibc >= 2.27
 BuildRequires:  libtirpc-devel
 BuildRequires:  rpcgen
@@ -230,7 +230,7 @@ sed -i -e "s/\r//" README
 # (this is because of 'g_static_mutex_init' usage which is now deprecated)
 export CFLAGS="%{optflags} -Wno-unused-local-typedefs -Wno-unused-but-set-variable -Wno-deprecated-declarations -Wno-sizeof-pointer-memaccess -Wno-cpp -fPIE"
 export CXXFLAGS="%{optflags} -Wno-unused-local-typedefs -Wno-unused-but-set-variable -Wno-deprecated-declarations -Wno-sizeof-pointer-memaccess -Wno-cpp -fPIE"
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 export LDFLAGS="-pie -ltirpc"
 %else
 export LDFLAGS="-pie"

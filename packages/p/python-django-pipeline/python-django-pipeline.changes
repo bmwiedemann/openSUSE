@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 10 08:45:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.5
+  * Definitely drop the support of Python 2.
+  * Drop support for Python 3.5
+  * Change import MutableMapping from collections.abc.
+  * Remove futures from pipeline setup.py requirements.
+  * Adding Django 3.1 compatibility.
+
+-------------------------------------------------------------------
 Mon Apr 20 13:15:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop unused patch django-pipeline-setpcfg.patch

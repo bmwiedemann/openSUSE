@@ -233,4 +233,16 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment></comment>
     <requestid>829966</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7b27425183bf542573e3c02fb958148e</srcmd5>
+    <version>5.5.1</version>
+    <time>1599770904</time>
+    <user>dimstar_suse</user>
+    <comment>- skip a flaky test gh#PyCQA/isort#1466
+- Update to 5.5.1
+- Version 5.5.0
+- Github repo moved to PyCQA/isort
+- URL moved to https://pycqa.github.io/isort/</comment>
+    <requestid>833014</requestid>
+  </revision>
 </revisionlist>

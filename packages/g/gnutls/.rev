@@ -1400,4 +1400,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>821496</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>cda5b5d75dde4307feb2a7f163deaece</srcmd5>
+    <version>3.6.15</version>
+    <time>1599770859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832966</requestid>
+  </revision>
 </revisionlist>

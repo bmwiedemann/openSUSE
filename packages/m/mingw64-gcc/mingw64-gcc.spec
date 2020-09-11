@@ -56,11 +56,11 @@ Requires:       mingw64-cpp >= %{version}
 Requires:       mingw64-headers
 Requires:       mingw64-runtime
 Requires:       mingw64-winpthreads-devel
+BuildArch:      noarch
 %if %{include_ada}
 BuildRequires:  gcc-ada
 BuildRequires:  mingw64-cross-gcc-ada >= %{version}
 %endif
-ExclusiveArch:  %ix86 x86_64
 
 %description
 MinGW Windows compiler (GCC) for C

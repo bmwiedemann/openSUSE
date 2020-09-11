@@ -26,7 +26,7 @@
 %define libname libhandle1
 
 Name:           xfsprogs
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -44,7 +44,7 @@ BuildRequires:  automake
 BuildRequires:  libblkid-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
-BuildRequires:  libedit-devel 
+BuildRequires:  libedit-devel
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  7 17:17:45 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with binutils submitted to Factory, adding upstream
+  libarchive-3.4.3-fix_test_write_disk_secure.patch
+
+-------------------------------------------------------------------
 Wed May 20 05:14:18 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.4.3

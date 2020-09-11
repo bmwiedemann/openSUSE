@@ -36,4 +36,12 @@
   - Fix restoring the initial video mode</comment>
     <requestid>827736</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>80540c8cdcc0aeb151a7a3ab96c6e071</srcmd5>
+    <version>0.7</version>
+    <time>1599771208</time>
+    <user>dimstar_suse</user>
+    <comment>- Build only on x86 (forwarded request 833452 from Guillaume_G)</comment>
+    <requestid>833456</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@ Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix
 License:        (GPL-3.0-or-later AND Apache-2.0)
 Group:          System/Daemons
-Version:        8.39.0
+Version:        8.2008.0
 Release:        0
 %if 0%{?suse_version} >= 1210
 %bcond_without  systemd
@@ -85,7 +85,7 @@ Release:        0
 %define         rsyslog_module_dir_withdeps %{_libdir}/rsyslog/
 URL:            http://www.rsyslog.com/
 # Upstream library deprecated and we want to support migration
-Obsoletes:      %{name}-module-guardtime
+Obsoletes:      %{name}-module-guardtime <= 8.38.0
 %if %{with systemd}
 Provides:       syslog
 Provides:       sysvinit(syslog)
@@ -227,6 +227,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.rsyslog.com/files/download/%{name}/%{name}-%{version}.tar.gz
 Source1:        rsyslog.sysconfig
 Source2:        rsyslog.conf.in
+Source3:        rsyslog.service
 Source4:        rsyslog.d.remote.conf.in
 Source5:        rsyslog-service-prepare.in
 Source6:        usr.sbin.rsyslogd
@@ -238,11 +239,6 @@ Source16:       journald-rsyslog.conf
 Source17:       acpid.frule
 Source18:       firewall.frule
 Source19:       NetworkManager.frule
-
-# PATCH-FIX-OPENSUSE rsyslog-unit.patch crrodriguez@opensuse.org Customize upstream systemd unit for openSUSE needs.
-Patch0:         rsyslog-unit.patch
-Patch1:         rsyslog-pgsql-pkg-config.patch
-Patch2:         0001-satisfy-gcc-flag-fno-common.patch
 
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing
@@ -588,9 +584,6 @@ This module provides an output module for TCL.
 
 %prep
 %setup -q -a 14
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 #
 %if %{with systemd}
 for file in rsyslog-service-prepare; do
@@ -847,6 +840,8 @@ install -m644 plugins/ompgsql/createDB.sql \
 	%{buildroot}%{rsyslogdocdir}/pgsql-createDB.sql
 %endif
 %if %{with systemd}
+install -d -m0755 %{buildroot}%{_unitdir}
+install -m644 %{SOURCE3} %{buildroot}%{_unitdir}/
 install -d -m0755 %{buildroot}%{_sysconfdir}/systemd/journald.conf.d
 install -m644 %{SOURCE16} %{buildroot}%{_sysconfdir}/systemd/journald.conf.d/rsyslog.conf
 %endif

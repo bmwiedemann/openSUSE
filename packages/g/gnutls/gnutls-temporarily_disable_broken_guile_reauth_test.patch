@@ -1,8 +1,8 @@
-Index: gnutls-3.6.14/guile/Makefile.in
+Index: gnutls-3.6.15/guile/Makefile.in
 ===================================================================
---- gnutls-3.6.14.orig/guile/Makefile.in	2020-06-03 15:05:54.000000000 +0200
-+++ gnutls-3.6.14/guile/Makefile.in	2020-06-09 09:03:17.267773380 +0200
-@@ -1850,7 +1850,7 @@ CLEANFILES = modules/gnutls.scm $(am__ap
+--- gnutls-3.6.15.orig/guile/Makefile.in	2020-09-08 10:24:09.581998087 +0200
++++ gnutls-3.6.15/guile/Makefile.in	2020-09-08 10:24:30.046134403 +0200
+@@ -1857,7 +1857,7 @@ CLEANFILES = modules/gnutls.scm $(am__ap
  TESTS = tests/anonymous-auth.scm tests/session-record-port.scm \
  	tests/pkcs-import-export.scm tests/errors.scm \
  	tests/x509-certificates.scm tests/x509-auth.scm \

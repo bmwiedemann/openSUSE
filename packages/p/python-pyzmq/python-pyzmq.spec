@@ -99,7 +99,9 @@ export CFLAGS="%{optflags}"
 %if %{with tests}
 %check
 %python_exec setup.py build_ext --inplace
+timeout 3m bash -c '
 %pytest
+'
 %endif
 
 %files %{python_files}

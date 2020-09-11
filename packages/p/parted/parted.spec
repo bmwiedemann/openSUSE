@@ -69,7 +69,8 @@ Patch36:        libparted-linux-pmem-path.patch
 
 # bsc#1164260
 Patch37:        parted-print-max-partitions-for-yast.patch
-
+# bsc#1164907
+Patch64:        parted-type-accept-hex.patch
 # Fatresize
 Patch100:       parted-fatresize-autoconf.patch
 Patch101:       fatresize-fix-getting-dev-name.patch
@@ -158,6 +159,7 @@ to develop applications that require these.
 %patch35 -p1
 %patch36 -p1
 %patch37 -p1
+%patch64 -p1
 %patch100 -p1
 %patch101 -p1
 %patch156 -p1

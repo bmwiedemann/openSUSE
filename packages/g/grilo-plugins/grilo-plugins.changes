@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep  4 14:36:02 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.3.12:
+  + Add Tracker3 plugin.
+  + tracker3: Add support to run under Flatpak.
+  + tracker3: Prefer last-modified from file's metadata.
+  + Remove Spotify coverart plugin.
+  + dmap: Add support to libdmapsharing-4.0.
+  + Stream Store: Fix date format to iso8601.
+  + tracker: Add Genre fetched from tracker.
+  + dleyna: Allow bus name to be changed.
+  + dleyna: Set metadata relative to containers' type.
+  + Acoustid: Fix the counting of Release Groups.
+  + Acoustid: Fix returning same Record multiple times.
+  + Lua-Factory: Add support to GrlRelatedKeys.
+  + Updated translations.
+- Replace pkgconfig(libdmapsharing-3.0) BuildRequires with
+  pkgconfig(libdmapsharing-4.0): move to the newer supported API.
+
+-------------------------------------------------------------------
 Fri Apr 17 15:51:32 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Remove use of is_opensuse. Chromaprint and libdmapsharing3 are

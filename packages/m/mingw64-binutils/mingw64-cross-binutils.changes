@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:44:16 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add patches to fix (boo#920134)
+   * 0001-Fix-a-potential-infinite-loop-in-the-Windows-resourc.patch
+   * 0001-Fix-the-windmc-program-to-conform-to-the-behaviour-o.patch
+   (removed conflicting changelog entry)
+
+-------------------------------------------------------------------
+Fri Feb  7 08:59:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build only on x86* archs
+
+-------------------------------------------------------------------
+Sun Nov 24 06:20:56 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2.33.1 
+- Drop 0001-COFF-Check-for-symbols-defined-in-discarded-section.patch
+  Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Nov 20 13:40:31 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - inital package for Factory submission

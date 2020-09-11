@@ -75,4 +75,16 @@
   % apr-util-postgresql.patch</comment>
     <requestid>757731</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>b083b23945602b2f85b4b4488dc55636</srcmd5>
+    <version>1.6.1</version>
+    <time>1599770680</time>
+    <user>dimstar_suse</user>
+    <comment>- drop dependency on Berkeley DB [jsc#SLE-12211], gdbm DBM connector
+  is now built instead and sdbm works as well
+* added patches
+  https://svn.apache.org/viewvc?view=revision&amp;revision=1825312
+  + apr-util-apr_dbm_gdbm-fix-handling-of-error-codes.patch</comment>
+    <requestid>831666</requestid>
+  </revision>
 </revisionlist>

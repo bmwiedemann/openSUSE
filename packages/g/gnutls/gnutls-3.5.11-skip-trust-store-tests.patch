@@ -15,10 +15,10 @@ need ca-certificates-mozilla to run.
 
 But this would create a build cycle. Skip test.
 
-Index: gnutls-3.5.11/tests/trust-store.c
+Index: gnutls-3.6.15/tests/trust-store.c
 ===================================================================
---- gnutls-3.5.11.orig/tests/trust-store.c	2017-04-07 07:52:07.000000000 +0200
-+++ gnutls-3.5.11/tests/trust-store.c	2017-05-18 10:33:53.537598763 +0200
+--- gnutls-3.6.15.orig/tests/trust-store.c	2020-09-08 10:24:24.018094247 +0200
++++ gnutls-3.6.15/tests/trust-store.c	2020-09-08 10:24:25.534104346 +0200
 @@ -44,6 +44,9 @@ static void tls_log_func(int level, cons
  
  void doit(void)

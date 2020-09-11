@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:34:32 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- add libkeymap-Fix-mk_mapname-for-the-plain-map.patch
+
+-------------------------------------------------------------------
 Tue Apr 21 13:08:11 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - drop broken kbd command as well as guess_encoding (boo#1170067)

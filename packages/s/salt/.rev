@@ -1500,4 +1500,27 @@ let build start it or we will get libvirt errors.
   * fix-__mount_device-wrapper-254.patch</comment>
     <requestid>826691</requestid>
   </revision>
+  <revision rev="108" vrev="4">
+    <srcmd5>d607fd8a21d7f006508722efa6de0c83</srcmd5>
+    <version>3000.3</version>
+    <time>1599770891</time>
+    <user>dimstar_suse</user>
+    <comment>- Reintroduces the patches from
+  opensuse-3000.2-virt-backports-236.patch coming from Salt 3001
+- Added:
+  * backport-virt-patches-from-3001-256.patch
+
+- Adding missing virt backports to 3000.3
+- Added:
+  * opensuse-3000.2-virt-backports-236-257.patch
+
+- Do not raise StreamClosedError traceback but only log it (bsc#1175549)
+- Added:
+  * do-not-raise-streamclosederror-traceback-but-only-lo.patch
+
+- Take care of failed, skipped and unreachable tasks and propagate &quot;retcode&quot; (bsc#1173911) (bsc#1173909)
+- Added:
+  * ansiblegate-take-care-of-failed-skipped-and-unreacha.patch</comment>
+    <requestid>832998</requestid>
+  </revision>
 </revisionlist>

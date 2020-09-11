@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kipi-plugins
-Version:        20.08.0
+Version:        20.08.1
 Release:        0
 Summary:        KDE Plug-Ins for Image Manipulation
 License:        GPL-2.0-or-later

@@ -44,7 +44,6 @@ Requires:       mingw64-cross-cpp-bootstrap >= %{version}
 Requires:       mingw64-filesystem
 Requires:       mingw64-headers
 Requires:       mingw64-headers-dummy-pthread
-ExclusiveArch:  %ix86 x86_64
 
 %description
 MinGW Windows cross-compiler (GCC) for C

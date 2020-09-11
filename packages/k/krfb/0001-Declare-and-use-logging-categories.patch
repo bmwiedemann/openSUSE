@@ -1,0 +1,485 @@
+From 7299923943687a9e9e411c6b0a8d74e04d5a9b04 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 11 Aug 2020 19:50:46 +0200
+Subject: [PATCH 1/3] Declare and use logging categories
+
+Adds the following logging categories:
+- kf.rfb
+- kf.rfb.framebuffer.qt
+- kf.rfb.framebuffer.xcb
+---
+ CMakeLists.txt                       |  7 +++++
+ framebuffers/qt/CMakeLists.txt       |  8 ++++++
+ framebuffers/xcb/CMakeLists.txt      |  8 ++++++
+ framebuffers/xcb/xcb_framebuffer.cpp | 40 +++++++++++++++-------------
+ krfb/CMakeLists.txt                  |  8 ++++++
+ krfb/eventsmanager.cpp               | 12 ++++-----
+ krfb/framebuffermanager.cpp          | 14 +++++-----
+ krfb/invitationsrfbclient.cpp        |  6 ++---
+ krfb/invitationsrfbserver.cpp        |  4 +--
+ krfb/main.cpp                        |  8 +++---
+ krfb/rfbclient.cpp                   |  1 -
+ krfb/rfbserver.cpp                   |  8 +++---
+ krfb/rfbservermanager.cpp            |  1 -
+ 13 files changed, 78 insertions(+), 47 deletions(-)
+
+Index: krfb-20.08.1/CMakeLists.txt
+===================================================================
+--- krfb-20.08.1.orig/CMakeLists.txt	2020-09-02 07:05:32.869344897 +0200
++++ krfb-20.08.1/CMakeLists.txt	2020-09-02 07:05:40.725370922 +0200
+@@ -20,6 +20,7 @@
+ include(ECMInstallIcons)
+ include(ECMAddAppIcon)
+ include(ECMSetupVersion)
++include(ECMQtDeclareLoggingCategory)
+ include(FeatureSummary)
+ include(CheckIncludeFile)
+ 
+@@ -104,6 +105,12 @@
+ add_subdirectory(doc)
+ add_subdirectory(icons)
+ 
++ecm_qt_install_logging_categories(
++    EXPORT KRFB
++    FILE krfb.categories
++    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
++)
++
+ feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ ki18n_install(po)
+ if (KF5DocTools_FOUND)
+Index: krfb-20.08.1/framebuffers/qt/CMakeLists.txt
+===================================================================
+--- krfb-20.08.1.orig/framebuffers/qt/CMakeLists.txt	2020-09-02 07:05:32.869344897 +0200
++++ krfb-20.08.1/framebuffers/qt/CMakeLists.txt	2020-09-02 07:05:40.725370922 +0200
+@@ -7,6 +7,14 @@
+      qtframebufferplugin.cpp
+ )
+ 
++ecm_qt_declare_logging_category(krfb_framebuffer_qt_SRCS
++    HEADER krfb_fb_qt_debug.h
++    IDENTIFIER KRFB_FB_QT
++    CATEGORY_NAME kf.rfb.framebuffer.qt
++    DESCRIPTION "KRFB Qt frambuffer plugin"
++    EXPORT KRFB
++)
++
+ add_library(krfb_framebuffer_qt
+  MODULE 
+                  ${krfb_framebuffer_qt_SRCS}
+Index: krfb-20.08.1/framebuffers/xcb/CMakeLists.txt
+===================================================================
+--- krfb-20.08.1.orig/framebuffers/xcb/CMakeLists.txt	2020-09-02 07:05:32.869344897 +0200
++++ krfb-20.08.1/framebuffers/xcb/CMakeLists.txt	2020-09-02 07:05:40.725370922 +0200
+@@ -7,6 +7,14 @@
+       xcb_framebuffer.cpp
+ )
+ 
++ecm_qt_declare_logging_category(krfb_framebuffer_xcb_SRCS
++    HEADER krfb_fb_xcb_debug.h
++    IDENTIFIER KRFB_FB_XCB
++    CATEGORY_NAME kf.rfb.framebuffer.xcb
++    DESCRIPTION "KRFB XCB frambuffer plugin"
++    EXPORT KRFB
++)
++
+ add_library(krfb_framebuffer_xcb MODULE ${krfb_framebuffer_xcb_SRCS})
+ 
+ target_link_libraries (krfb_framebuffer_xcb
+Index: krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp
+===================================================================
+--- krfb-20.08.1.orig/framebuffers/xcb/xcb_framebuffer.cpp	2020-09-02 07:05:32.869344897 +0200
++++ krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp	2020-09-02 07:05:40.725370922 +0200
+@@ -8,6 +8,7 @@
+ */
+ 
+ #include "xcb_framebuffer.h"
++#include "krfb_fb_xcb_debug.h"
+ 
+ #include <xcb/xcb.h>
+ #include <xcb/xproto.h>
+@@ -23,7 +24,6 @@
+ #include <QGuiApplication>
+ #include <QScreen>
+ #include <QAbstractNativeEventFilter>
+-#include <QDebug>
+ 
+ 
+ class KrfbXCBEventFilter: public QAbstractNativeEventFilter
+@@ -68,7 +68,7 @@
+         }
+ 
+ #ifdef _DEBUG
+-        qDebug() << "xcb framebuffer: XDamage extension version:" <<
++        qCDebug(KRFB_FB_XCB) << "xcb framebuffer: XDamage extension version:" <<
+                xdamage_version->major_version << "." << xdamage_version->minor_version;
+ #endif
+ 
+@@ -163,7 +163,7 @@
+ 
+     QScreen *primaryScreen = QGuiApplication::primaryScreen();
+     if (primaryScreen) {
+-        qDebug() << "xcb framebuffer: Primary screen: " << primaryScreen->name()
++        qCDebug(KRFB_FB_XCB) << "xcb framebuffer: Primary screen: " << primaryScreen->name()
+                  << ", geometry: " << primaryScreen->geometry()
+                  << ", depth: " << primaryScreen->depth();
+         //
+@@ -183,7 +183,7 @@
+                                         XCB_IMAGE_FORMAT_Z_PIXMAP);
+     if (d->framebufferImage) {
+ #ifdef _DEBUG
+-        qDebug() << "xcb framebuffer: Got primary screen image. bpp: " << d->framebufferImage->bpp
++        qCDebug(KRFB_FB_XCB) << "xcb framebuffer: Got primary screen image. bpp: " << d->framebufferImage->bpp
+                  << ", size (" << d->framebufferImage->width << d->framebufferImage->height << ")"
+                  << ", depth: " << d->framebufferImage->depth
+                  << ", padded width: " << d->framebufferImage->stride;
+@@ -211,15 +211,15 @@
+                     nullptr);                   // data = 0
+         if (d->updateTile) {
+ #ifdef _DEBUG
+-            qDebug() << "xcb framebuffer: Successfully created new empty image in native format";
+-            qDebug() << "    size: " << d->updateTile->width << "x" << d->updateTile->height
+-                     << "(stride: " << d->updateTile->stride << ")";
+-            qDebug() << "    bpp, depth:  " << d->updateTile->bpp << d->updateTile->depth; // 32, 24
+-            qDebug() << "    addr of base, data:  " << d->updateTile->base << (void *)d->updateTile->data;
+-            qDebug() << "    size:  " << d->updateTile->size;
+-            qDebug() << "    image byte order = " << d->updateTile->byte_order;  // == 0 .._LSB_FIRST
+-            qDebug() << "    image bit order = " << d->updateTile->bit_order;    // == 1 .._MSB_FIRST
+-            qDebug() << "    image plane_mask = " << d->updateTile->plane_mask;  // == 16777215 == 0x00FFFFFF
++            qCDebug(KRFB_FB_XCB) << "xcb framebuffer: Successfully created new empty image in native format"
++                << "\n    size: " << d->updateTile->width << "x" << d->updateTile->height
++                    << "(stride: " << d->updateTile->stride << ")"
++                << "\n    bpp, depth:  " << d->updateTile->bpp << d->updateTile->depth // 32, 24
++                << "\n    addr of base, data:  " << d->updateTile->base << (void *)d->updateTile->data
++                << "\n    size:  " << d->updateTile->size
++                << "\n    image byte order = " << d->updateTile->byte_order   // == 0 .._LSB_FIRST
++                << "\n    image bit order = " << d->updateTile->bit_order     // == 1 .._MSB_FIRST
++                << "\n    image plane_mask = " << d->updateTile->plane_mask;  // == 16777215 == 0x00FFFFFF
+ #endif
+ 
+             // allocate shared memory block only once, make its size large enough
+@@ -237,7 +237,7 @@
+             xcb_shm_attach(QX11Info::connection(), d->shminfo.shmseg, d->shminfo.shmid, 0);
+ 
+ #ifdef _DEBUG
+-            qDebug() << "    shm id: " << d->shminfo.shmseg << ", addr: " << (void *)d->shminfo.shmaddr;
++            qCDebug(KRFB_FB_XCB) << "    shm id: " << d->shminfo.shmseg << ", addr: " << (void *)d->shminfo.shmaddr;
+ #endif
+ 
+             // will return 1 on success (yes!)
+@@ -273,7 +273,7 @@
+     }
+ 
+ #ifdef _DEBUG
+-    qDebug() << "xcb framebuffer: XCBFrameBuffer(), xshm base event = " << d->x11EvtFilter->xshmBaseEvent
++    qCDebug(KRFB_FB_XCB) << "xcb framebuffer: XCBFrameBuffer(), xshm base event = " << d->x11EvtFilter->xshmBaseEvent
+              << ", xshm base error = " << d->x11EvtFilter->xdamageBaseError
+              << ", xdamage base event = " << d->x11EvtFilter->xdamageBaseEvent
+              << ", xdamage base error = " << d->x11EvtFilter->xdamageBaseError;
+@@ -420,10 +420,12 @@
+         format.blueMax  = root_visualtype->blue_mask >> format.blueShift;
+ 
+ #ifdef _DEBUG
+-        qDebug() << "    Calculated redShift   =" << (int)format.redShift;
+-        qDebug() << "    Calculated greenShift =" << (int)format.greenShift;
+-        qDebug() << "    Calculated blueShift  =" << (int)format.blueShift;
+-        qDebug(     "    Calculated max values: R%d G%d B%d",
++        qCDebug(KRFB_FB_XCB,
++            "    Calculated redShift   = %d\n"
++            "    Calculated greenShift = %d\n"
++            "    Calculated blueShift  = %d\n"
++            "    Calculated max values: R%d G%d B%d",
++               format.redShift, format.greenShift, format.blueShift
+                format.redMax, format.greenMax, format.blueMax);
+ #endif
+     } else {
+Index: krfb-20.08.1/krfb/CMakeLists.txt
+===================================================================
+--- krfb-20.08.1.orig/krfb/CMakeLists.txt	2020-09-02 07:05:32.869344897 +0200
++++ krfb-20.08.1/krfb/CMakeLists.txt	2020-09-02 07:05:40.725370922 +0200
+@@ -66,6 +66,14 @@
+      invitationsrfbclient.cpp
+ )
+ 
++ecm_qt_declare_logging_category(krfb_SRCS
++    HEADER krfbdebug.h
++    IDENTIFIER KRFB
++    CATEGORY_NAME kf.rfb
++    DESCRIPTION "KRFB Application"
++    EXPORT KRFB
++)
++
+ kconfig_add_kcfg_files (krfb_SRCS
+                      krfbconfig.kcfgc
+ )
+Index: krfb-20.08.1/krfb/eventsmanager.cpp
+===================================================================
+--- krfb-20.08.1.orig/krfb/eventsmanager.cpp	2020-09-02 07:05:32.869344897 +0200
++++ krfb-20.08.1/krfb/eventsmanager.cpp	2020-09-02 07:05:40.725370922 +0200
+@@ -23,8 +23,8 @@
+ #include "eventsplugin.h"
+ #include "krfbconfig.h"
+ #include "rfbservermanager.h"
++#include "krfbdebug.h"
+ 
+-#include <QDebug>
+ #include <QGlobalStatic>
+ 
+ #include <KPluginFactory>
+@@ -79,18 +79,18 @@
+         KPluginFactory *factory = KPluginLoader(data.fileName()).factory();
+ 
+         if (!factory) {
+-            qDebug() << "KPluginFactory could not load the plugin:" << data.fileName();
++            qCDebug(KRFB) << "KPluginFactory could not load the plugin:" << data.fileName();
+             continue;
+         } else {
+-            qDebug() << "found plugin at " << data.fileName();
++            qCDebug(KRFB) << "found plugin at " << data.fileName();
+         }
+ 
+         EventsPlugin *plugin = factory->create<EventsPlugin>(this);
+         if (plugin) {
+             m_plugins.insert(data.pluginId(), plugin);
+-            qDebug() << "Loaded plugin with name " << data.pluginId();
++            qCDebug(KRFB) << "Loaded plugin with name " << data.pluginId();
+         } else {
+-            qDebug() << "unable to load plugin for " << data.fileName();
++            qCDebug(KRFB) << "unable to load plugin for " << data.fileName();
+         }
+         unique.insert (data.name());
+     }
+@@ -113,6 +113,6 @@
+     }
+ 
+     // No valid events plugin found.
+-    qDebug() << "No valid event handlers found. returning null.";
++    qCDebug(KRFB) << "No valid event handlers found. returning null.";
+     return QSharedPointer<EventHandler>();
+ }
+Index: krfb-20.08.1/krfb/framebuffermanager.cpp
+===================================================================
+--- krfb-20.08.1.orig/krfb/framebuffermanager.cpp	2020-09-02 07:05:32.869344897 +0200
++++ krfb-20.08.1/krfb/framebuffermanager.cpp	2020-09-02 07:06:44.709582831 +0200
+@@ -22,8 +22,8 @@
+ 
+ #include "framebufferplugin.h"
+ #include "krfbconfig.h"
++#include "krfbdebug.h"
+ 
+-#include <QDebug>
+ #include <QGlobalStatic>
+ 
+ #include <KPluginFactory>
+@@ -78,18 +78,18 @@
+         KPluginFactory *factory = KPluginLoader(data.fileName()).factory();
+ 
+         if (!factory) {
+-            qDebug() << "KPluginFactory could not load the plugin:" << data.fileName();
++            qDebug(KRFB) << "KPluginFactory could not load the plugin:" << data.fileName();
+             continue;
+         } else {
+-            qDebug() << "found plugin at " << data.fileName();
++            qDebug(KRFB) << "found plugin at " << data.fileName();
+         }
+ 
+         FrameBufferPlugin *plugin = factory->create<FrameBufferPlugin>(this);
+         if (plugin) {
+             m_plugins.insert(data.pluginId(), plugin);
+-            qDebug() << "Loaded plugin with name " << data.pluginId();
++            qDebug(KRFB) << "Loaded plugin with name " << data.pluginId();
+         } else {
+-            qDebug() << "unable to load plugin for " << data.fileName();
++            qDebug(KRFB) << "unable to load plugin for " << data.fileName();
+         }
+         unique.insert (data.name());
+     }
+@@ -118,7 +118,7 @@
+     while (iter != m_plugins.constEnd()) {
+ 
+         if (iter.key() == KrfbConfig::preferredFrameBufferPlugin()) {
+-            qDebug() << "Using FrameBuffer:" << KrfbConfig::preferredFrameBufferPlugin();
++            qDebug(KRFB) << "Using FrameBuffer:" << KrfbConfig::preferredFrameBufferPlugin();
+ 
+             QSharedPointer<FrameBuffer> frameBuffer(iter.value()->frameBuffer(id));
+ 
+@@ -133,6 +133,6 @@
+     }
+ 
+     // No valid framebuffer plugin found.
+-    qDebug() << "No valid framebuffer found. returning null.";
++    qDebug(KRFB) << "No valid framebuffer found. returning null.";
+     return QSharedPointer<FrameBuffer>();
+ }
+Index: krfb-20.08.1/krfb/invitationsrfbclient.cpp
+===================================================================
+--- krfb-20.08.1.orig/krfb/invitationsrfbclient.cpp	2020-09-02 07:05:32.869344897 +0200
++++ krfb-20.08.1/krfb/invitationsrfbclient.cpp	2020-09-02 07:05:40.725370922 +0200
+@@ -24,11 +24,11 @@
+ #include "krfbconfig.h"
+ #include "sockethelpers.h"
+ #include "connectiondialog.h"
++#include "krfbdebug.h"
+ 
+ #include <KNotification>
+ #include <KLocalizedString>
+ 
+-#include <QDebug>
+ #include <QSocketNotifier>
+ #include <poll.h>
+ #include <KConfigGroup>
+@@ -115,7 +115,7 @@
+         //the clientGoneHook which in turn will remove this RfbClient instance
+         //from the server manager and will call deleteLater() to delete it
+         if (d->client->sock == -1) {
+-            qDebug() << "disconnected from socket signal";
++            qCDebug(KRFB) << "disconnected from socket signal";
+             d->notifier->setEnabled(false);
+             rfbClientConnectionGone(d->client);
+             break;
+@@ -125,7 +125,7 @@
+ 
+ bool PendingInvitationsRfbClient::checkPassword(const QByteArray & encryptedPassword)
+ {
+-    qDebug() << "about to start authentication";
++    qCDebug(KRFB) << "about to start authentication";
+ 
+     if(InvitationsRfbServer::instance->allowUnattendedAccess() && vncAuthCheckPassword(
+             InvitationsRfbServer::instance->unattendedPassword().toLocal8Bit(),
+Index: krfb-20.08.1/krfb/invitationsrfbserver.cpp
+===================================================================
+--- krfb-20.08.1.orig/krfb/invitationsrfbserver.cpp	2020-09-02 07:05:32.873344910 +0200
++++ krfb-20.08.1/krfb/invitationsrfbserver.cpp	2020-09-02 07:05:40.725370922 +0200
+@@ -22,10 +22,10 @@
+ #include "invitationsrfbclient.h"
+ #include "krfbconfig.h"
+ #include "rfbservermanager.h"
++#include "krfbdebug.h"
+ #include <QTimer>
+ #include <QApplication>
+ #include <QHostInfo>
+-#include <QDebug>
+ #include <QRandomGenerator>
+ 
+ #include <KLocalizedString>
+@@ -188,7 +188,7 @@
+ 
+     } else {
+ 
+-        qDebug() << "Could not open KWallet, Falling back to config file";
++        qCDebug(KRFB) << "Could not open KWallet, Falling back to config file";
+         KConfigGroup krfbConfig(KSharedConfig::openConfig(),"Security");
+ 
+         desktopPassword = KStringHandler::obscure(krfbConfig.readEntry(
+Index: krfb-20.08.1/krfb/main.cpp
+===================================================================
+--- krfb-20.08.1.orig/krfb/main.cpp	2020-09-02 07:05:32.873344910 +0200
++++ krfb-20.08.1/krfb/main.cpp	2020-09-02 07:05:40.725370922 +0200
+@@ -20,6 +20,7 @@
+ #include "invitationsrfbserver.h"
+ #include "krfbconfig.h"
+ #include "krfb_version.h"
++#include "krfbdebug.h"
+ 
+ #include <KAboutData>
+ #include <KDBusService>
+@@ -27,7 +28,6 @@
+ #include <KMessageBox>
+ #include <KWindowSystem>
+ 
+-#include <QDebug>
+ #include <QPixmap>
+ #include <qwindowdefs.h>
+ #include <QX11Info>
+@@ -59,13 +59,13 @@
+ 
+ static void checkOldX11PluginConfig() {
+     if (KrfbConfig::preferredFrameBufferPlugin() == QStringLiteral("x11")) {
+-        qDebug() << "Detected deprecated configuration: preferredFrameBufferPlugin = x11";
++        qCDebug(KRFB) << "Detected deprecated configuration: preferredFrameBufferPlugin = x11";
+         KConfigSkeletonItem *config_item = KrfbConfig::self()->findItem(
+                     QStringLiteral("preferredFrameBufferPlugin"));
+         if (config_item) {
+             config_item->setProperty(QStringLiteral("xcb"));
+             KrfbConfig::self()->save();
+-            qDebug() << "  Fixed preferredFrameBufferPlugin from x11 to xcb.";
++            qCDebug(KRFB) << "  Fixed preferredFrameBufferPlugin from x11 to xcb.";
+         }
+     }
+ }
+@@ -81,7 +81,7 @@
+         if (config_item) {
+             config_item->setProperty(QStringLiteral("pw"));
+             KrfbConfig::self()->save();
+-            qDebug() << "Wayland: Fixed preferredFrameBufferPlugin to \"pw\".";
++            qCDebug(KRFB) << "Wayland: Fixed preferredFrameBufferPlugin to \"pw\".";
+         }
+     }
+ }
+Index: krfb-20.08.1/krfb/rfbclient.cpp
+===================================================================
+--- krfb-20.08.1.orig/krfb/rfbclient.cpp	2020-09-02 07:05:32.873344910 +0200
++++ krfb-20.08.1/krfb/rfbclient.cpp	2020-09-02 07:05:40.725370922 +0200
+@@ -23,7 +23,6 @@
+ #include "sockethelpers.h"
+ #include "eventsmanager.h"
+ #include <QSocketNotifier>
+-#include <QDebug>
+ #include <poll.h>
+ #include <strings.h> //for bzero()
+ 
+Index: krfb-20.08.1/krfb/rfbserver.cpp
+===================================================================
+--- krfb-20.08.1.orig/krfb/rfbserver.cpp	2020-09-02 07:05:32.873344910 +0200
++++ krfb-20.08.1/krfb/rfbserver.cpp	2020-09-02 07:05:40.725370922 +0200
+@@ -19,11 +19,11 @@
+ */
+ #include "rfbserver.h"
+ #include "rfbservermanager.h"
++#include "krfbdebug.h"
+ #include <QSocketNotifier>
+ #include <QApplication>
+ #include <QClipboard>
+ #include <QPointer>
+-#include <QDebug>
+ #include <QX11Info>
+ 
+ struct RfbServer::Private
+@@ -92,7 +92,7 @@
+     if (!d->screen) {
+         d->screen = RfbServerManager::instance()->newScreen();
+         if (!d->screen) {
+-            qDebug() << "Unable to get rbfserver screen";
++            qCDebug(KRFB) << "Unable to get rbfserver screen";
+             return false;
+         }
+ 
+@@ -125,14 +125,14 @@
+         d->screen->authPasswdData = (void *)nullptr;
+     }
+ 
+-    qDebug() << "Starting server. Listen port:" << listeningPort()
++    qCDebug(KRFB) << "Starting server. Listen port:" << listeningPort()
+              << "Listen Address:" << listeningAddress()
+              << "Password enabled:" << passwordRequired();
+ 
+     rfbInitServer(d->screen);
+ 
+     if (!rfbIsActive(d->screen)) {
+-        qDebug() << "Failed to start server";
++        qCDebug(KRFB) << "Failed to start server";
+         rfbShutdownServer(d->screen, false);
+         return false;
+     };
+Index: krfb-20.08.1/krfb/rfbservermanager.cpp
+===================================================================
+--- krfb-20.08.1.orig/krfb/rfbservermanager.cpp	2020-09-02 07:05:32.873344910 +0200
++++ krfb-20.08.1/krfb/rfbservermanager.cpp	2020-09-02 07:05:40.725370922 +0200
+@@ -29,7 +29,6 @@
+ #include <QDesktopWidget>
+ #include <QGlobalStatic>
+ #include <QHostInfo>
+-#include <QDebug>
+ 
+ #include <KLocalizedString>
+ #include <KUser>

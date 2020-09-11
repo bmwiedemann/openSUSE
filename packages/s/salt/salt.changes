@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Sep  8 12:59:11 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Reintroduces the patches from
+  opensuse-3000.2-virt-backports-236.patch coming from Salt 3001
+
+- Added:
+  * backport-virt-patches-from-3001-256.patch
+
+-------------------------------------------------------------------
+Tue Sep  1 08:42:50 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Adding missing virt backports to 3000.3
+
+- Added:
+  * opensuse-3000.2-virt-backports-236-257.patch
+
+-------------------------------------------------------------------
+Thu Aug 27 14:30:10 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Do not raise StreamClosedError traceback but only log it (bsc#1175549)
+
+- Added:
+  * do-not-raise-streamclosederror-traceback-but-only-lo.patch
+
+-------------------------------------------------------------------
+Mon Aug 17 11:28:26 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Take care of failed, skipped and unreachable tasks and propagate "retcode" (bsc#1173911) (bsc#1173909)
+
+- Added:
+  * ansiblegate-take-care-of-failed-skipped-and-unreacha.patch
+
+-------------------------------------------------------------------
 Mon Aug 10 15:15:31 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
 
 - Require /usr/bin/python instead of /bin/python for RHEL-family (bsc#1173936)

@@ -1,0 +1,27 @@
+From b651c2cd8b719a72e66b63afd9061739624763e1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 26 Aug 2020 10:24:58 +0100
+Subject: [PATCH] Do not raise StreamClosedError traceback but only log
+ it (bsc#1175549)
+
+---
+ salt/transport/ipc.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/salt/transport/ipc.py b/salt/transport/ipc.py
+index 33ee3d4182..624eca5a9c 100644
+--- a/salt/transport/ipc.py
++++ b/salt/transport/ipc.py
+@@ -667,7 +667,6 @@ class IPCMessageSubscriber(IPCClient):
+         except StreamClosedError as exc:
+             log.trace('Subscriber disconnected from IPC %s', self.socket_path)
+             self._read_stream_future = None
+-            exc_to_raise = exc
+         except Exception as exc:  # pylint: disable=broad-except
+             log.error('Exception occurred in Subscriber while handling stream: %s', exc)
+             self._read_stream_future = None
+-- 
+2.28.0
+
+

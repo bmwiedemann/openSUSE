@@ -17,7 +17,7 @@
 
 
 Name:           grilo
-Version:        0.3.12
+Version:        0.3.13
 Release:        0
 Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
@@ -31,8 +31,8 @@ BuildRequires:  intltool
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44
-BuildRequires:  pkgconfig(glib-2.0) >= 2.34
+BuildRequires:  pkgconfig(gio-2.0) >= 2.58
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)

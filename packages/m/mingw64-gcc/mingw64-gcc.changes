@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  9 21:02:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Revert the ExclusiveArch/BuildArch. Having
+  mingw64-libssp0.{aarch64,ppc64,etc.}.rpm with AMD64 PE binaries
+  is exactly the point of mingw64-* packages.
+
+-------------------------------------------------------------------
 Fri Jun 19 12:25:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Cannot be noarch, otherwise it makes mingw64-libssp0 available

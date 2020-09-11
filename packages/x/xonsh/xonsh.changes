@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Thu Sep  3 06:12:29 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.9.21:
+ - Added:
+  - ``xonsh-in-docker.py`` script now has ``--pytest`` parameter,
+    that automates pytest installation into the Docker container.
+  - Setup extras tag '[full]' to install prompt-toolkit and pygments in one fell swoop.
+    Full feature install can be ``pip install xonsh[full]``.
+  - Support for PEP 570 positional-only parameters.
+  - Support for starred expressions within return statement
+    (``return x, *my_list``).
+  - Xonsh now runs in Python 3.9
+  - ``vox`` xontrib now supports ``new --activate`` and ``deactivate --remove``
+    to create + activate and deactivate + remove virtual environments in a single
+    command.
+ - Changed:
+  - Rewrote Installation and Configuration sections of Getting Started doc 
+    to clarify install from packages, and generally improve flow.
+ - Fixed:
+  - Fixed incorrect reference to XONSH_HIST_SIZE instead of XONSH_HISTORY_SIZE
+  - RST code-block:: xonshcon now works.
+  - Non-default parameters can not follow defaults anymore.
+  - Fixed parser not emmiting errors in some cases.
+
+-------------------------------------------------------------------
+Mon Aug 31 19:39:53 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- No longer set `READTHEDOCS=True` for building the documentation, see https://github.com/xonsh/xonsh/issues/3741
+- update to version 0.9.20:
+ - Added:
+  - ``abbrevs`` expansion now allows for setting cursor to a specific
+    position within the expanded abbrev. For instance
+    ::
+      abbrevs["eswap"] = "with ${...}.swap(<edit>):\n    "
+    expands ``eswap`` as you type to environment context manager
+    ``swap()`` syntax and places the cursor at the position of the
+    ``<edit>`` mark removing the mark itself in the process.
+  - Support for ANSI escape codes in ``$PROMPT``/``$RIGHT_PROMPT``. In this way 3rd party prompt generators like ``powerline`` or ``starship`` can be used to set the prompt. ANSI escape codes might be mixed with the normal formatting (like ``{BOLD_GREEN}``) and *prompt variables* (like ``{user}``) should work as well.
+    For example:
+    ::
+      $PROMPT=lambda: $(starship prompt)
+      $RIGHT_PROMPT="\x1b[33m{hostname} {GREEN}> "
+  - Added ``$HOSTNAME`` and ``$HOSTTYPE`` environment variables.
+  - New ``Env.rawkeys()`` iterator for iterating over all keys in an environment,
+    not just the string keys like with ``__iter__()``.
+  - New landing page for https://xon.sh
+  - Added xonsh AppImage to the GitHub release assets
+  - xonsh now comes with a bulitin version of prompt-toolkit (3.0.5) which will be used as fall back if prompt_toolkit is not installed.
+  - Support for Python 3.8 PEP 572 assignment expressions (walrus operator).
+ - Changed:
+  - custom startup scripts replaced by setup.py -generated (console) entrypoint scripts for both xonsh and xonsh-cat.
+    This means xonsh.bat and xonsh-cat.bat are replaced on Windows by xonsh.exe and xonsh-cat.exe, respectively.
+ - Fixed:
+  - Iterating over ``${...}`` or ``__xonsh__.env`` yields only string
+    values again.
+  - List comprehensions do not ignore the second and subsequent ``if`` clauses
+    in multi-if comprehension expressions any more.
+  - Xonsh can now fully handle special Xonsh syntax within f-strings, including
+    environmnent variables within ``${}`` operator and captured subprocess
+    expansion within f-string expressions.
+  - Avoid startup error on Windows when py.exe chooses wrong python interpreter to run xonsh.
+    When multiple interpreters are in PATH, 'py' will choose the first one (usually in the virtual environment),
+    but 'py -3' finds the system-wide one, apparently by design.
+  - For xonsh-cat, avoid parsing and processing first (0'th) argument when invoked directly from OS shell.
+  - Run control files are now read in with ``$THREAD_SUBPROCS`` off.
+    This prevents a weird error when starting xonsh from Bash (and
+    possibly other shells) where the top-level xonsh process would
+    be stopped and placed into the background during startup. It
+    may be necessary to set ``$THREAD_SUBPROCS=False`` in downstream
+    xonsh scripts and modules.
+  - Fixed installation issues where generated files (like the parser table and
+    amalgamated modules) were not installed.
+  - The xonsh test suite has been cleaned up. So no more failing test. Hopefully.
+  - Addressed robustness issue with ``"locked"`` history key not
+    being present at startup.
+  - ``vox`` xontrib works again with the new environment defaults.
+- update to version 0.9.19:
+ - Added:
+  - ``history`` command now supports ``flush`` action
+  - Added new items on "Bash to xsh" page
+  - JsonHistory: added ``history gc --force`` switch to allow user to override above warning.
+  - JsonHistoryGC: display following warning when garbage collection would delete "too" much data and don't delete anything.
+    "Warning: History garbage collection would discard more history ({size_over} {units}) than it would keep ({limit_size}).\n"
+    "Not removing any history for now. Either increase your limit ($XONSH_HIST_SIZE), or run ``history gc --force``.",
+    It is displayed when the amount of history on disk is more than double the limit configured (or defaulted) for $XONSH_HIST_SIZE.
+  - $LS_COLORS code 'mh' now recognized for (multi) hard-linked files.
+  - $LS_COLORS code 'ca' now recognized for files with security capabilities (linux only).
+  - CI step to run flake8 after pytest.
+  - RichCompletion for completions with different display value, description and prefix_len.
+  - Allow completer access to multiline document when available via ``xonsh.completers.tools.get_ptk_completer().current_document``.
+  - ``abbrevs`` word expasion can now be reverted by pressing
+    the space bar second time immediately after the previous
+    word got expanded.
+  - ``ulimit`` command.
+  - ``pdb`` xontrib, that runs pdb debugger on reception of SIGUSR1 signal.
+  - xontrib-xpg is a xontrib for running or explaining sql queries for posgresql database.
+ - Changed:
+  - Xonsh now launches subprocesses with their ``argv[0]`` argument containing
+    the command exactly as inserted by the user instead of setting it to the
+    resolved path of the executable. This is for consistency with bash and other
+    shells.
+  - Added ability to register, deregister environment variables;
+    centralized environment default variables
+  - Added exit to the "Bash to xsh" article.
+  - xonsh.main _failback_to_other_shells now tries user's login shell (in $SHELL) before trying system wide shells from /etc/shells.
+  - The current working directory is now correctly obtained in line 501 of xonsh/parsers/base.py
+  - Garbage collection avoids deleting history and issues a warning instead if existing history is more than double the comfigured limit.
+    This protects active users who might have accumulated a lot of history while a bug was preventing garbage collection.  The warning
+    will be displayed each time Xonsh is started until user takes action to reconcile the situation.
+  - ``tests\test_integrations.py`` no longer runs with XONSH_DEBUG=1 (because new, debug-only progress messages from history were breaking it).
+  - Updated pytest_plugin for pytest 5.4 API, pip requirements for pytest>= 5.4
+  - Major improvements to Jedi xontrib completer:
+      * Use new Jedi API
+      * Replace the existing python completer
+      * Create rich completions with extra info
+      * Use entire multiline document if available
+      * Complete xonsh special tokens
+      * Be aware of _ (last result)
+      * Only show dunder attrs when prefix ends with '_'
+  - Many files are starting to be formatted using ``pyupgrade --py36-plus``, in order to automatically update to newer
+    Python constructs.
+  - ``xontrib load`` does not stop loading modules on error any more.
+ - Deprecated:
+  - ``pytest --flake8`` now exits with error message to use flake8 instead.
+    Allows single list of lint exceptions to apply in CI and your IDE.
+ - Removed:
+  - Removed history replay
+  - pytest-flake8 package from requirements\*.txt
+  - Xonsh now relies exclusively on Setuptools for install.
+  - Compatibility with Python 3.5 has been removed as well as all related code. In
+    particular xonsh.inspector does not defined ``getouterframes`` anymore, use
+    ``inspect.getouterframe`` directly.
+ - Fixed:
+  - Unhandled exception triggered by unexpected return from callable alias.
+  - Fix path completer throwing exception sometimes
+  - Fixed help operator not displaying definition for callables.
+  - JsonHistory.files(): Now once again enumerates history files from the directory.  This has been broken for about 2 years.
+  - JsonHistory.run_gc(): Don't busy loop while waiting for history garbage collection to complete, sleep a bit instead.
+    This does much to keep Xonsh ptk_shell responsive when dealing with very large history on disk.
+  - Fixed JSON history indexing error.
+  - Fixed syntax error in scripts containing line continuation syntax.
+  - $LS_COLORS code 'fi' now used for "regular files", as it should have been all along. (was 'rs')
+    See (#3608)[https://github.com/xonsh/xonsh/issues/3608].
+  - pyghooks.color_files now follows implememntation of ls --color closely.  Thanks @qwenger!
+    However, a few documented differences remain due to use in Xonsh.
+  - $LS_COLORS['ln'] = 'target' now works.  Also fixes #3578.
+  - Fixed exit code for commands executed via ``-c`` (#3402)
+  - Logical subprocess operators now work after long arguments (e.g. ``--version``).
+  - ``pip`` completer no longer erroneously fires for ``pipx``
+  - Updated development guide to reference flake8 instead of pylint
+  - Corrected flake8 config for allowed exceptions.
+  - various pytest warnings in a "clean" test run.
+  - The current Mercurial topic is shown.
+  - Fixed import problems due to modules using deprecated pkg_resources methods by proxying calls to the underlying loader.
+  - Typo in 'source' alias.
+  - Crash in 'completer' completer.
+  - Don't complete unnecessarily in 'base' completer
+  - Viewing mock objects in the shell
+  - Fixed formatting error in ``vox rm`` command.
+
+-------------------------------------------------------------------
 Thu May  7 18:19:05 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.9.18:

@@ -28,7 +28,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.6.14
+Version:        3.6.15
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -40,9 +40,7 @@ Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch1:         gnutls-3.5.11-skip-trust-store-tests.patch
 Patch4:         gnutls-3.6.6-set_guile_site_dir.patch
-Patch5:         0001-crypto-api-always-allocate-memory-when-serializing-i.patch
 Patch6:         gnutls-temporarily_disable_broken_guile_reauth_test.patch
-Patch7:         gnutls-detect_nettle_so.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge

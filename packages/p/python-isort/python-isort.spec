@@ -27,15 +27,15 @@
 %endif
 %define skip_python2 1
 Name:           python-isort%{psuffix}
-Version:        5.4.2
+Version:        5.5.1
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
-URL:            https://timothycrosley.github.io/isort/
+URL:            https://pycqa.github.io/isort/
 # only PyPI archive contains setup.py
 Source:         https://files.pythonhosted.org/packages/source/i/isort/isort-%{version}.tar.gz
 # ... but test data are not packaged for PyPI, get them from git sources
-Source1:        https://github.com/timothycrosley/isort/archive/%{version}.tar.gz#/isort-%{version}-gh.tar.gz
+Source1:        https://github.com/PyCQA/isort/archive/%{version}.tar.gz#/isort-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,6 +62,7 @@ BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pylama}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requirementslib >= 1.5.4}
 BuildRequires:  %{python_module tomlkit}
@@ -117,7 +118,15 @@ for exampledir in example_shared_isort_profile example_isort_formatting_plugin; 
   popd
 done
 }
-%pytest -W "ignore::UserWarning" -W "ignore::DeprecationWarning"
+# test_projects_using_isort.py: these tests try to clone from
+# online git repositories.
+# test_settung_combinations.py::test_isort_is_idempotent
+# is flaky https://github.com/PyCQA/isort/issues/1466
+%{pytest -W "ignore::UserWarning" \
+         -W "ignore::DeprecationWarning" \
+         --ignore tests/integration/test_projects_using_isort.py \
+         -k "not (test_setting_combinations and test_isort_is_idempotent)"
+}
 %endif
 
 %if !%{with test}

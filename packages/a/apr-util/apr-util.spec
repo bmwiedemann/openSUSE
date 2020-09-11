@@ -1,7 +1,7 @@
 #
 # spec file for package apr-util
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,12 @@ Patch2:         apr-util-visibility.patch
 Patch3:         apr-util-mariadb-10.2.patch
 # PATCH-FIX-OPENSUSE apr-util-postgresql.patch max@suse.com -- Fix build with PostgreSQL 11
 Patch4:         apr-util-postgresql.patch
+# https://svn.apache.org/viewvc?view=revision&revision=1825312
+Patch5:         apr-util-apr_dbm_gdbm-fix-handling-of-error-codes.patch
 BuildRequires:  apr-devel
 BuildRequires:  autoconf
-BuildRequires:  db-devel
 BuildRequires:  doxygen
+BuildRequires:  gdbm-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
@@ -73,7 +75,7 @@ Provides:       %{libname}-devel = %{version}
 Obsoletes:      %{libname}-devel < %{version}-%{release}
 Requires:       %{libname} = %{version}
 Requires:       apr-devel
-Requires:       db-devel
+Requires:       gdbm-devel
 Requires:       libexpat-devel
 Requires:       openldap2-devel
 
@@ -114,6 +116,7 @@ DBD driver for SQLite 3 database.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> docs/doxygen.conf
@@ -129,9 +132,9 @@ sed -i -e '/OBJECTS_all/s, dbd/apr_dbd_[^ ]*\.lo,,g' build-outputs.mk
     --with-apr=%{_bindir}/apr-1-config \
     --with-expat=%{_prefix} \
     --with-ldap \
-    --with-berkeley-db \
     --with-mysql \
-    --without-gdbm
+    --with-pgsql \
+    --with-gdbm
 make %{?_smp_mflags} CFLAGS="%{optflags} -DOPENSSL_LOAD_CONF -fvisibility=hidden"
 make %{?_smp_mflags} dox
 
@@ -165,7 +168,7 @@ make -j1 check
 %{_libdir}/libaprutil-%{apuver}.so.*
 %dir %{dso_libdir}
 %{dso_libdir}/apr_ldap*
-%{dso_libdir}/apr_dbm_db*
+%{dso_libdir}/apr_dbm_gdbm*
 %{dso_libdir}/apr_crypto_openssl*
 
 %files -n %{libname}-dbd-mysql

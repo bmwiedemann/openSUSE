@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-cross-binutils
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mingw64-cross-binutils
-Version:        2.32
+Version:        2.33.1
 Release:        0
 Summary:        GNU Binutils
-License:        GPL-2.0+ and LGPL-2.1+ and GPL-3.0+ and LGPL-3.0+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries
-Url:            http://www.gnu.org/software/binutils/
-Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.bz2
-Patch0:         0001-COFF-Check-for-symbols-defined-in-discarded-section.patch
+URL:            http://www.gnu.org/software/binutils/
+Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
+Patch0:         0001-Fix-a-potential-infinite-loop-in-the-Windows-resourc.patch
+Patch1:         0001-Fix-the-windmc-program-to-conform-to-the-behaviour-o.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
@@ -41,6 +42,7 @@ These utilities (like 'as', 'ld', 'strip') understand Windows executables and DL
 %prep
 %setup -q -n binutils-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 mkdir -p build

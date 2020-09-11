@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  8 11:58:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Cure fallout from %_libexecdir change [boo#1174075, boo#1176244]
+
+-------------------------------------------------------------------
 Tue Jan 14 19:27:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag 1.1

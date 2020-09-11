@@ -3146,4 +3146,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>831606</requestid>
   </revision>
+  <revision rev="267" vrev="2">
+    <srcmd5>18714c5ffbefd0c4955b70dc2b39c820</srcmd5>
+    <version>85.0.4183.83</version>
+    <time>1599770742</time>
+    <user>dimstar_suse</user>
+    <comment>- Move swiftshader stuff to chromium folder directly bsc#1176207</comment>
+    <requestid>832903</requestid>
+  </revision>
 </revisionlist>

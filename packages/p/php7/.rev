@@ -935,4 +935,12 @@
   https://www.php.net/ChangeLog-7.php#7.4.10 (forwarded request 831675 from adkorte)</comment>
     <requestid>831677</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>e4fd48ca7b2ce0af77d3b74d9947e385</srcmd5>
+    <version>7.4.10</version>
+    <time>1599770694</time>
+    <user>dimstar_suse</user>
+    <comment>- do not rely on apr-devel to pull db-devel</comment>
+    <requestid>832712</requestid>
+  </revision>
 </revisionlist>

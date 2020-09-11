@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep  4 17:46:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.1.2:
+  + Build system: better support for Visual Studio.
+  + Updated translations.
+- Changes from version 5.1.1:
+  + Support detailed GAction names in factory functions.
+  + Mark public API with _AMTK_EXTERN.
+  + Microsoft Windows: better support.
+  + Small maintenance stuff.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jan 30 12:17:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

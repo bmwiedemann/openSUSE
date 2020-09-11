@@ -358,4 +358,12 @@
     <comment></comment>
     <requestid>775011</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>484486c5452cb0e3160d8933fbbef962</srcmd5>
+    <version>0.3.13</version>
+    <time>1599770714</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.13 (forwarded request 832133 from dimstar)</comment>
+    <requestid>832811</requestid>
+  </revision>
 </revisionlist>

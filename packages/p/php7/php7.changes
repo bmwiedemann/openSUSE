@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:28:53 UTC 2020 - pgajdos@suse.com
+
+- do not rely on apr-devel to pull db-devel
+
+-------------------------------------------------------------------
 Thu Sep  3 12:25:35 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.10: This is a bug fix release. See

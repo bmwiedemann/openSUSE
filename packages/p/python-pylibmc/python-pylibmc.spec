@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylibmc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lericson/pylibmc
 Source:         https://files.pythonhosted.org/packages/source/p/pylibmc/pylibmc-%{version}.tar.gz
+# https://github.com/lericson/pylibmc/pull/263
+Patch0:         python-pylibmc-remove-nose.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libmemcached-devel
@@ -45,6 +47,7 @@ binary memcached protocol.
 
 %prep
 %setup -q -n pylibmc-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -57,10 +60,7 @@ export CFLAGS="%{optflags}"
 %check
 %{_sbindir}/memcached &
 pid=$!
-export NOSE_IGNORE_CONFIG_FILES=1
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-nosetests-%{$python_bin_suffix} tests
-}
+%pytest_arch
 kill $pid
 
 %files %{python_files}

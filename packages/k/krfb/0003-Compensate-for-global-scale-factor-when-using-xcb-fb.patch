@@ -1,0 +1,40 @@
+From a5656776a21f8b6f893431f9e18327a24ad1fa9c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 13 Aug 2020 09:30:06 +0200
+Subject: [PATCH 3/3] Compensate for global scale factor when using xcb fb
+ plugin
+
+The screen geometry is reported in device independent pixels, so it has
+to be multiplied by the devicePixelRatio to get the size of the underlying
+framebuffer. Otherwise, only the top left of the screen will be captured.
+
+This matches the behavior of QScreen::grabWindow(...), which also
+returns a QPixmap of the given size scaled by devicePixelRatio.
+---
+ framebuffers/xcb/xcb_framebuffer.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/framebuffers/xcb/xcb_framebuffer.cpp b/framebuffers/xcb/xcb_framebuffer.cpp
+index 07569bf..626b3ad 100644
+--- a/framebuffers/xcb/xcb_framebuffer.cpp
++++ b/framebuffers/xcb/xcb_framebuffer.cpp
+@@ -163,11 +163,15 @@ XCBFrameBuffer::XCBFrameBuffer(WId winid, QObject *parent):
+ 
+     QScreen *primaryScreen = QGuiApplication::primaryScreen();
+     if (primaryScreen) {
++        qreal scaleFactor = primaryScreen->devicePixelRatio();
++        d->area = { primaryScreen->geometry().topLeft() * scaleFactor,
++                    primaryScreen->geometry().bottomRight() * scaleFactor };
+         qCDebug(KRFB_FB_XCB) << "xcb framebuffer: Primary screen: " << primaryScreen->name()
+                  << ", geometry: " << primaryScreen->geometry()
++                 << ", device scaling: " << scaleFactor
++                 << ", native size: " << d->area
+                  << ", depth: " << primaryScreen->depth();
+         //
+-        d->area = primaryScreen->geometry();
+     } else {
+         qWarning() << "xcb framebuffer: ERROR: Failed to get application's primary screen info!";
+         return;
+-- 
+2.28.0
+

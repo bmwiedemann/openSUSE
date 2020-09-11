@@ -620,4 +620,12 @@
     <comment>New stable release (forwarded request 798003 from iznogood)</comment>
     <requestid>798357</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>8e8f60347935aade463374521742221f</srcmd5>
+    <version>3.36.6</version>
+    <time>1599770722</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested (forwarded request 832711 from iznogood)</comment>
+    <requestid>832814</requestid>
+  </revision>
 </revisionlist>

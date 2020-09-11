@@ -421,4 +421,235 @@
   * mcelog: Add decode for MCi_MISC from 10nm memory controller</comment>
     <requestid>827098</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>0f70a57cb1efdd3967bb87bd4ada7243</srcmd5>
+    <version>170</version>
+    <time>1599770737</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 170:
+  * mcelog: Add Cometlake client model numbers
+  * mcelog: Do not start mcelog service if edac_mce_amd module is loaded
+  * mcelog: Decode and print stepping from cpuid
+  * mcelog: Add &quot;kflags&quot; field to &quot;struct mce&quot;
+  * Add reporter tracking to trigger-invoking functions.
+  * mcelog: Add decode for MCi_MISC from 10nm memory controller
+- covers:
+  * jsc#SLE-13123
+- Update to version 1.66 (jira SLE-10087, jira SLE-8853):
+  * mcelog: Add support for Icelake server, Icelake-D, and Snow Ridge
+M email.patch
+-&gt; Patched with fuzz, refresh needed
+- Update to version 1.65:
+  * mcelog: Add Cascade Lake to supported models
+- mcelog.systemd: Preload the dmi-sysfs kernel module.
+  When /dev/mem can't be read (which is the case when booting in
+  Secure Mode), mcelog can use the dmi-sysfs interface instead,
+  however for that the kernel module needs to be loaded first
+  (bsc#1149186).
+- Update to version 1.64:
+  * mcelog: Add Icelake client model numbers.
+  * add Hygon Dhyana support to not use mcelog, as Hygon Dhyana(0x18h) share similiar arch with AMD Family 17h
+- Update to version 1.62:
+  * mcelog: Fix memory controller bank channel mappings for Skylake
+  * mcelog: update tests for new error code
+  * mcelog: Add decoding for Optane DC persistent memory mode
+  * mcelog: Deduce channel number for Haswell/Broadwell/Skylake systems
+- Change mcelog.spec to use autosetup
+(by trenn@suse.de)
+- Update to version 1.60 (fate#326221):
+  * Turn back rb_color field into unsigned long
+  * trigger: add a sync argument for waiting trigger child process exit
+  * page: trigger: add pre/post sync trigger when doing soft memory offline
+  * fixed build errors for some lose code when merging code
+  * transfer the page address to pre/post-sync-trigger scripts
+  * mcelog: Fix &quot;--ascii&quot; parsing to cope with change in kernel output since v4.10
+  * Remove now unused local variable
+  * Add scripts file to do MCA error code validation for a selected CPU model
+  * Add license file
+  * mcelog: Improve decoding for APEI reported errors
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+- Update to version 1.53:
+  * Add service file
+  * dmi: Handle NULL DMI string
+  * Compress some fields in mempage.
+  * Add coverity fixes
+  * Fix typo in man page
+  * mcelog: Check whether we successfully changed directory for trigger.
+  * mcelog version: Add ability for OS to define version
+  * Document .os_release in README
+  * Set SO_PASSCRED on listen sockets
+  * memutil.h: add missing include for va_list
+- Package also includes fixes for (through previous version updates below):
+  * Add mcelog-skylake.patch patch to support Skylake Xeons (fate#319698)
+  * Add skylake support (bnc#946734)
+  * Avoid warnings at boot up (bsc#920197)
+  * Knights Landing (fate#319507)
+  * Broadwell Ex and Ep (fate#319697)
+  * Different Skylake models (fate#319696)
+- Update to version 1.48
+  * Fix warning with gcc 6.x
+  * Remove obsolete TODO file
+  * Small fixes
+- Use url for getting sources
+- Version update to 1.47 (fate#321308, fate#320907, fate#321931):
+  * Fix PDF links
+  * Fix confusing error message
+- Version update to 1.46:
+  * Various cpu support for new machines
+- Refresh patches:
+  * add-f10h-support.patch
+  * email.patch
+- Force build with pic
+- Use normal webpage as Url and do not point to git
+- Fix build with --as-needed expanded Makefile patch for email.patch
+- Update to bugfix version 1.36
+- Do not start mcelog service based on an udev (/dev/mcelog) rule (bsc#976781)
+- Update to latest version 1.29.
+  Mostly little bug fixes.
+- Update to version v124. Adds skylake CPU support and some bug fixes.
+- Update to latest v120 git tag and name the version 1.20:
+  New supported CPUs:
+     - Add model number for Broadwell-DE
+     - Added Knights Landing (Xeon Phi) 
+     - Add all current Atom cpuids
+     - Support Broadwell-U
+     - New manpages: mcelog.conf.5 and mcelog.triggers.5
+  And quite some undocumented bugfixes, see git log for details
+- Update to version 1.0.8
+- Remove patch which got integrated mainline:
+  0001-Continue-without-dmi-when-no-SMBIOS-or-SMBIOS-0x0-in.patch
+- Fix possible security issue, build service complained about:
+  missing-call-to-setgroups-before-setuid
+  Add fix_setgroups_missing_call.patch
+- While not yet defined, the tmpfiles_create macro takes 
+  an argument for it to actually work
+- mcelog.tmpfiles, mcelog-socket-path.patch, move socket
+  and pid file to /run/mcelog directory.
+  This update may require reboot as the relevant rpm macro
+  tmpfiles_create is not yet in any product.
+- Fixed the architecture tag to %{ix86} as suggested by:
+  Andreas Vetter &lt;asvetter@cip.physik.uni-wuerzburg.de&gt;
+- fixed the architecture tag to %ix86
+- Fixed license, GPL-2.0
+- Added: 0001-Continue-without-dmi-when-no-SMBIOS-or-SMBIOS-0x0-in.patch
+  Continue without dmi when no SMBIOS or SMBIOS=0x0 in /sys/firmware/efi/systab, bnc#829862
+- Add mce decoding support for latest AMD CPUs (bnc#871881).
+- Implementation done by Borislav Petkov &lt;bp@suse.de&gt;
+   * Add patches/Start-consolidating-AMD-specific-stuff.patch
+   * Add add-defines.patch
+   * Add add-f10h-support.patch
+   * Add add-f11h-support.patch
+   * Add add-f12h-support.patch
+   * Add add-f14h-support.patch
+   * Add add-f15h-support.patch
+   * Add add-f16h-support.patch
+- Update to latest git tag v101.
+- Mainline decided to finally do a version upgrade to v101
+- Remove v1.1 again, obsolete it and go for version v102
+- Some important fixes in the latest update:
+    - bnc#873159
+    - bnc#873725
+- Cleanup spec file
+- activate mcelog service via udev+systemd combo, if the kernel
+  registers a /dev/mcelog device the service will be automatically
+  started.
+- drop sysvinit scripts, add appropiate %pre %post invocations
+  of the needed systemd macros. 
+- Updated to latest git HEAD:
+    commit c7bf28088f056925c04d4fd5768504c59bbf19c4
+    Author: Robin Holt &lt;robinmholt@gmail.com&gt;
+    Date:   
+  Because upstream does not use proper tags/revisions, I now
+  versioned this one mcelog-1.1
+- Install mcelog.service accordingly (/usr/lib/systemd for 12.3
+  and up or /lib/systemd for older versions). 
+- bnc#774226 mcelog + systemd: won't start without MCELOG_ADMIN_EMAIL set
+- fix uninitialized variable mail_setup
+- Also build mcelog packages for i386 (bnc#770726)
+- Fixed description in init-file.
+- Add systemd unit. 
+- update to GIT of today (6e4e2a000124f08f1a4e3791c2b02ec9ae6af393)
+- many bugfixes
+- Implement re-parsing of mcelog output in ASCII
+- Add support for non-page aligned EFI Configuration Tables
+- Add --debug-numerrors
+- Add decoder for corrected XEN events to --ascii
+- Correctly log kernel supplied time
+- record the trigger info in the log
+- mcelog: Implement dmi decoding for UEFI
+- mcelog: Add usage information to mcelog for --ignorenodev
+- Fix length calculation of SMBIOS mapping
+- change disclaimer
+- explictly spell out corrected errors
+- Update to latest git version (fate#311830)
+  Unfortunately versions have not been increased, latest tag
+  still is 1.0-pre3 (same as 1 year ago), therefore the date
+  is included in the version. I try to push maintainers to
+  increase the version number.
+- Invert logic of db prefill messages -&gt; info if it works, silent
+  if not
+- Remove test email address from config
+- Add Sandybridge/Westmere decode support
+- Fix domainname for email notification
+- Update to latest git version
+- Update to latest git version having quite some fixes (no features):
+   - Fixed some memleaks and made app valgrind conform
+   - Fixed theoretical DoS attack (bnc#586241)
+   - Added support of additional cpus
+   - Fixed a lot messages (in manpage, in triggers, in README, ...)
+- Update to version 1.0pre3
+     - Boxboro-EX enhancements
+     - Bugfixes
+  Minor pidfile handling adjusting in service file
+- Added missing conf file and trigger scripts
+- Minor .spec and init script fixes/cleanups
+- Add service parts:
+   - let mcelog --daemon handle pid file in /var/run/mcelog.pid
+   - add insserv logic
+   - remove cron.daily script in update case
+- Update to latest git version (called it 1.0pre1 myself, may differ
+  with a possible public 1.0pre1 version), this includes
+  following new featues:
+    - yellow bit support
+    - page predictive failure analysis support
+    - Initial memdb support
+      This allows to account memory errors in memory in daemon mode
+    And a lot more...
+- Update to latest git version (0.9pre)
+  Introduces mcelog damon mode, service file will follow in an
+  extra commit.
+- use ExclusiveArch as in /SRC/arch/
+- fate #304279 mcelog support for Tigerton/Dunnington
+  Patch is from Andi himself with this statement:
+  While it looks large most of it is just new tables.
+- decode intel thermal events too (#179327)
+- Update to 0.7.  This fixes
+  - Fix --dmi option (#166324)
+  - Incorporate old patches
+- Avoid cosmetic problem in --filter (#153347)
+- update to mcelog 0.6
+  * Fixes bugs (#148869, #137985)
+  * Adds --dmi option to map addresses to DIMMs using SMBIOS
+    (default to off)
+- converted neededforbuild to BuildRequires
+- update to version 0.5
+  * Clarify --ascii in the manpage
+  *Support for AMD K8 Revision F machine check DRAM error 
+   thresholding
+- Use RPM_OPT_FLAGS
+- Improve description again
+- mcelog-0.4:
+  * add support to decode AMD K8 (Opteron/Athlon64/AthlonFX) and
+    Intel P4 (Xeon and Pentium 4) events
+  * add --ascii option to decode machine check panic information   
+- Rewrite description in .spec file
+- memlog-0.2:
+  * fix mcelog looping (#41863)
+  * Add GPL notices
+- initial version 
+- fixes #36898
+</comment>
+    <requestid>832898</requestid>
+  </revision>
 </revisionlist>

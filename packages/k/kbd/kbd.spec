@@ -69,6 +69,7 @@ Patch13:        kbd-1.15.5-loadkeys-search-path.patch
 Patch14:        kbdsettings-nox86.patch
 # PATCH-FIX-SLE kbd-unicode-fxxx.patch sbrabec@suse.com bsc1085432 -- Do not cause error on UNICODE characters >= 0xF000 (e. g. ligature fi)
 Patch15:        kbd-unicode-fxxx.patch
+Patch16:        libkeymap-Fix-mk_mapname-for-the-plain-map.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  check-devel
@@ -133,6 +134,7 @@ cp -fp %{SOURCE22} .
 %patch14 -p0
 %endif
 %patch15 -p1
+%patch16 -p1
 
 %build
 for i in `find data/keymaps/mac -type f` ; do

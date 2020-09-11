@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 01 08:24:05 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1598948600.9a9eab0:
+  * Replace fdisk with parted in partitioned
+
+-------------------------------------------------------------------
 Tue Jul 28 16:12:00 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.0.1+git.1595952633.b300be2:

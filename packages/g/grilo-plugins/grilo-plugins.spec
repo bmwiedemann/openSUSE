@@ -18,7 +18,7 @@
 
 %define plugin_dir %(pkg-config --variable plugindir grilo-0.3)
 Name:           grilo-plugins
-Version:        0.3.11
+Version:        0.3.12
 Release:        0
 Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.36
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(goa-1.0) >= 3.17.91
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gom-1.0) >= 0.3.2
+BuildRequires:  pkgconfig(gom-1.0) >= 0.4
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.10
 BuildRequires:  pkgconfig(grilo-net-0.3) >= 0.3.10
 BuildRequires:  pkgconfig(grilo-pls-0.3)
@@ -68,7 +68,7 @@ BuildRequires:  gstreamer1(element-chromaprint)
 %else
 BuildRequires:  gstreamer1(element-chromaprint)()(64bit)
 %endif
-BuildRequires:  pkgconfig(libdmapsharing-3.0) >= 2.9.12
+BuildRequires:  pkgconfig(libdmapsharing-4.0) >= 3.9.9
 
 %description
 Grilo is a framework for browsing and searching media content from
@@ -193,7 +193,6 @@ This package provides the development files.
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-video-title-parsing.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-lastfm-cover.lua
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-spotify-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-steam-store.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-theaudiodb-cover.lua
 

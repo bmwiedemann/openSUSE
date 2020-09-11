@@ -17,7 +17,7 @@
 
 
 Name:           perl-YAML-LibYAML-API
-Version:        0.010
+Version:        0.012
 Release:        0
 %define cpan_name YAML-LibYAML-API
 Summary:        Wrapper around the C libyaml library

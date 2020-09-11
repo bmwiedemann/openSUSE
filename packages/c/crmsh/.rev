@@ -2097,4 +2097,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>828895</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>387c85b84d2e97d7d50b9ea1a4f3ae8c</srcmd5>
+    <version>4.2.0+git.1599702667.157fc6b5</version>
+    <time>1599771190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833350</requestid>
+  </revision>
 </revisionlist>

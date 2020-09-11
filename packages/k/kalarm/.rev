@@ -385,4 +385,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>20.08.0 release</comment>
     <requestid>826363</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ed80b02cde1580a1003b795f2a0d28de</srcmd5>
+    <version>20.08.1</version>
+    <time>1599770993</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release 20.08.1</comment>
+    <requestid>831737</requestid>
+  </revision>
 </revisionlist>

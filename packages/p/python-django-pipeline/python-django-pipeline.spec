@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-django-pipeline
-Version:        1.7.0
+Version:        2.0.5
 Release:        0
 Summary:        An asset packaging library for Django
 License:        MIT
@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-pipeline
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module jsmin}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module slimit}
 BuildRequires:  fdupes
@@ -36,13 +38,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
 Requires:       python-Jinja2
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-futures >= 2.1.3
-BuildRequires:  python2-mock
-%endif
-%ifpython2
-Requires:       python2-futures >= 2.1.3
-%endif
 %python_subpackages
 
 %description
@@ -61,7 +56,10 @@ and optional data-URI image and font embedding.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test tests --settings=tests.settings --pythonpath=`pwd`
+# we do not have python-css-html-js-minify, because it is nearly unpackageable (missing licenses, no tags on GitHub)
+PYTHONPATH=.
+export DJANGO_SETTINGS_MODULE=tests.settings
+%pytest -k "not test_csshtmljsminify"
 
 %files %{python_files}
 %license LICENSE

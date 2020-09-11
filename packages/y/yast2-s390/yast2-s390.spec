@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-s390
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-s390
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        YaST2 - S/390 Specific Features Configuration
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-s390/
+URL:            https://github.com/yast/yast-s390/
 
 Source0:        %{name}-%{version}.tar.bz2
 
@@ -40,7 +40,7 @@ Requires:       yast2-ruby-bindings >= 3.1.7
 Requires:       yast2-storage-ng >= 4.0.175
 
 Supplements:    yast2-storage-ng
-Supplements:    autoyast(xpram,zfcp,dasd)
+Supplements:    autoyast(xpram:zfcp:dasd)
 
 ExclusiveArch:  s390 s390x
 

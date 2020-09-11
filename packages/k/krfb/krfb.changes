@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:50:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- No code change since 20.08.0
+- Rebased patches against 20.08.1:
+  - 0001-Declare-and-use-logging-categories.patch
+
+-------------------------------------------------------------------
+Mon Aug 31 15:57:48 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix wrong framebuffer size when display scale is not 1.0
+  * Add 0001-Declare-and-use-logging-categories.patch
+  * Add 0003-Compensate-for-global-scale-factor-when-using-xcb-fb.patch
+- Cleanup build dependencies (remove KF5Completion and telepathy):
+  * Add 0001-Replace-KLineEdit-with-QLineEdit.patch
+
+-------------------------------------------------------------------
 Sun Aug  9 09:09:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.08.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:16:03 CEST 2020 - schubi@suse.de
+
+- Using ":" in the autoyast(...) supplements (bsc#1146494).
+- 4.3.2
+
+-------------------------------------------------------------------
 Mon Aug 10 14:59:52 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(xpram,zfcp,dasd) into the

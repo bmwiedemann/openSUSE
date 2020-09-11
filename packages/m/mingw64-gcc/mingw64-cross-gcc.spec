@@ -54,7 +54,6 @@ Conflicts:      mingw64-cross-gcc-bootstrap
 %if %{include_ada}
 BuildRequires:  gcc-ada
 %endif
-ExclusiveArch:  %ix86 x86_64
 
 %description
 MinGW Windows cross-compiler (GCC) for C

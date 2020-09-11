@@ -17,15 +17,14 @@
 
 
 %define upstream_name mod_auth_mellon
-%define version_path 0_16_0
 Name:           apache2-mod_auth_mellon
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        A SAML 2.0 authentication module for the Apache Server
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Servers
 URL:            https://github.com/latchset/%{upstream_name}
-Source0:        https://github.com/latchset/%{upstream_name}/releases/download/v%{version_path}/%{upstream_name}-%{version}.tar.gz
+Source0:        https://github.com/latchset/%{upstream_name}/releases/download/v%{version}/%{upstream_name}-%{version}.tar.gz
 Source1:        %{upstream_name}.conf
 Source2:        %{name}.conf
 Source3:        README.diagnostics

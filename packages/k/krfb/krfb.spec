@@ -21,20 +21,24 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krfb
-Version:        20.08.0
+Version:        20.08.1
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Declare-and-use-logging-categories.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Replace-KLineEdit-with-QLineEdit.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0003-Compensate-for-global-scale-factor-when-using-xcb-fb.patch
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
-BuildRequires:  telepathy-qt5-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xcb-util-image-devel
-BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
@@ -68,12 +72,15 @@ VNC-compatible server to share KDE desktops.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-  %cmake_kf5 -d build -- -DBUILD_EXPERIMENTAL_TUBES_SUPPORT="on"
+  %cmake_kf5 -d build --
   %cmake_build
 
 %install
@@ -99,6 +106,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_servicetypesdir}/krfb-framebuffer*.desktop
 %{_kf5_servicetypesdir}/krfb-events.desktop
 %{_kf5_sharedir}/krfb/
+%{_kf5_debugdir}/krfb.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang

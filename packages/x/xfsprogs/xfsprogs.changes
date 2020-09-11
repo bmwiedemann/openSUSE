@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  7 12:08:20 UTC 2020 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to v5.8.0:
+  * xfs_db: set b_ops to NULL for types without verifiers
+  * mkfs: allow setting dax flag on root directory
+  * xfs_quota: improve reporting and messages
+  * xfs_db: use correct inode to set inode type
+  * xfs_db: fix nlink usage in check
+  * xfs_db: report the inode dax flag
+  * man: update mkfs.xfs inode flag option documentation
+  * xfsprogs: move custom interface def'ns to new header
+  * xfs_repair: check quota counters
+  * xfs_io: fix -D vs -R handling
+  * libxfs changes merged from kernel 5.8
+
+-------------------------------------------------------------------
 Wed Aug 19 12:41:05 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

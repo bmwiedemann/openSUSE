@@ -53,6 +53,8 @@ Patch4:         libxml2-xmlFreeNodeList-recursive.patch
 Patch5:         libxml2-CVE-2020-7595.patch
 # PATCH-FIX-UPSTREAM bsc#1159928 CVE-2019-19956 Revert usptream commit
 Patch6:         libxml2-CVE-2019-19956.patch
+# PATCH-FIX-UPSTREAM bsc#1176179 CVE-2020-24977 xmllint: global-buffer-overflow in xmlEncodeEntitiesInternal
+Patch7:         libxml2-CVE-2020-24977.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 %if !%{with python}
@@ -175,6 +177,7 @@ either at parse time or later once the document has been modified.
 %patch4 -p1 -R
 %patch5 -p1
 %patch6 -p1 -R
+%patch7 -p1
 
 %build
 %if !%{with python}

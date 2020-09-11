@@ -17,7 +17,7 @@
 
 
 Name:           yarn
-Version:        1.22.4
+Version:        1.22.5
 Release:        0
 Summary:        📦🐈 Fast, reliable, and secure dependency management
 License:        BSD-2-Clause
