@@ -127,4 +127,12 @@
     <comment>- Update to new upstream release 1.6.6</comment>
     <requestid>515101</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3924827a295eeab62b3b19abbe79360c</srcmd5>
+    <version>1.6.6</version>
+    <time>1599770828</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim old specfile constructs.</comment>
+    <requestid>832933</requestid>
+  </revision>
 </revisionlist>
