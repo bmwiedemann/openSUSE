@@ -1899,7 +1899,7 @@
     <package name="libdleyna-core-1_0-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdlm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libdlm3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libdmapsharing-3_0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdmapsharing-4_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdmtx0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdmx1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdns1605" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3252,7 +3252,6 @@
     <package name="noto-serif-tc-regular-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="nscd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nss-mdns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="nss_ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="ntfs-3g" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ntp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5528,7 +5527,6 @@
     <package name="nodejs14" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm14" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nss-mdns-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="nss_ldap-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
