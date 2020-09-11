@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  9 17:42:14 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.4.1
+  * Bugfixes
+    - add SameSite=None attribute on cookie clearance / logout and make sure it works in OP iframes
+  * Packaging
+    - the libcjose >= 0.5.1 binaries that this module depends on are available from the "Assets" section in release 2.4.0
+
+-------------------------------------------------------------------
 Tue Sep  1 23:57:08 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 2.4.4
