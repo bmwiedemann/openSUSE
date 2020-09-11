@@ -1619,7 +1619,7 @@
       <repopackage name="libdleyna-core-1_0-5"/>
       <repopackage name="libdlm"/>
       <repopackage name="libdlm3"/>
-      <repopackage name="libdmapsharing-3_0-2"/>
+      <repopackage name="libdmapsharing-4_0-3"/>
       <repopackage name="libdmtx0"/>
       <repopackage name="libdmx1"/>
       <repopackage name="libdns1605"/>
@@ -3298,7 +3298,6 @@
       <repopackage name="npm10" arch="i586,i686"/>
       <repopackage name="nscd"/>
       <repopackage name="nss-mdns"/>
-      <repopackage name="nss_ldap"/>
       <repopackage name="ntfs-3g"/>
       <repopackage name="ntfsprogs"/>
       <repopackage name="ntp-doc"/>

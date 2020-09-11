@@ -1779,6 +1779,7 @@ unsorted:
   - cinnamon-settings-daemon-lang 
   - cinnamon-theme-adapta 
   - cinnamon-theme-plata 
+  - cint-devel 
   - civetweb 
   - civetweb-devel 
   - cjs 
@@ -4170,8 +4171,6 @@ unsorted:
   - ghc-directory-devel 
   - ghc-disk-free-space 
   - ghc-disk-free-space-devel 
-  - ghc-distribution-opensuse 
-  - ghc-distribution-opensuse-devel 
   - ghc-distributive 
   - ghc-distributive-devel 
   - ghc-dlist 
@@ -9153,6 +9152,7 @@ unsorted:
   - libcinnamon-menu-3-0 
   - libcinnamon-menu-3-0-32bit: [x86_64] 
   - libcinnamon-menu-3-devel 
+  - libcint3 
   - libcircle-devel 
   - libcircle2 
   - libcircllhist-devel 
@@ -9433,8 +9433,8 @@ unsorted:
   - libdiscid0-32bit: [x86_64] 
   - libdjvulibre-devel 
   - libdlm-devel 
+  - libdmapsharing-3_0-2 
   - libdmapsharing-3_0-2-32bit: [x86_64] 
-  - libdmapsharing-4_0-3 
   - libdmapsharing-4_0-3-32bit: [x86_64] 
   - libdmapsharing-devel 
   - libdmapsharing3-devel 
