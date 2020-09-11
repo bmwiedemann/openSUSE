@@ -1550,4 +1550,12 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   * gdb-fix-the-thread-pool.c-compilation.patch</comment>
     <requestid>825816</requestid>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>6445431e60cf75cf0adfda141ed9e586</srcmd5>
+    <version>9.2</version>
+    <time>1599770896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833004</requestid>
+  </revision>
 </revisionlist>
