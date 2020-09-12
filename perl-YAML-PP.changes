@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 11 03:11:05 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.026
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.026 2020-09-11 00:39:09+02:00
+
+      - Add option 'duplicate_keys'. The default allows it for now and will
+        change to forbid in the next release.
+
+-------------------------------------------------------------------
 Mon Sep  7 03:19:57 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.025
