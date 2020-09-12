@@ -18,7 +18,7 @@
 
 Name:           prometheus-ha_cluster_exporter
 # Version will be processed via set_version source service
-Version:        1.1.0+git.1594637514.c1eae0c
+Version:        1.2.0+git.1599131770.8912739
 Release:        0
 Summary:        Prometheus exporter for Pacemaker HA clusters metrics
 License:        Apache-2.0
@@ -28,16 +28,12 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 ExclusiveArch:  aarch64 x86_64 ppc64le s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  go >= 1.12
+BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.12
 Provides:       ha_cluster_exporter = %{version}-%{release}
 Provides:       prometheus(ha_cluster_exporter) = %{version}-%{release}
-# Unlike C/C++ packages, Golang packages do not have header files. They are statically built so the main package is also the devel package.
-Provides:       %{name}-devel = %{version}
-Provides:       %{name}-devel-static = %{version}
 
-# Make sure that the binary is not getting stripped.
-%undefine _build_create_debug
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+%{go_nostrip}
 
 %description
 Prometheus exporter for Pacemaker HA clusters metrics
@@ -52,6 +48,7 @@ Prometheus exporter for Pacemaker HA clusters metrics
 
 export CGO_ENABLED=0
 go build -mod=vendor \
+         -buildmode=pie \
          -ldflags="-s -w -X main.version=%{version}" \
          -o %{shortname}
 

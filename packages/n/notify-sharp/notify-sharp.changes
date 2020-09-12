@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:32:56 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Wed Jan 18 10:09:18 UTC 2012 - vuntz@opensuse.org
 
 - Update the tarball to revision 3032, which seems to be what all

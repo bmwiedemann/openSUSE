@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Fri Sep 11 12:38:50 UTC 2020 - dmueller@suse.com
+
+- add license/readmes
+- Update to version 0.32.0:
+  * Shorten the release job exectuion time on travis
+  * libvirt expects memory value in bytes to be provided with correct units
+  * Bump kubevirtci
+  * flaky-finder: fix leading pipe bug
+  * tests: skip dmidecode tests on ipv6 lanes
+  * code inspection changes
+  * Add unit test to verify domain resync period
+  * Add resync period for syncing domains in virt-handler from each virt-launcher
+  * tests: fix string equality tests
+  * tests, vmi_config: Fix expecter false positives In these tests, BExp-ecting "pass" always worked,   because the command line was matched. Splitting the word in 2 on the command line ensures   the match to happen (or not) in the result. Also removed unused 'fail' echos.
+  * virtctl cli error handling
+  * Re-enabling test pointing to #2272
+
+-------------------------------------------------------------------
+Tue Jul 28 19:13:36 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Add 'ExclusiveArch: x86_64' since currently kubevirt only
+  builds for x86_64
+
+-------------------------------------------------------------------
+Wed Jul 22 19:53:38 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Split out container-disk to a separate package since it is used
+  by virt-handler and virt-launcher
+
+-------------------------------------------------------------------
+Mon Jul 20 16:24:40 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to 0.31.0
+  Dropped rename-chroot.patch since the upstream variant is included
+  in this release
+
+-------------------------------------------------------------------
+Fri Jun 26 14:23:21 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Rename chroot utility to virt-chroot
+
+-------------------------------------------------------------------
+Wed Jun 24 20:41:45 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Add container-disk to virt-handler package
+
+-------------------------------------------------------------------
+Tue Jun 23 16:32:21 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to 0.30.0
+  Dropped build-fix.patch since the upstream variant is included
+  in this release
+
+-------------------------------------------------------------------
+Mon Jun 22 21:53:28 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Add building of virt-launcher
+
+-------------------------------------------------------------------
+Thu May 28 20:25:18 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Add building of virt-handler and virt-operator
+
+-------------------------------------------------------------------
+Mon May 11 23:12:08 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Add building of virt-api and virt-controller
+- Fix build
+  build-fix.patch
+
+-------------------------------------------------------------------
+Wed May  6 22:56:05 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Initial attempt to package kubevirt 0.29.0

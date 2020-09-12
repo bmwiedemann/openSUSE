@@ -1,7 +1,7 @@
 #
 # spec file for package xlockmore
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xlockmore
-Version:        5.54
+Version:        5.65
 Release:        0
 Summary:        Screen Saver and Locker for the X Window System
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://sillycycle.com/xlockmore.html
+URL:            http://sillycycle.com/xlockmore.html
 Source:         http://sillycycle.com/xlock/%{name}-%{version}.tar.xz
 Source1:        xlock.pamd
 Source2:        xlock-wrapper
@@ -39,8 +39,6 @@ Patch7:         xlockmore-strict-aliasing.patch
 # extended list of directories where could freetype be found
 Patch9:         xlockmore-extend-freetype-include-search.patch
 Patch10:        xlockmore-nose_mode_crash.patch
-# PATCH-HACK-OPENSUSE xlockmore-pam.patch boo1035688 -- Do not hardcode "Password" string. Breaks LANG != en.
-Patch11:        xlockmore-pam.patch
 BuildRequires:  ImageMagick-devel
 BuildRequires:  automake
 BuildRequires:  bc
@@ -82,7 +80,6 @@ chmod -x README docs/Revisions
 %patch7
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 
 %build
 aclocal

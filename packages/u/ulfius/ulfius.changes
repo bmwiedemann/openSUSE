@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  2 20:06:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.9
+  * Update doc generation
+  * Add ulfius_websocket_send_json_message
+  * Update pkg-config Libs with all dependencies
+  * Add ulfius_global_init and ulfius_global_close
+  * Rename U_STREAM_SIZE_UNKOWN to U_STREAM_SIZE_UNKNOWN,
+    keep U_STREAM_SIZE_UNKOWN for backward compatibility
+
+-------------------------------------------------------------------
 Fri Jul 10 14:52:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Redownloaded source tarball

@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="filename">habootstrap-formula</param>
     <param name="versionformat">0.3.8+git.%ct.%h</param>
-    <param name="revision">d7bf6291f77adf5653a0b7acbdcda81977f6b79d</param>
+    <param name="revision">ca5817cc644143c838dd005d2a2edf46c0f976d1</param>
   </service>
 
   <service name="recompress" mode="disabled">

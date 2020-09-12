@@ -1,7 +1,7 @@
 #
 # spec file for package gajim-plugin-omemo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   omemo
 Name:           gajim-plugin-omemo
-Version:        2.6.29
+Version:        2.6.80
 Release:        0
 Summary:        Gajim plugin for OMEMO Multi-End Message and Object Encryption
 License:        GPL-3.0-only

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 11 13:41:08 2020 UTC - shap-staff@suse.de
+
+- Release 1.2.0
+
+  ## Added
+  - Implement SBD watchdog and msgwait timeout metrics (#174)
+
+  ## Fixed
+  - Handle correctly corosync membership parsing with qdevice enabled (#172)
+
+-------------------------------------------------------------------
 Mon Jul 13 11:09:48 2020 UTC - shap-staff@suse.de
 
 - Release 1.1.0

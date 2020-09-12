@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-atlassian-python-api
-Version:        1.16.0
+Version:        1.17.3
 Release:        0
 Summary:        Python Atlassian REST API Wrapper
 License:        Apache-2.0

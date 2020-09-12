@@ -1,5 +1,39 @@
 -------------------------------------------------------------------
-Wed Jun 31 18:51:58 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+Fri Sep 11 07:44:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.6.80 (bsc#1176388):
+  * Add hints for the fingerprint dialog
+  * Implement Blind Trust Before Verification
+  * Show outgoing messages as VERIFIED
+  * Don't drop message silently on decryption error
+  * Don't include inactive devices on checking undecided trust
+  * Sanitize BLOBs in database
+  * Set sqlite text_factory to str
+  * Use PEP-440 compatible version
+  * Don't use deprecated attribute
+  * Use nbxmpp.namespaces
+  * Adapt updating caps
+  * Switch to 12 byte IV
+  * Don't show warning for Key Transport messages
+  * Add back 12 byte IV read support for aesgcm links
+  * Refactor file downloads
+  * Adapt to Gajim HTTPUpload changes
+  * Adapt to nbxmpp changes
+  * Correctly handle presence in anonymous rooms
+  * Fix error in config dialog if no account is available
+  * Correctly handle MAM Messages in anonymous rooms
+  * Show error when message was not encrypted for our device
+  * Be consistent about omemo capable rooms
+  * Adapt to nbxmpp changes
+  * Fix printing status message
+  * Set trust per JID
+  * Fix ConfirmationDialog
+  * Remove YesNoDialog
+  * Dont validate JID on affiliation result
+  * Adapt to Gajim changes
+
+-------------------------------------------------------------------
+Wed Jun 30 18:51:58 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Downgrade to version 2.6.29:
   * Target Gajim 1.1.x instead of 1.2.x, again.

@@ -1,4 +1,50 @@
 --------------------------------------------------------------------
+Wed Sep 9 14:13:59 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#416
+- fix library dependency checking
+- 16.14
+
+--------------------------------------------------------------------
+Tue Sep 8 12:01:38 UTC 2020 - ludwig.nussel@suse.de
+
+- BuildRequire system-role-common-criteria in SLE
+- 16.13
+
+--------------------------------------------------------------------
+Tue Sep 8 08:29:19 UTC 2020 - ludwig.nussel@suse.de
+
+- Include common critera system role handler (jsc#SLE-12905)
+
+--------------------------------------------------------------------
+Mon Sep 7 10:57:34 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#413
+- add watchdog modules (bsc#1176112)
+- 16.12
+
+--------------------------------------------------------------------
+Wed Aug 26 14:41:02 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#411
+- make exfat support optional
+- 16.11
+
+--------------------------------------------------------------------
+Tue Aug 25 15:26:06 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#410
+- add exfatprogs to spec file
+- 16.10
+
+--------------------------------------------------------------------
+Tue Aug 25 15:16:05 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#409
+- support exfat filesystem (bsc#1175731)
+- 16.9
+
+--------------------------------------------------------------------
 Mon Aug 17 09:31:44 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#408
@@ -141,7 +187,7 @@ Wed Jun 17 11:59:52 UTC 2020 - mvidner@suse.cz
 -------------------------------------------------------------------
 Wed Jun 10 11:17:44 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
-- Add BuildRequires: xorg-x11-fonts-legacy
+- Add BuildRequires: xorg-x11-fonts-legacy (bsc#1169444)
 
 --------------------------------------------------------------------
 Wed Jun 10 09:56:28 UTC 2020 - wfeldt@opensuse.org

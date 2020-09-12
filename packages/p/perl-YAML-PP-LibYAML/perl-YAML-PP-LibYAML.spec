@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-PP-LibYAML
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-YAML-PP-LibYAML
-Version:        0.003
+Version:        0.004
 Release:        0
 %define cpan_name YAML-PP-LibYAML
 Summary:        Faster parsing for YAML::PP
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -31,16 +31,16 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.98
-BuildRequires:  perl(YAML::LibYAML::API) >= 0.005
+BuildRequires:  perl(YAML::LibYAML::API) >= 0.011
 BuildRequires:  perl(YAML::LibYAML::API::XS)
-BuildRequires:  perl(YAML::PP) >= 0.016
+BuildRequires:  perl(YAML::PP) >= 0.025
 BuildRequires:  perl(YAML::PP::Emitter)
 BuildRequires:  perl(YAML::PP::Parser)
 BuildRequires:  perl(YAML::PP::Reader)
 BuildRequires:  perl(YAML::PP::Writer)
-Requires:       perl(YAML::LibYAML::API) >= 0.005
+Requires:       perl(YAML::LibYAML::API) >= 0.011
 Requires:       perl(YAML::LibYAML::API::XS)
-Requires:       perl(YAML::PP) >= 0.016
+Requires:       perl(YAML::PP) >= 0.025
 Requires:       perl(YAML::PP::Emitter)
 Requires:       perl(YAML::PP::Parser)
 Requires:       perl(YAML::PP::Reader)

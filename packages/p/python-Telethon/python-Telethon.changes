@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 11 02:24:22 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.16.4:
+  * Added support to force_file on any media, including things that were not
+    possible before like .webp files.
+  * Sending a copy of messages with polls will now work when possible.
+  * The library now automatically retries on inter-dc call errors
+  * Square brackets removed from IPv6 addresses. This may fix IPv6 support.
+  * New client.qr_login().
+  * message.click now lets you click on buttons requesting phone or location.
+
+-------------------------------------------------------------------
 Wed Jun  3 15:52:04 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.14.0:

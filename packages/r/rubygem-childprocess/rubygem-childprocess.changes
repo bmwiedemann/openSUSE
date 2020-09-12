@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:53:48 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 4.0.0
+
+  * [#167](https://github.com/enkessler/childprocess/pull/167): Fix detach behavior on Windows
+  * [#168](https://github.com/enkessler/childprocess/pull/168): Drop support for Ruby 2.3
+
+- packaging changes:
+  * drop development only files
+
+-------------------------------------------------------------------
 Tue Nov 12 16:40:34 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.0.0

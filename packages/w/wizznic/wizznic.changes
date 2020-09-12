@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 10 19:19:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1:
+  * Not much to say about this, it's the same good old Wizznic! you know and love.
+  * This version only includes some memory-related bugfixes, so if you have
+   had bad luck running Wizznic! in the past, give this one a spin!
+
+-------------------------------------------------------------------
 Fri Jun 19 14:53:57 UTC 2015 - dimstar@opensuse.org
 
 - Force GNU inline semantics, fixes build with GCC5.

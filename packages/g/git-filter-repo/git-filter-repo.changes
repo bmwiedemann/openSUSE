@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  9 14:30:44 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Upstream fix: Remove wrong note in README that 2.28.0 isn't released yet
+  add patch: filter-repo-README-remove-outdated-2.28.0-not-yet-re.patch
+
+-------------------------------------------------------------------
+Wed Sep  9 14:19:12 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 2.28.0
+  * --path-glob can now be used with directory globs like '*/bin'
+  * allow comments starting with '#' with --paths-from-file
+
+-------------------------------------------------------------------
 Tue Jun  2 06:29:40 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.27.0

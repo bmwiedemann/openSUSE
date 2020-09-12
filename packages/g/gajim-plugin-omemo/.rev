@@ -48,4 +48,41 @@
   * Shame on me.</comment>
     <requestid>714193</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>14d2e18d3ccabd0132bd6340585c6d24</srcmd5>
+    <version>2.6.80</version>
+    <time>1599862214</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.80 (bsc#1176388):
+  * Add hints for the fingerprint dialog
+  * Implement Blind Trust Before Verification
+  * Show outgoing messages as VERIFIED
+  * Don't drop message silently on decryption error
+  * Don't include inactive devices on checking undecided trust
+  * Sanitize BLOBs in database
+  * Set sqlite text_factory to str
+  * Use PEP-440 compatible version
+  * Don't use deprecated attribute
+  * Use nbxmpp.namespaces
+  * Adapt updating caps
+  * Switch to 12 byte IV
+  * Don't show warning for Key Transport messages
+  * Add back 12 byte IV read support for aesgcm links
+  * Refactor file downloads
+  * Adapt to Gajim HTTPUpload changes
+  * Adapt to nbxmpp changes
+  * Correctly handle presence in anonymous rooms
+  * Fix error in config dialog if no account is available
+  * Correctly handle MAM Messages in anonymous rooms
+  * Show error when message was not encrypted for our device
+  * Be consistent about omemo capable rooms
+  * Adapt to nbxmpp changes
+  * Fix printing status message
+  * Set trust per JID
+  * Fix ConfirmationDialog
+  * Remove YesNoDialog
+  * Dont validate JID on affiliation result
+  * Adapt to Gajim changes</comment>
+    <requestid>833683</requestid>
+  </revision>
 </revisionlist>

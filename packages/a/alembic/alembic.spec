@@ -19,7 +19,7 @@
 
 %define libname libAlembic1_7
 Name:           alembic
-Version:        1.7.14
+Version:        1.7.15
 Release:        0
 Summary:        Computer graphics interchange framework
 License:        BSD-3-Clause

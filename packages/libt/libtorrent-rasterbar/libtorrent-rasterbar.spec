@@ -18,8 +18,6 @@
 
 %define _name   libtorrent
 %define sover   10
-%bcond_without  python2
-%bcond_without  python3
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
@@ -30,26 +28,22 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
 Source:         https://github.com/arvidn/%{_name}/releases/download/%{_name}-%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM libtorrent-rasterbar-fix_pkgconfig_path.patch
+Patch0:         libtorrent-rasterbar-fix_pkgconfig_path.patch
+# PATCH-FIX-OPENSUSE libtorrent-rasterbar-fix_library_version.patch
+Patch1:         libtorrent-rasterbar-fix_library_version.patch
 # for directory ownership
 BuildRequires:  cmake-full
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(openssl)
-%if %{with python2}
-BuildRequires:  python-devel
-%endif
-%if %{with python3}
-BuildRequires:  python3-devel
-%endif
 BuildRequires:  libboost_chrono-devel
+BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_random-devel
 BuildRequires:  libboost_system-devel
-%if %{with python2}
-BuildRequires:  libboost_python-devel
-%endif
-%if %{with python3}
-BuildRequires:  libboost_python3-devel
-%endif
+BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(openssl)
 
 %description
 libtorrent-rasterbar is a C++ library that aims to be a good
@@ -70,16 +64,6 @@ alternative to all the other bittorrent implementations around.
 It is a library and not a full featured client, although it comes
 with a working example client.
 
-%package -n python2-%{name}
-Summary:        Python Bindings for libtorrent-rasterbar
-# python-libtorrent-rasterbar was last used in openSUSE Leap 42.2.
-Group:          Development/Libraries/Python
-Provides:       python-%{name} = %{version}-%{release}
-Obsoletes:      python-%{name} < %{version}-%{release}
-
-%description -n python2-%{name}
-Python Bindings for the libtorrent-rasterbar package.
-
 %package -n python3-%{name}
 Summary:        Python Bindings for libtorrent-rasterbar
 Group:          Development/Libraries/Python
@@ -87,6 +71,7 @@ Group:          Development/Libraries/Python
 %description -n python3-%{name}
 Python Bindings for the libtorrent-rasterbar package.
 
+### conditional here? %%if %%{with examples}
 %package tools
 Summary:        Example tools from libtorrent-rasterbar
 Group:          Development/Libraries/C and C++
@@ -119,61 +104,37 @@ BuildArch:      noarch
 Documentation for the libtorrent-rasterbar package.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-export CXXFLAGS="$CFLAGS"
-
-%global _configure ../configure
-for py in %{?with_python2:python} %{?with_python3:python3}; do
-    mkdir -p "build-$py"
-    pushd "build-$py"
-    export PYTHON="$py"
-    %configure \
-      --disable-static       \
-      --disable-silent-rules \
-      --with-libiconv        \
+export CXXFLAGS="-std=c++14"
+%cmake \
 %if %{with tests}
-      --enable-tests         \
+   -Dbuild_tests=ON \
 %endif
 %if %{with examples}
-      --enable-examples      \
+   -Dbuild_examples=ON \
 %endif
-      --with-boost-python="boost_$py" \
-      --enable-python-binding
-    make %{?_smp_mflags} V=1
-    popd
-done
+   -Dpython-bindings=ON
+%cmake_build
 
 %install
-%if %{with python2}
-%make_install -C build-python
-%endif
-%if %{with python3}
-%make_install -C build-python3
-%endif
+%cmake_install
 
-find %{buildroot} -type f -name "*.la" -delete -print
 # Move doc to a separate package.
 mkdir -p %{buildroot}%{_docdir}/%{name}/
 cp -r docs/* %{buildroot}%{_docdir}/%{name}/
 
 %if %{with examples}
-# Drop tests binaries from the libtorrent-rasterbar-tools subpackage.
-rm -v %{buildroot}%{_bindir}/{client_test,connection_tester,enum_if} \
-  %{buildroot}%{_bindir}/{fragmentation_test,parse_hash_fails} \
-  %{buildroot}%{_bindir}/{parse_request_log,rss_reader,upnp_test,utp_test}
+install -Dm0755 build/examples/dump_torrent build/examples/make_torrent \
+  build/examples/simple_client -t %{buildroot}%{_bindir}
 %endif
+
+%fdupes %{buildroot}%{python3_sitearch}
 
 %if %{with tests}
 %check
-%if %{with python2}
-make check %{?_smp_mflags} V=1 -C build-python
-%endif
-%if %{with python3}
-make check %{?_smp_mflags} V=1 -C build-python3
-%endif
+%ctest --verbose --exclude-regex "(test_flags|test_resume|test_torrent|test_url_seed|test_upnp)"
 %endif
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
@@ -191,21 +152,14 @@ make check %{?_smp_mflags} V=1 -C build-python3
 %doc AUTHORS ChangeLog
 %{_libdir}/%{name}.so.%{sover}*
 
-%if %{with python2}
-%files -n python2-%{name}
-%{python_sitearch}/%{_name}*.so
-%{python_sitearch}/python_%{_name}-*
-%endif
-
-%if %{with python3}
 %files -n python3-%{name}
 %{python3_sitearch}/%{_name}*.so
-%{python3_sitearch}/python_%{_name}-*
-%endif
+%{python3_sitearch}/%{_name}.egg-info
 
 %files devel
 %{_datadir}/cmake/Modules/FindLibtorrentRasterbar.cmake
 %{_includedir}/%{_name}/
+%{_libdir}/cmake/LibtorrentRasterbar
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 

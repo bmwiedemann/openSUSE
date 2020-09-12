@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  7 13:02:41 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable explictly embree in cmake options. Fixes build on
+  aarch64 and %arm
+
+-------------------------------------------------------------------
 Tue Sep  1 14:21:17 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Adjust spec to

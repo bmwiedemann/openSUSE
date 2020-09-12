@@ -176,4 +176,12 @@ to get the registry to honor the umask when creating new folders
 of the provided Makefile</comment>
     <requestid>827673</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>29ddc3b2e9152d313da92f3bceecd437</srcmd5>
+    <version>2.7.1</version>
+    <time>1599862241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833767</requestid>
+  </revision>
 </revisionlist>

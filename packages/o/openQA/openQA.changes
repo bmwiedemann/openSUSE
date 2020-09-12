@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 11 13:31:39 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1599827045.d7efb6eaa:
+  * ci: Temporarily exclude broken OBS checks
+  * Update to perltidy 20200907
+  * Surface errors from failed test tries
+  * docs: Add simple hint about sass
+  * Makefile: Prevent "make help" outputting make variable definitions
+  * Introduce 't_seen' column to be able to fix worker's online/offline status
+  * ci: Use more common 4-digit year format for dep id
+  * Improve displaying serial results
+  * Dependency cron 200908
+  * Use patterns for keys of the settings which rendered as links
+  * Implement test case for show_filesrc controller
+  * Implement feature in the settings with links in files
+  * Select 'Found by' when creating new bugs in bugzilla
+  * Dependency cron 200907
+  * Skip empty details JSON files when finalizing jobs
+
+-------------------------------------------------------------------
 Sun Sep 06 03:27:01 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1599223479.ee2fc8e22:

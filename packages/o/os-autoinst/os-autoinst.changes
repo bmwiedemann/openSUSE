@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 11 13:13:56 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1599830026.77762e38:
+  * Update perltidy to 20200907
+  * Suggest using the check target (instead of test target) in the README
+  * ci: Adjust path in codecov.yml
+  * Extend and improve tests for file handling of command server
+  * Make command server utilize asset cache instead of only relying on ASSETDIR
+  * Improve command server code for serving files
+  * Update backend_vars.asciidoc
+  * Add missing column separators
+
+-------------------------------------------------------------------
 Thu Sep 03 19:26:31 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1599143921.f85dd213:

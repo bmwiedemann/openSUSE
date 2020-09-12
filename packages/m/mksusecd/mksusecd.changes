@@ -1,4 +1,15 @@
 --------------------------------------------------------------------
+Thu Sep 10 16:03:10 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#51
+- look only at top-level products file (bsc#1176176)
+- ensure modified files really end up on the media (bsc#1176176)
+- adjust product handling if products are spread over several media
+- include complete product directories
+- fix product handling with new SLE full media layout
+- 1.76
+
+--------------------------------------------------------------------
 Mon Jul 27 12:37:29 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#50

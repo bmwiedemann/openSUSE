@@ -1,0 +1,23 @@
+[Unit]
+Description=Combustion (preparations)
+DefaultDependencies=false
+
+ConditionKernelCommandLine=ignition.firstboot
+
+# Config drive has to be available
+Wants=dev-disk-by\x2dlabel-ignition.device
+After=dev-disk-by\x2dlabel-ignition.device
+
+# This reconfigures networking, which runs during the initqueue
+Before=dracut-initqueue.service
+
+Conflicts=initrd-switch-root.target umount.target
+Conflicts=dracut-emergency.service emergency.service emergency.target
+
+# Without this it goes into an endless loop on failure
+OnFailure=emergency.target
+OnFailureJobMode=isolate
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/combustion --prepare

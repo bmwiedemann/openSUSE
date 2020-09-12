@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  4 14:27:17 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add combustion-prepare.service to enable network if needed:
+  M combustion
+  A combustion-prepare.service
+  M combustion.service
+  M module-setup.sh
+- Don't fail if no config drive found to not break ignition with
+  fw_cfg
+
+-------------------------------------------------------------------
 Fri Jul 17 12:25:25 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Adjust README after removal of combustion-generator

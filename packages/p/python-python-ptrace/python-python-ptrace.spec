@@ -35,6 +35,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+# aarch64 is not yet supported - https://github.com/vstinner/python-ptrace/issues/57
+ExcludeArch:    aarch64
 %python_subpackages
 
 %description

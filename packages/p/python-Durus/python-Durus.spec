@@ -1,7 +1,7 @@
 #
 # spec file for package python-Durus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,8 @@ export CFLAGS="%{optflags}"
 %python_uninstall_alternative durus
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v
+# TODO, uses sancho's utest format from 2005 on
+# see CHANGES.txt
 
 %files %{python_files}
 %license LICENSE.txt

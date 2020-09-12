@@ -1,7 +1,7 @@
 #
 # spec file for package virt-manager
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Virtual Machine Manager
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://virt-manager.org/
+URL:            http://virt-manager.org/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        virt-install.rb
 Source2:        virt-install.desktop
@@ -48,16 +48,18 @@ Patch13:        51d84c54-connection-Avoid-repeated-default-pool-creation-attempt
 Patch14:        d934d6f2-domcaps-Fix-check-for-uncached-security-features.patch
 Patch15:        29f9f5f2-virt-xml-fix-defined_xml_is_unchanged.patch
 Patch16:        15a9502b-Fix-showing-the-firmware-type-in-case-of-firmware-auto-selection.patch
+Patch17:        5573aeb4-createnet-Fix-XML-editor-error-when-dhcp-fields-are-empty.patch
+Patch18:        e8bf16b9-details-fix-detection-of-firmware-auto-selection.patch
+Patch19:        7e3fb3f2-graphics-Default-to-vga-instead-of-qxl-for-non-spice.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
-Patch72:        virtman-keycombo.patch
-Patch73:        virtman-show-suse-install-repos.patch
-Patch74:        virtman-dont-allow-grub.xen-to-be-deleted.patch
-Patch75:        virtinst-pvgrub2-bootloader.patch
-Patch76:        virtinst-change-location-for-grub_xen.patch
-Patch77:        virtman-fix-env-script-interpreter.patch
-Patch78:        virtinst-set-qemu-emulator.patch
+Patch72:        virtman-show-suse-install-repos.patch
+Patch73:        virtman-dont-allow-grub.xen-to-be-deleted.patch
+Patch74:        virtinst-pvgrub2-bootloader.patch
+Patch75:        virtinst-change-location-for-grub_xen.patch
+Patch76:        virtman-fix-env-script-interpreter.patch
+Patch77:        virtinst-set-qemu-emulator.patch
 # Features or Enhancements
 Patch103:       virtman-load-stored-uris.patch
 Patch120:       virtinst-default-xen-to-qcow2-format.patch
@@ -147,13 +149,10 @@ Requires:       python3-ipaddr
 Requires:       python3-libvirt-python >= 0.7.0
 Requires:       python3-libxml2-python
 Requires:       python3-pycurl
+Requires:       typelib(AppIndicator3)
 Requires:       typelib(LibvirtGLib)
 Suggests:       python3-virt-bootstrap
 BuildRequires:  gobject-introspection
-# No AppIndicator package on SLE
-%if 0%{?is_opensuse} == 0
-%define __requires_exclude typelib\\(AppIndicator3\\)
-%endif
 
 %description common
 Common files used by the different virt-manager interfaces, as well as
@@ -198,6 +197,9 @@ machine).
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1
@@ -207,7 +209,6 @@ machine).
 %patch75 -p1
 %patch76 -p1
 %patch77 -p1
-%patch78 -p1
 # Enhancements
 %patch103 -p1
 %patch120 -p1

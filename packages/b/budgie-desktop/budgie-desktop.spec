@@ -18,34 +18,22 @@
 
 
 Name:           budgie-desktop
-Version:        10.5.1
+Version:        10.5.1+1ed6276b
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://getsol.us/solus/experiences/
-Source:         https://github.com/solus-project/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/solus-project/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
-Source2:        %{name}.keyring
+Source:         %{name}-%{version}.tar.xz
+#Source1:        https://github.com/solus-project/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
+#Source2:        %{name}.keyring
 Source3:        budgie-desktop-nemo-autostart.desktop
-# PATCH-FIX-UPSTREAM: Add support for mutter 3.36 gh#solus-project/budgie-desktop#1918
-Patch:          support-libmutter6.patch
-# PATCH-FIX-UPSTREAM: Resolve losing keyboard shortcuts on login gh#solus-project/budgie-desktop#1907
-Patch1:         Rework-grab-and-ungrab-keys.patch
-# PATCH-FIX-UPSTREAM: Add support for mutter 3.35.91 gh#solus-project/budgie-desktop#1939
-Patch2:         mutter-3-35-91.patch
-# PATCH-FIX-UPSTREAM: Allow budgie-desktop and gnome-shell to coexist gh#solus-project/budgie-desktop#1984
-Patch3:         gnome-coexistance.patch
 # PATCH-FIX-OPENSUSE: Create a clean separation between Budgie and GNOME desktops
-Patch4:         desktop-override.patch
+Patch:          desktop-override.patch
 # PATCH-FIX-OPENSUSE: Use nemo instead of nautilus for desktop icons
-Patch5:         nemo-instead-of-nautilus.patch
-# PATCH-FIX-UPSTREAM: gh#solus-project/budgie-desktop#1998 -- Fixes boo#1176016
-Patch6:         replace-na-tray-with-carbontray.patch
-# PATCH-FIX-UPSTREAM: gh#solus-project/budgie-desktop#2002 -- Fixes boo#1176016
-Patch7:         clean-up-carbontray.patch
-# PATCH-FIX-UPSTREAM: gh#solus-project/budgie-desktop#2009 -- Fixes boo#1176016
-Patch8:         fix-integration-issues-with-carbontray.patch
+Patch1:         nemo-instead-of-nautilus.patch
+# PATCH-FIX-UPSTREAM gh#solus-project/budgie-desktop#2029
+Patch2:         vala-0.49.patch
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.41.2
 BuildRequires:  pkgconfig
@@ -69,7 +57,7 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen) >= 0.28
-BuildRequires:  (pkgconfig(libmutter-5) or pkgconfig(libmutter-6))
+BuildRequires:  (pkgconfig(libmutter-6) or pkgconfig(libmutter-7))
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(alsa)
@@ -160,11 +148,6 @@ Private library for Budgie desktop to link against.
 export LANG=en_US.UTF-8
 %meson_install
 
-# Correct vala directory
-mkdir -pv %{buildroot}%{_datadir}/vala-%{vala_version}/
-mv %{buildroot}%{_datadir}/vala/* %{buildroot}%{_datadir}/vala-%{vala_version}/
-rm -Rf %{buildroot}%{_datadir}/vala/
-
 # update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
@@ -194,13 +177,11 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/xdg/autostart
 
 %files
 %license LICENSE LICENSE.LGPL2.1
-%dir %{_datadir}/gnome-session
-%dir %{_datadir}/gnome-session/sessions
+%{_datadir}/gnome-session
 %{_bindir}/budgie-*
 %{_datadir}/applications/budgie-*.desktop
 %{_datadir}/glib-2.0/schemas/com.solus-project.*.gschema.xml
 %{_datadir}/glib-2.0/schemas/20_solus-project.budgie.wm.gschema.override
-%{_datadir}/gnome-session/sessions/budgie-desktop.session
 %{_datadir}/icons/hicolor/scalable/*/*.svg
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
@@ -227,7 +208,7 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/xdg/autostart
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/Budgie-1.0.gir
-%{_datadir}/vala-%{vala_version}/vapi/budgie-1.0.*
+%{_datadir}/vala/vapi/budgie-1.0.*
 
 %files -n typelib-1_0-Budgie-1_0
 %{_libdir}/girepository-1.0/Budgie-1.0.typelib

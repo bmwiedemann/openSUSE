@@ -278,4 +278,41 @@
     (fixes #1484: Websocket masks pong answer)</comment>
     <requestid>788427</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1dc59b559c9763f5b979f1db710f3db1</srcmd5>
+    <version>0.11.6</version>
+    <time>1599862265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.6:
+  Fixes and improvements:
+  * mod_storage_internal: Fix error in time limited queries on items without ‘when’ field, fixes #1557
+  * mod_carbons: Fix handling of incoming MUC PMs #1540
+  * mod_csi_simple: Consider XEP-0353: Jingle Message Initiation important
+  * mod_http_files: Avoid using inode in etag, fixes #1498: Fail to download file on FreeBSD
+  * mod_admin_telnet: Create a DNS resolver per console session (fixes #1492: Telnet console DNS commands reduced usefulness)
+  * core.certmanager: Move EECDH ciphers before EDH in default cipherstring (fixes #1513)
+  * mod_s2s: Escape invalid XML in loggin (same way as mod_c2s) (fixes #1574: Invalid XML input on s2s connection is logged unescaped)
+  * mod_muc: Allow control over the server-admins-are-room-owners feature (see #1174)
+  * mod_muc_mam: Remove spoofed archive IDs before archiving (fixes #1552: MUC MAM may strip its own archive id)
+  * mod_muc_mam: Fix stanza id filter event name, fixes #1546: mod_muc_mam does not strip spoofed stanza ids
+  * mod_muc_mam: Fix missing advertising of XEP-0359, fixes #1547: mod_muc_mam does not advertise stanza-id
+  Minor changes:
+  * net.http API: Add request:cancel() method
+  * net.http API: Fix traceback on invalid URL passed to request()
+  * MUC: Persist affiliation_data in new MUC format
+  * mod_websocket: Fire event on session creation (thanks Aaron van Meerten)
+  * MUC: Always include ‘affiliation’/‘role’ attributes, defaulting to ‘none’ if nil
+  * mod_tls: Log when certificates are (re)loaded
+  * mod_vcard4: Report correct error condition (fixes #1521: mod_vcard4 reports wrong error)
+  * net.http: Re-expose destroy_request() function (fixes unintentional API breakage)
+  * net.http.server: Strip port from Host header in IPv6 friendly way (fix #1302)
+  * util.prosodyctl: Tell prosody do daemonize via command line flag (fixes #1514)
+  * SASL: Apply saslprep where necessary, fixes #1560: Login fails if password contains special chars
+  * net.http.server: Fix reporting of missing Host header
+  * util.datamanager API: Fix iterating over “users” (thanks marc0s)
+  * net.resolvers.basic: Default conn_type to ‘tcp’ consistently if unspecified (thanks marc0s)
+  * mod_storage_sql: Fix check for deletion limits (fixes #1494)
+  * mod_admin_telnet: Handle unavailable cipher info (fixes #1510: mod_admin_telnet backtrace)</comment>
+    <requestid>833724</requestid>
+  </revision>
 </revisionlist>

@@ -3,8 +3,8 @@
     <param name="url">https://github.com/openSUSE/release-compare.git</param>
     <param name="scm">git</param>
 
-    <param name="version">0.3.5</param>
-    <param name="revision">0.3.5</param>
+    <param name="version">0.3.6</param>
+    <param name="revision">0.3.6</param>
 
     <param name="extract">release-compare.spec</param>
   </service>

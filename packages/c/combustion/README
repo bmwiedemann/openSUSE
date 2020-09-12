@@ -29,6 +29,7 @@ mount /dev/sdX /mnt
 mkdir -p /mnt/combustion/
 cat >/mnt/combustion/script <<EOF
 #!/bin/sh
+# combustion: network
 systemctl enable sshd.service
 zypper --non-interactive install vim-small
 cp welcome /root/welcome
@@ -36,6 +37,9 @@ EOF
 echo "Hello User!" >/mnt/combustion/welcome
 umount /mnt
 ```
+
+The "# combustion: network" comment indicates that network needs to be
+configured before running the script.
 
 You can do everything necessary for initial system configuration from this
 script, including addition of ssh keys, adding users, changing passwords
@@ -50,13 +54,18 @@ kernel commandline.
 
 If this option is found on the kernel cmdline, combustion.service's
 ConditionKernelCommandLine is fulfilled and it'll be required by initrd.target.
-It is started after /sysroot is mounted and network is up (if enabled). This
-service tries to activate all mountpoints in the system's /etc/fstab and then
-calls transactional-update chrooted.
+This pulls in combustion-prepare.service, which runs after the config drive
+with LABEL=ignition appears. It is mounted and if the "network" flag comment is
+present, enables networking for later. After /sysroot is mounted and network is
+up (if enabled), combustion.service runs, which tries to activate all
+mountpoints in the system's /etc/fstab and then calls transactional-update
+in a chroot.
 
 In this transactional-update session the script is started and the exit code
 recorded. If the script failed, transactional-update rollback is called and
-combustion.service marked as failed.
+combustion.service marked as failed, which causes booting to fail. Note that a
+missing config drive or script is not considered a fatal error and only results
+in a warning.
 
 /sysroot is unmounted and mounted again, so that the default subvolume gets
 reevaluated and directly booted into.

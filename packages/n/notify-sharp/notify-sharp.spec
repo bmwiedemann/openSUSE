@@ -15,12 +15,6 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-# This package installs in /usr/lib and .pc file goes to /usr/share/pkgconfig
-# Define _libexecdir for <= 1110
-%if 0%{?suse_version} <= 1110
-%define _libexecdir %{_prefix}/lib
-%endif
-
 Name:           notify-sharp
 Url:            http://trac.galago-project.org/wiki/DesktopNotifications
 Version:        0.4.0.r3032
@@ -88,7 +82,7 @@ a short period of time.
 %build
 NOCONFIGURE=1 autoreconf -fi
 %configure \
-   --libdir=%{_libexecdir} \
+   --libdir=%{_prefix}/lib \
    --disable-docs
 make %{?jobs:-j%jobs}
 
@@ -97,14 +91,14 @@ make %{?jobs:-j%jobs}
 %makeinstall
 # Move .pc file to /usr/share/pkgconfig (for no arch) and remove from libdir
 install -Dm 0644 %{name}.pc %{buildroot}%{_datadir}/pkgconfig/%{name}.pc
-find %{buildroot}%{_libexecdir} -name %{name}.pc -type f -print -delete
+find %{buildroot}%{_prefix}/lib -name %{name}.pc -type f -print -delete
 
 %files
 %defattr(-,root,root)
-%dir %{_libexecdir}/mono/gac/%{name}
-%{_libexecdir}/mono/gac/%{name}/
-%dir %{_libexecdir}/mono/%{name}
-%{_libexecdir}/mono/%{name}/
+%dir %{_prefix}/lib/mono/gac/%{name}
+%{_prefix}/lib/mono/gac/%{name}/
+%dir %{_prefix}/lib/mono/%{name}
+%{_prefix}/lib/mono/%{name}/
 #/usr/lib/monodoc/sources/*
 
 %files devel

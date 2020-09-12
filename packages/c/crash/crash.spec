@@ -81,6 +81,7 @@ Patch26:        %{name}-fix-kmem-sS-for-caches-created-during-SLUB-bootstrap.pat
 Patch27:        %{name}-Define-fallback-PN_XNUM.patch
 Patch28:        %{name}-fix-memory_driver-build-kernel-5.8.patch
 Patch29:        eppic-remove-duplicate-symbols.patch
+Patch30:        %{name}-verify-exception-frame-accessible-for-all-verify-requests.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 BuildRequires:  bison
 BuildRequires:  flex
@@ -277,6 +278,7 @@ Authors:
 %patch26 -p1
 %patch27 -p1
 %patch28 -p1
+%patch30 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif

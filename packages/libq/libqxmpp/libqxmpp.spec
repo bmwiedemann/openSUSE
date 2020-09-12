@@ -30,11 +30,12 @@ BuildRequires:  cmake >= 3.3
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Core) >= 5.7.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(theora)
@@ -56,6 +57,7 @@ QXmpp is a cross-platform C++ XMPP client library based on Qt and C++.
 Summary:        Qxmpp Development Files
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
+Requires:       pkgconfig(gstreamer-1.0)
 Provides:       libqxmpp-qt5-devel = %{version}
 Obsoletes:      libqxmpp-qt5-devel < %{version}
 
@@ -85,6 +87,7 @@ sed -i 's,add_subdirectory(qxmppuploadrequestmanager),#add_subdirectory(qxmppupl
   -DWITH_OPUS=ON \
   -DWITH_THEORA=ON \
   -DWITH_VPX=ON \
+  -DWITH_GSTREAMER=ON \
   -DBUILD_DOCUMENTATION=ON \
   -DBUILD_EXAMPLES=ON \
   -DBUILD_TESTS=ON

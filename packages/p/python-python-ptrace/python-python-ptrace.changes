@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 12:37:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- aarch64 is not yet supported, so exclude it
+  See: https://github.com/vstinner/python-ptrace/issues/57
+
+-------------------------------------------------------------------
 Wed Aug  5 12:47:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.9.5

@@ -8,8 +8,8 @@ set flagpath="/boot/writable"
 # to be used later on the kernel command line.
 set ignition_firstboot=""
 if ! [ -f "${flagpath}/firstboot_happened" ]; then
-    # default to dhcp networking parameters to be used with ignition 
-    set ignition_network_kcmdline='rd.neednet=1 ip=dhcp'
+    # This defaults to DHCP in dracut
+    set ignition_network_kcmdline=''
 
     # source in the `ignition.firstboot` file which could override the
     # above $ignition_network_kcmdline with static networking config.

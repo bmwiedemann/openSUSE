@@ -49,7 +49,7 @@
 %endif
 
 Name:           nextcloud
-Version:        19.0.2
+Version:        19.0.3
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only

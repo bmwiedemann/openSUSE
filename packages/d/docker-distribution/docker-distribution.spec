@@ -35,7 +35,9 @@ Source4:        README-registry.SUSE
 Patch0:         0001-Fix-s3-driver-for-supporting-ceph-radosgw.patch
 # PATCH-FIX-UPSTREAM https://github.com/docker/distribution/pull/3204
 Patch1:         0002-Relax-filesystem-driver-folder-permissions-to-0777-cont.patch
-BuildRequires:  go >= 1.11
+# PATCH-FIX-UPSTREAM https://github.com/docker/distribution/pull/2886
+Patch2:         0003-Support-external-redis-sentinel-cluster.patch
+BuildRequires:  go >= 1.13
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 ExclusiveArch:  x86_64 s390x aarch64 %arm ppc64le
@@ -63,6 +65,7 @@ Registry server for Docker (hosting/delivering of repositories and images).
 %setup -q -n distribution-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 cp %{SOURCE4} .
 
 %build

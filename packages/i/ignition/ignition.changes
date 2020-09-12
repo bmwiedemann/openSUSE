@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:07:21 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- 02_ignition_firstboot, ignition-enable-network.sh: Drop ip=dhcp,
+  it's the default anyway and avoids a delay on boot (boo#1173402)
+- 02_ignition_firstboot: Drop rd.neednet=1, both ignition and
+  combustion enable it themselves when necessary
+
+-------------------------------------------------------------------
 Thu Sep  3 15:04:30 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Change virtualization detection from virt-what to

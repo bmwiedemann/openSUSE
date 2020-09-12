@@ -7,12 +7,12 @@ ConditionKernelCommandLine=ignition.firstboot
 Requires=sysroot.mount
 After=sysroot.mount
 
+# combustion-prepare sets up network, if required
+Requires=combustion-prepare.service
+After=combustion-prepare.service
+
 # Optionally make network available
 After=network.target
-
-# Config drive has to be available
-Requires=dev-disk-by\x2dlabel-ignition.device
-After=dev-disk-by\x2dlabel-ignition.device
 
 # After ignition completed its stuff
 After=ignition-complete.target
@@ -22,6 +22,10 @@ Before=initrd-parse-etc.service
 
 Conflicts=initrd-switch-root.target umount.target
 Conflicts=dracut-emergency.service emergency.service emergency.target
+
+# Without this it goes into an endless loop on failure
+OnFailure=emergency.target
+OnFailureJobMode=isolate
 
 [Service]
 Type=oneshot

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:50:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.12
+  * cpustat: fix truncated output, allow CPU % stats > 100%
+- Update to version 0.02.11
+  * cpustat: zero ws struct to clear static analysis warnings
+
+-------------------------------------------------------------------
 Sun Mar  8 12:57:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Drop SLE12 compat ifdef

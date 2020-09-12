@@ -2,7 +2,7 @@
 # spec file for package ulfius
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2018-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %define sover 2_6
 Name:           ulfius
-Version:        2.6.8
+Version:        2.6.9
 Release:        0
 Summary:        Web Framework for REST Applications in C
 License:        MIT
@@ -33,9 +33,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(jansson) >= 2.4
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libmicrohttpd)
+BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.51
 BuildRequires:  pkgconfig(liborcania) >= 2.1.0
-BuildRequires:  pkgconfig(libyder) >= 1.4.8
+BuildRequires:  pkgconfig(libyder) >= 1.4.12
 
 %description
 The library is based on GNU libmicrohttpd for the backend web server, jansson

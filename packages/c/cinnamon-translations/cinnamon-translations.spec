@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-translations
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _version 4.0.0
 Name:           cinnamon-translations
-Version:        4.4.2
+Version:        4.6.2
 Release:        0
 Summary:        Translation files for the Cinnamon desktop
 License:        GPL-2.0-or-later
@@ -179,7 +179,6 @@ done
 
 %find_lang cinnamon
 %find_lang cinnamon-control-center
-%find_lang cinnamon-bluetooth cinnamon-control-center.lang
 %find_lang cinnamon-screensaver
 %find_lang cinnamon-session
 %find_lang cinnamon-settings-daemon

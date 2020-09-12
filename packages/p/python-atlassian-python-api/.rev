@@ -82,4 +82,16 @@
   * New release with new methods for the Jira, Bamboo, Bitbucket methods.</comment>
     <requestid>816909</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b93ab276838a89bf6ef50067d96bfe21</srcmd5>
+    <version>1.17.3</version>
+    <time>1599862105</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.3:
+  * [RestClient] Cleanup base class and fix init order in derived class
+  * Add review remark -&gt; add *args.
+  * Jira: add create project method
+  * Migrate header variable into rest client</comment>
+    <requestid>833586</requestid>
+  </revision>
 </revisionlist>

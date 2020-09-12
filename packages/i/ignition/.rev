@@ -246,4 +246,12 @@ Allows mounting a device multiple times, e.g. to mount several subvolumes from a
     <comment></comment>
     <requestid>832023</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>a61a8a03777143adc292ab3d3b470140</srcmd5>
+    <version>2.6.0</version>
+    <time>1599862434</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833824</requestid>
+  </revision>
 </revisionlist>

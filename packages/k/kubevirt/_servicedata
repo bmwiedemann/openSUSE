@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kubevirt/kubevirt</param>
+              <param name="changesrevision">3935f4337ede364fa9a3442f5e8642e03d3c4070</param></service></servicedata>

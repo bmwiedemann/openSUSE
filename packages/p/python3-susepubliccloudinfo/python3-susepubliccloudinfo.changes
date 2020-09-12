@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 18:40:38 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 1.2.2 (bsc#1176102, bsc#1176103)
+  + Support query for providers/frameworks, regions, and image states
+
+-------------------------------------------------------------------
 Fri Aug  2 21:37:41 UTC 2019 - James Mason <bear454@opensuse.org>
 
 - Update to version 1.2.1 (bsc#1144100, bsc#1144102)

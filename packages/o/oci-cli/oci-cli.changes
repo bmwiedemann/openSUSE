@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Wed Sep  9 13:05:47 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.12.10
+  * Support for searching Oracle Cloud resources across tenancies in the Search Service
+    * ``oci search resource free-text-search --tenant-id``
+    * ``oci search resource structured-search --tenant-id``
+  * Support for Management Agent Cloud Service
+    * ``oci management-agent``
+  * Support for sending diagnostic interrupt to a VM instance in the Compute Service
+    * ``oci compute instance action --action SENDDIAGNOSTICINTERRUPT --instance-id``
+  * Support for custom Database Software Images in the Database Service
+    * ``oci db database-software-image``
+  * Support for Management Dashboard Service
+    * ``oci management-dashboard``
+  * Support for Logging Analytics Service
+    * `oci log-analytics`
+  * Support for Logging Service
+    * ``oci logging``
+  * Support for Logging Ingestion Service
+    * ``oci logging-ingestion``
+  * Support for Logging Search Service
+    * ``oci logging-search``
+  * Support for Service Connector Hub service
+    * ``oci sch``
+  * Support for getting and listing container database patches for Autonomous Container
+    Database resources in the Database Service
+    * ``oci db autonomous-patch get --autonomous-patch-id``
+    * ``oci db autonomous-patch list-container-database-patches --autonomous-container-database-id``
+  * Support for updating patch id on maintenance run for Autonomous Container Database
+    resources in the Database Service
+    * ``oci db maintenance-run update --patch-id``
+  * Support for Policy based Request/Response transformation
+    * ``oci api-gateway deployment``
+- from version 2.12.9
+  * Support for customers to find the latest CLI version
+    * ``oci --latest-version``
+  * Support for customers to view changelog entries for newer CLI versions
+    * ``oci --release-info``
+  * Support for returning all results for Resource Manager job logs
+    * ``oci resource-manager job get-job-logs --all``
+  * Improvement for DB System, Cloud VMCluster and Cloud Exadata Infrastructure by
+    introducing lifecycle state MAINTENANCE_IN_PROGRESS in Database Service
+    * ``oci db system``
+    * ``oci db vm-cluster``
+    * ``oci db exadata-infrastructure``
+  * VM DB cloning - clone dbSystem from a source dbSystem
+    * ``oci db system launch-from-db-system``
+  * Option private-ip for other type of dbSystem launches
+    * ``oci db system launch --private-ip``
+    * ``oci db system launch-from-backup --private-ip``
+    * ``oci db system launch-from-database --private-ip``
+  * Support for Network Sources in Authentication Policy in Identity Service
+    * ``oci iam authentication-policy update``
+  * Support for AMD Flexible Shapes with configurable CPU to the Container Engine for Kubernetes service
+    * ``oci ce node-pool create --node-shape-config``
+    * ``oci ce node-pool update --node-shape-config``
+  * New options for listener and backendset to specify ssl protocols, ssl
+    ciphersuite and server order preference in Load Balancer Service
+    * ``oci lb backend-set``
+    * ``oci lb listener``
+    * ``oci lb load-balancer``
+    * ``oci lb ssl-cipher-suite``
+  * Support for calling Oracle Cloud Infrastructure services in the Chiyoda region (``--region ap-chiyoda-1``)
+  * jmespath package requirement bumped to 0.10.0
+- from version 2.12.8
+  * Support for configuring VM instances for scheduled maintenance or hypervisor reboots in the Compute service
+    * ``oci compute instance launch --availability-config '{"recoveryAction": "STOP_INSTANCE"}'``
+    * ``oci compute instance update --availability-config '{"recoveryAction": "STOP_INSTANCE"}'``
+  * Support for custom boot volume size and other node pool updates in the Container Engine for Kubernetes service
+    * ``oci ce node-pool create --node-source-details`` with bootVolumeSizeInGBs in the complex type
+    * ``oci ce node-pool create --node-boot-volume-size-in-gbs`` shortcut
+    * ``oci ce node-pool update --node-source-details`` with bootVolumeSizeInGBs in the complex type
+    * ``oci ce node-pool update --node-source-details --node-shape --node-metadata --ssh-public-key``
+  * Support for Data Guard on Exadata Cloud at Customer VM clusters in the Database service
+    * ``oci db data-guard-association create from-existing-vm-cluster``
+  * Multipart upload using ``oci os object bulk-upload`` may fail with SSL bad write error
+  - from version 2.12.7
+  * Support for additional list filtering in the Data Catalog service
+    * ``oci data-catalog <object type within catalog> list --display-name-contains``
+    * ``oci data-catalog job-definition list --job-execution-state``
+  * Support for new db workload type AJD in the Autonomous Database service
+    * ``oci db autonomous-database --db-workload AJD``
+  *  Support for script directory option for non-interactive installations on Mac, Linux, and Windows OS.
+    (`Issue 282 <https://github.com/oracle/oci-cli/issues/282>`__) (`Issue 305 <https://github.com/oracle/oci-cli/issues/305>`__)
+    * ``./install.sh --script-dir <directory>``
+    * ``.\install.ps1 -ScriptDir <directory>``
+  * Idna package has been removed from the requirements.
+    (`Issue 295 <https://github.com/oracle/oci-cli/issues/295>`__)
+  * Bug fix in raw requests operations to correctly handle hyphens in headers.
+    (`Issue 269 <https://github.com/oracle/oci-cli/issues/269>`__)
+- from version 2.12.6
+  * NOTE: OCI CLI is now available for install through Homebrew
+    * ``brew update && brew install oci-cli``
+  * Support to allow a customer to create and manage private endpoints in data-flow service.
+    * ``oci data-flow application create private-endpoint-id``
+  * Support for Big Data service Change Shape and restart BDS node
+    * ``oci bds instance change-shape``
+    * ``oci bds instance restart-node``
+  * Support for Creating stacks from Compartment as part of Resource Manager service.
+    * ``oci resource-manager stack create-from-compartment --compartment-id
+      --config-source-compartment-id --config-source-region --config-source-services-to-discover``
+    * ``oci resource-manager stack list-resource-discovery-services --compartment-id``
+  * Support for additional versions in BDS model, e.g. CSQL version
+  * Support for calling Oracle Cloud Infrastructure services in the Cardiff region (``--region uk-gov-cardiff-1``)
+- from version 2.12.5
+  * Support for specifying OS type and version when importing compute images in the Compute service
+    * ``oci compute image import from-object --operating-system --operating-system-version``
+    * ``oci compute image import from-object-uri --operating-system --operating-system-version``
+  * Support to change the fault domain for VM instances in the Compute service
+    * ``oci compute instance update --fault-domain <fault-domain>``
+  * Support to update VM instances with different launch options (networking type, boot volume attachment
+    type, and in-transit encryption for the boot volume's paravirtualized attachment) in the Compute service
+    * ``oci compute instance update --launch-options <launch-options>``
+  * Support for 'Patch Now' Maintenance Runs for Autonomous Exadata Infrastructure and
+    Autonomous Container Database resources in the Database service
+    * ``oci db maintenance-run update --is-patch-now-enabled``
+  * Support for automatic performance and cost tuning on volumes in the Block Storage service
+    * ``oci bv boot-volume create --is-auto-tune-enabled``
+    * ``oci bv boot-volume update --is-auto-tune-enabled``
+    * ``oci bv volume create --is-auto-tune-enabled``
+    * ``oci bv volume update --is-auto-tune-enabled``
+  * Support for image capability schemas and schema versions as a part of the Compute Imaging Service
+    * ``oci compute global-image-capability-schema``
+    * ``oci compute global-image-capability-schema-version``
+    * ``oci compute image-capability-schema``
+  * Support for calling Oracle Cloud Infrastructure services in the San Jose region (``--region us-sanjose-1``)
+  * Remove access_token from GitlabAccessTokenConfigurationSourceProvider model in the Resource Manager service
+- from version 2.12.4
+  * Added Instance License Type support for OCE instances
+    * ``oci oce oce-instance create instance-license-type``
+    * ``oci oce oce-instance update instance-license-type``
+  * Bug fix in Key Management Service restore-from-file command to handle binary backup files
+    * ``oci kms management vault restore-from-file``
+- from version 2.12.3
+  * Support for Oracle Blockchain Platform, a comprehensive distributed ledger cloud platform
+    * ``oci blockchain``
+  * Support for Gitlab configuration source provider as part of the Resource Manager service
+    * ``oci resource-manager configuration-source-provider``
+    * ``oci resource-manager stack create-from-git-provider``
+    * ``oci resource-manager stack update-from-git-provider``
+  * Support for switching over an Autonomous Database that has Data Guard enabled
+    * ``oci db autonomous-database switchover --autonomous-database-id``
+  * Support for specifying that an autonomous database should have Data Guard enabled
+    * ``oci db autonomous-database create --is-data-guard-enabled``
+    * ``oci db autonomous-database create-refreshable-clone --is-data-guard-enabled``
+    * ``oci db autonomous-database create-from-backup-id --is-data-guard-enabled``
+    * ``oci db autonomous-database create-from-backup-timestamp --is-data-guard-enabled``
+    * ``oci db autonomous-database create-from-clone --is-data-guard-enabled``
+    * ``oci db autonomous-database list --is-data-guard-enabled``
+    * ``oci db autonomous-database update --is-data-guard-enabled``
+  * Virtual Cloud Network List Endpoints Required param --vcn-id has been made optional
+    * ``oci network dhcp-options list --vcn-id``
+    * ``oci network internet-gateway list --vcn-id``
+    * ``oci network local-peering-gateway list --vcn-id``
+    * ``oci network route-table list --vcn-id``
+    * ``oci network security-list list --vcn-id``
+    * ``oci network subnet list --vcn-id``
+- Refresh patches for new version
+  + oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Jul 14 14:06:29 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.12.2

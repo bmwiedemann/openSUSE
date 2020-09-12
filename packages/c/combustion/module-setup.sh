@@ -4,6 +4,7 @@ depends() {
 
 install() {
 	inst_simple "${moddir}/combustion.service" "${systemdsystemunitdir}/combustion.service"
+	inst_simple "${moddir}/combustion-prepare.service" "${systemdsystemunitdir}/combustion-prepare.service"
 	mkdir -p "${initdir}/${systemdsystemunitdir}/initrd.target.requires/"
 	ln_r "../combustion.service" "${systemdsystemunitdir}/initrd.target.requires/combustion.service"
 	inst_multiple awk chroot findmnt 

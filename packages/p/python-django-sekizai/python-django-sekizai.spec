@@ -17,14 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-sekizai
-Version:        1.1.0
+Version:        2.0.0
 Release:        0
 Summary:        Django Template Blocks with extra functionality
 License:        MIT
 URL:            https://github.com/ojii/django-sekizai
 Source:         https://github.com/divio/django-sekizai/archive/%{version}.tar.gz
-Patch0:         django-sekizai-pycodestyle.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module django-classy-tags >= 0.3.1}
 BuildRequires:  %{python_module pycodestyle}
@@ -41,7 +41,6 @@ Django Template Blocks with extra functionality
 
 %prep
 %setup -q -n django-sekizai-%{version}
-%autopatch -p1
 
 %build
 %python_build

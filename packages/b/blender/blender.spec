@@ -299,6 +299,8 @@ cmake ../ \
 %endif
 %if %{with embree}
       -DWITH_CYCLES_EMBREE:BOOL=ON \
+%else
+      -DWITH_CYCLES_EMBREE:BOOL=OFF \
 %endif
       -DWITH_LLVM:BOOL=ON \
       -DLLVM_LIBRARY:FILE=%{_libdir}/libLLVM.so \

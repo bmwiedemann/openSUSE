@@ -73,25 +73,25 @@ This package contains the pkgconfig files.
 %install
 make install DESTDIR=%{buildroot} GACUTIL_FLAGS="/package mono-addins /root %{buildroot}%{_prefix}/lib"
 mkdir -p %{buildroot}%{_datadir}/pkgconfig
-mv %{buildroot}%{_libexecdir}/pkgconfig/*.pc %{buildroot}%{_datadir}/pkgconfig
+mv %{buildroot}%{_prefix}/lib/pkgconfig/*.pc %{buildroot}%{_datadir}/pkgconfig
 
 %files
 %{_bindir}/mautil
-%{_libexecdir}/mono/gac/*Mono.Addins
-%{_libexecdir}/mono/gac/*Mono.Addins.Cecil*
-%{_libexecdir}/mono/gac/*Mono.Addins.Gui*
-%{_libexecdir}/mono/gac/*Mono.Addins.Setup*
-%dir %{_libexecdir}/mono/mono-addins
-%{_libexecdir}/mono/mono-addins/mautil.exe
-%{_libexecdir}/mono/mono-addins/Mono.Addins.dll
-%{_libexecdir}/mono/mono-addins/Mono.Addins.Cecil*
-%{_libexecdir}/mono/mono-addins/Mono.Addins.Gui*
-%{_libexecdir}/mono/mono-addins/Mono.Addins.Setup*
+%{_prefix}/lib/mono/gac/*Mono.Addins
+%{_prefix}/lib/mono/gac/*Mono.Addins.Cecil*
+%{_prefix}/lib/mono/gac/*Mono.Addins.Gui*
+%{_prefix}/lib/mono/gac/*Mono.Addins.Setup*
+%dir %{_prefix}/lib/mono/mono-addins
+%{_prefix}/lib/mono/mono-addins/mautil.exe
+%{_prefix}/lib/mono/mono-addins/Mono.Addins.dll
+%{_prefix}/lib/mono/mono-addins/Mono.Addins.Cecil*
+%{_prefix}/lib/mono/mono-addins/Mono.Addins.Gui*
+%{_prefix}/lib/mono/mono-addins/Mono.Addins.Setup*
 %{_mandir}/man1/mautil.1%{?ext_man}
 
 %files msbuild
-%{_libexecdir}/mono/gac/*Mono.Addins.MSBuild*
-%{_libexecdir}/mono/mono-addins/*MSBuild*
+%{_prefix}/lib/mono/gac/*Mono.Addins.MSBuild*
+%{_prefix}/lib/mono/mono-addins/*MSBuild*
 
 %files devel
 %{_datadir}/pkgconfig/mono-addins.pc

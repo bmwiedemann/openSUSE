@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Thu Sep 10 17:32:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.65:
+  Fix from Jan Kratochvil and Adrian Reber, adrian AT lisas.de for Fedora.
+    xlock -startCmd true... would core on Fedora, exit() replaced with
+    _exit().
+  Update for magick.c to use strncpy thanks to Jouk Jansen.
+  Fix for hyper mode from original author, for potential but not
+    likely memory leak and free(NULL) issue John Heidemann, johnh
+    AT isi.edu.
+  More buffer gcc warnings removed for dclock.c, image.c, and
+    scrnsave.c.
+  ras.c/magick.c gcc 10 fix from Adrian Reber, adrian AT lisas.de .
+    VMS already handles this in make.com.
+  Lots of spelling errors fixed due to codespell
+    https://manpages.debian.org/testing/codespell/codespell.1.en.html
+  A few more gl modes (molecule, invert) fixed up by
+    EoflaOE ViceCity to run in xscreensaver.
+  Added additional changes to solitaire and invert.  invert will
+    build in xscreensaver with some coaxing, see README in
+    xscreensaver directory.
+  Removed buffer gcc warning about nose.c.
+  Fix from brett.diamond AT gmail.com to get "xlock -help" from
+    crashing.
+  As a Blake's 7 fan, I had to add the Liberator to star mode.
+  Same fix from Jouk Jansen and Adrian Reber, adrian AT lisas.de
+    for juggler3d.cc in previous release.
+  Change from Denys Vlasenko (thanks to Adrian Reber for pointing out)
+    https://bugzilla.redhat.com/show_bug.cgi?id=874484
+    This helps xlock's parent process to know xlock crashed.
+  ico mode added truncated octahedron.
+  Another gl mode, sierpinski3d, fixed up by EoflaOE ViceCity to run
+    in xscreensaver.
+  Updated references to website to https.  https://www.sillycycle.com
+  A few more gl modes (incl. maze3d, pipe, sproingies) fixed up by
+    EoflaOE ViceCity to run in xscreensaver.
+  Thanks to tobik, ohartmann AT walstatt.org, and Jason Helfman,
+    jgh AT FreeBSD.org for xglock fixes for "failed due to signal" for
+    clang.
+  Syncing with xscreensaver and many modes modified, more than
+    half working there.  pacman and puzzle run but need some
+    obvious work, others run too fast or flash on the screen.
+    Various fixes from Jouk Jansen and EoflaOE ViceCity.
+    Updated GL modes also, inaddition to overlap: biof, skewb, and
+    fire (needs images). See xscreensaver/README for new directions.
+  Updated in linux to build with modules, must have broken somewhere
+    down the line.  imake build fixed too.
+  bomb mode fixed for xlock.
+  Syncing with xscreensaver.  Much has changed since last time this
+    was done and much left to do.  Nonglx "a"'s and some "b"'s done
+    so far.  Automata modes like ant.c should use automata.c and
+    automata.h supplied by xlockmore.
+    ball bat not working right there yet.  Also bouboule to do right will
+    require changes to xlockmore files from xscreensaver.
+    See new xscreensaver/README for instructions.
+  While testing uncovered old security bug in anenome mode and fixed.
+  life updates to use a more standard notation for nontotalistic cellular
+    automata.
+  ax_pthread.m4 needed for autoconf, added back in, oops.
+  Removed VMS caddr_t fix from matrix.c, cage.c, gears.c, glplanet.c,
+    invert.c, juggler3d.c, lament.c, moebius.c, molecule.c, morph3d.c,
+    noof.c, pipes.c, rubik.c, sierpinski3d.c, skewb.c, stairs.c,
+    superquadrics.c as no longer needed.  Thanks to Jouk Jansen.
+  boxed and maze3d modes added thanks mainly to Jouk Jansen.
+  boxed added to xlock95.scr.  xlock95 Makefile now builds to 64 bit.
+  Thanks to Jason Helfman, jgh AT FreeBSD.org for sound installation fixes.
+  Thanks to Tobias Kortkamp, for his patch for glock compile issue with
+    CLANG 6.0.0.
+  Fixing warnings using clang for back.xpm, nose.c, passwd.c.
+  Fixing errors using g++ for deluxe.c, also various casting added.
+  Fixing potential some buffer overruns pointed out in mingw in
+    apollonian.c and hyper.c.
+  Fixing potential error of using null pointer thanks again to mingw in
+    xlock.c.
+  pyro2 was not showing anything on screen due to it not finding font,
+    changed it to default to mode_font if can not find.
+  Thanks to Dave Odell, dmo2118 AT gmail.com for his fzort mode update to
+    use the functions in xshm.c and fixes crash when running X11 over network.
+  Note from Dave Odell:
+    <https://www.jwz.org/xscreensaver/xscreensaver-5.37.tar.gz>. MI_INIT() is
+    defined and documented in hacks/xlockmore.h, with related functions
+    defined in hacks/xlockmore.c.  MI_INIT() currently takes three parameters:
+    the ModeInfo *, the state array, and a function pointer for the new free
+    hook. FWIW, it could instead be just the first two parameters, with the
+    free hook being set up like the other ModeHooks; this would be a bit
+    nicer, I think. But I was going for something that could be applied
+    incrementally to individual screenhacks in XScreenSaver, and could -- in
+    theory -- be brought back to xlockmore with minimal impact.
+  ant mode resync'd with xscreensaver...  Thanks to David Odell redoing my
+    sad attempt.
+  -sound configuration changed around so it should work on more machines,
+    now uses DEF_PLAY and play.sh by default.
+  Thanks to Stanislav Brabec, sbrabec AT suse.cz for his "hack" to fix for
+    PAM with non-English locales.  He notes to fix properly a "Password"
+    prompt list should be obtained at the initial phase of authentication.
+    Added PAM_PASSWORD_PROMPT for using old way.
+  Fixed leak in scooter thanks to Valgrind.
+- remove xlockmore-pam.patch (upstream/obsolete)
+
+-------------------------------------------------------------------
 Mon Apr 23 22:40:34 UTC 2018 - astieger@suse.com
 
 - remove dependency on gpg-offline, part of source services now

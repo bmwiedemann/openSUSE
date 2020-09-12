@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 11 14:15:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.15:
+  * Fuzzer issues 25166, 25175, 25185, 25204, and 25236 all test for illegal
+  meta data index values which we more carefully test.
+  * Fuzzer issue 25192 turned up a leak from a malformed file causing OrData to
+  throw.
+
+-------------------------------------------------------------------
 Wed Aug 26 07:23:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.7.14:

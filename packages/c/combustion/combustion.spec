@@ -27,7 +27,8 @@ Source1:        LICENSE
 Source2:        README
 Source3:        module-setup.sh
 Source4:        combustion.service
-Source5:        combustion
+Source5:        combustion-prepare.service
+Source6:        combustion
 Requires:       ignition-dracut-grub2
 BuildArch:      noarch
 
@@ -51,7 +52,8 @@ mkdir -p %{buildroot}%{_prefix}/lib/dracut/modules.d/35combustion
 cd %{buildroot}%{_prefix}/lib/dracut/modules.d/35combustion/
 install -m0644 %{SOURCE3} module-setup.sh
 install -m0644 %{SOURCE4} combustion.service
-install -m0755 %{SOURCE5} combustion
+install -m0644 %{SOURCE5} combustion-prepare.service
+install -m0755 %{SOURCE6} combustion
 
 %post
 %{?regenerate_initrd_post}

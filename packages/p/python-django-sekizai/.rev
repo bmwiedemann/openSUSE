@@ -34,4 +34,18 @@
 - Rebase patch django-sekizai-pycodestyle.patch</comment>
     <requestid>777604</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e8187336c120e46ebadfdc6e5896fec</srcmd5>
+    <version>2.0.0</version>
+    <time>1599862290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0
+  * Added support for Django 3.1
+  * Dropped support for Python 2.7 and Python 3.4
+  * Dropped support for Django &lt; 2.2
+  * Replaced pep8 with flake8
+  * Adapted documentation
+- Drop django-sekizai-pycodestyle.patch</comment>
+    <requestid>833763</requestid>
+  </revision>
 </revisionlist>

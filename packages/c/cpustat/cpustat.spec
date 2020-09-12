@@ -18,7 +18,7 @@
 
 
 Name:           cpustat
-Version:        0.02.10
+Version:        0.02.12
 Release:        0
 Summary:        Periodic cpu utilization statistics
 License:        GPL-2.0-or-later

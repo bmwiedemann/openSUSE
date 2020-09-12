@@ -39,9 +39,8 @@ diff --git a/meson_options.txt b/meson_options.txt
 index dca91296..c6b5c8c5 100644
 --- a/meson_options.txt
 +++ b/meson_options.txt
-@@ -2,4 +2,4 @@
+@@ -2,3 +2,3 @@
  option('with-polkit', type: 'boolean', value: true, description: 'Enable PolKit support')
- option('with-bluetooth', type: 'boolean', value: true, description: 'Enable gnome-bluetooth support')
  option('with-gtk-doc', type: 'boolean', value: true, description: 'Build gtk-doc documentation')
 -option('with-desktop-icons', type: 'combo', choices: ['nautilus', 'none'], value: 'nautilus', description: 'Desktop icon handling')
 +option('with-desktop-icons', type: 'combo', choices: ['nemo', 'none'], value: 'nemo', description: 'Desktop icon handling')

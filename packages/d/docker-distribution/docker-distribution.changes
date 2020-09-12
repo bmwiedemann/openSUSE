@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 10 10:23:33 CEST 2020 - Jiri Suchomel <jsuchome@suse.com>
+
+- Add 0003-Support-external-redis-sentinel-cluster.patch
+  This is patch that is not officially merged in docker-distribution,
+  but is being used by Harbor project when building docker-distribution
+  image
+- Bumped go BuildRequires to 1.13
+
+-------------------------------------------------------------------
 Tue Aug 18 19:43:21 UTC 2020 - Stefan Nica <snica@suse.com>
 
 - Add 0002-Relax-filesystem-driver-folder-permissions-to-0777-cont.patch

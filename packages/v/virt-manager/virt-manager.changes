@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep  3 13:59:39 MDT 2020 - carnold@suse.com
+
+- bsc#1176080 - selecting one UEFI firmware in install wizard
+  resets UI to BIOS
+  e8bf16b9-details-fix-detection-of-firmware-auto-selection.patch
+- Upstream bug fix (bsc#1027942)
+  5573aeb4-createnet-Fix-XML-editor-error-when-dhcp-fields-are-empty.patch
+  7e3fb3f2-graphics-Default-to-vga-instead-of-qxl-for-non-spice.patch
+
+-------------------------------------------------------------------
+Wed Sep  2 11:42:02 MDT 2020 - carnold@suse.com
+
+- jsc#SLE-11773, Dev: virt-manager: AppIndicator3
+  virt-manager.spec
+- jsc#SLE-15926 - Dev: XEN: drop netware support
+  Drop virtman-keycombo.patch
+
+-------------------------------------------------------------------
 Wed Jul 29 13:22:53 MDT 2020 - carnold@suse.com
 
 - bsc#1174176 - IDE: "Only 2 disks for bus 'NONE' are supported"

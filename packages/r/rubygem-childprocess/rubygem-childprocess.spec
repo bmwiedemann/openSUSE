@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-childprocess
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-childprocess
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 %define mod_name childprocess
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.3.0}
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/enkessler/childprocess
+URL:            http://github.com/enkessler/childprocess
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A simple and reliable solution for controlling external programs
@@ -51,6 +51,10 @@ programs running in the background on any Ruby / OS combination.
 %gem_install \
   --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
+# MANUAL
+# delete custom files here or do other fancy stuff
+find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.document' -o -name '.travis.yml' -o -name '.gitignore' -o -name '.rspec' \) | xargs rm
+# /MANUAL
 
 %gem_packages
 

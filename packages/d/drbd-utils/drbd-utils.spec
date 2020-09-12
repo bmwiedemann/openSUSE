@@ -21,7 +21,7 @@
 # Only need po4a to build man from git source code
 %bcond_without prebuiltman
 Name:           drbd-utils
-Version:        9.13.0
+Version:        9.14.0
 Release:        0
 Summary:        Distributed Replicated Block Device
 License:        GPL-2.0-or-later
@@ -34,8 +34,6 @@ Patch3:         fence-after-pacemaker-down.patch
 # PATCH-SUSE-FIX: Disable quorum in default configuration (bsc#1032142)
 Patch4:         0001-Disable-quorum-in-default-configuration-bsc-1032142.patch
 Patch5:         move_fencing_from_disk_to_net_in_example.patch
-Patch6:         link-error-setup_option.patch
-Patch7:         crm-fence-peer-pacemaker2-issue2.patch
 
 Provides:       drbd-bash-completion = %{version}
 Provides:       drbd-pacemaker = %{version}
@@ -85,8 +83,6 @@ raid 1. It is a building block for setting up clusters.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
-%patch7 -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1
@@ -166,6 +162,7 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %config(noreplace) %{_sysconfdir}/drbd.conf
 %config %{_sysconfdir}/bash_completion.d/drbdadm.sh
 %config(noreplace) %{_sysconfdir}/drbd.d/global_common.conf
+%config(noreplace) %{_sysconfdir}/multipath/conf.d/drbd.conf
 %{_tmpfilesdir}/drbd.conf
 %doc %{_mandir}/man5/drbd.*
 %doc %{_mandir}/man8/drbd*
@@ -177,6 +174,8 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %doc ChangeLog
 %doc scripts/drbd.conf.example
 %dir %{_sysconfdir}/drbd.d
+%dir %{_sysconfdir}/multipath
+%dir %{_sysconfdir}/multipath/conf.d
 /sbin/drbdadm
 /sbin/drbdsetup
 /sbin/drbdmeta

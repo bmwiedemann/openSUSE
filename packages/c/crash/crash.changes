@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  9 16:45:44 UTC 2020 - David Mair <dmair@suse.com>
+
+- Add crash-verify-exception-frame-accessible-for-all-verify-requests.patch
+  In calls to search a stack for x86_64 exceptions a flag is used
+  to request the stack be verified for room to contain saved
+  registers. The verify is not performed if other flags are used
+  in the same call. Fixing this exposes another bug where only a
+  kernel stack is verified anyway, even if the exception is being
+  searched for on a userspace stack. Patch fixes both problems.
+  (bsc#1162297)
+
+-------------------------------------------------------------------
 Fri Sep  4 10:53:39 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - Add eppic-remove-duplicate-symbols.patch

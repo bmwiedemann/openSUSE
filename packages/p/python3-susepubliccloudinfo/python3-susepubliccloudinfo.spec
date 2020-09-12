@@ -1,7 +1,7 @@
 #
 # spec file for package python3-susepubliccloudinfo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define upstream_name susepubliccloudinfo
 Name:           python3-susepubliccloudinfo
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Query SUSE Public Cloud Info Service
 License:        GPL-3.0-or-later
 Group:          System/Management
-Url:            https://github.com/SUSE-Enceladus/public-cloud-info-client
+URL:            https://github.com/SUSE-Enceladus/public-cloud-info-client
 Source0:        %{upstream_name}-%{version}.tar.bz2
 Requires:       python3
 Requires:       python3-docopt

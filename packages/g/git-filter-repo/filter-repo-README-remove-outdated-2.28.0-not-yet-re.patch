@@ -1,0 +1,27 @@
+From 7b3e714b94a6e5b9f478cb981c7f560ef3f36506 Mon Sep 17 00:00:00 2001
+From: Elijah Newren <newren@gmail.com>
+Date: Mon, 27 Jul 2020 11:34:26 -0700
+Subject: [PATCH 1/4] filter-repo (README): remove outdated
+ 2.28.0-not-yet-released comment
+
+Signed-off-by: Elijah Newren <newren@gmail.com>
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 5beb8f7..0caa34f 100644
+--- a/README.md
++++ b/README.md
+@@ -430,7 +430,7 @@ has also driven numerous improvements to fast-export and fast-import
+ (and occasionally other commands) in core git, based on things
+ filter-repo needs to do its work:
+ 
+-  * git-2.28.0 (not yet released)
++  * git-2.28.0
+     * [fast-import: add new --date-format=raw-permissive format](
+       https://git.kernel.org/pub/scm/git/git.git/commit/?id=d42a2fb72f)
+   * git-2.24.0
+-- 
+2.28.0
+

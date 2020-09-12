@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 11 08:10:15 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1599810948.3db12a7a:
+  * Dev: unittest: unit test for collect archived logs
+  * Dev: behave: functional test for collect archived logs
+  * Fix: hb_report: collect archived logs(bsc#1148873)
+
+-------------------------------------------------------------------
 Thu Sep 10 02:03:46 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1599702667.157fc6b5:

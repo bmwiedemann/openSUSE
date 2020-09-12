@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  3 06:37:50 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Add lock mechanism to the cluster join process to avoid issues
+  when multiple nodes are joining in parallel 
+
+-------------------------------------------------------------------
 Thu Aug 20 00:56:44 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Version bump 0.3.8
