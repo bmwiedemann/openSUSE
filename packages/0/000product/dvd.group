@@ -4754,6 +4754,7 @@
     <package name="tv-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="tv-fonts" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="typelib-1_0-AccountsService-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-AppIndicator3-0_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="typelib-1_0-Atk-1_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="typelib-1_0-Atspi-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Champlain-0_12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

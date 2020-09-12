@@ -1325,6 +1325,7 @@ unsorted:
   - branding-upstream 
   - brasero-devel 
   - brevity 
+  - brial-devel 
   - brickd 
   - brickv 
   - bridge-utils 
@@ -7585,6 +7586,13 @@ unsorted:
   - kubernetes1.19-controller-manager: [x86_64] 
   - kubernetes1.19-proxy: [x86_64] 
   - kubernetes1.19-scheduler: [x86_64] 
+  - kubevirt-container-disk: [x86_64] 
+  - kubevirt-virt-api: [x86_64] 
+  - kubevirt-virt-controller: [x86_64] 
+  - kubevirt-virt-handler: [x86_64] 
+  - kubevirt-virt-launcher: [x86_64] 
+  - kubevirt-virt-operator: [x86_64] 
+  - kubevirt-virtctl: [x86_64] 
   - kubic-locale-archive 
   - kubic-pause 
   - kuiviewer 
@@ -8986,6 +8994,7 @@ unsorted:
   - libbraille 
   - libbraille-devel 
   - libbraille-fake 
+  - libbrial3 
   - libbrotlienc1-32bit: [x86_64] 
   - libbs2b-devel 
   - libbs2b0-32bit: [x86_64] 
@@ -20385,6 +20394,7 @@ unsorted:
   - python3-django-q 
   - python3-django-redis 
   - python3-django-registration 
+  - python3-django-rest-framework-braces 
   - python3-django-rest-framework-client 
   - python3-django-rest-framework-social-oauth2 
   - python3-django-rest-invitations 
@@ -23304,8 +23314,6 @@ unsorted:
   - ruby2.6-rubygem-fastercsv-doc 
   - ruby2.6-rubygem-fastercsv-testsuite 
   - ruby2.6-rubygem-ffi-doc 
-  - ruby2.6-rubygem-file-tail 
-  - ruby2.6-rubygem-file-tail-doc 
   - ruby2.6-rubygem-flog 
   - ruby2.6-rubygem-flog-doc 
   - ruby2.6-rubygem-flog-testsuite 
@@ -24337,8 +24345,6 @@ unsorted:
   - ruby2.7-rubygem-fastercsv-doc 
   - ruby2.7-rubygem-fastercsv-testsuite 
   - ruby2.7-rubygem-ffi-doc 
-  - ruby2.7-rubygem-file-tail 
-  - ruby2.7-rubygem-file-tail-doc 
   - ruby2.7-rubygem-flog-doc 
   - ruby2.7-rubygem-flog-testsuite 
   - ruby2.7-rubygem-fluentd-doc 
@@ -34077,7 +34083,6 @@ unsorted:
   - typelib-1_0-Amtk-5 
   - typelib-1_0-Anjuta-3_0 
   - typelib-1_0-AppIndicator-0_1 
-  - typelib-1_0-AppIndicator3-0_1 
   - typelib-1_0-AppStream-1.0 
   - typelib-1_0-AppStreamGlib-1_0 
   - typelib-1_0-AtrilDocument-1_5_0 
