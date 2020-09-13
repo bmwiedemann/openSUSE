@@ -15,7 +15,7 @@ channel = connection.channel()
 channel.exchange_declare(exchange='pubsub',
                          passive=True, durable=True)
 
-result = channel.queue_declare(exclusive=True)
+result = channel.queue_declare("", exclusive=True)
 queue_name = result.method.queue
 
 channel.queue_bind(exchange='pubsub', queue=queue_name, routing_key=prefix+'.obs.package.commit')
@@ -26,8 +26,7 @@ def callback(ch, method, properties, body):
         print(body.decode("utf-8", "ignore"))
         sys.stdout.flush()
 
-channel.basic_consume(callback,
-                      queue=queue_name,
-                      no_ack=True)
+channel.basic_consume(queue_name, callback,
+                      auto_ack=True)
 
 channel.start_consuming()
