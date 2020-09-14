@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 13 09:04:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patches to mark private link target as such:
+  * 0001-Make-link-against-X11-private.patch
+  * 0002-Make-kcolorpicker-link-private.patch
+
+-------------------------------------------------------------------
 Fri Jul 31 19:14:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.3.2

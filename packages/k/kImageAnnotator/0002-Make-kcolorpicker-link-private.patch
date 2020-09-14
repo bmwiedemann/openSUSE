@@ -1,0 +1,26 @@
+From f01b20e0427535dd1141b9324b66e1b725888864 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Fri, 11 Sep 2020 02:10:26 +0200
+Subject: [PATCH 2/2] Make kcolorpicker link private
+
+It's not used in any public header, so we can make it private
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec987ab..cdf0bcc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,7 +67,7 @@ target_include_directories(kImageAnnotator
+ 						   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+ 						   )
+ 
+-target_link_libraries(kImageAnnotator PUBLIC Qt5::Widgets Qt5::Svg kColorPicker::kColorPicker)
++target_link_libraries(kImageAnnotator PUBLIC Qt5::Widgets Qt5::Svg PRIVATE kColorPicker::kColorPicker)
+ 
+ if (UNIX AND NOT APPLE)
+ 	target_link_libraries(kImageAnnotator PRIVATE X11)
+-- 
+2.28.0
+

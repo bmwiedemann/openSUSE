@@ -1,0 +1,28 @@
+From f8c72d3b186860ca8e7636c8674a93b62d7e4bb6 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Fri, 11 Sep 2020 02:00:58 +0200
+Subject: [PATCH 1/2] Make link against X11 private
+
+It is not used in public headers so we don't need to mark the link as public.
+
+This saves users of the API from searching for X11
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 999ee84..ec987ab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -70,7 +70,7 @@ target_include_directories(kImageAnnotator
+ target_link_libraries(kImageAnnotator PUBLIC Qt5::Widgets Qt5::Svg kColorPicker::kColorPicker)
+ 
+ if (UNIX AND NOT APPLE)
+-	target_link_libraries(kImageAnnotator PUBLIC X11)
++	target_link_libraries(kImageAnnotator PRIVATE X11)
+ endif ()
+ 
+ target_compile_definitions(kImageAnnotator PRIVATE KIMAGEANNOTATOR_LIB)
+-- 
+2.28.0
+

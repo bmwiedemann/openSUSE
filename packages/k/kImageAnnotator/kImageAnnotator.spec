@@ -26,6 +26,9 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/ksnip/kImageAnnotator
 Source:         https://github.com/ksnip/kImageAnnotator/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- Mark private link targets as such
+Patch0:         0001-Make-link-against-X11-private.patch
+Patch1:         0002-Make-kcolorpicker-link-private.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  kColorPicker-devel >= 0.1.4
@@ -35,7 +38,6 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(x11)
-
 %lang_package
 
 %description
@@ -57,13 +59,14 @@ Requires:       %{libname} = %{version}
 Development files for %{name} including headers and libraries
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \
     -DBUILD_EXAMPLE=ON \
-    -DCMAKE_INSTALL_DATAROOTDIR="share" 
-make %{?_smp_mflags}
+    -DCMAKE_INSTALL_DATAROOTDIR="share"
+
+%cmake_build
 
 %install
 %cmake_install
