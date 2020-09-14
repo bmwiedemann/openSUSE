@@ -18,7 +18,7 @@
 
 %define libname libsispmctl0
 Name:           sispmctl
-Version:        4.7
+Version:        4.8
 Release:        0
 Summary:        SIS-PM Control for Linux
 License:        GPL-2.0-only

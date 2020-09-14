@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 12 19:46:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 4.8
+  * Sleep two seconds upon wrong webserver password.
+  * Improve parameter checks.
+
+-------------------------------------------------------------------
 Sat Aug 29 20:13:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 4.7
