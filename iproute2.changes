@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  2 10:03:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.8
+  * macsec: add support for MAC offload
+  * Add support for mptcp netlink interface
+  * erspan: Add type I version 0 support
+
+-------------------------------------------------------------------
 Wed Jun 17 10:50:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - remove bpf-bss-section-poc.patch, bpf-data-section-support-poc.patch:
