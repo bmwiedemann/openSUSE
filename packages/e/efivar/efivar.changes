@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:31:54 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add efivar-bsc1175989-handle-NULL-set-variable.patch to fix
+  segfault in non-EFI systems (bsc#1175989)
+
+-------------------------------------------------------------------
 Fri Aug 14 08:20:09 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Do not partition LTO as we may reach new GAS error:

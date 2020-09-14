@@ -42,6 +42,7 @@ Patch1:         efivar-make-format_guid-handle-misaligned-guid-pointer.patch
 Patch2:         efivar-Fix-all-the-places-Werror-address-of-packed-member-c.patch
 Patch3:         efivar-bsc1127544-fix-ucs2len.patch
 Patch4:         efivar-fix-efidp_ipv4_addr-fields-assignment.patch
+Patch5:         efivar-bsc1175989-handle-NULL-set-variable.patch
 %if "0%{?buildroot}" == "0"
 # set a sane value for buildroot, unless it's already there!
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -88,6 +89,7 @@ perl -pi -e 's{\#include \<uchar\.h\>}{typedef __CHAR16_TYPE__ char16_t;}' \
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 CFLAGS="%{optflags} -Wno-nonnull -flto"
