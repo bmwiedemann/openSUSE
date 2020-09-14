@@ -36,4 +36,14 @@ drop feature_passive_amqp_exchange.patch contemporaneous to OBS change
 devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <requestid>758640</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f26e545270e0a20377131d5cbe8e73e1</srcmd5>
+    <version>1.15.3</version>
+    <time>1600079400</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequires: golang(API) &amp;gt;= 1.13
+  * Recommended format selects latest Provides: golang(API) = %{api_version}
+    satisfied by either go metapackage or go1.1x packages. (forwarded request 834020 from jfkw)</comment>
+    <requestid>834021</requestid>
+  </revision>
 </revisionlist>

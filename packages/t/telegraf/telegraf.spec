@@ -1,7 +1,7 @@
 #
 # spec file for package telegraf
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,66 +16,53 @@
 #
 
 
+%define _config_dir %{_sysconfdir}/%{name}
 Name:           telegraf
-Version:        1.12.6
+Version:        1.15.3
 Release:        0
 Summary:        The plugin-driven server agent for collecting & reporting metrics
 License:        MIT
 Group:          System/Monitoring
 URL:            https://github.com/influxdata/telegraf
 Source:         %{name}-%{version}.tar.gz
-# run dep ensure --vendor-only (in a container)
-Source1:        %{name}-deps.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source1:        vendor.tar.gz
 BuildRequires:  git-core
-BuildRequires:  go >= 1.12
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) >= 1.13
 %{?systemd_ordering}
-
-## Features ##
-
-Patch0:         0001-Generic-SQL-output-plugin-for-Telegraf.patch
-
-## /Features ##
-
-%define _influxdata_dir %{_builddir}/src/github.com/influxdata
-%define _telegraf_dir %{_influxdata_dir}/%{name}
-%define _config_dir %{_sysconfdir}/%{name}
 
 %description
 Telegraf is an agent written in Go for collecting, processing, aggregating, and writing metrics.
 
+Design goals are to have a minimal memory footprint with a plugin system so that developers in the community can
+easily add support for collecting metrics from local or remote services.
+
 %prep
-mkdir -p %{_influxdata_dir}
-tar -C %{_influxdata_dir} -xzf %{SOURCE0}
-cd %{_influxdata_dir}
-# If there is allready telegraf then remove it
-rm -rf %{name}
-ln -sf %{name}-%{version} %{name}
-cd %{name}
-tar -xJf %{SOURCE1}
-%patch0 -p1
+%setup -q
+%setup -q -T -D -a 1
 
 %build
+# Build the binary.
+go build \
+   -mod=vendor \
 %ifnarch ppc64 ppc64le
-export LDFLAGS="-buildmode=pie"
+   -buildmode=pie \
 %endif
-export GOPATH="%{_builddir}:$GOPATH"
-cd %{_telegraf_dir}
-make %{name}
+   ./cmd/telegraf;
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install -m755 %{_telegraf_dir}/%{name} %{buildroot}%{_bindir}/%{name}
+# Install the binary.
+install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 
 mkdir -p %{buildroot}/%{_config_dir}
-install -m644 %{_telegraf_dir}/etc/%{name}.conf %{buildroot}/%{_config_dir}
+mkdir -p %{buildroot}/%{_config_dir}/%{name}.d
+install -m644 etc/%{name}.conf %{buildroot}/%{_config_dir}
 
-install -D -m 644 %{_telegraf_dir}/scripts/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 644 scripts/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
 sed -i '/User=/d' %{buildroot}%{_unitdir}/%{name}.service
 mkdir -p %{buildroot}%{_sbindir}
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
 %service_add_pre %{name}.service
@@ -92,10 +79,8 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 %files
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
-%doc src/github.com/influxdata/%{name}/CHANGELOG.md
-%doc src/github.com/influxdata/%{name}/CONTRIBUTING.md
-%license src/github.com/influxdata/%{name}/LICENSE
-%doc src/github.com/influxdata/%{name}/README.md
+%doc CHANGELOG.md CONTRIBUTING.md README.md
+%license LICENSE
 %dir %{_config_dir}
 %config(noreplace) %{_config_dir}/%{name}.conf
 %{_bindir}/%{name}

@@ -1,4 +1,475 @@
 -------------------------------------------------------------------
+Sat Sep 12 17:29:59 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- BuildRequires: golang(API) >= 1.13
+  * Recommended format selects latest Provides: golang(API) = %{api_version}
+    satisfied by either go metapackage or go1.1x packages.
+
+-------------------------------------------------------------------
+Sat Sep 12 12:34:50 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.15.3:
+  * Revert "fix cloudwatch tests"
+  * Update etc/telegraf.conf
+  * [fix] add missing error check for HTTP req failure (#8071)
+  * add tagpass/tagdrop note in docs (#8053)
+  * Fix docker-image make target (#8005)
+  * Fix CI AppVeyor 'make check' errors for go 1.15 on windows (#8061)
+  * add release notes
+  * fix bug in shim logger affecting AddError (#8052)
+  * fix docker build. update dockerfiles to Go 1.14 (#8051)
+  * docs fix
+  * Create external plugins doc file and update contributing guide (#8001)
+  * Add addTag debugging in ifname plugin (#8018)
+  * vSphere Fixed missing clustername issue 7878 (#8026)
+  * Fix string to int conversion in eventhub consumer (#8006)
+  * improve the quality of starlark docs by executing them as tests (#8020)
+  * Fix Ping Input plugin for FreeBSD's ping6 (#7861)
+  * add example input/outputs to starlark examples (#7980)
+  * Fix configuration.md formatting (#7965)
+  * [outputs.application_insights] Added the ability to set the endpoint url (#7134)
+  * fix issue with shim use of config.Duration (#7996)
+  * fix minor agent race condition around error messages (#7999)
+  * http_listener_v2: make http header tags case insensitive (#7986)
+  * add pivot example for starlark processor (#7976)
+  * fix(puppet): update broken link (#7977)
+  * fix(ipmi): update link in readme (#7975)
+  * chore: extend gitignore to ignore .DS_Store (#7974)
+  * fix(readmes): standarize first line of readmes (#7973)
+  * Updated http_response input plugin README.md (#7962)
+  * added new counter - Lock Timeouts (timeout > 0)/sec (#7808)
+  * fix cloudwatch tests
+  * Support for AWS Cloudwatch Alarms #7931 (#7932)
+  * Add details to connect to InfluxDB OSS 2 and Cloud 2 (#7953)
+  * JSON does not support values NaN and Inf (#7908)
+  * Add descriptions for measurement & fields (#7902)
+  * Fixed title on New Relic README.md (#7948)
+  * fix broken link to proc.c (#7918)
+  * Fix/extend support of fixed point values on input (modbus plugin) (#7869)
+  * jolokia: add some error message context (#7906)
+  * fixed cgroups docu (#7889)
+  * Update docker FAQ (#7868)
+  * fixes issue with rpm /var/log/telegraf permissions (#7909)
+  * Fix tail following on EOF (#7927)
+  * Fix arch name in deb/rpm builds (#7877)
+  * Set 1.15.0 release date
+  * Add logic starlark example (#7864)
+  * shim logger improvements (#7865)
+  * Fix defaults processor readme typos (#7873)
+  * Recv next message after send returns EOF (#7872)
+  * fix issue with execd restart_delay being ignored (#7867)
+  * clarify docs and add warning if execd is misconfigured (#7866)
+  * fix bug with loading plugins in shim with no config (#7816)
+  * Fix suricata input docs (#7856)
+  * ifname: avoid unpredictable conditions in getMap test (#7848)
+  * Log after interval has elapsed; skip short intervals (#7854)
+  * Initialize aggregation processors (#7853)
+  * Update redfish docs with link (#7846)
+  * Update telegraf.conf
+  * ifname processor: expire old cached entries (#7838)
+  * update go versions: 1.14.5, 1.13.13 (#7837)
+  * Edit Starlark README (#7832)
+  * Send metrics in FIFO order (#7814)
+  * Set log output before starting plugin (#7820)
+  * Fix darwin package build flags (#7818)
+  * Close file to ensure it has been flushed (#7819)
+  * Add minimum version for new plugins (#7810)
+  * Fix markdown syntax (#7806)
+  * Fix typo in 1.15 release notes (#7804)
+  * Fix tag package version
+  * Update sample configuration
+  * Add ifname processor plugin (#7763)
+  * Traverse redfish api using resource links (#7722)
+  * Fix test race in kafka_consumer (#7797)
+  * Support utf-16 in file and tail inputs (#7792)
+  * Add v3 metadata support to ecs input (#7154)
+  * Fix inputs.execd readme links (#7791)
+  * Fix data race in input plugin ping_windows
+  * streaming processors docs update (#7786)
+  * switch mac tests to Go 1.14 (#7784)
+  * Fix flakey processors.execd test
+  * Do not enable -race for GOARCH=386
+  * Run all Go tests with flag -race
+  * Fix data race in plugin output pubsub tests (#7782)
+  * Shim refactor to support processors and output
+  * Fix data race in tail input tests (#7780)
+  * Update CHANGELOG.md
+  * execd output (#7761)
+  * Set user agent when requesting http config (#7752)
+  * Accept decimal point when parsing kibana uptime (#7768)
+  * Update common/tls import path
+  * Update nginx_sts plugin readme
+  * Add nginx_sts input plugin (#7205)
+  * Rename cisco_telemetry_gnmi input to gnmi (#7695)
+  * Allow overriding the collection_jitter and precision per input (#7762)
+  * Fix data race in phpfpm initializing http client (#7738)
+  * Set 1.14.5 release date
+  * Allow histograms with no buckets and summary without quantiles (#7740)
+  * Fix typo in elasticsearch input docs (#7764)
+  * Only set version ldflags on tags
+  * Update release notes
+  * Allow any key usage type on x509 certificate (#7760)
+  * Build packages in makefile (#7759)
+  * Update github.com/tidwall/gjson (#7756)
+  * reverse dns lookup processor (#7639)
+  * remove streaming processors docs
+  * clean up tests
+  * address feedback
+  * Return on toml parse errors instead of logging (#7751)
+  * Update tls import path
+  * Export internal/tls package for use in execd plugins (#7697)
+  * Add laundry to mem input plugin on FreeBSD (#7736)
+  * Fix data race in plugins/inputs/stackdriver/stackdriver_test.go (#7744)
+  * Fix data race in plugins/inputs/suricata/suricata_test.go (#7745)
+  * Fix data race in kafka_consumer_test.go (#7737)
+  * Fix SNMP trap test race (#7731)
+  * Fix incorrect Azure SQL DB server properties (#7715)
+  * fix race
+  * fix after rebase
+  * remove processors/execd/examples/count.go
+  * execd processor
+  * Fix license check
+  * Add starlark processor (#7660)
+  * Add missing nvme attributes to smart plugin (#7575)
+  * Add counter type to perfmon collector (#7712)
+  * Skip overs errors in the output of the sensors command (#7718)
+  * Remove master/slave terminology from tests (#7719)
+  * Fix ping exit code handling on non-Linux (#7658)
+  * Add redfish input plugin (#7082)
+  * Add ability to add selectors as tags in kube_inventory (#7267)
+  * Document that string fields do not produce prometheus metrics (#7644)
+  * Remove trailing backslash management in sqlserver input (#7700)
+  * Link to GJSON playground in json parser documentation (#7698)
+  * Add 'batch' to mqtt output optional parameters (#7690)
+  * Fail check-deps when differences are found (#7694)
+  * Add state and readiness to kube_inventory pod metrics (#7691)
+  * update CHANGELOG.md
+  * procstat performance enhancement (#7686)
+  * Mark unused agent options as deprecated
+  * Fix processor initialization (#7693)
+  * Update gNMI plugin readme (#7685)
+  * Remove trailing backslash from tag keys/values (#7652)
+  * Improve sqlserver input compatibility with older server versions (#7495)
+  * Fix race issue in tick_test.go (#7663)
+  * Flaky shim test (#7656)
+  * link to glob pattern docs (#7657)
+  * Set 1.14.4 release date
+  * Add ability to collect response body as field with http_response (#7596)
+  * Add timezone configuration to csv data format (#7619)
+  * Change rpm dist packaging type for arm64 to aarch64 (#7645)
+  * Update to github.com/shirou/gopsutil v2.20.5 (#7641)
+  * Fix source field for icinga2 plugin (#7651)
+  * Add video codec stats to nvidia-smi (#7646)
+  * Update CHANGELOG.md
+  * fix issue with stream parser blocking when data is in buffer (#7631)
+  * add support for streaming processors (#7634)
+  * Add tags to snmp_trap input for context name and engine ID (#7633)
+  * Clarify use of multiple mqtt broker servers
+  * Add SNMPv3 trap support to snmp_trap input plugin (#7294)
+  * Add support for Solus distribution to maintainer scripts (#7585)
+  * Fix typo in queue depth example of diskio plugin (#7613)
+  * Add support for env variables to shim config (#7603)
+  * Add support for once mode; run processors and aggregators during test (#7474)
+  * Update AGGREGATORS_AND_PROCESSORS.md (#7599)
+  * Add github.com/inabagumi/twitter-telegraf-plugin to list of external plugins
+  * Fix segmentation violation on connection failed (#7593)
+  * Add processor to look up service name by port (#7540)
+  * make sure parse error includes offending text (#7561)
+  * Update docs for newrelic output
+  *  Add newrelic output plugin  (#7019)
+  * Allow collection of HTTP Headers in http_response input (#7405)
+  * Update to Go 1.14.3 with testing using 1.13.11 (#7564)
+  * Exclude csv_timestamp_column and csv_measurement_column from fields (#7572)
+  * fix go version check (#7562)
+  * Fix the typo in `gcc_pu_fraction` to `gc_cpu_fraction` (#7573)
+  * Fix numeric to bool conversion in converter (#7579)
+  * Add defaults processor to set default field values (#7370)
+  * Add option to disable mongodb cluster status (#7515)
+  * Fix typos in sqlserver input (#7524)
+  * Use updated clock package to resolve test failures (#7516)
+  * fix randomly failing CI test (#7514)
+  * Add cluster state integer to mongodb input (#7489)
+  * Add configurable separator graphite serializer and output (#7545)
+  * Fix instance name resolution in performance counter query (#7526)
+  * Set 1.14.3 release date
+  * Close HTTP2 connections on timeout in influxdb outputs (#7517)
+  * Fix negative value parsing in impi_sensor input (#7541)
+  * Fix assorted spelling mistakes (#7507)
+  * Fix documentation of percent_packet_loss field (#7510)
+  * Update docs for execd plugins (#7465)
+  * Update procstat pid_tag documentation
+  * Fix spelling errors in comments and documentation (#7492)
+  * Add truncate_tags setting to wavefront output (#7503)
+  * Add authentication support to the http_response input plugin (#7491)
+  * Handle multiple metrics with the same timestamp in dedup processor (#7439)
+  * Add additional fields to mongodb input (#7321)
+  * Add integer support to enum processor (#7483)
+  * Fix typo in Windows service description (#7486)
+  * Add field creation to date processor and integer unix time support (#7464)
+  * Add cpu query to sqlserver input (#7359)
+  * Rework plugin tickers to prevent drift and spread write ticks (#7390)
+  * Update datadog output documentation (#7467)
+  * Use docker log timestamp as metric time (#7434)
+  * fix issue with execd-multiline influx line protocol (#7463)
+  * Add information about HEC JSON format limitations and workaround (#7459)
+  * Rename measurement to sqlserver_volume_space (#7457)
+  * shim improvements for docs, clean quit, and slow readers (#7452)
+  * Fix gzip support in socket_listener with tcp sockets (#7446)
+  * Remove debug fields from spunkmetric serializer (#7455)
+  * Fix filepath processor link in changelog (#7454)
+  * Support Go execd plugins with shim (#7283)
+  * Add filepath processor plugin (#7418)
+  * Add ContentEncoder to socket_writer for datagram sockets (#7417)
+  * Sflow rework (#7253)
+  * Use same timestamp for all objects in arrays in the json parser (#7412)
+  * Set 1.14.2 release date
+  * Allow CR and FF inside of string fields and fix parser panic (#7427)
+  * Fix typo in name of gc_cpu_fraction field (#7425)
+  * Run create database query once per database (#7333)
+  * Ignore fields with NaN or Inf floats in the JSON serializer (#7426)
+  * Fix interfaces with pointers (#7411)
+  * Document distinction between file and tail inputs (#7353)
+  * Update changelog
+  * Fix shard indices reporting in elasticsearch input (#7332)
+  * Update changelog
+  * Fix string to int64 conversion for SNMP input (#7407)
+  * Update nvidia-smi README for Windows users (#7399)
+  * Extract target as a tag for each rule in iptables input (#7391)
+  * Fix dimension limit on azure_monitor output (#7336)
+  * Use new higher per request limit for cloudwatch GetMetricData (#7335)
+  * Add support for MDS and RGW sockets to ceph input (#6915)
+  * Add option to save retention policy as tag in influxdb_listener (#7356)
+  * Trim instance tag in the sqlserver performance counters query (#7351)
+  * Fix vSphere 6.7 missing data issue (#7233)
+  * Update modbus readme
+  * Add retry when slave is busy to modbus input (#7271)
+  * fix issue with closing flush signal channel (#7384)
+  * Use the product token for the user agent in more locations (#7378)
+  * Update github.com/aws/aws-sdk-go (#7373)
+  * add support for SIGUSR1 to trigger flush (#7366)
+  * add another grok example for custom timestamps (#7367)
+  * Fibaro input: for battery operated devices, add battery level scraping (#7319)
+  * Deprecate logparser input and recommend tail input as replacement (#7352)
+  * Adjust heading level in the filtering examples to allow linking
+  * Set 1.14.1 release date
+  * Add reading bearer token from a file to http input (#7304)
+  * Fix exclude database and retention policy tags is shared (#7323)
+  * Fix status path when using globs in phpfpm (#7324)
+  * Regenerate telegraf.conf
+  * Fix error in docs about exclude_retention_policy_tag (#7311)
+  * Fix Name field in template processor (#7258)
+  * Deploy telegraf configuration as a "non config" file (#7250)
+  * Fix export timestamp not working for prometheus on v2 (#7289)
+  * Sql Server - Disk Space Measurement (#7214)
+  * Add series cardinality warning to sflow readme (#7285)
+  * Improve documentation for the Metric interface (#7256)
+  * Update permission docs on postfix input (#7255)
+  * Document kapacitor_alert and kapacitor_cluster measurements (#7278)
+  * Add OPTION RECOMPILE for perf reasons due to temp table (#7242)
+  * Support multiple templates for graphite serializers (#7136)
+  * Add possibility to specify measurement per register (#7231)
+  * Add limit to number of undelivered lines to read ahead in tail (#7210)
+  * Add docs for how to handle errors in check-deps script (#7243)
+  * Add support for 64-bit integer types to modbus input (#7225)
+  * Set 1.14.0 release date
+  * Apply ping deadline to dns lookup (#7140)
+  * Add ability to specify HTTP Headers in http_listener_v2 which will added as tags (#7223)
+  * Fix 'nil' file created by Makefile on Windows (#7224)
+  * Add additional concurrent transaction information (#7193)
+  * Add commands stats to mongodb input plugin (#6905)
+  * Fix url encoding of job names in jenkins input plugin (#7211)
+  * Update next_version on master to 1.15.0
+  * Update etc/telegraf.conf
+  * Fix datastore_include option in vsphere input readme
+  * Update github.com/prometheus/client_golang to latest (#7200)
+  * Update etc/telegraf.conf
+  * Update google.cloud.go to latest (#7199)
+
+-------------------------------------------------------------------
+Wed May 27 12:13:43 UTC 2020 - tuukka.pasanen@ilmi.fi
+- Update to use _service file to make depency building easier
+- Require GO version 1.12 if it in future gets too old it should we
+  set to correct version
+
+- Update to version 1.14.3:
+  * Set 1.14.3 release date
+  * Update changelog
+  * Close HTTP2 connections on timeout in influxdb outputs (#7517)
+  * Fix negative value parsing in impi_sensor input (#7541)
+  * Update changelog
+  * Handle multiple metrics with the same timestamp in dedup processor (#7439)
+  * Update changelog
+  * Use same timestamp for all objects in arrays in the json parser (#7412)
+  * Set 1.14.2 release date
+  * Update changelog
+
+-------------------------------------------------------------------
+Fri Apr  3 06:36:08 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Remove carried patch for Generic SQL output plugin. The upstream PR
+  https://github.com/influxdata/telegraf/pull/4205 that is the source of this
+  patch hasn't accepted it since 2018, with no recent activity. Dropping the
+  patch as there are no known users.
+  * drop 0001-Generic-SQL-output-plugin-for-Telegraf.patch unified original
+  * drop 0001-plugins-outputs-all-all.go-Generic-SQL-output-plugin.patch split
+  * drop 0002-plugins-outputs-sql-README.md-Generic-SQL-output-plu.patch split
+  * drop 0003-plugins-outputs-sql-sql.go-Generic-SQL-output-plugin.patch split
+  * drop 0004-plugins-outputs-sql-sql_test.go-Generic-SQL-output-p.patch split
+  * drop 0005-README.md-Generic-SQL-output-plugin-for-Telegraf-pat.patch split
+  * packaging: telegraf-1.13.4 still uses the dep dependency tool, now
+    documented as a comment in the .spec. An upcoming telegraf release will
+    complete the transition to go modules, at which point packaging will be
+    updated accordingly.
+
+-------------------------------------------------------------------
+Wed Mar  4 19:13:12 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- create directory /etc/telegraf/telegraf.d/
+
+-------------------------------------------------------------------
+Sat Feb 29 12:58:49 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.13.4
+  Bugfixes
+  - #6988: Parse NaN values from summary types in prometheus input.
+  - #6820: Fix pgbouncer input when used with newer pgbouncer versions.
+  - #6913: Support up to 8192 stats in the ethtool input.
+  - #7060: Fix perf counters collection on named instances in sqlserver input.
+  - #6926: Use add time for prometheus expiration calculation.
+  - #7057: Fix inconsistency with input error counting in internal input.
+  - #7063: Use the same timestamp per call if no time is provided in prometheus input.
+
+-------------------------------------------------------------------
+Sat Feb 29 12:32:54 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.13.3
+  Bugfixes
+  - #5744: Fix kibana input with Kibana versions greater than 6.4.
+  - #6960: Fix duplicate TrackingIDs can be returned in queue consumer plugins.
+  - #6913: Support up to 4096 stats in the ethtool input.
+  - #6973: Expire metrics on query in addition to on add.
+
+-------------------------------------------------------------------
+Sat Feb 29 12:25:46 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.13.2
+  Bugfixes
+  - #2652: Warn without error when processes input is started on Windows.
+  - #6890: Only parse certificate blocks in x509_cert input.
+  - #6883: Add custom attributes for all resource types in vsphere input.
+  - #6899: Fix URL agent address form with udp in snmp input.
+  - #6619: Change logic to allow recording of device fields when attributes is false.
+  - #6903: Do not add invalid timestamps to kafka messages.
+  - #6906: Fix json_strict option and set default of true.
+
+-------------------------------------------------------------------
+Sat Feb 29 12:24:02 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.13.1
+  Bugfixes
+  - #6788: Fix ServerProperty query stops working on Azure after failover.
+  - #6803: Add leading period to OID in SNMP v1 generic traps.
+  - #6823: Fix missing config fields in prometheus serializer.
+  - #6694: Fix panic on connection loss with undelivered messages in mqtt_consumer.
+  - #6679: Encode query hash fields as hex strings in sqlserver input.
+  - #6345: Invalidate diskio cache if the metadata mtime has changed.
+  - #6800: Show platform not supported warning only on plugin creation.
+  - #6814: Fix rabbitmq cannot complete gather after request error.
+  - #6846: Fix /sbin/init --version executed on Telegraf startup.
+  - #6847: Use last path element as field key if path fully specified.
+
+-------------------------------------------------------------------
+Sat Feb 29 07:50:36 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.13.0
+  - rebased patch 0005-README.md-Generic-SQL-output-plugin-for-Telegraf-pat.patch
+  - changelog:
+    Release Notes
+    - Official packages built with Go 1.13.5.
+    - The prometheus input and prometheus_client output have a new mapping to
+    - and from Telegraf metrics, which can be enabled by setting metric_version = 2.
+    - The original mapping is deprecated. When both plugins have the same setting,
+    - passthrough metrics will be unchanged. Refer to the prometheus input for
+    - details about the mapping.
+    New Inputs
+    - azure_storage_queue - Contributed by @mjiderhamn
+    - ethtool - Contributed by @philippreston
+    - snmp_trap - Contributed by @influxdata
+    - suricata - Contributed by @satta
+    - synproxy - Contributed by @rfrenayworldstream
+    - systemd_units - Contributed by @benschweizer
+    New Processors
+    - clone - Contributed by @adrianlzt
+    New Aggregators
+    - merge - Contributed by @influxdata
+    Features
+    - #6326: Add per node memory stats to rabbitmq input.
+    - #6361: Add ability to read query from file to postgresql_extensible input.
+    - #5921: Add replication metrics to the redis input.
+    - #6177: Support NX-OS telemetry extensions in cisco_telemetry_mdt.
+    - #6415: Allow graphite parser to create Inf and NaN values.
+    - #6434: Use prefix base detection for ints in grok parser.
+    - #6465: Add more performance counter metrics to sqlserver input.
+    - #6476: Add millisecond unix time support to grok parser.
+    - #6473: Add container id as optional source tag to docker and docker_log input.
+    - #6504: Add lang parameter to OpenWeathermap input plugin.
+    - #6540: Log file open errors at debug level in tail input.
+    - #6553: Add timeout option to cloudwatch input.
+    - #6549: Support custom success codes in http input.
+    - #6530: Improve ipvs input error strings and logging.
+    - #6532: Add strict mode to JSON parser that can be disable to ignore invalid items.
+    - #6543: Add support for Kubernetes 1.16 and remove deprecated API usage.
+    - #6283: Add gathering of RabbitMQ federation link metrics.
+    - #6356: Add bearer token defaults for Kubernetes plugins.
+    - #5870: Add support for SNMP over TCP.
+    - #6603: Add support for per output flush jitter.
+    - #6650: Add a nameable file tag to file input plugin.
+    - #6640: Add Splunk MultiMetric support.
+    - #6680: Add support for sending HTTP Basic Auth in influxdb input
+    - #5767: Add ability to configure the url tag in the prometheus input.
+    - #5767: Add prometheus metric_version=2 mapping to internal metrics/line protocol.
+    - #6703: Add prometheus metric_version=2 support to prometheus_client output.
+    - #6660: Add content_encoding compression support to socket_listener.
+    - #6689: Add high resolution metrics support to CloudWatch output.
+    - #6716: Add SReclaimable and SUnreclaim to mem input.
+    - #6695: Allow multiple certificates per file in x509_cert input.
+    - #6686: Add additional tags to the x509 input.
+    - #6703: Add batch data format support to file output.
+    - #6688: Support partition assignement strategy configuration in kafka_consumer.
+    - #6731: Add node type tag to mongodb input.
+    - #6669: Add uptime_ns field to mongodb input.
+    - #6735: Support resolution of symlinks in filecount input.
+    - #6746: Set message timestamp to the metric time in kafka output.
+    - #6740: Add base64decode operation to string processor.
+    - #6790: Add option to control collecting global variables to mysql input.
+    Bugfixes
+    - #6484: Show correct default settings in mysql sample config.
+    - #6583: Use 1h or 3h rain values as appropriate in openweathermap input.
+    - #6573: Fix not a valid field error in Windows with nvidia input.
+    - #6614: Fix influxdb output serialization on connection closed.
+    - #6690: Fix ping skips remaining hosts after dns lookup error.
+    - #6684: Log mongodb oplog auth errors at debug level.
+    - #6705: Remove trailing underscore trimming from json flattener.
+    - #6421: Revert change causing cpu usage to be capped at 100 percent.
+    - #6523: Accept any media type in the prometheus input.
+    - #6769: Fix unix socket dial arguments in uwsgi input.
+    - #6757: Replace colon chars in prometheus output labels with metric_version=1.
+    - #6773: Set TrimLeadingSpace when TrimSpace is on in csv parser.
+
+
+-------------------------------------------------------------------
+Sat Feb 29 07:01:24 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- split up patch 0001-Generic-SQL-output-plugin-for-Telegraf.patch
+  (from https://github.com/influxdata/telegraf/pull/4205)
+  into multiple patches:
+  0001-plugins-outputs-all-all.go-Generic-SQL-output-plugin.patch
+  0002-plugins-outputs-sql-README.md-Generic-SQL-output-plu.patch
+  0003-plugins-outputs-sql-sql.go-Generic-SQL-output-plugin.patch
+  0004-plugins-outputs-sql-sql_test.go-Generic-SQL-output-p.patch
+  0005-README.md-Generic-SQL-output-plugin-for-Telegraf-pat.patch
+
+-------------------------------------------------------------------
 Wed Dec 18 21:56:52 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to release 1.12.6
