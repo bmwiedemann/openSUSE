@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bcrypt
-Version:        3.1.15
+Version:        3.1.16
 Release:        0
 %define mod_name bcrypt
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 12 12:24:17 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.1.16
+
+  * Fix compilation on FreeBSD. [GH #234]
+
+-------------------------------------------------------------------
 Sat Aug 22 13:00:51 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.1.15
