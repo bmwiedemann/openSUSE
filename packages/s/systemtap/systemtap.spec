@@ -123,14 +123,14 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/systemtap
 mkdir -p %{buildroot}%{_localstatedir}/log
 touch %{buildroot}%{_localstatedir}/log/stap-server.log
 # config file for stap-server (/var/run now on tmpfs)
-mkdir -p %{buildroot}%{_libexecdir}/tmpfiles.d
-install -m 644 %{SOURCE5} %{buildroot}%{_libexecdir}/tmpfiles.d
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
 
 %find_lang systemtap
 
 %post server
 # Create tmpfiles
-%tmpfiles_create %{_libexecdir}/tmpfiles.d/stap-server.conf
+%tmpfiles_create %{_tmpfilesdir}/stap-server.conf
 
 %files
 %defattr(-,root,root)
@@ -164,8 +164,8 @@ install -m 644 %{SOURCE5} %{buildroot}%{_libexecdir}/tmpfiles.d
 
 %files server
 %defattr(-,root,root)
-%dir %{_libexecdir}/tmpfiles.d
-%{_libexecdir}/tmpfiles.d/stap-server.conf
+%dir %{_tmpfilesdir}
+%{_tmpfilesdir}/stap-server.conf
 %{_bindir}/stap-server
 %{_libexecdir}/%{name}/stap-gen-cert
 %{_libexecdir}/%{name}/stap-serverd

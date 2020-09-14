@@ -815,4 +815,12 @@ Most projects for this reason don't even carry the generated configure script in
     <comment>Add recommends on kernel-devel</comment>
     <requestid>770416</requestid>
   </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>38828f0a896f612f402a82ada14ed6aa</srcmd5>
+    <version>4.2</version>
+    <time>1600077593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832676</requestid>
+  </revision>
 </revisionlist>
