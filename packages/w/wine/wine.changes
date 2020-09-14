@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 12 05:15:53 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.17 development release
+  - ADVAPI32 library converted to PE.
+  - Beginnings of an NDIS network driver.
+  - Still more restructuration of the console support.
+  - Various bug fixes.
+- update staging to 5.17 release
+
+-------------------------------------------------------------------
 Mon Sep  7 16:12:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not build on armv6

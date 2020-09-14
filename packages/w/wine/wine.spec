@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 5.16
-Version:        5.16
+%define realver 5.17
+Version:        5.17
 Release:        0
 
 %if "%{flavor}" != ""
@@ -158,7 +158,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 5.16
+%define staging_version 5.17
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -308,6 +308,7 @@ echo "  +^/usr/lib/wine/.*def" >> %SOURCE7
 echo " provides \"wine-devel-<targettype> = <version>\""		>> %SOURCE7
 %endif
 echo " conflicts \"otherproviders(wine-devel-<targettype>)\""		>> %SOURCE7
+
 cat %SOURCE7
 %endif
 make %{?_smp_mflags} all
@@ -376,8 +377,6 @@ chmod 755 %winedir/my-find-requires.sh
 
 # breaks btrfs installation, see bnc#723402
 # %%fdupes -s %{buildroot}
-# Fix dups on aarch64
-%fdupes -s %{buildroot}%{_libdir}/wine/fakedlls
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -473,10 +472,10 @@ chmod 755 %winedir/my-find-requires.sh
 %ifnarch %arm aarch64
 %{_libdir}/wine/*.tlb
 %endif
-%{_libdir}/lib*.so.*
 %dir %{_libdir}/wine
 %dir %{_libdir}/wine/fakedlls
 %{_libdir}/wine/fakedlls/*
+%{_libdir}/lib*.so.*
 
 %files devel
 %defattr(-,root,root)

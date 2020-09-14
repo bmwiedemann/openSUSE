@@ -1,2 +1,4 @@
 # Some of our .a files are data only, rpmlint check does not cover that
 addFilter("lto-no-text-in-archive")
+# we have a libwine.so.1, but it is really just for wine usage only.
+addFilter("shlib-policy-name-error")

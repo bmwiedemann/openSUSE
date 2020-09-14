@@ -3671,4 +3671,17 @@
 - Run fdupes to avoid dups on aarch64 (forwarded request 832823 from Guillaume_G)</comment>
     <requestid>832825</requestid>
   </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>e01bea907cd96cc830b941d1519abb44</srcmd5>
+    <version>5.17</version>
+    <time>1600079373</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.17 development release
+  - ADVAPI32 library converted to PE.
+  - Beginnings of an NDIS network driver.
+  - Still more restructuration of the console support.
+  - Various bug fixes.
+- update staging to 5.17 release</comment>
+    <requestid>834010</requestid>
+  </revision>
 </revisionlist>
