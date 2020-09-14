@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 13 17:39:27 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to remove requirement for nose.
+
+-------------------------------------------------------------------
 Mon May 25 10:59:35 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

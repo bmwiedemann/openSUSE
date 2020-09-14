@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>808778</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>85b0b1bb8aed63377451504f602aefce</srcmd5>
+    <version>1.2.0</version>
+    <time>1600079442</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_nose.patch to remove requirement for nose.
+</comment>
+    <requestid>834153</requestid>
+  </revision>
 </revisionlist>

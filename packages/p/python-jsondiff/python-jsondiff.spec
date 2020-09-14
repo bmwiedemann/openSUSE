@@ -24,8 +24,10 @@ Summary:        Module to diff JSON and JSON-like structures in Python
 License:        MIT
 URL:            https://github.com/ZoomerAnalytics/jsondiff
 Source:         https://files.pythonhosted.org/packages/source/j/jsondiff/jsondiff-%{version}.tar.gz
-BuildRequires:  %{python_module nose-random}
-BuildRequires:  %{python_module nose}
+# PATCH-FEATURE-UPSTREAM remove_nose.patch bsc#[0-9]+ mcepl@suse.com
+# Replace nose-random plugin with ripped of version independent of nose.
+Patch0:         remove_nose.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +41,7 @@ BuildArch:      noarch
 Package to show differences between JSON and JSON-like structures in Python
 
 %prep
-%setup -q -n jsondiff-%{version}
+%autosetup -p1 -n jsondiff-%{version}
 
 %build
 %python_build
@@ -51,7 +53,7 @@ Package to show differences between JSON and JSON-like structures in Python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest tests/__init__.py
 
 %post
 %python_install_alternative jsondiff
