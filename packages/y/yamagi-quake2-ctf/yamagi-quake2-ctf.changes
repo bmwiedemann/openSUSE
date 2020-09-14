@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:17:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %_libexecdir instead of hardcoding the directory name
+- Remove obsolete conditions
+
+-------------------------------------------------------------------
 Wed Feb 26 12:03:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.07

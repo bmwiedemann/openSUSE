@@ -51,30 +51,22 @@ find .  -name '*.[ch]' -print -exec sh -c '
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 install -dm 755 %{buildroot}%{_bindir}
-install -Dpm 644 build/game.so %{buildroot}%{_prefix}/lib/yamagi-quake2/ctf/game.so
-echo -e "#!/bin/sh\nexec /usr/lib/yamagi-quake2/yquake2 \+set game ctf \"\$@\"" > %{buildroot}%{_bindir}/yquake2-ctf
+install -Dpm 644 build/game.so %{buildroot}%{_libexecdir}/yamagi-quake2/ctf/game.so
+echo -e "#!/bin/sh\nexec %{_libexecdir}/yamagi-quake2/yquake2 \+set game ctf \"\$@\"" > %{buildroot}%{_bindir}/yquake2-ctf
 chmod 755 %{buildroot}%{_bindir}/yquake2-ctf
 
 %suse_update_desktop_file -i yquake2-ctf
-
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
 
 %files
 %license LICENSE
 %doc CHANGELOG README
 %{_bindir}/yquake2-ctf
-%dir %{_prefix}/lib/yamagi-quake2/ctf
-%{_prefix}/lib/yamagi-quake2/ctf/game.so
+%dir %{_libexecdir}/yamagi-quake2/ctf
+%{_libexecdir}/yamagi-quake2/ctf/game.so
 %{_datadir}/applications/yquake2-ctf.desktop
 
 %changelog
