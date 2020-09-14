@@ -16,15 +16,14 @@
 #
 
 
-%define _gsver  952
 %define _sover  0
 Name:           jbig2dec
-Version:        0.18
+Version:        0.19
 Release:        0
 Summary:        JBIG2 Decoder Utility
 License:        AGPL-3.0-or-later
 URL:            https://jbig2dec.com
-Source:         https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs%{_gsver}/%{name}-%{version}.tar.gz
+Source:         https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9530/jbig2dec-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM fix-for-restore-abi.patch deb#940605 -- Restores the ABI export of jbig2_ctx_new 
 Patch1:         fix-for-restore-abi.patch
