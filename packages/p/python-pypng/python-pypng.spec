@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/drj11/pypng
 Source:         https://files.pythonhosted.org/packages/source/p/pypng/pypng-%{version}.tar.gz
+Patch0:         pr_106.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -41,6 +42,7 @@ PyPNG allows PNG image files to be read and written using pure Python.
 
 %prep
 %setup -q -n pypng-%{version}
+%patch0 -p1
 sed -i -e '/^#!\//, 1d' code/png.py
 
 %build

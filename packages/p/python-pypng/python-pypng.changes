@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 11 11:22:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove test module from runtime package with pr_106.patch
+
+-------------------------------------------------------------------
 Wed May 20 07:26:40 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

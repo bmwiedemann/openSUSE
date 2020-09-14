@@ -1,0 +1,19 @@
+commit 66a8d1bc88f99a05349099e1121ef1f57856cded
+Author: John Vandenberg <jayvdb@gmail.com>
+Date:   Sun Sep 13 10:45:51 2020 +0700
+
+    Remove test modules from runtime distribution
+
+Index: pypng-0.0.20/setup.py
+===================================================================
+--- pypng-0.0.20.orig/setup.py
++++ pypng-0.0.20/setup.py
+@@ -40,7 +40,7 @@ https://pypng.readthedocs.io/en/latest/
+     author_email='drj@pobox.com',
+     url='https://github.com/drj11/pypng',
+     package_dir={'': 'code'},
+-    py_modules=['png', 'test_png', 'pngsuite'],
++    py_modules=['png'],
+     scripts=[
+         "code/prichunkpng",
+         "code/priforgepng",
