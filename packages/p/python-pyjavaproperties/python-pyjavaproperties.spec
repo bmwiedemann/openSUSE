@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyjavaproperties
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Abel Luck <abel@guardianproject.info>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,10 +20,10 @@
 Name:           python-pyjavaproperties
 Version:        0.7
 Release:        0
-Summary:        A python library for parsing Java properties
+Summary:        Python library for parsing Java properties
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/toofishes/python-pyjavaproperties
+URL:            https://bitbucket.org/skeptichacker/pyjavaproperties
 Source0:        https://files.pythonhosted.org/packages/source/p/pyjavaproperties/pyjavaproperties-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,7 +44,11 @@ sed -i '/^#!/d' pyjavaproperties.py pyjavaproperties_test.py
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Upstream patch to not install test module
+# https://bitbucket.org/skeptichacker/pyjavaproperties/pull-requests/1
+%{python_expand rm %{buildroot}%{$python_sitelib}/pyjavaproperties_test.py
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 %python_exec pyjavaproperties_test.py
