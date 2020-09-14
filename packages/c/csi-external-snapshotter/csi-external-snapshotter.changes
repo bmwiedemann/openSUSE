@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Aug 25 06:21:43 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Remove unnecessary BuildRequires: go1.12 >= 1.12.0
+
+-------------------------------------------------------------------
+Tue Aug 11 02:50:15 UTC 2020 - Chin-Ya Huang <chin-ya.huang@suse.com>
+
+- Fix project directory for v2.1.1. 
+
+-------------------------------------------------------------------
+Tue Aug 11 01:39:21 UTC 2020 - Chin-Ya Huang <chin-ya.huang@suse.com>
+
+- Update version to 2.1.1.
+  Ref: https://github.com/SUSE/avant-garde/issues/1779#issuecomment-671620066 
+
+-------------------------------------------------------------------
+Wed Aug  5 04:43:59 UTC 2020 - Chin-Ya Huang <chin-ya.huang@suse.com>
+
+- Initial commit 
