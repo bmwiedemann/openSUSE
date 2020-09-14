@@ -1614,4 +1614,15 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Updated translations. (forwarded request 826556 from iznogood)</comment>
     <requestid>826640</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>3844de32101be7446f13d55e203a5d6f</srcmd5>
+    <version>3.36.6</version>
+    <time>1600078316</time>
+    <user>dimstar_suse</user>
+    <comment>- Move branding image file to branding-SLE package
+  (jsc#SLE-11720 bsc#1176304).
+  + Update gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch
+  + Remove sle-background.png (forwarded request 833590 from xiaoguang_wang)</comment>
+    <requestid>833697</requestid>
+  </revision>
 </revisionlist>

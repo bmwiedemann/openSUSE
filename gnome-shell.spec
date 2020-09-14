@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.36.5
+Version:        3.36.6
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -29,8 +29,6 @@ URL:            https://wiki.gnome.org/Projects/GnomeShell
 Source:         %{name}-%{version}.tar.xz
 # SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Source1:        aboutMenu.js
-# SOURCE-FEATURE-SLE sle-background bsc#1007468 xwang@suse.com -- Add SUSE logo on lock screen for GNOME theme
-Source2:        sle-background.png
 
 # PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
 Patch1:         gnome-shell-private-connection.patch
@@ -197,7 +195,6 @@ translation-update-upstream
 
 %if 0%{?sle_version}
 cp %{SOURCE1} js/ui/
-cp %{SOURCE2} data/theme/
 %endif
 
 %build
