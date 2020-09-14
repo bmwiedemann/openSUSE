@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 19:57:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.9:
+  * Remove "#define UNIXODBC_SOURCE" from unixodbc_conf.h
+
+-------------------------------------------------------------------
 Tue Sep  1 07:38:13 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.8:

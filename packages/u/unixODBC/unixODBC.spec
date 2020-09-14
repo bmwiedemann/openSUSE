@@ -17,7 +17,7 @@
 
 
 Name:           unixODBC
-Version:        2.3.8
+Version:        2.3.9
 Release:        0
 Summary:        ODBC driver manager with some drivers included
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

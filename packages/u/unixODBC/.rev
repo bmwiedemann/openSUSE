@@ -319,4 +319,13 @@
 - Remove unixODBC-2.3.7-warning-cleanup.patch: upstreamed</comment>
     <requestid>830983</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>716994fa76d16c585ac5b295eb96b1f9</srcmd5>
+    <version>2.3.9</version>
+    <time>1600077673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.9:
+  * Remove &quot;#define UNIXODBC_SOURCE&quot; from unixodbc_conf.h</comment>
+    <requestid>833076</requestid>
+  </revision>
 </revisionlist>
