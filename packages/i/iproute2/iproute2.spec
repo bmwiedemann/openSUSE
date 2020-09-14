@@ -17,16 +17,17 @@
 
 
 Name:           iproute2
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Routing
-URL:            https://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
+URL:            https://wiki.linuxfoundation.org/networking/iproute2
 # Using GPL-2.0 instead of GPL-2.0+ because of tc_skbedit.h and tc/q_multiq.c
 
 #DL-URL:	https://kernel.org/pub/linux/utils/net/iproute2/
 #Git-Clone:	git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2
+#Git-Mirror:    https://github.com/shemminger/iproute2
 Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.xz
 Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.sign
 Source9:        %name.keyring

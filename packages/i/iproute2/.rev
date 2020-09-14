@@ -905,4 +905,12 @@ require bash-completion for iproute2-bash-completion]</comment>
   went upstream, so we can drop it (jsc#SLE-9813) (forwarded request 815490 from dirkmueller)</comment>
     <requestid>815505</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>2e37a5c6056e791ab5c805d96718fa1e</srcmd5>
+    <version>5.8.0</version>
+    <time>1600077734</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833232</requestid>
+  </revision>
 </revisionlist>
