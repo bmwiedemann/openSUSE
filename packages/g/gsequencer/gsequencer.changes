@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 13 02:54:30 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.5.9 fixed a problem with tempo. Wrong calculation
+  of delay between notes in ags_soundcard_util.c
+
+-------------------------------------------------------------------
 Mon Jul 20 16:38:33 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.5.6 fixed missing $(docdir)/images/adwaita.
