@@ -141,4 +141,12 @@
     <comment>Version update to 3.2.1 (forwarded request 522993 from enavarro_suse)</comment>
     <requestid>523018</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2d0c3f928213c030058bf6a624c6f2b2</srcmd5>
+    <version>3.2.2</version>
+    <time>1600079474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833986</requestid>
+  </revision>
 </revisionlist>
