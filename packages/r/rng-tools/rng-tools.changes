@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Sep 12 13:06:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+-  update to 6.10:
+  * Conversion of all entropy sources to use openssl instead of gcrypt, eliminating the need for the gcrypt library
+  * updated nist beacon entropy source to conform to version 2 of the
+  * Added rtlsdr radio entropy source
+  * Fixed arm host_cpu name, fixing a build break
+  * Fixed selection of default pkcs11 engine, based on target arch
+  * Moved closing jitter entropy source printouts to be LOG_DEBUG
+  * Typo fixes from codespell
+  * Fix a build break with power darn entropy sourceaa
+  * Improve interlock between main rngd thread, and jitterentropy threads during startup/shutdown to avoid deadlock/unneeded latency
+  * Avoid writing to write_wakeup_threshold when no specific threshold is set (allowing for separate services to preform this task without warnings from rngd)
+  * Enhance logging to more clearly indicate which entropy source is issuing a given log message
+  * Daemonize earlier, thereby avoiding early thread exit, which in turn leads to additional latency on shutdown
+  * Allow for immediate thread shutdown in jitter - By using sigsetjmp/siglongjmp, threads can exit, even when blocking in the jitter library
+  * Fixed texrels on on rdrand_asm.S for pic compilation
+  * allow use of libargp if libc lacks argp parsing
+  * explicitly link against -lcrypto, fixing build in pkcs11 entropy source
+  * replace pthread_yield with posix compliant sched_yield
+  * bias rngd to use faster sources of entropy when available, falling back to slower sources when needed
+  * Fix a shutdown delay resulting from a thread exit race
+  * Fix a few minor compilation warnings
+  * Fix make distcheck make target
+  * Minor typo fixes/cleanups
+  * Misc typo fixes
+  * Fixed build break on ppc
+  * Fixed bug in which getaffinity returns error on virt systems for jitterentropy
+  * Fixed low watermark sizing for kernel entropy pool
+  * Add a test mode, allowing entropy production rates to be measured
+  * Added jitter library as an entropy source
+  * Added short names to entropy sources (rather than just index numbers), for use in identifying sources to exclude/include/set options on
+  * Deprecated tpm entropy source, as all modern tpm2 hardware in the kernel exports entropy via /dev/hwrng (the hwrng entropy source)
+  * Deprecated use of indexs in exclude/include/option setting
+  * Introduced the concept of slow entropy sources, that produce entropy at rates slow enough that would otherwise cause them to get disabled as being broken
+  * Defaulted rdrand entropy source to not use aes, as it creates a significant performance increase
+  * Update of jitterentropy-library version
+  * Addition of -O flag to allow per-entropy-source option setting (documented in man page)
+  * Misc jitterentropy bugfixes
+  * Fixing of debug messages and quiet behavior
+  * Enable runtime disablement of AES in rdrand entropy if no AES method is available
+  * Make jitterentropy thread count/buffer sizes configurable
+  * Make AES use in rdrand and darn entropy sources configurable
+  * Fixes a few logic errors in the use of jitterentropy
+  * Fixes a build issue in which make check fails
+  * Some source typo fixes
+  * Add caching to jitterentropy
+  * Free some leaked memory on exit
+  * limit nistbeacon random data based on freq and timestamp
+  * Document nistbeacon more
+  * improved exit code reporting
+  * ability to suppress failure messages when not wanted
+  * correction of nistbeacon fields on non 64 bit arches
+  * proper exiting on SIGTERM/SIGINT when polling in update_kernel_random
+  * Fixed a drng build issue based on a missing extern symbol
+  * minor code formatting cleanup
+  * ensure darn rng asm code is volatile to prevent getting optimized out
+  * improve darn runtime hardware support check
+  * man page fixes
+  * fixed bug in which rngd takes control of the terminal
+- drop rng-tools-check_signals.patch (obsolete)
+
+-------------------------------------------------------------------
 Sat Feb  6 17:06:48 UTC 2016 - crrodriguez@opensuse.org
 
 - 90-hwrng.rules: Improve udev rule, autostart rngd only

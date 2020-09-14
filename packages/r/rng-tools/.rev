@@ -354,4 +354,41 @@
     <comment>1</comment>
     <requestid>358359</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>237f0ba5fc4ec92f1527a046f57d31e9</srcmd5>
+    <version>6.10</version>
+    <time>1600079369</time>
+    <user>dimstar_suse</user>
+    <comment>-  update to 6.10:
+  * Conversion of all entropy sources to use openssl instead of gcrypt, eliminating the need for the gcrypt library
+  * updated nist beacon entropy source to conform to version 2 of the
+  * Added rtlsdr radio entropy source
+  * Fixed arm host_cpu name, fixing a build break
+  * Fixed selection of default pkcs11 engine, based on target arch
+  * Moved closing jitter entropy source printouts to be LOG_DEBUG
+  * Typo fixes from codespell
+  * Fix a build break with power darn entropy sourceaa
+  * Improve interlock between main rngd thread, and jitterentropy threads during startup/shutdown to avoid deadlock/unneeded latency
+  * Avoid writing to write_wakeup_threshold when no specific threshold is set (allowing for separate services to preform this task without warnings from rngd)
+  * Enhance logging to more clearly indicate which entropy source is issuing a given log message
+  * Daemonize earlier, thereby avoiding early thread exit, which in turn leads to additional latency on shutdown
+  * Allow for immediate thread shutdown in jitter - By using sigsetjmp/siglongjmp, threads can exit, even when blocking in the jitter library
+  * Fixed texrels on on rdrand_asm.S for pic compilation
+  * allow use of libargp if libc lacks argp parsing
+  * explicitly link against -lcrypto, fixing build in pkcs11 entropy source
+  * replace pthread_yield with posix compliant sched_yield
+  * bias rngd to use faster sources of entropy when available, falling back to slower sources when needed
+  * Fix a shutdown delay resulting from a thread exit race
+  * Fix a few minor compilation warnings
+  * Fix make distcheck make target
+  * Minor typo fixes/cleanups
+  * Misc typo fixes
+  * Fixed build break on ppc
+  * Fixed bug in which getaffinity returns error on virt systems for jitterentropy
+  * Fixed low watermark sizing for kernel entropy pool
+  * Add a test mode, allowing entropy production rates to be measured
+  * Added jitter library as an entropy source
+  * Added short names to entropy sources (rather than just index numbers), for use in identifying sources to exclude/include/set options on</comment>
+    <requestid>833996</requestid>
+  </revision>
 </revisionlist>
