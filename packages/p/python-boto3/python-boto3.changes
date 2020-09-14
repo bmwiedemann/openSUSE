@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Sep  7 12:50:58 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.14.56
+  * api-change:``workspaces``: [``botocore``] Update workspaces client to latest version
+  * api-change:``xray``: [``botocore``] Update xray client to latest version
+  * api-change:``ssm``: [``botocore``] Update ssm client to latest version
+- from version 1.14.55
+  * api-change:``stepfunctions``: [``botocore``] Update stepfunctions client to latest version
+  * api-change:``guardduty``: [``botocore``] Update guardduty client to latest version
+  * api-change:``mediapackage``: [``botocore``] Update mediapackage client to latest version
+  * api-change:``kendra``: [``botocore``] Update kendra client to latest version
+- from version 1.14.54
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``macie2``: [``botocore``] Update macie2 client to latest version
+- from version 1.14.53
+  * api-change:``codeguru-reviewer``: [``botocore``] Update codeguru-reviewer client to latest version
+  * api-change:``securityhub``: [``botocore``] Update securityhub client to latest version
+- from version 1.14.52
+  * api-change:``sqs``: [``botocore``] Update sqs client to latest version
+  * api-change:``backup``: [``botocore``] Update backup client to latest version
+  * api-change:``cloudfront``: [``botocore``] Update cloudfront client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+- from version 1.14.51
+  * api-change:``cur``: [``botocore``] Update cur client to latest version
+  * api-change:``route53``: [``botocore``] Update route53 client to latest version
+  * api-change:``cloudfront``: [``botocore``] Update cloudfront client to latest version
+  * api-change:``emr``: [``botocore``] Update emr client to latest version
+- from version 1.14.50
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``redshift``: [``botocore``] Update redshift client to latest version
+  * api-change:``gamelift``: [``botocore``] Update gamelift client to latest version
+  * api-change:``mediaconvert``: [``botocore``] Update mediaconvert client to latest version
+- from version 1.14.49
+  * api-change:``appflow``: [``botocore``] Update appflow client to latest version
+  * api-change:``route53resolver``: [``botocore``] Update route53resolver client to latest version
+- from version 1.14.48
+  * api-change:``iotsitewise``: [``botocore``] Update iotsitewise client to latest version
+  * api-change:``xray``: [``botocore``] Update xray client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``logs``: [``botocore``] Update logs client to latest version
+  * api-change:``dms``: [``botocore``] Update dms client to latest version
+  * api-change:``ssm``: [``botocore``] Update ssm client to latest version
+  * api-change:``kafka``: [``botocore``] Update kafka client to latest version
+- from version 1.14.47
+  * api-change:``chime``: [``botocore``] Update chime client to latest version
+  * api-change:``fsx``: [``botocore``] Update fsx client to latest version
+  * api-change:``apigatewayv2``: [``botocore``] Update apigatewayv2 client to latest version
+- from version 1.14.46
+  * api-change:``lakeformation``: [``botocore``] Update lakeformation client to latest version
+  * api-change:``storagegateway``: [``botocore``] Update storagegateway client to latest version
+  * api-change:``ivs``: [``botocore``] Update ivs client to latest version
+  * api-change:``organizations``: [``botocore``] Update organizations client to latest version
+  * api-change:``servicecatalog``: [``botocore``] Update servicecatalog client to latest version
+- from version 1.14.45
+  * api-change:``identitystore``: [``botocore``] Update identitystore client to latest version
+  * api-change:``codebuild``: [``botocore``] Update codebuild client to latest version
+  * api-change:``cognito-idp``: [``botocore``] Update cognito-idp client to latest version
+  * api-change:``datasync``: [``botocore``] Update datasync client to latest version
+  * api-change:``sesv2``: [``botocore``] Update sesv2 client to latest version
+  * api-change:``securityhub``: [``botocore``] Update securityhub client to latest version
+- from version 1.14.44
+  * api-change:``elbv2``: [``botocore``] Update elbv2 client to latest version
+  * api-change:``quicksight``: [``botocore``] Update quicksight client to latest version
+  * api-change:``kinesis``: [``botocore``] Update kinesis client to latest version
+  * api-change:``ecr``: [``botocore``] Update ecr client to latest version
+  * api-change:``acm``: [``botocore``] Update acm client to latest version
+  * api-change:``robomaker``: [``botocore``] Update robomaker client to latest version
+  * api-change:``elb``: [``botocore``] Update elb client to latest version
+  * api-change:``acm-pca``: [``botocore``] Update acm-pca client to latest version
+- from version 1.14.43
+  * api-change:``braket``: [``botocore``] Update braket client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``license-manager``: [``botocore``] Update license-manager client to latest version
+  * api-change:``sagemaker``: [``botocore``] Update sagemaker client to latest version
+  * api-change:``appstream``: [``botocore``] Update appstream client to latest version
+- from version 1.14.42
+  * api-change:``rds``: [``botocore``] Update rds client to latest version
+  * api-change:``eks``: [``botocore``] Update eks client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``macie2``: [``botocore``] Update macie2 client to latest version
+  * api-change:``cognito-idp``: [``botocore``] Update cognito-idp client to latest version
+  * api-change:``appsync``: [``botocore``] Update appsync client to latest version
+  * api-change:``braket``: [``botocore``] Update braket client to latest version
+- from version 1.14.41
+  * api-change:``transfer``: [``botocore``] Update transfer client to latest version
+  * api-change:``comprehend``: [``botocore``] Update comprehend client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``fsx``: [``botocore``] Update fsx client to latest version
+  * api-change:``workspaces``: [``botocore``] Update workspaces client to latest version
+  * api-change:``lambda``: [``botocore``] Update lambda client to latest version
+  * api-change:``iot``: [``botocore``] Update iot client to latest version
+  * api-change:``cloud9``: [``botocore``] Update cloud9 client to latest version
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Aug 12 11:10:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.14.40 (bsc#1175147, bsc#1175148, jsc#ECO-2362, jsc#PM-2069)
