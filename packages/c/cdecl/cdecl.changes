@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:45:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.1
+  * Added support for Unified Parallel C
+
+-------------------------------------------------------------------
 Fri Sep  4 13:13:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix awkward grammar in description.
