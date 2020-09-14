@@ -49,6 +49,7 @@ This package contains the developer documentation for accounts-qml-module.
 %prep
 %setup -q -n %{name}-VERSION_%{version}
 %autopatch -p1
+sed -e 's/-Werror//' -i common-project-config.pri
 
 %build
 mkdir build
