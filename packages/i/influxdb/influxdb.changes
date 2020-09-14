@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 13 09:03:16 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 1.8.2
+  #19253: fix(tsdb): Revert disable series id set cache size by default.
+
+-------------------------------------------------------------------
 Fri Jul 24 14:36:43 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 1.8.1
