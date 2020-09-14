@@ -5,4 +5,4 @@
   </service>
 <service name="tar_scm">
                 <param name="url">http://git.haproxy.org/git/haproxy-2.2.git</param>
-              <param name="changesrevision">b8a2763d59c412207c4838579abd594a9a110a7d</param></service></servicedata>
+              <param name="changesrevision">0e58a340da6ba142338cd6941ca87187b993e85e</param></service></servicedata>

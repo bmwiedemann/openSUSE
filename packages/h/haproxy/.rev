@@ -938,4 +938,12 @@
   * BUG/MINOR: mux-fcgi: Don't url-decode the QUERY_STRING parameter anymore</comment>
     <requestid>823717</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>188b9d926dd4c8b45745226285d301b6</srcmd5>
+    <version>2.2.3+git0.0e58a340d</version>
+    <time>1600077633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.3+git0.0e58a340d:</comment>
+    <requestid>833032</requestid>
+  </revision>
 </revisionlist>

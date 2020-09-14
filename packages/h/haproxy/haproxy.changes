@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Sep 08 15:02:38 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.2.3+git0.0e58a340d:
+  * [RELEASE] Released version 2.2.3
+  * BUG/MEDIUM: mux-h1: always apply the timeout on half-closed connections
+  * BUG/MINOR: auth: report valid crypto(3) support depending on build options
+  * DOC: ssl-load-extra-files only applies to certificates on bind lines
+  * MINOR: server: Improve log message sent when server address is updated
+  * BUG/MEDIUM: dns: Be sure to renew IP address for already known servers
+  * BUG/MEDIUM: dns: Don't store additional records in a linked-list
+  * CLEANUP: dns: remove 45 "return" statements from dns_validate_dns_response()
+  * CLEANUP: Update .gitignore
+  * MINOR: Commit .gitattributes
+  * BUILD: thread: limit the libgcc_s workaround to glibc only
+  * BUG/MINOR: threads: work around a libgcc_s issue with chrooting
+  * BUG/MEDIUM: ssl: does not look for all SNIs before chosing a certificate
+  * MINOR: arg: Use chunk_destroy() to release string arguments
+  * BUG/MEDIUM: ssl: check OCSP calloc in ssl_sock_load_ocsp()
+  * REGTEST: Add a test for request path manipulations, with and without the QS
+  * MINOR: http-fetch: Add pathq sample fetch
+  * MINOR: http-rules: Add set-pathq and replace-pathq actions
+  * BUG/MEDIUM: doc: Fix replace-path action description
+  * Revert "BUG/MINOR: http-rules: Replace path and query-string in "replace-path" action"
+  * BUG/MINOR: startup: haproxy -s cause 100% cpu
+  * BUG/MEDIUM: contrib/spoa-server: Fix ipv4_address used instead of ipv6_address
+  * BUG/MINOR: contrib/spoa-server: Updating references to free in case of failure
+  * BUG/MINOR: contrib/spoa-server: Do not free reference to NULL
+  * BUG/MINOR: contrib/spoa-server: Ensure ip address references are freed
+  * BUG/MAJOR: contrib/spoa-server: Fix unhandled python call leading to memory leak
+  * BUILD: task: work around a bogus warning in gcc 4.7/4.8 at -O1
+  * BUILD: tools: include auxv a bit later
+  * MINOR: cache: Reject duplicate cache names
+  * DOC: cache: Use '<name>' instead of '<id>' in error message
+  * BUG/MEDIUM: ssl: crt-list negative filters don't work
+  * BUG/MINOR: http-rules: Replace path and query-string in "replace-path" action
+  * MINOR: http-htx: Add an option to eval query-string when the path is replaced
+  * BUG/MEDIUM: http-ana: Don't wait to send 1xx responses received from servers
+  * BUG/MINOR: reload: do not fail when no socket is sent
+  * BUG/MEDIUM: ssl: fix ssl_bind_conf double free w/ wildcards
+  * BUG/MEDIUM: ssl: never generates the chain from the verify store
+  * BUG/MEDIUM: htx: smp_prefetch_htx() must always validate the direction
+  * BUG/MINOR: stats: use strncmp() instead of memcmp() on health states
+  * BUG/MINOR: ssl: ssl-skip-self-issued-ca requires >= 1.0.2
+  * BUG/MEDIUM: ssl: fix the ssl-skip-self-issued-ca option
+  * BUG/MINOR: snapshots: leak of snapshots on deinit()
+  * MEDIUM: lua: Don't filter exported fetches and converters
+  * BUG/MINOR: lua: Duplicate lua strings in sample fetches/converters arg array
+  * MINOR: hlua: Don't needlessly copy lua strings in trash during args validation
+  * BUG/MINOR: lua: Check argument type to convert it to IP mask in arg validation
+  * BUG/MINOR: lua: Check argument type to convert it to IPv4/IPv6 arg validation
+  * BUG/MINOR: arg: Fix leaks during arguments validation for fetches/converters
+  * BUG/MINOR: lua: Duplicate map name to load it when a new Map object is created
+  * BUG/MINOR: converters: Store the sink in an arg pointer for debug() converter
+  * MINOR: arg: Add an argument type to keep a reference on opaque data
+  * BUG/MEDIUM: map/lua: Return an error if a map is loaded during runtime
+  * BUG/MEDIUM: ssl: memory leak of ocsp data at SSL_CTX_free()
+  * BUG/MINOR: ssl: fix memory leak at OCSP loading
+  * DOC: spoa-server: fix false friends `actually`
+  * BUG/MINOR: spoa-server: fix size_t format printing
+  * BUG/MAJOR: dns: disabled servers through SRV records never recover
+  * CLEANUP: dns: typo in reported error message
+  * BUG/MEDIUM: mux-h1: Refresh H1 connection timeout after a synchronous send
+  * SCRIPTS: git-show-backports: emit the shell command to backport a commit
+  * SCRIPTS: git-show-backports: make -m most only show the left branch
+
+-------------------------------------------------------------------
 Fri Jul 31 10:56:54 UTC 2020 - mrueckert@suse.de
 
 - Update to version 2.2.2+git0.b8a2763d5:
