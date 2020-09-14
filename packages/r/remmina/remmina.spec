@@ -60,13 +60,13 @@ Recommends:     %{name}-plugin-secret
 Recommends:     %{name}-plugin-vnc
 Provides:       %{name}-plugins-common = %{version}
 Obsoletes:      %{name}-plugins-common < 1.0.0
-%if 0%{?is_opensuse} || 0%{?is_backports}
+%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
 BuildRequires:  cmake(KF5Wallet)
 %endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(wayland-client)
 %endif
-%if 0%{?is_opensuse}
+%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
 BuildRequires:  pkgconfig(appindicator3-0.1)
 %endif
 
@@ -131,7 +131,7 @@ Requires:       remmina = %{version}
 This package provides the NX protocol plugin for Remmina.
 %endif
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
+%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
 %package plugin-kwallet
 Summary:        Remmina plugin to support the KDE Wallet
 Group:          Productivity/Networking/Other
@@ -199,7 +199,7 @@ export CFLAGS="%{optflags} -fPIE -pie"
 export CFLAGS="$CFLAGS -fPIC"
 %endif
 
-%if 0%{?is_opensuse}
+%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
 %cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON
 %else
 %cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON -DWITH_APPINDICATOR=OFF
@@ -348,7 +348,7 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-nx-symbolic.svg
 %endif
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
+%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
 %files plugin-kwallet
 %{_libdir}/remmina/plugins/remmina-plugin-kwallet.so
 %endif

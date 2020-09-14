@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:58:54 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Build with kwallet and libappindicator on Tumbleweed, Leap and
+  SLE releases greater than SLE-15-SP2 (jsc#SLE-11656).
+
+-------------------------------------------------------------------
 Fri Aug 14 12:35:00 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to release 1.4.8
