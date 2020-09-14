@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:47:56 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.17.56
+  * api-change:``workspaces``: Update workspaces client to latest version
+  * api-change:``xray``: Update xray client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+- from version 1.17.55
+  * api-change:``stepfunctions``: Update stepfunctions client to latest version
+  * api-change:``guardduty``: Update guardduty client to latest version
+  * api-change:``mediapackage``: Update mediapackage client to latest version
+  * api-change:``kendra``: Update kendra client to latest version
+- from version 1.17.54
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``macie2``: Update macie2 client to latest version
+- from version 1.17.53
+  * api-change:``codeguru-reviewer``: Update codeguru-reviewer client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+- from version 1.17.52
+  * api-change:``sqs``: Update sqs client to latest version
+  * api-change:``backup``: Update backup client to latest version
+  * api-change:``cloudfront``: Update cloudfront client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.17.51
+  * api-change:``cur``: Update cur client to latest version
+  * api-change:``route53``: Update route53 client to latest version
+  * api-change:``cloudfront``: Update cloudfront client to latest version
+  * api-change:``emr``: Update emr client to latest version
+- from version 1.17.50
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``redshift``: Update redshift client to latest version
+  * api-change:``gamelift``: Update gamelift client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+- from version 1.17.49
+  * api-change:``appflow``: Update appflow client to latest version
+  * api-change:``route53resolver``: Update route53resolver client to latest version
+- from version 1.17.48
+  * api-change:``iotsitewise``: Update iotsitewise client to latest version
+  * api-change:``xray``: Update xray client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``logs``: Update logs client to latest version
+  * api-change:``dms``: Update dms client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``kafka``: Update kafka client to latest version
+- from version 1.17.47
+  * api-change:``chime``: Update chime client to latest version
+  * api-change:``fsx``: Update fsx client to latest version
+  * api-change:``apigatewayv2``: Update apigatewayv2 client to latest version
+- from version 1.17.46
+  * api-change:``lakeformation``: Update lakeformation client to latest version
+  * api-change:``storagegateway``: Update storagegateway client to latest version
+  * api-change:``ivs``: Update ivs client to latest version
+  * api-change:``organizations``: Update organizations client to latest version
+  * api-change:``servicecatalog``: Update servicecatalog client to latest version
+- from version 1.17.45
+  * api-change:``identitystore``: Update identitystore client to latest version
+  * api-change:``codebuild``: Update codebuild client to latest version
+  * api-change:``cognito-idp``: Update cognito-idp client to latest version
+  * api-change:``datasync``: Update datasync client to latest version
+  * api-change:``sesv2``: Update sesv2 client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+- from version 1.17.44
+  * api-change:``elbv2``: Update elbv2 client to latest version
+  * api-change:``quicksight``: Update quicksight client to latest version
+  * api-change:``kinesis``: Update kinesis client to latest version
+  * api-change:``ecr``: Update ecr client to latest version
+  * api-change:``acm``: Update acm client to latest version
+  * api-change:``robomaker``: Update robomaker client to latest version
+  * api-change:``elb``: Update elb client to latest version
+  * api-change:``acm-pca``: Update acm-pca client to latest version
+- from version 1.17.43
+  * api-change:``braket``: Update braket client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``license-manager``: Update license-manager client to latest version
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+  * api-change:``appstream``: Update appstream client to latest version
+- from version 1.17.42
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``eks``: Update eks client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``macie2``: Update macie2 client to latest version
+  * api-change:``cognito-idp``: Update cognito-idp client to latest version
+  * api-change:``appsync``: Update appsync client to latest version
+  * api-change:``braket``: Update braket client to latest version
+- from version 1.17.41
+  * api-change:``transfer``: Update transfer client to latest version
+  * api-change:``comprehend``: Update comprehend client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``fsx``: Update fsx client to latest version
+  * api-change:``workspaces``: Update workspaces client to latest version
+  * api-change:``lambda``: Update lambda client to latest version
+  * api-change:``iot``: Update iot client to latest version
+  * api-change:``cloud9``: Update cloud9 client to latest version
+
+-------------------------------------------------------------------
 Wed Aug 12 10:45:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.17.40 (bsc#1175147, bsc#1175148, jsc#ECO-2362, jsc#PM-2069)
