@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  9 18:34:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.15.0
+  * fix issue sending pin codes
+  * add command line option to bind to specific interface
+  * use different hints for OTP and 2FA
+  * remove password from /proc/#/cmd
+  * extend OTP to allow FTM push
+  * add preliminary support for host checks
+  * don't accept route to the vpn gateway
+  * fix byte counter in pppd_write
+
+-------------------------------------------------------------------
 Sat May 23 08:34:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.14.1
