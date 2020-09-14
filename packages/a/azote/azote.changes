@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:26:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.14:
+  * Added possibility to open images with swappy (.png only)
+  * fixed crash on the stored wallpaper folder path not found #102
+  * added support for Wayfire (possibly also for other wlroots-based
+    Wayland compositors); swaybg and wlr-randr packages required.
+
+-------------------------------------------------------------------
 Tue Jun 23 09:40:06 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.12:
