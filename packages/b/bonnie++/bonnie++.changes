@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:32:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.98:
+  * Allow specifying the number of random seeks and the number
+  of seeker processes and store that in the CSV (for testing NVMe).
+  * Changed the text output to use KiB/MiB/GiB as units of measurement so we
+  can fit NVMe results on screen. 
+
+-------------------------------------------------------------------
 Thu Oct 17 14:51:06 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)
