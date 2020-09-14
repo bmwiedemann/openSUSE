@@ -1005,4 +1005,22 @@
   * f_async_queue: change reset behavior</comment>
     <requestid>832587</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b5ec814492986c0b40b256c960ef822e</srcmd5>
+    <version>0.32.0+git.20200912T130313.49f5c9b482</version>
+    <time>1600079632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200912T130313.49f5c9b482:
+  * command: add property track-list/N/main-selection
+  * player: fix inconsistent AO pause state in certain situations
+  * player: some minor code golf
+  * vo_vdpau: remove an unused variable
+  * player: clamp relative seek base time to nominal duration
+  * manpage: &quot;fix&quot; some formatting
+  * terminal-unix: attempt to support more CTRL
+  * vo_vdpau: remove deprecated/inactive --vo-vdpau-deint option
+  * command: add read-only focused property
+  * manpage: fix typo</comment>
+    <requestid>834225</requestid>
+  </revision>
 </revisionlist>

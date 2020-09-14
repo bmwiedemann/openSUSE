@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:46:26 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.20200912T130313.49f5c9b482:
+  * command: add property track-list/N/main-selection
+  * player: fix inconsistent AO pause state in certain situations
+  * player: some minor code golf
+  * vo_vdpau: remove an unused variable
+  * player: clamp relative seek base time to nominal duration
+  * manpage: "fix" some formatting
+  * terminal-unix: attempt to support more CTRL
+  * vo_vdpau: remove deprecated/inactive --vo-vdpau-deint option
+  * command: add read-only focused property
+  * manpage: fix typo
+
+-------------------------------------------------------------------
 Sun Sep 06 05:23:47 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20200904T003159.f57b90b069:
