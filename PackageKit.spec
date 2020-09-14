@@ -16,28 +16,23 @@
 #
 
 
-%define BUILD_CNF 0
+%bcond_with cnf
+
 %if 0%{?sle_version}
 %bcond_with offline_updates
 %else
 %bcond_without offline_updates
 %endif
 
-# Only make DNF backend available on openSUSE flavors
+# Only make DNF backend available openSUSE Leap 15.1+
 %if 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550
 %bcond_without dnf
 %else
 %bcond_with dnf
 %endif
 
-# $ pkcon search file /usr/bin/anjuta
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
-
 Name:           PackageKit
-Version:        1.1.13
+Version:        1.2.1
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -53,26 +48,11 @@ Source99:       PackageKit.keyring
 Patch1:         PackageKit-systemd-timers.patch
 # PATCH-FIX-OPENSUSE PackageKit-remove-polkit-rules.patch bsc#1125434 sckang@suse.com -- Remove polkit rules file
 Patch2:         PackageKit-remove-polkit-rules.patch
-# PATCH-FIX-UPSTREAM PackageKit-drop-gtk2.patch gh#/hughsie/PackageKit#333 - Port away from gtk2 dependency
-Patch3:         PackageKit-drop-gtk2.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-update-packages-in-all-openSUSE.patch sckang@suse.com -- Handle Tumbleweed upgrade in update-packages as well so that it doesn't break other components.
-Patch4:         PackageKit-zypp-update-packages-in-all-openSUSE.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-ignore-already-installed-packages.patch bsc#1155624, gh#/hughsie/PackageKit/commit/d9233011 songchuan.kang@suse.com -- zypp: Ignore already installed package when installing.
-Patch5:         PackageKit-zypp-ignore-already-installed-packages.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch gh#/hughsie/PackageKit/commit/5c0fd7d7 sckang@suse.com -- zypp: Ensure ResPool is built before is_tumbleweed().
-Patch6:         PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch
-# PATCH-FIX-UPSTREAM PackageKit-pkcon-exit-with-retval-5.patch gh#/hughsie/PackageKit#405 bsc#1170562 sckang@suse.com -- pkcon: exit with retval 5 if no packages needed be installed.
-Patch7:         PackageKit-pkcon-exit-with-retval-5.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-cleanup-tmp-files.patch gh#/hughsie/PackageKit/commit/807f410, bsc#1169739 sckang@suse.com -- zypp: Cleanup temporary files when PackageKit quits.
-Patch8:         PackageKit-zypp-cleanup-tmp-files.patch
-# PATCH-FIX-OPENSUSE PackageKit-dnf-Add-openSUSE-vendor.patch ngompa13@gmail.com -- Add openSUSE vendor
-Patch1001:      PackageKit-dnf-Add-openSUSE-vendor.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
-Patch1002:      PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+# PATCH-FIX-UPSTREAM PackageKit-test-Install-required-helper-files.patch gh#/hughsie/PackageKit/commit/a6904b4 ngompa13@gmail.com -- Fix installation of test backend files
+Patch4:         PackageKit-test-Install-required-helper-files.patch
 
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
@@ -85,12 +65,14 @@ BuildRequires:  libarchive-devel
 BuildRequires:  libcppunit-devel
 %if %{with dnf}
 BuildRequires:  appstream-glib-devel
-BuildRequires:  libdnf-devel >= 0.22.0
+BuildRequires:  libdnf-devel >= 0.43.1
 %endif
 BuildRequires:  libgudev-1_0-devel
 BuildRequires:  libtool
 BuildRequires:  libzypp-devel
+BuildRequires:  meson >= 0.50
 BuildRequires:  mozilla-nspr-devel >= 4.8
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel >= 0.98
 # We need the %%mime_database_* macros
@@ -105,10 +87,6 @@ BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-backend
 Requires:       %{name}-branding = %{version}
 Suggests:       %{name}-backend-zypp
-Requires(post): %fillup_prereq
-%if 0%{suse_version} < 1500
-Suggests:       cron
-%endif
 # doc package only contained the website, and got removed in 0.7.4
 Obsoletes:      %{name}-doc < 0.7.4
 # gtk+ 2 module was removed in 0.7.0
@@ -198,7 +176,7 @@ Summary:        Header files for development with PackageKit
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       libpackagekit-glib2-devel
+Requires:       libpackagekit-glib2-devel = %{version}-%{release}
 
 %description devel
 This package contains all necessary include files, libraries,
@@ -277,43 +255,29 @@ This package provides the upstream default configuration for PackageKit.
 
 %prep
 %autosetup -p1
-translation-update-upstream
-
-# Due to DNF patches, need to regen configure...
-autoreconf -fiv
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-static \
-	%{?with_dnf:--enable-dnf} \
-	%{?with_dnf:--with-dnf-vendor=opensuse} \
-	--enable-zypp \
-	--enable-gstreamer-plugin \
-%if ! %{BUILD_CNF}
-	--disable-command-not-found \
-%else
-	--enable-command-not-found \
-%endif
-	--enable-systemd \
-%if %{with offline_updates}
-	--enable-offline-update \
-%else
-	--disable-offline-update \
-%endif
-%if 0%{suse_version} >= 1500
-	--disable-cron \
-%endif
-	%{nil}
-%make_build
+%meson \
+        -Dgtk_doc=true \
+        -Dpython_backend=false \
+        -Dpackaging_backend=%{?with_dnf:dnf,}zypp \
+        %{?with_dnf:-Ddnf_vendor=opensuse} \
+        %{!?with_cnf:-Dbash_command_not_found=false} \
+        %{!?with_offline_updates:-Doffline_update=false} \
+        -Dcron=false \
+        -Dlocal_checkout=false
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-%if 0%{suse_version} < 1500
-# move the cron configuration to a sysconfig template
-install -d %{buildroot}%{_fillupdir}
-mv %{buildroot}%{_sysconfdir}/sysconfig/packagekit-background %{buildroot}%{_fillupdir}/sysconfig.packagekit-background
+%meson_install
+
+%if %{with offline_updates}
+# enable packagekit-offline-updates.service here for now, till we
+# decide how to do it upstream after the meson conversion:
+# https://github.com/hughsie/PackageKit/issues/401
+# https://bugzilla.redhat.com/show_bug.cgi?id=1833176
+mkdir -p %{buildroot}%{_unitdir}/system-update.target.wants/
+ln -sf ../packagekit-offline-update.service %{buildroot}%{_unitdir}/system-update.target.wants/packagekit-offline-update.service
 %endif
 # Prepare for update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
@@ -336,22 +300,15 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 
 %pre
 %service_add_pre packagekit.service
-%if 0%{suse_version} >= 1500
 %service_add_pre packagekit-background.service packagekit-background.timer
-%endif
 %if %{with offline_updates}
 %service_add_pre packagekit-offline-update.service
 %endif
 
 %post
-%if 0%{suse_version} < 1500
-%{fillup_only -n packagekit-background}
-%endif
 %mime_database_post
 %service_add_post packagekit.service
-%if 0%{suse_version} >= 1500
 %service_add_post packagekit-background.service packagekit-background.timer
-%endif
 %if %{with offline_updates}
 %service_add_post packagekit-offline-update.service
 %else
@@ -366,9 +323,7 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 
 %preun
 %service_del_preun packagekit.service
-%if 0%{suse_version} >= 1500
 %service_del_preun packagekit-background.service packagekit-background.timer
-%endif
 %if %{with offline_updates}
 %service_del_preun packagekit-offline-update.service
 %endif
@@ -378,9 +333,7 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 # Do not restart PackageKit on upgrade - it kills the transaction
 export DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun packagekit.service
-%if 0%{suse_version} >= 1500
 %service_del_postun packagekit-background.service packagekit-background.timer
-%endif
 %if %{with offline_updates}
 %service_del_postun packagekit-offline-update.service
 %endif
@@ -394,14 +347,6 @@ if [ ! -f %{_libexecdir}/pk-gstreamer-install ]; then
   update-alternatives --remove gst-install-plugins-helper %{_libexecdir}/pk-gstreamer-install
 fi
 
-%if 0%{?suse_version} < 1330
-%post gtk3-module
-%glib2_gsettings_schema_post
-
-%postun gtk3-module
-%glib2_gsettings_schema_postun
-%endif
-
 %post -n libpackagekit-glib2-18 -p /sbin/ldconfig
 %postun -n libpackagekit-glib2-18 -p /sbin/ldconfig
 
@@ -413,43 +358,31 @@ fi
 %dir %{_sysconfdir}/PackageKit
 %dir %{_datadir}/PackageKit
 %dir %{_datadir}/PackageKit/helpers
-%dir %{_datadir}/PackageKit/helpers/test_spawn
 %dir %{_libdir}/packagekit-backend
 %dir %{_usr}/lib/tmpfiles.d
 %{_datadir}/bash-completion/completions/pkcon
-%if 0%{suse_version} < 1500
-%{_sysconfdir}/cron.daily/packagekit-background.cron
-%endif
 %{_sysconfdir}/dbus-1/system.d/org.freedesktop.PackageKit.conf
-%if %{BUILD_CNF}
+%if %{with cnf}
 %{_sysconfdir}/profile.d/PackageKit.sh
-%endif
-%if 0%{suse_version} < 1500
-%{_fillupdir}/sysconfig.packagekit-background
 %endif
 %{_bindir}/pkcon
 %{_bindir}/pkmon
 %{_libdir}/packagekit-backend/libpk_backend_dummy.so
 %{_libexecdir}/packagekitd
 %{_libexecdir}/packagekit-direct
-%if %{BUILD_CNF}
+%if %{with cnf}
 %{_libexecdir}/pk-command-not-found
 %endif
 %{_datadir}/dbus-1/interfaces/org.freedesktop.PackageKit.Transaction.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.PackageKit.xml
-%{_datadir}/PackageKit/helpers/test_spawn/search-name.sh
 %{_datadir}/PackageKit/pk-upgrade-distro.sh
-%if 0%{suse_version} >= 1500
 %{_datadir}/PackageKit/packagekit-background.sh
-%endif
 %verify(not md5 size mtime) %{_datadir}/PackageKit/transactions.db
 %{_datadir}/polkit-1/actions/org.freedesktop.packagekit.policy
 %{_datadir}/dbus-1/system-services/*
 %{_unitdir}/packagekit.service
-%if 0%{suse_version} >= 1500
 %{_unitdir}/packagekit-background.service
 %{_unitdir}/packagekit-background.timer
-%endif
 %{_sbindir}/rcpackagekit
 %{_mandir}/man?/*%{ext_man}
 %{_tmpfilesdir}/PackageKit.conf
@@ -485,15 +418,15 @@ fi
 
 %files devel
 %doc %{_datadir}/gtk-doc/html/PackageKit
-%dir %{_datadir}/vala/vapi
-%{_datadir}/vala/vapi/packagekit-glib2.vapi
+%dir %{_includedir}/PackageKit
 # Test backends are not useful, except for developers
 %{_libdir}/packagekit-backend/libpk_backend_test_fail.so
 %{_libdir}/packagekit-backend/libpk_backend_test_nop.so
 %{_libdir}/packagekit-backend/libpk_backend_test_spawn.so
 %{_libdir}/packagekit-backend/libpk_backend_test_succeed.so
 %{_libdir}/packagekit-backend/libpk_backend_test_thread.so
-%dir %{_includedir}/PackageKit
+%dir %{_datadir}/PackageKit/helpers/test_spawn
+%{_datadir}/PackageKit/helpers/test_spawn/search-name.sh
 
 %files -n libpackagekit-glib2-18
 %license lib/packagekit-glib2/COPYING
@@ -508,9 +441,12 @@ fi
 %dir %{_includedir}/PackageKit
 %{_includedir}/PackageKit/packagekit-glib2/
 %{_datadir}/gir-1.0/PackageKitGlib-1.0.gir
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/packagekit-glib2.vapi
+%{_datadir}/vala/vapi/packagekit-glib2.deps
 
 %files branding-upstream
-%if %{BUILD_CNF}
+%if %{with cnf}
 %config(noreplace) %{_sysconfdir}/PackageKit/CommandNotFound.conf
 %endif
 %config(noreplace) %{_sysconfdir}/PackageKit/PackageKit.conf

@@ -1697,4 +1697,42 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
   (gh#/hughsie/PackageKit/commit/807f410, bsc#1169739). (forwarded request 826192 from JonathanKang)</comment>
     <requestid>826638</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>07374b2f049ab9b18ade5fc65883f2bd</srcmd5>
+    <version>1.2.1</version>
+    <time>1600078394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1
+  + Port to the meson build system
+  + Remove the GTK2 gtk-module support
+  + Do not do failable actions in the PkDbus constructor
+  + Do not do failable actions in the PkTransaction constructor
+  + Revert &quot;Shutdown the daemon on idle by default&quot;
+  + Actually merge in the PolicyKit translation
+  + Fix setting libexecdir for command-not-found helper
+  + Fix command-not-found handling arguments with spaces
+  + Use SQL statements for queries with input
+  + Exit pkcon with retval 5 if no packages needed be installed
+  + dnf: Load all the repos and vars directories
+  + dnf: Add vendor configuration for openSUSE
+  + zypp: Ignore already installed package when installing
+  + zypp: Remove upgrade-system implementation
+  + zypp: Clean up temporary files when PK quits
+  + zypp: Ensure ResPool is built before is_tumbleweed()
+- Remove upstreamed patches
+  + PackageKit-dnf-Add-openSUSE-vendor.patch
+  + PackageKit-drop-gtk2.patch
+  + PackageKit-pkcon-exit-with-retval-5.patch
+  + PackageKit-zypp-cleanup-tmp-files.patch
+  + PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch
+  + PackageKit-zypp-ignore-already-installed-packages.patch
+  + PackageKit-zypp-update-packages-in-all-openSUSE.patch
+- Add patch from upstream
+  + PackageKit-test-Install-required-helper-files.patch
+- Refresh existing patches
+  + PackageKit-remove-polkit-rules.patch
+  + PackageKit-systemd-timers.patch
+- Clean up legacy cruft, assume openSUSE Leap 15 or newer (forwarded request 832819 from Pharaoh_Atem)</comment>
+    <requestid>833698</requestid>
+  </revision>
 </revisionlist>

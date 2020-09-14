@@ -1,70 +1,51 @@
-Index: PackageKit-1.1.12/data/Makefile.am
-===================================================================
---- PackageKit-1.1.12.orig/data/Makefile.am
-+++ PackageKit-1.1.12/data/Makefile.am
-@@ -9,12 +9,16 @@ SUBDIRS = 						\
- upgradescriptdir = $(datadir)/PackageKit
- upgradescript_SCRIPTS = pk-upgrade-distro.sh
+diff -rupN PackageKit-1.2.1/data/meson.build PackageKit-1.2.1-systemd-timers/data/meson.build
+--- PackageKit-1.2.1/data/meson.build	2020-09-07 05:14:48.836002600 -0400
++++ PackageKit-1.2.1-systemd-timers/data/meson.build	2020-09-07 10:26:55.514657134 -0400
+@@ -6,6 +6,7 @@ install_data(
+ dbus_config_data = configuration_data()
+ dbus_config_data.set('PACKAGEKIT_USER', get_option('packagekit_user'))
+ dbus_config_data.set('libexecdir', join_paths(get_option('prefix'), get_option('libexecdir')))
++dbus_config_data.set('datadir', join_paths(get_option('prefix'), get_option('datadir')))
  
-+backgroundscriptdir = $(datadir)/PackageKit
-+backgroundscript_SCRIPTS = packagekit-background.sh
+ dbus_sys_dir = get_option('dbus_sys')
+ if dbus_sys_dir == ''
+@@ -43,6 +44,24 @@ if get_option('systemd')
+     install_dir: systemd_system_unit_dir,
+   )
+ 
++  configure_file(
++    input: 'packagekit-background.service.in',
++    output: 'packagekit-background.service',
++    configuration: dbus_config_data,
++    install: true,
++    install_dir: systemd_system_unit_dir,
++  )
 +
- dbusdir = ${DBUS_SYS_DIR}
- dist_dbus_DATA = 					\
- 	org.freedesktop.PackageKit.conf
- 
- %.service: %.service.in Makefile
- 	$(AM_V_GEN)sed -e 's|\@libexecdir\@|$(libexecdir)|' \
-+	               -e 's|\@datadir\@|$(datadir)|' \
- 	               -e 's|\@PACKAGEKIT_USER\@|$(PACKAGEKIT_USER)|' $< > $@.tmp && mv $@.tmp $@
- 
- servicemaindir       = $(DBUS_SERVICES_DIR)
-@@ -23,14 +27,18 @@ servicemain_DATA     = $(servicemain_in_
- 
- systemdservice_in_files =				\
- 	packagekit.service.in				\
-+	packagekit-background.service.in	\
- 	packagekit-offline-update.service.in
- 
- if HAVE_SYSTEMD
- systemdservicedir       = $(systemdsystemunitdir)
- systemdservice_DATA	= packagekit.service
-+systemdservice_DATA += packagekit-background.service
- if ENABLE_OFFLINE_UPDATE
- systemdservice_DATA	+= packagekit-offline-update.service
- endif
-+systemdtimerdir       = $(systemdsystemunitdir)
-+systemdtimer_DATA = packagekit-background.timer
- endif
- 
- 
-@@ -54,9 +62,11 @@ EXTRA_DIST =						\
- 	$(servicetest_in_files)				\
- 	$(serviceapt_in_files)				\
- 	$(systemdservice_in_files)			\
-+	$(systemdtimer_DATA)			\
- 	$(localcache_DATA)				\
- 	$(database_DATA)				\
--	$(upgradescript_SCRIPTS)
-+	$(upgradescript_SCRIPTS)		\
-+	$(backgroundscript_SCRIPTS)
- 
- clean-local:
- 	rm -f *~
-Index: PackageKit-1.1.12/data/packagekit-background.service.in
-===================================================================
---- /dev/null
-+++ PackageKit-1.1.12/data/packagekit-background.service.in
++  install_data(
++    'packagekit-background.timer',
++    install_dir: systemd_system_unit_dir,
++  )
++
++  install_data(
++    'packagekit-background.sh',
++    install_dir: join_paths(get_option('datadir'), 'PackageKit'),
++  )
++
+   if get_option('offline_update')
+     configure_file(
+       input: 'packagekit-offline-update.service.in',
+diff -rupN PackageKit-1.2.1/data/packagekit-background.service.in PackageKit-1.2.1-systemd-timers/data/packagekit-background.service.in
+--- PackageKit-1.2.1/data/packagekit-background.service.in	1969-12-31 19:00:00.000000000 -0500
++++ PackageKit-1.2.1-systemd-timers/data/packagekit-background.service.in	2020-09-07 10:27:07.897771008 -0400
 @@ -0,0 +1,5 @@
 +[Unit]
 +Description=Script to update the system with PackageKit
 +
 +[Service]
 +ExecStart=@datadir@/PackageKit/packagekit-background.sh
-Index: PackageKit-1.1.12/data/packagekit-background.sh
-===================================================================
---- /dev/null
-+++ PackageKit-1.1.12/data/packagekit-background.sh
+diff -rupN PackageKit-1.2.1/data/packagekit-background.sh PackageKit-1.2.1-systemd-timers/data/packagekit-background.sh
+--- PackageKit-1.2.1/data/packagekit-background.sh	1969-12-31 19:00:00.000000000 -0500
++++ PackageKit-1.2.1-systemd-timers/data/packagekit-background.sh	2020-09-07 10:17:37.609526652 -0400
 @@ -0,0 +1,102 @@
 +#!/bin/bash
 +# Copyright (C) 2008 Richard Hughes <richard@hughsie.com>
@@ -168,10 +149,9 @@ Index: PackageKit-1.1.12/data/packagekit-background.sh
 +
 +rm -f $PKTMP
 +
-Index: PackageKit-1.1.12/data/packagekit-background.timer
-===================================================================
---- /dev/null
-+++ PackageKit-1.1.12/data/packagekit-background.timer
+diff -rupN PackageKit-1.2.1/data/packagekit-background.timer PackageKit-1.2.1-systemd-timers/data/packagekit-background.timer
+--- PackageKit-1.2.1/data/packagekit-background.timer	1969-12-31 19:00:00.000000000 -0500
++++ PackageKit-1.2.1-systemd-timers/data/packagekit-background.timer	2020-09-07 10:17:37.609526652 -0400
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Systemd timer to update the system daily with PackageKit

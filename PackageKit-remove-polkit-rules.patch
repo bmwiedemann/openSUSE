@@ -1,13 +1,9 @@
-Index: PackageKit-1.1.12/policy/Makefile.am
-===================================================================
---- PackageKit-1.1.12.orig/policy/Makefile.am
-+++ PackageKit-1.1.12/policy/Makefile.am
-@@ -1,8 +1,4 @@
- 
--polkit_rulesdir = $(datadir)/polkit-1/rules.d
--dist_polkit_rules_DATA =					\
--	org.freedesktop.packagekit.rules
--
- polkit_policydir = $(datadir)/polkit-1/actions
- dist_polkit_policy_DATA =					\
- 	org.freedesktop.packagekit.policy
+diff -rup PackageKit-1.2.1/policy/meson.build PackageKit-1.2.1-rm-polkitrules/policy/meson.build
+--- PackageKit-1.2.1/policy/meson.build	2020-09-07 05:14:48.879003300 -0400
++++ PackageKit-1.2.1-rm-polkitrules/policy/meson.build	2020-09-07 10:12:34.746741536 -0400
+@@ -1,5 +1,3 @@
+-install_data('org.freedesktop.packagekit.rules',
+-             install_dir : join_paths(get_option('datadir'), 'polkit-1', 'rules.d'))
+ i18n.merge_file(
+   input: 'org.freedesktop.packagekit.policy.in',
+   output: 'org.freedesktop.packagekit.policy',
