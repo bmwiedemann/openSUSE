@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 12 19:58:20 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.26.0:
+  * Add logging for adaptive start and stop (GH#4101) Matthew Rocklin
+  * Don’t close a nannied worker if it hasn’t yet started (GH#4093)
+    Matthew Rocklin
+  * Respect timeouts when closing clients synchronously (GH#4096)
+    Matthew Rocklin
+  * Log when downloading a preload script (GH#4094) Matthew Rocklin
+  * dask-worker --nprocs accepts negative values (GH#4089) Dror
+    Speiser
+  * Support zero-worker clients (GH#4090) Matthew Rocklin
+  * Exclude fire-and-forget client from metrics (GH#4078) Tom
+    Augspurger
+  * Drop Serialized.deserialize() method (GH#4073) jakirkham
+  * Add timeout= keyword to Client.wait_for_workers method (GH#4087)
+    Matthew Rocklin
+
+-------------------------------------------------------------------
 Sat Aug 29 15:53:08 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.25.0:
