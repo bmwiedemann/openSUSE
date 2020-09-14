@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Sep 13 14:00:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7
+  Specification additions:
+  * sge.gfx.Font.linesize
+  * sge.gfx.Sprite.size
+  Specification misc changes:
+  * Added an outline and outline_thickness argument to
+    sge.gfx.Sprite.draw_text and related methods.
+  * Added use of an argument by the pixelate transition to control
+    rate of pixelation updates.
+  * Specified that extending sge.s with additional string variables
+    is allowed.
+  * Removed the warning about use of MP3 files in the documentation
+    since MP3 patents expired a couple years ago.
+  Specification bugfixes:
+  * Missing documentation for sge.gfx.Sprite.get_spritelist
+  * Missing documentation for sge.gfx.Color.__init__
+  * sge.gfx.Sprite.scale docs talking about rotation rather than
+    scaling
+- Update to version 1.7
+  Specification additions:
+  * sge.s.isometric
+  * sge.s.orthogonal
+  * sge.gfx.Sprite.get_spritelist
+  Specification misc changes:
+  * Full name changed from "SGE Game Engine" to "Seclusion Game Engine"
+  Specification bugfixes:
+  * Misspelling of "backgrounds" as "bckgrounds"
+
+-------------------------------------------------------------------
 Wed Dec  5 19:35:36 UTC 2018 - mardnh@gmx.de
 
 - Update to version 1.5.1
