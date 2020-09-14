@@ -1,7 +1,7 @@
 #
 # spec file for package atheme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,9 +79,7 @@ mkdir -p libmowgli-2 modules/contrib
 touch libmowgli-2/Makefile modules/contrib/Makefile
 
 %build
-%if 0%{?suse_version} >= 1210
 export RUNDIR="/run"
-%endif
 %configure \
 	--sysconfdir="%_sysconfdir/%name" \
 	--bindir="%_sbindir" \
@@ -90,21 +88,18 @@ export RUNDIR="/run"
 	--enable-warnings \
 	--enable-large-net \
 	--with-pcre
-
-make %{?_smp_mflags}
+%make_build
 
 %install
-%if 0%{?suse_version} >= 1210
 export RUNDIR="/run"
-%endif
-b="%buildroot"
 %make_install DOCDIR="%_docdir/%name"
+b="%buildroot"
 
 # additional documentation
 mkdir -p "$b/%_docdir/%name"
 install -m 0644 contrib/*.php contrib/*.pl TODO "$b/%_docdir/%name"
 
-mkdir -p "$b/%_unitdir" "$b/%_libexecdir/tmpfiles.d"
+mkdir -p "$b/%_unitdir" "$b/%_prefix/lib/tmpfiles.d"
 ln -s service "$b/%_sbindir/rcatheme"
 cat >"$b/%_unitdir/atheme.service" <<-EOF
 	[Unit]
@@ -150,7 +145,6 @@ systemd-tmpfiles --create atheme.conf || :
 %postun -n %lname -p /sbin/ldconfig
 
 %files -f %name.lang
-%defattr(-,root,root)
 %dir %attr(750,root,atheme) %_sysconfdir/%name/
 %config(noreplace) %attr(640,root,atheme) %_sysconfdir/%name/atheme.conf
 %config(noreplace) %attr(644,root,atheme) %_sysconfdir/%name/atheme.motd
@@ -164,14 +158,12 @@ systemd-tmpfiles --create atheme.conf || :
 %dir %attr(750,atheme,atheme) %atheme_home
 %dir %attr(750,atheme,atheme) %atheme_log
 %_unitdir/*.service
-%_libexecdir/tmpfiles.d/
+%_prefix/lib/tmpfiles.d/
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libathemecore.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/atheme/
 %_libdir/libathemecore.so
 %_libdir/pkgconfig/atheme-services.pc
