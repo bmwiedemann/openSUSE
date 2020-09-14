@@ -11,6 +11,7 @@ NoNewPrivileges=true
 Environment=V2RAY_LOCATION_ASSET=/usr/share/v2ray
 ExecStart=/usr/bin/v2ray -config /etc/v2ray/config.json
 Restart=on-failure
+RestartPreventExitStatus=23
 
 [Install]
 WantedBy=multi-user.target

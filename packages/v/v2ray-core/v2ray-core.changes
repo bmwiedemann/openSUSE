@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 12 10:48:05 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.28.1
+  * Fix incorrect IV usage which slightly reduced security
+
+-------------------------------------------------------------------
+Fri Sep 11 08:42:39 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.28.0
+  * Changes
+    - VMess AEAD will be used when alterId is 0. ("testsEnabled" is discarded)
+  * Fixes
+    - Fix dns tests by setting v2ray.location.asset @felixonmars
+    - fix abstract UDS & add PROXY protocol support to DS inbound @lucifer9 @rprx
+    - Systemd: prevent restart on corrupt config @DuckSoft
+  * Chores
+    - Upgrade all dependencies @rprx
+    - Change lint order to avoid file changes notice @Loyalsoldier
+    - Update geoip, geosite
+
+-------------------------------------------------------------------
 Wed Sep  2 10:34:41 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update version to 4.27.5

@@ -25,7 +25,7 @@
 %define   import_path     v2ray.com/core
 
 Name:           v2ray-core
-Version:        4.27.5
+Version:        4.28.1
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
