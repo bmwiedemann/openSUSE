@@ -1,5 +1,5 @@
 #
-# spec file for package new-launchers
+# spec file for package nwg-launchers
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -17,7 +17,7 @@
 
 
 Name:           nwg-launchers
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        GTK launchers and menu for sway and i3
 License:        GPL-3.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:29:34 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.3:
+  * [nwggrid] support for applications installed with flatpak
+  * fixes to improper displays geometry detection on X11
+  * [nwggrid] new pin/unpin implementation
+  * code optimization
+
+-------------------------------------------------------------------
 Fri Aug 28 07:31:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of new-launchers 0.3.2 for openSUSE
