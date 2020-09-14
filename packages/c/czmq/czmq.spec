@@ -1,7 +1,7 @@
 #
 # spec file for package czmq
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,8 @@ Release:        0
 Summary:        High-level C binding for ZeroMQ
 License:        MPL-2.0
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/zeromq/czmq
+URL:            https://github.com/zeromq/czmq
 Source0:        https://github.com/zeromq/czmq/releases/download/v%{version}/czmq-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -39,6 +38,7 @@ BuildRequires:  xz
 
 %description
 CZMQ is a higher-level binding for the ZeroMQ core API.
+This package contains key creation utility zmakecert.
 
 %package -n %{lib_name}
 Summary:        Shared library of %{name}
@@ -87,22 +87,19 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %postun -n %{lib_name} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %{_bindir}/zmakecert
+%{_mandir}/man1/zmakecert.1.gz
 
 %files -n %{lib_name}
-%defattr(-,root,root)
 %{_libdir}/libczmq.so.*
 
 %files devel
-%defattr(-,root,root)
 %license LICENSE
 %doc AUTHORS CONTRIBUTING.md NEWS README.md README.txt
 %{_includedir}/*.h
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/lib%{name}.pc
-%{_mandir}/man1/zmakecert.1.gz
 %{_mandir}/man3/z*.3.gz
 %{_mandir}/man7/%{name}.7.gz
 %dir %{_datadir}/zproject
