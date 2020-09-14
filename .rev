@@ -69,4 +69,12 @@ things like &quot;archivemount -r /boot/initrd /mnt&quot;</comment>
     <comment></comment>
     <requestid>739617</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>301b61755cf2e7b023200c4114c37f5f</srcmd5>
+    <version>0.9.1</version>
+    <time>1600079364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834093</requestid>
+  </revision>
 </revisionlist>

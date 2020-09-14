@@ -1,7 +1,7 @@
 #
 # spec file for package archivemount
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           archivemount
-Version:        0.8.7
+Version:        0.9.1
 Release:        0
 Summary:        Mounts an archive for access as a file system
 License:        LGPL-2.1-or-later AND BSD-2-Clause
-Url:            http://www.cybernoia.de/software/archivemount/
+URL:            http://www.cybernoia.de/software/archivemount/
 Source:         http://www.cybernoia.de/software/archivemount/%{name}-%{version}.tar.gz
-Patch0:         archivemount.dif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fuse-devel
@@ -36,21 +35,21 @@ Archivemount is a piece of glue code between libarchive (http://code.google.com/
 .tar.bz2) and use it like an ordinary filesystem.
 
 %prep
-%setup -q
-%patch0
+%autosetup
 
 %build
 autoreconf --force --install
 export CFLAGS="%{optflags}"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%doc CHANGELOG README COPYING
+%license COPYING
+%doc CHANGELOG README
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
