@@ -3841,4 +3841,14 @@
   * Rename path() to _path() to avoid using a general name.</comment>
     <requestid>827591</requestid>
   </revision>
+  <revision rev="474" vrev="1">
+    <srcmd5>3db3ec5439648b6ef0e491772a7cc299</srcmd5>
+    <version>84.87+git20200909.ee4a72c</version>
+    <time>1600077699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200909.ee4a72c:
+  * /etc/profile.d/xdg-environment.{sh,csh}: Added /usr/etc/xdg to $XDG_CONFIG_DIRS
+  * sysctl.d/50-default.conf: allow everybody to create IPPROTO_ICMP sockets (bsc#1174504)</comment>
+    <requestid>833187</requestid>
+  </revision>
 </revisionlist>

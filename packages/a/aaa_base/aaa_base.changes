@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:51:29 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Update to version 84.87+git20200909.ee4a72c:
+  * /etc/profile.d/xdg-environment.{sh,csh}: Added /usr/etc/xdg to $XDG_CONFIG_DIRS
+  * sysctl.d/50-default.conf: allow everybody to create IPPROTO_ICMP sockets (bsc#1174504)
+
+-------------------------------------------------------------------
 Tue Aug 18 12:57:04 UTC 2020 - ro@suse.de
 
 - Update to version 84.87+git20200818.b9dd70f:
