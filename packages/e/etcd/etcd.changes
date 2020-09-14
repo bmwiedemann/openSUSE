@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 10 09:56:27 UTC 2020 - rbrown@suse.com
+
+- Update to version 3.4.13:
+  * version: 3.4.13
+  * pkg: file stat warning
+  * Automated cherry pick of #12243 on release 3.4
+  * version: 3.4.12
+  * etcdserver: Avoid panics logging slow v2 requests in integration tests
+  * version: 3.4.11
+  * Revert "etcdserver/api/v3rpc: "MemberList" never return non-empty ClientURLs"
+  * *: fix backport of PR12216
+  * *: add experimental flag for watch notify interval
+  * clientv3: remove excessive watch cancel logging
+  * etcdserver: add OS level FD metrics
+  * pkg/runtime: optimize FDUsage by removing sort
+  * clientv3: log warning in case of error sending request
+  * etcdserver/api/v3rpc: "MemberList" never return non-empty ClientURLs
+
+-------------------------------------------------------------------
 Thu Aug 06 09:30:53 UTC 2020 - rbrown@suse.com
 
 - Update to version 3.4.10 [CVE-2020-15106][boo#1174951]:

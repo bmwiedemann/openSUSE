@@ -45,7 +45,6 @@
   <packages type="bootstrap">
     <package name="dhcp-server"/>
     <package name="catatonit"/>
-    <package name="group(nogroup)"/>
     <package name="mandoc"/>
     <package name="-busybox-man"/>
   </packages>

@@ -310,6 +310,8 @@ Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
 Patch0:         2ad009ea-qemu-check-modules-dir.patch
+Patch1:         8abd1ffe-qemu-tolerate-non-existent-files.patch
+Patch2:         4a72b76b-qemu-namespace-memleak-fix.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -847,6 +849,8 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -1187,7 +1191,7 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 %fdupes -s %{buildroot}
 
 %check
-VIR_TEST_DEBUG=1 %meson_test --no-suite syntax-check
+VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 
 %pre daemon
 %{_bindir}/getent group libvirt >/dev/null || %{_sbindir}/groupadd -r libvirt

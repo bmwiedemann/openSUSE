@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 11 10:21:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- busybox-vi: conflict with all vi variants
+
+-------------------------------------------------------------------
 Thu Aug 13 09:30:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix typo in spec file

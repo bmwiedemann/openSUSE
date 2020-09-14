@@ -361,4 +361,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
 - Add ppc in _constraints to avoid  &quot;No space left on device&quot;</comment>
     <requestid>811364</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d5040398faf8fa8127a4cfb565da0f72</srcmd5>
+    <version>5.15.1</version>
+    <time>1600078074</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833644</requestid>
+  </revision>
 </revisionlist>

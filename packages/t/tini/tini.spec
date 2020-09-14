@@ -1,7 +1,7 @@
 #
 # spec file for package tini
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:            tini
-Version:         0.18.0
-Release:         0
-License:         MIT
-Summary:         A tiny but valid init for containers
-Url:             https://github.com/krallin/tini
-Group:           System/Management
-Source:          tini-%{version}.tar.xz
-BuildRoot:       %{_tmppath}/%{name}-%{version}-build
-BuildRequires:   cmake
-BuildRequires:   gcc
-BuildRequires:   glibc-devel
-BuildRequires:   glibc-devel-static
 
+Name:           tini
+Version:        0.19.0
+Release:        0
+Summary:        A tiny but valid init for containers
+License:        MIT
+Group:          System/Management
+URL:            https://github.com/krallin/tini
+Source:         https://github.com/krallin/tini/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
+BuildRequires:  gcc
+BuildRequires:  glibc-devel
+BuildRequires:  glibc-devel-static
 
 %description
 Tini is a trivial implementation for an "init" program.
@@ -39,7 +38,8 @@ and wait for it to exit, all the while reaping zombies and performing signal for
 libc will be needed inside the container.
 
 %package static
-Summary:         A tiny but valid init for containers, with libc linked statically
+Summary:        A tiny but valid init for containers, with libc linked statically
+Group:          System/Management
 
 %description static
 Tini is a trivial implementation for an "init" program.
@@ -71,9 +71,11 @@ cp tini %{buildroot}/tini
 cp tini-static %{buildroot}/tini-static
 
 %files
-%defattr(-,root,root)
-%doc README.md LICENSE
+%license LICENSE
+%doc README.md
 /tini
 
 %files static
 /tini-static
+
+%changelog

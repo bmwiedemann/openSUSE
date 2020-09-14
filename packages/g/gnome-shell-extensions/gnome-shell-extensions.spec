@@ -28,7 +28,6 @@ URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
 Source0:        https://download.gnome.org/sources/gnome-shell-extensions/3.36/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        sle-classic.desktop
-Source3:        SLE-theme.tar.gz
 Source5:        sle-classic.json
 Source6:        sle-classic@suse.com.tar.gz
 Source7:        00_org.gnome.shell.extensions.sle-classic.gschema.override
@@ -42,8 +41,6 @@ Patch3:         gnome-classic-s390-not-require-g-s-d_wacom.patch
 ## NOTE keep SLE Classic patch at the bottom
 # PATCH-FIX-SLE gse-sle-classic-ext.patch Fate#318572 cxiong@suse.com -- add sle classic support
 Patch1000:      gse-sle-classic-ext.patch
-# PATCH-FEATURE-SLE sle-classic-lock-screen-background.patch bsc#1007468 xwang@suse.com -- add SUSE logo on lock screen when auth is requested
-Patch1001:      sle-classic-lock-screen-background.patch
 BuildRequires:  fdupes
 BuildRequires:  gnome-patch-translation
 # Needed for directory ownership
@@ -125,9 +122,6 @@ translation-update-upstream po %{name}
 gnome-patch-translation-prepare po %{name}
 
 %patch1000 -p1
-%if 0%{?sle_version}
-%patch1001 -p1
-%endif
 # In openSUSE GNOME, we don't launch gnome-session directly, but wrap this through a shell script, /usr/bin/gnome
 sed -i "s:Exec=gnome-session:Exec=gnome:g" data/gnome-classic.desktop.in
 cp %{SOURCE1} .
@@ -155,11 +149,6 @@ tar -xzvf %{SOURCE6}
 install -d %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
 cp sle-classic@suse.com/*  %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
 install -m0644 %{SOURCE7} %{buildroot}/%{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
-%if 0%{?sle_version}
-tar -xzvf %{SOURCE3}
-install -d %{buildroot}%{_datadir}/gnome-shell/theme
-cp SLE-theme/theme/*  %{buildroot}%{_datadir}/gnome-shell/theme
-%endif
 %fdupes %{buildroot}%{_datadir}
 
 %if 0%{?sle_version}
@@ -219,7 +208,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/gnome-shell/extensions/sle-classic@suse.com/
 %if 0%{?sle_version}
 %dir %{_datadir}/wayland-sessions
-%{_datadir}/gnome-shell/theme/sle-background.png
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/wayland-sessions/default.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop

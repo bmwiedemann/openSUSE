@@ -438,4 +438,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>- Add _constraints with 4GB min disk space</comment>
     <requestid>826230</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b057fc9bc1856a05a80215e38d4dbade</srcmd5>
+    <version>5.15.1</version>
+    <time>1600078189</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833660</requestid>
+  </revision>
 </revisionlist>

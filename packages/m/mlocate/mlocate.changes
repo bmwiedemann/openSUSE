@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 16:14:56 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- require apparmor-abstractions, because apparmor.service fails with 
+  Could not open 'tunables/global' error otherwise
+
+-------------------------------------------------------------------
 Tue Dec  4 11:11:51 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Reduce amount of emitted %service_* boilerplate.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:34:51 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add pam_pwquality
+
+-------------------------------------------------------------------
 Wed Sep  2 10:00:36 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop call of baseCleanMount, not necessary

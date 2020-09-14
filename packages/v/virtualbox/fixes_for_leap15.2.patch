@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.13/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+Index: VirtualBox-6.1.14/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
 ===================================================================
---- VirtualBox-6.1.13.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
-+++ VirtualBox-6.1.13/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+--- VirtualBox-6.1.14.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
++++ VirtualBox-6.1.14/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
 @@ -73,6 +73,10 @@
  #define VBOXNETFLT_OS_SPECFIC 1
  #include "../VBoxNetFltInternal.h"
@@ -13,10 +13,10 @@ Index: VirtualBox-6.1.13/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.
  typedef struct VBOXNETFLTNOTIFIER {
      struct notifier_block Notifier;
      PVBOXNETFLTINS pThis;
-Index: VirtualBox-6.1.13/src/VBox/Additions/linux/drm/vbox_drv.c
+Index: VirtualBox-6.1.14/src/VBox/Additions/linux/drm/vbox_drv.c
 ===================================================================
---- VirtualBox-6.1.13.orig/src/VBox/Additions/linux/drm/vbox_drv.c
-+++ VirtualBox-6.1.13/src/VBox/Additions/linux/drm/vbox_drv.c
+--- VirtualBox-6.1.14.orig/src/VBox/Additions/linux/drm/vbox_drv.c
++++ VirtualBox-6.1.14/src/VBox/Additions/linux/drm/vbox_drv.c
 @@ -305,11 +305,13 @@ static void vbox_master_drop(struct drm_
  static struct drm_driver driver = {
  #if RTLNX_VER_MAX(5,4,0)
@@ -33,10 +33,10 @@ Index: VirtualBox-6.1.13/src/VBox/Additions/linux/drm/vbox_drv.c
  #else  /* >= 5.4.0 */
          .driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ,
  #endif /* <  5.4.0 */
-Index: VirtualBox-6.1.13/src/VBox/Additions/linux/drm/vbox_main.c
+Index: VirtualBox-6.1.14/src/VBox/Additions/linux/drm/vbox_main.c
 ===================================================================
---- VirtualBox-6.1.13.orig/src/VBox/Additions/linux/drm/vbox_main.c
-+++ VirtualBox-6.1.13/src/VBox/Additions/linux/drm/vbox_main.c
+--- VirtualBox-6.1.14.orig/src/VBox/Additions/linux/drm/vbox_main.c
++++ VirtualBox-6.1.14/src/VBox/Additions/linux/drm/vbox_main.c
 @@ -628,8 +628,12 @@ static inline u64 vbox_bo_mmap_offset(st
  #elif RTLNX_VER_MAX(3,12,0) && !RTLNX_RHEL_MAJ_PREREQ(7,0)
  	return bo->bo.addr_space_offset;
@@ -50,14 +50,14 @@ Index: VirtualBox-6.1.13/src/VBox/Additions/linux/drm/vbox_main.c
  }
  
  int
-Index: VirtualBox-6.1.13/include/iprt/cdefs.h
+Index: VirtualBox-6.1.14/include/iprt/cdefs.h
 ===================================================================
---- VirtualBox-6.1.13.orig/include/iprt/cdefs.h
-+++ VirtualBox-6.1.13/include/iprt/cdefs.h
-@@ -1240,14 +1240,15 @@
- #if RT_CLANG_PREREQ(4, 0) && RT_CPLUSPLUS_PREREQ(201100)
- # define RT_FALL_THROUGH()      [[clang::fallthrough]]
- #elif RT_GNUC_PREREQ(7, 0)
+--- VirtualBox-6.1.14.orig/include/iprt/cdefs.h
++++ VirtualBox-6.1.14/include/iprt/cdefs.h
+@@ -1173,14 +1173,15 @@
+  * Tell the compiler that we're falling through to the next case in a switch.
+  * @sa RT_FALL_THRU  */
+ #if RT_GNUC_PREREQ(7, 0)
 -# define RT_FALL_THROUGH()      __attribute__((__fallthrough__))
 +# define FALL_THROUGH		__attribute__((__fallthrough__))
  #else

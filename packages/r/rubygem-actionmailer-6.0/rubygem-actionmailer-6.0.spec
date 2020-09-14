@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-actionmailer-6.0
-Version:        6.0.3.2
+Version:        6.0.3.3
 Release:        0
 %define mod_name actionmailer
 %define mod_full_name %{mod_name}-%{version}

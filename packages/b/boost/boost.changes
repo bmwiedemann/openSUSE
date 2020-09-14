@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  3 21:30:24 UTC 2020 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Enable context on s390x
+
+-------------------------------------------------------------------
 Thu Aug 27 09:15:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - fix nothing provides libboost_mpi_python-py3-1_74_0 

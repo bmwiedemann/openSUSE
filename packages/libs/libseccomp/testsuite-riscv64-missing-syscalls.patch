@@ -1,0 +1,141 @@
+From cc580a514f05a7fc1f412f66ed002dd8aee89618 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Tue, 18 Aug 2020 15:59:54 +0200
+Subject: [PATCH] tests: use openat and fstat instead of open and stat syscalls
+ in tests 04 and 06
+
+Architectures like aarch64 and riscv64, and all future architectures that
+use the generic syscall table, do not support the open and stat syscalls.
+Use the openat and fstat syscalls instead.
+
+Signed-off-by: Andreas Schwab <schwab@suse.de>
+Acked-by: Tom Hromatka <tom.hromatka@oracle.com>
+Signed-off-by: Paul Moore <paul@paul-moore.com>
+(imported from commit a317fabc1fd915f19f7e7326bf7dcb77493f1210)
+---
+ tests/04-sim-multilevel_chains.c     |  2 +-
+ tests/04-sim-multilevel_chains.py    |  2 +-
+ tests/04-sim-multilevel_chains.tests |  8 +++++---
+ tests/06-sim-actions.c               |  4 ++--
+ tests/06-sim-actions.py              |  4 ++--
+ tests/06-sim-actions.tests           | 16 +++++++++-------
+ 6 files changed, 20 insertions(+), 16 deletions(-)
+
+diff --git a/tests/04-sim-multilevel_chains.c b/tests/04-sim-multilevel_chains.c
+index a660b40..e3e4f9b 100644
+--- a/tests/04-sim-multilevel_chains.c
++++ b/tests/04-sim-multilevel_chains.c
+@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
+ 	if (ctx == NULL)
+ 		return ENOMEM;
+ 
+-	rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(open), 0);
++	rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(openat), 0);
+ 	if (rc != 0)
+ 		goto out;
+ 
+diff --git a/tests/04-sim-multilevel_chains.py b/tests/04-sim-multilevel_chains.py
+index bcf1ee4..a5127a2 100755
+--- a/tests/04-sim-multilevel_chains.py
++++ b/tests/04-sim-multilevel_chains.py
+@@ -30,7 +30,7 @@ from seccomp import *
+ 
+ def test(args):
+     f = SyscallFilter(KILL)
+-    f.add_rule(ALLOW, "open")
++    f.add_rule(ALLOW, "openat")
+     f.add_rule(ALLOW, "close")
+     f.add_rule(ALLOW, "read",
+                Arg(0, EQ, sys.stdin.fileno()),
+diff --git a/tests/04-sim-multilevel_chains.tests b/tests/04-sim-multilevel_chains.tests
+index 6613f9a..b6f7576 100644
+--- a/tests/04-sim-multilevel_chains.tests
++++ b/tests/04-sim-multilevel_chains.tests
+@@ -8,7 +8,7 @@
+ test type: bpf-sim
+ 
+ # Testname			Arch		Syscall		Arg0		Arg1		Arg2			Arg3	Arg4	Arg5	Result
+-04-sim-multilevel_chains	all,-aarch64	open		0x856B008	4		N			N	N	N	ALLOW
++04-sim-multilevel_chains	all		openat		0		0x856B008	4			N	N	N	ALLOW
+ 04-sim-multilevel_chains	all		close		4		N		N			N	N	N	ALLOW
+ 04-sim-multilevel_chains	x86		read		0		0x856B008	0x7FFFFFFE		N	N	N	ALLOW
+ 04-sim-multilevel_chains	x86_64		read		0		0x856B008	0x7FFFFFFFFFFFFFFE	N	N	N	ALLOW
+@@ -27,9 +27,11 @@ test type: bpf-sim
+ 04-sim-multilevel_chains	all		rt_sigreturn	N		N		N			N	N	N	ALLOW
+ 04-sim-multilevel_chains	x86		0-2		N		N		N			N	N	N	KILL
+ 04-sim-multilevel_chains	x86		7-172		N		N		N			N	N	N	KILL
+-04-sim-multilevel_chains	x86		174-350		N		N		N			N	N	N	KILL
++04-sim-multilevel_chains	x86		174-294		N		N		N			N	N	N	KILL
++04-sim-multilevel_chains	x86		296-350		N		N		N			N	N	N	KILL
+ 04-sim-multilevel_chains	x86_64		4-14		N		N		N			N	N	N	KILL
+-04-sim-multilevel_chains	x86_64		16-350		N		N		N			N	N	N	KILL
++04-sim-multilevel_chains	x86_64		16-256		N		N		N			N	N	N	KILL
++04-sim-multilevel_chains	x86_64		258-350		N		N		N			N	N	N	KILL
+ 
+ test type: bpf-sim-fuzz
+ 
+diff --git a/tests/06-sim-actions.c b/tests/06-sim-actions.c
+index 10b366c..da636c9 100644
+--- a/tests/06-sim-actions.c
++++ b/tests/06-sim-actions.c
+@@ -60,11 +60,11 @@ int main(int argc, char *argv[])
+ 	if (rc != 0)
+ 		goto out;
+ 
+-	rc = seccomp_rule_add(ctx, SCMP_ACT_TRACE(1234), SCMP_SYS(open), 0);
++	rc = seccomp_rule_add(ctx, SCMP_ACT_TRACE(1234), SCMP_SYS(openat), 0);
+ 	if (rc != 0)
+ 		goto out;
+ 
+-	rc = seccomp_rule_add(ctx, SCMP_ACT_KILL_PROCESS, SCMP_SYS(stat), 0);
++	rc = seccomp_rule_add(ctx, SCMP_ACT_KILL_PROCESS, SCMP_SYS(fstat), 0);
+ 	if (rc != 0)
+ 		goto out;
+ 
+diff --git a/tests/06-sim-actions.py b/tests/06-sim-actions.py
+index f14d6ed..253061d 100755
+--- a/tests/06-sim-actions.py
++++ b/tests/06-sim-actions.py
+@@ -37,8 +37,8 @@ def test(args):
+     f.add_rule(LOG, "rt_sigreturn")
+     f.add_rule(ERRNO(errno.EPERM), "write")
+     f.add_rule(TRAP, "close")
+-    f.add_rule(TRACE(1234), "open")
+-    f.add_rule(KILL_PROCESS, "stat")
++    f.add_rule(TRACE(1234), "openat")
++    f.add_rule(KILL_PROCESS, "fstat")
+     return f
+ 
+ args = util.get_opt()
+diff --git a/tests/06-sim-actions.tests b/tests/06-sim-actions.tests
+index b830917..1ef38b3 100644
+--- a/tests/06-sim-actions.tests
++++ b/tests/06-sim-actions.tests
+@@ -11,15 +11,17 @@ test type: bpf-sim
+ 06-sim-actions	all		read		4		0x856B008	80	N	N	N	ALLOW
+ 06-sim-actions	all		write		1		0x856B008	N	N	N	N	ERRNO(1)
+ 06-sim-actions	all		close		4		N		N	N	N	N	TRAP
+-06-sim-actions	all,-aarch64	open		0x856B008	4		N	N	N	N	TRACE(1234)
+-06-sim-actions	all,-aarch64	stat		N		N		N	N	N	N	KILL_PROCESS
++06-sim-actions	all		openat		0		0x856B008	4	N	N	N	TRACE(1234)
++06-sim-actions	all		fstat		N		N		N	N	N	N	KILL_PROCESS
+ 06-sim-actions	all		rt_sigreturn	N		N		N	N	N	N	LOG
+ 06-sim-actions	x86		0-2		N		N		N	N	N	N	KILL
+-06-sim-actions	x86		7-105		N		N		N	N	N	N	KILL
+-06-sim-actions	x86		107-172		N		N		N	N	N	N	KILL
+-06-sim-actions	x86		174-350		N		N		N	N	N	N	KILL
+-06-sim-actions	x86_64		5-14		N		N		N	N	N	N	KILL
+-06-sim-actions	x86_64		16-350		N		N		N	N	N	N	KILL
++06-sim-actions	x86		7-107		N		N		N	N	N	N	KILL
++06-sim-actions	x86		109-172		N		N		N	N	N	N	KILL
++06-sim-actions	x86		174-294		N		N		N	N	N	N	KILL
++06-sim-actions	x86		296-350		N		N		N	N	N	N	KILL
++06-sim-actions	x86_64		6-14		N		N		N	N	N	N	KILL
++06-sim-actions	x86_64		16-256		N		N		N	N	N	N	KILL
++06-sim-actions	x86_64		258-350		N		N		N	N	N	N	KILL
+ 
+ test type: bpf-sim-fuzz
+ 
+-- 
+2.28.0
+

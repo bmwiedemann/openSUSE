@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Sep  9 13:49:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not rely on gperf: pass GPERF=/bin/true to configure and
+  remove gperf BuildRequires. The syscalls.perf file it would
+  generate is part of the tarball already.
+
+-------------------------------------------------------------------
+Tue Sep  8 15:00:01 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- testsuite-riscv64-missing-syscalls.patch: Fix testsuite failure on
+  riscv64
+- Ignore failure of tests/52-basic-load on qemu linux-user emulation
+
+-------------------------------------------------------------------
+Tue Sep  8 14:00:13 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to release 2.5.0
+  * Add support for the seccomp user notifications, see the
+    seccomp_notify_alloc(3), seccomp_notify_receive(3),
+    seccomp_notify_respond(3) manpages for more information
+  * Add support for new filter optimization approaches, including a balanced
+    tree optimization, see the SCMP_FLTATR_CTL_OPTIMIZE filter attribute for
+    more information
+  * Add support for the 64-bit RISC-V architecture
+  * Performance improvements when adding new rules to a filter thanks to the
+    use of internal shadow transactions and improved syscall lookup tables
+  * Properly document the libseccomp API return values and include them in the
+    stable API promise
+  * Improvements to the s390 and s390x multiplexed syscall handling
+  * Multiple fixes and improvements to the libseccomp manpages
+  * Moved from manually maintained syscall tables to an automatically generated
+    syscall table in CSV format
+  * Update the syscall tables to Linux v5.8.0-rc5
+  * Python bindings and build now default to Python 3.x
+  * Improvements to the tests have boosted code coverage to over 93%
+- libseccomp.keyring: replaced by Paul Moore <pmoore@redhat.com> key.
+
+-------------------------------------------------------------------
 Fri Jun  5 13:12:29 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.3

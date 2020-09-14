@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Sep 10 09:55:45 UTC 2020 - rbrown@suse.com
+
+- Update to version 3.4.13:
+  * version: 3.4.13
+  * pkg: file stat warning
+  * Automated cherry pick of #12243 on release 3.4
+  * version: 3.4.12
+  * etcdserver: Avoid panics logging slow v2 requests in integration tests
+  * version: 3.4.11
+  * Revert "etcdserver/api/v3rpc: "MemberList" never return non-empty ClientURLs"
+  * *: fix backport of PR12216
+  * *: add experimental flag for watch notify interval
+  * clientv3: remove excessive watch cancel logging
+  * etcdserver: add OS level FD metrics
+  * pkg/runtime: optimize FDUsage by removing sort
+  * clientv3: log warning in case of error sending request
+  * etcdserver/api/v3rpc: "MemberList" never return non-empty ClientURLs
+  * version: 3.4.10
+  * Documentation: note on data encryption
+  * etcdserver: change protobuf field type from int to int64 (#12000)
+  * pkg: consider umask when use MkdirAll
+  * etcdmain: let grpc proxy warn about insecure-skip-tls-verify
+  * etcdmain: fix shadow error
+  * pkg/fileutil: print desired file permission in error log
+  * pkg: Fix dir permission check on Windows
+  * auth: Customize simpleTokenTTL settings.
+  * mvcc: chanLen 1024 is to biger,and it used more memory. 128 seems to be enough. Sometimes the consumption speed is more than the production speed.
+  * auth: return incorrect result 'ErrUserNotFound' when client request without username or username was empty.
+  * etcdmain: fix shadow error
+  * doc: add TLS related warnings
+  * etcdserver:FDUsage set ticker to 10 minute from 5 seconds. This ticker will check File Descriptor Requirements ,and count all fds in used. And recorded some logs when in used >= limit/5*4. Just recorded message. If fds was more than 10K,It's low performance due to FDUsage() works. So need to increase it.
+  * clientv3: cancel watches proactively on client context cancellation
+  * wal: check out of range slice in "ReadAll", "decoder"
+  * etcdctl, etcdmain: warn about --insecure-skip-tls-verify options
+  * Documentation: note on the policy of insecure by default
+  * etcdserver: don't let InternalAuthenticateRequest have password
+  * auth: a new error code for the case of password auth against no password user
+  * Documentation: note on password strength
+  * etcdmain: best effort detection of self pointing in tcp proxy
+  * Discovery: do not allow passing negative cluster size
+  * wal: fix panic when decoder not set
+  * embed: fix compaction runtime err
+  * pkg: check file stats
+  * etcdserver, et al: add --unsafe-no-fsync flag
+
+-------------------------------------------------------------------
 Tue Sep  1 15:52:18 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Initial Packaging 

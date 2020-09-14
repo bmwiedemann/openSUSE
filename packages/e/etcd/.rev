@@ -176,4 +176,26 @@
     <comment></comment>
     <requestid>825830</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>833d4a84672f77a6f60534340cefdf0a</srcmd5>
+    <version>3.4.13</version>
+    <time>1600078903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.13:
+  * version: 3.4.13
+  * pkg: file stat warning
+  * Automated cherry pick of #12243 on release 3.4
+  * version: 3.4.12
+  * etcdserver: Avoid panics logging slow v2 requests in integration tests
+  * version: 3.4.11
+  * Revert &quot;etcdserver/api/v3rpc: &quot;MemberList&quot; never return non-empty ClientURLs&quot;
+  * *: fix backport of PR12216
+  * *: add experimental flag for watch notify interval
+  * clientv3: remove excessive watch cancel logging
+  * etcdserver: add OS level FD metrics
+  * pkg/runtime: optimize FDUsage by removing sort
+  * clientv3: log warning in case of error sending request
+  * etcdserver/api/v3rpc: &quot;MemberList&quot; never return non-empty ClientURLs</comment>
+    <requestid>833433</requestid>
+  </revision>
 </revisionlist>

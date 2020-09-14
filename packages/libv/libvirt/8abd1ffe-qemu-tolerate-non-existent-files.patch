@@ -1,0 +1,70 @@
+commit 8abd1ffed18394a6212c469cb2c7b6cc28a122d2
+Author: Michal Prívozník <mprivozn@redhat.com>
+Date:   Thu Sep 3 18:07:43 2020 +0200
+
+    qemu_namespace: Be tolerant to non-existent files when populating /dev
+    
+    In 6.7.0 release I've changed how domain namespace is built and
+    populated. Previously it used to be done from a pre-exec hook
+    (ran in the forked off child, just before dropping all privileges
+    and exec()-ing QEMU), which not only meant we had to have two
+    different code paths for creating a node in domain's namespace
+    (one for this pre-exec hook, the other for hotplug ran from the
+    daemon), it also proved problematic because it was leaking FDs
+    into QEMU process.
+    
+    To mitigate this problem, we've not only ditched libdevmapper
+    from the NS population process, I've also dropped the pre-exec
+    code and let the NS be populated from the daemon (using the
+    hotplug code). But, I was not careful when doing so, because the
+    pre-exec code was tolerant to files that doesn't exist, while
+    this new code isn't. For instance, the very first thing that is
+    done when the new NS is created is it's populated with
+    @defaultDeviceACL which contain files like /dev/null, /dev/zero,
+    /dev/random and /dev/kvm (and others).  While the rest will
+    probably exist every time, /dev/kvm might not and thus the new
+    code I wrote has to be tolerant to that.
+    
+    Of course, users can override the @defaultDeviceACL (by setting
+    cgroup_device_acl in qemu.conf) and remove /dev/kvm (which is
+    acceptable workaround), but we definitely want libvirt to work
+    out of the box even on hosts without KVM.
+    
+    Fixes: 9048dc4e627ddf33996084167bece7b5fb83b0bc
+    Reported-by: Daniel P. Berrangé <berrange@redhat.com>
+    Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+    Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+    Reviewed-by: Ján Tomko <jtomko@redhat.com>
+
+Index: libvirt-6.7.0/src/qemu/qemu_namespace.c
+===================================================================
+--- libvirt-6.7.0.orig/src/qemu/qemu_namespace.c
++++ libvirt-6.7.0/src/qemu/qemu_namespace.c
+@@ -1094,6 +1094,9 @@ qemuNamespaceMknodItemInit(qemuNamespace
+     item->file = file;
+ 
+     if (g_lstat(file, &item->sb) < 0) {
++        if (errno == ENOENT)
++            return -2;
++
+         virReportSystemError(errno,
+                              _("Unable to access %s"), file);
+         return -1;
+@@ -1168,9 +1171,16 @@ qemuNamespacePrepareOneItem(qemuNamespac
+ 
+     while (1) {
+         qemuNamespaceMknodItem item = { 0 };
++        int rc;
+ 
+-        if (qemuNamespaceMknodItemInit(&item, cfg, vm, next) < 0)
++        rc = qemuNamespaceMknodItemInit(&item, cfg, vm, next);
++        if (rc == -2) {
++            /* @file doesn't exist. We can break here. */
++            break;
++        } else if (rc < 0) {
++            /* Some other (critical) error. */
+             return -1;
++        }
+ 
+         if (STRPREFIX(next, QEMU_DEVPREFIX)) {
+             for (i = 0; i < ndevMountsPath; i++) {

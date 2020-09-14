@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -2287,7 +2287,7 @@ cmake ../src \
 %if "%{_lib}" == "lib64"
         -DLIB_SUFFIX=64 \
 %endif
-        -DCMAKE_CXX_FLAGS="${tmpflags} -Doverride=" \
+        -DCMAKE_CXX_FLAGS="${tmpflags} -Doverride= $(pkg-config --cflags gstreamer-1.0)" \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
 %if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1550

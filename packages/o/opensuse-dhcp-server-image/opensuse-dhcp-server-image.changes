@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 12 12:23:05 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Remove group(nogroup) and change entrypoint to chown to
+  dhcpd:dhcpd as required by current dhcp-server binary 
+
+-------------------------------------------------------------------
 Thu Sep 10 12:57:53 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add group(nogroup) as chown to nogroup is used in entrypoint 

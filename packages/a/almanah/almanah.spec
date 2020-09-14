@@ -17,7 +17,7 @@
 
 
 Name:           almanah
-Version:        0.12.0
+Version:        0.12.2
 Release:        0
 Summary:        GTK+ application to allow you to keep a diary of your life
 License:        GPL-3.0+
@@ -28,7 +28,7 @@ Source:         https://download.gnome.org/sources/almanah/0.12/%{name}-%{versio
 BuildRequires:  gpgme-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.51
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)

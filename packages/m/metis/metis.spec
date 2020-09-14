@@ -69,6 +69,13 @@ ExclusiveArch:  do_not_build
 %undefine mpi_flavor
 %endif
 
+%if "%{flavor}" == "gnu10-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%undefine mpi_flavor
+%endif
+
 %if %{without hpc}
 %if 0%{!?package_name:1}
 %define package_name  %{pname}

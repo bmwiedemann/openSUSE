@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 10:22:33 UTC 2020 - Frederik Möllers <frederik@die-sinlosen.de>
+
+- Add support for Thunderbolt to initramfs (approved devices are authorized automatically)
+  added: 0002-initramfs-support.patch
+
+-------------------------------------------------------------------
 Fri Dec 20 14:40:02 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Cleanup spec file

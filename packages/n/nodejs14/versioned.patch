@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v14.7.0/Makefile
+Index: node-v14.9.0/Makefile
 ===================================================================
---- node-v14.7.0.orig/Makefile
-+++ node-v14.7.0/Makefile
+--- node-v14.9.0.orig/Makefile
++++ node-v14.9.0/Makefile
 @@ -46,7 +46,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v14.7.0/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v14.7.0/tools/install.py
+Index: node-v14.9.0/tools/install.py
 ===================================================================
---- node-v14.7.0.orig/tools/install.py
-+++ node-v14.7.0/tools/install.py
+--- node-v14.9.0.orig/tools/install.py
++++ node-v14.9.0/tools/install.py
 @@ -81,34 +81,34 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -137,10 +137,10 @@ Index: node-v14.7.0/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-v14.7.0/doc/node.1
+Index: node-v14.9.0/doc/node.1
 ===================================================================
---- node-v14.7.0.orig/doc/node.1
-+++ node-v14.7.0/doc/node.1
+--- node-v14.9.0.orig/doc/node.1
++++ node-v14.9.0/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -170,10 +170,10 @@ Index: node-v14.7.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v14.7.0/src/node.stp
+Index: node-v14.9.0/src/node.stp
 ===================================================================
---- node-v14.7.0.orig/src/node.stp
-+++ node-v14.7.0/src/node.stp
+--- node-v14.9.0.orig/src/node.stp
++++ node-v14.9.0/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -246,12 +246,12 @@ Index: node-v14.7.0/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v14.7.0/deps/npm/man/man1/npm.1
+Index: node-v14.9.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v14.7.0.orig/deps/npm/man/man1/npm.1
-+++ node-v14.7.0/deps/npm/man/man1/npm.1
+--- node-v14.9.0.orig/deps/npm/man/man1/npm.1
++++ node-v14.9.0/deps/npm/man/man1/npm.1
 @@ -1,11 +1,11 @@
- .TH "NPM" "1" "July 2020" "" ""
+ .TH "NPM" "1" "August 2020" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm14\fR \- javascript package manager
@@ -289,7 +289,7 @@ Index: node-v14.7.0/deps/npm/man/man1/npm.1
  .SS Dependencies
  .P
  If a package references to another package with a git URL, npm depends
-@@ -57,7 +57,7 @@ the node\-gyp repository \fIhttps://gith
+@@ -56,7 +56,7 @@ the node\-gyp repository \fIhttps://gith
  the node\-gyp Wiki \fIhttps://github\.com/nodejs/node\-gyp/wiki\fR\|\.
  .SS Directories
  .P
@@ -298,7 +298,7 @@ Index: node-v14.7.0/deps/npm/man/man1/npm.1
  .P
  In particular, npm has two modes of operation:
  .RS 0
-@@ -82,24 +82,24 @@ following help topics:
+@@ -81,24 +81,24 @@ following help topics:
  .RS 0
  .IP \(bu 2
  json:
@@ -327,7 +327,7 @@ Index: node-v14.7.0/deps/npm/man/man1/npm.1
  
  .RE
  .SS Configuration
-@@ -135,7 +135,7 @@ lib/utils/config\-defs\.js\.  These must
+@@ -134,7 +134,7 @@ lib/utils/config\-defs\.js\.  These must
  
  .RE
  .P
@@ -336,7 +336,7 @@ Index: node-v14.7.0/deps/npm/man/man1/npm.1
  .SS Contributions
  .P
  Patches welcome!
-@@ -172,14 +172,14 @@ i@izs\.me
+@@ -171,14 +171,14 @@ i@izs\.me
  .SS See Also
  .RS 0
  .IP \(bu 2
@@ -356,10 +356,10 @@ Index: node-v14.7.0/deps/npm/man/man1/npm.1
 +npm14 help npmrc
  
  .RE
-Index: node-v14.7.0/src/node_main.cc
+Index: node-v14.9.0/src/node_main.cc
 ===================================================================
---- node-v14.7.0.orig/src/node_main.cc
-+++ node-v14.7.0/src/node_main.cc
+--- node-v14.9.0.orig/src/node_main.cc
++++ node-v14.9.0/src/node_main.cc
 @@ -136,6 +136,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -368,10 +368,10 @@ Index: node-v14.7.0/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v14.7.0/deps/npm/man/man1/npx.1
+Index: node-v14.9.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v14.7.0.orig/deps/npm/man/man1/npx.1
-+++ node-v14.7.0/deps/npm/man/man1/npx.1
+--- node-v14.9.0.orig/deps/npm/man/man1/npx.1
++++ node-v14.9.0/deps/npm/man/man1/npx.1
 @@ -1,32 +1,32 @@
  .TH "NPX" "1" "July 2020" "npx@10.2.3" "User Commands"
  .SH "NAME"
@@ -456,10 +456,10 @@ Index: node-v14.7.0/deps/npm/man/man1/npx.1
  
  .RE
  
-Index: node-v14.7.0/tools/test.py
+Index: node-v14.9.0/tools/test.py
 ===================================================================
---- node-v14.7.0.orig/tools/test.py
-+++ node-v14.7.0/tools/test.py
+--- node-v14.9.0.orig/tools/test.py
++++ node-v14.9.0/tools/test.py
 @@ -908,7 +908,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -469,11 +469,11 @@ Index: node-v14.7.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v14.7.0/node.gyp
+Index: node-v14.9.0/node.gyp
 ===================================================================
---- node-v14.7.0.orig/node.gyp
-+++ node-v14.7.0/node.gyp
-@@ -22,8 +22,8 @@
+--- node-v14.9.0.orig/node.gyp
++++ node-v14.9.0/node.gyp
+@@ -23,8 +23,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',

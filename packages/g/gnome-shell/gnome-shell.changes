@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 10 01:58:30 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Move branding image file to branding-SLE package
+  (jsc#SLE-11720 bsc#1176304).
+  + Update gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch
+  + Remove sle-background.png
+
+-------------------------------------------------------------------
+Tue Sep  8 12:08:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.6:
+  + Fix lock screen on systems without GLSL shader support.
+  + Fix app icon scaling regression on HiDPI displays.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Aug 12 21:11:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.5:

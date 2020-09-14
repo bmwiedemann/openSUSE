@@ -72,7 +72,7 @@
 # Build go-race only on platforms where it's supported (both amd64 and aarch64
 # requires SLE15-or-later because of C++14, and ppc64le doesn't build at all
 # on openSUSE yet).
-%if 0%{suse_version} >= 1500 || 0%{?sle_version} >= 150000
+%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 150000
 %define tsan_arch x86_64 aarch64
 %else
 # Cannot use {nil} here (ifarch doesn't like it) so just make up a fake
@@ -135,7 +135,7 @@
 %endif
 
 Name:           go1.15
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -183,7 +183,11 @@ Requires(postun):	update-alternatives
 # Needed on arm aarch64 to avoid
 # collect2: fatal error: cannot find 'ld'-
 %ifarch %arm aarch64
+%if 0%{?is_opensuse}
 Requires:       binutils-gold
+%else
+Recommends:     binutils-gold
+%endif
 %endif
 Requires:       gcc
 Provides:       go = %{version}

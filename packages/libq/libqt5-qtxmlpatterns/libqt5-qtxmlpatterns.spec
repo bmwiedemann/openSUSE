@@ -19,11 +19,11 @@
 %define qt5_snapshot 0
 %define libname libQt5XmlPatterns5
 %define base_name libqt5
-%define real_version 5.15.0
-%define so_version 5.15.0
-%define tar_version qtxmlpatterns-everywhere-src-5.15.0
+%define real_version 5.15.1
+%define so_version 5.15.1
+%define tar_version qtxmlpatterns-everywhere-src-5.15.1
 Name:           libqt5-qtxmlpatterns
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Qt 5 XmlPatterns Library
 # Legal:

@@ -1,0 +1,33 @@
+From 565032fe5b2db979a7554735707a5415cebca3fc Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 2 Aug 2020 19:16:47 +0200
+Subject: [PATCH] Revert "Port some qt5.15 deprecated method"
+
+QLocalSocket::socketError does not exist and error isn't actually deprecated
+
+This reverts commit 3f430a23057dde018fa2df7bfa90a01f9d68a97f.
+---
+ src/externalprocess/purposeprocess_main.cpp | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/src/externalprocess/purposeprocess_main.cpp b/src/externalprocess/purposeprocess_main.cpp
+index 170777c..bc308ed 100644
+--- a/src/externalprocess/purposeprocess_main.cpp
++++ b/src/externalprocess/purposeprocess_main.cpp
+@@ -90,12 +90,7 @@ public:
+ 
+ private Q_SLOTS:
+     void error() {
+-#if (QT_VERSION <= QT_VERSION_CHECK(5, 15, 0))
+-        const auto socketError = m_socket.error();
+-#else
+-        const auto socketError = m_socket.socketError();
+-#endif
+-        qCWarning(PURPOSE_EXTERNAL_PROCESS_LOG) << "socket error:" << socketError;
++        qCWarning(PURPOSE_EXTERNAL_PROCESS_LOG) << "socket error:" << m_socket.error();
+     }
+ 
+     void propertyChanged() {
+-- 
+2.25.1
+

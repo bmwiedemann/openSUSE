@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 10 10:16:46 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Bump kubernetes to 1.19.1, etcd to 3.4.13 
+
+-------------------------------------------------------------------
 Tue Sep  1 15:22:48 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Introduce -etcd, -etcdminus1, -coredns and -corednsminus1

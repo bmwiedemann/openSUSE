@@ -233,4 +233,26 @@
     <comment></comment>
     <requestid>639872</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d419ca51b2bfd545432bc50c066a9dc4</srcmd5>
+    <version>2.11</version>
+    <time>1600078667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.11
+  * Fixed __cpuid() on fast float plugin to allow gnu gcc
+  * Fixed copy alpha bounds check
+  * Fixed data race condition on contexts pool
+  * Fixed LUT16 write matrix on multichannel V2 profiles
+- Changes in 2.10
+  * Added a compilation toggle to remove &quot;register&quot; keyword in API. 
+  * Previously commercial, fast_float plug-in is now released as open source
+    under GPL3 license.
+  * MD5 functions are now accesible through plug-in API.
+  * Added support for Visual Studio 2019
+  * Bug fixing.
+- Drop lcms2-cgats-memory-allocation.patch, its now in upstream code
+- Refresh patches
+- Run spec-cleaner</comment>
+    <requestid>833813</requestid>
+  </revision>
 </revisionlist>

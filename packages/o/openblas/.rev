@@ -321,4 +321,12 @@
     <comment></comment>
     <requestid>825919</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>e6afd3fb8a05d99a30ad168349f0ac2b</srcmd5>
+    <version>0.3.10</version>
+    <time>1600078455</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439). (forwarded request 833599 from eeich)</comment>
+    <requestid>833714</requestid>
+  </revision>
 </revisionlist>

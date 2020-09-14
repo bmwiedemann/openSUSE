@@ -38,27 +38,25 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.0
-%define so_version 5.15.0
-%define tar_version qtwebengine-everywhere-src-5.15.0
+%define real_version 5.15.1
+%define so_version 5.15.1
+%define tar_version qtwebengine-everywhere-src-5.15.1
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
 Patch1:         armv6-ffmpeg-no-thumb.patch
 # PATCH-FIX-UPSTREAM disable-gpu-when-using-nouveau-boo-1005323.diff
 Patch2:         disable-gpu-when-using-nouveau-boo-1005323.diff
-# PATCH-FIX-UPSTREAM 0001-fix-build-after-y2038-changes-in-glibc.patch
-Patch3:         0001-fix-build-after-y2038-changes-in-glibc.patch
 Patch7:         fix1163766.patch
-# PATCH-FIX-UPSTREAM https://chromium-review.googlesource.com/c/v8/v8/+/2136489
-Patch8:         icu-v67.patch
+# PATCH-FIX-OPENSUSE
+Patch9:         rtc-dont-use-h264.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint
@@ -299,6 +297,9 @@ sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
+
+# TODO: Get the manual unbundling from chromium.spec working here as well
+rm -r src/3rdparty/chromium/third_party/openh264/src
 
 %ifnarch x86_64
 RPM_OPT_FLAGS="$RPM_OPT_FLAGS "

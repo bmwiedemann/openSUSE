@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.7.0
+Version:        14.9.0
 Release:        0
 
 %define node_version_number 14
@@ -36,7 +36,7 @@ Release:        0
 %else
 %if %node_version_number >= 10
 %define openssl_req_ver 1.1.0
-%else # node8 or older
+%else
 %define openssl_req_ver 1.0.2
 %endif
 %endif
@@ -94,7 +94,7 @@ Release:        0
 %else
 %bcond_with    binutils_gold
 %endif
-%endif # aarch64
+%endif
 
 # No binutils_gold on all versions of SLE 12 and Leap 42 (s390x).
 %ifarch s390x
@@ -103,7 +103,7 @@ Release:        0
 %else
 %bcond_with    binutils_gold
 %endif
-%endif # s390x
+%endif
 
 %ifarch s390
 %bcond_with    binutils_gold
@@ -146,6 +146,7 @@ Patch102:       node-gyp-addon-gypi.patch
 # instead of /usr
 Patch104:       npm_search_paths.patch
 Patch106:       skip_no_console.patch
+Patch107:       old_icu.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -218,7 +219,7 @@ BuildRequires:  python2
 %else
 BuildRequires:  python
 %endif
-%endif  # python3
+%endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
 BuildRequires:  group(nobody)
@@ -229,7 +230,7 @@ BuildRequires:  user(nobody)
 
 %if %node_version_number >= 8
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
-%else # older node doesn't support OpenSSL 1.1
+%else
 
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libopenssl-1_0_0-devel
@@ -237,8 +238,8 @@ BuildRequires:  libopenssl-1_0_0-devel
 BuildRequires:  openssl-devel >= %{openssl_req_ver}
 %endif
 
-%endif # older node doesn't support OpenSSL 1.1
-%endif # ! {with intree_openssl}
+%endif
+%endif
 
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.10.0
@@ -309,7 +310,7 @@ Recommends:     %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.13.6
+Provides:       npm(npm) = 6.14.8
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -352,7 +353,7 @@ tar Jxvf %{SOURCE10}
 
 %if %{node_version_number} >= 10
 tar Jxvf %{SOURCE11}
-%endif # node_version_number
+%endif
 
 %patch3 -p1
 %if ! 0%{with intree_openssl}
@@ -369,6 +370,7 @@ tar Jxvf %{SOURCE11}
 %endif
 %patch104 -p1
 %patch106 -p1
+%patch107 -p1
 %patch120 -p1
 %patch200 -p1
 
@@ -404,8 +406,8 @@ find deps/zlib -name *.[ch] -delete
 
 # percent-configure pulls in something that confuses node's configure
 # script, so we'll do it thus:
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
 export LDFLAGS="%{?build_ldflags}"
 
 %if 0%{?cc_exec:1}
@@ -452,6 +454,10 @@ find doc/api -type f -exec chmod 0644 {} +
 
 %install
 . %{SOURCE20}
+
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
+export LDFLAGS="%{?build_ldflags}"
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}
@@ -534,6 +540,10 @@ mkdir -p %{buildroot}%{_defaultlicensedir}
 %endif
 
 %check
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
+export LDFLAGS="%{?build_ldflags}"
+
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}
 export CXX=%{?cpp_exec}

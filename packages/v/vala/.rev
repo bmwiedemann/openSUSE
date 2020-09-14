@@ -922,4 +922,12 @@
     <comment>- Update to version 0.48.7: (forwarded request 817863 from dimstar)</comment>
     <requestid>818350</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>c34b9a16239f8b8df8ec9c1f4f2fc4ca</srcmd5>
+    <version>0.48.10</version>
+    <time>1600078274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.48.10:</comment>
+    <requestid>833677</requestid>
+  </revision>
 </revisionlist>

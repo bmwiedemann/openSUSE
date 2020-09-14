@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  7 08:01:05 UTC 2020 - Marco Varlese <marco.varlese@suse.com>
+
+- Modified the secure_path to include the other two default paths 
+  which are commonly available to $user. This will offer a better
+  and more consistent UX.
+
+-------------------------------------------------------------------
 Tue Aug 25 10:10:10 UTC 2020 - olaf@aepfle.de
 
 - This rpm packages decides about the permissions of /etc/sudoers.d

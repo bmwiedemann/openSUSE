@@ -187,6 +187,9 @@
         <package name="dracut"/>
         <package name="fipscheck"/>
         <package name="group(mail)"/> <!-- needed by useradd bsc#1061838-->
+        <!-- Previously pam_cracklib was part of pam, but the replacement is only recommended -->
+        <package name="pam_pwquality"/>
+        <package name="cracklib-dict-small"/> <!-- Avoid the big 10MiB one -->
         <package name="iputils"/>
         <package name="issue-generator"/> <!-- bsc#1084879 -->
         <package name="vim-small"/>

@@ -23,9 +23,8 @@
 Description=MariaDB database server
 Documentation=man:mysqld(8)
 Documentation=https://mariadb.com/kb/en/library/systemd/
-Wants=basic.target
 Conflicts=mariadb.target
-After=basic.target network.target 
+After=network.target time-sync.target 
 
 [Install]
 WantedBy=multi-user.target

@@ -1,7 +1,35 @@
-diff --git a/discovery/config/config.go b/discovery/config/config.go
-index 820de1f..27d8c0c 100644
---- a/discovery/config/config.go
-+++ b/discovery/config/config.go
+From: Joao Cavalheiro <jcavalheiro@suse.de>
+Date: Mon Jul 27 17:42:33 2020 +0200
+Subject: A fork of Prometheus with Uyuni Service discovery
+References: https://github.com/uyuni-project/prometheus-uyuni-sd
+
+---
+ discovery/config/config.go                        |    3 
+ discovery/manager.go                              |    6 
+ discovery/uyuni/uyuni.go                          |  384 +++++++++++++++++
+ discovery/uyuni/uyuni_test.go                     |   33 +
+ go.mod                                            |    1 
+ go.sum                                            |    2 
+ vendor/github.com/kolo/xmlrpc/LICENSE             |   19 
+ vendor/github.com/kolo/xmlrpc/README.md           |   89 ++++
+ vendor/github.com/kolo/xmlrpc/client.go           |  170 +++++++
+ vendor/github.com/kolo/xmlrpc/client_test.go      |  141 ++++++
+ vendor/github.com/kolo/xmlrpc/decoder.go          |  473 ++++++++++++++++++++++
+ vendor/github.com/kolo/xmlrpc/decoder_test.go     |  234 ++++++++++
+ vendor/github.com/kolo/xmlrpc/encoder.go          |  171 +++++++
+ vendor/github.com/kolo/xmlrpc/encoder_test.go     |   58 ++
+ vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml |    6 
+ vendor/github.com/kolo/xmlrpc/request.go          |   57 ++
+ vendor/github.com/kolo/xmlrpc/response.go         |   52 ++
+ vendor/github.com/kolo/xmlrpc/response_test.go    |   84 +++
+ vendor/github.com/kolo/xmlrpc/test_server.rb      |   25 +
+ vendor/github.com/kolo/xmlrpc/xmlrpc.go           |   19 
+ 20 files changed, 2027 insertions(+)
+
+Index: prometheus-2.18.0/discovery/config/config.go
+===================================================================
+--- prometheus-2.18.0.orig/discovery/config/config.go
++++ prometheus-2.18.0/discovery/config/config.go
 @@ -27,6 +27,7 @@ import (
  	"github.com/prometheus/prometheus/discovery/openstack"
  	"github.com/prometheus/prometheus/discovery/targetgroup"
@@ -19,10 +47,10 @@ index 820de1f..27d8c0c 100644
  }
  
  // Validate validates the ServiceDiscoveryConfig.
-diff --git a/discovery/manager.go b/discovery/manager.go
-index 66c0057..f65cd04 100644
---- a/discovery/manager.go
-+++ b/discovery/manager.go
+Index: prometheus-2.18.0/discovery/manager.go
+===================================================================
+--- prometheus-2.18.0.orig/discovery/manager.go
++++ prometheus-2.18.0/discovery/manager.go
 @@ -37,6 +37,7 @@ import (
  	"github.com/prometheus/prometheus/discovery/marathon"
  	"github.com/prometheus/prometheus/discovery/openstack"
@@ -31,7 +59,7 @@ index 66c0057..f65cd04 100644
  	"github.com/prometheus/prometheus/discovery/zookeeper"
  )
  
-@@ -414,6 +415,11 @@ func (m *Manager) registerProviders(cfg sd_config.ServiceDiscoveryConfig, setNam
+@@ -414,6 +415,11 @@ func (m *Manager) registerProviders(cfg
  			return triton.New(log.With(m.logger, "discovery", "triton"), c)
  		})
  	}
@@ -43,12 +71,11 @@ index 66c0057..f65cd04 100644
  	if len(cfg.StaticConfigs) > 0 {
  		add(setName, func() (Discoverer, error) {
  			return &StaticProvider{TargetGroups: cfg.StaticConfigs}, nil
-diff --git a/discovery/uyuni/uyuni.go b/discovery/uyuni/uyuni.go
-new file mode 100644
-index 00000000..18e0cfce
+Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
+===================================================================
 --- /dev/null
-+++ b/discovery/uyuni/uyuni.go
-@@ -0,0 +1,298 @@
++++ prometheus-2.18.0/discovery/uyuni/uyuni.go
+@@ -0,0 +1,384 @@
 +// Copyright 2019 The Prometheus Authors
 +// Licensed under the Apache License, Version 2.0 (the "License");
 +// you may not use this file except in compliance with the License.
@@ -67,7 +94,7 @@ index 00000000..18e0cfce
 +import (
 +	"context"
 +	"fmt"
-+	"net/http"
++	"net"
 +	"net/url"
 +	"regexp"
 +	"strings"
@@ -84,8 +111,6 @@ index 00000000..18e0cfce
 +)
 +
 +const (
-+	uyuniLabel                    = model.MetaLabelPrefix + "uyuni_"
-+	uyuniLabelEntitlements        = uyuniLabel + "entitlements"
 +	monitoringEntitlementLabel    = "monitoring_entitled"
 +	prometheusExporterFormulaName = "prometheus-exporters"
 +	uyuniXMLRPCAPIPath            = "/rpc/api"
@@ -120,14 +145,22 @@ index 00000000..18e0cfce
 +}
 +
 +type exporterConfig struct {
++	Address string `xmlrpc:"address"`
 +	Args    string `xmlrpc:"args"`
 +	Enabled bool   `xmlrpc:"enabled"`
++}
++
++type proxiedExporterConfig struct {
++	ProxyIsEnabled   bool           `xmlrpc:"proxy_enabled"`
++	ProxyPort        float32        `xmlrpc:"proxy_port"`
++	NodeExporter     exporterConfig `xmlrpc:"node_exporter"`
++	ApacheExporter   exporterConfig `xmlrpc:"apache_exporter"`
++	PostgresExporter exporterConfig `xmlrpc:"postgres_exporter"`
 +}
 +
 +// Discovery periodically performs Uyuni API requests. It implements the Discoverer interface.
 +type Discovery struct {
 +	*refresh.Discovery
-+	client   *http.Client
 +	interval time.Duration
 +	sdConfig *SDConfig
 +	logger   log.Logger
@@ -202,29 +235,51 @@ index 00000000..18e0cfce
 +}
 +
 +// Get formula data for a given system
-+func getExporterDataForSystems(rpcclient *xmlrpc.Client, token string, systemIDs []int) (map[int]map[string]exporterConfig, error) {
-+	var combinedFormulaDatas []struct {
-+		SystemID        int                       `xmlrpc:"system_id"`
-+		ExporterConfigs map[string]exporterConfig `xmlrpc:"formula_values"`
++func getExporterDataForSystems(
++	rpcclient *xmlrpc.Client,
++	token string,
++	systemIDs []int,
++) (map[int]proxiedExporterConfig, error) {
++	var combinedFormulaData []struct {
++		SystemID        int                   `xmlrpc:"system_id"`
++		ExporterConfigs proxiedExporterConfig `xmlrpc:"formula_values"`
 +	}
-+	err := rpcclient.Call("formula.getCombinedFormulaDataByServerIds", []interface{}{token, prometheusExporterFormulaName, systemIDs}, &combinedFormulaDatas)
++	err := rpcclient.Call(
++		"formula.getCombinedFormulaDataByServerIds",
++		[]interface{}{token, prometheusExporterFormulaName, systemIDs},
++		&combinedFormulaData)
 +	if err != nil {
 +		return nil, err
 +	}
-+	result := make(map[int]map[string]exporterConfig)
-+	for _, combinedFormulaData := range combinedFormulaDatas {
++	result := make(map[int]proxiedExporterConfig)
++	for _, combinedFormulaData := range combinedFormulaData {
 +		result[combinedFormulaData.SystemID] = combinedFormulaData.ExporterConfigs
 +	}
 +	return result, nil
 +}
 +
-+// Get exporter port configuration from Formula
-+func extractPortFromFormulaData(args string) (string, error) {
++// extractPortFromFormulaData gets exporter port configuration from the formula.
++// args takes precedence over address.
++func extractPortFromFormulaData(args string, address string) (string, error) {
++	// first try args
++	var port string
 +	tokens := monFormulaRegex.FindStringSubmatch(args)
 +	if len(tokens) < 1 {
-+		return "", errors.New("Unable to find port in args: " + args)
++		err := "Unable to find port in args: " + args
++		// now try address
++		_, addrPort, addrErr := net.SplitHostPort(address)
++		if addrErr != nil || len(addrPort) == 0 {
++			if addrErr != nil {
++				err = strings.Join([]string{addrErr.Error(), err}, " ")
++			}
++			return "", errors.New(err)
++		}
++		port = addrPort
++	} else {
++		port = tokens[1]
 +	}
-+	return tokens[1], nil
++
++	return port, nil
 +}
 +
 +// NewDiscovery returns a new file discovery for the given paths.
@@ -243,39 +298,90 @@ index 00000000..18e0cfce
 +	return d
 +}
 +
-+func (d *Discovery) getTargetsForSystem(systemID int, systemGroupsIDs []systemGroupID, networkInfo networkInfo, combinedFormulaData map[string]exporterConfig) []model.LabelSet {
-+	labelSets := make([]model.LabelSet, 0)
-+	for exporter, exporterConfig := range combinedFormulaData {
-+		if exporterConfig.Enabled {
-+			port, err := extractPortFromFormulaData(exporterConfig.Args)
-+			if err == nil {
-+				targets := model.LabelSet{}
-+				addr := fmt.Sprintf("%s:%s", networkInfo.IP, port)
-+				targets[model.AddressLabel] = model.LabelValue(addr)
-+				targets["exporter"] = model.LabelValue(exporter)
-+				targets["hostname"] = model.LabelValue(networkInfo.Hostname)
-+
-+				managedGroupNames := make([]string, 0, len(systemGroupsIDs))
-+				for _, systemGroupInfo := range systemGroupsIDs {
-+					managedGroupNames = append(managedGroupNames, systemGroupInfo.GroupName)
-+				}
-+
-+				if len(managedGroupNames) == 0 {
-+					managedGroupNames = []string{"No group"}
-+				}
-+
-+				targets["groups"] = model.LabelValue(strings.Join(managedGroupNames, ","))
-+				labelSets = append(labelSets, targets)
-+
-+			} else {
-+				level.Error(d.logger).Log("msg", "Invalid exporter port", "clientId", systemID, "err", err)
-+			}
-+		}
++func initializeExporterTargets(
++	targets *[]model.LabelSet,
++	module string, config exporterConfig,
++	proxyPort string,
++	errors *[]error,
++) {
++	if !(config.Enabled) {
++		return
 +	}
++	var port string
++	if len(proxyPort) == 0 {
++		exporterPort, err := extractPortFromFormulaData(config.Args, config.Address)
++		if err != nil {
++			*errors = append(*errors, err)
++			return
++		}
++		port = exporterPort
++	} else {
++		port = proxyPort
++	}
++
++	labels := model.LabelSet{}
++	labels["exporter"] = model.LabelValue(module + "_exporter")
++	// for now set only port number here
++	labels[model.AddressLabel] = model.LabelValue(port)
++	if len(proxyPort) > 0 {
++		labels[model.ParamLabelPrefix+"module"] = model.LabelValue(module)
++	}
++	*targets = append(*targets, labels)
++}
++
++func (d *Discovery) getTargetsForSystem(
++	systemID int,
++	systemGroupsIDs []systemGroupID,
++	networkInfo networkInfo,
++	combinedFormulaData proxiedExporterConfig,
++) []model.LabelSet {
++
++	var labelSets []model.LabelSet
++	var errors []error
++	var proxyPortNumber string
++	if combinedFormulaData.ProxyIsEnabled {
++		proxyPortNumber = fmt.Sprintf("%d", int(combinedFormulaData.ProxyPort))
++	}
++	initializeExporterTargets(&labelSets, "node", combinedFormulaData.NodeExporter, proxyPortNumber, &errors)
++	initializeExporterTargets(&labelSets, "apache", combinedFormulaData.ApacheExporter, proxyPortNumber, &errors)
++	initializeExporterTargets(&labelSets, "postgres", combinedFormulaData.PostgresExporter, proxyPortNumber, &errors)
++	managedGroupNames := getSystemGroupNames(systemGroupsIDs)
++	for _, labels := range labelSets {
++		// add hostname to the address label
++		addr := fmt.Sprintf("%s:%s", networkInfo.IP, labels[model.AddressLabel])
++		labels[model.AddressLabel] = model.LabelValue(addr)
++		labels["hostname"] = model.LabelValue(networkInfo.Hostname)
++		labels["groups"] = model.LabelValue(strings.Join(managedGroupNames, ","))
++		if combinedFormulaData.ProxyIsEnabled {
++			labels[model.MetricsPathLabel] = "/proxy"
++		}
++		_ = level.Debug(d.logger).Log("msg", "Configured target", "Labels", fmt.Sprintf("%+v", labels))
++	}
++	for _, err := range errors {
++		level.Error(d.logger).Log("msg", "Invalid exporter port", "clientId", systemID, "err", err)
++	}
++
 +	return labelSets
 +}
 +
-+func (d *Discovery) getTargetsForSystems(rpcClient *xmlrpc.Client, token string, systemGroupIDsBySystemID map[int][]systemGroupID) ([]model.LabelSet, error) {
++func getSystemGroupNames(systemGroupsIDs []systemGroupID) []string {
++	managedGroupNames := make([]string, 0, len(systemGroupsIDs))
++	for _, systemGroupInfo := range systemGroupsIDs {
++		managedGroupNames = append(managedGroupNames, systemGroupInfo.GroupName)
++	}
++
++	if len(managedGroupNames) == 0 {
++		managedGroupNames = []string{"No group"}
++	}
++	return managedGroupNames
++}
++
++func (d *Discovery) getTargetsForSystems(
++	rpcClient *xmlrpc.Client,
++	token string,
++	systemGroupIDsBySystemID map[int][]systemGroupID,
++) ([]model.LabelSet, error) {
++
 +	result := make([]model.LabelSet, 0)
 +
 +	systemIDs := make([]int, 0, len(systemGroupIDsBySystemID))
@@ -293,7 +399,11 @@ index 00000000..18e0cfce
 +	}
 +
 +	for _, systemID := range systemIDs {
-+		targets := d.getTargetsForSystem(systemID, systemGroupIDsBySystemID[systemID], networkInfoBySystemID[systemID], combinedFormulaDataBySystemID[systemID])
++		targets := d.getTargetsForSystem(
++			systemID,
++			systemGroupIDsBySystemID[systemID],
++			networkInfoBySystemID[systemID],
++			combinedFormulaDataBySystemID[systemID])
 +		result = append(result, targets...)
 +
 +		// Log debug information
@@ -343,14 +453,55 @@ index 00000000..18e0cfce
 +		fmt.Printf("\tFound 0 systems.\n")
 +	}
 +
-+	logout(rpcClient, token)
++	err = logout(rpcClient, token)
++	if err != nil {
++		level.Warn(d.logger).Log("msg", "Failed to log out from Uyuni API", "err", err)
++	}
 +	rpcClient.Close()
 +	return []*targetgroup.Group{&targetgroup.Group{Targets: targets, Source: config.Host}}, nil
 +}
-diff --git a/go.mod b/go.mod
-index 0b5a585..5a95ffb 100644
---- a/go.mod
-+++ b/go.mod
+Index: prometheus-2.18.0/discovery/uyuni/uyuni_test.go
+===================================================================
+--- /dev/null
++++ prometheus-2.18.0/discovery/uyuni/uyuni_test.go
+@@ -0,0 +1,33 @@
++package uyuni
++
++import "testing"
++
++func TestExtractPortFromFormulaData(t *testing.T) {
++	type args struct {
++		args    string
++		address string
++	}
++	tests := []struct {
++		name    string
++		args    args
++		want    string
++		wantErr bool
++	}{
++		{name: `TestArgs`, args: args{args: `--web.listen-address=":9100"`}, want: `9100`},
++		{name: `TestAddress`, args: args{address: `:9100`}, want: `9100`},
++		{name: `TestArgsAndAddress`, args: args{args: `--web.listen-address=":9100"`, address: `9999`}, want: `9100`},
++		{name: `TestMissingPort`, args: args{args: `localhost`}, wantErr: true},
++	}
++	for _, tt := range tests {
++		t.Run(tt.name, func(t *testing.T) {
++			got, err := extractPortFromFormulaData(tt.args.args, tt.args.address)
++			if (err != nil) != tt.wantErr {
++				t.Errorf("extractPortFromFormulaData() error = %v, wantErr %v", err, tt.wantErr)
++				return
++			}
++			if got != tt.want {
++				t.Errorf("extractPortFromFormulaData() got = %v, want %v", got, tt.want)
++			}
++		})
++	}
++}
+Index: prometheus-2.18.0/go.mod
+===================================================================
+--- prometheus-2.18.0.orig/go.mod
++++ prometheus-2.18.0/go.mod
 @@ -41,6 +41,7 @@ require (
  	github.com/jpillora/backoff v1.0.0 // indirect
  	github.com/json-iterator/go v1.1.9
@@ -359,11 +510,11 @@ index 0b5a585..5a95ffb 100644
  	github.com/mattn/go-colorable v0.1.6 // indirect
  	github.com/miekg/dns v1.1.29
  	github.com/mitchellh/mapstructure v1.2.2 // indirect
-diff --git a/go.sum b/go.sum
-index 7941bbe..9f31b87 100644
---- a/go.sum
-+++ b/go.sum
-@@ -505,6 +505,8 @@ github.com/klauspost/compress v1.9.5/go.mod h1:RyIbtBH6LamlWaDj8nUwkbUhJ87Yi3uG0
+Index: prometheus-2.18.0/go.sum
+===================================================================
+--- prometheus-2.18.0.orig/go.sum
++++ prometheus-2.18.0/go.sum
+@@ -505,6 +505,8 @@ github.com/klauspost/compress v1.9.5/go.
  github.com/klauspost/cpuid v0.0.0-20170728055534-ae7887de9fa5/go.mod h1:Pj4uuM528wm8OyEC2QMXAi2YiTZ96dNQPGgoMS4s3ek=
  github.com/klauspost/crc32 v0.0.0-20161016154125-cb6bfca970f6/go.mod h1:+ZoRqAPRLkC4NPOvfYeR5KNOrY6TD+/sAC3HXPZgDYg=
  github.com/klauspost/pgzip v1.0.2-0.20170402124221-0bf5dcad4ada/go.mod h1:Ch1tH69qFZu15pkjo5kYi6mth2Zzwzt50oCQKQE9RUs=
@@ -372,11 +523,10 @@ index 7941bbe..9f31b87 100644
  github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
  github.com/konsorten/go-windows-terminal-sequences v1.0.2/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
  github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515 h1:T+h1c/A9Gawja4Y9mFVWj2vyii2bbUNDw3kt9VxK2EY=
-diff --git a/vendor/github.com/kolo/xmlrpc/LICENSE b/vendor/github.com/kolo/xmlrpc/LICENSE
-new file mode 100644
-index 00000000..8103dd13
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/LICENSE
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/LICENSE
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/LICENSE
 @@ -0,0 +1,19 @@
 +Copyright (C) 2012 Dmitry Maksimov
 +
@@ -397,11 +547,10 @@ index 00000000..8103dd13
 +LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 +OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 +THE SOFTWARE.
-diff --git a/vendor/github.com/kolo/xmlrpc/README.md b/vendor/github.com/kolo/xmlrpc/README.md
-new file mode 100644
-index 00000000..8113cfcc
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/README.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/README.md
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/README.md
 @@ -0,0 +1,89 @@
 +[![GoDoc](https://godoc.org/github.com/kolo/xmlrpc?status.svg)](https://godoc.org/github.com/kolo/xmlrpc)
 +
@@ -492,11 +641,10 @@ index 00000000..8113cfcc
 +## Authors
 +
 +Dmitry Maksimov (dmtmax@gmail.com)
-diff --git a/vendor/github.com/kolo/xmlrpc/client.go b/vendor/github.com/kolo/xmlrpc/client.go
-new file mode 100644
-index 00000000..3aa86ce2
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/client.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client.go
 @@ -0,0 +1,170 @@
 +package xmlrpc
 +
@@ -668,11 +816,10 @@ index 00000000..3aa86ce2
 +
 +	return &Client{rpc.NewClientWithCodec(&codec)}, nil
 +}
-diff --git a/vendor/github.com/kolo/xmlrpc/client_test.go b/vendor/github.com/kolo/xmlrpc/client_test.go
-new file mode 100644
-index 00000000..b429d4f8
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client_test.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/client_test.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client_test.go
 @@ -0,0 +1,141 @@
 +// +build integration
 +
@@ -815,11 +962,10 @@ index 00000000..b429d4f8
 +
 +	return client
 +}
-diff --git a/vendor/github.com/kolo/xmlrpc/decoder.go b/vendor/github.com/kolo/xmlrpc/decoder.go
-new file mode 100644
-index 00000000..d4dcb19a
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/decoder.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/decoder.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/decoder.go
 @@ -0,0 +1,473 @@
 +package xmlrpc
 +
@@ -1294,11 +1440,10 @@ index 00000000..d4dcb19a
 +
 +	return nil
 +}
-diff --git a/vendor/github.com/kolo/xmlrpc/decoder_test.go b/vendor/github.com/kolo/xmlrpc/decoder_test.go
-new file mode 100644
-index 00000000..3701d50a
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/decoder_test.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/decoder_test.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/decoder_test.go
 @@ -0,0 +1,234 @@
 +package xmlrpc
 +
@@ -1534,11 +1679,10 @@ index 00000000..3701d50a
 +
 +	return transform.NewReader(input, charmap.Windows1251.NewDecoder()), nil
 +}
-diff --git a/vendor/github.com/kolo/xmlrpc/encoder.go b/vendor/github.com/kolo/xmlrpc/encoder.go
-new file mode 100644
-index 00000000..d585a7d3
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/encoder.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder.go
 @@ -0,0 +1,171 @@
 +package xmlrpc
 +
@@ -1711,11 +1855,10 @@ index 00000000..d585a7d3
 +
 +	return b.Bytes(), nil
 +}
-diff --git a/vendor/github.com/kolo/xmlrpc/encoder_test.go b/vendor/github.com/kolo/xmlrpc/encoder_test.go
-new file mode 100644
-index 00000000..ca4ac706
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder_test.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/encoder_test.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder_test.go
 @@ -0,0 +1,58 @@
 +package xmlrpc
 +
@@ -1775,11 +1918,10 @@ index 00000000..ca4ac706
 +
 +	}
 +}
-diff --git a/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml b/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
-new file mode 100644
-index 00000000..1d5e9bfc
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
 @@ -0,0 +1,6 @@
 +<?xml version="1.0" encoding="cp1251" ?>
 +<methodResponse>
@@ -1788,11 +1930,10 @@ index 00000000..1d5e9bfc
 +	</params>
 +</methodResponse>
 \ No newline at end of file
-diff --git a/vendor/github.com/kolo/xmlrpc/request.go b/vendor/github.com/kolo/xmlrpc/request.go
-new file mode 100644
-index 00000000..acb8251b
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/request.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/request.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/request.go
 @@ -0,0 +1,57 @@
 +package xmlrpc
 +
@@ -1851,11 +1992,10 @@ index 00000000..acb8251b
 +
 +	return b.Bytes(), nil
 +}
-diff --git a/vendor/github.com/kolo/xmlrpc/response.go b/vendor/github.com/kolo/xmlrpc/response.go
-new file mode 100644
-index 00000000..6742a1c7
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/response.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/response.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/response.go
 @@ -0,0 +1,52 @@
 +package xmlrpc
 +
@@ -1909,11 +2049,10 @@ index 00000000..6742a1c7
 +
 +	return nil
 +}
-diff --git a/vendor/github.com/kolo/xmlrpc/response_test.go b/vendor/github.com/kolo/xmlrpc/response_test.go
-new file mode 100644
-index 00000000..55095c24
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/response_test.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/response_test.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/response_test.go
 @@ -0,0 +1,84 @@
 +package xmlrpc
 +
@@ -1999,11 +2138,10 @@ index 00000000..55095c24
 +		t.Fatalf("unexpected result: %v", result)
 +	}
 +}
-diff --git a/vendor/github.com/kolo/xmlrpc/test_server.rb b/vendor/github.com/kolo/xmlrpc/test_server.rb
-new file mode 100644
-index 00000000..1b1ff876
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/test_server.rb
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/test_server.rb
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/test_server.rb
 @@ -0,0 +1,25 @@
 +# encoding: utf-8
 +
@@ -2030,11 +2168,10 @@ index 00000000..1b1ff876
 +server = XMLRPC::Server.new 5001, 'localhost'
 +server.add_handler "service", Service.new
 +server.serve
-diff --git a/vendor/github.com/kolo/xmlrpc/xmlrpc.go b/vendor/github.com/kolo/xmlrpc/xmlrpc.go
-new file mode 100644
-index 00000000..8766403a
+Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/xmlrpc.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/kolo/xmlrpc/xmlrpc.go
++++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/xmlrpc.go
 @@ -0,0 +1,19 @@
 +package xmlrpc
 +

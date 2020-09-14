@@ -336,4 +336,12 @@
     <comment>Add support for openSUSE Leap 15.3 and SLE15-SP3</comment>
     <requestid>827957</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>42c5335e52edec5c10cc2bdd4eeeb0f4</srcmd5>
+    <version>20200813</version>
+    <time>1600077881</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833547</requestid>
+  </revision>
 </revisionlist>

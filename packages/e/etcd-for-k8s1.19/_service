@@ -3,7 +3,7 @@
     <param name="url">git://github.com/etcd-io/etcd.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v3.4.9</param>
+    <param name="revision">v3.4.13</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -16,6 +16,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">etcd-3.4.9.tar.gz</param>
+    <param name="archive">etcd-3.4.13.tar.gz</param>
   </service>
 </services>

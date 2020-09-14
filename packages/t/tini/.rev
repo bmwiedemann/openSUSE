@@ -8,4 +8,12 @@
 https://lists.opensuse.org/opensuse-factory/2018-10/msg00310.html</comment>
     <requestid>700962</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf872e16a1a23721342b583139c862b4</srcmd5>
+    <version>0.19.0</version>
+    <time>1600078613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833766</requestid>
+  </revision>
 </revisionlist>

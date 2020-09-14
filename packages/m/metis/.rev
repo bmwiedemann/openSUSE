@@ -64,4 +64,12 @@
     <comment>- Add support for gcc8/9 building (jsc#SLE-8604). (forwarded request 779445 from eeich)</comment>
     <requestid>779515</requestid>
   </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>28f5c6d25765b1724cd9012b1ad5b02a</srcmd5>
+    <version>5.1.0</version>
+    <time>1600078439</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439). (forwarded request 833595 from eeich)</comment>
+    <requestid>833711</requestid>
+  </revision>
 </revisionlist>

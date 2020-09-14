@@ -1,7 +1,7 @@
 #
 # spec file for package thunderbolt-user-space
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,15 @@ Group:          System/Management
 URL:            https://github.com/intel/thunderbolt-software-user-space
 Source:         https://github.com/01org/thunderbolt-software-user-space/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0001-flags-add-boost_system-library.patch
+# Add support for Thunderbolt devices using Secure Connection in initramfs
+Patch1:         0002-initramfs-support.patch
 BuildRequires:  cmake >= 2.4.6
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  libdbus-c++-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  pkgconfig
 BuildRequires:  txt2tags
+BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(udev)
 Requires:       procps
 %if 0%{?suse_version} > 1315
@@ -53,6 +56,7 @@ These user-space components implement device approval support:
 %prep
 %setup -q -n thunderbolt-software-user-space-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake \
@@ -76,10 +80,13 @@ rm -rf %{buildroot}%{_datadir}/doc/thunderbolt-user-space
 %{_bindir}/tbtadm
 %{_udevrulesdir}/60-tbtacl.rules
 %{_udevrulesdir}/60-tbtxdomain.rules
+%dir %{_prefix}/lib/dracut/modules.d/35thunderbolt/
+%{_prefix}/lib/dracut/modules.d/35thunderbolt/module-setup.sh
 %{_prefix}/lib/udev/tbtacl
 %{_prefix}/lib/udev/tbtacl-write
 %{_prefix}/lib/udev/tbtxdomain
 %{_mandir}/man1/tbtadm.1%{?ext_man}
 %{_datadir}/bash-completion/completions/tbtadm
+%config %{_sysconfdir}/dracut.conf.d/35-thunderbolt.conf
 
 %changelog

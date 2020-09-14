@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:39:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.31.2:
+  * Fix ne_md5_read_ctx() with OpenSSL on big-endian architectures.
+  * Fix GCC 10 warning in PKCS#11 build.
+  * Fix OpenSSL build w/o deprecated APIs (Rosen Penev).
+  * Fix unnecessary MD5 test for non-Digest auth (Sebastian Reschke).
+  * Fix hang on SSL connection close with IIS (issue #11).
+  * Fix ar, ranlib detection when cross-compiling (Sergei Trofimovich). 
+
+-------------------------------------------------------------------
 Mon Jun  1 09:04:45 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Update to 0.31.1

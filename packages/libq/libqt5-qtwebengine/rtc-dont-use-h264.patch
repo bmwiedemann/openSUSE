@@ -1,0 +1,31 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Don't require open264 when proprietary_codecs are supported
+
+Index: qtwebengine-everywhere-src-5.15.1/src/3rdparty/chromium/third_party/webrtc/webrtc.gni
+===================================================================
+--- qtwebengine-everywhere-src-5.15.1.orig/src/3rdparty/chromium/third_party/webrtc/webrtc.gni
++++ qtwebengine-everywhere-src-5.15.1/src/3rdparty/chromium/third_party/webrtc/webrtc.gni
+@@ -149,8 +149,7 @@ declare_args() {
+   #
+   # Enabling H264 when building with MSVC is currently not supported, see
+   # bugs.webrtc.org/9213#c13 for more info.
+-  rtc_use_h264 =
+-      proprietary_codecs && !is_android && !is_ios && !(is_win && !is_clang)
++  rtc_use_h264 = false
+ 
+   # By default, use normal platform audio support or dummy audio, but don't
+   # use file-based audio playout and record.
+Index: qtwebengine-everywhere-src-5.15.1/src/core/config/common.pri
+===================================================================
+--- qtwebengine-everywhere-src-5.15.1.orig/src/core/config/common.pri
++++ qtwebengine-everywhere-src-5.15.1/src/core/config/common.pri
+@@ -27,9 +27,6 @@ qtConfig(webengine-webrtc) {
+ 
+ qtConfig(webengine-proprietary-codecs) {
+     gn_args += proprietary_codecs=true ffmpeg_branding=\"Chrome\"
+-    qtConfig(webengine-webrtc) {
+-        gn_args += rtc_use_h264=true
+-    }
+ } else {
+     gn_args += proprietary_codecs=false
+ }

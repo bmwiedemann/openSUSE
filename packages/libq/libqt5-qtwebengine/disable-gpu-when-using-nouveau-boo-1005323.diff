@@ -7,19 +7,19 @@ It also crashes when running on wayland, the cause is not yet known.
 Work around these issues by not doing GPU-accelerated rendering in such
 cases.
 
-Index: qtwebengine-everywhere-src-5.13.0-beta1/src/core/web_engine_context.cpp
+Index: qtwebengine-everywhere-src-5.15.1/src/core/web_engine_context.cpp
 ===================================================================
---- qtwebengine-everywhere-src-5.13.0-beta1.orig/src/core/web_engine_context.cpp
-+++ qtwebengine-everywhere-src-5.13.0-beta1/src/core/web_engine_context.cpp
-@@ -108,6 +108,7 @@
+--- qtwebengine-everywhere-src-5.15.1.orig/src/core/web_engine_context.cpp
++++ qtwebengine-everywhere-src-5.15.1/src/core/web_engine_context.cpp
+@@ -127,6 +127,7 @@
  #include <QOffscreenSurface>
- #ifndef QT_NO_OPENGL
+ #if QT_CONFIG(opengl)
  # include <QOpenGLContext>
 +# include <QOpenGLFunctions>
  #endif
  #include <QQuickWindow>
  #include <QStringList>
-@@ -167,6 +168,39 @@ void dummyGetPluginCallback(const std::v
+@@ -186,6 +187,39 @@ void dummyGetPluginCallback(const std::v
  }
  #endif
  
@@ -59,9 +59,9 @@ Index: qtwebengine-everywhere-src-5.13.0-beta1/src/core/web_engine_context.cpp
  } // namespace
  
  namespace QtWebEngineCore {
-@@ -501,10 +535,31 @@ WebEngineContext::WebEngineContext()
+@@ -697,10 +731,31 @@ WebEngineContext::WebEngineContext()
      const char *glType = 0;
- #ifndef QT_NO_OPENGL
+ #if QT_CONFIG(opengl)
  
 +    bool disableGpu = qEnvironmentVariableIsSet("QT_WEBENGINE_DISABLE_GPU");
 +

@@ -3,11 +3,18 @@ is run serially over these binaries instead of in parallel.
 OBS workers run out of memory as each executable seems to require
 upward of 5G RAM
 
-Index: node-v14.0.0/node.gyp
+Index: node-v14.9.0/node.gyp
 ===================================================================
---- node-v14.0.0.orig/node.gyp
-+++ node-v14.0.0/node.gyp
-@@ -1205,6 +1205,7 @@
+--- node-v14.9.0.orig/node.gyp
++++ node-v14.9.0/node.gyp
+@@ -1258,20 +1258,21 @@
+       'target_name': 'embedtest',
+       'type': 'executable',
+ 
+       'dependencies': [
+         '<(node_lib_target_name)',
+         'deps/histogram/histogram.gyp:histogram',
+         'deps/uvwasi/uvwasi.gyp:uvwasi',
          'node_dtrace_header',
          'node_dtrace_ustack',
          'node_dtrace_provider',
@@ -15,7 +22,21 @@ Index: node-v14.0.0/node.gyp
        ],
  
        'includes': [
-@@ -1264,6 +1265,7 @@
+         'node.gypi'
+       ],
+ 
+       'include_dirs': [
+         'src',
+         'tools/msvs/genfiles',
+         'deps/v8/include',
+@@ -1317,20 +1318,21 @@
+     # So generate_code_cache -> mkcodecache -> node_lib_base,
+     #    node_lib -> node_lib_base & generate_code_cache
+     {
+       'target_name': 'mkcodecache',
+       'type': 'executable',
+ 
+       'dependencies': [
          '<(node_lib_target_name)',
          'deps/histogram/histogram.gyp:histogram',
          'deps/uvwasi/uvwasi.gyp:uvwasi',
@@ -23,7 +44,21 @@ Index: node-v14.0.0/node.gyp
        ],
  
        'includes': [
-@@ -1319,6 +1321,7 @@
+         'node.gypi'
+       ],
+ 
+       'include_dirs': [
+         'src',
+         'tools/msvs/genfiles',
+         'deps/v8/include',
+@@ -1372,20 +1374,21 @@
+       ],
+     }, # mkcodecache
+     {
+       'target_name': 'node_mksnapshot',
+       'type': 'executable',
+ 
+       'dependencies': [
          '<(node_lib_target_name)',
          'deps/histogram/histogram.gyp:histogram',
          'deps/uvwasi/uvwasi.gyp:uvwasi',
@@ -31,3 +66,10 @@ Index: node-v14.0.0/node.gyp
        ],
  
        'includes': [
+         'node.gypi'
+       ],
+ 
+       'include_dirs': [
+         'src',
+         'tools/msvs/genfiles',
+         'deps/v8/include',

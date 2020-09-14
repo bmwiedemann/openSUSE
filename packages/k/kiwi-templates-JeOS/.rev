@@ -152,4 +152,12 @@
 - Replace suseInsertService with direct systemctl enable</comment>
     <requestid>831437</requestid>
   </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>4ab3bf1dba28f391d6f06d7ed50c5fc8</srcmd5>
+    <version>84.87</version>
+    <time>1600078624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833786</requestid>
+  </revision>
 </revisionlist>

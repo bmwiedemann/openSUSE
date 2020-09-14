@@ -16,7 +16,7 @@
 #
 
 
-%bcond_without zeitgeist
+%bcond_with zeitgeist
 Name:           xplayer
 Version:        2.2.1
 Release:        0

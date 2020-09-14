@@ -1632,4 +1632,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>829048</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>bf7b70a62e7b031a966a791158aea3f8</srcmd5>
+    <version>10.4.14</version>
+    <time>1600077847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833528</requestid>
+  </revision>
 </revisionlist>

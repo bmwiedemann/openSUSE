@@ -16,17 +16,25 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "tests"
+%define psuffix -tests
+%bcond_without tests
+%else
+%bcond_with tests
+%endif
+%define pname c-ares
 %define sonum   2
 %define libname libcares%{sonum}
-Name:           c-ares
+Name:           %{pname}%{?psuffix}
 Version:        1.16.1
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
 URL:            https://c-ares.haxx.se/
-Source0:        http://c-ares.haxx.se/download/%{name}-%{version}.tar.gz
-Source1:        http://c-ares.haxx.se/download/%{name}-%{version}.tar.gz.asc
-Source3:        %{name}.keyring
+Source0:        http://c-ares.haxx.se/download/%{pname}-%{version}.tar.gz
+Source1:        http://c-ares.haxx.se/download/%{pname}-%{version}.tar.gz.asc
+Source3:        %{pname}.keyring
 Source4:        baselibs.conf
 Patch0:         0001-Use-RPM-compiler-options.patch
 Patch1:         disable-live-tests.patch
@@ -80,7 +88,7 @@ This package provides the development libraries and headers needed
 to build packages that depend on c-ares.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -n %{pname}-%{version}
 
 # Remove bogus cflags checking
 sed -i -e '/XC_CHECK_BUILD_FLAGS/d' configure.ac
@@ -91,23 +99,32 @@ sed -i -e '/XC_CHECK_USER_FLAGS/d' m4/xc-cc-check.m4
     -DCARES_STATIC:BOOL=OFF \
     -DCARES_SHARED:BOOL=ON \
     -DCARES_INSTALL:BOOL=ON \
+    -DCARES_BUILD_TOOLS:BOOL=ON \
+%if %{with tests}
+    -DCARES_STATIC:BOOL=ON \
     -DCARES_BUILD_TESTS:BOOL=ON \
-    -DCARES_BUILD_TOOLS:BOOL=ON
-%make_build
+%endif
+    %{nil}
+%cmake_build
 
 %install
+%if !%{with tests}
 %cmake_install
 install -m 644 -Dt %{buildroot}%{_mandir}/man1/ *.1
 install -m 644 -Dt %{buildroot}%{_mandir}/man3/ *.3
 # Tests require static lib so lets remove it so it does not get in package
 find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
+%endif
 
+%if %{with tests}
 %check
 pushd build
 %make_build -C test
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
 ./bin/arestest
+%endif
 
+%if !%{with tests}
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
@@ -131,5 +148,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
 %{_mandir}/man3/ares_*.3%{?ext_man}
 %{_libdir}/pkgconfig/libcares.pc
 %{_libdir}/cmake/c-ares/
+%endif
 
 %changelog

@@ -18,7 +18,7 @@
 
 %bcond_without libuv
 Name:           raft
-Version:        0.9.24
+Version:        0.9.25
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
 License:        LGPL-3.0-only WITH linking-exception-lgpl-3.0

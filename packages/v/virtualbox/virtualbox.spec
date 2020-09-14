@@ -66,7 +66,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.13
+Version:        6.1.14
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later
@@ -680,6 +680,7 @@ install -m 755 VBoxEFI*.fd			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxSysInfo.sh			%{buildroot}%{_vbox_instdir}
 install -m 644 *.so		 		%{buildroot}%{_vbox_instdir}
 install -m 644 *.r0 				%{buildroot}%{_vbox_instdir}
+rm components/VBoxREM.so
 install -m 644 components/*			%{buildroot}%{_vbox_instdir}/components/
 # install languages
 install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
@@ -709,9 +710,9 @@ install -m 644 %{SOURCE4}			%{buildroot}%{_sysconfdir}/default/virtualbox
 install -m 644 %{SOURCE9}			%{buildroot}%{_bindir}/VirtualBox
 install -m 644 %{SOURCE8}			%{buildroot}%{_bindir}/update-extpack.sh
 # Service files to load kernel modules on boot
-install -m 0644 %{SOURCE14}			%{buildroot}%{_unitdir}/vboxdrv.service
+install -m 0644 %{SOURCE14}                     %{buildroot}%{_unitdir}/vboxdrv.service
 ln -s -f %{_sbindir}/service			%{buildroot}%{_sbindir}/rcvboxdrv
-install -m 0644 %{SOURCE15}			%{buildroot}%{_unitdir}/vboxadd-service.service
+install -m 0644 %{SOURCE15}                     %{buildroot}%{_unitdir}/vboxadd-service.service
 install -m 0755 %{SOURCE16}			%{buildroot}/sbin/vboxconfig
 install -m 0755 %{SOURCE17}			%{buildroot}/sbin/vboxguestconfig
 install -m 0755 %{SOURCE18}			%{buildroot}/sbin/vbox-fix-usb-rules.sh
@@ -1212,9 +1213,6 @@ done
 %install
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=extra
-#Keep the install process from calling mkinitrd. The VB kernel modules are not in initrd. bsc#1052428
-export INITRD_IN_POSTTRANS=1
-export KMP_NEEDS_MKINITRD=0
 #to install modules we use here similar steps like in build phase, go through all the modules :
 for module_name in vbox{drv,netflt,netadp,guest,sf,video}
 do

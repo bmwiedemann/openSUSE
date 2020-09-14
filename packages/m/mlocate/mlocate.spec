@@ -1,7 +1,7 @@
 #
 # spec file for package mlocate
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ BuildRequires:  grep
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
+Requires:       apparmor-abstractions
 Requires(post): %fillup_prereq
 Recommends:     %{name}-lang = %{version}
 Provides:       findutils:%{_bindir}/locate

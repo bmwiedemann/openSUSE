@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:08:25 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.5:
+  * Highlights:
+    + Dropped support for Python 3.5.
+    + add Pathlib support to work with files.
+    + improve performance.
+    + Updated docs and tests.
+    + Removed code designed to work with Python 2.
+  * New Functions:
+    + lukes_partitioning
+    + triadic analysis functions
+    + functions for trophic levels analysis
+    + d_separated
+    + is_regular and other regular graph measures
+    + graph_hash using Weisfeiler Lehman methods
+    + common_neighbor_centrality (CCPA link prediction)
+    + max_weight_clique
+    + path_weight and is_path
+    + rescale_layout_dict
+    + junction_tree
+  * New generators:
+    + paley_graph
+    + interval_graph
+  * New layouts:
+    + multipartite_layout
+- To see improvements, API changes and deprecations, please visit:
+  https://networkx.github.io/documentation/stable/release/release_2.5.html
+- Dropped patches already included by upstream:
+  * numpy-38-test.patch
+  * matplotlib.patch
+  * networkx-pr4012-use-mpl.patch
+- Add patch to remove a failing test in i586. The issue was
+  submitted to upstream at gh#networkx/networkx#4203:
+  * disable-test-failing-in-i586.patch
+
+-------------------------------------------------------------------
 Tue Jul 21 16:10:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 -  gh#networkx/networkx#4012 networkx-pr4012-use-mpl.patch

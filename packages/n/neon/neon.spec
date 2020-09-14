@@ -17,7 +17,7 @@
 
 
 Name:           neon
-Version:        0.31.1
+Version:        0.31.2
 Release:        0
 Summary:        An HTTP and WebDAV Client Library
 License:        GPL-2.0-or-later

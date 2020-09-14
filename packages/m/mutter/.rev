@@ -1327,4 +1327,23 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
   (boo#1175559 glgo#GNOME/mutter!1282). (forwarded request 828234 from fcrozat)</comment>
     <requestid>828237</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>66c463af29f6c547052ed0db8ae33562</srcmd5>
+    <version>3.36.6+2</version>
+    <time>1600078253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.36.6+2:
+  + kms/crtc:
+    - Always consider gamma state valid.
+    - Read initial gamma state.
+  + Fix stale cursor positions in remote desktop sessions.
+  + Limit mipmap levels when rendering background.
+  + Improve support for Hangul input method.
+  + Fixed crashes.
+  + Plugged memory leaks.
+  + Misc. bug fixes and cleanups.
+- Drop patch fixed upstream:
+  + mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch (forwarded request 832974 from iznogood)</comment>
+    <requestid>833674</requestid>
+  </revision>
 </revisionlist>

@@ -19,18 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-networkx
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
 URL:            https://networkx.github.io/
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
-# UPSTREAM PATCH: gh#networkx/networkx#3724
-Patch0:         numpy-38-test.patch
-# UPSTREAM PATCH: gh#networkx/networkx#3697
-Patch1:         matplotlib.patch
-# UPSTREAM PATCH: gh#networkx/networkx#4012
-Patch2:         networkx-pr4012-use-mpl.patch
+Patch0:         disable-test-failing-in-i586.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module decorator >= 3.4.0}
 BuildRequires:  %{python_module matplotlib >= 3.1}

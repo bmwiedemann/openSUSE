@@ -45,7 +45,7 @@ Source3:        prometheus.sysconfig
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
-# Uyuni service discovery support
+# PATCH-FEATURE-OPENSUSE 0003-Add-Uyuni-service-discovery.patch jcavalheiro@suse.de
 Patch3:         0003-Add-Uyuni-service-discovery.patch
 BuildRequires:  fdupes
 # Adding glibc-devel-static seems to be required for linking if building

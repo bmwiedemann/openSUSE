@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.4.10
+Version:        3.4.13
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0

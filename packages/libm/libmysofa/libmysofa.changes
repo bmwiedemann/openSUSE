@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 08:19:43 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Set CODE_COVERAGE to OFF to prevent runtime profile data
+  generation.
+
+-------------------------------------------------------------------
 Tue Aug 25 15:34:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.1:

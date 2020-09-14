@@ -876,4 +876,15 @@
   + Updated translations. (forwarded request 826557 from iznogood)</comment>
     <requestid>826641</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>9c04064792d4861092311c9d710ebd16</srcmd5>
+    <version>3.36.3</version>
+    <time>1600078380</time>
+    <user>dimstar_suse</user>
+    <comment>- Move branding image file to branding-SLE package
+  (jsc#SLE-11720 bsc#1176304).
+  + Remove sle-classic-lock-screen-background.patch
+  + Remove SLE-theme.tar.gz (forwarded request 833589 from xiaoguang_wang)</comment>
+    <requestid>833696</requestid>
+  </revision>
 </revisionlist>

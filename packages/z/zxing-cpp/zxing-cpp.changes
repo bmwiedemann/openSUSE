@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  4 07:16:43 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add fix for pkg-config file so the version and library are set properly
+  in the resulting .pc file:
+  * fix-pkg-config-file.patch
+
+-------------------------------------------------------------------
 Sun Aug 16 19:19:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.1.0

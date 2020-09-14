@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:38:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.0.8:
+  * bug fixes when using with Sentinel
+  * bug fixes when using CONFIG REWRITE
+  * Remove THP warning when set to madvise
+  * Allow EXEC with read commands on readonly replica in cluster
+  * Add masters/replicas options to redis-cli --cluster call command
+- includes changes from 6.0.7:
+  * CONFIG SET could hung the client when arrives during RDB/ROF
+    loading
+  * LPOS command when RANK is greater than matches responded with
+    broken protocol
+  * Add oom-score-adj configuration option to control Linux OOM
+    killer
+  * Show IO threads statistics and status in INFO output
+  * Add optional tls verification mode (see tls-auth-clients)
+
+-------------------------------------------------------------------
 Mon Jul 27 00:11:22 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - redis 6.0.6:

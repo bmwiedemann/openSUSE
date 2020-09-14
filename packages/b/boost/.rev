@@ -1271,4 +1271,12 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
 - remove python 2.7, it is 2020 after all</comment>
     <requestid>829938</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>e834580abe9874679d95ec7ef1ec8855</srcmd5>
+    <version>1.74.0</version>
+    <time>1600077899</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833577</requestid>
+  </revision>
 </revisionlist>

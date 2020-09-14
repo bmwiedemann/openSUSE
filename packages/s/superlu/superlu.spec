@@ -56,6 +56,12 @@ ExclusiveArch:  do_not_build
 %define c_f_ver 9
 %endif
 
+%if "%{flavor}" == "gnu10-hpc"
+%bcond_without hpc
+%global compiler_family gnu
+%define c_f_ver 10
+%endif
+
 %bcond_with ringdisabled
 
 %if %{with hpc} && %{with ringdisabled}

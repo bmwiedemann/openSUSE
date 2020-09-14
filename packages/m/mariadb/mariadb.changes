@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  1 15:44:02 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+-  Using basic.target dependencies is not needed with any systemd 
+   release unless DefaultDependencies is disabled, remove from
+   unit files
+
+-------------------------------------------------------------------
+Tue Sep  1 15:05:00 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Mariadb uses hrtimers with absolute CLOCK_REALTIME values, this
+  won't work correctly if the clock isn't set and will do funny things
+  if it goes backward after starting the server as POSIX says that the new
+  clock value shall influence them, start the service after time-sync.target
+  to workaround the problem.
+
+-------------------------------------------------------------------
 Wed Aug 12 16:43:40 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 10.4.14 [bsc#1175596]

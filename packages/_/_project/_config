@@ -894,6 +894,7 @@ Prefer: ruby2.7-rubygem-rack
 Prefer: ruby2.7-rubygem-sass-rails
 Prefer: ruby2.7-rubygem-sassc
 Prefer: ruby2.7-rubygem-thor
+Prefer: ruby2.7-rubygem-listen ruby2.7-rubygem-mime-types ruby2.7-rubygem-builder
 
 # python-msgpack-python was renamed to python-msgpack with 0.5 as a single-spec package (provides/obsoletes in place)
 Prefer: python3-msgpack

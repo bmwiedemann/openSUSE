@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 12 17:01:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add back the swiftshader folder wrt bsc#1176450
+
+-------------------------------------------------------------------
+Wed Sep  9 06:36:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update 85.0.4183.102 bsc#1176306:
+  * CVE-2020-6573: Use after free in video.
+  * CVE-2020-6574: Insufficient policy enforcement in installer. 
+  * CVE-2020-6575: Race in Mojo.
+  * CVE-2020-6576: Use after free in offscreen canvas. 
+  * CVE-2020-15959: Insufficient policy enforcement in networking.
+
+-------------------------------------------------------------------
 Tue Sep  8 06:53:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Move swiftshader stuff to chromium folder directly bsc#1176207

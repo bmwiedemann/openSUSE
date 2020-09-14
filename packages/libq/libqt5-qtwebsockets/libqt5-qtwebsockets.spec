@@ -19,11 +19,11 @@
 %define qt5_snapshot 0
 %define libname libQt5WebSockets5
 %define base_name libqt5
-%define real_version 5.15.0
-%define so_version 5.15.0
-%define tar_version qtwebsockets-everywhere-src-5.15.0
+%define real_version 5.15.1
+%define so_version 5.15.1
+%define tar_version qtwebsockets-everywhere-src-5.15.1
 Name:           libqt5-qtwebsockets
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Qt 5 WebSockets Library
 License:        LGPL-3.0-only OR  (GPL-2.0-only OR GPL-3.0-or-later)

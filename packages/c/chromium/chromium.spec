@@ -51,7 +51,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        85.0.4183.83
+Version:        85.0.4183.102
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -748,8 +748,13 @@ cp -a icudtl.dat %{buildroot}%{_libdir}/chromium/
 %endif
 
 %if %{with swiftshader}
-mkdir -p %{buildroot}%{_libdir}/chromium
-cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/
+# general folder for these is swiftshader bsc#1176450
+mkdir -p %{buildroot}%{_libdir}/chromium/swiftshader
+cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/swiftshader/
+# create compat symlinks bsc#1176207
+pushd %{buildroot}%{_libdir}/chromium
+ln -s swiftshader/*.so ./
+popd
 %endif
 
 # chromedriver
@@ -812,6 +817,8 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 %dir %{_datadir}/gnome-control-center/default-apps
 %{_libdir}/chromium/
 %if %{with swiftshader}
+%dir %{_libdir}/chromium/swiftshader/
+%{_libdir}/chromium/swiftshader/*.so
 %{_libdir}/chromium/*.so
 %endif
 %{_datadir}/applications/*.desktop

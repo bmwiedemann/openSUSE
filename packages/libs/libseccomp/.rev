@@ -255,4 +255,14 @@
     <comment>- Update to release 2.4.3</comment>
     <requestid>811834</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9ca6ce162717313c30f135cc344459ab</srcmd5>
+    <version>2.5.0</version>
+    <time>1600077751</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not rely on gperf: pass GPERF=/bin/true to configure and
+  remove gperf BuildRequires. The syscalls.perf file it would
+  generate is part of the tarball already. (forwarded request 833241 from dimstar)</comment>
+    <requestid>833243</requestid>
+  </revision>
 </revisionlist>

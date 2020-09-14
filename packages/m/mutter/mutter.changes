@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  8 12:03:37 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.6+2:
+  + kms/crtc:
+    - Always consider gamma state valid.
+    - Read initial gamma state.
+  + Fix stale cursor positions in remote desktop sessions.
+  + Limit mipmap levels when rendering background.
+  + Improve support for Hangul input method.
+  + Fixed crashes.
+  + Plugged memory leaks.
+  + Misc. bug fixes and cleanups.
+- Drop patch fixed upstream:
+  + mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch
+
+-------------------------------------------------------------------
 Thu Aug 20 15:34:43 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Add mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch:

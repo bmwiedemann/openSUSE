@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 31 14:50:21 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update 0003-Add-Uyuni-service-discovery.patch:
+  + Add support for Prometheus exporters proxy
+
+-------------------------------------------------------------------
 Wed Jun  3 15:59:05 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
 
 - Update change log and spec file

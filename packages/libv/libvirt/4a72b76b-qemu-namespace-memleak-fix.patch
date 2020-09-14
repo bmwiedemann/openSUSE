@@ -1,0 +1,118 @@
+commit 4a72b76b8a99ab6c33f468e767cb33cf1fcec843
+Author: Michal Prívozník <mprivozn@redhat.com>
+Date:   Mon Sep 7 13:35:50 2020 +0200
+
+    qemu_namespace: Don't leak mknod items that are being skipped over
+    
+    When building and populating domain NS a couple of functions are
+    called that append paths to a string list. This string list is
+    then inspected, one item at the time by
+    qemuNamespacePrepareOneItem() which gathers all the info for
+    given path (stat buffer, possible link target, ACLs, SELinux
+    label) using qemuNamespaceMknodItemInit(). If the path needs to
+    be created in the domain's private /dev then it's added onto this
+    qemuNamespaceMknodData list which is freed later in the process.
+    But, if the path does not need to be created in the domain's
+    private /dev, then the memory allocated by
+    qemuNamespaceMknodItemInit() is not freed anywhere leading to a
+    leak.
+    
+    Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+    Reviewed-by: Ján Tomko <jtomko@redhat.com>
+
+Index: libvirt-6.7.0/src/qemu/qemu_namespace.c
+===================================================================
+--- libvirt-6.7.0.orig/src/qemu/qemu_namespace.c
++++ libvirt-6.7.0/src/qemu/qemu_namespace.c
+@@ -871,7 +871,7 @@ qemuDomainNamespaceAvailable(qemuDomainN
+ typedef struct _qemuNamespaceMknodItem qemuNamespaceMknodItem;
+ typedef qemuNamespaceMknodItem *qemuNamespaceMknodItemPtr;
+ struct _qemuNamespaceMknodItem {
+-    const char *file;
++    char *file;
+     char *target;
+     bool bindmounted;
+     GStatBuf sb;
+@@ -892,6 +892,7 @@ struct _qemuNamespaceMknodData {
+ static void
+ qemuNamespaceMknodItemClear(qemuNamespaceMknodItemPtr item)
+ {
++    VIR_FREE(item->file);
+     VIR_FREE(item->target);
+     virFileFreeACLs(&item->acl);
+ #ifdef WITH_SELINUX
+@@ -900,6 +901,8 @@ qemuNamespaceMknodItemClear(qemuNamespac
+ }
+ 
+ 
++G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(qemuNamespaceMknodItem, qemuNamespaceMknodItemClear);
++
+ static void
+ qemuNamespaceMknodDataClear(qemuNamespaceMknodDataPtr data)
+ {
+@@ -1091,7 +1094,7 @@ qemuNamespaceMknodItemInit(qemuNamespace
+     bool isLink;
+     bool needsBindMount;
+ 
+-    item->file = file;
++    item->file = g_strdup(file);
+ 
+     if (g_lstat(file, &item->sb) < 0) {
+         if (errno == ENOENT)
+@@ -1166,11 +1169,13 @@ qemuNamespacePrepareOneItem(qemuNamespac
+                             size_t ndevMountsPath)
+ {
+     long ttl = sysconf(_SC_SYMLOOP_MAX);
+-    const char *next = file;
++    g_autofree char *next = g_strdup(file);
+     size_t i;
+ 
+     while (1) {
+-        qemuNamespaceMknodItem item = { 0 };
++        g_auto(qemuNamespaceMknodItem) item = { 0 };
++        bool isLink;
++        bool addToData = false;
+         int rc;
+ 
+         rc = qemuNamespaceMknodItemInit(&item, cfg, vm, next);
+@@ -1182,6 +1187,8 @@ qemuNamespacePrepareOneItem(qemuNamespac
+             return -1;
+         }
+ 
++        isLink = S_ISLNK(item.sb.st_mode);
++
+         if (STRPREFIX(next, QEMU_DEVPREFIX)) {
+             for (i = 0; i < ndevMountsPath; i++) {
+                 if (STREQ(devMountsPath[i], "/dev"))
+@@ -1190,12 +1197,18 @@ qemuNamespacePrepareOneItem(qemuNamespac
+                     break;
+             }
+ 
+-            if (i == ndevMountsPath &&
+-                VIR_APPEND_ELEMENT_COPY(data->items, data->nitems, item) < 0)
+-                return -1;
++            if (i == ndevMountsPath)
++                addToData = true;
+         }
+ 
+-        if (!S_ISLNK(item.sb.st_mode))
++        g_free(next);
++        next = g_strdup(item.target);
++
++        if (addToData &&
++            VIR_APPEND_ELEMENT(data->items, data->nitems, item) < 0)
++            return -1;
++
++        if (!isLink)
+             break;
+ 
+         if (ttl-- == 0) {
+@@ -1204,8 +1217,6 @@ qemuNamespacePrepareOneItem(qemuNamespac
+                                  next);
+             return -1;
+         }
+-
+-        next = item.target;
+     }
+ 
+     return 0;

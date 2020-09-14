@@ -365,4 +365,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.0</comment>
     <requestid>809461</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4c9b8a820a591e0d30272bc4eb5e4e54</srcmd5>
+    <version>5.15.1</version>
+    <time>1600078239</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833669</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:54:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- simplify conditions bit to make it tad more readable
+
+-------------------------------------------------------------------
+Thu Sep 10 01:31:11 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Implement multibuild specfile to split out tests into its own
+  flavor; this way we can build and run tests, which require
+  static lib, as well as avoid packaging the latter without issues
+  with the installed cmake file..
+
+-------------------------------------------------------------------
 Wed Jul  8 20:35:17 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Version update to 1.16.1

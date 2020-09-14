@@ -17,7 +17,7 @@
 
 
 Name:           kuberlr
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        A tool that simplifies the management of multiple versions of kubectl
 License:        Apache-2.0
@@ -25,8 +25,8 @@ Group:          System/Management
 URL:            https://github.com/flavio/kuberlr
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.13
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) = 1.13
 Requires(post): %fillup_prereq
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

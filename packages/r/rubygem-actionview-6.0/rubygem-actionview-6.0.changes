@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 12 11:59:04 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.3.3
+
+  * CVE-2020-8185: Fix potential XSS vulnerability in the `translate/t` helper (bsc#1173564)
+
+-------------------------------------------------------------------
 Thu Jun 25 09:39:22 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.3.2

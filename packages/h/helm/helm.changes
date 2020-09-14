@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 09 06:03:52 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.3.1:
+  * Fix spelling in completion.go
+  * Fixing linting of templates on Windows
+  * Bump Kubernetes to v0.18.8 + Bump jsonpatch
+  * Fix Quick Start Guide Link in README.md
+  * fix test that modifies the wrong cache data
+  * bufix: fix validateNumColons docs
+  * Fix typo
+  * Enhance readability by extracting bitwise operation
+  * Make helm ls return only current releases if providing state filter
+  * fix: Allow building in a path containing spaces
+  * Alter whitespace in "Update Complete" output
+  * Fixing version and spelling errors
+
+-------------------------------------------------------------------
 Tue Aug 18 12:42:53 UTC 2020 - dmueller@suse.com
 
 - Update to version 3.3.0:

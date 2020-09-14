@@ -36,16 +36,16 @@
 %endif
 
 Name:           libqt5-qtbase
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.0
-%define so_version 5.15.0
-%define tar_version qtbase-everywhere-src-5.15.0
+%define real_version 5.15.1
+%define so_version 5.15.1
+%define tar_version qtbase-everywhere-src-5.15.1
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 # to get mtime of file:
 Source1:        libqt5-qtbase.changes
@@ -67,12 +67,9 @@ Patch12:        0001-Add-remote-print-queue-support.patch
 Patch21:        0001-Don-t-white-list-recent-Mesa-versions-for-multithrea.patch
 Patch24:        fix-fixqt4headers.patch
 # patches 1000-2000 and above from upstream 5.15 branch #
-Patch1000:      0001-Do-not-multithread-if-already-in-a-global-threadpool.patch
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
-# Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/303786
-Patch2002:      0001-Fix-QToolButton-menus-showing-on-primary-screens-in-.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel

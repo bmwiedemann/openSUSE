@@ -19,10 +19,8 @@
 %define _data_dir       %{_localstatedir}/lib/%{name}
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
-%define redis_hashes_tree 94da7f90ee31c74ff1a98d13a974fb883c5d4be4
-
 Name:           redis
-Version:        6.0.6
+Version:        6.0.8
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -37,7 +35,7 @@ Source6:        %{name}.sysctl
 Source7:        %{name}-sentinel@.service
 Source8:        %{name}-sentinel.target
 Source9:        %{name}-user.conf
-Source10:       https://raw.githubusercontent.com/antirez/redis-hashes/%{redis_hashes_tree}/README#/redis.hashes
+Source10:       https://raw.githubusercontent.com/redis/redis-hashes/master/README#/redis.hashes
 # PATCH-MISSING-TAG -- See https://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         %{name}-conf.patch
 Patch1:         getMcontextEip-return-value.patch

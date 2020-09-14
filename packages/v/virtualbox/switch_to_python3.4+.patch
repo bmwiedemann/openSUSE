@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.13/src/bldprogs/scm.cpp
+Index: VirtualBox-6.1.14/src/bldprogs/scm.cpp
 ===================================================================
---- VirtualBox-6.1.13.orig/src/bldprogs/scm.cpp
-+++ VirtualBox-6.1.13/src/bldprogs/scm.cpp
+--- VirtualBox-6.1.14.orig/src/bldprogs/scm.cpp
++++ VirtualBox-6.1.14/src/bldprogs/scm.cpp
 @@ -2206,7 +2206,7 @@ static int scmProcessFileInner(PSCMRWSTA
                              pszTreatAs = "shell";
                          else if (   (cchFirst >= 15 && strncmp(pchFirst, "/usr/bin/python", 15) == 0)
@@ -11,10 +11,10 @@ Index: VirtualBox-6.1.13/src/bldprogs/scm.cpp
                          else if (   (cchFirst >= 13 && strncmp(pchFirst, "/usr/bin/perl", 13) == 0)
                                   || (cchFirst >= 17 && strncmp(pchFirst, "/usr/bin/env perl", 17) == 0) )
                              pszTreatAs = "perl";
-Index: VirtualBox-6.1.13/src/libs/libxml2-2.9.4/configure
+Index: VirtualBox-6.1.14/src/libs/libxml2-2.9.4/configure
 ===================================================================
---- VirtualBox-6.1.13.orig/src/libs/libxml2-2.9.4/configure
-+++ VirtualBox-6.1.13/src/libs/libxml2-2.9.4/configure
+--- VirtualBox-6.1.14.orig/src/libs/libxml2-2.9.4/configure
++++ VirtualBox-6.1.14/src/libs/libxml2-2.9.4/configure
 @@ -15153,10 +15153,10 @@ PYTHON_SITE_PACKAGES=
  PYTHON_TESTS=
  pythondir=
@@ -39,11 +39,11 @@ Index: VirtualBox-6.1.13/src/libs/libxml2-2.9.4/configure
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
  $as_echo_n "checking for $ac_word... " >&6; }
  if ${ac_cv_path_PYTHON+:} false; then :
-Index: VirtualBox-6.1.13/src/VBox/ValidationKit/testboxscript/setup.sh
+Index: VirtualBox-6.1.14/src/VBox/ValidationKit/testboxscript/setup.sh
 ===================================================================
---- VirtualBox-6.1.13.orig/src/VBox/ValidationKit/testboxscript/setup.sh
-+++ VirtualBox-6.1.13/src/VBox/ValidationKit/testboxscript/setup.sh
-@@ -659,7 +659,7 @@ import sys;\
+--- VirtualBox-6.1.14.orig/src/VBox/ValidationKit/testboxscript/setup.sh
++++ VirtualBox-6.1.14/src/VBox/ValidationKit/testboxscript/setup.sh
+@@ -652,7 +652,7 @@ import sys;\
  x = sys.version_info[0] == 2 and (sys.version_info[1] >= 6 or (sys.version_info[1] == 5 and sys.version_info[2] >= 1));\
  sys.exit(not x);\
  ";
@@ -52,12 +52,12 @@ Index: VirtualBox-6.1.13/src/VBox/ValidationKit/testboxscript/setup.sh
      do
          python=`which ${python} 2> /dev/null`
          if [ -n "${python}" -a -x "${python}" ]; then
-Index: VirtualBox-6.1.13/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
+Index: VirtualBox-6.1.14/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
 ===================================================================
---- VirtualBox-6.1.13.orig/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
-+++ VirtualBox-6.1.13/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
-@@ -21,7 +21,7 @@
- %define %CHM% 1
+--- VirtualBox-6.1.14.orig/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
++++ VirtualBox-6.1.14/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
+@@ -20,7 +20,7 @@
+ %define %PYTHON% 1
  %define VBOXDOCDIR %{_defaultdocdir}/%NAME%
  %global __requires_exclude_from ^/usr/lib/virtualbox/VBoxPython.*$
 -%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
@@ -65,7 +65,7 @@ Index: VirtualBox-6.1.13/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
  
  Summary:   Oracle VM VirtualBox
  Name:      %NAME%
-@@ -101,7 +101,7 @@ install -m 755 -d $RPM_BUILD_ROOT/usr/sh
+@@ -100,7 +100,7 @@ install -m 755 -d $RPM_BUILD_ROOT/usr/sh
  %if %{?with_python:1}%{!?with_python:0}
  (export VBOX_INSTALL_PATH=/usr/lib/virtualbox && \
    cd ./sdk/installer && \
@@ -74,10 +74,10 @@ Index: VirtualBox-6.1.13/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
  %endif
  rm -rf sdk/installer
  mv nls $RPM_BUILD_ROOT/usr/share/virtualbox
-Index: VirtualBox-6.1.13/src/libs/libxml2-2.9.4/libxml.spec.in
+Index: VirtualBox-6.1.14/src/libs/libxml2-2.9.4/libxml.spec.in
 ===================================================================
---- VirtualBox-6.1.13.orig/src/libs/libxml2-2.9.4/libxml.spec.in
-+++ VirtualBox-6.1.13/src/libs/libxml2-2.9.4/libxml.spec.in
+--- VirtualBox-6.1.14.orig/src/libs/libxml2-2.9.4/libxml.spec.in
++++ VirtualBox-6.1.14/src/libs/libxml2-2.9.4/libxml.spec.in
 @@ -101,11 +101,11 @@ rm -fr %{buildroot}
  
  make install DESTDIR=%{buildroot}
@@ -93,10 +93,10 @@ Index: VirtualBox-6.1.13/src/libs/libxml2-2.9.4/libxml.spec.in
  
  
  rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
-Index: VirtualBox-6.1.13/src/libs/libxml2-2.9.4/libxml2.spec
+Index: VirtualBox-6.1.14/src/libs/libxml2-2.9.4/libxml2.spec
 ===================================================================
---- VirtualBox-6.1.13.orig/src/libs/libxml2-2.9.4/libxml2.spec
-+++ VirtualBox-6.1.13/src/libs/libxml2-2.9.4/libxml2.spec
+--- VirtualBox-6.1.14.orig/src/libs/libxml2-2.9.4/libxml2.spec
++++ VirtualBox-6.1.14/src/libs/libxml2-2.9.4/libxml2.spec
 @@ -103,7 +103,7 @@ make install DESTDIR=%{buildroot}
  
  %if 0%{?with_python3}
@@ -106,10 +106,10 @@ Index: VirtualBox-6.1.13/src/libs/libxml2-2.9.4/libxml2.spec
  make install DESTDIR=%{buildroot}
  %endif # with_python3
  
-Index: VirtualBox-6.1.13/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
+Index: VirtualBox-6.1.14/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
 ===================================================================
---- VirtualBox-6.1.13.orig/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
-+++ VirtualBox-6.1.13/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
+--- VirtualBox-6.1.14.orig/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
++++ VirtualBox-6.1.14/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
 @@ -439,6 +439,8 @@ char *PyTraceback_AsString(PyObject *exc
  	{ // a temp scope so I can use temp locals.
  #if PY_MAJOR_VERSION <= 2
@@ -119,10 +119,10 @@ Index: VirtualBox-6.1.13/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
  #else
      /* PyUnicode_AsUTF8() is const char * as of Python 3.7, char * earlier. */
  	const char *tempResult = (const char *)PyUnicode_AsUTF8(obResult);
-Index: VirtualBox-6.1.13/src/libs/xpcom18a4/python/src/PyGBase.cpp
+Index: VirtualBox-6.1.14/src/libs/xpcom18a4/python/src/PyGBase.cpp
 ===================================================================
---- VirtualBox-6.1.13.orig/src/libs/xpcom18a4/python/src/PyGBase.cpp
-+++ VirtualBox-6.1.13/src/libs/xpcom18a4/python/src/PyGBase.cpp
+--- VirtualBox-6.1.14.orig/src/libs/xpcom18a4/python/src/PyGBase.cpp
++++ VirtualBox-6.1.14/src/libs/xpcom18a4/python/src/PyGBase.cpp
 @@ -183,7 +183,11 @@ PyG_Base::~PyG_Base()
  // Get the correct interface pointer for this object given the IID.
  void *PyG_Base::ThisAsIID( const nsIID &iid )
@@ -136,11 +136,11 @@ Index: VirtualBox-6.1.13/src/libs/xpcom18a4/python/src/PyGBase.cpp
  	if (iid.Equals(NS_GET_IID(nsISupports)))
  		return (nsISupports *)(nsIInternalPython *)this;
  	if (iid.Equals(NS_GET_IID(nsISupportsWeakReference)))
-Index: VirtualBox-6.1.13/src/libs/xpcom18a4/python/Makefile.kmk
+Index: VirtualBox-6.1.14/src/libs/xpcom18a4/python/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.13.orig/src/libs/xpcom18a4/python/Makefile.kmk
-+++ VirtualBox-6.1.13/src/libs/xpcom18a4/python/Makefile.kmk
-@@ -554,6 +554,52 @@ VBoxPython3_8m_x86_LIBS       = $(VBOX_P
+--- VirtualBox-6.1.14.orig/src/libs/xpcom18a4/python/Makefile.kmk
++++ VirtualBox-6.1.14/src/libs/xpcom18a4/python/Makefile.kmk
+@@ -533,6 +533,52 @@ VBoxPython3_8m_x86_LIBS       = $(VBOX_P
   endif
  endif
  
@@ -193,10 +193,10 @@ Index: VirtualBox-6.1.13/src/libs/xpcom18a4/python/Makefile.kmk
  ifdef VBOX_PYTHONDEF_INC
  #
  # Python without versioning
-Index: VirtualBox-6.1.13/src/libs/xpcom18a4/python/gen_python_deps.py
+Index: VirtualBox-6.1.14/src/libs/xpcom18a4/python/gen_python_deps.py
 ===================================================================
---- VirtualBox-6.1.13.orig/src/libs/xpcom18a4/python/gen_python_deps.py
-+++ VirtualBox-6.1.13/src/libs/xpcom18a4/python/gen_python_deps.py
+--- VirtualBox-6.1.14.orig/src/libs/xpcom18a4/python/gen_python_deps.py
++++ VirtualBox-6.1.14/src/libs/xpcom18a4/python/gen_python_deps.py
 @@ -16,7 +16,7 @@ from __future__ import print_function
  import os,sys
  from distutils.version import StrictVersion

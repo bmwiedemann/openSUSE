@@ -2020,4 +2020,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment></comment>
     <requestid>830509</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>dd984b395ec795bec3a0abf892a8ddd0</srcmd5>
+    <version>6.1.14</version>
+    <time>1600077797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833533</requestid>
+  </revision>
 </revisionlist>

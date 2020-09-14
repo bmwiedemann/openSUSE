@@ -62,7 +62,7 @@ This package contains the development libraries and headers for libmysofa.
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DCODE_COVERAGE=OFF
 %cmake_build
 
 %install

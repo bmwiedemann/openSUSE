@@ -76,4 +76,17 @@
     <comment></comment>
     <requestid>819671</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>00931d89ac0cbdf33f56a630432bb67f</srcmd5>
+    <version>1.16.1</version>
+    <time>1600078300</time>
+    <user>dimstar_suse</user>
+    <comment>- simplify conditions bit to make it tad more readable
+
+- Implement multibuild specfile to split out tests into its own
+  flavor; this way we can build and run tests, which require
+  static lib, as well as avoid packaging the latter without issues
+  with the installed cmake file..</comment>
+    <requestid>833686</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lcms2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,25 @@
 
 
 Name:           lcms2
+Version:        2.11
+Release:        0
 Summary:        Little CMS Engine - A color managment library and tools
 License:        MIT
 Group:          Productivity/Graphics/Other
-Url:            http://www.littlecms.com/
-Version:        2.9
-Release:        0
-
+URL:            http://www.littlecms.com/
+Source0:        http://sourceforge.net/projects/lcms/files/lcms/%{version}/%{name}-%{version}.tar.gz
+Source1:        baselibs.conf
+Patch1:         lcms2-ocloexec.patch
+Patch2:         lcms2-visibility.patch
 %if 0%{?suse_version}
 BuildRequires:  autoconf
 BuildRequires:  glibc-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 %endif
-
 %if 0%{?fedora_version}
 BuildRequires:  gcc
 BuildRequires:  libjpeg-devel
@@ -41,7 +43,6 @@ BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 %endif
-
 %if 0%{?mandriva_version}
 BuildRequires:  gcc
 BuildRequires:  libjpeg-devel
@@ -49,14 +50,6 @@ BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 %endif
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        http://sourceforge.net/projects/lcms/files/lcms/%{version}/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
-Patch1:         lcms2-ocloexec.patch
-Patch2:         lcms2-visibility.patch
-# PATCH-FIX-SECURITY lcms2-cgats-memory-allocation.patch bsc1108813 CVE-2018-16435 sbrabec@suse.cz -- Add check on CGATS memory allocation.
-Patch3:         lcms2-cgats-memory-allocation.patch
 
 %description
 Littlecms is a small speed optimized color management engine.
@@ -93,59 +86,51 @@ BuildArch:      noarch
 %description -n liblcms2-doc
 This package contains user and developer documentation for lcms2.
 
-
 %prep
-%setup -q
-%patch1
-%patch2
-%patch3 -p1
+%autosetup -p1
 
 chmod a-x doc/* COPYING AUTHORS
 
 %build
 
 autoreconf -fiv
-export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
-export CXXFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 
 # FIXME --without-threads is a workaround for a linker error
 %configure --disable-static --without-threads
 
-make %{?_smp_flags}
+%make_build
 
 %check
 # FIXME before submitting to factory
- make %{?_smp_flags} check || true
- make utils
+ %make_build check || true
+ %make_build utils
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 
 rm %{buildroot}/%{_libdir}/liblcms2.la
 
 %post -n liblcms2-2 -p /sbin/ldconfig
-
 %postun -n liblcms2-2 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc COPYING AUTHORS
+%license COPYING
+%doc AUTHORS
 %{_bindir}/*
 %{_mandir}/man?/*.*
 
 %files -n liblcms2-2
-%defattr(-,root,root)
 %{_libdir}/liblcms2.so.2*
 
 %files -n liblcms2-devel
-%defattr(-,root,root)
 
 %{_includedir}/*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
 %files -n liblcms2-doc
-%defattr(-,root,root)
-%doc doc/*.pdf
+%doc doc/*.odt
 
 %changelog

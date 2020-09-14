@@ -1,8 +1,39 @@
 -------------------------------------------------------------------
+Thu Sep 09 22:51:08 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.9 (released 2020-09-09) includes fixes to the compiler,
+  linker, runtime, documentation, and the net/http and testing
+  packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#41192 net/http/fcgi: race detected during execution of TestResponseWriterSniffsContentType test
+  * go#41016 net/http: Transport.CancelRequest no longer cancels in-flight request
+  * go#40973 net/http: RoundTrip unexpectedly changes Request
+  * go#40968 runtime: checkptr incorrectly -race flagging when using &^ arithmetic
+  * go#40938 cmd/compile: R12 can be clobbered for write barrier call on PPC64
+  * go#40848 testing: "=== PAUSE" lines do not change the test name for the next log line
+  * go#40797 cmd/compile: inline marker targets not reachable after assembly on arm
+  * go#40766 cmd/compile: inline marker targets not reachable after assembly on ppc64x
+  * go#40501 cmd/compile: for range loop reading past slice end
+  * go#40411 runtime: Windows service lifecycle events behave incorrectly when called within a golang environment
+  * go#40398 runtime: fatal error: checkdead: runnable g
+  * go#40192 runtime: pageAlloc.searchAddr may point to unmapped memory in discontiguous heaps, violating its invariant
+  * go#39955 cmd/link: incorrect GC bitmap when global's type is in another shared object
+  * go#39690 cmd/compile: s390x floating point <-> integer conversions clobbering the condition code
+  * go#39279 net/http: Re-connect with upgraded HTTP2 connection fails to send Request.body
+  * go#38904 doc: include fix for #34437 in Go 1.14 release notes
+- Use go_api instead of version for update-alternatives priority
+- Add missing '?' before 'suse_version' test by Xia Lei <emricg2@gmail.com>
+
+-------------------------------------------------------------------
+Fri Sep  4 14:51:12 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- replace binutils-gold requires by recommends for aarch64 on SLE. (bsc#1170826)
+
+-------------------------------------------------------------------
 Tue Sep  1 17:01:46 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14.8 (released 2020-09-01) includes security fixes to the
-  net/http/cgi, net/http/fcgi packages.
+  net/http/cgi and net/http/fcgi packages.
   CVE-2020-24553
   Refs boo#1164903 go1.14 release tracking
   * boo#1176031 CVE-2020-24553

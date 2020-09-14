@@ -142,7 +142,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %bcond_with python_numpy
 %endif
 # context hasn't been ported to most architectures yet
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips ppc ppc64 ppc64le riscv64
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips ppc ppc64 ppc64le riscv64 s390x
 %bcond_without build_context
 %else
 %bcond_with build_context

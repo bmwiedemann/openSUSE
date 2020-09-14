@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 10 07:57:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.1:
+  * New bugfix release
+  * Fixes CVE-2020-17507
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtbase.git/plain/dist/changes-5.15.1/?h=5.15.1
+- Drop patches, now upstream:
+  * 0001-Do-not-multithread-if-already-in-a-global-threadpool.patch
+  * 0001-Fix-QToolButton-menus-showing-on-primary-screens-in-.patch
+- Adjust fix-build-openssl-1.1.0.patch
+
+-------------------------------------------------------------------
 Sun Jul  5 10:16:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to prevent stuck image conversion (boo#1172599, QTBUG-84619):

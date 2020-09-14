@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 11 11:27:41 UTC 2020 - dmueller@suse.com
+
+- Update to version 0.3.1:
+  * Prepare for release of v0.3.1
+  * fix: set progress bar desc to shorter string
+  * Update Changelog
+  * Update README to mention all the platforms supported
+  * GitHub actions: enable test matrix
+  * Build kuberlr binary for windows
+  * windows: fix path construction for download dir
+  * windows: require .exe extension on windows
+  * windows: add filename extension utils
+
+-------------------------------------------------------------------
 Tue Jul 14 21:21:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - fix update-alternatives logic

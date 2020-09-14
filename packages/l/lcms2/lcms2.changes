@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug  5 13:31:44 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 2.11
+  * Fixed __cpuid() on fast float plugin to allow gnu gcc
+  * Fixed copy alpha bounds check
+  * Fixed data race condition on contexts pool
+  * Fixed LUT16 write matrix on multichannel V2 profiles
+- Changes in 2.10
+  * Added a compilation toggle to remove "register" keyword in API. 
+  * Previously commercial, fast_float plug-in is now released as open source
+    under GPL3 license.
+  * MD5 functions are now accesible through plug-in API.
+  * Added support for Visual Studio 2019
+  * Bug fixing.
+- Drop lcms2-cgats-memory-allocation.patch, its now in upstream code
+- Refresh patches
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Oct  3 17:34:41 CEST 2018 - sbrabec@suse.com
 
 - Add check on CGATS memory allocation (bsc1108813, CVE-2018-16435,

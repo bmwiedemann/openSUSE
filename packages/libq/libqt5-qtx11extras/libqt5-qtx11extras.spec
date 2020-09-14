@@ -19,11 +19,11 @@
 %define qt5_snapshot 0
 %define libname libQt5X11Extras5
 %define base_name libqt5
-%define real_version 5.15.0
-%define so_version 5.15.0
-%define tar_version qtx11extras-everywhere-src-5.15.0
+%define real_version 5.15.1
+%define so_version 5.15.1
+%define tar_version qtx11extras-everywhere-src-5.15.1
 Name:           libqt5-qtx11extras
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Qt 5 X11 Extras Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)

@@ -4,6 +4,11 @@ Wed Aug 12 02:36:15 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 - Avoid compile-time CPU-detection (boo#1100677)
 
 -------------------------------------------------------------------
+Thu Jul 23 16:25:56 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439). 
+
+-------------------------------------------------------------------
 Mon Jun 15 05:13:19 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 0.3.10

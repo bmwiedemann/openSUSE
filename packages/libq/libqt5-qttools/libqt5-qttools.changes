@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 10 07:57:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.1:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qttools.git/plain/dist/changes-5.15.1/?h=5.15.1
+
+-------------------------------------------------------------------
 Mon Aug  3 08:18:48 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 4GB min disk space

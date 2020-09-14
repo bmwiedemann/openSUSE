@@ -383,4 +383,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.0</comment>
     <requestid>809395</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>22a9142b30b007403b6f47cfc2d3eb7d</srcmd5>
+    <version>5.15.1</version>
+    <time>1600078117</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833653</requestid>
+  </revision>
 </revisionlist>

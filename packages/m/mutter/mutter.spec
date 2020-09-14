@@ -23,7 +23,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        3.36.5
+Version:        3.36.6+2
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -35,8 +35,6 @@ Source:         %{name}-%{version}.tar.xz
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 # PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
 Patch4:         mutter-disable-cvt-s390x.patch
-# PATCH-FIX-UPSTREAM mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch boo#1175559 glgo#GNOME/mutter!1282 fcrozat@suse.com -- Fix loading libGLESv2.so.2 
-Patch5:         mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -158,7 +156,6 @@ applications that want to make use of the mutter library.
 %setup -q
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 # SLE-only patches and translations.
 translation-update-upstream po mutter

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 20:55:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Change define bcond_without zeitgeist to becond_with, no longer
+  build zeitgeist support, as it is slated for removal from distro.
+
+-------------------------------------------------------------------
 Wed Jan 15 16:48:23 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch to Python3. Replace python-devel with python3-base

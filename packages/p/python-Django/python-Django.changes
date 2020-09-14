@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep  9 14:14:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.1.1
+  * CVE-2020-24583: Incorrect permissions on intermediate-level directories on Python 3.7+
+  * CVE-2020-24584: Permission escalation in intermediate-level directories of the file 
+    system cache on Python 3.7+
+  * Fixed a data loss possibility in the select_for_update(). When using related fields 
+    pointing to a proxy model in the of argument, the corresponding model was not locked
+  * Fixed a regression in Django 3.1 that caused a crash when decoding an invalid session data
+  * Fixed __in lookup on key transforms for JSONField with MariaDB, MySQL, Oracle, and SQLite
+  * Fixed a regression in Django 3.1 that caused permission errors in CommonPasswordValidator 
+    and settings.py
+
+-------------------------------------------------------------------
+Wed Sep  9 03:55:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Require asgiref >= 3.2.10 per upstream
+
+-------------------------------------------------------------------
 Tue Aug 11 07:48:29 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.1

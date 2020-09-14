@@ -114,6 +114,20 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu10-hpc"
+%define compiler_family gnu
+%define c_f_ver 10
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-hpc-pthreads"
+%define compiler_family gnu
+%define c_f_ver 10
+%define ext pthreads
+%define build_flags USE_THREAD=1 USE_OPENMP=0
+%{bcond_without hpc}
+%endif
+
 %if %{without hpc}
 %if 0%{!?package_name:1}
 %define package_name  %{pname}_%{flavor}

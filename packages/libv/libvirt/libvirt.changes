@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 10 17:49:45 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Increase test timeout to account for slower test execution
+  on some architectures
+
+-------------------------------------------------------------------
+Thu Sep 10 16:23:12 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Tolerate non-existing files such as /dev/kvm when
+  populating domain private namespace
+  8abd1ffe-qemu-tolerate-non-existent-files.patch,
+  4a72b76b-qemu-namespace-memleak-fix.patch
+  boo#1176380
+
+-------------------------------------------------------------------
 Wed Sep  2 17:18:34 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - spec: Enable the same hypervisor drivers for openSUSE and SLE

@@ -1,37 +1,15 @@
-Index: gnome-shell-3.34.1+7/data/gnome-shell-theme.gresource.xml
+Index: gnome-shell-3.34.5/js/ui/unlockDialog.js
 ===================================================================
---- gnome-shell-3.34.1+7.orig/data/gnome-shell-theme.gresource.xml
-+++ gnome-shell-3.34.1+7/data/gnome-shell-theme.gresource.xml
-@@ -31,5 +31,6 @@
-     <file>toggle-on.svg</file>
-     <file>toggle-on-dark.svg</file>
-     <file>toggle-on-hc.svg</file>
-+    <file>sle-background.png</file>
-   </gresource>
- </gresources>
-Index: gnome-shell-3.34.1+7/data/theme/gnome-shell-sass/_common.scss
-===================================================================
---- gnome-shell-3.34.1+7.orig/data/theme/gnome-shell-sass/_common.scss
-+++ gnome-shell-3.34.1+7/data/theme/gnome-shell-sass/_common.scss
-@@ -1919,6 +1919,9 @@ StScrollBar {
-   max-width: 23em;
- }
- 
-+.login-dialog-sle {
-+  background: #2e3436 url(sle-background.png); }
-+
- .login-dialog {
-   //reset
-   border: none;
-Index: gnome-shell-3.34.1+7/js/ui/unlockDialog.js
-===================================================================
---- gnome-shell-3.34.1+7.orig/js/ui/unlockDialog.js
-+++ gnome-shell-3.34.1+7/js/ui/unlockDialog.js
-@@ -23,6 +23,7 @@ var UnlockDialog = GObject.registerClass
+--- gnome-shell-3.34.5.orig/js/ui/unlockDialog.js
++++ gnome-shell-3.34.5/js/ui/unlockDialog.js
+@@ -23,6 +23,10 @@ var UnlockDialog = GObject.registerClass
              visible: false,
          });
  
-+        this.add_style_class_name('login-dialog-sle');
++        let path = '/usr/share/gnome-shell/theme/SLE-background.png';
++        if (GLib.file_test(path, GLib.FileTest.EXISTS))
++            this.style = 'background: url(' + path + ')';
++
          this.add_constraint(new Layout.MonitorConstraint({ primary: true }));
          parentActor.add_child(this);
  

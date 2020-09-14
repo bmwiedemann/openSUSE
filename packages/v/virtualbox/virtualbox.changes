@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 10 16:12:11 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Update to Oracle version 6.1.14a. This minor update enables the building of libvirt again.
+  File "fix_virtio_build.patch" is removed.
+
+-------------------------------------------------------------------
+Tue Sep  8 02:20:35 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Remove symbols that forced rebuild of initrd
+
+- Version update to 6.1.14 (released September 04 2020 by Oracle)
+  File "fix_virtio_build.patch" is added to fix a build problem.
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  GUI: Fixes file name changes in the File location field when creating Virtual Hard Disk (bug #19286)
+  VMM: Fixed running VMs which failed to start with VERR_NEM_MISSING_KERNEL_API_2 when Hyper-V is used (bug #19779 and #19804)
+  Audio: fix regression in HDA emulation introduced in 6.1.0
+  Shared Clipboard: Fixed a potential crash when copying HTML data (6.1.2 regression; bug #19226)
+  Linux host and guest: Linux kernel version 5.8 support
+  EFI: Fixed reading ISO9660 filesystems on attached media (6.1.0 regression; bug #19682)
+  EFI: Support booting from drives attached to the LsiLogic SCSI and SAS controller emulations
+
+-------------------------------------------------------------------
 Fri Aug 28 20:56:29 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Pseudo version bump to 6.1.13, which is NOT an Oracle release.

@@ -18,7 +18,7 @@
 
 %define lname   libseccomp2
 Name:           libseccomp
-Version:        2.4.3
+Version:        2.5.0
 Release:        0
 Summary:        A Seccomp (mode 2) helper library
 License:        LGPL-2.1-only
@@ -28,6 +28,7 @@ Source:         https://github.com/seccomp/libseccomp/releases/download/v%versio
 Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source99:       baselibs.conf
+Patch:          testsuite-riscv64-missing-syscalls.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
@@ -86,6 +87,12 @@ This subpackage contains debug utilities for the seccomp interface.
 %prep
 %autosetup -p1
 
+%if 0%{?qemu_user_space_build}
+# The qemu linux-user emulation does not allow executing
+# prctl(PR_SET_SECCOMP), which breaks this test.  Stub it out.
+echo 'int main () { return 0; }' >tests/52-basic-load.c
+%endif
+
 %build
 if [ ! -f configure ]; then
 	perl -i -pe 's{\QAC_INIT([libseccomp], [0.0.0])\E}{AC_INIT([libseccomp], [%version])}' configure.ac
@@ -94,7 +101,8 @@ autoreconf -fiv
 %configure \
     --includedir="%_includedir/%name" \
     --disable-static \
-    --disable-silent-rules
+    --disable-silent-rules \
+    GPERF=/bin/true
 make %{?_smp_mflags}
 
 %install

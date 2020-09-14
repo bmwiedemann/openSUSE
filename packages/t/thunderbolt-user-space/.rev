@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>758711</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>6b12d0795851fc4b7b2f9d1af6a8ded0</srcmd5>
+    <version>0.9.3</version>
+    <time>1600079108</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for Thunderbolt to initramfs (approved devices are authorized automatically)
+  added: 0002-initramfs-support.patch
+</comment>
+    <requestid>829914</requestid>
+  </revision>
 </revisionlist>

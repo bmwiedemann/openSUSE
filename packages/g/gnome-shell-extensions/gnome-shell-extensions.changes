@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 10 02:08:23 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Move branding image file to branding-SLE package
+  (jsc#SLE-11720 bsc#1176304).
+  + Remove sle-classic-lock-screen-background.patch
+  + Remove SLE-theme.tar.gz
+
+-------------------------------------------------------------------
 Thu Aug 13 21:48:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:

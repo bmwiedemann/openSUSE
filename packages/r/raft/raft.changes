@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 12 07:30:01 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.9.25:
+  * Add APIs to configure timeouts when promoting a stand-by
+  * Improve detection of the version of the ZFS kernel module
+  * Honor endianness when decoding test FSM commands
+
+-------------------------------------------------------------------
 Mon Jul 27 00:46:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.9.24:
