@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  8 07:21:13 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Switch back to the default Ruby for Tumbleweed
+
+-------------------------------------------------------------------
 Thu Sep  3 08:24:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add vagrant-sshfs-libexecdir.patch: Use /usr/libexec/ssh to find
