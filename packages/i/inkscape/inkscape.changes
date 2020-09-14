@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  8 11:58:49 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.0.1:
+  * Selectors/CSS dialogue is now available.
+  * Experimental colour-managed PDF export through Scribus.
+  * Many crash fixes and bugs fixed.
+- Add a inkscape-extensions-scribus package with the new extension.
+
+-------------------------------------------------------------------
 Mon Aug 24 09:46:20 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable again LTO. It should work now.

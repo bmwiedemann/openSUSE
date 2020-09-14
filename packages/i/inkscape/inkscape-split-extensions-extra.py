@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
 
     # And now verify everything and generate final list.
-    exclusion_regex = re.compile(r"^(cdr|fig|.*gimp)")
+    exclusion_regex = re.compile(r"^(cdr|fig|.*gimp|scribus)")
 
     std_list = work_dir / "inkscape.lst"
     extra_list = work_dir / "inkscape-extensions-extra.lst"

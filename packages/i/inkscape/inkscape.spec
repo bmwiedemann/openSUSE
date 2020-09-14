@@ -16,9 +16,9 @@
 #
 
 
-%define _version 1.0_2020-05-01_4035a4fb49
+%define _version 1.0.1_2020-09-07_3bc2e813f5
 Name:           inkscape
-Version:        1.0
+Version:        1.0.1
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
@@ -116,6 +116,19 @@ The GIMP import and export extensions for Inkscape.
 
 Inkscape is a vector graphics editor.
 
+%package extensions-scribus
+Summary:        Scribus extensions for Inkscape
+Requires:       %{name} = %{version}
+Requires:       %{name}-extensions-extra = %{version}
+Requires:       scribus
+Enhances:       %{name}
+Supplements:    (%{name} and scribus)
+
+%description extensions-scribus
+The Scribus-based PDF export extension for Inkscape.
+
+Inkscape is a vector graphics editor.
+
 %lang_package
 
 %prep
@@ -181,12 +194,15 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 %{_datadir}/inkscape/extensions/jessyInk.js
 %{_datadir}/inkscape/extensions/jessyInk_core_mouseHandler_noclick.js
 %{_datadir}/inkscape/extensions/jessyInk_core_mouseHandler_zoomControl.js
-%{_datadir}/inkscape/extensions/jessyInk_video.svg
+%{_datadir}/inkscape/extensions/jessyink_video.svg
 %{_datadir}/inkscape/extensions/fontfix.conf
 %{_datadir}/inkscape/extensions/inkscape.extension.rng
 %{_datadir}/inkscape/extensions/seamless_pattern.svg
 %{_datadir}/inkscape/attributes/
 %{_datadir}/inkscape/branding/
+%dir %{_datadir}/bash-completion/
+%dir %{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/inkscape
 %{_mandir}/man1/*.1%{?ext_man}
 # We can't really move the localized manpages to the lang package, since they'd
 # create a conflict between the lang subpackage and bundles
@@ -196,6 +212,7 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 # exclude extensions that go in other packages:
 %exclude %{_datadir}/inkscape/extensions/fig*
 %exclude %{_datadir}/inkscape/extensions/*gimp*
+%exclude %{_datadir}/inkscape/extensions/*scribus*
 %exclude %{_datadir}/inkscape/extensions/*dxf*
 
 %files extensions-extra -f inkscape-extensions-extra.lst
@@ -207,6 +224,9 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 %files extensions-gimp
 # NOTE: export_gimp_palette* does not depend on gimp, but belongs here logically:
 %{_datadir}/inkscape/extensions/*gimp*
+
+%files extensions-scribus
+%{_datadir}/inkscape/extensions/*scribus*
 
 %files lang -f %{name}.lang
 
