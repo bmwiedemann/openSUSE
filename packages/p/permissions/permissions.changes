@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 09 10:00:18 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200909:
+  * screen: remove /run/uscreens covered by systemd-tmpfiles (bsc#1171879)
+
+-------------------------------------------------------------------
 Fri Sep 04 10:57:51 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 20200904:

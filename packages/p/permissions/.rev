@@ -1311,4 +1311,13 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * physlock: whitelist with tight restrictions (bsc#1175720)</comment>
     <requestid>832056</requestid>
   </revision>
+  <revision rev="143" vrev="23">
+    <srcmd5>805f9315d5dfaecfeb15e14f3ccd38e5</srcmd5>
+    <version>unknown</version>
+    <time>1600077723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200909:
+  * screen: remove /run/uscreens covered by systemd-tmpfiles (bsc#1171879)</comment>
+    <requestid>833221</requestid>
+  </revision>
 </revisionlist>
