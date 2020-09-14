@@ -17,13 +17,14 @@
 
 
 Name:           neomutt
-Version:        20200626
+Version:        20200821
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://neomutt.org
 Source:         https://github.com/neomutt/neomutt/archive/%{version}.tar.gz
+Patch0:         neomutt-sidebar-abbreviate-shorten-what-user-sees.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
@@ -69,6 +70,7 @@ and requirements.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -84,7 +86,8 @@ export CFLAGS="%{optflags}"
 		--sasl				\
 		--gss				\
 		--idn				\
-		--mixmaster
+		--mixmaster			\
+		--zlib
 
 make %{?_smp_mflags}
 
