@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 12 12:10:35 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.1.1
+
+  * Avoid -I rubylibdir with default-gem bundler
+  * Start server process in directory where command was called
+
+-------------------------------------------------------------------
 Mon Jul  8 07:57:48 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.1.0
