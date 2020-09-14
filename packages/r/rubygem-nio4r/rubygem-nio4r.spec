@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nio4r
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nio4r
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 %define mod_name nio4r
 %define mod_full_name %{mod_name}-%{version}
@@ -35,10 +35,10 @@ Release:        0
 %endif
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.3}
+BuildRequires:  %{rubydevel >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/socketry/nio4r
+URL:            https://github.com/socketry/nio4r
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-nio4r-rpmlintrc
 Source2:        gem2rpm.yml
