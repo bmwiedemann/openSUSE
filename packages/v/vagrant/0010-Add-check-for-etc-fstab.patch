@@ -1,0 +1,82 @@
+From 75d617e2fe8d626cf23ac77f1c47cf0be4a1938b Mon Sep 17 00:00:00 2001
+From: sophia <scastellarin95@gmail.com>
+Date: Thu, 10 Sep 2020 09:50:13 -0500
+Subject: [PATCH 10/10] Add check for /etc/fstab
+
+(cherry picked from commit 2297b86790227b6b89a6de6a7a786a726cf56a62)
+---
+ .../guests/linux/cap/persist_mount_shared_folder.rb | 12 ++++++++++++
+ .../linux/cap/persist_mount_shared_folder_test.rb   | 13 +++++++++++++
+ 2 files changed, 25 insertions(+)
+
+diff --git a/plugins/guests/linux/cap/persist_mount_shared_folder.rb b/plugins/guests/linux/cap/persist_mount_shared_folder.rb
+index 338d62e07..e0ad08d42 100644
+--- a/plugins/guests/linux/cap/persist_mount_shared_folder.rb
++++ b/plugins/guests/linux/cap/persist_mount_shared_folder.rb
+@@ -8,6 +8,8 @@ module VagrantPlugins
+       class PersistMountSharedFolder
+         extend SyncedFolder::UnixMountHelpers
+ 
++        @@logger = Log4r::Logger.new("vagrant::guest::linux::persist_mount_shared_folders")
++
+         # Inserts fstab entry for a set of synced folders. Will fully replace
+         # the currently managed group of Vagrant managed entries. Note, passing
+         # empty list of folders will just remove entries
+@@ -15,7 +17,13 @@ module VagrantPlugins
+         # @param [Machine] machine The machine to run the action on
+         # @param [Map<String, Map>] A map of folders to add to fstab
+         def self.persist_mount_shared_folder(machine, folders)
++          unless fstab_exists?(machine)
++            @@logger.info("no fstab file found, not modifying /etc/fstab")
++            return
++          end
++
+           if folders.nil?
++            @@logger.info("clearing /etc/fstab")
+             self.remove_vagrant_managed_fstab(machine)
+             return
+           end
+@@ -53,6 +61,10 @@ module VagrantPlugins
+ 
+         private
+ 
++        def self.fstab_exists?(machine)
++          machine.communicate.test("stat /etc/fstab")
++        end
++
+         def self.remove_vagrant_managed_fstab(machine)
+           machine.communicate.sudo("sed -i '/\#VAGRANT-BEGIN/,/\#VAGRANT-END/d' /etc/fstab")
+         end
+diff --git a/test/unit/plugins/guests/linux/cap/persist_mount_shared_folder_test.rb b/test/unit/plugins/guests/linux/cap/persist_mount_shared_folder_test.rb
+index aa65b38b7..31f7ae764 100644
+--- a/test/unit/plugins/guests/linux/cap/persist_mount_shared_folder_test.rb
++++ b/test/unit/plugins/guests/linux/cap/persist_mount_shared_folder_test.rb
+@@ -37,6 +37,7 @@ describe "VagrantPlugins::GuestLinux::Cap::PersistMountSharedFolder" do
+     allow(folder_plugin).to receive(:capability).with(:mount_options, any_args).
+       and_return(["uid=#{options_uid},gid=#{options_gid}", options_uid, options_gid])
+     allow(folder_plugin).to receive(:capability).with(:mount_type).and_return("vboxsf")
++    allow(cap).to receive(:fstab_exists?).and_return(true)
+   end
+ 
+   after do
+@@ -78,5 +79,17 @@ describe "VagrantPlugins::GuestLinux::Cap::PersistMountSharedFolder" do
+         cap.persist_mount_shared_folder(machine, folders)
+       end
+     end
++
++    context "fstab does not exist" do
++      before do
++        allow(cap).to receive(:fstab_exists?).and_return(false)
++      end
++
++      it "does not modify /etc/fstab" do
++        expect(cap).not_to receive(:remove_vagrant_managed_fstab)
++        expect(comm).not_to receive(:sudo).with(/echo '' >> \/etc\/fstab/)
++        cap.persist_mount_shared_folder(machine, folders)
++      end
++    end
+   end
+ end
+-- 
+2.28.0
+

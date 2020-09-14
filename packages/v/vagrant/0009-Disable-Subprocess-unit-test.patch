@@ -1,7 +1,7 @@
-From 94768cd2af7eecbcf01ef1efa66469f77bf6fbec Mon Sep 17 00:00:00 2001
+From 5dc6903fbc40884c5811a71ad43700f7357f7836 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 28 Aug 2019 13:39:58 +0200
-Subject: [PATCH 09/11] Disable Subprocess unit test
+Subject: [PATCH 09/10] Disable Subprocess unit test
 
 This unit test is *very* flaky on OBS' workers and causes random build
 failures. These are probably caused by worker being under high load and then
@@ -11,27 +11,27 @@ scheduling oddly.
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/test/unit/vagrant/util/subprocess_test.rb b/test/unit/vagrant/util/subprocess_test.rb
-index 81da0e635..a2a2270a0 100644
+index 0ff5835c8..757d8ef8a 100644
 --- a/test/unit/vagrant/util/subprocess_test.rb
 +++ b/test/unit/vagrant/util/subprocess_test.rb
-@@ -116,7 +116,7 @@ describe Vagrant::Util::Subprocess do
+@@ -124,7 +124,7 @@ describe Vagrant::Util::Subprocess do
        end
      end
-     context "when subprocess is running" do
--      it "should return true" do
-+      xit "should return true" do
-         sp = described_class.new("sleep", "5")
+ 
+-    it "should return true when subprocess is running" do
++    xit "should return true when subprocess is running" do
+       sleep_test_commands.each do |sp|
          thread = Thread.new{ sp.execute }
          sleep(0.3)
-@@ -145,7 +145,7 @@ describe Vagrant::Util::Subprocess do
+@@ -155,7 +155,7 @@ describe Vagrant::Util::Subprocess do
+     end
  
      context "when subprocess is running" do
-       let(:sp){ described_class.new("sleep", "1") }
 -      it "should return true" do
 +      xit "should return true" do
-         thread = Thread.new{ sp.execute }
-         sleep(0.1)
-         expect(sp.stop).to be(true)
+         sleep_test_commands.each do |sp|
+           thread = Thread.new{ sp.execute }
+           sleep(0.1)
 -- 
-2.26.2
+2.28.0
 

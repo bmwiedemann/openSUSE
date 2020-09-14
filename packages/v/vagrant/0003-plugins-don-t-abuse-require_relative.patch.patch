@@ -1,7 +1,7 @@
-From b8e4cea474ed366499515f7eb4b33f3e80028680 Mon Sep 17 00:00:00 2001
+From 4b3743997f569f268047917a41562831eb09bd1e Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Wed, 17 May 2017 09:09:57 +0200
-Subject: [PATCH 03/11] plugins-don-t-abuse-require_relative.patch
+Subject: [PATCH 03/10] plugins-don-t-abuse-require_relative.patch
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
@@ -19,7 +19,7 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  11 files changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/plugins/guests/arch/cap/configure_networks.rb b/plugins/guests/arch/cap/configure_networks.rb
-index 0ef71d55f..df0bd0f8f 100644
+index 79f14213a..d8966b171 100644
 --- a/plugins/guests/arch/cap/configure_networks.rb
 +++ b/plugins/guests/arch/cap/configure_networks.rb
 @@ -2,7 +2,7 @@ require "ipaddr"
@@ -154,5 +154,5 @@ index 2dd140230..e6dd96f08 100644
  module VagrantPlugins
    module GuestSUSE
 -- 
-2.26.2
+2.28.0
 

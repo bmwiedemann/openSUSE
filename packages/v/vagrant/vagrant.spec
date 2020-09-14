@@ -17,6 +17,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# disable tests if you want to just run a quick build
+%{bcond_without tests}
 
 %global mod_name vagrant
 %global mod_full_name %{mod_name}-%{version}
@@ -24,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.2.9
+Version:        2.2.10
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -55,26 +57,16 @@ Patch6:         0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
-Patch10:        0010-Bump-version-of-net-ssh-to-6.0-and-net-sftp-to-3.0.patch
-# Drop this on the next upstream release after 2.2.9
-# upstream fix from https://github.com/hashicorp/vagrant/pull/11607
-Patch11:        0011-Fixes-11606-Mock-out-guest-capabilities-instead-of-r.patch
+Patch10:        0010-Add-check-for-etc-fstab.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
 #          fix these values in macros.vagrant
-# FIXME: for now vagrant does not support Ruby 2.7
-%if 0%{?suse_version} > 1500
-%global rb_build_versions ruby26
-%global rb_build_abi ruby:2.6.0
-%global rb_ruby_suffix ruby2.6
-%else
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_ruby_abi
 %global rb_ruby_suffix %rb_default_ruby_suffix
-%endif
 
 # we use the rpm macros in this spec
 # need to load them *after* defining the rb_* macros
@@ -87,34 +79,34 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Build dependencies
 #===============================================================================
 
-#  s.required_ruby_version     = "~> 2.4", "< 2.7"
-BuildRequires:  %{ruby:2 < 2.7}
-BuildRequires:  %{ruby:2 >= 2.4}
+#  s.required_ruby_version     = "~> 2.5", "< 2.8"
+BuildRequires:  %{ruby:2 < 2.8}
+BuildRequires:  %{ruby:2 >= 2.5}
 #
 #
 #
 BuildRequires:  %{rubygem bundler}
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.0.0"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1.0 }
-#  s.add_dependency "childprocess", "~> 3.0.0"
-BuildRequires:  %{rubygem childprocess:3.0 }
+#  s.add_dependency "childprocess", "~> 4.0.0"
+BuildRequires:  %{rubygem childprocess:4.0 }
 #  s.add_dependency "ed25519", "~> 1.2.4"
 BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
 #  s.add_dependency "erubis", "~> 2.7.0"
 BuildRequires:  %{rubygem erubis:2.7 }
 #  s.add_dependency "i18n", "~> 1.8"
 BuildRequires:  %{rubygem i18n:1 >= 1.8 }
-#  s.add_dependency "listen", "~> 3.1.5"
-BuildRequires:  %{rubygem listen:3.1 >= 3.1.5 }
+#  s.add_dependency "listen", "~> 3.1"
+BuildRequires:  %{rubygem listen:3 >= 3.1 }
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
 BuildRequires:  %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5 }
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
 BuildRequires:  %{rubygem log4r:1.1 >= 1.1.9 }
 BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
-# PATCHED
+#  s.add_dependency "mime", "~> 0.4.4"
+BuildRequires:  %{rubygem mime:0.4 >= 0.4.4}
 #  s.add_dependency "net-ssh", "~> 6.0"
 BuildRequires:  %{rubygem net-ssh:6 }
-# PATCHED
 #  s.add_dependency "net-sftp", "~> 3.0"
 BuildRequires:  %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
@@ -151,6 +143,8 @@ BuildRequires:  %{rubygem webmock:2.3 >= 2.3.1 }
 #  s.add_development_dependency "fake_ftp", "~> 0.1.1"
 BuildRequires:  %{rubygem fake_ftp:0.1 >= 0.1.1 }
 
+# Prevent have choice for rubygem(ruby:2.7.0:listen:3) >= 3.1
+BuildRequires:  %{rubygem listen:3.1}
 # Prevent have choice for rubygem(ruby:2.6.0:mime-types) >= 2
 BuildRequires:  %{rubygem mime-types:3 }
 # Prevent have choice for rubygem(ruby:2.6.0:builder) >= 2.1.2
@@ -160,7 +154,7 @@ BuildRequires:  %{rubygem ffi >= 1.9 }
 # Prevent have choice for rubygem(ruby:2.5.0:thor:0) >= 0.18
 BuildRequires:  %{rubygem thor:0.19}
 # Prevent have choice for rubygem(ruby:2.5.0:addressable) >= 2.3.6
-BuildRequires:  %{rubygem addressable >= 2.6}
+BuildRequires:  %{rubygem addressable >= 2.7}
 # Prevent have choice for rubygem(ruby:2.5.0:public_suffix) >= 2.0.2
 BuildRequires:  %{rubygem public_suffix:4}
 
@@ -170,11 +164,15 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 
 # for the test
+%if %{with tests}
 BuildRequires:  openssh
 BuildRequires:  curl
 BuildRequires:  bsdtar
 BuildRequires:  %{rubygem vagrant-spec}
+BuildRequires:  rsync
+%endif
 
+BuildRequires:  fdupes
 
 #===============================================================================
 # Runtime dependencies
@@ -184,25 +182,25 @@ BuildRequires:  %{rubygem vagrant-spec}
 #
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.0.0"
 Requires:       %{rubygem bcrypt_pbkdf:1.0 }
-#    s.add_dependency "childprocess", "~> 3.0.0"
-Requires:       %{rubygem childprocess:3.0}
+#    s.add_dependency "childprocess", "~> 4.0.0"
+Requires:       %{rubygem childprocess:4.0}
 #   s.add_dependency "ed25519", "~> 1.2.4"
 Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
 #  s.add_dependency "erubis", "~> 2.7.0"
 Requires:       %{rubygem erubis:2.7}
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
-#  s.add_dependency "listen", "~> 3.1.5"
-Requires:       %{rubygem listen:3.1 >= 3.1.5}
+#  s.add_dependency "listen", "~> 3.1"
+Requires:       %{rubygem listen:3 >= 3.1}
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
 Requires:       %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5}
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
 Requires:       %{rubygem log4r:1.1 >= 1.1.9 }
 Requires:       %{rubygem log4r:1.1 < 1.1.11 }
-# PATCHED
+#  s.add_dependency "mime", "~> 0.4.4"
+Requires:       %{rubygem mime:0.4 >= 0.4.4}
 #  s.add_dependency "net-ssh", "~> 6.0"
 Requires:       %{rubygem net-ssh:6}
-# PATCHED
 #  s.add_dependency "net-sftp", "~> 3.0"
 Requires:       %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
@@ -382,14 +380,19 @@ rm -f %{buildroot}%{vagrant_dir}/lib/vagrant/util.rb.orig
 # remove build script from vagrant
 rm -f %{buildroot}%{vagrant_dir}/.runner.sh
 
+%fdupes %{buildroot}%{dirname:%vagrant_plugin_dir}
 
 %check
+
+%if %{with tests}
 # remove the git reference to vagrant-spec
 # -> don't have to cleanup, the Gemfile is excluded anyway
 sed -i "s|gem 'vagrant-spec', git.*$|gem 'vagrant-spec'|" Gemfile
 
 export GEM_PATH=%{buildroot}%{vagrant_plugin_dir}:$(ruby.%{rb_ruby_suffix} -e "print Gem.path.reject{|path| path.include? 'home'}.join(':')")
 bundle exec rake test:unit
+%endif
+# with tests
 
 %pre
 getent group vagrant >/dev/null || groupadd -r vagrant
@@ -397,11 +400,10 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 %post
 %{post_rb}
 
-#FIXME: use %%transfiletriggerin/-un once boo#1041742 gets resolved
-%filetriggerin -- %{dirname:%{vagrant_plugin_spec}}/
+%transfiletriggerin -- %{dirname:%{vagrant_plugin_spec}}/
 %{transfiletriggerin_rb}
 
-%filetriggerun -- %{dirname:%{vagrant_plugin_spec}}/
+%transfiletriggerun -- %{dirname:%{vagrant_plugin_spec}}/
 %{transfiletriggerun_rb}
 
 %files

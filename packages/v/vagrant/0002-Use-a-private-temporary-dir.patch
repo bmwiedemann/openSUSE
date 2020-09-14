@@ -1,7 +1,7 @@
-From 51acfce0e08b62dc559aa2432892134d0e6d51bc Mon Sep 17 00:00:00 2001
+From 103a3765b331a69b615e47d0e1647e4e42fe9a6a Mon Sep 17 00:00:00 2001
 From: Antonio Terceiro <terceiro@debian.org>
 Date: Wed, 22 Oct 2014 09:40:14 -0200
-Subject: [PATCH 02/11] Use a private temporary dir
+Subject: [PATCH 02/10] Use a private temporary dir
 
 Without this vagrant will clutter $TMPDIR with dozens of even hundreds
 of temporary files (~4 per vagrant invocation).
@@ -15,7 +15,7 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  create mode 100644 lib/vagrant/util/tempfile.rb
 
 diff --git a/lib/vagrant/box.rb b/lib/vagrant/box.rb
-index 2f12775f5..af35043ee 100644
+index 0ee5d29f3..2da6f886f 100644
 --- a/lib/vagrant/box.rb
 +++ b/lib/vagrant/box.rb
 @@ -9,6 +9,7 @@ require "vagrant/util/downloader"
@@ -26,10 +26,10 @@ index 2f12775f5..af35043ee 100644
  
  module Vagrant
    # Represents a "box," which is a package Vagrant environment that is used
-@@ -121,7 +122,7 @@ module Vagrant
+@@ -122,7 +123,7 @@ module Vagrant
      # @param [Hash] download_options Options to pass to the downloader.
      # @return [BoxMetadata]
-     def load_metadata(**download_options)
+     def load_metadata(download_options={})
 -      tf = Tempfile.new("vagrant-load-metadata")
 +      tf = Util::Tempfile.new("vagrant-load-metadata")
        tf.close
@@ -94,5 +94,5 @@ index 000000000..0cbbb53ac
 +  FileUtils.rm_rf(Vagrant::Util::Tempfile.private_tmpdir)
 +end
 -- 
-2.26.2
+2.28.0
 
