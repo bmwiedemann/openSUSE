@@ -1,7 +1,7 @@
 #
 # spec file for package acl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Filesystems
 Version:        2.2.53
 Release:        0
-Url:            http://download.savannah.gnu.org/releases-noredirect/acl/
+URL:            https://download.savannah.nongnu.org/releases/acl/
 
 #Git-Web:	http://git.savannah.gnu.org/cgit/acl.git/
 #Git-Clone:	git://git.sv.gnu.org/acl
