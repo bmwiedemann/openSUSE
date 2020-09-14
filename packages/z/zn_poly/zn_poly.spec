@@ -1,7 +1,7 @@
 #
 # spec file for package zn_poly
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,14 @@
 Name:           zn_poly
 %define abiversion 0.9
 %define lname	libzn_poly-0_9
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Library for polynomial arithmetic in Z/nZ[x]
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gitlab.com/sagemath/zn_poly/
-Source:         https://gitlab.com/sagemath/zn_poly/-/archive/0.9.1/%name-%version.tar.bz2
+Source:         https://gitlab.com/sagemath/zn_poly/-/archive/%version/%name-%version.tar.bz2
 Patch1:         znpoly-automake.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
 
@@ -54,13 +53,12 @@ zn_poly is a C library for polynomial arithmetic in Z/nZ[x], where n
 is any modulus that fits into an unsigned long.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -70,12 +68,10 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libzn_poly-%abiversion.so
 %license COPYING
 
 %files devel
-%defattr(-,root,root)
 %_libdir/libzn_poly.so
 %_includedir/%name/
 
