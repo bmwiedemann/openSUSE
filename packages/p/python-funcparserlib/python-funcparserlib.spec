@@ -1,7 +1,7 @@
 #
 # spec file for package python-funcparserlib
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Recursive descent parsing library based on functional combinators
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://code.google.com/p/funcparserlib/
+URL:            https://github.com/vlasovskikh/funcparserlib
 Source:         https://files.pythonhosted.org/packages/source/f/funcparserlib/funcparserlib-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
