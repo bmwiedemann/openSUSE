@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 13 21:31:38 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1599905977.4ef824600:
+  * Dependency cron 2020-09-12
+  * Use the new helper for all waits
+  * Lower test cache service timeout and fail hard
+  * Check option existence in developer_mode test
+  * Show correct "last seen" time in case the worker disconnects gracefully
+  * Remove 'Alive:' and 'Websocket connection:' info from worker page
+  * Test whether scheduler preserves the "last seen" tracking for workers
+  * Fix worker's online/offline status
+  * Return results if the limit is hit
+  * Search job templates by test module name
+  * Use URLSearchParams instead of jQuery foreach
+  * Lookup single product ID w/o parsing all args
+  * Make use of query params in admin datatables
+
+-------------------------------------------------------------------
 Fri Sep 11 13:31:39 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1599827045.d7efb6eaa:
