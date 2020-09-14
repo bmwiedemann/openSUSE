@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  6 13:23:00 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 1.6.6
+  o In libfreeipmi, fix segfault in SPMI parsing leading to immediate
+    failures on some hardware across all tools.
+
+-------------------------------------------------------------------
 Fri May 22 07:03:07 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 1.6.5
