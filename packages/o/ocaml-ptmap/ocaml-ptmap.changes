@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:07:07 UTC 2020 - ohering@suse.de
+
+- Update to 2.0.5
+  remove merged ptmap-ocaml-4.11.patch
+
+-------------------------------------------------------------------
 Thu Aug 20 20:20:20 UTC 2020 - ohering@suse.de
 
 - Handle OCaml 4.11 with ptmap-ocaml-4.11.patch

@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-ptmap
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Maps over integers implemented as Patricia trees
@@ -25,7 +25,6 @@ License:        LGPL-2.1-or-later WITH OCaml-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ptmap
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         ptmap-ocaml-4.11.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
 BuildRequires:  ocaml-rpm-macros >= 20200514

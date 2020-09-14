@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-ptmap</param>
-    <param name="revision">dune</param>
+    <param name="revision">e08084caa43fa7c1e08c43858cb04cb6c42cf2df</param>
     <param name="scm">git</param>
-    <param name="url">https://github.com/olafhering/ocaml-ptmap.git</param>
-    <param name="versionformat">2.0.4</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/backtracking/ptmap.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
