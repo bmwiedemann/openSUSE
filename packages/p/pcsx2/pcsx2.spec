@@ -283,6 +283,9 @@ This package contains Traditional Chinese translations for PCSX2
 %build
 # -DUSER_CMAKE_C_FLAGS="-Wno-narrowing": build fails otherwise
 # -DUSER_CMAKE_CXX_FLAGS="-Wno-narrowing": build fails otherwise
+# -DDISABLE_ADVANCE_SIMD=ON: the name of this option is misleading. it actually
+# build multiple binary for different instruction sets. it is more compatible
+# to both old and new CPU.
 %cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DUSER_CMAKE_C_FLAGS="-Wno-narrowing" \

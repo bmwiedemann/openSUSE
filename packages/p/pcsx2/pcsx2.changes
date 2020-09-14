@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep  6 14:26:05 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Add comments for DISABLE_ADVANCE_SIMD because the name is misleading
+
+-------------------------------------------------------------------
 Thu Aug 27 10:13:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Build with "-DDISABLE_ADVANCE_SIMD=ON" otherwise it builds with
