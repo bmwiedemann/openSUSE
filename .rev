@@ -2182,4 +2182,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * 0001-Do-not-multithread-if-already-in-a-global-threadpool.patch</comment>
     <requestid>818846</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>62c88f15f105af856cb161ee0761f3e6</srcmd5>
+    <version>5.15.1</version>
+    <time>1600077940</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833635</requestid>
+  </revision>
 </revisionlist>
