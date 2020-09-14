@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 13 13:40:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * Changed the default elements from blue to grayscale.
+- Update to version 1.2.0
+  * Added outline options to MenuWindow.from_text.
+  * Added selection_prefix and selection_suffix options to
+    MenuWindow.from_text for easy colorblind accessibility.
+- Update to version 1.1.1
+  * Removed Python 2 support.
+  Bugfixes:
+  * Chance of crash from a user going through too many recursive
+    dialogs
+
+-------------------------------------------------------------------
 Thu Jul 26 15:03:16 UTC 2018 - jengelh@inai.de
 
 - Trim redundancies and bias from description.
