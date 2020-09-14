@@ -1,7 +1,7 @@
 #
-# spec file for package python-cloud_sptheme
+# spec file for package python-cloud-sptheme
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cloud-sptheme
 Version:        1.10.1.post20200504175005
 Release:        0
-License:        BSD-3-Clause
 Summary:        Sphinx theme named 'Cloud', and some related extensions
-Url:            https://cloud-sptheme.readthedocs.io
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://cloud-sptheme.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/c/cloud_sptheme/cloud_sptheme-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # SECTION docs
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinxcontrib-fulltoc
@@ -63,7 +64,7 @@ rm build/sphinx/html/.buildinfo
 %doc CHANGES README
 %license LICENSE
 
-%files doc
+%files -n %{name}-doc
 %doc build/sphinx/html/
 
 %changelog
