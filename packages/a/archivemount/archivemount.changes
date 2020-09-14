@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Sep 12 20:09:43 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.9.1
+  * Incorporated fixes for compilation problems with newer gcc
+    versions. Contributed by Niels de Vos
+- includes 0.9.0
+  * Make sure the written archive's format is the same or as
+    close as possible to the original. Due to a bug written files
+    were always in ustar format. Contributed by Jeff Ebert.
+  * Add AM_PROG_CC_C_O macro to configure.ac, contributed by
+    Jeff Ebert
+  * added option -o password, contributed by Scott Worley
+  * Pass REG_ENHANCED to regcomp where available (Mac and BSD).
+    Otherwise \? has no special meaning. Contributed by Michael
+    J. Walsh
+  * Removed magic number for block size, it's a constant now.
+    Contributed by John Delgado
+- includes 0.8.12
+  * changed naming scheme of temporary files to avoid running
+    into too long names for the filesystem in /tmp
+  * fixed renaming a newly created file (it got saved under its
+    original name)
+  * activated code for creating symlinks; in old versions, symlinks
+    were not saved, presumably due to a bug in libarchive, but it
+    seems to work now.
+- includes 0.8.11
+  * fixed accidentally broken renaming of files
+- includes 0.8.10
+  * fixed renaming of directories, it did not work at all anymore
+- includes 0.8.9
+  * fixed wrong insert into tree when a subdir had the same name as its
+    parent dir
+- includes 0.8.8
+  * fixed bug when creating a new file and moving it over an old one,
+    happens e.g. when saving a file from the geany editor
+- drop patch archivemount.dif, fixed upstream
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Oct 17 13:32:54 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)
