@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  1 16:10:48 UTC 2020 - pgajdos@suse.com
+
+- version update to 20200901
+  * added mod_proxy_express-basic-gdbm
+  * amended mod_proxy_express-basic to use sdbm, which should
+    be always available
+
+-------------------------------------------------------------------
 Sun May  3 14:37:06 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Replace incorrect usage of %_libexecdir/rpm with %_rpmconfigdir

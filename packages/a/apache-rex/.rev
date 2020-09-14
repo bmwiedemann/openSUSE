@@ -214,4 +214,12 @@
     <comment>- Replace incorrect usage of %_libexecdir/rpm with %_rpmconfigdir (forwarded request 799840 from Pharaoh_Atem)</comment>
     <requestid>799986</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a432af045188c7c38510efbf4ae1c28b</srcmd5>
+    <version>20200901</version>
+    <time>1600077642</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833054</requestid>
+  </revision>
 </revisionlist>
