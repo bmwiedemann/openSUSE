@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  7 13:25:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Install pam configuration to /usr/etc/pam.d on suse_version >=
+  1500 (https://en.opensuse.org/openSUSE:Packaging_UsrEtc#pam.2Fpam-config).
+- Add pre/posttrans scripts to ensure user modified
+  /etc/pam.d/i3lock survives our move to /usr/etc (and user
+  modification in /etc/pam.d wins over /usr/etc/pam.d)
+
+-------------------------------------------------------------------
 Sat Jun  6 11:57:02 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to 2.12

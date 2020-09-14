@@ -74,6 +74,21 @@ export CFLAGS="%{optflags}"
 install -D -m0644 %{name}.1 "%{buildroot}%{_mandir}/man1/%{name}.1"
 install -D -m0644 %{SOURCE2} %{buildroot}%{_datadir}/i3lock-xlock-compat/i3lock-icon.png
 install -m0755 %{SOURCE3} %{buildroot}/%{_bindir}/xlock
+%if 0%{?suse_version} >= 1550
+mkdir -p %{buildroot}%{_distconfdir}
+mv %{buildroot}%{_sysconfdir}/pam.d %{buildroot}%{_distconfdir}
+%endif
+
+%pre
+for i in pam.d/i3lock ; do
+  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc.
+for i in pam.d/i3lock ; do
+  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i} ||:
+done
 
 %files xlock-compat
 %{_bindir}/xlock
@@ -82,7 +97,11 @@ install -m0755 %{SOURCE3} %{buildroot}/%{_bindir}/xlock
 %files
 %license LICENSE
 %doc CHANGELOG README.md
+%if 0%{?suse_version} >= 1550
+%{_distconfdir}/pam.d/%{name}
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/%{name}
+%endif
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
