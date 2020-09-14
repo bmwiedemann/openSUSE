@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 14 09:20:49 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Avoid concurrent run of Ignition and Combustion initialization
+  scripts to a avoid a duplicate mount of the same device.
+
+-------------------------------------------------------------------
 Fri Sep  4 14:27:17 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add combustion-prepare.service to enable network if needed:

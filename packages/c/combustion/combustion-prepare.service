@@ -8,6 +8,11 @@ ConditionKernelCommandLine=ignition.firstboot
 Wants=dev-disk-by\x2dlabel-ignition.device
 After=dev-disk-by\x2dlabel-ignition.device
 
+# If both Ignition and Combustion are active make sure to run their
+# configuration scripts sequentially, as both try to mount the configuration
+# device
+After=ignition-setup-user.service
+
 # This reconfigures networking, which runs during the initqueue
 Before=dracut-initqueue.service
 
