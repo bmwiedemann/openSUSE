@@ -354,4 +354,12 @@
   * cec-compliance: use the new CEC utilities library</comment>
     <requestid>827128</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>5f877267a3f951c6b844129a20cfa75b</srcmd5>
+    <version>1.20.0</version>
+    <time>1600077650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833062</requestid>
+  </revision>
 </revisionlist>

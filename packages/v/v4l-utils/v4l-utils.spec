@@ -241,8 +241,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_sysconfdir}/rc_keymaps/
 %config(noreplace) %{_sysconfdir}/rc_maps.cfg
 %{_udevdir}/rc_keymaps
+%if 0%{?suse_version} > 1500
 %dir %{_unitdir}/systemd-udevd.service.d
 %{_unitdir}/systemd-udevd.service.d/50-rc_keymap.conf
+%endif
 %{_udevrulesdir}/70-infrared.rules
 %{_bindir}/cx18-ctl
 %{_bindir}/cec-compliance

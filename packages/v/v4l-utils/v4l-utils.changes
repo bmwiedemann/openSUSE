@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 13:37:47 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Exclude /usr/lib/udev/systemd-udevd.service.d/50-rc_keymap.conf
+  for Leaps, it isn't installed in the first place
+
+-------------------------------------------------------------------
 Sun Aug 16 22:02:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.20.0:
