@@ -73,4 +73,12 @@ With dimstar's build cycle fix</comment>
     <comment>- Fix LIBEXECDIR substitution for systemd service (forwarded request 805841 from Pharaoh_Atem)</comment>
     <requestid>807338</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d9b2e8e0092251ddf3c20fb8ab971f2a</srcmd5>
+    <version>3.23</version>
+    <time>1600077610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832928</requestid>
+  </revision>
 </revisionlist>

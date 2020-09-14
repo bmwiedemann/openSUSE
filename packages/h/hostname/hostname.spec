@@ -1,7 +1,7 @@
 #
 # spec file for package hostname
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           hostname
-Version:        3.21
+Version:        3.23
 Release:        0
 Summary:        Utility to Set/Show the Host Name or Domain Name
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            https://tracker.debian.org/pkg/hostname
+URL:            https://tracker.debian.org/pkg/hostname
 Source0:        http://http.debian.net/debian/pool/main/h/%{name}/%{name}_%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        nis-domainname
 Source2:        nis-domainname.service.in
