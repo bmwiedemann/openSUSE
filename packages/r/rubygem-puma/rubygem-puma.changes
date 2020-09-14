@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 12 12:35:48 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 4.3.6
+
+  * Bugfixes
+    * Explicitly include ctype.h to fix compilation warning and build error on macOS with Xcode 12 (#2304)
+    * Don't require json at boot (#2269)
+
+-------------------------------------------------------------------
 Wed May 27 11:04:58 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.3.5
