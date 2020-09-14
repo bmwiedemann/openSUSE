@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 12 12:22:43 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 9.8.6.3
+
+  * Fix deprecation warning for non-Rails environment.
+
+-------------------------------------------------------------------
 Sat Aug 22 13:01:41 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 9.8.6.2
