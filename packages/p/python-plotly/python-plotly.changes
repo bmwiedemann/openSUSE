@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Sep 12 19:58:52 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.10.0:
+  * Added
+    + Added plotly.io.full_figure_for_development() and
+      plotly.graph_objects.Figure.full_figure_for_development()
+      (#2737)
+  * Updated
+    + Updated Plotly.js to version 1.55.2. See the plotly.js CHANGELOG
+      for more information. These changes are reflected in the
+      auto-generated plotly.graph_objects module.
+    + px.imshow has a new binary_string boolean argument, which passes
+      the image data as a b64 binary string when True. Using binary
+      strings allow for faster image rendering and smaller figure
+      size. Additional optional arguments binary_backend,
+      binary_format and binary_compression_level control how to
+      generate the b64 string (#2691
+    + px.imshow has a new constrast_rescaling argument in order to
+      choose how to set data values corresponding to the bounds of the
+      color range (#2691
+  * Fixed
+    + Plotly Express no longer converts datetime columns of input
+      dataframes to UTC (#2749)
+    + Plotly Express has more complete support for datetimes as
+      additional hover_data (#2749)
+    + Histogram selection behaviour with FigureWidget (#2711) with
+      thanks to @meffmadd
+    + Behaviour of full_html() with html=False (#2469) with thanks to
+      @tallamjr
+    + ff.distplot() now only computes traces that will be shown
+      (#2730) with thanks to @akbo
+    + Pandas backend .hist() works with latest version of Pandas
+      (#2713) with thanks to @Kerybas
+
+- changes from version 4.9.0:
+  * Added
+    + Added image export support using Kaleido. The image export
+      backend can be configured using the new engine argument to
+      plotly.io.to_image and plotly.io.write_image. The engine
+      argument may be set to "kaleido", "orca", or "auto". The default
+      is engine="auto", in which case the Kaleido backend is enabled
+      if the kaleido package from PyPI is installed, otherwise Orca is
+      used. (#2613).
+    + plotly.express.timeline() added as an official alternative to
+      plotly.figure_factories.create_gantt() (#2626)
+    + create_hexbin_mapbox() added to Figure Factories, with thanks to
+      @RenaudLN for the impressive contribution!
+    + facet_row_spacing and facet_col_spacing added to Plotly Express
+      cartesian 2d functions (#2614)
+    + base added to Plotly Express bar and bar_polar functions (#2626)
+    + px.NO_COLOR constant to override wide-form color assignment in
+      Plotly Express (#2614)
+  * Fixed
+    + trendline traces are now of type scattergl when
+      render_mode="webgl" in Plotly Express (#2614)
+    + regression from 4.8.1 whereby "parent" was not accepted as part
+      of path for px.sunburst() and px.treemap() (#2640)
+    + create_dendrogram() figure factory now works correctly with
+      scipy 1.5.1 (#2627)
+  * Updated
+    + Updated Plotly.js to version 1.54.6. See the plotly.js CHANGELOG
+      for more information.
+    + Added all cartesian-2d Plotly Express functions, plus imshow, to
+      Pandas backend with kind option (#2541)
+    + plotly.express.imshow now uses data frame index and columns
+      names and values to populate axis parameters by default (#2539)
+    + Javascript extensions are now build using Node 12, and have an
+      updated package-lock.json with many fewer security warnings
+      (#2636)
+
+-------------------------------------------------------------------
 Sat Jul 11 19:18:52 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.8.2:
