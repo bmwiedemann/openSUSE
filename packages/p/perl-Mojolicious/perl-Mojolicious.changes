@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 14 03:10:06 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.59
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.59  2020-09-05
+    - Added l function to ojo. (kiwiroy)
+    - Added MOJO_PROMISE_DEBUG environment variable to Mojo::Promise.
+
+-------------------------------------------------------------------
 Tue Aug 11 03:12:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.58
