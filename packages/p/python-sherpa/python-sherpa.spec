@@ -19,17 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-sherpa
-Version:        4.12.0
+Version:        4.12.1
 Release:        0
 Summary:        Modeling and fitting package for scientific data analysis
 License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
 Source:         https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM config_with_build.patch -- https://github.com/sherpa/sherpa/pull/714
-Patch0:         config_with_build.patch
 Patch1:         reproducible.patch
-# PATCH-FIX-UPSTREAM python-sherpa-python3.8.patch gh#sherpa/sherpa#696 badshah400@gmail.com -- Fix building with python3.8; taken from upstream commit
-Patch2:         python-sherpa-python3.8.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
