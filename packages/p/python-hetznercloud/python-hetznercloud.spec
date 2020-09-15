@@ -1,7 +1,7 @@
 #
 # spec file for package python-hetznercloud
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Hetzner Cloud SDK
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/elsyms/hetznercloud-py
+URL:            https://github.com/elsyms/hetznercloud-py
 Source:         https://github.com/elsyms/hetznercloud-py/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -52,7 +52,6 @@ sed -i 's/\r$//' LICENSE.txt README.md
 
 %check
 # Disabled since the tests need access to the Hetzner API servers.
-#%%python_exec %%{_bindir}/nosetests -v tests
 
 %files %{python_files}
 %doc README.md
