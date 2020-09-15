@@ -96,7 +96,7 @@ ExclusiveArch:  do_not_build
 %define shlib_nvec libsundials_nvec5%{?my_suffix}
 
 Name:           %{package_name}
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
@@ -262,15 +262,16 @@ cmake .. \
        -DBUILD_STATIC_LIBS:BOOL=OFF \
        -DCMAKE_COLOR_MAKEFILE:BOOL=OFF \
        -DCMAKE_INSTALL_DO_STRIP:BOOL=OFF \
-       -DBLAS_ENABLE=ON \
-       -DLAPACK_ENABLE=ON \
-       -DPTHREAD_ENABLE=ON \
+       -DBLAS_ENABLE:BOOL=ON \
+       -DLAPACK_ENABLE:BOOL=ON \
+       -DPTHREAD_ENABLE:BOOL=ON \
+       -DSUNDIALS_BUILD_WITH_MONITORING:BOOL=ON \
 %if %{without mpi}
        -DEXAMPLES_INSTALL_PATH=%{_docdir}/%{name}/examples \
-       -DMPI_ENABLE=OFF
+       -DMPI_ENABLE:BOOL=OFF
 %else
-       -DEXAMPLES_INSTALL=OFF \
-       -DMPI_ENABLE=ON \
+       -DEXAMPLES_INSTALL:BOOL=OFF \
+       -DMPI_ENABLE:BOOL=ON \
        -DMPI_C_COMPILER=%{my_bindir}/mpicc \
        -DMPI_CXX_COMPILER=%{my_bindir}/mpicxx \
        -DMPI_Fortran_COMPILER=%{my_bindir}/mpif90 \

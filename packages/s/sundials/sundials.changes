@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:55:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.0:
+  * Added support to CVODE for integrating IVPs with constraints
+    using BDF methods and projecting the solution onto the
+    constraint manifold with a user defined projection function.
+  * Added the ability to control the CUDA kernel launch parameters
+    for the NVECTOR_CUDA and SUNMATRIX_CUSPARSE modules.
+  * The NVECTOR_CUDA kernels were rewritten to be more flexible.
+  * Added new capabilities for monitoring the solve phase in the
+    SUNNONLINSOL_NEWTON and SUNNONLINSOL_FIXEDPOINT modules, and
+    the SUNDIALS iterative linear solver modules.
+  * Added specialized fused CUDA kernels to CVODE which may offer
+    better performance on smaller problems when using CVODE with
+    the NVECTOR_CUDA module.
+  * Added a new function, CVodeSetMonitorFn, that takes a
+    user-function to be called by CVODE after every nst
+    successfully completed time-steps.
+  * Added a new function CVodeGetLinSolveStats to get the CVODE
+    linear solver statistics as a group.
+  * Added optional set functions to provide an alternative ODE
+    right-hand side function (ARKode and CVODE(S)), DAE residual
+    function (IDA(S)), or nonlinear system function (KINSOL) for
+    use when computing Jacobian-vector products with the internal
+    difference quotient approximation.
+  * Fixed a bug in ARKode where the prototypes for
+    ERKStepSetMinReduction() and ARKStepSetMinReduction() were not
+    included in arkode_erkstep.h and arkode_arkstep.h
+    respectively.
+  * Fixed a bug in ARKode where inequality constraint checking
+    would need to be disabled and then re-enabled to update the
+    inequality constraint values after resizing a problem.
+  * Fixed a bug in the iterative linear solver modules where an
+    error is not returned if the Atimes function is NULL or, if
+    preconditioning is enabled, the PSolve function is NULL.
+- Pass SUNDIALS_BUILD_WITH_MONITORING=ON to cmake to enable
+  monitoring the solve phase in different iterative solver
+  modules.
+
+-------------------------------------------------------------------
 Sat May  9 22:30:30 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.2.0 (See
