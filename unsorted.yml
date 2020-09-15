@@ -2272,6 +2272,12 @@ unsorted:
   - crystalhd-firmware 
   - cscope 
   - cscreen 
+  - csi-external-attacher 
+  - csi-external-provisioner 
+  - csi-external-resizer 
+  - csi-external-snapshotter 
+  - csi-livenessprobe 
+  - csi-node-driver-registrar 
   - csindex 
   - csmith 
   - csound 
@@ -6343,6 +6349,7 @@ unsorted:
   - ini4j-javadoc 
   - injeqt-devel 
   - inkscape-extensions-fig 
+  - inkscape-extensions-scribus: [i586] 
   - inn-devel 
   - innoextract 
   - innotop 
@@ -11576,7 +11583,6 @@ unsorted:
   - liboyranos0-lraw 
   - liboyranos0-monitor 
   - liboyranos0-sane 
-  - libp11-3 
   - libp11-3-32bit: [x86_64] 
   - libp11-devel 
   - libp8-platform2 
@@ -16703,7 +16709,6 @@ unsorted:
   - openresolv 
   - opensaml-bin 
   - opensaml-schemas 
-  - opensc 
   - opensc-32bit: [x86_64] 
   - openscad 
   - openscap 
@@ -25777,8 +25782,6 @@ unsorted:
   - sxiv 
   - sympol 
   - sympol-devel 
-  - synapse 
-  - synapse-lang 
   - syncthing 
   - syncthing-relaysrv 
   - syndication-devel 
@@ -35222,7 +35225,6 @@ unsorted:
   - xplayer-plparser 
   - xplayer-plparser-devel 
   - xplayer-plparser-lang 
-  - xplayer-plugin-zeitgeist 
   - xplayer-plugins 
   - xplsprinters 
   - xpp2 
