@@ -37,4 +37,14 @@
 </comment>
     <requestid>831619</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>85e547373bc697d5fd15512c1d5d3105</srcmd5>
+    <version>5.15.1</version>
+    <time>1600180129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 5.15.1
+  * A bug-fix release.
+</comment>
+    <requestid>834341</requestid>
+  </revision>
 </revisionlist>

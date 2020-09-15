@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qt3d-qt5
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Python bindings for the Qt5 3D framework
 License:        GPL-3.0-only
