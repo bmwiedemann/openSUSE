@@ -36,7 +36,7 @@
 %bcond_without librdmacm
 %endif
 Name:           fio
-Version:        3.21
+Version:        3.23
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
