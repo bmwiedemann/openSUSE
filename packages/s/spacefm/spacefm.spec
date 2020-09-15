@@ -1,7 +1,7 @@
 #
 # spec file for package spacefm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%bcond_with restricted
 Name:           spacefm
 Version:        1.0.6
 Release:        0
@@ -27,6 +26,8 @@ URL:            http://ignorantguru.github.io/spacefm
 Source:         https://github.com/IgnorantGuru/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE spacefm-fix-implicit-decl.patch -- Fix implicit declaration of "major" and "minor" macros.
 Patch0:         spacefm-fix-implicit-decl.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-GCC10.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -38,9 +39,11 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
+# Not available in SLE
+%if 0%{?is_opensuse}
+BuildRequires:  pkgconfig(libffmpegthumbnailer)
+%endif
 BuildRequires:  pkgconfig(libudev) >= 143
-Requires:       desktop-file-utils
-Requires:       shared-mime-info
 Recommends:     %{name}-lang
 # Mount without root requirement.
 Recommends:     udisks2
@@ -48,9 +51,6 @@ Recommends:     udisks2
 Recommends:     wget
 # Execution of SpaceFM and applications from root.
 Recommends:     xdg-utils
-%if %{?suse_version} >= 1500 || %{with restricted}
-BuildRequires:  pkgconfig(libffmpegthumbnailer)
-%endif
 
 %description
 SpaceFM is a multi-panel tabbed file and desktop manager for GNU/Linux
@@ -61,18 +61,19 @@ alike for its stability, speed, convenience and flexibility.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 echo 'tmp_dir=%{_tmppath}' > %{name}.conf
 
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
   --with-preferable-sudo=%{_bindir}/xdg-su \
-%if %{?suse_version} < 1500 && %{without restricted}
+%if 0%{?is_opensuse} < 1
   --disable-video-thumbnails               \
 %endif
   --htmldir=%{_docdir}/%{name}
+
 make %{?_smp_mflags} V=1
 
 %install
@@ -82,26 +83,8 @@ make %{?_smp_mflags} V=1
 %fdupes %{buildroot}%{_datadir}/
 %find_lang %{name}
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%icon_theme_cache_post Faenza
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%icon_theme_cache_postun Faenza
-%mime_database_postun
-%endif
-
 %files
-%if 0%{?suse_version} >= 1500
 %license COPYING COPYING-LGPL
-%else
-%doc COPYING COPYING-LGPL
-%endif
 %doc AUTHORS ChangeLog README
 %{_docdir}/%{name}/
 %dir %{_sysconfdir}/%{name}/

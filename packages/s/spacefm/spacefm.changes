@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 12 18:06:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC10:
+  * 0001-Fix-build-with-GCC10.patch
+- Drop obsolete version checks from spec file.
+
+-------------------------------------------------------------------
 Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
 
 - Add spacefm-fix-implicit-decl.patch: Fix implicit declaration of
