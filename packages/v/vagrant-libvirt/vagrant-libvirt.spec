@@ -16,16 +16,9 @@
 #
 
 
-# FIXME: for now vagrant does not support Ruby 2.7
-%if 0%{?suse_version} > 1500
-%global rb_build_versions ruby26
-%global rb_build_abi ruby:2.6.0
-%global rb_ruby_suffix ruby2.6
-%else
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_ruby_abi
 %global rb_ruby_suffix %rb_default_ruby_suffix
-%endif
 
 Name:           vagrant-libvirt
 Version:        0.1.2
@@ -35,8 +28,16 @@ Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Requires:       libvirt
-Requires:       qemu-kvm
+%ifarch %ix86 x86_64
+Requires:       qemu-x86
+%endif
+# switch to %%elifarch once every platform that we care about has rpm >= 4.15
+%ifarch %arm %arm64
+Requires:       qemu-arm
+%endif
 Requires:       vagrant
+# for virt-sysprep
+Recommends:     guestfs-tools
 BuildRequires:  vagrant
 
 BuildRequires:  %{ruby}
@@ -68,6 +69,9 @@ Requires:       %{rubygem nokogiri:1 >= 1.6 }
 
 # required when using a non-default ruby version
 BuildRequires:  %{rubygem gem2rpm}
+
+# Prevent: have choice for rubygem(ruby:2.7.0:childprocess) >= 0
+BuildRequires:  %{rubygem childprocess > 3}
 
 URL:            https://github.com/vagrant-libvirt/vagrant-libvirt
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 10 16:59:58 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Require qemu-x86/arm on the x86/arm respectively
+- Add constraint on the childprocess version to fix "have choice" errors
+
+-------------------------------------------------------------------
+Tue Sep  8 07:13:21 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Switch back to the default Ruby for Tumbleweed
+
+  * Recommend guestfs-tools for virt-sysprep (needed for vagrant package with
+    vagrant-libvirt)
+
+-------------------------------------------------------------------
 Thu Sep  3 16:01:21 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Change dependency on qemu-kvm from Recommends to Requires
