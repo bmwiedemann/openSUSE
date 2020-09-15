@@ -34,4 +34,16 @@
   * Include tests in sdist</comment>
     <requestid>699148</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8cb197640bd8f90bcfeff1b89c810a37</srcmd5>
+    <version>2.3.0</version>
+    <time>1600180158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  * Document default value behaviour (#126)
+  * Add Python 3.9's merge operators `|` and `|=` support (#127) (#128)
+  * Add alias 'Addict' to import Dict (#118)
+- Switch to pytest to run tests</comment>
+    <requestid>834472</requestid>
+  </revision>
 </revisionlist>

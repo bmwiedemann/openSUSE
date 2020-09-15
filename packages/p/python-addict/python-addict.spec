@@ -1,7 +1,7 @@
 #
 # spec file for package python-addict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-addict
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        A dictionary using both attribute and item syntax
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mewwts/addict
 Source:         https://github.com/mewwts/addict/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +47,7 @@ using both attribute and item syntax.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.md
