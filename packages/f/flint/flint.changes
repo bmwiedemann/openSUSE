@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Aug 29 22:49:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to version 2.6.3
+  * New features:
+  * Multivariate polynomials over most standard rings (sparse
+    distributed)
+  * APR-CL primality proving
+  * Elliptic Curve integer factoring
+  * Pollard rho integer factoring
+  * p+1 integer factoring
+  * Best of Breed smooth & general integer factoring routine
+  * Howell and Strong Echelon form
+  * Möller–Granlund precomputed inverses
+  * Fibonacci polynomials
+  * sqrt of series and polynomials
+  * Division of series over Z
+  * Shifted Legendre polynomials, Laguerre polynomials, Gegenbauer
+    polys.
+  * Threading of FFT for integer and polynomial multiplication over
+    Z; threading of quadratic sieve for integer factoring; threading
+    for multivariate polynomial multiplication, division and GCD;
+    threaded multiplication of matrices mod p.
+  * For more, see the NEWS file in the flint-devel subpackage.
+- Enable integration with libntl
+- Drop 0001-build-provide-autotools-files.patch
+
+-------------------------------------------------------------------
 Sun May 28 07:21:16 UTC 2017 - bwiedemann@suse.com
 
 - Sort input files to make build reproducible (boo#1041090)
@@ -12,7 +39,9 @@ Sun Nov 13 19:15:35 UTC 2016 - jengelh@inai.de
 -------------------------------------------------------------------
 Sun Mar 13 09:43:42 UTC 2016 - jengelh@inai.de
 
-- Update to git snapshot of 3.0.x branch
+- Update to git snapshot of the master branch
+  [marked as 3.0~ in openSUSE due to lack of any prospect on what
+  the version will be]
 * Add implementation of Moller-Granlund invert_limb
 * Add implementations of n_div2_preinv and n_divrem2_preinv.
 * Add primitive flint exception mechanism.

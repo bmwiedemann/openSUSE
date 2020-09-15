@@ -1,7 +1,7 @@
 #
 # spec file for package flint
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define version_unconverted 3.0~5831
+%define version_unconverted 2.6.3
 
 Name:           flint
-%define lname	libflint0
-Version:        3.0~5831
+%define lname	libflint14
+Version:        2.6.3
 Release:        0
 Summary:        C library for doing number theory
-License:        GPL-2.0+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://flintlib.org/
+URL:            http://flintlib.org/
 
+#Git-Clone:     https://github.com/wbhart/flint2
 Source:         %name-%version.tar.xz
-Patch1:         0001-build-provide-autotools-files.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -71,38 +70,28 @@ This subpackage contains the include files and library links for
 developing against the FLINT library.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
-chmod a+x *.sh
-./autogen.sh
-export CFLAGS="%optflags"
-export CXXFLAGS="%optflags"
-%ifarch x86_64 %ix86
-export CFLAGS="$CFLAGS -mno-popcnt"
-export CXXFLAGS="$CXXFLAGS -mno-popcnt"
-%endif
-%configure --disable-static --with-ntl --enable-reentrant
-make %{?_smp_mflags} V=0
+./configure --prefix="%_prefix" --disable-static --reentrant --with-ntl \
+	CFLAGS="%optflags" CXXFLAGS="%optflags"
+make %{?_smp_mflags} VERBOSE=1
 
 %install
-b="%buildroot";
-%make_install DESTDIR="$b"
-rm -f "$b/%_libdir"/*.la
+%make_install LIBDIR="%_lib"
+rm -f "%buildroot/%_libdir"/*.la
 %fdupes %buildroot/%_prefix
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%_libdir/libflint.so.0*
-%doc gpl-2.0.txt
+%_libdir/libflint.so.14*
+%license LICENSE
 
 %files devel
-%defattr(-,root,root)
 %_includedir/flint/
 %_libdir/libflint.so
+%doc NEWS
 
 %changelog

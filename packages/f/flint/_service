@@ -2,10 +2,9 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="filename">flint</param>
 		<param name="scm">git</param>
-		<param name="url">git://github.com/wbhart/flint2</param>
-		<param name="revision">flint-3.0</param>
-		<param name="parent-tag">0e8613b3336f356e07f7bbd4bb2ae5eded68ca40</param>
-		<param name="versionformat">3.0~@TAG_OFFSET@</param>
+		<param name="url">git://github.com/jengelh/flint2</param>
+		<param name="revision">pr831_for_2.6.3</param>
+		<param name="versionformat">2.6.3</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

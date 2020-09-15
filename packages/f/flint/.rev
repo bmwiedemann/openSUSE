@@ -56,4 +56,12 @@
     <comment>Sort input files to make build reproducible (boo#1041090) (forwarded request 498729 from bmwiedemann)</comment>
     <requestid>498731</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b66dc40f905723f675b83906c7588883</srcmd5>
+    <version>2.6.3</version>
+    <time>1600179363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.3</comment>
+    <requestid>830593</requestid>
+  </revision>
 </revisionlist>
