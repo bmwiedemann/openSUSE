@@ -74,6 +74,13 @@ ExclusiveArch:  do_not_build
 %bcond_with hpc
 %endif
 
+%if "%{flavor}" == "openmpi4"
+%define mpi_family  openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 4
+%bcond_with hpc
+%endif
+
 %if "%{flavor}" == "mvapich2"
 %define mpi_family  mvapich2
 %define mumps_f77_mpilibs -lfmpich -lmpich
@@ -100,6 +107,14 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "scotch-openmpi3"
 %define mpi_family  openmpi
 %define mpi_ver 3
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%bcond_with hpc
+%bcond_without scotch
+%endif
+
+%if "%{flavor}" == "scotch-openmpi4"
+%define mpi_family  openmpi
+%define mpi_ver 4
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %bcond_with hpc
 %bcond_without scotch
@@ -139,6 +154,16 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%{?DisOMPI3}
+%undefine c_f_ver
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 4
 %bcond_without hpc
 %endif
 
@@ -187,6 +212,16 @@ ExclusiveArch:  do_not_build
 %bcond_without hpc
 %endif
 
+%if "%{flavor}" == "gnu7-openmpi4-hpc"
+%{?DisOMPI3}
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 4
+%bcond_without hpc
+%endif
+
 %if "%{flavor}" == "gnu7-mvapich2-hpc"
 %define c_f_ver 7
 # macro mpi is used by macros for master package
@@ -229,6 +264,16 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi4-hpc"
+%{?DisOMPI3}
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 4
 %bcond_without hpc
 %endif
 
@@ -277,6 +322,16 @@ ExclusiveArch:  do_not_build
 %bcond_without hpc
 %endif
 
+%if "%{flavor}" == "gnu9-openmpi4-hpc"
+%{?DisOMPI3}
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 4
+%bcond_without hpc
+%endif
+
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
 %define c_f_ver 9
 # macro mpi is used by macros for master package
@@ -288,6 +343,61 @@ ExclusiveArch:  do_not_build
 
 %if "%{flavor}" == "gnu9-mpich-hpc"
 %define c_f_ver 9
+%global mpi_family mpich
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 1
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%{?DisOMPI2}
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 2
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%{?DisOMPI3}
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 4
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_family mvapich2
+%define mumps_f77_mpilibs -lfmpich -lmpich
+%undefine mpi_ver 
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%define c_f_ver 10
 %global mpi_family mpich
 %bcond_without hpc
 %endif
@@ -370,9 +480,8 @@ BuildRequires:  lapack-devel
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 BuildRequires:  fdupes
-BuildRequires:  libgomp1
-BuildRequires:  libopenblas-%{compiler_family}-hpc >=  %{openblas_vers}
-BuildRequires:  libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc-devel
+BuildRequires:  libopenblas-%{compiler_family}%{?c_f_ver}-hpc >=  %{openblas_vers}
+BuildRequires:  libscalapack2-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_ver}-hpc-devel
 BuildRequires:  suse-hpc
 %endif # hpc
 

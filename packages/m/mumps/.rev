@@ -145,4 +145,16 @@
   add compiler option -std=legacy to fix (bsc#1173549). (forwarded request 817964 from eeich)</comment>
     <requestid>817965</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>daeb0d0b31ad57d157d4db6233307fbd</srcmd5>
+    <version>5.2.1</version>
+    <time>1600179909</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439). 
+  * Remove explicit build dependency for libgomp1.
+  * Add missing compiler versions to openblas and scalapack
+    build dependencies.
+- Add build support for openmpi4. (forwarded request 833596 from eeich)</comment>
+    <requestid>833712</requestid>
+  </revision>
 </revisionlist>

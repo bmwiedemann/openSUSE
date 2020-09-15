@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 23 16:29:56 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439). 
+  * Remove explicit build dependency for libgomp1.
+  * Add missing compiler versions to openblas and scalapack
+    build dependencies.
+- Add build support for openmpi4.
+
+-------------------------------------------------------------------
 Tue Jun 30 20:05:56 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - With gcc10, some fortran code started failing to build -
