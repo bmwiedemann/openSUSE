@@ -58,7 +58,6 @@ Implements a higher level API to Apache Zookeeper for Python clients.
 
 %check
 # kazoo needs running zookeeper server
-#%%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_version} -v
 
 %files %{python_files}
 %license LICENSE
