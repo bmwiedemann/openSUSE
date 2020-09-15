@@ -18,15 +18,13 @@
 
 
 Name:           multitail
-Version:        6.4.2
+Version:        6.5.0
 Release:        0
 Summary:        Tail Multiple Files
 License:        GPL-2.0+
 Group:          System/X11/Terminals
 Url:            https://www.vanheusden.com/multitail/
 Source:         https://www.vanheusden.com/multitail/%{name}-%{version}.tgz
-# patch from https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/app-text/multitail/files/
-Patch0:         multitail-6.4.1-gentoo.patch
 Patch3:         multitail-fix_missing_proto_do_check_for_mail.patch
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -49,7 +47,6 @@ functionality of tools like 'watch' and such.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch3
 
 sed -i 's/\.new//g' Makefile
@@ -62,10 +59,12 @@ export LDFLAGS="-lpanelw -lncursesw "
 make %{?_smp_mflags} \
     PKG_CONFIG="pkg-config" \
     UTF8_SUPPORT=yes \
+    PREFIX=%_prefix \
     CONFIG_FILE="%{_sysconfdir}/%{name}.conf"
 
 %install
-%make_install
+%make_install PREFIX=%_prefix
+mv %{buildroot}/%_prefix/%_sysconfdir %{buildroot}/%_sysconfdir
 
 # docs are shipped already
 rm -fr %{buildroot}%{_datadir}/doc/%{name}-%{version}

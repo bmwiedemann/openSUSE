@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 11 14:58:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.5.0
+  * Fix man-page capitalizing
+  * Let -sn and -sw accept 0
+  * Fix for terminal corruption caused by invalid UTF-8 codes
+  * Clarified usage of -a/-A
+  * Add support for 256 colors in color scheme files
+  * Fix missing netinet/in.h include in clipboard.c
+  * Another format to support common logging pattern from log4j for java processes
+  * Add a configuration file item to control whether scrollback should default to fullscreen.
+  * Fix for -Rc
+  * Fix -q/-Q memory leak
+  * Allow -CT to apply terminal settings to wildcards
+  * Color schemes for 1xx, 2xx, 3xx, 4xx, 5xx HTTP codes
+  * Fix documented grace periods
+  * Fix spelling and typos in comments in multitail.conf
+  * Prevent segfault when inverting an inverted search
+- remove multitail-6.4.1-gentoo.patch (obsolete) 
+
+-------------------------------------------------------------------
 Wed Feb  7 05:45:03 UTC 2018 - avindra@opensuse.org
 
 - Update to 6.4.2
