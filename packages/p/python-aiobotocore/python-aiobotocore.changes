@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:40:57 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1.1
+  + fix s3 region redirect bug #825
+- from version 1.1.0
+  + bump botocore to 1.17.44
+- from version 1.0.7
+  + fix generate_db_auth_token via #816
+- from version 1.0.6
+  + revert __getattr__ fix as it breaks ddtrace
+- from version 1.0.5
+  + Fixed AioSession.get_service_data emit call #811 via #812
+  + Fixed async __getattr__ #789 via #803
+- from version 1.0.4
+  + Fixed S3 Presigned Post not being async
+- from version 1.0.3
+  + Fixes typo when using credential process
+- from version 1.0.2
+  + Disable Client.__getattr__ emit for now #789
+- from version 1.0.1
+  + Fixed signing requests with explicit credentials
+- from version 1.0.0
+  + API breaking: The result of create_client is now a required async context class
+  + Credential refresh should now work
+  + generate_presigned_url is now an async call along with other credential methods
+  + Credentials.[access_key/secret_key/token] now raise NotImplementedError because
+    they won't call refresh like botocore. Instead should use get_frozen_credentials
+    async method
+  + Bump botocore and extras
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Mar 24 11:26:42 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.0

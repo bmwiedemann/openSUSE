@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-aiobotocore
-Version:        0.12.0
+Version:        1.1.1
 Release:        0
 Summary:        Async client for aws services
 License:        Apache-2.0
@@ -33,15 +33,15 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 3.3.1}
 BuildRequires:  %{python_module aioitertools >= 0.5.1}
-BuildRequires:  %{python_module botocore >= 1.15.3}
+BuildRequires:  %{python_module botocore >= 1.17.44}
 BuildRequires:  %{python_module wrapt >= 1.10.10}
 # /SECTION
 Requires:       python-aiohttp >= 3.3.1
 Requires:       python-async_generator >= 1.10
-Requires:       python-botocore >= 1.13.14
+Requires:       python-botocore >= 1.17.44
 Requires:       python-wrapt >= 1.10.10
-Recommends:     awscli >= 1.16.278
-Recommends:     python-boto3 >= 1.10.14
+Recommends:     awscli >= 1.18.121
+Recommends:     python-boto3 >= 1.14.44
 BuildArch:      noarch
 
 %python_subpackages
