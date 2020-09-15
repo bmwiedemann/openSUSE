@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:20:52 CEST 2020 - schubi@suse.de
+
+- Using ":" in the autoyast(...) supplements (bsc#1146494).
+- 4.3.17
+
+-------------------------------------------------------------------
 Tue Sep  1 14:58:31 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Self-update improvement: write the list of updated packages to
