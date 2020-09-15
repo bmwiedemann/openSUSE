@@ -17,16 +17,16 @@
 
 
 Name:           libqt5-qtlottie
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Qt 5 Quick Lottie Addon
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.0
-%define so_version 5.15.0
-%define tar_version qtlottie-everywhere-src-5.15.0
+%define real_version 5.15.1
+%define so_version 5.15.1
+%define tar_version qtlottie-everywhere-src-5.15.1
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
