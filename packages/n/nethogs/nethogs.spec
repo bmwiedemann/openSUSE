@@ -1,7 +1,7 @@
 #
 # spec file for package nethogs
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,24 +13,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           nethogs
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Network Bandwidth Usage Monitor
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            http://raboof.github.io/nethogs/
-Source:         https://github.com/raboof/nethogs/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        https://github.com/raboof/nethogs/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
+URL:            https://raboof.github.io/nethogs/
+Source:         https://github.com/raboof/nethogs/archive/v%{version}/nethogs-v%{version}.tar.gz
 Source3:        https://keybase.io/raboof/key.asc#/%{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  libpcap-devel
 BuildRequires:  ncurses-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 NetHogs is a small 'net top' tool. Instead of breaking the traffic down per
@@ -44,7 +42,7 @@ gone wild and are suddenly taking up your bandwidth.
 %setup -q
 
 %build
-make %{?_smp_mflags} \
+%make_build \
     sbin="%{_sbindir}" \
     bin="%{_sbindir}" \
     man8="%{_mandir}/man8" \
@@ -64,12 +62,12 @@ make  %{?_smp_mflags} \
     install
 
 %check
-make test
+%make_build test
 
 %files
-%defattr(-,root,root)
-%doc COPYING README.md DESIGN
+%license COPYING
+%doc README.md DESIGN
 %{_sbindir}/nethogs
-%{_mandir}/man8/nethogs.8*
+%{_mandir}/man8/nethogs.8%{?ext_man}
 
 %changelog
