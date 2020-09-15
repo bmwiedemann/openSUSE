@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Sep 14 10:34:41 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the returned value form the AutoinstPartPlan's Read method
+  (boo#1176490).
+- 4.3.48
+
+-------------------------------------------------------------------
+Fri Sep 11 14:14:19 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Formally mark that fixes made for SP2 no longer affect SP3
+  (no code changes bsc#1173793 and bsc#1172026). For the first one
+  code is not longer in place and for the second new xml parser
+  does not need workaround for empty strings.
+- 4.3.47
+
+-------------------------------------------------------------------
+Thu Sep 10 13:40:44 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix installation using encrypted profile (bsc#1176336)
+- improve usability by entering password just once
+- use shared UI::PasswordDialog
+- 4.3.46
+
+-------------------------------------------------------------------
+Tue Sep  8 09:07:40 CEST 2020 - schubi@suse.de
+
+- Using ":" in the autoyast(...) supplements (bsc#1146494).
+- 4.3.45
+
+-------------------------------------------------------------------
+Mon Sep  7 07:58:56 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- When 'NetworkManager' is selected in the profile as the network
+  backend to be used, the 'NetworkManager' package is added to the
+  list of packages to be installed in case of missing (bsc#1172817)
+- 4.3.44
+
+-------------------------------------------------------------------
 Wed Sep  2 15:07:52 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Recognize installed_product and installed_product_version as
