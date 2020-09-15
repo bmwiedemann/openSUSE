@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  9 14:43:15 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Relax over-specified constraint on megaparsec.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:16 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

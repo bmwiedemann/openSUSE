@@ -53,6 +53,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver megaparsec '< 9.0' '< 10'
 
 %build
 %ghc_lib_build
