@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 14 19:33:07 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- updated changelog to mention leap15_2.patch
+
+-------------------------------------------------------------------
+Mon Sep 14 11:25:44 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- updated to git 20200914, fixes compilation on kernel 5.8
+
+-------------------------------------------------------------------
+Tue Aug 18 15:31:19 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix invalid usage of %{_libexecdir} for systemd owned paths below
+  %{_prefix}/lib.
+
+-------------------------------------------------------------------
+Tue Jul 14 13:41:15 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- added patch leap15_2.patch: fix failure to build on Leap 15.2
+- fix failure to build on Tumbleweed
+- updated to 1.79.9 + current git
+
+-------------------------------------------------------------------
 Fri Apr 17 22:50:23 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
 
 - updated to 1.75.2 current git to fix compilation on kernel 5.6.x

@@ -1,0 +1,34 @@
+diff -ruN CoreFreq/corefreqk.c CoreFreq.patch/corefreqk.c
+--- CoreFreq/corefreqk.c	2020-09-14 12:09:57.649180393 +0200
++++ CoreFreq.patch/corefreqk.c	2020-09-14 13:15:40.676704837 +0200
+@@ -11491,13 +11491,7 @@
+ 	return (0);
+ }
+ 
+-#if ((LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 19))	\
+-  && (LINUX_VERSION_CODE <= KERNEL_VERSION(5, 5, 0)))	\
+-  || (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 5, 3))
+ static int CoreFreqK_Policy_Verify(struct cpufreq_policy_data *policy)
+-#else
+-static int CoreFreqK_Policy_Verify(struct cpufreq_policy *policy)
+-#endif
+ {
+ 	if (policy != NULL) {
+ 		cpufreq_verify_within_cpu_limits(policy);
+diff -ruN CoreFreq/corefreqk.h CoreFreq.patch/corefreqk.h
+--- CoreFreq/corefreqk.h	2020-09-14 12:09:57.649180393 +0200
++++ CoreFreq.patch/corefreqk.h	2020-09-14 13:15:57.060752684 +0200
+@@ -3983,13 +3983,7 @@
+ #endif
+ static int CoreFreqK_Policy_Exit(struct cpufreq_policy*) ;
+ static int CoreFreqK_Policy_Init(struct cpufreq_policy*) ;
+-#if ((LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 19))   \
+-  && (LINUX_VERSION_CODE <= KERNEL_VERSION(5, 5, 0)))  \
+-  || (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 5, 3))
+ static int CoreFreqK_Policy_Verify(struct cpufreq_policy_data*) ;
+-#else
+-static int CoreFreqK_Policy_Verify(struct cpufreq_policy*) ;
+-#endif
+ static int CoreFreqK_SetPolicy(struct cpufreq_policy*) ;
+ static int CoreFreqK_Bios_Limit(int, unsigned int*) ;
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)

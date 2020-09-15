@@ -18,9 +18,9 @@
 
 # from coretypes.h
 %define corefreq_major  1
-%define corefreq_minor  75
-%define corefreq_rev    2
-%define gitdate 20200418
+%define corefreq_minor  80
+%define corefreq_rev    9
+%define gitdate 20200914
 Name:           CoreFreq
 Version:        %{corefreq_major}.%{corefreq_minor}.%{corefreq_rev}+git%{gitdate}
 Release:        0
@@ -28,13 +28,14 @@ Summary:        CPU monitoring software designed for 64-bits processors
 License:        GPL-2.0-or-later
 URL:            https://github.com/cyring/CoreFreq
 Source:         %{name}-%{version}.tar.gz
+Patch0:         leap15_2.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       CoreFreq-kmp
 ExclusiveArch:  x86_64
 %systemd_ordering
-%kernel_module_package
+%kernel_module_package -x preempt
 
 %description
 A CPU monitoring software with BIOS like functionalities, is designed for the 64-bits
@@ -43,6 +44,9 @@ AMD Families 0Fh ... 17h (Zen), 18h (Hygon Dhyana)
 
 %prep
 %setup -q -n CoreFreq
+%if 0%{?sle_version} == 150200
+%patch0 -p1
+%endif
 
 %build
 %make_build
@@ -52,12 +56,9 @@ export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
 PREFIX=%{buildroot}%{_prefix} make install
 
-# replace invocation in corefreqd.service of /bin/corefreqd  by /usr/bin/corefreqd
-sed -i -e 's/\/bin\/corefreqd/\/usr\/bin\/corefreqd/g' %{buildroot}%{_unitdir}/corefreqd.service
-
 # load module on boot. Necessary for corefreqd to be able to run
-mkdir -p %{buildroot}%{_libexecdir}/modules-load.d
-echo corefreqk > %{buildroot}%{_libexecdir}/modules-load.d/corefreq.conf
+mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
+echo corefreqk > %{buildroot}%{_prefix}/lib/modules-load.d/corefreq.conf
 
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rccorefreqd
@@ -69,8 +70,8 @@ ln -s service %{buildroot}%{_sbindir}/rccorefreqd
 %{_bindir}/corefreqd
 %{_unitdir}/corefreqd.service
 %{_sbindir}/rccorefreqd
-%dir %{_libexecdir}/modules-load.d
-%{_libexecdir}/modules-load.d/corefreq.conf
+%dir %{_prefix}/lib/modules-load.d
+%{_prefix}/lib/modules-load.d/corefreq.conf
 
 %pre
 %service_add_pre corefreqd.service
