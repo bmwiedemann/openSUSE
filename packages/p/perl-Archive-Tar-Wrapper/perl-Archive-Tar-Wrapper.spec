@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Archive-Tar-Wrapper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,26 @@
 
 
 Name:           perl-Archive-Tar-Wrapper
-Version:        0.37
+Version:        0.38
 Release:        0
 #Upstream: GPL-1.0-or-later
 %define cpan_name Archive-Tar-Wrapper
 Summary:        API wrapper around the 'tar' utility
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARFREITAS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(CPAN::Meta)
 BuildRequires:  perl(File::Which)
 BuildRequires:  perl(IPC::Run)
 BuildRequires:  perl(Log::Log4perl)
 BuildRequires:  perl(Test::Simple) >= 1.302073
+Requires:       perl(CPAN::Meta)
 Requires:       perl(File::Which)
 Requires:       perl(IPC::Run)
 Requires:       perl(Log::Log4perl)
@@ -57,7 +59,7 @@ because it uses it internally.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

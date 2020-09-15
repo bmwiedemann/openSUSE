@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 14 03:07:11 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+  0.38 (2020/08/09):
+      Fixed issue 17 - https://github.com/glasswalk3r/archive-tar-wrapper-perl/issues/17
+      The fixes were only related to different licenses over the files of the distribution.
+      Small fixes over the documentation as well.
+      No changes to the code. :-)
+
+-------------------------------------------------------------------
 Sat Aug 24 05:02:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.37
