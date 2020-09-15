@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%define modname hankel
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hankel
 Version:        1.1.0
@@ -25,7 +26,7 @@ Summary:        Hankel Transformations using method of Ogata 2005
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/steven-murray/hankel
-Source:         https://github.com/steven-murray/hankel/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/h/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -65,6 +66,7 @@ transformations using the method of Ogata 2005.
 %files %{python_files}
 %doc README.rst CHANGELOG.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}/
+%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
 
 %changelog
