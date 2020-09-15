@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep  9 02:00:37 UTC 2020 - psimons@suse.com
+
+- Update hashtables to version 1.2.4.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hashtables-1.2.4.1/src/changelog.md
+
+-------------------------------------------------------------------
+Tue Sep  8 02:00:37 UTC 2020 - psimons@suse.com
+
+- Update hashtables to version 1.2.4.0.
+  ## 1.2.4.0
+
+  Fix a [correctness bug](https://github.com/gregorycollins/hashtables/issues/55)
+  with cuckoo hash tables and the new `mutate` function introduced in 1.2.3.0.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:58 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

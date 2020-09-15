@@ -17,8 +17,9 @@
 
 
 %global pkg_name hashtables
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.3.4
+Version:        1.2.4.1
 Release:        0
 Summary:        Mutable hash tables in the ST monad
 License:        BSD-3-Clause
@@ -29,6 +30,14 @@ BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-vector-devel
+%if %{with tests}
+BuildRequires:  ghc-HUnit-devel
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-mwc-random-devel
+BuildRequires:  ghc-test-framework-devel
+BuildRequires:  ghc-test-framework-hunit-devel
+BuildRequires:  ghc-test-framework-quickcheck2-devel
+%endif
 
 %description
 This package provides a couple of different implementations of mutable hash
@@ -122,6 +131,9 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache
