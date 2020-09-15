@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 10:40:13 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Thu Aug  2 16:29:52 UTC 2018 - psimons@suse.com
 
 - Add libxml-sax at version 0.7.5.
