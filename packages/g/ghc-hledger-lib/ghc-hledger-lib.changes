@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep  8 02:00:51 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.19.1.
+  # 1.19.1 2020-09-07
+
+  - Allow megaparsec 9
+
+  - stripAnsi: correctly strip ansi sequences with no
+    numbers/semicolons. (Stephen Morgan)
+
+  - Added case-insensitive accountNameToAccountRegexCI,
+    accountNameToAccountOnlyRegexCI, made the default account type
+    queries case insensitive again. (#1341)
+
+-------------------------------------------------------------------
 Thu Sep  3 02:00:42 UTC 2020 - psimons@suse.com
 
 - Update hledger-lib to version 1.19.
