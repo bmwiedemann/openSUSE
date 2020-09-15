@@ -135,4 +135,12 @@
     <comment>Qt 5.15.0</comment>
     <requestid>809393</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0c65ef976e9aaf731d26e82becff449e</srcmd5>
+    <version>5.15.1</version>
+    <time>1600179812</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833652</requestid>
+  </revision>
 </revisionlist>
