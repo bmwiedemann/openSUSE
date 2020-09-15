@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:29:26 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.6:
+  * drop support for Python 2.7
+  * support Github Actions
+  * update dev-dependencies
+
+-------------------------------------------------------------------
 Wed May 27 09:36:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

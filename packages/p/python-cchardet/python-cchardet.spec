@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-cchardet
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        cChardet is high speed universal character encoding detector
 License:        MPL-1.1 OR LGPL-2.1-or-later OR GPL-2.0-or-later
