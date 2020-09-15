@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pynamodb
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        Python Interface to DynamoDB
 License:        MIT
