@@ -38,4 +38,12 @@
     <comment>- Update to new upstream release 1.6.9</comment>
     <requestid>643144</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6bb4268c2f501018d4090cbc96fe249a</srcmd5>
+    <version>1.6.9</version>
+    <time>1600180035</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernize specfile.</comment>
+    <requestid>833994</requestid>
+  </revision>
 </revisionlist>

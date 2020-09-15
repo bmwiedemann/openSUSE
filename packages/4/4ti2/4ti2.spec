@@ -1,7 +1,7 @@
 #
 # spec file for package 4ti2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@ Release:        0
 Summary:        Package for algebraic, geometric and combinatorial problems on linear spaces
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://4ti2.github.io/
+URL:            https://4ti2.github.io/
 
 Source:         https://github.com/4ti2/4ti2/releases/download/Release_1_6_9/4ti2-1.6.9.tar.gz
 Patch1:         4ti2-docdir.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  gcc-c++ >= 4.3
@@ -68,13 +67,12 @@ This subpackage contains the include files and library links for
 developing against 4ti2's libraries.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
-autoreconf -fi;
+autoreconf -fi
 %configure --enable-shared --disable-static \
-	--includedir="%_includedir/pkg/%name" --docdir="%_docdir/%name"
+	--includedir="%_includedir/%name" --docdir="%_docdir/%name"
 make %{?_smp_mflags}
 
 %install
@@ -87,7 +85,6 @@ pushd "$b/%_libexecdir/%name"
 for i in *; do
 	ln -s "%_libexecdir/%name/$i" "$b/%_bindir/4ti2_$i"
 done
-rm -f doc/Makefile*
 
 %post   -n lib4ti2-0 -p /sbin/ldconfig
 %postun -n lib4ti2-0 -p /sbin/ldconfig
@@ -95,13 +92,12 @@ rm -f doc/Makefile*
 %postun -n libzsolve0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc COPYING doc/*
+%license COPYING
+%doc doc/[34a-z]*
 %_bindir/4ti2*
 %_libexecdir/%name/
 
 %files -n lib4ti2-0
-%defattr(-,root,root)
 %_libdir/lib4ti2gmp.so.0*
 %_libdir/lib4ti2int32.so.0*
 %_libdir/lib4ti2int64.so.0*
@@ -109,12 +105,10 @@ rm -f doc/Makefile*
 %_libdir/lib4ti2util.so.0*
 
 %files -n libzsolve0
-%defattr(-,root,root)
 %_libdir/libzsolve.so.0*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/pkg/
+%_includedir/%name/
 %_libdir/lib*.so
 
 %changelog
