@@ -54,4 +54,15 @@ Required for python-AnyQt</comment>
     <comment></comment>
     <requestid>831269</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>70863e77489f900a96e537354a8bfe5a</srcmd5>
+    <version>5.15.1</version>
+    <time>1600180132</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 5.15.1
+  * A bug-fix release.
+- drop update-timeline-patch again. Nobody uses nonexistent tags.
+</comment>
+    <requestid>834345</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:57:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 5.15.1
+  * A bug-fix release.
+- drop update-timeline-patch again. Nobody uses nonexistent tags.
+
+-------------------------------------------------------------------
 Tue Sep  1 17:09:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix single line patch info for update-timeline.patch
