@@ -19,7 +19,7 @@
 %define sover   2
 %define lname   %{name}%{sover}
 Name:           libhtp
-Version:        0.5.33
+Version:        0.5.34
 Release:        0
 Summary:        HTTP normalizer and parser
 License:        BSD-3-Clause

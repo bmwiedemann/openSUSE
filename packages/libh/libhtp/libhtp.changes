@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 13 13:03:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.34
+  * support data GAP handling
+  * support 100-continue Expect
+  * lzma: give more control over settings
+
+-------------------------------------------------------------------
 Wed Apr 29 18:33:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.33
