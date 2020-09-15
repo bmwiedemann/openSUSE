@@ -23,14 +23,13 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.6.0
+Version:        3.6.2
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://github.com/hpcng/singularity
 Source0:        https://github.com/hpcng/singularity/releases/download/v%{version}/singularity-%{version}.tar.gz
 Source1:        README.SUSE
 Source5:        %{name}-rpmlintrc
-Patch0:         build-position-independent-binaries.patch
 Patch1:         useful_error_message.patch
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
@@ -58,7 +57,6 @@ containers that can be used across host environments.
 
 %prep
 %setup -q -n gopath/%{singgopath} -c
-%patch0 -p 4
 %patch1 -p 4
 cp %{S:1} .
 
