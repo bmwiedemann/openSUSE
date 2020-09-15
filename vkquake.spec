@@ -28,6 +28,8 @@ Source:         https://github.com/Novum/vkQuake/archive/%{version}/vkQuake-%{ve
 Source99:       %{name}.changes
 Source100:      appdata.xml
 Source101:      %{name}.desktop
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Remove-use-of-VK_DYNAMIC_STATE_RANGE_SIZE.patch
 BuildRequires:  pkgconfig
 BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(flac)
@@ -42,7 +44,7 @@ vkQuake is a Quake 1 port using Vulkan instead of OpenGL for rendering. It is ba
 Game data must be placed in ~/.vkquake/id1 .
 
 %prep
-%setup -q -n vkQuake-%{version}
+%autosetup -p1 -n vkQuake-%{version}
 
 %if 0%{?sle_version} < 150200
 sed -i 's#vulkan_core.h#vulkan.h#' Quake/quakedef.h

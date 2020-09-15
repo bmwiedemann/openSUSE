@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 13 17:03:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix the factory build:
+  * 0001-Remove-use-of-VK_DYNAMIC_STATE_RANGE_SIZE.patch
+
+-------------------------------------------------------------------
 Fri Mar 27 23:05:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.04.1. Changes since 1.02.0:
