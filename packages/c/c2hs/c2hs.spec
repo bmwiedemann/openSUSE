@@ -53,6 +53,7 @@ correct Haskell types.
 
 %prep
 %autosetup
+cabal-tweak-dep-ver language-c '< 0.9' '< 1'
 
 %build
 %ghc_bin_build
