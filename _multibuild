@@ -5,6 +5,7 @@
   <package>openmpi2</package>
   <package>gnu-openmpi2-hpc</package>
   <package>gnu-openmpi3-hpc</package>
+  <package>gnu-openmpi4-hpc</package>
   <package>gnu-mvapich2-hpc</package>
   <package>gnu-mpich-hpc</package>
 </multibuild>

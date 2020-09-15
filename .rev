@@ -202,4 +202,18 @@
 - Use ninja as cmake builder for potential speedup</comment>
     <requestid>802594</requestid>
   </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>4fdb283381974673a5179aaf8ad40e2e</srcmd5>
+    <version>12.14.1</version>
+    <time>1600179357</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors.
+- Revert: Use memoryperjob constraint instead of %limit_build macro.
+  This would attempt to find a work whose memory matches the number
+  of jobs available * memoryperjob. Such workers may not exist.
+- Use 'module load netcdf' - this is now the load command for
+  all variants of netcdf. (forwarded request 833999 from eeich)</comment>
+    <requestid>834000</requestid>
+  </revision>
 </revisionlist>

@@ -39,6 +39,9 @@ ExcludeArch:    i586 s390 s390x ppc armv7l
 %if !%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
+%define DisOMPI4 ExclusiveArch:  do_not_build
+%endif
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
@@ -78,6 +81,14 @@ ExclusiveArch:  do_not_build
 %undefine c_f_ver
 %global mpi_family openmpi
 %define mpi_ver 3
+%{bcond_with hpc}
+%endif
+
+%if "%{flavor}" == "openmpi4"
+%{?DisOMPI4}
+%undefine c_f_ver
+%global mpi_family openmpi
+%define mpi_ver 4
 %{bcond_with hpc}
 %endif
 
@@ -122,6 +133,15 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
+%undefine c_f_ver
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 4
+%{bcond_without hpc}
+%endif
+
 %if "%{flavor}" == "gnu7-mvapich2-hpc"
 %define c_f_ver 7
 %global mpi_family mvapich2
@@ -160,6 +180,15 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %global compiler_family gnu
 %define mpi_ver 3
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi4-hpc"
+%{?DisOMPI4}
+%define c_f_ver 7
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 4
 %{bcond_without hpc}
 %endif
 
@@ -204,6 +233,15 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%if "%{flavor}" == "gnu8-openmpi4-hpc"
+%{?DisOMPI4}
+%define c_f_ver 8
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 4
+%{bcond_without hpc}
+%endif
+
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
 %define c_f_ver 9
 %global mpi_family mvapich2
@@ -242,6 +280,65 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %global compiler_family gnu
 %define mpi_ver 3
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi4-hpc"
+%{?DisOMPI4}
+%define c_f_ver 9
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 4
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%define c_f_ver 10
+%global mpi_family mvapich2
+%global compiler_family gnu
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%define c_f_ver 10
+%global mpi_family mpich
+%global compiler_family gnu
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%define c_f_ver 10
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 1
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%{?DisOMPI2}
+%define c_f_ver 10
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 2
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%define c_f_ver 10
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 3
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%define c_f_ver 10
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 4
 %{bcond_without hpc}
 %endif
 
@@ -306,6 +403,10 @@ Source0:        https://github.com/trilinos/Trilinos/archive/trilinos-release-%{
 # PATCH-FIX-UPSTREAM trilinos-11.4.3-no-return-in-non-void.patch
 Patch0:         trilinos-11.14.3-no-return-in-non-void.patch
 Patch1:         Fix-Makefiles-for-gmake-4.3.patch
+# PATCH-FIX-UPSTREAM 
+Patch2:         reproducible.patch
+# PATCH-FIX-UPSTREAM 
+Patch3:         reproducible-docs.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
@@ -474,12 +575,16 @@ needed for development.
 %setup -q -n  Trilinos-trilinos-release-%{ver_exp}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 # https://en.opensuse.org/openSUSE:Build_system_recipes#cmake
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
 %define __builder ninja
 %endif
+# Do *not* replace by memoryperjob constraint!!! The latter
+# attempts to find a work whose memory matches the number of
+# jobs available * memoryperjob. Such workers may not exist!
 %limit_build -m 4000
 # Fix this once boost is available as a HPC version
 # move this to the non-hpc section
@@ -491,7 +596,7 @@ BOOST_LIB=%{_libdir}
 %hpc_setup_mpi
 # Fix this once boost is available as a HPC version
 #module load boost
-module load %{?with_mpi:p}netcdf
+module load netcdf
 module load %{?with_mpi:p}hdf5
 module load openblas
 %endif
@@ -725,6 +830,7 @@ This package contains the Trilinos HTML documentation.
 
 %prep
 %setup -q -n  Trilinos-trilinos-release-%{ver_exp}
+%patch3 -p1
 
 %build
 # Build the doc
