@@ -1,0 +1,2655 @@
+From c575ef7338718ee0af9a691b1a6f214c043047eb Mon Sep 17 00:00:00 2001
+From: "Eric S. Raymond" <esr@thyrsus.com>
+Date: Sat, 13 Jun 2020 21:01:47 -0400
+Subject: [PATCH] Pull all globals into a context struct.
+
+Addresses GitLab iisue #1 (Empire fails to build from source with GCC
+10), treating the actual problem - the C in the ganme was somewhat
+archaic in style. With this change there is exactly one global context
+that only needs to be declated once and externed once, rather than a
+whole bunch of globals declared in one place and externed in another.
+
+The new game_state_t is an untidy pile of disparate etuff. Maybe
+it oughtto be split int o a couple of different contexts managed
+by different code, but this will do for now and could stand to be
+tested before we do anything more elaborate.
+---
+ attack.c   |   6 +-
+ compmove.c | 170 +++++++++++++++++++-------------------
+ display.c  |  60 +++++++-------
+ edit.c     |  52 ++++++------
+ empire.c   |  62 +++++++-------
+ empire.h   |  52 +++++++++++-
+ extern.h   |  50 +-----------
+ game.c     | 234 ++++++++++++++++++++++++++---------------------------
+ main.c     |  16 ++--
+ map.c      |  54 ++++++-------
+ object.c   |  73 ++++++++---------
+ term.c     |   2 +-
+ usermove.c | 128 ++++++++++++++---------------
+ util.c     |  36 ++++-----
+ 14 files changed, 501 insertions(+), 494 deletions(-)
+
+diff --git a/attack.c b/attack.c
+index d17895e..c09f57c 100644
+--- a/attack.c
++++ b/attack.c
+@@ -115,7 +115,7 @@ attack_obj(piece_info_t *att_obj, loc_t loc)
+ void
+ attack(piece_info_t *att_obj, loc_t loc)
+ {
+-    if (map[loc].contents == MAP_CITY) /* attacking a city? */
++    if (game.real_map[loc].contents == MAP_CITY) /* attacking a city? */
+ 	attack_city (att_obj, loc);
+     else attack_obj (att_obj, loc); /* attacking a piece */
+ }
+@@ -148,7 +148,7 @@ describe(piece_info_t *win_obj, piece_info_t *lose_obj, loc_t loc)
+     if (win_obj->owner != lose_obj->owner) {
+ 	if (win_obj->owner == USER) {
+ 	    int diff;
+-	    user_score += piece_attr[lose_obj->type].build_time; 
++	    game.user_score += piece_attr[lose_obj->type].build_time; 
+ 	    ksend ("Enemy %s at %d destroyed.\n",piece_attr[lose_obj->type].name,loc_disp(loc)); //kermyt
+ 	    topmsg (1, "Enemy %s at %d destroyed.",piece_attr[lose_obj->type].name,loc_disp(loc));
+ 	    ksend ("Your %s has %d hits left\n",piece_attr[win_obj->type].name,win_obj->hits); //kermyt
+@@ -167,7 +167,7 @@ describe(piece_info_t *win_obj, piece_info_t *lose_obj, loc_t loc)
+ 		}
+ 	}
+ 	else {
+-	    comp_score += piece_attr[lose_obj->type].build_time;
++	    game.comp_score += piece_attr[lose_obj->type].build_time;
+ 	    ksend ("Your %s at %d destroyed.\n",piece_attr[lose_obj->type].name,loc_disp(loc)); //kermyt
+ 	    topmsg (3, "Your %s at %d destroyed.",piece_attr[lose_obj->type].name,loc_disp(loc));
+ 	}
+diff --git a/compmove.c b/compmove.c
+index b732baf..0b2f6b2 100644
+--- a/compmove.c
++++ b/compmove.c
+@@ -42,19 +42,19 @@ comp_move(int nmoves)
+     /* Update our view of the world. */
+ 	
+     for (i = 0; i < NUM_OBJECTS; i++)
+-	for (obj = comp_obj[i]; obj != NULL; obj = obj->piece_link.next)
+-	    scan (comp_map, obj->loc); /* refresh comp's view of world */
++	for (obj = game.comp_obj[i]; obj != NULL; obj = obj->piece_link.next)
++	    scan (game.comp_map, obj->loc); /* refresh comp's view of world */
+ 
+     for (i = 1; i <= nmoves; i++) { /* for each move we get... */
+ 	comment ("Thinking...");
+ 
+-	(void) memcpy (emap, comp_map, MAP_SIZE * sizeof (view_map_t));
++	(void) memcpy (emap, game.comp_map, MAP_SIZE * sizeof (view_map_t));
+ 	vmap_prune_explore_locs (emap);
+ 	
+ 	do_cities (); /* handle city production */
+ 	do_pieces (); /* move pieces */
+ 		
+-	if (save_movie) save_movie_screen ();
++	if (game.save_movie) save_movie_screen ();
+ 	check_endgame (); /* see if game is over */
+ 
+ 	topini ();
+@@ -84,22 +84,22 @@ do_cities(void)
+     bool is_lake;
+ 
+     for (i = 0; i < NUM_CITY; i++) /* new production */
+-	if (city[i].owner == COMP) {
+-	    scan (comp_map, city[i].loc);
++	if (game.city[i].owner == COMP) {
++	    scan (game.comp_map, game.city[i].loc);
+ 
+-	    if (city[i].prod == NOPIECE)
+-		comp_prod (&city[i], lake (city[i].loc));
++	    if (game.city[i].prod == NOPIECE)
++		comp_prod (&game.city[i], lake (game.city[i].loc));
+ 	}
+     for (i = 0; i < NUM_CITY; i++) /* produce and change */
+-	if (city[i].owner == COMP) {
+-	    is_lake = lake (city[i].loc);
+-	    if (city[i].work++ >= (long)piece_attr[(int)city[i].prod].build_time) {
+-		produce (&city[i]);
+-		comp_prod (&city[i], is_lake);
++	if (game.city[i].owner == COMP) {
++	    is_lake = lake (game.city[i].loc);
++	    if (game.city[i].work++ >= (long)piece_attr[(int)game.city[i].prod].build_time) {
++		produce (&game.city[i]);
++		comp_prod (&game.city[i], is_lake);
+ 	    }
+ 	    /* don't produce ships in lakes */
+-	    else if (city[i].prod > FIGHTER && city[i].prod != SATELLITE && is_lake)
+-		comp_prod (&city[i], is_lake);
++	    else if (game.city[i].prod > FIGHTER && game.city[i].prod != SATELLITE && is_lake)
++		comp_prod (&game.city[i], is_lake);
+ 	}
+ }
+ 			
+@@ -146,15 +146,15 @@ comp_prod(city_info_t *cityp, bool is_lake)
+     /* Make sure we have army producers for current continent. */
+ 	
+     /* map out city's continent */
+-    vmap_cont (cont_map, comp_map, cityp->loc, MAP_SEA);
++    vmap_cont (cont_map, game.comp_map, cityp->loc, MAP_SEA);
+ 
+     /* count items of interest on the continent */
+-    counts = vmap_cont_scan (cont_map, comp_map);
++    counts = vmap_cont_scan (cont_map, game.comp_map);
+     comp_ac = 0; /* no army producing computer cities */
+ 	
+     for (i = 0; i < MAP_SIZE; i++)
+ 	if (cont_map[i]) { /* for each cell of continent */
+-	    if (comp_map[i].contents == 'X') {
++	    if (game.comp_map[i].contents == 'X') {
+ 		p = find_city (i);
+ 		ASSERT (p != NULL && p->owner == COMP);
+ 		if (p->prod == ARMY) comp_ac += 1;
+@@ -190,8 +190,8 @@ comp_prod(city_info_t *cityp, bool is_lake)
+     total_cities = 0;
+ 		
+     for (i = 0; i < NUM_CITY; i++)
+-	if (city[i].owner == COMP && city[i].prod != NOPIECE) {
+-	    city_count[(int)city[i].prod] += 1;
++	if (game.city[i].owner == COMP && game.city[i].prod != NOPIECE) {
++	    city_count[(int)game.city[i].prod] += 1;
+ 	    total_cities += 1;
+ 	}
+     if (total_cities <= 10)
+@@ -215,9 +215,9 @@ comp_prod(city_info_t *cityp, bool is_lake)
+ 	/* produce armies here instead */
+ 	if (city_count[ARMY] == 1) {
+ 	    for (i = 0; i < NUM_CITY; i++)
+-		if (city[i].owner == COMP && city[i].prod == ARMY) break;
++		if (game.city[i].owner == COMP && game.city[i].prod == ARMY) break;
+ 		
+-	    if (!lake (city[i].loc)) {
++	    if (!lake (game.city[i].loc)) {
+ 		comp_set_prod (cityp, ARMY);
+ 		return;
+ 	    }
+@@ -350,7 +350,7 @@ lake(loc_t loc)
+     int cont_map[MAP_SIZE];
+     scan_counts_t counts;
+ 
+-    vmap_cont (cont_map, emap, loc, MAP_LAND); /* map lake */
++    vmap_cont (cont_map, emap, loc, MAP_LAND); /* game.real_map lake */
+     counts = vmap_cont_scan (cont_map, emap);
+ 
+     return !(counts.unowned_cities || counts.user_cities || counts.unexplored);
+@@ -372,7 +372,7 @@ do_pieces(void)
+     piece_info_t *obj, *next_obj;
+ 
+     for (i = 0; i < NUM_OBJECTS; i++) { /* loop through obj lists */
+-	for (obj = comp_obj[move_order[i]]; obj != NULL;
++	for (obj = game.comp_obj[move_order[i]]; obj != NULL;
+ 	     obj = next_obj) { /* loop through objs in list */
+ 	    next_obj = obj->piece_link.next;
+ 	    cpiece_move (obj); /* yup; move the object */
+@@ -415,7 +415,7 @@ cpiece_move(piece_info_t *obj)
+ 	if (saved_loc != obj->loc) changed_loc = true;
+ 		
+ 	if (obj->type == FIGHTER && obj->hits > 0) {
+-	    if (comp_map[obj->loc].contents == 'X')
++	    if (game.comp_map[obj->loc].contents == 'X')
+ 		obj->moved = piece_attr[FIGHTER].speed;
+ 	    else if (obj->range <= 0) {
+ 		pdebug ("Fighter at %d crashed and burned\n", loc_disp(obj->loc));
+@@ -429,7 +429,7 @@ cpiece_move(piece_info_t *obj)
+ 	&& !changed_loc /* object never changed location? */
+ 	&& obj->type != ARMY && obj->type != FIGHTER /* it is a boat? */
+ 	&& obj->hits != max_hits /* it is damaged? */
+-	&& comp_map[obj->loc].contents == 'X') /* it is in port? */
++	&& game.comp_map[obj->loc].contents == 'X') /* it is in port? */
+ 	obj->hits++; /* fix some damage */
+ }
+ 
+@@ -495,7 +495,7 @@ army_move(piece_info_t *obj)
+     int cross_cost = 0; /* cost to enter water */
+ 	
+     obj->func = 0; /* army doesn't want a tt */
+-    if (vmap_at_sea (comp_map, obj->loc)) { /* army can't move? */
++    if (vmap_at_sea (game.comp_map, obj->loc)) { /* army can't move? */
+ 	(void) load_army (obj);
+ 	obj->moved = piece_attr[ARMY].speed;
+ 	if (!obj->ship) obj->func = 1; /* load army on ship */
+@@ -507,10 +507,10 @@ army_move(piece_info_t *obj)
+ 		
+     if (new_loc != obj->loc) { /* something to attack? */
+ 	attack (obj, new_loc); /* attack it */
+-	if (map[new_loc].contents == MAP_SEA /* moved to ocean? */
++	if (game.real_map[new_loc].contents == MAP_SEA /* moved to ocean? */
+ 	    && obj->hits > 0) { /* object still alive? */
+ 	    kill_obj (obj, new_loc);
+-	    scan (user_map, new_loc); /* rescan for user */
++	    scan (game.user_map, new_loc); /* rescan for user */
+ 	}
+ 	return;
+     }
+@@ -519,16 +519,16 @@ army_move(piece_info_t *obj)
+ 	    if (!load_army (obj)) ABORT; /* load army on best ship */
+ 	    return; /* armies stay on a loading ship */
+ 	}
+-	make_unload_map (amap, comp_map);
++	make_unload_map (amap, game.comp_map);
+ 	new_loc = vmap_find_wlobj (path_map, amap, obj->loc, &tt_unload);
+ 	move_objective (obj, path_map, new_loc, " ");
+ 	return;
+     }
+ 
+-    new_loc = vmap_find_lobj (path_map, comp_map, obj->loc, &army_fight);
++    new_loc = vmap_find_lobj (path_map, game.comp_map, obj->loc, &army_fight);
+ 	
+     if (new_loc != obj->loc) { /* something interesting on land? */
+-	switch (comp_map[new_loc].contents) {
++	switch (game.comp_map[new_loc].contents) {
+ 	case 'A':
+ 	case 'O':
+ 	    cross_cost = 60; /* high cost if enemy present */
+@@ -549,7 +549,7 @@ army_move(piece_info_t *obj)
+     if (new_loc == obj->loc || cross_cost > 0) {
+ 	loc_t new_loc2;
+ 	/* see if there is something interesting to load */
+-	make_army_load_map (obj, amap, comp_map);
++	make_army_load_map (obj, amap, game.comp_map);
+ 	new_loc2 = vmap_find_lwobj (path_map2, amap, obj->loc, &army_load, cross_cost);
+ 		
+ 	if (new_loc2 != obj->loc) { /* found something? */
+@@ -571,7 +571,7 @@ unmark_explore_locs(view_map_t *xmap)
+     count_t i;
+ 
+     for (i = 0; i < MAP_SIZE; i++)
+-	if (map[i].on_board && xmap[i].contents == ' ')
++	if (game.real_map[i].on_board && xmap[i].contents == ' ')
+ 	    xmap[i].contents = emap[i].contents;
+ }
+ 
+@@ -589,19 +589,19 @@ make_army_load_map(piece_info_t *obj, view_map_t *xmap, view_map_t *vmap)
+     (void) memcpy (xmap, vmap, sizeof (view_map_t) * MAP_SIZE);
+ 
+     /* mark loading transports or cities building transports */
+-    for (p = comp_obj[TRANSPORT]; p; p = p->piece_link.next)
++    for (p = game.comp_obj[TRANSPORT]; p; p = p->piece_link.next)
+ 	if (p->func == 0) /* loading tt? */
+ 	    xmap[p->loc].contents = '$';
+ 	
+     for (i = 0; i < NUM_CITY; i++)
+-	if (city[i].owner == COMP && city[i].prod == TRANSPORT) {
+-	    if (nearby_load (obj, city[i].loc))
+-		xmap[city[i].loc].contents = 'x'; /* army is nearby so it can load */
+-	    else if (nearby_count (city[i].loc) < piece_attr[TRANSPORT].capacity)
+-		xmap[city[i].loc].contents = 'x'; /* city needs armies */
++	if (game.city[i].owner == COMP && game.city[i].prod == TRANSPORT) {
++	    if (nearby_load (obj, game.city[i].loc))
++		xmap[game.city[i].loc].contents = 'x'; /* army is nearby so it can load */
++	    else if (nearby_count (game.city[i].loc) < piece_attr[TRANSPORT].capacity)
++		xmap[game.city[i].loc].contents = 'x'; /* city needs armies */
+ 	}
+ 	
+-    if (print_vmap == 'A') print_xzoom (xmap);
++    if (game.print_vmap == 'A') print_xzoom (xmap);
+ }
+ 
+ /* Return true if an army is considered near a location for loading. */
+@@ -621,7 +621,7 @@ nearby_count(loc_t loc)
+     int count;
+ 
+     count = 0;
+-    for (obj = comp_obj[ARMY]; obj; obj = obj->piece_link.next) {
++    for (obj = game.comp_obj[ARMY]; obj; obj = obj->piece_link.next) {
+ 	if (nearby_load (obj, loc)) count += 1;
+     }
+     return count;
+@@ -637,11 +637,11 @@ make_tt_load_map(view_map_t *xmap, view_map_t *vmap)
+     (void) memcpy (xmap, vmap, sizeof (view_map_t) * MAP_SIZE);
+ 
+     /* mark loading armies */
+-    for (p = comp_obj[ARMY]; p; p = p->piece_link.next)
++    for (p = game.comp_obj[ARMY]; p; p = p->piece_link.next)
+ 	if (p->func == 1) /* loading army? */
+ 	    xmap[p->loc].contents = '$';
+ 	
+-    if (print_vmap == 'L')
++    if (game.print_vmap == 'L')
+ 	print_xzoom (xmap);
+ }
+ 	
+@@ -688,14 +688,14 @@ make_unload_map(view_map_t *xmap, view_map_t *vmap)
+ 	owncont_map[i] = 0; /* nothing marked */
+ 
+     for (i = 0; i < NUM_CITY; i++)
+-	if (city[i].owner == COMP)
+-	    vmap_mark_up_cont (owncont_map, xmap, city[i].loc, MAP_SEA);
++	if (game.city[i].owner == COMP)
++	    vmap_mark_up_cont (owncont_map, xmap, game.city[i].loc, MAP_SEA);
+ 
+     for (i = 0; i < MAP_SIZE; i++)
+ 	if (strchr ("O*", vmap[i].contents)) {
+ 	    int total_cities;
+ 		
+-	    vmap_cont (tcont_map, xmap, i, MAP_SEA); /* map continent */
++	    vmap_cont (tcont_map, xmap, i, MAP_SEA); /* game.real_map continent */
+ 	    counts = vmap_cont_scan (tcont_map, xmap);
+ 		
+ 	    total_cities = counts.unowned_cities
+@@ -716,7 +716,7 @@ make_unload_map(view_map_t *xmap, view_map_t *vmap)
+ 			
+ 	    else xmap[i].contents = '0';
+ 	}
+-    if (print_vmap == 'U') print_xzoom (xmap);
++    if (game.print_vmap == 'U') print_xzoom (xmap);
+ }
+ 
+ /*
+@@ -745,7 +745,7 @@ find_best_tt(piece_info_t *best, loc_t loc)
+ {
+     piece_info_t *p;
+ 
+-    for (p = map[loc].objp; p != NULL; p = p->loc_link.next)
++    for (p = game.real_map[loc].objp; p != NULL; p = p->loc_link.next)
+ 	if (p->type == TRANSPORT && obj_capacity (p) > p->count) {
+ 	    if (!best) best = p;
+ 	    else if (p->count >= best->count) best = p;
+@@ -767,7 +767,7 @@ load_army(piece_info_t *obj)
+ 
+     for (i = 0; i < 8; i++) { /* try surrounding squares */
+ 	loc_t x_loc = obj->loc + dir_offset[i];
+-	if (map[x_loc].on_board)
++	if (game.real_map[x_loc].on_board)
+ 	    p = find_best_tt (p, x_loc);
+ 
+     }
+@@ -797,7 +797,7 @@ move_away(view_map_t *vmap, loc_t loc, char *terrain)
+ 
+     for (i = 0; i < 8; i++) {
+ 	loc_t new_loc = loc + dir_offset[i];
+-	if (map[new_loc].on_board
++	if (game.real_map[new_loc].on_board
+ 	    && strchr (terrain, vmap[new_loc].contents))
+ 	    return (new_loc);
+     }
+@@ -824,9 +824,9 @@ find_attack(loc_t loc, char *obj_list, char *terrain)
+     for (i = 0; i < 8; i++) {
+ 	loc_t new_loc = loc + dir_offset[i];
+ 
+-	if (map[new_loc].on_board /* can we move here? */
+-	    && strchr (terrain, map[new_loc].contents)) {
+-	    p = strchr (obj_list, comp_map[new_loc].contents);
++	if (game.real_map[new_loc].on_board /* can we move here? */
++	    && strchr (terrain, game.real_map[new_loc].contents)) {
++	    p = strchr (obj_list, game.comp_map[new_loc].contents);
+ 	    if (p != NULL && p - obj_list < best_val) {
+ 		best_val = p - obj_list;
+ 		best_loc = new_loc;
+@@ -867,20 +867,20 @@ transport_move(piece_info_t *obj)
+ 	obj->func = 1; /* unloading */
+ 
+     if (obj->func == 0) { /* loading? */
+-	make_tt_load_map (amap, comp_map);
++	make_tt_load_map (amap, game.comp_map);
+ 	new_loc = vmap_find_wlobj (path_map, amap, obj->loc, &tt_load);
+ 		
+ 	if (new_loc == obj->loc) { /* nothing to load? */
+-	    (void) memcpy (amap, comp_map, MAP_SIZE * sizeof (view_map_t));
++	    (void) memcpy (amap, game.comp_map, MAP_SIZE * sizeof (view_map_t));
+ 	    unmark_explore_locs (amap);
+-	    if (print_vmap == 'S') print_xzoom (amap);
++	    if (game.print_vmap == 'S') print_xzoom (amap);
+ 	    new_loc = vmap_find_wobj (path_map, amap, obj->loc,&tt_explore);
+ 	}
+ 		
+ 	move_objective (obj, path_map, new_loc, "a ");
+     }
+     else {
+-	make_unload_map (amap, comp_map);
++	make_unload_map (amap, game.comp_map);
+ 	new_loc = vmap_find_wlobj (path_map, amap, obj->loc, &tt_unload);
+ 	move_objective (obj, path_map, new_loc, " ");
+     }
+@@ -911,13 +911,13 @@ fighter_move(piece_info_t *obj)
+     /* return to base if low on fuel */
+     if (obj->range <= find_nearest_city (obj->loc, COMP, &new_loc) + 2) {
+ 	if (new_loc != obj->loc)
+-	    new_loc = vmap_find_dest (path_map, comp_map, obj->loc,
++	    new_loc = vmap_find_dest (path_map, game.comp_map, obj->loc,
+ 				      new_loc, COMP, T_AIR);
+     }
+     else new_loc = obj->loc;
+ 	
+     if (new_loc == obj->loc) { /* no nearby city? */
+-	new_loc = vmap_find_aobj (path_map, comp_map, obj->loc,
++	new_loc = vmap_find_aobj (path_map, game.comp_map, obj->loc,
+ 				  &fighter_fight);
+     }
+     move_objective (obj, path_map, new_loc, " ");
+@@ -937,11 +937,11 @@ ship_move(piece_info_t *obj)
+     char *adj_list;
+ 
+     if (obj->hits < piece_attr[obj->type].max_hits) { /* head to port */
+-	if (comp_map[obj->loc].contents == 'X') { /* stay in port */
++	if (game.comp_map[obj->loc].contents == 'X') { /* stay in port */
+ 	    obj->moved = piece_attr[obj->type].speed;
+ 	    return;
+ 	}
+-	new_loc = vmap_find_wobj (path_map, comp_map, obj->loc, &ship_repair);
++	new_loc = vmap_find_wobj (path_map, game.comp_map, obj->loc, &ship_repair);
+ 	adj_list = ".";
+ 
+     }
+@@ -952,9 +952,9 @@ ship_move(piece_info_t *obj)
+ 	    return;
+ 	}
+ 	/* look for an objective */
+-	(void) memcpy (amap, comp_map, MAP_SIZE * sizeof (view_map_t));
++	(void) memcpy (amap, game.comp_map, MAP_SIZE * sizeof (view_map_t));
+ 	unmark_explore_locs (amap);
+-	if (print_vmap == 'S') print_xzoom (amap);
++	if (game.print_vmap == 'S') print_xzoom (amap);
+ 		
+ 	new_loc = vmap_find_wobj (path_map, amap, obj->loc,&ship_fight);
+ 	adj_list = ship_fight.objectives;
+@@ -973,7 +973,7 @@ move_objective(piece_info_t *obj, path_map_t pathmap[],
+ {
+     char *terrain;
+     int d;
+-    bool reuse; /* true iff we should reuse old map */
++    bool reuse; /* true iff we should reuse old game.real_map */
+     loc_t old_loc;
+     loc_t old_dest;
+ 	
+@@ -989,11 +989,11 @@ move_objective(piece_info_t *obj, path_map_t pathmap[],
+     d = dist (new_loc, obj->loc);
+     reuse = true; /* try to reuse unless we learn otherwise */
+ 	
+-    if (comp_map[new_loc].contents == ' ' && d == 2) { /* are we exploring? */
++    if (game.comp_map[new_loc].contents == ' ' && d == 2) { /* are we exploring? */
+ 	vmap_mark_adjacent (pathmap, obj->loc);
+ 	reuse = false;
+     }
+-    else vmap_mark_path (pathmap, comp_map, new_loc); /* find routes to destination */
++    else vmap_mark_path (pathmap, game.comp_map, new_loc); /* find routes to destination */
+ 	
+     /* path terrain and move terrain may differ */
+     switch (obj->type) {
+@@ -1002,21 +1002,21 @@ move_objective(piece_info_t *obj, path_map_t pathmap[],
+     default: terrain = ".X"; break;
+     }
+ 	
+-    new_loc = vmap_find_dir (pathmap, comp_map, obj->loc,
++    new_loc = vmap_find_dir (pathmap, game.comp_map, obj->loc,
+ 			     terrain, adj_list);
+ 	
+     if (new_loc == obj->loc /* path is blocked? */
+ 	&& (obj->type != ARMY || !obj->ship)) { /* don't unblock armies on a ship */
+ 	vmap_mark_near_path (pathmap, obj->loc);
+ 	reuse = false;
+-	new_loc = vmap_find_dir (pathmap, comp_map, obj->loc,
++	new_loc = vmap_find_dir (pathmap, game.comp_map, obj->loc,
+ 				 terrain, adj_list);
+     }
+ 	
+     /* encourage army to leave city */
+-    if (new_loc == obj->loc && map[obj->loc].cityp != NULL
++    if (new_loc == obj->loc && game.real_map[obj->loc].cityp != NULL
+ 	&& obj->type == ARMY) {
+-	new_loc = move_away (comp_map, obj->loc, "+");
++	new_loc = move_away (game.comp_map, obj->loc, "+");
+ 	reuse = false;
+     }
+     if (new_loc == obj->loc) {
+@@ -1033,7 +1033,7 @@ move_objective(piece_info_t *obj, path_map_t pathmap[],
+ 	/* check for immediate attack */
+ 	switch (obj->type) {
+ 	case FIGHTER:
+-	    if (comp_map[old_dest].contents != 'X' /* watch fuel */
++	    if (game.comp_map[old_dest].contents != 'X' /* watch fuel */
+ 		&& obj->range <= piece_attr[FIGHTER].range / 2)
+ 		return;
+ 	    attack_list = fighter_attack;
+@@ -1083,8 +1083,8 @@ check_endgame(void)
+     piece_info_t *p;
+     int i;
+ 	
+-    date += 1; /* one more turn has passed */
+-    if (win != 0) return; /* we already know game is over */
++    game.date += 1; /* one more turn has passed */
++    if (game.win != 0) return; /* we already know game is over */
+ 
+     nuser_city = 0; /* nothing counted yet */
+     ncomp_city = 0;
+@@ -1092,14 +1092,14 @@ check_endgame(void)
+     ncomp_army = 0;
+ 	
+     for (i = 0; i < NUM_CITY; i++) {
+-	if (city[i].owner == USER) nuser_city++;
+-	else if (city[i].owner == COMP) ncomp_city++;
++	if (game.city[i].owner == USER) nuser_city++;
++	else if (game.city[i].owner == COMP) ncomp_city++;
+     }
+ 	
+-    for (p = user_obj[ARMY]; p != NULL; p = p->piece_link.next)
++    for (p = game.user_obj[ARMY]; p != NULL; p = p->piece_link.next)
+ 	nuser_army++;
+ 	
+-    for (p = comp_obj[ARMY]; p != NULL; p = p->piece_link.next)
++    for (p = game.comp_obj[ARMY]; p != NULL; p = p->piece_link.next)
+ 	ncomp_army++;
+ 		
+     if (ncomp_city < nuser_city/3 && ncomp_army < nuser_army/3) {
+@@ -1112,9 +1112,9 @@ check_endgame(void)
+ 	announce ("\nThe enemy inadvertantly revealed its code used for");
+ 	announce ("\nreceiving battle information. You can display what");
+ 	announce ("\nthey've learned with the ''E'' command.");
+-	resigned = true;
+-	win = ratio_win;
+-	automove = false;
++	game.resigned = true;
++	game.win = ratio_win;
++	game.automove = false;
+     }
+     else if (ncomp_city == 0 && ncomp_army == 0) {
+ 	clear_screen ();
+@@ -1122,8 +1122,8 @@ check_endgame(void)
+ 	announce ("You are free to rape the empire as you wish.\n");
+ 	announce ("There may be, however, remnants of the enemy fleet\n");
+ 	announce ("to be routed out and destroyed.\n");
+-	win = wipeout_win;
+-	automove = false;
++	game.win = wipeout_win;
++	game.automove = false;
+     }
+     else if (nuser_city == 0 && nuser_army == 0) {
+ 	clear_screen ();
+@@ -1131,8 +1131,8 @@ check_endgame(void)
+ 	announce ("defeating the rampaging enemy fascists! The\n");
+ 	announce ("empire is lost. If you have any ships left, you\n");
+ 	announce ("may attempt to harass enemy shipping.");
+-	win = 1;
+-	automove = false;
++	game.win = 1;
++	game.automove = false;
+     }
+ }
+ 
+diff --git a/display.c b/display.c
+index 5239df0..6ab6d8b 100644
+--- a/display.c
++++ b/display.c
+@@ -206,7 +206,7 @@ show_loc (view_map_t vmap[], loc_t loc)
+     c = loc_col (loc);
+     (void) move (r-ref_row+NUMTOPS, c-ref_col);
+ 
+-    if (showprod && vmap[loc].contents == 'O')
++    if (game.showprod && vmap[loc].contents == 'O')
+         disp_city_prod(loc);
+     else
+         disp_square(&vmap[loc]);
+@@ -246,8 +246,8 @@ print_sector(int whose, view_map_t vmap[], int sector)
+     save_sector = sector; /* remember last sector displayed */
+     change_ok = false; /* we are displaying a new sector */
+ 
+-    display_rows = lines - NUMTOPS - 1; /* num lines to display */
+-    display_cols = cols - NUMSIDES;
++    display_rows = game.lines - NUMTOPS - 1; /* num lines to display */
++    display_cols = game.cols - NUMSIDES;
+ 
+     /* compute row and column edges of sector */
+     first_row = sector_row (sector) * ROWS_PER_SECTOR;
+@@ -287,21 +287,21 @@ print_sector(int whose, view_map_t vmap[], int sector)
+     /* print x-coordinates along bottom of screen */
+     for (c = ref_col; c < ref_col + display_cols && c < MAP_WIDTH; c++)
+ 	if (c % 10 == 0) {
+-	    pos_str (lines-1, c-ref_col, "%d", c);
++	    pos_str (game.lines-1, c-ref_col, "%d", c);
+ 	}
+     /* print y-coordinates along right of screen */
+     for (r = ref_row; r < ref_row + display_rows && r < MAP_HEIGHT; r++) {
+ 	if (r % 2 == 0)
+-	    pos_str (r-ref_row+NUMTOPS, cols-NUMSIDES+1, "%2d", r);
++	    pos_str (r-ref_row+NUMTOPS, game.cols-NUMSIDES+1, "%2d", r);
+ 	else
+-	    pos_str (r-ref_row+NUMTOPS, cols-NUMSIDES+1, "  ");
++	    pos_str (r-ref_row+NUMTOPS, game.cols-NUMSIDES+1, "  ");
+     }
+     /* print round number */
+-    (void) sprintf (jnkbuf, "Sector %d Round %ld", sector, date);
+-    for (r = 0; jnkbuf[r] != '\0'; r++) {
++    (void) sprintf (game.jnkbuf, "Sector %d Round %ld", sector, game.date);
++    for (r = 0; game.jnkbuf[r] != '\0'; r++) {
+ 	if (r+NUMTOPS >= MAP_HEIGHT) break;
+-	(void) move (r+NUMTOPS, cols-NUMSIDES+4);
+-	(void) addch ((chtype)jnkbuf[r]);
++	(void) move (r+NUMTOPS, game.cols-NUMSIDES+4);
++	(void) addch ((chtype)game.jnkbuf[r]);
+     }
+ }
+ 
+@@ -385,14 +385,14 @@ void display_screen(view_map_t vmap[])
+     int r, c;
+     loc_t t;
+ 
+-    display_rows = lines - NUMTOPS - 1; /* num lines to display */
+-    display_cols = cols - NUMSIDES;
++    display_rows = game.lines - NUMTOPS - 1; /* num lines to display */
++    display_cols = game.cols - NUMSIDES;
+ 
+     for (r = ref_row; r < ref_row + display_rows && r < MAP_HEIGHT; r++)
+ 	for (c = ref_col; c < ref_col + display_cols && c < MAP_WIDTH; c++) {
+ 	    t = row_col_loc (r, c);
+ 	    (void) move (r-ref_row+NUMTOPS, c-ref_col);
+-        if (showprod && vmap[t].contents == 'O')
++        if (game.showprod && vmap[t].contents == 'O')
+             disp_city_prod(t);
+         else
+             disp_square(&vmap[t]);
+@@ -413,7 +413,7 @@ move_cursor(loc_t *cursor, int offset)
+     int r, c;
+  
+     t = *cursor + offset; /* proposed location */
+-    if (!map[t].on_board) return (false); /* trying to move off map */
++    if (!game.real_map[t].on_board) return (false); /* trying to move off map */
+     if (!on_screen (t)) return (false); /* loc is off screen */
+ 	
+     *cursor = t; /* update cursor position */
+@@ -438,9 +438,9 @@ bool on_screen (loc_t loc)
+     new_c = loc_col (loc);
+ 
+     if (new_r < ref_row /* past top of screen */
+-	|| new_r - ref_row > lines - NUMTOPS - 1 /* past bot of screen? */
++	|| new_r - ref_row > game.lines - NUMTOPS - 1 /* past bot of screen? */
+ 	|| new_c < ref_col /* past left edge of screen? */
+-	|| new_c - ref_col > cols - NUMSIDES) /* past right edge of screen? */
++	|| new_c - ref_col > game.cols - NUMSIDES) /* past right edge of screen? */
+ 	return (false);
+ 
+     return (true);
+@@ -474,14 +474,14 @@ print_zoom(view_map_t *vmap)
+ 
+     kill_display ();
+ 
+-    row_inc = (MAP_HEIGHT + lines - NUMTOPS - 1) / (lines - NUMTOPS);
+-    col_inc = (MAP_WIDTH + cols - 1) / (cols - 1);
++    row_inc = (MAP_HEIGHT + game.lines - NUMTOPS - 1) / (game.lines - NUMTOPS);
++    col_inc = (MAP_WIDTH + game.cols - 1) / (game.cols - 1);
+ 
+     for (r = 0; r < MAP_HEIGHT; r += row_inc)
+ 	for (c = 0; c < MAP_WIDTH; c += col_inc)
+ 	    print_zoom_cell (vmap, r, c, row_inc, col_inc);
+ 
+-    pos_str (0, 0, "Round #%d", date);
++    pos_str (0, 0, "Round #%d", game.date);
+ 	
+     (void) refresh ();
+ }
+@@ -522,8 +522,8 @@ print_pzoom(char *s, path_map_t *pmap, view_map_t *vmap)
+ 
+     kill_display ();
+ 
+-    row_inc = (MAP_HEIGHT + lines - NUMTOPS - 1) / (lines - NUMTOPS);
+-    col_inc = (MAP_WIDTH + cols - 1) / (cols - 1);
++    row_inc = (MAP_HEIGHT + game.lines - NUMTOPS - 1) / (game.lines - NUMTOPS);
++    col_inc = (MAP_WIDTH + game.cols - 1) / (game.cols - 1);
+ 
+     for (r = 0; r < MAP_HEIGHT; r += row_inc)
+ 	for (c = 0; c < MAP_WIDTH; c += col_inc)
+@@ -588,8 +588,8 @@ Display the score off in the corner of the screen.
+ void
+ display_score(void)
+ {
+-    pos_str (1, cols-12, " User  Comp");
+-    pos_str (2, cols-12, "%5d %5d", user_score, comp_score);
++    pos_str (1, game.cols-12, " User  Comp");
++    pos_str (2, game.cols-12, "%5d %5d", game.user_score, game.comp_score);
+ }
+ 
+ /*
+@@ -616,12 +616,12 @@ ttinit(void)
+ #ifdef A_COLOR
+     init_colors();
+ #endif /* A_COLOR */
+-    lines = LINES;
+-    cols = COLS;
+-    if (lines > MAP_HEIGHT + NUMTOPS + 1)
+-	lines = MAP_HEIGHT + NUMTOPS + 1;
+-    if (cols > MAP_WIDTH + NUMSIDES)
+-	cols = MAP_WIDTH + NUMSIDES;
++    game.lines = LINES;
++    game.cols = COLS;
++    if (game.lines > MAP_HEIGHT + NUMTOPS + 1)
++	game.lines = MAP_HEIGHT + NUMTOPS + 1;
++    if (game.cols > MAP_WIDTH + NUMSIDES)
++	game.cols = MAP_WIDTH + NUMSIDES;
+ }
+ 
+ 
+@@ -673,7 +673,7 @@ the screen and pause for a few milliseconds.
+ void
+ delay(void)
+ {
+-    int t = delay_time;
++    int t = game.delay_time;
+     int i = 500;
+     (void) refresh ();
+     if (t > i) {
+diff --git a/edit.c b/edit.c
+index f4ab410..9207872 100644
+--- a/edit.c
++++ b/edit.c
+@@ -36,7 +36,7 @@ edit(loc_t edit_cursor)
+ 	
+     path_start = -1; /* not building a path yet */
+ 	
+-    showprod = false;
++    game.showprod = false;
+     comment ("Edit mode...");
+ 
+     for (;;) { /* until user gives command to leave */
+@@ -61,7 +61,7 @@ edit(loc_t edit_cursor)
+ 	    e_stasis (edit_cursor);
+ 	    break;
+ 	case 'J': /* Redraw map showing city production */
+-        showprod = true;
++        game.showprod = true;
+         sector_change (); // Force redraw */
+ 	    break;
+ 	case 'K': /* wake up anything and everything */
+@@ -78,8 +78,8 @@ edit(loc_t edit_cursor)
+ 	    e_end (&path_start, edit_cursor, path_type);
+ 	    break;
+ 	case 'O': /* leave edit mode */
+-        if (showprod) {
+-            showprod = false;
++        if (game.showprod) {
++            game.showprod = false;
+             sector_change (); // Force redraw */
+         }
+ 	    e_leave ();
+@@ -223,7 +223,7 @@ Put a ship in fill mode.
+ void
+ e_fill(loc_t loc)
+ {
+-    if (user_map[loc].contents == 'T' || user_map[loc].contents == 'C')
++    if (game.user_map[loc].contents == 'T' || game.user_map[loc].contents == 'C')
+ 	e_set_func (loc, FILL);
+     else huh ();
+ }
+@@ -259,7 +259,7 @@ Set a fighter to land.
+ void
+ e_land(loc_t loc)
+ {
+-    if (user_map[loc].contents == 'F')
++    if (game.user_map[loc].contents == 'F')
+ 	e_set_func (loc, LAND);
+     else huh ();
+ }
+@@ -271,7 +271,7 @@ Set an army's function to TRANSPORT.
+ void
+ e_transport(loc_t loc)
+ {
+-    if (user_map[loc].contents == 'A')
++    if (game.user_map[loc].contents == 'A')
+ 	e_set_func (loc, WFTRANSPORT);
+     else huh ();
+ }
+@@ -283,7 +283,7 @@ Set an army's function to ATTACK.
+ void
+ e_attack(loc_t loc)
+ {
+-    if (user_map[loc].contents == 'A')
++    if (game.user_map[loc].contents == 'A')
+ 	e_set_func (loc, ARMYATTACK);
+     else huh ();
+ }
+@@ -303,7 +303,7 @@ Set a ship's function to REPAIR.
+ void
+ e_repair(loc_t loc)
+ {
+-    if (strchr ("PDSTBC", user_map[loc].contents))
++    if (strchr ("PDSTBC", game.user_map[loc].contents))
+ 	e_set_func (loc, REPAIR);
+     else huh ();
+ }
+@@ -325,9 +325,9 @@ static char dirs[] = "WEDCXZAQ";
+ void
+ e_stasis(loc_t loc)
+ {
+-    if (!isupper (user_map[loc].contents))
++    if (!isupper (game.user_map[loc].contents))
+ 	huh (); /* no object here */
+-    else if (user_map[loc].contents == 'X')
++    else if (game.user_map[loc].contents == 'X')
+ 	huh ();
+     else {
+ 	char e = get_chx(); /* get a direction */
+@@ -371,7 +371,7 @@ e_wake(loc_t loc)
+ 	for (i = 0; i < NUM_OBJECTS; i++)
+ 	    cityp->func[i] = NOFUNC;
+     }
+-    for (obj = map[loc].objp; obj != NULL; obj = obj->loc_link.next)
++    for (obj = game.real_map[loc].objp; obj != NULL; obj = obj->loc_link.next)
+ 	obj->func = NOFUNC;
+ }
+ 
+@@ -446,8 +446,8 @@ Beginning of move to location.
+ void
+ e_move(loc_t *path_start, loc_t loc)
+ {
+-    if (!isupper(user_map[loc].contents)) huh (); /* nothing there? */
+-    else if (user_map[loc].contents == 'X') huh (); /* enemy city? */
++    if (!isupper(game.user_map[loc].contents)) huh (); /* nothing there? */
++    else if (game.user_map[loc].contents == 'X') huh (); /* enemy city? */
+     else *path_start = loc;
+ }
+ 
+@@ -478,7 +478,7 @@ Put a piece to sleep.
+ void
+ e_sleep(loc_t loc)
+ {
+-    if (user_map[loc].contents == 'O') huh (); /* can't sleep a city */
++    if (game.user_map[loc].contents == 'O') huh (); /* can't sleep a city */
+     else e_set_func (loc, SENTRY);
+ }
+ 
+@@ -493,15 +493,15 @@ e_info(loc_t edit_cursor)
+ 
+     char ab;
+ 
+-    ab = user_map[edit_cursor].contents;
++    ab = game.user_map[edit_cursor].contents;
+ 
+     if (ab == 'O')
+ 	e_city_info (edit_cursor);
+-    else if (ab == 'X' && debug)
++    else if (ab == 'X' && game.debug)
+ 	e_city_info (edit_cursor);
+     else if ((ab >= 'A') && (ab <= 'T'))
+ 	e_piece_info (edit_cursor, ab);
+-    else if ((ab >= 'a') && (ab <= 't') && (debug))
++    else if ((ab >= 'a') && (ab <= 't') && (game.debug))
+ 	e_piece_info (edit_cursor, ab);
+     else
+ 	huh ();
+@@ -544,23 +544,23 @@ e_city_info(loc_t edit_cursor)
+     error (""); /* clear line */
+ 
+     f = 0; /* no fighters counted yet */
+-    for (obj = map[edit_cursor].objp; obj != NULL;
++    for (obj = game.real_map[edit_cursor].objp; obj != NULL;
+ 	 obj = obj->loc_link.next)
+ 	if (obj->type == FIGHTER) f++;
+ 
+     s = 0; /* no ships counted yet */
+-    for (obj = map[edit_cursor].objp; obj != NULL;
++    for (obj = game.real_map[edit_cursor].objp; obj != NULL;
+ 	 obj = obj->loc_link.next)
+ 	if (obj->type >= DESTROYER) s++;
+ 
+     if (f == 1 && s == 1) 
+-	(void) sprintf (jnkbuf, "1 fighter landed, 1 ship docked");
++	(void) sprintf (game.jnkbuf, "1 fighter landed, 1 ship docked");
+     else if (f == 1)
+-	(void) sprintf (jnkbuf, "1 fighter landed, %d ships docked", s);
++	(void) sprintf (game.jnkbuf, "1 fighter landed, %d ships docked", s);
+     else if (s == 1)
+-	(void) sprintf (jnkbuf, "%d fighters landed, 1 ship docked", f);
++	(void) sprintf (game.jnkbuf, "%d fighters landed, 1 ship docked", f);
+     else
+-	(void) sprintf (jnkbuf, "%d fighters landed, %d ships docked", f, s);
++	(void) sprintf (game.jnkbuf, "%d fighters landed, %d ships docked", f, s);
+ 
+     cityp = find_city (edit_cursor);
+     ASSERT (cityp != NULL);
+@@ -582,9 +582,9 @@ e_city_info(loc_t edit_cursor)
+ 		    "City at location %d will complete %s on round %ld",
+ 		    loc_disp(cityp->loc),
+ 		    piece_attr[(int)cityp->prod].article,
+-		    date + piece_attr[(int)cityp->prod].build_time - cityp->work);
++		    game.date + piece_attr[(int)cityp->prod].build_time - cityp->work);
+ 
+-    info (junk_buf2, jnkbuf, func_buf);
++    info (junk_buf2, game.jnkbuf, func_buf);
+ }
+ 
+ /*
+diff --git a/empire.c b/empire.c
+index a227523..0a511a6 100644
+--- a/empire.c
++++ b/empire.c
+@@ -14,6 +14,8 @@ parser, and the simple commands.
+ #include "empire.h"
+ #include "extern.h"
+ 
++gamestate_t game;
++
+ void c_examine(void), c_movie(void);
+ 
+ /*
+@@ -47,10 +49,10 @@ empire(void)
+     /* Command loop starts here. */
+ 
+     for (;;) { /* until user quits */
+-	if (automove) { /* don't ask for cmd in auto mode */
++	if (game.automove) { /* don't ask for cmd in auto mode */
+ 	    user_move ();
+ 	    comp_move (1);
+-	    if (++turn % save_interval == 0)
++	    if (++turn % game.save_interval == 0)
+ 		save_game ();
+ 	}
+ 	else {
+@@ -78,7 +80,7 @@ do_command(char orders)
+ 
+     switch (orders) {
+     case 'A': /* turn on auto move mode */
+-	automove = true;
++	game.automove = true;
+ 	error ("Now in Auto-Mode");
+ 	user_move ();
+ 	comp_move (1);
+@@ -90,11 +92,11 @@ do_command(char orders)
+ 	break;
+ 	
+     case 'D': /* display round number */
+-	error ("Round #%d", date);
++	error ("Round #%d", game.date);
+ 	break;
+ 
+     case 'E': /* examine enemy map */
+-	if (resigned) c_examine ();
++	if (game.resigned) c_examine ();
+ 	else huh (); /* illegal command */
+ 	break;
+ 
+@@ -146,19 +148,19 @@ do_command(char orders)
+ 	save_game ();
+ 	break;
+ 	
+-    case 'T': /* trace: toggle save_movie flag */
+-	save_movie = !save_movie;
+-	if (save_movie) comment ("Saving movie screens to 'empmovie.dat'.");
++    case 'T': /* trace: toggle game.save_movie flag */
++	game.save_movie = !game.save_movie;
++	if (game.save_movie) comment ("Saving movie screens to 'empmovie.dat'.");
+ 	else comment ("No longer saving movie screens.");
+ 	break;
+ 
+     case 'W': /* watch movie */
+-	if (resigned || debug) replay_movie ();
++	if (game.resigned || game.debug) replay_movie ();
+ 	else error ("You cannot watch movie until computer resigns.");
+ 	break;
+ 
+     case 'Z': /* print compressed map */
+-	print_zoom (user_map);
++	print_zoom (game.user_map);
+ 	break;
+ 
+     case '\014': /* redraw the screen */
+@@ -168,14 +170,14 @@ do_command(char orders)
+     case '+': /* change debug state */
+ 	e = get_chx();
+ 	if ( e  ==  '+' )
+-	    debug = true;
++	    game.debug = true;
+ 	else if ( e  ==  '-' )
+-	    debug = false;
++	    game.debug = false;
+ 	else huh ();
+ 	break;
+ 
+     default:
+-	if (debug)
++	if (game.debug)
+ 	    c_debug (orders); /* debug */
+ 	else
+ 	    huh (); /* illegal command */
+@@ -197,7 +199,7 @@ c_give(void)
+ 
+     count = 0; /* nothing in list yet */
+     for (i = 0; i < NUM_CITY; i++) {
+-	if (city[i].owner == UNOWNED) {
++	if (game.city[i].owner == UNOWNED) {
+ 	    unowned[count] = i; /* remember this city */
+ 	    count += 1;
+ 	}
+@@ -209,10 +211,10 @@ c_give(void)
+     }
+     i = irand (count);
+     i = unowned[i]; /* get city index */
+-    city[i].owner = COMP;
+-    city[i].prod = NOPIECE;
+-    city[i].work = 0;
+-    scan (comp_map, city[i].loc);
++    game.city[i].owner = COMP;
++    game.city[i].prod = NOPIECE;
++    game.city[i].work = 0;
++    scan (game.comp_map, game.city[i].loc);
+ }
+ 
+ /*
+@@ -232,25 +234,25 @@ c_debug(char order)
+     case '@': /* change trace state */
+ 	e = get_chx();
+ 	if ( e  ==  '+' )
+-	    trace_pmap = true;
++	    game.trace_pmap = true;
+ 	else if ( e  ==  '-' )
+-	    trace_pmap = false;
++	    game.trace_pmap = false;
+ 	else
+ 	    huh ();
+ 	break;
+ 
+-    case '$': /* change print_debug state */
++    case '$': /* change game.print_debug state */
+ 	e = get_chx();
+ 	if ( e  ==  '+' )
+-	    print_debug = true;
++	    game.print_debug = true;
+ 	else if ( e  ==  '-' )
+-	    print_debug = false;
++	    game.print_debug = false;
+ 	else
+ 	    huh ();
+ 	break;
+ 
+-    case '&': /* change print_vmap state */
+-	print_vmap = get_chx();
++    case '&': /* change game.print_vmap state */
++	game.print_vmap = get_chx();
+ 	break;
+ 
+     default: huh (); break;
+@@ -298,16 +300,16 @@ c_map(void)
+     char line[MAP_HEIGHT+2];
+ 
+     prompt ("Filename? ");
+-    get_str (jnkbuf, STRSIZE);
++    get_str (game.jnkbuf, STRSIZE);
+ 
+-    f = fopen (jnkbuf, "w");
++    f = fopen (game.jnkbuf, "w");
+     if (f == NULL) {
+ 	error ("I can't open that file.");
+ 	return;
+     }
+     for (i = 0; i < MAP_WIDTH; i++) { /* for each column */
+ 	for (j = MAP_HEIGHT-1; j >= 0; j--) { /* for each row */
+-	    line[MAP_HEIGHT-1-j] = user_map[row_col_loc(j,i)].contents;
++	    line[MAP_HEIGHT-1-j] = game.user_map[row_col_loc(j,i)].contents;
+ 	}
+ 	j = MAP_HEIGHT-1;
+ 	while (j >= 0 && line[j] == ' ') /* scan off trailing blanks */
+@@ -343,10 +345,10 @@ c_movie(void)
+ {
+     for (;;) {
+ 	comp_move (1);
+-	print_zoom (comp_map);
++	print_zoom (game.comp_map);
+ 	save_game ();
+ #ifdef PROFILE
+-	if (date == 125) empend();
++	if (game.date == 125) empend();
+ #endif
+     }
+ }
+diff --git a/empire.h b/empire.h
+index 729852f..8dde3b2 100644
+--- a/empire.h
++++ b/empire.h
+@@ -156,12 +156,12 @@ Macros to link and unlink an object from a doubly linked list.
+ }
+ 
+ /* macros to set map and list of an object */
+-#define MAP(owner) ((owner) == USER ? user_map : comp_map)
+-#define LIST(owner) ((owner) == USER ? user_obj : comp_obj)
++#define MAP(owner) ((owner) == USER ? game.user_map : game.comp_map)
++#define LIST(owner) ((owner) == USER ? game.user_obj : game.comp_obj)
+ 
+ /* macro to step through adjacent cells */
+ #define FOR_ADJ(loc,new_loc,i) for (i=0; (i<8 ? new_loc=loc+dir_offset[i],1 : 0); i++)
+-#define FOR_ADJ_ON(loc,new_loc,i) FOR_ADJ(loc,new_loc,i) if (map[new_loc].on_board)
++#define FOR_ADJ_ON(loc,new_loc,i) FOR_ADJ(loc,new_loc,i) if (game.real_map[new_loc].on_board)
+ 
+ /*
+ We maintain attributes for each piece.  Attributes are currently constant,
+@@ -276,4 +276,50 @@ enum win_t {no_win, wipeout_win, ratio_win};
+ #define MAP_SEA 	'.'
+ #define MAP_CITY	'*'
+ 
++typedef struct {
++    /* user-supplied parameters */
++    int SMOOTH;        /* number of times to smooth map */
++    int WATER_RATIO;   /* percentage of map that is water */
++    int MIN_CITY_DIST; /* cities must be at least this far apart */
++    int delay_time;
++    int save_interval; /* turns between autosaves */
++
++    /* the world */
++    real_map_t real_map[MAP_SIZE]; /* the way the world really looks */
++    view_map_t comp_map[MAP_SIZE]; /* computer's view of the world */
++    view_map_t user_map[MAP_SIZE]; /* user's view of the world */
++    city_info_t city[NUM_CITY]; /* city information */
++
++    /* miscellaneous */
++    long date; /* number of game turns played */
++    bool automove; /* true iff user is in automove mode */
++    bool resigned; /* true iff computer resigned */
++    bool debug; /* true iff in debugging mode */
++    bool print_debug; /* true iff we print debugging stuff */
++    char print_vmap; /* the map-printing mode */
++    bool trace_pmap; /* true if we are tracing pmaps */
++    int win; /* set when game is over - not a bool */
++    char jnkbuf[STRSIZE]; /* general purpose temporary buffer */
++    bool save_movie; /* true iff we should save movie screens */
++    int user_score; /* "score" for user and computer */
++    int comp_score;
++    char *savefile;
++    bool showprod;
++
++    /*
++      There is one array to hold all allocated objects no matter who
++      owns them.  Objects are allocated from the array and placed on
++      a list corresponding to the type of object and its owner.
++    */
++
++    piece_info_t *free_list; /* index to free items in object list */
++    piece_info_t *user_obj[NUM_OBJECTS]; /* indices to user lists */
++    piece_info_t *comp_obj[NUM_OBJECTS]; /* indices to computer lists */
++    piece_info_t object[LIST_SIZE]; /* object list */
++
++    /* Display information. */
++    int lines; /* lines on screen */
++    int cols; /* columns on screen */
++} gamestate_t;
++
+ /* end */
+diff --git a/extern.h b/extern.h
+index 3529d11..1066249 100644
+--- a/extern.h
++++ b/extern.h
+@@ -9,33 +9,7 @@
+ extern.h -- define global non-constant storage.
+ */
+ 
+-/* user-supplied parameters */
+-int SMOOTH;        /* number of times to smooth map */
+-int WATER_RATIO;   /* percentage of map that is water */
+-int MIN_CITY_DIST; /* cities must be at least this far apart */
+-int delay_time;
+-int save_interval; /* turns between autosaves */
+-
+-real_map_t map[MAP_SIZE]; /* the way the world really looks */
+-view_map_t comp_map[MAP_SIZE]; /* computer's view of the world */
+-view_map_t user_map[MAP_SIZE]; /* user's view of the world */
+-
+-city_info_t city[NUM_CITY]; /* city information */
+-
+-/*
+-There is one array to hold all allocated objects no matter who
+-owns them.  Objects are allocated from the array and placed on
+-a list corresponding to the type of object and its owner.
+-*/
+-
+-piece_info_t *free_list; /* index to free items in object list */
+-piece_info_t *user_obj[NUM_OBJECTS]; /* indices to user lists */
+-piece_info_t *comp_obj[NUM_OBJECTS]; /* indices to computer lists */
+-piece_info_t object[LIST_SIZE]; /* object list */
+-
+-/* Display information. */
+-int lines; /* lines on screen */
+-int cols; /* columns on screen */
++extern gamestate_t game;
+ 
+ /* constant data */
+ extern piece_attr_t piece_attr[];
+@@ -69,27 +43,11 @@ extern int cmd_lines;
+ extern int edit_lines;
+ extern int user_lines;
+ 
+-/* miscellaneous */
+-long date; /* number of game turns played */
+-bool automove; /* true iff user is in automove mode */
+-bool resigned; /* true iff computer resigned */
+-bool debug; /* true iff in debugging mode */
+-bool print_debug; /* true iff we print debugging stuff */
+-char print_vmap; /* the map-printing mode */
+-bool trace_pmap; /* true if we are tracing pmaps */
+-int win; /* set when game is over - not a bool */
+-char jnkbuf[STRSIZE]; /* general purpose temporary buffer */
+-bool save_movie; /* true iff we should save movie screens */
+-int user_score; /* "score" for user and computer */
+-int comp_score;
+-char *savefile;
+-bool showprod;
+-
+ /* Screen updating macros */
+-#define display_loc_u(loc) display_loc(USER,user_map,loc)
++#define display_loc_u(loc) display_loc(USER,game.user_map,loc)
+ #define display_loc_c(loc) display_loc(COMP,comp_map,loc)
+-#define print_sector_u(sector) print_sector(USER,user_map,sector)
+-#define print_sector_c(sector) print_sector(COMP,comp_map,sector)
++#define print_sector_u(sector) print_sector(USER,game.user_map,sector)
++#define print_sector_c(sector) print_sector(COMP,game.comp_map,sector)
+ #define loc_row(loc) ((loc)/MAP_WIDTH)
+ #define loc_col(loc) ((loc)%MAP_WIDTH)
+ #define row_col_loc(row,col) ((long)((row)*MAP_WIDTH + (col)))
+diff --git a/game.c b/game.c
+index 3a928e7..23e64f7 100644
+--- a/game.c
++++ b/game.c
+@@ -37,44 +37,44 @@ void init_game(void)
+     count_t i;
+ 
+     kill_display (); /* nothing on screen */
+-    automove = false;
+-    resigned = false;
+-    debug = false;
+-    print_debug = false;
+-    print_vmap = false;
+-    trace_pmap = false;
+-    save_movie = false;
+-    win = no_win;
+-    date = 0; /* no date yet */
+-    user_score = 0;
+-    comp_score = 0;
++    game.automove = false;
++    game.resigned = false;
++    game.debug = false;
++    game.print_debug = false;
++    game.print_vmap = false;
++    game.trace_pmap = false;
++    game.save_movie = false;
++    game.win = no_win;
++    game.date = 0; /* no date yet */
++    game.user_score = 0;
++    game.comp_score = 0;
+ 	
+     for (i = 0; i < MAP_SIZE; i++) {
+-	user_map[i].contents = ' '; /* nothing seen yet */
+-	user_map[i].seen = 0;
+-	comp_map[i].contents = ' ';
+-	comp_map[i].seen = 0;
++	game.user_map[i].contents = ' '; /* nothing seen yet */
++	game.user_map[i].seen = 0;
++	game.comp_map[i].contents = ' ';
++	game.comp_map[i].seen = 0;
+     }
+     for (i = 0; i < NUM_OBJECTS; i++) {
+-	user_obj[i] = NULL;
+-	comp_obj[i] = NULL;
++	game.user_obj[i] = NULL;
++	game.comp_obj[i] = NULL;
+     }
+-    free_list = NULL; /* nothing free yet */
++    game.free_list = NULL; /* nothing free yet */
+     for (i = 0; i < LIST_SIZE; i++) { /* for each object */
+-	piece_info_t *obj = &(object[i]);
++	piece_info_t *obj = &(game.object[i]);
+ 	obj->hits = 0; /* mark object as dead */
+ 	obj->owner = UNOWNED;
+-	LINK (free_list, obj, piece_link); 
++	LINK (game.free_list, obj, piece_link); 
+     }
+ 
+     make_map (); /* make land and water */
+ 
+     do {
+ 	for (i = 0; i < MAP_SIZE; i ++) { /* remove cities */
+-	    if (map[i].contents == MAP_CITY)
+-		map[i].contents = MAP_LAND; /* land */
++	    if (game.real_map[i].contents == MAP_CITY)
++		game.real_map[i].contents = MAP_LAND; /* land */
+ 	}
+-	place_cities (); /* place cities on map */
++	place_cities (); /* place cities on game.real_map */
+     } while
+ 	(!select_cities ()); /* choose a city for each player */
+ }
+@@ -105,12 +105,12 @@ void make_map(void)
+     count_t i, j, sum;
+     loc_t loc;
+ 
+-    for (i = 0; i < MAP_SIZE; i++) /* fill map with random sand */
++    for (i = 0; i < MAP_SIZE; i++) /* fill game.real_map with random sand */
+ 	height[0][i] = irand (MAX_HEIGHT);
+ 
+     from = 0;
+     to = 1;
+-    for (i = 0; i < SMOOTH; i++) { /* smooth the map */
++    for (i = 0; i < game.SMOOTH; i++) { /* smooth the game.real_map */
+ 	for (j = 0; j < MAP_SIZE; j++) {
+ 	    sum = height[from][j];
+ 	    for (k = 0; k < 8; k++) {
+@@ -138,7 +138,7 @@ void make_map(void)
+     sum = 0;
+     for (i = 0; i <= MAX_HEIGHT; i++) {
+ 	sum += height_count[i];
+-	if (sum * 100 / MAP_SIZE > WATER_RATIO && sum >= NUM_CITY) {
++	if (sum * 100 / MAP_SIZE > game.WATER_RATIO && sum >= NUM_CITY) {
+ 	    loc = i; /* this is last height that is water */
+ 	    break;
+ 	}
+@@ -147,16 +147,16 @@ void make_map(void)
+     /* mark the land and water */
+     for (i = 0; i < MAP_SIZE; i ++) {
+ 	if (height[from][i] > loc)
+-	    map[i].contents = MAP_LAND;
+-	else map[i].contents = MAP_SEA;
++	    game.real_map[i].contents = MAP_LAND;
++	else game.real_map[i].contents = MAP_SEA;
+ 
+-	map[i].objp = NULL; /* nothing in cell yet */
+-	map[i].cityp = NULL;
++	game.real_map[i].objp = NULL; /* nothing in cell yet */
++	game.real_map[i].cityp = NULL;
+ 
+ 	j = loc_col (i);
+ 	k = loc_row (i);
+ 
+-	map[i].on_board = !(j == 0 || j == MAP_WIDTH-1 
++	game.real_map[i].on_board = !(j == 0 || j == MAP_WIDTH-1
+ 			    || k == 0 || k == MAP_HEIGHT-1);
+     }
+ }
+@@ -189,16 +189,16 @@ void place_cities(void)
+ 	i = irand (num_land-1); /* select random piece of land */
+ 	loc = land[i];
+ 		
+-	city[placed].loc = loc;
+-	city[placed].owner = UNOWNED;
+-	city[placed].work = 0;
+-	city[placed].prod = NOPIECE;
++	game.city[placed].loc = loc;
++	game.city[placed].owner = UNOWNED;
++	game.city[placed].work = 0;
++	game.city[placed].prod = NOPIECE;
+ 		
+ 	for (i = 0; i < NUM_OBJECTS; i++)
+-	    city[placed].func[i] = NOFUNC; /* no function */
++	    game.city[placed].func[i] = NOFUNC; /* no function */
+ 			
+-	map[loc].contents = MAP_CITY;
+-	map[loc].cityp = &(city[placed]);
++	game.real_map[loc].contents = MAP_CITY;
++	game.real_map[loc].cityp = &(game.city[placed]);
+ 	placed++;
+ 
+ 	/* Now remove any land too close to selected land. */
+@@ -219,17 +219,17 @@ count_t regen_land(count_t placed)
+ 
+     num_land = 0;
+     for (i = 0; i < MAP_SIZE; i++) {
+-	if (map[i].on_board && map[i].contents == MAP_LAND) {
++	if (game.real_map[i].on_board && game.real_map[i].contents == MAP_LAND) {
+ 	    land[num_land] = i; /* remember piece of land */
+ 	    num_land++; /* remember number of pieces */
+ 	}
+     }
+     if (placed > 0) { /* don't decrement 1st time */
+-	MIN_CITY_DIST -= 1;
+-	ASSERT (MIN_CITY_DIST >= 0);
++	game.MIN_CITY_DIST -= 1;
++	ASSERT (game.MIN_CITY_DIST >= 0);
+     }
+     for (i = 0; i < placed; i++) { /* for each placed city */
+-	num_land = remove_land (city[i].loc, num_land);
++	num_land = remove_land (game.city[i].loc, num_land);
+     }
+     return (num_land);
+ }
+@@ -244,7 +244,7 @@ count_t remove_land(loc_t loc, count_t num_land)
+ 
+     new = 0; /* nothing kept yet */
+     for (i = 0; i < num_land; i++) {
+-	if (dist (loc, land[i]) >= MIN_CITY_DIST) {
++	if (dist (loc, land[i]) >= game.MIN_CITY_DIST) {
+ 	    land[new] = land[i];
+ 	    new++;
+ 	}
+@@ -316,11 +316,11 @@ bool select_cities(void)
+ 
+     make_pair (); /* create list of ranked pairs */
+ 
+-    (void) sprintf (jnkbuf,
++    (void) sprintf (game.jnkbuf,
+ 		    "Choose a difficulty level where 0 is easy and %d is hard: ",
+ 		    ncont*ncont-1);
+ 
+-    pair = get_range (jnkbuf, 0, ncont*ncont-1);
++    pair = get_range (game.jnkbuf, 0, ncont*ncont-1);
+     comp_cont = pair_tab[pair].comp_cont;
+     user_cont = pair_tab[pair].user_cont;
+ 
+@@ -339,11 +339,11 @@ bool select_cities(void)
+     compp->owner = COMP;
+     compp->prod = ARMY;
+     compp->work = 0;
+-    scan (comp_map, compp->loc);
++    scan (game.comp_map, compp->loc);
+ 
+     userp->owner = USER;
+     userp->work = 0;
+-    scan (user_map, userp->loc);
++    scan (game.user_map, userp->loc);
+     set_prod (userp);
+     return (true);
+ }
+@@ -381,8 +381,8 @@ bool find_next(loc_t *mapi)
+     for (;;) {
+ 	if (*mapi >= MAP_SIZE) return (false);
+ 
+-	if (!map[*mapi].on_board || marked[*mapi]
+-	    || map[*mapi].contents == MAP_SEA)
++	if (!game.real_map[*mapi].on_board || marked[*mapi]
++	    || game.real_map[*mapi].contents == MAP_SEA)
+ 	    *mapi += 1;
+ 	else if (good_cont (*mapi)) {
+ 	    rank_tab[ncont] = ncont; /* insert cont in rank tab */
+@@ -451,15 +451,15 @@ mark_cont(loc_t mapi)
+     int i;
+ 
+     if (marked[mapi] 
+-	|| map[mapi].contents == MAP_SEA
+-	|| !map[mapi].on_board)
++	|| game.real_map[mapi].contents == MAP_SEA
++	|| !game.real_map[mapi].on_board)
+ 	return;
+ 
+     marked[mapi] = 1; /* mark this cell seen */
+     nland++; /* count land on continent */
+ 
+-    if (map[mapi].contents == MAP_CITY) { /* a city? */
+-	cont_tab[ncont].cityp[ncity] = map[mapi].cityp;
++    if (game.real_map[mapi].contents == MAP_CITY) { /* a city? */
++	cont_tab[ncont].cityp[ncity] = game.real_map[mapi].cityp;
+ 	ncity++;
+ 	if (rmap_shore (mapi)) nshore++;
+     }
+@@ -519,28 +519,28 @@ void save_game(void)
+ {
+     FILE *f; /* file to save game in */
+ 
+-    f = fopen (savefile, "w"); /* open for output */
++    f = fopen (game.savefile, "w"); /* open for output */
+     if (f == NULL) {
+ 	perror ("Cannot save saved game");
+ 	return;
+     }
+     wbuf(SAVECOOKIE);
+-    wbuf (map);
+-    wbuf (comp_map);
+-    wbuf (user_map);
+-    wbuf (city);
+-    wbuf (object);
+-    wbuf (user_obj);
+-    wbuf (comp_obj);
+-    wval (free_list);
+-    wval (date);
+-    wval (automove);
+-    wval (resigned);
+-    wval (debug);
+-    wval (win);
+-    wval (save_movie);
+-    wval (user_score);
+-    wval (comp_score);
++    wbuf (game.real_map);
++    wbuf (game.comp_map);
++    wbuf (game.user_map);
++    wbuf (game.city);
++    wbuf (game.object);
++    wbuf (game.user_obj);
++    wbuf (game.comp_obj);
++    wval (game.free_list);
++    wval (game.date);
++    wval (game.automove);
++    wval (game.resigned);
++    wval (game.debug);
++    wval (game.win);
++    wval (game.save_movie);
++    wval (game.user_score);
++    wval (game.comp_score);
+ 
+     (void) fclose (f);
+     topmsg (3, "Game saved.");
+@@ -563,7 +563,7 @@ int restore_game(void)
+     piece_info_t **list;
+     piece_info_t *obj;
+ 
+-    f = fopen (savefile, "r"); /* open for input */
++    f = fopen (game.savefile, "r"); /* open for input */
+     if (f == NULL) {
+ 	perror ("Cannot open saved game");
+ 	return (false);
+@@ -573,67 +573,67 @@ int restore_game(void)
+     else if (strcmp(buf, SAVECOOKIE) != 0)
+ 	return false;
+     i = fread(buf, 1, sizeof(char), f);	/* skip trailing nul after cookie */ 
+-    rbuf (map);
+-    rbuf (comp_map);
+-    rbuf (user_map);
+-    rbuf (city);
+-    rbuf (object);
+-    rbuf (user_obj);
+-    rbuf (comp_obj);
+-    rval (free_list);
+-    rval (date);
+-    rval (automove);
+-    rval (resigned);
+-    rval (debug);
+-    rval (win);
+-    rval (save_movie);
+-    rval (user_score);
+-    rval (comp_score);
++    rbuf (game.real_map);
++    rbuf (game.comp_map);
++    rbuf (game.user_map);
++    rbuf (game.city);
++    rbuf (game.object);
++    rbuf (game.user_obj);
++    rbuf (game.comp_obj);
++    rval (game.free_list);
++    rval (game.date);
++    rval (game.automove);
++    rval (game.resigned);
++    rval (game.debug);
++    rval (game.win);
++    rval (game.save_movie);
++    rval (game.user_score);
++    rval (game.comp_score);
+ 
+     /* Our pointers may not be valid because of source
+        changes or other things.  We recreate them. */
+ 	
+-    free_list = NULL; /* zero all ptrs */
++    game.free_list = NULL; /* zero all ptrs */
+     for (i = 0; i < MAP_SIZE; i++) {
+-	map[i].cityp = NULL;
+-	map[i].objp = NULL;
++	game.real_map[i].cityp = NULL;
++	game.real_map[i].objp = NULL;
+     }
+     for (i = 0; i < LIST_SIZE; i++) {
+-	object[i].loc_link.next = NULL;
+-	object[i].loc_link.prev = NULL;
+-	object[i].cargo_link.next = NULL;
+-	object[i].cargo_link.prev = NULL;
+-	object[i].piece_link.next = NULL;
+-	object[i].piece_link.prev = NULL;
+-	object[i].ship = NULL;
+-	object[i].cargo = NULL;
++	game.object[i].loc_link.next = NULL;
++	game.object[i].loc_link.prev = NULL;
++	game.object[i].cargo_link.next = NULL;
++	game.object[i].cargo_link.prev = NULL;
++	game.object[i].piece_link.next = NULL;
++	game.object[i].piece_link.prev = NULL;
++	game.object[i].ship = NULL;
++	game.object[i].cargo = NULL;
+     }
+     for (i = 0; i < NUM_OBJECTS; i++) {
+-	comp_obj[i] = NULL;
+-	user_obj[i] = NULL;
++	game.comp_obj[i] = NULL;
++	game.user_obj[i] = NULL;
+     }
+-    /* put cities on map */
++    /* put cities on game.real_map */
+     for (i = 0; i < NUM_CITY; i++)
+-	map[city[i].loc].cityp = &(city[i]);
++	game.real_map[game.city[i].loc].cityp = &(game.city[i]);
+ 	
+     /* put pieces in free list or on map and in object lists */
+     for (i = 0; i < LIST_SIZE; i++) {
+-	obj = &(object[i]);
+-	if (object[i].owner == UNOWNED || object[i].hits == 0) {
+-	    LINK (free_list, obj, piece_link);
++	obj = &(game.object[i]);
++	if (game.object[i].owner == UNOWNED || game.object[i].hits == 0) {
++	    LINK (game.free_list, obj, piece_link);
+ 	}
+ 	else {
+-	    list = LIST (object[i].owner);
+-	    LINK (list[object[i].type], obj, piece_link);
+-	    LINK (map[object[i].loc].objp, obj, loc_link);
++	    list = LIST (game.object[i].owner);
++	    LINK (list[game.object[i].type], obj, piece_link);
++	    LINK (game.real_map[game.object[i].loc].objp, obj, loc_link);
+ 	}
+     }
+ 	
+     /* Embark armies and fighters. */
+-    read_embark (user_obj[TRANSPORT], ARMY);
+-    read_embark (user_obj[CARRIER], FIGHTER);
+-    read_embark (comp_obj[TRANSPORT], ARMY);
+-    read_embark (comp_obj[CARRIER], FIGHTER);
++    read_embark (game.user_obj[TRANSPORT], ARMY);
++    read_embark (game.user_obj[CARRIER], FIGHTER);
++    read_embark (game.comp_obj[TRANSPORT], ARMY);
++    read_embark (game.comp_obj[CARRIER], FIGHTER);
+ 	
+     (void) fclose (f);
+     kill_display (); /* what we had is no longer good */
+@@ -658,7 +658,7 @@ void read_embark(piece_info_t *list, int piece_type)
+ 	int count = ship->count; /* get # of pieces we need */
+ 	if (count < 0) inconsistent ();
+ 	ship->count = 0; /* nothing on board yet */
+-	for (obj = map[ship->loc].objp; obj && count;
++	for (obj = game.real_map[ship->loc].objp; obj && count;
+ 	     obj = obj->loc_link.next) {
+ 	    if (obj->ship == NULL && obj->type == piece_type) {
+ 		embark (ship, obj);
+@@ -740,11 +740,11 @@ save_movie_screen(void)
+     }
+ 
+     for (i = 0; i < MAP_SIZE; i++) {
+-	if (map[i].cityp) mapbuf[i] = city_char[map[i].cityp->owner];
++	if (game.real_map[i].cityp) mapbuf[i] = city_char[game.real_map[i].cityp->owner];
+ 	else {
+ 	    p = find_obj_at_loc (i);
+ 			
+-	    if (!p) mapbuf[i] = map[i].contents;
++	    if (!p) mapbuf[i] = game.real_map[i].contents;
+ 	    else if (p->owner == USER)
+ 		mapbuf[i] = piece_attr[p->type].sname;
+ 	    else mapbuf[i] = tolower (piece_attr[p->type].sname);
+@@ -784,8 +784,8 @@ replay_movie(void)
+ 		
+ 	stat_display (mapbuf, round);
+ 		
+-	row_inc = (MAP_HEIGHT + lines - NUMTOPS - 1) / (lines - NUMTOPS);
+-	col_inc = (MAP_WIDTH + cols - 1) / (cols - 1);
++	row_inc = (MAP_HEIGHT + game.lines - NUMTOPS - 1) / (game.lines - NUMTOPS);
++	col_inc = (MAP_WIDTH + game.cols - 1) / (game.cols - 1);
+ 	
+ 	for (r = 0; r < MAP_HEIGHT; r += row_inc)
+ 	    for (c = 0; c < MAP_WIDTH; c += col_inc)
+diff --git a/main.c b/main.c
+index 7c76bf6..310c3ad 100644
+--- a/main.c
++++ b/main.c
+@@ -46,7 +46,7 @@ char *argv[];
+     sflg = 5;
+     dflg = 2000;
+     Sflg = 10;
+-    savefile = "empsave.dat";
++    game.savefile = "empsave.dat";
+ 
+     /*
+      * extract command line options
+@@ -67,7 +67,7 @@ char *argv[];
+ 	    Sflg = atoi (optarg);
+ 	    break;
+ 	case 'f':
+-	    savefile = optarg;
++	    game.savefile = optarg;
+ 	    break;
+ 	case '?': /* illegal option? */
+ 	    errflg++;
+@@ -93,15 +93,15 @@ char *argv[];
+ 	exit (1);
+     }
+ 
+-    SMOOTH = sflg;
+-    WATER_RATIO = wflg;
+-    delay_time = dflg;
+-    save_interval = Sflg;
++    game.SMOOTH = sflg;
++    game.WATER_RATIO = wflg;
++    game.delay_time = dflg;
++    game.save_interval = Sflg;
+ 
+     /* compute min distance between cities */
+-    land = MAP_SIZE * (100 - WATER_RATIO) / 100; /* available land */
++    land = MAP_SIZE * (100 - game.WATER_RATIO) / 100; /* available land */
+     land /= NUM_CITY; /* land per city */
+-    MIN_CITY_DIST = isqrt (land); /* distance between cities */
++    game.MIN_CITY_DIST = isqrt (land); /* distance between cities */
+ 
+     empire (); /* call main routine */
+     return (0);
+diff --git a/map.c b/map.c
+index 536e87d..3c742fa 100644
+--- a/map.c
++++ b/map.c
+@@ -8,8 +8,8 @@
+ /*
+ map.c
+ 
+-This file contains routines for playing around with view_maps,
+-real_maps, path_maps, and cont_maps.
++This file contains routines for playing around with view maps,
++real maps, path_maps, and cont_maps.
+ */
+ 
+ #include <string.h>
+@@ -90,7 +90,7 @@ vmap_mark_up_cont(int *cont_map, view_map_t *vmap, loc_t loc, char bad_terrain)
+ 			    this_terrain = MAP_LAND;
+ 			else if (vmap[new_loc].contents == MAP_SEA)
+ 			    this_terrain = MAP_SEA;
+-			else this_terrain = map[new_loc].contents;
++			else this_terrain = game.real_map[new_loc].contents;
+ 				
+ 			if (this_terrain != bad_terrain) { /* on continent? */
+ 			    cont_map[new_loc] = 1;
+@@ -134,9 +134,9 @@ rmap_mark_up_cont(int *cont_map, loc_t loc, char bad_terrain)
+     int i;
+     loc_t new_loc;
+ 	
+-    if (!map[loc].on_board) return; /* off board */
++    if (!game.real_map[loc].on_board) return; /* off board */
+     if (cont_map[loc]) return; /* already marked */
+-    if (map[loc].contents == bad_terrain) return; /* off continent */
++    if (game.real_map[loc].contents == bad_terrain) return; /* off continent */
+ 	
+     cont_map[loc] = 1; /* on continent */
+ 
+@@ -188,8 +188,8 @@ vmap_cont_scan(int *cont_map, view_map_t *vmap)
+ 	    case MAP_LAND: break;
+ 	    case MAP_SEA: break;
+ 	    default: /* check for city underneath */
+-		if (map[i].contents == MAP_CITY) {
+-		    switch (map[i].cityp->owner) {
++		if (game.real_map[i].contents == MAP_CITY) {
++		    switch (game.real_map[i].cityp->owner) {
+ 			COUNT (USER, counts.user_cities);
+ 			COUNT (COMP, counts.comp_cities);
+ 			COUNT (UNOWNED, counts.unowned_cities);
+@@ -217,7 +217,7 @@ rmap_cont_scan(int *cont_map)
+     for (i = 0; i < MAP_SIZE; i++) {
+ 	if (cont_map[i]) { /* cell on continent? */
+ 	    counts.size += 1;
+-	    if (map[i].contents == MAP_CITY)
++	    if (game.real_map[i].contents == MAP_CITY)
+ 		counts.unowned_cities += 1;
+ 	}
+     }
+@@ -292,7 +292,7 @@ vmap_find_xobj(path_map_t path_map[], view_map_t *vmap,
+ 	expand_perimeter (path_map, vmap, move_info, from, expand,
+ 			  cur_cost, 1, 1, to, to);
+ 		
+-	if (trace_pmap)
++	if (game.trace_pmap)
+ 	    print_pzoom ("After xobj loop:", path_map, vmap);
+ 
+ 	cur_cost += 1;
+@@ -377,7 +377,7 @@ vmap_find_lwobj(path_map_t path_map[], view_map_t *vmap,
+ 	expand_perimeter (path_map, vmap, move_info, new_water,
+ 			  T_WATER, cur_cost+1, 1, 1, cur_water, NULL);
+ 				  
+-	if (trace_pmap)
++	if (game.trace_pmap)
+ 	    print_pzoom ("After lwobj loop:", path_map, vmap);
+ 		
+ 	cur_cost += 2;
+@@ -458,7 +458,7 @@ vmap_find_wlobj(path_map_t path_map[], view_map_t *vmap,
+ 	expand_perimeter (path_map, vmap, move_info, new_water,
+ 			  T_WATER, cur_cost+1, 1, 1, cur_water, NULL);
+ 				  
+-	if (trace_pmap)
++	if (game.trace_pmap)
+ 	    print_pzoom ("After wlobj loop:", path_map, vmap);
+ 		
+ 	cur_cost += 2;
+@@ -528,7 +528,7 @@ expand_perimeter(path_map_t *pmap, view_map_t *vmap, move_info_t *move_info,
+ 		  perimeter_t *curp, 
+ 		  int type, int cur_cost, int inc_wcost, int inc_lcost, 
+ 		  perimeter_t *waterp, perimeter_t *landp)
+-/* pmap = path map to update */
++/* pmap = path map to up1date */
+ /* move_info = objectives and weights */
+ /* curp = perimeter to expand */
+ /* type = type of terrain to expand */
+@@ -640,11 +640,11 @@ terrain_type(path_map_t *pmap, view_map_t *vmap, move_info_t *move_info,
+     if (vmap[to_loc].contents == '%') return T_UNKNOWN; /* magic objective */
+     if (vmap[to_loc].contents == ' ') return pmap[from_loc].terrain;
+ 	
+-    switch (map[to_loc].contents) {
++    switch (game.real_map[to_loc].contents) {
+     case MAP_SEA: return T_WATER;
+     case MAP_LAND: return T_LAND;
+     case MAP_CITY:
+-	if (map[to_loc].cityp->owner == move_info->city_owner)
++	if (game.real_map[to_loc].cityp->owner == move_info->city_owner)
+ 	    return T_WATER;
+ 	else
+ 	    return T_UNKNOWN; /* cannot cross */
+@@ -708,7 +708,7 @@ vmap_prune_explore_locs(view_map_t *vmap)
+ 	    FOR_ADJ (loc, new_loc, i) {
+ 		if (new_loc < 0 || new_loc >= MAP_SIZE); /* ignore off map */
+ 		else if (vmap[new_loc].contents == ' '); /* ignore adjacent unexplored */
+-		else if (map[new_loc].contents != MAP_SEA)
++		else if (game.real_map[new_loc].contents != MAP_SEA)
+ 		    pmap[loc].cost += 1; /* count land */
+ 		else pmap[loc].inc_cost += 1; /* count water */
+ 	    }
+@@ -719,7 +719,7 @@ vmap_prune_explore_locs(view_map_t *vmap)
+ 	}
+     }
+ 				
+-    if (print_vmap == 'I')
++    if (game.print_vmap == 'I')
+ 	print_xzoom (vmap);
+ 		
+     for (;;) { /* do high probability predictions */
+@@ -751,7 +751,7 @@ vmap_prune_explore_locs(view_map_t *vmap)
+ 	SWAP (from, to);
+     }
+ 	
+-    if (print_vmap == 'I')
++    if (game.print_vmap == 'I')
+ 	print_xzoom (vmap);
+ 		
+     /* one pass for medium probability predictions */
+@@ -772,13 +772,13 @@ vmap_prune_explore_locs(view_map_t *vmap)
+     }
+     SWAP (from, to);
+ 
+-    if (print_vmap == 'I') print_xzoom (vmap);
++    if (game.print_vmap == 'I') print_xzoom (vmap);
+ 		
+     /* multiple low probability passes */
+     for (;;) {
+ 	/* return if very little left to explore */
+ 	if (from->len + explored >= MAP_SIZE - MAP_HEIGHT) {
+-	    if (print_vmap == 'I') print_xzoom (vmap);
++	    if (game.print_vmap == 'I') print_xzoom (vmap);
+ 	    return;
+ 	}
+ 	to->len = 0;
+@@ -803,7 +803,7 @@ vmap_prune_explore_locs(view_map_t *vmap)
+ 	if (copied == from->len) break; /* nothing expanded */
+ 	SWAP (from, to);
+     }
+-    if (print_vmap == 'I') print_xzoom (vmap);
++    if (game.print_vmap == 'I') print_xzoom (vmap);
+ }
+ 
+ /*
+@@ -1007,7 +1007,7 @@ vmap_find_dir(path_map_t path_map[], view_map_t *vmap,
+     int path_count, bestpath;
+     char *p;
+ 	
+-    if (trace_pmap)
++    if (game.trace_pmap)
+ 	print_pzoom ("Before vmap_find_dir:", path_map, vmap);
+ 		
+     bestcount = -INFINITY; /* no best yet */
+@@ -1091,7 +1091,7 @@ rmap_shore(loc_t loc)
+     loc_t i, j;
+ 
+     FOR_ADJ_ON (loc, j, i)
+-	if (map[j].contents == MAP_SEA)
++	if (game.real_map[j].contents == MAP_SEA)
+ 	    return (true);
+ 
+     return (false);
+@@ -1105,7 +1105,7 @@ vmap_shore(view_map_t *vmap, loc_t loc)
+     FOR_ADJ_ON (loc, j, i)
+ 	if (vmap[j].contents != ' ' &&
+ 	    vmap[j].contents != MAP_LAND &&
+-	    map[j].contents == MAP_SEA)
++	    game.real_map[j].contents == MAP_SEA)
+ 	    return (true);
+ 
+     return (false);
+@@ -1121,12 +1121,12 @@ vmap_at_sea(view_map_t *vmap, loc_t loc)
+ {
+     loc_t i, j;
+ 
+-    if (map[loc].contents != MAP_SEA)
++    if (game.real_map[loc].contents != MAP_SEA)
+ 	return (false);
+     FOR_ADJ_ON (loc, j, i)
+ 	if (vmap[j].contents == ' '
+ 	    || vmap[j].contents == MAP_LAND
+-	    || map[j].contents != MAP_SEA)
++	    || game.real_map[j].contents != MAP_SEA)
+ 	    return (false);
+ 
+     return (true);
+@@ -1137,10 +1137,10 @@ rmap_at_sea (loc_t loc)
+ {
+     loc_t i, j;
+ 
+-    if (map[loc].contents != MAP_SEA)
++    if (game.real_map[loc].contents != MAP_SEA)
+ 	return (false);
+     FOR_ADJ_ON (loc, j, i) {
+-	if (map[j].contents != MAP_SEA)
++	if (game.real_map[j].contents != MAP_SEA)
+ 	    return (false);
+     }
+     return (true);
+diff --git a/object.c b/object.c
+index 6ebb09a..616412d 100644
+--- a/object.c
++++ b/object.c
+@@ -34,11 +34,11 @@ find_nearest_city(loc_t loc, int owner, loc_t *city_loc)
+     best_loc = loc;
+ 	
+     for (i = 0; i < NUM_CITY; i++) 
+-	if (city[i].owner == owner) {
+-	    new_dist = dist (loc, city[i].loc);
++	if (game.city[i].owner == owner) {
++	    new_dist = dist (loc, game.city[i].loc);
+ 	    if (new_dist < best_dist) {
+ 		best_dist = new_dist;
+-		best_loc = city[i].loc;
++		best_loc = game.city[i].loc;
+ 	    }
+ 	}
+     *city_loc = best_loc;
+@@ -51,7 +51,7 @@ Given the location of a city, return the index of that city.
+ 
+ city_info_t *find_city(loc_t loc)
+ {
+-    return (map[loc].cityp);
++    return (game.real_map[loc].cityp);
+ }
+ 
+ /*
+@@ -90,7 +90,7 @@ piece_info_t *find_obj(int type, loc_t loc)
+ {
+     piece_info_t *p;
+ 
+-    for (p = map[loc].objp; p != NULL; p = p->loc_link.next)
++    for (p = game.real_map[loc].objp; p != NULL; p = p->loc_link.next)
+ 	if (p->type == type) return (p);
+ 
+     return (NULL);
+@@ -104,7 +104,7 @@ piece_info_t *find_nfull(int type, loc_t loc)
+ {
+     piece_info_t *p;
+ 
+-    for (p = map[loc].objp; p != NULL; p = p->loc_link.next)
++    for (p = game.real_map[loc].objp; p != NULL; p = p->loc_link.next)
+ 	if (p->type == type) {
+ 	    if (obj_capacity (p) > p->count) return (p);
+ 	}
+@@ -139,7 +139,7 @@ find_obj_at_loc(loc_t loc)
+ {
+     piece_info_t *p, *best;
+ 	
+-    best = map[loc].objp;
++    best = game.real_map[loc].objp;
+     if (best == NULL) return (NULL); /* nothing here */
+ 
+     for (p = best->loc_link.next; p != NULL; p = p->loc_link.next)
+@@ -200,10 +200,10 @@ void kill_obj(piece_info_t *obj, loc_t loc)
+ void kill_one(piece_info_t **list, piece_info_t *obj)
+ {
+     UNLINK (list[obj->type], obj, piece_link); /* unlink obj from all lists */
+-    UNLINK (map[obj->loc].objp, obj, loc_link);
++    UNLINK (game.real_map[obj->loc].objp, obj, loc_link);
+     disembark (obj);
+ 
+-    LINK (free_list, obj, piece_link); /* return object to free list */
++    LINK (game.free_list, obj, piece_link); /* return object to free list */
+     obj->hits = 0; /* let all know this object is dead */
+     obj->moved = piece_attr[obj->type].speed; /* object has moved */
+ }
+@@ -220,7 +220,7 @@ void kill_city(city_info_t *cityp)
+     piece_info_t **list;
+ 	
+     /* change ownership of hardware at this location; but not satellites */
+-    for (p = map[cityp->loc].objp; p; p = next_p) {
++    for (p = game.real_map[cityp->loc].objp; p; p = next_p) {
+ 	next_p = p->loc_link.next;
+ 		
+ 	if (p->type == ARMY) kill_obj (p, cityp->loc);
+@@ -271,11 +271,11 @@ produce(city_info_t *cityp)
+ 
+     cityp->work -= piece_attr[(int)cityp->prod].build_time;
+ 	
+-    ASSERT (free_list); /* can we allocate? */
+-    new = free_list;
+-    UNLINK (free_list, new, piece_link);
++    ASSERT (game.free_list); /* can we allocate? */
++    new = game.free_list;
++    UNLINK (game.free_list, new, piece_link);
+     LINK (list[(int)cityp->prod], new, piece_link);
+-    LINK (map[cityp->loc].objp, new, loc_link);
++    LINK (game.real_map[cityp->loc].objp, new, loc_link);
+     new->cargo_link.next = NULL;
+     new->cargo_link.prev = NULL;
+ 	
+@@ -319,19 +319,19 @@ void move_obj(piece_info_t *obj, loc_t new_loc)
+ 	
+     disembark (obj); /* remove object from any ship */
+ 	
+-    UNLINK (map[old_loc].objp, obj, loc_link);
+-    LINK (map[new_loc].objp, obj, loc_link);
++    UNLINK (game.real_map[old_loc].objp, obj, loc_link);
++    LINK (game.real_map[new_loc].objp, obj, loc_link);
+ 
+     /* move any objects contained in object */
+     for (p = obj->cargo; p != NULL; p = p->cargo_link.next) {
+ 	p->loc = new_loc;
+-	UNLINK (map[old_loc].objp, p, loc_link);
+-	LINK (map[new_loc].objp, p, loc_link);
++	UNLINK (game.real_map[old_loc].objp, p, loc_link);
++	LINK (game.real_map[new_loc].objp, p, loc_link);
+     }
+ 	
+     switch (obj->type) { /* board new ship */
+     case FIGHTER:
+-	if (map[obj->loc].cityp == NULL) { /* not in a city? */
++	if (game.real_map[obj->loc].cityp == NULL) { /* not in a city? */
+ 	    p = find_nfull (CARRIER, obj->loc);
+ 	    if (p != NULL) embark (p, obj);
+ 	}
+@@ -363,10 +363,10 @@ bounce(loc_t loc, loc_t dir1, loc_t dir2, loc_t dir3)
+     int new_loc;
+ 
+     new_loc = loc + dir_offset[MOVE_DIR (dir1)];
+-    if (map[new_loc].on_board) return dir1;
++    if (game.real_map[new_loc].on_board) return dir1;
+ 
+     new_loc = loc + dir_offset[MOVE_DIR (dir2)];
+-    if (map[new_loc].on_board) return dir2;
++    if (game.real_map[new_loc].on_board) return dir2;
+ 
+     return dir3;
+ }
+@@ -382,7 +382,7 @@ move_sat1(piece_info_t *obj)
+     dir = MOVE_DIR(obj->func);
+     new_loc = obj->loc + dir_offset[dir];
+ 
+-    if (!map[new_loc].on_board) {
++    if (!game.real_map[new_loc].on_board) {
+ 	switch (obj->func) {
+ 	case MOVE_NE:
+ 	    obj->func = bounce (obj->loc, MOVE_NW, MOVE_SE, MOVE_SW);
+@@ -438,7 +438,7 @@ bool good_loc(piece_info_t *obj, loc_t loc)
+     view_map_t *vmap;
+     piece_info_t *p;
+ 	
+-    if (!map[loc].on_board) return (false);
++    if (!game.real_map[loc].on_board) return (false);
+ 
+     vmap = MAP (obj->owner);
+ 
+@@ -452,7 +452,7 @@ bool good_loc(piece_info_t *obj, loc_t loc)
+     }
+ 
+     /* ships and fighters can move into cities */
+-    if (map[loc].cityp && map[loc].cityp->owner == obj->owner)
++    if (game.real_map[loc].cityp && game.real_map[loc].cityp->owner == obj->owner)
+ 	return (true);
+ 
+     /* fighters can move onto unfull carriers */
+@@ -516,7 +516,7 @@ scan(view_map_t vmap[], loc_t loc)
+ #ifdef DEBUG
+     check (); /* perform a consistency check */
+ #endif
+-    ASSERT (map[loc].on_board); /* passed loc must be on board */
++    ASSERT (game.real_map[loc].on_board); /* passed loc must be on board */
+ 
+     for (i = 0; i < 8; i++) { /* for each surrounding cell */
+ 	loc_t xloc = loc + dir_offset[i];
+@@ -534,11 +534,11 @@ scan_sat(view_map_t vmap[], loc_t loc)
+ {
+ 	int i;
+ 	
+-	ASSERT (map[loc].on_board);
++	ASSERT (game.real_map[loc].on_board);
+ 
+ 	for (i = 0; i < 8; i++) { /* for each surrounding cell */
+ 		loc_t xloc = loc + 2 * dir_offset[i];
+-		if (xloc >= 0 && xloc < MAP_SIZE && map[xloc].on_board)
++		if (xloc >= 0 && xloc < MAP_SIZE && game.real_map[xloc].on_board)
+ 			scan (vmap, xloc);
+ 	}
+ 	scan (vmap, loc);
+@@ -555,25 +555,26 @@ char city_char[] = {MAP_CITY, 'O', 'X'};
+ void
+ update(view_map_t vmap[], loc_t loc)
+ {
+-    vmap[loc].seen = date;
++    vmap[loc].seen = game.date;
+ 	
+-    if (map[loc].cityp) /* is there a city here? */
+-	vmap[loc].contents = city_char[map[loc].cityp->owner];
++    if (game.real_map[loc].cityp) /* is there a city here? */
++	vmap[loc].contents = city_char
++	    [game.real_map[loc].cityp->owner];
+ 	
+     else {
+ 	piece_info_t *p = find_obj_at_loc (loc);
+ 		
+ 	if (p == NULL) /* nothing here? */
+-	    vmap[loc].contents = map[loc].contents;
++	    vmap[loc].contents = game.real_map[loc].contents;
+ 	else if (p->owner == USER)
+ 	    vmap[loc].contents = piece_attr[p->type].sname;
+ 	else
+ 	    vmap[loc].contents = tolower (piece_attr[p->type].sname);
+     }
+-    if (vmap == comp_map)
+-	display_locx (COMP, comp_map, loc);
+-    else if (vmap == user_map)
+-	display_locx (USER, user_map, loc);
++    if (vmap == game.comp_map)
++	display_locx (COMP, game.comp_map, loc);
++    else if (vmap == game.user_map)
++	display_locx (USER, game.user_map, loc);
+ }
+ 
+ /*
+@@ -585,7 +586,7 @@ asking until we get a valid answer.
+ void
+ set_prod(city_info_t *cityp)
+ {
+-    scan (user_map, cityp->loc);
++    scan (game.user_map, cityp->loc);
+     display_loc_u (cityp->loc);
+ 
+     for (;;) {
+diff --git a/term.c b/term.c
+index 0d7f833..1d95d80 100644
+--- a/term.c
++++ b/term.c
+@@ -173,7 +173,7 @@ pdebug(char *fmt, ...)
+ {
+     va_list ap;
+ 
+-    if (!print_debug) return;
++    if (!game.print_debug) return;
+ 
+     va_start(ap, fmt);
+     if (need_delay)
+diff --git a/usermove.c b/usermove.c
+index 6a141ed..8478f8f 100644
+--- a/usermove.c
++++ b/usermove.c
+@@ -38,33 +38,33 @@ user_move(void)
+        user what to produce in each city. */
+ 
+     for (i = 0; i < NUM_OBJECTS; i++)
+-	for (obj = user_obj[i]; obj != NULL; obj = obj->piece_link.next) {
++	for (obj = game.user_obj[i]; obj != NULL; obj = obj->piece_link.next) {
+ 	    obj->moved = 0; /* nothing moved yet */
+-	    scan (user_map, obj->loc); /* refresh user's view of world */
++	    scan (game.user_map, obj->loc); /* refresh user's view of world */
+ 	}
+ 
+     /* produce new hardware */
+     for (i = 0; i < NUM_CITY; i++)
+-	if (city[i].owner == USER) {
+-	    scan (user_map, city[i].loc);
+-	    prod = city[i].prod;
++	if (game.city[i].owner == USER) {
++	    scan (game.user_map, game.city[i].loc);
++	    prod = game.city[i].prod;
+ 
+ 	    if (prod == NOPIECE) { /* need production? */
+-		set_prod (&(city[i])); /* ask user what to produce */
++		set_prod (&(game.city[i])); /* ask user what to produce */
+ 	    }
+-	    else if (city[i].work++ >= (long)piece_attr[prod].build_time) {
++	    else if (game.city[i].work++ >= (long)piece_attr[prod].build_time) {
+ 		/* kermyt begin */
+-		ksend("%s has been completed at city %d.\n", piece_attr[prod].article,loc_disp(city[i].loc));
++		ksend("%s has been completed at city %d.\n", piece_attr[prod].article,loc_disp(game.city[i].loc));
+ 		/* kermyt end */
+-		comment ("%s has been completed at city %d.\n", piece_attr[prod].article,loc_disp(city[i].loc));
++		comment ("%s has been completed at city %d.\n", piece_attr[prod].article,loc_disp(game.city[i].loc));
+ 
+-		produce (&city[i]);
++		produce (&game.city[i]);
+ 		/* produce should set object.moved to 0 */
+ 	    }
+ 	}
+ 
+     /* move all satellites */
+-    for (obj = user_obj[SATELLITE]; obj != NULL; obj = next_obj) {
++    for (obj = game.user_obj[SATELLITE]; obj != NULL; obj = next_obj) {
+ 	next_obj = obj->piece_link.next;
+ 	move_sat (obj);
+     }
+@@ -78,7 +78,7 @@ user_move(void)
+ 	sector_change (); /* allow screen to be redrawn */
+ 
+ 	for (j = 0; j < NUM_OBJECTS; j++) /* loop through obj lists */
+-	    for (obj = user_obj[move_order[j]]; obj != NULL;
++	    for (obj = game.user_obj[move_order[j]]; obj != NULL;
+ 		 obj = next_obj) { /* loop through objs in list */
+ 		next_obj = obj->piece_link.next;
+ 
+@@ -91,7 +91,7 @@ user_move(void)
+ 	    redisplay (); /* show it to the user */
+ 	}
+     }
+-    if (save_movie) save_movie_screen ();
++    if (game.save_movie) save_movie_screen ();
+ }
+ 
+ /*
+@@ -173,8 +173,8 @@ piece_move(piece_info_t *obj)
+ 	   range = 0, fighter crashes and burns and turn is over. */
+ 
+ 	if (obj->type == FIGHTER && obj->hits > 0) {
+-	    if ((user_map[obj->loc].contents == 'O'
+-		 || user_map[obj->loc].contents == 'C')
++	    if ((game.user_map[obj->loc].contents == 'O'
++		 || game.user_map[obj->loc].contents == 'C')
+ 		&& obj->moved > 0) {
+ 		obj->range = piece_attr[FIGHTER].range;
+ 		obj->moved = speed;
+@@ -196,7 +196,7 @@ piece_move(piece_info_t *obj)
+ 	&& !changed_loc /* object never changed location? */
+ 	&& obj->type != ARMY && obj->type != FIGHTER /* it is a boat? */
+ 	&& obj->hits < max_hits /* it is damaged? */
+-	&& user_map[obj->loc].contents == 'O') /* it is in port? */
++	&& game.user_map[obj->loc].contents == 'O') /* it is in port? */
+ 	obj->hits++; /* fix some damage */
+ }
+ 
+@@ -239,26 +239,26 @@ void move_explore(piece_info_t *obj)
+ 
+     switch (obj->type) {
+     case ARMY:
+-	loc = vmap_find_lobj (path_map, user_map, obj->loc, &user_army);
++	loc = vmap_find_lobj (path_map, game.user_map, obj->loc, &user_army);
+ 	terrain = "+";
+ 	break;
+     case FIGHTER:
+-	loc = vmap_find_aobj (path_map, user_map, obj->loc, &user_fighter);
++	loc = vmap_find_aobj (path_map, game.user_map, obj->loc, &user_fighter);
+ 	terrain = "+.O";
+ 	break;
+     default:
+-	loc = vmap_find_wobj (path_map, user_map, obj->loc, &user_ship);
++	loc = vmap_find_wobj (path_map, game.user_map, obj->loc, &user_ship);
+ 	terrain = ".O";
+ 	break;
+     }
+ 	
+     if (loc == obj->loc) return; /* nothing to explore */
+ 
+-    if (user_map[loc].contents == ' ' && path_map[loc].cost == 2)
++    if (game.user_map[loc].contents == ' ' && path_map[loc].cost == 2)
+ 	vmap_mark_adjacent (path_map, obj->loc);
+-    else vmap_mark_path (path_map, user_map, loc);
++    else vmap_mark_path (path_map, game.user_map, loc);
+ 
+-    loc = vmap_find_dir (path_map, user_map, obj->loc, terrain, " ");
++    loc = vmap_find_dir (path_map, game.user_map, obj->loc, terrain, " ");
+     if (loc != obj->loc) move_obj (obj, loc);
+ }
+ 
+@@ -308,16 +308,16 @@ move_armyload(piece_info_t *obj)
+     }
+     else { /* look for nearest non-full transport */
+ 	int i;
+-	(void) memcpy (amap, user_map, sizeof (view_map_t) * MAP_SIZE);
++	(void) memcpy (amap, game.user_map, sizeof (view_map_t) * MAP_SIZE);
+ 
+ 	/* mark loading transports or cities building transports */
+-	for (p = user_obj[TRANSPORT]; p; p = p->piece_link.next)
++	for (p = game.user_obj[TRANSPORT]; p; p = p->piece_link.next)
+ 	    if (p->count < obj_capacity (p)) /* not full? */
+ 		amap[p->loc].contents = '$';
+ 		
+ 	for (i = 0; i < NUM_CITY; i++)
+-	    if (city[i].owner == USER && city[i].prod == TRANSPORT)
+-		amap[city[i].loc].contents = '$';
++	    if (game.city[i].owner == USER && game.city[i].prod == TRANSPORT)
++		amap[game.city[i].loc].contents = '$';
+     }
+ }
+ 		
+@@ -333,13 +333,13 @@ move_armyattack(piece_info_t *obj)
+ 
+     ASSERT (obj->type == ARMY);
+ 
+-    loc = vmap_find_lobj (path_map, user_map, obj->loc, &user_army_attack);
++    loc = vmap_find_lobj (path_map, game.user_map, obj->loc, &user_army_attack);
+ 	
+     if (loc == obj->loc) return; /* nothing to attack */
+ 
+-    vmap_mark_path (path_map, user_map, loc);
++    vmap_mark_path (path_map, game.user_map, loc);
+ 
+-    loc = vmap_find_dir (path_map, user_map, obj->loc, "+", "X*a");
++    loc = vmap_find_dir (path_map, game.user_map, obj->loc, "+", "X*a");
+     if (loc != obj->loc) move_obj (obj, loc);
+ }
+ 
+@@ -366,19 +366,19 @@ move_repair(piece_info_t *obj)
+ 	return;
+     }
+ 	
+-    if (user_map[obj->loc].contents == 'O') { /* it is in port? */
++    if (game.user_map[obj->loc].contents == 'O') { /* it is in port? */
+ 	obj->moved += 1;
+ 	return;
+     }
+ 
+-    loc = vmap_find_wobj (path_map, user_map, obj->loc, &user_ship_repair);
++    loc = vmap_find_wobj (path_map, game.user_map, obj->loc, &user_ship_repair);
+ 	
+     if (loc == obj->loc) return; /* no reachable city */
+ 
+-    vmap_mark_path (path_map, user_map, loc);
++    vmap_mark_path (path_map, game.user_map, loc);
+ 
+     /* try to be next to ocean to avoid enemy pieces */
+-    loc = vmap_find_dir (path_map, user_map, obj->loc, ".O", ".");
++    loc = vmap_find_dir (path_map, game.user_map, obj->loc, ".O", ".");
+     if (loc != obj->loc) move_obj (obj, loc);
+ }
+ 
+@@ -411,7 +411,7 @@ move_land(piece_info_t *obj)
+ 
+     best_dist = find_nearest_city (obj->loc, USER, &best_loc);
+ 
+-    for (p = user_obj[CARRIER]; p != NULL; p = p->piece_link.next) {
++    for (p = game.user_obj[CARRIER]; p != NULL; p = p->piece_link.next) {
+ 	long new_dist = dist (obj->loc, p->loc);
+ 	if (new_dist < best_dist) {
+ 	    best_dist = new_dist;
+@@ -487,12 +487,12 @@ void move_to_dest(piece_info_t *obj, loc_t dest)
+ 	break;
+     }
+ 	
+-    new_loc = vmap_find_dest (path_map, user_map, obj->loc, dest,
++    new_loc = vmap_find_dest (path_map, game.user_map, obj->loc, dest,
+ 			      USER, fterrain);
+     if (new_loc == obj->loc) return; /* can't get there */
+ 	
+-    vmap_mark_path (path_map, user_map, dest);
+-    new_loc = vmap_find_dir (path_map, user_map, obj->loc, mterrain, " .");
++    vmap_mark_path (path_map, game.user_map, dest);
++    new_loc = vmap_find_dir (path_map, game.user_map, obj->loc, mterrain, " .");
+     if (new_loc == obj->loc) return; /* can't move ahead */
+     ASSERT (good_loc (obj, new_loc));
+     move_obj (obj, new_loc); /* everything looks good */
+@@ -590,7 +590,7 @@ the city.
+ void
+ user_skip(piece_info_t *obj)
+ {
+-    if (obj->type == ARMY && user_map[obj->loc].contents == 'O')
++    if (obj->type == ARMY && game.user_map[obj->loc].contents == 'O')
+ 	move_army_to_city (obj, obj->loc);
+     else obj->moved++;
+ }
+@@ -804,7 +804,7 @@ user_build(piece_info_t *obj)
+ {
+     city_info_t *cityp;
+ 
+-    if (user_map[obj->loc].contents != 'O') { /* no user city here? */
++    if (game.user_map[obj->loc].contents != 'O') { /* no user city here? */
+ 	complain ();
+ 	return;
+     }
+@@ -833,7 +833,7 @@ user_dir(piece_info_t *obj, int dir)
+ 	move_obj (obj, loc);
+ 	return;
+     }
+-    if (!map[loc].on_board) {
++    if (!game.real_map[loc].on_board) {
+ 	error ("You cannot move to the edge of the world.");
+ 	delay ();
+ 	return;
+@@ -854,33 +854,33 @@ necessary, and attack if necessary.
+ void
+ user_dir_army(piece_info_t *obj, loc_t loc)
+ {
+-    if (user_map[loc].contents == 'O') /* attacking own city */
++    if (game.user_map[loc].contents == 'O') /* attacking own city */
+ 	move_army_to_city (obj, loc);
+ 
+-    else if (user_map[loc].contents == 'T') /* transport full? */
++    else if (game.user_map[loc].contents == 'T') /* transport full? */
+ 	fatal (obj, loc,
+ 	       "Sorry, sir.  There is no more room on the transport.  Do you insist? ",
+ 	       "Your army jumped into the briny and drowned.");
+ 
+-    else if (map[loc].contents == MAP_SEA) { /* going for a swim? */
++    else if (game.real_map[loc].contents == MAP_SEA) { /* going for a swim? */
+ 	bool enemy_killed = false;
+ 
+ 	if (!getyn ( /* thanks to Craig Hansen for this next message */
+ 		"Troops can't walk on water, sir.  Do you really want to go to sea? "))
+ 	    return;
+ 
+-	if (user_map[obj->loc].contents == 'T')
++	if (game.user_map[obj->loc].contents == 'T')
+ 	{
+ 	    comment ("Your army jumped into the briny and drowned.");
+ 	    ksend ("Your army jumped into the briny and drowned.\n");
+ 	}
+-	else if (user_map[loc].contents == MAP_SEA)
++	else if (game.user_map[loc].contents == MAP_SEA)
+ 	{
+ 	    comment ("Your army marched dutifully into the sea and drowned.");
+ 	    ksend ("Your army marched dutifully into the sea and drowned.\n");
+ 	}
+ 	else { /* attack something at sea */
+-	    enemy_killed = islower (user_map[loc].contents);
++	    enemy_killed = islower (game.user_map[loc].contents);
+ 	    attack (obj, loc);
+ 	
+ 	    if (obj->hits > 0) /* ship won? */
+@@ -892,12 +892,12 @@ user_dir_army(piece_info_t *obj, loc_t loc)
+ 	if (obj->hits > 0) {
+ 	    kill_obj (obj, loc);
+ 	    if (enemy_killed)
+-		scan (comp_map, loc);
++		scan (game.comp_map, loc);
+ 	}
+     }
+ 		
+-    else if (isupper (user_map[loc].contents)
+-	     && user_map[loc].contents != 'X') { /* attacking self */
++    else if (isupper (game.user_map[loc].contents)
++	     && game.user_map[loc].contents != 'X') { /* attacking self */
+ 	if (!getyn (
+ 		"Sir, those are our men!  Do you really want to attack them? "))
+ 	    return;
+@@ -916,12 +916,12 @@ three cases:  attacking a city, attacking ourself, attacking the enemy.
+ void
+ user_dir_fighter(piece_info_t *obj, loc_t loc)
+ {
+-    if (map[loc].contents == MAP_CITY)
++    if (game.real_map[loc].contents == MAP_CITY)
+ 	fatal (obj, loc,
+ 	       "That's never worked before, sir.  Do you really want to try? ",
+ 	       "Your fighter was shot down.");
+ 
+-    else if (isupper (user_map[loc].contents)) {
++    else if (isupper (game.user_map[loc].contents)) {
+ 	if (!getyn ("Sir, those are our men!  "
+ 		    "Do you really want to attack them? "))
+ 	    return;
+@@ -941,27 +941,27 @@ a city, attacking self, attacking enemy.
+ void
+ user_dir_ship(piece_info_t *obj, loc_t loc)
+ {
+-    if (map[loc].contents == MAP_CITY) {
+-	(void) sprintf (jnkbuf, "Your %s broke up on shore.",
++    if (game.real_map[loc].contents == MAP_CITY) {
++	(void) sprintf (game.jnkbuf, "Your %s broke up on shore.",
+ 			piece_attr[obj->type].name);
+ 
+ 	fatal (obj, loc,
+ 	       "That's never worked before, sir.  Do you really want to try? ",
+-	       jnkbuf);
++	       game.jnkbuf);
+     }
+ 
+-    else if (map[loc].contents == MAP_LAND) { /* moving ashore? */
++    else if (game.real_map[loc].contents == MAP_LAND) { /* moving ashore? */
+ 	bool enemy_killed = false;
+ 
+ 	if (!getyn ("Ships need sea to float, sir.  Do you really want to go ashore? ")) return;
+ 
+-	if (user_map[loc].contents == MAP_LAND)
++	if (game.user_map[loc].contents == MAP_LAND)
+ 	{
+ 	    comment ("Your %s broke up on shore.", piece_attr[obj->type].name);
+ 	    ksend ("Your %s broke up on shore.", piece_attr[obj->type].name);
+ 	}
+ 	else { /* attack something on shore */
+-	    enemy_killed = islower (user_map[loc].contents);
++	    enemy_killed = islower (game.user_map[loc].contents);
+ 	    attack (obj, loc);
+ 
+ 	    if (obj->hits > 0) /* ship won? */
+@@ -973,11 +973,11 @@ user_dir_ship(piece_info_t *obj, loc_t loc)
+ 	if (obj->hits > 0) {
+ 	    kill_obj (obj, loc);
+ 	    if (enemy_killed)
+-		scan (comp_map, loc);
++		scan (game.comp_map, loc);
+ 	}
+     }
+ 		
+-    else if (isupper (user_map[loc].contents)) { /* attacking self */
++    else if (isupper (game.user_map[loc].contents)) { /* attacking self */
+ 	if (!getyn (
+ 		"Sir, those are our men!  Do you really want to attack them? "))
+ 	    return;
+@@ -1009,16 +1009,16 @@ move_army_to_city(piece_info_t *obj, loc_t city_loc)
+ }
+ 
+ /*
+-Cancel automove mode.
++Cancel game.automove mode.
+ */
+ 
+ void
+ user_cancel_auto(void)
+ {
+-    if (!automove)
++    if (!game.automove)
+ 	comment ("Not in auto mode!");
+     else {
+-	automove = false;
++	game.automove = false;
+ 	comment ("Auto mode cancelled.");
+     }
+ }
+@@ -1048,7 +1048,7 @@ awake(piece_info_t *obj)
+     int i;
+     long t;
+ 
+-    if (obj->type == ARMY && vmap_at_sea (user_map, obj->loc)) {
++    if (obj->type == ARMY && vmap_at_sea (game.user_map, obj->loc)) {
+ 	obj->moved = piece_attr[ARMY].range;
+ 	return (false);
+     }
+@@ -1062,7 +1062,7 @@ awake(piece_info_t *obj)
+ 	return (true);
+     }
+     for (i = 0; i < 8; i++) { /* for each surrounding cell */
+-	char c = user_map[obj->loc+dir_offset[i]].contents;
++	char c = game.user_map[obj->loc+dir_offset[i]].contents;
+ 
+ 	if (islower (c) || c == MAP_CITY || c == 'X') {
+ 	    if (obj->func < 0) obj->func = NOFUNC; /* awaken */
+diff --git a/util.c b/util.c
+index 88a084e..f5e3fe0 100644
+--- a/util.c
++++ b/util.c
+@@ -27,7 +27,7 @@ assert(char *expression, char *file, int line)
+ {
+     char buf[STRSIZE];
+ 
+-    (void) move (lines, 0);
++    (void) move (game.lines, 0);
+     close_disp ();
+ 
+     (void) sprintf (buf, "assert failed: file %s line %d: %s",
+@@ -98,8 +98,8 @@ check(void)
+     /* Mark all objects in free list.  Make sure objects in free list
+        have zero hits. */
+ 	
+-    for (p = free_list; p != NULL; p = p->piece_link.next) {
+-	i = p - object;
++    for (p = game.free_list; p != NULL; p = p->piece_link.next) {
++	i = p - game.object;
+ 	ASSERT (!in_free[i]);
+ 	in_free[i] = 1;
+ 	ASSERT (p->hits == 0);
+@@ -113,14 +113,14 @@ check(void)
+        have a good owner, and good hits. */
+ 	
+     for (i = 0; i < MAP_SIZE; i++) {
+-	if (map[i].cityp) ASSERT (map[i].cityp->loc == i);
++	if (game.real_map[i].cityp) ASSERT (game.real_map[i].cityp->loc == i);
+ 		
+-	for (p = map[i].objp; p != NULL; p = p->loc_link.next) {
++	for (p = game.real_map[i].objp; p != NULL; p = p->loc_link.next) {
+ 	    ASSERT (p->loc == i);
+ 	    ASSERT (p->hits > 0);
+ 	    ASSERT (p->owner == USER || p->owner == COMP);
+ 				
+-	    j = p - object;
++	    j = p - game.object;
+ 	    ASSERT (!in_loc[j]);
+ 	    in_loc[j] = 1;
+ 			
+@@ -132,24 +132,24 @@ check(void)
+     /* make sure all cities are on map */
+ 
+     for (i = 0; i < NUM_CITY; i++)
+-	ASSERT (map[city[i].loc].cityp == &(city[i]));
++	ASSERT (game.real_map[game.city[i].loc].cityp == &(game.city[i]));
+ 
+     /* Scan object lists. */
+ 	
+-    check_obj (comp_obj, COMP);
+-    check_obj (user_obj, USER);
++    check_obj (game.comp_obj, COMP);
++    check_obj (game.user_obj, USER);
+ 	
+     /* Scan cargo lists. */
+ 	
+-    check_cargo (user_obj[TRANSPORT], ARMY);
+-    check_cargo (comp_obj[TRANSPORT], ARMY);
+-    check_cargo (user_obj[CARRIER], FIGHTER);
+-    check_cargo (comp_obj[CARRIER], FIGHTER);
++    check_cargo (game.user_obj[TRANSPORT], ARMY);
++    check_cargo (game.comp_obj[TRANSPORT], ARMY);
++    check_cargo (game.user_obj[CARRIER], FIGHTER);
++    check_cargo (game.comp_obj[CARRIER], FIGHTER);
+ 	
+     /* Make sure all objects with ship pointers are in cargo. */
+ 
+-    check_obj_cargo (comp_obj);
+-    check_obj_cargo (user_obj);
++    check_obj_cargo (game.comp_obj);
++    check_obj_cargo (game.user_obj);
+ 	
+     /* Make sure every object is either free or in loc and obj list. */
+ 
+@@ -181,7 +181,7 @@ check_obj(piece_info_t **list, int owner)
+ 	    ASSERT (p->type == i);
+ 	    ASSERT (p->hits > 0);
+ 		
+-	    j = p - object;
++	    j = p - game.object;
+ 	    ASSERT (!in_obj[j]);
+ 	    in_obj[j] = 1;
+ 	
+@@ -226,7 +226,7 @@ check_cargo(piece_info_t *list, int cargo_type)
+ 	    ASSERT (q->ship == p);
+ 	    ASSERT (q->loc == p->loc);
+ 			
+-	    j = q - object;
++	    j = q - game.object;
+ 	    ASSERT (!in_cargo[j]);
+ 	    in_cargo[j] = 1;
+ 
+@@ -251,7 +251,7 @@ check_obj_cargo(piece_info_t **list)
+ 
+     for (i = 0; i < NUM_OBJECTS; i++)
+ 	for (p = list[i]; p != NULL; p = p->piece_link.next) {
+-	    if (p->ship) ASSERT (in_cargo[p-object]);
++	    if (p->ship) ASSERT (in_cargo[p-game.object]);
+ 	}
+ }
+ 
+-- 
+2.28.0
+

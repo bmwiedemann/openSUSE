@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            http://www.catb.org/~esr/vms-empire/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Pull-all-globals-into-a-context-struct.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
@@ -37,7 +39,7 @@ same rules that you do. This game is the ancestor of all the multiplayer
 4X simulations out there, including Civilization and Master of Orion.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build CFLAGS="%{optflags}"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 12 12:54:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC10:
+  * 0001-Pull-all-globals-into-a-context-struct.patch
+
+-------------------------------------------------------------------
 Mon Mar 30 11:47:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.15
