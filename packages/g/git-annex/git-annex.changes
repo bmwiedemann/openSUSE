@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  9 02:00:54 UTC 2020 - psimons@suse.com
+
+- Update git-annex to version 8.20200908.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/git-annex-8.20200908/src/CHANGELOG
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:50 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
