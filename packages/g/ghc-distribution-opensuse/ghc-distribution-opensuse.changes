@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Tue Sep  8 09:43:16 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Split the 'guess-changelog' utility into its own subpackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:39 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jul 28 14:56:13 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for min 4GB disk space only for some arches
+  aarch64 ppc64 ppc64le
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:01 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:13:36 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:26 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Mon Jul 23 16:19:08 UTC 2018 - psimons@suse.com
+
+- Update distribution-opensuse to version 1.1.1.
+  Upstream does not provide a change log.
+
+-------------------------------------------------------------------
+Fri Jul 20 13:38:24 UTC 2018 - psimons@suse.com
+
+- Add distribution-opensuse at version 1.0.0.
