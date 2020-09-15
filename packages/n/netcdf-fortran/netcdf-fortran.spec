@@ -39,9 +39,12 @@
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
 %define package_name %pname
+%define compiler_family gnu
 %endif
 
 ExcludeArch:    s390 s390x
+
+%{bcond_with staticlibs}
 
 %if "%flavor" == "gnu-hpc"
 %global compiler_family gnu
@@ -90,6 +93,12 @@ ExcludeArch:    s390 s390x
 %global compiler_family gnu
 %global mpi_flavor mpich
 %{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu7-hpc"
+%global compiler_family gnu
+%{bcond_with mpi}
+%global c_f_ver 7
 %endif
 
 %if "%flavor" == "gnu7-openmpi-hpc"
@@ -142,6 +151,12 @@ ExcludeArch:    s390 s390x
 %{bcond_without mpi}
 %endif
 
+%if "%flavor" == "gnu8-hpc"
+%global compiler_family gnu
+%{bcond_with mpi}
+%global c_f_ver 8
+%endif
+
 %if "%flavor" == "gnu8-openmpi-hpc"
 %{?DisOMPI1}
 %global compiler_family gnu
@@ -190,6 +205,12 @@ ExcludeArch:    s390 s390x
 %global mpi_flavor mpich
 %global c_f_ver 8
 %{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu9-hpc"
+%global compiler_family gnu
+%{bcond_with mpi}
+%global c_f_ver 9
 %endif
 
 %if "%flavor" == "gnu9-openmpi-hpc"
@@ -242,9 +263,71 @@ ExcludeArch:    s390 s390x
 %{bcond_without mpi}
 %endif
 
+%if "%flavor" == "gnu10-hpc"
+%global compiler_family gnu
+%{bcond_with mpi}
+%global c_f_ver 10
+%endif
+
+%if "%flavor" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 1
+%global c_f_ver 10
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu10-openmpi2-hpc"
+%{?DisOMPI2}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 2
+%global c_f_ver 10
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 3
+%global c_f_ver 10
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 4
+%global c_f_ver 10
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu10-mvapich2-hpc"
+%global compiler_family gnu
+%global mpi_flavor mvapich2
+%global c_f_ver 10
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu10-mpich-hpc"
+%global compiler_family gnu
+%global mpi_flavor mpich
+%global c_f_ver 10
+%{bcond_without mpi}
+%endif
+
+%define limit_cores(c:) %{?_smp_mflags: %(a=1;
+              b=$(sed -se "s/.*-j[[:space:]]*\\([[:digit:]]\\+\\).*/\\1/" <<< %_smp_mflags);
+              [ $b -le $a ] || b=$a ;
+              sed -se "s/\\(.*-j[[:space:]]*\\)[[:digit:]]\\+\\(.*\\)/\\1$b/" <<< %_smp_mflags )}
+
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 
 %{?hpc_init:%{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?with_mpi:-m %mpi_flavor %{?mpi_ver:-V %mpi_ver}}}}
+%{!?hpc_package_name_tail:%define hpc_package_name_tail %{nil}}
 
 %if 0%{!?package_name:1}
 %define package_name %{hpc_package_name %_ver}
@@ -293,7 +376,7 @@ working with NetCDF files.
 %package -n     %{libname}%{hpc_package_name_tail %_ver}
 Summary:        Shared libraries for the NetCDF scientific data format
 Group:          System/Libraries
-%hpc_requires
+%{?hpc_requires}
 Requires:       libnetcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc
 
 %description -n %{libname}%{hpc_package_name_tail %_ver}
@@ -337,7 +420,7 @@ Requires:       %{libname}%{hpc_package_name_tail %_ver} = %{version}
 Requires:       libcurl-devel >= 7.18.0
 Requires:       pkgconfig
 Requires:       zlib-devel >= 1.2.5
-%hpc_requires_devel
+%{?hpc_requires_devel}
 Requires:       netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
 
 %description devel
@@ -374,10 +457,12 @@ This package contains the static libraries for
 chmod a-x RELEASE_NOTES.md
 
 %build
+%{?_lto_cflags: %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects}
+%{?with_staticlibs:%{?_smp_mflags:%global _smp_mflags %{limit_cores -c 8}}}
 %{hpc_setup}
 module load netcdf
-export CFLAGS="-I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
-export FCFLAGS="-std=legacy"
+export CFLAGS="%{optflags} -I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
+export FCFLAGS="%{optflags} -std=legacy"
 export FFLAGS=$FCFLAGS
 export CPPFLAGS=$CFLAGS
 export LDFLAGS="-L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
@@ -389,19 +474,21 @@ export F77="mpif77"
 %endif
 %hpc_configure \
     --enable-shared \
-    --enable-netcdf-4 \
-    --enable-dap \
-    --enable-ncgen4 \
     --with-pic \
     --disable-doxygen \
+%if %{with staticlibs}
     --enable-static
+%else
+    --disable-static
+%endif
 
 make %{?_smp_mflags}
 
 %install
 %{hpc_setup}
 module load netcdf
-export CFLAGS="-I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
+export CFLAGS="%{optflags} -I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
+export FCFLAGS="%{optflags}"
 export CPPFLAGS=$CFLAGS
 export LDFLAGS="-L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
 %if %{with mpi}
@@ -511,7 +598,9 @@ export F77="mpif77"
 %dir %{hpc_mandir}
 %{hpc_mandir}/man3/
 
+%if %{with staticlibs}
 %files devel-static
 %{hpc_libdir}/libnetcdff.a
+%endif
 
 %changelog

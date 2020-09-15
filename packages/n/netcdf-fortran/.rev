@@ -144,4 +144,15 @@
     <comment></comment>
     <requestid>822017</requestid>
   </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>95b63ed0022eef543846d717913434dc</srcmd5>
+    <version>4.5.2</version>
+    <time>1600179948</time>
+    <user>dimstar_suse</user>
+    <comment>- Make static build conditional.
+  The race due to libtool not allowing to handle f90 .mod files
+  when building static and dynamic versions of this library requires
+  to disable static builds by default. (forwarded request 834366 from eeich)</comment>
+    <requestid>834367</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 14 14:01:08 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Make static build conditional.
+  The race due to libtool not allowing to handle f90 .mod files
+  when building static and dynamic versions of this library requires
+  to disable static builds by default.
+
+-------------------------------------------------------------------
+Thu Jul 23 16:39:20 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439). 
+- Add build support for openmpi4.
+- Limit the numbers of parallel build to kludge around a race
+  condition due to libtool not being able to handle Fortran .mod
+  file creation and dependencies properly.
+- Make sure, optimization flags are also passed to the Fortran
+  compiler.
+- Remove not used options to configure.  
+- Add -ffat-lto-objects for static build.
+- limit number of parallel jobs as libtool generated builds are
+  racy when .mod files have to be generated.
+- Increasing memory constrains to make sure tests don't fail.
+
+-------------------------------------------------------------------
 Mon Jul 20 10:35:19 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add OpenMPI4 support (disabled < 15.3)
