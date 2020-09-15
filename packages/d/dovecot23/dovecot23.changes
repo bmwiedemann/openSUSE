@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:26:44 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- add dovecot-2.3.11.3-gssapi-nul.patch:
+  Fix for bug introduced in v2.3.11.3. It appears GSSAPI can contain NUL.
+
+  https://github.com/dovecot/core/pull/133
+
+-------------------------------------------------------------------
 Mon Aug 31 15:25:03 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - libsodium is not strictly required, it is only required for the

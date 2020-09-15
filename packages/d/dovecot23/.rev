@@ -496,4 +496,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>832820</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>94a76517abd702b7fc9bd748efc02622</srcmd5>
+    <version>2.3.11.3</version>
+    <time>1600180485</time>
+    <user>dimstar_suse</user>
+    <comment>- add dovecot-2.3.11.3-gssapi-nul.patch:
+  Fix for bug introduced in v2.3.11.3. It appears GSSAPI can contain NUL.
+  https://github.com/dovecot/core/pull/133</comment>
+    <requestid>834633</requestid>
+  </revision>
 </revisionlist>
