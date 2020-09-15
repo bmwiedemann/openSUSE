@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>830359</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c4d943ea83e96ec58969397f8d815a1d</srcmd5>
+    <version>5.15.1</version>
+    <time>1600180139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 5.15.1
+  * A bug-fix release.
+- remove the superfluous Tumbleweed python2 skip hack</comment>
+    <requestid>834347</requestid>
+  </revision>
 </revisionlist>

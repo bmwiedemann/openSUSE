@@ -16,13 +16,9 @@
 #
 
 
-%if 0%{?suse_version} <= 1500
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%else
-%{?!python_module:%define python_module() python3-%{**}}
-%endif
 Name:           python-qtdatavis3d-qt5
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Python bindings for the Qt5 Data Visualization library
 License:        GPL-3.0-only
