@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  9 14:43:22 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Relax over-specified constraint on megaparsec.
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:31 UTC 2020 - psimons@suse.com
 
 - Update config-ini to version 0.2.4.0 revision 1.

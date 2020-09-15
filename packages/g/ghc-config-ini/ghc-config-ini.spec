@@ -60,6 +60,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
+cabal-tweak-dep-ver megaparsec '<9' '< 10'
 
 %build
 %ghc_lib_build
