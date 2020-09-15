@@ -35,7 +35,6 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
-  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -250,6 +249,7 @@ unsorted:
   - SHERPA-MC-devel 
   - SUSEConnect: [x86_64] 
   - SampleICC 
+  - ServiceReport 
   - ShellCheck 
   - SimGear-devel 
   - SoQt-devel 
@@ -1376,6 +1376,7 @@ unsorted:
   - budgie-calendar-applet 
   - budgie-calendar-applet-lang 
   - budgie-desktop 
+  - budgie-desktop-branding-openSUSE 
   - budgie-desktop-devel 
   - budgie-desktop-doc 
   - budgie-desktop-lang 
@@ -2499,6 +2500,8 @@ unsorted:
   - dfu-tool 
   - dh-autoreconf 
   - dh-make 
+  - dhall-json 
+  - dhall-yaml 
   - dhcp-devel 
   - dhcpd-pools 
   - dhewm3 
@@ -3967,6 +3970,8 @@ unsorted:
   - ghc-aeson-devel 
   - ghc-aeson-pretty 
   - ghc-aeson-pretty-devel 
+  - ghc-aeson-yaml 
+  - ghc-aeson-yaml-devel 
   - ghc-algebraic-graphs 
   - ghc-algebraic-graphs-devel 
   - ghc-alsa-core 
@@ -4172,12 +4177,18 @@ unsorted:
   - ghc-deepseq-devel 
   - ghc-dhall 
   - ghc-dhall-devel 
+  - ghc-dhall-json 
+  - ghc-dhall-json-devel 
+  - ghc-dhall-yaml 
+  - ghc-dhall-yaml-devel 
   - ghc-digest 
   - ghc-digest-devel 
   - ghc-directory 
   - ghc-directory-devel 
   - ghc-disk-free-space 
   - ghc-disk-free-space-devel 
+  - ghc-distribution-opensuse 
+  - ghc-distribution-opensuse-devel 
   - ghc-distributive 
   - ghc-distributive-devel 
   - ghc-dlist 
@@ -4674,6 +4685,8 @@ unsorted:
   - ghc-tagsoup 
   - ghc-tagsoup-devel 
   - ghc-tar 
+  - ghc-tar-conduit 
+  - ghc-tar-conduit-devel 
   - ghc-tar-devel 
   - ghc-tasty 
   - ghc-tasty-devel 
@@ -5521,6 +5534,7 @@ unsorted:
   - grass-devel 
   - grass-doc 
   - grc 
+  - greetd 
   - grfcodec 
   - gri 
   - grilo-devel 
@@ -5765,6 +5779,7 @@ unsorted:
   - gtkd-devel 
   - gtkglext-devel 
   - gtkglext-doc 
+  - gtkgreet 
   - gtkhtml-4_0-lang 
   - gtkhtml-devel 
   - gtkimageview-devel 
@@ -5808,6 +5823,7 @@ unsorted:
   - gucharmap-devel 
   - gudev-sharp 
   - gudev-sharp-devel 
+  - guess-changelog 
   - guestfs-tools: [x86_64] 
   - guestfsd: [x86_64] 
   - guice-assistedinject 
@@ -6147,16 +6163,19 @@ unsorted:
   - hypre-gnu-openmpi1-hpc-devel 
   - hypre-gnu-openmpi2-hpc-devel 
   - hypre-gnu-openmpi3-hpc-devel 
+  - hypre-gnu-openmpi4-hpc-devel 
   - hypre-mpich-devel 
   - hypre-mvapich2-devel 
   - hypre-openmpi1-devel 
   - hypre-openmpi2-devel 
   - hypre-openmpi3-devel 
+  - hypre-openmpi4-devel 
   - hypre_2_18_2-gnu-mpich-hpc-devel 
   - hypre_2_18_2-gnu-mvapich2-hpc-devel 
   - hypre_2_18_2-gnu-openmpi1-hpc-devel 
   - hypre_2_18_2-gnu-openmpi2-hpc-devel 
   - hypre_2_18_2-gnu-openmpi3-hpc-devel 
+  - hypre_2_18_2-gnu-openmpi4-hpc-devel 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -7971,6 +7990,7 @@ unsorted:
   - libHYPRE-gnu-openmpi1-hpc 
   - libHYPRE-gnu-openmpi2-hpc 
   - libHYPRE-gnu-openmpi3-hpc 
+  - libHYPRE-gnu-openmpi4-hpc 
   - libHYPRE2_18_2 
   - libHYPRE2_18_2-32bit: [x86_64] 
   - libHYPRE2_18_2-mpich 
@@ -7983,11 +8003,14 @@ unsorted:
   - libHYPRE2_18_2-openmpi2-32bit: [x86_64] 
   - libHYPRE2_18_2-openmpi3 
   - libHYPRE2_18_2-openmpi3-32bit: [x86_64] 
+  - libHYPRE2_18_2-openmpi4 
+  - libHYPRE2_18_2-openmpi4-32bit: [x86_64] 
   - libHYPRE_2_18_2-gnu-mpich-hpc 
   - libHYPRE_2_18_2-gnu-mvapich2-hpc 
   - libHYPRE_2_18_2-gnu-openmpi1-hpc 
   - libHYPRE_2_18_2-gnu-openmpi2-hpc 
   - libHYPRE_2_18_2-gnu-openmpi3-hpc 
+  - libHYPRE_2_18_2-gnu-openmpi4-hpc 
   - libHalf-2_5-25-32bit: [x86_64] 
   - libHepMC3-1 
   - libHepMC4 
@@ -9740,7 +9763,7 @@ unsorted:
   - libflickcurl-devel 
   - libflickcurl0 
   - libflickcurl0-32bit: [x86_64] 
-  - libflint0 
+  - libflint14 
   - libflorence-1_0-1 
   - libfltk1-32bit: [x86_64] 
   - libfluidsynth2 
@@ -11744,10 +11767,25 @@ unsorted:
   - libpmempool1: [x86_64] 
   - libpmi0: [x86_64] 
   - libpmix2 
+  - libpnetcdf-gnu-mpich-hpc: [x86_64] 
+  - libpnetcdf-gnu-mvapich2-hpc: [x86_64] 
+  - libpnetcdf-gnu-openmpi2-hpc: [x86_64] 
+  - libpnetcdf-gnu-openmpi3-hpc: [x86_64] 
+  - libpnetcdf-gnu-openmpi4-hpc: [x86_64] 
   - libpnetcdf1-mvapich2 
   - libpnetcdf1-openmpi1 
   - libpnetcdf1-openmpi2 
   - libpnetcdf1-openmpi3 
+  - libpnetcdf4-mpich: [x86_64] 
+  - libpnetcdf4-mvapich2: [x86_64] 
+  - libpnetcdf4-openmpi1: [x86_64] 
+  - libpnetcdf4-openmpi2: [x86_64] 
+  - libpnetcdf4-openmpi3: [x86_64] 
+  - libpnetcdf_1_12_1-gnu-mpich-hpc: [x86_64] 
+  - libpnetcdf_1_12_1-gnu-mvapich2-hpc: [x86_64] 
+  - libpnetcdf_1_12_1-gnu-openmpi2-hpc: [x86_64] 
+  - libpnetcdf_1_12_1-gnu-openmpi3-hpc: [x86_64] 
+  - libpnetcdf_1_12_1-gnu-openmpi4-hpc: [x86_64] 
   - libpng12-0: [x86_64] 
   - libpng12-compat-devel 
   - libpng12-compat-devel-32bit: [x86_64] 
@@ -12556,6 +12594,7 @@ unsorted:
   - libsigsegv-devel 
   - libsigsegv-doc 
   - libsigsegv2 
+  - libsirocco0 
   - libsispmctl0 
   - libskk-devel 
   - libskk0 
@@ -12943,12 +12982,14 @@ unsorted:
   - libtrilinos-gnu-mvapich2-hpc: [x86_64] 
   - libtrilinos-gnu-openmpi2-hpc: [x86_64] 
   - libtrilinos-gnu-openmpi3-hpc: [x86_64] 
+  - libtrilinos-gnu-openmpi4-hpc: [x86_64] 
   - libtrilinos12: [x86_64] 
   - libtrilinos12-openmpi2: [x86_64] 
   - libtrilinos_12_14_1-gnu-mpich-hpc: [x86_64] 
   - libtrilinos_12_14_1-gnu-mvapich2-hpc: [x86_64] 
   - libtrilinos_12_14_1-gnu-openmpi2-hpc: [x86_64] 
   - libtrilinos_12_14_1-gnu-openmpi3-hpc: [x86_64] 
+  - libtrilinos_12_14_1-gnu-openmpi4-hpc: [x86_64] 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
   - libtsan0-gcc9: [x86_64] 
@@ -15610,25 +15651,19 @@ unsorted:
   - netcdf-fortran-gnu-openmpi4-hpc-devel 
   - netcdf-fortran_4_5_2-gnu-hpc 
   - netcdf-fortran_4_5_2-gnu-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-hpc-devel-static 
   - netcdf-fortran_4_5_2-gnu-mpich-hpc 
   - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel-static 
   - netcdf-fortran_4_5_2-gnu-mvapich2-hpc 
   - netcdf-fortran_4_5_2-gnu-mvapich2-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc-devel-static 
+  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc-devel-static: [x86_64] 
   - netcdf-fortran_4_5_2-gnu-openmpi1-hpc 
   - netcdf-fortran_4_5_2-gnu-openmpi1-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc-devel-static 
   - netcdf-fortran_4_5_2-gnu-openmpi2-hpc 
   - netcdf-fortran_4_5_2-gnu-openmpi2-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc-devel-static 
   - netcdf-fortran_4_5_2-gnu-openmpi3-hpc 
   - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel-static 
   - netcdf-fortran_4_5_2-gnu-openmpi4-hpc 
   - netcdf-fortran_4_5_2-gnu-openmpi4-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc-devel-static 
   - netcdf-gnu-hpc 
   - netcdf-gnu-hpc-devel 
   - netcdf-gnu-mpich-hpc 
@@ -18886,6 +18921,50 @@ unsorted:
   - pmix-headers 
   - pmix-mca-params 
   - pmix-plugins 
+  - pnetcdf-devel-data: [x86_64] 
+  - pnetcdf-doc: [x86_64] 
+  - pnetcdf-gnu-mpich-hpc: [x86_64] 
+  - pnetcdf-gnu-mpich-hpc-devel: [x86_64] 
+  - pnetcdf-gnu-mvapich2-hpc: [x86_64] 
+  - pnetcdf-gnu-mvapich2-hpc-devel: [x86_64] 
+  - pnetcdf-gnu-openmpi2-hpc: [x86_64] 
+  - pnetcdf-gnu-openmpi2-hpc-devel: [x86_64] 
+  - pnetcdf-gnu-openmpi3-hpc: [x86_64] 
+  - pnetcdf-gnu-openmpi3-hpc-devel: [x86_64] 
+  - pnetcdf-gnu-openmpi4-hpc: [x86_64] 
+  - pnetcdf-gnu-openmpi4-hpc-devel: [x86_64] 
+  - pnetcdf-hpc-doc: [x86_64] 
+  - pnetcdf-mpich: [x86_64] 
+  - pnetcdf-mpich-devel: [x86_64] 
+  - pnetcdf-mpich-devel-static: [x86_64] 
+  - pnetcdf-mvapich2: [x86_64] 
+  - pnetcdf-mvapich2-devel: [x86_64] 
+  - pnetcdf-mvapich2-devel-static: [x86_64] 
+  - pnetcdf-openmpi1: [x86_64] 
+  - pnetcdf-openmpi1-devel: [x86_64] 
+  - pnetcdf-openmpi1-devel-static: [x86_64] 
+  - pnetcdf-openmpi2: [x86_64] 
+  - pnetcdf-openmpi2-devel: [x86_64] 
+  - pnetcdf-openmpi2-devel-static: [x86_64] 
+  - pnetcdf-openmpi3: [x86_64] 
+  - pnetcdf-openmpi3-devel: [x86_64] 
+  - pnetcdf-openmpi3-devel-static: [x86_64] 
+  - pnetcdf_1_12_1-gnu-mpich-hpc: [x86_64] 
+  - pnetcdf_1_12_1-gnu-mpich-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_1-gnu-mpich-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_1-gnu-mvapich2-hpc: [x86_64] 
+  - pnetcdf_1_12_1-gnu-mvapich2-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_1-gnu-mvapich2-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_1-gnu-openmpi2-hpc: [x86_64] 
+  - pnetcdf_1_12_1-gnu-openmpi2-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_1-gnu-openmpi2-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_1-gnu-openmpi3-hpc: [x86_64] 
+  - pnetcdf_1_12_1-gnu-openmpi3-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_1-gnu-openmpi3-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_1-gnu-openmpi4-hpc: [x86_64] 
+  - pnetcdf_1_12_1-gnu-openmpi4-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_1-gnu-openmpi4-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_1-hpc-doc: [x86_64] 
   - png++-devel 
   - pngcheck 
   - pngcrush 
@@ -20349,6 +20428,7 @@ unsorted:
   - python3-django-assets 
   - python3-django-auth-ldap 
   - python3-django-avatar 
+  - python3-django-axes 
   - python3-django-bootstrap3 
   - python3-django-braces 
   - python3-django-cacheops 
@@ -20377,6 +20457,7 @@ unsorted:
   - python3-django-haystack 
   - python3-django-health-check 
   - python3-django-invitations 
+  - python3-django-ipware 
   - python3-django-jinja 
   - python3-django-js-asset 
   - python3-django-json-widget 
@@ -20397,8 +20478,10 @@ unsorted:
   - python3-django-push-notifications 
   - python3-django-pyscss 
   - python3-django-q 
+  - python3-django-qsessions 
   - python3-django-redis 
   - python3-django-registration 
+  - python3-django-request 
   - python3-django-rest-framework-braces 
   - python3-django-rest-framework-client 
   - python3-django-rest-framework-social-oauth2 
@@ -20416,6 +20499,7 @@ unsorted:
   - python3-django-tastypie 
   - python3-django-threadedcomments 
   - python3-django-treebeard 
+  - python3-django-user-agents 
   - python3-django-utils-six 
   - python3-django-webpack-loader 
   - python3-django-webtest 
@@ -21847,6 +21931,7 @@ unsorted:
   - python3-pywebpush 
   - python3-pywinrm 
   - python3-pyxattr 
+  - python3-pyxdg 
   - python3-pyzmq-devel 
   - python3-pyzo 
   - python3-q 
@@ -22212,6 +22297,7 @@ unsorted:
   - python3-tomlkit 
   - python3-toolz 
   - python3-tooz 
+  - python3-toposort 
   - python3-topy 
   - python3-torch: [x86_64] 
   - python3-torch-devel: [x86_64] 
@@ -22368,6 +22454,7 @@ unsorted:
   - python3-whatever 
   - python3-whatthepatch 
   - python3-wheel 
+  - python3-wheezy.template 
   - python3-whichcraft 
   - python3-whitenoise 
   - python3-whois_similarity_distance 
@@ -22414,6 +22501,7 @@ unsorted:
   - python3-xsge_particle 
   - python3-xsge_path 
   - python3-xsge_physics 
+  - python3-xsge_tiled 
   - python3-xsge_tmx 
   - python3-xvfbwrapper 
   - python3-xxhash 
@@ -25289,6 +25377,7 @@ unsorted:
   - siproxd 
   - siproxd-doc 
   - sipsak 
+  - sirocco-devel 
   - sisctrl 
   - sispmctl 
   - sispmctl-devel 
@@ -33984,12 +34073,14 @@ unsorted:
   - trilinos-gnu-mvapich2-hpc-devel: [x86_64] 
   - trilinos-gnu-openmpi2-hpc-devel: [x86_64] 
   - trilinos-gnu-openmpi3-hpc-devel: [x86_64] 
+  - trilinos-gnu-openmpi4-hpc-devel: [x86_64] 
   - trilinos-hpc-doc: [x86_64] 
   - trilinos-openmpi2-devel: [x86_64] 
   - trilinos_12_14_1-gnu-mpich-hpc-devel: [x86_64] 
   - trilinos_12_14_1-gnu-mvapich2-hpc-devel: [x86_64] 
   - trilinos_12_14_1-gnu-openmpi2-hpc-devel: [x86_64] 
   - trilinos_12_14_1-gnu-openmpi3-hpc-devel: [x86_64] 
+  - trilinos_12_14_1-gnu-openmpi4-hpc-devel: [x86_64] 
   - trilinos_12_14_1-hpc-doc: [x86_64] 
   - trinity 
   - tripwire 
@@ -34832,6 +34923,7 @@ unsorted:
   - wl-clipboard 
   - wl-clipboard-bash-completion 
   - wl-clipboard-zsh-completion 
+  - wlgreet 
   - wlr-randr 
   - wlr-sunclock 
   - wlroots-devel 
