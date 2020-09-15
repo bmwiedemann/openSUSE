@@ -1,7 +1,7 @@
 #
 # spec file for package python-munkres
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,11 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://software.clapper.org/munkres/
 Source:         https://github.com/bmc/munkres/archive/release-%{version}.tar.gz
+# https://github.com/bmc/munkres/pull/32
+Patch0:         python-munkres-remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -48,6 +50,7 @@ http://csclab.murraystate.edu/~bob.pilgrim/445/munkres.html.
 
 %prep
 %setup -q -n munkres-release-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -62,7 +65,7 @@ chmod -x %{buildroot}%{$python_sitelib}/munkres.py
 }
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE.md
