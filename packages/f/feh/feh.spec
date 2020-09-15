@@ -17,7 +17,7 @@
 
 
 Name:           feh
-Version:        3.4.1
+Version:        3.5
 Release:        0
 Summary:        X11 image viewer
 License:        MIT AND LGPL-2.0-or-later

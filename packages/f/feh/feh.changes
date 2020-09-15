@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:45:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.5:
+  * Enable --version-sort on systems without strverscmp support. 
+  * Add %a format specifier (slideshow state: "playing" / "paused")
+  * Fix crashes when combining --reload and --multiwindow 
+
+-------------------------------------------------------------------
 Fri Jun 19 07:35:10 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Enable inotify support for automatic reload. 
