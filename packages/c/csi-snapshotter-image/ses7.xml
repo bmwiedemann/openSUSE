@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/suse/sle15#15.2</image>
+  <os>SLES15 SP2</os>
+  <name>ses/7/cephcsi/csi-snapshotter</name>
+  <prefix>com.suse.ses</prefix>
+  <title>SES csi-snapshotter container</title>
+  <url>https://www.suse.com/products/suse-enterprise-storage/</url>
+  <referencelabel>com.suse.reference</referencelabel>
+  <reference>registry.suse.com/ses/7/cephcsi/csi-snapshotter:v%PKG_VERSION%</reference>
+</param>

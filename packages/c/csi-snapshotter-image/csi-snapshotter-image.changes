@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Sep 14 12:40:47 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Make bootstrap packages optional
+
+-------------------------------------------------------------------
+Fri Sep 11 06:39:23 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Rework OBS project to use per-distribution xml template files
+
+-------------------------------------------------------------------
+Wed Aug 26 11:01:10 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Rename to csi-snapshotter-image, update metadata for SES 7 release
+
+-------------------------------------------------------------------
+Thu Aug 13 11:58:53 UTC 2020 - jmassaguerpla@suse.com
+
+- remove beta tag 
+
+-------------------------------------------------------------------
+Wed Aug 12 18:02:43 UTC 2020 - Chin-Ya Huang <chin-ya.huang@suse.com>
+
+- Add missing _service file 
+
+-------------------------------------------------------------------
+Tue Aug  4 07:16:39 GMT 2020 - Chin-Ya Huang <chin-ya.huang@suse.com>
+
+- Initial release of version 1
+

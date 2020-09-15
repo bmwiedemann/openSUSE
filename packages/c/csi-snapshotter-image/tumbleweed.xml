@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/opensuse/tumbleweed</image>
+  <os>openSUSE Tumbleweed</os>
+  <name>opensuse/cephcsi/csi-snapshotter</name>
+  <prefix>org.opensuse.cephcsi</prefix>
+  <title>csi-snapshotter container</title>
+  <url>https://registry.opensuse.org/opensuse/cephcsi/csi-snapshotter:v%PKG_VERSION%</url>
+  <referencelabel>org.opensuse.reference</referencelabel>
+  <reference>registry.opensuse.org/opensuse/cephcsi/csi-snapshotter:v%PKG_VERSION%</reference>
+  <packages_boot>
+    <package>
+      <name>openSUSE-release-ftp</name>
+    </package>
+  </packages_boot>
+</param>
