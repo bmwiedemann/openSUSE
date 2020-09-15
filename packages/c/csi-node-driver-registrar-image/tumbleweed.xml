@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/opensuse/tumbleweed</image>
+  <os>openSUSE Tumbleweed</os>
+  <name>opensuse/cephcsi/csi-node-driver-registrar</name>
+  <prefix>org.opensuse.cephcsi</prefix>
+  <title>csi-node-driver-registrar container</title>
+  <url>https://registry.opensuse.org/opensuse/cephcsi/csi-node-driver-registrar:v%PKG_VERSION%</url>
+  <referencelabel>org.opensuse.reference</referencelabel>
+  <packages_boot>
+    <package>
+      <name>openSUSE-release-ftp</name>
+    </package>
+  </packages_boot>
+  <reference>registry.opensuse.org/opensuse/cephcsi/csi-node-driver-registrar:v%PKG_VERSION%</reference>
+</param>
