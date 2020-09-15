@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:41:16 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.129.3: Treat selector with multiple conditions an AND (#1478)
+  * 028bcc5 (HEAD, tag: v0.129.3, origin/master, origin/HEAD, master)
+    Treat selector with multiple conditions an AND (#1478)
+
+- v0.129.2: Bump vals (#1475)
+  * 5dd65e8 (HEAD, tag: v0.129.2, origin/master, origin/HEAD, master)
+    Bump vals (#1475)
+
+- v0.129.1: Add tailormed to users (#1467)
+  * 134d5be (HEAD, tag: v0.129.1, origin/master, origin/HEAD, master)
+    Add tailormed to users (#1467)
+  * 87d04f0 Append KubeContext to temporary directory path (#1471)
+  * 2d7c8e7 Update README.md (#1472)
+
+- v0.129.0: Add experimental write-values command for writing values files only (…
+  * 0fad9f0 (HEAD, tag: v0.129.0, origin/master, origin/HEAD, master)
+    Add experimental write-values command for writing values files only (#1469)
+
+- v0.128.2: Re-add Release.Namespace in release values.yaml templates (#1466)
+  * 832dcf4 (HEAD, tag: v0.128.2, origin/master, origin/HEAD, master)
+    Re-add Release.Namespace in release values.yaml templates (#1466)
+  * 1d2c8b8 Adding hellofresh as a helmfile user (#1465)
+
+- v0.128.1: Fix `index out of range [1] with length 1` error on env2map (#1463)
+  * 0482ba3 (HEAD, tag: v0.128.1, origin/master, origin/HEAD, master)
+    Fix index out of range [1] with length 1 error on env2map (#1463)
+
+- v0.128.0: Bump sprig to v3.1.0 and mergo 3.11 (#1456)
+  * 9d2c0d4 (HEAD, tag: v0.128.0, origin/master, origin/HEAD, master)
+    Bump sprig to v3.1.0 and mergo 3.11 (#1456)
+
+- v0.127.0: Bump sprig to v3 (#1452)
+  * efd26f2 (HEAD, tag: v0.127.0, origin/master, origin/HEAD, master)
+    Bump sprig to v3 (#1452)
+
+- v0.126.2: Fix wrong deletion order (#1451)
+  * 5f1698d (HEAD, tag: v0.126.2, origin/master, origin/HEAD, master)
+    Fix wrong deletion order (#1451)
+  * 2ecf578 Revise GitOps doc a bit
+
+- v0.126.1: Fix test flake for `commonLabels` (#1449)
+  * 3e6542e (HEAD, tag: v0.126.1, origin/master, origin/HEAD, master)
+    Fix test flake for commonLabels (#1449)
+  * d3daea3 Fix panic on hook since v0.126.0 (#1448)
+  * 19d7942 Add experimental "forceNamespace" in helmfile.yaml (#1444)
+
+-------------------------------------------------------------------
+Mon Aug 31 12:30:56 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.126.0: Fix build error after `helmfile build --embed-values` addition
+  * cd0ecc5 (HEAD, tag: v0.126.0, origin/master, origin/HEAD, master)
+    Fix build error after helmfile build --embed-values addition
+  * dc6c59d Print command output in line (#1354)
+  * 0fc0869 feat: helmfile build --embed-values to embed release
+    values and secrets into the output (#1436)
+  * 5ca7ce1 feat: common labels for all releases in a helmfile (#1415)
+  * 6b4b76e HELMFILE_ENVIRONMENT variable (#1425)
+  * 7b11ce8 feat: Allow .Release.Name to be used in gotmpl values
+    templates (#1424)
+
+-------------------------------------------------------------------
 Mon Aug 31 12:20:16 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.125.9: Merge pull request #1442 from roboll/fix-duplicate-with-kubectx-per-r…
