@@ -1,6 +1,7 @@
 #
 # spec file for package radcli
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,13 +13,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 4
 Name:           radcli
-Version:        1.2.11
+Version:        1.2.12
 Release:        0
 Summary:        A RADIUS client library
 License:        MIT AND BSD-2-Clause
