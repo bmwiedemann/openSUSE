@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 14 10:27:11 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- 9070.patch: backport compilation fix vs. latest Boost 1.74
+  based on https://github.com/PowerDNS/pdns/pull/9070 (bsc#1176312)
+
+-------------------------------------------------------------------
 Tue Apr  7 14:13:04 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.3.0: 

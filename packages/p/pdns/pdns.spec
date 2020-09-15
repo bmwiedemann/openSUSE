@@ -63,6 +63,7 @@ Source:         https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2
 Source1:        https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2.sig
 Source2:        https://powerdns.com/powerdns-keyblock.asc#/pdns.keyring
 Patch0:         pdns-4.0.3_allow_dacoverride_in_capset.patch
+Patch1:         9070.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -256,8 +257,7 @@ This package holds the LMDB backend for pdns.
 %endif
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -n %{name}-%{version} -p1
 
 %build
 %configure \
