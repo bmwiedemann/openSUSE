@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cfn-lint
-Version:        0.33.2
+Version:        0.35.1
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT

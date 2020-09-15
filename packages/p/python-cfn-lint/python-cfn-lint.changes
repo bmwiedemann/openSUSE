@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:54:16 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.35.1
+  * Update CloudFormation specs to 18.1.0
+  * Expand `AllowedValues` for `AWS::CloudFront::Distribution.MinimumProtocolVersion`,
+    `AWS::Config::ConfigurationRecorder.ResourceTypes`, and `AWS::Glue::Connection.
+    ConnectionInput.ConnectionType`
+  * Add localzone `us-west-2-lax-1b`
+  * Update rule E2503 to include `routing.http.desync_mitigation_mode`
+  * Update excludes for rule E1029 to include `ResponseMappingTemplate`
+  * Update rule E1019 and E1010 to handle resource attributes of type `Map
+- from version 0.35.0
+  * Update CloudFormation specs to 17.0.0
+  * Fix ElasticMapReduce and ManagedBlockchain InstanceType patching
+  * Include a regex pattern to check MetricValue is either a number or starts with `$`
+  * Add more types to `AWS::ApplicationAutoScaling::ScalingPolicy.
+    PredefinedMetricSpecification.PredefinedMetricType`
+  * Add more values to `AWS::Lambda::Function.Runtime`
+  * Add more values to `AWS::Budgets::Budget.BudgetType`
+  * Update rule E3031 to convert int or float to string before doing an allowed pattern
+    match on it
+  * Add exceptions to rule E1029
+  * Update rule E8003 to look for string based parameters
+- from version 0.34.1
+  * Update CloudFormation specs to 16.3.0
+  * Update rule E3001 to catch when Resource `Type` is not a string
+  * Update rule E1029 to handle `${}` in Step Function State Machines and Definition Substitutions
+  * Update rule W4002 to only look at `Ref` and `Sub`
+- from version 0.34.0
+  * Add rule W4002 that checks if `Metadata` references a `NoEcho` parameter
+  * Update CloudFormation specs to 16.1.0
+  * Remove `AWS::EC2::LaunchTemplate.BlockDeviceMapping` from `OnlyOne`
+  * Add more `AllowedValues` to `AWS::Glue::Trigger.Predicate.Logical`
+  * Add more `AllowedValues` to `AWS::ApplicationAutoScaling::ScalingPolicy.PredefinedMetric
+    Specification.PredefinedMetricType`
+  * Add more `AllowedValues` to `AWS::S3::Bucket.TopicConfiguration.Event`
+  * Add more `AllowedValues` to `AWS::EC2::CapacityReservation.InstancePlatform`
+  * Fix an issue for applying `AllowedValues` to `AWS::RDS::DBInstance MonitoringInterval`
+    and `PerformanceInsightsRetentionPeriod`
+  * Fix an issue for applying `Maximum` and `Minimum` to `AWS::ElasticLoadBalancingV2::
+    ListenerRule.Priority`
+  * Update rule E3503 to not fail on if ValidationDomain or DomainName aren't present
+
+-------------------------------------------------------------------
 Fri Jul  3 15:05:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.33.2
