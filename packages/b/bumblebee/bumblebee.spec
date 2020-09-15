@@ -27,6 +27,8 @@ Source0:        http://bumblebee-project.org/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         nvidia-uvm-modeset-drm-support.patch
 Patch1:         bumblebee-decimal-pciid.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         Fix_build_with_GCC10.patch
 BuildRequires:  glib2-devel
 BuildRequires:  help2man
 BuildRequires:  pciutils
@@ -63,28 +65,25 @@ project not only enables use of the discrete GPU for rendering, but
 also smart power management of the dGPU when it is not in use.
 
 %prep
-%setup -q
-# Apply patch to add support for nvidia-uvm
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure \
 	--without-pidfile \
-	--with-udev-rules=%{_libexecdir}/udev/rules.d/ \
-	CONF_DRIVER_MODULE_NVIDIA=nvidia CONF_LDPATH_NVIDIA=%{_libdir}/nvidia:%{_libexecdir}/nvidia \
+	--with-udev-rules=%{_udevrulesdir}/ \
+	CONF_DRIVER_MODULE_NVIDIA=nvidia CONF_LDPATH_NVIDIA=%{_libdir}/nvidia:%{_prefix}/lib/nvidia \
 	CONF_MODPATH_NVIDIA=%{_libdir}/nvidia/xorg/,%{_libdir}/xorg/modules \
-	CONF_PRIMUS_LD_PATH=%{_libdir}/primus:%{_libexecdir}/primus
+	CONF_PRIMUS_LD_PATH=%{_libdir}/primus:%{_prefix}/lib/primus
 
 make %{?_smp_mflags}
 
 %install
 %make_install
-install -d 755 %{buildroot}%{_libexecdir}/systemd
-install -D -m644 "%{_builddir}/%{name}-%{version}/scripts/systemd/bumblebeed.service" "%{buildroot}%{_libexecdir}/systemd/system/bumblebeed.service"
+install -d 755 %{buildroot}%{_prefix}/lib/systemd
+install -D -m644 "%{_builddir}/%{name}-%{version}/scripts/systemd/bumblebeed.service" "%{buildroot}%{_unitdir}/bumblebeed.service"
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcbumblebeed
 # Fix service to run after dkms and modules leading service
-sed -i '3i After=dkms.service systemd-modules-load.service' %{buildroot}%{_libexecdir}/systemd/system/bumblebeed.service
+sed -i '3i After=dkms.service systemd-modules-load.service' %{buildroot}%{_unitdir}/bumblebeed.service
 # according to rpmlint error suse-filelist-forbidden-bashcomp-userdirs
 install -d -m 0755 %{buildroot}/%{_datadir}/bash-completion/completions/
 mv %{buildroot}/%{_sysconfdir}/bash_completion.d/bumblebee %{buildroot}/%{_datadir}/bash-completion/completions/
@@ -123,8 +122,7 @@ EOF
 %config(noreplace) %{_sysconfdir}/bumblebee/bumblebee.conf
 %dir %{_sysconfdir}/bumblebee/xorg.conf.d
 %config %{_sysconfdir}/bumblebee/xorg.conf.d/10-dummy.conf
-%dir %{_libexecdir}/systemd/system
-%{_libexecdir}/systemd/system/bumblebeed.service
+%{_unitdir}/bumblebeed.service
 %{_sbindir}/rcbumblebeed
 %{_udevrulesdir}/99-bumblebee-nvidia-dev.rules
 %dir %{_datadir}/bash-completion/completions/

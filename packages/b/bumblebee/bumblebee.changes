@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 14 16:14:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add Debian patch to fix build with GCC10:
+  * Fix_build_with_GCC10.patch
+
+-------------------------------------------------------------------
+Wed Aug 19 08:56:33 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Mon Feb  3 12:05:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
