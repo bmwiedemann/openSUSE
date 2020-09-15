@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Sep 14 18:11:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 2.7.1 
+  * Fix bug preventing access to copied array data after 
+    AsdfFile is closed. [#869]
+- Changelog for 2.7.0
+  * Fix bug preventing diff of files containing 
+    ndarray-1.0.0 objects in simplified form. [#786]
+  * Fix bug causing duplicate elements to appear when 
+    calling copy.deepcopy on a TaggedList. [#788]
+  * Improve validator performance by skipping unnecessary 
+    step of copying schema objects. [#784]
+  * Fix bug with auto_inline option where inline blocks are 
+    not converted to internal when they exceed the threshold. 
+    [#802]
+  * Fix misinterpretation of byte order of blocks stored in 
+    FITS files. [#810]
+  * Improve read performance by skipping unnecessary 
+    rebuild of tagged tree. [#787]
+  * Add option to asdf.open and fits_embed.AsdfInFits.open 
+    that disables validation on read. [#792]
+  * Fix bugs and code style found by adding F and W flake8 
+    checks. [#797]
+  * Eliminate warnings in pytest plugin by using 
+    from_parent when available. [#799]
+  * Prevent validation of empty tree when AsdfFile is 
+    initialized. [#794]
+  * All warnings now subclass asdf.exceptions.AsdfWarning. 
+    [#804]
+  * Improve warning message when falling back to an older 
+    schema, and note that fallback behavior will be removed 
+    in 3.0. [#806]
+  * Drop support for jsonschema 2.x. [#807]
+  * Stop traversing oneOf and anyOf combiners when filling 
+    or removing default values. [#811]
+  * Fix bug in version map caching that caused incompatible 
+    tags to be written under ASDF Standard 1.0.0. [#821]
+  * Fix bug that corrupted ndarrays when the underlying 
+    block array was converted to C order on write. [#827]
+  * Fix bug that produced unreadable ASDF files when an 
+    ndarray in the tree was both offset and broadcasted. 
+    [#827]
+  * Fix bug preventing validation of default values in 
+    schema.check_schema. [#785]
+  *  Add option to disable validation of schema default 
+    values in the pytest plugin. [#831]
+  * Prevent errors when extension metadata contains 
+    additional properties. [#832]
+
+-------------------------------------------------------------------
 Tue Jul  7 11:06:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.6.0

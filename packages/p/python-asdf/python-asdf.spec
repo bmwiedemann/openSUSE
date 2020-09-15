@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-asdf
-Version:        2.6.0
+Version:        2.7.1
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-3-Clause AND BSD-2-Clause
