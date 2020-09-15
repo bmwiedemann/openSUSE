@@ -15,49 +15,53 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sway_version %(rpm -q --queryformat "%%{version}" sway)
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.10
+Version:        0.11
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
+License:        MIT
 Group:          Metapackages
 URL:            https://github.com/openSUSE/openSUSEway
 Source0:        https://github.com/openSUSE/openSUSEway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-License:        MIT
 BuildArch:      noarch
 BuildRequires:  aaa_base
 BuildRequires:  systemd
-Requires:       aaa_base
-Requires:       sway-branding-openSUSE
-Requires:       waybar-branding-openSUSE
-Requires:       sudo
-Requires:       git
-Requires:       jq
-Requires:       wget
-Requires:       curl
-Requires:       vim
-Requires:       tar
-Requires:       gzip
-Requires:       bzip2
-Requires:       less
-Requires:       grep
-Requires:       vifm
-Requires:       imv
-Requires:       firefox
 Requires:       NetworkManager
-Requires:       mpv
+Requires:       aaa_base
+Requires:       adwaita-qt5
+Requires:       bzip2
+Requires:       command-not-found
+Requires:       curl
+Requires:       firefox
+Requires:       gfxboot-branding-openSUSE
+Requires:       git
+Requires:       greetd
+Requires:       grep
+Requires:       gtkgreet
+Requires:       gzip
+Requires:       imv
+Requires:       jq
+Requires:       less
 Requires:       libqt5-qtwayland
+Requires:       mpv
+Requires:       pamixer
 Requires:       pipewire
-Requires:       xdg-utils
+Requires:       qt5ct
+Requires:       sudo
+Requires:       sway-branding-openSUSE
+Requires:       tar
+Requires:       vifm
+Requires:       vim
+Requires:       waybar-branding-openSUSE
+Requires:       wget
+Requires:       wob
 Requires:       xdg-desktop-portal
 Requires:       xdg-desktop-portal-wlr
-Requires:       qt5ct
-Requires:       adwaita-qt5
-Requires:       wob
-Requires:       pamixer
-Requires:       command-not-found
+Requires:       xdg-utils
 
 %description
 This meta package aggregates openSUSEway desktop enviroment packages.
@@ -66,10 +70,8 @@ This meta package aggregates openSUSEway desktop enviroment packages.
 %pattern_graphicalenvironments
 %package -n     patterns-openSUSEway
 Summary:        The openSUSEway desktop environment pattern
-License:        MIT
 Group:          Metapackages
 Provides:       pattern() = openSUSEway
-Provides:       pattern-category() = openSUSEway
 Provides:       pattern-icon() = pattern-sway
 Provides:       pattern-order() = 1460
 Provides:       pattern-visible()
@@ -78,21 +80,19 @@ BuildRequires:  patterns-rpm-macros
 Requires:       openSUSEway
 
 %description -n patterns-openSUSEway
-This is an internal package that is used to create the patterns as part
-of the installation source setup.  Installation of this package does
-not make sense.
+This pattern installs the openSUSE look and feel for sway.
 
 %package -n     sway-branding-openSUSE
 Summary:        openSUSE branding of sway
 Group:          System/GUI/Other
-BuildRequires:	sway
-Requires:       patterns-sway-sway
-Requires:       wallpaper-branding-openSUSE
+BuildRequires:  sway
 Requires:       brightnessctl
-Requires:       pavucontrol
 Requires:       fontawesome-fonts
 Requires:       jq
+Requires:       patterns-sway-sway
+Requires:       pavucontrol
 Requires:       sway
+Requires:       wallpaper-branding-openSUSE
 Provides:       sway-branding = %{version}
 Conflicts:      otherproviders(sway-branding)
 Supplements:    packageand(sway:branding-openSUSE)
@@ -125,19 +125,26 @@ This package provides the openSUSE look and feel for waybar.
 %install
 
 ## openSUSEway package
-install -D -p -m 644 openSUSEway.sh %{buildroot}%{_sysconfdir}/profile.d/openSUSEway.sh
-install -D -p -m 644 .config/sway/env %{buildroot}%{_prefix}/lib/environment.d/50-openSUSEway.conf
 ### qt5ct config to configure dark theme
-install -D -p -m 644 qt5ct.conf %{buildroot}/%{_sysconfdir}/xdg/qt5ct/qt5ct.conf
+install -D -p -m 644 qt5ct.conf %{buildroot}%{_sysconfdir}/xdg/qt5ct/qt5ct.conf
+### greetd as a login manager
+install -D -p -m 644 greetd/sway-config %{buildroot}%{_sysconfdir}/greetd/sway-config
+install -D -p -m 644 greetd/config.toml %{buildroot}%{_sysconfdir}/greetd/config.toml.way
+install -D -p -m 644 greetd/environments %{buildroot}%{_sysconfdir}/greetd/environments
 
 ## openSUSEway pattern package
 mkdir -p %{buildroot}/%{_defaultdocdir}/patterns/
-echo 'This file marks the pattern openSUSEway to be installed.' >%{buildroot}/%{_defaultdocdir}/patterns/openSUSEway.txt
+echo 'This file marks the pattern openSUSEway to be installed.' >%{buildroot}%{_defaultdocdir}/patterns/openSUSEway.txt
 
 ## Sway
 install -D -p -m 644 .config/sway/config %{buildroot}%{_sysconfdir}/sway/config
 install -D -p -m 644 .config/sway/env %{buildroot}%{_sysconfdir}/sway/env
 install -D -p -m 644 .config/sway/config.d/50-openSUSE.conf %{buildroot}%{_sysconfdir}/sway/config.d/50-openSUSE.conf
+
+install -D -p -m 644 sway/sway-session.target %{buildroot}%{_unitdir}/sway-session.target
+install -D -p -m 644 sway/sway.service %{buildroot}%{_unitdir}/sway.service
+install -D -p -m 644 sway/sway.desktop %{buildroot}%{_datadir}/wayland-sessions/sway.desktop.brand
+install -D -p -m 755 sway/sway-run.sh %{buildroot}%{_bindir}/sway-run.sh
 
 ### alacritty
 # so far doesn't have special branding package and it doesn't support system wide config
@@ -153,11 +160,36 @@ sed -i -e "s|wofi --show.*|wofi --conf=%{_sysconfdir}/wofi/config --style=%{_sys
 install -D -p -m 644 .config/waybar/config %{buildroot}%{_sysconfdir}/xdg/waybar/config
 install -D -p -m 644 .config/waybar/style.css %{buildroot}%{_sysconfdir}/xdg/waybar/style.css
 
+%pre -n openSUSEway
+# bug #1176195, don't force enviroment, cleaning up old installations
+test -e %{_sysconfdir}/profile.d/openSUSEway.sh && rm %{_sysconfdir}/profile.d/openSUSEway.sh || true
+test -e %{_prefix}/lib/environment.d/50-openSUSEway.conf && rm %{_prefix}/lib/environment.d/50-openSUSEway.conf || true
+
+%post -n openSUSEway
+test -e %{_sysconfdir}/greetd/config.toml && \
+    mv -n %{_sysconfdir}/greetd/config.toml %{_sysconfdir}/greetd/config.toml.orig || true
+cp %{_sysconfdir}/greetd/config.toml.way %{_sysconfdir}/greetd/config.toml
+
+%postun -n openSUSEway
+test -e %{_sysconfdir}/greetd/config.toml.orig && \
+    mv %{_sysconfdir}/greetd/config.toml.orig %{_sysconfdir}/greetd/config.toml || true
+
+%post -n sway-branding-openSUSE
+test -e %{_datadir}/wayland-sessions/sway.desktop && \
+    mv -n %{_datadir}/wayland-sessions/sway.desktop %{_datadir}/wayland-sessions/sway.desktop.orig || true
+cp %{_datadir}/wayland-sessions/sway.desktop.brand %{_datadir}/wayland-sessions/sway.desktop
+
+%postun -n sway-branding-openSUSE
+test -e %{_datadir}/wayland-sessions/sway.desktop.orig && \
+    mv %{_datadir}/wayland-sessions/sway.desktop.orig %{_datadir}/wayland-sessions/sway.desktop || true
+
 %files
-%config %{_sysconfdir}/profile.d/openSUSEway.sh
-%config %{_prefix}/lib/environment.d/50-openSUSEway.conf
 %dir %{_sysconfdir}/xdg/qt5ct/
 %config(noreplace) %{_sysconfdir}/xdg/qt5ct/qt5ct.conf
+%dir %{_sysconfdir}/greetd/
+%attr(644,greeter,greeter) %config %{_sysconfdir}/greetd/config.toml.way
+%attr(644,greeter,greeter) %config %{_sysconfdir}/greetd/sway-config
+%attr(644,greeter,greeter) %config %{_sysconfdir}/greetd/environments
 
 %files -n patterns-openSUSEway
 %dir %{_defaultdocdir}/patterns
@@ -169,6 +201,10 @@ install -D -p -m 644 .config/waybar/style.css %{buildroot}%{_sysconfdir}/xdg/way
 %config %{_sysconfdir}/sway/env
 %dir %{_sysconfdir}/sway/config.d
 %config %{_sysconfdir}/sway/config.d/50-openSUSE.conf
+%{_unitdir}/sway-session.target
+%{_unitdir}/sway.service
+%{_datadir}/wayland-sessions/sway.desktop.brand
+%{_bindir}/sway-run.sh
 
 %dir %{_sysconfdir}/alacritty
 %config(noreplace) %{_sysconfdir}/alacritty/alacritty.yml
@@ -183,4 +219,3 @@ install -D -p -m 644 .config/waybar/style.css %{buildroot}%{_sysconfdir}/xdg/way
 %config(noreplace) %{_sysconfdir}/xdg/waybar/style.css
 
 %changelog
-

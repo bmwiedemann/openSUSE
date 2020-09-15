@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 15 08:23:01 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Make patterns-openSUSEway properly behaved:
+  * Use proper description (it's very user visible!)
+  * Don't overwrite the category (set by %pattern_graphicalenvironments)
+
+-------------------------------------------------------------------
+Fri Sep 11 09:43:40 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- New in 0.11 release
+  * greetd support fixes #27
+  * correct environment for sway session, fixes #28, bsc#1176195
+- Remove old files from environment enforcing, bsc#1176195
+- Add greetd support
+
+-------------------------------------------------------------------
+Tue Sep  8 14:51:38 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add gfxboot and gfxboot-branding-openSUSE to have better boot experience
+
+-------------------------------------------------------------------
 Sun Aug 30 09:13:29 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - New in 0.10 release
