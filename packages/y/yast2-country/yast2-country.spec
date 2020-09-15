@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-country
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-country
-Version:        4.3.8
+Version:        4.3.9
 Release:        0
 Summary:        YaST2 - Country Settings (Language, Keyboard, and Timezone)
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-country
+URL:            https://github.com/yast/yast-country
 
 Source0:        %{name}-%{version}.tar.bz2
 
@@ -58,7 +58,7 @@ Requires:       rubygem(%{rb_default_ruby_abi}:ruby-dbus)
 # Y2Network::NtpServer
 Conflicts:      yast2-ntp-client < 4.2.8
 
-Supplements:    autoyast(language,keyboard,timezone)
+Supplements:    autoyast(language:keyboard:timezone)
 
 %description
 Country specific data and configuration modules (language, keyboard,
