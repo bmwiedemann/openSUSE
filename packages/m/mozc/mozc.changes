@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 10 14:23:44 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Build scripts migration to Python 3
+  * Add: build-scripts-migration-to-python3.patch
+  * Add: fix-zip-code-conversion-output.patch 
+- Update post code dictionary
+
+-------------------------------------------------------------------
+Sat Sep  5 08:51:02 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Use system libprotobuf because Mozc's build script cannot handle
+  newer protobuf source code
+  * Fix build error under RISC V environment
+  * Add: mozc-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch
+
+-------------------------------------------------------------------
 Wed May 27 15:42:20 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Remove third party files which are not distributed BSD-3-Clause

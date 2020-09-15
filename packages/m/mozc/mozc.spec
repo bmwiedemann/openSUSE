@@ -29,7 +29,7 @@
 %define ibus_mozc_icon_path %{_datadir}/ibus-mozc/product_icon.png
 %define document_dir %{_docdir}/ibus-mozc
 %define zinnia_model_path %{_datadir}/zinnia/model/tomoe/handwriting-ja.model
-%define use_libprotobuf 0
+%define use_libprotobuf 1
 
 Name:           mozc
 Version:        2.23.2815.102
@@ -39,12 +39,7 @@ License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/I18n/Japanese
 ExcludeArch:    ppc ppc64 s390 s390x
 URL:            https://github.com/google/mozc
-# git clone https://github.com/google/mozc.git
-# cd mozc
-# git archive --prefix=mozc-$version/ afb03ddf | tar xC ../
-# rm mozc-$version/src/third_party/*
-# rm mozc-$version/docker
-# tar cvJf mozc-$version.tar.xz mozc-$version
+# Run ./make_archive.sh to make tar.xz removing third party files
 Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 
@@ -106,12 +101,19 @@ Patch10:        add-Japanese-new-era-reiwa-to-dict.patch
 Patch11:        add-Japanese-new-era-reiwa-to-date_rewriter.patch
 # PATCH-FIX-UPSTREAM ftake@geeko.jp
 Patch12:        add-Japanese-new-era-reiwa-ligature-to-dict.patch
+# PATCH-FIX-UPSTREAM ftake@geeko.jp -- fix compile error caused by newer protobuf (from Gentoo)
+# https://github.com/google/mozc/issues/460
+Patch13:        mozc-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch
+# PATCH-FIX-UPSTREAM ftake@geeko.jp -- Use Python 3 to build Mozc
+Patch14:        build-scripts-migration-to-python3.patch
+# PATCH-FIX-UPSTREAM ftake@geeko.jp -- fix a bug of the Python3 patch
+Patch15:        fix-zip-code-conversion-output.patch
 
 BuildRequires:  ninja >= 1.4
 %if %{use_libprotobuf}
 BuildRequires:  protobuf-devel
 %endif
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
@@ -218,6 +220,15 @@ cd src
 %patch12 -p1
 cd ..
 
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+
+# Use python as python3
+mkdir %{_builddir}/bin
+ln -s /usr/bin/python3 %{_builddir}/bin/python
+export PATH=%{_builddir}/bin:$PATH
+
 # fix installation path
 sed -e 's|@libdir@|%{_libdir}|g' %{SOURCE4} > ibus-setup-mozc-jp.desktop
 
@@ -230,7 +241,7 @@ cd ../..
 
 %build
 %define target Release
-
+export PATH=%{_builddir}/bin:$PATH
 export QTDIR=%{_libdir}/qt5
 
 # -Wall from RPM_OPT_FLAGS overrides -Wno-* options from gyp.
