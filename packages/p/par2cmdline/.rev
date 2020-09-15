@@ -18,4 +18,12 @@
   * Added support for static libpar2</comment>
     <requestid>794063</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>972f5ac1e18cae2bdabda0b9b9f9898b</srcmd5>
+    <version>0.8.1</version>
+    <time>1600180050</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide par2 as it makes dependencies of other package more clear</comment>
+    <requestid>834291</requestid>
+  </revision>
 </revisionlist>

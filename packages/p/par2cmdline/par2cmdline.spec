@@ -32,6 +32,7 @@ BuildRequires:  gcc-c++
 # makes this "relatively" safe to do.
 Provides:       par = 0.8.0
 Obsoletes:      par < 0.8.0
+Provides:       par2 = %{version}
 
 %description
 par2cmdline is a program for creating and using PAR2 files to detect damage in
