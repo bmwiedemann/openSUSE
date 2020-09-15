@@ -17,18 +17,16 @@
 # nodebuginfo
 
 
-%define real_version 5.15.0
-%define tar_version qt-everywhere-src-5.15.0
+%define real_version 5.15.1
+%define tar_version qt-everywhere-src-5.15.1
 Name:           libqt5-qtdoc
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Qt 5 API Documentation
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
 Group:          Documentation/Other
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/single/%{tar_version}.tar.xz
-# PATCH-FIX-OPENSUSE
-Patch101:       qtdeclarative-switch-to-python3.patch
 # Breaks make_jobs
 #!BuildIgnore:  cmake
 BuildRequires:  alsa-devel

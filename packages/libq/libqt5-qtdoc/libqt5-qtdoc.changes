@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 10 07:57:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.1:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qt.git/plain/dist/changes-5.15.1/?h=5.15.1
+- Drop patches, now upstream:
+  * qtdeclarative-switch-to-python3.patch
+
+-------------------------------------------------------------------
 Mon Aug 21 11:11:52 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - In _constraints set default min 10GB disk space for all arches

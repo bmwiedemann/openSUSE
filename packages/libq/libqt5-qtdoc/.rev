@@ -344,4 +344,12 @@
     <comment>- In _constraints set default min 10GB disk space for all arches</comment>
     <requestid>828443</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0e65ba7d6f5bd78be303181cf0e30371</srcmd5>
+    <version>5.15.1</version>
+    <time>1600179740</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833640</requestid>
+  </revision>
 </revisionlist>
