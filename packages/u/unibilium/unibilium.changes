@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 11 21:09:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.0:
+  - Makefile: use "-f" with prove always (to show failed tests) (#13)
+  - Stop searching in further dirs on errors except ENOENT #12
+  - Makefile: do not rebuild t/static_%.c with updated gen-static-test
+  - Add CMakeLists.txt and support for MSVC (#3)
+  - Relax checks for extended capability to support new format (#5)
+  - Makefile: use -Og with DEBUG=1 (#7)
+  - unibi_from_mem: fix [clang-analyzer-deadcode.DeadStores] (#8)
+  - Makefile: revisit regenerate-tests rule (#6)
+  - unibi_from_term: handle $TERMINFO as curses does #2 
+
+-------------------------------------------------------------------
 Tue Mar 27 00:10:35 UTC 2018 - jengelh@inai.de
 
 - Fix SRPM group. Update summaries. Use %make_install macro.

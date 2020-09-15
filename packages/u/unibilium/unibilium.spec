@@ -1,7 +1,7 @@
 #
 # spec file for package unibilium
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 4
 Name:           unibilium
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        A terminfo parsing library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/mauke/unibilium/
-Source:         https://github.com/mauke/unibilium/archive/v%{version}/unibilium-%{version}.tar.gz
+URL:            https://github.com/neovim/neovim/wiki/Deps#forks
+Source:         https://github.com/neovim/unibilium/archive/v%{version}/unibilium-%{version}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
