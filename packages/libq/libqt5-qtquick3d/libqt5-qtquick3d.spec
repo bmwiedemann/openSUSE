@@ -19,11 +19,11 @@
 %bcond_with system_assimp
 
 %define base_name libqt5
-%define real_version 5.15.0
-%define so_version 5.15.0
-%define tar_version qtquick3d-everywhere-src-5.15.0
+%define real_version 5.15.1
+%define so_version 5.15.1
+%define tar_version qtquick3d-everywhere-src-5.15.1
 Name:           libqt5-qtquick3d
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Qt 5 Quick 3D Module
 License:        GPL-3.0-or-later
