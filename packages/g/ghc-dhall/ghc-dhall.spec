@@ -19,7 +19,7 @@
 %global pkg_name dhall
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.33.1
+Version:        1.34.0
 Release:        0
 Summary:        A configuration language guaranteed to terminate
 License:        BSD-3-Clause
@@ -56,6 +56,7 @@ BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-lens-family-core-devel
 BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-memory-devel
+BuildRequires:  ghc-mmorph-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-optparse-applicative-devel
@@ -119,9 +120,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver prettyprinter '< 1.7' '< 2'
-cabal-tweak-dep-ver ansi-terminal '< 0.11' '< 1'
-cabal-tweak-dep-ver optparse-applicative '< 0.16' '< 1'
 
 %build
 %ghc_lib_build
@@ -142,6 +140,9 @@ cabal-tweak-dep-ver optparse-applicative '< 0.16' '< 1'
 %files -f %{name}.files
 %license LICENSE
 %{_bindir}/%{pkg_name}
+%dir %{_datadir}/%{pkg_name}-%{version}
+%dir %{_datadir}/%{pkg_name}-%{version}/man
+%{_datadir}/%{pkg_name}-%{version}/man/dhall.1
 
 %files devel -f %{name}-devel.files
 %doc CHANGELOG.md
