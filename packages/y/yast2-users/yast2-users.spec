@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-users
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-users
-Version:        4.3.7
+Version:        4.3.8
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-users
+URL:            https://github.com/yast/yast-users
 
 Source0:        %{name}-%{version}.tar.bz2
 
@@ -68,7 +68,7 @@ Conflicts:      autoyast2 < 3.1.92
 # older storage uses removed deprecated method, see https://github.com/yast/yast-storage/pull/187
 Conflicts:      yast2-storage < 3.1.75
 
-Supplements:    autoyast(users,groups,user_defaults)
+Supplements:    autoyast(users:groups:user_defaults:login_settings)
 
 %description
 This package provides GUI for maintenance of linux users and groups.

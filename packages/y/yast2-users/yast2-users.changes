@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  7 11:03:04 CEST 2020 - schubi@suse.de
+
+- Using ":" in the autoyast(...) supplements (bsc#1146494).
+- 4.3.8
+
+-------------------------------------------------------------------
 Mon Aug 10 18:05:20 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(users,groups,user_defaults)
