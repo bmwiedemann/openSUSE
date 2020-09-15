@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep 14 14:01:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.3.0:
+  * Fixed an issue causing bowtie to report incorrect results
+    when using a Bowtie 2 index.
+  * New, more efficient implementation of --reorder for
+    keeping SAM output lines in same order as input reads
+  * Added -x parameter for specifying index. bowtie still
+    supports specifying an index via positional parameter,
+    but this behavior will be deprecated.
+  * Migrated python scripts to python3.
+  * Fully removed colorspace functionality.
+  * Added support for compiling on ARM architectures.
+  * Fixed an issue preventing bowtie from outputting newlines
+    in --max and --un output files.
+  * Fixed an issue causing alignment results to vary based
+    on read names.
+  * Fixed an issue preventing --no-unal from suppressing
+    unmapped reads.
+  * Removed dependence on some third-party libraries,
+    simplifying the code and improving portability.
+  * Fix an issue preventing bowtie from running with
+    many threads on big-endian machines.
+- Spec cleanup
+- Enable aarch64 and disable ppc* and s390x.
+
+-------------------------------------------------------------------
 Tue May 12 16:32:03 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - aarch64 is not yet supported on Bowtie1. See:
