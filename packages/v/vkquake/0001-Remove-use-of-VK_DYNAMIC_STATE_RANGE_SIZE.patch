@@ -1,0 +1,25 @@
+From 029d2c53dc72a9995e0cec974d8ca03fc8352963 Mon Sep 17 00:00:00 2001
+From: Axel Gneiting <axelgneiting@gmail.com>
+Date: Sun, 17 May 2020 22:38:00 -0500
+Subject: [PATCH] Remove use of VK_DYNAMIC_STATE_RANGE_SIZE
+
+---
+ Quake/gl_rmisc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Quake/gl_rmisc.c b/Quake/gl_rmisc.c
+index ae66f3a..b80d6ae 100644
+--- a/Quake/gl_rmisc.c
++++ b/Quake/gl_rmisc.c
+@@ -1426,7 +1426,7 @@ void R_CreatePipelines()
+ 	VkPipelineDynamicStateCreateInfo dynamic_state_create_info;
+ 	memset(&dynamic_state_create_info, 0, sizeof(dynamic_state_create_info));
+ 	dynamic_state_create_info.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
+-	VkDynamicState dynamic_states[VK_DYNAMIC_STATE_RANGE_SIZE];
++	VkDynamicState dynamic_states[3];
+ 	dynamic_state_create_info.pDynamicStates = dynamic_states;
+ 
+ 	VkPipelineShaderStageCreateInfo shader_stages[2];
+-- 
+2.28.0
+
