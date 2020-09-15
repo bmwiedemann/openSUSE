@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 13 16:20:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix build with recent Boost versions:
+  * 0001-BOOST_BIG_ENDIAN-was-deprecated-and-replaced-by-BOOS.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Fri Feb  3 16:16:28 UTC 2017 - jengelh@inai.de
 
 - Direct-invoke ldconfig. Update RPM groups.

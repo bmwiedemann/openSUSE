@@ -1,7 +1,7 @@
 #
 # spec file for package xylib
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define somajor 4
 Name:           xylib
 Version:        1.5
 Release:        0
-%define somajor 4
 Summary:        Library for reading x-y data from several file formats
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://xylib.sourceforge.net/
+URL:            http://xylib.sourceforge.net/
 Source:         https://github.com/wojdyr/xylib/releases/download/v%{version}/%{name}-%{version}.tar.bz2
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
+Patch0:         0001-BOOST_BIG_ENDIAN-was-deprecated-and-replaced-by-BOOS.patch
+BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  libbz2-devel
-%if 0%{?suse_version} >= 1320
+BuildRequires:  libboost_headers-devel
+BuildRequires:  pkgconfig
 BuildRequires:  wxWidgets-devel >= 3
-%endif
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 C++ library for reading files that contain x-y data from powder diffraction,
@@ -84,14 +80,13 @@ Command-line converter of files in formats supported by xylib:
 - XFIT/Koalariet XDD
 - RIET7/LHPM/CSRIET/ILL\_D1A5/PSI\_DMC DAT
 - Vamas ISO14976
-  *(only experiment modes: SEM or MAPSV or MAPSVDP are supported; 
+  *(only experiment modes: SEM or MAPSV or MAPSVDP are supported;
   only REGULAR scan_mode is supported)*
 - Princeton Instruments WinSpec SPE
   *(only 1-D data is supported)*
 - χPLOT CHI_
 - Ron Unwin's Spectra XPS format (VGX-900 compatible)
 
-%if 0%{?suse_version} >= 1320
 %package -n     xyconvert
 Summary:        GUI converter of files in formats supported by xylib
 Group:          Productivity/Scientific/Other
@@ -112,53 +107,45 @@ GUI converter of files in formats supported by xylib:
 - XFIT/Koalariet XDD
 - RIET7/LHPM/CSRIET/ILL\_D1A5/PSI\_DMC DAT
 - Vamas ISO14976
-  *(only experiment modes: SEM or MAPSV or MAPSVDP are supported; 
+  *(only experiment modes: SEM or MAPSV or MAPSVDP are supported;
   only REGULAR scan_mode is supported)*
 - Princeton Instruments WinSpec SPE
   *(only 1-D data is supported)*
 - χPLOT CHI_
 - Ron Unwin's Spectra XPS format (VGX-900 compatible)
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -f
 %configure \
-  %if 0%{?suse_version} < 1320
-  --without-gui \
-  %endif
   --disable-static
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-rm %{buildroot}/%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n libxy%{somajor} -p /sbin/ldconfig
 %postun -n libxy%{somajor} -p /sbin/ldconfig
 
 %files -n libxy%{somajor}
-%defattr(-,root,root)
-%doc README.rst COPYING
+%license COPYING
+%doc README.rst
 %{_libdir}/libxy.so.%{somajor}*
 
 %files devel
-%defattr(-,root,root)
 %doc sample-urls
 %{_includedir}/*
 %{_libdir}/libxy.so
 
 %files -n xyconv
-%defattr(-,root,root)
 %{_bindir}/xyconv
-%{_mandir}/man1/xyconv.1.gz
+%{_mandir}/man1/xyconv.1%{?ext_man}
 
-%if 0%{?suse_version} >= 1320
 %files -n xyconvert
-%defattr(-,root,root)
 %{_bindir}/xyconvert
-%endif
 
 %changelog

@@ -1,0 +1,64 @@
+From d0848c1c99339c111b29827e1c0b0acb16a5ad76 Mon Sep 17 00:00:00 2001
+From: Marcin Wojdyr <wojdyr@gmail.com>
+Date: Sun, 13 Sep 2020 13:30:16 +0200
+Subject: [PATCH] BOOST_BIG_ENDIAN was deprecated and replaced by
+ BOOST_ENDIAN_BIG_BYTE
+
+---
+ configure.ac   |  2 --
+ xylib/util.cpp | 16 +++++++++++++---
+ 2 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c00d964..3c54c08 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -68,8 +68,6 @@ AC_CHECK_HEADER([climits], [],
+                 [AC_MSG_ERROR([Could not find necessary C++ libs headers])])
+ AC_CHECK_HEADER([boost/cstdint.hpp], [],
+                 [AC_MSG_ERROR([Could not find necessary Boost headers])])
+-AC_CHECK_HEADER([boost/detail/endian.hpp], [],
+-                [AC_MSG_ERROR([Could not find necessary Boost headers])])
+ AC_CHECK_HEADER([boost/spirit/version.hpp], [],
+                 [AC_MSG_ERROR([Boost::Spirit headers were not found.])])
+ AC_CHECK_HEADER([boost/tokenizer.hpp], [],
+diff --git a/xylib/util.cpp b/xylib/util.cpp
+index 5cc1118..fa50e14 100644
+--- a/xylib/util.cpp
++++ b/xylib/util.cpp
+@@ -10,11 +10,20 @@
+ #include <limits>
+ #include <cassert>
+ #include <cerrno>
+-#include <boost/detail/endian.hpp>
++#include <boost/version.hpp>
+ #include <boost/cstdint.hpp>
+ 
++
++#if BOOST_VERSION >= 106500
++#include <boost/predef/other/endian.h>
++#if !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_BIG_BYTE
++# error "Unknown endianness"
++#endif
++#else
++#include <boost/detail/endian.hpp>
+ #if !defined(BOOST_LITTLE_ENDIAN) && !defined(BOOST_BIG_ENDIAN)
+-#error "Unknown endianness"
++# error "Unknown endianness"
++#endif
+ #endif
+ 
+ using namespace std;
+@@ -71,7 +80,8 @@ void my_read(istream &f, char *buf, int len)
+ 
+ // change the byte-order from "little endian" to host endian
+ // ptr: pointer to the data, size - size in bytes
+-#if defined(BOOST_BIG_ENDIAN)
++#if defined(BOOST_BIG_ENDIAN) || \
++    (defined(BOOST_ENDIAN_BIG_BYTE) && BOOST_ENDIAN_BIG_BYTE)
+ void le_to_host(void *ptr, int size)
+ {
+     char *p = (char*) ptr;
+-- 
+2.28.0
+
