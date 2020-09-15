@@ -6,6 +6,12 @@ Mon Aug 17 09:01:15 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
   via email subject [netCDF #XWG-388823]
 
 -------------------------------------------------------------------
+Thu Jul 23 16:36:42 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439). 
+- Remove unused build option.
+
+-------------------------------------------------------------------
 Mon Jul 20 10:24:37 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add support for OpenMPI 4 (disabled on < 15.3)

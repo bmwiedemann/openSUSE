@@ -514,4 +514,13 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
     <comment></comment>
     <requestid>828567</requestid>
   </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>f73f0deca93da03ef99931be5d2be8c2</srcmd5>
+    <version>4.7.3</version>
+    <time>1600179916</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439). 
+- Remove unused build option. (forwarded request 833597 from eeich)</comment>
+    <requestid>833713</requestid>
+  </revision>
 </revisionlist>

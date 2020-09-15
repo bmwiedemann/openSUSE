@@ -276,6 +276,63 @@ ExcludeArch:    s390
 %bcond_without hpc
 %endif
 
+%if "%{flavor}" == "gnu10-hpc"
+%global compiler_family gnu
+%define c_f_ver 10
+%undefine mpi_flavor
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_flavor openmpi
+%define mpi_ver 1
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%{?DisOMPI2}
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_flavor openmpi
+%define mpi_ver 2
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_flavor openmpi
+%define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_flavor openmpi
+%define mpi_ver 4
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_flavor mvapich2
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_flavor mpich
+%bcond_without hpc
+%endif
+
 %if "%{flavor}" == "mvapich2"
 %define mpi_flavor mvapich2
 %bcond_with hpc
@@ -554,7 +611,6 @@ export FCFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
     --enable-shared \
     --enable-netcdf-4 \
     --enable-dap \
-    --enable-ncgen4 \
     --enable-extra-example-tests \
     --disable-dap-remote-tests \
     --with-pic \
