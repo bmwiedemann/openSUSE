@@ -1,7 +1,7 @@
 #
-# spec file for package netcdf
+# spec file for package netcdf-cxx4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,24 @@ ExclusiveArch:  do_not_build
 %define c_f_ver 7
 %endif
 
+%if "%flavor" == "gnu8-hpc"
+%global compiler_family gnu
+%bcond_without hpc
+%define c_f_ver 8
+%endif
+
+%if "%flavor" == "gnu9-hpc"
+%global compiler_family gnu
+%bcond_without hpc
+%define c_f_ver 9
+%endif
+
+%if "%flavor" == "gnu10-hpc"
+%global compiler_family gnu
+%bcond_without hpc
+%define c_f_ver 10
+%endif
+
 %if !0%{?is_opensuse} && !0%{?with_hpc:1}
 ExclusiveArch:  do_not_build
 %endif
@@ -73,7 +91,7 @@ Release:        0
 Summary:        C++ library for the Unidata network Common Data Form version 4
 License:        NetCDF
 Group:          Productivity/Scientific/Other
-Url:            http://www.unidata.ucar.edu/software/netcdf/
+URL:            http://www.unidata.ucar.edu/software/netcdf/
 Source0:        http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx4-%{version}.tar.gz
 Patch0:         netcdf-cxx4-testsuite_bigendian.patch
 %if %{without hpc}
