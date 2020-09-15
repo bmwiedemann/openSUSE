@@ -1,7 +1,7 @@
 #
 # spec file for package libpinyin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,14 @@
 %define sover 13
 
 Name:           libpinyin
-Version:        2.3.0
+Version:        2.4.91
 Release:        0
 Summary:        Intelligent Pinyin IME
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/libpinyin/libpinyin
+URL:            https://github.com/libpinyin/libpinyin
 Source:         https://github.com/libpinyin/libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM marguerite@opensuse.org - AX_CXX_COMPILE_CXX([11])
-# breaks Leap 42.1 builds while of no actual use
-Patch1:         libpinyin-1.7.0-no-AX_CXX_COMPILE_STDCXX_11.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-common
@@ -83,6 +80,7 @@ Summary:        Development files for the libpinyin IME
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
 Requires:       %{name}-tools = %{version}
+Requires:       libzhuyin%{sover} = %{version}
 Provides:       libzhuyin-devel = %{version}
 
 %description devel
@@ -103,17 +101,15 @@ This package provides the tools used to make data files.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
-autoreconf -ifv
-# NOCONFIGURE=1 ./autogen.sh
+# autoreconf -ifv
 %configure \
     --disable-static \
     --with-dbm=KyotoCabinet \
     --disable-silent-rules \
     --enable-libzhuyin
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -129,28 +125,31 @@ make %{?_smp_mflags} check
 %postun -n libzhuyin%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%doc COPYING
+%defattr(-,root,root)
 %{_libdir}/%{name}.so.*
 
 %files -n libzhuyin%{sover}
 %defattr(-,root,root)
-%doc ChangeLog AUTHORS README
-%license COPYING
 %{_libdir}/libzhuyin.so.*
 
 %files data
 %defattr(-,root,root)
+%doc ChangeLog AUTHORS README NEWS
+%license COPYING
 %{_libdir}/%{name}
 
 %files tools
 %defattr(-,root,root)
+%doc ChangeLog AUTHORS README NEWS
+%license COPYING
 %{_bindir}/gen_binary_files
 %{_bindir}/gen_unigram
 %{_bindir}/import_interpolation
 
 %files devel
 %defattr(-,root,root)
-%doc ChangeLog AUTHORS README
+%doc ChangeLog AUTHORS README NEWS
+%license COPYING
 %{_includedir}/%{name}-*/
 %{_libdir}/%{name}.so
 %{_libdir}/libzhuyin.so

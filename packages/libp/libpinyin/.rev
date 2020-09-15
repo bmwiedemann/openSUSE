@@ -259,4 +259,16 @@
 - Drop libpinyin-avoid_download_at_buildtime.patch, merged by upstream. (forwarded request 688145 from hillwood)</comment>
     <requestid>688174</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>781b4c11f8d3ac878e63231b8fb58418</srcmd5>
+    <version>2.4.91</version>
+    <time>1600179367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.4.91
+  * improve full pinyin auto correction
+  * bug fixes
+- Drop libpinyin-1.7.0-no-AX_CXX_COMPILE_STDCXX_11.patch, no longer
+  support Leap 42 (forwarded request 832924 from hillwood)</comment>
+    <requestid>832925</requestid>
+  </revision>
 </revisionlist>
