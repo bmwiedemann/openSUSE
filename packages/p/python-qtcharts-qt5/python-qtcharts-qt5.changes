@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 17:21:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 5.15.1
+  * A bug-fix release.
+- remove the superfluous Tumbleweed python2 skip hack
+
+-------------------------------------------------------------------
 Thu Aug 27 20:17:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 5.15.0
