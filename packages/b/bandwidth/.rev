@@ -49,4 +49,12 @@
   * bandwidth-fix-cflags.diff</comment>
     <requestid>741835</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15f579865f7df71c0bd2d1147e56eddc</srcmd5>
+    <version>1.9.4</version>
+    <time>1600180061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834285</requestid>
+  </revision>
 </revisionlist>

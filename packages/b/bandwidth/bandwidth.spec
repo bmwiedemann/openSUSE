@@ -1,7 +1,7 @@
 #
 # spec file for package bandwidth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bandwidth
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Memory and network benchmark program
 License:        GPL-2.0-only
@@ -38,17 +38,17 @@ and in the processor itself.
 
 %build
 # currently fails with No rule to make target 'routines-arm-32bit.asm', needed by 'bandwidth-arm32'
-%ifarch %arm
-make %{?_smp_mflags} bandwidth-arm32
+%ifarch %{arm}
+%make_build bandwidth-arm32
 %endif
 
 %ifarch %{ix86}
-make %{?_smp_mflags} bandwidth32 CFLAGS="%{optflags}"
+%make_build bandwidth32 CFLAGS="%{optflags}"
 mv bandwidth32 %{name}
 %endif
 
 %ifarch x86_64
-make %{?_smp_mflags} bandwidth64 CFLAGS="%{optflags}"
+%make_build bandwidth64 CFLAGS="%{optflags}"
 mv bandwidth64 %{name}
 %endif
 
