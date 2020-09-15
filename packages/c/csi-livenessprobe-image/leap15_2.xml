@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/opensuse/leap#15.2</image>
+  <os>openSUSE Leap 15.2</os>
+  <name>cephcsi/csi-livenessprobe</name>
+  <prefix>org.opensuse.cephcsi</prefix>
+  <title>csi-livenessprobe container</title>
+  <url>https://registry.opensuse.org/opensuse/cephcsi/csi-livenessprobe:v%PKG_VERSION%</url>
+  <referencelabel>org.opensuse.reference</referencelabel>
+  <reference>registry.opensuse.org/cephcsi/csi-livenessprobe:v%PKG_VERSION%</reference>
+  <packages_boot>
+    <package>
+      <name>openSUSE-release-ftp</name>
+    </package>
+  </packages_boot>
+</param>
