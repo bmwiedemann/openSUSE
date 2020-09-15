@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 16:33:58 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439). 
+
+-------------------------------------------------------------------
 Mon Jul 20 14:48:42 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add missing openmpi4 flavors.

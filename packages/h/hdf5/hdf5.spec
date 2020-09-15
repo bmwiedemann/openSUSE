@@ -310,6 +310,63 @@ ExclusiveArch:  do_not_build
 %global mpi_flavor mpich
 %endif
 
+%if "%{flavor}" == "gnu10-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%undefine mpi_flavor
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor openmpi
+%define mpi_vers 1
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%{?DisOMPI2}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor openmpi
+%define mpi_vers 2
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor openmpi
+%define mpi_vers 3
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor mvapich2
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor mpich
+%endif
+
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 %{?with_hpc:%{!?compiler_family:%global compiler_family gnu}}
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
