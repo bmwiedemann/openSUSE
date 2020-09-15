@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 10 12:12:06 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.21.1
+  * dummy commit to trigger a auto release (#597)
+- from version 1.21.0
+  * add GOOGLE_API_USE_CLIENT_CERTIFICATE support (#592)
+- from version 1.20.1
+  * reduce refresh clock skew to 10 seconds (#581)
+  * set Content-Type header in the request to signBlob API
+    to avoid Invalid JSON payload error (#439)
+- from version 1.20.0
+  * Add debug logging that can help with diagnosing auth lib. path (#473)
+  * Show the transport exception that happened for GCE Metadata (#474)
+  * **packaging:** add support for Python 3.8 (#569), closes (#568)
+- from version 1.19.2
+  * Revert "fix: migrate signBlob to iamcredentials.googleapis.com"  (#563)
+- from version 1.19.1
+  * don't add empty quota project  (#560)
+- from version 1.19.0
+  * add quota project to base credentials class (#546)
+  * check 'iss' in `verify_oauth2_token` (#500)
+  * migrate signBlob to iamcredentials.googleapis.com (#553)
+  * remove 3.4 from supported versions list (#549)
+- from version 1.18.0
+  * make ``load_credentials_from_file`` a public method (#530)
+  * no warning if quota_project_id is given (#537)
+
+-------------------------------------------------------------------
 Mon Jun 29 16:21:32 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Add missing pyOpenSSL test dependency which is listed upstream.
