@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 16 12:03:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.5:
+  * imlib2 based graphics
+- remove patches (upstream):
+  xfishtank-2.2-implicit_decl.patch
+  xfishtank-2.2-orig.patch
+  xfishtank-2.2-random_retval.patch
+
+-------------------------------------------------------------------
 Fri Feb 21 14:47:38 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file with spec-cleaner

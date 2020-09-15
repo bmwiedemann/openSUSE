@@ -17,17 +17,16 @@
 
 
 Name:           xfishtank
-Version:        2.2
+Version:        2.5
 Release:        0
 Summary:        An aquarium in the root window
 License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Background
+URL:            https://jim.rees.org/computers/xfishtank.html
 Source:         %{name}-%{version}.tar.bz2
-Patch0:         %{name}-%{version}-orig.patch
-Patch1:         %{name}-%{version}-implicit_decl.patch
-Patch2:         %{name}-%{version}-random_retval.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xproto)
@@ -48,5 +47,6 @@ xmkmf -a
 %files
 %doc README*
 %{_bindir}/xfishtank
+%{_mandir}/man1/xfishtank.1*
 
 %changelog

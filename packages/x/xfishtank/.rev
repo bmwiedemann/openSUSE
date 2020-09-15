@@ -125,4 +125,12 @@
 - Drop obsolete README.KDE</comment>
     <requestid>777999</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>68aa239044b947b67ef2dbfaeb7ca773</srcmd5>
+    <version>2.5</version>
+    <time>1600179353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827259</requestid>
+  </revision>
 </revisionlist>
