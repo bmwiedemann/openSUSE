@@ -284,6 +284,56 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 10
+%define mpi_vers 1
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-openmpi2-hpc"
+%{?DisOMPI2}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 10
+%define mpi_vers 2
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 10
+%define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 10
+%define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-mvapich2-hpc"
+%define mpi_flavor mvapich2
+%define compiler_family gnu
+%define c_f_ver 10
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-mpich-hpc"
+%define mpi_flavor mpich
+%define compiler_family gnu
+%define c_f_ver 10
+%{bcond_without hpc}
+%endif
+
 %if !0%{?is_opensuse} && !0%{?with_hpc:1}
 ExclusiveArch:  do_not_build
 %endif
