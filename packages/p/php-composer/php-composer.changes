@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 14 17:56:06 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.10.13
+  * Fixed regressions with old version validation
+  * Fixed invalid root aliases not being reported
+- Version 1.10.12
+  * Fixed regressions with old version validation
+- Version 1.10.11
+  * Fixed more PHP 8 compatibility issues
+  * Fixed regression in handling of CTRL-C when xdebug is loaded
+  * Fixed status handling of broken symlinks
+
+-------------------------------------------------------------------
 Mon Aug  3 09:59:56 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 1.10.10

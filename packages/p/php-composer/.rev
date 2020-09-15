@@ -366,4 +366,21 @@
 </comment>
     <requestid>824090</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0adeb879090e52e0c48ade0e4d26ef3e</srcmd5>
+    <version>1.10.13</version>
+    <time>1600180155</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.10.13
+  * Fixed regressions with old version validation
+  * Fixed invalid root aliases not being reported
+- Version 1.10.12
+  * Fixed regressions with old version validation
+- Version 1.10.11
+  * Fixed more PHP 8 compatibility issues
+  * Fixed regression in handling of CTRL-C when xdebug is loaded
+  * Fixed status handling of broken symlinks
+</comment>
+    <requestid>834351</requestid>
+  </revision>
 </revisionlist>
