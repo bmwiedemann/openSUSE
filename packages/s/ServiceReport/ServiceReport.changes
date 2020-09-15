@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Wed Sep  2 13:10:23 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Run throuhg spec-cleaner and split off changelog.
+- Fix license and dependencies
+- Re-download the source
+
+-------------------------------------------------------------------
+Sun May 17 00:00:00 UTC 2020 - Sourbh Jain <sourabhjain@linux.ibm.com>
+
+- Move setup.cfg metadata to setup.py file
+
+-------------------------------------------------------------------
+Thu May 14 00:00:00 UTC 2020 - Sourabh Jain <sourabhjain@linux.ibm.com>
+
+Update to version 2.2.2
+- Update crashkernel memory reservation limit
+- Remove rpm postscript
+- Add servicereport.spec file
+- Move systemd service file to a generic location
+- Run service only once at boot time without repair action
+- fix initrd repair function
+- [fadump] No boolean return from check_* function
+- [fadump] indent the code with spaces instead of tabs
+- Fix the option_string for --plugin option
+- [fadump] update the logic to extract the FADump mem reservation
+- Add irqbalance daemon check
+- Add irqbalance package check
+- Fix the system platform string extraction from /proc/cpuinfo
+- Fix powerpc-ibm-utils package name
+- Fix typo in README.md
+
+-------------------------------------------------------------------
+Fri Nov 15 00:00:00 UTC 2019 - Sourabh Jain <sourabhjain@linux.ibm.com>
+Version 2.2.1
+- First Open source release
+- Initial Commit of Open Source release
