@@ -397,4 +397,12 @@
 - Rename README.rst to README.md in %docs section</comment>
     <requestid>826017</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>360eb83f1ac011b177f5834cbfb45777</srcmd5>
+    <version>1.18.133</version>
+    <time>1600179374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833075</requestid>
+  </revision>
 </revisionlist>

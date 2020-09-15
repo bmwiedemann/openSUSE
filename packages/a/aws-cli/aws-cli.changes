@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  7 18:23:37 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.18.133
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.18.133/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+  + Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
 Wed Aug 12 11:25:30 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.18.117 (bsc#1175147, bsc#1175148, jsc#ECO-2362, jsc#PM-2069)

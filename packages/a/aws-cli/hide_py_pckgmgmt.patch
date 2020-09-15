@@ -1,16 +1,16 @@
---- setup.py.orig	2020-08-11 20:10:30.000000000 +0200
-+++ setup.py	2020-08-12 13:23:05.368663655 +0200
+--- setup.py.orig	2020-09-04 20:13:48.000000000 +0200
++++ setup.py	2020-09-07 20:23:23.734670079 +0200
 @@ -23,21 +23,21 @@
      raise RuntimeError("Unable to find version string.")
  
  
 -install_requires = [
--    'botocore==1.17.40',
+-    'botocore==1.17.56',
 -    'docutils>=0.10,<0.16',
 -    's3transfer>=0.3.0,<0.4.0',
 -]
 +# install_requires = [
-+#     'botocore==1.17.40',
++#     'botocore==1.17.56',
 +#     'docutils>=0.10,<0.16',
 +#     's3transfer>=0.3.0,<0.4.0',
 +# ]
