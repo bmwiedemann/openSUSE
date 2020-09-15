@@ -15,8 +15,12 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-
+%if !0%{?is_backports}
+%define brandingsuffix openSUSE
+%else
+%define brandingsuffix SLE
+%endif
+%define gnome_version %(rpm -q --queryformat='%%{VERSION}' libgnome-desktop-3-devel | sed 's/\.[0-9]*$//g')
 Name:           budgie-desktop
 Version:        10.5.1+1ed6276b
 Release:        0
@@ -34,6 +38,8 @@ Patch:          desktop-override.patch
 Patch1:         nemo-instead-of-nautilus.patch
 # PATCH-FIX-UPSTREAM gh#solus-project/budgie-desktop#2029
 Patch2:         vala-0.49.patch
+# PATCH-FIX-OPENSUSE Re-add Leap 15.2 support
+Patch3:         Revert-GNOME-3.38-support.patch
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.41.2
 BuildRequires:  pkgconfig
@@ -57,7 +63,7 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen) >= 0.28
-BuildRequires:  (pkgconfig(libmutter-6) or pkgconfig(libmutter-7))
+BuildRequires:  (pkgconfig(libmutter-5) or pkgconfig(libmutter-6) or pkgconfig(libmutter-7))
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(alsa)
@@ -73,6 +79,7 @@ Recommends:     gnome-software
 Recommends:     NetworkManager-applet
 Recommends:     gnome-backgrounds
 Recommends:     budgie-desktop-doc
+Recommends:     budgie-desktop-branding-%{brandingsuffix}
 %define vala_version %(rpm -q --queryformat='%%{VERSION}' vala | sed 's/\.[0-9]*$//g')
 
 %description
@@ -138,7 +145,13 @@ Private library for Budgie desktop to link against.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -p1
+%patch1 -p1
+%patch2 -p1
+%if "%{gnome_version}" < "3.36"
+%patch3 -p1
+%endif
 
 %build
 %meson
