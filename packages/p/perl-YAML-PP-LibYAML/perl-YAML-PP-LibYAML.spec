@@ -17,7 +17,7 @@
 
 
 Name:           perl-YAML-PP-LibYAML
-Version:        0.004
+Version:        0.005
 Release:        0
 %define cpan_name YAML-PP-LibYAML
 Summary:        Faster parsing for YAML::PP
@@ -34,6 +34,7 @@ BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(YAML::LibYAML::API) >= 0.011
 BuildRequires:  perl(YAML::LibYAML::API::XS)
 BuildRequires:  perl(YAML::PP) >= 0.025
+BuildRequires:  perl(YAML::PP::Common)
 BuildRequires:  perl(YAML::PP::Emitter)
 BuildRequires:  perl(YAML::PP::Parser)
 BuildRequires:  perl(YAML::PP::Reader)
@@ -69,7 +70,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README
+%doc Changes README README.md
 %license LICENSE
 
 %changelog

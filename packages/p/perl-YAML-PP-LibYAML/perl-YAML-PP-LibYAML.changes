@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 14 03:12:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.005
+   see /usr/share/doc/packages/perl-YAML-PP-LibYAML/Changes
+
+  0.005 2020-09-13 14:30:47+02:00
+
+      - Fix 'width' option
+
+-------------------------------------------------------------------
 Tue Sep  8 03:12:07 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.004
