@@ -19,7 +19,7 @@
 %global pkg_name language-c
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.3
+Version:        0.9
 Release:        0
 Summary:        Analysis and generation of C code
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-pretty-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
@@ -56,6 +57,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+find . -type f -exec chmod -x {} +
 
 %build
 %ghc_lib_build
