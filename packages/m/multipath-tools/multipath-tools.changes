@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 10 19:06:10 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Missing past changelog bug references:
+  * 0.7.3+10+suse.70ccb55b0439:
+  Patch series for NVMe discovery and failover (bsc#1038865, 
+  bsc#1057820)
+  * 0.7.9+109+suse.203c1cf
+  * setup_map: wait for pending path checkers to finish
+  (bsc#1118224)
+
+-------------------------------------------------------------------
 Thu Aug 27 09:35:56 UTC 2020 - mwilck@suse.com
 
 - Update to version 0.8.4+183+suse.1817ce2:

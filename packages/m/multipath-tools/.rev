@@ -1360,4 +1360,18 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
   * multipath-tools: introduce INIT_REMOVED state</comment>
     <requestid>829945</requestid>
   </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>998646371876de1146b065c5b5c8b692</srcmd5>
+    <version>0.8.4+183+suse.1817ce2</version>
+    <time>1600179817</time>
+    <user>dimstar_suse</user>
+    <comment>- Missing past changelog bug references:
+  * 0.7.3+10+suse.70ccb55b0439:
+  Patch series for NVMe discovery and failover (bsc#1038865, 
+  bsc#1057820)
+  * 0.7.9+109+suse.203c1cf
+  * setup_map: wait for pending path checkers to finish
+  (bsc#1118224)</comment>
+    <requestid>833569</requestid>
+  </revision>
 </revisionlist>
