@@ -19,7 +19,7 @@
 %global pkg_name hledger
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.19
+Version:        1.19.1
 Release:        0
 Summary:        Command-line interface for the hledger accounting system
 License:        GPL-3.0-or-later

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  8 02:00:34 UTC 2020 - psimons@suse.com
+
+- Update hledger to version 1.19.1.
+  # 1.19.1 2020-09-07
+
+  - Fix alignment of coloured numbers (#1345, #1349, Stephen Morgan)
+
+  - Fix a regression in account type autodetection for accounts with
+    capitalised names. (#1341)
+
+  - Allow megaparsec 9
+
+-------------------------------------------------------------------
 Thu Sep  3 02:00:39 UTC 2020 - psimons@suse.com
 
 - Update hledger to version 1.19.
