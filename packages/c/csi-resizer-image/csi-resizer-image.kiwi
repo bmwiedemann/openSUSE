@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+                This file is generated,
+                don't manually modify this file,
+                please check README
+-->
+<!-- OBS-AddTag: opensuse/cephcsi/csi-resizer:v%PKG_VERSION%-rev<VERSION> opensuse/cephcsi/csi-resizer:v%PKG_VERSION%-rev<VERSION>-build<RELEASE> -->
+<image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="csi-resizer-image">
+  <description type="system">
+    <author>SUSE Containers Team</author>
+    <contact>containers@suse.com</contact>
+    <specification>csi-resizer running on a openSUSE Tumbleweed container guest</specification>
+  </description>
+  <preferences>
+    <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
+      <containerconfig tag="v%PKG_VERSION%" maintainer="SUSE Containers Team &lt;containers@suse.com&gt;" name="opensuse/cephcsi/csi-resizer">
+        <entrypoint execute="/usr/bin/csi-resizer"/>
+        <subcommand clear="true"/>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.cephcsi">
+            <label name="org.opencontainers.image.description" value="csi-resizer running on a openSUSE Tumbleweed container guest"/>
+            <label name="org.opencontainers.image.title" value="csi-resizer container"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
+            <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/cephcsi/csi-resizer:v%PKG_VERSION%"/>
+            <label name="org.opencontainers.image.version" value="v%PKG_VERSION%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cephcsi/csi-resizer:v%PKG_VERSION%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+      </containerconfig>
+    </type>
+    <version>1</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="image">
+    <package name="csi-external-resizer"/>
+  </packages>
+  <packages type="bootstrap">
+    <package name="openSUSE-release-ftp"/>
+  </packages>
+</image>
