@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 12 17:02:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix build with recent Boost versions:
+  * 0001-Avoid-deprecated-boost-endianess-include.patch
+
+-------------------------------------------------------------------
 Tue Jul 21 13:26:57 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints for PowerPC avoid "no space left on device" build error

@@ -1,0 +1,45 @@
+From c949192306f1690f5cd12ce336853e5ceb4a684f Mon Sep 17 00:00:00 2001
+From: Miroslaw Stein <miroslaw.stein@isode.com>
+Date: Fri, 18 Jan 2019 14:30:24 +0000
+Subject: [PATCH] Avoid deprecated boost endianess include
+
+As of Boost 1.69.0, boost/detail/endian.h is deprecated in favour of
+boost/predef/other/endian.h, and BOOST_(LITTLE|BIG)_ENDIAN by
+BOOST_ENDIAN_(LITTLE|BIG)_BYTE.
+
+Test-Information:
+
+Unit tests pass on Debian 9
+
+Change-Id: If7076c559a4e35219ff97603f50b80cfbe05b29b
+---
+ Swiften/Base/Platform.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Swiften/Base/Platform.h b/Swiften/Base/Platform.h
+index 4deba2b..22dff30 100644
+--- a/Swiften/Base/Platform.h
++++ b/Swiften/Base/Platform.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2010 Isode Limited.
++ * Copyright (c) 2010-2019 Isode Limited.
+  * All rights reserved.
+  * See the COPYING file for more information.
+  */
+@@ -43,9 +43,9 @@
+ #endif
+ 
+ // Endianness
+-#include <boost/detail/endian.hpp>
+-#if defined(BOOST_LITTLE_ENDIAN)
++#include <boost/predef/other/endian.h>
++#if defined(BOOST_ENDIAN_LITTLE_BYTE)
+ #define SWIFTEN_LITTLE_ENDIAN
+-#elif defined(BOOST_BIG_ENDIAN)
++#elif defined(BOOST_ENDIAN_BIG_BYTE)
+ #define SWIFTEN_BIG_ENDIAN
+ #endif
+-- 
+2.28.0
+

@@ -36,6 +36,8 @@ Patch0:         swift-4.0-qt5.11-includes.patch
 Patch1:         swift-im-boost-tribool.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-Fix-build-with-Qt-5.15.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Avoid-deprecated-boost-endianess-include.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-dtds
 BuildRequires:  fdupes
