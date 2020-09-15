@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 10:40:12 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
 Thu Dec 19 09:58:24 UTC 2019 - psimons@suse.com
 
 - Update mustache to version 2.3.1.
