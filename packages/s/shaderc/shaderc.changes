@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:08:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.3:
+  * spvc: added support for Dawn using deprecated Options constructor
+  * spvc: added support for the additional fixed sample mask in MSL
+
+-------------------------------------------------------------------
 Mon Aug 17 01:07:43 UTC 2020 - malcolmlewis@opensuse.org
 
 - Updated to release 2020.2:
