@@ -1,7 +1,7 @@
 #
 # spec file for package hactool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           hactool
-Version:        1.2.2
+Version:        1.4.0
 Release:        0
 Summary:        Tool to view/extract information about Nintendo Switch Archives
 License:        ISC
 Group:          Hardware/Other
 URL:            https://github.com/SciresM/hactool
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/SciresM/hactool/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
 hactool is a tool to view information about, decrypt, and extract
