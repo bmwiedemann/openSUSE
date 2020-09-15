@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:52:18 UTC 2020 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- version update to 0.2.4
+  * Added osctiny.extensions.buildresults.Build.get_binary()
+  * Added osctiny.extensions.buildresults.Build.get_package_list()
+  * Changed osctiny.osc.Osc.get_objectified_xml() to accept request objects and strings
+
+-------------------------------------------------------------------
 Mon Jun 29 06:38:31 UTC 2020 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - version update to 0.2.3
