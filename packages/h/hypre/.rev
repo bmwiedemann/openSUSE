@@ -86,4 +86,13 @@
     <comment>- Add non-HPC openmpi3 flavor.</comment>
     <requestid>800437</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>f174d6554b02c3091450b447a59aba71</srcmd5>
+    <version>2.18.2</version>
+    <time>1600179888</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors. (forwarded request 833679 from eeich)</comment>
+    <requestid>833702</requestid>
+  </revision>
 </revisionlist>

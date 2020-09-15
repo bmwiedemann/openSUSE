@@ -32,6 +32,9 @@
 %if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
+%define DisOMPI4 ExclusiveArch:  do_not_build
+%endif
 
 %if "%flavor" == ""
 %define package_name %{pname}
@@ -62,6 +65,13 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %bcond_with hpc
 %{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "openmpi4"
+%global mpi_family  openmpi
+%define mpi_vers 4
+%bcond_with hpc
+%{?DisOMPI4}
 %endif
 
 %if "%{flavor}" == "mvapich2"
@@ -123,6 +133,15 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI3}
 %endif
 
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%undefine c_f_ver
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 4
+%bcond_without hpc
+%{?DisOMPI4}
+%endif
+
 %if "%{flavor}" == "gnu7-mvapich2-hpc"
 %define c_f_ver 7
 %define mpi_family mvapich2
@@ -162,6 +181,15 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %bcond_without hpc
 %{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi4-hpc"
+%define c_f_ver 7
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 4
+%bcond_without hpc
+%{?DisOMPI4}
 %endif
 
 %if "%{flavor}" == "gnu8-mvapich2-hpc"
@@ -205,6 +233,15 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI3}
 %endif
 
+%if "%{flavor}" == "gnu8-openmpi4-hpc"
+%define c_f_ver 8
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 4
+%bcond_without hpc
+%{?DisOMPI4}
+%endif
+
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
 %define c_f_ver 9
 %define mpi_family mvapich2
@@ -244,6 +281,65 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %bcond_without hpc
 %{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi4-hpc"
+%define c_f_ver 9
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 4
+%bcond_without hpc
+%{?DisOMPI4}
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%define c_f_ver 10
+%define mpi_family mvapich2
+%define compiler_family gnu
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%define c_f_ver 10
+%define mpi_family mpich
+%define compiler_family gnu
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi-hpc"
+%define c_f_ver 10
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 1
+%bcond_without hpc
+%{?DisOMPI1}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%define c_f_ver 10
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 2
+%bcond_without hpc
+%{?DisOMPI2}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%define c_f_ver 10
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 3
+%bcond_without hpc
+%{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%define c_f_ver 10
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 4
+%bcond_without hpc
+%{?DisOMPI4}
 %endif
 
 # Don't build non-HPC on SLE
