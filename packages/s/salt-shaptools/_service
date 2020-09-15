@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="filename">salt-shaptools</param>
     <param name="versionformat">0.3.9+git.%ct.%h</param>
-    <param name="revision">782f9ce5394989bd01af7e2f1cd65cc90e47fef1</param>
+    <param name="revision">c265ba1fc2e0f6f4c6bca2c4a8d8dbac61e93f13</param>
   </service>
 
   <service name="recompress" mode="disabled">
