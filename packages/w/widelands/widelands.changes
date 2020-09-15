@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:41:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to build21
+  See https://www.widelands.org/changelog/ for the changelog
+- Removed obsolete conditions
+- Cleanup the %cmake call
+- Drop build20-libGL.patch. Merged upstream
+- Increase the minimum disk space required to build widelands
+
+-------------------------------------------------------------------
 Mon May  4 10:51:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire distribution-release, not openSUSE-release: we do

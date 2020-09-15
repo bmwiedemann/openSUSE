@@ -17,14 +17,12 @@
 
 
 Name:           widelands
-Version:        build20
+Version:        build21
 Release:        0
 Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
-Source:         https://launchpad.net/%{name}/%{version}/%{version}/+download/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM properly add -lGL as library for correct argument order
-Patch1:         build20-libGL.patch
+Source0:        https://launchpad.net/%{name}/%{version}/%{version}/+download/%{name}-%{version}-source.tar.gz
 BuildRequires:  SDL2_gfx-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
@@ -85,40 +83,26 @@ operation.
 
 %prep
 %setup -q
-%patch1 -p1
 sed -i '/wl_add_flag(WL_COMPILE_DIAGNOSTICS "-Werror=uninitialized")/d' CMakeLists.txt
 sed -i 's/\(install(TARGETS ${NAME} DESTINATION \)"."\( COMPONENT ExecutableFiles)\)/\1bin\2/' cmake/WlFunctions.cmake
-find . -type f -name "*.py" -exec sed  -i 's/env python/python3/g' {} \;
+sed -i 's#../share#share#g' xdg/CMakeLists.txt
+find . -type f -name "*.py" -exec sed -i -E 's/env python[3]?/python3/' {} \;
 
 %build
 mkdir -p build/locale
 %define __builder ninja
 %cmake \
-  -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DWL_INSTALL_PREFIX=%{_prefix} \
   -DWL_INSTALL_BINDIR=bin \
   -DWL_INSTALL_DATADIR=%{_datadir}/%{name} \
   -DWL_INSTALL_LOCALEDIR=%{_datadir}/%{name}/locale \
   -DCMAKE_BUILD_TYPE="Release" \
-  -DBoost_USE_STATIC_LIBS=OFF \
-  ..
+  -DBoost_USE_STATIC_LIBS=OFF
 
 %cmake_build
 
 %install
 %cmake_install
-
-for i in 16 32 48 64 128; do
-  install -D -m 0644 data/images/logos/wl-ico-${i}.png %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png
-done
-
-install -D -m 0644 debian/org.%{name}.%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file %{name} -r Game StrategyGame
-desktop-file-edit --set-icon=%{name} %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-install -D -m 0644 debian/%{name}.6 %{buildroot}%{_mandir}/man6/%{name}.6
-
-install -D -m 0644 debian/%{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %fdupes %{buildroot}%{_datadir}
 
@@ -130,24 +114,14 @@ rm -f %{buildroot}%{_prefix}/{COPYING,CREDITS,ChangeLog,VERSION}
 # instead do post-install test
 PATH=%{buildroot}%{_bindir}:$PATH %{name} --help | grep 'This is Widelands'
 
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
 %license COPYING
 %doc CREDITS ChangeLog
 %{_bindir}/%{name}
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/org.widelands.Widelands.png
+%{_datadir}/applications/org.widelands.Widelands.desktop
 %{_mandir}/man6/%{name}.*
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/org.widelands.Widelands.appdata.xml
 
 %files data -f %{name}.lang
 %dir %{_datadir}/%{name}
