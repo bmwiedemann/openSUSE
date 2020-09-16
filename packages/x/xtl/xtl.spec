@@ -17,7 +17,7 @@
 
 
 Name:           xtl
-Version:        0.6.16
+Version:        0.6.18
 Release:        0
 Summary:        The x template library
 License:        BSD-3-Clause
