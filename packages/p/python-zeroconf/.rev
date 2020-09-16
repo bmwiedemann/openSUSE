@@ -158,4 +158,16 @@
     <comment></comment>
     <requestid>822073</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1d00d5aee5aa8183c393042716205184</srcmd5>
+    <version>0.28.3</version>
+    <time>1600278100</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.28.3:
+  * Reduced a time an internal lock is held which should eliminate deadlocks in high-traffic networks.
+  * Stopped asking questions we already have answers for in cache, thanks to Paul Daumlechner.
+  * Removed initial delay before querying for service info, thanks to Erik Montnemery.
+  * Fixed a resource leak connected to using ServiceBrowser with multiple types</comment>
+    <requestid>834888</requestid>
+  </revision>
 </revisionlist>
