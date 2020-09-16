@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 05:31:38 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1600233111.d1ffb1b7d:
+  * Dependency cron 2020-09-16
+  * Change auto-refresh selector
+  * Make duplicate keys in Job Templates fatal
+  * Revert "ci: Temporarily exclude broken OBS checks"
+  * Add TimeLimit to more unit tests
+  * Block related jobs when doing 'isos post'
+  * Always emit jobtemplate_create with an ID
+
+-------------------------------------------------------------------
 Sun Sep 13 21:31:38 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1599905977.4ef824600:
