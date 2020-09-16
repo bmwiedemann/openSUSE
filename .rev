@@ -108,4 +108,12 @@ and that one is GPL3.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>816863</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7df439544c54bedad825564d0912a029</srcmd5>
+    <version>4.4.2</version>
+    <time>1600277832</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop Recommends for music backends</comment>
+    <requestid>834761</requestid>
+  </revision>
 </revisionlist>
