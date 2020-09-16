@@ -212,4 +212,13 @@ Note: resubmit with fixed license</comment>
     &gt; sets</comment>
     <requestid>818062</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c55472ad646eb5b2af8135b80ee13ef3</srcmd5>
+    <version>1.6.2</version>
+    <time>1600278119</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.2:
+  * bugfixes</comment>
+    <requestid>834887</requestid>
+  </revision>
 </revisionlist>

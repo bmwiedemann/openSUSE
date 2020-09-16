@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sympy
-Version:        1.6
+Version:        1.6.2
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause
