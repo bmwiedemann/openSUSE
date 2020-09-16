@@ -1,7 +1,7 @@
 #
 # spec file for package workrave
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define upstream_version    1_10_34
+%define upstream_version    1_10_44
 Name:           workrave
-Version:        1.10.34
+Version:        1.10.44
 Release:        0
 Summary:        Recovery and prevention of Repetitive Strain Injury program
 License:        GPL-3.0-only
