@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%bcond_without  tests
 Name:           python-jupyter_contrib_core
 Version:        0.3.3
 Release:        0
@@ -27,16 +26,18 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-contrib/jupyter_contrib_core
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_contrib_core/jupyter_contrib_core-%{version}.tar.gz
+# https://github.com/Jupyter-contrib/jupyter_contrib_core/pull/9
+Patch0:         python-jupyter_contrib_core-remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with tests}
+# SECTION test requirements
 BuildRequires:  %{python_module jupyter-core}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module notebook >= 4.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module traitlets}
-%endif
+# /SECTION
 Requires:       python-jupyter-core
 Requires:       python-notebook >= 4.0
 Requires:       python-setuptools
@@ -78,6 +79,7 @@ This package provides the jupyter components.
 
 %prep
 %setup -q -n jupyter_contrib_core-%{version}
+%patch0 -p1
 
 %build
 export LANG=en_US.UTF-8
@@ -88,11 +90,9 @@ export LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}
 %check
 export LANG=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
-%endif
+%pytest
 
 %files %{python_files}
 %doc README.md

@@ -1,0 +1,20 @@
+Index: jupyter_contrib_core-0.3.3/tests/test_application.py
+===================================================================
+--- jupyter_contrib_core-0.3.3.orig/tests/test_application.py	2017-08-31 01:16:16.000000000 +0200
++++ jupyter_contrib_core-0.3.3/tests/test_application.py	2020-09-15 14:19:54.992573764 +0200
+@@ -8,7 +8,7 @@ from __future__ import (
+ import logging
+ from unittest import TestCase
+ 
+-import nose.tools as nt
++import pytest
+ from traitlets.tests.utils import check_help_all_output, check_help_output
+ 
+ from jupyter_contrib_core.application import main as main_app
+@@ -59,5 +59,5 @@ class AppTest(TestCase):
+         check_help_output(app_module, [])
+         check_help_all_output(app_module, [])
+         # sys.exit should be called if no argv specified
+-        with nt.assert_raises(SystemExit):
++        with pytest.raises(SystemExit):
+             main_app([])

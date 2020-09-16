@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 15 13:33:09 UTC 2020 - pgajdos@suse.com
+
+- replace nose with pytest
+- added patches
+  https://github.com/Jupyter-contrib/jupyter_contrib_core/pull/9
+  + python-jupyter_contrib_core-remove-nose.patch
+
+-------------------------------------------------------------------
 Thu Apr 23 10:49:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove py2 deps as the py2 support is disabled
