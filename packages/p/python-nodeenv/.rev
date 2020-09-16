@@ -32,4 +32,13 @@
   *  a new way of the mirroring; some fixes</comment>
     <requestid>814555</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>07a9181e93a63fe33b07a69fe60e5861</srcmd5>
+    <version>1.5.0</version>
+    <time>1600278108</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * ignore ssl option, MSYS2 support</comment>
+    <requestid>834890</requestid>
+  </revision>
 </revisionlist>
