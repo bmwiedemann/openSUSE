@@ -17,13 +17,9 @@
 
 
 %bcond_without lang
-%if 0%{?suse_version} >= 1500
 # Only include WebEngine for platforms that support it
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 %bcond_without qtwebengine
-%else
-%bcond_with qtwebengine
-%endif
 %else
 %bcond_with qtwebengine
 %endif
@@ -82,8 +78,6 @@ BuildRequires:  cmake(aqbanking) >= 6.0.1
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(sqlcipher)
 BuildRequires:  pkgconfig(sqlite3)
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
 Recommends:     %{name}-lang = %{version}
 # For users of KDE:Unstable:Extra
 Provides:       kmymoney5 = %{version}
@@ -132,18 +126,14 @@ Development files and headers need to build software using KMyMoney.
 %{kf5_find_htmldocs}
 %endif
 
-%post
-/sbin/ldconfig
-%mime_database_post
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%mime_database_postun
+%postun -p /sbin/ldconfig
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog ChangeLog.original README.Fileformats
 %doc %lang(en) %{_kf5_htmldir}/en/kmymoney/
+%doc AUTHORS ChangeLog ChangeLog.original README.Fileformats
 %{_datadir}/mime/packages/x-kmymoney.xml
 %{_kf5_applicationsdir}/org.kde.kmymoney.desktop
 %{_kf5_appsdir}/kbanking/

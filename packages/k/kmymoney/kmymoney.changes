@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:55:38 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 4GB min disk space
+
+-------------------------------------------------------------------
+Thu Aug 27 09:56:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Jun 15 19:27:12 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.1.0
