@@ -1,0 +1,29 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 15 Sep 2020 08:50:48 +0200
+Subject: tests: strutil, use ck_assert
+Patch-mainline: submitted 2020/09/15
+References: build fix
+
+We pass no message, so use ck_assert instead of ck_assert_msg.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ tests/strutil.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/strutil.c b/tests/strutil.c
+index fca70eaaee36..ec2233329b76 100644
+--- a/tests/strutil.c
++++ b/tests/strutil.c
+@@ -154,7 +154,7 @@ START_TEST(test_locale)
+ 	fprintf(stderr, "Old locale = %s\n", old_locale);
+ 	/* Copy the name so it won’t be clobbered by setlocale. */
+ 	saved_locale = g_strdup(old_locale);
+-	ck_assert_msg(saved_locale != NULL);
++	ck_assert(saved_locale != NULL);
+ 
+ #ifdef _WIN32
+ 	/*
+-- 
+2.28.0
+

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:52:30 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- add 0001-tests-strutil-use-ck_assert.patch to fix build
+
+-------------------------------------------------------------------
 Mon Feb  3 14:42:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel: allow

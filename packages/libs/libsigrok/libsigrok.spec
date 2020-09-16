@@ -29,6 +29,7 @@ Source0:        http://sigrok.org/download/source/libsigrok/%{name}-%{version}.t
 Source1:        sigrok-mime.xml
 Patch0:         0001-Use-pkg-config-for-rpc-library-detection.patch
 Patch1:         LTO-linking-fix.patch
+Patch2:         0001-tests-strutil-use-ck_assert.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -104,8 +105,7 @@ This subpackage contains the headers to make use of the sigrok shared
 libraries.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 # avoid autoconf/automake rerun
 touch aclocal.m4 Makefile.in configure
 
