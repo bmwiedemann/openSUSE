@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  9 14:46:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.1
+  * Enabled decoding of non-Unicode character sets in older
+    (BIFF5) XLS files.
+  * Improved string conversion performance in newer files.
+
+-------------------------------------------------------------------
 Tue Aug 25 15:54:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.3:

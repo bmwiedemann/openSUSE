@@ -17,13 +17,13 @@
 
 
 Name:           libxls
-%define lname libxlsreader1
-Version:        1.5.3
+%define lname libxlsreader8
+Version:        1.6.1
 Release:        0
 Summary:        Library for Parsing Excel (XLS) Files
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://libxls.sourceforge.net/
+URL:            https://github.com/libxls/libxls
 Source:         https://github.com/libxls/libxls/releases/download/v%version/libxls-%version.tar.gz
 BuildRequires:  pkg-config
 
