@@ -18,12 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hvac
-Version:        0.10.4
+Version:        0.10.5
 Release:        0
 Summary:        HashiCorp Vault API client
 License:        BSD-3-Clause
 URL:            https://github.com/ianunruh/hvac
 Source:         https://github.com/hvac/hvac/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module Authlib}
+BuildRequires:  %{python_module Flask-SQLAlchemy}
+BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module parameterized}
