@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 16 09:53:08 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.27
+  * The printed appearance of both vectors and of vector 
+    functions like Earth locations and Earth satellites 
+    have been rewritten to be more informative and 
+    consistent.
+  * Added compute_calendar_date() which lets the caller 
+    choose the Julian calendar for ancient dates instead of 
+    always using the proleptic Gregorian calendar. This 
+    should be particularly useful for historians.
+  * Added J() that builds a time array from an array of 
+    floating point years. #436
+  * Added four new strftime methods for the non-UTC 
+    timescales (#443). All four of them support %f for 
+    microseconds, and provide a reasonable default format 
+    string for callers who don’t wish to concoct their own:
+      tai_strftime()
+      tt_strftime()
+      tdb_strftime()
+      ut1_strftime() 
+  * Thanks to several fixes, comets and asteroids with 
+    parabolic and hyperbolic orbits should now raise fewer 
+    errors.
+ *  The prototype planetary_magnitude() can now return 
+    magnitudes for Uranus without raising an exception. The 
+    routine does not yet take into account whether the 
+    observer is facing the equator or poles of Uranus, so 
+    the magnitude predicted for the planet will only be 
+    accurate to within about 0.1 magnitudes.
+
+-------------------------------------------------------------------
 Thu Aug  6 14:20:08 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update assay to commit 256.23c18c2 in order to fix non x86 builds
