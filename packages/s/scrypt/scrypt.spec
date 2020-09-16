@@ -1,7 +1,7 @@
 #
 # spec file for package scrypt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           scrypt
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Password-based encryption utility using the scrypt key derivation function
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Security
 URL:            https://www.tarsnap.com/scrypt.html
-Source0:        http://www.tarsnap.com/scrypt/scrypt-%{version}.tgz
+Source0:        https://www.tarsnap.com/scrypt/scrypt-%{version}.tgz
+Source1:        https://www.tarsnap.com/scrypt/scrypt-sigs-%{version}.asc#/scrypt-%{version}.tgz.asc
+Source3:        %name.keyring
 BuildRequires:  openssl-devel
 
 %description
