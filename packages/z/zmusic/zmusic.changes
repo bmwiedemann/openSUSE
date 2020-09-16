@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 17:48:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Demote Recommends to Suggests. Add suggests for Fluidsynth
+  as an alternative to EAW (and the OPL mixer that's built-in).
+
+-------------------------------------------------------------------
 Wed Jun 10 15:33:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (v1.1.2) for build.opensuse.org

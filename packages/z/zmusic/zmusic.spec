@@ -36,8 +36,10 @@ BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     timidity
-Recommends:     timidity-eawpats
+Suggests:       fluid-soundfont-gm
+Suggests:       fluid-soundfont-gs
+Suggests:       timidity
+Suggests:       timidity-eawpats
 # DUMB is modified to read OggVorbis samples
 Provides:       bundled(dumb) = 0.9.3
 
