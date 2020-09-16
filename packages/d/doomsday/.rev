@@ -219,4 +219,12 @@
     <comment>- Use openGL ES 3 for aarch64 and %arm</comment>
     <requestid>828120</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>5e9505d8d3af2f488c4812e10c4b6c68</srcmd5>
+    <version>2.2.2</version>
+    <time>1600277817</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop recommendation for timidity</comment>
+    <requestid>834759</requestid>
+  </revision>
 </revisionlist>

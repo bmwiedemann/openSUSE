@@ -55,8 +55,6 @@ BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zzip-zlib-config)
 # Mesa 9.2 has OpenGL 3.1, and doomsday 2.0 needs that.
 Requires:       Mesa-libGL1 >= 9.2
-Recommends:     timidity
-Recommends:     timidity-eawpats
 # Doomsday uses a modified version of assimp, so no pkgconfig(assimp) here :-(
 Provides:       jdoom = %version-%release
 Provides:       jheretic = %version-%release
