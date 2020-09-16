@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:14:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.5.14:
+  * iproute: ip neigh get <https://github.com/svinota/pyroute2/pull/723>
+  * iproute: link_lookup fix <https://github.com/svinota/pyroute2/pull/725>
+  * nftables: missing hooks <https://github.com/svinota/pyroute2/pull/732>
+  * netns: fix <https://github.com/svinota/pyroute2/pull/733>
+
+-------------------------------------------------------------------
 Tue Aug  4 16:07:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.5.13:

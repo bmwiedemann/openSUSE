@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyroute2
-Version:        0.5.13
+Version:        0.5.14
 Release:        0
 Summary:        Python Netlink library
 License:        GPL-2.0-or-later OR Apache-2.0
