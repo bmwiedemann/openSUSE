@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 16 12:27:11 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.11
+  * relax report parsing
+    (either single or double quotes might be used depending on
+     the build stage)
+  * hide author (and email) lines in diff
+
+-------------------------------------------------------------------
+Tue Sep 15 15:01:25 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.10
+  * fixed escaping in sed statement
+
+-------------------------------------------------------------------
+Mon Sep 14 18:23:44 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.9
+  * fix one more subtile difference in kiwi appliance builds
+
+-------------------------------------------------------------------
+Mon Sep 14 12:40:02 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.8
+  * fix parsing of kiwi appliance packages files
+
+-------------------------------------------------------------------
 Mon Sep 14 08:03:58 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.3.7
