@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 16 06:54:58 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.0:
+  * blogc(1) now generates a "Table of Contents" tree for each
+    source file. See blogc-toctree(7) for usage instructions.
+
+-------------------------------------------------------------------
 Mon Jun  1 05:41:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.0:

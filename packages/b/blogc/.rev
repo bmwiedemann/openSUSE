@@ -244,4 +244,14 @@
   * Some other minor bug fixes.</comment>
     <requestid>810520</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fd9071c9bc4b0ea9f1ce8fe0b7327d97</srcmd5>
+    <version>0.20.0</version>
+    <time>1600277893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.0:
+  * blogc(1) now generates a &quot;Table of Contents&quot; tree for each
+    source file. See blogc-toctree(7) for usage instructions.</comment>
+    <requestid>834817</requestid>
+  </revision>
 </revisionlist>

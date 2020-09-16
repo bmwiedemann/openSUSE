@@ -17,7 +17,7 @@
 
 
 Name:           blogc
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Blog compiler
 License:        BSD-3-Clause
@@ -45,5 +45,6 @@ make %{?_smp_mflags}
 %{_mandir}/man7/blogc-pagination.7%{ext_man}
 %{_mandir}/man7/blogc-source.7%{ext_man}
 %{_mandir}/man7/blogc-template.7%{ext_man}
+%{_mandir}/man7/blogc-toctree.7%{ext_man}
 
 %changelog
