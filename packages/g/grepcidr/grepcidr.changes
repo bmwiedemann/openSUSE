@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Sep 13 10:19:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.0
+- Add patch:
+  * grepcidr-obey-cflags.patch

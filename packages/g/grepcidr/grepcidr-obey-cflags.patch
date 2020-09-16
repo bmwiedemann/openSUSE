@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 61edc86..de103c1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,7 +9,7 @@ MANDIR=$(DATAROOTDIR)/man
+ INFODIR=$(DATAROOTDIR)/info
+ 
+ CPPFLAGS=
+-CFLAGS=-O3 -Wall -Werror
++CFLAGS+=-O3 -Wall -Werror
+ LDFLAGS=
+ 
+ all: grepcidr
