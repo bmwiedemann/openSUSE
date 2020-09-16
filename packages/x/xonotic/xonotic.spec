@@ -1,7 +1,7 @@
 #
 # spec file for package xonotic
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           xonotic
 Version:        0.8.2
 Release:        0
 Summary:        Fast-paced first person shooter
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
-Url:            http://xonotic.org/
+URL:            http://xonotic.org/
 Source0:        http://dl.xonotic.org/%{name}-%{version}.zip
 Source1:        xonotic.desktop
 Source2:        xonotic.service
@@ -34,14 +34,14 @@ BuildRequires:  SDL2-devel
 BuildRequires:  alsa-devel
 BuildRequires:  d0_blind_id-devel
 BuildRequires:  libXpm-devel
+BuildRequires:  libXxf86vm-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
+BuildRequires:  xorg-x11-libXext-devel
 BuildRequires:  xorg-x11-libXpm
 BuildRequires:  xorg-x11-proto-devel
-BuildRequires:  xorg-x11-libXext-devel
-BuildRequires:  libXxf86vm-devel
 BuildRequires:  zlib-devel
 Requires:       logrotate
 Requires:       xonotic-data = %{version}

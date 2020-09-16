@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 15:41:52 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 9GB min disk space
+
+-------------------------------------------------------------------
 Sun Nov 24 16:47:48 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
 
 - Add missing dependencies to fix build errors
