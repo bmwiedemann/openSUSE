@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-marathon
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Marathon Client Library
 License:        MIT

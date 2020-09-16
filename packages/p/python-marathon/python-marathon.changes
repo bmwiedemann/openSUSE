@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:16:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.13.0:
+  - about view one instance app logs real time
+  - Fix deserialization for Deploment model
+  - Local tests no longer need docker-compose and rely on "mini-marathon"
+  - Adding support for v1.10.19
+  - Updates for Marathon 1.9.109
+  - Fix return value for kill\_given\_tasks.
+  - Bump requests from 2.11.1 to 2.20.0
+
+-------------------------------------------------------------------
 Thu Mar  5 14:40:42 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.12.0

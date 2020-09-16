@@ -39,4 +39,19 @@
     <comment></comment>
     <requestid>781880</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e7c444ac5a9f41f2aea4837bda1ca30</srcmd5>
+    <version>0.13.0</version>
+    <time>1600278093</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0:
+  - about view one instance app logs real time
+  - Fix deserialization for Deploment model
+  - Local tests no longer need docker-compose and rely on &quot;mini-marathon&quot;
+  - Adding support for v1.10.19
+  - Updates for Marathon 1.9.109
+  - Fix return value for kill\_given\_tasks.
+  - Bump requests from 2.11.1 to 2.20.0</comment>
+    <requestid>834882</requestid>
+  </revision>
 </revisionlist>
