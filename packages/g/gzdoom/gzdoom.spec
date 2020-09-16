@@ -54,9 +54,7 @@ BuildRequires:  pkgconfig(vulkan) >= 1.1.77
 Provides:       bundled(glslang) = 8.13.3559
 Provides:       bundled(vulkan) = 1.1.114
 %endif
-Recommends:     freedoom
-Recommends:     timidity
-Recommends:     timidity-eawpats
+Suggests:       freedoom
 Provides:       qzdoom = 1.3.0
 Provides:       zdoom = 2.8.1
 # DUMB is modified to read OggVorbis samples

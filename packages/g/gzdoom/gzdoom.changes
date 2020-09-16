@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 15 23:25:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop Recommends for music backends 
+  (this has moved to zmusic.spec)
+- Demote Recommends to Suggests
+
+-------------------------------------------------------------------
 Wed Jun 17 14:33:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.4.2
