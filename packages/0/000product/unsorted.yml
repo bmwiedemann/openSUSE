@@ -5535,6 +5535,7 @@ unsorted:
   - grass-doc 
   - grc 
   - greetd 
+  - grepcidr 
   - grfcodec 
   - gri 
   - grilo-devel 
@@ -13563,7 +13564,8 @@ unsorted:
   - libxklavier16-32bit: [x86_64] 
   - libxls-devel 
   - libxls-tools 
-  - libxlsreader1 
+  - libxlsreader1: [i586] 
+  - libxlsreader8: [x86_64] 
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-2_6-2-32bit: [x86_64] 
@@ -35419,7 +35421,6 @@ unsorted:
   - xz-java 
   - xz-java-javadoc 
   - xz-static-devel 
-  - yafc 
   - yaffshiv 
   - yaics 
   - yajl 
