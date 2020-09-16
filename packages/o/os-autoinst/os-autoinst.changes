@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 15 14:26:45 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1600179993.7af64f64:
+  * Delete deprecated method bmwqemu::hashed_string
+  * Delete unused method bmwqemu::set_ocr_rect
+  * Die in case of _SKIP_POST_FAIL_HOOKS
+  * doc: Update coveralls reference to codecov
+  * Delete some redundant whitespace in consoles/localXvnc
+  * Move console helper function "sshCommand" to child class where needed
+  * Make ssh connection persistent enough to display long-time run test result
+
+-------------------------------------------------------------------
 Fri Sep 11 13:13:56 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1599830026.77762e38:
