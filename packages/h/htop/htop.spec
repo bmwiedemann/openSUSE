@@ -17,18 +17,15 @@
 
 
 Name:           htop
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://htop.dev
-Source0:        https://github.com/htop-dev/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://dl.bintray.com/%{name}/source/%{name}-%{version}.tar.gz
 Source2:        %{name}.keyring
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
@@ -42,8 +39,6 @@ better 'top' and requires ncurses.
 
 %prep
 %autosetup -p1
-# Standard release tarball is not provided https://github.com/htop-dev/htop/issues/31
-autoreconf -fi
 
 %build
 %configure \

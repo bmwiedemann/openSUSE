@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 15 21:46:04 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 3.0.2
+  * BUGFIX: Drop 'vim_mode' - several issues, needs rethink
+  * BUGFIX: fix regression in -u optional-argument handling
+  * Build system rework to remove python, header generation
+  * CI, code quality improvements
+- Switch to new official bintray tarball to remove automake deps
+
+-------------------------------------------------------------------
 Sun Sep  6 19:55:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.1
