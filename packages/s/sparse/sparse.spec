@@ -17,13 +17,13 @@
 
 
 Name:           sparse
-Version:        0.6.1+20200606
+Version:        0.6.2
 Release:        0
 Summary:        A semantic parser of source files
 License:        MIT
 Group:          Development/Tools/Building
 URL:            https://sparse.wiki.kernel.org/index.php/Main_Page
-Source:         sparse-%{version}.tar.xz
+Source:         https://mirrors.edge.kernel.org/pub/software/devel/sparse/dist/%{name}-%{version}.tar.xz
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
