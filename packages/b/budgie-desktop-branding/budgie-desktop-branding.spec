@@ -69,7 +69,7 @@ desktop environment.
 
 %install
 %meson_install
-%if !0%{?is_backports} && 0%{?sle_version} < 150300
+%if !0%{?is_backports} && 0%{?suse_version} < 1550
 sed -e 's-5120x3200-3840x2400-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
 %endif
 %if 0%{?is_backports}
