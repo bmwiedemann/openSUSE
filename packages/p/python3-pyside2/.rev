@@ -114,4 +114,12 @@
 - Rebase lib64.patch (forwarded request 809668 from cgiboudeaux)</comment>
     <requestid>809842</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6ed3f8c89f178cf0aca5b7321070ef13</srcmd5>
+    <version>5.15.1</version>
+    <time>1600277688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834778</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,58 @@
+From cb7de1027430cdf0ecbe4e75134239a8987199a2 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 15 Sep 2020 08:44:52 +0200
+Subject: [PATCH] [cmake] Don't assume qhelpgenerator is in PATH
+
+There is no guarantee the qhelpgenerator executable is in PATH.
+The build system will use the the Qt5::qhelpgenerator target
+to get the exact location.
+---
+ sources/pyside2/doc/CMakeLists.txt   | 6 +++++-
+ sources/shiboken2/doc/CMakeLists.txt | 8 ++++++--
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/sources/pyside2/doc/CMakeLists.txt b/sources/pyside2/doc/CMakeLists.txt
+index ffbb3c1..e578aad 100644
+--- a/sources/pyside2/doc/CMakeLists.txt
++++ b/sources/pyside2/doc/CMakeLists.txt
+@@ -132,10 +132,14 @@ if(DOC_OUTPUT_FORMAT STREQUAL "html")
+             COMMENT "Copying Shiboken docs..."
+             VERBATIM)
+ else()
++    # Use the Qt5::helpgenerator variable to get the executable location
++    find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS Help)
++    get_target_property(QHELPGENERATOR_EXECUTABLE Qt5::qhelpgenerator IMPORTED_LOCATION)
++
+     file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR}/html/PySide.qhp QHP_FILE)
+     add_custom_command(TARGET apidoc POST_BUILD
+             COMMAND ${PYTHON_EXECUTABLE} py_script.py
+-            COMMAND qhelpgenerator ${QHP_FILE}
++            COMMAND ${QHELPGENERATOR_EXECUTABLE} ${QHP_FILE}
+             COMMENT "Generating QCH from a QHP file..."
+             VERBATIM)
+ endif()
+diff --git a/sources/shiboken2/doc/CMakeLists.txt b/sources/shiboken2/doc/CMakeLists.txt
+index 9fee962..dee13f3 100644
+--- a/sources/shiboken2/doc/CMakeLists.txt
++++ b/sources/shiboken2/doc/CMakeLists.txt
+@@ -33,11 +33,15 @@ except:
+ 
+     # create a custom command to generate QCH
+     if(DOC_OUTPUT_FORMAT STREQUAL "qthelp")
++        # Use the Qt5::helpgenerator variable to get the executable location
++        find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS Help)
++        get_target_property(QHELPGENERATOR_EXECUTABLE Qt5::qhelpgenerator IMPORTED_LOCATION)
++
+         file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR}/html/Shiboken.qhp QHP_FILE)
+         add_custom_command(TARGET doc POST_BUILD
+             COMMAND ${PYTHON_EXECUTABLE} py_script.py # ${CMAKE_CURRENT_BINARY_DIR}/html/Shiboken.qhp
+-            COMMAND qhelpgenerator ${QHP_FILE}
+-            COMMENT "Genereting QCH based on the QHP..."
++            COMMAND ${QHELPGENERATOR_EXECUTABLE} ${QHP_FILE}
++            COMMENT "Generating QCH based on the QHP..."
+             VERBATIM)
+     endif()
+ else()
+-- 
+2.28.0
+

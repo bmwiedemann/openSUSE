@@ -22,7 +22,7 @@
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Name:           python3-pyside2
-Version:        5.15.0
+Version:        5.15.1
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -39,6 +39,8 @@ Patch0:         lib64.patch
 Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-Fix-the-openSUSE-executable-names.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-cmake-Don-t-assume-qhelpgenerator-is-in-PATH.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -124,6 +126,7 @@ Examples and Tutorials for the PySide2 bindings for Qt.
 %setup -q -n pyside-setup-opensource-src-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %if "%{_lib}" == "lib64"
 %patch0 -p1
 %endif
