@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Sep 09 13:48:01 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200909.0bb0f971:
+  * TTM: Ignore arch check for multibuild containers
+
+-------------------------------------------------------------------
+Mon Sep 07 11:59:15 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200907.aa447872:
+  * handle also GO_SERVER_URL when port is 8153
+
+-------------------------------------------------------------------
+Mon Sep 07 08:12:47 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200907.6c213476:
+  * TTM: Verify that all successfully built products are mentioned in the config
+
+-------------------------------------------------------------------
+Thu Sep 03 09:40:12 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200903.6c099fbb:
+  * Dashboard: Handle 'broken' state for OBS
+
+-------------------------------------------------------------------
+Thu Sep 03 07:28:40 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200903.1a4894ef:
+  * Add release to TEST and PUBLIC for MicroOS
+
+-------------------------------------------------------------------
+Thu Sep 03 07:09:31 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200903.c28f1293:
+  * added a 30 minute timeout to the openqa run
+
+-------------------------------------------------------------------
+Wed Sep 02 15:50:12 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200902.771d1db6:
+  * Add the ARM rings
+
+-------------------------------------------------------------------
+Wed Sep 02 14:06:00 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200902.aea8d9fa:
+  * Dashboard: Handle 'locked' state for OBS
+
+-------------------------------------------------------------------
 Wed Aug 26 10:32:44 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200826.3b33c0a6:
