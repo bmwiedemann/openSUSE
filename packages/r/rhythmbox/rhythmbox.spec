@@ -116,6 +116,8 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 # Disabled as it pulls old webkit, needs fixing upstream
 rm -rf %{buildroot}/%{_libdir}/rhythmbox/plugins/context
+# Remove zeitgeist plugin: no longer maintained
+rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %fdupes -s %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
 
@@ -167,7 +169,6 @@ rm -rf %{buildroot}/%{_libdir}/rhythmbox/plugins/context
 %{_libdir}/rhythmbox/plugins/python-console/
 %{_libdir}/rhythmbox/plugins/rb/
 %{_libdir}/rhythmbox/plugins/rblirc/
-%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %{_libdir}/rhythmbox/plugins/replaygain/
 %{_libdir}/rhythmbox/plugins/soundcloud/
 %{_libdir}/rhythmbox/plugins/webremote/

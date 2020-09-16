@@ -756,4 +756,12 @@
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767384</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>824cee4f6eddea95305b5cb1e80e1432</srcmd5>
+    <version>3.4.4</version>
+    <time>1600278082</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable zeitgeist plugin: zeitgeist is no longer maintained. (forwarded request 834602 from dimstar)</comment>
+    <requestid>834884</requestid>
+  </revision>
 </revisionlist>
