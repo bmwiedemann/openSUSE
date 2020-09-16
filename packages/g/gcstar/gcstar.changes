@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 14 08:26:04 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Adapt file list for /usr/libexec migration.
+- Some spec-file cleanups:
+  * Drop conditionals for EOL openSUSE versions.
+  * Drop Group tag.
+  * Drop unnecessary %clean section.
+  * Drop empty %post(un) sections.
+  * Remove BuildRoot tag as it is not needed any more.
+  * Drop %defattr line from file list.
+
+-------------------------------------------------------------------
 Thu Jun 30 23:06:12 UTC 2016 - zaitor@opensuse.org
 
 - Update to version 1.7.1:

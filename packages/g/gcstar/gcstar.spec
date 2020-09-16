@@ -1,7 +1,7 @@
 #
 # spec file for package gcstar
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,8 @@ Name:           gcstar
 Version:        1.7.1
 Release:        0
 Summary:        Application to manage collections
-License:        GPL-2.0
-Group:          Productivity/Office/Management
-Url:            http://www.gcstar.org/
+License:        GPL-2.0-only
+URL:            http://www.gcstar.org/
 Source0:        http://download.gna.org/gcstar/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gcstar-fix-desktop.patch vuntz@opensuse.org -- Fix desktop file for openSUSE
 Patch0:         gcstar-fix-desktop.patch
@@ -50,7 +49,6 @@ Recommends:     perl(GD::Graph::area)
 Recommends:     perl(GD::Graph::bars)
 Recommends:     perl(GD::Graph::pie)
 Recommends:     perl(GD::Text)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -88,36 +86,14 @@ mkdir -p %{buildroot}%{_datadir}/applications
 %suse_update_desktop_file -i gcstar Database
 %fdupes %{buildroot}%{_datadir}
 
-%clean
-rm -rf %{buildroot}
-
-%post
-%if 0%{?suse_version} > 1130
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-%else
-update-mime-database %{_datadir}/mime || true
-%endif
-
-%postun
-%if 0%{?suse_version} > 1130
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-%else
-update-mime-database %{_datadir}/mime || true
-%endif
-
 %files
-%defattr(-,root,root)
 %{_bindir}/gcstar
-%{_libexecdir}/gcstar/
+%{_prefix}/lib/gcstar/
 %{_datadir}/applications/gcstar.desktop
 %{_datadir}/gcstar/
 %{_datadir}/icons/hicolor/*/apps/gcstar.*
 %{_datadir}/icons/hicolor/*/mimetypes/application-x-gcstar.*
 %{_datadir}/mime/packages/gcstar.xml
-%{_mandir}/man1/gcstar.1.*
+%{_mandir}/man1/gcstar.1%{?ext_man}
 
 %changelog
