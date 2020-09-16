@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_mixer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        SDL2 sound mixer library
 License:        Zlib
 Group:          Development/Libraries/C and C++
-Url:            http://libsdl.org/projects/SDL_mixer/
+URL:            http://libsdl.org/projects/SDL_mixer/
 
 #Hg-Clone:	http://hg.libsdl.org/SDL_mixer/
 Source:         http://libsdl.org/projects/SDL_mixer/release/%name-%version.tar.gz
@@ -40,12 +40,11 @@ BuildRequires:  pkgconfig(libmpg123)
 %endif
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
-Recommends:     timidity
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Suggests:       timidity
 
 %description
 A multichannel audio mixer. It supports four channels of 16-bit stereo
-audio, plus a single channel of music, mixed by the popular MikMod MOD,
+audio, plus a single channel of music, mixed by the MikMod MOD,
 Timidity MIDI, and mpg123 MP3 libraries.
 
 %package -n %lname
@@ -55,7 +54,7 @@ Provides:       SDL2_mixer = %version-%release
 
 %description -n %lname
 A multichannel audio mixer. It supports four channels of 16-bit stereo
-audio, plus a single channel of music, mixed by the popular MikMod MOD,
+audio, plus a single channel of music, mixed by the MikMod MOD,
 Timidity MIDI, and mpg123 MP3 libraries.
 
 %package -n libSDL2_mixer-devel
@@ -66,11 +65,11 @@ Provides:       SDL2_mixer-devel = %version-%release
 
 %description -n libSDL2_mixer-devel
 A multi-channel audio mixer. It supports 4 channels of 16-bit stereo
-audio, plus a single channel of music, mixed by the popular MikMod MOD,
+audio, plus a single channel of music, mixed by the MikMod MOD,
 Timidity MIDI, and mpg123 MP3 libraries.
 
 %prep
-%setup -q
+%autosetup -p1
 dos2unix *.txt
 rm -rf external
 
