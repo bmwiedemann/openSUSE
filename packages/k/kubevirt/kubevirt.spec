@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.32.0
+Version:        0.33.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -25,11 +25,11 @@ Group:          System/Packages
 URL:            https://github.com/kubevirt/kubevirt
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  glibc-devel-static
-BuildRequires:  golang(API) = 1.11
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
+BuildRequires:  golang(API) = 1.13
 BuildRequires:  pkgconfig(libvirt)
 ExclusiveArch:  x86_64
 
@@ -38,42 +38,49 @@ Kubevirt is a virtual machine management add-on for Kubernetes
 
 %package        virtctl
 Summary:        Client for managing kubevirt
+Group:          System/Packages
 
 %description    virtctl
 The virtctl client is a command-line utility for managing container native virtualization resources
 
 %package        virt-api
 Summary:        Kubevirt API server
+Group:          System/Packages
 
 %description    virt-api
 The virt-api package provides the kubernetes API extension for kubevirt
 
 %package        container-disk
 Summary:        Container disk for kubevirt
+Group:          System/Packages
 
 %description    container-disk
 The containter-disk package provides a container disk functionality for kubevirt
 
 %package        virt-controller
 Summary:        Controller for kubevirt
+Group:          System/Packages
 
 %description    virt-controller
 The virt-controller package provides a controller for kubevirt
 
 %package        virt-handler
 Summary:        Handler component for kubevirt
+Group:          System/Packages
 
 %description    virt-handler
 The virt-handler package provides a handler for kubevirt
 
 %package        virt-launcher
 Summary:        Launcher component for kubevirt
+Group:          System/Packages
 
 %description    virt-launcher
 The virt-launcher package provides a launcher for kubevirt
 
 %package        virt-operator
 Summary:        Operator component for kubevirt
+Group:          System/Packages
 
 %description    virt-operator
 The virt-opertor package provides an operator for kubevirt CRD
@@ -85,6 +92,7 @@ The virt-opertor package provides an operator for kubevirt CRD
 mkdir -p go/src/kubevirt.io go/pkg
 ln -s ../../../ go/src/kubevirt.io/kubevirt
 export GOPATH=${PWD}/go
+export GOFLAGS="-buildmode=pie"
 cd ${GOPATH}/src/kubevirt.io/kubevirt
 env \
 KUBEVIRT_GO_BASE_PKGDIR="${GOPATH}/pkg" \
@@ -126,7 +134,6 @@ chmod 0755 _out/cmd/virt-operator/virt-operator
 install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
 chmod 0755 _out/cmd/csv-generator/csv-generator
 install -p -m 0755 _out/cmd/csv-generator/csv-generator %{buildroot}%{_bindir}/
-
 
 %files virtctl
 %license LICENSE

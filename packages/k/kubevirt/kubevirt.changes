@@ -1,4 +1,178 @@
 -------------------------------------------------------------------
+Tue Sep 15 16:02:05 UTC 2020 - dmueller@suse.com
+
+- Update to version 0.33.0:
+  * Enhance operator functional tests to validate pods are torn down after kv cr is deleted
+  * Unit tests to validate finalizer functionality on kubevirt objects
+  * Restore ability to set finalizer on kubevirt objects
+  * Unit tests to verify operator injected labels remain consistent
+  * Restores operator managed by label for backwards/forwards compability during updates
+  * tests, migration: Validate dual stack VMI and Pod IP/s
+  * tests, make primary_pod_network dual stack compatible
+  * tests, Create ValidateVMIandPodIPMatch helper
+  * Turn off modules for staging.
+  * Fix verifying make targets
+  * Give migration kill pods a name not based on their node name
+  * Fix another flaky ertificate related unit test
+  * Fix matching of Makefile vars to env for goveralls
+  * Output what the new error is when an api violation occurs
+  * tests: adapt test-id:4153 to dual-stack cluster
+  * sriov-tests, checkMacAddress: remove sequential expecter cases
+  * sriov tests: Add CNI version to sriov NAD
+  * removeNamespaces: add informative failure reason
+  * cluster-deploy.sh: cancel cdi deployment on sriov-lane
+  * remove version from go.mod
+  * Use PingFromVMConsole for ipv6 instead of trace route
+  * tests, make test 1780 dual stack compatible
+  * refactor virtctl image-upload args
+  * tests,libvmi: Append passed options
+  * Rebase on Goveralls
+  * Export -mod=vendor to always use vendor
+  * Update ldflag to point to right package
+  * Increase memory limit for iscsi pod
+  * deps-update to reflect state after rebase
+  * Fix test to properly work with TLS 1.3
+  * Update kubevirt builder image to use go1.13.14
+  * Add required dependencies for functest image build
+  * Check if new api rule violation was added
+  * Pin bazel for builder
+  * selinux: relabel /dev/null to container_file_t
+  * selinux, virt-handler: relabel the clone device
+  * selinux, virt-chroot: provide a command to relabel files
+  * Add gradle install for builder to reenable swagger
+  * Set libvirt to virtmaint-sig/for-kubevirt 5.0.0
+  * Update builder image to include new goveralls version, remove ppc64le
+  * Move coverage from travis to prow
+  * Support VMI scheme multi IPs list in case of dual stack
+  * Improve stability of fedora VM's login expecter
+  * tests: Use new image for sriov tests
+  * tests/containerdisks: add fedora-extended image
+  * kubevirt/BUILD.bazel: push to cluster registry
+  * containerdisks/ WORKSPACE, BUILD.bazel: add new image
+  * containerdisks: add doc about container-disk images
+  * Unit test to veriy migration target is cleaned when VMI is deleted
+  * Unit test to ensure an error is returned if multiple container disk directories for the same vmi exist
+  * Add unit test to verify stale clients are handled during pre migration target setup
+  * abort migration if the vmi is deleted or in the process of being deleted
+  * Add better logging to container disk mount/unmount
+  * wait for virt-handler to come back online during migration fail func test case
+  * ensure we detect the correct pod environment during isolation detection when migrating
+  * ensure only we're mounting/unmounting the right pod's container disk during migration
+  * gitignore: ignore files ending with ~
+  * Ensures stale local data from failed migration target is cleaned before attempting to migrate again
+  * Functional test to validate migration failures
+  * Domain XML to be logged on info level
+  * Fix the test default SMBIOS testcase
+  * Add custom PCI tests
+  * Fix bug in virtctl upload when using PVC without any annotations. In this case in code the annotations map is nil, and we attempted to set a value in that nil map causing a crash of virtctl.
+  * Allow podman for normal build steps
+  * Makefile: Control timestamp addition
+  * Makefile: Add timestamps to make targets
+  * Makefile: Use realpath instead of shell to calculate path
+  * export local provider variables to the correct location
+  * no need to verify the number of depoyed nodes for local provider
+  * Use proper namespace in functional test
+  * Fix doc string
+  * Add --security-opt label:disable to bazel server version check On Fedora 32 with moby this fixes an selinux issue in the imega/jq container.
+  * Fix tests binary release
+  * tests: Add phoracek to approvers
+  * create-tap: improve code readability
+  * selinux: update the default launcher selinux type
+  * create-tap: prevent FD leaking into the tap-maker
+  * selinux: run virt-handler without categories
+  * selinux: networking requires escalated selinuxLauncherType
+  * selinux: create the tap device using launcher selinux label
+  * create-tap: add a new cmd to virt-chroot
+  * network: have the launcher pid for future tap device creation
+  * Create tap devices w/ multi-queue support
+  * masquerade/bridge binding: use pre-provisioned tap device
+  * Create tap device on virt-handler
+  * functests: Refactor VMI helpers
+  * tests: Update the vmi instance after creation
+  * tests: configureIPv6OnVMI remove unnecessary vmi parameter
+  * tests, dual-stack: configure ipv6 on dual stack cluster vmi
+  * Add all the missing test-ids
+  * dual-stack: IsIpv6Enabled use podInterface addresses.
+  * fix typo
+  * Rename managed-by label to be literal
+  * Don't add empty values to KubeVirtDeploymentConfig
+  * Use more consistent config access function
+  * Functional tests for product related labels
+  * Add ProductName and Version labels to KubeVirt objects
+  * Fix flaky certificate expiration unit test
+  * tests, job: Rename RenderJob to NewJob and expose new args
+  * Bump kubevirtci
+  * tests, job: Use status condition to detect success/failure
+  * use status updater to abstract enable/disable of VM status subresource
+  * have to call UpdateStatus as well as Update otherwise status does not get updated, duh
+  * UpdateStatus was not sufficient for certain snapshot controller updates
+  * tests, console_test: use safe expect batcher
+  * A low value of timeout in test setup causes failure in Azure.
+  * Remove hidden `make generate` invocations
+  * tests: change ping to use RetValue and PromptExpression
+  * Test improvements: Use job instead of pod and fail fast while waiting for job.
+  * tests: utils.RetValue no need to pass prompt
+  * Remove domain label from VMI metrics
+  * network: Add network-reviewers group
+  * network: Move PodIP status test to network package
+  * Fix clock timezone
+  * set schedulable to true to test node-controller will respond to out of date heartbeat
+  * add e2e test for virt-handler schedulable=false
+  * virt-handler mark node as unschedulable until it is able to talk with kubelet
+  * tests, ping: Extend the ping helper and generalize it
+  * Check if the socket exists and not if the base directory exists
+  * [virt-hanlder] test probing of cmd server socket
+  * [virt-handler] test contanerDisk readiness checks
+  * tests: [test_id:1778] remove redundant `sudo` and wait for prompt
+  * tests: ExpectBatchWithValidatedSend error on BatchExpect other than BExp
+  * [virt-handler] wait for containerDisks to become ready
+  * [virt-handler] let virt-handler probe for virt-launcher readiness
+  * [virt-launcher] Replace --readiness-file logic with socket moving
+  * [virt-controller] Remove readiness probes and --readiness-file flag
+  * Remove exec readiness probe on the containerDisk container
+  * tests, ping: Use tests.PingFromVMConsole directly
+  * tests, ping: Move the ping helper to the tests package
+  * Add test approvers
+  * Let prow run make generate instead of travis
+  * tests: avoid line wrap on fedora console
+  * tests, Fix test 1780 of vmi_networking_test.go
+  * Unit test for ensuring local cleanup of vmi does not occur on non finalized vmi
+  * Do not perform local cleanup of vmi until vmi is in a finalized state
+  * network: Add dedicated network tests module
+  * Add support to configure vmi disk I/O mode options
+  * Add openapi validatior unit tests
+  * tests: Remove redundant string declarment in RetValue arguments
+  * tests: Rename tests.Retcode to tests.RetValue
+  * test: Fix flaky test for "A long running process"
+  * test: Removing redundent \n send from test_id:1779
+  * test: Fix falkiness in guest memory failing tests and skip failing one
+  * tests: Add missing `\n` to expect.BSnd to test_id:1753
+  * Shorten the release job exectuion time on travis
+  * k8s-reporter: get all config-map
+  * tests: `GenerateHelloWorldServer` use `ExpectBatchWithValidatedSend`
+  * tests: Avoid squential expect.BExp in test_id:1778
+  * tests: Remove un-needed \n send from "Checking console text" expecter
+  * tests: using `Retcode` to check the result of "echo $?"
+  * tests: Changing `retcode` to contain the prompt
+  * tests: Using ExpectBatchWithValidatedSend instead of expecter.ExpectBatch
+  * test: Configure console on login
+  * tests: Intorduce safe ExpectBatchWithValidatedSend
+  * Bump kubevirtci to support dual stack on k8s-1.18
+  * Let virt-operator roll out the status subresource activation
+  * Enable the status subresource feature for the CRDs
+  * Let virt-controller use the new UpdateStatus client functions
+  * Make use of the /status subresource in the virt-api subresources
+  * Add validation webhooks for /status updates
+  * Add status updater helper functions
+  * Add UpdateStatus and PatchStatus to the kubevirt client
+  * vmiMetrics struct was recreated with better attributes
+  * tests: Create containerdisk sub-package
+  * tests: Create flags sub-package
+  * Give the VM rename operation more time to create a new VM
+  * Expose guest swap metrics
+  * Use 'kill' instead of 'killall' for libvirtd in func test
+
+-------------------------------------------------------------------
 Fri Sep 11 12:38:50 UTC 2020 - dmueller@suse.com
 
 - add license/readmes
