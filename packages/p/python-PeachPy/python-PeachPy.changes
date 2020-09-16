@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 18:39:53 UTC 2020 - pgajdos@suse.com
+
+- run with pytest instead of nosetests
+
+-------------------------------------------------------------------
 Thu Apr 23 10:26:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

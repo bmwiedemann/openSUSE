@@ -28,7 +28,7 @@ URL:            https://github.com/Maratyszcza/PeachPy
 Source0:        PeachPy-%{version}.tar.xz
 Patch1:         automated-convertion-form-2to3.patch
 BuildRequires:  %{python_module opcodes >= 0.3.13}
-BuildRequires:  %{python_module rednose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -72,9 +72,9 @@ PEACH-Py features:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# we use the local build install for the nosetests
-sed -i '/no-path-adjustment=1/d' setup.cfg
-%python_expand nosetests-%{$python_bin_suffix} -v
+# this test is even not ported to python3 and has other issues
+rm test/arm/test_arm.py
+%pytest
 
 %files %{python_files}
 %doc README.rst
