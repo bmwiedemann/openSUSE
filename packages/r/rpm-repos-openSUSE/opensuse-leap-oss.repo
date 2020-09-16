@@ -8,8 +8,8 @@ gpgcheck=1
 
 [opensuse-leap-oss-update]
 name=openSUSE Leap $releasever - OSS - Updates
-baseurl=http://download.opensuse.org/update/leap/$releasever/repo/oss/
-#metalink=http://download.opensuse.org/update/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
+baseurl=http://download.opensuse.org/update/leap/$releasever/oss/
+#metalink=http://download.opensuse.org/update/leap/$releasever/oss/repodata/repomd.xml.metalink
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
 gpgcheck=1
@@ -24,8 +24,8 @@ gpgcheck=1
 
 [opensuse-leap-oss-update-debuginfo]
 name=openSUSE Leap $releasever - OSS - Updates - Debug
-baseurl=http://download.opensuse.org/debug/update/leap/$releasever/repo/oss/
-#metalink=http://download.opensuse.org/debug/update/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
+baseurl=http://download.opensuse.org/debug/update/leap/$releasever/oss/
+#metalink=http://download.opensuse.org/debug/update/leap/$releasever/oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
 gpgcheck=1
