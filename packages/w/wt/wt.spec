@@ -18,9 +18,9 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 4_2_2
+%define so_version 4_4_0
 Name:           wt
-Version:        4.2.2
+Version:        4.4.0
 Release:        0
 #
 #

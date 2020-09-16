@@ -305,4 +305,21 @@ This release includes a backward-incompatible change and deprecates many functio
     <comment></comment>
     <requestid>785964</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d5a598390756da7247fc65ca1684cf35</srcmd5>
+    <version>4.4.0</version>
+    <time>1600277972</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Wt 4.4.0 adds a couple of new features, like multiple X axes, and
+  * WColorPicker, among other fixes and tweaks 
+  * security related: Wt now rejects GET requests for Ajax-enabled sessions
+  that are not for resources, as an extra means to prevent session
+  hijacking attempts 
+  * Wt 4.3.0 mainly adds the ability to redirect logging to a custom logging
+  function, and login and transport encryption to the mail client, among some
+  other fixes and tweaks
+  see https://webtoolkit.eu/wt/doc/reference/html/Releasenotes.html</comment>
+    <requestid>834839</requestid>
+  </revision>
 </revisionlist>
