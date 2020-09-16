@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-colorlog
-Version:        4.1.0
+Version:        4.2.1
 Release:        0
 Summary:        Log formatting with colors
 License:        MIT

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 04:37:18 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.2.1:
+  * Add setuptools to setup_requires. 
+
+-------------------------------------------------------------------
 Sat Mar 14 08:57:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
