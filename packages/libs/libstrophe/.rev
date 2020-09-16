@@ -82,4 +82,33 @@
   * Few memory leaks fixed</comment>
     <requestid>737573</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>896fa4593b1484fff59e8f068c8b8062</srcmd5>
+    <version>0.10.0</version>
+    <time>1600277853</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * Coding style has been unified
+  * SCRAM-SHA-256 and SCRAM-SHA-512 support
+  * c-ares support
+  * LibreSSL support
+  * Introduced global timed handlers that fire periodically
+    regardless of connections status, such a handler can be
+    used to implement deferred re-connection
+  * examples/register implements XEP-0077
+  * Fixed issue with IPv6 on Windows (#153)
+  * Improved portability across systems such as Haiku, Windows
+  * New API:
+  - xmpp_stanza_get_child_by_name_and_ns()
+  - xmpp_conn_is_connecting()
+  - xmpp_conn_is_connected()
+  - xmpp_conn_is_disconnected()
+  - xmpp_stanza_new_from_string()
+  - xmpp_stanza_add_child_ex()
+  - xmpp_stanza_get_context()
+  - xmpp_stanza_reply_error()
+  - xmpp_global_timed_handler_add()
+  - xmpp_global_timed_handler_delete()</comment>
+    <requestid>834813</requestid>
+  </revision>
 </revisionlist>
