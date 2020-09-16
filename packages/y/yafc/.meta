@@ -1,9 +1,0 @@
-<package name="yafc" project="openSUSE:Factory">
-  <title>Yet Another FTP Client</title>
-  <description>Yafc is an OpenSource console mode FTP client. It has support for
-Kerberos 4/5 authentication and sftp (ssh2). Other features include tab
-completion, directory cache, powerful aliases, recursive file commands
-and bookmarks with autologin.</description>
-  <devel project="network" package="yafc"/>
-  <url>http://yafc.sourceforge.net/</url>
-</package>
