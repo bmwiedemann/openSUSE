@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:22:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.28.3:
+  * Reduced a time an internal lock is held which should eliminate deadlocks in high-traffic networks.
+  * Stopped asking questions we already have answers for in cache, thanks to Paul Daumlechner.
+  * Removed initial delay before querying for service info, thanks to Erik Montnemery.
+  * Fixed a resource leak connected to using ServiceBrowser with multiple types
+
+-------------------------------------------------------------------
 Tue Jul 21 10:13:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.28.0
