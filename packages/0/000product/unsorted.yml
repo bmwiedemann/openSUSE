@@ -13361,9 +13361,9 @@ unsorted:
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
-  - libwtdbo4_2_2 
-  - libwtdbomysql4_2_2 
-  - libwtdbopostgres4_2_2 
+  - libwtdbo4_4_0 
+  - libwtdbomysql4_4_0 
+  - libwtdbopostgres4_4_0 
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_baseu-suse-nostl3_0_4 
@@ -13564,8 +13564,7 @@ unsorted:
   - libxklavier16-32bit: [x86_64] 
   - libxls-devel 
   - libxls-tools 
-  - libxlsreader1: [i586] 
-  - libxlsreader8: [x86_64] 
+  - libxlsreader8 
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-2_6-2-32bit: [x86_64] 
