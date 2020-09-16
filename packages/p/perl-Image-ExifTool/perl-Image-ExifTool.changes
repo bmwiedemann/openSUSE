@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 16 13:15:45 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 12.06
+  - Added read support for Lyrics3 metadata (and fixed problem
+    where APE metadata may be ignored if Lyrics3 exists)
+  - Added a new Panasonic VideoBurstMode value
+  - Added a new Olympus MultipleExposureMode value
+  - Added a new Nikon LensID
+  - Added back conversions for XMP-dwc EventTime that were removed
+    in 12.04 with a patch to allow time-only values
+  - Decode GIF AspectRatio
+  - Decode Olympus FocusBracketStepSize
+  - Extract PNG iDOT chunk in Binary format with the
+    name AppleDataOffsets
+  - Process PNG images which do not start with mandatory
+    IHDR chunk
+  - Added a new Panasonic SelfTimer value
+  - Decode a few more DPX tags
+  - Extract AIFF APPL tag as ApplicationData
+  - Fixed bug writing QuickTime ItemList 'gnre' Genre values
+  - Fixed an incorrect value for Panasonic VideoBurstResolution
+  - Fixed problem when applying a time shift to some invalid
+    makernote date/time values
+
+-------------------------------------------------------------------
 Mon Aug 17 22:36:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 12.04:

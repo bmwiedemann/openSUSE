@@ -18,7 +18,7 @@
 
 %define cpan_name Image-ExifTool
 Name:           perl-Image-ExifTool
-Version:        12.04
+Version:        12.06
 Release:        0
 Summary:        Perl module to read and write meta information
 License:        GPL-1.0-or-later OR Artistic-1.0
