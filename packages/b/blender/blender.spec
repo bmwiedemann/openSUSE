@@ -111,7 +111,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libspnav-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  libtool
 BuildRequires:  llvm-devel
 BuildRequires:  lzo-devel
 BuildRequires:  openal-soft-devel
@@ -195,6 +194,7 @@ Requires:       python3-xml
 Requires(post):    hicolor-icon-theme
 Requires(postun):  hicolor-icon-theme
 Provides:       %{name}-%{_suffix} = %{version}
+Conflicts:      %{name}-%{_suffix} < %{version}
 # current locale handling doesn't create locale(..) provides correctly
 Recommends:     %name-lang = %version
 
@@ -254,7 +254,6 @@ export psver=$(pkg-config python3 --modversion)
 export pver=$(pkg-config python3 --modversion)$(python3-config --abiflags)
 mkdir -p build && pushd build
 
-# NOTE: Don't use cmake macro.
 # lean against build_files/cmake/config/blender_release.cmake
 cmake ../ \
 %if 0%{?debugbuild} == 1
@@ -302,8 +301,6 @@ cmake ../ \
 %else
       -DWITH_CYCLES_EMBREE:BOOL=OFF \
 %endif
-      -DWITH_LLVM:BOOL=ON \
-      -DLLVM_LIBRARY:FILE=%{_libdir}/libLLVM.so \
 %endif
       -DWITH_DRACO:BOOL=ON \
       -DWITH_FFTW3:BOOL=ON \
@@ -393,7 +390,6 @@ echo "release version = %{_version}"
 # make install
 %cmake_install
 
-# Remove folder, it's not supposed to be installed here.
 rm -f %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/addons/.gitignore
 # Fix any .py files with shebangs and wrong permissions.
 find %{buildroot} -name "*.py" -perm 0644 -print0 | \
@@ -415,8 +411,6 @@ install -D -m 0644 %{SOURCE10} %{buildroot}%{_docdir}/%{name}/
 
 chmod -f 0644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
 
-find %{buildroot}%{_docdir}/%{name} -name "*.py" -perm 0755 -print0 | \
-	xargs -0r grep -l '#!' | xargs -d'\n' -r chmod -f 0644
 %fdupes %{buildroot}%{_datadir}/%{name}/%{_version}/
 %find_lang %{name} %{?no_lang_C}
 rm -rf %{buildroot}%{_datadir}/locale/languages
