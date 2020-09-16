@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 15:49:00 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space
+
+-------------------------------------------------------------------
 Wed Aug 12 07:28:43 UTC 2020 - Jozef Pupava <jpupava@suse.com>
 
 - update suse_qa-skip-tests.txt bsc#1174531, cleanup obsolete entries
