@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 14:44:15 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add min 6GB physicalmemory for ppc64le _constraints to avoid oom
+
+-------------------------------------------------------------------
 Mon Aug 10 19:53:29 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 2.4.1:

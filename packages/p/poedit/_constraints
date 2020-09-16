@@ -4,4 +4,15 @@
       <size unit="M">4096</size>
     </memory>
   </hardware>
-</constraints> 
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">6</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>

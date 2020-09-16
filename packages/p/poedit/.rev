@@ -470,4 +470,12 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
 - Spec file minor cleaning.</comment>
     <requestid>825649</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>adf3958eb23f08c6668c7d1246c3f54d</srcmd5>
+    <version>2.4.1</version>
+    <time>1600277695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834721</requestid>
+  </revision>
 </revisionlist>
