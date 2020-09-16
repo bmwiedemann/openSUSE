@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 16 05:46:47 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2009.14
+  * Cascadia now has support for the Salishan languages of the
+    Pacific Northwest and other coastal scripts!
+  * We've fixed an issue in the -<< ligature that caused it to
+    overlap itself at certain font weights (#355)
+  * We remastered mark positioning for glyphs with existing
+    diacritics for improved design for letters with multiple
+    diacritics above
+  * We have implemented a workaround for a freetype rendering
+    issue that resulted in chunky rendering for certain glyphs
+    (#350)
+- Package variable fonts instead of static ones
+
+-------------------------------------------------------------------
 Thu Aug 27 06:57:54 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2008.25
