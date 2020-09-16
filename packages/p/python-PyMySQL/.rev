@@ -142,4 +142,25 @@
     <comment></comment>
     <requestid>811739</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7ca01f95eb7af39cec69a3ce05c468db</srcmd5>
+    <version>0.10.0</version>
+    <time>1600278034</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * MariaDB ed25519 auth is supported.
+  * Python 3.4 support is dropped.
+  * Context manager interface is removed from `Connection`. It will be added
+    with different meaning.
+  * MySQL warnings are not shown by default because many user report issue to
+    PyMySQL issue tracker when they see warning. You need to call &quot;SHOW WARNINGS&quot;
+    explicitly when you want to see warnings.
+  * Formatting of float object is changed from &quot;3.14&quot; to &quot;3.14e0&quot;.
+  * Use cp1252 codec for latin1 charset.
+  * Fix decimal literal.
+  * TRUNCATED_WRONG_VALUE_FOR_FIELD, and ILLEGAL_VALUE_FOR_TYPE are now
+    DataError instead of InternalError.
+- remove python-PyMySQL-no-unittest2.patch (upstream)</comment>
+    <requestid>834872</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:01:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * MariaDB ed25519 auth is supported.
+  * Python 3.4 support is dropped.
+  * Context manager interface is removed from `Connection`. It will be added
+    with different meaning.
+  * MySQL warnings are not shown by default because many user report issue to
+    PyMySQL issue tracker when they see warning. You need to call "SHOW WARNINGS"
+    explicitly when you want to see warnings.
+  * Formatting of float object is changed from "3.14" to "3.14e0".
+  * Use cp1252 codec for latin1 charset.
+  * Fix decimal literal.
+  * TRUNCATED_WRONG_VALUE_FOR_FIELD, and ILLEGAL_VALUE_FOR_TYPE are now
+    DataError instead of InternalError.
+- remove python-PyMySQL-no-unittest2.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jun  4 09:21:14 UTC 2020 - pgajdos@suse.com
 
 - test package with mariadb

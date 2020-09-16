@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyMySQL
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        Pure Python MySQL Driver
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PyMySQL/PyMySQL/
-Source:         https://github.com/PyMySQL/PyMySQL/archive/v%{version}.tar.gz#/PyMySQL-0.9.3.tar.gz
-# https://github.com/PyMySQL/PyMySQL/commit/a500fcd64d4500417540a2a2ff7b16a88d1872ad
-Patch0:         python-PyMySQL-no-unittest2.patch
+Source:         https://github.com/PyMySQL/PyMySQL/archive/v%{version}.tar.gz#/PyMySQL-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -50,7 +48,6 @@ its unit tests as well as running it against the MySQLdb and myconnpy unit tests
 
 %prep
 %setup -q -n PyMySQL-%{version}
-%patch0 -p1
 # remove unwanted shebang
 sed -i '1 { /^#!/ d }' pymysql/tests/thirdparty/test_MySQLdb/*.py
 
