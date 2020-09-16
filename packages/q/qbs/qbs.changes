@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:19:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.17.0. Check the changes-1.17.0.md file for the
+  complete changelog.
+- Important bug fixes:
+  * Building Qt for Android applications as static libraries
+    has been fixed
+  * Fixed extraction of build information from CONFIG
+    and QT_CONFIG variables in Qt installations
+  * Compiler defines are now correctly passed to moc
+    when processing header files
+
+-------------------------------------------------------------------
 Sun May  3 06:55:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.16.0. Check the changes-1.16.0.md file for the

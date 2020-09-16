@@ -19,7 +19,7 @@
 
 %define qt5_version 5.11.0
 Name:           qbs
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Modern build tool for software projects
 # Legal:
