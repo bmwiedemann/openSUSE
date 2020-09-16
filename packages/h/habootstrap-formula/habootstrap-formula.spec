@@ -20,7 +20,7 @@
 
 Name:           habootstrap-formula
 Group:          System/Packages
-Version:        0.3.8+git.1599825027.ca5817c
+Version:        0.3.8+git.1600211526.98835ed
 Release:        0
 Summary:        HA cluster (crmsh) deployment salt formula
 
@@ -52,8 +52,7 @@ mkdir -p %{buildroot}%{fdir}/states/%{fname}
 mkdir -p %{buildroot}%{fdir}/metadata/%{fname}
 cp -R %{fname} %{buildroot}%{fdir}/states
 cp -R %{ftemplates} %{buildroot}%{fdir}/states/%{fname}
-cp pillar.example %{buildroot}%{fdir}/states/%{fname}
-cp -R form.yml %{buildroot}%{fdir}/metadata/%{fname}
+cp -R form.yml pillar.example %{buildroot}%{fdir}/metadata/%{fname}
 if [ -f metadata.yml ]
 then
   cp -R metadata.yml %{buildroot}%{fdir}/metadata/%{fname}
