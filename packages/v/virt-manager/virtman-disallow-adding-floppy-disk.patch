@@ -4,11 +4,11 @@ in this patch anyways to correctly set up a bus if a floppy were
 added.
 
 
-Index: virt-manager-2.2.1/virtManager/addhardware.py
+Index: virt-manager-3.0.0/virtManager/addhardware.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtManager/addhardware.py
-+++ virt-manager-2.2.1/virtManager/addhardware.py
-@@ -528,6 +528,9 @@ class vmmAddHardware(vmmGObjectUI):
+--- virt-manager-3.0.0.orig/virtManager/addhardware.py
++++ virt-manager-3.0.0/virtManager/addhardware.py
+@@ -481,6 +481,9 @@ class vmmAddHardware(vmmGObjectUI):
              buses = domcaps.devices.disk.get_enum("bus").get_values()
          else:
              buses = vmmAddHardware.disk_old_recommended_buses(guest)
@@ -18,16 +18,15 @@ Index: virt-manager-2.2.1/virtManager/addhardware.py
  
          bus_map = {
              "disk": ["ide", "sata", "scsi", "sd", "usb", "virtio", "xen"],
-@@ -539,7 +542,7 @@ class vmmAddHardware(vmmGObjectUI):
+@@ -500,6 +503,7 @@ class vmmAddHardware(vmmGObjectUI):
+             "usb": _("USB"),
+             "virtio": _("VirtIO"),
+             "xen": _("Xen"),
++            "fdc": _("FDC"),
+         }
+         return bus_mappings.get(bus, bus)
  
-     @staticmethod
-     def disk_pretty_bus(bus):
--        if bus in ["ide", "sata", "scsi", "usb", "sd"]:
-+        if bus in ["ide", "sata", "scsi", "usb", "sd", "fdc"]:
-             return bus.upper()
-         if bus in ["xen"]:
-             return bus.capitalize()
-@@ -724,8 +727,9 @@ class vmmAddHardware(vmmGObjectUI):
+@@ -681,8 +685,9 @@ class vmmAddHardware(vmmGObjectUI):
                        "drive-harddisk", _("Disk device")])
          target_model.append([DeviceDisk.DEVICE_CDROM,
                        "media-optical", _("CDROM device")])

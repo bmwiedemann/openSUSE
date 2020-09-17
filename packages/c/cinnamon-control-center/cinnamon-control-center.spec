@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-control-center
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define soname  libcinnamon-control-center
 %define sover   1
 Name:           cinnamon-control-center
-Version:        4.4.0
+Version:        4.6.2
 Release:        0
 Summary:        Utilities to configure the Cinnamon desktop
 License:        GPL-2.0-only AND GPL-3.0-or-later AND MIT
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cinnamon-control-center
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE %{name}-ignore-polkit-rules.patch - marguerite@opensuse.org fix boo#1125427
+# PATCH-FIX-OPENSUSE %%{name}-ignore-polkit-rules.patch - marguerite@opensuse.org fix boo#1125427
 Patch:          %{name}-ignore-polkit-rules.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
@@ -74,7 +74,6 @@ Requires:       adwaita-icon-theme
 Requires:       cinnamon-settings-daemon
 Requires:       desktop-data
 Requires:       gnome-online-accounts
-Requires:       libcinnamon-desktop-data
 Requires:       polkit-gnome
 Recommends:     %{name}-lang
 Recommends:     iso-codes

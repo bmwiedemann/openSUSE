@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:46:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * python 3.8 support
+
+-------------------------------------------------------------------
 Thu Jan  2 07:33:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not install generic examples directory in sitelib

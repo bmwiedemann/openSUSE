@@ -18,13 +18,12 @@
 
 
 Name:           neard
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        NFC for Linux
 License:        GPL-2.0-only
 Group:          Hardware/Mobile
 URL:            http://01.org/linux-nfc/
-
 #Git-Clone:	git://git.kernel.org/pub/scm/network/nfc/neard
 Source:         https://www.kernel.org/pub/linux/network/nfc/neard-%{version}.tar.xz
 Source1:        neard.service
@@ -33,7 +32,7 @@ Patch1:         neard-0.13-fix-dbus_send_destination_config.patch
 BuildRequires:  automake
 BuildRequires:  check-devel
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1) >= 1.4
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 BuildRequires:  pkgconfig(libnl-3.0)
@@ -43,7 +42,7 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 
 %description
-NFC support for Linux. 
+NFC support for Linux.
 
 %package devel
 Summary:        Files needed for NFC development
@@ -70,7 +69,7 @@ autoreconf -fiv
 		--enable-tools \
 		--enable-test
 
-make %{?_smp_mflags} all V=1
+%make_build all
 
 %install
 %make_install
@@ -90,26 +89,25 @@ install --mode=0644 -D %{SOURCE2} %{buildroot}%{_prefix}/lib/udev/rules.d/99-nea
 %service_add_post neard.service
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %config %{_sysconfdir}/dbus-1/system.d/org.neard.conf
-%dir %_libexecdir/nfc/
-%_libexecdir/nfc/neard
+%dir %{_libexecdir}/nfc/
+%{_libexecdir}/nfc/neard
 %{_prefix}/lib/udev/rules.d/99-neard.rules
 %{_unitdir}/neard.service
+%{_bindir}/nciattach
 %{_bindir}/nfctool
-%doc %{_mandir}/man1/nfctool.1.gz
-%doc %{_mandir}/man5/neard.conf.5.gz
-%doc %{_mandir}/man8/neard.8.gz
+%{_mandir}/man1/nfctool.1%{?ext_man}
+%{_mandir}/man5/neard.conf.5%{?ext_man}
+%{_mandir}/man8/neard.8%{?ext_man}
 
 %files devel
-%defattr(-, root, root)
-%_includedir/near/
-%_includedir/version.h
+%{_includedir}/near/
+%{_includedir}/version.h
 %{_libdir}/pkgconfig/neard.pc
 
 %files test
-%defattr(-, root, root)
 %dir %{_libdir}/neard/
 %{_libdir}/neard/test/
 

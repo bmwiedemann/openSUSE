@@ -17,7 +17,7 @@
 
 
 Name:           texstudio
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        LaTeX Editor
 License:        GPL-2.0-only AND GPL-3.0-only AND Apache-2.0 AND MPL-1.1

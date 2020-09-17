@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:19:35 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Enable tests on x86_64 & ARM
+- change reporting interval to never
+- remove calls to systemctl in make install
+- change LDFLAGS handling via env variables
+
+-------------------------------------------------------------------
 Thu Sep  3 08:48:01 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Drop dependency on insserv-compat

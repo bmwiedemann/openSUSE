@@ -1,7 +1,7 @@
 <services>
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
-		<param name="url">git://git.osmocom.org/libgtpnl</param>
+		<param name="url">https://git.osmocom.org/libgtpnl</param>
 		<param name="revision">1.2.1</param>
 		<param name="versionformat">1.2.1</param>
 	</service>

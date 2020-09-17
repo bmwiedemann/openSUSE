@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:59:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.0
+  * ss7: Introduce APIs to manage asp_peer hosts
+  * sccp: Fix null ptr access on malformed or unsupported msg received
+  * sccp: Support receiving messages with no optional params
+  * cs7 vty: add 'show cs7 config'
+
+-------------------------------------------------------------------
 Sat Aug  1 14:07:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.1

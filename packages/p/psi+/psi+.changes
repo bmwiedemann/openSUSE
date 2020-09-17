@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug  6 08:29:54 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.1473
+  * Remove some weird code from psitabwidget and fix possible crash on hide all
+  * Allow subscribe on account before login
+  * Update client version info on login
+  * Update client version in iris on updates from plugins
+  * Ensure null strings is not used for disco client info
+  * Removed Reload action from webview for non basic chatlog
+  * Updated msmgle. Fixed redundant replacement of the widget, which led to the loss of connections and broke the input and editing of text.
+  * Fixed taking cached share filename in device opener
+  * Set metadata to plugin as qobject property
+  * Tooltip colors added to UI
+  * Updated iconselect.cpp. Increased number of columns
+  * scale smileys to height, not to square
+  * relink iris
+  * and much more
+- switch to obs_scm
+
+-------------------------------------------------------------------
 Fri Jun  5 11:31:28 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - update to 1.4.1366

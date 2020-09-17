@@ -366,4 +366,36 @@
     <comment></comment>
     <requestid>801384</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>3a2c45213db9a02aa952b32fe26be52a</srcmd5>
+    <version>3.6.0</version>
+    <time>1600346906</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix lack of SHA3 KATs in &quot;make check&quot; processing (bsc#1175277)
+  * Added libica-sles15sp2-FIPS-add-SHA3-KATs-to-fips_powerup_tests.patch
+  * Added libica-sles15sp2-FIPS-skip-SHA3-tests-if-running-on-hardware-without-.patch
+- Fix FIPS hmac check (bsc#1175356).
+  * Update FIPS support to upstream
+    - Refresh libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
+      from upstream.
+    - Add libica-sles15sp2-Build-with-pthread-flag.patch
+    - Add libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-addon.patch
+    - Add libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-rename-variables.patch
+    - Add libica-sles15sp2-FIPS-use-full-library-version-for-hmac-filename.patch
+  * FIPS check should fail when hmac is missing
+    - Add libica-sles15sp2-FIPS-fix-inconsistent-error-handling.patch
+    - Create an hmac for the selftest
+    - Check that selftest fails without a hmac
+    - Hash libica.so.3 rather than libica.so.3.6.0
+  * Fix hmac key format. It should be hexadecimal, not ASCII
+    - Refresh libica-sles15sp2-FIPS-hmac-key.patch
+- Fix Some internal variables used to store sensitive information
+  (keys) were not zeroized before returning to the calling application.
+  (bsc#1175357)
+  * Added libica-sles15sp2-Zeroize-local-variables.patch
+- Updated libica-rpmlintrc to eliminate the warning about the HMAC file
+  being a hidden file. It is supposed to be hidden.
+</comment>
+    <requestid>834962</requestid>
+  </revision>
 </revisionlist>

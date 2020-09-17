@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep  6 14:08:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old specfile constructs.
+
+-------------------------------------------------------------------
 Sun Dec 10 21:54:49 UTC 2017 - jengelh@inai.de
 
 - BuildRequire pre-1.1 openssl.

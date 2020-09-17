@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-psycopg2
-Version:        2.8.5
+Version:        2.8.6
 Release:        0
 Summary:        Python-PostgreSQL Database Adapter
 License:        LGPL-3.0-or-later AND (LGPL-3.0-or-later OR ZPL-2.0) AND SUSE-GPL-2.0-with-openssl-exception

@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:34:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix postun scriptlet of vim-small: do not unconditionally
+  deregister vim-small as an alternative on uninstall (which
+  happens on package upgrades too) (boo#1176549).
+
+-------------------------------------------------------------------
+Wed Sep  2 06:20:24 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add vi as slave to update-alternatives so that every package
+  has a matching "vi" symlink [bsc#1174564].
+
+-------------------------------------------------------------------
+Mon Aug 31 21:33:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Updated to version 8.2.1551, fixes the following problems
+  * Vim: not operator does not result in boolean.
+  * Previous tab page not usable from an Ex command.
+  * Popupwindow missing last couple of lines when cursor is in the first line.
+  * Closing a popup window with CTRL-C interrupts 'statusline' if it calls
+  a function.
+  * Vim9: boolean evaluation does not work as intended.
+  * Test 49 is old style.
+  * Vim9: invalid error for missing white space after function.
+  * Vim9: not operator applied too early.
+  * Test 49 is old style.
+  * Vim9: handling "+" and "-" before number differs from Vim script.
+  * The Mac GUI implementation is outdated and probably doesn't even work.
+  * Vim9: find global function when looking for script-local.
+  * Mac build fails.
+  * Vim9: cannot use call() without :call.
+  * Vim9: cannot call autoload function in :def function.
+  * Vim9: cannot use a range with marks in :def function.
+  * Vim9: :def function does not abort on nested function error.
+  * Vim9: no error for missing white after : in dict.
+  * Vim9: error for missing comma instead of extra white space.
+  * Vim9: no error for white space before comma in dict.
+  * Various inconsistencies in test files.
+  * Vim9: cannot mingle comments in multi-line lambda.
+  * Vim9: crash when lambda uses outer function argument.
+  * Vim9: always converting to string for ".." leads to mistakes.
+  * Function implementing :substitute has unexpected name.
+  * Vim9: 'statusline' is evaluated using Vim9 script syntax.
+  * Missing tests for interrupting script execution from debugger.
+  * Tiny and small builds have no test coverage.
+  * Debugger code insufficiently tested.
+  * Running tests in tiny version gives error for summarize.vim.
+  * Outdated references to the Mac Carbon GUI.
+  * Vim9: crash when interrupting a nested :def function.
+  * Error messages are spread out and names can be confusing.
+  * Vim9: function expanded name is cleared when sourcing a script again.
+  * Vim9: line number in error message is not correct.
+  * Vim9: return type of keys() is list<any>.
+  * Test 77a for VMS depends on small.vim which does not exist.
+  * Some test makefiles delete files that are not generated.
+  * Vim9: no check that script-local items don't become global.
+  * Vim9: list type at script level only uses first item.
+  * Vim9: dead code in to_name_end().
+  * Vim9: failure to compile lambda not tested.
+  * Vim9: failure invoking lambda with wrong arguments.
+  * Vim9: crash when using typecast before constant.
+  * MS-Windows: test files are not deleted.
+  * Vim9: the output of :disassemble cannot be interrupted.
+  * .gawk files not recognized.
+  * Vim9: declaring ascript variable at the script level does not infer
+  the type.
+  * Error messages are spread out.
+  * Vim9: string indexes are counted in bytes.
+  * Vim9: string slice not supported yet.
+  * Vim9: list slice not supported yet.
+  * Vim9: build warning for unused variable.
+  * Vim9: subscript not handled properly.
+  * Vim9: cannot index or slice a variable with type "any".
+  * Vim9: :echomsg doesn't like a dict argument.
+  * Vim9: invalid error for missing white space.
+  * Vim9: cannot assign string to string option.
+  * Errors in spell file not tested.
+  * :const only locks the variable, not the value.
+  * ":argdel" does not work like ":.argdel" as documented. (Alexey Demin)
+  * Items in a list given to :const can still be modified.
+  * /usr/lib/udef/rules.d not recognized as udevrules.
+  * Vim9: can't use v:true for option flags.
+  * Filetype test fails on MS-Windows.
+  * Vim9: error when using bufnr('%').
+  * Vim9: cannot use "true" for some popup options.
+  * Vim9: error for list index uses wrong line number.
+  * Vim9: skip expression in search() gives error.
+  * Vim9: line number reported with error may be wrong.
+  * Vim9: crash when using a nested lambda.
+  * Vim9: error for using special as number when returning "false" from a
+  popup filter.
+  * Flaky failure in assert_fails().
+  * Vim9: readdirex() expression doesn't accept bool.
+  * Vim9: readdir() expression doesn't accept bool.
+  * Travis: installing snd-dummy is not always useful.
+  * Text does not scroll when inserting above first line.
+  * Vim9: error when setting an option with setbufvar().
+  * Vim9: using /= with float and number doesn't work.
+  * Vim9: crash when compiling heredoc lines start with comment.
+  * Build failures.
+  * Not enough test coverage for the spell file handling.
+  * Missing change to calling eval_getline().
+  * "make clean" may delete too many files.
+  * Vim9: cannot use " #" in a mapping.
+  * CursorHold test is flaky. (Jakub Kądziołka)
+  * On slow systems tests can be flaky.
+  * Vim9: error when using "$" with col().
+  * Vim9: error when using address without a command.
+  * Vim9: concatenating to constant reverses order.
+  * Vim9: can use += with a :let command at script level.
+  * Vim9: error for an autocmd defined in a :def function in legacy Vim script.
+  * Vim9: white space checks are only done for a :def function.
+  * Not all file read and writecode is tested.
+  * Vim9: no error when using a number other than 0 or 1 as bool.
+  * Using malloc() directly.
+  * Not all debugger commands covered by tests.
+  * Vertical separator is cleared when dragging a popup window using a
+  multi-byte character for the border.
+  * Using "var" in a :def function may refer to a legacy Vim script variable.
+  * Putting a string in Visual block mode ignores multi-byte characters.
+  * Failure after trinary expression fails.
+  * Cannot interrupt shell used for filename expansion. (Dominique Pellé)
+  * Multibyte vertical separator is cleared when dragging a popup window
+  using a multi-byte character for the border.
+  * Vim9: can create s:var in legacy script but cannot unlet.
+  * Vim9: error for :exe has wrong line number.
+  * Cannot easily get the character under the cursor.
+  * Vim9: cannot assign to local option.
+  * Vim9: Ex command default range is not set.
+  * Vim9: CTRL-] used in :def function does not work.
+  * Reading past end of buffer when reading spellfile. (Yegappan Lakshmanan)
+  * Not enough test coverage for the spell file handling.
+  * Still not enough test coverage for the spell file handling.
+  * No longer get an error for string concatenation with float. (Tsuyoshi Cho)
+  * Messages from tests were not always displayed.
+  * Line in testdir Makefile got commented out. (Christian Brabandt)
+  * Vim9: cannot use a function name as a function reference at script level.
+  * Vim9: :endif not found after "if false".
+  * Vim9: :elseif may be compiled when not needed.
+  * Vim9: test fails on MS-Windows.
+  * Vim9: test still fails on MS-Windows.
+  * Compiler warning for conversion of size_t to long.
+  * Vim9: error when passing getreginfo() result to setreg().
+  * Vim9: type error for argument type is not at call position.
+  * It is not possible to specify cell widths of characters.
+  * Cannot get the class of a character; emoji widths are wrong in some
+  environments.
+  * Memory acccess error when using setcellwidths().
+  * Python: iteration over vim objects fails to keep reference.
+  * Using invalid script ID causes a crash.
+  * The user cannot try out emoji character widths.
+  * Vim9: cannot find function reference for s:Func.
+  * Vim9: test with invalid SID does not work in the GUI.
+  * Vim9: test with invalid SID is skipped in the GUI.
+  * Cannot translate messages in a Vim script.
+  * ch_logfile() is unclear about closing when forking.
+  * Build rule for Vim.app is unused.
+  * Various comment problems.
+  * Cannot move position of "%%" in message translations. (Emir Sarı)
+  * The "r" command fails for keys with modifiers if 'esckeys' is off and
+  modifyOtherKeys is used. (Lauri Tirkkonen)
+  * Vim9: bufname('%') gives an error.
+  * Vim9: error for argument type does not mention the number. 
+- disable-unreliable-tests.patch: refresh
+- vim-changelog.sh: work with bash
+
+-------------------------------------------------------------------
 Mon Aug 10 09:06:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.1412, fixes the following problems

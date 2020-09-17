@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Sep 16 05:24:21 MDT 2020 - carnold@suse.com
+
+- Update to virt-manager 3.0.0 (fate#326786)
+  virt-manager-3.0.0.tar.bz2
+  * virt-install –cloud-init support (Athina Plaskasoviti, Cole
+    Robinson)
+  * The virt-convert tool has been removed. Please use virt-v2v
+    instead
+  * A handful of UI XML configuration options have been removed.
+    The XML editor can be used instead. For a larger discussion see
+    this thread: https://www.redhat.com/archives/virt-tools-list/
+    2019-June/msg00117.html
+  * The ‘New VM’ UI now has a ‘Manual Install’ option which creates
+    a VM without any required install media
+  * In the ‘New VM’ UI, the network/pxe install option has been
+    removed. If you need network boot, choose ‘Manual Install’ and
+    set the boot device after initial VM creation
+  * ‘Clone VM’ UI has been reworked and simplified
+  * ‘Migrate VM’ UI now has an XML editor for the destination VM
+  * Global and per-vm option to disable graphical console
+    autoconnect. This makes it easier to use virt-manager alongside
+    another client like virt-viewer
+  * virt-manager: set guest time after VM restore (Michael Weiser)
+  * virt-manager: option to delete storage when removing disk
+    device (Lily Nie)
+  * virt-manager: show warnings if snapshot operation is unsafe
+    (Michael Weiser)
+  * Unattended install improvements (Fabiano Fidêncio)
+  * cli: new –xml XPATH=VAL option for making direct XML changes
+  * virt-install: new –reinstall=DOMAIN option
+  * virt-install: new –autoconsole text|graphical|none option
+  * virt-install: new –os-variant detect=on,require=on suboptions
+  * cli: –clock, –keywrap, –blkiotune, –cputune additions (Athina
+    Plaskasoviti)
+  * cli: add –features kvm.hint-dedicated.state= (Menno Lageman)
+  * cli:–iommu option (Menno Lageman)
+  * cli: Add –graphics websocket= support (Petr Benes)
+  * cli: Add –disk type=nvme source.* suboptions
+  * cli: Fill in all –filesystem suboptions
+  * Translation string improvements (Pino Toscano)
+  * Convert from .pod to .rst for man pages
+  * Switch to pytest as our test runner
+  * Massively improved unittest and uitest code coverage
+  * Now using github issues as our bug tracker
+- Drop patches contained in new tarball
+  3c6e8537-guest-fix-warning-message-when-machine-type-is-changed-for-secure-boot.patch
+  0c223ab2-guest-Dont-set-default-uefi-if-firmware-is-set.patch
+  414ffa5e-virt-install-Use-minutes-instead-of-seconds-on-get_time_string.patch
+  53245827-urlfetcher-Force-a-flush-after-writing-to-a-file.patch
+  3009888a-urlfetcher-Dont-override-fullurl-when-its-explicitly-set.patch
+  9465da41-urlfetcher-Deal-with-file-in-_LocalURLFetcher.patch
+  651e5b6d-devices-video-Simplify-model-hvm-check.patch
+  1547e16d-domcapabilities-Get-video-devices.patch
+  2e20b128-domcapabilities-Add-supports_video_bochs.patch
+  d9736db9-addhardware-Add-bochs-display-to-the-video-list.patch
+  8f4c53ea-video-Prefer-bochs-when-its-supported..patch
+  ae19d6d6-fix-resizing-of-spice-clients-with-guest-resizing-enabled.patch
+  51d84c54-connection-Avoid-repeated-default-pool-creation-attempts.patch
+  d934d6f2-domcaps-Fix-check-for-uncached-security-features.patch
+  29f9f5f2-virt-xml-fix-defined_xml_is_unchanged.patch
+  15a9502b-Fix-showing-the-firmware-type-in-case-of-firmware-auto-selection.patch
+  5573aeb4-createnet-Fix-XML-editor-error-when-dhcp-fields-are-empty.patch
+  e8bf16b9-details-fix-detection-of-firmware-auto-selection.patch
+  7e3fb3f2-graphics-Default-to-vga-instead-of-qxl-for-non-spice.patch
+- Drop deprecated patches
+  virtman-fix-env-script-interpreter.patch
+  virtinst-osdict-get_supported.patch
+  virtconv-python2-to-python3-conversion.patch
+  virtinst-python2-to-python3-conversion.patch
+  virtman-python2-to-python3-conversion.patch
+  virttests-python2-to-python3-conversion.patch
+  0002-virtinst-python3-avoid-comparison-of-None-and-int.patch
+
+-------------------------------------------------------------------
 Thu Sep  3 13:59:39 MDT 2020 - carnold@suse.com
 
 - bsc#1176080 - selecting one UEFI firmware in install wizard

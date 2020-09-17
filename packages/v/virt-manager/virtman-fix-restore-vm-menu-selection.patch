@@ -3,11 +3,11 @@ virt-manager no longer tracks the saved state but leaves it up to libvirt.
 Libvirt returns libvirt.VIR_DOMAIN_PMSUSPENDED after a vm has been 'saved'.
 
 
-Index: virt-manager-2.2.0/virtManager/object/domain.py
+Index: virt-manager-3.0.0/virtManager/object/domain.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/object/domain.py
-+++ virt-manager-2.2.0/virtManager/object/domain.py
-@@ -1454,7 +1454,8 @@ class vmmDomain(vmmLibvirtObject):
+--- virt-manager-3.0.0.orig/virtManager/object/domain.py
++++ virt-manager-3.0.0/virtManager/object/domain.py
+@@ -1530,7 +1530,8 @@ class vmmDomain(vmmLibvirtObject):
          return (self.is_stoppable() or
                  self.status() in [libvirt.VIR_DOMAIN_CRASHED])
      def is_runable(self):

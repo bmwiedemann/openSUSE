@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  6 13:38:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Add Linux network namespace support for TUN device
+  * sgsnemu: Implement ping on IPv6 APNs
+
+-------------------------------------------------------------------
 Sun Jan  5 11:01:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.5.0

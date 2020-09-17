@@ -1,24 +1,24 @@
 References: fate#326698 - Add pvh support to virt-manager
 At this time support is disabled in this patch.
 
-Index: virt-manager-2.2.1/virtManager/createvm.py
+Index: virt-manager-3.0.0/virtManager/createvm.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtManager/createvm.py
-+++ virt-manager-2.2.1/virtManager/createvm.py
-@@ -792,6 +792,9 @@ class vmmCreateVM(vmmGObjectUI):
-         for guest in guests:
-             if not guest.domains:
+--- virt-manager-3.0.0.orig/virtManager/createvm.py
++++ virt-manager-3.0.0/virtManager/createvm.py
+@@ -837,6 +837,9 @@ class vmmCreateVM(vmmGObjectUI):
+                     break
+             if label is None:
                  continue
 +            # xenpvh is currently unsupported
 +            if guest.os_type == "xenpvh":
 +                continue
  
-             gtype = guest.os_type
-             dom = guest.domains[0]
-Index: virt-manager-2.2.1/virtinst/domain/os.py
+             # Determine if this is the default given by guest_lookup
+             if (gtype == self._capsinfo.os_type and
+Index: virt-manager-3.0.0/virtinst/domain/os.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/domain/os.py
-+++ virt-manager-2.2.1/virtinst/domain/os.py
+--- virt-manager-3.0.0.orig/virtinst/domain/os.py
++++ virt-manager-3.0.0/virtinst/domain/os.py
 @@ -32,6 +32,8 @@ class DomainOs(XMLBuilder):
          return self.os_type == "hvm"
      def is_xenpv(self):
@@ -28,11 +28,11 @@ Index: virt-manager-2.2.1/virtinst/domain/os.py
      def is_container(self):
          return self.os_type == "exe"
  
-Index: virt-manager-2.2.1/virtinst/guest.py
+Index: virt-manager-3.0.0/virtinst/guest.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/guest.py
-+++ virt-manager-2.2.1/virtinst/guest.py
-@@ -824,7 +824,7 @@ class Guest(XMLBuilder):
+--- virt-manager-3.0.0.orig/virtinst/guest.py
++++ virt-manager-3.0.0/virtinst/guest.py
+@@ -814,7 +814,7 @@ class Guest(XMLBuilder):
  
          usb_tablet = False
          usb_keyboard = False
@@ -41,11 +41,11 @@ Index: virt-manager-2.2.1/virtinst/guest.py
              usb_tablet = self.osinfo.supports_usbtablet()
          if (self.os.is_arm_machvirt() or
              self.os.is_riscv_virt() or
-Index: virt-manager-2.2.1/virtManager/object/domain.py
+Index: virt-manager-3.0.0/virtManager/object/domain.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtManager/object/domain.py
-+++ virt-manager-2.2.1/virtManager/object/domain.py
-@@ -1150,6 +1150,8 @@ class vmmDomain(vmmLibvirtObject):
+--- virt-manager-3.0.0.orig/virtManager/object/domain.py
++++ virt-manager-3.0.0/virtManager/object/domain.py
+@@ -1223,6 +1223,8 @@ class vmmDomain(vmmLibvirtObject):
          return self.get_xmlobj().os.is_xenpv()
      def is_hvm(self):
          return self.get_xmlobj().os.is_hvm()
@@ -54,11 +54,11 @@ Index: virt-manager-2.2.1/virtManager/object/domain.py
  
      def get_uuid(self):
          if self._uuid is None:
-Index: virt-manager-2.2.1/virtManager/connection.py
+Index: virt-manager-3.0.0/virtManager/connection.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtManager/connection.py
-+++ virt-manager-2.2.1/virtManager/connection.py
-@@ -223,6 +223,8 @@ class vmmConnection(vmmGObject):
+--- virt-manager-3.0.0.orig/virtManager/connection.py
++++ virt-manager-3.0.0/virtManager/connection.py
+@@ -211,6 +211,8 @@ class vmmConnection(vmmGObject):
                  label = "xen (paravirt)"
              elif gtype == "hvm":
                  label = "xen (fullvirt)"

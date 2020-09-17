@@ -1,0 +1,45 @@
+From e5b3d1d00bbdbcb168889699c462bf01b58062a5 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Thu, 6 Jul 2017 15:48:10 +0200
+Subject: [PATCH 11/12] core: disable session keyring per system sevice
+ entirely for now
+
+Until PAM module "pam_keyinit" is fully integrated in SUSE's PAM stack, this
+feature has to be disabled.
+
+openSUSE is still not ready for enabling the keyring stuff (see
+bsc#1081947). Some services got fixed (sshd, getty@.service) but some still
+haven't (xdm, login, ...)
+
+So leave it disabled again otherwise different users might end up using the
+same session keyring - the one created for the service used for logging in
+(sshd, getty@.service, xdm, etc...)
+
+The integration of pam_keyinit is tracked here:
+https://bugzilla.opensuse.org/show_bug.cgi?id=1081947
+
+See also:
+https://github.com/systemd/systemd/pull/6286
+
+[fbui: fixes boo#1045886]
+---
+ src/core/execute.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/core/execute.c b/src/core/execute.c
+index 2a4840a3a9..aefd4eaff1 100644
+--- a/src/core/execute.c
++++ b/src/core/execute.c
+@@ -2779,6 +2779,9 @@ static int setup_keyring(
+         assert(context);
+         assert(p);
+ 
++        /* SUSE: pam_keyinit is still not fully integrated to SUSE's PAM stack... */
++        return 0;
++
+         /* Let's set up a new per-service "session" kernel keyring for each system service. This has the benefit that
+          * each service runs with its own keyring shared among all processes of the service, but with no hook-up beyond
+          * that scope, and in particular no link to the per-UID keyring. If we don't do this the keyring will be
+-- 
+2.26.2
+

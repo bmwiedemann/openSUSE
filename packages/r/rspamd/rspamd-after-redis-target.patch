@@ -1,0 +1,12 @@
+Index: rspamd-1.7.9/rspamd.service
+===================================================================
+--- rspamd-1.7.9.orig/rspamd.service
++++ rspamd-1.7.9/rspamd.service
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=rapid spam filtering system
+-After=nss-lookup.target network-online.target
++After=nss-lookup.target network-online.target redis.target
+ Documentation=https://rspamd.com/doc/
+ 
+ [Service]

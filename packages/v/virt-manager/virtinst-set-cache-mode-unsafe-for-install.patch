@@ -1,10 +1,10 @@
 Set cache mode for target installation disk to unsafe for better
 performance.
-Index: virt-manager-2.2.1/virtinst/install/installer.py
+Index: virt-manager-3.0.0/virtinst/install/installer.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/install/installer.py
-+++ virt-manager-2.2.1/virtinst/install/installer.py
-@@ -422,11 +422,22 @@ class Installer(object):
+--- virt-manager-3.0.0.orig/virtinst/install/installer.py
++++ virt-manager-3.0.0/virtinst/install/installer.py
+@@ -570,11 +570,22 @@ class Installer(object):
                  guest.memory) = data
  
      def _get_install_xml(self, guest, meter):

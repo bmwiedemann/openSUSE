@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-netif
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-%define version_unconverted 0.7.0
+%define version_unconverted 1.0.0
 
 Name:           libosmo-netif
 Summary:        Osmocom library for muxed audio
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
-Version:        0.7.0
+Version:        1.0.0
 Release:        0
-Url:            https://osmocom.org/projects/libosmo-netif
+URL:            https://osmocom.org/projects/libosmo-netif
 
 Source:         %name-%version.tar.xz
 Patch1:         osmo-talloc.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
@@ -63,21 +62,22 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libosmo-netif.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 echo "%version" >.tarball-version
 autoreconf -fiv
-%configure --enable-shared --disable-static --includedir="%_includedir/%name"
-make %{?_smp_mflags}
+# bugzilla.opensuse.org/795968 for rationale
+%configure --includedir="%_includedir/%name" \
+	--enable-shared --disable-static
+%make_build
 
 %install
 %make_install
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %check
-if ! make %{?_smp_mflags} check; then
+if ! %make_build check; then
 	rv=$?
 	cat tests/testsuite.log
 	echo "Suppressing exit $rv"
@@ -88,14 +88,12 @@ fi
 %postun -n libosmonetif8 -p /sbin/ldconfig
 
 %files -n libosmonetif8
-%defattr(-,root,root)
 %_libdir/libosmonetif.so.8*
 
 %files -n libosmonetif-devel
-%defattr(-,root,root)
-%doc COPYING
-%dir %_includedir/%name
-%dir %_includedir/%name/osmocom
+%license COPYING
+%dir %_includedir/%name/
+%dir %_includedir/%name/osmocom/
 %_includedir/%name/osmocom/netif/
 %_libdir/libosmonetif.so
 %_libdir/pkgconfig/libosmo-netif.pc

@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>778420</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec61655b5b4f4baed6268e0ad9b6553e</srcmd5>
+    <version>3.1.1</version>
+    <time>1600347272</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.1:
+  Include the commits from the previous year.
+- install license + README</comment>
+    <requestid>835091</requestid>
+  </revision>
 </revisionlist>

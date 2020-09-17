@@ -9,4 +9,4 @@
 #
 # see man(1) earlyoom
 #
-EARLYOOM_ARGS="-r 3 -m 6 -s 10 -n -p --avoid '(^|/)(systemd|Xorg|X|Xwayland|xdm|sddm|kdm|gdm|lightdm|plasmashell|kwin_wayland|kwin_x11|ssh|yast|yast2|y2controlcenter|zypper|rpm)$' --prefer '(^|/)(java|Web\ Content|firefox|chromium|chrome|opera|falkon|ffmpeg|vlc|mpv|akregator|thumbnail.so)$'"
+EARLYOOM_ARGS="-r 0 -m 6 -s 10 -n -p --avoid '(^|/)(systemd|Xorg|X|Xwayland|xdm|sddm|kdm|gdm|lightdm|plasmashell|kwin_wayland|kwin_x11|ssh|yast|yast2|y2controlcenter|zypper|rpm|dnf)$' --prefer '(^|/)(java|Web\ Content|firefox|chromium|chrome|opera|falkon|ffmpeg|vlc|mpv|akregator|thumbnail.so)$'"

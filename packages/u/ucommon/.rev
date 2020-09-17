@@ -180,4 +180,12 @@
     <comment>- BuildRequire pre-1.1 openssl.</comment>
     <requestid>555907</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>3749f9b8ad91a4799f68ffe55a5da8b4</srcmd5>
+    <version>7.0.0</version>
+    <time>1600346700</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim old specfile constructs.</comment>
+    <requestid>832619</requestid>
+  </revision>
 </revisionlist>

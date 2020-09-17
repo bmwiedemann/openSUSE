@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-qtconsole
-Version:        4.7.6
+Version:        4.7.7
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -114,7 +114,8 @@ popd
 
 %check
 export QT_QPA_PLATFORM="offscreen"
-%pytest
+# test skips: https://github.com/jupyter/qtconsole/issues/443
+%pytest -k "not (test_00 and (test_scroll or test_debug))"
 
 %post -n jupyter-qtconsole
 %python_install_alternative jupyter-qtconsole

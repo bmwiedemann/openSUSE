@@ -29,4 +29,17 @@
   * Allowing length of 1 to be specified for bools. (Thanks to LemonPi)</comment>
     <requestid>730685</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>85e4539e085f1d87cfbe2b1242468001</srcmd5>
+    <version>3.1.7</version>
+    <time>1600347968</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.7:
+  * Fixing del not working correctly when stop value negative (Issue 201)
+  * Removed deprecated direct import of ABC from collections module (Issue 196)
+  * Tested and added explicit support for Python 3.7 and 3.8. (Issue 193)
+  * Fixing a few stale links to documentation. (Issue 194)
+  * Allowing initialisation with an io.BytesIO object. (Issue 189)</comment>
+    <requestid>835169</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 17 07:01:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.4:
+  * fixed Clang build broken in v0.3.3 #109
+  * [nwggrid] added /usr/share/pixmaps/ path to look for icons #111
+  * fixed crash on $LANG unset (regression in v0.3.3) #114
+
+-------------------------------------------------------------------
 Mon Sep 14 07:29:34 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.3:

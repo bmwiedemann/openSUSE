@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.11
+Version:        1.8.12
 Release:        0
 BuildRequires:  gnutls-devel
 BuildRequires:  libidn2-devel
@@ -59,6 +59,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 msmtp is an SMTP client that can be used as a plug-in for Mutt and
 other mail user agents.  It forwards mail to an SMTP server that does
 the delivery.  msmtp supports multiple accounts.
+
+%lang_package
 
 %package doc
 Summary:        Documentation for %{name}
@@ -175,7 +177,7 @@ rm -f "%{buildroot}%{_infodir}/dir"
 [ "$1" = "0" ] && /sbin/install-info --delete "%{_infodir}/%{name}.info%{ext_info}" || :
 %endif # fedora
 
-%files -f %{name}.lang
+%files
 %doc %dir %{_docdir}/%{name}
 %license %{_docdir}/%{name}/COPYING
 %{_bindir}/msmtp
@@ -189,6 +191,8 @@ rm -f "%{buildroot}%{_infodir}/dir"
 %{_mandir}/man1/msmtp.1%{?ext_man}
 %{_infodir}/msmtp.info%{?ext_info}
 %{_datadir}/vim/*/syntax/msmtp.vim
+
+%files lang -f %{name}.lang
 
 %files doc -f docfiles.lst
 %doc %dir %{_docdir}/%{name}

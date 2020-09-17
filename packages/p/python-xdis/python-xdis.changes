@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:33:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- udpate to 5.0.4:
+  * Add python versions 3.6.12, 3.7.9
+  * extended arg disassembly handling for {LOAD,STORE}_ATTR
+  * Add versions 3.8.5, 3.7.8, and 3.6.11
+  * Clarify changes to 3.8 `ROT_FOUR`
+  * Update 3.9 magics and opcodes
+  * Add Python 3.8.4 as a 3.8 release
+  * pydisasm.py Python 3.3 tolerance
+  * Make pydoc's version reporting show xdis's version
+
+-------------------------------------------------------------------
 Tue Jul 21 12:10:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 5.0.1

@@ -26,7 +26,7 @@
 %define pkg_logdir   %_localstatedir/log/%name
 %define pkg_cachedir %_localstatedir/cache/%name
 Name:           varnish
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
@@ -45,7 +45,7 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  libxslt
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
@@ -102,9 +102,8 @@ export CFLAGS="$CFLAGS -ffloat-store -fexcess-precision=standard"
 %endif
 %configure --disable-static --docdir="%_docdir/%name" \
            --localstatedir="%_localstatedir/cache/" \
-           --disable-silent-rules \
            --enable-developer-warnings
-make %{?_smp_mflags}
+%make_build
 
 %install
 b="%buildroot"
@@ -137,7 +136,7 @@ perl -i -pe 's{^#!/usr/bin/env python}{#!/usr/bin/python}g' \
 	"$b/usr/share/varnish/vmodtool.py" "$b/usr/share/varnish/vsctool.py"
 
 %check
-if ! make %{?_smp_mflags} check; then
+if ! %make_build check; then
 	x="$?"
 	cat bin/varnishtest/test-suite.log
 	exit "$x"

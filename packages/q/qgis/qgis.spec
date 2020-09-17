@@ -18,7 +18,7 @@
 
 %bcond_without grass
 Name:           qgis
-Version:        3.14.0
+Version:        3.14.16
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -246,6 +246,12 @@ popd
 
 %fdupes -s %{buildroot}
 
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
+%post plugin-grass -p /sbin/ldconfig
+%postun plugin-grass -p /sbin/ldconfig
+
 %files
 %{_bindir}/*
 %{_libdir}/libqgis*so*
@@ -300,8 +306,5 @@ popd
 %files sample-data
 %dir %{_datadir}/qgis
 %{_datadir}/qgis/%{sampledir}
-
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
 
 %changelog

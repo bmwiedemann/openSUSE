@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 16 15:37:24 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- for ppc64le put back limit_build to avoid OOM failure and
+  unset memoryperjob that did not solve the OOM failure.
+
+-------------------------------------------------------------------
+Tue Sep 15 12:12:24 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 3.14.16, maintenance release, no release notes, full changelog
+  included in the package
+- fixes build on Tumbleweed, boo#1176554
+
+-------------------------------------------------------------------
+Thu Aug 20 09:04:43 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Tue Jul  7 16:58:27 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - use limit_build for ppc64le to avoid OOM failure on power8-01

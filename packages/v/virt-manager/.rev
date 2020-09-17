@@ -1646,4 +1646,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>833580</requestid>
   </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>5ca5b4d9f3409c58b385da6795b620ee</srcmd5>
+    <version>3.0.0</version>
+    <time>1600347048</time>
+    <user>dimstar_suse</user>
+    <comment>Update virt-manager to version 3.0.0</comment>
+    <requestid>834972</requestid>
+  </revision>
 </revisionlist>

@@ -13,7 +13,7 @@ Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
 ---
  include/ica_api.h  |   2 +-
  src/Makefile.am    |   4 +-
- src/fips.c         | 224 ++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ src/fips.c         | 224 ++++++++++++++++++++++++++++++++++++++++++++-
  src/include/fips.h |   4 +-
  test/fips_test.c   |   4 +
  5 files changed, 232 insertions(+), 6 deletions(-)
@@ -35,16 +35,16 @@ diff --git a/src/Makefile.am b/src/Makefile.am
 index 65f471f..9e4ef52 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -9,7 +9,7 @@
+@@ -9,7 +9,7 @@ lib_LTLIBRARIES = libica.la
  libica_la_CFLAGS = ${AM_CFLAGS} -I${srcdir}/include -I${srcdir}/../include \
- 		   -fvisibility=hidden
+ 		   -fvisibility=hidden -pthread
  libica_la_CCASFLAGS = ${AM_CFLAGS}
 -libica_la_LIBADD = @LIBS@ -lrt -lcrypto
 +libica_la_LIBADD = @LIBS@ -lrt -lcrypto -ldl
  libica_la_LDFLAGS = -Wl,--version-script=${srcdir}/../libica.map \
  		    -version-number ${VERSION}
  libica_la_SOURCES = ica_api.c init.c icastats_shared.c s390_rsa.c \
-@@ -53,7 +53,7 @@
+@@ -53,7 +53,7 @@ internal_tests_ec_internal_test_CFLAGS = ${AM_CFLAGS} -I${srcdir}/include \
  					 -DICA_INTERNAL_TEST \
  					 -DICA_INTERNAL_TEST_EC
  internal_tests_ec_internal_test_CCASFLAGS = ${AM_CFLAGS}
@@ -133,7 +133,7 @@ index d09a553..bab00db 100644
 +	char *path;
 +	const char *fn;
 +
-+	path = calloc(1,sizeof(HMAC_PREFIX) + sizeof(HMAC_SUFFIX) + strlen(origpath) + 1);
++	path = malloc(sizeof(HMAC_PREFIX) + sizeof(HMAC_SUFFIX) + strlen(origpath) + 1);
 +	if (path == NULL)
 +		return NULL;
 +
@@ -350,5 +350,5 @@ index 06563e3..0f1940d 100644
  
  	printf("OpenSSL version is '%s'.\n", OPENSSL_VERSION_TEXT);
 -- 
-2.16.4
+2.26.2
 

@@ -1,0 +1,60 @@
+From 7fc80ccccaa6f7b98af8bcd899a97d561777ff94 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Fri, 10 Jun 2016 15:19:57 +0200
+Subject: [PATCH 09/12] pid1: handle console specificities/weirdness for s390
+ arch
+
+The 3270 console on S/390 can do color but not the 3215 console.
+
+Partial forward port of
+0001-On_s390_con3270_disable_ANSI_colour_esc.patch from SLE12-SP1. A
+bunch of the previous code has been dropped since some changes
+imported from upsteam made them uneeded.
+
+The remaining bits are probably hackish but at least they are now
+minimal.
+
+It was an attempt to address bnc#860937. And yes turning the console
+color mode off by passing $TERM=dumb via the kernel command line would
+have been much more easier and enough.
+
+This is actually implemented by recent systemd. There's also another
+command line option: systemd.log_color=off.
+
+See also a short discussion which happened on @systemd-maintainers
+whose $subject is "[PATCH] support conmode setting on command line".
+
+[ fbui: fixes bsc#860937 ]
+---
+ src/basic/terminal-util.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/src/basic/terminal-util.c b/src/basic/terminal-util.c
+index 6cacde90ba..1a03902acc 100644
+--- a/src/basic/terminal-util.c
++++ b/src/basic/terminal-util.c
+@@ -780,7 +780,20 @@ bool tty_is_vc_resolve(const char *tty) {
+ }
+ 
+ const char *default_term_for_tty(const char *tty) {
+-        return tty && tty_is_vc_resolve(tty) ? "linux" : "vt220";
++        if (tty && tty_is_vc_resolve(tty))
++                return "linux";
++
++#if defined (__s390__) || defined (__s390x__)
++        if (tty && tty_is_console(tty)) {
++                _cleanup_free_ char *mode = NULL;
++
++                /* Simply return "dumb" in case of OOM. */
++                (void) proc_cmdline_get_key("conmode", 0, &mode);
++                (void) proc_cmdline_value_missing("conmode", mode);
++                return streq_ptr(mode, "3270") ? "ibm327x" : "dumb";
++        }
++#endif
++        return "vt220";
+ }
+ 
+ int fd_columns(int fd) {
+-- 
+2.26.2
+

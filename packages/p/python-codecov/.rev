@@ -53,4 +53,15 @@
 - Drop LICENSE file, included directly in the tarball</comment>
     <requestid>819627</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3ab454d029415fec91d7866bdf002b97</srcmd5>
+    <version>2.1.9</version>
+    <time>1600347150</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.9:
+  * Remove token restriction as it is changed server-side
+  * support for CODECOV_FLAGS
+  * ability to specify number of upload retries</comment>
+    <requestid>835104</requestid>
+  </revision>
 </revisionlist>

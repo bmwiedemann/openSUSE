@@ -563,4 +563,12 @@
   * Support for Linux 5.6 [boo#1164758]</comment>
     <requestid>778951</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>db7d2c1267b30b3537e42f217691a37b</srcmd5>
+    <version>3.11</version>
+    <time>1600347628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.11</comment>
+    <requestid>834974</requestid>
+  </revision>
 </revisionlist>

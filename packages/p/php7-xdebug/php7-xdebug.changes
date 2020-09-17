@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:09:11 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 2.9.7
+  * Fixed issue #1839: Add keepalive options to debugging socket
+- Updated to Xdebug 2.9.6
+  * Fixed issue #1782: Cookie "XDEBUG_SESSION" will be soon rejected because it has
+    the “sameSite” attribute set to none
+  * Fixed issue #1787: Branch coverage data does not always follow the lines/functions
+    format
+  * Fixed issue #1790: Segfault in var_dump() or while debugging with protobuf extension
+
+-------------------------------------------------------------------
 Wed May  6 08:02:00 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to Xdebug 2.9.5

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:34:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.5.0
+  * `PRIV_TOP` is now thread-safe to support parallel ESI
+    implementations.
+  * varnishstat's JSON output format (-j option) has been changed.
+  * Behavior for 304-type responses was changed not to update the
+    Content-Encoding response header of the stored object.
+
+-------------------------------------------------------------------
 Tue Jun 23 07:35:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable LTO, this randomly fails during link stage.

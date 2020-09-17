@@ -17,7 +17,7 @@
 
 
 Name:           utfcpp
-Version:        3.1
+Version:        3.1.1
 Release:        0
 Summary:        A library for handling UTF-8 encoded strings
 License:        BSL-1.0
@@ -51,6 +51,8 @@ A C++ library for handling UTF-8 encoded strings.
 make -C build test
 
 %files devel
+%license LICENSE
+%doc README.md
 %dir %{_includedir}/utf8cpp
 %{_includedir}/utf8cpp/utf8.h
 %dir %{_includedir}/utf8cpp/utf8

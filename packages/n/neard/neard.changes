@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:04:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.16:
+  * Added NDEF multi-record write support.
+  * Added ST Type5 tags support.
+  * Added nciattach tool for NCI UART configuration.
+  * Added support for NFC_CMD_ACTIVATE_TARGET.
+  * Added NDEF MIME payload exposure.
+  * Fixed Mifare Ultralight C issue.
+  * Fixed ACE starting logic.
+  * Fixed an NDEF segmentation fault.
+  * Fixed nfctool -d command line option handling.
+  * Fixed several secure elements related bugs.
+
+-------------------------------------------------------------------
 Mon Feb  3 15:08:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel: allow

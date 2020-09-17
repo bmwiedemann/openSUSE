@@ -692,4 +692,12 @@ Now with build cycle removed.</comment>
   * Add 12 sub zones to .br [20200714 update] (#1068)</comment>
     <requestid>826653</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2074f5cee993bd0063b28cc6850147c0</srcmd5>
+    <version>20200909</version>
+    <time>1600346263</time>
+    <user>dimstar_suse</user>
+    <comment>publicsuffix 20200909 (forwarded request 833904 from AndreasStieger)</comment>
+    <requestid>833905</requestid>
+  </revision>
 </revisionlist>

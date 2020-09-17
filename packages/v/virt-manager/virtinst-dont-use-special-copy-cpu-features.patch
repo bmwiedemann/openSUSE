@@ -12,11 +12,11 @@ It should be noted that selecting "Customize configuration before install"
 and "CPUs" -> "Copy host CPU definition" also inserts 'host-model' so
 this change mirrors what is already done there.
 
-Index: virt-manager-2.2.0/virtinst/domain/cpu.py
+Index: virt-manager-3.0.0/virtinst/domain/cpu.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/domain/cpu.py
-+++ virt-manager-2.2.0/virtinst/domain/cpu.py
-@@ -89,12 +89,16 @@ class DomainCpu(XMLBuilder):
+--- virt-manager-3.0.0.orig/virtinst/domain/cpu.py
++++ virt-manager-3.0.0/virtinst/domain/cpu.py
+@@ -122,12 +122,16 @@ class DomainCpu(XMLBuilder):
                  val = self.SPECIAL_MODE_HOST_MODEL
  
          if (val == self.SPECIAL_MODE_HOST_MODEL or

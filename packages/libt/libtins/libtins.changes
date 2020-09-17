@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  7 19:33:54 UTC 2020 - Ludger Dreier <ldreier@vodafonemail.de>
+
+- Update to version 4.2
+- build-patch adapted
+  * add    libtins-4.2_build.patch: for new version
+  * remove libtins-3.5_build.patch: now outdated
+- use source download service
+
+-------------------------------------------------------------------
 Fri Jun  9 12:23:25 UTC 2017 - idonmez@suse.com
 
 - Devel package must depend on libpcap-devel

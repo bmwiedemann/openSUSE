@@ -1,0 +1,160 @@
+From 23a647aab7b44442b63345bdf70da0696b7fcd5a Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Fri, 21 Aug 2020 15:29:49 +0200
+Subject: [PATCH] FIPS: add SHA3 KATs to fips_powerup_tests
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+---
+ src/fips.c             | 26 ++++++++++++++++++-
+ src/include/test_vec.h | 13 ++++++++++
+ src/test_vec.c         | 59 ++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 97 insertions(+), 1 deletion(-)
+
+diff --git a/src/fips.c b/src/fips.c
+index 2bf11f5..13a550b 100644
+--- a/src/fips.c
++++ b/src/fips.c
+@@ -95,6 +95,29 @@ SHA_KAT(384, 512);
+ SHA_KAT(512, 512);
+ #undef SHA_KAT
+ 
++#define SHA3_KAT(_sha_, _ctx_)						\
++static int sha3_##_sha_##_kat(void) {					\
++	sha3_##_ctx_##_context_t ctx;					\
++	size_t i;							\
++	unsigned char out[SHA3_##_sha_##_HASH_LENGTH];			\
++	for (i = 0; i < SHA3_##_sha_##_TV_LEN; i++) {			\
++		if (ica_sha3_##_sha_(SHA_MSG_PART_ONLY,			\
++		    SHA3_##_sha_##_TV[i].msg_len, SHA3_##_sha_##_TV[i].msg,	\
++		    &ctx, out) || memcmp(SHA3_##_sha_##_TV[i].md, out,	\
++		    SHA3_##_sha_##_HASH_LENGTH)) {			\
++			syslog(LOG_ERR, "Libica SHA-3%d test failed.",	\
++			    _sha_);					\
++			return 1;					\
++		}							\
++	}								\
++	return 0;							\
++}
++SHA3_KAT(224, 224);
++SHA3_KAT(256, 256);
++SHA3_KAT(384, 384);
++SHA3_KAT(512, 512);
++#undef SHA3_KAT
++
+ void
+ fips_init(void)
+ {
+@@ -328,7 +351,8 @@ fips_powerup_tests(void)
+ 	/* Cryptographic algorithm test. */
+ 	if (ica_drbg_health_test(ica_drbg_generate, 256, true, ICA_DRBG_SHA512)
+ 	    || sha1_kat() || sha224_kat() || sha256_kat() || sha384_kat()
+-	    || sha512_kat() || des3_ecb_kat() || des3_cbc_kat()
++	    || sha512_kat() || sha3_224_kat() || sha3_256_kat() || sha3_384_kat()
++	    || sha3_512_kat() || des3_ecb_kat() || des3_cbc_kat()
+ 	    || des3_cbc_cs_kat() || des3_cfb_kat() || des3_ofb_kat()
+ 	    || des3_ctr_kat() || des3_cmac_kat() || aes_ecb_kat()
+ 	    || aes_cbc_kat() || aes_cbc_cs_kat() || aes_cfb_kat()
+diff --git a/src/include/test_vec.h b/src/include/test_vec.h
+index bba6ea9..692afbc 100644
+--- a/src/include/test_vec.h
++++ b/src/include/test_vec.h
+@@ -366,6 +366,19 @@ extern const size_t SHA384_TV_LEN;
+ 
+ extern const struct sha_tv SHA512_TV[];
+ extern const size_t SHA512_TV_LEN;
++
++extern const struct sha_tv SHA3_224_TV[];
++extern const size_t SHA3_224_TV_LEN;
++
++extern const struct sha_tv SHA3_256_TV[];
++extern const size_t SHA3_256_TV_LEN;
++
++extern const struct sha_tv SHA3_384_TV[];
++extern const size_t SHA3_384_TV_LEN;
++
++extern const struct sha_tv SHA3_512_TV[];
++extern const size_t SHA3_512_TV_LEN;
++
+ #endif /* ICA_FIPS */
+ 
+ #ifdef ICA_INTERNAL_TEST_EC
+diff --git a/src/test_vec.c b/src/test_vec.c
+index ab260dc..f282dbb 100644
+--- a/src/test_vec.c
++++ b/src/test_vec.c
+@@ -2449,6 +2449,61 @@ const struct sha_tv SHA512_TV[] = {
+ }
+ },
+ };
++
++const struct sha_tv SHA3_224_TV[] = {
++{
++.msg_len = 3,
++.msg = (unsigned char []){
++0x61, 0x62, 0x63,
++},
++.md = (unsigned char []){
++0xe6,0x42,0x82,0x4c,0x3f,0x8c,0xf2,0x4a,0xd0,0x92,0x34,0xee,0x7d,0x3c,0x76,0x6f,
++0xc9,0xa3,0xa5,0x16,0x8d,0x0c,0x94,0xad,0x73,0xb4,0x6f,0xdf,
++}
++},
++};
++
++const struct sha_tv SHA3_256_TV[] = {
++{
++.msg_len = 3,
++.msg = (unsigned char []){
++0x61, 0x62, 0x63,
++},
++.md = (unsigned char []){
++0x3A,0x98,0x5D,0xA7,0x4F,0xE2,0x25,0xB2,0x04,0x5C,0x17,0x2D,0x6B,0xD3,0x90,0xBD,
++0x85,0x5F,0x08,0x6E,0x3E,0x9D,0x52,0x5B,0x46,0xBF,0xE2,0x45,0x11,0x43,0x15,0x32,
++}
++},
++};
++
++const struct sha_tv SHA3_384_TV[] = {
++{
++.msg_len = 3,
++.msg = (unsigned char []){
++0x61, 0x62, 0x63,
++},
++.md = (unsigned char []){
++0xEC,0x01,0x49,0x82,0x88,0x51,0x6F,0xC9,0x26,0x45,0x9F,0x58,0xE2,0xC6,0xAD,0x8D,
++0xF9,0xB4,0x73,0xCB,0x0F,0xC0,0x8C,0x25,0x96,0xDA,0x7C,0xF0,0xE4,0x9B,0xE4,0xB2,
++0x98,0xD8,0x8C,0xEA,0x92,0x7A,0xC7,0xF5,0x39,0xF1,0xED,0xF2,0x28,0x37,0x6D,0x25,
++}
++},
++};
++
++const struct sha_tv SHA3_512_TV[] = {
++{
++.msg_len = 3,
++.msg = (unsigned char []){
++0x61, 0x62, 0x63,
++},
++.md = (unsigned char []){
++0xB7,0x51,0x85,0x0B,0x1A,0x57,0x16,0x8A,0x56,0x93,0xCD,0x92,0x4B,0x6B,0x09,0x6E,
++0x08,0xF6,0x21,0x82,0x74,0x44,0xF7,0x0D,0x88,0x4F,0x5D,0x02,0x40,0xD2,0x71,0x2E,
++0x10,0xE1,0x16,0xE9,0x19,0x2A,0xF3,0xC9,0x1A,0x7E,0xC5,0x76,0x47,0xE3,0x93,0x40,
++0x57,0x34,0x0B,0x4C,0xF4,0x08,0xD5,0xA5,0x65,0x92,0xF8,0x27,0x4E,0xEC,0x53,0xF0,
++}
++},
++};
+ #endif /* ICA_FIPS */
+ 
+ #ifdef ICA_INTERNAL_TEST_EC
+@@ -5759,6 +5814,10 @@ const size_t SHA224_TV_LEN = sizeof(SHA224_TV) / sizeof(SHA224_TV[0]);
+ const size_t SHA256_TV_LEN = sizeof(SHA256_TV) / sizeof(SHA256_TV[0]);
+ const size_t SHA384_TV_LEN = sizeof(SHA384_TV) / sizeof(SHA384_TV[0]);
+ const size_t SHA512_TV_LEN = sizeof(SHA512_TV) / sizeof(SHA512_TV[0]);
++const size_t SHA3_224_TV_LEN = sizeof(SHA3_224_TV) / sizeof(SHA3_224_TV[0]);
++const size_t SHA3_256_TV_LEN = sizeof(SHA3_256_TV) / sizeof(SHA3_256_TV[0]);
++const size_t SHA3_384_TV_LEN = sizeof(SHA3_384_TV) / sizeof(SHA3_384_TV[0]);
++const size_t SHA3_512_TV_LEN = sizeof(SHA3_512_TV) / sizeof(SHA3_512_TV[0]);
+ #endif /* ICA_FIPS */
+ #ifdef ICA_INTERNAL_TEST_EC
+ const size_t ECDSA_TV_LEN = sizeof(ECDSA_TV) / sizeof(ECDSA_TV[0]);
+-- 
+2.26.2
+

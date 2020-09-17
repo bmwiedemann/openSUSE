@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:15:16 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.1
+  * vty: Allow 64 bit values in numeric ranges if system supports it
+  * vty: Introduce support to set cpu-affinity and scheduler policy
+
+-------------------------------------------------------------------
 Sat Aug  1 14:03:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.2

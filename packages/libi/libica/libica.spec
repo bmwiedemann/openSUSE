@@ -41,8 +41,16 @@ Patch1:         libica-sles15sp2-x25519-x448-fix-handling-of-non-canonical-value
 Patch2:         libica-sles15sp2-Fix-DES-and-TDES-key-length.patch
 Patch3:         libica-sles15sp2-FIPS-provide-output-iv-as-required-by-FIPS-tests.patch
 Patch4:         libica-sles15sp2-icainfo-bugfix-for-RSA-and-EC-related-info-for-softw.patch
-Patch5:         libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
-Patch6:         libica-sles15sp2-FIPS-hmac-key.patch
+Patch5:         libica-sles15sp2-Build-with-pthread-flag.patch
+Patch6:         libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
+Patch7:         libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-addon.patch
+Patch8:         libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-rename-variables.patch
+Patch9:         libica-sles15sp2-Zeroize-local-variables.patch
+Patch10:        libica-sles15sp2-FIPS-add-SHA3-KATs-to-fips_powerup_tests.patch
+Patch11:        libica-sles15sp2-FIPS-skip-SHA3-tests-if-running-on-hardware-without-.patch
+Patch12:        libica-sles15sp2-FIPS-use-full-library-version-for-hmac-filename.patch
+Patch13:        libica-sles15sp2-FIPS-fix-inconsistent-error-handling.patch
+Patch99:        libica-sles15sp2-FIPS-hmac-key.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -125,7 +133,9 @@ autoreconf --force --install
 %make_build clean
 %make_build
 
-%{expand:%%global __os_install_post {%__os_install_post fipshmac %{buildroot}/%{_libdir}/*.so.?.*  }}
+%define major %(echo %{version} | sed -e 's/[.].*//')
+
+%{expand:%%global __os_install_post {%__os_install_post fipshmac %{buildroot}/%{_libdir}/*.so.%{major} }}
 
 %install
 %make_install
@@ -143,6 +153,9 @@ rm -f %{buildroot}%{_datadir}/doc/libica/*
 rmdir %{buildroot}%{_datadir}/doc/libica
 
 %check
+echo Tests should fail without a hash file
+! %make_build check
+fipshmac src/.libs/libica.so.%{major}
 %make_build check
 
 %pre tools
@@ -163,8 +176,9 @@ rmdir %{buildroot}%{_datadir}/doc/libica
 
 %files -n libica3
 %defattr(-,root,root)
-%{_libdir}/libica.so.3*
-%{_libdir}/.libica.so.3*hmac
+%{_libdir}/libica.so.%{version}
+%{_libdir}/libica.so.%{major}
+%{_libdir}/.libica.so.%{major}.hmac
 
 %files tools
 %license LICENSE

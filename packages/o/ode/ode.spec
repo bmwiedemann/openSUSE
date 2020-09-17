@@ -19,7 +19,7 @@
 %define so_maj  8
 %define lname   libode%{so_maj}
 Name:           ode
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        Open Dynamics Engine Library
 License:        BSD-3-Clause OR LGPL-2.1-or-later

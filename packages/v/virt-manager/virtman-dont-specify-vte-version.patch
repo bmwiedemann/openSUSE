@@ -2,10 +2,10 @@ Creates a problem for gobject-introspection identifying what
 version of vte is really allowed. Vte 2.91 is installed on the
 host but the RPM is built requiring 2.90.
 
-Index: virt-manager-2.2.0/virtManager/details/serialcon.py
+Index: virt-manager-3.0.0/virtManager/details/serialcon.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/details/serialcon.py
-+++ virt-manager-2.2.0/virtManager/details/serialcon.py
+--- virt-manager-3.0.0.orig/virtManager/details/serialcon.py
++++ virt-manager-3.0.0/virtManager/details/serialcon.py
 @@ -12,12 +12,12 @@ from gi.repository import Gtk
  from virtinst import log
  
@@ -13,13 +13,13 @@ Index: virt-manager-2.2.0/virtManager/details/serialcon.py
 -try:
 -    gi.require_version("Vte", "2.91")
 -    log.debug("Using VTE API 2.91")
--except ValueError:
+-except ValueError:  # pragma: no cover
 -    gi.require_version("Vte", "2.90")
 -    log.debug("Using VTE API 2.90")
 +#try:
 +#    gi.require_version("Vte", "2.91")
 +#    log.debug("Using VTE API 2.91")
-+#except ValueError:
++#except ValueError:  # pragma: no cover
 +#    gi.require_version("Vte", "2.90")
 +#    log.debug("Using VTE API 2.90")
  from gi.repository import Vte

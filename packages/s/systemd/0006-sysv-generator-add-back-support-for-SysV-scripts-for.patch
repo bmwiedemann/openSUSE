@@ -1,0 +1,123 @@
+From f9521480d5dc5af747fecc9adc4c617e473e5494 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Thu, 26 May 2016 08:59:41 +0200
+Subject: [PATCH 06/12] sysv-generator: add (back) support for SysV scripts for
+ the early boot
+
+For the record, the upstream support was removed by commit
+3cdebc217c42c8529086f2965319b6a48eaaeabe.
+
+The sysv-generator has some weirdos: for example a service at the rc0
+runlevel won't be started during shutdown since it will get both
+"WantedBy=poweroff.target" and "Conflicts=shutdown.target".
+
+Anyways what's the current patch implements the following:
+
+ - a symlink /etc/init.d/boot.d/S??boot.foo will add
+   "WantedBy/Before=sysinit.target" constraints and make sure that the
+   default dependencies added by systemd are turned off.
+
+ - a symlink /etc/init.d/boot.d/K??boot.foo will add
+   "Conflicts/Before=shutdown.target" so "foo" service will be stopped
+   like any other regular services. If this symlink is not installed
+   however, "foo" will be stopped lately during the systemd killing
+   spree.
+
+This is a forward-port of commit 29db8537e1ca10796797d9854d1 in SP1.
+
+[Since v232]
+
+Support for S* symlinks in runlevel 0 or 6 has been completely and silently
+removed by 788d2b088b13a2444b9eb2ea82c0cc57d9f0980f. Since it was already
+broken as pointed out above, this probably wasn't really used and therefore
+no one will really care. So let's drop it too.
+
+However this has the side effect to make the support of early sysv scripts more
+difficult. To make things easy, the support of K* symlinks in boot.d/ has been
+removed too: this is probably not used (anymore) (at least intentionally).
+
+The consequence is that early sysv services are stopped during shutdown at
+the same time as 'normal' services.
+---
+ src/sysv-generator/sysv-generator.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/src/sysv-generator/sysv-generator.c b/src/sysv-generator/sysv-generator.c
+index a2c72d1009..1c01008967 100644
+--- a/src/sysv-generator/sysv-generator.c
++++ b/src/sysv-generator/sysv-generator.c
+@@ -31,6 +31,9 @@ static const struct {
+         const char *path;
+         const char *target;
+ } rcnd_table[] = {
++        /* SUSE style boot.d */
++        { "boot.d", SPECIAL_SYSINIT_TARGET },
++
+         /* Standard SysV runlevels for start-up */
+         { "rc1.d",  SPECIAL_RESCUE_TARGET     },
+         { "rc2.d",  SPECIAL_MULTI_USER_TARGET },
+@@ -57,6 +60,7 @@ typedef struct SysvStub {
+         bool has_lsb;
+         bool reload;
+         bool loaded;
++        bool early;
+ } SysvStub;
+ 
+ static void free_sysvstub(SysvStub *s) {
+@@ -147,6 +151,12 @@ static int generate_unit_file(SysvStub *s) {
+                 fprintf(f, "Description=%s\n", t);
+         }
+ 
++        if (s->early) {
++                fprintf(f, "DefaultDependencies=no\n");
++                fprintf(f, "Conflicts=%s\n", SPECIAL_SHUTDOWN_TARGET);
++                fprintf(f, "Before=%s\n", SPECIAL_SHUTDOWN_TARGET);
++        }
++
+         STRV_FOREACH(p, s->before)
+                 fprintf(f, "Before=%s\n", *p);
+         STRV_FOREACH(p, s->after)
+@@ -213,6 +223,10 @@ static char *sysv_translate_name(const char *name) {
+         _cleanup_free_ char *c = NULL;
+         char *res;
+ 
++        if (startswith(name, "boot."))
++                /* Drop SuSE-style boot. prefix */
++                name += 5;
++
+         c = strdup(name);
+         if (!c)
+                 return NULL;
+@@ -289,6 +303,11 @@ static int sysv_translate_facility(SysvStub *s, unsigned line, const char *name,
+                 return 1;
+         }
+ 
++        /* Strip "boot." prefix from file name for comparison (Suse specific) */
++        e = startswith(filename, "boot.");
++        if (e)
++                filename += 5;
++
+         /* Strip ".sh" suffix from file name for comparison */
+         filename_no_sh = strdupa(filename);
+         e = endswith(filename_no_sh, ".sh");
+@@ -676,6 +695,9 @@ static int fix_order(SysvStub *s, Hashmap *all_services) {
+                 if (other->sysv_start_priority < 0)
+                         continue;
+ 
++                if (s->early != other->early)
++                        continue;
++
+                 /* If both units have modern headers we don't care
+                  * about the priorities */
+                 if (s->has_lsb && other->has_lsb)
+@@ -800,6 +822,7 @@ static int enumerate_sysv(const LookupPaths *lp, Hashmap *all_services) {
+                                 .sysv_start_priority = -1,
+                                 .name = TAKE_PTR(name),
+                                 .path = TAKE_PTR(fpath),
++                                .early = !!startswith(de->d_name, "boot."),
+                         };
+ 
+                         r = hashmap_put(all_services, service->name, service);
+-- 
+2.26.2
+

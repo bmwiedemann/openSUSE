@@ -1,7 +1,7 @@
 #
 # spec file for package bluefish
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bluefish
-Version:        2.2.10
+Version:        2.2.11
 Release:        0
 Summary:        A feature-Rich HTML Editor
-License:        GPL-3.0+
-Group:          Productivity/Publishing/HTML/Editors
-Url:            http://bluefish.openoffice.nl/
+License:        GPL-3.0-or-later
+URL:            http://bluefish.openoffice.nl/
 Source0:        http://www.bennewitz.com/bluefish/stable/source/%{name}-%{version}.tar.bz2
 Source1:        http://www.bennewitz.com/bluefish/stable/source/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
@@ -57,7 +56,6 @@ Recommends:     libxml2-tools
 Recommends:     make
 Provides:       bluefish-unstable = %{version}-%{release}
 Obsoletes:      bluefish-unstable < 2.2.3
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Bluefish is a HTML editor designed for the experienced Web designer
@@ -66,8 +64,7 @@ Bluefish is a HTML editor designed for the experienced Web designer
 It is based on Gtk+.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # avoid aliasing warnings
@@ -76,7 +73,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
             --disable-update-databases \
             --disable-xml-catalog-update \
             --enable-python
-make %{?_smp_mflags} bflangsampledir="%{_docdir}/%{name}"
+%make_build bflangsampledir="%{_docdir}/%{name}"
 
 %install
 %make_install \
@@ -98,8 +95,6 @@ make %{?_smp_mflags} bflangsampledir="%{_docdir}/%{name}"
 cat bluefish*.lang >> all.lang
 
 %post
-%mime_database_post
-%desktop_database_post
 if [ -x %{_bindir}/xmlcatalog ]; then
 	%{_bindir}/xmlcatalog --noout --add \
          'delegateURI' \
@@ -115,15 +110,11 @@ if [ -x %{_bindir}/xmlcatalog ]; then
          '%{_sysconfdir}/xml/catalog' || :
 fi
 
-%postun
-%mime_database_postun
-%desktop_database_postun
-
 %files -f all.lang
-%defattr(-,root,root)
-%doc AUTHORS COPYING README TODO
+%license COPYING
+%doc AUTHORS README TODO
 %{_docdir}/%{name}
-%{_mandir}/man1/bluefish.1*
+%{_mandir}/man1/bluefish.1%{?ext_man}
 %dir %{_datadir}/xml/bluefish
 %dir %{_datadir}/xml/bluefish/2.0
 %{_libdir}/%{name}

@@ -1,7 +1,7 @@
 #
 # spec file for package openspecfun
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           openspecfun
-Version:        0.4
 %define so_ver  1
 %define libname lib%{name}%{so_ver}
+Name:           openspecfun
+Version:        0.5.3
 Release:        0
 Summary:        A collection of special mathematical functions
 License:        MIT
 Group:          System/Libraries
-Url:            https://github.com/JuliaLang/openspecfun
+URL:            https://github.com/JuliaLang/openspecfun
 Source0:        https://github.com/JuliaLang/openspecfun/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-fortran
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Openspecfun provides AMOS and Faddeeva. AMOS (from Netlib) is a portable package
@@ -72,7 +71,7 @@ related functions as well.
 %setup -q
 
 %build
-make %{?_smp_mflags} \
+%make_build \
      FFLAGS="%{optflags}" \
      CFLAGS="%{optflags}"
 
@@ -85,16 +84,14 @@ make install DESTDIR=%{buildroot} \
 rm %{buildroot}/%{_libdir}/libopenspecfun.a
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/libopenspecfun.so.%{so_ver}*
 
 %files devel
-%defattr(-,root,root)
-%doc LICENSE.md README.md
+%license LICENSE.md
+%doc README.md
 %{_libdir}/libopenspecfun.so
 %{_includedir}/Faddeeva.h
 

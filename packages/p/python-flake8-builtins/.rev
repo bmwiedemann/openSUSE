@@ -28,4 +28,13 @@
   * Add DictComp, SetComp, and GeneratorExpr support. [sobolevn]</comment>
     <requestid>794562</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1856724855158c7b7ad0ba06202dc4e</srcmd5>
+    <version>1.5.3</version>
+    <time>1600347939</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.3:
+  - Change messages to have shorter text</comment>
+    <requestid>835163</requestid>
+  </revision>
 </revisionlist>

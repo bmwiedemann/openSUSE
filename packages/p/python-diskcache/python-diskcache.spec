@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-diskcache
-Version:        4.1.0
+Version:        5.0.3
 Release:        0
 Summary:        Disk and file backed cache
 License:        Apache-2.0

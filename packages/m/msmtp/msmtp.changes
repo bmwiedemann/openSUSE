@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:13:34 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.12:
+  * msmtpd now supports session reuse and improves standards
+    compliance
+  * Automatic account matching now supports subaddresses. For
+    example, user+detail@example.com will match account
+    user@example.com.
+- put the translations into a separate sub-package
+
+-------------------------------------------------------------------
 Thu Jun  4 18:18:28 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.11:

@@ -1,16 +1,16 @@
 References: bnc#907958
 Sanity check for those who forget '-X' on ssh and try to start virt-manager
-Index: virt-manager-2.2.0/virt-manager
+Index: virt-manager-3.0.0/virtManager/virtmanager.py
 ===================================================================
---- virt-manager-2.2.0.orig/virt-manager
-+++ virt-manager-2.2.0/virt-manager
-@@ -66,8 +66,11 @@ def _import_gtk(leftovers):
+--- virt-manager-3.0.0.orig/virtManager/virtmanager.py
++++ virt-manager-3.0.0/virtManager/virtmanager.py
+@@ -67,8 +67,11 @@ def _import_gtk(leftovers):
              print("gtk3 3.22.0 or later is required.")
              sys.exit(1)
  
 -        # This will error if Gtk wasn't correctly initialized
 -        Gtk.init()
-+        if os.environ.has_key('DISPLAY') and os.environ['DISPLAY']:
++        if 'DISPLAY' in os.environ and os.environ['DISPLAY']:
 +            # This will error if Gtk wasn't correctly initialized
 +            Gtk.Window()
 +        else:

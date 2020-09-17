@@ -18,11 +18,11 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.4.1366+0
+%define version_unconverted 1.4.1473+0
 
 Name:           psi+
 URL:            https://github.com/psi-plus
-Version:        1.4.1366+0
+Version:        1.4.1473+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        GPL-2.0-or-later AND Apache-2.0
@@ -42,6 +42,7 @@ BuildRequires:  libsignal-protocol-c-devel
 BuildRequires:  libtidy-devel
 BuildRequires:  ninja
 BuildRequires:  openssl-devel
+BuildRequires:  tar
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -496,6 +497,7 @@ dos2unix ChangeLog.Psi+.txt
 %dir %{_datadir}/icons/hicolor/*
 %dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/psi-plus.png
+%{_datadir}/metainfo/psi-plus.appdata.xml
 %{_datadir}/pixmaps/psi-plus.png
 %dir %{_datadir}/psi-plus/
 %{_datadir}/psi-plus/certs
@@ -515,7 +517,6 @@ dos2unix ChangeLog.Psi+.txt
 %{iconspath}/roster/stellar-1.jisp
 %{iconspath}/roster/README
 %{_datadir}/psi-plus/client_icons.txt
-#%%{_datadir}/psi-plus/skins
 %{_datadir}/psi-plus/sound
 
 %files plugins-devel

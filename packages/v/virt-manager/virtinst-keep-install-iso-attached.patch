@@ -2,11 +2,11 @@ Older SLE guests have a two stage installation that need the ISO.
 Newer SLE PV guests hang when a cdrom device is attached without
 an ISO file.
 
-Index: virt-manager-2.2.0/virtinst/install/installer.py
+Index: virt-manager-3.0.0/virtinst/install/installer.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/install/installer.py
-+++ virt-manager-2.2.0/virtinst/install/installer.py
-@@ -111,7 +111,8 @@ class Installer(object):
+--- virt-manager-3.0.0.orig/virtinst/install/installer.py
++++ virt-manager-3.0.0/virtinst/install/installer.py
+@@ -166,7 +166,8 @@ class Installer(object):
      def _remove_install_cdrom_media(self, guest):
          if not self._install_cdrom_device_added:
              return

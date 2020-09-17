@@ -2,11 +2,11 @@ Reference: bnc#863821
 grub.xen is required to boot PV VMs that use the BTRFS filesystem.
 This patch forces the use of grub.xen (instead of using pygrub) for
 suse distros SLE12GA, openSUSE 13.2, and newer.
-Index: virt-manager-2.2.1/virtinst/install/installer.py
+Index: virt-manager-3.0.0/virtinst/install/installer.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/install/installer.py
-+++ virt-manager-2.2.1/virtinst/install/installer.py
-@@ -167,7 +167,8 @@ class Installer(object):
+--- virt-manager-3.0.0.orig/virtinst/install/installer.py
++++ virt-manager-3.0.0/virtinst/install/installer.py
+@@ -218,7 +218,8 @@ class Installer(object):
  
      def _alter_treemedia_bootconfig(self, guest):
          if not self._treemedia:
@@ -16,7 +16,7 @@ Index: virt-manager-2.2.1/virtinst/install/installer.py
  
          kernel, initrd, kernel_args = self._treemedia_bootconfig
          if kernel:
-@@ -436,6 +437,20 @@ class Installer(object):
+@@ -584,6 +585,20 @@ class Installer(object):
          install_xml = None
          if self.has_install_phase():
              install_xml = self._get_install_xml(guest, meter)
@@ -34,6 +34,6 @@ Index: virt-manager-2.2.1/virtinst/install/installer.py
 +                on_reboot_value = guest.on_reboot
 +                self._alter_bootconfig(guest)
 +                guest.on_reboot = on_reboot_value
-         final_xml = guest.get_xml()
+         final_xml = self._pre_reinstall_xml or guest.get_xml()
  
          log.debug("Generated install XML: %s",

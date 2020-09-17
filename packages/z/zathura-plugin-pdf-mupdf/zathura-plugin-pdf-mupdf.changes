@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:34:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the runtime requirements
+
+-------------------------------------------------------------------
+Sat Sep 12 17:31:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.3.6. No changelog.
+- Update requirements following the README instructions.
+- Don't use variables in the URL tag. They are not expanded
+  when running `osc updatepacmetafromspec`.
+
+-------------------------------------------------------------------
 Tue May 19 16:48:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fix dep on libjpeg 

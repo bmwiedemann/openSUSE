@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:50:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.9:
+  * Remove token restriction as it is changed server-side
+  * support for CODECOV_FLAGS
+  * ability to specify number of upload retries
+
+-------------------------------------------------------------------
 Thu Jul  9 04:47:48 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.1.7:

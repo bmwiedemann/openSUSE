@@ -1,19 +1,19 @@
 Enhancement to correctly detect Open Enterprise Server media is
 selected as the installation source.
-Index: virt-manager-2.2.1/virtinst/install/urldetect.py
+Index: virt-manager-3.0.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/install/urldetect.py
-+++ virt-manager-2.2.1/virtinst/install/urldetect.py
-@@ -553,7 +553,7 @@ class _SuseDistro(_RHELDistro):
-         if int(version) < 10:
-             return self._variant_prefix + "9"
+--- virt-manager-3.0.0.orig/virtinst/install/urldetect.py
++++ virt-manager-3.0.0/virtinst/install/urldetect.py
+@@ -563,7 +563,7 @@ class _SuseDistro(_RHELDistro):
+ 
+         version = distro_version.split('.', 1)[0].strip()
  
 -        if str(self._variant_prefix).startswith(("sles", "sled")):
 +        if str(self._variant_prefix).startswith(("sles", "sled", "oes")):
              sp_version = ""
              if len(distro_version.split('.', 1)) == 2:
                  sp_version = 'sp' + distro_version.split('.', 1)[1].strip()
-@@ -622,6 +622,14 @@ class _OpensuseDistro(_SuseDistro):
+@@ -632,6 +632,14 @@ class _OpensuseDistro(_SuseDistro):
      famregex = ".*openSUSE.*"
  
  
@@ -28,7 +28,7 @@ Index: virt-manager-2.2.1/virtinst/install/urldetect.py
  class _DebianDistro(_DistroTree):
      # ex. http://ftp.egr.msu.edu/debian/dists/sarge/main/installer-i386/
      # daily builds: https://d-i.debian.org/daily-images/amd64/
-@@ -830,6 +838,7 @@ def _build_distro_list(osobj):
+@@ -861,6 +869,7 @@ def _build_distro_list(osobj):
          _SLESDistro,
          _SLEDDistro,
          _OpensuseDistro,

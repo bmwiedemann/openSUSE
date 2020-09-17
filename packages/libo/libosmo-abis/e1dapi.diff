@@ -1,0 +1,41 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-09-06 14:55:53.762974707 +0200
+
+The latest release of libosmo-e1d has osmo_e1dp_client_ts_open
+taking just 5 arguments.
+
+---
+ src/input/e1d.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: libosmo-abis-1.0.1/src/input/e1d.c
+===================================================================
+--- libosmo-abis-1.0.1.orig/src/input/e1d.c
++++ libosmo-abis-1.0.1/src/input/e1d.c
+@@ -393,7 +393,7 @@ e1d_line_update(struct e1inp_line *line)
+ 			}
+ 			if (bfd->fd <= 0) {
+ 				bfd->fd = osmo_e1dp_client_ts_open(g_e1d, e1d_intf, e1d_line, ts,
+-								   E1DP_TSMODE_HDLCFCS, D_BCHAN_TX_GRAN);
++								   E1DP_TSMODE_HDLCFCS);
+ 			}
+ 			if (bfd->fd < 0) {
+ 				LOGPITS(e1i_ts, DLINP, LOGL_ERROR, "Could not open timeslot %d\n", ts);
+@@ -423,7 +423,7 @@ e1d_line_update(struct e1inp_line *line)
+ 			}
+ 			if (bfd->fd <= 0) {
+ 				bfd->fd = osmo_e1dp_client_ts_open(g_e1d, e1d_intf, e1d_line, ts,
+-								   E1DP_TSMODE_HDLCFCS, D_BCHAN_TX_GRAN);
++								   E1DP_TSMODE_HDLCFCS);
+ 			}
+ 			if (bfd->fd < 0) {
+ 				LOGPITS(e1i_ts, DLINP, LOGL_ERROR, "Could not open timeslot %d\n", ts);
+@@ -446,7 +446,7 @@ e1d_line_update(struct e1inp_line *line)
+ 			}
+ 			if (bfd->fd <= 0) {
+ 				bfd->fd = osmo_e1dp_client_ts_open(g_e1d, e1d_intf, e1d_line, ts,
+-								   E1DP_TSMODE_RAW, D_BCHAN_TX_GRAN);
++								   E1DP_TSMODE_RAW);
+ 			}
+ 			if (bfd->fd < 0) {
+ 				LOGPITS(e1i_ts, DLINP, LOGL_ERROR, "Could not open timeslot %d\n", ts);

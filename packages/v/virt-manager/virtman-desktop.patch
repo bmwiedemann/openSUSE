@@ -1,12 +1,12 @@
-Index: virt-manager-2.0.0/data/virt-manager.desktop.in
+Index: virt-manager-3.0.0/data/virt-manager.desktop.in
 ===================================================================
---- virt-manager-2.0.0.orig/data/virt-manager.desktop.in
-+++ virt-manager-2.0.0/data/virt-manager.desktop.in
+--- virt-manager-3.0.0.orig/data/virt-manager.desktop.in
++++ virt-manager-3.0.0/data/virt-manager.desktop.in
 @@ -1,8 +1,19 @@
  [Desktop Entry]
- _Name=Virtual Machine Manager
--_Comment=Manage virtual machines
-+_Comment=Manage Virtual Machines for Xen and KVM
+ Name=Virtual Machine Manager
+-Comment=Manage virtual machines
++Comment=Manage Virtual Machines for Xen and KVM
  Icon=virt-manager
 -Exec=virt-manager
 +Version=1.0

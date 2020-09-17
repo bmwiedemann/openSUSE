@@ -1,0 +1,29 @@
+From 8e95d5534e9a577529ac49aaec610e6ceefec0b9 Mon Sep 17 00:00:00 2001
+From: Robert Milasan <rmilasan@suse.com>
+Date: Sat, 12 Jul 2014 14:20:36 +0200
+Subject: [PATCH 05/12] udev: create default symlinks for primary cd_dvd drive
+
+Imported from SLE12-SP1, commit 4f8bacfbffd7049608b5076.
+
+[rmilasan: fixes bnc#783054]
+---
+ rules.d/60-cdrom_id.rules | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/rules.d/60-cdrom_id.rules b/rules.d/60-cdrom_id.rules
+index 288f8ce2f9..578c77441c 100644
+--- a/rules.d/60-cdrom_id.rules
++++ b/rules.d/60-cdrom_id.rules
+@@ -25,5 +25,9 @@ IMPORT{program}="cdrom_id --lock-media $devnode"
+ ENV{DISK_MEDIA_CHANGE}=="?*", ENV{ID_CDROM_MEDIA}!="?*", ENV{SYSTEMD_READY}="0"
+ 
+ KERNEL=="sr0", SYMLINK+="cdrom", OPTIONS+="link_priority=-100"
++KERNEL=="sr0", ENV{ID_CDROM}=="1", SYMLINK+="cdrom", OPTIONS+="link_priority=-100"
++KERNEL=="sr0", ENV{ID_CDROM_CD_RW}=="1", SYMLINK+="cdrw", OPTIONS+="link_priority=-100"
++KERNEL=="sr0", ENV{ID_CDROM_DVD}=="1", SYMLINK+="dvd", OPTIONS+="link_priority=-100"
++KERNEL=="sr0", ENV{ID_CDROM_DVD_RW}=="1", SYMLINK+="dvdrw", OPTIONS+="link_priority=-100"
+ 
+ LABEL="cdrom_end"
+-- 
+2.26.2
+

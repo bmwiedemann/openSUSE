@@ -1,0 +1,73 @@
+From a32292849ca2837f99d6801da26b8d8e401831c4 Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Wed, 4 May 2016 17:40:04 +0200
+Subject: [PATCH 08/12] sysv-generator: translate "Required-Start" into a
+ "Wants" dependency
+
+[tblume: Port of SLES12SP1 patch 0018-Make-LSB-Skripts-know-about-Required-and-Should.patch]
+
+[fbui: this is needed probably because insserv's behavior has been
+       sadly changed since SLE11: it now doesn't failed if a
+       dependency listed by Required-Start is missing.]
+
+[fbui: according to Werner "This should fix bnc#858864 and
+       bnc#857204."  (see Base:System changelog)]
+---
+ src/sysv-generator/sysv-generator.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/sysv-generator/sysv-generator.c b/src/sysv-generator/sysv-generator.c
+index 1c01008967..7a58be9287 100644
+--- a/src/sysv-generator/sysv-generator.c
++++ b/src/sysv-generator/sysv-generator.c
+@@ -258,6 +258,7 @@ static int sysv_translate_facility(SysvStub *s, unsigned line, const char *name,
+                 "remote_fs",            SPECIAL_REMOTE_FS_TARGET,
+                 "syslog",               NULL,
+                 "time",                 SPECIAL_TIME_SYNC_TARGET,
++                "all",                  SPECIAL_DEFAULT_TARGET,
+         };
+ 
+         const char *filename;
+@@ -272,6 +273,7 @@ static int sysv_translate_facility(SysvStub *s, unsigned line, const char *name,
+ 
+         filename = basename(s->path);
+ 
++        n = *name == '+' ? ++name   : name;
+         n = *name == '$' ? name + 1 : name;
+ 
+         for (i = 0; i < ELEMENTSOF(table); i += 2) {
+@@ -408,7 +410,7 @@ static int handle_dependencies(SysvStub *s, unsigned line, const char *full_text
+ 
+         for (;;) {
+                 _cleanup_free_ char *word = NULL, *m = NULL;
+-                bool is_before;
++                bool is_before, is_wanted;
+ 
+                 r = extract_first_word(&text, &word, NULL, EXTRACT_UNQUOTE|EXTRACT_RELAX);
+                 if (r < 0)
+@@ -421,6 +423,7 @@ static int handle_dependencies(SysvStub *s, unsigned line, const char *full_text
+                         continue;
+ 
+                 is_before = startswith_no_case(full_text, "X-Start-Before:");
++                is_wanted = startswith_no_case(full_text, "Required-Start:");
+ 
+                 if (streq(m, SPECIAL_NETWORK_ONLINE_TARGET) && !is_before) {
+                         /* the network-online target is special, as it needs to be actively pulled in */
+@@ -429,8 +432,13 @@ static int handle_dependencies(SysvStub *s, unsigned line, const char *full_text
+                                 return log_oom();
+ 
+                         r = strv_extend(&s->wants, m);
+-                } else
++                } else {
+                         r = strv_extend(is_before ? &s->before : &s->after, m);
++
++                        if (is_wanted)
++                                r = strv_extend(&s->wants, m);
++                }
++
+                 if (r < 0)
+                         return log_oom();
+         }
+-- 
+2.26.2
+

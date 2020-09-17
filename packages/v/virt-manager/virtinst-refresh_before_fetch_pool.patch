@@ -13,27 +13,27 @@ status affects the hypervisor connection.
 
 Signed-off-by: Chunyan Liu <cyliu@suse.com>
 
-Index: virt-manager-2.2.0/virtinst/pollhelpers.py
+Index: virt-manager-3.0.0/virtinst/pollhelpers.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/pollhelpers.py
-+++ virt-manager-2.2.0/virtinst/pollhelpers.py
-@@ -119,6 +119,19 @@ def fetch_pools(backend, origmap, build_
-     name = "pool"
+--- virt-manager-3.0.0.orig/virtinst/pollhelpers.py
++++ virt-manager-3.0.0/virtinst/pollhelpers.py
+@@ -48,6 +48,19 @@ def fetch_pools(backend, origmap, build_
+     typename = "pool"
+     list_cb = backend.listAllStoragePools
+     support_cb = backend.support.conn_storage
++
++    # Refresh pools before poll_helper. For those
++    # 'active' but target path not exist (or other reasons
++    # causing the pool not working), but libvirtd not
++    # refresh the status, this will make it refreshed
++    # and mark that pool as 'inactive'.
++    objs = backend.listAllStoragePools()
++    for obj in objs:
++        try:
++            obj.refresh(0)
++        except Exception as e: # pragma: no cover
++            pass
++
+     return _new_poll_helper(origmap, typename, list_cb, build_cb, support_cb)
  
-     if backend.support.conn_listallstoragepools() and not FORCE_OLD_POLL:
-+
-+        # Refresh pools before poll_helper. For those
-+        # 'active' but target path not exist (or other reasons
-+        # causing the pool not working), but libvirtd not
-+        # refresh the status, this will make it refreshed
-+        # and mark that pool as 'inactive'.
-+        objs = backend.listAllStoragePools()
-+        for obj in objs:
-+            try:
-+                obj.refresh(0)
-+            except Exception, e:
-+                pass
-+
-         return _new_poll_helper(origmap, name,
-                                 backend.listAllStoragePools, build_func)
-     else:
+ 

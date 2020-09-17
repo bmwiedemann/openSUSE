@@ -31,4 +31,12 @@
     <comment>- Update to new upstream release 1.2.1</comment>
     <requestid>723417</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>332a420eacb12ae518536d064a0095ce</srcmd5>
+    <version>1.2.1</version>
+    <time>1600346565</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove old specfile constructs.</comment>
+    <requestid>832608</requestid>
+  </revision>
 </revisionlist>

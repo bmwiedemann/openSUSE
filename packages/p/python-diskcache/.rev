@@ -44,4 +44,15 @@
   * Add check for DEFAULT_TIMEOUT in DjangoCache.memoize</comment>
     <requestid>779740</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5c5d0eba817bca8b84fcb7faaf93885b</srcmd5>
+    <version>5.0.3</version>
+    <time>1600347954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.3:
+  * drop python 2.7 support
+  * python 3.8 fixes
+  * add documentation about cache volume caveats</comment>
+    <requestid>835168</requestid>
+  </revision>
 </revisionlist>

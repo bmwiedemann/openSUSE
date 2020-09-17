@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 12:24:56 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.6.0
+  * Update documentation
+  * Remove Coda-support
+  * New parser for cookies (bug #58459).
+  * Add log message.
+  * Add option sharepoint_href_bug.
+  * Ignore option -n (sr #110191).
+- Remove add-neon-031-support.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 12:45:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add add-neon-031-support.patch

@@ -19,15 +19,16 @@
 %define pkg_name    xdebug
 %define pkg_version %{version}
 Name:           php7-%{pkg_name}
-Version:        2.9.5
+Version:        2.9.7
 Release:        0
 Summary:        Extended PHP debugger
 License:        PHP-3.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://xdebug.org/
 Source:         https://xdebug.org/files/%{pkg_name}-%{pkg_version}.tgz
-BuildRequires:  php7 >= 7
-BuildRequires:  php7-devel >= 7
+BuildRequires:  php7 < 8.0
+BuildRequires:  php7 >= 7.1
+BuildRequires:  php7-devel
 BuildRequires:  php7-soap
 Provides:       php-%{pkg_name} = %{version}
 Obsoletes:      php-%{pkg_name} < %{version}

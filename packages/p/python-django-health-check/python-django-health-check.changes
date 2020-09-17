@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:42:06 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.14.0
+  * Register health check for each cache configuration
+- from v3.13.2
+  * Add backend checking if all migrations are applied
+- from v3.12.2
+  * Close all (even non default) db connections after check suite
+
+-------------------------------------------------------------------
 Wed Sep  2 09:18:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Fix test execution

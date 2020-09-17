@@ -1,7 +1,7 @@
 #
 # spec file for package python-bitstring
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bitstring
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        Python module for the construction, analysis and modification of binary data
 License:        MIT

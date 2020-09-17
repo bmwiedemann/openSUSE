@@ -2,11 +2,11 @@ When both the content file and .treeinfo file are missing from the media
 look in the media.1/products and media.1/media files for information.
 Caasp 4.0 has not content or .treeinfo file on the media
 
-Index: virt-manager-2.2.0/virtinst/install/urldetect.py
+Index: virt-manager-3.0.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/install/urldetect.py
-+++ virt-manager-2.2.0/virtinst/install/urldetect.py
-@@ -488,8 +488,23 @@ class _SuseDistro(_RHELDistro):
+--- virt-manager-3.0.0.orig/virtinst/install/urldetect.py
++++ virt-manager-3.0.0/virtinst/install/urldetect.py
+@@ -504,8 +504,23 @@ class _SuseDistro(_RHELDistro):
              cache.checked_for_suse_content = True
              content_str = cache.acquire_file_content("content")
              if content_str is None:
@@ -31,4 +31,4 @@ Index: virt-manager-2.2.0/virtinst/install/urldetect.py
 +                content_str = products_str + "\n" + media_str
              try:
                  cache.suse_content = _SUSEContent(content_str)
-             except Exception as e:
+             except Exception as e:  # pragma: no cover

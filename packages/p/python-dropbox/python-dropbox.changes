@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:53:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 10.4.1:
+  * Fix bug with client copy
+  * Fix bug with team client as_user and as_admin
+  * Fix Python 3 linter issue
+  * Update tox.ini to check python 3.7 and 3.8
+  * Update setup.py to support python 3.7 and 3.8
+  * Remove stone as submodule and add as dependency
+  * Update Spec
+  * Files Namespace
+  * Add internal_error to SearchError union.
+  * Add locked to LookupError union.
+  * Add cant_move_into_vault to RelocationError union.
+  * Add MoveIntoVaultError union.
+  * Add SearchMatchFieldOptions struct.
+  * Add optional match_field_options to SearchV2Arg struct.
+  * Doc/example changes.
+  * Sharing Namespace
+  * Add is_vault to SharePathError union.
+  * Add invalid_shared_folder to AddFolderMemberError union.
+  * Team Namespace
+  * Make members field of LegalHoldsPolicyUpdateArg struct optional.
+  * Add app_folder_removal_not_supported to RevokeLinkedAppError union.
+  * Doc/example changes.
+  * Add auto_approve to InviteMethod union.
+  * Add moved_from_another_team to InviteMethod union.
+  * Add moved_from_another_team to MemberStatus union.
+  * Add no_one to SharedLinkVisibility union.
+  * Add optional new_team to MemberChangeStatusDetails struct.
+  * Add optional previous_team to MemberChangeStatusDetails struct.
+  * Add external_sharing_create_report_details to EventDetails union.
+  * Add external_sharing_report_failed to EventDetails union.
+  * Add content_administration_policy_changed_details to EventDetails
+  * Add external_sharing_create_report to EventType.
+  * Add external_sharing_report_failed to EventType.
+  * Add content_administration_policy_changed to EventType.
+  * union.
+  * Add send_for_signature_policy_changed_details to EventDetails union.
+  * Add external_sharing_create_report to EventTypeArgs union.
+  * Add external_sharing_report_failed to EventTypeArgs union.
+  * Add content_administration_policy_changed to EventTypeArgs union.
+  * Add send_for_signature_policy_changed to EventTypeArgs union.
+  * Add SendForSignaturePolicy union.
+  * Add ExternalSharingCreateReportDetails struct.
+  * Add ExternalSharingReportFailedDetails struct.
+  * Add ContentAdministrationPolicyChangedDetails struct.
+  * Add SendForSignaturePolicyChangedDetails struct.
+  * Add ExternalSharingCreateReportType struct.
+  * Add ExternalSharingReportFailedType struct.
+  * Add ContentAdministrationPolicyChangedType struct.
+  * Add SendForSignaturePolicyChangedType struct.
+
+-------------------------------------------------------------------
 Tue Jun 16 03:55:01 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 10.2.0:

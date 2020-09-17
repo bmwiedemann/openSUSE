@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 16 15:33:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- busybox-vi: also conflict with gvim, one more vi variant.
+
+-------------------------------------------------------------------
 Fri Sep 11 10:21:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - busybox-vi: conflict with all vi variants

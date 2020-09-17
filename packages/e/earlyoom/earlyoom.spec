@@ -16,6 +16,14 @@
 #
 
 
+# the tests fail on i586 and ppc, see:
+# https://github.com/rfjakob/earlyoom/issues/221
+%ifarch x86_64 %arm aarch64
+%bcond_without tests
+%else
+%bcond_with tests
+%endif
+
 %if ! 0%{?_fillupdir:1}
 %global _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
@@ -26,12 +34,15 @@ Summary:        Early OOM Daemon for Linux
 License:        MIT
 Group:          System/Daemons
 URL:            https://github.com/rfjakob/%{name}
-Source0:        https://github.com/rfjakob/earlyoom/archive/v%{version}.tar.gz
+Source0:        %{URL}/earlyoom/archive/v%{version}.tar.gz
 Source11:       %{name}.sysconfig
 # pandoc only for `pandoc MANPAGE.md -s -t man > earlyoom.1`
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
+%if %{with tests}
+BuildRequires:  go
+%endif
 Recommends:     libnotify%{?suse_version:-tools}
 Conflicts:      oomd
 
@@ -45,13 +56,22 @@ below critical level, it will kill the largest process (highest oom_score).
 # Fix defaults file location
 sed -i 's|/default/|/sysconfig/|' earlyoom.service.in
 
-# Fix LDFLAGS handling
-sed -ri '/LDFLAGS/ s|$| -lrt|' Makefile
+# remove calls to systemctl in install
+sed -e '/systemctl/d' -i Makefile
+
+# fix version test
+sed -i 's|stderrContains: "earlyoom v",|stderrContains: "earlyoom %{version}",|' testsuite_cli_test.go
 
 %build
 CFLAGS='%{?build_cflags}%{!?build_cflags:%optflags} -DVERSION=\"%{version}\" -std=gnu99'
 CPPFLAGS='%{?build_cxxflags}%{!?build_cxxflags:%optflags}'
+LDFLAGS="-lrt ${RPM_LD_FLAGS}"
 %make_build CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" PREFIX=%{_prefix}
+
+%check
+%if %{with tests}
+%make_build test
+%endif
 
 %install
 %make_install PREFIX=%{_prefix} SYSTEMDUNITDIR=%{_unitdir}

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-codecov
-Version:        2.1.7
+Version:        2.1.9
 Release:        0
 Summary:        Hosted coverage reports
 License:        Apache-2.0

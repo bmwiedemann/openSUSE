@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 1412
+%define patchlevel 1551
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -308,6 +308,7 @@ install -D -m 0755 vim-small %{buildroot}%{_bindir}/vim-small
 install -D -m 0755 vim-nox11 %{buildroot}%{_bindir}/vim-nox11
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/vim %{buildroot}%{_bindir}/vim
+ln -s -f %{_sysconfdir}/alternatives/vi %{buildroot}%{_bindir}/vi
 
 # compat symlinks
 mkdir %{buildroot}/bin
@@ -421,7 +422,9 @@ LC_ALL=en_US.UTF-8 make -j1 test
 %endif
 
 %post
-%{_sbindir}/update-alternatives --install %{_bindir}/vim vim %{_bindir}/vim-nox11 20
+%{_sbindir}/update-alternatives \
+ --install %{_bindir}/vim vim %{_bindir}/vim-nox11 20 \
+ --slave %{_bindir}/vi vi %{_bindir}/vim-nox11
 
 %postun
 if [ ! -e %{_bindir}/vim-nox11 ] ; then
@@ -429,7 +432,10 @@ if [ ! -e %{_bindir}/vim-nox11 ] ; then
 fi
 
 %post -n gvim
-%{_sbindir}/update-alternatives --install %{_bindir}/vim vim %{_bindir}/gvim 30
+%{_sbindir}/update-alternatives \
+ --install %{_bindir}/vim vim %{_bindir}/gvim 30 \
+ --slave %{_bindir}/vi vi %{_bindir}/gvim
+
 %icon_theme_cache_post
 
 %postun -n gvim
@@ -439,13 +445,18 @@ fi
 %icon_theme_cache_postun
 
 %post small
-%{_sbindir}/update-alternatives --install %{_bindir}/vim vim %{_bindir}/vim-small 19
+%{_sbindir}/update-alternatives \
+ --install %{_bindir}/vim vim %{_bindir}/vim-small 19 \
+ --slave %{_bindir}/vi vi %{_bindir}/vim-small
 
 %postun small
-%{_sbindir}/update-alternatives --remove vim %{_bindir}/vim-small
+if [ ! -e %{_bindir}/vim-small ] ; then
+  %{_sbindir}/update-alternatives --remove vim %{_bindir}/vim-small
+fi
 
 %files
 %ghost %{_sysconfdir}/alternatives/vim
+%ghost %{_sysconfdir}/alternatives/vi
 %{_bindir}/vim-nox11
 %{_bindir}/vim
 # symlinks
@@ -577,6 +588,8 @@ fi
 %doc runtime/doc/gui_x11.txt
 %ghost %config(missingok) %{_sysconfdir}/gvimrc
 %ghost %{_sysconfdir}/alternatives/vim
+%ghost %{_sysconfdir}/alternatives/vi
+%{_bindir}/vi
 %{_bindir}/vim
 %{_bindir}/egview
 %{_bindir}/egvim
@@ -597,6 +610,8 @@ fi
 %files small
 %license LICENSE
 %ghost %{_sysconfdir}/alternatives/vim
+%ghost %{_sysconfdir}/alternatives/vi
+%{_bindir}/vi
 %{_bindir}/vim
 %{_bindir}/vim-small
 

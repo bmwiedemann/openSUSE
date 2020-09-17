@@ -1,0 +1,26 @@
+From cbe2eb7890c635cf1b1ae3b6559a5373f9879a34 Mon Sep 17 00:00:00 2001
+From: Sylvain POULAIN <kikislater@users.noreply.github.com>
+Date: Tue, 7 Jul 2020 09:18:43 +0400
+Subject: [PATCH] gtk_widget_get_state is deprecated
+
+gtk_widget_get_state is even deprecated, and has to be replaced with gtk_widget_get_state_flags. It worked.
+---
+ src/idomediaplayermenuitem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/idomediaplayermenuitem.c b/src/idomediaplayermenuitem.c
+index 7ed9d6d..232ad0e 100644
+--- a/src/idomediaplayermenuitem.c
++++ b/src/idomediaplayermenuitem.c
+@@ -81,7 +81,7 @@ ido_media_player_menu_item_draw (GtkWidget *widget,
+       int y;
+ 
+       gtk_style_context_get_color (gtk_widget_get_style_context (widget),
+-                                   gtk_widget_get_state (widget),
++                                   gtk_widget_get_state_flags (widget),
+                                    &color);
+ 
+       gtk_widget_get_allocation (widget, &allocation);
+-- 
+2.28.0
+

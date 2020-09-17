@@ -1,7 +1,7 @@
 <services>
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
-		<param name="url">git://git.osmocom.org/libasn1c</param>
+		<param name="url">https://git.osmocom.org/libasn1c</param>
 		<param name="revision">master</param>
 		<param name="parent-tag">0.9.32</param>
 		<param name="versionformat">0.9.32</param>

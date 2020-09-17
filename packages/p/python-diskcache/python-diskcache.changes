@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:24:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.0.3:
+  * drop python 2.7 support
+  * python 3.8 fixes
+  * add documentation about cache volume caveats
+
+-------------------------------------------------------------------
 Thu Feb 27 05:15:40 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.1.0:

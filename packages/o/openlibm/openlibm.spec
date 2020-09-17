@@ -16,18 +16,17 @@
 #
 
 
-Name:           openlibm
-Version:        0.7.0
-Release:        0
 %define so_ver  3
 %define libname lib%{name}%{so_ver}
+Name:           openlibm
+Version:        0.7.1
+Release:        0
 Summary:        Standalone C mathematical library
 License:        BSD-2-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/JuliaLang/openlibm/
 Source0:        https://github.com/JuliaLang/openlibm/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 ExcludeArch:    ppc
 
 %description
@@ -66,7 +65,7 @@ that use OpenLIBM.
 %setup -q
 
 %build
-make %{?_smp_mflags} \
+%make_build \
      FFLAGS="%{optflags}" \
      CFLAGS="%{optflags}" \
 %ifarch armv6hl
@@ -86,16 +85,14 @@ make install DESTDIR=%{buildroot} \
 rm %{buildroot}/%{_libdir}/libopenlibm.a
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/lib%{name}.so.%{so_ver}*
 
 %files devel
-%defattr(-,root,root)
-%doc LICENSE.md README.md
+%license LICENSE.md
+%doc README.md
 %{_includedir}/openlibm/
 %{_libdir}/libopenlibm.so
 %{_libdir}/pkgconfig/openlibm.pc

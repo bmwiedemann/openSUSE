@@ -16,7 +16,7 @@
 #
 
 Name:           gnonograms
-Version:        1.4.3
+Version:        1.4.5
 Release:        0
 Summary:        Program for creating and solving gnonogram puzzles
 License:        GPL-3.0-or-later

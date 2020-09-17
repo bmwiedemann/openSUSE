@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 15 21:08:49 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.7.1
+  * Do not link to libpython with Python >= 3.8
+
+-------------------------------------------------------------------
 Mon Aug 17 21:16:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.6.2
-  * no code changes 
+  * no code changes
 
 -------------------------------------------------------------------
 Sun Jun  7 17:55:54 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>

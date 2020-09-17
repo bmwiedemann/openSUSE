@@ -1,16 +1,16 @@
 Reference: bnc#885094
 grub.xen is required to boot Xen PV VMs using BTRFS. It belongs to
 the grub2-x86_64-xen RPM and should never be deleted.
-Index: virt-manager-2.0.0/virtManager/delete.py
+Index: virt-manager-3.0.0/virtManager/delete.py
 ===================================================================
---- virt-manager-2.0.0.orig/virtManager/delete.py
-+++ virt-manager-2.0.0/virtManager/delete.py
-@@ -246,7 +246,7 @@ def populate_storage_list(storage_list,
-     diskdata.append(("dtb", vm.get_xmlobj().os.dtb, True, False, True))
+--- virt-manager-3.0.0.orig/virtManager/delete.py
++++ virt-manager-3.0.0/virtManager/delete.py
+@@ -458,7 +458,7 @@ def _populate_storage_list(storage_list,
+     model.clear()
  
-     for target, path, ro, shared, is_media in diskdata:
--        if not path:
-+        if not path or path == "/usr/lib/grub2/x86_64-xen/grub.xen":
+     for diskdata in diskdatas:
+-        if not diskdata.path:
++        if not diskdata.path or diskdata.path == "/usr/lib/grub2/x86_64-xen/grub.xen":
              continue
  
          # There are a few pieces here

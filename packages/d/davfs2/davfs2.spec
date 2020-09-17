@@ -16,27 +16,24 @@
 #
 
 
+Name:           davfs2
+Version:        1.6.0
+Release:        0
 Summary:        FUSE-Filesystem to access WebDAV servers
 License:        GPL-3.0-only
 Group:          System/Filesystems
-Name:           davfs2
-Version:        1.5.6
-Release:        0
 URL:            http://savannah.nongnu.org/projects/%{name}
 Source0:        http://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz
 Source1:        http://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
 Source3:        memberlist-gpgkeys.gpg
-# Partially taken from https://savannah.nongnu.org/bugs/?58101, won't be needed with next version update
-Patch0:         add-neon-031-support.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake >= 1.16
 BuildRequires:  fuse-devel >= 2.2
 BuildRequires:  neon-devel
 BuildRequires:  pwdutils
 Requires:       fuse >= 2.2
-Requires(pre):  /usr/sbin/groupadd
-Requires(pre):  /usr/sbin/useradd
+Requires(pre):  %{_sbindir}/groupadd
+Requires(pre):  %{_sbindir}/useradd
 Obsoletes:      fuse-%{name} < %{version}
 Provides:       fuse-%{name} = %{version}
 
@@ -50,8 +47,7 @@ FUSE. To connect to the WebDAV server, it makes use of the neon library,
 supporting TLS/SSL and access via proxy servers.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0
+%setup -q
 cd src
 
 %build
@@ -64,18 +60,18 @@ dav_group="%{name}" \
 PIE="-fPIE"
 pie="-pie"
 %endif
-make AM_CFLAGS="-Wall %{optflags} $PIE -fcommon" AM_LDFLAGS="$pie" %{?_smp_mflags}
+%make_build AM_CFLAGS="-Wall %{optflags} $PIE" AM_LDFLAGS="$pie"
 
 %install
 %make_install
 rm -rf "%{buildroot}%{_datadir}/doc"
-install -d "%{buildroot}/var/cache/%{name}"
+install -d "%{buildroot}%{_localstatedir}/cache/%{name}"
 %find_lang %{name}
 rm -rf "%{buildroot}/%{_docdir}"
 
 %pre
-/usr/bin/getent group %{name} >/dev/null || /usr/sbin/groupadd -r %{name}
-/usr/bin/getent passwd %{name} >/dev/null || /usr/sbin/useradd -r -g %{name} -d /var/cache/%{name} %{name}
+%{_bindir}/getent group %{name} >/dev/null || %{_sbindir}/groupadd -r %{name}
+%{_bindir}/getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_localstatedir}/cache/%{name} %{name}
 
 %post
 %if 0%{?set_permissions:1} > 0
@@ -93,13 +89,14 @@ rm -rf "%{buildroot}/%{_docdir}"
 
 %files -f %{name}.lang
 %defattr(-, root, root, 0755)
-%doc AUTHORS BUGS COPYING FAQ NEWS README* THANKS TODO etc/%{name}.conf etc/secrets
-%doc %{_mandir}/man5/%{name}.conf.5%{ext_man}
-%doc %{_mandir}/man8/mount.davfs.8%{ext_man}
-%doc %{_mandir}/man8/umount.davfs.8%{ext_man}
-%doc %{_mandir}/*/man5/%{name}.conf.5%{ext_man}
-%doc %{_mandir}/*/man8/mount.davfs.8%{ext_man}
-%doc %{_mandir}/*/man8/umount.davfs.8%{ext_man}
+%license COPYING
+%doc AUTHORS BUGS FAQ NEWS README* THANKS TODO etc/%{name}.conf etc/secrets
+%{_mandir}/man5/%{name}.conf.5%{?ext_man}
+%{_mandir}/man8/mount.davfs.8%{?ext_man}
+%{_mandir}/man8/umount.davfs.8%{?ext_man}
+%{_mandir}/*/man5/%{name}.conf.5%{?ext_man}
+%{_mandir}/*/man8/mount.davfs.8%{?ext_man}
+%{_mandir}/*/man8/umount.davfs.8%{?ext_man}
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
 %config %{_sysconfdir}/%{name}/secrets
@@ -107,7 +104,7 @@ rm -rf "%{buildroot}/%{_docdir}"
 %verify(not user group mode) %attr(0755,root,root) %{_sbindir}/mount.davfs
 %{_sbindir}/umount.davfs
 %{_datadir}/%{name}
-%attr(0750, %{name}, %{name}) /var/cache/%{name}
+%attr(0750, %{name}, %{name}) %{_localstatedir}/cache/%{name}
 /sbin/mount.davfs
 /sbin/umount.davfs
 

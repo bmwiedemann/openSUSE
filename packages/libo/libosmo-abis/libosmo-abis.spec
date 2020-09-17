@@ -16,10 +16,10 @@
 #
 
 
-%define version_unconverted 0.8.1
+%define version_unconverted 1.0.1
 
 Name:           libosmo-abis
-Version:        0.8.1
+Version:        1.0.1
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -28,15 +28,16 @@ URL:            https://osmocom.org/projects/libosmo-abis/wiki/Libosmo-abis
 
 Source:         %name-%version.tar.xz
 Patch1:         osmo-talloc.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch2:         e1dapi.diff
 BuildRequires:  automake >= 1.6
-#BuildRequires:  dahdi-linux-devel
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libosmocore) >= 1.0.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.0.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.0.0
+BuildRequires:  pkgconfig(libosmo-e1d)
+BuildRequires:  pkgconfig(libosmocodec) >= 1.4.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.4.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.4.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.4.0
 BuildRequires:  pkgconfig(ortp) >= 0.22
 BuildRequires:  pkgconfig(talloc)
 
@@ -45,12 +46,12 @@ In GSM, A-bis is a BSS-internal interface link between the BTS and
 BSC. This interface allows control of the radio equipment and radio
 frequency allocation in the BTS.
 
-%package -n libosmoabis6
+%package -n libosmoabis9
 Summary:        Osmocom GSM A-bis interface library
 License:        AGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmoabis6
+%description -n libosmoabis9
 In the GSM system architecture, A-bis is a Base Station
 System-internal interface linking the Base Transceiver Stations (BTS)
 and Base Station Controller (BSC). This interface allows control of
@@ -64,9 +65,9 @@ cards, as well as some A-bis/IP dialects.
 Summary:        Development files for the Osmocom GSM A-bis library
 License:        AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmoabis6 = %version
-Requires:       libosmocore-devel >= 1.0.0
-Requires:       libosmogsm-devel >= 1.0.0
+Requires:       libosmoabis9 = %version
+Requires:       libosmocore-devel >= 1.4.0
+Requires:       libosmogsm-devel >= 1.4.0
 
 %description -n libosmoabis-devel
 This library contains common/shared code regarding the GSM A-bis
@@ -102,60 +103,52 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libosmotrau.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 echo "%version" >.tarball-version
 autoreconf -fiv
-%configure \
-    --enable-shared \
-    --disable-static \
-    --disable-dahdi \
-    --includedir="%_includedir/%name"
-make %{?_smp_mflags}
+# bugzilla.opensuse.org/795968 for rationale
+%configure --includedir="%_includedir/%name" \
+	--enable-shared --disable-static --disable-dahdi --enable-e1d
+%make_build
 
 %install
-b="%buildroot"
-make %{?_smp_mflags} install DESTDIR="$b"
-find "$b/%_libdir" -type f -name "*.la" -delete
+%make_install
+find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %check
-if ! make %{?_smp_mflags} check; then
+if ! %make_build check; then
 	find . -name testsuite.log -exec cat "{}" "+"
 %ifarch %ix86 x86_64
 	exit 1
 %endif
 fi
 
-%post   -n libosmoabis6 -p /sbin/ldconfig
-%postun -n libosmoabis6 -p /sbin/ldconfig
+%post   -n libosmoabis9 -p /sbin/ldconfig
+%postun -n libosmoabis9 -p /sbin/ldconfig
 %post   -n libosmotrau2 -p /sbin/ldconfig
 %postun -n libosmotrau2 -p /sbin/ldconfig
 
-%files -n libosmoabis6
-%defattr(-,root,root)
-%_libdir/libosmoabis.so.6*
+%files -n libosmoabis9
+%_libdir/libosmoabis.so.9*
 
 %files -n libosmoabis-devel
-%defattr(-,root,root)
-%doc COPYING
-%dir %_includedir/%name
-%dir %_includedir/%name/osmocom
+%license COPYING
+%dir %_includedir/%name/
+%dir %_includedir/%name/osmocom/
 %_includedir/%name/osmocom/abis/
 %_libdir/libosmoabis.so
 %_libdir/pkgconfig/libosmoabis.pc
 
 %files -n libosmotrau2
-%defattr(-,root,root)
 %_libdir/libosmotrau.so.2*
 
 %files -n libosmotrau-devel
-%defattr(-,root,root)
-%doc COPYING
-%dir %_includedir/%name
-%dir %_includedir/%name/osmocom
-%_includedir/%name/osmocom/trau
+%license COPYING
+%dir %_includedir/%name/
+%dir %_includedir/%name/osmocom/
+%_includedir/%name/osmocom/trau/
 %_libdir/libosmotrau.so
 %_libdir/pkgconfig/libosmotrau.pc
 

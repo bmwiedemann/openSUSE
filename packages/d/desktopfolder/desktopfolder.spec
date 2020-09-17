@@ -17,7 +17,7 @@
 
 
 Name:           desktopfolder
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Tool for organizing the desktop with panels, notes and photos
 License:        GPL-3.0-or-later

@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-sccp
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 %define libversion %(echo "%version" | sed 's/\\./_/g')
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
@@ -25,10 +25,9 @@ License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Hardware/Mobile
 URL:            https://projects.osmocom.org/projects/libosmo-sccp
 
-#Git-Clone:	git://git.osmocom.org/libosmo-sccp
+#Git-Clone:	https://git.osmocom.org/libosmo-sccp
 Source:         %name-%version.tar.xz
 Patch1:         0001-build-fixes.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
@@ -160,12 +159,12 @@ a STP, such as Global Title Routing, Global Title Translation.
 %build
 echo "%version" >.tarball-version
 autoreconf -fiv
-%configure CFLAGS="%optflags -fcommon" \
-	--disable-static \
-	--includedir="%_includedir/%name" \
+# bugzilla.opensuse.org/795968 for rationale
+%configure --includedir="%_includedir/%name" \
 	--docdir="%_defaultdocdir/%name" \
-	--with-systemdsystemunitdir=%_unitdir
-make %{?_smp_mflags}
+	--with-systemdsystemunitdir="%_unitdir" \
+	--disable-static CFLAGS="%optflags -fcommon"
+%make_build
 
 %install
 %make_install
@@ -174,7 +173,7 @@ install -d "%buildroot/%_unitdir" "%buildroot/%_sbindir"
 ln -s service "%buildroot/%_sbindir/rcosmo-stp"
 
 %check
-if ! make %{?_smp_mflags} check; then
+if ! %make_build check; then
 	find . -name testsuite.log -exec cat "{}" "+"
 %ifnarch ppc64 sparc64 s390x
 	# still BE problems?
@@ -204,56 +203,49 @@ fi
 %service_add_post osmo-stp.service
 
 %files -n libosmo-mtp-%libversion
-%defattr(-,root,root)
 %_libdir/libosmo-mtp-%version.so
 
 %files -n libosmo-mtp-devel
-%defattr(-,root,root)
-%dir %_includedir/%name
-%dir %_includedir/%name/osmocom
+%dir %_includedir/%name/
+%dir %_includedir/%name/osmocom/
 %_includedir/%name/osmocom/mtp/
 %_libdir/libosmo-mtp.so
 %_libdir/pkgconfig/libosmo-mtp.pc
 
 %files -n libosmo-sccp-%libversion
-%defattr(-,root,root)
 %_libdir/libosmo-sccp-%version.so
 
 %files -n libosmo-sccp-devel
-%defattr(-,root,root)
-%dir %_includedir/%name
-%dir %_includedir/%name/osmocom
+%dir %_includedir/%name/
+%dir %_includedir/%name/osmocom/
 %_includedir/%name/osmocom/sccp/
 %_libdir/libosmo-sccp.so
 %_libdir/pkgconfig/libosmo-sccp.pc
 
 %files -n libosmo-sigtran5
-%defattr(-,root,root)
 %_libdir/libosmo-sigtran.so.5*
 
 %files -n libosmo-sigtran-devel
-%defattr(-,root,root)
-%dir %_includedir/%name
-%dir %_includedir/%name/osmocom
+%dir %_includedir/%name/
+%dir %_includedir/%name/osmocom/
 %_includedir/%name/osmocom/sigtran/
 %_libdir/libosmo-sigtran.so
 %_libdir/pkgconfig/libosmo-sigtran.pc
 
 %files -n libosmo-xua-%libversion
-%defattr(-,root,root)
 %_libdir/libosmo-xua-%version.so
 
 %files -n libosmo-xua-devel
-%defattr(-,root,root)
 %_libdir/libosmo-xua.so
 %_libdir/pkgconfig/libosmo-xua.pc
 
 %files -n osmo-stp
-%dir %{_sysconfdir}/osmocom
-%config %{_sysconfdir}/osmocom/osmo-stp.cfg
+%dir %_sysconfdir/osmocom
+%config %_sysconfdir/osmocom/osmo-stp.cfg
 %_bindir/osmo-stp
 %_sbindir/rcosmo-stp
 %_unitdir/osmo-stp.service
 %_defaultdocdir/%name/
+%license COPYING
 
 %changelog

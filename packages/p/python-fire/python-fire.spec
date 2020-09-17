@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fire
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        A library for automatically generating command line interfaces
 License:        Apache-2.0

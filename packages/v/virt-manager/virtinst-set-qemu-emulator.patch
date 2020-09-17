@@ -1,11 +1,11 @@
 Use the correct qemu emulator based on the architecture.
 We want to get away from using the old qemu-dm emulator
 for Xen HVM guests so default to qemu-system-i386.
-Index: virt-manager-2.2.1/virtinst/guest.py
+Index: virt-manager-3.0.0/virtinst/guest.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/guest.py
-+++ virt-manager-2.2.1/virtinst/guest.py
-@@ -740,6 +740,10 @@ class Guest(XMLBuilder):
+--- virt-manager-3.0.0.orig/virtinst/guest.py
++++ virt-manager-3.0.0/virtinst/guest.py
+@@ -727,6 +727,10 @@ class Guest(XMLBuilder):
          self._add_default_memballoon()
  
          self.clock.set_defaults(self)

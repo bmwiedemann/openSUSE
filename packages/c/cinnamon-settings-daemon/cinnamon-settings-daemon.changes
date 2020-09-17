@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 13 19:39:07 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.6.4.
+  * csd-automount-manager.c: Add a small delay to folder opening.
+
+-------------------------------------------------------------------
 Mon Mar 16 14:51:11 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - update version 4.4.0

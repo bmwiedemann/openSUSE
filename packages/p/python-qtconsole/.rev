@@ -91,4 +91,12 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
     <comment></comment>
     <requestid>830424</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c421cdaef16b9876a171ebfe9dd9a421</srcmd5>
+    <version>4.7.7</version>
+    <time>1600346971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834970</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:56:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.4:
+  * Display response body when no content-type
+
+-------------------------------------------------------------------
 Fri Jun 26 07:18:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.0.3:

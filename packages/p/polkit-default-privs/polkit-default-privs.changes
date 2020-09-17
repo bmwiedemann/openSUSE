@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 07:56:32 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20200909.647e56f:
+  * whitelist org.freedesktop.network1.forcerenew (bsc#1176215)
+
+-------------------------------------------------------------------
 Wed Jul 15 07:48:57 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 1550+20200715.6ddc764:

@@ -18,28 +18,30 @@
 
 %define realname zathura-pdf-mupdf
 Name:           zathura-plugin-pdf-mupdf
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
-Summary:        Zathura PDF support through MuPDF  
+Summary:        Zathura PDF support through MuPDF
 License:        Zlib
 Group:          Productivity/Office/Other
-URL:            https://pwmt.org/projects/%{realname}/
+URL:            https://pwmt.org/projects/zathura-pdf-mupdf/
 Source:         https://pwmt.org/projects/%{realname}/download/%{realname}-%{version}.tar.xz
 BuildRequires:  meson
+BuildRequires:  mupdf-devel-static >= 1.17
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(girara-gtk3)
 BuildRequires:  pkgconfig(jbig2dec)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(zathura)
-BuildRequires:  mupdf-devel-static
-Requires:       zathura
-Provides:       zathura-pdf-mupdf-plugin
+BuildRequires:  pkgconfig(zathura) >= 0.2.0
+Requires:       mupdf >= 1.17
+Requires:       zathura >= 0.2.0
 Conflicts:      zathura-plugin-pdf-poppler
+Provides:       zathura-pdf-mupdf-plugin
 
 %description
 Zathura-plugin-MupDF extends the document viewing support of Zathura to PDF, EPUB and OpenXPS with the help of MuPDF rendering engine.
+
 %prep
 %setup -q -n %{realname}-%{version}
 

@@ -1,0 +1,23 @@
+commit 06c6c939ae59516a720f0cfc5a29e214b6569476
+Author: Heiko Becker <heirecka@exherbo.org>
+Date:   Sat Apr 4 00:15:28 2020 +0200
+
+    [Minor] Cherry-pick a fix for replxx to build with gcc10
+    
+    723d9c84869511dfb5e63f5c3d3372ac38114713 in replxx's git.
+    
+    Building rspamd with gcc10 errors out with "'runtime_error' is not a
+    member of 'std'" otherwise.
+
+diff --git a/contrib/replxx/src/io.cxx b/contrib/replxx/src/io.cxx
+index a09886701..8df176d1c 100644
+--- a/contrib/replxx/src/io.cxx
++++ b/contrib/replxx/src/io.cxx
+@@ -3,6 +3,7 @@
+ #include <cstdlib>
+ #include <cstring>
+ #include <array>
++#include <stdexcept>
+ 
+ #ifdef _WIN32
+ 

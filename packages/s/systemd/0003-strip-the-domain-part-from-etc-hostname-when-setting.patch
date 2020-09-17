@@ -1,0 +1,43 @@
+From f299a8180f1db0680b454c0e37696891361e3067 Mon Sep 17 00:00:00 2001
+From: Frederic Crozat <fcrozat@suse.com>
+Date: Tue, 28 May 2013 15:17:35 +0200
+Subject: [PATCH 03/12] strip the domain part from /etc/hostname when setting
+ system host name
+
+[fbui: fixes bnc#820213]
+[fbui: forwardported from bfd2462b8ddec591d953841ab22bb30bdc6f9085]
+[fbui: adjust context and make sure that strip of the domain name is
+       only done when setting the system host name. Therefore it's
+       still possible to pass an FQDN to hostnamectl]
+[fbui: I'm still not sure that it was the right thing to do. Other
+       possibility was to fix the installer to create a correct
+       /etc/hostname file. Need to investigate...]
+---
+ src/core/hostname-setup.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/hostname-setup.c b/src/core/hostname-setup.c
+index 6d047db838..1acc0c998b 100644
+--- a/src/core/hostname-setup.c
++++ b/src/core/hostname-setup.c
+@@ -39,8 +39,16 @@ int hostname_setup(void) {
+                                 enoent = true;
+                         else
+                                 log_warning_errno(r, "Failed to read configured hostname: %m");
+-                } else
++                } else {
++                        char *domain;
++
++                        /* SUSE: strip the domain name */
++                        domain = strchr(b, '.');
++                        if (domain)
++                                *domain = '\0';
++
+                         hn = b;
++                }
+         }
+ 
+         if (isempty(hn)) {
+-- 
+2.26.2
+

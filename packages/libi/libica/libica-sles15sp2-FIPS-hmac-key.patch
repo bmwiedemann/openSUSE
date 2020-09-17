@@ -1,12 +1,13 @@
 --- libica-3.6.0/src/fips.c	2020-05-04 17:01:23.238805001 -0400
 +++ libica-3.6.0/src/fips.c	2020-05-04 16:58:51.352241763 -0400
 @@ -45,8 +45,7 @@
-  * libica.so.MAJOR.hmac in the same directory as the .so module.
-  */
+  * .libica.so.VERSION.hmac in the same directory as the .so module.
+- */
++ /* HMAC key is hexidecimal for: "orboDeJITITejsirpADONivirpUkvarP" */
  static const char hmackey[] =
 -	"0000000000000000000000000000000000000000000000000000000000000000"
 -	"0000000000000000000000000000000000000000000000000000000000000000";
-+	"orboDeJITITejsirpADONivirpUkvarP";
++	"6f72626f44654a49544954656a7369727041444f4e6976697270556b76617250";
  
  int fips;
  

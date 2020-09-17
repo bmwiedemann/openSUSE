@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.51.ga4e393eecb
+%define suse_version +suse.20.gf1344d5b7f
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -55,7 +55,7 @@
 
 Name:           systemd-mini
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        245.7
+Version:        246.4
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -71,6 +71,7 @@ BuildRequires:  polkit
 # python is only required for generating systemd.directives.xml
 BuildRequires:  python3-base
 BuildRequires:  python3-lxml
+BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(libcryptsetup) >= 1.6.0
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(liblz4)
@@ -159,12 +160,28 @@ Source100:      scripts-systemd-fix-machines-btrfs-subvol.sh
 Source101:      scripts-systemd-upgrade-from-pre-210.sh
 Source102:      scripts-systemd-migrate-sysconfig-i18n.sh
 
-# Patches listed in here are put in quarantine. Normally all
-# changes must go to upstream first and then are cherry-picked in the
-# SUSE git repository. But in very few cases, some stuff might be
-# broken in upstream and need an urgent fix. Even in this case, the
-# patches are temporary and should be removed as soon as a fix is
-# merged by upstream.
+# Patches listed below are SUSE specific and should be kept at its
+# minimum. We try hard to push our changes to upstream but sometimes
+# they are only relevant for SUSE distros. Special rewards for those
+# who will manage to get rid of one of them !
+Patch1:         0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch
+Patch2:         0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
+Patch3:         0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
+Patch4:         0004-tmpfiles-support-exclude-statements-based-on-file-ow.patch
+Patch5:         0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
+Patch6:         0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch
+Patch7:         0007-networkd-make-network.service-an-alias-of-systemd-ne.patch
+Patch8:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
+Patch9:         0009-pid1-handle-console-specificities-weirdness-for-s390.patch
+Patch11:        0011-core-disable-session-keyring-per-system-sevice-entir.patch
+Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
+
+# Patches listed below are put in quarantine. Normally all changes
+# must go to upstream first and then are cherry-picked in the SUSE git
+# repository. But in very few cases, some stuff might be broken in
+# upstream and need an urgent fix. Even in this case, the patches are
+# temporary and should be removed as soon as a fix is merged by
+# upstream.
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -604,8 +621,10 @@ ln -s ../usr/bin/systemctl %{buildroot}/sbin/reboot
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/halt
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/shutdown
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/poweroff
+%if %{with sysvcompat}
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/telinit
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/runlevel
+%endif
 
 # Make sure we don't ship static enablement symlinks in /etc during
 # installation, presets should be honoured instead.
@@ -778,6 +797,19 @@ fi
 # which may still be used by yast.
 cat %{S:14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 
+# Create a drop-in to prevent journald from starting auditd during
+# boot (bsc#984034).
+mkdir -p %{buildroot}%{_prefix}/lib/systemd/journald.conf.d
+cat >%{buildroot}%{_prefix}/lib/systemd/journald.conf.d/20-suse-defaults.conf <<EOF
+[Journal]
+Audit=no
+EOF
+
+# Don't ship systemd-journald-audit.socket as there's no other way for
+# us to prevent journald from recording audit messages in the journal
+# by default (bsc#1109252).
+rm -f %{buildroot}%{_unitdir}/systemd-journald-audit.socket
+
 %if ! 0%{?bootstrap}
 %find_lang systemd
 %endif
@@ -864,9 +896,18 @@ fi
 # It's run only once.
 %{_prefix}/lib/systemd/scripts/migrate-sysconfig-i18n.sh || :
 
-# Previous versions had tmp.mount moved to /usr/share/systemd/tmp.mount.
-# It could be symlinked into /etc to make /tmp a tmpfs. The file does not exist anymore,
-# so migrate the link to the new location.
+# During the migration to tmpfs for /tmp, a bug was introduced that
+# affected users using tmpfs for /tmp and happened during the _second_
+# update following the one that introduced tmpfs on /tmp. It consisted
+# in creating a dangling symlink /etc/systemd/system/tmp.mount
+# pointing to the old copy that previous versions shipped in
+# /usr/share/systemd, which doesn't exist anymore. So we migrate the
+# link to the new location.
+#
+# Users have been exposed to this bug during a short period of time as
+# it was present only in one release and was fixed shortly after by
+# the next update. So we can assume that it's safe to drop it in 6
+# months (ie March 2021).
 if [ "$(readlink -f %{_sysconfdir}/systemd/system/tmp.mount)" = "%{_datadir}/systemd/tmp.mount" ] ; then
         ln -sf %{_unitdir}/tmp.mount %{_sysconfdir}/systemd/system/tmp.mount
 fi
@@ -883,7 +924,7 @@ fi
 # old systems, the file doesn't exist. This is equivalent to
 # generation #1, which enables the creation of all compat symlinks.
 if [ $1 -eq 1 ]; then
-	echo "COMPAT_SYMLINK_GENERATION=2">/usr/lib/udev/compat-symlink-generation
+	echo "COMPAT_SYMLINK_GENERATION=2" >/usr/lib/udev/compat-symlink-generation
 fi
 
 %post -n udev%{?mini}
@@ -1218,6 +1259,8 @@ fi
 %config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
 %config(noreplace) %{_sysconfdir}/systemd/user.conf
 
+%{_prefix}/lib/systemd/journald.conf.d/
+
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
 %dir %{_datadir}/dbus-1/system.d
@@ -1273,7 +1316,7 @@ fi
 %{_mandir}/man7/[bdfks]*
 %{_mandir}/man8/kern*
 %{_mandir}/man8/pam_*
-%{_mandir}/man8/systemd-[a-gik-tv]*
+%{_mandir}/man8/systemd-[a-gik-tvx]*
 %{_mandir}/man8/systemd-h[aioy]*
 %{_mandir}/man8/systemd-journald*
 %{_mandir}/man8/systemd-u[ps]*
@@ -1350,15 +1393,19 @@ fi
 /sbin/halt
 /sbin/shutdown
 /sbin/poweroff
+%if %{with sysvcompat}
 /sbin/telinit
 /sbin/runlevel
+%endif
 %{_sbindir}/init
 %{_sbindir}/reboot
 %{_sbindir}/halt
 %{_sbindir}/shutdown
 %{_sbindir}/poweroff
+%if %{with sysvcompat}
 %{_sbindir}/telinit
 %{_sbindir}/runlevel
+%endif
 %if ! 0%{?bootstrap}
 %{_mandir}/man1/init.1*
 %{_mandir}/man8/halt.8*

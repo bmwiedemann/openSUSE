@@ -1,10 +1,10 @@
 References: fate#326960, bsc#1123942
 
-Index: virt-manager-2.2.1/virtinst/install/installer.py
+Index: virt-manager-3.0.0/virtinst/install/installer.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/install/installer.py
-+++ virt-manager-2.2.1/virtinst/install/installer.py
-@@ -446,7 +446,10 @@ class Installer(object):
+--- virt-manager-3.0.0.orig/virtinst/install/installer.py
++++ virt-manager-3.0.0/virtinst/install/installer.py
+@@ -594,7 +594,10 @@ class Installer(object):
                  guest.bootloader = "pygrub"
              else:
                  guest.bootloader = None
@@ -16,16 +16,16 @@ Index: virt-manager-2.2.1/virtinst/install/installer.py
                  log.debug("Using grub.xen to boot guest")
                  on_reboot_value = guest.on_reboot
                  self._alter_bootconfig(guest)
-Index: virt-manager-2.2.1/virtManager/delete.py
+Index: virt-manager-3.0.0/virtManager/delete.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtManager/delete.py
-+++ virt-manager-2.2.1/virtManager/delete.py
-@@ -246,7 +246,7 @@ def populate_storage_list(storage_list,
-     diskdata.append(("dtb", vm.get_xmlobj().os.dtb, True, False, True))
+--- virt-manager-3.0.0.orig/virtManager/delete.py
++++ virt-manager-3.0.0/virtManager/delete.py
+@@ -458,7 +458,7 @@ def _populate_storage_list(storage_list,
+     model.clear()
  
-     for target, path, ro, shared, is_media in diskdata:
--        if not path or path == "/usr/lib/grub2/x86_64-xen/grub.xen":
-+        if not path or "grub.xen" in path:
+     for diskdata in diskdatas:
+-        if not diskdata.path or diskdata.path == "/usr/lib/grub2/x86_64-xen/grub.xen":
++        if not diskdata.path or "grub.xen" in diskdata.path:
              continue
  
          # There are a few pieces here

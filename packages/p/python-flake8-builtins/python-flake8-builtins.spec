@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-flake8-builtins
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Flake8 Builtins plugin
 License:        GPL-2.0-only

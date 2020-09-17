@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-settings-daemon
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-settings-daemon
-Version:        4.4.0
+Version:        4.6.4
 Release:        0
 Summary:        The settings Daemon for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -109,7 +109,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %license COPYING*
 %doc AUTHORS README.rst debian/changelog
-%config %{_sysconfdir}/dbus-1/system.d/org.cinnamon.SettingsDaemon.DateTimeMechanism.conf
+%config %{_datadir}/dbus-1/system.d/org.cinnamon.SettingsDaemon.DateTimeMechanism.conf
 %{_sysconfdir}/xdg/autostart/%{name}-*.desktop
 %{_libdir}/%{name}-3.0/
 %{_datadir}/%{name}-3.0/

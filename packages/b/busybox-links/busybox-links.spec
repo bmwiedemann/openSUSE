@@ -446,6 +446,7 @@ This package contains the symlinks to replace wget with busybox.
 %package -n busybox-vi
 Summary:        Busybox applets replacing vim
 Requires:       busybox = %{version}
+Conflicts:      gvim
 Conflicts:      vim
 Conflicts:      vim-small
 Conflicts:      vim-nox11

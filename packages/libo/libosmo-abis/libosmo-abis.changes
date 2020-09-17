@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:06:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.1
+  * e1d: Initial osmo-e1d support
+  * e1_input: Add VTY command to enable PCAP debug output
+- Add e1dapi.diff
+
+-------------------------------------------------------------------
 Mon Mar  9 20:24:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 0.8.1

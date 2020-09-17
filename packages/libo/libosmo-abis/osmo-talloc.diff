@@ -9,28 +9,28 @@ The source files use talloc, so link to talloc.
  src/Makefile.am |    2 +-
  2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/configure.ac b/configure.ac
-index 35b8328..b962cf6 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -59,6 +59,7 @@ AC_SUBST(SYMBOL_VISIBILITY)
- dnl Generate the output
- AM_CONFIG_HEADER(config.h)
- 
+Index: libosmo-abis-1.0.1/configure.ac
+===================================================================
+--- libosmo-abis-1.0.1.orig/configure.ac
++++ libosmo-abis-1.0.1/configure.ac
+@@ -69,6 +69,7 @@ PKG_CHECK_MODULES(LIBOSMOVTY, libosmovty
+ PKG_CHECK_MODULES(LIBOSMOGSM, libosmogsm >= 1.4.0)
+ PKG_CHECK_MODULES(LIBOSMOCODEC, libosmocodec >= 1.4.0)
+ PKG_CHECK_MODULES(ORTP, ortp >= 0.22.0)
 +PKG_CHECK_MODULES([TALLOC], [talloc])
- PKG_CHECK_MODULES(LIBOSMOCORE, libosmocore >= 1.0.0)
- PKG_CHECK_MODULES(LIBOSMOVTY, libosmovty >= 1.0.0)
- PKG_CHECK_MODULES(LIBOSMOGSM, libosmogsm >= 1.0.0)
-diff --git a/src/Makefile.am b/src/Makefile.am
-index 3838a5a..0eefd22 100644
---- a/src/Makefile.am
-+++ b/src/Makefile.am
-@@ -7,7 +7,7 @@ TRAU_LIBVERSION=4:0:2
+ 
+ AC_ARG_ENABLE([dahdi],
+ 	      AC_HELP_STRING([--disable-dahdi],
+Index: libosmo-abis-1.0.1/src/Makefile.am
+===================================================================
+--- libosmo-abis-1.0.1.orig/src/Makefile.am
++++ libosmo-abis-1.0.1/src/Makefile.am
+@@ -7,7 +7,7 @@ TRAU_LIBVERSION=5:0:3
  AM_CPPFLAGS = $(all_includes) -I$(top_srcdir)/include -I$(top_builddir)
- AM_CFLAGS= -Wall $(LIBOSMOCORE_CFLAGS) $(LIBOSMOGSM_CFLAGS) $(LIBOSMOVTY_CFLAGS) $(LIBOSMOE1D_CFLAGS) $(COVERAGE_CFLAGS)
+ AM_CFLAGS= -Wall $(LIBOSMOCORE_CFLAGS) $(LIBOSMOGSM_CFLAGS) $(LIBOSMOVTY_CFLAGS) $(LIBOSMOE1D_CFLAGS) $(LIBOSMOCODEC_CFLAGS) $(COVERAGE_CFLAGS)
  AM_LDFLAGS = $(COVERAGE_LDFLAGS)
--COMMONLIBS = $(LIBOSMOCORE_LIBS) $(LIBOSMOGSM_LIBS) $(LIBOSMOVTY_LIBS) $(LIBOSMOE1D_LIBS)
-+COMMONLIBS = $(TALLOC_LIBS) $(LIBOSMOCORE_LIBS) $(LIBOSMOGSM_LIBS) $(LIBOSMOVTY_LIBS) $(LIBOSMOE1D_LIBS)
+-COMMONLIBS = $(LIBOSMOCORE_LIBS) $(LIBOSMOGSM_LIBS) $(LIBOSMOVTY_LIBS) $(LIBOSMOE1D_LIBS) # libosmocodec not [yet] needed here
++COMMONLIBS = ${TALLOC_LIBS} $(LIBOSMOCORE_LIBS) $(LIBOSMOGSM_LIBS) $(LIBOSMOVTY_LIBS) $(LIBOSMOE1D_LIBS) # libosmocodec not [yet] needed here
  
  lib_LTLIBRARIES = libosmoabis.la libosmotrau.la
  

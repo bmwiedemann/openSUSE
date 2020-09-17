@@ -1,0 +1,29 @@
+From 0adc3f402aeeadd73a0977ca6a1bc65d3d4201c1 Mon Sep 17 00:00:00 2001
+From: Pawel Wieczorkiewicz <pwieczorkiewicz@suse.de>
+Date: Tue, 2 Jun 2015 13:33:24 +0000
+Subject: [PATCH 07/12] networkd: make network.service an alias of
+ systemd-networkd.service
+
+NetworkManager and wicked does this already. This is needed by yast2
+and other parts of the system.
+
+[fixes boo#933092]
+---
+ units/systemd-networkd.service.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/units/systemd-networkd.service.in b/units/systemd-networkd.service.in
+index 2673146841..083a35b912 100644
+--- a/units/systemd-networkd.service.in
++++ b/units/systemd-networkd.service.in
+@@ -50,6 +50,7 @@ User=systemd-network
+ 
+ [Install]
+ WantedBy=multi-user.target
++Alias=network.service
+ Also=systemd-networkd.socket
+ Alias=dbus-org.freedesktop.network1.service
+ 
+-- 
+2.26.2
+

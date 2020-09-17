@@ -1,0 +1,31 @@
+From 8acba8fc09a91831172658c9c0810aa45ab39245 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 1 Sep 2020 10:03:38 +0200
+Subject: [PATCH] FIPS: fix inconsistent error handling.
+
+when the HMAC file is not present/readable it is also an error.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ src/fips.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/fips.c b/src/fips.c
+index c0055b719bff..71a417e8de40 100644
+--- a/src/fips.c
++++ b/src/fips.c
+@@ -295,10 +295,8 @@ static int FIPSCHECK_verify(const char *path)
+ 		return 0;
+ 
+ 	fp = fopen(hmacpath, "r");
+-	if (fp == NULL) {
+-		rc = 1;
++	if (fp == NULL)
+ 		goto end;
+-	}
+ 
+ 	if (getline(&known_hmac_str, &n, fp) <= 0)
+ 		goto end;
+-- 
+2.28.0
+

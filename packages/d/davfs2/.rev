@@ -23,4 +23,19 @@
     <comment></comment>
     <requestid>816578</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a7274e5d0cc9591056dfe28ac4300ae3</srcmd5>
+    <version>1.6.0</version>
+    <time>1600347321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0
+  * Update documentation
+  * Remove Coda-support
+  * New parser for cookies (bug #58459).
+  * Add log message.
+  * Add option sharepoint_href_bug.
+  * Ignore option -n (sr #110191).
+- Remove add-neon-031-support.patch</comment>
+    <requestid>835029</requestid>
+  </revision>
 </revisionlist>

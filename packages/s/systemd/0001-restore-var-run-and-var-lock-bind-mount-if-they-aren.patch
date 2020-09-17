@@ -1,0 +1,80 @@
+From f98af900e625b15862f9173a5c55662d4cee7356 Mon Sep 17 00:00:00 2001
+From: Frederic Crozat <fcrozat@suse.com>
+Date: Mon, 29 Oct 2012 13:01:20 +0000
+Subject: [PATCH 01/12] restore /var/run and /var/lock bind mount if they
+ aren't symlink
+
+---
+ units/meson.build    |  2 ++
+ units/var-lock.mount | 19 +++++++++++++++++++
+ units/var-run.mount  | 19 +++++++++++++++++++
+ 3 files changed, 40 insertions(+)
+ create mode 100644 units/var-lock.mount
+ create mode 100644 units/var-run.mount
+
+diff --git a/units/meson.build b/units/meson.build
+index 275daad3f4..dadc9432ef 100644
+--- a/units/meson.build
++++ b/units/meson.build
+@@ -150,6 +150,8 @@ units = [
+         ['umount.target',                       ''],
+         ['usb-gadget.target',                   ''],
+         ['user.slice',                          ''],
++        ['var-run.mount',                       'HAVE_SYSV_COMPAT',        'local-fs.target.wants/'],
++        ['var-lock.mount',                      'HAVE_SYSV_COMPAT',        'local-fs.target.wants/'],
+         ['var-lib-machines.mount',              'ENABLE_MACHINED',
+          'remote-fs.target.wants/ machines.target.wants/'],
+ ]
+diff --git a/units/var-lock.mount b/units/var-lock.mount
+new file mode 100644
+index 0000000000..07277adac3
+--- /dev/null
++++ b/units/var-lock.mount
+@@ -0,0 +1,19 @@
++#  This file is part of systemd.
++#
++#  systemd is free software; you can redistribute it and/or modify it
++#  under the terms of the GNU General Public License as published by
++#  the Free Software Foundation; either version 2 of the License, or
++#  (at your option) any later version.
++
++[Unit]
++Description=Lock Directory
++Before=local-fs.target
++# skip mounting if the directory does not exist or is a symlink
++ConditionPathIsDirectory=/var/lock
++ConditionPathIsSymbolicLink=!/var/lock
++
++[Mount]
++What=/run/lock
++Where=/var/lock
++Type=bind
++Options=bind
+diff --git a/units/var-run.mount b/units/var-run.mount
+new file mode 100644
+index 0000000000..ab4da424c9
+--- /dev/null
++++ b/units/var-run.mount
+@@ -0,0 +1,19 @@
++#  This file is part of systemd.
++#
++#  systemd is free software; you can redistribute it and/or modify it
++#  under the terms of the GNU General Public License as published by
++#  the Free Software Foundation; either version 2 of the License, or
++#  (at your option) any later version.
++
++[Unit]
++Description=Runtime Directory
++Before=local-fs.target
++# skip mounting if the directory does not exist or is a symlink
++ConditionPathIsDirectory=/var/run
++ConditionPathIsSymbolicLink=!/var/run
++
++[Mount]
++What=/run
++Where=/var/run
++Type=bind
++Options=bind
+-- 
+2.26.2
+

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gabbi
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Declarative HTTP testing library
 License:        Apache-2.0

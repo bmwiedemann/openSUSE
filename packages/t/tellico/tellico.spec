@@ -1,7 +1,7 @@
 #
 # spec file for package tellico
 #
-# Copyright (c) 2020 SUSE LINUX LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tellico
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  libxslt-devel
 BuildRequires:  libyaz-devel
 BuildRequires:  pkgconfig
 BuildRequires:  taglib-devel
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
@@ -67,9 +68,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(libxml-2.0)
 Recommends:     %{name}-lang = %{version}
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 
 %description
 Tellico is an application for organizing your collections. It provides
@@ -83,14 +81,12 @@ stamps, trading cards, comic books, and wines.
 
 %build
 %cmake_kf5 "-DENABLE_WEBCAM=true" -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 
-%if 0%{?suse_version}
 %suse_update_desktop_file -r org.kde.%{name} Qt KDE Office Database
-%endif
 
 %find_lang %{name}
 %{kf5_find_htmldocs}

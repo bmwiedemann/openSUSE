@@ -1,7 +1,7 @@
 #
 # spec file for package tnef
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tnef
-Version:        1.4.17
+Version:        1.4.18
 Release:        0
 Summary:        Uncompress MS-TNEF Archives
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
-Url:            https://github.com/verdammelt/tnef/
+URL:            https://github.com/verdammelt/tnef/
 Source:         https://github.com/verdammelt/tnef/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  libtool
 

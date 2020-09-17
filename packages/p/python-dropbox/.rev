@@ -82,4 +82,41 @@
   * Assertions in constructors have been mapped to their BadInputException</comment>
     <requestid>814805</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a1b6ae43d1ab9cf9ff80ae7558ab4b71</srcmd5>
+    <version>10.4.1</version>
+    <time>1600347179</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.4.1:
+  * Fix bug with client copy
+  * Fix bug with team client as_user and as_admin
+  * Fix Python 3 linter issue
+  * Update tox.ini to check python 3.7 and 3.8
+  * Update setup.py to support python 3.7 and 3.8
+  * Remove stone as submodule and add as dependency
+  * Update Spec
+  * Files Namespace
+  * Add internal_error to SearchError union.
+  * Add locked to LookupError union.
+  * Add cant_move_into_vault to RelocationError union.
+  * Add MoveIntoVaultError union.
+  * Add SearchMatchFieldOptions struct.
+  * Add optional match_field_options to SearchV2Arg struct.
+  * Doc/example changes.
+  * Sharing Namespace
+  * Add is_vault to SharePathError union.
+  * Add invalid_shared_folder to AddFolderMemberError union.
+  * Team Namespace
+  * Make members field of LegalHoldsPolicyUpdateArg struct optional.
+  * Add app_folder_removal_not_supported to RevokeLinkedAppError union.
+  * Doc/example changes.
+  * Add auto_approve to InviteMethod union.
+  * Add moved_from_another_team to InviteMethod union.
+  * Add moved_from_another_team to MemberStatus union.
+  * Add no_one to SharedLinkVisibility union.
+  * Add optional new_team to MemberChangeStatusDetails struct.
+  * Add optional previous_team to MemberChangeStatusDetails struct.
+  * Add external_sharing_create_report_details to EventDetails union.</comment>
+    <requestid>835107</requestid>
+  </revision>
 </revisionlist>

@@ -17,13 +17,11 @@
 
 
 Name:           zathura
-Version:        0.4.5
+Version:        0.4.7
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
-URL:            http://pwmt.org/projects/zathura/
-# main homepage looks dead
-#Source:         http://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
+URL:            https://pwmt.org/projects/zathura/
 Source:         https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -108,17 +106,14 @@ export CFLAGS="%{optflags}"
 
 %files
 %license LICENSE
-%doc README AUTHORS
-%dir %{_datadir}/icons/scalable
-%dir %{_datadir}/icons/scalable/apps
+%doc README.md AUTHORS
 %{_bindir}/%{name}
 %{_datadir}/dbus-1/interfaces/org.pwmt.%{name}.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man5/%{name}rc.5%{?ext_man}
 %{_datadir}/applications/org.pwmt.zathura.desktop
-%{_datadir}/icons/hicolor/*/apps/org.pwmt.zathura.png
+%{_datadir}/icons/hicolor/*/apps/org.pwmt.zathura.*
 %{_datadir}/metainfo/org.pwmt.zathura.appdata.xml
-%{_datadir}/icons/scalable/apps/org.pwmt.zathura.svg
 
 %files devel
 %dir %{_includedir}/%{name}
@@ -132,7 +127,7 @@ export CFLAGS="%{optflags}"
 %{_datadir}/zsh/site-functions/_zathura
 
 %files fish-completion
-%{_datadir}/fish/completions/zathura.fish
+%{_datadir}/fish/vendor_completions.d/zathura.fish
 
 %files lang -f %{name}.lang
 

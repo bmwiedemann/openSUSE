@@ -1,0 +1,48 @@
+From 422913a4834a6bc35270d5d890cb43c84779f18d Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Wed, 6 May 2020 09:50:20 +0200
+Subject: [PATCH] FIPS: HMAC based library integrity check addon
+
+Initialize path variable with nulls by using calloc instead of
+malloc, improve checking of hmac length.
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+---
+ src/fips.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/fips.c b/src/fips.c
+index bab00db..a1c6f5f 100644
+--- a/src/fips.c
++++ b/src/fips.c
+@@ -154,7 +154,7 @@ static char *make_hmac_path(const char *origpath)
+ 	char *path;
+ 	const char *fn;
+ 
+-	path = malloc(sizeof(HMAC_PREFIX) + sizeof(HMAC_SUFFIX) + strlen(origpath) + 1);
++	path = calloc(1, sizeof(HMAC_PREFIX) + sizeof(HMAC_SUFFIX) + strlen(origpath) + 1);
+ 	if (path == NULL)
+ 		return NULL;
+ 
+@@ -184,6 +184,9 @@ static int compute_file_hmac(const char *path, void **buf, size_t *hmaclen)
+ 	size_t hlen, len;
+ 	long keylen;
+ 
++	*buf = NULL;
++	*hmaclen = 0;
++
+ 	keybuf = OPENSSL_hexstr2buf(hmackey, &keylen);
+ 	pkey = EVP_PKEY_new_mac_key(EVP_PKEY_HMAC, NULL, keybuf, (int)keylen);
+ 	if (!pkey)
+@@ -270,7 +273,7 @@ static int FIPSCHECK_verify(const char *path)
+ 	if (compute_file_hmac(path, &buf, &buflen) != 0)
+ 		goto end;
+ 
+-	if (memcmp(buf, hmac_buf, hmaclen) != 0)
++	if (memcmp(buf, hmac_buf, buflen) != 0)
+ 		goto end;
+ 
+ 	rc = 1;
+-- 
+2.26.2
+

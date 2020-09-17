@@ -17,7 +17,7 @@
 
 
 Name:           cura-engine
-Version:        4.6.1
+Version:        4.7.1
 Release:        0
 Summary:        3D printer control software
 License:        AGPL-3.0-only

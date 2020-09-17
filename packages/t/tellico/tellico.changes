@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:09:51 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.3.3:
+  Improvements:
+  * Improved the Entrez (Pubmed) data source to use an API key when
+    available and to honor the rate limit.
+  * Improved the ISDBdb data source to search for multiple ISBN
+    values (kde#415883).
+  Bug Fixes:
+  * Fixed Amazon data source (kde#425129).
+  * Updated DBC Open Search data source.
+  * Fixed regression for creation date in duplicated entries
+    (kde#422127).
+  * Fixed column header visibility after reordering fields
+    (kde#422298).
+  * Fixed focus issue in entry editor dialog (kde#343702).
+
+-------------------------------------------------------------------
+Thu Aug 27 14:12:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %cmake_build instead of %make_jobs
+
+-------------------------------------------------------------------
 Tue Aug 11 11:20:21 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 3.3.2:

@@ -1,0 +1,53 @@
+From 90d84a96aca84b39f6aabda048703dc7c0e79ef4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Fri, 11 Mar 2016 17:06:17 -0500
+Subject: [PATCH 12/12] resolved: create /etc/resolv.conf symlink at runtime
+
+If the symlink doesn't exists, and we are being started, let's
+create it to provie name resolution.
+
+If it exists, do nothing. In particular, if it is a broken symlink,
+we cannot really know if the administator configured it to point to
+a location used by some service that hasn't started yet, so we
+don't touch it in that case either.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1313085
+---
+ src/resolve/resolved.c | 6 ++++++
+ tmpfiles.d/etc.conf.m4 | 3 ---
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/resolve/resolved.c b/src/resolve/resolved.c
+index 16477f28d6..3922804039 100644
+--- a/src/resolve/resolved.c
++++ b/src/resolve/resolved.c
+@@ -53,6 +53,12 @@ static int run(int argc, char *argv[]) {
+                 if (r < 0)
+                         return log_error_errno(r, "Cannot resolve user name %s: %m", user);
+ 
++                /* As we're root, we can create /etc/resolv.conf symlink if it doesn't exist already */
++                r = symlink("../run/systemd/resolve/resolv.conf", "/etc/resolv.conf");
++                if (r < 0 && errno != EEXIST)
++                        log_warning_errno(errno,
++                                          "Could not create /etc/resolv.conf symlink: %m");
++
+                 /* As we're root, we can create the directory where resolv.conf will live */
+                 r = mkdir_safe_label("/run/systemd/resolve", 0755, uid, gid, MKDIR_WARN_MODE);
+                 if (r < 0)
+diff --git a/tmpfiles.d/etc.conf.m4 b/tmpfiles.d/etc.conf.m4
+index f82e0b82ce..66a777bdb2 100644
+--- a/tmpfiles.d/etc.conf.m4
++++ b/tmpfiles.d/etc.conf.m4
+@@ -12,9 +12,6 @@ L+ /etc/mtab - - - - ../proc/self/mounts
+ m4_ifdef(`HAVE_SMACK_RUN_LABEL',
+ t /etc/mtab - - - - security.SMACK64=_
+ )m4_dnl
+-m4_ifdef(`ENABLE_RESOLVE',
+-L! /etc/resolv.conf - - - - ../run/systemd/resolve/stub-resolv.conf
+-)m4_dnl
+ C! /etc/nsswitch.conf - - - -
+ m4_ifdef(`HAVE_PAM',
+ C! /etc/pam.d - - - -
+-- 
+2.26.2
+

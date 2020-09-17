@@ -1,7 +1,7 @@
 #
 # spec file for package libasn1c
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,13 @@ Release:        0
 Summary:        Osmocon ASN.1 decoder and encoder library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://openbsc.osmocom.org/trac/
+URL:            https://git.osmocom.org/libasn1c
 
 Source:         %name-%version.tar.xz
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libosmocore) >= 0.1.13
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Lev Walkins's asn1c runtime, as a shared library and with
@@ -66,20 +65,21 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libasn1c.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-echo %version >.tarball-version
+echo "%version" >.tarball-version
 autoreconf -fi
-%configure --disable-static
-make %{?_smp_mflags}
+# bugzilla.opensuse.org/795968 for rationale
+%configure --disable-static --includedir="%_includedir/%name"
+%make_build
 
 %install
 %make_install
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %check
-if ! make check %{?_smp_mflags}; then
+if ! %make_build check; then
 	find . -name testsuite.log -exec cat "{}" "+"
 fi
 
@@ -87,13 +87,11 @@ fi
 %postun -n libasn1c1 -p /sbin/ldconfig
 
 %files -n libasn1c1
-%defattr(-,root,root)
 %_libdir/libasn1c.so.1*
 
 %files -n libasn1c-devel
-%defattr(-,root,root)
-%doc COPYING
-%_includedir/asn1c/
+%license COPYING
+%_includedir/%name/
 %_libdir/pkgconfig/*.pc
 %_libdir/libasn1c.so
 

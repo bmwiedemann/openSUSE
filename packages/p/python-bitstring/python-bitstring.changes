@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:29:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.1.7:
+  * Fixing del not working correctly when stop value negative (Issue 201)
+  * Removed deprecated direct import of ABC from collections module (Issue 196)
+  * Tested and added explicit support for Python 3.7 and 3.8. (Issue 193)
+  * Fixing a few stale links to documentation. (Issue 194)
+  * Allowing initialisation with an io.BytesIO object. (Issue 189)
+
+-------------------------------------------------------------------
 Fri Sep 13 11:15:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.1.6:

@@ -16,11 +16,11 @@
 #
 
 
-%define version_unconverted 1.4.1355+0
+%define version_unconverted 1.4.1473+0
 
 Name:           psi+-lang
 URL:            https://github.com/psi-plus/psi-plus-l10n
-Version:        1.4.1355+0
+Version:        1.4.1473+0
 Release:        0
 Summary:        Translations for Psi+
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libqt5-linguist
 # for qmake-qt5:
 BuildRequires:  libqt5-qtbase-common-devel
+BuildRequires:  tar
 BuildRequires:  xz
 Requires:       psi+
 BuildArch:      noarch

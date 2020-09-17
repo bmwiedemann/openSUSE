@@ -1,7 +1,7 @@
 #
 # spec file for package libtins
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define soname  3
+%define libname  libtins4_2
 Name:           libtins
-Version:        3.5
+Version:        4.2
 Release:        0
 Summary:        C++ library for manipulating raw network packets
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Other
-Url:            http://libtins.github.io/
-Source0:        https://github.com/mfontanini/libtins/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM build.patch avvissu@yandex.ru-- Place the package file in LIB_INSTALL_DIR/cmake
-Patch0:         libtins-3.5_build.patch
+URL:            http://libtins.github.io/
+Source0:        https://github.com/mfontanini/%{name}/archive/v%{version}.tar.gz
+Patch0:         libtins-4.2_build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libpcap-devel
@@ -39,18 +38,18 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 The library provides a C++ interface for creating tools which
 need to send, receive and manipulate specially crafted packets.
 
-%package     -n %{name}%{soname}
+%package     -n %{libname}
 Summary:        C++ library for manipulating raw network packets
 Group:          System/Libraries
 
-%description -n %{name}%{soname}
+%description -n %{libname}
 The library provides a C++ interface for creating tools which
 need to send, receive and manipulate specially crafted packets.
 
 %package        devel
 Summary:        Development files for tins
 Group:          Development/Libraries/C and C++
-Requires:       %{name}%{soname} = %{version}
+Requires:       %{libname} = %{version}
 Requires:       libpcap-devel
 
 %description    devel
@@ -67,13 +66,14 @@ application that use libtins.
 %install
 %make_install -C build
 
-%post -n %{name}%{soname} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
 
-%postun -n %{name}%{soname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{name}%{soname}
+%files -n %{libname}
 %defattr(-,root,root)
-%doc CHANGES.md LICENSE README.md THANKS
+%doc CHANGES.md README.md THANKS
+%license LICENSE
 %{_libdir}/%{name}.so.*
 
 %files devel
@@ -81,6 +81,6 @@ application that use libtins.
 %{_includedir}/tins
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/%{name}.so
-%{_libdir}/cmake/tins
+%{_libdir}/cmake/libtins
 
 %changelog

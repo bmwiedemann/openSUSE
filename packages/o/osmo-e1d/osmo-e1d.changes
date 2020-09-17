@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sun Sep  6 12:49:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.1.1
+  * No user-visible changes.
+
+-------------------------------------------------------------------
+Wed Jul 01 19:17:39 UTC 2020 - mardnh@gmx.de
+
+- Update to version 0.1.0.1:
+  * add systemd service/unit
+  * Add osmo-e1d-pipe utility
+  * Add virtual pair of E1 interfaces
+
+-------------------------------------------------------------------
+Wed Jul 10 20:19:26 UTC 2019 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20190710:
+  * build: Disable some warnings
+  * proto: Fix aliasing error when setting the FD in the CMSG data
+
+-------------------------------------------------------------------
+Thu May 16 19:49:15 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.0.0+git.20190511

@@ -1,7 +1,7 @@
 #
 # spec file for package ucommon
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2008, 2009 David Sugar, Tycho Softworks.
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -16,7 +16,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,15 +25,14 @@ Version:        7.0.0
 Release:        0
 %define lname	libucommon8
 Summary:        Runtime library for portable C++ threading and sockets
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.gnu.org/software/commoncpp
+URL:            http://www.gnu.org/software/commoncpp
 
-#Git-Clone:	git://github.com/dyfet/ucommon
+#Git-Clone:	https://git.savannah.gnu.org/cgit/commoncpp.git
 Source:         http://ftp.gnu.org/gnu/commoncpp/%name-%version.tar.gz
 Source2:        http://ftp.gnu.org/gnu/commoncpp/%name-%version.tar.gz.sig
 Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gd
@@ -80,20 +79,18 @@ applications that use the uCommon library and frameworks.
 %package doc
 Summary:        Generated class documentation for ucommon
 Group:          Documentation
-%if 0%{?suse_version} >= 1230
 BuildArch:      noarch
-%endif
 
 %description doc
 Generated class documentation for GNU uCommon library from header files,
 html browsable.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -104,7 +101,6 @@ chmod a+x "%buildroot/%_bindir"/*-config
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README NEWS SUPPORT ChangeLog
 %_bindir/args
 %_bindir/car
@@ -126,14 +122,12 @@ chmod a+x "%buildroot/%_bindir"/*-config
 %_mandir/man1/keywait.*
 
 %files -n %lname
-%defattr(-,root,root)
-%doc COPYING COPYING.LESSER COPYRIGHT
+%license COPYING COPYING.LESSER COPYRIGHT
 %_libdir/libucommon.so.8*
 %_libdir/libusecure.so.8*
 %_libdir/libcommoncpp.so.8*
 
 %files devel
-%defattr(-,root,root)
 %_libdir/*.so
 %_includedir/ucommon/
 %_includedir/commoncpp/

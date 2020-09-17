@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 31 03:37:38 UTC 2020 - Karl Cheng <qantas94heavy@gmail.com>
+
+- Update pikepdf to 1.17.3
+- Allow test_object.py to run in package spec
+
+-------------------------------------------------------------------
 Thu Apr 23 09:57:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in python2 package on py3 only software

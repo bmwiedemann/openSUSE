@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dropbox
-Version:        10.2.0
+Version:        10.4.1
 Release:        0
 Summary:        Official Dropbox API Client
 License:        MIT

@@ -17,7 +17,7 @@
 
 
 Name:           uranium
-Version:        4.6.1
+Version:        4.7.1
 Release:        0
 Summary:        Python framework for Desktop applications
 License:        LGPL-3.0-only
@@ -26,8 +26,6 @@ URL:            http://github.com/Ultimaker/Uranium
 Source0:        Uranium-%{version}.tar.xz
 # X-OPENSUSE-FIX fix cmake install directory.
 Patch1:         fix-cmake-install.patch
-# PaTCH-FIX-UPSTREAM - https://github.com/Ultimaker/Uranium/issues/619
-Patch2:         0001-Handle-indexing-on-Python-3.8-AST-string-constants-c.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libArcus-devel
@@ -53,7 +51,6 @@ A Python framework for building Desktop applications.
 %prep
 %setup -q -n Uranium-%version
 %patch1 -p1
-%patch2 -p1
 
 %build
 # Hack, remove LIB_SUFFIX for 64bit, which is correct as uranium is pure python (i.e. noarch)
@@ -79,7 +76,7 @@ find %{buildroot}%{_datadir}/%{name} -type d -path \*i18n\* | sed '
 %check
 %{__python3} -m pip freeze
 # TestHttpRequestManager has threading issues, see https://github.com/Ultimaker/Uranium/issues/594
-%{__python3} -m pytest -v -k 'not TaskManagement/TestHttpRequestManager.py'
+%{__python3} -m pytest -v -k 'not TaskManagement.TestHttpRequestManager.py'
 
 %files -f %{name}.lang
 %license LICENSE

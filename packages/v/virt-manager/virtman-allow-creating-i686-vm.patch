@@ -1,11 +1,11 @@
 References: bsc#919692
 Because openSUSE repos combine 32 and 64 bit sources we need to
 continue showing the 'Architecture' pop-up.
-Index: virt-manager-2.2.1/virtManager/createvm.py
+Index: virt-manager-3.0.0/virtManager/createvm.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtManager/createvm.py
-+++ virt-manager-2.2.1/virtManager/createvm.py
-@@ -830,11 +830,6 @@ class vmmCreateVM(vmmGObjectUI):
+--- virt-manager-3.0.0.orig/virtManager/createvm.py
++++ virt-manager-3.0.0/virtManager/createvm.py
+@@ -862,11 +862,6 @@ class vmmCreateVM(vmmGObjectUI):
          for guest in self.conn.caps.guests:
              if guest.os_type == self._capsinfo.os_type:
                  archs.append(guest.arch)

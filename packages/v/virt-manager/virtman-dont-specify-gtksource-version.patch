@@ -1,5 +1,7 @@
---- virt-manager-2.2.0/virtManager/xmleditor.py.orig	2019-06-25 12:21:53.267971599 -0600
-+++ virt-manager-2.2.0/virtManager/xmleditor.py	2019-06-25 12:22:20.854908884 -0600
+Index: virt-manager-3.0.0/virtManager/xmleditor.py
+===================================================================
+--- virt-manager-3.0.0.orig/virtManager/xmleditor.py
++++ virt-manager-3.0.0/virtManager/xmleditor.py
 @@ -7,12 +7,12 @@ import gi
  from virtinst import log
  
@@ -7,13 +9,13 @@
 -try:
 -    gi.require_version("GtkSource", "4")
 -    log.debug("Using GtkSource 4")
--except ValueError:
+-except ValueError:  # pragma: no cover
 -    gi.require_version("GtkSource", "3.0")
 -    log.debug("Using GtkSource 3.0")
 +#try:
 +#    gi.require_version("GtkSource", "4")
 +#    log.debug("Using GtkSource 4")
-+#except ValueError:
++#except ValueError:  # pragma: no cover
 +#    gi.require_version("GtkSource", "3.0")
 +#    log.debug("Using GtkSource 3.0")
  from gi.repository import GtkSource

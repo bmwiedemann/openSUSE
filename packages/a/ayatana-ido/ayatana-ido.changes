@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:19:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix build:
+  * 0001-gtk_widget_get_state-is-deprecated.patch
+
+-------------------------------------------------------------------
 Fri Nov  8 03:40:02 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - add ayatana-ido-glib-2.58.patch

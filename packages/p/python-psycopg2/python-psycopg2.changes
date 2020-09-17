@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:18:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.8.6:
+  * Fixed memory leak changing connection encoding to the current one
+  * Fixed search of mxDateTime headers in virtualenvs (:ticket:`#996`).
+  * Added missing values from errorcodes (:ticket:`#1133`).
+  * `cursor.query` reports the query of the last :sql:`COPY` opearation too
+  * `~psycopg2.errorcodes` map and `~psycopg2.errors` classes updated to PostgreSQL 13.
+  * Added wheel packages for ARM architecture (:ticket:`#1125`).
+  * Wheel package compiled against OpenSSL 1.1.1g.
+
+-------------------------------------------------------------------
 Tue May 19 06:16:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Sort out the syntax of the deps bsc#1171213

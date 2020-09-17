@@ -1,19 +1,25 @@
-diff --git a/configure.ac b/configure.ac
-index 7af10ec..619f4ad 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -98,6 +98,7 @@ AC_SEARCH_LIBS([sctp_send], [sctp], [
- 	AC_MSG_ERROR([sctp_send not found in searched libs])])
- LIBS=$old_LIBS
+---
+ configure.ac         |    1 +
+ examples/Makefile.am |   30 +++++++++++++++---------------
+ src/Makefile.am      |    2 +-
+ 3 files changed, 17 insertions(+), 16 deletions(-)
+
+Index: libosmo-netif-1.0.0/configure.ac
+===================================================================
+--- libosmo-netif-1.0.0.orig/configure.ac
++++ libosmo-netif-1.0.0/configure.ac
+@@ -111,6 +111,7 @@ AS_IF([test "x$ENABLE_LIBSCTP" = "xyes"]
+ 	LIBS=$old_LIBS
+ ])
  
 +PKG_CHECK_MODULES([TALLOC], [talloc])
- AC_CHECK_HEADERS(dahdi/user.h,,AC_MSG_WARN(DAHDI input driver will not be built))
- 
  found_pcap=yes
-diff --git a/examples/Makefile.am b/examples/Makefile.am
-index 4125243..8780fba 100644
---- a/examples/Makefile.am
-+++ b/examples/Makefile.am
+ AC_CHECK_HEADERS(pcap.h,,found_pcap=no)
+ AM_CONDITIONAL(HAVE_PCAP, test "$found_pcap" = yes)
+Index: libosmo-netif-1.0.0/examples/Makefile.am
+===================================================================
+--- libosmo-netif-1.0.0.orig/examples/Makefile.am
++++ libosmo-netif-1.0.0/examples/Makefile.am
 @@ -1,5 +1,5 @@
  AM_CPPFLAGS = -I$(top_srcdir)/include
 -AM_CFLAGS=-Wall -g $(LIBOSMOCORE_CFLAGS) $(LIBOSMOGSM_CFLAGS) $(LIBOSMOABIS_CFLAGS) $(COVERAGE_CFLAGS)
@@ -90,10 +96,10 @@ index 4125243..8780fba 100644
  osmux_test_output_LDADD = $(top_builddir)/src/libosmonetif.la \
 -			  $(LIBOSMOCORE_LIBS) $(LIBOSMOGSM_LIBS)
 +			  $(LIBOSMOCORE_LIBS) $(LIBOSMOGSM_LIBS) $(TALLOC_LIBS)
-diff --git a/src/Makefile.am b/src/Makefile.am
-index 64fd1d4..3da783f 100644
---- a/src/Makefile.am
-+++ b/src/Makefile.am
+Index: libosmo-netif-1.0.0/src/Makefile.am
+===================================================================
+--- libosmo-netif-1.0.0.orig/src/Makefile.am
++++ libosmo-netif-1.0.0/src/Makefile.am
 @@ -3,7 +3,7 @@
  LIBVERSION=9:0:1
  

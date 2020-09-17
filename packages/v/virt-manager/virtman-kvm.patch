@@ -1,15 +1,15 @@
 /usr/bin/kvm doesn't exist on suse distros so check instead for
 /usr/bin/qemu-system-x86_64
-Index: virt-manager-2.2.0/virtManager/createconn.py
+Index: virt-manager-3.0.0/virtManager/createconn.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/createconn.py
-+++ virt-manager-2.2.0/virtManager/createconn.py
-@@ -67,7 +67,7 @@ class vmmCreateConn(vmmGObjectUI):
+--- virt-manager-3.0.0.orig/virtManager/createconn.py
++++ virt-manager-3.0.0/virtManager/createconn.py
+@@ -33,7 +33,7 @@ def _default_uri():  # pragma: no cover
  
-         if (os.path.exists("/usr/bin/qemu") or
-             os.path.exists("/usr/bin/qemu-kvm") or
--            os.path.exists("/usr/bin/kvm") or
-+            os.path.exists("/usr/bin/qemu-system-x86_64") or
-             os.path.exists("/usr/libexec/qemu-kvm") or
-             glob.glob("/usr/bin/qemu-system-*")):
-             return "qemu:///system"
+     if (os.path.exists("/usr/bin/qemu") or
+         os.path.exists("/usr/bin/qemu-kvm") or
+-        os.path.exists("/usr/bin/kvm") or
++        os.path.exists("/usr/bin/qemu-system-x86_64") or
+         os.path.exists("/usr/libexec/qemu-kvm") or
+         glob.glob("/usr/bin/qemu-system-*")):
+         return "qemu:///system"

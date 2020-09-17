@@ -1,0 +1,99 @@
+From 47a98c0f37af62783d59699b5e10830385817ec2 Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Fri, 21 Aug 2020 11:29:11 +0200
+Subject: [PATCH] Zeroize local variables
+
+Some internal variables used to store sensitive information (keys)
+were not zeroized before returning to the calling application.
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+---
+ src/ica_api.c          | 8 ++++++++
+ src/include/s390_aes.h | 4 ++++
+ src/include/s390_des.h | 8 ++++++++
+ 3 files changed, 20 insertions(+)
+
+diff --git a/src/ica_api.c b/src/ica_api.c
+index eb6b154..5bdf24e 100644
+--- a/src/ica_api.c
++++ b/src/ica_api.c
+@@ -1034,6 +1034,8 @@ unsigned int ica_rsa_mod_expo(ica_adapter_handle_t adapter_handle,
+ 	if (rc == 0)
+ 		stats_increment(ICA_STATS_RSA_ME, hardware, ENCRYPT);
+ 
++	OPENSSL_cleanse(&rb, sizeof(rb));
++
+ 	return rc;
+ }
+ 
+@@ -1089,6 +1091,10 @@ unsigned int ica_rsa_crt_key_check(ica_rsa_key_crt_t *rsa_key)
+ 
+ 		free(tmp_buf);
+ 
++		BN_clear_free(bn_p);
++		BN_clear_free(bn_q);
++		BN_clear_free(bn_invq);
++
+ 		return 1;
+ 	}
+ 	return 0;
+@@ -1147,6 +1153,8 @@ unsigned int ica_rsa_crt(ica_adapter_handle_t adapter_handle,
+ 	if (rc == 0)
+ 		stats_increment(ICA_STATS_RSA_CRT, hardware, ENCRYPT);
+ 
++	OPENSSL_cleanse(&rb, sizeof(rb));
++
+ 	return rc;
+ }
+ 
+diff --git a/src/include/s390_aes.h b/src/include/s390_aes.h
+index 2e2f325..4a02a4c 100644
+--- a/src/include/s390_aes.h
++++ b/src/include/s390_aes.h
+@@ -327,6 +327,8 @@ static inline int s390_aes_ecb_sw(unsigned int function_code,
+ 				&aes_key, direction);
+ 	}
+ 
++	OPENSSL_cleanse(&aes_key, sizeof(aes_key));
++
+ 	return 0;
+ }
+ 
+@@ -388,6 +390,8 @@ static inline int s390_aes_cbc_sw(unsigned int function_code,
+ 	AES_cbc_encrypt(input_data, output_data, input_length,
+ 			&aes_key, (unsigned char *) iv, direction);
+ 
++	OPENSSL_cleanse(&aes_key, sizeof(aes_key));
++
+ 	return 0;
+ }
+ 
+diff --git a/src/include/s390_des.h b/src/include/s390_des.h
+index 811de4d..81d8ed0 100644
+--- a/src/include/s390_des.h
++++ b/src/include/s390_des.h
+@@ -112,6 +112,10 @@ static inline int s390_des_ecb_sw(unsigned int function_code, unsigned long inpu
+ 		break;
+ 	}
+ 
++	OPENSSL_cleanse(&key_schedule1, sizeof(key_schedule1));
++	OPENSSL_cleanse(&key_schedule2, sizeof(key_schedule2));
++	OPENSSL_cleanse(&key_schedule2, sizeof(key_schedule3));
++
+ 	return 0;
+ }
+ 
+@@ -193,6 +197,10 @@ static inline int s390_des_cbc_sw(unsigned int function_code,
+ 		break;
+ 	};
+ 
++	OPENSSL_cleanse(&key_schedule1, sizeof(key_schedule1));
++	OPENSSL_cleanse(&key_schedule2, sizeof(key_schedule2));
++	OPENSSL_cleanse(&key_schedule2, sizeof(key_schedule3));
++
+ 	return 0;
+ }
+ 
+-- 
+2.26.2
+

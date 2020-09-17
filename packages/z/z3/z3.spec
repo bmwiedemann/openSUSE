@@ -18,17 +18,13 @@
 
 %define sover 4_8
 Name:           z3
-Version:        4.8.8
+Version:        4.8.9
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/Z3Prover/z3/wiki
 Source0:        https://github.com/Z3Prover/z3/archive/z3-%{version}.tar.gz
-Patch0:         remove-timestamp.patch
-# Remove after upstream bump, add PKG-CONFIG .pc file
-# https://github.com/Z3Prover/z3/pull/4368
-Patch1:         5a42a000e938a295feb1a7070dd74b192796db4e.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
@@ -71,8 +67,6 @@ Python bindings for the Z3 library.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %define __builder ninja

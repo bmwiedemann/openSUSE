@@ -21,7 +21,7 @@
 #
 
 Name:           rdiff-backup
-Version:        2.0.3
+Version:        2.0.5
 Release:        0
 Summary:        Convenient and transparent local/remote incremental mirror/backup
 License:        GPL-2.0-or-later

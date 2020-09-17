@@ -1,7 +1,7 @@
 #
 # spec file for package xed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xed
-Version:        2.4.2
+Version:        2.6.2
 Release:        0
 Summary:        A text editor with highlighting
 License:        GPL-2.0-or-later
@@ -108,7 +108,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc AUTHORS README debian/changelog
+%doc AUTHORS README.md debian/changelog
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %exclude %{_datadir}/%{name}/gir-1.0/

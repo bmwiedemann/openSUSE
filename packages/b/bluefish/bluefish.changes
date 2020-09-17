@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Aug 23 11:54:39 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.2.11
+  * Bluefish 2.2.11 is a minor maintenance release and minor feature release.
+  * The only exception to that is the python 3 compatibility which is a major
+    change. If you compile Bluefish with python 3, you might experience new
+    bugs.
+  * There are various minor changes as well.
+  * Double click selection has been improved (for example selecting a function
+    name that has underscores), and is now configurable per language.
+  * Bluefish now has a feature to fill a line with spaces up to a mouse click,
+    so you can start typing in any position on the screen (with a fixed width
+    font).
+  * A crash when running very large replace actions on disk on many files has
+    been fixed.
+  * Search and replace now ignores backup files by default.
+  * Cursor highlighting and line highlighting have been fixed for a rare bug.
+  * A small new feature has been added, to insert output from an external
+    command in the current cursor position.
+  * Many language files have seen updates, most notably CSS, Python and HTML.
+  * A data loss bug - when an unknown encoding was selected - was fixed, the
+    fallback is now to save as UTF-8.
+  * A bug when saving with unknown characters in the filename has also been
+    fixed.
+  * Printing has been improved such as printing in landscape.
+  * Some small tweaks to the UI have been implemented. For example you can now
+    search in files in the filebrowser (right click a directory). Search
+    results can now be shown in the output pane. 
+  * The current identifier can be selected using <shift><control><i>.
+  * Last there various fixes when Bluefish is run on top of Wayland. 
+- Update gpgkeyring to correct for source validation
+- Refresh patch remove-python-class-shebang.patch
+- Remove in %post since they are not needed anymore (triggers)
+  * %mime_database_post
+  * %desktop_database_post
+- Remove in %postun since they are not needed anymore (triggers)
+  * %mime_database_postun
+  * %desktop_database_postun
+- Run spec-cleaner
+  * Remove rpm groups
+  * use make macros
+-------------------------------------------------------------------
 Tue Nov 28 21:08:53 UTC 2017 - zaitor@opensuse.org
 
 - Drop obsolete and unused BuildRequires, not needed after the

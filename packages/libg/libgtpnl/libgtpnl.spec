@@ -1,7 +1,7 @@
 #
 # spec file for package libgtpnl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,13 @@ Release:        0
 Summary:        GPRS tunnel configuration library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://osmocom.org/projects/linux-kernel-gtp-u/wiki
+URL:            https://osmocom.org/projects/linux-kernel-gtp-u/wiki
 
 Source:         %name-%version.tar.xz
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl) >= 1.0.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libgtpnl wraps the genetlink-based GPRS tunnel configuration of the
@@ -58,31 +57,30 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libgtpnl.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 echo "%version" >.tarball-version
 autoreconf -fi
+# bugzilla.opensuse.org/795968 for rationale
 %configure --includedir="%_includedir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post   -n libgtpnl0 -p /sbin/ldconfig
 %postun -n libgtpnl0 -p /sbin/ldconfig
 
 %files -n libgtpnl0
-%defattr(-,root,root)
 %_libdir/libgtpnl.so.0*
 
 %files devel
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %_includedir/libgtpnl/
 %_libdir/libgtpnl.so
 %_libdir/pkgconfig/*.pc

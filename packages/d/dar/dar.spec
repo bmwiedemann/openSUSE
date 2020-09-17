@@ -18,7 +18,7 @@
 
 %define sover   6000
 Name:           dar
-Version:        2.6.10
+Version:        2.6.12
 Release:        0
 Summary:        Backup and Restore Application
 License:        SUSE-GPL-2.0+-with-openssl-exception

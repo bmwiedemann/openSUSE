@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:36:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.8.9:
+  significant improvements to regular expression solving expose user theory
+  plugin. It is a leaner user theory plugin that was once available.
+  It allows for registering callbacks that react to when bit-vector and Boolean variables
+  receive fixed values.
+  - many
+  - the new arithmetic theory is turned on by default. It _does_ introduce
+  regressions on several scenarios, but has its own advantages. Users can
+  turn on the old solver by setting smt.arith.solver=2.
+  Depending on feedback, we may turn toggle this default setting again back to smt.arith.solver=2.
+- remove remove-timestamp.patch, 5a42a000e938a295feb1a7070dd74b192796db4e.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Jul 17 23:58:58 UTC 2020 - Mark Stopka <mstopka@opensuse.org>
 
 - Backport pkg-config support from upstream

@@ -1,7 +1,7 @@
 #
 # spec file for package ayatana-ido
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,9 @@ URL:            https://github.com/AyatanaIndicators/ayatana-ido
 Source:         https://github.com/AyatanaIndicators/ayatana-ido/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 #PATCH-FIX-UPSTREAM ayatana-ido-glib-2.58.patch g_type_class_add_private was deprecated since glib 2.58
-Patch:          ayatana-ido-glib-2.58.patch
+Patch0:         ayatana-ido-glib-2.58.patch
+# PATCH-FIX-UPSTREAM 0001-gtk_widget_get_state-is-deprecated.patch -- gtk_widget_get_state is deprecated
+Patch1:         0001-gtk_widget_get_state-is-deprecated.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  mate-common
@@ -84,14 +86,13 @@ This package contains the development files for Ido.
 %build
 NOCONFIGURE=1 mate-autogen
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}

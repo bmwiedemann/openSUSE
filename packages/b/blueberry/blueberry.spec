@@ -18,7 +18,7 @@
 
 %define __requires_exclude typelib\\((St)\\)
 Name:           blueberry
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 Summary:        A configuration tool for Bluetooth
 License:        GPL-3.0-or-later
@@ -53,7 +53,7 @@ Utility for Bluetooth devices graphical configuration.
 %autosetup -p1
 cp -a %{SOURCE1} %{name}-rfkill.rules
 # Do not use env for Python scripts.
-sed -i '/^#!/s/env python3$/python3/' .%{_libexecdir}/%{name}/*
+sed -i '/^#!/s/env python3$/python3/' usr/lib/blueberry/*
 # Replace the icon with an existing one.
 sed -i 's/^\(Icon=\).*$/\1%{name}/' .%{_datadir}/applications/%{name}.desktop
 
@@ -64,21 +64,21 @@ sed -i 's/^\(Icon=\).*$/\1%{name}/' .%{_datadir}/applications/%{name}.desktop
 cp -a .%{_prefix} %{buildroot}%{_prefix}
 cp -a .%{_sysconfdir} %{buildroot}%{_sysconfdir}
 install -Dpm 0644 %{name}-rfkill.rules \
-  %{buildroot}%{_libexecdir}/udev/rules.d/61-%{name}-rfkill.rules
+  %{buildroot}%{_udevrulesdir}/61-%{name}-rfkill.rules
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/
 
 %files
 %license COPYING
 %doc README.md debian/changelog
-%{_sysconfdir}/xdg/autostart/%{name}-tray.desktop
-%{_sysconfdir}/xdg/autostart/%{name}-obex-agent.desktop
 %{_bindir}/%{name}*
-%{_libexecdir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/*/%{name}*
 %{_datadir}/glib-2.0/schemas/org.%{name}.gschema.xml
-%{_libexecdir}/udev/rules.d/61-%{name}-rfkill.rules
+%{_datadir}/icons/hicolor/*/*/%{name}*
+%{_prefix}/lib/%{name}/
+%{_sysconfdir}/xdg/autostart/%{name}-obex-agent.desktop
+%{_sysconfdir}/xdg/autostart/%{name}-tray.desktop
+%{_udevrulesdir}/61-%{name}-rfkill.rules
 
 %files lang -f %{name}.lang
 

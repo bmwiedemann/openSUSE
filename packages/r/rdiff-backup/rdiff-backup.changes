@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 17 10:16:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 2.0.5: 
+  * CHG: explicitly refuse to back-up to exFAT because it doesn't
+    handle properly case insensitive deletion of files
+  * CHG: testing explicitly for existence of tempdir might make
+    certain setups fail now because tempdir was silently ignored
+  * DEV: Add a misc script to setup an ArchLinux as development
+    platform
+  * DEV: fix compatibility in rollsum and sum-size with rdiff
+    2.2/2.3 leading to errors in librsynctest
+  * DEV: function rpath.getdevnums now also returns the device
+    type, block or char
+  * DEV: replace deprecated xattr.xattr with xattr. function
+  * FIX: address PY_SSIZE_T deprecation warning appearing
+    under Python 3.8 in the C code
+  * FIX: avoid TypeError: a bytes-like object is required,
+    not 'str' when logging error message by fixing encoding
+  * FIX: explicitly test existence of tempdir and avoid "Can't
+    mix strings and bytes in path components" error
+  * FIX: failed on certain device files with no such file
+    or directory error
+  * FIX: Force encoding of log file to be UTF-8 on all platforms
+    and be lenient to avoid codec errors on logging
+
+-------------------------------------------------------------------
 Tue May 19 10:39:10 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to 2.0.3:

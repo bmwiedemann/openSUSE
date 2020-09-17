@@ -140,4 +140,20 @@
     <comment></comment>
     <requestid>822103</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a942d6ffe3f14496881b8cb27ea92b12</srcmd5>
+    <version>5.0.4</version>
+    <time>1600347115</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 5.0.4:
+  * Add python versions 3.6.12, 3.7.9
+  * extended arg disassembly handling for {LOAD,STORE}_ATTR
+  * Add versions 3.8.5, 3.7.8, and 3.6.11
+  * Clarify changes to 3.8 `ROT_FOUR`
+  * Update 3.9 magics and opcodes
+  * Add Python 3.8.4 as a 3.8 release
+  * pydisasm.py Python 3.3 tolerance
+  * Make pydoc's version reporting show xdis's version</comment>
+    <requestid>835018</requestid>
+  </revision>
 </revisionlist>

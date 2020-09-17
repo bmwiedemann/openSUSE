@@ -1,0 +1,124 @@
+From b46d43bf980afe13cfff39fc2876aed10f33db1d Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Thu, 14 Apr 2016 15:42:02 +0200
+Subject: [PATCH 04/12] tmpfiles: support exclude statements based on file
+ ownership
+
+SUSE supported tmpfile cleanups based on file ownership before systemd.
+So this feature needs to be available in systemd.
+This was part of fate#314974
+
+[tblume: suse-only patch ported from SLES12-SP1 commit e769a63907ae4b]
+[tblume: part of fate#314974]
+---
+ man/tmpfiles.d.xml      |  4 +++-
+ src/tmpfiles/tmpfiles.c | 49 ++++++++++++++++++++++++++++++++---------
+ 2 files changed, 42 insertions(+), 11 deletions(-)
+
+diff --git a/man/tmpfiles.d.xml b/man/tmpfiles.d.xml
+index b9e9eee96c..b90ae01345 100644
+--- a/man/tmpfiles.d.xml
++++ b/man/tmpfiles.d.xml
+@@ -605,7 +605,9 @@ w- /proc/sys/vm/swappiness - - - - 10</programlisting></para>
+       suffixed by a newline. For <varname>C</varname>, specifies the source file or directory. For <varname>t</varname>
+       and <varname>T</varname>, determines extended attributes to be set. For <varname>a</varname> and
+       <varname>A</varname>, determines ACL attributes to be set. For <varname>h</varname> and <varname>H</varname>,
+-      determines the file attributes to set. Ignored for all other lines.</para>
++      determines the file attributes to set. For <varname>x</varname> and <varname>X</varname> a comma separated list
++      of usernames.  If given, only paths belonging to these users will be excluded during directory cleanup.  Ignored
++      for all other lines.</para>
+ 
+       <para>This field can contain specifiers, see below.</para>
+     </refsect2>
+diff --git a/src/tmpfiles/tmpfiles.c b/src/tmpfiles/tmpfiles.c
+index 2404e36bf2..349653c786 100644
+--- a/src/tmpfiles/tmpfiles.c
++++ b/src/tmpfiles/tmpfiles.c
+@@ -14,6 +14,8 @@
+ #include <sysexits.h>
+ #include <time.h>
+ #include <unistd.h>
++#include <sys/types.h>
++#include <pwd.h>
+ 
+ #include "sd-path.h"
+ 
+@@ -505,6 +507,7 @@ static int dir_cleanup(
+                 struct stat s;
+                 usec_t age;
+                 _cleanup_free_ char *sub_path = NULL;
++                Item *found;
+ 
+                 if (dot_or_dot_dot(dent->d_name))
+                         continue;
+@@ -546,15 +549,41 @@ static int dir_cleanup(
+                         goto finish;
+                 }
+ 
+-                /* Is there an item configured for this path? */
+-                if (ordered_hashmap_get(items, sub_path)) {
+-                        log_debug("Ignoring \"%s\": a separate entry exists.", sub_path);
+-                        continue;
+-                }
++                /* evaluate username arguments in ignore statements */
++                found = find_glob(globs, sub_path);
+ 
+-                if (find_glob(globs, sub_path)) {
+-                        log_debug("Ignoring \"%s\": a separate glob exists.", sub_path);
+-                        continue;
++                if (i->type == CREATE_DIRECTORY && found && found->argument) {
++                        struct passwd *pw;
++                        char *userfound = NULL, *args = strdup(found->argument);
++                        bool match = false;
++
++                        while ((userfound = strsep(&args, ","))) {
++                                pw = getpwnam(userfound);
++
++                                if (pw) {
++                                        if (s.st_uid == pw->pw_uid) {
++                                                match = true;
++                                                break;
++                                        }
++                                }
++                        }
++
++                        if (match) {
++                                log_debug("Ignoring \"%s\" of user \"%s\".", sub_path, pw->pw_name);
++                                match=false;
++                                continue;
++                        }
++                } else {
++                        /* Is there an item configured for this path? */
++                        if (ordered_hashmap_get(items, sub_path)) {
++                                log_debug("Ignoring \"%s\": a separate entry exists.", sub_path);
++                                continue;
++                        }
++
++                        if (found) {
++                                log_debug("Ignoring \"%s\": a separate glob exists.", sub_path);
++                                continue;
++                        }
+                 }
+ 
+                 if (S_ISDIR(s.st_mode)) {
+@@ -2637,8 +2666,6 @@ static int parse_line(
+         case EMPTY_DIRECTORY:
+         case TRUNCATE_DIRECTORY:
+         case CREATE_FIFO:
+-        case IGNORE_PATH:
+-        case IGNORE_DIRECTORY_PATH:
+         case REMOVE_PATH:
+         case RECURSIVE_REMOVE_PATH:
+         case ADJUST_MODE:
+@@ -2649,6 +2676,8 @@ static int parse_line(
+ 
+                 break;
+ 
++        case IGNORE_PATH:
++        case IGNORE_DIRECTORY_PATH:
+         case CREATE_FILE:
+         case TRUNCATE_FILE:
+                 break;
+-- 
+2.26.2
+

@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Sep 16 14:07:56 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop 0001-udev-temporarly-restore-the-creation-a-few-symlinks-.patch
+
+  linuxrc has already been fixed.
+
+-------------------------------------------------------------------
+Wed Sep 16 13:42:04 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Add 0001-udev-temporarly-restore-the-creation-a-few-symlinks-.patch
+
+  A temporary patch until the installer environment is updated to
+  create some of the symlinks that udevd used to create during its
+  startup but now udevd relies on the init system to do so.
+
+-------------------------------------------------------------------
+Thu Sep 10 12:59:54 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Rework how we prevent journald from both enabling auditd and
+  recording audit messages
+
+  journald.conf gained a new setting Audit= to control whether
+  journald enables audit during the boot process. So let's use it and
+  make sure it's disabled by default by shipping a drop-in that
+  overrides upstream default.
+
+  Also we used to patch systemd to prevent journald from reading the
+  audit messages. There's still no way for downstream to configure
+  that properly (we would need to mask systemd-journald-audit.socket
+  meaning shipping a symlink in /etc) but I think dropping
+  systemd-journald-audit.socket from the package is a nicer way to do
+  that as some users might choose to reenable this setting (by
+  reintroducing the socket unit in /etc).
+
+-------------------------------------------------------------------
+Thu Sep 10 09:02:13 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Enable audit support (bsc#1175883)
+
+  Enabling audit support in systemd will only make PID1 (and some of
+  its services) to generate some audit records for certain events. But
+  it doesn't affect journald, which has been prevented from recording
+  audit messages in the journal (SUSE specific behavior).
+
+-------------------------------------------------------------------
+Wed Sep  2 10:14:10 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v246.4 (commit f1344d5b7f31e98aedb01e606f41d74d3caaf446)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v246/NEWS for
+  details. 
+
+  Now that the number of SUSE specific patches has been shrinked and
+  is pretty low (12 at the time of this writing), they are no more
+  tracked by the git repo and are now handled at the package
+  level. Hence It is easier to maintain and identify them. This
+  effectively means that SUSE/v246 will contain upstream commits only.
+
+  Added 0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch
+  Added 0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
+  Added 0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
+  Added 0004-tmpfiles-support-exclude-statements-based-on-file-ow.patch
+  Added 0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
+  Added 0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch
+  Added 0007-networkd-make-network.service-an-alias-of-systemd-ne.patch
+  Added 0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
+  Added 0009-pid1-handle-console-specificities-weirdness-for-s390.patch
+  Added 0010-journald-disable-audit-support-completely-from-the-j.patch
+  Added 0011-core-disable-session-keyring-per-system-sevice-entir.patch
+  Added 0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
+
+-------------------------------------------------------------------
 Thu Aug 27 12:51:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Adjust %pre and %post for the restoration of upstream tmp.mount (boo#1175779)

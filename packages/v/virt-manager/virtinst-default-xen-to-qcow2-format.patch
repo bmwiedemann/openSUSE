@@ -1,10 +1,10 @@
 Reference: bnc#885380
 Allow Xen based VMs to default to using qcow2
-Index: virt-manager-2.2.0/virtinst/support.py
+Index: virt-manager-3.0.0/virtinst/support.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/support.py
-+++ virt-manager-2.2.0/virtinst/support.py
-@@ -249,7 +249,7 @@ class SupportCache:
+--- virt-manager-3.0.0.orig/virtinst/support.py
++++ virt-manager-3.0.0/virtinst/support.py
+@@ -242,7 +242,7 @@ class SupportCache:
      # This is an arbitrary check to say whether it's a good idea to
      # default to qcow2. It might be fine for xen or qemu older than the versions
      # here, but until someone tests things I'm going to be a bit conservative.

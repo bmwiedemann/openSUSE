@@ -4,11 +4,11 @@ a non pae version. The sles10 sp4 32bit kernel will only boot para-
 virtualized if the pae kernel is selected.
 Note that sles12 and newer has no 32bit release.
 
-Index: virt-manager-2.2.0/virtinst/install/urldetect.py
+Index: virt-manager-3.0.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/install/urldetect.py
-+++ virt-manager-2.2.0/virtinst/install/urldetect.py
-@@ -533,9 +533,14 @@ class _SuseDistro(_RHELDistro):
+--- virt-manager-3.0.0.orig/virtinst/install/urldetect.py
++++ virt-manager-3.0.0/virtinst/install/urldetect.py
+@@ -549,9 +549,14 @@ class _SuseDistro(_RHELDistro):
  
          if self.type == "xen":
              # Matches Opensuse > 10.2 and sles 10

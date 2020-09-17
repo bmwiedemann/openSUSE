@@ -1668,4 +1668,13 @@ for 12.3</comment>
   * whitelist libvirt-dbus rule file (bsc#1173093)</comment>
     <requestid>821045</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>59281a01ccd64fd8fade82f95e93e7df</srcmd5>
+    <version>1550+20200909.647e56f</version>
+    <time>1600347039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20200909.647e56f:
+  * whitelist org.freedesktop.network1.forcerenew (bsc#1176215)</comment>
+    <requestid>833401</requestid>
+  </revision>
 </revisionlist>

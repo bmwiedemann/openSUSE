@@ -320,4 +320,19 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment>- Sort out the syntax of the deps bsc#1171213</comment>
     <requestid>807105</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>051de8047c20a18220a21ec221570e91</srcmd5>
+    <version>2.8.6</version>
+    <time>1600347102</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.6:
+  * Fixed memory leak changing connection encoding to the current one
+  * Fixed search of mxDateTime headers in virtualenvs (:ticket:`#996`).
+  * Added missing values from errorcodes (:ticket:`#1133`).
+  * `cursor.query` reports the query of the last :sql:`COPY` opearation too
+  * `~psycopg2.errorcodes` map and `~psycopg2.errors` classes updated to PostgreSQL 13.
+  * Added wheel packages for ARM architecture (:ticket:`#1125`).
+  * Wheel package compiled against OpenSSL 1.1.1g.</comment>
+    <requestid>835010</requestid>
+  </revision>
 </revisionlist>

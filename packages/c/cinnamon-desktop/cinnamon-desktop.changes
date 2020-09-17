@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 13 19:15:59 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.6.4.
+  * gnome-rr.c: Only use nearest filtering for "pixel-exact" 
+    scaling, not any whole integer scale.
+  * gnome-rr-config.c: Don't ignore disabled monitors when shifting
+    the layout towards 0,0.
+
+-------------------------------------------------------------------
 Thu Jun 11 00:58:07 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update version 4.6.1

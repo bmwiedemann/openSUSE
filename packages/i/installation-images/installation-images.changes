@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Thu Sep 17 09:21:42 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#419
+- really create /dev symlinks udevd used to create (bsc#1176610)
+- 16.16
+
+--------------------------------------------------------------------
+Wed Sep 16 14:15:18 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#418
+- create /dev symlinks udev used to create (bsc#1176610)
+- 16.15
+
+--------------------------------------------------------------------
 Wed Sep 9 14:13:59 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#416

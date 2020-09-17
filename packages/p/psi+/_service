@@ -1,19 +1,15 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="disabled" name="obs_scm">
     <param name="url">git://github.com/psi-plus/psi-plus-snapshots.git</param>
     <param name="scm">git</param>
     <param name="filename">psi+</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
   </service>
-  <service mode="disabled" name="tar_scm">
+  <service mode="disabled" name="obs_scm">
     <param name="url">git://github.com/psi-plus/psi-plus-l10n.git</param>
     <param name="scm">git</param>
     <param name="filename">psi-plus-l10n</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-  </service>
-  <service mode="disabled" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">xz</param>
   </service>
   <service mode="disabled" name="set_version">
     <param name="basename">psi+</param>
@@ -22,5 +18,16 @@
   <service mode="disabled" name="set_version">
     <param name="basename">psi-plus-l10n</param>
     <param name="file">psi+-lang.spec</param>
+  </service>
+
+  <service mode="buildtime" name="tar">
+    <param name="obsinfo">psi+.obsinfo</param>
+  </service>
+  <service mode="buildtime" name="tar">
+    <param name="obsinfo">psi-plus-l10n.obsinfo</param>
+  </service>
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
   </service>
 </services>

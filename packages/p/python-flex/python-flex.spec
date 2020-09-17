@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flex
-Version:        6.14.0
+Version:        6.14.1
 Release:        0
 Summary:        Swagger Schema validation
 License:        MIT

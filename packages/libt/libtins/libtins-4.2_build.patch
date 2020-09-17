@@ -1,0 +1,21 @@
+diff -u libtins-4.2.orig/CMakeLists.txt libtins-4.2/CMakeLists.txt
+--- libtins-4.2.orig/CMakeLists.txt	2019-03-08 05:16:02.000000000 +0100
++++ libtins-4.2/CMakeLists.txt	2020-06-30 20:46:47.526556187 +0200
+@@ -232,7 +232,7 @@
+ )
+ 
+ IF (NOT CMAKE_INSTALL_LIBDIR)
+-    SET(CMAKE_INSTALL_LIBDIR lib)
++    SET(CMAKE_INSTALL_LIBDIR lib${LIB_SUFFIX})
+ ENDIF()
+ IF (NOT CMAKE_INSTALL_BINDIR)
+     SET(CMAKE_INSTALL_BINDIR bin)
+@@ -312,7 +312,7 @@
+ # **********************************
+ 
+ if(UNIX)
+-    set(CONF_CMAKE_INSTALL_DIR lib/cmake/libtins)
++    set(CONF_CMAKE_INSTALL_DIR lib${LIB_SUFFIX}/cmake/libtins)
+ else()
+     set(CONF_CMAKE_INSTALL_DIR CMake)
+ endif()

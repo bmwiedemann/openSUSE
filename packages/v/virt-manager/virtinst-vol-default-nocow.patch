@@ -4,11 +4,11 @@ issue on btrfs.
 
 Signed-off-by: Chunyan Liu <cyliu@suse.com>
 
-Index: virt-manager-2.2.1/virtinst/storage.py
+Index: virt-manager-3.0.0/virtinst/storage.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/storage.py
-+++ virt-manager-2.2.1/virtinst/storage.py
-@@ -548,6 +548,11 @@ class StorageVolume(_StorageObject):
+--- virt-manager-3.0.0.orig/virtinst/storage.py
++++ virt-manager-3.0.0/virtinst/storage.py
+@@ -569,6 +569,11 @@ class StorageVolume(_StorageObject):
          return self._pool_xml.get_disk_type()
      file_type = property(_get_vol_type)
  
@@ -20,11 +20,11 @@ Index: virt-manager-2.2.1/virtinst/storage.py
  
      ##################
      # XML properties #
-Index: virt-manager-2.2.1/virtinst/support.py
+Index: virt-manager-3.0.0/virtinst/support.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/support.py
-+++ virt-manager-2.2.1/virtinst/support.py
-@@ -283,6 +283,7 @@ class SupportCache:
+--- virt-manager-3.0.0.orig/virtinst/support.py
++++ virt-manager-3.0.0/virtinst/support.py
+@@ -269,6 +269,7 @@ class SupportCache:
      conn_vnc_none_auth = _make(hv_version={"qemu": "2.9.0"})
      conn_device_boot_order = _make(hv_version={"qemu": 0, "test": 0})
      conn_riscv_virt_pci_default = _make(version="5.3.0", hv_version={"qemu": "4.0.0"})

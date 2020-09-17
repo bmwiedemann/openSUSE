@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xdis
-Version:        5.0.1
+Version:        5.0.4
 Release:        0
 Summary:        Python cross-version byte-code disassembler and marshal routines
 License:        GPL-2.0-only

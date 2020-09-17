@@ -1,10 +1,10 @@
 References: bsc#1054986
 
-Index: virt-manager-2.2.1/virtinst/install/urldetect.py
+Index: virt-manager-3.0.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-2.2.1.orig/virtinst/install/urldetect.py
-+++ virt-manager-2.2.1/virtinst/install/urldetect.py
-@@ -586,6 +586,10 @@ class _SuseDistro(_RHELDistro):
+--- virt-manager-3.0.0.orig/virtinst/install/urldetect.py
++++ virt-manager-3.0.0/virtinst/install/urldetect.py
+@@ -596,6 +596,10 @@ class _SuseDistro(_RHELDistro):
          if re.search("openSUSE Tumbleweed", self.cache.treeinfo_name):
              return "opensusetumbleweed"
  
@@ -15,7 +15,7 @@ Index: virt-manager-2.2.1/virtinst/install/urldetect.py
          version, update = self.cache.split_version()
          base = self._variant_prefix + str(version)
          while update >= 0:
-@@ -593,7 +597,10 @@ class _SuseDistro(_RHELDistro):
+@@ -603,7 +607,10 @@ class _SuseDistro(_RHELDistro):
              # SLE doesn't use '.0' for initial releases in
              # osinfo-db (sles11, sles12, etc)
              if update > 0 or not base.startswith('sle'):
@@ -27,7 +27,7 @@ Index: virt-manager-2.2.1/virtinst/install/urldetect.py
              if OSDB.lookup_os(tryvar):
                  return tryvar
              update -= 1
-@@ -607,6 +614,14 @@ class _SuseDistro(_RHELDistro):
+@@ -617,6 +624,14 @@ class _SuseDistro(_RHELDistro):
          return var
  
  
@@ -42,7 +42,7 @@ Index: virt-manager-2.2.1/virtinst/install/urldetect.py
  class _SLESDistro(_SuseDistro):
      PRETTY_NAME = "SLES"
      matching_distros = ["sles"]
-@@ -852,6 +867,7 @@ def _build_distro_list(osobj):
+@@ -883,6 +898,7 @@ def _build_distro_list(osobj):
          _FedoraDistro,
          _RHELDistro,
          _CentOSDistro,

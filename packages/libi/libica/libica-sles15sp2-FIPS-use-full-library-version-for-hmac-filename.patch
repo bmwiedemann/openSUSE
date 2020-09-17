@@ -1,0 +1,38 @@
+From 71a04ed492f6cb9dd2de91ff28d0327d17fe702a Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 28 Aug 2020 14:08:53 +0200
+Subject: [PATCH] FIPS: use full library version for hmac filename.
+
+Fixes: 231bba3b32bd ("FIPS: introduce HMAC based library integrity check")
+Fixes: f9f148487fad ("fix library filename for FIPS integrity check")
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ src/fips.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/fips.c b/src/fips.c
+index facffee..c0055b7 100644
+--- a/src/fips.c
++++ b/src/fips.c
+@@ -42,7 +42,7 @@
+  * The hard-coded HMAC key to be optionally provided for the library
+  * integrity test. The recommended key size for HMAC-SHA256 is 64 bytes.
+  * The known HMAC is supposed to be provided as hex string in a file
+- * libica.so.MAJOR.hmac in the same directory as the .so module.
++ * .libica.so.VERSION.hmac in the same directory as the .so module.
+  */
+ static const char hmackey[] =
+ 	"0000000000000000000000000000000000000000000000000000000000000000"
+@@ -344,7 +344,7 @@ static void fips_lib_integrity_check(void)
+ {
+ 	int rc;
+ 	char path[PATH_MAX];
+-	const char *libname = "libica.so";
++	const char *libname = "libica.so." VERSION;
+ 	const char *symbolname = "ica_sha256";
+ 
+ 	rc = get_library_path(libname, symbolname, path, sizeof(path));
+-- 
+2.26.2
+

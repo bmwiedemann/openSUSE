@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pikepdf
-Version:        1.11.1
+Version:        1.17.3
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module attrs >= 19.1.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis >= 4.24}
 BuildRequires:  %{python_module lxml >= 4.0}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pybind11 >= 2.4.3}
 BuildRequires:  %{python_module pybind11-devel >= 2.4.3}
 BuildRequires:  %{python_module pytest >= 4.4.0}
@@ -66,10 +67,6 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# /usr/lib/python3.8/site-packages/_pytest/python.py:1170: in _idval
-#     elif hasattr(val, "__name__") and isinstance(val.__name__, str):
-#     ValueError: object is not a dictionary or a stream
-rm tests/test_object.py
 %pytest_arch
 
 %files %{python_files}

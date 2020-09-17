@@ -1,0 +1,44 @@
+From 54c1a5341c9a5cb5513e52548ab0490f8dafbff6 Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Thu, 27 Aug 2020 17:08:29 +0200
+Subject: [PATCH] FIPS: skip SHA3 tests if running on hardware without SHA3
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+---
+ src/fips.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/src/fips.c b/src/fips.c
+index 13a550b..facffee 100644
+--- a/src/fips.c
++++ b/src/fips.c
+@@ -95,11 +95,26 @@ SHA_KAT(384, 512);
+ SHA_KAT(512, 512);
+ #undef SHA_KAT
+ 
++static inline int sha3_available(void)
++{
++	sha3_224_context_t sha3_224_context;
++	unsigned char output_hash[SHA3_224_HASH_LENGTH];
++	unsigned char test_data[] = { 0x61,0x62,0x63 };
++	int rc = 0;
++
++	rc = ica_sha3_224(SHA_MSG_PART_ONLY, sizeof(test_data), test_data,
++			&sha3_224_context, output_hash);
++
++	return (rc == ENODEV ? 0 : 1);
++}
++
+ #define SHA3_KAT(_sha_, _ctx_)						\
+ static int sha3_##_sha_##_kat(void) {					\
+ 	sha3_##_ctx_##_context_t ctx;					\
+ 	size_t i;							\
+ 	unsigned char out[SHA3_##_sha_##_HASH_LENGTH];			\
++	if (!sha3_available()) 						\
++		return 0; 						\
+ 	for (i = 0; i < SHA3_##_sha_##_TV_LEN; i++) {			\
+ 		if (ica_sha3_##_sha_(SHA_MSG_PART_ONLY,			\
+ 		    SHA3_##_sha_##_TV[i].msg_len, SHA3_##_sha_##_TV[i].msg,	\
+-- 
+2.26.2
+

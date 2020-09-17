@@ -1,7 +1,7 @@
 #
 # spec file for package libsmpp34
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@ Release:        0
 Summary:        PDU SMPP packaging and unpackaging tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://osmocom.org/projects/libsmpp34
+URL:            https://osmocom.org/projects/libsmpp34
 Source:         %name-%version.tar.xz
 BuildRequires:  autoconf >= 2.57
 BuildRequires:  libtool
@@ -62,20 +62,21 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libsmpp34.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 echo "%version" >.tarball-version
 autoreconf -fi
+# bugzilla.opensuse.org/795968 for rationale
 %configure --disable-static --includedir="%_includedir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %check
-make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
+%make_build check || (find . -name testsuite.log -exec cat {} +)
 
 %post   -n libsmpp34-%sover -p /sbin/ldconfig
 %postun -n libsmpp34-%sover -p /sbin/ldconfig

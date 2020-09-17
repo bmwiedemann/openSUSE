@@ -1,7 +1,7 @@
 #
 # spec file for package ceres-solver
 #
-# Copyright (c) 2017-2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define sover 1
 
 Name:           ceres-solver
-Version:	1.14.0
+Version:        1.14.0
 Release:        0
-License:	BSD-3-Clause
-Summary:	C++ library for modeling and solving optimization problems
-URL:		http://ceres-solver.org/
-Group:		Development/Libraries/C and C++
-Source:		http://ceres-solver.org/%{name}-%{version}.tar.gz
-BuildRequires:	cmake >= 2.8.0
-BuildRequires:	gcc-c++
-BuildRequires:	pkgconfig(eigen3) >= 3.1.0
-BuildRequires:	glog-devel >= 0.3.1
-BuildRequires:	suitesparse-devel
-BuildRequires:	libcxsparse3
+Summary:        C++ library for modeling and solving optimization problems
+License:        BSD-3-Clause
+Group:          Development/Libraries/C and C++
+URL:            http://ceres-solver.org/
+Source:         http://ceres-solver.org/%{name}-%{version}.tar.gz
+BuildRequires:  cmake >= 2.8.0
+BuildRequires:  gcc-c++
+BuildRequires:  glog-devel >= 0.3.1
+BuildRequires:  libcxsparse3
+BuildRequires:  suitesparse-devel
+BuildRequires:  pkgconfig(eigen3) >= 3.1.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -42,9 +43,11 @@ problems.
 This package is built with Eigen only.
 
 %package -n libceres-devel
-Summary:	Ceres Solver header files
-Group:		Development/Libraries/C and C++
-Requires:	libceres%{sover} = %{version}
+Summary:        Ceres Solver header files
+License:        BSD-3-Clause
+Group:          Development/Libraries/C and C++
+Requires:       glog-devel >= 0.3.1
+Requires:       libceres%{sover} = %{version}
 
 %description -n libceres-devel
 Ceres Solver is a C++ library for modeling and solving large,
@@ -56,9 +59,9 @@ This package is built with Eigen only.
 
 
 %package -n libceres%{sover}
-Summary:	Ceres Solver shared library
+Summary:        Ceres Solver shared library
+License:        LGPL-2.1-only
 Group:          System/Libraries
-License:	LGPL-2.1
 
 %description -n libceres%{sover}
 Ceres Solver is a C++ library for modeling and solving large,
@@ -92,3 +95,5 @@ make
 %files -n libceres%{sover}
 %defattr(-,root,root)
 %{_libdir}/libceres.so.*
+
+%changelog

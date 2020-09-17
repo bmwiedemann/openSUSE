@@ -53,7 +53,7 @@ BuildRequires:  systemd
 %else
 BuildRequires:  pkg-config
 %endif
-%if 0%{?fedora_version} >= 24
+%if 0%{?fedora_version} >= 24 || 0%{?centos_version} >= 800
 BuildRequires:  glibc-langpack-de
 BuildRequires:  glibc-langpack-en
 %endif
@@ -76,7 +76,7 @@ BuildRequires:  xsltproc
 BuildRequires:  libzypp(plugin:commit)
 %endif
 BuildRequires:  pam-devel
-%if 0%{?fedora_version}
+%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version}
 BuildRequires:  json-c-devel
 %else
 BuildRequires:  libjson-c-devel

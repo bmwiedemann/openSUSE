@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-filetype
-Version:        1.0.5
+Version:        1.0.7
 Release:        0
 Summary:        Infer file type and MIME type of any file/buffer. No external dependencies
 License:        MIT

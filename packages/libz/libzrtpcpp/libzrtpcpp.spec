@@ -1,7 +1,7 @@
 #
 # spec file for package libzrtpcpp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libzrtpcpp
 %define lname	libzrtpcpp4
-Version:        4.6.6
+Version:        4.7.0
 Release:        0
 Summary:        A ccrtp extension for ZRTP support
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.gnutelephony.org/index.php/GNU_ZRTP
+URL:            http://www.gnutelephony.org/index.php/GNU_ZRTP
 
 #Git-Clone:	git://github.com/wernerd/ZRTPCPP
 #Git-Web:	https://github.com/wernerd/ZRTPCPP
-Source:         https://github.com/wernerd/ZRTPCPP/archive/V%version.tar.gz
+Source:         https://github.com/wernerd/ZRTPCPP/archive/%version.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 4.7
+BuildRequires:  libopenssl-1_0_0-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libccrtp) >= 2
-BuildRequires:  pkgconfig(libcrypto) < 1.1
 BuildRequires:  pkgconfig(sqlite3) >= 3.7
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A library that adds RFC6189-compliant ZRTP support to the GNU ccRTP
@@ -63,19 +62,16 @@ This package provides the header files for building applications that
 use libzrtpcpp.
 
 %prep
-%setup -qn ZRTPCPP-%version
+%autosetup -p1 -n ZRTPCPP-%version
 chmod a-x INSTALL
 
 %build
-mkdir build
-pushd build/
-
 # libzrtpcpp changed its API (apparently - can't tell whether aes_init
 # was meant to be exported or not), but failed to bump the SO version.
 # So now, add explicit symbol versions to ensure programs with wrong
 # ABI combinations are caught.
 echo "V_%version { global: *; };" >version.map
-cmake -DCMAKE_INSTALL_PREFIX="%_prefix" \
+%cmake -DCMAKE_INSTALL_PREFIX="%_prefix" \
 	-DCMAKE_C_FLAGS:STRING="%optflags" \
 	-DCMAKE_CXX_FLAGS:STRING="%optflags" \
 	-DCMAKE_LD_FLAGS:STRING="-Wl,--version-script=$PWD/version.map" \
@@ -83,25 +79,21 @@ cmake -DCMAKE_INSTALL_PREFIX="%_prefix" \
 %if "%_lib" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
-	..
-make %{?_smp_mflags} VERBOSE=1
-popd
+
+%cmake_build
 
 %install
-pushd build/
-%make_install
-popd
+%cmake_install
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS COPYING README.md
+%license COPYING
 %_libdir/libzrtpcpp.so.4*
 
 %files devel
-%defattr(-,root,root)
+%doc AUTHORS README.md
 %_libdir/libzrtpcpp.so
 %_libdir/pkgconfig/libzrtpcpp.pc
 %_includedir/libzrtpcpp/

@@ -36,4 +36,14 @@
     <comment></comment>
     <requestid>663760</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>59ffe614e0c086f4c7367bae563415e8</srcmd5>
+    <version>1.14.0</version>
+    <time>1600348040</time>
+    <user>dimstar_suse</user>
+    <comment>- libceres-devel requires glog-devel
+- cleanup spec-file format
+</comment>
+    <requestid>835164</requestid>
+  </revision>
 </revisionlist>
