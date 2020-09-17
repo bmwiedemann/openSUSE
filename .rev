@@ -935,4 +935,12 @@
     <comment>submit new version 0.8.13</comment>
     <requestid>830994</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>eb4548d338783675bf30c8b21f472daf</srcmd5>
+    <version>0.8.13</version>
+    <time>1600346213</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833842</requestid>
+  </revision>
 </revisionlist>
