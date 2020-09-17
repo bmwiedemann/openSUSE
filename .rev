@@ -303,4 +303,12 @@
     <comment>- BuildRequire pre-1.1 openssl.</comment>
     <requestid>555908</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5cbf58e002273b83b50c8a4ca1059859</srcmd5>
+    <version>4.7.0</version>
+    <time>1600346630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.7.0</comment>
+    <requestid>832615</requestid>
+  </revision>
 </revisionlist>

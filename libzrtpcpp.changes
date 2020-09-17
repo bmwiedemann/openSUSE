@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  6 13:52:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7.0
+  * Add a first version of a new SAS algorithm which renders 6 digits
+
+-------------------------------------------------------------------
 Sun Dec 10 23:31:20 UTC 2017 - jengelh@inai.de
 
 - BuildRequire pre-1.1 openssl.
