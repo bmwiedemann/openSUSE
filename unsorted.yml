@@ -3397,6 +3397,8 @@ unsorted:
   - fractal-lang 
   - frame 
   - frame-devel 
+  - framel 
+  - framel-devel 
   - frameworkintegration-devel 
   - frameworkintegration-devel-32bit: [x86_64] 
   - frameworkintegration-plugin-32bit: [x86_64] 
@@ -9807,6 +9809,7 @@ unsorted:
   - libfprint-doc 
   - libframe6 
   - libframe6-32bit: [x86_64] 
+  - libframel8 
   - libfreebl3-32bit: [x86_64] 
   - libfreebl3-hmac-32bit: [x86_64] 
   - libfreefare-devel 
@@ -11530,13 +11533,15 @@ unsorted:
   - libosmgpsmap-devel 
   - libosmo-dsp-devel 
   - libosmo-dsp-doc 
+  - libosmo-e1d-devel 
+  - libosmo-e1d0 
   - libosmo-fl2k0 
   - libosmo-gsup-client-devel 
   - libosmo-gsup-client0 
   - libosmo-mgcp-client-devel 
   - libosmo-mgcp-client6 
   - libosmo-mgcp-devel 
-  - libosmo-mtp-1_2_1 
+  - libosmo-mtp-1_3_0 
   - libosmo-mtp-devel 
   - libosmo-ranap-devel 
   - libosmo-ranap3 
@@ -11544,35 +11549,35 @@ unsorted:
   - libosmo-rspro1 
   - libosmo-sabp-devel 
   - libosmo-sabp0 
-  - libosmo-sccp-1_2_1 
+  - libosmo-sccp-1_3_0 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran5 
   - libosmo-simtrace2-0 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_2_1 
+  - libosmo-xua-1_3_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
-  - libosmoabis6 
+  - libosmoabis9 
   - libosmocodec-devel 
   - libosmocodec0 
   - libosmocoding-devel 
   - libosmocoding0 
   - libosmocore-devel 
   - libosmocore-tools 
-  - libosmocore12 
+  - libosmocore16 
   - libosmoctrl-devel 
   - libosmoctrl0 
   - libosmodsp0 
   - libosmogb-devel 
-  - libosmogb9 
+  - libosmogb11 
   - libosmogsm-devel 
-  - libosmogsm13 
+  - libosmogsm15 
   - libosmonetif-devel 
   - libosmonetif8 
   - libosmosdr0 
   - libosmosim-devel 
-  - libosmosim0 
+  - libosmosim2 
   - libosmotrau-devel 
   - libosmotrau2 
   - libosmousb-devel 
@@ -12935,7 +12940,7 @@ unsorted:
   - libtimidity2 
   - libtimidity2-32bit: [x86_64] 
   - libtins-devel 
-  - libtins3 
+  - libtins4_2 
   - libtinyb0 
   - libtinygettext0 
   - libtinyobjloader1 
@@ -15194,6 +15199,7 @@ unsorted:
   - msitools-lang 
   - msmtp 
   - msmtp-doc 
+  - msmtp-lang 
   - msmtp-mta 
   - msoak 
   - mspack-examples 
@@ -16875,6 +16881,7 @@ unsorted:
   - osmo-bts 
   - osmo-bts-omldummy 
   - osmo-bts-virtual 
+  - osmo-e1d 
   - osmo-fl2k 
   - osmo-fl2k-devel 
   - osmo-fl2k-udev 
@@ -20567,6 +20574,7 @@ unsorted:
   - python3-efl-doc 
   - python3-efl-examples 
   - python3-elasticsearch 
+  - python3-elasticsearch-dsl 
   - python3-elementpath 
   - python3-eliot 
   - python3-email-reply-parser 
@@ -20677,6 +20685,7 @@ unsorted:
   - python3-fontPens 
   - python3-forbiddenfruit 
   - python3-formats 
+  - python3-framel 
   - python3-freeipa 
   - python3-freetype-py 
   - python3-freezegun 
@@ -22996,6 +23005,7 @@ unsorted:
   - rsnapshot 
   - rsocket 
   - rsocket-32bit: [x86_64] 
+  - rspamd 
   - rss-glx 
   - rss2email 
   - rssguard 
