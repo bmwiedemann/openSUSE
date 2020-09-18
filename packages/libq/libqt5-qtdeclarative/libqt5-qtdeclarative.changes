@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:50:47 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 4GB min disk space
+
+-------------------------------------------------------------------
 Thu Sep 10 07:57:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.1:
