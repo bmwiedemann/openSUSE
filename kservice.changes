@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:50:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Implement invokeTerminal on Windows with workdir, command and envs
+  * Clean forward declaration
+  * Fix application preference ordering for mimetypes with multiple inheritance.
+  * Remove obsolete COPYING files
+  * Bundle the Application servicetype into a qrc file.
+  * Fix KApplicationTrader API docs being incompletely generated
+  * Expand tilde character when reading working directory (kde#424974)
+  * KService: Convert copyright statements to SPDX expressions
+  * Cleanup overload
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
