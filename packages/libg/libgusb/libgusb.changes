@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep 14 10:51:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.3.5:
+  - Add a way to get iConfiguration (Benson Leung)
+  - Allow building GtkDoc when building as a subproject (Richard Hughes)
+  - Fix version script to be more portable (Laurent Bigonville, Ting-Wei Lan)
+  - Include methods on plain structs in the version script (Simon McVittie)
+  - This fixes the symbol version for g_usb_version_string() to be in the right
+    place, so update this library alongside with external programs if you've
+    already started using this symbol for example in fwupd. We've put a mechanism
+    in place so this kind of thing can't happen again. Sorry!
+  - Validate the exported symbol list during check (Richard Hughes)
+  - Include the USB bus in the generated platform_id (Richard Hughes)
+  - Add a thin glib wrapper around libusb_endpoint_descriptor (Emmanuel Pacaud)
+  - Fix high number of wakeups when checking the GUsbContext (Richard Hughes)
+  - Use '#pragma once' to reduce boilerplate (Richard Hughes)
+  - Wrap the upstream libusb_strerror() (Richard Hughes)
+  - Do not use deprecated libusb API (Richard Hughes)
+  - Fix compilation on macOS (Richard Hughes)
+  - Use a 1ms timeout in the Windows event thread (Richard Hughes)
+  - Use has_link_argument() to detect linker flags (Richard Hughes)
+  - Add g_usb_device_get_spec() (Richard Hughes)
+  - Add g_usb_version_string() for fwupd (Richard Hughes)
+  - Add -Wswitch-enum (Benjamin Berg)
+  - Fix GI length introspection annotations (grindhold)
+  - Make gir generation optional (maxice8)
+
+-------------------------------------------------------------------
 Thu Mar  8 12:23:43 UTC 2018 - dimstar@opensuse.org
 
 - Update to version 0.3.0:
