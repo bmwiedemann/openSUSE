@@ -17,7 +17,7 @@
 
 
 Name:           perl-XML-LibXML
-Version:        2.0205
+Version:        2.0206
 Release:        0
 %define cpan_name XML-LibXML
 Summary:        Perl Binding for libxml2

@@ -594,4 +594,12 @@ newSVpvn() call. (forwarded request 122259 from k0da)</comment>
     <comment></comment>
     <requestid>802761</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>18d43ef2a1702d83afe79c4312345c7a</srcmd5>
+    <version>2.0206</version>
+    <time>1600432141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834855</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 03:12:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0206
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0206  2020-09-15
+      - Add expand_entities => 1 to the instantiation at lib/XML/LibXML/SAX.pm
+          - in order to fix https://rt.cpan.org/Public/Bug/Display.html?id=132759
+          - failing XML-Simple tests
+          - Thanks to SREZIC , and GRANTM .
+      - Update HACKING.txt .
+
+-------------------------------------------------------------------
 Sat May  9 03:11:02 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 2.0205
