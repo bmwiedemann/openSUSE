@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:18:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix login button appearance with KF 5.74:
+  * 0001-sddm-theme-lockscreen-Fix-login-button-size.patch
+
+-------------------------------------------------------------------
 Fri Sep  4 10:42:01 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - apply 0001-ksmserver-Use-UpdateLaunchEnvJob-to-sync-SESSION_MAN.patch,
