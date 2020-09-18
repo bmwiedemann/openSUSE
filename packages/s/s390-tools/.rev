@@ -320,4 +320,12 @@
     <comment></comment>
     <requestid>823201</requestid>
   </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>616dd45c772989c0866d4bd4ce31cae7</srcmd5>
+    <version>2.11.0</version>
+    <time>1600432210</time>
+    <user>dimstar_suse</user>
+    <comment>- use libexecdir for net-snmp agent config (forwarded request 834723 from oertel)</comment>
+    <requestid>834889</requestid>
+  </revision>
 </revisionlist>

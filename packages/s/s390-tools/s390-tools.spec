@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2001-2020 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -420,8 +420,8 @@ grep -v -E 'osasnmp|*\.conf$' %{_builddir}/%{name}-filelist >%{_builddir}/%{name
 grep    osasnmp[^-] %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.osasnmp
 
 touch boot/zipl/active_devices.txt
-mkdir -p usr/lib/net-snmp/agents
-cd	 usr/lib/net-snmp/agents
+mkdir -p ./%{_libexecdir}/net-snmp/agents
+cd	 ./%{_libexecdir}/net-snmp/agents
 cat <<EOT >osasnmpd
 #!/bin/sh
 PIDFILE=%{_localstatedir}/run/osasnmpd.pid
@@ -605,7 +605,7 @@ fi
 
 %files -n osasnmpd -f %{_builddir}/%{name}.osasnmp
 %defattr(-,root,root)
-%{_prefix}/lib/net-snmp/agents/osasnmpd
+%{_libexecdir}/net-snmp/agents/osasnmpd
 
 %files zdsfs
 %defattr(-,root,root)

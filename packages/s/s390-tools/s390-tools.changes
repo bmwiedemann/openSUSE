@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 18:46:04 CEST 2020 - ro@suse.de
+
+- use libexecdir for net-snmp agent config 
+
+-------------------------------------------------------------------
 Fri Jul 24 21:17:36 UTC 2020 - Mark Post <mpost@suse.com>
 
 - The location of the udevadm binary was changed from /sbin/ to /usr/bin
