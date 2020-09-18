@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:48:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Remove unused includes
+  * Clean forward declaration
+  * Remove obsolete COPYING files
+  * API dox: document CamelCase includes
+  * KBookmarkManager: clear memory tree when the file is deleted
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
