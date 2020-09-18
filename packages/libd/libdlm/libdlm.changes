@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:30:20 UTC 2020 - ghe@suse.com
+
+- Add notes in dlm.conf man page (bsc#1175812)
+ * add dlm_controld-add-note-that-the-dlm-file-is-not-creat.patch
+
+-------------------------------------------------------------------
 Fri May 15 08:10:20 UTC 2020 - ghe@suse.com
 
 - Support uint64_t corosync ringid (bsc#1168771)

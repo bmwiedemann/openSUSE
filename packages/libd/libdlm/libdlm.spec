@@ -43,6 +43,7 @@ Patch2:         0002-remove-sd-notify.patch
 Patch3:         0003-bnc#874705-nodes-without-quorum.patch
 Patch4:         sysmacros.patch
 Patch5:         cluster-ringid-seq.patch
+Patch6:         dlm_controld-add-note-that-the-dlm-file-is-not-creat.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
@@ -87,6 +88,7 @@ like OCFS2, to interface with the in-kernel distributed lock manager.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 ###########################################################
 
 %build

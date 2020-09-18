@@ -1,0 +1,33 @@
+From 74595a9400f20c4d4fd83c0a748ddb875d39f578 Mon Sep 17 00:00:00 2001
+From: Gang He <ghe@suse.com>
+Date: Mon, 14 Sep 2020 15:51:01 +0800
+Subject: [PATCH] dlm_controld: add note that the dlm file is not created
+
+/etc/dlm/dlm.conf file is not created during installation.
+we need to tell the user this configuration file does not exist.
+
+Signed-off-by: Gang He <ghe@suse.com>
+---
+ dlm_controld/dlm.conf.5 | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/dlm_controld/dlm.conf.5 b/dlm_controld/dlm.conf.5
+index 1ce0c644..78ac22c0 100644
+--- a/dlm_controld/dlm.conf.5
++++ b/dlm_controld/dlm.conf.5
+@@ -411,6 +411,12 @@ node id=1 mark=42
+ In which case node 1 will master 2/3 of the total resources and node 2
+ will master the other 1/3.
+ 
++.SH NOTES
++.B /etc/dlm/dlm.conf
++file is not created during installation.
++.br
++If you want to modify any default configuration items, you need to create and edit the file.
++
+ .SH SEE ALSO
+ .BR dlm_controld (8),
+ .BR dlm_tool (8)
+-- 
+2.12.3
+
