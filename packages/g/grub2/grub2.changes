@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  9 08:10:45 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Make efi hand off the default entry point of the linux command (bsc#1176134)
+  * 0001-efi-linux-provide-linux-command.patch
+
+-------------------------------------------------------------------
 Thu Aug 27 06:58:37 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Fix verification requested but nobody cares error when loading external

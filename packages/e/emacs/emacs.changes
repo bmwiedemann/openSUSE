@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:30:04 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-27.1-gif.patch from upstream mailing list to fix
+  crash on broken gif files 
+- Correct group of el package as well as provide it as devel packages
+
+-------------------------------------------------------------------
 Fri Aug 28 13:38:54 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Be sure that /usr/share/emacs/site-lisp/site-start.d/ is in

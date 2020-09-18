@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep  9 21:28:54 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 3.58:
+  * Improved `--force` fallback argument handling
+    (gl#saalen/highlight#163).
+  * Added C++ attribute syntax support.
+  * Added Lua fuction `StoreValue` to set and retrieve information
+    across Lua states.
+  * Added `extras/eclipse-themes/eclipse_color_themes.py` script to
+    retrieve themes from eclipsecolorthemes.org.
+  * Added support for Web Assembly Text.
+  * Updated mark_lines.lua to output 16m terminal sequences
+    (gl#saalen/highlight#164).
+  * Fixed issues in bash.lang (gl#saalen/highlight#161).
+  * Fixed Bash heredoc highlighting in bash_functions.lua
+    (gl#saalen/highlight#156).
+  * CLI: `highlight --version -q` only prints the version number.
+  * GUI: Added theme contrast indicator.
+- Rebase optflags patch:
+  * Remove highlight-3.53-use_optflags.patch.
+  * Add highlight-3.58-use_optflags.patch.
+
+-------------------------------------------------------------------
 Fri May 15 10:39:30 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 3.57:

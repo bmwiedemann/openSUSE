@@ -1,0 +1,99 @@
+diff -u -r gdm-3.36.3.orig/data/Init.in gdm-3.36.3/data/Init.in
+--- gdm-3.36.3.orig/data/Init.in	2020-09-16 10:46:25.114437000 +0200
++++ gdm-3.36.3/data/Init.in	2020-09-16 10:49:16.450653000 +0200
+@@ -22,14 +22,22 @@
+   echo "$OUTPUT"
+ }
+ 
+-sysresources=/etc/X11/Xresources
++if [ -f /etc/X11/Xresources ]; then
++    sysresources=/etc/X11/Xresources
++else
++    sysresources=/usr/etc/X11/Xresources
++fi
+ 
+ # merge in defaults
+ if [ -f "$sysresources" ]; then
+     xrdb -merge "$sysresources"
+ fi
+ 
+-sysmodmap=/etc/X11/Xmodmap
++if [ -f /etc/X11/Xmodmap ]; then
++    sysmodmap=/etc/X11/Xmodmap
++else
++    sysmodmap=/usr/etc/X11/Xmodmap
++fi
+ 
+ XMODMAP=`gdmwhich xmodmap`
+ if [ "x$XMODMAP" != "x" ] ; then
+diff -u -r gdm-3.36.3.orig/data/Xsession.in gdm-3.36.3/data/Xsession.in
+--- gdm-3.36.3.orig/data/Xsession.in	2020-09-16 10:46:25.136436000 +0200
++++ gdm-3.36.3/data/Xsession.in	2020-09-16 11:06:52.038405000 +0200
+@@ -29,11 +29,20 @@
+ # good for debugging where things went wrong
+ echo "$0: Beginning session setup..."
+ 
+-# First read /etc/profile and .profile
+-test -f /etc/profile && . /etc/profile
++# First read /etc/profile (resp. /usr/etc/profile) and .profile
++if [ -f /etc/profile ]; then
++  . /etc/profile
++elif [ -f /usr/etc/profile ]; then
++  . /usr/etc/profile
++fi
+ test -f "$HOME/.profile" && . "$HOME/.profile"
+-# Second read /etc/xprofile and .xprofile for X specific setup
+-test -f /etc/xprofile && . /etc/xprofile
++# Second read /etc/xprofile (resp. /usr/etc/xprofile)  and .xprofile for X specific setup
++if [ -f /etc/xprofile ]; then
++  . /etc/xprofile
++elif [ -f /usr/etc/xprofile ]; then
++  . /usr/etc/xprofile
++
++fi
+ test -f "$HOME/.xprofile" && . "$HOME/.xprofile"
+ 
+ # Translation stuff
+@@ -85,9 +94,23 @@
+ usermodmap="$HOME/.Xmodmap"
+ userxkbmap="$HOME/.Xkbmap"
+ 
+-sysresources=/etc/X11/Xresources 
+-sysmodmap=/etc/X11/Xmodmap 
+-sysxkbmap=/etc/X11/Xkbmap
++if [ -f /etc/X11/Xresources ]; then
++    sysresources=/etc/X11/Xresources
++else
++    sysresources=/usr/etc/X11/Xresources
++fi
++
++if [ -f /etc/X11/Xmodmap ]; then
++    sysmodmap=/etc/X11/Xmodmap
++else
++    sysmodmap=/usr/etc/X11/Xmodmap
++fi
++
++if [ -f /etc/X11/Xkbmap ]; then
++    sysxkbmap=/etc/X11/Xkbmap
++else
++    sysxkbmap=/usr/etc/X11/Xkbmap
++fi
+ 
+ rh6sysresources=/etc/X11/xinit/Xresources 
+ rh6sysmodmap=/etc/X11/xinit/Xmodmap 
+@@ -149,6 +172,15 @@
+ xhost +si:localuser:`id -un` || :
+ 
+ # run all system xinitrc shell scripts.
++if [ -d /usr/etc/X11/xinit/xinitrc.d ]; then
++    for i in /usr/etc/X11/xinit/xinitrc.d/* ; do
++	sname=$(basename $script)
++        test -x /etc/X11/xinit/xinitrc.d/$sname && continue
++        if [ -x "$i" -a ! -d "$i" ]; then
++            . "$i"
++        fi
++    done
++fi
+ if [ -d /etc/X11/xinit/xinitrc.d ]; then
+     for i in /etc/X11/xinit/xinitrc.d/* ; do
+         if [ -x "$i" -a ! -d "$i" ]; then

@@ -1,8 +1,8 @@
-Index: cpio-2.12/src/copyin.c
+Index: cpio-2.13/src/copyin.c
 ===================================================================
---- cpio-2.12.orig/src/copyin.c
-+++ cpio-2.12/src/copyin.c
-@@ -871,6 +871,8 @@ read_pattern_file ()
+--- cpio-2.13.orig/src/copyin.c
++++ cpio-2.13/src/copyin.c
+@@ -798,6 +798,8 @@ read_pattern_file ()
    pattern_fp = fopen (pattern_file_name, "r");
    if (pattern_fp == NULL)
      open_fatal (pattern_file_name);
@@ -11,7 +11,7 @@ Index: cpio-2.12/src/copyin.c
    while (ds_fgetstr (pattern_fp, &pattern_name, '\n') != NULL)
      {
        if (new_num_patterns >= max_new_patterns)
-@@ -885,6 +887,7 @@ read_pattern_file ()
+@@ -812,6 +814,7 @@ read_pattern_file ()
      }
    if (ferror (pattern_fp) || fclose (pattern_fp) == EOF)
      close_error (pattern_file_name);

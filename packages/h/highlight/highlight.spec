@@ -18,7 +18,7 @@
 
 %bcond_without gui
 Name:           highlight
-Version:        3.57
+Version:        3.58
 Release:        0
 Summary:        Universal Source Code to Formatted Text Converter
 License:        GPL-3.0-or-later
@@ -29,8 +29,8 @@ Source1:        http://www.andre-simon.de/zip/%{name}-%{version}.tar.bz2.asc
 Source99:       highlight.keyring
 # PATCH-FIX-OPENSUSE highlight-3.45-fix-doc-dir.patch
 Patch0:         highlight-3.45-fix-doc-dir.patch
-# PATCH-FIX-OPENSUSE highlight-3.53-use_optflags.patch
-Patch1:         highlight-3.53-use_optflags.patch
+# PATCH-FIX-OPENSUSE highlight-3.58-use_optflags.patch
+Patch1:         highlight-3.58-use_optflags.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel

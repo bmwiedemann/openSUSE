@@ -1,12 +1,0 @@
-Index: cpio-2.12/src/util.c
-===================================================================
---- cpio-2.12.orig/src/util.c
-+++ cpio-2.12/src/util.c
-@@ -812,6 +812,7 @@ get_inode_and_dev (struct cpio_file_stat
-       hdr->c_dev_maj = major (st->st_dev);
-       hdr->c_dev_min = minor (st->st_dev);
-     }
-+  return 0;
- }
- 
- 

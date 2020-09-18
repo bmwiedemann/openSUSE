@@ -435,4 +435,12 @@
   * Avoid ``hasattr`` call in ``BrotliDecoder.decompress()`` (Pull #1858)</comment>
     <requestid>824352</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>a0fbf1f70d6ff08d8b627849539f5dce</srcmd5>
+    <version>1.25.10</version>
+    <time>1600431796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833356</requestid>
+  </revision>
 </revisionlist>

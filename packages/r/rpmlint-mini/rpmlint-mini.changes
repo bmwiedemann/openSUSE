@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 10 09:23:46 UTC 2020 - matthias.gerstner@suse.com
+
+- Update of rpmlint-security-whitelistings:
+  * world-writable-whitelist: fix mixed tabs/whitespace
+  * device-files-whitelist: fix mode of named: urandom dev file
+
+-------------------------------------------------------------------
 Wed Aug 12 11:50:49 UTC 2020 - matthias.gerstner@suse.com
 
 - seucirty-whitelistings: update to version master:

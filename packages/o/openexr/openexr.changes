@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 18:56:44 CEST 2020 - ro@suse.de
+
+- Disable testsuite also on s390/s390x, probably will not pass
+  on any bigendian platform in current state 
+
+-------------------------------------------------------------------
 Thu Jul 16 07:06:33 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Disable testsuite also on ppc

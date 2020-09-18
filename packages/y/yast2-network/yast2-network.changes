@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 15 19:51:36 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Infer the vlan_id from the interface file name when the attribute
+  is not declared explicitly (bsc#1176575)
+- 4.3.20
+
+-------------------------------------------------------------------
 Thu Sep 10 08:16:52 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - When proposing the virtualization network configuration, force a

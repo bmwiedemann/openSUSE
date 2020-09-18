@@ -847,4 +847,14 @@ undo bootstrap workaround</comment>
   * Introduce new metadata based whitelistings for device files and world-writable files</comment>
     <requestid>826022</requestid>
   </revision>
+  <revision rev="105" vrev="22">
+    <srcmd5>1baef3a3028216412475851fec3d2c4d</srcmd5>
+    <version>1.10</version>
+    <time>1600431901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update of rpmlint-security-whitelistings:
+  * world-writable-whitelist: fix mixed tabs/whitespace
+  * device-files-whitelist: fix mode of named: urandom dev file</comment>
+    <requestid>833416</requestid>
+  </revision>
 </revisionlist>

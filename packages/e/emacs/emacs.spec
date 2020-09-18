@@ -178,6 +178,7 @@ Patch24:        emacs-25.2-ImageMagick7.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch27:        emacs-27.1-home.patch
+Patch28:        emacs-27.1-gif.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -242,8 +243,9 @@ Support.
 
 %package     -n emacs-el
 Requires:       emacs = %{version}-%{release}
+Provides:       emacs-devel = %{version}-%{release}
 Summary:        Several Lisp Files for GNU Emacs
-Group:          Productivity/Text/Editors
+Group:          Development/Libraries/Other
 BuildArch:      noarch
 
 %description -n emacs-el
@@ -252,7 +254,7 @@ files are pre-byte compiled and therefore not necessary.
 
 %package     -n emacs-info
 Summary:        Info files for GNU Emacs
-Group:          Productivity/Text/Editors
+Group:          Documentation/Other
 %if 0%{?suse_version} <= 1500
 Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
@@ -293,6 +295,7 @@ and most assembler-like syntaxes.
 %patch25 -p0 -b .xft
 %patch26 -p0 -b .fmt
 %patch27 -p0 -b .home
+%patch28 -p1 -b .crash
 %patch   -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/

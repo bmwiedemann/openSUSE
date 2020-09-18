@@ -531,4 +531,13 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment></comment>
     <requestid>824133</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>c268bb424dcb63f06be5c8775590a4a2</srcmd5>
+    <version>2.5.2</version>
+    <time>1600432083</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable testsuite also on s390/s390x, probably will not pass
+  on any bigendian platform in current state (forwarded request 834725 from oertel)</comment>
+    <requestid>834726</requestid>
+  </revision>
 </revisionlist>

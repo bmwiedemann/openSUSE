@@ -1,0 +1,103 @@
+From 987ab0dfbe7ef42bb6386fb7b428d3b965ba6d2b Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 7 Sep 2020 17:02:57 +0800
+Subject: [PATCH] efi/linux: provide linux command
+
+The linux kernel's efi handover entry point is used to boot efistub of
+the linux kernel. Since then the efistub has been improved with many new
+features and fixes that ordinary 32-bit entry point cannot provide.
+
+Besides, nearly every x86 efi kernel is built with efistub enabled so it
+is of little value to keep 32-bit entry as default to boot kernel
+without needed kconfig options enabled.
+
+For all good reasons, making efi handover the default entry point for
+booting kernel in x86 efi platform so that linux command works in the
+same way to linuxefi. This can also reduce the complexity of providing
+general grub configuation for x86 system due to the linux command may
+not be available in signed image for UEFI Secure Boot and linuxefi is
+not available for leagcy bios booting.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/Makefile.core.def       |  6 ++++--
+ grub-core/gensyminfo.sh.in        |  3 +++
+ grub-core/loader/i386/efi/linux.c | 17 +++++++++++++----
+ 3 files changed, 20 insertions(+), 6 deletions(-)
+
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index 6045da47b..3ea9dace0 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1773,7 +1773,9 @@ module = {
+ 
+ module = {
+   name = linux;
+-  x86 = loader/i386/linux.c;
++  i386_pc = loader/i386/linux.c;
++  i386_efi = loader/i386/efi/linux.c;
++  x86_64_efi = loader/i386/efi/linux.c;
+   i386_xen_pvh = loader/i386/linux.c;
+   xen = loader/i386/xen.c;
+   i386_pc = lib/i386/pc/vesa_modes_table.c;
+@@ -1852,7 +1854,7 @@ module = {
+ 
+ module = {
+   name = linuxefi;
+-  efi = loader/i386/efi/linux.c;
++  efi = lib/fake_module.c;
+   enable = i386_efi;
+   enable = x86_64_efi;
+ };
+diff --git a/grub-core/gensyminfo.sh.in b/grub-core/gensyminfo.sh.in
+index 9bc767532..098de9258 100644
+--- a/grub-core/gensyminfo.sh.in
++++ b/grub-core/gensyminfo.sh.in
+@@ -35,3 +35,6 @@ fi
+ 
+ # Print all undefined symbols used by module
+ @TARGET_NM@ -u @TARGET_NMFLAGS_MINUS_P@ -p $module | sed "s@^\([^ ]*\).*@undefined $modname \1@g"
++
++# Specify linuxefi module should load default linux
++test "$modname" = "linuxefi" && echo "undefined $modname grub_initrd_init" || true
+diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
+index 8017e8c05..3f6d51519 100644
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -347,20 +347,29 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+ }
+ 
+ static grub_command_t cmd_linux, cmd_initrd;
++static grub_command_t cmd_linuxefi, cmd_initrdefi;
+ 
+-GRUB_MOD_INIT(linuxefi)
++GRUB_MOD_INIT(linux)
+ {
+-  cmd_linux =
++  cmd_linuxefi =
+     grub_register_command ("linuxefi", grub_cmd_linux,
+                            0, N_("Load Linux."));
+-  cmd_initrd =
++  cmd_initrdefi =
+     grub_register_command ("initrdefi", grub_cmd_initrd,
+                            0, N_("Load initrd."));
++  cmd_linux =
++    grub_register_command ("linux", grub_cmd_linux,
++                           0, N_("Load Linux."));
++  cmd_initrd =
++    grub_register_command ("initrd", grub_cmd_initrd,
++                           0, N_("Load initrd."));
+   my_mod = mod;
+ }
+ 
+-GRUB_MOD_FINI(linuxefi)
++GRUB_MOD_FINI(linux)
+ {
++  grub_unregister_command (cmd_linuxefi);
++  grub_unregister_command (cmd_initrdefi);
+   grub_unregister_command (cmd_linux);
+   grub_unregister_command (cmd_initrd);
+ }
+-- 
+2.26.2
+

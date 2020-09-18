@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 11 11:45:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add cpio-revert-CVE-2015-1197-fix.patch as recommended by upstream
+  to fix https://lists.gnu.org/archive/html/bug-cpio/2019-11/msg00016.html 
+
+-------------------------------------------------------------------
+Sat Aug 15 16:18:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.13:
+  * CVE-2015-1197, CVE-2016-2037, CVE-2019-14866 
+- remove patches (upstream):
+  cpio-2.12-out_of_bounds_write.patch, cpio-2.12-CVE-2019-14866.patch,
+  cpio-2.12-util.c_no_return_in_nonvoid_fnc.patch,
+  cpio-check_for_symlinks.patch
+
+-------------------------------------------------------------------
 Sun Mar 29 20:54:38 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - starting with GCC 10, the default of '-fcommon' option will

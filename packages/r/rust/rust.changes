@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  3 03:09:46 UTC 2020 - William Brown <william.brown@suse.com>
+
+- Update to version 1.45.2
+
+-------------------------------------------------------------------
 Fri Aug 14 12:00:58 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Set codeunits=1 for all archs to avoid OOM-kills and produce 

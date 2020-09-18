@@ -22,27 +22,25 @@
 %else
 %bcond_with    mesh
 %endif
-
 %bcond_without bluez_deprecated
-
 # maintained at https://github.com/seifes-opensuse-packages/bluez.git
 # contributions via pull requests are welcome!
 #
 Name:           bluez
-Version:        5.54
+Version:        5.55
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
 Group:          Hardware/Mobile
 URL:            http://www.bluez.org
 Source:         http://www.kernel.org/pub/linux/bluetooth/bluez-%{version}.tar.xz
-# unused in the package, but allows to use "extract *.*" in source service
-Source42:       README.md
-NoSource:       42
 # we still want debuginfo
 #KEEP NOSOURCE DEBUGINFO
 Source5:        baselibs.conf
 Source7:        bluetooth.modprobe
+# unused in the package, but allows to use "extract *.*" in source service
+Source42:       README.md
+NoSource:       42
 # fix some logitech HID devices, bnc#681049, bnc#850478 --seife+obs@b1-systems.com
 Patch1:         bluez-5.11-logitech-hid2hci.patch
 Patch2:         bluez-sdp-unix-path.patch
@@ -57,10 +55,6 @@ Patch10:        RPi-Move-the-43xx-firmware-into-lib-firmware.patch
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)
 Patch101:       CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
 Patch102:       CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
-# PATCH-FIX-UPSTREAM: bsc#1166751 CVE-2020-0556
-Patch105:       input-hog-Attempt-to-set-security-level-if-not-bonde.patch
-Patch106:       input-Add-LEAutoSecurity-setting-to-input.conf.patch
-
 BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -70,22 +64,15 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(dbus-1) >= 1.6
-%if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(ell) >= 0.28
-%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
-# libgio-2_0-0 has a runtime dependency on shared-mime-info, which is not
-# required for building here, but causes a build loop
-#!BuildIgnore:  shared-mime-info
-%if %{with mesh}
-# json-c is needed for --enable-mesh
-BuildRequires:  pkgconfig(json-c)
-%endif
 BuildRequires:  pkgconfig(libcap-ng)
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(udev)
+# libgio-2_0-0 has a runtime dependency on shared-mime-info, which is not
+# required for building here, but causes a build loop
+#!BuildIgnore:  shared-mime-info
 Requires(post): systemd
 Recommends:     sbc
 Provides:       bluez-utils = 3.36
@@ -96,8 +83,14 @@ Obsoletes:      bluez-hcidump < 5.0
 Provides:       bluez-hcidump = %{version}
 Obsoletes:      obexd-client < 5.0
 Provides:       obexd-client = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(ell) >= 0.28
+%endif
+%if %{with mesh}
+# json-c is needed for --enable-mesh
+BuildRequires:  pkgconfig(json-c)
+%endif
 
 %description
 BlueZ provides support for the core Bluetooth layers and protocols.
@@ -184,15 +177,7 @@ to use the modern tools instead.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch10 -p1
-%patch101 -p1
-%patch102 -p1
-%patch105 -p1
-%patch106 -p1
+%autopatch -p1
 mkdir dbus-apis
 cp -a doc/*.txt dbus-apis/
 # FIXME: Change the dbus service to be a real service, not systemd launched
@@ -213,6 +198,7 @@ autoreconf -fi
 	--enable-library	\
 	--enable-tools		\
 	--enable-cups		\
+	--enable-hid2hci        \
 %if %{with mesh}
 	--enable-mesh		\
 %endif
@@ -230,7 +216,7 @@ autoreconf -fi
 	--with-systemdsystemunitdir=%{_unitdir}		\
 	--with-systemduserunitdir=%{_userunitdir}
 
-make %{?_smp_mflags} all
+%make_build all
 
 %install
 %make_install
@@ -256,7 +242,7 @@ install -m0755 tools/btgatt-client %{buildroot}%{_bindir}
 # btmgmt can be useful
 install -m0755 tools/btmgmt %{buildroot}%{_bindir}
 # avinfo can be useful for debugging
-install -m0755 tools/avinfo $RPM_BUILD_ROOT%{_bindir}
+install -m0755 tools/avinfo %{buildroot}%{_bindir}
 
 # for auto-enable subpackage
 find . -name main.conf
@@ -288,8 +274,8 @@ touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 %endif
 
 %if %{with bluez_deprecated}
-mkdir -p %{buildroot}/var/adm/update-messages
-UM=%{buildroot}/var/adm/update-messages/bluez-deprecated-%version-%release-1
+mkdir -p %{buildroot}%{_localstatedir}/adm/update-messages
+UM=%{buildroot}%{_localstatedir}/adm/update-messages/bluez-deprecated-%{version}-%{release}-1
 cat >> $UM << EOF
 WARNING:
 The bluez-deprecated package contains tools that are considered obsolete by
@@ -308,7 +294,7 @@ touch -r %{SOURCE0} $UM
 %if ! 0%{?qemu_user_space_build}
 ##make %%{?_smp_mflags} check
 # deliberately not running parallel, as the test suite has spurious failures otherwise
-make check V=0
+%make_build check V=0
 %endif
 
 %pre
@@ -320,8 +306,8 @@ make check V=0
 %{fillup_only -n bluetooth}
 # We need the bluez systemd service enabled at any time. It won't start up
 # on its own, as it is triggered by udev in the end (bnc#796671)
-/usr/bin/systemctl enable bluetooth.service 2>&1 || :
-/usr/bin/systemctl daemon-reload >/dev/null 2>&1 || :
+%{_bindir}/systemctl enable bluetooth.service 2>&1 || :
+%{_bindir}/systemctl daemon-reload >/dev/null 2>&1 || :
 
 %preun
 %service_del_preun bluetooth.service bluetooth-mesh.service
@@ -333,7 +319,6 @@ make check V=0
 %postun -n libbluetooth3 -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
 %doc AUTHORS ChangeLog README dbus-apis src/main.conf
 %if %{with mesh}
 %doc %{_defaultdocdir}/%{name}/*
@@ -361,12 +346,12 @@ make check V=0
 %endif
 %{_bindir}/bccmd
 %{_prefix}/lib/udev/
-%{_mandir}/man1/btattach.1%{ext_man}
-%{_mandir}/man8/bluetoothd.8%{ext_man}
-%{_mandir}/man1/hid2hci.1%{ext_man}
-%{_mandir}/man1/bccmd.1%{ext_man}
-%{_mandir}/man1/l2ping.1%{ext_man}
-%{_mandir}/man1/rctest.1%{ext_man}
+%{_mandir}/man1/btattach.1%{?ext_man}
+%{_mandir}/man8/bluetoothd.8%{?ext_man}
+%{_mandir}/man1/bccmd.1%{?ext_man}
+%{_mandir}/man1/hid2hci.1%{?ext_man}
+%{_mandir}/man1/l2ping.1%{?ext_man}
+%{_mandir}/man1/rctest.1%{?ext_man}
 %config %{_sysconfdir}/dbus-1/system.d/bluetooth.conf
 # not packaged, boo#1151518
 ###%%config %%{_sysconfdir}/dbus-1/system.d/bluetooth-mesh.conf
@@ -393,36 +378,32 @@ make check V=0
 %{_bindir}/hciattach
 %{_bindir}/hciconfig
 %{_bindir}/hcidump
-%{_mandir}/man1/hcidump.1%{ext_man}
-%{_mandir}/man1/hciattach.1%{ext_man}
-%{_mandir}/man1/hciconfig.1%{ext_man}
-%{_mandir}/man1/hcitool.1%{ext_man}
-%{_mandir}/man1/sdptool.1%{ext_man}
-%{_mandir}/man1/ciptool.1%{ext_man}
-%{_mandir}/man1/rfcomm.1%{ext_man}
-/var/adm/update-messages/bluez-deprecated-%version-%release-1
+%{_mandir}/man1/hcidump.1%{?ext_man}
+%{_mandir}/man1/hciattach.1%{?ext_man}
+%{_mandir}/man1/hciconfig.1%{?ext_man}
+%{_mandir}/man1/hcitool.1%{?ext_man}
+%{_mandir}/man1/sdptool.1%{?ext_man}
+%{_mandir}/man1/ciptool.1%{?ext_man}
+%{_mandir}/man1/rfcomm.1%{?ext_man}
+%{_localstatedir}/adm/update-messages/bluez-deprecated-%{version}-%{release}-1
 %endif
 
 %files devel
-%defattr(-, root, root)
 %{_includedir}/bluetooth
 %{_libdir}/libbluetooth.so
 %{_libdir}/pkgconfig/bluez.pc
 
 %files -n libbluetooth3
-%defattr(-, root, root)
 %{_libdir}/libbluetooth.so.*
 %doc AUTHORS ChangeLog README
 %license COPYING
 
 %files cups
-%defattr(-,root,root)
 %dir %{_libexecdir}/cups
 %dir %{_libexecdir}/cups/backend
 %{_libexecdir}/cups/backend/bluetooth
 
 %files test
-%defattr(-,root,root)
 %{_bindir}/avinfo
 #{_bindir}/hciemu
 %{_bindir}/l2test
@@ -433,7 +414,6 @@ make check V=0
 %{_libdir}/bluez/test
 
 %files auto-enable-devices
-%defattr(-,root,root)
 %dir %{_sysconfdir}/bluetooth
 %config(noreplace) %{_sysconfdir}/bluetooth/main.conf
 

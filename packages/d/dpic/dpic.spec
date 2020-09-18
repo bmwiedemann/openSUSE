@@ -1,7 +1,7 @@
 #
 # spec file for package dpic
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dpic
-Version:        2017.08.01
+Version:        2020.06.01
 Release:        0
 Summary:        Pic language processor
 License:        BSD-2-Clause AND CC-BY-3.0
 Group:          Productivity/Publishing/Other
-Url:            http://www.ece.uwaterloo.ca/~aplevich/dpic/
+URL:            http://www.ece.uwaterloo.ca/~aplevich/dpic/
 Source0:        https://ece.uwaterloo.ca/~aplevich/dpic/%{name}-%{version}.tar.gz
 
 %description
@@ -51,14 +51,15 @@ make %{?_smp_mflags}
 %make_install PREFIX=%{_prefix} DOCDIR=%{buildroot}%{_docdir}/%{name}
 
 %files
+%license Copyright.txt
 %doc README CHANGES
-%exclude %{_docdir}/dpic/dpicdoc.pdf
+%exclude %{_docdir}/dpic/dpic-doc.pdf
 %exclude %{_docdir}/dpic/dpictools.pic
 %{_bindir}/%{name}
 %{_mandir}/man1/dpic.1*
 
 %files doc
-%{_docdir}/dpic/dpicdoc.pdf
+%{_docdir}/dpic/dpic-doc.pdf
 %{_docdir}/dpic/dpictools.pic
 
 %changelog

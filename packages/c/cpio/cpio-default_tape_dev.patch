@@ -2,7 +2,7 @@ Index: src/mt.c
 ===================================================================
 --- src/mt.c.orig
 +++ src/mt.c
-@@ -413,11 +413,18 @@ parse_opt (int key, char *arg, struct ar
+@@ -225,11 +225,18 @@ parse_opt (int key, char *arg, struct ar
  	{
  	  tapedev = getenv ("TAPE");
  	  if (tapedev == NULL)

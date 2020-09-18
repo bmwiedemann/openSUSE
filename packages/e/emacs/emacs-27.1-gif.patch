@@ -1,0 +1,39 @@
+>>>>> On Tue, 8 Sep 2020 20:38:30 +0700, nnoodle <nnoodle@chiru.no> said:
+
+    nnoodle> To reproduce:
+    nnoodle> $ echo 'GIF89a;' > bad.gif
+    nnoodle> $ emacs -Q bad.gif
+
+    nnoodle> The result will be a segmentation fault.
+
+This should fix it, can you test it?
+
+Thanks
+
+Robert
+
+diff --git a/src/image.c b/src/image.c
+index d8c34669cc..6e3b71a869 100644
+--- a/src/image.c
++++ b/src/image.c
+@@ -8251,7 +8251,7 @@ gif_load (struct frame *f, struct image *img)
+   Lisp_Object specified_file = image_spec_value (img->spec, QCfile, NULL);
+   Lisp_Object specified_data = image_spec_value (img->spec, QCdata, NULL);
+   EMACS_INT idx;
+-  int gif_err;
++  int gif_err = 0;
+ 
+   if (NILP (specified_data))
+     {
+@@ -8277,7 +8277,8 @@ gif_load (struct frame *f, struct image *img)
+ 	{
+ #if HAVE_GIFERRORSTRING
+ 	  image_error ("Cannot open `%s': %s",
+-		       file, build_string (GifErrorString (gif_err)));
++		       file, gif_err ? build_string (GifErrorString (gif_err))
++                       : build_string ("Unknown error from gif library"));
+ #else
+ 	  image_error ("Cannot open `%s'", file);
+ #endif
+
+

@@ -65,6 +65,8 @@ Patch13:        gdm-s390-not-require-g-s-d_wacom.patch
 Patch14:        gdm-switch-user-tty7.patch
 # PATCH-FIX-UPSTREAM gdm-disable-wayland-on-mgag200-chipsets.patch bsc#1162888 glgo#GNOME/mutter#57 qkzhu@suse.com -- Disable Wayland on mgag200 chipsets
 Patch15:        gdm-disable-wayland-on-mgag200-chipsets.patch
+# PATCH-FIX-OPENSUSE gdm-UsrEtc.patch boo#1173049 boo#1173052 boo#1173053 -- needed changes for xdm/xinit/xmodmap move to /usr/etc/X11 
+Patch16:        gdm-UsrEtc.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
@@ -223,6 +225,7 @@ cp %{SOURCE8} .
 %endif
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
 
 # SLE and Leap only patches start at 1000
 %if 0%{?sle_version}

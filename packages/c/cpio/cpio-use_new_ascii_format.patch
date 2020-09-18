@@ -2,7 +2,7 @@ Index: doc/cpio.info
 ===================================================================
 --- doc/cpio.info.orig
 +++ doc/cpio.info
-@@ -216,7 +216,8 @@ option, e.g.:
+@@ -226,7 +226,8 @@ option, e.g.:
  '-B'
       Set the I/O block size to 5120 bytes.
  '-c'
@@ -12,7 +12,7 @@ Index: doc/cpio.info
  '-C NUMBER'
  '--io-size=NUMBER'
       Set the I/O block size to the given NUMBER of bytes.
-@@ -296,7 +297,8 @@ option.
+@@ -307,7 +308,8 @@ option.
  '-B'
       Set the I/O block size to 5120 bytes.
  '-c'
@@ -22,7 +22,7 @@ Index: doc/cpio.info
  '-C NUMBER'
  '--io-size=NUMBER'
       Set the I/O block size to the given NUMBER of bytes.
-@@ -406,7 +408,8 @@ option.
+@@ -417,7 +419,8 @@ option.
  '-B'
       Set the I/O block size to 5120 bytes.
  '-c'
@@ -32,7 +32,7 @@ Index: doc/cpio.info
  '-C NUMBER'
  '--io-size=NUMBER'
       Set the I/O block size to the given NUMBER of bytes.
-@@ -554,7 +557,8 @@ option is valid.
+@@ -565,7 +568,8 @@ option is valid.
  
  '-c'
       [*note copy-in::,*note copy-out::,*note copy-pass::]
@@ -46,7 +46,7 @@ Index: src/main.c
 ===================================================================
 --- src/main.c.orig
 +++ src/main.c
-@@ -329,6 +329,7 @@ parse_opt (int key, char *arg, struct ar
+@@ -328,6 +328,7 @@ parse_opt (int key, char *arg, struct ar
      case 'c':		/* Use the old portable ASCII format.  */
        if (archive_format != arf_unknown)
  	USAGE_ERROR ((0, 0, _("Archive format multiply defined")));

@@ -1,8 +1,8 @@
-Index: xen-4.13.0-testing/tools/pygrub/src/pygrub
+Index: xen-4.14.0-testing/tools/pygrub/src/pygrub
 ===================================================================
---- xen-4.13.0-testing.orig/tools/pygrub/src/pygrub
-+++ xen-4.13.0-testing/tools/pygrub/src/pygrub
-@@ -453,7 +453,7 @@ class Grub:
+--- xen-4.14.0-testing.orig/tools/pygrub/src/pygrub
++++ xen-4.14.0-testing/tools/pygrub/src/pygrub
+@@ -452,7 +452,7 @@ class Grub:
                  self.cf.filename = f
                  break
          if self.__dict__.get('cf', None) is None:
@@ -11,7 +11,7 @@ Index: xen-4.13.0-testing/tools/pygrub/src/pygrub
          f = fs.open_file(self.cf.filename)
          # limit read size to avoid pathological cases
          buf = f.read(FS_READ_MAX)
-@@ -628,6 +628,20 @@ def run_grub(file, entry, fs, cfg_args):
+@@ -627,6 +627,20 @@ def run_grub(file, entry, fs, cfg_args):
  
      g = Grub(file, fs)
  
@@ -32,7 +32,7 @@ Index: xen-4.13.0-testing/tools/pygrub/src/pygrub
      if list_entries:
          for i in range(len(g.cf.images)):
              img = g.cf.images[i]
-@@ -723,6 +737,19 @@ def sniff_netware(fs, cfg):
+@@ -722,6 +736,19 @@ def sniff_netware(fs, cfg):
  
      return cfg
  
@@ -52,7 +52,7 @@ Index: xen-4.13.0-testing/tools/pygrub/src/pygrub
  def format_sxp(kernel, ramdisk, args):
      s = "linux (kernel %s)" % repr(kernel)
      if ramdisk:
-@@ -806,7 +833,7 @@ if __name__ == "__main__":
+@@ -803,7 +830,7 @@ if __name__ == "__main__":
      debug = False
      not_really = False
      output_format = "sxp"

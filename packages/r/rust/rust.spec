@@ -17,9 +17,9 @@
 #
 
 
-%global version_current 1.44.1
-%global version_previous 1.43.1
-%global version_bootstrap 1.43.1
+%global version_current 1.45.2
+%global version_previous 1.44.1
+%global version_bootstrap 1.44.1
 
 # some sub-packages are versioned independently
 %global rustfmt_version 1.4.16
@@ -317,9 +317,9 @@ A tool for formatting Rust code according to style guidelines.
 
 %package -n clippy
 Summary:        Lints to catch common mistakes and improve Rust code
+# /usr/bin/clippy-driver is dynamically linked against internal rustc libs
 License:        MPL-2.0
 Group:          Development/Languages/Rust
-# /usr/bin/clippy-driver is dynamically linked against internal rustc libs
 Requires:       %{name} = %{version}
 Requires:       cargo = %{version}
 Provides:       clippy = %{clippy_version}
@@ -343,10 +343,10 @@ Cargo downloads dependencies of Rust projects and compiles it.
 
 %package -n cargo-doc
 Summary:        Documentation for Cargo
-License:        MIT OR Apache-2.0
-Group:          Development/Languages/Rust
 # Cargo no longer builds its own documentation
 # https://github.com/rust-lang/cargo/pull/4904
+License:        MIT OR Apache-2.0
+Group:          Development/Languages/Rust
 Requires:       rust-doc = %{version}
 BuildArch:      noarch
 

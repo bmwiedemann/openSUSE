@@ -2483,4 +2483,12 @@
     <comment>Fix building aarch64 with gcc10. Fix copyright string.</comment>
     <requestid>831266</requestid>
   </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>91d509488bb21babb8252d4e71bb31e7</srcmd5>
+    <version>4.14.0_06</version>
+    <time>1600432018</time>
+    <user>dimstar_suse</user>
+    <comment>Changes for jsc#SLE-15926. Fix for spec file copyright string and other adjustments.</comment>
+    <requestid>834358</requestid>
+  </revision>
 </revisionlist>

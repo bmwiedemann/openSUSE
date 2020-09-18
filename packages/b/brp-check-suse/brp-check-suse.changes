@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 14:50:43 UTC 2020 - coolo@suse.com
+
+- Update to version 84.87+git20200910.754804a:
+  * Make prg-brp-symlink compile on SLE15 (#34 and #35)
+
+-------------------------------------------------------------------
 Mon Aug 17 14:56:06 UTC 2020 - ro@suse.de
 
 - Update to version 84.87+git20200817.346e853:

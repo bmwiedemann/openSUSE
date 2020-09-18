@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 11 11:11:11 UTC 2020 - ohering@suse.de
+
+- Revert previous libexec change for qemu compat wrapper
+  The path is used in existing domU.xml files in the emulator field
+- Escape some % chars in xen.spec, they have to appear verbatim
+
+-------------------------------------------------------------------
+Wed Sep  9 10:11:12 UTC 2020 - ohering@suse.de
+
+- Enhance libxc.migrate_tracking.patch
+  Print number of allocated pages on sending side, this is more
+  accurate than p2m_size.
+
+-------------------------------------------------------------------
+Wed Sep  2 12:53:47 MDT 2020 - carnold@suse.com
+
+- jsc#SLE-15926 - Dev: XEN: drop netware support
+  Dropped the following patches
+  pygrub-netware-xnloader.patch
+  xnloader.py
+  Refreshed pygrub-boot-legacy-sles.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 12:28:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 with gcc10

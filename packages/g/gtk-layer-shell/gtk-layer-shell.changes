@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 18 13:05:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add GPL3 to Licenses
+
+-------------------------------------------------------------------
+Thu Aug 13 07:38:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * Demo: Display GTK version
+  * Demo: Add option for disabling gtk-layer-shell for testing
+  * Fix intermittent crash relating to popovers (#51)
+  * Clarify that our license is LGPL version 3 or any later version
+  * Use system XDG Shell protocol when available
+  * Allow accessing the underlying layer shell surface
+    (EDIT: this change was accidentally omitted from the release)
+  * Bump explicitly supported GTK version to 3.24.22
+
+-------------------------------------------------------------------
 Wed Jul 29 05:54:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.2.0:

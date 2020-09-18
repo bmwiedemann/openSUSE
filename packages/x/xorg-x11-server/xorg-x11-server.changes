@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  9 18:50:37 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+-Add U_xfree86_take_second_ref_for_xcursor.patch: fix
+  use-after-free when switching VTs.
+
+-------------------------------------------------------------------
 Thu Aug 27 19:29:29 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 1.20.9:

@@ -146,7 +146,7 @@ pushd OpenEXR
 popd
 
 %check
-%ifnarch i586 ppc ppc64
+%ifnarch i586 ppc ppc64 s390 s390x
 pushd OpenEXR
 export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
 # tests can take longer than the default timeout of 25 minutes

@@ -1,10 +1,10 @@
 Index: src/copyin.c
 ===================================================================
---- src/copyin.c.orig	2010-08-10 16:45:19.000000000 +0200
-+++ src/copyin.c	2010-08-10 16:45:19.000000000 +0200
-@@ -1485,6 +1485,19 @@ process_copy_in ()
+--- src/copyin.c.orig
++++ src/copyin.c
+@@ -1420,6 +1420,19 @@ process_copy_in ()
  
-   apply_delayed_set_stat ();
+   cpio_file_stat_free (&file_hdr);
    
 +  if (tty_in)
 +  {

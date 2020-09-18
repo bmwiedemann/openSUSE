@@ -1499,4 +1499,14 @@
 - Load pcase and easy-mmode at dump time from emacs-lisp path</comment>
     <requestid>830281</requestid>
   </revision>
+  <revision rev="151" vrev="4">
+    <srcmd5>658012592d9e45b369c70f81aee8f1f6</srcmd5>
+    <version>27.1</version>
+    <time>1600432110</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch emacs-27.1-gif.patch from upstream mailing list to fix
+  crash on broken gif files 
+- Correct group of el package as well as provide it as devel packages</comment>
+    <requestid>834840</requestid>
+  </revision>
 </revisionlist>

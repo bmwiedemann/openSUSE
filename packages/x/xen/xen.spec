@@ -1,7 +1,7 @@
 #
 # spec file for package xen
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -123,7 +123,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.14.0_02
+Version:        4.14.0_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -149,8 +149,7 @@ Source31:       xenapiusers
 # Init script and sysconf file for pciback
 Source34:       init.pciback
 Source35:       sysconfig.pciback
-Source36:       xnloader.py
-Source37:       xen2libvirt.py
+Source36:       xen2libvirt.py
 # Systemd service files
 Source41:       xencommons.service
 Source42:       xen-dom0-modules.service
@@ -186,7 +185,6 @@ Patch451:       xenconsole-no-multiple-connections.patch
 Patch452:       hibernate.patch
 Patch453:       stdvga-cache.patch
 Patch454:       ipxe-enable-nics.patch
-Patch455:       pygrub-netware-xnloader.patch
 Patch456:       pygrub-boot-legacy-sles.patch
 Patch457:       pygrub-handle-one-line-menu-entries.patch
 Patch458:       aarch64-rename-PSR_MODE_ELxx-to-match-linux-headers.patch
@@ -217,7 +215,7 @@ Patch624:       ipxe-use-rpm-opt-flags.patch
 Patch99996:     xen.stubdom.newlib.patch
 Patch99998:     tmp_build.patch
 Patch99999:     reproducible.patch
-Url:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
+URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define pyver %(python3 -c "import sys; print(sys.version[:3])")
 
@@ -416,7 +414,6 @@ Authors:
 %patch452 -p1
 %patch453 -p1
 %patch454 -p1
-%patch455 -p1
 %patch456 -p1
 %patch457 -p1
 %patch458 -p1
@@ -564,7 +561,7 @@ make \
 find %{buildroot} -ls
 for i in %{buildroot}/%{_fillupdir}/*
 do
-	mv -v $i ${i%/*}/sysconfig.${i##*/}
+	mv -v $i ${i%%/*}/sysconfig.${i##*/}
 done
 
 #
@@ -602,7 +599,7 @@ do
       : just started
       ;;
     cpu/[0-9]/availability|cpu/[0-9][0-9]/availability)
-      vcpu="${REPLY%/*}"
+      vcpu="${REPLY%%/*}"
       vcpu="${vcpu#*/}"
       sysfs="/sys/devices/system/cpu/cpu${vcpu}/online"
       if test -f "${sysfs}"
@@ -649,9 +646,9 @@ LABEL="xvd_aliases_end"
 _EOR_
 #
 tee ${udev_rulesdir}/80-%{name}-channel-setup.rules <<'_EOF_'
-SUBSYSTEM=="xen", DEVPATH=="/devices/console-[0-9]", IMPORT{program}=="xen-channel-setup.sh $attr{nodename} %n"
+SUBSYSTEM=="xen", DEVPATH=="/devices/console-[0-9]", IMPORT{program}=="xen-channel-setup.sh $attr{nodename} %%n"
 
-SUBSYSTEM=="xen", DEVPATH=="/devices/console-[0-9]", ENV{XEN_CHANNEL_NAME}=="org.qemu.guest_agent.0", TAG+="systemd", ENV{SYSTEMD_WANTS}+="qemu-ga@hvc%n.service"
+SUBSYSTEM=="xen", DEVPATH=="/devices/console-[0-9]", ENV{XEN_CHANNEL_NAME}=="org.qemu.guest_agent.0", TAG+="systemd", ENV{SYSTEMD_WANTS}+="qemu-ga@hvc%%n.service"
 _EOF_
 #
 dracut_moduledir=%{buildroot}/usr/lib/dracut/modules.d/50%{name}-tools-domU
@@ -781,14 +778,14 @@ CC=gcc-4.8
 rm -fv xen/.config
 %if %{with xen_debug}
 echo CONFIG_DEBUG=y > xen/.config
-echo "CONFIG_DOM0_MEM=\"1G+10%,max:64G\"" >> xen/.config
+echo "CONFIG_DOM0_MEM=\"1G+10%%,max:64G\"" >> xen/.config
 yes '' | make -C xen oldconfig
 make -C xen install DEBUG_DIR=/boot DESTDIR=%{buildroot} CC=$CC %{?_smp_mflags}
 install_xen dbg
 make -C xen clean
 %endif
 echo CONFIG_DEBUG=n > xen/.config
-echo "CONFIG_DOM0_MEM=\"1G+10%,max:64G\"" >> xen/.config
+echo "CONFIG_DOM0_MEM=\"1G+10%%,max:64G\"" >> xen/.config
 yes '' | make -C xen oldconfig
 make -C xen install DEBUG_DIR=/boot DESTDIR=%{buildroot} CC=$CC %{?_smp_mflags}
 install_xen
@@ -802,12 +799,14 @@ make -C xen clean
 # /usr/bin/qemu-system-i386
 # Using qemu-system-x86_64 will result in an incompatible VM
 %ifarch x86_64
-cat > %{buildroot}%{_libexecdir}/xen/bin/qemu-system-i386 << 'EOF'
+hardcoded_path_in_existing_domU_xml='/usr/lib/xen/bin'
+mkdir -vp %{buildroot}${hardcoded_path_in_existing_domU_xml}
+tee %{buildroot}${hardcoded_path_in_existing_domU_xml}/qemu-system-i386 << 'EOF'
 #!/bin/sh
 
 exec %{_bindir}/qemu-system-i386 "$@"
 EOF
-chmod 0755 %{buildroot}%{_libexecdir}/xen/bin/qemu-system-i386
+chmod 0755 %{buildroot}${hardcoded_path_in_existing_domU_xml}/qemu-system-i386
 #
 unit='%{_libexecdir}/%{name}/bin/xendomains-wait-disks'
 mkdir -vp '%{buildroot}%{_libexecdir}/%{name}/bin'
@@ -853,7 +852,7 @@ install -m644 %SOURCE26 %{buildroot}/etc/modprobe.d/xen_loop.conf
 
 # xen-utils
 make -C tools/xen-utils-0.1 install DESTDIR=%{buildroot} XEN_INTREE_BUILD=yes XEN_ROOT=$PWD
-install -m755 %SOURCE37 %{buildroot}/usr/sbin/xen2libvirt
+install -m755 %SOURCE36 %{buildroot}/usr/sbin/xen2libvirt
 install -m755 %SOURCE10183 %{buildroot}/usr/sbin/xen_maskcalc
 
 rm -f %{buildroot}/etc/xen/README*
@@ -885,9 +884,6 @@ mkdir -p %{buildroot}/var/lib/xen/save
 mkdir -p %{buildroot}/var/lib/xen/dump
 mkdir -p %{buildroot}/var/log/xen
 mkdir -p %{buildroot}/var/log/xen/console
-
-# Bootloader
-install -m644 %SOURCE36 %{buildroot}/%{_libdir}/python%{pyver}/site-packages
 
 # Systemd
 cp -bavL %{S:41} %{buildroot}/%{_unitdir}
@@ -1061,6 +1057,9 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %dir /usr/lib/supportconfig
 %dir /usr/lib/supportconfig/plugins
 /usr/lib/supportconfig/plugins/xen
+%dir /usr/lib/xen
+%dir /usr/lib/xen/bin
+/usr/lib/xen/bin/qemu-system-i386
 %{_libexecdir}/xen
 %exclude %{_libexecdir}/%{name}-tools-domU
 %ifarch x86_64
@@ -1103,7 +1102,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %{_libdir}/python%{pyver}/site-packages/xen/lowlevel/*
 %{_libdir}/python%{pyver}/site-packages/xen/migration/*
 %{_libdir}/python%{pyver}/site-packages/*.so
-%{_libdir}/python%{pyver}/site-packages/xnloader.py
 %dir %{_defaultdocdir}/xen
 %{_defaultdocdir}/xen/COPYING
 %{_defaultdocdir}/xen/README.SUSE

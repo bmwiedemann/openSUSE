@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:20:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2020.06.01:
+  * SVG text adjustments; GCC-10 conformance.
+  * Commas protected by brackets; zero-repetition "for" loop bugfix
+    under bison.
+  * Fix of environment variable scope, arc attribute; improved error
+    messages; generalized macro definition.
+  * Corrected typos, copyright notices, version number, string treatment.
+  * Bugfix for buffer overflow with extreme arguments of wfloat().
+  * This is a major clone of the previous distribution, which
+  contained compilable C code together with the original pascal
+  source.  The pascal was translated to C code using p2c,
+  which was included, and parsing was automated by a custom
+  compiler-compiler which was also provided.  The current
+  package includes C source only with parsing automated using
+  GNU bison.  The original lexical analyser has been kept. To
+  avoid introducing bugs, the C code has been changed only to
+  accommodate bison; some p2c idiosyncrasies remain. The result
+  is functionally identical to the previous version for correct
+  input.
+
+-------------------------------------------------------------------
 Wed Aug 23 08:00:49 UTC 2017 - dmitry_r@opensuse.org
 
 - Update to version 2017.08.01

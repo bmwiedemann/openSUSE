@@ -554,4 +554,13 @@ Lets break everything :)
   * Sort input file list (#32)</comment>
     <requestid>827370</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>5716d6b8d368fd8f9941816b281edc69</srcmd5>
+    <version>84.87+git20200910.754804a</version>
+    <time>1600431911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200910.754804a:
+  * Make prg-brp-symlink compile on SLE15 (#34 and #35)</comment>
+    <requestid>833502</requestid>
+  </revision>
 </revisionlist>

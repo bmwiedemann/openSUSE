@@ -54,7 +54,6 @@ BuildRequires:  tex(uwasy.fd)
 BuildRequires:  tex(wasy10.tfm)
 BuildRequires:  texlive-jadetex
 BuildRequires:  texlive-pdftex-bin
-Recommends:     libdbi-devel = %version
 Provides:       libdbi-devel:%_docdir/libdbi/driver-guide.pdf
 %endif
 

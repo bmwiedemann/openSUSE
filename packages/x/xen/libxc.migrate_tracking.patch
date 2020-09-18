@@ -192,7 +192,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
      xc_interface *xch = ctx->xch;
      int rc, saved_rc = 0, saved_errno = 0;
  
-+    SUSEINFO("domid %u: %s %s start", ctx->domid, ctx->uuid, __func__);
++    SUSEINFO("domid %u: %s %s start, %lu pages allocated", ctx->domid, ctx->uuid, __func__, ctx->dominfo.nr_pages);
      IPRINTF("Saving domain %d, type %s",
              ctx->domid, dhdr_type_to_str(guest_type));
  
@@ -215,17 +215,16 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
      return XGS_POLICY_CONTINUE_PRECOPY;
  
  out:
-@@ -1051,6 +1057,9 @@ out:
+@@ -1051,6 +1057,8 @@ out:
          return XGS_POLICY_ABORT;
      }
  suspend:
-+    SUSEINFO("domid %u: suspending, remaining dirty pages %ld/%lu prior final transit",
-+            suse_flags.ctx->domid,
-+            suse_flags.dirty_count, suse_flags.ctx->save.p2m_size);
++    SUSEINFO("domid %u: suspending, remaining dirty pages %ld prior final transit",
++            suse_flags.ctx->domid, suse_flags.dirty_count);
      return XGS_POLICY_STOP_AND_COPY;
  }
  
-@@ -1120,6 +1129,7 @@ int xc_domain_save_suse(xc_interface *xc
+@@ -1120,6 +1128,7 @@ int xc_domain_save_suse(xc_interface *xc
              io_fd, dom, flags, ctx.dominfo.hvm);
  
      ctx.domid = dom;

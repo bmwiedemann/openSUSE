@@ -555,4 +555,30 @@
   * Improved several language definitions.</comment>
     <requestid>805800</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a4897ae2bdfeffc561a4be67253bd5d9</srcmd5>
+    <version>3.58</version>
+    <time>1600431722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.58:
+  * Improved `--force` fallback argument handling
+    (gl#saalen/highlight#163).
+  * Added C++ attribute syntax support.
+  * Added Lua fuction `StoreValue` to set and retrieve information
+    across Lua states.
+  * Added `extras/eclipse-themes/eclipse_color_themes.py` script to
+    retrieve themes from eclipsecolorthemes.org.
+  * Added support for Web Assembly Text.
+  * Updated mark_lines.lua to output 16m terminal sequences
+    (gl#saalen/highlight#164).
+  * Fixed issues in bash.lang (gl#saalen/highlight#161).
+  * Fixed Bash heredoc highlighting in bash_functions.lua
+    (gl#saalen/highlight#156).
+  * CLI: `highlight --version -q` only prints the version number.
+  * GUI: Added theme contrast indicator.
+- Rebase optflags patch:
+  * Remove highlight-3.53-use_optflags.patch.
+  * Add highlight-3.58-use_optflags.patch.</comment>
+    <requestid>833340</requestid>
+  </revision>
 </revisionlist>

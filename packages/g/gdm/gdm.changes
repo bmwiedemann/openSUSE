@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 16 09:17:43 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- gdm-UsrEtc.patch
+  * needed changes for xdm/xinit/xmodmap move to /usr/etc/X11
+    (boo#1173049, boo#1173052, boo#1173053)
+
+-------------------------------------------------------------------
 Tue Jul 14 05:10:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:

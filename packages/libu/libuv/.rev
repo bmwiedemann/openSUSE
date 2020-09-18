@@ -203,4 +203,12 @@
   * doc: check/idle/prepare functions always succeed (Ben Noordhuis)</comment>
     <requestid>829033</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4a79b9140e3c34623a5d7594c4e27239</srcmd5>
+    <version>1.39.0</version>
+    <time>1600432081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834720</requestid>
+  </revision>
 </revisionlist>

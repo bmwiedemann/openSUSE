@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 14 12:07:31 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+- merge SLE15 SP2 changes:
+-- fix detection of present of efivars causing grub2-install
+   failures on some arm boards (bsc#1172114)
+-- add workaround for ARM to make GRUB2 works for
+  every device. It can potentially break multi-boot (bsc#1167015)
+- 4.3.9
+
+-------------------------------------------------------------------
 Tue Aug 11 11:57:36 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(bootloader) into the spec file

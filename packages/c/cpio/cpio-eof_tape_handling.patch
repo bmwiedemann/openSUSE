@@ -36,7 +36,7 @@ Index: src/util.c
  	    }
  	  else
  	    break;
-@@ -842,6 +856,40 @@ tape_offline (int tape_des)
+@@ -829,6 +843,40 @@ tape_offline (int tape_des)
  #endif
  }
  
