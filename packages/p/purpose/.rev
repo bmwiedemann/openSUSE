@@ -305,4 +305,29 @@
     <comment></comment>
     <requestid>833989</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d63ec246a2ce19e07e4c8c88a6db1ffb</srcmd5>
+    <version>5.74.0</version>
+    <time>1600433047</time>
+    <user>dimstar_suse</user>
+    <comment>- Require accounts-qml-module
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * autotests: append to $QML2_IMPORT_PATH rather than replacing it
+  * Apply initial configuration data when loading config UI
+  * Restore behaviour of AlternativesView
+  * [jobcontroller] Disable separate process
+  * Rework job view handling (kde#419170)
+  * Remove obsolete COPYING files
+  * Remove obsolete KDevelop information
+  * Add license texts according to REUSE specification
+  * Convert license statements to SPDX expressions
+- Drop a patch which will have been added in the future:
+  * 0001-Revert-Port-some-qt5.15-deprecated-method.patch</comment>
+    <requestid>834506</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep 14 11:40:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Require accounts-qml-module
+
+-------------------------------------------------------------------
 Sat Sep 12 11:17:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix build with Qt 5.15.1:
+  * 0001-Revert-Port-some-qt5.15-deprecated-method.patch
+
+-------------------------------------------------------------------
+Sun Sep  6 12:50:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * autotests: append to $QML2_IMPORT_PATH rather than replacing it
+  * Apply initial configuration data when loading config UI
+  * Restore behaviour of AlternativesView
+  * [jobcontroller] Disable separate process
+  * Rework job view handling (kde#419170)
+  * Remove obsolete COPYING files
+  * Remove obsolete KDevelop information
+  * Add license texts according to REUSE specification
+  * Convert license statements to SPDX expressions
+- Drop a patch which will have been added in the future:
   * 0001-Revert-Port-some-qt5.15-deprecated-method.patch
 
 -------------------------------------------------------------------

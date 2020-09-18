@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Purpose5
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           purpose
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -36,8 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Revert-Port-some-qt5.15-deprecated-method.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  intltool
 BuildRequires:  kf5-filesystem
@@ -58,6 +56,8 @@ BuildRequires:  cmake(Qt5Network) >= 5.12.0
 BuildRequires:  cmake(Qt5Qml) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.12.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+# Needed by the nextcloud and youtube plugins
+Requires:       accounts-qml-module
 Requires:       kdeclarative-components >= %{_kf5_bugfix_version}
 Requires:       libKF5QuickAddons5 >= %{_kf5_bugfix_version}
 Requires:       libqt5-qtquickcontrols2
@@ -114,7 +114,7 @@ This package contains development files needed to build applications which rely 
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
   %cmake_kf5 -d build
@@ -153,15 +153,17 @@ This package contains development files needed to build applications which rely 
 %endif
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5Purpose.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 
 %files -n libKF5PurposeWidgets5
+%license LICENSES/*
 %{_kf5_libdir}/libKF5PurposeWidgets.so.*
 
 %files
+%license LICENSES/*
 %{_kf5_libdir}/libPhabricatorHelpers.so.*
 %{_kf5_libdir}/libReviewboardHelpers.so.*
 %{_kf5_libexecdir}/
@@ -174,6 +176,7 @@ This package contains development files needed to build applications which rely 
 %{_kf5_sharedir}/accounts/
 
 %files devel
+%license LICENSES/*
 %{_kf5_libdir}/libKF5Purpose.so
 %{_kf5_libdir}/libKF5PurposeWidgets.so
 %{_kf5_libdir}/cmake/KDEExperimentalPurpose/
