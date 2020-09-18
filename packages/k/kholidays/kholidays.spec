@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Holidays5
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kholidays
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Holiday calculation library
 License:        LGPL-2.1-or-later
