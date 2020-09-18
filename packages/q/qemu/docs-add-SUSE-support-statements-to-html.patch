@@ -2,7 +2,7 @@ From: Bruce Rogers <brogers@suse.com>
 Date: Tue, 28 Apr 2020 09:53:49 -0600
 Subject: docs: add SUSE support statements to html docs
 
-Include-If: %if %{legacy_qemu_kvm} && 0%{?is_opensuse} == 0
+Include-If: %if %{legacy_qemu_kvm}
 
 We can fairly easily produce an html version of our support statements.
 Now that qemu includes fairly good html-based documentation, leverage it

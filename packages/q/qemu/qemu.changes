@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Sep 15 21:19:55 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Change qemu-x86 packaging relationship with qemu-microvm from
+  Requires to Recommends
+
+-------------------------------------------------------------------
+Thu Sep 10 21:42:02 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- In an effort to "Close the Leap Gap", remove use of is_opensuse
+  from the spec file, so that the same packages built for SLE can
+  be reused for Leap. Some sub-packages will not be included for
+  SLE which are included for Leap. They wil be provided in Package
+  Hub for SLE users as unsupported packages. (jsc#SLE-11660,
+  jsc#SLE-11661, jsc#SLE-11662, jsc#SLE-11691, jse#SLE-11692,
+  jsc#SLE-11894)
+
+-------------------------------------------------------------------
+Thu Sep 10 14:51:35 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Add infrastructure to do package splits when split-off package
+  isn't required and doesn't (otherwise) include any previously
+  installed files. This version of qemu has split out non-essential
+  functionality into loadable modules, as noted in Aug 20, 2020 log
+  entry, which describes the emergency Split-Provides. That approach
+  will be superseded by this planned approach, and those dummy doc
+  files will be removed in time
+  Here is the new mapping:
+  subpackage            continuity file provided (files are dummies)
+  ==========            ============================================
+  qemu-chardev-baum     /usr/share/qemu/forsplits/00
+  qemu-hw-display-qxl   /usr/share/qemu/forsplits/01
+  qemu-hw-usb-redirect  /usr/share/qemu/forsplits/02
+  qemu-hw-usb-smartcard /usr/share/qemu/forsplits/03
+
+-------------------------------------------------------------------
+Wed Sep  9 02:38:13 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix path of qemu-pr-helper. It was a mistake to move it from
+  %_bindir to _libexecdir. In more recent qemu code it's been moved
+  back, so undo this mistake by providing it at the same location
+  as it has been all along
+
+-------------------------------------------------------------------
 Tue Sep  1 18:10:17 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - For SLE15-SP3, note that this update to v5.1.0 is a step towards

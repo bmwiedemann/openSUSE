@@ -65,18 +65,12 @@
 %define legacy_qemu_kvm 1
 %endif
 
-%if 0%{?is_opensuse}
-%define with_glusterfs 1
-%endif
-
 %ifarch x86_64 aarch64 ppc64le s390x
 %define with_rbd 1
 %endif
 
-%if 0%{?is_opensuse}
 %ifarch x86_64 ppc64le
 %define with_daxctl 1
-%endif
 %endif
 
 # qemu, qemu-linux-user, and qemu-testsuite "flavors" enabled via OBS Multibuild
@@ -125,10 +119,11 @@ Source13:       supported.s390.txt
 Source14:       50-seabios-256k.json
 Source15:       60-seabios-128k.json
 Source200:      qemu-rpmlintrc
-Source201:      qemu-ga-ref.html
-Source202:      qemu-ga-ref.txt
-Source203:      qemu-qmp-ref.html
-Source204:      qemu-qmp-ref.txt
+Source201:      pkg-split.txt
+Source202:      qemu-ga-ref.html
+Source203:      qemu-ga-ref.txt
+Source204:      qemu-qmp-ref.html
+Source205:      qemu-qmp-ref.txt
 Source300:      bundles.tar.xz
 Source301:      update_git.sh
 Source302:      config.sh
@@ -137,53 +132,53 @@ Source303:      README.PACKAGING
 # This patch queue is auto-generated - see README.PACKAGING for process
 
 # Patches applied in base project:
-Patch00000:     docs-fix-trace-docs-build-with-sphinx-3..patch
-Patch00001:     hw-hyperv-vmbus-Fix-32bit-compilation.patch
-Patch00002:     XXX-dont-dump-core-on-sigabort.patch
-Patch00003:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00004:     qemu-cvs-gettimeofday.patch
-Patch00005:     qemu-cvs-ioctl_debug.patch
-Patch00006:     qemu-cvs-ioctl_nodirection.patch
-Patch00007:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00008:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00009:     linux-user-binfmt-support-host-binaries.patch
-Patch00010:     linux-user-Fake-proc-cpuinfo.patch
-Patch00011:     linux-user-use-target_ulong.patch
-Patch00012:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00013:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00014:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00015:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00016:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00017:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00018:     linux-user-properly-test-for-infinite-ti.patch
-Patch00019:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00020:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00021:     increase-x86_64-physical-bits-to-42.patch
-Patch00022:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00023:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00024:     Switch-order-of-libraries-for-mpath-supp.patch
-Patch00025:     Make-installed-scripts-explicitly-python.patch
-Patch00026:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00027:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00028:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00029:     tests-Fix-block-tests-to-be-compatible-w.patch
-Patch00030:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00031:     Conditionalize-ui-bitmap-installation-be.patch
-Patch00032:     tests-change-error-message-in-test-162.patch
-Patch00033:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
-Patch00034:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
-Patch00035:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00036:     configure-only-populate-roms-if-softmmu.patch
-Patch00037:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00038:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00039:     test-add-mapping-from-arch-of-i686-to-qe.patch
-Patch00040:     roms-Makefile-enable-cross-compile-for-b.patch
-Patch00041:     configure-remove-pkgversion-from-CONFIG_.patch
-Patch00042:     docs-add-SUSE-support-statements-to-html.patch
-Patch00043:     s390x-Fix-stringop-truncation-issue-repo.patch
-Patch00044:     Revert-qht-constify-qht_statistics_init.patch
-Patch00045:     qht-Revert-some-constification-in-qht.c.patch
-Patch00046:     usb-fix-setup_len-init-CVE-2020-14364.patch
+Patch00000:     usb-fix-setup_len-init-CVE-2020-14364.patch
+Patch00001:     docs-fix-trace-docs-build-with-sphinx-3..patch
+Patch00002:     hw-hyperv-vmbus-Fix-32bit-compilation.patch
+Patch00003:     XXX-dont-dump-core-on-sigabort.patch
+Patch00004:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00005:     qemu-cvs-gettimeofday.patch
+Patch00006:     qemu-cvs-ioctl_debug.patch
+Patch00007:     qemu-cvs-ioctl_nodirection.patch
+Patch00008:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00009:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00010:     linux-user-binfmt-support-host-binaries.patch
+Patch00011:     linux-user-Fake-proc-cpuinfo.patch
+Patch00012:     linux-user-use-target_ulong.patch
+Patch00013:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00014:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00015:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00016:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00017:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00018:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00019:     linux-user-properly-test-for-infinite-ti.patch
+Patch00020:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00021:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00022:     increase-x86_64-physical-bits-to-42.patch
+Patch00023:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00024:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00025:     Switch-order-of-libraries-for-mpath-supp.patch
+Patch00026:     Make-installed-scripts-explicitly-python.patch
+Patch00027:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00028:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00029:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00030:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00031:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00032:     Conditionalize-ui-bitmap-installation-be.patch
+Patch00033:     tests-change-error-message-in-test-162.patch
+Patch00034:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
+Patch00035:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
+Patch00036:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00037:     configure-only-populate-roms-if-softmmu.patch
+Patch00038:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00039:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00040:     test-add-mapping-from-arch-of-i686-to-qe.patch
+Patch00041:     roms-Makefile-enable-cross-compile-for-b.patch
+Patch00042:     configure-remove-pkgversion-from-CONFIG_.patch
+Patch00043:     docs-add-SUSE-support-statements-to-html.patch
+Patch00044:     s390x-Fix-stringop-truncation-issue-repo.patch
+Patch00045:     Revert-qht-constify-qht_statistics_init.patch
+Patch00046:     qht-Revert-some-constification-in-qht.c.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -274,16 +269,12 @@ BuildRequires:  glib2-devel >= 2.48
 %if build_x86_firmware_from_source
 BuildRequires:  glibc-devel-32bit
 %endif
-%if 0%{?with_glusterfs}
 BuildRequires:  glusterfs-devel >= 3
-%endif
 BuildRequires:  gtk3-devel >= 3.22
 BuildRequires:  libaio-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbz2-devel
-%if 0%{?is_opensuse}
 BuildRequires:  libcacard-devel >= 2.5.1
-%endif
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libepoxy-devel
@@ -296,9 +287,7 @@ BuildRequires:  libjpeg-devel
 %if 0%{?with_daxctl}
 BuildRequires:  libndctl-devel
 %endif
-%if 0%{?is_opensuse}
 BuildRequires:  libnfs-devel >= 1.9.3
-%endif
 %ifnarch %arm s390x
 BuildRequires:  libnuma-devel
 %endif
@@ -312,27 +301,21 @@ BuildRequires:  libpulse-devel
 %if 0%{?with_rbd}
 BuildRequires:  librbd-devel
 %endif
-%if 0%{?is_opensuse}
+BuildRequires:  Mesa-devel
 BuildRequires:  libSDL2-devel
 BuildRequires:  libSDL2_image-devel
-%endif
 BuildRequires:  libseccomp-devel >= 2.3.0
-%if 0%{?is_opensuse}
 BuildRequires:  libslirp-devel >= 4.2.0
-%endif
 BuildRequires:  libspice-server-devel >= 0.12.5
 BuildRequires:  libssh-devel >= 0.8
 BuildRequires:  libusb-1_0-devel >= 1.0.13
 BuildRequires:  libvdeplug-devel
-BuildRequires:  pkgconfig(libudev)
-%if 0%{?is_opensuse}
-BuildRequires:  lzfse-devel
-%endif
-BuildRequires:  Mesa-devel
 BuildRequires:  libxkbcommon-devel
+BuildRequires:  lzfse-devel
 BuildRequires:  lzo-devel
 BuildRequires:  makeinfo
 BuildRequires:  multipath-tools-devel
+BuildRequires:  pkgconfig(libudev)
 %if build_x86_firmware_from_source
 BuildRequires:  nasm
 %endif
@@ -365,18 +348,12 @@ BuildRequires:  bc
 BuildRequires:  qemu-arm = %{qemuver}
 BuildRequires:  qemu-audio-alsa = %{qemuver}
 BuildRequires:  qemu-audio-pa = %{qemuver}
-%if 0%{?is_opensuse}
 BuildRequires:  qemu-audio-sdl = %{qemuver}
-%endif
 BuildRequires:  qemu-block-curl = %{qemuver}
 BuildRequires:  qemu-block-dmg = %{qemuver}
-%if 0%{?with_glusterfs}
 BuildRequires:  qemu-block-gluster = %{qemuver}
-%endif
 BuildRequires:  qemu-block-iscsi = %{qemuver}
-%if 0%{?is_opensuse}
 BuildRequires:  qemu-block-nfs = %{qemuver}
-%endif
 %if 0%{?with_rbd}
 BuildRequires:  qemu-block-rbd = %{qemuver}
 %endif
@@ -389,13 +366,9 @@ BuildRequires:  qemu-extra = %{qemuver}
 BuildRequires:  qemu-guest-agent = %{qemuver}
 BuildRequires:  qemu-hw-display-qxl = %{qemuver}
 BuildRequires:  qemu-hw-usb-redirect = %{qemuver}
-%if 0%{?is_opensuse}
 BuildRequires:  qemu-hw-usb-smartcard = %{qemuver}
-%endif
 BuildRequires:  qemu-ipxe = 1.0.0+
-%if 0%{?is_opensuse}
 BuildRequires:  qemu-ksm = %{qemuver}
-%endif
 BuildRequires:  qemu-lang = %{qemuver}
 BuildRequires:  qemu-ppc   = %{qemuver}
 BuildRequires:  qemu-s390  = %{qemuver}
@@ -404,9 +377,7 @@ BuildRequires:  qemu-sgabios = 8
 BuildRequires:  qemu-tools = %{qemuver}
 BuildRequires:  qemu-ui-curses = %{qemuver}
 BuildRequires:  qemu-ui-gtk = %{qemuver}
-%if 0%{?is_opensuse}
 BuildRequires:  qemu-ui-sdl = %{qemuver}
-%endif
 BuildRequires:  qemu-ui-spice-app = %{qemuver}
 BuildRequires:  qemu-vgabios = %{sbver}
 BuildRequires:  qemu-x86    = %{qemuver}
@@ -424,18 +395,11 @@ Recommends:     kvm_stat
 Recommends:     qemu-block-curl
 Recommends:     qemu-hw-display-qxl
 Recommends:     qemu-hw-usb-redirect
-%if 0%{?is_opensuse}
 Recommends:     qemu-hw-usb-smartcard
-%endif
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
 Recommends:     qemu-ui-gtk
-%if 0%{?is_opensuse}
 Recommends:     qemu-ui-sdl
-%else
-Obsoletes:      qemu-audio-sdl <= %{qemuver}
-Obsoletes:      qemu-ui-sdl    <= %{qemuver}
-%endif
 Recommends:     qemu-ui-spice-app
 Recommends:     qemu-x86
 %ifarch ppc ppc64 ppc64le
@@ -454,13 +418,9 @@ Recommends:     qemu-arm
 Suggests:       qemu-arm
 %endif
 Suggests:       qemu-block-dmg
-%if 0%{?with_glusterfs}
 Suggests:       qemu-block-gluster
-%endif
 Suggests:       qemu-block-iscsi
-%if 0%{?is_opensuse}
 Suggests:       qemu-block-nfs
-%endif
 %if 0%{?with_rbd}
 Suggests:       qemu-block-rbd
 %endif
@@ -468,9 +428,7 @@ Suggests:       qemu-block-ssh
 Suggests:       qemu-chardev-baum
 Suggests:       qemu-extra
 Suggests:       qemu-lang
-%if 0%{?is_opensuse}
 Recommends:     qemu-ksm = %{qemuver}
-%endif
 Suggests:       qemu-microvm
 Suggests:       qemu-vhost-user-gpu
 Provides:       qemu-audio-oss = %{qemuver}
@@ -497,11 +455,11 @@ Version:        %{qemuver}
 Release:        0
 Requires:       %name = %{qemuver}
 Requires:       qemu-ipxe
-Requires:       qemu-microvm
 Requires:       qemu-seabios
 Requires:       qemu-sgabios
 Requires:       qemu-vgabios
 Recommends:     ovmf
+Recommends:     qemu-microvm
 Recommends:     qemu-ovmf-x86_64
 
 %description x86
@@ -633,7 +591,6 @@ Release:        0
 %description audio-pa
 This package contains a module for Pulse Audio based audio support for QEMU.
 
-%if 0%{?is_opensuse}
 %package audio-sdl
 Summary:        SDL based audio support for QEMU
 Group:          System/Emulators/PC
@@ -643,7 +600,6 @@ Release:        0
 
 %description audio-sdl
 This package contains a module for SDL based audio support for QEMU.
-%endif
 
 %package block-curl
 Summary:        cURL block support for QEMU
@@ -668,7 +624,6 @@ Release:        0
 This package contains a module for accessing Mac OS X image files from
 qemu-img tool and QEMU system emulation.
 
-%if 0%{?with_glusterfs}
 %package block-gluster
 Summary:        GlusterFS block support for QEMU
 Group:          System/Emulators/PC
@@ -679,7 +634,6 @@ Release:        0
 %description block-gluster
 This package contains a module for accessing network-based image files over a
 GlusterFS network connection from qemu-img tool and QEMU system emulation.
-%endif
 
 %package block-iscsi
 Summary:        iSCSI block support for QEMU
@@ -692,7 +646,6 @@ Release:        0
 This package contains a module for accessing network-based image files over an
 iSCSI network connection from qemu-img tool and QEMU system emulation.
 
-%if 0%{?is_opensuse}
 %package block-nfs
 Summary:        direct Network File System support for QEMU
 Group:          System/Emulators/PC
@@ -702,7 +655,6 @@ Release:        0
 
 %description block-nfs
 This package contains a module for directly accessing nfs based image files.
-%endif
 
 %if 0%{?with_rbd}
 %package block-rbd
@@ -732,6 +684,7 @@ Summary:        Baum braille chardev support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_datadir/%name/forsplits/00
 Provides:       %name:%_docdir/%name/qemu-ga-ref.html
 %{qemu_module_conflicts}
 
@@ -743,6 +696,7 @@ Summary:        QXL display support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_datadir/%name/forsplits/01
 Provides:       %name:%_docdir/%name/qemu-ga-ref.txt
 %{qemu_module_conflicts}
 
@@ -754,24 +708,24 @@ Summary:        USB redirection support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_datadir/%name/forsplits/02
 Provides:       %name:%_docdir/%name/qemu-qmp-ref.html
 %{qemu_module_conflicts}
 
 %description hw-usb-redirect
 This package contains a module for USB redirection support.
 
-%if 0%{?is_opensuse}
 %package hw-usb-smartcard
 Summary:        USB smartcard support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_datadir/%name/forsplits/03
 Provides:       %name:%_docdir/%name/qemu-qmp-ref.txt
 %{qemu_module_conflicts}
 
 %description hw-usb-smartcard
 This package contains a modules for USB smartcard support.
-%endif
 
 %package ui-curses
 Summary:        Curses based UI support for QEMU
@@ -793,7 +747,6 @@ Release:        0
 %description ui-gtk
 This package contains a module for doing GTK based UI for QEMU.
 
-%if 0%{?is_opensuse}
 %package ui-sdl
 Summary:        SDL based UI support for QEMU
 Group:          System/Emulators/PC
@@ -803,7 +756,6 @@ Release:        0
 
 %description ui-sdl
 This package contains a module for doing SDL based UI for QEMU.
-%endif
 
 %package ui-spice-app
 Summary:        Spice UI support for QEMU
@@ -862,14 +814,14 @@ to provide information and control at the guest OS level.
 
 %ifarch %{build_rom_arch}
 %package microvm
-Summary:        x86 MicroVM BIOS for QEMU
+Summary:        x86 MicroVM firmware for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 BuildArch:      noarch
 
 %description microvm
-MicroVM (qboot) is a miniam x86 firmware for booting Linux kernel.
+MicroVM (qboot) is a minimal x86 firmware for booting Linux kernel.
 It provides the minimum resources needed to boot PVH and bzImages.
 
 %package seabios
@@ -935,7 +887,6 @@ BuildArch:      noarch
 Provides EDK II based firmware.
 %endif
 
-%if 0%{?is_opensuse}
 %package ksm
 Summary:        Kernel Samepage Merging services
 Group:          System/Emulators/PC
@@ -949,7 +900,6 @@ Kernel Samepage Merging (KSM) is a memory-saving de-duplication feature, that
 merges anonymous (private) pages (not pagecache ones).
 
 This package provides a service file for starting and stopping KSM.
-%endif
 
 %endif # ! qemu-testsuite
 %endif # ! qemu-linux-user
@@ -957,10 +907,10 @@ This package provides a service file for starting and stopping KSM.
 # ========================================================================
 %prep
 %setup -q -n %{srcname}-%{expand:%%(SV=%{srcver};echo ${SV%%%%+git*})}
-%if 0%{?suse_version} > 1500
 %patch00000 -p1
-%endif
+%if 0%{?suse_version} > 1500
 %patch00001 -p1
+%endif
 %patch00002 -p1
 %patch00003 -p1
 %patch00004 -p1
@@ -1001,10 +951,10 @@ This package provides a service file for starting and stopping KSM.
 %patch00039 -p1
 %patch00040 -p1
 %patch00041 -p1
-%if %{legacy_qemu_kvm} && 0%{?is_opensuse} == 0
 %patch00042 -p1
-%endif
+%if %{legacy_qemu_kvm}
 %patch00043 -p1
+%endif
 %patch00044 -p1
 %patch00045 -p1
 %patch00046 -p1
@@ -1012,9 +962,7 @@ This package provides a service file for starting and stopping KSM.
 %patch01001 -p1
 %patch01002 -p1
 %patch02000 -p1
-%if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
 %patch02001 -p1
-%endif
 %patch02002 -p1
 %patch02003 -p1
 %patch02004 -p1
@@ -1177,18 +1125,14 @@ cd %mybuilddir
 	--enable-tools --enable-guest-agent \
 	--enable-modules \
 	--disable-module-upgrades \
-%if 0%{?is_opensuse}
+%if 1
 	--enable-slirp=system \
 %else
 	--enable-slirp=git \
 %endif
 	--enable-pie \
 	--enable-docs \
-%if 0%{?is_opensuse}
 	--audio-drv-list="pa alsa sdl" \
-%else
-	--audio-drv-list="pa alsa" \
-%endif
 	--enable-attr \
 	--disable-auth-pam \
 	--enable-bochs \
@@ -1204,11 +1148,7 @@ cd %mybuilddir
 	--enable-dmg \
 	--enable-fdt \
 	--enable-gcrypt \
-%if 0%{?with_glusterfs}
 	--enable-glusterfs \
-%else
-	--disable-glusterfs \
-%endif
 	--enable-gnutls \
 	--enable-gtk \
 	--disable-hax \
@@ -1226,11 +1166,7 @@ cd %mybuilddir
 	--disable-libdaxctl \
 %endif
 	--enable-libiscsi \
-%if 0%{?is_opensuse}
 	--enable-libnfs \
-%else
-	--disable-libnfs \
-%endif
 %ifarch x86_64
 	--enable-libpmem \
 %else
@@ -1240,11 +1176,7 @@ cd %mybuilddir
 	--enable-libusb \
 	--disable-libxml2 \
 	--enable-linux-aio \
-%if 0%{?is_opensuse}
 	--enable-lzfse \
-%else
-	--disable-lzfse \
-%endif
 	--enable-lzo \
 	--disable-malloc-trim \
 %if %{with system_membarrier}
@@ -1275,20 +1207,11 @@ cd %mybuilddir
 	--enable-replication \
 	--disable-safe-stack \
 	--disable-sanitizers \
-%if 0%{?is_opensuse}
 	--enable-sdl \
 	--enable-sdl-image \
-%else
-	--disable-sdl \
-	--disable-sdl-image \
-%endif
 	--enable-seccomp \
 	--enable-sheepdog \
-%if 0%{?is_opensuse}
 	--enable-smartcard \
-%else
-	--disable-smartcard \
-%endif
 	--enable-snappy \
 	--enable-spice \
 	--disable-tcmalloc \
@@ -1653,12 +1576,10 @@ install -D -p -m 0644 %{SOURCE8} %{buildroot}/usr/lib/udev/rules.d/80-qemu-ga.ru
 install -D -m 0755 scripts/analyze-migration.py  %{buildroot}%_bindir/analyze-migration.py
 install -D -m 0755 scripts/vmstate-static-checker.py  %{buildroot}%_bindir/vmstate-static-checker.py
 install -D -m 0755 %{SOURCE9} %{buildroot}%_libexecdir/supportconfig/plugins/%name
-%if 0%{?is_opensuse} == 0
 install -D -m 0644 %{SOURCE10} %{buildroot}%_docdir/qemu-arm/supported.txt
 install -D -m 0644 %{SOURCE11} %{buildroot}%_docdir/qemu-ppc/supported.txt
 install -D -m 0644 %{SOURCE12} %{buildroot}%_docdir/qemu-x86/supported.txt
 install -D -m 0644 %{SOURCE13} %{buildroot}%_docdir/qemu-s390/supported.txt
-%endif
 %if %{legacy_qemu_kvm}
 cat > %{buildroot}%_bindir/qemu-kvm << 'EOF'
 #!/bin/sh
@@ -1671,7 +1592,6 @@ exec %_bindir/qemu-system-x86_64 -machine accel=kvm "$@"
 EOF
 chmod 755 %{buildroot}%_bindir/qemu-kvm
 install -D -m 0644 %{SOURCE5} %{buildroot}%_mandir/man1/qemu-kvm.1.gz
-%if 0%{?is_opensuse} == 0
 install -d %{buildroot}%_docdir/qemu-kvm
 %ifarch s390x
 ln -s ../qemu-s390/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.txt
@@ -1681,23 +1601,27 @@ ln -s ../qemu-x86/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.txt
 rst2html --exit-status=2 %{buildroot}%_docdir/qemu-x86/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.html
 %endif
 %endif
-%endif
 %if %{kvm_available}
 install -D -m 0644 %{SOURCE1} %{buildroot}/usr/lib/udev/rules.d/80-kvm.rules
 %endif
 install -D -p -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/qemu-ga@.service
-%if 0%{?is_opensuse}
 install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/ksm.service
-%endif
 %ifarch s390x
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/modules-load.d/kvm.conf
 %endif
-install -D -m 0644 %{SOURCE201} %{buildroot}%_docdir/%name/qemu-ga-ref.html
-install -D -m 0644 %{SOURCE202} %{buildroot}%_docdir/%name/qemu-ga-ref.txt
-install -D -m 0644 %{SOURCE203} %{buildroot}%_docdir/%name/qemu-qmp-ref.html
-%if 0%{?is_opensuse}
-install -D -m 0644 %{SOURCE204} %{buildroot}%_docdir/%name/qemu-qmp-ref.txt
-%endif
+install -D -m 0644 %{SOURCE202} %{buildroot}%_docdir/%name/qemu-ga-ref.html
+install -D -m 0644 %{SOURCE203} %{buildroot}%_docdir/%name/qemu-ga-ref.txt
+install -D -m 0644 %{SOURCE204} %{buildroot}%_docdir/%name/qemu-qmp-ref.html
+install -D -m 0644 %{SOURCE205} %{buildroot}%_docdir/%name/qemu-qmp-ref.txt
+mv %{buildroot}%_libexecdir/qemu-pr-helper %{buildroot}%_bindir/qemu-pr-helper
+install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
+ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/00
+ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/01
+ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/02
+ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/03
+ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/04
+ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/05
+ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/06
 %fdupes -s %{buildroot}
 
 # ========================================================================
@@ -1755,7 +1679,6 @@ fi
 %postun guest-agent
 %service_del_postun qemu-ga@.service
 
-%if 0%{?is_opensuse}
 %pre ksm
 %service_add_pre ksm.service
 
@@ -1767,7 +1690,6 @@ fi
 
 %postun ksm
 %service_del_postun ksm.service
-%endif
 
 %endif # qemu
 
@@ -1781,9 +1703,6 @@ fi
 %dir %_datadir/icons/hicolor
 %dir %_datadir/icons/hicolor/*/
 %dir %_datadir/icons/hicolor/*/apps
-%dir %_datadir/%name
-%dir %_datadir/%name/firmware
-%dir %_datadir/%name/vhost-user
 %_datadir/applications/qemu.desktop
 %_datadir/icons/hicolor/16x16/apps/qemu.png
 %_datadir/icons/hicolor/24x24/apps/qemu.png
@@ -1795,10 +1714,18 @@ fi
 %_datadir/icons/hicolor/256x256/apps/qemu.png
 %_datadir/icons/hicolor/512x512/apps/qemu.png
 %_datadir/icons/hicolor/scalable/apps/qemu.svg
+%dir %_datadir/%name
+%dir %_datadir/%name/firmware
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/pkg-split.txt
+%_datadir/%name/forsplits/04
+%_datadir/%name/forsplits/05
+%_datadir/%name/forsplits/06
 %_datadir/%name/keymaps
 %_datadir/%name/qemu-ifup
 %_datadir/%name/qemu-nsis.bmp
 %_datadir/%name/trace-events-all
+%dir %_datadir/%name/vhost-user
 %_datadir/%name/vhost-user/50-qemu-virtiofsd.json
 %dir %_docdir/%name/interop
 %dir %_docdir/%name/interop/_static
@@ -1955,10 +1882,8 @@ fi
 %_datadir/%name/linuxboot_dma.bin
 %_datadir/%name/multiboot.bin
 %_datadir/%name/pvh.bin
-%if 0%{?is_opensuse} == 0
 %dir %_docdir/qemu-x86
 %_docdir/qemu-x86/supported.txt
-%endif
 
 %files ppc
 %defattr(-, root, root)
@@ -1972,29 +1897,23 @@ fi
 %_datadir/%name/slof.bin
 %_datadir/%name/u-boot.e500
 %_datadir/%name/u-boot-sam460-20100605.bin
-%if 0%{?is_opensuse} == 0
 %dir %_docdir/qemu-ppc
 %_docdir/qemu-ppc/supported.txt
-%endif
 
 %files s390
 %defattr(-, root, root)
 %_bindir/qemu-system-s390x
 %_datadir/%name/s390-ccw.img
 %_datadir/%name/s390-netboot.img
-%if 0%{?is_opensuse} == 0
 %dir %_docdir/qemu-s390
 %_docdir/qemu-s390/supported.txt
-%endif
 
 %files arm
 %defattr(-, root, root)
 %_bindir/qemu-system-arm
 %_bindir/qemu-system-aarch64
-%if 0%{?is_opensuse} == 0
 %dir %_docdir/qemu-arm
 %_docdir/qemu-arm/supported.txt
-%endif
 
 %files extra
 %defattr(-, root, root)
@@ -2041,12 +1960,10 @@ fi
 %files kvm
 %defattr(-,root,root)
 %_bindir/qemu-kvm
-%_mandir/man1/qemu-kvm.1.gz
-%if 0%{?is_opensuse} == 0
 %dir %_docdir/qemu-kvm
 %_docdir/qemu-kvm/kvm-supported.html
 %_docdir/qemu-kvm/kvm-supported.txt
-%endif
+%_mandir/man1/qemu-kvm.1.gz
 %endif
 
 %files audio-alsa
@@ -2059,12 +1976,10 @@ fi
 %dir %_libdir/%name
 %_libdir/%name/audio-pa.so
 
-%if 0%{?is_opensuse}
 %files audio-sdl
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/audio-sdl.so
-%endif
 
 %files block-curl
 %defattr(-, root, root)
@@ -2075,28 +1990,22 @@ fi
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/block-dmg-bz2.so
-%if 0%{?is_opensuse}
 %_libdir/%name/block-dmg-lzfse.so
-%endif
 
-%if 0%{?with_glusterfs}
 %files block-gluster
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/block-gluster.so
-%endif
 
 %files block-iscsi
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/block-iscsi.so
 
-%if 0%{?is_opensuse}
 %files block-nfs
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/block-nfs.so
-%endif
 
 %if 0%{?with_rbd}
 %files block-rbd
@@ -2112,33 +2021,43 @@ fi
 
 %files chardev-baum
 %defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/00
 %dir %_docdir/%name
+%_docdir/%name/qemu-ga-ref.html
 %dir %_libdir/%name
 %_libdir/%name/chardev-baum.so
-%_docdir/%name/qemu-ga-ref.html
 
 %files hw-display-qxl
 %defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/01
 %dir %_docdir/%name
+%_docdir/%name/qemu-ga-ref.txt
 %dir %_libdir/%name
 %_libdir/%name/hw-display-qxl.so
-%_docdir/%name/qemu-ga-ref.txt
 
 %files hw-usb-redirect
 %defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/02
 %dir %_docdir/%name
+%_docdir/%name/qemu-qmp-ref.html
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-redirect.so
-%_docdir/%name/qemu-qmp-ref.html
 
-%if 0%{?is_opensuse}
 %files hw-usb-smartcard
 %defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/03
 %dir %_docdir/%name
+%_docdir/%name/qemu-qmp-ref.txt
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-smartcard.so
-%_docdir/%name/qemu-qmp-ref.txt
-%endif
 
 %files ui-curses
 %defattr(-, root, root)
@@ -2150,12 +2069,10 @@ fi
 %dir %_libdir/%name
 %_libdir/%name/ui-gtk.so
 
-%if 0%{?is_opensuse}
 %files ui-sdl
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/ui-sdl.so
-%endif
 
 %files ui-spice-app
 %defattr(-, root, root)
@@ -2255,10 +2172,10 @@ fi
 %_bindir/qemu-io
 %_bindir/qemu-keymap
 %_bindir/qemu-nbd
+%_bindir/qemu-pr-helper
 %_bindir/qemu-storage-daemon
 %_bindir/vmstate-static-checker.py
 %verify(not mode) %attr(4750,root,kvm) %_libexecdir/qemu-bridge-helper
-%_libexecdir/qemu-pr-helper
 %_libexecdir/virtfs-proxy-helper
 %_libexecdir/virtiofsd
 %_mandir/man1/qemu-img.1.gz
@@ -2276,11 +2193,9 @@ fi
 %{_unitdir}/qemu-ga@.service
 /usr/lib/udev/rules.d/80-qemu-ga.rules
 
-%if 0%{?is_opensuse}
 %files ksm
 %defattr(-, root, root)
 %{_unitdir}/ksm.service
-%endif
 
 %endif # qemu
 # ------------------------------------------------------------------------

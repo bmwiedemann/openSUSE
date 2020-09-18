@@ -4,7 +4,6 @@ Subject: [build] Workaround compilation error with gcc 9.1
 
 Git-commit: 1dd56dbd11082fb622c2ed21cfaced4f47d798a6
 References: bsc#1121464
-Include-If: %if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
 
 Compiling with gcc 9.1 generates lots of "taking address of packed
 member of ... may result in an unaligned pointer value" warnings.

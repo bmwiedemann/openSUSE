@@ -1,10 +1,27 @@
 From: Jon Doron <arilou@gmail.com>
 Date: Wed, 15 Jul 2020 11:43:26 +0300
 Subject: hw: hyperv: vmbus: Fix 32bit compilation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Git-commit: 0000000000000000000000000000000000000000
+Git-commit: 8b39aa90e90e9c04d07b0fbb583195237f3f11fe
 
+Fix 32-bit build error for vmbus:
+
+  hw/hyperv/vmbus.c: In function ‘gpadl_iter_io’:
+  hw/hyperv/vmbus.c:383:13: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
+  383 |         p = (void *)(((uintptr_t)iter->map & TARGET_PAGE_MASK) | off_in_page);
+      |             ^
+  cc1: all warnings being treated as errors
+
+Fixes: 0d71f7082d7 ("vmbus: vmbus implementation")
 Signed-off-by: Jon Doron <arilou@gmail.com>
+Tested-by: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Reviewed-by: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Message-Id: <20200715084326.678715-3-arilou@gmail.com>
+[lv: updated with commit description from <20200906050113.2783642-1-richard.henderson@linaro.org>]
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  hw/hyperv/vmbus.c | 3 ++-

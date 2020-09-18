@@ -1,0 +1,8 @@
+This file is provided to handle package splits in the case where functionality
+split out into a new, optional package does not (otherwise) have associated,
+installed files. The split out package provides this previously installed file
+simply to help the package resolver identify the packages needed to maintain
+current functionality.
+
+If you determine the package providing this file is not needed, it may be
+uninstalled.

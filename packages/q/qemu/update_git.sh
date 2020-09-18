@@ -574,9 +574,9 @@ rm -rf $BUNDLE_DIR
         rm -f qemu.changes.added
     fi
 # Decide if there is a better way to handle the no change case:
-    if [[ "0" = "$(expr $CHANGED_COUNT + $DELETED_COUNT + $ADDED_COUNT)" ]]; then
-        osc revert bundles.tar.xz
-    fi
+#    if [[ "0" = "$(expr $CHANGED_COUNT + $DELETED_COUNT + $ADDED_COUNT)" ]]; then
+#        osc revert bundles.tar.xz
+#    fi
     echo "git patch summary"
     echo "  unchanged: $UNCHANGED_COUNT"
     echo "    changed: $CHANGED_COUNT"
