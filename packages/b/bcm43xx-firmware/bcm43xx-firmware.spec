@@ -27,19 +27,16 @@ URL:            https://community.cypress.com/community/linux
 # Phil Elwell (Raspberry Pi Foundation) wrote: "Broadcom have said that
 # the firmware files for the BCM43438 are covered under this licence:"
 Source0:        https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/plain/LICENCE.broadcom_bcm43xx
-Source1:        50-brcmfmac.conf
-Source2:        install-brcmfmac.sh
 # The BCM43XXXX.hcd files are under this license
 Source3:        https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/LICENCE.cypress
 #BCM4329
-Source291:      https://raw.githubusercontent.com/SolidRun/meta-solidrun-arm-imx6/fido/recipes-bsp/broadcom-nvram-config/files/solidrun-imx6/brcmfmac4329-sdio.txt#/brcmfmac4329-sdio-cubox-i.txt
+Source291:      https://raw.githubusercontent.com/SolidRun/meta-solidrun-arm-imx6/fido/recipes-bsp/broadcom-nvram-config/files/solidrun-imx6/brcmfmac4329-sdio.txt#/brcmfmac4329-sdio.solidrun,cubox-i-dl.txt
 #BCM4330
-Source301:      https://raw.githubusercontent.com/SolidRun/meta-solidrun-arm-imx6/fido/recipes-bsp/broadcom-nvram-config/files/solidrun-imx6/brcmfmac4330-sdio.txt#/brcmfmac4330-sdio-cubox-i.txt
+Source301:      https://raw.githubusercontent.com/SolidRun/meta-solidrun-arm-imx6/fido/recipes-bsp/broadcom-nvram-config/files/solidrun-imx6/brcmfmac4330-sdio.txt#/brcmfmac4330-sdio.solidrun,cubox-i-q.txt
 #BCM4339
-Source391:      brcmfmac4339-sdio-vega-s95-telos.txt
+Source391:      brcmfmac4339-sdio.tronsmart,vega-s95-telos.txt
 #BCM43362
-Source3621:     http://dl.cubieboard.org/public/Cubieboard/benn/firmware/ap6210/nvram_ap6210.txt#/brcmfmac43362-sdio-cubietruck.txt
-Source3622:     https://github.com/Bananian/bananian/raw/master/deb/u-boot-m2-bananian_armhf/lib/firmware/brcm/brcmfmac43362-sdio.txt#/brcmfmac43362-sdio-bananapi-m2.txt
+Source3622:     https://github.com/Bananian/bananian/raw/master/deb/u-boot-m2-bananian_armhf/lib/firmware/brcm/brcmfmac43362-sdio.txt#/brcmfmac43362-sdio.sinovoip,bpi-m2.txt
 #BCM43430
 Source4309:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM43430A1.hcd
 #brcmfmac4356-pcie.txt is taken from ChromeOS repo
@@ -70,16 +67,11 @@ cp %{SOURCE0} %{SOURCE3} .
 %build
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d
-install -c -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/modprobe.d
-mkdir -p %{buildroot}%{_sbindir}
-install -c -m 0755 %{SOURCE2} %{buildroot}%{_sbindir}/install-brcmfmac
 # Used by brcmfmac
 mkdir -p %{buildroot}/lib/firmware/brcm
 install -c -m 0644 %{SOURCE291} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE301} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE391} %{buildroot}/lib/firmware/brcm/
-install -c -m 0644 %{SOURCE3621} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE3622} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE4356} %{buildroot}/lib/firmware/brcm/
 # Used by bluez (hciattach)
@@ -88,15 +80,12 @@ install -c -m 0644 %{SOURCE4559} %{buildroot}/lib/firmware/
 
 %files
 %license LICENCE.broadcom_bcm43xx LICENCE.cypress
-/lib/firmware/*.hcd
-/lib/firmware/brcm/*.txt
-%ghost /lib/firmware/brcm/brcmfmac4329-sdio.txt
-%ghost /lib/firmware/brcm/brcmfmac4330-sdio.txt
-%ghost /lib/firmware/brcm/brcmfmac4339-sdio.txt
-%ghost /lib/firmware/brcm/brcmfmac43362-sdio.txt
-%ghost /lib/firmware/brcm/brcmfmac43430-sdio.txt
-%ghost /lib/firmware/brcm/brcmfmac43455-sdio.txt
-%{_sysconfdir}/modprobe.d/50-brcmfmac.conf
-%{_sbindir}/install-brcmfmac
+/lib/firmware/BCM43430A1.hcd
+/lib/firmware/BCM4345C0.hcd
+/lib/firmware/brcm/brcmfmac4329-sdio.solidrun,cubox-i-dl.txt
+/lib/firmware/brcm/brcmfmac4330-sdio.solidrun,cubox-i-q.txt
+/lib/firmware/brcm/brcmfmac4339-sdio.tronsmart,vega-s95-telos.txt
+/lib/firmware/brcm/brcmfmac43362-sdio.sinovoip,bpi-m2.txt
+/lib/firmware/brcm/brcmfmac4356-pcie.txt
 
 %changelog

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep 15 07:23:29 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Update bluetooth firmware to address Sweyntooth and Spectra issues:
+  * BCM43430A1.hcd
+  * BCM4345C0.hcd
+
+-------------------------------------------------------------------
+Tue Sep 15 07:16:05 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Remove wildcards in %files
+
+-------------------------------------------------------------------
+Thu Aug 20 10:30:53 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Delete brcmfmac43362-sdio.cubietech,cubietruck.txt as now part of kernel-firmware
+
+-------------------------------------------------------------------
+Tue Jul 21 14:54:44 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- brcmfmac driver loads file depending on compatible. Rename files correspondingly.
+- delete modprobe config file and install-brcmfmac.sh as no longer needed.
+
+-------------------------------------------------------------------
 Mon Feb  3 07:52:50 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - just depend on splitted brcm firmware package and not all
