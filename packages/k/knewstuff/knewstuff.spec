@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5NewStuff5
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knewstuff
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Framework for downloading and sharing additional application data
 License:        LGPL-2.1-or-later
@@ -163,7 +163,7 @@ specification. Development files.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_bindir}/knewstuff-dialog
 %{_kf5_datadir}/kmoretools/
@@ -171,22 +171,22 @@ specification. Development files.
 %{_kf5_debugdir}/*.renamecategories
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5NewStuff.so.*
 
 %files -n libKF5NewStuffCore5
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5NewStuffCore.so.*
 
 %files imports
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_qmldir}/
 
 %files core-devel
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5NewStuffCore.so
 %{_kf5_libdir}/cmake/KF5NewStuffCore/
@@ -197,13 +197,13 @@ specification. Development files.
 %{_kf5_mkspecsdir}/qt_KNewStuffCore.pri
 
 %files quick-devel
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/cmake/KF5NewStuffQuick/
 %{_kf5_includedir}/knewstuffquick_version.h
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5NewStuff.so
 %{_kf5_libdir}/cmake/KF5NewStuff/
