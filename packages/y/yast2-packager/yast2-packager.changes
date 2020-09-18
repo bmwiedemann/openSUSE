@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 16 12:17:07 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed name of the add-on repository (bsc#1175374, related
+  to bsc#1172477)
+- 4.3.7
+
+-------------------------------------------------------------------
 Thu Jul 30 13:31:01 CEST 2020 - schubi@suse.de
 
 - AY: Calling of post-partitioning scripts moved from dropped
