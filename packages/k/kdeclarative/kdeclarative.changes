@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:49:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * [KKeySequenceItem] Make Meta+Shift+num shortcuts work
+  * Expose checkForConflictsAgainst property
+  * Add a new AbstractKCM class
+  * Using no deprecated enum Qt::MiddleButton
+  * typo--
+  * Remove obsolete COPYING files
+  * Port KRunProxy away from KRun
+  * Fix warning: zero as null pointer constant
+  * KDeclarative: Convert copyright statements to SPDX expressions
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0

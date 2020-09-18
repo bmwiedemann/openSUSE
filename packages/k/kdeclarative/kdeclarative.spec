@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Declarative5
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdeclarative
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Integration of QML and KDE workspaces
 License:        LGPL-2.1-or-later
@@ -47,6 +47,7 @@ BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Package) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
@@ -147,27 +148,27 @@ Development files.
 %endif
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5Declarative.so.*
 
 %files -n libKF5QuickAddons5
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5QuickAddons.so.*
 
 %files -n libKF5CalendarEvents5
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5CalendarEvents.so.*
 
 %files components
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/qt5/qml/
 
 %files tools
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_bindir}/kpackagelauncherqml
 
