@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 18 03:15:42 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.175.0
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  v0.175.0
+  - 964aa2a Ignore CI files and whitesource - Nicolas R
+
+-------------------------------------------------------------------
+Tue Sep 15 03:16:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.174.0
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  v0.174.0
+  - cf65e7c Fix typo in pod - nima
+
+-------------------------------------------------------------------
 Sat Jun 13 03:15:05 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.173.0

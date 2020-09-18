@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test-MockModule
-Version:        0.173.0
+Version:        0.175.0
 Release:        0
 %define cpan_name Test-MockModule
 Summary:        Override subroutines in a module for unit testing
@@ -48,7 +48,6 @@ given module go out of scope, or when you 'unmock()' the subroutine.
 
 %prep
 %setup -q -n %{cpan_name}-v%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL installdirs=vendor
