@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:49:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes since 5.73.0, only listing bugfixes:
+  * Fix cache sync issues with QtQuick dialog (kde#417985)
+  * Remove entries if they do not match filter anymore (kde#425135)
+  * Make the internal kpackage job task less fragile (kde#425811)
+  * Handle /* notation for RemoveDeadEntries (kde#425704)
+  * Remove slashes from entry name when interpreting it as path (kde#417216)
+  * Fix a sometimes-crash with the KPackageJob task (kde#425245)
+  * Use same spinner for loading and initializing (kde#418031)
+  * Remove details button (kde#418034)
+  * Hide load more spinner while updating/installing (kde#422047)
+  * Do not focus first element in icon view mode (kde#424894)
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
