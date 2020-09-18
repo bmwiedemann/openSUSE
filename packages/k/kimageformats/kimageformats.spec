@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kimageformats
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -79,7 +79,7 @@ environments.
   %fdupes %{buildroot}
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/imageformats
 %{_kf5_plugindir}/imageformats/kimg_exr.so
 %{_kf5_plugindir}/imageformats/kimg_hdr.so
@@ -108,7 +108,7 @@ environments.
 %{_kf5_servicesdir}/qimageioplugins/xcf.desktop
 
 %files eps
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/imageformats
 %dir %{_kf5_servicesdir}/qimageioplugins
 %{_kf5_plugindir}/imageformats/kimg_eps.so
