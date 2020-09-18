@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -37,6 +37,9 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
 Patch0:         kio_help-fallback-to-kde4-docs.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Remove-old-kio_fonts-hack-in-KCoreDirLister-hostname.patch
+Patch2:         0002-KUrlCompletion-accommodate-local-protocols-that-use-.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -159,7 +162,7 @@ Development files.
 
 %files core
 %doc README*
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kio
 %dir %{_kf5_plugindir}/kf5/kiod
@@ -199,7 +202,7 @@ Development files.
 
 %files
 %doc README*
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en
 %dir %{_kf5_plugindir}/kf5/kded

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Sep 13 09:41:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix browsing kdeconnect://:
+  * 0001-Remove-old-kio_fonts-hack-in-KCoreDirLister-hostname.patch
+  * 0002-KUrlCompletion-accommodate-local-protocols-that-use-.patch
+
+-------------------------------------------------------------------
+Sun Sep  6 12:49:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes since 5.73.0, only listing bugfixes:
+  * Revert "[KUrlCompletion] Don't append / to completed folders" (kde#425387)
+  * Update help text for editing the app command in a .desktop entry to comply with current spec. (kde#425145)
+  * [filewidgets] Fix KUrlNavigatorButton padding on breadcrumb (kde#425570)
+  * KFileWidget: reparse config to grab dirs added by other instances of the app (kde#403524)
+  * Avoid systemd launched applications from closing forked children (kde#425201)
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
