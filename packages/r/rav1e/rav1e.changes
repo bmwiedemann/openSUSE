@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  9 14:40:50 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.3.4
+  * https://github.com/xiph/rav1e/releases/tag/v0.3.4
+
+-------------------------------------------------------------------
 Mon Jul 20 10:08:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: produce librav1e0-32bit, as needed by
