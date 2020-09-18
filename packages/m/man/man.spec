@@ -295,6 +295,15 @@ test -d var/catman/ && rm -rf var/catman/ || true
 	--slave   %{_mandir}/man1/apropos.1%{?ext_man} apropos.1%{?ext_man} %{_mandir}/man1/apropos-db.1%{?ext_man} \
 	--slave   %{_mandir}/man1/whatis.1%{?ext_man}  whatis.1%{?ext_man}  %{_mandir}/man1/whatis-db.1%{?ext_man}
 
+# Old man packages did not apply the proper update-alternatives calls to ensure
+# alternative path move. As a result, the alternative path move induced by
+# libexecdir move breaks man wrapper (boo#1175919). Hence the following migration
+# code for upgrades from Leap 15.2 or Tumbleweed snapshots older than 20200826.
+# To be removed when support for upgrades from Leap 15.2 is dropped (dec. 2021).
+if [ %{_libexecdir} != %{_prefix}/lib ] && [ -f %{_prefix}/lib/man-db/wrapper ] ; then
+   update-alternatives --quiet --remove man %{_prefix}/lib/man-db/wrapper
+fi
+
 %preun
 %if %{with sdtimer}
 %service_del_preun man-db-create.service

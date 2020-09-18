@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 19:34:46 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add migration code to handle upgrade from old version of the man
+  package not supporting alternative path move (boo#1175919).
+
+-------------------------------------------------------------------
 Sun Aug 30 17:39:08 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Fix usage of update-alternatives (boo#1175919).
