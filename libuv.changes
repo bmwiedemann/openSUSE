@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 12 07:39:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.39.0:
+  * unix: use relaxed loads/stores for clock id
+  * unix: squelch harmless valgrind warning
+  * linux: use copy_file_range for uv_fs_copyfile when possible
+  * udp: add uv_udp_using_recvmmsg query
+  * include: add internal fields struct to uv_loop_t
+  * core: add API to measure event loop idle time
+  * unix: handle src, dest same in uv_fs_copyfile()
+  * unix: error when uv_setup_args() is not called
+  * fs: clobber req->path on uv_fs_mkstemp() error
+  * tcp: fail instantly if local port is unbound
+  * unix: don't use _POSIX_PATH_MAX
+  * build system fixes, documentation updates, updates to tests
+
+-------------------------------------------------------------------
 Sat Aug 15 21:52:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.38.1
