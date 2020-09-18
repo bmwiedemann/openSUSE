@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:50:32 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Fix StandardKey shortcut sequences in MenuItem showing as numbers
+  * Don't use parent height/width for implicit ToolSeparator sizing (kde#425949)
+  * Only use "focus" style for non-flat toolbuttons on press
+  * Add top and bottom padding to ToolSeparator
+  * Make ToolSeparator respect topPadding and bottomPadding values
+  * Make MenuSeparator use background's calculated height not implicitheight
+  * Fix width of ToolSeparator
+  * Fix toolbuttons with menus using newer Breeze
+  * Remove obsolete COPYING files
+  * Draw the entire CheckBox control via the QStyle
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0

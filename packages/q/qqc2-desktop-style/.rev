@@ -296,4 +296,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.73.0</comment>
     <requestid>825122</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>73130c1f66247bc8f1636c72c195177e</srcmd5>
+    <version>5.74.0</version>
+    <time>1600433013</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.74.0</comment>
+    <requestid>834448</requestid>
+  </revision>
 </revisionlist>
