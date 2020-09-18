@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 02:41:46 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1176448, Add clibs requirement to python-libstoragemgmt.
+
+-------------------------------------------------------------------
 Wed Aug 12 06:56:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.5:

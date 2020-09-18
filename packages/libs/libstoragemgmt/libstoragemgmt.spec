@@ -106,11 +106,15 @@ developing applications that use %{name}.
 %{?python_provide:%python_provide python3-%{name}}
 Summary:        Python client libraries and plug-in support for %{name}
 Group:          Development/Languages/Python
-Requires:       %{name} = %{version}
 BuildArch:      noarch
+Requires:       %{name} = %{version}
 %if 0%{python3}
+Requires:       python3-%{name}-clibs
+
 %description        -n python3-%{name}
 %else
+Requires:       python2-%{name}-clibs
+
 %description        -n python2-%{name}
 %endif
 The python-%{name} package contains python client libraries as
@@ -504,7 +508,8 @@ fi
 %{_udevrulesdir}/90-scsi-ua.rules
 
 %files -n %{libname}
-%doc README COPYING.LIB
+%license COPYING.LIB
+%doc README
 %{_libdir}/libstoragemgmt.so.*
 
 %files devel
