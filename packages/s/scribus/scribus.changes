@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 17 17:36:18 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Depend on hicolor-icon-theme for directory structure
+- Enable proper debuginfo/debugsource creation
+- Spec file cleanup
+  * Remove unused libetonyek and GraphicsMagick++ build dependencies
+  * Do not install breeze SVG icon into pixmap directory, drop
+    breeze-icons dependency
+  * Remove conditionals for obsolete distro versions
+
+-------------------------------------------------------------------
 Sat May  9 17:36:50 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add 0001-Fix-build-with-Qt-5.15.patch to fix build with the

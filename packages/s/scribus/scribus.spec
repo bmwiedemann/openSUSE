@@ -44,13 +44,13 @@ Patch6:         Fails-to-build-with-python-3.8.patch
 Patch7:         0001-PDF-import-plugin-support-poppler-0.86.x.patch
 # PATCH-FIX-UPSTREAM
 Patch8:         0001-Fix-build-with-Qt-5.15.patch
-BuildRequires:  breeze5-icons
 BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libcdr-devel
-BuildRequires:  libetonyek-devel
 BuildRequires:  libfreehand-devel
 BuildRequires:  libmspub-devel
 BuildRequires:  libpagemaker-devel
@@ -74,7 +74,6 @@ BuildRequires:  cmake(Qt5PrintSupport) >= 5.7.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.7.0
 BuildRequires:  cmake(Qt5Xml) >= 5.7.0
 BuildRequires:  pkgconfig(GraphicsMagick)
-BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
@@ -88,6 +87,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(poppler)
 BuildRequires:  pkgconfig(zlib)
+Requires:       hicolor-icon-theme
 Recommends:     python3-Pillow
 Recommends:     python3-tk
 # Only available in graphics for the moment
@@ -97,11 +97,6 @@ Recommends:     scribus-doc
 # Not packaged anymore
 Provides:       scribus-devel = %{version}
 Obsoletes:      scribus-devel < %{version}
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 Scribus is a page layout program which produces output in PDF and
@@ -121,7 +116,8 @@ This package provides the documentation for Scribus.
 %prep
 %setup -q
 # W: wrong-script-end-of-line-encoding
-find . -type f -exec dos2unix {} \;
+# also required for cherry-picked patches
+find . -type f \( -iname \*.py -o -iname \*.cpp -o -iname \*.h \) -exec dos2unix {} \;
 
 %autopatch -p1
 
@@ -131,6 +127,7 @@ mkdir build
 pushd build
 cmake .. \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+  -DWANT_RELEASEWITHDEBUG=1 \
   -DWANT_DISTROBUILD=1 \
   -DWANT_HUNSPELL=1 \
   -DWANT_GRAPHICSMAGICK=1 \
@@ -143,9 +140,6 @@ popd
 
 %install
 %cmake_install
-
-mkdir -p %{buildroot}%{_datadir}/pixmaps
-cp %{_datadir}/icons/breeze/apps/48/scribus.svg %{buildroot}%{_datadir}/pixmaps/
 
 # These files are required at runtime to populate the help/about window
 mkdir -p %{buildroot}%{_datadir}/scribus/aboutData
@@ -184,7 +178,6 @@ rm -f %{buildroot}%{_datadir}/doc/scribus/{ChangeLog,README}
 %{_datadir}/icons/hicolor/*/apps/scribus.png
 %{_datadir}/metainfo/scribus.appdata.xml
 %{_datadir}/mime/packages/scribus.xml
-%{_datadir}/pixmaps/scribus.svg
 %{_datadir}/scribus/
 %{_libdir}/scribus/
 %{_mandir}/man1/scribus.1%{?ext_man}
