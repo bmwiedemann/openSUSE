@@ -105,23 +105,23 @@ rm -r test/appengine/
 %if !%{with test}
 %python_install
 
+# Unbundle the Python 3 build
+rm %{buildroot}/%{python3_sitelib}/urllib3/packages/six.py
+rm -r %{buildroot}/%{python3_sitelib}/urllib3/packages/ssl_match_hostname/
+
+# Copy ssl_match_hostname.py before compilation, so we can have a pyc too
+cp -a %{SOURCE1} %{buildroot}/%{python3_sitelib}/urllib3/packages/ssl_match_hostname.py
+
 %{python_expand \
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/urllib3/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/urllib3/
 }
 
-# Unbundle the Python 3 build
-rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/six.py*
-rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/six*
-rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/ssl_match_hostname/
-
-mkdir -p %{buildroot}/%{python3_sitelib}/urllib3/packages/
-cp -a %{SOURCE1} %{buildroot}/%{python3_sitelib}/urllib3/packages/ssl_match_hostname.py
 ln -s %{python3_sitelib}/six.py %{buildroot}/%{python3_sitelib}/urllib3/packages/six.py
-ln -s %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.opt-1.pyc \
-      %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
-ln -s %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.pyc \
-      %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
+ln -sf %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.opt-1.pyc \
+       %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
+ln -sf %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.pyc \
+       %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
