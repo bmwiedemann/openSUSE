@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:48:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Add *.kcrash glob pattern to KCrash Report MIME type
+  * Use Q_DECLARE_OPERATORS_FOR_FLAGS in same namespace as flags definition
+  * do not wait for fam events indefinitely (kde#423818)
+  * Remove obsolete COPYING files
+  * [KFormat] Allow formatting values to arbitrary binary units
+  * Make it possible to KPluginMetadata from QML
+  * [KFormat] Fix binary example
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
