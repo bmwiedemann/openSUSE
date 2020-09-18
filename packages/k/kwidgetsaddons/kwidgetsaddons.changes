@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:50:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Qt::MiddleButton is deprecated in qt5.15 branch
+  * Use Q_DECLARE_OPERATORS_FOR_FLAGS in same namespace as flags definition
+  * Add KRecentFilesMenu to replace KRecentFileAction
+  * Remove obsolete COPYING files
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
