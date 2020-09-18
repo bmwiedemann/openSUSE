@@ -3851,4 +3851,14 @@
   * sysctl.d/50-default.conf: allow everybody to create IPPROTO_ICMP sockets (bsc#1174504)</comment>
     <requestid>833187</requestid>
   </revision>
+  <revision rev="475" vrev="1">
+    <srcmd5>f0f695845b90d6f86f229b085d556315</srcmd5>
+    <version>84.87+git20200918.331aa2f</version>
+    <time>1600438050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200918.331aa2f:
+  * sysctl.d/50-default.conf: fix ping_group_range syntax error
+  * alias.bash check if ip command knows color=auto (jsc#SLE-7679)</comment>
+    <requestid>835405</requestid>
+  </revision>
 </revisionlist>

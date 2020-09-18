@@ -23,7 +23,7 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20200909.ee4a72c
+Version:        84.87+git20200918.331aa2f
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't

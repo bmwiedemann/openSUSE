@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 18 11:30:53 UTC 2020 - dleuenberger@suse.com
+
+- Update to version 84.87+git20200918.331aa2f:
+  * sysctl.d/50-default.conf: fix ping_group_range syntax error
+  * alias.bash check if ip command knows color=auto (jsc#SLE-7679)
+
+-------------------------------------------------------------------
 Wed Sep  9 06:51:29 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Update to version 84.87+git20200909.ee4a72c:
