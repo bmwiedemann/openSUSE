@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:48:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Replace old ModelTest copy by QAbstractItemModelTester
+  * Remove obsolete COPYING files
+  * Add license texts according to REUSE specification
+  * Convert license headers to SPDX expressions
+  * Use Boost::boost for older CMake versions.
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
