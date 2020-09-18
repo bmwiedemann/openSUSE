@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:50:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes since 5.73.0, only listing bugfixes:
+  * Fix incorrect default for PlasmaExtras.ListItem (kde#425769)
+  * Don't let the background become smaller than the svg (kde#424448)
+  * Make PC3 BusyIndicator visuals keep a 1:1 aspect ratio (kde#425504)
+  * Unify the flat/normal behavior of PC3 Buttons/ToolButtons (kde#425174)
+  * Fix toolbutton-hover margins in button.svg (kde#425255)
+  * Fix PC2 ToolButtonStyle margins (kde#425255)
+  * Only draw the focus indicator when we got focus via the keyboard (kde#424446)
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
