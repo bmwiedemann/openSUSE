@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:57:48 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- serialization_missing_includes.patch: Add missing includes in the
+  serialization library (bsc#1176597)
+
+-------------------------------------------------------------------
 Thu Sep  3 21:30:24 UTC 2020 - Berthold Gunreben <azouhr@opensuse.org>
 
 - Enable context on s390x

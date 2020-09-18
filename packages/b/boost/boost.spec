@@ -205,6 +205,7 @@ Patch17:        python_mpi.patch
 Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
+Patch22:        serialization_missing_includes.patch
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
@@ -1132,6 +1133,7 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch18 -p1
 %patch20 -p1
 %patch21 -p1
+%patch22 -p1
 
 %build
 find . -type f -exec chmod u+w {} +

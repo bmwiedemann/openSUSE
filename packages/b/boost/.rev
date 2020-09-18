@@ -1279,4 +1279,13 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>833577</requestid>
   </revision>
+  <revision rev="140" vrev="3">
+    <srcmd5>486fbb05e94611d26bbc05ded007791b</srcmd5>
+    <version>1.74.0</version>
+    <time>1600432236</time>
+    <user>dimstar_suse</user>
+    <comment>- serialization_missing_includes.patch: Add missing includes in the
+  serialization library (bsc#1176597)</comment>
+    <requestid>834901</requestid>
+  </revision>
 </revisionlist>
