@@ -1,0 +1,31 @@
+From 37800f008e46a7321bcd4b88b4858d3ea1fabcdf Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Tue, 15 Sep 2020 16:03:30 +0200
+Subject: [PATCH] Fix virt.update with cpu defined (#263)
+
+In case the cpu was defined the rest of the definition wasn't completely
+updated.
+---
+ salt/modules/virt.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index c07fabb406..4a8a55ced6 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -2430,9 +2430,9 @@ def update(
+     data = {k: v for k, v in six.iteritems(locals()) if bool(v)}
+     if boot_dev:
+         data["boot_dev"] = {i + 1: dev for i, dev in enumerate(boot_dev.split())}
+-    need_update = need_update or salt.utils.xmlutil.change_xml(
++    need_update = salt.utils.xmlutil.change_xml(
+         desc, data, params_mapping
+-    )
++    ) or need_update
+ 
+     # Update the XML definition with the new disks and diff changes
+     devices_node = desc.find("devices")
+-- 
+2.28.0
+
+

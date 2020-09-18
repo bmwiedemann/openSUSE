@@ -1523,4 +1523,26 @@ let build start it or we will get libvirt errors.
   * ansiblegate-take-care-of-failed-skipped-and-unreacha.patch</comment>
     <requestid>832998</requestid>
   </revision>
+  <revision rev="109" vrev="5">
+    <srcmd5>3be1b24254d3f642a0c59359ee091e1f</srcmd5>
+    <version>3000.3</version>
+    <time>1600432282</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent import errors when running test_btrfs unit tests
+- Added:
+  * prevent-import-errors-when-running-test_btrfs-unit-t.patch
+
+- Remove msgpack &lt; 1.0.0 from base requirements (bsc#1176293)
+- Added:
+  * remove-msgpack-1.0.0-requirement-in-the-installed-me.patch
+
+- Fix virt.update with CPU defined
+- Added:
+  * fix-virt.update-with-cpu-defined-263.patch
+
+- Fix virt issues and invalid input errors from 'salt.utils.data' (bsc#1176480)
+- Added:
+  * fix-the-removed-six.itermitems-and-six.-_type-262.patch</comment>
+    <requestid>834906</requestid>
+  </revision>
 </revisionlist>

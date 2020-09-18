@@ -1,0 +1,27 @@
+From 116141f87df4179962dcd643d914260121447712 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 16 Sep 2020 12:40:47 +0100
+Subject: [PATCH] Prevent import errors when running test_btrfs unit
+ tests
+
+---
+ tests/unit/states/test_btrfs.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/unit/states/test_btrfs.py b/tests/unit/states/test_btrfs.py
+index c722630aef..c54579e681 100644
+--- a/tests/unit/states/test_btrfs.py
++++ b/tests/unit/states/test_btrfs.py
+@@ -37,6 +37,7 @@ from tests.support.mock import (
+ 
+ from salt.exceptions import CommandExecutionError
+ import salt.states.btrfs as btrfs
++import salt.utils.platform
+ 
+ import pytest
+ 
+-- 
+2.28.0
+
+

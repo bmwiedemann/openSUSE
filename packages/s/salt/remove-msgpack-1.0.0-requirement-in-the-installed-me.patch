@@ -1,0 +1,495 @@
+From 1b17b0afa2f9567e71062fb7bec20efa609cd471 Mon Sep 17 00:00:00 2001
+From: Duncan Mac-Vicar P <dmacvicar@suse.de>
+Date: Wed, 16 Sep 2020 12:08:40 +0200
+Subject: [PATCH] Remove msgpack<1.0.0 requirement in the installed
+ metadata (#261)
+
+We do run Salt with msgpack>=1.0.0. A program using this metadata to
+check if dependencies are satisfied will break, as salt-sproxy does.
+
+update msgpack
+
+fix msg_test
+
+fix .decode
+
+fix .decode 2
+
+fix failing tests
+
+undo decode 2
+
+fix strict_map_key
+
+fix tab error
+
+add back raw True
+
+fix upack kwargs
+
+add raw false
+
+move raw false
+
+raw=false move
+
+clean up
+---
+ pkg/osx/req.txt                       |  2 +-
+ requirements/base.txt                 |  2 +-
+ requirements/static/py2.7/darwin.txt  |  4 +-
+ requirements/static/py2.7/linux.txt   |  2 +-
+ requirements/static/py2.7/windows.txt |  4 +-
+ requirements/static/py3.4/linux.txt   |  2 +-
+ requirements/static/py3.5/darwin.txt  |  4 +-
+ requirements/static/py3.5/linux.txt   |  2 +-
+ requirements/static/py3.5/windows.txt |  4 +-
+ requirements/static/py3.6/darwin.txt  |  4 +-
+ requirements/static/py3.6/linux.txt   |  2 +-
+ requirements/static/py3.6/windows.txt |  4 +-
+ requirements/static/py3.7/darwin.txt  |  4 +-
+ requirements/static/py3.7/linux.txt   |  2 +-
+ requirements/static/py3.7/windows.txt |  4 +-
+ requirements/static/py3.8/darwin.txt  |  4 +-
+ requirements/static/py3.8/linux.txt   |  2 +-
+ requirements/static/py3.9/darwin.txt  |  4 +-
+ requirements/static/py3.9/linux.txt   |  2 +-
+ salt/serializers/msgpack.py           | 22 +++++++-
+ salt/utils/msgpack.py                 |  9 +--
+ tests/unit/utils/test_msgpack.py      | 80 ++++++++++++++++++++++++++-
+ 22 files changed, 131 insertions(+), 38 deletions(-)
+
+diff --git a/pkg/osx/req.txt b/pkg/osx/req.txt
+index e65ac89f3e..5716834001 100644
+--- a/pkg/osx/req.txt
++++ b/pkg/osx/req.txt
+@@ -15,7 +15,7 @@ jinja2==2.10.1
+ linode-python==1.1.1
+ Mako==1.0.7
+ markupsafe==1.1.1
+-msgpack-python==0.5.6
++msgpack==1.0.0
+ psutil==5.6.1
+ pyasn1==0.4.5
+ pycparser==2.19
+diff --git a/requirements/base.txt b/requirements/base.txt
+index 8adf76a2a0..d822973bcb 100644
+--- a/requirements/base.txt
++++ b/requirements/base.txt
+@@ -1,5 +1,5 @@
+ Jinja2
+-msgpack>=0.5,!=0.5.5,<1.0.0
++msgpack>=0.5,!=0.5.5
+ PyYAML
+ MarkupSafe
+ requests>=1.0.0
+diff --git a/requirements/static/py2.7/darwin.txt b/requirements/static/py2.7/darwin.txt
+index 1139683ede..abad9aaacb 100644
+--- a/requirements/static/py2.7/darwin.txt
++++ b/requirements/static/py2.7/darwin.txt
+@@ -73,8 +73,8 @@ meld3==1.0.2              # via supervisor
+ mock==3.0.5 ; python_version < "3.6"
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py2.7/linux.txt b/requirements/static/py2.7/linux.txt
+index b6bab5e0f6..512e843e56 100644
+--- a/requirements/static/py2.7/linux.txt
++++ b/requirements/static/py2.7/linux.txt
+@@ -69,7 +69,7 @@ meld3==1.0.2              # via supervisor
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack==0.5.6
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py2.7/windows.txt b/requirements/static/py2.7/windows.txt
+index 446e3c2cda..92374b3b07 100644
+--- a/requirements/static/py2.7/windows.txt
++++ b/requirements/static/py2.7/windows.txt
+@@ -64,8 +64,8 @@ meld3==1.0.2              # via supervisor
+ mock==3.0.5 ; python_version < "3.6"
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ packaging==19.2           # via pytest
+ patch==1.16
+ pathlib2==2.3.3           # via importlib-metadata, pytest
+diff --git a/requirements/static/py3.4/linux.txt b/requirements/static/py3.4/linux.txt
+index 4bc5ed8cc9..697ec567f5 100644
+--- a/requirements/static/py3.4/linux.txt
++++ b/requirements/static/py3.4/linux.txt
+@@ -59,7 +59,7 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack==0.5.6
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.5/darwin.txt b/requirements/static/py3.5/darwin.txt
+index d01d1c93ff..967a7a1f52 100644
+--- a/requirements/static/py3.5/darwin.txt
++++ b/requirements/static/py3.5/darwin.txt
+@@ -64,8 +64,8 @@ markupsafe==1.1.1
+ mock==3.0.5 ; python_version < "3.6"
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.5/linux.txt b/requirements/static/py3.5/linux.txt
+index 9309059b6c..464a2264f1 100644
+--- a/requirements/static/py3.5/linux.txt
++++ b/requirements/static/py3.5/linux.txt
+@@ -59,7 +59,7 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack==0.5.6
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.5/windows.txt b/requirements/static/py3.5/windows.txt
+index 7918945e00..a5ea817671 100644
+--- a/requirements/static/py3.5/windows.txt
++++ b/requirements/static/py3.5/windows.txt
+@@ -54,8 +54,8 @@ markupsafe==1.1.1
+ mock==3.0.5 ; python_version < "3.6"
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ packaging==19.2           # via pytest
+ patch==1.16
+ pathlib2==2.3.3           # via pytest
+diff --git a/requirements/static/py3.6/darwin.txt b/requirements/static/py3.6/darwin.txt
+index 2dc822beb8..f07bc77fff 100644
+--- a/requirements/static/py3.6/darwin.txt
++++ b/requirements/static/py3.6/darwin.txt
+@@ -64,8 +64,8 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.6/linux.txt b/requirements/static/py3.6/linux.txt
+index e5eead5572..3f6b0795b5 100644
+--- a/requirements/static/py3.6/linux.txt
++++ b/requirements/static/py3.6/linux.txt
+@@ -59,7 +59,7 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack==0.5.6
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.6/windows.txt b/requirements/static/py3.6/windows.txt
+index 83896f9d3f..b6548ed329 100644
+--- a/requirements/static/py3.6/windows.txt
++++ b/requirements/static/py3.6/windows.txt
+@@ -54,8 +54,8 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ packaging==19.2           # via pytest
+ patch==1.16
+ pathtools==0.1.2          # via watchdog
+diff --git a/requirements/static/py3.7/darwin.txt b/requirements/static/py3.7/darwin.txt
+index 616563d7b6..490ba230f7 100644
+--- a/requirements/static/py3.7/darwin.txt
++++ b/requirements/static/py3.7/darwin.txt
+@@ -63,8 +63,8 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.7/linux.txt b/requirements/static/py3.7/linux.txt
+index 92eedc94d5..a3d00a0b83 100644
+--- a/requirements/static/py3.7/linux.txt
++++ b/requirements/static/py3.7/linux.txt
+@@ -59,7 +59,7 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack==0.5.6
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.7/windows.txt b/requirements/static/py3.7/windows.txt
+index d6499eaacd..27d619b1d6 100644
+--- a/requirements/static/py3.7/windows.txt
++++ b/requirements/static/py3.7/windows.txt
+@@ -53,8 +53,8 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ packaging==19.2           # via pytest
+ patch==1.16
+ pathtools==0.1.2          # via watchdog
+diff --git a/requirements/static/py3.8/darwin.txt b/requirements/static/py3.8/darwin.txt
+index 95bcd7748d..3164168937 100644
+--- a/requirements/static/py3.8/darwin.txt
++++ b/requirements/static/py3.8/darwin.txt
+@@ -62,8 +62,8 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.8/linux.txt b/requirements/static/py3.8/linux.txt
+index 5d42a310fa..217f07267e 100644
+--- a/requirements/static/py3.8/linux.txt
++++ b/requirements/static/py3.8/linux.txt
+@@ -57,7 +57,7 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack==0.5.6
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.9/darwin.txt b/requirements/static/py3.9/darwin.txt
+index 419f8ee1d1..c5f02fd7a5 100644
+--- a/requirements/static/py3.9/darwin.txt
++++ b/requirements/static/py3.9/darwin.txt
+@@ -62,8 +62,8 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack-python==0.5.6
+-msgpack==0.5.6
++msgpack==1.0.0
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/requirements/static/py3.9/linux.txt b/requirements/static/py3.9/linux.txt
+index b7eb8320de..8db5efa224 100644
+--- a/requirements/static/py3.9/linux.txt
++++ b/requirements/static/py3.9/linux.txt
+@@ -57,7 +57,7 @@ markupsafe==1.1.1
+ mock==3.0.5
+ more-itertools==5.0.0
+ moto==1.3.7
+-msgpack==0.5.6
++msgpack==1.0.0
+ ncclient==0.6.4           # via junos-eznc
+ netaddr==0.7.19           # via junos-eznc
+ oscrypto==1.2.0           # via certvalidator
+diff --git a/salt/serializers/msgpack.py b/salt/serializers/msgpack.py
+index 6082686cba..667ff8b12e 100644
+--- a/salt/serializers/msgpack.py
++++ b/salt/serializers/msgpack.py
+@@ -32,6 +32,24 @@ if not available:
+     def _deserialize(stream_or_string, **options):
+         _fail()
+ 
++
++elif salt.utils.msgpack.version >= (1, 0, 0):
++
++    def _serialize(obj, **options):
++        try:
++            return salt.utils.msgpack.dumps(obj, **options)
++        except Exception as error:  # pylint: disable=broad-except
++            raise SerializationError(error)
++
++    def _deserialize(stream_or_string, **options):
++        try:
++            options.setdefault("use_list", True)
++            options.setdefault("raw", False)
++            return salt.utils.msgpack.loads(stream_or_string, **options)
++        except Exception as error:  # pylint: disable=broad-except
++            raise DeserializationError(error)
++
++
+ elif salt.utils.msgpack.version >= (0, 2, 0):
+ 
+     def _serialize(obj, **options):
+@@ -42,8 +60,8 @@ elif salt.utils.msgpack.version >= (0, 2, 0):
+ 
+     def _deserialize(stream_or_string, **options):
+         try:
+-            options.setdefault('use_list', True)
+-            options.setdefault('encoding', 'utf-8')
++            options.setdefault("use_list", True)
++            options.setdefault("encoding", "utf-8")
+             return salt.utils.msgpack.loads(stream_or_string, **options)
+         except Exception as error:  # pylint: disable=broad-except
+             raise DeserializationError(error)
+diff --git a/salt/utils/msgpack.py b/salt/utils/msgpack.py
+index 027fe81a18..4a97a87522 100644
+--- a/salt/utils/msgpack.py
++++ b/salt/utils/msgpack.py
+@@ -76,10 +76,11 @@ def _sanitize_msgpack_unpack_kwargs(kwargs):
+     https://github.com/msgpack/msgpack-python/blob/master/ChangeLog.rst
+     """
+     assert isinstance(kwargs, dict)
+-    if version >= (1, 0, 0) and kwargs.get("raw", None) is None:
+-        log.info("adding `raw=True` argument to msgpack call")
+-        kwargs["raw"] = True
+-
++    if version >= (1, 0, 0):
++        kwargs.setdefault("raw", True)
++        kwargs.setdefault("strict_map_key", False)
++        if "encoding" in kwargs:
++            del kwargs["encoding"]
+     return _sanitize_msgpack_kwargs(kwargs)
+ 
+ 
+diff --git a/tests/unit/utils/test_msgpack.py b/tests/unit/utils/test_msgpack.py
+index cac7c1e9b1..f3e7b74f64 100644
+--- a/tests/unit/utils/test_msgpack.py
++++ b/tests/unit/utils/test_msgpack.py
+@@ -182,7 +182,78 @@ class TestMsgpack(TestCase):
+ 
+         msgpack_items = set(x for x in dir(msgpack) if not x.startswith('_') and sanitized(x))
+         msgpack_util_items = set(dir(salt.utils.msgpack))
+-        self.assertFalse(msgpack_items - msgpack_util_items, 'msgpack functions with no alias in `salt.utils.msgpack`')
++        self.assertFalse(
++            msgpack_items - msgpack_util_items,
++            "msgpack functions with no alias in `salt.utils.msgpack`",
++        )
++
++    def test_sanitize_msgpack_kwargs(self):
++        """
++        Test helper function _sanitize_msgpack_kwargs
++        """
++        version = salt.utils.msgpack.version
++
++        kwargs = {"strict_map_key": True, "raw": True, "use_bin_type": True}
++        salt.utils.msgpack.version = (0, 6, 0)
++        self.assertEqual(
++            salt.utils.msgpack._sanitize_msgpack_kwargs(kwargs),
++            {"raw": True, "strict_map_key": True, "use_bin_type": True},
++        )
++
++        kwargs = {"strict_map_key": True, "raw": True, "use_bin_type": True}
++        salt.utils.msgpack.version = (0, 5, 2)
++        self.assertEqual(
++            salt.utils.msgpack._sanitize_msgpack_kwargs(kwargs),
++            {"raw": True, "use_bin_type": True},
++        )
++
++        kwargs = {"strict_map_key": True, "raw": True, "use_bin_type": True}
++        salt.utils.msgpack.version = (0, 4, 0)
++        self.assertEqual(
++            salt.utils.msgpack._sanitize_msgpack_kwargs(kwargs), {"use_bin_type": True}
++        )
++
++        kwargs = {"strict_map_key": True, "raw": True, "use_bin_type": True}
++        salt.utils.msgpack.version = (0, 3, 0)
++        self.assertEqual(salt.utils.msgpack._sanitize_msgpack_kwargs(kwargs), {})
++        salt.utils.msgpack.version = version
++
++    def test_sanitize_msgpack_unpack_kwargs(self):
++        """
++        Test helper function _sanitize_msgpack_unpack_kwargs
++        """
++        version = salt.utils.msgpack.version
++
++        kwargs = {"strict_map_key": True, "use_bin_type": True, "encoding": "utf-8"}
++        salt.utils.msgpack.version = (1, 0, 0)
++        self.assertEqual(
++            salt.utils.msgpack._sanitize_msgpack_unpack_kwargs(kwargs.copy()),
++            {"raw": True, "strict_map_key": True, "use_bin_type": True},
++        )
++
++        salt.utils.msgpack.version = (0, 6, 0)
++        self.assertEqual(
++            salt.utils.msgpack._sanitize_msgpack_unpack_kwargs(kwargs.copy()),
++            {"strict_map_key": True, "use_bin_type": True, "encoding": "utf-8"},
++        )
++
++        salt.utils.msgpack.version = (0, 5, 2)
++        self.assertEqual(
++            salt.utils.msgpack._sanitize_msgpack_unpack_kwargs(kwargs.copy()),
++            {"use_bin_type": True, "encoding": "utf-8"},
++        )
++
++        salt.utils.msgpack.version = (0, 4, 0)
++        self.assertEqual(
++            salt.utils.msgpack._sanitize_msgpack_unpack_kwargs(kwargs.copy()),
++            {"use_bin_type": True, "encoding": "utf-8"},
++        )
++        kwargs = {"strict_map_key": True, "use_bin_type": True}
++        salt.utils.msgpack.version = (0, 3, 0)
++        self.assertEqual(
++            salt.utils.msgpack._sanitize_msgpack_unpack_kwargs(kwargs.copy()), {}
++        )
++        salt.utils.msgpack.version = version
+ 
+     def _test_base(self, pack_func, unpack_func):
+         '''
+@@ -207,7 +278,6 @@ class TestMsgpack(TestCase):
+         # Sanity check, we are not borking the BytesIO read function
+         self.assertNotEqual(BytesIO.read, buffer.read)
+         buffer.read = buffer.getvalue
+-
+         pack_func(data, buffer)
+         # Sanity Check
+         self.assertTrue(buffer.getvalue())
+@@ -216,7 +286,11 @@ class TestMsgpack(TestCase):
+ 
+         # Reverse the packing and the result should be equivalent to the original data
+         unpacked = unpack_func(buffer)
+-        self.assertEqual(data, unpacked.decode())
++
++        if isinstance(unpacked, bytes):
++            unpacked = unpacked.decode()
++
++        self.assertEqual(data, unpacked)
+ 
+     def test_buffered_base_pack(self):
+         self._test_buffered_base(pack_func=salt.utils.msgpack.pack, unpack_func=msgpack.unpack)
+-- 
+2.28.0
+
+

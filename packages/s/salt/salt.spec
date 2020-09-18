@@ -336,6 +336,15 @@ Patch125:     do-not-raise-streamclosederror-traceback-but-only-lo.patch
 Patch126:     opensuse-3000.2-virt-backports-236-257.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/256
 Patch127:     backport-virt-patches-from-3001-256.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/262
+Patch128:     fix-the-removed-six.itermitems-and-six.-_type-262.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/263
+Patch129:     fix-virt.update-with-cpu-defined-263.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/261
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/57571
+Patch130:     remove-msgpack-1.0.0-requirement-in-the-installed-me.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/bc20f38d0fa492af70321fef7fe2530937dfc86a
+Patch131:     prevent-import-errors-when-running-test_btrfs-unit-t.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -969,6 +978,10 @@ cp %{S:5} ./.travis.yml
 %patch125 -p1
 %patch126 -p1
 %patch127 -p1
+%patch128 -p1
+%patch129 -p1
+%patch130 -p1
+%patch131 -p1
 
 %build
 # Putting /usr/bin at the front of $PATH is needed for RHEL/RES 7. Without this

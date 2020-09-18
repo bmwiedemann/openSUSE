@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:52:33 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Prevent import errors when running test_btrfs unit tests
+
+- Added:
+  * prevent-import-errors-when-running-test_btrfs-unit-t.patch
+
+-------------------------------------------------------------------
+Wed Sep 16 10:57:15 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Remove msgpack < 1.0.0 from base requirements (bsc#1176293)
+
+- Added:
+  * remove-msgpack-1.0.0-requirement-in-the-installed-me.patch
+
+-------------------------------------------------------------------
+Tue Sep 15 14:22:12 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix virt.update with CPU defined
+
+- Added:
+  * fix-virt.update-with-cpu-defined-263.patch
+
+-------------------------------------------------------------------
+Tue Sep 15 12:15:16 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix virt issues and invalid input errors from 'salt.utils.data' (bsc#1176480)
+
+- Added:
+  * fix-the-removed-six.itermitems-and-six.-_type-262.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 12:59:11 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
 - Reintroduces the patches from
