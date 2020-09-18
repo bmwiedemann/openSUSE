@@ -2,8 +2,8 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/cri-o/cri-o</param>
     <param name="scm">git</param>
-    <param name="versionformat">1.18.3</param>
-    <param name="revision">v1.18.3</param>
+    <param name="versionformat">1.19.0</param>
+    <param name="revision">v1.19.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

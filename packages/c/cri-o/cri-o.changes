@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Tue Sep 15 07:24:16 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- API Change
+  - CRI-O now manages namespace lifecycles by default
+- Feature
+  - Add --version-file-persist, a place to put the version file in
+    persistent storage. Now, crio wipe wipes containers if
+    --version-file is not present
+  - Add big_files_temporary_dir to allow customization of where
+    large temporary files are put
+  - Add build support for setting SOURCE_DATE_EPOCH
+  - Added `--metrics-socket`/`metrics_socket` configuration option
+    to allow exposing the metrics endpoint on a local socket path
+  - Added `crio_image_layer_reuse` metric which counts layer reuses
+    during image pull
+  - Added `privileged` field to container status `info`
+  - Added behavior to allow filtering by a partial Pod Sandbox ID
+  - Added configuration validation to ensure a `conmon_cgroup ==
+    "pod"` if `cgroup_manager == "cgroupfs"`
+  - Added latest `crun` version to static binary bundle
+  - Added metrics-exporter and [documentation]
+  - Added new metrics `crio_image_pulls_failures` and
+    `crio_image_pulls_successes`. For more information please refer
+    to the [CRI-O metrics guide]
+  - Container HostPort with SCTP protocol is supported.
+  - Containers running `init` or `systemd` are now given a new
+    selinux label `container_init_t`, giving it selinux privileges
+    more appropriate for the workload
+  - If users want the container_kvm_t label when using a runtime
+    that supports kvm separation, they will need to either set the
+    runtime_type to "vm" or have "kata" in the runtime name. E.g
+
+    [crio.runtime.runtimes.my-kata-runtime]
+    runtime_path = ""
+    runtime_type = "oci"
+    runtime_root = "/run/kata"
+
+    or
+
+    [crio.runtime.runtimes.my-kata-runtime]
+    runtime_path = ""
+    runtime_type = "vm"
+    runtime_root = "/run/kata"
+  - Re-add the behavior that string slices can be passed to the CLI
+    comma separated, for example `--default-capabilities
+    CHOWN,KILL`
+  - Removed `socat` runtime dependency which was needed for pod
+    port forwarding
+  - Return pod image, pid and spec in sandbox_status CRI verbose
+    mode
+- Design
+  - Hooks_dir entries are now created if they don't exist
+- Documentation
+  - Added `crun` container runtime to `crio.conf`
+  - Added dependency report to generated release notes
+  - The changelog is now rendered by a custom go template and
+    contains the table of contents
+- Bug or Regression
+  - Adding additional runtime handler doesn't require the user to
+    copy existing default runtime handler configuration. The
+    existing default runtime handler configuration will be
+    preserved while adding the new runtime handler.
+  - ExecSync requests will ask conmon to not double fork, causing
+    systemd to have fewer conmons re-parented to it. conmon v2.0.19
+    or greater is required for this feature.
+  - Fix handling of the --cni-plugin-dir and other multivalue
+    command line flags
+  - Fix path to bash via `/usr/bin/env` in crio-shutdown.service
+  - Fix the container cgroup in case cgroupfs cgroup manager is
+    used
+  - Fix working set calculation
+  - Fixed `crio version` binary mode parsing on musl toolchains
+  - Fixed a bug where crictl only showed pod level stats, not
+    container level stats.
+  - Fixed a bug where exec sync requests (manually or automatically
+    triggered via readiness/liveness probes) overwrite the runtime
+    `info.runtimeSpec.process.args` of the container status
+  - Fixed bug where Pod creation would fail if Uid was not
+    specified in Metadata of sandbox config passed in a run pod
+    sandbox request
+  - Fixed bug where pod names would sometimes leak on creation,
+    causing the kubelet to fail to recreate
+  - Fixed crio restart behavior to make sure that Pod creation
+    timestamps are restored and the order in the list of pods stays
+    stable across restarts
+  - Fixed wrong linkmode output
+  - Reflects resource updates under the container spec.
+- Other
+  - Added info logs for image pulls and image status
+  - Cleanup default info logging
+  - Cleanup go module and vendor files.
+  - Pod creation now fails if conmon cannot be moved to the cgroup
+    specified in `conmon_cgroup`. Our default value for
+    `conmon_cgroup` is `system.slice`, which is invalid for
+    cgroupfs. As such, if you use cgroupfs, you should change
+    `conmon_cgroup` to `pod`
+  - Removed `crio-wipe.service` and `crio-shutdown.service` systemd
+    units from the static bundle since they are not required
+- Uncategorized
+  - Add `--drop-infra-ctr` option to ask CRI-O to drop the infra
+    container when a pod level pid namespace isn't requested. This
+    feature is considered experimental
+  - Adds a new optional field, runtime_type, to the "--runtimes"
+    option.
+  - Cleanup and update nix derivation for static builds
+  - Fix a bug where a sudden reboot causes incomplete image writes.
+    This could cause image storage to be corrupted, resulting in an
+    error `layer not known`.
+  - Fix bug where empty config fields having to do with storage
+    cause `/info` requests to return incorrect information
+  - Fixes panic when /sys/fs/cgroup can't be stat'ed
+  - If the default_runtime is changed from the default
+    configuration, the corresponding existing default entry in the
+    runtime map in the configuration will be ignored.
+  - Remove support for `--runtime` flag
+  - Updated `crictl.yaml` configuration inside the repository to
+    reflect cri-tools v1.19.0 changes
+- Dependency-Change
+  - Compile with go 1.15
+
+-------------------------------------------------------------------
 Sun Aug  2 21:49:08 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
