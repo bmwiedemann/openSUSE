@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 16 10:01:17 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- vnserver: fix startup of Plasma desktop (boo#1176571)
+
+-------------------------------------------------------------------
 Wed Aug 19 09:51:43 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

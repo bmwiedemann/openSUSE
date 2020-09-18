@@ -33,12 +33,12 @@ Index: b/unix/vncserver
 -       "  exec /etc/X11/xinit/xinitrc\n".
 +       "\n".
 +       "if [ -x \"\$client\" ]; then\n".
-+       "  exec \"\$client\"\n".
++       "  exec dbus-launch --exit-with-x11 \"\$client\"\n".
         "fi\n".
 -       "if [ -f /etc/X11/xinit/xinitrc ]; then\n".
 -       "  exec sh /etc/X11/xinit/xinitrc\n".
 +       "if [ -f \"\$client\" ]; then\n".
-+       "  exec sh \"\$client\"\n".
++       "  exec dbus-launch --exit-with-x11 sh \"\$client\"\n".
         "fi\n".
 +       "\n".
         "[ -r \$HOME/.Xresources ] && xrdb \$HOME/.Xresources\n".

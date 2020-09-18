@@ -655,4 +655,12 @@
     <comment></comment>
     <requestid>828750</requestid>
   </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>5de8950716d5de2729b9c192cb875639</srcmd5>
+    <version>1.10.1</version>
+    <time>1600432390</time>
+    <user>dimstar_suse</user>
+    <comment>- vnserver: fix startup of Plasma desktop (boo#1176571)</comment>
+    <requestid>835044</requestid>
+  </revision>
 </revisionlist>
