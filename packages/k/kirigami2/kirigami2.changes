@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:49:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes since 5.73.0, only listing bugfixes:
+  * Add a property to ToolBarLayout to control how to deal with item height (kde#425675)
+  * new logic to remove acceleration marks (kde#420409)
+  * Do not override Heading pixel size in BreadCrumbControl (kde#404396)
+  * [passivenotification] Set explicit padding (kde#419391)
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
