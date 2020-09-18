@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5GlobalAccel5
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kglobalaccel
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Global desktop keyboard shortcuts
 License:        LGPL-2.1-or-later
@@ -136,14 +136,14 @@ does not need focus for them to be activated.
 %endif
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5GlobalAccel.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 
 %files -n libKF5GlobalAccelPrivate5
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5GlobalAccelPrivate.so.*
 
@@ -156,7 +156,7 @@ does not need focus for them to be activated.
 %{_kf5_mkspecsdir}/qt_KGlobalAccel.pri
 
 %files -n kglobalaccel5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/kglobalaccel5
 %dir %{_kf5_plugindir}/org.kde.kglobalaccel5.platforms
 %{_kf5_plugindir}/org.kde.kglobalaccel5.platforms/KF5GlobalAccelPrivateXcb.so
