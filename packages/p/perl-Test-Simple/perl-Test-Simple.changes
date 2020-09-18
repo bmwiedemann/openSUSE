@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 15 03:17:53 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302181
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302181  2020-09-14 09:46:04-07:00 America/Los_Angeles
+      - put try_sig_mask back where it goes (And add test to prevent this in the future)
+      - Drop new List::Util requirement back down
+  1.302180  2020-09-13 23:11:18-07:00 America/Los_Angeles
+      - No changes since last trial
+  1.302179  2020-09-12 22:35:19-07:00 America/Los_Angeles (TRIAL RELEASE)
+      - Bump minimum List::Util version (for uniq)
+  1.302178  2020-09-07 14:11:52-07:00 America/Los_Angeles (TRIAL RELEASE)
+      - Move try_sig_mask to the only module that uses it.
+      - Inherit warnings bitmask in cmp_ok string eval
+      - Update copyright date
+      - Improved API for interept {} and what it returns
+
+-------------------------------------------------------------------
 Sat Aug  8 03:11:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302177
