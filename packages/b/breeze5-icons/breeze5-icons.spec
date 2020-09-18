@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           breeze5-icons
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
@@ -35,23 +35,19 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/breeze-i
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/breeze-icons-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-OPENSUSE oxygen.diff -- inherit from oxygen
-Patch0:         oxygen.diff
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
 BuildRequires:  cmake(Qt5Core) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.12.0
-Requires:       oxygen5-icon-theme
 BuildArch:      noarch
 
 %description
 Breeze-icons is a freedesktop.org compatible icon theme.
 
 %prep
-%setup -q -n breeze-icons-%{version}
-%patch0 -p1
+%autosetup -p1 -n breeze-icons-%{version}
 
 %build
   %cmake_kf5 -d build -- -DBINARY_ICONS_RESOURCE=ON

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 17 12:48:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop patch to no longer inherit from oxygen, it's not been
+  necessary for a long time now:
+  * oxygen.diff
+
+-------------------------------------------------------------------
+Sun Sep  6 12:48:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes since 5.73.0, only listing bugfixes:
+  * Add another alias for keepass icon (kde#425928)
+  * Run application-x-bzip-compressed-tar through `scour` (kde#425089)
+  * Add aliases for MP3 icons (kde#425059)
+
+-------------------------------------------------------------------
 Sun Aug  2 07:12:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
@@ -6,7 +25,7 @@ Sun Aug  2 07:12:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
   * For more details please see:
   * https://kde.org/announcements/kde-frameworks-5.73.0
 - Too many changes since 5.72.0, only listing bugfixes:
-  * Add SMART status icon BUG: 423997 (kde#423997)
+  * Add SMART status icon (kde#423997)
 
 -------------------------------------------------------------------
 Sun Jul  5 07:54:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
