@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:48:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes since 5.73.0, only listing bugfixes:
+  * Use common UDS creation code also for tags (kde#419429)
+  * Don't index .ytdl files (kde#424925)
+
+-------------------------------------------------------------------
 Sun Aug  2 07:23:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0

@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -174,15 +174,15 @@ package contains aditional command line utilities. Development files.
 %postun -n libKF5BalooEngine5 -p /sbin/ldconfig
 
 %files -n libKF5Baloo5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5Baloo.so.*
 
 %files -n libKF5BalooEngine5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5BalooEngine.so.*
 
 %files file
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/baloo_file
 %{_kf5_bindir}/baloo_file_extractor
 %{_kf5_bindir}/balooctl
@@ -191,7 +191,7 @@ package contains aditional command line utilities. Development files.
 %{_kf5_debugdir}/baloo.renamecategories
 
 %files kioslaves
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/kf5/kio
 %dir %{_kf5_plugindir}/kf5
 %{_kf5_plugindir}/kf5/kio/baloosearch.so
@@ -204,16 +204,16 @@ package contains aditional command line utilities. Development files.
 %{_kf5_servicesdir}/timeline.protocol
 
 %files tools
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/baloosearch
 %{_kf5_bindir}/balooshow
 
 %files imports
-%license COPYING*
+%license LICENSES/*
 %{_kf5_qmldir}/
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_includedir}/Baloo
 %{_kf5_includedir}/baloo_version.h
 %{_kf5_libdir}/cmake/KF5Baloo/
@@ -224,19 +224,19 @@ package contains aditional command line utilities. Development files.
 
 %if %{with lang}
 %files -n libKF5BalooEngine5-lang -f libKF5BalooEngine5.lang
-%license COPYING*
+%license LICENSES/*
 
 %files file-lang -f %{name}-file.lang
-%license COPYING*
+%license LICENSES/*
 
 %files tools-lang -f %{name}-tools.lang
-%license COPYING*
+%license LICENSES/*
 
 %files kioslaves-lang -f %{name}-kioslaves.lang
-%license COPYING*
+%license LICENSES/*
 
 %files imports-lang -f %{name}-imports.lang
-%license COPYING*
+%license LICENSES/*
 
 %endif
 
