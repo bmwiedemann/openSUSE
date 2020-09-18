@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:48:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Strip leading zeros from numerical version numbers in C++ code
+  * Add timeout for qmlplugindump calls
+  * Add WaylandProtocols find module
+  * invoke update-mime-database with -n
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
