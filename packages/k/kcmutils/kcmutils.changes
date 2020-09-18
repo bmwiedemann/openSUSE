@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:48:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * KCModuleData: Fix headers, improve api doc and rename method
+  * Convert header to SPDX
+  * Fix KCModuleData revertToDefaults signature bool -> void
+  * Extend KCModuleData with revertToDefaults and matchQuery functionnality
+  * Fix typo
+  * Try to avoid horizontal scrollbar in KCMultiDialog
+  * Remove obsolete COPYING files
+  * Add KCModuleData as base class for plugin
+  * Allow extra button to be added to KPluginSelector
+  * KCM-Utils: Convert copyright statements to SPDX expressions
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0
