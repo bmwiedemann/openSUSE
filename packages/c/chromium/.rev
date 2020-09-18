@@ -3169,4 +3169,13 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2020-15959: Insufficient policy enforcement in networking.</comment>
     <requestid>834011</requestid>
   </revision>
+  <revision rev="269" vrev="2">
+    <srcmd5>ea6c5f033eb6b68666289de513159f47</srcmd5>
+    <version>85.0.4183.102</version>
+    <time>1600432154</time>
+    <user>dimstar_suse</user>
+    <comment>- The egl stuff is from angle not swiftshader, thanks Fedora
+  bsc#1176450</comment>
+    <requestid>834860</requestid>
+  </revision>
 </revisionlist>

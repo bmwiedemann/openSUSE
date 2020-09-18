@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 08:38:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- The egl stuff is from angle not swiftshader, thanks Fedora
+  bsc#1176450
+
+-------------------------------------------------------------------
 Sat Sep 12 17:01:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add back the swiftshader folder wrt bsc#1176450

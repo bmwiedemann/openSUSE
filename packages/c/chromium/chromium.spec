@@ -743,6 +743,10 @@ mkdir -p %{buildroot}%{_sysconfdir}/default
 install -m 644 %{SOURCE103} %{buildroot}%{_sysconfdir}/default/chromium
 
 cp -a *.bin *.pak locales %{buildroot}%{_libdir}/chromium/
+
+# This is ANGLE, not to be confused with the similarly named files under swiftshader/
+cp -a libEGL.so* libGLESv2.so* %{buildroot}%{_libdir}/chromium/
+
 %if !%{with system_icu}
 cp -a icudtl.dat %{buildroot}%{_libdir}/chromium/
 %endif
@@ -752,9 +756,6 @@ cp -a icudtl.dat %{buildroot}%{_libdir}/chromium/
 mkdir -p %{buildroot}%{_libdir}/chromium/swiftshader
 cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/swiftshader/
 # create compat symlinks bsc#1176207
-pushd %{buildroot}%{_libdir}/chromium
-ln -s swiftshader/*.so ./
-popd
 %endif
 
 # chromedriver
