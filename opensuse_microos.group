@@ -157,6 +157,7 @@
     <package name="PackageKit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="PackageKit-backend-zypp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="PackageKit-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="accounts-qml-module" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="accountsservice" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="adobe-sourcecodepro-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="adobe-sourcesanspro-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -1129,7 +1130,6 @@
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="osinfo-db" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="oxygen5-icon-theme" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="p11-kit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="p11-kit-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="pam_pwquality" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
