@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20200917" schemaversion="4.1">
+<image name="OBS__MicroOS___20200918" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200917</productvar>
+      <productvar name="VERSION">20200918</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200917,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200918,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200917/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200918/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -55,6 +55,7 @@
     </metadata>
     <repopackages>
       <repopackage name="aaa_base"/>
+      <repopackage name="accounts-qml-module" arch="x86_64"/>
       <repopackage name="accountsservice" arch="x86_64"/>
       <repopackage name="adobe-sourcecodepro-fonts" arch="x86_64"/>
       <repopackage name="adobe-sourcesanspro-fonts" arch="x86_64"/>
@@ -1142,7 +1143,6 @@
       <repopackage name="openssl-1_1" arch="x86_64"/>
       <repopackage name="openSUSE-build-key" arch="x86_64"/>
       <repopackage name="osinfo-db" arch="x86_64"/>
-      <repopackage name="oxygen5-icon-theme" arch="x86_64"/>
       <repopackage name="p11-kit" arch="x86_64"/>
       <repopackage name="p11-kit-tools" arch="x86_64"/>
       <repopackage name="PackageKit" arch="x86_64"/>

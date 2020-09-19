@@ -298,7 +298,6 @@ unsorted:
   - acars2-examples 
   - acarsdec 
   - accerciser-plugin-IPython 
-  - accounts-qml-module 
   - accounts-qml-module-doc 
   - accountsservice-devel 
   - acct 
@@ -11103,7 +11102,6 @@ unsorted:
   - libmowgli-2-0 
   - libmowgli2-devel 
   - libmozjs-52 
-  - libmozjs-60 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
@@ -15073,8 +15071,6 @@ unsorted:
   - mozilla-nss-tools: [i586] 
   - mozjs52 
   - mozjs52-devel 
-  - mozjs60 
-  - mozjs60-devel 
   - mozjs68 
   - mozjs68-devel 
   - mozldap-devel: [x86_64] 
