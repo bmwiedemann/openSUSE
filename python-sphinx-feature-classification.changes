@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 18 12:04:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Cleanup misplaced release note
+  * Reduce need for openstack specific requirements
+  * Switch to victoria test template
+  * Report sphinx extension is thread safe
+  * Switch to newer openstackdocstheme and reno versions
+
+-------------------------------------------------------------------
 Wed Jun  3 11:29:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.0.1:
