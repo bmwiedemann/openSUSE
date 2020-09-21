@@ -36,4 +36,13 @@
 </comment>
     <requestid>822337</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>665737d987bc4798b72ea66d0521fc81</srcmd5>
+    <version>20200916</version>
+    <time>1600700388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2020-09-16-unicode13_1
+  * Unicode 13.1 update</comment>
+    <requestid>835090</requestid>
+  </revision>
 </revisionlist>

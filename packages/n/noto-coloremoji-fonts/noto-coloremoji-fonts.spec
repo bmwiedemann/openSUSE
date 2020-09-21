@@ -17,14 +17,14 @@
 
 
 Name:           noto-coloremoji-fonts
-Version:        20200722
+Version:        20200916
 Release:        0
 Summary:        Noto Color Emoji font
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/googlefonts/noto-emoji
-Source0:        https://github.com/googlefonts/noto-emoji/raw/v2020-07-22-unicode13_0/fonts/LICENSE
-Source1:        https://github.com/googlefonts/noto-emoji/raw/v2020-07-22-unicode13_0/fonts/NotoColorEmoji.ttf
+Source0:        https://github.com/googlefonts/noto-emoji/raw/v2020-09-16-unicode13_1/fonts/LICENSE
+Source1:        https://github.com/googlefonts/noto-emoji/raw/v2020-09-16-unicode13_1/fonts/NotoColorEmoji.ttf
 BuildRequires:  fontpackages-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
