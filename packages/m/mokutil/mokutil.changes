@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 16 09:06:02 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add mokutil-bsc1173115-add-ca-and-keyring-checks.patch to add
+  options for CA and kernel keyring checks (bsc#1173115)
+  + Add new BuildRequires: keyutils-devel
+  + Add mokutil-remove-libkeyutils-check.patch to disable the
+    version check of libkeyutils
+- Refresh mokutil-support-revoke-builtin-cert.patch
+
+-------------------------------------------------------------------
 Fri Aug 14 06:59:46 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update mokutil-support-revoke-builtin-cert.patch

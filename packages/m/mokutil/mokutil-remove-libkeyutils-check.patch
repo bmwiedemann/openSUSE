@@ -1,0 +1,46 @@
+From 87eb098c85dcae328924e91bb84e8e68ea15fd15 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 16 Sep 2020 17:02:56 +0800
+Subject: [PATCH] Remove libkeyutils pkgconfig check
+
+keyutils didn't provide pkgconfig in 1.5.*
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ configure.ac    | 1 -
+ src/Makefile.am | 3 +--
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b0b0376..d74fd21 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -85,7 +85,6 @@ AC_CHECK_FUNCS([memset])
+ 
+ PKG_CHECK_MODULES(OPENSSL, [openssl >= 0.9.8])
+ PKG_CHECK_MODULES(EFIVAR, [efivar >= 0.12])
+-PKG_CHECK_MODULES(LIBKEYUTILS, [libkeyutils >= 1.5])
+ 
+ AC_ARG_WITH([bash-completion-dir],
+     AS_HELP_STRING([--with-bash-completion-dir[=PATH]],
+diff --git a/src/Makefile.am b/src/Makefile.am
+index f616b90..664b80a 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2,12 +2,11 @@ bin_PROGRAMS    = mokutil
+ 
+ mokutil_CFLAGS  = $(OPENSSL_CFLAGS)	\
+ 		  $(EFIVAR_CFLAGS)	\
+-		  $(LIBKEYUTILS_CFLAGS)	\
+ 		  $(WARNINGFLAGS_C)
+ 
+ mokutil_LDADD   = $(OPENSSL_LIBS)	\
+ 		  $(EFIVAR_LIBS)	\
+-		  $(LIBKEYUTILS_LIBS)	\
++		  -lkeyutils \
+ 		  -lcrypt
+ 
+ mokutil_SOURCES = signature.h \
+-- 
+2.28.0
+

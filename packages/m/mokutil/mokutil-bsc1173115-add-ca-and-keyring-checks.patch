@@ -1,0 +1,1159 @@
+From edbb90e7b9dddcb6561af244a65d10d6a22e6bae Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 27 Aug 2020 11:31:08 +0800
+Subject: [PATCH 01/13] efi_x509: add the function to check immediate CA
+
+Add a new function, is_immediate_ca(), to check whether the given CA
+cert is the immediate CA of the cert.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit 643bb8dacb221979354dab814fc2d41e94a02d67)
+---
+ src/mokutil.c | 73 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 73 insertions(+)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index e2d567d..3735167 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -1032,6 +1032,79 @@ is_valid_cert (void *cert, uint32_t cert_size)
+ 	return 1;
+ }
+ 
++/**
++ * Check whether the given CA cert is the immediate CA of the given cert
++ **/
++static int
++is_immediate_ca (const uint8_t *cert, const uint32_t cert_size,
++		 const uint8_t *ca_cert, const uint32_t ca_cert_size)
++{
++	X509 *X509cert = NULL;
++	X509 *X509ca = NULL;
++	X509_STORE *cert_store = NULL;
++	X509_STORE_CTX *cert_ctx = NULL;
++	int ret = 0;
++
++	if (cert == NULL || ca_cert == NULL)
++		return 0;
++
++	if (EVP_add_digest (EVP_md5 ()) == 0)
++		return 0;
++	if (EVP_add_digest (EVP_sha1 ()) == 0)
++		return 0;
++	if (EVP_add_digest (EVP_sha256 ()) == 0)
++		return 0;
++
++	X509cert = d2i_X509 (NULL, &cert, cert_size);
++	if (X509cert == NULL)
++		return 0;
++
++	X509ca = d2i_X509 (NULL, &ca_cert, ca_cert_size);
++	if (X509ca == NULL)
++		return 0;
++
++	cert_store = X509_STORE_new ();
++	if (cert_store == NULL)
++		goto err;
++
++	if (X509_STORE_add_cert (cert_store, X509ca) == 0)
++		goto err;
++
++	/* Follow edk2 CryptoPkg to allow partial certificate chains and
++	 * disable time checks */
++	X509_STORE_set_flags (cert_store,
++			      X509_V_FLAG_PARTIAL_CHAIN | X509_V_FLAG_NO_CHECK_TIME);
++
++	cert_ctx = X509_STORE_CTX_new ();
++	if (cert_ctx == NULL)
++		goto err;
++
++	if (X509_STORE_CTX_init (cert_ctx, cert_store, X509cert, NULL) == 0)
++		goto err;
++
++	/* Verify the cert */
++	ret = X509_verify_cert (cert_ctx);
++	/* Treat the exceptional error as FALSE */
++	if (ret < 0)
++		ret = 0;
++	X509_STORE_CTX_cleanup (cert_ctx);
++
++err:
++	if (X509cert)
++		X509_free (X509cert);
++
++	if (X509ca)
++		X509_free (X509ca);
++
++	if (cert_store)
++		X509_STORE_free (cert_store);
++
++	if (cert_store)
++		X509_STORE_CTX_free (cert_ctx);
++
++	return ret;
++}
++
+ static int
+ is_duplicate (const efi_guid_t *type, const void *data, const uint32_t data_size,
+ 	      const efi_guid_t *vendor, const char *db_name)
+-- 
+2.28.0
+
+
+From db7216b3a758ba62f02154b79a77c878fd0fd85e Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 27 Aug 2020 14:11:56 +0800
+Subject: [PATCH 02/13] mokutil: do the CA check
+
+Check whether th CA cert is already enrolled in the key database before
+enrolling the key.
+
+The check can be disabled with "--ignore-ca-check".
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit ff20a53a111fe3e027da7250175b7ef09ce3b1da)
+---
+ src/mokutil.c | 88 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 88 insertions(+)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index 3735167..4ac6619 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -95,6 +95,7 @@ typedef uint8_t  efi_bool_t;
+ typedef wchar_t efi_char16_t;		/* UNICODE character */
+ 
+ static int use_simple_hash;
++static int force_ca_check;
+ 
+ typedef enum {
+ 	DELETE_MOK = 0,
+@@ -182,6 +183,7 @@ print_help ()
+ 	printf ("  --root-pw\t\t\t\tUse the root password\n");
+ 	printf ("  --simple-hash\t\t\t\tUse the old password hash method\n");
+ 	printf ("  --mokx\t\t\t\tManipulate the MOK blacklist\n");
++	printf ("  --ignore-ca-check\t\t\tDon't check CA of the given certificate\n");
+ }
+ 
+ static int
+@@ -1237,6 +1239,70 @@ in_pending_request (const efi_guid_t *type, void *data, uint32_t data_size,
+ 	return ret;
+ }
+ 
++static int
++is_ca_in_db (const void *cert, const uint32_t cert_size,
++	     const efi_guid_t *vendor, const char *db_name)
++{
++	uint8_t *var_data;
++	size_t var_data_size;
++	uint32_t attributes;
++	uint32_t node_num;
++	MokListNode *list;
++	int ret = 0;
++
++	if (!cert || cert_size == 0 || !vendor || !db_name)
++		return 0;
++
++	ret = efi_get_variable (*vendor, db_name, &var_data, &var_data_size,
++				&attributes);
++	if (ret < 0)
++		return 0;
++
++	list = build_mok_list (var_data, var_data_size, &node_num);
++	if (list == NULL) {
++		goto done;
++	}
++
++	for (unsigned int i = 0; i < node_num; i++) {
++		efi_guid_t sigtype = list[i].header->SignatureType;
++		if (efi_guid_cmp (&sigtype, &efi_guid_x509_cert) != 0)
++			continue;
++
++		if (is_immediate_ca (cert, cert_size, list[i].mok,
++				     list[i].mok_size)) {
++			ret = 1;
++			break;
++		}
++	}
++
++done:
++	if (list)
++		free (list);
++	free (var_data);
++
++	return ret;
++}
++
++/* Check whether the CA cert is already enrolled */
++static int
++is_ca_enrolled (void *mok, uint32_t mok_size, MokRequest req)
++{
++	switch (req) {
++	case ENROLL_MOK:
++		if (is_ca_in_db (mok, mok_size, &efi_guid_shim, "MokListRT"))
++			return 1;
++		break;
++	case ENROLL_BLACKLIST:
++		if (is_ca_in_db (mok, mok_size, &efi_guid_shim, "MokListXRT"))
++			return 1;
++		break;
++	default:
++		return 0;
++	}
++
++	return 0;
++}
++
+ static void
+ print_skip_message (const char *filename, void *mok, uint32_t mok_size,
+ 		    MokRequest req)
+@@ -1394,6 +1460,13 @@ issue_mok_request (char **files, uint32_t total, MokRequest req,
+ 			goto error;
+ 		}
+ 
++		/* Check whether CA is already enrolled */
++		if (force_ca_check && is_ca_enrolled (ptr, sizes[i], req)) {
++			fprintf (stderr, "CA of %s is already enrolled\n",
++				 files[i]);
++			goto error;
++		}
++
+ 		if (is_valid_request (&efi_guid_x509_cert, ptr, sizes[i], req)) {
+ 			ptr += sizes[i];
+ 			real_size += sizes[i] + sizeof(EFI_SIGNATURE_LIST) + sizeof(efi_guid_t);
+@@ -2041,6 +2114,17 @@ test_key (MokRequest req, const char *key_file)
+ 		goto error;
+ 	}
+ 
++	if (!is_valid_cert (key, read_size)) {
++		fprintf (stderr, "Not a valid x509 certificate\n");
++		goto error;
++	}
++
++	if (force_ca_check && is_ca_enrolled (key, read_size, req)) {
++		fprintf (stderr, "CA of %s is already enrolled\n",
++			 key_file);
++		goto error;
++	}
++
+ 	if (is_valid_request (&efi_guid_x509_cert, key, read_size, req)) {
+ 		printf ("%s is not enrolled\n", key_file);
+ 		ret = 0;
+@@ -2215,6 +2299,7 @@ main (int argc, char *argv[])
+ 	int ret = -1;
+ 
+ 	use_simple_hash = 0;
++	force_ca_check = 1;
+ 
+ 	if (!efi_variables_supported ()) {
+ 		fprintf (stderr, "EFI variables are not supported on this system\n");
+@@ -2255,6 +2340,7 @@ main (int argc, char *argv[])
+ 			{"db",                 no_argument,       0, 0  },
+ 			{"dbx",                no_argument,       0, 0  },
+ 			{"timeout",            required_argument, 0, 0  },
++			{"ignore-ca-check",    no_argument,       0, 0  },
+ 			{0, 0, 0, 0}
+ 		};
+ 
+@@ -2341,6 +2427,8 @@ main (int argc, char *argv[])
+ 			} else if (strcmp (option, "timeout") == 0) {
+ 				command |= TIMEOUT;
+ 				timeout = strdup (optarg);
++			} else if (strcmp (option, "ignore-ca-check") == 0) {
++				force_ca_check = 0;
+ 			}
+ 
+ 			break;
+-- 
+2.28.0
+
+
+From 3bfcf1db9ab1ff2bd4a2ddd2649c03337f823a2d Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 27 Aug 2020 14:18:29 +0800
+Subject: [PATCH 03/13] mokutil: close file in the error path
+
+We should close the file descriptor when encountering an error in
+issue_mok_request();
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit 0a0813d6f7dfa73f7947566e7fad2d42e016f30a)
+---
+ src/mokutil.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index 4ac6619..760b54a 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -1452,11 +1452,13 @@ issue_mok_request (char **files, uint32_t total, MokRequest req,
+ 		read_size = read (fd, ptr, sizes[i]);
+ 		if (read_size < 0 || read_size != (int64_t)sizes[i]) {
+ 			fprintf (stderr, "Failed to read %s\n", files[i]);
++			close (fd);
+ 			goto error;
+ 		}
+ 		if (!is_valid_cert (ptr, read_size)) {
+ 			fprintf (stderr, "Abort!!! %s is not a valid x509 certificate in DER format\n",
+ 			         files[i]);
++			close (fd);
+ 			goto error;
+ 		}
+ 
+@@ -1464,6 +1466,7 @@ issue_mok_request (char **files, uint32_t total, MokRequest req,
+ 		if (force_ca_check && is_ca_enrolled (ptr, sizes[i], req)) {
+ 			fprintf (stderr, "CA of %s is already enrolled\n",
+ 				 files[i]);
++			close (fd);
+ 			goto error;
+ 		}
+ 
+-- 
+2.28.0
+
+
+From 77be7a26815233e798f6ab61cbbd8a1cd4a89817 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 27 Aug 2020 14:22:52 +0800
+Subject: [PATCH 04/13] make CA check non-fatal
+
+(cherry picked from commit 50098834780ee6d5dd0cfd3073d504030cc25037)
+---
+ src/mokutil.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index 760b54a..f4f21f8 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -1464,10 +1464,9 @@ issue_mok_request (char **files, uint32_t total, MokRequest req,
+ 
+ 		/* Check whether CA is already enrolled */
+ 		if (force_ca_check && is_ca_enrolled (ptr, sizes[i], req)) {
+-			fprintf (stderr, "CA of %s is already enrolled\n",
+-				 files[i]);
++			printf ("CA enrolled. Skip %s\n", files[i]);
+ 			close (fd);
+-			goto error;
++			continue;
+ 		}
+ 
+ 		if (is_valid_request (&efi_guid_x509_cert, ptr, sizes[i], req)) {
+-- 
+2.28.0
+
+
+From e4a28a587f39912c65e3f74f0ff9766158ef9dff Mon Sep 17 00:00:00 2001
+From: Sandy <39258624+sandy-lcq@users.noreply.github.com>
+Date: Fri, 13 Dec 2019 10:38:28 +0800
+Subject: [PATCH 05/13] mokutil.c: fix typo enrollement -> enrollment
+
+Signed-off-by: Changqing Li <changqing.li@windriver.com>
+(cherry picked from commit e37eeef4866f5f3bbeaef3fe1d1360ebac76bdc5)
+---
+ src/mokutil.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index f4f21f8..ee95e20 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -1323,7 +1323,7 @@ print_skip_message (const char *filename, void *mok, uint32_t mok_size,
+ 			printf ("SKIP: %s is already enrolled\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_shim, "MokNew"))
+-			printf ("SKIP: %s is already in the enrollement request\n", filename);
++			printf ("SKIP: %s is already in the enrollment request\n", filename);
+ 		break;
+ 	case DELETE_MOK:
+ 		if (!is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+-- 
+2.28.0
+
+
+From f18969c91a44fee03a1ab8da336973f36ef7e5e9 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 28 Aug 2020 11:53:24 +0800
+Subject: [PATCH 06/13] mokutil: check the blocklists before enrolling a key
+
+Check "dbx" and "MokListXRT" when enrolling a key.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit 8de04a4dd566376316432bd60c3b0ab2686797a4)
+---
+ src/mokutil.c | 40 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index ee95e20..834228a 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -1173,6 +1173,10 @@ is_valid_request (const efi_guid_t *type, void *mok, uint32_t mok_size,
+ 		    is_duplicate (type, mok, mok_size, &efi_guid_shim, "MokNew")) {
+ 			return 0;
+ 		}
++		/* Also check the blocklists */
++		if (is_duplicate (type, mok, mok_size, &efi_guid_security, "dbx") ||
++		    is_duplicate (type, mok, mok_size, &efi_guid_shim, "MokListXRT"))
++			return 0;
+ 		break;
+ 	case DELETE_MOK:
+ 		if (!is_duplicate (type, mok, mok_size, &efi_guid_shim, "MokListRT") ||
+@@ -1303,6 +1307,23 @@ is_ca_enrolled (void *mok, uint32_t mok_size, MokRequest req)
+ 	return 0;
+ }
+ 
++/* Check whether the CA cert is blocked */
++static int
++is_ca_blocked (void *mok, uint32_t mok_size, MokRequest req)
++{
++	switch (req) {
++	case ENROLL_MOK:
++		if (is_ca_in_db (mok, mok_size, &efi_guid_security, "dbx") ||
++		    is_ca_in_db (mok, mok_size, &efi_guid_shim, "MokListXRT"))
++			return 1;
++		break;
++	default:
++		return 0;
++	}
++
++	return 0;
++}
++
+ static void
+ print_skip_message (const char *filename, void *mok, uint32_t mok_size,
+ 		    MokRequest req)
+@@ -1324,6 +1345,12 @@ print_skip_message (const char *filename, void *mok, uint32_t mok_size,
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_shim, "MokNew"))
+ 			printf ("SKIP: %s is already in the enrollment request\n", filename);
++		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
++				       &efi_guid_security, "dbx"))
++			printf ("SKIP: %s is blocked in dbx\n", filename);
++		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
++				       &efi_guid_shim, "MokListXRT"))
++			printf ("SKIP: %s is blocked in MokListXRT\n", filename);
+ 		break;
+ 	case DELETE_MOK:
+ 		if (!is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+@@ -1469,6 +1496,13 @@ issue_mok_request (char **files, uint32_t total, MokRequest req,
+ 			continue;
+ 		}
+ 
++		/* Check whether CA is blocked */
++		if (force_ca_check && is_ca_blocked (ptr, sizes[i], req)) {
++			printf ("CA blocked. Skip %s\n", files[i]);
++			close (fd);
++			continue;
++		}
++
+ 		if (is_valid_request (&efi_guid_x509_cert, ptr, sizes[i], req)) {
+ 			ptr += sizes[i];
+ 			real_size += sizes[i] + sizeof(EFI_SIGNATURE_LIST) + sizeof(efi_guid_t);
+@@ -2127,6 +2161,12 @@ test_key (MokRequest req, const char *key_file)
+ 		goto error;
+ 	}
+ 
++	if (force_ca_check && is_ca_blocked (key, read_size, req)) {
++		fprintf (stderr, "CA of %s is blocked\n",
++			 key_file);
++		goto error;
++	}
++
+ 	if (is_valid_request (&efi_guid_x509_cert, key, read_size, req)) {
+ 		printf ("%s is not enrolled\n", key_file);
+ 		ret = 0;
+-- 
+2.28.0
+
+
+From 057f96e6842af030b1f68a609019043f0f853708 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 28 Aug 2020 11:58:12 +0800
+Subject: [PATCH 07/13] mokutil: improve the message from "--test-key"
+
+Print the details of the test result.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit 5ede0bd0d68d27afc6d3d06556d0077e2840502b)
+---
+ src/mokutil.c | 29 +++++++++++++++--------------
+ 1 file changed, 15 insertions(+), 14 deletions(-)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index 834228a..e8b48fe 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -1332,49 +1332,49 @@ print_skip_message (const char *filename, void *mok, uint32_t mok_size,
+ 	case ENROLL_MOK:
+ 		if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				  &efi_guid_global, "PK"))
+-			printf ("SKIP: %s is already in PK\n", filename);
++			printf ("%s is already in PK\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_global, "KEK"))
+-			printf ("SKIP: %s is already in KEK\n", filename);
++			printf ("%s is already in KEK\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_security, "db"))
+-			printf ("SKIP: %s is already in db\n", filename);
++			printf ("%s is already in db\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_shim, "MokListRT"))
+-			printf ("SKIP: %s is already enrolled\n", filename);
++			printf ("%s is already enrolled\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_shim, "MokNew"))
+-			printf ("SKIP: %s is already in the enrollment request\n", filename);
++			printf ("%s is already in the enrollment request\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_security, "dbx"))
+-			printf ("SKIP: %s is blocked in dbx\n", filename);
++			printf ("%s is blocked in dbx\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_shim, "MokListXRT"))
+-			printf ("SKIP: %s is blocked in MokListXRT\n", filename);
++			printf ("%s is blocked in MokListXRT\n", filename);
+ 		break;
+ 	case DELETE_MOK:
+ 		if (!is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				   &efi_guid_shim, "MokListRT"))
+-			printf ("SKIP: %s is not in MokList\n", filename);
++			printf ("%s is not in MokList\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_shim, "MokDel"))
+-			printf ("SKIP: %s is already in the deletion request\n", filename);
++			printf ("%s is already in the deletion request\n", filename);
+ 		break;
+ 	case ENROLL_BLACKLIST:
+ 		if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				  &efi_guid_shim, "MokListXRT"))
+-			printf ("SKIP: %s is already in MokListX\n", filename);
++			printf ("%s is already in MokListX\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_shim, "MokXNew"))
+-			printf ("SKIP: %s is already in the MokX enrollment request\n", filename);
++			printf ("%s is already in the MokX enrollment request\n", filename);
+ 		break;
+ 	case DELETE_BLACKLIST:
+ 		if (!is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				   &efi_guid_shim, "MokListXRT"))
+-			printf ("SKIP: %s is not in MokListX\n", filename);
++			printf ("%s is not in MokListX\n", filename);
+ 		else if (is_duplicate (&efi_guid_x509_cert, mok, mok_size,
+ 				       &efi_guid_shim, "MokXDel"))
+-			printf ("SKIP: %s is already in the MokX deletion request\n", filename);
++			printf ("%s is already in the MokX deletion request\n", filename);
+ 		break;
+ 	}
+ }
+@@ -1511,6 +1511,7 @@ issue_mok_request (char **files, uint32_t total, MokRequest req,
+ 				reverse_req_names[req]);
+ 			ptr -= sizeof(EFI_SIGNATURE_LIST) + sizeof(efi_guid_t);
+ 		} else {
++			printf ("SKIP: ");
+ 			print_skip_message (files[i], ptr, sizes[i], req);
+ 			ptr -= sizeof(EFI_SIGNATURE_LIST) + sizeof(efi_guid_t);
+ 		}
+@@ -2171,7 +2172,7 @@ test_key (MokRequest req, const char *key_file)
+ 		printf ("%s is not enrolled\n", key_file);
+ 		ret = 0;
+ 	} else {
+-		printf ("%s is already enrolled\n", key_file);
++		print_skip_message (key_file, key, read_size, req);
+ 		ret = 1;
+ 	}
+ 
+-- 
+2.28.0
+
+
+From 7e5d2cb51a8360ad461e1031b9b3280e72d6338c Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 2 Sep 2020 16:09:04 +0800
+Subject: [PATCH 08/13] mokutil: disable CA check by default
+
+The SUSE PTF certificate is also issued by SUSE CA, so enabling CA check
+by default would ignore the enrollment of the PTF certificates and the
+PTF would be unloadable.
+
+Flip "--ignore-ca-check" to "--ca-check" and set force_ca_check to 0 by
+default.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit 235e92a1d3e0f32f7be44aa0f37d7f3041306ccc)
+---
+ src/mokutil.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index e8b48fe..b04deb3 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -183,7 +183,7 @@ print_help ()
+ 	printf ("  --root-pw\t\t\t\tUse the root password\n");
+ 	printf ("  --simple-hash\t\t\t\tUse the old password hash method\n");
+ 	printf ("  --mokx\t\t\t\tManipulate the MOK blacklist\n");
+-	printf ("  --ignore-ca-check\t\t\tDon't check CA of the given certificate\n");
++	printf ("  --ca-check\t\t\t\tCheck if CA of the key is enrolled/blocked\n");
+ }
+ 
+ static int
+@@ -2342,7 +2342,7 @@ main (int argc, char *argv[])
+ 	int ret = -1;
+ 
+ 	use_simple_hash = 0;
+-	force_ca_check = 1;
++	force_ca_check = 0;
+ 
+ 	if (!efi_variables_supported ()) {
+ 		fprintf (stderr, "EFI variables are not supported on this system\n");
+@@ -2383,7 +2383,7 @@ main (int argc, char *argv[])
+ 			{"db",                 no_argument,       0, 0  },
+ 			{"dbx",                no_argument,       0, 0  },
+ 			{"timeout",            required_argument, 0, 0  },
+-			{"ignore-ca-check",    no_argument,       0, 0  },
++			{"ca-check",           no_argument,       0, 0  },
+ 			{0, 0, 0, 0}
+ 		};
+ 
+@@ -2470,8 +2470,8 @@ main (int argc, char *argv[])
+ 			} else if (strcmp (option, "timeout") == 0) {
+ 				command |= TIMEOUT;
+ 				timeout = strdup (optarg);
+-			} else if (strcmp (option, "ignore-ca-check") == 0) {
+-				force_ca_check = 0;
++			} else if (strcmp (option, "ca-check") == 0) {
++				force_ca_check = 1;
+ 			}
+ 
+ 			break;
+-- 
+2.28.0
+
+
+From 8fee022cb2df7357bbc92c2c337af7b0057f1f23 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 2 Sep 2020 16:19:44 +0800
+Subject: [PATCH 09/13] man: add "--ca-check" to the man page
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit ae0aaf1a62faaba16183ed01a7ac9406535d96a1)
+---
+ man/mokutil.1 | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/man/mokutil.1 b/man/mokutil.1
+index 25fe8b4..cb37484 100644
+--- a/man/mokutil.1
++++ b/man/mokutil.1
+@@ -15,7 +15,7 @@ mokutil \- utility to manipulate machine owner keys
+ .br
+ \fBmokutil\fR [--import \fIkeylist\fR| -i \fIkeylist\fR]
+         ([--hash-file \fIhashfile\fR | -f \fIhashfile\fR] | [--root-pw | -P] |
+-         [--simple-hash | -s] | [--mokx | -X])
++         [--simple-hash | -s] | [--mokx | -X] | [--ca-check])
+ .br
+ \fBmokutil\fR [--delete \fIkeylist\fR | -d \fIkeylist\fR]
+         ([--hash-file \fIhashfile\fR | -f \fIhashfile\fR] | [--root-pw | -P] |
+@@ -43,7 +43,7 @@ mokutil \- utility to manipulate machine owner keys
+ \fBmokutil\fR [--sb-state]
+ .br
+ \fBmokutil\fR [--test-key \fIkeyfile\fR | -t \fIkeyfile\fR]
+-        ([--mokx | -X])
++        ([--mokx | -X] | [--ca-check])
+ .br
+ \fBmokutil\fR [--reset]
+         ([--hash-file \fIhashfile\fR | -f \fIhashfile\fR] | [--root-pw | -P] |
+@@ -173,3 +173,7 @@ List the keys in the secure boot signature store (db)
+ \fB--dbx\fR
+ List the keys in the secure boot blacklist signature store (dbx)
+ .TP
++\fB--ca-check\fR
++Check if the CA of the given key is already enrolled or blocked in the key
++databases.
++.TP
+-- 
+2.28.0
+
+
+From cbada2d9ac9bfc36528a51dc9fcf136eb8290473 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 16 Sep 2020 11:59:02 +0800
+Subject: [PATCH 10/13] keyring: add the function to check kernel keyring
+
+Add match_skid_in_trusted_keyring() to check if the given SKID is in the
+kernel trusted keys keyring.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit 9e5c6fd4fbdce386ecd2482a27f8a29e5d0c7eff)
+---
+ configure.ac    |   1 +
+ src/Makefile.am |   4 ++
+ src/keyring.c   | 111 ++++++++++++++++++++++++++++++++++++++++++++++++
+ src/keyring.h   |  37 ++++++++++++++++
+ 4 files changed, 153 insertions(+)
+ create mode 100644 src/keyring.c
+ create mode 100644 src/keyring.h
+
+diff --git a/configure.ac b/configure.ac
+index d74fd21..b0b0376 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -85,6 +85,7 @@ AC_CHECK_FUNCS([memset])
+ 
+ PKG_CHECK_MODULES(OPENSSL, [openssl >= 0.9.8])
+ PKG_CHECK_MODULES(EFIVAR, [efivar >= 0.12])
++PKG_CHECK_MODULES(LIBKEYUTILS, [libkeyutils >= 1.5])
+ 
+ AC_ARG_WITH([bash-completion-dir],
+     AS_HELP_STRING([--with-bash-completion-dir[=PATH]],
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 87b1515..f616b90 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2,13 +2,17 @@ bin_PROGRAMS    = mokutil
+ 
+ mokutil_CFLAGS  = $(OPENSSL_CFLAGS)	\
+ 		  $(EFIVAR_CFLAGS)	\
++		  $(LIBKEYUTILS_CFLAGS)	\
+ 		  $(WARNINGFLAGS_C)
+ 
+ mokutil_LDADD   = $(OPENSSL_LIBS)	\
+ 		  $(EFIVAR_LIBS)	\
++		  $(LIBKEYUTILS_LIBS)	\
+ 		  -lcrypt
+ 
+ mokutil_SOURCES = signature.h \
++		  keyring.h \
++		  keyring.c \
+ 		  password-crypt.h \
+ 		  password-crypt.c \
+ 		  mokutil.c
+diff --git a/src/keyring.c b/src/keyring.c
+new file mode 100644
+index 0000000..9709efd
+--- /dev/null
++++ b/src/keyring.c
+@@ -0,0 +1,111 @@
++/**
++ * Copyright (C) 2020 Gary Lin <glin@suse.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ * In addition, as a special exception, the copyright holders give
++ * permission to link the code of portions of this program with the
++ * OpenSSL library under certain conditions as described in each
++ * individual source file, and distribute linked combinations
++ * including the two.
++ *
++ * You must obey the GNU General Public License in all respects
++ * for all of the code used other than OpenSSL.  If you modify
++ * file(s) with this exception, you may extend this exception to your
++ * version of the file(s), but you are not obligated to do so.  If you
++ * do not wish to do so, delete this exception statement from your
++ * version.  If you delete this exception statement from all source
++ * files in the program, then also delete it here.
++ */
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <errno.h>
++#include <string.h>
++
++#include <keyutils.h>
++
++#include "keyring.h"
++
++/**
++ * Match the x509v3 Subject Key ID in the descriptions of the kernel built-in
++ * trusted keys keyring
++ *
++ * return value
++ *   -  0 : not matched
++ *   -  1 : matched
++ *   - -1 : error
++ */
++int
++match_skid_in_trusted_keyring (const char *skid)
++{
++	key_serial_t ring_id, key_id, *key_ptr;
++	void *keylist = NULL;
++	int count;
++	char buffer[1024];
++	char *ptr;
++	long buf_size;
++	int ret = -1;
++
++	if (skid == NULL)
++		return -1;
++
++	/* Find the keyring ID of the kernel trusted keys */
++	ring_id = find_key_by_type_and_desc("keyring", ".builtin_trusted_keys", 0);
++	if (ring_id < 0) {
++		fprintf(stderr, "Failed to accesss kernel trusted keyring: %m\n");
++		goto out;
++	}
++
++	count = keyctl_read_alloc(ring_id, &keylist);
++	if (count < 0) {
++		fprintf(stderr, "Failed to read kernel trusted keyring\n");
++		goto out;
++	}
++
++	count /= sizeof(key_serial_t);
++	if (count == 0) {
++		/* The keyring is empty */
++		ret = 0;
++		goto out;
++	}
++
++	/* Iterate the keylist and match SKID */
++	key_ptr = keylist;
++	do {
++		key_id = *key_ptr++;
++
++		buf_size = keyctl_describe(key_id, buffer, sizeof(buffer));
++		if (buf_size < 0) {
++			fprintf(stderr, "key %X inaccessible %m\n", key_id);
++			goto out;
++		}
++
++		/* Check if SKID is in the description */
++		ptr = strstr(buffer, skid);
++		if (ptr && *(ptr + strlen(skid)) == '\0') {
++			/* Matched */
++			ret = 1;
++			goto out;
++		}
++	} while (--count);
++
++	ret = 0;
++out:
++	if (keylist)
++		free(keylist);
++
++	return ret;
++
++}
+diff --git a/src/keyring.h b/src/keyring.h
+new file mode 100644
+index 0000000..44127cf
+--- /dev/null
++++ b/src/keyring.h
+@@ -0,0 +1,37 @@
++/**
++ * Copyright (C) 2020 Gary Lin <glin@suse.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ * In addition, as a special exception, the copyright holders give
++ * permission to link the code of portions of this program with the
++ * OpenSSL library under certain conditions as described in each
++ * individual source file, and distribute linked combinations
++ * including the two.
++ *
++ * You must obey the GNU General Public License in all respects
++ * for all of the code used other than OpenSSL.  If you modify
++ * file(s) with this exception, you may extend this exception to your
++ * version of the file(s), but you are not obligated to do so.  If you
++ * do not wish to do so, delete this exception statement from your
++ * version.  If you delete this exception statement from all source
++ * files in the program, then also delete it here.
++ */
++
++#ifndef __KEYRING_H__
++#define __KEYRING_H__
++
++int match_skid_in_trusted_keyring (const char *skid);
++
++#endif /* __KEYRING_H__ */
+-- 
+2.28.0
+
+
+From 8fc0f7bb5b9826fd3af99836a7e39fed607d3646 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 16 Sep 2020 12:00:18 +0800
+Subject: [PATCH 11/13] efi_x509: add the function to fetch SKID
+
+Add get_cert_skid() to fetch SKID of a given certiticate.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit 7a7a85ba5f057c0c155787d695561a051b6b5eb4)
+---
+ src/mokutil.c | 57 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 57 insertions(+)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index b04deb3..e4e405e 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -47,6 +47,7 @@
+ 
+ #include <openssl/sha.h>
+ #include <openssl/x509.h>
++#include <openssl/x509v3.h>
+ 
+ #include <crypt.h>
+ #include <efivar.h>
+@@ -1034,6 +1035,62 @@ is_valid_cert (void *cert, uint32_t cert_size)
+ 	return 1;
+ }
+ 
++/**
++ * Get the Subject Key Identifier of the given certificate
++ *
++ * This function allocates the SKID string and the caller is responsible to
++ * free the string.
++ *
++ * Return value:
++ * -  0 : Success
++ * - -1 : Error
++ */
++static int
++get_cert_skid(const uint8_t *cert, const uint32_t cert_size, char **skid)
++{
++	X509 *X509cert;
++	const ASN1_OCTET_STRING *asn1_id;
++	const uint8_t *data;
++	int data_len, i;
++	char *id_str, *ptr;
++	int ret = -1;
++
++	X509cert = d2i_X509 (NULL, &cert, cert_size);
++	if (X509cert == NULL) {
++		fprintf (stderr, "invalid x509 certificate\n");
++		goto out;
++	}
++
++	asn1_id = X509_get0_subject_key_id (X509cert);
++	if (asn1_id == NULL) {
++		fprintf (stderr, "Failed to get Subject Key ID\n");
++		goto out;
++	}
++
++	data = ASN1_STRING_get0_data (asn1_id);
++	data_len = ASN1_STRING_length (asn1_id);
++
++	id_str = malloc (data_len*2 + 1);
++	if (id_str == NULL) {
++		fprintf (stderr, "Failed to allocated id string\n");
++		goto out;
++	}
++
++	ptr = id_str;
++	for (i = 0; i < data_len; i++) {
++		snprintf (ptr, 3, "%02x", data[i]);
++		ptr += 2;
++	}
++
++	*skid = id_str;
++	ret = 0;
++out:
++	if (X509cert)
++		X509_free (X509cert);
++
++	return ret;
++}
++
+ /**
+  * Check whether the given CA cert is the immediate CA of the given cert
+  **/
+-- 
+2.28.0
+
+
+From 8f8ee97cd068eaeabe6897314f63bc4a5606b97c Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 16 Sep 2020 12:03:33 +0800
+Subject: [PATCH 12/13] mokutil: check the kernel trusted keyring by default
+
+When enrolling a new key, mokutil now checks whether the key is one of
+the kernel built-in trusted keys.
+
+The kernel keyring check can be disabled by "--ignore-keyring".
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit 8bac3f53e2c4600f0843234e1b525a816f255955)
+---
+ src/mokutil.c | 41 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+
+diff --git a/src/mokutil.c b/src/mokutil.c
+index e4e405e..02ed21f 100644
+--- a/src/mokutil.c
++++ b/src/mokutil.c
+@@ -53,6 +53,7 @@
+ #include <efivar.h>
+ 
+ #include "signature.h"
++#include "keyring.h"
+ #include "password-crypt.h"
+ 
+ #define PASSWORD_MAX 256
+@@ -97,6 +98,7 @@ typedef wchar_t efi_char16_t;		/* UNICODE character */
+ 
+ static int use_simple_hash;
+ static int force_ca_check;
++static int check_keyring;
+ 
+ typedef enum {
+ 	DELETE_MOK = 0,
+@@ -185,6 +187,7 @@ print_help ()
+ 	printf ("  --simple-hash\t\t\t\tUse the old password hash method\n");
+ 	printf ("  --mokx\t\t\t\tManipulate the MOK blacklist\n");
+ 	printf ("  --ca-check\t\t\t\tCheck if CA of the key is enrolled/blocked\n");
++	printf ("  --ignore-keyring\t\t\tDon't check if the key is the kernel keyring\n");
+ }
+ 
+ static int
+@@ -1381,6 +1384,25 @@ is_ca_blocked (void *mok, uint32_t mok_size, MokRequest req)
+ 	return 0;
+ }
+ 
++/* Check whether the key is already in the kernel trusted keyring */
++static int
++is_in_trusted_keyring (const void *cert, const uint32_t cert_size)
++{
++	char *skid = NULL;
++	int ret;
++
++	if (get_cert_skid (cert, cert_size, &skid) < 0)
++		return 0;
++
++	ret = match_skid_in_trusted_keyring (skid);
++	if (ret < 0)
++		ret = 0;
++
++	free (skid);
++
++	return ret;
++}
++
+ static void
+ print_skip_message (const char *filename, void *mok, uint32_t mok_size,
+ 		    MokRequest req)
+@@ -1546,6 +1568,15 @@ issue_mok_request (char **files, uint32_t total, MokRequest req,
+ 			goto error;
+ 		}
+ 
++		/* Check whether the key is already in the trusted keyring */
++		if (req == ENROLL_MOK && check_keyring &&
++		    is_in_trusted_keyring (ptr, sizes[i])) {
++			printf ("Already in kernel trusted keyring. Skip %s\n",
++				files[i]);
++			close (fd);
++			continue;
++		}
++
+ 		/* Check whether CA is already enrolled */
+ 		if (force_ca_check && is_ca_enrolled (ptr, sizes[i], req)) {
+ 			printf ("CA enrolled. Skip %s\n", files[i]);
+@@ -2213,6 +2244,12 @@ test_key (MokRequest req, const char *key_file)
+ 		goto error;
+ 	}
+ 
++	if (check_keyring && is_in_trusted_keyring (key, read_size)) {
++		fprintf (stderr, "%s is already in the built-in trusted keyring\n",
++			 key_file);
++		goto error;
++	}
++
+ 	if (force_ca_check && is_ca_enrolled (key, read_size, req)) {
+ 		fprintf (stderr, "CA of %s is already enrolled\n",
+ 			 key_file);
+@@ -2400,6 +2437,7 @@ main (int argc, char *argv[])
+ 
+ 	use_simple_hash = 0;
+ 	force_ca_check = 0;
++	check_keyring = 1;
+ 
+ 	if (!efi_variables_supported ()) {
+ 		fprintf (stderr, "EFI variables are not supported on this system\n");
+@@ -2441,6 +2479,7 @@ main (int argc, char *argv[])
+ 			{"dbx",                no_argument,       0, 0  },
+ 			{"timeout",            required_argument, 0, 0  },
+ 			{"ca-check",           no_argument,       0, 0  },
++			{"ignore-keyring",     no_argument,       0, 0  },
+ 			{0, 0, 0, 0}
+ 		};
+ 
+@@ -2529,6 +2568,8 @@ main (int argc, char *argv[])
+ 				timeout = strdup (optarg);
+ 			} else if (strcmp (option, "ca-check") == 0) {
+ 				force_ca_check = 1;
++			} else if (strcmp (option, "ignore-keyring") == 0) {
++				check_keyring = 0;
+ 			}
+ 
+ 			break;
+-- 
+2.28.0
+
+
+From 4a1e8c43ada0896ed169826ae9cfc7c83d4d7f27 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 16 Sep 2020 16:10:29 +0800
+Subject: [PATCH 13/13] man: add "--ignore-keyring"
+
+Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit c24deaa37d72f8aa06cf22d35c91b218d1a3d99e)
+---
+ man/mokutil.1 | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/man/mokutil.1 b/man/mokutil.1
+index cb37484..cbea367 100644
+--- a/man/mokutil.1
++++ b/man/mokutil.1
+@@ -15,7 +15,7 @@ mokutil \- utility to manipulate machine owner keys
+ .br
+ \fBmokutil\fR [--import \fIkeylist\fR| -i \fIkeylist\fR]
+         ([--hash-file \fIhashfile\fR | -f \fIhashfile\fR] | [--root-pw | -P] |
+-         [--simple-hash | -s] | [--mokx | -X] | [--ca-check])
++         [--simple-hash | -s] | [--mokx | -X] | [--ca-check] | [--ignore-keyring])
+ .br
+ \fBmokutil\fR [--delete \fIkeylist\fR | -d \fIkeylist\fR]
+         ([--hash-file \fIhashfile\fR | -f \fIhashfile\fR] | [--root-pw | -P] |
+@@ -43,7 +43,7 @@ mokutil \- utility to manipulate machine owner keys
+ \fBmokutil\fR [--sb-state]
+ .br
+ \fBmokutil\fR [--test-key \fIkeyfile\fR | -t \fIkeyfile\fR]
+-        ([--mokx | -X] | [--ca-check])
++        ([--mokx | -X] | [--ca-check] | [--ignore-keyring])
+ .br
+ \fBmokutil\fR [--reset]
+         ([--hash-file \fIhashfile\fR | -f \fIhashfile\fR] | [--root-pw | -P] |
+@@ -177,3 +177,6 @@ List the keys in the secure boot blacklist signature store (dbx)
+ Check if the CA of the given key is already enrolled or blocked in the key
+ databases.
+ .TP
++\fB--ignore-keyring\fR
++Ignore the kernel builtin trusted keys keyring check when enrolling a key into MokList
++.TP
+-- 
+2.28.0
+

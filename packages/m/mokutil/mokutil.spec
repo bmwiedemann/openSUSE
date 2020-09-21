@@ -27,10 +27,15 @@ Source:         https://github.com/lcp/%{name}/archive/%{version}.tar.gz
 Source1:        modhash
 # PATCH-FIX-UPSTREAM mokutil-remove-shebang-from-bash-completion-file.patch glin@suse.com -- Remove shebang from bash-completion/mokutil
 Patch1:         mokutil-remove-shebang-from-bash-completion-file.patch
+# PATCH-FIX-UPSTREAM mokutil-bsc1173115-add-ca-and-keyring-checks.patch bsc#1173115 glin@suse.com -- Add options for CA and kernel keyring checks
+Patch2:         mokutil-bsc1173115-add-ca-and-keyring-checks.patch
+# PATCH-FIX-SUSE mokutil-remove-libkeyutils-check.patch glin@suse.com -- Disable the check of libkeyutils version
+Patch3:         mokutil-remove-libkeyutils-check.patch
 Patch100:       mokutil-support-revoke-builtin-cert.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  efivar-devel >= 0.12
+BuildRequires:  keyutils-devel >= 1.5.0
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  pkg-config
 Requires:       openssl
@@ -50,6 +55,8 @@ Authors:
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 %patch100 -p1
 
 %build
