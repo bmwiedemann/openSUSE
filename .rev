@@ -141,4 +141,15 @@
     <comment> (forwarded request 832605 from hillwood)</comment>
     <requestid>832606</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2e3579b287d9f81253122c16c7a25dfc</srcmd5>
+    <version>3.3.5</version>
+    <time>1600702957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 3.3.5
+  * Remove the SNI proxy function.
+  * Minor bug fixes. (#2581, #2582, #2590, #2595, #2599,
+    #2600, #2620, #2687, #2692) (forwarded request 835553 from hillwood)</comment>
+    <requestid>835554</requestid>
+  </revision>
 </revisionlist>
