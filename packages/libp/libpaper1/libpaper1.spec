@@ -1,7 +1,7 @@
 #
 # spec file for package libpaper1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libpaper1
-Version:        1.1.26
+Version:        1.1.28
 Release:        0
 Summary:        Library to handle papers
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Url:            http://packages.debian.org/unstable/source/libpaper
-Source:         libpaper_%{version}.tar.gz
+URL:            https://packages.debian.org/unstable/source/libpaper
+Source:         http://ftp.de.debian.org/debian/pool/main/libp/libpaper/libpaper_%{version}.tar.gz
 Source1:        libpaper1-rpmlintrc
 %if 0%{?suse_version}
 BuildRequires:  autoconf
@@ -33,7 +33,6 @@ Recommends:     groff
 BuildRequires:  fdupes
  %endif
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains a simple library for use by programs needing to
@@ -65,7 +64,7 @@ to develop applications that require these.
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -82,11 +81,9 @@ cp COPYING README ChangeLog debian/changelog %{buildroot}%{_defaultdocdir}/libpa
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %{_libdir}/libpaper.so.1*
 
 %files -n libpaper-utils
-%defattr(-,root,root)
 %if 0%{?suse_version} >= 01500
 %license %{_defaultdocdir}/libpaper/COPYING
 %doc %{_defaultdocdir}/libpaper/{README,ChangeLog,changelog}
@@ -100,7 +97,6 @@ cp COPYING README ChangeLog debian/changelog %{buildroot}%{_defaultdocdir}/libpa
 %{_sbindir}/paperconfig
 
 %files -n libpaper-devel
-%defattr(-,root,root)
 %{_mandir}/man3/*
 %{_mandir}/man5/*
 %{_includedir}/paper.h
