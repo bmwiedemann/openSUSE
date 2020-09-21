@@ -26,22 +26,30 @@ Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
 URL:            https://www.github.com/Juniper/py-junos-eznc
 Source:         https://github.com/Juniper/py-junos-eznc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# replace deprecated nose by pytest
+# https://github.com/Juniper/py-junos-eznc/pull/1078
+Patch0:         python-junos-eznc-remove-nose.patch
+# replace deprecated yamlordereddictloader by yamlloader
+# https://github.com/Juniper/py-junos-eznc/pull/1078
+Patch1:         python-junos-eznc-remove-yamlordereddictloader.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module lxml >= 3.2.4}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module ncclient >= 0.6.3}
 BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module ntc-templates}
 BuildRequires:  %{python_module paramiko >= 1.15.2}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pyserial}
+BuildRequires:  %{python_module pytest-forked}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scp >= 0.7.0}
 BuildRequires:  %{python_module selectors2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module transitions}
+BuildRequires:  %{python_module yamlloader}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.7.1
@@ -74,9 +82,8 @@ These capabilities include, but are not limited to:
 
 %prep
 %setup -q -n py-junos-eznc-%{version}
-sed -i -e '/yamlordereddictloader/d' requirements.txt
-# requires deprecated and not working yamlordereddictloader
-rm tests/unit/factory/test_cmdtable.py
+%patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
@@ -86,7 +93,7 @@ rm tests/unit/factory/test_cmdtable.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=lib/ nosetests-%{$python_bin_suffix} -v tests/unit
+%pytest -m "not functional" --forked
 
 %files %{python_files}
 %license COPYRIGHT LICENSE
