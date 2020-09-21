@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-vesa
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xf86-video-vesa
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Generic VESA video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
 Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
@@ -69,7 +69,7 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog COPYING README.md
 %dir %{_libdir}/xorg/modules/drivers
 %{_libdir}/xorg/modules/drivers/vesa_drv.so
 %{_datadir}/man/man4/vesa.4%{?ext_man}

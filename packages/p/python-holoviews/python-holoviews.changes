@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 16:29:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove-cyordereddict.patch to remove use of cyordereddict,
+  which has been declared obsolete even by its upstream
+  (gh#holoviz/holoviews#4620).
+- Add remove_nose.patch to remove last residues of using nose
+  (gh#holoviz/holoviews#4621).
+- Tests are enabled again.
+
+-------------------------------------------------------------------
 Wed Jun 24 01:55:04 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - update to version 1.13.3

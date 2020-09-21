@@ -543,7 +543,7 @@ echo "SED = $RPM_BUILD_DIR/VirtualBox-%{version}/kmk_sed"  >> LocalConfig.kmk
 # fix build of vboxvideo kernel module: replace relative drm include path with absolute include path
 sed -i 's:include/drm:/usr/src/linux/include/drm:' src/VBox/Additions/linux/drm/Makefile.module.kms
 
-### %build, %install, and %file sections for virtualbox ###
+### %%build, %%install, and %%file sections for virtualbox ###
 %if %{main_package}
 %build
 # Disable LTO - Link Time Optimization
@@ -899,9 +899,14 @@ exit 0
 %restart_on_update vboxdrv
 %restart_on_update vboxautostart
 # immediately restarting virtualbox may not work. As such wait for the next reboot to restart
+%if ! %{defined service_del_postun_without_restart}
 export DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun vboxautostart.service
 %service_del_postun vboxdrv.service
+%else
+%service_del_postun_without_restart vboxautostart.service
+%service_del_postun_without_restart vboxdrv.service
+%endif
 
 %postun guest-tools
 %restart_on_update vboxadd
@@ -990,7 +995,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxSUIDMessage
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxUSB_DevRules
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VirtualBox6
-%verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VirtualBoxVM
+%verify(not mode) %attr(0750,root,vboxusers) %{_vbox_instdir}/VirtualBoxVM
 %verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxSDL
 %{_vbox_instdir}/VirtualBox
 #wrapper script is in bindir
@@ -1092,7 +1097,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 # main_package
 %endif
 
-### %build and %install sections of virtualbox-kmp ### 
+### %%build and %%install sections of virtualbox-kmp ### 
 %if %{kmp_package}
 %build
 # Disable LTO - Link Time Optimization

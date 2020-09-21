@@ -1,0 +1,586 @@
+-------------------------------------------------------------------
+Mon Sep  7 15:24:16 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- PlayOnLinux requires now python3 and pyton3-wxPython.
+
+-------------------------------------------------------------------
+Mon Sep  7 09:28:48 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.4.0
+  - Update Variables.py
+- Switch source from playonlinux.com to github.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Dec 26 11:48:02 UTC 2018 - ecsos@opensuse.org
+
+- Update to 4.3.4
+  * Fixed some bugs in the wineversion process
+  * Begining of code cleaning and refactoring
+  * Begining of using wx box sizers instead of absolute 
+    positioning. Most of the windows are now resizable. 
+    This should solve display issues on many cases: HDPI and 
+    alternative windows manager: 
+    (see https://www.playonlinux.com/en/topic-16188-Visual_error_with_KDE.html)
+  * macOS: Remove XQuartz installation
+  * macOS: Bundle an up-to-date wine version
+  * macOS: Use native terminal instead of xterm
+  * macOS: Fix localization
+- Add PlayOnLinux-fix_media_dir.patch to fix variable MEDIA_DIR to
+  correct location.
+ 
+-------------------------------------------------------------------
+Tue Nov 27 18:15:23 UTC 2018 - ecsos@opensuse.org
+
+- Update to 4.3.3
+  * Linux: Fix HDPI support
+  * Compatibility with OSX < Mojave
+- Changes from 4.3
+  * Various fix on OSX
+  * Phoenicis (POL 5) winebuild compatibility. POL 4 winebuilds 
+    will be deprecated. 
+    (See https://github.com/PhoenicisOrg/phoenicis-winebuild)
+  
+-------------------------------------------------------------------
+Fri Jun 29 13:18:13 UTC 2018 - kstreitova@suse.com
+
+- require p7zip-full for TW as 7z binary needed by PlayOnLinux was
+  moved to this package (see bsc#899627 for more details about
+  this change) 
+
+-------------------------------------------------------------------
+Tue Oct  3 09:09:13 UTC 2017 - ecsos@opensuse.org
+
+- add patch PlayOnLinux-https.patch to fix boo#1051248
+
+-------------------------------------------------------------------
+Tue Jul 11 22:33:41 UTC 2017 - ecsos@opensuse.org
+
+- update to 4.2.12
+  * no changelog from upstream
+- remove patch PlayOnLinux-BrokenMiscButtons.patch because now in
+  upstream
+
+-------------------------------------------------------------------
+Wed Jun 14 16:43:07 UTC 2017 - ecsos@opensuse.org
+
+- add patch PlayOnLinux-BrokenMiscButtons.patch
+  fix issue 5522
+
+-------------------------------------------------------------------
+Tue Jun 13 18:21:08 UTC 2017 - ecsos@opensuse.org
+
+- update to 4.2.11
+  * Fix POL_SetupWindow_download clobbering $FILENAME
+  * Fix small typo in first use "send report" message
+
+-------------------------------------------------------------------
+Wed Jan 13 19:10:42 UTC 2016 - jacobwinski@gmail.com
+
+- Fix wrong PlayOnLinux_4.2.10.tar.gz file
+  * Current file is outdated dev version (file hash does not match)
+  * Replace outdated file with the real release file version
+
+-------------------------------------------------------------------
+Sun Jan  3 16:11:20 UTC 2016 - ecsos@opensuse.org
+
+- update to 4.2.10
+  * Silence POL_Notice_IsAck when ack_notices file doesn't exist
+  * Allow Set_SoundDriver '' to disable sound
+  * Add in the wineprefix configuration tab for Wine: Control panel
+  * Remove in the wineprefix configuration tab for Wine: Wine 
+    Uninstaller
+  * Add support for Wine-staging DLL redirects 
+    (POL_Wine_RedirectDLL, POL_Wine_DelRedirectDLL, 
+    POL_Wine_RedirectDLL_App, POL_Wine_DelRedirectDLL_App) (#5163)
+  * Fix POL_System_cpmv log message
+  * Reimplement deprecated functions POL_SetupWindow_make_shortcut 
+    and POL_SetupWindow_auto_shortcut using POL_Shortcut for 
+    consistency
+  
+-------------------------------------------------------------------
+Thu Sep 10 17:05:34 UTC 2015 - ecsos@opensuse.org
+
+- update to 4.2.9
+  * Fixed a bug in the user agent used in urllib that would make it
+    look like an attack to paranoid eyes (and filters) (#5072)
+  * Try to improve general installation instructions
+  * Update About's copyright years span (let's make it look like 
+    we're still working on the project ;) ) Many more could be 
+    updated though
+  * POL_Download_Resource: don't test hash of missing file 
+    (one less spurious warning message)
+  * Adding some visual clue while virtual drives are being removed
+  * Fix "debbuger" typo
+  * POL_System_find_file: really pick the shallowest file
+  * fix "debbuger" typo
+  * POL_SetupWindow_VMS: mention that the expected answer units are 
+    megabytes
+  * Try to make instructions to rerun a program in debug mode more 
+    obvious (#5104)
+  * Some GetRegValue fixing/hardening
+  * Remove spurious .lnk files from user desktop for all 
+    architectures during POL_Shortcut calls (#4200)
+  * Add waiting messages to POL_System_unzip & friends
+  * Deprecate Set_WineWindowTitle that no longer works with 
+    Wine 1.5.16+, and breaks Set_Desktop (#5118)
+  * Fix playonlinux-pkg -b (broken since PlayOnLinux 4.0)
+  * MacOS 10.11 support
+
+-------------------------------------------------------------------
+Wed May 13 15:44:12 UTC 2015 - ecsos@opensuse.org
+
+- update to 4.2.8
+  * Feature freeze has been declared for POL 4.x, so this changelog 
+    should contain only bug fixes
+  * checkVersionUse(): don't assume cfg files have any order
+  * manual installation: component installation bugfix 
+    ($IFS not restored correctly)
+  * POL_OpenShell: call POL_Wine_AutoSetVersionEnv in all cases, 
+    to set $PATH (#5062)
+  * Fix consecutive shortcut creations
+  * POL_Wine_SetVideoDriver bugfix, device IDs were not inserted as 
+    DWORDs
+
+-------------------------------------------------------------------
+Mon Apr 20 22:04:14 UTC 2015 - ecsos@opensuse.org
+
+- update to 4.2.7
+  * Detect and abort scripts when trying to run 64bit programs with 
+    32bit Wine
+  * POL_DetectVideoCards: list VGA compatible controllers and 
+    3D controllers (#5012)
+  * Add support for several other value types than REG_SZ to 
+    registry updating statements (#5013)
+  * POL_Wine_SelectPrefix: abort if no prefix name is provided
+  * Sort install scripts lists case insensitively (iTunes)
+  * Fix "hash-bang" line in shortcuts so they're actually 
+    executable
+  * Deprecate the usage of $REPERTOIRE in PlayOnLinux own code
+  * Translate remaining french comments and identifiers in 
+    Bash code
+  * Improve POL_Wine_PrefixDelete to remove ancillary resources 
+    (shortcuts, icons,...)
+  * Wine versions manager: attributes tell apart used versions 
+    instead of unused versions; Add an extra warning when about 
+    to remove a version in use
+  * Avoid Python detection loops
+  * Display wx version found
+  * Fix Settings > Internet menu (#4989, thanks to rupert)
+  * Workaround for Wine bug #37575 (#5023)
+  * Improve find_binary function and make it public as 
+    POL_System_find_file
+  * Add support for .lnk, .bat and .cmd files to POL_Shortcut and 
+    POL_SetupWindow_shortcut_creator
+  * Added an icon to open the debugger from the installation wizard 
+    when POL_Debug_Init has been called (#4948)
+  * Implement POL_SetupWindow_notice to display important messages, 
+    but allow the user to acknowledge them once and for all 
+    ("Don't remind me") (#2036)
+  * POL_OpenShell (Configure > Misc > Open a shell) bug fixes
+  * Add a warning when OpenGL autotests are missing (user support)
+  * Make sure "Install non-listed application" link is always 
+    visible in install window
+  * POL_SetupWindow_cdrom: don't suggest "*" when no CDROM has been 
+    found
+  * Remove use of remaining os.system() calls (less overhead, less 
+    quoting nightmare)
+  * Use os.kill() instead of shell command
+  * Use of "exec" to avoid some useless extra Bash processes
+  * polconfigurator interface cleanup 
+    (no risk of translation breakage)
+
+-------------------------------------------------------------------
+Sat Feb 28 09:07:12 UTC 2015 - ecsos@opensuse.org
+
+- update to 4.2.6
+  - Use $ POL_TERM more Consistently, allow POL_TERM global 
+    configuration override. Beware, the carrier must terminal -T 
+    and -e options, so gnome-terminal Does not Qualify 
+    (gnome-terminal.wrapper Does though)
+  - Add a function to compute a hash of a POL_Wine_VersionSignature 
+    Wine Package
+  - Python version string extraction hardening (# 4895)
+  - POL_System_PartInfo APPROBATION thru mount filesystems point 
+    INSTEAD of device (Btrfs subvolumes compatibility)
+  - Modify bash / document_reader to pass extra arguments Unchanged 
+  - Remove "skipped lines" messages When The debugger gets the 
+    focus back
+  - POL_Shortcut: do not overwrite $ binary logging to Improve
+  - mainwindow: make boxen alert child of the main window So They 
+    can not get lost behind --other windows
+  - Prevent POL_Download_Resource clobbering $ APP_ANSWER
+  - Critical error: wget throwing SSL error when Install Components 
+    uses wget (bug 5002)
+
+-------------------------------------------------------------------
+Sat Sep 27 21:19:17 UTC 2014 - sor.alexei@meowr.ru
+
+- Generic spec cleanup
+- Fix broken playonlinux.sh
+
+-------------------------------------------------------------------
+Thu Sep 25 20:56:23 UTC 2014 - nemysis@gmx.ch
+
+- Change PlayOnLinux-desktop.patch not needed more changes with
+  %suse_update_desktop_file
+- Change description
+- Simplify installation handling
+- Change playonlinux.sh
+
+-------------------------------------------------------------------
+Mon Sep  8 20:08:25 UTC 2014 - ecsos@opensuse.org
+
+- update to 4.2.5
+  * Fix reading/writing values containing '=' symbol in 
+    configuration files (#4834)
+  * Make POL_Wine_InstallFonts preserve current directory 
+    (regression since 4.2.3)
+  * Disable "Install" component button until a component is selected
+  * Compatibility with wxpython 3.0
+  * Compatibility with Debian 8
+  * Compatibility with Mac OS 10.10
+  * Mention URL in POL_Download and POL_Download_Resource error messages 
+    (should help with user support)
+  * Add POL_Config_Win16 to check if the host can run win16 programs, 
+    see http://linux-kernel.2935.n7.nabble.com/tip-x86-urgent-x86-64-modify-ldt-
+    Ban-16-bit-segments-on-64-bit-kernels-td838675i120.html
+
+-------------------------------------------------------------------
+Wed Jul 16 07:58:31 UTC 2014 - stefan@fam-elser.de
+
+- update to 4.2.4
+  * New support and feedback system, easier to use
+  * Links to social networks
+  * 4.2.3 regresion fixed in run_exe module
+
+-------------------------------------------------------------------
+Fri Jul 11 15:29:56 UTC 2014 - ecsos@opensuse.org
+
+- update to 4.2.3
+  * Fix for Python version "2.7" (#3749)
+  * POL_SetupWindow_shortcut_creator: always suggest 
+    unused shortcut names; If user chooses an already used name,
+    warn before overwrite (#3770)
+  * Fix for "Error 427" 
+    http://www.playonlinux.com/en/topic-11490-Error_427.html 
+    regression in 4.2.2 (functions override)
+  * Fix IE3 icon extraction (#3885)
+  * Debugger: if behind by too many lines, skip displaying some 
+    (...skipped n lines...) to keep up
+  * wineserver not in path problem fixed again (debian bug, 
+    but they won't fix it)
+  * Fix "Open a shell" to enable the wine version of the prefix
+  * New attempt at fixing download gauge overflow (#2123)
+  * Do not totally silence gpg import errors
+  * Allow POL_SetupWindow_textbox to accept an extra 
+    max length parameter
+  * Limit bug reports title to 80 characters
+  * virtual drive removal: use os.lstat() instead of os.stat() 
+    to check for broken rights (reported by Xenos5)
+  * change of Wine version used in a virtual drive: kill running 
+    wineserver after asking for permission
+  * Experimental: FreeBSD support
+  * Removing PlayOnLinux_Online
+  * Corefonts are now managed as any other POL_Call package. 
+    (Debian.lib is consequently no longer needed)
+  * Removing installation process of missing gecko and mono at startup. 
+    It should not happen anymore
+  * Cleaner way to save panel position
+  * Fix a bug in GetSettings() where the value contain 
+    the equal ('=') character 
+  * PlayOnMac does no longer need a reboot after installing XQuartz
+  * PlayOnMac does no longer popup a warning before xterm is installed
+  * Removing IRC 
+  * Icones install can now be bigger than 22x22
+
+-------------------------------------------------------------------
+Sun Jan  5 20:21:14 UTC 2014 - stefan@fam-elser.de
+
+- Updated to 4.2.2
+- Changes:
+  * Changelog move from plaintext to Markdown syntax.
+  * read script lists in utf8 when looking up script to install (#2076)
+  * (experimental) new algorithm to find installed Python version,
+    implements fallback which is probably overkill (#2122)
+  * New version of PlayOnLinux Vault 4.0.4:
+    - Adding lzop compression if available (fast compression with medium
+      compression rate).
+    - Add a "Save" shortcut in PlayOnLinux side panel
+  * Fix double utf-8 decoding of shortcuts (#2125, #2289)
+  * Add POL_Shortcut_Configurator
+  * Modified POL_System_wget to keep error messages from wget
+  * Updated PNG icons with broken profiles, thanks to calvertyl
+    (http://www.playonlinux.com/en/topic-10442-New_Warning_Message_on_startup.html)
+  * wine-mono download support
+  * Fix POL_SetupWindow_message typo (not enough video memory message) (#2790)
+  * POL_LoadVar_Device: refacto POL_DetectVideoCards; 
+    Let user choose when there's more than one known videocard present
+  * Add link to download page in side panel when version is not up-to-date (#2677)
+    Not sure it's visible enough, could be improved.
+  * Added logging to archivers wrappers (POL_System_unzip etc.)
+  * Update mono download URLs
+  * Updated IRC server address, freenode.com domain is gone
+  * Harden applications list parsing
+  * force LANG=C when spawning wineconsole (Wine bug #10063)
+  * fix typo in bash/manual_install
+  * Developer feature: allow to override function scripts
+    When global configuration ALLOW_FUNCTION_OVERRIDES is set to TRUE, function
+    scripts in $POL_USER_ROOT/configurations/function_overrides/ override function
+    scripts by the same name. This feature disables bug reporting.
+  * Fix website login when username contains spaces (#3573)
+  * "Run an .exe in this virtual disk" sets current directory to program's 
+    directory (#1855)
+  * fix "wineserver not found" in interactive use of POL_Wine_Direct3D /
+    POL_Wine_X11Drv / POL_Wine_DirectSound / POL_Wine_DirectInput
+  * Remove use of os.system() from mainwindow.py and configure.py 
+    (less overhead, less quoting nightmare)
+  * Add missing POL_Wine_AutoSetVersionEnv before wineserver calls
+
+-------------------------------------------------------------------
+Mon Nov  4 12:02:01 UTC 2013 - stefan@fam-elser.de
+
+- Recreated dektop file patch according to #845518
+
+-------------------------------------------------------------------
+Mon Jun 10 07:58:16 UTC 2013 - stefan@fam-elser.de
+
+- update to 4.2.1
+- Changes:
+ - When removing shortcuts or virtual drives from the Configure window,
+   make sure desktop icons, menu entries, etc. are also removed.
+ - fix Python's VersionLower (infinite source of bugs)
+ - Update © in about box LP: #1160801
+ - Fix a huge problem in bug reporting I introduced in 4.2... I thought
+   it tested it well, this is depressing. Without testers, without
+   users testing beta versions, it seems there's no way to get bugfree
+   releases.
+
+-------------------------------------------------------------------
+Wed Oct  3 21:15:04 UTC 2012 - mailaender@opensuse.org
+
+- update to 4.1.8
+
+-------------------------------------------------------------------
+Sun Aug  5 16:24:30 UTC 2012 - Sascha.Manns@open-slx.de
+
+- recreated PlayOnLinux-desktop.patch 'cause the upstream desktop file
+  has changed. Now a smaller patch works. 
+
+-------------------------------------------------------------------
+Sun Aug  5 16:13:33 UTC 2012 - Sascha.Manns@open-slx.de
+
+- tried out a better Desktop-File-Handing by using macros
+  possibilities 
+
+-------------------------------------------------------------------
+Sun Aug  5 15:26:30 UTC 2012 - Sascha.Manns@open-slx.de
+
+- update to 4.1.5
+- Here a small list of changes:
+
+ - Official support for Moutain Lion
+ - CPU usage improvement when you have many program installed
+ - Few bug fixed : (#1076, #1053)
+ - Clickable links on messenger and on install window
+ - Error messages are more comprehensible
+ - You can now open your document directly with shortcuts created by
+   PlayOnLinux
+ - Various improvements in the interface
+ - Various improvements on the messenger
+ - When a download fails, PlayOnLinux (and PlayOnMac) will ask you to
+   redownload the file
+ - A cleaner code 
+
+-------------------------------------------------------------------
+Wed May 23 19:39:12 UTC 2012 - Sascha.Manns@open-slx.de
+
+- update version 4.1.1
+
+-------------------------------------------------------------------
+Mon May  7 17:09:12 UTC 2012 - joop.boonen@opensuse.org
+
+- update version 4.0.18
+- passed through spec cleaner 
+
+-------------------------------------------------------------------
+Wed Aug 31 00:00:00 UTC 2011 - joop.boonen@opensuse.org
+
+- new upstream version 4.0.11
+- changed the source name of the wrapper script to playonlinux.sh
+
+-------------------------------------------------------------------
+Mon Aug 29 00:00:00 UTC 2011 - joop.boonen@opensuse.org
+
+- new upstream version 4.0.9
+
+-------------------------------------------------------------------
+Sat Mar 26 00:00:00 UTC 2011 - norfeo68@hotmail.com
+
+- new upstream version 3.8.12
+
+-------------------------------------------------------------------
+Sat Mar 05 00:00:00 UTC 2011 - norfeo68@hotmail.com
+
+- new upstream version 3.8.11
+
+-------------------------------------------------------------------
+Sat Feb 26 00:00:00 UTC 2011 - norfeo68@hotmail.com
+
+- new upstream version 3.8.10
+
+-------------------------------------------------------------------
+Sat Nov 20 00:00:00 UTC 2010 - norfeo68@hotmail.com
+
+- new upstream version 3.8.6
+
+-------------------------------------------------------------------
+Tue Nov 6 00:00:00 UTC 2010 - norfeo68@hotmail.com
+
+- new upstream version 3.8.5
+
+-------------------------------------------------------------------
+Tue Sep 28 00:00:00 UTC 2010 - andrea@links2linux.de
+
+- new upstream version 3.8.3
+
+-------------------------------------------------------------------
+Fri Sep  3 00:00:00 UTC 2010 - andrea@links2linux.de
+
+- new upstream version 3.8.1
+
+-------------------------------------------------------------------
+Sun Jul  5 00:00:00 UTC 2009 - andrea@links2linux.de
+
+- update to version 3.6
+
+-------------------------------------------------------------------
+Sat May  9 00:00:00 UTC 2009 - andrea@links2linux.de
+
+- update to version 3.5
+
+-------------------------------------------------------------------
+Sat Mar  7 00:00:00 UTC 2009 - andrea@links2linux.de
+
+- update to version 3.4
+
+-------------------------------------------------------------------
+Mon Feb  2 00:00:00 UTC 2009 - andrea@links2linux.de
+
+- update to version 3.3.1
+
+-------------------------------------------------------------------
+Sun Jan 25 00:00:00 UTC 2009 - andrea@links2linux.de
+
+- update to version 3.3
+
+-------------------------------------------------------------------
+Sun Dec 14 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- fixed python dependencie on suse 11.1
+
+-------------------------------------------------------------------
+Sat Dec  6 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.2.2
+
+-------------------------------------------------------------------
+Sun Nov 30 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.2.1
+
+-------------------------------------------------------------------
+Sat Nov 29 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.2
+
+-------------------------------------------------------------------
+Thu Nov 13 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.1.3
+
+-------------------------------------------------------------------
+Sun Oct 19 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.1.2
+
+-------------------------------------------------------------------
+Thu Sep 11 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.1
+
+-------------------------------------------------------------------
+Tue Jun 24 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.0.7
+
+-------------------------------------------------------------------
+Sat Jun 14 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.0.2
+
+-------------------------------------------------------------------
+Mon Jun  2 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.0.1
+
+-------------------------------------------------------------------
+Sat May 31 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 3.0
+
+-------------------------------------------------------------------
+Fri May 16 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 2.7.2
+- removed extra packages, now available like manual install plugins
+
+-------------------------------------------------------------------
+Wed Apr 30 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 2.6.1
+- added packages Script-Creator and Script-Creator-Devel
+  both not yet packaged cause of missing dependencie libtiff4
+
+-------------------------------------------------------------------
+Sun Apr 20 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 2.3
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 2.2.1
+
+-------------------------------------------------------------------
+Tue Apr  1 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 2.0.10
+
+-------------------------------------------------------------------
+Fri Feb  1 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 2.0.9
+
+-------------------------------------------------------------------
+Tue Jan 29 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 2.0.8
+
+-------------------------------------------------------------------
+Tue Jan 29 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- update to version 2.0.7
+- removed LNG_WORK.patch and it_IT.patch
+- added launcer in %%{_bindir}
+
+-------------------------------------------------------------------
+Thu Jan 24 00:00:00 UTC 2008 - andrea@links2linux.de
+
+- first spec making
+- added patch to fix wrong lanaguage variables
+- added fixed italian translation
+- added patch to fix .desktop file with suse standards
+- created package PlayOnLinux-DosBox-Support in this spec
+
+-------------------------------------------------------------------

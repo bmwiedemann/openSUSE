@@ -19,15 +19,13 @@
 %define packagename sidpy
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sidpy
-Version:        0.0.1
+Version:        0.0.2
 Release:        0
 Summary:        Utilities for processing Spectroscopic and Imaging Data
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pycroscopy.github.io/sidpy/about.html
 Source:         https://github.com/pycroscopy/sidpy/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_tests_dir_in_site_package.patch andythe_great@pm.me gh#pycroscopy/pyUSID#50 -- Remove tests folder from site-packages directory
-Patch0:         fix_tests_dir_in_site_package.patch
 BuildRequires:  %{python_module cytoolz}
 BuildRequires:  %{python_module dask >= 0.10}
 BuildRequires:  %{python_module dask-array >= 0.10}
@@ -35,10 +33,12 @@ BuildRequires:  %{python_module h5py >= 2.6.0}
 BuildRequires:  %{python_module ipywidgets >= 5.2.2}
 BuildRequires:  %{python_module joblib >= 0.11.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.0}
+BuildRequires:  %{python_module mpi4py}
 BuildRequires:  %{python_module numpy >= 1.10}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toolz}
@@ -51,8 +51,10 @@ Requires:       python-h5py >= 2.6.0
 Requires:       python-ipywidgets >= 5.2.2
 Requires:       python-joblib >= 0.11.0
 Requires:       python-matplotlib >= 2.0.0
+Requires:       python-mpi4py
 Requires:       python-numpy >= 1.10
 Requires:       python-psutil
+Requires:       python-qt5
 Requires:       python-six
 Requires:       python-toolz
 BuildArch:      noarch
@@ -63,7 +65,6 @@ Python utilities for storing, visualizing, and processing Spectroscopic and Imag
 
 %prep
 %setup -q -n %{packagename}-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -80,6 +81,5 @@ Python utilities for storing, visualizing, and processing Spectroscopic and Imag
 %license LICENSE
 %{python_sitelib}/*egg-info
 %{python_sitelib}/%{packagename}
-
 
 %changelog

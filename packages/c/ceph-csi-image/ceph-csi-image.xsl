@@ -27,7 +27,7 @@
       <containerconfig
         tag="latest"
         maintainer="SUSE LLC (https://bugs.opensuse.org)">
-        <xsl:attribute name="additionaltags"><xsl:value-of select="param/tags" />,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</xsl:attribute>
+        <xsl:attribute name="additionaltags"><xsl:value-of select="param/tags" />,%PKG_VERSION%,v%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</xsl:attribute>
         <xsl:attribute name="name">
           <xsl:value-of select="param/name" />
         </xsl:attribute>

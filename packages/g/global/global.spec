@@ -17,19 +17,18 @@
 
 
 Name:           global
-Version:        6.6.4
+Version:        6.6.5
 Release:        0
 Summary:        Common source code tag system
 License:        GPL-3.0-only
 Group:          Development/Tools/Navigators
-URL:            http://www.gnu.org/software/global/
+URL:            https://www.gnu.org/software/global/
 Source0:        ftp://ftp.gnu.org/pub/gnu/global/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.gnu.org/pub/gnu/global/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
 Patch0:         global-5.7.diff
 # PATCH-FIX-UPSTREAM fix_paths.patch bnc#977967
 Patch1:         fix_paths.patch
-Patch2:         global-gcc10.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  emacs-nox
@@ -55,7 +54,6 @@ subdirectories or many main() functions like MH, X, or Linux kernel.
 %setup -q
 %patch0
 %patch1
-%patch2 -p1
 
 %build
 autoreconf -fiv
@@ -65,7 +63,7 @@ export CPPFLAGS="-fno-common"
   --without-included-ltdl \
   --with-exuberant-ctags=%{_bindir}/ctags \
   PYTHON=python3
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

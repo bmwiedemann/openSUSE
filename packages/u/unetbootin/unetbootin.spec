@@ -1,7 +1,7 @@
 #
 # spec file for package unetbootin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define rev 661
+%define rev 681
 Name:           unetbootin
 Version:        0.0.%{rev}
 Release:        0
@@ -24,7 +24,8 @@ Summary:        Universal Netboot Installer
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://sourceforge.net/projects/unetbootin/
-Source:         %{name}-source-%{rev}.tar.gz
+#Source:         %%{name}-source-%%{rev}.tar.gz
+Source:         https://downloads.sourceforge.net/project/unetbootin/UNetbootin/%{rev}/unetbootin-source-%{rev}.tar.gz
 Patch0:         0001-rought-Qt5-port.patch
 Patch1:         0002-comment-out-all-sources-that-require-FTP-LIST.patch
 Patch2:         0003-fix-distrolst.cpp.patch
@@ -50,7 +51,7 @@ Requires(postun): update-desktop-files
 # Requires syslinux, and that only exists for the following arches:
 ExclusiveArch:  %{ix86} x86_64
 # Remove when p7zip-full is in all products
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1500
 Requires:       p7zip-full
 %else
 Requires:       p7zip
@@ -78,7 +79,7 @@ sed -i 's/\r$//' README.TXT
 lupdate-qt5 unetbootin.pro
 lrelease-qt5 unetbootin.pro
 %qmake5 "DEFINES += NOSTATIC" "RESOURCES -= unetbootin.qrc"
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -D -m 0755 %{name} %{buildroot}%{_sbindir}/%{name}

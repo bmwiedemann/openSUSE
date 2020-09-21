@@ -222,4 +222,12 @@
   the replayscanner and tagger do not work.</comment>
     <requestid>831402</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6f0780ec3739f81f533ef5029c3f1b3a</srcmd5>
+    <version>2.4.2</version>
+    <time>1600703023</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.4.2</comment>
+    <requestid>835685</requestid>
+  </revision>
 </revisionlist>

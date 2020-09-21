@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 11 08:43:18 UTC 2020 - Marcus Schaefer <ms@suse.com>
+
+- Bump version for kiwi-boot-descriptions to 1.3.0
+
+  * Delete the oemboot boot descriptions
+    The custom kiwi initrd system will be decommissioned. The oem
+    image type is fully supported through kiwi's dracut module
+
+  * Delete Leap and tumbleweed netboot descriptions
+    The custom kiwi initrd system will be decommissioned. Only
+    for SLE we keep the netboot descriptions for compatibility
+    reasons
+
+-------------------------------------------------------------------
 Tue Jan 14 16:16:20 UTC 2020 - Marcus Schaefer <ms@suse.com>
 
 - remove ifplugd from tumbleweed installation

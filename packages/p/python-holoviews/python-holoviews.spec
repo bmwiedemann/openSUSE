@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%bcond_with     test
+%bcond_without  test
 Name:           python-holoviews
 Version:        1.13.3
 Release:        0
@@ -27,7 +27,14 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ioam/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM remove-cyordereddict.patch gh#holoviz/holoviews#4620 mcepl@suse.com
+# Package cyordereddict has been declared obsolete even by its own upstream
+Patch0:         remove-cyordereddict.patch
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#holoviz/holoviews#4621 mcepl@suse.com
+# Remove last residues of using nose
+Patch1:         remove_nose.patch
 BuildRequires:  %{python_module numpy >= 1.0}
+BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module param < 2.0}
 BuildRequires:  %{python_module param >= 1.8.0}
 BuildRequires:  %{python_module pip}
@@ -47,7 +54,6 @@ Recommends:     python-Jinja2
 Recommends:     python-Pygments
 Recommends:     python-bokeh >= 0.12.14
 Recommends:     python-colorcet
-Recommends:     python-cyordereddict
 Recommends:     python-dask
 Recommends:     python-dask-array
 Recommends:     python-dask-dataframe
@@ -65,6 +71,7 @@ Recommends:     python-matplotlib
 Recommends:     python-netCDF4
 Recommends:     python-networkx
 Recommends:     python-pandas
+Recommends:     python-panel
 Recommends:     python-plotly
 Recommends:     python-pyparsing
 Recommends:     python-pyzmq
@@ -79,9 +86,9 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module bokeh >= 0.12.14}
 BuildRequires:  %{python_module colorcet}
-BuildRequires:  %{python_module cyordereddict}
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module dask}
@@ -98,10 +105,10 @@ BuildRequires:  %{python_module jupyter_widgetsnbextension}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module networkx}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pyparsing}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module seaborn}
@@ -126,12 +133,14 @@ rendered automatically by one of the supported plotting libraries
 
 %prep
 %setup -q -n holoviews-%{version}
+%autopatch -p1
+
 # remove tests that install additional files using npm/etc
 # "conda install -c bokeh flexx" or "pip install flexx"
 rm -f holoviews/tests/plotting/testplotutils.py
 rm -rf holoviews/tests/ipython
 # "conda install phantomjs"
-rm -rf holoviews/tests/plotting/bokeh
+rm -rf holoviews/tests/plotting/bokeh holoviews/tests/test_annotators.py
 
 %build
 %python_build
@@ -158,7 +167,7 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ho
 %check
 export HOLOVIEWSRC=`pwd`'/holoviews.rc'
 echo 'import holoviews as hv;hv.config(style_17=True);hv.config.warn_options_call=True' > holoviews.rc
-%python_expand nosetests-%{$python_bin_suffix} -v
+%pytest
 %endif
 
 %files %{python_files}

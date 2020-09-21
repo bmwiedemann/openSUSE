@@ -19,14 +19,14 @@
 %define splitbin 0%{?suse_version} >= 1300
 
 Name:           xterm
-Version:        353
+Version:        359
 Release:        0
 Summary:        The basic X terminal program
 License:        MIT
 Group:          System/X11/Utilities
-URL:            http://invisible-island.net/xterm/
-Source:         ftp://ftp.invisible-island.net/xterm/%{name}-%{version}.tgz
-Source1:        ftp://ftp.invisible-island.net/xterm/%{name}-%{version}.tgz.asc
+URL:            https://invisible-island.net/xterm/xterm.html
+Source:         https://invisible-mirror.net/archives/xterm/xterm-%{version}.tgz
+Source1:        https://invisible-mirror.net/archives/xterm/xterm-%{version}.tgz.asc
 Source2:        luitx
 Source3:        Backarrow2Delete
 Source4:        Backarrow2BackSpace

@@ -25,6 +25,8 @@ License:        Apache-2.0
 Group:          System/Filesystems
 URL:            https://plusvic.github.io/yara/
 Source:         https://github.com/VirusTotal/yara/archive/v%{version}.tar.gz
+#PATCH-FIX-UPSTREAM - https://github.com/VirusTotal/yara/pull/1352
+Patch1:         yara-fix-arm.patch
 BuildRequires:  file-devel
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -81,6 +83,7 @@ determines its logic.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 autoreconf -fvi

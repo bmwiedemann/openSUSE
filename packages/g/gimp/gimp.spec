@@ -18,6 +18,11 @@
 
 %global abiver 4
 %global apiver 2.0
+%if 0%{?sle_version}
+%bcond_with python2
+%else
+%bcond_without python2
+%endif
 Name:           gimp
 Version:        2.10.20
 Release:        0
@@ -59,7 +64,9 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libwmf-devel >= 0.2.8
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
+%if %{with python2}
 BuildRequires:  python-gtk-devel >= 2.10.4
+%endif
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk) >= 2.2.0
@@ -100,7 +107,9 @@ Requires:       libgimp-2_0-0 = %{version}
 Requires:       libgimpui-2_0-0 = %{version}
 Requires:       xdg-utils
 Recommends:     %{name}-lang
+%if %{with python2}
 Recommends:     %{name}-plugins-python = %{version}
+%endif
 Recommends:     iso-codes
 Suggests:       AdobeICCProfiles
 Suggests:       gimp-2.0-scanner-plugin
@@ -142,6 +151,7 @@ toolbox and scripting.
 
 This package provides GIMP UI libraries.
 
+%if %{with python2}
 %package plugins-python
 Summary:        The GNU Image Manipulation Program - python-gtk based plugins
 Group:          Productivity/Graphics/Bitmap Editors
@@ -157,6 +167,7 @@ Provides:       %{name}:%{_libdir}/gimp/2.0/plug-ins/pyconsole.py = %{version}
 The GIMP is an image composition and editing program. GIMP offers
 many tools and filters, and provides a large image manipulation
 toolbox and scripting.
+%endif
 
 %package plugin-aa
 Summary:        The GNU Image Manipulation Program -- ASCII-Art output plugin
@@ -231,6 +242,9 @@ export LDFLAGS="%{optflags} -lm"
 %if 0%{?suse_version} >= 1330
 	--without-webkit\
 	--with-lcms=lcms2\
+%endif
+%if %{without python2}
+	--disable-python \
 %endif
 	--libexecdir=%{_libexecdir}\
 	--enable-default-binary\
@@ -353,11 +367,13 @@ install -m 644 -c macros.gimp \
 %{_libdir}/libgimpui-2.0.so.*
 %{_libdir}/libgimpwidgets-2.0.so.*
 
+%if %{with python2}
 %files plugins-python -f plugins-python.list
 %{_libdir}/gimp/2.0/environ/pygimp.env
 %{_libdir}/gimp/2.0/interpreters/pygimp.interp
 %{_libdir}/gimp/2.0/python/
 # FIXME: Maybe split gimp-lang and gimp-plugins-python-lang
+%endif
 
 %files lang -f gimp20.lang
 

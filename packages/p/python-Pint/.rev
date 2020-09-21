@@ -154,4 +154,22 @@
   * Fixed a bug where unit exponents were only partially superscripted in HTML format</comment>
     <requestid>819352</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2b0b58c16919f7ee97e87381fa4aa5c7</srcmd5>
+    <version>0.15</version>
+    <time>1600702045</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15:
+  - Change `Quantity` and `Unit` HTML (i.e., Jupyter notebook) repr away from LaTeX to a
+    simpler, more performant pretty-text and table based repr inspired by Sparse and Dask.
+  - Add `case_sensitive` option to registry for case (in)sensitive handling when parsing
+  - Implement Dask collection interface to support Pint Quantity wrapped Dask arrays.
+  - Started automatically testing examples in the documentation
+  - Fixed an exception generated when reducing dimensions with three or more
+    units of the same type
+  - Fixed right operand power for dimensionless Quantity to reflect numpy behavior. (Issue #1136)
+  - Eliminated warning when setting a masked value on an underlying MaskedArray.
+  - Add `sort` option to `formatting.formatter` to permit disabling sorting of component units in format string</comment>
+    <requestid>835385</requestid>
+  </revision>
 </revisionlist>

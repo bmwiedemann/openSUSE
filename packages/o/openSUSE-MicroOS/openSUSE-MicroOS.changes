@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:27:21 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop rd.neednet=0, the dracut bug is fixed and network is opt-in now
+
+-------------------------------------------------------------------
 Wed Aug 19 13:09:26 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Fix whitespace

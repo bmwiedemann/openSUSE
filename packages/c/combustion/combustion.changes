@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 17 10:56:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Overhaul configuration fetching:
+  * Add udev rules to wait for either ignition, combustion or
+    fw_cfg drives
+  * Allow combustion.firstboot in addition to ignition.firstboot
+  M combustion
+  A combustion-prepare.service
+  M combustion.service
+  M module-setup.sh
+- Bump version to 0.2
+
+-------------------------------------------------------------------
 Mon Sep 14 09:20:49 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Avoid concurrent run of Ignition and Combustion initialization

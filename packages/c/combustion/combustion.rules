@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2020 SUSE LLC
+# SPDX-License-Identifier: GPL-2.0-only
+
+# These rules are needed to work around two systemd limitations:
+# - It's not possible to wait for one of multiple devices to appear 
+# - ConditionKernelCommandLine is evaluated after Wants/After,
+#   so it waits for the devices unnecessarily
+# Introduce a dev-combustion-config.device unit as alias to the actual device(s).
+# This is only used for the .service dependencies.
+
+# Filesystems with either combustion or ignition as label
+ACTION=="add", SUBSYSTEM=="block", ENV{ID_FS_LABEL}=="combustion", ENV{SYSTEMD_ALIAS}+="/dev/combustion/config"
+ACTION=="add", SUBSYSTEM=="block", ENV{ID_FS_LABEL}=="ignition", ENV{SYSTEMD_ALIAS}+="/dev/combustion/config"
+# QEMU fw_cfg blob with key opt/org.opensuse.combustion
+ACTION=="add", SUBSYSTEM=="opt", ENV{DEVPATH}=="/firmware/qemu_fw_cfg/by_name/opt/org.opensuse.combustion", ENV{SYSTEMD_ALIAS}+="/dev/combustion/config", TAG+="systemd"
+
+# If combustion won't run, alias it to /dev/null to avoid waiting
+ACTION=="add", SUBSYSTEM=="mem", ENV{DEVPATH}=="/devices/virtual/mem/null", GOTO="combustion_dev_null"
+GOTO="combustion_end"
+
+LABEL="combustion_dev_null"
+# IMPORT has to be on its own as it returns success or not, even with "="...
+IMPORT{cmdline}="ignition.firstboot"
+IMPORT{cmdline}="combustion.firstboot"
+ENV{ignition.firstboot}!="1", ENV{combustion.firstboot}!="1", ENV{SYSTEMD_ALIAS}+="/dev/combustion/config", TAG+="systemd"
+
+LABEL="combustion_end"

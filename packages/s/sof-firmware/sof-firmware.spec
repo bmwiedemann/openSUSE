@@ -20,7 +20,7 @@ Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        1.5
+Version:        1.5.1
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
@@ -30,8 +30,6 @@ BuildRequires:  fdupes
 # from SOF sources with external toolchains, but we need signed firmware from
 # Intel, and hence the repo above collects the resultant binaries.
 Source:         sof-bin-%{version}.tar.xz
-# Temporary fix up for broken tplg files
-Source1:        ftp://ftp.alsa-project.org/pub/misc/sof/sof-bin-topology-1.5-dmic-20db-fix.tar.gz
 BuildArch:      noarch
 # Merrifield
 Supplements:    modalias(pci:v00008086d0000119Asv*sd*bc*sc*i*)
@@ -46,16 +44,20 @@ Supplements:    modalias(pci:v00008086d00009DC8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A348sv*sd*bc*sc*i*)
 # Icelake
 Supplements:    modalias(pci:v00008086d000034C8sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003DC8sv*sd*bc*sc*i*)
 # Jasperlake
 Supplements:    modalias(pci:v00008086d000038C8sv*sd*bc*sc*i*)
-# Cometlake-LP
+Supplements:    modalias(pci:v00008086d00004DC8sv*sd*bc*sc*i*)
+# Cometlake
 Supplements:    modalias(pci:v00008086d000002C8sv*sd*bc*sc*i*)
-# Cometlake-H
 Supplements:    modalias(pci:v00008086d000006C8sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A3F0sv*sd*bc*sc*i*)
 # Tigerlake
 Supplements:    modalias(pci:v00008086d0000A0C8sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000043C8sv*sd*bc*sc*i*)
 # Elkhartlake
 Supplements:    modalias(pci:v00008086d00004B55sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004B58sv*sd*bc*sc*i*)
 
 %description
 Various firmware data files for SOF drivers.
@@ -64,8 +66,6 @@ Various firmware data files for SOF drivers.
 %setup -q -n sof-bin
 # drop version number from sof-tplg directory
 mv lib/firmware/intel/sof-tplg-v%{version} lib/firmware/intel/sof-tplg
-# fix up for broken topology files
-tar -C lib/firmware/intel/sof-tplg/ -xf %{SOURCE1}
 
 %build
 
@@ -95,8 +95,8 @@ done
 %fdupes -s %{buildroot}
 
 %files
-%license LICENCE.Intel
-%doc README.md README.Intel
+%license LICENCE.*
+%doc README.*
 /lib/firmware/*
 
 %changelog

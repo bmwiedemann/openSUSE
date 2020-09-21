@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 17 09:05:50 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.19.2:
+  * Fix index out of range panic for kubectl alpha debug
+  * kubectl describe pod: use ReportingController as an event source
+  * Update CNI plugins to v0.8.7
+  * Add roundtrip tests for metrics repo
+  * Cleanup custom metrics conversion functions
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.1
+  * Sort list of formats for --logging-format description to make it deterministic
+
+-------------------------------------------------------------------
 Thu Sep 10 09:41:24 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.19.1:

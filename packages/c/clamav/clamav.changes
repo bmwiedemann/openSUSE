@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 14 17:39:16 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 0.103.0
+  * clamd can now reload the signature database without blocking
+    scanning. This multi-threaded database reload improvement was made
+    possible thanks to a community effort.
+    - Non-blocking database reloads are now the default behavior. Some
+      systems that are more constrained on RAM may need to disable
+      non-blocking reloads as it will temporarily consume two times as
+      much memory. We added a new clamd config option
+      ConcurrentDatabaseReload, which may be set to no.
+  * Dropped clamav-str-h.patch (no longer needed)
+  * Fix clamav-milter.service (requires clamd.service to run)
+
+-------------------------------------------------------------------
 Thu Jul 16 20:02:03 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 0.102.4

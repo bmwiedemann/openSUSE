@@ -1,0 +1,42 @@
+pgprot removed in 88dca4c
+
+[  139s] /home/abuild/rpmbuild/BUILD/drbd-9.0.23~1+git.d16bfab7/default/drbd_bitmap.c: In function 'bm_realloc_pages':
+[  139s] /home/abuild/rpmbuild/BUILD/drbd-9.0.23~1+git.d16bfab7/default/drbd_bitmap.c:368:15: error: too many arguments to function '__vmalloc'
+[  139s]   368 |   new_pages = __vmalloc(bytes,
+[  139s]       |               ^~~~~~~~~
+[  139s] In file included from /home/abuild/rpmbuild/BUILD/drbd-9.0.23~1+git.d16bfab7/default/drbd_bitmap.c:16:
+[  139s] /usr/src/linux-5.8.0-1/include/linux/vmalloc.h:111:14: note: declared here
+[  139s]   111 | extern void *__vmalloc(unsigned long size, gfp_t gfp_mask);
+[  139s]       |              ^~~~~~~~~
+
+diff -Naur drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd-kernel-compat/drbd_wrappers.h drbd-9.0.24~1+git.17730ea3/drbd/drbd-kernel-compat/drbd_wrappers.h
+--- drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd-kernel-compat/drbd_wrappers.h	2020-08-13 14:22:17.895201728 +0800
++++ drbd-9.0.24~1+git.17730ea3/drbd/drbd-kernel-compat/drbd_wrappers.h	2020-08-13 14:33:13.168276614 +0800
+@@ -521,4 +521,8 @@
+ void arch_wb_cache_pmem(void *addr, size_t size);
+ #endif
+ 
++#ifndef COMPAT_HAVE_VMALLOC_NO_PGPROT
++#define __vmalloc(SIZE, GFP, PRGROT) __vmalloc(SIZE, GFP)
++#endif
++
+ #endif
+diff -Naur drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd-kernel-compat/tests/have_vmalloc_no_pgprot.c drbd-9.0.24~1+git.17730ea3/drbd/drbd-kernel-compat/tests/have_vmalloc_no_pgprot.c
+--- drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd-kernel-compat/tests/have_vmalloc_no_pgprot.c	1970-01-01 08:00:00.000000000 +0800
++++ drbd-9.0.24~1+git.17730ea3/drbd/drbd-kernel-compat/tests/have_vmalloc_no_pgprot.c	2020-08-13 14:29:04.930365926 +0800
+@@ -0,0 +1,15 @@
++/*
++ * Because RHEL 7.5 chose to provide refcount.h, but not use it, we don't
++ * directly include refcount.h, but rely on the implicit include via kref.h,
++ * This way, we avoid compile time warnings about atomic_t != refcount_t.
++ */
++#include <linux/vmalloc.h>
++
++/*
++ * extern void *__vmalloc(unsigned long size, gfp_t gfp_mask);
++ * 88dca4c mm: remove the pgprot argument to __vmalloc
++*/
++void test(unsigned long bytes)
++{
++	__vmalloc(bytes, GFP_NOIO | __GFP_ZERO);
++}

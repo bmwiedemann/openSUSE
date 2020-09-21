@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 13 16:55:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * SIFT (Scale-Invariant Feature Transform) algorithm has been
+  moved to the main repository (patent on SIFT is expired)
+  * DNN module:
+    * State-of-art Yolo v4 Detector: #17148.
+    * onnx: Add support for Resnet_backbone
+    * EfficientDet models
+    * add text recognition sample / demo
+    * FlowNet2 optical flow
+  * Intel Inference Engine backend
+    * added support for OpenVINO 2020.3 LTS / 2020.4 releases
+    * support of NN Builder API is planned for removal in the next release
+  * Many fixes and optimizations in CUDA backend
+  * Obj-C / Swift bindings: #17165
+  * Julia bindings as part of ongoing GSoC project
+  * BIMEF: A Bio-Inspired Multi-Exposure Fusion Framework for Low-light Image Enhancement
+  * Enable Otsu thresholding for CV_16UC1 images
+  * Add Stroke Width Transform algorithm for Text Detection
+  * Planned migration on Apache 2 license for next releases 
+- remove opencv-includedir.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Aug 20 09:02:23 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.

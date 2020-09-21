@@ -1,7 +1,7 @@
 #
 # spec file for package iperf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname  0
 Name:           iperf
-Version:        3.8.1
+Version:        3.9
 Release:        0
 Summary:        A tool to measure network performance
 License:        BSD-3-Clause
@@ -26,13 +26,12 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://software.es.net/iperf/
 #Source URL:    http://downloads.es.net/pub/iperf/%{name}-%{version}.tar.gz
 Source:         http://downloads.es.net/pub/iperf/%{name}-%{version}.tar.gz
+Requires:       lib%{name}%{soname} = %{version}-%{release}
 %if %{?sles_version} && %{?sles_version} <= 11
 BuildRequires:  libuuid-devel
 %else
 BuildRequires:  pkgconfig(uuid)
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       lib%{name}%{soname} = %{version}-%{release}
 
 %description
 Iperf is a tool for active measurements of the maximum achievable bandwidth
@@ -83,7 +82,7 @@ This package contains development files.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -95,19 +94,17 @@ rm %{buildroot}%{_libdir}/lib%{name}.la
 %postun -n lib%{name}%{soname} -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc LICENSE README.md RELNOTES.md
+%license LICENSE
+%doc README.md RELNOTES.md
 %{_bindir}/%{name}3
 %{_mandir}/man1/%{name}3.1%{?ext_man}
 
 %files -n lib%{name}%{soname}
-%defattr(-, root, root)
-%doc LICENSE
+%license LICENSE
 %{_libdir}/lib%{name}.so.*
 
 %files devel
-%defattr(-, root, root)
-%doc LICENSE
+%license LICENSE
 %{_includedir}/%{name}_api.h
 %{_libdir}/lib%{name}.so
 %{_mandir}/man3/lib%{name}.3%{?ext_man}

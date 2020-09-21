@@ -33,12 +33,12 @@ Index: monitoring-plugins-2.2/plugins/check_swap.c
 ===================================================================
 --- monitoring-plugins-2.2.orig/plugins/check_swap.c
 +++ monitoring-plugins-2.2/plugins/check_swap.c
-@@ -125,7 +125,7 @@ main (int argc, char **argv)
+@@ -125,7 +125,7 @@
  			free_swap_mb += dskfree_mb;
  			if (allswaps) {
  				if (dsktotal_mb == 0)
 -					percent=100.0;
-+					percent= 0.0;
++					percent = 0.0;
  				else
  					percent = 100 * (((double) dskused_mb) / ((double) dsktotal_mb));
- 				result = max_state (result, check_swap (percent, dskfree_mb));
+ 				result = max_state (result, check_swap (percent, dskfree_mb, dsktotal_mb));

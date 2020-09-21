@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 09:07:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport upstream patch to fix a segfault on ARM:
+  * yara-fix-arm.patch
+
+-------------------------------------------------------------------
 Mon Aug 17 07:12:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - Update to 4.0.2:

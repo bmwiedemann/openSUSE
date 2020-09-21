@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 19 11:29:52 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.20
+  * Make it possible to activate context menu when the playlist
+    is empty.
+  * Prevent constant resizing of the seek bar due to timestamp
+    label resizing as its value changes.
+  * Only show a single error dialog when a large number of
+    errors occurs in rapid succession.
+  * Add menu item for opening folders.
+  * Adjust position of UI elements of modal dialogs in non-CSD
+    mode to be more consistent with CSD mode.
+  * Add support for loading external video tracks.
+  * Make playlist shuffle toggleable.
+  * Make arrow key bindings work with arrow keys on numpad.
+
+-------------------------------------------------------------------
 Wed Apr  8 16:24:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.19

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 18 10:59:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.15:
+  - Change `Quantity` and `Unit` HTML (i.e., Jupyter notebook) repr away from LaTeX to a
+    simpler, more performant pretty-text and table based repr inspired by Sparse and Dask.
+  - Add `case_sensitive` option to registry for case (in)sensitive handling when parsing
+  - Implement Dask collection interface to support Pint Quantity wrapped Dask arrays.
+  - Started automatically testing examples in the documentation
+  - Fixed an exception generated when reducing dimensions with three or more
+    units of the same type
+  - Fixed right operand power for dimensionless Quantity to reflect numpy behavior. (Issue #1136)
+  - Eliminated warning when setting a masked value on an underlying MaskedArray.
+  - Add `sort` option to `formatting.formatter` to permit disabling sorting of component units in format string
+
+-------------------------------------------------------------------
 Tue Jul  7 10:45:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.14

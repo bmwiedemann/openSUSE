@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 11 21:00:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.12:
+  * skip overwriting r(un)path data when old_rpath = new_rpath.  
+  * patchelf: Check ELF endianness before writing new runpath
+  * use stable_sort to maintain relative order for equal elemnts
+  * add --clear-symbol-version 
+  * Improve the default section alignment choice
+  * Some const-correctness and C++11 auto
+
+-------------------------------------------------------------------
 Sun Aug 16 00:47:05 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.11:

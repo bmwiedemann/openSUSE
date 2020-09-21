@@ -17,7 +17,7 @@
 
 
 Name:           combustion
-Version:        0.1
+Version:        0.2
 Release:        0
 Summary:        System for initial configuration of appliances
 License:        GPL-2.0-only
@@ -29,6 +29,7 @@ Source3:        module-setup.sh
 Source4:        combustion.service
 Source5:        combustion-prepare.service
 Source6:        combustion
+Source7:        combustion.rules
 Requires:       ignition-dracut-grub2
 BuildArch:      noarch
 
@@ -54,6 +55,7 @@ install -m0644 %{SOURCE3} module-setup.sh
 install -m0644 %{SOURCE4} combustion.service
 install -m0644 %{SOURCE5} combustion-prepare.service
 install -m0755 %{SOURCE6} combustion
+install -m0644 %{SOURCE7} combustion.rules
 
 %post
 %{?regenerate_initrd_post}

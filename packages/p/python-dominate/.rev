@@ -35,4 +35,15 @@
   * Use tagname property from object, not class. Fixes #89</comment>
     <requestid>789929</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>93ef3665fa3741502e06b226839bdbd3</srcmd5>
+    <version>2.5.2</version>
+    <time>1600703051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.2:
+  * Removed 'input' keyword reassignment (#131)
+  * Fix issue #118 (underscores not working in aria attributes) (#119)
+  * Adding some missing attrs to DASHED_ATTRIBUTES (#126)</comment>
+    <requestid>835747</requestid>
+  </revision>
 </revisionlist>

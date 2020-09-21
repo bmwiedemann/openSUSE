@@ -19,11 +19,6 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%if 0%{?suse_version} >= 1500
-%define use_firewalld 1
-%else
-%define use_firewalld 0
-%endif
 Name:           nbd
 Version:        3.20
 Release:        0
@@ -36,9 +31,6 @@ Source1:        %{name}-server.service
 Source3:        config.example
 Source4:        nbd-server.sysconfig
 Source5:        nbd-client.service
-#%%if %%{use_firewalld}
-Source10:       nbd.firewalld
-#%%endif
 Patch1:         0001_fix_setgroup.patch
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -95,11 +87,6 @@ touch %{buildroot}%{_sysconfdir}/nbd-server/config
 touch %{buildroot}%{_sysconfdir}/nbd-server/allow
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/nbd-server/config.example
 install -D -p -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}-server
-
-# install firewall information file
-%if %{use_firewalld}
-install -D -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
-%endif
 
 %post
 export DISABLE_RESTART_ON_UPDATE=yes
@@ -158,10 +145,5 @@ fi
 %dir %{_prefix}/lib/modules-load.d/
 %{_prefix}/lib/modules-load.d/nbd.conf
 %{_fillupdir}/sysconfig.%{name}-server
-%if %{use_firewalld}
-%dir %{_prefix}/lib/firewalld
-%dir %{_prefix}/lib/firewalld/services
-%{_prefix}/lib/firewalld/services/%{name}.xml
-%endif
 
 %changelog

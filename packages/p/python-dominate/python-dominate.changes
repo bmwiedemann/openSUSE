@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 21 06:15:59 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.5.2:
+  * Removed 'input' keyword reassignment (#131)
+  * Fix issue #118 (underscores not working in aria attributes) (#119)
+  * Adding some missing attrs to DASHED_ATTRIBUTES (#126)
+
+-------------------------------------------------------------------
 Tue Mar 31 05:23:00 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.5.1:

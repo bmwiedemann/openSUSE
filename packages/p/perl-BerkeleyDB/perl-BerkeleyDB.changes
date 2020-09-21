@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 18 03:07:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.64
+   see /usr/share/doc/packages/perl-BerkeleyDB/Changes
+
+  0.64  17 September 2020
+
+          * Refresh ppport.h
+            2a4ebf00b93977cfbffc65ecbcc0aac4f7cbad1d
+
+          * Silence clang warning in call to "initial_value"
+            https://github.com/pmqs/BerkeleyDB/issues/4
+            aa9c569b797bee78141ef319685d756bcef92a18
+
+-------------------------------------------------------------------
 Tue Jul 23 05:03:59 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.63

@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           monitoring-plugins
-Version:        2.2
+Version:        2.3~alpha.20200520T233014.cadac85e
 Release:        0
 Summary:        The Monitoring Plug-Ins
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          System/Monitoring
-Url:            http://monitoring-plugins.org/
-Source0:        %{name}-%{version}.tar.bz2
+URL:            http://monitoring-plugins.org/
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source11:       %{name}-permissions
 Source12:       %{name}-README.SUSE
@@ -63,19 +63,17 @@ Source60:       nrpe-check_ups
 # PATCH-FIX-UPSTREAM Quote the options comming in from users (path names might contain whitespaces)
 Patch1:         %{name}-2.1.1-check_logfile.patch
 # PATCH-FIX-UPSTREAM Allow to ping IPv4 with check_ping again for dual stack hosts: https://github.com/monitoring-plugins/monitoring-plugins/issues/1550
-Patch2:         check_ping_fix_ip4.patch
-# PATCH-FIX-OPENSUSE do not use chown in Makefile (not possible when building as normal user)
 Patch6:         %{name}-1.4.6-no_chown.patch
 # PATCH-FIX-UPSTREAM Use correct pointer
 Patch11:        %{name}.check_snmp.arrayaddress.patch
 # PATCH-FIX-UPSTREAM print out all arguments out a Group if in verbose mode
 Patch15:        %{name}-too_few_arguments_for_check_disk.patch
-# PATCH-FIX-UPSTREAM see https://bugzilla.redhat.com/512559
-Patch116:       %{name}-wrong_return_in_check_swap.patch
 # PATCH-FIX-UPSTREAM port should be integer, not character
 Patch118:       %{name}.check_hpjd.c-64bit-portability-issue.patch
 # PATCH-FIX-UPSTREAM kstreitova@suse.com -- fix build with MariaDB 10.2
 Patch119:       monitoring-plugins-2.2-mariadb_102_build_fix.patch
+# PATCH-FIX-UPSTREAM see https://bugzilla.redhat.com/512559
+Patch121:       %{name}-wrong_return_in_check_swap.patch
 BuildRequires:  bind-utils
 BuildRequires:  dhcp-devel
 BuildRequires:  fping
@@ -83,9 +81,12 @@ BuildRequires:  fping
 PreReq:         permissions
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  iputils
 BuildRequires:  libdbi-devel
 BuildRequires:  libsmbclient-devel
+BuildRequires:  libtool
 BuildRequires:  mysql-devel
 BuildRequires:  nagios-rpm-macros
 BuildRequires:  net-snmp-devel
@@ -292,6 +293,7 @@ Recommends:     %{name}-tcp
 Recommends:     %{name}-time
 Recommends:     %{name}-ups
 Recommends:     %{name}-ups_alarm
+Recommends:     %{name}-uptime
 Recommends:     %{name}-users
 Recommends:     %{name}-wave
 Recommends:     %{name}-zypper
@@ -1045,6 +1047,15 @@ This plugin tests the UPS service on the specified host.
 Network UPS Tools from www.networkupstools.org must be running for this plugin
 to work.
 
+%package uptime
+Summary:        Test the uptime of the system
+Group:          System/Monitoring
+Provides:       nagios-plugins-ups = %{version}
+Obsoletes:      nagios-plugins-ups <= 1.5
+
+%description uptime
+This plugin tests the uptime on the system using /proc/uptime
+
 %package users
 Summary:        Check number of users currently logged in
 Group:          System/Monitoring
@@ -1107,20 +1118,20 @@ EOF
 done
 
 %patch1 -p1
-%if 0%{?suse_version} >= 1500
-%patch2 -p1
-%endif
 %patch6 -p1
 %patch11 -p1
 %patch15 -p1
 # Debian patches
-%patch116 -p1
 %patch118 -p1
 %patch119 -p1
+%patch121 -p1
 find -type f -exec chmod 644 {} +
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -DLDAP_DEPRECATED"
+gettextize -f
+autoreconf -fi
+chmod a+x NP-VERSION-GEN
 chmod +x configure # needed as configure script is not executable in 1.5..
 %configure \
 	--enable-static=no \
@@ -1277,7 +1288,7 @@ fi
 %files
 %defattr(-,root,root)
 %doc ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS ChangeLog CODING FAQ 
-%doc NEWS README REQUIREMENTS SUPPORT THANKS README.SUSE
+%doc NEWS README REQUIREMENTS SUPPORT README.SUSE
 %if 0%{?suse_version} >= 1500
 %license COPYING
 %else
@@ -1316,7 +1327,7 @@ fi
 %files common -f %{name}.lang
 %defattr(-,root,root)
 %doc ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS ChangeLog CODING FAQ 
-%doc NEWS README REQUIREMENTS SUPPORT THANKS README.SUSE
+%doc NEWS README REQUIREMENTS SUPPORT README.SUSE
 %if 0%{?suse_version} >= 1500
 %license COPYING
 %else
@@ -1430,8 +1441,8 @@ fi
 %dir %{nagios_plugindir}
 %attr(0755,root,root) %{nagios_plugindir}/check_icmp
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/apparmor.d/usr.lib.nagios.plugins.check_icmp
-%attr(0755,root,root) %{nagios_plugindir}/check_host
-%attr(0755,root,root) %{nagios_plugindir}/check_rta_multi
+%{nagios_plugindir}/check_host
+%{nagios_plugindir}/check_rta_multi
 
 %files ifoperstatus
 %defattr(0755,root,root)
@@ -1633,6 +1644,11 @@ fi
 %dir %{nrpe_sysconfdir}
 %{nagios_plugindir}/check_ups
 %attr(0644,root,root) %config(noreplace) %{nrpe_sysconfdir}/check_ups.cfg
+
+%files uptime
+%defattr(0755,root,root)
+%dir %{nagios_plugindir}
+%{nagios_plugindir}/check_uptime
 
 %files users
 %defattr(0755,root,root)

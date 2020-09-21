@@ -1,7 +1,7 @@
 From eccc7e7627caf33c4226d987d8ff9c7494646cf5 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?I=C3=B1aki=20=C3=9Acar?= <iucar@fedoraproject.org>
 Date: Sat, 30 May 2020 16:34:46 +0200
-Subject: [PATCH 4/5] add support for boost 1.73
+Subject: [PATCH 4/8] add support for boost 1.73
 
 * enable BOOST_BIND_GLOBAL_PLACEHOLDERS to retain placeholders in the global namespace
 

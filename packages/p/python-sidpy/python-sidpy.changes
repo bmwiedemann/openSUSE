@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 18 21:08:25 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Remove fix_tests_dir_in_site_package.patch, fix in sidpy 0.0.2.
+- Update to version 0.0.2.
+  * Submodules of the main modules can be imported directly. 
+    E.g. import sidpy.hdf_utils instead of sidpy.hdf.hdf_utils
+  * Preventing tests from being deployed into site-packages
+  * Fixed bugs in sidpy.io.interface_utils.py that was causing 
+    problems when importing sidpy
+  * Added python 3.8 support and testing
+  * Improvements and bug fixes to dataset.py
+  * Added plotting utilities written to support upcoming 
+    Dataset.plot().
+  * Ported additional hdf_utils functions for copying datasets 
+    (now in hdf_utils) and provenance tracking within HDF files 
+    (now in prov_utils)
+  * Added Reader class to do half the job of the existing 
+    Translator class
+  * Translator class now shows a deprecation warning prompting 
+    users to start using Reader instead and populate ScopeReaders
+
+-------------------------------------------------------------------
 Fri Aug 14 16:26:38 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Initial package release.

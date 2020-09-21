@@ -9,14 +9,37 @@ if [ "${1-}" = "--prepare" ]; then
 	# Mount config drive
 	mkdir -p "${config_mount}"
 
-	if ! [ -e /dev/disk/by-label/ignition ]; then
-		echo "No config drive found"
-		exit 0
+	config_drive_found=0
+
+	# Try fw_cfg first
+	if [ -e "/sys/firmware/qemu_fw_cfg/by_name/opt/org.opensuse.combustion" ]; then
+		mkdir -p "${config_mount}/combustion"
+		if ! cp /sys/firmware/qemu_fw_cfg/by_name/opt/org.opensuse.combustion/script/raw \
+		        "${config_mount}/combustion/script"; then
+			echo "Failed to copy script from fw_cfg!"
+			exit 1
+		fi
+		# TODO: Support other files, e.g. with a tarball or fs image?
+
+		config_drive_found=1
 	fi
 
-	if ! mount -o ro /dev/disk/by-label/ignition "${config_mount}"; then
-		echo "Failed to mount config drive!"
-		exit 1
+	# Try disks next
+	for label in combustion ignition; do
+		[ "${config_drive_found}" = "1" ] && break
+		[ -e "/dev/disk/by-label/${label}" ] || continue
+
+		if ! mount -o ro /dev/disk/by-label/${label} "${config_mount}"; then
+			echo "Failed to mount config drive!"
+			exit 1
+		fi
+
+                config_drive_found=1
+	done
+
+	if [ "${config_drive_found}" = "0" ]; then
+		echo "No config drive found"
+		exit 0
 	fi
 
 	# Check for the magic flag "# combustion: network" in the script
@@ -44,6 +67,8 @@ cleanup() {
 	if findmnt "${config_mount}" >/dev/null; then
 		umount "${config_mount}" || true
 		rmdir "${config_mount}" || true
+	else
+		rm -rf "${config_mount}" || true
 	fi
 
 	rm -rf "${exchangedir}" || true

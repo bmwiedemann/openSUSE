@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:44:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1.4:
+  Fix use of uninitialized array.
+  As a rsult paexec generates incorrect shell command to run
+  on nodes. Seen with "clang-7.0.1" with -O2 and -D_FORTIFY_SOURCE=2
+  Add one line description to projects.
+  So, one can run "mkcmake help"
+
+-------------------------------------------------------------------
 Tue May 12 10:15:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.1.2 (no changelog) 

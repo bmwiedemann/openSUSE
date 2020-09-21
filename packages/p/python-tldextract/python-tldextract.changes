@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:47:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * Fix concurrent access to cache file when using tldextract in multiple threads ([#146](https://github.com/john-kurkowski/tldextract/pull/146))
+  * Relocate version number, to avoid costly imports ([#187](https://github.com/john-kurkowski/tldextract/pull/187))
+  * Catch `IndexError` caused by upstream punycode bug ([#200](https://github.com/john-kurkowski/tldextract/pull/200))
+  * Drop support for EOL Python 3.4 ([#186](https://github.com/john-kurkowski/tldextract/pull/186))
+  * Explain warning better
+
+-------------------------------------------------------------------
+Wed Sep 16 21:32:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Fix concurrent access to cache file when using tldextract in multiple threads ([#146](https://github.com/john-kurkowski/tldextract/pull/146))
+  * Relocate version number, to avoid costly imports ([#187](https://github.com/john-kurkowski/tldextract/pull/187))
+  * Catch `IndexError` caused by upstream punycode bug ([#200](https://github.com/john-kurkowski/tldextract/pull/200))
+  * Drop support for EOL Python 3.4 ([#186](https://github.com/john-kurkowski/tldextract/pull/186))
+  * Explain warning better
+
+-------------------------------------------------------------------
 Mon May 18 09:10:32 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

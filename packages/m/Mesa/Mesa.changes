@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 18 11:11:14 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-ppc64le.patch
+  * buildfix for ppc64le (boo#1176562)
+
+-------------------------------------------------------------------
+Thu Sep 17 17:51:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.1.8:
+  * mainly bugfixes, highlights:
+   - Crash in ruvd_end_frame when calling vaBeginPicture/vaEndPicture without rendering anything
+   - khr_debug-push-pop-group_gl: ../src/util/simple_mtx.h:86: simple_mtx_lock: Assertion `c != _SIMPLE_MTX_INVALID_VALUE&#x27; failed.
+   - Amber test opt_peel_loop_initial_if: Assertion failed
+   - Dirt Rally: Flickering glitches on certain foliage since Mesa 20.1.0 caused by MSAA
+   - [BRW] WRC 5 asserts with gallium nine and iris.
+
+-------------------------------------------------------------------
 Thu Sep  3 09:24:31 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 20.1.7

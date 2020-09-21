@@ -1,0 +1,11 @@
+diff -u -r mesa-20.1.7.old/include/CL/cl_platform.h mesa-20.1.7/include/CL/cl_platform.h
+--- mesa-20.1.7.old/include/CL/cl_platform.h	2020-09-18 13:08:16.978879000 +0200
++++ mesa-20.1.7/include/CL/cl_platform.h	2020-09-18 13:09:04.324816000 +0200
+@@ -355,7 +355,6 @@
+ 
+ /* Define basic vector types */
+ #if defined( __VEC__ )
+-   #include <altivec.h>   /* may be omitted depending on compiler. AltiVec spec provides no way to detect whether the header is required. */
+    typedef __vector unsigned char     __cl_uchar16;
+    typedef __vector signed char       __cl_char16;
+    typedef __vector unsigned short    __cl_ushort8;

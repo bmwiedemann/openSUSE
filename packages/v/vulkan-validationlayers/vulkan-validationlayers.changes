@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 11 05:33:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.153
+  * No user-visible changes.
+
+-------------------------------------------------------------------
+Thu Sep 10 07:31:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.152
+  * layers: Add ProtectedSubmitInfo VUs
+  * layers: Modify renderpass compat Multiview check for Vulkan 1.2
+
+-------------------------------------------------------------------
 Sat Aug 29 08:12:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add xxhash.diff.

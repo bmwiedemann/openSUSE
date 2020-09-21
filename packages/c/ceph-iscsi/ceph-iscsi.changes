@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Sep 17 13:32:02 UTC 2020 - Ricardo Marques <rimarques@suse.com>
+
+- Update to 3.4+1600349408.g516d37d
+  + Fix gateway creation crash in python3 (#196)
+  + Report tcmu-runner device status (#210)
+  + Fix list access violiation when load config (#200)
+  + Fix delete disk error when disk owner is not specified (#206)
+  + Support specified gateway config name (#207)
+  + Added dependency on ceph-common package (#201)
+
+-------------------------------------------------------------------
+Tue Sep 15 12:14:23 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.4+1600172042.g4d04457 
+  + Rename blacklist to blocklist (#216)
+
+-------------------------------------------------------------------
+Thu May 14 15:12:32 UTC 2020 - Ricardo Marques <rimarques@suse.com>
+
+- Update to 3.4+1589469085.ga007663
+  + Add a config option to log to stderr (#186)
+  + Don't store to config if create_target fails (#187)
+  + Fixed numerous string format issues on errors paths (#189)
+
+-------------------------------------------------------------------
+Thu Apr 30 17:14:48 UTC 2020 - Ricardo Marques <rimarques@suse.com>
+
+- Update to 3.4+1588266755.g4a5a2cb
+  + Attempt to pull SSL crt and key's from mon config-key store (#173)
+
+-------------------------------------------------------------------
+Tue Apr 14 13:08:30 UTC 2020 - Ricardo Marques <rimarques@suse.com>
+
+- Update to 3.4+1586869678.gf041d18
+  + Allow target reconfigure without clients (bsc#1164571) 
+  + Fix ceph blacklist ls test (#171)
+  + Always perform full deletion on local node (#170)
+  + Fix crash during unblacklisting with python3 (#170)
+  + Fix metrics crash if gw not setup yet (#170)
+  + Fix keys() crash with python 3 (#168)
+  + Add option to force deletion of unreachable gw (#156)
+  + Fix next() crash with python 3 (#164)
+  + Fix config upgrade from 2 to 3 (#162)
+  + Fix ZeroDivisionError (#155) 
+
+-------------------------------------------------------------------
+Fri Nov 15 15:55:16 UTC 2019 - Ricardo Marques <rimarques@suse.com>
+
+- Update to 3.3+1573833100.g55d02da:
+  + Allow explicit set LUN number and WWN (bsc#1145756)
+  + Should be possible to use a single gateway (bsc#1155283)
+  + Fix group disk add on python3
+  + Fix crash when CephCluster fails to get Rados object
+
+-------------------------------------------------------------------
 Tue Oct  8 11:05:09 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 3.3+1570532654.g93940a4:

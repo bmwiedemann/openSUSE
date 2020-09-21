@@ -450,4 +450,12 @@
 - add global-gcc10.patch to fix build with -fcommon</comment>
     <requestid>827150</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>83f601dd220a3ff0a90addf48e719082</srcmd5>
+    <version>6.6.5</version>
+    <time>1600703177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835793</requestid>
+  </revision>
 </revisionlist>

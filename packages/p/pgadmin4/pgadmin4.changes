@@ -1,4 +1,192 @@
 -------------------------------------------------------------------
+Sun Sep 20 16:43:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.26:
+  - Added SQL Formatter support in Query Tool.
+  - Added a new button to the query tool toolbar to open a new
+    query tool window.
+  - Added shared server support for admin users.
+  - Warn the user when connecting to a server that is older than
+    pgAdmin supports.
+  - Ensure that schema names starting with 'pg' should be visible
+    in browser tree when standard_conforming_strings is set to off.
+  - Fixed an issue where --load-server does not allow loading
+    connections that use pg_services.
+  - Fixed string indices must be integers issue for PostgreSQL <
+    9.3.
+  - Fixed an issue where the application ignores the fixed port
+    configuration value.
+  - Remove illegal argument from trigger function in trigger DDL
+    statement.
+  - Ensure that 'setup-web.sh' should work in Debian 10.
+  - Fixed excessive CPU usage by stopping the indefinite growth of
+    the graph dataset.
+
+-------------------------------------------------------------------
+Fri Sep 11 13:03:51 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create a pgadmin user and group
+- Add uwsgi configuration (fast, user privileges and apparmor support)
+
+-------------------------------------------------------------------
+Thu Sep 10 19:24:29 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Only activate the pgadmin4 apache config if the PGADMIN4 flag is set.
+  For mod_wsgi you should use `a2enmod wsgi`
+- Create /etc/pgadmin/config_system.py with server mode for web
+  Run /usr/lib/python3.6/site-packages/pgadmin4-web/setup.py to create
+  the admin user
+- Remove config_local.py with outdated options
+
+-------------------------------------------------------------------
+Mon Sep  7 13:32:12 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.25:
+  - Modified schema diff tool to compare two databases instead of
+    two schemas
+  - Resolve schema diff dependencies by selecting the appropriate
+    node automatically and maintain the order in the
+    generated script.
+  - Replace charting library Flotr2 with ChartJS using React.
+  - Upgrade font-awesome from v4 to v5.
+  - Fixed an issue where debugger doesn't work if the search path
+    is set other than 'public'.
+  - Fixed ssh tunnel hang issue when the user tries to disconnect
+    the server.
+  - Fixed an issue where conversion of bytea to the binary string
+    results in an error.
+  - Fixed an issue where the entire logs are in red text when the
+    user runs backup and restore.
+  - Ensure that the user will be able to modify the start value
+    of the Identity column.
+  - Fixed an issue where 'ALTER VIEW' statement is missing when
+    the user sets the default value of a column for View.
+
+-------------------------------------------------------------------
+Tue Aug  4 14:42:39 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.24
+  - New features
+    - Issue #5235 - Support configuration files that are external
+      to the application installation.
+    - Issue #5484 - Added support for LDAP authentication with
+      different DN by setting the dedicated user for the LDAP
+      connection.
+    - Issue #5583 - Added support for schema level restriction.
+    - Issue #5601 - Added RLS Policy support in Schema Diff.
+    - Issue #5622 - Added support for permissive/restricted policy
+      type while creating RLS Policy.
+    - Issue #5650 - Added support for LDAP anonymous binding.
+    - Issue #5653 - Added High Contrast theme support.
+  - Housekeeping
+    - Issue #5323 - Improve code coverage and API test cases for
+      Foreign Data Wrapper.
+    - Issue #5326 - Improve code coverage and API test cases for
+      Domain and Domain Constraints.
+    - Issue #5329 - Improve code coverage and API test cases for
+      FTS Configuration, FTS Parser, FTS Dictionaries, and FTS
+      Template.
+  - Bug fixes
+    - Issue #3814 - Fixed issue of error message not getting
+      displayed when filename is empty for backup, restore, and
+      import/export.
+    - Issue #3851 - Add proper indentation to the code while
+      generating functions, procedures, and trigger functions.
+    - Issue #4235 - Fixed tab indent issue on a selection of lines
+      is deleting the content when ‘use spaces == true’ in the
+      preferences.
+    - Issue #5137 - Fixed save button enable issue when focusing in
+      and out of numeric input field.
+    - Issue #5287 - Fixed dark theme-related CSS and modify the
+      color codes.
+    - Issue #5414 - Use QStandardPaths::AppLocalDataLocation in the
+      runtime to determine where to store runtime logs.
+    - Issue #5463 - Fixed an issue where CSV download quotes
+      numeric columns.
+    - Issue #5470 - Fixed backgrid row hover issue where on hover
+      background color is set for edit and delete cell only.
+    - Issue #5530 - Ensure that the referenced table should be
+      displayed on foreign key constraints.
+    - Issue #5554 - Replace the runtime themes with ones that don’t
+      have sizing issues.
+    - Issue #5569 - Fixed reverse engineered SQL for partitions
+      when storage parameters are specified.
+    - Issue #5577 - Include LICENSE and DEPENDENCIES [inventory]
+      files in official packages.
+    - Issue #5621 - Remove extra brackets from reverse engineering
+      SQL of RLS Policy.
+    - Issue #5629 - Fixed an issue where the user is able to edit
+      properties when some of the collection nodes are selected.
+    - Issue #5630 - Fixed an issue where installation of pgadmin4
+      not working on 32-bit Windows.
+    - Issue #5631 - Fixed ‘cant execute empty query’ issue when
+      remove the value of ‘USING’ or ‘WITH CHECK’ option of RLS
+      Policy.
+    - Issue #5633 - Ensure that create RLS Policy menu should not
+      be visible for catalog objects.
+    - Issue #5647 - Fixed an issue where difference DDL is showing
+      the wrong SQL when changing the policy owner.
+    - Issue #5662 - Fixed accessibility issue where few dialogs are
+      not rendering properly when we zoomed in browser window 200%
+      and screen resolution is low.
+    - Issue #5666 - Added missing dependencies/dependent and
+      corrected some wrongly identified.
+    - Issue #5673 - Fixed an issue where fetching the schema throws
+      an error if the database is not connected in Schema Diff.
+    - Issue #5675 - Fixed CSRF errors when pgAdmin opened in an
+      iframe on safari browser.
+    - Issue #5677 - Fixed text color issue in explain analyze for
+      the Dark theme.
+    - Issue #5686 - Fixed issue where the user was not able to
+      update policy if the policy is created with space.
+- update requires to match requirements.txt
+
+-------------------------------------------------------------------
+Tue Jul 14 13:27:20 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.23
+  - New features
+    - Issue #5468 - Added option to ignore the whitespaces while
+      comparing objects in schema diff.
+    - Issue #5500 - Added server group name while selecting servers
+      in schema diff.
+    - Issue #5516 - Added support of Row Security Policies.
+    - Issue #5576 - Improve error messaging if the storage and log
+      directories cannot be created.
+  - Housekeeping
+    - Issue #5325 - Improve code coverage and API test cases for
+      Collations.
+    - Issue #5574 - Cleanup Windows build scripts and ensure
+      Windows x64 builds will work.
+    - Issue #5581 - Documentation of Row Level Security Policies.
+  - Bug fixes
+    - Issue #3591 - Ensure that the query tool should display the
+      proper error message while terminating the active session.
+    - Issue #3669 - Ensure that proper error should be displayed
+      for the deleted node.
+    - Issue #3787 - Disabled the Stop process button after clicking
+      it and added a message ‘Terminating the process…’ to notify
+      the user.
+    - Issue #4226 - Fixed an issue where select all checkbox only
+      selects the first 50 tables.
+    - Issue #5416 - Ensure that the query tool panel gets closed
+      when clicking on the ‘Don’t Save’ button.
+    - Issue #5465 - Fixed an issue where the Edge browser version
+      is showing wrong and warning message gets displayed.
+    - Issue #5492 - Fixed an issue where the search object is
+      unable to locate inherited tables and constraint filters are
+      not working.
+    - Issue #5507 - Fixed connection and version number detection
+      issue when the database server is upgraded.
+    - Issue #5521 - Fixed an issue when dumping servers from a
+      desktop pgAdmin app by providing an option ‘–sqlite-path’.
+    - Issue #5539 - Fixed typo in exception keyword.
+    - Issue #5584 - Fixed an issue where two identical tables
+      showing different by schema diff tool.
+    - Issue #5592 - Ensure that pgadmin should be able to connect
+      to the server which has password more than 1000 characters.
+
+-------------------------------------------------------------------
 Mon Jun 15 08:10:53 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - Update to 4.22

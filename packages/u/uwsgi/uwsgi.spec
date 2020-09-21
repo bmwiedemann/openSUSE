@@ -32,6 +32,7 @@ Source5:        trac.ini.example
 Source6:        werkzeug.xml.example
 Source7:        README.openSUSE
 Source8:        uwsgi.ini
+Source9:        uwsgi.tmpfiles.d
 # PATCH-FIX-OPENSUSE uwsgi-1.9.17-plugin_build_path.patch - Don't attempt to install plugins to target dest during build
 Patch0:         uwsgi-1.9.17-plugin_build_path.patch
 # PATCH-FIX-OPENSUSE uwsgi-1.9.17-no-LD_RUN_PATH.patch - Disable invalid rpath in plugins
@@ -164,6 +165,7 @@ Different plugins can be used in order to add compatibility with
 different technology on top of the same core.
 
 
+# This is part of the apache2 package now
 %if 0%{suse_version} < 1500
 %package -n apache2-mod_proxy_uwsgi
 Summary:        uWSGI Proxy Module for Apache 2.0
@@ -570,11 +572,15 @@ install -m 0755 apache2/.libs/*.so %{buildroot}/%{apache_libexecdir}
 ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rcuwsgi
 %endif
 
+install -d -m 0755 %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
+
 %pre
 %service_add_pre uwsgi.service
 
 %post
 %service_add_post uwsgi.service
+%tmpfiles_create %{_tmpfilesdir}/uwsgi.conf
 
 %preun
 %service_del_preun uwsgi.service
@@ -584,15 +590,17 @@ ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rcuwsgi
 
 %files
 %defattr(-,root,root,-)
-%doc CONTRIBUTORS LICENSE README contrib examples README.openSUSE
+%license LICENSE
+%doc CONTRIBUTORS README contrib examples README.openSUSE
 %{_sbindir}/uwsgi
 %dir %{_sysconfdir}/uwsgi/
 %config(noreplace) %{_sysconfdir}/uwsgi/uwsgi.ini
 %dir %{_sysconfdir}/uwsgi/vassals
 %config %{_sysconfdir}/uwsgi/vassals/*
 %dir %{_libdir}/uwsgi
-%ghost /run/uwsgi
+%ghost %dir %attr(711,root,root) /run/uwsgi
 %{_unitdir}/uwsgi.service
+%{_tmpfilesdir}/uwsgi.conf
 %if 0%{?suse_version} > 1220
 %{_sbindir}/rcuwsgi
 %endif

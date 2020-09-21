@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 21 10:57:27 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.129.4: Enable `helmfile test` testing only enabled and selected
+  releases (#1…
+  * b176408 (HEAD, tag: v0.129.4, origin/master, origin/HEAD, master)
+    Enable helmfile test testing only enabled and selected releases (#1486)
+  * ff81b2f Enable release hook template to access .Values (#1485)
+  * 8db03f9 Drop duplicated entry in extra functions list from readme (#1490)
+  * 988c218 Support the latest Helm (>=v3.3.2) and bump the Helm version
+    in Docker image. (#1488)
+
+-------------------------------------------------------------------
 Tue Sep 15 10:41:16 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.129.3: Treat selector with multiple conditions an AND (#1478)

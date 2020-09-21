@@ -1,8 +1,0 @@
-<package name="zeitgeist" project="openSUSE:Factory">
-  <title>Zeitgeist Engine</title>
-  <description>Zeitgeist is a service that logs the users activity. The log can be
-queried and managed in various ways over a DBus API.
-
-This is the Zeitgeist backend engine.</description>
-  <devel project="GNOME:Factory" package="zeitgeist"/>
-</package>

@@ -29,6 +29,8 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-OPENSUSE
+Patch1000:      0001-Inform-users-about-the-okular-spectre-package-in-the.patch
 BuildRequires:  chmlib-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
@@ -116,7 +118,7 @@ Document viewing program; supports document in various formats
 %lang_package
 
 %prep
-%setup -q -n okular-%{version}
+%autosetup -p1 -n okular-%{version}
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DOKULAR_UI=desktop

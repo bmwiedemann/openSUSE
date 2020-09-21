@@ -13,7 +13,7 @@
   </description>
   <preferences>
     <type image="docker" derived_from="obsrepositories:/opensuse/ceph/ceph#tumbleweed">
-      <containerconfig tag="latest" maintainer="SUSE LLC (https://bugs.opensuse.org)" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" name="opensuse/cephcsi/cephcsi">
+      <containerconfig tag="latest" maintainer="SUSE LLC (https://bugs.opensuse.org)" additionaltags="tumbleweed,%PKG_VERSION%,v%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" name="opensuse/cephcsi/cephcsi">
         <entrypoint execute="/usr/bin/cephcsi"/>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.cephcsi">

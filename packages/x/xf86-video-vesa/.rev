@@ -128,4 +128,12 @@
 - supersedes u_Enable-DefaultRefresh-by-default.patch</comment>
     <requestid>577290</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8c47c61fe6609a8228a7798ecf4d93b1</srcmd5>
+    <version>2.5.0</version>
+    <time>1600701003</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835387</requestid>
+  </revision>
 </revisionlist>

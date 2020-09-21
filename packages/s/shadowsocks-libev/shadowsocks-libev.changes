@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 19 10:47:47 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 3.3.5
+  * Remove the SNI proxy function.
+  * Minor bug fixes. (#2581, #2582, #2590, #2595, #2599,
+    #2600, #2620, #2687, #2692)
+
+-------------------------------------------------------------------
 Sun Sep  6 11:35:49 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Fix shadowsocks-libev-tunnel.service

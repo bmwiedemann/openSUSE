@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 19 04:16:44 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add %doc for readme and history files
+- Add Provides python-phonenumberslite
+- Expand testing from only phonenumbertest.py to all test modules
+- Update to v8.12.9
+  * see https://github.com/google/libphonenumber/blob/master/release_notes.txt
+
+-------------------------------------------------------------------
 Tue Mar 24 12:04:20 UTC 2020 - pgajdos@suse.com
 
 - version update to 8.12.0

@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Sep 15 21:25:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update urls to use https (its 2020 after all)
+- Update to Patch#359 - 2020/08/17
+  * add special case in WriteText to allow colors 8-15 to override colorBDMode
+  * add utf8Weblike resource, to provide an alternate scheme for handling ill-formed UTF-8 sequences
+  * improve computation for the number of lines needed to scroll-up a SIXEL graphic
+  * correct manpage description for default value of disallowWindowOps from changes in xterm #331
+  * correct a loop starting-point in refresh_graphics from optimization in patch #358 changes
+  * add a new mouse mode 1016, which uses the same format as mode 1006, but sends the mouse's position in pixels
+  * fix an issue from patch #338 changes where only the first selection buffer specified in the request would be updated using OSC 52
+  * modify makefile/scripts to allow DESTDIR to prefix the target directory for desktop-file-install
+  * enable SIXEL feature by default.
+  * update config.guess, config.sub
+  * correct logic for decodeTerminalID changes in patch #357
+  * modify makefile to use plink.sh when linking test-programs, to fix build when using pcre 
+  * build-fix for test_ptydata program 
+  * several minor optimizations for the ReGIS and SIXEL features, improving performance by 10%.
+  * add resource decGraphicsID to allow displaying graphics when the emulation level would ordinarily disallow this
+  * add control sequences for fast switching of color palettes: XTPUSHCOLORS, XTPOPCOLORS, XTREPORTCOLORS
+  * amend change for soft-hyphen from patch #328 to avoid stripping replacement-characters which would be shown with malformed or overlong UTF-8 input.
+  * corrected an error-handling case in decodeUtf8, matching a similar fix in patch #268
+  * add a test-driver for ptydata.c
+  * minor cleanup of macros
+  * fix some errata in ctlseqs.ms
+  * allow immediate repaint-on-palette-changed if double-buffering is enabled.
+  * deprecate codes 10/11 in sgr push controls, changing those to 30/31, to avoid confusion with sgr 10-19.
+  * modify SGR parameter handling to stop if an unrecognized parameter is encountered, to guard against malformed or nonstandard sequences
+  * modify DECERA color for consistency with other erasures/clearing
+  * ECH should not be masked by DECSCA
+  * extend DECFRA and REP to accept any “graphic” character rather than just Latin1, etc.
+  * add -C option to 256colors2.pl and 88colors2.pl, to demonstrate mixed semicolon/colon separators which are implied by ECMA-48.
+  * update sample terminfo to reflect the documentation improvements.
+  * update description of 88/256/direct color in ctlseqs.ms to point out that using semicolons is a deprecated legacy feature, and standard terminal applications should use colons
+  * modify configure-check for tgetent to conditionally include termcap.h, enabling configuration using clang's pedantic-errors option
+  * remove some unnecessary pointer checks
+  * accept terminal-id and add DA response for VT131, VT132.
+  * revise fix for Debian #954730, which interfered with wheel mouse events
+  * revise fix for Debian #954730, which interfered with wheel mouse events
+  * fix typos in documentation
+  * add mapping for decTerminalID for “100” overlooked in patch #354.
+  * update tables in wcwidth.c based on Unicode 13.0.0
+  * build-fix for “make check” when building out-of-tree
+  * work around performance problems of XDrawImageString and XDrawImageString16 functions
+  * add a control sequence which reports xterm's version
+  * temporarily set numeric locale category to "C" when parsing resources, so that scaleHeight and faceSize settings do not depend on locale
+  * improve DA/DA2 response by ensuring that the decTerminalID maps to one of the known identifiers, as well as providing DA2 response for VT241 and VT382.
+  * terminfo improvements:
+  * add  comments from ncurses which explain the keypad layouts.
+  * add vt52+keypad from ncurses
+  * use improved xm example for xterm+x11mouse, xterm+sm+1006 from ncurses 6.2 terminfo.src
+  * two fixes for left/right wheel mouse event reporting
+  * filter identical button-events
+  * correct order of button-range versus protocol type 
+  * change “make check” makefile-rule to use test-drivers for charclass and wcwidth data.
+  * quiet “did not find a usable xxx TrueType font” warnings by making fontWarnings apply to these messages
+  * improve reinitialization of parameter list
+  * temporarily set numeric locale category to "C" when formatting SVG or XHTML screendumps, to make the radix separator used in RGB values consistent
+  * add resource forceXftHeight to control whether workaround from Debian #880407 is used.
+  * apply updated ascent/descent in workaround from Debian #880407 to fix a 1-pixel gap in built-in vertical lines
+  * improve round-off of scaling for built-in line-drawing
+  * adjust fonts in svg-icon files to accommodate reduced functionality of new pango
+  * improve configure check for X Toolkit library.
+  * correct Y-coordinate transformation in ClearCurBackground, overlooked in changes for patch #334
+  * remove --vendor option from test-packages' install of desktop files; the feature is badly broken in gnome-shell.
+  * modify uxterm to make it possible to select nonstandard locale C.UTF-8, e.g, if the user's locale is set to “C”
+  * re-save/tweak “.svg” icon-files to work around breakage in toolset since the files were created in patch #283.
+
+-------------------------------------------------------------------
 Tue Jun  9 11:02:07 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add Recommends: xorg-x11-fonts-legacy, since the default font

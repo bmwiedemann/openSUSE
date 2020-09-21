@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 05:30:03 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to fix --output command line option
+  (kde#424380):
+  * 0001-Fix-wrong-file-name-when-output-option-is-used.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 20:51:33 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.1

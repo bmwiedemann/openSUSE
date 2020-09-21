@@ -17,7 +17,7 @@
 
 
 Name:           cantata
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        Client for the Music Player Daemon (MPD)
 License:        GPL-3.0-only
@@ -26,11 +26,6 @@ URL:            https://github.com/CDrummond/cantata/
 Source0:        https://github.com/CDrummond/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE  fix-translations-with-qt5.diff  -- Make sure that it finds the right lrelease and lconvert binaries with Qt5 (cantata only find the 64bits lrelease).
 Patch0:         fix-translations-with-qt5.diff
-# PATCH-FIX-UPSTREAM: [PATCH] Correctly set 'storeLyricsInMpdDir' config item, UI was
-# setting wrong config item. Cantatan issue #1576
-Patch1:         correct-path-saved-lyrics.patch
-# PATCH_FIX-UPSTREAM: gh#CDrummond/cantata#1575
-Patch2:         0001-Correctly-handle-changing-Basic-mode-music-folder.patch
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  pkgconfig

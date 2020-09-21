@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:25:29 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.5.12 fixed missing reset of notation edit's
+  horizontal scrollbar after zoom changed.
+- fixed shrinking audio channels.
+- implemented find plugins using fallback to alternate search path.
+
+-------------------------------------------------------------------
 Sun Sep 13 02:54:30 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.5.9 fixed a problem with tempo. Wrong calculation

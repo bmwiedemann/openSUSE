@@ -22,7 +22,7 @@
 %endif
 
 Name:           xrdp
-Version:        0.9.13.1
+Version:        0.9.14
 Release:        0
 Summary:        Remote desktop protocol (RDP) server
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -52,8 +52,7 @@ Patch12:        xrdp-filter-tab-from-mstsc-on-focus-change.patch
 Patch13:        xrdp-bsc965647-allow-admin-choose-desktop.patch
 # PATCH-FEATURE-SLE xrdp-fate318398-change-expired-password.patch fate#318398 - fezhang@suse.com -- enable user to update expired password via PAM
 Patch14:        xrdp-fate318398-change-expired-password.patch
-# PATCH-FEATURE-SLE xrdp-fate319683-allow-vnc-resizing.patch fate#319683 bsc#948062 - fezhang@suse.com -- allow resizing in VNC sessions.
-Patch15:        xrdp-fate319683-allow-vnc-resizing.patch
+Patch16:        xrdp-buildfix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -110,8 +109,8 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
-%patch15 -p1
 %endif
+%patch16 -p1
 
 %build
 sh ./bootstrap

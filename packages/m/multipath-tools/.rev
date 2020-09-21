@@ -1374,4 +1374,13 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
   (bsc#1118224)</comment>
     <requestid>833569</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>bf9be639b5fe3ce7d398301be10ec588</srcmd5>
+    <version>0.8.4+192+suse.1bc10ad</version>
+    <time>1600700735</time>
+    <user>dimstar_suse</user>
+    <comment>- Bugref for all minor fixes since SLE15-SP2 release (bsc#1176670)
+- Added README.alua (forwarded request 835293 from mwilck)</comment>
+    <requestid>835294</requestid>
+  </revision>
 </revisionlist>

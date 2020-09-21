@@ -1,7 +1,7 @@
 #
 # spec file for package sympol
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            http://www.math.uni-rostock.de/~rehn/software/sympol.html
 
 Source:         http://www.math.uni-rostock.de/~rehn/software/%name-%version.tar.gz
 Patch1:         unbundle.diff
+Patch2:         cddlib.diff
 BuildRequires:  bliss-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cddlib-devel >= 0.94f
@@ -48,7 +49,6 @@ given or computed symmetry group.
 %package -n %lname
 Summary:        Library for working with symmetric polyhedra
 Group:          System/Libraries
-License:        GPL-2.0-or-later
 
 %description -n %lname
 SymPol is a C++ tool to work with symmetric polyhedra. It helps to
@@ -59,7 +59,6 @@ given or computed symmetry group.
 %package devel
 Summary:        Header files for the sympol library
 Group:          Development/Libraries/C and C++
-License:        GPL-2.0-or-later
 Requires:       %lname = %version
 
 %description devel
@@ -76,6 +75,7 @@ rm -Rf external/cdd* external/lrs* external/permlib
 
 %install
 %cmake_install
+ln -s . "%buildroot/%_includedir/sympol/yal"
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

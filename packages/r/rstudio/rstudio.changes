@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Sep 10 13:09:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Allow to build on Leap 15.2
+
+  Upstream allows to override the required boost version, which we utilize on
+  Leap 15.2.
+
+  Added patch:
+  * 0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
+
+  Rebase patches:
+  * 0001-Unbundle-mathjax-and-pandoc.patch
+  * 0002-Don-t-install-pandoc-and-mathjax.patch
+  * 0003-Fix-rstudio-exec-path.patch
+  * 0004-add-support-for-boost-1.73.patch
+  * 0005-Add-additional-includes-for-aarch64.patch
+  * 0006-Use-system-hunspell.patch
+  * 0007-Fix-libclang-usage.patch
+
+-------------------------------------------------------------------
+Mon Sep  7 09:33:10 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Remove bundled provides and integrate patches into git
+
+  Rebase patches:
+  * 0001-Unbundle-mathjax-and-pandoc.patch
+  * 0002-Don-t-install-pandoc-and-mathjax.patch
+  * 0003-Fix-rstudio-exec-path.patch
+  * 0004-add-support-for-boost-1.73.patch
+  * 0005-Add-additional-includes-for-aarch64.patch
+
+  Remove patches: (integrated into git)
+  * use-system-hunspell.patch
+  * fix-libclang-usage.patch
+
+  Add patches:
+  * 0006-Use-system-hunspell.patch
+  * 0007-Fix-libclang-usage.patch
+
+  * Remove the no longer applicable Provides: bundled(hunspell)
+  * Fix lib -> libexec in rstudio-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Sep  3 22:41:58 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add use-system-hunspell.patch to make compatible with newer
+  versions of hunspell, replace bundled version by system library.
+- Add fix-libclang-usage.patch to make compatible with newer
+  versions, unbundle clang-c headers and use system headers
+  instead. Also make sure we find the library and the required
+  builtin headers.
+- Most users won't need pandoc and mathjax, and since they have
+  quite some dependencies of their own, we only recommend them.
+- Remove bundled zlib files that we don't need.
+- Put executables specific to -desktop and -server into the
+  subpackages to reduce the number of dependencies if only one of
+  them is needed. (Most notably users installing the server variant
+  won't need Qt libraries.)
+
+-------------------------------------------------------------------
 Wed Sep  2 10:36:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Add patches to support boost >= 1.73

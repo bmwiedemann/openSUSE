@@ -1,0 +1,49 @@
+From 3ab89e66aedbd071fa89af603754a31f1e2f051a Mon Sep 17 00:00:00 2001
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Mon, 7 Sep 2020 11:09:01 +0200
+Subject: [PATCH 6/8] Use system hunspell
+
+---
+ src/cpp/core/CMakeLists.txt                      | 6 +++++-
+ src/cpp/core/spelling/HunspellSpellingEngine.cpp | 7 +++----
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/cpp/core/CMakeLists.txt b/src/cpp/core/CMakeLists.txt
+index 05f5ad67b4..47b6662ff4 100644
+--- a/src/cpp/core/CMakeLists.txt
++++ b/src/cpp/core/CMakeLists.txt
+@@ -15,7 +15,11 @@
+ 
+ project (CORE)
+ 
+-add_subdirectory(spelling/hunspell)
++add_library(rstudio-core-hunspell SHARED IMPORTED GLOBAL)
++find_library(HUNSPELL_LIB NAMES hunspell REQUIRED)
++set_target_properties(rstudio-core-hunspell PROPERTIES
++                      IMPORTED_LOCATION "${HUNSPELL_LIB}")
++
+ add_subdirectory(tex/synctex)
+ 
+ # include files
+diff --git a/src/cpp/core/spelling/HunspellSpellingEngine.cpp b/src/cpp/core/spelling/HunspellSpellingEngine.cpp
+index 6cc1315c9d..9c8a61e098 100644
+--- a/src/cpp/core/spelling/HunspellSpellingEngine.cpp
++++ b/src/cpp/core/spelling/HunspellSpellingEngine.cpp
+@@ -195,11 +195,10 @@ public:
+ 
+    Error wordChars(std::wstring *pWordChars)
+    {
+-      int len;
+-      unsigned short *pChars = pHunspell_->get_wordchars_utf16(&len);
++      const std::vector<w_char> &pChars = pHunspell_->get_wordchars_utf16();
+ 
+-      for (int i = 0; i < len; i++)
+-         pWordChars->push_back(pChars[i]);
++      for (w_char pChar : pChars)
++         pWordChars->push_back((pChar.h << 8) + pChar.l);
+ 
+       return Success();
+    }
+-- 
+2.28.0
+

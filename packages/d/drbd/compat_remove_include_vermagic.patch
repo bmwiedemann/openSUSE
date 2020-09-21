@@ -1,0 +1,17 @@
+[   11s] In file included from /home/abuild/rpmbuild/BUILD/drbd-9.0.24~1+git.17730ea3/default/drbd_main.c:19:
+[   11s] /usr/src/linux-5.8.0-1/include/linux/vermagic.h:6:2: error: #error "This header can be included from kernel/module.c or *.mod.c only"
+[   11s]     6 | #error "This header can be included from kernel/module.c or *.mod.c only"
+[   11s]       |  ^~~~~
+[   11s]   CC [M]  /home/abuild/rpmbuild/BUILD/drbd-9.0.24~1+git.17730ea3/default/drbd_strings.o
+
+diff -Naur drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd_main.c drbd-9.0.24~1+git.17730ea3/drbd/drbd_main.c
+--- drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd_main.c	2020-08-13 14:22:17.895201728 +0800
++++ drbd-9.0.24~1+git.17730ea3/drbd/drbd_main.c	2020-08-13 14:44:14.849369576 +0800
+@@ -16,7 +16,6 @@
+ #define pr_fmt(fmt)	KBUILD_MODNAME ": " fmt
+ 
+ #include <linux/module.h>
+-#include <linux/vermagic.h>
+ #include <linux/jiffies.h>
+ #include <linux/drbd.h>
+ #include <linux/uaccess.h>

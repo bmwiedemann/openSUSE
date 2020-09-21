@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 20 09:40:49 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Require a font package for testing to avoid Qt breakpoint trap
+  gh#jupyter/qtconsole#443
+- Reenable tests for all platforms
+- skip another segfaulting test on Leap
+
+-------------------------------------------------------------------
+Sat Sep 19 14:14:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- spyder-pr13814-completion.patch gh#spyder-ide/spyder#13814 
+  fix test failure with newer qtconsole
+
+-------------------------------------------------------------------
 Wed Sep  2 14:35:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 4.1.5 

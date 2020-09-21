@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Sep 19 10:20:11 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1600510794.174d32cb4:
+  * ci: Prevent too early circleci timeout on no output
+  * t: Add OpenQA::Test::TimeLimit to all test modules where applicable
+  * Avoid restarting jobs which have a directly chained parent by default
+  * scheduler tests: Take t_seen from the database
+  * Makefile: Fix evaluation of failing unstable tests
+  * Use wait_for_or_bail_out in fullstack test
+  * Show changes between packages of openQA worker machines in investigation
+  * scheduler: Provide help to users early to prevent failing later on misconfigurations
+  * Allow scheduler to enqueue finalize jobs tasks when marking stale job as incomplete
+  * Support finding job template by test suite name
+  * Include t/ in our code coverage to prevent test coverage loss
+  * Make schedule_one_job a wait with a timeout
+  * t: Set time limit for 33-developer_mode.t
+  * Re-schedule all assigned jobs in periodic stale job detection
+  * Reduce worker timeout from 2 days to 30 minutes
+  * Make the timeout to consider workers offline configurable
+  * Allow testing with an app which has no log
+  * Be sure to stop services after cache service tests
+  * Tweak 18-test-details.t further
+  * Strip down the number of test modules used within 18-test-details.t
+  * Fix rendering tooltip "undefined" for expanded serial result boxes
+  * Test rendering job modules when no modules are present when loading page
+  * Fix showing job modules within details table of running jobs
+
+-------------------------------------------------------------------
 Wed Sep 16 05:31:38 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1600233111.d1ffb1b7d:

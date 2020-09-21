@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parsedatetime
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Python module to parse human-readable date/time text
 License:        Apache-2.0

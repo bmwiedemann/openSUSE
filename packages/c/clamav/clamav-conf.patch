@@ -31,7 +31,7 @@
  # Waiting for data from clamd will timeout after this time (seconds).
  # Value of 0 disables the timeout.
 @@ -61,7 +56,7 @@ Example
- # daemon (main thread).
+ # also owned by root to keep other users from tampering with it.
  #
  # Default: disabled
 -#PidFile /var/run/clamav-milter.pid
@@ -96,8 +96,8 @@
  # Enable verbose logging.
  # Default: no
 @@ -71,7 +67,7 @@ Example
- # This option allows you to save a process identifier of the listening
- # daemon (main thread).
+ # It is recommended that the directory where this file is stored is
+ # also owned by root to keep other users from tampering with it.
  # Default: disabled
 -#PidFile /var/run/clamd.pid
 +PidFile /run/clamav/clamd.pid
@@ -172,8 +172,8 @@
  # Enable log rotation. Always enabled when LogFileMaxSize is enabled.
  # Default: no
 @@ -48,12 +44,12 @@ Example
- 
- # This option allows you to save the process identifier of the daemon
+ # It is recommended that the directory where this file is stored is
+ # also owned by root to keep other users from tampering with it.
  # Default: disabled
 -#PidFile /var/run/freshclam.pid
 +PidFile /run/clamav/freshclam.pid

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tldextract
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module requests-file} >= 1.4
 BuildRequires:  %{python_module requests} >= 2.1.0
 BuildRequires:  %{python_module responses}
 ### END test requirements
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

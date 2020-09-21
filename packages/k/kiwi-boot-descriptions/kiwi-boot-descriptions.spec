@@ -14,19 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-
-#
-%if 0%{?fedora}
-%global debug_package %{nil}
-%endif
-
 # translate version id to distribution name
-# generic approach
-%if 0%{?suse_version}
-%define distro %(echo `export VER=%{suse_version}; echo "suse-${VER:0:2}.${VER:2:1}"`)
-%endif
-
 # SLE12:
 %if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
 %define distro suse-SLES12
@@ -37,61 +25,8 @@
 %define distro suse-SLES15
 %endif
 
-# Leap 42.1(openSUSE product based on SLE 12SP1):
-%if 0%{?is_opensuse} && 0%{?sle_version} == 120100
-%define distro suse-leap42.1
-%endif
-
-# Leap 42.2:
-%if 0%{?is_opensuse} && 0%{?sle_version} == 120200
-%define distro suse-leap42.2
-%endif
-
-# Leap 42.3:
-%if 0%{?is_opensuse} && 0%{?sle_version} == 120300
-%define distro suse-leap42.3
-%endif
-
-# Leap 15.0:
-%if 0%{?is_opensuse} && 0%{?sle_version} == 150000
-%define distro suse-leap15.0
-%endif
-
-# Leap 15.1:
-%if 0%{?is_opensuse} && 0%{?sle_version} == 150100
-%define distro suse-leap15.1
-%endif
-
-# Leap 15.2:
-%if 0%{?is_opensuse} && 0%{?sle_version} == 150200
-%define distro suse-leap15.2
-%endif
-
-# Leap 15.3:
-%if 0%{?is_opensuse} && 0%{?sle_version} == 150300
-%define distro suse-leap15.3
-%endif
-
-# Tumbleweed:
-# Current Tumbleweed version, moving target
-%if 0%{?suse_version} >= 1330 && !0%{?sle_version}
-%define distro suse-tumbleweed
-%endif
-
-# RHEL // CentOS
-# use the rhel templates for CentOS, too
-%if 0%{?rhel} == 7
-%define distro rhel-07.0
-%endif
-
-# Fedora
-# use the rhel templates for CentOS, too
-%if 0%{?fedora} >= 25
-%define distro fedora-25.0
-%endif
-
 Name:           kiwi-boot-descriptions
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Url:            https://github.com/SUSE/kiwi-descriptions
 Summary:        KIWI - Custom Boot Descriptions
@@ -119,7 +54,7 @@ convenience and compatibility reasons. Also creating meta sub packages
 for the buildservice to allow inclusion of tools into the worker
 which are needed to build a specific image type
 
-%if 0%{?suse_version}
+%if 0%{?distro}
 %package -n kiwi-boot-requires
 Summary:        KIWI - buildservice package requirements for boot images
 Group:          System/Management
@@ -135,6 +70,16 @@ Meta package for the buildservice to pull in all required packages in
 order to have them in the buildservice created repositories to allow
 kiwi to build the custom boot image.
 %endif
+
+%package -n kiwi-image-wsl-requires
+Summary:        KIWI - buildservice host requirements for wsl images
+Group:          System/Management
+Provides:       kiwi-image:wsl
+Requires:       fb-util-for-appx
+
+%description -n kiwi-image-wsl-requires
+Meta package for the buildservice to pull in all required packages
+for the build host to build wsl/appx images
 
 %package -n kiwi-image-docker-requires
 Summary:        KIWI - buildservice host requirements for docker images
@@ -254,10 +199,13 @@ make buildroot=%{buildroot} install
 %dir %{_datadir}/kiwi
 %{_datadir}/kiwi/custom_boot
 
-%if 0%{?suse_version}
+%if 0%{?distro}
 %files -n kiwi-boot-requires
 %defattr(-, root, root)
 %endif
+
+%files -n kiwi-image-wsl-requires
+%defattr(-, root, root)
 
 %files -n kiwi-image-docker-requires
 %defattr(-, root, root)

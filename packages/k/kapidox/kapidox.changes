@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:48:32 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Document dependencies in requirements.txt and install them in setup.py
+  * improve layout
+  * Add license parameter to documentation
+  * Opt-In Display of Library License
+  * More compact layout
+  * Add more shadow
+  * Improve spacing
+  * remove useless css import
+  * fix: bugs in homepage
+  * KApiDox: Convert copyright statements to SPDX expressions
+
+-------------------------------------------------------------------
 Sun Aug  2 07:13:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.73.0

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep 20 06:38:16 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.94l
+  * Merged 0001-build-extend-extern-C-block-in-header-files.patch
+- Split command-line programs to new package cddlib-tools.
+
+-------------------------------------------------------------------
+Sat Sep 19 09:18:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.94k
+  * Header files are now installed to PREFIX/include/cddlib to
+    avoid clashes with other libraries.
+  * pkg-config cddlib.pc file added.
+- Add 0001-build-extend-extern-C-block-in-header-files.patch
+
+-------------------------------------------------------------------
 Sat Oct 20 11:41:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.94j

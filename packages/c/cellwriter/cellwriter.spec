@@ -1,7 +1,7 @@
 #
 # spec file for package cellwriter
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,14 @@ Name:           cellwriter
 Version:        1.3.6
 Release:        0
 Summary:        Character-based handwriting input panel
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-Url:            http://risujin.org/cellwriter/
+URL:            http://risujin.org/cellwriter/
 Source0:        https://github.com/risujin/cellwriter/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-failure-with-GCC10.patch
 BuildRequires:  automake
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -45,20 +48,21 @@ you entered is sent to the currently focused application as if typed on
 the keyboard.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure \
 	 --without-gnome
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %suse_update_desktop_file -i -G "Handwriting Input Panel" cellwriter Utility Accessibility
 
 %files
-%doc README NEWS COPYING AUTHORS
+%license COPYING
+%doc README NEWS AUTHORS
 %{_bindir}/*
 %{_mandir}/man1/*
 %{_datadir}/%{name}

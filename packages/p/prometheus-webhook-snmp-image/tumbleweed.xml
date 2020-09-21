@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/opensuse/tumbleweed</image>
+  <tags>tumbleweed</tags>
+  <name>opensuse/prometheus-webhook-snmp</name>
+  <prefix>org.opensuse.prometheus-webhook-snmp</prefix>
+  <url>https://registry.opensuse.org/opensuse/prometheus-webhook-snmp:%PKG_VERSION%.%RELEASE%</url>
+  <reference>registry.opensuse.org/opensuse/prometheus-webhook-snmp:%PKG_VERSION%.%RELEASE%</reference>
+</param>

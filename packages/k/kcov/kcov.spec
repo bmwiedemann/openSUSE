@@ -1,7 +1,7 @@
 #
 # spec file for package kcov
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,14 @@
 
 
 Name:           kcov
-Version:        36
+Version:        38
 Release:        0
-Summary:        Code coverage tool without special compilation options	
+Summary:        Code coverage tool without special compilation options
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            https://github.com/SimonKagstrom/kcov
-Source0:        https://github.com/SimonKagstrom/kcov/archive/v36.tar.gz 
+URL:            https://github.com/SimonKagstrom/kcov
+Source0:        https://github.com/SimonKagstrom/kcov/archive/v%{version}.tar.gz
 Patch0:         link_order.patch
-Patch1:         python3.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 BuildRequires:  binutils-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -47,7 +43,6 @@ long-running applications.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 # remove LLDB headers bundled for MacOS
 rm -frv external/
 
@@ -65,6 +60,6 @@ cd build
 %{_bindir}/*
 %{_mandir}/man1/*
 # ignore ChangeLog and COPYING* files from install
-%exclude /usr/share/doc/kcov
+%exclude %{_datadir}/doc/kcov
 
 %changelog

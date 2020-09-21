@@ -98,8 +98,8 @@ VERSION=$(grep ^Version *spec | sed -r "s/^Version:\s+//")
 VERSION="${VERSION}+$(date +%s).${GIT_SHA1}"
 sed -i -e 's/^Version:.*/Version:        '$VERSION'/' $PROJECT.spec
 sed -i -e 's#^Source0:.*#Source0:        %{name}-%{version}.tar.gz#' $PROJECT.spec
+sed -i -e '/Source0/a %if 0%{?suse_version}\nSource98:       checkin.sh\nSource99:       README-checkin.txt\nExclusiveArch:  x86_64 aarch64 ppc64le s390x\n%endif' $PROJECT.spec
 sed -i -e '/BuildArch:\s\+noarch/d' $PROJECT.spec
-sed -i -e '/Source0/a %if 0%{?suse_version}\nSource98:       checkin.sh\nSource99:       README-checkin.txt\n%if 0%{?is_opensuse}\nExclusiveArch:  x86_64 aarch64 ppc64le s390x\n%endif\n%endif\n\n%if ! 0%{?is_opensuse}\nBuildArch: noarch\n%endif' $PROJECT.spec
 sed -i -e 'N;/^\n$/D;P;D;' $PROJECT.spec  # collapse multiple adjacent newlines down to a single newline
 cp $PROJECT.spec $THIS_DIR
 echo "Version number is ->$VERSION<-"

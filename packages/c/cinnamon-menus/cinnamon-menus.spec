@@ -20,7 +20,7 @@
 %define soname  libcinnamon-menu-3
 %define sover   0
 Name:           cinnamon-menus
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 Summary:        A menu system for the Cinnamon Desktop
 License:        LGPL-2.1-or-later
@@ -98,7 +98,6 @@ writing applications that use the Cinnamon menu system.
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{soname}-%{sover} -p /sbin/ldconfig
-
 %postun -n %{soname}-%{sover} -p /sbin/ldconfig
 
 %files -n %{soname}-%{sover}

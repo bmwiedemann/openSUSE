@@ -11,11 +11,11 @@ Subject: [PATCH 1/4] rought Qt5 port this breaks unetbootin::lstFtpDirFiles
  unetbootin.pro |   1 +
  4 files changed, 84 insertions(+), 147 deletions(-)
 
-diff --git a/main.cpp b/main.cpp
-index 486b75b..1ef7304 100644
---- a/main.cpp
-+++ b/main.cpp
-@@ -9,6 +9,8 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY
+Index: unetbootin/main.cpp
+===================================================================
+--- unetbootin.orig/main.cpp
++++ unetbootin/main.cpp
+@@ -9,6 +9,8 @@ This program is distributed in the hope
  
  #include "unetbootin.h"
  
@@ -24,7 +24,7 @@ index 486b75b..1ef7304 100644
  #ifdef Q_OS_WIN32
  
  void configsysUndo(QString uninstPathL)
-@@ -380,18 +382,16 @@ int main(int argc, char **argv)
+@@ -403,18 +405,16 @@ int main(int argc, char **argv)
  		uninstmsgb.setIcon(QMessageBox::Information);
  		uninstmsgb.setWindowTitle(uninstaller::tr("%1 Uninstaller").arg(UNETBOOTINB));
  		uninstmsgb.setText(uninstaller::tr("%1 is currently installed. Remove the existing version?").arg(UNETBOOTINB));
@@ -53,11 +53,11 @@ index 486b75b..1ef7304 100644
  		return 0;
  	}
  #endif
-diff --git a/unetbootin.cpp b/unetbootin.cpp
-index 3982f61..0767fc8 100644
---- a/unetbootin.cpp
-+++ b/unetbootin.cpp
-@@ -9,6 +9,10 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY
+Index: unetbootin/unetbootin.cpp
+===================================================================
+--- unetbootin.orig/unetbootin.cpp
++++ unetbootin/unetbootin.cpp
+@@ -9,6 +9,10 @@ This program is distributed in the hope
  
  #include "unetbootin.h"
  
@@ -96,7 +96,7 @@ index 3982f61..0767fc8 100644
  randtmpfile::randtmpfile(QString rfpath, QString rfextn)
  {
  	QString basefn = getrandfilename(rfpath, rfextn);
-@@ -159,7 +153,7 @@ QString randtmpfile::getrandfilename(QString rfpath, QString rfextn)
+@@ -159,7 +153,7 @@ QString randtmpfile::getrandfilename(QSt
  	}
  	return basefn;
  }
@@ -105,7 +105,7 @@ index 3982f61..0767fc8 100644
  void nDirListStor::sAppendSelfUrlInfoList(QUrlInfo curDirUrl)
  {
  	if (curDirUrl.isValid() && curDirUrl.isReadable() && curDirUrl.isFile() && curDirUrl.size() > nMinFileSizeBytes && curDirUrl.size() < nMaxFileSizeBytes)
-@@ -171,7 +165,7 @@ void nDirListStor::sAppendSelfUrlInfoList(QUrlInfo curDirUrl)
+@@ -171,7 +165,7 @@ void nDirListStor::sAppendSelfUrlInfoLis
  		nDirFileListSL.append(curDirUrl.name());
  	}
  }
@@ -114,7 +114,7 @@ index 3982f61..0767fc8 100644
  unetbootin::unetbootin(QWidget *parent)
  	: QWidget(parent)
  {
-@@ -471,18 +465,20 @@ bool unetbootin::ubninitialize(QList<QPair<QString, QString> > oppairs)
+@@ -471,18 +465,20 @@ bool unetbootin::ubninitialize(QList<QPa
  		{
  			if (psecond.contains("listdistros", Qt::CaseInsensitive))
  			{
@@ -137,7 +137,7 @@ index 3982f61..0767fc8 100644
  				}
  				QApplication::exit();
  				exit(0);
-@@ -1098,7 +1094,7 @@ bool unetbootin::checkifoutofspace(QString destindir)
+@@ -1098,7 +1094,7 @@ bool unetbootin::checkifoutofspace(QStri
  	bool outofspace = false;
  	#ifdef Q_OS_UNIX
  	struct statfs diskstatS;
@@ -146,7 +146,7 @@ index 3982f61..0767fc8 100644
  	{
  		if (diskstatS.f_bavail * diskstatS.f_bfree < 1024)
  			outofspace = true;
-@@ -2620,31 +2616,41 @@ void unetbootin::downloadfile(QString fileurl, QString targetfile, int minsize=5
+@@ -2620,31 +2616,41 @@ void unetbootin::downloadfile(QString fi
  	{
  		rmFile(targetfile);
  	}
@@ -203,7 +203,7 @@ index 3982f61..0767fc8 100644
  	QFile dloutfile;
  	if (installType == tr("USB Drive"))
  	{
-@@ -2654,83 +2660,17 @@ void unetbootin::downloadfile(QString fileurl, QString targetfile, int minsize=5
+@@ -2654,83 +2660,17 @@ void unetbootin::downloadfile(QString fi
  	{
  		dloutfile.setFileName(targetfile);
  	}
@@ -292,7 +292,7 @@ index 3982f61..0767fc8 100644
  	if (QFile(targetfile).size() < minsize)
  	{
  		// download failed
-@@ -2812,31 +2752,33 @@ void unetbootin::cpprogressupdate64(qint64 dlbytes, qint64 maxbytes)
+@@ -2812,31 +2752,33 @@ void unetbootin::cpprogressupdate64(qint
   }
  }
  
@@ -342,7 +342,7 @@ index 3982f61..0767fc8 100644
  	QUrl ldfDirUrl(ldfDirStringUrl);
  	QFtp ldfFtp;
  	QEventLoop ldfWait;
-@@ -2851,14 +2793,14 @@ QStringList unetbootin::lstFtpDirFiles(QString ldfDirStringUrl, int ldfMinSize,
+@@ -2851,14 +2793,14 @@ QStringList unetbootin::lstFtpDirFiles(Q
  	ldfFtp.list(ldfDirUrl.path());
  	ldfWait.exec();
  	ldfFtp.close();
@@ -359,7 +359,7 @@ index 3982f61..0767fc8 100644
  		.replace(">", ">\n")
  		.replace("<", "\n<")
  		.split("\n");
-@@ -3218,11 +3160,11 @@ int unetbootin::letterToNumber(QChar lettertoconvert)
+@@ -3218,11 +3160,11 @@ int unetbootin::letterToNumber(QChar let
  {
  	if (lettertoconvert.isLower())
  	{
@@ -373,37 +373,10 @@ index 3982f61..0767fc8 100644
  	}
  	else
  	{
-@@ -3724,7 +3666,7 @@ void unetbootin::writegrub2cfg()
- 	QString menulstxt = QString(
- 	"%9\n\n"
- #ifndef NODEFAULTBOOT
--	"\nmenuentry \""UNETBOOTINB"\" {\n"
-+	"\nmenuentry \"" UNETBOOTINB"\" {\n"
- 	"\tset root=%8\n"
- 	"\t%1 %2 %3 %4\n"
- 	"\t%5 %6 %7\n"
-@@ -3845,7 +3787,7 @@ void unetbootin::runinsthdd()
- 	"timeout 10\n"
- 	#endif
- #ifndef NODEFAULTBOOT
--	"\ntitle "UNETBOOTINB"\n"
-+	"\ntitle " UNETBOOTINB"\n"
- 	#ifdef Q_OS_WIN32
- 	"find --set-root %3\n"
- 	#endif
-@@ -4343,7 +4285,7 @@ void unetbootin::fininstall()
- 	sdesc4->setText(QString("<b>%1 %2</b>").arg(sdesc4->text()).arg(trcurrent));
- 	if (installType == tr("Hard Disk"))
- 	{
--		rebootmsgtext->setText(tr("After rebooting, select the "UNETBOOTINB" menu entry to boot.%1").arg(postinstmsg));
-+		rebootmsgtext->setText(tr("After rebooting, select the " UNETBOOTINB" menu entry to boot.%1").arg(postinstmsg));
- 	}
- 	if (installType == tr("USB Drive"))
- 	{
-diff --git a/unetbootin.h b/unetbootin.h
-index ea607c8..8cb45d8 100644
---- a/unetbootin.h
-+++ b/unetbootin.h
+Index: unetbootin/unetbootin.h
+===================================================================
+--- unetbootin.orig/unetbootin.h
++++ unetbootin/unetbootin.h
 @@ -152,19 +152,13 @@ signals:
  	void finished();
  };
@@ -443,10 +416,10 @@ index ea607c8..8cb45d8 100644
  	QStringList lstFtpDirFiles(QString ldfDirStringUrl, int ldfMinSize, int ldfMaxSize);
  	QStringList lstHttpDirFiles(QString ldfDirStringUrl);
  	QStringList lstNetDirFiles(QString ldfDirStringUrl, int ldfMinSize, int ldfMaxSize);
-diff --git a/unetbootin.pro b/unetbootin.pro
-index 3d4cece..f3af65f 100644
---- a/unetbootin.pro
-+++ b/unetbootin.pro
+Index: unetbootin/unetbootin.pro
+===================================================================
+--- unetbootin.orig/unetbootin.pro
++++ unetbootin/unetbootin.pro
 @@ -14,6 +14,7 @@ SOURCES += main.cpp \
      distrovercust.cpp
  QT += core \
@@ -455,6 +428,3 @@ index 3d4cece..f3af65f 100644
      network
  ICON = unetbootin.icns
  TRANSLATIONS += unetbootin.ts \
--- 
-2.21.0
-

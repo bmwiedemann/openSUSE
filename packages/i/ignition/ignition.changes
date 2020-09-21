@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 18 06:33:02 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Retrigger udev when requesting networking on demand
+
+-------------------------------------------------------------------
 Fri Sep  4 12:07:21 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - 02_ignition_firstboot, ignition-enable-network.sh: Drop ip=dhcp,

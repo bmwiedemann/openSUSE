@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 11 10:07:38 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.5.0
+  "This release rolls up a few minor bug fixes since 2.4.0. We now refuse
+  to run on machines with UEFI firmware (on Linux only, patches welcome
+  for other OSes) since it won't work in the general case and you
+  probably have a kernel framebuffer driver running already. We also only
+  attempt to use 24bpp if the alternative would be pseudocolor, but note
+  that since xserver 1.20 24bpp will not work at all. If you'd like to
+  fix that case, please note that it is filed as issue #4:
+
+  https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa/-/issues/4
+
+  We also notice several cases of running on emulated GPUs, in which case
+  the shadow framebuffer is disabled by default to improve performance by
+  reducing the number of copies.
+
+  All users are recommended to upgrade, ideally to a better video card
+  and/or driver."
+
+-------------------------------------------------------------------
 Fri Feb 16 14:46:06 UTC 2018 - sndirsch@suse.com
 
 - Update to version 2.4.0

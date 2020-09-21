@@ -1,7 +1,7 @@
 #
 # spec file for package musepack
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,7 @@ Source99:       baselibs.conf
 Patch0:         libmpcdec.patch
 # PATCh-FIX-UPSTREAM libmpcdec-extern.patch boo#1160284 mgorse@suse.com -- add extern declarations.
 Patch1:         libmpcdec-extern.patch
+Patch2:         libmpcdec-fastmath-no-const.patch
 BuildRequires:  cmake
 BuildRequires:  libcuefile-devel
 BuildRequires:  libreplaygain-devel
@@ -73,6 +74,7 @@ been developed.
 %setup -q -n %{name}_src_%{version}
 %patch0
 %patch1
+%patch2 -p1
 
 %build
 # Fix rpmlint warning "version-control-internal-file"

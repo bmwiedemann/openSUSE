@@ -1438,8 +1438,7 @@ exit 0
 
 %postun
 %if 0%{?suse_version} >= 1210
-DISABLE_RESTART_ON_UPDATE='yes'
-%service_del_postun apache2.target
+%service_del_postun_without_restart apache2.target
 if [ "$1" = 1 ]; then
   %apache_request_restart
 fi

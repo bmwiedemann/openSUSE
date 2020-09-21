@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 18 07:39:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add fdupes
+- Update to v2.39
+  * Ignore comment in second line when parsing *.ui files
+  * test/auto.py: Show exactly which modules are missing
+
+-------------------------------------------------------------------
 Wed Mar 13 09:00:35 UTC 2019 - qzheng <qzheng@suse.com>
 
 - Make use of %license macro and get ready for submitting this

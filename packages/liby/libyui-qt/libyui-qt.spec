@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libyui-qt
 # DO NOT manually bump the version here; instead, use   rake version:bump
-Version:        2.54.0
+Version:        2.55.0
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 Provides:       yui_backend = %{so_version}
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui - Qt User Interface
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/Libraries
@@ -58,7 +58,7 @@ Provides:       %{name} = %{version}
 Provides:       yast2-qt = %{version}
 Obsoletes:      yast2-qt < 2.51.0
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui - Qt User Interface
 Group:          System/Libraries
 
@@ -74,7 +74,7 @@ Requires:       %{bin_name} = %{version}
 Requires:       %{libyui_devel_version}
 Requires:       fontconfig-devel
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui-qt header files
 Group:          Development/Languages/C and C++
 

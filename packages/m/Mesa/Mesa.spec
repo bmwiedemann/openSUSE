@@ -40,7 +40,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.1.7
+%define _version 20.1.8
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -108,7 +108,7 @@
 %endif
 
 Name:           Mesa
-Version:        20.1.7
+Version:        20.1.8
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -126,6 +126,7 @@ Patch2:         n_add-Mesa-headers-again.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
+Patch60:        buildfix-ppc64le.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -699,6 +700,9 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch2 -p1
 %patch54 -p1
 %patch58 -p1
+%ifarch ppc64le
+%patch60 -p1
+%endif
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

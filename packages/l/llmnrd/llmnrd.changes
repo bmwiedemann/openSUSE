@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 14 18:51:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7
+  * set stdout to line buffering
+  * don't exit on SO_BINDTODEVICE failure
+  * create pid file when daemonizing, and remove it on exit
+  * add command line option to log to syslog instead of stdio
+  * only async signal safe functions may be called in signal handler
+  * exit gracefully on select() EINTR
+
+-------------------------------------------------------------------
 Tue Jan 29 12:52:45 UTC 2019 - mardnh@gmx.de
 
 - Update to version 0.6

@@ -183,4 +183,18 @@
     <comment></comment>
     <requestid>816742</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>23b78f5212636f9019240d013ee4509f</srcmd5>
+    <version>1.13.3</version>
+    <time>1600701836</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-cyordereddict.patch to remove use of cyordereddict,
+  which has been declared obsolete even by its upstream
+  (gh#holoviz/holoviews#4620).
+- Add remove_nose.patch to remove last residues of using nose
+  (gh#holoviz/holoviews#4621).
+- Tests are enabled again.
+</comment>
+    <requestid>835303</requestid>
+  </revision>
 </revisionlist>

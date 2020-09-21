@@ -1,7 +1,7 @@
 #
 # spec file for package libpipeline
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname   libpipeline1
 Name:           libpipeline
-Version:        1.5.0
+Version:        1.5.3
 Release:        0
 Summary:        A pipeline manipulation library
 License:        GPL-3.0-or-later
 Group:          System/Libraries
-Url:            http://www.nongnu.org/libpipeline/
-Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz
-Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
+URL:            https://www.nongnu.org/libpipeline/
+Source0:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  pkg-config
 
@@ -88,7 +88,8 @@ rm -vf %{buildroot}%{_libdir}/libpipeline.la
 
 %files devel
 %defattr(-,root,root,0755)
-%doc ChangeLog README COPYING
+%license COPYING
+%doc ChangeLog README
 %{_libdir}/libpipeline.so
 %{_libdir}/pkgconfig/libpipeline.pc
 %{_includedir}/pipeline.h

@@ -1,0 +1,54 @@
+From 7f88fcb4bb4085f39b7330212efacb19c2b5bcad Mon Sep 17 00:00:00 2001
+From: Nazar Kalinowski <nazark@tutanota.com>
+Date: Sun, 19 Jul 2020 12:12:17 +0300
+Subject: [PATCH] Fix wrong file name when --output option is used
+
+BUG: 424380
+---
+ src/SpectacleCore.cpp | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/src/SpectacleCore.cpp b/src/SpectacleCore.cpp
+index 6cc202d..941e8a0 100644
+--- a/src/SpectacleCore.cpp
++++ b/src/SpectacleCore.cpp
+@@ -118,7 +118,6 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
+     mNotify = true;
+     mCopyToClipboard = Settings::copyImageToClipboard();
+     qint64 lDelayMsec = 0;
+-    QString lFileName = QString();
+ 
+     // are we ask to run in background or dbus mode?
+     if (parser->isSet(QStringLiteral("background"))) {
+@@ -135,13 +134,6 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
+         lDelayMsec = 0;
+     }
+ 
+-    if (!(lFileName.isEmpty() || lFileName.isNull())) {
+-        if (QDir::isRelativePath(lFileName)) {
+-            lFileName = QDir::current().absoluteFilePath(lFileName);
+-        }
+-        setFilename(lFileName);
+-    }
+-
+     // reset last region if it should not be remembered across restarts
+     if(!Settings::alwaysRememberRegion()) {
+         Settings::setCropRegion({0, 0, 0, 0});
+@@ -159,7 +151,13 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
+         }
+ 
+         if (parser->isSet(QStringLiteral("output"))) {
+-            lFileName = parser->value(QStringLiteral("output"));
++            QString lFileName = parser->value(QStringLiteral("output"));
++            if (!(lFileName.isEmpty() || lFileName.isNull())) {
++                if (QDir::isRelativePath(lFileName)) {
++                    lFileName = QDir::current().absoluteFilePath(lFileName);
++                }
++                setFilename(lFileName);
++            }
+         }
+ 
+         if (parser->isSet(QStringLiteral("delay"))) {
+-- 
+2.27.0
+

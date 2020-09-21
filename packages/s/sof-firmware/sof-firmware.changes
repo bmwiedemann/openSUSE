@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep  7 17:24:46 CEST 2020 - tiwai@suse.de
+
+- Update to version 1.5.1 (bsc#1176200):
+  * ipc: header size validation fix
+  * ipc: check state in comp_free
+  * Topology: HDA-generic: Use +20 dB EQ gain for 16 kHz DMIC capture
+  * Topology: HDA-generic: Use +20 dB EQ gain for DMIC capture pipelines
+  * topology: fix dmic names (again)
+  * ssp: fix log
+  * Audio: SRC: Fix build fail when only CONFIG_FORMAT_S16LE is set
+  * cavs: platform: fix debug region size in FW ready
+  * mux: trace: fix uuid name assigned to demux driver
+  * platform: imx8m: Fix FIFO depth for i.MX8M
+  * drivers: imx: Fix free/avail bytes in sdma_get_data_size
+  * kpb: fix race condition in draining task
+  * .travis.yml: Fix incorrect usage of -j option
+  * topology: fix a typo for SCHEDULE_CORE
+  * licence: Include NXP Copyright
+  * Add TGL FW into v1.5.1 release
+
+- Update modaliases for the new chipsets
+
+-------------------------------------------------------------------
 Mon Aug  3 14:37:41 CEST 2020 - tiwai@suse.de
 
 - Add missing symlink for Coffee Lake firmware, too (bsc#1174826)

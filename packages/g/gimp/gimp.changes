@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 22:33:51 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Make python 2 conditional, and disable on SLE/Leap (bsc#1082699).
+
+-------------------------------------------------------------------
 Wed Jul 22 22:18:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Solve the libexecdir problem a different way.

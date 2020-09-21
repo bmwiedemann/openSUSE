@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 17 16:18:54 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Bugref for all minor fixes since SLE15-SP2 release (bsc#1176670)
+- Added README.alua
+
+-------------------------------------------------------------------
+Wed Sep 16 20:36:40 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+192+suse.1bc10ad:
+  * Fix handling of hardware properties for maps without paths
+  (bsc#1176644)
+
+-------------------------------------------------------------------
+Wed Sep 16 16:44:13 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+190+suse.fe234ea:
+  * Fixes for daemon shutdown issues from  SLE(bsc#1110060, bsc#1110439)
+    - multipathd: allow shutdown during configure()
+  * fix compilation of external programs with -lmultipath
+  (bsc#1133957, necessary after the above fix)
+  * Minor upstream fixes
+
+-------------------------------------------------------------------
 Thu Sep 10 19:06:10 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Missing past changelog bug references:

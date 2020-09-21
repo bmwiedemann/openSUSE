@@ -1,0 +1,65 @@
+---
+ setup.py |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -57,7 +57,6 @@ if sys.version_info.major > 2:
+ 
+ # Extra third-party libraries
+ extras_require['extras'] = extras_require['examples']+[
+-    'cyordereddict',
+     'pscript ==0.7.1'
+ ]
+ 
+@@ -67,7 +66,7 @@ extras_require['tests'] = [
+     'mock',
+     'flake8 ==3.6.0',
+     'coveralls',
+-    'path.py', 
++    'path.py',
+     'matplotlib >=2.2,<3.1',
+     'nbsmoke >=0.2.0',
+     'pytest-cov ==2.5.1'
+@@ -87,7 +86,6 @@ extras_require['nbtests'] = extras_requi
+     'deepdiff',
+     'nbconvert ==5.3.1',
+     'jsonschema ==2.6.0',
+-    'cyordereddict',
+     'ipython ==5.4.1'
+ ]
+ 
+@@ -108,7 +106,7 @@ extras_require['build'] = [
+     'python <3.8'
+ ]
+ 
+-# Everything including cyordereddict (optimization) and nosetests
++# Everything including nosetests
+ extras_require['all'] = list(set(extras_require['unit_tests']) | set(extras_require['nbtests']))
+ 
+ 
+--- a/holoviews/core/tree.py
++++ b/holoviews/core/tree.py
+@@ -1,7 +1,4 @@
+-try:
+-    from cyordereddict import OrderedDict
+-except:
+-    from collections import OrderedDict
++from collections import OrderedDict
+ 
+ from . import util
+ from .pprint import PrettyPrinter
+--- a/holoviews/core/util.py
++++ b/holoviews/core/util.py
+@@ -19,10 +19,7 @@ from types import FunctionType
+ import numpy as np
+ import param
+ 
+-try:
+-    from cyordereddict import OrderedDict
+-except:
+-    from collections import OrderedDict
++from collections import OrderedDict
+ 
+ # Python3 compatibility
+ if sys.version_info.major >= 3:

@@ -2028,4 +2028,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment></comment>
     <requestid>833533</requestid>
   </revision>
+  <revision rev="205" vrev="2">
+    <srcmd5>103d81a292a30366ba7c88ac59dd969c</srcmd5>
+    <version>6.1.14</version>
+    <time>1600701112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835469</requestid>
+  </revision>
 </revisionlist>

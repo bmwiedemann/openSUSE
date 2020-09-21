@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dominate
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Python library for creating and manipulating HTML documents
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
 URL:            http://github.com/Knio/dominate/
 Source:         https://files.pythonhosted.org/packages/source/d/dominate/dominate-%{version}.tar.gz
 BuildRequires:  %{python_module pytest >= 2.7.3}

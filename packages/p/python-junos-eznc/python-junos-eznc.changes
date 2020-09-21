@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 18 10:55:57 UTC 2020 - pgajdos@suse.com
+
+- use pytest instead of nose and replace deprecated
+  yamlordereddictloader by yamlloader
+- added patches:
+  + python-junos-eznc-remove-nose.patch
+  + python-junos-eznc-remove-yamlordereddictloader.patch
+
+-------------------------------------------------------------------
 Fri Aug 28 15:56:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.3

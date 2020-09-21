@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Jul 29 18:04:18 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 0.6
+  - Avoid compiler warning about signedness.
+  - Add some comments and some ssw_ prefixes.
+  - Don't set input-hints for Gtk+ versions which don't have it.
+
+-------------------------------------------------------------------
+Sat Jul 18 09:02:32 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 0.5:
+  - Fix copy/paste/cut if an editable is focused - #57274.
+  - Fix broken interaction between visibility and split property.
+  - Fix broken "editable" property.
+  - Enter the editable's data when a button is pressed.
+  - Update editable when forward conversion function is changed.
+  - Redraw when data is changed.
+  - New property: selection.
+  - Don't show the "Insert Emoji" menuitem in the entry's popup menu.
+  - Clip source: Do not print final newline.
+  - Other changes.
+
+-------------------------------------------------------------------
+Sat Jul  4 10:54:00 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Added keyring and added SOURCE.asc
+- Update to 0.4:
+  - Fix crash when pasting from primary
+  - Fix bug where when there was no active cell, the place where it 
+    would have been was blanked.
+  - Added check to out-of-sight processing (bug #55357) in ssw-sheet-axis.c
+  - Removed force_update callback to prevent stall (#55357)
+  - Changed key-press-event generation to avoid warnings.
+  - Add push/pop functions for cursor
+
+-------------------------------------------------------------------
 Sun Jan 13 10:34:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace boilerplate package description.
@@ -9,7 +45,7 @@ Mon Nov 12 11:50:02 UTC 2018 - opensuse.lietuviu.kalba@gmail.com
 - Fix build for Fedora.
 
 -------------------------------------------------------------------
-Wed Nov  7 13:23:49 UTC 2018 - lars@linux-schulserver.de - 0.3
+Wed Nov  7 13:23:49 UTC 2018 - lars@linux-schulserver.de
 
 - Update to 0.3:
   + Fix bug where when there was no active cell, the place where it 

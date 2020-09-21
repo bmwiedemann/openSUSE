@@ -68,4 +68,12 @@
     <comment>- Specfile modernization.</comment>
     <requestid>725843</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1ba90c3988ea0d3ea296a04643421632</srcmd5>
+    <version>0.6.2</version>
+    <time>1600702920</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cddlib.patch</comment>
+    <requestid>835562</requestid>
+  </revision>
 </revisionlist>

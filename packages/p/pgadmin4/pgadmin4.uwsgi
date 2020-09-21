@@ -1,0 +1,17 @@
+[uwsgi]
+#plugin = apparmor
+#apparmor-hat = pgadmin
+
+uid = pgadmin
+gid = pgadmin
+
+processes = 1
+threads = 25
+
+socket = /run/uwsgi/uwsgi-pgadmin.sock
+chmod-socket = 660
+chown-socket = wwwrun:www
+
+plugin = python3
+chdir = /usr/lib/python3.6/site-packages/pgadmin4-web/
+mount = /=pgAdmin4:app

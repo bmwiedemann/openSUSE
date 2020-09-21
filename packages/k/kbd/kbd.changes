@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 17 22:43:16 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Make kbdsettings working in both bash and dash (boo#1175040).
+
+-------------------------------------------------------------------
+Thu Sep 17 14:47:04 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix kbd-1.15.5-loadkeys-search-path.patch to prefer xkb keymaps
+  (boo#1176302).
+
+-------------------------------------------------------------------
 Thu Aug 20 11:34:32 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - add libkeymap-Fix-mk_mapname-for-the-plain-map.patch

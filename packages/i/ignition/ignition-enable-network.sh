@@ -7,4 +7,6 @@ if [ -f /run/ignition/neednet ] && ! getargbool 0 'rd.neednet'; then
 
     # Re-trigger generation of network rules
     . /lib/dracut/hooks/pre-udev/60-net-genrules.sh
+    udevadm control --reload
+    udevadm trigger --subsystem-match net --action add
 fi

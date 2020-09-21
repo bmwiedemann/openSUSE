@@ -39,7 +39,7 @@
 %define _sysdir usr/lib
 
 Name:           multipath-tools
-Version:        0.8.4+183+suse.1817ce2
+Version:        0.8.4+192+suse.1bc10ad
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -213,7 +213,7 @@ exit 0
 
 %files
 %defattr(-,root,root)
-%doc README
+%doc README README.alua
 # SLE12-SP2 and earlier: dracut filesystem not own /usr/share/licenses
 %if 0%{?sle_version} && 0%{?sle_version} < 120300
 %dir %{_defaultlicensedir}

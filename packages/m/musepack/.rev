@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>761905</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>89ceaaf070edbc0f0baf6d2ccbcd51e0</srcmd5>
+    <version>r475</version>
+    <time>1600700695</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libmpcdec-fastmath-no-const.patch: remove const declarations
+  from some arrays which should not have them (boo#1176374). (forwarded request 834337 from mgorse)</comment>
+    <requestid>835236</requestid>
+  </revision>
 </revisionlist>

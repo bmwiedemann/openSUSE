@@ -1,0 +1,13 @@
+Index: b/genkeymap/genkeymap.c
+===================================================================
+--- a/genkeymap/genkeymap.c	2020-08-26 10:32:21.000000000 +0800
++++ b/genkeymap/genkeymap.c	2020-09-14 13:38:46.498825240 +0800
+@@ -44,7 +44,7 @@
+ #include <X11/XKBlib.h>
+ #include <locale.h>
+ 
+-extern int xfree86_to_evdev[137-8];
++extern int xfree86_to_evdev[137-8+1];
+ 
+ int main(int argc, char **argv)
+ {

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 14:32:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to make the okular-spectre split more user friendly (boo#1176030):
+  * 0001-Inform-users-about-the-okular-spectre-package-in-the.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 20:51:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.1

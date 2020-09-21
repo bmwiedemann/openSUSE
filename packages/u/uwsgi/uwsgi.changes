@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  9 10:29:20 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add systemd tmpfile.d config to create /run/uwsgi
+
+-------------------------------------------------------------------
+Wed Sep  9 09:42:14 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use %license for the LICENSE
+
+-------------------------------------------------------------------
 Mon Jun  8 18:09:43 UTC 2020 - James Oakley <jfunk@funktronics.ca>
 
 - Fix duplicate uperl in psgi plugin with wth gcc 10 (uwsgi-2.0.18-psgi-fix-duplicate-uperl.patch)

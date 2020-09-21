@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Sep 15 23:02:55 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200901 
+
+  - Highlights
+      - Added new folder colors:
+        * breeze (Breeze¹)
+        * palebrown (Adwaita²) #2341
+        * paleorange (elementaryOS)
+
+¹ Breeze Dark theme looks better with the default blue color.
+² Adwaita-dark theme looks better with earlier added brown color.
+
+  - Added icons
+    * 1Password (app and tray icons) #2351
+    * Advanced Radio Player (plasmoid)
+    * Atom Nightly #2347
+    * Avalonia ILSpy #2354
+    * Bashtop & Bpytop #2340
+    * BespokeSynth #2357
+    * Boop-GTK #2361
+    * Disk Quota (plasmoid)
+    * Fokus (plasmoid)
+    * GitLab Issues (plasmoid)
+    * GitLab (tray icons)
+    * GNOME Network Displays #2339
+    * GoLand #2007
+    * Google Chat #2349
+    * Individual Core Usage (plasmoid)
+    * Jellyamp
+    * Jellyfin Desktop
+    * Jitsi Meet #2352
+    * KCalc #2007
+    * KNIGHTS #2303
+    * LazPaint #2343
+    * LibreOffice 7.0.0
+    * Lovers in a Dangerous Spacetime #2316
+    * Markets #2337
+    * MupenGUI #2356
+    * Playbar (plasmoid)
+    * Pixeluvo #2342
+    * projectM #2344
+    * Pulse Secure Client #2360
+    * Qalculate (tray icons)
+    * Redirection (game) #2355
+    * Superpaper
+    * Switch Theme (plasmoid)
+    * System monitor Sensor (plasmoid)
+    * Tardis #2353
+    * Torguard #2346
+    * Warpinator #2007
+
+  - Updated icons
+    * GIMP
+    * Jellyfin
+    * Multimedia Controls (plasmoid)
+    * Opera (stable/beta/developer)
+    * VSCodium #2350
+
+  - Changes and fixes
+    * Added and renamed Nicotine+ tray icons
+    * Added missing width/height properties to several icons
+
+
+-------------------------------------------------------------------
 Wed Aug  5 01:25:43 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20200801

@@ -646,4 +646,12 @@
     <comment>- Bump kubernetes to 1.19.1, etcd to 3.4.13</comment>
     <requestid>833436</requestid>
   </revision>
+  <revision rev="69" vrev="9">
+    <srcmd5>0834936b9320331d5fc99b3ff314284e</srcmd5>
+    <version>unknown</version>
+    <time>1600700445</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump kubernetes to 1.19.2 and 1.18.9</comment>
+    <requestid>835140</requestid>
+  </revision>
 </revisionlist>

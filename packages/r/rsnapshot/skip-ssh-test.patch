@@ -1,0 +1,23 @@
+From b708125c2f7e4cf005117e9db4d1633af14f6c2e Mon Sep 17 00:00:00 2001
+From: Robert Scheck <robert@fedoraproject.org>
+Date: Wed, 11 Dec 2019 00:55:33 +0100
+Subject: [PATCH] Skip both SSH tests (rather one) if SSH doesn't work
+
+Bug was introduced with PR #231 (in order to address issue #212)
+---
+ t/ssh_args/ssh_args.t.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/ssh_args/ssh_args.t.in b/t/ssh_args/ssh_args.t.in
+index e30b87e..3772d6e 100644
+--- a/t/ssh_args/ssh_args.t.in
++++ b/t/ssh_args/ssh_args.t.in
+@@ -11,7 +11,7 @@ ok(! remove_snapshot_root(),
+ SKIP: {
+ 	my $ssh_test = "@SSH@ -p 22 -o StrictHostKeyChecking=no @TEST_SSH_USER@\@localhost true";
+ 	my $cant_ssh = system("$ssh_test");
+-	skip("Cant SSH with \"$ssh_test\"", 1) if ($cant_ssh);
++	skip("Cant SSH with \"$ssh_test\"", 2) if ($cant_ssh);
+ 	ok(!rsnapshot("-c @TEST@/ssh_args/conf/ssh_args.conf hourly"), "ssh_args parsed");
+ 	ok(!rsnapshot("-c @TEST@/ssh_args/conf/ssh_args_inline.conf hourly"), "ssh_args_inline parsed");
+ }

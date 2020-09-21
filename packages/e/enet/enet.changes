@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 17 14:43:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.3.16:
+  * fix bug in unreliable fragment queuing
+  * use single output queue for reliable and unreliable packets for saner ordering
+  * revert experimental throttle changes that were less stable than prior algorithm
+
+-------------------------------------------------------------------
 Thu Apr 23 12:29:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.3.15

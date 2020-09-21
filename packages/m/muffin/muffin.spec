@@ -1,7 +1,7 @@
 #
 # spec file for package muffin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define typelib typelib-1_0-Muffin-0_0
 %define _lto_cflags %{nil}
 Name:           muffin
-Version:        4.4.2
+Version:        4.6.3
 Release:        0
 Summary:        Cinnamon Desktop default window manager
 License:        GPL-2.0-or-later AND MIT
@@ -30,8 +30,6 @@ URL:            https://github.com/linuxmint/muffin
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE muffin-svid-default-source.patch marguerite@opensuse.org -- Change _SVID_SOURCE to _DEFAULT_SOURCE.
 Patch0:         %{name}-svid-default-source.patch
-# PATCH-FIX-UPSTREAM 0001-fix-warnings-when-compiling.patch leigh123linux@googlemail.com -- don't treat Gi warnings as error
-Patch1:         0001-fix-warnings-when-compiling.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

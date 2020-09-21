@@ -16,9 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define git_commit 028bcc51dc48c517869287f2d821053939abacd5
+%define git_commit b176408eb2c351f5730c914a12a72b587aac23f9
 Name:           helmfile
-Version:        0.129.3
+Version:        0.129.4
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT

@@ -28,6 +28,8 @@ License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch:          Fix-Bug-426596.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  gettext-devel
 BuildRequires:  libgpgmepp-devel
@@ -140,7 +142,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 18 03:10:44 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.53
+   see /usr/share/doc/packages/perl-Log-Log4perl/Changes
+
+  1.53 2020-09-17
+  - fix the broken "improved detection of modules" change
+
+-------------------------------------------------------------------
 Mon Sep  7 03:08:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.52

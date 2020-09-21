@@ -64,4 +64,12 @@
     <comment>- Update to version 2.6.3</comment>
     <requestid>830593</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7c675159d7e397a8b2604878d3fc07c1</srcmd5>
+    <version>2.6.3</version>
+    <time>1600701986</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.3 [boo#1169283]</comment>
+    <requestid>835373</requestid>
+  </revision>
 </revisionlist>

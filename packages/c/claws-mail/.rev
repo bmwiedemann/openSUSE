@@ -813,4 +813,13 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
   * fix non-translation of some Templates strings (forwarded request 820689 from jubalh)</comment>
     <requestid>820715</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>c11ee9e05cde682b8e92be7f32e13885</srcmd5>
+    <version>3.17.6</version>
+    <time>1600701871</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable python-gtk plugin on suse_version &gt; 1500: still relying
+  on python2, which is EOL.</comment>
+    <requestid>835255</requestid>
+  </revision>
 </revisionlist>

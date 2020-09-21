@@ -50,6 +50,10 @@ Services checked include databases, caches, queue servers, celery processes, etc
 # setuptools-scm fails for GitHub archives
 sed -i 's/use_scm_version=True/version="%{version}"/' setup.py
 
+# Hot fix: include sub-packages (and a template in %%install)
+# https://github.com/KristianOellegaard/django-health-check/issues/268
+sed -i 's/packages = health_check/packages = find:/' setup.cfg
+
 # do not nedlessly pull extra deps
 sed -i -e '/sphinx/d;/pytest-runner/d;/--cov[-=]/d' setup.cfg
 
@@ -58,9 +62,16 @@ sed -i -e '/sphinx/d;/pytest-runner/d;/--cov[-=]/d' setup.cfg
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
+mkdir -p %{buildroot}%{$python_sitelib}/health_check/templates/health_check
+cp health_check/templates/health_check/index.html %{buildroot}%{$python_sitelib}/health_check/templates/health_check
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
+mkdir /tmp/testenv
+mv tests /tmp/testenv
+cd /tmp/testenv
 PYTHONPATH=${PWD}
 export DJANGO_SETTINGS_MODULE=tests.testapp.settings
 %pytest

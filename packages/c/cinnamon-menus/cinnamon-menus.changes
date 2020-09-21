@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 18 13:36:35 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.6.1.
+  * gmenu-tree.c: Return a basename if no appinfo is available when
+    sorting.
+
+-------------------------------------------------------------------
 Wed Jun 10 03:22:07 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.6.0.

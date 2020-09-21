@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 18 16:36:31 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- %service_del_postun_without_restart is not yet available in Leap 15.{1,2} of SLE15_SP1.
+  For that reason, a workaround is added. 
+
+-------------------------------------------------------------------
+Fri Sep 11 17:58:07 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Make use of %service_del_postun_without_restart
+
+  And stop using DISABLE_RESTART_ON_UPDATE as this interface is
+  obsolete.
+
+-------------------------------------------------------------------
 Thu Sep 10 16:12:11 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Update to Oracle version 6.1.14a. This minor update enables the building of libvirt again.

@@ -85,4 +85,13 @@
     <comment>- Update to new upstream release 0.94j</comment>
     <requestid>643513</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c3843646eee53ef9977996b559765ac4</srcmd5>
+    <version>0.94l</version>
+    <time>1600702945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.94l
+- Split command-line programs to new package cddlib-tools.</comment>
+    <requestid>835656</requestid>
+  </revision>
 </revisionlist>

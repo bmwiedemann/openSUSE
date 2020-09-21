@@ -1,0 +1,23 @@
+From 053c74842a0292223e36fe4e132a6b7e5908d98d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabian=20Ke=C3=9Fler?= <fabian_kessler@gmx.de>
+Date: Sun, 13 Sep 2020 23:00:50 +0200
+Subject: [PATCH] Fixes 1.0.18 PDF export bug, when references exist in the
+ document.  - Regression  - fixes #2236
+
+---
+ src/pdf/popplerapi/PopplerGlibAction.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pdf/popplerapi/PopplerGlibAction.cpp b/src/pdf/popplerapi/PopplerGlibAction.cpp
+index b1c83c5ec5..31b0df3e60 100644
+--- a/src/pdf/popplerapi/PopplerGlibAction.cpp
++++ b/src/pdf/popplerapi/PopplerGlibAction.cpp
+@@ -60,7 +60,7 @@ void PopplerGlibAction::linkFromDest(LinkDestination* link, PopplerDest* pDest)
+ 		break;
+ 	case POPPLER_DEST_XYZ:
+ 		{
+-			PopplerPage* page = poppler_document_get_page(document, pDest->page_num);
++			PopplerPage* page = poppler_document_get_page(document, pDest->page_num - 1);
+ 			if (page == NULL)
+ 			{
+ 				return;

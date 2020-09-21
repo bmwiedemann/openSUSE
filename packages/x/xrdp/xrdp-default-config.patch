@@ -1,8 +1,8 @@
 Index: b/sesman/sesman.ini
 ===================================================================
---- a/sesman/sesman.ini	2018-12-27 17:50:27.173173569 +0800
-+++ b/sesman/sesman.ini	2018-12-27 17:51:31.737663351 +0800
-@@ -24,7 +24,7 @@ AlwaysGroupCheck=false
+--- a/sesman/sesman.ini	2020-09-14 13:14:33.645606549 +0800
++++ b/sesman/sesman.ini	2020-09-14 13:14:43.105484131 +0800
+@@ -27,7 +27,7 @@ RestrictOutboundClipboard=false
  ;; X11DisplayOffset - x11 display number offset
  ; Type: integer
  ; Default: 10
@@ -11,7 +11,7 @@ Index: b/sesman/sesman.ini
  
  ;; MaxSessions - maximum number of connections to an xrdp server
  ; Type: integer
-@@ -62,9 +62,9 @@ Policy=Default
+@@ -65,9 +65,9 @@ Policy=Default
  
  [Logging]
  LogFile=xrdp-sesman.log
@@ -26,9 +26,9 @@ Index: b/sesman/sesman.ini
  ; Session definitions - startup command-line parameters for each session type
 Index: b/xrdp/xrdp.ini
 ===================================================================
---- a/xrdp/xrdp.ini	2018-12-27 17:50:27.173173569 +0800
-+++ b/xrdp/xrdp.ini	2018-12-27 17:57:38.260447082 +0800
-@@ -76,7 +76,7 @@ grey=dedede
+--- a/xrdp/xrdp.ini	2020-09-14 13:14:33.645606549 +0800
++++ b/xrdp/xrdp.ini	2020-09-14 13:14:43.105484131 +0800
+@@ -101,7 +101,7 @@ grey=dedede
  #ls_title=My Login Title
  
  ; top level window background color in RGB format
@@ -37,7 +37,7 @@ Index: b/xrdp/xrdp.ini
  
  ; width and height of login screen
  ls_width=350
-@@ -119,9 +119,9 @@ ls_btn_cancel_height=30
+@@ -144,9 +144,9 @@ ls_btn_cancel_height=30
  
  [Logging]
  LogFile=xrdp.log
@@ -50,37 +50,3 @@ Index: b/xrdp/xrdp.ini
  ; LogLevel and SysLogLevel could by any of: core, error, warning, info or debug
  
  [Channels]
-@@ -153,24 +153,24 @@ tcutils=true
- ; Some session types such as Xorg, X11rdp and Xvnc start a display server.
- ; Startup command-line parameters for the display server are configured
- ; in sesman.ini. See and configure also sesman.ini.
--[Xorg]
--name=Xorg
--lib=libxup.so
-+[Xvnc]
-+name=Xvnc
-+lib=libvnc.so
- username=ask
- password=ask
- ip=127.0.0.1
- port=-1
--code=20
-+#xserverbpp=24
-+delay_ms=2000
- 
--[Xvnc]
--name=Xvnc
--lib=libvnc.so
-+[Xorg]
-+name=Xorg
-+lib=libxup.so
- username=ask
- password=ask
- ip=127.0.0.1
- port=-1
--#xserverbpp=24
--#delay_ms=2000
-+code=20
- 
- [vnc-any]
- name=vnc-any

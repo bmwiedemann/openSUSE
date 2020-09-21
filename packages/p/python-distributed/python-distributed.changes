@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 19 15:08:52 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.27.0:
+  * Fix registering a worker plugin with name arg (GH#4105) Nick Evans
+  * Support different remote_python paths on cluster nodes (GH#4085)
+    Abdulelah Bin Mahfoodh
+  * Allow RuntimeError s when closing global clients (GH#4115) Matthew
+    Rocklin
+  * Match pre-commit in dask (GH#4049) Julia Signell
+  * Update super usage (GH#4110) Poruri Sai Rahul
+
+-------------------------------------------------------------------
 Sat Sep 12 19:58:20 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.26.0:

@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-tools
-Version:        1.2.151
+Version:        1.2.153
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
@@ -50,7 +50,7 @@ This package contains the Khronos official Vulkan tools and utilities.
 mkdir -p glslang/bin
 ln -fsv /usr/bin/glslangValidator glslang/bin/
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install

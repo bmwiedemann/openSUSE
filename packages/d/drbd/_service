@@ -9,9 +9,9 @@
 
     This will download branch first instead of tag.
     <param name="revision">drbd-9.0</param>
-    <param name="version">9.0.23~1</param>
+    <param name="version">9.0.25~0</param>
 -->
-    <param name="versionformat">9.0.23~1+git.%h</param>
+    <param name="versionformat">9.0.25~0+git.%h</param>
     <param name="revision">drbd-9.0</param>
   </service>
 

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:57:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.4.3:
+  - Fixes and minor updates to Pod / man page.
+  - Adds more tests.
+  - Restore rsync error code 23 as an important warning.
+  - Fixes shortargs appending.
+  - Non-LVM backup source breaks after LVM backup source.
+  - Update rsnapreport.pl utility script to work with rsync >= 3.1.0 stats and bytes changes.
+- remove rsnapreport_rsync_output.patch, rsnapshot-lvm-undef.patch: upstream
+- add skip-ssh-test.patch (ignore ssh test failure on envs without network)
+- tighten find/sed on usr/local to not touch automake related files
+
+-------------------------------------------------------------------
 Thu Aug  8 17:59:59 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Apply backup_pgsql.patch, forgotten before...

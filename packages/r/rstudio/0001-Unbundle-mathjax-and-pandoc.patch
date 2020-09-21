@@ -1,7 +1,7 @@
 From 04766193f0582261cb2cb849e3be0caea7d7a88e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 11:27:06 +0100
-Subject: [PATCH 1/5] Unbundle mathjax and pandoc
+Subject: [PATCH 1/8] Unbundle mathjax and pandoc
 
 Use find_file() & find_program() functions to find the dependencies in the
 dependencies/ subdirectory first. If they are not there, use the system paths

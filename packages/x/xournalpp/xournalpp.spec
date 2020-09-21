@@ -26,6 +26,8 @@ URL:            https://github.com/xournalpp/xournalpp
 Source0:        https://github.com/xournalpp/xournalpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM xournalpp-fix-desktop-categories.patch badshah400@gmail.com -- Fix desktop categories with additional keywords to prevent "No sufficient Category definition" error from brp-desktop.
 Patch0:         xournalpp-fix-desktop-categories.patch
+# PATCH-FIX-UPSTREAM xournalpp-fix-exporting-pdf-with-references.patch gh#xournalpp/xournalpp#2236 badshah400@gmail.com -- Fix PDF export when references exist in the document.
+Patch1:         xournalpp-fix-exporting-pdf-with-references.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -52,6 +54,7 @@ It supports pen input, e.g. Wacom tablets.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake

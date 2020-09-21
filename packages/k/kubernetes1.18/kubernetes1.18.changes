@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Sep 17 09:06:00 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.18.9:
+  * e2e: backport regenerate namespace name if the name is already taken #90591
+  * Update CNI plugins to v0.8.7
+  * azure: use the parsed value from the configuration
+  * Cherry pick of #93908: Updating EndpointSlice controllers to return if error encountered
+  * Update snapshot controller to use k8s.gcr.io
+  * test(kuberuntime): deflake TestRemoveContainer
+  * kubectl describe pod: use ReportingController as an event source
+  * Fix an issue when rotated logs of dead containers are not removed.
+  * Append suffix 'i' only if needed
+  * Fixed reflector not recovering from "Too large resource version" errors with API servers 1.17.0-1.18.5
+  * let panics propagate up when processLoop panic
+  * Add impersonated user to system:authenticated group
+  * cleanup: print warning message after timeout
+  * Revert "cleanup: decrease log level from warn to v3"
+  * cleanup: decrease log level from warn to v3
+  * Remove duplicate nodeSelector
+  * fix(azure): check error returned by scaleSet.getVMSS
+  * remove oom TestStartingWatcher ""unit"" test
+  * Ensuring EndpointSlice controller does not create EndpointSlices for Services that are being deleted.
+  * If firstTimestamp is not set use eventTime when printing event
+  * kubectl: fix the Scheduled eventTime is <unknown> when use kubectl describe pod xxx
+  * Update json-patch to v4.9.0 tagged release
+  * Improve EndpointController's handling of headless services under dual-stack
+  * Improve EndpointController dual-stack testing
+  * Fix Endpoint/EndpointSlice pod change detection
+  * Updating EndpointSlice controller to wait for all caches to be synced
+  * Fix bug for inconsistent lists served from etcd
+  * test(kubelet): add a regression test to verify kubelet would not panic
+  * fix(kubelet): protect `containerCleanupInfos` from concurrent map writes
+  * Keep track of remaining pods when a node is deleted.
+  * add sjenning as kubelet approver
+  * Remove direct accesses to cache's node map
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.8
+  * Add tests for out of band attachments
+  * Update e2e csi images to k8s.gcr.io
+  * "unbound immediate PersistentVolumeClaims" should be UnschedulableAndUnresolvable error
+  * Make AttachDisk idempotent again
+  * Do not evict pods which tolerate all NoExecute taints
+  * Fix namespace controller cleanup orphaning
+  * Add labelSelector validation to Affinity/AntiAffinity score plugin
+  * Use NLB Subnet CIDRs instead of VPC CIDRs in updateInstanceSecurityGroupsForNLB
+  * Make nested /volume/ repo images overridable
+  * fix: update max azure disk max count
+  * Do not swallow NotFound error for DeletePod in dsc.manage
+
+-------------------------------------------------------------------
 Mon Sep  7 08:36:36 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - kubernetes%{baseversion}-kubeadm now obsoletes kubernetes%{baseversionminus1}-kubeadm

@@ -1,7 +1,7 @@
 #
 # spec file for package cddlib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,16 @@
 
 Name:           cddlib
 %define lname   libcdd0
-Version:        0.94j
+Version:        0.94l
 Release:        0
 Summary:        Library for finding vertices of convex polytopes
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://www.inf.ethz.ch/personal/fukudak/cdd_home/
+URL:            https://www.inf.ethz.ch/personal/fukudak/cdd_home/
 
-Source:         https://github.com/cddlib/cddlib/releases/download/0.94j/cddlib-0.94j.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source:         https://github.com/cddlib/cddlib/releases/download/%version/%name-%version.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel >= 3
-BuildRequires:  libtool
 
 %description
 cddlib is a C implementation of the Double Description Method of
@@ -50,7 +46,7 @@ extreme rays of a general convex polyhedron in R^d given by a system
 of linear inequalities.
 
 %package devel
-Summary:        Development files for cddlib
+Summary:        Header files for cddlib
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 Requires:       gmp-devel
@@ -60,6 +56,8 @@ cddlib is a C implementation of the Double Description Method of
 Motzkin et al. for generating all vertices (i.e. extreme points) and
 extreme rays of a general convex polyhedron in R^d given by a system
 of linear inequalities.
+
+This package contains the headers for the C library.
 
 %package doc
 Summary:        Documentation for the cddlib API
@@ -72,13 +70,26 @@ Motzkin et al.
 
 This package contains the documentation to cddlib.
 
+%package tools
+Summary:        Programs for vertex generation using Double Description Method
+Group:          Productivity/Scientific/Math
+Provides:       cddlib-devel:/usr/bin/scdd
+Conflicts:      cddlib-devel < 0.94l
+
+%description tools
+cddlib is a C implementation of the Double Description Method of
+Motzkin et al. for generating all vertices (i.e. extreme points) and
+extreme rays of a general convex polyhedron in R^d given by a system
+of linear inequalities.
+
+This package contains the command-line utilities of cddlib.
+
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-autoreconf -fi
-%configure --enable-shared --disable-static --includedir="%_includedir/cdd" --docdir="%_docdir/%name"
-make %{?_smp_mflags} V=1
+%configure --enable-shared --disable-static --docdir="%_docdir/%name"
+%make_build
 
 %install
 %make_install
@@ -92,11 +103,15 @@ rm -f "%buildroot/%_libdir"/*.la
 %_libdir/libcdd*.so.*
 
 %files devel
-%_bindir/*
 %_libdir/libcdd*.so
 %_includedir/*
+%_libdir/pkgconfig/*.pc
 
 %files doc
 %_docdir/%name/
+
+%files tools
+%_bindir/*
+%license COPYING
 
 %changelog

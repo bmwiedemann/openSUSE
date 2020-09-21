@@ -1741,4 +1741,14 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>- gensslcert: add -a argument to override default SAN value (forwarded request 830773 from jtomasiak)</comment>
     <requestid>830804</requestid>
   </revision>
+  <revision rev="172" vrev="4">
+    <srcmd5>603f39ee27a2e331e6e5d5b916bb4616</srcmd5>
+    <version>2.4.46</version>
+    <time>1600700559</time>
+    <user>dimstar_suse</user>
+    <comment>- Make use of %service_del_postun_without_restart
+  And stop using DISABLE_RESTART_ON_UPDATE as this interface is
+  obsolete. (forwarded request 835119 from fbui)</comment>
+    <requestid>835144</requestid>
+  </revision>
 </revisionlist>

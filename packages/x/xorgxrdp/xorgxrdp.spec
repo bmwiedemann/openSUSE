@@ -1,7 +1,7 @@
 #
 # spec file for package xorgxrdp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           xorgxrdp
-Version:        0.2.13
+Version:        0.2.14
 Release:        0
 Summary:        Xorg drivers for xrdp
 License:        X11
 Group:          System/X11/Utilities
-Url:            https://github.com/neutrinolabs/xorgxrdp
+URL:            https://github.com/neutrinolabs/xorgxrdp
 Source0:        https://github.com/neutrinolabs/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/neutrinolabs/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring

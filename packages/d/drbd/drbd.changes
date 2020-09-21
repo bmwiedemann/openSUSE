@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Sep 18 07:38:21 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1175257, update to 9.0.25-0rc1
+ * fix a race condition between receiving UUIDs and finishing a resync
+   that can lead to a false-positive split-brain detection later on
+ * fix access after free of peer_req objects, that only happened when
+   a resync target node is paused sync source at the same time
+ * fix abortion of local state changes in case they can not proceed due
+   to loss of connection
+ * fix corner cases with reconciliation resync and parallel promote
+ * fix an issue establishing a connection when the multipath feature is
+   used to connect to a stacked resource without a dedicated service IP
+ * fix sometimes a peer-disk state to another resync-target staying Outdated
+   after two resyncs from the same sync source node finish
+ * fix an (unlikely) deadlock while establishing a connection
+ * deactivate the kref_debug code, it has performance implicatios
+ * Introduce the "disconnected" hander; it receives the last connection
+   state in the evnironment variable DRBD_CSTATE
+- Changes of drbd-9.0.24-1
+ * fix deadlock when connecting drbd-9 to drbd-8.4 and the drbd-9
+   side becomes sync-source
+ * fix an issue with 3 (or more) node configurations; with a diskless node
+   and two storage nodes; if one of the storage nodes was hard rebooted
+   and came back and the diskless got primary and did not issue write
+   requests and the returning storage node established a connection with
+   the surviving storage node first, DRBD failed to upgrade the disk
+   state to UpToDate after the resync
+ * detect split-brain situations also when both nodes are primary;
+   this is how it was in drbd-8.4; up to now drbd-9 did not realize
+   the split-brain since it complains about the not allowed dual
+   primary first; for this change a new protocol version was necessary
+ * verified it compiles with Linux 5.7
+- Add compatible patches to kernel v5.8.0
+  Add patch compat_remove_include_vermagic.patch
+  Add patch compat_remove_kernel_setsockopt.patch
+  Add patch compat_remove_pgprot_88dca4c.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 03:33:22 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1172761, Update to drbd-9.0.23-1

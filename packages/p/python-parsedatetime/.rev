@@ -47,4 +47,18 @@
     <comment></comment>
     <requestid>783952</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>256461d8e9ddd2bb04c46d73234b29e5</srcmd5>
+    <version>2.6</version>
+    <time>1600701413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6:
+  Updated Pipfile and Makefile to:
+    - update and move packages to the &quot;dev&quot; section
+    - use Python 3.7 for pipenv
+    - install tox-pipenv plugin to try and fix Tox (currently doesn't)
+    - simplify tox.ini to try and fix Tox (didn't)
+    - move ci makefile target to the circle config</comment>
+    <requestid>835180</requestid>
+  </revision>
 </revisionlist>

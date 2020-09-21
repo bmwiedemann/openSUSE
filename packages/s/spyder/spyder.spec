@@ -16,11 +16,7 @@
 #
 
 
-%ifarch x86_64
 %bcond_without  test
-%else
-%bcond_with     test
-%endif
 %define skip_python2 1
 Name:           spyder
 Version:        4.1.5
@@ -31,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
+# PATCH-FIX-UPSTREAM https://github.com/spyder-ide/spyder/pull/13814 -- fix test failure with newer qtconsole
+Patch1:         https://github.com/spyder-ide/spyder/pull/13814.patch#/spyder-pr13814-completion.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -141,6 +139,11 @@ BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module spyder-kernels >= 1.9.2}
 BuildRequires:  %{python_module sympy >= 0.7.3}
 BuildRequires:  %{python_module watchdog}
+# Fix breakpoint/trap crashes with Qt
+# see https://github.com/jupyter/qtconsole/issues/443
+# Any Truetype font will work; remove when pytest-qt or qtwebengine
+# provide it themselves
+BuildRequires:  free-ttf-fonts
 BuildRequires:  git-core
 BuildRequires:  xdpyinfo
 %endif
@@ -215,6 +218,7 @@ Provides translations for the "%{name}" package.
 
 %prep
 %setup -q -n spyder-%{version}
+%autopatch -p1
 
 # Fix wrong-file-end-of-line-encoding RPMLint warning
 sed -i 's/\r$//' spyder/app/restart.py
@@ -290,9 +294,11 @@ skiptests+=";test_connection_dialog_remembers_input_with_password"
 skiptests+=";test_dbg_input"
 # runs into timeouts
 skiptests+=";test_mpl_backend_change"
-# fails on Leap 15
 %if 0%{?suse_version} == 1500
+# fails on Leap
 skiptests+=";(test_objectexplorer_collection_types and params0)"
+# segfaults on Leap
+skiptests+=";test_apps_dialog"
 %endif
 # different PyQT version?
 skiptests+=";(test_objectexplorer_collection_types and params5)"

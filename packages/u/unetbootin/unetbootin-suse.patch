@@ -1,8 +1,8 @@
-diff --git a/distrolst.cpp b/distrolst.cpp
-index 8cc6580..511ea06 100644
---- a/distrolst.cpp
-+++ b/distrolst.cpp
-@@ -753,23 +753,36 @@ if (nameDistro == "openSUSE")
+Index: unetbootin/distrolst.cpp
+===================================================================
+--- unetbootin.orig/distrolst.cpp
++++ unetbootin/distrolst.cpp
+@@ -758,23 +758,36 @@ if (nameDistro == "openSUSE")
  	{
  		cpuarch = "i386";
  	}
@@ -46,23 +46,22 @@ index 8cc6580..511ea06 100644
  			postinstmsg = unetbootin::tr("\n*IMPORTANT* After rebooting, ignore any error messages and select back if prompted for a CD, then go to the main menu, select the 'Start Installation' option, choose 'Network' as the source, choose 'HTTP' as the protocol, enter 'download.opensuse.org' when prompted for a server, and enter '/distribution/%1/repo/oss' when asked for the folder.").arg(relname);
  			}
  		kernelOpts = "splash=silent showopts";
-diff --git a/distrover.cpp b/distrover.cpp
-index 156666b..50596d5 100644
---- a/distrover.cpp
-+++ b/distrover.cpp
-@@ -175,11 +175,11 @@ unetbootin::tr("<b>Homepage:</b> <a href=\"http://pogostick.net/~pnh/ntpasswd/\"
+Index: unetbootin/distrover.cpp
+===================================================================
+--- unetbootin.orig/distrover.cpp
++++ unetbootin/distrover.cpp
+@@ -173,11 +173,11 @@ unetbootin::tr("<b>Homepage:</b> <a href
  	"<b>Description:</b> The Offline NT Password and Registry Editor can reset Windows passwords and edit the registry on Windows 2000-Vista.<br/>"
  	"<b>Install Notes:</b> NTPasswd is booted and run in live mode; no installation is required to use it.") <<
  "2008.05.26" << "2011.05.11"));
 -	distroselect->addItem("openSUSE", (QStringList() << "11.1" <<
-+	distroselect->addItem("openSUSE", (QStringList() << "Leap_15.1" <<
- unetbootin::tr("<b>Homepage:</b> <a href=\"http://www.opensuse.org/\">http://www.opensuse.org</a><br/>"
++	distroselect->addItem("openSUSE", (QStringList() << "Leap_15.2" <<
+ unetbootin::tr("<b>Homepage:</b> <a href=\"https://www.opensuse.org/\">https://www.opensuse.org</a><br/>"
 -	"<b>Description:</b> openSUSE is a user-friendly Novell sponsored distribution.<br/>"
-+"<b>Description:</b> The openSUSE project is a community program sponsored by SUSE Linux and other companies.<br/>"
++	"<b>Description:</b> The openSUSE project is a community program sponsored by SUSE Linux and other companies.<br/>"
  	"<b>Install Notes:</b> The default version allows for both installation over the internet (FTP), or offline installation using pre-downloaded installation ISO files.") <<
 -	"11.1" << "11.1_x64" << "Factory" << "Factory_x64"));
-+	"Leap_15.0" << "Leap_15.1" << "Tumbleweed" << "Tumbleweed_x64"));
++	"Leap_15.1" << "Leap_15.2" << "Tumbleweed" << "Tumbleweed_x64"));
  distroselect->addItem("Ophcrack", (QStringList() << "XP-LiveCD-2.0" <<
  unetbootin::tr("<b>Homepage:</b> <a href=\"http://ophcrack.sourceforge.net/\">http://ophcrack.sourceforge.net</a><br/>"
  	"<b>Description:</b> Ophcrack can crack Windows passwords.<br/>"
--- 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:44:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.6:
+  Updated Pipfile and Makefile to:
+    - update and move packages to the "dev" section
+    - use Python 3.7 for pipenv
+    - install tox-pipenv plugin to try and fix Tox (currently doesn't)
+    - simplify tox.ini to try and fix Tox (didn't)
+    - move ci makefile target to the circle config
+
+-------------------------------------------------------------------
 Wed Mar 11 15:45:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update version to 2.5

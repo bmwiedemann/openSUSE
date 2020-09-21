@@ -1,7 +1,7 @@
 [Unit]
 Description=Clamav antivirus milter daemon 
-After=network.target freshclam.service
-Requires=freshclam.service
+After=network.target clamd.service
+Requires=clamd.service
 
 [Service]
 Type=forking

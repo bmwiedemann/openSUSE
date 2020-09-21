@@ -41,4 +41,14 @@
     <comment></comment>
     <requestid>835131</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4135f911a227b1e0cf78d675530f42d9</srcmd5>
+    <version>3.14.0</version>
+    <time>1600701522</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround upstream packaging problem omitting sub-packages
+  and templates
+</comment>
+    <requestid>835769</requestid>
+  </revision>
 </revisionlist>

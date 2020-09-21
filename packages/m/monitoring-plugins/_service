@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="versionformat">2.3~alpha.%ci.%h</param>
+    <param name="url">https://github.com/monitoring-plugins/monitoring-plugins.git</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="disabled"/>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
+

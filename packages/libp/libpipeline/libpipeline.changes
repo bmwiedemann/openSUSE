@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 13 19:33:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.3:
+  * Fix implementation-defined behaviour while handling read/write errors.
+  * Port tests to the modern Check API.
+  * `pipecmd_exec' now calls `_exit' rather than `exit', to avoid bugs such as
+  * functions registered using `atexit' being called multiple times.
+  * Document that standard FDs must be open before calling `pipeline_start'.
+  * Building libpipeline now requires Autoconf >= 2.63 and Automake >= 1.11.2.
+  * Various portability improvements, via Gnulib.
+
+-------------------------------------------------------------------
 Fri Nov 23 14:12:20 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 1.5.0

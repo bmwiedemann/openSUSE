@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 18 11:52:59 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.8:
+  * Fix "Encrypt to key" action destroys PGP/ MIME signature
+  * Fix Filter fails silently on Enigmail's "Encrypt to key" action
+  * Fix Disable autocrypt header on custom sender address
+  * Fix VKS keyserver with custom port cannot be accesse
+  * Fix Filter fails silently on Enigmail's "Encrypt to key" action
+  * Fix Thunderbird dies immediately when sending a signed empty-bodied mail
+  * Fix Decrypted mail has empty Content-Type in the MIME part
+
+-------------------------------------------------------------------
 Sun Jun 28 06:49:16 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enigmail 2.1.7:

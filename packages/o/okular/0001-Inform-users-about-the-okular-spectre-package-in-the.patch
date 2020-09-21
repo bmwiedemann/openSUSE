@@ -1,0 +1,30 @@
+From e0e5a2f668941c03421fb0ce36e881b927a634df Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 16 Sep 2020 16:29:53 +0200
+Subject: [PATCH] Inform users about the okular-spectre package in the print
+ preview
+
+---
+ ui/fileprinterpreview.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/ui/fileprinterpreview.cpp b/ui/fileprinterpreview.cpp
+index 6bac0cc8c..b06046d6d 100644
+--- a/ui/fileprinterpreview.cpp
++++ b/ui/fileprinterpreview.cpp
+@@ -92,6 +92,12 @@ void FilePrinterPreviewPrivate::getPart()
+     }
+ 
+     KService::List::ConstIterator it = offers.constBegin();
++    if (filename.endsWith(QStringLiteral(".ps")) && it == offers.constEnd()) {
++        failMessage = new QLabel(i18n("Ghostscript is needed for the print preview, but it has security issues and is not installed by default.\n"
++                                      "If you only open trusted documents, you can install the 'okular-spectre' package."), q);
++        return;
++    }
++
+     while (!factory && it != offers.constEnd()) {
+         KPluginLoader loader(**it);
+         factory = loader.factory();
+-- 
+2.25.1
+

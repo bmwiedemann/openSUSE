@@ -1,0 +1,98 @@
+kernel_setsockopt removed in cb8e59cc
+
+[   13s] /home/abuild/rpmbuild/BUILD/drbd-9.0.24~1+git.17730ea3/default/drbd_transport_tcp.c: In function 'dtt_nodelay':
+[   13s] /home/abuild/rpmbuild/BUILD/drbd-9.0.24~1+git.17730ea3/default/drbd_transport_tcp.c:158:9: error: implicit declaration of funct
+ion 'kernel_setsockopt'; did you mean 'kernel_getsockname'? [-Werror=implicit-function-declaration]
+[   13s]   158 |  (void) kernel_setsockopt(socket, SOL_TCP, TCP_NODELAY, (char *)&val, sizeof(val));
+[   13s]       |         ^~~~~~~~~~~~~~~~~                                                                                              [   13s]       |         kernel_getsockname
+[   14s] cc1: some warnings being treated as errors
+
+diff -Naur drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd-kernel-compat/have_kernel_setsockopt.c drbd-9.0.24~1+git.17730ea3/drbd/drbd-kernel-compat/have_kernel_setsockopt.c
+--- drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd-kernel-compat/have_kernel_setsockopt.c	1970-01-01 08:00:00.000000000 +0800
++++ drbd-9.0.24~1+git.17730ea3/drbd/drbd-kernel-compat/have_kernel_setsockopt.c	2020-08-14 10:18:35.107901337 +0800
+@@ -0,0 +1,13 @@
++#include <linux/socket.h>
++
++/*
++ * kernel_setsockopt removed in cb8e59cc
++*/
++
++void test(void)
++{
++	struct socket *sock;
++	int val = 1;
++
++	(void) kernel_setsockopt(sock, 0, 0, (char *)&val, sizeof(val));
++}
+diff -Naur drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd_transport_tcp.c drbd-9.0.24~1+git.17730ea3/drbd/drbd_transport_tcp.c
+--- drbd-9.0.24~1+git.17730ea3.orig/drbd/drbd_transport_tcp.c	2020-08-14 10:15:16.122125660 +0800
++++ drbd-9.0.24~1+git.17730ea3/drbd/drbd_transport_tcp.c	2020-08-14 10:31:16.930382120 +0800
+@@ -154,8 +154,12 @@
+ 
+ static void dtt_nodelay(struct socket *socket)
+ {
++#ifdef COMPAT_HAVE_KERNEL_SETSOCKOPT
+ 	int val = 1;
+ 	(void) kernel_setsockopt(socket, SOL_TCP, TCP_NODELAY, (char *)&val, sizeof(val));
++#else
++	tcp_sock_set_nodelay(socket->sk);
++#endif
+ }
+ 
+ static int dtt_init(struct drbd_transport *transport)
+@@ -889,7 +893,6 @@
+ 	struct socket *dsocket, *csocket;
+ 	struct net_conf *nc;
+ 	int timeout, err;
+-	int one = 1;
+ 	bool ok;
+ 
+ 	dsocket = NULL;
+@@ -1071,9 +1074,14 @@
+ 	dsocket->sk->sk_sndtimeo = timeout;
+ 	csocket->sk->sk_sndtimeo = timeout;
+ 
++#ifdef COMPAT_HAVE_KERNEL_SETSOCKOPT
++	int one = 1;
+ 	err = kernel_setsockopt(dsocket, SOL_SOCKET, SO_KEEPALIVE, (char *)&one, sizeof(one));
+ 	if (err)
+ 		tr_warn(transport, "Failed to enable SO_KEEPALIVE %d\n", err);
++#else
++	sock_set_keepalive(dsocket->sk);
++#endif
+ 
+ 	return 0;
+ 
+@@ -1213,20 +1221,32 @@
+ 
+ static void dtt_cork(struct socket *socket)
+ {
++#ifdef COMPAT_HAVE_KERNEL_SETSOCKOPT
+ 	int val = 1;
+ 	(void) kernel_setsockopt(socket, SOL_TCP, TCP_CORK, (char *)&val, sizeof(val));
++#else
++	tcp_sock_set_cork(socket->sk, true);
++#endif
+ }
+ 
+ static void dtt_uncork(struct socket *socket)
+ {
++#ifdef COMPAT_HAVE_KERNEL_SETSOCKOPT
+ 	int val = 0;
+ 	(void) kernel_setsockopt(socket, SOL_TCP, TCP_CORK, (char *)&val, sizeof(val));
++#else
++	tcp_sock_set_cork(socket->sk, false);
++#endif
+ }
+ 
+ static void dtt_quickack(struct socket *socket)
+ {
++#ifdef COMPAT_HAVE_KERNEL_SETSOCKOPT
+ 	int val = 2;
+ 	(void) kernel_setsockopt(socket, SOL_TCP, TCP_QUICKACK, (char *)&val, sizeof(val));
++#else
++	tcp_sock_set_quickack(socket->sk, 2);
++#endif
+ }
+ 
+ static bool dtt_hint(struct drbd_transport *transport, enum drbd_stream stream,

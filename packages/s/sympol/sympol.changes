@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 19 10:13:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add cddlib.diff
+
+-------------------------------------------------------------------
+Mon Aug 26 06:44:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add /usr/include/sympol/yal symlink because header files are
+  misinstalled.
+
+-------------------------------------------------------------------
 Sun Mar 17 17:04:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 0.1.8) for build.opensuse.org

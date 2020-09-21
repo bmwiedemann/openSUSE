@@ -10,7 +10,7 @@ Index: monitoring-plugins-2.2/plugins-root/Makefile.am
  	echo " chmod $(setuid_root_mode) $(DESTDIR)$(libexecdir)/$$p"; \
  	chmod $(setuid_root_mode) $(DESTDIR)$(libexecdir)/$$p; \
  	done
-@@ -66,11 +65,12 @@ install-exec-local: $(noinst_PROGRAMS)
+@@ -66,11 +65,11 @@ install-exec-local: $(noinst_PROGRAMS)
  	  && chmod $(setuid_root_mode) $$TMPFILE > /dev/null 2>&1 \
  	  && can_create_suid_root_executable=yes; \
  	rm -f $$TMPFILE; \
@@ -18,7 +18,7 @@ Index: monitoring-plugins-2.2/plugins-root/Makefile.am
 -	  $(INSTALL_SUID); \
 +	$(INSTALL_SUID); \
 +	if test $$can_create_suid_root_executable != yes; then \
- 	else \
+-	else \
 -	  echo "WARNING: insufficient access; not installing setuid plugins"; \
 +	  echo "WARNING: insufficient access; not installing plugins as setuid"; \
  	  echo "NOTE: to install setuid plugins, run 'make install-root' as root"; \
@@ -26,31 +26,3 @@ Index: monitoring-plugins-2.2/plugins-root/Makefile.am
  	fi
  
  # /* Author Coreutils team sub-citation */
-Index: monitoring-plugins-2.2/plugins-root/Makefile.in
-===================================================================
---- monitoring-plugins-2.2.orig/plugins-root/Makefile.in
-+++ monitoring-plugins-2.2/plugins-root/Makefile.in
-@@ -1344,7 +1344,6 @@ INSTALL_SUID = \
- 	echo " $(INSTALL_PROGRAM) $$p $(DESTDIR)$(libexecdir)/$$p"; \
- 	$(INSTALL_PROGRAM) $$p $(DESTDIR)$(libexecdir)/$$p; \
- 	echo " chown root $(DESTDIR)$(libexecdir)/$$p"; \
--	chown root $(DESTDIR)$(libexecdir)/$$p; \
- 	echo " chmod $(setuid_root_mode) $(DESTDIR)$(libexecdir)/$$p"; \
- 	chmod $(setuid_root_mode) $(DESTDIR)$(libexecdir)/$$p; \
- 	done
-@@ -1785,11 +1784,11 @@ install-exec-local: $(noinst_PROGRAMS)
- 	  && chmod $(setuid_root_mode) $$TMPFILE > /dev/null 2>&1 \
- 	  && can_create_suid_root_executable=yes; \
- 	rm -f $$TMPFILE; \
--	if test $$can_create_suid_root_executable = yes; then \
--	  $(INSTALL_SUID); \
--	else \
--	  echo "WARNING: insufficient access; not installing setuid plugins"; \
-+	$(INSTALL_SUID); \
-+	if test $$can_create_suid_root_executable != yes; then \
-+	  echo "WARNING: insufficient access; not installing plugins as setuid"; \
- 	  echo "NOTE: to install setuid plugins, run 'make install-root' as root"; \
-+	  echo "NOTE: or fix this in your packaging (specfile or alike)"; \
- 	fi
- 
- clean-local:

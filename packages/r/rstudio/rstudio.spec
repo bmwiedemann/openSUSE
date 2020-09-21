@@ -37,8 +37,7 @@
 %global bundled_jsbn_version          1.1
 # - tree.hh                                  => bundled in ./src/cpp/core/include/core/collection/Tree.hpp, version 2.81, license is GPL-3.0-only
 %global bundled_treehh_version        2.81
-# - Hunspell (MPL)                           => bundled in ./src/cpp/core/spelling/hunspell, version 1.3, license is (MPL-1.1 or GPL-2.0-or-later or LGPL-2.1-or-later)
-%global bundled_hunspell_version      1.3
+# - Hunspell (MPL)                           => unbundled
 # - Chromium Hunspell Dictionaries (MPL)
 # - pdf.js                                   => bundled in ./src/cpp/session/resources/pdfjs/build/pdf.js
 %global bundled_pdfjs_version         1.3.158
@@ -83,6 +82,13 @@
 # missing from NOTICE:
 # - Google Closure Compiler                  => bundled in ./src/gwt/tools/compiler/ but AFAIK only used for building, version is "compiler-latest.zip as of July 9, 2019", license is Apache-2.0 with bundled dependencies under (NPL-1.1 AND (MPL-1.1 OR GPL-2.0-or-later)) AND MIT AND CPL-1.0 AND BSD-3-Clause AND Apache-2.0:
 
+# override upstream's choice for the boost version on Leap 15.2,
+# but not on Tumbleweed
+%if 0%{?sle_version} == 150200
+%global rstudio_boost_requested_version 1.66
+%endif
+%define boost_version %{?rstudio_boost_requested_version}%{?!rstudio_boost_requested_version:1.69}
+
 %global rstudio_version_major 1
 %global rstudio_version_minor 3
 %global rstudio_version_patch 1073
@@ -100,10 +106,9 @@ Summary:        RStudio base package
 # BSL or MIT:         rapidxml
 # Public Domain:      AOP Alliance
 # GPL-3.0-only:       tree.hh
-# (MPL-1.1 or GPL-2.0-or-later or LGPL-2.1-or-later): hunspell
 # ISC:                sundown
 # dictionaries: see below
-License:        AGPL-3.0-only AND Apache-2.0 AND MPL-1.1 AND LGPL-2.1-or-later AND GPL-2.0-only AND MIT AND W3C-20150513 AND BSD-3-Clause AND (BSL-1.0 OR MIT) AND GPL-3.0-only AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND ISC AND OFL-1.1 AND Zlib AND NPL-1.1 AND CC-BY-4.0
+License:        AGPL-3.0-only AND Apache-2.0 AND MPL-1.1 AND LGPL-2.1-or-later AND GPL-2.0-only AND MIT AND W3C-20150513 AND BSD-3-Clause AND (BSL-1.0 OR MIT) AND GPL-3.0-only AND ISC AND OFL-1.1 AND Zlib AND NPL-1.1 AND CC-BY-4.0
 URL:            https://github.com/%{name}/
 Source0:        %{URL}/%{name}/archive/v%{version}.tar.gz
 # these appear to have been taken from Chromium's source code, see:
@@ -123,11 +128,17 @@ Patch2:         0003-Fix-rstudio-exec-path.patch
 # https://github.com/rstudio/rstudio/pull/7011
 Patch3:         0004-add-support-for-boost-1.73.patch
 Patch4:         0005-Add-additional-includes-for-aarch64.patch
+# Make compatible with hunspell 1.4.0 or later, use system hunspell.
+Patch5:         0006-Use-system-hunspell.patch
+# Make sure we find the right libclang.so and builtin headers, make compatible with newer versions.
+Patch6:         0007-Fix-libclang-usage.patch
+# Leap 15.2 only patch
+Patch7:         0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
 BuildRequires:  ant
-BuildRequires:  clang
+BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -138,17 +149,17 @@ BuildRequires:  glibc-devel
 # for dir ownership of /usr/share/icons/hicolor/*
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java
-BuildRequires:  libboost_atomic-devel          >= 1.69
-BuildRequires:  libboost_chrono-devel          >= 1.69
-BuildRequires:  libboost_date_time-devel       >= 1.69
-BuildRequires:  libboost_filesystem-devel      >= 1.69
-BuildRequires:  libboost_headers-devel         >= 1.69
-BuildRequires:  libboost_iostreams-devel       >= 1.69
-BuildRequires:  libboost_program_options-devel >= 1.69
-BuildRequires:  libboost_random-devel          >= 1.69
-BuildRequires:  libboost_regex-devel           >= 1.69
-BuildRequires:  libboost_system-devel          >= 1.69
-BuildRequires:  libboost_thread-devel          >= 1.69
+BuildRequires:  libboost_atomic-devel          >= %{boost_version}
+BuildRequires:  libboost_chrono-devel          >= %{boost_version}
+BuildRequires:  libboost_date_time-devel       >= %{boost_version}
+BuildRequires:  libboost_filesystem-devel      >= %{boost_version}
+BuildRequires:  libboost_headers-devel         >= %{boost_version}
+BuildRequires:  libboost_iostreams-devel       >= %{boost_version}
+BuildRequires:  libboost_program_options-devel >= %{boost_version}
+BuildRequires:  libboost_random-devel          >= %{boost_version}
+BuildRequires:  libboost_regex-devel           >= %{boost_version}
+BuildRequires:  libboost_system-devel          >= %{boost_version}
+BuildRequires:  libboost_thread-devel          >= %{boost_version}
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  make
 BuildRequires:  mathjax
@@ -179,6 +190,7 @@ BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pango)
@@ -187,9 +199,10 @@ BuildRequires:  pkgconfig(websocketpp)
 BuildRequires:  pkgconfig(zlib)
 Requires:       R-base
 Requires:       R-core-libs
-Requires:       ghc-pandoc-citeproc
-Requires:       mathjax
-Requires:       pandoc
+Recommends:     ghc-pandoc-citeproc
+Recommends:     libclang%{_llvm_sonum}
+Recommends:     mathjax
+Recommends:     pandoc
 Recommends:     git
 Recommends:     gcc
 Recommends:     gcc-c++
@@ -207,7 +220,6 @@ Provides:       bundled(guice) = %{bundled_guice_version}
 Provides:       bundled(gwt-rstudio) = %{bundled_gwt_rstudio_version}
 Provides:       bundled(gwt-websockets) = %{bundled_gwt_websockets_version}
 Provides:       bundled(highlight.js) = %{bundled_highlightjs_version}
-Provides:       bundled(hunspell) = %{bundled_hunspell_version}
 Provides:       bundled(inert-polyfill.js) = %{bundled_intert_polyfill_js_version}
 Provides:       bundled(jquery.js) = %{bundled_jquery_version}
 Provides:       bundled(jsbn) = %{bundled_jsbn_version}
@@ -255,10 +267,20 @@ on a server has a number of benefits, including:
   supporting libraries
 
 %prep
+%if 0%{?sle_version} == 150200
 %autosetup -p1
+%else
+%autosetup -N
+%autopatch -p1 -M 6
+%endif
 
 # use system libraries when available
-rm -rf src/cpp/ext/websocketpp src/cpp/shared_core/include/shared_core/json/rapidjson/
+rm -r \
+    src/cpp/core/include/core/libclang/clang-c/ \
+    src/cpp/core/spelling/hunspell/ \
+    src/cpp/ext/websocketpp \
+    src/cpp/shared_core/include/shared_core/json/rapidjson/
+find src/cpp/core/zlib -type f -not -name '*.cpp' -delete
 
 ln -sf %{_includedir}/websocketpp src/cpp/ext/websocketpp
 ln -sf %{_includedir}/rapidjson src/cpp/shared_core/include/shared_core/json/rapidjson
@@ -270,6 +292,9 @@ unzip -d dependencies/common/dictionaries %{SOURCE1}
 # don't include gwt_build in ALL to avoid recompilation, but then we must build
 # it manually
 sed -i 's@gwt_build ALL@gwt_build@g' src/gwt/CMakeLists.txt
+
+# The unversioned libclang.so is only part of clang-devel, so we use the versioned so instead.
+sed -i 's#LIBCLANG_PLACEHOLDER#%{_libdir}/libclang.so.%{_llvm_sonum}#' src/cpp/core/libclang/LibClang.cpp
 
 %build
 %sysusers_generate_pre %{SOURCE4} %{name}-server
@@ -284,6 +309,7 @@ export GIT_COMMIT=%{rstudio_git_revision_hash}
     -DRSTUDIO_USE_SYSTEM_BOOST=TRUE                                                 \
     -DRSTUDIO_BOOST_SIGNALS_VERSION=2                                               \
     -DBOOST_ROOT=%{_prefix} -DBOOST_LIBRARYDIR=%{_lib}                              \
+    %{?rstudio_boost_requested_version:-DRSTUDIO_BOOST_REQUESTED_VERSION=%{rstudio_boost_requested_version}} \
     -DQT_QMAKE_EXECUTABLE=%{_bindir}/qmake-qt5
 
 %make_build
@@ -367,9 +393,13 @@ done
 %license COPYING NOTICE
 %doc README.md
 %{_libexecdir}/rstudio
+%exclude %{_libexecdir}/rstudio/bin/rserver
+%exclude %{_libexecdir}/rstudio/bin/rserver-pam
+%exclude %{_libexecdir}/rstudio/bin/%{name}
 
 %files desktop
 %{_bindir}/%{name}
+%{_libexecdir}/rstudio/bin/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/hicolor/*/mimetypes/*
@@ -379,6 +409,8 @@ done
 %files server
 %{_bindir}/rserver
 %{_bindir}/rserver-pam
+%{_libexecdir}/rstudio/bin/rserver
+%{_libexecdir}/rstudio/bin/rserver-pam
 %dir %{_localstatedir}/log/%{name}-server
 %dir %{_localstatedir}/lib/%{name}-server
 %{_unitdir}/%{rserver_service}

@@ -17,7 +17,7 @@
 
 
 Name:           paexec
-Version:        1.1.2
+Version:        1.1.4
 Release:        0
 Summary:        Utility for task distribution over networks or CPUs
 License:        MIT
@@ -25,6 +25,7 @@ Group:          Productivity/Clustering/Computing
 URL:            https://paexec.sourceforge.net/
 Source0:        https://sourceforge.net/projects/paexec/files/paexec/paexec-%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  libmaa-devel
 BuildRequires:  mk-configure >= 0.27.0
 BuildRequires:  mk-configure-rpm-macros
 BuildRequires:  runawk

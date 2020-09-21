@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 14 13:42:19 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Reenable nginx subpackage for factory 
+
+-------------------------------------------------------------------
 Mon Jun 29 12:41:48 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Update maintainer file and package description, remove features

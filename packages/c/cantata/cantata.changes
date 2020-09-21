@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Sep 20 12:40:25 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.4.2:
+  * Correctly handle changing 'Basic' mode music folder.
+  * When stopping 'Basic' mode MPD instance, send SIGKILL.
+  * Correctly set 'storeLyricsInMpdDir' config item, UI was setting
+    wrong config item.
+  * Set minimum Qt5 version to 5.11
+  * Fix destructor of DeviceManagerPrivate to prevent Cantata from
+    potentially crashing when closing.
+  * Correctly set song details 'time', 'year', 'track' and 'disc'
+    for streams from online services.
+  * Don't use last.fm for artist image searches, its broken.
+  * Hide BB10 styles (look bad), and gtk2 style (doesn't start) from
+    list of styles in interface settings.
+  * When checking if song exists, check disc number.
+  * Fix getting song details from Cantata stream URLs.
+  * Amend MPRIS interface: fix CanPlay/CanPause/CanSeek status update
+    as well as LoopStatus getter and setter.
+  * When checking if songs are different, compare track and disc
+    numbers too.
+  * Avoid unknown song durations and duplicate updates of MPRIS' song
+    details.
+  * Synchronize update of current song details and status of MPRIS
+    interface, trigger MPRIS status update when connection to MPD
+    has been lost.
+  * Add chartlyrics.com to list of lyrics providers.
+  * Set default lyrics providers to azlyrics.com, chartlyrics.com,
+    and lyrics.wikia.com
+  * Fix enabling of play queue navigation actions 'next' and 'previous'.
+  * Fix bus name of freedesktop.org's power management.
+  * Additionally call Inhibit() from org.freedesktop.login1.Manager.
+  * Query Qt whether system tray is available if current desktop
+    environment is not some kind of GNOME (incl. Unity flavored GNOME).
+  * Fix writing 'descr' attribute when saving podcast information to
+    cache dir.
+  * Fix loading cover images with wrong file extension in context view.
+  * Avoid prepending song's file path with MPD's music directory if
+    it is empty, a stream URL or an absolute path.
+  * Ignore current song in selection when moving selected songs within
+    the play queue to play them next.
+  * Also show metadata of the current track in the context view if
+    'title' or 'artist' are missing, but do not try to fetch
+    information nor lyrics.
+  * Switch from freedb.org to gnudb.org
+  * Update bitrate settings for encoders used with transcoding jobs.
+- Remove upstream patches: correct-path-saved-lyrics.patch and 0001-Correctly-handle-changing-Basic-mode-music-folder.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 21:34:27 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Revert libexec change to /usr/lib and update file list. Otherwise

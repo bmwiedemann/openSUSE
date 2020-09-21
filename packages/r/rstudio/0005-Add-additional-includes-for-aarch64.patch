@@ -1,7 +1,7 @@
 From f2f23822915d220b425e779f226206b9f1f9f780 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 2 Sep 2020 13:47:59 +0200
-Subject: [PATCH 5/5] Add additional includes for aarch64
+Subject: [PATCH 5/8] Add additional includes for aarch64
 
 ---
  src/cpp/core/HtmlUtils.cpp          | 1 +

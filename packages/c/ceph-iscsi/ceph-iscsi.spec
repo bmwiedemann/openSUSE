@@ -19,7 +19,7 @@
 %endif
 
 Name:           ceph-iscsi
-Version:        3.3+1570532654.g93940a4
+Version:        3.4+1600349408.g516d37d
 Release:        1%{?dist}
 Group:          System/Filesystems
 Summary:        Python modules for Ceph iSCSI gateway configuration management
@@ -33,19 +33,14 @@ Source0:        %{name}-%{version}.tar.gz
 %if 0%{?suse_version}
 Source98:       checkin.sh
 Source99:       README-checkin.txt
-%if 0%{?is_opensuse}
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
-%endif
-%endif
-
-%if ! 0%{?is_opensuse}
-BuildArch: noarch
 %endif
 
 Obsoletes:      ceph-iscsi-config
 Obsoletes:      ceph-iscsi-cli
 
 Requires:       tcmu-runner >= 1.4.0
+Requires:       ceph-common >= 10.2.2
 %if 0%{?with_python2}
 BuildRequires:  python2-devel
 BuildRequires:  python2-setuptools

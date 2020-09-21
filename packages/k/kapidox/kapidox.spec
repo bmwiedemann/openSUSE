@@ -18,13 +18,13 @@
 
 # Only needed for the package signature condition
 %bcond_without lang
-%define _tar_path 5.73
+%define _tar_path 5.74
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 Name:           kapidox
-Version:        5.73.0
+Version:        5.74.0
 Release:        0
 Summary:        Scripts and data for building API documentation
 License:        BSD-2-Clause
@@ -38,6 +38,7 @@ Source2:        frameworks.keyring
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  python3
+BuildRequires:  python3-setuptools
 Requires:       doxygen
 Requires:       graphviz
 Requires:       graphviz-gd
@@ -62,7 +63,7 @@ Doxygen-formatted codde comments in a standard format and style.
   %fdupes %{buildroot}
 
 %files
-%license LICENSE
+%license LICENSES/*
 %doc README*
 %{_kf5_bindir}/kapidox_generate
 %{_kf5_bindir}/depdiagram-generate

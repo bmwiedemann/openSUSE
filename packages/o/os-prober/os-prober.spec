@@ -17,7 +17,7 @@
 
 
 Name:           os-prober
-Version:        1.76
+Version:        1.77
 Release:        0
 Summary:        Probes disks on the system for installed operating systems
 License:        GPL-2.0-or-later

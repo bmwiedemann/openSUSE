@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 21:04:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove unneeded build dependencies.
+  assimp doesn't need Qt5, boost, devIL and glu.
+
+-------------------------------------------------------------------
 Thu Jul  9 20:42:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Restore the _service file.

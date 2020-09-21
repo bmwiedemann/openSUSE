@@ -786,4 +786,12 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
   https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.13.0.md (forwarded request 829981 from cgiboudeaux)</comment>
     <requestid>829987</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>cb290b5e8b3a7a2fb0ed6f87a9249934</srcmd5>
+    <version>4.13.1</version>
+    <time>1600703040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835679</requestid>
+  </revision>
 </revisionlist>

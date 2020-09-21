@@ -2,7 +2,8 @@
 Description=Combustion
 DefaultDependencies=false
 
-ConditionKernelCommandLine=ignition.firstboot
+ConditionKernelCommandLine=|ignition.firstboot
+ConditionKernelCommandLine=|combustion.firstboot
 
 Requires=sysroot.mount
 After=sysroot.mount

@@ -159,4 +159,12 @@
     <comment>reinstate BuildArch: noarch for SLE (forwarded request 736069 from smithfarm)</comment>
     <requestid>736071</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>27421c671dd7200a7546f9182954be1b</srcmd5>
+    <version>3.4+1600349408.g516d37d</version>
+    <time>1600700868</time>
+    <user>dimstar_suse</user>
+    <comment>Factory to v3.4 (forwarded request 835250 from smithfarm)</comment>
+    <requestid>835251</requestid>
+  </revision>
 </revisionlist>

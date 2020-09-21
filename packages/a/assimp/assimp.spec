@@ -32,14 +32,9 @@ BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  irrlicht-devel
-BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(IL)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Assimp is a library to load and process geometric scenes from various data formats.

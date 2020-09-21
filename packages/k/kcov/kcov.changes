@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:41:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 38:
+  This release fixes a kcov hang on the Aarch64 (ARM64) platform
+  The Cobertura writer now supports the coverage-04.dtd version of the standard
+- remove python3.patch (upstream):
+
+-------------------------------------------------------------------
 Sat May 18 22:41:29 UTC 2019 - Doug Miller <dgm816@gmail.com>
 
 - updated to use python3 when compiling via python3.patch which

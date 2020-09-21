@@ -10,15 +10,17 @@ Xvnc drops support for 8 bpp since 1.4.0. Trying to launch Xvnc in
  vnc/vnc.c | 8 ++++++--
  1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/vnc/vnc.c b/vnc/vnc.c
-index b0eb29b3..db593da0 100644
---- a/vnc/vnc.c
-+++ b/vnc/vnc.c
-@@ -1011,15 +1011,19 @@ lib_mod_connect(struct vnc *v)
-     /* check if bpp is supported for rdp connection */
+Index: b/vnc/vnc.c
+===================================================================
+--- a/vnc/vnc.c	2020-09-14 13:20:01.611135290 +0800
++++ b/vnc/vnc.c	2020-09-14 13:24:50.515034607 +0800
+@@ -1914,13 +1914,16 @@ lib_mod_connect(struct vnc *v)
      switch (v->server_bpp)
      {
--        case 8:
+         case 8:
++            v->server_msg(v, "VNC error - 8 bpp support is dropped "
++                          "since Xvnc 1.4.0", 0);
++            return 1;
          case 15:
          case 16:
          case 24:
@@ -28,11 +30,5 @@ index b0eb29b3..db593da0 100644
 -            v->server_msg(v, "VNC error - only supporting 8, 15, 16, 24 and 32 "
 +            v->server_msg(v, "VNC error - only supporting 15, 16, 24 and 32 "
                            "bpp rdp connections", 0);
-+            if (v->server_bpp == 8)
-+            {
-+                v->server_msg(v, "VNC error - 8 bpp support is dropped "
-+                              "since Xvnc 1.4.0", 0);
-+            }
-         return 1;
+             return 1;
      }
-

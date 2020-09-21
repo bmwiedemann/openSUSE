@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:40:02 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add libmpcdec-fastmath-no-const.patch: remove const declarations
+  from some arrays which should not have them (boo#1176374).
+
+-------------------------------------------------------------------
 Wed Jan  8 15:52:02 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add libmpcdec-extern.patch: add missing extern declarations

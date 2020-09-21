@@ -576,4 +576,12 @@
     <comment>submit new version 2.54.0</comment>
     <requestid>825948</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>4e068b6799ec7f62aa6b72779cff95d7</srcmd5>
+    <version>2.55.0</version>
+    <time>1600700620</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.55.0</comment>
+    <requestid>835179</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define clamav_check --enable-check
 %bcond_with clammspack
 Name:           clamav
-Version:        0.102.4
+Version:        0.103.0
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -37,14 +37,13 @@ Patch1:         clamav-conf.patch
 Patch4:         clamav-disable-timestamps.patch
 Patch5:         clamav-obsolete-config.patch
 Patch6:         clamav-disable-yara.patch
-Patch7:         clamav-str-h.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
 BuildRequires:  check-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
-BuildRequires:  libcurl-devel
+BuildRequires:  libcurl-devel >= 7.45
 BuildRequires:  libjson-c-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
@@ -56,6 +55,7 @@ BuildRequires:  pwdutils
 BuildRequires:  sed
 BuildRequires:  sendmail-devel
 BuildRequires:  systemd-rpm-macros
+#BuildRequires:  valgrind
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libsystemd)
 Requires(pre):  %_bindir/awk
@@ -125,7 +125,6 @@ that want to make use of libclamav.
 %patch4
 %patch5
 %patch6
-%patch7
 
 %build
 CFLAGS="-fstack-protector"
@@ -181,6 +180,7 @@ install -d -m 0755 %buildroot/%_unitdir
 install -m 0644 %SOURCE7 %buildroot/%_unitdir/clamd.service
 install -m 0644 %SOURCE8 %buildroot/%_unitdir/freshclam.service
 install -m 0644 %SOURCE9 %buildroot/%_unitdir/clamav-milter.service
+rm -f %buildroot/%_unitdir/clamav-clamonacc.service
 rm -f %buildroot/%_unitdir/clamav-daemon.service
 rm -f %buildroot/%_unitdir/clamav-daemon.socket
 rm -f %buildroot/%_unitdir/clamav-freshclam.service
@@ -194,7 +194,7 @@ done
 
 # regression tests
 %if !0%{?qemu_user_space_build:1}
-VALGRIND_GENSUP=1 make check
+make check VG=1
 %endif
 
 %post   -n libclamav9 -p /sbin/ldconfig

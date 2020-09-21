@@ -398,4 +398,605 @@
     <comment></comment>
     <requestid>786349</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>592311b0657a30aedea2495aab591520</srcmd5>
+    <version>4.6.3</version>
+    <time>1600702519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.3.
+  * screen.c: Check for MetaMonitorInfo being non-null before 
+    attempting to access it.
+  * Remove 0001-fix-warnings-when-compiling.patch
+  
+- Update to version 4.6.2
+  * Fallback WM theme - ensure dialogs such as nemo preferences have titlebar buttons
+  
+- Update to version 4.4.2
+  * meta-window-actor.c: Make sure to remove any existing desaturate effect when the window no longer has a shadow.
+  * src/ui/theme.c: Use a simpler method for getting an image file's dimensions before scaling it for hidpi.
+  * meta-window-actor.c: Detach after redirecting, not before unredirecting.
+  * MetaWindow: clear the cached window icon when _NET_WM_ICON changes, to force a regen the next time the icon is requested for the window.
+  
+- Update to version 4.4.1
+  * meta-shadow-factory: Fix terminal shadows
+  * window.c: Fix regression on window move
+  
+- add 0001-fix-warnings-when-compiling.patch
+  * don't treat Gi warnings as error
+- Update to version 4.2.2
+  * src/core/workspace.c: Check for a compositor before
+    attempting to use it when switching to a new workspace.
+  * src/core/window.c: remove extra conditions for showing
+    the tiling hud.
+- ”flto” caused the failed build
+- don't use %configure, some optflags cause the build to fail
+- Update to version 4.2.1
+  * Remove toggle_input_panel call during a key press.  
+  * Fix standalone muffin executable
+- Update to version 4.2.0:
+  * cogl-util: Use original meta_rectangle_new for older GPUs (#401)
+  * window: Pass the input rect to meta_compositor_tile_window (#411)
+  * Improvements for Cinnamon's app system (#418)
+  * Clutter master clock improvements (#392)
+  * window: Remove some window icon properties and related processing (#399)
+  * Avoid usage of g_getenv in frequently called functions (#423)
+  * Phase out MetaCompScreen (#424)
+  * clutter-stage: Don't emit &quot;after-paint&quot; when picking (#412)
+  * window-actor: Fix partially visible frameless windows, some window flickering cases (#405)
+  * Stop caching the shape region in MetaShapedTexture (#406)
+  * window-actor: Only apply desaturation effect if window has a shadow (#408)
+  * shadow-factory: Replace the changed signal with a function call (#426)
+  * window: Cache icons if the size is &lt;= icon_size, return a GdkPixbuf (#422)
+  * Support toggling vsync at runtime for better unredirection control (#425)
+  * window: Fix the position-changed signal not firing for CSD windows (#416)
+  * Move the desktop effects setting to Muffin (#428)
+  * Avoid getting context from Clutter in frequently called functions (#429)
+  * window: Cache the outer, client rects (#427)
+  * Various compositor improvements (#410)
+  * Improve sync between the cursor and frames (#397)
+  * ui: Don't apply CSD window filtering for button events (#435)
+  * screen: Ensure monitors update on monitor change (#439)
+  * screen: Update the rect cache on monitor change (#441)
+  * window: Update monitor state before showing the window (#444)
+  * compositor: Fix tiling placement (#447)
+  * Revert two commits from #410 (#448)
+  * clutter: Fix check for keyboard a11y features (#458)
+  * window-actor: Fix squished window textures (#453)
+  * window-actor: override Clutter opacity property and method (#449)
+  * Make compositor_private a MetaWindowActor type (#454)
+  * Fix unredirection for wine games, mpv
+  * clutter-actor: Keep is_dirty unchanged for culled actors (#456)
+  * boxes: Actually check for rectangle containment (#457)
+  * compositor: Avoid changing pipeline/source if shadow is not being painted (#459)
+  * Clean up the pre-paint functions (#460)
+  * clutter-stage: Remove unused variable, double assignment (#461)
+  * Add meta_display_popup_window_visible (#445)
+  * window-actor: Make actor non-reactive (#440)
+  * window-actor: Use int for opacity
+  * window: Remove obsolete cast in meta_window_adjust_opacity
+  * window: Fix the snap OSD getting stuck (#450)
+  *  Expose the sync method to preferences (#452)
+  * compositor: Fix workspace switching, improve window dragging smoothness (#465)
+  * Replace some deprecated GDK methods (#443)
+  * window: Remove unnecessary function call in send_sync_request (#467)
+  * core util.c: remove a couple of cases generating compile warnings (#470)
+  * compositor-private: remove a couple of duplicated lines (#472)
+  * Replace some GLib wrappers (#421)
+  * Fix unredirected windows not being clipped out of the stage (#474)
+  * Make sure windows paint before un-fullscreening (#475)
+  * Add MetaPrefsState struct for retrieving the prefs state without function invocation (#466)
+  * boxes: Return if the rect pointers are null (#478)
+  * window-actor: Add reference to MetaDisplay (#476)
+  *  window-actor: Support applying effects on clones (#464)
+  *  Fix cinnamon-screensaver freezing up when activated (#477)
+  * compositor: Check if priv is NULL before calling meta_window_actor_should_unredirect (#479)
+  * hidpi: Restore scaling to initial cursor size, tile HUD threshold and some tile/maximize break-away distances.
+  * window: Fix edge resistance
+  * Unconditionalize meta_window_update_outer_rect (#484)
+  * window-actor: Update clip_shadow before the redraw
+  * window: Call update_outer_rect in update_resize
+  * window: Fix tile HUD color not changing when holding the snap modifier during a drag (#488)
+  * Fix screensaver regressions (#489)
+  * gitignore auto-generated files (#506)
+  * window-actor: Use source actor for the close, minimize effects (#508)
+  * Fix segfault when using cinnamon --replace (#512)
+  * Fix the current workspace not being selected during startup (#511)
+  * Revert rect caching and obstructed windows optimizations (#515)
+  * Replace some GLib wrappers (#421)
+  * Replace some deprecated GDK methods (#443)
+  * Fix segfault when using cinnamon --replace (#512)
+  * Expose the sync method to preferences (#452)
+  * Fix unredirection for wine games, mpv
+  * Display: Add meta_display_get_pointer() and meta_display_get_window_pointer()
+  * window-actor: Fix segfault in meta_window_actor_should_unredirect (#514)
+  * Add meta_display_popup_window_visible (#445)
+  * window-private: Include compositor-private.h (#518)
+  * window-props: remove some warnings with casts (#504)
+  * menu.c: remove some compile warnings (#503)
+  * core.c: remove a compile warning (#499)
+  * meta-sync-ring: get rid of some compiler warnings (#496)
+  * gradient: resolve a few compile warnings (#495)
+  * cogl-utils: remove a deprecation (#494)
+  * boxes: remove an ISO C90 warning (#493)
+  * compositor: fix a few compiler warnings (#492)
+  * Revert unredirection backports (#520)
+  * meta-window-actor: don't toggle sync during runtime (#523)
+  * exclude code only needed in verbose mode (#502)
+- Update to version 4.0.6:
+  * Re-add gsettings key org.cinnamon.muffin button-layout
+  * window-actor: Fix corners not updating on size change (#394)
+  * shaped-texture: Return early if shape_region is NULL in ensure_mask (#389)
+  * window-actor: Fix the mask texture not updating after windows re-map after re-decoration (#390)
+  * Speed up window mapping (#391)
+  * Revert &quot;clutter: Deliver events sooner when possible&quot; (#387)
+  * docs: Disable internal cogl doc generation.
+  * Make transitions between restarts seamless
+  * window.c: Remove tooltip workaround.
+  * main: Reserve CLUTTER_PAINT for software rendering only (#379)
+  * window-actor: Fix window shading (#381)
+  * window-actor: Fix window artifacts on size/position change (#382)
+  * shaped-texture: Don't redraw when setting the shape region (#384)
+  * Fix VLC fullscreen controller position (#383)
+  * window: Implement _NET_RESTACK_WINDOW and XConfigureRequestEvent sibling (#386)
+  * always process clutter Makefile.in (#374)
+  * window-actor: Queue mask texture update on maximize (#376)
+  * window.c: Allow the user-defined workspace left/right shortcuts to be used when dragging a window in addition to the advertised arrow- left/right.
+  * meta-window-actor.c: Don't shadow dock type windows as a rule.
+  * window-props: Start respecting the _GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED window hint.
+  * stack.c: Don't attempt to restack or raise windows that are in the process of being unmanaged.
+  * theme-parser.c: Look in XDG_DATA_HOME (.local/share) for themes.
+  * stack: Place dock windows below other windows when the monitor they're on is in fullscreen.
+  * texture-tower: Remove CPU codepath for mipmap generation
+  * tower: make sure not to blend when updating tower
+  * MetaTextureTower: actually mark revalidated levels as valid
+  * texture-tower: Fix error case in meta-texture-tower
+  * Update for Cogl API breaks
+  * Use correct cogl object types
+  * compositor: Handle fences in the frontend X connection (#338)
+  * compositor: map overlay window before redirecting windows (#340)
+  * compositor: sync stacking of window actors even if they're not parented to the window groups (#341)
+  * compositor: Fix ClutterTimeline usage (#342)
+  * Remove clutter version check
+  * compositor: Don't connect to the stage's paint signal
+  * compositor: Default to META_SYNC_DELAY == 0
+  * Integrate Clutter and Cogl into Muffin (WIP)
+  * Remove libclutter-1.0-dev from debian dependencies
+  * Update muffin dependencies, add options found in the Mutter tree
+  * Add missing math lib to cogl-path
+  * Remove cogl-1.0 from deps
+  * Symlink muffin libs to libdir, needed for gtkdoc-scan in cinnamon to finish
+  * Remove clutter-1.0 from Makefile.am, get muffin linking to its private libs
+  * Fix segfault on initialization
+  * Remove debug option, remove cogl onscreen related calls in meta_pre_paint_func
+  * Add missing macros for Clutter
+  * Update build dependencies
+  * Disable kms-egl-platform
+  * Update dependencies for LMDE
+  * Clutter: Update Makefile.am.marshal
+  * Clutter: Prevent assertion error from wayland function
+  * Fix clutter stage assertion errors
+  * Clutter: expose vblank mode to gsettings
+  * clutter: Deliver events sooner when possible
+  * clutter: Smooth out master clock to smooth visuals
+  * Fix up segfault fix, apply upstream patches for window syncing
+  * Remove meta_window_actor_frame_complete, frame_callback
+  * window-group: Decompose culling operations into two methods
+  * window-actor: Base the paint volume on our children, not our shape
+  * Don't cache the paint volume on non-clipped redraws
+  * screen: Get monitor refresh rates from xrandr
+  * meta-window-actor: Use the monitor refresh rate to get frame timings
+  * meta-window-actor: Don't process invisible windows that have a pixmap
+  * Add option to toggle frame timings
+  * cogl-winsys-glx: Fix frame notification race/leak
+  * Replace libmuffin-dev with libmuffin0
+  * Don't use cogl_onscreen_add_frame_callback for Nvidia
+  * Fix desktop background appearing during the login sequence
+  * Remove remaining deprecated Cogl 1.0 usage (#348)
+  * window: Various performance improvements (#349)
+  * shaped-texture: Disable mipmapping during animation (#353)
+  * Improve handling of tracking the old focused window during restart (#346)
+  * meta-shaped-texture: Don't queue redraws for obscured regions
+  * meta-window-actor: Throttle obscured frame synced apps
+  * Remove unused variable
+  * shaped-texture: Remove dead code
+  * window_actor: Remove the frame_messages timeout in destroy
+  * window: Fix a couple leaks (#357)
+  * Double check whether the user time window was previously used (#358)
+  * clutter: Improve smoothness of visuals (#355)
+  * Only emit tiling-related signals when needed (#354)
+  * Avoid clutter_actor_queue_relayout in animations (#356)
+  * clutter: Fix offscreen-effect painting of clones (#360)
+  * Handle GL video memory purged errors (#363)
+  * screen: Fetch the COW window up-front (#365)
+  * Don't attempt to get monitor geometry on non-existent monitors (#366)
+  * window: Remove duplicated code (#367)
+  * Add threaded swap waiting (#368)
+  * gtk-doc: Add Clutter and Cogl references (#359)
+  * Cogl, Clutter: Avoid crashing when texture allocation fails (#370)
+  * keybindings.c: Rework workspace navigation during a mouse move grab.
+  * keybindings.c: Squelch fall-thru warnings in GCC7+ from previous commit.  The fall-thru is intentional behavior in these cases.
+  * edge resistance: Disable all edge resistance when the pref is disabled.
+  * shaped-texture: Remove an unnecessary set to NULL
+  * shaped-texture: Simplify pipeline creation
+  * shaped-texture: Use non-deprecated cogl APIs
+  * Support _NET_WM_OPAQUE_REGION
+  * compositor: Fix crash when adding a window with an opaque region
+  * window-actor: Use g_clear_pointer
+  * Fix up &quot;Support _NET_WM_OPAQUE_REGION&quot;
+  * window-props: Don't make another round-trip to fetch the opaque region
+  * shaped-texture: Turn blending off when drawing entirely opaque regions
+  * shaped-texture: Prevent no clip region from being used as an empty clip region
+  * shaped-texture: Remove bad comment
+  * shaped-texture: Actually fetch rectangles from the blended_region
+  * shaped-texture: Fix memory leak
+  * shaped-texture: Use nearest-pixel interpolation if the texture is unscaled
+  * shaped-texture: Make sure to set the texture tower's texture
+  * shaped-texture: Clean up code flow a bit
+  * shaped-texture: Clean up slightly
+  * shaped-texture: If we have too many rectangles, don't paint the opaque
+  * shaped-texture: Fix the logic when the blended region is empty
+  * Use meta_actor_painting_untransformed() for MetaShapedTexture
+  * shaped-texture: Don't set a small minimum size
+  * shaped-texture: Clean up some internals
+  * shaped-texture: Repeat edge pixels instead of mirroring the image
+  * shaped-texture: Remove unnecessary copies of the pipeline
+  * shaped-texture: Invalidate mask texture when main texture changes size
+  * Fix Codacy warning
+  * Fix the input region not working properly
+  * Fix leak when resizing windows
+  * Don't set the mask texture on every paint
+  * window-actor: Don't queue a redraw when queueing a new pixmap
+  * window-actor: Remove the bounding region
+  * window-actor: Don't add shadows to popups if the toolkit does
+  * window-actor: Phase out the size/position changed signals, and connect to shaped texture's size changed signal
+  * window-actor: Give notify::opacity signal an ID
+  * window-actor: Move all buffer management and damage correction here
+  * MetaFrame: Cache borders
+  * Fix title bar artifacts on unmaximize
+  * Fix redraw issues when windows change size
+  * compositor: Don't call process_damage if the window is gone
+  * Fix redraw issues in some fullscreen applications
+  * Don't queue full stage relayouts when moving windows
+  * window: Make sure update_corners gets called after every resize, theme change
+  * Fix up tile signal optimization (#372) 
+- Update to version 3.8.2:
+  * utils: Fix zenity dialogue - don't use monospace for the
+    heading, don't italicise the info text, force a wider dialogue
+    window.
+  * window.c: Change behaviour of meta_window_get_all_monitors()
+    to return only those monitors of a fullscreen window that are
+    completely covered by the window.
+  * screen.c: Ignore dock-type windows when determining fullscreen
+    window coverage on a monitor.
+  * window.c: Queue a fullscreen check when a window leaves a
+    monitor.
+  * window: Move legacy fullscreen workaround out of constraints
+    and into meta_window_move_resize_request.
+  * window.c: Set the &quot;saved_maximize&quot; internal state based on the
+    resulting state of the window after a maximize call, not the
+    directions that were requested for the call.
+  * window.c: Always use the full window extents (including
+    invisible) when running meta_window_get_all_monitors() on CSD
+    windows.
+  * meta-window-actor.c: Default to using shadows on windows.
+  * Software rendering: Don't remove shadows.
+  * screen.c: Ignore transient windows when working through the
+    stack figuring out if a monitor is fullscreened or not.
+  * window-props.c: When reloading the transient_for property, if
+    the given window id is not found, search existing windows'
+    client leader ids for a match, and assign the match's window as
+    the transient parent instead (this seems to be typical for Qt
+    applications).
+- Update to version 3.8.1:
+  * prefs: Fix introspection for meta_prefs_get_button_layout().
+  * Remove META_LAYER_FULLSCREEN.
+  * Make MetaButtonLayout usable from introspection.
+  * screen.c: Redefine a fullscreen monitor as one where there is a
+    fullscreen window and that window is the topmost there.
+- Update to version 3.8.0:
+  * Remove gsettings key org.cinnamon.muffin button-layout.
+  * Fix an issue where window turns to a solid coloured rectangle
+    during the destroy animation.
+  * window: Stop updating layers on focus changes.
+  * window: Do not unfocus on new window.
+  * window.c: always notify when tile-type property changes.
+  * Fixes workspace animation direction for grid systems.
+  * window-props.c: Don't scale GTK_FRAME_EXTENTS, it comes
+    already-scaled from Gtk (as of GTK+ 3.15.1).
+  * MetaWindow: Support gtk edge constraints (restores csd-window
+    resizing while tiled or snapped.)
+  * atomnames.h: Move xapp atoms to non-EWMH list (they're actually
+    named wrong but it's sort of late now).
+  * window.c: catch X errors when setting gtk constraints.
+    An error can occur when closing a tiled csd window.
+    It's likely that because of how closing occurs on these type
+    windows (we respond to it, we don't initiate it) that the XID
+    may be invalid by the time we move to update its properties.
+  * meta-window-group: Report a paint volume.
+  * meta-background: Report a paint volume.
+- Update to version 3.6.0:
+  * x11/xprops: Plug a memory leak.
+  * Remove old things from the initial fork that seem not needed.
+- Update to version 3.4.1:
+  * Allow keyboard window switching (alt-Tab) during drag-and-drop.
+  * Don't add invisible resize borders to fullscreen windows.
+  * Fix a crash when toplevel windows were set to unexpected
+    window types.
+  * Correct problems with windows moving when restarting or
+    switching window managers.
+  * Fix interaction of tiled windows with multiple monitors.
+  * Make meta_display_unmanage_screen() public.
+  * Fix a problem with turning off window decorations on the fly.
+  * Fix spurious assertion failures with themes such as Nodoka.
+  * Misc. bug fixes.
+- Update to version 3.4.0:
+  * Change to sys/wait.h
+  * Make meta_workspace_get_work_area_for_monitor public and
+    introspectable.
+  * Fix meta_screen_get_monitor_geometry override redirect
+    (gh#linuxmint#muffin#283).
+- Update to version 3.2.2:
+  * Make background transitions configurable.
+- Update to version 3.2.1:
+  * window groups: Don't assign IM popups to META_WINDOW_POPUP_MENU.
+- Update to version 3.2.0:
+  * meta-window-actor: Fix unredirect heuristic Damage coordinates
+    are relative to the drawable not to the screen. So we have to
+    check whether x and y are 0 and not window_rect.x/y otherwise
+    the herustic will never trigger for windows on monitors whos x
+    and y are not 0.
+  * meta-window-actor: Consider needs_destroy in is_destroyed().
+    According to the documentation, the method returns &quot;whether the
+    X window that the actor was displaying has been destroyed&quot; -
+    that is very much true when we delay the actual actor
+    destruction for a destroy animation, so update the method
+    accordingly.
+  * meta-window-actor: Do not request unredirection when destroyed
+    WindowActors can outlive their corresponding window to animate
+    unmap. Unredirecting the actor does not make sense in that
+    case, so make sure to not request it.
+  * window-actor: Skip frame-sync when the corresponding window
+    is gone.
+  * Migrate away from gnome-common deprecated vars and macros.
+  * meta-window-actor: Change unredirection hints to match spec
+    changes.
+  * x11/window-props: Initialise the bypass compositor hint.
+  * backgrounds: Add a simple crossfade effect on bg transitions,.
+  * backgrounds: Clean up a couple things.
+  * compositor: Clean up a bunch of deprecated clutter
+    functionality.
+  * wm-tester: Clean up gtk deprecations.
+  * Remove old references to tooltips.
+  * frames: Remove expose_delayed.
+  * Don't remove client-side frame extents when maximizing
+    (gh#linuxmint/Cinnamon#5343).
+  * Add screen signal for skip_taskbar window hint changes.
+    This is needed by the window list applet in Cinnamon to know
+    when to remove (or add) an item in the window list.
+  * cogl-utils.c: Don't skip error parameters.
+  * meta-window-actor.c: Only override the unredirect heuristic
+    with our unredirect-fullscreen-windows preference.
+  * Make AX_ macros optional.
+- Update to version 3.0.5:
+  * cogl-utils: Don't set such a tight restriction on texture sizes.
+  * keybindings.c: Fix alignment calculation for handle_move_to -
+    it was not accounting for GTK_FRAME_EXTENTS in the final x,y
+    position.
+  * window.c: Temporary workaround for gtk3 tooltip position bug
+    and Gtk 3.18.
+- Update to version 3.0.4:
+  * Use g_clear_pointer to clean up finalisation code.
+  * window-actor: Remove custom region destruction methods with
+    g_clear_pointer.
+  * constraints.c: Ignore snapped windows whe maximising desktop
+    windows.
+  * window-actor: Fix leaked frame list.
+- Update to version 3.0.3 (changes since 3.0.1):
+  * window.c: Handle META_TILE_MAXIMIZE in update_tile_mode, and
+    move its call to handle both moving and resizing. This
+    prevents strange resize behaviour when you move a window to an
+    upper tile region without tiling it. Its tile state becomes
+    inconsistent, and an attempt to resize it vertically ends up
+    resizing in the wrong (or both) directions.
+  * meta-window-actor.c: Put META_WINDOW_DND-type windows in the
+    regular window group (xdndHandler.js in cinnamon expects it
+    there).
+- Update to version 3.0.1:
+  * display.c: Handle META_TILE_MAXIMIZE in
+    meta_resize_gravity_from_tile_mode().
+  * tiling: Fix resizing of partially maximised windows.
+  * frames.c: Do not infinite loop on the variants GList.
+    Make variable names less similar.
+- Update to version 3.0.0:
+  * tiling: Wait to update window properties on tiled windows until
+    after the window has been resized.
+  * tiling: Remove the tiling property when a window is no longer
+    tiled.
+  * tiling: Remove a redundant check in the tiling keyboard handler.
+  * window.c: Fix maximisation state when using tile hotkeys, clean
+    up tile flags fully when the window is restored to normal.
+  * tiling:  Fix mouse/keyboard resizing.
+  * Enable tiling from a non-drag-initiated mouse move (for
+    instance, via hotkey or titlebar menu).
+  * keybindings.c: Get correct gravity during keyboard resize.
+  * window.c: Don't animate the end of a tile resizing.
+  * core: Assume we always have a compositor.
+  * muffin.c: Fix executable from crashing when x11 isn't
+    explicitly set as the clutter backend. We do this for Cinnamon
+    itself in Cinnamon's main.c - it needs to be set before
+    g_type_init.
+  * theme.c: Get style context state instead of using
+    GTK_STATE_FLAG_NORMAL, Gtk 3.20+ complains if the state passed
+    doesn't match the context's current state. This quiets a lot of
+    log spam when window focus changes.
+  * window.c: Don't send configure notifies for OR windows this
+    causes popup placement issues with Gtk 3.20+, the assertion is
+    left out, as we still need to send configure notifies for OR
+    windows in other cases.
+  * prefs: Remove the live-hidden-windows preference.
+    It's hardcoded to TRUE anyway.
+  * Pull some upstream changes for mapping and unmapping windows.
+  * compositor: Rework handling of our top_window_group.
+  * Improve tracking of fullscreen windows.
+  * Fix ppc64el packages build.
+  * Removed unneeded postinst and prerm files.
+- Rename and rebase muffin-2.4.0-SVID_SOURCE.patch to
+  muffin-svid-default-source.patch.
+- Update to 2.8.5:
+  * tiling: Account for gtk frame extents when evaluating whether a
+    c-s-d window can be tiled or not.
+  * prefs.c: Update keybindings even when the new keybinding is
+    empty - this prevents old built-in (muffin) keybindings from
+    continuing to work even after they've been cleared.
+  * prefs: Don't attach modal dialogs by default.
+  * cogl wrappers: Perform a sanity check on the width/height
+    request and clamp the sizes to a maximum of (x) screen size.
+  * display.c: prevent assertion errors when clicking out of
+    window menus.
+  * Disable frame sync when used when OpenGL version used by the
+    driver is &lt; 3.0.
+  * meta-sync-ring.c: Simplify openGL version check to only check
+    the major version number. Make the COGL_DRIVER_GL check a bit
+    safer.
+- Update to 2.8.4:
+  * meta-window-actor.c: Remove duplicate call to
+    meta_window_get_input_rect().
+- Require cinnamon-gschemas.
+- Update to 2.8.3:
+  * Remove invalid (transfer) annnotations.
+  * keybindings: make rebuilding keybindings an idle function.
+    Prior to this, meta_display_rebuild_keybindings was called
+    around 60 times at startup on my more-or-less stock desktop.
+    Now it is called approximately once, as an idle function,
+    after all keybinding changes are complete.
+- Update to 2.8.2:
+  * Rework the strut handling code to better handle stacked monitor
+    situations.
+  * keybindings: Currently our move-to-center keybinding respects
+    the current location of the mouse cursor when placing the
+    window. Change the other move-window-to-* keybindings to match
+    this behaviour. Also fixes issues with window being placed
+    incorrectly with regards to the panel on multi-monitors with
+    mixed panel layouts.
+- Update to 2.8.1:
+  * constraints: clean up an unused variable.
+  * Attach modal windows by default.
+- Update to 2.8.0:
+  * screen.c: Fix toggle-desktop behaviour.
+  * Fix some warnings.
+  * compositor.c: Handle unstable API break.
+  * Implement frame sync between apps and compositor.
+  * Add meta-sync-ring and nvidia patch.
+  * main.c: remove incorrect comment.
+  * Keybindings: Change how the &quot;Center window is screen&quot; hotkey
+    works so it centers the window on the proper screen in multiple
+    monitor setups and matches the placement of centered, newly
+    opened windows.
+  * screen: Add a public meta_screen_get_current_monitor().
+    A convenience function for getting the current monitor index
+    for the cursor. Helpful when implementing features with proper
+    multiple monitor support.
+  * Center attached dialogs on the parent window instead of the
+    parents titlebar.
+  * Pull some upstream fixes from Mutter to allow getting/setting
+    a windows icon geometry. This will allow us to get a proper
+    working minimise effect when using multiple panel applets.
+- Add missing zenity dependency.
+- Spec cleanup.
+- update to version 2.6.1
+- update to version 2.4.5
+- update version 2.4.1
+  * re-add keybindings schema to allow cinnamon-desktop migration 
+    script to work
+- update version 2.4.0
+- add patch: muffin-2.4.0-SVID_SOURCE.patch
+  * _BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE
+- drop openSUSE 12.3 support, it's going to EOL
+- update version 2.3.0
+  * Send destroy events for minimized, attached windows to Cinnamon, 
+    so the parent un-dimming can occur.
+  * Fix #154
+  * Don't break scrolling when 'special key to move windows' is disabled.
+  * Ensure steam notifications appear over the panel.
+- use a special tarball for openSUSE 12.3
+  * muffin master adopt many GNOME 3.10+ changes for Hi-DPI support.
+    while openSUSE 12.3 ships 3.8
+- added patch: muffin-cogl-api.patch
+  * fix api breaks in openSUSE 12.3
+- update version 2.2.6
+- update version 2.2.5
+- update version 2.2.4
+- update version 2.2.3
+- update version 2.2.2
+- update version 2.2.1
+- update version 2.0.5
+  * Real fix for double frame decorations when resizing corner-tiled windows
+  * Revert &quot;Temporary hack for resized corner-tiled window frame issues on themes&quot;
+  * Fix for desktop modal dialogs being centered on the workspace instead of the primary monitor.
+  * Fix unescapable fullscreen in chrome/chromium. 
+  * Revert &quot;Partial fix for errant tooltips - fixes all cases except nemo views&quot;
+  * Partial fix for errant tooltips - fixes all cases except nemo views
+  * Temporary hack for resized corner-tiled window frame issues on themes 
+    that support tiling... this results in a gradually growing window if you
+    resize repeatedly, but for now it prevents average users from getting the
+    dreaded 'double frame'.  Still not sure what's causing.
+  * Stop-gap fix for stuttered resizing of gtk3 windows.
+  * Don't apply snapping rules to maximized windows when they're in a different workspace. 
+- update version 2.0.4
+  *Improve frame styling for snapped/tiled windows in themes that support it
+- 2.0.3
+  *Only perform workspace switch on drag during a mouse drag. Fixes #2513
+- update version 2.0.2
+  * no upstream changelog available
+- split typelib-1_0-MetaMuffin-0_0 subpackage.
+  * remove previous workaround, upstream has another workaround
+- Update to version 1.1.2
+  + Fix crash when frameless window calls meta_window_move_frame
+- Spec file rework
+- Update to version 1.1.1
+  + no upstream changelog available
+  + bug fix point release
+- Update to version 1.1.0
+  + no upstream changelog available
+- Remove muffin-1.0.9-fix_fsf_address.patch: fixed upstream
+- Update to version 1.0.9
+  + move from gconf to gsettings
+  + add 'pkgconfig(sm)' to BRs; enable session management
+  + spec updates &amp; fixes
+- Add muffin-1.0.9-fix_fsf_address.patch; taken from upstream, can
+  be dropped next update.
+- Update to version 1.0.3:
+  + enable fixes to build with GNOME 3.4
+- Update to version 1.0.2:
+  + Minor fixes, cosmetical.
+  + removed 'Provides'/'Obsoletes' for old typelib sub-package. It
+    shouldnt be installed in updated installations.
+  + Minor spec improvements.
+- Update to version 1.0.1:
+  + some cosmetic fixes
+- Remove muffin-fix-fsf-address.patch; upstreamed
+- Merge internal typelib into main package and add self-obsoletion
+  for smooth transiction.
+- Filter 'typelib(Meta-3.0)' provides to avoid potential issues
+  with 'mutter' typelib (same name). Report to upstream, should
+  be fixed.
+- Add muffin-fix-fsf-address.patch: update FSF postal address in
+  headers. Upstreamed.
+- TypeLib package has been corrected to follow namming conventions;
+- Removed 'evil' typelib dependency from shared libs package.
+- Added Obsoletes/Provides old typelib package for easy upgrade on
+  existing customers.
+- Improved spec licensing texts.
+- Add spec license.
+- License update: GPL-2.0+
+  No indication of GPL-2.0 licenses in the package (i.e. &quot;only&quot;)
+- Improve typelib package and some cosmetics
+- Add typelib dependency to libmuffin
+- Split introspection bindings into: typelib-%{_libname}
+- Disable '-Werror' check through %configure for openSUSE &gt;= 1220,
+  upstream needs to fix (need Factory build for debugging).
+- Initial package.
+</comment>
+    <requestid>835492</requestid>
+  </revision>
 </revisionlist>

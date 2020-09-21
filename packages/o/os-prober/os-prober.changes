@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 15 21:35:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.77:
+  * Update Vcs-{Browser,Git} to point to salsa (alioth's replacement).
+  * Add CI configuration for gitlab
+  * Change priority of os-prober binary package to optional, since
+    "Priority: extra" is now deprecated.
+  * Remove trailing whitespaces from changelog file, to fix lintian tag.
+
+-------------------------------------------------------------------
 Thu Aug 27 08:39:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Install os-prober files to %{_prefix}/lib: os-prober and all its

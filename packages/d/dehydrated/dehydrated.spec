@@ -21,7 +21,7 @@
 %define _home         %{_sysconfdir}/dehydrated
 %define _postrunhooks %{_home}/postrun-hooks.d
 
-%if 0%{?sle_version} >= 120100 || 0%{?suse_version} >= 1210 || 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700 
+%if 0%{?sle_version} >= 120100 || 0%{?suse_version} >= 1210 || 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 %define  _lock_dir /run/dehydrated
 %bcond_without systemd
 %else
@@ -29,7 +29,7 @@
 %bcond_with    systemd
 %endif
 
-%if 0%{?sle_version} >= 150000 || %{defined fedora}
+%if 0%{?sle_version} >= 150000 || 0%{?suse_version} >= 1500 || %{defined fedora}
 %bcond_without nginx
 %else
 %bcond_with    nginx

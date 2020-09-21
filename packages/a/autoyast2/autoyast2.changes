@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 18 12:20:10 CEST 2020 - schubi@suse.de
+
+- Removing package evaluation via AY schema. Using autoyast(...)
+  supplements instead (bsc#1146494).
+- 4.3.51
+
+-------------------------------------------------------------------  
+Thu Sep 17 20:03:44 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Import general and report sections in case that some pre-script
+  modified the profile (bsc#1175725)
+- 4.3.50
+
+-------------------------------------------------------------------
+Thu Sep 17 09:30:44 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Fix 'bcache_options' element using the right type (bsc#1176595)
+- 4.3.49
+
+-------------------------------------------------------------------
 Mon Sep 14 10:34:41 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the returned value form the AutoinstPartPlan's Read method

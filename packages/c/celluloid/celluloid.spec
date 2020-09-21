@@ -18,7 +18,7 @@
 
 %define _name   io.github.celluloid_player.Celluloid
 Name:           celluloid
-Version:        0.19
+Version:        0.20
 Release:        0
 Summary:        Simple GTK+ frontend for MPV
 License:        GPL-3.0-or-later

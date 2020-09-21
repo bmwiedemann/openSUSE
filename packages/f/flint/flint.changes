@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sat Aug 29 22:49:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to version 2.6.3
+- Update to version 2.6.3 [boo#1169283]
   * New features:
   * Multivariate polynomials over most standard rings (sparse
     distributed)

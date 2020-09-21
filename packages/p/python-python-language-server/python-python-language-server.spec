@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-python-language-server
-Version:        0.34.1
+Version:        0.35.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
@@ -44,7 +44,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jedi >= 0.17
 Requires:       python-pluggy
-Requires:       python-python-jsonrpc-server >= 0.3.2
+Requires:       python-python-jsonrpc-server >= 0.4.0
 Requires:       python-setuptools
 Recommends:     python-autopep8
 Recommends:     python-flake8 >= 3.8.0
@@ -56,12 +56,13 @@ Recommends:     python-pylint
 Recommends:     python-rope >= 0.10.5
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module future >= 0.14.0}
 BuildRequires:  %{python_module jedi >= 0.17}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-jsonrpc-server >= 0.3.2}
+BuildRequires:  %{python_module python-jsonrpc-server >= 0.4.0}
 %if %{with python2}
 BuildRequires:  python2-backports.functools_lru_cache
 BuildRequires:  python2-configparser
@@ -93,8 +94,6 @@ will be enabled:
 %prep
 %setup -q -n python-language-server-%{version}
 %autopatch -p1
-# Unpin software that has newer versions on Tumbleweed
-sed -i "s/'ujson<=.*'/'ujson'/" setup.py
 
 %build
 %python_build

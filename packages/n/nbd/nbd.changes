@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 18 08:53:47 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Remove firewalld service file - it's in the main firewalld
+  package now.
+
+-------------------------------------------------------------------
 Thu Aug 20 07:03:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix typo in previous commit (%{prefix/lib} ->%{_prefix}/lib).

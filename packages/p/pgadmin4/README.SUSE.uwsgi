@@ -1,0 +1,6 @@
+To configure pgadmin with Apache and uwsgi, just add the follwing lines to a vhost:
+
+    ProxyPass /pgadmin unix:/run/uwsgi/uwsgi-pgadmin.sock|uwsgi://localhost/
+    <Directory /usr/lib/python3.6/site-packages/pgadmin4-web/>
+        Require all granted
+    </Directory>

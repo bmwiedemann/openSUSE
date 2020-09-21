@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 18 14:49:49 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.0+git20200918.c14836a:
+  * All services should 'Want=' targets not just 'After='
+
+-------------------------------------------------------------------
 Tue Sep 01 12:15:54 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.0+git20200901.c31b0cc:

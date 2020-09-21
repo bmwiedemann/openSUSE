@@ -21,13 +21,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           firewalld
-Version:        0.7.5
+Version:        0.9.0
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 Url:            http://www.firewalld.org
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/firewalld/firewalld/releases/download/v%{version}/firewalld-%{version}.tar.gz
 Patch0:         0001-firewall-backend-Switch-default-backend-to-iptables.patch
 
 BuildRequires:  autoconf
@@ -55,6 +55,7 @@ Requires:       iptables
 Requires:       logrotate
 Requires:       nftables
 Requires:       python3-firewall = %{version}
+Requires:       python3-nftables
 Requires:       sysconfig
 Requires(post): %fillup_prereq
 Suggests:       susefirewall2-to-firewalld
@@ -217,11 +218,13 @@ fi
 %dir %{_prefix}/lib/firewalld/services
 %dir %{_prefix}/lib/firewalld/zones
 %dir %{_prefix}/lib/firewalld/helpers
+%dir %{_prefix}/lib/firewalld/policies
 %{_prefix}/lib/firewalld/icmptypes/*.xml
 %{_prefix}/lib/firewalld/ipsets/README
 %{_prefix}/lib/firewalld/services/*.xml
 %{_prefix}/lib/firewalld/zones/*.xml
 %{_prefix}/lib/firewalld/helpers/*.xml
+%{_prefix}/lib/firewalld/policies/*.xml
 %{_datadir}/polkit-1
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system.d
@@ -236,6 +239,7 @@ fi
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/zones
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/ipsets
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/helpers
+%attr(0750,root,root) %dir %{_sysconfdir}/firewalld/policies
 %{_unitdir}/firewalld.service
 %{_fillupdir}/sysconfig.%{name}
 %{_datadir}/dbus-1/system.d/FirewallD.conf

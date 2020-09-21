@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 13:44:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable python-gtk plugin on suse_version > 1500: still relying
+  on python2, which is EOL.
+
+-------------------------------------------------------------------
 Mon Jul 13 13:07:55 UTC 2020 - Michael Vetter <mvetter@suse.com>
 - Update to 3.17.6:
   * It is now possible to 'Inherit Folder properties and processing

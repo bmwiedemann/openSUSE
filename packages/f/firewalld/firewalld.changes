@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Sep  9 14:47:20 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Add python3-nftables as a requirement.
+
+-------------------------------------------------------------------
+Fri Sep  4 16:10:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- update to 0.9.0:
+  * New major features
+    * prevention of Zone Drifting
+    * Intra Zone Forwarding
+    * Policy Objects
+  * For a full list of changes, see
+    https://github.com/firewalld/firewalld/compare/v0.8.0...v0.9.0
+
+-------------------------------------------------------------------
+Sun Aug 16 17:09:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.8.3:
+  * nftables: convert to libnftables JSON interface
+  * service: new “helper” element to replace “module” More accurately represents the conntrack helper. Deprecates “module”.
+  * allow custom helpers using standard helper modules (rhbz 1733066)
+  * testsuite is now shipped in the dist tarball
+  * Typo in firewall-config(1)
+  * Fix typo in TFTP service description
+  * doc: README: add note about language translations
+  * fix: rich: source/dest only matching with mark action
+  * feat: AllowZoneDrifting config option
+  * feat: nftables: support AllowZoneDrifting=yes
+  * feat: ipXtables: support AllowZoneDrifting=yes
+  * fix: firewall-offline-cmd: Don’t print warning about AllowZoneDrifting
+  * fix: add logrotate policy
+  * doc: direct: add CAVEATS section
+  * fix: checkIP6: strip leading/trailing square brackets
+  * fix: nftables: remove square brackets from IPv6 addresses
+  * fix: ipXtables: remove square brackets from IPv6 addresses
+  * fix: nftables: ipset types using “port”
+  * fix: nftables: zone dispatch with multidimensional ipsets
+  * fix: ipset: destroy runtime sets on reload/stop
+  * fix: port: support querying sub ranges
+  * fix: source_port: support querying sub ranges
+  * doc: specify accepted characters for object names
+  * fix: doc: address copy/paste mistakes in short/description
+  * fix: configure: atlocal: quote variable values
+  * fix: nftables: allow set intervals with concatenations
+  * doc: clarify –set-target values “default” vs “reject”
+  * fix: update dynamic DCE RPC ports in freeipa-trust service
+  * fix: nftables: ipset: port ranges for non-default protocols
+  * fix(systemd): Conflict with nftables.service
+  * fix(direct): rule in a zone chain
+  * fix(client): addService needs to reduce tuple size
+  * fix(doc): dbus: signatures for zone tuple based APIs
+  * fix(config): bool values in dict based import/export
+  * fix(dbus): service: don’t cleanup config for old set APIs
+  * fix(ipset): flush the set if IndividiualCalls=yes
+  * fix(firewall-offline-cmd): remove instances of “[P]” in help text
+  * fix(rich): source mac with nftables backend
+  * docs: replace occurrences of the term blacklist with denylist
+  * fix: core: rich: Catch ValueError on non-numeric priority values
+  * docs(README): add libxslt for doc generation
+  * fix(cli): add –zone is an invalid option with –direct
+  * fix(cli): add ipset type hash:mac is incompatible with the family parameter
+
+-------------------------------------------------------------------
 Wed Aug 12 13:48:37 UTC 2020 - mrostecki@suse.com
 
 - Update to version 0.7.5:

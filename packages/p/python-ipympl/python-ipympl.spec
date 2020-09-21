@@ -18,8 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define labver  0.7.3
-%define mainver 0.5.7
+%define labver  0.7.4
+%define mainver 0.5.8
 %bcond_with     test
 Name:           python-ipympl
 Version:        %{mainver}
@@ -29,22 +29,24 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/matplotlib/ipympl
 Source:         https://files.pythonhosted.org/packages/source/i/ipympl/ipympl-%{mainver}.tar.gz
+BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets >= 7.5.0}
-BuildRequires:  %{python_module matplotlib-web >= 2.0.0}
+BuildRequires:  %{python_module matplotlib >= 2.0.0}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  npm
 BuildRequires:  python-rpm-macros
+Requires:       python-ipykernel >= 4.7
 Requires:       python-ipython
 Requires:       python-ipywidgets >= 7.5.0
-Requires:       python-matplotlib-web >= 2.0.0
+Requires:       python-matplotlib >= 2.0.0
 Provides:       python-jupyter_ipympl = %{mainver}
 Obsoletes:      python-jupyter_ipympl < %{mainver}
-BuildArch:      noarch
 Provides:       jupyter-ipympl = %{mainver}
+BuildArch:      noarch
 %python_subpackages
 
 %description

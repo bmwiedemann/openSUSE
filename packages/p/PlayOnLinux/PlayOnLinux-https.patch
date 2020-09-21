@@ -1,0 +1,68 @@
+diff -Pdpru playonlinux.orig/bash/bug_report playonlinux/bash/bug_report
+--- playonlinux.orig/bash/bug_report	2017-06-19 21:03:38.000000000 +0200
++++ playonlinux/bash/bug_report	2017-10-03 10:55:54.968200421 +0200
+@@ -89,9 +89,9 @@ SCRIPTTITLE="$LOGTITLE"
+ 
+ if [ "$LOGTITLE" = "" ]
+ then
+-	POL_Website_curl "http://www.playonlinux.com/api/uploadLog.php" -F message="$DESCRIPTION" -F script="$SCRIPTTITLE"
++	POL_Website_curl "https://www.playonlinux.com/api/uploadLog.php" -F message="$DESCRIPTION" -F script="$SCRIPTTITLE"
+ else
+-	POL_Website_curl "http://www.playonlinux.com/api/uploadLog.php" -F message="$DESCRIPTION" -F script="$SCRIPTTITLE" -F bugfile="@$POL_USER_ROOT/logs/$LOGTITLE/$LOGTITLE.log"
++	POL_Website_curl "https://www.playonlinux.com/api/uploadLog.php" -F message="$DESCRIPTION" -F script="$SCRIPTTITLE" -F bugfile="@$POL_USER_ROOT/logs/$LOGTITLE/$LOGTITLE.log"
+ fi
+ 
+ BugURL="$(POL_Website_Result)"
+diff -Pdpru playonlinux.orig/bash/playonlinux-url_handler playonlinux/bash/playonlinux-url_handler
+--- playonlinux.orig/bash/playonlinux-url_handler	2017-06-19 21:03:38.000000000 +0200
++++ playonlinux/bash/playonlinux-url_handler	2017-10-03 10:56:14.882333237 +0200
+@@ -24,8 +24,8 @@ source "$PLAYONLINUX/lib/sources"
+ 
+ 
+ STRING="$1"
+-STRING="${STRING/playonlinux:\/\//http://}"
+-STRING="${STRING/playonmac:\/\//http://}"
++STRING="${STRING/playonlinux:\/\//https://}"
++STRING="${STRING/playonmac:\/\//https://}"
+ 
+ url_cut="$(echo $STRING | cut -d "/" -f3)" 
+ if [ "$url_cut" == "www.playonlinux.com" ] || [ "$url_cut" == "www.playonmac.com" ]
+diff -Pdpru playonlinux.orig/bash/run_app playonlinux/bash/run_app
+--- playonlinux.orig/bash/run_app	2017-06-19 21:03:38.000000000 +0200
++++ playonlinux/bash/run_app	2017-10-03 10:56:25.673321405 +0200
+@@ -74,7 +74,7 @@ send_stat()
+ 		POL_LoadVar_Device --non-interactive
+ 	
+ 		Info="$(printf "$VendorID~$DeviceID~$currentOS~$ScriptName~$amd64_set~$OpenGL32~$OpenGL64~$Version~$ExitCode~$DISTRO~$vms~$UniqId~$archty~$PACKAGE~$VERSION~$delta" | POL_base64)"
+-		POL_Website_GET "http://www.playonlinux.com/api/s.php?data=$(POL_Website_urlencode "$Info")"
++		POL_Website_GET "https://www.playonlinux.com/api/s.php?data=$(POL_Website_urlencode "$Info")"
+ 		echo "$UniqId" > "$POL_USER_ROOT/configurations/reports/$PACKAGE"
+ 	fi
+ }
+diff -Pdpru playonlinux.orig/lib/scripts.lib playonlinux/lib/scripts.lib
+--- playonlinux.orig/lib/scripts.lib	2017-06-19 21:03:38.000000000 +0200
++++ playonlinux/lib/scripts.lib	2017-10-03 10:59:50.178140050 +0200
+@@ -1004,7 +1004,7 @@ POL_Shortcut_AddProfileLink()
+ 	
+ 	AUTHOR="$2"
+ 	if [ "$(POL_Config_Read "PROFILE_LINK")" != "FALSE" ]; then
+-		POL_Shortcut_AddLink "$1" "PROFILEBUTTON/$(eval_gettext '$AUTHOR profile')" "http://www.$POL_DNS/en/profil-$(POL_Website_urlencode "$3").html?referer=$(POL_Website_urlencode "$1")"
++		POL_Shortcut_AddLink "$1" "PROFILEBUTTON/$(eval_gettext '$AUTHOR profile')" "https://www.$POL_DNS/en/profil-$(POL_Website_urlencode "$3").html?referer=$(POL_Website_urlencode "$1")"
+ 	fi
+ }
+ POL_LoadVar_Distro ()
+diff -Pdpru playonlinux.orig/lib/setupwindow.lib playonlinux/lib/setupwindow.lib
+--- playonlinux.orig/lib/setupwindow.lib	2017-06-19 21:03:38.000000000 +0200
++++ playonlinux/lib/setupwindow.lib	2017-10-03 11:00:36.533790895 +0200
+@@ -286,9 +286,9 @@ POL_SetupWindow_login ()
+ 	# Usage: POL_SetupWindow_login "Message" "Title" "Register link"
+ 	
+ 	if [ "$POL_OS" = "Mac" ]; then
+-		register_link="http://www.playonmac.com/en/register.html"
++		register_link="https://www.playonmac.com/en/register.html"
+ 	else
+-		register_link="http://www.playonlinux.com/en/register.html"
++		register_link="https://www.playonlinux.com/en/register.html"
+ 	fi
+ 	[ "$3" = "" ] || register_link="$3"
+ 	

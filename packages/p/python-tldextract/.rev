@@ -76,4 +76,24 @@ Needed for python-dns-lexicon</comment>
     <comment></comment>
     <requestid>806949</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>323928202129ae818d66eb046203b978</srcmd5>
+    <version>2.2.3</version>
+    <time>1600701428</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.3:
+  * Fix concurrent access to cache file when using tldextract in multiple threads ([#146](https://github.com/john-kurkowski/tldextract/pull/146))
+  * Relocate version number, to avoid costly imports ([#187](https://github.com/john-kurkowski/tldextract/pull/187))
+  * Catch `IndexError` caused by upstream punycode bug ([#200](https://github.com/john-kurkowski/tldextract/pull/200))
+  * Drop support for EOL Python 3.4 ([#186](https://github.com/john-kurkowski/tldextract/pull/186))
+  * Explain warning better
+
+- update to 2.2.2:
+  * Fix concurrent access to cache file when using tldextract in multiple threads ([#146](https://github.com/john-kurkowski/tldextract/pull/146))
+  * Relocate version number, to avoid costly imports ([#187](https://github.com/john-kurkowski/tldextract/pull/187))
+  * Catch `IndexError` caused by upstream punycode bug ([#200](https://github.com/john-kurkowski/tldextract/pull/200))
+  * Drop support for EOL Python 3.4 ([#186](https://github.com/john-kurkowski/tldextract/pull/186))
+  * Explain warning better</comment>
+    <requestid>835186</requestid>
+  </revision>
 </revisionlist>

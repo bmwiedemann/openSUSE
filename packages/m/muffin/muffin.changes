@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 18 18:57:44 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.6.3.
+  * screen.c: Check for MetaMonitorInfo being non-null before 
+    attempting to access it.
+  * Remove 0001-fix-warnings-when-compiling.patch
+  
+-------------------------------------------------------------------
+Mon Aug  3 12:58:02 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 4.6.2
+  * Fallback WM theme - ensure dialogs such as nemo preferences have titlebar buttons
+  
+-------------------------------------------------------------------
 Wed Mar 18 12:03:33 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 4.4.2
@@ -6,9 +20,7 @@ Wed Mar 18 12:03:33 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
   * src/ui/theme.c: Use a simpler method for getting an image file's dimensions before scaling it for hidpi.
   * meta-window-actor.c: Detach after redirecting, not before unredirecting.
   * MetaWindow: clear the cached window icon when _NET_WM_ICON changes, to force a regen the next time the icon is requested for the window.
-
-
-
+  
 -------------------------------------------------------------------
 Sun Nov 24 17:24:05 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 

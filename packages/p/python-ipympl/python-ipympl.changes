@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 19 15:15:16 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated requirements (see setup.py)
+
+- update to 0.5.8:
+  * remove unnecessary traitlets
+  * Update README.md
+  * add jupyter keywords
+  * Fix version table in README
+  * Improve setup.py for fixing the Github "Used By" section
+
+-------------------------------------------------------------------
 Tue Jul 21 10:42:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.5.7

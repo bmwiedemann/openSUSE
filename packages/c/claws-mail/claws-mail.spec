@@ -15,7 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} > 1500
+%bcond_with python_gtk
+%else
 %bcond_without python_gtk
+%endif
 
 %define gtk3_ready 0
 %if !%{gtk3_ready}

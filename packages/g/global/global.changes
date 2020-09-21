@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 19 06:48:25 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- global 6.6.5:
+  * gtags: Now gtags_hook is not executed when the following
+    options are specified: --version, --help, --config, --dump
+  * gtags: Added new option: -C (--directory)
+  * gtags: the built-in C++ parser is deprecated
+- drop global-gcc10.patch to fix build
+
+-------------------------------------------------------------------
 Sun Aug 16 23:52:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 6.6.4

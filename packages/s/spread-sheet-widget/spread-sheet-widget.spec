@@ -2,7 +2,7 @@
 # spec file for package spread-sheet-widget
 #
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017 <opensuse.lietuviu.kalba@gmail.com>
+# Copyright (c) 2017,2020 <opensuse.lietuviu.kalba@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,17 @@
 
 %define         libname libspread-sheet-widget0
 Name:           spread-sheet-widget
-Version:        0.3
+Version:        0.6
 Release:        0
 Summary:        GNU Spread Sheet Widget library for Gtk+
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gnu.org/software/ssw/
 Source0:        http://alpha.gnu.org/gnu/ssw/%{name}-%{version}.tar.gz
+# *.asc converted from http://alpha.gnu.org/gnu/ssw/spread-sheet-widget-0.6.tar.gz.sig by:
+# gpg --enarmor spread-sheet-widget-0.6.tar.gz.sig
+Source1:        %{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
 BuildRequires:  gtk3-devel >= 3.18.0
 
 %description
@@ -97,6 +101,7 @@ find %{buildroot}%{_libdir} -name "*.la" -delete
 %{_includedir}/ssw-axis-model.h
 %{_includedir}/ssw-sheet-axis.h
 %{_includedir}/ssw-sheet.h
+%{_includedir}/ssw-virtual-model.h
 %{_libdir}/lib%{name}.so
 %attr(0644,root,root) %{_libdir}/pkgconfig/%{name}.pc
 

@@ -18,7 +18,7 @@
 
 
 Name:           enigmail
-Version:        2.1.7
+Version:        2.1.8
 Release:        0
 Summary:        OpenPGP addon for Mozilla Thunderbird
 License:        MPL-2.0

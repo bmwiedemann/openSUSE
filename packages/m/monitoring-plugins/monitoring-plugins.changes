@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Sep 18 08:19:35 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Drop check_ping_fix_ip4.patch (obsolete, conflicts with upstream fix)
+
+-------------------------------------------------------------------
+Mon Sep 14 13:39:18 CEST 2020 - ro@suse.de
+
+- change version to 2.3~alpha.$date.$commit
+  update to current git as of 20200520T233014.cadac85e
+  changes summarized
+  * detect unreachable dns service in nslookup output
+  * check_curl: host_name may be null
+  * update test parameter according to check_http
+  * check_curl: use CURLOPT_RESOLVE to fix connecting to the right ip
+  * workaround for issue #1550 - better use "ping -4" instead
+    of "ping" if supported
+  * Use size_t instead of int when calling sysctl(3)
+  * check_tcp: add --sni
+  * Fix timeout_interval declarations
+  * check_curl: NSS, parse more date formats from certificate (in
+    -C cert check)
+  * check_curl: more tolerant CN= parsing when checking
+    certificates (hit on Centos 8)
+  * setting no_body to TRUE when we have a HEAD request
+  * some LIBCURL_VERSION checks around HTTP/2 feature
+  * added --http-version option to check_curl to choose HTTP
+  * improved curlhelp_parse_statusline to handle both HTTP/1.x
+    and HTTP/2
+  * check_curl: updates embedded picohttpparser to newest git
+    version
+  * setting progname of check_curl plugin to check_curl (at least
+    for now)
+  * Allow mariadbclient to be used for check_mysql
+  * fix maxfd being zero
+  * include -P switch in help
+  * check_swap: repaired "-n" behaviour
+  * improve command examples for 'at least' processes
+  * check_mysql: Allow sockets to be specified to -H
+  * Adding packages-warning option to check_apt plugin
+  * Adding print top consuming processes option to check_load
+  * check_snmp: make calcualtion of timeout value in help output more clear
+  * [check_disk] add support to display inodes usage in perfdata
+  * check_by_ssh: fix child process leak on timeouts
+  * check_icmp: Add IPv6 support
+  * check_dns: fix typo in parameter description
+  * Also support the --show-body/-B flag when --expect is used
+  * check_dns: improve support for checking multiple addresses
+  * check_hpjd: Added -D option to disable warning on 'out of paper'
+  * check_icmp: Do not overwrite -4,-6 on lookup
+  * check_icmp: emit error if multiple protocol version
+  * check_icmp: move opts string into a variable
+  * check_cluster.c: Added data argument validation.
+  * check_icmp: Correctly set address_family on lookup
+  * check_icmp: process protocol version args first
+  * check_icmp: Add IPv6 support
+
+- monitoring-plugins-1.4.6-no_chown.patch
+  drop hunk for Makefile.in (not present in git)
+- monitoring-plugins.check_hpjd.c-64bit-portability-issue.patch
+  update context
+- deleted monitoring-plugins-check_swap-fix-n.patch
+  drop patch, is upstream
+- drop explicit attr in filelist for check_host and check_rta_multi
+  as they are symlinks to check_icmp
+- add new subpackage monitoring-plugins-uptime
+
+-------------------------------------------------------------------
+Mon Sep 14 10:57:53 CEST 2020 - ro@suse.de
+
+- add patch monitoring-plugins-check_swap-fix-n.patch
+  check_swap fix behaviour for "-n" if 0 free swap is left
+  from git commit 6995b510759cf531d70745b7d0c6e8a0d9010b06
+  (bug#1175828)
+- updated context in 
+  monitoring-plugins-wrong_return_in_check_swap.patch
+
+-------------------------------------------------------------------
 Mon Jul 15 08:05:45 UTC 2019 - lars@linux-schulserver.de - 2.2
 
 - monitoring-plugins-mysql should also provide monitoring-plugins-mysql_query

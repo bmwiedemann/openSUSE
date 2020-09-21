@@ -1,5 +1,5 @@
 # this is a template and can stay in the main package
-addFilter(".*devel-file-in-non-devel-package.*/usr/lib/rstudio/resources/templates/rcpp.cpp")
+addFilter(".*devel-file-in-non-devel-package.*/usr/libexec/rstudio/resources/templates/rcpp.cpp")
 addFilter("name-repeated-in-summary.*")
 
 # R-core-libs must be explicitly added as rpm doesn't pick it up

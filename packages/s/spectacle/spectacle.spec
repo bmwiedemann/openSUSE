@@ -28,6 +28,8 @@ License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+#PATCH-FIX-UPSTREAM
+Patch:          0001-Fix-wrong-file-name-when-output-option-is-used.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel

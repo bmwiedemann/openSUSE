@@ -1,0 +1,27 @@
+--- a/setup.py
++++ b/setup.py
+@@ -62,7 +62,6 @@ extras_require['extras'] = extras_requir
+ 
+ # Test requirements
+ extras_require['tests'] = [
+-    'nose',
+     'mock',
+     'flake8 ==3.6.0',
+     'coveralls',
+@@ -81,7 +80,6 @@ extras_require['basic_tests'] = extras_r
+ ] + extras_require['notebook']
+ 
+ extras_require['nbtests'] = extras_require['recommended'] + [
+-    'nose',
+     'awscli',
+     'deepdiff',
+     'nbconvert ==5.3.1',
+@@ -106,7 +104,7 @@ extras_require['build'] = [
+     'python <3.8'
+ ]
+ 
+-# Everything including nosetests
++# Everything including tests
+ extras_require['all'] = list(set(extras_require['unit_tests']) | set(extras_require['nbtests']))
+ 
+ 

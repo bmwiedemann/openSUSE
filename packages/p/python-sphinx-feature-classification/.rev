@@ -65,4 +65,17 @@
  * Switch to sphinx-build and cleanup</comment>
     <requestid>811109</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>663cca3775251437bb35dcc7fef86659</srcmd5>
+    <version>1.1.0</version>
+    <time>1600702094</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Cleanup misplaced release note
+  * Reduce need for openstack specific requirements
+  * Switch to victoria test template
+  * Report sphinx extension is thread safe
+  * Switch to newer openstackdocstheme and reno versions</comment>
+    <requestid>835412</requestid>
+  </revision>
 </revisionlist>

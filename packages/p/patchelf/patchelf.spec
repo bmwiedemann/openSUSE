@@ -17,13 +17,13 @@
 
 
 Name:           patchelf
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        A utility for patching ELF binaries
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://nixos.org/patchelf.html
-Source:         https://nixos.org/releases/patchelf/patchelf-%{version}/patchelf-%{version}.tar.bz2
+Source:         https://github.com/NixOS/patchelf/releases/download/%{version}/patchelf-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 
 %description
@@ -32,7 +32,7 @@ libraries.  It can change the dynamic loader ("ELF interpreter") of
 executables and change the RPATH of executables and libraries.
 
 %prep
-%setup -q -n %{name}-0.11.20200609.d6b2a72
+%setup -q -n %{name}-0.12.20200827.8d3a16e
 
 %build
 %configure
