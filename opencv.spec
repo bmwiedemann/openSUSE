@@ -21,7 +21,7 @@
 %endif
 
 %define libname lib%{name}
-%define soname 4_3
+%define soname 4_4
 # disabled by default as many fail
 %bcond_with tests
 %bcond_without gapi
@@ -34,7 +34,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -44,8 +44,6 @@ URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # This is the FACE module from the opencv_contrib package. Packaged separately to prevent too much unstable modules
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE opencv-includedir.patch -- Fix wrong include path in pkgconfig file
-Patch3:         opencv-includedir.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
@@ -168,7 +166,6 @@ This package contains the documentation and examples for the OpenCV library.
 
 %prep
 %setup -q -a 1
-%autopatch -p1
 
 # Only copy over modules we need
 mv opencv_contrib-%{version}/modules/{face,tracking,optflow,plot,shape,superres,videostab,ximgproc} modules/
