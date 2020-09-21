@@ -17,20 +17,18 @@
 
 
 Name:           cura
-Version:        4.6.1
+Version:        4.7.1
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://github.com/Ultimaker/Cura
 Source0:        Cura-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE disable-code-style-check.patch code style is no distro buisiness
+# PATCH-FIX-OPENSUSE disable-code-style-check.patch code style is no distro business
 Patch1:         disable-code-style-check.patch
-# PATCH-FIX-OPENSUSE -- avoid bad UI layout and crash in preview
-Patch4:         0001-Avoid-crash-caused-by-KDE-qqc2-desktop-style.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  libArcus3 >= 4.6.0
+BuildRequires:  libArcus3 >= %{version}
 BuildRequires:  python3-Savitar >= 4.6.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
@@ -41,10 +39,10 @@ BuildRequires:  python3-scipy
 BuildRequires:  python3-shapely
 BuildRequires:  python3-zeroconf
 BuildRequires:  update-desktop-files
-BuildRequires:  uranium >= 4.6.0
+BuildRequires:  uranium >= %{version}
 # It builds with older Qt, but crashes due to missing qml features
 BuildRequires:  pkgconfig(Qt5Core) >= 5.10
-Requires:       cura-engine >= 4.6.0
+Requires:       cura-engine >= %{version}
 Requires:       python3-numpy
 # Build and test suite works with older Qt, but no UI shows up due to usage
 # of newer QML elements
@@ -58,8 +56,8 @@ Requires:       python3-requests
 Requires:       python3-scipy
 Requires:       python3-shapely
 Requires:       python3-typing
-Requires:       uranium >= 4.6.0
-Recommends:     cura-fdm-materials >= 4.6.0
+Requires:       uranium >= %{version}
+Recommends:     cura-fdm-materials >= %{version}
 Recommends:     python3-trimesh
 Recommends:     python3-zeroconf
 BuildArch:      noarch
@@ -78,12 +76,10 @@ settings, and send this G-Code to the 3D printer for printing.
 %prep
 %setup -q -n Cura-%version
 %patch1 -p1
-%patch4 -p1
 sed -i -e '1 s/env python3/python3/' cura_app.py
 
 %build
-CFLAGS="%{optflags}"
-export CFLAGS
+export CFLAGS="%{optflags}"
 sed -i 's/PythonInterp 3.5.0/PythonInterp 3.4.0/' CMakeLists.txt cmake/CuraTests.cmake
 # Hack, remove LIB_SUFFIX for 64bit, which is correct as cura is pure python (i.e. noarch)
 %cmake -DLIB_SUFFIX="" \

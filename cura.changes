@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 15 21:59:56 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.7.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.7.1
+  * https://github.com/Ultimaker/Cura/releases/tag/4.7.0
+  * https://github.com/Ultimaker/Cura/releases/tag/4.6.2
+- Drop obsolete
+  0001-Avoid-crash-caused-by-KDE-qqc2-desktop-style.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 03:40:17 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.6.1
