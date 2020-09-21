@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 12 19:49:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1.1
+  * Officially provide interface and TypeScript type annotations.
+  * Update the dynamic link library `SOVERSION` to `1.1`, due to
+  changes in the internal interface of C++.
+  * Simplify the header file structure and speed up compilation. Remove
+  unnecessary `using`.  Repair some Hong Kong standard characters.
+  * The new dictionary format `ocd2`, based on Marisa Trie 0.2.5. The
+  dictionary size is greatly reduced.
+  * Change the default conversion of "Yong/Yong" and modify multiple
+  phrase conversions.
+  * Add benchmark test results.
+  * Officially supports Japanese new font conversion.
+  * Upgrade Node.js dependency and improve compatibility.
+  * Fix multiple multi-platform compilation and compatibility issues.
+  * Correct a large number of conversion errors.
+
+-------------------------------------------------------------------
 Wed Jan  3 19:38:59 UTC 2018 - tchvatal@suse.com
 
 - Use python3 for all the operations do not implicitely inherit py2

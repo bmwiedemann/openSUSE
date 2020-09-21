@@ -131,4 +131,26 @@
 </comment>
     <requestid>561790</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>89a849edd38b2299403a0a5b1e072768</srcmd5>
+    <version>1.1.1</version>
+    <time>1600700368</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1
+  * Officially provide interface and TypeScript type annotations.
+  * Update the dynamic link library `SOVERSION` to `1.1`, due to
+  changes in the internal interface of C++.
+  * Simplify the header file structure and speed up compilation. Remove
+  unnecessary `using`.  Repair some Hong Kong standard characters.
+  * The new dictionary format `ocd2`, based on Marisa Trie 0.2.5. The
+  dictionary size is greatly reduced.
+  * Change the default conversion of &quot;Yong/Yong&quot; and modify multiple
+  phrase conversions.
+  * Add benchmark test results.
+  * Officially supports Japanese new font conversion.
+  * Upgrade Node.js dependency and improve compatibility.
+  * Fix multiple multi-platform compilation and compatibility issues.
+  * Correct a large number of conversion errors. (forwarded request 834807 from dirkmueller)</comment>
+    <requestid>835040</requestid>
+  </revision>
 </revisionlist>
