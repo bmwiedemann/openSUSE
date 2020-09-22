@@ -38,6 +38,7 @@ Source99:       %{name}-rpmlintrc
 Patch0:         hedgewars-disable_fpc_workaround.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-build-with-Qt-5.15.patch
+Patch2:         hedgewars-fpc320_fix.patch
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
@@ -126,6 +127,7 @@ This package contains a standalone local hedgewars server.
 %setup -q -n %{name}-src-%{version}
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 # CMAKE_POLICY_DEFAULT_CMP0083=NEW - apply POSITION_INDEPENDENT_CODE also to "-pie", since CMake 3.14
