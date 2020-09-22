@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 21 17:23:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a _constraints file for ppc64/ppc64le builds.
+
+-------------------------------------------------------------------
 Thu Sep 17 21:04:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove unneeded build dependencies.
