@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 21 20:45:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.3:
+  * Fix race causing futures to be forgotten too early
+  * Read/write MP4 tags using lowercase key format (fixes #22)
+
+-------------------------------------------------------------------
 Wed Jun 10 10:44:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.2:

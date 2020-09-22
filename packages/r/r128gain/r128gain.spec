@@ -18,7 +18,7 @@
 
 
 Name:           r128gain
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Fast audio loudness (ReplayGain / R128) scanner & tagger
 License:        LGPL-2.0-only
