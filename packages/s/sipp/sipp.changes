@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 20 09:18:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Switch from autotools to cmake
+- Update to version 3.6.1
+  * Consistently unescape XML attributes when loading scenario
+  * Fix buffer overflow in screen output
+  * Fix nonce count in auth headers
+  * Fix parser warning when trying to access 0-byte SDP body
+  * Improve provided sipp.dtd file, and XML fixes
+    Make it easier to deal with large SIP packets by adding an
+    optional CPPFLAGS=-DSIPP_MAX_MSG_SIZE=262144 flag
+
+-------------------------------------------------------------------
 Wed Jun 19 11:20:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.6.0

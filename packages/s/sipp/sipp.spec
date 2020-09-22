@@ -1,7 +1,7 @@
 #
 # spec file for package sipp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           sipp
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        A SIP protocol testing tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/SIPp/sipp
 Source:         https://github.com/SIPp/sipp/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
 BuildRequires:  libpcap-devel
@@ -43,18 +42,25 @@ statistics.
 
 %prep
 %setup -q
+## FIXME: cmake oot-builds is broken
+cp version.h src
 
 %build
-autoreconf -fiv
-%configure --with-pcap --with-sctp --with-openssl --with-gsl --with-rtpstream
-make %{?_smp_mflags}
+%cmake \
+    -DUSE_GSL=1 \
+    -DUSE_PCAP=1 \
+    -DUSE_SSL=1 \
+    -DUSE_SCTP=1
+%make_build
 
 %install
-%make_install
+%cmake_install
+## FIXME: manpage installation should be handled by cmake
+install -Dpm 0644 %{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 
 %files
-%doc CHANGES.md README.md THANKS
 %license LICENSE.txt
+%doc CHANGES.md README.md THANKS
 %{_bindir}/%{name}
 %{_mandir}/man1/sipp.1%{?ext_man}
 
