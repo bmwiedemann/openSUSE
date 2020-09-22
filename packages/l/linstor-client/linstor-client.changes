@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 22 07:28:50 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1176790, update to 1.3.0
+ * Added snapshot shipping list command
+ * correctly show inactive resources
+
+-------------------------------------------------------------------
 Mon Jun  1 04:34:15 UTC 2020 - nick wang <nwang@suse.com>
 
 - Update to 1.1.2

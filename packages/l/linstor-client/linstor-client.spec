@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           linstor-client
-Version:        1.1.2
+Version:        1.3.0
 Release:        0
 Summary:        DRBD distributed resource management utility
 License:        GPL-3.0-only
