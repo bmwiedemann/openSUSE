@@ -1,7 +1,7 @@
 #
 # spec file for package kmarkdownwebview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define kf5_version 5.25.0
 %bcond_without lang
 Name:           kmarkdownwebview
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            http://www.kde.org
+URL:            https://www.kde.org
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  ki18n-devel >= %{kf5_version}
@@ -65,7 +65,7 @@ This package allows KDE applications which use it to obtain a live preview of HT
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/LGPL-2.1-or-later.txt
 %{_kf5_libdir}/libKMarkdownWebView.so
 %dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_plugindir}/kf5/parts/kmarkdownwebviewpart.so
@@ -78,7 +78,7 @@ This package allows KDE applications which use it to obtain a live preview of HT
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/LGPL-2.1-or-later.txt
 %endif
 
 %changelog
