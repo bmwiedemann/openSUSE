@@ -2113,4 +2113,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>833704</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>00f5696a5f21e17ce13c4480d115a8ea</srcmd5>
+    <version>4.2.0+git.1600742357.6be225e5</version>
+    <time>1600801972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835959</requestid>
+  </revision>
 </revisionlist>

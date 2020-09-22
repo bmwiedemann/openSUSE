@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 02:54:36 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1600742357.6be225e5:
+  * Low: config: Try to handle configparser.MissingSectionHeaderError while reading config file
+  * Dev: behave: functional test for obscure sensitive data by default
+  * Medium: ui_configure: Obscure sensitive data by default(bsc#1163581)
+
+-------------------------------------------------------------------
 Fri Sep 11 08:10:15 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1599810948.3db12a7a:
