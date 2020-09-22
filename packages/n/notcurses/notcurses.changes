@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Aug 28 18:40:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.19
+  * among other things, fixes numerous subtle bugs on big-endian
+    architectures resulting from EGC inlining.
+
+-------------------------------------------------------------------
+Thu Aug 27 15:07:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use pkg-config style BR for libavutil
+
+-------------------------------------------------------------------
+Thu Aug 27 11:56:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.18.2
+
+-------------------------------------------------------------------
+Sun Jun 21 09:50:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.5.2

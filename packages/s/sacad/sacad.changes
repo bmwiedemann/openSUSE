@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 17:29:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.3.3:
+  * Fix tqdm_logging thread safety 
+
+-------------------------------------------------------------------
 Wed Jul 29 20:29:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.2

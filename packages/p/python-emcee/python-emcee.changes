@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Sun Aug  9 00:02:17 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Tidy spec
+
+-------------------------------------------------------------------
+Sat Aug  1 17:33:10 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.2:
+  * Added tutorial for moves interface
+  * Added information about contributions to documentation
+  * Improved documentation for installation and testing
+  * Fixed dtype issues and instability in linear dependence test
+- Changes from version 3.0.1:
+  * Added support for long double dtypes
+  * Improved packaging and release infrastructure
+  * Fixed bug in initial linear dependence test
+- Changes from version 3.0.2:
+  * Added progress bars using `tqdm
+    <https://github.com/tqdm/tqdm>`_.
+  * Added HDF5 backend using `h5py <http://www.h5py.org/>`_.
+  * Added new ``Move`` interface for more flexible specification
+    of proposals.
+  * Improved autocorrelation time estimation algorithm.
+  * Switched documentation to using Jupyter notebooks for
+    tutorials.
+  * More details can be found `on the docs
+    <https://emcee.readthedocs.io/en/v3.0.0/user/upgrade/>`_.
+- Add Requires: python-scipy, python-h5py.
+- Implement %check section to run tests; needs BuildRequires:
+  python-numpy, python-scipy, python-h5py, and python-pytest.
+
+-------------------------------------------------------------------
+Thu Mar 22 05:46:39 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

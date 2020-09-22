@@ -411,4 +411,12 @@
 The next upstream release (R58 most likely) will add -fno-lto to CFLAGS and LDFLAGS if GCC is detected as build compiler, solving this problem on a different level.</comment>
     <requestid>728543</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2bba71a22ab0f25150d7c09c11b7ad28</srcmd5>
+    <version>59b</version>
+    <time>1600801346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828388</requestid>
+  </revision>
 </revisionlist>

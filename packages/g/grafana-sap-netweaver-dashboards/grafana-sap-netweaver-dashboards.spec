@@ -18,7 +18,7 @@
 
 Name:           grafana-sap-netweaver-dashboards
 # Version will be processed via set_version source service
-Version:        1.0.1+git.1596627184.3ac5830
+Version:        1.0.2+git.1600360936.17d0dbe
 Release:        0
 Summary:        Grafana Dashboards displaying metrics about a SAP NetWeaver landscape.
 License:        Apache-2.0
@@ -38,15 +38,14 @@ Grafana Dashboards displaying metrics about a SAP NetWeaver landscape.
 %build
 
 %install
-%define dasboards_dir %{_localstatedir}/lib/grafana/dashboards
-install -d -m0755 %{buildroot}%{dasboards_dir}/sles4sap
-install -m644 dashboards/*.json %{buildroot}%{dasboards_dir}/sles4sap
+install -dm0755 %{buildroot}%{_localstatedir}/lib/grafana/dashboards/sles4sap
+install -m644 dashboards/*.json %{buildroot}%{_localstatedir}/lib/grafana/dashboards/sles4sap
 
 %files
 %defattr(-,root,root)
 %doc dashboards/README.md
 %license LICENSE
-%attr(0755,grafana,grafana) %dir %{dasboards_dir}/sles4sap
-%attr(0644,grafana,grafana) %config %{dasboards_dir}/sles4sap/*
+%attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/grafana/dashboards/sles4sap
+%attr(0644,grafana,grafana) %config %{_localstatedir}/lib/grafana/dashboards/sles4sap/*
 
 %changelog

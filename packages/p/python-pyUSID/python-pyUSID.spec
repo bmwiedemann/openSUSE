@@ -19,14 +19,12 @@
 %define packagename pyUSID
 %{?!python_module:%define python_module() python-%{**} python-%{**}}
 Name:           python-pyUSID
-Version:        0.0.8
+Version:        0.0.9
 Release:        0
 Summary:        Framework for processing scientific data (USID)
 License:        MIT
 URL:            https://pycroscopy.github.io/pyUSID/
 Source0:        https://github.com/pycroscopy/pyUSID/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_tests_dir_in_site_package.patch andythe_great@pm.me gh#pycroscopy/pyUSID#50 -- Remove tests folder in site_package directory
-Patch0:         fix_tests_dir_in_site_package.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cytoolz}
 BuildRequires:  %{python_module dask >= 0.10}
@@ -67,8 +65,6 @@ and Imaging Data (USID).
 
 %prep
 %setup -q -n %{packagename}-%{version}
-%patch0 -p1
-
 
 %build
 %python_build
@@ -85,5 +81,6 @@ and Imaging Data (USID).
 %license LICENSE
 %{python_sitelib}/*egg-info
 %{python_sitelib}/%{packagename}
+
 
 %changelog

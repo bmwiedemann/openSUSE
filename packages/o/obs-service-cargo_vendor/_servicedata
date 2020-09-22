@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/obs-service-cargo_vendor.git</param>
+              <param name="changesrevision">d4f314f99a7253cfe14ec6b5d6c48222466ba576</param></service></servicedata>

@@ -555,4 +555,12 @@ The new default is much safer and will reduce the effect application channel lea
     <comment></comment>
     <requestid>819964</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>2d4bd31769b90fa65e578ee4d763c08d</srcmd5>
+    <version>3.8.7</version>
+    <time>1600801447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828967</requestid>
+  </revision>
 </revisionlist>

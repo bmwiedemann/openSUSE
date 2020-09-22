@@ -17,10 +17,10 @@
 #
 
 
-%define libname libopenvdb7_0
+%define libname libopenvdb7_1
 
 Name:           openvdb
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0

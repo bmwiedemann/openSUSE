@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  3 06:44:31 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Create version 0.3.10
+- Fix how HANA database is started and stopped to work in multi
+  host environment. sapcontrol commands are used instead of HDB
+  now
+
+  (jsc#SLE-4047)
+
+-------------------------------------------------------------------
 Tue Aug 25 06:53:29 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Create version 0.3.9

@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.8
-%define patchversion 5.8.7
+%define patchversion 5.8.10
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.8.7
+Version:        5.8.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7fc52c0
+Release:        <RELEASE>.gaf3e800
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-7fc52c0a5bfb392c6cfc89d1f135a0297447ba39
+Provides:       %name-srchash-af3e800080ea43fbe9f7197f1b859aa8faafdcda
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -133,6 +133,11 @@ Recommends:     openssl-devel
 %obsolete_rebuilds %name
 
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+
+# Force bzip2 instead of lzma compression to
+# 1) allow install on older dist versions, and
+# 2) decrease build times (bsc#962356 boo#1175882)
+%define _binary_payload w9.bzdio
 
 %define symbols %(set -- $([ -e %_sourcedir/extra-symbols ] && cat %_sourcedir/extra-symbols) ; echo $*)
 %define variant_symbols %(case %name in (*-rt) echo "RT" ;; esac)

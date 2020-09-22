@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 13 23:43:19 UTC 2020 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update to 3.12.0
+  * Hightlights
+    - Better table handling
+	- Conditional formatting
+	- Better threading and cancelling support for long-running queries
+	- Multi-column sorting
+	- New SQL parser with Unicode support and better coverage in general
+	- Find dialogs everywhere
+	- UI improvements everywhere
+	- Proxy support
+	- Better performance on slow systems
+	- Support for pre-3.11 project file format
+
+https://sqlitebrowser.org/blog/version-3-12-0-released/
+
+-------------------------------------------------------------------
 Thu Aug  1 15:17:49 UTC 2019 - Stephan Barth <stephan.barth@suse.com>
 
 - Added dependencies on Qt5Concurrent and Qt5Xml

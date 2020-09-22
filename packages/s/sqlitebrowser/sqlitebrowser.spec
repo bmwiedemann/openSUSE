@@ -1,7 +1,7 @@
 #
 # spec file for package sqlitebrowser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           sqlitebrowser
-Version:        3.11.2
+Version:        3.12.0
 Release:        0
 Summary:        Spreadsheet-like interface to SQLite databases
 License:        GPL-3.0-or-later AND MPL-2.0
 Group:          Productivity/Office/Organizers
-Url:            http://sqlitebrowser.org/
-Source0:        %{name}-%{version}.tar.xz
+URL:            http://sqlitebrowser.org
+Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz
 Source1:        sqlitebrowser.1
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -67,7 +67,7 @@ Controls and guided dialogs are available for users to:
 	* Examine a log of all SQL commands issued by the application
 
 %prep
-%setup -q
+%setup -qn %{name}-%{version}
 
 %build
 %cmake \
@@ -75,7 +75,8 @@ Controls and guided dialogs are available for users to:
   -DQSCINTILLA_LIBRARY=%{_libdir}/libqscintilla2_qt5.so \
   -DBUILD_SHARED_LIBS=OFF \
   -Wno-dev
-%make_jobs
+
+%cmake_build
 
 %install
 %cmake_install
@@ -104,12 +105,13 @@ EOF
 %icon_theme_cache_postun
 
 %files
-%doc README.md LICENSE currentrelease
+%doc README.md currentrelease
+%license LICENSE 
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_bindir}/%{name}
 %{_datadir}/applications/*
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.desktop.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/%{name}.desktop.appdata.xml
 %{_datadir}/pixmaps/*
 %{_datadir}/icons/hicolor/*/apps/sqlitebrowser.png
 

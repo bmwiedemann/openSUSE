@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 21 21:11:44 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 2.17.9: 
+  * Fixed insecure mode certificate checking error.
+  * Fixed progress bar for large number of connections.
+  * Fixed some race conditions with conn_t.
+  * Removed limitations on state file name length.
+  * Removed limitations on HTTP query length.
+  * Fixed a memory leak when deleting the download state file.
+  * Added coding style aid and licensing rules to CONTRIBUTING.md.
+  * Updated and improved README.md.
+  * Cleanup of code & build system.
+  * Made the help flag report axel's version number.
+  * Updated Chinese translation.
+- run spec-cleaner
+  * remove rpm groups
+
+-------------------------------------------------------------------
 Sun May 31 18:12:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.17.8:

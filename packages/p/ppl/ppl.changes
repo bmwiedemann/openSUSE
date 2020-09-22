@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Sun Sep 20 10:32:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove useless keyring (outofdate key).
+
+-------------------------------------------------------------------
+Mon Aug 26 04:39:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable static builds, disable baselibs (unused).
+- Enable glpk components.
+
+-------------------------------------------------------------------
+Tue Oct 11 14:33:01 UTC 2016 - adam.majer@suse.de
+
+- Update to new upstream release 1.2
+  * Improved the efficiency of the conversion procedure for
+    polyhedra by adding a quick adjacency check.
+  * In the Java language interface, throw an exception when trying
+    to build a disequality Constraint.
+  * Fixed a bug in the implementation of dense rows.
+  * Fixed a bug in the implementation of ::relation_with
+  * Portability improved.
+- soname bumped
+
+-------------------------------------------------------------------
+Sat Nov 14 10:07:48 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.1
+* Remove the Sparse_Matrix class and add a Matrix<Row> class
+  instead.
+* Dense_Row: remove the capacity argument from the two-argument
+  OK() method.
+* Matrix: add some methods: row_capacity(), reserve_rows(),
+  remove_rows() and swap_columns().
+* Dense_Matrix: add non-const iterator and the remove_rows() and
+  reserve_rows() methods.
+* Matrix: rename the row_capacity() method into capacity().
+* Remove the Dense_Matrix class, and use Matrix<Dense_Row> instead.
+* Constraint_System: replace the const_iterator class with an
+  external Constraint_System_const_iterator class.
+* Generator_System: replace the const_iterator class with an
+  external Generator_System_const_iterator class.
+* Split the Linear_System::With_Bit_Matrix_iterator class out of
+  Linear_System and rename it to Linear_System_With_Bit_Matrix_iterator.
+* Many more API changes. See the git log summary lines for details,
+  provided in /usr/share/doc/packages/GLS-0.12-1.1.
+- Drop ppl-gmp-5.1.0.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon Nov  2 10:46:25 UTC 2015 - rpm@fthiessen.de
+
+- Fixed dependencies of devel package.
+- Cleaned spec file: Use so-name.
+
+-------------------------------------------------------------------
+Sun Sep 27 13:14:53 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.12.1
+  * See NEWS file for complete list of changes
+
+-------------------------------------------------------------------
+Tue Aug  4 21:45:13 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.12
+  * See NEWS file for complete list of changes
+- Cleanup spec file with spec-clener
+- Remove no longer needed dependency on gpg-offline
+- Refresh ppl-gmp-5.1.0.patch
+- Reduce duplicate files in documentation
+
+-------------------------------------------------------------------
+Wed Sep  4 12:43:27 UTC 2013 - rguenther@suse.com
+
+- Disable -g when building the testsuite.
+
+-------------------------------------------------------------------
+Mon Apr 15 13:09:40 UTC 2013 - idonmez@suse.com
+
+- Comment out GPG part, since it'll break bootstrap
+
+-------------------------------------------------------------------
+Mon Apr 15 09:35:38 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Add GPG verification
+
+-------------------------------------------------------------------
+Tue Mar  5 19:30:04 UTC 2013 - idonmez@suse.com
+
+- Add ppl-gmp-5.1.0.patch to fix build with new gmp
+
+-------------------------------------------------------------------
+Tue Jan 24 12:20:24 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant sections (see specfile guidelines)
+
+-------------------------------------------------------------------
+Mon Jan 23 17:22:51 CET 2012 - meissner@suse.de
+
+- include /usr/share/aclocal directory as we no longer require autoconf
+
+-------------------------------------------------------------------
+Wed Aug 31 13:44:35 UTC 2011 - rguenther@suse.com
+
+- Fix fixed baselibs.conf
+
+-------------------------------------------------------------------
+Thu Mar  3 14:24:24 UTC 2011 - rguenther@novell.com
+
+- Update to version 0.11.2.  [fate#311972]
+  * Minor bugfixes
+
+-------------------------------------------------------------------
+Wed Sep 22 07:17:41 UTC 2010 - coolo@novell.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Aug  5 09:36:22 UTC 2010 - rguenther@novell.com
+
+- Update to version 0.11.
+  * Many new features, see NEWS file
+- Library package name changes for SONAME bumps.
+
+-------------------------------------------------------------------
+Sun Jun 27 16:15:03 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Jun 18 16:08:42 UTC 2010 - prusnak@opensuse.org
+
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Wed Dec 16 10:46:43 CET 2009 - jengelh@medozas.de
+
+- package documentation as noarch
+
+-------------------------------------------------------------------
+Thu Apr 16 14:12:13 CEST 2009 - rguenther@suse.de
+
+- Update to version 0.10.2.  [fate#306970]
+  * fixes build with gmp 4.3.0
+
+-------------------------------------------------------------------
+Tue Apr 14 15:16:26 CEST 2009 - rguenther@suse.de
+
+- Update to bugfix release 0.10.1.
+- Make the testsuite fatal everywhere.
+- Disable memory1 test on s390x.
+
+-------------------------------------------------------------------
+Mon Mar 16 14:31:13 CET 2009 - rguenther@suse.de
+
+- Wrap Recommends in suse_version check.
+
+-------------------------------------------------------------------
+Tue Nov  4 17:46:01 CET 2008 - rguenther@suse.de
+
+- Update to final version 0.10.
+  * many new features and bugfixes (see NEWS file for details)
+
+-------------------------------------------------------------------
+Thu Oct 30 23:28:02 CET 2008 - rguenther@suse.de
+
+- Update to version 0.10pre37.
+- Rename libppl_c0 to libppl_c2 to follow new shared object name.
+
+-------------------------------------------------------------------
+Fri Sep  5 10:39:34 CEST 2008 - rguenther@suse.de
+
+- Re-add static libs to ppl-devel-static.
+
+-------------------------------------------------------------------
+Wed Sep  3 17:55:41 CEST 2008 - rguenther@suse.de
+
+- Remove all static libs.
+
+-------------------------------------------------------------------
+Wed Sep  3 13:46:30 CEST 2008 - rguenther@suse.de
+
+- Update to version 0.10pre24.
+
+-------------------------------------------------------------------
+Sun Aug  3 20:23:09 CEST 2008 - rguenther@suse.de
+
+- Package version 0.9.
+

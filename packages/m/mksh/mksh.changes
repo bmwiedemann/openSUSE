@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Aug 20 19:08:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 59b:
+  * [tg] Handle other tmux $TERM types, pointed out by multi via IRC
+  * [tg] Fix typo in FAQ
+  * [tg] y='a\*b'; [[ $x = $y ]] regression (Martijn Dekker) fix
+  * [l0kod] Defuse CLIP OS O_MAYEXEC support (cf. LWN)
+  * [tg] Make set +o output a command to restore the currently set and (new!) cleared options, keep a reset state per session (experimental)
+  * [tg] Correct documentation and code regarding to argv[0] parsing: first ‘-’ for login shells, then ‘r’ case-insensitively for restricted shell, then “sh”*, again case-insensitively, for BINSH_* modes; add tests
+  * [tg] On OS/2, allow case-insensitive name for direct builtin call
+  * [tg] Always skip startup files if direct builtin call
+  * [tg] Avoid some sometimes-redundant startup codepaths
+  * [tg] Repair out-of-tree builds (noticed by rsc)
+  * [tg] Work around a glibc on Hurd issue in testsuite
+  * [komh] OS/2 filesystem mtime granularity is two seconds (as in FAT)
+  * [tg] Replace while with goto: Coverity was confused
+  * [tg] Fix invocation of some builtins when external utility absent
+  * [komh] Improve automatic executable suffix for test builtin
+  * [tg] Style code, refactor, clean up, optimise
+  * [tg] Use cached egid in test builtin
+  * [tg] Make bind builtin output reentry-safe; safety fixes
+  * [tg] If basename(argv[0]) after leading dash removal begins with an ‘r’ enable restricted shell flag; reported by pmjdebruijn via IRC
+  * [tg] Fix code example in manpage for how tab completion escapes
+  * [tg] Match full extglob pattern RHS of [[ string comparison like ksh93
+  * [tg] Implement which with -a in dot.mkshrc
+  * [tg] Remove global builtin (use typeset -g)
+  * [tg] alias, command, whence: Print alias names quoted
+  * [tg] Implement a new quote-region (Esc+Q) editing command
+  * [tg] Document all built-in aliases (requested by msiism via IRC) and those aliases and functions shipped in dot.mkshrc; completely overhaul builtin and reserved word documentation, for consistency
+  * [tg] The manual page now features properly spaced em dashes ☻
+  * [tg] Document that test x = y doesn’t extglob, only [[ x = y ]] does
+  * [lintian] hyphen-used-as-minus-sign (on jessie, not later, ‽‽‽)
+  * [tg] Fix system info gcc dump{machine,version} shell escaping level
+  * [tg] Document KSH_VERSIONNAME_VENDOR_EXT in Build.sh
+  * [tg] Be more explicit about the LTO bug exposed by check.t
+  * [Todd C. Miller] Add -x (file locks) and AIX-specific -r ulimits
+  * [tg] Handle Midipix as test environment and fix some warnings
+  * [tg] Fix some Build.sh issues as Mirtoconf is now used by MirCPIO and MagicPoint
+  * [komh] Improve CRLF to LF conversion
+  * [komh] Ensure ECHO mode is enabled at startup so read has local echo
+  * [komh] Let check.pl retain the PERLIO env variable
+  * [komh] Unbreak nounset-1 test on systems with drive letters
+  * [komh, tg] Make ulimit-3 test work without |& (that is, incomplete ports, i.e. those with -DMKSH_NOPROSPECTOFWORK)
+  * [tg] Disable xxx-stat-1 test for now, fails when run as root
+  * [tg] Drop Build.sh flags -c combine, -c lto
+  * [Martijn Dekker] Exit 126 on execve(2) failure, not 1 (e.g. E2BIG)
+  * [tg] Behave set and export/readonly-on-read-only-variables when run with command and command dot, bugreports by Martijn Dekker
+  * [tg] dot.mkshrc: simplify; enhance (un)setting locale example
+  * [tg, selk] Catch build errors earlier
+  * [tg] Add -fno-lto (if GCC is detected) to CFLAGS and LDFLAGS
+  * [tg] Limit HISTSIZE to 65535, as long pre-announced
+  * [tg] Unbreak testsuite selftest-tty-absent for lksh
+  * [tg] Begin work on support for neatcc (needs neatcc to evolve first)
+  * [tg] Fix possibly not enough aligned access in struct job
+  * [tg] Support going full setugid by running “set -p” once interactive
+  * [tg] Document another (arcane, almost nowhere needed) definition
+  * [tg] Improve code legibility and testsuite reliability and maintenance
+  * [tg] Speed up trivial += cases (LP#1855167)
+  * [tg] Some further code and memory optimisation and test coverage
+  * [tg] Document that += is always string append (LP#1857702)
+  * [tg] Fix “set -e appears active within eval but isn’t” reported by Martijn Dekker and another bug related to using set ±e inside eval
+  * [tg] Handle parameter assignment in front of invocations of POSIX-style functions like ksh-style ones and external utilities; cf. Debian #935115
+  * [tg] Fix bad memory access for invalid syntax (LP#1857828, LP#1857826)
+  * [Brian Callahan] Update MALLOC_OPTIONS-using testcase for newer OpenBSD
+  * [tg] Support lacc as compiler (just detecting, no change), thanks Brian
+  * [tg] Share __IDSTRING with jupp
+  * [tg] Update string comparison/pattern documentation
+  * [tg, veedeeh] Document vi command line editing mode state better
+  * [tg] Add FAQ2HTML.sh to convert mksh.faq to local valid XHTML+CSS
+  * [tg] Correct backslash expansion documentation; caveat re. 16-bit UCS
+  * [tg] Fix extra empty field on IFS-NWS trim expansion (Martijn Dekker)
+  * [tg] Improve code performance, quality, robustness and correctness
+  * [tg] Allow ${x:n} where n is an identifier (veedeeh)
+  * [tg] Permit ‘+’ in alias names, but not leading (Aleksey Cheusov)
+  * [tg] Fix here strings for $@ (LP#1857195), reported by jvdh
+  * [multiplexd] Add vi mode PgDn, similar to PgUp doing history search
+  * [tg] Build.sh fixup unreliable test -n/-z
+  * [multiplexd] Correct documentation of vi mode @c
+  * [tg] Update to UCD 13.0.0
+  * [tg] Use nanoseconds in test -nt / -ot (LP#1855325)
+ 
+-------------------------------------------------------------------
 Thu Sep  5 14:37:01 UTC 2019 - m@mirbsd.org
 
 - Disable LTO, GCC’s is too buggy and generates wrong code

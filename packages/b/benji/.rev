@@ -201,4 +201,16 @@
     provisioner to the benji-backup-pvc script (#91)</comment>
     <requestid>832695</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7acadcf4801a8913cf701f12d184694a</srcmd5>
+    <version>0.12.0</version>
+    <time>1600801868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Fix type conversion bug in benji storage-usage command (issue #96)
+
+- Update to 0.11.0:
+  * Fix SQL generation for benji storage-usage command (issue #95)</comment>
+    <requestid>835931</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,59 @@
+##
+# Complete lang subpackage definition.
+#
+# Parameters:
+# 1. language code
+# 2. language name
+#
+# Optional parameters:
+# -o: Add Obsoletes tag with given argument
+#
+%man_lang_package(o:)\
+%man_lang_package_declaration %{1} %{quote:%{2}} %{-o:-o %{quote:%{-o*}}}\
+%man_lang_package_description %{1} %{quote:%{2}}\
+%man_lang_package_files %{1}
+
+##
+# Subpackage declaration.
+#
+%man_lang_package_declaration(o:) \
+%package -n man-pages-%{1}\
+Summary:       Translation of man pages in %{2}\
+Requires:      man-pages\
+Provides:      locale(man-pages:%{1})\
+BuildArch:     noarch %{-o:\
+Obsoletes:     %{-o*}}
+
+##
+# Subpackage description.
+#
+%man_lang_package_description() \
+%description -n man-pages-%{1}\
+This package provides translations of man pages in %{2}.
+
+##
+# Subpackage files.
+#
+%man_lang_package_files() \
+%files -n man-pages-%{1}\
+%doc AUTHORS.md CHANGES.md README.md\
+%%license COPYRIGHT.md LICENSE\
+%{_mandir}/%{1}
+
+##
+# The distribution building the package. If not recognized, defaults to debian-unstable.
+#
+%distribution_id %{lua:
+  local suse_version = tonumber(rpm.expand("%{suse_version}"))
+  local fedora_version = tonumber(rpm.expand("%{fedora}"))
+  local mageia_version = tonumber(rpm.expand("%{mageia}"))
+  if suse_version ~= nil and suse_version > 1500 then
+    print("opensuse-tumbleweed")
+  elseif fedora_version ~= nil and fedora_version == 99 then
+    print("fedora-rawhide")
+  elseif mageia_version ~= nil and mageia_version == 99 then
+    print("mageia-cauldron")
+  else
+    print("debian-unstable")
+  end
+}

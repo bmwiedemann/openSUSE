@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sun Aug 16 00:04:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.6.13:
+  - Fix crash on 32-bit architectures
+  - minor release to fix the use of defualt colors (COLOR_DEFAULT) on ncurses
+    installs; COLOR_DEFAULT values in pinforc were silently ignored, causing
+    pinfo to use black-on-balc or white-on-white text
+  - remove AM_MAINTAINER_MODE from autoconf scripts to make sure all necessary
+    files are always rebuilt on ./configure && make
+  - fix possibel buffer overflow (and compiler error with gcc 8.2)
+  - Gracefully handle missing indirect info nodes
+  - Fix infinite loop when regexp-matching an empty string
+  - Fix loading of bare info pages (i.e., without .info extension)
+  - Properly load info pages whose name starts with "dir"
+  - Changes and tweaks to the auto* build tools
+  - Get rid of inlined functions, which break building with gcc7
+  - Fix segfautl when closing unopened file
+  - Fix typos in docs
+  - Fix compiler warnings
+  - Fix a number of out-of-buffer write, buffer overflows, string truncations
+  - Clean up documentation
+  - Correctly handle redirected stdin and/or stdout (https://bugs.debian.org/671306)
+  - Fix crash after failed global search
+  - Make curses mouse behaviour configurable
+    Note: this changes the default behaviour to not capture the mouse. To
+    restore the old behaviour, set GRAB-MOUSE=true in pinforc.
+  - Avoid an infinite loop for malformed info pages
+  - Add readline tab completion for nodes (https://bugs.debian.org/431708)
+  - Correct parse node links that span multiple (indented) lines.
+  - If a direct info page hit isn't found, try to look up a node in the dir
+  - Improve lookup of info pages
+  - Fix linking to man pages in a different section
+  - Fix the -n/--node command line option
+  - Fix issue with handling of suspend/resume and character input
+  - New maintainer: Bas Zoetekouw <bas@debian.org>
+  - License is now GPL version 2 only
+  - Updated German, Dutch, English, Polish, Russian, Czech translations and
+    added Basque, Swedish, Viernamese and Brazilian translations.  Thanks to
+    Jens Seidel, Rene van Bevern, Piarres Beobide, Krzysztof Krzyzaniak, Yuri
+    Kozlov,  Eddy Petrişor, Katarína Machálková, Clytie Siddall and Felipe
+    Augusto van de Wiel.
+  - Nodes containing a "." are now correctly found
+  - Non-ASCII man pages are displayed correctly
+  - Improved the history behavior of the search input line
+  - Broken tag tables are now automatically fixed
+  - Don't segfault when a broken regexp is entered
+  - Fixed a number of segfaults caused by using uninitialized pointers and
+    off-by-1 errors
+  - Fixed heap corruption caused by non-ascii chars in info pages
+  - Fixed a lot of patch searching issues
+  - Fixed text display on narrow terminals
+  - Fixed highlighting of searches
+  - The default pinforc now uses the terminal's default foreground and
+    background colors.  Thanks to Rob Funk for a patch.
+  - Use libreadline by default;  readline version 4 is now required.
+  - Better cooperation between ncurses and readline
+  - Fixed some memory leaks
+  - Got rid of tempnam() calls
+  - Fixed -Wall and -Wshadow compiler warnings
+  - Use utf8 in documentation files and fixed typoes
+- add 16dba5978146b6d3a540ac7c8f415eda49280847.patch
+  23c169877fda839f0634b2d193eaf26de290f141.patch: fix build issues with gcc 10
+- remove pinfo-0.6.10-tinfo.patch, pinfo-0.6.9-nul-strings.patch
+  pinfo-curses-detection.patch: upstream
+
+-------------------------------------------------------------------
 Sun Jun 14 06:50:01 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10

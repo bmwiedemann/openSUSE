@@ -18,7 +18,7 @@
 
 Name:           grafana-ha-cluster-dashboards
 # Version will be processed via set_version source service
-Version:        1.0.2+git.1596627252.62154d3
+Version:        1.0.3+git.1600360477.8b8f9ce
 Release:        0
 Summary:        Grafana Dashboards displaying metrics about a Pacemaker/Corosync High Availability Cluster.
 License:        Apache-2.0
@@ -26,8 +26,13 @@ Group:          System/Monitoring
 URL:            https://github.com/ClusterLabs/ha_cluster_exporter
 Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
-Requires:       grafana
-BuildRequires:  grafana
+Requires(pre):  shadow
+Recommends:     grafana
+
+# TECHNICAL NOTE:
+# Originally we used to require grafana but, for product management reasons, we use recommends now.
+# This impacts how we do pkging here: requiring shadow, creating grafana usr/group
+# and modifiying files attributes (this was done automagically when requiring grafana).
 
 %description
 Grafana Dashboards displaying metrics about a Pacemaker/Corosync High Availability Cluster.
@@ -35,21 +40,29 @@ Grafana Dashboards displaying metrics about a Pacemaker/Corosync High Availabili
 %prep
 %setup -q
 
+%pre
+echo "Creating grafana user and group if not present"
+getent group grafana > /dev/null || groupadd -r grafana
+getent passwd grafana > /dev/null || useradd -r -g grafana -d  %{_datadir}/grafana -s /sbin/nologin grafana
+
 %build
 
 %install
-%define dasboards_dir %{_localstatedir}/lib/grafana/dashboards
-%define provisioning_dir %{_sysconfdir}/grafana/provisioning/dashboards
-install -d -m0755 %{buildroot}%{dasboards_dir}/sleha
-install -m644 dashboards/*.json %{buildroot}%{dasboards_dir}/sleha
-install -Dm644 dashboards/provider-sleha.yaml %{buildroot}%{provisioning_dir}/provider-sleha.yaml
+install -d -m0755 %{buildroot}%{_localstatedir}/lib/grafana/dashboards/sleha
+install -m644 dashboards/*.json %{buildroot}%{_localstatedir}/lib/grafana/dashboards/sleha
+install -Dm644 dashboards/provider-sleha.yaml %{buildroot}%{_sysconfdir}/grafana/provisioning/dashboards/provider-sleha.yaml
 
 %files
 %defattr(-,root,root)
 %doc dashboards/README.md
 %license LICENSE
-%attr(0755,grafana,grafana) %dir %{dasboards_dir}/sleha
-%attr(0644,grafana,grafana) %config %{dasboards_dir}/sleha/*
-%attr(0644,root,root) %config %{provisioning_dir}/provider-sleha.yaml
+%attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/grafana
+%attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/grafana/dashboards
+%attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/grafana/dashboards/sleha
+%attr(0644,grafana,grafana) %config %{_localstatedir}/lib/grafana/dashboards/sleha/*
+%attr(0755,root,root) %dir %{_sysconfdir}/grafana
+%attr(0755,root,root) %dir %{_sysconfdir}/grafana/provisioning
+%attr(0755,root,root) %dir %{_sysconfdir}/grafana/provisioning/dashboards
+%attr(0644,root,root) %config %{_sysconfdir}/grafana/provisioning/dashboards/provider-sleha.yaml
 
 %changelog

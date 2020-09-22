@@ -1,7 +1,7 @@
 #
 # spec file for package jacktrip
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           jacktrip
-Version:        1.1
+Version:        1.2.1
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        MIT
@@ -38,18 +38,20 @@ computer/network can handle) of bidirectional, high quality, uncompressed
 audio signal streaming.
 
 %prep
-%setup -q -n %{name}-%{version}/jacktrip/src
+%setup -q
 
 %build
+cd src
 %qmake5 jacktrip.pro
-make %{?_smp_mflags}
+%make_build
 
 %install
+cd src
 make INSTALL_ROOT=%{buildroot} install
-rm %{buildroot}/%{_bindir}/jacktrip_debug
+rm -v %{buildroot}/%{_bindir}/jacktrip_debug
 
 %files
-%doc ../CHANGESLOG.txt ../../README.md ../TODO.txt
+%doc CHANGESLOG.txt README.md TODO.txt
 %{_bindir}/jacktrip
 
 %changelog

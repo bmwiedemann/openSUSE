@@ -1,7 +1,7 @@
 #
 # spec file for package cln
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,7 +87,7 @@ and exceptions.
 %global XFLAGS %{optflags}
 %endif
 CFLAGS="%{XFLAGS} -fno-unit-at-a-time" \
-CXXFLAGS="%{XFLAGS} -fno-strict-aliasing -fvisibility-inlines-hidden -fno-unit-at-a-time -fno-reorder-blocks" \
+CXXFLAGS="%{XFLAGS} -fno-strict-aliasing -fno-unit-at-a-time -fno-reorder-blocks" \
 %configure --disable-static
 make %{?_smp_mflags}
 make %{?_smp_mflags} check

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 21 09:30:03 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200916 (git commit 00a84c516078):
+  * linux-firmware: Update AMD SEV firmware
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2008.1310
+  * mediatek: update MT7915 firmware to 20200819
+  * brcm: Fix a stale symlink for RPi3 model b+
+  * qcom: Add updated a5xx and a6xx microcode
+  * wl18xx: update firmware file 8.9.0.0.83
+
+-------------------------------------------------------------------
 Tue Sep 01 09:55:09 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200827 (git commit 7a237c6ee2c7):

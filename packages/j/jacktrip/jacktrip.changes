@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 21 19:45:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.1
+  - (added) src/build script builds in ../builddir
+  - (fixed) refactor "Master" to be "Hub"
+  - (fixed) 1.2.1 correctly versioned and tagged
+  1.2 (release candidate, not yet tagged)
+  - (added) jack patching modes (-p) for Hub Mode server (-S)
+  - (fixed) Compilation under ubuntu
+  - (removed) setRealtimeProcessPriority()
+  - (removed) Rtaudio mode (but still has dependencies)
+  - (fixed) IPv4-mapped IPv6 addressing bug
+  ...
+  - (fixed) Fixed compilation for  MacOSX10.11.sdk.
+  - (update) Updated to RtAudio 4.1.1, and using shared lib in linux.
+
+-------------------------------------------------------------------
 Fri Mar  9 18:01:15 UTC 2018 - aloisio@gmx.com
 
 - Update to version 1.1

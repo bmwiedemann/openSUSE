@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionprefix">1.53.0+git</param>
+    <param name="url">https://bitbucket.org/amc-nicemice/par.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git*</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">mcepl@cepl.eu</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

@@ -2,10 +2,10 @@
     <service name="tar_scm" mode="disabled">
         <param name="url">git://github.com/ClusterLabs/ha_cluster_exporter.git</param>
         <param name="scm">git</param>
-        <param name="revision">62154d3616357133140ce9d8d69de0f53f021a1e</param>
+        <param name="revision">8b8f9ce126d013aca5e8ea1d4568b3db64d69db8</param>
         <param name="include">dashboards</param>
         <param name="include">LICENSE</param>
-        <param name="versionformat">1.0.2+git.%ct.%h</param>
+        <param name="versionformat">1.0.3+git.%ct.%h</param>
         <param name="filename">grafana-ha-cluster-dashboards</param>
     </service>
     <service name="set_version" mode="disabled">

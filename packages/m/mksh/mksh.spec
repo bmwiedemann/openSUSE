@@ -1,7 +1,7 @@
 #
 # spec file for package mksh
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Guido Berhoerster.
 # Copyright (c) 2013, 2014, 2019 Thorsten Glaser.
 #
@@ -14,19 +14,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # Please see OBS home:mirabile/mksh for a package for other distributions.
 
 Name:           mksh
-Version:        57
-Release:        2
+Version:        59b
+Release:        0
 Summary:        MirBSD Korn Shell
 License:        MirOS AND ISC
 Group:          System/Shells
-Url:            http://www.mirbsd.org/mksh.htm
+URL:            http://www.mirbsd.org/mksh.htm
 Source:         https://www.mirbsd.org/MirOS/dist/mir/mksh/%{name}-R%{version}.tgz
 # PATCH-FEATURE-OPENSUSE mksh-vendor-mkshrc.patch gber@opensuse.org -- Add support for a vendor-supplied kshrc which is read by interactive shells before $ENV or $HOME/.mkshrc are processed
 Patch0:         mksh-vendor-mkshrc.patch

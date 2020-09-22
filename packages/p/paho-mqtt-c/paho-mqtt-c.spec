@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           paho-mqtt-c
-Version:        1.3.1
+Version:        1.3.5
 Release:        0
 Summary:        MQTT C Client
 License:        EPL-1.0 AND BSD-3-Clause
@@ -28,6 +28,7 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
+Patch1:         cmake-libdir.patch
 Requires:       openssl
 
 %description
@@ -49,6 +50,7 @@ Development files for the the Paho MQTT C Client.
 
 %prep
 %setup -q -n paho.mqtt.c-%{version}
+%patch1 -p1
 
 %build
 %cmake -DPAHO_WITH_SSL=TRUE -DPAHO_BUILD_DOCUMENTATION=FALSE -DPAHO_BUILD_SAMPLES=FALSE -DPAHO_ENABLE_TESTING=FALSE -DPAHO_ENABLE_CPACK=FALSE ..
@@ -65,7 +67,7 @@ mv %{buildroot}%{_datadir}/doc/"Eclipse Paho C"/* %{buildroot}%{_docdir}/libpaho
 %postun -n libpaho-mqtt%{sover} -p /sbin/ldconfig
 
 %files -n libpaho-mqtt%{sover}
-%license LICENSE edl-v10 epl-v10
+%license LICENSE edl-v10 epl-v20
 %{_libdir}/*.so.%{version}
 %{_libdir}/*.so.1
 
@@ -75,5 +77,6 @@ mv %{buildroot}%{_datadir}/doc/"Eclipse Paho C"/* %{buildroot}%{_docdir}/libpaho
 %{_includedir}/*
 %{_libdir}/*.so
 %{_docdir}/*
+%{_libdir}/cmake/*
 
 %changelog

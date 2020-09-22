@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 18 17:46:33 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.5.1:
+  - Update README.md
+  - Fix build
+  - Better server init
+  - Update http
+  - Better Invidious code
+  - Disable yt key warning
+- Drop minitube-build-fix.patch. Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Aug 15 06:34:36 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.5:
+  * Minitube uses now the Invidious API. No need to use a Google
+    API key anymore.
+- Rebase minitube-no-update-check.patch: Disable build of internal
+  updater.
+- Add minitube-build-fix.patch. See
+  https://github.com/flaviotordini/minitube/issues/168
+
+-------------------------------------------------------------------
 Thu Jun 11 16:16:27 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.4.2:

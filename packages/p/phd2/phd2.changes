@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Wed Aug 19 09:50:19 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.6.9:
+  * Updated Help file
+  * Guiding Assistant: improved dec backlash measurement to better handle some poorly behaving mounts
+  * Polar Drift Align: add Mirror option for OAG users
+  * Log uploader: do not display empty logs by default
+  * Fix background color in the Drift Align window to honor the window manager color theme
+  * INDI: remove the obsolete driver port selection option
+  * New Galician translation
+  * Updated French translation
+  * Updated Portuguese translation 
+
+-------------------------------------------------------------------
+Sun May 31 17:14:52 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 2.6.8+git20200529.7e8cef81:
+  * Disable display of the calibration alert for < 25% south
+    movement.
+  * Altair: revert debug hack in sdk unpack script.
+  * Altair cameras: update to SDK version 46.16909.2020.0404.
+  * Translation updates.
+  
+-------------------------------------------------------------------
+Wed Apr 01 14:47:42 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 2.6.7+git20200401.61ad9da0:
+  * Update translation templates
+  * Handle bogus mount guide speeds in CheckCalibrationDuration,
+    fixes (gh#OpenPHDGuiding/phd2#851).
+  * QHY: revert recent change to interrupt exposures when the stop
+    button is clicked.
+  * Initialize qhy bpp value to 8bb before camera is connected.
+  * QHY: fix incorrectly-reported bits-per-pixel value for 16-bit
+    cameras.
+  * Add size of test-pulse to BLT graph in GA.
+  * Help file additions prior to 2.6.7 release.
+  * SBIG: add some debug logging for camera enumeration and
+    connection.
+  * Guide log: do not translate the guide algorithm name.
+  * Minor optimization.
+  * star auto-selection: add option for downsampling the camera
+    frame.
+  * guide log: do not omit logging of mount guide speed when
+    calibration fails.
+  * Insure English language debug log entries for backlash test.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Thu Jan 16 03:42:34 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 2.6.6+git20200112.47938c84:
+  * Flush config file after significant config changes, like when
+    calibration completes.
+  * Debug logging tweak
+  * Add debug logging in GearDialog to investigate handling of
+    m_cameraChanged.
+  * Update translation templates.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Mon Nov 25 00:41:42 UTC 2019 - malcolmlewis@opensuse.org
+
+- Update to version 2.6.6+git20191121.31e39a59:
+  * ZWO: use libASICamera2.a from latest ZWO SDK (V1.14.1108) -
+    SDK bundle was updated on ZWO web site but same rev.
+  * ZWO cameras: update to SDK version V1.14.1108.
+  * Fix unlikely crash if imaging app tells phd2 to start guiding
+    just as user closes app.
+  * ZWO: update to SDK version V1.14.0715.
+  * Workaround for imaging apps which fail to un-pause
+    PHD2: stop button clears the paused state, Fixes
+    (gh#OpenPHDGuiding/phd2#804).
+  * Translation updates.
+
+-------------------------------------------------------------------
+Wed Aug  7 01:57:17 UTC 2019 - malcolmlewis@opensuse.org
+
+- Update to latest git release via _service.
+- Drop phd2-fix-invalid-cast.patch as this is upstreamed.
+
+-------------------------------------------------------------------
+Mon Feb  4 13:56:52 UTC 2019 - malcolmlewis@opensuse.org
+
+- Initial build at version 2.6.5.
+- Add phd2-fix-invalid-cast.patch: Fix invalid cast from type
+  'const wxString' to type 'const char*' error,
+  (gh#OpenPHDGuiding/phd2#704).

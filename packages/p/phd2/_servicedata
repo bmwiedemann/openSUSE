@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/OpenPHDGuiding/phd2.git</param>
+              <param name="changesrevision">09250bb43d82b551f2e49db3038744a228bc2f95</param></service></servicedata>

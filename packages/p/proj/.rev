@@ -262,4 +262,12 @@ This package is included in Debian.
   * ProjectedCRS identification: deal with switched 1st/2nd std parallels for LCC_2SP</comment>
     <requestid>814533</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>adc701ff438ed26d5560774a949ffe1d</srcmd5>
+    <version>7.1.1</version>
+    <time>1600801629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834727</requestid>
+  </revision>
 </revisionlist>

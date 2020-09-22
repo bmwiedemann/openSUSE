@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 18 06:54:31 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.0.9.
+  * Fixed bug regarding dask array transpose in USIDataset
+  * Not writing region references for ancillary datasets anymore
+  * Moved USID agnostic functions in pyUSID.io.reg_ref.py, 
+    pyUSID.io.dtype_utils.py, pyUSID.io.hdf_utils.simple.py,
+    pyUSID.viz.plot_utils.py, pyUSID.viz.jupyter_utils.py, 
+    pyUSID.processing.comp_utils.py to new package - sidpy
+  * Importing sidpy instead of local code copies for these modules
+  * Enabling multiple instances of Process class to be executed in 
+    parallel via each MPI rank - ensemble / embarrassingly parallel 
+    processing
+  * No longer pushing tests when deploying via pip
+- Remove fix_tests_dir_in_site_package.patch 
+
+-------------------------------------------------------------------
 Mon Aug 17 06:35:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the download url

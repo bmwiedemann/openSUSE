@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 09:52:16 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- This version is needed for pmemkv (jsc#SLE-13670)
+
+-------------------------------------------------------------------
 Tue Aug 18 08:15:16 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Enable build for ppc64le

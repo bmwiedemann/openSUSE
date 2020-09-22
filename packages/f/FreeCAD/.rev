@@ -279,4 +279,12 @@ Build in science fails due to incompatible VTK 9.0, which is not yet in Tumblewe
     <comment>- temporary disable FEM module until VTK 9 support arrives</comment>
     <requestid>822931</requestid>
   </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>d3c69412fa90fc25916982f5afc247ae</srcmd5>
+    <version>0.18.4</version>
+    <time>1600801729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835691</requestid>
+  </revision>
 </revisionlist>

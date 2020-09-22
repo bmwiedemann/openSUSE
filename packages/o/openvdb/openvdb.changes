@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Aug 26 16:29:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 7.1.0:
+   - Added a novel parallel sparse FastSweeping class that outperforms our
+      existing techniques for computing signed distance fields in addition to
+      supporting velocity extension.
+    - Added tools::fogToSdf which converts a scalar (fog) volume into a signed
+      distance field.
+    - Added tools::sdfToSdf which re-normalizes a signed distance field;
+    - Added tools::fogToExt which extends an arbitrary field (e.g. velocity)
+      off the iso-surface of a scalar (fog) volume.
+    - Added tools::sdfToExt which extends an arbitrary field (e.g. velocity)
+      off the iso-surface of a signed distance field.
+    - Added tools::fogToSdfAndExt which computes a signed distance and extends
+      an arbitrary field (e.g. velocity) off the iso-surface of a signed
+      distance field.
+    - Added tools::fogToSdfAndExt which re-normalizes a signed distance and
+      extends an arbitrary field (e.g. velocity) off the iso-surface of a
+      signed distance field.
+    - Added tools::dilateSdf which dilates a signed distance field.
+    - Added tools::maskSdf which extends an existing signed distance into a
+      user-defined mask.
+    - Added Grid::isTreeUnique() to tell if the tree is shared with another
+      grid.
+    - Added PointDataLeafNode::stealAttributeSet() and
+      AttributeSet::removeAttribute() for releasing ownership of attribute
+      data.
+    - Added AttributeSet::Descriptor::groupIndexCollision() for detecting
+      group index collisions when attempting to merge two Descriptors.
+    - Added RootNode::childCount(), InternalNode::childCount() and
+      LeafNode::childCount() to count the number of immediate child nodes that
+      exist below the current node.
+
+    Improvements:
+    - Added GroupWriteHandle::setUnsafe() for faster performance when the group
+      array is known to be in-core and non-uniform.
+    - Add support for default value metadata when creating AttributeArrays or
+      appending to an AttributeSet.
+    - Added new group inspection methods to the AttributeSet::Descriptor.
+    - Introduced a StringMetaCache class for convenient string attribute
+      metadata lookup and performed some minor optimizations.
+    - Removed redundant floor in points::floatingPointToFixedPoint.
+    - Add gitignore to repository root.
+    - Removed some logic for compilers older than Visual Studio 2019.
+    - Add a new Houdini ABI test binary.
+    - Fixed an indexing typo in tools::Filter. [Contributed by Yuanming Hu]
+    - Removed redundant null pointer checks. [Contributed by Kuba Roth]
+    - Added support for vdb_view on Windows. Requires GLEW.
+    - Removed support for GLFW 2.
+    - vdb_view now uses OPENVDB_LOG_FATAL when catching exceptions.
+    - vdb_view, vdb_print and vdb_render now use std::terminate() when catching
+      an unknown exception.
+    - Removed Boost::thread as a dependency of vdb_view in favour of
+      std::thread.
+    - Removed usage of boost/integer.hpp and boost/math/constants/constants.hpp,
+      the latter in favour of new openvdb math constants for pi
+    - Removed usage of boost/mpl/*.hpp methods in favour of new template
+      meta-programming methods on the openvdb::TypeList struct. This now
+      supports get, front, back, contains, index, unique, popback, popfront
+      and range removal of types.
+    - Changed the tree::NodeChain implementation to use an openvdb::TypeList
+      rather than a boost::mpl::vector and updated all usage of tree::NodeChain
+      accordingly.
+
+    Bug fixes:
+    - Fixed a bug where grids with no active values might return true when the
+      method evalActiveVoxelBoundingBox is called. The correct behavior is to
+      only return true if the grid contains any active values.
+    - Fixed a sign propagation bug in tools::traceExteriorBoundaries() used by
+      tools::meshToVolume(). This could cause values to not be propagated across
+      node boundaries, leading to voxels incorrectly being marked as inside the
+      isosurface. [Contributed by Tristan Barback]
+    - Fixed a rotation order bug in tools::local_util::decompose()
+      that caused it to fail to decompose some matrices.
+    - Fixed a bug where math::Quat::inverse() was not marked as const.
+      [Contributed by Michael Tao]
+    - Fixed a bug in the unit test for util::CpuTimer on Windows by using a
+      more accurate sleep implementation.
+
+-------------------------------------------------------------------
 Sat Feb 22 23:52:11 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - add 8G memory constraint

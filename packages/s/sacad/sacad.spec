@@ -17,7 +17,7 @@
 
 
 Name:           sacad
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Search and download music album covers
 License:        MPL-2.0

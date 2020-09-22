@@ -17,7 +17,7 @@
 
 
 Name:           minitube
-Version:        3.4.2
+Version:        3.5.1
 Release:        0
 Summary:        Native YouTube Client
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://flavio.tordini.org/minitube
 Source:         %{name}-%{version}.tar.xz
 # Manpage written by Jakob Haufe <sur5r@sur5r.net> for the Debian project.
 Source1:        minitube.1
-# PATCH-FIX-OPENSUSE minitube-no-update-check.patch sur5r@sur5r.net -- Disable update check.
+# PATCH-FIX-OPENSUSE minitube-no-update-check.patch -- Disable build of internal updater
 Patch0:         %{name}-no-update-check.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -65,7 +65,6 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/aboutview.cpp
 
 %build
 %qmake5 \
-  "DEFINES+=APP_GOOGLE_API_KEY=AIzaSyBs1wuIgc-QDnk5u7OavF1loJVO0r89B4Y" \
   PREFIX=%{_prefix}
 %make_build
 

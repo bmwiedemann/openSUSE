@@ -2,10 +2,10 @@
     <service name="tar_scm" mode="disabled">
         <param name="url">git://github.com/SUSE/hanadb_exporter.git</param>
         <param name="scm">git</param>
-        <param name="revision">015380b65fa485942033666706b81c16f0a69cf8</param>
+        <param name="revision">f7c00d1174a12d675ea49f444af4bab1d49022d0</param>
         <param name="include">dashboards</param>
         <param name="include">LICENSE</param>
-        <param name="versionformat">1.0.1+git.%ct.%h</param>
+        <param name="versionformat">1.0.2+git.%ct.%h</param>
         <param name="filename">grafana-sap-hana-dashboards</param>
     </service>
     <service name="set_version" mode="disabled">

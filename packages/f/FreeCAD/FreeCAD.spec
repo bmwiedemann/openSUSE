@@ -25,6 +25,8 @@
 %else
 %bcond_with    boost_signals2
 %endif
+# Bundled SALOME-MESH (smesh) fails to build with VTK 9.0
+%bcond_with smesh
 
 Name:           FreeCAD
 Version:        0.18.4
@@ -46,6 +48,8 @@ Patch5:         0001-fem-use-time.process_time-instead-of-removed-time.cl.patch
 Patch6:         fix_unittestgui_tkinter_py3.patch
 # PATCH-FIX-UPSTREAM https://github.com/FreeCAD/FreeCAD/pull/3558
 Patch7:         fix_qt_5.15_build.patch
+# PATCH-FIX-UPSTREAM -- Rebased https://github.com/FreeCAD/FreeCAD/commit/4ec45b545ebf
+Patch8:         0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -71,12 +75,10 @@ BuildRequires:  f2c
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-fortran
-BuildRequires:  git
 BuildRequires:  glew-devel
 BuildRequires:  graphviz
 BuildRequires:  hdf5-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  java-devel
 # We use the internal smesh version with fixes atm
 #BuildRequires:  smesh-devel
 BuildRequires:  libXerces-c-devel
@@ -205,11 +207,13 @@ rm src/3rdparty/Pivy-0.5 -fr
   -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2/ \
   -DBUILD_QT5=ON \
   -DFREECAD_USE_EXTERNAL_PIVY:BOOL=TRUE \
-  -DBUILD_MESH_PART:BOOL=OFF \
   -DBUILD_OPENSCAD:BOOL=ON \
-  -DBUILD_FEM:BOOL=OFF \
   -DBUILD_FEM_NETGEN:BOOL=OFF \
   -DFREECAD_USE_EXTERNAL_SMESH=OFF \
+  -DBUILD_SMESH:BOOL=%{?with_smesh:ON}%{!?with_smesh:OFF} \
+  -DBUILD_MESH_PART:BOOL=%{?with_smesh:ON}%{!?with_smesh:OFF} \
+  -DBUILD_FEM:BOOL=%{?with_smesh:ON}%{!?with_smesh:OFF} \
+  -Wno-dev \
   ..
 
 %cmake_build

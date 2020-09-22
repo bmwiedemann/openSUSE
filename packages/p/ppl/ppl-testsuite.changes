@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sun Sep 20 10:32:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove useless keyring (outofdate key).
+
+-------------------------------------------------------------------
+Tue Mar  5 19:30:04 UTC 2013 - idonmez@suse.com
+
+- Add ppl-gmp-5.1.0.patch to fix build with new gmp
+
+-------------------------------------------------------------------
+Tue Jan 24 12:20:24 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant sections (see specfile guidelines)
+
+-------------------------------------------------------------------
+Sun Jun 21 11:23:52 CEST 2009 - coolo@suse.de
+
+- add empty %install section to fix build
+
+-------------------------------------------------------------------
+Tue Jun 16 14:44:47 CEST 2009 - coolo@novell.com
+
+- build test suite in a package on its own
+

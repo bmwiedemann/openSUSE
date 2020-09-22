@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Sep 21 10:25:57 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Make services disabled, so the repository carries regular
+  tarball and it is updated only upon the request.
+
+-------------------------------------------------------------------
+Wed Sep 02 18:00:45 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 1.53.0+git.1584347654.eb0590f:
+  * Par 1.53.0 released 2020-Mar-14
+  * Par 1.52 released 2001-Apr-29
+  * Par 1.51 released 2000-Feb-24
+  * Par 1.50 released 1996-Feb-11
+  * Par 1.41 released 1993-Oct-31
+  * Par 1.40 released 1993-Oct-10
+  * Par 1.32 released 1993-Sep-13
+  * Par 1.31 released 1993-Sep-07
+  * Par 1.30 released 1993-Aug-18
+  * Par 1.20 released 1993-Aug-10
+
+-------------------------------------------------------------------
+Fri Mar 06 09:01:16 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 152+git.1583481202.96076a2:
+  * Reapply patches correctly.
+
+-------------------------------------------------------------------
+Thu Mar 05 08:44:06 UTC 2020 - mcepl@cepl.eu
+
+- Switch to the new upstream https://gitlab.com/mcepl/par
+- Update to version 152+git.1583397706.93d6247:
+  * Remove incorrect settings of CC macro.
+
+-------------------------------------------------------------------
+Thu Mar  5 00:24:23 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_build_failures.patch to got gcc warnings to go away.
+- Still broken UTF-8.
+
+-------------------------------------------------------------------
+Sat Feb 29 01:58:28 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Restart of attempts to package par 1.52.
+

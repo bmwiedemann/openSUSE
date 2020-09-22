@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.8
-%define patchversion 5.8.7
+%define patchversion 5.8.10
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0
 Group:          Documentation/Man
-Version:        5.8.7
+Version:        5.8.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7fc52c0
+Release:        <RELEASE>.gaf3e800
 %else
 Release:        0
 %endif
@@ -63,7 +63,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-7fc52c0a5bfb392c6cfc89d1f135a0297447ba39
+Provides:       %name-srchash-af3e800080ea43fbe9f7197f1b859aa8faafdcda
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz

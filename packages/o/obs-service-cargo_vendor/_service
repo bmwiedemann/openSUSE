@@ -1,0 +1,19 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/openSUSE/obs-service-cargo_vendor.git</param>
+    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.4.0</param>
+    <param name="match-tag">v*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">wbrown@suse.de</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

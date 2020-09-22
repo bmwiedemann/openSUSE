@@ -7,4 +7,24 @@
     <comment>Brought over from Packman</comment>
     <requestid>585286</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e2a27b31bfef4a2c95c0a76514f1aa2</srcmd5>
+    <version>1.2.1</version>
+    <time>1600801355</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1
+  - (added) src/build script builds in ../builddir
+  - (fixed) refactor &quot;Master&quot; to be &quot;Hub&quot;
+  - (fixed) 1.2.1 correctly versioned and tagged
+  1.2 (release candidate, not yet tagged)
+  - (added) jack patching modes (-p) for Hub Mode server (-S)
+  - (fixed) Compilation under ubuntu
+  - (removed) setRealtimeProcessPriority()
+  - (removed) Rtaudio mode (but still has dependencies)
+  - (fixed) IPv4-mapped IPv6 addressing bug
+  ...
+  - (fixed) Fixed compilation for  MacOSX10.11.sdk.
+  - (update) Updated to RtAudio 4.1.1, and using shared lib in linux.</comment>
+    <requestid>828568</requestid>
+  </revision>
 </revisionlist>

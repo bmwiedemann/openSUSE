@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.8
-%define patchversion 5.8.7
+%define patchversion 5.8.10
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.8.7
+Version:        5.8.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7fc52c0
+Release:        <RELEASE>.gaf3e800
 %else
 Release:        0
 %endif
@@ -159,7 +159,7 @@ Obsoletes:      microcode_ctl
 
 # Force bzip2 instead of lzma compression to
 # 1) allow install on older dist versions, and
-# 2) decrease build times (bsc#962356)
+# 2) decrease build times (bsc#962356 boo#1175882)
 %define _binary_payload w9.bzdio
 # Do not recompute the build-id of vmlinux in find-debuginfo.sh (bsc#964063)
 %undefine _unique_build_ids
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-7fc52c0a5bfb392c6cfc89d1f135a0297447ba39
-Provides:       kernel-srchash-7fc52c0a5bfb392c6cfc89d1f135a0297447ba39
+Provides:       kernel-%build_flavor-base-srchash-af3e800080ea43fbe9f7197f1b859aa8faafdcda
+Provides:       kernel-srchash-af3e800080ea43fbe9f7197f1b859aa8faafdcda
 # END COMMON DEPS
-Provides:       %name-srchash-7fc52c0a5bfb392c6cfc89d1f135a0297447ba39
+Provides:       %name-srchash-af3e800080ea43fbe9f7197f1b859aa8faafdcda
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17
@@ -703,6 +703,9 @@ BRP_PESIGN_FILES=""
 %if %CONFIG_EFI_STUB == "y"
 BRP_PESIGN_FILES="/boot/$image-%kernelrelease-%build_flavor"
 %endif
+%ifarch s390x ppc64 ppc64le
+BRP_PESIGN_FILES="/boot/$image-%kernelrelease-%build_flavor"
+%endif
 %if %CONFIG_MODULE_SIG == "y"
 BRP_PESIGN_FILES="$BRP_PESIGN_FILES *.ko"
 %endif
@@ -1220,7 +1223,7 @@ kernel module packages) against the %build_flavor flavor of the kernel.
 /usr/src/linux-obj/%kmp_target_cpu
 %endif
 
-%if "%livepatch" != "" && %CONFIG_SUSE_KERNEL_SUPPORTED == "y" && "%variant" == ""
+%if "%livepatch" != "" && %CONFIG_SUSE_KERNEL_SUPPORTED == "y" && "%variant" == "" && %build_default
 %if %livepatch == kgraft
 %define patch_package %{livepatch}-patch
 %else

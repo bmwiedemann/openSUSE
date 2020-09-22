@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Fri Aug 21 20:18:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * plugins.nbcsports: fix embed_url_re (#2980)
+  * plugins.olympicchannel: fix/rewrite (#2981)
+  * plugins.foxtr: fix playervars_re (#3013)
+  * plugins.huya: fix _hls_re (#3007)
+  * plugins.ceskatelevize: add new api for some links (#2991)
+  * plugins.beattv: remove plugin (#3053)
+  * plugins.ard_live: fix / rewrite (#3052)
+  * plugins.ard_mediathek: fix / update (#3049)
+  * Streamlink was added to Windows Package Manager
+  * plugins.tvplayer: Add missing platform key in the GET for stream_url (#2989)
+  * plugins.btv: remove login and fix API URL (#3019)
+  * plugins.n13tv: new plugin - replaces plugins.reshet (#3034)
+  * plugins.reshet: plugin removal (#3000)
+  * plugins.tvnbg: plugin removal (#3056)
+  * plugins.adultswim: fix/rewrite (#2952)
+  * ci: no test/documentation jobs on scheduled run (#3012)
+  * cli.main: fix msecs format in logging output (#3025)
+  * utils.l10n: fix pycountry language lookup (#3057)
+  * plugins.nbcnews: new plugin for http://nbcnews.com/now (#2927)
+  * plugins.showroom: use normal HLSStreams
+  * docs: remove unimportant note / file
+  * plugins.viasat: remove play.nova.bg domain
+  * actions: fixed incorrect versions and use names for codecov (#2932)
+  * plugins.filmon: use /tv/ url and raise PluginError for invalid channels
+  * flake8: E741 ambiguous variable name
+  * plugins.youtube: Fix isLive and signatureCipher (#3026)
+  * plugins.facebook: use meta og:video:url and added basic title support (#3024)
+  * plugins.picarto: fixed vod url detection
+  * ci: fix pycountry issue temporarily with a fixed version
+  * plugin.api.useragents: update User-Agent
+  * docs/install: fix Windows package manager
+  * plugins.mixer: remove plugin
+  * ci: run scheduled tests, ignore coverage report
+  * plugins.cdnbg: update plugin to support new sites, and remove old sites (#2912)
+  * plugins.radionet: fix plugin so it works with new page format (#3018)
+  * fixed typo
+  * plugins.app17: update API (#2969)
+  * Plugin.nicolive:resolve API format change (#3061)
+  * plugins.twitch: fix call_subdomain (#2958)
+  * plugins.bigo: use API for video URL (#3016)
+  * plugins.nicolive: resolve new api format (#3039)
+- remove env-script-interpreter.patch (obsolete)
+
+-------------------------------------------------------------------
+Mon Nov 25 11:19:13 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to version 1.3.0:
+  * twitch.tv shenanigans, see #2680; authenticating via
+    --twitch-oauth-token has been disabled.
+  * new plugins: albavision, news.now.com, twitcasting.tv, viu.tv,
+    vlive.tv, willax.tv
+- Refresh env-script-interpreter.patch
+- Use the small tarball (without ffmpeg (etc.) Windows binaries).
+
+-------------------------------------------------------------------
+Wed Aug 21 19:20:43 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to version 1.2.0:
+  * Multiple plugin fixes
+  * Fixed single hyphen params at the beginning of --player-args (#2333)
+  * --http-proxy will set the default value of --https-proxy to same as --http-proxy. (#2536)
+  * DASH Streams will handle headers correctly (#2545)
+  * the timestamp for FFMPEGMuxer streams will start with zero (#2559)
+- Use fdupes to address duplicate file warnings.
+
+-------------------------------------------------------------------
+Thu Apr 11 18:16:50 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Add env-script-interpreter.patch to fix Rpmlint errors.
+- Require python-pycountry instead of python-iso-639 and
+  python-iso3166, as these packages are not available in Factory.
+- Add dependencies according to the installation instructions
+- Remove support for Leap 42.3 since it was broken anyway.
+- Update to version 1.1.1:
+  * no relevant changes
+- Update to version 1.1.0:
+  * plugin fixes, improvements and new plugin implementations
+  * addition of the --twitch-disable-ads option
+  * DASH stream improvements
+  * documentation enhancements
+  * addition of the {url} player title variable
+  * default player title config for PotPlayer
+
+-------------------------------------------------------------------
+Wed Mar 13 22:00:52 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to version 1.0.0:
+  * New icon / logo for Streamlink
+  * Updated dependencies
+  * Many plugin updates.
+  * You can now provide a custom key URI to override HLS streams.
+  * User agents for API communication have been updated
+  * Synonyms have been added to sort "best" and "worst" streams.
+  * Process output will no longer show if tty is unavailable
+  * Improved terminal progress display for wide characters
+  * Fixed a bug with dynamic playlists on playback
+  * Fixed makeinstaller.sh
+  * Old Livestreamer deprecations and API references were removed
+  * Dependencies have been updated for Python
+  * Newer and more common User-Agents are now used
+  * Round the bitrates used for names of DASH streams.
+  * URL have been added for better processing of HTML tags
+  * Fixed sort and prog issue
+  * Fixed crashing bug with player-continuous-http option
+  * Make sure all dev dependencies (https://github.com/streamlink/streamlink/pull/2235)
+Breaking changes:
+  * -r is a shorthand for --record instead of --rtmp-rtmpdump
+  * A large number of unmaintained or NSFW plugins have been removed.
+
+- Update to version 0.14.2:
+  * Fixed Twitch OAuth request flow
+  * Fix the tv3cat and vk plugins
+  * VOD supported added to atresplayer plugin
+  * Removed tv8cati and nineanime plugins
+  * Added mjunoon.tv plugin
+
+- Update to version 0.14.0:
+  * Multiple plugin fixes
+  * Bug fixes for DASH streams
+  * Updated API call for api.utils hours_minutes_seconds
+  * Updated documentation
+  * Dict structures fix
+  * Reformated help menu
+  * Logger fix
+
+-------------------------------------------------------------------
+Sun Jun 24 11:22:25 UTC 2018 - dmarcoux@posteo.de
+
+- Update to version 0.13.0:
+  * Initial MPEG DASH support has been added! (#1637) Many thanks to @beardypig
+  * As always, a ton of plugin updates
+  * Updates to our documentation (#1673)
+  * Updates to our logging (#1752) as well as log --quiet options (#1744) (#1720)
+  * Our release script has been updated (#1711)
+  * Support for livestreams when using the --hls-duration option (#1710)
+  * Allow streamlink to exit faster when using Ctrl+C (#1658)
+  * Added an OpenCV Face Detection example (#1689)
+
+- Remove streamlink-use-mpv.patch
+
+-------------------------------------------------------------------
+Tue Dec 19 23:21:06 UTC 2017 - agraul@suse.com
+
+- Update to version 0.9.0:
+  * Updates to multiple plugins (electrecetv, tvplayer, Teve2,
+    cnnturk, kanald)
+- Update streamlink-use-mpv.patch
+  * Refresh to apply on rebased code
+
+-------------------------------------------------------------------
+Sun Sep 17 12:21:35 UTC 2017 - mpluskal@suse.com
+
+- Update conditionals to resolve dependencies on Leap
+
+-------------------------------------------------------------------
+Tue Mar  7 12:32:20 UTC 2017 - p.seiler@linuxmail.org
+
+- update to version 0.3.2
+- Added new Requirements:
+  * python[3]-iso3166
+  * python[3]-iso-639
+  * python[3]-pycryptodome
+
+-------------------------------------------------------------------
+Wed Dec 07 17:10:01 UTC 2016 - josipponjavic@gmail.com
+
+- Initial package.

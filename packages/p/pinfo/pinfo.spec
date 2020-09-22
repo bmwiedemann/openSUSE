@@ -17,16 +17,15 @@
 
 
 Name:           pinfo
-Version:        0.6.10
+Version:        0.6.13
 Release:        0
 Summary:        Lynx-style Info Browser
-License:        GPL-2.0-or-later
+License:        GPL-2.0-only
 Group:          Productivity/Publishing/Texinfo
-URL:            https://alioth.debian.org/projects/pinfo/
-Source:         https://alioth.debian.org/frs/download.php/file/3351/%{name}-%{version}.tar.bz2
-Patch1:         pinfo-0.6.9-nul-strings.patch
-Patch2:         pinfo-0.6.10-tinfo.patch
-Patch3:         pinfo-curses-detection.patch
+URL:            https://github.com/baszoetekouw/pinfo
+Source:         https://github.com/baszoetekouw/pinfo/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         https://github.com/baszoetekouw/pinfo/commit/16dba5978146b6d3a540ac7c8f415eda49280847.patch
+Patch2:         https://github.com/baszoetekouw/pinfo/commit/23c169877fda839f0634b2d193eaf26de290f141.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -39,14 +38,11 @@ Requires(preun): %{install_info_prereq}
 Pinfo is a curses based, Lynx-style info browser.
 
 %prep
-%setup -q
-%patch1
-%patch2
-%patch3 -p1
+%autosetup -p 1
 
 %build
-export CFLAGS="%{optflags} -fcommon"
 autoreconf -fiv
+export CPPFLAGS="-Wno-error=unused-parameter"
 %configure \
 	--with-curses=%{_prefix}
 %make_build
@@ -63,7 +59,7 @@ autoreconf -fiv
 
 %files -f %{name}.lang
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc NEWS
 %{_mandir}/man1/pinfo.1%{?ext_man}
 %{_infodir}/pinfo.info%{?ext_info}
 %config %{_sysconfdir}/pinforc

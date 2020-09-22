@@ -4,7 +4,7 @@
     <param name="url">https://github.com/flaviotordini/minitube.git</param>
     <param name="filename">minitube</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">3.4.2</param>
+    <param name="revision">3.5.1</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

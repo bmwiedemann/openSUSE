@@ -1,7 +1,9 @@
 -------------------------------------------------------------------
 Fri Sep 11 14:09:09 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
-- Add cloud_grains_present state
+- Version 0.3.10
+  * Add cloud_grains_present state
+  (jsc#SLE-4047)
 
 -------------------------------------------------------------------
 Tue Jun  9 13:08:47 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>

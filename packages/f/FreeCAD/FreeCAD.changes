@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 19 01:37:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with boost 1.73 and later, add
+  0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
+- Cleanup some build dependencies.
+
+-------------------------------------------------------------------
 Thu Jul 23 11:43:21 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - temporary disable FEM module until VTK 9 support arrives

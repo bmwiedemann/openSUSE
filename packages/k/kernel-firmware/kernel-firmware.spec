@@ -19,10 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __ksyms_path ^/lib/firmware
-%define version_unconverted 20200827
+%define version_unconverted 20200916
 
 Name:           kernel-firmware
-Version:        20200827
+Version:        20200916
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT

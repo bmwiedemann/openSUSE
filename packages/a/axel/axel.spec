@@ -19,11 +19,10 @@
 %{!?license: %global license %doc}
 %{!?make_build: %global make_build make %{?_smp_mflags}}
 Name:           axel
-Version:        2.17.8
+Version:        2.17.9
 Release:        0
 Summary:        Lightweight Download Accelerator
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Other
 URL:            https://github.com/axel-download-accelerator/axel
 Source:         https://github.com/axel-download-accelerator/axel/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
