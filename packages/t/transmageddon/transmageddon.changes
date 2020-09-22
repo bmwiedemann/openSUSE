@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 17 13:24:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly switch to python3 for building:
+  + Pass PYTHON=%{_bindir}/python3 to make install.
+  + Drop python BuildRequires.
+- Do not produce the obsolete., now empty post scriptlets.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:15:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

@@ -187,4 +187,15 @@
     <comment>Removal of -lang recommends (forwarded request 768636 from dimstar)</comment>
     <requestid>768692</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>5845d3ab3639696394400db89b988460</srcmd5>
+    <version>1.5</version>
+    <time>1600802098</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly switch to python3 for building:
+  + Pass PYTHON=%{_bindir}/python3 to make install.
+  + Drop python BuildRequires.
+- Do not produce the obsolete., now empty post scriptlets. (forwarded request 835801 from dimstar)</comment>
+    <requestid>836024</requestid>
+  </revision>
 </revisionlist>

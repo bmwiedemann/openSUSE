@@ -1,7 +1,7 @@
 #
 # spec file for package transmageddon
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           transmageddon
 Version:        1.5
 Release:        0
 Summary:        A Video Transcoder
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Url:            http://www.linuxrising.org/
+URL:            http://www.linuxrising.org/
 Source:         http://www.linuxrising.org/files/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE transmageddon-gtk3.patch dimstar@opensuse.org -- Require GTK+ 3.0
 Patch0:         transmageddon-gtk3.patch
@@ -33,8 +33,6 @@ BuildRequires:  fdupes
 # Needed to create typelib() Requires.
 BuildRequires:  gobject-introspection
 BuildRequires:  intltool >= 0.40.0
-# python is needed for the build (py-compile)
-BuildRequires:  python
 BuildRequires:  python3
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -67,16 +65,10 @@ translation-update-upstream
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+make DESTDIR=%{buildroot} install %{?_smp_mflags} PYTHON=%{_bindir}/python3
 %fdupes %{buildroot}%{_datadir}
 %suse_update_desktop_file %{name} AudioVideoEditing
 %find_lang %{name} %{?no_lang_C}
-
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
 
 %files
 %defattr(-, root, root)
