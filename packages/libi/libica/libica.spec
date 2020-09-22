@@ -22,7 +22,7 @@
 %endif
 
 Name:           libica
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
@@ -37,19 +37,11 @@ Source4:        z90crypt
 Source5:        z90crypt.service
 Source6:        baselibs.conf
 Source7:        %{name}-rpmlintrc
-Patch1:         libica-sles15sp2-x25519-x448-fix-handling-of-non-canonical-values.patch
-Patch2:         libica-sles15sp2-Fix-DES-and-TDES-key-length.patch
-Patch3:         libica-sles15sp2-FIPS-provide-output-iv-as-required-by-FIPS-tests.patch
-Patch4:         libica-sles15sp2-icainfo-bugfix-for-RSA-and-EC-related-info-for-softw.patch
-Patch5:         libica-sles15sp2-Build-with-pthread-flag.patch
-Patch6:         libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
-Patch7:         libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-addon.patch
-Patch8:         libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-rename-variables.patch
-Patch9:         libica-sles15sp2-Zeroize-local-variables.patch
-Patch10:        libica-sles15sp2-FIPS-add-SHA3-KATs-to-fips_powerup_tests.patch
-Patch11:        libica-sles15sp2-FIPS-skip-SHA3-tests-if-running-on-hardware-without-.patch
-Patch12:        libica-sles15sp2-FIPS-use-full-library-version-for-hmac-filename.patch
-Patch13:        libica-sles15sp2-FIPS-fix-inconsistent-error-handling.patch
+Patch01:        libica-sles15sp2-Zeroize-local-variables.patch
+Patch02:        libica-sles15sp2-FIPS-add-SHA3-KATs-to-fips_powerup_tests.patch
+Patch03:        libica-sles15sp2-FIPS-skip-SHA3-tests-if-running-on-hardware-without-.patch
+Patch04:        libica-sles15sp2-FIPS-use-full-library-version-for-hmac-filename.patch
+Patch05:        libica-sles15sp2-FIPS-fix-inconsistent-error-handling.patch
 Patch99:        libica-sles15sp2-FIPS-hmac-key.patch
 
 BuildRequires:  autoconf

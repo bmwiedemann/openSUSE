@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 18 20:59:39 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 3.7.0 (jsc#SLE-14466)
+  * Version 3.7.0
+    - [FEATURE] FIPS: Add HMAC based library integrity check
+    - [PATCH] icainfo: bugfix for RSA and EC related info for software column.
+    - [PATCH] FIPS: provide output iv in cbc-cs decrypt as required by FIPS tests
+    - [PATCH] FIPS: Fix DES and TDES key length
+    - [PATCH] icastats: Fix stats counter format
+  * Version 3.6.1
+    - [PATCH] Fix x25519 and x448 handling of non-canonical values
+- Removed the following obsolete patches
+  * libica-sles15sp2-x25519-x448-fix-handling-of-non-canonical-values.patch
+  * libica-sles15sp2-Fix-DES-and-TDES-key-length.patch
+  * libica-sles15sp2-FIPS-provide-output-iv-as-required-by-FIPS-tests.patch
+  * libica-sles15sp2-icainfo-bugfix-for-RSA-and-EC-related-info-for-softw.patch
+  * libica-sles15sp2-Build-with-pthread-flag.patch
+  * libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
+  * libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-addon.patch
+  * libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-rename-variables.patch
+
+-------------------------------------------------------------------
 Tue Sep 15 21:08:38 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Fix lack of SHA3 KATs in "make check" processing (bsc#1175277)
