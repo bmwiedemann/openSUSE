@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 22 10:05:34 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.2
+  - Availability of libvkd3d-shader as a public library.
+  - Support for tessellation shaders.
+  - Version 1.1 root signatures.
+  - Stream output support.
+- added gpg signature and keyring.
+
+-------------------------------------------------------------------
 Sat May 30 16:03:34 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - updated baselibs requires to allow better wine 32bit dependencies (bsc#1172310)

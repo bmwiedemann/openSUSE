@@ -31,9 +31,11 @@ URL:            https://winehq.org/
 Summary:        Direct3D 12 to Vulkan translation library
 License:        LGPL-2.1-or-later
 Group:          System/X11/Utilities
-Version:        1.1
+Version:        1.2
 Release:        0
 Source0:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz
+Source1:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz.sign
+Source2:        %name.keyring
 Source3:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -43,6 +45,10 @@ Group:          System/Libraries
 
 %package -n libvkd3d-utils%major
 Summary:        Direct3D 12 to Vulkan translation library utilities
+Group:          System/Libraries
+
+%package -n libvkd3d-shader%major
+Summary:        Direct3D 12 to Vulkan translation shader library
 Group:          System/Libraries
 
 %package devel
@@ -59,6 +65,9 @@ This is a Direct3D 12 to Vulkan translation library for use by e.g. Wine.
 
 %description -n libvkd3d-utils%major
 This is a Direct3D 12 to Vulkan translation utilities library for use by e.g. Wine.
+
+%description -n libvkd3d-shader%major
+This is a Direct3D 12 to Vulkan shader library for use by e.g. Wine.
 
 %description devel
 This is a Direct3D 12 to Vulkan translation library for use by e.g. Wine.
@@ -82,26 +91,39 @@ rm %buildroot/%_libdir/*.la
 %fdupes %buildroot/%_prefix
 
 %files -n libvkd3d%{major}
+%doc README ANNOUNCE AUTHORS
+%license COPYING LICENSE
 %defattr(-,root,root)
 %_libdir/libvkd3d.so.%{major}*
 
 %files -n libvkd3d-utils%{major}
+%license COPYING LICENSE
 %defattr(-,root,root)
 %_libdir/libvkd3d-utils.so.%{major}*
 
+%files -n libvkd3d-shader%{major}
+%license COPYING LICENSE
+%defattr(-,root,root)
+%_libdir/libvkd3d-shader.so.%{major}*
+
 %files devel
 %defattr(-,root,root)
+%license COPYING LICENSE
+%doc AUTHORS README ANNOUNCE
 %_includedir/*
 %_libdir/*.so
-%_libdir/pkgconfig/libvkd3d-utils.pc
 %_libdir/pkgconfig/libvkd3d.pc
+%_libdir/pkgconfig/libvkd3d-shader.pc
+%_libdir/pkgconfig/libvkd3d-utils.pc
+%_bindir/vkd3d-compiler
 
 %post -n libvkd3d%{major} -p /sbin/ldconfig
-
 %postun -n libvkd3d%{major} -p /sbin/ldconfig
 
 %post -n libvkd3d-utils%{major} -p /sbin/ldconfig
-
 %postun -n libvkd3d-utils%{major} -p /sbin/ldconfig
+
+%post -n libvkd3d-shader%{major} -p /sbin/ldconfig
+%postun -n libvkd3d-shader%{major} -p /sbin/ldconfig
 
 %changelog
