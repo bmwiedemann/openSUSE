@@ -371,6 +371,8 @@ products:
   - opensuse-tumbleweed-image:docker:
     - i586
     - x86_64
+  - prometheus-webhook-snmp-image:
+    - x86_64
   - rook-ceph-image:
     - x86_64
   - tumbleweed-busybox-image:
