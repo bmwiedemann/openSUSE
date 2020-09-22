@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 21 18:13:36 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.11.0:
+  + Added mouse wheel support for controls.
+  + Implemented UI upscaling for background and controls on HiDPI
+    displays.
+  + Fixed a regression in 1.10.0 that changed the sound of patches
+    using ring modulation.
+  + Fixed LV2 lint error caused by missing minorVersion and
+    microVersion.
+  + Removed dependency on oscpack for Non Session Manager support.
+
+-------------------------------------------------------------------
 Tue Jun  9 19:52:51 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.10.0:
