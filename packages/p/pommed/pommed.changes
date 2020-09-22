@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 22 01:15:46 CEST 2020 - ro@suse.de
+
+- add patch pommed-1.39-multiple-def-lcd_bck_info.patch
+  to fix link issues in factory. struct is already declared in
+  sysfs_backlight
+
+-------------------------------------------------------------------
 Thu Jun  2 13:03:39 UTC 2016 - tchvatal@suse.com
 
 - Cleanup a bit to have up-to-date spec-file

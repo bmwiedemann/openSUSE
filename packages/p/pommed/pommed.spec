@@ -1,7 +1,7 @@
 #
 # spec file for package pommed
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           pommed
 Version:        1.39
 Release:        0
 Summary:        Apple laptops hotkeys event handler
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Hardware/Mobile
-Url:            https://launchpad.net/pommed
+URL:            https://launchpad.net/pommed
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        pommed.service
 Source2:        gpomme.desktop
@@ -36,6 +36,7 @@ Patch2:         pommed-1.38-cflags.patch
 Patch3:         pommed-1.38-hardcoded-libpci.patch
 # PATCH-FIX-UPSTREAM pommed-dbus_policy.patch ro@novell.com -- bnc#469771
 Patch4:         pommed-dbus_policy.patch
+Patch5:         pommed-1.39-multiple-def-lcd_bck_info.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -100,6 +101,7 @@ of each item controlled by pommed.
 %patch2 -p1
 %patch3 -p1
 %patch4
+%patch5 -p1
 
 %build
 make %{?_smp_mflags}
