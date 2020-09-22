@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 22 08:13:23 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Update to 19.11.4. For a list of fixes check:
+  https://doc.dpdk.org/guides-19.11/rel_notes/release_19_11.html#id8
+- Add patch to resolve build error reported in Staging:E project 
+  where a kernel backport (jsc#SLE-13536) introduced backward
+  incompatible changes to the API that break kni module build
+  * 0001-SLE15-SP3-compatibility-patch-for-kni.patch
+
+-------------------------------------------------------------------
 Tue Aug 11 06:56:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to v19.11.3:

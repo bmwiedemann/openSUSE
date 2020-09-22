@@ -1,0 +1,37 @@
+From 430a4b50f2f7e5f21c7c2f81849588c575018501 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
+Date: Mon, 21 Sep 2020 14:50:13 +0200
+Subject: [PATCH] SLE15 SP3 compatibility patch for kni
+
+---
+ kernel/linux/kni/compat.h | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/linux/kni/compat.h b/kernel/linux/kni/compat.h
+index 9ee45dbf6..9dee63af2 100644
+--- a/kernel/linux/kni/compat.h
++++ b/kernel/linux/kni/compat.h
+@@ -14,7 +14,10 @@
+ #define SLE_VERSION(a, b, c) KERNEL_VERSION(a, b, c)
+ #endif
+ #ifdef CONFIG_SUSE_KERNEL
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 57))
++#if (defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 15 && \
++     defined(CONFIG_SUSE_PATCHLEVEL) && CONFIG_SUSE_PATCHLEVEL == 3)
++#define SLE_VERSION_CODE SLE_VERSION(15, 3, 0)
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 57))
+ /* SLES12SP3 is at least 4.4.57+ based */
+ #define SLE_VERSION_CODE SLE_VERSION(12, 3, 0)
+ #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 12, 28))
+@@ -131,6 +134,7 @@
+ #define HAVE_IOVA_TO_KVA_MAPPING_SUPPORT
+ #endif
+ 
+-#if KERNEL_VERSION(5, 6, 0) <= LINUX_VERSION_CODE
++#if KERNEL_VERSION(5, 6, 0) <= LINUX_VERSION_CODE || \
++	(SLE_VERSION_CODE && SLE_VERSION_CODE == SLE_VERSION(15, 3, 0))
+ #define HAVE_TX_TIMEOUT_TXQUEUE
+ #endif
+-- 
+2.26.2
+

@@ -53,7 +53,7 @@
 # Add option to build without tools
 %bcond_without tools
 Name:           dpdk%{name_tag}
-Version:        19.11.3
+Version:        19.11.4
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -62,6 +62,7 @@ URL:            http://dpdk.org
 Source:         http://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Source1:        preamble
 Patch1:         0001-fix-cpu-compatibility.patch
+Patch2:         0001-SLE15-SP3-compatibility-patch-for-kni.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libelf-devel
@@ -159,6 +160,7 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 # can't use %{name} because of dpdk-thunderx
 %setup -q -n dpdk-stable-%{version}
 %patch1 -p1 -z .init
+%patch2 -p1 -z .init
 
 # This fixes CROSS compilation (broken) in the mk file for ThunderX
 sed -i '/^CROSS /s/^/#/'  mk/machine/thunderx/rte.vars.mk
