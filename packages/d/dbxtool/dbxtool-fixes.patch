@@ -13,6 +13,17 @@ Index: dbxtool-8/src/iter.c
  			}
  		}
  
+@@ -224,8 +224,8 @@ esl_iter_next(esl_iter *iter, efi_guid_t
+ 		esl_get_type(iter, &type);
+ 		if (iter->len - iter->offset > iter->esl->SignatureListSize) {
+ 			warnx("EFI Signature List is malformed");
+-			errx(1, "list has %zd bytes left, element is %"PRIu32" bytes",
+-			     iter->len - iter->offset,
++			errx(1, "list has %ld bytes left, element is %"PRIu32" bytes",
++			     (long)(iter->len - iter->offset),
+ 			     iter->esl->SignatureListSize);
+ 		}
+ 		if (!efi_guid_cmp(&type, &efi_guid_x509_cert)) {
 @@ -241,8 +241,8 @@ esl_iter_next(esl_iter *iter, efi_guid_t
  							 - sizeof (efi_guid_t)) {
  				warnx("X.509 Cert ASN.1 size does not match "

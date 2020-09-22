@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 06:05:40 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- dbxtool-fixes.patch: bigger hammer for integer size mismatch to
+  fix build on more architectures.
+
+-------------------------------------------------------------------
 Sun Aug 16 13:11:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 8:
