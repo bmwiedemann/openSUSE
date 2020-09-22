@@ -23,7 +23,7 @@
 %define import_path github.com/lxc/lxd
 
 Name:           lxd
-Version:        4.5
+Version:        4.6
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -47,14 +47,14 @@ BuildRequires:  pkg-config
 BuildRequires:  rsync
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
 # for 'golang(API) >= 1.14' here, so just require 1.14 exactly. bsc#1172608
+BuildRequires:  sqlite3-devel >= 3.25
 BuildRequires:  golang(API) = 1.14
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxc) >= 3.0.0
-# Needed to build the sqlite fork and dqlite.
+# Needed to build dqlite and raft.
 BuildRequires:  autoconf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(libuv) >= 1.8.0
-BuildRequires:  pkgconfig(tcl)
 # Bits required for images and other things at runtime.
 Requires:       acl
 Requires:       ebtables
@@ -119,30 +119,6 @@ export CFLAGS="%{optflags} -fPIC -DPIC"
 # We have a temporary-install directory which contains all of the dylib deps.
 export PKG_CONFIG_SYSROOT_DIR="$INSTALL_ROOT"
 export PKG_CONFIG_PATH="$INSTALL_LIBDIR/pkgconfig"
-
-# SQLite
-pushd "$PKGDIR/_dist/deps/sqlite"
-autoreconf -fiv
-%configure \
-	--libdir="%{_libdir}/%{name}" \
-	--disable-static \
-	--enable-replication \
-	--disable-tcl
-make clean
-make %{?_smp_mflags}
-make DESTDIR="$INSTALL_ROOT" install
-popd
-
-# libco
-pushd "$PKGDIR/_dist/deps/libco"
-make \
-	CFLAGS="$CFLAGS" \
-	PREFIX="" \
-	INCLUDEDIR="%{_includedir}" \
-	LIBDIR="%{_libdir}/%{name}" \
-	DESTDIR="$INSTALL_ROOT" \
-	all install
-popd
 
 # raft
 pushd "$PKGDIR/_dist/deps/raft"

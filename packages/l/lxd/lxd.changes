@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 19 04:50:10 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.6. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-6-has-been-released/8981
+  boo#1176737
+
+  + Networks in projects
+  + AppArmor profiles for qemu
+  - Removal of custom sqlite fork.
+
+-------------------------------------------------------------------
 Sat Aug 29 02:59:26 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.5. The full upstream changelog is available from:
