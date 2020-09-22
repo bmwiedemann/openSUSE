@@ -36,7 +36,10 @@ Source2:        exporter_exporter.yaml
 Source3:        prometheus-exporter_exporter.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) = 1.14
+Requires(post): %fillup_prereq
+Requires(pre):  shadow
+%systemd_requires
 
 %{go_nostrip}
 %{go_provides}
