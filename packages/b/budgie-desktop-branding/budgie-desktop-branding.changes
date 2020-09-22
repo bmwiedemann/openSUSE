@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 19 15:36:23 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Prepare for SLE 15 SP3 , presume Leap 15.3 being the same
+- Removed unnecessary parts from sed expressions
+
+-------------------------------------------------------------------
 Wed Sep 16 10:21:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fix accidental incorrect macro

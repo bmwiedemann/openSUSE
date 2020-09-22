@@ -72,10 +72,13 @@ desktop environment.
 %if !0%{?is_backports} && 0%{?suse_version} < 1550
 sed -e 's-5120x3200-3840x2400-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
 %endif
-%if 0%{?is_backports}
-sed -e 's-openSUSEdefault-SLEdefault-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
+%if 0%{?is_backports} 
+sed -e 's-openSUSE-SLE-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
+sed -e 's-openSUSE-SLE-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_settings.gschema.override
 sed -e 's-5120x3200-1920x1200-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
-sed -e 's+openSUSE-distributor-logo+SLE-distributor-logo+g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_settings.gschema.override
+%endif
+%if 0%{?sle_version} >= 150300
+sed -e 's-jpg-png-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
 %endif
 rm %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/budgie-%{isnot}-distributor-logo.svg
 
