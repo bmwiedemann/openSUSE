@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 21 10:34:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.10.1:
+  + User visible changes:
+    - Exit fullscreen when pressing Esc in fullscreen mode.
+    - Search editor: focus the newly added filter selector.
+    - File list: reset vertical scroll position after changing
+      directory.
+    - Preferences dialog: increase width for extensions and
+      shortcuts lists.
+  + Bugs fixed:
+    - WebP loader: fixed an infinite loop when the operation is
+      cancelled.
+    - Jpeg loader: fixed crash in case of some malformed jpegs.
+    - Fixed crash when selecting other images after deleting.
+    - Fixed long UI freeze after cutting/pasting many files.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Apr 19 18:59:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.10.0:
