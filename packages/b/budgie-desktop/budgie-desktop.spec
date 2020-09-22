@@ -20,7 +20,6 @@
 %else
 %define brandingsuffix SLE
 %endif
-%define gnome_version %(rpm -q --queryformat='%%{VERSION}' libgnome-desktop-3-devel | sed 's/\.[0-9]*$//g')
 Name:           budgie-desktop
 Version:        10.5.1+1ed6276b
 Release:        0
@@ -149,9 +148,9 @@ Private library for Budgie desktop to link against.
 %patch -p1
 %patch1 -p1
 %patch2 -p1
-%if "%{gnome_version}" < "3.36"
+if pkg-config --max-version 3.36 gnome-desktop-3.0; then
 %patch3 -p1
-%endif
+fi
 
 %build
 %meson
