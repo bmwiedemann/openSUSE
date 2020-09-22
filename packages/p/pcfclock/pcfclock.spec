@@ -1,7 +1,7 @@
 #
 # spec file for package pcfclock
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Pcfclock kernel driver
 License:        GPL-2.0-or-later
 Group:          System/Kernel
-Url:            http://www-stud.ims.uni-stuttgart.de/~voegelas/pcf.html
+URL:            http://www-stud.ims.uni-stuttgart.de/~voegelas/pcf.html
 Source:         pcfclock-%{version}.tar.gz
 Source1:        Makefile
 Source2:        preamble
@@ -33,6 +33,7 @@ Patch2:         pcfclock-no_devfs.patch
 Patch3:         pcfclock-include.patch
 Patch4:         pcfclock-linux-3.19.patch
 Patch5:         pcfclock-linux-4.12.patch
+Patch6:         pcfclock-linux-5.8.patch
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  libelf-devel
@@ -74,6 +75,7 @@ more than 1500 kilometers.
 %patch3
 %patch4
 %patch5
+%patch6
 mkdir source
 mkdir obj
 cp -a linux/pcfclock.c %{SOURCE1} \

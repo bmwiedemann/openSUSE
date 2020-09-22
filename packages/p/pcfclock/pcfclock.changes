@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 01:21:38 CEST 2020 - ro@suse.de
+
+- add patch pcfclock-linux-5.8.patch to fix build with current
+  kernel 
+
+-------------------------------------------------------------------
 Tue Jun 19 12:11:47 UTC 2018 - msuchanek@suse.com
 
 - Use %{?linux_make_arch} when building kernel modules (boo#1098050).

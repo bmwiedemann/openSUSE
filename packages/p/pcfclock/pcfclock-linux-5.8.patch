@@ -1,0 +1,24 @@
+--- linux/pcfclock.c	2020/09/21 23:17:26	1.1
++++ linux/pcfclock.c	2020/09/21 23:34:20
+@@ -445,8 +445,21 @@
+ 	char name[8];
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,8,0)
+ 	pcfclock_table[n].dev =
+ 	    parport_register_device(port, "pcfclock", NULL, NULL, NULL, 0, NULL);
++#else
++	struct pardev_cb pdev_cb = {
++	    .preempt = NULL,
++	    .wakeup = NULL,
++	    .private = NULL,
++	    .irq_func = NULL,
++	    .flags = 0,
++	};
++
++	pcfclock_table[n].dev =
++	    parport_register_dev_model(port, "pcfclock", &pdev_cb, n);
++#endif
+ 	if (pcfclock_table[n].dev == NULL)
+ 		return 1;
+ 

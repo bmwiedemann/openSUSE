@@ -162,4 +162,13 @@
     <comment></comment>
     <requestid>617762</requestid>
   </revision>
+  <revision rev="25" vrev="266">
+    <srcmd5>f55cefd27589a9dd12f6e73b535589e3</srcmd5>
+    <version>0.44</version>
+    <time>1600801985</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch pcfclock-linux-5.8.patch to fix build with current
+  kernel (forwarded request 835950 from oertel)</comment>
+    <requestid>835951</requestid>
+  </revision>
 </revisionlist>
