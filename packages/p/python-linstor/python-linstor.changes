@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 07:07:48 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1176790, Update to 1.3.0
+ * added snapshot_shipping_list method
+ * setup.py: run make gensrc before python build
+ * Code cleanup and fixed cyclic dependencies
+
+-------------------------------------------------------------------
 Mon Jun  1 03:47:29 UTC 2020 - nick wang <nwang@suse.com>
 
 - Update to 1.1.2
