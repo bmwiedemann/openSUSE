@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:02:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.3:
+  * Improvements to the interface scaling and rendering for mobile devices
+  * The playbook index has been refactored from a list of cards to a table view
+  * and searching/filtering controls are no longer hidden in a submenu
+  * Sorting by playbook date and duration is now built into the table headers
+  * The Ansible CLI arguments are now available from the playbook index
+  * The host stats summary now displays colors and icons for the different
+    statuses
+  * Task result columns were re-ordered and statuses now have colors and icons
+  * Long task results or host facts should no longer render off-screen
+  * Added search for ignore_errors in results
+  * Added search for task by action
+  * Adjusted search for file paths to be partial
+  * Added search for task by path 
+
+-------------------------------------------------------------------
 Wed May 27 09:36:03 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
