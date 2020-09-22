@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Sep 21 21:10:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20.09.13:
+  Changes:
+  * Improved the performance of the Timeline especially with projects over one hour long.
+  * Changed Size and Position to Size, Position & Rotate and made Rotate and Scale hidden (only appears in old projects).
+  * Replaced Choppy, Crop: Circle, and Crop: Rectangle filters with new versions that do not use HTML through WebVfx, which was deprecated in version 20.06.28.
+  * Changed the Rutt-Etra-Izer, Swirl, and Text: 3D filters to be hidden since they are deprecated (still loads in old projects).
+  * Changed the video track hidden icon on the System theme to be more clear and obvious.
+  * Show an error dialog on startup if the frei0r plugins are not installed (only affects Linux distribution packages).
+  * Changed the keyboard shortcut 0 to zoom timeline to fit.
+  * Changed the keyboard shortcut Alt+0 to zoom playlist to fit.
+  * Changed the Timeline and Keyframes time ruler interval to 1 second when zoomed in.
+  * Upgraded FFmpeg to version 4.3.1.
+  Fixes:
+  * Fixed using a secure connection to get the upgrade URL.
+  * Fixed a rounding error for Color Grading video filter.
+  * Fixed a crash and incorrect preview scaling with more than one Rotate and Scale or Size and Position filter.
+  * Fixed colors when using an alpha/VP8 or alpha/VP9 export preset.
+  * Fixed video compositing with nothing on video track V1 or V1 hidden.
+  * Fixed export may fail when using extended (non-Latin-1) characters in path.
+  * Fixed EDL export.
+  * Fixed Export, Convert, or Reverse may fail if a temporary file it creates becomes locked on Windows.
+  * Fixed Properties > Color button not opening the color dialog with the current color.
+  * Fixed the Crop: Source video filter when using Settings > Proxy.
+  * Fixed a crash when dragging a MLT XML project file to a non-empty Timeline.
+  * Fixed the font dialog may too big or the preview inside the font dialog too big for the Text: Simple filter.
+  * Fixed filters not being applied to the portion of a clip inside a transition after undo of Cut, Lift, Remove, Ripple Delete, or move.
+  * Fixed a crash changing speed of a clip with non-standard non-integer or variable frame rate.
+  * Fixed some dialogs not opening or staying in the foreground.
+  * Fixed some crashes in timeline overwrite mode.
+  * Fixed clicking the filters icon next to Output not opening the filters panel.
+  * For details see https://www.shotcut.org/blog/new-release-200913/
+
+-------------------------------------------------------------------
 Tue Aug 11 09:29:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 20.07.11:

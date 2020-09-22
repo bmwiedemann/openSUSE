@@ -22,7 +22,7 @@
 %bcond_with    x264
 
 Name:           shotcut
-Version:        20.07.11
+Version:        20.09.13
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
