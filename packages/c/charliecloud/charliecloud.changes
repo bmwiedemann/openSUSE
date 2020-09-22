@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 22 06:08:16 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.19. Two particularly notable changes:
+  - ch-grow now supports multi-stage build (#768), which as always 
+    is fully unprivileged. This represents a big step forward in 
+    functionality.
+  - ch-grow now has subcommands; what used to be plain ch-grow 
+    is now ch-grow build, and ch-tug has become ch-grow pull.
+  - miscellaneous bug fixes and improvements
+  - Full changelog at https://groups.io/g/charliecloud/message/106
+- Update patch
+ * Replace-hardcode-path.patch
+
+-------------------------------------------------------------------
 Fri Aug 21 13:08:31 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.18

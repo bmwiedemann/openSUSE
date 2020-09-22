@@ -17,7 +17,7 @@
 
 
 Name:           charliecloud
-Version:        0.18
+Version:        0.19
 Release:        0
 Summary:        User-defined software stacks (UDSS) for HPC centers
 License:        Apache-2.0
