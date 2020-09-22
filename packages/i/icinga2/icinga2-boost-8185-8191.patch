@@ -1,0 +1,24 @@
+From 7e62a68eadada58e762d3f4261750796adffd440 Mon Sep 17 00:00:00 2001
+From: "Alexander A. Klimov" <alexander.klimov@icinga.com>
+Date: Wed, 26 Aug 2020 13:48:39 +0200
+Subject: [PATCH] Define BOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT
+
+refs #8185
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 046f23cf22..46e765415e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -172,6 +172,9 @@ add_definitions(-DBOOST_COROUTINES_NO_DEPRECATION_WARNING)
+ 
+ add_definitions(-DBOOST_FILESYSTEM_NO_DEPRECATED)
+ 
++# Required for Boost v1.74+
++add_definitions(-DBOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT)
++
+ link_directories(${Boost_LIBRARY_DIRS})
+ include_directories(${Boost_INCLUDE_DIRS})
+ 

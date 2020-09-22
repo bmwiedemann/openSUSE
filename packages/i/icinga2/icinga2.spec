@@ -77,6 +77,19 @@
 %define icinga_group icinga
 %define icingacmd_group icingacmd
 
+# enable unity builds by default for all architectures except arm32
+%ifarch %{arm}
+%bcond_with unity_build
+%else
+%bcond_without unity_build
+%endif
+# enable unity builds by default for all distribution except Tumbleweed
+%if 0%{?suse_version} > 1500
+%define unity_build 0
+%else
+%define unity_build 1
+%endif
+
 %define logmsg logger -t %{name}/rpm
 
 Summary:        Network monitoring application
@@ -84,9 +97,9 @@ License:        GPL-2.0-or-later
 Group:          System/Monitoring
 %if "%{_vendor}" == "suse"
 %else
-%endif # suse
+%endif
 Name:           icinga2
-Version:        2.11.5
+Version:        2.12.0
 Release:        %{revision}%{?dist}
 URL:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}.tar.gz
@@ -95,6 +108,12 @@ Source1:        icinga2-rpmlintrc
 %if "%{_vendor}" == "suse"
 # PATCH-FEATURE-OPENSUSE ecsos -- insert missing graphite tags as descriped in icingaweb2-module-graphite docs.
 Patch0:         icinga2-graphite.patch
+%if 0%{?suse_version} > 1500
+# PATCH-FEATURE-OPENSUSE ecsos -- Boost in Tumbleweed is to new. Fix boost build error in Tumbleweed. Should be included in version 2.13.0
+Patch1:         icinga2-boost-8185-8184.patch
+Patch2:         icinga2-boost-8185-8190.patch
+Patch3:         icinga2-boost-8185-8191.patch
+%endif
 %endif
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -163,6 +182,7 @@ BuildRequires:  libboost_filesystem-devel >= 1.66
 BuildRequires:  libboost_program_options-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
+BuildRequires:  libboost_test-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 %else
 %if (0%{?el5} || 0%{?rhel} == 5 || "%{?dist}" == ".el5" || 0%{?el6} || 0%{?rhel} == 6 || "%{?dist}" == ".el6")
@@ -239,7 +259,7 @@ BuildRequires:  mysql-devel
 
 %else
 BuildRequires:  mysql-devel
-%endif #suse
+%endif
 
 Requires:       %{name}-bin = %{version}-%{release}
 
@@ -308,6 +328,12 @@ Provides Nano syntax highlighting for icinga2.
 %if "%{_vendor}" == "suse"
 find . -type f -name '*.sh' -exec sed -i -e 's|\/usr\/bin\/env bash|\/bin\/bash|g' {} \;
 %patch0 -p1
+%if 0%{?suse_version} > 1500
+# Fix boost biuld error in Tumbleed. Should be fixed in 2.13.0
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%endif
 %endif
 
 %build
@@ -328,6 +354,13 @@ CMAKE_OPTS="-DCMAKE_INSTALL_PREFIX=/usr \
 %if 0%{?fedora}
 CMAKE_OPTS="$CMAKE_OPTS -DICINGA2_WITH_STUDIO=true"
 %endif
+
+%if %{unity_build}
+CMAKE_OPTS="$CMAKE_OPTS -DICINGA2_UNITY_BUILD=ON "
+%else
+CMAKE_OPTS="$CMAKE_OPTS -DICINGA2_UNITY_BUILD=OFF "
+%endif
+
 %if "%{_vendor}" == "redhat"
 %if 0%{?el5} || 0%{?rhel} == 5 || "%{?dist}" == ".el5" || 0%{?el6} || 0%{?rhel} == 6 || "%{?dist}" == ".el6"
 %if 0%{?build_icinga_org}
