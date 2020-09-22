@@ -1023,4 +1023,33 @@
   * manpage: fix typo</comment>
     <requestid>834225</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ade2b12a760e2d0403491167c960add5</srcmd5>
+    <version>0.32.0+git.20200922T130339.c535dfed66</version>
+    <time>1600802185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200922T130339.c535dfed66:
+  * travis: fix macOS 10.12 legacy build
+  * wayland: only render if we have frame callback
+  * player: add pause state to playback start message
+  * terminal: fix segfault when backgrounding
+  * f_decoder_wrapper: make log prefix less verbose
+  * audio: take paused state into account in ao_start()
+  * audio: move start() calls outside of lock
+  * mac: add an option to change the App activation policy
+  * mac: add ontop window level for desktop
+  * options: simplify --android-surface-size handling
+  * build: disable GLX
+  * manpage: fix console keybindings punctuation
+  * msg: make --msg-time show time in seconds
+  * build: sort dependencies (to make build deterministic)
+  * command, demux: make drop-buffers reset state even harder
+  * terminal: attempt to handle the ESC key
+  * client API: update alignment requirements for software rendering
+  * sws_utils: work around libswscale corrupting memory yet again
+  * manpage: refer to --sub-color for colors
+  * manpage: mark file-local-options as writable
+  * stream_slice: interpret `end` as offset if it starts with '+'</comment>
+    <requestid>836077</requestid>
+  </revision>
 </revisionlist>
