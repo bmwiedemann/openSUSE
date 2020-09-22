@@ -1,5 +1,5 @@
 #
-# spec file for package linstor/linstor-server
+# spec file for package linstor
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -23,7 +23,7 @@
 %define LS_PREFIX %{_datadir}/linstor-server
 %define FIREWALLD_SERVICES %{_libexecdir}/firewalld/services
 Name:           linstor
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        DRBD replicated volume manager
 License:        GPL-2.0-or-later
@@ -71,8 +71,9 @@ mkdir -p %{buildroot}/%{_unitdir}
 cp -r %{_builddir}/%{NAME_VERS}/scripts/linstor-controller.service %{buildroot}/%{_unitdir}
 cp -r %{_builddir}/%{NAME_VERS}/scripts/linstor-satellite.service %{buildroot}/%{_unitdir}
 mkdir -p %{buildroot}/%{FIREWALLD_SERVICES}
+mkdir -p %{buildroot}/%{_prefix}/lib/firewalld
 %if 0
-drbd.xml is included in yast2-drbd
+#drbd.xml is included in yast2-drbd
 cp %{_builddir}/%{NAME_VERS}/scripts/firewalld/drbd.xml %{buildroot}/%{FIREWALLD_SERVICES}
 %endif
 cp %{_builddir}/%{NAME_VERS}/scripts/firewalld/linstor-controller.xml %{buildroot}/%{FIREWALLD_SERVICES}
@@ -91,6 +92,7 @@ ls -l %{buildroot}/%{_sbindir}
 
 %package common
 Summary:        Common files shared between controller and satellite
+Group:          Productivity/Clustering/HA
 Requires:       jre-headless
 
 %description common
@@ -104,11 +106,13 @@ Linstor shared components between linstor-controller and linstor-satellite
 %{LS_PREFIX}/lib/conf/logback.xml
 %dir %attr(755,root,root) %{_prefix}/lib/firewalld
 %dir %attr(755,root,root) %{FIREWALLD_SERVICES}
+%dir %attr(755,root,root) %{_libexecdir}/firewalld
 
 ### controller
 
 %package controller
 Summary:        Linstor controller specific files
+Group:          Productivity/Clustering/HA
 Requires:       linstor-common = %{version}
 Recommends:     %{python_module linstor}
 Recommends:     %{python_module linstor-client}
@@ -148,6 +152,7 @@ Linstor controller manages linstor satellites and persistent data storage.
 
 %package satellite
 Summary:        Linstor satellite specific files
+Group:          Productivity/Clustering/HA
 Requires:       drbd-utils
 Requires:       linstor-common = %{version}
 Requires:       lvm2

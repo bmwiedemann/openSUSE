@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 22 08:06:36 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1176790, update to 1.8.0
+  * store resource and snapshot creation date in the database
+  * containers: add full s390x support
+  * LvmThin: Recreate shipped snapshot after merging
+  * Snapshot: Resume-IO on error and add timeout to takeSnapshot
+  [...]
+
+-------------------------------------------------------------------
 Mon Jun  1 06:05:35 UTC 2020 - nick wang <nwang@suse.com>
 
 - Update to 1.7.1, match to linstor client/api 1.1.2

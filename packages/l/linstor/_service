@@ -5,9 +5,9 @@
     <param name="filename">linstor-server</param>
 <!--
     build service using release linstor-server atm.
-    <param name="version">1.7.1</param>
+    <param name="version">1.8.0</param>
 -->
-    <param name="versionformat">1.7.1+git.%h</param>
+    <param name="versionformat">1.8.0+git.%h</param>
     <param name="revision">master</param>
   </service>
 
