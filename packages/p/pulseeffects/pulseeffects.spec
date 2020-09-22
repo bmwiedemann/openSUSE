@@ -17,7 +17,7 @@
 
 
 Name:           pulseeffects
-Version:        4.8.0
+Version:        4.8.2
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
