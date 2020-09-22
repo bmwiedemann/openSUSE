@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 04:41:36 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.3.1:
+  * Stability improvements and greater ability for QtCompat.wrapInstance
+    to do its job
+  * Bugfixes and additional members 
+
+-------------------------------------------------------------------
 Thu Nov  7 15:40:25 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner

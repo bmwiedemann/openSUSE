@@ -1,7 +1,7 @@
 #
 # spec file for package python-Qt.py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Qt.py
-Version:        1.1.0
+Version:        1.3.1
 Release:        0
 Summary:        Python compat-wrapper around all Qt bindings
 License:        MIT
