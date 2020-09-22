@@ -130,4 +130,23 @@
   * Reset receiver controller on connection lost (#379)</comment>
     <requestid>820588</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8c9a5420b03fa0222fb10a3e807dfb82</srcmd5>
+    <version>7.3.0</version>
+    <time>1600801925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.3.0:
+  * Add support for QUEUE_INSERT (#404)
+  * Fix get_chromecasts non blocking mode (#411)
+  * Ensure data parsed as JSON is a dict (#405)
+  * Add zeroconf debug option to example scripts (#401)
+  * Allow passing an already existing zeroconf object to additional
+    functions (#400) @emontnemery
+  * Ignore browser updates for *._sub._googlecast._tcp.local. (#400)
+  * Fix return type of get_listed_chromecasts (#400)
+  * Remove host and port from Chromecast object (#395)
+  * Keep previously known Chromecast in service listener (#399)
+  * Remove reboot function (#394)</comment>
+    <requestid>835960</requestid>
+  </revision>
 </revisionlist>
