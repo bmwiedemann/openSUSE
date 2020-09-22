@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 28 16:13:26 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 0.95
+  * New document render engine based on Weasyprint
+  * New template library grantlee used
+  * User manual added
+  * Many other improvements
+- Removed patch Check-only-for-Python-3-for-erml2pdf.py.patch
+- Removed patch Switch-erml2pdf.py-to-Python-3.patch
+ 
+
+-------------------------------------------------------------------
 Thu May  7 06:46:03 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add upstream patches to port to Python 3:

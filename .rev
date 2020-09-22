@@ -140,4 +140,18 @@
     <comment></comment>
     <requestid>800992</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f7c25b564d194e36e53839397e3768f5</srcmd5>
+    <version>0.95</version>
+    <time>1600801589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 0.95
+  * New document render engine based on Weasyprint
+  * New template library grantlee used
+  * User manual added
+  * Many other improvements
+- Removed patch Check-only-for-Python-3-for-erml2pdf.py.patch
+- Removed patch Switch-erml2pdf.py-to-Python-3.patch</comment>
+    <requestid>830739</requestid>
+  </revision>
 </revisionlist>

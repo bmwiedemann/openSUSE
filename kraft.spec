@@ -17,53 +17,45 @@
 #
 
 
+%bcond_without akonadi
+%bcond_with qpdfview
 Name:           kraft
-URL:            http://volle-kraft-voraus.de
-
-Version:        0.90
+Version:        0.95
 Release:        0
 Summary:        KDE software to manage office documents in the office
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Office/Other
-
-%bcond_without akonadi
-
-%bcond_with qpdfview
-
+URL:            https://volle-kraft-voraus.de
 Source0:        kraft-%{version}.tar.xz
+BuildRequires:  extra-cmake-modules
+BuildRequires:  libctemplate-devel
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Grantlee5)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(Qt5Core) >= 5.5.0
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(sqlite3)
+Requires:       libQt5Sql5-sqlite
+Requires:       python3-PyPDF2
+Requires:       python3-base
+Requires:       python3-reportlab
+Requires:       python3-six
+Recommends:     python3-Weasyprint
 %if %{with qpdfview}
 # PATCH-FEATURE-UPSTREAM use_qpdfview.path Open PDFs in qpdfview in appimages
 Patch0:         use_qpdfview.patch
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         Check-only-for-Python-3-for-erml2pdf.py.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         Switch-erml2pdf.py-to-Python-3.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       python3-base
-Requires:       python3-PyPDF2
-Requires:       python3-reportlab
-Requires:       python3-six
-
 %if %{with akonadi}
-BuildRequires:  akonadi-contact-devel
+BuildRequires:  cmake(KF5AkonadiContact)
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kcodecs-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcontacts-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  libctemplate-devel
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(sqlite3)
 
 %description
 Kraft is KDE software to help to create and manage office documents such as
@@ -79,13 +71,11 @@ See the website http://volle-kraft-voraus.de for more information.
 %if %{with qpdfview}
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
 
 %build
 
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -97,11 +87,8 @@ chmod 755 %{buildroot}%{_datadir}/kraft/tools/erml2pdf.py
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-%clean
-  rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root)
 %{_bindir}/kraft
 %if %{with akonadi}
 %{_bindir}/findcontact
