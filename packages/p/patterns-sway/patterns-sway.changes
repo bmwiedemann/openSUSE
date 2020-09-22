@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:07:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Remove dmenu since wofi is already required
+  See https://github.com/openSUSE/openSUSEway/issues/30
+
+-------------------------------------------------------------------
 Sun Aug  2 10:45:27 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - upstream branding by default for pattern-sway

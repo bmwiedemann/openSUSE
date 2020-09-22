@@ -47,6 +47,8 @@ Provides:       pattern-icon() = pattern-sway
 Provides:       pattern-order() = 1460
 Provides:       pattern-visible()
 
+Requires:       Mesa
+Requires:       alacritty
 Requires:       grim
 Requires:       mako
 Requires:       slurp
@@ -56,9 +58,6 @@ Requires:       swayidle
 Requires:       swaylock
 Requires:       waybar
 Requires:       wofi
-Requires:       Mesa
-Requires:       alacritty
-Requires:       dmenu
 
 Recommends:     kanshi
 Recommends:     pulseaudio
