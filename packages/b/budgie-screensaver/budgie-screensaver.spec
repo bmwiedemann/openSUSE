@@ -16,7 +16,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define gnome_version %(rpm -q --queryformat='%%{VERSION}' libgnome-desktop-3-devel | sed 's/\.[0-9]*$//g')
 Name:           budgie-screensaver
 Version:        20190923
 Release:        0
@@ -35,9 +34,7 @@ Patch2:         gnome-screensaver-helper.patch
 Patch3:         gnome-screensaver-xvkbd-on-lock.patch
 # PATCH-FIX-UPSTREAM gnome-screensaver-multihead-unlock.patch bnc#444157 bgo#455118 rodrigo@novell.com
 Patch4:        gnome-screensaver-multihead-unlock.patch
-%if "%{gnome_version}" >= "3.36"
 Patch5:         gnome-desktop-3.36.patch
-%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  intltool
@@ -61,16 +58,25 @@ Requires:       /sbin/unix2_chkpwd
 Fork of GNOME Screensaver for Budgie 10
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+if pkg-config --atleast-version 3.36 gnome-desktop-3.0; then
+%patch5 -p1
+fi
 
 %build
 touch ./config.rpath
 touch ./ABOUT-NLS
-intltoolize --copy --force
+mkdir m4
+intltoolize --copy --force --automake
 autoreconf -fiv
 %configure\
 	--libexecdir=%{_libexecdir}/gnome-screensaver\
-	--with-pam-prefix=/etc\
+	--with-pam-prefix=%{_sysconfdir}\
 	--enable-authentication-scheme=helper\
 	--with-passwd-helper="/sbin/unix2_chkpwd"\
 	--with-console-kit\

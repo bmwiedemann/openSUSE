@@ -36,16 +36,15 @@ index c573924..942457e 100644
          [3.6.1],
          [http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-screensaver])
  
-+AC_CONFIG_MACRO_DIRS([m4])
++AC_CONFIG_MACRO_DIR([m4])
  AC_CONFIG_SRCDIR(src/gnome-screensaver.c)
  
  AM_INIT_AUTOMAKE([1.10 no-dist-gzip dist-xz tar-ustar])
-@@ -33,7 +34,7 @@ GETTEXT_PACKAGE=gnome-screensaver
+@@ -33,7 +34,6 @@ GETTEXT_PACKAGE=gnome-screensaver
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of default gettext domain])
  
 -AM_GLIB_GNU_GETTEXT
-+AM_GNU_GETTEXT([external])
  GLIB_GSETTINGS
  
  # Dependencies
@@ -56,3 +55,29 @@ index c573924..942457e 100644
 -GNOME_COMPILE_WARNINGS(yes)
  
  # Optional dependencies for the theme engines
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 4d594d7..6ac785b 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -5,7 +5,7 @@ NULL =
+ 
+ saverdir = $(libexecdir)/gnome-screensaver
+ 
+-INCLUDES =							\
++AM_CPPFLAGS =							\
+ 	-I.							\
+ 	-I$(srcdir)						\
+ 	$(GNOME_SCREENSAVER_CFLAGS)				\
+-- 
+
+diff --git a/Makefile.am b/Makefile.am
+index 4aa0deb..f7cb628 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -53,3 +53,4 @@ MAINTAINERCLEANFILES =		\
+ 
+ 
+ -include $(top_srcdir)/git.mk
++ACLOCAL_AMFLAGS = -I m4
+-- 
