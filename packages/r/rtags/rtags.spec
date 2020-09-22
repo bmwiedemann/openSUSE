@@ -1,7 +1,7 @@
 #
 # spec file for package rtags
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rtags
-Version:        2.34
+Version:        2.38
 Release:        0
 Summary:        Clang based source code indexer
 License:        GPL-3.0-or-later
