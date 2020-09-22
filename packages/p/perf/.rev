@@ -427,4 +427,19 @@
     <comment></comment>
     <requestid>823766</requestid>
   </revision>
+  <revision rev="54" vrev="63">
+    <srcmd5>174ca49eca49d238d2243cefbcc2cb78</srcmd5>
+    <version>MACRO</version>
+    <time>1600802107</time>
+    <user>dimstar_suse</user>
+    <comment>- remove perf-cs-etm-move-definition-of-traceid_list-global-variable-from-header-file.patch
+  It's a 5.8 patch and we are already at 5.8.
+- do not use libexecdir after the latest TW changes
+- install bash completion to /usr, not /etc as is now the default
+- require libcap, so that we support capabilities
+- require babeltrace, so that we support conversion to CTF
+- clean up spec file
+</comment>
+    <requestid>836067</requestid>
+  </revision>
 </revisionlist>

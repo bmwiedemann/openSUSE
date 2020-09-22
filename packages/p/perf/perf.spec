@@ -16,6 +16,10 @@
 #
 
 
+# a bug in dwz leaves temporary trace-*.debug.#dwz#.* on 64 bits in place
+# remove this once fixed, see:
+# https://sourceware.org/bugzilla/show_bug.cgi?id=26645
+%define _find_debuginfo_dwz_opts %{nil}
 # perf does not link with LTO
 %define _lto_cflags %{nil}
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
@@ -32,14 +36,17 @@ Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
-Patch1:         perf-cs-etm-move-definition-of-traceid_list-global-variable-from-header-file.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
+%ifnarch %{arm}
+BuildRequires:  babeltrace-devel
+%endif
 BuildRequires:  binutils-devel
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gtk2-devel
 BuildRequires:  kernel-source >= 2.6.31
+BuildRequires:  libcap-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
@@ -76,20 +83,40 @@ sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdep
 %build
 cd tools/perf
 export WERROR=0
-# PASS rpm optflags as EXTRA_FLAGS,  passing as CFLAGS overrides and breaks build
-make %{?_smp_mflags} -f Makefile.perf PYTHON=python3 EXTRA_CFLAGS="%{optflags}" ASCIIDOC8=1 prefix=%{_prefix} libdir=%{_libdir} perfexecdir=lib/%{name}-core all doc %{_perf_unwind} tipdir=share/doc/packages/perf USE_ASCIIDOCTOR=1 CORESIGHT=1
+# PASS rpm optflags as EXTRA_FLAGS, passing as CFLAGS overrides and breaks build
+make %{?_smp_mflags} -f Makefile.perf PYTHON=python3 \
+	EXTRA_CFLAGS="%{optflags}" \
+	ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 \
+	prefix=%{_prefix} \
+	libdir=%{_libdir} \
+	perfexecdir=lib/%{name}-core \
+	tipdir=share/doc/packages/perf \
+	%{_perf_unwind} \
+	all doc
 
 %install
 cd tools/perf
 export WERROR=0
-make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" prefix=%{_prefix} libdir=%{_libdir} perfexecdir=lib/%{name}-core DESTDIR=%{buildroot} install install-doc %{_perf_unwind} tipdir=share/doc/packages/perf USE_ASCIIDOCTOR=1 CORESIGHT=1
+make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" \
+	ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 \
+	prefix=%{_prefix} \
+	libdir=%{_libdir} \
+	perfexecdir=lib/%{name}-core \
+	tipdir=share/doc/packages/perf \
+	DESTDIR=%{buildroot} \
+	%{_perf_unwind} \
+	install install-doc
+
 mkdir -p %{buildroot}/%{_docdir}/perf/examples/bpf
 mv %{buildroot}%{_prefix}/lib/perf/include/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
 mv %{buildroot}%{_prefix}/lib/perf/examples/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
 
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
+mv %{buildroot}%{_sysconfdir}/bash_completion.d/perf %{buildroot}%{_datadir}/bash-completion/completions/
+
 %files
-%defattr(-, root, root)
-%attr(0644, root, root) %doc COPYING CREDITS README tools/perf/design.txt
+%license COPYING
+%doc CREDITS README tools/perf/design.txt
 %if 0%{?suse_version} > 1315
 %attr(0644, root, root) %doc %{_docdir}/perf/tips.txt
 %endif
@@ -101,11 +128,10 @@ mv %{buildroot}%{_prefix}/lib/perf/examples/bpf/* %{buildroot}/%{_docdir}/perf/e
 %dir %{_libdir}/traceevent/plugins
 %{_libdir}/traceevent/plugins/plugin_*.so
 %endif
-%attr(0644, -, -) %{_sysconfdir}/bash_completion.d/perf
-%{_libexecdir}/%{name}-core
-%{_datarootdir}/%{name}-core
+%{_prefix}/lib/%{name}-core
+%{_datadir}/bash-completion/completions/perf
+%{_datadir}/%{name}-core
 %{_mandir}/man1/perf*
-%dir %{_docdir}/perf
 %dir %{_docdir}/perf/examples
 %dir %{_docdir}/perf/examples/bpf
 %{_docdir}/perf/examples/bpf/*

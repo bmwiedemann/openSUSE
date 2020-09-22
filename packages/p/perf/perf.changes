@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 22 06:39:52 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- remove perf-cs-etm-move-definition-of-traceid_list-global-variable-from-header-file.patch
+  It's a 5.8 patch and we are already at 5.8.
+- do not use libexecdir after the latest TW changes
+- install bash completion to /usr, not /etc as is now the default
+- require libcap, so that we support capabilities
+- require babeltrace, so that we support conversion to CTF
+- clean up spec file
+
+-------------------------------------------------------------------
 Fri Jul 31 07:08:56 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Remove libebl Requires for ppc64/ppc64le (boo#1174714)
