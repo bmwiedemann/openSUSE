@@ -105,4 +105,12 @@
 - Cleanup spec file with spec-cleaner (forwarded request 316295 from pluskalm)</comment>
     <requestid>316344</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7480d2e443a28a152563e64fdd0337db</srcmd5>
+    <version>1.6f</version>
+    <time>1600801881</time>
+    <user>dimstar_suse</user>
+    <comment>- properly use libexecdir macro (forwarded request 835944 from oertel)</comment>
+    <requestid>835949</requestid>
+  </revision>
 </revisionlist>

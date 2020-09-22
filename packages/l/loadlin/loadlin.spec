@@ -1,7 +1,7 @@
 #
 # spec file for package loadlin
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           loadlin
 Version:        1.6f
 Release:        0
 Summary:        Linux Loader with Command Line from DOS
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Boot
-Url:            http://youpibouh.thefreecat.org/loadlin
+URL:            http://youpibouh.thefreecat.org/loadlin
 Source:         http://youpibouh.thefreecat.org/loadlin/loadlin-%{version}.tgz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86
@@ -40,8 +40,8 @@ developed by Werner Almesberger (LILO) and Hans Lermen (LOADLIN).
 %build
 
 %install
-mkdir -p %{buildroot}%{_prefix}/lib
-tar zxfC $RPM_SOURCE_DIR/%{name}-%{version}.tgz %{buildroot}%{_prefix}/lib
+mkdir -p %{buildroot}%{_libexecdir}
+tar zxfC $RPM_SOURCE_DIR/%{name}-%{version}.tgz %{buildroot}%{_libexecdir}
 
 %files
 %defattr(-,root,root)
