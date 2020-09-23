@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sat Sep 19 15:31:37 UTC 2020 - Matthias Bach <marix@marix.org> - 51
+
+- Following packaging guidelines, exclude static libraries again.
+
+-------------------------------------------------------------------
+Fri Sep 18 19:44:27 UTC 2020 - Matthias Bach <marix@marix.org> - 51
+
+- Execute upstream tests during package build
+
+-------------------------------------------------------------------
+Thu Sep 17 20:58:02 UTC 2020 - Matthias Bach <marix@marix.org> - 51
+
+- Fix the library not matching its soname
+
+-------------------------------------------------------------------
+Thu Sep 17 20:39:44 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Include static library
+
+-------------------------------------------------------------------
+Thu Sep 17 20:27:11 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Drop build config only required for SLE11
+
+-------------------------------------------------------------------
+Mon Sep 14 18:13:19 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Fix broken requirement
+
+-------------------------------------------------------------------
+Sat Sep 12 19:26:16 UTC 2020 - Matthias Bach <marix@marix.org> - 51
+
+- Initial package release
