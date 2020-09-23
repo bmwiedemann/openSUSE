@@ -68,4 +68,12 @@ Used, at least, by qmmp.</comment>
   * Various integration and testing environment improvements.</comment>
     <requestid>636855</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8d4be76bb0995bda40cdf860ae4ca5bb</srcmd5>
+    <version>0.12</version>
+    <time>1600879718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836324</requestid>
+  </revision>
 </revisionlist>

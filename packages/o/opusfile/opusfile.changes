@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 11 15:19:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.12:
+  * Fix stack overflow buffering out-of-sequence streams.
+  * Fix possible divide-by-zero.
+  * Fix issues with seeking in the win32 backend.
+  * Fix an issue where the seek algorithm could be confused by stream data changing between reads.
+  * Clean up compiler and scan-build warnings.
+  * Avoid use of the deprecated ftime() function which has Y2038 problems.
+  * Remove undefined behaviour memcpy(NULL) in op_read_native().
+  * Visual Studio project files updated for libogg 1.3.4 library name change.
+  * Various build systems updates.
+  * Various integration and testing environment improvements.
+
+-------------------------------------------------------------------
 Thu Sep 20 08:56:28 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Version update to 0.11:

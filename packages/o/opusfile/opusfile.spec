@@ -1,7 +1,7 @@
 #
 # spec file for package opusfile
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Bjørn Lie (zaitor@opensuse.org).
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %define soname 0
 Name:           opusfile
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        A high-level API for decoding and seeking within .opus files
 License:        BSD-3-Clause
 Group:          System/Libraries
-URL:            http://www.opus-codec.org/
-Source:         http://downloads.xiph.org/releases/opus/%{name}-%{version}.tar.gz
+URL:            https://www.opus-codec.org/
+Source:         https://downloads.xiph.org/releases/opus/opusfile-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ogg) >= 1.3
 BuildRequires:  pkgconfig(openssl)
@@ -73,7 +73,7 @@ Files for development with %{name}.
 %configure \
   --disable-static \
   --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
