@@ -16,10 +16,10 @@
 #
 
 
-%define pversion 5.30.1
-%global versionlist %nil
+%define pversion 5.30.3
+%global versionlist 5.30.1
 Name:           perl
-Version:        5.30.1
+Version:        5.30.3
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-2.0-or-later
@@ -49,8 +49,6 @@ Patch15:        perl-gdbm-test-no-mmap.diff
 Patch17:        perl-fix2020.patch
 # PATCH-FIX-UPSTREAM unmerged https://www.nntp.perl.org/group/perl.perl5.porters/2018/12/msg253240.html
 Patch18:        perl-reproducible2.patch
-# PATCH-FIX-UPSTREAM https://github.com/Perl/perl5/commit/6bd6308fcea3541e505651bf8e8127a4a03d22cd Fix detection of GCC 10 compiler and later
-Patch19:        perl-Adapt-Configure-to-GCC-version-10.patch
 BuildRequires:  db-devel
 BuildRequires:  gdbm-devel
 BuildRequires:  libbz2-devel
@@ -62,6 +60,7 @@ Suggests:       perl-doc = %{version}
 Provides:       perl-500
 Provides:       perl-Filter-Simple = 0.95
 Provides:       perl(:MODULE_COMPAT_%{pversion})
+Provides:       perl(:MODULE_COMPAT_5.30.1)
 Obsoletes:      perl-Filter-Simple <= 0.95
 Provides:       perl-I18N-LangTags = 0.43
 Obsoletes:      perl-I18N-LangTags <= 0.43
@@ -185,7 +184,6 @@ cp -p %{SOURCE3} .
 %patch15
 %patch17
 %patch18
-%patch19 -p1
 
 %build
 %define _lto_cflags %{nil}
