@@ -29,6 +29,9 @@ Patch1:         squashfs-thread-limit
 %if %{?suse_version} > 1315
 BuildRequires:  liblz4-devel
 %endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150100
+BuildRequires:  libzstd-devel
+%endif
 BuildRequires:  lzma-devel
 BuildRequires:  lzo-devel
 BuildRequires:  zlib-devel
@@ -49,7 +52,10 @@ squashfs images.
 sed -i -e "s|-O2|%{optflags} -fcommon|" squashfs-tools/Makefile
 make %{?_smp_mflags} -C squashfs-tools XZ_SUPPORT=1 LZO_SUPPORT=1 \
 %if %{?suse_version} > 1315
-   LZ4_SUPPORT=1
+   LZ4_SUPPORT=1 \
+%endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150100
+   ZSTD_SUPPORT=1
 %endif
 
 %install

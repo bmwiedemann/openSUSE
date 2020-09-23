@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  1 17:16:30 UTC 2020 - Björn Voigt <bjoernv@arcor.de>
+
+- enabled ZSTD compression support for openSUSE >= 15.1
+
+-------------------------------------------------------------------
 Tue Mar 31 11:41:23 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add -fcommon in order to fix boo#1160294.
