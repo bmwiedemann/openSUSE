@@ -1,0 +1,146 @@
+--- kbd-1.12/src/psffontop.c.orig	2005-07-07 15:00:50.547440043 +0200
++++ kbd-1.12/src/psffontop.c	2005-07-07 15:02:49.642520578 +0200
+@@ -465,7 +465,7 @@
+ 	writepsffontheader(ofil, width, height, fontlen, &psftype, flags);
+ 	utf8 = (psftype == 2);
+ 
+-	fwrite(fontbuf, charsize, fontlen, ofil);
++	(void)fwrite(fontbuf, charsize, fontlen, ofil);
+ 	/* unimaps: -1 => do nothing: caller will append map */
+ 	if (uclistheads != NULL && uclistheads != (struct unicode_list*)-1) {
+ 		struct unicode_list *ul;
+--- kbd-1.12/src/loadkeys.y.orig	2005-07-07 15:00:50.891379623 +0200
++++ kbd-1.12/src/loadkeys.y	2005-07-07 15:02:19.174871991 +0200
+@@ -20,6 +20,7 @@
+ #include <sys/ioctl.h>
+ #include <linux/kd.h>
+ #include <linux/keyboard.h>
++#include <unistd.h>		/* readlink */
+ #include "paths.h"
+ #include "getfd.h"
+ #include "findfile.h"
+@@ -65,9 +66,9 @@
+ static void loadkeys(char *console, int *warned);
+ static void mktable(void);
+ static void strings_as_usual(void);
+-static void keypad_as_usual(char *keyboard);
+-static void function_keys_as_usual(char *keyboard);
+-static void consoles_as_usual(char *keyboard);
++/* static void keypad_as_usual(char *keyboard); */
++/* static void function_keys_as_usual(char *keyboard); */
++/* static void consoles_as_usual(char *keyboard); */
+ static void compose_as_usual(char *charset);
+ static void lkfatal0(const char *, int);
+ extern int set_charset(const char *charset);
+@@ -559,7 +560,6 @@
+ 
+ void
+ open_include(char *s) {
+-	char *t, *te;
+ 
+ 	if (verbose)
+ 		/* start reading include file */
+@@ -713,7 +713,6 @@
+ 	     int alttable = table | M_ALT;
+ 	     int type = KTYP(keycode);
+ 	     int val = KVAL(keycode);
+-	     char *p;
+ 	     if (alttable != table && defining[alttable] &&
+ 		 (!keymap_was_set[alttable] ||
+ 		  !(keymap_was_set[alttable])[index]) &&
+@@ -1021,7 +1020,7 @@
+ static void
+ loadkeys (char *console, int *warned) {
+         int fd;
+-        int keyct, funcct, diacct;
++        int keyct, funcct, diacct = 0;
+ 
+ 	fd = getfd(console);
+ 	keyct = defkeys(fd, console, &warned);
+@@ -1156,7 +1155,6 @@
+ mktable () {
+ 	int i, imax, j;
+ 
+-	struct kbsentry kbs;
+ 	u_char *p;
+ 	int maxfunc;
+ 	unsigned int keymap_count = 0;
+--- kbd-1.12/src/mapscrn.c.orig	2005-07-07 15:00:50.869383487 +0200
++++ kbd-1.12/src/mapscrn.c	2005-07-07 15:02:19.190869181 +0200
+@@ -126,7 +126,7 @@
+ 	FILE *fp;
+ 	struct stat stbuf;
+ 	int u = 0;
+-	int lineno;
++	int lineno = 0;
+ 
+ 	if ((fp = findfile(mfil, mapdirpath, mapsuffixes)) == NULL) {
+ 	        fprintf(stderr, _("mapscrn: cannot open map file _%s_\n"),
+@@ -215,18 +215,18 @@
+ 
+ 	if ((strncmp(s,"0x",2) == 0) && 
+ 	    (strspn(s+2,"0123456789abcdefABCDEF") == strlen(s+2)))
+-		sscanf(s+2,"%x",&i);
++		(void)sscanf(s+2,"%x",&i);
+ 
+ 	else if ((*s == '0') &&
+ 		 (strspn(s,"01234567") == strlen(s)))
+-		sscanf(s,"%o",&i);
++		(void)sscanf(s,"%o",&i);
+ 
+ 	else if (strspn(s,"0123456789") == strlen(s)) 
+-		sscanf(s,"%d",&i);
++		(void)sscanf(s,"%d",&i);
+ 
+ 	else if ((strncmp(s,"U+",2) == 0) && strlen(s) == 6 &&
+ 		 (strspn(s+2,"0123456789abcdefABCDEF") == 4))
+-		sscanf(s+2,"%x",&i);
++		(void)sscanf(s+2,"%x",&i);
+ 
+ 	else if ((strlen(s) == 3) && (s[0] == '\'') && (s[2] == '\''))
+ 		i=s[1];
+--- kbd-1.12/src/outpsfheader.c.orig	2004-01-16 20:45:31.000000000 +0100
++++ kbd-1.12/src/outpsfheader.c	2005-07-07 15:02:19.205866546 +0200
+@@ -1,6 +1,7 @@
+ /* outpsfheader - auxiliary fn - not to be installed */
+ /* assumes a little-endian machine */
+ #include <stdio.h>
++#include <stdlib.h>	/* exit */
+ #include "psf.h"
+ 
+ void
+--- kbd-1.12/src/spawn_console.c.orig	2004-01-16 20:45:31.000000000 +0100
++++ kbd-1.12/src/spawn_console.c	2005-07-07 15:02:19.220863912 +0200
+@@ -12,6 +12,10 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <linux/kd.h>
++#include <stdlib.h>	/* system */
++#include <fcntl.h>	/* open */
++#include <sys/ioctl.h>	/* ioctl */
++#include <unistd.h>	/* sleep */
+ 
+ void
+ sighup(){
+--- kbd-1.12/src/setleds.c.orig	2004-01-16 20:45:31.000000000 +0100
++++ kbd-1.12/src/setleds.c	2005-07-07 15:01:56.377876261 +0200
+@@ -149,7 +149,7 @@
+     int optL = 0, optD = 0, optF = 0, verbose = 0;
+     char oleds, nleds, oflags, nflags, odefflags, ndefflags;
+     char nval, ndef, sign;
+-    char osunleds, nsunleds, nsunval, nsundef;
++    char osunleds = 0, nsunleds, nsunval, nsundef;
+     char *ap;
+     struct led *lp;
+ 
+--- kbd-1.12/openvt/Makefile.orig	2004-01-03 15:44:41.000000000 +0100
++++ kbd-1.12/openvt/Makefile	2005-07-07 15:02:19.235861278 +0200
+@@ -1,6 +1,7 @@
+ 
+ CC=gcc
+-CFLAGS=-O2 -Wall -ansi
++RPM_OPT_FLAGS=-O2 -Wall -ansi
++CFLAGS=$(RPM_OPT_FLAGS)
+ LDFLAGS=$(CFLAGS) -s 
+ 
+ SRC=openvt.c

@@ -1,0 +1,23 @@
+diff -Nur kbd-1.12-5/src/loadkeys.y kbd-1.12-6/src/loadkeys.y
+--- kbd-1.12-5/src/loadkeys.y	2004-02-26 22:49:25.000000000 +0100
++++ kbd-1.12-6/src/loadkeys.y	2004-02-26 22:52:44.000000000 +0100
+@@ -537,7 +537,7 @@
+ 
+ 	if (verbose)
+ 		/* start reading include file */
+-		fprintf(stderr, _("switching to %s\n"), s);
++		fprintf(stdout, _("switching to %s\n"), s);
+ 
+ 	lk_push();
+ 
+@@ -613,8 +613,8 @@
+ 	*/
+       gotf:
+ 	filename = xstrdup(pathname);
+-	if (!quiet)
+-		fprintf(stderr, _("Loading %s\n"), pathname);
++	if (!quiet && !optm)
++		fprintf(stdout, _("Loading %s\n"), pathname);
+ 	if (first_file) {
+ 		yyin = f;
+ 		first_file = 0;

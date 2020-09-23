@@ -1,0 +1,15 @@
+Begin3
+Title:          Keyboard and console utilities for Linux
+Version:        1.12
+Entered-date:   2004-01-16
+Description:    loadkeys dumpkeys setfont chvt openvt kbdrate kbd.FAQ A20 etc.
+Keywords:       keyboard mapping console font unicode
+Author:         several
+Maintained-by:  Andries E. Brouwer (aeb@cwi.nl)
+Primary-site:   ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd
+                884827 kbd-1.12.tar.gz
+Alternate-site: ftp://ftp.*.kernel.org/pub/linux/utils/kbd
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/keyboards
+Alternate site: ftp://ftp.cwi.nl/pub/aeb/kbd
+Copying-policy: GPL
+End

@@ -1,0 +1,79 @@
+diff -Nur kbd-1.12-11/src/unicode_start kbd-1.12-12/src/unicode_start
+--- kbd-1.12-11/src/unicode_start	2004-02-27 17:14:14.000000000 +0100
++++ kbd-1.12-12/src/unicode_start	2004-02-27 17:21:41.000000000 +0100
+@@ -18,7 +18,19 @@
+ # produce UTF-8 encoded multibyte sequences, instead of single bytes
+ # >= 0x80 in a legacy 8-bit encoding.
+ 
+-dumpkeys | loadkeys --unicode
++# There is no way of reverting the effect of "dumpkeys | loadkeys --unicode",
++# the memory of the earlier keymap is lost. Therefore, try
++# to save a copy of the original keymap to be able to reload it in unicode_stop.
++# (see also http://mail.nl.linux.org/linux-utf8/2003-08/msg00053.html):
++
++test -z "$HOME" -o "/" == "$HOME" && HOME=/root
++test -d $HOME/.kbd || mkdir $HOME/.kbd
++dumpkeys > $HOME/.kbd/.keymap_sv
++
++# redirect stderr and stdout of loadkeys to /dev/null to avoid the confusing
++# "plus before udiaeresis ignored" warnings.
++
++dumpkeys | loadkeys --unicode > /dev/null 2>&1
+ 
+ # 2. The output side: the console screen.
+ 
+@@ -35,6 +47,14 @@
+ DEFAULT_UNICODE_FONT=LatArCyrHeb-16
+ # Also drdos8x16 is a good candidate.
+ 
++# Fonts with 512 glyphs like LatArCyrHeb-16 make it impossible to use bold
++# on the console, which makes YaST2 unusable. To be able to use bold,
++# only fonts with 256 glyphs can be used. Therefore we prefer
++# the font specified in /etc/sysconfig/console. This should be OK because
++# the default font written to /etc/sysconfig/console by YaST2
++# is currently always a font with 256 glyphs and a Unicode map
++# which is suitable for the language used during the installation.
++
+ case $# in
+ 	2)
+ 		setfont $1 -u $2
+@@ -43,7 +63,24 @@
+ 		setfont $1
+ 		;;
+ 	0)
+-		setfont $DEFAULT_UNICODE_FONT
++		if [ -f /etc/sysconfig/console ] ; then
++		    . /etc/sysconfig/console
++		fi
++		if [ -n "$CONSOLE_FONT" ] ; then
++			SETFONT_ARGS="$CONSOLE_FONT"
++		    if [ -n "$CONSOLE_UNICODEMAP" ] ; then
++			SETFONT_ARGS="$SETFONT_ARGS -u $CONSOLE_UNICODEMAP"
++		    fi
++		    if [ -n "$CONSOLE_SCREENMAP" ] ; then
++			SETFONT_ARGS="$SETFONT_ARGS -m $CONSOLE_SCREENMAP"
++		    fi
++		    setfont $SETFONT_ARGS
++		    if [ -n "$CONSOLE_MAGIC" -a "$CONSOLE_MAGIC" != "none" ] ; then
++			echo -en "\033$CONSOLE_MAGIC"
++		    fi
++		else
++		    setfont $DEFAULT_UNICODE_FONT
++		fi
+ 		;;
+ 	*)
+ 		echo "usage: unicode_start [font [unicode map]]"
+diff -Nur kbd-1.12-11/src/unicode_stop kbd-1.12-12/src/unicode_stop
+--- kbd-1.12-11/src/unicode_stop	2004-02-27 17:14:14.000000000 +0100
++++ kbd-1.12-12/src/unicode_stop	2004-02-27 17:21:41.000000000 +0100
+@@ -2,3 +2,10 @@
+ # stop unicode
+ kbd_mode -a
+ echo -n -e '\033%@'
++
++# "dumpkeys | loadkeys --unicode" which is called in "unicode_start"
++# cannot be reverted, therefore we have to load the keyboard mapping again
++# if it could be sucessfully saved in "unicode_start":
++
++test -r $HOME/.kbd/.keymap_sv && loadkeys $HOME/.kbd/.keymap_sv
++

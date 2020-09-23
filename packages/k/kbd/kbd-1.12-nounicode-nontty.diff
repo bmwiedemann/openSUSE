@@ -1,0 +1,40 @@
+diff -Nur kbd-1.12-13/src/unicode_start kbd-1.12-14/src/unicode_start
+--- kbd-1.12-13/src/unicode_start	2004-02-27 17:22:32.000000000 +0100
++++ kbd-1.12-14/src/unicode_start	2004-02-27 17:24:51.000000000 +0100
+@@ -1,6 +1,17 @@
+ #!/bin/sh
+ # Enables Unicode processing in the current console.
+-#
++
++# 0. Check whether we're on a console
++TTY=`/usr/bin/tty`
++case $TTY in
++	/dev/console|/dev/tty[0-9]*)
++		;;
++	*)
++		echo "unicode_start skipped on $TTY"
++		exit 0
++		;;
++esac
++
+ # 1. The input side: the keyboard driver.
+ 
+ # Set the keyboard driver in Unicode mode. (Default is ASCII mode.)
+diff -Nur kbd-1.12-13/src/unicode_stop kbd-1.12-14/src/unicode_stop
+--- kbd-1.12-13/src/unicode_stop	2004-02-27 17:22:32.000000000 +0100
++++ kbd-1.12-14/src/unicode_stop	2004-02-27 17:24:51.000000000 +0100
+@@ -1,5 +1,14 @@
+ #!/bin/sh
+ # stop unicode
++TTY=`/usr/bin/tty`
++case $TTY in
++	/dev/console|/dev/tty[0-9]*)
++		;;
++	*)
++		echo "unicode_stop skipped on $TTY"
++		exit 0
++		;;
++esac
+ kbd_mode -a
+ echo -n -e '\033%@'
+ 
