@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 14 08:06:27 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-VLogError-Avoid-Null-pointer-dereferences.patch to fix
+  VLogError crash in AArch64 (jsc#SLE-15824)
+- Add shim-fix-verify-eku.patch to fix the potential crash at
+  verify_eku() (jsc#SLE-15824)
+- Add shim-do-not-write-string-literals.patch to fix the potential
+  crash when accessing the DEFAULT_LOADER string (jsc#SLE-15824)
+
+-------------------------------------------------------------------
 Fri Sep  4 15:08:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on aarch64

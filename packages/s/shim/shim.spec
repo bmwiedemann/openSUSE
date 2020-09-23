@@ -81,6 +81,12 @@ Patch7:         shim-fix-gnu-efi-3.0.11.patch
 Patch8:         shim-bsc1173411-only-check-efi-var-on-sb.patch
 # PATCH-FIX-UPSTREAM shim-bsc1175509-tpm2-fixes.patch bsc#1175509 glin@suse.com -- Upstream fixes for the TPM2 measurement
 Patch9:         shim-bsc1175509-tpm2-fixes.patch
+# PATCH-FIX-UPSTREAM shim-VLogError-Avoid-Null-pointer-dereferences.patch glin@suse.com -- Fix VlogError crash in AArch64
+Patch10:        shim-VLogError-Avoid-Null-pointer-dereferences.patch
+# PATCH-FIX-UPSTREAM shim-fix-verify-eku.patch glin@suse.com -- Fix the potential crash at verify_eku()
+Patch11:        shim-fix-verify-eku.patch
+# PATCH-FIX-UPSTREAM shim-do-not-write-string-literals.patch -- Fix the potential crash when accessing the DEFAULT_LOADER string
+Patch12:        shim-do-not-write-string-literals.patch
 # PATCH-FIX-OPENSUSE shim-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
 Patch100:       shim-opensuse-cert-prompt.patch
 BuildRequires:  gnu-efi >= 3.0.3
@@ -131,6 +137,9 @@ The source code of UEFI shim loader
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 %if 0%{?is_opensuse} == 1
 %patch100 -p1
 %endif
