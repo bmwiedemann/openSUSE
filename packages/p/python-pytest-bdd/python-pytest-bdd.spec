@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pytest-bdd
-Version:        3.4.0
+Version:        4.0.1
 Release:        0
 Summary:        BDD for pytest
 License:        MIT
@@ -48,13 +48,6 @@ BuildRequires:  %{python_module parse}
 BuildRequires:  %{python_module pytest >= 4.3.0}
 BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module six >= 1.9.0}
-%if %{with python2}
-BuildRequires:  python-enum34
-%endif
-# /SECTION
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description

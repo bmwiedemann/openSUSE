@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 23 06:37:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.21.26:
+  * database
+    - inotify: obey ".mpdignore" files
+  * output
+    - osx: fix crash bug
+    - sles: support floating point samples
+  * archive
+    - bzip2: fix crash on corrupt bzip2 file
+    - bzip2: flush output at end of input file
+    - iso9660: fix unaligned reads
+    - iso9660: support seeking
+    - zzip: fix crash on corrupt ZIP file
+  * decoder
+    - ffmpeg: remove "rtsp://" from the list of supported protocols
+    - ffmpeg: add "hls+http://" to the list of supported protocols
+    - opus: support the gain value from the Opus header
+    - sndfile: fix lost samples at end of file
+  * fix "single" mode bug after resuming playback
+  * the default log_level is "default", not "info" 
+
+-------------------------------------------------------------------
 Wed Aug 19 11:40:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix typo in previous commit.

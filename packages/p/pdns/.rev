@@ -678,4 +678,21 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
   based on https://github.com/PowerDNS/pdns/pull/9070 (bsc#1176312)</comment>
     <requestid>834287</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>bfa0b45ad114f93ac3b6ab9966b152e2</srcmd5>
+    <version>4.3.1</version>
+    <time>1600879498</time>
+    <user>dimstar_suse</user>
+    <comment>Add Bugzilla entry since original submission
+
+- Update to 4.3.1 especially a security fix for
+  PowerDNS Security Advisory 2020-05 (CVE-2020-17482, bsc#1176535)
+  Other improvements and bug fixes include,
+  * gpgsql: Reintroduce prepared statements
+  * Handle the extra single-row result set of MySQL stored procedures
+  * Raise an exception on invalid hex content in unknown records
+  For details, see
+  https://doc.powerdns.com/authoritative/changelog/4.3.html#change-4.3.1</comment>
+    <requestid>836269</requestid>
+  </revision>
 </revisionlist>

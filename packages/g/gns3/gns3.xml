@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-  <mime-type type="application/x-gns3">
-    <comment>GNS3 Project</comment>
-    <glob pattern="*.gns3"/>
-    <sub-class-of type="application/xml"/>
-  </mime-type>
-</mime-info>

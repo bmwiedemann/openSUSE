@@ -29,20 +29,25 @@
 %endif
 %endif
 
+%if 0%{?suse_version} >= 1500
+%define pycache \{,/__pycache__\}
+%else
+%define pycache %nil
+%endif
+
 #
 # End compatibility cruft
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 Name:           libkdumpfile
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Kernel dump file access library
 License:        LGPL-3.0-or-later OR GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/ptesarik/libkdumpfile
 Source:         https://github.com/ptesarik/libkdumpfile/releases/download/v%version/%name-%version.tar.bz2
-Patch0:         fix-build-with-recent-glibc.patch
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -62,11 +67,11 @@ A library that provides an abstraction layer for reading kernel dump
 core files.  It supports different kernel dump core formats, virtual
 to physical translation, Xen mappings and more.
 
-%package -n libkdumpfile7
+%package -n libkdumpfile8
 Summary:        Kernel dump file access library
 Group:          System/Libraries
 
-%description -n libkdumpfile7
+%description -n libkdumpfile8
 A library that provides an abstraction layer for reading kernel dump
 core files.  It supports different kernel dump core formats, virtual
 to physical translation, Xen mappings and more.
@@ -75,17 +80,17 @@ to physical translation, Xen mappings and more.
 Summary:        Include files and libraries for libkdumpfile development
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libkdumpfile7 = %{version}
+Requires:       libkdumpfile8 = %{version}
 
 %description devel
 This package contains all necessary include files and libraries needed
 to develop applications that require libkdumpfile.
 
-%package -n libaddrxlat0
+%package -n libaddrxlat1
 Summary:        Address translation library used primarily by libkdumpfile
 Group:          System/Libraries
 
-%description -n libaddrxlat0
+%description -n libaddrxlat1
 A library that provides an abstraction layer for translating addresses
 between address spaces (i.e. physical vs virtual).
 
@@ -95,7 +100,7 @@ This package contains the libxattrxlat library.
 Summary:        Include files and libraries for libaddrxlat development
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libaddrxlat0 = %{version}
+Requires:       libaddrxlat1 = %{version}
 
 %description -n libaddrxlat-devel
 This package contains all necessary include files and libraries needed
@@ -104,7 +109,7 @@ to develop applications that require libaddrxlat.
 %package -n python-libkdumpfile
 Summary:        Python interface for libkdumpfile
 Group:          Development/Languages/Python
-Requires:       libkdumpfile7 = %{version}
+Requires:       libkdumpfile8 = %{version}
 
 %description -n python-libkdumpfile
 This package contains all necessary python modules to use libkdumpfile via
@@ -113,7 +118,7 @@ the Python interpreter.
 %package -n python-libaddrxlat
 Summary:        Python interface for libaddrxlat
 Group:          Development/Languages/Python
-Requires:       libaddrxlat0 = %{version}
+Requires:       libaddrxlat1 = %{version}
 
 %description -n python-libaddrxlat
 This package contains all necessary python modules to use libaddrxlat via
@@ -133,7 +138,6 @@ the Python interpreter.
 
 %prep
 %setup -q
-%patch0 -p1
 
 # Avoid autotools recheck after patching config*
 touch aclocal.m4 Makefile.in config.h.in configure
@@ -153,15 +157,15 @@ rm -v %{buildroot}%{_bindir}/dumpattr
 rm -v %{buildroot}%{_bindir}/listxendoms
 rm -v %{buildroot}%{_bindir}/showxlat
 
-%post -n libkdumpfile7 -p /sbin/ldconfig
+%post -n libkdumpfile8 -p /sbin/ldconfig
 
-%post -n libaddrxlat0 -p /sbin/ldconfig
+%post -n libaddrxlat1 -p /sbin/ldconfig
 
-%postun -n libkdumpfile7 -p /sbin/ldconfig
+%postun -n libkdumpfile8 -p /sbin/ldconfig
 
-%postun -n libaddrxlat0 -p /sbin/ldconfig
+%postun -n libaddrxlat1 -p /sbin/ldconfig
 
-%files -n libkdumpfile7
+%files -n libkdumpfile8
 %defattr(-,root,root)
 %{_libdir}/libkdumpfile.so.*
 %license COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3
@@ -173,7 +177,7 @@ rm -v %{buildroot}%{_bindir}/showxlat
 %{_libdir}/libkdumpfile.so
 %{_libdir}/pkgconfig/libkdumpfile.pc
 
-%files -n libaddrxlat0
+%files -n libaddrxlat1
 %defattr(-,root,root)
 %{_libdir}/libaddrxlat.so.*
 %license COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3
@@ -188,17 +192,17 @@ rm -v %{buildroot}%{_bindir}/showxlat
 
 %files -n python-libkdumpfile
 %defattr(-,root,root)
-%dir %{python_sitelib}/kdumpfile{,/__pycache__}
-%{python_sitelib}/kdumpfile{,/__pycache__}/__init__.*py*
-%{python_sitelib}/kdumpfile{,/__pycache__}/exceptions.*py*
-%{python_sitelib}/kdumpfile{,/__pycache__}/views.*py*
+%dir %{python_sitelib}/kdumpfile%{pycache}
+%{python_sitelib}/kdumpfile%{pycache}/__init__.*py*
+%{python_sitelib}/kdumpfile%{pycache}/exceptions.*py*
+%{python_sitelib}/kdumpfile%{pycache}/views.*py*
 %{python_sitearch}/_kdumpfile.so
 
 %files -n python-libaddrxlat
 %defattr(-,root,root)
-%dir %{python_sitelib}/addrxlat{,/__pycache__}
-%{python_sitelib}/addrxlat{,/__pycache__}/__init__.*py*
-%{python_sitelib}/addrxlat{,/__pycache__}/exceptions.*py*
+%dir %{python_sitelib}/addrxlat%{pycache}
+%{python_sitelib}/addrxlat%{pycache}/__init__.*py*
+%{python_sitelib}/addrxlat%{pycache}/exceptions.*py*
 %{python_sitearch}/_addrxlat.so
 
 %changelog

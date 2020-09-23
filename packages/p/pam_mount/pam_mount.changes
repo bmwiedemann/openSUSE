@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 23:39:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Demote Recommends to Suggests.
+- Trim old specfile constructs.
+
+-------------------------------------------------------------------
 Mon Nov 25 08:24:18 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
 
 - Systemd-user must be prevented from invoking pam_mount.so in the

@@ -1,7 +1,7 @@
 #
 # spec file for package latex2rtf
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # Get the major version of makeinfo.
 %define makeinfo_major_version %(MJ="`rpm -q --queryformat='%%{VERSION}' makeinfo | cut -c 1`"; echo $MJ)
+%define mversion 2.3.18
 Name:           latex2rtf
-Version:        2.3.16
+Version:        2.3.18a
 Release:        0
 Summary:        LaTeX to RTF Converter
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Other
-Url:            http://latex2rtf.sourceforge.net/index.html
-Source0:        http://downloads.sourceforge.net/project/latex2rtf/latex2rtf-unix/2.3.16/latex2rtf-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix_makefile_dist.patch ronisbr@gmail.com Fix Makefile to allow latex2rtf to be build by a server farm
-Patch1:         fix_makefile_dist.patch
+URL:            http://latex2rtf.sourceforge.net/index.html
+Source0:        http://downloads.sourceforge.net/project/latex2rtf/latex2rtf-unix/%{mversion}/latex2rtf-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix_latex2rtf_texi.patch ronisbr@gmail.com Fix info page of latex2rtf
-Patch2:         fix_latex2rtf_texi.patch
+Patch1:         fix_latex2rtf_texi.patch
 BuildRequires:  gcc-c++
+BuildRequires:  info
 BuildRequires:  m4
 BuildRequires:  makeinfo
 BuildRequires:  texinfo
@@ -46,13 +46,12 @@ LaTeX2RTF is a translator program to convert LaTeX formatted text files into
 This standard can be ambiguous in places, but RTF is supported by many text
 editors. Specifically, it is supported by Microsoft Word. This means that the
 conversion of a LaTeX document to RTF allows anyone with a copy of Word to
-convert LaTeX files to Word .doc or .docx files.
+ponvert LaTeX files to Word .doc or .docx files.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{mversion}
 
 %patch1 -p1
-%patch2 -p1
 
 %build
 

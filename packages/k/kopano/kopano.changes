@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:48:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add -pthread to CFLAGS as upstream is missing it and
+  the riscv64 compiler is picky about.
+
+-------------------------------------------------------------------
 Fri Sep  4 21:32:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.0.6

@@ -35,7 +35,7 @@ BuildRequires:  python-enum34
 Requires:       python-parse >= 1.12.0
 Requires:       python-six >= 1.11
 %ifpython2
-Recommends:     python-enum34
+Requires:       python-enum34
 %endif
 BuildArch:      noarch
 # SECTION test requirements

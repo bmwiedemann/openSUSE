@@ -103,4 +103,17 @@
 - Update list of excluded tests.</comment>
     <requestid>820420</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>80eebd5c6a2a56902d4bbff8dbc93b04</srcmd5>
+    <version>0.7.7</version>
+    <time>1600879438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.7:
+  * Fix incorrect validation of JWKs passed to oauth.Client
+    constructor, which was actually *preventing* the caller from
+    setting a correct value rather than checking that they did so.
+- Fix check section: Use double quotes when defining the list of
+  tests since single quotes mess with the pytest macro.</comment>
+    <requestid>836145</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,34 @@
+From 059bcac469a06767179771aebbbe65dacd676111 Mon Sep 17 00:00:00 2001
+From: Michael Adams <mdadams@ece.uvic.ca>
+Date: Tue, 22 Sep 2020 07:46:26 -0700
+Subject: [PATCH] Moved the point at which the JasPer OpenGL cmake module is
+ included in the top-level CMakeLists.txt file so that the main JasPer config
+ header is generated correctly and all of the initialization required for this
+ module is performed prior to its inclusion.
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 20dbd8a..adf45ca 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -79,8 +79,6 @@ include(CheckCSourceCompiles)
+ include(CTest)
+ include(Sanitizers)
+ 
+-include(JasOpenGL)
+-
+ cmake_policy(SET CMP0012 NEW)
+ 
+ ################################################################################
+@@ -205,6 +203,8 @@ endif()
+ # Perform plaform checks.
+ ################################################################################
+ 
++include(JasOpenGL)
++
+ find_program(BASH_PROGRAM bash)
+ 
+ check_include_files(fcntl.h JAS_HAVE_FCNTL_H)

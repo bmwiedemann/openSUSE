@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 23 12:46:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.7.2:
+  The significant update for this release is that it is compatible with the
+  latest VTK-9.x series and is known to work with VTK 9.0.1 from PyPI. The
+  picker UI has changed to no longer pop up a UI window but instead show the
+  picked attributes on the render window directly. The original picker UI is now
+  available on the scene's UI in a separate "Picker" tab. This is accessible
+  from either the pipeline view when one edits the properties of a scene or
+  through the "configure scene" gear icon on the scene window toolbar.
+  a few dozen bugfixes, see included changes
+- drop no_vtk_require.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Oct 30 19:34:42 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix tvtk doc .desktop file name.

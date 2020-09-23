@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        7.28
+Version:        7.32
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -105,7 +105,7 @@ make %{?_smp_mflags}
 %install
 install -d 755 %{buildroot}/%{_bindir}
 install -d 755 %{buildroot}/%{_datadir}/applications
-install -d 755 %{buildroot}/%{_datadir}/pixmaps
+install -d 755 %{buildroot}/%{_datadir}/icons/hicolor
 install -d 755 %{buildroot}/%{_datadir}/mime/packages
 install -d 755 %{buildroot}/%{_datadir}/%{name}
 install -d 755 %{buildroot}/%{_datadir}/%{name}/maps
@@ -115,7 +115,7 @@ install -m 755 gpxsee %{buildroot}/%{_bindir}/%{name}
 install -m 644 pkg/maps/* %{buildroot}/%{_datadir}/%{name}/maps
 install -m 644 pkg/csv/* %{buildroot}/%{_datadir}/%{name}/csv
 install -m 644 lang/*.qm %{buildroot}/%{_datadir}/%{name}/translations
-install -m 644 icons/gpxsee.png %{buildroot}/%{_datadir}/pixmaps/%{name}.png
+cp -r icons/app/hicolor/* %{buildroot}/%{_datadir}/icons/hicolor
 install -m 644 pkg/gpxsee.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
 install -m 644 pkg/gpxsee.xml %{buildroot}/%{_datadir}/mime/packages/%{name}.xml
 
@@ -141,7 +141,7 @@ fi
 %{_bindir}/*
 %{_datadir}/%{name}/*
 %{_datadir}/applications/*
-%{_datadir}/pixmaps/*
+%{_datadir}/icons/hicolor/*
 %{_datadir}/mime/packages/*
 
 %changelog

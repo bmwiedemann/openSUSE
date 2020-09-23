@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 22 14:33:50 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 2.5.6:
+  * Interactive query UI usability improvements
+  * new query UI commands:
+    Alt-[ (decrease fuzziness by one),
+    Alt-] (increase fuzziness by one),
+    Alt-{ (decrease context size by one line),
+    Alt-} (increase context size by one line)
+
+-------------------------------------------------------------------
 Thu Sep  3 11:44:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 2.5.5:

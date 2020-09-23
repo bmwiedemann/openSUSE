@@ -765,4 +765,12 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>828027</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>d75ab063d13c3fa9af26206b7f5ab6cf</srcmd5>
+    <version>0.4.4.5</version>
+    <time>1600879309</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>836122</requestid>
+  </revision>
 </revisionlist>

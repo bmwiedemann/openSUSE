@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 22 19:47:45 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- upgrade to libkdumpfile-0.4.0
+  * 5-level paging for x86-64
+  * bitmap and blob attributes
+  * kASLR support for Linux kernels
+  * address translation speed-ups
+  * many bugfixes
+- Drop fix-build-with-recent-glibc.patch (now upstream).
+
+-------------------------------------------------------------------
 Tue Apr 28 06:33:56 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - Mark COPYING* files with %license.

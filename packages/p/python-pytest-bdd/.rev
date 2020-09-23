@@ -65,4 +65,24 @@
   * Parse multiline steps according to the gherkin specification #365.</comment>
     <requestid>812820</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5a8966d0c288f3502ab00d2995fa27ea</srcmd5>
+    <version>4.0.1</version>
+    <time>1600879634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.1
+- remove requires on python-enum34, not needed by pytest-bdd
+ * Fixed performance regression introduced in 4.0.0 where collection time
+    of tests would take way longer than before
+ * Strict Gherkin option is removed (@scenario() does not accept
+    the strict_gherkin parameter).
+ * @scenario() does not accept the undocumented parameter caller_module anymore.
+ * Given step is no longer a fixture. The scope parameter is also removed.
+ * Fixture parameter is removed from the given step declaration.
+ * pytest_bdd_step_validation_error hook is removed.
+ * Fix an error with pytest-pylint plugin
+ * Fix pytest-xdist 2.0 compatibility
+ * Fix compatibility with pytest 6 --import-mode=importlib option.</comment>
+    <requestid>836273</requestid>
+  </revision>
 </revisionlist>

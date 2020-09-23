@@ -17,7 +17,7 @@
 
 
 Name:           nwg-launchers
-Version:        0.3.4
+Version:        0.4.0
 Release:        0
 Summary:        GTK launchers and menu for sway and i3
 License:        GPL-3.0-or-later

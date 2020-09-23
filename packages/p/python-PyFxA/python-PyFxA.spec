@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyFxA
-Version:        0.7.6
+Version:        0.7.7
 Release:        0
 Summary:        Firefox Accounts client library for Python
 License:        MPL-2.0
@@ -70,14 +70,14 @@ find ./ -type f -exec chmod -x {} +
 %check
 # Exclude tests which require network connection +
 # deprecated test_monkey_patch_for_gevent
-includedTests='\
+includedTests="\
   not TestAuthClientAuthorizeToken and\
   not TestAuthClientVerifyCode and\
   not TestCachedClient and\
   not TestCoreClient and\
   not TestCoreClientSession and\
   not TestJwtToken and\
-  not test_monkey_patch_for_gevent'
+  not test_monkey_patch_for_gevent"
 %pytest -k "${includedTests}" fxa/tests/
 
 %post

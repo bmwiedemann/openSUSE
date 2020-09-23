@@ -20,7 +20,7 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.3.6
+Version:        0.4.4.5
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause

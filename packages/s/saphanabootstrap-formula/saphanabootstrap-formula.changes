@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:38:47 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- Version 0.6.1:
+  * Remove copy of config files for exporters since we use /usr/etc
+
+-------------------------------------------------------------------
 Thu Aug 20 02:00:46 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Version 0.6.0

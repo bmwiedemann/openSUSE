@@ -206,8 +206,16 @@ install -m 0644 %{SOURCE3} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 
 cd %{buildroot}%{python3_sitelib}/%{name}-web
 rm -f %{name}.db
-echo "SERVER_MODE = False" > config_distro.py
-echo "HTML_HELP = '%{_datadir}/doc/%{name}-docs/en_US/html/'" >> config_distro.py
+
+cat << EOF > config_distro.py
+SERVER_MODE = False
+HTML_HELP = '%{_datadir}/doc/%{name}-docs/en_US/html/'
+UPGRADE_CHECK_ENABLED = False
+DEFAULT_BINARY_PATHS = {
+    "pg": "%{_bindir}"
+}
+EOF
+
 chmod -x %{buildroot}%{_docdir}/%{name}-docs/en_US/images/*
 rm %{buildroot}%{python3_sitelib}/%{name}-web/regression/.gitignore
 rm %{buildroot}%{_docdir}/%{name}-docs/en_US/.gitignore

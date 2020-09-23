@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 22 14:48:48 UTC 2020 - Ronan Chagas <ronisbr@gmail.com>
+
+- Version bump to 2.3.18a.
+  Changelog:
+  * Added support for non-ascii characters in verbatim blocks
+  * Added support for theorem captions
+  * Added support for the proof environment
+  * Fixed bug "latex2rtf ignores '-C'"
+  * Added support for user defined counters accessed through
+    \the<counter>
+  * Cleaned up Makefile, isolating DESTDIR from PREFIX
+  * Added hebrew.cfg
+- Remove unnecessary patch `fix_makefile_dist.patch`.
+
+-------------------------------------------------------------------
 Thu Dec  7 11:12:05 UTC 2017 - dimstar@opensuse.org
 
 - Escape the usage of %{VERSION} when calling out to rpm.

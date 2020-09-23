@@ -455,7 +455,7 @@ autoreconf -fi
 # Grab new compiler from prjconf
 export CC="%__cc"
 export CXX="%__cxx"
-export CFLAGS="%optflags"
+export CFLAGS="%optflags -pthread"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-z -Wl,relro"
 echo "kc_phpconfig=%kc_phpconfig"

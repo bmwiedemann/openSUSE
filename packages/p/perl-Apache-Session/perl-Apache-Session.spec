@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Apache-Session
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Apache-Session
-Version:        1.93
+Version:        1.94
 Release:        0
 %define cpan_name Apache-Session
-Summary:        A persistence framework for session data
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        Persistence framework for session data
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Apache-Session/
-Source:         http://www.cpan.org/authors/id/C/CH/CHORNY/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHORNY/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Test::Deep) >= 0.082
-BuildRequires:  perl(Test::Exception) >= 0.15
+BuildRequires:  perl(Test::Exception) >= 0.150000
 %{perl_requires}
 
 %description
@@ -61,7 +62,7 @@ locker class.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -73,6 +74,6 @@ locker class.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc b CHANGES Contributing.txt eg README TODO
+%doc CHANGES Contributing.txt README TODO
 
 %changelog

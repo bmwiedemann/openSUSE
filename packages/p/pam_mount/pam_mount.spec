@@ -1,7 +1,7 @@
 #
 # spec file for package pam_mount
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          System/Libraries
 Version:        2.16
 Release:        0
-Url:            http://pam-mount.sf.net/
+URL:            http://pam-mount.sf.net/
 
 Source:         http://downloads.sf.net/pam-mount/%name-%version.tar.xz
 Source9:        http://downloads.sf.net/pam-mount/%name-%version.tar.asc
@@ -62,7 +62,7 @@ Requires:       fd0ssh
 Requires:       ofl
 # for mount(8) and mount.cifs:
 Requires:       util-linux >= 2.20
-Recommends:     cifs-mount
+Suggests:       cifs-mount
 
 %description
 This module is aimed at environments with central file servers that a
@@ -99,19 +99,16 @@ setup. It supports pam_mount style plain EHD2/OpenSSL images and LUKS
 and transparent use of the OS's crypto layer.
 
 %prep
-%setup -q
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static --with-slibdir="/%_lib" \
 	--includedir="%_includedir/libcryptmount" \
 	%{?_with_selinux:--with-selinux}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot";
+%make_install
 # Remove static and libtool version
 rm -f "%buildroot/%_lib/security"/*.{a,la} "%buildroot/%_libdir"/*.la
 #install the docs
@@ -146,12 +143,10 @@ then
 	done
 fi
 
-%post -n %lname -p /sbin/ldconfig
-
+%post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
 %_docdir/%name
 /%_lib/security/pam_mount*.so
 /sbin/mount.crypt*
@@ -169,11 +164,9 @@ fi
 %endif
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libcryptmount.so.0*
 
 %files -n libcryptmount-devel
-%defattr(-,root,root)
 %_includedir/libcryptmount/
 %_libdir/pkgconfig/*.pc
 %_libdir/libcryptmount.so

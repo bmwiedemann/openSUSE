@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 21 18:45:31 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Specify path for pg_dump and pg_restore
+- Disable update check (if you're on leap or other you wont be able
+  to upgrade to a newer version anyway)
+
+-------------------------------------------------------------------
 Sun Sep 20 16:43:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.26:

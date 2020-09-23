@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 21 11:08:35 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1600686504.c9117f1b:
+  * .gitignore: Ignore files created by current state of tests
+  * Delete some redundant whitespace in consoles
+  * Delete some redundant whitespace in consoles/localXvnc
+  * Fix "sshCommand" after moving to consoles/localXvnc
+
+-------------------------------------------------------------------
 Tue Sep 15 14:26:45 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1600179993.7af64f64:

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Sep 21 00:01:38 CEST 2020 - tumic@cbox.cz
+
+- Update to version 7.32
+  * Configurable (GPX) segments handling.
+  * Fixed TCX trackpoint extensions parsing.
+  * Some more IMG format compatability improvements.
+  * "Multi-size" application icons.
+
+-------------------------------------------------------------------
+Tue Jun 30 16:19:34 CEST 2020 - tumic@cbox.cz
+
+- Update to version 7.31
+  * Added Italian translation.
+  * Fixed build with Qt 5 versions <= 5.5.
+  * Various IMG format compatability and performance improvements.
+
+-------------------------------------------------------------------
+Sat May 30 15:24:14 CEST 2020 - tumic@cbox.cz
+
+- Update to version 7.30
+  * Added time zone configuration.
+  * Added support for IMG map overlays.
+  * Reverted to the original (<=7.28) outlier threshold.
+  * Updated Antarctica map URL.
+  * Minor fixes (KML, CRS format).
+
+-------------------------------------------------------------------
+Sun Apr 19 15:01:07 CEST 2020 - tumic@cbox.cz
+
+- Update to version 7.29
+  * Added support for FIT course points.
+  * Minor IMG maps fixes/tweaks.
+
+-------------------------------------------------------------------
 Sun Apr  5 12:48:01 CEST 2020 - tumic@cbox.cz
 
 - Update to version 7.28

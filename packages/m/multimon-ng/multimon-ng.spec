@@ -1,8 +1,8 @@
 #
 # spec file for package multimon-ng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           multimon-ng
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 Summary:        A fork of multimon that decodes multiple digital transmission modes
 License:        GPL-2.0-only
@@ -58,5 +58,6 @@ MultimonNG a fork of multimon. It decodes the following digital transmission mod
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
+%{_mandir}/man1/multimon-ng.1%{?ext_man}
 
 %changelog

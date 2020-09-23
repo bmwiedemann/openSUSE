@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 22 20:12:33 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.3.1 especially a security fix for
+  PowerDNS Security Advisory 2020-05 (CVE-2020-17482, bsc#1176535)
+
+  Other improvements and bug fixes include,
+  * gpgsql: Reintroduce prepared statements
+  * Handle the extra single-row result set of MySQL stored procedures
+  * Raise an exception on invalid hex content in unknown records
+
+  For details, see
+  https://doc.powerdns.com/authoritative/changelog/4.3.html#change-4.3.1
+
+-------------------------------------------------------------------
 Mon Sep 14 10:27:11 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - 9070.patch: backport compilation fix vs. latest Boost 1.74

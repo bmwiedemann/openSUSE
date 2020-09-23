@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-python-language-server
-Version:        0.35.0
+Version:        0.35.1
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
@@ -72,6 +72,9 @@ BuildRequires:  python2-configparser
 Requires:       python2-backports.functools_lru_cache
 Requires:       python2-configparser
 Requires:       python2-future >= 0.14.0
+Requires:       python2-ujson <= 2.3.0
+%else
+Requires:       python3-ujson >= 3.0.0
 %endif
 Requires(post):   update-alternatives
 Requires(postun):  update-alternatives
@@ -92,8 +95,7 @@ will be enabled:
 - YAPF for code formatting (preferred over autopep8)
 
 %prep
-%setup -q -n python-language-server-%{version}
-%autopatch -p1
+%autosetup -n python-language-server-%{version}
 
 %build
 %python_build

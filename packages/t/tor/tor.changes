@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 15 14:51:40 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.4.5
+  * Improve guard selection
+  * IPv6 improvements
+
+-------------------------------------------------------------------
 Wed Aug 19 09:49:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %{_tmpfilesdir} instead of abusing %{_libexecdir}/tmpfiles.d.

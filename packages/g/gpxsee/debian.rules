@@ -40,7 +40,7 @@ install: build
 	# The DESTDIR Has To Be Exactly  /usr/src/packages/BUILD/debian/<nameOfPackage>
 	mkdir -p /usr/src/packages/BUILD/debian/gpxsee/usr/bin
 	mkdir -p /usr/src/packages/BUILD/debian/gpxsee/usr/share/applications
-	mkdir -p /usr/src/packages/BUILD/debian/gpxsee/usr/share/pixmaps
+	mkdir -p /usr/src/packages/BUILD/debian/gpxsee/usr/share/icons/hicolor
 	mkdir -p /usr/src/packages/BUILD/debian/gpxsee/usr/share/mime/packages
 	mkdir -p /usr/src/packages/BUILD/debian/gpxsee/usr/share/gpxsee
 	mkdir -p /usr/src/packages/BUILD/debian/gpxsee/usr/share/gpxsee/translations
@@ -48,7 +48,7 @@ install: build
 	cp -r pkg/maps /usr/src/packages/BUILD/debian/gpxsee/usr/share/gpxsee
 	cp -r pkg/csv /usr/src/packages/BUILD/debian/gpxsee/usr/share/gpxsee
 	cp lang/*.qm /usr/src/packages/BUILD/debian/gpxsee/usr/share/gpxsee/translations
-	cp icons/gpxsee.png /usr/src/packages/BUILD/debian/gpxsee/usr/share/pixmaps
+	cp -r icons/app/hicolor/* /usr/src/packages/BUILD/debian/gpxsee/usr/share/icons/hicolor
 	cp pkg/gpxsee.desktop /usr/src/packages/BUILD/debian/gpxsee/usr/share/applications
 	cp pkg/gpxsee.xml /usr/src/packages/BUILD/debian/gpxsee/usr/share/mime/packages
 	# --- end custom part for installing

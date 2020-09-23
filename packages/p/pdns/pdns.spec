@@ -53,7 +53,7 @@
 %define services %{name}.service %{name}@.service %{?ixfrdist_services}
 
 Name:           pdns
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only

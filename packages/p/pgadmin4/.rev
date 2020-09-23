@@ -103,4 +103,14 @@
     <comment>- Update to 4.26:</comment>
     <requestid>835690</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>df4e90bea2ecad9c2616ef46919d6755</srcmd5>
+    <version>4.26</version>
+    <time>1600879350</time>
+    <user>dimstar_suse</user>
+    <comment>- Specify path for pg_dump and pg_restore
+- Disable update check (if you're on leap or other you wont be able
+  to upgrade to a newer version anyway)</comment>
+    <requestid>836144</requestid>
+  </revision>
 </revisionlist>

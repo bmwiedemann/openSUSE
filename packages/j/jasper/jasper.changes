@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:40:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add jasper-2.0.21-glut.patch: Fix glut.h detection
+  See https://github.com/jasper-software/jasper/issues/247
+
+-------------------------------------------------------------------
+Tue Sep 22 12:10:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.21:
+  * Fix ZDI-15-529
+    https://github.com/jasper-software/jasper/pull/245
+  * Fix CVE-2018-19541 in decoder
+    https://github.com/jasper-software/jasper/pull/244
+
+-------------------------------------------------------------------
+Mon Sep  7 08:15:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.20:
+  * Fixed several ISO/IEC 15444-4 conformance bugs
+  * Fixed new variant of CVE-2016-9398
+  * Disabled the MIF codec by default for security reasons (but it is still
+    included in the library);
+    in a future release, the MIF codec may also be excluded from the
+    library by default
+  * Added documentation for the I/O streams library API
+  * Improved adherance to specification
+- Move to GitHub repo https://github.com/jasper-software/jasper
+- Update URL to https://jasper-software.github.io/jasper
+
+-------------------------------------------------------------------
 Tue Jul 28 09:39:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.19:

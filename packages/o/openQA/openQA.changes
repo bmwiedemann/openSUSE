@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 23 05:31:47 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1600793800.39e28c975:
+  * Simplify code of function to cancel a job
+  * Allow cancelling assigned jobs like scheduled jobs and prevent restart
+  * Avoid duplicate force parameter when restarting jobs
+  * Avoid worker assumed to be offline from interfering when it comes back after all
+  * Speed up t/24-worker-overall.t by mocking the cache service client
+  * t: Bump timeout for compile check
+  * t: Bump timeouts of recent failure api/08-jobtemplates.t and api/14-plugin_obs_rsync.t
+  * t: Bump timeouts of recent failures
+  * Improve feedback of fullstack test in case of failures
+  * t: Prevent duplicate test database initialization
+  * t: Delete redundant copy-paste from 28-keys_to_render_as_link.t
+  * t: Simplify and stabilize t/ui/13-admin-no-login.t
+  * Fix id of products table in HTML document
+  * t: Bump timeout for t/api/02-iso.t after recent failures in circleCI
+  * t: Go back to previous time limit for 05-scheduler-full due to failures
+  * t: Remove unreliable check for t_seen from t/04-scheduler
+  * Try to stabilize 04-scheduler.t
+
+-------------------------------------------------------------------
 Sat Sep 19 10:20:11 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1600510794.174d32cb4:

@@ -19,30 +19,31 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-photutils
-Version:        0.7.2
+Version:        1.0.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
-Patch0:         https://github.com/astropy/photutils/pull/1014.patch#/0001-aperture-mask-test-assert-almost-equal.patch
-Patch1:         https://github.com/astropy/photutils/pull/1041.patch#/photutils-pr1041-update-watershed-import.patch
+BuildRequires:  %{python_module Cython >= 0.29.14}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.13}
+BuildRequires:  %{python_module extension-helpers}
+BuildRequires:  %{python_module numpy-devel >= 1.17}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy >= 2.0
-Requires:       python-numpy >= 1.13
+Requires:       python >= 3.6
+Requires:       python-astropy >= 4.0
+Requires:       python-numpy >= 1.17
 Requires:       python-scipy >= 0.19
 Recommends:     python-matplotlib >= 2.2
 Recommends:     python-scikit-image >= 0.14.2
 Recommends:     python-scikit-learn >= 0.19
-Recommends:     python-gwcs >= 0.11
+Recommends:     python-gwcs >= 0.12
 # SECTION test requirements
-BuildRequires:  %{python_module astropy >= 2.0}
-BuildRequires:  %{python_module astropy-helpers >= 2.0}
+BuildRequires:  %{python_module astropy >= 4.0}
 BuildRequires:  %{python_module pytest-astropy >= 0.7}
 BuildRequires:  %{python_module scikit-image >= 0.14.2}
 BuildRequires:  %{python_module scikit-learn >= 0.19}
@@ -56,7 +57,6 @@ and performing photometry of astronomical sources.
 
 %prep
 %setup -q -n photutils-%{version}
-%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -64,8 +64,6 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-rm -rf  %{buildroot}%{python_sitearch}/photutils/*.c
-rm -rf  %{buildroot}%{python_sitearch}/photutils/geometry/*.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -78,8 +76,8 @@ $python -B -c "import photutils, sys; sys.exit(photutils.test(args=\"-v\"))"
 }
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
-%license LICENSE.rst licenses
+%doc CHANGES.rst CITATION.rst README.rst
+%license LICENSE.rst
 %{python_sitearch}/photutils
 %{python_sitearch}/photutils-%{version}-py*.egg-info
 

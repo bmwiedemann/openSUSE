@@ -1,3 +1,37 @@
+gpxsee (7.32) stable; urgency=low
+
+  * Configurable (GPX) segments handling.
+  * Fixed TCX trackpoint extensions parsing.
+  * Some more IMG format compatability improvements.
+  * "Multi-size" application icons.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 21 Sep 2020 00:07:56 +0200
+
+gpxsee (7.31) stable; urgency=low
+
+  * Added Italian translation.
+  * Fixed build with Qt 5 versions <= 5.5.
+  * Various IMG format compatability and performance improvements.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 30 Jun 2020 16:22:57 +0200
+
+gpxsee (7.30) stable; urgency=low
+
+  * Added time zone configuration.
+  * Added support for IMG map overlays.
+  * Reverted to the original (<=7.28) outlier threshold.
+  * Updated Antarctica map URL.
+  * Minor fixes (KML, CRS format).
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 30 May 2020 15:33:23 +0200
+
+gpxsee (7.29) stable; urgency=low
+
+  * Added support for FIT course points.
+  * Minor IMG maps fixes/tweaks.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 19 Apr 2020 15:07:13 +0200
+
 gpxsee (7.28) stable; urgency=medium
 
   * Fixed broken graph color change when secondary graphs present.

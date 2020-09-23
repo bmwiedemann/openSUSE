@@ -1,7 +1,7 @@
 #
 # spec file for package criu
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -138,8 +138,8 @@ ln -s criu.8 %{buildroot}%{_mandir}/man8/crtools.8
 %{_mandir}/man8/crtools.8%{?ext_man}
 %{_libexecdir}/criu
 %{_libexecdir}/compel
-%{_libexecdir}/python*/site-packages/crit-*.egg-info
-%{_libexecdir}/python*/site-packages/pycriu
+%{python3_sitelib}/crit-*.egg-info
+%{python3_sitelib}/pycriu
 
 %files -n libcriu2
 %{_libdir}/libcriu.so.*

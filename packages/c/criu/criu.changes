@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 23 12:17:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- fix filelist mismatch after libexecdir change 
+
+-------------------------------------------------------------------
 Wed May 20 16:49:38 CEST 2020 - tiwai@suse.de
 
 - Update to criu 3.14:

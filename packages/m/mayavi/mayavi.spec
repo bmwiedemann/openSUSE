@@ -1,7 +1,7 @@
 #
 # spec file for package mayavi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %define         X_display  ":98"
 Name:           mayavi
-Version:        4.7.1
+Version:        4.7.2
 Release:        0
 Summary:        3D visualization of scientific data in Python
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/enthought/mayavi
-Source0:        https://files.pythonhosted.org/packages/source/m/mayavi/mayavi-%{version}.tar.bz2
+Source0:        https://files.pythonhosted.org/packages/source/m/mayavi/mayavi-%{version}.tar.gz
 Source1:        mayavi.desktop
 Source2:        tvtk_doc.desktop
-# PATCH-FIX-OPENSUSE no_vtk_require.patch -- VTK detection in setuptools fails due to a lack of .egg-info
-Patch1:         no_vtk_require.patch
 BuildRequires:  R-base-devel
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -117,10 +115,11 @@ Documentation files for the python3-tvtk package.
 
 %package        jupyter
 Summary:        Jupyter notebook backend for mayavi
-Requires:       jupyter-notebook
-Requires:       jupyter-ipywidgets
-Requires:       jupyter-ipyevents
+Group:          Productivity/Scientific/Other
 Requires:       %{name} = %{version}
+Requires:       jupyter-ipyevents
+Requires:       jupyter-ipywidgets
+Requires:       jupyter-notebook
 
 %description    jupyter
 Interface to allow plotting with mayavi in Jupyter
@@ -131,7 +130,6 @@ run mayavi in a Jupyter notebook.
 
 %prep
 %setup -q -n mayavi-%{version}
-%patch1 -p1
 rm -r mayavi.egg-info
 
 # wrong-file-end-of-line-encoding

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 22 18:46:00 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.7.7:
+  * Fix incorrect validation of JWKs passed to oauth.Client
+    constructor, which was actually *preventing* the caller from
+    setting a correct value rather than checking that they did so.
+- Fix check section: Use double quotes when defining the list of
+  tests since single quotes mess with the pytest macro.
+
+-------------------------------------------------------------------
 Sat Jul 11 13:33:33 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 0.7.6:

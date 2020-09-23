@@ -1,7 +1,7 @@
 #
 # spec file for package vncmanager-controller
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,14 @@ BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xproto)
 
-Url:            https://github.com/michalsrb/vncmanager-controller
+URL:            https://github.com/michalsrb/vncmanager-controller
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Configuration application for VNC session
 License:        MIT
 Group:          System/X11/Utilities
 Source:         vncmanager-controller-%{version}.tar.gz
 Patch1:         U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.26-as-supported.patch
+Patch2:         n_UsrEtc.patch
 Requires:       vncmanager
 
 %description
@@ -54,6 +55,9 @@ This is configuration application to configure sharing and security from inside 
 %prep
 %setup
 %patch1 -p1
+%if 0%{?suse_version} >= 1550
+%patch2 -p1
+%endif
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON
@@ -65,8 +69,14 @@ This is configuration application to configure sharing and security from inside 
 %files
 %defattr(-,root,root)
 %{_bindir}/vncmanager-controller
+%if 0%{?suse_version} >= 1550
+%dir %{_distconfdir}/xdg
+%dir %{_distconfdir}/xdg/autostart
+%{_distconfdir}/xdg/autostart/vncmanager-controller.desktop
+%else
 %dir %{_sysconfdir}/xdg/autostart
 %{_sysconfdir}/xdg/autostart/vncmanager-controller.desktop
+%endif
 %doc LICENSE
 
 %files gnome

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:31:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * Respect NoDisplay=true setting in saner way
+  * Separate widgets from data
+  Breaking changes:
+  * Use desktop-id instead of exec to distinguish entries from each other.
+  This breaks existing pins/favs cache. Old caches will be overwritten after 
+  the first launch.
+
+-------------------------------------------------------------------
 Thu Sep 17 07:01:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.4:

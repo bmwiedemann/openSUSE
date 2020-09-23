@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Sep 16 12:37:52 UTC 2020 - aburlakov@suse.com
+
+- Update to version 1.0+20200702.2f043da:
+  * transport: Check fcntl return value
+  * transport: setsockopt failures are not critical
+  * pacemaker: Change rv handling of pcmk_get_attr
+  * pacemaker: Express intention about logical or
+  * main: mkdir failure is not critical
+  * pacemaker: Handle updated exit code of crm_ticket
+  * main: Delete lockfile when signal arrive too early
+  * main: Accept longer config and lock file names
+  * Fix gcc-10 warnings for multiple definition of pcmk_handler
+  * Fix gcc-10 warnings for packed struct members
+  * Use pkg-config to configure libxml-2.0
+
+-------------------------------------------------------------------
+Wed Aug 19 12:34:16 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
+Mon Jan 28 08:51:31 UTC 2019 - aburlakov@suse.com
+
+- test: fix read -a <<< issue (bsc#1123313)
+  * test-fix-read-a-issue.patch
+
+-------------------------------------------------------------------
+Thu Jan 17 11:43:22 UTC 2019 - aburlakov@suse.com
+
+- Update to version 1.0+20190112.497c0b9:
+  * fix_asciidoc_build.patch is removed, because the tarball already contains the changes.
+  * Low: handler: fix spurious warning on alleged "fall-through" in switch (bsc#1123312)
+  * Low: main: fix hypothetical file path double traversal discrepancy (bsc#1123310)
+  * Med: attr: fix derefence of unspecified value pointer (bsc#1123308)
+  * maint: ocf + script: eliminate some false positives with ShellCheck (bsc#1123303)
+  * test: unit-test.py: daemon will not stay in foreground with -D anymore (bsc#1123302)
+  * test: avoid dangerous mutable/sticky default value (bsc#1123301)
+  * test: drop/comment out superfluous imports (bsc#1123300)
+  * test: drop underqualified identifier in unittest's 2.6 compat "polyfill" (bsc#1123299)
+  * test: remove superfluous shebangs for import-only modules (bsc#1123297)
+  * maint: fix typos introduced in 4bb484a (bsc#1123296)
+  * maint: fix thinko in .gitignore introduced in 5a457ee (bsc#1123294)
+  * Fix malformed man title (bsc#1123290)
+  * Handle multi-leader situation for manual tickets. Added manual tickets to Life Tests framework (bsc#1123289)
+  * Feature: add manual mode to booth tickets (bsc#1123287)
+  * Fix GCC-7 warning on buffer size (bsc#1123285)
+
+-------------------------------------------------------------------
 Mon Apr 30 06:52:34 UTC 2018 - ckowalczyk@suse.com
 
 - Doc: fix the documentation build with asciidoctor (bsc#1075764):

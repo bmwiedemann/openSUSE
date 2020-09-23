@@ -54,4 +54,13 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
   bsc#1102080 (same issue)</comment>
     <requestid>746607</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>1ecc0c033281646cd88296213bf3a6de</srcmd5>
+    <version>1.0.1</version>
+    <time>1600879646</time>
+    <user>dimstar_suse</user>
+    <comment>- n_UsrEtc.patch
+  * move autostart file to /usr/etc/xdg/autostart (boo#1173048)</comment>
+    <requestid>836291</requestid>
+  </revision>
 </revisionlist>

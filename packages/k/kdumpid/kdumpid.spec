@@ -1,7 +1,7 @@
 #
 # spec file for package kdumpid
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,12 +26,12 @@ BuildRequires:  binutils
 BuildRequires:  binutils-devel
 %endif
 BuildRequires:  libkdumpfile-devel
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Utility to extract information from vmcores
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Kernel
-Url:            http://sourceforge.net/p/kdumpid
+URL:            http://sourceforge.net/p/kdumpid
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         %{name}-%{version}.tar.bz2
 

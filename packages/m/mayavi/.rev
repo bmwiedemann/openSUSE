@@ -23,4 +23,21 @@
     <comment></comment>
     <requestid>744314</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6bacf76c9efc804538c661d3ab99b484</srcmd5>
+    <version>4.7.2</version>
+    <time>1600879681</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7.2:
+  The significant update for this release is that it is compatible with the
+  latest VTK-9.x series and is known to work with VTK 9.0.1 from PyPI. The
+  picker UI has changed to no longer pop up a UI window but instead show the
+  picked attributes on the render window directly. The original picker UI is now
+  available on the scene's UI in a separate &quot;Picker&quot; tab. This is accessible
+  from either the pipeline view when one edits the properties of a scene or
+  through the &quot;configure scene&quot; gear icon on the scene window toolbar.
+  a few dozen bugfixes, see included changes
+- drop no_vtk_require.patch (obsolete)</comment>
+    <requestid>836314</requestid>
+  </revision>
 </revisionlist>

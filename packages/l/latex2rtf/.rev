@@ -44,4 +44,12 @@ This was causing random segmentation faults.</comment>
     <comment></comment>
     <requestid>555027</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9c29317694345fc672899977e7c11d78</srcmd5>
+    <version>2.3.18a</version>
+    <time>1600879427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836189</requestid>
+  </revision>
 </revisionlist>

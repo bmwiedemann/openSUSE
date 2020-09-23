@@ -1,5 +1,5 @@
 pkgname=gpxsee
-pkgver=7.28
+pkgver=7.32
 pkgrel=1
 pkgdesc='GPS log files visualizing and analyzing tool'
 arch=('i686' 'x86_64')
@@ -20,21 +20,6 @@ build() {
 
 package() {
 	cd GPXSee-${pkgver}
-
-	install -d 755 ${pkgdir}/usr/bin
-	install -d 755 ${pkgdir}/usr/share/applications
-	install -d 755 ${pkgdir}/usr/share/pixmaps
-	install -d 755 ${pkgdir}/usr/share/mime/packages
-	install -d 755 ${pkgdir}/usr/share/${pkgname}
-	install -d 755 ${pkgdir}/usr/share/${pkgname}/maps
-	install -d 755 ${pkgdir}/usr/share/${pkgname}/csv
-	install -d 755 ${pkgdir}/usr/share/${pkgname}/translations
-
-	install -m 755 gpxsee ${pkgdir}/usr/bin/${pkgname}
-	install -m 644 pkg/maps/* ${pkgdir}/usr/share/${pkgname}/maps
-	install -m 644 pkg/csv/* ${pkgdir}/usr/share/${pkgname}/csv
-	install -m 644 lang/*.qm ${pkgdir}/usr/share/${pkgname}/translations
-	install -m 644 icons/gpxsee.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-	install -m 644 pkg/gpxsee.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-	install -m 644 pkg/gpxsee.xml ${pkgdir}/usr/share/mime/packages/${pkgname}.xml
+	make INSTALL_ROOT="$pkgdir" install
+	install -Dm644 pkg/appdata.xml "$pkgdir"/usr/share/metainfo/$pkgname.appdata.xml
 }

@@ -1,7 +1,7 @@
 #
 # spec file for package booth
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@
 %bcond_with glue
 
 # local commit:
-%global commit 1.0+20180417.c2389e3
+%global commit 1.0+20200702.2f043da
 
 %global uname hacluster
 %global gname haclient
@@ -29,18 +29,18 @@
 %global test_path   	%{_datadir}/booth/tests
 
 %define _libexecdir %{_libdir}
-%define _fwdefdir %{_libexecdir}/firewalld/services
+%define _fwdefdir %{_prefix}/lib/firewalld/services
 
 Name:           booth
 Version:        1.0
 Release:        0
 Summary:        Ticket Manager for Multi-site Clusters
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
 Url:            https://github.com/ClusterLabs/booth
 Source:         %{name}-%{commit}.tar.bz2
 Source1:        %{name}-rpmlintrc
-Patch1:         fix_asciidoc_build.patch
+Patch1:         test-fix-read-a-issue.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -158,7 +158,7 @@ fi
 %{_prefix}/lib/ocf/resource.d/booth/geostore
 %config %attr (644, %{uname}, %{gname}) %{_sysconfdir}/booth/booth.conf.example
 %if 0%{?suse_version}
-%dir %{_libexecdir}/firewalld
+%dir %{_prefix}/lib/firewalld
 %dir %{_fwdefdir}
 %{_fwdefdir}/booth.xml
 %endif

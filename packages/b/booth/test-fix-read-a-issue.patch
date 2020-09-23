@@ -1,0 +1,29 @@
+From 9b1fa47f842231026898daec7208476bc8429ac9 Mon Sep 17 00:00:00 2001
+From: Aleksei Burlakov <aleksei.burlakov@suse.com>
+Date: Sat, 26 Jan 2019 15:51:37 +0100
+Subject: [PATCH] * test: fix read -a <<< issue
+
+- read -a <<< does not split values separated by LN taken from grep
+  neither on SLE15 nor on openSUSE 15 nor even on Ubuntu 18. The bash
+  version on all of them was 4.4.19(1). When bash 4.4.19(1) is installed
+  on SLE12-SP3, everithing works correctly.
+---
+ test/live_test.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/live_test.sh b/test/live_test.sh
+index c131f8c..af9773f 100755
+--- a/test/live_test.sh
++++ b/test/live_test.sh
+@@ -1263,7 +1263,7 @@ split_leader split_follower split_edge
+ conf_file_size=$(grep -c $ $cnf)
+ 
+ #get line numbers for all tickets
+-ticket_line_numbers=$(grep -n ticket $cnf | cut -d: -f1)
++ticket_line_numbers=$(echo $(grep -n ticket $cnf | cut -d: -f1))
+ read -a TICKET_LINES<<< $ticket_line_numbers
+ 
+ #save the part of config located before ticket definitions
+-- 
+2.16.4
+
