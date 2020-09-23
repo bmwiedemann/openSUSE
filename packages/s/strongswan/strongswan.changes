@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep  7 08:38:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9.0
+  * Prefer AEAD algorithms for ESP; this puts AES-GCM in a default
+    AEAD proposal in front of the previous default proposal.
+  * If a connection fails after getting redirected, we now
+    restart connecting to the original host, not the one
+    redirected to.
+  * For peers that don't send the EAP_ONLY_AUTHENTICATION notify
+    but still expect to use EAP-only authentication, the
+    charon.force_eap_only_authentication option can be enabled to
+    force this type of authentication even on non-compliant
+    peers.
+  * IPv6 virtual IPs are now always enumerated, ignoring the
+    charon.prefer_temporary_addrs setting, which should fix route
+    installation if the latter is enabled.
+
+-------------------------------------------------------------------
 Tue Sep  1 16:31:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable bypass-lan strongswan plugin

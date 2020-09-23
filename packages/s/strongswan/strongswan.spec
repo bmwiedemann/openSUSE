@@ -17,7 +17,7 @@
 
 
 Name:           strongswan
-Version:        5.8.4
+Version:        5.9.0
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}
@@ -478,13 +478,13 @@ sed -i 's/\(load[ ]*=[ ]*\)yes/\1no/g' %{buildroot}/%{strongswan_configs}/charon
 
 %postun libs0 -p /sbin/ldconfig
 
-%pre ipsec
 %if %{with systemd}
+%pre ipsec
 %service_add_pre %{name}.service
 %endif
 
-%post ipsec
 %if %{with systemd}
+%post ipsec
 %service_add_post %{name}.service
 %endif
 
@@ -503,8 +503,8 @@ if test -s %{_sysconfdir}/ipsec.conf.rpmsave ; then
 	                        %{_sysconfdir}/ipsec.conf.rpmsave.old
 fi
 
-%postun ipsec
 %if %{with systemd}
+%postun ipsec
 %service_del_postun %{name}.service
 %endif
 
