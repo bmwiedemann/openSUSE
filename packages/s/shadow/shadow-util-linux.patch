@@ -27,7 +27,33 @@ Index: etc/login.defs
  
  #
  # Limit the highest user ID number for which the lastlog entries should
-@@ -72,12 +73,33 @@ MOTD_FILE	/etc/motd
+@@ -31,10 +32,9 @@ LOG_OK_LOGINS		no
+ #LASTLOG_UID_MAX
+ 
+ #
+-# Enable "syslog" logging of su(1) activity - in addition to sulog file logging.
+-# SYSLOG_SG_ENAB does the same for newgrp(1) and sg(1).
++# Enable "syslog" logging of newgrp(1) and sg(1) activity - in addition
++# to sulog file logging.
+ #
+-SYSLOG_SU_ENAB		yes
+ SYSLOG_SG_ENAB		yes
+ 
+ #
+@@ -58,6 +58,12 @@ MOTD_FILE	/etc/motd
+ #MOTD_FILE	/etc/motd:/usr/lib/news/news-motd
+ 
+ #
++# If set to "yes", login stops display content specified by MOTD_FILE after
++# the first accessible item in the list.
++#
++#MOTD_FIRSTONLY	no
++
++#
+ # If defined, file which maps tty line to TERM environment parameter.
+ # Each line of the file is in a format similar to "vt100  tty01".
+ #
+@@ -72,12 +78,33 @@ MOTD_FILE	/etc/motd
  HUSHLOGIN_FILE	.hushlogin
  #HUSHLOGIN_FILE	/etc/hushlogins
  
@@ -63,7 +89,7 @@ Index: etc/login.defs
  
  #
  # Terminal permissions
-@@ -93,19 +115,6 @@ ENV_PATH	PATH=/bin:/usr/bin
+@@ -93,19 +120,6 @@ ENV_PATH	PATH=/bin:/usr/bin
  TTYGROUP	tty
  TTYPERM		0600
  
@@ -87,7 +113,15 @@ Index: lib/getdef.c
 ===================================================================
 --- lib/getdef.c.orig
 +++ lib/getdef.c
-@@ -80,6 +80,7 @@ struct itemdef {
+@@ -66,6 +66,7 @@ struct itemdef {
+ 	{"LOGIN_STRING", NULL},			\
+ 	{"MAIL_CHECK_ENAB", NULL},		\
+ 	{"MOTD_FILE", NULL},			\
++	{"MOTD_FIRSTONLY", NULL},		\
+ 	{"NOLOGINS_FILE", NULL},		\
+ 	{"OBSCURE_CHECKS_ENAB", NULL},		\
+ 	{"PASS_ALWAYS_WARN", NULL},		\
+@@ -80,6 +81,7 @@ struct itemdef {
  
  #define NUMDEFS	(sizeof(def_table)/sizeof(def_table[0]))
  static struct itemdef def_table[] = {
@@ -95,7 +129,7 @@ Index: lib/getdef.c
  	{"CHARACTER_CLASS", NULL},
  	{"CHFN_RESTRICT", NULL},
  	{"CONSOLE_GROUPS", NULL},
-@@ -88,6 +89,7 @@ static struct itemdef def_table[] = {
+@@ -88,6 +90,7 @@ static struct itemdef def_table[] = {
  	{"DEFAULT_HOME", NULL},
  	{"ENCRYPT_METHOD", NULL},
  	{"ENV_PATH", NULL},
@@ -103,7 +137,7 @@ Index: lib/getdef.c
  	{"ENV_SUPATH", NULL},
  	{"ERASECHAR", NULL},
  	{"FAIL_DELAY", NULL},
-@@ -98,6 +100,7 @@ static struct itemdef def_table[] = {
+@@ -99,6 +102,7 @@ static struct itemdef def_table[] = {
  	{"KILLCHAR", NULL},
  	{"LASTLOG_UID_MAX", NULL},
  	{"LOGIN_RETRIES", NULL},

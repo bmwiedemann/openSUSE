@@ -104,7 +104,7 @@ LC_ALL=C sort -u ../../shadow-login_defs-check-login_defs.lst >../../shadow-logi
 
 echo "Extracting variables from lib/getdef.c..."
 # Extract variables referenced in lib/getdef.c using current defines.
-sed -n 's/^\(},\|\) {"\([A-Z0-9_]*\)", /\2/p' <lib/getdef.o >../../shadow-login_defs-check-getdef.lst
+sed -n 's/^\(},\|\) {"\([A-Z0-9_]*\)", /\2/p' <lib/libshadow_la-getdef.o >../../shadow-login_defs-check-getdef.lst
 LC_ALL=C sort -u ../../shadow-login_defs-check-getdef.lst >../../shadow-login_defs-check-getdef-sorted.lst
 
 echo "Extracting variables from shadow..."

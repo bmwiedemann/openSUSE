@@ -86,7 +86,7 @@ Obsoletes:      pwdutils <= 3.2.19
 # encryption_method_nis.patch has to be ported!
 # Call shadow-login_defs-check.sh before!
 Provides:       login_defs-support-for-pam = 1.3.1
-Provides:       login_defs-support-for-util-linux = 2.33.1
+Provides:       login_defs-support-for-util-linux = 2.36
 Provides:       useradd_or_adduser_dep
 
 %description

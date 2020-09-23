@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  8 00:56:37 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- login.defs: Add support for new util-linux-2.36 login variable
+  MOTD_FIRSTONLY (shadow-util-linux.patch).
+- shadow-login_defs-comments.patch: Remove duplicated
+  LASTLOG_UID_MAX.
+- shadow-login_defs-check.sh: Update for new build system.
+- shadow-util-linux.patch: Restore lost chunk: SYSLOG_SU_ENAB is
+  not used in SUSE Linux.
+- Refresh shadow-login_defs-suse.patch and
+  shadow-login_defs-comments.patch.
+
+-------------------------------------------------------------------
 Fri May 22 11:21:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Use pure #!/bin/sh in:

@@ -13,7 +13,23 @@ Index: etc/login.defs
  
  #
  # Delay in seconds before being allowed another attempt after a login failure
-@@ -47,6 +45,15 @@ CONSOLE		/etc/securetty
+@@ -23,15 +21,6 @@ LOG_UNKFAIL_ENAB	no
+ #
+ 
+ #
+-# Limit the highest user ID number for which the lastlog entries should
+-# be updated.
+-#
+-# No LASTLOG_UID_MAX means that there is no user ID limit for writing
+-# lastlog entries.
+-#
+-#LASTLOG_UID_MAX
+-
+-#
+ # Enable "syslog" logging of newgrp(1) and sg(1) activity - in addition
+ # to sulog file logging.
+ #
+@@ -46,6 +35,15 @@ CONSOLE		/etc/securetty
  #CONSOLE	console:tty01:tty02:tty03:tty04
  
  #
@@ -29,7 +45,7 @@ Index: etc/login.defs
  # If defined, all su(1) activity is logged to this file.
  #
  #SULOG_FILE	/var/log/sulog
-@@ -94,11 +101,14 @@ ENV_PATH	/bin:/usr/bin
+@@ -99,11 +97,14 @@ ENV_PATH	/bin:/usr/bin
  ENV_ROOTPATH	/sbin:/bin:/usr/sbin:/usr/bin
  #ENV_SUPATH	/sbin:/bin:/usr/sbin:/usr/bin
  
@@ -46,7 +62,7 @@ Index: etc/login.defs
  ALWAYS_SET_PATH	no
  
  #
-@@ -138,6 +148,11 @@ PASS_WARN_AGE	7
+@@ -148,6 +149,11 @@ PASS_WARN_AGE	7
  #
  # Min/max values for automatic uid selection in useradd(8)
  #
@@ -58,7 +74,7 @@ Index: etc/login.defs
  UID_MIN			 1000
  UID_MAX			60000
  # System accounts
-@@ -151,6 +166,11 @@ SUB_UID_COUNT		    65536
+@@ -161,6 +167,11 @@ SUB_UID_COUNT		    65536
  #
  # Min/max values for automatic gid selection in groupadd(8)
  #
@@ -70,7 +86,7 @@ Index: etc/login.defs
  GID_MIN			 1000
  GID_MAX			60000
  # System accounts
-@@ -180,7 +200,6 @@ LOGIN_TIMEOUT		60
+@@ -190,7 +201,6 @@ LOGIN_TIMEOUT		60
  CHFN_RESTRICT		rwh
  
  #
@@ -78,7 +94,7 @@ Index: etc/login.defs
  # If set to "yes", new passwords will be encrypted using the MD5-based
  # algorithm compatible with the one used by recent releases of FreeBSD.
  # It supports passwords of unlimited length and longer salt strings.
-@@ -195,7 +214,6 @@ CHFN_RESTRICT		rwh
+@@ -205,7 +215,6 @@ CHFN_RESTRICT		rwh
  #MD5_CRYPT_ENAB	no
  
  #

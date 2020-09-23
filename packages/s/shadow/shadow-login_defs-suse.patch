@@ -14,7 +14,7 @@ Index: etc/login.defs
  
  #
  # Delay in seconds before being allowed another attempt after a login failure
-@@ -47,8 +50,7 @@ CONSOLE		/etc/securetty
+@@ -62,8 +65,7 @@ CONSOLE		/etc/securetty
  # If defined, ":" delimited list of "message of the day" files to
  # be displayed upon login.
  #
@@ -23,8 +23,8 @@ Index: etc/login.defs
 +#MOTD_FILE	/etc/motd:/usr/share/misc/motd
  
  #
- # If defined, file which maps tty line to TERM environment parameter.
-@@ -62,8 +64,8 @@ MOTD_FILE	/etc/motd
+ # If set to "yes", login stops display content specified by MOTD_FILE after
+@@ -83,8 +85,8 @@ MOTD_FILE	/etc/motd
  # user's name or shell are found in the file.  If not a full pathname, then
  # hushed mode will be enabled if the file exists in the user's home directory.
  #
@@ -35,7 +35,7 @@ Index: etc/login.defs
  
  # If this variable is set to "yes", hostname will be suppressed in the
  # login: prompt.
-@@ -82,9 +84,9 @@ HUSHLOGIN_FILE	.hushlogin
+@@ -103,9 +105,9 @@ HUSHLOGIN_FILE	.hushlogin
  # ENV_SUPATH is an ENV_ROOTPATH override for su and runuser
  # (and falback for login).
  #
@@ -48,7 +48,7 @@ Index: etc/login.defs
  
  # If this variable is set to "yes" (default is "no"), su will always set
  # path. every su call will overwrite the PATH variable.
-@@ -94,7 +96,7 @@ ENV_ROOTPATH	/sbin:/bin:/usr/sbin:/usr/b
+@@ -115,7 +117,7 @@ ENV_ROOTPATH	/sbin:/bin:/usr/sbin:/usr/b
  # The recommended value is "yes". The default "no" behavior could have
  # a security implication in applications that use commands without path.
  #
@@ -57,7 +57,7 @@ Index: etc/login.defs
  
  #
  # Terminal permissions
-@@ -108,7 +110,7 @@ ALWAYS_SET_PATH	no
+@@ -129,7 +131,7 @@ ALWAYS_SET_PATH	no
  # set TTYPERM to either 622 or 600.
  #
  TTYGROUP	tty
@@ -66,7 +66,7 @@ Index: etc/login.defs
  
  # Default initial "umask" value used by login(1) on non-PAM enabled systems.
  # Default "umask" value for pam_umask(8) on PAM enabled systems.
-@@ -141,8 +143,8 @@ PASS_WARN_AGE	7
+@@ -167,8 +169,8 @@ PASS_WARN_AGE	7
  UID_MIN			 1000
  UID_MAX			60000
  # System accounts
@@ -77,7 +77,7 @@ Index: etc/login.defs
  # Extra per user uids
  SUB_UID_MIN		   100000
  SUB_UID_MAX		600100000
-@@ -159,8 +161,8 @@ SUB_UID_COUNT		    65536
+@@ -185,8 +187,8 @@ SUB_UID_COUNT		    65536
  GID_MIN			 1000
  GID_MAX			60000
  # System accounts
@@ -88,7 +88,7 @@ Index: etc/login.defs
  # Extra per user group ids
  SUB_GID_MIN		   100000
  SUB_GID_MAX		600100000
-@@ -169,7 +171,7 @@ SUB_GID_COUNT		    65536
+@@ -195,7 +197,7 @@ SUB_GID_COUNT		    65536
  #
  # Max number of login(1) retries if password is bad
  #
@@ -97,7 +97,7 @@ Index: etc/login.defs
  
  #
  # Max time in seconds for login(1)
-@@ -185,18 +187,9 @@ LOGIN_TIMEOUT		60
+@@ -211,18 +213,9 @@ LOGIN_TIMEOUT		60
  CHFN_RESTRICT		rwh
  
  #
@@ -118,7 +118,7 @@ Index: etc/login.defs
  
  #
  # If set to MD5, MD5-based algorithm will be used for encrypting password
-@@ -210,7 +203,7 @@ CHFN_RESTRICT		rwh
+@@ -235,7 +228,7 @@ CHFN_RESTRICT		rwh
  # Note: If you use PAM, it is recommended to use a value consistent with
  # the PAM modules configuration.
  #
@@ -127,7 +127,7 @@ Index: etc/login.defs
  
  #
  # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
-@@ -268,7 +261,7 @@ USERDEL_POSTCMD         /usr/sbin/userde
+@@ -311,7 +304,7 @@ USERDEL_POSTCMD         /usr/sbin/userde
  #
  # This also enables userdel(8) to remove user groups if no members exist.
  #
@@ -136,7 +136,7 @@ Index: etc/login.defs
  
  #
  # If set to a non-zero number, the shadow utilities will make sure that
-@@ -291,13 +284,13 @@ USERGROUPS_ENAB yes
+@@ -330,13 +323,13 @@ USERGROUPS_ENAB yes
  # This option is overridden with the -M or -m flags on the useradd(8)
  # command-line.
  #
