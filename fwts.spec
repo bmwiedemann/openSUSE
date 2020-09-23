@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        20.07.00
+Version:        20.09.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
