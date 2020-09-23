@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep  5 22:05:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.33
+  * Fixed an issue with overflow in DHCP lease T2 computation.
+  * Added support for DHCPv6 client implementation.
+  * Removed support for ARC4 and RC4 cipher suites.
+
+-------------------------------------------------------------------
 Mon Jun 15 16:14:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.32
