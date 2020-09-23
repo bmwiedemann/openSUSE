@@ -103,4 +103,12 @@
     <comment>- Update to release 0.32</comment>
     <requestid>814762</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f4cde82b32548aeee1d91b4dd23a13e7</srcmd5>
+    <version>0.33</version>
+    <time>1600878960</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>834037</requestid>
+  </revision>
 </revisionlist>
