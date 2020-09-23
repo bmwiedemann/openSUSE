@@ -1,0 +1,34 @@
+Index: kbd-2.2.0/src/kdfontop.c
+===================================================================
+--- kbd-2.2.0.orig/src/kdfontop.c
++++ kbd-2.2.0/src/kdfontop.c
+@@ -169,6 +169,23 @@ int putfont(int fd, unsigned char *buf,
+ 			return 0;
+ 	}
+ 
++#if 1
++	// We no longer try PIO_FONT* calls.
++	// A former patch even added a possible 5 seconds delay loop here, in an attempt to
++	// gain victory over kdm. We no do this fight, as it can only result in races.
++	// https://bugzilla.novell.com/show_bug.cgi?id=302010
++	//
++	// Two effects:
++	// a) Without the delay loop, we are fast enough to run early. 
++	//    Moving setfont calls to an earlier point most likly
++	//    avoids the race.
++	// b) Without the old compat calls, it should be easier to 
++	//    fix this in kernel side.
++	//
++	fprintf(stderr, "%s: putfont: %d,%dx%d:  failed: %d\n", get_progname(), count, width, height, i);
++	perror("putfont: KDFONTOP");
++	return -1;
++#else
+ 	/* Second attempt: PIO_FONTX */
+ 	cfd.charcount  = count;
+ 	cfd.charheight = height;
+@@ -191,4 +208,5 @@ int putfont(int fd, unsigned char *buf,
+ 		return -1;
+ 	}
+ 	return 0;
++#endif
+ }

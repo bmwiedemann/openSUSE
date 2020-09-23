@@ -1,4 +1,683 @@
 -------------------------------------------------------------------
+Thu Sep 17 22:43:16 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Make kbdsettings working in both bash and dash (boo#1175040).
+
+-------------------------------------------------------------------
+Thu Sep 17 14:47:04 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix kbd-1.15.5-loadkeys-search-path.patch to prefer xkb keymaps
+  (boo#1176302).
+
+-------------------------------------------------------------------
+Thu Aug 20 11:34:32 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- add libkeymap-Fix-mk_mapname-for-the-plain-map.patch
+
+-------------------------------------------------------------------
+Tue Apr 21 13:08:11 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- drop broken kbd command as well as guess_encoding (boo#1170067)
+- don't use subdirectory for legacy keymaps (boo#1166423)
+- use fdupes
+
+-------------------------------------------------------------------
+Tue Mar  3 02:25:10 CET 2020 - sbrabec@suse.com
+
+- Update to version 2.2.0:
+  * setfont: Add option -d to double size of font.
+  * kbd_mode: Add -f option and deny dangerous mode switches
+    without it.
+  * Data files updates.
+  * Fix gcc warnings and error with gcc-10 (boo#1160273).
+  * Other fixes.
+  * For a full list of changes see:
+    https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git/log/
+- Update home page.
+- Refresh patches: kbd-1.15.2-dumpkeys-C-opt.patch,
+  kbd-1.15.2-setfont-no-cruft.patch,
+  kbd-1.15.5-loadkeys-search-path.patch.
+
+-------------------------------------------------------------------
+Thu Jan  9 22:35:51 UTC 2020 - Stefan BrÃ¼ns <stefan.bruens@rwth-aachen.de>
+
+- Use a UTF-8 capable locale, otherwise ckbcomp will not not able
+  to do proper uppercase/lowercase conversions.
+- Rebase cz-map.patch after UTF-8 changes.
+- Skip compression/decompression of maps which are about to be
+  discarded later (~30%). Avoid zgrep, which is a shell script
+  spawning grep and gunzip for each input file.
+
+-------------------------------------------------------------------
+Thu Dec  5 12:15:22 UTC 2019 - kukuk@suse.de
+
+- Move pam.d/vlock to /usr/etc
+
+-------------------------------------------------------------------
+Thu Sep 19 09:05:55 UTC 2019 - Martin Vidner <mvidner@suse.com>
+
+- Allow YaST to select Iranian (Persian, Farsi) keyboard layout
+  (bsc#1092920)
+
+-------------------------------------------------------------------
+Thu Aug  2 08:06:01 UTC 2018 - schwab@suse.de
+
+- fbtest.c: include <sys/sysmacros.h> for major/minor
+
+-------------------------------------------------------------------
+Thu May 24 16:14:57 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Thu Apr  5 17:32:03 CEST 2018 - sbrabec@suse.com
+
+- Disable characters >=U+F000. These do not work properly
+  (bsc#1085432#c15, kbd-unicode-fxxx.patch).
+
+-------------------------------------------------------------------
+Thu Mar 15 17:04:06 CET 2018 - sbrabec@suse.com
+
+- Do not cause error on UNICODE characters >= 0xF000 (e. g.
+  ligature fi) (bsc#1085432, kbd-unicode-fxxx.patch).
+
+-------------------------------------------------------------------
+Fri Jan 12 17:39:18 CET 2018 - sbrabec@suse.com
+
+- Move initial NumLock handling from systemd back to kbd:
+  * Add kbdsettings service written by Thomas Blume (boo#1010880,
+    kbdsettings, kbdsettings.service, numlockbios.c,
+    update sysconfig.console and sysconfig.keyboard).
+  * Exclude numlockbios support for non x86 platforms
+    (kbdsettings-nox86.patch).
+- Drop references to KEYTABLE and COMPOSETABLE (boo#1010880#c32,
+  boo#1010880#c54,  sysconfig.keyboard.del, README.SUSE,
+  drop kbd.fillup).
+- Fix paths in kbd.pl.
+
+-------------------------------------------------------------------
+Wed Dec  6 13:30:49 UTC 2017 - fbui@suse.com
+
+- Drop from some fill-up templates, a couple of sysconfig variables no
+  more read by systemd (fate#319454)
+
+  So the relevant settings can be defined in only one place.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:40:21 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Oct 13 14:53:41 CEST 2017 - sbrabec@suse.com
+
+- Add vlock.pamd PAM file (bsc#1056449#c8).
+- Clean spec file.
+
+-------------------------------------------------------------------
+Fri Sep 22 15:51:51 CEST 2017 - sbrabec@suse.com
+
+- Version update to 2.0.4:
+  * translation updates
+  * support for U+202F
+  * minor fixes and code cleanup
+  * minor improvements and more characters support
+- Enable vlock (bsc#1056449, FATE#261).
+
+-------------------------------------------------------------------
+Sun Apr 30 04:31:25 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build fully reproducible
+
+-------------------------------------------------------------------
+Thu Mar 23 23:23:20 UTC 2017 - zaitor@opensuse.org
+
+- Revert dropping of kdb-legacy Requires: There are still packages
+  and installation flows that needs this to be present
+  (boo#1027379).
+
+-------------------------------------------------------------------
+Sun Feb 12 23:37:52 UTC 2017 - zaitor@opensuse.org
+
+- Drop kdb-legacy Requires: No longer needed, and was always meant
+  to be temporary.
+
+-------------------------------------------------------------------
+Tue Jul 12 12:52:31 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2.0.3:
+  * Various small updates
+- Obsolete merged patch:
+  * kbd-1.15.5-br-abnt2-slash-question.patch
+- Quickly run over with spec-cleaner
+- Remove arch check for alpha and other unused platforms
+- Drop kbd.fillup.nonpc as it should not be needed nowdays
+
+-------------------------------------------------------------------
+Thu Jun 16 00:18:55 CET 2016 - marceloatie@gmail.com
+
+- Fix data/keymaps/i386/querty/br-abnt2.map
+  (boo#984958, kbd-1.15.5-br-abnt2-slash-question.patch)
+
+-------------------------------------------------------------------
+Thu Dec 10 16:31:10 CET 2015 - tiwai@suse.de
+
+- Fix missing dependency on coreutils for initrd macros (boo#958562)
+- Call missing initrd macro at postun (boo#958562)
+
+-------------------------------------------------------------------
+Fri Aug 21 10:50:21 UTC 2015 - opensuse.lietuviu.kalba@gmail.com
+
+- Rename conflicting legacy keymaps:
+  * dvorak/no.map -> dvorak/no-dvorak.map
+  * fgGIod/trf.map -> fgGIod/trf-fgGIod.map
+  * olpc/pt.map -> olpc/pt-olpc.map
+  * qwerty/cz.map -> qwerty/cz-qwerty.map
+- i386/qwerty/sr-latin links to sr-cy
+- add compose rules to cz layout (rh#1181581)
+
+-------------------------------------------------------------------
+Mon Aug 10 11:53:48 UTC 2015 - sndirsch@suse.com
+
+- genmap4systemd.sh: use 'abnt2' model for 'br' layouts, 'jp106'
+  model for 'jp' layouts and 'microsoftpro' for anything else
+  (instead of 'pc105' before) (FATE#318426)
+
+-------------------------------------------------------------------
+Tue Jul 21 10:05:35 UTC 2015 - sndirsch@suse.com
+
+- added genmap4systemd.sh tool, which generates entries for 
+  systemd's /usr/share/systemd/kbd-model-map table from 
+  xkeyboard-config converted keymaps; entries are written to 
+  /usr/share/systemd/kbd-model-map.xkb-generated, so these can
+  easily be added to /usr/share/systemd/kbd-model-map by systemd
+  package (FATE#318426)
+
+-------------------------------------------------------------------
+Fri Jul 17 12:54:27 UTC 2015 - sndirsch@suse.com
+
+- Include xkb layouts from xkeyboard-config converted to console
+  keymaps, (FATE#318426)
+  * Rename Finnish xkb converted layout
+  * Add xkb and legacy keymaps subdirs to loadkyes search path
+    (kbd-1.15.5-loadkeys-search-path.patch), remove symlinks,
+    Don't convert layouts that can't input ASCII,
+  * Original keymaps moved to legacy dir, created symlinks to xkb
+    keymaps
+
+-------------------------------------------------------------------
+Thu Apr  2 18:36:23 UTC 2015 - crrodriguez@opensuse.org
+
+- For the previos change to wok, we need to buildrequire 
+ suse-module-tools to get the initrd rpm macros.
+
+-------------------------------------------------------------------
+Sat Mar 28 21:15:08 UTC 2015 - crrodriguez@opensuse.org
+
+- Regenerate the initrd if this package changes as it is
+  included there for early console setup.
+
+-------------------------------------------------------------------
+Tue Feb 10 15:45:09 UTC 2015 - tchvatal@suse.com
+
+- Convert changelog to utf8
+
+-------------------------------------------------------------------
+Sat Nov 29 22:14:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in scripts
+- add patches:
+  * kbd-2.0.2-fix-bashisms.patch
+- update patches:
+  * kbd-1.15.2-unicode_scripts.patch
+
+-------------------------------------------------------------------
+Thu Sep 25 10:33:55 UTC 2014 - pgajdos@suse.com
+
+- euro{,1,2}.map now produces correct unicode for Euro sign 
+  [bnc#360993]
+- added patches:
+  * kbd-2.0.2-euro-unicode.patch
+
+-------------------------------------------------------------------
+Thu Sep 18 10:54:51 UTC 2014 - pgajdos@suse.com
+
+- port dumpkeys-C-opt.patch
+- modified patches:
+  * kbd-1.15.2-dumpkeys-C-opt.patch
+
+-------------------------------------------------------------------
+Fri Sep 12 09:52:30 UTC 2014 - pgajdos@suse.com
+
+- kbd-2.0.2-doshell-reference.patch: 
+  drop doshell reference from openvt.1 man page [bnc#675317]
+
+-------------------------------------------------------------------
+Thu Sep  4 17:51:54 UTC 2014 - jw@owncloud.com
+
+- added /usr/bin/kbd, a simple userfriedly keymap switcher.
+  From https://github.com/jnweiger/kbd-wrapper
+
+-------------------------------------------------------------------
+Fri Aug 22 09:50:15 UTC 2014 - pgajdos@suse.com
+
+- drop kbd-1.15.2-chvt-userwait.patch [bnc#830805] (internal)
+  (--userwait seems to not be used anywhere)
+
+-------------------------------------------------------------------
+Fri Aug 22 09:25:51 UTC 2014 - pgajdos@suse.com
+
+- remove testutf8 stub (2009: testutf8 will be soon removed completely, 
+  it's kept only not to break /etc/profile currently)
+
+-------------------------------------------------------------------
+Fri Aug 22 06:51:23 UTC 2014 - pgajdos@suse.com
+
+- Update to version 2.0.2: 
+      libkeymap: fix kmap on big-endian machines
+      Add functions to get the total number of elements
+      Add functions to convert ksyms
+      eurlatgr - new Linux console font
+      Hide syms array
+      Add information about the total number of elements
+      Add function to obtain items from the diacritical table
+      Change the API for working with the diacritical table
+      Change API for working with list of functions
+      Add functions to check diacr/func existance
+      Add pancyrillic font
+      po: Update translations (from translationproject.org)
+      vlock: implement PAM account and password management
+      vlock: rename ERROR_TIMEOUT macro to LONG_DELAY
+      vlock: introduce short delays after non-fatal PAM errors
+      Added Latvian keymap
+  (changelog taken from 
+   http://lists.altlinux.org/pipermail/kbd/2014-July/000476.html)
+- add kbd-2.0.2-comment-typo-qwerty.patch [bnc#825385]
+
+-------------------------------------------------------------------
+Wed Aug 20 16:47:44 UTC 2014 - pgajdos@suse.com
+
+- SuSE -> SUSE [bnc#889035]
+
+-------------------------------------------------------------------
+Thu Jul 24 20:31:47 UTC 2014 - dimstar@opensuse.org
+
+- No longer recommend fbset: the package does no longer exist in
+  openSUSE since late 2013.
+
+-------------------------------------------------------------------
+Sun Nov  3 17:51:09 UTC 2013 - dap.darkness@gmail.com
+
+- Update to version 2.0.1:
+  * Disable arch-specific tests.
+  * Fix regression in processing alt_is_meta keyword.
+  * Rename Bepo keymaps:
+    dvorak-fr-bepo.map -> fr-bepo-latin9.map
+    dvorak-fr-bepo-utf8.map -> fr-bepo.map.
+- Deleted kbd-1.15.2-dumpkeys-ppc.patch as obsolete:
+  http://lists.opensuse.org/opensuse-factory/2013-08/msg00347.html
+- gcc 4.6+ became required to prevent compilling error:
+  "expected declaration specifiers or '...' before 'va_list'".
+
+-------------------------------------------------------------------
+Mon Aug 19 18:27:19 UTC 2013 - dap.darkness@gmail.com
+
+- Update to version 2.0.0:
+  * Add bepo keyboard layout;
+  * Add libkeymap;
+  * The loadkeys and dumpkeys always use the libkeymap.
+- Updated patches because of docs moved:
+  * kbd-1.15.2-chvt-userwait.patch
+  * kbd-1.15.2-docu-X11R6-xorg.patch
+- Disabled patches because of dumpkeys rewritten:
+  * kbd-1.15.2-dumpkeys-C-opt.patch
+  * kbd-1.15.2-dumpkeys-ppc.patch
+
+-------------------------------------------------------------------
+Thu Apr  4 15:57:45 UTC 2013 - meissner@suse.com
+
+- disable vlock build, which is in vlock package.
+
+-------------------------------------------------------------------
+Thu Apr  4 01:34:32 UTC 2013 - crrodriguez@opensuse.org
+
+- Remove sysvinit support, init scripts from this package 
+  are masked by systemd and only serve for confusion.
+
+-------------------------------------------------------------------
+Wed Apr  3 19:06:41 CEST 2013 - sbrabec@suse.cz
+
+- sysconfig.keyboard: Updated description of KBD_NUMLOCK
+  (bnc#746595#c74).
+
+-------------------------------------------------------------------
+Wed Dec  5 20:45:40 UTC 2012 - dap.darkness@gmail.com
+
+- Update to version 1.15.5:
+  * Fix msgstr in es.po and update translations.
+  * Update changelog and increase version (1.15.5wip).
+  * po: Update vi.po from translationproject.org.
+  * Fix various vlock build errors.
+  * Fix loadkeys.analyze lex handling.
+  * Ignore config.cache files.
+- Applied into upstream kbd-1.15.3-po-es.patch was deleted.
+
+-------------------------------------------------------------------
+Mon Dec  3 18:58:13 UTC 2012 - dap.darkness@gmail.com
+
+- Update to version 1.15.4:
+  * vlock: New utility which locks one or more virtual consoles.
+  * loadkeys: Change the handling of -C option.
+  * loadkeys: Fix -d option.
+  * Add dvorak-es keymap.
+  * Add dvorak-uk keymap (Joe MacMahon).
+  * Add dvorak-sv-a1 and dvorak-sv-a5 keymaps.
+  * Add ruwin_alt_sh-UTF-8 keymap (Dmitriy Perlow).
+- kbd-1.15.3-po-es.patch was fixed.
+- Applied into upstream patches were deleted.
+- Fixed up via spec-cleaner.
+- Clean-section was removed.
+- Macro warnings were fixed via '%' deleting.
+
+-------------------------------------------------------------------
+Fri Apr 20 15:40:30 UTC 2012 - rschweikert@suse.com
+
+- Place binaries into /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Tue Dec 20 17:35:35 CET 2011 - sbrabec@suse.cz
+
+- Enable resizecons on x86_64 (bnc#737631).
+
+-------------------------------------------------------------------
+Wed Nov 30 14:24:18 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Oct  5 13:37:08 UTC 2011 - lnussel@suse.de
+
+- fix loadkeys -C option (bnc#720486)
+
+-------------------------------------------------------------------
+Fri Sep 30 15:28:41 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc, %configure macros
+- configure: explicitly set bindir
+
+-------------------------------------------------------------------
+Wed Sep 14 15:58:43 CEST 2011 - sbrabec@suse.cz
+
+- Update to version 1.15.3:
+  * kbdinfo: New utility to obtain information about console.
+  * setvtrgb: New utility to set the virtual terminal RGB colors.
+  * loadkeys: Add LOADKEYS_KEYMAP_PATH env variable.
+  * loadkeys: Fix some memory leaks.
+  * loadkeys: Do not set prefer_unicode for iso-8859-1.
+  * loadkeys -a: Switch to ASCII mode.
+  * loadkeys: Fix "compose as usual" for Unicode diacritics.
+  * Add dvorak-ru keymap.
+  * Add LatGrkCyr fonts.
+
+-------------------------------------------------------------------
+Mon Mar 21 14:07:36 CET 2011 - werner@suse.de
+
+- If /usr is located in a separate partition, the locale command fails.
+- Ignore /var/run/keymap in sinlge user mode otherwise key mapping
+  could be wrong if booted cold into sinlge user mode
+
+-------------------------------------------------------------------
+Thu Feb 17 12:39:06 CET 2011 - werner@suse.de
+
+- Tag boot script as interactive as systemd uses it
+
+-------------------------------------------------------------------
+Wed Jan 12 14:22:09 UTC 2011 - lnussel@suse.de
+
+- use /etc/defkeymap.name if possible to avoid find call
+- move some code that is only needed for start to actual start section
+  (bnc#463801)
+- Fixed symlink vulnerability of the init script
+  (bnc#663898, CVE-2011-0460).
+
+-------------------------------------------------------------------
+Tue Sep  7 14:48:34 CEST 2010 - anicka@suse.cz
+
+- build optional binaries (bnc#637453) 
+
+-------------------------------------------------------------------
+Mon Sep  6 17:27:40 CEST 2010 - anicka@suse.cz
+
+- update to 1.15.2
+  * Use automake to build translations.
+  * loadkeys -u: Switch to Unicode mode, if necessary
+  * Never handle plain ASCII characters as Unicode
+  * Enable UNUMBERs in compose definitions
+  * Use automake.
+  * Add --enable-strip configure option.
+  * unicode_start: Without any arguments utility will only set
+    unicode mode.
+  * Add qwerty/cz.map keymap.
+- remove upstreamed and obsolete patches (-remove-kbio, -Makefile, 
+  -2d01989f, -no-strip)
+- retain original behavior of unicode_start script
+- remove manpages for programs that are not installed
+
+-------------------------------------------------------------------
+Thu May 27 02:18:05 CEST 2010 - sndirsch@suse.de
+
+- added dummy keyboard mappings for chinese/taiwanese (bnc #603950) 
+
+-------------------------------------------------------------------
+Mon Mar 29 17:31:11 CEST 2010 - anicka@suse.cz
+
+- add lt.std map (bnc#569554) 
+
+-------------------------------------------------------------------
+Fri Feb 19 14:39:29 CET 2010 - anicka@suse.cz
+
+- respect KBD_TTY="" set in sysconfig (bnc#405658)
+
+-------------------------------------------------------------------
+Tue Feb 16 11:14:18 PST 2010 - vuntz@opensuse.org
+
+- Add kbd-1.12-chvt-userwait.patch, taken from Gentoo to add a
+  --userwait option to chvt. This can be used to avoid situation
+  where chvt can hang forever waiting for the vt switch: the wait
+  is done in userspace, and has a timeout of 5 seconds. (bnc#575123)
+
+-------------------------------------------------------------------
+Thu Feb  4 12:22:49 UTC 2010 - jengelh@medozas.de
+
+- remove inclusion of kbio.h on SPARC, this has been removed
+  in the kernel
+
+-------------------------------------------------------------------
+Sun Jan 10 01:45:25 UTC 2010 - jw@novell.com
+
+- added guess_encoding, an old script of mine, that tests
+  if a tty is in utf8 mode or not.
+  (Also helpful with text files in unknown encoding.)
+
+-------------------------------------------------------------------
+Mon Nov  2 13:48:13 CET 2009 - mmarek@suse.cz
+
+- do not include '.' in the repacked tarball (bnc#544975).
+
+-------------------------------------------------------------------
+Thu Oct  1 15:09:51 CEST 2009 - mmarek@suse.cz
+
+- Add real Tajik keymap.
+- remove slovak keymaps from suse-add.tar.bz2 that are already
+  upstream.
+
+-------------------------------------------------------------------
+Fri Sep  4 15:22:07 CEST 2009 - mmarek@suse.cz
+
+- added symlink tj.map.gz -> ruwin_alt-UTF-8.map.gz until there is
+  a real Tajik map.
+
+-------------------------------------------------------------------
+Tue May 19 16:25:37 CEST 2009 - mmarek@suse.cz
+
+- remove testutf8 (replace with a script that returns 2 in any
+  terminal), it's a hack that has a number of problems (bnc#436378,
+  bnc#334889). Users who don't want utf8 should adjust their locale
+  setting accordingly.
+
+-------------------------------------------------------------------
+Tue May 19 14:40:11 CEST 2009 - mmarek@suse.cz
+
+- do not load any usb drivers, udev takes care of this (bnc#482316).
+
+-------------------------------------------------------------------
+Mon Nov 10 12:10:09 CET 2008 - mmarek@suse.cz
+
+- rename Spanish keymap for olpc to es-olpc to avoid ambiguity
+  (bnc#435121)
+
+-------------------------------------------------------------------
+Tue Nov  4 13:06:35 CET 2008 - sndirsch@suse.de
+
+- added arabic console keyboard link ( arabic -> us ) (bnc #441432)
+
+-------------------------------------------------------------------
+Tue Oct 14 10:50:34 CEST 2008 - mmarek@suse.cz
+
+- fix case when multiple keymaps are found (bnc#259694)
+- allow to specify a path such as 'i386/es.map.gz' in KEYTABLE
+
+-------------------------------------------------------------------
+Mon Sep 29 16:47:35 CEST 2008 - mmarek@suse.cz
+
+- fixed lat2a-16.psfu (bnc#340579)
+
+-------------------------------------------------------------------
+Tue Sep  9 14:09:26 CEST 2008 - mmarek@suse.cz
+
+- really use $RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Sep  4 17:48:50 CEST 2008 - mmarek@suse.cz
+
+- modified rckbd according to suggestions by Jiri Bohac
+  (bnc#367801#c17)
+  - first call setfont and then loadkeys, to make dead characters
+    work
+  - don't call dumpkeys | loadkeys --unicode
+
+-------------------------------------------------------------------
+Wed Aug 20 19:38:44 CEST 2008 - mmarek@suse.cz
+
+- updated to 1.14.1
+  * Programs
+    - unicode_{start,stop}: To run loadkeys is allowed only to
+      root.
+    - mapscrn: Add '.acm' suffix for compatibility with
+      console-tools
+    - fix findfile so that it does not find directories
+    - kbdrate: fix for sparc
+  * Keymaps:
+    - Add Norwegian dvorak keymap.
+    - Add turkish F (trf) keyboard map.
+    - Fix turkish Q (trq) keyboard map (Ozgur Murat Homurlu).
+    - Move qwerty/cz.map -> qwertz/cz.map.
+    - include/*euro.map: Change 'currency' to 'euro' symbol.
+    - Add OLPC (One Laptop Per Child) keymaps
+    - Add more romanian keymaps (Vitezslav Crhonek)
+    - Add another ukrainian keymap
+    - Add Belarusian (Belarus) keymaps
+    - Add Kazakh keymap
+    - Add Kyrgyz keymap
+    - Add Bashkir (Russia) keymap
+    - Add Tatar keymaps
+    - Add more russian keymaps
+  * Fonts:
+    - Add unicode fonts (UniCyrExt_8x16.psf, UniCyr_8x14.psf,
+      UniCyr_8x16.psf, UniCyr_8x8.psf)
+    - Add Lat2-Terminus16 font
+    - Fix sun12x22 font unicode mapping table (Vitezslav Crhonek)
+  * translation updates
+- dropped upstreamed patches:
+  kbd-1.12-Meta-Tab.diff
+  kbd-1.12-be-nice-to-kdm.diff
+  kbd-1.12-cz-us-qwertz.diff
+  kbd-1.12-dumpkeys-full.diff
+  kbd-1.12-handle-small-table.diff
+  kbd-1.12-happy-abuild.diff
+  kbd-1.12-kbd_mode.diff
+  kbd-1.12-loadkeys-C-opt.diff
+  kbd-1.12-loadkeys-repstdout.diff
+  kbd-1.12-mac-de.diff
+  kbd-1.12-mac-dk.diff
+  kbd-1.12-nohang-kbdrate2.diff
+  kbd-1.12-nounicode-nontty.diff
+  kbd-1.12-setfont-fpclose.diff
+  kbd-1.12-showconsolefont-info.diff
+  kbd-1.12-swiss.diff
+  kbd-1.12.diff
+  piofont_debug.diff
+- dropped bnc147581_jp106.diff because it was not needed
+  (bnc#147581)
+
+-------------------------------------------------------------------
+Mon Aug 18 18:08:29 CEST 2008 - mrueckert@suse.de
+
+- remove outdated options in the fillup_and_insserv call
+
+-------------------------------------------------------------------
+Mon Aug 18 11:21:24 CEST 2008 - werner@suse.de
+
+- Fix LSB header of kbd init script
+
+-------------------------------------------------------------------
+Wed Jun  4 18:53:46 CEST 2008 - werner@suse.de
+
+- Add "-C" option also to dumpkeys to make kbd init script work on
+  /dev/console and /dev/tty even within e.g. xterm (bnc#337238)
+
+-------------------------------------------------------------------
+Mon May 19 12:39:16 CEST 2008 - jw@suse.de
+
+- added ru1_win-utf.map fixing bnc#337238
+
+-------------------------------------------------------------------
+Wed May  7 18:34:11 CEST 2008 - werner@suse.de
+
+- Add description of option -i of showconsolefont (bnc#385200)
+- Make showconsolefont option -i work together with option -C
+- Add fbtest program and fbtest manual page
+
+-------------------------------------------------------------------
+Mon May  5 17:21:42 CEST 2008 - jw@suse.de
+
+- added fix for bnc#164378 from werner.
+
+-------------------------------------------------------------------
+Fri Apr 25 12:11:45 CEST 2008 - jw@suse.de
+
+- experimental patch for bnc#147581 added.
+
+-------------------------------------------------------------------
+Fri Mar 21 18:47:50 CET 2008 - sndirsch@suse.de
+
+- kbd.init: MAY_TTY should be tty6 (Bug #302010) 
+
+-------------------------------------------------------------------
+Thu Feb 21 21:19:52 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro
+
+-------------------------------------------------------------------
+Mon Dec  3 20:49:23 CET 2007 - jw@suse.de
+
+- fixed bugzilla #153179 by adding new versions of sk-qwertz.map 
+  and sk-qwerty.map from lmichnovic to suse-add.tar.bz2
+- Thus partially obsoleting kbd-1.12-prtscr_no_sigquit.diff and
+  kbd-1.12-Meta-Tab.diff
+
+-------------------------------------------------------------------
 Tue Aug 21 19:53:59 CEST 2007 - jw@suse.de
 
 - cleaned up setfont according to bugzilla #302010
@@ -887,7 +1566,7 @@ Mon Dec  4 23:43:08 MET 2000 - garloff@suse.de
 -------------------------------------------------------------------
 Mon Dec  4 17:29:56 MET 2000 - garloff@suse.de
 
-- Add de_CH ("schwyzerdütsch") keymap.
+- Add de_CH ("schwyzerdÃ¼tsch") keymap.
 - Initialize consoles 1-24 (instead of 1-6) with CONSOLE_MAGIC
   (Bugzilla #4468)
 
@@ -1079,7 +1758,7 @@ Sun Apr 11 13:55:06 MET 1999 - ml@suse.de
 
 -------------------------------------------------------------------
 Tue Apr  6 20:55:06 MET 1999 - ml@suse.de
-- added a patch harald könig for us.map
+- added a patch harald kÃ¶nig for us.map
 
 -------------------------------------------------------------------
 Sun Apr  5 20:55:06 MET 1999 - ml@suse.de

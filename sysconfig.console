@@ -1,8 +1,9 @@
 ## Path:        Hardware/Console
 ## Description: Text console settings (see also Hardware/Keyboard)
+#
+
 ## Type:	string
 ## Default:	""
-## ServiceRestart: kbd
 #
 # Console settings.
 # Note: The KBD_TTY setting from Hardware/Keyboard (sysconfig/keyboard)
@@ -10,7 +11,7 @@
 #
 # Load this console font on bootup:
 # (/usr/share/kbd/consolefonts/)
-# 
+#
 CONSOLE_FONT=""
 
 ## Type:	string
@@ -46,4 +47,3 @@ CONSOLE_SCREENMAP=""
 # Normally not needed (automatically handled by setfont).
 #
 CONSOLE_MAGIC=""
-

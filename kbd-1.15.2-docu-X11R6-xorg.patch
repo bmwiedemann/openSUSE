@@ -1,5 +1,5 @@
---- kbd-1.12/doc/kbd.FAQ-15.html.orig	2003-09-24 23:01:40.000000000 +0200
-+++ kbd-1.12/doc/kbd.FAQ-15.html	2006-08-11 12:10:06.000000000 +0200
+--- docs/doc/kbd.FAQ-15.html.orig	2012-02-27 13:27:11.000000000 +0300
++++ docs/doc/kbd.FAQ-15.html	2013-07-30 18:56:43.697000005 +0300
 @@ -188,7 +188,7 @@
  <P>XFree86 also supports Slow Keys, Repeat Keys, Bounce Keys and an
  audible bell. <CODE>xkbcomp</CODE> can be used to generate a <CODE>.xkm</CODE> file
@@ -9,8 +9,8 @@
  Unfortunately, the exact process is still undocumented.
  <P>
  <HR>
---- kbd-1.12/doc/kbd.FAQ.txt.orig	1999-10-08 22:46:24.000000000 +0200
-+++ kbd-1.12/doc/kbd.FAQ.txt	2006-08-11 12:10:16.000000000 +0200
+--- docs/doc/kbd.FAQ.txt.orig	2012-02-27 13:27:11.000000000 +0300
++++ docs/doc/kbd.FAQ.txt	2013-07-30 18:57:41.150000005 +0300
 @@ -1253,7 +1253,7 @@
    1. The Linux keyboard driver mechanism, used in conjunction with
       loadkeys.
@@ -20,8 +20,8 @@
  
       See also Andrew D. Balsa's comments at
       http://wauug.erols.com/~balsa/linux/deadkeys/index.html.
---- kbd-1.12/doc/kbd.FAQ-8.html.orig	2003-09-24 23:01:40.000000000 +0200
-+++ kbd-1.12/doc/kbd.FAQ-8.html	2006-08-11 12:09:53.000000000 +0200
+--- docs/doc/kbd.FAQ-8.html.orig	2012-02-27 13:27:11.000000000 +0300
++++ docs/doc/kbd.FAQ-8.html	2013-07-30 18:58:23.978000004 +0300
 @@ -154,7 +154,7 @@
  <OL>
  <LI>The Linux keyboard driver mechanism, used in conjunction with loadkeys.</LI>
