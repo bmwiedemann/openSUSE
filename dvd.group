@@ -500,6 +500,7 @@
     <package name="exo-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="expat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="expect" supportstatus="unsupported"/> <!-- reason: dvd:expect -->
+    <package name="eyeD3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="f2fs-tools" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
     <package name="farstream-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="fbiterm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3057,8 +3058,12 @@
     <package name="makedumpfile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="man-pages" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-de" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-fr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="man-pages-ja" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="man-pages-pl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="man-pages-posix" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-pt_BR" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="man-pages-zh_CN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="manufacturer-PPDs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="mariadb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3394,6 +3399,7 @@
     <package name="patterns-yast-yast2_install_wf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_install_wf -->
     <package name="pavucontrol" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pavucontrol-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="pcfclock-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pciutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pcmciautils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-laptop -->
     <package name="pcsc-acr38" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-acr38 -->

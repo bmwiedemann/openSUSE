@@ -2007,6 +2007,7 @@ unsorted:
   - compton 
   - compton-conf 
   - compton-conf-lang 
+  - conauto 
   - concurrent 
   - conkeror 
   - conky 
@@ -2804,6 +2805,8 @@ unsorted:
   - edgar 
   - edgar-data 
   - edgar-lang 
+  - edge-addition-planarity-suite 
+  - edge-addition-planarity-suite-devel 
   - edict 
   - editorconfig 
   - editres 
@@ -11128,6 +11131,7 @@ unsorted:
   - libmpeg2encpp-2_0-0-32bit: [x86_64] 
   - libmpfi0 
   - libmpfr6-32bit: [x86_64] 
+  - libmpfrcx1 
   - libmpg123-0-32bit: [x86_64] 
   - libmpir-devel 
   - libmpir23 
@@ -11333,6 +11337,8 @@ unsorted:
   - libnma-devel 
   - libnormaliz3 
   - libnoson2 
+  - libnotcurses++1 
+  - libnotcurses1 
   - libnotify-devel 
   - libnotify-devel-32bit: [x86_64] 
   - libnotify4-32bit: [x86_64] 
@@ -11507,7 +11513,7 @@ unsorted:
   - libopenvas_wincmd1 
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
-  - libopenvdb7_0 
+  - libopenvdb7_1 
   - libopenvswitch-2_14-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
@@ -11752,6 +11758,7 @@ unsorted:
   - libpkgconf-devel 
   - libplacebo-devel 
   - libplacebo72 
+  - libplanarity0 
   - libplank1 
   - libplayerctl2 
   - libplib0 
@@ -11834,6 +11841,8 @@ unsorted:
   - libportmidi0 
   - libpostproc55_7-32bit: [x86_64] 
   - libpowerman0 
+  - libppl14 
+  - libppl_c4 
   - libpq5-32bit: [x86_64] 
   - libpqos-devel 
   - libpqos4 
@@ -13242,6 +13251,7 @@ unsorted:
   - libvisio2svg0 
   - libvisual-32bit: [x86_64] 
   - libvisual-devel 
+  - libvkd3d-shader1 
   - libvkd3d-utils1 
   - libvkd3d-utils1-32bit: [x86_64] 
   - libvkd3d1 
@@ -14302,6 +14312,8 @@ unsorted:
   - mame-data 
   - mame-mess: [x86_64] 
   - mame-tools 
+  - man-pages-nl 
+  - man-pages-ro 
   - manaplus 
   - manaplus-lang 
   - manchu-fonts 
@@ -15107,6 +15119,7 @@ unsorted:
   - mpfi-devel 
   - mpfr-devel 
   - mpfr-devel-32bit: [x86_64] 
+  - mpfrcx-devel 
   - mpg123 
   - mpg123-devel 
   - mpg123-devel-32bit: [x86_64] 
@@ -15855,6 +15868,9 @@ unsorted:
   - normaliz-devel 
   - noson-app 
   - noson-devel 
+  - notcurses++-devel 
+  - notcurses-demos 
+  - notcurses-devel 
   - notejot 
   - notejot-lang 
   - notepadqq 
@@ -16163,6 +16179,7 @@ unsorted:
   - objenesis 
   - objenesis-javadoc 
   - obs-service-appimage 
+  - obs-service-cargo_vendor 
   - obs-service-download_files 
   - obs-service-download_url 
   - obs-service-extract_file 
@@ -16844,7 +16861,6 @@ unsorted:
   - orc 
   - orc-doc 
   - orcania-devel 
-  - origami-icon-theme 
   - orion 
   - orkhon-fonts 
   - oro 
@@ -17081,6 +17097,7 @@ unsorted:
   - papirus-icon-theme 
   - paps 
   - par2cmdline 
+  - par_text 
   - paradise 
   - parallel-netcdf-devel-data 
   - parallel-netcdf-mvapich2 
@@ -17231,7 +17248,6 @@ unsorted:
   - pcb-doc 
   - pcc 
   - pcfclock 
-  - pcfclock-kmp-default 
   - pcfclock-kmp-pae: [i586] 
   - pciutils-devel 
   - pciutils-devel-32bit: [x86_64] 
@@ -18643,6 +18659,8 @@ unsorted:
   - pgadmin4-web-uwsgi 
   - pgloader 
   - pgn-extract 
+  - phd2 
+  - phd2-lang 
   - phetsarath-fonts 
   - phobos-devel 
   - phobos-devel-static 
@@ -18990,7 +19008,6 @@ unsorted:
   - pnglite-devel 
   - pngtoico 
   - pnm2ppa 
-  - po-utils 
   - po4a 
   - po4a-lang 
   - pocketsphinx 
@@ -19148,6 +19165,9 @@ unsorted:
   - powerstat 
   - powerstat-bash-completion 
   - poxml-lang 
+  - ppl 
+  - ppl-devel 
+  - ppl-doc 
   - ppp-devel 
   - ppp-modem 
   - pps-tools 
@@ -19686,6 +19706,7 @@ unsorted:
   - python3-Morfessor 
   - python3-MouseInfo 
   - python3-MulticoreTSNE 
+  - python3-Nuitka 
   - python3-OWSLib 
   - python3-OpenImageIO 
   - python3-PGet 
@@ -20595,6 +20616,7 @@ unsorted:
   - python3-eliot 
   - python3-email-reply-parser 
   - python3-email_validator 
+  - python3-emcee 
   - python3-emoji 
   - python3-empy 
   - python3-enaml 
@@ -20629,6 +20651,7 @@ unsorted:
   - python3-extras 
   - python3-extratools 
   - python3-ez_setup 
+  - python3-ezdxf 
   - python3-factory_boy 
   - python3-fake-useragent 
   - python3-fakeredis 
@@ -20741,6 +20764,7 @@ unsorted:
   - python3-geojson 
   - python3-geolib 
   - python3-geolinks 
+  - python3-geomdl 
   - python3-geomet 
   - python3-geopy 
   - python3-getmac 
@@ -20878,6 +20902,7 @@ unsorted:
   - python3-img2pdf 
   - python3-iminuit 
   - python3-imobiledevice 
+  - python3-impacket 
   - python3-importlab 
   - python3-imread 
   - python3-imreg 
@@ -21319,6 +21344,7 @@ unsorted:
   - python3-nose2pytest 
   - python3-nose_warnings_filters 
   - python3-nosexcover 
+  - python3-notcurses 
   - python3-notebook 
   - python3-notebook-lang 
   - python3-notify2 
@@ -21522,6 +21548,7 @@ unsorted:
   - python3-pkginfo 
   - python3-plaster 
   - python3-plaster-pastedeploy 
+  - python3-platformio 
   - python3-plette 
   - python3-plist 
   - python3-plotly 
@@ -25767,6 +25794,7 @@ unsorted:
   - stp 
   - stp-devel 
   - strawberry 
+  - streamlink 
   - stress-ng 
   - stress-ng-bash-completion 
   - stressapptest 
@@ -34672,6 +34700,7 @@ unsorted:
   - veusz: [x86_64] 
   - veyon 
   - vfontas 
+  - vgrabbj 
   - vgrep 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
