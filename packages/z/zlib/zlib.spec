@@ -117,6 +117,15 @@ Requires:       pkgconfig
 This package contains the libraries and header files needed for
 developing applications which use minizip.
 
+%package testsuite
+Summary:        Provide the test examples to reproduce test suite
+Requires:       libz1 = %{version}
+
+%description testsuite
+To run the testsuite, execute %{_libexecdir}/%{name}/testsuite
+
+It should exit 0
+
 %prep
 %setup -q
 %patch0
@@ -185,6 +194,8 @@ install -m 644 zutil.h %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -r examples/ %{buildroot}%{_docdir}/%{name}/
 
+install -D examplesh %{buildroot}%{_libexecdir}/%{name}/testsuite
+
 # Install minizip
 cd contrib/minizip
 %make_install
@@ -224,5 +235,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel-static
 %{_libdir}/libz.a
+
+%files testsuite
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/testsuite
 
 %changelog

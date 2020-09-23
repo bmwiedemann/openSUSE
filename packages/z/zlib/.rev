@@ -674,4 +674,12 @@ Passed the spec file through spec cleaner (forwarded request 116645 from worldci
 - Set -DDFLTCC_LEVEL_MASK=0x7e on s390/s390x jsc#13776</comment>
     <requestid>830216</requestid>
   </revision>
+  <revision rev="79" vrev="16">
+    <srcmd5>c418b9d4221a9cfafb109fbb3bbc3421</srcmd5>
+    <version>1.2.11</version>
+    <time>1600879157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834969</requestid>
+  </revision>
 </revisionlist>

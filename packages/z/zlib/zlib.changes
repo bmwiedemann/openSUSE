@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 16 15:05:04 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- Provide a testsuite subpackage to run post-build validation
+
+-------------------------------------------------------------------
 Fri Aug 28 07:58:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix compression level switching
