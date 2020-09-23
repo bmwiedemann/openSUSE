@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 18 09:58:45 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.0.0-5613-gb1a0951432:
+  + rebase on tip of upstream "master" branch, SHA1 5df5d8f8ff463f2560180dc8e9722d6690b0fa12
+
+-------------------------------------------------------------------
 Thu Sep  3 17:51:07 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.0.0-4863-g5d95d9d41d:
