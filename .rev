@@ -87,4 +87,27 @@
     <comment></comment>
     <requestid>788958</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f23131aba2a2421280d8d95131fa6f7e</srcmd5>
+    <version>1.17.4</version>
+    <time>1600879675</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.4:
+  * 4th bugfix release over 1.17, which provided these highlights:
+  **Added** extended language support for annotations and widgets: a mixture of
+  Latin, Greece, Russian, Chinese, Japanese and Korean characters can now be
+  used in 'FreeText' annotations and text widgets. No special arrangement is
+  required to use it.
+  * Faster page access is implemented for documents supporting a &quot;chapter&quot;
+  structure. This applies to EPUB documents currently. This comes with several
+  new :ref:`Document` methods and changes for :meth:`Document.loadPage` and the
+  &quot;indexed&quot; page access *doc[n]*: In addition to specifying a page number as
+  before, a tuple *(chaper, pno)* can be specified to identify the desired
+  page.
+  * **Changed:** Improved support of redaction annotations: images overlapped by
+  redactions are **permanantly modified** by erasing the overlap areas. Also
+  links are removed if overlapped by redactions. This is now fully in sync with
+  PDF specifications.</comment>
+    <requestid>836311</requestid>
+  </revision>
 </revisionlist>
