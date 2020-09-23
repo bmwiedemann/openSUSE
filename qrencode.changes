@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep 12 15:12:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Command line tool "qrencode" has been improved:
+  * New option "--inline" has been added. (Thanks to @jp-bennett)
+  * New option "--strict-version" has been added.
+  * UTF8 mode now supports ANSI256 color. (Thanks to András Veres-
+    Szentkirályi)
+  * Micro QR Code no longer requires to specify the version number.
+  * 'make check' allows to run the test programs. (Thanks to Jan Tojnar)
+  * Some compile time warnings have been fixed.
+  * Various CMake support improvements. (Thanks to @mgorny and @sdf5)
+  * Some minor bug fixes. (Thanks to Lonnie Abelbeck and Frédéric Wang)
+  * Some documentation/manpage improvements. (Thanks to Dan Jacobson)
+  * Some performance improvements. (Thanks to @4061N and Mika Lindqvist)
+- remove qrencode-fix-installation.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Sep  6 08:17:07 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.0.2
