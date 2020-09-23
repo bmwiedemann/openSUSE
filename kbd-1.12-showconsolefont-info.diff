@@ -1,0 +1,113 @@
+--- kbd-1.12/src/kdfontop.c.orig	2004-01-16 20:45:31.000000000 +0100
++++ kbd-1.12/src/kdfontop.c	2006-07-26 18:14:55.000000000 +0200
+@@ -142,8 +142,11 @@
+ 	return h;
+ }
+ 
+-/* may be called with buf==NULL if we only want info */
+-/* must not exit - we may have cleanup to do */
++/* 
++ * May be called with buf==NULL if we only want info.
++ * May be called with width==NULL and height==NULL.
++ * Must not exit - we may have cleanup to do.
++ */
+ int
+ getfont(int fd, char *buf, int *count, int *width, int *height) {
+ 	struct consolefontdesc cfd;
+@@ -193,6 +196,11 @@
+ 		fprintf(stderr, _("bug: getfont called with count<256\n"));
+ 		return -1;
+ 	}
++	if (!buf) 
++	  {
++	    fprintf(stderr, _("bug: getfont using GIO_FONT needs buf.\n"));
++	    return -1;
++	  }
+ 	i = ioctl(fd, GIO_FONT, buf);
+ 	if (i) {
+ 		perror("getfont: GIO_FONT");
+@@ -208,11 +216,11 @@
+ 
+ int
+ getfontsize(int fd) {
+-	int count, width, height;
++	int count;
+ 	int i;
+ 
+-	count = width = height = 0;
+-	i = getfont(fd, NULL, &count, &width, &height);
++	count = 0;
++	i = getfont(fd, NULL, &count, NULL, NULL);
+ 	return (i == 0) ? count : 256;
+ }
+ 
+--- kbd-1.12/src/showconsolefont.c.orig	2004-01-16 20:45:31.000000000 +0100
++++ kbd-1.12/src/showconsolefont.c	2006-07-26 18:40:31.000000000 +0200
+@@ -101,8 +101,15 @@
+ static void
+ usage(void) {
+ 	fprintf(stderr,
+-		_("usage: showconsolefont [-v|-V]\n"
+-		  "(probably after loading a font with `setfont font')\n"));
++		_("usage: showconsolefont -V|--version\n"
++		  "       showconsolefont [-C tty] [-v] [-i]\n"
++		  "(probably after loading a font with `setfont font')\n"
++		  "\n"
++		  "Valid options are:\n"
++		  " -C tty   Device to read the font from. Default: current tty.\n"
++		  " -v       Be more verbose.\n"
++		  " -i       Don't print out the font table, just show\n"
++		  "          ROWSxCOLSxCOUNT and exit.\n"));
+ 	exit(1);
+ }
+ 
+@@ -110,7 +117,7 @@
+ main (int argc, char **argv) {
+ 	int c, n, cols, rows, nr, i, j, k;
+ 	char *sep, *console = NULL;
+-	int list[64], lth, verbose = 0;
++	int list[64], lth, info = 0, verbose = 0;
+ 
+ 	set_progname(argv[0]);
+ 
+@@ -122,8 +129,11 @@
+ 	    (!strcmp(argv[1], "-V") || !strcmp(argv[1], "--version")))
+ 		print_version_and_exit();
+ 
+-	while ((c = getopt(argc, argv, "vC:")) != EOF) {
++	while ((c = getopt(argc, argv, "ivC:")) != EOF) {
+ 		switch (c) {
++		case 'i':
++			info = 1;
++			break;
+ 		case 'v':
+ 			verbose = 1;
+ 			break;
+@@ -135,9 +145,26 @@
+ 		}
+ 	}
+ 
+-	if (argc != 1)
++	if (optind != argc)
+ 		usage();
+ 
++        if (info)
++	  {
++	    nr = rows = cols = 0;
++	    n = getfont(fd, NULL, &nr, &rows, &cols);
++	    if (n != 0)
++	      leave(1);
++	    if (verbose) 
++	      {
++	        printf("Character count: %d\n", nr);
++		printf("Font width     : %d\n", rows);
++		printf("Font height    : %d\n", cols);
++	      }
++	    else
++	      printf("%dx%dx%d\n", rows, cols, nr);
++	    leave(0);
++	  }
++
+ 	fd = getfd(console);
+ 
+ 	settrivialscreenmap();

@@ -801,4 +801,11 @@ Fix version typo:
     <comment></comment>
     <requestid>835310</requestid>
   </revision>
+  <revision rev="99" vrev="202">
+    <srcmd5>a2440fef476a4e519d2496de8015390e</srcmd5>
+    <version>1.12</version>
+    <time>1600858753</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1176854</comment>
+  </revision>
 </revisionlist>

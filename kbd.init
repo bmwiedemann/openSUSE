@@ -1,0 +1,470 @@
+#! /bin/sh
+# Copyright (c) 1995-2005 SUSE LINUX Products AG, Nuernberg, Germany.
+#
+# Author:   Burchard Steinbild
+#           Werner Fink <werner@suse.de>
+#
+# Please send feedback to http://www.suse.de/feedback
+#
+# /etc/init.d/kbd
+#
+#   and symbolic its link
+#
+# /sbin/rckbd
+#
+# Warning:
+# /etc/init.d/earlykbd can run this script even if
+# the Required-Start conditions listed here are not satisfied.
+# Our use of $remote_fs is 
+# /usr/share/kbd - for finding keymaps
+# /usr/sbin/hwinfo - for numlock from bios
+#
+### BEGIN INIT INFO
+# Provides:       kbd
+# Required-Start: $remote_fs
+# Required-Stop:
+# Should-Start:	fbset setserial
+# Should-Stop: 
+# Default-Start:  1 2 3 5 S
+# Default-Stop:
+# Short-Description:    Keyboard settings
+# Description:          Keyboard settings (don't disable!)
+### END INIT INFO
+
+. /etc/rc.status
+. /etc/sysconfig/console
+. /etc/sysconfig/keyboard
+
+test -n "$KBD_VERBOSE" && set -x
+
+test -e /etc/SuSEconfig/profile && . /etc/SuSEconfig/profile
+test -e /etc/profile.d/lang.sh  && . /etc/profile.d/lang.sh
+LOCALE_CHARMAP=`locale charmap`
+LC_ALL=POSIX
+
+MACHINE=`/bin/uname -m 2> /dev/null`
+if [ "$MACHINE" = "sparc" -o "$MACHINE" = "sparc64" ]; then 
+   # Test if we have a serial console. 
+   (test -c /dev/tty1 && > /dev/tty1 ) > /dev/null 2>&1 || exit 0
+fi
+# iSeries machines also exit, just a little further down...
+
+# The variable NON_SUSE_KERNEL determines whether we need to chvt 
+# to a console before some console settings apply.
+# We have no magic to find out about this (at boot time), so we 
+# leave it to the user to read this comment and put NON_SUSE_KERNEL="yes"
+# into /etc/sysconfig/console
+
+test "$NON_SUSE_KERNEL" = "yes" && FGCONS=`/bin/fgconsole`
+
+KBDBASE="/usr/share/kbd"
+
+KTABLE=${KEYTABLE%.map*}
+KTABLE=${KTABLE##*/}
+
+#
+# first search the wanted keytable.
+#
+if [ $MACHINE = ppc -o $MACHINE = ppc64 ]; then
+	test -f /proc/cpuinfo || mount -n -t proc proc /proc 2>/dev/null
+	while read line; do
+	       case "$line" in
+		  *MacRISC*)	MACHINE="mac"
+		  test -f /proc/sys/dev/mac_hid/keyboard_sends_linux_keycodes && \
+			  echo 1 > /proc/sys/dev/mac_hid/keyboard_sends_linux_keycodes
+		  ;;
+		  *CHRP*)  	MACHINE="chrp";;
+		  *PReP*)  	MACHINE="prep" ;;
+		  *PS3*)	MACHINE="ps3" ;;
+		  *iSeries*)    exit 0 ;;
+		esac
+	done < /proc/cpuinfo
+fi
+
+#
+# Calculate KBD_TTY array only once
+# Caution: Keep in sync with earlykbd.init
+#
+if test -z "$KBD_TTY"; then
+        # >=tty7 left out intentionaly
+	KBD_TTY="tty1 tty2 tty3 tty4 tty5 tty6"
+fi
+
+newkbd=""
+for tty in $KBD_TTY; do
+    test -w /dev/$tty		|| continue
+    test -c /dev/$tty		|| continue
+    > /dev/$tty &> /dev/null	|| continue
+    newkbd="${newkbd:+$newkbd }/dev/$tty"
+done
+KBD_TTY="$newkbd"
+unset newkbd
+
+#
+# load usb drivers in runlevel S
+#
+case "${PREVLEVEL}${RUNLEVEL}" in
+	N1|NS)
+	test -f /proc/cpuinfo || mount -n -t proc proc /proc 2>/dev/null
+
+#	[bugzilla #46113]
+#	we come here although heading for runlevel 5. 
+#	I'll comment out diabling hotplug for now. jw.
+#	test -f /proc/sys/kernel/hotplug && echo /bin/true > /proc/sys/kernel/hotplug 2>/dev/null
+	test -d /proc/bus/usb || modprobe usbcore >/dev/null 2>&1
+	mount -n -t usbfs usbfs /proc/bus/usb >/dev/null 2>&1
+	for mod in ehci-hcd ohci-hcd uhci-hcd usb-ohci usb-uhci ; do
+	     echo -n $mod" "
+	     modprobe $mod >/dev/null 2>&1
+	done
+
+#	[bugzilla #284348]
+#	sleep is no longer needed. horay!
+#
+#	echo 
+#	echo "wait 3 seconds for USB initialisation ..."
+#	sleep 3
+
+	for mod in usbhid input hid keybdev ; do
+	     modprobe $mod >/dev/null 2>&1
+	done
+	;;
+esac
+
+KEYMAP=""
+if test -e /$KEYTABLE ; then
+    KEYMAP=$KEYTABLE
+else
+    KEYTABLE=$KTABLE
+    case "$KEYTABLE" in
+	*.gz)  KBDPATH="${KEYTABLE}" ;;
+	*.map) KBDPATH="${KEYTABLE} ${KEYTABLE}.gz" ;;
+	*)     KBDPATH="${KEYTABLE} ${KEYTABLE}.gz ${KEYTABLE}.map.gz ${KEYTABLE}.map" ;;
+    esac
+    KEYMAP=$(find ${KBDBASE}/keymaps -type f \( -name ${KBDPATH// / -o -name } \))
+fi
+#
+# setup kbdrate and led status
+#
+function set_kbdrate ()
+{
+	local line
+
+	if test "$MACHINE" != "mac" ; then
+		KBDOPT=""
+		if test -n "$KBD_RATE" ; then
+			KBDOPT="${KBDOPT:+$KBDOPT }-r $KBD_RATE"
+		fi
+		if test -n "$KBD_DELAY"; then
+			KBDOPT="${KBDOPT:+$KBDOPT }-d $KBD_DELAY"
+		fi
+		if test -n "$KBDOPT" ; then
+			echo -n "Keyboard: "
+			/bin/kbdrate $KBDOPT
+			rc_status -v1
+		fi
+	fi
+
+	# setleds
+	#
+	# Note: The file /var/run/numlock-on is used in ~/.xinitrc
+	#	to reflect the correct numlock state choosen by the
+	#	user even under X11
+	#
+	if test "$KBD_NUMLOCK" = "yes"; then
+		touch /var/run/numlock-on
+	elif test "$KBD_NUMLOCK" = "no"; then
+		rm -f /var/run/numlock-on
+	elif test "$KBD_NUMLOCK" = "bios"; then
+		if test -x /usr/sbin/hwinfo ; then
+		    /usr/sbin/hwinfo --bios | \
+		    while read line ; do
+			case "$line" in
+			Num\ Lock:\ on)  touch /var/run/numlock-on ;;
+			Num\ Lock:\ off) rm -f /var/run/numlock-on ;;
+			Caps\ Lock:)	 break
+			esac
+		    done
+		else
+		    echo "no /usr/sbin -> Numlock off."
+		    rm -f /var/run/numlock-on
+		fi
+	fi 
+	unset line
+
+	#
+	# Only change keyboard leds if setleds is in path
+	# 
+	type -p setleds &> /dev/null		|| return
+
+	if test -e /var/run/numlock-on ; then
+		LEDOPT="+num"
+	else
+		LEDOPT="-num"
+	fi
+	if test "$KBD_CAPSLOCK" = "yes"; then
+		LEDOPT="$LEDOPT +caps"
+	else
+		LEDOPT="$LEDOPT -caps"
+	fi  
+	if test "$KBD_SCRLOCK" = "yes"; then
+		LEDOPT="$LEDOPT +scroll"
+	else
+		LEDOPT="$LEDOPT -scroll"
+	fi  
+
+	#
+	# Only change keyboard leds if they will be switched
+	# on ... OR if they are switched on currently
+	#
+	if [[ $LEDOPT == *+* ]] ; then
+		touch /var/run/setleds-on
+	else
+		test -e /var/run/setleds-on	|| return
+		test -n "$LEDOPT"		|| return
+		rm -f /var/run/setleds-on
+	fi
+
+	for tty in $KBD_TTY; do
+		setleds -D $LEDOPT < $tty
+	done
+}
+#
+rc_reset
+case "$1" in
+    start|restart|reload|force-reload)
+
+	case "$1" in
+            start)
+		# don't do anything if we have this file.
+		# this means that initialization was already done.
+		# don't do it twice unless forced, it may annoy xdm and
+		# produce lots of error messages.
+		test -s /var/run/keymap && exit 0
+	    ;;
+	esac
+	
+
+	if test -z "$KEYTABLE"; then
+	    echo "No keyboard map to load"
+	else
+	    if test -z "$KEYMAP" || test ! -d "$KBDBASE" ; then
+		if test -r /etc/defkeymap.map ; then
+		    if test -n "$KEYMAP" ; then
+		    	echo "$KEYMAP is unvailable, using /etc/defkeymap.map instead."
+			if test -r /var/run/keymap ; then
+			    read cached < /etc/defkeymap.name
+			    if test "$KEYMAP" != "$cached" && test $K != "$cached" ; then
+			        echo "Warning: fallback differs: $cached"
+			    fi
+			fi
+		    else
+		    	echo "Can not find a keymap for ${KEYTABLE}, trying fallback."
+		    fi
+		    KEYMAP=/etc/defkeymap.map
+		else
+		    echo "Fallback /etc/defkeymap.map not there."
+		    echo "Can not find a keymap for ${KEYTABLE}, Exit."
+		    rc_failed
+		fi
+	    else
+		if test ! -e "$KEYMAP" ; then
+		    echo "Found more than one keymap ${KEYTABLE}"
+		    KEYMAP=$K
+		    echo "Using $KEYMAP."
+		    echo "If you want another one, please add complete path to"
+		    echo "KEYTABLE in /etc/sysconfig/keyboard."
+		fi
+	    fi
+	    rc_status && retmsg="`loadkeys -C "$KBD_TTY" $KEYMAP 2>&1`"
+	    if test $? -eq 0 && ( > /var/run/keymap ) > /dev/null 2>&1 ; then
+		echo "$KEYMAP"    > /var/run/keymap
+	    else
+		case "$RUNLEVEL" in
+		    S|N|1|\#) true ;;
+		    *) rc_failed ;;
+		esac
+	    fi
+	    echo "Loading keymap ${retmsg#Loading*${KBDBASE}/keymaps/}"
+	    rc_status -v1
+
+	    set_kbdrate
+	fi
+	
+	# Disable CAPS LOCK key if wanted
+	if test "$KBD_DISABLE_CAPS_LOCK" = "yes"; then
+		loadkeys -C "$KBD_TTY" disable.capslock >/dev/null 2>&1 || echo "Could not disable Caps Lock"
+	fi
+
+	# Load compose tables
+	case "$RUNLEVEL" in
+	    S|N|1|\#) COMPOSETABLE="" ;;
+	esac
+	if test ! -z "$COMPOSETABLE"; then
+		unset COMPOSELOADED COMPOSECLEAR
+		for name in $COMPOSETABLE; do
+			# Test for compose clear flag
+			if test "$name" = "-c" -o "$name" = "clear"; then
+				COMPOSECLEAR=-c
+				continue
+			fi
+			# Handle the first table differently ...
+			if test -z "$COMPOSELOADED"; then
+				echo -n "Loading compose table $name"
+				loadkeys -C "$KBD_TTY" $COMPOSECLEAR compose.$name >/dev/null 2>&1
+				rc_check
+				#if test $name = clear; then rc_reset; fi
+				COMPOSELOADED=1
+			else
+				echo -n " $name"
+				loadkeys -C "$KBD_TTY" compose.$name >/dev/null 2>&1
+				rc_check
+			fi
+		done
+		if test ! -z "$COMPOSELOADED"; then 
+			rc_status -v
+		fi
+	fi
+	
+
+	# Unicode mode	
+	if test -x /bin/kbd_mode ; then
+	    case $LOCALE_CHARMAP in
+		UTF-8)
+ 		    echo Start Unicode mode
+	            for tty in $KBD_TTY; do
+			# The chvt is not needed for SuSE kernels
+			test "$NON_SUSE_KERNEL" != "yes" || chvt ${tty#*tty}
+
+			# Tell the console output driver that the bytes
+			# arriving are UTF-8 encoded multibyte sequences.
+			echo -n -e '\033%G' > $tty
+
+			# Set the keyboard driver in Unicode mode.
+			# (Default is ASCII mode.)
+			# This really does nothing with the way normal
+			# keys are handled in the kernel. All it does is:
+			# - It is necessary for `dumpkeys' in order to
+			#   not drop U+XXXX entries from the keymaps.
+			# - It is necessary for `loadkeys' in order to
+			#   avoid warnings.
+			# - Unicode characters typed as Alt-x1 ... Alt-xn
+			#   (where x1,...,xn are digits on the numeric keypad)
+			#    will be emitted in UTF-8.
+			kbd_mode -u -C $tty
+			rc_status
+		    done
+	            ;;
+	        *)
+		    echo Stop Unicode mode
+		    for tty in $KBD_TTY; do
+			# The chvt is not needed for SuSE kernels
+			test "$NON_SUSE_KERNEL" != "yes" || chvt ${tty#*tty}
+
+			echo -n -e '\033%@' > $tty
+
+			kbd_mode -a -C $tty
+			rc_status
+    		    done
+	            ;;
+	    esac
+	    test "$NON_SUSE_KERNEL" != "yes" || chvt $FGCONS
+	    rc_status -v1
+	fi
+	
+	if test "$MACHINE" = "ps3" ; then
+		# do not mess up console
+		unset CONSOLE_FONT
+	fi
+	# setfont
+	if test -d ${KBDBASE}/consolefonts -a \
+		-n "$CONSOLE_FONT" -a "$CONSOLE_FONT" != "YAST_ASK"
+	then
+	    if test ! -z "$CONSOLE_UNICODEMAP"; then 
+		    UMAP="-u $CONSOLE_UNICODEMAP"
+	    fi
+	    if test ! -z "$CONSOLE_SCREENMAP"; then 
+		    SMAP="-m $CONSOLE_SCREENMAP"
+	    fi
+	    PRINTABLE_MAGIC="";
+	    if test -n "$CONSOLE_MAGIC" -a "$CONSOLE_MAGIC" != "none"; then
+		    case $CONSOLE_MAGIC in
+       			\(B)	PRINTABLE_MAGIC="G0:iso8859-1" ;;
+       			\(0)	PRINTABLE_MAGIC="G0:vt100" ;;
+       			\(U)	PRINTABLE_MAGIC="G0:ROM" ;;
+       			\(K)	PRINTABLE_MAGIC="G0:loadable" ;;
+       			\)B)	PRINTABLE_MAGIC="G1:iso8859-1" ;;
+       			\)0)	PRINTABLE_MAGIC="G1:vt100" ;;
+       			\)U)	PRINTABLE_MAGIC="G1:ROM" ;;
+       			\)K)	PRINTABLE_MAGIC="G1:loadable" ;;
+	       		*)	PRINTABLE_MAGIC="magic='$CONSOLE_MAGIC'" ;;
+		    esac
+		    CONSOLE_MAGIC="\033$CONSOLE_MAGIC"
+	    else
+		    CONSOLE_MAGIC="";
+	    fi
+	    if test -x /bin/setfont ; then
+		echo "Loading console font $CONSOLE_FONT $UMAP $SMAP $PRINTABLE_MAGIC"
+		for tty in $KBD_TTY; do
+		    # The chvt is not needed for SuSE kernels
+		    test "$NON_SUSE_KERNEL" != "yes" || chvt ${tty#*tty}
+
+		    /bin/setfont -C $tty $CONSOLE_FONT $UMAP $SMAP
+		    rc_status
+
+		    echo -en "$CONSOLE_MAGIC" > $tty
+		done
+		test "$NON_SUSE_KERNEL" != "yes" || chvt $FGCONS
+		rc_status -v1
+	    fi
+	fi
+
+	case "$RUNLEVEL" in
+	    S|N|1|\#) true ;;
+	    *)
+	        case $LOCALE_CHARMAP in
+		    UTF-8)
+		        # Change the keyboard mapping in such a way that the
+		        # non-ASCII keys produce UTF-8 encoded multibyte sequences
+			# instead of single bytes >= 0x80 in a legacy 8-bit encoding.
+		        ( dumpkeys | loadkeys -C "$KBD_TTY" --unicode ) > /dev/null 2>&1
+		        ;;
+		    *) 
+		        ;;
+		esac
+		dumpkeys=yes
+		if type -p cmp > /dev/null 2>&1 && \
+		   dumpkeys | cmp -s /etc/defkeymap.map
+		then
+		   dumpkeys=no
+		fi
+		if test "$dumpkeys" = "yes" ; then
+		    ( dumpkeys > /etc/defkeymap.map ) > /dev/null 2>&1
+		    if test ! -z "$KEYMAP" && test "$KEYMAP" != "/etc/defkeymap.map" ; then
+		        test ! -e "$KEYMAP" && KEYMAP=$K
+			echo $KEYMAP > /etc/defkeymap.name
+		    fi
+		fi
+	esac
+
+	;;
+    stop)
+	# enable start after stop.
+        echo -n "$0 stop"
+	rm -f /var/run/keymap
+	rc_status -v
+	;;
+    check|status)
+	if test -r /var/run/keymap ; then
+	    read current < /var/run/keymap
+	    echo "Keymap $current is loaded."
+	else
+	    rc_failed 3
+	fi
+	;;
+    *)
+	echo "Usage: $0 {start|stop|restart|reload|force-reload|status|check}"
+	exit 2
+	;;
+esac
+rc_exit

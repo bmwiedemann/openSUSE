@@ -1,0 +1,24 @@
+diff -Nur kbd-1.12-3/data/keymaps/mac/all/mac-de_CH.map kbd-1.12-4/data/keymaps/mac/all/mac-de_CH.map
+--- kbd-1.12-3/data/keymaps/mac/all/mac-de_CH.map	2004-02-26 22:39:18.000000000 +0100
++++ kbd-1.12-4/data/keymaps/mac/all/mac-de_CH.map	2004-02-26 22:48:31.000000000 +0100
+@@ -11,7 +11,7 @@
+ ! CtrlR 128 not used
+ 
+ ! plain,shift,command,control,alt,ctrl-alt
+-# from http://www.claudio.ch/Etc/pb-sg.kmap
++# from Claudio Nieder
+ # modified by olh@suse.de
+ 
+ alt_is_meta
+diff -Nur kbd-1.12-3/data/keymaps/mac/all/mac-fr_CH-latin1.map kbd-1.12-4/data/keymaps/mac/all/mac-fr_CH-latin1.map
+--- kbd-1.12-3/data/keymaps/mac/all/mac-fr_CH-latin1.map	2004-02-26 22:39:18.000000000 +0100
++++ kbd-1.12-4/data/keymaps/mac/all/mac-fr_CH-latin1.map	2004-02-26 22:48:31.000000000 +0100
+@@ -11,7 +11,7 @@
+ ! CtrlR 128 not used
+ 
+ ! plain,shift,command,control,alt,ctrl-alt
+-# from http://www.claudio.ch/Etc/pb-sg.kmap
++# from Claudio Nieder
+ # modified by olh@suse.de from mac-de_CH
+ 
+ alt_is_meta

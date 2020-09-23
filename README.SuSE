@@ -1,0 +1,83 @@
+Release info on the kbd utils
+=============================
+					Fri Feb 27 18:39:59 CET 2004, jw
+
+SuSE upgraded the kbd utils to 1.12 for the release of SuSE Linux 9.1.
+
+The choose-tty patch has been accepted upstream. Note that we used -c
+for selecting the console device, now it is -C
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SuSE upgraded the kbd utils to 1.08 for the release of SuSE Linux 9.0.
+
+Some of our patches to 1.06 have been integrated.
+
+Most of the changes from us to 1.03wip (SL 7.1 and 7.0) and 1.05 (SL 7.2,
+7.3) have been incorporated, so we can finally go with an almost unpatched
+kbd again. 
+
+Since 1.03a, there is support for fonts that have a width larger than
+8 pixels. This will only work with framebuffer support on most architectures
+though. Some fonts with 12x22 size are available as well, check
+/usr/share/kbd/consolefonts/.
+You probably want to use higher resolutions with such a large font, like
+1152x858. If you use fbset don't forget to set -vyres to a large value,
+otherwise your framebuffer's speed will be lower than it could.
+
+setfont has been patched to allow specifing the tty with -c where the
+changes should be applied to. This is used in the setup scripts.
+
+				Your SuSE team <feedback@suse.de>
+
+New handling of composition of characters
+=========================================
+Most of the fonts have much more characters than you can reach directly
+through the keyboard. To access all of them you may use showconsolefont, 
+deduce the decimal code and enter it by holding down <alt> and entering 
+the code via the keypad. There's a much better way, though:
+Most characters may be entered via composition. Many characters are just
+consisting of a standard character with some sort of accent or change.
+Such characters can be composed by composition. Just press the <compose>
+key, let it go again, enter the accent and then the letter.
+Some examples: (Assuming Iso-Latin-1/9 character set:)
+<compose> " a => ä
+<compose> , c => ç
+<compose> | S => $
+
+Support for composition is unfortunately not contained in most keymaps.
+Most lack two things:
+(a) The <compose> key is not mapped
+(b) The compose tables are not included
+
+In previous versions of SuSE Linux, some keytables have been hacked to
+include support for the <compose> key and to include compose tables.
+This has now been replaced by a more general solution:
+The kbd setup scripts uses another /etc/sysconfig/keyboard variable to
+determine which compose tables should be loaded and whether the compose key
+should be mapped: COMPOSETABLE.
+For all words listed there, loadkeys will be called with the argument
+compose.word. (Except for clear which sets a flag to clear the compose
+table.) Look at the compose.* files in /usr/share/kbd/keymaps/include/:
+(a) You find there two files for having the <compose> key mapped.
+(b) You find there compose tables which are suitable for different 
+    character sets.
+
+ad (a): winkeys:   The compose key will be mapped on the W*n menu key
+        shiftctrl: The compose key will be mapped to Shift Ctrl.
+        You can use both, if you like.
+ad (b): latin, latinX, latin1.add, 8859_X: Contains the compose 
+	combinations suitable for the respective character set. 
+	Many people will want to use latin1 or latin1.add. Just
+	using latin is also sort of an acceptable compromise for
+	many Latin character sets.
+	YOU MAY ONLY USE ONE OF THOSE.
+	If you want the combination of more than one table, you
+	have to create a file which includes what you want.
+
+Example: (/etc/sysconfig/keyboard)
+COMPOSETABLE="clear winkeys shiftctrl latin1.add"
+
+Please keep in mind, that all these settings only affect the console, 
+i.e. text mode.
+
+				Your SuSE team <feedback@suse.de>

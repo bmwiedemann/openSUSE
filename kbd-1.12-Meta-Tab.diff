@@ -1,0 +1,1048 @@
+diff -Nur kbd-1.12-2/data/keymaps/amiga/amiga-de.map kbd-1.12-3/data/keymaps/amiga/amiga-de.map
+--- kbd-1.12-2/data/keymaps/amiga/amiga-de.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/amiga/amiga-de.map	2004-02-26 22:39:53.000000000 +0100
+@@ -212,7 +212,7 @@
+ 	control keycode  64 = nul
+ 	alt     keycode  64 = Meta_space
+ keycode  65 = BackSpace
+-keycode  66 = Tab              Tab
++keycode  66 = Tab              Meta_Tab
+ 	alt     keycode  66 = Meta_Tab
+ keycode  67 = Return
+ keycode  68 = Return
+diff -Nur kbd-1.12-2/data/keymaps/amiga/amiga-us.map kbd-1.12-3/data/keymaps/amiga/amiga-us.map
+--- kbd-1.12-2/data/keymaps/amiga/amiga-us.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/amiga/amiga-us.map	2004-02-26 22:39:53.000000000 +0100
+@@ -159,7 +159,7 @@
+ 	control	keycode  64 = nul             
+ 	alt	keycode  64 = Meta_space      
+ keycode  65 = Delete           Delete           Delete           Delete           Delete           Meta_Delete      Delete          
+-keycode  66 = Tab              Tab             
++keycode  66 = Tab              Meta_Tab             
+ 	alt	keycode  66 = Meta_Tab        
+ keycode  67 = KP_Enter        
+ keycode  68 = Return          
+diff -Nur kbd-1.12-2/data/keymaps/atari/atari-se.map kbd-1.12-3/data/keymaps/atari/atari-se.map
+--- kbd-1.12-2/data/keymaps/atari/atari-se.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/atari/atari-se.map	2004-02-26 22:39:53.000000000 +0100
+@@ -67,7 +67,7 @@
+ 	alt     keycode  13 = Meta_equal      
+ 	shift   alt     keycode  13 = Meta_plus       
+ keycode  14 = Delete        Delete        Delete        Delete        Delete        Delete        Delete        Delete        Meta_Delete   Meta_Delete   Delete        Delete        Meta_Delete   Meta_Delete   Delete       Delete       
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt     keycode  15 = Meta_Tab        
+ 	shift   alt     keycode  15 = Meta_Tab        
+ keycode  16 = +q                +Q               
+diff -Nur kbd-1.12-2/data/keymaps/atari/atari-uk-falcon.map kbd-1.12-3/data/keymaps/atari/atari-uk-falcon.map
+--- kbd-1.12-2/data/keymaps/atari/atari-uk-falcon.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/atari/atari-uk-falcon.map	2004-02-26 22:39:53.000000000 +0100
+@@ -60,7 +60,7 @@
+ 	alt     keycode  13 = Meta_equal      
+ 	shift   alt     keycode  13 = Meta_plus       
+ keycode  14 = BackSpace        BackSpace        BackSpace        BackSpace        BackSpace        BackSpace        BackSpace        BackSpace        Meta_BackSpace   Meta_BackSpace   BackSpace        BackSpace        Meta_BackSpace   Meta_BackSpace   BackSpace        BackSpace       
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt     keycode  15 = Meta_Tab        
+ 	shift   alt     keycode  15 = Meta_Tab        
+ keycode  16 = +q                +Q               
+diff -Nur kbd-1.12-2/data/keymaps/atari/atari-us.map kbd-1.12-3/data/keymaps/atari/atari-us.map
+--- kbd-1.12-2/data/keymaps/atari/atari-us.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/atari/atari-us.map	2004-02-26 22:39:53.000000000 +0100
+@@ -60,7 +60,7 @@
+ 	shift	alt	keycode  14 = Meta_BackSpace  
+ 	control	alt	keycode  14 = Meta_BackSpace  
+ 	shift	control	alt	keycode  14 = Meta_BackSpace  
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt	keycode  15 = Meta_Tab        
+ 	shift	alt	keycode  15 = Meta_Tab        
+ keycode  16 = +q                +Q                +q                Control_q       
+diff -Nur kbd-1.12-2/data/keymaps/i386/azerty/azerty.map kbd-1.12-3/data/keymaps/i386/azerty/azerty.map
+--- kbd-1.12-2/data/keymaps/i386/azerty/azerty.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/azerty/azerty.map	2004-02-26 22:39:53.000000000 +0100
+@@ -32,7 +32,7 @@
+ 	control keycode  13 = Control_underscore
+ 	control shift keycode  13 = Control_underscore
+ keycode  14 = Delete           Delete          
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ keycode  26 = dead_circumflex  dead_diaeresis   bracketleft     
+ 	control keycode  26 = Escape          
+ 	alt     keycode  26 = bracketleft     
+diff -Nur kbd-1.12-2/data/keymaps/i386/azerty/be-latin1.map kbd-1.12-3/data/keymaps/i386/azerty/be-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/azerty/be-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/azerty/be-latin1.map	2004-02-26 22:39:53.000000000 +0100
+@@ -39,6 +39,7 @@
+ keycode  13 = minus            underscore
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = dead_circumflex     dead_diaeresis     bracketleft
+ 	control keycode  26 = Escape
+ 	alt     keycode  26 = Meta_bracketleft
+diff -Nur kbd-1.12-2/data/keymaps/i386/azerty/fr-latin1.map kbd-1.12-3/data/keymaps/i386/azerty/fr-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/azerty/fr-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/azerty/fr-latin1.map	2004-02-26 22:39:53.000000000 +0100
+@@ -39,7 +39,7 @@
+ 	alt     keycode  13 = Meta_equal      
+ keycode  14 = Delete           Delete          
+ 	alt     keycode  14 = Meta_Delete     
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt     keycode  15 = Meta_Tab        
+ keycode  26 = dead_circumflex  dead_diaeresis  
+ 	control keycode  26 = Escape          
+diff -Nur kbd-1.12-2/data/keymaps/i386/azerty/fr-latin9.map kbd-1.12-3/data/keymaps/i386/azerty/fr-latin9.map
+--- kbd-1.12-2/data/keymaps/i386/azerty/fr-latin9.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/azerty/fr-latin9.map	2004-02-26 22:39:53.000000000 +0100
+@@ -169,6 +169,7 @@
+         altgr   control keycode 14 = KeyboardSignal
+ 
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ 	control keycode  15 = Meta_Tab
+ 	alt     keycode	 15 = Last_Console
+ 
+diff -Nur kbd-1.12-2/data/keymaps/i386/azerty/fr-pc.map kbd-1.12-3/data/keymaps/i386/azerty/fr-pc.map
+--- kbd-1.12-2/data/keymaps/i386/azerty/fr-pc.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/azerty/fr-pc.map	2004-02-26 22:39:53.000000000 +0100
+@@ -44,7 +44,7 @@
+ 	alt     keycode  13 = Meta_equal      
+ keycode  14 = Delete           Delete          
+ 	alt     keycode  14 = Meta_Delete     
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt     keycode  15 = Meta_Tab        
+ keycode  26 = dead_circumflex  dead_diaeresis
+ 	control keycode  26 = Escape          
+diff -Nur kbd-1.12-2/data/keymaps/i386/azerty/fr.map kbd-1.12-3/data/keymaps/i386/azerty/fr.map
+--- kbd-1.12-2/data/keymaps/i386/azerty/fr.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/azerty/fr.map	2004-02-26 22:39:53.000000000 +0100
+@@ -39,7 +39,7 @@
+ 	alt     keycode  13 = Meta_equal      
+ keycode  14 = Delete           Delete          
+ 	alt     keycode  14 = Meta_Delete     
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt     keycode  15 = Meta_Tab        
+ keycode  26 = asciicircum      less            
+ 	control keycode  26 = Escape          
+diff -Nur kbd-1.12-2/data/keymaps/i386/azerty/wangbe2.map kbd-1.12-3/data/keymaps/i386/azerty/wangbe2.map
+--- kbd-1.12-2/data/keymaps/i386/azerty/wangbe2.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/azerty/wangbe2.map	2004-02-26 22:39:53.000000000 +0100
+@@ -81,7 +81,7 @@
+ 		Meta_minus 	Meta_underscore 	Meta_backslash 
+ keycode  14 = Delete           Delete          
+ 	alt 	keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt 	keycode  15 = Meta_Tab
+ keycode  26 = dead_circumflex  dead_diaeresis   bracketleft   	Escape          
+ 	Control AltGr 	keycode 26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/dvorak/dvorak.map kbd-1.12-3/data/keymaps/i386/dvorak/dvorak.map
+--- kbd-1.12-2/data/keymaps/i386/dvorak/dvorak.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/dvorak/dvorak.map	2004-02-26 22:39:53.000000000 +0100
+@@ -22,6 +22,7 @@
+ keycode  13 = bracketright     braceright       asciitilde      Control_bracketright
+ keycode  14 = Delete           
+ keycode  15 = Tab              
++	shift	keycode  15 = Meta_Tab
+ keycode  16 = apostrophe       quotedbl        
+ 	control keycode  16 = Control_g       
+ keycode  17 = comma            less            
+diff -Nur kbd-1.12-2/data/keymaps/i386/fgGIod/tr_f-latin5.map kbd-1.12-3/data/keymaps/i386/fgGIod/tr_f-latin5.map
+--- kbd-1.12-2/data/keymaps/i386/fgGIod/tr_f-latin5.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/fgGIod/tr_f-latin5.map	2004-02-26 22:39:53.000000000 +0100
+@@ -53,7 +53,7 @@
+ 	alt     keycode  13 = Meta_equal      
+ keycode  14 = BackSpace           Delete          
+ 	alt     keycode  14 = Meta_Delete     
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt     keycode  15 = Meta_Tab        
+ keycode  16 = +f	+F	+q	+Q               
+ keycode  17 = +g	+G      +w	+W         
+diff -Nur kbd-1.12-2/data/keymaps/i386/fgGIod/trf.map kbd-1.12-3/data/keymaps/i386/fgGIod/trf.map
+--- kbd-1.12-2/data/keymaps/i386/fgGIod/trf.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/fgGIod/trf.map	2004-02-26 22:39:53.000000000 +0100
+@@ -48,6 +48,7 @@
+ keycode  14 = Delete	Delete
+ 	alt       keycode  14 = Meta_Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ 	alt       keycode  15 = Meta_Tab
+ keycode  16 = f
+ keycode  17 = g
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/bg-cp1251.map kbd-1.12-3/data/keymaps/i386/qwerty/bg-cp1251.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/bg-cp1251.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/bg-cp1251.map	2004-02-26 22:42:59.000000000 +0100
+@@ -53,6 +53,7 @@
+ 	altgr	control keycode  14 = BackSpace
+ 	altgr	alt	keycode  14 = Meta_Delete
+ keycode  15 =	Tab		Tab		Tab		Tab
++	shift	keycode  15 = Meta_Tab
+ 	alt	keycode  15 = Meta_Tab
+ 	altgr	alt	keycode  15 = Meta_Tab
+ keycode  16 =	q		Q		+255		+223           \
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/bg_bds-cp1251.map kbd-1.12-3/data/keymaps/i386/qwerty/bg_bds-cp1251.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/bg_bds-cp1251.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/bg_bds-cp1251.map	2004-02-26 22:43:29.000000000 +0100
+@@ -88,6 +88,8 @@
+ 	altgr	control	keycode  14 = BackSpace       
+ 	shift	altgr	control	keycode  14 = BackSpace       
+ keycode  15 = Tab             
++	shift	keycode  15 = Meta_Tab
++ 	alt     keycode  15 = Meta_Tab        
+ keycode  16 = +q               
+ 	shift	keycode  16 = +Q               
+ 	altgr	keycode  16 = comma
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/br-abnt.map kbd-1.12-3/data/keymaps/i386/qwerty/br-abnt.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/br-abnt.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/br-abnt.map	2004-02-26 22:39:53.000000000 +0100
+@@ -43,7 +43,7 @@
+ keycode  14 = Delete           Delete          
+ 	control	keycode  14 = BackSpace       
+ 	alt	keycode  14 = Meta_Delete     
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt	keycode  15 = Meta_Tab        
+ keycode  16 = q               
+ keycode  17 = w               
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/br-abnt2.map kbd-1.12-3/data/keymaps/i386/qwerty/br-abnt2.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/br-abnt2.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/br-abnt2.map	2004-02-26 22:39:53.000000000 +0100
+@@ -35,6 +35,7 @@
+ keycode  14 = Delete
+ 	control		keycode  14 = BackSpace       
+ keycode  15 = Tab
++	shift   keycode  15 = Meta_Tab        
+ keycode  26 = dead_acute dead_grave       
+ 	control		keycode  26 = Escape          
+ keycode  27 = bracketleft braceleft ordfeminine 
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/br-latin1-abnt2.map kbd-1.12-3/data/keymaps/i386/qwerty/br-latin1-abnt2.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/br-latin1-abnt2.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/br-latin1-abnt2.map	2004-02-26 22:39:53.000000000 +0100
+@@ -39,6 +39,7 @@
+ keycode  13 = equal		plus		section            
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = dead_acute	dead_grave       
+ 	control	keycode  26 = Escape          
+ keycode  27 = bracketleft	braceleft	ordfeminine
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/br-latin1-us.map kbd-1.12-3/data/keymaps/i386/qwerty/br-latin1-us.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/br-latin1-us.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/br-latin1-us.map	2004-02-26 22:39:53.000000000 +0100
+@@ -36,6 +36,7 @@
+ keycode  13 = equal		plus		section            
+ keycode  14 = Delete
+ keycode  15 = Tab             
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = bracketleft	braceleft       
+ 	control	keycode  26 = Escape          
+ keycode  27 = bracketright	braceright	asciitilde	Control_bracketright 
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/by.map kbd-1.12-3/data/keymaps/i386/qwerty/by.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/by.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/by.map	2004-02-26 22:39:53.000000000 +0100
+@@ -92,7 +92,7 @@
+ 		Meta_Delete	Meta_Delete	Meta_Delete	\
+ 		Delete		Delete		Delete		\
+ 		Meta_Delete	Meta_Delete	Meta_Delete
+-keycode  15 =	Tab		Tab		Tab		\
++keycode  15 =	Tab		Meta_Tab		Tab		\
+ 		Meta_Tab	Meta_Tab	Meta_Tab	\
+ 		Tab		Tab		Tab		\
+ 		Meta_Tab	Meta_Tab	Meta_Tab	\
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/cf.map kbd-1.12-3/data/keymaps/i386/qwerty/cf.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/cf.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/cf.map	2004-02-26 22:39:53.000000000 +0100
+@@ -58,7 +58,7 @@
+ keycode  14 = Delete           Delete
+ 	control	keycode  14 = BackSpace
+ 	alt	keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt	keycode  15 = Meta_Tab
+ keycode  26 = dead_circumflex  dead_circumflex  bracketleft
+ 	control	keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/cz-cp1250.map kbd-1.12-3/data/keymaps/i386/qwerty/cz-cp1250.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/cz-cp1250.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/cz-cp1250.map	2004-02-26 22:39:53.000000000 +0100
+@@ -30,7 +30,7 @@
+ keycode 12 = minus underscore equal percent Control_underscore Control_underscore Control_underscore Control_underscore Meta_minus Meta_minus Meta_minus Meta_minus  
+ keycode 13 = equal plus dead_acute dead_circumflex VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_equal Meta_equal Meta_equal Meta_equal  
+ keycode 14 = Delete Delete Delete Delete VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Delete Meta_Delete Meta_Delete Meta_Delete  
+-keycode 15 = Tab Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab  
++keycode 15 = Tab Meta_Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab  
+ keycode 16 = q 
+ keycode 17 = w 
+ keycode 18 = e
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/cz-lat2-prog.map kbd-1.12-3/data/keymaps/i386/qwerty/cz-lat2-prog.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/cz-lat2-prog.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/cz-lat2-prog.map	2004-02-26 22:39:53.000000000 +0100
+@@ -35,7 +35,7 @@
+ keycode 12 = minus underscore minus underscore Control_underscore Control_underscore Control_underscore Control_underscore Meta_minus Meta_minus Meta_minus Meta_minus
+ keycode 13 = equal plus dead_acute dead_circumflex VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_equal Meta_equal Meta_equal Meta_equal
+ keycode 14 = Delete Delete Delete Delete VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Delete Meta_Delete Meta_Delete Meta_Delete
+-keycode 15 = Tab Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab
++keycode 15 = Tab Meta_Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab
+ keycode 16 = q
+ keycode 17 = w
+ keycode 18 = e
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/cz-lat2.map kbd-1.12-3/data/keymaps/i386/qwerty/cz-lat2.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/cz-lat2.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/cz-lat2.map	2004-02-26 22:39:53.000000000 +0100
+@@ -32,7 +32,7 @@
+ keycode 12 = minus underscore equal percent Control_underscore Control_underscore Control_underscore Control_underscore Meta_minus Meta_minus Meta_minus Meta_minus
+ keycode 13 = equal plus dead_acute dead_circumflex VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_equal Meta_equal Meta_equal Meta_equal
+ keycode 14 = Delete Delete Delete Delete VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Delete Meta_Delete Meta_Delete Meta_Delete
+-keycode 15 = Tab Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab
++keycode 15 = Tab Meta_Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab
+ keycode 16 = q
+ keycode 17 = w
+ keycode 18 = e
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/cz.map kbd-1.12-3/data/keymaps/i386/qwerty/cz.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/cz.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/cz.map	2004-02-26 22:39:53.000000000 +0100
+@@ -323,7 +323,7 @@
+               Meta_Delete               VoidSymbol   VoidSymbol   VoidSymbol  \
+               VoidSymbol   VoidSymbol   VoidSymbol   VoidSymbol   VoidSymbol  \
+               VoidSymbol   VoidSymbol   VoidSymbol
+-keycode  15 = Tab          Tab          VoidSymbol   VoidSymbol   VoidSymbol  \
++keycode  15 = Tab          Meta_Tab          VoidSymbol   VoidSymbol   VoidSymbol  \
+               VoidSymbol   VoidSymbol   VoidSymbol   Meta_Tab     Meta_Tab    \
+               VoidSymbol   VoidSymbol   VoidSymbol   VoidSymbol   VoidSymbol  \
+               VoidSymbol   VoidSymbol   VoidSymbol   VoidSymbol   VoidSymbol  \
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/defkeymap.map kbd-1.12-3/data/keymaps/i386/qwerty/defkeymap.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/defkeymap.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/defkeymap.map	2004-02-26 22:39:53.000000000 +0100
+@@ -44,7 +44,7 @@
+ keycode  14 = Delete           Delete
+ 	control	keycode  14 = BackSpace
+ 	alt	keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt	keycode  15 = Meta_Tab
+ keycode  16 = q
+ keycode  17 = w
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/defkeymap_V1.0.map kbd-1.12-3/data/keymaps/i386/qwerty/defkeymap_V1.0.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/defkeymap_V1.0.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/defkeymap_V1.0.map	2004-02-26 22:39:53.000000000 +0100
+@@ -37,7 +37,7 @@
+ 	alt	keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete
+ 	alt	keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt	keycode  15 = Meta_Tab
+ keycode  16 = q
+ keycode  17 = w
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/dk-latin1.map kbd-1.12-3/data/keymaps/i386/qwerty/dk-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/dk-latin1.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/dk-latin1.map	2004-02-26 22:39:53.000000000 +0100
+@@ -45,7 +45,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 = +aring            +Aring
+ 	control keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/dk.map kbd-1.12-3/data/keymaps/i386/qwerty/dk.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/dk.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/dk.map	2004-02-26 22:39:53.000000000 +0100
+@@ -45,7 +45,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 = +aring            +Aring
+ 	control keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/emacs.map kbd-1.12-3/data/keymaps/i386/qwerty/emacs.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/emacs.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/emacs.map	2004-02-26 22:39:53.000000000 +0100
+@@ -42,6 +42,7 @@
+ keycode  13 = equal            plus
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = bracketleft      braceleft
+ 	control	keycode  26 = Escape
+ keycode  27 = bracketright     braceright
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/emacs2.map kbd-1.12-3/data/keymaps/i386/qwerty/emacs2.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/emacs2.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/emacs2.map	2004-02-26 22:39:53.000000000 +0100
+@@ -31,6 +31,7 @@
+ keycode  13 = equal            plus
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = bracketleft      braceleft
+ 	control	keycode  26 = Escape
+ keycode  27 = bracketright     braceright
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/es-cp850.map kbd-1.12-3/data/keymaps/i386/qwerty/es-cp850.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/es-cp850.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/es-cp850.map	2004-02-26 22:39:53.000000000 +0100
+@@ -34,6 +34,7 @@
+ 	alt keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete           Delete           Control_underscore Delete           Meta_Delete      Delete           Delete          
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = dead_grave       dead_circumflex  bracketleft      Escape           VoidSymbol       Meta_bracketleft
+ keycode  27 = plus             asterisk         bracketright     Control_bracketright VoidSymbol       Meta_bracketright
+ keycode  28 = Return
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/es.map kbd-1.12-3/data/keymaps/i386/qwerty/es.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/es.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/es.map	2004-02-26 22:39:54.000000000 +0100
+@@ -50,6 +50,7 @@
+ 	control keycode  14 = Control_underscore
+ 	alt     keycode  14 = Meta_Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ !keycode  26 =   dead_grave    asciicircum      bracketleft
+ keycode  26 =   dead_grave    dead_circumflex      bracketleft
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/et.map kbd-1.12-3/data/keymaps/i386/qwerty/et.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/et.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/et.map	2004-02-26 22:39:54.000000000 +0100
+@@ -36,7 +36,7 @@
+ keycode  13 = dead_acute dead_grave dead_acute dead_grave
+ keycode  14 = Delete Delete
+ 	control keycode 14 = BackSpace
+-keycode  15 = Tab Tab
++keycode  15 = Tab Meta_Tab
+ keycode  18 = +e +E euro euro Control_e Control_e
+ keycode  26 = +udiaeresis +Udiaeresis +udiaeresis +Udiaeresis Escape
+ keycode  27 = +otilde +Otilde section section Control_bracketright
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/fi-latin1.map kbd-1.12-3/data/keymaps/i386/qwerty/fi-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/fi-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/fi-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -65,6 +65,7 @@
+ 	alt shift keycode 13 = Meta_grave
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = +aring           +Aring
+ 	control keycode  26 = Escape
+ 	alt     keycode  26 = Meta_bracketleft
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/fi-latin9.map kbd-1.12-3/data/keymaps/i386/qwerty/fi-latin9.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/fi-latin9.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/fi-latin9.map	2004-02-26 22:39:54.000000000 +0100
+@@ -69,6 +69,7 @@
+ 	alt shift keycode 13 = Meta_grave
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = +aring           +Aring           +oe
+ 	control keycode  26 = Escape
+ 	alt     keycode  26 = Meta_bracketleft
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/fi.map kbd-1.12-3/data/keymaps/i386/qwerty/fi.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/fi.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/fi.map	2004-02-26 22:39:54.000000000 +0100
+@@ -41,6 +41,7 @@
+ keycode  14 = Delete
+ 	alt     keycode  14 = Meta_Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 = braceright       bracketright
+ 	control keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/gr-pc.map kbd-1.12-3/data/keymaps/i386/qwerty/gr-pc.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/gr-pc.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/gr-pc.map	2004-02-26 22:39:54.000000000 +0100
+@@ -96,7 +96,7 @@
+ 	altgr   keycode  14 = Delete
+ 	shift altgr keycode 14 = Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	altgr   keycode  15 = Tab
+ 	shift altgr keycode 15 = Tab
+ 	alt     keycode  15 = Meta_Tab
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/gr.map kbd-1.12-3/data/keymaps/i386/qwerty/gr.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/gr.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/gr.map	2004-02-26 22:39:54.000000000 +0100
+@@ -77,7 +77,7 @@
+ keycode  14 = Delete           Delete
+ 	control	keycode  14 = BackSpace
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  16 = q
+ keycode  17 = w
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/il-heb.map kbd-1.12-3/data/keymaps/i386/qwerty/il-heb.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/il-heb.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/il-heb.map	2004-02-26 22:39:54.000000000 +0100
+@@ -37,7 +37,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete   Delete   Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab      Tab  Tab
++keycode  15 = Tab              Meta_Tab      Tab  Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  16 = +q                +Q                slash         slash              Control_q Control_q  Control_q Control_q
+ keycode  17 = +w                +W                apostrophe  apostrophe             Control_w Control_w  Control_w Control_w
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/il-phonetic.map kbd-1.12-3/data/keymaps/i386/qwerty/il-phonetic.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/il-phonetic.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/il-phonetic.map	2004-02-26 22:39:54.000000000 +0100
+@@ -36,7 +36,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  16 = +q                +Q                qof              qof              Control_q
+ keycode  17 = +w                +W                vav              vav              Control_w
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/is-latin1.map kbd-1.12-3/data/keymaps/i386/qwerty/is-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/is-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/is-latin1.map	2004-02-26 22:41:14.000000000 +0100
+@@ -45,6 +45,8 @@
+ keycode  13 = minus            underscore       hyphen
+ keycode  14 = Delete           Delete           Meta_Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
++ 	alt     keycode  15 = Meta_Tab
+ keycode  16 = +q                +Q                at
+ 	control keycode  16 = Control_q
+ #	alt     keycode  16 = at
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/it.map kbd-1.12-3/data/keymaps/i386/qwerty/it.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/it.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/it.map	2004-02-26 22:39:54.000000000 +0100
+@@ -82,7 +82,7 @@
+ keycode  14 = Delete           Delete
+ 	control keycode  14 = Control_underscore
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  16 = q
+ keycode  17 = w
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/it2.map kbd-1.12-3/data/keymaps/i386/qwerty/it2.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/it2.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/it2.map	2004-02-26 22:39:54.000000000 +0100
+@@ -85,7 +85,7 @@
+ 	alt shift keycode 13 = Meta_asciicircum
+ keycode  14 = Delete           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  16 = q                Q
+ 	control keycode  16 = Control_q
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/jp106.map kbd-1.12-3/data/keymaps/i386/qwerty/jp106.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/jp106.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/jp106.map	2004-02-26 22:39:54.000000000 +0100
+@@ -32,6 +32,7 @@
+ keycode  14 = Delete
+ 	control	keycode  14 = BackSpace
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = at               grave
+ 	control	keycode  26 = nul
+ keycode  27 = bracketleft      braceleft
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/la-latin1.map kbd-1.12-3/data/keymaps/i386/qwerty/la-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/la-latin1.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/la-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -36,6 +36,7 @@
+ 	control	keycode  14 = BackSpace
+ 	alt     keycode  14 = Meta_BackSpace
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = dead_acute       dead_diaeresis
+ keycode  27 = plus             asterisk         asciitilde
+ keycode  28 = Return
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/lt.baltic.map kbd-1.12-3/data/keymaps/i386/qwerty/lt.baltic.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/lt.baltic.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/lt.baltic.map	2004-02-26 22:39:54.000000000 +0100
+@@ -38,7 +38,7 @@
+ keycode  12 = minus            underscore        underscore      nul            nul           nul            minus
+ keycode  13 = +0xFE          +0xDE           plus            nul            nul           nul            equal
+ keycode  14 = Delete           Delete          
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ keycode  16 = q               
+ keycode  17 = w               
+ keycode  18 = e               
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/mk0.map kbd-1.12-3/data/keymaps/i386/qwerty/mk0.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/mk0.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/mk0.map	2004-02-26 22:39:54.000000000 +0100
+@@ -53,6 +53,7 @@
+ keycode 13 = equal plus equal plus
+ keycode 14 = Delete Delete Delete Delete BackSpace
+ keycode 15 = Tab
++	shift	keycode 15 = Meta_Tab
+ keycode 16 = +q +Q U+0459 U+0409 Control_q Control_q Control_q Control_q
+ keycode 17 = +w +W U+045a U+040a Control_w Control_w Control_w Control_w
+ keycode 18 = +e +E U+0435 U+0415 Control_e Control_e Control_e Control_e
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/nl.map kbd-1.12-3/data/keymaps/i386/qwerty/nl.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/nl.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/nl.map	2004-02-26 22:39:54.000000000 +0100
+@@ -50,6 +50,7 @@
+ keycode  14 = Delete
+   control       keycode  14 = BackSpace
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = dead_diaeresis	dead_circumflex		circumflex
+   control      keycode  26 = Escape
+ keycode  27 = asterisk		bar
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/nl2.map kbd-1.12-3/data/keymaps/i386/qwerty/nl2.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/nl2.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/nl2.map	2004-02-26 22:39:54.000000000 +0100
+@@ -38,6 +38,7 @@
+ keycode  13 = degree           asciitilde        dead_cedilla
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  18 = e                E                 euro
+ keycode  19 = r                R                 paragraph
+ keycode  26 = dead_diaeresis   dead_circumflex
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/no.map kbd-1.12-3/data/keymaps/i386/qwerty/no.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/no.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/no.map	2004-02-26 22:39:54.000000000 +0100
+@@ -41,6 +41,7 @@
+ keycode  14 = Delete
+ 	alt     keycode  14 = Meta_Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 = braceright       bracketright
+ 	control keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/pl.map kbd-1.12-3/data/keymaps/i386/qwerty/pl.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/pl.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/pl.map	2004-02-26 22:39:54.000000000 +0100
+@@ -48,6 +48,7 @@
+ keycode  14 = Delete
+ 	alt     keycode  14 = Meta_Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  16 = q
+ keycode  17 = w
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/pl2.map kbd-1.12-3/data/keymaps/i386/qwerty/pl2.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/pl2.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/pl2.map	2004-02-26 22:39:54.000000000 +0100
+@@ -60,7 +60,7 @@
+ 	alt		keycode 14 = Meta_Delete
+ 	alt shift	keycode 14 = Meta_Delete
+ 	control		keycode 14 = Meta_Delete
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt		keycode 15 = Meta_Tab        
+ 	alt shift	keycode 15 = Meta_Tab
+ 	AltGr		keycode 15 = Meta_Tab
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/pt-latin1.map kbd-1.12-3/data/keymaps/i386/qwerty/pt-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/pt-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/pt-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -38,6 +38,7 @@
+ 	alt	keycode  13 = Meta_equal
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = plus             asterisk         dead_diaeresis
+ 	control keycode  26 = Escape
+ 	alt	keycode  26 = Meta_bracketleft
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/pt-latin9.map kbd-1.12-3/data/keymaps/i386/qwerty/pt-latin9.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/pt-latin9.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/pt-latin9.map	2004-02-26 22:39:54.000000000 +0100
+@@ -34,6 +34,7 @@
+ 	alt	keycode  13 = Meta_equal
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  18 = e		       E		euro		cent
+ keycode  26 = plus             asterisk         dead_diaeresis
+ 	control keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/ro_win.map kbd-1.12-3/data/keymaps/i386/qwerty/ro_win.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/ro_win.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/ro_win.map	2004-02-26 22:39:54.000000000 +0100
+@@ -26,7 +26,7 @@
+ keycode  12 = minus            underscore       backslash	backslash	Control_underscore Control_underscore
+ keycode  13 = equal            plus
+ keycode  14 = Delete		Delete		Delete
+-keycode  15 = Tab		Tab		Tab
++keycode  15 = Tab		Meta_Tab		Tab
+ keycode  26 = bracketleft      braceleft
+ 	control	keycode  26 = Escape
+ keycode  27 = bracketright     braceright       asciitilde       asciitilde	Control_bracketright
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/sk-prog-qwerty.map kbd-1.12-3/data/keymaps/i386/qwerty/sk-prog-qwerty.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/sk-prog-qwerty.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/sk-prog-qwerty.map	2004-02-26 22:39:54.000000000 +0100
+@@ -40,7 +40,7 @@
+ keycode 12 = minus underscore minus underscore Control_underscore Control_underscore Control_underscore Control_underscore Meta_minus Meta_minus Meta_minus Meta_minus  
+ keycode 13 = equal plus dead_acute dead_circumflex VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_equal Meta_equal Meta_equal Meta_equal  
+ keycode 14 = Delete Delete Delete Delete VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Delete Meta_Delete Meta_Delete Meta_Delete  
+-keycode 15 = Tab Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab  
++keycode 15 = Tab Meta_Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab  
+ keycode 26 = bracketleft braceleft bracketleft braceleft Escape VoidSymbol Escape VoidSymbol Meta_bracketleft Meta_bracketleft Meta_bracketleft Meta_bracketleft 
+ keycode 27 = bracketright braceright bracketright braceright Control_bracketright VoidSymbol Control_bracketright VoidSymbol Meta_bracketright Meta_bracketright Meta_bracketright Meta_bracketright 
+ keycode 28 = Return
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/sk-qwerty.map kbd-1.12-3/data/keymaps/i386/qwerty/sk-qwerty.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/sk-qwerty.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/sk-qwerty.map	2004-02-26 22:39:54.000000000 +0100
+@@ -44,6 +44,7 @@
+ keycode 13 = equal plus dead_acute dead_circumflex
+ keycode 14 = Delete
+ keycode 15 = Tab
++	shift	keycode 15 = Meta_Tab
+ keycode 26 = bracketleft braceleft uacute slash Escape
+ keycode 27 = bracketright braceright adiaeresis parenleft Control_bracketright
+ keycode 28 = Return 
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/sv-latin1.map kbd-1.12-3/data/keymaps/i386/qwerty/sv-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/sv-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/sv-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -52,6 +52,7 @@
+ keycode  14 = Delete
+ 	alt     keycode  14 = Meta_Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 = +aring          +Aring
+ 	control keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/tr_q-latin5.map kbd-1.12-3/data/keymaps/i386/qwerty/tr_q-latin5.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/tr_q-latin5.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/tr_q-latin5.map	2004-02-26 22:39:54.000000000 +0100
+@@ -51,7 +51,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = BackSpace           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  16 = q
+ keycode  17 = w
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/tralt.map kbd-1.12-3/data/keymaps/i386/qwerty/tralt.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/tralt.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/tralt.map	2004-02-26 22:39:54.000000000 +0100
+@@ -49,6 +49,7 @@
+ keycode  14 = Delete
+ 	alt     keycode  14 = Meta_Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  16 = q
+ keycode  17 = w
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/trq.map kbd-1.12-3/data/keymaps/i386/qwerty/trq.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/trq.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/trq.map	2004-02-26 22:39:54.000000000 +0100
+@@ -54,6 +54,7 @@
+ keycode  14 = Delete
+ 	alt       keycode  14 = Meta_Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ 	alt       keycode  15 = Meta_Tab
+ keycode  16 = q
+ 	altgr keycode 16 = at
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/ua-utf-ws.map kbd-1.12-3/data/keymaps/i386/qwerty/ua-utf-ws.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/ua-utf-ws.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/ua-utf-ws.map	2004-02-26 22:39:54.000000000 +0100
+@@ -281,7 +281,7 @@
+ 	shift control ctrll ctrlr keycode 14 = BackSpace
+ 	alt ctrll ctrlr keycode 14 = Meta_Delete
+ 	shift alt ctrll ctrlr keycode 14 = Meta_Delete
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt	keycode  15 = Meta_Tab        
+ 	ctrlr	keycode 15 = Tab
+ 	shift ctrlr keycode 15 = Tab
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/ua-utf.map kbd-1.12-3/data/keymaps/i386/qwerty/ua-utf.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/ua-utf.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/ua-utf.map	2004-02-26 22:39:54.000000000 +0100
+@@ -271,7 +271,7 @@
+ 	shift control ctrll ctrlr keycode 14 = BackSpace
+ 	alt ctrll ctrlr keycode 14 = Meta_Delete
+ 	shift alt ctrll ctrlr keycode 14 = Meta_Delete
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt	keycode  15 = Meta_Tab        
+ 	ctrlr	keycode 15 = Tab
+ 	shift ctrlr keycode 15 = Tab
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/ua-ws.map kbd-1.12-3/data/keymaps/i386/qwerty/ua-ws.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/ua-ws.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/ua-ws.map	2004-02-26 22:39:54.000000000 +0100
+@@ -281,7 +281,7 @@
+ 	shift control ctrll ctrlr keycode 14 = BackSpace
+ 	alt ctrll ctrlr keycode 14 = Meta_Delete
+ 	shift alt ctrll ctrlr keycode 14 = Meta_Delete
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt	keycode  15 = Meta_Tab        
+ 	ctrlr	keycode 15 = Tab
+ 	shift ctrlr keycode 15 = Tab
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/ua.map kbd-1.12-3/data/keymaps/i386/qwerty/ua.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/ua.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/ua.map	2004-02-26 22:39:54.000000000 +0100
+@@ -270,7 +270,7 @@
+ 	shift control ctrll ctrlr keycode 14 = BackSpace
+ 	alt ctrll ctrlr keycode 14 = Meta_Delete
+ 	shift alt ctrll ctrlr keycode 14 = Meta_Delete
+-keycode  15 = Tab              Tab             
++keycode  15 = Tab              Meta_Tab             
+ 	alt	keycode  15 = Meta_Tab        
+ 	ctrlr	keycode 15 = Tab
+ 	shift ctrlr keycode 15 = Tab
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/uk.map kbd-1.12-3/data/keymaps/i386/qwerty/uk.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/uk.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/uk.map	2004-02-26 22:39:54.000000000 +0100
+@@ -31,6 +31,7 @@
+ keycode  14 = Delete
+ 	control	keycode  14 = Control_underscore
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = bracketleft      braceleft
+ 	control	keycode  26 = Escape
+ keycode  27 = bracketright     braceright       asciitilde       Control_bracketright
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/us-acentos.map kbd-1.12-3/data/keymaps/i386/qwerty/us-acentos.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/us-acentos.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/us-acentos.map	2004-02-26 22:39:54.000000000 +0100
+@@ -44,6 +44,7 @@
+ 	alt	keycode  14 = Meta_Delete     
+ keycode  15 = Tab              Tab             
+ 	alt	keycode  15 = Meta_Tab        
++	shift	keycode  15 = Meta_Tab
+ keycode  16 = q               
+ keycode  17 = w               
+ keycode  18 = e               
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwerty/us.map kbd-1.12-3/data/keymaps/i386/qwerty/us.map
+--- kbd-1.12-2/data/keymaps/i386/qwerty/us.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwerty/us.map	2004-02-26 22:39:54.000000000 +0100
+@@ -25,6 +25,7 @@
+ keycode  13 = equal            plus
+ keycode  14 = Delete
+ keycode  15 = Tab
++	shift	keycode  15 = Meta_Tab
+ keycode  26 = bracketleft      braceleft
+ 	control	keycode  26 = Escape
+ keycode  27 = bracketright     braceright       asciitilde       Control_bracketright
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/cz-us-qwertz.map kbd-1.12-3/data/keymaps/i386/qwertz/cz-us-qwertz.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/cz-us-qwertz.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/cz-us-qwertz.map	2004-02-26 22:39:54.000000000 +0100
+@@ -29,7 +29,7 @@
+ keycode 12  = equal percent minus underscore Control_underscore Control_underscore Control_underscore Control_underscore Meta_minus Meta_minus Meta_minus Meta_minus
+ keycode 13  = dead_acute dead_circumflex equal plus VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_equal Meta_equal Meta_equal Meta_equal
+ keycode 14  = Delete Delete Delete Delete VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Delete Meta_Delete Meta_Delete Meta_Delete
+-keycode 15  = Tab Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab
++keycode 15  = Tab Meta_Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab
+ keycode 16  = q
+ keycode 17  = w
+ keycode 18  = e
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/de-latin1.map kbd-1.12-3/data/keymaps/i386/qwertz/de-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/de-latin1.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/de-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -35,7 +35,7 @@
+         shift   alt   keycode  13 = Meta_grave
+ keycode  14 = Delete           Delete
+         alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ keycode  26 = +udiaeresis       +Udiaeresis
+ keycode  27 = plus             asterisk         dead_tilde
+ keycode  28 = Return
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/de.map kbd-1.12-3/data/keymaps/i386/qwertz/de.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/de.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/de.map	2004-02-26 22:39:54.000000000 +0100
+@@ -33,7 +33,7 @@
+ keycode  13 = apostrophe       grave
+ keycode  14 = Delete           Delete
+         alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ keycode  26 = at               backslash
+ keycode  27 = plus             asterisk         asciitilde
+ keycode  28 = Return
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/fr_CH-latin1.map kbd-1.12-3/data/keymaps/i386/qwertz/fr_CH-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/fr_CH-latin1.map	2004-02-26 22:37:52.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/fr_CH-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -41,7 +41,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 = egrave           udiaeresis       bracketleft
+ 	control keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/fr_CH.map kbd-1.12-3/data/keymaps/i386/qwertz/fr_CH.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/fr_CH.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/fr_CH.map	2004-02-26 22:39:54.000000000 +0100
+@@ -41,7 +41,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 =
+ 	altgr   keycode  26 = bracketleft
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/sg-latin1-lk450.map kbd-1.12-3/data/keymaps/i386/qwertz/sg-latin1-lk450.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/sg-latin1-lk450.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/sg-latin1-lk450.map	2004-02-26 22:39:54.000000000 +0100
+@@ -40,7 +40,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 = udiaeresis       egrave           bracketleft
+ 	control keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/sg-latin1.map kbd-1.12-3/data/keymaps/i386/qwertz/sg-latin1.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/sg-latin1.map	2004-02-26 22:37:52.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/sg-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -39,7 +39,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 = udiaeresis       egrave           bracketleft
+ 	control keycode  26 = Escape
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/sg.map kbd-1.12-3/data/keymaps/i386/qwertz/sg.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/sg.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/sg.map	2004-02-26 22:39:54.000000000 +0100
+@@ -40,7 +40,7 @@
+ 	alt     keycode  13 = Meta_equal
+ keycode  14 = Delete           Delete
+ 	alt     keycode  14 = Meta_Delete
+-keycode  15 = Tab              Tab
++keycode  15 = Tab              Meta_Tab
+ 	alt     keycode  15 = Meta_Tab
+ keycode  26 =
+ 	altgr   keycode  26 = bracketleft
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/sk-prog-qwertz.map kbd-1.12-3/data/keymaps/i386/qwertz/sk-prog-qwertz.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/sk-prog-qwertz.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/sk-prog-qwertz.map	2004-02-26 22:39:54.000000000 +0100
+@@ -40,7 +40,7 @@
+ keycode 12 = minus underscore minus underscore Control_underscore Control_underscore Control_underscore Control_underscore Meta_minus Meta_minus Meta_minus Meta_minus  
+ keycode 13 = equal plus dead_acute dead_circumflex VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_equal Meta_equal Meta_equal Meta_equal  
+ keycode 14 = Delete Delete Delete Delete VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Delete Meta_Delete Meta_Delete Meta_Delete  
+-keycode 15 = Tab Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab  
++keycode 15 = Tab Meta_Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab  
+ keycode 26 = bracketleft braceleft bracketleft braceleft Escape VoidSymbol Escape VoidSymbol Meta_bracketleft Meta_bracketleft Meta_bracketleft Meta_bracketleft 
+ keycode 27 = bracketright braceright bracketright braceright Control_bracketright VoidSymbol Control_bracketright VoidSymbol Meta_bracketright Meta_bracketright Meta_bracketright Meta_bracketright 
+ keycode 28 = Return
+diff -Nur kbd-1.12-2/data/keymaps/i386/qwertz/sk-qwertz.map kbd-1.12-3/data/keymaps/i386/qwertz/sk-qwertz.map
+--- kbd-1.12-2/data/keymaps/i386/qwertz/sk-qwertz.map	2004-02-26 22:36:34.000000000 +0100
++++ kbd-1.12-3/data/keymaps/i386/qwertz/sk-qwertz.map	2004-02-26 22:39:54.000000000 +0100
+@@ -41,7 +41,7 @@
+ keycode 12 = minus underscore equal percent Control_underscore Control_underscore Control_underscore Control_underscore Meta_minus Meta_minus Meta_minus Meta_minus  
+ keycode 13 = equal plus dead_acute dead_circumflex VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_equal Meta_equal Meta_equal Meta_equal  
+ keycode 14 = Delete Delete Delete Delete VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Delete Meta_Delete Meta_Delete Meta_Delete  
+-keycode 15 = Tab Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab  
++keycode 15 = Tab Meta_Tab Tab Tab VoidSymbol VoidSymbol VoidSymbol VoidSymbol Meta_Tab Meta_Tab Meta_Tab Meta_Tab  
+ keycode 26 = bracketleft braceleft uacute slash Escape VoidSymbol Escape VoidSymbol Meta_bracketleft Meta_bracketleft Meta_bracketleft Meta_bracketleft 
+ keycode 27 = bracketright braceright adiaeresis parenleft Control_bracketright VoidSymbol Control_bracketright VoidSymbol Meta_bracketright Meta_bracketright Meta_bracketright Meta_bracketright 
+ keycode 28 = Return 
+diff -Nur kbd-1.12-2/data/keymaps/mac/include/mac-linux-keys-bare.inc kbd-1.12-3/data/keymaps/mac/include/mac-linux-keys-bare.inc
+--- kbd-1.12-2/data/keymaps/mac/include/mac-linux-keys-bare.inc	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/mac/include/mac-linux-keys-bare.inc	2004-02-26 22:39:54.000000000 +0100
+@@ -166,6 +166,7 @@
+ keycode  36 = Return
+         alt     keycode  36 = Meta_Control_m
+ keycode  48 = Tab
++	shift	keycode  48 = Meta_Tab
+ 	alt keycode 48 = Meta_Tab
+ keycode  49 = space space space nul
+ keycode  51 = Delete  Remove
+diff -Nur kbd-1.12-2/data/keymaps/sun/sunt4-es.map kbd-1.12-3/data/keymaps/sun/sunt4-es.map
+--- kbd-1.12-2/data/keymaps/sun/sunt4-es.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/sun/sunt4-es.map	2004-02-26 22:39:54.000000000 +0100
+@@ -137,7 +137,7 @@
+        control alt     keycode  50 = Boot
+ keycode  51 =
+ keycode  52 = Find
+-keycode  53 = Tab              Tab
++keycode  53 = Tab              Meta_Tab
+        alt     keycode  53 = Meta_Tab
+ keycode  54 = q
+ keycode  55 = w
+diff -Nur kbd-1.12-2/data/keymaps/sun/sunt4-fi-latin1.map kbd-1.12-3/data/keymaps/sun/sunt4-fi-latin1.map
+--- kbd-1.12-2/data/keymaps/sun/sunt4-fi-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/sun/sunt4-fi-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -131,7 +131,7 @@
+ 	control	alt	keycode  50 = Boot            
+ keycode  51 =
+ keycode  52 =
+-keycode  53 = Tab              Tab             
++keycode  53 = Tab              Meta_Tab             
+ 	alt	keycode  53 = Meta_Tab        
+ keycode  54 = q               
+ keycode  55 = w               
+diff -Nur kbd-1.12-2/data/keymaps/sun/sunt4-no-latin1.map kbd-1.12-3/data/keymaps/sun/sunt4-no-latin1.map
+--- kbd-1.12-2/data/keymaps/sun/sunt4-no-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/sun/sunt4-no-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -134,7 +134,7 @@
+        control alt     keycode  50 = Boot
+ keycode  51 =
+ keycode  52 = Find
+-keycode  53 = Tab              Tab
++keycode  53 = Tab              Meta_Tab
+        alt     keycode  53 = Meta_Tab
+ keycode  54 = q
+ keycode  55 = w
+diff -Nur kbd-1.12-2/data/keymaps/sun/sunt5-de-latin1.map kbd-1.12-3/data/keymaps/sun/sunt5-de-latin1.map
+--- kbd-1.12-2/data/keymaps/sun/sunt5-de-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/sun/sunt5-de-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -131,7 +131,7 @@
+        control alt     keycode  50 = Boot
+ keycode  51 =
+ keycode  52 = Find
+-keycode  53 = Tab              Tab
++keycode  53 = Tab              Meta_Tab
+        alt     keycode  53 = Meta_Tab
+ keycode  54 = +q       +Q      at
+ keycode  55 = w
+diff -Nur kbd-1.12-2/data/keymaps/sun/sunt5-es.map kbd-1.12-3/data/keymaps/sun/sunt5-es.map
+--- kbd-1.12-2/data/keymaps/sun/sunt5-es.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/sun/sunt5-es.map	2004-02-26 22:39:54.000000000 +0100
+@@ -143,7 +143,7 @@
+        control alt     keycode  50 = Boot
+ keycode  51 =
+ keycode  52 = Find
+-keycode  53 = Tab              Tab
++keycode  53 = Tab              Meta_Tab
+        alt     keycode  53 = Meta_Tab
+ keycode  54 = q
+ keycode  55 = w
+diff -Nur kbd-1.12-2/data/keymaps/sun/sunt5-fi-latin1.map kbd-1.12-3/data/keymaps/sun/sunt5-fi-latin1.map
+--- kbd-1.12-2/data/keymaps/sun/sunt5-fi-latin1.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/sun/sunt5-fi-latin1.map	2004-02-26 22:39:54.000000000 +0100
+@@ -134,7 +134,7 @@
+        control alt     keycode  50 = Boot
+ keycode  51 =
+ keycode  52 = Find
+-keycode  53 = Tab              Tab
++keycode  53 = Tab              Meta_Tab
+        alt     keycode  53 = Meta_Tab
+ keycode  54 = q
+ keycode  55 = w
+diff -Nur kbd-1.12-2/data/keymaps/sun/sunt5-ru.map kbd-1.12-3/data/keymaps/sun/sunt5-ru.map
+--- kbd-1.12-2/data/keymaps/sun/sunt5-ru.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/sun/sunt5-ru.map	2004-02-26 22:39:54.000000000 +0100
+@@ -181,7 +181,7 @@
+        altgr   control alt     keycode  50 = Boot
+ keycode  51 =
+ keycode  52 = Find
+-keycode  53 = Tab              Tab
++keycode  53 = Tab              Meta_Tab
+        alt     keycode  53 = Meta_Tab
+        altgr   alt     keycode  53 = Meta_Tab
+ keycode  54 = q
+diff -Nur kbd-1.12-2/data/keymaps/sun/sunt5-uk.map kbd-1.12-3/data/keymaps/sun/sunt5-uk.map
+--- kbd-1.12-2/data/keymaps/sun/sunt5-uk.map	2004-02-26 22:36:33.000000000 +0100
++++ kbd-1.12-3/data/keymaps/sun/sunt5-uk.map	2004-02-26 22:39:54.000000000 +0100
+@@ -54,7 +54,7 @@
+ keycode  43 = Delete           Delete          
+ 	control keycode  43 = Control_underscore
+ 	alt     keycode  43 = Meta_Delete     
+-keycode  53 = Tab              Tab             
++keycode  53 = Tab              Meta_Tab             
+ 	alt     keycode  53 = Meta_Tab        
+ keycode  54 = q               
+ keycode  55 = w               

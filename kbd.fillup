@@ -1,0 +1,29 @@
+# 
+# Compose tables to be loaded.
+# Compose tables are good for producing characters, which can not
+#  be directly input from your keyboard, such as characters with
+#  accents, currency signs, ...
+# Please read /usr/share/doc/packages/kbd/README.SuSE for an
+#  explanation.
+# You may leave this variable empty (default compose table from kernel 
+#  or KEYTABLE will be used then -- most keyboard maps don't have a
+#  compose table, though)
+# More than one compose table can be given. For a selection of possible
+#  tables see /usr/share/kbd/keymaps/include/compose.*
+# You can give more than one compose table, but only the last one will
+#  determine the compose combinations.
+#  The word "clear" has a special meaning:
+#  Your compose table will be cleared, before more compose symbols are
+#  added.
+# The files compose.winkeys and shiftctrl may be used to map the 
+#  <compose> key to the W*n menu key and Shift-Ctrl, respectively,
+#  on a PC keyboard.
+# A typical setting for Latin1 users (with a PC keyboard) may be
+#  COMPOSETABLE="clear winkeys shiftctrl latin1.add"
+# For latin2, this would be
+#  COMPOSETABLE="clear winkeys shiftctrl latin2"
+# A typical setting for sb. with a character set, where a matching 
+#  compose table is missing (but with a PC keyboard), would be
+#  COMPOSETABLE="winkeys shiftctrl"
+# 
+COMPOSETABLE="clear winkeys shiftctrl latin1.add"

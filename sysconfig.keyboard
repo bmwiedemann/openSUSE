@@ -1,7 +1,16 @@
 ## Path:        Hardware/Keyboard
-## Description: Keyboard settings for the text console
-## ServiceRestart: kbdsettings
+## Description: Keyboard settings
+## Type:        string
+## Default:     ""
+## ServiceRestart: kbd
 #
+# Keyboard settings for the text console
+#
+# Keyboard mapping
+# (/usr/share/kbd/keymaps/)
+# e.g. KEYTABLE="de-latin1-nodeadkeys", "us" or empty for US settings
+#
+KEYTABLE=""
 
 ## Type:        integer
 ## Default:
@@ -18,8 +27,7 @@ KBD_RATE=""
 ## Type:        list(bios,yes,no)
 ## Default:     bios
 #
-# NumLock on? ("yes" or "no" or "bios" for BIOS setting)
-# This setting may interfere with GNOME /org/gnome/settings-daemon/peripherals/keyboard/remember-numlock-state DConf key.
+# NumLock on? ("yes" or "no" or empty or "bios" for BIOS setting)
 KBD_NUMLOCK="bios"
 
 ## Type:        yesno
@@ -46,11 +54,11 @@ KBD_CAPSLOCK="no"
 KBD_DISABLE_CAPS_LOCK="no"
 
 ## Type:        string
-## Default:
+## Default:     "tty1 tty2 tty3 tty4 tty5 tty6"
 #
 # ttys for the above settings 
 # Example: "tty1 tty2"
-# "" for tty's 1-6
+# "" for all tty's
 #
-KBD_TTY=""
+KBD_TTY="tty1 tty2 tty3 tty4 tty5 tty6"
 
