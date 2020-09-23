@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 22 11:54:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the source url to really match reality
+
+-------------------------------------------------------------------
+Tue Sep 22 10:29:18 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.33.0-r1:
+  * Small performance improvement in string handling
+  * apsw module exposes Cursor, Blob, and Backup types (issue #273)
+  * pkg-config is used to detect International Components for
+    Unicode (ICU) sdk when the SQLite ICU extension is enabled. It
+    falls back to icu-config as before. (issue #268).
+- Update to 3.32.2-r2:
+  * Added some constants
+  * Minor documentation updates
+- Fix source URL
+-------------------------------------------------------------------
 Tue Mar  3 09:44:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update the sqlite dependency

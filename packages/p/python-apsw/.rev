@@ -67,4 +67,23 @@
   * Shell now uses pragma function_list to get list of functions for tab completion</comment>
     <requestid>781138</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5dc36aab2754cf6affe596c994747da0</srcmd5>
+    <version>3.33.0_r1</version>
+    <time>1600879228</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the source url to really match reality
+
+- Update to 3.33.0-r1:
+  * Small performance improvement in string handling
+  * apsw module exposes Cursor, Blob, and Backup types (issue #273)
+  * pkg-config is used to detect International Components for
+    Unicode (ICU) sdk when the SQLite ICU extension is enabled. It
+    falls back to icu-config as before. (issue #268).
+- Update to 3.32.2-r2:
+  * Added some constants
+  * Minor documentation updates
+- Fix source URL</comment>
+    <requestid>836079</requestid>
+  </revision>
 </revisionlist>
