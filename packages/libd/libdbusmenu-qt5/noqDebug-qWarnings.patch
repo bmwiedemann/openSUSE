@@ -1,163 +1,29 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0ee9154..597a7de 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -91,7 +91,7 @@ install(FILES ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}.pc
+Index: libdbusmenu-qt-0.9.3-16.04.20160218-0ubuntu1/CMakeLists.txt
+===================================================================
+--- libdbusmenu-qt-0.9.3-16.04.20160218-0ubuntu1.orig/CMakeLists.txt
++++ libdbusmenu-qt-0.9.3-16.04.20160218-0ubuntu1/CMakeLists.txt
+@@ -107,7 +107,7 @@ install(FILES ${CMAKE_BINARY_DIR}/dbusme
+     )
  
  add_subdirectory(src)
- if (NOT USE_QT5) # TODO port tests to Qt5
 -add_subdirectory(tests)
 +#add_subdirectory(tests)
- endif()
  add_subdirectory(tools)
  
-diff --git a/src/dbusmenuexporter.cpp b/src/dbusmenuexporter.cpp
-index f25718d..8868efb 100644
---- a/src/dbusmenuexporter.cpp
-+++ b/src/dbusmenuexporter.cpp
-@@ -160,7 +160,9 @@ void DBusMenuExporterPrivate::fillLayoutItem(DBusMenuLayoutItem *item, QMenu *me
-         Q_FOREACH(QAction *action, menu->actions()) {
-             int actionId = m_idForAction.value(action, -1);
-             if (actionId == -1) {
+ if(WITH_DOC)
+Index: libdbusmenu-qt-0.9.3-16.04.20160218-0ubuntu1/src/debug_p.h
+===================================================================
+--- libdbusmenu-qt-0.9.3-16.04.20160218-0ubuntu1.orig/src/debug_p.h
++++ libdbusmenu-qt-0.9.3-16.04.20160218-0ubuntu1/src/debug_p.h
+@@ -26,7 +26,11 @@
+ #define _DMBLUE  "\033[34m"
+ #define _DMRED   "\033[31m"
+ #define _DMRESET "\033[0m"
 +#ifndef QT_NO_DEBUG
-                 DMWARNING << "No id for action";
+ #define _DMTRACE(level, color) (level().nospace() << color << __PRETTY_FUNCTION__ << _DMRESET ":").space()
++#else
++#define _DMTRACE(level, color) QT_NO_QDEBUG_MACRO()
 +#endif
-                 continue;
-             }
  
-@@ -185,7 +187,9 @@ void DBusMenuExporterPrivate::addAction(QAction *action, int parentId)
- {
-     int id = m_idForAction.value(action, -1);
-     if (id != -1) {
-+#ifndef QT_NO_DEBUG
-         DMWARNING << "Already tracking action" << action->text() << "under id" << id;
-+#endif
-         return;
-     }
-     QVariantMap map = propertiesForAction(action);
-diff --git a/src/dbusmenuimporter.cpp b/src/dbusmenuimporter.cpp
-index 39f5995..d629d69 100644
---- a/src/dbusmenuimporter.cpp
-+++ b/src/dbusmenuimporter.cpp
-@@ -94,7 +94,9 @@ public:
-     QDBusPendingCallWatcher *refresh(int id)
-     {
-         #ifdef BENCHMARK
-+#ifndef QT_NO_DEBUG
-         DMDEBUG << "Starting refresh chrono for id" << id;
-+#endif
-         sChrono.start();
-         #endif
-         QDBusPendingCall call = m_interface->asyncCall("GetLayout", id, 1, QStringList());
-@@ -193,7 +195,9 @@ public:
-             updateActionShortcut(action, value);
-         } else if (key == "children-display") {
-         } else {
-+#ifndef QT_NO_DEBUG
-             DMWARNING << "Unhandled property update" << key;
-+#endif
-         }
-     }
- 
-@@ -241,7 +245,9 @@ public:
-         action->setProperty(DBUSMENU_PROPERTY_ICON_DATA_HASH, dataHash);
-         QPixmap pix;
-         if (!pix.loadFromData(data)) {
-+#ifndef QT_NO_DEBUG
-             DMWARNING << "Failed to decode icon-data property for action" << action->text();
-+#endif
-             action->setIcon(QIcon());
-             return;
-         }
-@@ -312,7 +318,9 @@ public:
-         }
- 
-         if (watcher->isError()) {
-+#ifndef QT_NO_DEBUG
-             DMWARNING << watcher->error().message();
-+#endif
-             return false;
-         }
- 
-@@ -437,18 +445,24 @@ void DBusMenuImporter::slotGetLayoutFinished(QDBusPendingCallWatcher *watcher)
- 
-     QDBusPendingReply<uint, DBusMenuLayoutItem> reply = *watcher;
-     if (!reply.isValid()) {
-+#ifndef QT_NO_DEBUG
-         DMWARNING << reply.error().message();
-+#endif
-         return;
-     }
- 
-     #ifdef BENCHMARK
-+#ifndef QT_NO_DEBUG
-     DMDEBUG << "- items received:" << sChrono.elapsed() << "ms";
-+#endif
-     #endif
-     DBusMenuLayoutItem rootItem = reply.argumentAt<1>();
- 
-     QMenu *menu = d->menuForId(parentId);
-     if (!menu) {
-+#ifndef QT_NO_DEBUG
-         DMWARNING << "No menu for id" << parentId;
-+#endif
-         return;
-     }
- 
-@@ -475,7 +489,9 @@ void DBusMenuImporter::slotGetLayoutFinished(QDBusPendingCallWatcher *watcher)
-         }
-     }
-     #ifdef BENCHMARK
-+#ifndef QT_NO_DEBUG
-     DMDEBUG << "- Menu filled:" << sChrono.elapsed() << "ms";
-+#endif
-     #endif
- }
- 
-@@ -514,7 +530,9 @@ void DBusMenuImporter::slotMenuAboutToShow()
-     QPointer<QObject> guard(this);
- 
-     if (!d->waitForWatcher(watcher, ABOUT_TO_SHOW_TIMEOUT)) {
-+#ifndef QT_NO_DEBUG
-         DMWARNING << "Application did not answer to AboutToShow() before timeout";
-+#endif
-     }
- 
-     #ifdef BENCHMARK
-@@ -543,7 +561,9 @@ void DBusMenuImporter::slotAboutToShowDBusCallFinished(QDBusPendingCallWatcher *
- 
-     QDBusPendingReply<bool> reply = *watcher;
-     if (reply.isError()) {
-+#ifndef QT_NO_DEBUG
-         DMWARNING << "Call to AboutToShow() failed:" << reply.error().message();
-+#endif
-         return;
-     }
-     bool needRefresh = reply.argumentAt<0>();
-@@ -555,7 +575,9 @@ void DBusMenuImporter::slotAboutToShowDBusCallFinished(QDBusPendingCallWatcher *
-         d->m_idsRefreshedByAboutToShow << id;
-         QDBusPendingCallWatcher *watcher2 = d->refresh(id);
-         if (!d->waitForWatcher(watcher2, REFRESH_TIMEOUT)) {
-+#ifndef QT_NO_DEBUG
-             DMWARNING << "Application did not refresh before timeout";
-+#endif
-         }
-     }
- }
-diff --git a/src/debug_p.h b/src/debug_p.h
-index bff37bd..ecdd3a5 100644
---- a/src/debug_p.h
-+++ b/src/debug_p.h
-@@ -36,12 +36,10 @@
- #define DMVAR(var) DMDEBUG << #var ":" << var
- 
- #define DMRETURN_IF_FAIL(cond) if (!(cond)) { \
--    DMWARNING << "Condition failed: " #cond; \
-     return; \
- }
- 
- #define DMRETURN_VALUE_IF_FAIL(cond, value) if (!(cond)) { \
--    DMWARNING << "Condition failed: " #cond; \
-     return (value); \
- }
- 
+ // Simple macros to get KDebug like support
+ #define DMDEBUG   _DMTRACE(qDebug, _DMBLUE)

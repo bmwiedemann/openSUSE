@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:29:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Rework patch trusting the compiler will remove dead code properly
+  when debug output is disabled (as it is in the spec file):
+  * noqDebug-qWarnings.patch
+
+-------------------------------------------------------------------
+Fri Sep  4 16:45:22 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.9.3+16.04.20160218:
+  * Ported tests to Qt5
+- Use a Source url that works
+
+-------------------------------------------------------------------
 Thu Jun 25 16:52:13 UTC 2015 - hrvoje.senjan@gmail.com
 
 - Update to 0.9.3+15.10.20150604:

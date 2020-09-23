@@ -1,7 +1,7 @@
 #
 # spec file for package libdbusmenu-qt5
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define rname libdbusmenu-qt
+%define version_ %(echo %{version} | sed -e "s/+/-/")
 
 Name:           libdbusmenu-qt5
-Version:        0.9.3+15.10.20150604
+Version:        0.9.3+16.04.20160218
 Release:        0
-Url:            https://launchpad.net/libdbusmenu-qt/
+URL:            https://launchpad.net/libdbusmenu-qt/
 Summary:        A Qt implementation of the DBusMenu protocol
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          System/Libraries
-Source:         http://archive.ubuntu.com/ubuntu/pool/main/libd/%{rname}/%{rname}_%{version}.orig.tar.gz
+Source:         https://github.com/unity8-team/%{rname}/archive/%{version}-0ubuntu1.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM noqDebug-qWarnings.patch -- libdbusmenu uses it's own qDebug's and qWarnings,
 # which are useless, and annoy users, so this patch just disables them in release mode
@@ -69,7 +70,7 @@ Requires:       pkgconfig(Qt5Core)
 This package contains development files for libdbusmenu-qt5.
 
 %prep
-%setup -q -n %{rname}-%{version}
+%setup -q -n %{rname}-%{version_}-0ubuntu1
 %patch1 -p1
 %if 0%{?suse_version} <= 1310
 %patch2 -p1
