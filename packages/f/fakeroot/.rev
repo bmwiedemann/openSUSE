@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>767819</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cc948658ac72447677ac06939a60848b</srcmd5>
+    <version>1.24</version>
+    <time>1600879692</time>
+    <user>dimstar_suse</user>
+    <comment>- add fakeroot-1.24-fix-chown.patch:
+  taken from https://salsa.debian.org/clint/fakeroot/-/commit/55e12cb8b02d65b9fc9c3e607794db5e01e2f94f.diff
+- skip testsuite on Tumbleweed until underlying issue has been fixed</comment>
+    <requestid>836310</requestid>
+  </revision>
 </revisionlist>

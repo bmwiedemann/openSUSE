@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:54:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add fakeroot-1.24-fix-chown.patch:
+  taken from https://salsa.debian.org/clint/fakeroot/-/commit/55e12cb8b02d65b9fc9c3e607794db5e01e2f94f.diff
+- skip testsuite on Tumbleweed until underlying issue has been fixed
+
+-------------------------------------------------------------------
 Wed Jan 22 11:14:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.24:

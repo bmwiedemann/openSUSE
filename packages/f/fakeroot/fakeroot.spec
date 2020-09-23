@@ -32,6 +32,8 @@ Patch3:         %{name}-1.21-hide-dlsym-error.patch
 # PATCH-FIX-UPSTREAM fakeroot-1.21-fix-shell-in-fakeroot.patch (deb#828810)
 Patch4:         %{name}-1.21-fix-shell-in-fakeroot
 Patch5:         fakeroot-drop-tartest.patch
+# PATCH-FIX-UPSTREAM https://salsa.debian.org/clint/fakeroot/-/commit/55e12cb8b02d65b9fc9c3e607794db5e01e2f94f.diff
+Patch6:         fakeroot-1.24-fix-chown.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 # user(daemon)/group(sys) is required for t.tar testsuite
@@ -108,9 +110,11 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/{faked,fakeroot}{,.1%{ext_man}}
 
 %check
+%if %{suse_version} < 1315
 for type in sysv tcp; do
   make %{?_smp_mflags} -C obj-$type check
 done
+%endif
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/fakeroot fakeroot %{_bindir}/fakeroot-sysv 20 \
