@@ -169,7 +169,11 @@ Requires(postun):	update-alternatives
 # Needed on arm aarch64 to avoid
 # collect2: fatal error: cannot find 'ld'-
 %ifarch %arm aarch64
+%if 0%{?is_opensuse}
 Requires:       binutils-gold
+%else
+Recommends:     binutils-gold
+%endif
 %endif
 Requires:       gcc
 Provides:       go = %{version}
@@ -358,7 +362,7 @@ cp -r doc/* %{buildroot}%{_docdir}/go/%{go_api}
 %post
 
 update-alternatives \
-  --install %{_bindir}/go go %{_libdir}/go/%{go_api}/bin/go $((20+$(echo %{version} | cut -d. -f2))) \
+  --install %{_bindir}/go go %{_libdir}/go/%{go_api}/bin/go $((20+$(echo %{go_api} | cut -d. -f2))) \
   --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{go_api}/bin/gofmt \
   --slave %{_sysconfdir}/gdbinit.d/go.gdb go.gdb %{_libdir}/go/%{go_api}/bin/gdbinit.d/go.gdb
 

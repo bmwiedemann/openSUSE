@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 12 02:45:39 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Use go_api instead of version for update-alternatives priority
+
+-------------------------------------------------------------------
+Fri Sep  4 14:51:12 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- replace binutils-gold requires by recommends for aarch64 on SLE. (bsc#1170826)
+
+-------------------------------------------------------------------
 Thu Aug  6 19:23:18 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.13.15 (released 2020/08/06) includes security fixes to the
