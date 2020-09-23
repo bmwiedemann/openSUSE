@@ -440,6 +440,10 @@ BuildRequires:  binutils-gold
 BuildRequires:  binutils-gold
 %endif
 
+%if 0%{?suse_version} >= 1200
+BuildRequires:  systemtap-sdt-devel
+%endif
+
 %endif # %%{build_testsuite}
 
 %ifarch ia64
