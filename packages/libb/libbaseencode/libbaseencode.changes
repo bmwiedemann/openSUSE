@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:07:23 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.10
+  * fix valgrind issues
+
+-------------------------------------------------------------------
 Mon Apr 20 15:45:10 UTC 2020 - Markos Chandras <markos@chandras.me>
 
 - Disable debug package on Fedora (https://en.opensuse.org/Fedora_packaging)

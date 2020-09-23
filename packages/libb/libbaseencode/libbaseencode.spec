@@ -21,7 +21,7 @@
 %endif
 %define libsoname %{name}1
 Name:           libbaseencode
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Base32 and base64 encoding library
 License:        Apache-2.0
