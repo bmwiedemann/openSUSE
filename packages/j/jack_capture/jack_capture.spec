@@ -1,7 +1,7 @@
 #
 # spec file for package jack_capture
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2005 JackLab, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           jack_capture
-Version:        0.9.71
+Version:        0.9.73
 Release:        0
 Summary:        A small program to jack
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            http://ccrma.stanford.edu/~kjetil/src/
-Source0:        %{name}-%{version}.tar.bz2
+URL:            https://github.com/kmatheussen/jack_capture
+Source0:        https://github.com/kmatheussen/jack_capture/archive/%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libsndfile-devel
 BuildRequires:  pkgconfig
@@ -43,7 +43,7 @@ sound is going out to your speakers into a file.
 
 %build
 export CXXFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 
