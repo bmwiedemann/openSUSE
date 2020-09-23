@@ -17,25 +17,27 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.179
+Version:        0.181
 Release:        0
 Summary:        debuginfod part of elfutils
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://sourceware.org/elfutils/
-
 #Git-Clone:	git://sourceware.org/git/elfutils
 Source:         https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2
 Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2.sig
 Source2:        elfutils.changes
 Source3:        elfutils.keyring
-Patch0:         remove-run-large-elf-file.sh.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
+# For the run-debuginfod-find.sh test case in %check for /usr/sbin/ss
+BuildRequires:  curl
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  iproute
 BuildRequires:  libbz2-devel
+BuildRequires:  pkgconfig
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 # For debuginfod
@@ -43,12 +45,9 @@ BuildRequires:  pkgconfig(libarchive) >= 3.1.2
 BuildRequires:  pkgconfig(libcurl) >= 7.29.0
 BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.33
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.17
-# For the run-debuginfod-find.sh test case in %check for /usr/sbin/ss
-BuildRequires:  curl
-BuildRequires:  iproute
+BuildRequires:  pkgconfig(systemd)
 Requires:       debuginfod-client = %{version}
 Requires:       elfutils = %{version}
-BuildRequires:  pkgconfig(systemd)
 Requires:       sysconfig
 Requires(post): %fillup_prereq
 %{?systemd_requires}
@@ -88,11 +87,10 @@ The elfutils-debuginfod-client package contains a command-line frontend.
 %lang_package
 
 %prep
-%setup -q -n elfutils-%version
-%patch0 -p1
+%autosetup -n elfutils-%version -p1
 
 %build
-%define _lto_cflags %{nil}
+%global _lto_cflags %{_lto_cflags} -flto-partition=none -Wno-error=stack-usage=
 # Change DATE/TIME macros to use last change time of elfutils.changes
 # See http://lists.opensuse.org/opensuse-factory/2011-05/msg00304.html
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
@@ -135,7 +133,7 @@ rm -f %{buildroot}/%{_includedir}/dwarf.h
 rm -f %{buildroot}/%{_libdir}/libdw*
 rm -f %{buildroot}/%{_mandir}/man3/elf_*.3*
 rm -f %{buildroot}/%{_mandir}/man1/eu-*.1*
-rm -rf %{buildroot}/usr/share/locale/
+rm -rf %{buildroot}%{_datadir}/locale/
 rm -f %{buildroot}/%{_libdir}/pkgconfig/libdw.pc
 rm -f %{buildroot}/%{_libdir}/pkgconfig/libelf.pc
 

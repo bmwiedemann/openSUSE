@@ -17,22 +17,19 @@
 
 
 Name:           elfutils
-Version:        0.179
+Version:        0.181
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://sourceware.org/elfutils/
-
 #Git-Clone:	git://sourceware.org/git/elfutils
 Source:         https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}-%{version}.tar.bz2
-Source4:        https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}-%{version}.tar.bz2.sig
 Source1:        README-BEFORE-ADDING-PATCHES
 Source2:        baselibs.conf
 Source3:        %{name}.changes
+Source4:        https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}-%{version}.tar.bz2.sig
 Source5:        %{name}.keyring
-Patch2:         cfi-fix.patch
-Patch3:         remove-run-large-elf-file.sh.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -106,12 +103,10 @@ applications that require libdw.
 %lang_package
 
 %prep
-%setup -q
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
-%define _lto_cflags %{nil}
+%global _lto_cflags %{nil}
 # Change DATE/TIME macros to use last change time of elfutils.changes
 # See http://lists.opensuse.org/opensuse-factory/2011-05/msg00304.html
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
@@ -131,7 +126,7 @@ CFLAGS+=" -fPIC"
 autoreconf -fi
 # some patches create new test scripts, which are created 644 by default
 chmod a+x tests/run*.sh
-%configure --program-prefix=eu- --disable-debuginfod
+%configure --program-prefix=eu- --disable-debuginfod --disable-libdebuginfod
 %make_build
 
 %install

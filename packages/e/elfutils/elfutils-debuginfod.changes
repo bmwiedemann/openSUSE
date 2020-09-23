@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:50:27 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO again - boo#1138796
+  Adding -flto-partition=none and -Wno-error=stack-usage were
+  not enough: 
+    [  123s] libasm-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libasm.a
+    [  123s] libdw-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libdw.a
+    [  123s] libelf-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libelf.a
+    [  123s] This archive does not contain a non-empty .text section.  The archive was not
+    [  123s] created with -ffat-lto-objects option.
+  And adding -ffat-lto-objects breaks run-show-die-info.sh test.
+
+-------------------------------------------------------------------
+Tue Sep  8 15:18:57 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 0.181:
+  libelf: elf_update now compensates (fixes up) a bad sh_addralign for
+          SHF_COMPRESSED sections.
+  libdebuginfod: configure now takes --enable-libdebuginfod=dummy or
+                 --disable-libdebuginfod for bootstrapping.
+                 DEBUGINFOD_URLS now accepts "scheme-free" urls
+                 (guessing at what the user meant, either http:// or file://)
+  readelf, elflint: Handle aarch64 bti, pac bits in dynamic table and gnu
+                    property notes.
+  libdw, readelf: Recognize DW_CFA_AARCH64_negate_ra_state. Allows unwinding
+                  on arm64 for code that is compiled for PAC (Pointer
+                  Authentication Code) as long as it isn't enabled
+- Drop upstream patch:
+  * 0001-tests-Add-GCOV-flags-when-necessary.patch
+
+-------------------------------------------------------------------
+Mon Jun 15 07:12:57 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Remove remove-run-large-elf-file.sh.patch as it now checks for memory
+  size.
+- Use autosetup.
+
+-------------------------------------------------------------------
+Thu Jun 11 18:19:10 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.180:
+  elflint: Allow SHF_EXCLUDE as generic section flag when --gnu is given.
+  libdw, readelf: Handle GCC LTO .gnu.debuglto_ prefix.
+  libdw: Use correct CU to resolve file names in dwarf_decl_file.
+  libdwfl: Handle debugaltlink in dwfl_standard_find_debuginfo.
+  size: Also obey radix printing for bsd format.
+  nm: Explicitly print weak 'V' or 'T' and common 'C' symbols.
+- Add 0001-tests-Add-GCOV-flags-when-necessary.patch in order to fix
+  an unresolved symbol.
+- Enable LTO: boo#1138796 by adding -flto-partition=none and -Wno-error=stack-usage.
+
+-------------------------------------------------------------------
 Mon Mar 30 12:07:18 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.179:

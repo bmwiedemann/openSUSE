@@ -779,4 +779,20 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
   translations: Updated Ukrainian translation. (forwarded request 789782 from marxin)</comment>
     <requestid>789786</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>d84968390dd9caf29c7d92a60bf759d1</srcmd5>
+    <version>0.181</version>
+    <time>1600879136</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO again - boo#1138796
+  Adding -flto-partition=none and -Wno-error=stack-usage were
+  not enough: 
+    [  123s] libasm-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libasm.a
+    [  123s] libdw-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libdw.a
+    [  123s] libelf-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libelf.a
+    [  123s] This archive does not contain a non-empty .text section.  The archive was not
+    [  123s] created with -ffat-lto-objects option.
+  And adding -ffat-lto-objects breaks run-show-die-info.sh test. (forwarded request 834600 from Guillaume_G)</comment>
+    <requestid>834631</requestid>
+  </revision>
 </revisionlist>
