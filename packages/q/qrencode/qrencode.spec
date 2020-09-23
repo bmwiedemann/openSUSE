@@ -18,7 +18,7 @@
 
 %define so_ver 4
 Name:           qrencode
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        C library for encoding data in a QR Code symbol
 License:        LGPL-2.1-or-later
@@ -26,8 +26,6 @@ Group:          Productivity/Graphics/Other
 Url:            https://github.com/fukuchi/libqrencode
 Source0:        https://fukuchi.org/works/qrencode/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM -- qrencode-fix_installation.patch
-Patch0:         qrencode-fix-installation.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpng)
@@ -63,7 +61,6 @@ This package contains the development files for libqrencode.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake -DBUILD_SHARED_LIBS=TRUE

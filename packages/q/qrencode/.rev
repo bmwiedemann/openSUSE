@@ -185,4 +185,25 @@
     <comment></comment>
     <requestid>728726</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d4df7a04e5f217f453a31fbbb5434b20</srcmd5>
+    <version>4.1.0</version>
+    <time>1600879039</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.0:
+  * Command line tool &quot;qrencode&quot; has been improved:
+  * New option &quot;--inline&quot; has been added. (Thanks to @jp-bennett)
+  * New option &quot;--strict-version&quot; has been added.
+  * UTF8 mode now supports ANSI256 color. (Thanks to András Veres-
+    Szentkirályi)
+  * Micro QR Code no longer requires to specify the version number.
+  * 'make check' allows to run the test programs. (Thanks to Jan Tojnar)
+  * Some compile time warnings have been fixed.
+  * Various CMake support improvements. (Thanks to @mgorny and @sdf5)
+  * Some minor bug fixes. (Thanks to Lonnie Abelbeck and Frédéric Wang)
+  * Some documentation/manpage improvements. (Thanks to Dan Jacobson)
+  * Some performance improvements. (Thanks to @4061N and Mika Lindqvist)
+- remove qrencode-fix-installation.patch (upstream)</comment>
+    <requestid>834284</requestid>
+  </revision>
 </revisionlist>
