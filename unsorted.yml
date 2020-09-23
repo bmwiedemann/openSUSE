@@ -5255,7 +5255,7 @@ unsorted:
   - gnonograms-lang 
   - gnote 
   - gnote-lang 
-  - gns3 
+  - gns3: [x86_64] 
   - gns3-server 
   - gnu-cobol 
   - gnu-compilers-hpc 
@@ -21168,7 +21168,7 @@ unsorted:
   - python3-localzone 
   - python3-locket 
   - python3-lockfile 
-  - python3-logilab-astng 
+  - python3-logilab-astng: [x86_64] 
   - python3-logilab-common 
   - python3-logreduce 
   - python3-loguru 
@@ -35636,6 +35636,7 @@ unsorted:
   - zlib-devel-32bit: [x86_64] 
   - zlib-devel-static 
   - zlib-devel-static-32bit: [x86_64] 
+  - zlib-testsuite: [i586] 
   - zlibrary-data 
   - zlibrary-devel 
   - zlibrary0_99 
