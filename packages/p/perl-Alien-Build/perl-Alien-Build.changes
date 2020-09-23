@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 22 03:07:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.33
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.33      2020-09-21 03:21:40 -0600
+    - Skip problematic test on cygwin (gh#232)
+
+-------------------------------------------------------------------
+Sat Sep 12 03:07:06 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.32
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.32      2020-09-11 10:42:41 -0600
+    - Production release identical to 2.27_01
+
+  2.31_01   2020-09-09 06:26:25 -0600
+    - Diagnostic release
+
+  2.30_01   2020-09-08 14:48:12 -0600
+    - Documentation fixes (gh#223, #224, #225, shawnlaffan++)
+    - Use shorter filename paths for test files to keep older versions of tar
+      happy (gh#228, gh#229, gh#230)
+
+-------------------------------------------------------------------
 Tue Aug 11 03:07:08 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.29
