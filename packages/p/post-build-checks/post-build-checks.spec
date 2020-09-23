@@ -16,13 +16,13 @@
 #
 
 
-%define version_unconverted 84.87+git20200819.5847424
+%define version_unconverted 84.87+git20200916.d341ab0
 
 Name:           post-build-checks
 Summary:        post checks for build after rpms have been created
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Version:        84.87+git20200819.5847424
+Version:        84.87+git20200916.d341ab0
 Release:        0
 PreReq:         aaa_base permissions sed
 Requires:       aaa_base-malloccheck
@@ -61,48 +61,14 @@ it may not be a good idea to install this to a running system:
 install -d $RPM_BUILD_ROOT/usr/lib/build/checks
 install -d $RPM_BUILD_ROOT/usr/lib/build/checks-data
 install -d $RPM_BUILD_ROOT/usr/lib/build/helper
+install -d $RPM_BUILD_ROOT/usr/lib/build/finalize-system
 install -m 755 checks/* $RPM_BUILD_ROOT/usr/lib/build/checks
 install -m 644 checks-data/* $RPM_BUILD_ROOT/usr/lib/build/checks-data
 install -m 755 helper/* $RPM_BUILD_ROOT/usr/lib/build/helper
+install -m 755 finalize-system/* $RPM_BUILD_ROOT/usr/lib/build/finalize-system
 install -m 644 -D suse-buildsystem.sh  $RPM_BUILD_ROOT/etc/profile.d/suse-buildsystem.sh
 install -m 644 -D suse-ignored-rpaths.conf $RPM_BUILD_ROOT/etc/suse-ignored-rpaths.conf
 chmod 755 $RPM_BUILD_ROOT/usr/lib/build/checks-data/check*
-
-%post
-# do nothing when not in a build chroot
-if ! test -e /.buildenv; then
-    exit 0
-fi
-# change the PERMISSION set to "secure"
-sed -i -e "s@^PERMISSION_SECURITY=.*@PERMISSION_SECURITY=\"secure\"@" /etc/sysconfig/security
-# add the abuild user to the trusted group so that fusermount works
-usermod -G trusted -a abuild || true
-# set the timezone to UTC
-if [ -f /etc/sysconfig/clock ] ; then
-sed -i -e "s@^TIMEZONE=.*@TIMEZONE=\"UTC\"@" /etc/sysconfig/clock
-fi
-# and add the ugly workaround to override the output of uname -v
-# to match the installed kernel sources
-UNAME=/bin/uname
-if test -f /usr/bin/uname ; then
-    UNAME=/usr/bin/uname
-fi
-if test -f $UNAME -a ! -L $UNAME ; then
-    mv $UNAME $UNAME.bin
-    ln -s /usr/lib/build/helper/uname.sh $UNAME
-fi
-
-%preun
-if ! test -e /.buildenv; then
-    exit 0
-fi
-UNAME=/bin/uname
-if test -f /usr/bin/uname.bin ; then
-    UNAME=/usr/bin/uname
-fi
-if test "$1" = 0 -a -f $UNAME.bin ; then
-    mv $UNAME.bin $UNAME
-fi
 
 %files
 %defattr(-, root, root)

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 16 10:12:53 UTC 2020 - ro@suse.de
+
+- Update to version 84.87+git20200916.d341ab0:
+  * add finalize-system hacks
+  * 01-add_abuild_user_to_trusted_group
+  *   also create abuild user if needed
+  * 02-set_timezone_to_utc
+  * 11-hack_uname_version_to_kernel_version
+  * 98-revert-uname-hack
+  *   add cleanup as check script
+- drop all pre/post scripts this is now all done by hooks
+  inside the buildsystem, the package install scripts will
+  not do any harm now and we do not depend on the install
+  sequence any more (revisited boo#1159963)
+
+-------------------------------------------------------------------
 Mon Aug 24 16:17:32 CEST 2020 - ro@suse.de
 
 - add the abuild user to the trusted group so that
