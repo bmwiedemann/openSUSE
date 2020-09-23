@@ -94,7 +94,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.0.0.4863+g5d95d9d41d
+Version:	16.0.0.5613+gb1a0951432
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -110,7 +110,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.0.0-4863-g5d95d9d41d.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.0.0-5613-gb1a0951432.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -385,10 +385,13 @@ Summary:        Utility to bootstrap Ceph clusters
 Requires:       lvm2
 %if 0%{?suse_version}
 Requires:       apparmor-abstractions
+Requires:       podman
 %endif
 Requires:       python%{python3_pkgversion}
+%if ! 0%{?suse_version}
 %if 0%{?weak_deps}
 Recommends:     podman
+%endif
 %endif
 %description -n cephadm
 Utility to bootstrap a Ceph cluster and manage Ceph daemons deployed 
@@ -602,6 +605,17 @@ Requires:       fuse
 Requires:	python%{python3_pkgversion}
 %description fuse
 FUSE based client for Ceph distributed network file system
+
+%package -n cephfs-mirror
+Summary:	Ceph daemon for mirroring CephFS snapshots
+%if 0%{?suse_version}
+Group:		System/Filesystems
+%endif
+Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	libcephfs2 = %{_epoch_prefix}%{version}-%{release}
+%description -n cephfs-mirror
+Daemon for mirroring CephFS snapshots between Ceph clusters.
 
 %package -n rbd-fuse
 Summary:	Ceph fuse-based client
@@ -1054,7 +1068,7 @@ project "node_exporter" module. The dashboards are designed to be
 integrated with the Ceph Manager Dashboard web UI.
 
 %package prometheus-alerts
-Summary:        Prometheus alerts for a Ceph deplyoment
+Summary:        Prometheus alerts for a Ceph deployment
 BuildArch:      noarch
 Group:          System/Monitoring
 %description prometheus-alerts
@@ -1064,7 +1078,7 @@ This package provides Ceph’s default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.0.0-4863-g5d95d9d41d
+%autosetup -p1 -n ceph-16.0.0-5613-gb1a0951432
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -1161,7 +1175,7 @@ ${CMAKE} .. \
 %if 0%{with ocf}
     -DWITH_OCF=ON \
 %endif
-%ifarch aarch64 armv7hl mips mipsel ppc ppc64 ppc64le %{ix86} x86_64
+%ifarch aarch64 armv7hl mips mipsel ppc ppc64 ppc64le %{ix86} x86_64 s390x
     -DWITH_BOOST_CONTEXT=ON \
 %else
     -DWITH_BOOST_CONTEXT=OFF \
@@ -1253,7 +1267,6 @@ install -m 0644 -D udev/50-rbd.rules %{buildroot}%{_udevrulesdir}/50-rbd.rules
 
 # sudoers.d
 install -m 0600 -D sudoers.d/ceph-osd-smartctl %{buildroot}%{_sysconfdir}/sudoers.d/ceph-osd-smartctl
-install -m 0600 -D sudoers.d/cephadm %{buildroot}%{_sysconfdir}/sudoers.d/cephadm
 
 %if 0%{?rhel} >= 8
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_bindir}/*
@@ -1416,7 +1429,6 @@ exit 0
 %files -n cephadm
 %{_sbindir}/cephadm
 %{_mandir}/man8/cephadm.8*
-%{_sysconfdir}/sudoers.d/cephadm
 %attr(0700,cephadm,cephadm) %dir %{_sharedstatedir}/cephadm
 %attr(0700,cephadm,cephadm) %dir %{_sharedstatedir}/cephadm/.ssh
 %attr(0600,cephadm,cephadm) %{_sharedstatedir}/cephadm/.ssh/authorized_keys
@@ -1651,6 +1663,7 @@ fi
 %{_datadir}/ceph/mgr/mds_autoscaler
 %{_datadir}/ceph/mgr/orchestrator
 %{_datadir}/ceph/mgr/osd_perf_query
+%{_datadir}/ceph/mgr/osd_support
 %{_datadir}/ceph/mgr/pg_autoscaler
 %{_datadir}/ceph/mgr/progress
 %{_datadir}/ceph/mgr/prometheus
@@ -1759,6 +1772,9 @@ fi
 %{_sbindir}/mount.fuse.ceph
 %{_unitdir}/ceph-fuse@.service
 %{_unitdir}/ceph-fuse.target
+
+%files -n cephfs-mirror
+%{_bindir}/cephfs-mirror
 
 %files -n rbd-fuse
 %{_bindir}/rbd-fuse

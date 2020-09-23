@@ -94,7 +94,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 16.0.0.4863+g5d95d9d41d
+Version: 16.0.0.5613+gb1a0951432
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -110,7 +110,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-16.0.0-4863-g5d95d9d41d.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-16.0.0-5613-gb1a0951432.tar.bz2
 %if 0%{?suse_version}
 Source96: checkin.sh
 Source97: README-checkin.txt
@@ -360,7 +360,9 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{?suse_version}
 %endif
+%if ! 0%{?suse_version}
 %if 0%{?weak_deps}
+%endif
 %endif
 %if 0%{?suse_version}
 %endif
@@ -409,6 +411,8 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %if 0%{?rhel} || 0%{?fedora}
+%endif
+%if 0%{?suse_version}
 %endif
 %if 0%{?suse_version}
 %endif
@@ -507,7 +511,7 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %prep
-%autosetup -p1 -n ceph-16.0.0-4863-g5d95d9d41d
+%autosetup -p1 -n ceph-16.0.0-5613-gb1a0951432
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -604,7 +608,7 @@ ${CMAKE} .. \
 %if 0%{with ocf}
     -DWITH_OCF=ON \
 %endif
-%ifarch aarch64 armv7hl mips mipsel ppc ppc64 ppc64le %{ix86} x86_64
+%ifarch aarch64 armv7hl mips mipsel ppc ppc64 ppc64le %{ix86} x86_64 s390x
     -DWITH_BOOST_CONTEXT=ON \
 %else
     -DWITH_BOOST_CONTEXT=OFF \
@@ -696,7 +700,6 @@ install -m 0644 -D udev/50-rbd.rules %{buildroot}%{_udevrulesdir}/50-rbd.rules
 
 # sudoers.d
 install -m 0600 -D sudoers.d/ceph-osd-smartctl %{buildroot}%{_sysconfdir}/sudoers.d/ceph-osd-smartctl
-install -m 0600 -D sudoers.d/cephadm %{buildroot}%{_sysconfdir}/sudoers.d/cephadm
 
 %if 0%{?rhel} >= 8
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_bindir}/*
@@ -773,7 +776,6 @@ rm -rf %{buildroot}%{_mandir}/man8/monmaptool.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-kvstore-tool.8*
 rm -rf %{buildroot}%{_sbindir}/cephadm
 rm -rf %{buildroot}%{_mandir}/man8/cephadm.8*
-rm -rf %{buildroot}%{_sysconfdir}/sudoers.d/cephadm
 rm -rf %{buildroot}%{_sharedstatedir}/cephadm/.ssh/authorized_keys
 rm -rf %{buildroot}%doc
 rm -rf %{buildroot}%{_docdir}/ceph/sample.ceph.conf
@@ -844,6 +846,7 @@ rm -rf %{buildroot}%{_datadir}/ceph/mgr/localpool
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/mds_autoscaler
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/orchestrator
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/osd_perf_query
+rm -rf %{buildroot}%{_datadir}/ceph/mgr/osd_support
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/pg_autoscaler
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/progress
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/prometheus
@@ -870,6 +873,7 @@ rm -rf %{buildroot}%{_mandir}/man8/ceph-fuse.8*
 rm -rf %{buildroot}%{_sbindir}/mount.fuse.ceph
 rm -rf %{buildroot}%{_unitdir}/ceph-fuse@.service
 rm -rf %{buildroot}%{_unitdir}/ceph-fuse.target
+rm -rf %{buildroot}%{_bindir}/cephfs-mirror
 rm -rf %{buildroot}%{_bindir}/rbd-fuse
 rm -rf %{buildroot}%{_mandir}/man8/rbd-fuse.8*
 rm -rf %{buildroot}%{_bindir}/rbd-mirror
