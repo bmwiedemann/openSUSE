@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep  9 13:33:47 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add 7a17a4e9127fb6df6278f19396760e7d60a5862c.patch from upstream
+  to fix 32bit compilation issues.
+
+-------------------------------------------------------------------
+Tue Sep  1 11:17:49 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.5.0
+  * hid_linux: return FIDO_OK if no devices are found.
+  * hid_osx:
+    + repair communication with U2F tokens, gh#166;
+    + reliability fixes.
+  * fido2-{assert,cred}: new options to explicitly toggle UP, UV.
+  * Support for configurable report lengths.
+  * New API calls:
+    + fido_cbor_info_maxcredcntlst
+    + fido_cbor_info_maxcredidlen
+    + fido_cred_aaguid_len
+    + fido_cred_aaguid_ptr
+    + fido_dev_get_touch_begin
+    + fido_dev_get_touch_status
+  * Use COSE_ECDH_ES256 with CTAP_CBOR_CLIENT_PIN; gh#154.
+  * Allow CTAP messages up to 2048 bytes; gh#171.
+  * Ensure we only list USB devices by default.
+
+-------------------------------------------------------------------
 Fri Jul 24 19:33:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Cleanup udev rules, trying to use the Debian specific plugdev

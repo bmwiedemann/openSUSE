@@ -1,0 +1,27 @@
+From 7a17a4e9127fb6df6278f19396760e7d60a5862c Mon Sep 17 00:00:00 2001
+From: pedro martelletto <pedro@ambientworks.net>
+Date: Wed, 9 Sep 2020 18:01:53 +0200
+Subject: [PATCH] add two casts to silence warnings on 32-bit
+
+add two casts to silence 'comparison is always false' warnings on
+32-bit platforms (gcc: -Werror=type-limits, clang:
+-Wtautological-constant-out-of-range-compare); gh#210
+---
+ src/hid_linux.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/hid_linux.c b/src/hid_linux.c
+index 9788012..c554784 100644
+--- a/src/hid_linux.c
++++ b/src/hid_linux.c
+@@ -385,8 +385,8 @@ timespec_to_ms(const struct timespec *ts, int upper_bound)
+ 	int64_t x;
+ 	int64_t y;
+ 
+-	if (ts->tv_sec < 0 || ts->tv_sec > INT64_MAX / 1000LL ||
+-	    ts->tv_nsec < 0 || ts->tv_nsec / 1000000LL > INT64_MAX)
++	if (ts->tv_sec < 0 || (uint64_t)ts->tv_sec > INT64_MAX / 1000LL ||
++	    ts->tv_nsec < 0 || (uint64_t)ts->tv_nsec / 1000000LL > INT64_MAX)
+ 		return (upper_bound);
+ 
+ 	x = ts->tv_sec * 1000LL;

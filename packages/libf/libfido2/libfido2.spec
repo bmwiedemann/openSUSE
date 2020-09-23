@@ -18,13 +18,14 @@
 
 %define sover  1
 Name:           libfido2
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        FIDO U2F and FIDO 2.0 protocols
 License:        BSD-2-Clause
 URL:            https://developers.yubico.com/
 Source0:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz.sig
+Patch1:         7a17a4e9127fb6df6278f19396760e7d60a5862c.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-1_1-devel
@@ -73,7 +74,7 @@ BuildArch:      noarch
 This package contains the udev rules for FIDO2 compatible devices.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %define __builder ninja
