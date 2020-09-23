@@ -50,4 +50,13 @@
     <comment></comment>
     <requestid>792454</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>547e0d7c21f7f1f21347ce06051f23d6</srcmd5>
+    <version>1.52.0</version>
+    <time>1600879698</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.52.0
+  * create api-common-protos repo for python common protos</comment>
+    <requestid>836322</requestid>
+  </revision>
 </revisionlist>

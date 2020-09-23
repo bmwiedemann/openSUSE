@@ -18,13 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-googleapis-common-protos
-Version:        1.51.0
+Version:        1.52.0
 Release:        0
 Summary:        Common protobufs used in Google APIs
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/googleapis
 Source:         https://files.pythonhosted.org/packages/source/g/googleapis-common-protos/googleapis-common-protos-%{version}.tar.gz
+# https://github.com/googleapis/python-api-common-protos/issues/21
+Source1:        LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,6 +44,7 @@ protos in the googleapis_ repository.
 %setup -q -n googleapis-common-protos-%{version}
 
 %build
+cp %{SOURCE1} .
 %python_build
 
 %install
@@ -52,7 +55,7 @@ protos in the googleapis_ repository.
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/*
 
 %changelog
