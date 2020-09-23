@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.0.10
-%define mfr_revision   28
+%define mfr_revision   29
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        7
@@ -48,10 +48,6 @@ Patch0:         ImageMagick-configuration-SUSE.patch
 Patch2:         ImageMagick-library-installable-in-parallel.patch
 #%%ifarch s390x s390 ppc64 ppc
 Patch3:         ImageMagick-s390-disable-tests.patch
-# https://github.com/ImageMagick/ImageMagick/commit/029fb3425ecf82e8b30c060e38a135d1d3e76bb3
-Patch4:         ImageMagick-set-correct-colorspace.patch
-# fix inkscape commandline [bsc#1174272]
-Patch5:         ImageMagick-inkscape-commandilne.patch
 #%%endif
 BuildRequires:  chrpath
 BuildRequires:  fdupes
@@ -337,8 +333,6 @@ preserved.
 %ifarch s390x s390 ppc ppc64
 %patch3 -p1
 %endif
-%patch4 -p1
-%patch5 -p1
 
 %build
 # bsc#1088463

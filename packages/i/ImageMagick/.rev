@@ -2754,4 +2754,17 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/issues/2413).</comment>
     <requestid>830885</requestid>
   </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>d8e1cc4fdd40db2101792eb12dc7dbf0</srcmd5>
+    <version>7.0.10.29</version>
+    <time>1600879021</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.10.29:
+  * Eliminate infinite loop for certain SVG styles
+  * Add version element to JSON file format
+  * Enabled support for AVIF encoding on Windows.
+  * Clip path in 8bim profile is updated when the image is extended.
+- remove ImageMagick-set-correct-colorspace.patch, ImageMagick-inkscape-commandilne.patch (upstream) (forwarded request 834244 from dirkmueller)</comment>
+    <requestid>834263</requestid>
+  </revision>
 </revisionlist>
