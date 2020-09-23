@@ -1079,4 +1079,22 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment></comment>
     <requestid>817623</requestid>
   </revision>
+  <revision rev="121" vrev="18">
+    <srcmd5>0f334631f1a08eb9fecaf72dea5a04f2</srcmd5>
+    <version>4.3.5</version>
+    <time>1600879076</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't create dhclient.leases in %post. It affects transactional
+  updates and the files don't need to pre-exist (boo#1129951).
+
+- Drop dependency on insserv-compat
+  It was required to call the rc_status helpers from the sysvinit
+  scripts. These scripts are supposed to be called by systemd, which
+  has its own mechanism to report service status.
+  Please note that this package still needs to be converted to ship
+  proper systemd units.
+
+- /var/run is legacy -&gt; /run should be used instead</comment>
+    <requestid>835242</requestid>
+  </revision>
 </revisionlist>

@@ -34,7 +34,7 @@ SUPPORTS_HUP="no"
 #       $DAEMON_STATE$DAEMON_PIDFILE (also
 #       while DHCPD_RUN_CHROOTED=no) now,
 #       as DHCPD_RUN_AS is not allowed to
-#       create pid files in /var/run.
+#       create pid files in /run.
 
 DHCPv_OPT=$1 ; shift
 case $DHCPv_OPT in
@@ -44,7 +44,7 @@ case $DHCPv_OPT in
 	DAEMON_CONF=/etc/dhcpd.conf
 	DAEMON_STATE=/var/lib/dhcp
 	DAEMON_LEASES=dhcpd.leases
-	DAEMON_PIDFILE=/var/run/dhcpd.pid
+	DAEMON_PIDFILE=/run/dhcpd.pid
 	STARTPROC_LOGFILE=/var/log/rc.dhcpd.log
 	LDAP_CONF=/etc/openldap/ldap.conf
 
@@ -59,7 +59,7 @@ case $DHCPv_OPT in
 	DAEMON_CONF=/etc/dhcpd6.conf
 	DAEMON_STATE=/var/lib/dhcp6
 	DAEMON_LEASES=dhcpd6.leases
-	DAEMON_PIDFILE=/var/run/dhcpd6.pid
+	DAEMON_PIDFILE=/run/dhcpd6.pid
 	STARTPROC_LOGFILE=/var/log/rc.dhcpd6.log
 	LDAP_CONF=""
 
@@ -76,20 +76,6 @@ case $DHCPv_OPT in
 	exit 2
 ;;
 esac
-
-# Shell functions sourced from /etc/rc.status:
-#      rc_check         check and set local and overall rc status
-#      rc_status        check and set local and overall rc status
-#      rc_status -v     ditto but be verbose in local rc status
-#      rc_status -v -r  ditto and clear the local rc status
-#      rc_failed        set local and overall rc status to failed
-#      rc_failed <num>  set local and overall rc status to <num><num>
-#      rc_reset         clear local rc status (overall remains)
-#      rc_exit          exit appropriate to overall rc status
-. /etc/rc.status
-
-# First reset status of this service
-rc_reset
 
 # Return values acc. to LSB for all commands but status:
 # 0 - success
@@ -111,13 +97,12 @@ if ! [ -x "$DAEMON_BIN" ]; then
 	stop)   ;;
 	*)	echo -n >&2 "\"$DAEMON_BIN\" is not an executable file. Exiting."
 		case $1 in
-		status) rc_failed 4 ;;
-		*)	rc_failed 5 ;;
+		status) exit 4 ;;
+		*)	exit 5 ;;
 		esac
-		rc_status -v
 	;;
 	esac
-	rc_exit
+	exit
 fi
 if ! [ -r "$DAEMON_CONF" ] ; then
 	case $1 in
@@ -129,9 +114,7 @@ if ! [ -r "$DAEMON_CONF" ] ; then
 	;;
 	*)
 		echo -n >&2 "\"$DAEMON_CONF\" config file missed. Exiting."
-		rc_failed 6
-		rc_status -v
-		rc_exit
+		exit 6
 	;;
 	esac
 fi
@@ -149,8 +132,6 @@ case "$1" in
         ## and return with "program not configured"
 	if ! [ -f $DAEMON_CONF ]; then
 		echo -n "... no configuration file found";
-		# Tell the user this has skipped
-		rc_status -s
 		# service is not configured
 		exit 6;
 	fi
@@ -161,8 +142,6 @@ case "$1" in
 		var="DHCPD_INTERFACE"
 		case $DHCPv_OPT in -6) var=DHCPD6_INTERFACE ;; esac
 		echo -n "... set $var in /etc/sysconfig/dhcpd"
-		# Tell the user this has skipped
-		rc_status -s
 		# service is not configured
 		exit 6;
 	fi
@@ -206,7 +185,7 @@ case "$1" in
 		for i in $DAEMON_CONF $DHCPD_CONF_INCLUDE_FILES $LDAP_CONF /etc/{gai.conf,nsswitch.conf,resolv.conf,host.conf,hosts,localtime,bindresvport.blacklist} /dev/urandom; do
 			if ! test -e "$i"; then continue; fi # neither of them is absolutely necessary
 			cp -aL "$i" "${CHROOT_PREFIX}/${i%/*}/" &>/dev/null \
-				|| { echo "...$0:$LINENO: could not copy $i to chroot jail"; rc_failed; rc_status -v1; exit 6; }
+				|| { echo "...$0:$LINENO: could not copy $i to chroot jail"; exit 6; }
 		done
 		libdir=@LIBDIR@
 		if test -x /usr/bin/ldd ; then
@@ -236,7 +215,7 @@ case "$1" in
 		for i in $cplibs ; do
 			if [ -s "$i" ]; then
 				cp -pL "$i" "${CHROOT_PREFIX}/$libdir/" \
-				|| { echo "...$0:$LINENO: could not copy $i to chroot jail"; rc_failed; rc_status -v1; exit 6; }
+				|| { echo "...$0:$LINENO: could not copy $i to chroot jail"; exit 6; }
 			fi
 		done
 
@@ -247,7 +226,7 @@ case "$1" in
 		DHCPD_ARGS="-chroot $CHROOT_PREFIX -lf /db/$DAEMON_LEASES"
 
 		## If there is a pid file containing a pid, the machine might have crashed. pid files in
-		## /var/run are always cleaned up at boot time, but this is not the case for the pid file in 
+		## /run are always cleaned up at boot time, but this is not the case for the pid file in 
 		## the chroot jail. Therefore, and old pid file may exist. This is only a problem if it 
 		## incidentally contains the pid of a running process. If this process is not a 'dhcpd', 
 		## we remove the pid. (dhcpd itself only checks whether the pid is alive or not.)
@@ -296,14 +275,11 @@ case "$1" in
 		echo ""
 		echo -n "  please see $STARTPROC_LOGFILE for details "
 		## set status to failed
-		rc_failed
+		exit 1
 	else
 		ln -sf "$DAEMON_STATE$DAEMON_PIDFILE" "$DAEMON_PIDFILE"
 		[ "$DHCPD_RUN_CHROOTED" = "yes" ] && echo -n "[chroot]" || :
 	fi
-
-	# Remember status and be verbose
-	rc_status -v
 	;;
     stop)
 	echo -n "Shutting down $DAEMON "
@@ -339,9 +315,7 @@ case "$1" in
 		rm -f $CHROOT_PREFIX/lib*/*
 	fi
 
-	# Remember status and be verbose
-	rc_failed $ret
-	rc_status -v
+	exit $ret
 	;;
     try-restart)
 	## Do a restart only if the service was active before.
@@ -350,11 +324,7 @@ case "$1" in
 	$0 $DHCPv_OPT status
 	if test $? = 0; then
 		$0 $DHCPv_OPT restart
-	else
-		rc_reset        # Not running is not a failure.
 	fi
-	# Remember status and be quiet
-	rc_status
 	;;
     restart)
 	## Check syntax and when it is OK, stop the service
@@ -362,14 +332,11 @@ case "$1" in
 	## start it again.
 	if ! $0 $DHCPv_OPT check-syntax &>/dev/null ; then
 		echo -n "Syntax check reports errors, see log messages"
-		rc_failed
-		rc_status -v
+		exit 1
 	else
 		$0 $DHCPv_OPT stop
 		sleep 3
 		$0 $DHCPv_OPT start
-		# Remember status and be quiet
-		rc_status
 	fi
 	;;
     force-reload)
@@ -381,14 +348,11 @@ case "$1" in
 		echo -n "Reload service $DAEMON"
 		killproc -p $DAEMON_STATE/$DAEMON_PIDFILE -HUP $DAEMON_BIN
 		#touch $DAEMON_STATE/$DAEMON_PIDFILE
-		rc_status -v
 	elif ! $0 $DHCPv_OPT check-syntax &>/dev/null ; then
 		echo -n "Syntax check reports errors, see log messages"
-		rc_failed
-		rc_status -v
+		exit 1
 	else
 		$0 $DHCPv_OPT stop  &&  sleep 3  &&  $0 $DHCPv_OPT start
-		rc_status 
 	fi
 	;;
     reload)
@@ -400,11 +364,9 @@ case "$1" in
 		# If it supports signalling:
 		killproc -p $DAEMON_STATE/$DAEMON_PIDFILE -HUP $DAEMON_BIN
 		#touch $DAEMON_STATE/$DAEMON_PIDFILE
-		rc_status -v
 	else
 		## Otherwise if it does not support reload:
-		rc_failed 3
-		rc_status -v
+		exit 3
 	fi
 	;;
     status)
@@ -414,13 +376,12 @@ case "$1" in
 
 	# Status has a slightly different for the status command:
 	# 0 - service running
-	# 1 - service dead, but /var/run/  pid  file exists
+	# 1 - service dead, but /run/ pid file exists
 	# 2 - service dead, but /var/lock/ lock file exists
 	# 3 - service not running
 
 	# NOTE: checkproc returns LSB compliant status values.
 	checkproc -p $DAEMON_STATE/$DAEMON_PIDFILE $DAEMON_BIN
-	rc_status -v
 	;;
     probe)
 	## Optional: Probe for the necessity of a reload,
@@ -438,15 +399,13 @@ case "$1" in
 	## this nice bit is from Edwin Groothuis:
 	## check syntax (quiet)
 	$DAEMON_BIN $DHCPv_OPT -q -t -cf $DAEMON_CONF
-	rc_status
 	if [ $? -ne 0 ]; then 
 		echo ""
 		## check syntax (verbose)
 		$DAEMON_BIN $DHCPv_OPT -t -cf $DAEMON_CONF
 		echo -ne '\nConfig is NOT okay'
-		rc_failed
+		exit 1
 	fi
-	rc_status -v
 	;;
     check-lease|check-lease-file)
 	echo -n "Checking lease file $DAEMON_LEASES: "
@@ -454,22 +413,17 @@ case "$1" in
 	if [ -s ${DAEMON_STATE}/db/$DAEMON_LEASES ] ; then
 		## check leases file (quiet)
 		$DAEMON_BIN $DHCPv_OPT -q -T -cf /dev/null -lf ${DAEMON_STATE}/db/$DAEMON_LEASES
-		rc_status
 		if [ $? -ne 0 ]; then
 			echo ""
 			## check leases file (verbose)
 			$DAEMON_BIN $DHCPv_OPT -T -cf $DAEMON_CONF -lf ${DAEMON_STATE}/db/$DAEMON_LEASES
 			echo -ne '\nLease file is NOT okay'
-			rc_failed
+			exit 1
 		fi
-	else
-		rc_status -u
 	fi
-	rc_status -v
 	;;
     *)
 	SCRIPT="${SCRIPT:-${0##*/} $DHCPv_OPT}"
 	echo "Usage: $SCRIPT {start|stop|status|try-restart|restart|force-reload|reload|probe|check-syntax} [-v]"
 	exit 1
 esac
-rc_exit

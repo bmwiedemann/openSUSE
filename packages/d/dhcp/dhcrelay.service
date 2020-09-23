@@ -8,7 +8,7 @@ Type=forking
 Restart=on-abort
 ExecStart=@LIBEXECDIR@/dhcp/dhcrelay -4 start
 ExecStop=@LIBEXECDIR@/dhcp/dhcrelay -4 stop
-PIDFile=/var/run/dhcrelay.pid
+PIDFile=/run/dhcrelay.pid
 
 [Install]
 WantedBy=multi-user.target

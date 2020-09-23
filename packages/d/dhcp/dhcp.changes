@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 17 14:55:25 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Don't create dhclient.leases in %post. It affects transactional
+  updates and the files don't need to pre-exist (boo#1129951).
+
+-------------------------------------------------------------------
+Thu Sep  3 13:52:57 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop dependency on insserv-compat
+
+  It was required to call the rc_status helpers from the sysvinit
+  scripts. These scripts are supposed to be called by systemd, which
+  has its own mechanism to report service status.
+
+  Please note that this package still needs to be converted to ship
+  proper systemd units.
+
+-------------------------------------------------------------------
+Thu Sep  3 12:56:11 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- /var/run is legacy -> /run should be used instead
+
+-------------------------------------------------------------------
 Mon Jun 29 07:11:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - The server package still requires insserv-compat: the .service

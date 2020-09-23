@@ -18,7 +18,7 @@ case $DHCPv_OPT in
 	DAEMON="ISC DHCPv4 relay agent"
 	DAEMON_BIN=/usr/sbin/dhcrelay
 	DAEMON_CONF=/etc/sysconfig/dhcrelay
-	DAEMON_PIDFILE=/var/run/dhcrelay.pid
+	DAEMON_PIDFILE=/run/dhcrelay.pid
 	STARTPROC_LOGFILE=/var/log/rc.dhcrelay.log
 	SUPPORTS_HUP="no"
 ;;
@@ -26,7 +26,7 @@ case $DHCPv_OPT in
 	DAEMON="ISC DHCPv6 relay agent"
 	DAEMON_BIN=/usr/sbin/dhcrelay6
 	DAEMON_CONF=/etc/sysconfig/dhcrelay
-	DAEMON_PIDFILE=/var/run/dhcrelay6.pid
+	DAEMON_PIDFILE=/run/dhcrelay6.pid
 	STARTPROC_LOGFILE=/var/log/rc.dhcrelay6.log
 ;;
 *)
@@ -41,28 +41,13 @@ if ! [ -x "$DAEMON_BIN" ]; then
 	stop)   ;;
 	*)      echo -n >&2 "$0: \"$DAEMON_BIN\" is not an executable file. Exiting."
 		case $1 in
-		status) rc_failed 4 ;;
-		*)      rc_failed 5 ;;
+		status) exit 4 ;;
+		*)      exit 5 ;;
 		esac
-		rc_status -v
 	;;
 	esac
-	rc_exit
+	exit 0
 fi
-
-# Shell functions sourced from /etc/rc.status:
-#      rc_check         check and set local and overall rc status
-#      rc_status        check and set local and overall rc status
-#      rc_status -v     ditto but be verbose in local rc status
-#      rc_status -v -r  ditto and clear the local rc status
-#      rc_failed        set local and overall rc status to failed
-#      rc_failed <num>  set local and overall rc status to <num><num>
-#      rc_reset         clear local rc status (overall remains)
-#      rc_exit          exit appropriate to overall rc status
-. /etc/rc.status
-
-# First reset status of this service
-rc_reset
 
 # Return values acc. to LSB for all commands but status:
 # 0 - success
@@ -81,9 +66,10 @@ rc_reset
 
 case "$1" in
     start)
+        # FIXME: this check is pointless since systemd already do it.
 	echo -n "Starting $DAEMON"
 	checkproc -p $DAEMON_PIDFILE $DAEMON_BIN && {
-		echo -n "... already running"; rc_status -v; exit 0;
+		echo -n "... already running"; exit 0;
 	}
 
 	case $DHCPv_OPT in
@@ -91,8 +77,6 @@ case "$1" in
 	        ## If interfaces or servers are not set, skip starting of dhcrelay
 	        ## and return with "program not configured"
 		if [ -z "$DHCRELAY_INTERFACES" -o -z "$DHCRELAY_SERVERS" ]; then
-			# Tell the user this has skipped
-			rc_status -s
 			# service is not configured
 			exit 6;
 		fi
@@ -117,8 +101,6 @@ case "$1" in
 		done
 		if [ "x$DHCRELAY6_LOWER_INTERFACES_ARGS" = x -o \
 		     "x$DHCRELAY6_UPPER_INTERFACES_ARGS" = x ]; then
-			# Tell the user this has skipped
-			rc_status -s
 			# service is not configured
 			exit 6;
 		fi
@@ -141,11 +123,8 @@ case "$1" in
 		echo ""
 		echo -n "  please see $STARTPROC_LOGFILE for details "
 		## set status to failed
-		rc_failed
+		exit 1
 	fi
-
-	# Remember status and be verbose
-	rc_status -v
 	;;
     stop)
 	echo -n "Shutting down $DAEMON"
@@ -153,9 +132,6 @@ case "$1" in
 	## set echo the echo return value.
 
 	killproc -p $DAEMON_PIDFILE $DAEMON_BIN 
-
-	# Remember status and be verbose
-	rc_status -v
 	;;
     try-restart)
 	## Do a restart only if the service was active before.
@@ -164,11 +140,7 @@ case "$1" in
 	$0 status
 	if test $? = 0; then
 		$0 restart
-	else
-		rc_reset        # Not running is not a failure.
 	fi
-	# Remember status and be quiet
-	rc_status
 	;;
     restart)
 	## Stop the service and regardless of whether it was
@@ -176,27 +148,21 @@ case "$1" in
 	$0 stop
 	sleep 1
 	$0 start
-
-	# Remember status and be quiet
-	rc_status
 	;;
     force-reload)
 	## Signal the daemon to reload its config. Most daemons
 	## do this on signal 1 (SIGHUP).
 	## If it does not support it, restart.
 
-	$0 stop  &&  sleep 1  &&  $0 start
-	rc_status
+	$0 stop  &&  sleep 1  &&  $0 start || exit
 
 	echo -n "Reload service $DAEMON"
 
 	if [ "$SUPPORTS_HUP" = "yes" ] ; then 
 		killproc -p $DAEMON_PIDFILE -HUP $DAEMON_BIN
 		#touch $DAEMON_PIDFILE
-		rc_status -v
 	else
 		$0 stop  &&  $0 start
-		rc_status 
 	fi
 	;;
     reload)
@@ -208,11 +174,9 @@ case "$1" in
 		echo -n "Reload service $DAEMON"
 		killproc -p $DAEMON_PIDFILE -HUP $DAEMON_BIN
 		#touch $DAEMON_PIDFILE
-		rc_status -v
 	else
 		## Otherwise if it does not support reload:
-		rc_failed 3
-		rc_status -v
+		exit 3
 	fi
 	;;
     status)
@@ -222,13 +186,12 @@ case "$1" in
 
 	# Status has a slightly different for the status command:
 	# 0 - service running
-	# 1 - service dead, but /var/run/  pid  file exists
+	# 1 - service dead, but /run/ pid file exists
 	# 2 - service dead, but /var/lock/ lock file exists
 	# 3 - service not running
 
 	# NOTE: checkproc returns LSB compliant status values.
 	checkproc -p $DAEMON_PIDFILE $DAEMON_BIN
-	rc_status -v
 	;;
     probe)
 	## Optional: Probe for the necessity of a reload,
@@ -248,4 +211,3 @@ case "$1" in
 	exit 1
 	;;
 esac
-rc_exit
