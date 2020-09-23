@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 11 17:26:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.55.3:
+  + Revert "msvc: enable /std:c11 flag".
+- Changes from version 0.55.2:
+  + msvc: enable /std:c11 flag.
+  + environment: use ExternalProgram to find ninja.
+  + CMake module: fix cmake 3.10 compatibility in path generation.
+- Drop pr7648-fix-lchmod-check-for-glibc-2.32.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sat Aug 29 19:08:13 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add pr7648-fix-lchmod-check-for-glibc-2.32.patch:
