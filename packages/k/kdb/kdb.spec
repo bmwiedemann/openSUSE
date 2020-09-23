@@ -1,7 +1,7 @@
 #
 # spec file for package kdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%if 0%{?suse_version} > 1500
 BuildRequires:  postgresql-server-devel
 %else
 BuildRequires:  postgresql-devel

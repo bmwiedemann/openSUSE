@@ -88,4 +88,11 @@
     <comment></comment>
     <requestid>785417</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>e5f8f6beac64a376b1d60c7670b11443</srcmd5>
+    <version>3.2.0</version>
+    <time>1600857065</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1176854</comment>
+  </revision>
 </revisionlist>
