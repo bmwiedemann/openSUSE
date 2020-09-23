@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 11 11:52:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.4.9 (CVE-2020-11810, bsc#1169925O):
+  * Allow unicode search string in --cryptoapicert option (Windows)
+  * Skip expired certificates in Windows certificate store (Windows) (trac #966)
+  * OpenSSL: Fix --crl-verify not loading multiple CRLs in one file (trac #623)
+  * fix condition where a client's session could "float" to a new IP address that is not authorized ("fix illegal client float").
+  This can be used to disrupt service to a freshly connected client (no session
+  keys negotiated yet). It can not be used to inject or steal VPN traffic.
+  CVE-2020-11810).
+  * fix combination of async push (deferred auth) and NCP (trac #1259)
+  * Fix OpenSSL 1.1.1 not using auto elliptic curve selection (trac #1228)
+  * Fix OpenSSL error stack handling of tls_ctx_add_extra_certs
+  * mbedTLS: Make sure TLS session survives move (trac #880)
+  * Fix OpenSSL private key passphrase notices
+  * Fix building with --enable-async-push in FreeBSD (trac #1256)
+  * Fix broken fragmentation logic when using NCP (trac #1140)
+
+-------------------------------------------------------------------
 Wed Aug 26 17:12:44 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Modernize openvpn.service

@@ -760,4 +760,12 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>830245</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>e7f6dddcdc478b73bb429824d7675609</srcmd5>
+    <version>2.4.9</version>
+    <time>1600879067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834319</requestid>
+  </revision>
 </revisionlist>
