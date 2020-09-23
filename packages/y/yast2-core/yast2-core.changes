@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 18 15:41:56 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Avoid 'Construct not supported' on UnmountAgent (bsc#1176594)
+- 4.3.2
+
+-------------------------------------------------------------------
 Fri Jun 19 07:53:36 UTC 2020 - Martin Vidner <mvidner@suse.com>
 
 - Save memory by SCR.UnmountAgent telling other-process agents
