@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dd69611..e86aa16 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -134,6 +134,7 @@ if(USE_DOCBOOK)
+       NAMES
+         /usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl
+         /usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl
++        /usr/share/xml/docbook/stylesheet/nwalsh/1.79.2/manpages/docbook.xsl
+       REQUIRED
+     )
+   else()

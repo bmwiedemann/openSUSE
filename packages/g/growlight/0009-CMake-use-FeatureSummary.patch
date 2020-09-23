@@ -1,0 +1,79 @@
+From 41780c4e2a5b7bd395551f4e134e7e133dd096ed Mon Sep 17 00:00:00 2001
+From: nick black <dankamongmen@gmail.com>
+Date: Tue, 18 Aug 2020 03:45:18 -0400
+Subject: [PATCH 09/13] CMake: use FeatureSummary
+
+---
+ CMakeLists.txt | 14 +++++++++-----
+ README.md      |  2 +-
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cd5438b..842631c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,6 +6,7 @@ project(growlight VERSION 1.2.8
+ set(CMAKE_C_STANDARD 11)
+ 
+ include(GNUInstallDirs)
++include(FeatureSummary)
+ 
+ ###################### USER-SELECTABLE OPTIONS ###########################
+ option(USE_DOCBOOK "Use docbook to write man pages" ON)
+@@ -20,8 +21,11 @@ add_compile_definitions(FORTIFY_SOURCE=2)
+ add_compile_options(-Wall -Wextra -W -Wshadow -Wformat -fexceptions)
+ 
+ find_package(PkgConfig REQUIRED)
+-find_package(Threads REQUIRED)
+-find_package(notcurses 1.6.11 REQUIRED)
++find_package(Threads)
++set_package_properties(Threads PROPERTIES TYPE REQUIRED)
++find_package(notcurses 1.6.15)
++set_package_properties(notcurses PROPERTIES TYPE REQUIRED)
++feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ pkg_check_modules(LIBATASMART REQUIRED libatasmart>=0.19)
+ pkg_check_modules(LIBBLKID REQUIRED blkid>=2.20.1)
+ pkg_check_modules(LIBCAP REQUIRED libcap>=2.24)
+@@ -50,7 +54,7 @@ set(COMMON_INCLUDE_DIRS
+   "${LIBPCIACCESS_INCLUDE_DIRS}"
+   "${LIBUDEV_INCLUDE_DIRS}"
+   "${LIBZFS_INCLUDE_DIRS}"
+-  "${notcurses_INCLUDE_DIRS}"
++  "${NOTCURSES_INCLUDE_DIRS}"
+ )
+ 
+ set(COMMON_LIBRARY_DIRS
+@@ -64,7 +68,7 @@ set(COMMON_LIBRARY_DIRS
+   "${LIBPCIACCESS_LIBRARY_DIRS}"
+   "${LIBUDEV_LIBRARY_DIRS}"
+   "${LIBZFS_LIBRARY_DIRS}"
+-  "${notcurses_LIBRARY_DIRS}"
++  "${NOTCURSES_LIBRARY_DIRS}"
+ )
+ 
+ set(COMMON_LIBRARIES
+@@ -79,7 +83,7 @@ set(COMMON_LIBRARIES
+   "${LIBREADLINE_LIBRARIES}"
+   "${LIBUDEV_LIBRARIES}"
+   "${LIBZFS_LIBRARIES}"
+-  "${notcurses_LIBRARIES}"
++  "${Notcurses_LIBRARIES}"
+   Threads::Threads
+ )
+ 
+diff --git a/README.md b/README.md
+index eb6a68b..0e08dbe 100644
+--- a/README.md
++++ b/README.md
+@@ -12,7 +12,7 @@ https://nick-black.com/dankwiki/index.php/Growlight
+ 
+ Dependencies:
+ 
+- - notcurses 1.6.12+
++ - notcurses 1.6.15+
+  - libudev 175+
+  - libblkid 2.20.1
+  - libpci 3.1.9+
+-- 
+2.28.0
+

@@ -1,0 +1,25 @@
+From 0d148e76aef1cab20da86355d2237d626b7190a9 Mon Sep 17 00:00:00 2001
+From: nick black <dankamongmen@gmail.com>
+Date: Sun, 16 Aug 2020 04:41:00 -0400
+Subject: [PATCH 06/13] print_adapter_devs: get dimensions
+
+---
+ src/notcurses/notcurses.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/notcurses/notcurses.c b/src/notcurses/notcurses.c
+index 304a2a9..ff97cf5 100644
+--- a/src/notcurses/notcurses.c
++++ b/src/notcurses/notcurses.c
+@@ -1482,6 +1482,8 @@ print_adapter_devs(struct ncplane* n, const adapterstate *as, bool drawfromtop){
+   // First, print the selected device (if there is one), and those above
+   cur = as->selected;
+   line = as->selline;
++  int rows, cols;
++  ncplane_dim_yx(n, &rows, &cols);
+ //fprintf(stderr, "START WITH %p at %ld of %d\n", cur, line, rows);
+   while(cur && line + (long)device_lines(as->expansion, cur) >= drawfromtop){
+     p = print_dev(n, as, cur, line, rows, cols, drawfromtop);
+-- 
+2.28.0
+

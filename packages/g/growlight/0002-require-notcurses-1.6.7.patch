@@ -1,0 +1,39 @@
+From 968034abd21ed2700ab45479841bfb940a67cfdf Mon Sep 17 00:00:00 2001
+From: nick black <dankamongmen@gmail.com>
+Date: Mon, 20 Jul 2020 09:37:36 -0400
+Subject: [PATCH 02/13] require notcurses 1.6.7+
+
+---
+ CMakeLists.txt | 2 +-
+ README.md      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dd69611..dea2d8c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,7 +21,7 @@ add_compile_options(-Wall -Wextra -W -Wshadow -Wformat -fexceptions)
+ 
+ find_package(PkgConfig REQUIRED)
+ find_package(Threads REQUIRED)
+-find_package(notcurses 1.6.1 REQUIRED)
++find_package(notcurses 1.6.7 REQUIRED)
+ pkg_check_modules(LIBATASMART REQUIRED libatasmart>=0.19)
+ pkg_check_modules(LIBBLKID REQUIRED blkid>=2.20.1)
+ pkg_check_modules(LIBCAP REQUIRED libcap>=2.24)
+diff --git a/README.md b/README.md
+index b0b986e..1352f8b 100644
+--- a/README.md
++++ b/README.md
+@@ -12,7 +12,7 @@ https://nick-black.com/dankwiki/index.php/Growlight
+ 
+ Dependencies:
+ 
+- - notcurses 1.6.1+
++ - notcurses 1.6.7+
+  - libudev 175+
+  - libblkid 2.20.1
+  - libpci 3.1.9+
+-- 
+2.28.0
+
