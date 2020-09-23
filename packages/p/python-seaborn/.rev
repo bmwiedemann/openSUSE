@@ -129,4 +129,17 @@
 </comment>
     <requestid>802553</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>87c6d2d0b6e53d968cd71d5d4774da76</srcmd5>
+    <version>0.11.0</version>
+    <time>1600879723</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.0:
+  * major release with several important new features, enhancements to existing
+  functions, and changes to the library. Highlights include an overhaul and
+  modernization of the distributions plotting functions, more flexible data
+  specification, new colormaps, and better narrative documentation. 
+  https://medium.com/@michaelwaskom/announcing-the-release-of-seaborn-0-11-3df0341af042</comment>
+    <requestid>836341</requestid>
+  </revision>
 </revisionlist>

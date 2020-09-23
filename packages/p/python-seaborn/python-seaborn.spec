@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-seaborn
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        Statistical data visualization for python
 License:        BSD-3-Clause
