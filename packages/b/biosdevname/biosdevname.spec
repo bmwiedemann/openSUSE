@@ -57,7 +57,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86 x86_64
 
 %description
-biosdevname in its simplest form takes an kernel name name as an
+biosdevname in its simplest form takes a kernel name as an
 argument, and returns the BIOS-given name it "should" be.  This is
 necessary on systems where the BIOS name for a given device (e.g. the
 label on the chassis is "Gb1") doesn't map directly and obviously to
