@@ -98,4 +98,13 @@
   * Add -no-unicode option to disable aforementioned unicode support</comment>
     <requestid>826195</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>07995c275111ced66dded9ef441d2f98</srcmd5>
+    <version>1.9</version>
+    <time>1600956889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9:
+  * Add options to specify output hints (#59)</comment>
+    <requestid>836452</requestid>
+  </revision>
 </revisionlist>
