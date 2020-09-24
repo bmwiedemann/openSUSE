@@ -1,7 +1,7 @@
 #
 # spec file for package restic
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define import_path github.com/restic/restic
 
 Name:           restic
-Version:        0.9.6
+Version:        0.10.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause
@@ -29,11 +29,11 @@ URL:            https://restic.net
 Source0:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Source3:        vendor.tar.xz
 BuildRequires:  bash-completion
-BuildRequires:  go
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.10
+BuildRequires:  golang(API) >= 1.13
 
 %description
 restic is a backup program. It supports verification, encryption,
@@ -60,7 +60,7 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}.
 
 %prep
-%setup -q
+%setup -q -a 3
 
 %build
 # Set up GOPATH.
