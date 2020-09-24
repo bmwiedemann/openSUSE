@@ -17,9 +17,9 @@
 
 
 %define libname lib%{name}
-%define major   9
+%define major   11
 Name:           matio
-Version:        1.5.17
+Version:        1.5.18
 Release:        0
 Summary:        Library for reading and writing MATLAB MAT files
 License:        BSD-2-Clause
