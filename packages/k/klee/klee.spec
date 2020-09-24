@@ -19,7 +19,7 @@
 %define llvm_version_major 10
 %define llvm_version %{llvm_version_major}
 
-%define version_unconverted 2.1+20200730
+%define version_unconverted 2.1+20200921
 
 %ifarch %{ix86} x86_64
 %define with_uclibc 1
@@ -31,7 +31,7 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.1+20200730
+Version:        2.1+20200921
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
@@ -50,15 +50,17 @@ BuildRequires:  libcap-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  llvm%{llvm_version}-devel
 BuildRequires:  ninja
-# tests need sqlite3
 BuildRequires:  python3
 BuildRequires:  python3-lit
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tabulate
+# tests need sqlite3
 BuildRequires:  sqlite3-devel
 BuildRequires:  stp-devel
 BuildRequires:  xz
 BuildRequires:  zlib-devel
+# 32 bit doesn't build and won't be fixed
+ExcludeArch:    %{ix86} %{arm}
 
 %description
 KLEE is a symbolic virtual machine built on top of the LLVM compiler
@@ -76,6 +78,7 @@ cp %{SOURCE3} build/test/
 sed -i '1s@/usr/bin/env python3*@/usr/bin/python3@' \
 	test/Concrete/ConcreteTest.py \
 	tools/klee-stats/klee-stats \
+	tools/klee-zesti/klee-zesti \
 	tools/ktest-tool/ktest-tool
 
 %build
@@ -132,6 +135,7 @@ ninja check
 %{_bindir}/klee
 %{_bindir}/klee-replay
 %{_bindir}/klee-stats
+%{_bindir}/klee-zesti
 %{_bindir}/ktest-tool
 %{_includedir}/klee/
 %{_libdir}/libkleeRuntest.so*

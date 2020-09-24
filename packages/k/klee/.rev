@@ -1108,4 +1108,24 @@ build with uclibc</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>826246</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>168d01ea3c7b32565761ba11331c1f62</srcmd5>
+    <version>2.1+20200921</version>
+    <time>1600956901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+20200921:
+  * Added a PR template, with a checklist documenting the most frequent issues we have encountered
+  * [gen-bout] Support multiple symbolic files
+  * Add klee-zesti a ZESTI like wrapper script
+  * Fix codecov upload
+  * Remove secure vars
+  * Guard process-tree compression with a command-line switch
+  * More robust handling of unknown intrinsics
+  * Definition of __cxa_thread_atexit_impl for the KLEE libc.
+  * klee-stats: check for a run.stats file in the klee-out directory, to prevent outputting wrong data.
+  * DiscretePDF: use IDs instead of pointers (see PR #739)
+  * New intrinsic: klee_is_replay
+- disable 32 bit archs as klee doesn't (and won't) build on them</comment>
+    <requestid>836443</requestid>
+  </revision>
 </revisionlist>
