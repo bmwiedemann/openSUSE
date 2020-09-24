@@ -317,6 +317,7 @@ gfxboot --update-theme %{theme_name}
 %endif
 
 %files -n plymouth-branding-%{theme_name}
+%{_datadir}/plymouth/plymouthd.defaults
 %{_datadir}/plymouth/themes/spinner/watermark.png
 
 %changelog

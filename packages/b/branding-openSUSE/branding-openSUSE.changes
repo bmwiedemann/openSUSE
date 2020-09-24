@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 19 18:23:46 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update branding-tumbleweed.zip: Rebrand all components of SLES/D 
+  in boot progress (jsc#SLE-14772).
+
+-------------------------------------------------------------------
 Wed Jul 22 14:25:37 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Stop building grub2-branding-openSUSE for Power architectures [boo#1171146] 

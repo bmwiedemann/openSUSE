@@ -994,4 +994,12 @@ update go git:
     <comment></comment>
     <requestid>822274</requestid>
   </revision>
+  <revision rev="113" vrev="5">
+    <srcmd5>5cae65e09474b6a72f84da526546c42a</srcmd5>
+    <version>84.87.20191004</version>
+    <time>1600956720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835623</requestid>
+  </revision>
 </revisionlist>
