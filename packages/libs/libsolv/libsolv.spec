@@ -25,7 +25,7 @@
 %bcond_with bz2
 %bcond_with xz
 %endif
-%if 0%{?is_opensuse} && (0%{?sle_version} >= 150000 || 0%{?suse_version} >= 1500)
+%if 0%{?sle_version} >= 150000 || 0%{?suse_version} >= 1500
 %bcond_without zstd
 %else
 %bcond_with zstd
@@ -52,7 +52,7 @@
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.14
+Version:        0.7.15
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause
