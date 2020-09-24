@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 20 09:36:23 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to version 2.1.5
+  * loading DLS may have failed in certain setup environments
+  * fix a build failure with GCC 4.8
+
+-------------------------------------------------------------------
 Mon Jul 13 16:03:45 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to version 2.1.4
