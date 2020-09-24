@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:18:45 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.1719, fixes the following problems
+  * Vim9: error for argument type does not mention the number.
+  * Warnings from asan with clang-11. (James McCoy)
+  * Crash in edit test.
+  * Crash in normal test.
+  * Not all tests are executed on Github Actions.
+  * Cursorline highlighting always overrules sign highlighting.
+  * Crash in :vimgrep when started as "vim -n". (Raul Segura)
+  * Signs test fails.
+  * s390x tests work again.
+  * Using NULL pointers in some code. (James McCoy)
+  * Using NULL pointers in fold code.
+  * Vim9: error when using "%" where a buffer is expected.
+  * Vim9: error when using '%" with setbufvar() or getbufvar().
+  * A few remaining errors from ubsan.
+  * Spellfile test sometimes fails.
+  * Not all Bazel files are recognized.
+  * No example to use ubsan with clang.
+  * prop_find() skips properties in the same line if "skipstart" is used.
+  * Vim9: fixes for functions not tested; failure in getchangelist().
+  * Configure check for dirfd() does not work on HPUX. (Michael Osipov)
+  * Vim9: count() third argument cannot be "true".
+  * Vim9: expand() does not take "true" as argument.
+  * Vim9: getreg() does not take "true" as argument.
+  * Vim9: glob() doesnot take "true" as argument.
+  * Vim9: globpath() doesnot take "true" as argument.
+  * Vim9: index() does not take "true" as argument.
+  * Vim9: hasmapto(), mapcheck() and maparg() do not take "true" as argument.
+  * Vim9: popup_clear() does not take "true" as argument.
+  * Reports from asan are not optimal.
+  * Wildmenu does not work properly.
+  * Using line() for global popup window doesn't work.
+  * The channel log does not show typed text.
+  * Vim9: cannot use "true" for "skipstart" in prop_find().
+  * Messages in globals.h not translated, xgettext on MS-Windows not fully
+  supported.
+  * :resize command not fully tested.
+  * Loop for handling keys for the command line is too long.
+  * Cannot read back the prompt of a prompt buffer.
+  * Term_start() options for size are overruled by 'termwinsize'. (Sergey
+  Vlasov)
+  * Vim9: bufnr() doesn't take "true" argument.
+  * Using winheight('.') in tests works but is wrong.
+  * Vim9: passing "true" to char2nr() fails.
+  * Tests do not check the error number properly.0
+  * Pull requests on github do not notify a maintainer.
+  * Cannot easily see what Vim sends to the terminal.
+  * Using win_screenpos('.') in tests works but is wrong.
+  * The channel source file is too big.
+  * Starting a hidden terminal resizes the current window.
+  * Missing line end when skipping a long line with :cgetfile.
+  * Vim9: cannot use "true" with deepcopy().
+  * Vim9: cannot use 'true" with garbagecollect().
+  * Vim9: cannot use 'true" with getbufinfo().
+  * Vim9: cannot use "true" with getchar().
+  * Vim9: cannot use "true" with getcompletion().
+  * Vim9: cannot use "true" with has().
+  * Vim9: getchar() test fails with GUI.
+  * Vim9: test fails when build without +channel.
+  * Vim9: cannot pass "true" to list2str() and str2list().
+  * Vim9: cannot pass "true" to nr2char().
+  * Vim9: cannot pass "true" to prop_remove().
+  * Vim9: cannot pass "true" to prop_type_add().
+  * Vim9: cannot pass "true" to searchcount().
+  * Vim9: cannot pass "true" to searchdecl().
+  * Vim9: cannot pass "true" to synID().
+  * Vim9: cannot pass "true" to win_splitmove().
+  * Vim9: cannot pass "true" to setloclist().
+  * Vim9: cannot pass "true" to spellsuggest().
+  * searchcount() test fails.
+  * Crash when using submatch(0, 1) in substitute().
+  * Loop to handle keys for the command line is too long.
+  * Vim9: using :call where it is not needed.
+  * Vim9: cannot pass "true" to split(), str2nr() and strchars().
+  * Compiler warning for use of fptr_T.
+  * Test for strchars() fails with different error number.
+  * Vim9: cannot pass "true" to submatch(), term_gettty() and term_start()
+  * Vim9: cannot pass "true" to timer_paused().
+  * Test fails without terminal feature.
+  * Terminal test fails.
+  * test_fails() does not check the context of the line number.
+  * Not checking the context of test_fails().
+  * Some error messages are internal but do not use iemsg().
+  * Loop to handle keys for the command line is too long.
+  * No digraph for 0x2022 BULLET.
+  * Get stuck if a popup filter causes an error.
+  * Vim9: :put ={expr} does not work inside :def function.
+  * Leaking memory when popup filter function can't be called.
+  * Options window cannot be translated.
+  * Amiga: missing header for getgrgid().
+  * Vim9: cannot use 0 or 1 where a bool is expected.
+  * Otions test fails.
+  * Vim9: :defcompile compiles dead functions.
+  * Vim9: cannot assign 1 and 0 to bool at script level.
+  * GTK3: icons become broken images when resized.
+  * Vim9: result of expression with && and || cannot be assigned to a bool
+  variable.
+  * Amiga: no common build file for Amiga (-like) systems.
+  * GTK3: using old file chooser.
+  * Vim9: result of && and || expression cannot be assigned to a bool at
+  the script level.
+  * Spellfile code not completely tested.
+  * Cannot translate lines in the options window.
+  * Expand('<stack>') does not include the final line number.
+  * When job writes to hidden buffer current window has display errors.
+  (Johnny McArthur)
+  * Cannot build with Strawberry Perl 5.32.0.
+  * Vim9: callstack wrong if :def function calls :def function.
+  * Vim9: no proper error for nested ":def!".
+  * Expand('<stack>') has trailing "..".
+  * Spellfile code not completely tested.
+  * Assert functions require passing expected result as the first argument,
+  which isn't obvious.
+  * Cannot connect to 127.0.0.1 for host with only IPv6 addresses.
+  * :mksession does not restore shared terminal buffer properly.
+  * Options window entries cannot be translated.
+  * Memory leak when using :mkview with a terminal buffer.
+  * Cannot do fuzzy string matching.
+  * The initial value of 'backupskip' can have duplicate items.
+  * Local function name cannot shadow a global function name.
+  * Vim9: not accepting 0 or 1 as bool when type is any.
+  * Vim9: memory leak when storing a value fails.
+  * A couple of gcc compiler warnings.
+  * Vim9: stray error for missing white space.
+  * v_lock is used when it is not initialized. (Yegappan Lakshmanan)
+  * complete_info() selected index has an invalid value. (Ben Jackson)
+  * Vim9: internal error when using variable that was not set.
+  * MinGW: testdir makefile deletes non-existing file.
+  * Compiler warnings for function typecast.
+  * Memory access errors when calling setloclist() in an autocommand.
+  * Crash when using ":set" after ":ownsyntax". (Dhiraj Mishra)
+  * Vim9: ":*" is not recognized as a range.
+  * Vim9: line number for compare error is wrong.
+  * Vim9: unnessary :call commands in tests.
+  * Vim9: const works in an unexpected way.
+  * Vim9: assignment test fails.
+  * "gF" does not use line number after file in Visual mode.
+  * Vim9: cannot declare a constant value.
+  * Vim9: "const!" not sufficiently tested.
+  * Vim9: out of bounds error.
+  * Increment/decrement removes text property.
+  * 'colorcolumn' doesn't show in indent.
+  * Text properties not adjusted for "I" in Visual block mode.
+  * Vim9: list<any> is not accepted where list<number> is expected.
+  * Build fails because TTFLAG_STATIC is missing.
+  * "hi def" does not work for cleared highlight.
+  * Compiler warning for loss if data.
+  * Vim9: crash when using varargs type "any".
+  * Unused (duplicate) macros.
+  * Inconsistent capitalization of error messages.
+  * Cannot lock a variable in legacy Vim script like in Vim9.
+  * Build failure due to missing error message.
+  * Vim9: try/catch causes wrong value to be returned.
+  * Vim9: sort("i") does not work.
+  * Crash when using undo after deleting folded lines.
+  * ":highlight clear" does not restore default link.
+  * Vim9: crash in for loop when autoload script has an error.
+  * "verbose hi Name" reports incorrect info after ":hi clear".
+  * Vim9: crash after running into the "Multiple closures" error.
+  * Small inconsitency in highlight test.
+  * Vim9: error message for function has unpritable characters.
+  * Vim9: memory leak when using multiple closures.
+  * Vim9: list of list type can be wrong.
+  * Vim9: leaking memory when using partial.
+  * Vim9: leaking memory when calling a lambda.
+  * Motif GUI: crash when setting menu colors. (Andrzej Bylicki)
+  * Text properties corrupted with substitute command. (Filipe Brandenburger)
+  * Motif GUI: commented out code missed {}.
+  * Options window has duplicate translations.
+  * Vim9: :def function disallows "firstline" and "lastline" argument names
+  for no good reason.
+
+-------------------------------------------------------------------
 Tue Sep 15 11:34:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix postun scriptlet of vim-small: do not unconditionally
