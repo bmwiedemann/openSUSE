@@ -53,6 +53,7 @@ BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+Recommends:     dlm-kmp
 
 %description
 Libraries and tools that allow applications, particularly filesystems

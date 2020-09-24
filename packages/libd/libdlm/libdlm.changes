@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 21 11:10:20 UTC 2020 - ghe@suse.com
+
+- Add dependency relationship between libdlm and dlm-kmp (bsc#1121380)
+
+-------------------------------------------------------------------
 Tue Sep 15 10:30:20 UTC 2020 - ghe@suse.com
 
 - Add notes in dlm.conf man page (bsc#1175812)
