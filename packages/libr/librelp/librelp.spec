@@ -18,7 +18,7 @@
 
 %define library_name librelp0
 Name:           librelp
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        A reliable logging library
 License:        GPL-3.0-or-later
@@ -109,7 +109,7 @@ applications.
   --with-pic \
   --enable-tls=yes
 
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

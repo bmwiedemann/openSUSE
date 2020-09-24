@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  7 19:27:38 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- librelp 1.7.0:
+  * ix library exporting non-API symbols
+  * openssl: Fix chained certificate files for older OpenSSL
+  * fix FD leak when socket shutdown is one-sided
+  * TLS: cleaner shutdown on relpEngineDestruct
+  * fix memory leak on session break
+
+-------------------------------------------------------------------
 Thu Jun 18 13:54:50 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - librelp 1.6.0:
