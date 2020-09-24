@@ -65,8 +65,8 @@ bracketed paste and so on, and which can be controlled by scripts.
 %patch0 -p1
 %endif
 
-find . -type f -exec sed -i 's@#!/usr/bin/env python3$@#!/usr/bin/python3@' {} +
-find . -type f -exec sed -i 's@#!/usr/bin/env python$@#!/usr/bin/python@' {} +
+find . -type f -exec sed -i 's@#!%{_bindir}/env python3$@#!%{_bindir}/python3@' {} +
+find . -type f -exec sed -i 's@#!%{_bindir}/env python$@#!%{_bindir}/python@' {} +
 
 %build
 #tic -x -o/tmp/tmpWhatever terminfo/kitty.terminfo
@@ -82,7 +82,7 @@ python3 setup.py --verbose linux-package --prefix %{buildroot}%{_prefix}
 %license LICENSE
 %doc CHANGELOG.rst README.asciidoc
 %{_bindir}/kitty
-%{_libexecdir}/kitty
+%{_prefix}/lib/kitty
 %{_datadir}/applications/kitty.desktop
 %dir %{_datadir}/icons/hicolor/
 %dir %{_datadir}/icons/hicolor/256x256/
