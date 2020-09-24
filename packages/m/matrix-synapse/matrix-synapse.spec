@@ -46,7 +46,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.19.1
+Version:        1.20.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -90,7 +90,7 @@ BuildRequires:  python3-bcrypt >= 3.1.0
 %requires_eq    python3-bcrypt
 BuildRequires:  python3-bleach >= 1.4.3
 %requires_eq    python3-bleach
-BuildRequires:  python3-canonicaljson >= 1.2.0
+BuildRequires:  python3-canonicaljson >= 1.3.0
 %requires_eq    python3-canonicaljson
 BuildRequires:  python3-frozendict >= 1
 %requires_eq    python3-frozendict
