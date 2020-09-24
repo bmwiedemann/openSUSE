@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:30:04 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed WFM.Args call to not produce an error message in the y2log
+  (bsc#1176653)
+- 4.3.8
+
+-------------------------------------------------------------------
 Wed Sep 16 12:17:07 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed name of the add-on repository (bsc#1175374, related
