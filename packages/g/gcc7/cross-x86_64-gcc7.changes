@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 18 07:25:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove -mbranch-protection=standard (aarch64 flag) when gcc7 is
+  used to build gcc7 (ie when ada is enabled)
+
+-------------------------------------------------------------------
+Mon Mar 16 07:20:32 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr94148.patch to fix corruption of pass private ->aux
+  via DF.  [gcc#94148]
+
+-------------------------------------------------------------------
+Wed Mar  4 12:58:17 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr93888.patch to fix debug information issue with
+  inlined functions and passed by reference arguments.  [gcc#93888]
+
+-------------------------------------------------------------------
 Fri Feb 28 16:59:30 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add gcc7-pr93965.patch in order to fix binutils release

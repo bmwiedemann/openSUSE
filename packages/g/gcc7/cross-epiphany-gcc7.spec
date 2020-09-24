@@ -132,6 +132,8 @@ Patch22:        gcc7-pr93246.patch
 Patch23:        gcc7-pr92692.patch
 Patch24:        gcc48-bsc1161913.patch
 Patch25:        gcc7-pr93965.patch
+Patch26:        gcc7-pr93888.patch
+Patch27:        gcc7-pr94148.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -285,6 +287,8 @@ ln -s nvptx-newlib/newlib .
 %patch23 -p1
 %patch24 -p1
 %patch25 -p1
+%patch26 -p1
+%patch27 -p1
 %patch51
 %patch60
 %patch61
@@ -317,6 +321,12 @@ RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-mcpu=i.86//g' -e 's/-march=i.86//g
 %ifarch s390 s390x
 RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-fsigned-char//g'`
 RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-O1/-O2/g'`
+%endif
+%ifarch aarch64
+%if %{build_ada}
+# -mbranch-protection=standard flag is unsupported in gcc7 and we use GCC7 to build GCC7
+RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-mbranch-protection=standard//g'`
+%endif
 %endif
 %if 0%{?gcc_target_arch:1}
 # Kill all -march/tune/cpu because that screws building the target libs

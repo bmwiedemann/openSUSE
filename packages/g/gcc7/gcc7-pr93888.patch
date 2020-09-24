@@ -1,0 +1,41 @@
+commit 64ba6d17022eeb65f56f0b141c2640f9ab938f97
+Author: Jakub Jelinek <jakub@redhat.com>
+Date:   Wed Mar 4 12:59:04 2020 +0100
+
+    inliner: Copy DECL_BY_REFERENCE in copy_decl_to_var [PR93888]
+    
+    In the following testcase we emit wrong debug info for the karg
+    parameter in the DW_TAG_inlined_subroutine into main.
+    The problem is that the karg PARM_DECL is DECL_BY_REFERENCE and thus
+    in the IL has const K & type, but in the source just const K.
+    When the function is inlined, we create a VAR_DECL for it, but don't
+    set DECL_BY_REFERENCE, so when emitting DW_AT_location, we treat it like
+    a const K & typed variable, but it has DW_AT_abstract_origin which has
+    just the const K type and thus the debugger thinks the variable has
+    const K type.
+    
+    Fixed by copying the DECL_BY_REFERENCE flag.  Not doing it in
+    copy_decl_for_dup_finish, because copy_decl_no_change already copies
+    that flag through copy_node and in copy_result_decl_to_var it is
+    undesirable, as we handle DECL_BY_REFERENCE in that case instead
+    by changing the type.
+    
+    2020-03-04  Jakub Jelinek  <jakub@redhat.com>
+    
+            PR debug/93888
+            * tree-inline.c (copy_decl_to_var): Copy DECL_BY_REFERENCE flag.
+    
+            * g++.dg/guality/pr93888.C: New test.
+
+diff --git a/gcc/tree-inline.c b/gcc/tree-inline.c
+index 23941dade55..59798ec0454 100644
+--- a/gcc/tree-inline.c
++++ b/gcc/tree-inline.c
+@@ -5929,6 +5929,7 @@ copy_decl_to_var (tree decl, copy_body_data *id)
+   TREE_READONLY (copy) = TREE_READONLY (decl);
+   TREE_THIS_VOLATILE (copy) = TREE_THIS_VOLATILE (decl);
+   DECL_GIMPLE_REG_P (copy) = DECL_GIMPLE_REG_P (decl);
++  DECL_BY_REFERENCE (copy) = DECL_BY_REFERENCE (decl);
+ 
+   return copy_decl_for_dup_finish (id, decl, copy);
+ }
