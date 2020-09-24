@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  4 11:20:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.3.1:
+  * Include $STEAMTRICKS_DATA_REPO_DIR/00-common in PATH for fix scripts.
+  * Include SyslogIdentifier in steamtricksd.service.
+
+-------------------------------------------------------------------
 Mon Apr  6 20:33:30 UTC 2020 - Alexey Svistunov <svalx@svalx.net>
 
 - Add recommends for ca-certificates-steamtricks

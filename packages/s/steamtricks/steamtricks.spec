@@ -17,13 +17,13 @@
 
 
 Name:           steamtricks
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Workarounds for problems with Steam on Linux
 License:        GPL-2.0-only
 Group:          Amusements/Games/Other
 URL:            https://steamtricks.github.io/steamtricks/
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/steamtricks/steamtricks/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  systemd-rpm-macros
 # see https://github.com/steamtricks/steamtricks/issues/27
 Requires:       coreutils
@@ -52,7 +52,7 @@ and the like. This project aims to be the upstream source for packaging Steam
 fixes.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 
