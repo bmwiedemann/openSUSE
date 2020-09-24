@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 21 09:10:14 UTC 2020 - Vicente Zepeda Mas <vzepedamas@suse.com>
+
+- Update to version 3.3.3:
+  * fix: allow serverInfo field on index files
+
+-------------------------------------------------------------------
+Mon Sep 21 09:05:39 UTC 2020 - Vicente Zepeda Mas <vzepedamas@suse.com>
+
+- Update to version 3.3.2:
+  * fix rebase
+  * fix(cmd/helm): add build tags for architecture
+  * switched to stricter YAML parsing on plugin metadata files
+  * Merge pull request from GHSA-m54r-vrmv-hw33
+  * Merge pull request from GHSA-jm56-5h66-w453
+  * Merge pull request from GHSA-9vp5-m38w-j776
+  * fixed bug that caused helm create to not overwrite modified files
+  * replace --no-update with --force-update and invert default. BREAKING.
+  * improve the HTTP detection for tar archives
+  * handle case where dependency name collisions break dependency resolution
+  * validate the name passed in during helm create
+  * refactor the release name validation to be consistent across Helm
+  * fix: check mode bits on kubeconfig file
+
+-------------------------------------------------------------------
 Wed Sep 09 06:03:52 UTC 2020 - dmueller@suse.com
 
 - Update to version 3.3.1:
