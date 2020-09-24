@@ -17,15 +17,16 @@
 
 
 Name:           qclib
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://www.ibm.com/developerworks/linux/linux390/qclib.html
+URL:            https://public.dhe.ibm.com/software/dw/linux390/ht_src/%{name}-%{version}.tgz
 Source:         %{name}-%{version}.tgz
 Source1:        %{name}-rpmlintrc
-Patch1:         qclib.makefile.libdir.patch
+Patch1:         qclib.fix.missing.makefile.if.statement.patch
+Patch99:        qclib.makefile.libdir.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390 s390x
@@ -99,15 +100,16 @@ Systems.
 
 %build
 MYCFLAGS=$(grep ^CFLAGS Makefile | cut -f2 -d=)
-make %{?_smp_mflags} all CFLAGS="${MYCFLAGS} %{optflags}" V=1
-make %{?_smp_mflags} doc
+%make_build all CFLAGS="${MYCFLAGS} %{optflags}"
+%make_build doc
 
 %check
-make %{?_smp_mflags} test
-make %{?_smp_mflags} test-sh
+%make_build doc test
+%make_build doc test-sh
 
 %install
 %make_install LIBDIR=%{_lib} V=1
+gzip -9 %{buildroot}/%{_mandir}/man8/*
 make installdoc DESTDIR=%{buildroot} V=1
 
 %post -n libqc2 -p /sbin/ldconfig
@@ -117,7 +119,11 @@ make installdoc DESTDIR=%{buildroot} V=1
 %files
 %defattr(-,root,root)
 %dir %{_docdir}/%{name}
+%{_bindir}/zname
+%{_bindir}/zhypinfo
 %{_docdir}/%{name}/*
+%{_mandir}/man8/zname.8%{?ext_man}
+%{_mandir}/man8/zhypinfo.8%{?ext_man}
 
 %files -n libqc2
 %defattr(-,root,root)

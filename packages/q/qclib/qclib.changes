@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 16 18:27:21 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.2.0 (jsc#SLE-13711)
+  Changes:
+  - Add new tools zname and zhypinfo
+  Bug fixes:
+  - KVM hosts in mixed mode LPARs indicated both, CPs and IFLs, while only
+    CPs are actually used
+- Updated qclib.makefile.libdir.patch to apply against the current
+  version, and to make sure the two new man pages go to the right
+  directory.
+- Added qclib.fix.missing.makefile.if.statement.patch to correct a
+  problem in the Makefile.
+- Changed spec file from "make" to "%make_build" per spec-cleaner.
+- Updated the URL in the spec file to point to current location of
+  the package.
+
+-------------------------------------------------------------------
 Mon Apr 27 18:42:51 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 2.1.0 (bsc#1170410)
