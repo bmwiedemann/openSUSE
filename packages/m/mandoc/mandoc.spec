@@ -19,6 +19,7 @@
 Name:           mandoc
 Version:        1.14.5
 Release:        0
+%define nvr %{name}-%{version}-%{release}
 Summary:        UNIX manpage compiler
 License:        ISC
 Group:          Productivity/Publishing/Troff
@@ -27,12 +28,16 @@ Source:         http://mandoc.bsd.lv/snapshots/mandoc-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM empty_w-manpath.patch gh#neovim/neovim#11794 mcepl@suse.com
 # Add man -w producing manpath (among many other things)
 Patch0:         1.14.5-master.patch
+# PATCH-FIX-openSUSE looks like newer gcc doesn't like those duplicated dummy variables lnussel@suse.com
+Patch1:         mandoc-1.14.5-dummy.diff
 BuildRequires:  zlib-devel
 Provides:       man = %{version}
 Conflicts:      man
 Conflicts:      groff
 Conflicts:      groff-full
 Conflicts:      makewhat
+# file triggers use rpm.execute()
+Conflicts:      rpm < 4.15
 
 %description
 The mandoc manpage compiler toolset (formerly called "mdocml")
@@ -66,56 +71,54 @@ mv -fv %{_tmppath}/apropos %{buildroot}%{_sbindir}/makewhatis
 %{_sbindir}/makewhatis
 
 %filetriggerin -p <lua> -- %{_mandir}
--- TODO: replace with rpm.execute after rpm 4.15
-function execute(path, ...)
-  local pid = posix.fork()
-  if pid == 0 then
-     posix.exec(path, ...)
-     io.write(path, ": exec failed: ", posix.errno(), "\n")
-     os.exit(1)
-  end
-  if not pid then
-     error(path .. ": fork failed: " .. posix.errno() .. "\n")
-  end
-  posix.wait(pid)
-end
---
 -- no point registering individual files if we can call
 -- makewhatis in %%post to catch all if
+if posix.getenv("VERBOSE_FILETRIGGERS") then
+    print("%{nvr}: running file install trigger")
+end
 if posix.access("%{_mandir}/mandoc.db") then
     file = rpm.next_file()
     while file do
         if string.match(file, "%{_mandir}/man[^/]+/[^/]+%{?ext_man}$") then
-            execute("%{_sbindir}/makewhatis", "-d", "%{_mandir}", file)
+            if posix.access(file) then
+                if posix.getenv("VERBOSE_FILETRIGGERS") then
+                    print("%{nvr}: adding " .. file)
+                end
+                rpm.execute("%{_sbindir}/makewhatis", "-d", "%{_mandir}", file)
+            else
+                io.stderr:write("%{nvr}: missing " .. file .. "\n")
+            end
         end
         file = rpm.next_file()
     end
+elseif posix.getenv("VERBOSE_FILETRIGGERS") then
+    print("%{nvr}: missing mandoc.db, skipped")
 end
+io.flush()
 
 %filetriggerun -p <lua> -- %{_mandir}
--- TODO: replace with rpm.execute after rpm 4.15
-function execute(path, ...)
-  local pid = posix.fork()
-  if pid == 0 then
-     posix.exec(path, ...)
-     io.write(path, ": exec failed: ", posix.errno(), "\n")
-     os.exit(1)
-  end
-  if not pid then
-     error(path .. ": fork failed: " .. posix.errno() .. "\n")
-  end
-  posix.wait(pid)
+if posix.getenv("VERBOSE_FILETRIGGERS") then
+    print("%{nvr}: running file remove trigger")
 end
---
 if posix.access("%{_mandir}/mandoc.db") then
     file = rpm.next_file()
     while file do
         if string.match(file, "%{_mandir}/man[^/]+/[^/]+%{?ext_man}$") then
-            execute("%{_sbindir}/makewhatis", "-u", "%{_mandir}", file)
+            if posix.access(file) then
+                if posix.getenv("VERBOSE_FILETRIGGERS") then
+                    print("%{nvr}: removing " .. file)
+                end
+                rpm.execute("%{_sbindir}/makewhatis", "-u", "%{_mandir}", file)
+            else
+                io.stderr:write("%{nvr}: missing " .. file .. "\n")
+            end
         end
         file = rpm.next_file()
     end
+elseif posix.getenv("VERBOSE_FILETRIGGERS") then
+    print("%{nvr}: missing mandoc.db, skipped")
 end
+io.flush()
 
 %files
 %license LICENSE

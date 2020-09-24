@@ -1,0 +1,26 @@
+Index: mandoc-1.14.5/compat_getline.c
+===================================================================
+--- mandoc-1.14.5.orig/compat_getline.c
++++ mandoc-1.14.5/compat_getline.c
+@@ -2,7 +2,7 @@
+ 
+ #if HAVE_GETLINE
+ 
+-int dummy;
++static int dummy;
+ 
+ #else
+ 
+Index: mandoc-1.14.5/compat_reallocarray.c
+===================================================================
+--- mandoc-1.14.5.orig/compat_reallocarray.c
++++ mandoc-1.14.5/compat_reallocarray.c
+@@ -2,7 +2,7 @@
+ 
+ #if HAVE_REALLOCARRAY
+ 
+-int dummy;
++static int dummy;
+ 
+ #else
+ 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 22 15:12:55 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- fix build fail (mandoc-1.14.5-dummy.diff)
+- switch to using rpm.execute() as rpm 4.15 is now available
+- tweak trigger scripts to handle missing files better (boo#1176194)
+  There is no perfect solution though
+  https://github.com/rpm-software-management/rpm/issues/1370
+- make triggers more verbose if VERBOSE_FILETRIGGERS is set
+
+-------------------------------------------------------------------
 Mon Feb 10 18:46:58 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add 1.14.5-master.patch containing among many other things fix
