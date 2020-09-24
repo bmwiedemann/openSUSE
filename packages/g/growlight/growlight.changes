@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:49:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.11
+  * properly install manpages
+
+-------------------------------------------------------------------
+Wed Sep  2 06:00:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.10
+  * man pages: switch to pandoc
+- Drop patches
+  * set-docbook-xsl-stylesheet-path.patch (not longer needed)
+
+-------------------------------------------------------------------
+Sun Aug 30 08:38:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.9
+  * Upstream does not provide a changelog
+
+- Drop patches:
+  * 0002-require-notcurses-1.6.7.patch
+  * 0003-notcurses-supply-NCOPTION_INHIBIT_SETLOCALE.patch
+  * 0004-CMake-adapt-to-notcurses-1.6.12-ncreel-changes.patch
+  * 0005-s-cliptop-drawfromtop-g.patch
+  * 0006-print_adapter_devs-get-dimensions.patch
+  * 0009-CMake-use-FeatureSummary.patch
+  * 0010-fix-up-adapter-geometry-85.patch
+  * 0011-notcurses-restore-color-glorious-color-85.patch
+  * 0012-drop-bevel_top-bevel_bottom.patch
+  * 0013-drop-notcurses_cursor_enable.patch
+
+-------------------------------------------------------------------
 Thu Aug 27 16:13:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.2.8

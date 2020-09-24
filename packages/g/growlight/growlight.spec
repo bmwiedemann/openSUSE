@@ -1,6 +1,7 @@
 #
 # spec file for package growlight
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,27 +18,15 @@
 
 
 Name:           growlight
-Version:        1.2.8
+Version:        1.2.11
 Release:        0
 Summary:        Disk manipulation and system setup tool
 License:        GPL-3.0-or-later
 Group:          System/Monitoring
 URL:            https://nick-black.com/dankwiki/index.php/Growlight
 Source:         https://github.com/dankamongmen/growlight/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         0002-require-notcurses-1.6.7.patch
-Patch2:         0003-notcurses-supply-NCOPTION_INHIBIT_SETLOCALE.patch
-Patch3:         0004-CMake-adapt-to-notcurses-1.6.12-ncreel-changes.patch
-Patch4:         0005-s-cliptop-drawfromtop-g.patch
-Patch5:         0006-print_adapter_devs-get-dimensions.patch
-Patch8:         0009-CMake-use-FeatureSummary.patch
-Patch9:         0010-fix-up-adapter-geometry-85.patch
-Patch10:        0011-notcurses-restore-color-glorious-color-85.patch
-Patch11:        0012-drop-bevel_top-bevel_bottom.patch
-Patch12:        0013-drop-notcurses_cursor_enable.patch
-Patch13:        set-docbook-xsl-stylesheet-path.patch
 BuildRequires:  cmake
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libxslt
+BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(blkid) >= 2.20.1
 BuildRequires:  pkgconfig(devmapper) >= 1.02.74
@@ -47,7 +36,7 @@ BuildRequires:  pkgconfig(libcryptsetup) >= 2.0.2
 BuildRequires:  pkgconfig(libpci) >= 3.1.9
 BuildRequires:  pkgconfig(libudev) >= 175
 BuildRequires:  pkgconfig(nettle) >= 3.5.1
-BuildRequires:  pkgconfig(notcurses) >= 1.6.15
+BuildRequires:  pkgconfig(notcurses) >= 1.6.20
 BuildRequires:  pkgconfig(pciaccess) >= 0.13.1
 BuildRequires:  pkgconfig(readline)
 Recommends:     btrfsprogs
@@ -70,7 +59,7 @@ boot when run in an installer context. Both full-screen and REPL readline UIs
 are available.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %cmake -DUSE_LIBZFS=OFF
