@@ -18,7 +18,7 @@
 
 %global sover   1
 Name:           notcurses
-Version:        1.6.19
+Version:        1.7.2
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
@@ -28,6 +28,7 @@ URL:            https://nick-black.com/dankwiki/index.php/Notcurses
 Source:         https://github.com/dankamongmen/notcurses/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  QR-Code-generator-devel
 BuildRequires:  cmake
+BuildRequires:  doctest-devel >= 2.3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libunistring-devel
@@ -39,8 +40,8 @@ BuildRequires:  python3-pypandoc
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(libavcodec) >= 57.0
-BuildRequires:  pkgconfig(libavutil) >= 56.0
 BuildRequires:  pkgconfig(libavformat) >= 57.0
+BuildRequires:  pkgconfig(libavutil) >= 56.0
 BuildRequires:  pkgconfig(libswscale) >= 5.0
 BuildRequires:  pkgconfig(tinfo) >= 6.1
 
@@ -153,11 +154,14 @@ cd python
 %python3_install
 %fdupes %{buildroot}/%{python3_sitearch}
 
-
 %post   -n libnotcurses%{sover} -p /sbin/ldconfig
 %postun -n libnotcurses%{sover} -p /sbin/ldconfig
 %post   -n libnotcurses++%{sover} -p /sbin/ldconfig
 %postun -n libnotcurses++%{sover} -p /sbin/ldconfig
+
+%check
+cd build
+%make_build test
 
 %files -n libnotcurses%{sover}
 %license LICENSE
@@ -187,9 +191,9 @@ cd python
 %{_includedir}/notcurses
 %{_libdir}/libnotcurses.so
 %{_libdir}/pkgconfig/notcurses.pc
-%dir %{_libdir}/cmake/notcurses
-%{_libdir}/cmake/notcurses/notcursesConfig.cmake
-%{_libdir}/cmake/notcurses/notcursesConfigVersion.cmake
+%dir %{_libdir}/cmake/Notcurses
+%{_libdir}/cmake/Notcurses/NotcursesConfig.cmake
+%{_libdir}/cmake/Notcurses/NotcursesConfigVersion.cmake
 %{_mandir}/man3/*.3%{?ext_man}
 
 %files -n notcurses++-devel
@@ -199,7 +203,10 @@ cd python
 
 %files -n python3-notcurses
 %{_bindir}/notcurses-pydemo
+%{_bindir}/notcurses-direct-pydemo
 %{_mandir}/man1/notcurses-pydemo.1%{?ext_man}
+%{_mandir}/man1/notcurses-direct-pydemo.1%{?ext_man}
+
 %{python3_sitearch}/*
 
 %changelog

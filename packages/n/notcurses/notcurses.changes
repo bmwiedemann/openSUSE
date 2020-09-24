@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:39:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.2
+  * Exported `ncvisual_default_blitter()`, so that the effective
+    value of `NCBLIT_DEFAULT` can be determined.
+  * Added `NCREADER_OPTION_CURSOR`, instructing the `ncreader` to
+    make the terminal cursor visible, and manage the cursor's
+    placement.
+
+-------------------------------------------------------------------
+Tue Sep  1 05:58:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  * Renamed `CELL_SIMPLE_INITIALIZER` to `CELL_CHAR_INITIALIZER`,
+    and `cell_load_simple()` to `cell_load_char()`.
+  * Renamed `ncplane_putsimple()` to `ncplane_putchar()`,
+    `ncplane_putsimple_stainable()` to `ncplane_putchar_stainable()`,
+    and `ncplane_putsimple_yx()` to `ncplane_putchar_yx()`.
+
+-------------------------------------------------------------------
+Mon Aug 31 13:19:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Run unittest
+
+-------------------------------------------------------------------
+Mon Aug 31 06:49:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * Added `notcurses_ucs32_to_utf8()` conversion helper.
+  * `ncdirect_init()` now takes a third `uint64_t flags` parameter.
+    No flags have been defined, and this parameter ought be set
+    to 0.
+
+-------------------------------------------------------------------
+Sun Aug 30 08:21:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.20
+  * Added convenience functions `ncplane_y()` and `ncplane_x()`,
+    components of longstanding `ncplane_yx()`.
+  * `ncreel` functions now generally call `ncreel_redraw()`
+    themselves. This includes `ncreel_add()`, `ncreel_del()`,
+    `ncreel_next()`, and `ncreel_prev()`. `ncreel_redraw()` need
+    only be called to update tablets.
+  * In order to conform with CMake naming conventions, our CMake
+    package is now accessed as "Notcurses" rather than "notcurses".
+
+-------------------------------------------------------------------
 Fri Aug 28 18:40:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.19
