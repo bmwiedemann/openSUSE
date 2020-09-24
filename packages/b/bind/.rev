@@ -1508,4 +1508,12 @@ New Features
     <user>dimstar_suse</user>
     <comment>Require sysvinit-tools only when using systemd</comment>
   </revision>
+  <revision rev="157" vrev="3">
+    <srcmd5>9552a8f9e0859d2f3432f76f3f5e01d5</srcmd5>
+    <version>9.16.6</version>
+    <time>1600956803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835837</requestid>
+  </revision>
 </revisionlist>

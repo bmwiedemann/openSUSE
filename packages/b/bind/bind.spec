@@ -31,6 +31,7 @@
 %define isccfg_sonum 1600
 %define libisccfg libisccfg%{isccfg_sonum}
 %define libns_sonum 1604
+%define libns libns%{libns_sonum}
 
 %define	VENDOR SUSE
 %if 0%{?suse_version} >= 1500
@@ -190,6 +191,14 @@ balanced binary (AVL) trees, bit masks comparison, event based
 programs, heap-based priority queues, memory handling, and program
 logging.
 
+%package -n %{libns}
+Summary:        NS shared library used by BIND
+Group:          System/Libraries
+
+%description -n %{libns}
+This library contains miscellaneous utility function used by the BIND
+server and utilities.
+
 %package -n %{libisccc}
 Summary:        Command Channel Library used by BIND
 Group:          System/Libraries
@@ -225,6 +234,7 @@ Requires:       %{libirs} = %{version}
 Requires:       %{libisccc} = %{version}
 Requires:       %{libisccfg} = %{version}
 Requires:       %{libisc} = %{version}
+Requires:       %{libns} = %{version}
 Provides:       bind8-devel
 Provides:       bind9-devel
 Obsoletes:      bind8-devel < %{version}
@@ -478,6 +488,8 @@ fi
 %postun -n %{libirs} -p /sbin/ldconfig
 %post   -n %{libisc} -p /sbin/ldconfig
 %postun -n %{libisc} -p /sbin/ldconfig
+%post   -n %{libns} -p /sbin/ldconfig
+%postun -n %{libns} -p /sbin/ldconfig
 %post   -n %{libisccc} -p /sbin/ldconfig
 %postun -n %{libisccc} -p /sbin/ldconfig
 %post   -n %{libisccfg} -p /sbin/ldconfig
@@ -550,6 +562,8 @@ fi
 
 %files -n %{libisc}
 %{_libdir}/libisc.so.%{isc_sonum}*
+
+%files -n %{libns}
 %{_libdir}/libns.so.%{libns_sonum}*
 
 %files -n %{libisccc}
