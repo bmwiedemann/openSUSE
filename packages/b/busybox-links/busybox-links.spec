@@ -152,11 +152,13 @@ This package contains the symlinks to replace attr with busybox.
 
 %package -n busybox-sh
 Summary:        Busybox sh, ash and hush
-Requires:       busybox = %{version}
-Obsoletes:      busybox-ash < %{version}
 BuildRequires:  update-alternatives
+Requires:       busybox = %{version}
+Requires(post): busybox
 Requires(post): update-alternatives
+Requires(preun): busybox
 Requires(preun): update-alternatives
+Obsoletes:      busybox-ash < %{version}
 
 %description -n busybox-sh
 This package contains the busybox sh, ash and hush.
