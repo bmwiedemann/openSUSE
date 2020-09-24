@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 21 07:06:04 UTC 2020 - dmueller@suse.com
+
+- Update to version 2.0.21:
+  * bump to v2.0.21
+  * protect against kill(-1)
+  * Makefile: enable debuginfo generation
+  * Remove go.sum file and add go.mod
+  * Fail if conmon config could not be written
+  * nix: remove double definition for e2fsprogs
+  * Speedup static build by utilizing CI cache on `/nix` folder
+  * Fix nix build for failing e2fsprogs tests
+  * test: fix CI
+  * Use Podman for building
+
+-------------------------------------------------------------------
 Wed Jul 29 10:20:58 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v2.0.20 (bsc#1175821)
