@@ -19,7 +19,7 @@
 %global pkg_name rio
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.18.0
+Version:        0.1.19.0
 Release:        0
 Summary:        A standard library for Haskell
 License:        MIT
