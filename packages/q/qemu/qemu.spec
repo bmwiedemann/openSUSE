@@ -258,7 +258,7 @@ BuildRequires:  cross-x86_64-gcc%gcc_version
 %endif
 BuildRequires:  curl-devel
 BuildRequires:  cyrus-sasl-devel
-%if build_x86_firmware_from_source
+%if %{build_x86_firmware_from_source}
 BuildRequires:  dos2unix
 %endif
 BuildRequires:  e2fsprogs-devel
@@ -266,7 +266,7 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.48
-%if build_x86_firmware_from_source
+%if %{build_x86_firmware_from_source}
 BuildRequires:  glibc-devel-32bit
 %endif
 BuildRequires:  glusterfs-devel >= 3
@@ -316,7 +316,7 @@ BuildRequires:  lzo-devel
 BuildRequires:  makeinfo
 BuildRequires:  multipath-tools-devel
 BuildRequires:  pkgconfig(libudev)
-%if build_x86_firmware_from_source
+%if %{build_x86_firmware_from_source}
 BuildRequires:  nasm
 %endif
 BuildRequires:  ncurses-devel

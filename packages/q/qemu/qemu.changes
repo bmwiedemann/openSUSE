@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 21 12:10:08 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix spec file, where a conditional macro didn't have the correct
+  syntax (bsc#1176766)
+
+-------------------------------------------------------------------
 Tue Sep 15 21:19:55 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Change qemu-x86 packaging relationship with qemu-microvm from
