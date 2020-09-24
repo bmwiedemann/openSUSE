@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 12:12:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 202007:
+  * no upstream changelog
+
+-------------------------------------------------------------------
 Wed Apr 29 12:25:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build only for %ix86 x86_64 as it targets Intel CPU only

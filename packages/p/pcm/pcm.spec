@@ -1,7 +1,7 @@
 #
 # spec file for package pcm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           pcm
-Version:        201902
+Version:        202007
 Release:        0
 Summary:        Processor Counter Monitor
 License:        BSD-3-Clause
-Group:          System/Monitoring
 URL:            https://github.com/opcm/pcm
 Source:         https://github.com/opcm/pcm/archive/%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  make
-ExclusiveArch:  %ix86 x86_64
+ExclusiveArch:  %{ix86} x86_64
 
 %description
 Processor Counter Monitor (PCM) is an application programming interface (API)
@@ -42,15 +41,12 @@ sed -e 's:-O0 -g3 -Wall:%{optflags}:g' \
     -i daemon/daemon/Debug/subdir.mk
 
 %build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -fPIC"
+export CXXFLAGS="%{optflags} -fPIC"
 %make_build
 
 %install
-# install targets are overrated
-for i in *.x; do
-  install -D -m0755 $i %{buildroot}%{_sbindir}/${i/.x/}
-done
+%make_install prefix=%{buildroot}%{_prefix}
 
 %files
 %license LICENSE
@@ -68,5 +64,11 @@ done
 %{_sbindir}/pcm-power
 %{_sbindir}/pcm-sensor
 %{_sbindir}/pcm-tsx
+%{_bindir}/pcm-client
+%{_sbindir}/pcm-bw-histogram
+%{_sbindir}/pcm-daemon
+%{_sbindir}/pcm-sensor-server
+%dir %{_datadir}/pcm
+%{_datadir}/pcm/opCode.txt
 
 %changelog
