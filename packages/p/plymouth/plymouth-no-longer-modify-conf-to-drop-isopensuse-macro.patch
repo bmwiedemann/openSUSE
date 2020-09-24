@@ -1,0 +1,48 @@
+diff -Nura plymouth-0.9.5+git20190908+3abfab2/scripts/plymouth-set-default-theme.in plymouth-0.9.5+git20190908+3abfab2_new/scripts/plymouth-set-default-theme.in
+--- plymouth-0.9.5+git20190908+3abfab2/scripts/plymouth-set-default-theme.in	2019-09-09 15:31:37.000000000 +0800
++++ plymouth-0.9.5+git20190908+3abfab2_new/scripts/plymouth-set-default-theme.in	2020-09-07 16:09:51.568487811 +0800
+@@ -58,7 +58,12 @@
+ 
+ function get_default_theme ()
+ {
+-        THEME_NAME=$(read_theme_name_from_file ${PLYMOUTH_CONFDIR}/plymouthd.conf)
++        if [ -f /etc/plymouth/plymouthd.conf ]; then
++                THEME_NAME=$(read_theme_name_from_file ${PLYMOUTH_CONFDIR}/plymouthd.conf)
++        elif [ -f /usr/share/plymouth/plymouthd.defaults ]; then
++                THEME_NAME=$(read_theme_name_from_file ${PLYMOUTH_DATADIR}/plymouth/plymouthd.defaults)
++        fi
++
+         if [ -z "$THEME_NAME" -o ! -r "${PLYMOUTH_DATADIR}/plymouth/themes/$THEME_NAME/$THEME_NAME.plymouth" ]; then
+                 THEME_NAME=$(read_theme_name_from_file ${PLYMOUTH_POLICYDIR}/plymouthd.defaults)
+         fi
+@@ -168,9 +173,16 @@
+ fi
+ 
+ if [ $DO_RESET -ne 0 ]; then
+-        [ -f ${PLYMOUTH_CONFDIR}/plymouthd.conf ] || exit 0
+-        sed -i -e '/^Theme[[:blank:]]*=.*/d' ${PLYMOUTH_CONFDIR}/plymouthd.conf
+-        exit $?
++        if [ -f ${PLYMOUTH_CONFDIR}/plymouthd.conf ]; then
++                 sed -i -e '/^Theme[[:blank:]]*=.*/d' ${PLYMOUTH_CONFDIR}/plymouthd.conf
++                 exit $?
++         elif [ -f ${PLYMOUTH_DATADIR}/plymouth/plymouthd.defauts ]; then
++                 cp ${PLYMOUTH_DATADIR}/plymouth/plymouthd.defauts ${PLYMOUTH_CONFDIR}/plymouthd.conf
++                 sed -i -e '/^Theme[[:blank:]]*=.*/d' ${PLYMOUTH_CONFDIR}/plymouthd.conf
++                 exit $?
++         else
++                 exit 0
++         fi
+ fi
+ 
+ if [ ! -e ${PLYMOUTH_DATADIR}/plymouth/themes/${THEME_NAME}/${THEME_NAME}.plymouth ]; then
+diff -Nura plymouth-0.9.5+git20190908+3abfab2/src/Makefile.am plymouth-0.9.5+git20190908+3abfab2_new/src/Makefile.am
+--- plymouth-0.9.5+git20190908+3abfab2/src/Makefile.am	2019-09-09 15:31:37.000000000 +0800
++++ plymouth-0.9.5+git20190908+3abfab2_new/src/Makefile.am	2020-09-07 10:50:57.711594680 +0800
+@@ -16,6 +16,7 @@
+ 
+ plymouthd_CFLAGS = $(PLYMOUTH_CFLAGS)                                         \
+ 		   -rdynamic                                                  \
++		   -DPLYMOUTH_DATADIR=\"$(PLYMOUTH_DATAPATH)\"                \
+ 		   -DPLYMOUTH_PLUGIN_PATH=\"$(PLYMOUTH_PLUGIN_PATH)\"         \
+ 		   -DPLYMOUTH_THEME_PATH=\"$(PLYMOUTH_THEME_PATH)/\"          \
+ 		   -DPLYMOUTH_POLICY_DIR=\"$(PLYMOUTH_POLICY_DIR)/\"          \

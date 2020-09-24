@@ -33,7 +33,6 @@ Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            http://www.freedesktop.org/wiki/Software/Plymouth
-
 Source0:        %{name}-%{version}.tar.xz
 Source1:        boot-duration
 # PATCH-FIX-OPENSUSE plymouth-dracut-path.patch tittiatcoke@gmail.com -- Prefix is /usr/sbin and /usr/bin
@@ -46,18 +45,17 @@ Patch2:         plymouth-correct-runtime-dir.patch
 Patch3:         plymouth-manpages.patch
 # PATCH-FIX-OPENSUSE plymouth-avoid-umount-hanging-shutdown.patch bnc#1105688, bnc#1129386, bnc#1134660 qzhao@opensuse.org -- Drop grantpt() to avoid system failed to unmount /var during shutdown.
 Patch4:         plymouth-avoid-umount-hanging-shutdown.patch
-
+# PATCH-FIX-SLE plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch qzhao@suse.com  jsc#SLE-11637 -- plymouth will use plymouthd.defaults instead of plymouth.conf to close the leap gap.
+Patch5:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1001:      0002-Install-label-ft-plugin-into-initrd-if-available.patch
 # PATCH-FIX-UPSTREAM 0003-fix_null_deref.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1002:      0003-fix_null_deref.patch
-
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
-BuildRequires:  git
 BuildRequires:  kernel-headers
 BuildRequires:  libtool
 BuildRequires:  libxslt
@@ -78,7 +76,6 @@ BuildRequires:  pkgconfig(systemd) >= 186
 %if %{with x11_renderer}
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 %endif
-
 Recommends:     %{name}-lang
 Requires:       %{name}-branding
 Requires:       gnu-unifont-bitmap-fonts
@@ -130,6 +127,17 @@ Requires:       libply-boot-client%{soversion} = %{version}
 
 %description -n libply%{soversion}
 This package contains the libply library used by Plymouth.
+
+%package branding-upstream
+Summary:        default configuration file and branding from the Plymouth upstream.
+Group:          System/Base
+Provides:       %{name}-branding = %{version}-%{release}.
+Conflicts:      %{name}-branding
+BuildArch:      noarch
+
+%description branding-upstream
+This package contains the /usr/share/plymouthd.defaults which contains the basic 
+settings and branding from the upstream.
 
 %package devel
 Summary:        Libraries and headers for writing Plymouth splash plugins
@@ -364,16 +372,12 @@ This package contains the "bgrt" boot splash theme for
 Plymouth. 
 
 %prep
-%autosetup -S git
-autoreconf -ivf -Wno-portabilty
+%setup -q
+%autopatch -p1
+autoreconf -ivf
+
 # replace builddate with patch0date
 sed -i "s/__DATE__/\"$(stat -c %%y %{_sourcedir}/%{name}.changes)\"/" src/main.c
-# Change the default theme
-%if 0%{?is_opensuse}
-sed -i -e 's/spinner/bgrt/g' src/plymouthd.defaults
-%else
-sed -i -e 's/spinner/SLE/g' src/plymouthd.defaults
-%endif
 
 %build
 %configure \
@@ -381,7 +385,6 @@ sed -i -e 's/spinner/SLE/g' src/plymouthd.defaults
            --enable-tracing                                      \
            --disable-silent-rules                                \
            --disable-static                                      \
-           --disable-gdm-transition                              \
            --disable-upstart-monitoring                          \
            --disable-tests                                       \
            --disable-libkms                                      \
@@ -421,7 +424,10 @@ touch %{buildroot}%{_localstatedir}/log/boot.log
 touch %{buildroot}%{_localstatedir}/spool/plymouth/boot.log
 cp $RPM_SOURCE_DIR/boot-duration %{buildroot}%{_datadir}/plymouth/default-boot-duration
 cp $RPM_SOURCE_DIR/boot-duration %{buildroot}%{_localstatedir}/lib/plymouth
-cp %{buildroot}/%{_datadir}/plymouth/plymouthd.defaults %{buildroot}/%{_sysconfdir}/plymouth/plymouthd.conf
+
+# We will nolonger ship plymouthd.conf, Plymouthd will read /usr/share/plymouth/plymouthd.defaults if /etc/plymouth/plymouthd.conf doesn't exist(jsc#SLE-11637).
+rm -f  %{buildroot}%{_sysconfdir}/plymouth/plymouthd.conf
+rm -f  %{buildroot}%{_datadir}/plymouth/plymouthd.conf
 
 %post
 %{?regenerate_initrd_post}
@@ -526,7 +532,7 @@ fi
 %dir %{_libdir}/plymouth
 %dir %{_libdir}/plymouth/renderers
 %dir %{_sysconfdir}/plymouth
-%config(noreplace) %{_sysconfdir}/plymouth/plymouthd.conf
+%ghost %{_sysconfdir}/plymouth/plymouthd.conf
 %{plymouthdaemon_execdir}/plymouthd
 %{plymouthclient_execdir}/plymouth
 /bin/plymouth
@@ -537,7 +543,6 @@ fi
 %{_datadir}/plymouth/default-boot-duration
 %{_datadir}/plymouth/themes/details/details.plymouth
 %{_datadir}/plymouth/themes/text/text.plymouth
-%{_datadir}/plymouth/plymouthd.defaults
 %{_datadir}/plymouth/bizcom.png
 %ghost /run/plymouth
 %{_localstatedir}/spool/plymouth
@@ -546,6 +551,9 @@ fi
 %{_unitdir}/*
 %ghost %{_localstatedir}/log/boot.log
 /usr/share/locale/
+
+%files branding-upstream
+%{_datadir}/plymouth/plymouthd.defaults
 
 %files dracut
 %{_libexecdir}/plymouth/plymouth-populate-initrd

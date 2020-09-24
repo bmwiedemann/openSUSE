@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 29 06:13:50 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch:
+  plymouth will use plymouthd.defaults instead of plymouth.conf and 
+  packge plymouthd.defaults in a seperet RPM. this can avoid change 
+  SUSE or openSUSE branding section with is_opensuse macro in the 
+  config file. means this modification can close the leaps gap
+  (jsc#SLE-11637).
+
+-------------------------------------------------------------------
+Sat Aug 28 16:11:25 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update plymouth.spec: Dropping gdm transition because it has 
+  alreay deprecated by upstream. Removing git build dependency.
+
+-------------------------------------------------------------------
 Mon Jun 15 13:54:25 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Drop plymouth-only_use_fb_for_cirrus_bochs.patch: openSUSE user 
