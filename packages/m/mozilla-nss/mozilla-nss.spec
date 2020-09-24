@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-nss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2006-2020 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.55
-%define NSPR_min_version 4.27
+%global nss_softokn_fips_version 3.56
+%define NSPR_min_version 4.28
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.55
+Version:        3.56
 Release:        0
-%define underscore_version 3_55
+%define underscore_version 3_56
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -68,7 +68,6 @@ Patch30:        nss-fips-tls-allow-md5-prf.patch
 Patch31:        nss-fips-use-strong-random-pool.patch
 Patch32:        nss-fips-detect-fips-mode-fixes.patch
 Patch34:        nss-fips-combined-hash-sign-dsa-ecdsa.patch
-Patch35:        nss-fix-dh-pkcs-derive-inverted-logic.patch
 Patch36:        nss-fips-aes-keywrap-post.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
@@ -226,7 +225,6 @@ cd nss
 %patch31 -p1
 %patch32 -p1
 %patch34 -p1
-%patch35 -p1
 %patch36 -p1
 
 # additional CA certificates

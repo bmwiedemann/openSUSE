@@ -6,14 +6,14 @@
 # Parent  3f4d682c9a1e8b3d939c744ee249e23179db5191
 imported patch nss-fips-approved-crypto-non-ec.patch
 
-diff --git a/lib/freebl/alg2268.c b/lib/freebl/alg2268.c
---- a/lib/freebl/alg2268.c
-+++ b/lib/freebl/alg2268.c
+diff --git a/lib/freebl/deprecated/alg2268.c b/lib/freebl/deprecated/alg2268.c
+--- a/lib/freebl/deprecated/alg2268.c
++++ b/lib/freebl/deprecated/alg2268.c
 @@ -16,6 +16,8 @@
  #include <stddef.h> /* for ptrdiff_t */
  #endif
  
-+#include "fips.h"
++#include "../fips.h"
 +
  /*
  ** RC2 symmetric block cypher

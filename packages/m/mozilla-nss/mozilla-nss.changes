@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Sep 17 13:57:18 UTC 2020 - Hans Petter Jansson <hpj@suse.com>
+
+- Update nss-fips-approved-crypto-non-ec.patch to match RC2 code
+  being moved to deprecated/.
+- Remove nss-fix-dh-pkcs-derive-inverted-logic.patch. This was made
+  obsolete by upstream changes.
+
+-------------------------------------------------------------------
+Tue Sep  8 20:17:19 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.56
+  Notable changes
+  * bmo#1650702 - Support SHA-1 HW acceleration on ARMv8
+  * bmo#1656981 - Use MPI comba and mulq optimizations on x86-64 MacOS.
+  * bmo#1654142 - Add CPU feature detection for Intel SHA extension.
+  * bmo#1648822 - Add stricter validation of DH keys in FIPS mode.
+  * bmo#1656986 - Properly detect arm64 during GYP build architecture
+                  detection.
+  * bmo#1652729 - Add build flag to disable RC2 and relocate to
+                  lib/freebl/deprecated.
+  * bmo#1656429 - Correct RTT estimate used in 0-RTT anti-replay.
+  * bmo#1588941 - Send empty certificate message when scheme selection
+                  fails.
+  * bmo#1652032 - Fix failure to build in Windows arm64 makefile
+                  cross-compilation.
+  * bmo#1625791 - Fix deadlock issue in nssSlot_IsTokenPresent.
+  * bmo#1653975 - Fix 3.53 regression by setting "all" as the default
+                  makefile target.
+  * bmo#1659792 - Fix broken libpkix tests with unexpired PayPal cert.
+  * bmo#1659814 - Fix interop.sh failures with newer tls-interop
+                  commit and dependencies.
+  * bmo#1656519 - NSPR dependency updated to 4.28
+- do not hard require mozilla-nss-certs-32bit via baselibs
+  (boo#1176206)
+
+-------------------------------------------------------------------
 Sat Aug 22 06:41:15 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.55
