@@ -23,7 +23,7 @@
         -DLIB_INSTALL_DIR:PATH=%{_libdir} \\\
         -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
         -DSHARE_INSTALL_PREFIX:PATH=%{_datadir} \\\
-        -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \\\
+        -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \\\
         -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \\\
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \\\
         -DCMAKE_C_FLAGS="${CFLAGS:-%optflags} -DNDEBUG" \\\

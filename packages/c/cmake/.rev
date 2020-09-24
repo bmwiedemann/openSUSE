@@ -1579,4 +1579,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
   was updated for MSVC 19.27 as mentioned above.</comment>
     <requestid>830697</requestid>
   </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>789277a14388d9e5b6991bd596c88e49</srcmd5>
+    <version>3.18.2</version>
+    <time>1600956780</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835798</requestid>
+  </revision>
 </revisionlist>

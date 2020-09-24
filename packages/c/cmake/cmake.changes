@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 14 10:29:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- reapply this change (bsc#1174581):
+  * Fix setting CMAKE_INSTALL_LIBDIR in cmake macro
+  * This is a relative path, see `cmake --help-module GNUInstallDirs`
+  see also
+  https://gitlab.kitware.com/cmake/cmake/-/issues/20250
+  https://github.com/arvidn/libtorrent/issues/5125#issuecomment-691559244
+
+-------------------------------------------------------------------
 Mon Aug 24 19:02:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.18.2:
