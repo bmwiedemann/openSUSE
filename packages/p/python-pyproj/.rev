@@ -71,4 +71,13 @@
     <comment></comment>
     <requestid>807126</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9e25e78c9e6aab8c47452da26b57d39e</srcmd5>
+    <version>2.6.1.post1</version>
+    <time>1600956924</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix failing test after Proj update to 7.1.1
+  - added patch pyproj-3.0.0-TST-Update-tests-with-scope-remarks-649.patch (forwarded request 836456 from LPechacek)</comment>
+    <requestid>836475</requestid>
+  </revision>
 </revisionlist>

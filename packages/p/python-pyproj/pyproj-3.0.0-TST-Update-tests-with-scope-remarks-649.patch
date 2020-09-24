@@ -1,0 +1,66 @@
+From: "Alan D. Snow" <alansnow21@gmail.com>
+Date: Fri, 29 May 2020 07:41:44 -0500
+Subject: [PATCH] TST: Update tests with scope & remarks (#649)
+Git-commit: 5856cdacef62746594e17f69cb802a202d3fdfaa
+Patch-mainline: v3.0.0
+
+---
+ test/crs/test_crs.py     | 16 +++++-----------
+ test/test_transformer.py | 10 +++++-----
+ 2 files changed, 10 insertions(+), 16 deletions(-)
+
+diff --git a/test/crs/test_crs.py b/test/crs/test_crs.py
+index 8f6683863b39..76ec7b6105d1 100644
+--- a/test/crs/test_crs.py
++++ b/test/crs/test_crs.py
+@@ -1297,17 +1297,11 @@ def test_operations():
+ 
+ 
+ def test_operations__scope_remarks():
+-
+-    transformer = TransformerGroup(28356, 7856).transformers[0]
+-    coord_op = CoordinateOperation.from_string(transformer.to_wkt())
+-    assert coord_op.operations == transformer.operations
+-    # scope does not transfer for some reason
+-    # assert [op.scope for op in transformer.operations] == [
+-    #     op.scope for op in coord_op.operations
+-    # ]
+-    assert [op.remarks for op in transformer.operations] == [
+-        op.remarks for op in coord_op.operations
+-    ]
++    operation = TransformerGroup(28356, 7856).transformers[0].operations[1]
++    coord_op = CoordinateOperation.from_string(operation.to_wkt())
++    assert coord_op == operation
++    assert coord_op.remarks == operation.remarks
++    assert coord_op.scope == operation.scope
+ 
+ 
+ def test_crs_equals():
+diff --git a/test/test_transformer.py b/test/test_transformer.py
+index 18e3f99576e7..1dc55cf49284 100644
+--- a/test/test_transformer.py
++++ b/test/test_transformer.py
+@@ -564,15 +564,15 @@ def test_transformer__operations__scope_remarks():
+     transformer = TransformerGroup(28356, 7856).transformers[0]
+     assert transformer.scope is None
+     assert [op.scope for op in transformer.operations] == [
+-        None,
++        "Large and medium scale topographic mapping and engineering survey.",
+         "Conformal transformation of GDA94 coordinates that have been derived through "
+         "GNSS CORS.",
+-        None,
++        "Large and medium scale topographic mapping and engineering survey.",
+     ]
+-    assert [str(op.remarks)[:5] for op in transformer.operations] == [
+-        "None",
++    assert [str(op.remarks)[:5].strip() for op in transformer.operations] == [
++        "Grid",
+         "Scale",
+-        "None",
++        "Grid",
+     ]
+ 
+ 
+-- 
+2.28.0
+

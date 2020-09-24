@@ -26,6 +26,7 @@ License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
+Patch0:         pyproj-3.0.0-TST-Update-tests-with-scope-remarks-649.patch
 BuildRequires:  %{python_module Cython} >= 0.23.5
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module aenum}
@@ -70,6 +71,7 @@ where you may access the most up-to-date source.
 
 %prep
 %setup -q -n pyproj-%{version}
+%patch0 -p1
 
 %build
 %python_build
