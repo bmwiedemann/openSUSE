@@ -645,7 +645,6 @@
       <repopackage name="git-daemon"/>
       <repopackage name="git-email"/>
       <repopackage name="git-gui"/>
-      <repopackage name="git-svn"/>
       <repopackage name="git-web"/>
       <repopackage name="gitg"/>
       <repopackage name="gitg-lang"/>
@@ -4651,7 +4650,6 @@
       <repopackage name="subversion"/>
       <repopackage name="subversion-bash-completion"/>
       <repopackage name="subversion-doc"/>
-      <repopackage name="subversion-perl"/>
       <repopackage name="subversion-server"/>
       <repopackage name="subversion-tools"/>
       <repopackage name="sudo"/>

@@ -298,6 +298,8 @@ unsorted:
   - acars-examples 
   - acars2-examples 
   - acarsdec 
+  - accel-config 
+  - accel-config-devel 
   - accerciser-plugin-IPython 
   - accounts-qml-module-doc 
   - accountsservice-devel 
@@ -1681,6 +1683,7 @@ unsorted:
   - ceph-radosgw: [x86_64] 
   - ceph-test: [x86_64] 
   - cephadm: [x86_64] 
+  - cephfs-mirror: [x86_64] 
   - cephfs-shell: [x86_64] 
   - cereal-devel 
   - certbot-systemd-timer 
@@ -4972,6 +4975,7 @@ unsorted:
   - git-subrepo 
   - git-subrepo-bash-completion 
   - git-subrepo-zsh-completion 
+  - git-svn: [i586] 
   - git-sync 
   - git-test 
   - gitolite 
@@ -5255,7 +5259,6 @@ unsorted:
   - gnonograms-lang 
   - gnote 
   - gnote-lang 
-  - gns3: [x86_64] 
   - gns3-server 
   - gnu-cobol 
   - gnu-compilers-hpc 
@@ -5582,6 +5585,7 @@ unsorted:
   - groovy18 
   - groovy18-javadoc 
   - groovy18-lib 
+  - growlight 
   - growpart: [i586] 
   - growpart-generator 
   - grpc-devel 
@@ -8590,6 +8594,7 @@ unsorted:
   - libacars-devel 
   - libacars1 
   - libacars2-devel 
+  - libaccel-config1 
   - libaccounts-glib-devel 
   - libaccounts-glib-docs 
   - libaccounts-glib-tools 
@@ -8607,7 +8612,7 @@ unsorted:
   - libada9 
   - libada9-32bit: [x86_64] 
   - libaddrxlat-devel 
-  - libaddrxlat0 
+  - libaddrxlat1 
   - libadlmidi-devel 
   - libadms0 
   - libadns-devel 
@@ -9161,7 +9166,7 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres1 
   - libcerf-devel 
@@ -10549,6 +10554,8 @@ unsorted:
   - libini_config-devel 
   - libini_config-devel-32bit: [x86_64] 
   - libini_config5-32bit: [x86_64] 
+  - libinih-devel 
+  - libinih0 
   - libiniparser-devel 
   - libiniparser1 
   - libiniparser1-32bit: [x86_64] 
@@ -10683,7 +10690,7 @@ unsorted:
   - libkdstatemachineeditor_debuginterfacesource-static 
   - libkdstatemachineeditor_view1_2_7 
   - libkdumpfile-devel 
-  - libkdumpfile7 
+  - libkdumpfile8 
   - libkea-asiodns1 
   - libkea-asiolink9 
   - libkea-cc8 
@@ -12165,8 +12172,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli4 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
   - libragel0 
   - libraptor-devel 
@@ -12189,7 +12196,7 @@ unsorted:
   - libraw1394-devel-32bit: [x86_64] 
   - libraw1394-tools 
   - libraylib301 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -12419,7 +12426,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime1 
@@ -21168,7 +21175,6 @@ unsorted:
   - python3-localzone 
   - python3-locket 
   - python3-lockfile 
-  - python3-logilab-astng: [x86_64] 
   - python3-logilab-common 
   - python3-logreduce 
   - python3-loguru 
@@ -22829,7 +22835,7 @@ unsorted:
   - radeontop 
   - radeontop-lang 
   - radiotray-ng 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - ragel 
@@ -25828,6 +25834,7 @@ unsorted:
   - subunit-filters 
   - subunit-shell 
   - subversion-devel 
+  - subversion-perl: [i586] 
   - subversion-python 
   - subversion-ruby 
   - suck 
@@ -35636,7 +35643,7 @@ unsorted:
   - zlib-devel-32bit: [x86_64] 
   - zlib-devel-static 
   - zlib-devel-static-32bit: [x86_64] 
-  - zlib-testsuite: [i586] 
+  - zlib-testsuite 
   - zlibrary-data 
   - zlibrary-devel 
   - zlibrary0_99 
