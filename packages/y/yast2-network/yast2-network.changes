@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 21 13:15:39 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed false error in the y2log (bsc#1176653)
+- 4.3.22
+
+-------------------------------------------------------------------
+Mon Sep 21 07:58:22 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix connection hostname initialization (bsc#1175579)
+- 4.3.21
+
+-------------------------------------------------------------------
 Tue Sep 15 19:51:36 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Infer the vlan_id from the interface file name when the attribute
