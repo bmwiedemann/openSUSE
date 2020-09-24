@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 23 14:43:57 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- kitty doesn't use libexecdir 
+
+-------------------------------------------------------------------
 Wed Aug 12 06:50:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.3:
