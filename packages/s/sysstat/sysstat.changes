@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 18 14:47:02 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix average iowait output of sar [bsc#1174227]
+  * The iowait value reported by the kernel can also decrement as
+    a result of inaccurate iowait tracking. Waiting on IO can be
+    first accounted as iowait but then instead as idle. Therefore
+    if the idle value during the same period did not decrease then
+    consider this is a problem with the iowait reporting and correct
+    the previous value according to the new reading. Otherwise, treat
+    this as CPU coming back online.
+- Add patch sysstat-iowait-decr.patch
+
+-------------------------------------------------------------------
 Mon Aug 31 11:43:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update sysstat-8.1.6-sa1sa2lock.diff: also remove locking on

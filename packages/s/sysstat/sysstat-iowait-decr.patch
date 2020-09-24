@@ -1,0 +1,63 @@
+From 1f5949d4a6fcb33065dbb1d509f356db039998ed Mon Sep 17 00:00:00 2001
+From: Sebastien GODARD <sysstat@users.noreply.github.com>
+Date: Wed, 2 Sep 2020 19:04:04 +0200
+Subject: [PATCH] Workaround for iowait being decremented
+
+The iowait value reported by the kernel on NO_HZ systems can decrement
+as a result of inaccurate iowait tracking. Waiting on IO can be first
+accounted as iowait but then instead as idle.
+
+Function get_per_cpu_interval() considers iowait going backwards between
+two readings as a CPU coming back online and resets the iowait value of
+the first reading to 0. If iowait is decremented only because of
+inaccurate tracking, this causes that almost all time between the two
+readings is incorrectly recognized by sar as being spent in iowait.
+
+The patch updates the code in get_per_cpu_interval() to recognize this
+situation. If the iowait value between two readings decremented but the
+idle value did not then the code now considers it as a problem with the
+iowait reporting and corrects the first value according to the second
+reading. Otherwise, the code remains treating decremented iowait as a
+CPU coming back online.
+
+Fixes #14.
+
+Signed-off-by: Sebastien GODARD <sysstat@users.noreply.github.com>
+---
+ rd_stats.c | 20 +++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/rd_stats.c b/rd_stats.c
+index 56d42d00..fb93f23f 100644
+--- a/rd_stats.c
++++ b/rd_stats.c
+@@ -440,12 +440,26 @@ unsigned long long get_per_cpu_interval(struct stats_cpu *scc,
+ 	 * value was greater than ULLONG_MAX - 0x7ffff (the counter probably
+ 	 * overflew).
+ 	 */
++	if ((scc->cpu_iowait < scp->cpu_iowait) && (scp->cpu_iowait < (ULLONG_MAX - 0x7ffff))) {
++		/*
++		 * The iowait value reported by the kernel can also decrement as
++		 * a result of inaccurate iowait tracking. Waiting on IO can be
++		 * first accounted as iowait but then instead as idle.
++		 * Therefore if the idle value during the same period did not
++		 * decrease then consider this is a problem with the iowait
++		 * reporting and correct the previous value according to the new
++		 * reading. Otherwise, treat this as CPU coming back online.
++		 */
++		if ((scc->cpu_idle > scp->cpu_idle) || (scp->cpu_idle >= (ULLONG_MAX - 0x7ffff))) {
++			scp->cpu_iowait = scc->cpu_iowait;
++		}
++		else {
++			scp->cpu_iowait = 0;
++		}
++	}
+ 	if ((scc->cpu_idle < scp->cpu_idle) && (scp->cpu_idle < (ULLONG_MAX - 0x7ffff))) {
+ 		scp->cpu_idle = 0;
+ 	}
+-	if ((scc->cpu_iowait < scp->cpu_iowait) && (scp->cpu_iowait < (ULLONG_MAX - 0x7ffff))) {
+-		scp->cpu_iowait = 0;
+-	}
+ 
+ 	/*
+ 	 * Don't take cpu_guest and cpu_guest_nice into account

@@ -35,6 +35,8 @@ Patch2:         sysstat-8.0.4-pagesize.diff
 Patch3:         sysstat-service.patch
 # PATCH-FIX-OPENSUSE Temporarily disable failing tests on s390x and ppc64
 Patch4:         sysstat-disable-test-failures.patch
+# PATCH-FIX-OPENSUSE bsc#1174227 Workaround for iowait being decremented
+Patch5:         sysstat-iowait-decr.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
 BuildRequires:  pkgconfig
@@ -77,6 +79,7 @@ from a sysstat package.
 %ifarch s390x ppc64
 %patch4 -p1
 %endif
+%patch5 -p1
 cp %{S:1} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;
