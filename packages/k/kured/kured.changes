@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 21 11:43:34 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.5.0:
+  * Prepare 1.5.0 release
+  * Bump helm/kind-action from v1.0.0-rc.1 to v1.0.0
+  * Bump helm/chart-testing-action from v1.0.0-rc.2 to v1.0.0
+  * Add dependabot
+  * Prepare for k8s release 1.19 (Aug 25)
+
+-------------------------------------------------------------------
 Fri Aug 14 11:35:54 UTC 2020 - kukuk@suse.com
 
 - Update to version 1.4.5:

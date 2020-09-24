@@ -166,4 +166,17 @@
   * restructured and improved service</comment>
     <requestid>826666</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>33bf5f57aadba2e1acd2b7778d556b95</srcmd5>
+    <version>1.5.0</version>
+    <time>1600956788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0:
+  * Prepare 1.5.0 release
+  * Bump helm/kind-action from v1.0.0-rc.1 to v1.0.0
+  * Bump helm/chart-testing-action from v1.0.0-rc.2 to v1.0.0
+  * Add dependabot
+  * Prepare for k8s release 1.19 (Aug 25)</comment>
+    <requestid>835813</requestid>
+  </revision>
 </revisionlist>
