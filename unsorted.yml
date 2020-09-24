@@ -2627,6 +2627,7 @@ unsorted:
   - docker-test 
   - docker-zsh-completion 
   - docker_auth 
+  - doctest-devel 
   - dogtail 
   - doh 
   - dolphin-devel 
@@ -7396,8 +7397,8 @@ unsorted:
   - klavaro 
   - klavaro-devel 
   - kldap-devel 
-  - klee 
-  - klee-uclibc-devel-static 
+  - klee: [x86_64] 
+  - klee-uclibc-devel-static: [x86_64] 
   - klettres 
   - klettres-lang 
   - klfbackend-devel 
@@ -10996,7 +10997,7 @@ unsorted:
   - libmateweather1 
   - libmateweather1-32bit: [x86_64] 
   - libmatio-devel 
-  - libmatio9 
+  - libmatio11 
   - libmatroska-devel 
   - libmatroska7-32bit: [x86_64] 
   - libmaxminddb-devel 
@@ -11352,6 +11353,7 @@ unsorted:
   - libnotmuch5 
   - libnova-0_15-0 
   - libnova-devel 
+  - libns1604-32bit: [x86_64] 
   - libnscd-devel 
   - libnsl-devel 
   - libnss_slurm2: [x86_64] 
@@ -13259,6 +13261,7 @@ unsorted:
   - libvisual-32bit: [x86_64] 
   - libvisual-devel 
   - libvkd3d-shader1 
+  - libvkd3d-shader1-32bit: [x86_64] 
   - libvkd3d-utils1 
   - libvkd3d-utils1-32bit: [x86_64] 
   - libvkd3d1 
@@ -13665,7 +13668,6 @@ unsorted:
   - libyami-devel 
   - libyami-utils: [x86_64] 
   - libyami1 
-  - libyaml-cpp0_6 
   - libyaml-devel 
   - libyang-cpp-devel 
   - libyang-cpp1 
@@ -18941,6 +18943,7 @@ unsorted:
   - pluma 
   - pluma-devel 
   - pluma-lang 
+  - plymouth-branding-upstream 
   - plymouth-devel 
   - plymouth-plugin-fade-throbber 
   - plymouth-plugin-script 
@@ -19579,7 +19582,6 @@ unsorted:
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
-  - python-requestbuilder 
   - python-saharaclient-doc 
   - python-senlinclient-doc 
   - python-shodan-doc 
@@ -22036,6 +22038,7 @@ unsorted:
   - python3-repoze.lru 
   - python3-repoze.sphinx.autointerface 
   - python3-repoze.who 
+  - python3-requestbuilder 
   - python3-requests-aws 
   - python3-requests-cache 
   - python3-requests-download 
@@ -34234,6 +34237,7 @@ unsorted:
   - twinkle 
   - twm 
   - twolame 
+  - twups 
   - txt2man 
   - tycho: [x86_64] 
   - tycho-bootstrap: [x86_64] 
