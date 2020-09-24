@@ -68,8 +68,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %defattr(-,root,root)
 %doc COPYING
-%{_libexecdir}/mono/soup-sharp/
-%{_libexecdir}/mono/gac/soup-sharp/
+%{_prefix}/lib/mono/soup-sharp/
+%{_prefix}/lib/mono/gac/soup-sharp/
 %{_libdir}/libsoupsharpglue-2.42.2.so
 
 %files devel
