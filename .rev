@@ -552,4 +552,19 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 </comment>
     <requestid>825971</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>620e5a1df34fbb7b9d404d4774658f11</srcmd5>
+    <version>2.25.1</version>
+    <time>1600956807</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.25.1
+  - Fix inotify watcher setup
+  - Use log_{info,error} for more messages to avoid messing up Salt logs
+- Version 2.25
+  - Reduce number of overlays:
+    Instead of using transparent overlays for all previous layers only add the previous snapshot's overlay; this will greatly reduce the number of overlays while still making sure that /etc changes in the running system will be visible in the next snapshot
+  - When using --drop-if-no-change synchronize potential /etc changes with running system
+  - Exclude all non-root-fs mounts from inotify watcher</comment>
+    <requestid>835888</requestid>
+  </revision>
 </revisionlist>
