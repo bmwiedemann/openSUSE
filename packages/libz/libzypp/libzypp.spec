@@ -21,11 +21,17 @@
 %else
 %bcond_with zchunk
 %endif
+# libsolvs external references require us to link against it:
+%if 0%{?sle_version} >= 150000 || 0%{?suse_version} >= 1500
+%bcond_without zstd
+%else
+%bcond_with zstd
+%endif
 
 %bcond_without mediabackend_tests
 
 Name:           libzypp
-Version:        17.24.2
+Version:        17.25.0
 Release:        0
 URL:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
@@ -68,6 +74,7 @@ BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel
 BuildRequires:  graphviz
 BuildRequires:  libxml2-devel
+BuildRequires:  yaml-cpp-devel
 %if 0%{?suse_version} != 1110
 # No libproxy on SLES
 BuildRequires:  libproxy-devel
@@ -79,7 +86,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkg-config
 %endif
 
-BuildRequires:  libsolv-devel >= 0.7.11
+BuildRequires:  libsolv-devel >= 0.7.15
 %if 0%{?suse_version} >= 1100
 BuildRequires:  libsolv-tools
 %requires_eq    libsolv-tools
@@ -150,6 +157,9 @@ BuildRequires:  libxslt-tools
 
 %if %{with zchunk}
 BuildRequires:  libzck-devel
+%endif
+%if %{with zstd}
+BuildRequires:  libzstd-devel
 %endif
 
 %description
@@ -244,6 +254,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_SKIP_RPATH=1 \
       %{?with_zchunk:-DENABLE_ZCHUNK_COMPRESSION=1} \
+      %{?with_zstd:-DENABLE_ZSTD_COMPRESSION=1} \
       %{!?with_mediabackend_tests:-DDISABLE_MEDIABACKEND_TESTS=1} \
       ${EXTRA_CMAKE_OPTIONS} \
       ..
