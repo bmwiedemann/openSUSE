@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 19 16:38:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.18:
+  * Added support of HDF5 v1.12.x.
+  * Added support for reading uncompressed v5 MAT file generated
+    by SWAN.
+  * Added error codes to public interface.
+  * Added support for CMake build system.
+  * Fixed read performance of numeric array from compressed v5 MAT
+    file.
+  * Fixed support for VS2005 and VS2008 (MSVC) (regression of
+    v1.5.15).
+  * Fixed mktemp linker warning when using GNU linker.
+  * Fixed bug writing struct array to uncompressed v5 MAT file on
+    big endian architecture (regression of v1.5.10).
+  * Fixed bug writing cell array to uncompressed v5 MAT file on
+    big endian architecture.
+  * Fixed bug reading variable name from v4 MAT file
+    (CVE-2019-17533).
+  * Fixed bug reading dimensions from (crafted) compressed v5 MAT
+    file (CVE-2019-20017, CVE-2019-20018, CVE-2019-20020,
+    CVE-2019-20052).
+- Bump soversion to 11.
+
+-------------------------------------------------------------------
 Sat Feb 22 15:35:26 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Leap 15.2 has newer p7zip, build requires p7zip-full on Tumbleweed,
