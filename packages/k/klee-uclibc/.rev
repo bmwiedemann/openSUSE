@@ -125,4 +125,14 @@
     <comment>- Switch to LLVM 10.</comment>
     <requestid>798303</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>82069b776064e9864ed8f1fc539c0f51</srcmd5>
+    <version>1.0.0+git.20200711</version>
+    <time>1600956894</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0+git.20200711:
+  * Correcting use of 'lookForNew' and some rudimentary code tidying in 'configure'
+- disable x86_32 as it is unsupported -- there are bugs in klee.</comment>
+    <requestid>836442</requestid>
+  </revision>
 </revisionlist>

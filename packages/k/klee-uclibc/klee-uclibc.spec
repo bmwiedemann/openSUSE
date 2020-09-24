@@ -18,13 +18,13 @@
 
 %define llvm_version 10
 
-%define version_unconverted 1.0.0+git.20190816
+%define version_unconverted 1.0.0+git.20200711
 
 Name:           klee-uclibc
 Summary:        Libc library for Klee
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
-Version:        1.0.0+git.20190816
+Version:        1.0.0+git.20200711
 Release:        0
 URL:            https://github.com/klee/klee-uclibc
 Source0:        %{name}-%{version}.tar.xz
@@ -37,7 +37,7 @@ BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  python-base
 BuildRequires:  xz
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  x86_64
 
 %description
 This is a port of uClibc to LLVM to serve Klee. Hence, this package
@@ -73,7 +73,6 @@ install -d %{buildroot}%{_libdir}/%{name}/lib/
 install -m 0644 lib/libc.a %{buildroot}%{_libdir}/%{name}/lib/
 
 %files devel-static
-%defattr(-,root,root)
 %doc README README.md TODO
 %license COPYING.LIB
 %dir %{_libdir}/%{name}/

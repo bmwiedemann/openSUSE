@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:31:55 UTC 2020 - jslaby@suse.com
+
+- Update to version 1.0.0+git.20200711:
+  * Correcting use of 'lookForNew' and some rudimentary code tidying in 'configure'
+- disable x86_32 as it is unsupported -- there are bugs in klee.
+
+-------------------------------------------------------------------
 Fri Apr 24 22:48:14 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Switch to LLVM 10.
