@@ -2424,6 +2424,7 @@
     <package name="libnotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libns1604" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnsl2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnss_nis2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2980,6 +2981,7 @@
     <package name="libxxhash0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyajl2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyaml-cpp0_6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyelp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyui-ncurses-pkg13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyui-ncurses13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
