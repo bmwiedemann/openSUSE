@@ -19,13 +19,13 @@
 # build with "--with libclang" to enable libclang support
 %bcond_with libclang
 Name:           doxygen
-Version:        1.8.18
+Version:        1.8.20
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Tools/Doc Generators
-URL:            http://www.doxygen.nl/
+URL:            https://www.doxygen.nl/
 Source0:        http://doxygen.nl/files/doxygen-%{version}.src.tar.gz
 # suse specific
 Patch0:         %{name}-modify_footer.patch

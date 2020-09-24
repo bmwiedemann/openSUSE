@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 20 15:49:59 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- doxygen 1.8.20:
+  * Add configuration setting to have docstrings net as pre-
+    formatted text but as normal documentation
+  * bug fixes
+- includes changes from 1.8.19:
+  * Add experimental multi-thread input processing support
+  * Add the xml:lang tag to XML and Docbook output
+  * Scalable search bar for high resolution displays
+  * Add doxygen version information to tag file
+  * Add options to enable various sanitizers
+  * Add configuration option to better control the sqlite3 output
+  * Improve using plantuml for vhfl flowcharts
+  * bug fixes
+
+-------------------------------------------------------------------
 Fri Jul 10 07:34:45 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.8.18

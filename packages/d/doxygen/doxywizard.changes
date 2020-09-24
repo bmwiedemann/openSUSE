@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 20 15:49:59 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- doxygen 1.8.20:
+  * bug fixes
+- includes changes from 1.8.19:
+  * show doxywizard version by means of --version
+  * bug fixes
+
+-------------------------------------------------------------------
 Fri Jul 10 07:34:45 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.8.18

@@ -1,7 +1,7 @@
-Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
+Index: doxygen-1.8.20/vhdlparser/VhdlParser.cc
 ===================================================================
---- doxygen-1.8.18.orig/vhdlparser/VhdlParser.cc	2020-07-10 09:16:16.163910205 +0200
-+++ doxygen-1.8.18/vhdlparser/VhdlParser.cc	2020-07-10 09:21:27.033679741 +0200
+--- doxygen-1.8.20.orig/vhdlparser/VhdlParser.cc
++++ doxygen-1.8.20/vhdlparser/VhdlParser.cc
 @@ -56,6 +56,7 @@ return tok->image.c_str();
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
@@ -930,7 +930,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7065,6 +7181,7 @@ s+="(";s+=s1;s+=")";
+@@ -7047,6 +7163,7 @@ s+="(";s+=s1;s+=")";
      }
  return s;
  assert(false);
@@ -938,7 +938,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7094,6 +7211,7 @@ return s;
+@@ -7076,6 +7193,7 @@ return s;
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -946,7 +946,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7106,6 +7224,7 @@ QCString VhdlParser::range_constraint()
+@@ -7088,6 +7206,7 @@ QCString VhdlParser::range_constraint()
      }
  return " range "+s;
  assert(false);
@@ -954,7 +954,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7191,6 +7310,7 @@ QCString VhdlParser::relation() {QCStrin
+@@ -7173,6 +7292,7 @@ QCString VhdlParser::relation() {QCStrin
      }
  return s+s1+s2;
  assert(false);
@@ -962,7 +962,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7310,6 +7430,7 @@ return  "?/=";
+@@ -7292,6 +7412,7 @@ return  "?/=";
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -970,7 +970,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7361,6 +7482,7 @@ if(t) s.append(":");
+@@ -7343,6 +7464,7 @@ if(t) s.append(":");
          if(t1) s2.prepend(" severity ");
          return s+s1+s2+";";
  assert(false);
@@ -978,7 +978,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7428,6 +7550,7 @@ s+=":";
+@@ -7410,6 +7532,7 @@ s+=":";
      }
  return s+" return "+s1+";";
  assert(false);
@@ -986,7 +986,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7470,6 +7593,7 @@ return s+" "+s1;
+@@ -7452,6 +7575,7 @@ return s+" "+s1;
        }
      }
  assert(false);
@@ -994,7 +994,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7511,6 +7635,7 @@ QCString VhdlParser::secondary_unit_decl
+@@ -7493,6 +7617,7 @@ QCString VhdlParser::secondary_unit_decl
  outlineParser()->addVhdlType(s.data(),t1->beginLine,Entry::VARIABLE_SEC,VhdlDocGen::UNITS,0,s1.data(),Public);
     return s+"="+s1;
  assert(false);
@@ -1002,7 +1002,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7526,6 +7651,7 @@ QCString VhdlParser::selected_name() {QC
+@@ -7508,6 +7633,7 @@ QCString VhdlParser::selected_name() {QC
      }
  return s+"."+s1;
  assert(false);
@@ -1010,7 +1010,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7606,6 +7732,7 @@ QCString VhdlParser::sensitivity_clause(
+@@ -7588,6 +7714,7 @@ QCString VhdlParser::sensitivity_clause(
  s.prepend(" on ");
    return s;
  assert(false);
@@ -1018,7 +1018,15 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7638,6 +7765,7 @@ s+=",";s+=s1;
+@@ -7643,6 +7770,7 @@ return s;
+       errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
+     }
+ assert(false);
++return QCString();
+ }
+ 
+ 
+@@ -7665,6 +7793,7 @@ s+=s1;
      }
  return s;
  assert(false);
@@ -1026,15 +1034,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7660,6 +7788,7 @@ s+=s1;
-     }
- return s;
- assert(false);
-+return QCString();
- }
- 
- 
-@@ -7768,6 +7897,7 @@ FlowChart::addFlowChart(FlowChart::TEXT_
+@@ -7773,6 +7902,7 @@ FlowChart::addFlowChart(FlowChart::TEXT_
        }
      }
  assert(false);
@@ -1042,7 +1042,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7798,6 +7928,7 @@ QCString VhdlParser::shift_expression()
+@@ -7803,6 +7933,7 @@ QCString VhdlParser::shift_expression()
      }
  return s+s1+s2;
  assert(false);
@@ -1050,7 +1050,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7863,6 +7994,7 @@ return "ror";
+@@ -7868,6 +7999,7 @@ return "ror";
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1058,7 +1058,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7892,6 +8024,7 @@ return "-";
+@@ -7897,6 +8029,7 @@ return "-";
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1066,7 +1066,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -7971,6 +8104,7 @@ return s+s1+"<="+s2+s3+";";
+@@ -7976,6 +8109,7 @@ return s+s1+"<="+s2+s3+";";
        }
      }
  assert(false);
@@ -1074,7 +1074,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8060,6 +8194,7 @@ return "bus";
+@@ -8065,6 +8199,7 @@ return "bus";
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1082,7 +1082,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8121,6 +8256,7 @@ return "all";
+@@ -8126,6 +8261,7 @@ return "all";
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1090,7 +1090,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8191,6 +8327,7 @@ s+="return ";s+=s1;
+@@ -8196,6 +8332,7 @@ s+="return ";s+=s1;
      }
  s1="["+s+"]";return s1;
  assert(false);
@@ -1098,7 +1098,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8236,6 +8373,7 @@ s+=s1;s+=s2;
+@@ -8241,6 +8378,7 @@ s+=s1;s+=s2;
      }
  return s;
  assert(false);
@@ -1106,7 +1106,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8261,6 +8399,7 @@ QCString VhdlParser::slice_name() {QCStr
+@@ -8266,6 +8404,7 @@ QCString VhdlParser::slice_name() {QCStr
      }
  return s+"("+s1+")";
  assert(false);
@@ -1114,7 +1114,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8270,6 +8409,7 @@ QCString VhdlParser::string_literal() {T
+@@ -8275,6 +8414,7 @@ QCString VhdlParser::string_literal() {T
      }
  return tok->image.c_str();
  assert(false);
@@ -1122,7 +1122,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8525,6 +8665,7 @@ return s;
+@@ -8530,6 +8670,7 @@ return s;
        }
      }
  assert(false);
@@ -1130,7 +1130,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8565,6 +8706,7 @@ s+=s1;
+@@ -8570,6 +8711,7 @@ s+=s1;
      }
  return s;
  assert(false);
@@ -1138,7 +1138,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8810,6 +8952,7 @@ QCString VhdlParser::subtype_declaration
+@@ -8815,6 +8957,7 @@ QCString VhdlParser::subtype_declaration
  outlineParser()->addVhdlType(s.data(),outlineParser()->getLine(),Entry::VARIABLE_SEC,VhdlDocGen::SUBTYPE,0,s1.data(),Public);
    return " subtype "+s+" is "+s1+";";
  assert(false);
@@ -1146,7 +1146,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8825,6 +8968,7 @@ QCString VhdlParser::reslution_indicatio
+@@ -8830,6 +8973,7 @@ QCString VhdlParser::reslution_indicatio
      }
  return "("+s+")";
  assert(false);
@@ -1154,7 +1154,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8869,6 +9013,7 @@ QCString VhdlParser::subtype_indication(
+@@ -8874,6 +9018,7 @@ QCString VhdlParser::subtype_indication(
      }
  return s+" "+s1+" "+s2;
  assert(false);
@@ -1162,7 +1162,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8916,6 +9061,7 @@ return " all ";
+@@ -8921,6 +9066,7 @@ return " all ";
        }
      }
  assert(false);
@@ -1170,7 +1170,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8948,6 +9094,7 @@ return s;
+@@ -8953,6 +9099,7 @@ return s;
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1178,7 +1178,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8976,6 +9123,7 @@ s+=s1;s+=s2;
+@@ -8981,6 +9128,7 @@ s+=s1;s+=s2;
      }
  return s;
  assert(false);
@@ -1186,7 +1186,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -8988,6 +9136,7 @@ QCString VhdlParser::timeout_clause() {Q
+@@ -8993,6 +9141,7 @@ QCString VhdlParser::timeout_clause() {Q
      }
  return " for "+s;
  assert(false);
@@ -1194,7 +1194,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9006,6 +9155,7 @@ QCString VhdlParser::type_conversion() {
+@@ -9011,6 +9160,7 @@ QCString VhdlParser::type_conversion() {
      }
  return s+"("+s1+")";
  assert(false);
@@ -1202,7 +1202,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9035,6 +9185,7 @@ return s;
+@@ -9040,6 +9190,7 @@ return s;
        }
      }
  assert(false);
@@ -1210,7 +1210,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9107,6 +9258,7 @@ return "";
+@@ -9112,6 +9263,7 @@ return "";
        }
      }
  assert(false);
@@ -1218,7 +1218,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9116,6 +9268,7 @@ QCString VhdlParser::type_mark() {QCStri
+@@ -9121,6 +9273,7 @@ QCString VhdlParser::type_mark() {QCStri
      }
  return s;
  assert(false);
@@ -1226,7 +1226,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9163,6 +9316,7 @@ s3+=",";s3+=s1;
+@@ -9168,6 +9321,7 @@ s3+=",";s3+=s1;
      }
  return "array("+s+s3+") of "+s2;
  assert(false);
@@ -1234,7 +1234,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9212,6 +9366,7 @@ QCStringList ql1=QCStringList::split(","
+@@ -9217,6 +9371,7 @@ QCStringList ql1=QCStringList::split(","
                     s1="use "+s;
                     return s1;
  assert(false);
@@ -1242,7 +1242,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9269,6 +9424,7 @@ return "";
+@@ -9274,6 +9429,7 @@ return "";
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1250,7 +1250,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9339,6 +9495,7 @@ int spec;
+@@ -9344,6 +9500,7 @@ int spec;
    outlineParser()->addVhdlType(s.data(),outlineParser()->getLine(),Entry::VARIABLE_SEC,spec,0,it.data(),Public);
    return val;
  assert(false);
@@ -1258,7 +1258,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9408,6 +9565,7 @@ QCString VhdlParser::wait_statement() {Q
+@@ -9413,6 +9570,7 @@ QCString VhdlParser::wait_statement() {Q
  if(t) s.append(":");
    return s+" wait "+s1+s2+s3+";";
  assert(false);
@@ -1266,7 +1266,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9482,6 +9640,7 @@ return " unaffected ";
+@@ -9487,6 +9645,7 @@ return " unaffected ";
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1274,7 +1274,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9510,6 +9669,7 @@ s1.prepend(" after ");
+@@ -9515,6 +9674,7 @@ s1.prepend(" after ");
      }
  return s+s1;
  assert(false);
@@ -1282,7 +1282,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9548,6 +9708,7 @@ QCString VhdlParser::protected_type_body
+@@ -9553,6 +9713,7 @@ QCString VhdlParser::protected_type_body
      }
  return "";
  assert(false);
@@ -1290,7 +1290,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9721,6 +9882,7 @@ outlineParser()->error_skipto(END_T);
+@@ -9726,6 +9887,7 @@ outlineParser()->error_skipto(END_T);
      }
  return "";
  assert(false);
@@ -1298,7 +1298,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9819,6 +9981,7 @@ s+=".";s+=s1;
+@@ -9824,6 +9986,7 @@ s+=".";s+=s1;
      }
  return "context "+s ;
  assert(false);
@@ -1306,7 +1306,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -9927,6 +10090,7 @@ return s;
+@@ -9932,6 +10095,7 @@ return s;
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1314,7 +1314,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10002,6 +10166,7 @@ QCString VhdlParser::interface_package_d
+@@ -10007,6 +10171,7 @@ QCString VhdlParser::interface_package_d
  m_sharedState->current->name=s;
                              return "package "+s+" is new "+s1;
  assert(false);
@@ -1322,7 +1322,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10044,6 +10209,7 @@ QCString q= " is new "+s1+s2;
+@@ -10049,6 +10214,7 @@ QCString q= " is new "+s1+s2;
        outlineParser()->addVhdlType(s.data(),outlineParser()->getLine(FUNCTION_T),Entry::VARIABLE_SEC,VhdlDocGen::INSTANTIATION,"function ",q.data(),Public);
      return q;
  assert(false);
@@ -1330,7 +1330,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10388,6 +10554,7 @@ QCString t="<<"+s;
+@@ -10393,6 +10559,7 @@ QCString t="<<"+s;
                           QCString t1=s1+":"+s2+">>";
                           return   s+s1;
  assert(false);
@@ -1338,7 +1338,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10426,6 +10593,7 @@ return t->image.data();
+@@ -10431,6 +10598,7 @@ return t->image.data();
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1346,7 +1346,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10464,6 +10632,7 @@ return s;
+@@ -10469,6 +10637,7 @@ return s;
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1354,7 +1354,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10502,6 +10671,7 @@ return "."+s;
+@@ -10507,6 +10676,7 @@ return "."+s;
        }
      }
  assert(false);
@@ -1362,7 +1362,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10523,6 +10693,7 @@ QCString VhdlParser::relative_pathname()
+@@ -10528,6 +10698,7 @@ QCString VhdlParser::relative_pathname()
      }
  return s+s1+s2;
  assert(false);
@@ -1370,7 +1370,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10552,6 +10723,7 @@ s+="^.";
+@@ -10557,6 +10728,7 @@ s+="^.";
      }
  return s;
  assert(false);
@@ -1378,7 +1378,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10583,6 +10755,7 @@ if(!s1.isEmpty())
+@@ -10588,6 +10760,7 @@ if(!s1.isEmpty())
  
      return s;
  assert(false);
@@ -1386,7 +1386,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10619,6 +10792,7 @@ s2+=s1;s2+=".";
+@@ -10624,6 +10797,7 @@ s2+=s1;s2+=".";
      }
  return s+s2;
  assert(false);
@@ -1394,7 +1394,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -10631,6 +10805,7 @@ QCString VhdlParser::package_path_name()
+@@ -10636,6 +10810,7 @@ QCString VhdlParser::package_path_name()
      }
  return "@"+s;
  assert(false);
@@ -1402,7 +1402,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -11194,6 +11369,7 @@ return s;
+@@ -11199,6 +11374,7 @@ return s;
        errorHandler->handleParseError(token, getToken(1), __FUNCTION__, this), hasError = true;
      }
  assert(false);
@@ -1410,7 +1410,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -11210,6 +11386,7 @@ QCString VhdlParser::iproc() {QCString s
+@@ -11215,6 +11391,7 @@ QCString VhdlParser::iproc() {QCString s
  m_sharedState->current->name=s;
      return "procedure "+s+s1;
  assert(false);
@@ -1418,7 +1418,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -11311,6 +11488,7 @@ QCString q;
+@@ -11316,6 +11493,7 @@ QCString q;
     }
     m_sharedState->currP=0;return "";
  assert(false);
@@ -1426,7 +1426,7 @@ Index: doxygen-1.8.18/vhdlparser/VhdlParser.cc
  }
  
  
-@@ -11357,6 +11535,7 @@ if(tok)
+@@ -11362,6 +11540,7 @@ if(tok)
      m_sharedState->param_sec=0;
      return s+"("+s1+")";
  assert(false);

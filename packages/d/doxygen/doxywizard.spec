@@ -17,13 +17,13 @@
 
 
 Name:           doxywizard
-Version:        1.8.18
+Version:        1.8.20
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Tools/Doc Generators
-URL:            http://www.doxygen.nl/
+URL:            https://www.doxygen.nl/
 Source:         http://doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Source1:        doxywizard.desktop
 # PATCH-FIX-UPSTREAM: add missing returns to non-void functions
@@ -86,6 +86,6 @@ install -m 644 doc/doxywizard.1 %{buildroot}%{_mandir}/man1/
 %files
 %attr(755,root,root) %{_bindir}/doxywizard
 %{_datadir}/applications/doxywizard.desktop
-%{_mandir}/man1/doxywizard.1%{ext_man}
+%{_mandir}/man1/doxywizard.1%{?ext_man}
 
 %changelog

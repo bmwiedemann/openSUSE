@@ -909,4 +909,12 @@
   * add doxygen-libclang-cpp.patch to support linking against libclang-cpp</comment>
     <requestid>819899</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>03506ad8368b3833fd35af3709bb14e8</srcmd5>
+    <version>1.8.20</version>
+    <time>1600956755</time>
+    <user>dimstar_suse</user>
+    <comment>doxygen 1.8.20 (forwarded request 835687 from AndreasStieger)</comment>
+    <requestid>835773</requestid>
+  </revision>
 </revisionlist>
