@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 06:29:15 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- added also shader library to baselibs.conf (bsc#1176894)
+
+-------------------------------------------------------------------
 Tue Sep 22 10:05:34 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.2
