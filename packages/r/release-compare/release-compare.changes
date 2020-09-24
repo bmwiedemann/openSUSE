@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 23 15:46:56 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.13
+  * strip package name containers from incident projects
+  * drop wrong and needless stripping of package names
+
+-------------------------------------------------------------------
 Thu Sep 17 11:41:01 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.3.12
