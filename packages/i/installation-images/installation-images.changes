@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Wed Sep 23 08:28:37 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#422
+- prevent cross-filesystem relative symlinks to kmod in initrd
+  (bsc#1169094)
+- 16.18
+
+--------------------------------------------------------------------
+Fri Sep 18 12:05:20 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#421
+- plymouthd.defaults will be moved to branding package
+  (jsc#SLE-11637)
+- 16.17
+
+--------------------------------------------------------------------
 Thu Sep 17 09:21:42 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#419
