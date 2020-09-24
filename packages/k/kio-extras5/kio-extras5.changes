@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 18 19:16:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove obsolete build dependencies: openslp, KDELibs4Support,
+  KHtml, exiv2
+
+-------------------------------------------------------------------
 Tue Sep  1 20:50:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.1

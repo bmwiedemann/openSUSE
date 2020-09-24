@@ -17,7 +17,7 @@
 
 
 %define rname kio-extras
-%define kf5_version 5.60.0
+%define kf5_version 5.66.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
@@ -39,7 +39,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libmtp-devel
 BuildRequires:  libssh-devel
 BuildRequires:  libtag-devel
-BuildRequires:  openslp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Activities)
@@ -51,23 +50,21 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Pty)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Network) >= 5.4.0
+BuildRequires:  cmake(Qt5DBus) >= 5.11.0
+BuildRequires:  cmake(Qt5Network) >= 5.11.0
 BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg) >= 5.4.0
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(Qt5Svg) >= 5.11.0
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(smbclient)
 Recommends:     %{name}-lang
 Recommends:     kimageformats
