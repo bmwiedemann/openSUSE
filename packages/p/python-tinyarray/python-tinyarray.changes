@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 19 15:39:21 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.3:
+  * Improve float->int overflow tests.
+  * Buffer protocol: support all integer formats.
+  * Tiny optimization.
+  * Restore compatibility with tuple hash from Python 3.8.
+  * setup.py: replace call to deprecated function.
+  * Get rid of warning about implicit conversion to integer.
+  * Get rid of PY_SSIZE_T_CLEAN warning.
+- %check: Disable conversion test on non x86 systems; see
+  https://gitlab.kwant-project.org/kwant/tinyarray/-/issues/19.
+
+-------------------------------------------------------------------
 Fri Jun  5 17:26:27 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

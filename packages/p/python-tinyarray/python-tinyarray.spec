@@ -17,7 +17,7 @@
 
 
 Name:           python-tinyarray
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Arrays of numbers for Python, optimized for small sizes
 License:        BSD-2-Clause
@@ -57,7 +57,12 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+# Disable conversion test on non x86 systems; see https://gitlab.kwant-project.org/kwant/tinyarray/-/issues/19
+%ifarch %ix86 x86_64
 %pytest_arch
+%else
+%pytest_arch -k 'not test_conversion'
+%endif
 
 %files %{python_files}
 %doc README.rst
