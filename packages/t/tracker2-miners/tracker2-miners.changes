@@ -1,0 +1,352 @@
+-------------------------------------------------------------------
+Thu Sep 10 14:34:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.3.5:
+  + Disable miners autostart by default. This is a measure to make
+    Tracker 2.x get as much out of the way as possible with Tracker
+    3.x available.
+  * Whitelist statx syscall, used in recent glib.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 10 10:54:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Renamed to tracker2-miners: Allow old tracker version to coexist
+  with Tracker3.
+
+-------------------------------------------------------------------
+Tue Aug 25 16:15:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.4:
+  + Block image/ktx files in 90-gstreamer-image-generic.rule.
+  + Set a deadline of 30 seconds for extraction tasks.
+  + Remove generic gstreamer-based image extraction codepath.
+  + Several fixes to libav-based extractor.
+  + Replace sensitive words.
+  + Get the systemd user unit dir from pkg-config.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 10 19:37:06 UTC 2020 - mgorse@suse.com
+
+- Update to version 2.3.3:
+  + The secure sandbox for tracker-extract now permits
+    clock_nanosleep() calls, fixing crashes on some systems.
+  + Miners now set nice/scheduler priorities in a way that placates
+    glib. The sched_setscheduler syscall is as a side effect also
+    allowed by the tracker-extract sandbox.
+  + Updated translations.
+- Drop tracker-miners-set-cpu-io-nice.patch and
+  tracker-miners-allow-settatr.patch: fixed upstream.
+- Add tracker-miners-bsc1165635-crawl-timestamp.patch: properly set
+  crawl timestamp (bsc#1165635 glgo#GNOME/tracker-miners!159).
+
+-------------------------------------------------------------------
+Sat Feb 22 10:23:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bug fix patches:
+  + tracker-miners-set-cpu-io-nice.patch
+  + tracker-miners-allow-settatr.patch
+
+-------------------------------------------------------------------
+Tue Feb 18 23:41:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.2:
+  + Blocked parsing of image/x-dds image files, which were
+    previously being passed to GStreamer and triggering system
+    lockups for some people.
+  + Fixed incorrect MIME type for .raw images, which were
+    previously being passed to GStreamer and triggering system
+    lockups for some people.
+  + Improved how the MP3 extractor calculates durations of variable
+    bitrate MP3s, which fixes incorrect durations being shown in
+    GNOME Music.
+  + Fixed a bug in the GStreamer writeback module.
+  + Fix race condition that might leave tracker-miner-fs paused
+    after a writeback operation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 25 14:20:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Sat Oct 12 16:23:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.1:
+  + Improved .odt extraction, fixing issues with hyphenated words.
+  + OpenBSD: Fixed build.
+  + functional-tests: Fixed a cause of intermittent failures,
+    removed some unused data files.
+  + Minor compiler warning and build system fixes.
+
+-------------------------------------------------------------------
+Tue Sep 10 05:56:18 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.3.0:
+  + No changes since 2.2.99.1.
+
+-------------------------------------------------------------------
+Thu Sep  5 18:50:30 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.2.99.1:
+  + The ~/Downloads folder is now indexed non-recursively by
+    default. This reduces the risk of Tracker unnecessarily
+    crawling large directories of source code or video game data.
+      - If users are storing data such as music or photos in
+    subfolders of the Downloads folder, they will need to move it
+    to an appropriate place (~/Music, ~/Pictures, etc.) so that
+    it is still indexed.
+  + Dispose TrackerResource objects before unref.
+  + Fixes in Musicbrainz metadata extraction.
+  + Translations: ca, eu.
+
+-------------------------------------------------------------------
+Mon Aug 26 16:38:55 CST 2019 - yfjiang@suse.com
+
+- Update to version 2.2.99.0:
+  + Support for reading Musicbrainz metadata from audio files.
+  + Tracker Writeback now uses GStreamer to write metadata to audio
+    files, instead of depending on taglib directly.
+  + Directories will now be ignored if they contain a file named
+    `.nomedia`. A file named `.trackerignore` has the same effect,
+    but the `.nomedia` file brings us in line with Android.
+  + Removed obsolete 'max-media-art-width' setting.
+- libtracker-miners-common is built as a static library and only
+  used in build time. So remove it in the %install section.
+- Add a new BuildRequires pkgconfig(gstreamer-audio-1.0).
+- Drop an unused BuildRequires pkgconfig(taglib_c).
+
+-------------------------------------------------------------------
+Tue Jun 25 22:04:32 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libgrss) BuildRequires and subpackage
+  tracker-miner-rss: libfrss is dropped upstream. Following this,
+  add tracker-miner-rss Obsoletes to main tracker-miners package.
+
+-------------------------------------------------------------------
+Fri May  3 09:20:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.2:
+  + Multiple leak fixes.
+  + Functional tests now use python3.
+  + Fix text extractor handling of non-existent files.
+  + Fix indexing of tracks in FLAC files.
+  + Added new tests for file formats.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  7 11:04:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.1:
+  + Whitelist syscall fadvise64_64.
+  + Many fixes to functional tests.
+  + Fix failed functional tests being reported as successful.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 25 02:02:00 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.2.0:
+  + Disable guarantee_metadata by default. It was the case on
+    autotools.
+  + Stop merging translations to schema files.
+  + Test suite improvements.
+  + Meson build improvements.
+  + The functionality of tracker-miner-apps has been adopted by
+    tracker-miner-fs/tracker-extract.
+  + All usage of deprecated TrackerSparqlBuilder is gone.
+  + Fixes to desktop file indexing.
+  + Multiple build and compile warning fixes.
+  + Many test improvements and cleanups.
+  + The functionality of tracker-miner-apps has been adopted by
+    tracker-miner-fs/tracker-extract.
+  + Updated tracker-miner-fs and tracker-miner-rss to use
+    TrackerResource.
+  + Support for building through autotools has been removed.
+  + Plugged several leaks.
+  + Other many build and code cleanups and fixes.
+  + Updated translations.
+- Switch to meson build system, remove all conditionals for meson
+  and remove all traces of autotools support.
+- Drop tracker-miners-private.patch: finally fixed upstream
+  (probably by accident, but well).
+- Add pkgconfig(gexiv2), pkgconfig(libavcodec),
+  pkgconfig(libavformat) and pkgconfig(libavutil) BuildRequires:
+  New dependencies, all optional except gexiv2.
+
+-------------------------------------------------------------------
+Sun Feb 24 00:10:13 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.1.6:
+  + Multiple meson build fixes.
+  + Test fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 18:54:50 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.5:
+  + Fix several leaks.
+  + Ensure utf8ness in
+    tracker_guarantee_resource_title_from_file().
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 10:12:39 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.4:
+  + Updated translations.
+- Changes from version 2.1.3:
+  + Unbreak watch on domain ontology owner. Fixes miners spuriously
+    exiting.
+
+-------------------------------------------------------------------
+Sat Sep  1 16:58:45 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.2:
+  + Allow use of domain rules outside prefix.
+  + Add core-as-subproject as explicit meson option.
+  + Ensure utf8ness in TrackerResource helpers.
+  + Fix multiple cardinality issues in different
+    extractors/properties.
+  + Other minor SPARQL correctness fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 16 09:19:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.1:
+  + tracker-miner-fs: Ignore mercurial repositories.
+  + build: Fix build with -Werror=format-security.
+  + tracker-extract:
+    - Ensure metadata strings are UTF-8 in JPEG/PNG extractors.
+    - Do not add named destinations to PDF TOCs.
+    - Ignore XMP image metadata on PDFs.
+    - Fix ISO 8601 date string generation on gstreamer extractor.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 24 09:09:02 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.0:
+  + tests: Many updates and fixes to functional tests.
+  + tracker-extract: Better infrastructure for tests, based on
+    JSON-LD.
+  + tracker-miner-fs: Restart tracker extract from the right
+    domain.
+  + tracker-extract: Persistently avoid files that trigger
+    recoverable errors, to avoid log spamming on restarts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 26 03:11:40 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.0.5:
+  + tracker-extract: Made daemon able to shutdown on inactivity,
+    lifetime will be managed by tracker-miner-fs.
+  + tracker-stract: Fixes in generated SPARQL for geolocation data.
+  + Updated translations.
+- Replace libjpeg-devel BuildRequires with pkgconfig(libjpeg): now
+  configure looks for the pkgconfig module instead.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:40:32 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb  7 08:08:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.0.4:
+  + build: Allow building tracker repo as a meson subproject.
+  + libtracker-common: Rename to libtracker-miners-common.
+  + libtracker-miners-common: Whitelist arm_fadvise64_64, getegid
+    and getegid32 syscalls.
+  + tracker-extract:
+    - Add GExiv2-based extractor module for RAW files.
+    - Blacklist gstreamer modules via plugin instead of via
+      feature.
+    - Blacklist video4linux2 gstreamer plugin.
+    - Use enumerations for EXIF values.
+    - Fix image pixel density conversions.
+  + tracker-miner-fs: Avoid setting rdf:types on empty files.
+  + meson: dependency check fixes.
+  + Updated translations.
+- Drop tracker-miners-nb-translations.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jan  6 12:25:18 UTC 2018 - zaitor@opensuse.org
+
+- Add tracker-miners-nb-translations.patch: Update Norwegian Bokmål
+  translations.
+
+-------------------------------------------------------------------
+Thu Nov 16 03:46:12 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.0.3:
+  + meson: Multiple cleanups and fixes.
+  + tracker-extract: Do not overwrite nie:dataSource.
+- Update Url to https://wiki.gnome.org/Projects/Tracker: current
+  Tracker's web page.
+
+-------------------------------------------------------------------
+Fri Oct  6 08:16:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.0.2:
+  + tracker-miner-fs: Fix initialization when there's a startup
+    timeout.
+  + tracker-extract: Don't store 0-length strings on MSOffice
+    metadata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  5 10:23:17 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.0.1:
+  + tracker-miner-apps: Ignore broken .desktop file symlinks.
+  + tracker-miner-fs: Ignore non-native mounts.
+  + tracker-extract: Fix insertion of white balance values in
+    images.
+  + Compile warnings and Coverity issue fixes.
+  + Fix srcdir!=builddir builds.
+- Drop tracker-miners-tracker-extract-fixes.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 23 19:02:40 UTC 2017 - zaitor@opensuse.org
+
+- Add tracker-miners-tracker-extract-fixes.patch: Fix various bugs
+  in tracker-extract (bgo#785853, bgo#787774).
+
+-------------------------------------------------------------------
+Tue Sep 12 12:09:49 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.0.0:
+  + Tracker shall from now on use semantic versioning.
+  + autotools/meson cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 22:38:10 UTC 2017 - dimstar@opensuse.org
+
+- Add releavant conflicts to ease upgrades from old tracker
+  versions: tracker and libtracker-common-1_0: Various files moved
+  from to tracker-miners.
+
+-------------------------------------------------------------------
+Tue Aug 22 18:46:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.99.3:
+  + Add more assertions to testcases (CIDs 162185, 162186,
+    162188–162191).
+  + Protect further the MP3 parser against out-of-bounds reads
+    (CID #162187).
+  + Fixed typos, and other code and build improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 15 15:06:12 UTC 2017 - dimstar@opensuse.org
+
+- Initial package, version 1.99.2:
+  + Tracker-miners has been split out from tracker.
