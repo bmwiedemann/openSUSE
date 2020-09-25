@@ -127,4 +127,16 @@
   * Updated translations thanks to all of the translators!</comment>
     <requestid>832836</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>be5ef07706b8da69f93d91854ed28fc7</srcmd5>
+    <version>0.7</version>
+    <time>1601044521</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.7
+  * A completely rewritten and far more reliable media importer
+  * Optional error reporting on crashes
+  * As always, updated translations thanks to all of the translators!
+</comment>
+    <requestid>837231</requestid>
+  </revision>
 </revisionlist>
