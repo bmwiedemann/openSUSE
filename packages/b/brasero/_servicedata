@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">git://git.gnome.org/brasero</param>
-              <param name="changesrevision">567326a7625ed1099d9f61e97ad30b1f11f14f7c</param></service></servicedata>
+              <param name="changesrevision">567326a7625ed1099d9f61e97ad30b1f11f14f7c</param></service><service name="tar_scm">
+                <param name="url">https://gitlab.gnome.org/GNOME/brasero</param>
+              <param name="changesrevision">5945fdff108c6cf3b67b8be9d9be71e4e9010031</param></service></servicedata>

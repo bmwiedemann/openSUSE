@@ -1,7 +1,7 @@
 #
 # spec file for package brasero
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           brasero
-Version:        3.12.2+20171213.567326a7
+Version:        3.12.2+20200906.5945fdff
 Release:        0
 Summary:        CD/DVD burning application for GNOME
 License:        GPL-3.0-or-later
@@ -34,7 +34,6 @@ BuildRequires:  intltool
 BuildRequires:  pkgconfig
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
-BuildRequires:  tracker-devel >= 0.10.0
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
@@ -103,10 +102,10 @@ Brasero is an application for the GNOME Desktop to write CD/DVDs.
 
 %package -n libbrasero-burn3-1
 Summary:        Brasero composition utility function library
-Group:          System/Libraries
 # The obsoletes IS technically wrong. But as libbrasero-utils was
 # not split from the main package, is required to have a smooth
 # upgrade possibility.
+Group:          System/Libraries
 Obsoletes:      libbrasero-burn1 < %{version}
 
 %description -n libbrasero-burn3-1
@@ -175,7 +174,7 @@ NOCONFIGURE=1 ./autogen.sh
 %configure \
         --disable-static \
         --disable-gtk-doc \
-        --enable-search \
+        --disable-search \
         --enable-playlist \
         --enable-nautilus \
         --enable-introspection \

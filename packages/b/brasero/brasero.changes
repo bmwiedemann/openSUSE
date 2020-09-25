@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 07 13:39:34 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.12.2+20200906.5945fdff:
+  + Updated translations.
+- Disable tracker integration, as there is no Tracker 3 support:
+  + --disable-search insted of --enable-search to configure:
+  + Drop tracker-devel BuildRequires.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:05:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

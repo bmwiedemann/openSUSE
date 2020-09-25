@@ -1,6 +1,6 @@
 <services>
   <service mode="disabled" name="tar_scm">
-    <param name="url">git://git.gnome.org/brasero</param>
+    <param name="url">https://gitlab.gnome.org/GNOME/brasero</param>
     <param name="scm">git</param>
     <param name="versionformat">3.12.2+%cd.%h</param>
     <param name="changesgenerate">enable</param>
