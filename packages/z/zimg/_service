@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">release([0-9\.]*)</param>
-    <param name="revision">release-2.9.3</param>
+    <param name="revision">release-3.0.1</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">

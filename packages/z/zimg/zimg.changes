@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep 10 17:43:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * graph: fix handling of default nominal_peak_luminance (introduced in 3.0) 
+
+-------------------------------------------------------------------
+Wed Aug  5 00:53:05 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to version 3.0 (API 2.4):
+  * api: support alpha channel as the fourth plane
+  * colorspace: accept UNSPECIFIED transfer characteristics in
+    more situations
+  * colorspace: fix conversion from ICtCp to ARIB STD-B67
+  * depth: fix out of bounds access in SSE2 ordered dither
+  * graph: rewrite for alpha channel support
+  * resize: fix incorrect rounding when calculating pixel
+    coordinates
+  * resize: AVX-512 VNNI code paths
+  * arm: NEON/ASIMD code paths
+- Drop patches:
+  * update-matrix3.cpp.patch
+  * colorspace-fix-assertion.patch
+  * colorspace-fix-assertion-part2.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 08:15:32 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add colorspace-fix-assertion-part2.patch in order to address
