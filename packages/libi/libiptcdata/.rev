@@ -170,4 +170,16 @@
     <comment>Eliminate the -lang recommends (forwarded request 767198 from dimstar)</comment>
     <requestid>767460</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1c1adaa5319ab2b4b53739a7d06b1965</srcmd5>
+    <version>1.0.5</version>
+    <time>1601043887</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  * Omnibus python3 update  
+  * Modernize autoconf/automake init
+  * Update to latest gtk-doc 
+  * Fix python3 module init (forwarded request 834166 from dirkmueller)</comment>
+    <requestid>836031</requestid>
+  </revision>
 </revisionlist>

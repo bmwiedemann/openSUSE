@@ -1,7 +1,7 @@
 #
 # spec file for package libiptcdata
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libiptcdata
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        IPTC Metadata Tag Manipulation Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-Url:            http://libiptcdata.sourceforge.net/
-Source:         %{name}-%{version}.tar.bz2
+URL:            https://github.com/ianw/libiptcdata/
+Source:         https://github.com/ianw/libiptcdata/releases/download/release_1_0_5/libiptcdata-%{version}.tar.gz
 BuildRequires:  pkgconfig
 Requires:       libiptcdata0
 
@@ -78,7 +78,7 @@ This subpackage contains the documentation for it.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

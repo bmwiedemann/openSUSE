@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 13 20:03:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Omnibus python3 update  
+  * Modernize autoconf/automake init
+  * Update to latest gtk-doc 
+  * Fix python3 module init
+
+-------------------------------------------------------------------
 Sat Jan 25 14:17:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
