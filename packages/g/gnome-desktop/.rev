@@ -1186,4 +1186,14 @@
     <comment>New stable release (forwarded request 825645 from iznogood)</comment>
     <requestid>826636</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>bc70eef32cfab1337517ed617da522a3</srcmd5>
+    <version>3.36.6</version>
+    <time>1601043899</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-desktop-invalid-size-crash.patch: fix a crash caused
+  by a malformed background xml file (bsc#1176596
+  glgo#GNOME/gnome-desktop#169). (forwarded request 834993 from mgorse)</comment>
+    <requestid>836035</requestid>
+  </revision>
 </revisionlist>
