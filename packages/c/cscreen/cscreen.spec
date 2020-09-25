@@ -84,7 +84,6 @@ mkdir -p %{buildroot}%{_localstatedir}/log/screen/old
 mkdir -pm700 %{buildroot}/%{HOMEDIR}
 mkdir -pm700 %{buildroot}/%{HOMEDIR}/.ssh
 
-
 %pre
 %if %{?has_systemd}
 %service_add_pre %{name}d.service
@@ -120,8 +119,12 @@ getent passwd %{USERNAME} >/dev/null || \
 
 %postun
 %if %{?has_systemd}
+%if %{defined service_del_postun_without_restart}
+%service_del_postun_without_restart %{name}d.service
+%else
 DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun %{name}d.service
+%endif
 %else
 %restart_on_update %{name}d
 %insserv_cleanup

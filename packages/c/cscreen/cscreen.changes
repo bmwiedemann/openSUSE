@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 11 18:25:10 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Make use of %service_del_postun_without_restart
+
+  And stop using DISABLE_RESTART_ON_UPDATE as this interface is
+  obsolete.
+
+-------------------------------------------------------------------
 Tue Aug 25 10:10:10 UTC 2020 - olaf@aepfle.de
 
 - version 0.8
