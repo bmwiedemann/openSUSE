@@ -1,7 +1,7 @@
 #
 # spec file for package i3blocks
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           i3blocks
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Alternative status bar for i3
 License:        GPL-3.0-or-later
 Group:          System/Monitoring
 URL:            https://github.com/vivien/i3blocks
-Source:         https://github.com/vivien/i3blocks/releases/download/%{version}/i3blocks-%{version}.tar.gz
+Source:         i3blocks-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  pandoc
 Requires:       acpi
 Requires:       alsa-utils
 Requires:       i3
 Requires:       iproute2
-Requires:       sysstat
 Requires:       xclip
+Recommends:     sysstat
 
 %description
 i3blocks is a flexible status line for the i3 window manager. It handles
@@ -47,18 +49,20 @@ alignment, urgency and color.
 %setup -q
 
 %build
+./autogen.sh
+%configure
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}
 
 %files
-%doc CHANGELOG.md README.md
+%doc docs/README.adoc
 %license COPYING
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/%{name}
-%{_libexecdir}/%{name}
 %{_mandir}/man?/%{name}.?%{ext_man}
+%{_datadir}/bash-completion/completions/i3blocks
 
 %changelog

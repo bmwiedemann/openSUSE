@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  2 09:26:10 UTC 2020 - Dominik Heidler <dheidler@suse.de>
+
+- Update i3blocks to version 1.5
+- Set sysstat as recommends as sysstat is buggy and not a hard
+  requirement (depending on user configuration)
+
+-------------------------------------------------------------------
 Thu Apr 19 07:42:09 UTC 2018 - jengelh@inai.de
 
 - Replace future aims, and ensure neutrality of description.
