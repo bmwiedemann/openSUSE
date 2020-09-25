@@ -1,0 +1,1189 @@
+-------------------------------------------------------------------
+Thu Sep 17 16:24:57 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Legacy 1.x package
+
+-------------------------------------------------------------------
+Wed Sep 16 07:20:45 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- in _constraints set 5GB min physicalmemory rather than memory parm
+  (at least required for ppc64/ppc64le)
+
+-------------------------------------------------------------------
+Wed Sep  9 08:24:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Switch to cmake build
+- Remove references to python2
+- Add libtorrent-rasterbar-fix_pkgconfig_path.patch and
+  libtorrent-rasterbar-fix_library_version.patch
+- Build in c++14 mode (qbittorrent prefers it)
+
+-------------------------------------------------------------------
+Thu Sep  3 13:49:19 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.10
+  * fix regression in python binding for move_storage()
+  * fix issue with loading invalid torrents with only 0-sized
+    files
+  * fix to avoid large stack allocations
+
+-------------------------------------------------------------------
+Fri Aug 21 06:20:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.9
+  * add macro TORRENT_CXX11_ABI for clients building with C++14
+    against libtorrent build with C++11
+  * refreshed m4 scripts for autotools
+  * removed deprecated wstring overloads on non-windows systems
+  * drop dependency on Unicode's ConvertUTF code (which had a
+    license incompatible with Debian)
+  * fix bugs exposed on big-endian systems
+  * fix detection of hard-links not being supported by filesystem
+  * fixed resume data regression for seeds with prio 0 files
+
+-------------------------------------------------------------------
+Tue Aug  4 17:29:38 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.2.8
+  * validate UTF-8 encoding of client version strings from peers
+  * don't time out tracker announces as eagerly while resolving
+    hostnames
+  * fix NAT-PMP shutdown issue
+  * improve hostname lookup by merging identical lookups
+  * fix network route enumeration for large routing tables
+  * fixed issue where pop_alerts() could return old, invalid
+    alerts
+  * fix issue when receiving have-all message before the
+    metadata
+  * don't leave lingering part files handles open
+  * disallow calling add_piece() during checking
+  * fix incorrect filename truncation at multi-byte character
+  * always announce listen port 1 when using a proxy
+
+-------------------------------------------------------------------
+Fri Jul 10 04:42:21 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.2.7
+  * add set_alert_fd in python binding, to supersede
+    set_alert_notify
+  * fix bug in part files > 2 GiB
+  * add function to clear the peer list for a torrent
+  * fix resume data functions to save/restore more torrent flags
+  * limit number of concurrent HTTP announces
+  * fix queue position for force_rechecking a torrent that is
+    not auto-managed
+  * improve rate-based choker documentation, and minor tweak
+  * undeprecate upnp_ignore_nonrouters (but refering to devices
+    on our subnet)
+  * increase default tracker timeout
+  * retry failed socks5 server connections
+  * allow UPnP lease duration to be changed after device
+    discovery
+  version 1.2.6:
+  * fix peer timeout logic
+  * simplify proxy handling. A proxy now overrides
+    listen_interfaces
+  * fix issues when configured to use a non-default choking
+    algorithm
+  * fix issue in reading resume data
+  * revert NXDOMAIN change from 1.2.4
+  * don't open any listen sockets if listen_interfaces is empty
+    or misconfigured
+  * fix bug in auto disk cache size logic
+  * fix issue with outgoing_interfaces setting, where bind()
+    would be called twice
+  * add build option to disable share-mode
+  * support validation of HTTPS trackers
+  * deprecate strict super seeding mode
+  * make UPnP port-mapping lease duration configurable
+  * deprecate the bittyrant choking algorithm
+  * add build option to disable streaming
+  version 1.2.5:
+  * announce port=1 instead of port=0, when there is no listen
+    port
+  * fix LSD over IPv6
+  * support TCP_NOTSENT_LOWAT
+  * fix correct interface binding of local service discovery
+    multicast
+  * fix issue with knowing which interfaces to announce to
+    trackers and DHT
+  * undeprecate settings_pack::dht_upload_rate_limit
+
+-------------------------------------------------------------------
+Wed Feb 19 20:55:09 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.2.4
+  * fix binding TCP and UDP sockets to the same port, when
+    specifying port 0
+  * fix announce_to_all_trackers and announce_to_all_tiers behavior
+  * fix suggest_read_cache setting
+  * back-off tracker hostname looksups resulting in NXDOMAIN
+  * lower SOCKS5 UDP keepalive timeout
+  * fix external IP voting for multi-homed DHT nodes
+  * deprecate broadcast_lsd setting. Just use multicast
+  * deprecate upnp_ignore_nonrouters setting
+  * don't attempt sending event=stopped if event=start never
+    succeeded
+  * make sure &key= stays consistent between different source
+    IPs (as mandated by BEP7)
+  * fix binding sockets to outgoing interface
+  * add new socks5_alert to trouble shoot SOCKS5 proxies
+- Cleanup spec file, remove conditionals for Leap 42.x
+
+-------------------------------------------------------------------
+Sat Jan 18 17:19:16 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 1.2.3
+  * fix erroneous event=completed tracker announce when checking
+    files
+  * promote errors in parsing listen_interfaces to post
+    listen_failed_alert
+  * fix bug in protocol encryption/obfuscation
+  * fix buffer overflow in SOCKS5 UDP logic
+  * fix issue of rapid calls to file_priority() clobbering each
+    other
+  * clear tracker errors on success
+  * optimize setting with unlimited unchoke slots
+  * fixed restoring of trackers, comment, creation date and
+    created-by in resume data
+  * fix handling of torrents with too large pieces
+  * fixed division by zero in anti-leech choker
+  * fixed bug in torrent_info::swap
+
+
+-------------------------------------------------------------------
+Tue Dec  3 20:08:48 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.2
+  * fix cases where the disable_hash_checks setting was not
+    honored
+  * fix updating of is_finished torrent status, when changing
+    piece priorities
+  * fix regression in &left= reporting when adding a seeding
+    torrent
+  * fix integer overflow in http parser
+  * improve sanitation of symlinks, to support more complex link
+    targets
+  * add DHT routing table affinity for BEP 42 nodes
+  * add torrent_info constructor overloads to control torrent
+    file limits
+  * feature to disable DHT, PEX and LSD per torrent
+  * fix issue where trackers from magnet links were not included
+    in create_torrent()
+  * make peer_info::client a byte array in python binding
+  * pick contiguous pieces from peers with high download rate
+  * fix error handling of moving storage to a drive letter that
+    isn't mounted
+  * fix HTTP Host header when using proxy
+  version 1.2.1:
+  * add dht_pkt_alert and alerts_dropped_alert to python bindings
+  * fix python bindins for block_uploaded_alert
+  * optimize resolving duplicate filenames in loading torrent
+    files
+  * fix python binding of dht_settings
+  * tighten up various input validation checks
+  * fix create_torrent python binding
+  * update symlinks to conform to BEP 47
+  * fix python bindings for peer_info
+  * support creating symlinks, for torrents with symlinks in them
+  * fix error in seed_mode flag
+  * support magnet link parameters with number siffixes
+  * consistently use "lt" namespace in examples and documentation
+  * fix Mingw build to use native cryptoAPI
+  * uPnP/NAT-PMP errors no longer set the client's advertised
+    listen port to zero
+  version 1.2:
+  * requires boost >= 1.58 to build
+  * tweak heuristic of how to interpret url seeds in multi-file
+    torrents
+  * support &ipv4= tracker argument for private torrents
+  * renamed debug_notification to connect_notification
+  * when updating listen sockets, only post alerts for new ones
+  * deprecate anonymous_mode_alert
+  * deprecated force_proxy setting (when set, the proxy is
+    always used)
+  * add support for Port Control Protocol (PCP)
+  * deliver notification of alerts being dropped via
+    alerts_dropped_alert
+  * deprecated alert::progress_notification alert category,
+    split into finer grained categories
+  * update plugin interface functions for improved type-safety
+  * implemented support magnet URI extension, select specific
+    file indices for download, BEP53
+  * make tracker keys multi-homed. remove set_key() function on
+    session.
+  * add flags()/set_flags()/unset_flags() to torrent_handle,
+    deprecate individual functions
+  * added alert for block being sent to the send buffer
+  * drop support for windows compilers without std::wstring
+  * implemented support for DHT infohash indexing, BEP51
+  * removed deprecated support for file_base in file_storage
+  * added support for running separate DHT nodes on each network
+    interface
+  * added support for establishing UTP connections on any
+    network interface
+  * added support for sending tracker announces on every network
+    interface
+  * introduce "lt" namespace alias
+  * need_save_resume_data() will no longer return true every 15
+    minutes
+  * make the file_status interface explicitly public types
+  * added resolver_cache_timeout setting for internal host name
+    resolver
+  * make parse_magnet_uri take a string_view instead of
+    std::string
+  * deprecate add_torrent_params::url field. use
+    parse_magnet_uri instead
+  * optimize download queue management
+  * deprecated (undocumented) file:// urls
+  * add limit for number of web seed connections
+  * added support for retrieval of DHT live nodes
+  * complete UNC path support
+  * add packets pool allocator
+  * remove disk buffer pool allocator
+  * fix last_upload and last_download overflow after 9 hours in
+    past
+  * python binding add more add_torrent_params fields and an
+    invalid key check
+  * introduce introduce distinct types for peer_class_t,
+    piece_index_t and file_index_t.
+  * fix crash caused by empty bitfield
+  * removed disk-access-log build configuration
+  * removed mmap_cache feature
+  * strengthened type safety in handling of piece and file
+    indices
+  * deprecate identify_client() and fingerprint type
+  * make sequence number for mutable DHT items backed by
+    std::int64_t
+  * tweaked storage_interface to have stronger type safety
+  * deprecate relative times in torrent_status, replaced by
+    std::chrono::time_point
+  * refactor in alert types to use more const fields and more
+    clear API
+  * changed session_stats_alert counters type to signed
+    (std::int64_t)
+  * remove torrent eviction/ghost torrent feature
+  * include target in DHT lookups, when queried from the session
+  * improve support for HTTP redirects for web seeds
+  * use string_view in entry interface
+  * deprecate "send_stats" property on trackers (since
+    lt_tracker extension has been removed)
+  * remove deprecate session_settings API (use settings_pack
+    instead)
+  * improve file layout optimization when creating torrents with
+    padfiles
+  * remove remote_dl_rate feature
+  * source code migration from boost::shared_ptr to
+    std::shared_ptr
+  * storage_interface API changed to use span and references
+  * changes in public API to work with
+    std::shared_ptr<torrent_info>
+  * extensions API changed to use span and std::shared_ptr
+  * plugin API changed to handle DHT requests using string_view
+  * removed support for lt_trackers and metadata_transfer
+    extensions (pre-dating ut_metadata)
+  * support windows' CryptoAPI for SHA-1
+  * separated ssl and crypto options in build
+  * remove lazy-bitfield feature
+  * simplified suggest-read-cache feature to not depend on disk
+    threads
+  * removed option to disable contiguous receive buffers
+  * deprecated public to_hex() and from_hex() functions
+  * separated address and port fields in listen alerts
+  * added support for parsing new x.pe parameter from BEP 9
+  * peer_blocked_alert now derives from peer_alert
+  * transitioned exception types to system_error
+  * made alerts move-only
+  * move files one-by-one when moving storage for a torrent
+  * removed RSS support
+  * removed feature to resolve country for peers
+  * added support for BEP 32, "IPv6 extension for DHT"
+  * overhauled listen socket and UDP socket handling, improving
+    multi-home support and bind-to-device
+  * resume data is now communicated via add_torrent_params
+    objects
+  * added new read_resume_data()/write_resume_data functions to
+    write bencoded, backwards compatible resume files
+  * removed deprecated fields from add_torrent_params
+  * deprecate "resume_data" field in add_torrent_params
+  * improved support for bind-to-device
+  * deprecated ssl_listen, SSL sockets are specified in
+    listen_interfaces now
+  * improved support for listening on multiple sockets and
+    interfaces
+  * resume data no longer has timestamps of files
+  * require C++11 to build libtorrent
+  * replace use of boost-endian with boost-predef
+
+- Bumped SOVERSION to 10
+
+-------------------------------------------------------------------
+Tue May 14 18:32:35 UTC 2019 - Mariusz Fik <fisiu@opensuse.org>
+
+- Update to 1.1.13:
+  * fix sock_type_t python binding
+  * tighten up various input validation checks
+  * replace use of boost-endian with boost-predef, fix boo#1134615
+  * uTP performance fixes
+
+-------------------------------------------------------------------
+Thu Jan 24 10:16:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid repeating the name in summary.
+- Remove future goals from description.
+- Remove idempotent %if..%endif guards.
+
+-------------------------------------------------------------------
+Mon Nov 26 11:26:19 UTC 2018 - adam.majer@suse.de
+
+- Update to version 1.1.11:
+  * Fix move_storage with save_path with a trailing slash
+  * Fix tracker announce issue, advertising port 0 in secondary
+    IPv6 announce
+  * Fix missing boost/noncopyable.hpp includes
+  * Fix python binding for torrent_info::creation_date()
+
+- Changes since version 1.1.10:
+  * Fix issue in udp_socket with unusual socket failure
+  * Split progress_notification alert category into
+    file-, piece- and block progress
+  * utp close-reason fix
+  * Exposed default add_torrent_params flags to python bindings
+  * Fix redundant flushes of partfile metadata
+  * Add option to ignore min-interval from trackers on
+    force-reannounce
+  * Raise default setting for active_limit
+  * Fall back to copy+remove if rename_file fails
+  * Improve handling of filesystems not supporting fallocate()
+  * Force-Proxy no longer disables DHT
+  * Improve connect-boost feature, to make new torrents quickly
+    connect peers
+
+-------------------------------------------------------------------
+Fri Sep 14 12:54:19 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.1.9:
+  * Save both file and piece priorities in the resume file.
+  * Add a missing stats_metric python binding.
+  * uTP connections are no longer exempt from rate limits by default.
+  * Fix exporting files from partfile whilst seeding.
+  * Fix an issue when subsequent file priority updates cause the
+    torrent to stop.
+
+-------------------------------------------------------------------
+Tue Jul  3 11:53:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.1.8:
+  * Fix disc I/O performance of checking hashes and creating
+    torrents.
+  * Fix a race condition in part_file.
+  * Fix part_file open mode compatibility test.
+  * Fix a race condition in the random number generator.
+  * Fix a race condition in stat_cache (drive storage).
+  * Improve error handling of failing to change file priority.
+    The API for custom storage implementations was altered.
+  * Set the hidden attribute when creating the part file.
+  * Fix tracker announces reporting more data downloaded than the
+    size of the torrent.
+  * Fix a recent regression with the force_proxy setting.
+- Remove libtorrent-rasterbar-1.1.7-boost-1.67.patch.
+- Re-enable building of the Python 2 module to mirror the boost
+  package.
+
+-------------------------------------------------------------------
+Sun Jun 17 18:47:02 UTC 2018 - sor.alexei@meowr.ru
+
+- Disable building of the Python 2 module and conditionalise both
+  Python's like in the boost package.
+- Rename python2-libtorrent-rasterbar back to
+  python-libtorrent-rasterbar on openSUSE Leap 42.3 and older.
+
+-------------------------------------------------------------------
+Tue Apr 17 08:46:45 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.1.7:
+  * Don't perform DNS lookups for the DHT bootstrap unless DHT is
+    enabled.
+  * Fix an issue where setting file/piece priority would stop
+    checking.
+  * Expose post_dht_stats() to python bindings.
+  * Fix backwards compatibility to downloads without partfiles.
+  * Improve part-file related error messages.
+  * Fix reporting &redundant= in tracker announces.
+  * Fix tie-break in duplicate peer connection disconnect logic.
+  * Fix an issue with SSL tracker connections left in CLOSE_WAIT
+    state.
+  * Defer truncating existing files until the first time we write
+    to them.
+  * Fix an issue when receiving a torrent with 0-sized padfiles as
+    a magnet link.
+  * Fix an issue resuming 1.0.x downloads with a file priority 0.
+  * Fix torrent_status::next_announce.
+  * Fix pad-file scalability issue.
+  * Made coalesce_reads/coalesce_writes settings take effect.
+  * Use unique peer_ids per connection.
+  * Fix tracker connection bind issue for IPv6 trackers.
+  * Fix error handling of some merkle torrents.
+  * Fix error handling of unsupported hard-links.
+- Add libtorrent-rasterbar-1.1.7-boost-1.67.patch: add Boost 1.67+
+  support (boo#1089812).
+
+-------------------------------------------------------------------
+Thu Jan  4 08:08:44 UTC 2018 - virtuousfox@gmail.com
+
+- Update to version 1.1.6:
+  * Deprecate save_encryption_settings (they are part of the normal settings).
+  * Add getters for peer_class_filter and peer_class_type_filter.
+  * Make torrent_handler::set_priority() to use peer_classes.
+  * Fix support for boost-1.66 (requires C++11).
+  * Fix i2p support.
+  * Fix loading resume data when in seed mode.
+  * Fix part-file creation race condition.
+  * Fix issue with initializing settings on session construction.
+  * Fix issue with receiving interested before metadata.
+  * Fix IPv6 tracker announce issue.
+  * Restore path sanitization behavior of ":".
+  * Fix listen socket issue when disabling "force_proxy" mode.
+  * Fix full allocation failure on APFS.
+- Remove fix-build-against-boost-1.66.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Dec 30 13:59:54 UTC 2017 - wbauer@tmo.at
+
+- Add fix-build-against-boost-1.66.patch to fix build with the
+  latest boost in Factory
+
+-------------------------------------------------------------------
+Sat Oct 21 19:05:10 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.5:
+  * Fix an infinite loop when parsing certain invalid magnet links.
+  * Fix parsing torrents with certain invalid filenames.
+  * Fix a leak of torrent_peer objecs (entries in peer_list).
+  * Fix a leak of peer_class objects (when setting per-torrent rate
+    limits).
+  * Expose peer_class API to python bindings.
+  * Fix integer overflow in whole_pieces_threshold logic.
+  * Fix python bindings for torrent_handle, to be hashable.
+  * Fix IPv6 tracker support by performing the second announce in
+    more cases.
+  * Fix utf-8 encoding check in torrent parser.
+  * Fix an infinite loop when parsing maliciously crafted
+    torrents.
+  * Fix an invalid read in parse_int in bdecoder.
+  * Fix an issue with very long tracker- and web seed URLs.
+  * Do not attempt to create empty files on startup, if they
+    already exist.
+  * Fix force-recheck issue (new files would not be picked up).
+  * Fix an inconsistency in file_priorities and
+    override_resume_data behaviour.
+  * Fix paused torrents not generating a state update when their
+    ul/dl rate transitions to zero.
+- Remove boost-1_65-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Oct  9 21:04:35 UTC 2017 - fisiu@opensuse.org
+
+- Update to 1.1.4:
+  * Corrected missing const qualifiers on bdecode_node.
+  * Fix changing queue position of paused torrents (1.1.3 regression).
+  * Fix re-check issue after move_storage.
+  * Handle invalid arguments to set_piece_deadline().
+  * Move_storage did not work for torrents without metadata.
+  * Improve shutdown time by only announcing to trackers whose IP we know.
+  * Fix python3 portability issue in python binding.
+  * Delay 5 seconds before reconnecting socks5 proxy for UDP ASSOCIATE.
+  * Fix NAT-PMP crash when removing a mapping at the wrong time.
+  * Improve path sanitization (filter unicode text direction characters).
+  * Deprecate partial_piece_info::piece_state.
+  * Bind upnp requests to correct local address.
+  * Save resume data when removing web seeds.
+  * Fix proxying of https connections.
+  * Fix race condition in disk I/O storage class.
+  * Fix http connection timeout on multi-homed hosts.
+  * Removed depdendency on boost::uintptr_t for better compatibility.
+  * Fix memory leak in the disk cache.
+  * Fix double free in disk cache.
+  * Forward declaring libtorrent types is discouraged. a new fwd.hpp header is
+    provided.
+- Add boost-1_65-fix.patch: fix building with boost 1.65.
+- Drop libtorrent-rasterbar-fix-build-boost-1.54.patch.
+
+-------------------------------------------------------------------
+Tue May 23 12:58:31 UTC 2017 - sor.alexei@meowr.ru
+
+- Fix Python3 bindings.
+
+-------------------------------------------------------------------
+Sat Apr 22 22:36:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.3:
+  * Remove (broken) support for incoming connections over socks5.
+  * Restore announce_entry's timestamp fields to posix time in
+    python bindings.
+  * Deprecate torrent_added_alert (in favour of add_torrent_alert).
+  * Fix python bindings for parse_magnet_uri.
+  * Fix a minor robustness issue in DHT bootstrap logic.
+  * Fix an issue where torrent_status::num_seeds could be negative.
+  * Document deprecation of dynamic loading/unloading of torrents.
+  * Include user-agent in tracker announces in anonymous_mode for
+    private torrents.
+  * Add support for IPv6 peers from udp trackers.
+  * Correctly URL encode the IPv6 argument to trackers.
+  * Fix a bug where settings_pack::file_pool_size setting was not
+    being honored.
+  * Add a feature to periodically close files (to make windows
+    clear disc cache).
+  * Fix a bug in torrent_handle::file_status.
+  * Fix an issue with peers not updated on metadata from magnet
+    links.
+- Remove libtorrent-rasterbar-1.1.2-fix-python-timestamp.patch.
+
+-------------------------------------------------------------------
+Wed Mar 29 14:36:39 UTC 2017 - sor.alexei@meowr.ru
+
+- Add libtorrent-rasterbar-1.1.2-fix-python-timestamp.patch:
+  Restore announce_entry's timestamp fields to POSIX time in
+  Python bindings (commit 852fada, boo#1031510).
+
+-------------------------------------------------------------------
+Tue Mar  7 12:00:28 UTC 2017 - sor.alexei@meowr.ru
+
+- Explicitly require libboost_python3-devel on openSUSE later than
+  Leap 42.x.
+- Rename python-libtorrent-rasterbar to
+  python2-libtorrent-rasterbar to follow Python packaging policies.
+
+-------------------------------------------------------------------
+Sat Mar  4 08:58:51 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.1.2:
+  * Default TOS marking to 0x20.
+  * Fix invalid access when leaving seed-mode with outstanding hash
+    jobs.
+  * Fix an ABI compatibility issue introduced with preformatted
+    entry type.
+  * Add web_seed_name_lookup_retry to session_settings.
+  * Slightly improve proxy settings backwards compatibility.
+  * Add a function to get default settings.
+  * Updating super seeding would include the torrent in
+    state_update_alert.
+  * Fix an issue where num_seeds could be greater than num_peers in
+    torrent_status.
+  * Finished non-seed torrents can also be in super-seeding mode.
+  * Fix an issue related to unloading torrents.
+  * Fix finished-time calculation.
+  * Add missing min_memory_usage() and high_performance_seed()
+    settings presets to Python.
+  * Fix a stat cache issue that sometimes would produce incorrect
+    resume data.
+  * Storage optimisation to peer classes.
+  * Fix the torrent name in alerts of builds with deprecated
+    functions.
+  * Make torrent_info::is_valid() return false if a torrent failed
+    to load.
+  * Fix per-torrent rate limits for >256 peer classes.
+  * Don't load user_agent and peer_fingerprint from session_state.
+  * Fix the file rename issue with name prefix matching torrent
+    name.
+  * Fix division by zero when setting tick_interval > 1000.
+  * Fix move_storage() to its own directory (would delete the
+    files).
+  * Fix the socks5 support for UDP.
+  * Add a setting urlseed_max_request_bytes to handle large web
+    seed requests.
+  * Fix Python bindings crash with non-default C++11.
+  * Add trackers from the add_torrent_params/magnet links to
+    separate tiers.
+  * Fix a resumedata check issue with files with priority 0
+    (boo#1028448).
+  * Deprecate the mmap_cache feature.
+  * Add an utility function for generating the peer ID fingerprint.
+  * Fix a bug in last-seen-complete.
+  * Remove a file size limit in the torrent_info filename
+    constructor.
+  * Fix tail-padding for the last file in create_torrent.
+  * Don't send the user-agent in metadata http downloads or UPnP
+    requests when in the anonymous mode.
+  * Fix the internal resolve links lookup for mutable torrents.
+  * Hint DHT bootstrap nodes of actual bootstrap request.
+- Dropped libtorrent-rasterbar-python-cxxflags.patch (accepted
+  upstream).
+
+-------------------------------------------------------------------
+Wed Feb  1 15:44:54 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Dec  5 15:43:14 UTC 2016 - sor.alexei@meowr.ru
+
+- Require boost 1.54+ instead of 1.61+ again.
+- Add libtorrent-rasterbar-fix-build-boost-1.54.patch: Fix
+  building with Boost 1.54.
+- Add libtorrent-rasterbar-python-cxxflags.patch: Fix Python
+  bindings crash with non-default C++11 (boo#1013570).
+
+-------------------------------------------------------------------
+Mon Oct 10 18:48:42 UTC 2016 - fisiu@opensuse.org
+
+- Require boost => 1.61 to fix build failures.
+
+-------------------------------------------------------------------
+Sun Aug 28 12:34:58 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.1.1:
+  * Update puff.c for gzip inflation.
+  * Add dht_bootstrap_node a setting in settings_pack (and add
+    default).
+  * Make pad-file and symlink support conform to BEP47.
+  * Fix piece picker bug that could result in division by zero.
+  * Fix value of current_tracker when all tracker failed.
+  * Deprecate lt_trackers extension.
+  * Remove load_asnum_db and load_country_db from python bindings.
+  * Fix a crash in session::get_ip_filter when not having set one.
+  * Fix filename escaping when repairing torrents with broken web
+    seeds.
+  * fix a bug where file_completed_alert would not be posted unless
+    file_progress had been queries by the client.
+  * Move files one-by-one when moving storage for a torrent.
+  * Fix bug in python bindings of announce_entry.
+  * Fix a bug related to flag_merge_resume_http_seeds flag in
+    add_torrent_params.
+  * Fixed inverted priority of incoming piece suggestions.
+  * Optimise allow-fast logic.
+  * Fix an issue where FAST extension messages were not used during
+    handshake.
+  * Fix a crash on invalid input in http_parser.
+  * Upgrade to libtommath 1.0.
+  * Fix parsing of an IPv6 endpoint with invalid port character
+    separator.
+  * Add a limited support for new x.pe parameter from BEP 9.
+  * Fix dht stats counters that weren't being updated.
+  * Make sure add_torrent_alert is always posted before other
+    alerts for the torrent.
+  * Fix a peer-class leak when settings per-torrent rate limits.
+  * Add a new "preformatted" type to bencode entry variant type.
+  * Improve Socks5 support and test coverage.
+  * Fix set_settings in python bindings.
+  * Add missing alert categories in python bindings.
+  * Add dht_get_peers_reply_alert alert in python bindings.
+  * Fix updating the node id reported to peers after changing IPs.
+- Remove libtorrent-rasterbar-1.1.0-fix-get-ip-filter.patch: merged
+  upstream.
+- Remove libtorrent-rasterbar-1.1.0-remove-x86-only-flag.patch,
+  libtorrent-rasterbar-1.1.0-add_ppc64le_as_64_bit_system_libraries.patch,
+  libtorrent-rasterbar-1.1.0-fix-invalid-input-crash.patch,
+  libtorrent-rasterbar-1.1.0-python-fixes.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Aug 17 10:13:36 UTC 2016 - sor.alexei@meowr.ru
+
+- Append commit f05fad0 to
+  libtorrent-rasterbar-1.1.0-python-fixes.patch from upstream.
+- Set boost requirement version to 1.53+ as in commit 633d062.
+
+-------------------------------------------------------------------
+Fri Jul 29 12:14:17 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new libtorrent-rasterbar-1.1.0-add_ppc64le_as_64_bit_system_libraries.patch
+  to allow ppc64le build.
+  provided upstream https://github.com/arvidn/libtorrent/pull/967
+
+-------------------------------------------------------------------
+Sat Jul 23 05:23:26 UTC 2016 - jengelh@inai.de
+
+- Remove useless duplicate pkgconfig dependency
+
+-------------------------------------------------------------------
+Wed Jul 20 16:26:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Add _constraints, specify 3.5G as a minimal RAM requirement
+  (but 2G on arm6l/arm7l): that's somewhat around what is needed
+  for the build not to fail.
+
+-------------------------------------------------------------------
+Sun Jul 17 20:34:17 UTC 2016 - sor.alexei@meowr.ru
+
+- Add a bcond to enable tests build (disabled by default).
+- Add libtorrent-rasterbar-1.1.0-fix-get-ip-filter.patch: fix Deluge
+  crashing when IP filters are used without patching Deluge
+  (commit 66e5994) (boo#978600).
+- Add libtorrent-rasterbar-1.1.0-python-fixes.patch from upstream:
+  fixes for Python bindings (commits e4fd45e, 80710ab, f01ac8f,
+  42c6376) (boo#988986).
+
+-------------------------------------------------------------------
+Sun Jul  3 16:21:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Remove "-lrt" link hack.
+- Don't force C++11 on openSUSE newer than Leap 42.x.
+
+-------------------------------------------------------------------
+Wed Jun 29 19:09:10 UTC 2016 - sor.alexei@meowr.ru
+
+- Disable Python3 support for openSUSE Leap 42.x after all.
+
+-------------------------------------------------------------------
+Tue Jun 21 18:33:03 UTC 2016 - aloisio@gmx.com
+
+- Added explicit linking of libboost_devel for aarch64, see
+  https://svn.boost.org/trac/boost/ticket/9041
+
+-------------------------------------------------------------------
+Mon Jun 20 12:24:04 UTC 2016 - aloisio@gmx.com
+
+- Updated version requirement for boost-devel
+  and added -std=c++11 in CXXFLAGS to address
+  a build problem with qbittorrent 3.3.5
+
+-------------------------------------------------------------------
+Mon Jun  6 10:18:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Add libtorrent-rasterbar-1.1.0-fix-invalid-input-crash.patch: fix
+  crash on invalid input in http_parser (commit 3624ce6, boo#983228).
+
+-------------------------------------------------------------------
+Mon May 16 13:26:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Build Python3 bindings for openSUSE Leap 42.2 and newer.
+- Remove GeoIP support remnants, was removed in 1.1.0.
+- Replace fix-sse-only-on-x86.patch with
+  libtorrent-rasterbar-1.1.0-remove-x86-only-flag.patch
+  (commit 680eddf) and apply unconditionally.
+
+-------------------------------------------------------------------
+Fri Apr 15 16:26:36 UTC 2016 - rpm@fthiessen.de
+
+- Added fix-sse-only-on-x86.patch to fix build on
+  non x86 architectures.
+
+-------------------------------------------------------------------
+Thu Apr 14 21:18:50 UTC 2016 - rpm@fthiessen.de
+
+- Update to 1.1.0:
+  * fix duplicate ACK issue in uTP
+  * experimental support for BEP 38, "mutable torrents"
+  * replaced lazy_bdecode with a new bdecoder that's a lot more efficient
+  * General speed improvements.
+  * support SSL over uTP connections
+  * Removed built-in GeoIP support (this functionality is orthogonal to libtorrent)
+  * General better multithreading support.
+  * Added support for hashing pieces in multiple threads
+  * Fix division by zero in super-seeding logic
+
+-------------------------------------------------------------------
+Fri Mar  4 07:46:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 1.0.9:
+  * Fix issue in checking outgoing interfaces (when that option is
+    enabled).
+  * Python binding fix for boost-1.60.0.
+  * Improve reliability of binding listen sockets.
+  * Support SNI in https web seeds and trackers.
+  * Fix unhandled exception in DHT when receiving a DHT packet over
+    IPv6.
+
+-------------------------------------------------------------------
+Thu Feb 11 16:26:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 1.0.8:
+  * Fix web seed request size.
+  * Fix bug where web seeds were not used for torrents added by URL.
+  * Fix long filename issue.
+  * Fix performance bug in DHT torrent eviction.
+  * Fix bug when deleting files for magnet links before they had
+    metadata.
+- Remove libtorrent-rasterbar-boost-1.60.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jan 14 23:57:30 UTC 2016 - sor.alexei@meowr.ru
+
+- Add libtorrent-rasterbar-boost-1.60.patch: register_ptr_to_python
+  for boost::shared_ptr<alert> (by Andrew Resch).
+
+-------------------------------------------------------------------
+Mon Nov 23 13:23:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.0.7
+  * fix bug where loading settings via load_state() would not trigger all
+    appropriate actions
+  * fix bug where 32 bit builds could use more disk cache than the virtual
+    address space (when set to automatic)
+  * fix support for torrents with > 500'000 pieces
+  * fix ip filter bug when banning peers
+  * fix IPv6 IP address resolution in URLs
+  * introduce run-time check for torrent info-sections beeing too large
+  * fix web seed bug when using proxy and proxy-peer-connections=false
+  * fix bug in magnet link parser
+  * introduce add_torrent_params flags to merge web seeds with resume data
+    (similar to trackers)
+  * fix bug where dont_count_slow_torrents could not be disabled
+  * fix fallocate hack on linux (fixes corruption on some architectures)
+  * fix auto-manage bug with announce to tracker/lsd/dht limits
+  * improve DHT routing table to not create an unbalanced tree
+  * fix bug in uTP that would cause any connection taking more than one second
+    to connect be timed out (introduced in the vulnerability path)
+  * fixed falling back to sending UDP packets direct when socks proxy fails
+  * fixed total_wanted bug (when setting file priorities in add_torrent_params)
+  * fix python3 compatibility with sha1_hash
+
+-------------------------------------------------------------------
+Sun Aug  2 09:32:36 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.0.6:
+  * Fix µTP vulnerability.
+  * Make UTF-8 conversions more lenient.
+  * Fix loading of piece priorities from resume data.
+  * Improve seed-mode handling (seed-mode will now automatically be
+    left when performing operations implying it's not a seed).
+  * Fix issue with file priorities and override resume data.
+  * Fix request queue size performance issue.
+  * Slightly improve UDP tracker performance.
+  * Fix HTTP scrapes.
+  * Add missing port mapping functions to Python binding.
+  * Fix bound-checking issue in bdecoder.
+  * Expose missing dht_settings fields to Python.
+  * Add function to query the DHT settings.
+  * Fix bug in 'dont_count_slow_torrents' feature, which would
+    start too many torrents.
+
+-------------------------------------------------------------------
+Mon Jun  8 08:17:05 UTC 2015 - mvyskocil@opensuse.org
+
+- Change Group of shlib to System/Libraries
+
+-------------------------------------------------------------------
+Fri May 29 10:45:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.0.5:
+  * Improve ip_voter to avoid flapping.
+  * Fix bug when max_peerlist_size was set to 0.
+  * Fix issues with missing exported symbols when building dll.
+  * Fix division by zero bug in edge case while connecting peers.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Mon Apr  6 11:05:12 UTC 2015 - fisiu@opensuse.org
+
+- Update to 1.0.4:
+  * so many changes since last package version, all of them can be found in
+    ChangeLog file.
+  * Bump so version to 8.
+
+-------------------------------------------------------------------
+Thu Feb 19 19:04:57 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.16.19
+  * python binding build fix for boost-1.57.0
+  * add --enable-export-all option to configure script, to export
+    all symbols from libtorrent
+  * python bindings fixes
+  * handle overlong utf-8 sequences
+  * fix bug in error handling in protocol encryption
+- Remove obsolete conditional macros
+
+-------------------------------------------------------------------
+Tue Jul  1 18:13:14 UTC 2014 - fisiu@opensuse.org
+
+- Update to 0.16.17:
+  * don't fall back on wildcard port in UPnP
+  * fix local service discovery for magnet links
+  * fix bitfield issue in file_storage
+  * added work-around for MingW issue in file I/O
+  * fixed sparse file detection on windows
+  * fixed bug in gunzip
+  * fix to use proxy settings when adding .torrent file from URL
+  * fix resume file issue related to daylight savings time on windows
+  * improve error checking in lazy_bdecode
+
+-------------------------------------------------------------------
+Sat Mar 29 12:41:57 UTC 2014 - fisiu@opensuse.org
+
+- Update to 0.16.16 (changes since 0.16.12):
+  * add missing add_files overload to the python bindings
+  * improve error handling in http gunzip
+  * fix debug logging for banning web seeds
+  * improve support for de-selected files in full allocation mode
+  * fix dht_bootstrap_alert being posted
+  * SetFileValidData fix on windows (prevents zero-fill)
+  * fix minor lock_files issue on unix
+  * fix mingw time_t 64 bit issue
+  * fix use of SetFileValidData on windows
+  * fix crash when using full allocation storage mode
+  * improve error_code and error_category support in python bindings
+  * fix python binding for external_ip_alert
+  * make lt_tex more robust against bugs and malicious behavior
+  * HTTP chunked encoding fix
+  * expose file_granularity flag to python bindings
+  * fix DHT memory error
+  * change semantics of storage allocation to allocate on first write rather
+    than on startup (behaves better with changing file priorities)
+  * fix resend logic in response to uTP SACK messages
+  * only act on uTP RST packets with correct ack_nr
+  * make uTP errors log in normal log mode (not require verbose)
+  * deduplicate web seed entries from torrent files
+  * improve error reporting from lazy_decode()
+  * fix auto-manage issue when pausing session
+  * fix bug in non-sparse mode on windows, causing incorrect file errors to
+    be generated
+  * fix set_name() on file_storage actually affecting save paths
+  * fix large file support issue on mingw
+  * add some error handling to set_piece_hashes()
+  * fix completed-on timestamp to not be clobbered on each startup
+  * fix deadlock caused by some UDP tracker failures
+  * fix potential integer overflow issue in timers on windows
+  * minor fix to peer_proportional mixed_mode algorithm (TCP limit could go
+    too low)
+  * graceful pause fix
+  * i2p fixes
+  * fix issue when loading certain malformed .torrent files
+  * pass along host header with http proxy requests and possible
+    http_connection shutdown hang
+
+-------------------------------------------------------------------
+Thu Dec 12 22:00:53 UTC 2013 - fisiu@opensuse.org
+
+- Strip down content of -tools subpackage to the most useful tools.
+
+-------------------------------------------------------------------
+Tue Nov 12 09:51:19 UTC 2013 - fisiu@opensuse.org
+
+- Update to 0.16.12:
+  * fix building with C++11
+  * fix IPv6 support in UDP socket (uTP)
+  * increase max allowed outstanding piece requests from peers
+  * uTP performance improvement. only fast retransmit one packet at a time
+  * improve error message for 'file too short'
+  * fix piece-picker stat bug when only selecting some files for download
+  * fix bug in async_add_torrent when settings file_priorities
+  * fix boost-1.42 support for python bindings
+
+-------------------------------------------------------------------
+Mon Sep 16 19:43:59 UTC 2013 - fisiu@opensuse.org
+
+- Update to 0.16.11:
+  * fix web seed URL double escape issue
+  * fix string encoding issue in alert messages
+  * fix SSL authentication issue
+  * deprecate std::wstring overloads. long live utf-8
+  * improve time-critical pieces feature (streaming)
+  * introduce bandwidth exhaustion attack-mitigation in allowed-fast pieces
+  * python binding fix issue where torrent_info objects where
+    destructing when their torrents were deleted
+  * added missing field to scrape_failed_alert in python bindings
+  * GCC 4.8 fix
+  * fix proxy failure semantics with regards to anonymous mode
+  * fix round-robin seed-unchoke algorithm
+  * add bootstrap.sh to generage configure script and run configure
+  * fix bug in SOCK5 UDP support
+  * fix issue where torrents added by URL would not be started immediately
+
+-------------------------------------------------------------------
+Tue Jun  4 10:54:20 UTC 2013 - fisiu@opensuse.org
+
+- Update to 0.16.10:
+  * fix encryption level handle invalid values
+  * add a number of missing functions to the python binding
+  * fix typo in Jamfile for building shared libraries
+  * prevent tracker exchange for magnet links before metadata is
+    received
+  * fix crash in make_magnet_uri when generating links longer than
+    1024 characters
+  * fix hanging issue when closing files on windows (completing a
+    download)
+  * fix piece picking edge case that could cause torrents to get
+    stuck at hash failure
+  * try unencrypted connections first, and fall back to encryption
+    if it fails (performance improvement)
+  * add missing functions to python binding (flush_cache(),
+    remap_files() and orig_files())
+  * improve handling of filenames that are invalid on windows
+  * support 'implied_port' in DHT announce_peer
+  * don't use pool allocator for disk blocks (cache may now return
+    pages to the kernel)
+
+-------------------------------------------------------------------
+Thu Apr 25 16:05:49 CEST 2013 - mhrusecky@suse.cz
+
+- update to 0.16.9:
+  * fix long filename truncation on windows
+  * distinguish file open mode when checking files and downloading/seeding with bittorrent.
+    updates storage interface
+  * improve file_storage::map_file when dealing with invalid input
+  * improve handling of invalid utf-8 sequences in strings in torrent files
+  * handle more cases of broken .torrent files
+  * fix bug filename collision resolver
+  * fix bug in filename utf-8 verification
+  * make need_save_resume() a bit more robust
+  * fixed sparse flag manipulation on windows
+  * fixed streaming piece picking issue
+- do not hide symbols (drop -fvisibility=hidden) to fix qbittorrent
+
+-------------------------------------------------------------------
+Thu Feb 21 13:11:09 UTC 2013 - lars@linux-schulserver.de
+
+- update to 0.16.8:
+  + support torrents with more than 262000 pieces
+  + make tracker back-off configurable
+  + improve SSL torrent support by using SNI and a single SSL listen socket
+  + improved peer exchange performance by sharing incoming
+    connections which advertize listen port
+  + add web seed support for torrents with pad files
+  + introduced a more scalable API for torrent status updates
+  + updated the API to add_torrent_params turning all bools into
+    flags of a flags field
+  + added async_add_torrent() function to significantly improve
+    performance when adding many torrents
+  + deprecated compact storage allocation
+  + feature to encrypt peer connections with a secret AES-256 key
+    stored in .torrent file
+  + added support for fadvise/F_RDADVISE for improved disk
+    read performance
+- removed libtorrent-rasterbar-boost-time_utc.patch
+- removed libtorrent-rasterbar-0.15.9-missing-return.patch
+- specfile cleanup: remove tags and allow to build on SLE-11-SP2
+
+-------------------------------------------------------------------
+Fri Aug  3 09:23:46 UTC 2012 - aj@suse.de
+
+- Fix build with updated boost
+
+-------------------------------------------------------------------
+Tue Mar 27 13:29:53 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 0.15.10, bugfix release:
+  + fixed peer_tos (type of service) setting
+  + fix connection queue issue causing shutdown delays
+  + fix overflow bug in progress_ppm field
+  + don't filter local peers received from a non-local tracker
+  + fix python deadlock when using python extensions
+  + fixed small memory leak in DHT
+
+-------------------------------------------------------------------
+Wed Jan 25 17:01:18 UTC 2012 - crrodriguez@opensuse.org
+
+- Usage of symbols visibility is supported but needs either
+ using cmake or passing the relevant CXXFLAGS.
+
+-------------------------------------------------------------------
+Thu Jan 19 17:06:13 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 0.15.9, bugfix release.
+
+-------------------------------------------------------------------
+Fri Dec  9 13:19:25 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Dec  9 08:41:45 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Tue Oct 18 13:23:48 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 0.15.8, bugfix release.
+- Reworked missing-return patch.
+
+-------------------------------------------------------------------
+Sun Oct 16 10:44:25 UTC 2011 - coolo@suse.com
+
+- fix build for factory
+
+-------------------------------------------------------------------
+Tue Jun  7 15:21:57 UTC 2011 - mrueckert@suse.de
+
+- added back the support to build the examples. they are very
+  useful for debugging. they are guarded by a %bcond_with so they
+  wont be build by default.
+- disable silent rules to make the check_gcc_output scripts work
+
+-------------------------------------------------------------------
+Fri Jun  3 14:47:49 UTC 2011 - fisiu@opensuse.org
+
+- Disable building examples.
+
+-------------------------------------------------------------------
+Sun Apr 10 19:29:26 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 0.15.6, bugfix release.
+
+-------------------------------------------------------------------
+Fri Apr  8 14:11:21 UTC 2011 - fisiu@opensuse.org
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Mon Jan 10 20:30:41 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 0.15.5
+
+-------------------------------------------------------------------
+Sat Oct  9 13:16:51 UTC 2010 - fisiu@opensuse.org
+
+- upstream update to 0.15.4
+
+-------------------------------------------------------------------
+Sun Apr  4 00:00:00 UTC 2010 - fisiu@opensuse.org
+
+- revert to version 0.14.10 due to other bugs with current glibc
+
+-------------------------------------------------------------------
+Sat Apr  3 00:00:00 UTC 2010 - fisiu@opensuse.org
+
+- fixed issues with glibc, use posix_memalign() instead of valloc()
+
+-------------------------------------------------------------------
+Tue Mar 23 00:00:00 UTC 2010 - fisiu@opensuse.org
+
+- upstream update to 0.15.0
+- cleaned up spec file
+- enabled python bindings
+- soname gets 6
+
+-------------------------------------------------------------------
+Mon Jan 11 00:00:00 UTC 2010 - fisiu@opensuse.org
+
+- upstream update to 0.14.8
+
+-------------------------------------------------------------------
+Tue Nov 24 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+- upstream update to 0.14.7
+
+-------------------------------------------------------------------
+Thu Oct 22 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+- upstream update to 0.14.6
+
+-------------------------------------------------------------------
+Tue Jun  9 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+- upstream update to 0.14.4
+
+-------------------------------------------------------------------
+Tue Apr 28 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+- upstream update to 0.14.3
+
+-------------------------------------------------------------------
+Mon Mar  9 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+- upstream update to 0.14.2
+
+-------------------------------------------------------------------
+Mon Dec 22 00:00:00 UTC 2008 - fisiu82@gmail.com
+
+- 0.14.1
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2008 - fisiu82@gmail.com
+
+- update package to 0.13.1
+
+-------------------------------------------------------------------
+Sat May  3 00:00:00 UTC 2008 - marekstopka@gmail.com
+
+- new package created, based on spec from home:darix obs project

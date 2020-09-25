@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <memory>
+      <size unit="G">4</size>
+    </memory>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">2</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">5</size>
+      </physicalmemory>
+      <disk>
+        <size unit="G">4</size>
+      </disk>
+    </hardware>
+  </overwrite>
+</constraints>

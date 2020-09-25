@@ -1,0 +1,30 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2020-09-09 16:22:42 +0200
+Subject: Avoid soname/library version confusion
+References: gh#arvidn/libtorrent#4927
+
+Upstream has changed the version format in 2.0 and this has percolated
+down to the cmake scripts in 1.2.x. This patch makes it match autotools
+behaviour.
+
+Index: libtorrent-rasterbar-1.2.10/CMakeLists.txt
+===================================================================
+--- libtorrent-rasterbar-1.2.10.orig/CMakeLists.txt
++++ libtorrent-rasterbar-1.2.10/CMakeLists.txt
+@@ -10,6 +10,7 @@ project(libtorrent
+ 	VERSION ${VER_MAJOR}.${VER_MINOR}.${VER_TINY}
+ )
+ set (SOVERSION "10")
++set (SOVERSION_FULL "${SOVERSION}.0.0")
+ 
+ include(GNUInstallDirs)
+ include(GeneratePkgConfig)
+@@ -555,7 +556,7 @@ set_target_properties(torrent-rasterbar
+ 	PROPERTIES
+ 		CXX_VISIBILITY_PRESET "hidden"
+ 		VISIBILITY_INLINES_HIDDEN "true"
+-		VERSION ${PROJECT_VERSION}
++		VERSION ${SOVERSION_FULL}
+ 		SOVERSION ${SOVERSION}
+ )
+ 
