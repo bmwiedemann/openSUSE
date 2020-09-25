@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 24 06:30:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add aarch64-fpc-compilation-fix.patch: pass vfp flags to 
+  gas
+- Handle fpu initialization (bsc#1122855):
+  * add aarch64-fpu-initialization.patch: initialize fpu properly
+  * aarch64: disable bootstrap mode
+
+-------------------------------------------------------------------
+Mon Sep 21 15:02:29 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Backport r46209 - "@PLT is needed for calls to link it properly
+  with pic code" [bsc#1176706]:
+  * fpc-si_c-x86_64-plt.patch
+
+-------------------------------------------------------------------
 Tue Aug 18 09:00:15 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop '%elifarch' usage for now since it is not well supported 

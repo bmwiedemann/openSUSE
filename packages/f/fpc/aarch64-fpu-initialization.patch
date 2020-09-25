@@ -1,0 +1,65 @@
+--- fpcbuild-3.2.0/fpcsrc/compiler/aarch64/cgcpu.pas	2018-12-13 19:27:26.000000000 +0100
++++ fpcbuild-3.2.0/fpcsrc/compiler/aarch64/cgcpu.pas	2020-09-24 09:53:53.047492225 +0200
+@@ -980,6 +980,7 @@
+             { Notify the register allocator that we have written a move
+               instruction so it can try to eliminate it. }
+             add_move_instruction(instr);
++            { FMOV cannot generate a floating point exception }
+           end
+         else
+           begin
+--- fpcbuild-3.2.0/fpcsrc/rtl/aarch64/aarch64.inc	2015-02-23 23:54:03.000000000 +0100
++++ fpcbuild-3.2.0/fpcsrc/rtl/aarch64/aarch64.inc	2020-09-24 13:52:50.744053033 +0200
+@@ -50,26 +50,46 @@
+     mrs x0,fpsr
+   end;
+ 
++const
++  FPSR_IOC = 1;
++  FPSR_DZC = 1 shl 1;
++  FPSR_OFC = 1 shl 2;
++  FPSR_UFC = 1 shl 3;
++  FPSR_IXC = 1 shl 4;
++  FPSR_IDC = 1 shl 7;
++  FPSR_EXCEPTIONS = FPSR_IOC or FPSR_DZC or FPSR_OFC or FPSR_UFC or FPSR_IXC or FPSR_IDC;
+ 
+ procedure setfpsr(val: dword); nostackframe; assembler;
+   asm
+     msr fpsr, x0
+   end;
+ 
+-
+-procedure fpc_enable_fpu_exceptions;
++{$define FPC_SYSTEM_HAS_SYSINITFPU}
++procedure SysInitFPU;
+   begin
++    softfloat_rounding_mode:=rmNearest;
++    { 0 is rmNearest }
++    setfpcr(getfpcr and $ff3fffff);
+     { clear all "exception happened" flags we care about}
+-    setfpsr(getfpsr and not(fpu_exception_mask shr fpu_exception_mask_to_status_mask_shift));
+-    { enable invalid operations and division by zero exceptions. }
+-    setfpcr(getfpcr or fpu_exception_mask);
++     setfpsr(getfpsr and not(fpu_exception_mask shr fpu_exception_mask_to_status_mask_shift));
++     { enable invalid operations and division by zero exceptions. }
++    setfpcr(((getfpcr and not(fpu_exception_mask)) or fpu_dze or fpu_ofe or fpu_ioe));
++    softfloat_exception_mask:=[float_flag_underflow,float_flag_inexact,float_flag_denormal];
++    softfloat_exception_flags:=[];
+   end;
+ 
++{$define FPC_SYSTEM_HAS_SYSRESETFPU}
++Procedure SysResetFPU;{$ifdef SYSTEMINLINE}inline;{$endif}
++begin
++  softfloat_exception_flags:=[];
++  setfpsr(getfpsr and not(FPSR_EXCEPTIONS));
++end;
++
+ procedure fpc_cpuinit;
+   begin
+     { don't let libraries influence the FPU cw set by the host program }
+     if not IsLibrary then
+-      fpc_enable_fpu_exceptions;
++      SysInitFPU;
+   end;
+ 
+ 

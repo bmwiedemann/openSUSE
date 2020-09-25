@@ -22,7 +22,7 @@
 %global psuffix -%{flavor}
 %endif
 
-%ifarch aarch64 ppc64le ppc64 ppc
+%ifarch ppc64le ppc64 ppc
 # Bootstrap the compiler for a new architecture. Set this to 0 after we've bootstrapped.
 %bcond_without bootstrap
 %else
@@ -68,10 +68,13 @@ Version:        3.2.0
 Release:        0
 %if "%{flavor}" == ""
 Summary:        Free Pascal Compiler
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          Documentation/Other
 %else
 Summary:        Freepascal Compiler documentation
-%endif
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          Documentation/Other
+%endif
 URL:            https://www.freepascal.org/
 Source:         fpcbuild-%{version}.tar.gz
 Source1:        fpc-3.2.0-aarch64.zip
@@ -80,6 +83,10 @@ Source3:        fpc-3.2.0-ppc64.zip
 Source4:        fpc-3.2.0-ppc.zip
 Source90:       fpc-rpmlintrc
 Patch0:         fpc-fix-library-paths-on-aarch64.patch
+Patch1:         fpc-si_c-x86_64-plt.patch
+Patch2:         aarch64-fpc-compilation-fix.patch
+# From https://github.com/graemeg/freepascal/commit/aad68409bec902e39f9292930238edd32dbc5ac7
+Patch3:         aarch64-fpu-initialization.patch
 BuildRequires:  binutils
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -150,6 +157,9 @@ documentation or automatical-code generation purposes.
 %prep
 %setup -q -n fpcbuild-%{version}
 %patch0 -p1
+%patch1 -p0
+%patch2 -p1
+%patch3 -p1
 
 %if %{with bootstrap}
 %if "%{flavor}" == ""

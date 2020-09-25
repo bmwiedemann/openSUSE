@@ -1,0 +1,22 @@
+Index: fpcsrc/rtl/linux/x86_64/si_c.inc
+===================================================================
+--- fpcsrc/rtl/linux/x86_64/si_c.inc	(revision 46208)
++++ fpcsrc/rtl/linux/x86_64/si_c.inc	(revision 46209)
+@@ -86,7 +86,7 @@
+ 
+     { start the program }
+     xorq    %rbp,%rbp
+-    call    PASCALMAIN
++    call    PASCALMAIN@PLT
+ {$endif FPC_HAS_INDIRECT_ENTRY_INFORMATION}
+     hlt
+   end;
+@@ -162,7 +162,7 @@
+ 
+     { Call the user's main function, and exit with its value.
+      But let the libc call main.    }
+-    call libc_start_main
++    call libc_start_main@PLT
+ 
+     hlt                     { Crash if somehow `exit' does return.  }
+   end;

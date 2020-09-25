@@ -70,4 +70,20 @@
     <comment></comment>
     <requestid>827537</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f3e8db4b022cf7b071e29ba87fbd9851</srcmd5>
+    <version>3.2.0</version>
+    <time>1601044021</time>
+    <user>dimstar_suse</user>
+    <comment>- add aarch64-fpc-compilation-fix.patch: pass vfp flags to 
+  gas
+- Handle fpu initialization (bsc#1122855):
+  * add aarch64-fpu-initialization.patch: initialize fpu properly
+  * aarch64: disable bootstrap mode
+- Backport r46209 - &quot;@PLT is needed for calls to link it properly
+  with pic code&quot; [bsc#1176706]:
+  * fpc-si_c-x86_64-plt.patch
+</comment>
+    <requestid>837228</requestid>
+  </revision>
 </revisionlist>
