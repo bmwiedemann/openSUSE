@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 19 19:15:09 UTC 2020 - Markus Beth <markus.beth@web.de>
+
+- cleanup spec file to fix missing dependencies
+
+-------------------------------------------------------------------
 Wed Feb  1 10:47:58 UTC 2017 - adam.majer@suse.de
 
 - use individual libboost-*-devel packages instead of boost-devel
