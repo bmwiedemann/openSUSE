@@ -501,3 +501,6 @@ CONFIG_BGSCAN_SIMPLE=y
 
 # Enable RSN IBSS/AdHoc
 CONFIG_IBSS_RSN=y
+
+# Enable SAE support
+CONFIG_SAE=y

@@ -77,7 +77,7 @@ CFLAGS="%{optflags}" make V=1 %{?_smp_mflags}
 CFLAGS="%{optflags}" make V=1 %{?_smp_mflags} eapol_test
 cd wpa_gui-qt4
 %qmake5
-%make_build
+make %{?_smp_mflags}
 
 %install
 install -d %{buildroot}/%{_sbindir}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:06:32 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Fix spec file for SLE12, use make %{?_smp_mflags} instead of %make_build
+
+-------------------------------------------------------------------
+Tue Sep 22 08:29:15 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Enable SAE support(jsc#SLE-14992).
+
+-------------------------------------------------------------------
 Thu Apr 23 21:51:17 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Add CVE-2019-16275.patch -- AP mode PMF disconnection protection bypass
