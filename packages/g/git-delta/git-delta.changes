@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Wed Sep 16 09:04:13 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.4.3
+  * A few bug fixes and a couple of minor features (mac-line-length) 
+   and the ability to hide all line numbers.
+
+-------------------------------------------------------------------
+Mon Aug 10 06:03:45 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.4.1
+  * This release fixes a few bugs. In particular, it makes it possible
+    to use git add -p with line numbers activated. If you also have
+    side-by-side activated then that will not be used in git add -p
+    (it's impossible) but it will now not cause an error either.
+  - Dockerfile isn't colored
+  - [Linux] git add -p not working with side-by-side
+  - Mismatch in line numbers between git diff and git add -p
+
+-------------------------------------------------------------------
+Wed Aug  5 09:52:32 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.4
+  * The main new feature in this release is support for git diff
+    --color-moved. This makes Git's native moved-line detection
+    algorithms and styling options available when using Delta. Delta
+    supports this automatically, without any configuration change, but
+    see the new option inspect-raw-lines in case you need to turn it
+    off.
+  * The other new feature is that Delta can now cause files and commit
+    hashes to be rendered as hyperlinks in your terminal emulator:
+    However, this will not be available to you without, at the
+    minimum, installing a patched version of less, because support for
+    the hyperlink spec has only partially spread through the terminal
+    application ecosystem. See delta --help text for details.
+  * Bugs fixed:
+      * Support --color-moved
+      * Support --color-moved-ws
+      * Support displaying files and commits as OSC 8 hyperlinks
+      * width option is not honored in git config sections
+      * diff -U0 rendered with lines out of order
+      * paging should be supported in gitconfig
+      * syntax-theme should be honored in a custom feature in gitconfig
+      * Line numbers style not taking effect with --side-by-side
+      * Duplicate "renamed" header when file is renamed with changes
+
+-------------------------------------------------------------------
+Thu Jul 16 09:09:02 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.3
+  * This release adds a side-by-side diff view: delta -s or 
+    delta --side-by-side. By default, side-by-side view has 
+    line-numbers activated, and has syntax highlighting in both the 
+    left and right panels.
+  * The release also fixes bug #238 in which the line number display 
+    alignment was broken for line numbers greater than 9999.
+
+- Update to version 0.2
+  This is a large release, introducing major changes to delta 
+  configuration as well as new features and bug fixes. It involved a 
+  major overhaul of the code base. 
+  The highlights are:
+   * To configure delta's appearance, you now use "styles" instead 
+     of background color names. A style is a string like red bold ul 
+     "#ffeeee" that specifies foreground color, background color, 
+     and attributes. 
+     See https://github.com/dandavison/delta#choosing-colors-styles.
+   * Delta now reads configuration from a [delta] section in git 
+     config, and this is the recommended way to configure delta. 
+     See https://github.com/dandavison/delta#configuration
+   * Delta now has a line numbers feature. 
+   * Delta now has --diff-highlight and --diff-so-fancy 
+     emulation modes
+
+-------------------------------------------------------------------
+Tue Apr 28 07:58:02 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Initial commit of version 0.1.1 
