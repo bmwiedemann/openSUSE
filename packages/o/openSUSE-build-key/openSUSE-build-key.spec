@@ -32,17 +32,22 @@ Source0:        gpg-pubkey-307e3d54-5aaa90a5.asc
 # opensuse@opensuse.org
 Source1:        gpg-pubkey-3dbdc284-53674dd4.asc
 # build@suse.de for SLE12 / SLE15
-Source2:        gpg-pubkey-39db7c82-5847eb1f.asc
+Source2:        gpg-pubkey-39db7c82-5f68629b.asc
 # RISCV
 Source3:        gpg-pubkey-697ba1e5-5c755904.asc
 # zSystems
 Source5:        gpg-pubkey-f6ab3975-5ad08cb7.asc
 # PowerPC
 Source6:        gpg-pubkey-8ede3e07-5c755f3a.asc
+# Container key openSUSE
+Source7:        opensuse-container-9ab48ce9-5ae3116a.asc
+# Container key SUSE Linux Enterprise
+Source8:        build-container-d4ade9c3-5a2e9669.asc
 Source98:       security_at_suse_de.asc
 Source99:       security_at_suse_de_old.asc
 Source100:      dumpsigs
-%define keydir  %{_prefix}/lib/rpm/gnupg/keys
+%define keydir  %{_prefix}/lib/rpm/gnupg/keys/
+%define containerkeydir  %{_prefix}/share/container-keys/
 
 %description
 This package contains the gpg keys that are used to sign the
@@ -87,20 +92,22 @@ for i in %{S:0} %{S:1} %{S:2} \
 done
 install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
 
-ln -s gpg-pubkey-3dbdc284-53674dd4.asc $RPM_BUILD_ROOT%{keydir}/opensuse-container-key.asc
-ln -s gpg-pubkey-39db7c82-5847eb1f.asc $RPM_BUILD_ROOT%{keydir}/suse-container-key.asc
+mkdir -p $RPM_BUILD_ROOT%{containerkeydir}/
+install -c -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{containerkeydir}/opensuse-container-key.asc
+install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key.asc
 
 %files
 %defattr(644,root,root)
 %doc security_at_suse_de.asc security_at_suse_de_old.asc
 %attr(755,root,root) %dir %{_prefix}/lib/rpm/gnupg
 %attr(755,root,root) %dir %{keydir}
+%attr(755,root,root) %dir %{containerkeydir}
 %attr(755,root,root) %{_prefix}/lib/rpm/gnupg/dumpsigs
 %{keydir}/gpg-pubkey-307e3d54-5aaa90a5.asc
 %{keydir}/gpg-pubkey-3dbdc284-53674dd4.asc
-%{keydir}/gpg-pubkey-39db7c82-5847eb1f.asc
-%{keydir}/opensuse-container-key.asc
-%{keydir}/suse-container-key.asc
+%{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
+%{containerkeydir}/opensuse-container-key.asc
+%{containerkeydir}/suse-container-key.asc
 %ifarch riscv64
 %{keydir}/gpg-pubkey-697ba1e5-5c755904.asc
 %endif

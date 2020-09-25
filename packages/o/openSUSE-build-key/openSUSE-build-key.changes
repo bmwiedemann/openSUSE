@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 22 14:36:22 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- the container keys for openSUSE and SUSE Linux Enterprise are actually
+  not the build keys. (bsc#1176818)
+- build@suse.de key for SLE12 was extended. (bsc#1176759)
+
+-------------------------------------------------------------------
 Mon Apr 27 14:44:02 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove PreRequires for removed post section with outdated
   package names.
+
+-------------------------------------------------------------------
+Thu Apr 23 12:54:12 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- use /usr/share/container-keys/ for container keys.
 
 -------------------------------------------------------------------
 Thu Apr  2 13:18:26 UTC 2020 - Marcus Meissner <meissner@suse.com>

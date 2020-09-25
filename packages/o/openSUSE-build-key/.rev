@@ -228,4 +228,16 @@ However, it would be good to have these out before we do switch. (forwarded requ
     <comment></comment>
     <requestid>798557</requestid>
   </revision>
+  <revision rev="28" vrev="37">
+    <srcmd5>5784ab9f6dc10fd14d2267dce199dda3</srcmd5>
+    <version>1.0</version>
+    <time>1601043660</time>
+    <user>dimstar_suse</user>
+    <comment>- the container keys for openSUSE and SUSE Linux Enterprise are actually
+  not the build keys. (bsc#1176818)
+- build@suse.de key for SLE12 was extended. (bsc#1176759)
+
+- use /usr/share/container-keys/ for container keys. (forwarded request 836126 from msmeissn)</comment>
+    <requestid>836127</requestid>
+  </revision>
 </revisionlist>
