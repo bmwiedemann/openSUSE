@@ -17,17 +17,18 @@
 
 
 Name:           libsemigroups
-%define lname	libsemigroups0
-Version:        0.6.7
+%define lname	libsemigroups1
+Version:        1.3.1
 Release:        0
 Summary:        Library with algorithms for computing finite and finitely presented semigroups
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://github.com/james-d-mitchell/libsemigroups
-Source:         https://github.com/james-d-mitchell/libsemigroups/archive/v%version.tar.gz
+URL:            https://github.com/libsemigroups/libsemigroups
+Source:         https://github.com/libsemigroups/libsemigroups/releases/download/v%version/%name-%version.tar.gz
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
+BuildRequires:  pkgconfig(eigen3)
 
 %description
 A C++11 library containing implementations of several algorithms for
@@ -62,7 +63,8 @@ This subpackage provides the development headers for it.
 
 %build
 autoreconf -fi
-%configure --disable-static
+# hpcombi requires AVX-256, which is not guaranteed to exist everywhere
+%configure --disable-static --disable-hpcombi --with-external-eigen
 %make_build
 
 %install
@@ -76,13 +78,13 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libsemigroups.so.0*
+%_libdir/libsemigroups.so.1*
 
 %files devel
 %_includedir/libsemigroups/
 %_libdir/libsemigroups.so
 %_libdir/pkgconfig/*.pc
 %license LICENSE
-%doc README.md
+%doc README.rst
 
 %changelog
