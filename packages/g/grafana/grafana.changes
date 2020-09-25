@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Sep 18 08:58:14 UTC 2020 - jcavalheiro@suse.com
+
+- Update to version 7.1.5:
+  * Features / Enhancements
+    - Stats: Stop counting the same user multiple times.
+    - Field overrides: Filter by field name using regex.
+    - AzureMonitor: map more units.
+    - Explore: Don't run queries on datasource change.
+    - Graph: Support setting field unit & override data source (automatic) unit.
+    - Explore: Unification of logs/metrics/traces user interface
+    - Table: JSON Cell should try to convert strings to JSON
+    - Variables: enables cancel for slow query variables queries. 
+    - TimeZone: unify the time zone pickers to one that can rule them all.
+    - Search: support URL query params.
+    - Grafana-UI: Add FileUpload.
+    - TablePanel: Sort numbers correctly.
+  * Bug fixes
+    - Alerting: remove LongToWide call in alerting.
+    - AzureMonitor: fix panic introduced in 7.1.4 when unit was unspecified and alias was used. 
+    - Variables: Fixes issue with All variable not being resolved.
+    - Templating: Fixes so texts show in picker not the values.
+    - Templating: Templating: Fix undefined result when using raw interpolation format
+    - TextPanel: Fix content overflowing panel boundaries. 
+    - StatPanel: Fix stat panel display name not showing when explicitly set.
+    - Query history: Fix search filtering if null value.
+    - Flux: Ensure connections to InfluxDB are closed.
+    - Dashboard: Fix for viewer can enter panel edit mode by modifying url (but cannot not save anything).
+    - Prometheus: Fix prom links in mixed mode.
+    - Sign In Use correct url for the Sign In button.
+    - StatPanel: Fixes issue with name showing for single series / field results
+    - BarGauge: Fix space bug in single series mode.
+    - Auth: Fix POST request failures with anonymous access
+    - Templating: Fix recursive loop of template variable queries when changing ad-hoc-variable
+    - Templating: Fixed recursive queries triggered when switching dashboard settings view
+    - GraphPanel: Fix annotations overflowing panels.
+    - Prometheus: Fix performance issue in processing of histogram labels.
+    - Datasources: Handle URL parsing error.
+    - Security: Use Header.Set and Header.Del for X-Grafana-User header.
+  * Changes in spec file
+    - Fix golang version = 1.14 to avoid dependency conflicts on some OBS projects  
+
+-------------------------------------------------------------------
 Fri Jun 05 10:31:13 UTC 2020 - jcavalheiro@suse.com
 
 - Update to version 7.0.3

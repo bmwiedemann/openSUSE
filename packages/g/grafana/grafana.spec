@@ -26,7 +26,7 @@
 %endif
 
 Name:           grafana
-Version:        7.0.3
+Version:        7.1.5
 Release:        0
 Summary:        Dashboards and editors for Graphite, InfluxDB, OpenTSDB
 License:        Apache-2.0
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) = 1.14
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
