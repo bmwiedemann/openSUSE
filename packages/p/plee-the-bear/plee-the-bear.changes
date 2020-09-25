@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 22 23:28:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.7.1
+- Change URL and Source0 to new upstream location.
+- Drop ptb-sequencer-gcc6.patch: upstreamed.
+- Add _service file for new source (untagged and unreleased) bear,
+  downloaded from its git repository.
+- Add skeleton CMakeLists.txt file to build project as recommended
+  by upstream (see README.md).
+- Add ptb-boost-placeholders.patch to explicitly use
+  boost::placeholders namespace where required, and thus fix build
+  failures on TW.
+- Move installed appdata file to the correct metainfo dir.
+- Drop conditionals supporting EOL openSUSE versions.
+- New BuildRequires: libboost_test-devel.
+- License updated to GPL-3.0-only.
+- Drop empty post(un) scriptlets.
+
+-------------------------------------------------------------------
 Tue Dec 26 16:06:18 UTC 2017 - dap.darkness@gmail.com
 
 - Cmake error and warnings fix.
