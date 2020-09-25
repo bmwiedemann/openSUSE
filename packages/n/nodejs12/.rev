@@ -312,4 +312,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>832206</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a773dd6e3f1f7146097ecc8faa831d31</srcmd5>
+    <version>12.18.4</version>
+    <time>1601044605</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS version 12.18.4:
+  * deps:
+    + update llhttp to 2.1.2 (bsc#1176605, CVE-2020-8201)
+    + fs.realpath.native may cause buffer overflow
+    (bsc#1176605, CVE-2020-8252)</comment>
+    <requestid>837372</requestid>
+  </revision>
 </revisionlist>
