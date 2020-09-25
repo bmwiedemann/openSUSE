@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Sep 16 16:37:51 UTC 2020 - Mark Post <mpost@suse.com>
 
-- Upgraded to version 1.3.1 (jsc#SLE-14630, jsc#SLE-14470)
+- Upgraded to version 1.3.1 (jsc#SLE-13707)
   * Version 1.3.1
     Changes:
       smcss: Add further error codes to man page

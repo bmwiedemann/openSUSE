@@ -116,4 +116,14 @@
     <comment></comment>
     <requestid>835903</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c76e7a6f576bd0f8991c74ce07f6b0fd</srcmd5>
+    <version>1.3.1</version>
+    <time>1601044419</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgraded to version 1.3.1 (jsc#SLE-13707)
+
+Changed Jira reference to the Epic and not the Team tasks.</comment>
+    <requestid>836415</requestid>
+  </revision>
 </revisionlist>
