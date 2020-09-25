@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Sep 25 06:40:16 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.16.0
+  + Support for kernel up to 5.8
+  + trace.py: support kprobe/uprobe func offset
+  + support raw perf config for perf_event_open in python
+  + add BPFQueueStackTable support
+  + added Ringbuf support support
+  + libbpf-tools: readahead, biosnoop, bitesize, tcpconnlat,
+    biopattern, biostacks
+  + bug fixes and some additional arguments for tools
+- Update libbpf to 0.1.1
+  + __ksym extern variables support for getting kernel symbol
+    addresses;
+  + BPF XDP link support;
+  + bpf_program__set_autoload() to disable loading and verifying
+    specific BPF programs;
+  + support for attaching map elements BPF iterator programs;
+  + new getters/setters for more control over BPF map definitions;
+  + all destructor-like APIs (e.g., perf_buffer__free() and
+    bpf_object__close()) now accept pointers returned on error
+    (in addition to NULL and valid pointers) and ignore them, no
+    need to guard destructors with extra checks now;
+  + bpf_link__detach() for force-detaching link, while it's still
+    alive;
+  + btf__parse_raw() and btf__parse() APIs for more convenient and
+    flexible BTF parsing.
+  + fix an issue with loading XDP programs on older kernels.
+  + CO-RE relocations in .text section (in sub-programs) are now
+    performed properly;
+  + vmlinux BTF is not loaded unnecessarily twice;
+  + perf_buffer__new() can be used on old kernels down to at least
+    4.9 version;
+  + libbpf's internal hashmap fixes for 32-bit architectures;
+  + few BTF sanitization bugs and memory leaks fixed;
+  + btf_dump handling of GCC built-in types for Arm NEON fixed;
+  + BTF-defined map-in-map initialization fixed for 32-bit
+    architectures;
+  + various BTF fixes for 32-bit architectures.
+
+-------------------------------------------------------------------
 Fri Aug  7 04:05:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Modify URLs to get the tarballs with names not just versions
