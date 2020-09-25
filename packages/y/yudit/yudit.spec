@@ -1,7 +1,7 @@
 #
 # spec file for package yudit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define	fontdir     %{_datadir}/fonts/truetype
 Name:           yudit
-Version:        2.9.6
+Version:        3.0.7
 Release:        0
 Summary:        Unicode text editor
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Editors
-Url:            http://www.yudit.org/
+URL:            https://www.yudit.org/
 Source0:        http://yudit.org/download/yudit-%{version}.tar.bz2
 Source1:        fonts.scale.yudit
 Source2:        yudit.gif
@@ -32,17 +32,16 @@ Patch2:         yudit-setlocale.patch
 Patch3:         print-preview.patch
 Patch7:         yudit-strip.patch
 Patch9:         uniprint-catch-bad_alloc-exceptions.patch
-Patch10:        yudit-2.9.6-reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
+%reconfigure_fonts_prereq
 %if 0%{?suse_version} > 1020
 BuildRequires:  fdupes
 %endif
-%reconfigure_fonts_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 yudit is a unicode package to edit and convert text of different
@@ -55,7 +54,6 @@ languages.
 %patch3 -p1 -b .print-preview
 %patch7
 %patch9 -p1 -b .catch-bad_alloc-exceptions
-%patch10 -p1
 for i in doc/HOWTO-baybayin.txt COPYING.TXT README.TXT doc/HOWTO-devanagari.txt doc/bidi/yudit.css doc/HOWTO-syntax.txt doc/notinstalled/cl.help
 do
     dos2unix $i
@@ -68,8 +66,8 @@ export CC="g++"
 export CFLAGS="%{optflags} -fPIE"
 export CXXFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
-%configure 
-make %{?_smp_mflags}
+%configure
+%make_build
 
 %install
 %make_install
@@ -84,13 +82,12 @@ mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
 cp -a C* FAQ* READM* TOD*  *BUG* %{buildroot}/%{_defaultdocdir}/%{name}
 cp -a doc %{buildroot}/%{_defaultdocdir}/%{name}
 %if 0%{?suse_version} > 1020
-%fdupes %{buildroot}%{_prefix}/share
+%fdupes %{buildroot}%{_datadir}
 %endif
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/%{name}
 %config %{_datadir}/pixmaps/yudit.png
 %{_bindir}/*

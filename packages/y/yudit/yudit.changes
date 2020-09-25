@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Sep  4 20:40:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.0.7:
+   - Added support to OpenType CFF fonts (CFF2 remains unsupported).
+   - Added one more color for So (Other Symbol) to differencite Emojis.
+   - Added mouoswewheel support for Windows version.
+   - Cleaning up default yudit.properties.
+   - Added Emoji.mys keymap.
+   - Added "emoji" encoding tag to otf/ttf fonts.
+   - Fallback rendering engine was enhanced to handle
+     multiple newpath - stroke,fill paths.
+   - Re-created Yudit icons to use vector graphics.
+   - Fixed memory leak is macos font rendering.
+   - Fixed preview where preview command returns immediately.
+   - Fixed SFontTTF to render properly glyphs containing only curves,
+     and glyphs that start with a curve.
+   - Applied yudit-3.0.1.patch1.txt, yudit-3.0.1.patch2.txt
+   - Glyph info became shorter for SMP.
+   - Added all legacy ligatures to OldHungarian_Full.ttf and OldHungarian.mys
+   - Targeting up for Yudit-3.0.2
+   - Changed to have OldHungarian_Full.ttf ligatures in logical order.
+   - Added new OldHungarian_Full.ttf
+   - Added source OldHungarian_Full.sfd
+   - Modified the OldHungarian.mys to be compatible with Hungarian.kmap
+   - Fixed SEditor break and return in case statements.
+   - Finished basic support of Macintosh native keyboard
+     under Kinput (aka kinput2) Yudit keyboard.
+   - Updated for Unicode 13.0.0
+   - Added Old Hungarian sample to TestPage.
+   - Added OldHungarian_Full.ttf temporarily from
+     https://github.com/OldHungarian/old-hungarian-font/
+   - FIXED window::wait in x11 and win32
+   - Finished basic support for Darwin using Cocoa and objective C.
+     The Japanese input and a proper installed for MAC is pending.
+   - Fixed stoolkit/SIOStream:SWriter::write to return false on errorFlag.
+   - Added >> » and << « to Hungarian.kmap. 
+   - Fixed Double click and increased timeout to 900msec in STextEdit.cpp
+   - working on sosx package, window comes up on mac.
+     still some redrawing problems, no clipping, speed optimization needed.
+         mouse events are still not working on mac.
+- remove yudit-2.9.6-reproducible.patch: upstream
+
+-------------------------------------------------------------------
 Thu Mar  8 14:37:45 UTC 2018 - bwiedemann@suse.com
 
 - Add yudit-2.9.6-reproducible.patch to make build reproducible
