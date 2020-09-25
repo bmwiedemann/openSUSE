@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 24 18:57:44 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.5.11
+  * support a check for updates
+  * added an optional server list whitelist filter
+  * added a command line argument to enable multithreading in
+    the server
+  * added support for split protocol messages (fixes bug with
+    large number of clients connected to a server)
+  * store recorder settings
+  * added a command line argument to disable recording on start
+    up
+  * accessibility improvements
+  * added Jack audio audio latency calculation
+  * show the server name in the title bar
+  * bug fix: crash when using the Jack backend and quickly
+    reconfiguring, coded by hselasky
+  * bug fix: Alt+h shortcut to open the Chat dialog did not
+    work, use Alt+c instead
+  * bug fix: pan is not correctly initialized in the server on a
+    new connection
+- Add Jamulus-disable_version_check.patch
+
+-------------------------------------------------------------------
 Sun Aug 16 08:15:56 UTC 2020 - aloisio@gmx.com
 
 - Update to version 3.5.10

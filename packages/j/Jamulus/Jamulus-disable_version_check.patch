@@ -1,0 +1,38 @@
+From a05f354bccebc8b80692135e8e37da53dd6a349a Mon Sep 17 00:00:00 2001
+From: Volker Fischer <corrados@users.noreply.github.com>
+Date: Thu, 24 Sep 2020 17:08:23 +0200
+Subject: [PATCH] added qmake CONFIG parameter disable_version_check for
+ disabling the automatic version check
+
+---
+ Jamulus.pro       | 6 ++++++
+ src/clientdlg.cpp | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/Jamulus.pro b/Jamulus.pro
+index 6605be7e..3f0db7e5 100755
+--- a/Jamulus.pro
++++ b/Jamulus.pro
+@@ -1011,3 +1011,9 @@ contains(CONFIG, "opus_shared_lib") {
+     SOURCES += $$SOURCES_OPUS
+     DISTFILES += $$DISTFILES_OPUS
+ }
++
++# disable version check if requested
++contains(CONFIG, "disable_version_check") {
++    message(The version check is disabled.)
++    DEFINES += DISABLE_VERSION_CHECK
++}
+diff --git a/src/clientdlg.cpp b/src/clientdlg.cpp
+index afe18f8f..8c4a6d4d 100755
+--- a/src/clientdlg.cpp
++++ b/src/clientdlg.cpp
+@@ -756,7 +756,7 @@ void CClientDlg::OnCLVersionAndOSReceived ( CHostAddress           InetAddr,
+                                             QString                strVersion )
+ {
+     // update check
+-#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
++#if ( QT_VERSION >= QT_VERSION_CHECK(5, 6, 0) ) && !defined ( DISABLE_VERSION_CHECK )
+     if ( QVersionNumber::compare ( QVersionNumber::fromString ( strVersion ), QVersionNumber::fromString ( VERSION ) ) > 0 )
+     {
+         lblUpdateCheck->show();

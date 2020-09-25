@@ -17,16 +17,18 @@
 #
 
 
-%define tarball_version 3_5_10
+%define tarball_version 3_5_11
 
 Name:           Jamulus
-Version:        3.5.10
+Version:        3.5.11
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
 URL:            http://llcon.sourceforge.net/index.html
 Source0:        https://github.com/corrados/jamulus/archive/r%{tarball_version}.tar.gz#/jamulus-r%{tarball_version}.tar.gz
 Source1:        %{name}_icon.png
+# PATCH-FIX-UPSTREAM Jamulus-disable_version_check.patch
+Patch0:         Jamulus-disable_version_check.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -34,6 +36,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  jack-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
@@ -51,11 +54,11 @@ collects the audio data from each Jamulus client software, mixes the audio data
 and sends the mix back to each client.
 
 %prep
-%autosetup -n jamulus-r%{tarball_version}
+%autosetup -p1 -n jamulus-r%{tarball_version}
 install %{SOURCE1} .
 
 %build
-%qmake5 CONFIG+=opus_shared_lib
+%qmake5 CONFIG+=opus_shared_lib CONFIG+=disable_version_check
 %make_jobs
 
 %install
