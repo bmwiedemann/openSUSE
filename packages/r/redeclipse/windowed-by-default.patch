@@ -1,22 +1,12 @@
-Description: Start in windowed mode by default
- Debian Games team has a preference for games starting in windowed mode, since
- fullscreen SDL will capture all keyboard input and make the user unable to
- escape via alt-tab, change volume, or exit sanely in the case of the
- application locking up.
-Forwarded: not-needed
-Author: Martin Erik Werner <martinerikwerner@gmail.com>
-Last-Update: 2011-12-13
-
-Index: redeclipse-1.5.5/src/engine/main.cpp
-===================================================================
---- redeclipse-1.5.5.orig/src/engine/main.cpp	2016-06-30 21:36:13.797866688 +0200
-+++ redeclipse-1.5.5/src/engine/main.cpp	2016-06-30 21:36:13.793866635 +0200
-@@ -235,7 +235,7 @@
-     }
+diff -burNE redeclipse-2.0.0_vanilla/src/engine/main.cpp redeclipse-2.0.0/src/engine/main.cpp
+--- redeclipse-2.0.0_vanilla/src/engine/main.cpp	2020-06-16 10:23:21.249977623 +0200
++++ redeclipse-2.0.0/src/engine/main.cpp	2020-06-16 10:25:03.533664683 +0200
+@@ -246,7 +246,7 @@
+     wantdisplaysetup = true;
  }
  
--VARF(0, fullscreen, 0, 1, 1, if(!(identflags&IDF_WORLD)) setfullscreen(fullscreen!=0));
-+VARF(0, fullscreen, 0, 0, 1, if(!(identflags&IDF_WORLD)) setfullscreen(fullscreen!=0));
+-VARF(IDF_INIT, fullscreen, 0, 1, 1, if(!(identflags&IDF_WORLD)) setfullscreen(fullscreen!=0));
++VARF(IDF_INIT, fullscreen, 0, 0, 1, if(!(identflags&IDF_WORLD)) setfullscreen(fullscreen!=0));
  
  void resetfullscreen()
  {

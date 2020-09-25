@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jul 24 15:44:38 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+-  Add _constraints with default min 9GB disk space
+
+-------------------------------------------------------------------
+Mon Jun 22 20:23:56 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Fixes according to https://build.opensuse.org/request/show/816099:
+- spec file formatting
+- server as separate package for openSUSE as well 
+
+-------------------------------------------------------------------
+Fri Jun 19 13:41:46 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Fixes according to https://build.opensuse.org/request/show/814881
+- sqlite patch is still needed after all
+
+-------------------------------------------------------------------
+Tue Jun 16 10:30:10 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- modified spec file to build on Fedora 31+32
+- server binary in separate package on Fedora 31+32
+
+-------------------------------------------------------------------
+Tue Jun 16 08:08:01 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 2.0.0
+- removed system_sqlite.patch because it itn't needed anymore - the source
+  always uses the system sqlite libs now.
+- rebased windowed-by-default.patch
+- game now uses the tesseract engine instead of cube 2
+
+-------------------------------------------------------------------
 Wed Mar 15 19:34:08 UTC 2017 - dimstar@opensuse.org
 
 - Explicitly package files installed by make install into _docdir:

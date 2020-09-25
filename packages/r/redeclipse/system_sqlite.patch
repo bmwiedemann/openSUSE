@@ -1,65 +1,65 @@
-# use system sqlite3
-Index: redeclipse-1.5.5/src/Makefile
-===================================================================
---- redeclipse-1.5.5.orig/src/Makefile	2016-07-01 19:48:00.000000000 +0200
-+++ redeclipse-1.5.5/src/Makefile	2016-07-01 21:07:49.223921890 +0200
-@@ -83,7 +83,7 @@
+diff -burNE redeclipse-2.0.0_orig/src/Makefile redeclipse-2.0.0/src/Makefile
+--- redeclipse-2.0.0_orig/src/Makefile	2020-06-19 15:54:22.107742036 +0200
++++ redeclipse-2.0.0/src/Makefile	2020-06-19 16:06:07.191461674 +0200
+@@ -118,7 +118,7 @@
  endif
  endif
- CLIENT_INCLUDES= $(INCLUDES) -I/usr/X11R6/include `sdl2-config --cflags`
--CLIENT_LIBS= -Lenet -lenet -L/usr/X11R6/lib -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
-+CLIENT_LIBS= -Lenet -lenet -L/usr/X11R6/lib -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL -lsqlite3
+ CLIENT_INCLUDES= $(INCLUDES) `$(PKG_CONFIG) --cflags x11 sdl2 SDL2_image SDL2_mixer zlib gl`
+-CLIENT_LIBS= -Lenet -lenet `$(PKG_CONFIG) --libs x11 sdl2 SDL2_image SDL2_mixer zlib gl`
++CLIENT_LIBS= -Lenet -lenet `$(PKG_CONFIG) --libs x11 sdl2 SDL2_image SDL2_mixer zlib gl` -lsqlite3
+ ifneq (,$(WANT_STEAM))
+ override CLIENT_LIBS+= -L../bin/$(PLATFORM_BIN) -lsteam_api
  endif
- ifneq (,$(findstring linux,$(PLATFORM)))
- CLIENT_LIBS+= -lrt
-@@ -99,7 +99,6 @@
- 	shared/stream.o \
+@@ -143,7 +143,6 @@
  	shared/tools.o \
  	shared/zip.o \
+ 	support/jsmn.o \
 -	support/sqlite3.o \
+ 	engine/aa.o \
  	engine/bih.o \
  	engine/blend.o \
- 	engine/blob.o \
-@@ -161,7 +160,7 @@
- SERVER_LIBS= -mwindows $(STD_LIBS) -L$(WINDLL) -L$(WINLIB) -lzlib1 -lenet -lws2_32 -lwinmm
- else
- SERVER_INCLUDES= -DSTANDALONE $(INCLUDES)
--SERVER_LIBS= -Lenet -lenet -lz
-+SERVER_LIBS= -Lenet -lenet -lz -lsqlite3
+@@ -216,7 +215,7 @@
  endif
- SERVER_OBJS= \
- 	shared/crypto-standalone.o \
-@@ -169,7 +168,6 @@
- 	shared/stream-standalone.o \
+ else
+ SERVER_INCLUDES= -DSTANDALONE $(INCLUDES) `pkg-config --cflags zlib`
+-SERVER_LIBS= -Lenet -lenet `pkg-config --libs zlib`
++SERVER_LIBS= -Lenet -lenet `pkg-config --libs zlib` -lsqlite3
+ CTFONT_INCLUDES= -DSTANDALONE `pkg-config --cflags zlib freetype2`
+ CTFONT_LIBS= `pkg-config --libs zlib freetype2`
+ ifneq (,$(WANT_STEAM))
+@@ -230,7 +229,6 @@
  	shared/tools-standalone.o \
  	shared/zip-standalone.o \
+ 	support/jsmn.o \
 -	support/sqlite3.o \
+ 	engine/cdpi-standalone.o \
  	engine/command-standalone.o \
- 	engine/irc-standalone.o \
- 	engine/master-standalone.o \
-@@ -205,9 +203,6 @@
+ 	engine/http-standalone.o \
+@@ -272,9 +270,6 @@
  %-standalone.o: %.cpp
  	$(CXX) $(CXXFLAGS) -c -o $@ $(subst -standalone.o,.cpp,$@)
  
 -support/sqlite3.o: support/sqlite3.c
 -	$(CC) -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION -c -o support/sqlite3.o support/sqlite3.c
 -
- $(CLIENT_OBJS): CXXFLAGS += $(CLIENT_INCLUDES)
- $(filter shared/%,$(CLIENT_OBJS)): $(filter shared/%,$(CLIENT_PCH))
- $(filter engine/%,$(CLIENT_OBJS)): $(filter engine/%,$(CLIENT_PCH))
-@@ -387,7 +382,6 @@
- engine/master.o: shared/glemu.h shared/iengine.h shared/igame.h engine/irc.h
- engine/master.o: engine/sound.h engine/world.h engine/octa.h
- engine/master.o: engine/lightmap.h engine/bih.h engine/texture.h
+ support/jsmn.o: support/jsmn.c
+ 	$(CC) -c -o support/jsmn.o support/jsmn.c
+ 
+@@ -461,7 +456,7 @@
+ engine/master.o: shared/glexts.h shared/glemu.h shared/iengine.h
+ engine/master.o: shared/igame.h engine/http.h engine/irc.h engine/sound.h engine/world.h
+ engine/master.o: engine/octa.h engine/light.h engine/texture.h engine/bih.h
 -engine/master.o: engine/model.h support/sqlite3.h
- engine/material.o: engine/engine.h engine/version.h shared/cube.h shared/tools.h
- engine/material.o: shared/command.h shared/geom.h shared/ents.h
- engine/material.o: shared/glexts.h shared/glemu.h shared/iengine.h
-@@ -682,7 +676,6 @@
++engine/master.o: engine/model.h
+ engine/material.o: engine/engine.h engine/version.h shared/cube.h
+ engine/material.o: shared/tools.h shared/command.h shared/geom.h
+ engine/material.o: shared/ents.h shared/glexts.h shared/glemu.h
+@@ -770,7 +765,7 @@
  engine/master-standalone.o: engine/engine.h engine/version.h shared/cube.h
  engine/master-standalone.o: shared/tools.h shared/command.h shared/geom.h
  engine/master-standalone.o: shared/ents.h shared/iengine.h shared/igame.h
--engine/master-standalone.o: engine/irc.h engine/sound.h support/sqlite3.h
+-engine/master-standalone.o: engine/http.h engine/irc.h engine/sound.h support/sqlite3.h
++engine/master-standalone.o: engine/http.h engine/irc.h engine/sound.h
  engine/server-standalone.o: engine/engine.h engine/version.h shared/cube.h
  engine/server-standalone.o: shared/tools.h shared/command.h shared/geom.h
  engine/server-standalone.o: shared/ents.h shared/iengine.h shared/igame.h

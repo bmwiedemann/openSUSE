@@ -1,7 +1,7 @@
 #
 # spec file for package redeclipse
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,62 +12,63 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           redeclipse
-Version:        1.5.6
+Version:        2.0.0
 Release:        0
 Summary:        Fast-paced first person ego shooter
-License:        Zlib and CC-BY-SA-3.0
+License:        Zlib AND CC-BY-SA-3.0
 Group:          Amusements/Games/3D/Shoot
-Url:            http://www.redeclipse.net/
-# Sadly not source URL compatible http://www.indiedb.com/games/red-eclipse/downloads/red-eclipse-v155-elysium-edition-for-linux
-Source:         %{name}_%{version}_nix.tar.bz2
-# Patches from PlayDeb
-Patch1:         windowed-by-default.patch
-Patch2:         system_sqlite.patch
-BuildRequires:  c++_compiler
+URL:            http://www.redeclipse.net/
+Source:         https://github.com/redeclipse/base/releases/download/v%{version}/%{name}_%{version}_nix.tar.bz2
+
+Patch0:         windowed-by-default.patch
+Patch1:         system_sqlite.patch
+
+BuildRequires:  SDL2-devel
+BuildRequires:  ed
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
-# This is needed by the Makefile
-BuildRequires:  ed
+
 Requires:       %{name}-data >= %{version}
 
 %description
-The game is a new take on the first person arena shooter, built as a
-total conversion of Cube Engine 2 (Sauerbraten), which lends itself
-toward a balanced gameplay, with a general theme of agility in a
-variety of environments.
-The game is centered on multiplayer based action, but can also be 
-played offline against bots.
+Red Eclipse 2 is a first person shooter based on the tesseract engine.
+Parkour gameplay, different game modes, and several mutators to make the game very flexible.
+Map editor is included.
 
 %package data
 Summary:        Data files for the Red Eclipse game
 Group:          Amusements/Games/3D/Shoot
-Requires:       %{name} >= %{version}
 BuildArch:      noarch
 
 %description data
-The game is a new take on the first person arena shooter, built as a
-total conversion of Cube Engine 2 (Sauerbraten), which lends itself
-toward a balanced gameplay, with a general theme of agility in a
-variety of environments.
+This package contains the data files (maps, models, textures, sounds, etc.) for the Red Eclipse game.
 
-This package contains the data files (maps, models, textures, sounds, etc.)
-for the Red Eclipse game.
+%package server
+Summary:        The Red Eclipse server binary
+Group:          Amusements/Games/3D/Shoot
+Requires:       %{name}-data >= %{version}
+
+%description server
+This package contains the server binary for the Red Eclipse game.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 rm -r src/enet/
 rm -r src/include/
@@ -105,20 +106,29 @@ sed -i 's/"redeclipse"/redeclipse/g' %{buildroot}%{_datadir}/applications/%{name
 
 %files
 %defattr(-,root,root)
+%license doc/license.txt
 %doc readme.txt doc/*.txt
 %doc %{_defaultdocdir}/%{name}/examples/
 %{_bindir}/%{name}
-%{_bindir}/%{name}-server
+
 %{_libexecdir}/%{name}
 %{_datadir}/applications/*
 %{_datadir}/icons/*
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/*.appdata.xml
-%{_mandir}/man6/%{name}-server.6.*
 %{_mandir}/man6/%{name}.6.*
 
 %files data
 %defattr(-,root,root)
+%license doc/license.txt
 %{_datadir}/%{name}
+
+%files server
+%license doc/license.txt
+%{_bindir}/%{name}-server
+%{_mandir}/man6/%{name}-server.6.*
+%{_libexecdir}/%{name}/config
+%{_libexecdir}/%{name}/data
+%{_libexecdir}/%{name}/config
 
 %changelog
