@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           ceph-csi
-Version:        3.0.0+git0.f831f5257
+Version:        3.1.0+git0.5d4847358
 Release:        0
 Summary:        Container Storage Interface driver for Ceph block and file
 License:        Apache-2.0
@@ -75,8 +75,8 @@ go build \
   -buildmode=pie \
   -a \
   -ldflags " \
-  -X github.com/ceph/ceph-csi/pkg/util.GitCommit=$git_commit_parsed \
-  -X github.com/ceph/ceph-csi/pkg/util.DriverVersion=v$version_parsed" \
+  -X github.com/ceph/ceph-csi/internal/util.GitCommit=$git_commit_parsed \
+  -X github.com/ceph/ceph-csi/internal/util.DriverVersion=v$version_parsed" \
   -o _output/cephcsi \
   ./cmd/
 

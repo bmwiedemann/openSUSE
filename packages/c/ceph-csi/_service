@@ -6,7 +6,7 @@
     <!-- see https://github.com/openSUSE/obs-service-tar_scm/blob/master/tar_scm.service.in for hints -->
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v3.0.0</param>
+    <param name="revision">v3.1.0</param>
   </service>
   <service name="tar" mode="disabled"/>
   <service name="recompress" mode="disabled">
