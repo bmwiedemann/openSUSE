@@ -34,7 +34,7 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-flask}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 6}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tzlocal}

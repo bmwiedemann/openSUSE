@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:53:07 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Set pytest version < 6 in build requirements
+
+-------------------------------------------------------------------
 Sat May  2 17:48:15 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Initial version 
