@@ -1,7 +1,7 @@
 #
 # spec file for package libphonenumber
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           libphonenumber
-Version:        8.10.15
+Version:        8.12.10
 Release:        0
 %define lib_ver 8
-%define lib_ver2 8.10
+%define lib_ver2 8.12
 Summary:        Library for parsing, formatting, and validating international phone numbers
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/google/libphonenumber
-Source0:        https://github.com/google/libphonenumber/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/google/libphonenumber
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  java

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:16:46 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Update to v8.12.10:
+  * See https://github.com/google/libphonenumber/blob/v8.12.10/release_notes.txt
+- The upstream repo and tarball include binary .jar archives with legally
+  questionable content. Switch to a _service and exclude those.
+
+-------------------------------------------------------------------
+Sat Sep 19 05:21:08 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v8.12.9
+  * see https://github.com/google/libphonenumber/blob/v8.12.9/release_notes.txt
+
+-------------------------------------------------------------------
 Wed Jul 24 08:27:42 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
-- Initial commit
+- Initial commit for v8.10.15
