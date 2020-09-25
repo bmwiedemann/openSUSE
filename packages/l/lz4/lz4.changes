@@ -11,6 +11,7 @@ Tue Oct 15 14:48:45 UTC 2019 - pgajdos@suse.com
   * decompression functions were reading a few bytes beyond input size
   * api: lz4frame initializers compatibility with c++, reported by @degski
   * cli : added command --list, based on a patch by @gabrielstedman
+  * fixes CVE-2019-17543 [bsc#1153936]
 
 -------------------------------------------------------------------
 Thu Jun  6 18:26:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>

@@ -123,4 +123,12 @@
     <comment></comment>
     <requestid>738873</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>bf5d371b2f5102d4f478bdf7dc85f84c</srcmd5>
+    <version>1.9.2</version>
+    <time>1601043988</time>
+    <user>dimstar_suse</user>
+    <comment>  * fixes CVE-2019-17543 [bsc#1153936]</comment>
+    <requestid>836094</requestid>
+  </revision>
 </revisionlist>
