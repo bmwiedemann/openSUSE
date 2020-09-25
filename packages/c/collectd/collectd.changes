@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Sep 23 06:29:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.12.0:
+  * varnish plugin: Added varnish 6 support.
+  * amqp1 plugin: New options to limit send queue length has been added.
+  * mdevents plugin: New plugin to generate notifications about events
+  * amqp plugin: Updated option to allow multiple hosts to support
+    failover.
+  * mysql plugin: Reporting of the fields Slave_IO_Running and
+    Slave_SQL_Running has been added.
+  * write_http plugin: libcurl default HTTP response has been moved to a
+    buffer instead of stdout.
+  * disk plugin: Provided an udev rule with ID_SERIAL based attribute so
+    disk and partition data don't get mixed incorrectly in udev-based disk
+    naming. 
+  * swap plugin: Implementation for NetBSD has been added.
+  * netstat_udp plugin: New plugin ((currently NetBSD-only) to report UDP
+    summary statistics has been aded.
+  * smart plugin: SMART plugin has been extended with NVMe device
+    functionality. 
+  * infiniband plugin: New plugin to collect metrics about IB ports has
+    been added.
+  * snmp plugin: Count option was added allowing to gather the number of
+    table entries (matching given criteria) rather than their values.
+  * cpu plugin: Implementation for NetBSD has been added.
+  * irq plugin: Implementation for NetBSD has been added.
+  * processes plugin: Implementation for NetBSD has been added.
+  * entropy plugin: Implementation for NetBSD has been added.
+  * netlink plugin: VFs statistics and link info has been added.
+  * memory plugin: Implementation for NetBSD has been added.
+  * curl_jolokia plugin: New plugin has been added to integrate jolokia to
+    fetch jmx counters via HTTP/json. Thanks to Wilfried Goesgens. #2470
+  * write_sensu plugin: IncludeSource option has been added.
+  * intel_pmu plugin: Check for libjevents version has been improved.
+  * python plugin: Error-handling code of PyType_Ready has been added.
+  * collectd: Updated specfile for EL8. Thanks to Fabien Wernli. #3346
+  * openvpn plugin: Parsing of empty fields has been fixed.
+  * dpdk_telemetry plugin: Build issues has been fixed.
+  * mqtt plugin: A problem with stuck after 20 (qos=1) messages has been
+    fixed.
+  * varnish plugin: Target in category for varnish 6 has been added.
+  * mqtt plugin: Resubscribe after a reconnect. Thanks to Maciej
+  * zookeeper plugin: Missing 3.5 mntr fields has been added. Thanks to
+  * sensors plugin: The documentation has been improved. Thanks to Florian
+  * types.db(5): Documentation of metric definitions has been improved.
+  * intel_pmu plugin: The possible crash on plugin init has been fixed.
+  * processes plugin: Size of reading buffer for /proc/stat has been
+  * ubi plugin: Data source type has been fixed from counter to gauge.
+  * intelrdt plugin: NaN values in csv output has been fixed. Thanks to
+  * capabilities plugin: Conditionalized return type for microhttpd
+
+-------------------------------------------------------------------
 Thu Jun 25 12:18:05 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
 
 - Update to 5.11

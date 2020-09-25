@@ -21,10 +21,10 @@
   ceph cgroups chrony curl curl_json curl_xml conntrack contextswitch cpu cpufreq cpusleep csv \\\
   df disk dns drbd \\\
   email entropy ethstat exec fhcount filecount fscache hddtemp hugepages \\\
-  interface ipc iptables ipvs irq \\\
+  infiniband interface ipc iptables ipvs irq \\\
   load logfile log_logstash \\\
   madwifi match_empty_counter match_hashed match_regex match_timediff match_value \\\
-  mbmon md memcached memory multimeter \\\
+  mdevents mbmon md memcached memory multimeter \\\
   netlink network nfs nginx notify_nagios ntpd numa olsrd openvpn \\\
   perl ping protocols powerdns processes \\\
   rrdcached rrdtool %{expand:%{sensors_plugin}} serial statsd swap syslog \\\
@@ -42,7 +42,7 @@
 %define sensors_plugin %{nil}
 %endif
 Name:           collectd
-Version:        5.11.0
+Version:        5.12.0
 Release:        0
 Summary:        Statistics Collection Daemon for filling RRD Files
 License:        GPL-2.0-only AND MIT

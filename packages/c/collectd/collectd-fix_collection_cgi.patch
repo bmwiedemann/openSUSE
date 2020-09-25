@@ -1,18 +1,20 @@
---- collectd-5.11.0/contrib/collection.cgi.orig	2020-06-24 18:22:39.045940659 +0200
-+++ collectd-5.11.0/contrib/collection.cgi	2020-06-24 18:23:01.377983888 +0200
-@@ -32,7 +32,7 @@
+Index: collectd-5.12.0/contrib/collection.cgi
+===================================================================
+--- collectd-5.12.0.orig/contrib/collection.cgi
++++ collectd-5.12.0/contrib/collection.cgi
+@@ -32,7 +32,7 @@ use URI::Escape ('uri_escape');
  use RRDs ();
  use Data::Dumper ();
  
 -our $Config = "/etc/collection.conf";
-+our $Config = "/etc/collectd/collection.conf";
- our $TypesDB = "/usr/share/collectd/types.db";
++our $Config = "/etc/collectd/collection.conf"
  our @DataDirs = ();
  our @DontShowTypes = ();
-diff --git a/contrib/collection.conf b/contrib/collection.conf
-index e8444f5..063141f 100644
---- a/contrib/collection.conf
-+++ b/contrib/collection.conf
+ our $LibDir;
+Index: collectd-5.12.0/contrib/collection.conf
+===================================================================
+--- collectd-5.12.0.orig/contrib/collection.conf
++++ collectd-5.12.0/contrib/collection.conf
 @@ -1,3 +1,2 @@
 -datadir: "/opt/collectd/var/lib/collectd/rrd/"
 -libdir: "/opt/collectd/lib/collectd/"
