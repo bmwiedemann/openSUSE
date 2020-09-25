@@ -248,4 +248,12 @@
   * libnet-pf-packet.patch</comment>
     <requestid>340612</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>19ef33e20052db46f00e89e728d16ef9</srcmd5>
+    <version>1.2</version>
+    <time>1601043685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836246</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:11:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2:
+  * Removed Lua bindings from repo and dist files, now available separately
+  * Removed generated HTML and Nroff (man pages) documentation files, must be regenerated with Doxygen using make doc
+  * Add pkg-config support with libnet.pc, replaces libnet-config tool, although it is kept for compatibility for now
+  * Factorize socket setup code for socket opening to provide output device selection for IPv4
+  * Make libnet_get_hwaddr() work with 802.1q interfaces in bpf (BSD)
+  * New API for OSPF HELLO messages, with neighbor 
+  * many bugfixes, see https://github.com/libnet/libnet/releases/tag/v1.2
+- drop libnet-1.2-rc.patch libnet-pf-packet.patch (obsolete)
+
+-------------------------------------------------------------------
 Fri Oct 23 13:48:35 UTC 2015 - tchvatal@suse.com
 
 - Add patch for bnc#949391:

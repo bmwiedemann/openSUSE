@@ -1,7 +1,7 @@
 #
 # spec file for package libnet
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libnet9
-%define realver 1.2-rc3
 Name:           libnet
-Version:        1.2~rc3
+Version:        1.2
 Release:        0
 Summary:        A C Library for Portable Packet Creation
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://sourceforge.net/projects/libnet-dev
-Source0:        http://downloads.sourceforge.net/libnet-dev/%{name}-%{realver}.tar.gz
-#PATCH-FIX-OPENSUSE: tchvatal@suse.com, use proper version string to work fine
-Patch0:         libnet-1.2-rc.patch
-#PATCH-FIX-OPENSUSE: tchvatal@suse.com, properly detect PF_PACKET in OBS
-# Not upstreamable as we simply expect the feature to be there
-Patch1:         libnet-pf-packet.patch
+URL:            https://codedocs.xyz/libnet/libnet/
+Source0:        https://github.com/libnet/libnet/releases/download/v%{version}/libnet-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  doxygen
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Libnet is an API to help with the construction and handling of network
@@ -76,9 +70,8 @@ Libnet is an API to help with the construction and handling of network
 packets. This package contains documentation.
 
 %prep
-%setup -q -n %{name}-%{realver}
-%patch0 -p1
-%patch1 -p1
+%setup -q
+###%patch1 -p1
 
 rm -rf sample/win32
 # HACK: to have samples/ dir untouched and ready for installation
@@ -92,10 +85,10 @@ CFLAGS="%{optflags} -Wall -Wno-unused" \
     --disable-static \
     --with-pic \
     --with-link-layer=linux
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 install -d -m 755 %{buildroot}/%{_bindir}
 install -m 755 libnet-config %{buildroot}/%{_bindir}
@@ -104,25 +97,23 @@ rm -rf sample/
 # HACK: rename untouched dir back
 mv sample_doc sample
 find doc/  -name "Makefile*" -o -name ".libs" | xargs rm -rf
+rm -rf %{buildroot}/usr/share/doc/%{name}
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
-%doc doc/COPYING
+%license LICENSE
 %{_libdir}/libnet.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/libnet-config
 %{_includedir}/libnet*
 %{_libdir}/libnet.so
 %{_mandir}/man3/*
+%{_libdir}/pkgconfig/libnet.pc
 
 %files doc
-%defattr(-,root,root)
 %doc doc/* sample
 
 %changelog
