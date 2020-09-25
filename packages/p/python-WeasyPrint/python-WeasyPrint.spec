@@ -43,7 +43,7 @@ Requires:       python-setuptools >= 39.2.0
 Requires:       python-tinycss2 >= 1.0.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Suggests:       python-CairoSVG >= 2.4.0
+Requires:       python-CairoSVG >= 2.4.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module CairoSVG >= 2.4.0}

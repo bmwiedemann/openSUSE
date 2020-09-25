@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 09:05:04 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- require python-CairoSVG
+
+-------------------------------------------------------------------
 Mon May 18 07:25:35 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
