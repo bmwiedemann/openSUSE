@@ -1,7 +1,8 @@
 #
 # spec file for package smenu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) Pierre Gentile <p.gen.progs@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           smenu
-Version:        0.9.15
+Version:        0.9.16
 Release:        0
 Summary:        A standard input word picker
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
-Url:            https://github.com/p-gen/%{name}
+URL:            https://github.com/p-gen/%{name}
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  ncurses-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -61,7 +62,7 @@ make install DESTDIR="%{?buildroot}"
 %files
 %defattr(-,root,root,-)
 %attr(0755,root,root) %{_bindir}/*
-%if 0%{?sle_version} < 120300 && 0%{?suse_version} <= 1315
+%if 0%{?sle_version} < 120300
 %doc COPYRIGHT
 %else
 %license COPYRIGHT

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Sep 18 18:11:31 UTC 2020 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 0.9.16
+  Fixes:
+  * The SIGINT handling has been fixed.
+  * The lvm_menu example is fixed.
+  * Some memory allocation issues have been corrected.
+  * The last example in the man page now works correctly.
+  * The manual has been cleaned and corrected.
+  * Missing headers has been added.
+  * The List management code has been corrected and improved.
+  * Invalid UTF-8 sequences entered using \u are now handled
+    correctly.
+  * Unreachable code has been removed.
+  * As xwcscasecmp is missing in C99, a local version is now used.
+  * The search timeout now works correctly.
+  Improvements:
+  * Option management has been completely rewritten to use a new,
+    more flexible system (github.com/p-gen/ctxopt).
+  * The horizontal and vertical scrolling symbols are now visually
+    consistent.
+  * An updated version of autotools is now used.
+  * Wide mode is now allowed in column mode.
+  * Line delimiters can now be defined to break lines in
+    tabulation mode.
+  * A set of UTF-8 characters can now be ignored as input.
+  * Substitution character for non-printable characters can now be
+    changed.
+  * -N and -U options can now have multiple arguments.
+  * Fuzzy and substring searches now ignore leading and
+    trailing blanks.
+  * Unicode codepoints can now be entered using the new \U
+    notation.
+  * smenu has been optimized to support networks with high latency.
+  Misc:
+  * A note in the README to thank the packagers has been added.
+  * The code has been adjusted to conform to C99.
+  * The code has been cleaned up in many places.
+
+-------------------------------------------------------------------
 Sat Mar 30 17:57:59 UTC 2019 - Pierre Gentile <p.gen.progs@gmail.com>
 
 - Version 0.9.15
