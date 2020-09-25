@@ -2282,4 +2282,12 @@
     <comment>submit new version 4.3.51</comment>
     <requestid>835787</requestid>
   </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>81ea43314215117edd43889534d5b5ec</srcmd5>
+    <version>4.3.53</version>
+    <time>1601044016</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.53</comment>
+    <requestid>837192</requestid>
+  </revision>
 </revisionlist>
