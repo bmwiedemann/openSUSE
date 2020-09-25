@@ -65,7 +65,8 @@ export PYERFA_USE_SYSTEM_LIBERFA=1
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch --pyargs erfa
+# test_version https://github.com/liberfa/pyerfa/issues/52
+%pytest_arch --pyargs erfa -k "not test_version"
 
 %files %{python_files}
 %license LICENSE.rst licenses/ERFA.rst
