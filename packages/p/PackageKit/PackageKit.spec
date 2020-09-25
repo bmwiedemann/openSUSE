@@ -52,6 +52,8 @@ Patch2:         PackageKit-remove-polkit-rules.patch
 Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
 # PATCH-FIX-UPSTREAM PackageKit-test-Install-required-helper-files.patch gh#/hughsie/PackageKit/commit/a6904b4 ngompa13@gmail.com -- Fix installation of test backend files
 Patch4:         PackageKit-test-Install-required-helper-files.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-set-PATH.patch gh#/hughsie/PackageKit/commit/2fb7fc6e, bsc#1175315 sckang@suse.com -- zypp: Set PATH variable
+Patch5:         PackageKit-zypp-set-PATH.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

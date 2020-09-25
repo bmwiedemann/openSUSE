@@ -1735,4 +1735,13 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
 - Clean up legacy cruft, assume openSUSE Leap 15 or newer (forwarded request 832819 from Pharaoh_Atem)</comment>
     <requestid>833698</requestid>
   </revision>
+  <revision rev="205" vrev="2">
+    <srcmd5>ba2b80dc3a41ce31a708d41e9c2b0ea9</srcmd5>
+    <version>1.2.1</version>
+    <time>1601043914</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-set-PATH.patch: zypp: Set PATH variable
+  (gh#/hughsie/PackageKit/commit/2fb7fc6e, bsc#1175315). (forwarded request 835757 from JonathanKang)</comment>
+    <requestid>836045</requestid>
+  </revision>
 </revisionlist>

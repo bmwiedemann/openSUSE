@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 21 06:37:58 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-set-PATH.patch: zypp: Set PATH variable
+  (gh#/hughsie/PackageKit/commit/2fb7fc6e, bsc#1175315).
+
+-------------------------------------------------------------------
 Mon Sep  7 14:04:19 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 1.2.1
