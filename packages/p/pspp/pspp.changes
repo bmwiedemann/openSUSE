@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Aug 20 19:31:33 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to PSPP 1.4.0:
+  * The file pspp-mode.el (the pspp-mode for Emacs) is no longer 
+    distributed with PSPP.  Instead, it can be installed directly 
+    in emacs and is available from 
+    https://elpa.gnu.org/packages/pspp-mode.html
+  * The Find dialog box, when searching for numeric values, will 
+    match only to the precision of the variable's print format.  
+    This avoids behaviour which is suprising to some users.
+  * PSPP now supports the SPSS viewer (.spv) format that SPSS 16 and
+    later use to save the contents of its output editor:
+      - PSPP and PSPPIRE can write output to .spv files.
+      - The new utility pspp-output can convert .spv files to other
+        formats.
+      - The pspp-convert utility can now decrypt encrypted .spv files.
+        The encrypted viewer file format is unacceptably insecure, so
+        to discourage its use PSPP and PSPPIRE do not directly read or
+        write this format.
+  * A bug where the Data|Select Cases|Random Sample menu would 
+    generate invalid syntax has been fixed.
+  * FREQUENCIES will emit a warning if one or more weight values are missing.
+  * Plain text output is no longer divided into pages, since it is
+    now rarely printed on paper.
+  * pspp-convert improvements:
+      - New "-a", "-l", "--password-list" options to search for an 
+        encrypted file's password.
+      - New "--keep" and "--drop" options to output only selected
+        variables.
+      - New "--recode", "--no-var-name", "--labels", "--print-formats", 
+        "--decimal", "--delimiter", and "--qualifier" options to 
+        control CSV output.
+  * Improvements to SAVE DATA COLLECTION support for MDD files.
+  * Bug fix for CVE-2018-20230.
+  * The /RENAME subcommand in SAVE TRANSLATE et al. has been extended 
+    to support the syntax also accepted by other software.
+  * The EXAMINE command will now perform the Shapiro-Wilk test when 
+    one or more plots are requested.
+  * The REGRESSION command now supports the /STATISTICS=TOL option which
+    outputs tolerance and variance inflation factor metrics for the data.
+  * The QUICK CLUSTER command now supports the /SAVE option which 
+    can be used to save the cases' cluster membership and/or their 
+    distance from the cluster centre to the active file.
+  * The MEANS command has been re-implemented.
+  * The GUI now has a sub-dialog for post-hoc tests of the oneway anova test.
+  * GRAPH: Categorical barcharts displaying percentages now show 
+    the sub-category as a percentage of the primary category 
+    instead of the total.
+  * The Syntax Window now has a Find function to perform simple text searching.
+  * AUTORECODE:
+        The PRINT subcommand is now implemented.
+        Many bug fixes.
+  * drop avoid_old_Texinfo_4.13.patch
+  * drop CVE-2018-20230.patch
+  * drop CVE-2019-9211.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 10:57:45 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - remove nondeterministic bits from testsuite.log

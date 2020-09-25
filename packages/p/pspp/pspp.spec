@@ -5,7 +5,7 @@
 # Copyright (c) 2008 Matj Cepl <mcepl@redhat.com>
 # Copyright (c) 2008 D. Steuer <steuer@hsuhh.de>
 # Copyright (c) 2018 <astieger@suse.com>
-# Copyright (c) 2010-2019 <opensuse.lietuviu.kalba@gmail.com>
+# Copyright (c) 2010-2020 <opensuse.lietuviu.kalba@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define _disable_ld_as_needed 1
 %endif
 Name:           pspp
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        A program for statistical analysis of sampled data
 License:        GPL-3.0-or-later
@@ -35,26 +35,19 @@ URL:            https://www.gnu.org/software/pspp/
 Source0:        ftp://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz
 Source1:        ftp://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=245#/%{name}.keyring
-# PATCH-FIX-UPSTREAM CVE-2018-20230.patch bnc#1120061 CVE-2018-20230
-Patch0:         CVE-2018-20230.patch
-# PATCH-FIX-UPSTREAM CVE-2019-9211.patch boo#1127343 CVE-2019-9211
-Patch1:         CVE-2019-9211.patch
-# Fix build with Texinfo 4.13 for openSUSE Leap 42.*
-Patch2:         avoid_old_Texinfo_4.13.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cairo-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  gsl-devel >= 1.12
-BuildRequires:  gtk3-devel >= 3.14.5
-BuildRequires:  libglade2-devel
+BuildRequires:  gtk3-devel >= 3.22
 BuildRequires:  libxml2-devel
 BuildRequires:  m4
 BuildRequires:  pango-devel
 BuildRequires:  postgresql-devel
 BuildRequires:  readline-devel
-BuildRequires:  spread-sheet-widget-devel >= 0.3
+BuildRequires:  spread-sheet-widget-devel >= 0.6
 BuildRequires:  texinfo
 BuildRequires:  zlib-devel
 Requires:       yelp
@@ -78,26 +71,17 @@ BuildRequires:  pkgconfig
 %endif
 %if 0%{?suse_version}
 BuildRequires:  fdupes
+BuildRequires:  gtksourceview-devel >= 3.18
 BuildRequires:  perl-base
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %{install_info_prereq}
 %endif
-%if  0%{?suse_version}
-BuildRequires:  gtksourceview-devel >= 3.18.0
-%endif
-%if 0%{?suse_version}
-#Next package only for "make check"
+%if 0%{?is_opensuse}
+# Next package only for "make check"
+# "free-ttf-fonts" exist only in openSUSE, not in SUSE
 BuildRequires:  free-ttf-fonts
-%endif
-%if  0%{?suse_version} <= 1310
-BuildRequires:  postgresql-libs
-%else
-# BuildRequires:  postgresql93-libs
-%endif
-%if 0%{?suse_version} <= 1320
-BuildRequires:  libtool
 %endif
 
 %description
@@ -130,24 +114,11 @@ This subpackage contains libraries and header files for developing
 applications that want to build pspp plugins.
 
 %prep
-%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?mandriva_version}
 %setup -q -n pspp-%{version}
-%else
-%setup -q -n pspp-%{version}
-%endif
-
-%patch0 -p1
-%patch1 -p1
-%if 0%{?suse_version} <= 1320
-%patch2 -p1
-%endif
 
 %build
 export SUSE_ASNEEDED=0
 export CFLAGS="%{optflags} -fgnu89-inline -fcommon"
-%if 0%{?suse_version} <= 1320
-autoreconf -f -i
-%endif
 %configure \
              --disable-relocatable --disable-static --disable-rpath \
              --enable-debug --without-libreadline-prefix
@@ -161,7 +132,7 @@ make
 %install
 %make_install
 %if 0%{?suse_version}
-%suse_update_desktop_file -r %{name} Education Math
+%suse_update_desktop_file -r org.fsf.%{name} Education Math
 %endif
 
 # don't own /usr/share/info/dir if it exist
@@ -170,10 +141,11 @@ make
 #Config for ld
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 cat >%{buildroot}%{_sysconfdir}/ld.so.conf.d/pspp.conf <<EOF
-%if 0%{?suse_version} > 1120
 %{_libdir}/pspp
-%endif
 EOF
+
+# AppData
+mv $RPM_BUILD_ROOT/%{_datadir}/metainfo $RPM_BUILD_ROOT/%{_datadir}/appdata
 
 %if 0%{?suse_version}
 %fdupes -s %{buildroot}/%{_datadir}
@@ -202,9 +174,7 @@ cp ./tests/testsuite.log $RPM_BUILD_ROOT/%{_datadir}/pspp/tests/
 %post
 /sbin/ldconfig
 %install_info  --info-dir=%{_infodir}  %{_infodir}/pspp.info
-%if 0%{?suse_version} >= 1140
 %desktop_database_post
-%endif
 
 %preun
 if [ $1 = 0 ] ; then
@@ -213,9 +183,7 @@ fi
 
 %postun
 /sbin/ldconfig
-%if 0%{?suse_version} >= 1140
 %desktop_database_postun
-%endif
 
 %files -f pspp.lang
 %license COPYING
@@ -226,6 +194,7 @@ fi
 %{_bindir}/psppire
 %{_bindir}/pspp-dump-sav
 %{_bindir}/pspp-convert
+%{_bindir}/pspp-output
 %defattr(644,root,root,755)
 %{_infodir}/pspp*
 %dir %{_libdir}/pspp/
@@ -239,12 +208,10 @@ fi
 %{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-sps.png
 %{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-zsav.png
-%{_datadir}/icons/hicolor/22x22/apps/pspp.png
 %{_datadir}/icons/hicolor/22x22/mimetypes/application-x-spss-por.png
 %{_datadir}/icons/hicolor/22x22/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/22x22/mimetypes/application-x-spss-sps.png
 %{_datadir}/icons/hicolor/22x22/mimetypes/application-x-spss-zsav.png
-%{_datadir}/icons/hicolor/24x24/apps/pspp.png
 %{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-por.png
 %{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-sps.png
@@ -264,20 +231,24 @@ fi
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-sps.png
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-zsav.png
-%{_datadir}/applications/pspp.desktop
+%dir %{_datadir}/mime/packages/
+%{_datadir}/mime/packages/pspp.xml
+%{_datadir}/applications/org.fsf.pspp.desktop
+%dir %{_datadir}/appdata/
+%{_datadir}/appdata/org.fsf.pspp.metainfo.xml
 %if 0%{?mandriva_version} 
 %doc %{_mandir}/man1/pspp.1.xz
 %doc %{_mandir}/man1/psppire.1.xz
 %doc %{_mandir}/man1/pspp-dump-sav.1.xz
 %doc %{_mandir}/man1/pspp-convert.1.xz
+%doc %{_mandir}/man1/pspp-output.1.xz
 %else
 %doc %{_mandir}/man1/pspp.1.gz
 %doc %{_mandir}/man1/psppire.1.gz
 %doc %{_mandir}/man1/pspp-dump-sav.1.gz
 %doc %{_mandir}/man1/pspp-convert.1.gz
+%doc %{_mandir}/man1/pspp-output.1.gz
 %endif
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/pspp.appdata.xml
 
 %files devel
 %dir %{_libdir}/pspp/
