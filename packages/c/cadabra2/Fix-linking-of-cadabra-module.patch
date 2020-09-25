@@ -1,31 +1,26 @@
-From 71a406f32a654d2037b1d011f44af3fce4d9b50d Mon Sep 17 00:00:00 2001
+From 4df3e7cba29a9bb25a70badbc9de8aeef3693933 Mon Sep 17 00:00:00 2001
 From: Kasper Peeters <kasper.peeters@phi-sci.com>
-Date: Fri, 13 Dec 2019 18:02:59 +0000
-Subject: [PATCH] Fix linking of cadabra module.
+Date: Fri, 28 Aug 2020 21:12:58 +0100
+Subject: [PATCH] Link cadabra2.so to libpython.so if system requires it.
 
 ---
- cmake/version.cmake | 2 +-
- core/CMakeLists.txt | 7 +++++--
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ core/CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
-index d9356682ba..8141820ab8 100644
+index 1d4c9851da..71570db28f 100644
 --- a/core/CMakeLists.txt
 +++ b/core/CMakeLists.txt
-@@ -216,6 +218,7 @@ set(LOCAL_SRC_FILES
- 	SympyCdb.cc
- 	YoungTab.cc
- 	modules/xperm_new.cc
-+   ${CADABRA_LIBS_DIR}/whereami/whereami.c
- 	${ALGORITHM_SRC_FILES}
- 	${PROPERTY_SRC_FILES}
- 	)
-@@ -278,6 +279,8 @@ target_link_libraries(cadabra2 PRIVATE
- 	${GMPXX_LIBRARIES}
- 	${GMP_LIBRARIES}   
- 	${Boost_LIBRARIES}
-+	${PYTHON_LIBRARIES}
-+	${GLIBMM3_LIBRARIES}    
- 	)
+@@ -305,6 +305,11 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+   set_target_properties(cadabra2 PROPERTIES LINK_FLAGS "-undefined dynamic_lookup")
+ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+   target_link_libraries(cadabra2 PRIVATE ${PYTHON_LIBRARIES})
++elseif(CMAKE_SHARED_LINKER_FLAGS MATCHES ".*-Wl,--no-undefined.*")
++  # Exception for systems that require no undefined symbols present
++  # in shared libraries (e.g. openSUSE).
++  message("-- Linking cadabra2.so to libpython.so because of default linker flags.")
++  target_link_libraries(cadabra2 PRIVATE ${PYTHON_LIBRARIES})
+ endif()
+ 
  if(ENABLE_SYSTEM_JSONCPP)
-   target_link_libraries(cadabra2 PRIVATE
+

@@ -17,18 +17,18 @@
 
 
 Name:           cadabra2
-Version:        2.2.8
+Version:        2.3.0
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://cadabra.science/
-Source0:        https://github.com/kpeeters/cadabra2/archive/%{version}.tar.gz
+Source0:        https://github.com/kpeeters/cadabra2/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-gtk.appdata.xml
-# PATCH-FIX-OPENSUSE add -pthread to CMAKE_CXX_FLAGS (as adivised in https://github.com/potree/PotreeConverter/issues/136) kkaempf@suse.de
-Patch1:         cadabra2-add-pthread-to-cxxflags.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/kpeeters/cadabra2/commit/71a406f32a654d2037b1d011f44af3fce4d9b50d.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/kpeeters/cadabra2/commit/4df3e7cba29a9bb25a70badbc9de8aeef3693933 (gh#kpeeters/cadabra2#202)
 Patch2:         Fix-linking-of-cadabra-module.patch
+# PATCH-FIX-UPSTREAM cadabra2-python-modules-location.patch gh#kpeeters/cadabra2#203 badshah400@gmail.com -- Move python modules to standard python modules path
+Patch3:         cadabra2-python-modules-location.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -117,21 +117,22 @@ This package provides html documentation for %{name}.
 
 %prep
 %setup -q
-%patch1 -p1
 %patch2 -p1
+%patch3 -p1
 rm examples/.gitignore
 # Remove timestamps from Doxygen HTML files
 echo "HTML_TIMESTAMP = NO" >> config/Doxyfile
+# REMOVE HASHBANG FROM NON-EXEC SCRIPT
+sed -i "1{/#!\/usr\/bin\/env python/d}" libs/appdirs/cdb_appdirs.py
 
 %build
 %cmake \
-  -DCMAKE_MANDIR=%{_mandir} \
-  -DPACKAGING_MODE=ON \
-  -DINSTALL_LATEX_DIR=%{_datadir}/texmf \
-  -DENABLE_FRONTEND=ON \
-  -DENABLE_SYSTEM_JSONPP=ON \
-  -DENABLE_MATHEMATICA=OFF \
-  ..
+  -DCMAKE_MANDIR:PATH=%{_mandir} \
+  -DINSTALL_LATEX_DIR:PATH=%{_datadir}/texmf \
+  -DENABLE_FRONTEND:BOOL=ON \
+  -DENABLE_SYSTEM_JSONPP:BOOL=ON \
+  -DENABLE_MATHEMATICA:BOOL=OFF \
+  -DBUILD_TESTS:BOOL=ON
 
 %cmake_build
 cd ..
@@ -162,10 +163,12 @@ ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/la
 %{_bindir}/cadabra2latex
 %{_bindir}/cadabra-server
 %{_bindir}/%{name}
+%{_bindir}/%{name}-cli
 %{_bindir}/%{name}python
 %{_bindir}/%{name}html
 %{_datadir}/%{name}/
 %{_datadir}/texmf
+%{python3_sitearch}/*
 %{_mandir}/man1/cadabra*.1%{?ext_man}
 
 %files gui
