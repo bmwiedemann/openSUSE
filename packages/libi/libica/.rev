@@ -406,4 +406,14 @@
     <comment></comment>
     <requestid>835924</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c1416087519aa69ce5c517f1e162f7b0</srcmd5>
+    <version>3.7.0</version>
+    <time>1601044422</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgraded to version 3.7.0 (jsc#SLE-13708)
+
+Changed Jira reference to the Epic and not the Team task.</comment>
+    <requestid>836417</requestid>
+  </revision>
 </revisionlist>

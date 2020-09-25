@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Sep 18 20:59:39 UTC 2020 - Mark Post <mpost@suse.com>
 
-- Upgraded to version 3.7.0 (jsc#SLE-14466)
+- Upgraded to version 3.7.0 (jsc#SLE-13708)
   * Version 3.7.0
     - [FEATURE] FIPS: Add HMAC based library integrity check
     - [PATCH] icainfo: bugfix for RSA and EC related info for software column.
