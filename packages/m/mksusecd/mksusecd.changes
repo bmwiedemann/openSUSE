@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Sep 25 10:39:23 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#52
+- fix add_on_products.xml handling (bsc#1176379)
+- 1.77
+
+--------------------------------------------------------------------
 Thu Sep 10 16:03:10 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#51
