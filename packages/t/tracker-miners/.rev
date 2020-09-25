@@ -163,4 +163,12 @@
     <comment></comment>
     <requestid>830194</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>07d06dbd2bcc63e0bd4a45fa9f73112d</srcmd5>
+    <version>2.99.5</version>
+    <time>1601043870</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.99.x - we have tracker stable renamed to tracker2, so we can easily already push the unstable branch (forwarded request 833773 from dimstar)</comment>
+    <requestid>836026</requestid>
+  </revision>
 </revisionlist>

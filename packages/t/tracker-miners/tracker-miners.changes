@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Sep  9 07:59:53 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.99.5:
+  + Always create content resource for text files.
+  + Calculate per extract module timings in
+    TRACKER_DEBUG=statistics.
+  + Add mtime information to graph-specific nfo:FileDataObjects.
+  + Add option to set the D-Bus domain at build time.
+  + Ensure memory is released on inactivity or memory pressure.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  7 10:18:49 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.99.4:
+  + CLI modernization:
+    - Integration with pager.
+    - "tracker3 index" makes persistent configuration changes.
+    - "tracker3 info --eligible $file" tells whether a file would
+      be indexed, or why not.
+    - "tracker3 reset" resets better.
+    - "tracker3 daemon" terminates processes better.
+    - "tracker3 search" fixes.
+    - Erase ^C after monitoring subcommands.
+    - "tracker3 status" shows reports about files that failed
+      indexing/metadata extraction.
+  + Fixes to removable mount handling.
+  + Use curly quotes consistently in setting description strings.
+  + Better use of asserts in tests.
+  + Update seccomp rules to work with modern glib.
+- Changes from version 2.99.3:
+  + Support musicbrainz tags in gstreamer module.
+  + Support acoustid tag writeback.
+  + Handle nmm:artist and nmm:performer.
+  + DBus API changes.
+  + Fixes for race conditions.
+  + Performance improvements.
+  + Extractor watchdog fixes with domain ontologies.
+  + CLI improvements.
+  + Test fixes.
+  + Use background slice.
+  + Add base tests for CLI.
+  + Better debugging traces.
+  + Fix extraction of files with dummy extractors.
+- Changes from version 2.99.2:
+  + Constraint the indexed text formats to txt/markdown, a new
+    setting allows handling other formats.
+  + Add rules for game ROM formats.
+  + Support automatic re-extraction on extractor changes.
+  + Vorbis and flac specific extractors were dropped, those are
+    handled by gstreamer.
+  + Improve usage of nie:dataSource, now there is one per indexed
+    folder, no longer used by tracker-extract.
+  + Fixes to album/disc IRI generation.
+  + Writeback handling is rewritten, now performed via an explicit
+    DBus call.
+  + Add support for musicbrainz and acoustid fingerprint.
+  + Set a deadline of 30 seconds for extraction tasks.
+  + Many build, leak and performance fixes.
+- Changes from version 2.99.1:
+  + Highlighted updates compared to 2.x:
+    - tracker-miner-fs/tracker-extract and tracker-miner-rss data
+      are split into 2 endpoints:
+      . org.freedesktop.Tracker3.Miner.Files
+      . org.freedesktop.Tracker3.Miner.RSS
+    - tracker-miner-fs data is split into different graphs:
+      . tracker:FileSystem
+      . tracker:Audio
+      . tracker:Video
+      . tracker:Documents
+      . tracker:Software
+    - Full split between file and content elements. 1:1, 1:N, M:1
+      and M:N are allowed combinations of those, they relate to
+      each other through the nie:isStoredAs and nie:interpretedAs
+      properties.
+    - Parallel installable to tracker-miners 2.x
+    - Better, more tests
+    - Reincorporated libtracker-miner and libtracker-control code.
+      These are no longer for public consumption
+  + Updated translations.
+- Drop tracker-miners-bsc1165635-crawl-timestamp.patch: no longer
+  applicable.
+- Add asciidoc and pkgconfig(libnm) BuildRequires: new
+  dependencies.
+- Replace pkgconfig(tracker-sparql-2.0) BuildRequires with
+  pkgconfig(tracker-sparql-3.0): Follow the switch to Tracker 3.
+- Drop no longer needed BuildRequires (due to reorganisation):
+  pkgconfig(flac), pkgconfig)vorbisfile),
+  pkgconfig(tracker-miner-2.0)
+
+------------------------------------------------------------------
 Tue Aug 25 16:15:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.3.4:

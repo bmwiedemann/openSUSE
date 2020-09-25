@@ -17,32 +17,29 @@
 
 
 Name:           tracker-miners
-Version:        2.3.4
+Version:        2.99.5
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker-miners/2.3/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker-miners/2.99/%{name}-%{version}.tar.xz
 
-# PATCh-FIX-UPSTREAM tracker-miners-bsc1165635-crawl-timestamp.patch boo#1165635 mgorse@suse.com -- properly set crawl timestamp.
-Patch0:         tracker-miners-bsc1165635-crawl-timestamp.patch
-
+BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.51.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(enca) >= 1.9
 BuildRequires:  pkgconfig(exempi-2.0) >= 2.1.0
-BuildRequires:  pkgconfig(flac) >= 1.2.1
 BuildRequires:  pkgconfig(gexiv2)
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.62.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.10.31
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 0.10.31
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 0.10.31
@@ -58,15 +55,14 @@ BuildRequires:  pkgconfig(libgsf-1) >= 1.14.24
 BuildRequires:  pkgconfig(libgxps)
 BuildRequires:  pkgconfig(libiptcdata)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libosinfo-1.0) >= 0.2.9
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
 BuildRequires:  pkgconfig(totem-plparser)
-BuildRequires:  pkgconfig(tracker-miner-2.0) >= 2.2.0
-BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 2.2.0
+BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
-BuildRequires:  pkgconfig(vorbisfile) >= 0.22
 # The schema files moved from libtracker-common to tracker-miners
 Conflicts:      libtracker-common-1_0 < 1.99
 # Make sure tracker is being updated to 1.99 too
@@ -98,51 +94,56 @@ This package contains a miner to index files and applications.
 %build
 %meson \
 	-Dfunctional_tests=false \
-	-Dsystemd_user_services=%{_userunitdir} \
 	-Dminer_rss=false \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
-%find_lang %{name}
-rm -f %{_libdir}/tracker-miners-2.0/libtracker-miners-common.a
+%find_lang tracker3-miners
 
 %files
 %license COPYING
 %doc README.md
-%{_libexecdir}/tracker-extract
-%{_libexecdir}/tracker-writeback
-%{_mandir}/man1/tracker-extract.1%{ext_man}
-%{_mandir}/man1/tracker-writeback.1%{ext_man}
-%dir %{_datadir}/tracker
-%dir %{_datadir}/tracker/miners
-%{_datadir}/tracker/miners/org.freedesktop.Tracker1.Miner.Extract.service
-%dir %{_datadir}/dbus-1
-%dir %{_datadir}/dbus-1/services
-%{_datadir}/dbus-1/services/org.freedesktop.Tracker1.Miner.Extract.service
-%{_datadir}/dbus-1/services/org.freedesktop.Tracker1.Writeback.service
-%{_datadir}/glib-2.0/schemas/org.freedesktop.TrackerMiners.enums.xml
-%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.Extract.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.Writeback.gschema.xml
-%{_datadir}/%{name}/
-%{_userunitdir}/tracker-extract.service
-%{_userunitdir}/tracker-writeback.service
-%{_sysconfdir}/xdg/autostart/tracker-extract.desktop
-%dir %{_libdir}/tracker-miners-2.0
-%{_libdir}/tracker-miners-2.0/extract-modules/
-%{_libdir}/tracker-miners-2.0/writeback-modules/
-%{_libdir}/tracker-miners-2.0/libtracker-extract.so
+%{_datadir}/dbus-1/interfaces/org.freedesktop.Tracker3.Miner.xml
+%{_datadir}/dbus-1/services/org.freedesktop.Tracker3.Miner.Extract.service
+%{_datadir}/dbus-1/services/org.freedesktop.Tracker3.Writeback.service
+%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker3.Extract.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker3.FTS.gschema.xml
+%{_datadir}/tracker3-miners/
+%dir %{_libdir}/tracker-miners-3.0
+%{_libdir}/tracker-miners-3.0/extract-modules/
+%{_libdir}/tracker-miners-3.0/libtracker-extract.so
+%{_libdir}/tracker-miners-3.0/writeback-modules/
+%{_libexecdir}/tracker3/
+%{_libexecdir}/tracker-extract-3
+%{_libexecdir}/tracker-writeback-3
+%{_mandir}/man1/tracker3-daemon.1.gz
+%{_mandir}/man1/tracker3-extract.1.gz
+%{_mandir}/man1/tracker3-index.1.gz
+%{_mandir}/man1/tracker3-info.1.gz
+%{_mandir}/man1/tracker3-reset.1.gz
+%{_mandir}/man1/tracker3-search.1.gz
+%{_mandir}/man1/tracker3-status.1.gz
+%{_mandir}/man1/tracker3-tag.1.gz
+%{_mandir}/man1/tracker-writeback-3.1.gz
+%{_userunitdir}/tracker-extract-3.service
+%{_userunitdir}/tracker-writeback-3.service
 
 %files -n tracker-miner-files
-%{_libexecdir}/tracker-miner-fs
-%{_mandir}/man1/tracker-miner-fs.1%{ext_man}
-%{_userunitdir}/tracker-miner-fs.service
-%{_datadir}/tracker/miners/org.freedesktop.Tracker1.Miner.Files.service
-%{_datadir}/dbus-1/services/org.freedesktop.Tracker1.Miner.Files.service
-%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.Miner.Files.gschema.xml
-%{_sysconfdir}/xdg/autostart/tracker-miner-fs.desktop
+%{_datadir}/dbus-1/interfaces/org.freedesktop.Tracker3.Miner.Files.Index.xml
+%{_datadir}/dbus-1/services/org.freedesktop.Tracker3.Miner.Files.Control.service
+%{_datadir}/dbus-1/services/org.freedesktop.Tracker3.Miner.Files.service
+%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker3.Miner.Files.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.freedesktop.TrackerMiners3.enums.xml
+%{_libdir}/tracker-miners-3.0/libtracker-miner-3.0.so
+%{_libexecdir}/tracker-miner-fs-3
+%{_libexecdir}/tracker-miner-fs-control-3
+%{_mandir}/man1/tracker-miner-fs-3.1%{ext_man}
+%{_sysconfdir}/xdg/autostart/tracker-miner-fs-3.desktop
+%{_userunitdir}/tracker-miner-fs-3.service
+%{_userunitdir}/tracker-miner-fs-control-3.service
 
-%files lang -f %{name}.lang
+%files lang -f tracker3-miners.lang
 
 %changelog
