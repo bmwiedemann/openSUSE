@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:26:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.13 (library 11.0.0):
+  * more relaxed input format for plain-text tables
+  * New operations to fill blanks with minimum/maximum of nearest
+    neighbors
+  * Input can be forced to float by appending '.' or '.0'.
+  * New colormap 'sls-inverse' for inverse printing
+  * Many new operations to multiple operations, and bug fixes
+- includes changes from 0.12:
+  * no longer attempt to write memory-mapped files under .gnuastro
+    to avoid mixing configuration files with processing data
+  * Many new operations to multiple operations, and bug fixes
+
+-------------------------------------------------------------------
 Tue Nov 26 17:04:05 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.11 (library 9.0.0):

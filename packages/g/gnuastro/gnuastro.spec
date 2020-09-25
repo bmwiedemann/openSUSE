@@ -1,7 +1,7 @@
 #
 # spec file for package gnuastro
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
+%define sover 11
 %bcond_with     tests
-
-%define sover 9
 Name:           gnuastro
-Version:        0.11
+Version:        0.13
 Release:        0
 Summary:        GNU Astronomy Utilities
 License:        GPL-3.0-or-later
@@ -28,9 +27,6 @@ URL:            https://www.gnu.org/software/gnuastro/
 Source:         https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz
 Source2:        https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz.sig
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gnuastro&download=1#/%{name}.keyring
-%if %{with tests}
-BuildRequires:  ghostscript_any
-%endif
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cfitsio)
@@ -44,6 +40,9 @@ Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 Recommends:     %{name}-doc
 Recommends:     ghostscript_any >= 9.10
+%if %{with tests}
+BuildRequires:  ghostscript_any
+%endif
 
 %description
 The GNU Astronomy Utilities (Gnuastro) contains various programs and
@@ -81,7 +80,7 @@ Additional documentation for the GNU Astromomy Utilities.
 	--disable-static \
 	--disable-rpath \
 	CPPFLAGS="$(pkg-config cfitsio --cflags)"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -89,7 +88,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 %if %{with tests}
-make check
+%make_build check
 %endif
 
 %post -n libgnuastro%{sover} -p /sbin/ldconfig
