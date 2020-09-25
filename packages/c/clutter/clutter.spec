@@ -101,6 +101,8 @@ This package contains the files for development.
 
 %prep
 %autosetup -p1
+# we delete here to regenerate them without variations in xsltproc id attributes for bit-reproducible builds results
+find doc/cookbook/html -name \*.html -type f -delete
 
 %build
 %define _lto_cflags %{nil}

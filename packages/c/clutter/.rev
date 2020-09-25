@@ -691,4 +691,15 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795006 from iznogood)</comment>
     <requestid>795162</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>9eff6facf3f8174d8960194123bdcf70</srcmd5>
+    <version>1.26.4</version>
+    <time>1601043910</time>
+    <user>dimstar_suse</user>
+    <comment>Make documentation build reproducible
+
+our build-compare was already ignoring these variations for at least 3 years
+but bit-reproducible build results are always preferrable. (forwarded request 835467 from bmwiedemann)</comment>
+    <requestid>836043</requestid>
+  </revision>
 </revisionlist>
