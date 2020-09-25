@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 22 10:01:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 by pre-loading libgomp.so.1 to avoid:
+  "load error: /usr/lib64/libgomp.so.1: cannot allocate memory 
+  in static TLS block"
+
+-------------------------------------------------------------------
 Mon Aug 10 08:09:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.26:

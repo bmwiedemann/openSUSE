@@ -155,6 +155,9 @@ input and output.
 %autosetup -p1
 
 %build
+%ifarch aarch64
+export LD_PRELOAD="/usr/lib64/libgomp.so.1"
+%endif
 %meson \
 	-Dmrg=disabled \
 	%if ! %{with luajit}
