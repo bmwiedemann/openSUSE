@@ -1625,4 +1625,15 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Remove sle-background.png (forwarded request 833590 from xiaoguang_wang)</comment>
     <requestid>833697</requestid>
   </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>1a2e40a3875ac9e462106e4d9aebf627</srcmd5>
+    <version>3.36.6</version>
+    <time>1601043878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gnome-shell-fate324570-Make-GDM-background-image-configurable.patch: 
+  Bring noise-texture.png back which will be used as the default
+  value of org.gnome.desktop.background.lockdialog picture-uri
+  (boo#1176418). (forwarded request 834124 from qkzhu)</comment>
+    <requestid>836028</requestid>
+  </revision>
 </revisionlist>

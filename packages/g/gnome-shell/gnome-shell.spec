@@ -29,6 +29,8 @@ URL:            https://wiki.gnome.org/Projects/GnomeShell
 Source:         %{name}-%{version}.tar.xz
 # SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Source1:        aboutMenu.js
+# SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
+Source2:        noise-texture.png
 
 # PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
 Patch1:         gnome-shell-private-connection.patch
@@ -193,6 +195,7 @@ translation-update-upstream
 %patch1008 -p1
 %endif
 
+cp %{SOURCE2} data/theme/
 %if 0%{?sle_version}
 cp %{SOURCE1} js/ui/
 %endif
