@@ -2190,4 +2190,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.1</comment>
     <requestid>833635</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>43bf48285cd16bf1eb45da38cdcc09c6</srcmd5>
+    <version>5.15.1</version>
+    <time>1601043857</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert commit to fix screen geometry on startup (boo#1176750, QTBUG-86604):
+  * 0001-Revert-Emit-QScreen-availableG-g-eometryChanged-on-l.patch</comment>
+    <requestid>835995</requestid>
+  </revision>
 </revisionlist>
