@@ -500,4 +500,12 @@ x86-64 when building with python 3.5.</comment>
     <comment></comment>
     <requestid>818589</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>3dfe6d7af61ac3467dea2c355298da95</srcmd5>
+    <version>2.2.0</version>
+    <time>1601044002</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>836252</requestid>
+  </revision>
 </revisionlist>

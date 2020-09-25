@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 11 10:04:24 UTC 2020 - David Disseldorp <ddiss@suse.com>
+
+- Release ldb 2.2.0
+  + Fix memory leak in ldb_kv_index_dn_ordered(); (bso#14299)
+  + Fix off-by-one increment in lldb_add_msg_attr; (bso#14413)
+
+-------------------------------------------------------------------
 Fri Jul  3 13:15:48 UTC 2020 - Noel Power <nopower@suse.com>
 
 - Release ldb 2.1.4
