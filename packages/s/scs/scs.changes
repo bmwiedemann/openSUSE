@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Sep  1 15:38:50 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix devel package description. 
+
+-------------------------------------------------------------------
+Wed Aug 26 20:09:44 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix spec file.
+  * Only produce scs-devel
+  * Remove cmake dependency.
+  * Move files to appropriate library directory.
+  * Exclude static library.
+- Remove fix_install_dir.patch as it is not need anymore.
+
+-------------------------------------------------------------------
+Mon Aug 24 17:07:43 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release.
