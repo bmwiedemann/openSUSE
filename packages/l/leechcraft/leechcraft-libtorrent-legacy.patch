@@ -1,0 +1,21 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2020-09-11 13:10:50 +0200
+Subject: Use legacy libtorrent-rasterbar
+
+Leechcraft has not yet been ported to the libtorrent v2 API
+ 
+---
+
+Index: leechcraft-0.6.70-13907-g785196c688/src/plugins/bittorrent/CMakeLists.txt
+===================================================================
+--- leechcraft-0.6.70-13907-g785196c688.orig/src/plugins/bittorrent/CMakeLists.txt
++++ leechcraft-0.6.70-13907-g785196c688/src/plugins/bittorrent/CMakeLists.txt
+@@ -3,7 +3,7 @@ project (leechcraft_bittorrent)
+ include (InitLCPlugin NO_POLICY_SCOPE)
+ 
+ find_package (PkgConfig)
+-pkg_check_modules (Libtorrent REQUIRED IMPORTED_TARGET libtorrent-rasterbar)
++pkg_check_modules (Libtorrent REQUIRED IMPORTED_TARGET libtorrent-rasterbar-1)
+ 
+ option (ENABLE_BITTORRENT_GEOIP "Enable support for GeoIP in BitTorrent" OFF)
+ 

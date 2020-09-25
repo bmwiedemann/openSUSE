@@ -59,6 +59,8 @@ Source9:        lc_plugin_wrapper-qt5.1
 Patch0:         leechcraft-Qt5_12.patch
 # PATCH-FIX-OPENSUSE vs. Leap 15.2 qtermwidget' pkgconfig issue.
 Patch1:         leechcraft-qtermwidget-Leap-15_2.patch
+# PATCH-FIX-OPENSUSE leechcraft-libtorrent-legacy.patch
+Patch2:         leechcraft-libtorrent-legacy.patch
 
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
@@ -150,8 +152,13 @@ BuildRequires:  pkgconfig(libswscale)
 %endif
 BuildRequires:  pkgconfig(libtcmalloc)
 %ifarch %ix86 x86_64 %arm ppc64le
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libtorrent-rasterbar-1) >= 1.2.0
+%else
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.2.0
 %endif
+%endif
+
 BuildRequires:  pkgconfig(libudev)
 %if 0%{?suse_version} > 1325 || 0%{?sle_version} >= 120300
 BuildRequires:  pkgconfig(poppler-cpp)
@@ -2260,6 +2267,9 @@ XmlSettingsDialog LeechCraft subsystem.
 %if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1550
 %patch0 -p1
 %patch1 -p1
+%endif
+%if 0%{?suse_version} > 1500
+%patch2 -p1
 %endif
 
 #removing non-free icons

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:28:57 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use legacy libtorrent-rasterbar on Tumbleweed
+- Add leechcraft-libtorrent-legacy.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 15:43:22 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fix build with new libqxmpp
