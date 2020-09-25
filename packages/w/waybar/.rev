@@ -333,4 +333,31 @@
   * Updated date, gtk-layer-shell subproject #797, Fixes #776 #780 #530 #750</comment>
     <requestid>824593</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>440f52f81250da570d8b8378407688ca</srcmd5>
+    <version>0.9.4</version>
+    <time>1601044367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.4:
+  Added:
+  * Add option for no workspace switch on click #817
+  * Add IDs to sway workspace buttons for CSS styling #819
+  * Add ability to switch timezones on scroll #821
+  * MPD: Add song position and queue length
+  * Add an &quot;exec-on-event&quot; config for the custom module #851
+  * Add format for memory tooltip #847
+  Changed:
+  * Fixed a signal issue with custom modules #778
+  * Switch workspace on mouse-down to match swaybar #800
+  * Taskbar string fixes #798
+  * Systemd now using standard targets #801
+  * Fixed fmt crash after update #813
+  * Rfkill is now optional #823
+  * Fixed network status update #861
+  * Fix resizing of the bar with gtk-layer-shell #824
+  * Fix, prevent line breaks in ellipsized labels #828
+  * Fix &quot;restart-interval&quot; in the custom module #840
+  * Allow enabing pango markup in the taskbar string #814</comment>
+    <requestid>835932</requestid>
+  </revision>
 </revisionlist>
