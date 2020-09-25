@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 25 06:57:06 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libconfini 1.14.2:
+  * Improved re-implementation of stdbool.h in case of --with-io-api=nolibc
+  * Documentation, Examples
+
+-------------------------------------------------------------------
 Tue May 12 07:57:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.14.1:
