@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 21 09:29:59 UTC 2020 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.85.6
+- netconfig: execute chrony/helper in /usr/libexec with fallback
+  to it's previous location in /usr/lib (boo#1176285)
+- netconfig: only write files like /etc/resolv.conf on content
+  change to avoid that e.g. dnsmasq (if running) re-reads the
+  /etc/resolv.conf and re-initializes itself (bsc#1176325)
+
+-------------------------------------------------------------------
 Tue Jul 21 13:18:26 UTC 2020 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.85.5

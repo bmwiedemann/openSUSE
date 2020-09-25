@@ -1697,4 +1697,17 @@ also obs request: #660553
 - ntp: call chrony helper in background (bsc#1173391)</comment>
     <requestid>822107</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>f20fae44410d24da3ce8f16b7803bea1</srcmd5>
+    <version>0.85.6</version>
+    <time>1601043967</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.85.6
+- netconfig: execute chrony/helper in /usr/libexec with fallback
+  to it's previous location in /usr/lib (boo#1176285)
+- netconfig: only write files like /etc/resolv.conf on content
+  change to avoid that e.g. dnsmasq (if running) re-reads the
+  /etc/resolv.conf and re-initializes itself (bsc#1176325)</comment>
+    <requestid>836080</requestid>
+  </revision>
 </revisionlist>
