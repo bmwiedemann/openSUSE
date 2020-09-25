@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Thu Sep 24 21:14:01 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Actually manually adding "-fopenmp" to CFLAGS allows us to use
+  even the standard SUSE CFLAGS (workaround found in the same
+  bug).
+
+-------------------------------------------------------------------
+Mon Sep 21 15:08:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Standard OpenSUSE CFLAGS break the build
+  (gh#XanaduAI/thewalrus#198).
+
+-------------------------------------------------------------------
+Thu Sep 17 19:35:47 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix spec file typo.
+
+-------------------------------------------------------------------
+Fri Sep 11 20:38:18 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.13.0.
+  * Adds a new algorithm for hafnians of matrices with low rank. 
+  * Adds a function to calculate the fidelity between two Gaussian
+    quantum states. 
+  * Adds a new module, thewalrus.random, to generate random 
+    unitary, symplectic and covariance matrices. 
+  * Adds new functions normal_ordered_expectation, 
+    photon_number_expectation and photon_number_squared_expectation
+    in thewalrus.quantum to calculate expectation values of 
+    products of normal ordered expressions and number operators and
+    their squares. 
+  * Adds the function hafnian_sample_graph_rank_one in 
+    thewalrus.samples to sample from rank-one adjacency matrices. 
+  * Adds parallelization support using Dask for 
+    quantum.probabilities. 
+  * Removes support for Python 3.5. 
+  * Changes in the interface and speed ups in the functions in the 
+    thewalrus.fock_gradients module.
+  * Improves documentation of the multidimensional Hermite 
+    polynomials.
+  * Improves speed of fock_tensor when the symplectic matrix passed 
+    is also orthogonal. 
+  * Fixes Numba decorated functions not rendering properly in the 
+    documentation. 
+  * Solves the issue with quantum and samples not being rendered in
+    the documentation or the TOC. 
+  * Fix bug where quantum and samples were not showing up in the 
+    documentation.
+  * The functions in thewalrus.fock_gradients are now separated 
+    into functions for the gradients and the gates. Moreover, they 
+    are renamed, for instance Dgate becomes displacement and its
+    gradient is now grad_displacement.
+
+-------------------------------------------------------------------
+Wed Aug  5 16:12:15 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Use pytest for %check 
+
+-------------------------------------------------------------------
+Sun Aug  2 10:05:38 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 
