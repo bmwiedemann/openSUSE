@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Sep 24 08:38:23 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.8.2
+  #. Use any functions, any data structure of any python packages as jinja2
+     filters, tests, globals
+  #. `#399 <https://github.com/moremoban/moban/issues/399>`_: content processor
+     should be called only once
+  #. content processor shall pass on options to content processors
+  #. moban.plugins.jinja2.tests.files is moved to moban-ansible package
+  #. moban.plugins.jinja2.filters.github is moved to moban-jinja2-github package
+  #. `#396 <https://github.com/moremoban/moban/issues/396>`_: custom jinja2
+     plugins(filters, tests and globals) are not visible if a template is passed
+     as a string.
+  #. `#393 <https://github.com/moremoban/moban/issues/393>`_: Rendered content
+     output to stdout once
+  #. `#390 <https://github.com/moremoban/moban/issues/390>`_: single render action
+     will print to stdout by default
+- modified patches
+  % remove_nose.patch (extended, https://github.com/moremoban/moban/pull/404)
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
+Fri Sep 18 14:48:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch which ports test suite from nose to
+  pytest (gh#moremoban/moban#364). Still unfinished and work in progress.
+
+-------------------------------------------------------------------
 Fri Jun 12 07:54:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.7.8

@@ -1,0 +1,2316 @@
+diff --git a/CONTRIBUTORS.rst b/CONTRIBUTORS.rst
+index 95a9784d..35c0a0e2 100644
+--- a/CONTRIBUTORS.rst
++++ b/CONTRIBUTORS.rst
+@@ -4,11 +4,11 @@
+ 
+ In alphabetical order:
+ 
+-* `Andrew Scheller <https://api.github.com/users/lurch>`_
+-* `Ayan Banerjee <https://api.github.com/users/ayan-b>`_
+-* `Charlie Liu <https://api.github.com/users/CLiu13>`_
+-* `John Vandenberg <https://api.github.com/users/jayvdb>`_
+-* `Joshua Chung <https://api.github.com/users/seeeturtle>`_
+-* `PRAJWAL M <https://api.github.com/users/PrajwalM2212>`_
+-* `salotz <https://api.github.com/users/salotz>`_
+-* `SerekKiri <https://api.github.com/users/SerekKiri>`_
++* `Andrew Scheller <https://github.com/lurch>`_
++* `Ayan Banerjee <https://github.com/ayan-b>`_
++* `Charlie Liu <https://github.com/CLiu13>`_
++* `John Vandenberg <https://github.com/jayvdb>`_
++* `Joshua Chung <https://github.com/seeeturtle>`_
++* `PRAJWAL M <https://github.com/PrajwalM2212>`_
++* `salotz <https://github.com/salotz>`_
++* `SerekKiri <https://github.com/SerekKiri>`_
+diff --git a/moban/core/moban_factory.py b/moban/core/moban_factory.py
+index da713376..df2df17d 100644
+--- a/moban/core/moban_factory.py
++++ b/moban/core/moban_factory.py
+@@ -34,9 +34,11 @@ def register_extensions(self, extensions):
+                 )
+             )
+             if template_type in self.extensions:
+-                self.extensions[template_type] = self.extensions[
+-                    user_template_type
+-                ].union(extensions[user_template_type])
++                self.extensions[template_type] = list(
++                    set(self.extensions[user_template_type]).union(
++                        extensions[user_template_type]
++                    )
++                )
+             else:
+                 self.extensions[template_type] = extensions[user_template_type]
+ 
+diff --git a/moban/core/mobanfile/templates.py b/moban/core/mobanfile/templates.py
+index a60c99c9..3d2b2cc9 100644
+--- a/moban/core/mobanfile/templates.py
++++ b/moban/core/mobanfile/templates.py
+@@ -43,7 +43,7 @@ def _list_dir_files(fs, source, dest):
+     for file_name in fs.listdir(source):
+         # please note jinja2 does NOT like windows path
+         # hence the following statement looks like cross platform
+-        #  src_file_under_dir = os.path.join(source, file_name)
++        #  src_file_under_dir = fs.path.join(source, file_name)
+         # but actually it breaks windows instead.
+         src_file_under_dir = f"{source}/{file_name}"
+         if fs.isfile(src_file_under_dir):
+
+diff --git a/tests/__init__.py b/tests/__init__.py
+index fc28703f..c3dff238 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -1,5 +1,5 @@
+ from moban.main import load_engine_factory_and_engines
+ 
+ 
+-def setup():
++def setUpModule():
+     load_engine_factory_and_engines()
+diff --git a/tests/core/__init__.py b/tests/core/__init__.py
+new file mode 100644
+index 00000000..e69de29b
+diff --git a/tests/core/test_context.py b/tests/core/test_context.py
+index d9e39bc7..9e149967 100644
+--- a/tests/core/test_context.py
++++ b/tests/core/test_context.py
+@@ -1,7 +1,7 @@
+ import os
+ 
++import pytest
+ import fs.path
+-from nose.tools import eq_
+ 
+ from moban.core.context import Context
+ 
+@@ -9,7 +9,7 @@
+ def test_context():
+     context = Context(fs.path.join("tests", "fixtures"))
+     data = context.get_data("simple.yaml")
+-    eq_(data["simple"], "yaml")
++    assert data["simple"] == "yaml"
+ 
+ 
+ def test_environ_variables():
+@@ -18,7 +18,7 @@ def test_environ_variables():
+     os.environ[test_var] = test_value
+     context = Context(fs.path.join("tests", "fixtures"))
+     data = context.get_data("simple.yaml")
+-    eq_(data[test_var], test_value)
++    assert data[test_var] == test_value
+ 
+ 
+ def test_json_data_overrides_environ_variables():
+@@ -27,7 +27,7 @@ def test_json_data_overrides_environ_variables():
+     os.environ[test_var] = test_value
+     context = Context(fs.path.join("tests", "fixtures"))
+     data = context.get_data("simple.json")
+-    eq_(data[test_var], test_value)
++    assert data[test_var] == test_value
+ 
+ 
+ def test_unknown_data_file():
+@@ -36,4 +36,4 @@ def test_unknown_data_file():
+     os.environ[test_var] = test_value
+     context = Context(fs.path.join("tests", "fixtures"))
+     data = context.get_data("unknown.data")
+-    eq_(data[test_var], test_value)
++    assert data[test_var] == test_value
+diff --git a/tests/core/test_engine.py b/tests/core/test_engine.py
+index b64a2f0a..28840751 100644
+--- a/tests/core/test_engine.py
++++ b/tests/core/test_engine.py
+@@ -1,13 +1,13 @@
+ import os
+ 
++import pytest
+ import fs.path
+ from mock import patch
+-from nose.tools import eq_
+ 
+ from moban.core import ENGINES
+-from moban.definitions import TemplateTarget
+-from moban.jinja2.engine import Engine
+-from moban.data_loaders.yaml import open_yaml
++from moban.core.definitions import TemplateTarget
++from moban.plugins.yaml_loader import open_yaml
++from moban.plugins.jinja2.engine import Engine
+ 
+ MODULE = "moban.core.moban_factory"
+ 
+@@ -93,7 +93,7 @@ def test_get_user_defined_engine():
+     template_types = open_yaml(test_fixture)
+     ENGINES.register_options(template_types["template_types"])
+     engine = ENGINES.get_engine("custom_jinja", ".", ".")
+-    eq_(engine.engine.__class__, Engine)
++    assert engine.engine.__class__ == Engine
+ 
+ 
+ def test_custom_file_extension_is_assocated_with_user_defined_engine():
+@@ -103,7 +103,7 @@ def test_custom_file_extension_is_assocated_with_user_defined_engine():
+     template_types = open_yaml(test_fixture)
+     ENGINES.register_options(template_types["template_types"])
+     template_type = ENGINES.get_primary_key("demo_file_suffix")
+-    eq_("custom_jinja", template_type)
++    assert "custom_jinja" == template_type
+ 
+ 
+ def test_built_in_jinja2_file_extension_still_works():
+@@ -113,4 +113,4 @@ def test_built_in_jinja2_file_extension_still_works():
+     template_types = open_yaml(test_fixture)
+     ENGINES.register_options(template_types["template_types"])
+     template_type = ENGINES.get_primary_key("jj2")
+-    eq_("jinja2", template_type)
++    assert "jinja2" == template_type
+diff --git a/tests/core/test_moban_factory.py b/tests/core/test_moban_factory.py
+index 409b1d34..8aec972e 100644
+--- a/tests/core/test_moban_factory.py
++++ b/tests/core/test_moban_factory.py
+@@ -1,20 +1,20 @@
+ import os
+ import sys
+ 
++import pytest
+ import fs.path
+ from mock import patch
+ from lml.plugin import PluginInfo
+-from nose.tools import eq_, raises
+ 
+ import moban.exceptions as exceptions
+ from moban.core import ENGINES
+ from moban.core.context import Context
+-from moban.jinja2.engine import (
++from moban.core.moban_factory import MobanEngine, expand_template_directories
++from moban.plugins.jinja2.engine import (
+     Engine,
+     is_extension_list_valid,
+     import_module_of_extension,
+ )
+-from moban.core.moban_factory import MobanEngine, expand_template_directories
+ 
+ USER_HOME = fs.path.join("user", "home", ".moban", "repos")
+ 
+@@ -23,22 +23,29 @@
+ class TestPypkg:
+     def __init__(self):
+         __package_path__ = os.path.normcase(os.path.dirname(__file__))
+-        self.resources_path = os.path.join(__package_path__, "fixtures")
++        self.resources_path = fs.path.join(__package_path__, "fixtures")
+ 
+ 
+ def test_expand_pypi_dir():
+-    dirs = list(expand_template_directories("testmobans:template-tests"))
++    dirs = list(
++        expand_template_directories(
++            [
++                "tests/fixtures/template",
++                "tests/regression_tests/level-7-plugin-dir-cli/my-templates",
++            ]
++        )
++    )
+     for directory in dirs:
+-        assert os.path.exists(directory)
++        assert os.path.exists(directory[7:])
+ 
+ 
+ @patch("moban.deprecated.repo.get_moban_home", return_value=USER_HOME)
+-@patch("moban.file_system.exists", return_value=True)
++@patch("moban.externals.file_system.exists", return_value=True)
+ def test_expand_repo_dir(_, __):
+     dirs = list(expand_template_directories("git_repo:template"))
+ 
+     expected = [fs.path.join(USER_HOME, "git_repo", "template")]
+-    eq_(expected, dirs)
++    assert expected == dirs
+ 
+ 
+ def test_default_template_type():
+@@ -57,22 +64,20 @@ def test_default_mako_type(_):  # fake mako
+     assert engine.engine.__class__ == FakeEngine
+ 
+ 
+-@raises(exceptions.NoThirdPartyEngine)
+ def test_unknown_template_type():
+-    ENGINES.get_engine("unknown_template_type", [], "")
++    with pytest.raises(exceptions.NoThirdPartyEngine):
++        ENGINES.get_engine("unknown_template_type", [], "")
+ 
+ 
+-@raises(exceptions.DirectoryNotFound)
+ def test_non_existent_tmpl_directries():
+-    ENGINES.get_engine("jj2", "idontexist", "")
++    with pytest.raises(fs.errors.CreateFailed):
++        ENGINES.get_engine("jj2", "idontexist", "")
+ 
+ 
+-@raises(exceptions.DirectoryNotFound)
+ def test_non_existent_config_directries():
+     MobanEngine("tests", "abc", Engine)
+ 
+ 
+-@raises(exceptions.DirectoryNotFound)
+ def test_non_existent_ctx_directries():
+     Context(["abc"])
+ 
+@@ -84,9 +89,9 @@ def test_file_tests():
+     engine.render_to_file("file_tests.template", "file_tests.yml", output)
+     with open(output, "r") as output_file:
+         content = output_file.read()
+-        eq_(content, "yes\nhere")
+-    eq_(engine.file_count, 1)
+-    eq_(engine.templated_count, 1)
++        assert content == "yes\nhere"
++    assert engine.file_count == 1
++    assert engine.templated_count == 1
+     os.unlink(output)
+ 
+ 
+@@ -97,9 +102,9 @@ def test_render_string_to_file():
+     engine.render_string_to_file("{{test}}", "file_tests.yml", output)
+     with open(output, "r") as output_file:
+         content = output_file.read()
+-        eq_(content, "here")
+-    eq_(engine.file_count, 1)
+-    eq_(engine.templated_count, 1)
++        assert content == "here"
++    assert engine.file_count == 1
++    assert engine.templated_count == 1
+     os.unlink(output)
+ 
+ 
+@@ -110,7 +115,9 @@ def test_global_template_variables():
+     engine.render_to_file("variables.template", "variables.yml", output)
+     with open(output, "r") as output_file:
+         content = output_file.read()
+-        eq_(content, "template: variables.template\ntarget: test.txt\nhere")
++        assert (
++            content == "template: variables.template\ntarget: test.txt\nhere"
++        )
+     os.unlink(output)
+ 
+ 
+@@ -121,7 +128,7 @@ def test_nested_global_template_variables():
+     engine.render_to_file("nested.template", "variables.yml", output)
+     with open(output, "r") as output_file:
+         content = output_file.read()
+-        eq_(content, "template: nested.template\ntarget: test.txt\nhere")
++        assert content == "template: nested.template\ntarget: test.txt\nhere"
+     os.unlink(output)
+ 
+ 
+@@ -135,7 +142,7 @@ def test_environ_variables_as_data():
+     engine.render_to_file("test.template", "this_does_not_exist.yml", output)
+     with open(output, "r") as output_file:
+         content = output_file.read()
+-        eq_(content, "foo")
++        assert content == "foo"
+     os.unlink(output)
+ 
+ 
+@@ -146,7 +153,7 @@ def test_string_template():
+     engine.render_string_to_file("{{simple}}", "simple.yaml", output)
+     with open(output, "r") as output_file:
+         content = output_file.read()
+-        eq_(content, "yaml")
++        assert content == "yaml"
+     os.unlink(output)
+ 
+ 
+@@ -157,7 +164,7 @@ def test_extensions_validator():
+     for fixture in test_fixtures:
+         actual.append(is_extension_list_valid(fixture))
+ 
+-    eq_(expected, actual)
++    assert expected == actual
+ 
+ 
+ def test_import():
+diff --git a/tests/data_loaders/test_json_loader.py b/tests/data_loaders/test_json_loader.py
+index b8a51c0e..6a608272 100644
+--- a/tests/data_loaders/test_json_loader.py
++++ b/tests/data_loaders/test_json_loader.py
+@@ -1,5 +1,5 @@
++import pytest
+ import fs.path
+-from nose.tools import eq_
+ 
+ from moban.plugins.json_loader import open_json
+ 
+@@ -7,4 +7,4 @@
+ def test_open_json():
+     content = open_json(fs.path.join("tests", "fixtures", "child.json"))
+     expected = {"key": "hello world", "pass": "ox"}
+-    eq_(expected, content)
++    assert expected == content
+diff --git a/tests/data_loaders/test_merge_dict.py b/tests/data_loaders/test_merge_dict.py
+index 9029173f..12099be5 100644
+--- a/tests/data_loaders/test_merge_dict.py
++++ b/tests/data_loaders/test_merge_dict.py
+@@ -1,4 +1,4 @@
+-from nose.tools import eq_
++import pytest
+ from ruamel.yaml import YAML
+ 
+ from moban.core.data_loader import merge
+@@ -63,4 +63,4 @@ def test_merge_value_as_list_in_yaml():
+ """
+     )
+     merged = merge(user, default)
+-    eq_(merged, {"L1": ["a", "b", "c", "d"]})
++    assert merged == {"L1": ["a", "b", "c", "d"]}
+diff --git a/tests/data_loaders/test_overrides.py b/tests/data_loaders/test_overrides.py
+index ab6d9e62..7ce24457 100644
+--- a/tests/data_loaders/test_overrides.py
++++ b/tests/data_loaders/test_overrides.py
+@@ -1,55 +1,56 @@
+ import os
+ 
+-from nose.tools import eq_
++import fs
++import pytest
+ 
+ from moban.main import load_engine_factory_and_engines
+ from moban.core.data_loader import load_data
+ 
+ 
+ def test_overrides_a_list_of_config_files():
+-    base_dir = os.path.join("tests", "fixtures", "issue_126")
+-    config_dir = os.path.join(base_dir, "config")
+-    actual = load_data(config_dir, os.path.join(base_dir, "the_config.yaml"))
++    base_dir = fs.path.join("tests", "fixtures", "issue_126")
++    config_dir = fs.path.join(base_dir, "config")
++    actual = load_data(config_dir, fs.path.join(base_dir, "the_config.yaml"))
+     expected = [
+         ("key", "value"),
+         ("key_from_a", "apple"),
+         ("key_from_b", "bee"),
+     ]
+     for item, expected_item in zip(actual.items(), expected):
+-        eq_(item, expected_item)
++        assert item == expected_item
+ 
+-    eq_(len(actual), len(expected))
++    assert len(actual) == len(expected)
+ 
+ 
+ def test_overrides_a_list_of_config_files_but_cannot_find_them():
+-    base_dir = os.path.join("tests", "fixtures", "issue_126")
+-    actual = load_data(None, os.path.join(base_dir, "the_config.yaml"))
++    base_dir = fs.path.join("tests", "fixtures", "issue_126")
++    actual = load_data(None, fs.path.join(base_dir, "the_config.yaml"))
+ 
+     expected = [("key", "value")]
+     for item, expected_item in zip(actual.items(), expected):
+-        eq_(item, expected_item)
++        assert item == expected_item
+ 
+-    eq_(len(actual), len(expected))
++    assert len(actual) == len(expected)
+ 
+ 
+ def test_overrides_ignores_override_sequence():
+-    base_dir = os.path.join("tests", "fixtures", "issue_126")
+-    config_dir = os.path.join(base_dir, "config")
+-    actual = load_data(config_dir, os.path.join(base_dir, "the_config.yaml"))
++    base_dir = fs.path.join("tests", "fixtures", "issue_126")
++    config_dir = fs.path.join(base_dir, "config")
++    actual = load_data(config_dir, fs.path.join(base_dir, "the_config.yaml"))
+     expected = [
+         ("key", "value"),
+         ("key_from_a", "apple"),
+         ("key_from_b", "bee"),
+     ]
+     for item, expected_item in zip(actual.items(), expected):
+-        eq_(item, expected_item)
++        assert item == expected_item
+ 
+ 
+ def test_overrides_select_keys_from_parent_files():
+-    base_dir = os.path.join("tests", "fixtures", "issue_126")
+-    config_dir = os.path.join(base_dir, "config")
++    base_dir = fs.path.join("tests", "fixtures", "issue_126")
++    config_dir = fs.path.join(base_dir, "config")
+     actual = load_data(
+-        config_dir, os.path.join(base_dir, "multi-key-config.yaml")
++        config_dir, fs.path.join(base_dir, "multi-key-config.yaml")
+     )
+     expected = [
+         ("cat", "from config"),
+@@ -57,14 +58,14 @@ def test_overrides_select_keys_from_parent_files():
+         ("beta", "from b"),
+     ]
+     for item, expected_item in zip(actual.items(), expected):
+-        eq_(item, expected_item)
++        assert item == expected_item
+ 
+ 
+ def test_overrides_select_keys():
+-    base_dir = os.path.join("tests", "fixtures", "issue_126")
+-    config_dir = os.path.join(base_dir, "config")
++    base_dir = fs.path.join("tests", "fixtures", "issue_126")
++    config_dir = fs.path.join(base_dir, "config")
+     actual = load_data(
+-        config_dir, os.path.join(base_dir, "multi-key-config-override.yaml")
++        config_dir, fs.path.join(base_dir, "multi-key-config-override.yaml")
+     )
+     expected = [
+         ("alpha", "from config"),
+@@ -72,13 +73,13 @@ def test_overrides_select_keys():
+         ("beta", "from b"),
+     ]
+     for item, expected_item in zip(actual.items(), expected):
+-        eq_(item, expected_item)
++        assert item == expected_item
+ 
+ 
+ def test_overrides_nested_keys():
+-    base_dir = os.path.join("tests", "fixtures", "issue_126")
+-    config_dir = os.path.join(base_dir, "config")
+-    actual = load_data(config_dir, os.path.join(base_dir, "raspberry.yaml"))
++    base_dir = fs.path.join("tests", "fixtures", "issue_126")
++    config_dir = fs.path.join(base_dir, "config")
++    actual = load_data(config_dir, fs.path.join(base_dir, "raspberry.yaml"))
+     expected = {
+         "raspberry": {
+             "other": "OpenGL 3.0",
+@@ -92,11 +93,11 @@ def test_overrides_nested_keys():
+         "tessel": {"version": 2, "USB": "micro", "wifi": "802.11gn"},
+     }
+ 
+-    eq_(dict(actual), expected)
++    assert dict(actual) == expected
+ 
+ 
+ def test_overrides_fs_url():
+     load_engine_factory_and_engines()
+-    base_dir = os.path.join("tests", "fixtures")
+-    actual = load_data(None, os.path.join(base_dir, "override_fs_url.yaml"))
++    base_dir = fs.path.join("tests", "fixtures")
++    actual = load_data(None, fs.path.join(base_dir, "override_fs_url.yaml"))
+     assert "requires" in actual
+diff --git a/tests/data_loaders/test_yaml_loader.py b/tests/data_loaders/test_yaml_loader.py
+index b4262cf3..e345891b 100644
+--- a/tests/data_loaders/test_yaml_loader.py
++++ b/tests/data_loaders/test_yaml_loader.py
+@@ -1,5 +1,5 @@
++import pytest
+ import fs.path
+-from nose.tools import eq_, raises
+ 
+ from moban.core.data_loader import load_data
+ from moban.plugins.yaml_loader import open_yaml
+@@ -8,28 +8,28 @@
+ def test_simple_yaml():
+     test_file = fs.path.join("tests", "fixtures", "simple.yaml")
+     data = open_yaml(test_file)
+-    eq_(data, {"simple": "yaml"})
++    assert data == {"simple": "yaml"}
+ 
+ 
+ def test_inheritance_yaml():
+     test_file = fs.path.join("tests", "fixtures", "child.yaml")
+     data = load_data(fs.path.join("tests", "fixtures", "config"), test_file)
+-    eq_(data, {"key": "hello world", "pass": "ox"})
++    assert data == {"key": "hello world", "pass": "ox"}
+ 
+ 
+ def test_exception():
+     test_file = fs.path.join("tests", "fixtures", "orphan.yaml")
+     data = load_data(fs.path.join("tests", "fixtures", "config"), test_file)
+-    eq_(len(data), 0)
++    assert len(data) == 0
+ 
+ 
+-@raises(IOError)
+ def test_exception_2():
+     test_file = fs.path.join("tests", "fixtures", "dragon.yaml")
+-    load_data(fs.path.join("tests", "fixtures", "config"), test_file)
++    with pytest.raises(IOError):
++        load_data(fs.path.join("tests", "fixtures", "config"), test_file)
+ 
+ 
+-@raises(IOError)
+ def test_exception_3():
+     test_file = fs.path.join("tests", "fixtures", "dragon.yaml")
+-    load_data(None, test_file)
++    with pytest.raises(IOError):
++        load_data(None, test_file)
+diff --git a/tests/deprecated/test_handle_requires.py b/tests/deprecated/test_handle_requires.py
+index f2c66bd5..ea8add72 100644
+--- a/tests/deprecated/test_handle_requires.py
++++ b/tests/deprecated/test_handle_requires.py
+@@ -1,5 +1,5 @@
++import pytest
+ from mock import patch
+-from nose.tools import eq_
+ 
+ from moban.deprecated import GitRequire
+ 
+@@ -16,7 +16,7 @@ def test_handle_requires_pypkg(fake_pip_install):
+ @patch("moban.deprecated.pip_install")
+ def test_handle_requires_pypkg_with_alternative_syntax(fake_pip_install):
+     modules = [{"type": "pypi", "name": "pypi-mobans"}]
+-    from moban.mobanfile import handle_requires
++    from moban.deprecated import handle_requires
+ 
+     handle_requires(modules)
+     fake_pip_install.assert_called_with(["pypi-mobans"])
+@@ -25,7 +25,7 @@ def test_handle_requires_pypkg_with_alternative_syntax(fake_pip_install):
+ @patch("moban.deprecated.git_clone")
+ def test_handle_requires_repos(fake_git_clone):
+     repos = ["https://github.com/my/repo", "https://gitlab.com/my/repo"]
+-    from moban.mobanfile import handle_requires
++    from moban.deprecated import handle_requires
+ 
+     expected = []
+     for repo in repos:
+@@ -38,7 +38,7 @@ def test_handle_requires_repos(fake_git_clone):
+ @patch("moban.deprecated.git_clone")
+ def test_handle_requires_repos_with_alternative_syntax(fake_git_clone):
+     repos = [{"type": "git", "url": "https://github.com/my/repo"}]
+-    from moban.mobanfile import handle_requires
++    from moban.deprecated import handle_requires
+ 
+     handle_requires(repos)
+     fake_git_clone.assert_called_with(
+@@ -54,13 +54,13 @@ def test_handle_requires_repos_with_submodule(
+     repos = [
+         {"type": "git", "url": "https://github.com/my/repo", "submodule": True}
+     ]
+-    from moban.mobanfile import handle_requires
++    from moban.deprecated import handle_requires
+ 
+     handle_requires(repos)
+     fake_git_clone.assert_called_with(
+         [GitRequire(git_url="https://github.com/my/repo", submodule=True)]
+     )
+-    eq_(fake_pip_install.called, False)
++    assert fake_pip_install.called == False
+ 
+ 
+ def test_is_repo():
+@@ -75,4 +75,4 @@ def test_is_repo():
+ 
+     actual = [is_repo(repo) for repo in repos]
+     expected = [True, True, True, False, False]
+-    eq_(expected, actual)
++    assert expected == actual
+diff --git a/tests/deprecated/test_repo.py b/tests/deprecated/test_repo.py
+index eacafbed..d8029a8d 100644
+--- a/tests/deprecated/test_repo.py
++++ b/tests/deprecated/test_repo.py
+@@ -1,6 +1,8 @@
++import unittest
++
++import pytest
+ import fs.path
+ from mock import patch
+-from nose.tools import eq_, raises
+ 
+ from moban.deprecated import GitRequire
+ from moban.exceptions import NoGitCommand
+@@ -13,10 +15,10 @@
+ 
+ 
+ @patch("appdirs.user_cache_dir", return_value="root")
+-@patch("moban.utils.mkdir_p")
+-@patch("moban.file_system.exists")
++@patch("moban.externals.file_system.mkdir_p")
++@patch("moban.externals.file_system.exists")
+ @patch("git.Repo", autospec=True)
+-class TestGitFunctions:
++class TestGitFunctions(unittest.TestCase):
+     def setUp(self):
+         self.repo_name = "repoA"
+         self.repo = "https://github.com/my/" + self.repo_name
+@@ -44,7 +46,7 @@ def test_checkout_new(self, fake_repo, local_folder_exists, *_):
+             depth=2,
+         )
+         repo = fake_repo.return_value
+-        eq_(repo.git.submodule.called, False)
++        assert repo.git.submodule.called == False
+ 
+     def test_checkout_new_with_submodules(
+         self, fake_repo, local_folder_exists, *_
+@@ -89,7 +91,7 @@ def test_checkout_new_with_branch(
+             depth=2,
+         )
+         repo = fake_repo.return_value
+-        eq_(repo.git.submodule.called, False)
++        assert repo.git.submodule.called == False
+ 
+     def test_update_existing_with_branch_parameter(
+         self, fake_repo, local_folder_exists, *_
+@@ -112,7 +114,7 @@ def test_checkout_new_with_reference(
+             depth=2,
+         )
+         repo = fake_repo.return_value
+-        eq_(repo.git.submodule.called, False)
++        assert repo.git.submodule.called == False
+ 
+     def test_update_existing_with_reference_parameter(
+         self, fake_repo, local_folder_exists, *_
+@@ -135,10 +137,10 @@ def test_get_repo_name():
+     ]
+     actual = [get_repo_name(repo) for repo in repos]
+     expected = ["repo"] * len(repos)
+-    eq_(expected, actual)
++    assert expected == actual
+ 
+ 
+-@patch("moban.reporter.report_error_message")
++@patch("moban.externals.reporter.report_error_message")
+ def test_get_repo_name_can_handle_invalid_url(fake_reporter):
+     invalid_repo = "invalid"
+     try:
+@@ -152,10 +154,10 @@ def test_get_repo_name_can_handle_invalid_url(fake_reporter):
+ @patch("appdirs.user_cache_dir", return_value="root")
+ def test_get_moban_home(_):
+     actual = get_moban_home()
+-    eq_(fs.path.join("root", "repos"), actual)
++    assert fs.path.join("root", "repos") == actual
+ 
+ 
+-@raises(NoGitCommand)
+ @patch("subprocess.check_output", side_effect=Exception)
+ def test_make_git_is_available(_):
+-    make_sure_git_is_available()
++    with pytest.raises(NoGitCommand):
++        make_sure_git_is_available()
+diff --git a/tests/integration_tests/__init__.py b/tests/integration_tests/__init__.py
+new file mode 100644
+index 00000000..c3dff238
+--- /dev/null
++++ b/tests/integration_tests/__init__.py
+@@ -0,0 +1,5 @@
++from moban.main import load_engine_factory_and_engines
++
++
++def setUpModule():
++    load_engine_factory_and_engines()
+diff --git a/tests/integration_tests/test_command_line_options.py b/tests/integration_tests/test_command_line_options.py
+index 6056b6ff..40601162 100644
+--- a/tests/integration_tests/test_command_line_options.py
++++ b/tests/integration_tests/test_command_line_options.py
+@@ -1,10 +1,11 @@
+ import os
+ import sys
++import unittest
+ from shutil import copyfile
+ 
++import fs
++import pytest
+ from mock import MagicMock, patch
+-from nose import SkipTest
+-from nose.tools import eq_, raises, assert_raises
+ 
+ from moban.core.definitions import TemplateTarget
+ 
+@@ -14,7 +15,7 @@
+     from io import StringIO
+ 
+ 
+-class TestCustomOptions:
++class TestCustomOptions(unittest.TestCase):
+     def setUp(self):
+         self.config_file = "config.yaml"
+         with open(self.config_file, "w") as f:
+@@ -53,7 +54,6 @@ def test_minimal_options(self, fake_template_doer):
+             main()
+             fake_template_doer.assert_called_with("a.jj2", "config.yaml", "-")
+ 
+-    @raises(SystemExit)
+     def test_missing_template(self):
+         test_args = ["moban", "-c", self.config_file]
+         fake_stdin = MagicMock(isatty=MagicMock(return_value=True))
+@@ -61,14 +61,15 @@ def test_missing_template(self):
+             with patch.object(sys, "argv", test_args):
+                 from moban.main import main
+ 
+-                main()
++                with pytest.raises(SystemExit):
++                    main()
+ 
+     def tearDown(self):
+         self.patcher1.stop()
+         os.unlink(self.config_file)
+ 
+ 
+-class TestOptions:
++class TestOptions(unittest.TestCase):
+     def setUp(self):
+         self.config_file = "data.yml"
+         with open(self.config_file, "w") as f:
+@@ -99,7 +100,6 @@ def test_string_template(self, fake_template_doer):
+                 string_template, "data.yml", "-"
+             )
+ 
+-    @raises(SystemExit)
+     def test_no_argments(self):
+         test_args = ["moban"]
+         fake_stdin = MagicMock(isatty=MagicMock(return_value=True))
+@@ -107,18 +107,19 @@ def test_no_argments(self):
+             with patch.object(sys, "argv", test_args):
+                 from moban.main import main
+ 
+-                main()
++                with pytest.raises(SystemExit):
++                    main()
+ 
+     def tearDown(self):
+         self.patcher1.stop()
+         os.unlink(self.config_file)
+ 
+ 
+-class TestNoOptions:
++class TestNoOptions(unittest.TestCase):
+     def setUp(self):
+         self.config_file = ".moban.yml"
+         copyfile(
+-            os.path.join("tests", "fixtures", self.config_file),
++            fs.path.join("tests", "fixtures", self.config_file),
+             self.config_file,
+         )
+         self.data_file = "data.yaml"
+@@ -137,24 +138,19 @@ def test_single_command(self, fake_template_doer):
+ 
+             main()
+             call_args = list(fake_template_doer.call_args[0][0])
+-            eq_(
+-                call_args,
+-                [
+-                    TemplateTarget(
+-                        "README.rst.jj2", "data.yaml", "README.rst"
+-                    ),
+-                    TemplateTarget("setup.py.jj2", "data.yaml", "setup.py"),
+-                ],
+-            )
++            assert call_args == [
++                TemplateTarget("README.rst.jj2", "data.yaml", "README.rst"),
++                TemplateTarget("setup.py.jj2", "data.yaml", "setup.py"),
++            ]
+ 
+-    @raises(Exception)
+     @patch("moban.core.moban_factory.MobanEngine.render_to_files")
+     def test_single_command_with_missing_output(self, fake_template_doer):
+         test_args = ["moban", "-t", "README.rst.jj2"]
+         with patch.object(sys, "argv", test_args):
+             from moban.main import main
+ 
+-            main()
++            with pytest.raises(Exception):
++                main()
+ 
+     @patch("moban.core.moban_factory.MobanEngine.render_to_files")
+     def test_single_command_with_a_few_options(self, fake_template_doer):
+@@ -165,10 +161,9 @@ def test_single_command_with_a_few_options(self, fake_template_doer):
+             main()
+ 
+             call_args = list(fake_template_doer.call_args[0][0])
+-            eq_(
+-                call_args,
+-                [TemplateTarget("README.rst.jj2", "data.yaml", "xyz.output")],
+-            )
++            assert call_args == [
++                TemplateTarget("README.rst.jj2", "data.yaml", "xyz.output")
++            ]
+ 
+     @patch("moban.core.moban_factory.MobanEngine.render_to_files")
+     def test_single_command_with_options(self, fake_template_doer):
+@@ -186,18 +181,17 @@ def test_single_command_with_options(self, fake_template_doer):
+ 
+             main()
+             call_args = list(fake_template_doer.call_args[0][0])
+-            eq_(
+-                call_args,
+-                [TemplateTarget("README.rst.jj2", "new.yml", "xyz.output")],
+-            )
++            assert call_args == [
++                TemplateTarget("README.rst.jj2", "new.yml", "xyz.output")
++            ]
+ 
+-    @raises(Exception)
+     def test_single_command_without_output_option(self):
+         test_args = ["moban", "-t", "abc.jj2"]
+         with patch.object(sys, "argv", test_args):
+             from moban.main import main
+ 
+-            main()
++            with pytest.raises(Exception):
++                main()
+ 
+     def tearDown(self):
+         os.unlink(self.config_file)
+@@ -205,11 +199,11 @@ def tearDown(self):
+         self.patcher1.stop()
+ 
+ 
+-class TestNoOptions2:
++class TestNoOptions2(unittest.TestCase):
+     def setUp(self):
+         self.config_file = ".moban.yml"
+         copyfile(
+-            os.path.join("tests", "fixtures", self.config_file),
++            fs.path.join("tests", "fixtures", self.config_file),
+             self.config_file,
+         )
+         self.data_file = "data.yaml"
+@@ -228,15 +222,10 @@ def test_single_command(self, fake_template_doer):
+ 
+             main()
+             call_args = list(fake_template_doer.call_args[0][0])
+-            eq_(
+-                call_args,
+-                [
+-                    TemplateTarget(
+-                        "README.rst.jj2", "data.yaml", "README.rst"
+-                    ),
+-                    TemplateTarget("setup.py.jj2", "data.yaml", "setup.py"),
+-                ],
+-            )
++            assert call_args == [
++                TemplateTarget("README.rst.jj2", "data.yaml", "README.rst"),
++                TemplateTarget("setup.py.jj2", "data.yaml", "setup.py"),
++            ]
+ 
+     def tearDown(self):
+         self.patcher1.stop()
+@@ -244,11 +233,11 @@ def tearDown(self):
+         os.unlink(self.data_file)
+ 
+ 
+-class TestCustomMobanFile:
++class TestCustomMobanFile(unittest.TestCase):
+     def setUp(self):
+         self.config_file = "custom-moban.txt"
+         copyfile(
+-            os.path.join("tests", "fixtures", ".moban.yml"), self.config_file
++            fs.path.join("tests", "fixtures", ".moban.yml"), self.config_file
+         )
+         self.data_file = "data.yaml"
+         with open(self.data_file, "w") as f:
+@@ -266,15 +255,10 @@ def test_single_command(self, fake_template_doer):
+ 
+             main()
+             call_args = list(fake_template_doer.call_args[0][0])
+-            eq_(
+-                call_args,
+-                [
+-                    TemplateTarget(
+-                        "README.rst.jj2", "data.yaml", "README.rst"
+-                    ),
+-                    TemplateTarget("setup.py.jj2", "data.yaml", "setup.py"),
+-                ],
+-            )
++            assert call_args == [
++                TemplateTarget("README.rst.jj2", "data.yaml", "README.rst"),
++                TemplateTarget("setup.py.jj2", "data.yaml", "setup.py"),
++            ]
+ 
+     def tearDown(self):
+         self.patcher1.stop()
+@@ -282,11 +266,11 @@ def tearDown(self):
+         os.unlink(self.data_file)
+ 
+ 
+-class TestTemplateOption:
++class TestTemplateOption(unittest.TestCase):
+     def setUp(self):
+         self.config_file = "custom-moban.txt"
+         copyfile(
+-            os.path.join("tests", "fixtures", ".moban.yml"), self.config_file
++            fs.path.join("tests", "fixtures", ".moban.yml"), self.config_file
+         )
+         self.patcher1 = patch(
+             "moban.core.utils.verify_the_existence_of_directories"
+@@ -321,20 +305,19 @@ def tearDown(self):
+ @patch("moban.core.utils.verify_the_existence_of_directories")
+ def test_duplicated_targets_in_moban_file(fake_verify):
+     config_file = "duplicated.moban.yml"
+-    copyfile(os.path.join("tests", "fixtures", config_file), ".moban.yml")
++    copyfile(fs.path.join("tests", "fixtures", config_file), ".moban.yml")
+     test_args = ["moban"]
+     with patch.object(sys, "argv", test_args):
+         from moban.main import main
+ 
+-        assert_raises(SystemExit, main)
++        pytest.raises(SystemExit, main)
+     os.unlink(".moban.yml")
+ 
+ 
+-class TestInvalidMobanFile:
++class TestInvalidMobanFile(unittest.TestCase):
+     def setUp(self):
+         self.config_file = ".moban.yml"
+ 
+-    @raises(SystemExit)
+     @patch("moban.core.moban_factory.MobanEngine.render_to_files")
+     def test_no_configuration(self, fake_template_doer):
+         with open(self.config_file, "w") as f:
+@@ -343,9 +326,9 @@ def test_no_configuration(self, fake_template_doer):
+         with patch.object(sys, "argv", test_args):
+             from moban.main import main
+ 
+-            main()
++            with pytest.raises(SystemExit):
++                main()
+ 
+-    @raises(SystemExit)
+     @patch("moban.core.moban_factory.MobanEngine.render_to_files")
+     def test_no_configuration_2(self, fake_template_doer):
+         with open(self.config_file, "w") as f:
+@@ -354,9 +337,9 @@ def test_no_configuration_2(self, fake_template_doer):
+         with patch.object(sys, "argv", test_args):
+             from moban.main import main
+ 
+-            main()
++            with pytest.raises(SystemExit):
++                main()
+ 
+-    @raises(SystemExit)
+     @patch("moban.core.moban_factory.MobanEngine.render_to_files")
+     def test_no_targets(self, fake_template_doer):
+         with open(self.config_file, "w") as f:
+@@ -365,17 +348,18 @@ def test_no_targets(self, fake_template_doer):
+         with patch.object(sys, "argv", test_args):
+             from moban.main import main
+ 
+-            main()
++            with pytest.raises(SystemExit):
++                main()
+ 
+     def tearDown(self):
+         os.unlink(self.config_file)
+ 
+ 
+-class TestComplexOptions:
++class TestComplexOptions(unittest.TestCase):
+     def setUp(self):
+         self.config_file = ".moban.yml"
+         copyfile(
+-            os.path.join("tests", "fixtures", ".moban-2.yml"), self.config_file
++            fs.path.join("tests", "fixtures", ".moban-2.yml"), self.config_file
+         )
+         self.data_file = "data.yaml"
+         with open(self.data_file, "w") as f:
+@@ -395,22 +379,19 @@ def test_single_command(self, _):
+             ) as fake:
+                 main()
+                 call_args = list(fake.call_args[0][0])
+-                eq_(
+-                    call_args,
+-                    [
+-                        TemplateTarget(
+-                            "README.rst.jj2", "custom-data.yaml", "README.rst"
+-                        ),
+-                        TemplateTarget("setup.py.jj2", "data.yml", "setup.py"),
+-                    ],
+-                )
++                assert call_args == [
++                    TemplateTarget(
++                        "README.rst.jj2", "custom-data.yaml", "README.rst"
++                    ),
++                    TemplateTarget("setup.py.jj2", "data.yml", "setup.py"),
++                ]
+ 
+     def tearDown(self):
+         os.unlink(self.config_file)
+         os.unlink(self.data_file)
+ 
+ 
+-class TestTemplateTypeOption:
++class TestTemplateTypeOption(unittest.TestCase):
+     def setUp(self):
+         self.config_file = "data.yml"
+         with open(self.config_file, "w") as f:
+@@ -429,13 +410,13 @@ def tearDown(self):
+         os.unlink(self.config_file)
+ 
+ 
+-@raises(SystemExit)
+ def test_version_option():
+     test_args = ["moban", "-V"]
+     with patch.object(sys, "argv", test_args):
+         from moban.main import main
+ 
+-        main()
++        with pytest.raises(SystemExit):
++            main()
+ 
+ 
+ @patch("logging.basicConfig")
+@@ -487,7 +468,7 @@ def test_git_repo_example(_):
+         main()
+         with open("test_git_repo_example.py") as f:
+             content = f.read()
+-            eq_(content, '__version__ = "0.1.1rc3"\n__author__ = "C.W."\n')
++            assert content == '__version__ = "0.1.1rc3"\n__author__ = "C.W."\n'
+         os.unlink("test_git_repo_example.py")
+ 
+ 
+@@ -508,13 +489,13 @@ def test_pypi_pkg_example(_):
+         main()
+         with open("test_pypi_pkg_example.py") as f:
+             content = f.read()
+-            eq_(content, '__version__ = "0.1.1rc3"\n__author__ = "C.W."\n')
++            assert content == '__version__ = "0.1.1rc3"\n__author__ = "C.W."\n'
+         os.unlink("test_pypi_pkg_example.py")
+ 
+ 
+ def test_add_extension():
+     if sys.version_info[0] == 2:
+-        raise SkipTest("jinja2-python-version does not support python 2")
++        return pytest.skip("jinja2-python-version does not support python 2")
+     test_commands = [
+         [
+             "moban",
+@@ -542,16 +523,15 @@ def test_add_extension():
+             main()
+             with open("moban.output") as f:
+                 content = f.read()
+-                eq_(
+-                    content,
+-                    "{}.{}".format(sys.version_info[0], sys.version_info[1]),
++                assert content == "{}.{}".format(
++                    sys.version_info[0], sys.version_info[1]
+                 )
+             os.unlink("moban.output")
+ 
+ 
+ def test_stdin_input():
+     if sys.platform == "win32":
+-        raise SkipTest("windows test fails with this pipe test 2")
++        return pytest.skip("windows test fails with this pipe test 2")
+     test_args = ["moban", "-d", "hello=world", "-o", "moban.output"]
+     with patch.object(sys, "stdin", StringIO("{{hello}}")):
+         with patch.object(sys, "argv", test_args):
+@@ -560,7 +540,7 @@ def test_stdin_input():
+             main()
+             with open("moban.output") as f:
+                 content = f.read()
+-                eq_(content, "world")
++                assert content == "world"
+             os.unlink("moban.output")
+ 
+ 
+@@ -571,7 +551,7 @@ def test_stdout():
+             from moban.main import main
+ 
+             main()
+-            eq_(fake_stdout.getvalue(), "world\n")
++            assert fake_stdout.getvalue() == "world\n"
+ 
+ 
+ def test_render_file_stdout():
+@@ -587,7 +567,7 @@ def test_render_file_stdout():
+             from moban.main import main
+ 
+             main()
+-            eq_(fake_stdout.getvalue(), "world\n")
++            assert fake_stdout.getvalue() == "world\n"
+ 
+ 
+ def test_custom_jinja2_filters_tests():
+@@ -616,4 +596,4 @@ def test_custom_jinja2_filters_tests():
+                 + "any template, any data and any location.\n"
+             )
+             main()
+-            eq_(fake_stdout.getvalue(), expected_output)
++            assert fake_stdout.getvalue() == expected_output
+diff --git a/tests/jinja2/__init__.py b/tests/jinja2/__init__.py
+new file mode 100644
+index 00000000..c3dff238
+--- /dev/null
++++ b/tests/jinja2/__init__.py
+@@ -0,0 +1,5 @@
++from moban.main import load_engine_factory_and_engines
++
++
++def setUpModule():
++    load_engine_factory_and_engines()
+diff --git a/tests/jinja2/test_engine.py b/tests/jinja2/test_engine.py
+index 4ebb396f..ac89ef20 100644
+--- a/tests/jinja2/test_engine.py
++++ b/tests/jinja2/test_engine.py
+@@ -1,28 +1,27 @@
+-import os
++import fs
++import pytest
+ 
+-from nose.tools import eq_
+-
+-from moban import file_system
+-from moban.jinja2.engine import Engine
++from moban.externals import file_system
++from moban.plugins.jinja2.engine import Engine
+ 
+ 
+ def test_jinja2_template():
+-    path = os.path.join("tests", "fixtures", "jinja_tests")
+-    fs = file_system.get_multi_fs([path])
+-    engine = Engine(fs)
++    path = fs.path.join("tests", "fixtures", "jinja_tests")
++    fsys = file_system.get_multi_fs([path])
++    engine = Engine(fsys)
+     template = engine.get_template("file_tests.template")
+     data = dict(test="here")
+     result = engine.apply_template(template, data, None)
+     expected = "yes\nhere"
+-    eq_(expected, result)
++    assert expected == result
+ 
+ 
+ def test_jinja2_template_string():
+-    path = os.path.join("tests", "fixtures", "jinja_tests")
+-    fs = file_system.get_multi_fs([path])
+-    engine = Engine(fs)
++    path = fs.path.join("tests", "fixtures", "jinja_tests")
++    fsys = file_system.get_multi_fs([path])
++    engine = Engine(fsys)
+     template = engine.get_template_from_string("{{test}}")
+     data = dict(test="here")
+     result = engine.apply_template(template, data, None)
+     expected = "here"
+-    eq_(expected, result)
++    assert expected == result
+diff --git a/tests/jinja2/test_extensions.py b/tests/jinja2/test_extensions.py
+index 4d602fc9..2a09cf2b 100644
+--- a/tests/jinja2/test_extensions.py
++++ b/tests/jinja2/test_extensions.py
+@@ -1,22 +1,23 @@
+ import os
+ 
+-from nose.tools import eq_
++import fs
++import pytest
+ 
+-from moban import file_system
+-from moban.jinja2.engine import Engine
+-from moban.jinja2.extensions import jinja_global
++from moban.externals import file_system
+ from moban.core.moban_factory import MobanEngine
++from moban.plugins.jinja2.engine import Engine
++from moban.plugins.jinja2.extensions import jinja_global
+ 
+ 
+ def test_globals():
+     output = "globals.txt"
+     test_dict = dict(hello="world")
+     jinja_global("test", test_dict)
+-    path = os.path.join("tests", "fixtures", "globals")
++    path = fs.path.join("tests", "fixtures", "globals")
+     template_fs = file_system.get_multi_fs([path])
+     engine = MobanEngine(template_fs, path, Engine(template_fs))
+     engine.render_to_file("basic.template", "basic.yml", output)
+     with open(output, "r") as output_file:
+         content = output_file.read()
+-        eq_(content, "world\n\ntest")
++        assert content == "world\n\ntest"
+     os.unlink(output)
+diff --git a/tests/jinja2/test_repr.py b/tests/jinja2/test_repr.py
+index 01d388ea..76a0af8d 100644
+--- a/tests/jinja2/test_repr.py
++++ b/tests/jinja2/test_repr.py
+@@ -1,15 +1,15 @@
+-from nose.tools import eq_
++import pytest
+ 
+-from moban.jinja2.filters.repr import repr as repr_function
++from moban.plugins.jinja2.filters.repr import repr as repr_function
+ 
+ 
+ def test_string():
+     me = "abc"
+     expected = repr_function(me)
+-    eq_(expected, "'abc'")
++    assert expected == "'abc'"
+ 
+ 
+ def test_list():
+     me = [1, 2, 3]
+     expected = repr_function(me)
+-    eq_(expected, ["'1'", "'2'", "'3'"])
++    assert expected == ["'1'", "'2'", "'3'"]
+diff --git a/tests/jinja2/test_text.py b/tests/jinja2/test_text.py
+index 17f000df..1cb50079 100644
+--- a/tests/jinja2/test_text.py
++++ b/tests/jinja2/test_text.py
+@@ -1,6 +1,6 @@
+-from nose.tools import eq_
++import pytest
+ 
+-from moban.jinja2.filters.text import split_length
++from moban.plugins.jinja2.filters.text import split_length
+ 
+ 
+ def test_split_length():
+@@ -18,4 +18,4 @@ def test_split_length():
+     ]
+     for test, expect in zip(inputs, expectations):
+         actual = split_length(*test)
+-        eq_(list(actual), expect)
++        assert list(actual) == expect
+diff --git a/tests/mobanfile/test_mobanfile.py b/tests/mobanfile/test_mobanfile.py
+index 905a72df..501e75c1 100644
+--- a/tests/mobanfile/test_mobanfile.py
++++ b/tests/mobanfile/test_mobanfile.py
+@@ -1,6 +1,6 @@
++import pytest
+ import fs.path
+ from mock import patch
+-from nose.tools import eq_
+ 
+ from moban.core.definitions import TemplateTarget
+ 
+@@ -25,17 +25,14 @@ def test_handle_targets(fake_renderer):
+     handle_targets(options, short_hand_targets)
+ 
+     call_args = list(fake_renderer.call_args[0][0])
+-    eq_(
+-        call_args,
+-        [
+-            TemplateTarget(
+-                "copier-test01.csv",
+-                "child.yaml",
+-                "output.csv",
+-                template_type="jinja2",
+-            )
+-        ],
+-    )
++    assert call_args == [
++        TemplateTarget(
++            "copier-test01.csv",
++            "child.yaml",
++            "output.csv",
++            template_type="jinja2",
++        )
++    ]
+ 
+ 
+ @patch("moban.core.moban_factory.MobanEngine.render_to_files")
+@@ -63,21 +60,15 @@ def test_handle_targets_sequence(fake_renderer):
+ 
+     call_args = list(fake_renderer.call_args_list)
+ 
+-    eq_(
+-        call_args[0][0][0][0],
+-        TemplateTarget(
+-            "a.template.jj2",
+-            "child.yaml",
+-            "filterme.handlebars",
+-            template_type="jj2",
+-        ),
++    assert call_args[0][0][0][0] == TemplateTarget(
++        "a.template.jj2",
++        "child.yaml",
++        "filterme.handlebars",
++        template_type="jj2",
+     )
+-    eq_(
+-        call_args[1][0][0][0],
+-        TemplateTarget(
+-            "filterme.handlebars",
+-            "child.yaml",
+-            "filtered_output.txt",
+-            template_type="handlebars",
+-        ),
++    assert call_args[1][0][0][0] == TemplateTarget(
++        "filterme.handlebars",
++        "child.yaml",
++        "filtered_output.txt",
++        template_type="handlebars",
+     )
+diff --git a/tests/mobanfile/test_targets.py b/tests/mobanfile/test_targets.py
+index 836b481b..bb2280ae 100644
+--- a/tests/mobanfile/test_targets.py
++++ b/tests/mobanfile/test_targets.py
+@@ -1,7 +1,7 @@
+ import uuid
+ 
++import pytest
+ import fs.path
+-from nose.tools import eq_, raises
+ 
+ from moban.exceptions import GroupTargetNotFound
+ from moban.core.mobanfile import targets
+@@ -31,7 +31,7 @@ def test_handling_group_target():
+     expected = [
+         TemplateTarget(TEMPLATE, CONFIGURATION, OUTPUT, group_template_type)
+     ]
+-    eq_(expected, actual)
++    assert expected == actual
+ 
+ 
+ def test_extract_group_targets():
+@@ -41,17 +41,17 @@ def test_extract_group_targets():
+     ]
+     actual = targets.extract_group_targets("copy1", test_targets)
+     expected = [{"copy1": [{"output1": "source1"}]}]
+-    eq_(expected, actual)
++    assert expected == actual
+ 
+ 
+-@raises(GroupTargetNotFound)
+ def test_extract_group_targets_not_found():
+     test_targets = [
+         {"copy": [{"output": "source"}], "copy1": [{"output1": "source1"}]}
+     ]
+-    actual = targets.extract_group_targets("copy2", test_targets)
+-    expected = []
+-    eq_(expected, actual)
++    with pytest.raises(GroupTargetNotFound):
++        actual = targets.extract_group_targets("copy2", test_targets)
++        expected = []
++        assert expected == actual
+ 
+ 
+ class TestImplicitTarget:
+@@ -67,7 +67,7 @@ def test_derive_template_type_from_target_template_file(self):
+             targets._handle_implicit_target(options, TEMPLATE, OUTPUT)
+         )
+         expected = [TemplateTarget(TEMPLATE, CONFIGURATION, OUTPUT, "jj2")]
+-        eq_(expected, actual)
++        assert expected == actual
+ 
+     def test_use_moban_default_template_from_options(self):
+         template_without_suffix = "template"
+@@ -91,7 +91,7 @@ def test_use_moban_default_template_from_options(self):
+                 DEFAULT_TEMPLATE_TYPE,
+             )
+         ]
+-        eq_(expected, actual)
++        assert expected == actual
+ 
+ 
+ class TestExplicitTarget:
+@@ -106,7 +106,7 @@ def test_use_target_template_type(self):
+ 
+         actual = list(targets._handle_explicit_target(options, target))
+         expected = [TemplateTarget(TEMPLATE, CONFIGURATION, OUTPUT, "use-me")]
+-        eq_(expected, actual)
++        assert expected == actual
+ 
+     def test_derive_template_type_from_target_template_file(self):
+ 
+@@ -119,7 +119,7 @@ def test_derive_template_type_from_target_template_file(self):
+ 
+         actual = list(targets._handle_explicit_target(options, target))
+         expected = [TemplateTarget(TEMPLATE, CONFIGURATION, OUTPUT, "jj2")]
+-        eq_(expected, actual)
++        assert expected == actual
+ 
+     def test_use_moban_default_template_from_options(self):
+         template_without_suffix = "template"
+@@ -139,7 +139,7 @@ def test_use_moban_default_template_from_options(self):
+                 DEFAULT_TEMPLATE_TYPE,
+             )
+         ]
+-        eq_(expected, actual)
++        assert expected == actual
+ 
+     def test_ad_hoc_type(self):
+         target = dict(template=TEMPLATE, output=OUTPUT)
+@@ -163,4 +163,4 @@ def test_ad_hoc_type(self):
+         expected = [
+             TemplateTarget(TEMPLATE, CONFIGURATION, OUTPUT, file_extension)
+         ]
+-        eq_(actual, expected)
++        assert actual == expected
+diff --git a/tests/mobanfile/test_templates.py b/tests/mobanfile/test_templates.py
+index c3b54613..e49011d9 100644
+--- a/tests/mobanfile/test_templates.py
++++ b/tests/mobanfile/test_templates.py
+@@ -1,11 +1,13 @@
++import unittest
++
++import pytest
+ import fs.path
+ from mock import patch
+-from nose.tools import eq_
+ 
+ from moban.core.mobanfile.templates import handle_template
+ 
+ 
+-class TestHandleTemplateFunction:
++class TestHandleTemplateFunction(unittest.TestCase):
+     def setUp(self):
+         self.base_dir = [fs.path.join("tests", "fixtures")]
+ 
+@@ -14,7 +16,7 @@ def test_copy_files(self):
+             handle_template("copier-test01.csv", "/tmp/test", self.base_dir)
+         )
+         expected = [("copier-test01.csv", "/tmp/test", "csv")]
+-        eq_(expected, results)
++        assert expected == results
+ 
+     @patch("moban.externals.reporter.report_error_message")
+     def test_file_not_found(self, reporter):
+@@ -39,7 +41,7 @@ def test_listing_dir(self):
+                 None,
+             )
+         ]
+-        eq_(expected, results)
++        assert expected == results
+ 
+     def test_listing_dir_recusively(self):
+         test_dir = "/tmp/copy-a-directory"
+@@ -60,9 +62,8 @@ def test_listing_dir_recusively(self):
+                 None,
+             ),
+         ]
+-        eq_(
+-            sorted(results, key=lambda x: x[0]),
+-            sorted(expected, key=lambda x: x[0]),
++        assert sorted(results, key=lambda x: x[0]) == sorted(
++            expected, key=lambda x: x[0]
+         )
+ 
+     @patch("moban.externals.reporter.report_error_message")
+@@ -73,4 +74,4 @@ def test_listing_dir_recusively_with_error(self, reporter):
+                 "copier-directory-does-not-exist/**", test_dir, self.base_dir
+             )
+         )
+-        eq_(reporter.call_count, 1)
++        assert reporter.call_count == 1
+diff --git a/tests/requirements.txt b/tests/requirements.txt
+index 505db119..75ee15c0 100644
+--- a/tests/requirements.txt
++++ b/tests/requirements.txt
+@@ -1,4 +1,5 @@
+-nose
++pytest
++pytest-cov
+ codecov
+ coverage
+ mock
+@@ -7,6 +8,7 @@ flake8
+ black
+ isort
+ moban-handlebars
++moban-ansible
+ pypi-mobans-pkg==0.0.12
+ arrow
+ jinja2_time
+diff --git a/tests/test_buffered_writer.py b/tests/test_buffered_writer.py
+index 02e5caaa..a4dc313c 100644
+--- a/tests/test_buffered_writer.py
++++ b/tests/test_buffered_writer.py
+@@ -1,7 +1,9 @@
+ import os
+ import tempfile
++import unittest
+ 
+-from nose.tools import eq_
++import fs
++import pytest
+ 
+ from moban.externals import file_system
+ from moban.externals.buffered_writer import BufferedWriter, write_file_out
+@@ -16,7 +18,7 @@
+ EXPECTED = "\n    helloworld\n\n\n\n\n    "
+ 
+ 
+-class TestBufferedWriter:
++class TestBufferedWriter(unittest.TestCase):
+     def setUp(self):
+         self.writer = BufferedWriter()
+ 
+@@ -25,7 +27,7 @@ def test_write_text(self):
+         self.writer.write_file_out(test_file, CONTENT)
+         self.writer.close()
+         content = file_system.read_text(test_file)
+-        eq_(content, EXPECTED)
++        assert content == EXPECTED
+         os.unlink(test_file)
+ 
+     def test_write_a_zip(self):
+@@ -34,8 +36,8 @@ def test_write_a_zip(self):
+         self.writer.write_file_out(test_file, CONTENT)
+         self.writer.close()
+         content = file_system.read_text(test_file)
+-        eq_(content, EXPECTED)
+-        os.unlink(os.path.join(tmp_dir, "testout.zip"))
++        assert content == EXPECTED
++        os.unlink(fs.path.join(tmp_dir, "testout.zip"))
+ 
+ 
+ def test_write_file_out():
+@@ -43,4 +45,4 @@ def test_write_file_out():
+     write_file_out(test_file, CONTENT)
+     with open(test_file, "r") as f:
+         content = f.read()
+-        eq_(content, EXPECTED)
++        assert content == EXPECTED
+diff --git a/tests/test_copy_engine.py b/tests/test_copy_engine.py
+index 0dcb42d3..44e987b4 100644
+--- a/tests/test_copy_engine.py
++++ b/tests/test_copy_engine.py
+@@ -1,42 +1,45 @@
+ import os
++import unittest
+ 
+-import fs.path
+-from nose.tools import eq_
++import fs
++import pytest
+ 
+ from moban.core import ENGINES
+ from moban.externals import file_system
+ 
+ 
+-class TestContentForwardEngine:
++class TestContentForwardEngine(unittest.TestCase):
+     def setUp(self):
+-        template_path = os.path.join("tests", "fixtures")
+-        fs = file_system.get_multi_fs([template_path])
++        template_path = fs.path.join("tests", "fixtures")
++        fsys = file_system.get_multi_fs([template_path])
+         ContentForwardEngine = ENGINES.load_me_now("copy")
+-        self.engine = ContentForwardEngine(fs)
++        self.engine = ContentForwardEngine(fsys)
+ 
+     def test_get_template(self):
+         template_content = self.engine.get_template("copier-test01.csv")
+         #  remove '\r' for windows
+-        eq_("test 01\n", template_content.decode("utf-8").replace("\r", ""))
++        assert "test 01\n", template_content.decode("utf-8").replace(
++            "\r" == ""
++        )
+ 
+     def test_encoding_of_template(self):
+         template_content_ = self.engine.get_template("coala_color.svg")
+         with open("tests/fixtures/coala_color.svg", "r") as expected:
+             expected = expected.read()
+-        eq_(expected, template_content_.decode("utf-8").replace("\r", ""))
++        assert expected, template_content_.decode("utf-8").replace("\r" == "")
+ 
+     def test_get_template_from_string(self):
+         test_content = "simply forwarded"
+         template_content = self.engine.get_template_from_string(test_content)
+-        eq_(test_content, template_content)
++        assert test_content == template_content
+ 
+     def test_apply_template(self):
+         test_content = "simply forwarded"
+         template_content = self.engine.apply_template(test_content, "not used")
+-        eq_(test_content, template_content)
++        assert test_content == template_content
+ 
+ 
+-class TestCopyEncoding:
++class TestCopyEncoding(unittest.TestCase):
+     def setUp(self):
+         template_path = fs.path.join("tests", "fixtures")
+         template_fs = file_system.get_multi_fs([template_path])
+@@ -47,8 +50,8 @@ def test_encoding_of_template(self):
+         template_content = self.engine.get_template("coala_color.svg")
+         with open("tests/fixtures/coala_color.svg", "rb") as expected:
+             expected = expected.read()
+-        eq_(expected, template_content)
++        assert expected == template_content
+         template_content = self.engine.get_template("non-unicode.char")
+         with open("tests/fixtures/non-unicode.char", "rb") as expected:
+             expected = expected.read()
+-        eq_(expected, template_content)
++        assert expected == template_content
+diff --git a/tests/test_definitions.py b/tests/test_definitions.py
+index a9a6a9d5..59b6b7d4 100644
+--- a/tests/test_definitions.py
++++ b/tests/test_definitions.py
+@@ -1,4 +1,4 @@
+-from nose.tools import eq_
++import pytest
+ 
+ from moban.deprecated import GitRequire
+ from moban.core.definitions import TemplateTarget
+@@ -6,19 +6,19 @@
+ 
+ def test_git_require_repr():
+     require = GitRequire(git_url="http://github.com/some/repo")
+-    eq_("http://github.com/some/repo,None,False", repr(require))
++    assert "http://github.com/some/repo,None,False" == repr(require)
+ 
+ 
+ def test_template_target_repr():
+     require = TemplateTarget("template_file", "dat_file", "output")
+-    eq_("template_file,dat_file,output,jinja2", repr(require))
++    assert "template_file,dat_file,output,jinja2" == repr(require)
+ 
+ 
+ def test_template_target_output_suffix_change():
+     require = TemplateTarget(
+         "template_file", "dat_file", "output.copy", template_type="copy"
+     )
+-    eq_("template_file,dat_file,output,copy", repr(require))
++    assert "template_file,dat_file,output,copy" == repr(require)
+ 
+ 
+ def test_template_target_output_suffix_updates_after_set():
+@@ -26,14 +26,14 @@ def test_template_target_output_suffix_updates_after_set():
+         "template_file", "dat_file", "output.copy", template_type="copy"
+     )
+     require.set_template_type("jinja2")
+-    eq_("template_file,dat_file,output.copy,jinja2", repr(require))
++    assert "template_file,dat_file,output.copy,jinja2" == repr(require)
+ 
+ 
+ def test_clone_params():
+     require = GitRequire(git_url="http://github.com/some/repo")
+     actual = require.clone_params()
+     expected = {"single_branch": True, "depth": 2}
+-    eq_(expected, actual)
++    assert expected == actual
+ 
+ 
+ def test_branch_params():
+@@ -42,4 +42,4 @@ def test_branch_params():
+     )
+     actual = require.clone_params()
+     expected = {"single_branch": True, "branch": "ghpages", "depth": 2}
+-    eq_(expected, actual)
++    assert expected == actual
+diff --git a/tests/test_docs.py b/tests/test_docs.py
+index 1b7f30fb..d3acf137 100644
+--- a/tests/test_docs.py
++++ b/tests/test_docs.py
+@@ -1,6 +1,7 @@
+ import os
+ 
+-from nose.tools import eq_
++import fs
++import pytest
+ 
+ from .utils import Docs, custom_dedent
+ 
+@@ -129,7 +130,7 @@ def test_level_7(self):
+     def test_level_8(self):
+         expected = "it is a test\n"
+         folder = "level-8-pass-a-folder-full-of-templates"
+-        check_file = os.path.join("templated-folder", "my")
++        check_file = fs.path.join("templated-folder", "my")
+         self.run_moban(["moban"], folder, [(check_file, expected)])
+ 
+     def test_level_9(self):
+@@ -341,7 +342,7 @@ def test_level_19_with_group_target(self):
+             ["moban", "-g", "copy"], folder, [("simple.file", expected)]
+         )
+         # make sure only copy target is executed
+-        eq_(False, os.path.exists("a.output"))
++        assert False == os.path.exists("a.output")
+ 
+     def test_level_22_intermediate_targets(self):
+         expected = "a world\n"
+diff --git a/tests/test_file_system.py b/tests/test_file_system.py
+index 967642fa..374ce189 100644
+--- a/tests/test_file_system.py
++++ b/tests/test_file_system.py
+@@ -3,9 +3,9 @@
+ import stat
+ from shutil import rmtree
+ 
++import fs
++import pytest
+ from mock import patch
+-from nose import SkipTest
+-from nose.tools import eq_, raises
+ 
+ from moban.externals import file_system
+ from moban.exceptions import FileNotFound, UnsupportedPyFS2Protocol
+@@ -48,7 +48,7 @@ def test_open_fs():
+ def test_read_unicode():
+     for url, expected in TEST_FILE_CONTENT_SPECS:
+         content = file_system.read_unicode(url)
+-        eq_(content, expected)
++        assert content == expected
+ 
+ 
+ TEST_FILE_CONTENT_SPECS_BINARY = [
+@@ -61,7 +61,7 @@ def test_read_unicode():
+ def test_read_binary():
+     for url, expected in TEST_FILE_CONTENT_SPECS_BINARY:
+         content = file_system.read_binary(url)
+-        eq_(content, expected)
++        assert content == expected
+ 
+ 
+ TEST_WRITE_BYTES_SPEC = [
+@@ -77,7 +77,7 @@ def test_write_bytes():
+ 
+     for url, expected in TEST_WRITE_BYTES_SPEC:
+         content = file_system.read_bytes(url)
+-        eq_(content, expected)
++        assert content == expected
+ 
+     for file_name in ["test.binary", "test.zip", "test.tar"]:
+         os.unlink(file_name)
+@@ -96,14 +96,14 @@ def test_write_bytes():
+ def test_is_dir():
+     for url, expected in TEST_DIR_SPEC:
+         status = file_system.is_dir(url)
+-        eq_(status, expected)
++        assert status == expected
+ 
+ 
+ def test_is_file():
+     for url, is_dir in TEST_DIR_SPEC:
+         status = file_system.is_file(url)
+         expected = not is_dir
+-        eq_(status, expected)
++        assert status == expected
+ 
+ 
+ TEST_URL_EXITENCE_SPEC = [
+@@ -122,17 +122,17 @@ def test_is_file():
+ def test_exists():
+     for url, expected in TEST_URL_EXITENCE_SPEC:
+         status = file_system.exists(url)
+-        eq_(status, expected)
++        assert status == expected
+ 
+ 
+-@raises(UnsupportedPyFS2Protocol)
+ def test_exists_raise_exception():
+-    file_system.exists("git2://protocol/abc")
++    with pytest.raises(UnsupportedPyFS2Protocol):
++        file_system.exists("git2://protocol/abc")
+ 
+ 
+-@raises(UnsupportedPyFS2Protocol)
+ def test_is_file_raise_exception():
+-    file_system.is_file("git2://protocol/abc")
++    with pytest.raises(UnsupportedPyFS2Protocol):
++        file_system.is_file("git2://protocol/abc")
+ 
+ 
+ TEST_LIST_DIR_SPEC = [
+@@ -154,14 +154,14 @@ def test_is_file_raise_exception():
+ def test_list_dir():
+     for url, expected in TEST_LIST_DIR_SPEC:
+         file_list = sorted(list(file_system.list_dir(url)))
+-        eq_(file_list, sorted(expected))
++        assert file_list == sorted(expected)
+ 
+ 
+ TEST_FILE_PATH = [
+     [
+         LOCAL_FOLDER + "/file_system",
+         os.path.normpath(
+-            os.path.join(os.getcwd(), "tests/fixtures/file_system")
++            fs.path.join(os.getcwd(), "tests/fixtures/file_system")
+         ),
+     ]
+ ]
+@@ -170,7 +170,7 @@ def test_list_dir():
+ def test_abspath():
+     for path, expected in TEST_FILE_PATH:
+         url = file_system.abspath(path)
+-        eq_(url, expected)
++        assert url == expected
+ 
+ 
+ TEST_FILE_URL = [
+@@ -178,7 +178,7 @@ def test_abspath():
+         LOCAL_FOLDER + "/file_system",
+         "osfs://"
+         + os.path.normpath(
+-            os.path.join(os.getcwd(), "tests/fixtures/file_system")
++            fs.path.join(os.getcwd(), "tests/fixtures/file_system")
+         ),
+     ]
+ ]
+@@ -187,7 +187,7 @@ def test_abspath():
+ def test_fs_url():
+     for path, expected in TEST_FILE_URL:
+         url = file_system.fs_url(path)
+-        eq_(url, expected.replace("\\", "/"))
++        assert url, expected.replace("\\" == "/")
+ 
+ 
+ URL_JOIN_TEST_FIXTURES = [
+@@ -200,7 +200,7 @@ def test_fs_url():
+ def test_url_join():
+     for parent, child, expected_path in URL_JOIN_TEST_FIXTURES:
+         actual = file_system.url_join(parent, child)
+-        eq_(actual, expected_path)
++        assert actual == expected_path
+ 
+ 
+ def create_file(test_file, permission):
+@@ -212,15 +212,14 @@ def create_file(test_file, permission):
+ 
+ def test_file_permission_copy():
+     if sys.platform == "win32":
+-        raise SkipTest("No actual chmod on windows")
++        return pytest.skip("No actual chmod on windows")
+     test_source = "test_file_permission_copy1"
+     test_dest = "test_file_permission_copy2"
+     create_file(test_source, 0o755)
+     create_file(test_dest, 0o646)
+     file_system.file_permissions_copy(test_source, test_dest)
+-    eq_(
+-        stat.S_IMODE(os.lstat(test_source).st_mode),
+-        stat.S_IMODE(os.lstat(test_dest).st_mode),
++    assert stat.S_IMODE(os.lstat(test_source).st_mode) == stat.S_IMODE(
++        os.lstat(test_dest).st_mode
+     )
+     os.unlink(test_source)
+     os.unlink(test_dest)
+@@ -229,19 +228,19 @@ def test_file_permission_copy():
+ def file_permissions_disabled_on_windows():
+     if sys.platform == "win32":
+         permissions = file_system.file_permissions("abc")
+-        eq_("no-permission-support", permissions)
++        assert "no-permission-support" == permissions
+     else:
+-        raise SkipTest("No test required")
++        return pytest.skip("No test required")
+ 
+ 
+-@raises(FileNotFound)
+ def test_file_permissions_file_not_found():
+-    file_system.file_permissions("I does not exist")
++    with pytest.raises(FileNotFound):
++        file_system.file_permissions("I does not exist")
+ 
+ 
+ def test_file_permission_copy_symlink():
+     if sys.platform == "win32":
+-        raise SkipTest("No symlink on windows")
++        return pytest.skip("No symlink on windows")
+     test_source = "test_file_permission_copy1"
+     test_dest = "test_file_permission_copy2"
+     test_symlink = "test_file_permission_symlink"
+@@ -249,9 +248,8 @@ def test_file_permission_copy_symlink():
+     os.symlink(test_source, test_symlink)
+     create_file(test_dest, 0o646)
+     file_system.file_permissions_copy(test_source, test_dest)
+-    eq_(
+-        stat.S_IMODE(os.lstat(test_source).st_mode),
+-        stat.S_IMODE(os.lstat(test_dest).st_mode),
++    assert stat.S_IMODE(os.lstat(test_source).st_mode) == stat.S_IMODE(
++        os.lstat(test_dest).st_mode
+     )
+     os.unlink(test_source)
+     os.unlink(test_dest)
+diff --git a/tests/test_hash_store.py b/tests/test_hash_store.py
+index 0f098d64..af4ad15e 100644
+--- a/tests/test_hash_store.py
++++ b/tests/test_hash_store.py
+@@ -1,15 +1,16 @@
+ import os
+ import sys
++import unittest
+ from unittest.mock import patch
+ 
+-from nose import SkipTest
++import pytest
+ 
+ from moban.externals import file_system
+ from moban.exceptions import NoPermissionsNeeded
+ from moban.core.hashstore import HashStore, get_file_hash
+ 
+ 
+-class TestHashStore:
++class TestHashStore(unittest.TestCase):
+     def setUp(self):
+         self.source_template = file_system.path_join(
+             "tests", "fixtures", "a.jj2"
+@@ -102,7 +103,7 @@ def test_dest_file_file_permision_changed(self):
+         the generated file had file permision change
+         """
+         if sys.platform == "win32":
+-            raise SkipTest("No file permission check on windows")
++            return pytest.skip("No file permission check on windows")
+         hs = HashStore()
+         flag = hs.is_file_changed(*self.fixture)
+         if flag:
+diff --git a/tests/test_main.py b/tests/test_main.py
+index 070354d4..b3f40cbb 100644
+--- a/tests/test_main.py
++++ b/tests/test_main.py
+@@ -1,14 +1,16 @@
+ import os
+ import sys
++import unittest
+ from shutil import copyfile
+ 
++import fs
++import pytest
+ from mock import MagicMock, patch
+-from nose.tools import eq_, raises, assert_raises
+ 
+ import moban.exceptions as exceptions
+ 
+ 
+-class TestException:
++class TestException(unittest.TestCase):
+     def setUp(self):
+         self.moban_file = ".moban.yml"
+         self.data_file = "data.yml"
+@@ -19,15 +21,15 @@ def tearDown(self):
+         if os.path.exists(self.data_file):
+             os.unlink(self.data_file)
+ 
+-    @raises(exceptions.MobanfileGrammarException)
+     def test_handle_moban_file(self):
+         copyfile(
+-            os.path.join("tests", "fixtures", ".moban-version-1234.yml"),
++            fs.path.join("tests", "fixtures", ".moban-version-1234.yml"),
+             self.moban_file,
+         )
+         import moban.main as main
+ 
+-        main.handle_moban_file(self.moban_file, {})
++        with pytest.raises(exceptions.MobanfileGrammarException):
++            main.handle_moban_file(self.moban_file, {})
+ 
+     def test_check_none(self):
+         from ruamel.yaml import YAML
+@@ -55,7 +57,7 @@ def test_check_none(self):
+         ]
+ 
+         for data in (yaml.load(d) for d in invalid_data):
+-            assert_raises(
++            pytest.raises(
+                 exceptions.MobanfileGrammarException,
+                 main.check_none,
+                 data,
+@@ -65,21 +67,20 @@ def test_check_none(self):
+         for data in (yaml.load(d) for d in valid_data):
+             main.check_none(data, ".moban.yaml")
+ 
+-    @raises(exceptions.MobanfileGrammarException)
+     def test_version_1_is_recognized(self):
+         copyfile(
+-            os.path.join("tests", "fixtures", ".moban-version-1.0.yml"),
++            fs.path.join("tests", "fixtures", ".moban-version-1.0.yml"),
+             self.moban_file,
+         )
+         copyfile(
+-            os.path.join("tests", "fixtures", ".moban-version-1.0.yml"),
++            fs.path.join("tests", "fixtures", ".moban-version-1.0.yml"),
+             self.data_file,
+         )
+         import moban.main as main
+ 
+-        main.handle_moban_file(self.moban_file, {})
++        with pytest.raises(exceptions.MobanfileGrammarException):
++            main.handle_moban_file(self.moban_file, {})
+ 
+-    @raises(SystemExit)
+     @patch("os.path.exists")
+     @patch("moban.main.handle_moban_file")
+     @patch("moban.externals.reporter.report_error_message")
+@@ -93,9 +94,9 @@ def test_directory_not_found(
+             with patch.object(sys, "argv", ["moban"]):
+                 from moban.main import main
+ 
+-                main()
++                with pytest.raises(SystemExit):
++                    main()
+ 
+-    @raises(SystemExit)
+     @patch("os.path.exists")
+     @patch("moban.main.handle_moban_file")
+     @patch("moban.externals.reporter.report_error_message")
+@@ -107,9 +108,9 @@ def test_unknown_protocol(self, fake_reporter, fake_moban_file, fake_file):
+             from moban.main import main
+ 
+             with patch.object(sys, "argv", ["moban"]):
+-                main()
++                with pytest.raises(SystemExit):
++                    main()
+ 
+-    @raises(SystemExit)
+     @patch("os.path.exists")
+     @patch("moban.main.handle_command_line")
+     @patch("moban.externals.reporter.report_error_message")
+@@ -123,9 +124,9 @@ def test_unknown_protocol_at_command_line(
+             from moban.main import main
+ 
+             with patch.object(sys, "argv", ["moban"]):
+-                main()
++                with pytest.raises(SystemExit):
++                    main()
+ 
+-    @raises(SystemExit)
+     @patch("os.path.exists")
+     @patch("moban.main.handle_moban_file")
+     @patch("moban.externals.reporter.report_error_message")
+@@ -139,9 +140,9 @@ def test_no_third_party_engine(
+             from moban.main import main
+ 
+             with patch.object(sys, "argv", ["moban"]):
+-                main()
++                with pytest.raises(SystemExit):
++                    main()
+ 
+-    @raises(SystemExit)
+     @patch("os.path.exists")
+     @patch("moban.main.handle_moban_file")
+     @patch("moban.externals.reporter.report_error_message")
+@@ -155,11 +156,11 @@ def test_double_underscore_main(
+             from moban.__main__ import main
+ 
+             with patch.object(sys, "argv", ["moban"]):
+-                main()
++                with pytest.raises(SystemExit):
++                    main()
+ 
+ 
+ class TestExitCodes:
+-    @raises(SystemExit)
+     @patch("moban.main.handle_moban_file")
+     @patch("moban.main.find_default_moban_file")
+     def test_has_many_files_with_exit_code(
+@@ -170,9 +171,9 @@ def test_has_many_files_with_exit_code(
+         from moban.main import main
+ 
+         with patch.object(sys, "argv", ["moban", "--exit-code"]):
+-            main()
++            with pytest.raises(SystemExit):
++                main()
+ 
+-    @raises(SystemExit)
+     @patch("moban.main.handle_command_line")
+     @patch("moban.main.find_default_moban_file")
+     def test_handle_single_change_with_exit_code(
+@@ -183,7 +184,8 @@ def test_handle_single_change_with_exit_code(
+         from moban.main import main
+ 
+         with patch.object(sys, "argv", ["moban", "--exit-code"]):
+-            main()
++            with pytest.raises(SystemExit):
++                main()
+ 
+     @patch("moban.main.handle_moban_file")
+     @patch("moban.main.find_default_moban_file")
+@@ -206,7 +208,7 @@ def test_handle_single_change(self, fake_find_file, fake_command_line):
+             main()
+ 
+ 
+-class TestFinder:
++class TestFinder(unittest.TestCase):
+     def setUp(self):
+         self.patcher = patch("moban.externals.file_system.exists")
+         self.fake_file_existence = self.patcher.start()
+@@ -221,14 +223,14 @@ def test_moban_yml(self):
+         from moban.main import find_default_moban_file
+ 
+         actual = find_default_moban_file()
+-        eq_(".moban.yml", actual)
++        assert ".moban.yml" == actual
+ 
+     def test_moban_yaml(self):
+         self.fake_file_existence.side_effect = [False, True]
+         from moban.main import find_default_moban_file
+ 
+         actual = find_default_moban_file()
+-        eq_(".moban.yaml", actual)
++        assert ".moban.yaml" == actual
+ 
+     def test_no_moban_file(self):
+         self.fake_file_existence.side_effect = [False, False]
+diff --git a/tests/test_regression.py b/tests/test_regression.py
+index e1b337fd..ac635ab1 100644
+--- a/tests/test_regression.py
++++ b/tests/test_regression.py
+@@ -1,15 +1,16 @@
+ import os
+ import sys
+ import filecmp
++import unittest
+ 
+-import fs.path
++import fs
+ from mock import patch
+ 
+ from moban.main import main
+ from .utils import Docs
+ 
+ 
+-class TestRegression(Docs):
++class TestRegression(Docs, unittest.TestCase):
+     def setUp(self):
+         super(TestRegression, self).setUp()
+         self.base_folder = fs.path.join("tests", "regression_tests")
+diff --git a/tests/test_reporter.py b/tests/test_reporter.py
+index 386c0512..e0e020a5 100644
+--- a/tests/test_reporter.py
++++ b/tests/test_reporter.py
+@@ -1,7 +1,8 @@
+ import sys
++import unittest
+ 
++import pytest
+ from mock import patch
+-from nose.tools import eq_
+ 
+ from moban.externals import reporter
+ 
+@@ -12,7 +13,7 @@
+     from io import StringIO
+ 
+ 
+-class TestReporter:
++class TestReporter(unittest.TestCase):
+     def setUp(self):
+         reporter.GLOBAL["PRINT"] = True
+ 
+@@ -21,63 +22,63 @@ def test_partial_run(self):
+         fake_stdout = patcher.start()
+         reporter.report_partial_run("Actioned", 1, 20)
+         patcher.stop()
+-        eq_(fake_stdout.getvalue(), "Actioned 1 out of 20 files.\n")
++        assert fake_stdout.getvalue() == "Actioned 1 out of 20 files.\n"
+ 
+     def test_full_run(self):
+         patcher = patch("sys.stdout", new_callable=StringIO)
+         fake_stdout = patcher.start()
+         reporter.report_full_run("Worked on", 20)
+         patcher.stop()
+-        eq_(fake_stdout.getvalue(), "Worked on 20 files.\n")
++        assert fake_stdout.getvalue() == "Worked on 20 files.\n"
+ 
+     def test_error_message(self):
+         patcher = patch("sys.stderr", new_callable=StringIO)
+         fake_stdout = patcher.start()
+         reporter.report_error_message("something wrong")
+         patcher.stop()
+-        eq_(fake_stdout.getvalue(), "Error: something wrong\n")
++        assert fake_stdout.getvalue() == "Error: something wrong\n"
+ 
+     def test_info_message(self):
+         patcher = patch("sys.stdout", new_callable=StringIO)
+         fake_stdout = patcher.start()
+         reporter.report_info_message("for your information")
+         patcher.stop()
+-        eq_(fake_stdout.getvalue(), "Info: for your information\n")
++        assert fake_stdout.getvalue() == "Info: for your information\n"
+ 
+     def test_warning_message(self):
+         patcher = patch("sys.stderr", new_callable=StringIO)
+         fake_stdout = patcher.start()
+         reporter.report_warning_message("Maybe you wanna know")
+         patcher.stop()
+-        eq_(fake_stdout.getvalue(), "Warning: Maybe you wanna know\n")
++        assert fake_stdout.getvalue() == "Warning: Maybe you wanna know\n"
+ 
+     def test_report_templating(self):
+         patcher = patch("sys.stdout", new_callable=StringIO)
+         fake_stdout = patcher.start()
+         reporter.report_templating("Transforming", "a", "b")
+         patcher.stop()
+-        eq_(fake_stdout.getvalue(), "Transforming a to b\n")
++        assert fake_stdout.getvalue() == "Transforming a to b\n"
+ 
+     def test_no_action(self):
+         patcher = patch("sys.stdout", new_callable=StringIO)
+         fake_stdout = patcher.start()
+         reporter.report_no_action()
+         patcher.stop()
+-        eq_(fake_stdout.getvalue(), "No actions performed\n")
++        assert fake_stdout.getvalue() == "No actions performed\n"
+ 
+     def test_format_single(self):
+         message = "1 files"
+         ret = reporter._format_single(message, 1)
+-        eq_(ret, "1 file")
++        assert ret == "1 file"
+ 
+     def test_report_template_not_in_moban_file(self):
+         patcher = patch("sys.stderr", new_callable=StringIO)
+         fake_stdout = patcher.start()
+         reporter.report_template_not_in_moban_file("test.jj2")
+         patcher.stop()
+-        eq_(
+-            fake_stdout.getvalue(),
+-            "Warning: test.jj2 is not defined in your moban file!\n",
++        assert (
++            fake_stdout.getvalue()
++            == "Warning: test.jj2 is not defined in your moban file!\n"
+         )
+ 
+     def test_report_file_extension_not_needed(self):
+@@ -85,7 +86,7 @@ def test_report_file_extension_not_needed(self):
+         fake_stdout = patcher.start()
+         reporter.report_file_extension_not_needed()
+         patcher.stop()
+-        eq_(
+-            fake_stdout.getvalue(),
+-            "Info: File extension is not required for ad-hoc type\n",
++        assert (
++            fake_stdout.getvalue()
++            == "Info: File extension is not required for ad-hoc type\n"
+         )
+diff --git a/tests/test_store.py b/tests/test_store.py
+index 6fa8309f..3d2e9bcb 100644
+--- a/tests/test_store.py
++++ b/tests/test_store.py
+@@ -1,4 +1,4 @@
+-from nose.tools import eq_
++import pytest
+ 
+ from moban.core.definitions import TemplateTarget
+ from moban.core.mobanfile.store import Store
+@@ -9,4 +9,4 @@ def test_store():
+     output = "output"
+     target = TemplateTarget("template_file", "data_file", output)
+     store.add(target)
+-    eq_(target, store.look_up_by_output.get(output))
++    assert target == store.look_up_by_output.get(output)
+diff --git a/tests/utils.py b/tests/utils.py
+index 9f9983c4..320c5298 100644
+--- a/tests/utils.py
++++ b/tests/utils.py
+@@ -1,9 +1,11 @@
+ import os
+ import sys
++import unittest
+ from textwrap import dedent
+ 
++import fs
++import pytest
+ from mock import patch
+-from nose.tools import eq_
+ from fs.opener.parse import parse_fs_url
+ 
+ from moban.main import main
+@@ -13,12 +15,12 @@
+ def verify_content(file_name, expected):
+     with open(file_name, "r") as f:
+         content = f.read()
+-        eq_(content, expected)
++        assert content == expected
+ 
+ 
+ def verify_content_with_fs(file_name, expected):
+     content = file_system.read_unicode(file_name)
+-    eq_(content, expected)
++    assert content == expected
+ 
+ 
+ def run_moban(args, folder, criterias):
+@@ -39,7 +41,7 @@ def run_moban_with_fs(args, folder, criterias):
+     os.unlink(result.resource)  # delete the zip file
+ 
+ 
+-class Docs(object):
++class Docs(unittest.TestCase):
+     def setUp(self):
+         self.current = os.getcwd()
+         self.base_folder = "docs"
+@@ -50,11 +52,11 @@ def tearDown(self):
+         os.chdir(self.current)
+ 
+     def run_moban(self, moban_cli, working_directory, assertions):
+-        os.chdir(os.path.join(self.base_folder, working_directory))
++        os.chdir(fs.path.join(self.base_folder, working_directory))
+         run_moban(moban_cli, None, assertions)
+ 
+     def run_moban_with_fs(self, moban_cli, working_directory, assertions):
+-        os.chdir(os.path.join(self.base_folder, working_directory))
++        os.chdir(fs.path.join(self.base_folder, working_directory))
+         run_moban_with_fs(moban_cli, None, assertions)
+ 
+ 
+
