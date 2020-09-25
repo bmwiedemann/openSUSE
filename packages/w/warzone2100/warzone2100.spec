@@ -1,7 +1,7 @@
 #
 # spec file for package warzone2100
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           warzone2100
-Version:        3.2.3
+Version:        3.4.1
 Release:        0
 Summary:        Innovative 3D real-time strategy
-License:        GPL-2.0+ and CC-BY-SA-3.0 and CC0-1.0 and BSD-3-Clause and LGPL-2.1
+License:        GPL-2.0-or-later AND CC-BY-SA-3.0 AND CC0-1.0 AND BSD-3-Clause AND LGPL-2.1-only
 Group:          Amusements/Games/Strategy/Real Time
-Url:            http://wz2100.net/
-Source:         http://download.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
+URL:            http://wz2100.net/
+Source:         https://github.com/Warzone2100/warzone2100/releases/download/%{version}/warzone2100_src.tar.xz
 Source99:       %{name}.changes
-# PATCH-FIX-UPSTREAM https://github.com/Warzone2100/warzone2100/pull/89
-Patch2:         system-miniupnpc.patch
-# PATCH-FIX-UPSTREAM https://github.com/Warzone2100/warzone2100/pull/98
-Patch3:         reproducible.patch
+BuildRequires:  asciidoc
 BuildRequires:  asciidoc
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  cmake >= 3.5
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpng-devel
@@ -54,11 +53,14 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew) >= 1.5.2
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(quesoglc)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)
@@ -108,12 +110,10 @@ Pumpkin Studios and published in 1999, and was released as
 open source by them in 2004, for the community to continue 
 working on it.
 
-This package provides the binaries for Warzone 2100.
+This package provides the game data for Warzone 2100.
 
 %prep
-%setup -q
-%patch2 -p1
-%patch3 -p1
+%setup -q -n %{name}
 
 # constant timestamp for reproducible builds
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
@@ -122,20 +122,23 @@ TIME="\"$(date -d "${modified}" "+%%T")\""
 find .  -name '*.cpp' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 
 %build
-./autogen.sh
-%configure \
-  --docdir=%{_docdir}/%{name} \
-  --with-distributor="openSUSE Build Service" \
-  --with-icondir=%{_datadir}/pixmaps
+mkdir build && cd build
+# NOTE that cmake macro breaks linking.
+cmake .. \
+        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%cmake_install
 %find_lang %{name}
 %suse_update_desktop_file -i %{name}
 
 mkdir -p %{buildroot}%{_datadir}/appdata/
 mv %{buildroot}%{_datadir}/metainfo/warzone2100.appdata.xml %{buildroot}%{_datadir}/appdata/warzone2100.appdata.xml
+
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
+mv %{buildroot}%{_datadir}/icons/warzone2100.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/warzone2100.png 
 
 %post
 %desktop_database_post
@@ -145,12 +148,12 @@ mv %{buildroot}%{_datadir}/metainfo/warzone2100.appdata.xml %{buildroot}%{_datad
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
+%doc AUTHORS ChangeLog COPYING COPYING.NONGPL COPYING.README
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_datadir}/appdata/warzone2100.appdata.xml
-%{_datadir}/pixmaps/*
-%doc AUTHORS ChangeLog COPYING COPYING.NONGPL COPYING.README
-%doc %{_docdir}/%{name}
+%{_datadir}/icons/hicolor/*/apps/warzone2100.png
+%{_datadir}/doc/%{name}
 %{_mandir}/man6/%{name}.6.*
 %if 0%{?suse_version} == 1110
 %dir %{_datadir}/locale/la

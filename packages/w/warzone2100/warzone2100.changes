@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 29 15:58:51 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 3.4.1
+  + A "continue last save" option
+  + A quit to main-menu option after victory
+  + Quick save
+  + You can change most game settings now with the in-game pause menu
+  + New randomization of game options ability for skirmish/multiplayer games
+  + Support in-game notification popups
+  + keybindings for camera pan added
+  + Discord rich presence / join support
+  + Unit / kill count gui feature
+  + Saved games are now sorted by newest first
+- Remove patches included upstream
+  + reproducible.patch
+  + system-miniupnpc.patch
+
+-------------------------------------------------------------------
 Thu Apr  4 08:55:57 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to sort zip file list
