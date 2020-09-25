@@ -19,9 +19,10 @@
 %define so_major 1
 %define shlib %{name}-%{so_major}-0
 %define typelib typelib-1_0-Handy-%{so_major}_0
+#define with_glade 1
 
 Name:           libhandy
-Version:        0.90.0
+Version:        1.0.0
 Release:        0
 Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later
@@ -33,7 +34,9 @@ BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
+%if 0%{?with_glade}
 BuildRequires:  pkgconfig(gladeui-2.0)
+%endif
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.1
@@ -98,7 +101,7 @@ libhandy widgets in Glade.
 	-Dgtk_doc=true \
 	-Dtests=false \
 	-Dexamples=false \
-	-Dglade_catalog=enabled \
+	-Dglade_catalog=%{?with_glade:enabled}%{?!with_glade:disabled} \
 	%{nil}
 %meson_build
 
@@ -126,9 +129,11 @@ libhandy widgets in Glade.
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/*.typelib
 
+%if 0%{?with_glade}
 %files -n glade-catalog-libhandy
 %{_libdir}/glade/modules/*.so
 %{_datadir}/glade/catalogs/*.xml
+%endif
 
 %files lang -f %{name}.lang
 

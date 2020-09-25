@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://gitlab.gnome.org/GNOME/libhandy.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/0.90.0</param>
+    <param name="revision">refs/tags/1.0.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service mode="buildtime" name="tar" />
