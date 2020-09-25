@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:27:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %meson_build before calling %meson_install. The RPM macros
+  changed in meson 0.55.
+
+-------------------------------------------------------------------
 Thu Aug  6 15:43:07 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
 
 - Initial aml package

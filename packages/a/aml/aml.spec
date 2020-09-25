@@ -22,7 +22,7 @@ Release:        0
 Summary:        Another Main Loop
 License:        ISC
 URL:            https://github.com/any1/aml
-Source0:        https://github.com/any1/aml/archive/v%{version}.tar.gz
+Source0:        https://github.com/any1/aml/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 
@@ -50,6 +50,8 @@ A portable, uitlitarian and simple event loop library.
 %build
 %meson
 
+%meson_build
+
 %install
 %meson_install
 
@@ -67,4 +69,5 @@ A portable, uitlitarian and simple event loop library.
 %files -n libaml0
 %{_libdir}/libaml.so.0
 %{_libdir}/libaml.so.0.0.0
+
 %changelog
