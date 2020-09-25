@@ -24,4 +24,12 @@
 - hashcat v5.1.0:</comment>
     <requestid>685166</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a1da02341fce94516e1c703a89a7f892</srcmd5>
+    <version>6.1.1</version>
+    <time>1601044286</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>834619</requestid>
+  </revision>
 </revisionlist>
