@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 22 11:42:03 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.8.0
+  * BREAKING: Fix cbor_tag_item not increasing the reference count
+    on the tagged item reference it returns
+  * BREAKING: CBOR_DECODER_EBUFFER removed from cbor_decoder_status
+    + cbor_stream_decode will set CBOR_DECODER_NEDATA instead if the
+      input buffer is empty
+  * Fix cbor_stream_decode to set cbor_decoder_result.required to
+    the minimum number of input bytes necessary to receive the next
+    callback (as long as at least one byte was passed)
+  * Fixed several minor manpage issue
+
+-------------------------------------------------------------------
 Mon May 25 08:15:42 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 0.7.0

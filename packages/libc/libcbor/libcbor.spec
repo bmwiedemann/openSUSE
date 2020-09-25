@@ -17,13 +17,13 @@
 
 
 %define socurrent  0
-%define sorevision 7
+%define sorevision 8
 %define soage      0
 
 %define lname   libcbor%{socurrent}_%{sorevision}
 
 Name:           libcbor
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Library for parsing Concise Binary Object Representation (CBOR)
 License:        MIT
