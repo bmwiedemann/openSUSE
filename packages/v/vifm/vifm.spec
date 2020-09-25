@@ -1,7 +1,7 @@
 #
 # spec file for package vifm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           vifm
-Version:        0.10.1
+Version:        0.11
 Release:        0
 Summary:        Ncurses based file manager with vi like keybindings
 License:        GPL-2.0-or-later
@@ -55,7 +55,7 @@ sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' src/vifm-convert-dircolors
 	--with-libmagic \
 	--without-gtk \
 	--disable-developer
-make %{?_smp_mflags}
+%make_build
 gzip -9c ChangeLog > ChangeLog.gz
 
 %install
@@ -88,5 +88,7 @@ rm -rf %{buildroot}%{_datadir}/vifm/vim-doc/doc/vifm-app.txt
 %dir %{_datadir}/zsh/
 %dir %{_datadir}/zsh/site-functions/
 %{_datadir}/zsh/site-functions/_vifm
+%{_sysconfdir}/vifm/
+%{_sysconfdir}/vifm/colors/
 
 %changelog

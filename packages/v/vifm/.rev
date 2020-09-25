@@ -145,4 +145,21 @@ for menus;
     they were suggested.</comment>
     <requestid>719773</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d11c30e535db14b5d59fb86b01ba3430</srcmd5>
+    <version>0.11</version>
+    <time>1601044564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11:
+  * Added persistent tabs
+  * Added sessions
+  * New format of vifminfo file (old version is imported on first run)
+  * Smarter merging of histories between runs that avoids dropping of new entries
+  * Version of default color scheme for 256-color terminals
+  * Customizable tab labels
+  * Keeping ratio of pane sizes constant on resizes, restarts and tab switching
+  * Various performance improvements
+  * See change log for the full list of changes and by whom they were suggested.</comment>
+    <requestid>837210</requestid>
+  </revision>
 </revisionlist>

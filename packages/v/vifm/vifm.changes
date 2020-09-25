@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 24 17:44:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11:
+  * Added persistent tabs
+  * Added sessions
+  * New format of vifminfo file (old version is imported on first run)
+  * Smarter merging of histories between runs that avoids dropping of new entries
+  * Version of default color scheme for 256-color terminals
+  * Customizable tab labels
+  * Keeping ratio of pane sizes constant on resizes, restarts and tab switching
+  * Various performance improvements
+  * See change log for the full list of changes and by whom they were suggested.
+
+-------------------------------------------------------------------
 Tue Jul 30 07:32:06 UTC 2019 - mvetter@suse.com
 
 - Update to 0.10.1:
