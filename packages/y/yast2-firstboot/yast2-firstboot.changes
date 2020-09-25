@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 10:09:33 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- add test field to language & keyboard module (bsc#1174856)
+- 4.3.5
+
+-------------------------------------------------------------------
 Mon Aug 10 17:15:51 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(firstboot) into the spec file
