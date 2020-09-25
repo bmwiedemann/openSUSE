@@ -59,6 +59,9 @@ fast integer and polynomial arithmetic and linear algebra.
 Summary:        Development files for flint
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       gmp-devel
+Requires:       mpfr-devel
+Requires:       ntl-devel
 
 %description devel
 FLINT (Fast Library for Number Theory) is a C library in support of

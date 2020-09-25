@@ -72,4 +72,12 @@
     <comment>- Update to version 2.6.3 [boo#1169283]</comment>
     <requestid>835373</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2e21d1429a8b9339d796d0e67e463a72</srcmd5>
+    <version>2.6.3</version>
+    <time>1601044383</time>
+    <user>dimstar_suse</user>
+    <comment>- Add header file dependencies to flint-devel</comment>
+    <requestid>836085</requestid>
+  </revision>
 </revisionlist>
