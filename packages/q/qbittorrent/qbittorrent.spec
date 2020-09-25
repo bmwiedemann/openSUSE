@@ -26,6 +26,8 @@ URL:            https://qbittorrent.org
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-OPENSUSE qbittorrent-libtorrent-legacy.patch
+Patch0:         qbittorrent-libtorrent-legacy.patch
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -40,7 +42,11 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libtorrent-rasterbar-1) >= 1.1.13
+%else
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.1.13
+%endif
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 # For search engines.
@@ -63,7 +69,8 @@ uses libtorrent-rasterbar. This subpackage contains a command-line
 version.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
 
 %build
 for ui in nox gui; do

@@ -1,0 +1,21 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2020-09-11 14:43:25 +0200
+Subject: Use legacy libtorrent-rasterbar
+
+qBittorrent has not yet been ported to the libtorrent v2 API
+
+---
+
+Index: qbittorrent-4.2.5/cmake/Modules/FindLibtorrentRasterbar.cmake
+===================================================================
+--- qbittorrent-4.2.5.orig/cmake/Modules/FindLibtorrentRasterbar.cmake
++++ qbittorrent-4.2.5/cmake/Modules/FindLibtorrentRasterbar.cmake
+@@ -20,7 +20,7 @@ macro(_detect_boost_components _outCompo
+ endmacro()
+ 
+ if(PKG_CONFIG_FOUND)
+-    pkg_check_modules(PC_LIBTORRENT_RASTERBAR QUIET libtorrent-rasterbar)
++    pkg_check_modules(PC_LIBTORRENT_RASTERBAR QUIET libtorrent-rasterbar-1)
+ endif()
+ 
+ if(LibtorrentRasterbar_USE_STATIC_LIBS)

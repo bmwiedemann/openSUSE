@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 12:45:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use legacy libtorrent-rasterbar on Tumbleweed
+- Add qbittorrent-libtorrent-legacy.patch
+
+-------------------------------------------------------------------
 Sat Apr 25 05:32:37 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update tov ersion 4.2.5
