@@ -1,3 +1,15 @@
+diff --git a/data/gnome-shell-theme.gresource.xml b/data/gnome-shell-theme.gresource.xml
+index 6c1b9cd..e8e23a3 100644
+--- a/data/gnome-shell-theme.gresource.xml
++++ b/data/gnome-shell-theme.gresource.xml
+@@ -12,6 +12,7 @@
+     <file alias="icons/scalable/status/message-indicator-symbolic.svg">message-indicator-symbolic.svg</file>
+     <file>no-events.svg</file>
+     <file>no-notifications.svg</file>
++    <file>noise-texture.png</file>
+     <file>pad-osd.css</file>
+     <file alias="icons/scalable/status/eye-open-negative-filled-symbolic.svg">eye-open-negative-filled-symbolic.svg</file>
+     <file alias="icons/scalable/status/eye-not-looking-symbolic.svg">eye-not-looking-symbolic.svg</file>
 diff --git a/data/theme/gnome-shell-sass/widgets/_screen-shield.scss b/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
 index 00c549a..57e9ab6 100644
 --- a/data/theme/gnome-shell-sass/widgets/_screen-shield.scss

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:33:45 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Update gnome-shell-fate324570-Make-GDM-background-image-configurable.patch: 
+  Bring noise-texture.png back which will be used as the default
+  value of org.gnome.desktop.background.lockdialog picture-uri
+  (boo#1176418).
+
+-------------------------------------------------------------------
 Thu Sep 10 01:58:30 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Move branding image file to branding-SLE package
