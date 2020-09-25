@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-auth
-Version:        1.21.1
+Version:        1.21.2
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0

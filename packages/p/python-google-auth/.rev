@@ -148,4 +148,13 @@
     <comment></comment>
     <requestid>833484</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cc91e85ae0c09d30686a7c1e1e611efc</srcmd5>
+    <version>1.21.2</version>
+    <time>1601043697</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21.2:
+  * migrate signBlob to iamcredentials.googleapis.com</comment>
+    <requestid>836319</requestid>
+  </revision>
 </revisionlist>
