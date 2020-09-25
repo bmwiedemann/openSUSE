@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sun Aug 30 01:16:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.18.1
+  * Faster and more accurate real matrix multiplication using
+    block decomposition, scaling, and multiplying via FLINT
+    integer matrices in combination with safe use of doubles for
+    radius matrix multiplications.
+  * New C functions for Riemann zeta function.
+  * For more, see the history.rst file in the arb-devel subpackage.
+
+-------------------------------------------------------------------
+Mon Apr 30 14:27:46 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.13.0
+  * Fixed rounding direction in arb_get_abs_lbound_arf() which in
+    some cases could result in an invalid lower bound being
+    returned.
+
+-------------------------------------------------------------------
+Sat Feb 10 23:36:51 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.12.0
+
+-------------------------------------------------------------------
+Wed Feb  5 01:40:06 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream snapshot 1.0.0+git7
+
+-------------------------------------------------------------------
+Sat May 18 01:16:11 CEST 2013 - jengelh@inai.de
+
+- Initial package (version 0.5+git28) for build.opensuse.org
