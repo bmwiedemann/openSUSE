@@ -75,7 +75,7 @@ BuildRequires:  python-devel
 BuildRequires:  pkgconfig(gio-2.0) >= 2.26
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(javascriptcoregtk-4.0)
-%if 0%{?is_opensuse}
+%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
 BuildRequires:  libKF5ConfigCore5
 %endif
 %if %{build_mozjs}
@@ -313,7 +313,7 @@ cmake \
   -DWITH_PYTHON2=OFF \
   -DWITH_PYTHON3=OFF \
 %endif
-%if %build_core_not_modules || ! 0%{?is_opensuse}
+%if %build_core_not_modules || (! 0%{?is_opensuse} && 0%{?sle_version} <= 150200)
   -DWITH_KDE=OFF \
 %endif
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -389,7 +389,7 @@ make test
 
 %else
 %if ! 0%{?windows}
-%if 0%{?is_opensuse}
+%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
 %files -n libproxy1-config-kde
 %defattr(-, root, root)
 %{_libdir}/libproxy-%{version}/modules/config_kde.so

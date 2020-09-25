@@ -634,4 +634,13 @@
     <comment></comment>
     <requestid>798290</requestid>
   </revision>
+  <revision rev="77" vrev="8">
+    <srcmd5>0fd281c3b117dabbe4a79a4d001ee8c0</srcmd5>
+    <version>0.4.15</version>
+    <time>1601043891</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with KDE on Tumbleweed, Leap and SLE releases greater than
+  SLE-15-SP2 (jsc#SLE-12256). (forwarded request 834172 from yfjiang)</comment>
+    <requestid>836032</requestid>
+  </revision>
 </revisionlist>
