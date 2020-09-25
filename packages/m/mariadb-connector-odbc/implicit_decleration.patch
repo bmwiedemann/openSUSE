@@ -1,0 +1,36 @@
+Index: mariadb-connector-odbc-3.1.9-ga-src/ma_common.c
+===================================================================
+--- mariadb-connector-odbc-3.1.9-ga-src.orig/ma_common.c
++++ mariadb-connector-odbc-3.1.9-ga-src/ma_common.c
+@@ -21,6 +21,7 @@
+  * Moved to avoid redundant dependencies */
+ 
+ #include <ma_odbc.h>
++#include <wctype.h>
+ 
+ static unsigned int ValidChar(const char *start, const char *end)
+ {
+Index: mariadb-connector-odbc-3.1.9-ga-src/ma_dsn.c
+===================================================================
+--- mariadb-connector-odbc-3.1.9-ga-src.orig/ma_dsn.c
++++ mariadb-connector-odbc-3.1.9-ga-src/ma_dsn.c
+@@ -16,6 +16,7 @@
+    or write to the Free Software Foundation, Inc., 
+    51 Franklin St., Fifth Floor, Boston, MA 02110, USA
+ *************************************************************************************/
++#define _GNU_SOURCE
+ #include <ma_odbc.h>
+ 
+ 
+Index: mariadb-connector-odbc-3.1.9-ga-src/ma_debug.c
+===================================================================
+--- mariadb-connector-odbc-3.1.9-ga-src.orig/ma_debug.c
++++ mariadb-connector-odbc-3.1.9-ga-src/ma_debug.c
+@@ -17,6 +17,7 @@
+    51 Franklin St., Fifth Floor, Boston, MA 02110, USA
+ *************************************************************************************/
+ #include <ma_odbc.h>
++#include <wchar.h>
+ 
+ #ifdef MAODBC_DEBUG
+ extern char LogFile[];

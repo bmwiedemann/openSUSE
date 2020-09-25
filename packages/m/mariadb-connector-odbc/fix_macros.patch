@@ -1,0 +1,77 @@
+Fixing macro issues,
+
+/home/abuild/rpmbuild/BUILD/mariadb-connector-odbc-3.1.9-ga-src/ma_helper.h:97:3: warning: macro expands to multiple statements [-Wmultistatement-macros]
+   97 |   free((a));\
+      |   ^~~~
+/home/abuild/rpmbuild/BUILD/mariadb-connector-odbc-3.1.9-ga-src/ma_dsn.c:162:5: note: in expansion of macro 'MADB_FREE'
+  162 |     MADB_FREE(Dsn);
+      |     ^~~~~~~~~
+/home/abuild/rpmbuild/BUILD/mariadb-connector-odbc-3.1.9-ga-src/ma_dsn.c:161:3: note: some parts of macro expansion are not guarded by this 'if' clause
+  161 |   if (Dsn->FreeMe)
+      |   ^~
+
+
+/home/abuild/rpmbuild/BUILD/mariadb-connector-odbc-3.1.9-ga-src/ma_helper.h:97:3: warning: macro expands to multiple statements [-Wmultistatement-macros]
+   97 |   free((a));\
+      |   ^~~~
+/home/abuild/rpmbuild/BUILD/mariadb-connector-odbc-3.1.9-ga-src/ma_string.c:387:5: note: in expansion of macro 'MADB_FREE'
+  387 |     MADB_FREE(StmtStr);
+      |     ^~~~~~~~~
+/home/abuild/rpmbuild/BUILD/mariadb-connector-odbc-3.1.9-ga-src/ma_string.c:386:3: note: some parts of macro expansion are not guarded by this 'if' clause
+  386 |   if (StmtStr)
+      |   ^~
+
+
+
+/home/abuild/rpmbuild/BUILD/mariadb-connector-odbc-3.1.9-ga-src/ma_error.h:163:3: warning: macro expands to multiple statements [-Wmultistatement-macros]
+  163 |   strcpy_s((a)->SqlState, SQL_SQLSTATE_SIZE+1, MADB_ErrorList[MADB_ERR_00000].SqlState); \
+      |   ^~~~~~~~
+/home/abuild/rpmbuild/BUILD/mariadb-connector-odbc-3.1.9-ga-src/ma_platform_posix.c:256:5: note: in expansion of macro 'MADB_CLEAR_ERROR'
+  256 |     MADB_CLEAR_ERROR(Error);
+      |     ^~~~~~~~~~~~~~~~
+/home/abuild/rpmbuild/BUILD/mariadb-connector-odbc-3.1.9-ga-src/ma_platform_posix.c:255:3: note: some parts of macro expansion are not guarded by this 'if' clause
+  255 |   if (Error)
+      |   ^~
+
+
+
+
+
+Index: mariadb-connector-odbc-3.1.9-ga-src/ma_error.h
+===================================================================
+--- mariadb-connector-odbc-3.1.9-ga-src.orig/ma_error.h
++++ mariadb-connector-odbc-3.1.9-ga-src/ma_error.h
+@@ -159,12 +159,13 @@ SQLRETURN MADB_GetDiagField(SQLSMALLINT
+                             DiagInfoPtr, SQLSMALLINT BufferLength,
+                             SQLSMALLINT *StringLengthPtr, my_bool isWChar);
+ 
+-#define MADB_CLEAR_ERROR(a) \
++#define MADB_CLEAR_ERROR(a) do { \
+   strcpy_s((a)->SqlState, SQL_SQLSTATE_SIZE+1, MADB_ErrorList[MADB_ERR_00000].SqlState); \
+   (a)->SqlErrorMsg[(a)->PrefixLen]= 0; \
+   (a)->NativeError= 0;\
+   (a)->ReturnValue= SQL_SUCCESS;\
+-  (a)->ErrorNum= 0;
++  (a)->ErrorNum= 0; \
++} while (0)
+ 
+ #define MADB_CLEAR_HANDLE_ERROR(handle_type, handle) \
+   switch (handle_type) { \
+Index: mariadb-connector-odbc-3.1.9-ga-src/ma_helper.h
+===================================================================
+--- mariadb-connector-odbc-3.1.9-ga-src.orig/ma_helper.h
++++ mariadb-connector-odbc-3.1.9-ga-src/ma_helper.h
+@@ -93,9 +93,11 @@ extern my_bool DummyError;
+ 
+ #define BUFFER_CHAR_LEN(blen,wchar) (wchar) ? (blen) / sizeof(SQLWCHAR) : (blen)
+ 
+-#define MADB_FREE(a) \
++#define MADB_FREE(a) do { \
+   free((a));\
+-  (a)= NULL;
++  (a)= NULL; \
++} while(0)
++
+ #define MADB_ALLOC(a) malloc((a))
+ #define MADB_CALLOC(a) calloc((a) > 0 ? (a) : 1, sizeof(char))
+ #define MADB_REALLOC(a,b) realloc((a),(b))

@@ -8,23 +8,28 @@ changes in available options between ODBC driver versions.
 The sample DSN config file is manually maintained based on
 these options.
 
-Index: mariadb-connector-odbc-3.1.6-ga-src/ma_dsn.c
+Index: mariadb-connector-odbc-3.1.9-ga-src/ma_dsn.c
 ===================================================================
---- mariadb-connector-odbc-3.1.6-ga-src.orig/ma_dsn.c
-+++ mariadb-connector-odbc-3.1.6-ga-src/ma_dsn.c
-@@ -33,53 +33,53 @@
+--- mariadb-connector-odbc-3.1.9-ga-src.orig/ma_dsn.c
++++ mariadb-connector-odbc-3.1.9-ga-src/ma_dsn.c
+@@ -33,54 +33,54 @@
  
  MADB_DsnKey DsnKeys[]=
  {
 -  {"DSN",            offsetof(MADB_Dsn, DSNName),           DSN_TYPE_STRING, 0, 0}, /* 0 */
 -  {"DESCRIPTION",    offsetof(MADB_Dsn, Description),       DSN_TYPE_STRING, 0, 0},
 -  {"DRIVER",         offsetof(MADB_Dsn, Driver),            DSN_TYPE_STRING, 0, 0},
--  /* OPTIONS should go above all DSN_TYPE_OPTION. They are not saved in DSN separately, and then DSN is read, corresponding
--     properties are filled from OPTIONS. Also putting its alias here - it should not appear on Windows(unless somebody edits
--     registry manually), but on *nix we can expect everything. Array index used in some places to decide if the key is OPTIONS */
++    {"DSN",            offsetof(MADB_Dsn, DSNName),           DSN_TYPE_STRING, 0, 0}, /* 0 */
++    {"DESCRIPTION",    offsetof(MADB_Dsn, Description),       DSN_TYPE_STRING, 0, 0},
++    {"DRIVER",         offsetof(MADB_Dsn, Driver),            DSN_TYPE_STRING, 0, 0},
+   /* OPTIONS should go above all DSN_TYPE_OPTION. They are not saved in DSN separately, and then DSN is read, corresponding
+      properties are filled from OPTIONS. Also putting its alias here - it should not appear on Windows(unless somebody edits
+      registry manually), but on *nix we can expect everything. Array index used in some places to decide if the key is OPTIONS */
 -  {"OPTIONS",        offsetof(MADB_Dsn, Options),           DSN_TYPE_INT,    0, 0}, /* DSNKEY_OPTIONS_INDEX */
 -  {"OPTION",         DSNKEY_OPTIONS_INDEX,                  DSN_TYPE_INT,    0, 1}, /* DSNKEY_OPTION_INDEX  */
--
++    {"OPTIONS",        offsetof(MADB_Dsn, Options),           DSN_TYPE_INT,    0, 0}, /* DSNKEY_OPTIONS_INDEX */
++    {"OPTION",         DSNKEY_OPTIONS_INDEX,                  DSN_TYPE_INT,    0, 1}, /* DSNKEY_OPTION_INDEX  */
+ 
 -  {"NamedPipe",      offsetof(MADB_Dsn, IsNamedPipe),       DSN_TYPE_OPTION, MADB_OPT_FLAG_NAMED_PIPE, 0}, /* MADB_DSNKEY_NAMEDPIPE_INDEX */
 -  {"TCPIP",          offsetof(MADB_Dsn, IsTcpIp),           DSN_TYPE_BOOL,   0, 0}, /* DSNKEY_TCPIP_INDEX */
 -  {"SERVER",         offsetof(MADB_Dsn, ServerName),        DSN_TYPE_STRING, 0, 0}, /* DSNKEY_SERVER_INDEX     */
@@ -55,16 +60,15 @@ Index: mariadb-connector-odbc-3.1.6-ga-src/ma_dsn.c
 -  {"USE_MYCNF",      offsetof(MADB_Dsn, ReadMycnf),         DSN_TYPE_OPTION, MADB_OPT_FLAG_USE_CNF, 0},
 -  {"TLSVERSION",     offsetof(MADB_Dsn, TlsVersion),        DSN_TYPE_CBOXGROUP, 0, 0},
 -  {"FORCETLS",       offsetof(MADB_Dsn, ForceTls),          DSN_TYPE_BOOL,   0, 0},
--  {"SERVERKEY",      offsetof(MADB_Dsn, ServerKey),         DSN_TYPE_STRING,   0, 0},
-+    {"DSN",            offsetof(MADB_Dsn, DSNName),           DSN_TYPE_STRING, 0, 0}, /* 0 */
-+    {"DESCRIPTION",    offsetof(MADB_Dsn, Description),       DSN_TYPE_STRING, 0, 0},
-+    {"DRIVER",         offsetof(MADB_Dsn, Driver),            DSN_TYPE_STRING, 0, 0},
-+    /* OPTIONS should go above all DSN_TYPE_OPTION. They are not saved in DSN separately, and then DSN is read, corresponding
-+       properties are filled from OPTIONS. Also putting its alias here - it should not appear on Windows(unless somebody edits
-+       registry manually), but on *nix we can expect everything. Array index used in some places to decide if the key is OPTIONS */
-+    {"OPTIONS",        offsetof(MADB_Dsn, Options),           DSN_TYPE_INT,    0, 0}, /* DSNKEY_OPTIONS_INDEX */
-+    {"OPTION",         DSNKEY_OPTIONS_INDEX,                  DSN_TYPE_INT,    0, 1}, /* DSNKEY_OPTION_INDEX  */
-+  
+-  {"SERVERKEY",      offsetof(MADB_Dsn, ServerKey),         DSN_TYPE_STRING, 0, 0},
+-  {"TLSKEYPWD",      offsetof(MADB_Dsn, TlsKeyPwd),         DSN_TYPE_STRING, 0, 0},
+-  /* Aliases. Here offset is index of aliased key */
+-  {"SERVERNAME",     DSNKEY_SERVER_INDEX,                   DSN_TYPE_STRING, 0, 1},
+-  {"USER",           DSNKEY_UID_INDEX,                      DSN_TYPE_STRING, 0, 1},
+-  {"PASSWORD",       DSNKEY_PWD_INDEX,                      DSN_TYPE_STRING, 0, 1},
+-  {"DB",             DSNKEY_DATABASE_INDEX,                 DSN_TYPE_COMBO,  0, 1},
+-  {"SSLFP",          DSNKEY_FP_INDEX,                       DSN_TYPE_STRING, 0, 1},
+-  {"SSLFPLIST",      DSNKEY_FPLIST_INDEX,                   DSN_TYPE_STRING, 0, 1},
 +    {"NamedPipe",      offsetof(MADB_Dsn, IsNamedPipe),       DSN_TYPE_OPTION, MADB_OPT_FLAG_NAMED_PIPE, 0}, /* MADB_DSNKEY_NAMEDPIPE_INDEX */
 +    {"TCPIP",          offsetof(MADB_Dsn, IsTcpIp),           DSN_TYPE_BOOL,   0, 0}, /* DSNKEY_TCPIP_INDEX */
 +    {"SERVER",         offsetof(MADB_Dsn, ServerName),        DSN_TYPE_STRING, 0, 0}, /* DSNKEY_SERVER_INDEX     */
@@ -86,8 +90,8 @@ Index: mariadb-connector-odbc-3.1.6-ga-src/ma_dsn.c
 +    {"SSLCAPATH",      offsetof(MADB_Dsn, SslCaPath),         DSN_TYPE_STRING, 0, 0},
 +    {"SSLCIPHER",      offsetof(MADB_Dsn, SslCipher),         DSN_TYPE_STRING, 0, 0},
 +    {"SSLVERIFY",      offsetof(MADB_Dsn, SslVerify),         DSN_TYPE_BOOL,   0, 0},
-+   {"TLSPEERFP",      offsetof(MADB_Dsn, TlsPeerFp),         DSN_TYPE_STRING, 0, 0},
-+   {"TLSPEERFPLIST",  offsetof(MADB_Dsn, TlsPeerFpList),     DSN_TYPE_STRING, 0, 0},
++    {"TLSPEERFP",      offsetof(MADB_Dsn, TlsPeerFp),         DSN_TYPE_STRING, 0, 0},
++    {"TLSPEERFPLIST",  offsetof(MADB_Dsn, TlsPeerFpList),     DSN_TYPE_STRING, 0, 0},
 +    {"SSLCRL",         offsetof(MADB_Dsn, SslCrl),            DSN_TYPE_STRING, 0, 0},
 +    {"SSLCRLPATH",     offsetof(MADB_Dsn, SslCrlPath),        DSN_TYPE_STRING, 0, 0},
 +    {"SOCKET",         offsetof(MADB_Dsn, Socket),            DSN_TYPE_STRING, 0, 0},
@@ -95,14 +99,9 @@ Index: mariadb-connector-odbc-3.1.6-ga-src/ma_dsn.c
 +    {"USE_MYCNF",      offsetof(MADB_Dsn, ReadMycnf),         DSN_TYPE_OPTION, MADB_OPT_FLAG_USE_CNF, 0},
 +    {"TLSVERSION",     offsetof(MADB_Dsn, TlsVersion),        DSN_TYPE_CBOXGROUP, 0, 0},
 +    {"FORCETLS",       offsetof(MADB_Dsn, ForceTls),          DSN_TYPE_BOOL,   0, 0},
-+   {"SERVERKEY",      offsetof(MADB_Dsn, ServerKey),         DSN_TYPE_STRING,   0, 0},
-   /* Aliases. Here offset is index of aliased key */
--  {"SERVERNAME",     DSNKEY_SERVER_INDEX,                   DSN_TYPE_STRING, 0, 1},
--  {"USER",           DSNKEY_UID_INDEX,                      DSN_TYPE_STRING, 0, 1},
--  {"PASSWORD",       DSNKEY_PWD_INDEX,                      DSN_TYPE_STRING, 0, 1},
--  {"DB",             DSNKEY_DATABASE_INDEX,                 DSN_TYPE_COMBO,  0, 1},
--  {"SSLFP",          DSNKEY_FP_INDEX,                       DSN_TYPE_STRING, 0, 1},
--  {"SSLFPLIST",      DSNKEY_FPLIST_INDEX,                   DSN_TYPE_STRING, 0, 1},
++    {"SERVERKEY",      offsetof(MADB_Dsn, ServerKey),         DSN_TYPE_STRING, 0, 0},
++    {"TLSKEYPWD",      offsetof(MADB_Dsn, TlsKeyPwd),         DSN_TYPE_STRING, 0, 0},
++    /* Aliases. Here offset is index of aliased key */
 +    {"SERVERNAME",     DSNKEY_SERVER_INDEX,                   DSN_TYPE_STRING, 0, 1},
 +    {"USER",           DSNKEY_UID_INDEX,                      DSN_TYPE_STRING, 0, 1},
 +    {"PASSWORD",       DSNKEY_PWD_INDEX,                      DSN_TYPE_STRING, 0, 1},

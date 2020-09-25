@@ -115,4 +115,25 @@
   * ODBC-274 - Support INSERT/REPLACE ... RETURNING (requires MariaDB 10.5)</comment>
     <requestid>793816</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9eb5923136cf31cbe1e167596f32cb5d</srcmd5>
+    <version>3.1.9</version>
+    <time>1601044266</time>
+    <user>dimstar_suse</user>
+    <comment>** LOCATION CHANGE ** - the ODBC driver location has been changed to
+/usr/lib{,64}/mariadb/libmaodbc.so  Adjust your paths accordingly.
+- New upstream version 3.1.9. Fixes since 3.1.7 include,
+  * ODBC-214 - Mediumint(INT24) is always empty
+  * ODBC-284 - properly handle curly bracket escape in connection string
+  * ODBC-283 - Add support for passphrase protected private keys (TlsKeyPwd=)
+  * ODBC-280 - fixes multi-threaded issue when multiple connection are
+    established simultaneously from different threads.
+  * ODBC-279 - SQL_C_TIME binding type not working
+- missing_libs.patch: dropped
+- added patches forwarded upstream: fix_macros.patch, implicit_decleration.patch, wrong_types.patch
+- nosoname.patch: refreshed
+- DSN_names.patch: refreshed. Added new option,
+  TlsKeyPwd =</comment>
+    <requestid>833852</requestid>
+  </revision>
 </revisionlist>

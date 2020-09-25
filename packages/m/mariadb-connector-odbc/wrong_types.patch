@@ -1,0 +1,13 @@
+Index: mariadb-connector-odbc-3.1.9-ga-src/ma_error.c
+===================================================================
+--- mariadb-connector-odbc-3.1.9-ga-src.orig/ma_error.c
++++ mariadb-connector-odbc-3.1.9-ga-src/ma_error.c
+@@ -144,7 +144,7 @@ MADB_ERROR MADB_ErrorList[] =
+   { "S1000", "", "General error", SQL_ERROR},
+   { "S1107", "", "Row value out of range", SQL_ERROR},
+   { "S1C00", "", "Optional feature not implemented", SQL_ERROR},
+-  { 0,0,0, -1}
++  { "", "", "", -1}
+ };
+ /* }}} */
+ 

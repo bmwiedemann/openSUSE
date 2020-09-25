@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 11 17:35:40 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+** LOCATION CHANGE ** - the ODBC driver location has been changed to
+/usr/lib{,64}/mariadb/libmaodbc.so  Adjust your paths accordingly.
+
+- New upstream version 3.1.9. Fixes since 3.1.7 include,
+  * ODBC-214 - Mediumint(INT24) is always empty
+  * ODBC-284 - properly handle curly bracket escape in connection string
+  * ODBC-283 - Add support for passphrase protected private keys (TlsKeyPwd=)
+  * ODBC-280 - fixes multi-threaded issue when multiple connection are
+    established simultaneously from different threads.
+  * ODBC-279 - SQL_C_TIME binding type not working
+- missing_libs.patch: dropped
+- added patches forwarded upstream: fix_macros.patch, implicit_decleration.patch, wrong_types.patch
+- nosoname.patch: refreshed
+- DSN_names.patch: refreshed. Added new option,
+  TlsKeyPwd =
+
+-------------------------------------------------------------------
 Tue Apr 14 10:39:12 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 3.1.7. Fixes include,

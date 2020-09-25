@@ -17,12 +17,12 @@
 
 
 Name:           mariadb-connector-odbc
-Version:        3.1.7
+Version:        3.1.9
 Release:        0
 Summary:        MariaDB ODBC Connector
 License:        LGPL-2.1-or-later
 Group:          Productivity/Databases/Tools
-Url:            https://downloads.mariadb.org/connector-odbc/
+URL:            https://downloads.mariadb.org/connector-odbc/
 Source:         https://downloads.mariadb.org/interstitial/connector-odbc-%{version}/mariadb-connector-odbc-%{version}-ga-src.tar.gz
 # signature is from copy/pasted stuff found on the download page, not actual file
 Source1:        mariadb-connector-odbc-%{version}-ga-src.tar.gz.asc
@@ -31,8 +31,10 @@ Source3:        sample_odbc.ini
 Source4:        mariadb-connector-odbc-rpmlintrc
 Patch1:         mysql_header_path.patch
 Patch6:         DSN_names.patch
-Patch7:         missing_libs.patch
 Patch8:         nosoname.patch
+Patch9:         fix_macros.patch
+Patch10:        implicit_decleration.patch
+Patch11:        wrong_types.patch
 BuildRequires:  cmake > 3.5.0
 BuildRequires:  gcc-c++
 # This is actually MariaDB -devel package(s)
@@ -54,21 +56,25 @@ This package contains the MariaDB ODBC Connector to be used with unixODBC.
   -DWITH_OPENSSL=ON \
   -DMARIADB_LINK_DYNAMIC=1 \
   -DINSTALL_DOC_DIR=%{_docdir}/%{name} \
+  -DINSTALL_LAYOUT=RPM \
   -DINSTALL_LICENSE_DIR=%{_licensedir}/%{name}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
-install -Dpm 0644 %{SOURCE2} %{SOURCE3} \
-  %{buildroot}%{_docdir}/%{name}
+rm %{buildroot}/usr/docs/COPYING
+rm %{buildroot}/usr/docs/README
+rmdir %{buildroot}/usr/docs
+install -Dpm 0644 -t %{buildroot}%{_docdir}/%{name} %{SOURCE2} %{SOURCE3}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
 %dir %{_docdir}/%{name}
+%dir %{_libdir}/mariadb
 %license COPYING
-%{_libdir}/libmaodbc.so
+%{_libdir}/mariadb/libmaodbc.so
 %{_docdir}/%{name}/README
 %{_docdir}/%{name}/sample_odbc.ini
 
