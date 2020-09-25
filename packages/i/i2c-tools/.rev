@@ -306,4 +306,22 @@
     <comment></comment>
     <requestid>745121</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b312eca53d0f8ef34fabff2b7c0fe7cb</srcmd5>
+    <version>4.2</version>
+    <time>1601043691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2:
+  * Restrict I2C addresses 0x03-0x07
+  * Fix short writes with mask in i2cset
+  * Support messages using I2C_M_RECV_LEN in i2ctransfer
+  * Add check for returned length from driver in i2ctransfer
+  * Many improvements to decode-dimms, for both DDR3 and DDR4
+  * Updated list of memory vendors
+  * Add at24 driver support to decode-vaio
+  * Add a manual page for libi2c
+  * Let i2c-stub-from-dump read dumps from hexdump -C
+</comment>
+    <requestid>836248</requestid>
+  </revision>
 </revisionlist>

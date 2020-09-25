@@ -1,7 +1,7 @@
 #
 # spec file for package i2c-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@
 %endif
 
 Name:           i2c-tools
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        A heterogeneous set of I2C tools for Linux
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 Requires:       udev
 Recommends:     modules
-Url:            https://i2c.wiki.kernel.org/index.php/I2C_Tools
+URL:            https://i2c.wiki.kernel.org/index.php/I2C_Tools
 Source0:        https://www.kernel.org/pub/software/utils/i2c-tools/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/software/utils/i2c-tools/%{name}-%{version}.tar.sign
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -109,6 +109,7 @@ cd ..
 %{_bindir}/*
 %{_sbindir}/*
 %{_mandir}/man1/*.1.gz
+%{_mandir}/man3/*.3.gz
 %{_mandir}/man8/*.8.gz
 
 %files -n libi2c0
