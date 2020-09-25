@@ -1,7 +1,7 @@
 #
 # spec file for package aspell-dictionaries
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,7 +119,7 @@ Source78:       aspell-hy-0.10.0-0.tar.bz2
 Source79:       aspell-nds-0.01-20071031.tar.bz2
 Source80:       aspell-te-0.01-2.tar.bz2
 Source81:       aspell-fy-0.12-0.tar.bz2
-Source82:       aspell-pt_BR-20090702-0.tar.bz2
+Source82:       aspell-pt_BR-20131030-12-0.tar.bz2
 Source83:       aspell-ml-0.03-1.tar.bz2
 Source84:       aspell-tk-0.01-0.tar.bz2
 Source85:       aspell-agal-0.50-1.tar.bz2
@@ -127,7 +127,7 @@ Source86:       aspell-grc-0.02-0.tar.bz2
 Source87:       aspell-ky-0.01-0.tar.bz2
 Source88:       aspell-kn-0.01-1.tar.bz2
 Source89:       aspell-hus-0.03-1.tar.bz2
-Source90:       aspell-de-20030222-1.tar.bz2
+Source90:       aspell-de-20161207-7-0.tar.bz2
 Source999:      aspell-dictionaries-rpmlintrc
 # PATCH-FIX-OPENSUSE aspell-dansk.patch -- Patch needed for new dansk dictionary
 Patch0:         aspell-dansk.patch
@@ -309,7 +309,7 @@ Provides:       locale(aspell:da)
 A Danish (dansk) dictionary for the aspell spell checker.
 
 %package -n aspell-de
-Version:        0.60.20030222
+Version:        20161207.7.0
 Release:        0
 Summary:        German (deutsch) Dictionary for Aspell
 License:        GPL-2.0-or-later
@@ -931,7 +931,7 @@ Provides:       locale(aspell:pl)
 A Polish (polszczyzna) dictionary for the aspell spell checker.
 
 %package -n aspell-pt_BR
-Version:        0.60.20090702
+Version:        20131030.12.0
 Release:        0
 Summary:        Brazilian Portuguese (Português brasileira) Dictionary for Aspell
 License:        LGPL-2.1-or-later
@@ -1240,15 +1240,13 @@ A Zulu (isiZulu) dictionary for the aspell spell checker.
 find -name "*~" -type f | xargs -r rm -v
 #
 mv aspell-cs-20040614-1/doc/README.orig aspell-cs-20040614-1/doc/README.cs
-#%patch0
+#%%patch0
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' aspell-ia-*/doc/README_ia.txt
 sed -i 's/\r$//' aspell-it-*/doc/README.txt
 sed -i 's/\r$//' aspell-lv-*/doc/changelog.txt
 sed -i 's/\r$//' aspell-lv-*/doc/version.txt
 sed -i 's/\r$//' aspell-mk-*/Copyright
-sed -i 's/\r$//' aspell-pt_BR-*/doc/README_ooo.txt
-sed -i 's/\r$//' aspell-pt_BR-*/doc/LEIAME_ooo.txt
 sed -i 's/\r$//' aspell-sc-*/doc/gpl_it.txt
 
 %build

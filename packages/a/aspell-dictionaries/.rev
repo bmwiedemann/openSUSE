@@ -359,4 +359,15 @@ Why exists a seperate package aspell-de? (forwarded request 613040 from ecsos)</
   - Nwordlist.tgz (abandoned)</comment>
     <requestid>758328</requestid>
   </revision>
+  <revision rev="49" vrev="52">
+    <srcmd5>c046662f0acaab2ffae9dd5dfb96c20f</srcmd5>
+    <version>unknown</version>
+    <time>1601044353</time>
+    <user>dimstar_suse</user>
+    <comment>- update:
+  - de -&amp;gt; 20161207-7-0
+  - pt_BR -&amp;gt; 20131030-12-0
+- Fix boo#1076219. (forwarded request 835754 from ecsos)</comment>
+    <requestid>835775</requestid>
+  </revision>
 </revisionlist>
