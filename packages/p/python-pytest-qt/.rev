@@ -68,4 +68,12 @@
   * qtbot.addWiget now supports an optional before_close_func keyword-only argument, which if given is a function which is called before the widget is closed, with the widget as first argument.</comment>
     <requestid>761148</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>28306464c9891ee1d6b46f16e399cb9e</srcmd5>
+    <version>3.3.0</version>
+    <time>1601044611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837379</requestid>
+  </revision>
 </revisionlist>

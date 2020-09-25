@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 25 09:19:58 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- require a default ttf font gh#pytest-dev/pytest-qt#317
+- move to %pytest macro and use pytest-xvfb plugin
+- drop skip-timeout-tests.patch; deselect by pytest -k parameter
+
+-------------------------------------------------------------------
 Mon Jan  6 13:07:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.3.0:
