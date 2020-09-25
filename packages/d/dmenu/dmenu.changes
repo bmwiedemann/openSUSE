@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 20 18:58:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.0:
+  * no change compared to 4.9 with the extra patches
+- remove   0001-Close-when-the-embedding-window-is-destroyed.patch
+  0002-fix-crash-when-XOpenIM-returns-NULL.patch
+  0003-make-dmenu_path-script-executable.patch
+  0004-improve-xopenim-error-message.patch
+  0005-revert-IME-support.patch
+  0006-Fix-memory-leaks-in-drw.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Aug 31 16:11:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add input fixes from master branch at https://git.suckless.org/dmenu/ (bsc#1164650):
