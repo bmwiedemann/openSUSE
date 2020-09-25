@@ -412,4 +412,41 @@ better packaging for distros, and various other quirks.
     compiled with GCC; there are no other changes. (forwarded request 799860 from mnhauke)</comment>
     <requestid>799862</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b4790838328b8239ec449c38b2caada5</srcmd5>
+    <version>2020_09_R3</version>
+    <time>1601044273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-09-R3
+  * Properly show messages from datasources
+  * Properly show error and status messages from opening
+    datasources, which previously were ignored. This should make
+    seeing errors opening datasources much easier.
+  * Fix bluetooth capture on some platforms
+  * Some platforms / kernels / setups appear to not enable rfkill.
+    The bluetooth hci capture source erroneously failed when no
+    rfkill information was available.
+  * Remove 221 IE tag subtype match requirement
+  * Remove requiring a subtype of 0 on an IE221 tag for matching
+    the manufacturer of otherwise unknown devices.
+  * Fix potential crash in datasource panel
+  * Fix a long-standing potential crash when the datasource panel
+    is open in the UI caused by a race condition with the
+    constructor and callbacks.
+  * Fix race condition in launching datasources
+  * Fix a long-standing race condition which could lead to some
+    datasources not being opened properly or their types
+    autodetected properly due to a race condition with the type
+    probe code.
+  * Increase precision of some doubles in JSON for GPS
+  * Found some legacy serialization code which reduced the
+    precision of some doubles (double-vector) which would cause
+    GPS to display with less precision.
+  * Don’t shut down messagebus processing thread until Kismet is
+    fully exiting
+  * The messagebus service thread could shut down before Kismet
+    had finished spinning down, causing it to not show some of
+    the errors causing the shutdown. (forwarded request 835703 from mnhauke)</comment>
+    <requestid>835714</requestid>
+  </revision>
 </revisionlist>

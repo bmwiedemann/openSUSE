@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sun Sep 20 20:18:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2020-09-R3
+  * Properly show messages from datasources
+  * Properly show error and status messages from opening
+    datasources, which previously were ignored. This should make
+    seeing errors opening datasources much easier.
+  * Fix bluetooth capture on some platforms
+  * Some platforms / kernels / setups appear to not enable rfkill.
+    The bluetooth hci capture source erroneously failed when no
+    rfkill information was available.
+  * Remove 221 IE tag subtype match requirement
+  * Remove requiring a subtype of 0 on an IE221 tag for matching
+    the manufacturer of otherwise unknown devices.
+  * Fix potential crash in datasource panel
+  * Fix a long-standing potential crash when the datasource panel
+    is open in the UI caused by a race condition with the
+    constructor and callbacks.
+  * Fix race condition in launching datasources
+  * Fix a long-standing race condition which could lead to some
+    datasources not being opened properly or their types
+    autodetected properly due to a race condition with the type
+    probe code.
+  * Increase precision of some doubles in JSON for GPS
+  * Found some legacy serialization code which reduced the
+    precision of some doubles (double-vector) which would cause
+    GPS to display with less precision.
+  * Don’t shut down messagebus processing thread until Kismet is
+    fully exiting
+  * The messagebus service thread could shut down before Kismet
+    had finished spinning down, causing it to not show some of
+    the errors causing the shutdown.
+  * Fix moodycamel fast queue for gcc 9.2.0
+  * Merge fix from cameron314/moodycamel to the fast concurrent
+    queue library for compiling on gcc 9.2.0
+  * Add new device locking API
+  * Add new device locking API for internal range locking of
+    devices to better protect records during updates between
+    threads.
+
+-------------------------------------------------------------------
+Sun Sep 13 10:37:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * kismet-fix-build.patch (revert 3c8f8d83)
+- Update to version 2020-09-R2
+  * Save more RAM!
+  * Fix a very silly error in kismetdb_dump_devices
+  * The kismetdb_dump_devices tool was broken and printed out
+    the JSON twice, generating an invalid JSON file.
+  * Tweak how IE221 manufacturers are derived
+  * Look for some specific AP manufacturers in the IE221 tags, and
+    then fall back to using generic 221 manufacturers.
+  * Fix packet RRD in main device table
+  * Fix the packet RRD in the main device table not scrolling
+    properly
+  * Generally clean up compiling and squash a number of warnings
+    during compiling
+  * Fix a bug classifying some devices as APs
+  * Some devices doing an inter-ds communication (like a chromecas
+     and a phone) got flagged as APs when they’re not really.
+- Update to version 2020-09-R1
+  * Kismet server auto-discovery
+  * New SSID details window to go along with the SSID views
+  * New “MAC censorship” demo option in the web UI
+  * Split advertised and responded APs
+  * Significant memory optimizations
+  * New optimized internal field building
+  * Optimized “multikey-as-dictionary” API
+  * Verbose output on remote capture tools
+  * Expanded ICAO databases for ADSB
+  * Compressed server-side ICAO databases
+  * More memory control options
+  * New greatly simplified JSON generation and parsing
+  * Support for non-packet scan reports
+  * New event bus extension to the Kismet helper protocol
+  * New kismetdb_to_pcap tool
+  * Configuration flavors/override system
+  * Packet rate graphs
+  * More manufacturer indexing
+  * Optimized internal map structure
+  * Lots and lots of bug fixes and minor updates
+
+-------------------------------------------------------------------
 Sun May  3 15:35:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2020-04-R3

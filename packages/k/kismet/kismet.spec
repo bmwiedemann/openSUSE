@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2020-04-R3
+%define realver 2020-09-R3
 Name:           kismet
-Version:        2020_04_R3
+Version:        2020_09_R3
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ URL:            https://www.kismetwireless.net/
 #Git-Clone:     https://github.com/kismetwireless/kismet.git
 Source:         https://github.com/kismetwireless/kismet/archive/%{name}-%{realver}.tar.gz
 Source1:        %{name}-rpmlintrc
+Patch0:         kismet-fix-build.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
@@ -250,6 +251,7 @@ want to make use of kismet.
 
 %prep
 %setup -q -n kismet-kismet-%{realver}
+%patch0 -p1
 # HACK: Add python DESTDIR support for python stuff
 find . -type f -name "Makefile*" -exec sed -i 's|setup.py install|setup.py install --root=$(DESTDIR)|g' {} \;
 # Fix wrong-script-end-of-line-encoding
@@ -298,15 +300,16 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %config %{_sysconfdir}/kismet/kismet_httpd.conf
 %config %{_sysconfdir}/kismet/kismet_logging.conf
 %config %{_sysconfdir}/kismet/kismet_memory.conf
-%config %{_sysconfdir}/kismet/kismet_storage.conf
 %config %{_sysconfdir}/kismet/kismet_uav.conf
 %{_bindir}/kismet
+%{_bindir}/kismet_discovery
 %{_bindir}/kismet_server
 %{_bindir}/kismet_cap_kismetdb
 %{_bindir}/kismet_cap_pcapfile
 %dir %{_datadir}/kismet
+%{_datadir}/kismet/kismet_adsb_icao.txt.gz
+%{_datadir}/kismet/kismet_manuf.txt.gz
 %{_datadir}/kismet/httpd
-%{_datadir}/kismet/kismet_manuf.txt
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 %dir %{_libdir}/kismet/
@@ -319,6 +322,7 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %{_bindir}/kismetdb_strip_packets
 %{_bindir}/kismetdb_to_gpx
 %{_bindir}/kismetdb_to_kml
+%{_bindir}/kismetdb_to_pcap
 %{_bindir}/kismetdb_to_wiglecsv
 
 %files capture-linux-bluetooth
