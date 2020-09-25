@@ -31,17 +31,21 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        2.1.13
+Version:        2.3.2
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
+# tg_owt: https://github.com/desktop-app/tg_owt/archive/master.zip 
+Source1:        tg_owt-master.zip 
 # PATCH-FIX-OPENSUSE
 Patch0:         0000-gtk2-default.patch
 # PATCH-FIX-OPENSUSE
-Patch1:         0001-use-bundled-range.patch
+Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0002-tg_owt-fix-name-confliction.patch
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.16
@@ -61,13 +65,18 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-qtimageformats-devel
+BuildRequires:  libqt5-qtwayland-private-headers-devel
+BuildRequires:  libwebrtc_audio_processing-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  unzip
 BuildRequires:  xorg-x11-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  xz
+BuildRequires:  yasm
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
@@ -138,9 +147,14 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}-full
-
 %patch0 -p1
-%patch1 -p1
+%patch1 -p2
+
+cd ../
+unzip %{S:1}
+mkdir Libraries
+mv tg_owt-master Libraries/tg_owt
+%patch2 -p2 -d Libraries/tg_owt
 
 %build
 %if %{with fixed_gcc}
@@ -148,13 +162,32 @@ export CC=/usr/bin/gcc-9
 export CXX=/usr/bin/g++-9
 %endif
 
+cd %{_builddir}/Libraries/tg_owt
+mkdir -p out/Release
+cd out/Release
+cmake -G Ninja \
+       -DCMAKE_BUILD_TYPE=Release \
+       -DTG_OWT_SPECIAL_TARGET=linux \
+       -DTG_OWT_LIBJPEG_INCLUDE_PATH=/usr/include \
+       -DTG_OWT_OPENSSL_INCLUDE_PATH=/usr/include/openssl \
+       -DTG_OWT_OPUS_INCLUDE_PATH=/usr/include/opus \
+       -DTG_OWT_FFMPEG_INCLUDE_PATH=/usr/include/ffmpeg \
+       ../..
+sed -i 's,gnu++2a,gnu++17,g' build.ninja 
+ninja
+
+cd %{_builddir}/tdesktop-%{version}-full
+# Use the official API key that telegram uses for their snap builds:
+# https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
+# Thanks to @primeos on Github.
 %cmake \
       -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_BUILD_TYPE=Release \
-      -DTDESKTOP_API_ID=340630 \
-      -DTDESKTOP_API_HASH=98a22f733eac40f1bd187a30d19271de \
+      -DTDESKTOP_API_ID=611335 \
+      -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
       -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
       -DDESKTOP_APP_USE_PACKAGED=ON \
+      -DDESKTOP_APP_QTWAYLANDCLIENT_PRIVATE_HEADERS=OFF \
       -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
       -DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF \
       -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \

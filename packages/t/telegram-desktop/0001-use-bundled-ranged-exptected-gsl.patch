@@ -1,0 +1,56 @@
+diff --git a/tdesktop-2.3.2-full/cmake/external/expected/CMakeLists.txt b/tdesktop-2.3.2-full-patched/cmake/external/expected/CMakeLists.txt
+index 10c2c26..fddfbb4 100644
+--- a/tdesktop-2.3.2-full/cmake/external/expected/CMakeLists.txt
++++ b/tdesktop-2.3.2-full-patched/cmake/external/expected/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ add_library(external_expected INTERFACE IMPORTED GLOBAL)
+ add_library(desktop-app::external_expected ALIAS external_expected)
+ 
+-if (DESKTOP_APP_USE_PACKAGED)
++if (NOT DESKTOP_APP_USE_PACKAGED)
+     if (DESKTOP_APP_USE_PACKAGED_LAZY)
+         find_package(tl-expected QUIET)
+     else()
+diff --git a/tdesktop-2.3.2-full/cmake/external/gsl/CMakeLists.txt b/tdesktop-2.3.2-full-patched/cmake/external/gsl/CMakeLists.txt
+index b03be4f..80c0e07 100644
+--- a/tdesktop-2.3.2-full/cmake/external/gsl/CMakeLists.txt
++++ b/tdesktop-2.3.2-full-patched/cmake/external/gsl/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ add_library(external_gsl INTERFACE IMPORTED GLOBAL)
+ add_library(desktop-app::external_gsl ALIAS external_gsl)
+ 
+-if (DESKTOP_APP_USE_PACKAGED)
++if (NOT DESKTOP_APP_USE_PACKAGED)
+     if (DESKTOP_APP_USE_PACKAGED_LAZY)
+         find_package(Microsoft.GSL QUIET)
+     else()
+diff --git a/tdesktop-2.3.2-full/cmake/external/ranges/CMakeLists.txt b/tdesktop-2.3.2-full-patched/cmake/external/ranges/CMakeLists.txt
+index 5a584dd..9b9049f 100644
+--- a/tdesktop-2.3.2-full/cmake/external/ranges/CMakeLists.txt
++++ b/tdesktop-2.3.2-full-patched/cmake/external/ranges/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ add_library(external_ranges INTERFACE IMPORTED GLOBAL)
+ add_library(desktop-app::external_ranges ALIAS external_ranges)
+ 
+-if (DESKTOP_APP_USE_PACKAGED)
++if (NOT DESKTOP_APP_USE_PACKAGED)
+     if (DESKTOP_APP_USE_PACKAGED_LAZY)
+         find_package(range-v3 QUIET)
+     else()
+@@ -32,4 +32,4 @@ if (NOT range-v3_FOUND)
+             /wd5105 # needed for `/Zc:preprocessor`, suppressing C5105 "macro expansion producing 'defined' has undefined behavior"
+         )
+     endif()
+-endif()
+\ No newline at end of file
++endif()
+diff --git a/tdesktop-2.3.2-full/cmake/external/webrtc/CMakeLists.txt b/tdesktop-2.3.2-full-patched/cmake/external/webrtc/CMakeLists.txt
+index 1273291..1dd8ae6 100644
+--- a/tdesktop-2.3.2-full/cmake/external/webrtc/CMakeLists.txt
++++ b/tdesktop-2.3.2-full-patched/cmake/external/webrtc/CMakeLists.txt
+@@ -99,4 +99,5 @@ target_link_libraries(external_webrtc
+ INTERFACE
+     ${webrtc_libs_list}
+     desktop-app::external_openssl
++    jpeg
+ )

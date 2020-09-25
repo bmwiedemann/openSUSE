@@ -1,6 +1,6 @@
---- tdesktop-2.1.8-full/Telegram/SourceFiles/platform/linux/linux_libs.cpp.orig	2020-06-03 18:18:48.829895452 +0000
-+++ tdesktop-2.1.8-full/Telegram/SourceFiles/platform/linux/linux_libs.cpp	2020-06-03 18:21:15.248705051 +0000
-@@ -271,10 +271,10 @@ void start() {
+--- tdesktop-2.7.3-full/Telegram/SourceFiles/platform/linux/linux_libs.cpp.orig	2020-06-03 18:18:48.829895452 +0000
++++ tdesktop-2.7.3-full/Telegram/SourceFiles/platform/linux/linux_libs.cpp	2020-06-03 18:21:15.248705051 +0000
+@@ -272,10 +272,10 @@ void start() {
  	QLibrary lib_gtk;
  	lib_gtk.setLoadHints(QLibrary::DeepBindHint);
  
@@ -8,8 +8,8 @@
 +	if (loadLibrary(lib_gtk, "gtk-x11-2.0", 0)) {
  		gtkLoaded = setupGtkBase(lib_gtk);
  	}
--	if (!gtkLoaded && loadLibrary(lib_gtk, "gtk-x11-2.0", 0)) {
-+	if (!gtkLoaded && loadLibrary(lib_gtk, "gtk-3", 0)) {
+-	if (!gtkLoaded && !gtkTriedToInit && loadLibrary(lib_gtk, "gtk-x11-2.0", 0)) {
++	if (!gtkLoaded && !gtkTriedToInit && loadLibrary(lib_gtk, "gtk-3", 0)) {
  		gtkLoaded = setupGtkBase(lib_gtk);
  	}
  

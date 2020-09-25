@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 30 22:25:52 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to 2.3.2
+  * Revert custom window shadow on Linux.
+- Update in 2.3.1
+  * Fix Calls Settings for Video Calls.
+- Update in 2.3.0
+  * Video Calls (alpha version).
+- Updates in 2.2.0, 2.1.22, and 2.1.21
+  * Quickly switch between different Telegram accounts 
+    if you use multiple phone numbers.
+  * Share and store unlimited files of any type up to 2 GB each.
+  * Edit your scheduled messages.
+  * Use Auto-Night Mode to make Telegram night mode match system
+    Dark Mode settings
+  * Also added an option to switch to system window frame 
+    in Windows and Linux.
+  * Fix crash in web page preview display
+- Rebase 0000-gtk2-default.patch
+  * Prioritize qgtk2 platform plugin
+- Rename 0001-use-bundled-range.patch to 
+  0001-use-bundled-ranged-exptected-gsl.patch
+  * Use bundled ranged-v3, Microsoft GSL, and expected.
+- Add 0002-tg_owt-fix-name-confliction.patch
+  * Patch tg_owt library to fix header name conflict with openssl
+  * Include <stdint> header to define int types like uint32_t
+
+-------------------------------------------------------------------
 Thu Aug 20 09:06:04 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.
