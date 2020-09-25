@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 24 03:07:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.11
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.11  2020-09-23  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.10_04  2020-09-22  <schubiger@cpan.org>
+   - Fail when parsing month/day with an explicit ymd-format.
+  1.10_03  2020-09-19  <schubiger@cpan.org>
+   - Clarify meaning of format option.
+     [rt #133200 - Ricardo Signes]
+  1.10_02  2020-09-05  <schubiger@cpan.org>
+   - Allow mm/dd and dd/mm as valid formats and amend tests.
+   - Improve format matching regexes.
+   - List example with new format under examples section.
+  1.10_01  2020-08-21  <schubiger@cpan.org>
+   - Allow configuration to make "8/10" mean October 8.
+     [rt #133140 - Ricardo Signes]
+   - Minor tweaks.
+
+-------------------------------------------------------------------
 Sat Jun 27 03:08:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.10

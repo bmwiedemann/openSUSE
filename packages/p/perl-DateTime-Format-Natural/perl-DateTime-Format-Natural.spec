@@ -17,7 +17,7 @@
 
 
 Name:           perl-DateTime-Format-Natural
-Version:        1.10
+Version:        1.11
 Release:        0
 %define cpan_name DateTime-Format-Natural
 Summary:        Parse informal natural language date/time strings
