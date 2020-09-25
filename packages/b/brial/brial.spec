@@ -18,19 +18,17 @@
 
 %define lname	libbrial3
 Name:           brial
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 Summary:        The Polynomials over Boolean Rings Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/BRiAl/BRiAl
 Source:         https://github.com/BRiAl/BRiAl/releases/download/%version/%name-%version.tar.bz2
-BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel >= 1.58
 BuildRequires:  libboost_test-devel >= 1.58
 BuildRequires:  libpng-devel
-BuildRequires:  libtool
 BuildRequires:  pkgconfig(m4ri)
 Provides:       bundled(cudd) = 2.5.0
 
@@ -74,7 +72,6 @@ developing with polybori/brial libraries.
 %autosetup -p1
 
 %build
-autoreconf -fi
 %configure --disable-static
 %make_build
 

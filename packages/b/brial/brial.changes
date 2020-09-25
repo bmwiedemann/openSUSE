@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 25 09:18:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.9
+  * Build changes only: ax_*.m4 was updated
+
+-------------------------------------------------------------------
+Tue Sep 22 22:07:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update ax_boost_base.m4 during build with riscv64 support.
+
+-------------------------------------------------------------------
 Tue Sep  8 13:00:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 1.2.8) for build.opensuse.org,
