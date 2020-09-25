@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/tscrim/coxeter</param>
+		<param name="revision">7b5a1f0039511326aeb616afb132a5065886b9d8</param>
+		<param name="parent-tag">857c9ba89a698251837ece851a547ded7a31c5d3</param>
+		<param name="versionformat">3.1+git@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
