@@ -1,7 +1,7 @@
 #
 # spec file for package vamp-plugin-sdk
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define _dlver  2691
 Name:           vamp-plugin-sdk
-Version:        2.7.1
+Version:        2.10.0
 Release:        0
 Summary:        An API for audio analysis and feature extraction plugins
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://www.vamp-plugins.org/
-Source0:        https://code.soundsoftware.ac.uk/attachments/download/2206/%{name}-%{version}.tar.gz
+URL:            https://www.vamp-plugins.org/
+Source0:        https://code.soundsoftware.ac.uk/attachments/download/%{_dlver}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -32,7 +33,6 @@ BuildRequires:  graphviz
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sndfile)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Vamp is an API for C and C++ plugins that process sampled audio data
@@ -73,16 +73,16 @@ sed -i 's|/lib/|/%{_lib}/|g' src/vamp-hostsdk/PluginLoader.cpp
 sed -i 's|$(INSTALL_PREFIX)/lib|@libdir@|g' Makefile.in
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS -fPIC -Wall"
-export CXXFLAGS="$RPM_OPT_FLAGS -fPIC -Wall"
+export CFLAGS="%{optflags} -fPIC -Wall"
+export CXXFLAGS="%{optflags} -fPIC -Wall"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 # fix libdir
 find . -name '*.pc.in' -exec sed -i 's|/lib|/%{_lib}|' {} ';'
 # The #INSTALL_PREFIX
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 #INSTALL_PREFIX=%%{_prefix} LIB=/%%{_lib}
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -name '*.a' -exec rm -f {} ';'
@@ -94,7 +94,6 @@ doxygen build/Doxyfile
 #pushd latex && make all
 #popd
 
-%if 0%{?suse_version} >= 1140
 # Generate man pages with help2man
 mkdir -p %{buildroot}%{_mandir}/man1
 pushd %{buildroot}%{_mandir}/man1
@@ -107,7 +106,6 @@ help2man -N --no-discard-stderr \
 	./vamp-simple-host
 rm  vamp-simple-host vamp-rdf-template-generator
 popd
-%endif
 
 # create Makefile for examples
 cd examples
@@ -124,35 +122,27 @@ echo -e "\t"-rm *.o *.so >> Makefile
 make clean
 
 %post -n libvamp-hostsdk3 -p /sbin/ldconfig
-
 %postun -n libvamp-hostsdk3 -p /sbin/ldconfig
-
 %post -n libvamp-sdk2 -p /sbin/ldconfig
-
 %postun -n libvamp-sdk2 -p /sbin/ldconfig
 
 %files -n libvamp-hostsdk3
-%defattr(-,root,root,-)
 %{_libdir}/libvamp-hostsdk.so.3*
 
 %files -n libvamp-sdk2
-%defattr(-,root,root,-)
 %{_libdir}/libvamp-sdk.so.2*
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING README
+%license COPYING
+%doc README
 %{_bindir}/vamp-rdf-template-generator
 %{_bindir}/vamp-simple-host
-%if 0%{?suse_version} >= 1140
-%{_mandir}/man1/vamp-rdf-template-generator.1.gz
-%{_mandir}/man1/vamp-simple-host.1.gz
-%endif
+%{_mandir}/man1/vamp-rdf-template-generator.1%{?ext_man}
+%{_mandir}/man1/vamp-simple-host.1%{?ext_man}
 %dir %{_libdir}/vamp
 %{_libdir}/vamp
 
 %files devel
-%defattr(-,root,root,-)
 %doc rdf/doc doc/html examples
 %dir %{_includedir}/vamp
 %dir %{_includedir}/vamp-hostsdk
