@@ -1,0 +1,4125 @@
+-------------------------------------------------------------------
+Mon Sep  7 16:06:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.3.6:
+  + Do not autostart tracker-store.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  7 15:59:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename to tracker2: compatibility package while the world moves
+  to Tracker 3.
+- Provide/Obsolete tracker and tracker-lang from the main package,
+  and tracker-devel from tracker2-devel.
+
+-------------------------------------------------------------------
+Tue Aug 25 16:13:22 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.5:
+  + Add 'tracker export' subcommand to ease migration to 3.x.
+  + Use correct signature for DBusSignalCallback.
+  + Get the systemd user unit dir from pkg-config.
+  + Replace sensitive terms.
+  + Updated translations.
+- Drop tracker-Use-correct-signature.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu May 14 12:41:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add tracker-ontology-upgrades.patch:  libtracker-data: Improve
+  changes over single valued ontology properties (boo#1170587).
+
+-------------------------------------------------------------------
+Thu Apr 16 20:05:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add tracker-Use-correct-signature.patch: tracker-store: Use
+  correct signature for DBusSignalCallback.
+
+-------------------------------------------------------------------
+Wed Mar 25 07:42:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable tests on %arm as they fail in OBS but succeed in a
+  local osc build
+
+-------------------------------------------------------------------
+Tue Mar 10 19:36:17 UTC 2020 - mgorse@suse.com
+
+- Update to version 2.3.4:
+  + Brown paper bag release, fix NULL check.
+  + Changes in version 2.3.3:
+  + Fix race condition during tracker-store shutdown maybe leading
+    to warnings and missed writeback events.
+  + Made fts:offsets stronger against corrupt FTS tables.
+  + Updated translations.
+- Drop tracker-fix-segfault-in-writeback.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Mar  5 02:41:37 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add tracker-fix-segfault-in-writeback.patch: Check if argument is
+  NULL before using it and dispose connection and data_manager
+  before shutting down writeback and events to prevent segmentation
+  fault (bsc#1165357, glgo#GNOME/tracker!192).
+
+-------------------------------------------------------------------
+Tue Feb 18 23:39:08 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.2:
+  + Location info for photos is now inserted into the DB. It didn't
+    work before as we failed to process SPARQL "blank nodes"
+    correctly.
+  + Fix for oversensitive FTS5 index corruption detection.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 25 14:20:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Tue Nov 26 15:46:07 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable test suite / %check section.
+
+-------------------------------------------------------------------
+Sat Oct 12 16:21:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.1:
+  + Fixed a case where old data was not deleted correctly from the
+    store when inserting new values. This was causing
+    tracker-extract to log errors for multi-disc music albums
+    stored as FLAC files with embedded CUE sheets.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 05:53:31 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.3.0:
+  + No changes since 2.2.99.1.
+
+-------------------------------------------------------------------
+Thu Sep  5 18:48:13 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.2.99.1:
+  + Handle circular references in TrackerResource.
+  + Removed stress tests.
+  + Handle application/x-zero-size.
+  + Refactors and cleanups in functional testing infrastructure.
+  + Documentation improvements.
+  + Make tracker_sparql_escape_string() escape single quotes.
+  + Don't make tracker:referenceSource a subproperty of
+    nie:identifier.
+  + Translations: eu.
+- Add trackertestutils to -devel package.
+
+-------------------------------------------------------------------
+Thu Aug 22 16:59:05 CST 2019 - yfjiang@suse.com
+
+- Update to version 2.2.99.0:
+  + Support for storing Musicbrainz metadata in the multimedia
+    ontology.
+  + Doc cleanups.
+  + Test suite improvements.
+  + Build fixes.
+  + Fix detection of files that need writeback.
+  + Fix crashes and invalid memory writes.
+- libtracker-common is built as a static library and only used in
+  build time. So remove it in the %install section.
+- Drop fix-tracker-miner-fs-lto-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul 15 10:32:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add fix-tracker-miner-fs-lto-crash.patch and enable
+  again LTO (boo#1141201).
+
+-------------------------------------------------------------------
+Fri Jul 12 08:28:13 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1141201).
+
+-------------------------------------------------------------------
+Fri May  3 09:18:18 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.2:
+  + Fixed initialization of virtual tables.
+  + Fixed segmentation fault in libtracker-miner.
+  + Don't try to create JSON-LD nodes with unsigned integers.
+  + Handle correctly backreferences in TrackerResource tree.
+  + Many documentation fixes.
+  + Fixed handling doubles with exponents in SPARQL.
+  + Don't limit to specific desktop environments.
+  + Build and test fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  6 18:41:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.1:
+  + Fix unichar unescaping.
+  + Correctly Handle BIND in first place of a triples block.
+  + Fix possible deadlock on WAL checkpoint.
+  + Fix some double values not being deleted.
+  + Fixed CHANGES_DONE_HINT handling in TrackerMonitor.
+  + Ported data generator utilities to python3.
+  + Ported functional tests to python3, reformatted to PEP-8.
+  + Correctly apply ignored-directories-with-content filter on
+    monitor updates.
+  + Build and test fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 11:17:57 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.2.0:
+  + Multiple memory leak and corruption fixes.
+  + Bumped glib minimum version to 2.46, it already was in
+    practical terms.
+  + Test suite improvements.
+  + Restore log domain.
+  + New SPARQL parser, able to generate SQL that is generally more
+    readable and at places performs better. Multiple buglets fixed
+    in the process.
+  + Much improved support of SPARQL1.1 features and syntax that was
+    missing:
+    - Property paths: Allowing to match connectivity between two
+      resources by an arbitrary length path. There is a number of
+      supported operators (alternative, sequence, oneOrMany, ...)
+      that can be combined, e.g:
+      SELECT ?s ?p
+      { ?s ^(nfo:belongsToContainer*)/(nie:url|nie:title) ?p }.
+      Only the negated path operator (!) is not supported at the
+      moment.
+    - Support for fully unrestricted queries, eg:
+      SELECT ?s ?p ?o { ?s ?p ?o } ORDER BY ?o ?p ?s
+      Queries with unrestricted predicate (?p in the example above)
+      were just supported in a very restricted set of situations.
+      All those limitations are gone.
+    - MINUS allows subtracting the solutions that match the given
+      triples template, eg:
+      SELECT ?s { ?s a nfo:Media } MINUS { ?s a nfo:MusicPiece }
+  + Support for prepared statements. TrackerSparqlStatement can be
+    built with SELECT queries containing (custom) ~var syntax, and
+    updating their values before obtaining a cursor.
+  + Many tests were added, and Tracker is generally much better
+    tested thanks to CI.
+  + tracker-store now automatically shuts down on inactivity.
+  + More property paths supported, new operators supported are *,
+    +, ? and |, only the ! operator is not supported yet.
+  + Multiple fixes to the new sparql parser.
+  + Improve error handling in DBus backend.
+  + Many improvements and additions to the test suite
+  + Fixed potential crash in TrackerMonitor.
+  + New SPARQL parser, able to support more 1.1 features and
+    generating friendlier SQL at places. There is initial support
+    for property paths (/ and ^), and other missing 1.1 syntax
+    (MINUS, SHA384, ...). More improvements are expected to happen
+    in the future thanks to this.
+  + Support for prepared statements. TrackerSparqlStatement can be
+    built with SELECT queries containing (custom) ~var syntax, and
+    updating their values before obtaining a cursor.
+  + Added global libtracker-sparql call to change the used DBus
+    connection at runtime.
+  + Made tracker-store to automatically shutdown when unneeded.
+  + Fixed ontology updates to work with behavioral changes in
+    sqlite >=3.25.
+  + Support for building through autotools has been removed.
+  + Other many build and code cleanups and fixes
+  + Updated translations.
+- Drop tracker-extract-private.patch: fixed upstream.
+- Drop libtool BuildRequires: No longer applies now that tracker is
+  meson only.
+- Switch to meson build system, drop conditionals for meson
+  BuildRequires and macros, remove all traces of autotools support.
+  Add gtk-doc BuildRequires: Needed to build docs. Pass options we
+  want to meson.
+- Fix translation-update-upstream to work with meson.
+
+-------------------------------------------------------------------
+Thu Feb 21 10:17:57 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.1.8:
+  + Do not rely on hash table iteration order being stable.
+  + Update FTS if base tables were updated.
+
+-------------------------------------------------------------------
+Mon Feb 11 16:02:36 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.1.7:
+  + Fix build order with libtracker-sparql generated headers.
+  + Fix ontology update with SQLite 3.25.
+  + Fix build with Vala 0.43.
+- Drop tracker-sqlte-3.25-rename-tables.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Dec 19 13:27:05 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Extend tracker-sqlte-3.25-rename-tables.patch with two more
+  commits:
+  + libtracker-data: Update FTS if base tables were altered
+  + libtracker-data: Reset property table name on cardinality
+    changes
+
+-------------------------------------------------------------------
+Thu Nov  8 14:13:28 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add tracker-sqlte-3.25-rename-tables.patch: drop FTS table/view
+  before ontology update (glgo#GNOME/tracker#40, boo#1110090,
+  boo#1131229)
+
+-------------------------------------------------------------------
+Wed Nov  7 06:52:58 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.6:
+  + Backported multiple meson build fixes.
+  + Fixed meson build from released tarball.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 18:49:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.5:
+  + Plug several leaks.
+  + Fix possible crashes on tracker-store exit.
+  + Several fixes to meson build.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 10:15:58 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.4:
+  + Libtracker-data: Fix build with format-security flag.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  1 16:56:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.3:
+  + Fix resource refcounting issues in database. Reset is advised.
+  + Drop cardinality from nie:copyright, nie:license, nie:legal and
+    dc:rights.
+  + Fix superfluous ontology checks on second tracker-store run.
+  + Use more SPARQL1.1 correct syntax.
+  + Allow use of domain rules outside prefix.
+  + Compatibility fixes with C++.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 16 09:14:00 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.2:
+  + libtracker-sparql:
+    - Delete TrackerResource elements one by one (boo#1123869).
+    - Fix compilation with C++.
+  + build:
+    - Fixes for FreeBSD.
+    - Fixes on meson.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug  9 05:53:30 UTC 2018 - luc14n0@linuxmail.org
+
+- Add tracker Requires to libtracker-common-2_0 subpackage to make
+  sure default.rule file is installed to avoid several packages
+  breakage on Tumbleweed upgrade (boo#1104112).
+- Drop all tracker Suggests: no longer needed after last action.
+
+-------------------------------------------------------------------
+Wed Aug  1 19:29:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.1:
+  + libtracker-direct: Plug leaks.
+  + libtracker-sparql-backend: Fix fallback from direct to bus
+    connection for queries.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 24 08:54:28 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.0:
+  + Brown paper bag release: All features from unreleased 2.0.5
+    apply.
+  + One feature was missed: TrackerResource is now able to output
+    JSON-LD. This is a new API call, so a minor bump should happen
+    as per Semantic Versioning.
+- Changes from version 2.0.5:
+  + build:
+    - Make tarballs able to build with meson. Future releases will
+      eventually phase out Autotools.
+    - Various meson build fixes
+  + tests: Many fixes to functional tests.
+  + libtracker-miner: Fixed race conditions that may result in
+    spurious "parent not indexed yet" warnings.
+  + libtracker-direct: Majorly rewritten.
+  + tracker-store: Streamlined to use a libtracker-direct
+    connection instead of reimplementing most of it.
+
+-------------------------------------------------------------------
+Tue Jun 26 02:56:27 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.0.4:
+  + libtracker-miner:
+    - Fix event emission order of the root folder when a recursive
+      directory is found through monitor events.
+    - Improvements to attribute-only update handling.
+  + libtracker-data: Perform VACUUM only past a database file size
+    limit.
+- Drop:
+  + update-desktop-files BuildRequires and suse_update_desktop_file
+    macro: they are no longer needed.
+  + glib2_gsettings_schema_requires macro: it is not required
+    anymore since RPM file triggers (version 4.13).
+
+-------------------------------------------------------------------
+Tue Apr 17 09:40:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Replace pkgconfig(libnm-glib) with pkgconfig(libnm)
+  BuildRequires, this is what configure checks for.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:44:55 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:40:30 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb  7 08:04:10 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.0.3:
+  + build:
+    - Improvements in meson support.
+    - Remove stale dependencies after Tracker miners split.
+  + tests:
+    - Many fixes to functional tests.
+    - Remove old checks for maemo-specific features.
+  + libtracker-miner: Small code improvements.
+  + libtracker-sparql: use gint32 to unpack 'i' GVariant format.
+  + Updated translations.
+- Drop tracker-nb-translations.patch: Fixed upstream.
+- Minor spec-clean, use autosetup and make_build macros.
+
+-------------------------------------------------------------------
+Sat Jan  6 11:03:00 UTC 2018 - zaitor@opensuse.org
+
+- Add tracker-nb-translations.patch: Update Norwegian bokmål
+  translations.
+
+-------------------------------------------------------------------
+Thu Nov 16 03:46:47 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.0.2:
+  + tests: Cleanups and Coverity fixes. A testsuite for
+    libtracker-miner's TrackerMinerFS object was added.
+  + meson: Many small improvements.
+  + libtracker-common: Preparation work to be able to build
+    tracker/tracker-miners as a bundle.
+  + libtracker-direct: Implement update_array_async()
+  + libtracker-miner:
+    - Multiple cleanups and code simplifications.
+    - Properly honor lack of CHECK_MTIME flag, resulting on faster
+      startup times if it's not set.
+  + Updated translations.
+- Update Url to https://wiki.gnome.org/Projects/Tracker: current
+  Tracker's web page.
+
+-------------------------------------------------------------------
+Thu Oct  5 10:23:08 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.0.1:
+  + libtracker-fts: Fix FTS queries that included stop words.
+  + libtracker-sparql: Fix introspection annotations for
+    TrackerNotifier.
+  + libtracker-miner:
+    - Fix cancellation of TrackerDecorator.
+    - Several fixes to causes of nie:url UNIQUE constraint errors,
+      and better resilience against prior stale data.
+  + Meson fixes.
+  + Compiler warning fixes.
+  + Updated translations.
+- Drop tracker-libtracker-fixes.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 23 19:12:06 UTC 2017 - zaitor@opensuse.org
+
+- Add tracker-libtracker-fixes.patch: Fix various bugs in
+  libtracker (bgo#787452).
+- Move AUTHORS ChangeLog README and NEWS to devel sub-package, only
+  developers care about these anyway, silences rpmlint.
+
+-------------------------------------------------------------------
+Tue Sep 12 12:07:47 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.0.0:
+  + Tracker shall from now on use semantic versioning
+  + Drop --all from "tracker status" subcommand, it is the default
+    behavior now.
+  + TrackerDecorator internal operations are now cancelled on
+    shutdown.
+  + Add cancellable argument to sync libtracker-control call.
+  + Build fixes and minor cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 23 21:37:39 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.99.3:
+  + Mandate that SQLite >= 3.20.0 must have --enable-fts5. SQLite
+    devs made forwards and backwards incompatible changes to the
+    FTS5 module, it is not sustainable anymore to ship a FTS5
+    module for all combinations. The current FTS5 module in Tracker
+    is preserved for older SQLite versions.
+  + Fixed a Coverity warning (CID #1453480).
+  + Misc code and build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 23 21:01:31 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.99.2:
+  + Miners have been split from the Tracker package.
+  + Sqlite 3.20 introduced incompatible changes in the way FTS5 can
+    be extended, compile/runtime checks were added to adapt to the
+    new safer way if Sqlite >= 3.20.0 is found.
+  + Elements are no longer leaked in the base Resource table. A
+    refcounted approach ensures no longer needed elements are
+    cleaned up from that table. The database will no longer
+    indefinitely grow, it will be cleaned up and vacuumed
+    periodically.
+  + Fixed several Coverity warnings (CIDS: 1452447, 1188417,
+    1188418, 1188428, 1452443, 1452445, 1452449)
+  + Misc code and build fixes.
+  + Documentation improvements.
+- Eliminate build_extras conditions and tracker-extras.spec: this
+  basically only had the rss miner left to be built, and all miners
+  are now moved to a separate source package (tracker-miners).
+- Clean up BuildRequires: drop things that were only used by the
+  extractors/miners.
+- Have libtracker-common-2_0 obsolete libtracker-common-1_0.
+
+-------------------------------------------------------------------
+Wed Aug 23 20:29:39 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.99.1:
+  + Notable speedups to tracker-miner-fs, main loop overhead was
+    greatly reduced by processing elements in batches. Indexing has
+    been observed to be up to 2x faster, and startup on an indexed
+    and up-to-date filesystem up to 3x.
+  + More notable speedups to tracker-miner-fs startup, this applies
+    only to filesystems where the number of indexed folders exceed
+    the amount of inotify handles. Inotify monitoring is
+    temporarily disabled during filesystem mtime checks, resulting
+    in up to 4x faster startup. (In addition to the previous
+    point).
+  + Refurbished the allocation scheme for underlying DB interfaces.
+    The benefit is twofold, this makes TrackerSparqlConnections
+    truly isolated instances, and results in much reduced mutex
+    contention on stress situations.
+  + Dropped deprecated API to get direct/bus connections. Use
+    tracker_sparql_connection_get().
+  + Deprecated TrackerSparqlBuilder. Use TrackerResource.
+  + Added tracker_sparql_connection_get_namespace_manager() to
+    fetch the namespaces as per the ontology of the connection.
+  + Dropped support for non-standard SPARQL syntax "AS var", the
+    right syntax is "AS ?var", defined in SPARQL1.1 and accepted by
+    Tracker for a long time.
+  + Added tracker:title-order() sparql function, only meant to be
+    used in "ORDER BY" clauses. It drops the common articles at the
+    beginning of the given variable for sorting purposes.
+  + Fix shutdown issues on tracker-store introduced in 1.99.0. No
+    more spurious integrity checks on startup.
+  + Misc code and build fixes.
+  + Updated translations.
+- Obsolete dropped sub packages:
+  + tracker-gui.
+  + tracker-miner-evolution.
+  + tracker-miner-firefox.
+  + tracker-miner-thunderbird.
+
+-------------------------------------------------------------------
+Wed Aug 23 20:28:39 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 1.99.0:
+  + Domain ontologies: it is now possible to create domain-specific
+    SPARQL endpoints with customizable ontologies and data
+    locations. It is possible to do so either in-process using the
+    traditional Tracker daemons to do the work (Note: miners rely
+    on Nepomuk ontology).
+  + Deleted nautilus/firefox/evolution/thunderbird plugins. They
+    were in a pitiful state of maintainership, the latter 2 being
+    known broken for some time already.
+  + Deleted tracker-needle. It has been in strict maintenance state
+    for years, since then other UIs have integrated Tracker search
+    and offer a more compelling and modern experience.
+  + Deleted tracker-preferences. Tracker has been using GSettings
+    for years, so doesn't specifically require an UI for it,
+    there's of course room for desktop integrated configuration,
+    gnome-control-center does this for example.
+  + Made portions of libtracker-miner useful on the client side.
+    Miners don't mandate anymore an org.freedesktop.Tracker1.Miner
+    DBus interface/name, this is instead delegated on
+    TrackerMinerProxy. TrackerMinerFS has been made largely
+    independent of the ontology in use, all high level operations
+    that do require SPARQL updates are now exposed in
+    TrackerMinerFSClass.
+  + Removed deprecated and duplicate API on libtracker-miner.
+  + Added documentation about creating and maintaining ontologies.
+  + Removed maemo leftovers.
+  + libtracker-sparql: Protect sqlite3_bind* with interface lock.
+  + Improvements to meson build.
+  + Updated translations.
+- Drop the following packages:
+  + nautilus-extension-tracker-tags.
+  + tracker-gui.
+  + tracker-miner-evolution.
+  + tracker-miner-firefox.
+  + tracker-miner-thunderbird.
+
+
+-------------------------------------------------------------------
+Wed Aug 23 20:27:39 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.13.0:
+  + Added support for the Meson build system, autotools will be
+    eventually discontinued.
+  + Compile fixes.
+  + Fixed introspection annotations.
+  + libtracker-sparql: Support osinfo ontology in TrackerNamespace.
+  + Fix possible source of stale files in TrackerFileSystem.
+  + Whitelist some more syscalls.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 22 17:32:24 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.3:
+  + Mandate that SQLite >= 3.20.0 must have --enable-fts5. SQLite
+    devs made forwards and backwards incompatible changes to the
+    FTS5 module, it is not sustainable anymore to ship a FTS5
+    module for all combinations. The current FTS5 module in Tracker
+    is preserved for older SQLite versions.
+  + Fix typo in userguides miner DBus name, fixes spam on journald
+    trying to start it up.
+
+-------------------------------------------------------------------
+Mon Aug  7 19:15:48 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.2:
+  + Sqlite 3.20 introduced incompatible changes in the way FTS5 can
+    be extended, compile/runtime checks were added to adapt to the
+    new safer way if Sqlite >= 3.20.0 is found.
+  + Fix TrackerDBInterface being reused with no FTS set up.
+
+-------------------------------------------------------------------
+Wed Jun 28 20:27:38 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.1:
+  + libtracker-sparql:
+    - Add osinfo to the default namespace.
+    - Protect sqlite3_bind* with interface lock.
+  + tracker-extract: Whitelist openat(), with caveats.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + tracker-libtracker-sparql-add-osinfo-ontology.patch.
+  + tracker-libtracker-common-whitelist-openat.patch.
+  + tracker-libtracker-data-protect-sqlite3_bind.patch.
+
+-------------------------------------------------------------------
+Sun Jun 25 19:41:08 UTC 2017 - zaitor@opensuse.org
+
+- Add tracker-libtracker-data-protect-sqlite3_bind.patch:
+  libtracker-data: Protect sqlite3_bind*() with interface lock.
+  There may be multiple cursors/db_statements from the same db
+  interface being accessed from multiple threads. This must be
+  under the TrackerDBInterface lock in order to prevent threading
+  issues (rh#1404285).
+
+-------------------------------------------------------------------
+Tue May 23 15:13:21 UTC 2017 - zaitor@opensuse.org
+
+- Add tracker-libtracker-sparql-add-osinfo-ontology.patch: Add
+  osinfo ontology to the default TrackerNamespace (bgo#780968).
+- Add tracker-libtracker-common-whitelist-openat.patch:
+  libtracker-common: Whitelist openat() (bgo#782514).
+
+-------------------------------------------------------------------
+Mon Mar 20 15:13:33 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.12.0:
+  + Multiple compile warning fixes.
+  + Fix compilation on older vala.
+
+-------------------------------------------------------------------
+Wed Mar  1 11:27:50 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.4:
+  + tracker-extract: More sandboxing stability fixes, more
+    whitelisted inocuous syscalls. Compile fixes for any older
+    kernel not providing any of the specified syscalls. Fixed dconf
+    warnings when it accidentally hit the sandbox.
+  + libtracker-sparql: Fixed date format generated by
+    TrackerResource.
+  + Drop libgee dependency.
+  + Coverity fixes all over the place.
+  + Updated translations.
+- Drop pkgconfig(gee-0.8) BuildRequires following upstream changes.
+- Drop tracker-fix-more-whitelists-sandbox.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb  2 09:50:37 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description
+- Remove ancient %clean section
+
+-------------------------------------------------------------------
+Sat Jan 28 17:26:08 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.11.3:
+  + tracker-extract: Whitelist multiple inocuous syscalls that were
+    reported to raise false positives in the extraction sandbox.
+  + Make libseccomp dependency only mandatory on Linux.
+  + Fix several leaks and Coverity warnings.
+  + Fixed tracker-extract insertion of pre-defined resources.
+  + Fixed TrackerResource SPARQL generation of rdfs:Resource
+    properties with cardinality>1.
+- Reenable pkgconfig(libseccomp) BuildRequires: it is mandatory on
+  linux.
+
+-------------------------------------------------------------------
+Sat Jan 28 17:25:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.2:
+  + tracker-extract: Sandbox extractor threads. Filesystem and
+    network access are limited to being read and local only.
+  + tracker-miner-fs: Fixed high CPU use when receiving many
+    writeback notifications at once.
+  + tracker-extract, libtracker-sparql, libtracker-miner: plug
+    leaks.
+  + tests: cleanups and improvements.
+  + Updated translations.
+- Add pkgconfig(libseccomp) BuildRequires: Build support for
+  sandboxed metadata extraction.
+
+-------------------------------------------------------------------
+Sat Jan 28 17:24:09 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.11.1:
+  + Brown paper bag release, revert BIND() fix as it breaks other
+    legit cases.
+- Changes from version 1.11.0:
+  + libtracker-sparql:
+    - Added TrackerNotifier, helper object to receive notifications
+      of changes to the Tracker database. All users of the
+      GraphUpdated DBus signal are recommended to switch to it.
+    - Added client-side support for HTTP SPARQL endpoints.
+    - Using BIND() after OPTIONAL{} now works properly.
+  + libtracker-direct: Much reduced mutex contention during
+    threaded/async queries on the direct access backend.
+  + tracker-extract: Many improvements to music extraction, better
+    labeling of albums, nmm:albumArtist metadata is more faithful
+    to the file metadata.
+  + libtracker-data: Fixed possible overflows in
+    tracker:normalize/unaccent.
+  + Other fixes and cleanups.
+  + Updated translations.
+- Add pkgconfig(json-glib-1.0) and pkgconfig(libsoup-2.4)
+  BuildRequires: new dependencies for libtracker-remote.
+
+-------------------------------------------------------------------
+Sat Jan 28 17:24:08 UTC 2017 - zaitor@opensuse.org
+
+- Disable pkgconfig(libseccomp) BuildRequires as this feature
+  (sandboxing) is not ready for use (boo#1017652).
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Replace NetworkManager-devel with pkgconfig(libnm-glib)
+  BuildRequires: Align with what configure looks for.
+
+-------------------------------------------------------------------
+Sat Jan 28 16:36:02 UTC 2017 - zaitor@opensuse.org
+
+- Add tracker-fix-more-whitelists-sandbox.patch: Whitelist more
+  syscalls (bgo#776117).
+
+-------------------------------------------------------------------
+Fri Jan 20 08:35:20 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.4:
+  + tracker-extract: Whitelist multiple inocuous syscalls that were
+    reported to raise false positives in the extraction sandbox.
+  + Fixed tracker-extract insertion of pre-defined resources.
+  + Fixed TrackerResource SPARQL generation of rdfs:Resource
+    properties with cardinality>1.
+
+-------------------------------------------------------------------
+Fri Dec 16 16:50:46 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.3:
+  + tracker-extract: Whitelisted further syscalls in the sandbox.
+    False positives were being triggered in i686 platforms, plus
+    other syscalls that have been missed in 1.10.2.
+- Add pkgconfig(libseccomp) BuildRequires: Build support for
+  sandboxed metadata extraction.
+- Replace libupower-glib-devel for pkgconfig(upower-glib)
+  BuildRequires: Align with what configure looks for.
+
+-------------------------------------------------------------------
+Fri Dec  9 22:30:00 UTC 2016 - zaitor@opensuse.org
+
+- Add pkgconfig(libavcodec), pkgconfig(libavformat) and
+  pkgconfig(libavutil) BuildRequires: Build libav support.
+
+-------------------------------------------------------------------
+Thu Dec  8 19:12:47 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.2:
+  + tracker-extract:
+    - Sandbox extractor threads. Filesystem and network access are
+      limited to being read and local only.
+    - Use CUE info as a last resort on FLACs.
+    - Minor improvements on albumartist extraction.
+  + libtracker-sparql: Fix compile on C++ compilers.
+  + libtracker-data: Handle overflows on libicu-based
+    normalization.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 14 15:16:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.1:
+  + Tracker-extract:
+    - Fixed FD leak in flac extractor.
+    - Fixes to tag parsing in flac extractor.
+    - Memory leak fixes in libav extractor.
+  + Libtracker-sparl:
+    - Fixes to tracker:uri-is-descendant() error checks.
+    - Fix namespace of Errors in libtracker-sparql API.
+  + Misc: Fixes on functional tests.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 28 16:09:19 UTC 2016 - dimstar@opensuse.org
+
+- Only suggest instead of recommend tracker by the various library
+  packages. They work fine without tracker being present and
+  actually doings its work.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:15:05 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 20:49:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.9.2:
+  + Restore trailing colon in nfo:Equipment URIs.
+  + Add new mime-types for comic books.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 26 09:56:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.9.1:
+  + Tracker-resource: New API to describe RDF resources that can be
+    serialized into SPARQL updates and various data formats.
+    TrackerSparqlBuilder will be eventually phased out by this API.
+  + Tracker-extract:
+    - Use tracker resource integrally.
+    - Fixed blacklisting of crashy files.
+    - Fixes in gstreamer module for 32-bit platforms.
+  + Libtracker-control: Expose "index for process" miner API.
+  + Command line tools: Add "tracker extract" subcommand.
+  + SPARQL: Accept INSERT DATA, DELETE DATA and DELETE WHERE
+    syntax again.
+  + Libtracker miner: Fix accounting in TrackerPriorityQueue when
+    removing elements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 14 11:18:02 UTC 2016 - dimstar@opensuse.org
+
+- Rebase tracker-extract-private.patch.
+
+-------------------------------------------------------------------
+Thu Jun 23 11:11:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.9.0:
+  + Adapt to new GKqueue monitor mapping.
+  + Remove build time dependency on gnome-common.
+  + Fix error handling of tracker-extract-persistence.
+  + Fix tracker-miner-fs to honor all configuration options at
+    runtime.
+  + Stop recommending hard resets all through:
+    - tracker reset -r will now warn and request the user to
+      explicitly allow the operation.
+    - tracker-preferences won't show anymore a big "reset and
+      restart" button.
+  + Added "tracker reset -f $filename" subcommand. This will
+    recursively reset all indexed content for the given
+    filename/uri, and trigger reindexing if appropriate, so
+    contents are just like freshly indexed.
+  + Fixed possible crash in MP3 extractor.
+  + Favor embedded/external cue sheets before flac files' TOC.
+  + Store albumArtist from TPE2 tag in MP3 extractor.
+  + Avoid possible integer overflow in GIF extractor.
+  + Support regular expressions for fn:replace.
+  + Mark most internal functions as SQLITE_DETERMINISTIC.
+  + Logging changes in tracker-miner-fs, sparql errors no longer
+    end up with full insert queries being logged, but a loud
+    warning with instructions to get more info will be printed
+    instead.
+  + Fix FS size calculations on OpenBSD.
+  + Add MS Office "owner files" to ignored-files.
+  + Add systemd user services corresponding to D-Bus session
+    services.
+  + Handle DjVu files.
+  + Fixes in handling of BIND().
+  + miner-fs: Fix handling files moved soon after creating.
+  + Improved console output of tracker subcommands.
+  + Updated translations.
+- Drop tracker-fix-memory-leak.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri May 20 09:03:04 UTC 2016 - alarrosa@suse.com
+
+- Update to GNOME 3.20.2 (Fate#318572)
+
+-------------------------------------------------------------------
+Sun May  1 10:49:54 UTC 2016 - zaitor@opensuse.org
+
+- Add tracker-fix-memory-leak.patch: Fix a memory leak, patch from
+  upstream git (bgo#765172).
+
+-------------------------------------------------------------------
+Fri Apr 15 15:11:03 CEST 2016 - hpj@suse.com
+
+- Update to GNOME 3.20 -- Fate#318572.
+- Drop tracker-948805-Fix-tracker-miner-fs-SIGABRT.patch (bsc#948805)
+  (fixed upstream).
+
+-------------------------------------------------------------------
+Mon Mar 21 20:22:43 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.8.0:
+  + libtracker-miner: Adapt to libcue 2.0.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 09:52:54 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.7.5:
+  + Add back .trackerignore match to
+    ignored-directories-with-content.
+  + libtracker-data: Handle inserts where the subproperty
+    cardinality is larger than the parents'.
+  + tracker-extract:
+    - Fix gstreamer module cuesheet handling.
+    - Protect all single-valued properties in abiword extractor.
+    - Protect all single-valued properties in EPUB extractor.
+    - Protect all single-valued properties in ooxml extractor.
+    - Protect all single-valued properties in oasis extractor.
+    - Protect all single-valued properties in HTML extractor.
+    - Check string length before parsing XMP in PDF extractor.
+    - Add missing application/msword mimetype.
+    - Remove old dbus interface xml.
+    - propagate urn to the TrackerExtractInfo.
+    - Use safer method to insert tags in PDF module.
+    - Use safer method to insert tags in GIF module.
+    - Use safer method to insert tags in JPEG module.
+    - Use safer method to insert tags in TIFF module.
+    - Use safer method to insert tags in PNG module.
+  + libtracker-extract: Delete TrackerExtractClient.
+  + libtracker-miner:
+    - Avoid querying file type in crawling queries.
+    - Cut some slack on the reentry counter.
+    - Avoid changing order of elements in processing queue.
+    - Initialize all NodeData memory.
+    - Ensure the directory root is removed when its indexing root
+      is.
+- Drop tracker-trackerignore.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Mar  8 20:00:38 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.7.4:
+  + Update to FTS5.
+  + libtracker-miner: Many fixes to TrackerFileNotifier
+    cancellation.
+  + libtracker-direct: Handle cancellable argument in queries.
+  + libtracker-miner: Plug fd leak on TrackerCrawler
+    cancellation.
+  + libtracker-extract:
+    - Fix year-only date extraction in gstreamer module.
+    - Use tracker-guarantee to ensure a title in playlists.
+  + tracker-miner-fs: Ignore git repositories. Modify the
+    ignored-directories-with-content setting if you found this
+    convenient.
+  + tracker-miner-fs: Ignore #*# vim backups.
+- Add tracker-trackerignore.patch: Add back configuration option
+  to ignore directories containing a .trackerignore file.
+
+-------------------------------------------------------------------
+Tue Mar  8 20:00:37 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.7.3:
+  + libtracker-miner:
+    - Many indexing fixes leading to stale elements in the
+      database. If "UNIQUE constraint failed:
+      nie:DataObject.nie:url" errors are seen in journald, running
+      tracker-miner-fs once with the
+      TRACKER_MINER_FORCE_CHECK_UPDATED envvar is recommended. you
+      will need to terminate miners before that with
+      tracker daemon -t.
+    - Do not insert partial/empty sparql on error.
+    - Pass a builder in UPDATE state to
+      TrackerMinerFS::remove-file.
+    - Remove children recursively from queues on directory deleted.
+    - Fix generated Sparql query in
+      sparql_contents_compose_query().
+    - Fix some memory leaks of TrackerTask.
+    - Invalidate files iri recursively in case of file removal.
+    - Reset of reentry counter is not needed anymore.
+  + libtracker-fts: Fix invalid blob length calculation.
+  + libtracker-common: Use guint64 for free space calculations.
+  + libtracker-data, docs, libtracker-miner: Fix compile warnings.
+  + libtracker-data:
+    - misc code fixes.
+    - Fix g_warning() missing argument.
+  + Update AppData to spec version 0.7+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  8 20:00:36 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.7.2:
+  + Many leak fixes.
+  + libtracker-data: Reverted code to clean up stale Resources,
+    can't just be done yet.
+  + tracker tool: Removed tracker-compatibility CLI wrapper for
+    older commands.
+  + libtracker-common: Fix possible warnings on libicu unaccent
+    code.
+  + ontology: Set domain index on nie:contentCreated for
+    nmo:Message.
+  + libtracker-miner: Add ::remove-file signal vfunc.
+  + libtracker-common: Return total available space if running as
+    admin.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  8 20:00:35 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.7.1:
+  + libtracker-data:
+    - Support for Sparql 1.1 BIND and DELETE {...} INSERT {...}
+      WHERE {...} syntax.
+    - Support for Sparql 1.1 functions: NOW, RAND.
+    - Silence criticals on REGEX() with empty strings.
+  + libtracker-miner: Improved performance of move operations in
+    TrackerMinerFS.
+  + libtracker-miner, libtracker-extract: Fix double frees.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  8 20:00:34 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.7.0:
+  + libtracker-data: Support for Sparql 1.1 functions: CONCAT,
+    CONTAINS, LCASE/UCASE, STRLEN, SUBSTR, STRSTARTS/STRENDS, ABS,
+    ROUND, ENCODE_FOR_URI, STRBEFORE/STRAFTER, CEIL/FLOOR,
+    YEAR/MONTH/DAY/HOUR/MINUTES/SECONDS, MD5/SHA1/SHA256/SHA512.
+  + libtracker-miner: Move previous data deletion on file updates
+    to TrackerMinerFS implementations.
+  + libtracker-miner/libtracker-data/libtracker-extract: Partial
+    port to GTask.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  8 20:00:33 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.6.2:
+  + Include embedded copy of sqlite.
+  + tracker-extract: Fix small memory leak.
+  + libtracker-data: Silence a CRITICAL.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 25 22:39:50 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.1:
+  + tracker tool: Fixes to UID detection.
+  + libtracker-miner:
+    - Fix cancellation of tasks during TrackerFileNotifier
+      destruction.
+    - Handle failure to get a TrackerSparqlConnection.
+  + libtracker-common: Fix buffer overrun in libunistring-based
+    unaccenting.
+  + libtracker-control: Documentation fixes.
+  + tracker-extract: Photo orientation extraction fixes (TIFF,
+    XMP).
+  + Many fixes to functional tests.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 10:07:09 UTC 2015 - fezhang@suse.com
+
+- Add tracker-948805-Fix-tracker-miner-fs-SIGABRT.patch (bsc#948805)
+  to fix tracker-miner-fs SIGABRT 
+  The patch is backported from bgo#737023.
+  Also added automake to build requirement.
+
+-------------------------------------------------------------------
+Tue Sep 22 13:00:26 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.6.0:
+  + tracker-extract: Fix synchronization with tracker-miner-fs when
+    wait-for-miner-fs=TRUE.
+  + tracker-miner-fs: Fix crash during startup.
+  + tracker-extract: Fix builtin dummy module struct.
+  + Updated translations.
+- Drop tracker-fix-dummy_module.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Sep  2 10:50:06 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.5.2:
+  + libtracker-common: String to date conversion to return with
+    GError when null string.
+  + libtracker-data:
+    - Clean up stale URIs on startup.
+    - Fix printf string format.
+  + libtracker-extract:
+    - Add builtin dummy extractor.
+    - Plug leaks.
+  + libtracker-miner:
+    - Cancellation on unmount fixes.
+    - Deprecate tracker_miner_fs_add_directory_without_parent.
+    - Fallback to basename checks on hidden files.
+  + ontology: Remove cardinality limits on
+    nmo:communicationChannel.
+  + rss:
+    - Optimize deletes.
+    - Perform extraction/insertion of feed items at once.
+    - Set website url as a nfo:WebSite.
+    - Simplify GrssFeedChannel list creation.
+  + tracker-extract: Use dummy fastpath for svg extraction.
+  + tracker-miner-fs: Keep cache of IndexFile requesters on
+    directories.
+  + Updated translations.
+- Add tracker-fix-dummy_module.patch: Fix definition of
+  dummy_module.
+
+-------------------------------------------------------------------
+Fri Jul 31 23:07:54 UTC 2015 - dimstar@opensuse.org
+
+- Disable building of the Thunderbird miner: Mozilla is just not
+  able to provide a plugin API/ABI that does not crash every other
+  update and I'm sick and tired of running after them.
+
+-------------------------------------------------------------------
+Fri Jul 31 23:06:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.5.1:
+  + Many fixes to RSS miner:
+    - Dumps more complete data on tracker-store.
+    - Stability fixes.
+    - Leak fixes.
+    - Performs automatic maintenance of feed messages.
+  + Bumped libgrss dependency on 0.7.
+  + Performance improvements on tracker-store delete operations.
+  + Performance improvements on tracker-miner-fs delete operation
+    handling.
+  + Fix main Resource table id/urn leaks.
+  + Fix unnecessary queries in tracker-extract.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 31 23:05:54 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.5.0:
+  + Fix possible scenarios for high memory consumption in
+    tracker-extract.
+  + Ontology documentation has been revamped.
+  + Add search by tags functionality to tracker-needle.
+  + Fix spurious "out of space" checks succeeding (bgo#748907).
+  + Fix tracker-miner-fs not entering idle state (bgo#751172).
+  + File monitoring fixes (bgo#750394).
+  + MP3 extraction fixes (bgo#733136, bgo#728252, bgo#735515).
+  + EPUB extraction fixes (bgo#746401).
+  + Fixes on gstreamer-based album extraction (bgo#748227,
+    bgo#732236).
+  + GSF-based extraction fixes (bgo#730085, bgo#746437).
+  + Fix various compiler warnings (bgo#746381, bgo#746194,
+    bgo#751051).
+  + OpenBSD portability fixes (bgo#697719).
+  + Made tracker-needle use gsettings (bgo#740302).
+  + Added infrastructure to rebuild FTS tokens on tokenizer
+    changes.
+  + Fixed first index of gnome user docs (bgo#751992).
+  + Allow dummy .rule files for extractors (bgo#735610).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 31 23:04:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + build: Move bash-completion to new location.
+  + libtracker-miner: Set inotify limits for 'GInotifyFileBackend'
+    too (changes in GLib).
+  + tracker-extract: Remove ModulePath from comic/ebook rules.
+  + tracker-extract-gstreamer:
+    - Rely better on the GstDiscoverer than mimetype sniffing.
+    - Fallback to preview image for album art.
+  + tracker-miner-fs: Reset retry counter when we need to prepend
+    parents.
+  + tracker-preferences: Use the new command line tool.
+  + tracker: Improve bash completion script (complete on real
+    files for some arguments).
+  + tracker: Mark missing strings for translation.
+  + Bugs fixed: bgo#735610, bgo#732236, bgo#750394, bgo#751723,
+    bgo#751724, bgo#751992, bgo#748677, bgo#746401.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 24 19:17:54 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + Fix ambiguous GListModel vs GtkListModel references in vala
+    (bgo#746194).
+  + Fix compiler warnings (bgo#746381).
+  + Ignore "." recursing through compressed content (bgo#746437).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:48:24 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.3.6:
+  + Fix spurious folder deletes/reindexes (bgo#741852).
+  + Fix nie:url UNIQUE constraint asserts on downloaded files
+    (rh#1192224).
+  + Clear tracker-store watchdog timeout (bgo#745565).
+  + Support fn:replace (bgo#745917).
+  + Spam stderr less for not-so-uncommon error conditions
+    (bgo#746256).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  6 16:56:16 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.3.5:
+  + Fix major database migration bug (bgo#745737).
+  + Build only libiptc test if libjpeg is enabled (bgo#745583).
+  + Put absolute path in shell script (bgo#743738).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  4 07:48:37 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.3.4:
+  + Fixed playlists being processed by tracker-extract.
+  + bgo#743727: Account for cardinality=0 on DB migration.
+  + bgo#745219: mp3 passes album instead of song title to
+    libmediaart.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb  7 18:42:26 UTC 2015 - sfalken@opensuse.org
+
+- Update to version 1.3.3:
+  + Disc number may be incorrect for multi-disc vorbis / flac
+    albums (bgo#681698).
+  + BMP extractor doesn't retrieve image height and width
+    (bgo#741109).
+  + libmediart-2.0 support (bgo#743250).
+  + Tracker spams my log with "Unable to insert multiple values for
+    subject ..." (bgo#735406).
+  + applications, userguides: Don't detect locale changes if we
+    failed to create the miner (bgo#742391).
+  + 1.2.5 unit test failures (bgo#742035).
+  + Tracker sometimes ignores SIGINT/SIGTERM (bgo#739234).
+  + Missing accessible label names on tracker-needle widgets
+    (bgo#663687).
+  + libtracker-sparql: Document requirement to escape constructed
+    queries (bgo#741777).
+  + item_move() creates invalid SPARQL if source file does not
+    exist (bgo#678986).
+  + Remove --enable-guarantee metadata, always guarantee nie:title
+    and nie:contentCreated (bgo#733536).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb  1 12:42:23 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.3.2:
+  + New Feature: 'tracker' binary: All pre-existing tracker-*
+    command line tools have been merged into this new binary. Man
+    pages are shown for 'help' sub-commands. This brings more of a
+    "git" feel to the tracker's command line tools. There is a
+    backwards compatible 'tracker-command' script and compatibility
+    layer provided to ensure existing commands still work for a
+    limited time. The old 'tracker-control' actions are now part of
+    'tracker daemon', 'tracker reset' and 'tracker index'.
+    Additionally, the 'tracker-sql' utility has been integrated to
+    allow SQL operations directly on the DB.
+  + all: Move all code from tracker_info() to g_info() new in GLib
+    2.40.
+  + gvdb:
+    - Fixed LDFLAGS and CFLAGS, was using unused variables.
+    - Move away from g_file_delete() to unlink() to avoid GIO dep
+      for one line in unit tests.
+  + Bugs fixed: bgo#741317.
+- Changes from version 1.3.1:
+  + Bugs fixed: bgo#733536, bgo#739260, bgo#741012, bgo#740268,
+    bgo#740864.
+- Changes from version 1.3.0:
+  + Migrate to GKeyfileSettingsBackend, including:
+    - Now when using TRACKER_USE_CONFIG_FILES env var, we use this
+      backend.
+    - MAN pages which previously didn't exist for configurations
+      are generated from xml gschemas.
+  + libstemmer: Removed imported code and depend on external
+    version.
+  + libtracker-miner: Major update to Vala bindings.
+  + libtracker-common: Major clean up and removal of unused
+    internal APIs, including:
+    - Removed os-dependent APIs (mainly process spawning GLib does
+      now anyway).
+    - Removed tracker_file_(un)lock() API which was unused.
+    - Removed all run-time locale management, GNOME handles this
+      between logins, so do we.
+    - Removed TrackerConfigFile and TrackerKeyfileObject classes,
+      use GSettings instead.
+    - Removed unused type utils functions (e.g.
+      tracker_*_to_string() and more).
+    - Moved tracker-ontologies.h (with prefix, etc definitions)
+      into libtracker-sparql.
+    - Moved CRC32 API into libtracker-data (the only place it's
+      used).
+    - Moved TrackerStorage class to tracker-miner-fs (only place
+      it's used).
+  + data: Now moved into their respective binary dirs (source code
+    layout).
+  + Updated functional tests.
+  + Bugs fixed: bgo#737663.
+  + Updated translations.
+- Replace pkgconfig(libmediaart-2.0) BuildRequires with
+  pkgconfig(libmediaart-2.0): this prepares the build for when
+  LibMediaArt-2.0 will be supported.
+- Remove obsolete checks for openSUSE 11.3 and conditional
+  BuildRequires.
+- Rebase tracker-extract-private.patch.
+
+-------------------------------------------------------------------
+Sun Feb  1 11:42:23 UTC 2015 - dimstar@opensuse.org
+
+- Move org.freedesktop.Tracker.enums.xml to libtracker-common
+  package, ensuring that the enums are available to the Extractor
+  even without tracker being installed (boo#915583).
+
+-------------------------------------------------------------------
+Wed Dec 10 11:41:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.5:
+  + tracker-extract:
+    - Fixed potential use of uninitialised hash table in
+      persistence_invalidate().
+    - Fixed possible invalid memory read/write in
+      tracker_keywords_parse().
+    - Fixed memory leak of MediaArt object for TrackerExtractInfo.
+  + libtracker-fts:
+    - Make property list per-thread data to fix uninitialisation
+      issues.
+    - Fixed compilation errors when --disable-tracker-fts is used.
+  + Bugs fixed: bgo#741141, bgo#733536, bgo#740268, bgo#739149,
+    rh#1133042.
+
+-------------------------------------------------------------------
+Thu Nov  6 10:53:49 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.4:
+  + Ownership reference not added in tracker-file-notifier.c
+    (bgo#739237).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 17 20:10:04 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.3:
+  + bgo#737768: fs: TrackerCrawler can crash due to invalid
+    container pointers.
+  + bgo#738522: libtracker-data: Guard against failure to create a
+    FTS update statement.
+  + bgo#738450: libtracker-data: Guard against failure to open the
+    database.
+  + libtracker-miner:
+    - _NO_STAT breaks in FileNotifier without a GFileInfo.
+    - Handle multiple nfo:belongsToContainer properties to 1
+      nie:url.
+  + tracker-writeback: Remove broken code to set file attributes.
+  + Updated functional tests.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 09:45:17 UTC 2014 - gber@opensuse.org
+
+- Use the designated fdo desktop file categories
+  "Settings;DesktopSettings" for tracker-preferences.
+
+-------------------------------------------------------------------
+Sun Oct  5 16:19:56 UTC 2014 - zaitor@opensuse.org
+
+- Move .desktopfile from X-GNOME-SystemSettings to
+  X-GNOME-PersonalSettings, since the only values one can change is
+  for active user. Having it under System gives the impression that
+  changes are systemwide.
+
+-------------------------------------------------------------------
+Wed Sep 24 16:37:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.2:
+  + Fix API break with tracker_indexing_tree_new() (bgo#737243).
+  + libtracker-miner: Fixed missing Vala bindings for new
+    DirectoryFlags.{PRIORITY|NO_STAT} enums.
+
+-------------------------------------------------------------------
+Tue Sep 23 18:36:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.1:
+  + ontology: Revert nfo:hasMediaStream max cardinality change.
+
+-------------------------------------------------------------------
+Mon Sep 22 17:17:31 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.0:
+  + tests: Locale fix.
+  + libtracker-miner:
+    - Removed APIs that were never released as stable API.
+    - Update vala binding.
+  + libtracker-bus: Don't crash if query_async is cancelled.
+  + libtracker-sparql: Add a test case.
+  + tracker-extract-gif: add compatibility with GIFLib 5.1.0.
+  + tracker-info: Describe why we use IRI and not URI for
+    translators.
+  + tracker-needle: Fix the summary in the AppData file.
+  + utils: Added script to clean up tracker prefixc,
+    clean-tracker-prefix.
+  + Updated translations.
+- Drop tracker-giflib-5.1.0.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep  9 13:14:59 UTC 2014 - jengelh@inai.de
+
+- Add tracker-giflib-5.1.0.patch: Support GIFLib 5.1.0 API.
+
+-------------------------------------------------------------------
+Mon Sep  8 08:42:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.1.4:
+  + New Feature: Extractor now supports eBook and Comic book
+    formats.
+  + ontology: Added new RDF type nfo:EBook for electronic books,
+    this is not in Nepomuk yet.
+  + libtracker-fts: Fixed a memory leak for property_names
+    variable.
+  = libtracker-data: Fixed compiler warning with
+    tracker_db_interface_sqlite_fts_update_text().
+  + libtracker-bus:
+    - Fixed a bug where tracker-stats showed no information with
+      Vala 0.24+.
+    - Fixed all TRACKER_DBUS* to Tracker.DBUS.
+  + libtracker-sparql:
+    - All TrackerSparqlConnection APIs throw GLib.Error due to
+      GUnixFDList _append() API.
+    - Move TRACKER_ const definitions to Tracker namespace, i.e.
+      Tracker.DBUS_*.
+  + libtracker-miner:
+    - Generate Vala bindings from GIR.
+    - Improve GIR annotations for some nullable cases.
+    - Removed TrackerCrawlFlags and use TrackerDirectoryFlags
+      instead.
+    - Call tracker_data_provider_end_async() when dir has been
+      crawled.
+    - Fixed reference leak with TrackerTaskPool when using external
+      data miners.
+  + libtracker-extract: Fixed broken EXIF GPS coordinate
+    extraction.
+  + libtracker-control:
+    - Generate Vala bindings from GIR.
+    - Improve GIR annotations for some nullable cases.
+  + tracker-stats:
+    - Now EXPRESSIONS can be used to filter stats shown.
+    - Now only common and fallback RDF types are shown by default,
+      --all can be used to old behaviour.
+  + tracker-extract:
+    - Improved error parsing and content extraction for EPub
+      contents.
+    - Now EPub files are marked as new RDF type nfo:EBook.
+  + tracker-miner-fs: By default, ignore directories with
+    '.trackerignore' file inside.
+  + tracker-preferences: Removed fixed column for indexed
+    locations, column header text was cut off.
+  + Bugs fixed: bgo#735645, bgo#735636, bgo#735460, bgo#735610,
+    bgo#735567, bgo#735317, bgo#735339, bgo#733573, bgo#733317.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 22 16:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.1.3:
+  + New Feature: Extractor is now 'crash-aware' that being, we have
+    a separate data source for content that can't be extracted to
+    avoid repeated failures from tracker-extract. This also
+    survives through crashes that may occur due to attempted
+    extractions.
+  + build: Reduce vala generated source warnings from GCC.
+  + libtracker-fts: Make private functions static
+  + libtracker-miner: Make sure we return NULL on FileDataProvider
+    begin() errors
+  + libtracker-miner: Add API tracker_decorator_fs_prepend_file()
+    as part of 'crash-aware' feature.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 22 15:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.1.2:
+  + New Feature: Data Provider: Now there are TrackerDataProvider
+    and TrackerEnumerator interfaces to allow 3rd parties to supply
+    their own data to Tracker to be indexed, for example for an
+    online or proprietary service.
+  + ontology: nfo:hasMediaStream no longer has a max cardinality
+    of 1, this may mean a reindex is needed.
+  + libtracker-miner:
+    - PkgConfig file now requires libmediaart (when dependent)
+      privately.
+    -  Many documentation updates and fixes.
+  + libtracker-extract: There is no longer an example in the
+    examples/ directory as this library is now private.
+  + tracker-extract-mp3: Fixed mp3 parsing for ID3v24 or ID3v23
+    tags.
+  + tracker-extract:
+    - Fixed missing TRACKER_EXTRACTORS_DIR env var that was removed
+      at some stage.
+    - Cleaned up signal handling, SIGALRM and SIGABRT no longer
+      used.
+    - When built with libmediaart, requires version 0.5.0 or
+      higher.
+  + tracker-preferences:
+    - Don't use Stock.* deprecated since Gtk+ 3.10.
+    - Added suggestion to reindex OR restart depending on
+      configuration changes applied.
+  + functional-tests: Improved and updated in places.
+  + Build fixes.
+  + Bugs fixed: bgo#734464, bgo#733857, bgo#734089, bgo#734144,
+    bgo#733316, bgo#733948, bgo#733863, bgo#733536, bgo#733439.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 22 14:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.1.1:
+  + build: Use major version only PkgConfig files. Previously, we
+    had $library-$major-$minor (e.g. tracker-sparql-1.2, when it
+    should be tracker-sparql-1.0) to avoid creating unnecessary
+    work for developers using Tracker. This release corrects this
+    and it was planned originally.
+- Changes from versoin 1.1.0:
+  + build: Added CC_CHECK_FLAGS_APPEND m4 macros from
+    xinelib/systemd projects to check GCC compiler flags we can
+    use.
+  + tracker-miner-apps: New process to mine data about
+    applications, previously part of tracker-miner-fs. Can be
+    disabled with --disable-miner-apps.
+  + tracker-miner-user-guides: New process to mine data about user
+    guides and help content, previously part of tracker-miner-fs.
+    Can be disabled with --disable-user-guides.
+  + tracker-extract:
+    - [BMP] Added an new extractor.
+    - [ISO] Extract language, copyright and author information
+      about ISO images using new ontology.
+    - [ODT] Improved extraction of content so we don't stop on
+      embedded tabs and line breaks.
+  + tracker-control:
+    - Added a lot of strings previsouly untranslated.
+    - Removed shorthand command line switches for less common
+      arguments (--list-*, --pause-details).
+    - Added --watch command line option to watch changes to the
+      database.
+  + tracker-info:
+    - Add --resource-is-iri or -i to avoid filename to URN lookups.
+    - Don't show "(null)" for nie:InformationElements with no
+      nie:url.
+  + tracker-preferences:
+    - General UI clean up and modernization fixing many
+      deprecations where old GTK+ widgets were used.
+    - Added 'control' tab to allow users to enable finer control of
+      what's indexed (e.g. numbers - which are normally disabled).
+    - Add AppData with screenshots for app stores.
+  + tracker-needle: Add AppData with screenshots for app stores.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 22 13:35:32 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.0.3:
+  + Clean up License files.
+  + Buildsystem fixes.
+  + libtracker-fts: Make private functions static.
+  + libtracker-data:
+    - Fixed unit tests so files are not left around failing
+      distcheck.
+    - Fix tracker-backup unit test failures.
+  + libtracker-common: Enable G_MESSAGES_DEBUG for verbosity > 1,
+    not 2.
+  + libtracker-extract:
+    - Fixed TRACKER_EXTRACTORS_DIR env var.
+    - Remove from examples/ this library is now private.
+  + libtracker-miner:
+    - Chain parent constructed() in TrackerDecorator.
+    - Document TRACKER_MINER_DBUS_* defines.
+    - .pc Requires.priv libmediaart (if built with it).
+  + libtracker-control:
+    - Added .gitignore for VAPI and other generated content.
+    - Added missing sections.txt for documentation.
+  + tracker-extract:
+    - Added rule for source code files to add nfo:SourceCode
+      rdf-type.
+    - MP3 id3v23, id3v24 functions documented and v23 fixed.
+    - Use default signal handler for SIGALRM and SIGABRT.
+  + writeback: support saving metadata for GIFs.
+  + tests: Use tap automake testing scripts, fixes output
+    summaries.
+  + functional-tests: Rework 400-extractor.py test.
+  + Bugs fixed: bgo#734464, bgo#733573, bgo#733317, bgo#733857,
+    bgo#734089, bgo#734144, bgo#733316, bgo#733439, bgo#733317.
+  + Updated translations.
+- Drop tracker-thunderbird.patch and tracker-missing-include.patch:
+  fixed upstream.
+- Replace autogen.sh call with gnome-autogen.sh: tracker switched
+  to using the default in git as well.
+- Drop autogen.sh as source: no longer required after the switch to
+  gnome-autogen.sh.
+
+-------------------------------------------------------------------
+Thu Jul 31 09:53:00 UTC 2014 - dimstar@opensuse.org
+
+- Add tracker-thunderbird.patch: Accept that the command
+  'thunderbird' might have output to STDERR (glib slice warnings).
+  To not break detection of TB, we redirect STDERR output to
+  /dev/null.
+
+-------------------------------------------------------------------
+Wed Jul 23 00:07:53 UTC 2014 - dimstar@opensuse.org
+
+- Obsolete the old tracker library libtracker-extract-0_16-0 by
+  libtracker-common-1-0 to aid updates (bnc#876649).
+
+-------------------------------------------------------------------
+Fri Jul 11 15:52:39 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.0.2:
+  + build: use pkg-config to look for which gdbus-codegen to use.
+  + all: Switch out GSettings "schema" property for "schema-id",
+    was causing distcheck to fail.
+  + docs/reference: Use $(top_srcdir) for DOC_SOURCE_DIR instead of
+    relative paths.
+  + libtracker-common: memory limits on systems with large amounts
+    of RAM.
+  + libtracker-control:
+    - Added CFLAGS/LIBS required for reference documentation to
+      succeed.
+    - Fix remnants of libtracker-miner in sources.
+  + tracker-extract: [ODT] Continue extracting if we find embedded
+    tabs + line breaks.
+  + tracker-search: Don't show "(null)" for nie:InformationElements
+    with no nie:url.
+  + Bugs fixed: bgo#728370, bgo#729968, bgo#732839.
+  + Updated translations.
+- Add tracker-missing-include.patch: Add mising include statement.
+
+-------------------------------------------------------------------
+Fri Jun 13 10:01:07 UTC 2014 - fezhang@suse.com
+
+- Add category X-GNOME-SystemSettings to
+  tracker-preferences.desktop so that gnome-control-center can
+  recongnize and show it (bnc#866235).
+
+-------------------------------------------------------------------
+Fri Jun 13 09:35:55 UTC 2014 - fezhang@suse.com
+
+- Add category X-GNOME-SystemSettings to tracker-preferences.desktop
+  so that gnome-control-center can recongnize and show it (bnc#866235)
+
+-------------------------------------------------------------------
+Fri May  9 15:27:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.0.1: 
+  + build: 
+    - Switch --with-enca is now --enable-enca.
+    - Switch --enable-icu-charset-detection has been added to
+      prefer ICU over enca for MP3 content detection.
+  + libtracker-miner: Memory footprint significantly reduced:
+    - Massif reports tracker-miner-fs peaking at 24MB.
+    - Massif reported previously growing to ~180MB.
+    - Fix involves using file depth based notification internally
+      to reduced memory build up.
+    - Querying existing data in the DB now is limited (to avoid
+      memory use, at a small performance cost).
+    - Initial indexing performance is unaffected.
+    - Approximately 1/3 more expensive indexing updates on
+      resources post initial index.
+    - Testing using an index of 11304 folders and 123428 files.
+  + libtracker-extract:
+    - Encoding detection with libicu handles failure better.
+    - giflib 4.2.x doesn't support PrintGifError, handle both
+      situations.
+  + tracker-search: Fix output when searching for emails, snippets
+    shown in red and links in green.
+  + Bugs fixed: bgo#729708, bgo#728252, bgo#728546, bgo#728370,
+    bgo#725717, bgo#729474.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May  6 12:23:16 UTC 2014 - fcrozat@suse.com
+
+- Do not BuildRequires MozillaThunderbird on SLE12.
+
+-------------------------------------------------------------------
+Mon Mar 24 19:01:47 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.0.0:
+  + Make decorator errors public.
+  + libtracker-sparql: Make sure we check the env before choosing
+    the bus type.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 22 18:17:22 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.17.8:
+  + Fixes: bgo#705315 tracker-0.16.2: configure wrongly mixes
+    checks for enable-compile-warning while using
+    WITH-compile-warnings.
+  + Fixes: bgo#726419 tracker-extract reports sparql update errors
+    for jpeg with dc:indenfitier.
+  + Fixes: bgo#675198, tracker-store man page description needs
+    minor cleanup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 16:10:22 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.17.7:
+  + libtracker-sparql: Fix undefined reference to symbol
+    'tracker_ipc_bus'.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 09:18:51 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.17.6:
+  + Make GBusType run-time configurable with TRACKER_BUS_TYPE
+    environment variable.
+  + Removed dead code from coverity report.
+  + libtracker-fts: Fix memory leak for GList on property names
+    during FTS init.
+  + libtracker-data:
+    - getting FTS multivalued properties used unintialised variable
+      in ontology_get_fts_properties().
+    - Protect potential NULL dereference in _db_cursor_iter_next().
+  + libtracker-{common,data,extract}: do not maintain LT
+    versioning.
+  + libtracker-miner:
+    - Do not leak the TrackerSparqlConnection in
+      TrackerFileNotifier.
+    - Don't print uninitalised sparql variable for update_array_cb.
+    - Dispose GFileInfo objects ASAP when crawling (attempt to
+      reduce memory footprint).
+  + libtracker-extract:
+    - Lookup rules after initializing in get_fallback_rdf_types()
+      to avoid empty rules lists.
+    - Fix memory leak on .rule file load errors.
+    - Fix memory leak and unref rdf_types hash table in
+      _module_manager_get_fallback_rdf_types().
+  + tracker-store: Remove the --low-memory option in the man pages,
+    not used since 0.9.x.
+  + tracker-miner-fs: Fix memory leaks
+  + tracker-extract:
+    - Removed support for libstreamanalyzer, xine and totem
+      extractors, not been used or supported in a long time.
+    - Removed support for obsolete GStreamer backends tagreadbin,
+      decodebin2 in gstreamer extractor.
+    - Don't report < 0 nfo:width for images with GStreamer
+      discoverer.
+    - Remove the need for fork() and sub-processes with PDF
+      extraction, no longer needed.
+    - Make logging clearer if we fail on no modules or no metadata.
+    - Fixed epub extractor so it doesn't use a broken ontology.
+    - Improve logging, too many g_debug() calls to other log
+      levels.
+    - set nfo:Video on the gstreamer guess rule for completeness.
+    - Add desktop file to autostart process.
+    - Make it clearer where MIME type came from in debug (from
+      GIO/xdgmime or tracker-miner-fs).
+  + tracker-sparql: Support listing properties with --tree and make
+    --search case insensitive.
+  + tracker-sandbox: Set the locale properly so queries don't fail
+    due to locale mismatch to DB.
+  + Build fixes.
+  + Bugs fixed: bgo#726421, bgo#726639, bgo#726640, bgo#725689,
+    bgo#726552, bgo#726553, bgo#725607, bgo#725890.
+  + Updated translations.
+- Rebase tracker-extract-private.patch: Upstream decided to 'fix'
+  it as .so.0.0.0, which is not what we consider the right thing
+  for this kind of private library).
+
+-------------------------------------------------------------------
+Tue Mar  4 21:10:41 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.17.5:
+  + Build fixes.
+  + libtracker-miner: Code fixes.
+  + libtracker-extract: Don't break compilation due to missing
+    rules/modules dir.
+  + tracker-extract:
+    - Don't leak FD on tiff extractor when opening file.
+    - set nfo:Document in FallbackRdfTypes for text documents.
+  + racker-miner-fs: Fix documentation for 'low-disk-space-limit',
+    was in MB not %.
+  + Updated functional tests.
+  + Updated translations.
+- Add tracker-extract-private.patch: do not maintain LT versioning
+  on the now private library libtracker-{common,data,extract}.
+- Add gnome-common BuildRequires and call to autogen.sh, as above
+  patch touches the build system.
+- Add autogen.sh as source in order to use the upstream provided
+  bootstrap script (not part of the tarball).
+- Rename libtracker-common-1_0-0 subpackage to
+  libtracker-common-1_0: the private libraries are no longer LT
+  versioned.
+- Drop libtracker-extract-1_0-0 and typelib-1_0-TrackerExtract-1-0
+  subpackages and the respective Requires to the same from the
+  -devel package. Package libtracker-extract and the corresponding
+  glib schema with the other private libraries in
+  libtracker-common-1_0.
+- Add post/postun scriptlets for schema handling to
+  libtracker-common-1_0.
+
+-------------------------------------------------------------------
+Sat Feb 22 22:20:41 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.17.4:
+  + rss: compile fix with the RSS miner enabled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 21 19:44:22 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.17.3:
+  + tracker-extract: Prioritization of rdf:types has been
+    implemented, so certain file types are extracted before others,
+    on demand of applications.
+  + libtracker-extract: This library has been made private.
+    Implementing a TrackerDecorator is the recommended way to
+    provide additional data.
+  + libtracker-miner: Major API cleanups,
+    - TrackerMinerWeb has been removed, replaced by
+      TrackerMinerOnline.
+    - TrackerMinerManager has been splitted into a separate
+      libtracker-control.
+    - TrackerCrawler, TrackerStorage and the thumbnailer/mediaart
+      helper functions are no longer public.
+  + libtracker-control: New library, containing
+    TrackerMinerManager, it requires using tracker-control-1.0.pc.
+  + tracker-miner-fs: optional prioritization of folders has been
+    reimplemented, used on removable volumes and DBus requests.
+  + tests: GTester Makefile rules have been updated.
+  + utils: tracker-sparql gained a --tree switch to print (partial)
+    ontology trees, and longhands/shorthands for
+    classes/properties.
+- Create new subpackages libtracker-control-1_0-0 and
+  typelib-1_0-TrackerControl-1_0: following upstream.
+- Adjust -devel package requirements to the dropped and new library
+  package.
+
+-------------------------------------------------------------------
+Fri Feb 14 16:49:26 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.17.2:
+  + build system changes:
+    - Use API version 1.0 instead of bumping it every stable
+      release (affects .pc and .so filenames).
+    - Require libmediaart >= 0.1.0, code has been exported from
+      Tracker to this library.
+    - Make sure --target-glib used with Vala is the correct GLib.
+  + libtracker-common: Add TRACKER_TRACKER_PREFIX define for
+    tracker: ontology prefix.
+  + libtracker-miner:
+    - Ensure the decorator nie:DataSource is queried as an IRI.
+    - Make sure we flush remaining TrackerDecorator SPARQL updates
+      when finished, avoids loosing extracted data for last files.
+    - Fix infinite loop TrackerDecorator.
+    - Fix warning for TrackerFileSystem registering properties
+      twice (with hash destroy function set to NULL).
+    - Improve TrackerDecoratorInfo to be a boxed type fixing a
+      ref-count issue and a requirement for introspection.
+    - Avoid unnecessary query calls when tracker_decorator_next()
+      is called consecutively, we now queue queries.
+    - Various improvements including moving string handling from
+      GArray to GPtrArray and code duplication in TrackerDecorator.
+  + tracker-extract:
+    - Split generic gstreamer/libav extract rules.
+    - Use fully expanded name for nie:DataSource in decorator to
+      avoid conflicts with shorthand insert IDs.
+  + tracker-needle:
+    - Fixed GTK+ 3.x deprecations.
+    - Fixed typo in Makefile.am, VALACFLAGS was not being used,
+      avoids warnings,
+  + firefox: Added Polish translations for plugin.
+  + thunderbird:
+    - Added UI localization support.
+    - Escape folder names in URIs.
+    - Port code to make sure it works for Thunderbird 24.
+    - Add and improve debug messages.
+  + Bugs fixed: bgo#696099, bgo#723097, bgo#721455.
+  + Updated translations.
+- Add pkgconfig(libmediaart-1.0) BuildRequires: new dependency
+  after code was split out.
+
+-------------------------------------------------------------------
+Fri Jan 24 20:01:54 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.17.1:
+  + New features:
+    - Passive extraction: Specific metadata extraction (e.g. image
+      orientation) is done by listening for insert signals for
+      resource metadata (e.g. file name, size, etc) and done
+      passively rather than being required before inserting ANY
+      information about a resource.
+    - SPARQL functions tracker:normalize() and tracker:unaccent().
+    - libav extractor for extracting audio/video metadata.
+    - tracker-store GraphUpdated signal delay now configurable.
+  + libtracker-common:
+    - Added strnlen() compatibility function.
+    - Fixed unit test for SCHED_IDLE expecting SCHED_OTHER by
+      default, but jhbuild uses SCHED_IDLE as standard.
+  + libtracker-fts: Strengthen against SQLite failures. Ensure no
+    infinite loos in sqlite3_step() and don't use
+    g_once_init_enter() for init.
+  + tracker-extract:
+    - Support Qt5.
+    - Removed --disable-shutdown command line option now that it is
+      instantiated by DBus.
+    - Fixed memory leak with strings processed detected as UTF16.
+    - msoffice: Fixed memory leak, calling g_free() on wrong
+      pointer.
+    - mp3: Fixed memory leak, cases where "" was found in tags were
+      not always freed.
+    - gstreamer: Fixed memory leak on error for GstDiscovererInfo
+      structs.
+    - gif: Fixed memory leak on error for filename
+  + Build system fixes.
+  + Update functional tests.
+  + Bugs fixed: bgo#699412, bgo#715040, bgo#719512, bgo#720686,
+    bgo#721880, bgo#722353, bgo#722525, rh#1026283.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec  1 18:15:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.17.0:
+  + tracker-tag:
+    - Fixed GLib-WARNING **: goption.c:2193: ignoring no-arg.
+    - Fix --list (-t) to use logical OR, not AND.
+  + sparql:
+    - Fix AS ?foo handling in FTS queries.
+    - Stop using deprecated sqlite count_changes PRAGMA.
+  + extractors:
+    - EPUB extractor has been improved, content is now more
+      complete.
+    - Added ICU-based encoding detection.
+    - Improved media metadata in mp3 and gstreamer extractors.
+    - Detect GNOME screenshots and add these to a category.
+  + libtracker-sparql-backend: Fix connection singleton mutex
+    issue.
+  + libtracker-bus: allow cancellation when iterating cursor.
+  + libtracker-direct: don't allow connection if current and db
+    locale mismatch.
+  + miner-fs: Improvements in indexing of removable media.
+  + Utils: Added tracker-sandbox.
+  + Portability fixes.
+  + Build fixes.
+  + Updated documentation.
+  + Updated translations.
+- Change TrackerAPI defines to 0.18 and RPMTrackerAPI to 0_18,
+  following upstream marking the beginning of the 0.18 development
+  cycle.
+
+-------------------------------------------------------------------
+Sat Nov 30 15:30:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.4:
+  + Fix build with newer upower.
+  + Silence normal bootup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov  2 12:19:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.3:
+  + libtracker-common:
+    - use procfs psinfo instead of cmdline on Solaris.
+    - support both UPower 1.0 and pre-1.0 APIs.
+    - fix tests expecting stdout/stderr messages.
+    - Make sure we load config files properly when using
+      TRACKER_USE_CONFIG_FILES.
+  + tracker-miner-fs: Make sure we load config files properly when
+    using TRACKER_USE_CONFIG_FILES.
+  + libtracker-bus: allow cancellation when iterating
+    TrackerCursor.
+  + libtracker-miner:
+    - Fixed missing setlocale() in unit tests.
+    - Check segment array bounds in peek function for
+      tracker-priority-queue, fixes crash.
+  + libtracker-fts: Always do full unicode testing.
+  + libtracker-sparql: Fixed missing setlocale() in unit tests.
+  + tracker-preferences: Remove markup from UI files.
+  + tracker-extract-pdf: remove usage of non async-signal safe
+    functions from signal handler, fixes crash on Solaris.
+  + man-pages: Added information about TRACKER_SPARQL_BACKEND and
+    TRACKER_PRAGMAS_FILE.
+  + functional-tests: No longer need to install DConf profile in
+    /etc.
+  + Require: libgsf version to 1.14.24 needed for
+    gsf_doc_meta_data_read_from_msole().
+  + Build system fixes.
+  + Bugs fixed: Parts of bgo#676209, bgo#699412, bgo#703097,
+    bgo#706003, bgo#707150, bgo#707151, bgo#707498, bgo#707499,
+    bgo#709703.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 14 08:12:59 UTC 2013 - wr@rosenauer.org
+
+- Remove Supplements for Thunderbird as it's causing major issues
+  and should not be installed by default (bnc#840403)
+
+-------------------------------------------------------------------
+Thu Aug  1 06:56:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.2:
+  + libtracker-common:
+    - Added /proc/meminfo alternative for Solaris.
+    - Hide all config file logging without preprocessor defines
+      turned on.
+    - Added function tracker_config_file_import_to_settings() for
+      when we use GKeyFile config files.
+  + libtracker-data: Don't use the count_changes PRAGMA, it is
+    deprecated.
+  + tracker-preferences:
+    - Mention in man-pages that TRACKER_USE_CONFIG_FILES has no
+      effect to tracker-preferences.
+    - Added "system" page now to give users an easy way to reindex
+      their data.
+    - Glade file used now requires GTK+ 3.x, was 2.x.
+    - Fixed optical disc checkbutton sensitivity bug.
+  + tracker-extract-mp3: Fix segfault when trying to process NULL
+    ID3 tag.
+  + tracker-control: Use procfs psinfo instead of cmdline on
+    Solaris.
+  + functional-tests: Update DConf profile to fix dconf-WARNING **:
+    unknown dconf database description: trackertest.
+  + Build system improvements.
+  + Bugs fixed: bgo#700199, bgo#703747, bgo#703759, bgo#704048,
+    rh#741479, rh#959020.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 20 09:56:05 UTC 2013 - dimstar@opensuse.org
+
+- Fix files sections of tracker-miner-thunderbird and
+  tracker-miner-firefox: trackerbird@bustany.org is a symlink to a
+  directory, not a directory by itself. Thus it must not end with a
+  trailing /.
+
+-------------------------------------------------------------------
+Wed Jul  3 13:23:28 UTC 2013 - fcrozat@suse.com
+
+- No longer build tracker-miner-firefox, it doesn't work for
+  months, there is no point in shipping it for now.
+- Own /usr/share/mozilla and /usr/share/mozilla/extensions
+  directories in tracker-miner-thunderbird subpackage.
+
+-------------------------------------------------------------------
+Wed May  1 20:24:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.1:
+  + libtracker-common:
+    - Implemented get_memory_total() on OpenBSD
+    - Added support in dbus process idenfitification for OpenBSD
+  + libtracker-data:
+    - Fixed unit tests for localtime/timezone functions
+    - Fixed AS ?foo handling in FTS queries
+  + libtracker-sparql: Fixed connection singleton mutex issue
+  + tracker-tag:
+    - Fixed --list (-t) to use logical OR, not AND
+    - Fixed GLib-WARNING **: goption.c:2193: ignoring no-arg..
+  + Bugs fixed: bgo#697719, bgo#697809, bgo#697688, bgo#697316.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 18:36:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.0:
+  + Flickr miner was removed: it will be imported to GNOME Photos
+    later.
+  + Removed more unmaintained utilities: tracker-explorer,
+    tracker-search-bar, playlists, lyrics, webhistory.
+  + New features: Support GKqueueDirectoryMonitor API on BSD
+    systems.
+  + Full Text Search (FTS) v4 support:
+    - New SPARQL function fts:snippet(?u)
+    - New SPARQL function fts:offsets(?u).
+  + Firefox/Thunderbird plugin updates.
+  + Updated translations.
+- Drop build_applet defines and conditions: the applet
+  (tracker-search-bar) was dropped by upstream.
+  + Remove pkgconfig(libpanelapplet-4.0) BuildRequires.
+  + No longer pass --enable-tracker-search-bar resp.
+    --disable-tracker-search-bar to configure.
+  + Drop gnome-panel-applet-tracker subpackage; obsolete it by
+    tracker main package.
+- Drop build_miner_flickr defines and conditions: the flickr miner
+  was dropped by upstream.
+  - Remove README.SUSE.flickr source file: no longer relevant.
+  - Drop pkgconfig(rest-0.7) BuildRequires.
+  - No longer pass --enable-miner-flickr/--disable-miner-flickr to
+    configure.
+  - Drop -miner-flickr subpackage; obsolete it by tracker main
+    package.
+- No longer pass --enable-tracker-explorer resp.
+  --disable-tracker-explorer (based on build_gui defines) to
+  configure, as tracker-explorer has been removed.
+- Drop tracker-0.14.4-giflib5.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Mar 13 13:07:18 UTC 2013 - dimstar@opensuse.org
+
+- Add tracker-0.14.4-giflib5.patch: Fix build with giflib 5.0.x.
+
+-------------------------------------------------------------------
+Wed Mar 13 07:57:02 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.15.4:
+  + Build fixes:
+    - Fixed various compiler warnings.
+    - Fixed various introspection warnings.
+    - Switched out all uses of deprecated GStaticMutex for GMutex.
+  + Bugs fixed: bgo#643388.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  9 12:05:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.15.3:
+  + build:
+    - Require GLib 2.35.1 for GTask API (was 2.28.0)
+    - Remove all cases of g_type_init() now it's deprecated in
+      GLib 2.35.x
+  + libtracker-common: Don't log to file by default, only
+    stdout/stderr. See TRACKER_USE_LOG_FILES env var for details.
+  + libtracker-miner:
+    - Fixed nasty stack corruption with TrackerIndexingTree filter
+      rules.
+    - Fixed vala bindings for TrackerMinerFS.
+  + tracker-extract-msoffice: Avoid deprecated
+    gsf_msole_metadata_read() API.
+  + tracker-search:
+    - Added snippets for result hits.
+    - Added colored output for result hits.
+  + Bugs fixed: bgo#693889, bgo#694146, bgo#693198, bgo#693198,
+    bg##694783, bgo#695157.
+  + Updated translations.
+- Drop tracker-nonvoid.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Feb 15 13:45:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.15.2:
+  + Build: Required SQLite 3.7.9 (was 3.7.0) for FTS4 support
+  + New Features:
+    - Full Text Search (FTS) v4 support.
+    - Snippets provide context around a matched query.
+    - Offsets provide an index where a matched query is found in
+      context.
+  + Ontology: Deprecated tracker:fulltextNoLimit and removed use in
+    all other ontologies.
+  + libtracker-fts: Removed tracker_fts_config_min_word_length()
+    and config option.
+  + libtracker-miner: Fixed GNOME password provider, libsecret
+    expects "user" not "username".
+  + tracker-info: Fixed memory leaks.
+  + Bugs fixed: bgo#691847, bgo#692409, bgo#692603.
+- Add tracker-nonvoid.patch: Fix non-void function not having a
+  return statement.
+
+-------------------------------------------------------------------
+Sat Feb  9 20:35:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.15.1:
+  + build: Fixes build error when supplying nautilis extensions
+    directory
+  + bgo#691807: Tracker should build against libgee 0.8
+  + bgo#691804: tracker-cue-sheet not ported to Gstreamer 1.0
+  + bgo#679870: libsecret migrations
+  + bgo#690170: Add nfo:MediaList type to .m3u playlist files
+  + bgo#692210: miner-manager: plug some memleaks
+  + libtracker-common: Add replacement function for flock() on
+    Solaris
+  + libtracker-miner: Fix libsecret password provider get call
+    using non-NULL GError
+  + tracker-miner-fs, store: Add MeeGo keys to desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb  9 19:47:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.15.0:
+  + Port to GStreamer 1.0 / gupnp-dlna-1.1.
+  + New Feature: Support GKqueueDirectoryMonitor API on BSD systems
+- Drop tracker-libgrss-0.5.patch: fixed upstream.
+- Drop tracker-fix-include-sched-idle.patch and
+  tracker-removeable-media-off.patch: they are outdated and were
+  only applied for openSUSE <= 11.4.
+- Drop libtool BuildRequries: no longer needed.
+
+-------------------------------------------------------------------
+Sat Feb  9 18:37:55 UTC 2013 - badshah400@gmail.com
+
+- Update to version 0.14.5:
+  + build: Fixes --with-nautilus-extensions-dir which was broken.
+  + bgo#692409: playlist extractor should index playlist title if
+    available.
+  + bgo#692603: Search can not find pdf files using author names.
+  + bgo#691807: Tracker should build against libgee 0.8.
+  + bgo#690170: Add nfo:MediaList type to .m3u playlist files.
+  + bgo#688287: build: don't build-depend on Dia.
+  + bgo#692210: miner-manager: plug some memleaks.
+  + bgo#688371: add support for GKqueueDirectoryMonitor.
+  + libtracker-common: Add replacement function for flock() on
+    Solaris
+  + tracker-miner-fs, store: Add MeeGo keys to desktop files
+    (OnlyShowIn, X-Meego-Priority keys).
+
+-------------------------------------------------------------------
+Mon Nov  5 08:53:45 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14.4:
+  + Support XPS documents (bgo#687160): XML Page Specific Microsoft
+    alternative to PDF files
+  + Support DVI documents (bgo#687162): DeVice Independent files
+    (printable output of TeX files)
+  + tracker-extract-pdf: Avoid leaving hundreds of Zombie processes
+    around
+  + tracker-miner-fs: Fix huge memory consumption (bgo#687134)
+  + Updated translations.
+- Add libgxps-devel BuildRequires: enable the new XPS Support.
+
+-------------------------------------------------------------------
+Wed Oct 24 19:03:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14.3:
+  + build:
+    - Add SQLite3 version check and warning for crashes with
+      complex queries
+    - Default to icu over unistring when automatically guessing
+      unicode support
+  + functional-tests:
+    - office test files should always be included in dist
+    - include missing tiff files in dist
+  + libtracker-common: Consistently use long in get_memory_total
+  + libtracker-fts: ICU cannot handle complex locale descriptions
+  + libtracker-extract: Fixed EXIF extractor due to changes by
+    libexif
+  + tracker-extract-pdf: Fix crash if mmap() fails
+  + tracker-extract-playlist:
+    - Don't error when to_metadata hash table is NULL
+    - Log message for ignoring playlists with > 1k entries
+  + tracker-info: Added --plain-text-content || -c option
+  + tracker-miner-fs:
+    - Make building this optional
+    - Ignore XDG directories set to $HOME
+  + tracker-needle: Fix double free
+  + Bugs fixed: bgo#628857, bgo#666749, bgo#675660, bgo#680172,
+    bgo#680350, bgo#680897, bgo#685253, bgo#686071.
+  + Updated translations.
+- Drop libtracker-fts-ICU-complx-locale.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep 18 11:07:46 UTC 2012 - zaitor@opensuse.org
+
+- Add libtracker-fts-ICU-complx-locale.patch, fixes bnc#780614.
+
+-------------------------------------------------------------------
+Mon Aug 20 08:53:17 UTC 2012 - dimstar@opensuse.org
+
+- Disable evo plugin for now during -extras build: the API once
+  more changed much faster than Tracker can keep up with.
+- Drop tracker-evo-implicit.patch: this will be fixed by upstream
+  by the time the new evo version will be supported.
+
+-------------------------------------------------------------------
+Tue Jul 10 13:05:56 UTC 2012 - coolo@suse.com
+
+- Version the tracker BuildRequires when building tracker-extras:
+  tracker-extras.spec needs to build *after* tracker version
+  updates.
+
+-------------------------------------------------------------------
+Fri Jul  6 16:45:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14.2:
+  + tracker-extract: Fix compilation of Qt Media Art backend
+  + tracker-extract-gstreamer: Fix invalid pointer access from
+    gst_tag_list_get_string() use
+  + tracker-miner-fs:
+    - Remove failed extractions from queues if
+      g_file_query_info_async() fails.
+    - Removed unused code for dir config root Quark
+  + Bugs fixed:
+    - bgo#676437: TrackerMinerFS: priv->extraction_timer can't be
+      NULL when we update miner progress
+    - bgo#676153: Crash on USB removal during crawling
+    - bgo#676435: Infinite loop in miner
+    - bgo#679313, bgo#674869, bgo#676516, bgo#676213, bgo#675431,
+      bgo#676849, bgo#676433, bgo#676514, bgo#675437.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May  3 19:38:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14.1:
+  + New Feature: tracker-sandbox, to help with development
+  + libtracker-common: Set G_MESSAGES_DEBUG when verbosity > 2
+  + libtracker-sparql: Set G_MESSAGES_DEBUG when verbosity > 2
+  + libtracker-miner:
+    - Don't abort() if none file:// URI themes are used
+    - Fix unit tests with GLib 2.28
+  + tracker-extract: Add 'max-media-art-width' config option
+  + tracker-extract-oasis:
+    - Support Libreoffice graphic/drawing files (*.odg)
+    - Simplify text extraction and retrieve more content for ODT
+      files
+  + tracker-miner-fs: Do not index non-eligible mount points on
+    startup
+  + tracker-needle: Fix typo when toggling tags fails
+  + build: Error gracefully in autogen.sh when valac is not
+    installed
+  + Bugs fixed: bgo#672308, bgo#672415.
+  + Updated translations.
+- Add tracker-evo-implicit.patch: Include additional header in
+  order to have all the required evo symbols available.
+- Manually create %{buildroot}%{_datadir}/tracker/icons/ in install
+  of tracker.spec, so that it's owned by the tracker subpackage,
+  and other subpackages built from tracker-extras.spec don't have
+  issues with an unowned directory.
+- Fix the fact that tracker libraries require the tracker package,
+  because of private libraries shipped in the tracker package; this
+  effectively made tracker uninstallable (bnc#724554):
+  + Split private libraries from %{_libdir}/tracker-0.14 to
+    separate package libtracker-common-0_14-0. This does not
+    exactly match the SLPP, as the soname of the library is
+    libtracker-common.so.0 (name which is consistent across
+    versions, but the libraries are in a versioned folder, which
+    guarantees parallel installability of different versions.
+  + Add explicit libtracker-common-0_14-0 Requires to
+    libtracker-extract-0_14-0, libtracker-miner-0_14-0 and
+    libtracker-sparql-0_14-0: the Requires autodetection for
+    libraries will be libtracker-common.so.0, but this will exist
+    for several versions of tracker. So we need to help rpm with an
+    explicit Requires on the right version of the package.
+
+-------------------------------------------------------------------
+Fri Mar  9 21:10:27 UTC 2012 - dimstar@opensuse.org
+
+- Add tracker-libgrss-0.5.patch: Support and require libgrss 0.5.
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Thu Mar  8 20:55:05 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14.0:
+  + firefox, thunderbird:
+    - Do not crash recent versions of Firefox/Thunderbird
+    - Use tracker 0.14 libraries
+    - Mark the plugins as compatible with newer versions of
+      Firefox/Thunderbird
+  + tracker-extract: Use ISO volume ID as title for unknown OS
+  + tracker-miner-evolution: build fixes
+  + tracker-miner-flickr, tracker-miner-rss: Do not autostart the
+    miners on login
+  + tracker-miner-fs: Handle absolute paths in ignored dirs
+  + tracker-needle: Order results properly
+  + Other code changes.
+  + Updated translations.
+- Re-enable evo-plugin: %define build_evo 1.
+
+-------------------------------------------------------------------
+Wed Feb 15 20:47:32 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.13.1:
+  + New Feature: ISO file extractor
+  + Fix build with glib 2.31
+  + Various other build fixes
+  + libtracker-common: Add new function tracker_file_open_fd()
+  + libtracker-data: Fix dead code with disabled journal
+  + libtracker-miner:
+    - Don't send sparql to tracker-store for missing/cancelled
+      files
+    - Ensure we deal with the canonical copy on ::directory-removed
+    - Improve logging
+  + libtracker-extract:
+    - Do not use tracker_coalesce_strip on constant strings in unit
+      tests
+    - Don't build EXIF tests if we don't have support enabled
+  + tracker-store: Print warning if unable to initialize statistics
+  + tracker-miner-fs:
+    - Fix crash when SIGTERM happens before mainloop is available
+    - Don't index removable media on initial index if disabled
+  + tracker-extract-msoffice: Add debugging aid for when opening
+    file fails
+  + ttl2sgml: Do not call fclose if file is NULL
+  + Bugs fixed: bgo#669546, bgo#666654, bgo#666410, bgo#666678,
+    bgo#666372, bgo#667786, bgo#667787, nokia#286488, nokia#289635,
+    nokia#296009, nokia#290406
+  + Updated translations.
+- Add libosinfo-devel BuildRequires for the new ISO extractor.
+- Add libcue-devel BuildRequires to allow CUE sheet parsing, as we
+  now have this package in Factory.
+
+-------------------------------------------------------------------
+Thu Jan 19 08:48:55 UTC 2012 - vuntz@opensuse.org
+
+- Add libjpeg-devel BuildRequires for non-extras builds to build
+  JPEG support in extractors.
+
+-------------------------------------------------------------------
+Fri Dec 16 11:12:46 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.13.0:
+  + New Feature: CUE sheet parsing is now supported
+  + libtracker-common: New env var TRACKER_USE_CONFIG_FILES to
+    output ini files instead of use GSettings is available
+  + libtracker-miner:
+    - Updated TrackerMinerFS (breaks API/ABI)
+    - Introducing TrackerIndexingTree (to use with TrackerMinerFS)
+    - Albumart renamed to Media art and refactored
+  + tracker-miner-fs: Refactored, mtime checks are +50% faster and
+    indexing slightly improved
+  + Removed GLib unicode parser: it was sub-optimal and unused.
+  + Many other fixes.
+  + Updted translations.
+- Drop tracker-g_thread.patch: fixed upstream.
+- Change License tag to spdx identifier.
+- Rename library packages from *-0_12-0 to *-0_14-0. following
+  upstream SONAME changes.
+- Split typelib files out into typelib-1_0-Tracker-0_14,
+  typelib-1_0-TrackerExtract-0_14 and
+  typelib-1_0-TrackerMiner-0_14 subpackages.
+- Add Requires for new typelib subpackages to devel subpackage.
+
+-------------------------------------------------------------------
+Fri Dec  2 01:11:48 UTC 2011 - dimstar@opensuse.org
+
+- Disable evo plugins for now: %define build_evo 0:
+  e-d-s had some major API changes on the camel store and tracker
+  needs to catch up on this again.
+
+-------------------------------------------------------------------
+Sat Nov 26 17:48:05 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.12.8:
+  + New feature: Added userguide miner
+  + libtracker-data: Ensure that fn:timezone-from-dateTime
+    returns an integer
+  + libtracker-extract:
+    - Do not leak GUnixFDList on errors getting metadata
+    - Call g_simple_async_result_complete*() for all error
+      conditions too getting metadata
+  + libtracker-miner: Avoid blocking other SPARQL buffers from
+    being able to process update arrays
+  + tracker-extract:
+    - Do not close FDs more than once for GIF, TIFF and TEXT
+      extractors
+    - Fixed possible leak TrackerExtractInfos
+  + tracker-extract-albumart: Fixed memory leak with Pixbuf loader
+  + tracker-extract-pdf:
+    - Fixed leak Poppler actions when reading TOC
+    - Fixed uninitialised read warnings in Valgrind
+  + tracker-needle:
+    - Require GTK+ 3.0 in glade file
+    - Now display and allow editing of tags in the tag view
+    - Now find tags as well as other results with search criteria
+  + Bugs fixed: nokia#285537, nokia#291569, nokia#292744,
+    nokia#290406, nokia#285426, nokia#290165, nokia#290480,
+    nokia#291088, nokia#290814, nokia#290249, nokia#289953,
+    nokia#289635, nokia#286656, nokia#286610, nokia#284591,
+    nokia#288530
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Add tracker-g_thread.patch: Remove g_thread_init calls.
+
+-------------------------------------------------------------------
+Mon Nov  7 00:19:00 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.12.7:
+  + libtracker-miner:
+    - Use a cancellable per crawled directory
+    - Improve logging of sparql errors
+  + tracker-extract-gstreamer: Handle streams with no tags
+  + tracker-writeback: Apply writeback handlers sequentially on a
+    same file
+  + Updated tests.
+  + Bugs fixed: bgo#662364, nokia#287970, nokia#287972.
+  + Updated translations.
+- Changes from version 0.12.6:
+  + tracker-control:
+    - Fix crash when unable to get miner pause details
+    - Do not call g_object_unref on NULL in error case
+  + tracker-extract:
+    - Also complete cancelled tasks
+    - Fix uninitialized variable in albumart
+  + tracker-extract-text: Fix crash if unable to open file
+  + tracker-miner-fs: Fix uninitialized variable
+  + tracker-needle: Fix crash in result store
+  + tracker-preferences: Mark tooltips in tracker-preferences.ui
+    for translation
+  + Updated tests.
+  + Bugs fixed: bgo#662099, nokia#286589, nokia#287278.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 28 19:39:58 UTC 2011 - vuntz@opensuse.org
+
+- Fix previous change: usage of X-SuSE-ControlCenter-Personal
+  actually makes the build fail. Use X-SuSE-Core-System instead.
+
+-------------------------------------------------------------------
+Fri Oct 28 14:09:18 UTC 2011 - badshah400@gmail.com
+
+- Replace category SystemSetup by X-SuSE-ControlCenter-Personal to
+  suppress rpmlint warnings.
+
+-------------------------------------------------------------------
+Fri Oct 28 10:17:53 UTC 2011 - badshah400@gmail.com
+
+- Categorise tracker-gui as System Tools using
+  %suse_update_desktop_file to replace existing categories
+  (bnc#714333)
+
+-------------------------------------------------------------------
+Fri Oct 14 15:39:40 UTC 2011 - fcrozat@suse.com
+
+- Only enable thunderbird support for 12.1 or later.
+
+-------------------------------------------------------------------
+Fri Oct 14 13:22:34 UTC 2011 - malcolmlewis@opensuse.org
+
+- Add tracker-fix-include-sched-idle.patch to enable building on
+  11.4, where path of an include is different.
+
+-------------------------------------------------------------------
+Fri Oct 14 10:19:18 UTC 2011 - vuntz@opensuse.org
+
+- Split the build of tracker in two, with a new
+  tracker-extras.spec, in order to break the tracker/nautilus build
+  loop (and avoid future similar loops):
+  + in tracker.spec, build the basis of tracker: the command-line
+    tools, the libraries, the devel subpackage and the files miner.
+  + in tracker-extras.spec, build addons that have extra
+    dependencies: the panel applet, the evolution miner, the
+    firefox plugin, the graphical tools, the flickr miner, the rss
+    miner, the nautilus extension and the thunderbird miner.
+  + re-organize tracker.spec for this since tracker-extras.spec is
+    generated from it.
+- Remove unneeded graphviz BuildRequires: this was only needed when
+  rebuilding the gtk-doc documentation.
+- Remove explicit glib2-devel Requires from devel subpackage: this
+  will automatically be added the pkgconfig() way.
+
+-------------------------------------------------------------------
+Thu Oct 13 15:54:01 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.12.5:
+  + SPARQL:
+    - Support DELETE WHERE {...}
+    - Support SELECT (Expression AS Var) syntax
+  + tracker-extract-gstreamer: flag renamed from TAGS to
+    LIGHTWEIGHT in GStreamer
+  + Build fix.
+  + Bugs fixed: bgo#655177, bgo#272997, nokia#285979, nokia#286103.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 10 08:12:21 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.12.4:
+  + libtracker-common:
+    - Fixed missing include directive for utils tests
+    - Disable configure.ac checks for ioprio_set()
+  + libtracker-data: Set journal_size_limit to 10 MB
+  + tracker-extract: Fixed critical when FD list is missing
+  + tracker-extract-oasis: Ignore empty values and invalid dates
+  + tracker-extract-gstreamer: Fixed division by zero
+  + tracker-extract-gif: Fixed file descriptor leak in error case
+  + tracker-extract-pdf: Fixed file descriptor leak in error cases
+  + tracker-miner-fs: Fixed theme icon URIs for application indexing
+  + firefox, thunderbird: Don't operate with tracker 0.10
+    libraries, only 0.12
+  + functional-tests updates.
+  + Bugs fixed: bgo#647575, bgo#660350, bgo#659995, bgo#660589,
+    bgo#660601, bgo#660123, bgo#657183, nokia#257478, nokia#284711,
+    nokia#217566, nokia#285251.
+  + Updated translations.
+- Drop tracker-firefox-no-tracker-0.10.patch: fixed upstream.
+- Do not rebuild gtk-doc documentation:
+  + The tarball now correctly installs the documentation without a
+    rebuild, except the ontology one. This is a good enough
+    trade-off (as building requires some dependencies).
+  + Remove dia and gtk-doc BuildRequires.
+  + Stop passing --enable-gtk-doc to configure.
+
+-------------------------------------------------------------------
+Thu Oct  6 15:23:58 UTC 2011 - vuntz@opensuse.org
+
+- Change vala-devel BuildRequires to vala as vala-devel is an old
+  deprecated name (bnc#720908).
+
+-------------------------------------------------------------------
+Thu Sep 29 10:08:38 UTC 2011 - vuntz@opensuse.org
+
+- Add tracker-firefox-no-tracker-0.10.patch: do not try to use the
+  0.10 libraries in the Firefox extension as it makes Firefox
+  hang/crash.
+
+-------------------------------------------------------------------
+Mon Sep 26 11:29:31 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.12.3:
+  + tracker-extract: Allow g_open() without O_NOATIME if -EPERM is
+    returned
+  + tracker-extract-png: Handle raw profiles by Imagemagick encoded
+    with line changes/twists
+  + tracker-preferences: Remove throttle implementation
+  + Bugs fixed: bgo#659422, nokia#283501.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 22 21:08:44 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.12.2:
+  + libtracker-common: Refactor tracker_file_open() which was buggy
+    and should use O_NOATIME
+  + libtracker-data:
+    - Drop all indexes before index recreation
+    - Make index recreation less verbose
+  + libtracker-miner: Improve documentation for
+    tracker_miner_manager_pause_for_process()
+  + libtracker-extract: Do not leak GMatchInfo objects
+  + tracker-miner-fs: Disable wake ups every 10 seconds by default
+    (for disk space checks)
+  + tracker-extract-png: Handle raw profiles by Imagemagick encoded
+    with line changes/twists
+  + tracker-extract: Use O_NOATIME for TEXT, XMP, PDF, TIFF, GIF,
+    MSOFFICE, ODF ABW and FLAC files
+  + tracker-writeback:
+    - Propagate all errors of writeback over DBus
+    - Handle if there's no module for the passed rdf types
+  + tracker-control: Don't finalize TrackerMinerManager with
+    --pause-for-process causing it to break
+  + tracker-preferences: Use one list for locations and add XDG
+    toggle buttons
+  + Bugs fixed: bgo#659806, bgo#659470, bgo#659620, nokia#276653,
+    nokia#282957, nokia#282541.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 16 07:48:07 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.12.1:
+  + libtracker-data: Support removing rdfs:subPropertyOf in
+    ontology
+  + libtracker-miner:
+    - Export TrackerTask* and TrackerPriority* API for new unit
+      tests
+    - Check to turn create + delete events into noop was wrong in
+      check_item_queues()
+  + libtracker-extract: Fix Regions of Interest SPARQL generated
+    from metadata
+  + tracker-miner-fs: Avoid trying to parse directories as desktop
+    files
+  + Bugs fixed:
+    - bgo#659062: Shouldn't index removable media devices by
+      default
+    - bgo#659063: Should enable indexing on battery by default
+    - bgo#651815, bgo#658645, bgo#658706, bgo#658787, nokia#282190,
+      nokia#282393, nokia#277052, nokia#281335.
+  + Updated translations.
+- Remove dbus-1-glib-devel: the dependency has been removed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Sep  9 11:41:04 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.12.0:
+  + New Feature:
+    - Region of interest support in image formats (for example
+      tagging people in images)
+  + libtracker-common: Do not delete old log files when starting
+    components
+  + tracker-miner-fs:
+    - Improve query performance for updating tracker:available on
+      mounting
+    - Handle desktop files of Type=Link
+    - Support local (in $HOME) XDG directories for desktop files
+  + tracker-control: Added --set-log-verbsosity to change component
+    log verbosity
+  + Various bug fixes.
+- Remove sed hack from %build to disable call to
+  update-desktop-database on "make install": fixed upstream.
+- Change build_evo macro to 1, to build the evolution miner now
+  that it has been ported to new evolution.
+
+-------------------------------------------------------------------
+Tue Aug 23 07:05:43 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typos in descriptions.
+
+-------------------------------------------------------------------
+Wed Aug 17 17:45:58 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.2:
+  + Build system:
+    - Bump tracker_api_version to 0.12 but keep major/minor as 0.11
+    - --with-gstreamer-backend=[tagreadbin,decodebin2,discoverer]
+      switches
+  + libtracker-extract:
+    - Don't install examples/ rules mock up
+    - Added some debugging to know what rules files are loaded
+  + tracker-extract:
+    - Make sure we check filtered modules for dbus calls too
+    - Improve checks for mimetype guessing
+    - Improve debugging for filtered modules and mime guessing
+    - Fix --force-module for commandline extraction
+    - Make JPEG module handle DLNA profiles
+    - Make PNG module handle DLNA profiles
+    - Make MP3 module handle DLNA profiles
+    - Let gstreamer extractor handle 'dlna/*' mimetypes
+  + tracker-extract-gstreamer:
+    - Compiler warning fixes and code refactoring
+    - Assume UTC for dates
+  + tracker-miner-fs: Disable writeback by default
+  + tracker-miner-flickr: Remove deprecated Encoding key in desktop
+    file
+  +tracker-needle:
+    - Avoid g_markup_escape_text() critical with NULL
+    - Show email subject as primary information not sender
+    - Fix build with Vala master
+  + thunderbird:
+    - Add desktop file so needle opens email on activation
+    - Use asynchronous connection opening to avoid blocking the UI
+    - Don't break on consecutive make installs, use -f with ln
+  + firefox:
+    - Use asynchronous connection opening to avoid blocking the UI
+    - Raise compatibility level to 5.0.*
+    - Don't break on consecutive make installs, use -f with ln
+  + Bugs fixed: bgo#655987, bgo#655789, bgo#655701, bgo#654441,
+    nokia#247468.
+  + Updated translations.
+- Drop tracker-fix-build-system.patch: fixed upstream.
+- Remove autoreconf call in build section: no patch touches the
+  build system anymore.
+- Add hack to replace update-desktop-database in trackerbird
+  Makefiles to point to /bin/true. During build, we can not update
+  the desktop database.
+- Add %desktop_database_post/%desktop_database_postun in
+  %post/%postun of miner-thunderbird subpackages now that it
+  %contains a .desktop file.
+- Rename library sub-packages following the upstream API name bump.
+
+-------------------------------------------------------------------
+Sat Jul 30 10:03:27 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.11.1:
+  + New Features:
+    - Firefox >= 4.0 support
+    - Thunderbird >= 5.0 support
+    - Add --disable-journal configure option, previously it didn't
+      exist
+  + Ontology: Set tracker:writeback true for nfo:Heading
+  + SPARQL: Add support for HAVING and COALESCE
+  + libtracker-data:
+    - Fix leak in db_get_locale
+    - Do not print critical if db-locale.txt does not exist
+    - Switch to manual SQLite WAL checkpointing in a separate
+      thread
+    - Make sure we don't leak sql_dir on multiple _init() calls
+  + libtracker-miner:
+    - Translate monitor events CREATE(a)+MOVE(a->b)=UPDATE(b)
+    - Make sure status is set to 'Idle' on object construction
+    - Fix inconsistent status with progress signals
+    - Fix -0.00 progress being reported
+    - Make sure "Processing..." is 2% or higher in progress
+  + libtracker-extract:
+    - Use nfo:heading instead of nmm:direction
+    - Support extraction of EXIF/XMP GPS information for images
+    - Ignore keywords containing invalid UTF-8
+    - Do not use G_CONST_RETURN
+  + tracker-store:
+    - Check XDG directories after initializing log to reduce start
+      up stdout spam
+    - Improve UpdateArray performance
+  + tracker-extract:
+    - MP3: Use guessed ID3v1 8-bit encoding also for ID3v2
+    - Playlist: Limit playlists to 1000 entries
+    - Handle RealMedia files with the GStreamer extractor
+  + tracker-writeback:
+    - Refactor writeback so miner-fs performs more of the operation
+      itself
+    - Deprecate IgnoreNextUpdate API
+    - Support longitude, latitude and altitude information to XMP
+      files
+    - Always clear existing XMP fields before updating metadata
+  + tracker-miner-fs: Check XDG directories after initializing log
+    to reduce start up stdout spam
+  + tracker-control:
+    - Added --pause-for-process for potentially crash worthy
+      processes
+    - Fix crash when unable to get miner pause details
+  + tracker-search: Support bookmarks with -b or --bookmarks
+  + tracker-preferences: Fix apply button
+  + Bug fixes: bgo#654653, bgo#654407, bgo#652433, nokia#271389,
+    nokia#254896, nokia#274498, nokia#274181, nokia#271747,
+    nokia#273120, nokia#269986, nokia#270774, nokia#259942,
+    nokia#269766, nokia#269931, nokia#268105, nokia#269359,
+    nokia#266579, nokia#251032, nokia#263203, nokia#261635.
+  + Updated translations.
+- Add MozillaFirefox and MozillaThunderbird BuildRequires for new
+  Firefox and Thunderbird support.
+- Create tracker-miner-firefox and tracker-miner-thunderbird
+  subpackages. Even though they're not miners strictly speaking,
+  this makes the intent of the subpackages clearer.
+- Pass --with-firefox-plugin-dir and --with-thunderbird-plugin-dir
+  to have the extensions installed in the right directories.
+- Add tracker-fix-build-system.patch to fix installation of Firefox
+  and Thunderbird plugins.
+
+-------------------------------------------------------------------
+Wed Jul  6 22:58:30 CEST 2011 - vuntz@opensuse.org
+
+- Apply tracker-removeable-media-off.patch on 11.4 and earlier
+  only: this setting is available in GSettings, and the
+  gio-branding-openSUSE package available in 12.1 and later changes
+  the default value.
+
+-------------------------------------------------------------------
+Mon Jul  4 16:31:13 CEST 2011 - vuntz@opensuse.org
+
+- Move tracker-miner-rss man page to the miner-rss subpackage,
+  where it belongs.
+
+-------------------------------------------------------------------
+Tue Jun  7 23:26:27 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.0:
+  + Remove libtracker-client library.
+  + Replace GConf usage by GSettings.
+  + Add support for MeeGoTouch (for application extraction)
+  + libtracker-sparql: Remove deprecated drop_graph API
+  + tracker-extract:
+    - Completely relicensed all modules and the extractor from GPL
+      to LGPL
+    - Use two threads now for extraction, a controller and worker
+      thread
+    - Refactored the module management so modules can state mimes
+      supported flexibly
+    - Support extra string for WHERE patterns when calling modules
+    - Much improvement to the logging
+    - Added EPub extractor module
+  + tracker-control: Report remaining estimated time for each
+    miner's progress
+  + Updated translations.
+- Drop libtracker-client-0_10-0 subpackage, following upstream
+  drop.
+- Rename the remaining lib* packages from -0_10 to -0_11 to follow
+  the library name changes.
+- Drop tracker-nautilus-extension-compile-gtk3.patch: fixed
+  upstream.
+- Introduce a build_evo define: evolution 3.1.1 is not supported
+  at the moment. For Factory, we don't build the miner-evolution
+  subpackage, and we add a Obsoletes for it to the main package for
+  smooth upgrades.
+- Use %glib2_gsettings_schema_requires, and add
+  %glib2_gsettings_schema_* calls to post/postun.
+- Move Tracker-0.10.typelib (Tracker-0.11.typelib) to the
+  libtracker-sparql-0_11-0 subpackage, as this is the library being
+  referenced by the .typelib file.
+
+-------------------------------------------------------------------
+Mon Jun  6 09:24:48 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.10.16:
+  + libtracker-data: Fixed memory leak in
+    tracker_class_reset_super_classes()
+  + libtracker-miner:
+    - Honor auto_start parameter in
+      tracker_miner_manager_new_full()
+    - Fixed test case for GKeyFile password provider which was
+      failing
+    - Lower TrackerMinerFS idle priorities so timeouts, monitors,
+      etc are handled with more priority
+  + tracker-miner-fs:
+    - Do not spam log on recursive monitors removal
+    - Create bus names before touching sensitive files to avoid
+      race conditions
+    - Make sure we unref applications and files_index miners on
+      start up failure
+  + tracker-extract: Added "CancelTask" method to be called from
+    tracker-miner-fs
+  + tracker-control:
+    - Fixed memory leak when getting pause details
+    - Don't auto-start miners for pausing/resuming/listing/pause
+      details
+    - Use full API to get miner manager and report errors
+    - Free GError if getting TrackerMinerManager fails
+  + functional-tests: Support cases with AND without Upstart
+  + Bugs fixed: bgo#650804, nokia#18159, nokia#258488.
+  + Updated translations.
+- Drop our local copy of tracker-search-bar.1: it is now shipped in
+  the tarball again.
+
+-------------------------------------------------------------------
+Sat May 28 14:57:35 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.15:
+  + libtracker-sparql: Fix deadlock on initialization error
+  + libtracker-miner:
+    - Fixed c++ builds where headers use "private" keyword
+    - Include missing header tracker-albumart.h in main header
+    - Do not perform removed files check if crawling was cancelled
+  + tracker-store: Reenable signals after failing to load Turtle
+    file
+  + tracker-extract: Improve logging around which module is used
+    for extraction per file
+  + evolution:
+    - Fixed completely broken status reporting as a miner
+    - Don't send "Idle" status twice
+    - Added debug logging to know if the module was loaded or not
+      on the command line
+  + Bugs fixed: nokia#254855, nokia#259000, nokia#244556,
+    nokia#252898, nokia#258488, nokia#258459.
+
+-------------------------------------------------------------------
+Sat May 28 00:36:35 CEST 2011 - vuntz@opensuse.org
+
+- Mention the new --add-feed option of tracker-miner-rss in
+  README.SUSE.rss.
+
+-------------------------------------------------------------------
+Mon May 23 14:30:20 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.14:
+  + libtracker-data:
+    - Handle EINTR instead of EGAIN when writing journal
+    - Delete empty file if unable to write journal header
+    - Do not trigger a journal replay with invalid ontology
+      journals
+    - Propagate errors for ontology transactions
+  + libtracker-bus: Support multiple bus connection objects
+  + libtracker-direct: Support multiple bus connection objects
+  + libtracker-sparql: Protect singleton weak pointer with mutex
+  + libtracker-miner: Cleanup media-art that isn't valid anymore
+    every 30 minutes or so
+  + tracker-store: Improved error handling for Data.Manager.init
+  + functional-tests: Add UID::user and GID::users to tracker-tests
+    aegis file.
+
+-------------------------------------------------------------------
+Mon May 16 15:45:05 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.13:
+  + libtracker-miner: Cancel TrackerMinerFS cancellables on
+    finalize
+  + tracker-store: Use lazy loading for stats to improve start up
+    speed
+  + Bugs fixed: nokia#254154, nokia#253807, nokia#248873.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May  6 08:49:59 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.12:
+  + New Feature:
+    - Now tracker-control has --backup and --restore options
+    - Now tracker-miner-rss has an --add-feed option
+  + libtracker-extract: Fixed encoding guessing, make sure we
+    init/shutdown locale module
+  + libtracker-miner: Don't load thumbnailer service properties
+    over D-Bus
+  + tracker-store: Added checks to Backup method target file so it
+    is a real URI
+  + tracker-miner-rss:
+    - Fixed crash trying to cast TrackerSparqlConnection to
+      TrackerMinerRSS
+    - Fixed recursive check with mfo:updatedTime GraphUpdated
+      signal
+    - Fixed ASK SPARQL to check true/false not 0/1
+    - Improved logging/debugging
+  + Bugs fixed: bgo#520670, bgo#633105, bgo#397205, nokia#249338.
+  + Updated translations.
+- Add tracker-search-bar.1 from git to Source list: it is missing
+  in the tarball. Makefile to distribute this properly is already
+  fixed in launchpad.
+- Add dia BuildRequires to fix the gtk-doc building
+- Re-enable --enable-gtk-doc configure parameter.
+
+-------------------------------------------------------------------
+Wed May  4 09:51:43 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.11:
+  + bgo#633108: FLAC extractor doesn't work properly
+  + bgo#632876: Wrong extraction order in MsOffice-XML powerpoint
+    files
+  + nokia#250959: Huge increase in contact import time with command
+    line tools in staging
+  + nokia#250455: QSparqlConnection leaks tracker-sparql objects
+  + nokia#249787: Drop libmeegotouchcore dependency from
+    libtracker-sparql.
+
+-------------------------------------------------------------------
+Thu Apr 28 02:03:38 UTC 2011 - glin@novell.com
+
+- Add tracker-nautilus-extension-compile-gtk3.patch to compile
+  nautilus extension with gtk3 (bnc#689447, bgo#645954). Add call
+  to autoreconf needed by the patch.
+
+-------------------------------------------------------------------
+Wed Apr 27 09:37:37 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.10.10:
+  + libtracker-data: Support ontology changing regarding
+    nrl:InverseFunctionalProperty
+  + libtracker-miner:
+    - Limit extractions to 10 at any given time
+    - Limit the number of statements sent to the store per request
+  + tracker-extract:
+    - Complete relicensing from GPL to LGPL for C++ files missed
+    - Fixed critical about locale when run from command line
+    - Fixed critical when finalizing the controller object
+    - Fixed crash with new QApplication() and passed argv parameter
+  + tracker-needle: Fixed email query which was using
+    tracker:coalesce() with 1 argument
+  + Ontology updates.
+  + Bugs fixed: nokia#249028, nokia#244787, nokia#248059.
+  + Updated translations.
+- Changes from version 0.10.9:
+  + Now tracker-info --turtle allows exporting resources in Turtle
+    RDF
+  + libtracker-common:
+    - Re-instate setrlimit() and clamp between 256Mb and 50% memory
+      capacity for RLIMIT_{AS|DATA}
+    - Don't apply setrlimit() constraints to spawned processes
+      (inherited anyway)
+  + libtracker-data: Error when OFFSET, LIMIT, GROUP or ORDER are
+    used with ASK queries
+  + libtracker-sparql: Fixed libtracker_sparql_LDFLAGS missing "\",
+    causing export of all symbols
+  + libtracker-extract: Added new unit test for IPTC records are
+    read correctly
+  + tracker-extract:
+    - Added a controller thread to be able to shutdown quickly on
+      pre-unmount signals
+    - Cleaned up debugging considerably and print summary on start
+      up
+  + Ontology updates.
+  + Bugs fixed: bgo#646834, bgo#647548, nokia#238770, nokia#245998,
+    nokia#244267, nokia#241302, nokia#245589, nokia#245373,
+    nokia#213419, nokia#240681.
+  + Updated translations.
+- Drop update-rest.patch: fixed upstream.
+- Drop call to autoreconf.
+
+-------------------------------------------------------------------
+Mon Apr 11 08:01:53 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.10.8:
+  + libtracker-data: Protect tracker_db_cursor_get_* with mutex
+  + libtracker-bus: There is no BatchUpdateArray, UpdateArray is
+    always considered a batch operation.
+  + libtracker-sparql: Fix build from tarball
+  + tracker-store: Increase maximum signal size from 1000 to 50000
+    triples.
+  + tracker-store: Fix UpdateArray to use low priority request
+  + Bugs fixed: bgo#642883, nokia#244556.
+- Changes from version 0.10.7:
+  + Introspection support for libtracker-{sparql|miner|extract}.
+  + libtracker-sparql: Fixed test case on cancellation error check.
+  + tracker-extract: oasis: Avoid invalid frees on non-NULL
+     pointers.
+  + tracker-needle:
+    - Cancel previous operations when switching views.
+    - Improve "icons" or "images" category to allow filtering by
+      all or title.
+  + Bugs fixed: bgo#644997, bgo#646365, bgo#646374, bgo#644455,
+    nokia#244536, nokia#242253, nokia#229461, nokia#237582,
+    nokia#240272, nokia#241659.
+  + Updated translations.
+- Update BuildRequires to use vala-devel (instead of
+  vala-unstable-devel) and add gobject-introspection-devel to build
+  introspection support.
+
+-------------------------------------------------------------------
+Mon Apr  4 10:08:17 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.10.6:
+  + New Feature: Added INSERT OR REPLACE SPARQL, using UPDATE gives
+    us ca. 25% speed improvement in some cases.
+  + libtracker-common: Only use encoding guessing when confidence
+    is > 30%.
+  + libtracker-data: Added new functions tracker:case-fold() and
+    tracker:lower-case().
+  + libtracker-sparql: Handle GSpawnError thrown by GDBus
+  + tracker-needle:
+    - Model reworked showin no delay loading thousands of items.
+    - Improve error handling.
+  + Bugs fixed: bgo#645380, bgo#645934, bgo#645963, bgo#645675,
+    nokia#241833, nokia#235445, nokia#241206, nokia#240168,
+    nokia#240582.
+- Drop fix-evolution-build.patch: fixed upstream.
+- Remove configure --enable-tracker-search-tool option, no longer
+  present upstream.
+
+-------------------------------------------------------------------
+Mon Mar 28 11:53:18 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.10.5:
+  + libtracker-common: Fix localtime handling with historic UTC
+    offsets.
+  + libtracker-data: Fix graph check for anonymous blank nodes.
+  + libtracker-sparql:
+    - Mark tracker_sparql_builder_drop_graph() as deprecated.
+    - Don't export symbols which are internal.
+  + libtracker-miner: Added tracker_miner_manager_new_full() to
+    disable starting miners when querying status.
+  + tracker-store: Don't start if not running when querying status.
+  + tracker-miner-fs: Add --no-daemon command line to exit when
+    indexing done.
+  + tracker-extract: Add parameter to QApplication to allow running
+    without X11.
+  + tracker-needle: Set proper application icon.
+  + evolution: Fix use of GRAPH with the nie:DataSource, now
+    indexes properly again.
+  + Ontology updates.
+  + Bugs fixed: bgo#642012, bgo#645000, bgo#645052, bgo#645375,
+    bgo#644998.
+- Add update-rest.patch: Fix build with rest 0.7.x.
+- Add fix-evolution-build.patch: Fix build with evolution 2.91.x
+  (bgo#645934)
+- Change old-style buildRequires to new pkgconfig() ones:
+  libgee-devel, librest-devel, gnome-panel-devel, nautilus-devel to
+  gee-1.0, rest-0.7, libpanelapplet-4.0, libnautilus-extension.
+- Remove now non-existing --enable-tracker-search-tool configure
+  option.
+
+-------------------------------------------------------------------
+Sun Mar 20 17:46:14 CET 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.4:
+  + libtracker-miner:
+    - Don't assume g_dbus_info_new_for_xml() never fails
+    - Added missing documentation functions to sections file
+  + libtracker-extract: Don't assume g_dbus_info_new_for_xml()
+    never fails.
+  + Bugs fixed: nokia#237582, nokia#237150, nokia#236387,
+    nokia#233828.
+- Changes from version 0.10.3:
+  + Bugs fixed: bgo#644484, bgo#642868.
+- Changes from version 0.10.2:
+  + Ontology: Added nfo:Note for applications like Tomboy
+  + functional-tests: Force English locale for tests
+  + libtracker-miner: Improve bulk operation speed like deleting
+  + tracker-preferences: Enable gettext translations
+  + tracker-search-bar: Fixed build error since API change in
+    libpanel-applet
+  + Bugs fixed: nokia#232574, nokia#235118, nokia#229713.
+- Changes from version 0.10.1:
+  + Bugs fixed: nokia#232981, nokia#231631, nokia#230255,
+    nokia#228760, bgo#642774, bgo#643739, bgo#636375, bgo#643140,
+    bgo#642581, bgo#643090.
+- Changes from version 0.10.0:
+  + Recap of new Features:
+    - Added GDBus support
+    - Added direct access library libtracker-sparql for fast
+      read-only queries
+    - Added LRU (Least Recently Used) for database statement cache
+      (huge memory footprint difference)
+    - Added a GUPnP DLNA extractor
+    - Added domain specific indexes, adding a column to DB tables
+      to avoid full table scans/joins with larger tables for
+      performance.
+    - Added metadata guarantee support when key data is missing
+    - Added tracker-sql (in utils/) to run SQL on the databases
+      directly (for developers)
+    - Added unicode compliance for FTS (Full Text Search)
+    - Don't do mtime checks on start up (dramatically reduces start
+      time for miner-fs)
+    - Replaced tracker-search-tool with tracker-needle
+    - New API methods in libtracker-sparql which allow multiple
+      inserts per DBus call (and yet get multiple errors back).
+    - New journal format to separate ontology from data for
+      improved data integrity
+    - New journal compression and rotation using 50Mb chunk sizes
+    - Task pool in libtracker-miner for store updates/metadata
+      extractions, 10-20% speed increase indexing
+    - Monitor event black listing and events are condensed
+    - Return types in TrackerSparqlCursor API
+    - Collation support
+    - Refactored and much more efficient signal notification API
+    - Use libtracker-sparql: Client library for direct/dbus access
+    - SPARQL, Add support for EXISTS and NOT EXISTS
+    - SPARQL, Add support for IN
+    - SPARQL, Add support for INSERT SILENT and DELETE SILENT
+- Drop tracker-no-duplicated-results.patch: fixed upstream.
+- Replace gtk2-devel BuildRequires with gtk3-devel.
+
+-------------------------------------------------------------------
+Thu Feb 17 10:24:23 CET 2011 - vuntz@opensuse.org
+
+- Add tracker-no-duplicated-results.patch: don't show duplicated
+  results in search results. Taken from git.
+- Move tracker-needle.ui from main package to gui subpackage, where
+  it should live.
+- Move tracker-explorer to gui subpackage, as it's a graphical
+  tool. This means the tracker package itself doesn't require X
+  anymore.
+
+-------------------------------------------------------------------
+Sun Feb 13 22:31:46 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.9.38:
+  + libtracker-data:
+    - Added unit tests for IN with > 20 elements
+    - Improve error handling on initialization (especially if the
+      WAL PRAGMA fails)
+    - Fixed a race condition on shutdown causing criticals with
+      g_object_unref()
+  + tracker-store:
+    - Increase maximum D-Bus result size (1 Mb to 10 Mb)
+    - Don't send unmapped errors in D-Bus replies
+  + nautilus: Plugin has been updated to use libtracker-sparql.
+  + ontology updates.
+  + functional-tests updates.
+  + documentation updates.
+  + Bug fixes: nokia#208621, nokia#223536, nokia#225910,
+    nokia#221340, nokia#180770, nokia#217610, nokia#224993,
+    nokia#222182, nokia#224760, bgo#640623.
+  + Updated translations.
+- Changes from version 0.9.37:
+  + Don't do mtime checks on start up (dramatically reduces start
+    time for miner-fs)
+  + The command 'tracker-status' no longer exists, its command line
+    features have been merged into 'tracker-control'.
+  + libtracker-data:
+    - We now restore tracker:modified values after journal replay
+      and backup restore
+    - Don't journal non-embedded data (e.g. nie:plainTextContent)
+  + functional-tests updates.
+  + Bug fixes: nokia#198003, nokia#224342, nokia#218525,
+    nokia#224763, nokia#197067, nokia#223938, nokia#185309,
+    nokia#223622, nokia#223282, nokia#223133, nokia#223148,
+    nokia#223161, nokia#222645, nokia#222494, bgo#636074,
+    bgo#631955, bgo#623666, bgo#600081.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:36:29 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Mon Jan 31 09:52:52 CET 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.36:
+  + Ontology:
+    - Added missing documentation for rdf, mtp and slo
+    - Remove long-deprecated classes and properties
+  + SPARQL:
+    - Ignore CONSTRUCT/INSERT/DELETE triples with unbound variables
+    - Fix SQL generated for predicate variables and deleted
+      subjects
+  + libtracker-data: Fix transient properties
+  + Updated translations.
+  + Bugs fixed: nokia#221700, nokia#222578, nokia#222645,
+    nokia#222664
+
+-------------------------------------------------------------------
+Sat Jan 22 20:58:34 CET 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.35:
+  + SPARQL: Add support for IF function
+  + Ontology:
+    - Added nmo:lastSuccessfulMessageDate property
+    - Added domain index on nmo:sentDate to nmo:Call
+    - Fixed NCO cyclic dependency with NFO
+    - Fixed range of nco:photo and nco:video, fixed maxCardinality
+      of nco:video
+    - Added county and district to postal address
+    - Draft the NCO documentation page
+  + libtracker-data: Remove unused TrackerDBResultSet
+  + libtracker-common: Use statfs instead of statvfs on Linux
+  + libtracker-miner: Log when an event is ignored because the file
+    is locked
+  + tracker-writeback:
+    - unlock file after 1s of update, not 3s
+    - xmp: Don't use XMP_CLOSE_SAFEUPDATE
+  + tracker-extract:
+    - gupnp-dlna: Update to gupnp-dlna 0.5 API
+    - mp3: Fixed bitrate table and sample rate table usage
+    - mp3: Cope with sample_rate = 0
+  + tracker-needle:
+    - Support command line arguments -V and search criteria
+    - List folders in first/initial view
+    - Add Ctrl+W to close window
+    - Use a meaningful window title "Desktop Search"
+  + Updated translations.
+  + Bugs fixed: nokia#220373, nokia#218092, nokia#218332,
+    nokia#217636, nokia#218125, nokia#219309, nokia#216582,
+    bgo#639542, bgo#622918, bgo#639918, bgo#639556, bgo#639543,
+    bgo#639552 
+- Drop tracker-needle-args.patch: fixed in a much nicer way by
+  upstream.
+
+-------------------------------------------------------------------
+Thu Jan 20 16:37:28 UTC 2011 - dimstar@opensuse.org
+
+- Add tracker-needle-args.patch: Allow tracker-needle to use
+  command line arguments as initial search strings. Like this, slab
+  can use tracker-needle as it's integrated search panel. Patch
+  submitted to upstream as bgo#639542.
+
+-------------------------------------------------------------------
+Thu Jan 13 18:34:14 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.9.34:
+  + Ontology:
+    - Make SLO an ontology that is installed by default
+    - Fixed maxCardinality and deprecated annotations in MLO
+  + libtracker-data:
+    - Fix double unref on shutdown
+    - Fix memory leak in gvdb writing
+    - Update statistics when bypassing buffer for deletes
+    - Fix tracker_ontologies_get_classes
+  + libtracker-sparql: Shutdown backends when finalizing connection
+  + libtracker-common: Improve tracker_dbus_request_* API
+  + tracker-extract:
+    - Relicense from GPL to LGPL
+    - TIFF, PNG, PDF, JPEG, GIF: SLO ontology porting
+  + tracker-writeback: SLO ontology porting
+  + tracker-needle: Use nco:publisher if nco:creator is not
+    available for documents
+  + Bugs fixed: nokia#198003, nokia#211147, nokia#216329,
+    nokia#216350, nokia#217575, nokia#218123, nokia#218560.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  4 12:56:50 CET 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.33:
+  + Ontology: Remove tracker:isAnnotation property
+  + SPARQL:
+    - Support graph retrieval using property functions
+    - Accept semicolon as separator between update operations
+    - Add support for INSERT/DELETE DATA
+    - Fix WITH support
+    - Drop deprecated support for DROP GRAPH
+  + libtracker-data:
+    - Add ontology cache
+    - Bypass update buffer for rdf:type deletes if possible
+  + tracker-store, libtracker-data: Enhance signal behaviour for
+    batch updates
+  + libtracker-common: Print PID of process in dbus requests
+  + libtracker-miner:
+    - Set proper nfo:belongsToContainer on file move operations
+    - Skip IgnoreNextUpdate requests on CREATED events
+    - When deleting resources, first mark unavailable and then
+      fully remove them
+    - Make sure original monitors are removed during a move
+      operation
+    - On directory remove, first remove monitors, then notify event
+    - When a moved dir event detected, cancel all monitors in the
+      dir
+    - Don't add monitors when renaming a directory to a hidden name
+  + tracker-extract-gstreamer: Fix undefined references
+  + tracker-extract-txt: Support text files encoded in UTF-16 if
+    BOM available
+  + tracker-writeback:
+    - XMP: Take into account mlo:asPostalAddress
+    - Fix a memoryleak on unwanted_results and cleanup
+  + tracker-writeback, libtracker-miner: Don't writeback non-strict
+    mined values
+  + tracker-explorer: Port to GDBus
+  + Bugs fixed: nokia#211928, nokia#212736, nokia#213419,
+    nokia#214478, bgo#638159.
+
+-------------------------------------------------------------------
+Thu Dec 16 17:19:38 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.9.32:
+  + Added tracker-needle to replace tracker-search-tool
+  + Added --enable-guarantee-metadata to ensure nie:title and other
+    metadata when missing
+  + build: disable functional-tests by default
+  + Ontology: Add tracker:notify true for nmo:Call
+  + libtracker-data: Sort function test results to avoid test
+    failures
+  + libtracker-sparql: Wait for tracker-store before loading
+    plugins
+  + Bugs fixed: nokia#210217, nokia#211926, nokia#198155.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec 12 00:13:46 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.31:
+  + Build System updates.
+  + Ontology:
+    - Added nmm:MusicAlbumDisk, nmm:musicAlbumDisk,
+      nmm:albumDiskAlbum classes
+    - Changed nmm:performer rdfs:domain from nmm:MusicAlbum to
+      nmm:MusicAlbumDisk
+    - Changed nmm:setNumber rdfs:domain from nmm:MusicAlbum to
+      nmm:MusicAlbumDisk
+    - Changed nmm:internationalStandardRecordingCode rdfs:domain
+      from nmm:MusicAlbum to nmm:MusicPiece
+  + libtracker-sparql: Fixed documentation to include
+    tracker_sparql_get_uuid_urn()
+  + libtracker-miner: Fixed documentation missing but written
+  + tracker-extract: Fixed GUPNP-DLNA extractor, was using
+    "nfo.channels" not "nfo:channels"
+  + Bugs fixed: bgo#636936, bgo#624041, bgo#636604, bgo#635756,
+    bgo#636383, bgo#636520, bgo#636527, nokia#207918.
+- Follow the build change and use stable number for directories
+  and libraries (0.10 instead of 0.9). As a result, rename the
+  library packages from *-0_9-0 to *-0_10-0.
+
+-------------------------------------------------------------------
+Thu Dec  9 17:39:33 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.30:
+  + Ontology:
+    - Added domainIndex nie:contentCreated to nfo:Visual
+    - Added tracker:notify true for slo:LandmarkCategory,
+      slo:Landmark and slo:GeoLocation
+  + SPARQL: Use WITH/INTO/FROM clause in WHERE pattern of updates
+  + Support MeeGoTouch Locale, recalculating indexes on locale
+    changes
+  + data-generators:
+    - Diversify the content creation times
+    - Support nfo:Equipment correctly
+    - Small fixes to the music data
+  + libtracker-data:
+    - Disable fn:starts-with test for !libicu cases
+    - Document the TRACKER_PRAGMAS_FILE environment variable
+  + libtracker-direct: Make singleton connection thread-safe
+  + libtracker-bus: Reduce D-Bus proxy initialization time
+  + libtracker-sparql: Reduce D-Bus proxy initialization time
+  + tracker-extract, albumart: Don't assume that
+    g_file_get_parent() returns non-NULL
+  + tracker-miner-applications: Re-extract desktop files when
+    locale change detected
+  + tracker-status: Added more granularity to the tracker-store
+    status reporting for the journal replay
+  + Bugs fixed: nokia#204706, nokia#203538, nokia#208420,
+    bgo#635757, bgo#635794.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 25 12:17:29 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.29:
+  + Ontology: Add index on nco:nameFamily
+  + SPARQL:
+    - Support \u escape sequence in string literals
+    - Fix INSERT/DELETE and SELECT * with WHERE without variables
+    - Use proper collation for string literals and fn:starts-with
+  + libtracker-data: Make it easier to test the PRAGMAs for SQLite
+  + libtracker-bus: Fix handling of priority in update_async
+  + libtracker-sparql: Add function to generate a uuid urn to the
+    client library
+  + tracker-store: Fix crash on client exit and task without
+    destroy notify
+  + tracker-extract: Split msoffice and msoffice-xml extractors and
+    refactor code
+  + tracker-extract-mp3: Fix memory leak
+  + tracker-miner-applications: Fix encoding issues and handling of
+    nie:dataSource
+  + tracker-miner-fs: Use low priority for update_async calls
+  + tracker-search: New --software and --software-categories option
+  + Bugs fixed: bgo#630244, bgo#634424, bgo#634669, bgo#635652,
+    nokia#195787, nokia#197067, nokia#200980, nokia#202291,
+    nokia#203540, nokia#203593, nokia#206752.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 18 11:13:04 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.28:
+  + GDBus support
+  + Add utils/tracker-sql to run SQL on the databases directly
+  + Ontology:
+    - Updated mfo:image for mfo:FeedSettings to be in domain
+       mfo:FeedElement
+    - Added tracker:indexed true for nmm:artistName
+    - Added tracker:domainIndex for nie:title on nmm:MusicAlbum
+    - Deprecated nmm:albumTitle for nie:title
+  + functional-tests updates.
+  + libtracker-data:
+    - Combine INSERT and UPDATE statements into one INSERT
+    - Fixed ontology change coping for tracker:domainIndex
+  + tracker-store: Queue queries while backup is taking place
+  + Build fixes: bgo#633118, nokia#202275, nokia#199968,
+    nokia#202627, nokia#202581, nokia#201122, nokia#203632.
+  + Build fixes.
+  + Updated translations.
+- Change vala-devel to vala-unstable-devel BuildRequires as tracker
+  now requires vala 0.11.
+
+-------------------------------------------------------------------
+Sat Nov  6 18:59:22 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.27:
+  + New journal format to separate ontology from data for improved
+    data integrity
+  + functional-tests updates.
+  + libtracker-common: Use per-client timeouts to avoid unnecessary
+    wake ups
+  + libtracker-client: Disable deprecation warnings when building
+    this library
+  + libtracker-data: Identify unsupported ontology change coping
+    more broadly
+  + libtracker-bus: Disable dbus timeouts in updates to the store
+  + tracker-sparql: Added --list-indexes to show database indexes 
+  + tracker-store: Use per-query watchdogs to avoid unnecessary
+    wake ups
+  + tracker-extract:
+    - Removed all tests, they've been commented out for some time
+    - GIF: Fixed memory leak for height and width
+    - GStreamer: Write multiple nmm:albumArtist if there are more
+      than one
+    - MSOffice: Don't use a static var to check if nie:generator
+      was already set
+  + tracker-miner-fs: Removed all tests, test source file was just
+    a main()
+  + tracker-control: Fix runtime critical when journal file doesn't
+    exist.
+  + Bugs fixed: nokia#199131, nokia#194908, nokia#200310,
+    bgo#633118, bgo#633093, bgo#631391.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct 23 14:15:48 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.26:
+  + Add task pool in libtracker-miner for store updates/metadata
+    extractions, 10-20% speed increase indexing.
+  + Ontology: Derive from rdfs:Resource for nao:Property,
+    nfo:Orientation, poi:ObjectOfInterest, scal:AccessLevel,
+    nmm:Flash, nmm:MeteringMode, nmm:WhiteBalance,
+    nmm:RadioModulation, mto:TransferMethod
+  + functional-tests updates
+  + tracker-extract: Port QuillImageFilter usage to QImage
+  + libtracker-data:
+    - Notify locales being used also for libunistring
+    - Improved collation related debugging traces
+  + libtracker-bus:
+    - Handle error properly in array_update_finish()
+    - Use host endian byte order for updates in steroids interface
+    - Fixed memory leak when updating, GAsyncResult should always
+      be unref-ed
+  + libtracker-miner: Fixed critical warning when calling
+    tracker-status -i
+  + tracker-miner-fs: Fixed MeeGo app miner, missing include for
+    GStrv and glib collators
+  + utils:
+    - mtp-dummy: Fixed missing locale initialization
+  + Bugs fixed: bgo#629850, bgo#632399, nokia#194548.
+  + Build fixes.
+  + Updated translations.
+- Changes from version 0.9.25:
+  + New API methods in libtracker-sparql which allow multiple
+    inserts per DBus call.
+  + Ontology:
+    - NMM: Set maximum cardinality of dlnaProfile and uPnPShared to
+      1
+    - NCO: Set tracker:notify for nco:ContactGroup.
+  + SPARQL:
+    - Fix build with Vala < 0.11
+    - Fix context handling for EXISTS and NOT EXISTS
+    - Do not use pointers as keys in hash tables
+    - Do not let SPARQL variable names influence SQL query
+  + libtracker-sparql:
+    - Use lazy resolving for symbols in plugins
+    - Added missing APIs to documentation sections file
+    - Make new example for_update_array a bit more aesthetic
+    - Documented the new API methods for multi-insert
+  + libtracker-data:
+    - Progress handling while performing integrity check
+    - Do not load superproperties on read-only access
+    - Avoid opening SQLite database twice on startup
+    - Force reindex on unsupported ontology change
+    - Fixed test cases on Fedora 14
+  + tracker-store: Fixed status reporting
+  + tracker-extract:
+    - Replace quill with quillimagefilter
+    - Use posix_fadvise() when closing files
+    - gupnp-dlna: Fix to use the tracker_sparql_escape_uri_printf()
+  + functional-tests updates
+  + coverage: Ignore coverage/ directory
+  + utils:
+    - mtp-dummy: Implemented renaming of all files after batch copy
+      finishes
+  + Bugs fixed: nokia#186096.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct  9 10:44:46 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.9.24:
+  + Ontology updates.
+  + SPARQL:
+    - Use COLLATE in SQL for variables and property functions
+    - Use named graph of WITH clause in WHERE pattern for updates
+  + functional-tests updates.
+  + libtracker-data: Add test case for ORDER BY property function
+  + libtracker-miner: Make vapi file compatible with Vala 0.11.0
+  + libtracker-sparql:
+    - Assume en_US.utf8_locale for test cases for proper collation
+    - Support GRAPH in SPARQL builder API
+  + tracker-miner-fs: Fixed regression when deleting
+    nfo:FileDataObject resources for a mount point
+  + utils: mtp-dummy: Added a test case to synthesis an mtp daemon
+  + Bugs fixed: nokia#195394, nokia#196143, nokia#195547,
+    nokia#192790.
+  + Build fixes.
+- Drop tracker-fix-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Oct  1 09:10:45 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.9.23:
+  + Ontology updates.
+  + SPARQL: Fix SQL for GRAPH with predicate variable and empty
+    database
+  + coverage: ignore dbus-binding-tool generated files
+  + functional-tests updates.
+  + libtracker-data:
+    - Log failure to set journal mode to WAL
+    - Fixed unchecked pointer unref when setting journal_mode
+      pragma
+    - Change SQLite page and cache size
+  + libtracker-sparql:
+    - Added connection_get_{async|direct_async}() APIs
+    - Various documentation fixes and additions.
+  + libtracker-miner:
+    - Added new unit tests for blacklisting and event merging
+    - Don't create inner loop until needed
+  + tracker-store: Fixed corruption in FD passing D-Bus
+    implementation
+  + tracker-extract:
+    - MP3: Fixed a huge memory leak in albumart data
+    - MP3: Support Windows-1252 character encoding
+    - MP3: Fix string handling in comment and picture tags
+    - Album art: Stop looking for cover if we already
+  + tracker-search-tool: Fixed compilation error with latest vala
+  + plugins: Evolution: Fixed the UID format of the URL
+  + Bugs fixed: nokia#193061, nokia#193044, nokia#194746
+  + Updated translations.
+- Add tracker-fix-build.patch to fix the build.
+
+-------------------------------------------------------------------
+Fri Sep 24 09:53:57 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.9.22:
+  + LRU for database statement cache (huge memory footprint
+    difference)
+  + Monitor event black listing and events are condensed (less
+    event spam up the stack)
+  + SPARQL: Rework variable name support to fix regression
+  + Ontology: NCO: Set tracker:notify to true for nco:ContactList
+  + data-generators: Added a default value for undefined categories
+  + functional-tests updates.
+  + libtracker-data:
+    - Fixed regression SELECT ... AS ?var not being honored in
+      ORDER BY
+    - Don't cache stmt if the query contains a regular expression
+    - Fixed memory leak in journal rotation
+  + libtracker-sparql:
+    - Make it possible to set the max LRU cache size per connection
+    - Added an "environment variables" section to documentation
+  + tracker-store:
+    - Added TRACKER_STORE_{SELECT|UPDATE}_CACHE_SIZE environment
+      variables to control new LRU feature
+    - Fixed crash when accessing variable_names array
+  + tracker-extract:
+    - remove unneeded call to tracker_topanalyzer_shutdown()
+    - Fixed QUILLimagefilter support
+  + tracker-miner-fs: Fixed use of uninitialized variable
+  + Bugs fixed: nokia#192537, nokia#193796, bgo#630176
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 18 14:31:06 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.9.21:
+  + Return types in TrackerSparqlCursor API (previously just
+    strings)
+  + Ontology:
+    - Added nfo:HelpDocument
+    - Added brief description to the ontologies documentation index
+      page
+  + functional-tests updates
+  + libtracker-fts: Do not use TLS for queries
+  + libtracker-common: Reset default log handler in
+    tracker_log_shutdown()
+  + libtracker-data: Fixed parallel cursor_next_async() call
+    segfaults
+  + libtracker-miner:
+    - Removed Pango requirement in tracker-miner.pc
+    - Improved debugging to avoid store availability confusion in
+      log
+  + libtracker-sparql: Added test case for cursor_next_async()
+    segfaults
+  + tracker-miner-flickr: Fixed desktop file not having the correct
+    prefix for its icon
+  + tracker-extract:
+    - On shutdown a summary is logged with extraction/failure count
+      per module
+    - Fixed compilation error for quill support
+    - Don't extract content if config has max bytes set to 0
+    - Use g_pattern_match() instead of g_pattern_match_simple(),
+      ~5% speed increase
+  + tracker-search: Do not use tracker:available for emails
+  + tracker-status: Fixed memory leak when printing state
+  + Bugs fixed: nokia#186055, nokia#192326, nokia#188031
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  9 19:22:59 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.20:
+  + bgo#628859: Ship examples/rss-reader/initial-data.ttl in
+    tarballs
+  + bgo#628872: tracker-control -t or -k shouldn't kill
+    tracker-status-icon
+  + nokia#187558: nfo:belongsToContainer not set for music files
+    synchronized from Ovi Suite to the device
+  + nokia#189896: BatchCommit doesn't send reply
+  + Ontology:
+    - Added slo:categoryIconUrl for category icons in the location
+      ontology
+    - Added slo:iconUrl for landmark icons in the location ontology
+    - Added nfo:manufacturer to replace nfo:make
+    - Updated documentation, use plainTextContent instead of
+      plainTextMessageContent
+  + libtracker-data: Fixed signed char comparison in SPARQL scanner
+  + tracker-store:
+    - Fixed class-signaling rdf_types array after delete
+    - Fixed class-signaling to emit all triples for rdf:type
+      predicates
+  + tracker-extract:
+    - MSOffice, fixed to set nfo:Presentation & nfo:Spreadsheet
+    - tracker-extract: GStreamer, use integer division for rounding
+      duration
+    - Tiff, updated to use canonical uris with new nfo:manufacturer
+      ontology
+  + tracker-miner-flickr:
+    - Fixed so tracker-search-icon doesn't show constant polling
+    - Fixed criticals for photos with no tags
+  + tracker-miner-rss: Fixed so tracker-search-icon doesn't show
+    constant polling.
+- Remove supplied initial-data.ttl, as it is now shipped in the
+  tarball.
+
+-------------------------------------------------------------------
+Mon Sep  6 09:42:14 CEST 2010 - vuntz@opensuse.org
+
+- Rename evolution-tracker subpackage to tracker-miner-evolution,
+  with appropriate Provides/Obsoletes since this is first a miner.
+  Make it also provide evolution-plugin-tracker, since it's a
+  plugin for evolution too.
+- Split flickr and rss miners in tracker-miner-flickr and
+  tracker-miner-rss subpackages since they are not that useful by
+  default, and add README.SUSE files for them to explain how to use
+  them.
+- Split applications/files miner to tracker-miner-files, and add a
+  Recommends to tracker to get it installed by default. This will
+  enable people to keep tracker and still easily remove this miner
+  if they don't want to index files.
+- Rename nautilus-tracker subpackage to
+  nautilus-extension-tracker-tags and nautilus-applet subpackage to
+  gnome-panel-applet-tracker, to follow the naming convention for
+  plugins and extensions. Add appropriate Provides/Obsoletes.
+- Add packageand(tracker:gnome-panel) Supplements to
+  gnome-panel-applet-tracker.
+- Remove useless call to autoreconf.
+- Use %_smp_mflags for parallel build.
+
+-------------------------------------------------------------------
+Thu Sep  2 20:19:38 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.9.19:
+  + Collation support
+  + Refactored signal notification API
+  + Ontology: Added nmo:isEmergency property
+  + functional-tests:
+    - Avoid FTS tests if FTS is disabled
+    - Don't include TTL files in dist (tarball was 26Mb vs. 6Mb)
+  + libtracker-data: Fixed memory leak when setting journal_mode
+    pragma
+  + libtracker-miner:
+    - If CREATED event is received from a monitor, force IRI cache
+      update
+    - Don't print paths as they may not be in UTF-8, print URIs
+  + tracker-extract: Fixed xine, mplayer and totem backends
+  + tracker-miner-fs:
+    - Removed CacheTimeout option from config, unused
+    - Removed ScanTimeout from config, unused
+    - Disable crawling entirely if !initial_crawl
+  + nokia#184505: Video files without audio are listed as music
+                  clips.
+  + nokia#179465: Cannot sort lower and upper cases for under same
+                  letter
+  + Fix build warnings, and other build issues.
+  + Updated translations.
+- Rebase tracker-removeable-media-off.patch.
+- Add libgupnp-dlna-devel BuildRequires on 11.4 and later.
+
+-------------------------------------------------------------------
+Wed Sep  1 07:57:29 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Fri Aug 27 21:32:31 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.18:
+  + Ontology:
+    - Renamed slo:longitudeUncertainty to slo:horizontalAccuracy
+    - Renamed slo:latitudeUncertainty to slo:verticalAccuracy
+  + libtracker-data:
+    - Fixed journal reader with rotated journals
+    - Make sure tracker_fts_update_commit() is called for FTS
+      updates
+  + libtracker-direct:
+    - Use maximum D-Bus timeout
+    - Wait for tracker-store to be ready
+  + libtracker-bus:
+    - Use maximum D-Bus timeout
+    - Fixed linking to include libtracker-sparql
+    - Throw errors for non-FD passing when Cancellable is cancelled
+    - Support BatchUpdate for low priority requests
+  + libtracker-sparql:
+    - Added debugging to know what SPARQL is used with
+      direct-access
+    - Added TRACKER_SPARQL_BACKEND environment variable
+    - Added deps file for tracker-sparql.vapi to distribution
+    - cursor_get_n_columns() should only be called after
+      cursor_next()
+  + libtracker-miner:
+    - Allow API to bypass config dir checks for user based indexing
+    - Add method to reindex certain mimetypes
+    - Add method to invoke tracker-miner-fs to index a file
+  + tracker-store:
+    - Fixed race conditions with new 'Wait' d-bus interface
+    - Fixed unregister_g_object() criticals
+    - Small busy callback improvements, indexing speed increased
+  + tracker-miner-fs:
+    - Remove --add-file option (now done using tracker-control -f)
+    - Added debugging to know which file is requested to be indexed
+      over D-Bus
+    - Use tracker_dbus_request_failed() for error situations
+    - Do not index dirs unconditionally when adding monitors, huge
+      crawling performance improvement
+    - Renamed Reindex D-Bus interface to Index
+  + tracker-control:
+    - Make -f and -m outputs translatable
+    - Print when reindexing mime types or files is successful
+    - Don't print PIDs if we're reindexing mimes or a file
+    - Use TrackerMinerManager to reindex mimetypes
+  + tracker-tag: Bail out if none of the passed files exist in the
+    store
+  + bgo#613252: Application-driven indexing and metadata storage
+  + bgo#627893: tracker 0.9.17 does not compile with
+    e-d-s/evolution 2.31.90 built with gtk+ 3.0
+  + nokia#187148: "Not tagged, file is not indexed" message is seen
+    when adding a tag
+  + nokia#184505: Video files without audio are listed as music
+    clips.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 19 02:15:58 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.17:
+  + SPARQL: Improve lexer performance for strings with ASCII
+    characters
+  + libtracker-common: Make sure libtracker-sparql inherits
+    verbosity
+  + libtracker-data:
+    - Merged DataError into TrackerSparqlError, was causing
+      miner-fs to not finish
+    - Remove unused Options database table
+  + libtracker-sparql:
+    - Added dbus-glib-1 dependency when building Vala sources
+    - Added example documentation for update_blank() API
+  + libtracker-bus: Catch SPARQL errors thrown by D-Bus
+  + tracker-extract:
+    - MP3: Fixed extraction of certain ID3v2.3 and ID3v2.4 tags
+    - MP3: Fixed un-unsynchronisation in ID3v2
+  + tracker-store:
+    - Fixed some memory leaks in dbus shutdown
+    - Removed plugin support (was only used by kmail)
+  + tracker-miner-fs: Fixed memory leak when setting up volumes
+  + tracker-search:
+    - Fixed typo, output was "Contacts:" when it should be "Files:"
+    - Improved output for --contacts and --files
+  + kmail: Removed this plugin, it was unmaintained
+  + Functional Tests: refactoring branch merged, much more
+    comprehensive testings now
+  + bgo#627281: crash in tracker-0.8.15 ms-office extractor
+  + bgo#623005: Remove odt2txt dependency in the OASIS extractor
+  + bgo#623207: tracker 0.8.6/0.9.x fails to build against
+    evolution 2.31.4
+  + nokia#185950: COREWEB: /usr/lib/tracker/tracker-extract
+    '*__GI_strncmp extract_gif get_file_metadata tra
+  + nokia#185070: Enable PNG_iTXt_SUPPORTED flag in libpng
+  + nokia#182948: Keywords/Subject metadata not written back to the
+    file
+  + nokia#184882: tracker-extract is getting crashed for malformed
+    gif files
+  + Updated translations.
+- Drop tracker-fix-new-evo.patch, upstream fixed.
+
+-------------------------------------------------------------------
+Sun Aug 15 16:29:10 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.16:
+  + tracker-extract: Added a GUPnP DLNA extractor
+  + libtracker-sparql: Client library for direct/dbus access
+  + libtracker-common: New environment variable TRACKER_VERBOSITY
+    to override config
+  + Fix unsupported ontology change preventing tracker for booting
+  + Fix tracker not harvesting ID3v2 tags
+  + Fix duplicates when monitor events processed before directory
+    is created in store
+  + libtracker-data: Fixed support for IN, NOT IN with <resources>
+  + libtracker-miner: If parent GFile being processed, serialise by
+    waiting
+  + libtracker-miner: Print URIs not paths for CREATE monitor event
+    debugging
+- New subpackage libtracker-sparql-0_9-0
+- Fix Regquires: in -devel subpackage, require *-0_9-0 instead of
+  *-0_8-0.
+
+-------------------------------------------------------------------
+Thu Aug 12 21:30:26 CEST 2010 - vuntz@opensuse.org
+
+- Add libgrss-devel BuildRequires to build the RSS miner.
+
+-------------------------------------------------------------------
+Wed Aug 11 01:40:52 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.9.15:
+  + Ontology, MTP: Fix mtp:hidden
+  + libtracker-data: Support for SPARQL 1.1's IN operator
+  + libtracker-data: Implement progress indication for rotated
+    journals
+  + tracker-store: Queue queries while busy
+  + Add test cases.
+  + Bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 11 00:14:58 CEST 2010 - vuntz@opensuse.org
+
+- Fill .changes for update to 0.9.14.
+- Replace id3lib-devel BuildRequires with taglib-devel.
+- Replace DeviceKit-power-devel BuildRequires with
+  libupower-glib-devel.
+- Add libicu-devel for better unicode support.
+- Add NetworkManager-devel BuildRequires for network status
+  detection.
+- Add librest-devel BuildRequires for flickr data miner.
+- Add giflib-devel BuildRequires for gif metadata support.
+- Add tracker-fix-new-evo.patch to fix build with recent
+  evolution-data-server.
+
+-------------------------------------------------------------------
+Tue Aug  3 23:28:02 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.14:
+  + For a complete overview of changes, see NEWS file. Here are
+    some highlights (excluding many bug fixes).
+  + The database version has been incremented, this will force a
+    reindex for any existing Tracker installation.
+- Highlights from version 0.9.14:
+  + SPARQL: Add support for EXISTS and NOT EXISTS
+  + Plug some memory leaks.
+  + Some ontology changes.
+  + libtracker-data: improvements in read-only mode.
+- Highlights from version 0.9.13:
+  + Added domain specific indexes, adding a column to DB tables to
+    avoid full table scans/joins with larger tables for performance.
+  + Journal compression and rotation using 50Mb chunk sizes
+  + Improve logging in libtracker-miner.
+  + tracker-miner-fs: Use 60s as default DBus timeout for requests
+    to extractor
+- Highlights from version 0.9.12:
+  + Removed libinotify imported module and use GIO completely
+- Highlights from version 0.9.11:
+  + Remove the option to index remote mounted directories
+  + Plug memory leaks in extractors.
+- Highlights from version 0.9.10:
+  + Support D-Bus FD passing (avoids much memory copying)
+  + Make tracker-search-tool history persistent
+  + Correctly handle applications in tracker-search-tool results
+  + Don't recheck all monitored directories needlessly
+  + Fix tracker listing the files under Ignore directories
+  + tracker-miner-fs: Force recheck on IgnoredFiles changes
+- Highlights from version 0.9.9:
+  + Ontology changes.
+  + libtracker-miner: Update the database when config changes for
+    optical/removable media
+  + libtracker-miner: Improved detection of removable devices.
+- Highlights from version 0.9.8:
+  + Vaarious SPARQL changes.
+  + Ontology changes.
+- Highlights from version 0.9.7:
+  + Ontology changes.
+  + tracker-store: Added support for TRACKER_STORE_TASK_MAX_TIME
+    environment variable to set maximum time allowed before
+    interrupting a query
+  + tracker-miner-fs: Added 'CrawlingInterval' config option to
+    disable or only mtime check file system after n days, default
+    is same as previously (every startup)
+- Highlights from version 0.9.6:
+  + Ontology: Added SLO (Simplified Location Ontology) for testing
+- Highlights from version 0.9.5:
+  + Added support for libunistring and libicu, to fix word
+    breaking, word normalization, word case folding, and multi
+    language extraction per file
+  + libtracker-miner: Added TrackerNetworkProvider for miners which
+    need to know about connection status
+  + tracker-extract: Added specific GIF file extractor
+  + tracker-search-tool: add search history and auto-completion
+- Highlights from version 0.9.4:
+  + Ontology changes.
+  + tracker-writeback: Added MP4 and 3GPP video files xmp module
+  + tracker-search-tool: Added "Folders" category
+- Highlights from version 0.9.3:
+  + Ontology: Added nco:contactLocalUID property
+  + Port from libdevkit-power-gobject to libupower-glib
+  + libtracker-miner: Improve crawling queries (3693 dirs, 27678
+    files, was 651s, now 166s)
+  + tracker-miner-flickr: Added new miner for Flickr web service
+- Highlights from version 0.9.2:
+  + Ontology changes.
+  + Add html content extraction
+  + Improved OASIS extractor
+  + Improved reading PS and PS-GZ files
+  + Improved reading msoffice/* files
+- Highlights from version 0.9.1:
+  + Ontology changes.
+  + tracker-writeback: Replaced id3lib module (known to corrupt
+    mp3s) for taglib module
+- Highlights from version 0.9.0:
+  + Ontology changes.
+  + Plug memory leak.
+  + tracker-preferences: UI improvements.
+- Drop upstreamed tracker-launch-applications-in-results.patch and
+  remove gnome-common BuildRequires and call to autogen.
+- Rebase tracker-removeable-media-off.patch.
+- Rename library packages to reflect libraries version bumps:
+  libtracker-client-0_9-0, libtracker-extract-0_9-0,
+  libtracker-miner-0_9-0 instead of *-0_8-0.
+
+-------------------------------------------------------------------
+Mon Jun 21 17:02:28 CEST 2010 - badshah400@gmail.com
+
+- Add tracker-removeable-media-off.patch to turn off indexing
+  removeable media by default.
+
+-------------------------------------------------------------------
+Fri Jun 18 18:13:03 CEST 2010 - vuntz@opensuse.org
+
+- Add tracker-launch-applications-in-results.patch: since tracker
+  is used from the main menu, it's important that it handles
+  applications correctly. They should be correctly displayed and it
+  should launch them instead of opening the .desktop file in a text
+  editor.
+- Add gnome-common BuildRequires and call gnome-autogen.sh for the
+  patch.
+
+-------------------------------------------------------------------
+Sun May  9 20:28:24 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.8.5:
+  + There have been many fixes since 0.8.0, see NEWS file for the
+    complete list.
+  + Add missing files from tarball.
+  + Plug memory leaks.
+  + Performance improvements.
+  + Improve content extractors, especially office-related ones.
+  + Many fixes from coverity reports.
+  + Fix crashes.
+  + Update man pages.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Thu Apr  1 19:05:48 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.8.0.
+- Drop tracker-silentrpmlint.patch: not needed anymore.
+
+-------------------------------------------------------------------
+Thu Mar 25 21:58:46 CET 2010 - vuntz@opensuse.org
+
+- Rework package to make it work, and update to latest upstream
+  version.
+
+-------------------------------------------------------------------
+Wed Jan  6 15:03:45 UTC 2010 - lmedinas@opensuse.org
+
+- Initial package for openSUSE
+
