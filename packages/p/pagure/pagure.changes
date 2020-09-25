@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 24 22:57:42 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport various fixes from upstream
+  + Patch: 0001-Display-real-line-numbers-on-pull-request-s-diff-vie.patch
+  + Patch: 0002-Show-the-assignee-s-avatar-on-the-board.patch
+  + Patch: 0003-Allow-setting-a-status-as-closing-even-if-the-projec.patch
+  + Patch: 0004-Include-the-assignee-in-the-list-of-people-notified-.patch
+  + Patch: 0005-Introduce-the-collaborator_project_groups-mapping.patch
+  + Patch: 0006-When-a-file-a-detected-as-a-binary-file-return-the-r.patch
+  + Patch: 0007-Remove-fenced-code-block-when-checking-mention.patch
+  + Patch: 0008-Add-support-for-using-cchardet-to-detect-files-encod.patch
+  + Patch: 0009-Add-support-for-disabling-user-registration.patch
+- Remove mandatory dependency on systemd to ease containerization
+
+-------------------------------------------------------------------
 Sun Aug 30 14:25:21 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 5.11.3
