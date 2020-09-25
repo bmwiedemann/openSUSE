@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Sep 25 07:06:49 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.22
+  * Corrected a bug introduced in 6.1.17alpha that could cause
+    incorrect line spacing in the Picture window, such as in
+    TableOfReal: Draw as numbers.
+  version 6.1.21
+  * First fully functional version for BigSur.
+  * Removed a decades-old bug by which an extremum allegedly
+    computed by cubic interpolation would actually have been
+    computed by sinc700.
+  version 6.1.16
+  * Record fixed time...: more reliable choice of input device.
+  version 6.1.15
+  * Repaired a bug introduced in 6.0.44 that could cause an
+    incorrect (namely, totally constant) ClassificationTable.
+  version 6.1.14
+  * Repaired a bug in drawing ranges introduced in 6.1.06.
+  version 6.1.13a
+  * Repaired discriminant analysis on i386 processors.
+  * Scripting: enabled predictability by setting random seeds.
+  * Automated batch testing on x86_64, i386 and ARMv7 processors.
+  version 6.1.12
+  * All non-GUI tests can be automated from batch.
+  * Repaired a bug introduced in 6.0 whereby a
+    KlattGrid-generated Sound would always be peak-scaled.
+  version 6.1.11
+  * Better messages
+  * Overhauled VowelEditor.
+  * Repaired crashes after creating a Formant from a Spectrum or
+    an Excitation.
+- Refreshed praat-use_system_libs.patch and
+  praat-no-return-in-nonvoid.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 10:35:57 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.10

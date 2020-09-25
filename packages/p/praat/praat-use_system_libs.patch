@@ -1,30 +1,19 @@
 From: Luigi Baldoni <aloisio@gmx.com>
-Date: 2017-07-29 13:47:50 +0200
+Date: 2020-09-25 09:46:36 +0200
 Subject: Use system libraries when possible
 
 Praat includes a number of external libraries that then builds
 internally.
-Some (gsl, glpk and portaudio) can be replaced by system ones,
-other like espeak and FLAC are too heavily patched for the program
-to be compatible with upstream ones.
+Some (gsl, glpk) can be replaced by system ones, other like espeak,
+and FLAC are too heavily patched for the program to be compatible
+with upstream ones.
+Praat also supplies an unstable upstream portaudio version that's
+not recommendable for distro inclusion.
 
-Index: praat-6.1.10/fon/SoundRecorder.h
+Index: praat-6.1.22/melder/NUMlinprog.cpp
 ===================================================================
---- praat-6.1.10.orig/fon/SoundRecorder.h
-+++ praat-6.1.10/fon/SoundRecorder.h
-@@ -25,7 +25,7 @@
- 
- #include "SoundRecorder_enums.h"
- 
--#include "../external/portaudio/portaudio.h"
-+#include <portaudio.h>
- #if defined (_WIN32)
- #elif defined (macintosh)
- #elif defined (linux)
-Index: praat-6.1.10/melder/NUMlinprog.cpp
-===================================================================
---- praat-6.1.10.orig/melder/NUMlinprog.cpp
-+++ praat-6.1.10/melder/NUMlinprog.cpp
+--- praat-6.1.22.orig/melder/NUMlinprog.cpp
++++ praat-6.1.22/melder/NUMlinprog.cpp
 @@ -17,7 +17,7 @@
   */
  
@@ -34,36 +23,10 @@ Index: praat-6.1.10/melder/NUMlinprog.cpp
  
  struct structNUMlinprog {
  	glp_prob *linearProgram;
-Index: praat-6.1.10/dwtools/VowelEditor.cpp
+Index: praat-6.1.22/melder/NUMspecfunc.cpp
 ===================================================================
---- praat-6.1.10.orig/dwtools/VowelEditor.cpp
-+++ praat-6.1.10/dwtools/VowelEditor.cpp
-@@ -53,7 +53,7 @@ trajectory --> path ????
- 
- #include "FormantGrid.h"
- #include "KlattGrid.h"
--#include "../external/portaudio/portaudio.h"
-+#include <portaudio.h>
- #include "PitchTier_to_PointProcess.h"
- #include "PitchTier_to_Sound.h"
- #include "PointProcess_and_Sound.h"
-Index: praat-6.1.10/melder/melder_audio.cpp
-===================================================================
---- praat-6.1.10.orig/melder/melder_audio.cpp
-+++ praat-6.1.10/melder/melder_audio.cpp
-@@ -45,7 +45,7 @@
- #include <time.h>
- #include "../sys/Gui.h"
- #include "../sys/Preferences.h"
--#include "../external/portaudio/portaudio.h"
-+#include <portaudio.h>
- 
- #ifdef HAVE_PULSEAUDIO
- 	void pulseAudio_initialize ();
-Index: praat-6.1.10/melder/NUMspecfunc.cpp
-===================================================================
---- praat-6.1.10.orig/melder/NUMspecfunc.cpp
-+++ praat-6.1.10/melder/NUMspecfunc.cpp
+--- praat-6.1.22.orig/melder/NUMspecfunc.cpp
++++ praat-6.1.22/melder/NUMspecfunc.cpp
 @@ -31,10 +31,10 @@
  #include "melder.h"
  #include "../dwsys/NUM2.h"   // NUMridders
@@ -79,10 +42,10 @@ Index: praat-6.1.10/melder/NUMspecfunc.cpp
  
  double NUMlnGamma (double x) {
  	gsl_sf_result result;
-Index: praat-6.1.10/melder/melder.cpp
+Index: praat-6.1.22/melder/melder.cpp
 ===================================================================
---- praat-6.1.10.orig/melder/melder.cpp
-+++ praat-6.1.10/melder/melder.cpp
+--- praat-6.1.22.orig/melder/melder.cpp
++++ praat-6.1.22/melder/melder.cpp
 @@ -24,7 +24,7 @@
  #include "melder_enums.h"
  
@@ -92,53 +55,10 @@ Index: praat-6.1.10/melder/melder.cpp
  #ifdef macintosh
  	#include <Carbon/Carbon.h>   // Gestalt
  #endif
-Index: praat-6.1.10/fon/Sound_audio.cpp
+Index: praat-6.1.22/dwsys/Makefile
 ===================================================================
---- praat-6.1.10.orig/fon/Sound_audio.cpp
-+++ praat-6.1.10/fon/Sound_audio.cpp
-@@ -26,7 +26,7 @@
- 
- #include "Sound.h"
- #include "Preferences.h"
--#include "../external/portaudio/portaudio.h"
-+#include <portaudio.h>
- 
- #if defined (macintosh)
- 	#include "macport_on.h"
-Index: praat-6.1.10/Makefile
-===================================================================
---- praat-6.1.10.orig/Makefile
-+++ praat-6.1.10/Makefile
-@@ -14,11 +14,8 @@ include makefile.defs
- # Makes the Praat executable in the source directory.
- all:
- 	$(MAKE) -C external/clapack
--	$(MAKE) -C external/gsl
--	$(MAKE) -C external/glpk
- 	$(MAKE) -C external/mp3
- 	$(MAKE) -C external/flac
--	$(MAKE) -C external/portaudio
- 	$(MAKE) -C external/espeak
- 	$(MAKE) -C kar
- 	$(MAKE) -C melder
-@@ -40,11 +37,10 @@ all:
- 		fon/libfon.a stat/libstat.a dwsys/libdwsys.a \
- 		sys/libsys.a melder/libmelder.a kar/libkar.a \
- 		external/espeak/libespeak.a \
--		external/portaudio/libportaudio.a \
-+		`pkg-config --libs portaudio-2.0` `pkg-config --libs gtk+-2.0` \
- 		external/flac/libflac.a external/mp3/libmp3.a \
--		external/glpk/libglpk.a \
-+		`pkg-config --libs libpulse` -lglpk `pkg-config --libs gsl` \
- 		external/clapack/liblapack.a external/clapack/libblas.a \
--		external/gsl/libgsl.a \
- 		$(LIBS)
- 
- clean:
-Index: praat-6.1.10/dwsys/Makefile
-===================================================================
---- praat-6.1.10.orig/dwsys/Makefile
-+++ praat-6.1.10/dwsys/Makefile
+--- praat-6.1.22.orig/dwsys/Makefile
++++ praat-6.1.22/dwsys/Makefile
 @@ -4,7 +4,7 @@
  
  include ../makefile.defs
@@ -155,35 +75,27 @@ Index: praat-6.1.10/dwsys/Makefile
 -$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h ../external/gsl/*.h ../dwsys/*.h ../kar/*.h
 +$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h /usr/include/gsl/*.h ../dwsys/*.h ../kar/*.h
  
-Index: praat-6.1.10/fon/Makefile
+Index: praat-6.1.22/Makefile
 ===================================================================
---- praat-6.1.10.orig/fon/Makefile
-+++ praat-6.1.10/fon/Makefile
-@@ -3,7 +3,7 @@
+--- praat-6.1.22.orig/Makefile
++++ praat-6.1.22/Makefile
+@@ -14,8 +14,6 @@ include makefile.defs
+ # Makes the Praat executable in the source directory.
+ all:
+ 	$(MAKE) -C external/clapack
+-	$(MAKE) -C external/gsl
+-	$(MAKE) -C external/glpk
+ 	$(MAKE) -C external/mp3
+ 	$(MAKE) -C external/flac
+ 	$(MAKE) -C external/portaudio
+@@ -42,9 +40,8 @@ all:
+ 		external/espeak/libespeak.a \
+ 		external/portaudio/libportaudio.a \
+ 		external/flac/libflac.a external/mp3/libmp3.a \
+-		external/glpk/libglpk.a \
++		`pkg-config --libs libpulse` -lglpk `pkg-config --libs gsl` \
+ 		external/clapack/libclapack.a \
+-		external/gsl/libgsl.a \
+ 		$(LIBS)
  
- include ../makefile.defs
- 
--CPPFLAGS = -I ../kar -I ../melder -I ../sys -I ../dwsys -I ../stat -I ../dwtools -I ../LPC -I ../fon -I ../external/portaudio -I ../external/flac -I ../external/mp3 -I ../external/espeak
-+CPPFLAGS = -I ../kar -I ../melder -I ../sys -I ../dwsys -I ../stat -I ../dwtools -I ../LPC -I ../fon -I /usr/include/portaudio -I ../external/flac -I ../external/mp3 -I ../external/espeak
- 
- OBJECTS = Transition.o Distributions_and_Transition.o \
-    Function.o Sampled.o SampledXY.o Matrix.o Vector.o Polygon.o PointProcess.o \
-@@ -54,4 +54,4 @@ libfon.a: $(OBJECTS)
- 	$(AR) cq libfon.a $(OBJECTS)
- 	$(RANLIB) libfon.a
- 
--$(OBJECTS): *.h ../external/portaudio/*.h ../kar/*.h ../melder/*.h ../sys/*.h ../dwsys/*.h ../stat/*.h ../dwtools/*.h ../LPC/*.h ../external/flac/*.h ../external/mp3/mp3.h
-+$(OBJECTS): *.h ../kar/*.h ../melder/*.h ../sys/*.h ../dwsys/*.h ../stat/*.h ../dwtools/*.h ../LPC/*.h ../external/flac/*.h ../external/mp3/mp3.h
-Index: praat-6.1.10/dwtools/Makefile
-===================================================================
---- praat-6.1.10.orig/dwtools/Makefile
-+++ praat-6.1.10/dwtools/Makefile
-@@ -4,7 +4,7 @@
- 
- include ../makefile.defs
- 
--CPPFLAGS = -I ../kar -I ../melder -I ../LPC -I ../fon -I ../sys -I ../stat -I ../dwsys -I ../external/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I ../kar
-+CPPFLAGS = -I ../kar -I ../melder -I ../LPC -I ../fon -I ../sys -I ../stat -I ../dwsys -I /usr/include/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I ../kar
- 
- OBJECTS = ActivationList.o AffineTransform.o \
- 	Categories.o CategoriesEditor.o \
+ clean:

@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.1.10
+Version:        6.1.22
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -30,19 +30,14 @@ Patch1:         praat-use_system_libs.patch
 # PATCH-FIX-OPENSUSE praat-no-return-in-nonvoid.patch -- address rpmlint complaint
 Patch2:         praat-no-return-in-nonvoid.patch
 BuildRequires:  ImageMagick
-%if 0%{?suse_version} >= 1500
 BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%endif
 BuildRequires:  glpk-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(portaudio-2.0)
 
 %description
 Praat is an open-software tool for the analysis of speech in phonetics.
@@ -58,13 +53,11 @@ provisions for communicating with other programs.
 %autosetup -p1
 
 %build
-test -x "$(type -p gcc-7)" && export CC=gcc-7
-test -x "$(type -p g++-7)" && export CXX=g++-7 LINK=g++-7
 cp makefiles/makefile.defs.linux.pulse ./makefile.defs
 sed -e '/^CFLAGS/s/$/\ %{optflags}/' \
     -e '/^CC/s/=/?=/' -e '/^CXX/s/=/?=/' \
     -e '/^LINK/s/=/?=/' -i makefile.defs
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}/%{_bindir} \
