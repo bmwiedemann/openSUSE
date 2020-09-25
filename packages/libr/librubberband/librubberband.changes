@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:46:43 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.8.2
+ * Fix a number of small memory leaks
+ * Make stretcher more robust to being fed invalid input (with
+   NaNs)
+ * Various platform build fixes and improvements
+ * The API is unchanged and the library is binary compatible
+   with version 1.7.
+- Refreshed rubberband-mk.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Jul 16 14:44:18 UTC 2015 - olaf@aepfle.de
 
 - Fix build in SLE_11 by disabling usage of help2man

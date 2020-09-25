@@ -1,18 +1,44 @@
---- Makefile.in
-+++ Makefile.in
-@@ -28,11 +28,11 @@
+Index: rubberband-1.8.2/Makefile.in
+===================================================================
+--- rubberband-1.8.2.orig/Makefile.in
++++ rubberband-1.8.2/Makefile.in
+@@ -20,11 +20,11 @@ AR			:= ar
  
- INSTALL_BINDIR		:= @prefix@/bin
- INSTALL_INCDIR		:= @prefix@/include/rubberband
--INSTALL_LIBDIR		:= @prefix@/lib
--INSTALL_VAMPDIR		:= @prefix@/lib/vamp
--INSTALL_LADSPADIR	:= @prefix@/lib/ladspa
+ INSTALL_BINDIR		:= $(PREFIX)/bin
+ INSTALL_INCDIR		:= $(PREFIX)/include/rubberband
+-INSTALL_LIBDIR		:= $(PREFIX)/lib
+-INSTALL_VAMPDIR		:= $(PREFIX)/lib/vamp
+-INSTALL_LADSPADIR	:= $(PREFIX)/lib/ladspa
 +INSTALL_LIBDIR		:= @libdir@
 +INSTALL_VAMPDIR		:= @libdir@/vamp
 +INSTALL_LADSPADIR	:= @libdir@/ladspa
- INSTALL_LRDFDIR		:= @prefix@/share/ladspa/rdf
--INSTALL_PKGDIR		:= @prefix@/lib/pkgconfig
+ INSTALL_LRDFDIR		:= $(PREFIX)/share/ladspa/rdf
+-INSTALL_PKGDIR		:= $(PREFIX)/lib/pkgconfig
 +INSTALL_PKGDIR		:= @libdir@/pkgconfig
  
- all:	bin lib $(PROGRAM_TARGET) $(STATIC_TARGET) $(DYNAMIC_TARGET) $(VAMP_TARGET) $(LADSPA_TARGET)
+ LIBNAME			:= librubberband
+ JNINAME			:= librubberband-jni
+@@ -45,7 +45,7 @@ JAR_TARGET		:= lib/$(JARNAME)
+ VAMP_TARGET    		:= lib/vamp-rubberband$(DYNAMIC_EXTENSION)
+ LADSPA_TARGET  		:= lib/ladspa-rubberband$(DYNAMIC_EXTENSION)
  
+-all:	bin lib $(PROGRAM_TARGET) $(STATIC_TARGET) $(DYNAMIC_TARGET) $(VAMP_TARGET) $(LADSPA_TARGET)
++all:	bin lib $(PROGRAM_TARGET) $(DYNAMIC_TARGET) $(VAMP_TARGET) $(LADSPA_TARGET)
+ 
+ static:		$(STATIC_TARGET)
+ dynamic:	$(DYNAMIC_TARGET)
+@@ -176,14 +176,12 @@ install:	all
+ 	$(MKDIR) -p $(DESTDIR)$(INSTALL_PKGDIR)
+ 	cp $(PROGRAM_TARGET) $(DESTDIR)$(INSTALL_BINDIR)
+ 	cp $(PUBLIC_INCLUDES) $(DESTDIR)$(INSTALL_INCDIR)
+-	cp $(STATIC_TARGET) $(DESTDIR)$(INSTALL_LIBDIR)
+ 	rm -f $(DESTDIR)$(INSTALL_LIBDIR)/$(LIBNAME)$(DYNAMIC_EXTENSION).$(DYNAMIC_ABI_VERSION)
+ 	rm -f $(DESTDIR)$(INSTALL_LIBDIR)/$(LIBNAME)$(DYNAMIC_EXTENSION)
+ 	rm -f $(DESTDIR)$(INSTALL_LIBDIR)/$(JNINAME)$(DYNAMIC_EXTENSION)
+ 	cp $(DYNAMIC_TARGET) $(DESTDIR)$(INSTALL_LIBDIR)/$(LIBNAME)$(DYNAMIC_EXTENSION).$(DYNAMIC_FULL_VERSION)
+ 	ln -s $(LIBNAME)$(DYNAMIC_EXTENSION).$(DYNAMIC_FULL_VERSION) $(DESTDIR)$(INSTALL_LIBDIR)/$(LIBNAME)$(DYNAMIC_EXTENSION).$(DYNAMIC_ABI_VERSION)
+ 	ln -s $(LIBNAME)$(DYNAMIC_EXTENSION).$(DYNAMIC_FULL_VERSION) $(DESTDIR)$(INSTALL_LIBDIR)/$(LIBNAME)$(DYNAMIC_EXTENSION)
+-	cp -f $(JNI_TARGET) $(DESTDIR)$(INSTALL_LIBDIR)/$(JNINAME)$(DYNAMIC_EXTENSION)
+ 	cp $(VAMP_TARGET) $(DESTDIR)$(INSTALL_VAMPDIR)
+ 	cp vamp/vamp-rubberband.cat $(DESTDIR)$(INSTALL_VAMPDIR)
+ 	cp $(LADSPA_TARGET) $(DESTDIR)$(INSTALL_LADSPADIR)
