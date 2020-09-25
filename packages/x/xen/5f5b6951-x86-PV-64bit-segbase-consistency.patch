@@ -1,0 +1,223 @@
+Subject: x86/pv: Fix consistency of 64bit segment bases
+From: Andrew Cooper andrew.cooper3@citrix.com Fri Sep 11 14:10:57 2020 +0200
+Date: Fri Sep 11 14:10:57 2020 +0200:
+Git: 431d52afd9438a3a126dfd787bd2d69b76906cb5
+
+The comments in save_segments(), _toggle_guest_pt() and write_cr() are false.
+The %fs and %gs bases can be updated at any time by the guest.
+
+As a consequence, Xen's fs_base/etc tracking state is always stale when the
+vcpu is in context, and must not be used to complete MSR_{FS,GS}_BASE reads, etc.
+
+In particular, a sequence such as:
+
+  wrmsr(MSR_FS_BASE, 0x1ull << 32);
+  write_fs(__USER_DS);
+  base = rdmsr(MSR_FS_BASE);
+
+will return the stale base, not the new base.  This may cause guest a guest
+kernel's context switching of userspace to malfunction.
+
+Therefore:
+ * Update save_segments(), _toggle_guest_pt() and read_msr() to always read
+   the segment bases from hardware.
+ * Update write_cr(), write_msr() and do_set_segment_base() to not not waste
+   time caching data which is instantly going to become stale again.
+ * Provide comments explaining when the tracking state is and isn't stale.
+
+This bug has been present for 14 years, but several bugfixes since have built
+on and extended the original flawed logic.
+
+Fixes: ba9adb737ba ("Apply stricter checking to RDMSR/WRMSR emulations.")
+Fixes: c42494acb2f ("x86: fix FS/GS base handling when using the fsgsbase feature")
+Fixed: eccc170053e ("x86/pv: Don't have %cr4.fsgsbase active behind a guest kernels back")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+master commit: a5eaac9245f4f382a3cd0e9710e9d1cba7db20e4
+master date: 2020-09-07 11:32:34 +0100
+
+diff --git a/xen/arch/x86/domain.c b/xen/arch/x86/domain.c
+index fee6c3931a..8351391cdd 100644
+--- a/xen/arch/x86/domain.c
++++ b/xen/arch/x86/domain.c
+@@ -1562,6 +1562,16 @@ static void load_segments(struct vcpu *n)
+     }
+ }
+ 
++/*
++ * Record all guest segment state.  The guest can load segment selectors
++ * without trapping, which will also alter the 64bit FS/GS bases.  Arbitrary
++ * changes to bases can also be made with the WR{FS,GS}BASE instructions, when
++ * enabled.
++ *
++ * Guests however cannot use SWAPGS, so there is no mechanism to modify the
++ * inactive GS base behind Xen's back.  Therefore, Xen's copy of the inactive
++ * GS base is still accurate, and doesn't need reading back from hardware.
++ */
+ static void save_segments(struct vcpu *v)
+ {
+     struct cpu_user_regs *regs = &v->arch.user_regs;
+@@ -1572,14 +1582,15 @@ static void save_segments(struct vcpu *v)
+     regs->fs = read_sreg(fs);
+     regs->gs = read_sreg(gs);
+ 
+-    /* %fs/%gs bases can only be stale if WR{FS,GS}BASE are usable. */
+-    if ( (read_cr4() & X86_CR4_FSGSBASE) && !is_pv_32bit_vcpu(v) )
++    if ( !is_pv_32bit_vcpu(v) )
+     {
+-        v->arch.pv.fs_base = __rdfsbase();
++        unsigned long gs_base = rdgsbase();
++
++        v->arch.pv.fs_base = rdfsbase();
+         if ( v->arch.flags & TF_kernel_mode )
+-            v->arch.pv.gs_base_kernel = __rdgsbase();
++            v->arch.pv.gs_base_kernel = gs_base;
+         else
+-            v->arch.pv.gs_base_user = __rdgsbase();
++            v->arch.pv.gs_base_user = gs_base;
+     }
+ 
+     if ( regs->ds )
+diff --git a/xen/arch/x86/pv/domain.c b/xen/arch/x86/pv/domain.c
+index ec5a7d2dca..44e4ea2582 100644
+--- a/xen/arch/x86/pv/domain.c
++++ b/xen/arch/x86/pv/domain.c
+@@ -444,17 +444,19 @@ static void _toggle_guest_pt(struct vcpu *v)
+ void toggle_guest_mode(struct vcpu *v)
+ {
+     const struct domain *d = v->domain;
++    unsigned long gs_base;
+ 
+     ASSERT(!is_pv_32bit_vcpu(v));
+ 
+-    /* %fs/%gs bases can only be stale if WR{FS,GS}BASE are usable. */
+-    if ( read_cr4() & X86_CR4_FSGSBASE )
+-    {
+-        if ( v->arch.flags & TF_kernel_mode )
+-            v->arch.pv.gs_base_kernel = __rdgsbase();
+-        else
+-            v->arch.pv.gs_base_user = __rdgsbase();
+-    }
++    /*
++     * Update the cached value of the GS base about to become inactive, as a
++     * subsequent context switch won't bother re-reading it.
++     */
++    gs_base = rdgsbase();
++    if ( v->arch.flags & TF_kernel_mode )
++        v->arch.pv.gs_base_kernel = gs_base;
++    else
++        v->arch.pv.gs_base_user = gs_base;
+     asm volatile ( "swapgs" );
+ 
+     _toggle_guest_pt(v);
+diff --git a/xen/arch/x86/pv/emul-priv-op.c b/xen/arch/x86/pv/emul-priv-op.c
+index 254da2b849..7c21076dd0 100644
+--- a/xen/arch/x86/pv/emul-priv-op.c
++++ b/xen/arch/x86/pv/emul-priv-op.c
+@@ -801,17 +801,6 @@ static int write_cr(unsigned int reg, unsigned long val,
+     }
+ 
+     case 4: /* Write CR4 */
+-        /*
+-         * If this write will disable FSGSBASE, refresh Xen's idea of the
+-         * guest bases now that they can no longer change.
+-         */
+-        if ( (curr->arch.pv.ctrlreg[4] & X86_CR4_FSGSBASE) &&
+-             !(val & X86_CR4_FSGSBASE) )
+-        {
+-            curr->arch.pv.fs_base = __rdfsbase();
+-            curr->arch.pv.gs_base_kernel = __rdgsbase();
+-        }
+-
+         curr->arch.pv.ctrlreg[4] = pv_fixup_guest_cr4(curr, val);
+         write_cr4(pv_make_cr4(curr));
+         ctxt_switch_levelling(curr);
+@@ -860,15 +849,13 @@ static int read_msr(unsigned int reg, uint64_t *val,
+     case MSR_FS_BASE:
+         if ( is_pv_32bit_domain(currd) )
+             break;
+-        *val = (read_cr4() & X86_CR4_FSGSBASE) ? __rdfsbase()
+-                                               : curr->arch.pv.fs_base;
++        *val = rdfsbase();
+         return X86EMUL_OKAY;
+ 
+     case MSR_GS_BASE:
+         if ( is_pv_32bit_domain(currd) )
+             break;
+-        *val = (read_cr4() & X86_CR4_FSGSBASE) ? __rdgsbase()
+-                                               : curr->arch.pv.gs_base_kernel;
++        *val = rdgsbase();
+         return X86EMUL_OKAY;
+ 
+     case MSR_SHADOW_GS_BASE:
+@@ -997,14 +984,12 @@ static int write_msr(unsigned int reg, uint64_t val,
+         if ( is_pv_32bit_domain(currd) || !is_canonical_address(val) )
+             break;
+         wrfsbase(val);
+-        curr->arch.pv.fs_base = val;
+         return X86EMUL_OKAY;
+ 
+     case MSR_GS_BASE:
+         if ( is_pv_32bit_domain(currd) || !is_canonical_address(val) )
+             break;
+         wrgsbase(val);
+-        curr->arch.pv.gs_base_kernel = val;
+         return X86EMUL_OKAY;
+ 
+     case MSR_SHADOW_GS_BASE:
+diff --git a/xen/arch/x86/x86_64/mm.c b/xen/arch/x86/x86_64/mm.c
+index 3b726f7c00..48fd60a876 100644
+--- a/xen/arch/x86/x86_64/mm.c
++++ b/xen/arch/x86/x86_64/mm.c
+@@ -1002,10 +1002,7 @@ long do_set_segment_base(unsigned int which, unsigned long base)
+     {
+     case SEGBASE_FS:
+         if ( is_canonical_address(base) )
+-        {
+             wrfsbase(base);
+-            v->arch.pv.fs_base = base;
+-        }
+         else
+             ret = -EINVAL;
+         break;
+@@ -1022,10 +1019,7 @@ long do_set_segment_base(unsigned int which, unsigned long base)
+ 
+     case SEGBASE_GS_KERNEL:
+         if ( is_canonical_address(base) )
+-        {
+             wrgsbase(base);
+-            v->arch.pv.gs_base_kernel = base;
+-        }
+         else
+             ret = -EINVAL;
+         break;
+diff --git a/xen/include/asm-x86/domain.h b/xen/include/asm-x86/domain.h
+index 6fd94c2e14..40385f5eaa 100644
+--- a/xen/include/asm-x86/domain.h
++++ b/xen/include/asm-x86/domain.h
+@@ -516,7 +516,24 @@ struct pv_vcpu
+     bool_t syscall32_disables_events;
+     bool_t sysenter_disables_events;
+ 
+-    /* Segment base addresses. */
++    /*
++     * 64bit segment bases.
++     *
++     * FS and the active GS are always stale when the vCPU is in context, as
++     * the guest can change them behind Xen's back with MOV SREG, or
++     * WR{FS,GS}BASE on capable hardware.
++     *
++     * The inactive GS base is never stale, as guests can't use SWAPGS to
++     * access it - all modification is performed by Xen either directly
++     * (hypercall, #GP emulation), or indirectly (toggle_guest_mode()).
++     *
++     * The vCPU context switch path is optimised based on this fact, so any
++     * path updating or swapping the inactive base must update the cached
++     * value as well.
++     *
++     * Which GS base is active and inactive depends on whether the vCPU is in
++     * user or kernel context.
++     */
+     unsigned long fs_base;
+     unsigned long gs_base_kernel;
+     unsigned long gs_base_user;

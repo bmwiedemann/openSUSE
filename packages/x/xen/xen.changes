@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Sep 22 10:54:28 MDT 2020 - carnold@suse.com
+
+- bsc#1176339 - VUL-0: CVE-2020-25602: xen: x86 pv: Crash when
+  handling guest access to MSR_MISC_ENABLE (XSA-333)
+  5f6a05a0-pv-Handle-the-Intel-specific-MSR_MISC_ENABLE-correctly.patch
+- bsc#1176341 - VUL-0: CVE-2020-25598: xen: Missing unlock in
+  XENMEM_acquire_resource error path (XSA-334)
+  5f6a05b7-xen-memory-Dont-skip-the-RCU-unlock-path-in-acquire_resource.patch
+- bsc#1176343 - VUL-0: CVE-2020-25604: xen: race when migrating
+  timers between x86 HVM vCPU-s (XSA-336)
+  5f6a05dd-vpt-fix-race-when-migrating-timers-between-vCPUs.patch
+- bsc#1176344 - VUL-0: CVE-2020-25595: xen: PCI passthrough code
+  reading back hardware registers (XSA-337)
+  5f6a05fa-msi-get-rid-of-read_msi_msg.patch
+  5f6a061a-MSI-X-restrict-reading-of-table-PBA-bases-from-BARs.patch
+- bsc#1176346 - VUL-0: CVE-2020-25597: xen: once valid event
+  channels may not turn invalid (XSA-338)
+  5f6a062c-evtchn-relax-port_is_valid.patch
+- bsc#1176345 - VUL-0: CVE-2020-25596: xen: x86 pv guest kernel
+  DoS via SYSENTER (XSA-339)
+  5f6a065c-pv-Avoid-double-exception-injection.patch
+- bsc#1176347 - VUL-0: CVE-2020-25603: xen: Missing barrier
+  barriers when accessing/allocating an event channel (XSA-340)
+  5f6a0674-xen-evtchn-Add-missing-barriers-when-accessing-allocating-an-event-channel.patch
+- bsc#1176348 - VUL-0: CVE-2020-25600: xen: out of bounds event
+  channels available to 32-bit x86 domains (XSA-342)
+  5f6a068e-evtchn-x86-enforce-correct-upper-limit-for-32-bit-guests.patch
+- bsc#1176349 - VUL-0: CVE-2020-25599: xen: races with
+  evtchn_reset() (XSA-343)
+  5f6a06be-evtchn-evtchn_reset-shouldnt-succeed-with-still-open-ports.patch
+  5f6a06e0-evtchn-convert-per-channel-lock-to-be-IRQ-safe.patch
+  5f6a06f2-evtchn-address-races-with-evtchn_reset.patch
+- bsc#1176350 - VUL-0: CVE-2020-25601: xen: lack of preemption in
+  evtchn_reset() / evtchn_destroy() (XSA-344)
+  5f6a071f-evtchn-arrange-for-preemption-in-evtchn_destroy.patch
+  5f6a0754-evtchn-arrange-for-preemption-in-evtchn_reset.patch
+- Upstream bug fix (bsc#1027519)
+  5f5b6951-x86-PV-64bit-segbase-consistency.patch
+
+-------------------------------------------------------------------
+Mon Sep 21 14:03:02 MDT 2020 - carnold@suse.com
+
+- Fix problems in xen.spec with building on aarch64
+
+-------------------------------------------------------------------
+Fri Sep 18 15:20:31 MDT 2020 - carnold@suse.com
+
+- Make use of %service_del_postun_without_restart while preserving
+  the old behavior for older distros.
+- In %post tools, remove unnecessary qemu symlinks.
+
+-------------------------------------------------------------------
+Thu Sep 17 11:11:11 UTC 2020 - ohering@suse.de
+
+- Fix error in xen-tools %post when linking pvgrub64.bin
+- Make paths below libexec more explicit
+- Create symlink also for pvgrub32.bin
+
+-------------------------------------------------------------------
 Fri Sep 11 11:11:11 UTC 2020 - ohering@suse.de
 
 - Revert previous libexec change for qemu compat wrapper

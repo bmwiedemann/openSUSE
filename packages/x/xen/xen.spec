@@ -38,6 +38,7 @@ ExclusiveArch:  %ix86 x86_64 aarch64
 %bcond_with    xen_stubdom
 %endif
 #
+%define qemu_arch i386
 %ifarch x86_64
 %define with_gdbsx 1
 %define with_dom0_support 1
@@ -45,6 +46,7 @@ ExclusiveArch:  %ix86 x86_64 aarch64
 #
 %ifarch %arm aarch64
 %define with_dom0_support 1
+%define qemu_arch aarch64
 %endif
 #
 %define xen_install_suffix %{nil}
@@ -123,7 +125,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.14.0_06
+Version:        4.14.0_08
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -163,6 +165,21 @@ Source99:       baselibs.conf
 # Upstream patches
 Patch1:         5f1a9916-x86-S3-put-data-sregs-into-known-state.patch
 Patch2:         5f21b9fd-x86-cpuid-APIC-bit-clearing.patch
+Patch3:         5f5b6951-x86-PV-64bit-segbase-consistency.patch
+Patch4:         5f6a05a0-pv-Handle-the-Intel-specific-MSR_MISC_ENABLE-correctly.patch
+Patch5:         5f6a05b7-xen-memory-Dont-skip-the-RCU-unlock-path-in-acquire_resource.patch
+Patch6:         5f6a05dd-vpt-fix-race-when-migrating-timers-between-vCPUs.patch
+Patch7:         5f6a05fa-msi-get-rid-of-read_msi_msg.patch
+Patch8:         5f6a061a-MSI-X-restrict-reading-of-table-PBA-bases-from-BARs.patch
+Patch9:         5f6a062c-evtchn-relax-port_is_valid.patch
+Patch10:        5f6a065c-pv-Avoid-double-exception-injection.patch
+Patch11:        5f6a0674-xen-evtchn-Add-missing-barriers-when-accessing-allocating-an-event-channel.patch
+Patch12:        5f6a068e-evtchn-x86-enforce-correct-upper-limit-for-32-bit-guests.patch
+Patch13:        5f6a06be-evtchn-evtchn_reset-shouldnt-succeed-with-still-open-ports.patch
+Patch14:        5f6a06e0-evtchn-convert-per-channel-lock-to-be-IRQ-safe.patch
+Patch15:        5f6a06f2-evtchn-address-races-with-evtchn_reset.patch
+Patch16:        5f6a071f-evtchn-arrange-for-preemption-in-evtchn_destroy.patch
+Patch17:        5f6a0754-evtchn-arrange-for-preemption-in-evtchn_reset.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -392,6 +409,21 @@ Authors:
 # Upstream patches
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -478,7 +510,9 @@ export FTP=$(type -P false)
 export GIT=$(type -P false)
 %ifarch aarch64
 # GCC10+ enables outline-atomics option by default and breaks the build, so disable it
+%if 0%{?suse_version} >= 1550
 export CFLAGS="%{optflags} -mno-outline-atomics"
+%endif
 %endif
 export EXTRA_CFLAGS_XEN_TOOLS="%{optflags}"
 export EXTRA_CFLAGS_QEMU_TRADITIONAL="%{optflags}"
@@ -505,13 +539,15 @@ if diff -u xen/Makefile~ xen/Makefile
 then
 	: no changes?
 fi
+
 configure_flags=
+configure_flags="--with-system-qemu=%{_bindir}/qemu-system-%{qemu_arch}"
 %if %{with xen_stubdom}
-configure_flags=--enable-stubdom
+configure_flags="${configure_flags} --enable-stubdom"
 %else
 # change the/our default to daemon due to lack of stubdom
 sed -i~ 's/ XENSTORETYPE=domain$/ XENSTORETYPE=daemon/' tools/hotplug/Linux/launch-xenstore.in
-configure_flags=--disable-stubdom
+configure_flags="${configure_flags} --disable-stubdom"
 %endif
 export PYTHON="/usr/bin/python3"
 configure_flags="${configure_flags} --disable-qemu-traditional"
@@ -525,6 +561,7 @@ configure_flags="${configure_flags} --disable-qemu-traditional"
         --sbindir=%{_sbindir} \
         --libdir=%{_libdir} \
         --libexecdir=%{_libexecdir} \
+        --with-libexec-leaf-dir=%{name} \
         --datadir=%{_datadir} \
         --mandir=%{_mandir} \
         --includedir=%{_includedir} \
@@ -540,7 +577,6 @@ configure_flags="${configure_flags} --disable-qemu-traditional"
 	--with-systemd-modules-load=%{with_systemd_modules_load} \
 	--with-system-ovmf=%{_datadir}/qemu/ovmf-x86_64-ms.bin \
 	--with-system-seabios=%{_datadir}/qemu/bios-256k.bin \
-	--with-system-qemu=%{_bindir}/qemu-system-i386 \
         ${configure_flags}
 make -C tools/include/xen-foreign %{?_smp_mflags}
 make %{?_smp_mflags}
@@ -798,15 +834,15 @@ make -C xen clean
 # preserve the path. For x86_64, create a simple wrapper that invokes
 # /usr/bin/qemu-system-i386
 # Using qemu-system-x86_64 will result in an incompatible VM
-%ifarch x86_64
+%ifarch x86_64 aarch64
 hardcoded_path_in_existing_domU_xml='/usr/lib/xen/bin'
 mkdir -vp %{buildroot}${hardcoded_path_in_existing_domU_xml}
-tee %{buildroot}${hardcoded_path_in_existing_domU_xml}/qemu-system-i386 << 'EOF'
+tee %{buildroot}${hardcoded_path_in_existing_domU_xml}/qemu-system-%{qemu_arch} << 'EOF'
 #!/bin/sh
 
-exec %{_bindir}/qemu-system-i386 "$@"
+exec %{_bindir}/qemu-system-%{qemu_arch} "$@"
 EOF
-chmod 0755 %{buildroot}${hardcoded_path_in_existing_domU_xml}/qemu-system-i386
+chmod 0755 %{buildroot}${hardcoded_path_in_existing_domU_xml}/qemu-system-%{qemu_arch}
 #
 unit='%{_libexecdir}/%{name}/bin/xendomains-wait-disks'
 mkdir -vp '%{buildroot}%{_libexecdir}/%{name}/bin'
@@ -947,7 +983,7 @@ find %{buildroot} -type f -size 0 -delete -print
 # 32 bit hypervisor no longer supported.  Remove dom0 tools.
 rm -rf %{buildroot}/%{_datadir}/doc
 rm -rf %{buildroot}/%{_datadir}/man
-rm -rf %{buildroot}/%{_libexecdir}/xen
+rm -rf %{buildroot}/%{_libexecdir}/%{name}
 rm -rf %{buildroot}/%{_libdir}/python*
 rm -rf %{buildroot}/%{_libdir}/ocaml*
 rm -rf %{buildroot}/%{_unitdir}
@@ -1059,8 +1095,8 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/lib/supportconfig/plugins/xen
 %dir /usr/lib/xen
 %dir /usr/lib/xen/bin
-/usr/lib/xen/bin/qemu-system-i386
-%{_libexecdir}/xen
+/usr/lib/xen/bin/qemu-system-%{qemu_arch}
+%{_libexecdir}/%{name}
 %exclude %{_libexecdir}/%{name}-tools-domU
 %ifarch x86_64
 %exclude %{_libexecdir}/%{name}/bin/xendomains-wait-disks
@@ -1253,32 +1289,17 @@ xen_tools_first_arg=$1
 %service_add_post xen-init-dom0.service
 %service_add_post xen-qemu-dom0-disk-backend.service
 
-if [ -f /usr/bin/qemu-img ]; then
-    if [ -f /usr/bin/qemu-img-xen ]; then
-        rm /usr/bin/qemu-img-xen
-    fi
-    rm -f %{_libexecdir}/xen/bin/qemu-img-xen
-    ln -s /usr/bin/qemu-img %{_libexecdir}/xen/bin/qemu-img-xen
-fi
-if [ -f /usr/bin/qemu-nbd ]; then
-    if [ -f /usr/bin/qemu-nbd-xen ]; then
-        rm /usr/bin/qemu-nbd-xen
-    fi
-    rm -f %{_libexecdir}/xen/bin/qemu-nbd-xen
-    ln -s /usr/bin/qemu-nbd %{_libexecdir}/xen/bin/qemu-nbd-xen
-fi
-if [ -f /usr/bin/qemu-io ]; then
-    rm -f %{_libexecdir}/xen/bin/qemu-io-xen
-    ln -s /usr/bin/qemu-io %{_libexecdir}/xen/bin/qemu-io-xen
-fi
 if [ -f /etc/default/grub ] && ! (/usr/bin/grep GRUB_CMDLINE_XEN /etc/default/grub >/dev/null); then
     echo '# Xen boot parameters for all Xen boots' >> /etc/default/grub
     echo 'GRUB_CMDLINE_XEN=""' >> /etc/default/grub
     echo '# Xen boot parameters for non-recovery Xen boots (in addition to GRUB_CMDLINE_XEN)' >> /etc/default/grub
     echo 'GRUB_CMDLINE_XEN_DEFAULT=""' >> /etc/default/grub
 fi
-if [ -f /usr/lib/grub2/x86_64-xen/grub.xen -a ! -f /usr/lib/xen/boot/pvgrub64.bin ]; then
-    ln -s /usr/lib/grub2/x86_64-xen/grub.xen /usr/lib/xen/boot/pvgrub64.bin
+if [ -f %{_datadir}/grub2/i386-xen/grub.xen ] && [ ! -f %{_libexecdir}/%{name}/boot/pvgrub32.bin ]; then
+ ln -sv %{_datadir}/grub2/i386-xen/grub.xen             %{_libexecdir}/%{name}/boot/pvgrub32.bin
+fi
+if [ -f %{_datadir}/grub2/x86_64-xen/grub.xen ] && [ ! -f %{_libexecdir}/%{name}/boot/pvgrub64.bin ]; then
+ ln -sv %{_datadir}/grub2/x86_64-xen/grub.xen             %{_libexecdir}/%{name}/boot/pvgrub64.bin
 fi
 
 %preun tools
@@ -1292,6 +1313,16 @@ fi
 %service_del_preun xen-qemu-dom0-disk-backend.service
 
 %postun tools
+%if %{defined service_del_postun_without_restart}
+%service_del_postun_without_restart xencommons.service
+%service_del_postun_without_restart xendomains.service
+%service_del_postun_without_restart xen-watchdog.service
+%service_del_postun_without_restart xenstored.service
+%service_del_postun_without_restart xen-dom0-modules.service
+%service_del_postun_without_restart xenconsoled.service
+%service_del_postun_without_restart xen-init-dom0.service
+%service_del_postun_without_restart xen-qemu-dom0-disk-backend.service
+%else
 export DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun xencommons.service
 %service_del_postun xendomains.service
@@ -1301,6 +1332,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun xenconsoled.service
 %service_del_postun xen-init-dom0.service
 %service_del_postun xen-qemu-dom0-disk-backend.service
+%endif
 
 %endif
 
