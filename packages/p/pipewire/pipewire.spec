@@ -36,7 +36,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.10
+Version:        0.3.11
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -47,6 +47,8 @@ Source1:        %{name}-rpmlintrc
 Patch0:         fix-memfd_create-call.patch
 Patch1:         do-not-use-snd_pcm_ioplug_hw_avail.patch
 Patch2:         do-not-install-alsa-config-files.patch
+# PATCH-FIX-UPSTREAM 0001-alsa-dont-change-the-resampler-delay-value.patch -- https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/287
+Patch100:       0001-alsa-dont-change-the-resampler-delay-value.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -264,6 +266,7 @@ sed -i -e "s/dependency('alsa', version : '>=1.1.7')/dependency('alsa', version 
 %endif
 sed -i -e "s/meson_version : '>= 0.49.0',/meson_version : '>= 0.46.0',/" meson.build
 %patch2 -p1
+%patch100 -p1
 
 %autopatch -m 101 -p1
 
