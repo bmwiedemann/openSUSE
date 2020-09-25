@@ -46,7 +46,7 @@ index 0000000..b38e699
 +      </description>
 +    </key>
 +    <key name="picture-uri" type="s">
-+      <default>''</default>
++      <default>'resource:///org/gnome/shell/theme/noise-texture.png'</default>
 +      <summary>Picture URI</summary>
 +      <description>
 +        URI to use for the background image. Note that the backend only supports

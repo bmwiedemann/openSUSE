@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 13 13:04:15 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Update gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch: 
+  Set noise-texture.png as the default value of picture-uri to
+  avoid failed to load background error (boo#1176418).
+
+-------------------------------------------------------------------
 Fri Aug  7 07:55:52 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Update gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch: 
