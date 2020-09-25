@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 24 19:02:21 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.20.1
+  - Bugfixes
+    - Fix a bug introduced in v1.20.0 which caused the
+      synapse_port_db script to fail. (#8386)
+    - Fix a bug introduced in v1.20.0 which caused variables to be
+      incorrectly escaped in Jinja2 templates. (#8394)
+
+-------------------------------------------------------------------
 Fri Sep 18 16:29:17 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.20.0
