@@ -372,4 +372,20 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
     ERROR: manifest length read was &quot;41556&quot; should be &quot;655360&quot;</comment>
     <requestid>698182</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d656353078d0ba5291a7ed046dfb0b02</srcmd5>
+    <version>3.2.4</version>
+    <time>1601044250</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Recommends for postfixadmin-apache
+- Split out a postfixadmin-apache package
+- Update to version 3.2.4
+  * Upgrade Smarty (v3.1.35)
+  * Fix issues with quota (cli mailbox creation)
+  * Improve database compatability (row-&amp;gt;r).
+  * Persistent MySQLi connections: Missing SSL at reconnect
+  * Fix SQLite paging issues, see #161 and #87
+  * Fix postfixadmin-cli, see #296 (forwarded request 830445 from gladiac)</comment>
+    <requestid>832594</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 29 08:51:36 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add Recommends for postfixadmin-apache
+
+-------------------------------------------------------------------
+Tue Aug 25 10:04:30 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Split out a postfixadmin-apache package
+- Update to version 3.2.4
+  * Upgrade Smarty (v3.1.35)
+  * Fix issues with quota (cli mailbox creation)
+  * Improve database compatability (row->r).
+  * Persistent MySQLi connections: Missing SSL at reconnect
+  * Fix SQLite paging issues, see #161 and #87
+  * Fix postfixadmin-cli, see #296
+
+-------------------------------------------------------------------
 Fri Apr 26 11:12:45 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
 
 - "downgrade" php-imap to Recommends because latest PHP packages no longer

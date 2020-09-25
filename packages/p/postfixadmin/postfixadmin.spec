@@ -1,7 +1,7 @@
 #
 # spec file for package postfixadmin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2007-2019 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,10 @@
 
 
 Name:           postfixadmin
-Version:        3.2
+Version:        3.2.4
 Release:        0
-Url:            http://postfixadmin.sourceforge.net/
-Source0:        http://sourceforge.net/projects/postfixadmin/files/postfixadmin/%{name}-%{version}/%{name}-%{version}.tar.gz
+URL:            http://postfixadmin.sourceforge.net/
+Source0:        https://github.com/postfixadmin/postfixadmin/archive/%{name}-%{version}.tar.gz
 Source1:        config.local.php
 Source2:        apache-postfixadmin.conf
 
@@ -38,10 +38,12 @@ Recommends:     php-mysql
 %endif
 
 Requires:       /usr/sbin/sendmail
-Recommends:     php-imap
 Requires:       php-mbstring
 Requires:       php-phar
 Requires:       php-spl
+
+Recommends:     php-imap
+Recommends:     postfixadmin-apache
 
 # test/*, xmlrpc.php, squirrelmail plugin
 # big dependency, not needed by all users - therefore no hard Requirement
@@ -113,8 +115,19 @@ Postfix Admin supports:
 - Fetchmail integration
 - Packaged with over 25 languages.
 
+%package apache
+Requires:       apache2
+Summary:        Postfixadmin - Apache configuration
+Group:          Productivity/Networking/Web/Utilities
+
+%description apache
+PostfixAdmin is a PHP based application that handles Postfix Style Virtual
+Domains and Users that are stored in MySQL or PostgreSQL.
+
+This package holds the apache configuration.
+
 %prep
-%setup -q
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 
@@ -189,9 +202,6 @@ fi
 %config %dir %{_sysconfdir}/%{name}
 %attr(640,root,www) %config %{_sysconfdir}/%{name}/config.inc.php
 %attr(640,root,www) %config(noreplace) %{_sysconfdir}/%{name}/config.local.php
-%config %dir %{_sysconfdir}/apache2
-%config %dir %{_sysconfdir}/apache2/conf.d
-%config(noreplace) %{_sysconfdir}/apache2/conf.d/%{name}.conf
 %doc DOCUMENTS/* *.TXT README.md VIRTUAL_VACATION
 /usr/bin/postfixadmin-cli
 /usr/share/%{name}/
@@ -203,5 +213,10 @@ fi
 %attr( 750,root,vacation)       %{_prefix}/lib/%{name}/vacation.pl
 %attr(1770,root,vacation) %dir %{_localstatedir}/spool/vacation
 %{_localstatedir}/spool/vacation/vacation.pl
+
+%files apache
+%config %dir %{_sysconfdir}/apache2
+%config %dir %{_sysconfdir}/apache2/conf.d
+%config(noreplace) %{_sysconfdir}/apache2/conf.d/%{name}.conf
 
 %changelog
