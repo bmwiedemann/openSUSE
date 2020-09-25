@@ -23,11 +23,15 @@ Summary:        Tool for launching and easy-updates of Tor Browser
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/micahflee/torbrowser-launcher
-Source:         https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz
+Source0:        https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz
+# From gh#micahflee/torbrowser_launcher#482 (SHA512: aea340451291ce5b0fd87fb2f399a57d1407c5f81ee2e01d389e5586eb9b83cf77e48bbdfe8a71043d834b2475a67f43fd0f398d788f3a41a7a007d77d29dcab)
+Source1:        tor-browser-developers.asc
 # PATCH-FEATURE-OPENSUSE pythontorbrowser-launcher-fix-distro-name.patch badshah400@gmail.com -- Use the correct distribution name (the setup.py code gives "SuSE" instead of "openSUSE")
 Patch0:         torbrowser-launcher-fix-distro-name.patch
 # PATCH-FIX-UPSTREAM torbrowser-launcher-apparmor-fixes.patch gh#micahflee/torbrowser-launcher#443 boo#1162284 badshah400@gmail.com -- Fix apparmor file so that it doesn't hinder actually running the browser, patch taken from upstream commits
 Patch1:         torbrowser-launcher-apparmor-fixes.patch
+# PATCH-FIX-UPSTREAM torbrowser-launcher-version-check-fix.patch gh#micahflee/torbrowser-launcher#499 badshah400@gmail.com -- Fix version checking with torbrowser 10.0+; patch taken from upstream PR (not yet merged)
+Patch2:         torbrowser-launcher-version-check-fix.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  gpg2
 BuildRequires:  python3-PySocks
@@ -78,14 +82,17 @@ a Tor network compromise.
 %lang_package
 %prep
 %autosetup -p1
+cp %{SOURCE1} share/torbrowser-launcher/
 
 %build
 python3 setup.py build
 
 %install
 python3 setup.py install --skip-build --root %{buildroot}
+
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/torbrowser.desktop
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/torbrowser-settings.desktop
+
 %find_lang %{name} %{?no_lang_C}
 
 # REMOVE USELESS TOPLEVEL .mo FILE

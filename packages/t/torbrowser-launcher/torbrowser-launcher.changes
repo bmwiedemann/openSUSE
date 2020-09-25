@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 19:59:57 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add new key from upstream tor-browser as source and overwrite
+  bundled key in tarball with this
+  (gh#micahflee/torbrowser-launcher#481).
+- Add torbrowser-launcher-version-check-fix.patch: Fix version
+  checking with torbrowser 10.0+; patch taken from upstream PR
+  (not yet merged) [gh#micahflee/torbrowser-launcher#499].
+- Add further fixes to torbrowser-launcher-apparmor-fixes.patch
+  to enable bundled libstdc++ to be mapped; fixes taken from
+  pending upstream PR (gh#micahflee/torbrowser-launcher#503).
+
+-------------------------------------------------------------------
 Wed Mar 11 16:51:53 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add torbrowser-launcher-apparmor-fixes.patch Fix apparmor file
