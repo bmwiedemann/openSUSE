@@ -16,18 +16,66 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
 Name:           wxWidgets-3_2
+ExclusiveArch:  do_not_build
+%endif
+
+%if "%{flavor}" == "GTK2"
+Name:           wxWidgets-3_2
+%define pkgname wxWidgets-3_2
+%define variant suse
+%define gtk_version 2
+%define toolkit gtk%gtk_version
+%define base_packages 0
+%bcond_with webview
+%endif
+
+%if "%{flavor}" == "GTK3"
+Name:           wxGTK3-3_2
+%define pkgname wxGTK3-3_2
+%define variant suse
+%define gtk_version 3
+%define toolkit gtk%gtk_version
+# build non-UI toolkit related packages
+%define base_packages 1
+%bcond_without webview
+%endif
+
+%if "%{flavor}" == "GTK3-nostl"
+Name:           wxWidgets-3_2-nostl
+%define pkgname wxWidgets-3_2-nostl
+%define variant suse-nostl
+%define gtk_version 3
+%define toolkit gtk%gtk_version
+%define base_packages 1
+%bcond_with webview
+%define extra_description This variant of wxWidgets is built without STL types (such as \
+std::string), and is provided for old programs which fail to use e.g. \
+wxString and instead rely on the wxChar pointer API.
+%endif
+
+%if "%{flavor}" == "Qt"
+Name:           wxQt-3_2
+%define pkgname wxQt-3_2
+%define variant suse
+%define toolkit qt
+%define base_packages 0
+%bcond_with webview
+%endif
+
 %define base_name wxWidgets-3_2
 %define tarball_name wxWidgets
-%define variant suse
-%define psonum 3_1_3
-%define sonum 3.1.3
-Version:        3.1.3
+# Use default debug level, enabling exceptions
+# Other valid values: yes/no/max
+%define wx_debug %{nil}
+%define psonum 4_0_0
+%define sonum 4.0.0
+Version:        3.1.4
 Release:        0
 %define wx_minor 3.1
-%define wx_micro 3.1.3
-# build non-UI toolkit related packages
-%define         base_packages 1
+%define wx_micro 3.1.4
 Summary:        C++ Library for Cross-Platform Development
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
 Group:          Development/Libraries/C and C++
@@ -39,19 +87,11 @@ Source5:        wxWidgets-3_2-rpmlintrc
 # identify and backport wxPython fixes to wxWidgets.
 Source6:        wxpython-mkdiff.sh
 Patch1:         soversion.diff
-# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/wxWidgets/pull/1879
-Patch2:         0002-Make-the-wxUIActionSimulator-Text-implementation-mat.patch
-# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/wxWidgets/pull/1880
-Patch3:         0001-Add-missing-QPainterPath-include-required-with-Qt-5..patch
 BuildRequires:  autoconf
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gnome-vfs2-devel
 BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
-BuildRequires:  gtk2-devel
-%define gtk_version 2
-%define toolkit gtk%gtk_version
 BuildRequires:  libSM-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
@@ -60,6 +100,24 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  zlib-devel
+%if %{toolkit} == "gtk2"
+BuildRequires:  gnome-vfs2-devel
+BuildRequires:  gtk2-devel
+%endif
+%if %{toolkit} == "gtk3"
+BuildRequires:  pkgconfig(gtk+-3.0)
+%if %{with webview}
+BuildRequires:  pkgconfig(webkit2gtk-4.0)
+%endif
+%endif
+%if %{toolkit} == "qt"
+BuildRequires:  pkgconfig(Qt5Core) >= 5.2.1
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.1
+BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.2.1
+BuildRequires:  pkgconfig(Qt5Test) >= 5.2.1
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.1
+BuildRequires:  pkgconfig(cairo)
+%endif
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(liblzma)
 %if 0%{?sle_version} < 150000 && !0%{?is_opensuse}
@@ -90,6 +148,7 @@ Every wxWidgets application must link against this library. It
 contains mandatory classes that any wxWidgets code depends on (e.g.
 wxString) and portability classes that abstract differences between
 platforms. wxBase can be used to develop console-only applications.
+%{?extra_description}
 
 %package -n libwx_baseu_net-%variant%psonum
 Summary:        wxWidgets networking library
@@ -143,8 +202,9 @@ Group:          System/Libraries
 %description -n libwx_%{toolkit}u_html-%variant%psonum
 The wxHTML library provides classes for parsing and displaying HTML.
 It is not intended to be a high-end HTML browser. wxHTML can be used
-as a generic rich text viewer — for example, to display an About Box
+as a generic rich text viewer – for example, to display an About Box
 or the result of a database search.
+%{?extra_description}
 
 %package -n libwx_%{toolkit}u_media-%variant%psonum
 Summary:        wxWidgets media class library
@@ -203,7 +263,7 @@ Group:          System/Libraries
 
 %description -n libwx_%{toolkit}u_webview-%variant%psonum
 Library for a wxWidgets control that can be used to render web
-(HTML / CSS / javascript) documents.
+(HTML / CSS / JavaScript) documents.
 
 %package -n libwx_%{toolkit}u_xrc-%variant%psonum
 Summary:        wxWidgets's XML-based resource system
@@ -214,17 +274,26 @@ The XML-based resource system of wxWidgets, known as XRC, allows user
 interface elements such as dialogs, menu bars and toolbars, to be
 stored in text files and loaded into the application at run-time.
 
-%package plugin-sound_sdlu-3_2
+%package -n %{base_name}-plugin-sound_sdlu-3_2
 Summary:        wxWidgets SDL Plugin
 Group:          System/Libraries
 
-%description plugin-sound_sdlu-3_2
+%description -n %{base_name}-plugin-sound_sdlu-3_2
 SDL based sound plugin for the wxWidgets cross-platform GUI.
 
 %package devel
-Summary:        Development files for GTK2-backed wxWidgets 3.2
+Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       gtk%gtk_version-devel
+%if %{toolkit} == "gtk2"
+Requires:       gtk2-devel
+%endif
+%if %{toolkit} == "gtk3"
+Requires:       pkgconfig(gtk+-3.0)
+%endif
+%if %{toolkit} == "qt"
+Requires:       pkgconfig(Qt5OpenGL) >= 5.2.1
+Requires:       pkgconfig(Qt5Widgets) >= 5.2.1
+%endif
 Requires:       libwx_%{toolkit}u_adv-%variant%psonum = %version
 Requires:       libwx_%{toolkit}u_aui-%variant%psonum = %version
 Requires:       libwx_%{toolkit}u_core-%variant%psonum = %version
@@ -236,19 +305,32 @@ Requires:       libwx_%{toolkit}u_qa-%variant%psonum = %version
 Requires:       libwx_%{toolkit}u_ribbon-%variant%psonum = %version
 Requires:       libwx_%{toolkit}u_richtext-%variant%psonum = %version
 Requires:       libwx_%{toolkit}u_stc-%variant%psonum = %version
+%if %{with webview}
+Requires:       libwx_%{toolkit}u_webview-%variant%psonum = %version
+%endif
 Requires:       libwx_%{toolkit}u_xrc-%variant%psonum = %version
 Requires:       libwx_baseu-%variant%psonum = %version
 Requires:       libwx_baseu_net-%variant%psonum = %version
 Requires:       libwx_baseu_xml-%variant%psonum = %version
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glu)
-Provides:       wxGTK2-devel = %version-%release
 Provides:       wxWidgets-any-devel
-Provides:       wxWidgets-devel = %version-%release
 Conflicts:      wxWidgets-any-devel
+%if %{toolkit} == "gtk2"
+Provides:       wxGTK2-devel = %version-%release
+Provides:       wxWidgets-devel = %version-%release
 # Name up to openSUSE 11.3 and up to wxGTK-2.8.x:
 Provides:       wxGTK-devel = %version-%release
-Obsoletes:      wxGTK-devel <= %version-%release
+Obsoletes:      wxGTK-devel < %version-%release
+%endif
+%if %{toolkit} == "gtk3"
+%if "%{flavor}" != "GTK3-nostl"
+Provides:       wxGTK3-devel = %version-%release
+%endif
+%endif
+%if %{toolkit} == "qt"
+Provides:       wxQt-devel = %version-%release
+%endif
 
 %description devel
 wxWidgets is a C++ library abstraction layer for a number of GUI
@@ -256,20 +338,20 @@ backends. Applications can be created for different GUIs (GTK+,
 Motif, MS Windows, MacOS X, Windows CE, GPE) from the same source
 code.
 
-This package contains all files needed for developing with wxGTK%gtk_version.
+This package contains all files needed for developing with %{name}.
+%{?extra_description}
 
 Note: wxWidgets variant devel packages are mutually exclusive. Please
 read %_docdir/%name/README.SUSE to pick a correct variant.
 
 %prep
-%setup -q -n %tarball_name-%version
-%patch -P 1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -n %tarball_name-%version -p1
 cp %{S:2} .
 
 %build
 autoconf -f -i
+# NOTE: gnome-vfs is deprecated. Disabled for GTK3 build
+#
 # With 2.9.1:
 # --enable-objc_uniquifying is relevant only for Cocoa
 # --enable-accessibility is currently supported only in msw
@@ -277,23 +359,31 @@ autoconf -f -i
 
 %configure \
 	--enable-vendor=%variant \
+%if %{toolkit} == "qt"
+	--with-qt \
+%else
 	--with-gtk=%gtk_version \
+%if %{gtk_version} == 2
+	--with-gnomevfs \
+%endif
+%endif
 	--enable-unicode \
 	--with-opengl \
 	--with-libmspack \
 	--with-sdl \
-	--with-gnomevfs \
 	--enable-ipv6 \
 	--enable-mediactrl \
 	--enable-optimise \
-%if 0%{?WX_DEBUG}
-	--enable-debug \
-%else
-	--disable-debug \
-%endif
+	%{wx_debug:--enable-debug=%{wx_debug}} \
         --enable-repro-build \
+%if "%{flavor}" == "GTK3-nostl"
+	--disable-stl \
+	--disable-plugins
+%else
 	--enable-stl \
 	--enable-plugins
+%endif
+
 make %{?_smp_mflags}
 
 %install
@@ -386,14 +476,24 @@ ln -sf $(echo %buildroot/%_libdir/wx/config/* | sed "s%%%buildroot%%%%") %buildr
 %files -n libwx_%{toolkit}u_stc-%variant%psonum
 %_libdir/libwx_%{toolkit}u_stc-%variant.so.%{sonum}*
 
+%if %{with webview}
+%files -n libwx_%{toolkit}u_webview-%variant%psonum
+%_libdir/libwx_%{toolkit}u_webview-%variant.so.%{sonum}*
+%dir %_libdir/wx
+%dir %_libdir/wx/%wx_micro
+%_libdir/wx/%wx_micro/web-extensions/
+%endif
+
 %files -n libwx_%{toolkit}u_xrc-%variant%psonum
 %_libdir/libwx_%{toolkit}u_xrc-%variant.so.%{sonum}*
 
 %if %base_packages
-%files plugin-sound_sdlu-3_2
+%if "%{flavor}" != "GTK3-nostl"
+%files -n %{base_name}-plugin-sound_sdlu-3_2
 %dir %_libdir/wx
 %dir %_libdir/wx/%wx_micro
 %_libdir/wx/%wx_micro/sound_sdlu-%wx_micro.so
+%endif
 %endif
 
 %files devel

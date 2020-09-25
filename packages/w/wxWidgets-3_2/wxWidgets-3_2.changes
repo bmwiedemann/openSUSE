@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Aug 19 18:01:10 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use _multibuild to avoid changes and spec files of the variants
+  getting out of sync.
+
+-------------------------------------------------------------------
+Sun Jul 26 07:45:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Do not disable debugging completely, only recommended for
+  constrained environments and breaks wxPython tests
+- Correct base_packages flag for nostl variant, it can not use the
+  base libraries of the regular variant
+- Build base libraries from wxGTK3 build, wxWidgets (GTK2) is no
+  longer used by any Factory package.
+
+-------------------------------------------------------------------
+Sat Jul 25 15:20:26 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to new upstream release 3.1.4:
+  * Incompatible to 3.1.3: CMake library targets were renamed and
+    now start with 'wx'. In addition, aliases for the libraries
+    have been added using the 'wx::' namespace. For example, the
+    core library is now named wxcore and has alias wx::core.
+  * Add natural sort functions.
+  * Add wxTempFFile class (Dummy).
+  * Fix bug with multiple leading ".." in wxFileName::Normalize().
+  * Improve brush transparency support in wxSVGFileDC.
+  * Optionally forbid implicit wxString/char* conversions.
+  * Add support for wxGenericAnimationCtrl to XRC.
+  * Add wxDD_SHOW_HIDDEN and wxDD_MULTIPLE wxDirDialog flags.
+  * Add wxWebView::SetZoomFactor(float).
+  * Add wxWindow::DisableFocusFromKeyboard().
+  * Allow overriding wxDataViewModal::HasValue().
+  * Call wxAuiManager::UnInit() automatically now.
+  * Fix crash and layout problem in wxGenericDirCtrl
+  * wxQt: Fix build with Qt 5.15
+  * GTK backend:
+  * Add native wxSearchCtrl implementation.
+  * Implement wxBU_EXACTFIT support in wxButton.
+  * Fix a regression with crashes when using wxBufferedPaintDC.
+  * Fix drawing bitmaps with masks using wxGraphicsContext under
+    GTK2.
+  * Fix position of popup menus on non-primary display.
+  * Make wxUIActionSimulator much more reliable
+  * Fix caret colour in wxTextCtrl with custom colours.
+- Drop obsolete patches:
+  * 0001-Add-missing-QPainterPath-include-required-with-Qt-5..patch
+  * 0002-Make-the-wxUIActionSimulator-Text-implementation-mat.patch
+
+-------------------------------------------------------------------
 Tue Jun 16 10:04:20 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Build nostl package against gtk3, audacity crashes with gtk2

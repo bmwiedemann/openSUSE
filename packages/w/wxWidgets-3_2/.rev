@@ -81,4 +81,12 @@
     <comment>- Build nostl package against gtk3, audacity crashes with gtk2</comment>
     <requestid>815260</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1ff2598918733269f5838fd8eee7037d</srcmd5>
+    <version>3.1.4</version>
+    <time>1601044112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.1.4:</comment>
+    <requestid>831918</requestid>
+  </revision>
 </revisionlist>
