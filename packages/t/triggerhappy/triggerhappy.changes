@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sun Sep  6 07:31:08 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Clean up filelist (bsc#1174075).
+
+-------------------------------------------------------------------
+Wed Jun 14 13:51:14 UTC 2017 - msuchanek@suse.com
+
+- Fix build failure due to unowned udev directories.
+
+-------------------------------------------------------------------
+Fri Mar 10 20:42:27 UTC 2017 - msuchanek@suse.com
+
+- package triggerhappy
+        + fix provided systemd service to not timeout

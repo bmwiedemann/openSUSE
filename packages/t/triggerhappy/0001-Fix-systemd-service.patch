@@ -1,0 +1,26 @@
+From 73afa8127d226c40e93490469dd6461048425e81 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 10 Mar 2017 21:40:15 +0100
+Subject: [PATCH] Fix systemd service.
+
+With Type=notify systemd waits for something for a while and then kills
+thd. Remove that.
+---
+ systemd/triggerhappy.service | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/systemd/triggerhappy.service b/systemd/triggerhappy.service
+index e00b285..385f7c1 100644
+--- a/systemd/triggerhappy.service
++++ b/systemd/triggerhappy.service
+@@ -3,7 +3,6 @@ Description=triggerhappy global hotkey daemon
+ After=local-fs.target
+ 
+ [Service]
+-Type=notify
+ ExecStart=/usr/sbin/thd --triggers /etc/triggerhappy/triggers.d/ --socket /run/thd.socket --user nobody --deviceglob /dev/input/event*
+ 
+ [Install]
+-- 
+2.10.2
+
