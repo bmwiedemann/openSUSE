@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Sep 24 12:03:28 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.90.1
+  - Decimate Modifier: Restore vertex group factor property in UI.
+    rB97c6c4e47883
+  - GPencil Opacity modifier not working. T80289
+  - Extrude manifold can generate invalid geometry. T80233
+  - Re-ordering face maps messes up the names of other face maps.
+    T79973
+  - Crash when deleting custom orientation. T80426
+  - Crash after duplicating and hiding vertices while using X Axis.
+    T80224
+  - principle volume shader not working for world in Eevee. T80332
+  - Eevee OpenVDB render error when frames miss part of the grids.
+    T79718
+  - PY API doc: fix doc for new override option of properties.
+    rB09ef19996509
+  - Crash when multi-mesh editing UVs with proportional editing.
+    T80561
+  - Crash adding properties to material node-trees. T80238
+  - BLI_polyfill_calc exceeds stack size allocating points. T80604
+  - Crash deleting bone constraints when the armature layer is.
+    T80464
+  - Cycles baking crash with locked-UI & background-mode. T71012
+  - Hook modifier crashes without vertex group data. T80516
+  - Mantaflow crash when adaptive domain + noise are enabled.
+    T79626
+  - Mantaflow Noise Not working with Smoke/Smoke and Fire. T80372
+  - Vertex Colors not showing in edit mode. T78225
+  - Correct Face Attributes affecting modes not listed. T80623
+  - Edit Mode crash with shape keys created on blank mesh. T77584
+  - Crash accessing depsgraph from evaluated view layer. T62504
+  - Translations in python scripts are missing. T80589
+  - Crash reloading scripts from the Python console. T80694
+  - Library Override - Custom Property to Drive Child Particles
+    results. T80457
+  - Crash on undo/ redo after changing modes. T78392
+  - UV edge select splits UV's for lasso/box/circle select. T80728
+  - potential crash in volume grids in Eevee shaders. T80630
+  - Fix OpenCL render error in large scenes. rB3dbb231ed2f8
+  - Add versioning for 2.90 files that may have invalid mesh.
+    rB3a92a2df4519
+  - Texture paint camera project crashes after undo/redo. T80885
+  - Auto IK Double Generates IK constraints. T80437
+  - Cycles: Separate Embree device for each CPU Device.
+    rB009971ba7adc
+  - Cycles crash on macOS with older CPUs. T78793
+  - Fix invert vertex group weight miscalculation for modifiers.
+    rBe0f13f41c681
+  - NLA Bake exception baking pose with non-pose selection. T61985
+  - Tris to Quads ignores UV delimit option. T80520
+  - Avoid changing the visibility of loose geometry. T80771
+  - Archipack: support for bmesh bevel arguments changes in 2.90.
+    rBA8e1b4dd71b37
+  - Crash on editing multiple UVs of multiple different objects.
+    T80899
+
+-------------------------------------------------------------------
 Mon Sep  7 13:02:41 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable explictly embree in cmake options. Fixes build on
