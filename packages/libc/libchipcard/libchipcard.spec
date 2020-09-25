@@ -1,7 +1,7 @@
 #
 # spec file for package libchipcard
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libchipcard
-Version:        5.0.99
+Version:        5.1.5
 Release:        0
-%define _version 5.1.0beta
+%define _version 5.1.5rc2
 Summary:        Library That Allows Easy Access to Smart Cards (Chipcards)
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            http://www.aquamaniac.de/sites/libchipcard/index.php
+URL:            http://www.aquamaniac.de/sites/libchipcard/index.php
 Source:         %{name}-%{_version}.tar.gz
-#Source:        http://www2.aquamaniac.de/sites/download/download.php?package=02&release=200&file=01&dummy=libchipcard-5.0.4.tar.gz
+#Source:        https://www.aquamaniac.de/rdm/attachments/download/229/libchipcard-5.1.5rc2.tar.gz
 Source100:      libchipcard-rpmlintrc
 Patch0:         libchipcard-buildsrcdoc.patch
 BuildRequires:  doxygen
@@ -129,6 +129,7 @@ rm -rf %{buildroot}
 %doc %{_docdir}/%{name}/apidoc
 %{_bindir}/*-config
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/%{name}*.pc
 %{_datadir}/aclocal/*.m4
 %{_includedir}/*
 
