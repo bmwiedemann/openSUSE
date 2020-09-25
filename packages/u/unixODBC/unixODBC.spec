@@ -41,10 +41,19 @@ BuildRequires:  readline-devel
 # bsc#1062860: to stay feature complete
 Recommends:     psqlODBC
 
+%package -n libodbc2
+Summary:        Open Database Connectivity API
+Group:          System/Libraries
+
+%description -n libodbc2
+ODBC is an API that abstracts the access to different database
+management systems.
+
 %package devel
 Summary:        Includes for ODBC Development
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       libodbc2 = %{version}
 Conflicts:      libiodbc-devel
 
 %description
@@ -80,7 +89,7 @@ autoreconf -fvi
     --enable-driverc \
     --enable-drivers \
     --enable-driver-conf
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -d -m 755 "%{buildroot}/%{_sysconfdir}/%{name}"
@@ -94,8 +103,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # bsc#1062860: we want psqlODBC instead of this unmaintained example driver
 rm -f "%{buildroot}/%{_libdir}"/unixODBC/libodbcpsql.*
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post   -n libodbc2 -p /sbin/ldconfig
+%postun -n libodbc2 -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -120,13 +129,15 @@ rm -f "%{buildroot}/%{_libdir}"/unixODBC/libodbcpsql.*
 %{_bindir}/odbcinst
 %{_bindir}/odbc_config
 %{_bindir}/slencheck
-%{_libdir}/libodbc.so.*
-%{_libdir}/libodbcinst.so.*
-%{_libdir}/libodbccr.so.*
 %{_libdir}/libodbc.so
 %{_libdir}/libodbcinst.so
 %{_libdir}/libodbccr.so
 %{_libdir}/%{name}
+
+%files -n libodbc2
+%{_libdir}/libodbc.so.*
+%{_libdir}/libodbcinst.so.*
+%{_libdir}/libodbccr.so.*
 
 # All .so files are in the main package as many ext apps
 # dlopen those so you need these on regular package.

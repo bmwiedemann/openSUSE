@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 22 20:27:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update requires and baselibs for new libodbc2.
+
+-------------------------------------------------------------------
+Wed Sep 16 10:47:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Employ shared library packaging guideline: new subpacakge
+  libodbc2. mariadb's ha_connect.so wants this library, but a
+  unixODBC's Recommends line would awkwardly pull in psqlODBC
+  by default.
+
+-------------------------------------------------------------------
 Tue Sep  8 19:57:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.9:

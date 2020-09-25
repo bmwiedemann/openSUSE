@@ -328,4 +328,12 @@
   * Remove &quot;#define UNIXODBC_SOURCE&quot; from unixodbc_conf.h</comment>
     <requestid>833076</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>f37f612ae599fe49fcf8150cf0d3b8d9</srcmd5>
+    <version>2.3.9</version>
+    <time>1601043673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836234</requestid>
+  </revision>
 </revisionlist>
