@@ -1,7 +1,7 @@
 #
 # spec file for package eaglemode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           eaglemode
-Version:        0.94.1
+Version:        0.95.0
 Release:        0
 Summary:        A zoomable user interface (ZUI) with file manager, file viewers, games, etc.
 License:        GPL-3.0-only
 Group:          Development/Tools/Other
-Url:            http://eaglemode.sourceforge.net/
+URL:            http://eaglemode.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
@@ -45,6 +45,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpoppler-glib-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  vlc-devel
 BuildRequires:  xorg-x11-devel
 %endif
 %if 0%{?mandriva_version}
@@ -68,7 +69,6 @@ Requires:       gcc
 Requires:       gedit
 Requires:       ghostscript-x11
 Requires:       gzip
-Requires:       libxine2
 Requires:       lzop
 # Remove when p7zip-full is in all products
 %if 0%{suse_version} > 1500
@@ -80,7 +80,6 @@ Requires:       perl
 Requires:       tar
 Requires:       texlive-bin-dvilj
 Requires:       transfig
-Recommends:     unrar
 Requires:       unzip
 %if 0%{?suse_version} > 1320
 Requires:       xterm-bin
@@ -88,7 +87,6 @@ Requires:       xterm-bin
 Requires:       xterm
 %endif
 Requires:       zip
-Requires:       zoo
 %endif
 
 %description

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 23 06:48:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.95
+  * Added some interpolation algorithms for the zooming into photos, videos,
+  * icons and other images. Now the user can choose (in the preferences) from:
+  * Area Sampling, Bilinear, Bicubic, Lanczos, and Adaptive.
+  * Accelerated graphics display by making use of the AVX2 CPU extension.
+  * Extended the graphics API by a texture class which allows more flexible
+  * filling of figures with colors and images.
+  * Ported the audio/video player to Windows, based on the VLC library.
+  * Switched from Xine to VLC also for other OSes because some tests showed
+  that VLC is more crash-resistant against randomly corrupted files and
+  thereby most likely more secure.
+  * Completely removed support for outdated archive file formats to improve
+  security and simplify maintenance: Goodbye to arc, arj, lha, rar, and zoo.
+  Minor fixes and improvements. 
+
+-------------------------------------------------------------------
 Mon Apr 15 08:21:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim marketing from description.
