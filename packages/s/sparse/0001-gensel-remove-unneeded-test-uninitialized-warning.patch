@@ -1,0 +1,41 @@
+From: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+Date: Sun, 21 Jun 2020 21:25:03 +0200
+Subject: gensel: remove unneeded test/uninitialized warning
+Git-repo: git://git.kernel.org/pub/scm/devel/sparse/sparse.git
+Git-commit: cc651aa7b6a01c3d89d1eb212a080d683f2df9ed
+Patch-mainline: maint-v0.6.2 branch
+References: maint-v0.6.2
+
+When evaluation generic selections, it is tested if the type in
+the selection is a SYM_NODE or not, but:
+* all these are SYM_NODE
+* the variable for the base type would be uninitialized
+  if not a SYM_NODE.
+
+So, remove the test and unconditionally set the base type.
+
+Reported-by: Ramsay Jones <ramsay@ramsayjones.plus.com>
+Signed-off-by: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ evaluate.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/evaluate.c b/evaluate.c
+index aa0f2080..461c2547 100644
+--- a/evaluate.c
++++ b/evaluate.c
+@@ -3304,9 +3304,7 @@ static struct symbol *evaluate_generic_selection(struct expression *expr)
+ 		if (!evaluate_symbol(stype))
+ 			continue;
+ 
+-		if (stype->type == SYM_NODE)
+-			base = stype->ctype.base_type;
+-
++		base = stype->ctype.base_type;
+ 		if (base->type == SYM_ARRAY && base->array_size) {
+ 			get_expression_value_silent(base->array_size);
+ 			if (base->array_size->type == EXPR_VALUE)
+-- 
+2.26.2
+

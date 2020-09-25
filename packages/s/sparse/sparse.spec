@@ -24,6 +24,9 @@ License:        MIT
 Group:          Development/Tools/Building
 URL:            https://sparse.wiki.kernel.org/index.php/Main_Page
 Source:         https://mirrors.edge.kernel.org/pub/software/devel/sparse/dist/%{name}-%{version}.tar.xz
+Patch0:         0001-gensel-remove-unneeded-test-uninitialized-warning.patch
+Patch1:         0002-generic-fix-missing-inlining-of-generic-expression.patch
+Patch2:         0004-sindex.1-Use-for-a-plain-quote-char.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
@@ -69,7 +72,7 @@ Group:          Development/Libraries/C and C++
 LLVM backend for sparse, including sparsec
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build \

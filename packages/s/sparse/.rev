@@ -427,4 +427,15 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
     <comment></comment>
     <requestid>834835</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>72d55abc919d73b964127e9b579f2c3d</srcmd5>
+    <version>0.6.2</version>
+    <time>1601044540</time>
+    <user>dimstar_suse</user>
+    <comment>- add patches
+  * 0001-gensel-remove-unneeded-test-uninitialized-warning.patch
+  * 0002-generic-fix-missing-inlining-of-generic-expression.patch
+  * 0004-sindex.1-Use-for-a-plain-quote-char.patch</comment>
+    <requestid>837254</requestid>
+  </revision>
 </revisionlist>

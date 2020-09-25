@@ -1,0 +1,50 @@
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>
+Date: Fri, 31 Jul 2020 23:41:25 +0200
+Subject: sindex.1: Use ' for a plain quote char
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Git-repo: git://git.kernel.org/pub/scm/devel/sparse/sparse.git
+Git-commit: b47eba2000302ab464b03a946dd30016134115d4
+Patch-mainline: maint-v0.6.2 branch
+References: maint-v0.6.2
+
+lintian (a linter for Debian packages) warns:
+
+N:    This manual page uses the \' groff sequence. Usually, the intent to
+N:    generate an apostrophe, but that sequence actually renders as a an acute
+N:    accent.
+N:
+N:    For an apostrophe or a single closing quote, use plain '. For single
+N:    opening quote, i.e. a straight downward line ' like the one used in
+N:    shell commands, use &#92;(aq.
+
+I'm not following its advice but stick to ' as is done in other places
+of sindex.1.
+
+Signed-off-by: Uwe Kleine-König <uwe@kleine-koenig.org>
+Signed-off-by: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+Acked-by: Alexey Gladkov <gladkov.alexey@gmail.com>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ sindex.1 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sindex.1 b/sindex.1
+index e3e14ca3..d7c5173a 100644
+--- a/sindex.1
++++ b/sindex.1
+@@ -128,8 +128,8 @@ struct member
+ .
+ .SH MODE
+ The \fBMODE\fR is dumped as a 3-letter string. The first letter denotes address
+-of part, 2-nd - access by value, 3-rd - access by pointer. A special value
+-\'\fIdef\fR\' means a symbol definition.
++of part, 2-nd - access by value, 3-rd - access by pointer. A special
++value '\fIdef\fR' means a symbol definition.
+ .TP
+ \fBr\fR
+ read
+-- 
+2.26.2
+

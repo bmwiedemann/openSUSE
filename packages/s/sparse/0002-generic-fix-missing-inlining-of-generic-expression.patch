@@ -1,0 +1,70 @@
+From: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+Date: Fri, 24 Jul 2020 16:07:07 +0200
+Subject: generic: fix missing inlining of generic expression
+Git-repo: git://git.kernel.org/pub/scm/devel/sparse/sparse.git
+Git-commit: 77f35b796cc82b820e1994629fade50bacbffcbb
+Patch-mainline: maint-v0.6.2 branch
+References: maint-v0.6.2
+
+Inlining in sparse works slightly differently than what my
+mental model is: the body is only evaluated after the inline
+expansion. IOW, an inline function is not evaluated until it
+is effectively inlined. That's fine but it means that generic
+expressions also need to be handled during the inlining.
+
+However, since the body of inline functions is evaluated just
+after inline expansion, so (recursively) copying the expression
+and its type - expression map is quite useless here.
+
+So, just copy the expression itself and its control expression
+to 'isolate' them from evaluation, evaluate it and then just
+copy the selected expression.
+
+Reported-by: kernel test robot <lkp@intel.com>
+Reported-by: Peter Zijlstra <peterz@infradead.org>
+Signed-off-by: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ inline.c                    |  8 ++++++++
+ validation/inline-generic.c | 10 ++++++++++
+ 2 files changed, 18 insertions(+)
+ create mode 100644 validation/inline-generic.c
+
+diff --git a/inline.c b/inline.c
+index a9597280..eceef8ba 100644
+--- a/inline.c
++++ b/inline.c
+@@ -274,6 +274,14 @@ static struct expression * copy_expression(struct expression *expr)
+ 		}
+ 		break;
+ 	}
++	case EXPR_GENERIC:
++		expr = dup_expression(expr);
++		expr->control = copy_expression(expr->control);
++		if (!evaluate_expression(expr))
++			return NULL;
++		expr = copy_expression(expr);
++		break;
++
+ 	default:
+ 		warning(expr->pos, "trying to copy expression type %d", expr->type);
+ 	}
+diff --git a/validation/inline-generic.c b/validation/inline-generic.c
+new file mode 100644
+index 00000000..1f05c079
+--- /dev/null
++++ b/validation/inline-generic.c
+@@ -0,0 +1,10 @@
++extern int a, b;
++inline int c(void) { return a++; }
++inline int e(int d) { return 0; }
++inline unsigned f(void) { return e(_Generic(b, int: c())); }
++static int g(void) { return f(); }
++static int h(void) { return f(); }
++
++/*
++ * check-name: inline-generic
++ */
+-- 
+2.26.2
+
