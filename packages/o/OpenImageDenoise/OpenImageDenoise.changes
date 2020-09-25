@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:41:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * Fixed unhandled exception when canceling filter execution from the
+    progress monitor callback function
+  * Fixed tiling artifacts when in-place denoising (using one of the input
+  * Fixed ghosting/color bleeding artifacts in black regions when using
+  * Fixed error when building as a static library (`OIDN_STATIC_LIB` option)
+  * Fixed compile error for ISPC 1.13 and later
+  * Fixed minor TBB detection issues
+  * Fixed crash on pre-SSE4 CPUs when using some recent compilers (e.g. GCC 10)
+  * Link C/C++ runtime library dynamically on Windows too by default
+  * Renamed example apps (`oidnDenoise`, `oidnTest`)
+  * Added benchmark app (`oidnBenchmark`)
+  * Fixed random data augmentation seeding in training
+  * Fixed training warning with PyTorch 1.5 and later
+  * Added neural network training code
+  * Added support for specifying user-trained models at runtime
+  * Slightly improved denoising quality
+  * Improved denoising speed by about 7-38% (mostly depending on the compiler)
+  * Added `OIDN_STATIC_RUNTIME` CMake option (for Windows only)
+  * Added support for OpenImageIO to the example apps (disabled by default)
+  * Added check for minimum supported TBB version
+  * Find debug versions of TBB
+  * Added testing
+   
+-------------------------------------------------------------------
 Thu Jan 16 10:08:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build only for x86_64 as it is the only supported platform

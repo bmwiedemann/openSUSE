@@ -21,7 +21,7 @@
 %define libname lib%{name}%{sover}
 %define pkgname oidn
 Name:           OpenImageDenoise
-Version:        1.1.0
+Version:        1.2.2
 Release:        0
 Summary:        Open Image Denoise library
 License:        Apache-2.0
@@ -30,6 +30,7 @@ URL:            https://openimagedenoise.github.io/
 Source:         https://github.com/%{name}/%{pkgname}/releases/download/v%{version}/%{pkgname}-%{version}.src.tar.gz
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
+BuildRequires:  ispc
 BuildRequires:  tbb-devel
 ExclusiveArch:  x86_64
 
@@ -71,7 +72,7 @@ rm -r %{buildroot}%{_datadir}/doc
 
 %files
 %license LICENSE.txt
-%{_bindir}/denoise
+%{_bindir}/oidn*
 
 %files -n %{libname}
 %license LICENSE.txt
