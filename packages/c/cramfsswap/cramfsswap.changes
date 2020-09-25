@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Fri Aug 28 21:01:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.4.1
+- Add patch:
+  * cramfsswap-obey-cflags.patch
