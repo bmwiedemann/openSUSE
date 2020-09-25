@@ -1,5 +1,5 @@
 #
-# spec file for package glib2-branding
+# spec file for package glib2
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -91,7 +91,7 @@ cp -a %{SOURCE2} glib2-branding.gschema.override.in
 
 %build
 test -f %{_datadir}/wallpapers/%{branding_name}-default.xml
-sed "s,@@WALLPAPER_URI@@,file://%{_datadir}/wallpapers/%{branding_name}-default.xml," glib2-branding.gschema.override.in > glib2-branding.gschema.override
+sed "s,@@WALLPAPER_URI@@,file://%{_datadir}/wallpapers/%{branding_name}-default.xml,;s,@@LOCKSCREEN_URI@@,file://%{_datadir}/wallpapers/%{branding_name}-default-static-lockscreen.xml,"  glib2-branding.gschema.override.in > glib2-branding.gschema.override
 #for sound theme
 %if 0%{?build_openSUSE}
 sed "s:@@IF_openSUSE@@::g" < glib2-branding.gschema.override | \

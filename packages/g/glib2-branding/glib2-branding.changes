@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 18 12:36:04 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Update .gschema.override.in (jsc#SLE-14772):
+  * add different key for screenlock
+  * update background color for SLE.
+
+-------------------------------------------------------------------
 Mon May 18 14:12:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only recommend wallpaper-branding-%{branding_name} when

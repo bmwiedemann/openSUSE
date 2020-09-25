@@ -12,14 +12,19 @@ toolkit-accessibility = false
 ## Default wallpaper
 picture-uri = "@@WALLPAPER_URI@@"
 picture-options = "stretched"
-primary-color = "#258c06"
-secondary-color = "#258c06"
+@@IF_openSUSE@@primary-color = "#258c06"
+@@IF_openSUSE@@secondary-color = "#258c06"
+@@IF_SLE@@primary-color = "#0C322C"
+@@IF_SLE@@secondary-color = "#0C322C"
 
 [org.gnome.desktop.screensaver]
-picture-uri = "@@WALLPAPER_URI@@"
+@@IF_openSUSE@@picture-uri = "@@WALLPAPER_URI@@"
+@@IF_SLE@@picture-uri = "@@LOCKSCREEN_URI@@"
 picture-options = "stretched"
-primary-color = "#258c06"
-secondary-color = "#258c06"
+@@IF_openSUSE@@primary-color = "#258c06"
+@@IF_openSUSE@@secondary-color = "#258c06"
+@@IF_SLE@@primary-color = "#0C322C"
+@@IF_SLE@@secondary-color = "#0C322C"
 @@IF_SLE@@lock-delay = 300
 
 [org.gnome.login-screen]

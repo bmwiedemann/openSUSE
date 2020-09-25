@@ -100,4 +100,14 @@
     <comment>Resub tweaked (forwarded request 807083 from iznogood)</comment>
     <requestid>807574</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>a130a80adb17a82f0d1c43d9faa1badf</srcmd5>
+    <version>15</version>
+    <time>1601043908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update .gschema.override.in (jsc#SLE-14772):
+  * add different key for screenlock
+  * update background color for SLE. (forwarded request 835426 from fcrozat)</comment>
+    <requestid>836042</requestid>
+  </revision>
 </revisionlist>
