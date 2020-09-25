@@ -1304,4 +1304,12 @@ work. (forwarded request 640069 from iznogood)</comment>
   built on SLE/Leap 15 and above. (forwarded request 799142 from yfjiang)</comment>
     <requestid>799176</requestid>
   </revision>
+  <revision rev="167" vrev="2">
+    <srcmd5>fa65aa58acef5b05aaf5aae2cdb2e22f</srcmd5>
+    <version>3.36.1</version>
+    <time>1601043905</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build on s390x (wacom=false but wayland=true) (forwarded request 835311 from oertel)</comment>
+    <requestid>836039</requestid>
+  </revision>
 </revisionlist>

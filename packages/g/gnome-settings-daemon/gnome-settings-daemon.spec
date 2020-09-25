@@ -271,10 +271,12 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom-oled-helper
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
-%dir %{_sysconfdir}/xdg/Xwayland-session.d
-%{_sysconfdir}/xdg/Xwayland-session.d/00-xrdb
 %{_userunitdir}/gsd-wacom.service
 %{_userunitdir}/gsd-wacom.target
+%endif
+%if %{with wayland}
+%dir %{_sysconfdir}/xdg/Xwayland-session.d
+%{_sysconfdir}/xdg/Xwayland-session.d/00-xrdb
 %endif
 %{_udevrulesdir}/61-gnome-settings-daemon-rfkill.rules
 %{_userunitdir}/gnome-session-initialized.target.wants/
