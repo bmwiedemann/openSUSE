@@ -33,17 +33,19 @@
 %endif
 
 Name:           lammps
-Version:        20200505
+Version:        20200918
 Release:        0
-%define         uversion patch_5May2020
+%define         uversion patch_18Sep2020
 Summary:        Molecular Dynamics Simulator
 License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://lammps.sandia.gov
 Source0:        https://github.com/lammps/lammps/archive/%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-Source1:        https://github.com/lammps/lammps-testing/archive/%{uversion}.tar.gz#/%{name}-testing-%{uversion}.tar.gz
-# PATCH-FIX-UPSTREAM disable_noopt.patch, gcc flags a false positive [gh#lammps/lammps#2078]
-Patch0:         disable_noopt.patch 
+Source1:        https://github.com/google/googletest/archive/release-1.10.0.tar.gz
+# PATCH-FIX-UPSTREAM 9cdde97863825e4fdce449920d39b25414b2b0b3.patch from https://github.com/lammps/lammps/pull/2381 fix a failing test
+Patch0:         9cdde97863825e4fdce449920d39b25414b2b0b3.patch
+# PATCH-FIX-UPSTREAM 61ce73273b3290083c01e6a2fadfb3db0889b9ba.patch from https://github.com/lammps/lammps/pull/2381 fix another failing test
+Patch1:         61ce73273b3290083c01e6a2fadfb3db0889b9ba.patch
 BuildRequires:  %{mpiver}
 BuildRequires:  %{mpiver}-devel
 BuildRequires:  cmake
@@ -53,6 +55,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  gsl-devel
 BuildRequires:  kim-api-devel >= 2.1
+# for testing
+BuildRequires:  kim-api-examples 
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  ocl-icd-devel
@@ -62,7 +66,7 @@ BuildRequires:  voro++-devel
 BuildRequires:  zlib-devel
 %ifnarch ppc64 %ix86
 %global         with_kokkos 1
-BuildRequires:  kokkos-devel >= 3.1
+BuildRequires:  kokkos-devel >= 3.2
 %endif
 Requires:       %{name}-data
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -164,11 +168,7 @@ This subpackage contains LAMMPS's potential files
 %prep
 %setup -a 1 -q -n %{name}-%{uversion}
 %patch0 -p1
-# see [gh#lammps/lammps#2079], this is a bug in older version 
-# of the ocl package, compare [GCC#58241]
-%ifarch ppc64le
-sed -i '/CMAKE_CXX_EXTENSIONS/s/OFF/ON/' cmake/CMakeLists.txt
-%endif
+%patch1 -p1
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
@@ -176,19 +176,24 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 %{cmake} \
   -C ../cmake/presets/all_on.cmake \
   -C ../cmake/presets/nolib.cmake \
-  -DCMAKE_Fortran_COMPILER="$(type -p gfortran)" \
-  -DCMAKE_TUNE_FLAGS='' \
+  -DCMAKE_TUNE_FLAGS='%{?tune_flags}' \
   -DBUILD_TOOLS=ON \
   -DBUILD_OMP=ON \
   %{?with_kokkos:-DPKG_KOKKOS=ON -DEXTERNAL_KOKKOS=ON} \
-  -DBUILD_MPI=ON -DPKG_PYTHON=ON \
-  -DPKG_KIM=ON -DENABLE_TESTING=ON -DPKG_VORONOI=ON \
-  -DPKG_GPU=ON -DGPU_API=OpenCL -DFFT=FFTW3 \
-  -DPYTHON_INSTDIR=%{python_sitearch} -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-%ifnarch x86_64 i586
+  -DBUILD_MPI=ON \
+  -DPKG_PYTHON=ON \
+  -DPKG_KIM=ON \
+  -DPKG_VORONOI=ON \
+  -DPKG_GPU=ON -DGPU_API=OpenCL \
+  -DFFT=FFTW3 \
+  -DPYTHON_INSTDIR=%{python_sitearch} \
+  -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+%ifnarch x86_64 %ix86
   -DPKG_USER-INTEL=OFF \
-%endif  
-  -DLAMMPS_TESTING_SOURCE_DIR=$(echo $PWD/../lammps-testing-*) ../cmake
+%endif
+  -DENABLE_TESTING=ON \
+  -DGTEST_URL=%{S:1} \
+  ../cmake
 %cmake_build
 
 %install
@@ -196,7 +201,13 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 
 %check
 export LD_LIBRARY_PATH='%{buildroot}%{_libdir}:%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}'
-%ctest
+
+# https://github.com/lammps/lammps/issues/2383, inject -msse2 on %ix86 to make test pass
+%ifarch %ix86
+%global testargs --exclude-regex AtomStyle
+%endif
+
+%ctest %{?testargs}
 
 %post -n liblammps0 -p /sbin/ldconfig
 %postun -n liblammps0 -p /sbin/ldconfig

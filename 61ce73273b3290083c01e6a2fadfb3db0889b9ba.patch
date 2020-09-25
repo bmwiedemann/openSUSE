@@ -1,0 +1,23 @@
+From 61ce73273b3290083c01e6a2fadfb3db0889b9ba Mon Sep 17 00:00:00 2001
+From: Richard Berger <richard.berger@temple.edu>
+Date: Sat, 19 Sep 2020 22:27:21 -0400
+Subject: [PATCH] Add missing -u flag for unbuffered PyLammps tests
+
+Addresses issue #2380
+---
+ unittest/python/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/unittest/python/CMakeLists.txt b/unittest/python/CMakeLists.txt
+index 6082eb99b1..490314ca9d 100644
+--- a/unittest/python/CMakeLists.txt
++++ b/unittest/python/CMakeLists.txt
+@@ -37,7 +37,7 @@ if (Python_EXECUTABLE)
+         set(PYTHON_TEST_RUNNER ${Python_EXECUTABLE} -u)
+     endif()
+   else()
+-    set(PYTHON_TEST_RUNNER ${Python_EXECUTABLE})
++    set(PYTHON_TEST_RUNNER ${Python_EXECUTABLE} -u)
+   endif()
+ 
+   add_test(NAME PythonOpen
