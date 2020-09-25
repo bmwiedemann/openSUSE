@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep  5 20:00:16 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.16.11
+  * Changes to build procedure for other platforms
+  * A locale-related fix is included
+
+-------------------------------------------------------------------
+Tue Aug 25 20:49:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.16.9
+  * Linux client: fix X-based idle detection
+  * Drop X11 fallback as Wayland can show a desktop session with no
+    X11 servers, but XWayland can be started temporarily (and is
+    useless for idle detection).
+  * client: avoid CPU starvation when GPU computing is suspended
+  * client: do nott allow an empty GUI RPC password
+  * client: let a project master URL change from http: to https: without involving the user.
+  * Fix CORS for GUI RPC via HTTP
+  * Converted Java parts to Kotlin
+  * transitioner: Fix race condition with file_upload_handler
+- Drop boinc-guirpcauth.patch (mostly merged; upstream has a
+  slightly different solution, though)
+
+-------------------------------------------------------------------
 Wed Apr 22 13:59:26 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 7.16.6

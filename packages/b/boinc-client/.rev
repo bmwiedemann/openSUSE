@@ -365,4 +365,12 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
     <comment>- Update to 7.16.6</comment>
     <requestid>796316</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>25838d8b0ad82f2e981570d45a8e77ae</srcmd5>
+    <version>7.16.11</version>
+    <time>1601044242</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.16.11</comment>
+    <requestid>832542</requestid>
+  </revision>
 </revisionlist>

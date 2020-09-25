@@ -36,7 +36,7 @@
 Name:           boinc-client
 %define rel_name        %{name}_release
 %define minor_version   7.16
-Version:        %{minor_version}.6
+Version:        %{minor_version}.11
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -54,13 +54,10 @@ Source6:        boinc-manager
 Source10:       %{name}.init
 Source20:       %{name}.service
 Source100:      %{name}-rpmlintrc
-Patch1:         boinc-guirpcauth.patch
 Patch2:         boinc-docbook2x.patch
 Patch4:         xlocale.patch
 Patch5:         build-client-scripts.patch
 Patch6:         libboinc-shared.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#
 BuildRequires:  Mesa-devel
 BuildRequires:  docbook2x
 BuildRequires:  docbook_4
@@ -78,33 +75,19 @@ BuildRequires:  pkg-config
 BuildRequires:  pwdutils
 BuildRequires:  sqlite3-devel
 BuildRequires:  xorg-x11-libXmu-devel
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-util)
+BuildRequires:  pkgconfig(xi)
 Requires(pre):  pwdutils
 Requires:       ca-certificates-mozilla
 Recommends:     boinc-client-lang = %{version}
 Recommends:     logrotate
-#
-%if 0%{?suse_version} >= 1310
-BuildRequires:  libXi-devel
-BuildRequires:  libxcb-devel
-BuildRequires:  xcb-util-devel
-%else
-BuildRequires:  xorg-x11-libxcb-devel
-%endif
-#
-%if 0%{?suse_version} >= 1210
-BuildRequires:  pkgconfig(systemd)
-%define has_systemd 1
-%else
-Requires(pre):  %fillup_prereq
-Requires(pre):  %insserv_prereq
-%endif
-#
 %if %{with manager}
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-3_0-devel >= 3.0.2
 %lang_package -n boinc-manager
 %endif
-#
 %lang_package
 
 %description
@@ -113,7 +96,7 @@ software platform which supports distributed computing, primarily in
 the form of "volunteer" computing and "desktop grid" computing. It is
 well suited for problems which are often described as "trivially
 parallel". BOINC is the underlying software used by projects such as
-SETI@home, Einstein@Home, ClimatePrediciton.net, the World Community
+Einstein@Home, ClimatePrediciton.net, the World Community
 Grid, and many other distributed computing projects.
 
 This package installs the BOINC client software, which will allow
@@ -156,8 +139,7 @@ This package contains development files for libboinc.
 
 %prep
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%setup -q -n %{name}_release-%{minor_version}-%{version} -D -a 1
-%patch -P 1 -P 2 -P 4 -P 5 -P 6 -p1
+%autosetup -p1 -n %{name}_release-%{minor_version}-%{version} -D -a 1
 
 %build
 # Fix default path for boincscr
@@ -206,19 +188,19 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 # Export Path and make
 make clean %{?_smp_mflags}
 make libboinc_la_LIBADD="-L%{_libdir} -lssl -ldl" \
-   CFLAGS="%{optflags} -g -W -pipe -fno-strict-aliasing -D_REENTRANT" \
-   CXXFLAGS="%{optflags} -g -W -pipe -fno-strict-aliasing -D_REENTRANT" \
+   CFLAGS="%{optflags} -W -pipe -fno-strict-aliasing -D_REENTRANT" \
+   CXXFLAGS="%{optflags} -W -pipe -fno-strict-aliasing -D_REENTRANT" \
    DESTDIR=%{_prefix} %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 %if %{with manager}
 for i in clientgui locale; do
 %else
 for i in locale; do
 %endif
   pushd $i
-  make DESTDIR=%{buildroot} install %{?_smp_mflags}
+  %make_install
   popd
 done
 
@@ -260,15 +242,10 @@ rm -f %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 
 # Install init and create symlink for rcboinc
 install -dm0755 %{buildroot}%{_sbindir}
-%if 0%{?has_systemd}
 install -D -m0644 %{SOURCE20} %{buildroot}%{_unitdir}/%{name}.service
 # And remove sysvinit script installed by boinc
 rm -r %{buildroot}/%{_initddir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-%else
-install -Dm0755 %{SOURCE10} %{buildroot}%{_initddir}/%{name}
-/bin/ln -sf %{_sysconfdir}/init.d/%{name} %{buildroot}%{_sbindir}/rc%{name}
-%endif
 # Install template for sysconfig
 install -Dm0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
@@ -326,33 +303,18 @@ if [ -f %{_sysconfdir}/sysconfig/%{name} ]; then
     mv -f %{_sysconfdir}/sysconfig/%{name} %{_sysconfdir}/sysconfig/%{name}.save
   fi
 fi
-%if 0%{?has_systemd}
 %service_add_pre %{name}.service
-%endif
 
 %preun
-%if 0%{?has_systemd}
 %service_del_preun %{name}.service
-%else
-%stop_on_removal %{name}
-%endif
 
 %post
-%if 0%{?has_systemd}
 %{fillup_only}
 %service_add_post %{name}.service
-%else
-%fillup_and_insserv %{name}
-%endif
 %{_sbindir}/usermod -c "BOINC Client" -s /sbin/nologin boinc 2>/dev/null || :
 
 %postun
-%if 0%{?has_systemd}
 %service_del_postun %{name}.service
-%else
-%restart_on_update %{name}
-%insserv_cleanup
-%endif
 
 %post -n boinc-manager
 %{_bindir}/touch --no-create %{_datadir}/icons/hicolor || :
@@ -371,7 +333,6 @@ fi
 %postun -n libboinc%{sonum} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %license COPYING* COPYRIGHT
 %doc README.SUSE
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
@@ -382,26 +343,15 @@ fi
 %{_bindir}/switcher
 %{_mandir}/man1/boinccmd.1.gz
 %{_mandir}/man1/boinc.1.gz
-%if 0%{?has_systemd}
 %{_unitdir}/%{name}.service
-%else
-%{_initddir}/%{name}
-%endif
 %{_sbindir}/rc%{name}
 %{_fillupdir}/sysconfig.%{name}
-%defattr(-,boinc,boinc,-)
-%{boinc_dir}/
+%attr(-,boinc,boinc) %{boinc_dir}/
 
 %files -n %{name}-lang -f BOINC-Client.lang
-%defattr(-,root,root)
-%if 0%{?sles_version} == 11
-%dir %{_datadir}/locale/fa_IR
-%dir %{_datadir}/locale/fa_IR/LC_MESSAGES
-%endif
 
 %if %{with manager}
 %files -n boinc-manager
-%defattr(-,root,root,-)
 %{_bindir}/boinc-gui
 %{_bindir}/boinc-manager
 %{_bindir}/boincmgr
@@ -413,15 +363,12 @@ fi
 %{_mandir}/man1/boinc-manager.1.gz
 
 %files -n boinc-manager-lang -f BOINC-Manager.lang
-%defattr(-,root,root)
 %endif
 
 %files -n libboinc%{sonum}
-%defattr(-,root,root,-)
 %{_libdir}/*.so.*
 
 %files -n libboinc-devel
-%defattr(-,root,root,-)
 %{_libdir}/*.a
 %{_libdir}/*.so
 %{_includedir}/boinc
