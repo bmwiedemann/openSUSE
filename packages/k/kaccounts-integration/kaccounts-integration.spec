@@ -17,6 +17,7 @@
 
 
 %define kf5_version 5.60.0
+%global sover 2
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
@@ -60,12 +61,12 @@ Small system to administer web accounts for the sites
 and services across the KDE desktop, including: Google,
 Facebook, Owncloud, IMAP, Jabber and others.
 
-%package -n libkaccounts2
+%package -n libkaccounts%{sover}
 Summary:        KDE Accounts Providers - System Library
 Group:          System/Libraries
 Recommends:     %{name}
 
-%description -n libkaccounts2
+%description -n libkaccounts%{sover}
 Small system to administer web accounts for the sites
 and services across the KDE desktop, including: Google,
 Facebook, Owncloud, IMAP, Jabber and others.
@@ -73,12 +74,14 @@ Facebook, Owncloud, IMAP, Jabber and others.
 %package devel
 Summary:        KDE Accounts Providers - Development Files
 Group:          Development/Libraries/KDE
-Requires:       libkaccounts2 = %{version}
+Requires:       libkaccounts%{sover} = %{version}
 Requires:       libsignon-qt5-devel
 Requires:       cmake(AccountsQt5)
 Requires:       cmake(KF5CoreAddons)
 Requires:       cmake(Qt5Core) >= 5.2.0
 Requires:       pkgconfig(libaccounts-glib)
+# Used in KAccountsMacros.cmake
+Requires:       intltool
 
 %description devel
 Small system to administer web accounts for the sites
@@ -102,8 +105,8 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
     %find_lang %{name} --with-man --all-name
   %endif
 
-%post   -n libkaccounts2 -p /sbin/ldconfig
-%postun -n libkaccounts2 -p /sbin/ldconfig
+%post   -n libkaccounts%{sover} -p /sbin/ldconfig
+%postun -n libkaccounts%{sover} -p /sbin/ldconfig
 
 %files
 %license COPYING*
@@ -114,8 +117,9 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %{_kf5_qmldir}/
 %{_kf5_servicesdir}/
 
-%files -n libkaccounts2
+%files -n libkaccounts%{sover}
 %license COPYING*
+%{_kf5_libdir}/libkaccounts.so.%{sover}
 %{_kf5_libdir}/libkaccounts.so.*
 
 %files devel

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 23 08:38:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove TOC files to avoid warning in post and fix angle conditional
+
+-------------------------------------------------------------------
+Tue Sep 22 12:28:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 85.0.4183.121 bsc#1176791:
+  * CVE-2020-15960: Out of bounds read in storage
+  * CVE-2020-15961: Insufficient policy enforcement in extensions
+  * CVE-2020-15962: Insufficient policy enforcement in serial
+  * CVE-2020-15963: Insufficient policy enforcement in extensions
+  * CVE-2020-15965: Out of bounds write in V8
+  * CVE-2020-15966: Insufficient policy enforcement in extensions
+  * CVE-2020-15964: Insufficient data validation in media
+
+-------------------------------------------------------------------
 Tue Sep 15 08:38:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - The egl stuff is from angle not swiftshader, thanks Fedora

@@ -1,7 +1,0 @@
-<servicedata>
-  <service name="tar_scm">
-    <param name="url">https://github.com/MalcolmRobb/dump1090.git</param>
-  <param name="changesrevision">bff92c4ad772a0a8d433f788d39dae97e00e4dbe</param></service>
-<service name="tar_scm">
-                <param name="url">https://github.com/mutability/dump1090.git</param>
-              <param name="changesrevision">cc53c90837520bcf1764ce051c794d1c7f8de084</param></service></servicedata>

@@ -3178,4 +3178,21 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   bsc#1176450</comment>
     <requestid>834860</requestid>
   </revision>
+  <revision rev="270" vrev="1">
+    <srcmd5>0cb951e204a6dc0079b4a133ca12456a</srcmd5>
+    <version>85.0.4183.121</version>
+    <time>1601043728</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove TOC files to avoid warning in post and fix angle conditional
+
+- Update to 85.0.4183.121 bsc#1176791:
+  * CVE-2020-15960: Out of bounds read in storage
+  * CVE-2020-15961: Insufficient policy enforcement in extensions
+  * CVE-2020-15962: Insufficient policy enforcement in serial
+  * CVE-2020-15963: Insufficient policy enforcement in extensions
+  * CVE-2020-15965: Out of bounds write in V8
+  * CVE-2020-15966: Insufficient policy enforcement in extensions
+  * CVE-2020-15964: Insufficient data validation in media</comment>
+    <requestid>836361</requestid>
+  </revision>
 </revisionlist>

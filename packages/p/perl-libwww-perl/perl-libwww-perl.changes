@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 24 03:13:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.49
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.49      2020-09-24 00:27:56Z
+      - Require network testing enabled for t/redirect.t (GH#351) (Olaf Alders)
+
+-------------------------------------------------------------------
+Mon Sep 21 03:14:47 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.48
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.48      2020-09-20 15:25:51Z
+      - Support 308 Permanent Redirect (GH#349) (Galen Huntington)
+
+-------------------------------------------------------------------
 Wed Aug 19 03:17:12 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.47

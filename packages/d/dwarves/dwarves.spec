@@ -29,6 +29,8 @@ Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
 Patch0:         libbpf-Fix-libbpf-hashmap-on-I-LP32-architectures.patch
+Patch1:         dwarves-dwarf_loader-Ignore-entries-in-a-DW_TAG_partial_unit-for-now.patch
+Patch2:         dwarves-dwarf_loader-Bail-out-at-DW_TAG_imported_unit-tags.patch
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.170
 %if 0%{?suse_version} < 1550

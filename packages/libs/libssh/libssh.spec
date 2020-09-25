@@ -30,7 +30,7 @@
 %bcond_with test
 %endif
 Name:           libssh%{pkg_suffix}
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
@@ -54,6 +54,7 @@ BuildRequires:  zlib-devel
 Obsoletes:      %{name}-devel-doc <= 0.8.6
 %if %{with test}
 BuildRequires:  libcmocka-devel
+BuildRequires:  openssh
 %endif
 
 %description

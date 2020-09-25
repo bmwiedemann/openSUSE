@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 21 19:16:06 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing BR for openssh needed for tests
+
+-------------------------------------------------------------------
+Sun Sep 13 19:17:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.9.5 (bsc#1174713, CVE-2020-16135):
+  * CVE-2020-16135: Avoid null pointer dereference in sftpserver (T232)
+  * Improve handling of library initialization (T222)
+  * Fix parsing of subsecond times in SFTP (T219)
+  * Make the documentation reproducible
+  * Remove deprecated API usage in OpenSSL
+  * Fix regression of ssh_channel_poll_timeout() returning SSH_AGAIN
+  * Define version in one place (T226)
+  * Prevent invalid free when using different C runtimes than OpenSSL (T229)
+  * Compatibility improvements to testsuite 
+
+-------------------------------------------------------------------
 Thu Apr  9 07:50:07 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.9.4

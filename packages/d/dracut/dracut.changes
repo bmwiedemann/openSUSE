@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Mon Sep 21 11:53:13 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 050+suse.226.gb86d9bcf:
+  We are now tracking the master branch, preparing for a 051 release
+  within the next weeks.
+  (the list includes changes previously backported)
+
+  * 01fips: modprobe failures during manual module loading is not fatal
+  * 01fips: turn info calls into fips_info calls
+  * 04watchdog: split the watchdog module install
+  * 35network-legacy: simplify fallback dhcp setup
+  * 51-dracut-rescue.install: Don't use BLS fragment shipped by kernel package
+  * 90crypt: make `rd.luks.key` usable with encrypted keydev.
+  * 90crypt/module-setup.sh: try to catch kernel config changes
+  * 90kernel-modules: add pci_hyperv
+  * 90kernel-modules/module-setup.sh: add sg kernel module
+  * 90kernel-modules: remove nfit from static module list
+  * 90lvm: do not add newline to cmdline
+  * 90nvdimm: include nvdimm keys in initrd
+  * 90ppcmac: respect DRACUT_ARCH, don't exclude ppcle
+  * 91zipl: parse-zipl.sh: honor SYSTEMD_READY
+  * 95cifs: install new softdeps (sha512, gcm, ccm, aead2)
+  * 95cifs: pass rootflags to mount
+  * 95dcssblk: fix script permissions
+  * 95fcoe: default rd.nofcoe to false
+  * 95iscsi: fix ipv6 target discovery
+  * 95iscsi: fix missing space when compiling cmdline args
+  * 95iscsi: use ip_params_for_remote_addr()
+  * 95nfs: only install rpc services for NFS < 4 when hostonly is strict
+  * 95nfs: use ip_params_for_remote_addr()
+  * 95nvmf: add module for NVMe-oF
+  * 95nvmf: add NVMe over TCP support
+  * 95nvmf: fix typo in the example documentation
+  * 95resume: Do not resume on iSCSI, FCoE or NBD
+  * 95zfcp_rules/parse-zfcp.sh: remove rule existence check
+  * 95znet: Add a rd.znet_ifname= option
+  * 99base: Remove duplicate nfsroot_to_var from dracut-lib.sh
+  * 99memstrack: hook script should not call exit
+  * 99memstrack: Only start tracking service when rd.memdebug=4|5
+  * 99squash: Don't hardcode the squash sub directories
+  * 99squash: improve pre-requirements check
+  * 99squash: simplify the code
+  * Add 99memstrack module
+  * Adding a bug report template
+  * Adding a feature request template
+  * Adding a pull request template
+  * Adding code of conduct
+  * Adding documentation template
+  * Adding security policy
+  * Adding the labels file for master
+  * Adding the labels file for the RHEL-6 branch
+  * Adding the labels file for the RHEL-7 branch
+  * Adding the labels file for the RHEL-8 branch
+  * Adding the labels trigger file for the Master branch
+  * Adding the labels trigger file for the RHEL-6 branch
+  * Adding the labels trigger file for the RHEL-7 branch
+  * Adding the labels trigger file for the RHEL-8 branch
+  * Add module "90nvdimm" for NVDIMM support
+  * Add --version to man page
+  * Allow $DRACUT_INSTALL to be not an absolute path
+  * Always pull in machinery to read ifcfg files
+  * As of v246 of systemd "syslog" and "syslog-console" switches have been deprecated
+  * btrfs: force preload btrfs module
+  * busybox: simplify listing of supported utilities
+  * Change the order of NFS servers during the boot NFS server provided by DHCP in next-server option has higher priority than DHCP-server itself
+  * CI: remove Fedora 30, add Fedora 32
+  * cms: regenerate NetworkManager connections
+  * cryptroot-ask: no warn if /run/cryptsetup exist
+  * dasd: only install /etc/dasd.conf if present
+  * dhclient-script: Fix typo in output of  BOUND & BOUND6 cases
+  * dmsquash-live-root: Remove obsolete osmin.img processing.
+  * Document initqueue/online hook
+  * Do not start inside container
+  * don't prefer $TMPDIR over --tmpdir
+  * dracut.cmdline.7.asc: clarify usage of `rd.lvm.vg` and `rd.lvm.lv`
+  * dracut.cmdline.7.asc: fix typo
+  * dracut.conf.5.asc: document how to config --no-compress in the config
+  * dracut-functions: add ip_params_for_remote_addr() helper
+  * dracut-functions: fix find_binary() to return full path
+  * dracut-initqueue: Print more useful info in case of timeout
+  * dracut-lib.sh: quote variables in parameter expansion patterns
+  * dracut.modules.7.asc: fix another typo
+  * dracut.modules.7.asc: fix reference to insmodpost module
+  * dracut.sh: add check for invalid configuration files
+  * dracut.sh: Add --version
+  * dracut.sh: don't call fsfreeze on subvol of root file system
+  * dracut.sh: FIPS workaround for openssl-libs on Fedora/RHEL
+  * dracut.sh: fix early microcode detection logic
+  * dracut.sh: fix errors pointed out by shellcheck.
+  * dracut.sh: fix ia32 detection for uefi executables
+  * dracut.sh: fix some indentation.
+  * dracut.sh: Move the library workaround after squash
+  * dracut.spec: add 90nvdimm
+  * dracut.spec: add version check for deprecated files
+  * Fix CI badges in README.md and fix dracut description
+  * Fix CoC URL
+  * fix graphics startup failure with the rhgb paramter in CentOS8.2
+  * Fix pre-trigger stage by replacing exit with return in lldpad.sh
+  * Fix test in lsinitrd
+  * Fix Unicode
+  * Fix Unicode and dracut install labeler
+  * github actions: use test container directly
+  * .github: fix path to label workflow mapping file
+  * i18n: Always install /etc/vconsole.conf
+  * install: also install post weak dependencies of kernel modules
+  * Install crypto modules in 90kernel-modules
+  * install dependant libs too
+  * lvm: fix removal of pvscan from udev rules
+  * lvm: remove unnecessary ${initdir} from lvm_scan.sh
+  * Make externally defined CFLAGS work
+  * Makefile: fix VERSION again
+  * Makefile: merge main-version and git-version earlier
+  * Makefile: really make externally defined CFLAGS work
+  * match simplified rd.zfcp format too
+  * match the whole string
+  * mkinitrd-dracut.sh: use vmlinux regex for ppc*, vmlinuz for i686
+  * mkinitrd-suse.sh: Fix i586 platform detection
+  * mount-root.sh: fix writing fstab file with missing fsck flag
+  * multipath: add automatic configuration for multipath
+  * net-lib.sh: support infiniband network mac addresses
+  * network: fix glob matching ipv6 addresses
+  * network-manager: ensure that nm-run.sh is executed when needed
+  * network-manager: install libnss DNS and mDNS plugins
+  * network-manager: move connection generation to a lib file
+  * network-manager: set kernel hostname from the command line
+  * New labels file
+  * New label trigger file
+  * README.md: fix github action badge links
+  * Remove cleanup_trace_mem calls
+  * Remove memtrace-ko and rd.memdebug=4 support in dracut
+  * Remove stratis module
+  * Removing dracut entry not compat with new plugin
+  * Switching label triggers from pull requests to cron
+  * systemd: skip dependency add for non-existent units
+  * TEST-03-USR-MOUNT/test.sh: increase loglevel
+  * TEST-12-RAID-DEG/create-root.sh: more udevadm settle
+  * TEST-41-NBD-NM/Makefile: should be based on TEST-40-NBD not TEST-20-NFS
+  * TEST-99: exclude /etc/dnf/* from check
+  * test/TEST-35-ISCSI-MULTI: bump disk space
+  * test: use dd from /dev/zero, instead of creating files with a hole
+  * .travis.yml: reformat
+  * UEFI Mode: only write kernel cmdline to UEFI binary
+  * Update master-labels.yml
+  * url-lib: drop NSS if it's not in curl --version
+  * Use TMPDIR if available
+
+-------------------------------------------------------------------
 Fri Sep  4 12:15:24 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Generate the tarball during buildtime. Tracking both the tarball

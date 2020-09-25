@@ -1,7 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep 11 17:43:59 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.0:
+  + docs: Add missing index for 1.6 symbols.
+  + Updated translations.
+- Add gtk-doc BuildRequires and build gtk-doc api documentation and
+  manpages via passing man=true and gtk_doc=enabled to meson.
+- Add check section and run meson_test macro during build.
+- Drop obsolete nuking of .la files, no longer needed.
+
+-------------------------------------------------------------------
+Fri Sep  4 18:18:38 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.5.2:
+  + Add getters with default fallback for JsonObject.
+  + Clarify some expections of the json_object_get_*_member APIs.
+  + Fix getting immutable root nodes from empty input.
+  + Add `--output` option to json-glib-format.
+  + Support loading files via memory mapping.
+  + Add a symbol version to all exported symbols.
+- Pass -Dgtk_doc=disabled to meson: keep the gtk-doc disabled for
+  now.
+
+-------------------------------------------------------------------
 Fri May 22 12:27:24 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
-- Require pkgconfig to create pkgconfig() provides 
+- Require pkgconfig to create pkgconfig() provides
 
 -------------------------------------------------------------------
 Sat Jan 25 14:15:45 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

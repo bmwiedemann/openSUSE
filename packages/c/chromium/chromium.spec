@@ -51,7 +51,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        85.0.4183.102
+Version:        85.0.4183.121
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -746,6 +746,7 @@ cp -a *.bin *.pak locales %{buildroot}%{_libdir}/chromium/
 
 # This is ANGLE, not to be confused with the similarly named files under swiftshader/
 cp -a libEGL.so* libGLESv2.so* %{buildroot}%{_libdir}/chromium/
+rm %{buildroot}%{_libdir}/chromium/*.so.TOC
 
 %if !%{with system_icu}
 cp -a icudtl.dat %{buildroot}%{_libdir}/chromium/
@@ -755,7 +756,6 @@ cp -a icudtl.dat %{buildroot}%{_libdir}/chromium/
 # general folder for these is swiftshader bsc#1176450
 mkdir -p %{buildroot}%{_libdir}/chromium/swiftshader
 cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/swiftshader/
-# create compat symlinks bsc#1176207
 %endif
 
 # chromedriver
@@ -820,8 +820,8 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 %if %{with swiftshader}
 %dir %{_libdir}/chromium/swiftshader/
 %{_libdir}/chromium/swiftshader/*.so
-%{_libdir}/chromium/*.so
 %endif
+%{_libdir}/chromium/*.so
 %{_datadir}/applications/*.desktop
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/chromium-browser.appdata.xml

@@ -1,0 +1,37 @@
+From 2ecc308518edfe059f34fd1ad69ef39ad011cab9 Mon Sep 17 00:00:00 2001
+From: Arnaldo Carvalho de Melo <acme@redhat.com>
+Date: Fri, 18 Sep 2020 16:56:13 -0300
+Subject: [PATCH] dwarf_loader: Bail out at DW_TAG_imported_unit tags
+
+We need to support these in a future version, for now, just bail out to
+avoid segfaults afterwards.
+
+  $ pahole examples/sles/vmlinux-5.3.18-109.g8ff6392-default.debug
+  WARNING: DW_TAG_partial_unit used, some types will not be considered!
+           Probably this was optimized using a tool like 'dwz'
+           A future version of pahole will take support this.
+  $
+
+Reported-by: Tom de Vries
+Bugtracker: https://github.com/acmel/dwarves/issues/10
+Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+---
+ dwarf_loader.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dwarf_loader.c b/dwarf_loader.c
+index 74e0227..fd058aa 100644
+--- a/dwarf_loader.c
++++ b/dwarf_loader.c
+@@ -1615,6 +1615,8 @@ static struct tag *__die__process_tag(Dwarf_Die *die, struct cu *cu,
+ 	struct tag *tag;
+ 
+ 	switch (dwarf_tag(die)) {
++	case DW_TAG_imported_unit:
++		return NULL; // We don't support imported units yet, so to avoid segfaults
+ 	case DW_TAG_array_type:
+ 		tag = die__create_new_array(die, cu);		break;
+ 	case DW_TAG_base_type:
+-- 
+2.28.0
+

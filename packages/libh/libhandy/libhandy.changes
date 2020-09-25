@@ -1,8 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep  9 10:35:43 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.0.0: No change, only version bump.
+
+-------------------------------------------------------------------
 Wed Sep  9 07:12:28 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide %{name} = %{version} in shlib package in order to make
   -lang package installable: needed as there is no main package.
+
+-------------------------------------------------------------------
+Sat Sep  5 14:55:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.91.0:
+  + Update HdyComboRow's state when its model is changed.
+  + Fix padding application in HdyHeaderBar.
+  + HdyPreferencesWindow:
+    - Translate the keyval properly to ensure keyboard shortcuts
+      work with all keymaps.
+    - Allow closing the window or subpages with the Esc key.
+  + HdyWindow and HdyApplicationWindow:
+    - Fix a memory leak when destroying the widget.
+    - Get the state from the correct style context to avoid a
+      constant redraw after changing the text direction and before
+      the window is focused.
+    - Don't force a 0px border-radius on the window to give more
+      freedom to elementary.
+  + Updated translations.
+- Disable glade catalogs for the time being: not compatible with
+  glade 3.37.
 
 -------------------------------------------------------------------
 Fri Aug 28 09:55:47 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>

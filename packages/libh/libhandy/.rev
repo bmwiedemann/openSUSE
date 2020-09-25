@@ -96,4 +96,12 @@
   -lang package installable: needed as there is no main package.</comment>
     <requestid>833190</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d839b387d57062c7cbebab99191d6652</srcmd5>
+    <version>1.0.0</version>
+    <time>1601043812</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 833672 from dimstar)</comment>
+    <requestid>834304</requestid>
+  </revision>
 </revisionlist>

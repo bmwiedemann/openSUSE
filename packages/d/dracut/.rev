@@ -1756,4 +1756,41 @@ Add:  dracut_git_v034_to_head.patch</comment>
   and the .obscpio combines the worst of both. (forwarded request 832081 from favogt)</comment>
     <requestid>832091</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>a6b4916906341674c2c55139867249de</srcmd5>
+    <version>050+suse.226.gb86d9bcf</version>
+    <time>1601043828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 050+suse.226.gb86d9bcf:
+  We are now tracking the master branch, preparing for a 051 release
+  within the next weeks.
+  (the list includes changes previously backported)
+  * 01fips: modprobe failures during manual module loading is not fatal
+  * 01fips: turn info calls into fips_info calls
+  * 04watchdog: split the watchdog module install
+  * 35network-legacy: simplify fallback dhcp setup
+  * 51-dracut-rescue.install: Don't use BLS fragment shipped by kernel package
+  * 90crypt: make `rd.luks.key` usable with encrypted keydev.
+  * 90crypt/module-setup.sh: try to catch kernel config changes
+  * 90kernel-modules: add pci_hyperv
+  * 90kernel-modules/module-setup.sh: add sg kernel module
+  * 90kernel-modules: remove nfit from static module list
+  * 90lvm: do not add newline to cmdline
+  * 90nvdimm: include nvdimm keys in initrd
+  * 90ppcmac: respect DRACUT_ARCH, don't exclude ppcle
+  * 91zipl: parse-zipl.sh: honor SYSTEMD_READY
+  * 95cifs: install new softdeps (sha512, gcm, ccm, aead2)
+  * 95cifs: pass rootflags to mount
+  * 95dcssblk: fix script permissions
+  * 95fcoe: default rd.nofcoe to false
+  * 95iscsi: fix ipv6 target discovery
+  * 95iscsi: fix missing space when compiling cmdline args
+  * 95iscsi: use ip_params_for_remote_addr()
+  * 95nfs: only install rpc services for NFS &lt; 4 when hostonly is strict
+  * 95nfs: use ip_params_for_remote_addr()
+  * 95nvmf: add module for NVMe-oF
+  * 95nvmf: add NVMe over TCP support
+  * 95nvmf: fix typo in the example documentation</comment>
+    <requestid>835838</requestid>
+  </revision>
 </revisionlist>

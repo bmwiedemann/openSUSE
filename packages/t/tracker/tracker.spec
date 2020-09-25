@@ -17,42 +17,40 @@
 #
 
 
-%define TrackerAPI    2.0
-%define RPMTrackerAPI 2_0
+%define TrackerAPI    3.0
+%define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        2.3.5
+Version:        2.99.5
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker/2.3/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker/2.99/%{name}-%{version}.tar.xz
 
-# PATCH-FIX-UPSTREAM tracker-ontology-upgrades.patch boo#1170587 dimstar@opensuse.org -- Fix ontology migration from very old tracker versions
-Patch1:         tracker-ontology-upgrades.patch
-
+BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel >= 2.46.0
+BuildRequires:  glib2-devel >= 2.52.0
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  libicu-devel >= 4.8.1.1
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  sqlite3-devel >= 3.8.3
+BuildRequires:  sqlite3-devel >= 3.15.0
 BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.18.0
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
-BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.40
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
 BuildRequires:  pkgconfig(uuid)
 # We want to index files by default, if possible
@@ -81,65 +79,6 @@ It provides context linking and audit trails for file objects.
 It has the ability to index, store, harvest metadata, retrieve
 and search all types of files and other first class objects.
 
-# This package name is not correct as per SLPP, but the 'lib' lives in a
-# private directory: the symbol provided is libtracker-common.so() (same
-# name across multiple versions of tracker).
-# Yet, different libtracker-miner-* packages require their explicit
-# version of libtracker-common.so as they link is done using rpath.
-%package -n libtracker-common-%{RPMTrackerAPI}
-Summary:        Convenience libraries for Tracker
-Group:          System/Libraries
-Requires:       %{name}
-# Obsolete old tracker libs, bnc#876649
-Obsoletes:      libtracker-extract-0_16-0
-# Obsolete tracker 1.0 - this is not a 'real' slpp package, thus can be obsoleted
-Obsoletes:      libtracker-common-1_0
-
-%description -n libtracker-common-%{RPMTrackerAPI}
-Tracker is a desktop-neutral object database, tag/metadata database,
-search tool and indexer.
-
-This package contains private convenience libraries for the
-various tracker libraries.
-
-%package -n libtracker-control-%{RPMTrackerAPI}-0
-Summary:        Control library for Tracker
-# rpm autodetects libtracker-common.so() symbol, which is provided by all versions of libtracker-common, so we need to help with an explicit Requires.
-Group:          System/Libraries
-Requires:       libtracker-common-%{RPMTrackerAPI}
-
-%description -n libtracker-control-%{RPMTrackerAPI}-0
-Tracker is a desktop-neutral object database, tag/metadata database,
-search tool and indexer.
-
-It consists of a common object database that allows entities to
-have an almost infinite number of properties, metadata (both
-embedded/harvested as well as user definable), a comprehensive
-database of keywords/tags and links to other entities.
-
-It provides context linking and audit trails for file objects.
-It has the ability to index, store, harvest metadata, retrieve
-and search all types of files and other first class objects.
-
-%package -n libtracker-miner-%{RPMTrackerAPI}-0
-Summary:        Miner library for Tracker
-# rpm autodetects libtracker-common.so() symbol, which is provided by all versions of libtracker-common, so we need to help with an explicit Requires.
-Group:          System/Libraries
-Requires:       libtracker-common-%{RPMTrackerAPI}
-
-%description -n libtracker-miner-%{RPMTrackerAPI}-0
-Tracker is a desktop-neutral object database, tag/metadata database,
-search tool and indexer.
-
-It consists of a common object database that allows entities to
-have an almost infinite number of properties, metadata (both
-embedded/harvested as well as user definable), a comprehensive
-database of keywords/tags and links to other entities.
-
-It provides context linking and audit trails for file objects.
-It has the ability to index, store, harvest metadata, retrieve
-and search all types of files and other first class objects.
-
 %package -n typelib-1_0-Tracker-%{RPMTrackerAPI}
 Summary:        Introspection bindings for the Tracker Sparql library
 Group:          System/Libraries
@@ -151,33 +90,9 @@ search tool and indexer.
 This package provides the GObject Introspection bindings for the
 sparql library for Tracker.
 
-%package -n typelib-1_0-TrackerControl-%{RPMTrackerAPI}
-Summary:        Introspection bindings for the Tracker Control library
-Group:          System/Libraries
-
-%description -n typelib-1_0-TrackerControl-%{RPMTrackerAPI}
-Tracker is a desktop-neutral object database, tag/metadata database,
-search tool and indexer.
-
-This package provides the GObject Introspection bindings for the
-extract library for Tracker.
-
-%package -n typelib-1_0-TrackerMiner-%{RPMTrackerAPI}
-Summary:        Introspection bindings for the Tracker Miner library
-Group:          System/Libraries
-
-%description -n typelib-1_0-TrackerMiner-%{RPMTrackerAPI}
-Tracker is a desktop-neutral object database, tag/metadata database,
-search tool and indexer.
-
-This package provides the GObject Introspection bindings for the
-miner library for Tracker.
-
 %package -n libtracker-sparql-%{RPMTrackerAPI}-0
 Summary:        Sparql library for Tracker
-# rpm autodetects libtracker-common.so() symbol, which is provided by all versions of libtracker-common, so we need to help with an explicit Requires.
 Group:          System/Libraries
-Requires:       libtracker-common-%{RPMTrackerAPI}
 
 %description -n libtracker-sparql-%{RPMTrackerAPI}-0
 Tracker is a desktop-neutral object database, tag/metadata database,
@@ -195,12 +110,8 @@ and search all types of files and other first class objects.
 %package -n tracker-devel
 Summary:        Development files for the Tracker indexer
 Group:          Development/Libraries/GNOME
-Requires:       libtracker-control-%{RPMTrackerAPI}-0 = %{version}
-Requires:       libtracker-miner-%{RPMTrackerAPI}-0 = %{version}
 Requires:       libtracker-sparql-%{RPMTrackerAPI}-0 = %{version}
 Requires:       typelib-1_0-Tracker-%{RPMTrackerAPI} = %{version}
-Requires:       typelib-1_0-TrackerControl-%{RPMTrackerAPI} = %{version}
-Requires:       typelib-1_0-TrackerMiner-%{RPMTrackerAPI} = %{version}
 
 %description -n tracker-devel
 Tracker is a desktop-neutral object database, tag/metadata database,
@@ -219,69 +130,47 @@ translation-update-upstream po %{name}
 	-Ddocs=true \
 	-Dfunctional_tests=false \
 	-Dstemmer=disabled \
-	-Dsystemd_user_services=%{_userunitdir}
 	%{nil}
 %meson_build
 
 %install
 %meson_install
-%find_lang %{name} %{?no_lang_C}
+%find_lang %{name}3 %{?no_lang_C}
 
 # Ensure we have a /usr/share/tracker/icons/ folder, so the
 # tracker-extras build can put icons in there without having to worry
 mkdir -p %{buildroot}%{_datadir}/tracker/icons/
+# Let's package the template directory where consumers can put their ontology files
+mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 
 %fdupes %{buildroot}%{_datadir}/vala/
 %fdupes %{buildroot}%{_datadir}/gtk-doc
-rm -f %{buildroot}%{_libdir}/tracker-%{TrackerAPI}/libtracker-common.a
 
-%ifnarch %arm
-%check
-%meson_test
-%endif
+#ifnarch %arm
+#check
+#meson_test
+#endif
 
-%post -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
-%postun -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
-%post -n libtracker-miner-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
-%postun -n libtracker-miner-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
 %post -n libtracker-sparql-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
 %postun -n libtracker-sparql-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
 
 %files
 %license COPYING
-%{_sysconfdir}/xdg/autostart/tracker-store.desktop
-%{_bindir}/tracker
-%{_libexecdir}/tracker-store
-%{_userunitdir}/tracker-store.service
+%{_bindir}/tracker3
 %dir %{_libdir}/tracker-%{TrackerAPI}/
-%{_datadir}/bash-completion/completions/tracker
-%{_datadir}/tracker/
-%{_datadir}/dbus-1/services/org.freedesktop.Tracker1.service
-%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.DB.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.FTS.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.Store.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.gschema.xml
-%{_mandir}/man1/tracker-daemon.1%{ext_man}
-%{_mandir}/man1/tracker-export.1%{ext_man}
-%{_mandir}/man1/tracker-index.1%{ext_man}
-%{_mandir}/man1/tracker-info.1%{ext_man}
-%{_mandir}/man1/tracker-reset.1%{ext_man}
-%{_mandir}/man1/tracker-search.1%{ext_man}
-%{_mandir}/man1/tracker-sparql.1%{ext_man}
-%{_mandir}/man1/tracker-sql.1%{ext_man}
-%{_mandir}/man1/tracker-status.1%{ext_man}
-%{_mandir}/man1/tracker-store.1%{ext_man}
-%{_mandir}/man1/tracker-tag.1%{ext_man}
-
-%files -n libtracker-common-%{RPMTrackerAPI}
-%{_libdir}/tracker-%{TrackerAPI}/libtracker-data.so
-%{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.enums.xml
-
-%files -n libtracker-control-%{RPMTrackerAPI}-0
-%{_libdir}/libtracker-control*.so.*
-
-%files -n libtracker-miner-%{RPMTrackerAPI}-0
-%{_libdir}/libtracker-miner*.so.*
+%{_datadir}/bash-completion/completions/tracker3
+%{_datadir}/tracker3/
+%dir %{_datadir}/tracker3/domain-ontologies
+%{_libexecdir}/tracker3/
+%{_libexecdir}/tracker-xdg-portal-3
+%{_mandir}/man1/tracker3-endpoint.1.gz
+%{_mandir}/man1/tracker3-export.1.gz
+%{_mandir}/man1/tracker3-import.1.gz
+%{_mandir}/man1/tracker3-sparql.1.gz
+%{_mandir}/man1/tracker3-sql.1.gz
+%{_mandir}/man1/tracker-xdg-portal-3.1.gz
+%{_datadir}/dbus-1/services/org.freedesktop.portal.Tracker.service
+%{_userunitdir}/tracker-xdg-portal-3.service
 
 %files -n libtracker-sparql-%{RPMTrackerAPI}-0
 %{_libdir}/libtracker-sparql*.so.*
@@ -289,30 +178,23 @@ rm -f %{buildroot}%{_libdir}/tracker-%{TrackerAPI}/libtracker-common.a
 %files -n typelib-1_0-Tracker-%{RPMTrackerAPI}
 %{_libdir}/girepository-1.0/Tracker-%{TrackerAPI}.typelib
 
-%files -n typelib-1_0-TrackerControl-%{RPMTrackerAPI}
-%{_libdir}/girepository-1.0/TrackerControl-%{TrackerAPI}.typelib
-
-%files -n typelib-1_0-TrackerMiner-%{RPMTrackerAPI}
-%{_libdir}/girepository-1.0/TrackerMiner-%{TrackerAPI}.typelib
-
 %files -n tracker-devel
 %doc AUTHORS README.md NEWS
-%{_libdir}/lib*.so
-%{_libdir}/tracker-%{TrackerAPI}/trackertestutils
-%{_includedir}/tracker-%{TrackerAPI}/
-%{_libdir}/pkgconfig/tracker-control-%{TrackerAPI}.pc
-%{_libdir}/pkgconfig/tracker-miner-%{TrackerAPI}.pc
-%{_libdir}/pkgconfig/tracker-sparql-%{TrackerAPI}.pc
 %{_datadir}/gir-1.0/*.gir
-%{_datadir}/gtk-doc/html/libtracker-miner/
-%{_datadir}/gtk-doc/html/libtracker-control/
-%{_datadir}/gtk-doc/html/ontology/
-%{_datadir}/gtk-doc/html/libtracker-sparql/
+%{_datadir}/gtk-doc/html/libtracker-sparql-3/
+%{_datadir}/gtk-doc/html/ontology-3/
+%dir %{_datadir}/tracker3
+%dir %{_datadir}/tracker3/domain-ontologies
 %dir %{_datadir}/vala
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/*.deps
 %{_datadir}/vala/vapi/*.vapi
+%{_includedir}/tracker-%{TrackerAPI}/
+%{_libdir}/lib*.so
+%{_libdir}/pkgconfig/tracker-sparql-%{TrackerAPI}.pc
+%{_libdir}/pkgconfig/tracker-testutils-%{TrackerAPI}.pc
+%{_libdir}/tracker-%{TrackerAPI}/trackertestutils
 
-%files lang -f %{name}.lang
+%files lang -f %{name}3.lang
 
 %changelog

@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="localonly">
     <param name="scm">git</param>
     <param name="url">https://github.com/opensuse/dracut.git</param>
-    <param name="revision">SUSE/050</param>
+    <param name="revision">SUSE/master</param>
     <param name="versionformat">@PARENT_TAG@+suse.@TAG_OFFSET@.g%h</param>
     <param name="extract">suse/dracut.spec</param>
     <param name="extract">suse/README.susemaint</param>

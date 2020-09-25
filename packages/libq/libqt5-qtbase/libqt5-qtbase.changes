@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 21 09:55:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Revert commit to fix screen geometry on startup (boo#1176750, QTBUG-86604):
+  * 0001-Revert-Emit-QScreen-availableG-g-eometryChanged-on-l.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 07:57:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.1:

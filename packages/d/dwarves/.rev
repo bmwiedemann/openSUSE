@@ -166,4 +166,15 @@
     <comment></comment>
     <requestid>831414</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>b203e8641be41ec2395fa9365bab074d</srcmd5>
+    <version>1.17</version>
+    <time>1601043834</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport fixes for segfault when processing dwz-ed kernel
+  [bsc#1176095,https://github.com/acmel/dwarves/issues/10].
+  * dwarves-dwarf_loader-Bail-out-at-DW_TAG_imported_unit-tags.patch
+  * dwarves-dwarf_loader-Ignore-entries-in-a-DW_TAG_partial_unit-for-now.patch</comment>
+    <requestid>835930</requestid>
+  </revision>
 </revisionlist>

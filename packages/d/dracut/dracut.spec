@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        050+suse.75.g266a76d9
+Version:        050+suse.226.gb86d9bcf
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -246,7 +246,6 @@ fi
 
 %{dracutlibdir}/modules.d/00mksh
 %{dracutlibdir}/modules.d/02caps
-%{dracutlibdir}/modules.d/90stratis
 %{dracutlibdir}/modules.d/00dash
 %{dracutlibdir}/modules.d/05busybox
 %{dracutlibdir}/modules.d/50gensplash
@@ -324,6 +323,7 @@ fi
 %{dracutlibdir}/modules.d/03modsign
 %{dracutlibdir}/modules.d/03rescue
 %{dracutlibdir}/modules.d/04watchdog
+%{dracutlibdir}/modules.d/04watchdog-modules
 %{dracutlibdir}/modules.d/06rngd
 %{dracutlibdir}/modules.d/10i18n
 %{dracutlibdir}/modules.d/30convertfs
@@ -368,6 +368,7 @@ fi
 %{dracutlibdir}/modules.d/95lunmask
 %{dracutlibdir}/modules.d/95nbd
 %{dracutlibdir}/modules.d/95nfs
+%{dracutlibdir}/modules.d/95nvmf
 %{dracutlibdir}/modules.d/95qeth_rules
 %{dracutlibdir}/modules.d/95resume
 %{dracutlibdir}/modules.d/95rootfs-block
@@ -386,12 +387,12 @@ fi
 %{dracutlibdir}/modules.d/99base
 %{dracutlibdir}/modules.d/99fs-lib
 %{dracutlibdir}/modules.d/99img-lib
+%{dracutlibdir}/modules.d/99memstrack
 %{dracutlibdir}/modules.d/99shutdown
 %{dracutlibdir}/modules.d/99squash
 %{dracutlibdir}/modules.d/99suse
 %{dracutlibdir}/modules.d/99suse-initrd
 %{dracutlibdir}/modules.d/99uefi-lib
-
 %config(noreplace) %{_sysconfdir}/logrotate.d/dracut
 %attr(0640,root,root) %ghost %config(missingok,noreplace) %{_localstatedir}/log/dracut.log
 %dir %{_unitdir}/initrd.target.wants

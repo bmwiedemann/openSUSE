@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 24 19:46:00 UTC 2020 - besser82@fedoraproject.org
+
+- Fixes for gensalt handling with libxcrypt (bsc#1176924)
+- 4.3.4
+
+-------------------------------------------------------------------
+Wed Sep 23 12:00:57 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Improve logger to log also method name in ruby (useful for any
+  debug like bsc#1144351)
+- 4.3.3
+
+-------------------------------------------------------------------
 Wed Aug 12 12:33:13 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fixed yast-ycp-ui-bindings dependency (bsc#1175115)

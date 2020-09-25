@@ -17,7 +17,7 @@
 
 
 Name:           perl-libwww-perl
-Version:        6.47
+Version:        6.49
 Release:        0
 %define cpan_name libwww-perl
 Summary:        The World-Wide Web library for Perl
@@ -42,7 +42,7 @@ BuildRequires:  perl(HTTP::Negotiate) >= 6
 BuildRequires:  perl(HTTP::Request) >= 6
 BuildRequires:  perl(HTTP::Request::Common) >= 6
 BuildRequires:  perl(HTTP::Response) >= 6
-BuildRequires:  perl(HTTP::Status) >= 6
+BuildRequires:  perl(HTTP::Status) >= 6.07
 BuildRequires:  perl(LWP::MediaTypes) >= 6
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Net::HTTP) >= 6.18
@@ -64,7 +64,7 @@ Requires:       perl(HTTP::Negotiate) >= 6
 Requires:       perl(HTTP::Request) >= 6
 Requires:       perl(HTTP::Request::Common) >= 6
 Requires:       perl(HTTP::Response) >= 6
-Requires:       perl(HTTP::Status) >= 6
+Requires:       perl(HTTP::Status) >= 6.07
 Requires:       perl(LWP::MediaTypes) >= 6
 Requires:       perl(Net::HTTP) >= 6.18
 Requires:       perl(Try::Tiny)

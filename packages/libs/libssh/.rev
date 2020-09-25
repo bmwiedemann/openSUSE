@@ -633,4 +633,23 @@ ProxyCommand parsing in ssh configuration files:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>794523</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>2eeeeea9c0b58a78bc0b7fcfbc2134d8</srcmd5>
+    <version>0.9.5</version>
+    <time>1601043832</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BR for openssh needed for tests
+- update to 0.9.5 (bsc#1174713, CVE-2020-16135):
+  * CVE-2020-16135: Avoid null pointer dereference in sftpserver (T232)
+  * Improve handling of library initialization (T222)
+  * Fix parsing of subsecond times in SFTP (T219)
+  * Make the documentation reproducible
+  * Remove deprecated API usage in OpenSSL
+  * Fix regression of ssh_channel_poll_timeout() returning SSH_AGAIN
+  * Define version in one place (T226)
+  * Prevent invalid free when using different C runtimes than OpenSSL (T229)
+  * Compatibility improvements to testsuite 
+</comment>
+    <requestid>835910</requestid>
+  </revision>
 </revisionlist>

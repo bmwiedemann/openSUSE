@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Sep  9 07:34:11 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.99.5:
+  + Fix DBus logging in tracker-sandbox test helper.
+  + Removed programming terms from English stop word list.
+  + Handle empty input correctly.
+  + Fix possible database locks when using "tracker3 sql" on a
+    running database.
+  + Fixes for SERVICE clauses in UNIONs.
+  + Handle empty group graph patterns as per the spec.
+  + Fixes to property paths being used in different graphs.
+  + Release memory on inactivity.
+  + Fix build/linking with 2.x in the system.
+  + Add "tracker3 export --2to3" helper for data migrations.
+  + Hide FTS5 search syntax from fts:match.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  7 07:51:33 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.99.4:
+  + CLI modernization:
+    - integration with pager.
+    - bash completion for endpoints.
+  + Use curly quotes consistently in CLI options.
+  + SPARQL parsing fixes.
+  + Multiple fixes around 'VALUES' SPARQL syntax.
+  + Fix race conditions around graph creation.
+  + Better use of asserts in tests.
+- Changes from version 2.99.3:
+  + Add portal.
+  + Use WAL on all database connections.
+  + Fix race conditions in reusable statements.
+  + Documentation fixes and improvements.
+  + Better errors from library function calls.
+  + Test fixes.
+  + CI improvements.
+- Changes from version 2.99.2:
+  + Dropped priority argument from
+    tracker_sparql_connection_update*().
+  + Better parser error messages.
+  + SPARQL correctness fixes.
+  + Fixes to tracker_sparql_cursor_is_bound() checks.
+  + Ontology clean ups and sync ups with Nepomuk.
+  + Fixed lifetime of blank node labels.
+  + Fixes to recursive property paths.
+  + Ensure property functions pick non NULL values.
+  + Several fixes merge SERVICE{} data with the local graph
+    pattern.
+  + Add `tracker export --show-graphs` CLI subcommand to show
+    available graphs.
+  + Parameter bindings within SERVICE{} clauses are now allowed.
+  + Fixes to single/double quote escaping.
+  + Fixes to make tracker-sandbox more usable in tests.
+  + Many cleanups, memory leak and performance fixes.
+- Changes from version 2.99.1:
+  + Highlighted updates compared to 2.x:
+    - A full implementation of SPARQL 1.1/
+    - A change of paradigm. There is no central store, services are
+      free to create their own, and to make those an endpoint for
+      public access. Applications may syndicate queries across
+      external endpoints through the SERVICE syntax.
+    - No tracker-store.
+    - No libtracker-miner.
+    - No libtracker-control.
+  + API changes:
+    - Explicit API to create a local store, or proxy a DBus/remote
+      one.
+    - TrackerEndpoint proxies local stores out of process.
+    - separate python library to write tests.
+  + A base and reference ontologies of our own:
+     - Officially it's no longer Nepomuk.
+     - No more broken links.
+  + An extensible CLI tool, with a generic set of core subcommands.
+  + Parallel installable to tracker 2.x.
+- Bump TrackerAPI to 3.0 and RPMTrackerAPI to 3_0.
+- Drop tracker-ontology-upgrades.patch: fixed upstream.
+- Drop pkgconfig(libnm) BuildRequires: no longer needed.
+- Add pkgconfig(systemd) buildRequires: explicitly checked for and
+  used to be pulled in by libnm.
+- No longer pass -Dsystemd_user_services=%{_userunitdir} to meson:
+  not needed anymore.
+- Disable test suite for now: need to workout to run it without X.
+- Drop subpackages that no longer exist due to upstream changes and
+  remove their dependency from the -devel package:
+  + libtracker-control-%{RPMTrackerAPI}-0
+  + libtracker-miner-%{RPMTrackerAPI}-0
+  + typelib-1_0-TrackerControl-%{RPMTrackerAPI}
+  + typelib-1_0-TrackerMiner-%{RPMTrackerAPI}
+
+-------------------------------------------------------------------
 Tue Aug 25 16:13:22 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.3.5:

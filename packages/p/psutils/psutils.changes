@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 22 08:11:01 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- The previous update makes trhe patches
+  * psutils-flip.dif (is part of upstream now)
+  * psutils-p17.dif (does not apply due move from C to perl)
+  * psutils-pserror.dif (does not apply due move from C to perl)
+  obsolete
+
+-------------------------------------------------------------------
+Thu Sep 17 11:47:24 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v2.03 (no changelog) 
+
+-------------------------------------------------------------------
 Fri Apr  5 13:47:10 UTC 2013 - idonmez@suse.com
 
 - Cleanup spec file

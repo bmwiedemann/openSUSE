@@ -108,4 +108,18 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>47cfa7909b299e84a119909fa445ff6d</srcmd5>
+    <version>2.03</version>
+    <time>1601043860</time>
+    <user>dimstar_suse</user>
+    <comment>- The previous update makes trhe patches
+  * psutils-flip.dif (is part of upstream now)
+  * psutils-p17.dif (does not apply due move from C to perl)
+  * psutils-pserror.dif (does not apply due move from C to perl)
+  obsolete
+
+- Update to v2.03 (no changelog)</comment>
+    <requestid>836008</requestid>
+  </revision>
 </revisionlist>

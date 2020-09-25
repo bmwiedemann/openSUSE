@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 21 18:48:25 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Backport fixes for segfault when processing dwz-ed kernel
+  [bsc#1176095,https://github.com/acmel/dwarves/issues/10].
+  * dwarves-dwarf_loader-Bail-out-at-DW_TAG_imported_unit-tags.patch
+  * dwarves-dwarf_loader-Ignore-entries-in-a-DW_TAG_partial_unit-for-now.patch
+
+-------------------------------------------------------------------
 Wed Sep  2 08:39:24 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - add libbpf-Fix-libbpf-hashmap-on-I-LP32-architectures.patch
