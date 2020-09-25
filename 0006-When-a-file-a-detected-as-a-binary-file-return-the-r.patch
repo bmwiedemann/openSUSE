@@ -1,0 +1,219 @@
+From 3f65d123faa3a1fcd0b93921e5d42fe659b79fa7 Mon Sep 17 00:00:00 2001
+From: Pierre-Yves Chibon <pingou@pingoured.fr>
+Date: Wed, 12 Aug 2020 21:33:07 +0200
+Subject: [PATCH 6/9] When a file a detected as a binary file, return the raw
+ file
+
+Basically, with the code until now, if an user was trying to view
+a binary file in the UI, it was then prompted to download the file
+(as pagure doesn't know how to display binary file), but the file
+the users were downloading wasn't the raw file but rather the html
+page that would contain the file.
+Not ideal.
+
+So with this commit we're now just saying: if the file is binary and
+we can't render it, just return the raw file to the user and let
+them deal with it.
+
+Fixes https://pagure.io/pagure/issue/4907
+
+Signed-off-by: Pierre-Yves Chibon <pingou@pingoured.fr>
+---
+ pagure/ui/repo.py                            |  8 +++-
+ tests/test_pagure_flask_ui_fork.py           | 18 ++-------
+ tests/test_pagure_flask_ui_repo.py           | 25 ++++---------
+ tests/test_pagure_flask_ui_repo_view_file.py | 39 +++++++++-----------
+ 4 files changed, 35 insertions(+), 55 deletions(-)
+
+diff --git a/pagure/ui/repo.py b/pagure/ui/repo.py
+index b6aacc8e..06afb71d 100644
+--- a/pagure/ui/repo.py
++++ b/pagure/ui/repo.py
+@@ -639,7 +639,13 @@ def view_file(repo, identifier, filename, username=None, namespace=None):
+         output_type = "tree"
+ 
+     if output_type == "binary":
+-        headers[str("Content-Disposition")] = "attachment"
++        return view_raw_file(
++            repo,
++            identifier,
++            filename=filename,
++            username=username,
++            namespace=namespace,
++        )
+ 
+     return flask.Response(
+         flask.stream_with_context(
+diff --git a/tests/test_pagure_flask_ui_fork.py b/tests/test_pagure_flask_ui_fork.py
+index 8e8dce1c..1bff134f 100644
+--- a/tests/test_pagure_flask_ui_fork.py
++++ b/tests/test_pagure_flask_ui_fork.py
+@@ -4676,10 +4676,7 @@ More information</textarea>
+             # Check fork-edit doesn't show for binary files
+             output = self.app.get("/test/blob/master/f/test.jpg")
+             self.assertEqual(output.status_code, 200)
+-            self.assertNotIn(
+-                "Fork and Edit\n                    </button>\n",
+-                output.get_data(as_text=True),
+-            )
++            self.assertNotIn(b"<html", output.data)
+ 
+             # Check for edit panel
+             output = self.app.post(
+@@ -4737,8 +4734,7 @@ More information</textarea>
+             )
+             self.assertEqual(output.status_code, 400)
+             self.assertIn(
+-                "<p>Cannot edit binary files</p>",
+-                output.get_data(as_text=True),
++                b"<p>Cannot edit binary files</p>", output.data,
+             )
+ 
+         # Check fork-edit shows when user is not logged in
+@@ -4764,10 +4760,7 @@ More information</textarea>
+             # Check fork-edit doesn't show for binary
+             output = self.app.get("/test/blob/master/f/test.jpg")
+             self.assertEqual(output.status_code, 200)
+-            self.assertNotIn(
+-                "Edit in your fork\n                    </button>\n",
+-                output.get_data(as_text=True),
+-            )
++            self.assertNotIn(b"<html", output.data)
+ 
+     @patch("pagure.lib.notify.send_email", MagicMock(return_value=True))
+     def test_fork_edit_file_namespace(self):
+@@ -4865,10 +4858,7 @@ More information</textarea>
+                 "/somenamespace/test3/blob/master/f/test.jpg"
+             )
+             self.assertEqual(output.status_code, 200)
+-            self.assertNotIn(
+-                "Fork and Edit\n                    </button>\n",
+-                output.get_data(as_text=True),
+-            )
++            self.assertNotIn(b"<html", output.data)
+ 
+             # Check for edit panel
+             output = self.app.post(
+diff --git a/tests/test_pagure_flask_ui_repo.py b/tests/test_pagure_flask_ui_repo.py
+index 27bf6e65..b4322e7d 100644
+--- a/tests/test_pagure_flask_ui_repo.py
++++ b/tests/test_pagure_flask_ui_repo.py
+@@ -2592,12 +2592,7 @@ class PagureFlaskRepotests(tests.Modeltests):
+         # View what's supposed to be an image
+         output = self.app.get("/test/blob/master/f/test.jpg")
+         self.assertEqual(output.status_code, 200)
+-        output_text = output.get_data(as_text=True)
+-        self.assertIn("Binary files cannot be rendered.<br/>", output_text)
+-        self.assertIn(
+-            '<a href="/test/raw/master/f/test.jpg">view the raw version',
+-            output_text,
+-        )
++        self.assertNotIn(b"<html", output.data)
+ 
+         # View by commit id
+         repo = pygit2.Repository(os.path.join(self.path, "repos", "test.git"))
+@@ -2605,23 +2600,17 @@ class PagureFlaskRepotests(tests.Modeltests):
+ 
+         output = self.app.get("/test/blob/%s/f/test.jpg" % commit.oid.hex)
+         self.assertEqual(output.status_code, 200)
+-        output_text = output.get_data(as_text=True)
+-        self.assertIn("Binary files cannot be rendered.<br/>", output_text)
+-        self.assertIn('/f/test.jpg">view the raw version', output_text)
++        self.assertNotIn(b"<html", output.data)
+ 
+         # View by image name -- somehow we support this
+-        output = self.app.get("/test/blob/sources/f/test.jpg")
++        output = self.app.get("/test/blob/master/f/test.jpg")
+         self.assertEqual(output.status_code, 200)
+-        output_text = output.get_data(as_text=True)
+-        self.assertIn("Binary files cannot be rendered.<br/>", output_text)
+-        self.assertIn('/f/test.jpg">view the raw version', output_text)
++        self.assertNotIn(b"<html", output.data)
+ 
+         # View binary file
+-        output = self.app.get("/test/blob/sources/f/test_binary")
++        output = self.app.get("/test/blob/master/f/test_binary")
+         self.assertEqual(output.status_code, 200)
+-        output_text = output.get_data(as_text=True)
+-        self.assertIn('/f/test_binary">view the raw version', output_text)
+-        self.assertIn("Binary files cannot be rendered.<br/>", output_text)
++        self.assertNotIn(b"<html", output.data)
+ 
+         # View folder
+         output = self.app.get("/test/blob/master/f/folder1")
+@@ -2748,7 +2737,7 @@ class PagureFlaskRepotests(tests.Modeltests):
+         output = self.app.get("/test/blob/master/f/sources")
+         self.assertEqual(output.status_code, 200)
+         output_text = output.get_data(as_text=True)
+-        self.assertIn("Binary files cannot be rendered.<br/>", output_text)
++        self.assertEqual("foo\n bar", output_text)
+ 
+     def test_view_raw_file(self):
+         """ Test the view_raw_file endpoint. """
+diff --git a/tests/test_pagure_flask_ui_repo_view_file.py b/tests/test_pagure_flask_ui_repo_view_file.py
+index 16a1ce18..effa06b6 100644
+--- a/tests/test_pagure_flask_ui_repo_view_file.py
++++ b/tests/test_pagure_flask_ui_repo_view_file.py
+@@ -135,12 +135,7 @@ class PagureFlaskRepoViewFiletests(LocalBasetests):
+         # View what's supposed to be an image
+         output = self.app.get("/test/blob/master/f/test.jpg")
+         self.assertEqual(output.status_code, 200)
+-        output_text = output.get_data(as_text=True)
+-        self.assertIn("Binary files cannot be rendered.<br/>", output_text)
+-        self.assertIn(
+-            '<a href="/test/raw/master/f/test.jpg">view the raw version',
+-            output_text,
+-        )
++        self.assertNotIn(b"<html", output.data)
+ 
+     def test_view_file_by_commit(self):
+         """ Test the view_file in a specific commit. """
+@@ -151,29 +146,29 @@ class PagureFlaskRepoViewFiletests(LocalBasetests):
+ 
+         output = self.app.get("/test/blob/%s/f/test.jpg" % commit.oid.hex)
+         self.assertEqual(output.status_code, 200)
+-        output_text = output.get_data(as_text=True)
+-        self.assertIn("Binary files cannot be rendered.<br/>", output_text)
+-        self.assertIn('/f/test.jpg">view the raw version', output_text)
++        self.assertNotIn(b"<html", output.data)
+ 
+-    def test_view_file_by_name(self):
++    def test_view_file_invalid_branch(self):
+         """ Test the view_file via a image name. """
+-
+-        # View by image name -- somehow we support this
+         output = self.app.get("/test/blob/sources/f/test.jpg")
+-        self.assertEqual(output.status_code, 200)
+-        output_text = output.get_data(as_text=True)
+-        self.assertIn("Binary files cannot be rendered.<br/>", output_text)
+-        self.assertIn('/f/test.jpg">view the raw version', output_text)
++        self.assertEqual(output.status_code, 404)
+ 
+-    def test_view_file_binary_file2(self):
++    def test_view_file_invalid_branch2(self):
+         """ Test the view_file with a binary file (2). """
+-
+-        # View binary file
+         output = self.app.get("/test/blob/sources/f/test_binary")
++        self.assertEqual(output.status_code, 404)
++
++    def test_view_file_invalid_branch(self):
++        """ Test the view_file via a image name. """
++        output = self.app.get("/test/blob/master/f/test.jpg")
+         self.assertEqual(output.status_code, 200)
+-        output_text = output.get_data(as_text=True)
+-        self.assertIn('/f/test_binary">view the raw version', output_text)
+-        self.assertTrue("Binary files cannot be rendered.<br/>" in output_text)
++        self.assertNotIn(b"<html", output.data)
++
++    def test_view_file_invalid_branch2(self):
++        """ Test the view_file with a binary file (2). """
++        output = self.app.get("/test/blob/master/f/test_binary")
++        self.assertEqual(output.status_code, 200)
++        self.assertNotIn(b"<html", output.data)
+ 
+     def test_view_file_for_folder(self):
+         """ Test the view_file with a folder. """
+-- 
+2.26.2
+

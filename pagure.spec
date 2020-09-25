@@ -41,6 +41,18 @@ Source1:            https://raw.githubusercontent.com/fedora-infra/python-fedora
 Source10:           pagure-README.SUSE
 
 
+# Backports from upstream
+Patch0001:          0001-Display-real-line-numbers-on-pull-request-s-diff-vie.patch
+Patch0002:          0002-Show-the-assignee-s-avatar-on-the-board.patch
+Patch0003:          0003-Allow-setting-a-status-as-closing-even-if-the-projec.patch
+Patch0004:          0004-Include-the-assignee-in-the-list-of-people-notified-.patch
+Patch0005:          0005-Introduce-the-collaborator_project_groups-mapping.patch
+Patch0006:          0006-When-a-file-a-detected-as-a-binary-file-return-the-r.patch
+Patch0007:          0007-Remove-fenced-code-block-when-checking-mention.patch
+Patch0008:          0008-Add-support-for-using-cchardet-to-detect-files-encod.patch
+Patch0009:          0009-Add-support-for-disabling-user-registration.patch
+
+
 # SUSE-specific fixes
 ## Change the defaults in the example config to match packaging
 Patch1000:          pagure-5.0-default-example-cfg.patch
@@ -122,6 +134,9 @@ Requires:           python3-dbm
 Requires:           python3-kitchen
 Requires:           python3-requests
 
+# We want to use cchardet whenever it's available
+Recommends:         python3-cchardet
+
 # If using PostgreSQL, the correct driver should be installed
 Recommends:         (python3-psycopg2 if postgresql-server)
 
@@ -137,7 +152,7 @@ Recommends:         (%{name}-web-nginx if nginx)
 # The default theme is required
 Requires:           %{name}-theme-default
 
-%{?systemd_requires}
+%{?systemd_ordering}
 
 # We use the git tools for some actions due to deficiencies in libgit2 and pygit2
 Requires:           git-core

@@ -1,0 +1,86 @@
+From e921f23f8135d3e6667d532e06504f520b8c0109 Mon Sep 17 00:00:00 2001
+From: Michael Scherer <misc@redhat.com>
+Date: Thu, 3 Sep 2020 16:44:20 +0200
+Subject: [PATCH 7/9] Remove fenced code block when checking mention
+
+Fix bug #4978
+
+We have to remove code using the '~~~~' markup since
+this result in incorrect trigger, especially on private
+ticket.
+---
+ pagure/lib/notify.py            |  6 +++++-
+ tests/test_pagure_lib_notify.py | 26 ++++++++++++++++++++++++++
+ 2 files changed, 31 insertions(+), 1 deletion(-)
+
+diff --git a/pagure/lib/notify.py b/pagure/lib/notify.py
+index 0c124db9..02c277c0 100644
+--- a/pagure/lib/notify.py
++++ b/pagure/lib/notify.py
+@@ -35,6 +35,7 @@ import pagure.lib.query
+ import pagure.lib.tasks_services
+ from pagure.config import config as pagure_config
+ from pagure.pfmarkdown import MENTION_RE
++from markdown.extensions.fenced_code import FencedBlockPreprocessor
+ 
+ 
+ _log = logging.getLogger(__name__)
+@@ -234,7 +235,10 @@ def _add_mentioned_users(emails, comment):
+     """ Check the comment to see if an user is mentioned in it and if
+     so add this user to the list of people to notify.
+     """
+-    for username in re.findall(MENTION_RE, comment):
++    filtered_comment = re.sub(
++        FencedBlockPreprocessor.FENCED_BLOCK_RE, "", comment
++    )
++    for username in re.findall(MENTION_RE, filtered_comment):
+         user = pagure.lib.query.search_user(flask.g.session, username=username)
+         if user:
+             emails.add(user.default_email)
+diff --git a/tests/test_pagure_lib_notify.py b/tests/test_pagure_lib_notify.py
+index 8d31cb70..78af57af 100644
+--- a/tests/test_pagure_lib_notify.py
++++ b/tests/test_pagure_lib_notify.py
+@@ -25,6 +25,7 @@ import pagure.lib.model
+ import pagure.lib.notify
+ import pagure.lib.query
+ import tests
++import munch
+ 
+ 
+ class PagureLibNotifytests(tests.Modeltests):
+@@ -543,6 +544,31 @@ RW1haWwgY29udGVudA==
+ """
+         self.assertEqual(email.as_string(), exp)
+ 
++    def test_notification_mention(self):
++        g = munch.Munch()
++        g.session = self.session
++        with patch("flask.g", g):
++
++            def _check_mention(comment, exp):
++                emails = set([])
++                emails = pagure.lib.notify._add_mentioned_users(
++                    emails, comment
++                )
++
++                self.assertEqual(emails, exp)
++
++            exp = set(["bar@pingou.com"])
++            comment = "I think we should ask @pingou how to pronounce pagure"
++            _check_mention(comment, exp)
++
++            exp = set([])
++            comment = """Let me quote him:
++~~~~
++ @pingou> Pagure is pronounced 'pa-gure', not 'pagu-re'
++~~~~
++"""
++            _check_mention(comment, exp)
++
+ 
+ if __name__ == "__main__":
+     unittest.main(verbosity=2)
+-- 
+2.26.2
+
