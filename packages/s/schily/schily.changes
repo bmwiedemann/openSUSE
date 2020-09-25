@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 23 09:38:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.09.22
+  * SCCS: delta now supports to handle nul bytes in the
+    diff(1) output.
+  * SCCS: delta now supports nul bytes in the new version of the
+    input file if processing SCCSv6 history files.
+  * SCCS: delta now by default uses `fsdiff` instead of `bdiff`.
+  * SCCS: delta, if called as `delta -d ...`, now calls diff(1)
+    with the option -a.
+
+-------------------------------------------------------------------
 Sat Sep  5 12:53:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.09.04
