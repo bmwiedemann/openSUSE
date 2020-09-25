@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 15 07:39:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.0.0
+  See: https://github.com/EttusResearch/uhd/releases for all changes
+- Use github source URLs
+- Fix URL
+- Switch to python3
+- Disable tests for now since compilation of the test programs fail
+  with recent comilers / boost versions.
+- Remove not longer needed patches:
+  * fix-for-armv6l-armv7l-build-failure.patch
+  * uhd-fix-for-boost-1_66.patch
+  * uhd-fix-for-boost-1_67.patch
+
+-------------------------------------------------------------------
 Mon Feb  3 16:44:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: allow OBS to
