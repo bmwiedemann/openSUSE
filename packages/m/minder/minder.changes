@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Aug 28 23:09:09 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.10.0:
+  * Working around layout issues when importing
+    Freemind/Freeplane with folded nodes.
+  * Merge pull request #205 from Fatih20/icon-redesign
+  * Icon Tweaks
+  * Fixing node link issue in Freemind/Freeplane formats.
+  * Fixing parsing support for some Freemind/Freeplane formats.
+  * Fixing application crash when node is deleted or cut.
+  * Fixing issue with being able to identify folded node based on
+    x,y coordinates.
+  * Updating README.
+  * Updating version.
+  * Updating screenshots.
+  * Updating application description.
+  * Merge branch 'devel'
+  * Merge branch 'mouse_shortcuts' into devel
+  * Adding mouse events.
+  * Checkpointing work on mouse event shortcuts.
+  * Merge branch 'group_undo' into devel
+  * Adding undo/redo group support to cut methods.
+  * Fixing undo/redo issue with node groups.
+  * Checkpointing group undo work
+  * Fixing issue with attempting to export an SVG image to XMind.
+  * Fixing image support to XMind export/import.
+  * XMind export enhancements.
+  * Merge branch 'conn_edit_title' into devel
+  * Fixing various critical errors in regards to editing
+    connections.
+  * Finishing support for edit connection title on creation
+    option.
+  * Fixing group drawing when nodes are folded.
+  * Fixing issue with making node visible when it it folded and a
+    node link to it is clicked.
+  * Fixing critical error when double-clicking an empty
+    connection title
+  * Changing connection to allow sticker to be dropped even when
+    title does not exist.
+  * Adding support for panning with middle mouse button.
+  * Adding keyboard shortcut for 'Zoom to Fit'.
+  * Attempting to fix compile issues with newer valac compilers.
+  * Merge branch 'devel' of github.com:phase1geo/Minder into
+    devel
+  * Fixing issues around opening/saving documents
+  * adding create group
+  * ...
+
+-------------------------------------------------------------------
 Thu Aug 13 19:00:52 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.9.2:
