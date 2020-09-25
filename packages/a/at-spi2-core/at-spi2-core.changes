@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 12 20:36:30 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.36.1:
+  + meson: De-duplicate deps of 'Requires' in pkgconfig file
+  + Make at-spi-dbus-bus.desktop Validat
+  + Fix ucs2keysym line for Euro sign
+  + Fix Qt annotations in DBus xml files
+  + constants: Fix typos in two _COUNT constants
+  + Fix a couple of memory leaks.
+  + Fix use after free when a device listener is destroyed.
+  + Fix use after free when an event listener is destroyed.
+- Run spec-cleaner
+  + Remove rpm groups
+
+-------------------------------------------------------------------
 Sun Mar  8 23:30:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.36.0:

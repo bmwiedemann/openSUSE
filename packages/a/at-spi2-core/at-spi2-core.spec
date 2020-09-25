@@ -17,15 +17,13 @@
 
 
 Name:           at-spi2-core
-Version:        2.36.0
+Version:        2.36.1
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
-Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
 Source0:        https://download.gnome.org/sources/at-spi2-core/2.36/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.40.1
 BuildRequires:  pkgconfig
@@ -51,7 +49,6 @@ with applications running on the desktop.
 
 %package -n libatspi0
 Summary:        Assistive Technology Service Provider Interface
-Group:          System/Libraries
 
 %description -n libatspi0
 AT-SPI is a general interface for applications to make use of the
@@ -59,7 +56,6 @@ accessibility toolkit. This version is based on dbus.
 
 %package -n typelib-1_0-Atspi-2_0
 Summary:        Introspection bindings for the Assistive Technology Service Provider Interface
-Group:          System/Libraries
 
 %description -n typelib-1_0-Atspi-2_0
 AT-SPI is a general interface for applications to make use of the
@@ -70,7 +66,6 @@ libatspi library.
 
 %package devel
 Summary:        Development files for the Assistive Technology Service Provider Interface
-Group:          Development/Libraries/GNOME
 Requires:       at-spi2-core = %{version}
 Requires:       libatspi0 = %{version}
 Requires:       typelib-1_0-Atspi-2_0 = %{version}

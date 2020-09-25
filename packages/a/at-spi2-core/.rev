@@ -1488,4 +1488,22 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795002 from iznogood)</comment>
     <requestid>795158</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>8b01fa7b240f43164fa828c4bc433cc8</srcmd5>
+    <version>2.36.1</version>
+    <time>1601043872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.36.1:
+  + meson: De-duplicate deps of 'Requires' in pkgconfig file
+  + Make at-spi-dbus-bus.desktop Validat
+  + Fix ucs2keysym line for Euro sign
+  + Fix Qt annotations in DBus xml files
+  + constants: Fix typos in two _COUNT constants
+  + Fix a couple of memory leaks.
+  + Fix use after free when a device listener is destroyed.
+  + Fix use after free when an event listener is destroyed.
+- Run spec-cleaner
+  + Remove rpm groups (forwarded request 834034 from elimat)</comment>
+    <requestid>836027</requestid>
+  </revision>
 </revisionlist>
