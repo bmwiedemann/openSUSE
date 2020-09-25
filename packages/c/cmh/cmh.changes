@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Sep 24 22:35:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.0g87 (53bba6332)
+  * FPLLL 5.x support
+  * Avoid testsuite failure when a 32-bit /usr/bin/gp is used
+- Drop large-stack.patch
+
+-------------------------------------------------------------------
+Mon Sep 21 17:46:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add large-stack.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 10:01:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 1.0g83) for build.opensuse.org

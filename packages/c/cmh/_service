@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://gitlab.inria.fr/cmh/cmh/</param>
+		<param name="revision">53bba6332e8df9d30ed9bb839bd78afe6aa60153</param>
+		<param name="parent-tag">1.0</param>
+		<param name="versionformat">1.0g@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
