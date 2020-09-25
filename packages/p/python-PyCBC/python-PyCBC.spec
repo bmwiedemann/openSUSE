@@ -17,7 +17,7 @@
 
 
 Name:           python-PyCBC
-Version:        1.16.8
+Version:        1.16.9
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
