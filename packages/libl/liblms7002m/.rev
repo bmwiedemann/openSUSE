@@ -7,4 +7,12 @@
     <comment>I want to maintain liblms7002m in Factory</comment>
     <requestid>662718</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c94d2e7b66a66e3d0e71ea4337908cc5</srcmd5>
+    <version>0.0.0+git.20200518</version>
+    <time>1601044300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835805</requestid>
+  </revision>
 </revisionlist>

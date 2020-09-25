@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 20 19:43:40 UTC 2020 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20200518:
+  * Migration to Python 3
+  * add API to enable external ADC input
+
+-------------------------------------------------------------------
 Thu Dec 27 10:02:14 UTC 2018 - mardnh@gmx.de
 
 - Update to version 0.0.0+git.20181227:

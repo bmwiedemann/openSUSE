@@ -1,6 +1,7 @@
 #
 # spec file for package liblms7002m
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,13 +13,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define sover   0
 %define libname liblms7compact%{sover}
 Name:           liblms7002m
-Version:        0.0.0+git.20181227
+Version:        0.0.0+git.20200518
 Release:        0
 Summary:        Compact LMS7002 library suitable for MCU
 License:        LGPL-2.1-only
@@ -28,8 +30,8 @@ URL:            http://xtrx.io
 Source:         %{name}-%{version}.tar.xz
 Patch0:         liblms7002m-shared-library-versioning.patch
 BuildRequires:  cmake
-BuildRequires:  python-Cheetah
-BuildRequires:  python2
+BuildRequires:  python3
+BuildRequires:  python3-Cheetah3
 
 %description
 Compact LMS7002 library suitable for MCU.
