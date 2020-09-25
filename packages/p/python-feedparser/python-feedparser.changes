@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Sep 14 20:10:18 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.0:
+  * Support Python 3.6, 3.7, 3.8 and 3.9
+  * Drop support for Python 2.4 through 2.7, and Python 3.0 through
+    3.5 (#169)
+  * Convert feedparser from a monolithic file to a package
+  * feedparser.parse(sanitize_html=bool) argument replaces the
+    feedparser.SANITIZE_HTML global
+  * feedparser.parse(resolve_relative_uris=bool) replaces the
+    feedparser.RESOLVE_RELATIVE_URIS global
+  * Unify the codebase so that 2to3 conversion is no longer
+    required
+  * Remove references to iconv_codecs
+  * Update the Creative Commons namespace URI's
+  * Update the default User-Agent name and URL
+  * Support Middle European (Summer) Time timezones (#20)
+  * Pass data to lazy_chardet_encoding() (#50)
+  * Document that datetimes are returned in UTC (#51)
+  * Remove cjkpython references in the documentation (#57)
+  * Resolve ResourceWarnings thrown during unit tests (#170)
+  * Fix tox build failures (#213)
+  * Use base64.decodebytes() directly to support Python 3.9 (#201)
+  * Fix Python 3.8 urllib.parse.splittype() deprecation warning
+    (#211)
+  * Support parsing colons in RFC822 timezones (#144)
+  * Add `chardet` as an optional tox environment dependency
+  * Fix the Big5 unit test that fails when chardet is installed
+    (#184)
+- build the package only for python3
+- drop py37.patch: fixed upstream
+- drop non-ascii-entity-hiding.patch: fixed upstream
+- drop catch-gzip-error.patch: fixed upstream
+- fix build requires for chardet and sgmllib3k
+- remove chmod on all source files: fixed upstream
+- drop moving around source files: reworked upstream
+- run the tests as described by upstream
+- fix the list of packaged files
+
+-------------------------------------------------------------------
 Sat Mar 30 22:06:01 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
