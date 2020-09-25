@@ -1,70 +1,55 @@
-Index: asl-current/install.sh
-===================================================================
---- asl-current.orig/install.sh
-+++ asl-current/install.sh
-@@ -10,7 +10,7 @@ BINPATH=${PREFIX}$1
- INCPATH=${PREFIX}$2
- MANPATH=${PREFIX}$3
- LIBPATH=${PREFIX}$4
--DOCPATH=${PREFIX}$5
-+DOCPATH=$5
+diff --git a/Makefile b/Makefile
+index 5744918..65f5ab1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,7 +18,7 @@ binaries: $(ALLTARGETS)
  
- # this is not a perfect solution, but I don't know a better one at the moment:
+ binaries-das: $(DASLTARGET) $(DASMSGTARGETS)
  
-@@ -31,7 +31,6 @@ if [ "${BINPATH}" != "" ]; then
-  chmod 755 ${BINPATH}
-  for i in asl plist alink pbind p2hex p2bin; do
-   echo ${BINPATH}/$i
--  strip $i
-   cp $i ${BINPATH}
-   chmod 755 ${BINPATH}/$i
-  done
-@@ -74,7 +73,7 @@ if [ "${DOCPATH}" != "" ]; then
-  for i in DE EN; do
-   if [ -f doc_$i/as.html ]; then
-     echo ${DOCPATH}/as-$i.doc
--    cp doc_$i/as.doc ${DOCPATH}/as-$i.doc
-+    cp doc_$i/as.doc ${DOCPATH}/as-$i.txt
-   fi
-   echo ${DOCPATH}/as-$i.tex
-   cp doc_$i/as.tex ${DOCPATH}/as-$i.tex
-@@ -96,6 +95,9 @@ if [ "${DOCPATH}" != "" ]; then
-   fi
-   chmod 644 ${DOCPATH}/as-$i.*
-  done
-+ for i in README README.LANGS LICENSE BENCHES TODO ; do
-+  cp $i $5/$i
-+ done
-  cp doc_DE/taborg*.tex ${DOCPATH}
-  chmod 644 ${DOCPATH}/taborg*.tex
-  cp doc_DE/ps*.tex ${DOCPATH}
-Index: asl-current/Makefile
-===================================================================
---- asl-current.orig/Makefile
-+++ asl-current/Makefile
-@@ -10,7 +10,8 @@ include objdefs.unix
+-all: binaries docs
++all: binaries
  
- include makedefs.files
+ include makedefs.src
  
--ALLFLAGS = $(CFLAGS) -D$(CHARSET) -DSTDINCLUDES=\"$(INCDIR)\" -DLIBDIR=\"$(LIBDIR)\"
-+# LDFLAGS = -DLIBDIR=\"$(LIBDIR)\"
-+CPPFLAGS = -D$(CHARSET) -DSTDINCLUDES=\"$(INCDIR)\" -DLIBDIR=\"$(LIBDIR)\"
+@@ -97,9 +97,9 @@ include $(OBJDIR)uumlobjs.dep
+ INCFILES = doc_COM/taborg*.tex doc_COM/tabids*.tex doc_COM/pscpu.tex doc_COM/pscomm.tex doc_COM/biblio.tex
+ 
+ DOC_DE_DIR=doc_DE/
+-include $(DOC_DE_DIR)makedefs.dok
++# include $(DOC_DE_DIR)makedefs.dok
+ DOC_EN_DIR=doc_EN/
+-include $(DOC_EN_DIR)makedefs.dok
++# include $(DOC_EN_DIR)makedefs.dok
  
  #---------------------------------------------------------------------------
- # primary targets
-Index: asl-current/Makefile.def
-===================================================================
+ # Supplementary Targets
+diff --git a/Makefile.def b/Makefile.def
+new file mode 100644
+index 0000000..d7f2b5a
 --- /dev/null
-+++ asl-current/Makefile.def
-@@ -0,0 +1,25 @@
++++ b/Makefile.def
+@@ -0,0 +1,31 @@
 +# -------------------------------------------------------------------------
 +# choose your compiler (must be ANSI-compliant!) and linker command, plus
 +# any additionally needed flags
 +
++OBJDIR =
 +CC = gcc
-+LD = gcc
 +CFLAGS = -O2 -Wall
++HOST_OBJEXTENSION = .o
++LD = $(CC)
 +LDFLAGS =
++HOST_EXEXTENSION =
++
++# no cross build
++
++TARG_OBJDIR = $(OBJDIR)
++TARG_CC = $(CC)
++TARG_CFLAGS = $(CFLAGS)
++TARG_OBJEXTENSION = $(HOST_OBJEXTENSION)
++TARG_LD = $(LD)
++TARG_LDFLAGS = $(LDFLAGS)
++TARG_EXEXTENSION = $(HOST_EXEXTENSION)
 +
 +# -------------------------------------------------------------------------
 +# directories where binaries, includes, and manpages should go during
@@ -75,18 +60,42 @@ Index: asl-current/Makefile.def
 +MANDIR = /usr/share/man
 +LIBDIR = /usr/lib/asl
 +DOCDIR = doc
-+
-+# -------------------------------------------------------------------------
-+# character encoding to use (choose one of them)
-+
-+# CHARSET = CHARSET_ASCII7
-+# CHARSET = CHARSET_IBM437
-+CHARSET = CHARSET_ISO8859_1
-Index: asl-current/sysdefs.h
-===================================================================
---- asl-current.orig/sysdefs.h
-+++ asl-current/sysdefs.h
-@@ -138,6 +138,12 @@
+diff --git a/install.sh b/install.sh
+index ea391b8..e972e2e 100755
+--- a/install.sh
++++ b/install.sh
+@@ -10,7 +10,7 @@ BINPATH=${INSTROOT}$1
+ INCPATH=${INSTROOT}$2
+ MANPATH=${INSTROOT}$3
+ LIBPATH=${INSTROOT}$4
+-DOCPATH=${INSTROOT}$5
++DOCPATH=$5
+ 
+ # this is not a perfect solution, but I don't know a better one at the moment:
+ 
+@@ -31,7 +31,6 @@ if [ "${BINPATH}" != "" ]; then
+  chmod 755 ${BINPATH}
+  for i in asl plist alink pbind p2hex p2bin; do
+   #echo copy ${TARG_OBJDIR}$i${TARG_EXEXTENSION} to ${BINPATH}/$i${TARG_EXEXTENSION} ...
+-  strip ${TARG_OBJDIR}$i${TARG_EXEXTENSION}
+   if cp ${TARG_OBJDIR}$i${TARG_EXEXTENSION} ${BINPATH}; then
+    chmod 755 ${BINPATH}/$i${TARG_EXEXTENSION}
+   fi
+@@ -103,6 +102,9 @@ if [ "${DOCPATH}" != "" ]; then
+   done
+   chmod 644 ${DOCPATH}/as_$i.*
+  done
++ for i in README README.LANGS LICENSE BENCHES TODO ; do
++  cp $i $5/$i
++ done
+  cp doc_COM/taborg*.tex ${DOCPATH}
+  chmod 644 ${DOCPATH}/taborg*.tex
+  cp doc_COM/ps*.tex ${DOCPATH}
+diff --git a/sysdefs.h b/sysdefs.h
+index c8b6a26..b4003fa 100644
+--- a/sysdefs.h
++++ b/sysdefs.h
+@@ -140,6 +140,12 @@
  # endif
  #endif
  
@@ -99,7 +108,7 @@ Index: asl-current/sysdefs.h
  /*---------------------------------------------------------------------------*/
  /* ditto for ARM platforms */
  
-@@ -602,6 +608,29 @@ typedef unsigned long long Card64;
+@@ -600,6 +606,29 @@ typedef unsigned long long Card64;
  #define LOCALE_NLS
  #endif
  
@@ -129,12 +138,10 @@ Index: asl-current/sysdefs.h
  #endif /* __hppa */ 
  
  /*===========================================================================*/
-@@ -683,9 +712,42 @@ typedef unsigned long long Card64;
- #define NO_NLS
- #endif
+@@ -683,6 +712,38 @@ typedef unsigned long long Card64;
  
-+#endif /* _POWER */
-+
+ #endif /* _POWER */ 
+ 
 +/*===========================================================================*/
 +/* POWER64 platforms */
 +
@@ -143,7 +150,7 @@ Index: asl-current/sysdefs.h
 +#define ARCHPRNAME "ppc64"
 +
 +/*---------------------------------------------------------------------------*/
-+/* POWER with Linux */
++/* POWER64 with Linux */
 +
 +#ifdef __linux__
 +#define ARCHSYSNAME "unknown-linux"
@@ -159,26 +166,21 @@ Index: asl-current/sysdefs.h
 +#define HAS16
 +typedef signed int Integ32;
 +typedef unsigned int Card32;
-+typedef signed long Integ64;
-+typedef unsigned long Card64;
++typedef signed long long Integ64;
++typedef unsigned long long Card64;
 +#define HAS64
 +#define LOCALE_NLS
 +#endif
 +
- #endif /* _POWER */ 
- 
- /*===========================================================================*/
++#endif /* _POWER64 */
 +
+ /*===========================================================================*/
  /* VAX platforms */
  
- #ifdef __vax__
-@@ -1190,7 +1252,102 @@ typedef unsigned long long Card64;
- #define LOCALE_NLS
- #endif
+@@ -1159,6 +1220,98 @@ typedef unsigned long Card32;
  
--#endif /* __k8__ */
-+#endif /* __x86_64__ */
-+
+ #endif /* __i386 */
+ 
 +#ifdef __ia64__
 +
 +#define ARCHPRNAME "ia64"
@@ -271,8 +273,45 @@ Index: asl-current/sysdefs.h
 +
 +
 +#endif /* __s390x__ */
-+
-+
  
  /*===========================================================================*/
  /* Intel x86_64 platforms */
+@@ -1320,6 +1473,39 @@ typedef unsigned long long Card64;
+ 
+ #endif /* __arm */
+ 
++/*===========================================================================*/
++/* RISC-V platform */
++
++#if defined __riscv && __riscv_xlen == 64
++
++#define ARCHPRNAME "riscv64"
++
++/*---------------------------------------------------------------------------*/
++/* RISC-V 64-bit linux with GCC */
++
++#if defined __linux__
++#define ARCHSYSNAME "unknown-linux"
++#define DEFSMADE
++#define OPENRDMODE "r"
++#define OPENWRMODE "w"
++#define OPENUPMODE "r+"
++#define IEEEFLOAT
++typedef signed char Integ8;
++typedef unsigned char Card8;
++typedef signed short Integ16;
++typedef unsigned short Card16;
++#define HAS16
++typedef signed int Integ32;
++#define PRIInteg32 "d"
++typedef unsigned int Card32;
++typedef signed long Integ64;
++typedef unsigned long Card64;
++#define HAS64
++#define LOCALE_NLS
++#endif /* __linux__ */
++
++#endif /* __riscv */
++
+ /*===========================================================================*/
+ /* Misc... */

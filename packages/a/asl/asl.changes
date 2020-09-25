@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 09:30:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.42_bld173.
+  See http://john.ccac.rwth-aachen.de:8000/as/changelog for the
+  changelog
+- Update the license tag to GPL-2.0-only OR GPL-3.0-only to
+  match the license tag added to most files.
+- Fixes for %_libexecdir changing to /usr/libexec (boo#1174075)
+- Update asl-buildfixes.patch
+- Merge asl-riscv64.patch and asl-ppc64.patch with
+  asl-buildfixes.patch
+
+-------------------------------------------------------------------
 Thu Jan 23 11:05:16 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - asl-riscv64.patch: add sysdefs for riscv64
