@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Mon Sep 21 13:42:16 UTC 2020 - Stefan Haas <stefan.haas@suse.com>
+
+- fixed spec-file:
+  * operator.yaml does not get changed to use the SUSE-images
+
+-------------------------------------------------------------------
+Thu Sep 17 17:59:23 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- helm chart, manifests:
+  * fixed tolerations 
+  * Update SUSE documentation URL in NOTES.txt
+
+-------------------------------------------------------------------
+Thu Sep 17 04:50:13 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- ceph: fix drive group deployment failure (bsc#1176170)
+- helm chart, manifests:
+  * Add tolerations to cluster & CRDs
+  * Require kubeVersion >= 1.11
+  * Use rbac.authorization.k8s.io/v1
+  * Add affinities for label schema
+  * Set Rook log level to DEBUG
+  * Remove FlexVolume agent
+  * Require currentNamespaceOnly=true
+  * Replace NOTES.txt with SUSE specific version
+
+-------------------------------------------------------------------
+Tue Sep 15 14:25:51 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Include operator and common yamls in manifest package
+
+-------------------------------------------------------------------
+Sat Sep 12 00:49:38 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Update to v1.4.3
+  * The Ceph-CSI driver was being unexpectedly removed by the garbage
+    collector in some clusters. For more details to apply a fix during
+    the upgrade to this patch release, see these steps. (#616)
+  * Add storageClassDeviceSet label to osd pods (#6225)
+  * DNS suffix issue for OBCs in custom DNS suffix clusters (#6234)
+  * Cleanup mon canary pvc if the failover failed (#6224)
+  * Only enable mgr init container if the dashboard is enabled (#6198)
+  * cephobjectstore monitoring goroutine must be stopped during
+    uninstall (#6208)
+  * Remove NParts and Cache_Size from MDCACHE block in the NFS
+    configuration (#6207)
+  * Purge a down osd with a job created by the admin (#6127)
+  * Do not use label selector on external mgr service (#6142)
+  * Allow uninstall even if volumes still exist with a new CephCluster
+    setting (#6145)
+
+-------------------------------------------------------------------
+Fri Sep  10 21:16:34 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Update to v1.4.2
+  - Patch release focusing on small feature additions and bug fixes.
+    * Improve check for LVM on the host to allow installing of OSDs (#6175)
+    * Set the OSD prepare resource limits (#6118)
+    * Allow memory limits below recommended settings (#6116)
+    * Use full DNS suffix for object endpoint with OBCs (#6170)
+    * Remove the CSI driver lifecycle preStop hook (#6141)
+    * External cluster optional settings for provisioners (#6048)
+    * Operator watches nodes that match OSD placement rules (#6156)
+    * Allow user to add labels to the cluster daemon pods (#6084 #6082)
+    * Fix vulnerability in package golang.org/x/text (#6136)
+    * Add expansion support for encrypted osd on pvc (#6126)
+    * Do not use realPath for OSDs on PVCs (#6120, @leseb)
+    * Example object store manifests updated for consistency (#6123)
+    * Separate topology spread constrinats for osd prepare jobs and
+      osd daemons (#6103)
+    * Pass CSI resources as strings in the helm chart (#6104)
+    * Improve callCephVolume() for list and prepare (#6059)
+    * Improved multus support for the CSI driver configuration (#5740)
+    * Object store healthcheck yaml examples (#6090)
+    * Add support for wal encrypted device on pvc (#6062)
+    * Updated helm usage in documentation (#6086)
+    * More details for RBD Mirroring documentation (#6083)
+- Build process changes:
+  - Set CSI sidecar versions through _service, and set all versions in
+    code through a single patch file
+    + csi-images-SUSE.patch
+    - csi-dummy-images.patch 
+  - Use github.com/SUSE/rook and suse-release-1.4 tag in update.sh
+  - Create module dependencies through _service, and store these dependencies
+    in vendor.tar.gz (replacing rook-[version]-vendor.tar.xz)
+  - Modify build commands to include "-mod=vendor" to use new vendor tarball
+  - Add CSI sidecars as BuildRequires, in order to determine versions through
+    _service process
+  - Replace %setup of vendor tarball with a simple tar extraction
+  - Move registry detection to %prep, and set correct registry through a
+    search and replace on the SUSE_REGISTRY string
+  - Use variables to track rook, ceph and cephcsi versions
+  - Add '#!BuildTag', and 'appVersion' to chart.yaml
+  - Add required versioning to helm chart 
+  - Leave ceph-csi templates in /etc, and include them in main rook package.
+    - csi-template-paths.patch
+  - Include only designated yaml examples in rook-k8s-yaml package
+
+-------------------------------------------------------------------
 Mon Aug 10 07:24:49 UTC 2020 - Stefan Haas <stefan.haas@suse.com>
 
 - Update to v1.4.0:

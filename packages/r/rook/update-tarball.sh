@@ -2,18 +2,14 @@
 
 set -xEeuo pipefail
 
-ROOK_REPO="github.com/rook/rook"
-ROOK_REV="v1.4.0"
+#ROOK_REPO="github.com/rook/rook"
+#ROOK_REV="v1.4.0"
+ROOK_REPO="github.com/SUSE/rook"
+ROOK_REV="suse-release-1.4"
 
 if ! command -V go;
 then
     echo "ERROR: could not find go binary"
-    exit 1
-fi
-
-if ! command -V dep;
-then
-    echo "ERROR: could not find dep binary"
     exit 1
 fi
 
@@ -75,20 +71,17 @@ VERSION="${RELEASE}+git$GIT_COMMIT_NUM.$GIT_COMMIT"
 
 # make primary source tarball before changing anything in the repo
 cd $PKG_DIR
-tar -C "$GOPATH_ROOK/.." -cJf rook-$VERSION.tar.xz rook/
-
-# make vendor tarball
-cd "$GOPATH_ROOK"
-
-echo "Getting dependencies...might take a while"
-GOPATH=$WORK_DIR make mod.check
-
-cd $PKG_DIR
-tar -C "$WORK_DIR" -cJf rook-$VERSION-vendor.tar.xz pkg
-
+#mv $GOPATH_ROOK/rook $GOPATH_ROOK/rook-$RELEASE
+#tar -C "$GOPATH_ROOK" -czf rook-$RELEASE.tar.gz rook-$RELEASE/
+#tar -C "$GOPATH_ROOK/.." -cJf rook-$VERSION.tar.xz rook/
+tar -C "$GOPATH_ROOK/.." -czf rook-$VERSION.tar.gz rook/
 
 # update spec file versions
+#sed -i "s/^Version:.*/Version:        $RELEASE/" rook.spec
 sed -i "s/^Version:.*/Version:        $VERSION/" rook.spec
 sed -i "s/^%global rook_container_version .*/%global rook_container_version ${RELEASE}.$GIT_COMMIT_NUM  # this is updated by update-tarball.sh/" rook.spec
+
+# make vendor tarball
+osc -A https://api.suse.de service disabledrun
 
 echo "Finished successfully!"

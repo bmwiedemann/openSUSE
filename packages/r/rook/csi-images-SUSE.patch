@@ -1,0 +1,60 @@
+Index: rook/pkg/operator/ceph/csi/spec.go
+===================================================================
+--- rook.orig/pkg/operator/ceph/csi/spec.go
++++ rook/pkg/operator/ceph/csi/spec.go
+@@ -97,12 +97,12 @@ var (
+ // manually challenging.
+ var (
+ 	// image names
+-	DefaultCSIPluginImage   = "quay.io/cephcsi/cephcsi:v3.1.0"
+-	DefaultRegistrarImage   = "quay.io/k8scsi/csi-node-driver-registrar:v1.2.0"
+-	DefaultProvisionerImage = "quay.io/k8scsi/csi-provisioner:v1.6.0"
+-	DefaultAttacherImage    = "quay.io/k8scsi/csi-attacher:v2.1.0"
+-	DefaultSnapshotterImage = "quay.io/k8scsi/csi-snapshotter:v2.1.1"
+-	DefaultResizerImage     = "quay.io/k8scsi/csi-resizer:v0.4.0"
++       DefaultCSIPluginImage   = "SUSE_REGISTRY/cephcsi/cephcsi:v%CSI_VERSION%.%CSI_OFFSET%"
++       DefaultRegistrarImage   = "SUSE_REGISTRY/cephcsi/csi-node-driver-registrar:v%CSI_REG_VERSION%"
++       DefaultProvisionerImage = "SUSE_REGISTRY/cephcsi/csi-provisioner:v%CSI_PROV_VERSION%"
++       DefaultAttacherImage    = "SUSE_REGISTRY/cephcsi/csi-attacher:v%CSI_ATTACH_VERSION%"
++       DefaultSnapshotterImage = "SUSE_REGISTRY/cephcsi/csi-snapshotter:v%CSI_SNAP_VERSION%"
++       DefaultResizerImage     = "SUSE_REGISTRY/cephcsi/csi-resizer:v%CSI_RESIZE_VERSION%"
+ )
+ 
+ const (
+Index: rook/cluster/charts/rook-ceph/values.yaml
+===================================================================
+--- rook.orig/cluster/charts/rook-ceph/values.yaml
++++ rook/cluster/charts/rook-ceph/values.yaml
+@@ -4,7 +4,7 @@
+ 
+ image:
+   prefix: rook
+-  repository: rook/ceph
++  repository: SUSE_REGISTRY/rook/ceph
+   tag: VERSION
+   pullPolicy: IfNotPresent
+ 
+@@ -256,17 +256,17 @@ csi:
+   #rbdLivenessMetricsPort: 9080
+   #kubeletDirPath: /var/lib/kubelet
+   #cephcsi:
+-    #image: quay.io/cephcsi/cephcsi:v3.1.0
++    #image: SUSE_REGISTRY/cephcsi/cephcsi:v%CSI_VERSION%.%CSI_OFFSET%
+   #registrar:
+-    #image: quay.io/k8scsi/csi-node-driver-registrar:v1.2.0
++    #image: SUSE_REGISTRY/cephcsi/csi-node-driver-registrar:v%CSI_REG_VERSION%
+   #provisioner:
+-    #image: quay.io/k8scsi/csi-provisioner:v1.6.0
++    #image: SUSE_REGISTRY/cephcsi/csi-provisioner:v%CSI_PROV_VERSION%
+   #snapshotter:
+-    #image: quay.io/k8scsi/csi-snapshotter:v2.1.1
++    #image: SUSE_REGISTRY/cephcsi/csi-snapshotter:v%CSI_SNAP_VERSION%
+   #attacher:
+-    #image: quay.io/k8scsi/csi-attacher:v2.1.0
++    #image: SUSE_REGISTRY/cephcsi/csi-attacher:v%CSI_ATTACH_VERSION%
+   #resizer:
+-    #image: quay.io/k8scsi/csi-resizer:v0.4.0
++    #image: SUSE_REGISTRY/cephcsi/csi-resizer:v%CSI_RESIZE_VERSION%
+ 
+ enableFlexDriver: false
+ enableDiscoveryDaemon: true
