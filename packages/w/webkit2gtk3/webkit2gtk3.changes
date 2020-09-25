@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Sep 14 23:28:52 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.30.0:
+  + Fix NTLM authentication.
+  + Don't try to use SHM on wayland with older wpebackend-fdo.
+  + Fix the build due to seccomp.h header not found.
+- Drop seccomp-build-fix.patch and wpe-shm-check.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Sep  7 22:24:27 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add wpe-shm-check.patch: make SHM initialization fail for
+  wpebackend-fdo < 1.7.0.
+
+-------------------------------------------------------------------
+Sun Sep  6 16:36:23 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add seccomp-build-fix.patch: pass seccomp include directory to
+    g++. 
+- Re-enable bubblewrap sandbox for SLE-15-SP2 and Tumbleweed.
+
+-------------------------------------------------------------------
+Sat Sep  5 15:26:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.29.92:
+  + Fix user agent header after a redirect when a new quirk is
+    required.
+  + Stop using firefox user agent quirk for google docs.
+  + Fix rendering frames timeline panel in web inspector.
+  + Fix per-thread cpu usage in web inspector.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.91:
+  + Fix a web process crash introduced in 2.29.90.
+- Changes from version 2.29.90:
+  + Fix font variation settings when font smoothing setting is also
+    present.
+  + Fix HTML drag and drop operations.
+  + Fix argument order for clone syscall seccomp filter on s390x.
+  + Fix a crash when selecting text.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.4:
+  + Add support for backdrop filters.
+  + Add support for text-underline-offset and
+    text-decoration-thickness.
+  + Add OpenCDM and AV1 support to media backend.
+  + Add new API to get ITP data summary.
+  + Use mobile user-agent on tablets.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.3:
+  + Add webkit_authentication_request_get_security_origin.
+  + Change the cookies accept policy to always when no-third-party
+    is set and ITP is enabled.
+  + Fix web process hangs on large GitHub pages.
+  + Bubblewrap sandbox should not attempt to bind empty paths.
+  + Add support for sndio to bubblewrap sandbox.
+  + Also handle dark themes when the name ends with -Dark.
+  + Fix a race condition causing a crash in media player.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.2:
+  + Add Intelligent Tracking Prevention (ITP) support.
+  + Add support for video formats in img elements.
+  + Add API to handle video autoplay policy that now defaults to
+    disallow autoplay videos with audio.
+  + Add API to mute a web view.
+  + Add API to allow applications to handle the HTTP authentication
+    credential storage.
+  + Add a WebKitSetting to set the media content types requiring
+    hardware support.
+  + Fix a crash during drag an drop due to a bug introduced in
+    2.29.1.
+  + Do not start page load during animation in back/forward
+    gesture.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.1:
+  + Stop using GTK theming to render form controls.
+  + Add API to disable GTK theming for scrollbars too.
+  + Fix several race conditions and threading issues in the media
+    player.
+  + Add USER_AGENT_BRANDING build option.
+  + Add paste as plain text option to the context menu for rich
+    editable content.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Rebase webkit2gtk3-fdo-soname.patch.
+- Add pkgconfig(libsystemd) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Thu Aug  6 08:22:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add no-forced-sse.patch, cure execution of illegal instruction

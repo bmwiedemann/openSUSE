@@ -31,7 +31,7 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.28.4
+Version:        2.30.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
@@ -99,6 +99,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.61.90
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
