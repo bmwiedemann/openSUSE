@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Sun Sep 20 12:35:05 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 2.0.9 + git a3b957d (2020-09-06):
+  - Updated translations: Arabic, Chinese (Traditional)), 
+    Lithuanian, Marathi.
+
+-------------------------------------------------------------------
+Mon Aug 24 10:44:44 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 2.0.9 + git 0462a41 (2020-08-20)
+- Changes after 2.0.9:
+  - new translations or translation updates after 2.0.9 release
+- Changes from 2.0.8 to 2.0.9
+  - New Settings dialog
+  - Move to Gtk 3.12
+  - Improved Health Stats plugin
+  - Blink tray icon after pre-break notification
+- Changes from 2.0.6 to 2.0.8
+  - Action buttons support is added to the break screen
+  - Option to postpone the next break until the system becomes idle
+- Changes from 2.0.4 to 2.0.6
+  - Audible alert before breaks (Enabled by default)
+  - Do not disturb while on battery (Disabled by default)
+  - Skip long break if the user is idle for a long time
+- Changes from 2.0.0 to 2.0.4
+  - Various bug fixes and translation updates, see
+    https://github.com/slgobinath/SafeEyes/releases for more details
+- Drop SafeEyes-fix-python-requires.patch
+
+-------------------------------------------------------------------
+Thu Nov  2 03:55:38 UTC 2017 - malcolmlewis@opensuse.org
+
+- Update to version 2.0.0 + git fd4882b (2017-10-28).
+- Add rpmlintrc to suppress warnings.
+- Add script to pull from git.
+- Add SafeEyes-fix-python-requires.patch: Define python3-xlib in
+  setup.py requires.
+- Drop SafeEyes-fix-desktop-file.patch.
+
+-------------------------------------------------------------------
+Mon Feb 27 19:49:18 UTC 2017 - malcolmlewis@opensuse.org
+
+- Initial build.
+- Add SafeEyes-fix-desktop-file.patch: Cleanup desktop file
+  errors.
+

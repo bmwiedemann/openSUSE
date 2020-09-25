@@ -1,0 +1,13 @@
+install in /usr/share, not in /home/abuild/.local/share
+
+--- a/setup.py
++++ b/setup.py
+@@ -42,7 +42,7 @@
+     for root, _, files in os.walk(path):
+         if not files:
+             continue
+-        yield (os.path.join(site.USER_BASE or sys.prefix, root), [os.path.join(root, f) for f in files])
++        yield (os.path.join(sys.prefix, root), [os.path.join(root, f) for f in files])
+ 
+ 
+ def __package_files(directory):
