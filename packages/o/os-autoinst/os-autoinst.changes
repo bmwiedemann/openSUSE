@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:33:54 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1601022359.53ada7dc:
+  * t: Prevent .git files to interfer with local 00-compile-check-all runs
+  * Fix tty key definition after initialization
+  * Add missing include in consoles/localXvnc
+
+-------------------------------------------------------------------
 Mon Sep 21 11:08:35 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1600686504.c9117f1b:
