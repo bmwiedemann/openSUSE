@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep 13 19:12:51 UTC 2020 - elimat@opensuse.org
+
+- Update to version 0.7.18:
+  * Don't ignore localized strings that are the same as original
+  * Croatian translation 2nd attempt (#373)
+  * Test launchable tags in validation
+  * Add missing dependency to the readme
+  * as-app: Don't initialize mutex twice
+  * as-content-rating: Expand translator comments to link to OARS website
+  * as-content-rating: Lower the OARS/CSM mapping of sex-homosexuality/intense
+  * po: Import gs-content-rating.c translations from gnome-software
+  * po: Update po files
+  * as-content-rating: Add content rating system APIs from gnome-software
+  * Allow timestamp in the future in validate-relax
+  * Fix crash with invalid children of <ul/>
+  * as-app: Properly initialize unique_id_mutex
+  * The AppData files now go to /usr/share/metainfo
+  * util: Complete new validate-version command
+  * util: Add "validate-version" command
+  * trivial: Actually use the correct NEWS contents
+  * trivial: post release version bump
+- Drop patch as-glib-PR359.patch (fixed upstream)
+- Run spec-cleaner
+  * Remove rpm groups
+
+-------------------------------------------------------------------
 Wed Apr 22 09:30:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add as-glib-PR359.patch: Fix crash with invalid children of <ul>.

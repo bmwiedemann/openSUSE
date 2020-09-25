@@ -753,4 +753,33 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
     <comment></comment>
     <requestid>796263</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>bfeabbf4d787914cbde007b1cf69813e</srcmd5>
+    <version>0.7.18</version>
+    <time>1601043885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.18:
+  * Don't ignore localized strings that are the same as original
+  * Croatian translation 2nd attempt (#373)
+  * Test launchable tags in validation
+  * Add missing dependency to the readme
+  * as-app: Don't initialize mutex twice
+  * as-content-rating: Expand translator comments to link to OARS website
+  * as-content-rating: Lower the OARS/CSM mapping of sex-homosexuality/intense
+  * po: Import gs-content-rating.c translations from gnome-software
+  * po: Update po files
+  * as-content-rating: Add content rating system APIs from gnome-software
+  * Allow timestamp in the future in validate-relax
+  * Fix crash with invalid children of &amp;lt;ul/&amp;gt;
+  * as-app: Properly initialize unique_id_mutex
+  * The AppData files now go to /usr/share/metainfo
+  * util: Complete new validate-version command
+  * util: Add &quot;validate-version&quot; command
+  * trivial: Actually use the correct NEWS contents
+  * trivial: post release version bump
+- Drop patch as-glib-PR359.patch (fixed upstream)
+- Run spec-cleaner
+  * Remove rpm groups (forwarded request 834161 from elimat)</comment>
+    <requestid>836030</requestid>
+  </revision>
 </revisionlist>

@@ -18,16 +18,13 @@
 
 
 Name:           appstream-glib
-Version:        0.7.17
+Version:        0.7.18
 Release:        0
 Summary:        AppStream Abstraction Library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
-Group:          System/Libraries
-URL:            http://people.freedesktop.org/~hughsient/appstream-glib/
+URL:            https://people.freedesktop.org/~hughsient/appstream-glib/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        openSUSE-appstream-process
-# PATCH-FIX-UPSTREAM as-glib-PR359.patch dimstar@opensuse.org -- Fix crash with invalid children of <ul>
-Patch0:         as-glib-PR359.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcab >= 0.6
 BuildRequires:  gobject-introspection-devel
@@ -71,7 +68,6 @@ This library allows to:
 %package -n libappstream-glib8
 Summary:        AppStream Abstraction Library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libappstream-glib8
 This library provides GObjects and helper methods to read and write
@@ -81,7 +77,6 @@ nodes and convert to and from the standardized XML representation.
 %package -n typelib-1_0-AppStreamGlib-1_0
 Summary:        Introspection bindings for the AppStream abstraction library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n typelib-1_0-AppStreamGlib-1_0
 This library provides GObjects and helper methods to read and write
@@ -91,7 +86,6 @@ nodes and convert to and from the standardized XML representation.
 %package devel
 Summary:        Development files for the AppStream abstraction library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
-Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 Requires:       libappstream-glib8 = %{version}
 Requires:       typelib-1_0-AppStreamGlib-1_0 = %{version}
@@ -117,7 +111,6 @@ This library allows to:
 %package -n openSUSE-appstream-process
 Summary:        Appstream processor employed by kiwi
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
-Group:          Development/Tools/Building
 Requires:       appstream-glib >= %{version}
 Requires:       openSUSE-appdata-extra
 
