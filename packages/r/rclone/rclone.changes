@@ -5,14 +5,14 @@ Thu Sep 17 10:45:51 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
   * Bug Fixes
     - accounting: Remove new line from end of --stats-one-line display
   * VFS
-        Fix spurious error "vfs cache: failed to _ensure cache EOF"
-        Log an ERROR if we fail to set the file to be sparse
+    - Fix spurious error "vfs cache: failed to _ensure cache EOF"
+    - Log an ERROR if we fail to set the file to be sparse
   * Local
-        Log an ERROR if we fail to set the file to be sparse
+    - Log an ERROR if we fail to set the file to be sparse
   * Drive
-        Re-adds special oauth help text
+    - Re-adds special oauth help text
   * Opendrive
-        Do not retry 400 errors
+    - Do not retry 400 errors
 
 -------------------------------------------------------------------
 Fri Sep  4 13:43:40 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
