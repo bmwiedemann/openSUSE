@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:19:34 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  7 07:39:34 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Port to Tracker 3.
+  + Art retrieval complete rework.
+  + Flatpak cleanups and updates.
+  + Bugs fixed:
+    - gnome-music gets stuck when next button is pressed when
+      current song is about to finish.
+    - Selection mode search doesn't work.
+    - Selecting an album in albums view in selection mode randomly
+      deselects other albums.
+    - Selection mode only works for artists during search.
+    - Music crashed if gnome-online-accounts is unavailable.
+    - MPRIS playlist fixes.
+    - Gracefully handle locale.{bind,}textdomain not being
+      available.
+  + Updated translations.
+- Replace pkgconfig(tracker-sparql-2.0) BuildRequires with
+  pkgconfig(tracker-sparql-3.0): follow upstream changes.
+
+-------------------------------------------------------------------
+Sun Sep  6 20:11:09 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.3:
+  + Bugs fixed:
+    - High CPU usage.
+    - Bind more SongWidget properties.
+- Changes from version 3.37.2:
+  + Use Gtk.Template for all the Views and remove BaseView.
+  + Prefer Albumartist field for artist search.
+  + Change Artist view selection from artist to song.
+  + Extend Gtk.Template usage for Window.
+  + Deinitialize Grilo on shutdown.
+  + Music now explicitly depends on Pango 1.44 or above.
+  + Flatpak cleanups and updates.
+  + Various widgets style and code cleanups.
+  + Bugs fixed:
+    - Artist view should support music selection.
+    - In-app notifications need to be dismissable.
+    - Stop using show_all.
+    - Crash while searching due to bugs in searchview.py.
+    - Crash on start: object 'AttrFontFeatures' has no attribute
+      'new'.
+    - Wrong song count in favourite playlist.
+    - Please stop changing the module search path.
+    - Use libsoup for art retrieval.
+    - Music crashes on 'check_smart_playlist_change' call.
+  + Updated translations.
+- Add pkgconfig(pango) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Sun Sep  6 19:54:01 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.5:

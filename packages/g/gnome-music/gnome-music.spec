@@ -17,13 +17,13 @@
 
 
 Name:           gnome-music
-Version:        3.36.5
+Version:        3.38.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        SUSE-GPL-2.0-with-plugin-exception AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-music/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-music/3.38/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
@@ -34,15 +34,16 @@ BuildRequires:  python3-devel >= 3.3
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.35.90
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
-BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.12
-BuildRequires:  pkgconfig(grilo-plugins-0.3) >= 0.3.10
+BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.13
+BuildRequires:  pkgconfig(grilo-plugins-0.3) >= 0.3.12
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.7
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.28.0
 BuildRequires:  pkgconfig(libmediaart-2.0) >= 1.9.1
 BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(pango) >= 1.44.0
 BuildRequires:  pkgconfig(py3cairo) >= 1.14
-BuildRequires:  pkgconfig(pygobject-3.0) >= 3.29.1
-BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 2.3.0
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.36.1
+BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 2.99.3
 Requires:       dbus-1-python3
 # gnome-music requires grilo-plugin-tracker to interact with tracker and find files (bsc#1083659)
 Requires:       grilo-plugin-tracker
@@ -55,9 +56,11 @@ Requires:       python3-gobject-Gdk
 # gnomemusic/player.py imports requests (not introspected)
 Requires:       python3-requests
 # gnome-music relies on tracker to find local files (bsc#1084861)
-Requires:       tracker
+Requires:       tracker >= 2.99
 # gnome-music relies on tracker to find local files.
-Requires:       tracker-miner-files
+Requires:       tracker-miner-files >= 2.99
+# The versioned format depenency is written in a form not understood by our gi-scanner
+Requires:       typelib(Tracker) = 3.0
 Recommends:     gstreamer-plugins-ugly
 
 %description
