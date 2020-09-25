@@ -174,7 +174,7 @@ echo;myecho creating server request ...
 cat >/root/.mkcert.cfg <<EOT
 extensions = x509v3
 [ x509v3 ]
-subjectAltName   = DNS:$CN
+subjectAltName   = $altName
 nsComment        = $comment
 nsCertType       = server
 EOT

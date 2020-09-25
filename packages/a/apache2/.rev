@@ -1751,4 +1751,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
   obsolete. (forwarded request 835119 from fbui)</comment>
     <requestid>835144</requestid>
   </revision>
+  <revision rev="173" vrev="5">
+    <srcmd5>786d35ab5f8d3acb48f8a3e04170e6aa</srcmd5>
+    <version>2.4.46</version>
+    <time>1601043923</time>
+    <user>dimstar_suse</user>
+    <comment>- gensslcert: fix SAN in final cert generation (forwarded request 836062 from jtomasiak)</comment>
+    <requestid>836064</requestid>
+  </revision>
 </revisionlist>

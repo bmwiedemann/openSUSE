@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:12:31 UTC 2020 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- gensslcert: fix SAN in final cert generation
+
+-------------------------------------------------------------------
 Fri Sep 11 15:24:39 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Make use of %service_del_postun_without_restart
