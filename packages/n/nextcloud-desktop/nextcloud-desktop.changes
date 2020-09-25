@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Sep 24 18:18:06 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.2
+  - desktop#2346 Use httpd/unix-directory mimetype for E2EE folders
+  - desktop#2388 Update copyright date and version displayed in the page title.
+  - desktop#2415 syncjournaldb: index e2eMangledName column in metadata
+  - desktop#2421 Use QGuiApplication::primaryScreen() as fallback for Systray::currentScreen()
+  - desktop#2422 Fix menu popup in main dialog
+  - desktop#2426 Include list info in tooltip
+  - desktop#2428 Try to enable the CI on stable branches as well
+  - desktop#2429 Improve drone config
+  - desktop#2430 Fix clang tidy errors in csync tests
+  - desktop#2434 Windows: Fix NSIS language encoding (use UTF-8)
+  - desktop#2436 Fix incomplete journal upgrade from 2.x to 3.x
+  - desktop#2448 If there's no description just say nothing
+  - desktop#2455 Remove "This includes" due to tooltip order
+  - desktop#2456 Fix missing subdirectory discovery on move operations in macOS
+  - desktop#2458 Windows: MSI support & Win32 migration tools
+  - desktop#2463 Use native text rendering for qml windows
+  - desktop#2465 Allow server URL to be pre-defined without enforcing it
+  - desktop#2471 Force tooltip wrap mode because it's not enabled in Qt 5.12...
+    
+-------------------------------------------------------------------
+Thu Sep 24 18:18:06 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.2
+  - desktop#2346 [stable-3.0] Use httpd/unix-directory mimetype for E2EE folders
+  - desktop#2388 [stable-3.0] Update copyright date and version displayed in the page title.
+  - desktop#2415 [stable-3.0] syncjournaldb: index e2eMangledName column in metadata
+  - desktop#2421 [stable-3.0] Use QGuiApplication::primaryScreen() as fallback for Systray::currentScreen()
+  - desktop#2422 [stable-3.0] Fix menu popup in main dialog
+  - desktop#2426 [stable-3.0] Include list info in tooltip
+  - desktop#2428 [stable-3.0] Try to enable the CI on stable branches as well
+  - desktop#2429 [stable-3.0] Improve drone config
+  - desktop#2430 [stable-3.0] Fix clang tidy errors in csync tests
+  - desktop#2434 [stable-3.0] Windows: Fix NSIS language encoding (use UTF-8)
+  - desktop#2436 [stable-3.0] Fix incomplete journal upgrade from 2.x to 3.x
+  - desktop#2448 [stable-3.0] If there's no description just say nothing
+  - desktop#2455 [stable-3.0] Remove "This includes" due to tooltip order
+  - desktop#2456 [stable-3.0] Fix missing subdirectory discovery on move operations in macOS
+  - desktop#2458 [stable-3.0] Windows: MSI support & Win32 migration tools
+  - desktop#2463 [stable-3.0] Use native text rendering for qml windows
+  - desktop#2465 [stable-3.0] Allow server URL to be pre-defined without enforcing it
+  - desktop#2471 [stable-3.0] Force tooltip wrap mode because it's not enabled in Qt 5.12...
+    
+-------------------------------------------------------------------
 Fri Aug 28 17:58:16 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.0.1
