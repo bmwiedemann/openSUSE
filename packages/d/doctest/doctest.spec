@@ -26,7 +26,6 @@ Source0:        https://github.com/onqtam/doctest/archive/%{version}.tar.gz#/%{n
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-ExcludeArch:    %arm
 
 %description
 C++98/C++11 single-header testing framework for unit tests and TDD.

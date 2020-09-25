@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 15:00:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Enable arm builds. The package builds fine on aarch64 systems.
+
+-------------------------------------------------------------------
 Mon Aug 31 13:21:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Initial package (v2.4.0)
