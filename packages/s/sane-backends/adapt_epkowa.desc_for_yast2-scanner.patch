@@ -1,6 +1,6 @@
---- doc/descriptions-external/epkowa.desc.orig	2015-09-09 04:23:23.000000000 +0200
-+++ doc/descriptions-external/epkowa.desc	2015-10-05 14:50:31.000000000 +0200
-@@ -47,7 +47,7 @@
+--- doc/descriptions-external/epkowa.desc.orig	2020-08-23 13:59:20.000000000 +0200
++++ doc/descriptions-external/epkowa.desc	2020-09-23 11:40:27.359784224 +0200
+@@ -48,7 +48,7 @@
  ;;  Device and manufacturer information.
  ;;
  :devicetype :scanner
@@ -9,7 +9,7 @@
  :url        "http://www.epson.com/"
  :comment    ""
  
-@@ -84,3456 +84,3362 @@
+@@ -85,979 +85,953 @@
  :interface "USB"
  :usbid     "0x04b8" "0x08ac"
  :status    :complete
@@ -172,6 +172,12 @@
  :status    :complete
 -:comment   "requires DFSG non-free iscan-plugin-ds-30"
 +:comment   "requires DFSG non-free Image Scan software from Epson<br>requires DFSG non-free iscan-plugin-ds-30"
+ 
+ :model     "DS-G20000"
+ :interface "USB"
+ :usbid     "0x04b8" "0x015b"
+ :status    :good
++:comment   "requires DFSG non-free Image Scan software from Epson"
  
  :model     "EP-702A"
  :interface "USB"
@@ -672,6 +678,13 @@
  :usbid     "0x04b8" "0x014b"
  :status    :good
 -:comment   "overseas version of the ES-G11000"
++:comment   "requires DFSG non-free Image Scan software from Epson<br>overseas version of the ES-G11000"
+ 
+ :model     "Expression 12000XL"
+ :interface "USB"
+ :usbid     "0x04b8" "0x015b"
+ :status    :good
+-:comment   "overseas version of the DS-G20000"
 -
 -:model     "F-3200"			; product spec (JP)
 -:interface "USB IEEE1394"
@@ -688,7 +701,7 @@
 -:status    :unsupported
 -:comment   "A better backend for the FilmScan 200 can be found at <A HREF=\"http://www.vjet.demon.co.uk/scanner/\">http://www.vjet.demon.co.uk/scanner/</A>."
 -:url       "http://www.vjet.demon.co.uk/scanner/"
-+:comment   "requires DFSG non-free Image Scan software from Epson<br>overseas version of the ES-G11000"
++:comment   "requires DFSG non-free Image Scan software from Epson<br>overseas version of the DS-G20000"
  
  :model     "GT-1500"
  :interface "USB"
@@ -1140,11 +1153,7 @@
  
  :model     "GT-X980"
  :interface "USB"
- :usbid     "0x04b8" "0x0151"
- :status    :good
-+:comment   "requires DFSG non-free Image Scan software from Epson"
- 
- :model     "K200 Series"
+@@ -1068,2490 +1042,2422 @@
  :interface "USB"
  :usbid     "0x04b8" "0x0871"
  :status    :complete
@@ -1317,22 +1326,29 @@
  :interface "USB"
  :usbid     "0x04b8" "0x08ad"
  :status    :good
--:comment   "network interface not supported<br>business all-in-one"
-+:comment   "requires DFSG non-free Image Scan software from Epson<br>network interface not supported<br>business all-in-one"
+-:comment   "network interface supported via DFSG non-free iscan-network-nt package<br>business all-in-one"
++:comment   "requires DFSG non-free Image Scan software from Epson<br>network interface supported via DFSG non-free iscan-network-nt package<br>business all-in-one"
  
  :model     "LP-M8040A"
  :interface "USB"
  :usbid     "0x04b8" "0x08ad"
  :status    :good
--:comment   "network interface not supported<br>business all-in-one"
-+:comment   "requires DFSG non-free Image Scan software from Epson<br>network interface not supported<br>business all-in-one"
+-:comment   "network interface supported via DFSG non-free iscan-network-nt package<br>business all-in-one"
++:comment   "requires DFSG non-free Image Scan software from Epson<br>network interface supported via DFSG non-free iscan-network-nt package<br>business all-in-one"
  
  :model     "LP-M8040F"
  :interface "USB"
  :usbid     "0x04b8" "0x08ad"
  :status    :good
--:comment   "network interface not supported<br>business all-in-one"
-+:comment   "requires DFSG non-free Image Scan software from Epson<br>network interface not supported<br>business all-in-one"
+-:comment   "network interface supported via DFSG non-free iscan-network-nt package<br>business all-in-one"
++:comment   "requires DFSG non-free Image Scan software from Epson<br>network interface supported via DFSG non-free iscan-network-nt package<br>business all-in-one"
+ 
+ :model     "LP-M8170"
+ :interface "USB"
+ :usbid     "0x04b8" "0x1111"
+ :status    :good
+-:comment   "network interface supported via DFSG non-free iscan-network-nt package<br>business all-in-one"
++:comment   "requires DFSG non-free Image Scan software from Epson<br>network interface supported via DFSG non-free iscan-network-nt package<br>business all-in-one"
  
  :model     "M200 Series"
  :interface "USB"

@@ -16,8 +16,11 @@
 #
 
 
-# Enable support for PWG eSCL network backend
+# Cf. https://rpm.org/user_doc/conditional_builds.html
+# by default enable support for PWG eSCL network backend
 %bcond_without escl
+# by default disable support for PWG eSCL network backend
+#bcond_with escl
 
 Name:           sane-backends
 BuildRequires:  gcc-c++
@@ -30,9 +33,13 @@ BuildRequires:  pkgconfig
 %if %{with escl}
 BuildRequires:  pkgconfig(avahi-client) >= 0.6.24
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libxml-2.0)
+# since sane-backends 1.0.31 the escl backend requires libpoppler-glib-devel
+# cf. https://gitlab.com/sane-project/backends/-/blob/master/INSTALL.linux
+BuildRequires:  libpoppler-glib-devel
 %endif
 BuildRequires:  pkgconfig(libusb-1.0)
+# The pixma backend requires libxml2
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(systemd)
 %systemd_requires
 
@@ -43,15 +50,19 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        SANE (Scanner Access Now Easy) Scanner Drivers
 License:        GPL-2.0-or-later AND SUSE-GPL-2.0+-with-sane-exception AND SUSE-Public-Domain
 Group:          Hardware/Scanner
-Version:        1.0.30
+Version:        1.0.31
 Release:        0
 URL:            http://www.sane-project.org/
-# Unfortunately, the first version does not build, as it does not contain a prebuilt configure,
-# and autoconf fails as it requires a complete git clone:
-# https://gitlab.com/sane-project/backends/issues/248
-# Use the version including a semi-random hash instead, which is a dist tarball
-# Source0:        https://gitlab.com/sane-project/backends/-/archive/%%{version}/backends-%%{version}.tar.gz#/sane-backends-%%{version}.tar.gz
-Source0:        https://gitlab.com/sane-project/backends/uploads/c3dd60c9e054b5dee1e7b01a7edc98b0/sane-backends-1.0.30.tar.gz
+# On https://gitlab.com/sane-project/backends/-/releases
+# there are two links, the first one is called "Source code (tar.gz)" that pints to
+# https://gitlab.com/sane-project/backends/-/archive/1.0.31/backends-1.0.31.tar.gz
+# and the second one is called "sane-backends-1.0.31.tar.gz" that pints to
+# https://gitlab.com/sane-project/backends/uploads/8bf1cae2e1803aefab9e5331550e5d5d/sane-backends-1.0.31.tar.gz
+# The first one "backends-1.0.31.tar.gz" does not build, as it does not contain a prebuilt configure script,
+# and autoconf fails as it requires a complete git clone, see https://gitlab.com/sane-project/backends/issues/248
+# We use the second one "sane-backends-1.0.31.tar.gz" that is a dist tarball with a prebuilt configure script via
+# wget https://gitlab.com/sane-project/backends/uploads/8bf1cae2e1803aefab9e5331550e5d5d/sane-backends-1.0.31.tar.gz
+Source0:        sane-backends-1.0.31.tar.gz
 # Source100... is SUSE specific stuff:
 # Source102 is the OpenSLP registration file for the saned:
 Source102:      sane.reg
@@ -76,11 +87,9 @@ Source201:      create_sane-backends-autoconfig.rules
 # Sources 202 and 203 are files to enable socket based service activation which replaced xinetd
 Source202:      saned@.service
 Source203:      saned.socket
-# PATCH-FIX-OPENSUSE - Make timestamps reproducible, https://gitlab.com/sane-project/backends/issues/228
-Patch2:         sane-backends.builttime.patch
 # Patch100... is SUSE specific stuff:
 # Patch102 adapt_epkowa.desc_for_yast2-scanner.patch adapts epkowa.desc for yast2-scanner
-# (see https://bugzilla.novell.com/show_bug.cgi?id=788756#c14).
+# (see https://bugzilla.opensuse.org/show_bug.cgi?id=788756#c14).
 # It adds "requires DFSG non-free Image Scan software from Avasys" to all comments
 # (or adds such a comment if there is not yet a comment) so that yast2-scanner
 # (via "requires DFSG non-free" string match in create_scanner_database)
@@ -179,11 +188,9 @@ Saned allows access to locally attached scanners over the network.
 
 %prep
 %setup -q
-# Patch2 sane-backends.builttime.patch avoids build-compare noise
-%patch2 -p1
 # Patch100... is SUSE specific stuff:
 # Patch102 adapt_epkowa.desc_for_yast2-scanner.patch adapts epkowa.desc for yast2-scanner
-# see https://bugzilla.novell.com/show_bug.cgi?id=788756#c14
+# see https://bugzilla.opensuse.org/show_bug.cgi?id=788756#c14
 %patch102
 
 # Remove hpoj.desc completely to avoid confusion with its successor hpaio.desc
@@ -210,13 +217,6 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE -DGIMP_ENABLE_COMPAT_CRUFT=1 -fno-stric
 export LDFLAGS="-L/%_lib $LDFLAGS"
 # Enable pthread instead of fork (used in Debian since Feb 2009 and no issues so far),
 # see https://bugzilla.novell.com/show_bug.cgi?id=633780
-#
-# Without converting API spec to supported output formats PostScript, PDF, HTML
-# i.e. use none of --with_api_ps --with_api_pdf --with_api_html cf. configure.ac
-# because converting the API spec needs tons of stuff in the build system
-# like LaTeX, Ghostscript, PDF tools and all what those require and
-# the API spec is not for users but for developers who could get
-# the "Programmer's Documentation" at http://www.sane-project.org/docs.html
 # Disable locking because /var/lock/sane/ would be a world-writable directory.
 ./configure --prefix=/usr \
             --exec-prefix=/usr \
@@ -229,9 +229,8 @@ export LDFLAGS="-L/%_lib $LDFLAGS"
             --enable-pthread \
             --with-usb \
 %if %{with escl}
-            --enable-avahi \
+            --with-avahi \
 %endif
-            --without-api-spec \
             --disable-locking
 # Enable locking for backends where "99" is the group of the lockfile path (LOCKPATH_GROUP)
 # because "99" is the group of the user who runs the build when norootforbuild is used

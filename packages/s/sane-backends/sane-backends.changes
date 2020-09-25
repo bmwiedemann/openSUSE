@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Sep 23 11:56:03 CEST 2020 - jsmeix@suse.de
+
+- Upgraded to sane-backends version 1.0.31
+  Changes since 1.0.30
+  see https://gitlab.com/sane-project/backends/-/blob/master/NEWS
+  Backends
+  * adds the canon_lide70 backend
+  * avision: adds support for the KODAK i1120,
+    fixes thread cancellation issues,
+    disables exposure option for non-filmscanners
+  * canon_dr: improves error reporting
+  * dmc: fixes compiler warnings on the scan area options
+  * epsonds: rewrites the network I/O following changes
+    made to the epson2 backend in 1.0.30 to fix security issues.
+    Network support is still unsupported.
+  * escl: adds ADF support, fixes many minor issues and improves
+    error handling. Now also supports devices behind a proxy
+    (needs explicit configuration).
+  * fujitsu: adds support for the fi-800R and a card scanning
+    slot, fixes a bug when reading hardware sensors on the first
+    invocation. Adds USB IDs for fi-7800 and fi-7900.
+  * genesys: adds support for the Canon 5600F, Canon LiDE 90,
+    Plustek OpticFilm 7200 and 7200 (v2), 7400, 7600i, 8100
+    and 8200i. Fixes several issues with the Canon 8600F.
+    Adds 4800dpi support for the Canon LiDE 210 and fixes 3200dpi
+    flatbed support on the Canon 8400F. Adds an option to fill
+    dark calibration with a constant. Adds transparency support
+    for gl847 chipset based devices. Fixes CIS scanner support
+    for gl842 chipset based devices. Removes lineart and image
+    enhancement emulation support.
+  * gphoto: supports the PLANon DocuPen RC800 (with a recent
+    enough version of gphoto2)
+  * gt68xx: modifies scan cancellation behaviour
+  * hp5400: adds button support, fixes a scan cancellation
+    crash issue
+  * pixma: add supports for the i-SENSYS MF440 Series and untested
+    support for the PIXMMA G7000 Series and GM4000 Series as well
+    as the i-SENSYS MF720 Series.
+  * plustek: fixes a potential buffer overrun
+  * test: adds gamma options
+  Documentation
+  * removes the SANE Standard. This is now maintained
+    as a separate project at
+    https://gitlab.com/sane-project/standard
+    HTML and PDF versions can be found at
+    https://sane-project.gitlab.io/standard/
+  * adds and updates information for multiple supported and
+    unsupported devices
+  * translation updates for British English, French, German,
+    Italian and Ukranian
+  * scanimage: documents the JPEG compression level
+  * minor improvements documenting build requirements
+  Build
+  * removes the --with-api-spec option from configure
+  * replaces the --enable-avahi option with an --with-avahi
+    that defaults to enabling if possible. If the option is given
+    and the required support is not available, configure will
+    exit with an error.
+  * improves checking for libjpeg version dependent requirements
+  * has been made reproducable (upstream issue 228)
+  * fixes build issues on MinGW
+  Miscellaneous
+  * various fixes and improvements in the USB record/replay support
+  * fixes a file descriptor validation test in sanei_pio
+  * adds missing include in sanei_usb
+- sane-backends.builttime.patch is no longer needed because the
+  issue https://gitlab.com/sane-project/backends/-/issues/228
+  is fixed in the upstream sources
+
+-------------------------------------------------------------------
 Tue Aug 18 15:15:05 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 1.0.30:
