@@ -981,4 +981,12 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>No java-14</comment>
   </revision>
+  <revision rev="136" vrev="134">
+    <srcmd5>b92792375d39c4ca9aae82afe82fd4cb</srcmd5>
+    <version>unknown</version>
+    <time>1601044435</time>
+    <user>dimstar_suse</user>
+    <comment>Add DOCUMENTATION_URL to release files. It's used by e.g cockpit</comment>
+    <requestid>837394</requestid>
+  </revision>
 </revisionlist>
