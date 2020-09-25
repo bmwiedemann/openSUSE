@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">gnulib</param>
     <param name="versionformat">git.%cd.%h</param>
-    <param name="revision">f4693b0166bab83ab232dcd3cfd95906411d1110</param>
+    <param name="revision">d6dabe8eece3a9c1269dc1c084531ce447c7a42e</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

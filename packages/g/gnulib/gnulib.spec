@@ -19,7 +19,7 @@
 %global module1 git-merge-changelog
 
 Name:           gnulib
-Version:        git.20200216.f4693b016
+Version:        git.20200809.d6dabe8ee
 Release:        0
 Summary:        GNU Portability Library
 License:        SUSE-Public-Domain AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-or-later AND LGPL-3.0-or-later

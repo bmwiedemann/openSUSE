@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep  3 14:58:56 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to version git.20200809.d6dabe8ee 
+  to Use __builtin_signbit* with clang.:
+  * lib/math.in.h (signbit): Use __builtin_signbit{,f,l} also on clang.
+  * m4/signbit.m4 (gl_SIGNBIT): Use __builtin_signbit{,f,l} also on clang.
+    Set REPLACE_SIGNBIT_USING_BUILTINS, not REPLACE_SIGNBIT_USING_GCC.
+  * m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize
+    REPLACE_SIGNBIT_USING_BUILTINS, not REPLACE_SIGNBIT_USING_GCC.
+  * modules/math (Makefile.am): Substitute REPLACE_SIGNBIT_USING_BUILTINS,
+    not REPLACE_SIGNBIT_USING_GCC.
+- Earler changes can be found here:
+  https://git.savannah.gnu.org/cgit/gnulib.git/tree/ChangeLog
+- This gnulib version is required by PSPP 1.4.0, 1.4.1 and current master.
+
+-------------------------------------------------------------------
 Thu Sep  3 11:21:25 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
 
 - Install relocatable.texi as well (rh#1474792).
