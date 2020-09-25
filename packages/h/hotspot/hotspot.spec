@@ -17,7 +17,7 @@
 
 
 Name:           hotspot
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Perf GUI for performance analysis
 License:        GPL-2.0+
@@ -36,6 +36,7 @@ BuildRequires:  kitemmodels-devel
 BuildRequires:  kitemviews-devel
 BuildRequires:  kwindowsystem-devel
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  libelf-devel
