@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Sun Sep 20 14:32:52 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- added 3308.patch to fix naming of printer-tool 
+- Version bump to 3.2.00:
+  - Implemented enhancements:
+    - HIP:Enable stream in HIP [gh#kokkos/kokkos#3163]
+    - HIP:Add support for shuffle reduction for the HIP backend
+      [gh#kokkos/kokkos#3154]
+    - HIP:Add implementations of missing HIPHostPinnedSpace
+      methods for LAMMPS [gh#kokkos/kokkos#3137]
+    - HIP:Require HIP 3.5.0 or higher [gh#kokkos/kokkos#3099]
+    - HIP:WorkGraphPolicy for HIP [gh#kokkos/kokkos#3096]
+    - OpenMPTarget: Significant update to the new experimental
+      backend. Requires C++17, works on Intel GPUs, reference
+      counting fixes. [gh#kokkos/kokkos#3169]
+    - Windows Cuda support [gh#kokkos/kokkos#3018]
+    - Pass -Wext-lambda-captures-this to NVCC when support for
+      __host__ __device__ lambda is enabled from CUDA 11
+      [gh#kokkos/kokkos#3241]
+    - Use explicit staging buffer for constant memory kernel
+      launches and cleanup host/device synchronization
+      [gh#kokkos/kokkos#3234]
+    - Various fixup to policies including making TeamPolicy
+      default constructible and making RangePolicy and TeamPolicy
+      assignable: [gh#kokkos/kokkos#3202], [gh#kokkos/kokkos#3203],
+      [gh#kokkos/kokkos#3196]
+    - Annotations for DefaultExectutionSpace and
+      DefaultHostExectutionSpace to use in static analysis
+      [gh#kokkos/kokkos#3189]
+    - Add documentation on using Spack to install Kokkos and
+      developing packages that depend on Kokkos
+      [gh#kokkos/kokkos#3187]
+    - Add OpenMPTarget backend flags for NVC++ compiler
+      [gh#kokkos/kokkos#3185]
+    - Move deep_copy/create_mirror_view on
+      Experimental::OffsetView into Kokkos:: namespace
+      [gh#kokkos/kokkos#3166]
+    - Allow for larger block size in HIP [gh#kokkos/kokkos#3165]
+    - View: Added names of Views to the different View
+      initialize/free kernels [gh#kokkos/kokkos#3159]
+    - Cuda: Caching cudaFunctorAttributes and whether L1/Shmem
+      prefer was set [gh#kokkos/kokkos#3151]
+    - BuildSystem: Improved performance in default configuration
+      by defaulting to Release build [gh#kokkos/kokkos#3131]
+    - Cuda: Update CUDA occupancy calculation
+      [gh#kokkos/kokkos#3124]
+    - Vector: Adding data() to Vector [gh#kokkos/kokkos#3123]
+    - BuildSystem: Add CUDA Ampere configuration support
+      [gh#kokkos/kokkos#3122]
+    - General: Apply [[noreturn]] to Kokkos::abort when applicable
+      [gh#kokkos/kokkos#3106]
+    - TeamPolicy: Validate storage level argument passed to
+      TeamPolicy::set_scratch_size() [gh#kokkos/kokkos#3098]
+    - BuildSystem: Make kokkos_has_string() function in
+      Makefile.kokkos case insensitive [gh#kokkos/kokkos#3091]
+    - Modify KOKKOS_FUNCTION macro for clang-tidy analysis
+      [gh#kokkos/kokkos#3087]
+    - Move allocation profiling to allocate/deallocate calls
+      [gh#kokkos/kokkos#3084]
+    - BuildSystem: FATAL_ERROR when attempting in-source build
+      [gh#kokkos/kokkos#3082]
+    - Change enums in ScatterView to types [gh#kokkos/kokkos#3076]
+    - HIP: Changes for new compiler/runtime
+      [gh#kokkos/kokkos#3067]
+    - Extract and use get_gpu [gh#kokkos/kokkos#3061] ,
+      [gh#kokkos/kokkos#3048]
+    - Add is_allocated to View-like containers
+      [gh#kokkos/kokkos#3059]
+    - Combined reducers for scalar references
+      [gh#kokkos/kokkos#3052]
+    - Add configurable capacity for UniqueToken
+      [gh#kokkos/kokkos#3051]
+    - Add installation testing [gh#kokkos/kokkos#3034]
+    - HIP: Add UniqueToken [gh#kokkos/kokkos#3020]
+    - Autodetect number of devices [gh#kokkos/kokkos#3013]
+  - Fixed bugs:
+    - Check error code from cudaStreamSynchronize in CUDA fences
+      [gh#kokkos/kokkos#3255]
+    - Fix issue with C++ standard flags when using nvcc\_wrapper
+      with PGI [gh#kokkos/kokkos#3254]
+    - Add missing threadfence in lock-based atomics
+      [gh#kokkos/kokkos#3208]
+    - Fix dedup of linker flags for shared lib on CMake <=3.12
+      [gh#kokkos/kokkos#3176]
+    - Fix memory leak with CUDA streams [gh#kokkos/kokkos#3170]
+    - BuildSystem: Fix OpenMP Target flags for Cray
+      [gh#kokkos/kokkos#3161]
+    - ScatterView: fix for OpenmpTarget remove inheritance from
+      reducers [gh#kokkos/kokkos#3162]
+    - BuildSystem: Set OpenMP flags according to host compiler
+      [gh#kokkos/kokkos#3127]
+    - OpenMP: Fix logic for nested omp in partition_master bug
+      [gh#kokkos/kokkos#3101]
+    - nvcc_wrapper: send --cudart to nvcc instead of host compiler
+      [gh#kokkos/kokkos#3092]
+    - BuildSystem: Fixes for Cuda/11 and c++17
+      [gh#kokkos/kokkos#3085]
+    - HIP: Fix print_configuration [gh#kokkos/kokkos#3080]
+    - Conditionally define get_gpu [gh#kokkos/kokkos#3072]
+    - Fix bounds for ranges in random number generator
+      [gh#kokkos/kokkos#3069]
+    - Fix Cuda minor arch check [gh#kokkos/kokkos#3035]
+    - BuildSystem: Add -expt-relaxed-constexpr flag to
+      nvcc_wrapper [gh#kokkos/kokkos#3021]
+  - Incompatibilities:
+    - Remove ETI support [gh#kokkos/kokkos#3157]
+    - Remove KOKKOS_INTERNAL_ENABLE_NON_CUDA_BACKEND
+      [gh#kokkos/kokkos#3147]
+    - Remove core/unit_test/config [gh#kokkos/kokkos#3146]
+    - Removed the preprocessor branch for KOKKOS_ENABLE_PROFILING
+      [gh#kokkos/kokkos#3115]
+    - Disable profiling with MSVC [gh#kokkos/kokkos#3066]
+  - Closed issues:
+    - Silent error (Validate storage level arg to
+      set_scratch_size) [gh#kokkos/kokkos#3097]
+    - Remove KOKKKOS_ENABLE_PROFILING Option
+      [gh#kokkos/kokkos#3095]
+    - Cuda 11 -> allow C++17 [gh#kokkos/kokkos#3083]
+    - In source build failure not explained
+      [gh#kokkos/kokkos#3081]
+    - Allow naming of Views for initialization kernel
+      [gh#kokkos/kokkos#3070]
+    - DefaultInit tests failing when using CTest resource
+      allocation feature [gh#kokkos/kokkos#3040]
+    - Add installation testing. [gh#kokkos/kokkos#3037]
+    - nvcc_wrapper needs to handle -expt-relaxed-constexpr flag
+      [gh#kokkos/kokkos#3017]
+    - CPU core oversubscription warning on macOS with OpenMP
+      backend [gh#kokkos/kokkos#2996]
+    - Default behavior of KOKKOS_NUM_DEVICES to use all devices
+      available [gh#kokkos/kokkos#2975]
+    - Assert blocksize > 0 [gh#kokkos/kokkos#2974]
+    - Add ability to assign kokkos profile function from
+      executable [gh#kokkos/kokkos#2973]
+    - ScatterView Support for the pre/post increment operator
+      [gh#kokkos/kokkos#2967]
+    - Compiler issue: Cuda build with clang 10 has errors with the
+      atomic unit tests [gh#kokkos/kokkos#3237]
+    - Incompatibility of flags for C++ standard with PGI v20.4 on
+      Power9/NVIDIA V100 system [gh#kokkos/kokkos#3252]
+    - Error configuring as subproject [gh#kokkos/kokkos#3140]
+    - CMake fails with Nvidia compilers when the GPU architecture
+      option is not supplied (Fix configure with OMPT and Cuda)
+      [gh#kokkos/kokkos#3207]
+    - PGI compiler being passed the gcc -fopenmp flag
+      [gh#kokkos/kokkos#3125]
+    - Cuda: Memory leak when using CUDA stream
+      [gh#kokkos/kokkos#3167]
+    - RangePolicy has an implicitly deleted assignment operator
+      [gh#kokkos/kokkos#3192]
+    - MemorySpace::allocate needs to have memory pool counting.
+      [gh#kokkos/kokkos#3064]
+    - Missing write fence for lock based atomics on CUDA
+      [gh#kokkos/kokkos#3038]
+    - CUDA compute capability version check problem
+      [gh#kokkos/kokkos#3026]
+    - Make DynRankView fencing consistent [gh#kokkos/kokkos#3014]
+    - nvcc_wrapper cant handle -Xcompiler -o out.o
+      [gh#kokkos/kokkos#2993]
+    - Reductions of non-trivial types of size 4 fail in CUDA shfl
+      operations [gh#kokkos/kokkos#2990]
+    - complex_double misalignment in reduce, clang+CUDA
+      [gh#kokkos/kokkos#2989]
+    - Span of degenerated (zero-length) subviews is not zero in
+      some special cases [gh#kokkos/kokkos#2979]
+    - Rank 1 custom layouts dont work as expected.
+      [gh#kokkos/kokkos#2840]
+
+-------------------------------------------------------------------
 Thu Aug 20 08:53:04 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.
