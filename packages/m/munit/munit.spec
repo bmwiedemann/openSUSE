@@ -58,6 +58,7 @@ Headers for µnit, a unit testing framework for C.
 
 %build
 %meson
+%meson_build
 
 %install
 %meson_install

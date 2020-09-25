@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 21 22:51:58 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- %meson_build now needs to be called.
+
+-------------------------------------------------------------------
 Sat Aug  1 11:47:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial version (0.2.0+git38) for build.opensuse.org
