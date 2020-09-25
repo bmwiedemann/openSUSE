@@ -33,7 +33,6 @@ BuildRequires:  intltool >= 0.40.0
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  tracker-devel
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(avahi-glib)
 BuildRequires:  pkgconfig(avahi-gobject)
@@ -60,7 +59,7 @@ BuildRequires:  pkgconfig(oauth)
 BuildRequires:  pkgconfig(rest-0.7) >= 0.7.90
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.4.1
-BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 2.3.0
+BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 2.99
 # Recommend gupnp-plugin-dleyna (UPnP support)
 Recommends:     gupnp-plugin-dleyna
 %ifarch armv7hl i586
@@ -199,7 +198,7 @@ This package provides the development files.
 %files lang -f %{name}.lang
 
 %files -n grilo-plugin-tracker
-%{plugin_dir}/libgrltracker.so
+%{plugin_dir}/libgrltracker3.so
 
 %files -n grilo-plugin-dleyna
 %{plugin_dir}/libgrldleyna.so

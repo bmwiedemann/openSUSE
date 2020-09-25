@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  7 11:25:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch to Tracker 3:
+  + Drop tracker-devel BuildRequires: redundant dependency.
+  + Replace pkgconfig(tracker-sparql-2.0) BuildRequires with
+    pkgconfig(tracker-sparql-3.0).
+
+-------------------------------------------------------------------
 Fri Sep  4 14:36:02 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 0.3.12:

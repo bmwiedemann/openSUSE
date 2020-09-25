@@ -413,4 +413,12 @@
     <comment>Update to 0.3.12 - with dmap 4.0 (forwarded request 832549 from dimstar)</comment>
     <requestid>832813</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>bc779ae7263d1a33decfb18ff354c26e</srcmd5>
+    <version>0.3.12</version>
+    <time>1601044012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836549</requestid>
+  </revision>
 </revisionlist>
