@@ -498,4 +498,12 @@
     (boo#1172826). (forwarded request 824818 from qkzhu)</comment>
     <requestid>825300</requestid>
   </revision>
+  <revision rev="61" vrev="5">
+    <srcmd5>ac15934034bffa91e26130606094870a</srcmd5>
+    <version>3.36.1</version>
+    <time>1601043883</time>
+    <user>dimstar_suse</user>
+    <comment>This request depends on 834124, they should be release together. (forwarded request 834125 from qkzhu)</comment>
+    <requestid>836029</requestid>
+  </revision>
 </revisionlist>
