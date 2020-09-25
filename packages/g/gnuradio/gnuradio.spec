@@ -31,6 +31,9 @@ Source0:        https://github.com/gnuradio/gnuradio/releases/download/v%{versio
 Source4:        grc_to_37.sh
 Source99:       %{name}-rpmlintrc
 Patch0:         missing_library.patch
+Patch1:         revert-23cece0d0.patch
+Patch2:         0001-gr-digital-glfsr.h-drop-boost-cstdint.hpp-and-use-cs.patch
+Patch3:         0002-boost_qualify_placeholders_with_their_full_namespace.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 3.8
 BuildRequires:  cppunit-devel
@@ -159,6 +162,9 @@ This package contains some examples of using GNU Radio.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 # remove buildtime from documentation
 sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxygen/Doxyfile.in

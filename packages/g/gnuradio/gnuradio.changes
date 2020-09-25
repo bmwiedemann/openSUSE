@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:54:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add patches to build with boost >= 1.73.0:
+  * 0001-gr-digital-glfsr.h-drop-boost-cstdint.hpp-and-use-cs.patch
+  * 0002-boost_qualify_placeholders_with_their_full_namespace.patch
+  * revert-23cece0d0.patch
+  For details see:
+  * https://github.com/gnuradio/gnuradio/pull/3441
+  * https://github.com/gnuradio/gnuradio/pull/3566
+
+-------------------------------------------------------------------
 Wed Aug 26 13:36:06 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to version 3.8.2.0:

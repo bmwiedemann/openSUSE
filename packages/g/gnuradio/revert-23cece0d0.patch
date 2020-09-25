@@ -1,0 +1,555 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 523f4bbda..90b785104 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -132,18 +132,6 @@ Older Logs can be found in `docs/RELEASE-NOTES-*`.
+ - global option to toggle showing of IDs
+ - Help "Keyboard Shortcut" entry
+ 
+-### Deprecated
+-
+-#### gr-analog
+-
+-- `sig_source`: `freq` port will be removed in the future
+-
+-### Added 
+-#### gr-analog
+-
+-- `sig_source`: `cmd` port adds support for dicts, setting of frequency,
+-  amplitude, offset and phase parameters
+-
+ ## [3.8.0.0] - 2019-08-09
+ 
+ Witness me!
+diff --git a/gr-analog/examples/sig_source_msg_ports.grc b/gr-analog/examples/sig_source_msg_ports.grc
+deleted file mode 100644
+index 9cba1c62a..000000000
+--- a/gr-analog/examples/sig_source_msg_ports.grc
++++ /dev/null
+@@ -1,242 +0,0 @@
+-options:
+-  parameters:
+-    author: "Marcus M\xFCller"
+-    catch_exceptions: 'True'
+-    category: '[GRC Hier Blocks]'
+-    cmake_opt: ''
+-    comment: ''
+-    copyright: 2020 Free Software Foundation
+-    description: ''
+-    gen_cmake: 'On'
+-    gen_linking: dynamic
+-    generate_options: qt_gui
+-    hier_block_src_path: '.:'
+-    id: demonstrate_signal_source_message_ports
+-    max_nouts: '0'
+-    output_language: python
+-    placement: (0,0)
+-    qt_qss_theme: ''
+-    realtime_scheduling: ''
+-    run: 'True'
+-    run_command: '{python} -u {filename}'
+-    run_options: prompt
+-    sizing_mode: fixed
+-    thread_safe_setters: ''
+-    title: 'Demonstration: Signal Source Message Ports'
+-  states:
+-    bus_sink: false
+-    bus_source: false
+-    bus_structure: null
+-    coordinate: [0, 4.0]
+-    rotation: 0
+-    state: enabled
+-
+-blocks:
+-- name: analog_sig_source_x_0
+-  id: analog_sig_source_x
+-  parameters:
+-    affinity: ''
+-    alias: ''
+-    amp: '1'
+-    comment: ''
+-    freq: '1000'
+-    maxoutbuf: '0'
+-    minoutbuf: '0'
+-    offset: '0'
+-    phase: '0'
+-    samp_rate: samp_rate
+-    type: complex
+-    waveform: analog.GR_COS_WAVE
+-  states:
+-    bus_sink: false
+-    bus_source: false
+-    bus_structure: null
+-    coordinate: [296, 188.0]
+-    rotation: 0
+-    state: true
+-- name: blocks_message_strobe_0
+-  id: blocks_message_strobe
+-  parameters:
+-    affinity: ''
+-    alias: ''
+-    comment: 'sets the amplitude
+-
+-      and frequency every
+-
+-      second'
+-    maxoutbuf: '0'
+-    minoutbuf: '0'
+-    msg: 'pmt.to_pmt({"freq": 2000, "ampl":1.5})'
+-    period: '1000'
+-  states:
+-    bus_sink: false
+-    bus_source: false
+-    bus_structure: null
+-    coordinate: [40, 148.0]
+-    rotation: 0
+-    state: true
+-- name: blocks_message_strobe_random_0
+-  id: blocks_message_strobe_random
+-  parameters:
+-    affinity: ''
+-    alias: ''
+-    comment: 'resets the phase
+-
+-      at random points
+-
+-      in time'
+-    dist: blocks.STROBE_GAUSSIAN
+-    maxoutbuf: '0'
+-    mean: '200'
+-    minoutbuf: '0'
+-    msg: pmt.to_pmt({"phase":0.0})
+-    std: '40'
+-  states:
+-    bus_sink: false
+-    bus_source: false
+-    bus_structure: null
+-    coordinate: [24, 292.0]
+-    rotation: 0
+-    state: true
+-- name: blocks_throttle_0
+-  id: blocks_throttle
+-  parameters:
+-    affinity: ''
+-    alias: ''
+-    comment: ''
+-    ignoretag: 'True'
+-    maxoutbuf: '0'
+-    minoutbuf: '0'
+-    samples_per_second: samp_rate
+-    type: complex
+-    vlen: '1'
+-  states:
+-    bus_sink: false
+-    bus_source: false
+-    bus_structure: null
+-    coordinate: [496, 228.0]
+-    rotation: 0
+-    state: true
+-- name: qtgui_time_sink_x_0
+-  id: qtgui_time_sink_x
+-  parameters:
+-    affinity: ''
+-    alias: ''
+-    alpha1: '1.0'
+-    alpha10: '1.0'
+-    alpha2: '1.0'
+-    alpha3: '1.0'
+-    alpha4: '1.0'
+-    alpha5: '1.0'
+-    alpha6: '1.0'
+-    alpha7: '1.0'
+-    alpha8: '1.0'
+-    alpha9: '1.0'
+-    autoscale: 'False'
+-    axislabels: 'True'
+-    color1: blue
+-    color10: dark blue
+-    color2: red
+-    color3: green
+-    color4: black
+-    color5: cyan
+-    color6: magenta
+-    color7: yellow
+-    color8: dark red
+-    color9: dark green
+-    comment: ''
+-    ctrlpanel: 'False'
+-    entags: 'True'
+-    grid: 'False'
+-    gui_hint: ''
+-    label1: Signal 1
+-    label10: Signal 10
+-    label2: Signal 2
+-    label3: Signal 3
+-    label4: Signal 4
+-    label5: Signal 5
+-    label6: Signal 6
+-    label7: Signal 7
+-    label8: Signal 8
+-    label9: Signal 9
+-    legend: 'True'
+-    marker1: '-1'
+-    marker10: '-1'
+-    marker2: '-1'
+-    marker3: '-1'
+-    marker4: '-1'
+-    marker5: '-1'
+-    marker6: '-1'
+-    marker7: '-1'
+-    marker8: '-1'
+-    marker9: '-1'
+-    name: '""'
+-    nconnections: '1'
+-    size: '1024'
+-    srate: samp_rate
+-    stemplot: 'False'
+-    style1: '1'
+-    style10: '1'
+-    style2: '1'
+-    style3: '1'
+-    style4: '1'
+-    style5: '1'
+-    style6: '1'
+-    style7: '1'
+-    style8: '1'
+-    style9: '1'
+-    tr_chan: '0'
+-    tr_delay: '0'
+-    tr_level: '0.0'
+-    tr_mode: qtgui.TRIG_MODE_NORM
+-    tr_slope: qtgui.TRIG_SLOPE_POS
+-    tr_tag: '""'
+-    type: complex
+-    update_time: '0.10'
+-    width1: '1'
+-    width10: '1'
+-    width2: '1'
+-    width3: '1'
+-    width4: '1'
+-    width5: '1'
+-    width6: '1'
+-    width7: '1'
+-    width8: '1'
+-    width9: '1'
+-    ylabel: Amplitude
+-    ymax: '2'
+-    ymin: '-2'
+-    yunit: '""'
+-  states:
+-    bus_sink: false
+-    bus_source: false
+-    bus_structure: null
+-    coordinate: [656, 212.0]
+-    rotation: 0
+-    state: true
+-- name: samp_rate
+-  id: parameter
+-  parameters:
+-    alias: ''
+-    comment: ''
+-    hide: none
+-    label: Sampling Rate [Hz]
+-    short_id: r
+-    type: eng_float
+-    value: 100e3
+-  states:
+-    bus_sink: false
+-    bus_source: false
+-    bus_structure: null
+-    coordinate: [192, 4.0]
+-    rotation: 0
+-    state: true
+-
+-connections:
+-- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
+-- [blocks_message_strobe_0, strobe, analog_sig_source_x_0, cmd]
+-- [blocks_message_strobe_random_0, strobe, analog_sig_source_x_0, cmd]
+-- [blocks_throttle_0, '0', qtgui_time_sink_x_0, '0']
+-
+-metadata:
+-  file_format: 1
+diff --git a/gr-analog/grc/analog_sig_source_x.block.yml b/gr-analog/grc/analog_sig_source_x.block.yml
+index aa16061de..ebd55c2df 100644
+--- a/gr-analog/grc/analog_sig_source_x.block.yml
++++ b/gr-analog/grc/analog_sig_source_x.block.yml
+@@ -40,10 +40,6 @@ parameters:
+     default: '0'
+ 
+ inputs:
+--   domain: message
+-    id: cmd
+-    optional: true
+-
+ -   domain: message
+     id: freq
+     optional: true
+diff --git a/gr-analog/lib/sig_source_impl.cc b/gr-analog/lib/sig_source_impl.cc
+index 0a6289f2d..b73b32982 100644
+--- a/gr-analog/lib/sig_source_impl.cc
++++ b/gr-analog/lib/sig_source_impl.cc
+@@ -65,12 +65,9 @@ sig_source_impl<T>::sig_source_impl(double sampling_freq,
+ {
+     this->set_frequency(frequency);
+     this->set_phase(phase);
+-    this->message_port_register_in(pmt::mp("cmd"));
+-    this->set_msg_handler(pmt::mp("cmd"),
+-                          [this](pmt::pmt_t msg) { this->set_cmd_msg(msg); });
+     this->message_port_register_in(pmt::mp("freq"));
+     this->set_msg_handler(pmt::mp("freq"),
+-                          [this](pmt::pmt_t msg) { this->set_freq_msg(msg); });
++                          boost::bind(&sig_source_impl<T>::set_frequency_msg, this, _1));
+ }
+ 
+ template <class T>
+@@ -79,76 +76,32 @@ sig_source_impl<T>::~sig_source_impl()
+ }
+ 
+ template <class T>
+-void sig_source_impl<T>::set_freq_msg(pmt::pmt_t msg)
++void sig_source_impl<T>::set_frequency_msg(pmt::pmt_t msg)
+ {
+-    GR_LOG_INFO(this->d_logger,
+-                "The `freq` port is deprecated and will be removed. Forwarding this "
+-                "message to the `cmd` handler.");
++    // Accepts either a number that is assumed to be the new
++    // frequency or a key:value pair message where the key must be
++    // "freq" and the value is the new frequency.
++
+     if (pmt::is_number(msg)) {
+-        // if plain number, then interpret it as frequency
+         set_frequency(pmt::to_double(msg));
+-        return;
+-    }
+-    set_cmd_msg(msg);
+-}
+-
+-template <class T>
+-void sig_source_impl<T>::set_cmd_msg(pmt::pmt_t msg)
+-{
+-    static auto freq_key = pmt::intern("freq");
+-    static auto ampl_key = pmt::intern("ampl");
+-    static auto phase_key = pmt::intern("phase");
+-    static auto offset_key = pmt::intern("offset");
+-
+-    // either a key:value pair or a dict
+-    pmt::pmt_t list_of_items;
+-    if (pmt::is_dict(msg)) {
+-        list_of_items = pmt::dict_items(msg);
+     } else if (pmt::is_pair(msg)) {
+-        list_of_items = pmt::list1(msg);
+-    } else {
+-        GR_LOG_WARN(this->d_logger, "malformed message: is not dict nor pair");
+-        return;
+-    }
+-
+-    do {
+-        auto item = pmt::car(list_of_items);
+-
+-        auto key = pmt::car(item);
+-        auto val = pmt::cdr(item);
+-
+-        if (key == freq_key) {
++        pmt::pmt_t key = pmt::car(msg);
++        pmt::pmt_t val = pmt::cdr(msg);
++        if (pmt::eq(key, pmt::intern("freq"))) {
+             if (pmt::is_number(val)) {
+                 set_frequency(pmt::to_double(val));
+-            } else {
+-                GR_LOG_WARN(this->d_logger, "frequency value needs to be a number")
+-            }
+-        } else if (key == ampl_key) {
+-            if (pmt::is_number(val)) {
+-                set_amplitude(pmt::to_double(val));
+-            } else {
+-                GR_LOG_WARN(this->d_logger, "amplitude value needs to be a number")
+-            }
+-        } else if (key == phase_key) {
+-            if (pmt::is_number(val)) {
+-                set_phase(pmt::to_double(val));
+-            } else {
+-                GR_LOG_WARN(this->d_logger, "phase value needs to be a number")
+-            }
+-        } else if (key == offset_key) {
+-            if (pmt::is_number(val)) {
+-                set_offset(pmt::to_double(val));
+-            } else {
+-                GR_LOG_WARN(this->d_logger, "offset value needs to be a number")
+             }
+         } else {
+             GR_LOG_WARN(this->d_logger,
+-                        "unsupported message key " + pmt::write_string(key));
++                        boost::format("Set Frequency Message must have "
++                                      "the key = 'freq'; got '%1%'.") %
++                            pmt::write_string(key));
+         }
+-
+-        // advance to next item, if any
+-        list_of_items = pmt::cdr(list_of_items);
+-    } while (list_of_items != pmt::PMT_NIL);
++    } else {
++        GR_LOG_WARN(this->d_logger,
++                    "Set Frequency Message must be either a number or a "
++                    "key:value pair where the key is 'freq'.");
++    }
+ }
+ 
+ template <class T>
+@@ -371,5 +324,5 @@ template class sig_source<std::int16_t>;
+ template class sig_source<std::int32_t>;
+ template class sig_source<float>;
+ template class sig_source<gr_complex>;
+-} // namespace analog
++} /* namespace analog */
+ } /* namespace gr */
+diff --git a/gr-analog/lib/sig_source_impl.h b/gr-analog/lib/sig_source_impl.h
+index 82740cb6a..6b6457a16 100644
+--- a/gr-analog/lib/sig_source_impl.h
++++ b/gr-analog/lib/sig_source_impl.h
+@@ -1,6 +1,6 @@
+ /* -*- c++ -*- */
+ /*
+- * Copyright 2004,2012,2018,2020 Free Software Foundation, Inc.
++ * Copyright 2004,2012,2018 Free Software Foundation, Inc.
+  *
+  * This file is part of GNU Radio
+  *
+@@ -64,12 +64,7 @@ public:
+ 
+     void set_sampling_freq(double sampling_freq);
+     void set_waveform(gr_waveform_t waveform);
+-
+-    // Message handlers
+-    //!\brief deprecated handler. Use "cmd" port instead.
+-    void set_freq_msg(pmt::pmt_t msg);
+-    void set_cmd_msg(pmt::pmt_t msg);
+-
++    void set_frequency_msg(pmt::pmt_t msg);
+     void set_frequency(double frequency);
+     void set_amplitude(double ampl);
+     void set_offset(T offset);
+diff --git a/gr-analog/python/analog/qa_sig_source.py b/gr-analog/python/analog/qa_sig_source.py
+index 81ba7e407..b5acf750c 100644
+--- a/gr-analog/python/analog/qa_sig_source.py
++++ b/gr-analog/python/analog/qa_sig_source.py
+@@ -1,8 +1,8 @@
+ #!/usr/bin/env python
+ #
+-#Copyright 2004, 2007, 2010, 2012, 2013, 2020 Free Software Foundation, Inc.
++# Copyright 2004,2007,2010,2012,2013 Free Software Foundation, Inc.
+ #
+-#This file is part of GNU Radio
++# This file is part of GNU Radio
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -26,8 +26,8 @@ import math
+ import pmt
+ from gnuradio import gr, gr_unittest, analog, blocks
+ 
+-
+ class test_sig_source(gr_unittest.TestCase):
++
+     def setUp(self):
+         self.tb = gr.top_block()
+ 
+@@ -83,6 +83,7 @@ class test_sig_source(gr_unittest.TestCase):
+         dst_data = dst1.data()
+         self.assertFloatTuplesAlmostEqual(expected_result, dst_data, 5)
+ 
++
+     def test_sine_b(self):
+         tb = self.tb
+         sqrt2 = math.sqrt(2) / 2
+@@ -96,7 +97,7 @@ class test_sig_source(gr_unittest.TestCase):
+         tb.connect(op, dst1)
+         tb.run()
+         dst_data = dst1.data()
+-        #Let the python know we are dealing with signed int behind scenes
++        # Let the python know we are dealing with signed int behind scenes
+         dst_data_signed = [b if b < 127 else (256 - b) * -1 for b in dst_data]
+         self.assertFloatTuplesAlmostEqual(expected_result, dst_data_signed)
+ 
+@@ -117,10 +118,7 @@ class test_sig_source(gr_unittest.TestCase):
+         tb = self.tb
+         sqrt2 = math.sqrt(2) / 2
+         sqrt2j = 1j * math.sqrt(2) / 2
+-        expected_result = [
+-            1, sqrt2 + sqrt2j, 1j, -sqrt2 + sqrt2j, -1, -sqrt2 - sqrt2j, -1j,
+-            sqrt2 - sqrt2j, 1
+-        ]
++        expected_result = (1, sqrt2 + sqrt2j, 1j, -sqrt2 + sqrt2j, -1, -sqrt2 - sqrt2j, -1j, sqrt2 - sqrt2j, 1)
+         src1 = analog.sig_source_c(8, analog.GR_COS_WAVE, 1.0, 1.0)
+         op = blocks.head(gr.sizeof_gr_complex, 9)
+         dst1 = blocks.vector_sink_c()
+@@ -140,14 +138,12 @@ class test_sig_source(gr_unittest.TestCase):
+         tb.connect(op, dst1)
+         tb.run()
+         dst_data = dst1.data()
+-        self.assertComplexTuplesAlmostEqual(expected_result, dst_data, 5)
++        self.assertEqual(expected_result, dst_data)
+ 
+     def test_tri_c(self):
+         tb = self.tb
+-        expected_result = [
+-            1 + .5j, .75 + .75j, .5 + 1j, .25 + .75j, 0 + .5j, .25 + .25j,
+-            .5 + 0j, .75 + .25j, 1 + .5j
+-        ]
++        expected_result = (1+.5j, .75+.75j, .5+1j, .25+.75j, 0+.5j,
++                           .25+.25j, .5+0j, .75+.25j, 1+.5j)
+         src1 = analog.sig_source_c(8, analog.GR_TRI_WAVE, 1.0, 1.0)
+         op = blocks.head(gr.sizeof_gr_complex, 9)
+         dst1 = blocks.vector_sink_c()
+@@ -159,10 +155,8 @@ class test_sig_source(gr_unittest.TestCase):
+ 
+     def test_saw_c(self):
+         tb = self.tb
+-        expected_result = [
+-            .5 + .25j, .625 + .375j, .75 + .5j, .875 + .625j, 0 + .75j,
+-            .125 + .875j, .25 + 1j, .375 + .125j, .5 + .25j
+-        ]
++        expected_result = (.5+.25j, .625+.375j, .75+.5j, .875+.625j,
++                            0+.75j, .125+.875j, .25+1j, .375+.125j, .5+.25j)
+         src1 = analog.sig_source_c(8, analog.GR_SAW_WAVE, 1.0, 1.0)
+         op = blocks.head(gr.sizeof_gr_complex, 9)
+         dst1 = blocks.vector_sink_c()
+@@ -208,7 +202,7 @@ class test_sig_source(gr_unittest.TestCase):
+         dst_data = dst1.data()
+         self.assertFloatTuplesAlmostEqual(expected_result, dst_data, 5)
+ 
+-    def test_freq_msg(self):  # deprecated but still tested
++    def test_freq_msg(self):
+         src = analog.sig_source_c(8, analog.GR_SIN_WAVE, 1.0, 1.0)
+         op = blocks.head(gr.sizeof_gr_complex, 9)
+         snk = blocks.vector_sink_c()
+@@ -221,30 +215,6 @@ class test_sig_source(gr_unittest.TestCase):
+ 
+         self.assertAlmostEqual(src.frequency(), frequency)
+ 
+-    def test_cmd_msg(self):
+-        src = analog.sig_source_c(8, analog.GR_SIN_WAVE, 1.0, 1.0)
+-        op = blocks.head(gr.sizeof_gr_complex, 9)
+-        snk = blocks.vector_sink_c()
+-        self.tb.connect(src, op, snk)
+-        self.assertAlmostEqual(src.frequency(), 1.0)
+-
+-        frequency = 3.0
+-        amplitude = 10
+-        offset = -1.0
+-
+-        src._post(
+-            pmt.to_pmt('freq'),
+-            pmt.to_pmt({
+-                "freq": frequency,
+-                "ampl": amplitude,
+-                "offset": offset
+-            }))
+-        self.tb.run()
+-
+-        self.assertAlmostEqual(src.frequency(), frequency)
+-        self.assertAlmostEqual(src.amplitude(), amplitude)
+-        self.assertAlmostEqual(src.offset(), offset)
+-
+ 
+ if __name__ == '__main__':
+     gr_unittest.run(test_sig_source, "test_sig_source.xml")
