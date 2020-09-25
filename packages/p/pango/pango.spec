@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.46.1
+Version:        1.46.2
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
