@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 10:50:21 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 8.4.5:
+  * Support for Lua 5.4 added.
+  * Improved support for ksh and ksh scripts.
+  * Improved documentation for software hierarchy and community module collections.
+
+-------------------------------------------------------------------
 Sat Mar 28 07:33:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the python3 switch on sphinx to not really pull any py2
