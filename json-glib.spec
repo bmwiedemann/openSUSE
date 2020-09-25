@@ -18,15 +18,18 @@
 
 
 Name:           json-glib
-Version:        1.4.4
+Version:        1.6.0
 Release:        0
 Summary:        Library for JavaScript Object Notation format
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://live.gnome.org/JsonGlib
-Source0:        http://download.gnome.org/sources/json-glib/1.4/%{name}-%{version}.tar.xz
+
+Source0:        https://download.gnome.org/sources/json-glib/1.6/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-BuildRequires:  glib2-devel >= 2.46
+
+BuildRequires:  gtk-doc
+BuildRequires:  glib2-devel >= 2.54
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -93,16 +96,17 @@ json-glib library.
 translation-update-upstream po %{name}-1.0
 
 %build
-# These 2 options should work, but currently install fase fails.
-# FIXME 	-Denable-man=true \
-# FIXME 	-Denable-gtk-doc=true \
 %meson \
+	-Dman=true \
+	-Dgtk_doc=enabled \
 	%{nil}
 %meson_build
 
+%check
+%meson_test
+
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}-1.0
 
 %post -n libjson-glib-1_0-0 -p /sbin/ldconfig
@@ -118,9 +122,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %doc NEWS README.md
-# Those could potentially be split in a -tools package, but are never used by non-devs.
+# These could potentially be split in a -tools package, but are never used by non-devs.
 %{_bindir}/json-glib-format
 %{_bindir}/json-glib-validate
+%{_mandir}/man1/json-glib-format.1%{ext_man}
+%{_mandir}/man1/json-glib-validate.1%{ext_man}
+%{_datadir}/gtk-doc/html/json-glib
+#
 %{_includedir}/%{name}-1.0
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
