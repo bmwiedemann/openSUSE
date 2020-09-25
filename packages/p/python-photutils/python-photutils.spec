@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-photutils
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause

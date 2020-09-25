@@ -179,4 +179,15 @@
 </comment>
     <requestid>836282</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3568f7207de9ca8ed48e10316f0ca456</srcmd5>
+    <version>1.0.1</version>
+    <time>1601044620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 1.0.1
+  Bug Fixes
+  * photutils.psf
+    Fixed checks on oversampling factors. [#1086]</comment>
+    <requestid>837400</requestid>
+  </revision>
 </revisionlist>

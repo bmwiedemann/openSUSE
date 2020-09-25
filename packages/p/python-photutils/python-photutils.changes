@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 25 11:41:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 1.0.1
+  Bug Fixes
+  * photutils.psf
+    Fixed checks on oversampling factors. [#1086] 
+
+-------------------------------------------------------------------
 Wed Sep 23 09:24:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 1.0.0
