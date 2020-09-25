@@ -567,4 +567,11 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - Exclude all non-root-fs mounts from inotify watcher</comment>
     <requestid>835888</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>3a298c519c722b74ebe661c129d3580d</srcmd5>
+    <version>2.24.1</version>
+    <time>1601043443</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1176989</comment>
+  </revision>
 </revisionlist>
