@@ -35,4 +35,23 @@
   * Clean up info in README</comment>
     <requestid>504779</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8fb81299e1feb51b10b16dc4412fc873</srcmd5>
+    <version>0.10</version>
+    <time>1601044567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10:
+  * Add new color scheme: dwmlight (Thanks satsaeid)
+  * Add new color scheme: solorized-light (Thanks ayroblu)
+  * Add new color scheme: palenight (Thanks mroavi)
+  * Add new color scheme: onedark (Thanks mroavi)
+  * Add new color scheme: gruvbox (Thanks laur89)
+  * Add new color scheme: iceberg (Thanks puven12)
+  * Add new color scheme: dracula (Thanks EgZvor)
+  * Add new color scheme: molokai (Thanks mimadrid)
+  * Add missing :highlight clear to:
+    - lucius
+    - reicheltd-light</comment>
+    <requestid>837212</requestid>
+  </revision>
 </revisionlist>

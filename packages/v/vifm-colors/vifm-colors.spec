@@ -1,7 +1,7 @@
 #
 # spec file for package vifm-colors
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           vifm-colors
-Version:        0.9
+Version:        0.10
 Release:        0
 Summary:        Color themes for vifm
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/GUI/Other
-Url:            https://github.com/vifm/%{name}/
+URL:            https://github.com/vifm/%{name}/
 Source:         https://github.com/vifm/%{name}/archive/v%{version}.tar.gz
 #only since 0.8 global color themes are supported
 Requires:       vifm >= 0.8

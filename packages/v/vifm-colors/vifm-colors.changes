@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 24 17:53:27 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10:
+  * Add new color scheme: dwmlight (Thanks satsaeid)
+  * Add new color scheme: solorized-light (Thanks ayroblu)
+  * Add new color scheme: palenight (Thanks mroavi)
+  * Add new color scheme: onedark (Thanks mroavi)
+  * Add new color scheme: gruvbox (Thanks laur89)
+  * Add new color scheme: iceberg (Thanks puven12)
+  * Add new color scheme: dracula (Thanks EgZvor)
+  * Add new color scheme: molokai (Thanks mimadrid)
+  * Add missing :highlight clear to:
+    - lucius
+    - reicheltd-light
+
+-------------------------------------------------------------------
 Mon Jun 19 14:45:31 UTC 2017 - mvetter@suse.com
 
 - Update to version 0.9:
