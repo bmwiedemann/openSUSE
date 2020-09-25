@@ -1,24 +1,4 @@
 -------------------------------------------------------------------
-Mon Sep 21 16:17:12 UTC 2020 - Ignaz Forster <iforster@suse.com>
-
-- Version 2.25.1
-  - Fix inotify watcher setup
-  - Use log_{info,error} for more messages to avoid messing up Salt logs
-
--------------------------------------------------------------------
-Mon Sep 21 14:09:41 UTC 2020 - Ignaz Forster <iforster@suse.com>
-
-- Version 2.25
-  - Reduce number of overlays:
-    Instead of using transparent overlays for all previous layers only add the
-    previous snapshot's overlay; this will greatly reduce the number of
-    overlays while still making sure that /etc changes in the running system
-    will be visible in the next snapshot
-  - When using --drop-if-no-change synchronize potential /etc changes with
-    running system
-  - Exclude all non-root-fs mounts from inotify watcher
-
--------------------------------------------------------------------
 Wed Aug 12 10:06:11 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Version 2.24.1
