@@ -74,4 +74,12 @@
     (gh#eclipse/paho.mqtt.python#425).</comment>
     <requestid>744374</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8f4062520b401d50900777af0b3b5ef</srcmd5>
+    <version>1.5.1</version>
+    <time>1601044470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836463</requestid>
+  </revision>
 </revisionlist>

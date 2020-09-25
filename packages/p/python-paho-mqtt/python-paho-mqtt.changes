@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 23 21:23:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.1:
+  * Exceptions that occur in callbacks are no longer suppressed
+    by default. They can optionally be suppressed by setting
+    `client.suppress_exceptions = True`.
+  * Fix PUBREL remaining length of > 2 not being accepted for
+    MQTT v5 message flows.
+
+-------------------------------------------------------------------
 Thu Oct 31 06:39:26 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.5.0:

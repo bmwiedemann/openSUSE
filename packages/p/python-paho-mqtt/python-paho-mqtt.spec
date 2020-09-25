@@ -1,7 +1,7 @@
 #
 # spec file for package python-paho-mqtt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-paho-mqtt
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        MQTT version 3.11 client class
 License:        EPL-1.0
 Group:          Development/Languages/Python
-Url:            http://eclipse.org/paho
+URL:            http://eclipse.org/paho
 Source:         https://files.pythonhosted.org/packages/source/p/paho-mqtt/paho-mqtt-%{version}.tar.gz
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
