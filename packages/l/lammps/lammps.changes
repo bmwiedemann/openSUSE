@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Sun Sep 20 14:56:09 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- dropped disable_noopt.patch, merged upstream
+- added 9cdde97863825e4fdce449920d39b25414b2b0b3.patch from 
+  https://github.com/lammps/lammps/pull/2381 fix a failing test
+- added 61ce73273b3290083c01e6a2fadfb3db0889b9ba.patch from 
+  https://github.com/lammps/lammps/pull/2381 fix another failing test
+- bump version to 20200918 (patch)
+  - New fix pafi to perform langevin or brownian dynamics time
+    integration constrained to a potential hyperplane. Intended to
+    be coupled to the PAFI C++ code (Thomas Swinburne, CNRS /CINaM
+    Marseille and Mihai-Cosmin Marinica, SRMP/CEA Saclay) PR
+    [gh#lammps/lammps#1472]
+  - Update of the Kokkos library to version 3.2 (Stand Moore, SNL
+    and the Kokkos developers), PR [gh#lammps/lammps#2311]
+  - Updates to KOKKOS package to improve usability with the HIP
+    backend for AMD GPUs (Nick Curtis) PR [gh#lammps/lammps#2371]
+  - Update of the USER-COLVARS package to version 2020-09-17
+    (Giacomo Fiorin, NIH and other Colvars developers) PR
+    [gh#lammps/lammps#2356], PR [gh#lammps/lammps#2376]
+  - Change behavior of fix bond/react to update all charges by
+    default which is the more intuitive behavior. Keywords have
+    been updated to be more intuitive as well (Jake Gissinger, U
+    Colorado) PR [gh#lammps/lammps#2368]
+  - Update of dump styles in the COMPRESS package to be consistent
+    with recent changes elsewhere, added support for Zstd
+    compression and the option to set the compression level (Richard
+    Berger, Temple U), PR [gh#lammps/lammps#2331]
+  - Use eigensolver contributed to USER-REACTION package to
+    replace the old "jacobi" function to avoid licensing issues.
+    Implement wrapper functions around templated implementation
+    (Andrew Jewett, Scripps), PR [gh#lammps/lammps#2347]
+  - Small refactor of fix qeq/reax and its USER-OMP and KOKKOS
+    variants to reduce code replication and allow to add features
+    (Stan Moore, SNL) PR [gh#lammps/lammps#2354]
+  - Replace the use of the C-style NULL with the C++11 nullptr
+    keyword, where meaningful. (E. Anne Gunn, Sheridan College) PR
+    [gh#lammps/lammps#2358]
+  - Replace numeric constants in Atom and AtomVec classes by
+    symbolic ones via enumerators (Axel Kohlmeyer, Temple U) PR
+    [gh#lammps/lammps#2360]
+  - Bugfixes for the GPU package and related CMake/make files
+    (Vsevolod Nikolskiy, HSE University Moscow and Trung Nguyen,
+    Northwestern U), PR [gh#lammps/lammps#2307], PR
+    [gh#lammps/lammps#2313], PR [gh#lammps/lammps#2322], PR
+    [gh#lammps/lammps#2326]
+  - Bugfix for Langevin thermostatting inside of multiple fix
+    rigid variants (Trung Nguyen, Northwestern U) PR
+    [gh#lammps/lammps#2367]
+  - Refactoring of the C library interface and the Python wrapper
+    for consistency and maintainability, unit test support for the
+    interfaces, decoration of library functions with Doxygen comments
+    for semi-automatic documentation in the manual (Axel Kohlmeyer and
+    Richard Berger, Temple U) PR [gh#lammps/lammps#2310], PR
+    [gh#lammps/lammps#2318], PR [gh#lammps/lammps#2320], PR
+    [gh#lammps/lammps#2357], PR [gh#lammps/lammps#2359], PR
+    [gh#lammps/lammps#2362]
+  - Update of documentation build system to include Doxygen
+    processing and integration of that output via the "breathe"
+    Sphinx extension inclusion of the Developer Guide in the
+    manual, update and corrections to the CMake support (Axel
+    Kohlmeyer and Richard Berger, Temple U) PR
+    [gh#lammps/lammps#2309], PR [gh#lammps/lammps#2312], PR
+    [gh#lammps/lammps#2327]
+  - Update headers in the documentation of LAMMPS style commands
+    to be more compact and check for missing index entries
+    (Richard Berger, Temple U) PR [gh#lammps/lammps#2335]
+  - Update the compilation related documentation to use the
+    sphinx-tabs extension (in HTML mode only) to make it more
+    compact (Axel Kohlmeyer, Temple U) PR [gh#lammps/lammps#2348]
+  - Revised internal and external links in the documentation (Matt
+    Mansell and others) PR [gh#lammps/lammps#2341]
+  - Move more convenience functions from classes to the utils
+    namespace, update the code to consistently use the new
+    versions and remove the old, update the manual to include the
+    documentation of those APIs into the developer guide (Axel
+    Kohlmeyer, Temple U) PR [gh#lammps/lammps#2319], PR
+    [gh#lammps/lammps#2349]
+  - Start of a new (and "official") Fortran library interface and
+    corresponding sphinx API documentation in the programmer guide
+    plus unit tests for implemented APIs (Axel Kohlmeyer, Temple U) PR
+    [gh#lammps/lammps#2325]
+  - Update include file conventions and update lists of include
+    files accordingly, add make iwyu target to run the
+    include-what-you-use tool (Axel Kohlmeyer, Temple U) PR
+    [gh#lammps/lammps#2338]
+  - Make internal memory usage reporting consistently use the same
+    data type (Axel Kohlmeyer, Temple U) PR
+    [gh#lammps/lammps#2363]
+  - Add support to call reset_mol_ids internally from fix
+    bond/react (Jake Gissinger, U Colorado), PR
+    [gh#lammps/lammps#2240]
+  - Add RMSD based constraint to fix bond/react (Jake Gissinger, U
+    Collorado, and Andrew Jewett, Scripps, and Yuya Kurebayashi,
+    Tohoku U) PR [gh#lammps/lammps#2314]
+  - Refactor of USER-BOCS code to fix memory leaks and memory
+    access issues (E. Anne Gunn, Sheridan College) PR
+    [gh#lammps/lammps#2274]
+  - Implementation of force history for Mindlin variants of the
+    granular pair style (Jibril B. Coulibaly, Northwestern U), PR
+    [gh#lammps/lammps#2196]
+  - Updated singularity container description files to better
+    support the upcoming stable release (Richard Berger, Temple U)
+    PR [gh#lammps/lammps#2340]
+  - Various small updates and corrections (multiple authors) PR
+    [gh#lammps/lammps#2315], PR [gh#lammps/lammps#2317], PR
+    [gh#lammps/lammps#2336], PR [gh#lammps/lammps#2344], PR
+    [gh#lammps/lammps#2353], PR [gh#lammps/lammps#2364], PR
+    [gh#lammps/lammps#2366], PR [gh#lammps/lammps#2373], PR
+    [gh#lammps/lammps#2369], PR [gh#lammps/lammps#2375]
+
+-------------------------------------------------------------------
 Sun Jun 14 20:44:26 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - disable march=native optimization by setting empty 
