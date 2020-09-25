@@ -1,0 +1,29 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-09-25 18:43:32.375402966 +0200
+Upstream: no; dead
+
+Rip out gtk1, we do not have it.
+
+---
+ configure.in |    7 -------
+ 1 file changed, 7 deletions(-)
+
+Index: surf-1.0.6/configure.in
+===================================================================
+--- surf-1.0.6.orig/configure.in
++++ surf-1.0.6/configure.in
+@@ -133,14 +133,7 @@ fi
+ 
+ dnl when compiling with GUI support check for GTK >= 1.2.0 and X:
+ 
+-if test "$gui" = "yes"
+-then
+-	AM_PATH_GTK(1.2.0)
+-	CFLAGS="$CFLAGS $GTK_CFLAGS"
+-	CXXFLAGS="$CXXFLAGS $GTK_CFLAGS"
+-else
+ 	AC_DEFINE(NO_GUI)
+-fi
+ 
+ AC_PATH_X
+ AC_PATH_XTRA
