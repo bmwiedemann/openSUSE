@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 20 16:34:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20200910:
+  * LICENSE: RCS_BASE
+  * reader.c, output.c: cppcheck -- reduce scope
+  update to version 2.0
+  improve loop which skips backward through a (possibly nested) sequence of
+  square-brackets.
+  * reader.c: simplify a check to quiet a bogus cppcheck-warning
+  * yacc.1: bump date
+  * reader.c: add a note about a bogus cppcheck warning
+  always check for gcc attributes, to work around defect in clang's imitation
+  of this feature
+  * reader.c: cppcheck -- scope reduction
+  cppcheck -- eliminate bogus returns after no-return functions
+  * verbose.c, output.c, mkpar.c, main.c, warshall.c, lr0.c, lalr.c, graph.c, closure.c:
+  cppcheck -- scope reduction
+
+-------------------------------------------------------------------
 Fri Apr  3 07:32:38 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20200330:

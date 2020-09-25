@@ -232,4 +232,12 @@ http://invisible-island.net/byacc/CHANGES (forwarded request 185697 from elvigia
 - Enable btyacc extension</comment>
     <requestid>791114</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3ed3c966fb9ab424f68473a634ccc740</srcmd5>
+    <version>20200910</version>
+    <time>1601044358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835807</requestid>
+  </revision>
 </revisionlist>
