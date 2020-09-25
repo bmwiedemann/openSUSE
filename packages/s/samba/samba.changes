@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Sep 22 16:20:33 UTC 2020 - David Disseldorp <ddiss@suse.com>
+
+- Update to samba 4.13.0
+  + Require Python 3.6
+  + Move wide links functionality into VFS module
+  + Deprecate NT4-like 'classic' Samba domain controllers
+  + Deprecate SMBv1 only protocol options
+  + Remove deprecated "ldap ssl ads" option
+  + Unify asynchronous DCE-RPC server; (jsc#SES-645)
+  + Replay multichannel lease break requests; (bso#11897); (jsc#SES-655)
+  + Drop internal byteorder.h header from util-devel package
+  + Remove final code for the AD DC LDAP backend
+  + Add AD DC Group Policy Scripts
+  + Only use gnutls_aead_cipher_encryptv2() for GnuTLS > 3.6.14; (bso#14399)
+  + Fix %U substitutions if it contains a domain name; (bso#14467)
+  + Fix krb5.conf creation for 'net ads join'; (bso#14479)
+  + Fix build problem if libbsd-dev is not installed; (bso#14482)
+  + Toggle vfs_snapper using "--with-shared-modules"; (bso#14437)
+  + Fix idmap_ad RFC4511 response handling; (bso#14465)
+  + Fix panic in get_lease_type(); (bso#14428)
+
+-------------------------------------------------------------------
+Fri Sep 18 13:24:12 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to samba 4.12.7
+  + CVE-2020-1472(ZeroLogon): s3:rpc_server/netlogon: Protect
+    netr_ServerPasswordSet2 against unencrypted passwords; (bsc#1176579);
+    (bso#14497);
+  + CVE-2020-1472(ZeroLogon): s3:rpc_server/netlogon: Support
+    "server require schannel:WORKSTATION$ = no" about unsecure configurations;
+    (bsc#1176579); (bso#14497);
+  + CVE-2020-1472(ZeroLogon): s4 torture rpc: repeated bytes in client
+    challenge; (bsc#1176579); (bso#14497);
+  + CVE-2020-1472(ZeroLogon): libcli/auth: Reject weak client challenges in
+    netlogon_creds_server_init() "server require schannel:WORKSTATION$ = no";
+    (bsc#1176579); (bso#14497);
+
+- Update to samba 4.12.6
+  + s3: libsmb: Fix SMB2 client rename bug to a Windows server;
+    (bso#14403).
+  + dsdb: Allow "password hash userPassword schemes = CryptSHA256"
+    to work on RHEL7; (bso#14424).
+  + dbcheck: Allow a dangling forward link outside our known NCs;
+    (bso#14450).
+  + lib/debug: Set the correct default backend loglevel to
+    MAX_DEBUG_LEVEL; (bso#14426).
+  + PANIC: Assert failed in get_lease_type(); (bso#14428).
+  + util: Fix build on AIX by fixing the order of replace.h include;
+    (bso#14422).
+  + srvsvc_NetFileEnum asserts with open files; (bso#14355).
+  + KDC breaks with DES keys still in the database and
+    msDS-SupportedEncryptionTypes 31 indicating support for it;
+    (bso#14354).
+  + s3:smbd: Make sure vfs_ChDir() always sets
+    conn->cwd_fsp->fh->fd = AT_FDCWD; (bso#14427).
+  + PANIC: Assert failed in get_lease_type(); (bso#14428).
+  + docs: Fix documentation for require_membership_of of
+    pam_winbind.conf; (bso#14358).
+  + ctdb-scripts: Use nfsconf utility for variable values in CTDB
+    NFS scripts; (bso#14444).
+  + s3:winbind:idmap_ad: Make failure to get attrnames for schema
+    mode fatal; (bso#14425).
+
+-------------------------------------------------------------------
 Tue Jul 28 13:25:09 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't install SuSEfirewall2 services, we don't have that package

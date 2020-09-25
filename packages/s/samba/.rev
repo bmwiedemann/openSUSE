@@ -3335,4 +3335,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>824655</requestid>
   </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>4385acc4ab602898d9c78f64bacc1815</srcmd5>
+    <version>4.13.0+git.138.ff2d5480c67</version>
+    <time>1601044007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836315</requestid>
+  </revision>
 </revisionlist>

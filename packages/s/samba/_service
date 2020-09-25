@@ -2,7 +2,7 @@
         <service name="tar_scm" mode="disabled">
                 <param name="url">https://gitlab.suse.de/samba/suse-samba.git/</param>
                 <param name="scm">git</param>
-                <param name="revision">factory-4-12-stable</param>
+                <param name="revision">factory-4-13-stable</param>
                 <param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
                 <param name="versionrewrite-pattern">samba(.*)</param>
                 <param name="versionrewrite-replacement">\1</param>

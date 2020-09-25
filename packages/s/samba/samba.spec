@@ -164,7 +164,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.12.5+git.168.88cc07e6cbf
+Version:        4.13.0+git.138.ff2d5480c67
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -2066,23 +2066,7 @@ exit 0
 %endif
 %dir %{_datadir}/ctdb/events
 %dir %{_datadir}/ctdb/events/legacy
-%{_datadir}/ctdb/events/legacy/00.ctdb.script
-%{_datadir}/ctdb/events/legacy/01.reclock.script
-%{_datadir}/ctdb/events/legacy/05.system.script
-%{_datadir}/ctdb/events/legacy/06.nfs.script
-%{_datadir}/ctdb/events/legacy/10.interface.script
-%{_datadir}/ctdb/events/legacy/11.natgw.script
-%{_datadir}/ctdb/events/legacy/11.routing.script
-%{_datadir}/ctdb/events/legacy/13.per_ip_routing.script
-%{_datadir}/ctdb/events/legacy/20.multipathd.script
-%{_datadir}/ctdb/events/legacy/31.clamd.script
-%{_datadir}/ctdb/events/legacy/40.vsftpd.script
-%{_datadir}/ctdb/events/legacy/41.httpd.script
-%{_datadir}/ctdb/events/legacy/49.winbind.script
-%{_datadir}/ctdb/events/legacy/50.samba.script
-%{_datadir}/ctdb/events/legacy/60.nfs.script
-%{_datadir}/ctdb/events/legacy/70.iscsi.script
-%{_datadir}/ctdb/events/legacy/91.lvs.script
+%{_datadir}/ctdb/events/legacy/*
 %dir %{_sysconfdir}/ctdb/events
 %dir %{_sysconfdir}/ctdb/events/notification
 %{_sysconfdir}/ctdb/events/notification/README
@@ -2337,7 +2321,6 @@ exit 0
 %dir %_includedir/samba-4.0/util/
 %_includedir/samba-4.0/util/attr.h
 %_includedir/samba-4.0/util/blocking.h
-%_includedir/samba-4.0/util/byteorder.h
 %_includedir/samba-4.0/util/data_blob.h
 %_includedir/samba-4.0/util/debug.h
 %_includedir/samba-4.0/util/discard.h
@@ -2468,7 +2451,6 @@ exit 0
 %{_libdir}/samba/service/winbindd.so
 %{_libdir}/samba/service/wrepl.so
 %{_datadir}/samba/setup
-%{_datadir}/samba/setup/DB_CONFIG
 %{_datadir}/samba/setup/ad-schema
 %{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_Attributes.txt
 %{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_Classes.txt
@@ -2476,7 +2458,6 @@ exit 0
 %{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_R2_Classes.txt
 %{_datadir}/samba/setup/ad-schema/licence.txt
 %{_datadir}/samba/setup/aggregate_schema.ldif
-%{_datadir}/samba/setup/cn=samba.ldif
 %{_datadir}/samba/setup/display-specifiers
 %{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k0.txt
 %{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k3.txt
@@ -2484,26 +2465,12 @@ exit 0
 %{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k8.txt
 %{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k8R2.txt
 %{_datadir}/samba/setup/dns_update_list
-%{_datadir}/samba/setup/fedorads-index.ldif
-%{_datadir}/samba/setup/fedorads-linked-attributes.ldif
-%{_datadir}/samba/setup/fedorads-pam.ldif
-%{_datadir}/samba/setup/fedorads-samba.ldif
-%{_datadir}/samba/setup/fedorads-sasl.ldif
 %{_datadir}/samba/setup/idmap_init.ldif
 %{_datadir}/samba/setup/krb5.conf
-%{_datadir}/samba/setup/memberof.conf
-%{_datadir}/samba/setup/mmr_serverids.conf
-%{_datadir}/samba/setup/mmr_syncrepl.conf
-%{_datadir}/samba/setup/modules.conf
 %{_datadir}/samba/setup/named.conf
 %{_datadir}/samba/setup/named.conf.dlz
 %{_datadir}/samba/setup/named.conf.update
 %{_datadir}/samba/setup/named.txt
-%{_datadir}/samba/setup/olc_mmr.conf
-%{_datadir}/samba/setup/olc_seed.ldif
-%{_datadir}/samba/setup/olc_serverid.conf
-%{_datadir}/samba/setup/olc_syncrepl.conf
-%{_datadir}/samba/setup/olc_syncrepl_seed.conf
 %{_datadir}/samba/setup/prefixMap.txt
 %{_datadir}/samba/setup/provision.ldif
 %{_datadir}/samba/setup/provision.reg
@@ -2539,18 +2506,17 @@ exit 0
 %{_datadir}/samba/setup/provision_users_add.ldif
 %{_datadir}/samba/setup/provision_users_modify.ldif
 %{_datadir}/samba/setup/provision_well_known_sec_princ.ldif
-%{_datadir}/samba/setup/refint.conf
-%{_datadir}/samba/setup/schema-map-fedora-ds-1.0
-%{_datadir}/samba/setup/schema-map-openldap-2.3
 %{_datadir}/samba/setup/schema_samba4.ldif
 %{_datadir}/samba/setup/secrets.ldif
 %{_datadir}/samba/setup/secrets_dns.ldif
 %{_datadir}/samba/setup/secrets_init.ldif
-%{_datadir}/samba/setup/secrets_sasl_ldap.ldif
-%{_datadir}/samba/setup/secrets_simple_ldap.ldif
 %{_datadir}/samba/setup/share.ldif
 %{_datadir}/samba/setup/spn_update_list
 %{_datadir}/samba/setup/ypServ30.ldif
+%{_datadir}/samba/admx
+%{_datadir}/samba/admx/samba.admx
+%{_datadir}/samba/admx/en-US
+%{_datadir}/samba/admx/en-US/samba.adml
 %{_mandir}/man8/samba.8.*
 %{_mandir}/man8/samba-tool.8.*
 %{_mandir}/man8/samba_downgrade_db.8.*
