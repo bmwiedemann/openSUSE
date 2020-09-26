@@ -1169,8 +1169,6 @@ unsorted:
   - biboumi 
   - bibtool 
   - bibview 
-  - bijiben: [i586] 
-  - bijiben-lang: [i586] 
   - bin86 
   - bind-devel 
   - bind-devel-32bit: [x86_64] 
@@ -1333,10 +1331,7 @@ unsorted:
   - bpftrace-tools: [x86_64] 
   - bpm-tools 
   - branding-upstream 
-  - brasero: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - brasero-devel 
-  - brasero-lang: [i586] 
-  - brasero-nautilus: [i586] 
   - brevity 
   - brial-devel 
   - brickd 
@@ -1648,7 +1643,6 @@ unsorted:
   - ccze 
   - ccze-devel 
   - cd-paranoia 
-  - cdda2wav: [i586] 
   - cddlib-devel 
   - cddlib-doc 
   - cddlib-tools 
@@ -2594,7 +2588,6 @@ unsorted:
   - dkimproxy 
   - dkms 
   - dleyna-core-devel 
-  - dleyna-renderer: [i586] 
   - dleyna-renderer-devel 
   - dleyna-server-devel 
   - dlpack-devel 
@@ -5185,8 +5178,6 @@ unsorted:
   - gnome-doc-utils 
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
-  - gnome-documents: [i586] 
-  - gnome-documents-lang: [i586] 
   - gnome-dvb-daemon 
   - gnome-dvb-daemon-lang 
   - gnome-epub-thumbnailer 
@@ -5226,13 +5217,10 @@ unsorted:
   - gnome-nibbles 
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
-  - gnome-online-miners: [i586] 
   - gnome-packagekit-extras 
   - gnome-passwordsafe 
   - gnome-passwordsafe-lang 
   - gnome-patch-translation 
-  - gnome-photos: [i586] 
-  - gnome-photos-lang: [i586] 
   - gnome-pie 
   - gnome-pomodoro 
   - gnome-pomodoro-lang 
@@ -5244,10 +5232,7 @@ unsorted:
   - gnome-search-tool 
   - gnome-search-tool-lang 
   - gnome-settings-daemon-devel 
-  - gnome-shell-classic: [i586] 
-  - gnome-shell-classic-session: [i586] 
   - gnome-shell-devel 
-  - gnome-shell-extension-desktop-icons: [i586] 
   - gnome-shell-extension-gpaste 
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
@@ -5255,16 +5240,12 @@ unsorted:
   - gnome-shell-extension-user-theme 
   - gnome-shell-extensions-common 
   - gnome-shell-extensions-common-lang 
-  - gnome-shell-search-provider-bijiben: [i586] 
   - gnome-shell-search-provider-boxes 
-  - gnome-shell-search-provider-documents: [i586] 
   - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-gnome-calendar 
-  - gnome-shell-search-provider-gnome-photos: [i586] 
   - gnome-shell-search-provider-gnome-recipes 
   - gnome-shell-search-provider-gnote 
   - gnome-shell-search-provider-lollypop 
-  - gnome-shell-search-provider-nautilus: [i586] 
   - gnome-shell-theme-adapta 
   - gnome-shell-theme-plata 
   - gnome-software-devel 
@@ -11711,7 +11692,6 @@ unsorted:
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
   - libpapi_6_0_0-hpc 
-  - libparanoia1_0: [i586] 
   - libparaview5_8 
   - libpari-gmp-tls6 
   - libparlatype-devel 
@@ -13766,7 +13746,6 @@ unsorted:
   - libyui-qt-rest-api13 
   - libyui-rest-api-devel 
   - libyui-rest-api13 
-  - libzapojit-0_0-0: [i586] 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -15639,11 +15618,9 @@ unsorted:
   - native-maven-plugin 
   - native-platform 
   - native-platform-javadoc 
-  - nautilus: [i586] 
   - nautilus-deja-dup 
   - nautilus-devel 
   - nautilus-eiciel 
-  - nautilus-evince: [i586] 
   - nautilus-extension-actions 
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
@@ -15652,7 +15629,6 @@ unsorted:
   - nautilus-extension-tilix 
   - nautilus-image-converter 
   - nautilus-image-converter-lang 
-  - nautilus-lang: [i586] 
   - nautilus-plugin-easytag 
   - nautilus-terminal 
   - nauty 
@@ -34152,7 +34128,7 @@ unsorted:
   - trace-cmd 
   - trackballs 
   - tracker-devel 
-  - tracker2-devel: [x86_64] # devel package of dvd:libtracker-miner-2_0-0 
+  - tracker2-devel 
   - trader 
   - trader-lang 
   - trang 
@@ -34376,7 +34352,6 @@ unsorted:
   - typelib-1_0-FolksTracker-0_6 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
-  - typelib-1_0-GData-0_0: [i586] 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GMime-2_6 
   - typelib-1_0-GMime-3_0 
@@ -34487,7 +34462,7 @@ unsorted:
   - typelib-1_0-Tepl-4 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TimezoneMap-1_0 
-  - typelib-1_0-TrackerMiner-2_0: [x86_64] 
+  - typelib-1_0-TrackerMiner-2_0 
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Unique-1_0 
@@ -34501,7 +34476,6 @@ unsorted:
   - typelib-1_0-XplayerPlParser-1_0 
   - typelib-1_0-XreaderDocument-1_5 
   - typelib-1_0-XreaderView-1_5 
-  - typelib-1_0-Zpj-0_0: [i586] 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 

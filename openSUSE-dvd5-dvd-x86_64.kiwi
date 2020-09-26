@@ -221,8 +221,8 @@
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
-      <repopackage name="bijiben" arch="x86_64"/>
-      <repopackage name="bijiben-lang" arch="x86_64"/>
+      <repopackage name="bijiben"/>
+      <repopackage name="bijiben-lang"/>
       <repopackage name="bind"/>
       <repopackage name="bind-chrootenv"/>
       <repopackage name="bind-doc"/>
@@ -251,9 +251,9 @@
       <repopackage name="bovo"/>
       <repopackage name="bovo-lang"/>
       <repopackage name="branding-openSUSE"/>
-      <repopackage name="brasero" arch="x86_64"/>
-      <repopackage name="brasero-lang" arch="x86_64"/>
-      <repopackage name="brasero-nautilus" arch="x86_64"/>
+      <repopackage name="brasero"/>
+      <repopackage name="brasero-lang"/>
+      <repopackage name="brasero-nautilus"/>
       <repopackage name="breeze"/>
       <repopackage name="breeze5-cursors"/>
       <repopackage name="breeze5-decoration"/>
@@ -301,7 +301,7 @@
       <repopackage name="catfish"/>
       <repopackage name="catfish-lang"/>
       <repopackage name="cd-discid"/>
-      <repopackage name="cdda2wav" arch="x86_64"/>
+      <repopackage name="cdda2wav"/>
       <repopackage name="cdparanoia"/>
       <repopackage name="cdrdao"/>
       <repopackage name="cdrecord"/>
@@ -423,7 +423,7 @@
       <repopackage name="discover-lang"/>
       <repopackage name="distribution-logos-openSUSE-Tumbleweed"/>
       <repopackage name="dleyna-connector-dbus"/>
-      <repopackage name="dleyna-renderer" arch="x86_64"/>
+      <repopackage name="dleyna-renderer"/>
       <repopackage name="dleyna-server"/>
       <repopackage name="dmidecode"/>
       <repopackage name="dmraid"/>
@@ -713,8 +713,8 @@
       <repopackage name="gnome-dictionary-lang"/>
       <repopackage name="gnome-disk-utility"/>
       <repopackage name="gnome-disk-utility-lang"/>
-      <repopackage name="gnome-documents" arch="x86_64"/>
-      <repopackage name="gnome-documents-lang" arch="x86_64"/>
+      <repopackage name="gnome-documents"/>
+      <repopackage name="gnome-documents-lang"/>
       <repopackage name="gnome-icon-theme"/>
       <repopackage name="gnome-icon-theme-extras"/>
       <repopackage name="gnome-icon-theme-symbolic"/>
@@ -738,11 +738,11 @@
       <repopackage name="gnome-music-lang"/>
       <repopackage name="gnome-online-accounts"/>
       <repopackage name="gnome-online-accounts-lang"/>
-      <repopackage name="gnome-online-miners" arch="x86_64"/>
+      <repopackage name="gnome-online-miners"/>
       <repopackage name="gnome-packagekit"/>
       <repopackage name="gnome-packagekit-lang"/>
-      <repopackage name="gnome-photos" arch="x86_64"/>
-      <repopackage name="gnome-photos-lang" arch="x86_64"/>
+      <repopackage name="gnome-photos"/>
+      <repopackage name="gnome-photos-lang"/>
       <repopackage name="gnome-power-manager"/>
       <repopackage name="gnome-power-manager-lang"/>
       <repopackage name="gnome-screenshot"/>
@@ -756,21 +756,21 @@
       <repopackage name="gnome-settings-daemon-lang"/>
       <repopackage name="gnome-shell"/>
       <repopackage name="gnome-shell-calendar"/>
-      <repopackage name="gnome-shell-classic" arch="x86_64"/>
-      <repopackage name="gnome-shell-classic-session" arch="x86_64"/>
-      <repopackage name="gnome-shell-extension-desktop-icons" arch="x86_64"/>
+      <repopackage name="gnome-shell-classic"/>
+      <repopackage name="gnome-shell-classic-session"/>
+      <repopackage name="gnome-shell-extension-desktop-icons"/>
       <repopackage name="gnome-shell-lang"/>
-      <repopackage name="gnome-shell-search-provider-bijiben" arch="x86_64"/>
+      <repopackage name="gnome-shell-search-provider-bijiben"/>
       <repopackage name="gnome-shell-search-provider-contacts"/>
-      <repopackage name="gnome-shell-search-provider-documents" arch="x86_64"/>
+      <repopackage name="gnome-shell-search-provider-documents"/>
       <repopackage name="gnome-shell-search-provider-epiphany"/>
       <repopackage name="gnome-shell-search-provider-gnome-calculator"/>
       <repopackage name="gnome-shell-search-provider-gnome-characters"/>
       <repopackage name="gnome-shell-search-provider-gnome-clocks"/>
-      <repopackage name="gnome-shell-search-provider-gnome-photos" arch="x86_64"/>
+      <repopackage name="gnome-shell-search-provider-gnome-photos"/>
       <repopackage name="gnome-shell-search-provider-gnome-terminal"/>
       <repopackage name="gnome-shell-search-provider-gnome-weather"/>
-      <repopackage name="gnome-shell-search-provider-nautilus" arch="x86_64"/>
+      <repopackage name="gnome-shell-search-provider-nautilus"/>
       <repopackage name="gnome-shell-search-provider-seahorse"/>
       <repopackage name="gnome-software"/>
       <repopackage name="gnome-software-lang"/>
@@ -2497,7 +2497,7 @@
       <repopackage name="libpango-1_0-0"/>
       <repopackage name="libpango-1_0-0-32bit" arch="x86_64"/>
       <repopackage name="libpangomm-1_4-1"/>
-      <repopackage name="libparanoia1_0" arch="x86_64"/>
+      <repopackage name="libparanoia1_0"/>
       <repopackage name="libparted0"/>
       <repopackage name="libpath_utils1"/>
       <repopackage name="libpcap1"/>
@@ -2905,10 +2905,10 @@
       <repopackage name="libtotem-plparser-mini18"/>
       <repopackage name="libtotem-plparser18"/>
       <repopackage name="libtowitoko2"/>
-      <repopackage name="libtracker-common-2_0" arch="x86_64"/>
-      <repopackage name="libtracker-control-2_0-0" arch="x86_64"/>
-      <repopackage name="libtracker-miner-2_0-0" arch="x86_64"/>
-      <repopackage name="libtracker-sparql-2_0-0" arch="x86_64"/>
+      <repopackage name="libtracker-common-2_0"/>
+      <repopackage name="libtracker-control-2_0-0"/>
+      <repopackage name="libtracker-miner-2_0-0"/>
+      <repopackage name="libtracker-sparql-2_0-0"/>
       <repopackage name="libtracker-sparql-3_0-0"/>
       <repopackage name="libtre5"/>
       <repopackage name="libts0"/>
@@ -3187,7 +3187,7 @@
       <repopackage name="libz1"/>
       <repopackage name="libz1-32bit" arch="x86_64"/>
       <repopackage name="libz3-4_8"/>
-      <repopackage name="libzapojit-0_0-0" arch="x86_64"/>
+      <repopackage name="libzapojit-0_0-0"/>
       <repopackage name="libzbar0"/>
       <repopackage name="libzck1"/>
       <repopackage name="libzebra1"/>
@@ -3426,11 +3426,11 @@
       <repopackage name="nagios-www"/>
       <repopackage name="nano"/>
       <repopackage name="nano-lang"/>
-      <repopackage name="nautilus" arch="x86_64"/>
-      <repopackage name="nautilus-evince" arch="x86_64"/>
+      <repopackage name="nautilus"/>
+      <repopackage name="nautilus-evince"/>
       <repopackage name="nautilus-extension-seahorse"/>
       <repopackage name="nautilus-extension-terminal"/>
-      <repopackage name="nautilus-lang" arch="x86_64"/>
+      <repopackage name="nautilus-lang"/>
       <repopackage name="nautilus-sendto"/>
       <repopackage name="nautilus-sendto-lang"/>
       <repopackage name="nautilus-share"/>
@@ -5015,11 +5015,11 @@
       <repopackage name="tracker-miner-files"/>
       <repopackage name="tracker-miners"/>
       <repopackage name="tracker-miners-lang"/>
-      <repopackage name="tracker2" arch="x86_64"/>
-      <repopackage name="tracker2-lang" arch="x86_64"/>
-      <repopackage name="tracker2-miner-files" arch="x86_64"/>
-      <repopackage name="tracker2-miners" arch="x86_64"/>
-      <repopackage name="tracker2-miners-lang" arch="x86_64"/>
+      <repopackage name="tracker2"/>
+      <repopackage name="tracker2-lang"/>
+      <repopackage name="tracker2-miner-files"/>
+      <repopackage name="tracker2-miners"/>
+      <repopackage name="tracker2-miners-lang"/>
       <repopackage name="transactional-update"/>
       <repopackage name="transactional-update-zypp-config"/>
       <repopackage name="translation-update"/>
@@ -5067,7 +5067,7 @@
       <repopackage name="typelib-1_0-Fwupd-2_0"/>
       <repopackage name="typelib-1_0-Gck-1"/>
       <repopackage name="typelib-1_0-Gcr-3"/>
-      <repopackage name="typelib-1_0-GData-0_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-GData-0_0"/>
       <repopackage name="typelib-1_0-GdkPixbuf-2_0"/>
       <repopackage name="typelib-1_0-Gdm-1_0"/>
       <repopackage name="typelib-1_0-Geoclue-2_0"/>
@@ -5124,15 +5124,15 @@
       <repopackage name="typelib-1_0-TelepathyLogger-0_2"/>
       <repopackage name="typelib-1_0-Template-1_0"/>
       <repopackage name="typelib-1_0-TotemPlParser-1_0"/>
-      <repopackage name="typelib-1_0-Tracker-2_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-Tracker-2_0"/>
       <repopackage name="typelib-1_0-Tracker-3_0"/>
-      <repopackage name="typelib-1_0-TrackerControl-2_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-TrackerControl-2_0"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0"/>
       <repopackage name="typelib-1_0-Vte-2.91"/>
       <repopackage name="typelib-1_0-WebKit2-4_0"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-XApp-1_0"/>
-      <repopackage name="typelib-1_0-Zpj-0_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-Zpj-0_0"/>
       <repopackage name="ucode-amd"/>
       <repopackage name="ucode-intel"/>
       <repopackage name="udev"/>
