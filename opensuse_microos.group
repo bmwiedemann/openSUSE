@@ -41,7 +41,7 @@
     <package name="libbz2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcap-ng0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcap2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libcbor0_7" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libcbor0_8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libcom_err2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcryptsetup12" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -1323,9 +1323,9 @@
     <package name="timezone" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="toolbox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-container_runtime -->
     <package name="totem-pl-parser" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="tracker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="tracker-miner-files" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="tracker-miners" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="tracker2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="tracker2-miner-files" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="tracker2-miners" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="transactional-update" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="transactional-update-zypp-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="typelib-1_0-AccountsService-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
