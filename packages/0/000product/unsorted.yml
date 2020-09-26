@@ -523,6 +523,7 @@ unsorted:
   - ant-xz 
   - anthy 
   - anthy-devel 
+  - antic-devel 
   - antijingoist-opendyslexic-fonts 
   - antimicro 
   - antlr 
@@ -693,6 +694,7 @@ unsorted:
   - arabic-amiri-fonts 
   - arandr 
   - aranym 
+  - arb-devel 
   - arc 
   - arc-icon-theme 
   - arcanist 
@@ -882,6 +884,8 @@ unsorted:
   - audacious-plugins 
   - audacious-plugins-extra 
   - audacious-plugins-lang 
+  - audacity: [x86_64] 
+  - audacity-lang: [x86_64] 
   - audaspace 
   - audaspace-devel 
   - audaspace-doc 
@@ -1145,6 +1149,7 @@ unsorted:
   - benchdnn: [x86_64] 
   - benchmark-devel 
   - benji 
+  - benzene 
   - berkeleydb 
   - berkeleydb-demo 
   - berkeleydb-javadoc 
@@ -1164,6 +1169,8 @@ unsorted:
   - biboumi 
   - bibtool 
   - bibview 
+  - bijiben: [i586] 
+  - bijiben-lang: [i586] 
   - bin86 
   - bind-devel 
   - bind-devel-32bit: [x86_64] 
@@ -1326,7 +1333,10 @@ unsorted:
   - bpftrace-tools: [x86_64] 
   - bpm-tools 
   - branding-upstream 
+  - brasero: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - brasero-devel 
+  - brasero-lang: [i586] 
+  - brasero-nautilus: [i586] 
   - brevity 
   - brial-devel 
   - brickd 
@@ -1638,6 +1648,7 @@ unsorted:
   - ccze 
   - ccze-devel 
   - cd-paranoia 
+  - cdda2wav: [i586] 
   - cddlib-devel 
   - cddlib-doc 
   - cddlib-tools 
@@ -1834,6 +1845,8 @@ unsorted:
   - clipped 
   - clipped-lang 
   - clippy 
+  - cliquer 
+  - cliquer-devel 
   - clisp 
   - clisp-doc 
   - cln 
@@ -1859,6 +1872,8 @@ unsorted:
   - clutter-gtk-devel 
   - clxclient-devel 
   - clzip 
+  - cm 
+  - cm-devel 
   - cmake 
   - cmake-fedora 
   - cmake-fedora-modules 
@@ -1868,6 +1883,8 @@ unsorted:
   - cmake-mini 
   - cmark 
   - cmark-devel 
+  - cmh 
+  - cmh-devel 
   - cmis-client 
   - cmpi-bindings-perl 
   - cmpi-bindings-py3wbem 
@@ -2087,6 +2104,7 @@ unsorted:
   - courier-unicode-devel 
   - courier-unicode-doc 
   - cowsay 
+  - coxeter 
   - cozette-fonts 
   - cozy 
   - cozy-lang 
@@ -2122,6 +2140,7 @@ unsorted:
   - cracklib-devel-32bit: [x86_64] 
   - cracklib-dict-small 
   - cramfs-tools 
+  - cramfsswap 
   - crash 
   - crash-devel 
   - crash-doc 
@@ -2444,6 +2463,9 @@ unsorted:
   - ddccontrol-lang 
   - ddcutil 
   - ddgr 
+  - ddnet 
+  - ddnet-data 
+  - ddnet-server 
   - ddrescueview 
   - dds2tar 
   - deadbeef 
@@ -2572,6 +2594,7 @@ unsorted:
   - dkimproxy 
   - dkms 
   - dleyna-core-devel 
+  - dleyna-renderer: [i586] 
   - dleyna-renderer-devel 
   - dleyna-server-devel 
   - dlpack-devel 
@@ -2714,7 +2737,6 @@ unsorted:
   - duktape-devel 
   - dummy-release 
   - dump 
-  - dump1090 
   - dump1090-fa 
   - dumpvdl2 
   - dumpzilla 
@@ -2734,6 +2756,7 @@ unsorted:
   - dvdisaster 
   - dvdisaster-docs 
   - dvgt 
+  - dwarf2json 
   - dwarves 
   - dwz 
   - dwz-testsuite 
@@ -3196,7 +3219,7 @@ unsorted:
   - ffcall 
   - fflas-ffpack-devel 
   - fflas-ffpack-doc 
-  - ffmpeg-4: [i586] 
+  - ffmpeg-4 
   - ffmpeg-4-libavcodec-devel 
   - ffmpeg-4-libavdevice-devel 
   - ffmpeg-4-libavfilter-devel 
@@ -4964,6 +4987,7 @@ unsorted:
   - git-credential-gnome-keyring 
   - git-credential-libsecret 
   - git-crypt 
+  - git-delta 
   - git-deps-html 
   - git-doc 
   - git-filter-repo 
@@ -5000,7 +5024,6 @@ unsorted:
   - glade-catalog-gtkhtml 
   - glade-catalog-gtksourceview 
   - glade-catalog-gtksourceview4 
-  - glade-catalog-libhandy 
   - glade-catalog-libhandy0 
   - glade-catalog-libpeas 
   - glade-catalog-v3270 
@@ -5162,6 +5185,8 @@ unsorted:
   - gnome-doc-utils 
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
+  - gnome-documents: [i586] 
+  - gnome-documents-lang: [i586] 
   - gnome-dvb-daemon 
   - gnome-dvb-daemon-lang 
   - gnome-epub-thumbnailer 
@@ -5201,10 +5226,13 @@ unsorted:
   - gnome-nibbles 
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
+  - gnome-online-miners: [i586] 
   - gnome-packagekit-extras 
   - gnome-passwordsafe 
   - gnome-passwordsafe-lang 
   - gnome-patch-translation 
+  - gnome-photos: [i586] 
+  - gnome-photos-lang: [i586] 
   - gnome-pie 
   - gnome-pomodoro 
   - gnome-pomodoro-lang 
@@ -5216,7 +5244,10 @@ unsorted:
   - gnome-search-tool 
   - gnome-search-tool-lang 
   - gnome-settings-daemon-devel 
+  - gnome-shell-classic: [i586] 
+  - gnome-shell-classic-session: [i586] 
   - gnome-shell-devel 
+  - gnome-shell-extension-desktop-icons: [i586] 
   - gnome-shell-extension-gpaste 
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
@@ -5224,12 +5255,16 @@ unsorted:
   - gnome-shell-extension-user-theme 
   - gnome-shell-extensions-common 
   - gnome-shell-extensions-common-lang 
+  - gnome-shell-search-provider-bijiben: [i586] 
   - gnome-shell-search-provider-boxes 
+  - gnome-shell-search-provider-documents: [i586] 
   - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-gnome-calendar 
+  - gnome-shell-search-provider-gnome-photos: [i586] 
   - gnome-shell-search-provider-gnome-recipes 
   - gnome-shell-search-provider-gnote 
   - gnome-shell-search-provider-lollypop 
+  - gnome-shell-search-provider-nautilus: [i586] 
   - gnome-shell-theme-adapta 
   - gnome-shell-theme-plata 
   - gnome-software-devel 
@@ -5923,6 +5958,7 @@ unsorted:
   - haserl 
   - hashalot 
   - hashcat 
+  - hashcat-devel 
   - hashdeep 
   - haveged-devel 
   - hawk-apiserver 
@@ -8678,6 +8714,7 @@ unsorted:
   - libansilove1 
   - libanthy0 
   - libanthy0-32bit: [x86_64] 
+  - libantic0 
   - libantlr3c3 
   - libantlr3c3-32bit: [x86_64] 
   - libantlr4-runtime-devel 
@@ -8700,6 +8737,7 @@ unsorted:
   - libapr-util1-dbd-mysql 
   - libapr-util1-dbd-pgsql 
   - libapr-util1-dbd-sqlite3 
+  - libarb2 
   - libarchive-devel 
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
@@ -8795,7 +8833,7 @@ unsorted:
   - libavc1394-devel-32bit: [x86_64] 
   - libavc1394-tools 
   - libavcodec58_91-32bit: [x86_64] 
-  - libavdevice58_10: [i586] 
+  - libavdevice58_10 
   - libavdevice58_10-32bit: [x86_64] 
   - libavfilter7_85-32bit: [x86_64] 
   - libavformat58_45-32bit: [x86_64] 
@@ -9237,6 +9275,7 @@ unsorted:
   - libcld2-0 
   - libcli-devel 
   - libcli1_9 
+  - libcliquer1 
   - libclocale-devel 
   - libclocale1 
   - libcloudproviders-devel 
@@ -9249,8 +9288,10 @@ unsorted:
   - libclutter-gtk-1_0-0-32bit: [x86_64] 
   - libclxclient3 
   - libclzma-suse0 
+  - libcm1 
   - libcmap4-32bit: [x86_64] 
   - libcmark0_29_0 
+  - libcmh0 
   - libcmis-c-0_5-5 
   - libcmis-c-devel 
   - libcmis-devel 
@@ -10055,7 +10096,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
-  - libgnuastro9 
+  - libgnuastro11 
   - libgnuradio-3_8_2 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
@@ -10283,6 +10324,7 @@ unsorted:
   - libharfbuzz-subset0-32bit: [x86_64] 
   - libharminv3 
   - libharu-devel 
+  - libhashcat6_1_1 
   - libhdf4 
   - libhdf4-32bit: [x86_64] 
   - libhdf4-openmpi 
@@ -10569,6 +10611,8 @@ unsorted:
   - libinstpatch-1_0-2 
   - libinstpatch-1_0-2-32bit: [x86_64] 
   - libinstpatch-devel 
+  - libint-devel 
+  - libint2-2 
   - libiodbc-devel 
   - libiodbc3 
   - libipa_hbac-devel 
@@ -11138,6 +11182,7 @@ unsorted:
   - libmpeg2convert0 
   - libmpeg2encpp-2_0-0-32bit: [x86_64] 
   - libmpfi0 
+  - libmpfpx0 
   - libmpfr6-32bit: [x86_64] 
   - libmpfrcx1 
   - libmpg123-0-32bit: [x86_64] 
@@ -11397,6 +11442,7 @@ unsorted:
   - libobjc4_6 
   - libobrender32 
   - libobt2 
+  - libodbc2-32bit: [x86_64] 
   - libode8 
   - libodfgen-devel 
   - libodfgen-devel-doc 
@@ -11665,6 +11711,7 @@ unsorted:
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
   - libpapi_6_0_0-hpc 
+  - libparanoia1_0: [i586] 
   - libparaview5_8 
   - libpari-gmp-tls6 
   - libparlatype-devel 
@@ -11837,6 +11884,7 @@ unsorted:
   - libpolkit0-32bit: [x86_64] 
   - libpolyclipping-devel 
   - libpolyclipping22 
+  - libpolylibgmp8 
   - libpoppler-cpp0-32bit: [x86_64] 
   - libpoppler-devel 
   - libpoppler-glib-devel 
@@ -12572,7 +12620,7 @@ unsorted:
   - libsemanage-devel-static 
   - libsemanage1-32bit: [x86_64] 
   - libsemigroups-devel 
-  - libsemigroups0 
+  - libsemigroups1 
   - libsensors4-32bit: [x86_64] 
   - libsensors4-devel 
   - libsepol-devel 
@@ -12689,6 +12737,8 @@ unsorted:
   - libsolv-demo 
   - libsolv-devel 
   - libsord-0-0-32bit: [x86_64] 
+  - libsoundio-devel 
+  - libsoundio2 
   - libsoup-2_4-1-32bit: [x86_64] 
   - libsoup-devel 
   - libsoup-devel-32bit: [x86_64] 
@@ -12804,7 +12854,7 @@ unsorted:
   - libsubtitleeditor-devel 
   - libsubtitleeditor0 
   - libsubunit0 
-  - libsuil-0-0: [i586] 
+  - libsuil-0-0 
   - libsundials3 
   - libsundials3-mvapich2 
   - libsundials3-openmpi1 
@@ -12997,6 +13047,8 @@ unsorted:
   - libtool-32bit: [x86_64] 
   - libtorch: [x86_64] 
   - libtorrent-devel 
+  - libtorrent-rasterbar-1-devel 
+  - libtorrent-rasterbar-1-doc 
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar10 
@@ -13094,7 +13146,7 @@ unsorted:
   - libudt0 
   - libuev-devel 
   - libuev2 
-  - libuhd003 
+  - libuhd4_0_0 
   - libuhttpmock-0_0-0 
   - libulfius2_6 
   - libulockmgr1 
@@ -13183,7 +13235,7 @@ unsorted:
   - libvala-0_48-devel 
   - libvaladoc-0_48-0 
   - libvaladoc-0_48-devel 
-  - libvamp-hostsdk3: [i586] 
+  - libvamp-hostsdk3 
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
@@ -13403,105 +13455,105 @@ unsorted:
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_baseu-suse-nostl3_0_4 
-  - libwx_baseu-suse-nostl3_1_3: [i586] 
+  - libwx_baseu-suse-nostl4_0_0 
   - libwx_baseu-suse3_0_4 
   - libwx_baseu-suse3_0_4-32bit: [x86_64] 
-  - libwx_baseu-suse3_1_3 
+  - libwx_baseu-suse4_0_0 
   - libwx_baseu_net-suse-nostl3_0_4 
-  - libwx_baseu_net-suse-nostl3_1_3: [i586] 
+  - libwx_baseu_net-suse-nostl4_0_0 
   - libwx_baseu_net-suse3_0_4 
   - libwx_baseu_net-suse3_0_4-32bit: [x86_64] 
-  - libwx_baseu_net-suse3_1_3 
+  - libwx_baseu_net-suse4_0_0 
   - libwx_baseu_xml-suse-nostl3_0_4 
-  - libwx_baseu_xml-suse-nostl3_1_3: [i586] 
+  - libwx_baseu_xml-suse-nostl4_0_0 
   - libwx_baseu_xml-suse3_0_4 
   - libwx_baseu_xml-suse3_0_4-32bit: [x86_64] 
-  - libwx_baseu_xml-suse3_1_3 
+  - libwx_baseu_xml-suse4_0_0 
   - libwx_gtk2u_adv-suse-nostl3_0_4 
   - libwx_gtk2u_adv-suse3_0_4 
   - libwx_gtk2u_adv-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_adv-suse3_1_3 
+  - libwx_gtk2u_adv-suse4_0_0 
   - libwx_gtk2u_aui-suse-nostl3_0_4 
   - libwx_gtk2u_aui-suse3_0_4 
   - libwx_gtk2u_aui-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_aui-suse3_1_3 
+  - libwx_gtk2u_aui-suse4_0_0 
   - libwx_gtk2u_core-suse-nostl3_0_4 
   - libwx_gtk2u_core-suse3_0_4 
   - libwx_gtk2u_core-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_core-suse3_1_3 
+  - libwx_gtk2u_core-suse4_0_0 
   - libwx_gtk2u_gl-suse-nostl3_0_4 
   - libwx_gtk2u_gl-suse3_0_4 
   - libwx_gtk2u_gl-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_gl-suse3_1_3 
+  - libwx_gtk2u_gl-suse4_0_0 
   - libwx_gtk2u_html-suse-nostl3_0_4 
   - libwx_gtk2u_html-suse3_0_4 
   - libwx_gtk2u_html-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_html-suse3_1_3 
+  - libwx_gtk2u_html-suse4_0_0 
   - libwx_gtk2u_media-suse-nostl3_0_4 
   - libwx_gtk2u_media-suse3_0_4 
   - libwx_gtk2u_media-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_media-suse3_1_3 
+  - libwx_gtk2u_media-suse4_0_0 
   - libwx_gtk2u_propgrid-suse-nostl3_0_4 
   - libwx_gtk2u_propgrid-suse3_0_4 
   - libwx_gtk2u_propgrid-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_propgrid-suse3_1_3 
+  - libwx_gtk2u_propgrid-suse4_0_0 
   - libwx_gtk2u_qa-suse-nostl3_0_4 
   - libwx_gtk2u_qa-suse3_0_4 
   - libwx_gtk2u_qa-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_qa-suse3_1_3 
+  - libwx_gtk2u_qa-suse4_0_0 
   - libwx_gtk2u_ribbon-suse-nostl3_0_4 
   - libwx_gtk2u_ribbon-suse3_0_4 
   - libwx_gtk2u_ribbon-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_ribbon-suse3_1_3 
+  - libwx_gtk2u_ribbon-suse4_0_0 
   - libwx_gtk2u_richtext-suse-nostl3_0_4 
   - libwx_gtk2u_richtext-suse3_0_4 
   - libwx_gtk2u_richtext-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_richtext-suse3_1_3 
+  - libwx_gtk2u_richtext-suse4_0_0 
   - libwx_gtk2u_stc-suse-nostl3_0_4 
   - libwx_gtk2u_stc-suse3_0_4 
   - libwx_gtk2u_stc-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_stc-suse3_1_3 
+  - libwx_gtk2u_stc-suse4_0_0 
   - libwx_gtk2u_xrc-suse-nostl3_0_4 
   - libwx_gtk2u_xrc-suse3_0_4 
   - libwx_gtk2u_xrc-suse3_0_4-32bit: [x86_64] 
-  - libwx_gtk2u_xrc-suse3_1_3 
-  - libwx_gtk3u_adv-suse-nostl3_1_3 
-  - libwx_gtk3u_adv-suse3_1_3 
-  - libwx_gtk3u_aui-suse-nostl3_1_3 
-  - libwx_gtk3u_aui-suse3_1_3 
-  - libwx_gtk3u_core-suse-nostl3_1_3: [i586] 
-  - libwx_gtk3u_core-suse3_1_3 
-  - libwx_gtk3u_gl-suse-nostl3_1_3 
-  - libwx_gtk3u_gl-suse3_1_3 
-  - libwx_gtk3u_html-suse-nostl3_1_3: [i586] 
-  - libwx_gtk3u_html-suse3_1_3 
-  - libwx_gtk3u_media-suse-nostl3_1_3 
-  - libwx_gtk3u_media-suse3_1_3 
-  - libwx_gtk3u_propgrid-suse-nostl3_1_3 
-  - libwx_gtk3u_propgrid-suse3_1_3 
-  - libwx_gtk3u_qa-suse-nostl3_1_3: [i586] 
-  - libwx_gtk3u_qa-suse3_1_3 
-  - libwx_gtk3u_ribbon-suse-nostl3_1_3 
-  - libwx_gtk3u_ribbon-suse3_1_3 
-  - libwx_gtk3u_richtext-suse-nostl3_1_3 
-  - libwx_gtk3u_richtext-suse3_1_3 
-  - libwx_gtk3u_stc-suse-nostl3_1_3 
-  - libwx_gtk3u_stc-suse3_1_3 
-  - libwx_gtk3u_webview-suse3_1_3 
-  - libwx_gtk3u_xrc-suse-nostl3_1_3 
-  - libwx_gtk3u_xrc-suse3_1_3 
-  - libwx_qtu_adv-suse3_1_3 
-  - libwx_qtu_aui-suse3_1_3 
-  - libwx_qtu_core-suse3_1_3 
-  - libwx_qtu_gl-suse3_1_3 
-  - libwx_qtu_html-suse3_1_3 
-  - libwx_qtu_media-suse3_1_3 
-  - libwx_qtu_propgrid-suse3_1_3 
-  - libwx_qtu_qa-suse3_1_3 
-  - libwx_qtu_ribbon-suse3_1_3 
-  - libwx_qtu_richtext-suse3_1_3 
-  - libwx_qtu_stc-suse3_1_3 
-  - libwx_qtu_xrc-suse3_1_3 
+  - libwx_gtk2u_xrc-suse4_0_0 
+  - libwx_gtk3u_adv-suse-nostl4_0_0 
+  - libwx_gtk3u_adv-suse4_0_0 
+  - libwx_gtk3u_aui-suse-nostl4_0_0 
+  - libwx_gtk3u_aui-suse4_0_0 
+  - libwx_gtk3u_core-suse-nostl4_0_0 
+  - libwx_gtk3u_core-suse4_0_0 
+  - libwx_gtk3u_gl-suse-nostl4_0_0 
+  - libwx_gtk3u_gl-suse4_0_0 
+  - libwx_gtk3u_html-suse-nostl4_0_0 
+  - libwx_gtk3u_html-suse4_0_0 
+  - libwx_gtk3u_media-suse-nostl4_0_0 
+  - libwx_gtk3u_media-suse4_0_0 
+  - libwx_gtk3u_propgrid-suse-nostl4_0_0 
+  - libwx_gtk3u_propgrid-suse4_0_0 
+  - libwx_gtk3u_qa-suse-nostl4_0_0 
+  - libwx_gtk3u_qa-suse4_0_0 
+  - libwx_gtk3u_ribbon-suse-nostl4_0_0 
+  - libwx_gtk3u_ribbon-suse4_0_0 
+  - libwx_gtk3u_richtext-suse-nostl4_0_0 
+  - libwx_gtk3u_richtext-suse4_0_0 
+  - libwx_gtk3u_stc-suse-nostl4_0_0 
+  - libwx_gtk3u_stc-suse4_0_0 
+  - libwx_gtk3u_webview-suse4_0_0 
+  - libwx_gtk3u_xrc-suse-nostl4_0_0 
+  - libwx_gtk3u_xrc-suse4_0_0 
+  - libwx_qtu_adv-suse4_0_0 
+  - libwx_qtu_aui-suse4_0_0 
+  - libwx_qtu_core-suse4_0_0 
+  - libwx_qtu_gl-suse4_0_0 
+  - libwx_qtu_html-suse4_0_0 
+  - libwx_qtu_media-suse4_0_0 
+  - libwx_qtu_propgrid-suse4_0_0 
+  - libwx_qtu_qa-suse4_0_0 
+  - libwx_qtu_ribbon-suse4_0_0 
+  - libwx_qtu_richtext-suse4_0_0 
+  - libwx_qtu_stc-suse4_0_0 
+  - libwx_qtu_xrc-suse4_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_0-0 
   - libwxlua 
   - libwxstedit-wx30gtk2u-1_6_0 
@@ -13560,6 +13612,7 @@ unsorted:
   - libxcb-xtest0-32bit: [x86_64] 
   - libxcb-xv0-32bit: [x86_64] 
   - libxcb-xvmc0-32bit: [x86_64] 
+  - libxcfun2 
   - libxclass-0_9_2 
   - libxcrypt-devel-32bit: [x86_64] 
   - libxcrypt-devel-static 
@@ -13713,6 +13766,7 @@ unsorted:
   - libyui-qt-rest-api13 
   - libyui-rest-api-devel 
   - libyui-rest-api13 
+  - libzapojit-0_0-0: [i586] 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -14695,6 +14749,7 @@ unsorted:
   - mcjoin 
   - mcpp 
   - mcpp-devel 
+  - mcqd 
   - mcstrans: [i586] 
   - mda-lv2 
   - mdbtools 
@@ -15126,6 +15181,7 @@ unsorted:
   - mpd 
   - mpeg2dec 
   - mpfi-devel 
+  - mpfpx-devel 
   - mpfr-devel 
   - mpfr-devel-32bit: [x86_64] 
   - mpfrcx-devel 
@@ -15583,9 +15639,11 @@ unsorted:
   - native-maven-plugin 
   - native-platform 
   - native-platform-javadoc 
+  - nautilus: [i586] 
   - nautilus-deja-dup 
   - nautilus-devel 
   - nautilus-eiciel 
+  - nautilus-evince: [i586] 
   - nautilus-extension-actions 
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
@@ -15594,6 +15652,7 @@ unsorted:
   - nautilus-extension-tilix 
   - nautilus-image-converter 
   - nautilus-image-converter-lang 
+  - nautilus-lang: [i586] 
   - nautilus-plugin-easytag 
   - nautilus-terminal 
   - nauty 
@@ -17910,7 +17969,6 @@ unsorted:
   - perl-IO-TieCombine 
   - perl-IP-Country 
   - perl-IPC-Run 
-  - perl-IPC-Run3 
   - perl-IPC-ShareLite 
   - perl-IPC-System-Simple 
   - perl-IRI 
@@ -19042,6 +19100,8 @@ unsorted:
   - polkit-devel 
   - polkit-doc 
   - polkit-whitelisting 
+  - polylib 
+  - polylib-devel 
   - pommed 
   - pongix 
   - poppler-data 
@@ -19062,6 +19122,7 @@ unsorted:
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
+  - postfixadmin-apache 
   - postgresql-devel 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
@@ -19322,6 +19383,7 @@ unsorted:
   - pspg 
   - pspp 
   - pspp-devel 
+  - psqlODBC 
   - pstoedit 
   - pstoedit-devel 
   - pthread-stubs-devel 
@@ -20852,6 +20914,7 @@ unsorted:
   - python3-hanzidentifier 
   - python3-happybase 
   - python3-haproxyctl 
+  - python3-hashids 
   - python3-hatch 
   - python3-hawkauthlib 
   - python3-hawkey 
@@ -21148,6 +21211,7 @@ unsorted:
   - python3-libstoragemgmt 
   - python3-libstoragemgmt-clibs 
   - python3-libtorrent-rasterbar 
+  - python3-libtorrent-rasterbar-1 
   - python3-libusb1 
   - python3-libvhdi 
   - python3-libvmdk 
@@ -21247,6 +21311,7 @@ unsorted:
   - python3-mizani 
   - python3-mlt 
   - python3-moban 
+  - python3-moban-ansible 
   - python3-mock 
   - python3-mocket 
   - python3-mockito 
@@ -22339,6 +22404,7 @@ unsorted:
   - python3-textwrap3 
   - python3-thLib 
   - python3-thespian 
+  - python3-thewalrus: [x86_64] 
   - python3-threadpoolctl 
   - python3-threevis 
   - python3-thrift 
@@ -22915,6 +22981,7 @@ unsorted:
   - recordmydesktop 
   - redeclipse 
   - redeclipse-data 
+  - redeclipse-server 
   - redfish-finder 
   - redfishtool 
   - redland 
@@ -25092,6 +25159,8 @@ unsorted:
   - sablot-devel 
   - sac-javadoc 
   - sacad 
+  - safeeyes 
+  - safeeyes-lang 
   - saidar 
   - saja-cascadia-code-fonts 
   - sakura 
@@ -25306,6 +25375,7 @@ unsorted:
   - scrot 
   - scrub 
   - scrypt 
+  - scs-devel 
   - scsh 
   - scsh-base 
   - scsirastools 
@@ -25879,6 +25949,7 @@ unsorted:
   - supertuxkart-data 
   - supervisor 
   - supportutils: [i586] 
+  - surf 
   - surfraw 
   - surfraw-woffle 
   - suru-plus-dark-icon-theme 
@@ -34081,6 +34152,7 @@ unsorted:
   - trace-cmd 
   - trackballs 
   - tracker-devel 
+  - tracker2-devel: [x86_64] # devel package of dvd:libtracker-miner-2_0-0 
   - trader 
   - trader-lang 
   - trang 
@@ -34133,6 +34205,7 @@ unsorted:
   - trello-full-backup 
   - trigger-rally 
   - trigger-rally-data 
+  - triggerhappy 
   - trilead-ssh2 
   - trilead-ssh2-javadoc 
   - trilinos-devel: [x86_64] 
@@ -34183,6 +34256,7 @@ unsorted:
   - ttf-converter 
   - ttf2pt1 
   - tudu 
+  - tuigreet 
   - tuimoji 
   - tuladha-jejeg-fonts 
   - tumbler-devel 
@@ -34302,6 +34376,7 @@ unsorted:
   - typelib-1_0-FolksTracker-0_6 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
+  - typelib-1_0-GData-0_0: [i586] 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GMime-2_6 
   - typelib-1_0-GMime-3_0 
@@ -34412,7 +34487,7 @@ unsorted:
   - typelib-1_0-Tepl-4 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TimezoneMap-1_0 
-  - typelib-1_0-TrackerMiner-2_0 
+  - typelib-1_0-TrackerMiner-2_0: [x86_64] 
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Unique-1_0 
@@ -34426,6 +34501,7 @@ unsorted:
   - typelib-1_0-XplayerPlParser-1_0 
   - typelib-1_0-XreaderDocument-1_5 
   - typelib-1_0-XreaderView-1_5 
+  - typelib-1_0-Zpj-0_0: [i586] 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
@@ -34520,6 +34596,7 @@ unsorted:
   - universal-ctags 
   - univocity-parsers 
   - univocity-parsers-javadoc 
+  - unixODBC 
   - unixODBC-32bit: [x86_64] 
   - unixODBC-devel 
   - unixODBC-devel-32bit: [x86_64] 
@@ -35053,7 +35130,7 @@ unsorted:
   - wxWidgets-3_2-nostl-devel 
   - wxWidgets-3_2-plugin-sound_sdlu-3_2 
   - wxWidgets-docs 
-  - wxWidgets-lang: [i586] 
+  - wxWidgets-lang 
   - wxhexeditor 
   - wxhexeditor-lang 
   - wxlua 
@@ -35124,6 +35201,7 @@ unsorted:
   - xcb-util-wm-devel 
   - xcb-util-wm-devel-32bit: [x86_64] 
   - xcb-util-xrm-devel 
+  - xcfun-devel 
   - xchm 
   - xchm-lang 
   - xclass 
