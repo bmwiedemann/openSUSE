@@ -1,6 +1,7 @@
 #
 # spec file for package sscep
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -35,7 +36,7 @@ modifications for engine support & more.
 
 %build
 ./Configure
-%make_build sscep_dyn CFLAGS="%{optflags}"
+%make_build sscep_dyn CFLAGS="%{optflags} -fcommon"
 
 %install
 install -Dpm 0644 sscep.conf %{buildroot}%{_sysconfdir}/sscep/sscep.conf

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 19:17:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon to workaround GCC10 compilation issues
+
+-------------------------------------------------------------------
 Fri Apr 17 15:05:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to latest release, version 0.7.0
