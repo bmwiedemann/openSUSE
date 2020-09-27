@@ -1244,4 +1244,12 @@ bsc#1024677</comment>
 - zdump --version reported &quot;unknown&quot; (boo#1172055)</comment>
     <requestid>811896</requestid>
   </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>790b199b6452c696291951e0cea25b0c</srcmd5>
+    <version>2020a</version>
+    <time>1601200112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837191</requestid>
+  </revision>
 </revisionlist>

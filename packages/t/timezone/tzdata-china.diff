@@ -1,39 +1,36 @@
-Index: timezone-2018f/asia
+Index: timezone-2020a/asia
 ===================================================================
---- timezone-2018f.orig/asia	2018-10-03 02:21:28.000000000 +0200
-+++ timezone-2018f/asia	2018-10-18 10:01:30.657962333 +0200
-@@ -566,6 +566,10 @@ Rule	PRC	1987	1991	-	Apr	Sun>=11	 2:00	1
+--- timezone-2020a.orig/asia
++++ timezone-2020a/asia
+@@ -670,6 +670,8 @@ Rule	PRC	1987	1991	-	Apr	Sun>=11	 2:00	1
  Zone	Asia/Shanghai	8:05:43	-	LMT	1901
  			8:00	Shang	C%sT	1949 May 28
  			8:00	PRC	C%sT
 +
-+# Nowadays, China Standard Time is known as "Beijing Time"
-+Zone	Asia/Beijing	8:00	PRC	C%sT
-+
++Link  Asia/Shanghai Asia/Beijing
  # Xinjiang time, used by many in western China; represented by Ürümqi / Ürümchi
  # / Wulumuqi.  (Please use Asia/Shanghai if you prefer Beijing time.)
  Zone	Asia/Urumqi	5:50:20	-	LMT	1928
-Index: timezone-2018f/backward
+Index: timezone-2020a/zone.tab
 ===================================================================
---- timezone-2018f.orig/backward	2018-07-16 19:16:52.000000000 +0200
-+++ timezone-2018f/backward	2018-10-18 10:01:30.657962333 +0200
-@@ -99,7 +99,7 @@ Link	America/Mexico_City	Mexico/General
- Link	Pacific/Auckland	NZ
- Link	Pacific/Chatham		NZ-CHAT
- Link	America/Denver		Navajo
--Link	Asia/Shanghai		PRC
-+Link	Asia/Beijing		PRC
- Link	Pacific/Honolulu	Pacific/Johnston
- Link	Pacific/Pohnpei		Pacific/Ponape
- Link	Pacific/Pago_Pago	Pacific/Samoa
-Index: timezone-2018f/zone.tab
-===================================================================
---- timezone-2018f.orig/zone.tab	2018-06-27 20:24:09.000000000 +0200
-+++ timezone-2018f/zone.tab	2018-10-18 10:01:30.657962333 +0200
+--- timezone-2020a.orig/zone.tab
++++ timezone-2020a/zone.tab
 @@ -145,6 +145,7 @@ CL	-3327-07040	America/Santiago	Chile (m
  CL	-5309-07055	America/Punta_Arenas	Region of Magallanes
  CL	-2709-10926	Pacific/Easter	Easter Island
  CM	+0403+00942	Africa/Douala
++CN	+3955+11626	Asia/Beijing	China Standard Time
+ CN	+3114+12128	Asia/Shanghai	Beijing Time
+ CN	+4348+08735	Asia/Urumqi	Xinjiang Time
+ CO	+0436-07405	America/Bogota
+Index: timezone-2020a/zone1970.tab
+===================================================================
+--- timezone-2020a.orig/zone1970.tab
++++ timezone-2020a/zone1970.tab
+@@ -137,6 +137,7 @@ CK	-2114-15946	Pacific/Rarotonga
+ CL	-3327-07040	America/Santiago	Chile (most areas)
+ CL	-5309-07055	America/Punta_Arenas	Region of Magallanes
+ CL	-2709-10926	Pacific/Easter	Easter Island
 +CN	+3955+11626	Asia/Beijing	China Standard Time
  CN	+3114+12128	Asia/Shanghai	Beijing Time
  CN	+4348+08735	Asia/Urumqi	Xinjiang Time

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 12 04:09:14 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- modify tzdata-china.diff
+  * systemd now reads zone1970.tab
+  * link Asia/Shanghai to Asia/Beijing is enough and more precise
+
+-------------------------------------------------------------------
 Fri Jun  5 10:19:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - timezone modifies a file below /usr/share (boo#1172521)

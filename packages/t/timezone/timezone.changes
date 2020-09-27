@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 24 15:02:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fixup tzdata-china.diff: zone.tab and zone1970.tab MUST be tab
+  delimited (boo#1176927).
+
+-------------------------------------------------------------------
+Sat Sep 12 04:08:38 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- modify tzdata-china.diff
+  * systemd now reads zone1970.tab
+  * link Asia/Shanghai to Asia/Beijing is enough and more precise
+
+-------------------------------------------------------------------
 Fri Jun  5 10:19:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - timezone modifies a file below /usr/share (boo#1172521)
