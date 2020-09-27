@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Sep 25 07:38:04 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  Features:
+  * Added support for themes and included a few as well: default, eldar,
+    monocai, night-owl, solarized-light, and solarized-dark. The theme
+    can be changed using the ':config' command, like so:
+    :config /ui/theme night-owl
+    Consult the online documentation for defining a new theme at:
+    https://lnav.readthedocs.io/en/latest/config.html#theme-definitions[1]
+  * Added support for custom keymaps and included the following: de, fr,
+    uk, us. The keymap can be changed using the ':config' command, like so:
+    :config /ui/keymap uk
+    Consult the online documentation for defining a new keymap at:
+    https://lnav.readthedocs.io/en/latest/config.html#keymap-definitions[2]
+  * The following JSON-Schemas have been published for the log format and
+    configuration JSON files:
+    https://lnav.org/schemas/format-v1.schema.json[3]
+    https://lnav.org/schemas/config-v1.schema.json[4]
+    Formats should be updated to reference the schema using the "$schema"
+    property.
+  * Indexing of new data in log files can now be paused by pressing '='
+    and unpaused by pressing it again. The bottom status bar will display
+    'Paused' in the right corner while paused.
+  * CMake is now a supported way to build.
+  * When viewing data from the standard-input, a symbolic name can be used
+    to preserve session state. The name can be changed using the
+    "rename-stdin" lnav script or by doing an UPDATE to the filepath
+    column of the lnav_file table. For example, to assign the name
+    "journald", the following SQL statement can be executed in lnav:
+    ;UPDATE lnav_file SET filepath='journald' WHERE filepath='stdin'
+  * The size of the terminal can be accessed in SQL using the $LINES and
+    $COLS variables.
+  * The raise_error(msg) SQL function has been added to make it easier to
+    raise an error in an lnav script to stop execution and notify the user.
+  * Added the json_concat() function to make it easier to append/concatenate values onto arrays.
+  * Added the ":write-jsonlines-to" command that writes the result of a SQL query to a file in the JSON Lines format.
+  Interface Changes:
+  * Data piped into lnav is no longer dumped to the console after exit.
+    Instead a file containing the data is left in .lnav/stdin-captures/
+    and a message is printed to the console indicating the file name.
+  * In time-offset mode, the deltas for messages before the first mark
+    are now negative instead of relative to the start of the log.
+  * The $XDG_CONFIG_HOME environment variable (or ~/.config directory) are
+    now respected for storing lnav's configuration. If you have an existing
+    ~/.lnav directory, that will continue to be used until you move it to
+    $XDG_CONFIG_HOME/lnav or ~/.config/lnav.
+  * Removed the ':save-config' command. Changes to the configuration are now
+    immediately saved.
+  Fixes:
+  * Added 'notice' log level.
+  * If a "timestamp-format" is used in an element of a "line-format", the
+    field name is ignored and a formatted timestamp is always used.
+  * Ignore stdin when it is connected to /dev/null.
+
+-------------------------------------------------------------------
 Mon Apr  8 09:07:57 UTC 2019 - mvetter@suse.com
 
 - Update to 0.8.5:
