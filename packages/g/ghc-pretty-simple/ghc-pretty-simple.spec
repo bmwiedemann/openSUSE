@@ -19,17 +19,18 @@
 %global pkg_name pretty-simple
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.3.0.0
+Version:        4.0.0.0
 Release:        0
 Summary:        Pretty printer for data types with a 'Show' instance
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-prettyprinter-ansi-terminal-devel
+BuildRequires:  ghc-prettyprinter-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
