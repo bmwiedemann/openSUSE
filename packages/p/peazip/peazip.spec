@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 7.2.0
+%define         _helpver 7.4.0
 Name:           peazip
-Version:        7.3.2
+Version:        7.4.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -36,6 +36,8 @@ Patch2:         peazip-build_PIE.patch
 Patch3:         peazip-help_path.patch
 # PATCH-FEATURE-OPENSUSE peazip-debuginfo.patch
 Patch4:         peazip-debuginfo.patch
+BuildRequires:  arc
+BuildRequires:  brotli
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  fpc
@@ -44,6 +46,8 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  lazarus
 BuildRequires:  unzip
 BuildRequires:  upx
+BuildRequires:  zpaq
+BuildRequires:  zstd
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150200
 BuildRequires:  p7zip-full
 Requires:       p7zip-full
@@ -55,6 +59,10 @@ Requires:       upx
 %if 0%{?suse_version} < 1500
 BuildRequires:  update-desktop-files
 %endif
+Suggests:       arc
+Suggests:       brotli
+Suggests:       zpaq
+Suggests:       zstd
 
 %description
 PeaZip is a file and archive manager GUI for many formats.
@@ -107,6 +115,15 @@ mkdir -p %{buildroot}%{_peazipinstalldir}/res/7z
 mkdir -p %{buildroot}%{_peazipinstalldir}/res/upx
 ln -s %{_bindir}/7z  %{buildroot}%{_peazipinstalldir}/res/7z/7z
 ln -s %{_bindir}/upx  %{buildroot}%{_peazipinstalldir}/res/upx/upx
+
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/arc
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/brotli
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/zpaq
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/zstd
+ln -s %{_bindir}/arc  %{buildroot}%{_peazipinstalldir}/res/arc/arc
+ln -s %{_bindir}/brotli  %{buildroot}%{_peazipinstalldir}/res/brotli/brotli
+ln -s %{_bindir}/zpaq  %{buildroot}%{_peazipinstalldir}/res/zpaq/zpaq
+ln -s %{_bindir}/zstd  %{buildroot}%{_peazipinstalldir}/res/zstd/zstd
 
 install -m755 peazip %{buildroot}%{_peazipinstalldir}
 ln -s %{_peazipinstalldir}/peazip %{buildroot}%{_bindir}/peazip

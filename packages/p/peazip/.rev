@@ -888,4 +888,14 @@
 </comment>
     <requestid>816792</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4d265ce9c0f20b690b3c80be58bbeca2</srcmd5>
+    <version>7.4.0</version>
+    <time>1601200207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.4.0
+- Fix boo#1175933
+(2nd attempt)</comment>
+    <requestid>837805</requestid>
+  </revision>
 </revisionlist>

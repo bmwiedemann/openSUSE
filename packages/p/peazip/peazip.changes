@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep 25 15:00:58 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.4.0
+  * GUI refresh and improves working with 7Z, ARC, RAR, and ZIPX
+    archive types.
+  * It is now possible to use new fast compression algorithms in
+    7Z format: Brotli, Fast-LZMA2, Lizard, LZ4, LZ5, and
+    Zstandard are now available, providing faster-than-Deflate
+    compression with better speed-to-compression-ratio
+    efficiency.
+  * RAR archives are now fully read-write supported from PeaZip
+    if rar executable is featured in the system: it is possible
+    to update, edit, rename, and delete files in existing RAR
+    archives, and more RAR-specific options are supported (set
+    comment, lock archive, header encryption, set recovery
+    records percentage).
+  * ZIPX archives can now be edited, and it is possible to
+    optionally use .zipx extension when creating non-Deflate
+    compressed .zip archives.
+  * It is now possible to repair ARC and RAR files, and even to
+    attempt recovery if the archive cannot be opened for
+    browsing.
+- Refreshed peazip-desktop.patch
+- Add optional support for less common archiving formats:
+  arq, brotli, zpaq, zstd (fixes boo#1175933)
+
+-------------------------------------------------------------------
 Wed Jun 24 07:31:57 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.3.2
