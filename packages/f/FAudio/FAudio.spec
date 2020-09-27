@@ -16,9 +16,9 @@
 #
 
 
-%define realver 2005
+%define realver 2009
 Name:           FAudio
-Version:        20.05
+Version:        20.09
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib
@@ -28,6 +28,8 @@ Source0:        http://fna.flibitijibibo.com/archive/FNA-%{realver}.zip
 Source1:        baselibs.conf
 Patch0:         faudio-older-sdl2.patch
 BuildRequires:  cmake
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
@@ -60,7 +62,8 @@ FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries
 %build
 cd lib/FAudio
 %cmake \
-  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_BUILD_TYPE=Release \
+  -DGSTREAMER=ON
 %cmake_build
 
 %install

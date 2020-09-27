@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 11 14:45:42 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- The FFmpeg backend for WMA decoding has been replaced with GStreamer. 
+  Distributors are encouraged to configure their FAudio builds with 
+  -DGSTREAMER=ON even if a WMA plugin is not available by default; 
+  end users can provide their own plugins if needed.
+
+  added -DGSTREAMER=ON flag for gstreamer backend.
+  
+-------------------------------------------------------------------
+Fri Sep  4 20:17:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.09:
+  IGLDevice has been replaced with FNA3D, the new graphics library for FNA!
+  Direct3D 11 is now supported and is the default for Windows/Xbox
+  Vulkan is now available as an experimental backend
+  Metal is now the default for Apple platforms
+  ModernGL and ThreadedGL have been removed
+  THREADED_GL and DISABLE_THREADING have been removed
+  MojoShader is now statically linked directly into FNA3D
+  SDL2_image has been replaced with FNA3D_Image, which is built into FNA3D
+  Add experimental support for WebAssembly via Emscripten and mono-wasm
+  Update to FAudio 20.09
+
+-------------------------------------------------------------------
 Mon May 18 18:08:10 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Rebase faudio-older-sdl2.patch to fix build error in Leap.
