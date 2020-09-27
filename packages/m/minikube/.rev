@@ -212,4 +212,12 @@
   * ssh: respect native-ssh flag #8907</comment>
     <requestid>832038</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4a47b17d4fe7ebcb038523200465122a</srcmd5>
+    <version>1.13.1</version>
+    <time>1601200199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837801</requestid>
+  </revision>
 </revisionlist>
