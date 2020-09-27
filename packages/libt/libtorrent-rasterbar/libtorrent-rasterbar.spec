@@ -17,33 +17,33 @@
 
 
 %define _name   libtorrent
-%define sover   10
+%define _ver    2.0
+%define libver  2_0
+%define sover   2.0
+%define _legacy 1
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        1.2.10
+Version:        2.0.0
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
-Source:         https://github.com/arvidn/%{_name}/releases/download/%{_name}-%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/arvidn/%{_name}/releases/download/%{_ver}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM libtorrent-rasterbar-fix_pkgconfig_path.patch
 Patch0:         libtorrent-rasterbar-fix_pkgconfig_path.patch
-# PATCH-FIX-OPENSUSE libtorrent-rasterbar-fix_library_version.patch
-Patch1:         libtorrent-rasterbar-fix_library_version.patch
-# for directory ownership
-BuildRequires:  cmake-full
+BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_chrono-devel
-BuildRequires:  libboost_python3-devel
-BuildRequires:  libboost_random-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_chrono-devel >= 1.66
+BuildRequires:  libboost_python3-devel >= 1.66
+BuildRequires:  libboost_random-devel >= 1.66
+BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 1.0.0
 
 %description
 libtorrent-rasterbar is a C++ library that aims to be a good
@@ -54,11 +54,11 @@ with a working example client.
 This package holds the sample client and example files for
 libtorrent-rasterbar.
 
-%package -n %{name}%{sover}
+%package -n %{name}%{libver}
 Summary:        A C++ implementation of the BitTorrent protocol
 Group:          System/Libraries
 
-%description -n %{name}%{sover}
+%description -n %{name}%{libver}
 libtorrent-rasterbar is a C++ library that aims to be a good
 alternative to all the other bittorrent implementations around.
 It is a library and not a full featured client, although it comes
@@ -67,25 +67,28 @@ with a working example client.
 %package -n python3-%{name}
 Summary:        Python Bindings for libtorrent-rasterbar
 Group:          Development/Libraries/Python
+Conflicts:      python3-%{name}-%{_legacy}
 
 %description -n python3-%{name}
 Python Bindings for the libtorrent-rasterbar package.
 
-### conditional here? %%if %%{with examples}
+%if %{with examples}
 %package tools
 Summary:        Example tools from libtorrent-rasterbar
 Group:          Development/Libraries/C and C++
 
 %description tools
 Example tools from the libtorrent-rasterbar package.
+%endif
 
 %package devel
 Summary:        Header files for libtorrent, a C++ implementation of the BitTorrent protocol
 Group:          Development/Libraries/C and C++
-Requires:       %{name}%{sover} = %{version}
+Requires:       %{name}%{libver} = %{version}
 Requires:       gcc-c++
 Requires:       libboost_headers-devel
 Requires:       pkgconfig(openssl)
+Conflicts:      %{name}-%{_legacy}-devel
 
 %description devel
 libtorrent-rasterbar is a C++ library that aims to be a good
@@ -107,7 +110,6 @@ Documentation for the libtorrent-rasterbar package.
 %autosetup -p1
 
 %build
-export CXXFLAGS="-std=c++14"
 %cmake \
 %if %{with tests}
    -Dbuild_tests=ON \
@@ -115,7 +117,8 @@ export CXXFLAGS="-std=c++14"
 %if %{with examples}
    -Dbuild_examples=ON \
 %endif
-   -Dpython-bindings=ON
+   -Dpython-bindings=ON \
+   -Dboost-python-module-name=python
 %cmake_build
 
 %install
@@ -134,11 +137,14 @@ install -Dm0755 build/examples/dump_torrent build/examples/make_torrent \
 
 %if %{with tests}
 %check
-%ctest --verbose --exclude-regex "(test_flags|test_resume|test_torrent|test_url_seed|test_upnp)"
+export LD_LIBRARY_PATH=$PWD/build
+ln -s build/web_server.py .
+# test_flags until gh#arvidn/libtorrent#4985 is fixed
+%ctest --verbose --exclude-regex "(test_flags|test_upnp)"
 %endif
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%post -n %{name}%{libver} -p /sbin/ldconfig
+%postun -n %{name}%{libver} -p /sbin/ldconfig
 
 %if %{with examples}
 %files tools
@@ -147,7 +153,7 @@ install -Dm0755 build/examples/dump_torrent build/examples/make_torrent \
 %{_bindir}/simple_client
 %endif
 
-%files -n %{name}%{sover}
+%files -n %{name}%{libver}
 %license COPYING
 %doc AUTHORS ChangeLog
 %{_libdir}/%{name}.so.%{sover}*

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Sep 17 16:20:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.0
+  * dropped depenency on iconv
+  * deprecate set_file_hash() in torrent creator, as it's
+    superceded by v2 torrents
+  * deprecate mutable access to info_section in torrent_info
+  * removed deprecated lazy_entry/lazy_bdecode
+  * stats_alert deprecated
+  * remove bittyrant choking algorithm
+  * update userdata in add_torrent_params to be type-safe and
+    add to torrent_handle
+  * add ip_filter to session_params
+  * added support for wolfSSL for SHA-1 hash and HTTPS (no
+    Torrents over SSL)
+  * requires OpenSSL minimum version 1.0.0 with SNI support
+  * deprecated save_state() and load_state() on session in
+    favour of new write_session_params() and
+    read_session_params()
+  * added support for BitTorrent v2 (see
+    docs/upgrade_to_2.0.html)
+  * create_torrent() pad_file_limit parameter removed
+  * create_torrent() merkle- and optimize-alignment flags removed
+  * merkle_tree removed from add_torrent_params
+  * announce_entry expose information per v1 and v2 info-hash
+    announces
+  * deprecated sha1_hash info_hash members on
+    torrent_removed_alert, torrent_deleted_alert,
+    torrent_delete_failed_alert and add_torrent_params
+  * undeprecate error_file_metadata for torrent errors related
+    to its metadata
+  * remove support for adding a torrent under a UUID (used for
+    previous RSS support)
+  * remove deprecated feature to add torrents by file:// URL
+  * remove deprecated feature to download .torrent file from URL
+  * requires boost >= 1.66 to build
+  * update networking API to networking TS compatible boost.asio
+  * overhauled disk I/O subsystem to use memory mapped files
+    (where available)
+  * libtorrent now requires C++14 to build
+  * added support for GnuTLS for HTTPS and torrents over SSL
+- Refreshlibtorrent-rasterbar-fix_pkgconfig_path.patch
+- Drop libtorrent-rasterbar-fix_library_version.patch
+
+-------------------------------------------------------------------
+Wed Sep 16 07:20:45 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- in _constraints set 5GB min physicalmemory rather than memory parm
+  (at least required for ppc64/ppc64le)
+
+-------------------------------------------------------------------
 Wed Sep  9 08:24:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Switch to cmake build

@@ -23,9 +23,9 @@
       <arch>aarch64</arch>
     </conditions>
     <hardware>
-      <memory>
+      <physicalmemory>
         <size unit="G">5</size>
-      </memory>
+      </physicalmemory>
       <disk>
         <size unit="G">4</size>
       </disk>

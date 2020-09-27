@@ -4,19 +4,7 @@ Date: Sat, 1 Aug 2020 07:44:33 +0200
 Subject: [PATCH] Fix path duplication in .pc file installation
 
 ---
- cmake/Modules/GeneratePkgConfig/generate-pkg-config.cmake.in | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: libtorrent-rasterbar-1.2.10/cmake/Modules/GeneratePkgConfig/generate-pkg-config.cmake.in
-===================================================================
---- libtorrent-rasterbar-1.2.10.orig/cmake/Modules/GeneratePkgConfig/generate-pkg-config.cmake.in
-+++ libtorrent-rasterbar-1.2.10/cmake/Modules/GeneratePkgConfig/generate-pkg-config.cmake.in
-@@ -49,4 +49,4 @@ set(_interface_compile_options "${_TARGE
- string(REPLACE ";" " " _interface_compile_options "${_interface_compile_options}")
- 
- configure_file("@_pkg_config_file_template_filename@" "@_generate_target_dir@/@_package_name@.pc" @ONLY)
--file(INSTALL "@_generate_target_dir@/@_package_name@.pc" DESTINATION "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@/pkgconfig")
-+file(INSTALL "@_generate_target_dir@/@_package_name@.pc" DESTINATION "@CMAKE_INSTALL_FULL_LIBDIR@/pkgconfig")
 Index: libtorrent-rasterbar-1.2.10/cmake/Modules/GeneratePkgConfig/pkg-config.cmake.in
 ===================================================================
 --- libtorrent-rasterbar-1.2.10.orig/cmake/Modules/GeneratePkgConfig/pkg-config.cmake.in
