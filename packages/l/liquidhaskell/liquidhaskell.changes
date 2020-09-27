@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 14:24:14 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 4GB min disk space.
+
+-------------------------------------------------------------------
 Tue Sep  1 10:37:38 UTC 2020 - psimons@suse.com
 
 - Add liquidhaskell at version 0.8.10.2.
