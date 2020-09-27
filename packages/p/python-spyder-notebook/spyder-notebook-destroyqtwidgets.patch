@@ -1,0 +1,80 @@
+diff --git a/spyder_notebook/tests/test_plugin.py b/spyder_notebook/tests/test_plugin.py
+index c6c54d4..91320fa 100644
+--- a/spyder_notebook/tests/test_plugin.py
++++ b/spyder_notebook/tests/test_plugin.py
+@@ -21,6 +21,7 @@ import requests
+ from qtpy.QtWebEngineWidgets import WEBENGINE
+ from qtpy.QtCore import Qt, QTimer
+ from qtpy.QtWidgets import QFileDialog, QApplication, QLineEdit
++from PyQt5 import sip
+ 
+ # Local imports
+ from spyder_notebook.notebookplugin import NotebookPlugin
+@@ -97,6 +98,7 @@ def notebook(qtbot):
+     notebook_plugin.create_new_client()
+     yield notebook_plugin
+     notebook_plugin.closing_plugin()
++    sip.delete(notebook_plugin)
+ 
+ 
+ @pytest.fixture
+@@ -114,6 +116,7 @@ def plugin_no_server(mocker, qtbot):
+     qtbot.addWidget(plugin)
+     yield plugin
+     plugin.closing_plugin()
++    sip.delete(plugin)
+ 
+ # =============================================================================
+ # Tests
+diff --git a/spyder_notebook/widgets/tests/test_client.py b/spyder_notebook/widgets/tests/test_client.py
+index 8b26e19..9780b25 100644
+--- a/spyder_notebook/widgets/tests/test_client.py
++++ b/spyder_notebook/widgets/tests/test_client.py
+@@ -9,6 +9,7 @@
+ import pytest
+ from qtpy.QtWidgets import QWidget
+ import requests
++from PyQt5 import sip
+ 
+ # Local imports
+ from spyder_notebook.widgets.client import NotebookClient
+@@ -18,6 +19,7 @@ class MockPlugin(QWidget):
+     def get_plugin_actions(self):
+         return []
+ 
++
+ @pytest.fixture
+ def plugin(qtbot):
+     """
+@@ -33,7 +35,8 @@ def plugin(qtbot):
+                    'url': 'fake_url',
+                    'token': 'fake_token'}
+     client.register(server_info)
+-    return plugin
++    yield plugin
++    sip.delete(plugin)
+ 
+ 
+ def test_notebookclient_get_kernel_id(plugin, mocker):
+diff --git a/spyder_notebook/widgets/tests/test_notebooktabwidget.py b/spyder_notebook/widgets/tests/test_notebooktabwidget.py
+index 8425934..ef5b1e7 100755
+--- a/spyder_notebook/widgets/tests/test_notebooktabwidget.py
++++ b/spyder_notebook/widgets/tests/test_notebooktabwidget.py
+@@ -11,6 +11,7 @@ import os.path as osp
+ 
+ # Third party imports
+ import pytest
++from PyQt5 import sip
+ 
+ # Local imports
+ from spyder_notebook.utils.servermanager import ServerManager
+@@ -27,7 +28,8 @@ def tabwidget(mocker, qtbot):
+         spec=ServerManager, get_server=fake_get_server)
+     widget = NotebookTabWidget(None, fake_server_manager)
+     qtbot.addWidget(widget)
+-    return widget
++    yield widget
++    sip.delete(widget)
+ 
+ 
+ def test_is_newly_created_with_new_notebook(tabwidget):

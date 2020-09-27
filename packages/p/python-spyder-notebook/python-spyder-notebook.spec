@@ -19,35 +19,43 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-spyder-notebook
-Version:        0.2.3
+Version:        0.3.0
 Release:        0
 Summary:        Jupyter notebook integration with Spyder
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-notebook
-Source:         https://files.pythonhosted.org/packages/source/s/spyder-notebook/spyder-notebook-%{version}.tar.gz
+# We need the bundled JavaScript stuff from the PyPI archive ...
+Source0:        https://files.pythonhosted.org/packages/source/s/spyder-notebook/spyder-notebook-%{version}.tar.gz
+# ... but only the GitHub archive provides the unit tests
+Source1:        https://github.com/spyder-ide/spyder-notebook/archive/v%{version}.tar.gz#/spyder-notebook-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE https://github.com/pytest-dev/pytest-qt/issues/319
+Patch0:         spyder-notebook-destroyqtwidgets.patch
 Requires:       python-QtPy
 Requires:       python-nbformat
 Requires:       python-notebook >= 4.3
 Requires:       python-psutil
 Requires:       python-requests
-Requires:       spyder >= 4
+Requires:       spyder >= 4.1
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module QtPy}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  spyder >= 4
+BuildRequires:  spyder >= 4.1
 BuildRequires:  xdpyinfo
 # /SECTION
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -72,28 +80,45 @@ breakpoints.
 
 %prep
 %setup -q -n spyder-notebook-%{version}
+tar --strip-components=1 -xzf %{SOURCE1} \
+    spyder-notebook-%{version}/spyder_notebook/server/test.ipynb \
+    spyder-notebook-%{version}/spyder_notebook/tests \
+    spyder-notebook-%{version}/spyder_notebook/utils/tests \
+    spyder-notebook-%{version}/spyder_notebook/widgets/tests
+%patch0 -p1
 sed -i 's/\r$//' CHANGELOG.md README.md
+chmod -x spyder_notebook/utils/templates/welcome-dark.html
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand # tag language files and deduplicate
+%find_lang spyder_notebook
+mv spyder_notebook.lang spyder_notebook-%{$python_bin_suffix}.lang
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 # The unittests fail with a seccomp-bpf crash if the sandbox
 # is not disabled on i586
-%ifarch %ix86 
 export QTWEBENGINE_DISABLE_SANDBOX=1
-%endif
-export PYTHONDONTWRITEBYTECODE=1
-%pytest
+# test_plugin::test_shutdown_notebook_kernel: session request is always empty
+# rest of deselcted test_plugin tests: passing but produces XIO errors with xvfb at the end
+%pytest -k "not (test_plugin and (shutdown or register or close or save))"
 
-%files -n spyder-notebook
+# Caution: Package name is not singlespec ready
+%files -n spyder-notebook -f spyder_notebook-%{python_bin_suffix}.lang
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{python_sitelib}/spyder_notebook
+%dir %{python_sitelib}/spyder_notebook
+%dir %{python_sitelib}/spyder_notebook/locale
+%dir %{python_sitelib}/spyder_notebook/locale/*
+%dir %{python_sitelib}/spyder_notebook/locale/*/LC_MESSAGES
+%{python_sitelib}/spyder_notebook/*.py
+%{python_sitelib}/spyder_notebook/{images,server,utils,widgets}
+%pycache_only %{python_sitelib}/spyder_notebook/__pycache__
 %{python_sitelib}/spyder_notebook-%{version}-py*.egg-info
 
 %changelog

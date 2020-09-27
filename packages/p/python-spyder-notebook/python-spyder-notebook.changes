@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Sep 25 17:45:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.3.0
+  * The plugin now uses JupyterLab instead of Jupyter 
+    Notebook to render notebooks. This ensures that the new 
+    features developed by the Jupyter team, such as drag 
+    and drop to reorder code cells, are available in 
+    Spyder.
+  * Support for Python 2 is dropped. The plugin now 
+    requires Python 3.5 and Spyder 3.1 or later.
+  * Notebooks are rendered in a dark theme if Spyder is 
+    run using a dark theme.
+  * A new item, "Server Info", in the option menu of the 
+    plugin. This should help with troubleshooting in case 
+    of problems.
+  * Translations for Brazilian Portuguese, German and 
+    Spanish are now available.
+  * When you open Spyder, the plugin will open the 
+    notebooks that were open when you last quit Spyder.
+- For a full list of 16 issues closed and 13 PRs merged see
+  https://github.com/spyder-ide/spyder-notebook/blob/master/CHANGELOG.md
+- Tag lang files
+- Get tests from Github archive because the unit tests are not
+  packaged on PyPI anymore (but we need the JS stuff from PyPI)
+- gh#pytest-dev/pytest-qt#319 patch against qtwebengine segfault
+  spyder-notebook-destroyqtwidgets.patch
+
+-------------------------------------------------------------------
 Sun Apr 19 10:27:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.2.3
