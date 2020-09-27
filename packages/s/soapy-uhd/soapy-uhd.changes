@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:29:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.1
+  * Fix for UHD_VERSION define and 4.0 release compilation
+- Drop not longer needed patch:
+  * 0001-Fix-for-UHD_VERSION-check-for-4.0.patch (fixed by upstream)
+
+-------------------------------------------------------------------
+Fri Sep 18 07:15:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.0
+  * Support for compilation with UHD 4.0 release
+- Add patch:
+  * 0001-Fix-for-UHD_VERSION-check-for-4.0.patch
+
+-------------------------------------------------------------------
 Wed Jun 26 20:42:43 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 0.3.6

@@ -1,8 +1,8 @@
 #
 # spec file for package soapy-uhd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,19 +13,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define soapy_modver 0.7
 %define soapy_modname soapysdr%{soapy_modver}-module-uhd
 
 Name:           soapy-uhd
-Version:        0.3.6
+Version:        0.4.1
 Release:        0
 Summary:        Soapy SDR plugins for UHD supported SDR devices
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Hardware/Other
-Url:            https://github.com/pothosware/SoapyUHD/wiki
+URL:            https://github.com/pothosware/SoapyUHD/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyUHD.git
 Source:         https://github.com/pothosware/SoapyUHD/archive/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
