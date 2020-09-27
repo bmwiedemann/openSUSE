@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-fog-core
-Version:        2.2.0
+Version:        2.2.3
 Release:        0
 %define mod_name fog-core
 %define mod_full_name %{mod_name}-%{version}

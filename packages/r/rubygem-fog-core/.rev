@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>773049</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bbc4e02e72a9750c5cba57479e76ec89</srcmd5>
+    <version>2.2.3</version>
+    <time>1601200193</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 837558 from coolo)</comment>
+    <requestid>837592</requestid>
+  </revision>
 </revisionlist>

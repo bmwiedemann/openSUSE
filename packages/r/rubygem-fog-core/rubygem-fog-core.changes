@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:58:30 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.3
+ see installed changelog.md
+
+  2.2.3 09/16/2020
+  ==========================================================
+  
+  Fix provider lookup to properly symbolize newly underscored names
+  
+  2.2.2 09/15/2020
+  ==========================================================
+  
+  Fix #underscore name to be class method (instead of instance method)
+  
+  2.2.1 09/15/2020
+  ==========================================================
+  
+  - Change to verify_host_key never in ssh/scp if supported
+  - Allow either downcased and underscored provider names for broader compatability
+  
+
+-------------------------------------------------------------------
 Mon Feb 10 14:35:39 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 2.2.0
