@@ -18,7 +18,7 @@
 
 %global pkg_name weeder
 Name:           ghc-%{pkg_name}
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Detect dead code
 License:        BSD-3-Clause
@@ -57,7 +57,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-sed -i -e 's#optparse-applicative \^>= 0\.14\.3\.0 || \^>= 0\.15\.1\.0#optparse-applicative < 1#' weeder.cabal
 sed -i -e 's#dhall .* \^>= 1.33.0#dhall < 2#' weeder.cabal
 
 %build
