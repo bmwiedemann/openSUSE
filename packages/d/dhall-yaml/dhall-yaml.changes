@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 12 16:17:54 UTC 2020 - psimons@suse.com
+
+- Update dhall-yaml to version 1.2.2.
+  1.2.2
+
+  * [The `--documents` flag now wraps non-`List`s in a document](https://github.com/dhall-lang/dhall-haskell/pull/1977)
+
+-------------------------------------------------------------------
 Tue Sep  8 10:22:48 UTC 2020 - psimons@suse.com
 
 - Add dhall-yaml at version 1.2.1 revision 2.

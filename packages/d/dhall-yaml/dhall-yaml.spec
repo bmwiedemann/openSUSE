@@ -19,13 +19,12 @@
 %global pkg_name dhall-yaml
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Convert between Dhall and YAML
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/2.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-HsYAML-aeson-devel
@@ -75,7 +74,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build
