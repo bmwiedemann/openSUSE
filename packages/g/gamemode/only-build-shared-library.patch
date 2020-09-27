@@ -1,0 +1,27 @@
+From: Matthias Bach <marix@marix.org>
+Date: Wed, 23 Sep 2020 20:36:08 +0200
+Subject: Build only the dynamic library
+Upstream: never
+
+openSUSE policy asks to only build the dynamic library unless there is a
+compelling reason to also package a static one.
+---
+ lib/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/meson.build b/lib/meson.build
+index e810509..e8754e6 100644
+--- a/lib/meson.build
++++ b/lib/meson.build
+@@ -25,7 +25,7 @@ gamemode_headers_includes = [
+ ]
+ 
+ # Small library to automatically use gamemode
+-libgamemodeauto = both_libraries(
++libgamemodeauto = shared_library(
+     'gamemodeauto',
+     sources: [
+         'client_loader.c',
+-- 
+2.26.2
+

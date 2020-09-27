@@ -55,4 +55,16 @@
   * Various other fixes and improvements.</comment>
     <requestid>766697</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6e74ddff14e08f09ec012a949b997149</srcmd5>
+    <version>1.6</version>
+    <time>1601200180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6:
+  * Improved man pages
+  * Bug fixes
+- Added only-build-shared-library.patch.
+- Drop special handling for no longer supported Leap 42.</comment>
+    <requestid>837225</requestid>
+  </revision>
 </revisionlist>

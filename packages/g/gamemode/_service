@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/FeralInteractive/gamemode.git</param>
     <param name="scm">git</param>
-    <param name="revision">1.5</param>
+    <param name="revision">1.6</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>

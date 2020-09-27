@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 23 18:12:20 UTC 2020 - marix@marix.org
+
+- Update to version 1.6:
+  * Improved man pages
+  * Bug fixes
+- Added only-build-shared-library.patch.
+- Drop special handling for no longer supported Leap 42.
+
+-------------------------------------------------------------------
 Thu Jan 23 18:32:54 UTC 2020 - marix@marix.org
 
 - Update to version 1.5:

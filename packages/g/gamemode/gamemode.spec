@@ -1,7 +1,7 @@
 #
 # spec file for package gamemode
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gamemode
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Daemon/library combo for changing Linux system performance on demand
 License:        BSD-3-Clause
@@ -28,7 +28,9 @@ Source0:        gamemode-%{version}.tar.xz
 Source1:        gamemode-rpmlintrc
 Source2:        README.openSUSE
 Source3:        baselibs.conf
+Patch0:         only-build-shared-library.patch
 BuildRequires:  cmake
+BuildRequires:  libinih-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -37,9 +39,6 @@ BuildRequires:  pkgconfig(dbus-1)
 # Yes, it needs both
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-%if 0%{?sle_version} == 120300 && 0%{?is_opensuse}
-BuildRequires:  gcc7
-%endif
 
 %description
 GameMode is a daemon/lib combo for Linux that allows games to request
@@ -110,14 +109,12 @@ built-in GameMode support.
 
 %prep
 %setup -q
+%patch0 -p1
 
 cp %{SOURCE2} .
 
 %build
-%if 0%{?sle_version} == 120300 && 0%{?is_opensuse}
-export CC=gcc-7  # gcc4.8 does not work because of https://gcc.gnu.org/bugzilla/show_bug.cgi?id=58016
-%endif
-%meson
+%meson -Dwith-examples=false
 %meson_build
 
 %check
@@ -139,6 +136,7 @@ export CC=gcc-7  # gcc4.8 does not work because of https://gcc.gnu.org/bugzilla/
 %{_userunitdir}/gamemoded.service
 %{_datadir}/polkit-1/actions/com.feralinteractive.GameMode.policy
 %{_datadir}/dbus-1/services/com.feralinteractive.GameMode.service
+%{_datadir}/metainfo/io.github.feralinteractive.gamemode.metainfo.xml
 %{_mandir}/*/*
 %doc example/gamemode.ini README.openSUSE
 %license LICENSE.txt
@@ -156,6 +154,7 @@ export CC=gcc-7  # gcc4.8 does not work because of https://gcc.gnu.org/bugzilla/
 %{_libdir}/libgamemode.so
 %{_libdir}/libgamemodeauto.so
 %{_libdir}/pkgconfig/gamemode*
+%{_libdir}/pkgconfig/libgamemode*
 %license LICENSE.txt
 
 %changelog
