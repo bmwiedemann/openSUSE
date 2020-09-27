@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 15 15:56:54 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 4GB min disk space
+
+-------------------------------------------------------------------
+Sat Sep 12 16:17:54 UTC 2020 - psimons@suse.com
+
+- Update dhall-json to version 1.7.2.
+  1.7.2
+
+  * [The `--documents` flag now wraps non-`List`s in a document](https://github.com/dhall-lang/dhall-haskell/pull/1977)
+
+-------------------------------------------------------------------
 Tue Sep  8 10:21:32 UTC 2020 - psimons@suse.com
 
 - Add dhall-json at version 1.7.1 revision 3.
