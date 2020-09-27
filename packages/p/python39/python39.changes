@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 06:58:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Buildrequire timezone only for general flavor. It's used in this
+  flavor for the test suite.
+
+-------------------------------------------------------------------
 Wed Sep  2 14:39:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.9.0rc1:

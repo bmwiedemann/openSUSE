@@ -147,7 +147,6 @@ BuildRequires:  lzma-devel
 BuildRequires:  netcfg
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  timezone
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
@@ -174,6 +173,7 @@ BuildRequires:  gdbm-devel
 BuildRequires:  gettext
 BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel
+BuildRequires:  timezone
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(tk)
