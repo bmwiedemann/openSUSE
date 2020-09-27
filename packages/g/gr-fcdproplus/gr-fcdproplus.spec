@@ -44,13 +44,16 @@ BuildRequires:  libhidapi-devel
 BuildRequires:  libmpir-devel
 BuildRequires:  orc
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(portaudio-2.0)
-BuildRequires:  pkgconfig(python3)
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python3-six
+%endif
 
 %description
 gr-fcdproplus is a Linux addon for gnuradio to implement a FUNcube Dongle

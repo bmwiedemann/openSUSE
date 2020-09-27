@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 23 18:28:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add python3-six as BR conditionally for Leap systems
+
+-------------------------------------------------------------------
 Fri Aug 28 18:57:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Fix _service file
