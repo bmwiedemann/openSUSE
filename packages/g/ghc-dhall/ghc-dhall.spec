@@ -19,13 +19,13 @@
 %global pkg_name dhall
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.34.0
+Version:        1.35.0
 Release:        0
 Summary:        A configuration language guaranteed to terminate
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Diff-devel
@@ -86,13 +86,13 @@ BuildRequires:  ghc-foldl-devel
 BuildRequires:  ghc-generic-random-devel
 BuildRequires:  ghc-mockery-devel
 BuildRequires:  ghc-quickcheck-instances-devel
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-special-values-devel
 BuildRequires:  ghc-spoon-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-expected-failure-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
+BuildRequires:  ghc-tasty-silver-devel
 BuildRequires:  ghc-turtle-devel
 %endif
 
