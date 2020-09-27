@@ -17,7 +17,7 @@
 
 
 Name:           perl-GD
-Version:        2.72
+Version:        2.73
 Release:        0
 %define cpan_name GD
 Summary:        Interface to Gd Graphics Library

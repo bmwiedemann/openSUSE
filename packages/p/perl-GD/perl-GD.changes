@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 25 03:07:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.73
+   see /usr/share/doc/packages/perl-GD/ChangeLog
+
+  2.73    * allow --options override the libgd options. Not recommended.
+            See GH #33 and RT #130045
+
+-------------------------------------------------------------------
 Fri Jul 24 08:28:47 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Enable the test suite
