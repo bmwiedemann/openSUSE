@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 12 16:31:35 UTC 2020 - psimons@suse.com
+
+- Update megaparsec to version 9.0.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/megaparsec-9.0.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:24 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
