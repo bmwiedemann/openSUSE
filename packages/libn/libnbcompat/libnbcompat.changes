@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sat Aug 29 17:24:34 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Fix build on older systems not having %make_build macro
+
+-------------------------------------------------------------------
+Fri Aug 28 15:27:25 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to version 1.0.1
+  * Avoid defining PACKAGE, etc. in installed header files
+
+-------------------------------------------------------------------
+Tue Aug 25 21:09:37 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to version 1.0.0
+  * Updated build using newer autoconf & libtool
+  * Now builds a shared library instead of static
+
+-------------------------------------------------------------------
+Thu Aug 20 16:45:08 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Some minor spec file fixes
+  * Use absolute URL in Source tag
+  * Fix copyright year
+
+-------------------------------------------------------------------
+Mon Aug 17 16:43:22 UTC 2020 - archie.cobbs@gmail.com
+
+- Initial release
+
