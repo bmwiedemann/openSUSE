@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 25 16:08:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Create (via help2man) and package manpage
+- Recommend more unpacking programs
+  * capstone, cramfs-tools, cramfsswap, jefferson, lhasa, lzop,
+    sasquatch, sleuthkit, squashfs, srecord, ubi_reader, yaffshiv
+
+-------------------------------------------------------------------
 Thu Feb  6 19:05:14 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to version 2.2.0

@@ -24,6 +24,7 @@ License:        MIT
 URL:            https://github.com/devttys0/binwalk
 Source:         https://github.com/devttys0/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-curses
 BuildRequires:  python3-setuptools
@@ -34,10 +35,22 @@ Requires:       python3-curses
 Requires:       ssdeep
 Recommends:     bzip2
 Recommends:     cabextract
+Recommends:     capstone
 Recommends:     cpio
+Recommends:     cramfs-tools
+Recommends:     cramfsswap
 Recommends:     gzip
+Recommends:     jefferson
+Recommends:     lhasa
+Recommends:     lzop
+Recommends:     sasquatch
+Recommends:     sleuthkit
+Recommends:     squashfs
+Recommends:     srecord
+Recommends:     ubi_reader
 Recommends:     unrar
 Recommends:     xz
+Recommends:     yaffshiv
 Recommends:     zlib
 Suggests:       java
 BuildArch:      noarch
@@ -60,6 +73,7 @@ bootloaders, filesystems, etc.
 
 %prep
 %setup -q
+sed -i -e '/^#!\//, 1d' src/binwalk/plugins/hilink.py
 
 %build
 %python3_build
@@ -67,11 +81,16 @@ bootloaders, filesystems, etc.
 %install
 %python3_install
 chmod 644 API.md
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+help2man %{buildroot}/%{_bindir}/binwalk --no-discard-stderr --version-string="%{version}" --no-info > binwalk.1
+install -Dpm 0644 %{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
 %license LICENSE
 %doc API.md
 %{_bindir}/%{name}
+%{_mandir}/man1/binwalk.1%{?ext_man}
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}-*
 
