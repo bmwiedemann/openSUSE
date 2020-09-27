@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:40:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix fillup-template usage:
+  + %post server needs to reference ssh (not sshd), which matches
+    the sysconfig.ssh file name the package ships.
+  + %post client does not need any fillup_ calls, as there is no
+    client-relevant sysconfig file present. The naming of the
+    sysconfig file (ssh instead of sshd) is unfortunate.
+
+-------------------------------------------------------------------
+Thu Sep 17 20:41:39 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Move some Requires to the right subpackage.
+- Avoid ">&" bashism in %post.
+- Upgrade some old specfile constructs/macros and drop unnecessary
+  %{?systemd_*}.
+- Trim descriptions and straighten out the grammar.
+
+-------------------------------------------------------------------
+Thu Sep 10 21:38:30 UTC 2020 - Hans Petter Jansson <hpj@suse.com>
+
+- Split openssh package into openssh, openssh-common,
+  openssh-server and openssh-clients. This allows for the ssh
+  clients to be installed without the server component
+  (bsc#1176434).
+
+-------------------------------------------------------------------
 Fri Jun  5 00:36:08 UTC 2020 - Hans Petter Jansson <hpj@suse.com>
 
 - Version update to 8.3p1:
