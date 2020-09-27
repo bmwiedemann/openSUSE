@@ -18,6 +18,8 @@
 
 %define rev 9249bebbf5a8f2358cb912a5b8c429bc0c5b479b
 
+%bcond_with liblo
+
 %define __provides_exclude_from ^%{_libdir}/carla/jack/.*.so.0$
 Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param> and
@@ -58,7 +60,9 @@ BuildRequires:  pkgconfig(gl)
 # for plugin GUIs
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+%if %{with liblo}
 BuildRequires:  pkgconfig(liblo)
+%endif
 BuildRequires:  pkgconfig(libprojectM)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(mxml)
@@ -84,6 +88,9 @@ Suggests:       %{name}-vst = %{version}
 #End wine
 Requires:       python3-base
 Requires:       python3-qt5
+%if %{with liblo}
+Requires:       python3-pyliblo
+%endif
 ExclusiveArch:  x86_64
 
 %description
@@ -158,7 +165,9 @@ cp -v source/modules/lilv/serd-0.24.0/tests/TurtleTests/LICENSE LICENSE.TurtleTe
 # SUSE specific
 %if 0%{?suse_version}
  %suse_update_desktop_file -r carla AudioVideo Music
+ %if %{with liblo}
  %suse_update_desktop_file -r carla-control AudioVideo Music
+ %endif
  %fdupes -s %{buildroot}%{_datadir}
  %fdupes -s %{buildroot}%{_includedir}
 %endif
