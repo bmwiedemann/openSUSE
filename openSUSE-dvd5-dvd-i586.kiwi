@@ -645,6 +645,7 @@
       <repopackage name="git-daemon"/>
       <repopackage name="git-email"/>
       <repopackage name="git-gui"/>
+      <repopackage name="git-svn"/>
       <repopackage name="git-web"/>
       <repopackage name="gitg"/>
       <repopackage name="gitg-lang"/>
@@ -3335,7 +3336,9 @@
       <repopackage name="openslp-server"/>
       <repopackage name="openssh"/>
       <repopackage name="openssh-askpass-gnome"/>
-      <repopackage name="openssh-helpers"/>
+      <repopackage name="openssh-clients"/>
+      <repopackage name="openssh-common"/>
+      <repopackage name="openssh-server"/>
       <repopackage name="openssl"/>
       <repopackage name="openssl-1_1"/>
       <repopackage name="openSUSE-build-key"/>
@@ -4654,6 +4657,7 @@
       <repopackage name="subversion"/>
       <repopackage name="subversion-bash-completion"/>
       <repopackage name="subversion-doc"/>
+      <repopackage name="subversion-perl"/>
       <repopackage name="subversion-server"/>
       <repopackage name="subversion-tools"/>
       <repopackage name="sudo"/>
