@@ -1,0 +1,15 @@
+https://bird.network.cz/pipermail/bird-users/2020-February/014211.html
+
+diff --git a/nest/route.h b/nest/route.h
+index d2a07f09..b927db5f 100644
+--- a/nest/route.h
++++ b/nest/route.h
+@@ -458,7 +458,7 @@ typedef struct rta {
+ 					   protocol-specific metric is availabe */
+ 
+ 
+-const char * rta_dest_names[RTD_MAX];
++extern const char * rta_dest_names[RTD_MAX];
+ 
+ static inline const char *rta_dest_name(uint n)
+ { return (n < RTD_MAX) ? rta_dest_names[n] : "???"; }

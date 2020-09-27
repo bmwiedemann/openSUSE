@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:16:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.2:
+  o Integrated IPv4 + IPv6 design
+  * many changes, see included NEWS for details
+  * obsoletes separate bird6/bird-common subpackages
+
+- remove bird-1.6.3_verbose.build.patch bufferoverflow.patch: obsolete
+- add gcc10.patch (fix build with gcc 10), disable -fcommon again
+- reenable fortify-source
+
+-------------------------------------------------------------------
 Wed Jun 17 11:26:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add -fcommon to allow building against GCC10 
