@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 15 02:36:49 UTC 2020 - psimons@suse.com
+
+- Update HTTP to version 4000.3.15.
+  Upstream has not updated the file "CHANGES" since the last
+  release.
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:32 UTC 2020 - psimons@suse.com
 
 - Update HTTP to version 4000.3.14 revision 1.
