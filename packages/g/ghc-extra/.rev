@@ -261,4 +261,12 @@ are simple additions, filling out missing functionality.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>831333</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9aa890a47a13fb6c29a7ddc144299bb2</srcmd5>
+    <version>1.7.8</version>
+    <time>1601200133</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835598</requestid>
+  </revision>
 </revisionlist>

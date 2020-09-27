@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 12 16:17:48 UTC 2020 - psimons@suse.com
+
+- Update extra to version 1.7.8.
+  1.7.8, released 2020-09-12
+      #68, make sure Data.Foldable.Extra is exposed
+
+-------------------------------------------------------------------
 Wed Aug 26 02:02:13 UTC 2020 - psimons@suse.com
 
 - Update extra to version 1.7.7.
