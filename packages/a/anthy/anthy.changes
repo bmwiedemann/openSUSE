@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:18:12 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update anthy.spec: Drop the is_opensuse macro to eliminate the
+  difference between SLE-15 and openSUSE-Leap (jsc#SLE-12100). 
+
+-------------------------------------------------------------------
 Tue Aug 18 11:19:51 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch bugzilla-1175274-emacs-27.1.patch
