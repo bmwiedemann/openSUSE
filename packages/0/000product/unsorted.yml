@@ -1179,9 +1179,7 @@ unsorted:
   - binutils-gold 
   - binwalk 
   - bird 
-  - bird-common 
   - bird-doc 
-  - bird6 
   - bison-32bit: [x86_64] 
   - bitcoin-qt5 
   - bitcoin-test 
@@ -4993,7 +4991,6 @@ unsorted:
   - git-subrepo 
   - git-subrepo-bash-completion 
   - git-subrepo-zsh-completion 
-  - git-svn: [i586] 
   - git-sync 
   - git-test 
   - gitolite 
@@ -5513,6 +5510,7 @@ unsorted:
   - gr-fcdproplus 
   - gr-fcdproplus-devel-doc 
   - gr-iqbal-devel-doc 
+  - gr-iqbal-grc 
   - grabpng 
   - gradio 
   - gradio-lang 
@@ -10082,7 +10080,7 @@ unsorted:
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
-  - libgnuradio-iqbalance0_37_2git 
+  - libgnuradio-iqbalance3_8_0 
   - libgnutls-dane-devel 
   - libgnutls-dane0: [i586] 
   - libgnutls-devel 
@@ -11240,6 +11238,8 @@ unsorted:
   - libnanomsg5 
   - libnautilus-extension1-32bit: [x86_64] 
   - libnauty-2_7_1 
+  - libnbcompat-devel 
+  - libnbcompat0 
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
@@ -13032,6 +13032,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar10 
+  - libtorrent-rasterbar2_0 
   - libtorrent21 
   - libtotem_pg5 
   - libtotem_pg5-32bit: [x86_64] 
@@ -16842,6 +16843,7 @@ unsorted:
   - openspecfun-devel 
   - openssh-cavs 
   - openssh-fips 
+  - openssh-helpers 
   - openssl-1_0_0 
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
@@ -25883,7 +25885,6 @@ unsorted:
   - subunit-filters 
   - subunit-shell 
   - subversion-devel 
-  - subversion-perl: [i586] 
   - subversion-python 
   - subversion-ruby 
   - suck 

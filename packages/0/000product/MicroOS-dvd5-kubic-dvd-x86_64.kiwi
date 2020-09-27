@@ -455,6 +455,9 @@
       <repopackage name="open-lldp" arch="x86_64"/>
       <repopackage name="open-vm-tools" arch="x86_64"/>
       <repopackage name="openssh"/>
+      <repopackage name="openssh-clients"/>
+      <repopackage name="openssh-common"/>
+      <repopackage name="openssh-server"/>
       <repopackage name="openssl" arch="x86_64"/>
       <repopackage name="openssl-1_1" arch="x86_64"/>
       <repopackage name="openSUSE-build-key" arch="x86_64"/>
