@@ -1,0 +1,26 @@
+From 4f3fd3f82fe07cbd0b4e5d468066344e2318df59 Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Mon, 21 Sep 2020 22:32:59 +0200
+Subject: [PATCH] boost: qualify placeholders with their full namespace
+
+This is needed with boost >= 1.73.0
+---
+ lib/fix_cc.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/fix_cc.cc b/lib/fix_cc.cc
+index 630dad7..af79d7d 100644
+--- a/lib/fix_cc.cc
++++ b/lib/fix_cc.cc
+@@ -43,7 +43,7 @@ iqbalance::fix_cc::fix_cc(float mag, float phase)
+ {
+ 	message_port_register_in(pmt::mp("iqbal_corr"));
+ 	set_msg_handler(pmt::mp("iqbal_corr"),
+-			boost::bind(&iqbalance::fix_cc::apply_new_corrections, this, _1));
++			boost::bind(&iqbalance::fix_cc::apply_new_corrections, this, boost::placeholders::_1));
+ }
+ 
+ 
+-- 
+2.26.2
+
