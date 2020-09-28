@@ -1793,4 +1793,13 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * 95nvmf: fix typo in the example documentation</comment>
     <requestid>835838</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>18c079c37745985954d70a21cbaa7654</srcmd5>
+    <version>050+suse.227.g7a9b782d</version>
+    <time>1601287365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 050+suse.227.g7a9b782d:
+  * Revert &quot;install: also install post weak dependencies of kernel modules&quot; (boo#1177016)</comment>
+    <requestid>838227</requestid>
+  </revision>
 </revisionlist>

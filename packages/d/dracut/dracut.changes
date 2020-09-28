@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 09:52:13 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 050+suse.227.g7a9b782d:
+  * Revert "install: also install post weak dependencies of kernel modules" (boo#1177016)
+
+-------------------------------------------------------------------
 Mon Sep 21 11:53:13 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 050+suse.226.gb86d9bcf:
