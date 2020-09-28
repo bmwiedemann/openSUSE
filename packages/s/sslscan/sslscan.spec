@@ -17,7 +17,7 @@
 
 
 Name:           sslscan
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        SSL cipher scanning tool
 License:        SUSE-GPL-3.0+-with-openssl-exception

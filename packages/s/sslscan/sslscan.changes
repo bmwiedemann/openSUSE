@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 10:16:55 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgrade to version 2.0.1
+  
+  * Correctly set SNI name when using --targets. Fixes gh#rbsec/sslscan#215
+
+-------------------------------------------------------------------
 Thu Jul 23 12:25:27 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Upgrade to version 2.0.0
