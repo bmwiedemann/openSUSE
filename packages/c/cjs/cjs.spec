@@ -1,7 +1,7 @@
 #
 # spec file for package cjs
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover   0
 %define typelib typelib-1_0-CjsPrivate-1_0
 Name:           cjs
-Version:        4.4.0
+Version:        4.6.0
 Release:        0
 Summary:        JavaScript module used by Cinnamon
 License:        MIT AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later)
