@@ -3684,4 +3684,20 @@
 - update staging to 5.17 release</comment>
     <requestid>834010</requestid>
   </revision>
+  <revision rev="318" vrev="1">
+    <srcmd5>6f173468c88dc1871a81628b0555a82a</srcmd5>
+    <version>5.18</version>
+    <time>1601296178</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.18 development release
+  - Vulkan shader compilation using the new vkd3d-shader library.
+  - USER32 library converted to PE.
+  - Console no longer requires the curses library.
+  - Support for display modes with various orientations.
+  - A number of syntax fixes in the WIDL compiler.
+  - Non-recursive makefiles.
+  - Various bug fixes.
+- update staging to 5.18 release</comment>
+    <requestid>838200</requestid>
+  </revision>
 </revisionlist>

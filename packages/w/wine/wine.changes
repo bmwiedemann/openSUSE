@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 26 07:07:28 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.18 development release
+  - Vulkan shader compilation using the new vkd3d-shader library.
+  - USER32 library converted to PE.
+  - Console no longer requires the curses library.
+  - Support for display modes with various orientations.
+  - A number of syntax fixes in the WIDL compiler.
+  - Non-recursive makefiles.
+  - Various bug fixes.
+- update staging to 5.18 release
+
+-------------------------------------------------------------------
 Sat Sep 12 05:15:53 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.17 development release
