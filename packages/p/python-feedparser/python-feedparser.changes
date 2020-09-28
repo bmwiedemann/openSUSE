@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:20:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.0.1:
+  * Remove all Python 2 compatibility code (#228)
+  * Add *python_requires* to ``setup.py`` (#2 
+
+-------------------------------------------------------------------
 Mon Sep 14 20:10:18 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 6.0.0:

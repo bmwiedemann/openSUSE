@@ -16,10 +16,10 @@
 #
 
 
-%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-feedparser
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Universal Feed Parser Module for Python
 License:        BSD-2-Clause
