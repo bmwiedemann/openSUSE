@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:51:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Deploy docs to Read the Docs (#148) @hugovk
+  * Build API reference docs from docstrings using MKDocs (#147) @hugovk
+  * Function to represent timedeltas without losing precision (precisedelta) (#137) @eldipa
+  * Improve default locale path discovering. (#146) @mondeja
+  * Added Ukrainian language to list in README.md (#141) @tuxlabore
+
+-------------------------------------------------------------------
 Thu Jun  4 06:42:45 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.4.0:

@@ -20,7 +20,7 @@
 %define skip_python2 1
 %global modname humanize
 Name:           python-humanize
-Version:        2.4.0
+Version:        2.6.0
 Release:        0
 Summary:        Python humanize utilities
 License:        MIT

@@ -63,4 +63,17 @@
 - Switch to %pytest macro.</comment>
     <requestid>811308</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8b24d841c5d4241d0189d36e6a017d74</srcmd5>
+    <version>2.6.0</version>
+    <time>1601296233</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * Deploy docs to Read the Docs (#148) @hugovk
+  * Build API reference docs from docstrings using MKDocs (#147) @hugovk
+  * Function to represent timedeltas without losing precision (precisedelta) (#137) @eldipa
+  * Improve default locale path discovering. (#146) @mondeja
+  * Added Ukrainian language to list in README.md (#141) @tuxlabore</comment>
+    <requestid>838267</requestid>
+  </revision>
 </revisionlist>
