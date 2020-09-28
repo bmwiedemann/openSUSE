@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:42:59 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- add emacs-apel-fix-old-backquote.patch
+- fix TW build
+
+-------------------------------------------------------------------
 Mon Jul 23 18:12:13 CEST 2018 - tiwai@suse.de
 
 - Fix build with the latest emacs:

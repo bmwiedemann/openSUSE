@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-apel
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,15 @@ Release:        0
 Summary:        A Portable Emacs Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Editors/Emacs
-Url:            http://git.chise.org/elisp/apel
+URL:            http://git.chise.org/elisp/apel
 Source:         http://git.chise.org/elisp/dist/apel/apel-%{version}.tar.gz
 Source1:        suse-start-apel.el
 Patch0:         prevent-fontset-error.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         apel-10.8-040_make-temp-file-for-Emacs-24.3.50.patch
 Patch2:         apel-emacs-escape-fix.patch
+#PATCH-FIX-UPSTREAM use new style backquotes
+Patch3:         https://src.fedoraproject.org/rpms/emacs-apel/raw/master/f/emacs-apel-fix-old-backquote.patch
 BuildRequires:  emacs-nox
 Requires:       emacs
 Requires:       emacs_program
@@ -47,6 +49,7 @@ A Portable Emacs Library
 %patch1 -p1
 %endif
 %patch2 -p1
+%patch3 -p1
 cp -p %{SOURCE1} .
 iconv -fiso2022jp -tutf-8 README.ja > README.ja.new
 mv README.ja.new README.ja

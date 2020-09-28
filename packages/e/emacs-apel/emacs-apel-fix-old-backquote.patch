@@ -1,0 +1,1040 @@
+Origin: https://github.com/wanderlust/apel/commit/beca6c4fc58fdc0f8923b320265ec5a304850f50
+From: dmaus <dmaus>
+Date: Sun, 17 Jul 2011 07:01:18 +0000
+Subject: [PATCH] Use new style backquotes.
+
+	* tinycustom.el (defcustom): Use new style backquotes.
+	* static.el (static-if, static-when, static-unless)
+	(static-condition-case, static-defconst): Dto.
+	* pym.el (defun-maybe, defmacro-maybe, defsubst-maybe)
+	(defalias-maybe, defvar-maybe, defconst-maybe, defun-maybe-cond)
+	(defmacro-maybe-cond, defsubst-maybe-cond, def-edebug-spec): Dto.
+	* product.el (product-provide): Dto.
+	* poem-om.el (char-next-index): Dto.
+	* poem-nemacs.el (char-next-index): Dto.
+	* poem-ltn1.el (char-next-index): Dto.
+	* poe.el (save-current-buffer, with-current-buffer)
+	(with-temp-file, with-temp-message, with-temp-buffer)
+	(with-output-to-string): Dto.
+	* poe-18.el (save-match-data): Dto.
+	* pces-raw.el (as-binary-process, as-binary-input-file)
+	(as-binary-output-file): Dto
+	* pces-om.el (as-binary-process, as-binary-input-file)
+	(as-binary-output-file): Dto.
+	* pces-nemacs.el (as-binary-process, as-binary-input-file)
+	(as-binary-output-file): Dto.
+	* pccl.el (define-ccl-program): Dto.
+	* filename.el (filename-special-filter-1): Dto.
+	* broken.el (broken-facility, if-broken, when-broken)
+	(unless-broken, check-broken-facility): Dto.
+
+	[Patch created by HAMANO Kiyoto <khiker.mail@gmail.com>]
+
+This breaks compatibility with Emacs18.
+---
+ ChangeLog      |   29 ++++++++
+ broken.el      |   56 +++++++-------
+ filename.el    |   40 +++++-----
+ pccl.el        |   64 ++++++++--------
+ pces-nemacs.el |   20 ++---
+ pces-om.el     |   28 +++----
+ pces-raw.el    |   12 +--
+ poe-18.el      |    6 +-
+ poe.el         |   90 +++++++++++-----------
+ poem-ltn1.el   |    2 +-
+ poem-nemacs.el |    2 +-
+ poem-om.el     |    2 +-
+ product.el     |   30 ++++----
+ pym.el         |  226 ++++++++++++++++++++++++++++----------------------------
+ static.el      |   39 +++++-----
+ tinycustom.el  |    2 +-
+ 16 files changed, 339 insertions(+), 309 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index 9ead1a8..e77100f 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -0,0 +1,29 @@
++2011-07-17  David Maus  <dmaus@ictsoc.de>
++
++	* tinycustom.el (defcustom): Use new style backquotes.
++	* static.el (static-if, static-when, static-unless)
++	(static-condition-case, static-defconst): Dto.
++	* pym.el (defun-maybe, defmacro-maybe, defsubst-maybe)
++	(defalias-maybe, defvar-maybe, defconst-maybe, defun-maybe-cond)
++	(defmacro-maybe-cond, defsubst-maybe-cond, def-edebug-spec): Dto.
++	* product.el (product-provide): Dto.
++	* poem-om.el (char-next-index): Dto.
++	* poem-nemacs.el (char-next-index): Dto.
++	* poem-ltn1.el (char-next-index): Dto.
++	* poe.el (save-current-buffer, with-current-buffer)
++	(with-temp-file, with-temp-message, with-temp-buffer)
++	(with-output-to-string): Dto.
++	* poe-18.el (save-match-data): Dto.
++	* pces-raw.el (as-binary-process, as-binary-input-file)
++	(as-binary-output-file): Dto
++	* pces-om.el (as-binary-process, as-binary-input-file)
++	(as-binary-output-file): Dto.
++	* pces-nemacs.el (as-binary-process, as-binary-input-file)
++	(as-binary-output-file): Dto.
++	* pccl.el (define-ccl-program): Dto.
++	* filename.el (filename-special-filter-1): Dto.
++	* broken.el (broken-facility, if-broken, when-broken)
++	(unless-broken, check-broken-facility): Dto.
++
++	[Patch created by HAMANO Kiyoto <khiker.mail@gmail.com>]
++
+diff --git a/broken.el b/broken.el
+index 81d1ec6..c2eda6f 100644
+--- a/broken.el
++++ b/broken.el
+@@ -58,51 +58,51 @@ FACILITY must be symbol.
+ 
+ If ASSERTION is not omitted and evaluated to nil and NO-NOTICE is nil,
+ it is noticed."
+-  (` (static-if (, assertion)
+-	 (eval-and-compile
+-	   (broken-facility-internal '(, facility) (, docstring) t))
+-       (eval-when-compile
+-	 (when (and '(, assertion) (not '(, no-notice))
+-		    notice-non-obvious-broken-facility)
+-	   (message "BROKEN FACILITY DETECTED: %s" (, docstring)))
+-	 nil)
+-       (eval-and-compile
+-	 (broken-facility-internal '(, facility) (, docstring) nil)))))
++  `(static-if ,assertion
++	      (eval-and-compile
++		(broken-facility-internal ',facility ,docstring t))
++	      (eval-when-compile
++		(when (and ',assertion (not ',no-notice)
++			   notice-non-obvious-broken-facility)
++		  (message "BROKEN FACILITY DETECTED: %s" ,docstring))
++		nil)
++	      (eval-and-compile
++		(broken-facility-internal ',facility ,docstring nil))))
+ 
+ (put 'if-broken 'lisp-indent-function 2)
+ (defmacro if-broken (facility then &rest else)
+   "If FACILITY is broken, expand to THEN, otherwise (progn . ELSE)."
+-  (` (static-if (broken-p '(, facility))
+-	 (, then)
+-       (,@ else))))
++  `(static-if (broken-p ',facility)
++	      ,then
++	      ,@else))
+ 
+ 
+ (put 'when-broken 'lisp-indent-function 1)
+ (defmacro when-broken (facility &rest body)
+   "If FACILITY is broken, expand to (progn . BODY), otherwise nil."
+-  (` (static-when (broken-p '(, facility))
+-       (,@ body))))
++  `(static-when (broken-p ',facility)
++		,@body))
+ 
+ (put 'unless-broken 'lisp-indent-function 1)
+ (defmacro unless-broken (facility &rest body)
+   "If FACILITY is not broken, expand to (progn . BODY), otherwise nil."
+-  (` (static-unless (broken-p '(, facility))
+-       (,@ body))))
++  `(static-unless (broken-p ',facility)
++		  ,@ body))
+ 
+ (defmacro check-broken-facility (facility)
+   "Check FACILITY is broken or not. If the status is different on
+ compile(macro expansion) time and run time, warn it."
+-  (` (if-broken (, facility)
+-	 (unless (broken-p '(, facility))
+-	   (message "COMPILE TIME ONLY BROKEN FACILITY DETECTED: %s" 
+-		    (or
+-		     '(, (broken-facility-description facility))
+-		     (broken-facility-description '(, facility)))))
+-       (when (broken-p '(, facility))
+-	 (message "RUN TIME ONLY BROKEN FACILITY DETECTED: %s" 
+-		  (or
+-		   (broken-facility-description '(, facility))
+-		   '(, (broken-facility-description facility))))))))
++  `(if-broken ,facility
++	      (unless (broken-p ',facility)
++		(message "COMPILE TIME ONLY BROKEN FACILITY DETECTED: %s" 
++			 (or
++			  ',(broken-facility-description facility)
++			  (broken-facility-description ',facility))))
++	      (when (broken-p ',facility)
++		(message "RUN TIME ONLY BROKEN FACILITY DETECTED: %s" 
++			 (or
++			  (broken-facility-description ',facility)
++			  ', (broken-facility-description facility))))))
+ 
+ 
+ ;;; @ end
+diff --git a/filename.el b/filename.el
+index c47b532..598c5d1 100644
+--- a/filename.el
++++ b/filename.el
+@@ -102,26 +102,26 @@ Moreover, if you want to convert Japanese filename to roman string by kakasi,
+ 		inc-i '(1+ i))
+ 	(setq sref 'aref
+ 	      inc-i '(+ i (char-length chr))))
+-      (` (let ((len (length (, string)))
+-	       (b 0)(i 0)
+-	       (dest ""))
+-	   (while (< i len)
+-	     (let ((chr ((, sref) (, string) i))
+-		   (lst filename-replacement-alist)
+-		   ret)
+-	       (while (and lst (not ret))
+-		 (if (if (functionp (car (car lst)))
+-			 (setq ret (funcall (car (car lst)) chr))
+-		       (setq ret (memq chr (car (car lst)))))
+-		     t			; quit this loop.
+-		   (setq lst (cdr lst))))
+-	       (if ret
+-		   (setq dest (concat dest (substring (, string) b i)
+-				      (cdr (car lst)))
+-			 i (, inc-i)
+-			 b i)
+-		 (setq i (, inc-i)))))
+-	   (concat dest (substring (, string) b)))))))
++      `(let ((len (length ,string))
++	     (b 0)(i 0)
++	     (dest ""))
++	 (while (< i len)
++	   (let ((chr (,sref ,string i))
++		 (lst filename-replacement-alist)
++		 ret)
++	     (while (and lst (not ret))
++	       (if (if (functionp (car (car lst)))
++		       (setq ret (funcall (car (car lst)) chr))
++		     (setq ret (memq chr (car (car lst)))))
++		   t			; quit this loop.
++		 (setq lst (cdr lst))))
++	     (if ret
++		 (setq dest (concat dest (substring ,string b i)
++				    (cdr (car lst)))
++		       i ,inc-i
++		       b i)
++	       (setq i ,inc-i))))
++	 (concat dest (substring ,string b))))))
+ 
+ (defun filename-special-filter (string)
+   (filename-special-filter-1 string))
+diff --git a/pccl.el b/pccl.el
+index 088d5c9..c719a3c 100644
+--- a/pccl.el
++++ b/pccl.el
+@@ -55,7 +55,7 @@
+       "When CCL-PROGRAM is too long, internal buffer is extended automatically."
+       (let ((try-ccl-compile t)
+ 	    (prog (eval (ad-get-arg 1))))
+-	(ad-set-arg 1 (` '(, prog)))
++	(ad-set-arg 1 `',prog)
+ 	(while try-ccl-compile
+ 	  (setq try-ccl-compile nil)
+ 	  (condition-case sig
+@@ -86,12 +86,12 @@ Value is a list of transformed arguments."
+ 	    (setq properties (plist-put properties 'pre-write-conversion tmp)))
+ 	(cond
+ 	 ((eq type 'shift-jis)
+-	  (` ((, name) 1 (, mnemonic) (, doc-string)
+-	      nil (, properties) (, eol-type))))
++	  `(,name 1 ,mnemonic ,doc-string
++		  nil ,properties ,eol-type))
+ 	 ((eq type 'iso2022) ; This is not perfect.
+ 	  (if (plist-get props 'escape-quoted)
+ 	      (error "escape-quoted is not supported: %S"
+-		     (` ((, name) (, type) (, doc-string) (, props)))))
++		     `(,name ,type ,doc-string ,props)))
+ 	  (let ((g0 (plist-get props 'charset-g0))
+ 		(g1 (plist-get props 'charset-g1))
+ 		(g2 (plist-get props 'charset-g2))
+@@ -114,43 +114,43 @@ Value is a list of transformed arguments."
+ 		      'japanese-jisx0208-1978))))
+ 	    (if (charsetp g0)
+ 		(if (plist-get props 'force-g0-on-output)
+-		    (setq g0 (` (nil (, g0))))
+-		  (setq g0 (` ((, g0) t)))))
++		    (setq g0 `(nil ,g0))
++		  (setq g0 `(,g0 t))))
+ 	    (if (charsetp g1)
+ 		(if (plist-get props 'force-g1-on-output)
+-		    (setq g1 (` (nil (, g1))))
+-		  (setq g1 (` ((, g1) t)))))
++		    (setq g1 `(nil ,g1))
++		  (setq g1 `(,g1 t))))
+ 	    (if (charsetp g2)
+ 		(if (plist-get props 'force-g2-on-output)
+-		    (setq g2 (` (nil (, g2))))
+-		  (setq g2 (` ((, g2) t)))))
++		    (setq g2 `(nil ,g2))
++		  (setq g2 `(,g2 t))))
+ 	    (if (charsetp g3)
+ 		(if (plist-get props 'force-g3-on-output)
+-		    (setq g3 (` (nil (, g3))))
+-		  (setq g3 (` ((, g3) t)))))
+-	    (` ((, name) 2 (, mnemonic) (, doc-string)
+-		((, g0) (, g1) (, g2) (, g3)
+-		 (, (plist-get props 'short))
+-		 (, (not (plist-get props 'no-ascii-eol)))
+-		 (, (not (plist-get props 'no-ascii-cntl)))
+-		 (, (plist-get props 'seven))
+-		 t
+-		 (, (not (plist-get props 'lock-shift)))
+-		 (, use-roman)
+-		 (, use-oldjis)
+-		 (, (plist-get props 'no-iso6429))
+-		 nil nil nil nil)
+-		(, properties) (, eol-type)))))
+-	 ((eq type 'big5)
+-	  (` ((, name) 3 (, mnemonic) (, doc-string)
+-	      nil (, properties) (, eol-type))))
++		    (setq g3 `(nil ,g3))
++		  (setq g3 `(,g3 t))))
++	    `(,name 2 ,mnemonic ,doc-string
++		    (,g0 ,g1 ,g2 ,g3
++			 ,(plist-get props 'short)
++			 ,(not (plist-get props 'no-ascii-eol))
++			 ,(not (plist-get props 'no-ascii-cntl))
++			 ,(plist-get props 'seven)
++			 t
++			 ,(not (plist-get props 'lock-shift))
++			 ,use-roman
++			 ,use-oldjis
++			 ,(plist-get props 'no-iso6429)
++			 nil nil nil nil)
++		    ,properties ,eol-type)))
++	  ((eq type 'big5)
++	   `(,name 3 ,mnemonic ,doc-string
++		   nil ,properties ,eol-type))
+ 	 ((eq type 'ccl)
+-	  (` ((, name) 4 (, mnemonic) (, doc-string)
+-	      ((, (plist-get props 'decode)) . (, (plist-get props 'encode)))
+-	      (, properties) (, eol-type))))
++	  `(,name 4 ,mnemonic ,doc-string
++		  (,(plist-get props 'decode) . ,(plist-get props 'encode))
++		  ,properties ,eol-type))
+ 	 (t
+ 	  (error "unsupported XEmacs style make-coding-style arguments: %S"
+-		 (` ((, name) (, type) (, doc-string) (, props))))))))
++		 `(,name ,type ,doc-string ,props))))))
+     (defadvice make-coding-system
+       (before ccl-compat (name type &rest ad-subr-args) activate)
+       "Emulate XEmacs style make-coding-system."
+diff --git a/pces-nemacs.el b/pces-nemacs.el
+index e2479e9..dc86a42 100644
+--- a/pces-nemacs.el
++++ b/pces-nemacs.el
+@@ -100,20 +100,20 @@
+ ;;;
+ 
+ (defmacro as-binary-process (&rest body)
+-  (` (let (selective-display	; Disable ^M to nl translation.
+-	   ;; Nemacs
+-	   kanji-flag
+-	   (default-kanji-process-code 0)
+-	   program-kanji-code-alist)
+-       (,@ body))))
++  `(let (selective-display	; Disable ^M to nl translation.
++	 ;; Nemacs
++	 kanji-flag
++	 (default-kanji-process-code 0)
++	 program-kanji-code-alist)
++     ,@ body))
+ 
+ (defmacro as-binary-input-file (&rest body)
+-  (` (let (kanji-flag default-kanji-flag)
+-       (,@ body))))
++  `(let (kanji-flag default-kanji-flag)
++     ,@ body))
+ 
+ (defmacro as-binary-output-file (&rest body)
+-  (` (let (kanji-flag)
+-       (,@ body))))
++  `(let (kanji-flag)
++     ,@ body))
+ 
+ (defun write-region-as-binary (start end filename
+ 				     &optional append visit lockname)
+diff --git a/pces-om.el b/pces-om.el
+index 54d4584..678feb1 100644
+--- a/pces-om.el
++++ b/pces-om.el
+@@ -227,24 +227,24 @@ applied to `coding-system-for-write'."
+ (make-coding-system 'binary nil ?= "No conversion")
+ 
+ (defmacro as-binary-process (&rest body)
+-  (` (let (selective-display	; Disable ^M to nl translation.
+-	   ;; Mule
+-	   mc-flag
+-	   (default-process-coding-system (cons *noconv* *noconv*))
+-	   program-coding-system-alist)
+-       (,@ body))))
++  `(let (selective-display	; Disable ^M to nl translation.
++	 ;; Mule
++	 mc-flag
++	 (default-process-coding-system (cons *noconv* *noconv*))
++	 program-coding-system-alist)
++     ,@ body))
+ 
+ (defmacro as-binary-input-file (&rest body)
+-  (` (let (mc-flag
+-	   (file-coding-system-for-read *noconv*)
+-	   )
+-       (,@ body))))
++  `(let (mc-flag
++	 (file-coding-system-for-read *noconv*)
++	 )
++     ,@ body))
+ 
+ (defmacro as-binary-output-file (&rest body)
+-  (` (let (mc-flag
+-	   (file-coding-system *noconv*)
+-	   )
+-       (,@ body))))
++  `(let (mc-flag
++	 (file-coding-system *noconv*)
++	 )
++     ,@ body))
+ 
+ (defalias 'set-process-input-coding-system 'set-process-coding-system)
+ 
+diff --git a/pces-raw.el b/pces-raw.el
+index 1a4bca8..9d500ca 100644
+--- a/pces-raw.el
++++ b/pces-raw.el
+@@ -56,16 +56,16 @@
+ ;;;
+ 
+ (defmacro as-binary-process (&rest body)
+-  (` (let (selective-display)	; Disable ^M to nl translation.
+-       (,@ body))))
++  `(let (selective-display)	; Disable ^M to nl translation.
++     ,@ body))
+ 
+ (defmacro as-binary-input-file (&rest body)
+-  (` (let ((emx-binary-mode t)) ; Stop CRLF to LF conversion in OS/2
+-       (,@ body))))
++  `(let ((emx-binary-mode t)) ; Stop CRLF to LF conversion in OS/2
++     ,@ body))
+ 
+ (defmacro as-binary-output-file (&rest body)
+-  (` (let ((emx-binary-mode t)) ; Stop CRLF to LF conversion in OS/2
+-       (,@ body))))
++  `(let ((emx-binary-mode t)) ; Stop CRLF to LF conversion in OS/2
++     ,@ body))
+ 
+ (defun write-region-as-binary (start end filename
+ 				     &optional append visit lockname)
+diff --git a/poe-18.el b/poe-18.el
+index 0dffa0e..883fbf2 100644
+--- a/poe-18.el
++++ b/poe-18.el
+@@ -492,9 +492,9 @@ With optional non-nil ALL, force redisplay of all mode-lines."
+ ;; that works ok in practice (people should not use that variable elsewhere).
+ (defmacro save-match-data (&rest body)
+   "Execute the BODY forms, restoring the global value of the match data."
+-  (` (let ((save-match-data-internal (match-data)))
+-       (unwind-protect (progn (,@ body))
+-         (set-match-data save-match-data-internal)))))
++  `(let ((save-match-data-internal (match-data)))
++     (unwind-protect (progn ,@ body)
++       (set-match-data save-match-data-internal))))
+ 
+ 
+ ;;; @ Basic editing commands.
+diff --git a/poe.el b/poe.el
+index 0c7b4ff..f7e7689 100644
+--- a/poe.el
++++ b/poe.el
+@@ -916,20 +916,20 @@ APEL provides this as dummy for compatibility.")
+ (defmacro-maybe save-current-buffer (&rest body)
+   "Save the current buffer; execute BODY; restore the current buffer.
+ Executes BODY just like `progn'."
+-  (` (let ((orig-buffer (current-buffer)))
+-       (unwind-protect
+-	   (progn (,@ body))
+-	 (if (buffer-live-p orig-buffer)
+-	     (set-buffer orig-buffer))))))
++  `(let ((orig-buffer (current-buffer)))
++     (unwind-protect
++         (progn ,@ body)
++       (if (buffer-live-p orig-buffer)
++           (set-buffer orig-buffer)))))
+ 
+ ;; Emacs 20.1/XEmacs 20.3(?) and later: (with-current-buffer BUFFER &rest BODY)
+ (defmacro-maybe with-current-buffer (buffer &rest body)
+   "Execute the forms in BODY with BUFFER as the current buffer.
+ The value returned is the value of the last form in BODY.
+ See also `with-temp-buffer'."
+-  (` (save-current-buffer
+-       (set-buffer (, buffer))
+-       (,@ body))))
++  `(save-current-buffer
++     (set-buffer ,buffer)
++     ,@ body))
+ 
+ ;; Emacs 20.1/XEmacs 20.3(?) and later: (with-temp-file FILE &rest FORMS)
+ (defmacro-maybe with-temp-file (file &rest forms)
+@@ -938,18 +938,18 @@ The value of the last form in FORMS is returned, like `progn'.
+ See also `with-temp-buffer'."
+   (let ((temp-file (make-symbol "temp-file"))
+ 	(temp-buffer (make-symbol "temp-buffer")))
+-    (` (let (((, temp-file) (, file))
+-	     ((, temp-buffer)
+-	      (get-buffer-create (generate-new-buffer-name " *temp file*"))))
+-	 (unwind-protect
+-	     (prog1
+-		 (with-current-buffer (, temp-buffer)
+-		   (,@ forms))
+-	       (with-current-buffer (, temp-buffer)
+-		 (widen)
+-		 (write-region (point-min) (point-max) (, temp-file) nil 0)))
+-	   (and (buffer-name (, temp-buffer))
+-		(kill-buffer (, temp-buffer))))))))
++    `(let ((,temp-file ,file)
++           (,temp-buffer
++            (get-buffer-create (generate-new-buffer-name " *temp file*"))))
++       (unwind-protect
++           (prog1
++               (with-current-buffer ,temp-buffer
++                 ,@forms)
++             (with-current-buffer ,temp-buffer
++               (widen)
++               (write-region (point-min) (point-max) ,temp-file nil 0)))
++         (and (buffer-name ,temp-buffer)
++              (kill-buffer ,temp-buffer))))))
+ 
+ ;; Emacs 20.4 and later: (with-temp-message MESSAGE &rest BODY)
+ ;; This macro uses `current-message', which appears in v20.
+@@ -965,41 +965,41 @@ If MESSAGE is nil, the echo area and message log buffer are unchanged.
+ Use a MESSAGE of \"\" to temporarily clear the echo area."
+     (let ((current-message (make-symbol "current-message"))
+ 	  (temp-message (make-symbol "with-temp-message")))
+-      (` (let (((, temp-message) (, message))
+-	       ((, current-message)))
+-	   (unwind-protect
+-	       (progn
+-		 (when (, temp-message)
+-		   (setq (, current-message) (current-message))
+-		   (message "%s" (, temp-message))
+-		   (,@ body))
+-		 (and (, temp-message) (, current-message)
+-		      (message "%s" (, current-message))))))))))
++      `(let ((,temp-message ,message)
++             (,current-message))
++         (unwind-protect
++             (progn
++               (when ,temp-message
++                 (setq ,current-message (current-message))
++                 (message "%s" ,temp-message)
++                 ,@ body)
++               (and ,temp-message ,current-message
++                    (message "%s" ,current-message))))))))
+ 
+ ;; Emacs 20.1/XEmacs 20.3(?) and later: (with-temp-buffer &rest FORMS)
+ (defmacro-maybe with-temp-buffer (&rest forms)
+   "Create a temporary buffer, and evaluate FORMS there like `progn'.
+ See also `with-temp-file' and `with-output-to-string'."
+   (let ((temp-buffer (make-symbol "temp-buffer")))
+-    (` (let (((, temp-buffer)
+-	      (get-buffer-create (generate-new-buffer-name " *temp*"))))
+-	 (unwind-protect
+-	     (with-current-buffer (, temp-buffer)
+-	       (,@ forms))
+-	   (and (buffer-name (, temp-buffer))
+-		(kill-buffer (, temp-buffer))))))))
++    `(let ((,temp-buffer
++            (get-buffer-create (generate-new-buffer-name " *temp*"))))
++       (unwind-protect
++           (with-current-buffer ,temp-buffer
++             ,@ forms)
++         (and (buffer-name ,temp-buffer)
++              (kill-buffer ,temp-buffer))))))
+ 
+ ;; Emacs 20.1/XEmacs 20.3(?) and later: (with-output-to-string &rest BODY)
+ (defmacro-maybe with-output-to-string (&rest body)
+   "Execute BODY, return the text it sent to `standard-output', as a string."
+-  (` (let ((standard-output
+-	    (get-buffer-create (generate-new-buffer-name " *string-output*"))))
+-       (let ((standard-output standard-output))
+-	 (,@ body))
+-       (with-current-buffer standard-output
+-	 (prog1
+-	     (buffer-string)
+-	   (kill-buffer nil))))))
++  `(let ((standard-output
++          (get-buffer-create (generate-new-buffer-name " *string-output*"))))
++     (let ((standard-output standard-output))
++       ,@ body)
++     (with-current-buffer standard-output
++       (prog1
++           (buffer-string)
++         (kill-buffer nil)))))
+ 
+ ;; Emacs 20.1 and later: (combine-after-change-calls &rest BODY)
+ (defmacro-maybe combine-after-change-calls (&rest body)
+diff --git a/poem-ltn1.el b/poem-ltn1.el
+index d71329d..4dbb454 100644
+--- a/poem-ltn1.el
++++ b/poem-ltn1.el
+@@ -110,7 +110,7 @@ but the contents viewed as characters do change.
+ 
+ (defmacro char-next-index (char index)
+   "Return index of character succeeding CHAR whose index is INDEX."
+-  (` (1+ (, index))))
++  `(1+ ,index))
+ 
+ 
+ ;;; @ string
+diff --git a/poem-nemacs.el b/poem-nemacs.el
+index 8af6364..9f0eb86 100644
+--- a/poem-nemacs.el
++++ b/poem-nemacs.el
+@@ -140,7 +140,7 @@ but the contents viewed as characters do change.
+ (defmacro char-next-index (char index)
+   "Return index of character succeeding CHAR whose index is INDEX.
+ \[emu-nemacs.el]"
+-  (` (+ (, index) (char-bytes (, char)))))
++  `(+ ,index (char-bytes ,char)))
+ 
+ 
+ ;;; @ string
+diff --git a/poem-om.el b/poem-om.el
+index 3b762e7..65da52d 100644
+--- a/poem-om.el
++++ b/poem-om.el
+@@ -102,7 +102,7 @@ but the contents viewed as characters do change.
+ 
+ (defmacro char-next-index (char index)
+   "Return index of character succeeding CHAR whose index is INDEX."
+-  (` (+ (, index) (char-bytes (, char)))))
++  `(+ ,index (char-bytes ,char)))
+ 
+ 
+ ;;; @@ obsoleted aliases
+diff --git a/product.el b/product.el
+index b49d698..98376bb 100644
+--- a/product.el
++++ b/product.el
+@@ -232,21 +232,21 @@ PRODUCT-DEF is a definition of the product."
+ 	 (product-version (product-version product))
+ 	 (product-code-name (product-code-name product))
+ 	 (product-version-string (product-version-string product)))
+-    (` (progn
+-	 (, product-def)
+-	 (put (, feature) 'product
+-	      (let ((product (product-find-by-name (, product-name))))
+-		(product-run-checkers product '(, product-version))
+-		(and (, product-family)
+-		     (product-add-to-family (, product-family)
+-					    (, product-name)))
+-		(product-add-feature product (, feature))
+-		(if (equal '(, product-version) (product-version product))
+-		    product
+-		  (vector (, product-name) (, product-family)
+-			  '(, product-version) (, product-code-name)
+-			  nil nil nil (, product-version-string)))))
+-	 (, feature-def)))))
++    `(progn
++       ,product-def
++       (put ,feature 'product
++            (let ((product (product-find-by-name ,product-name)))
++              (product-run-checkers product ',product-version)
++              (and ,product-family
++                   (product-add-to-family ,product-family
++                                          ,product-name))
++              (product-add-feature product ,feature)
++              (if (equal ',product-version (product-version product))
++                  product
++                (vector ,product-name ,product-family
++                        ',product-version ,product-code-name
++                        nil nil nil ,product-version-string))))
++       ,feature-def)))
+ 
+ (defun product-version-as-string (product)
+   "Return version number of product as a string.
+diff --git a/pym.el b/pym.el
+index 46c85ef..ff789e8 100644
+--- a/pym.el
++++ b/pym.el
+@@ -62,32 +62,32 @@
+   "Define NAME as a function if NAME is not defined.
+ See also the function `defun'."
+   (or (and (fboundp name)
+-	   (not (get name 'defun-maybe)))
+-      (` (or (fboundp (quote (, name)))
+-	     (prog1
+-		 (defun (, name) (,@ everything-else))
+-	       ;; This `defun' will be compiled to `fset',
+-	       ;; which does not update `load-history'.
+-	       ;; We must update `current-load-list' explicitly.
+-	       (setq current-load-list
+-		     (cons (quote (, name)) current-load-list))
+-	       (put (quote (, name)) 'defun-maybe t))))))
++           (not (get name 'defun-maybe)))
++      `(or (fboundp (quote ,name))
++           (prog1
++               (defun ,name ,@ everything-else)
++             ;; This `defun' will be compiled to `fset',
++             ;; which does not update `load-history'.
++             ;; We must update `current-load-list' explicitly.
++             (setq current-load-list
++                   (cons (quote ,name) current-load-list))
++             (put (quote ,name) 'defun-maybe t)))))
+ 
+ (put 'defmacro-maybe 'lisp-indent-function 'defun)
+ (defmacro defmacro-maybe (name &rest everything-else)
+   "Define NAME as a macro if NAME is not defined.
+ See also the function `defmacro'."
+   (or (and (fboundp name)
+-	   (not (get name 'defmacro-maybe)))
+-      (` (or (fboundp (quote (, name)))
+-	     (prog1
+-		 (defmacro (, name) (,@ everything-else))
+-	       ;; This `defmacro' will be compiled to `fset',
+-	       ;; which does not update `load-history'.
+-	       ;; We must update `current-load-list' explicitly.
+-	       (setq current-load-list
+-		     (cons (quote (, name)) current-load-list))
+-	       (put (quote (, name)) 'defmacro-maybe t))))))
++           (not (get name 'defmacro-maybe)))
++      `(or (fboundp (quote ,name))
++           (prog1
++               (defmacro ,name ,@ everything-else)
++             ;; This `defmacro' will be compiled to `fset',
++             ;; which does not update `load-history'.
++             ;; We must update `current-load-list' explicitly.
++             (setq current-load-list
++                   (cons (quote ,name) current-load-list))
++             (put (quote ,name) 'defmacro-maybe t)))))
+ 
+ (put 'defsubst-maybe 'lisp-indent-function 'defun)
+ (defmacro defsubst-maybe (name &rest everything-else)
+@@ -95,51 +95,51 @@ See also the function `defmacro'."
+ See also the macro `defsubst'."
+   (or (and (fboundp name)
+ 	   (not (get name 'defsubst-maybe)))
+-      (` (or (fboundp (quote (, name)))
+-	     (prog1
+-		 (defsubst (, name) (,@ everything-else))
+-	       ;; This `defsubst' will be compiled to `fset',
+-	       ;; which does not update `load-history'.
+-	       ;; We must update `current-load-list' explicitly.
+-	       (setq current-load-list
+-		     (cons (quote (, name)) current-load-list))
+-	       (put (quote (, name)) 'defsubst-maybe t))))))
++      `(or (fboundp (quote ,name))
++           (prog1
++               (defsubst ,name ,@ everything-else)
++             ;; This `defsubst' will be compiled to `fset',
++             ;; which does not update `load-history'.
++             ;; We must update `current-load-list' explicitly.
++             (setq current-load-list
++                   (cons (quote ,name) current-load-list))
++             (put (quote ,name) 'defsubst-maybe t)))))
+ 
+ (defmacro defalias-maybe (symbol definition)
+   "Define SYMBOL as an alias for DEFINITION if SYMBOL is not defined.
+ See also the function `defalias'."
+   (setq symbol (eval symbol))
+   (or (and (fboundp symbol)
+-	   (not (get symbol 'defalias-maybe)))
+-      (` (or (fboundp (quote (, symbol)))
+-	     (prog1
+-		 (defalias (quote (, symbol)) (, definition))
+-	       ;; `defalias' updates `load-history' internally.
+-	       (put (quote (, symbol)) 'defalias-maybe t))))))
++           (not (get symbol 'defalias-maybe)))
++      `(or (fboundp (quote ,symbol))
++           (prog1
++               (defalias (quote ,symbol) ,definition)
++             ;; `defalias' updates `load-history' internally.
++             (put (quote ,symbol) 'defalias-maybe t)))))
+ 
+ (defmacro defvar-maybe (name &rest everything-else)
+   "Define NAME as a variable if NAME is not defined.
+ See also the function `defvar'."
+   (or (and (boundp name)
+ 	   (not (get name 'defvar-maybe)))
+-      (` (or (boundp (quote (, name)))
+-	     (prog1
+-		 (defvar (, name) (,@ everything-else))
+-	       ;; byte-compiler will generate code to update
+-	       ;; `load-history'.
+-	       (put (quote (, name)) 'defvar-maybe t))))))
++      `(or (boundp (quote ,name))
++           (prog1
++               (defvar ,name ,@ everything-else)
++             ;; byte-compiler will generate code to update
++             ;; `load-history'.
++             (put (quote ,name) 'defvar-maybe t)))))
+ 
+ (defmacro defconst-maybe (name &rest everything-else)
+   "Define NAME as a constant variable if NAME is not defined.
+ See also the function `defconst'."
+   (or (and (boundp name)
+-	   (not (get name 'defconst-maybe)))
+-      (` (or (boundp (quote (, name)))
+-	     (prog1
+-		 (defconst (, name) (,@ everything-else))
+-	       ;; byte-compiler will generate code to update
+-	       ;; `load-history'.
+-	       (put (quote (, name)) 'defconst-maybe t))))))
++           (not (get name 'defconst-maybe)))
++      `(or (boundp (quote ,name))
++           (prog1
++               (defconst ,name ,@ everything-else)
++             ;; byte-compiler will generate code to update
++             ;; `load-history'.
++             (put (quote ,name) 'defconst-maybe t)))))
+ 
+ (defmacro defun-maybe-cond (name args &optional doc &rest clauses)
+   "Define NAME as a function if NAME is not defined.
+@@ -149,29 +149,29 @@ for function definition of NAME.
+ See also the function `defun'."
+   (or (stringp doc)
+       (setq clauses (cons doc clauses)
+-	    doc nil))
++            doc nil))
+   (or (and (fboundp name)
+-	   (not (get name 'defun-maybe)))
+-      (` (or (fboundp (quote (, name)))
+-	     (prog1
+-		 (static-cond
+-		  (,@ (mapcar
+-		       (function
+-			(lambda (case)
+-			  (list (car case)
+-				(if doc
+-				    (` (defun (, name) (, args)
+-					 (, doc)
+-					 (,@ (cdr case))))
+-				  (` (defun (, name) (, args)
+-				       (,@ (cdr case))))))))
+-		       clauses)))
+-	       ;; This `defun' will be compiled to `fset',
+-	       ;; which does not update `load-history'.
+-	       ;; We must update `current-load-list' explicitly.
+-	       (setq current-load-list
+-		     (cons (quote (, name)) current-load-list))
+-	       (put (quote (, name)) 'defun-maybe t))))))
++           (not (get name 'defun-maybe)))
++      `(or (fboundp (quote ,name))
++           (prog1
++               (static-cond
++                ,@ (mapcar
++                    (function
++                      (lambda (case)
++                        (list (car case)
++                              (if doc
++                                  `(defun ,name ,args
++                                     ,doc
++                                     ,@ (cdr case))
++                                ` (defun ,name ,args
++                                    ,@ (cdr case))))))
++                     clauses))
++             ;; This `defun' will be compiled to `fset',
++             ;; which does not update `load-history'.
++             ;; We must update `current-load-list' explicitly.
++             (setq current-load-list
++                   (cons (quote ,name) current-load-list))
++             (put (quote ,name) 'defun-maybe t)))))
+ 
+ (defmacro defmacro-maybe-cond (name args &optional doc &rest clauses)
+   "Define NAME as a macro if NAME is not defined.
+@@ -184,26 +184,26 @@ See also the function `defmacro'."
+ 	    doc nil))
+   (or (and (fboundp name)
+ 	   (not (get name 'defmacro-maybe)))
+-      (` (or (fboundp (quote (, name)))
+-	     (prog1
+-		 (static-cond
+-		  (,@ (mapcar
+-		       (function
+-			(lambda (case)
+-			  (list (car case)
+-				(if doc
+-				    (` (defmacro (, name) (, args)
+-					 (, doc)
+-					 (,@ (cdr case))))
+-				  (` (defmacro (, name) (, args)
+-				       (,@ (cdr case))))))))
+-		       clauses)))
+-	       ;; This `defmacro' will be compiled to `fset',
+-	       ;; which does not update `load-history'.
+-	       ;; We must update `current-load-list' explicitly.
+-	       (setq current-load-list
+-		     (cons (quote (, name)) current-load-list))
+-	       (put (quote (, name)) 'defmacro-maybe t))))))
++      `(or (fboundp (quote ,name))
++           (prog1
++               (static-cond
++                ,@ (mapcar
++                     (function
++                      (lambda (case)
++                        (list (car case)
++                              (if doc
++                                  `(defmacro ,name ,args
++                                     ,doc
++                                     ,@ (cdr case))
++                                `(defmacro ,name ,args
++                                   ,@ (cdr case))))))
++                     clauses))
++             ;; This `defmacro' will be compiled to `fset',
++             ;; which does not update `load-history'.
++             ;; We must update `current-load-list' explicitly.
++             (setq current-load-list
++                   (cons (quote ,name) current-load-list))
++             (put (quote ,name) 'defmacro-maybe t)))))
+ 
+ (defmacro defsubst-maybe-cond (name args &optional doc &rest clauses)
+   "Define NAME as an inline function if NAME is not defined.
+@@ -213,29 +213,29 @@ for function definition of NAME.
+ See also the macro `defsubst'."
+   (or (stringp doc)
+       (setq clauses (cons doc clauses)
+-	    doc nil))
++            doc nil))
+   (or (and (fboundp name)
+-	   (not (get name 'defsubst-maybe)))
+-      (` (or (fboundp (quote (, name)))
+-	     (prog1
+-		 (static-cond
+-		  (,@ (mapcar
+-		       (function
+-			(lambda (case)
+-			  (list (car case)
+-				(if doc
+-				    (` (defsubst (, name) (, args)
+-					 (, doc)
+-					 (,@ (cdr case))))
+-				  (` (defsubst (, name) (, args)
+-				       (,@ (cdr case))))))))
+-		       clauses)))
+-	       ;; This `defsubst' will be compiled to `fset',
+-	       ;; which does not update `load-history'.
+-	       ;; We must update `current-load-list' explicitly.
+-	       (setq current-load-list
+-		     (cons (quote (, name)) current-load-list))
+-	       (put (quote (, name)) 'defsubst-maybe t))))))
++           (not (get name 'defsubst-maybe)))
++      `(or (fboundp (quote ,name))
++           (prog1
++               (static-cond
++                ,@ (mapcar
++                     (function
++                      (lambda (case)
++                        (list (car case)
++                              (if doc
++                                  `(defsubst ,name ,args
++                                     ,doc
++                                     ,@ (cdr case))
++                                `(defsubst ,name ,args
++                                   ,@ (cdr case))))))
++                     clauses))
++             ;; This `defsubst' will be compiled to `fset',
++             ;; which does not update `load-history'.
++             ;; We must update `current-load-list' explicitly.
++             (setq current-load-list
++                   (cons (quote ,name) current-load-list))
++             (put (quote ,name) 'defsubst-maybe t)))))
+ 
+ 
+ ;;; Edebug spec.
+@@ -246,7 +246,7 @@ See also the macro `defsubst'."
+   "Set the edebug-form-spec property of SYMBOL according to SPEC.
+ Both SYMBOL and SPEC are unevaluated. The SPEC can be 0, t, a symbol
+ \(naming a function\), or a list."
+-  (` (put (quote (, symbol)) 'edebug-form-spec (quote (, spec)))))
++  `(put (quote ,symbol) 'edebug-form-spec (quote ,spec)))
+ 
+ ;; edebug-spec for `def*-maybe' macros.
+ (def-edebug-spec defun-maybe defun)
+diff --git a/static.el b/static.el
+index 34d6f1b..e7cb5cd 100644
+--- a/static.el
++++ b/static.el
+@@ -29,38 +29,39 @@
+   "Like `if', but evaluate COND at compile time."
+   (if (eval cond)
+       then
+-    (` (progn  (,@ else)))))
++    `(progn ,@ else)))
+ 
+ (put 'static-when 'lisp-indent-function 1)
+ (defmacro static-when (cond &rest body)
+   "Like `when', but evaluate COND at compile time."
+   (if (eval cond)
+-      (` (progn (,@ body)))))
++      `(progn ,@ body)))
+ 
+ (put 'static-unless 'lisp-indent-function 1)
+ (defmacro static-unless (cond &rest body)
+   "Like `unless', but evaluate COND at compile time."
+   (if (eval cond)
+       nil
+-    (` (progn (,@ body)))))
++    `(progn ,@ body)))
+ 
+ (put 'static-condition-case 'lisp-indent-function 2)
+ (defmacro static-condition-case (var bodyform &rest handlers)
+   "Like `condition-case', but evaluate BODYFORM at compile time."
+-  (eval (` (condition-case (, var)
+-	       (list (quote quote) (, bodyform))
+-	     (,@ (mapcar
+-		  (if var
+-		      (function
+-		       (lambda (h)
+-			 (` ((, (car h))
+-			     (list (quote funcall)
+-				   (function (lambda ((, var)) (,@ (cdr h))))
+-				   (list (quote quote) (, var)))))))
+-		    (function
+-		     (lambda (h)
+-		       (` ((, (car h)) (quote (progn (,@ (cdr h)))))))))
+-		  handlers))))))
++  (eval `(condition-case ,var
++             (list (quote quote) ,bodyform)
++           ,@
++           (mapcar
++            (if var
++                (function
++                 (lambda (h)
++                   `(,(car h)
++                     (list (quote funcall)
++                           (function (lambda (,var) ,@ (cdr h)))
++                           (list (quote quote) ,var)))))
++              (function
++               (lambda (h)
++                 `(,(car h) (quote (progn ,@ (cdr h)))))))
++            handlers))))
+ 
+ (put 'static-defconst 'lisp-indent-function 'defun)
+ (defmacro static-defconst (symbol initvalue &optional docstring)
+@@ -68,8 +69,8 @@
+ 
+ The variable SYMBOL can be referred at both compile time and run time."
+   (let ((value (eval initvalue)))
+-    (eval (` (defconst (, symbol) (quote (, value)) (, docstring))))
+-    (` (defconst (, symbol) (quote (, value)) (, docstring)))))
++    (eval `(defconst ,symbol (quote ,value) ,docstring))
++    `(defconst ,symbol (quote ,value) ,docstring)))
+ 
+ (defmacro static-cond (&rest clauses)
+   "Like `cond', but evaluate CONDITION part of each clause at compile time."
+diff --git a/tinycustom.el b/tinycustom.el
+index 9113768..38e4ba6 100644
+--- a/tinycustom.el
++++ b/tinycustom.el
+@@ -50,7 +50,7 @@ DOC is the variable documentation.
+ 
+ This is a defcustom only for emulating purpose.
+ Its effect is just as same as that of defvar."
+-  (` (defvar (, symbol) (, value) (, doc))))
++  `(defvar ,symbol ,value ,doc))
+ 
+ (defvar-maybe frame-background-mode nil
+   "*The brightness of the background.
+-- 
+1.7.10.4
+
