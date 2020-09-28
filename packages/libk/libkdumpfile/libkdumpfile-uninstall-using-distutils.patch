@@ -1,0 +1,101 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Sat, 26 Sep 2020 09:51:22 +0200
+Subject: Implement uninstall using distutils
+Upstream: merged
+Git-commit: 4ddedc04beef165e3f10f70124c117d30e805045
+
+There is no `uninstall` command in distutils. However, the
+`install` command can create a list of all files that were
+installed, and this list can be used to remove them.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ python/Makefile.am |   12 +++++++++++-
+ python/Makefile.in |   15 ++++++++++++---
+ 2 files changed, 23 insertions(+), 4 deletions(-)
+
+--- a/python/Makefile.am
++++ b/python/Makefile.am
+@@ -23,6 +23,8 @@ AM_CPPFLAGS = -I$(top_builddir)/include
+ AM_CFLAGS = $(PYTHON_CFLAGS)
+ AM_LDFLAGS = -module -avoid-version
+ 
++installed_list = installed.list
++
+ setup.cfg: Makefile
+ 	$(AM_V_GEN)
+ 	$(AM_V_at)echo "[kdumpfile]" > $@
+@@ -39,12 +41,20 @@ all-local: setup.cfg
+ install-exec-local: setup.cfg
+ 	$(PYTHON) $(srcdir)/setup.py install \
+ 		--install-purelib $(pythondir) \
+-		--install-platlib $(pyexecdir)
++		--install-platlib $(pyexecdir) \
++		--record $(installed_list)
++
++uninstall-local: $(installed_list)
++	while read f ; do \
++	    $(LIBTOOL) --mode=uninstall rm -f "$$f" ; \
++	done < $<
+ 
+ mostlyclean-local: setup.cfg
+ 	$(PYTHON) $(srcdir)/setup.py clean --all
+ 	rm $<
+ 
++CLEANFILES = $(installed_list)
++
+ check_LTLIBRARIES = _test_addrxlat.la
+ 
+ _test_addrxlat_la_SOURCES = test_addrxlat.c
+--- a/python/Makefile.in
++++ b/python/Makefile.in
+@@ -560,6 +560,8 @@ top_srcdir = @top_srcdir@
+ AM_CPPFLAGS = -I$(top_builddir)/include
+ AM_CFLAGS = $(PYTHON_CFLAGS)
+ AM_LDFLAGS = -module -avoid-version
++installed_list = installed.list
++CLEANFILES = $(installed_list)
+ check_LTLIBRARIES = _test_addrxlat.la
+ _test_addrxlat_la_SOURCES = test_addrxlat.c
+ _test_addrxlat_la_LDFLAGS = \
+@@ -960,6 +962,7 @@ mostlyclean-generic:
+ 	-test -z "$(TEST_SUITE_LOG)" || rm -f $(TEST_SUITE_LOG)
+ 
+ clean-generic:
++	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+ 
+ distclean-generic:
+ 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
+@@ -1037,7 +1040,7 @@ ps: ps-am
+ 
+ ps-am:
+ 
+-uninstall-am:
++uninstall-am: uninstall-local
+ 
+ .MAKE: check-am install-am install-strip
+ 
+@@ -1054,7 +1057,7 @@ uninstall-am:
+ 	installdirs maintainer-clean maintainer-clean-generic \
+ 	mostlyclean mostlyclean-compile mostlyclean-generic \
+ 	mostlyclean-libtool mostlyclean-local pdf pdf-am ps ps-am \
+-	recheck tags tags-am uninstall uninstall-am
++	recheck tags tags-am uninstall uninstall-am uninstall-local
+ 
+ .PRECIOUS: Makefile
+ 
+@@ -1075,7 +1078,13 @@ all-local: setup.cfg
+ install-exec-local: setup.cfg
+ 	$(PYTHON) $(srcdir)/setup.py install \
+ 		--install-purelib $(pythondir) \
+-		--install-platlib $(pyexecdir)
++		--install-platlib $(pyexecdir) \
++		--record $(installed_list)
++
++uninstall-local: $(installed_list)
++	while read f ; do \
++	    $(LIBTOOL) --mode=uninstall rm -f "$$f" ; \
++	done < $<
+ 
+ mostlyclean-local: setup.cfg
+ 	$(PYTHON) $(srcdir)/setup.py clean --all

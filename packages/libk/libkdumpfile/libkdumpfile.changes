@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 27 21:13:24 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Switch to Python distutils:
+  * libkdumpfile-use-python-distutils.patch
+  * libkdumpfile-uninstall-using-distutils.patch
+  * libkdumpfile-honour-DESTDIR.patch
+  * libkdumpfile-move-python-setup-command-options.patch
+  * libkdumpfile-python-includedir.patch
+- Merge python-libaddrxlat into python-libkdumpfile.
+- Build both Python2 and Python3 packages.
+
+-------------------------------------------------------------------
 Tue Sep 22 19:47:45 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - upgrade to libkdumpfile-0.4.0

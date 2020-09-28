@@ -1,0 +1,38 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Sun, 27 Sep 2020 07:34:39 +0200
+Subject: python: Specify includedir for extension modules
+Upstream: merged
+Git-commit: 613192c375727ce190f6a4a793ffa3772b10a522
+
+This bug was not found during development, because the include
+files were already installed on the system, but of course, the
+path to the not yet installed include directory must be given to
+the compiler.
+
+Fixes: 330148658156ce9a20ef55781ef5055f1992221d
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ python/setup.py |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -11,6 +11,7 @@ cfg = ConfigParser()
+ cfg.read('setup.cfg')
+ srcdir = cfg.get('kdumpfile', 'srcdir')
+ top_builddir = cfg.get('kdumpfile', 'top_builddir')
++include_dir=os.path.join(top_builddir, 'include'),
+ addrxlat_la = os.path.join(
+     top_builddir, 'src', 'addrxlat', 'libaddrxlat.la')
+ kdumpfile_la = os.path.join(
+@@ -35,8 +36,10 @@ setup(name='libkdumpfile',
+       package_dir={'': srcdir},
+       ext_modules=[
+           Extension('_addrxlat', [os.path.join(srcdir, 'addrxlat.c')],
++                    include_dirs=[include_dir],
+                     extra_objects=[addrxlat_la]),
+           Extension('_kdumpfile', [os.path.join(srcdir, 'kdumpfile.c')],
++                    include_dirs=[include_dir],
+                     extra_objects=[kdumpfile_la]),
+       ],
+       cmdclass={

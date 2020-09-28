@@ -1,0 +1,947 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Sat, 26 Sep 2020 09:27:03 +0200
+Subject: Use Python distutils to build and install Python bindings
+Upstream: merged
+Git-commit: 330148658156ce9a20ef55781ef5055f1992221d
+
+Although GNU Automake supports building Python modules and
+extensions, this approach does not allow to use standard Python
+packaging methods.
+
+One of the reasons to stay with GNU Automake has been lack of
+support for GNU Libtool, which is used to build the main library.
+In particular, linking to a non-installed library requires
+libtool. This commit adds a `libtoolize` module, which modifies
+the default compiler to use libtool.
+
+Some parameters must be passed from GNU autotools to distutils.
+This is solved by generating a `setup.cfg` file from Makefile.
+
+There are a few gotchas:
+
+1. To build a shared library, libtool requires the `-rpath` option
+   at link time, but Python distutils do not care about the
+   destination directory during build. I have to pass `pyexecdir`
+   explicitly to the build command.
+
+2. The build tree may be different from the source tree (aka VPATH
+   build). The source directory is passed down via a `srcdir`
+   option and used as `package_dir`. It must be also explicitly
+   prepended to all extension source files.
+
+3. The libtool files for libkdumpfile and libaddrxlat must be
+   added as `extra_objects`, because the libraries are not yet
+   installed. Full path to the objects must be provided, and that
+   one is relative to the build tree, so we also pass down
+   `top_builddir` as an option.
+
+Note that tests have not been converted (yet), because they should
+not be installed, but distutils do not seem to implement that
+functionality.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ configure            |    4 
+ configure.ac         |    2 
+ python/Makefile.am   |   51 ++++--
+ python/Makefile.in   |  389 +++++++++++++++------------------------------------
+ python/libtoolize.py |  132 +++++++++++++++++
+ python/setup.py      |   55 +++++++
+ 6 files changed, 338 insertions(+), 295 deletions(-)
+ create mode 100644 python/libtoolize.py
+ create mode 100644 python/setup.py
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -108,8 +108,6 @@ AC_CONFIG_FILES([
+ 	src/addrxlat/Makefile
+ 	src/kdumpfile/Makefile
+ 	python/Makefile
+-	python/addrxlat/Makefile
+-	python/kdumpfile/Makefile
+ 	tests/Makefile
+ 	libaddrxlat.pc
+ 	libkdumpfile.pc
+--- a/python/Makefile.am
++++ b/python/Makefile.am
+@@ -23,17 +23,27 @@ AM_CPPFLAGS = -I$(top_builddir)/include
+ AM_CFLAGS = $(PYTHON_CFLAGS)
+ AM_LDFLAGS = -module -avoid-version
+ 
+-pyexec_LTLIBRARIES = _addrxlat.la _kdumpfile.la
+-
+-_addrxlat_la_SOURCES = addrxlat.c
+-_addrxlat_la_LDFLAGS = $(AM_LDFLAGS) -export-symbols $(srcdir)/addrxlat.sym
+-_addrxlat_la_LIBADD = $(PYTHON_LIBS) $(top_builddir)/src/addrxlat/libaddrxlat.la
+-EXTRA__addrxlat_la_DEPENDENCIES = addrxlat.sym
+-
+-_kdumpfile_la_SOURCES = kdumpfile.c
+-_kdumpfile_la_LDFLAGS = $(AM_LDFLAGS) -export-symbols $(srcdir)/kdumpfile.sym
+-_kdumpfile_la_LIBADD = $(PYTHON_LIBS) $(top_builddir)/src/kdumpfile/libkdumpfile.la
+-EXTRA__kdumpfile_la_DEPENDENCIES = kdumpfile.sym
++setup.cfg: Makefile
++	$(AM_V_GEN)
++	$(AM_V_at)echo "[kdumpfile]" > $@
++	$(AM_V_at)echo "version=$(VERSION)" >> $@
++	$(AM_V_at)echo "libtool=$(LIBTOOL)" >> $@
++	$(AM_V_at)echo "libtool_install=$(LIBTOOL) --mode=install $(INSTALL)" >> $@
++	$(AM_V_at)echo "pyexecdir=$(pyexecdir)" >> $@
++	$(AM_V_at)echo "srcdir=$(srcdir)" >> $@
++	$(AM_V_at)echo "top_builddir=$(top_builddir)" >> $@
++
++all-local: setup.cfg
++	$(PYTHON) $(srcdir)/setup.py build
++
++install-exec-local: setup.cfg
++	$(PYTHON) $(srcdir)/setup.py install \
++		--install-purelib $(pythondir) \
++		--install-platlib $(pyexecdir)
++
++mostlyclean-local: setup.cfg
++	$(PYTHON) $(srcdir)/setup.py clean --all
++	rm $<
+ 
+ check_LTLIBRARIES = _test_addrxlat.la
+ 
+@@ -45,13 +55,22 @@ _test_addrxlat_la_LDFLAGS = \
+ _test_addrxlat_la_LIBADD = $(PYTHON_LIBS) $(top_builddir)/src/addrxlat/libaddrxlat.la
+ EXTRA__test_addrxlat_la_DEPENDENCIES = test_addrxlat.sym
+ 
+-dist_noinst_DATA = \
+-	addrxlat.sym \
+-	kdumpfile.sym \
+-	test_addrxlat.sym \
++dist_noinst_SCRIPTS = \
++	setup.py \
++	libtoolize.py \
++	addrxlat/__init__.py \
++	addrxlat/exceptions.py \
++	kdumpfile/__init__.py \
++	kdumpfile/exceptions.py \
++	kdumpfile/views.py \
+ 	showxlat.py \
+ 	vtop.py
+ 
++dist_noinst_DATA = \
++	addrxlat.c \
++	kdumpfile.c \
++	test_addrxlat.sym
++
+ noinst_HEADERS = \
+ 	addrxlatmod.h
+ 
+@@ -68,5 +87,3 @@ LOG_COMPILER = $(PYTHON)
+ AM_TESTS_ENVIRONMENT = \
+ eval " $$($(LIBTOOL) --config)"; \
+ PYTHONPATH="$$srcdir:$$objdir"
+-
+-SUBDIRS = addrxlat kdumpfile
+--- /dev/null
++++ b/python/libtoolize.py
+@@ -0,0 +1,132 @@
++"""libtool
++
++Build and install extensions using libtool.
++"""
++
++import os
++from distutils import log
++from distutils.util import split_quoted
++from distutils.dir_util import mkpath
++from distutils.file_util import copy_file
++from distutils.spawn import spawn
++from distutils.errors import DistutilsFileError
++
++from distutils.command.build_ext import build_ext as _build_ext
++class build_ext(_build_ext):
++    def initialize_options(self):
++        _build_ext.initialize_options(self)
++        self.libtool = None
++        self.pyexecdir = None
++
++    def finalize_options(self):
++        _build_ext.finalize_options(self)
++
++        if self.libtool is None:
++            self.libtool = 'libtool'
++        if self.pyexecdir is None:
++            import sysconfig
++            self.pyexecdir = sysconfig.get_path('platlib')
++        self.cmd_libtool = split_quoted(self.libtool)
++
++    def libtoolize(self, key, mode, *args):
++        val = getattr(self.compiler, key)
++        val = val[:1] + list(args) + val[1:]
++        setattr(self.compiler, key,
++                self.cmd_libtool + [ '--mode='+mode ] + val)
++
++    def build_extensions(self):
++        self.compiler.obj_extension = '.lo'
++        self.libtoolize('compiler', 'compile')
++        self.libtoolize('compiler_so', 'compile')
++        self.libtoolize('linker_exe', 'link')
++        self.libtoolize('linker_so', 'link',
++                        '-module', '-avoid-version',
++                        '-export-symbols-regex', 'init.*|PyInit_.*',
++                        '-rpath', self.pyexecdir)
++        _build_ext.build_extensions(self)
++
++from distutils.command.install_lib import install_lib as _install_lib
++class install_lib(_install_lib):
++    def initialize_options(self):
++        _install_lib.initialize_options(self)
++        self.libtool_install = None
++
++    def finalize_options(self):
++        _install_lib.finalize_options(self)
++
++        if self.libtool_install is None:
++            self.libtool_install = 'libtool --mode=install install'
++        self.cmd_libtool_install = split_quoted(self.libtool_install)
++
++    def copy_tree(self, infile, outfile, preserve_mode=1, preserve_times=1,
++                   preserve_symlinks=0, level=1):
++        """Copy the build directory tree, respecting dry-run and force flags.
++        Special treatment of libtool files.
++        """
++        if not self.dry_run and not os.path.isdir(infile):
++            raise DistutilsFileError(
++                  "cannot copy tree '%s': not a directory" % infile)
++        try:
++            names = os.listdir(infile)
++        except OSError as e:
++            if self.dry_run:
++                names = []
++            else:
++                raise DistutilsFileError(
++                      "error listing files in '%s': %s" % (infile, e.strerror))
++
++        if not self.dry_run:
++            mkpath(outfile)
++
++        outputs = []
++
++        for n in names:
++            src_name = os.path.join(infile, n)
++            dst_name = os.path.join(outfile, n)
++
++            if n.startswith('.nfs'):
++                # skip NFS rename files
++                continue
++            if n in ('.libs', '_libs'):
++                # skip libtool directories
++                continue
++
++            if preserve_symlinks and os.path.islink(src_name):
++                link_dest = os.readlink(src_name)
++                log.info("linking %s -> %s", dst_name, link_dest)
++                if not self.dry_run:
++                    os.symlink(link_dest, dst_name)
++                outputs.append(dst_name)
++
++            elif os.path.isdir(src_name):
++                outputs.extend(
++                    self.copy_tree(src_name, dst_name, preserve_mode,
++                                   preserve_times, preserve_symlinks))
++
++            elif n.endswith('.la'):
++                spawn(self.cmd_libtool_install + [ src_name, dst_name ],
++                      dry_run=self.dry_run)
++
++            else:
++                copy_file(src_name, dst_name, preserve_mode,
++                          preserve_times, not self.force,
++                          dry_run=self.dry_run)
++                outputs.append(dst_name)
++
++        return outputs
++
++def sysconfig_replace_ext(varname, newext):
++    """Replace the extension in a system config variable.
++    """
++    from distutils.sysconfig import _config_vars
++    val = _config_vars.get(varname, '')
++    suffpos = val.rfind('.')
++    if suffpos >= 0:
++        val = val[:suffpos]
++    _config_vars[varname] = val + newext
++
++# change default shared object suffix to .la
++from distutils.sysconfig import get_config_vars
++get_config_vars()
++sysconfig_replace_ext('EXT_SUFFIX', '.la')
++sysconfig_replace_ext('SO', '.la')
+--- /dev/null
++++ b/python/setup.py
+@@ -0,0 +1,55 @@
++from distutils.core import setup, Extension
++import libtoolize
++import os
++
++try:
++    from configparser import ConfigParser
++except ImportError:
++    from ConfigParser import ConfigParser
++
++cfg = ConfigParser()
++cfg.read('setup.cfg')
++srcdir = cfg.get('kdumpfile', 'srcdir')
++top_builddir = cfg.get('kdumpfile', 'top_builddir')
++addrxlat_la = os.path.join(
++    top_builddir, 'src', 'addrxlat', 'libaddrxlat.la')
++kdumpfile_la = os.path.join(
++    top_builddir, 'src', 'kdumpfile', 'libkdumpfile.la')
++
++classifiers = [
++    "Development Status :: 5 - Production/Stable",
++    "Intended Audience :: Developers",
++    "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+) ",
++    "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)  ",
++    "Programming Language :: Python",
++    "Programming Language :: Python :: Implementation :: CPython",
++    "Topic :: Software Development :: Debuggers "]
++
++setup(name='libkdumpfile',
++      version=cfg.get('kdumpfile', 'version'),
++      description='Python bindings for libkdumpfile',
++      author='Petr Tesarik',
++      author_email='ptesarik@suse.com',
++      url='https://github.com/ptesarik/libkdumpfile',
++      packages=['addrxlat', 'kdumpfile'],
++      package_dir={'': srcdir},
++      ext_modules=[
++          Extension('_addrxlat', [os.path.join(srcdir, 'addrxlat.c')],
++                    extra_objects=[addrxlat_la]),
++          Extension('_kdumpfile', [os.path.join(srcdir, 'kdumpfile.c')],
++                    extra_objects=[kdumpfile_la]),
++      ],
++      options={
++          'build_ext': {
++              'libtool': cfg.get('kdumpfile', 'libtool'),
++              'pyexecdir': cfg.get('kdumpfile', 'pyexecdir'),
++          },
++          'install_lib': {
++              'libtool_install': cfg.get('kdumpfile', 'libtool_install'),
++          },
++      },
++      cmdclass={
++          'build_ext': libtoolize.build_ext,
++          'install_lib': libtoolize.install_lib,
++      },
++)
+--- a/configure
++++ b/configure
+@@ -15704,7 +15704,7 @@ fi
+ 
+ 
+ 
+-ac_config_files="$ac_config_files Makefile examples/Makefile include/Makefile include/libkdumpfile/Makefile src/Makefile src/addrxlat/Makefile src/kdumpfile/Makefile python/Makefile python/addrxlat/Makefile python/kdumpfile/Makefile tests/Makefile libaddrxlat.pc libkdumpfile.pc include/libkdumpfile/kdumpfile.h include/libkdumpfile/addrxlat.h"
++ac_config_files="$ac_config_files Makefile examples/Makefile include/Makefile include/libkdumpfile/Makefile src/Makefile src/addrxlat/Makefile src/kdumpfile/Makefile python/Makefile tests/Makefile libaddrxlat.pc libkdumpfile.pc include/libkdumpfile/kdumpfile.h include/libkdumpfile/addrxlat.h"
+ 
+ 
+ cat >confcache <<\_ACEOF
+@@ -16734,8 +16734,6 @@ do
+     "src/addrxlat/Makefile") CONFIG_FILES="$CONFIG_FILES src/addrxlat/Makefile" ;;
+     "src/kdumpfile/Makefile") CONFIG_FILES="$CONFIG_FILES src/kdumpfile/Makefile" ;;
+     "python/Makefile") CONFIG_FILES="$CONFIG_FILES python/Makefile" ;;
+-    "python/addrxlat/Makefile") CONFIG_FILES="$CONFIG_FILES python/addrxlat/Makefile" ;;
+-    "python/kdumpfile/Makefile") CONFIG_FILES="$CONFIG_FILES python/kdumpfile/Makefile" ;;
+     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
+     "libaddrxlat.pc") CONFIG_FILES="$CONFIG_FILES libaddrxlat.pc" ;;
+     "libkdumpfile.pc") CONFIG_FILES="$CONFIG_FILES libkdumpfile.pc" ;;
+--- a/python/Makefile.in
++++ b/python/Makefile.in
+@@ -101,67 +101,26 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/a
+ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
+ 	$(ACLOCAL_M4)
+ DIST_COMMON = $(srcdir)/Makefile.am $(dist_check_SCRIPTS) \
+-	$(dist_noinst_DATA) $(noinst_HEADERS) $(am__DIST_COMMON)
++	$(dist_noinst_SCRIPTS) $(dist_noinst_DATA) $(noinst_HEADERS) \
++	$(am__DIST_COMMON)
+ mkinstalldirs = $(install_sh) -d
+ CONFIG_HEADER = $(top_builddir)/config.h
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+-am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+-am__vpath_adj = case $$p in \
+-    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+-    *) f=$$p;; \
+-  esac;
+-am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
+-am__install_max = 40
+-am__nobase_strip_setup = \
+-  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
+-am__nobase_strip = \
+-  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
+-am__nobase_list = $(am__nobase_strip_setup); \
+-  for p in $$list; do echo "$$p $$p"; done | \
+-  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
+-  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
+-    if (++n[$$2] == $(am__install_max)) \
+-      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
+-    END { for (dir in files) print dir, files[dir] }'
+-am__base_list = \
+-  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
+-  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
+-am__uninstall_files_from_dir = { \
+-  test -z "$$files" \
+-    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
+-    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
+-         $(am__cd) "$$dir" && rm -f $$files; }; \
+-  }
+-am__installdirs = "$(DESTDIR)$(pyexecdir)"
+-LTLIBRARIES = $(pyexec_LTLIBRARIES)
+ am__DEPENDENCIES_1 =
+-_addrxlat_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
++_test_addrxlat_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+ 	$(top_builddir)/src/addrxlat/libaddrxlat.la
+-am__addrxlat_la_OBJECTS = addrxlat.lo
+-_addrxlat_la_OBJECTS = $(am__addrxlat_la_OBJECTS)
++am__test_addrxlat_la_OBJECTS = test_addrxlat.lo
++_test_addrxlat_la_OBJECTS = $(am__test_addrxlat_la_OBJECTS)
+ AM_V_lt = $(am__v_lt_@AM_V@)
+ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+ am__v_lt_0 = --silent
+ am__v_lt_1 = 
+-_addrxlat_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+-	$(_addrxlat_la_LDFLAGS) $(LDFLAGS) -o $@
+-_kdumpfile_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+-	$(top_builddir)/src/kdumpfile/libkdumpfile.la
+-am__kdumpfile_la_OBJECTS = kdumpfile.lo
+-_kdumpfile_la_OBJECTS = $(am__kdumpfile_la_OBJECTS)
+-_kdumpfile_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+-	$(_kdumpfile_la_LDFLAGS) $(LDFLAGS) -o $@
+-_test_addrxlat_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+-	$(top_builddir)/src/addrxlat/libaddrxlat.la
+-am__test_addrxlat_la_OBJECTS = test_addrxlat.lo
+-_test_addrxlat_la_OBJECTS = $(am__test_addrxlat_la_OBJECTS)
+ _test_addrxlat_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+ 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+ 	$(AM_CFLAGS) $(CFLAGS) $(_test_addrxlat_la_LDFLAGS) $(LDFLAGS) \
+ 	-o $@
++SCRIPTS = $(dist_noinst_SCRIPTS)
+ AM_V_P = $(am__v_P_@AM_V@)
+ am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
+ am__v_P_0 = false
+@@ -196,18 +155,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
+ am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
+ am__v_CCLD_0 = @echo "  CCLD    " $@;
+ am__v_CCLD_1 = 
+-SOURCES = $(_addrxlat_la_SOURCES) $(_kdumpfile_la_SOURCES) \
+-	$(_test_addrxlat_la_SOURCES)
+-DIST_SOURCES = $(_addrxlat_la_SOURCES) $(_kdumpfile_la_SOURCES) \
+-	$(_test_addrxlat_la_SOURCES)
+-RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
+-	ctags-recursive dvi-recursive html-recursive info-recursive \
+-	install-data-recursive install-dvi-recursive \
+-	install-exec-recursive install-html-recursive \
+-	install-info-recursive install-pdf-recursive \
+-	install-ps-recursive install-recursive installcheck-recursive \
+-	installdirs-recursive pdf-recursive ps-recursive \
+-	tags-recursive uninstall-recursive
++SOURCES = $(_test_addrxlat_la_SOURCES)
++DIST_SOURCES = $(_test_addrxlat_la_SOURCES)
+ am__can_run_installinfo = \
+   case $$AM_UPDATE_INFO_DIR in \
+     n|no|NO) false;; \
+@@ -215,14 +164,6 @@ am__can_run_installinfo = \
+   esac
+ DATA = $(dist_noinst_DATA)
+ HEADERS = $(noinst_HEADERS)
+-RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
+-  distclean-recursive maintainer-clean-recursive
+-am__recursive_targets = \
+-  $(RECURSIVE_TARGETS) \
+-  $(RECURSIVE_CLEAN_TARGETS) \
+-  $(am__extra_recursive_targets)
+-AM_RECURSIVE_TARGETS = $(am__recursive_targets:-recursive=) TAGS CTAGS \
+-	check recheck distdir
+ am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
+ # Read a list of newline-separated strings from the standard input,
+ # and print each of them once, without duplicates.  Input order is
+@@ -264,6 +205,33 @@ am__tty_colors = { \
+     std='[m'; \
+   fi; \
+ }
++am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
++am__vpath_adj = case $$p in \
++    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
++    *) f=$$p;; \
++  esac;
++am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
++am__install_max = 40
++am__nobase_strip_setup = \
++  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
++am__nobase_strip = \
++  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
++am__nobase_list = $(am__nobase_strip_setup); \
++  for p in $$list; do echo "$$p $$p"; done | \
++  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
++  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
++    if (++n[$$2] == $(am__install_max)) \
++      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
++    END { for (dir in files) print dir, files[dir] }'
++am__base_list = \
++  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
++  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
++am__uninstall_files_from_dir = { \
++  test -z "$$files" \
++    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
++    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
++         $(am__cd) "$$dir" && rm -f $$files; }; \
++  }
+ am__recheck_rx = ^[ 	]*:recheck:[ 	]*
+ am__global_test_result_rx = ^[ 	]*:global-test-result:[ 	]*
+ am__copy_in_global_log_rx = ^[ 	]*:copy-in-global-log:[ 	]*
+@@ -398,6 +366,7 @@ am__set_TESTS_bases = \
+   bases=`for i in $$bases; do echo $$i; done | sed 's/\.log$$//'`; \
+   bases=`echo $$bases`
+ RECHECK_LOGS = $(TEST_LOGS)
++AM_RECURSIVE_TARGETS = check recheck
+ TEST_SUITE_LOG = test-suite.log
+ TEST_EXTENSIONS = @EXEEXT@ .test
+ LOG_DRIVER = $(SHELL) $(top_srcdir)/test-driver
+@@ -418,35 +387,9 @@ TEST_LOGS = $(am__test_logs2:.test.log=.
+ TEST_LOG_DRIVER = $(SHELL) $(top_srcdir)/test-driver
+ TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
+ 	$(TEST_LOG_FLAGS)
+-DIST_SUBDIRS = $(SUBDIRS)
+ am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp \
+ 	$(top_srcdir)/test-driver
+ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+-am__relativize = \
+-  dir0=`pwd`; \
+-  sed_first='s,^\([^/]*\)/.*$$,\1,'; \
+-  sed_rest='s,^[^/]*/*,,'; \
+-  sed_last='s,^.*/\([^/]*\)$$,\1,'; \
+-  sed_butlast='s,/*[^/]*$$,,'; \
+-  while test -n "$$dir1"; do \
+-    first=`echo "$$dir1" | sed -e "$$sed_first"`; \
+-    if test "$$first" != "."; then \
+-      if test "$$first" = ".."; then \
+-        dir2=`echo "$$dir0" | sed -e "$$sed_last"`/"$$dir2"; \
+-        dir0=`echo "$$dir0" | sed -e "$$sed_butlast"`; \
+-      else \
+-        first2=`echo "$$dir2" | sed -e "$$sed_first"`; \
+-        if test "$$first2" = "$$first"; then \
+-          dir2=`echo "$$dir2" | sed -e "$$sed_rest"`; \
+-        else \
+-          dir2="../$$dir2"; \
+-        fi; \
+-        dir0="$$dir0"/"$$first"; \
+-      fi; \
+-    fi; \
+-    dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
+-  done; \
+-  reldir="$$dir2"
+ ACLOCAL = @ACLOCAL@
+ AMTAR = @AMTAR@
+ AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
+@@ -617,15 +560,6 @@ top_srcdir = @top_srcdir@
+ AM_CPPFLAGS = -I$(top_builddir)/include
+ AM_CFLAGS = $(PYTHON_CFLAGS)
+ AM_LDFLAGS = -module -avoid-version
+-pyexec_LTLIBRARIES = _addrxlat.la _kdumpfile.la
+-_addrxlat_la_SOURCES = addrxlat.c
+-_addrxlat_la_LDFLAGS = $(AM_LDFLAGS) -export-symbols $(srcdir)/addrxlat.sym
+-_addrxlat_la_LIBADD = $(PYTHON_LIBS) $(top_builddir)/src/addrxlat/libaddrxlat.la
+-EXTRA__addrxlat_la_DEPENDENCIES = addrxlat.sym
+-_kdumpfile_la_SOURCES = kdumpfile.c
+-_kdumpfile_la_LDFLAGS = $(AM_LDFLAGS) -export-symbols $(srcdir)/kdumpfile.sym
+-_kdumpfile_la_LIBADD = $(PYTHON_LIBS) $(top_builddir)/src/kdumpfile/libkdumpfile.la
+-EXTRA__kdumpfile_la_DEPENDENCIES = kdumpfile.sym
+ check_LTLIBRARIES = _test_addrxlat.la
+ _test_addrxlat_la_SOURCES = test_addrxlat.c
+ _test_addrxlat_la_LDFLAGS = \
+@@ -635,13 +569,22 @@ _test_addrxlat_la_LDFLAGS = \
+ 
+ _test_addrxlat_la_LIBADD = $(PYTHON_LIBS) $(top_builddir)/src/addrxlat/libaddrxlat.la
+ EXTRA__test_addrxlat_la_DEPENDENCIES = test_addrxlat.sym
+-dist_noinst_DATA = \
+-	addrxlat.sym \
+-	kdumpfile.sym \
+-	test_addrxlat.sym \
++dist_noinst_SCRIPTS = \
++	setup.py \
++	libtoolize.py \
++	addrxlat/__init__.py \
++	addrxlat/exceptions.py \
++	kdumpfile/__init__.py \
++	kdumpfile/exceptions.py \
++	kdumpfile/views.py \
+ 	showxlat.py \
+ 	vtop.py
+ 
++dist_noinst_DATA = \
++	addrxlat.c \
++	kdumpfile.c \
++	test_addrxlat.sym
++
+ noinst_HEADERS = \
+ 	addrxlatmod.h
+ 
+@@ -657,8 +600,7 @@ AM_TESTS_ENVIRONMENT = \
+ eval " $$($(LIBTOOL) --config)"; \
+ PYTHONPATH="$$srcdir:$$objdir"
+ 
+-SUBDIRS = addrxlat kdumpfile
+-all: all-recursive
++all: all-am
+ 
+ .SUFFIXES:
+ .SUFFIXES: .c .lo .log .o .obj .test .test$(EXEEXT) .trs
+@@ -703,47 +645,6 @@ clean-checkLTLIBRARIES:
+ 	  rm -f $${locs}; \
+ 	}
+ 
+-install-pyexecLTLIBRARIES: $(pyexec_LTLIBRARIES)
+-	@$(NORMAL_INSTALL)
+-	@list='$(pyexec_LTLIBRARIES)'; test -n "$(pyexecdir)" || list=; \
+-	list2=; for p in $$list; do \
+-	  if test -f $$p; then \
+-	    list2="$$list2 $$p"; \
+-	  else :; fi; \
+-	done; \
+-	test -z "$$list2" || { \
+-	  echo " $(MKDIR_P) '$(DESTDIR)$(pyexecdir)'"; \
+-	  $(MKDIR_P) "$(DESTDIR)$(pyexecdir)" || exit 1; \
+-	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 '$(DESTDIR)$(pyexecdir)'"; \
+-	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 "$(DESTDIR)$(pyexecdir)"; \
+-	}
+-
+-uninstall-pyexecLTLIBRARIES:
+-	@$(NORMAL_UNINSTALL)
+-	@list='$(pyexec_LTLIBRARIES)'; test -n "$(pyexecdir)" || list=; \
+-	for p in $$list; do \
+-	  $(am__strip_dir) \
+-	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f '$(DESTDIR)$(pyexecdir)/$$f'"; \
+-	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f "$(DESTDIR)$(pyexecdir)/$$f"; \
+-	done
+-
+-clean-pyexecLTLIBRARIES:
+-	-test -z "$(pyexec_LTLIBRARIES)" || rm -f $(pyexec_LTLIBRARIES)
+-	@list='$(pyexec_LTLIBRARIES)'; \
+-	locs=`for p in $$list; do echo $$p; done | \
+-	      sed 's|^[^/]*$$|.|; s|/[^/]*$$||; s|$$|/so_locations|' | \
+-	      sort -u`; \
+-	test -z "$$locs" || { \
+-	  echo rm -f $${locs}; \
+-	  rm -f $${locs}; \
+-	}
+-
+-_addrxlat.la: $(_addrxlat_la_OBJECTS) $(_addrxlat_la_DEPENDENCIES) $(EXTRA__addrxlat_la_DEPENDENCIES) 
+-	$(AM_V_CCLD)$(_addrxlat_la_LINK) -rpath $(pyexecdir) $(_addrxlat_la_OBJECTS) $(_addrxlat_la_LIBADD) $(LIBS)
+-
+-_kdumpfile.la: $(_kdumpfile_la_OBJECTS) $(_kdumpfile_la_DEPENDENCIES) $(EXTRA__kdumpfile_la_DEPENDENCIES) 
+-	$(AM_V_CCLD)$(_kdumpfile_la_LINK) -rpath $(pyexecdir) $(_kdumpfile_la_OBJECTS) $(_kdumpfile_la_LIBADD) $(LIBS)
+-
+ _test_addrxlat.la: $(_test_addrxlat_la_OBJECTS) $(_test_addrxlat_la_DEPENDENCIES) $(EXTRA__test_addrxlat_la_DEPENDENCIES) 
+ 	$(AM_V_CCLD)$(_test_addrxlat_la_LINK)  $(_test_addrxlat_la_OBJECTS) $(_test_addrxlat_la_LIBADD) $(LIBS)
+ 
+@@ -753,8 +654,6 @@ mostlyclean-compile:
+ distclean-compile:
+ 	-rm -f *.tab.c
+ 
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/addrxlat.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kdumpfile.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test_addrxlat.Plo@am__quote@
+ 
+ .c.o:
+@@ -784,61 +683,14 @@ mostlyclean-libtool:
+ clean-libtool:
+ 	-rm -rf .libs _libs
+ 
+-# This directory's subdirectories are mostly independent; you can cd
+-# into them and run 'make' without going through this Makefile.
+-# To change the values of 'make' variables: instead of editing Makefiles,
+-# (1) if the variable is set in 'config.status', edit 'config.status'
+-#     (which will cause the Makefiles to be regenerated when you run 'make');
+-# (2) otherwise, pass the desired values on the 'make' command line.
+-$(am__recursive_targets):
+-	@fail=; \
+-	if $(am__make_keepgoing); then \
+-	  failcom='fail=yes'; \
+-	else \
+-	  failcom='exit 1'; \
+-	fi; \
+-	dot_seen=no; \
+-	target=`echo $@ | sed s/-recursive//`; \
+-	case "$@" in \
+-	  distclean-* | maintainer-clean-*) list='$(DIST_SUBDIRS)' ;; \
+-	  *) list='$(SUBDIRS)' ;; \
+-	esac; \
+-	for subdir in $$list; do \
+-	  echo "Making $$target in $$subdir"; \
+-	  if test "$$subdir" = "."; then \
+-	    dot_seen=yes; \
+-	    local_target="$$target-am"; \
+-	  else \
+-	    local_target="$$target"; \
+-	  fi; \
+-	  ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+-	  || eval $$failcom; \
+-	done; \
+-	if test "$$dot_seen" = "no"; then \
+-	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
+-	fi; test -z "$$fail"
+-
+ ID: $(am__tagged_files)
+ 	$(am__define_uniq_tagged_files); mkid -fID $$unique
+-tags: tags-recursive
++tags: tags-am
+ TAGS: tags
+ 
+ tags-am: $(TAGS_DEPENDENCIES) $(am__tagged_files)
+ 	set x; \
+ 	here=`pwd`; \
+-	if ($(ETAGS) --etags-include --version) >/dev/null 2>&1; then \
+-	  include_option=--etags-include; \
+-	  empty_fix=.; \
+-	else \
+-	  include_option=--include; \
+-	  empty_fix=; \
+-	fi; \
+-	list='$(SUBDIRS)'; for subdir in $$list; do \
+-	  if test "$$subdir" = .; then :; else \
+-	    test ! -f $$subdir/TAGS || \
+-	      set "$$@" "$$include_option=$$here/$$subdir/TAGS"; \
+-	  fi; \
+-	done; \
+ 	$(am__define_uniq_tagged_files); \
+ 	shift; \
+ 	if test -z "$(ETAGS_ARGS)$$*$$unique"; then :; else \
+@@ -851,7 +703,7 @@ tags-am: $(TAGS_DEPENDENCIES) $(am__tagg
+ 	      $$unique; \
+ 	  fi; \
+ 	fi
+-ctags: ctags-recursive
++ctags: ctags-am
+ 
+ CTAGS: ctags
+ ctags-am: $(TAGS_DEPENDENCIES) $(am__tagged_files)
+@@ -864,7 +716,7 @@ GTAGS:
+ 	here=`$(am__cd) $(top_builddir) && pwd` \
+ 	  && $(am__cd) $(top_srcdir) \
+ 	  && gtags -i $(GTAGS_ARGS) "$$here"
+-cscopelist: cscopelist-recursive
++cscopelist: cscopelist-am
+ 
+ cscopelist-am: $(am__tagged_files)
+ 	list='$(am__tagged_files)'; \
+@@ -1076,51 +928,22 @@ distdir: $(DISTFILES)
+ 	    || exit 1; \
+ 	  fi; \
+ 	done
+-	@list='$(DIST_SUBDIRS)'; for subdir in $$list; do \
+-	  if test "$$subdir" = .; then :; else \
+-	    $(am__make_dryrun) \
+-	      || test -d "$(distdir)/$$subdir" \
+-	      || $(MKDIR_P) "$(distdir)/$$subdir" \
+-	      || exit 1; \
+-	    dir1=$$subdir; dir2="$(distdir)/$$subdir"; \
+-	    $(am__relativize); \
+-	    new_distdir=$$reldir; \
+-	    dir1=$$subdir; dir2="$(top_distdir)"; \
+-	    $(am__relativize); \
+-	    new_top_distdir=$$reldir; \
+-	    echo " (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) top_distdir="$$new_top_distdir" distdir="$$new_distdir" \\"; \
+-	    echo "     am__remove_distdir=: am__skip_length_check=: am__skip_mode_fix=: distdir)"; \
+-	    ($(am__cd) $$subdir && \
+-	      $(MAKE) $(AM_MAKEFLAGS) \
+-	        top_distdir="$$new_top_distdir" \
+-	        distdir="$$new_distdir" \
+-		am__remove_distdir=: \
+-		am__skip_length_check=: \
+-		am__skip_mode_fix=: \
+-	        distdir) \
+-	      || exit 1; \
+-	  fi; \
+-	done
+ check-am: all-am
+ 	$(MAKE) $(AM_MAKEFLAGS) $(check_LTLIBRARIES) \
+ 	  $(dist_check_SCRIPTS)
+ 	$(MAKE) $(AM_MAKEFLAGS) check-TESTS
+-check: check-recursive
+-all-am: Makefile $(LTLIBRARIES) $(DATA) $(HEADERS)
+-installdirs: installdirs-recursive
+-installdirs-am:
+-	for dir in "$(DESTDIR)$(pyexecdir)"; do \
+-	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+-	done
+-install: install-recursive
+-install-exec: install-exec-recursive
+-install-data: install-data-recursive
+-uninstall: uninstall-recursive
++check: check-am
++all-am: Makefile $(SCRIPTS) $(DATA) $(HEADERS) all-local
++installdirs:
++install: install-am
++install-exec: install-exec-am
++install-data: install-data-am
++uninstall: uninstall-am
+ 
+ install-am: all-am
+ 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+ 
+-installcheck: installcheck-recursive
++installcheck: installcheck-am
+ install-strip:
+ 	if test -z '$(STRIP)'; then \
+ 	  $(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
+@@ -1145,99 +968,119 @@ distclean-generic:
+ maintainer-clean-generic:
+ 	@echo "This command is intended for maintainers to use"
+ 	@echo "it deletes files that may require special tools to rebuild."
+-clean: clean-recursive
++clean: clean-am
+ 
+ clean-am: clean-checkLTLIBRARIES clean-generic clean-libtool \
+-	clean-pyexecLTLIBRARIES mostlyclean-am
++	mostlyclean-am
+ 
+-distclean: distclean-recursive
++distclean: distclean-am
+ 	-rm -rf ./$(DEPDIR)
+ 	-rm -f Makefile
+ distclean-am: clean-am distclean-compile distclean-generic \
+ 	distclean-tags
+ 
+-dvi: dvi-recursive
++dvi: dvi-am
+ 
+ dvi-am:
+ 
+-html: html-recursive
++html: html-am
+ 
+ html-am:
+ 
+-info: info-recursive
++info: info-am
+ 
+ info-am:
+ 
+ install-data-am:
+ 
+-install-dvi: install-dvi-recursive
++install-dvi: install-dvi-am
+ 
+ install-dvi-am:
+ 
+-install-exec-am: install-pyexecLTLIBRARIES
++install-exec-am: install-exec-local
+ 
+-install-html: install-html-recursive
++install-html: install-html-am
+ 
+ install-html-am:
+ 
+-install-info: install-info-recursive
++install-info: install-info-am
+ 
+ install-info-am:
+ 
+ install-man:
+ 
+-install-pdf: install-pdf-recursive
++install-pdf: install-pdf-am
+ 
+ install-pdf-am:
+ 
+-install-ps: install-ps-recursive
++install-ps: install-ps-am
+ 
+ install-ps-am:
+ 
+ installcheck-am:
+ 
+-maintainer-clean: maintainer-clean-recursive
++maintainer-clean: maintainer-clean-am
+ 	-rm -rf ./$(DEPDIR)
+ 	-rm -f Makefile
+ maintainer-clean-am: distclean-am maintainer-clean-generic
+ 
+-mostlyclean: mostlyclean-recursive
++mostlyclean: mostlyclean-am
+ 
+ mostlyclean-am: mostlyclean-compile mostlyclean-generic \
+-	mostlyclean-libtool
++	mostlyclean-libtool mostlyclean-local
+ 
+-pdf: pdf-recursive
++pdf: pdf-am
+ 
+ pdf-am:
+ 
+-ps: ps-recursive
++ps: ps-am
+ 
+ ps-am:
+ 
+-uninstall-am: uninstall-pyexecLTLIBRARIES
++uninstall-am:
+ 
+-.MAKE: $(am__recursive_targets) check-am install-am install-strip
++.MAKE: check-am install-am install-strip
+ 
+-.PHONY: $(am__recursive_targets) CTAGS GTAGS TAGS all all-am check \
+-	check-TESTS check-am clean clean-checkLTLIBRARIES \
+-	clean-generic clean-libtool clean-pyexecLTLIBRARIES \
+-	cscopelist-am ctags ctags-am distclean distclean-compile \
+-	distclean-generic distclean-libtool distclean-tags distdir dvi \
+-	dvi-am html html-am info info-am install install-am \
+-	install-data install-data-am install-dvi install-dvi-am \
+-	install-exec install-exec-am install-html install-html-am \
+-	install-info install-info-am install-man install-pdf \
+-	install-pdf-am install-ps install-ps-am \
+-	install-pyexecLTLIBRARIES install-strip installcheck \
+-	installcheck-am installdirs installdirs-am maintainer-clean \
+-	maintainer-clean-generic mostlyclean mostlyclean-compile \
+-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+-	recheck tags tags-am uninstall uninstall-am \
+-	uninstall-pyexecLTLIBRARIES
++.PHONY: CTAGS GTAGS TAGS all all-am all-local check check-TESTS \
++	check-am clean clean-checkLTLIBRARIES clean-generic \
++	clean-libtool cscopelist-am ctags ctags-am distclean \
++	distclean-compile distclean-generic distclean-libtool \
++	distclean-tags distdir dvi dvi-am html html-am info info-am \
++	install install-am install-data install-data-am install-dvi \
++	install-dvi-am install-exec install-exec-am install-exec-local \
++	install-html install-html-am install-info install-info-am \
++	install-man install-pdf install-pdf-am install-ps \
++	install-ps-am install-strip installcheck installcheck-am \
++	installdirs maintainer-clean maintainer-clean-generic \
++	mostlyclean mostlyclean-compile mostlyclean-generic \
++	mostlyclean-libtool mostlyclean-local pdf pdf-am ps ps-am \
++	recheck tags tags-am uninstall uninstall-am
+ 
+ .PRECIOUS: Makefile
+ 
+ 
++setup.cfg: Makefile
++	$(AM_V_GEN)
++	$(AM_V_at)echo "[kdumpfile]" > $@
++	$(AM_V_at)echo "version=$(VERSION)" >> $@
++	$(AM_V_at)echo "libtool=$(LIBTOOL)" >> $@
++	$(AM_V_at)echo "libtool_install=$(LIBTOOL) --mode=install $(INSTALL)" >> $@
++	$(AM_V_at)echo "pyexecdir=$(pyexecdir)" >> $@
++	$(AM_V_at)echo "srcdir=$(srcdir)" >> $@
++	$(AM_V_at)echo "top_builddir=$(top_builddir)" >> $@
++
++all-local: setup.cfg
++	$(PYTHON) $(srcdir)/setup.py build
++
++install-exec-local: setup.cfg
++	$(PYTHON) $(srcdir)/setup.py install \
++		--install-purelib $(pythondir) \
++		--install-platlib $(pyexecdir)
++
++mostlyclean-local: setup.cfg
++	$(PYTHON) $(srcdir)/setup.py clean --all
++	rm $<
++
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

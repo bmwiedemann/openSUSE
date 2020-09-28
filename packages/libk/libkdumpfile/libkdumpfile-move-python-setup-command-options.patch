@@ -1,0 +1,76 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Sat, 26 Sep 2020 13:11:41 +0200
+Subject: Move Python setup command options to their own sections
+Upstream: merged
+Git-commit: 0c17b7f3f85866f70d2670398a5a67164d23ebef
+
+This is more straightforward than reading them in setup.py and
+passing them down to setup via the 'options' argument.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ python/Makefile.am |   10 +++++++---
+ python/Makefile.in |   10 +++++++---
+ python/setup.py    |    9 ---------
+ 3 files changed, 14 insertions(+), 15 deletions(-)
+
+--- a/python/Makefile.am
++++ b/python/Makefile.am
+@@ -29,11 +29,15 @@ setup.cfg: Makefile
+ 	$(AM_V_GEN)
+ 	$(AM_V_at)echo "[kdumpfile]" > $@
+ 	$(AM_V_at)echo "version=$(VERSION)" >> $@
+-	$(AM_V_at)echo "libtool=$(LIBTOOL)" >> $@
+-	$(AM_V_at)echo "libtool_install=$(LIBTOOL) --mode=install $(INSTALL)" >> $@
+-	$(AM_V_at)echo "pyexecdir=$(pyexecdir)" >> $@
+ 	$(AM_V_at)echo "srcdir=$(srcdir)" >> $@
+ 	$(AM_V_at)echo "top_builddir=$(top_builddir)" >> $@
++	$(AM_V_at)echo >> $@
++	$(AM_V_at)echo "[build_ext]" >> $@
++	$(AM_V_at)echo "libtool=$(LIBTOOL)" >> $@
++	$(AM_V_at)echo "pyexecdir=$(pyexecdir)" >> $@
++	$(AM_V_at)echo >> $@
++	$(AM_V_at)echo "[install_lib]" >> $@
++	$(AM_V_at)echo "libtool_install=$(LIBTOOL) --mode=install $(INSTALL)" >> $@
+ 
+ all-local: setup.cfg
+ 	$(PYTHON) $(srcdir)/setup.py build
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -39,15 +39,6 @@ setup(name='libkdumpfile',
+           Extension('_kdumpfile', [os.path.join(srcdir, 'kdumpfile.c')],
+                     extra_objects=[kdumpfile_la]),
+       ],
+-      options={
+-          'build_ext': {
+-              'libtool': cfg.get('kdumpfile', 'libtool'),
+-              'pyexecdir': cfg.get('kdumpfile', 'pyexecdir'),
+-          },
+-          'install_lib': {
+-              'libtool_install': cfg.get('kdumpfile', 'libtool_install'),
+-          },
+-      },
+       cmdclass={
+           'build_ext': libtoolize.build_ext,
+           'install_lib': libtoolize.install_lib,
+--- a/python/Makefile.in
++++ b/python/Makefile.in
+@@ -1066,11 +1066,15 @@ setup.cfg: Makefile
+ 	$(AM_V_GEN)
+ 	$(AM_V_at)echo "[kdumpfile]" > $@
+ 	$(AM_V_at)echo "version=$(VERSION)" >> $@
+-	$(AM_V_at)echo "libtool=$(LIBTOOL)" >> $@
+-	$(AM_V_at)echo "libtool_install=$(LIBTOOL) --mode=install $(INSTALL)" >> $@
+-	$(AM_V_at)echo "pyexecdir=$(pyexecdir)" >> $@
+ 	$(AM_V_at)echo "srcdir=$(srcdir)" >> $@
+ 	$(AM_V_at)echo "top_builddir=$(top_builddir)" >> $@
++	$(AM_V_at)echo >> $@
++	$(AM_V_at)echo "[build_ext]" >> $@
++	$(AM_V_at)echo "libtool=$(LIBTOOL)" >> $@
++	$(AM_V_at)echo "pyexecdir=$(pyexecdir)" >> $@
++	$(AM_V_at)echo >> $@
++	$(AM_V_at)echo "[install_lib]" >> $@
++	$(AM_V_at)echo "libtool_install=$(LIBTOOL) --mode=install $(INSTALL)" >> $@
+ 
+ all-local: setup.cfg
+ 	$(PYTHON) $(srcdir)/setup.py build

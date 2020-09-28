@@ -22,7 +22,7 @@
 %define _name   ice
 
 Name:           %{_php}-%{_name}
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        PHP framework delivered as C extension
 License:        BSD-3-Clause

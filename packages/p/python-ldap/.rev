@@ -439,4 +439,12 @@ Tests/
 - Fix the fdupes call</comment>
     <requestid>656823</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>bdb32be6ade60a6139a26a99ea0d8801</srcmd5>
+    <version>3.3.1</version>
+    <time>1601296146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838190</requestid>
+  </revision>
 </revisionlist>

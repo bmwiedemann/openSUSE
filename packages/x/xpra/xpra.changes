@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Sep 27 18:50:56 UTC 2020 - aloisio@gmx.com
+
+- Update to version 4.0.4
+  * fix memory leak with 'scroll' encoding
+  * fix NVENC encoder (profile errors)
+  * fix unmanaged X11 message call which could cause GTK to
+    crash when it fails
+  * fix missing auto-refresh leaving a blurry image
+  * fix incomplete repaints when window contents have padding
+  * fix missing pixels on the edge of video areas in 'auto'
+    encoding mode
+  * fix connection errors with notifications disabled on the
+    server
+  * fix 'sync-xvfb' option: setup error, non-standard bit depth
+    support
+  * fix shadow server dbus SetRefreshDelay causing all further
+    "xpra info" requests to fail
+  * fix incomplete data in initial packets from shadow servers
+  * fix error in dbus debug logging
+  * fix client invalid list of encodings
+  * fix workspace spurious warnings on 64-bit X11 systems
+  * fix named-pipe server clash
+  * fix syntax error in HTML5 client maximize toggle
+  * fix keysym mapping with Xkb and some specific configurations
+  * fix right click on systray using the gtk StatusIcon
+    implementation
+  * fix small file transfers not showing as completed
+  * fix file-transfer UI for download vs download-and-open not
+    being honoured
+  * fix file-transfer identifiers getting lost
+  * fix websocket compatibility with some client / middleware
+  * fix missing windows due to an error in the named window icon
+    handling
+  * fix hard to trigger mmap memory leak
+  * add support for sm86 architecture with CUDA 11.1
+  * allow 'pager' source indication value to activate window
+    server-side
+  * workaround corruption on some windows when maximized
+  * workaround more pyxdg bugs
+  * make OpenGL probe timeout configurable
+
+-------------------------------------------------------------------
 Mon Sep  7 11:00:51 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

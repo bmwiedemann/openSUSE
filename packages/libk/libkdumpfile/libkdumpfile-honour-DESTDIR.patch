@@ -1,0 +1,51 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Sat, 26 Sep 2020 09:55:27 +0200
+Subject: Honour DESTDIR for install/uninstall
+Upstream: merged
+Git-commit: f44f3a690dc74435d8a4cf232b2b8da4a1170089
+
+Support GNU Automake staged installation. Note that `make
+distcheck` fails when this feature is not implemented.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ python/Makefile.am |    3 ++-
+ python/Makefile.in |    3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+--- a/python/Makefile.am
++++ b/python/Makefile.am
+@@ -40,13 +40,14 @@ all-local: setup.cfg
+ 
+ install-exec-local: setup.cfg
+ 	$(PYTHON) $(srcdir)/setup.py install \
++		--root "$(DESTDIR)"/ \
+ 		--install-purelib $(pythondir) \
+ 		--install-platlib $(pyexecdir) \
+ 		--record $(installed_list)
+ 
+ uninstall-local: $(installed_list)
+ 	while read f ; do \
+-	    $(LIBTOOL) --mode=uninstall rm -f "$$f" ; \
++	    $(LIBTOOL) --mode=uninstall rm -f "$(DESTDIR)/$$f" ; \
+ 	done < $<
+ 
+ mostlyclean-local: setup.cfg
+--- a/python/Makefile.in
++++ b/python/Makefile.in
+@@ -1077,13 +1077,14 @@ all-local: setup.cfg
+ 
+ install-exec-local: setup.cfg
+ 	$(PYTHON) $(srcdir)/setup.py install \
++		--root "$(DESTDIR)"/ \
+ 		--install-purelib $(pythondir) \
+ 		--install-platlib $(pyexecdir) \
+ 		--record $(installed_list)
+ 
+ uninstall-local: $(installed_list)
+ 	while read f ; do \
+-	    $(LIBTOOL) --mode=uninstall rm -f "$$f" ; \
++	    $(LIBTOOL) --mode=uninstall rm -f "$(DESTDIR)/$$f" ; \
+ 	done < $<
+ 
+ mostlyclean-local: setup.cfg

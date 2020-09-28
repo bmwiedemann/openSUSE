@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Fri Sep 18 21:39:56 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.6.4.
+  * Fix app version.
+- Update since 2.2.2.
+  * l10n: Update translations
+  * Fix compile warnings (#317) 
+  * Fix build: Fail on implicit function declarations (#321) 
+  * preview window/printing: Remove build conditionals for 
+    gtk+-unix-print-3.0
+  * Fix segfault on empty navMap (#334) 
+  * meson: Dependency fixes (#335) 
+  * EVINCE BACKPORTS: 
+    * backends: backends: Don't ask for bug report 
+      in known issues. Fixes #695165
+    * pdf: Create highlight annotations for existing annotations 
+      in document
+    * libdocument: adding class EvAnnotationTextMarkup
+    * libdocument: adding annotation highlight 
+    * shell: Show highlight annotations in the sidebar
+    * libdocument: Use a common annotation type for text markup 
+      annotations  
+    * Add support for reading strike out text markup annotations 
+    * Add support for reading underline text markup annotations
+    * Add support for changing the type of a text markup annotation
+    * pdf: Fix memory leak when adding new text annotations
+    * libdocument: Added can-have-popup property to 
+      EvAnnotationMarkups.
+    * pdf: Set can-have-popup property to markup annotations when 
+      created
+    * ev-view: Create an EvAnnotationWindow for 
+      EvAnnotationMarkups allowing this
+    * pdf: Added support to save popup rectangles to pdf backend
+    * pdf: Use poppler_annot_markup_set_popup_rectangle() if 
+      available   
+    * pdf: Force text annotations to have a fixed size 24x24
+    * libview: Take border into account when converting view points
+      to doc points 
+    * view: preparing for interactive annotations
+    * libdocument: adding annotation squiggly.
+    * pdf: adding annotation squiggly.
+    * shell: adding annotation squiggly.
+    * pdf: Fixed wrong type-check in copy_poppler_annot.
+    * libdocument: Add area property to EvAnnotation
+    * libview: Set the area of the annotations created by the user
+    * pdf: Deprecate the rectangle passed to 
+      ev_document_annotations_add_annotation
+    * libdocument: Add EV_ANNOTATIONS_SAVE_AREA flag
+    * pdf: Add support for saving the annotation area
+    * libview: Update the annot area while moved when it's being 
+      added
+    * pdf: support for adding and saving highlight annotations
+    * shell, view: adding highlight annotation
+    * pdf: Ensure we always create text markup annots with at 
+      least one quadrilateral
+    * Add a toolbar for adding annotations 
+    * page-cache: Add flags parameter to ev_page_cache_mark_dirty()
+    * pdf: Mark document as modified when inserting annotations 
+    * libview: Do not create annotation window twice. 
+    * libview: Ignore right clicks while in annotation add mode.
+    * view: use a hashtable to map annots to their popups.
+    * ev-view: don't show tooltips for empty annotations
+    * Fix add_annotation() to update area based on bounding box
+  * Remove deprecated/unused code and fix warnings
+  * libview: Hide annotation windows on key-press 
+  * l10n: Update POT   
+  * Meson: Formatting fix in the options file  
+  * Thumbnailer: Do not try to create an unsupported epub thumbnail
+  * Thumbnailer: Remove MATE label from context
+  * Add meson scripts for compiling gschemas and updating the icon 
+    cache
+  * meson: Fix build configuration - dbus support was partly broken.  
+  * Shell: Run thumbnail jobs for epubs not as threads (#353)  
+  * meson: fix detection of t1lib
+  * Created test for the Xreader Help menu.
+  * Created test cases for File and Edit menus.
+  * Remove use of deprecated g_type_class_add_private function
+  * ev-window.c: Refactor action visibility.
+  * ev-window.c: Hide the toolbar in recent document mode, there's 
+    nothing that can be used on it anyhow.
+  * Created more tests for Xreader menu.
+  * Tests: use build target rather than executable name for 
+    dependency 
+  * Build: change the conditions for handling tests   
+  * tests: Some adjustments and improvements
+  * testEditMenu.py and testFileMenu.py: open file with arg to 
+    prevent error
+  * Tests: extend the timeout from 30 seconds to 2 minutes  
+  * Updated old tests 
+  * meson: simplify version comparison
+  * Updated python version to python3
+  * ev-window.c: Don't use g_type_class_peek. 
+  * Added checks to stop error messages from overtaking the terminal 
+    and possibly causing a segfault.
+  * Add Print button to toolbar
+  * Added logic to keep the find bar visible until keyboard shortcut 
+    is pressed.
+  * Added back hot keys
+  * Fix Segmentation fault when opening a PDF file #339 
+  * Add UTF8 support for filename in recent view  
+  * Zoom by Control+scroll is too sensitive 
+  * [Feature request] Please provide "Save" option 
+  * Use new annotations icons (#397) 
+  * Fix xreader crash on epub search
+  * Copy metadata when a file is copied
+  * Thumbnailer: add application/vnd.comicbook-rar
+- Add patch fix_ev-window.c_error.patch to
+  fix error: control reaches end of non-void function.
+
+    
+-------------------------------------------------------------------
 Sat Nov  9 08:42:53 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Remove Requires: xreader-backends from xreader-devel

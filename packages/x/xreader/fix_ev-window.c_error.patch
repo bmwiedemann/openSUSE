@@ -1,0 +1,12 @@
+diff -ruN a/shell/ev-window.c b/shell/ev-window.c
+--- a/shell/ev-window.c	2020-06-24 18:47:39.000000000 +0700
++++ b/shell/ev-window.c	2020-09-24 23:00:15.718930737 +0700
+@@ -369,6 +369,8 @@
+             return "fit-width";
+         case EV_SIZING_FREE:
+             return "free";
++    default:
++        g_assert_not_reached();
+     }
+ }
+ 

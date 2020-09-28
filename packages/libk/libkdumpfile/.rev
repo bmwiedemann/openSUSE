@@ -104,4 +104,20 @@
     <comment></comment>
     <requestid>836154</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d165477247b398c09b9203850836195f</srcmd5>
+    <version>0.4.0</version>
+    <time>1601296133</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to Python distutils:
+  * libkdumpfile-use-python-distutils.patch
+  * libkdumpfile-uninstall-using-distutils.patch
+  * libkdumpfile-honour-DESTDIR.patch
+  * libkdumpfile-move-python-setup-command-options.patch
+  * libkdumpfile-python-includedir.patch
+- Merge python-libaddrxlat into python-libkdumpfile.
+- Build both Python2 and Python3 packages.
+</comment>
+    <requestid>838137</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xreader
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,15 @@
 %define typelib1 typelib-1_0-XreaderDocument-1_5
 %define typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        2.2.2
+Version:        2.6.4
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://github.com/linuxmint/xreader
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/linuxmint/xreader/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE fix_ev-window.c_error.patch gh#linuxmint/xreader#418  andythe_great@pm.me -- Fix error: control reaches end of non-void function during build.
+Patch0:         fix_ev-window.c_error.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-common
@@ -159,14 +161,56 @@ Supplements:    %{name}
 %description -n xreader-plugin-xpsdocument
 A plugin for Xreader to read XPS documents.
 
+%package -n xreader-plugin-comicsdocument
+Summary:        Comics document support for Xreader
+Group:          Productivity/Office/Other
+Requires:       %{name}
+Supplements:    %{name}
+
+%description -n xreader-plugin-comicsdocument
+A plugin for Xreader to read Comics documents.
+
+%package -n xreader-plugin-djvudocument
+Summary:        DjVu document support for Xreader
+Group:          Productivity/Office/Other
+Requires:       %{name}
+Supplements:    %{name}
+
+%description -n xreader-plugin-djvudocument
+A plugin for Xreader to read DjVu documents.
+
+%package -n xreader-plugin-dvidocument
+Summary:        DVI document support for Xreader
+Group:          Productivity/Office/Other
+Requires:       %{name}
+Supplements:    %{name}
+
+%description -n xreader-plugin-dvidocument
+A plugin for Xreader to read DVI documents.
+
+%package -n xreader-plugin-pixbufdocument
+Summary:        Pixbuf document support for Xreader
+Group:          Productivity/Office/Other
+Requires:       %{name}
+Supplements:    %{name}
+
+%description -n xreader-plugin-pixbufdocument
+A plugin for Xreader to read Pixbuf documents.
+
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \
- -Ddbus=true \
- -Dintrospection=true \
- %{nil}
+-Ddbus=true \
+-Dintrospection=true \
+-Ddjvu=true \
+-Ddvi=true \
+-Dt1lib=true \
+-Dpixbuf=true \
+-Dcomics=true \
+-Dhelp_files=true \
+
 %meson_build
 
 %install
@@ -216,6 +260,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/*/*
+%{_datadir}/help/C/%{name}
 %{_mandir}/man?/*.?%{?ext_man}
 # backends directory structure - backends go to their own packages
 %dir %{_libdir}/%{name}/%{sover}/backends
@@ -263,5 +308,21 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n xreader-plugin-xpsdocument
 %{_libdir}/%{name}/%{sover}/backends/libxpsdocument.so
 %{_libdir}/%{name}/%{sover}/backends/xpsdocument.xreader-backend
+
+%files -n xreader-plugin-comicsdocument
+%{_libdir}/%{name}/%{sover}/backends/comicsdocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libcomicsdocument.so
+
+%files -n xreader-plugin-djvudocument
+%{_libdir}/%{name}/%{sover}/backends/djvudocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libdjvudocument.so
+
+%files -n xreader-plugin-dvidocument
+%{_libdir}/%{name}/%{sover}/backends/dvidocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libdvidocument.so
+
+%files -n xreader-plugin-pixbufdocument
+%{_libdir}/%{name}/%{sover}/backends/pixbufdocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libpixbufdocument.so
 
 %changelog

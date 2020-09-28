@@ -48,6 +48,8 @@ BuildRequires:  update-desktop-files
 Requires:       typelib(AppIndicator3)
 Requires:       typelib(Notify)
 Requires:       python3-Babel
+Requires:       python3-cairo >= 1.11.1
+Requires:       python3-gobject
 Requires:       python3-psutil
 %if 0%{?suse_version} > 1315 && 0%{?is_opensuse}
 Requires:       python3-python-xlib

@@ -18,7 +18,7 @@
 
 %define have_systemd 1
 %define dmaj 5.2
-%define dmin 5.2.7
+%define dmin 5.2.8
 # Warn users for upgrading configuration but only on major or minor version changes
 %define conf_need_update 0
 #2017+ New fillup location
@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           shorewall
-Version:        5.2.7
+Version:        5.2.8
 Release:        0
 Summary:        An iptables-based firewall for Linux systems
 License:        GPL-2.0-only
@@ -49,6 +49,7 @@ Patch2:         shorewall-fillup-install.patch
 Patch3:         shorewall-lite-fillup-install.patch
 BuildRequires:  bash >= 4
 BuildRequires:  perl-base
+BuildRequires:  pkgconfig
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  pkgconfig(systemd)
 Requires:       %{_sbindir}/service
@@ -202,7 +203,7 @@ cp %{SOURCE8} %{name}-%{version}/.
 # We don't have /sbin /bin merged on /usr so symlinks can't work.
 # so we dynamically patch last /sbin calls in lib.cli-std
 # and make shorewall remote working without hacks
-sed -i 's#/sbin/shorewall#/usr/sbin/shorewall#g' %{name}-%{version}/lib.cli-std
+sed -i 's#/sbin/shorewall#%{_sbindir}/shorewall#g' %{name}-%{version}/lib.cli-std
 
 %build
 

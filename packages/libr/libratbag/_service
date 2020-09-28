@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/libratbag/libratbag.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.14</param>
+    <param name="revision">v0.15</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Sep 26 08:23:10 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 5.2.8 (Upgrade your configuration)
+  https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/releasenotes.txt
+  + Certain restrictions that apply to wildcard interfaces (interface
+    name ends in '+') were previously not enforced when the logical
+    interface name did not end in '+' but the physical interface name
+    did end in '+'.  That has been corrected.
+  + To ensure that error messages appear in the correct place in the
+    output stream, stderr is now redirected to stdout when the
+    configured PAGER is used by a command.
+  + Since Shorewall 5.1.0, the Shorewall uninstall.sh script has
+    incorrectly removed ${SBINDIR}/shorewall, while the Shorewall-core
+    uninstall.sh script has failed to remove that file. Both scripts
+    have been corrected.
+  + Previously, the Shorewall CLI included a spurious hyphen ('-')
+    between the product name (e.g., 'Shorewall6') and the version when
+    printing a command output banner.
+  + The shorewall-snat(5) manpage previously stated that a
+    comma-separated list of IP address could be specified for
+    SNAT. That statement was in error and has been removed. As part of
+    this change, IPv4 Example 6 has been updated to use the
+    PROBABILITY column.
+  - New features
+    + 'show tc' command now shows the classifiers associated with
+    each interface (as displayed by the 'show classifiers'
+    command). This integrated qdisc/filter information is also included
+    in the output of the 'dump' command. This change deprecates the
+    'show classifiers' ('show filters') command, as that command's
+    output is now included in the 'show tc' output.
+    + Shorewall6 has traditionally generated rules for IPv6 anycast
+    addresses. These rules include:
+    a)  Packets with these destination IP addresses are dropped by
+    	REJECT rules.
+    b)  Packets with these source IP addresses are dropped by the
+    	'nosmurfs' interface option and by the 'dropSmurfs' action.
+    c)  Packets with these destination IP addresses are not logged
+        during policy enforcement.
+    d)  Packets with these destination IP addresses are processes by
+    	the 'Broadcast' action.
+    Beginning with this release, individual network interfaces can be
+    excluded from this treatment through use of the 'omitanycast'
+    option in /etc/shorewall6/interfaces.
+    Note: This option was named 'noanycast' in earlier Beta releases.
+    + Duplicate function names have been eliminated between the
+    Shorewall-core lib.cli shell library and the Shorewall lib.cli-std
+    library.
+    + The 'status' command in Shorewall[6]-lite now precedes the
+    configuration directory name with the administrative host name
+    separated with a colon (":").
+    + Tuomo Soini has contributed a macro that handles NFS v1.4 (no
+    dynamic ports).
+- Packaging:
+  + Add buildrequires for pkgconfig (missing)
+  + Use macro for sbindir
+
+-------------------------------------------------------------------
 Sat Aug 22 09:27:03 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 5.2.7
@@ -21,7 +78,7 @@ Sat Aug 22 09:27:03 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
     shorewall-tcpri(5) and
     http://shorewall.org/simple_traffic_shaping.html for additional
     information.
-  + The Simple TC document is now linked to FAQs 97 and 97a. 
+  + The Simple TC document is now linked to FAQs 97 and 97a.
 
 -------------------------------------------------------------------
 Tue Jul  7 11:31:48 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>

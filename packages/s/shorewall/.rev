@@ -2130,4 +2130,16 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
     <comment></comment>
     <requestid>828806</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>f613f141a1d6cd7cca8d3eb5dd0d503a</srcmd5>
+    <version>5.2.8</version>
+    <time>1601296158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.8 (Upgrade your configuration)
+  https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/releasenotes.txt
+- Packaging:
+  + Add buildrequires for pkgconfig (missing)
+  + Use macro for sbindir (forwarded request 837900 from bruno_friedmann)</comment>
+    <requestid>838004</requestid>
+  </revision>
 </revisionlist>

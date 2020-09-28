@@ -17,14 +17,14 @@
 
 
 Name:           kid3
-Version:        3.8.3
+Version:        3.8.4
 Release:        0
 Summary:        Efficient ID3 Tag Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://kid3.sourceforge.net/
-Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz.asc
+Url:            https://kid3.kde.org/
+Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  id3lib-devel
 BuildRequires:  kf5-filesystem
