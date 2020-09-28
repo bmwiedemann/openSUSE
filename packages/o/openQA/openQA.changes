@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 27 05:26:32 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1601184375.8f2898f37:
+  * t: Optimize t/11-commands.t further with no database at all
+  * t: Optimize t/11-commands.t by not relying on fixtures
+  * t: Simplify connection to database in t/11-commands.t
+  * t: Prevent redundant newline in log_info call
+  * Fix warning in controller for workers table
+  * docs: Add section about "Test runtime limits"
+  * t: Add scaling parameters for OpenQA::Test::TimeLimit
+  * Add specific error message for premature asset cache pruning
+  * Make 'deploy' a real method
+  * Improve name of method 'deployment_check' to prevent confusion
+  * Tweak test timeouts for full-stack
+  * t: Remove unused and useless 'skip_deployment_check'
+  * Test clickable audit events
+  * Render links to items in the audit log
+  * t: Completely remove unused schema_hook functionality
+  * t: Replace all schema hooks by more simple schema updates
+  * t: Use more concise one-line Selenium driver initialization
+  * Fix showing preview of modules rendered while the test was running
+
+-------------------------------------------------------------------
 Wed Sep 23 05:31:47 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1600793800.39e28c975:
