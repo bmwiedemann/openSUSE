@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 27 19:25:44 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.4.1.
+  * Fix vala-0.45 compile error
+  * Add sway badge.
+  * l10n: Update translations
+  * settings: Turn the 'grid' display off by default.
+  * Fix sway badge size
+  * Cleaned up and fixed compiler warnings.
+  * Finally get the size of the svg right.
+  * Remove at-spi load/kill code 
+  * Add option to span background across multiple monitors 
+  * Rename/simplify background mode
+- Remove vala-0.46.1+-requiring-non-public-creation-method-of-abstract-class.patch
+  It was fixed.
+- Rebase slick-greeter-gtk-3.20.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 04:43:38 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Update to version 1.2.7

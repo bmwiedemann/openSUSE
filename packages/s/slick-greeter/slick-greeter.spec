@@ -1,7 +1,7 @@
 #
 # spec file for package slick-greeter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   lightdm-slick-greeter
 Name:           slick-greeter
-Version:        1.2.7
+Version:        1.4.1
 Release:        0
 Summary:        The slick-looking login screen application
 License:        GPL-3.0-only AND CC-BY-SA-3.0
@@ -29,8 +29,6 @@ Source:         https://github.com/linuxmint/slick-greeter/archive/%{version}.ta
 Source1:        README.GSettings-overrides
 # PATCH-FEATURE-OPENSUSE slick-greeter-gtk-3.20.patch -- Restore GTK+ 3.20 support.
 Patch0:         slick-greeter-gtk-3.20.patch
-# PATCH-FIX-UPSTREAM vala 0.46.1+ doesn't allow creation method of abstract class to be public
-Patch1:         vala-0.46.1+-requiring-non-public-creation-method-of-abstract-class.patch
 BuildRequires:  gnome-common
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.24
@@ -91,8 +89,7 @@ lightdm-slick-greeter.
 %prep
 %setup -q
 cp -a %{SOURCE1} .
-%patch0 -p1 
-%patch1 -p1
+%patch0 -p1
 
 %build
 NOCONFIGURE=1 gnome-autogen.sh

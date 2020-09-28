@@ -1,15 +1,16 @@
---- a/configure.ac
-+++ b/configure.ac
-@@ -49,6 +49,16 @@ if test x$gtk_check_pass = xyes ; then
+diff -ruN a/configure.ac b/configure.ac
+--- a/configure.ac	2020-06-24 18:37:33.000000000 +0700
++++ b/configure.ac	2020-09-28 02:56:30.890501700 +0700
+@@ -49,6 +49,16 @@
  fi
  
  dnl ###########################################################################
-+dnl Check for GTK version - 3.22
++dnl Check for GTK version - 3.24
 +dnl ###########################################################################
 +
-+PKG_CHECK_MODULES(GTK_3_22_0, gtk+-3.0 >= 3.22.0 , gtk_check_pass=yes, gtk_check_pass=no)
+++PKG_CHECK_MODULES(GTK_3_24_0, gtk+-3.0 >= 3.24.0 , gtk_check_pass=yes, gtk_check_pass=no)
 +if test x$gtk_check_pass = xyes ; then
-+  AM_VALAFLAGS="$AM_VALAFLAGS -D HAVE_GTK_3_22_0"
++  AM_VALAFLAGS="$AM_VALAFLAGS -D HAVE_GTK_3_24_0"
 +  AC_SUBST([AM_VALAFLAGS])
 +fi
 +
@@ -17,9 +18,10 @@
  dnl Hack for vala >= 0.39
  dnl ###########################################################################
  
---- a/src/main-window.vala
-+++ b/src/main-window.vala
-@@ -220,7 +220,11 @@ public class MainWindow : Gtk.Window
+diff -ruN a/src/main-window.vala b/src/main-window.vala
+--- a/src/main-window.vala	2020-06-24 18:37:33.000000000 +0700
++++ b/src/main-window.vala	2020-09-28 03:21:16.151097772 +0700
+@@ -216,22 +216,37 @@
      private void monitors_changed_cb (Gdk.Screen screen)
      {
          Gdk.Display display = screen.get_display();
@@ -30,12 +32,10 @@
 +#endif
          Gdk.Rectangle geometry;
  
-         window_size_x = 0;
-@@ -228,10 +232,17 @@ public class MainWindow : Gtk.Window
          monitors = new List<Monitor> ();
          primary_monitor = null;
  
-+#if HAVE_GTK_3_22_0
++#if HAVE_GTK_3_22_0        
          for (var i = 0; i < display.get_n_monitors (); i++)
          {
              Gdk.Monitor monitor = display.get_monitor(i);
@@ -48,8 +48,6 @@
 +#endif
              debug ("Monitor %d is %dx%d pixels at %d,%d", i, geometry.width, geometry.height, geometry.x, geometry.y);
  
-             if (window_size_x < geometry.x + geometry.width)
-@@ -247,7 +258,11 @@ public class MainWindow : Gtk.Window
              if (monitor_is_unique_position (display, i))
              {
                  var greeter_monitor = new Monitor (geometry.x, geometry.y, geometry.width, geometry.height);
@@ -61,7 +59,7 @@
                  monitors.append (greeter_monitor);
  
                  if (plug_name == only_on_monitor)
-@@ -276,16 +291,27 @@ public class MainWindow : Gtk.Window
+@@ -260,17 +275,28 @@
      private bool monitor_is_unique_position (Gdk.Display display, int n)
      {
          Gdk.Rectangle g0;
@@ -83,15 +81,18 @@
              Gdk.Monitor mon1;
              mon1 = display.get_monitor(i);
              g1 = mon1.get_geometry();
+-
 +#else
 +            screen.get_monitor_geometry(i, out g1);
 +#endif
- 
++            
              if (g0.x == g1.x && g0.y == g1.y)
                  return false;
---- a/src/menubar.vala
-+++ b/src/menubar.vala
-@@ -540,9 +540,15 @@ public class MenuBar : Gtk.MenuBar
+         }
+diff -ruN a/src/menubar.vala b/src/menubar.vala
+--- a/src/menubar.vala	2020-06-24 18:37:33.000000000 +0700
++++ b/src/menubar.vala	2020-09-28 03:16:25.783849529 +0700
+@@ -541,9 +541,15 @@
  
              /* Put keyboard at the bottom of the screen */
              var display = get_display ();
@@ -108,9 +109,10 @@
              keyboard_window.move (geom.x, geom.y + geom.height - 250);
              keyboard_window.resize (geom.width, 250);
          }
---- a/src/slick-greeter.vala
-+++ b/src/slick-greeter.vala
-@@ -224,8 +224,14 @@ public class SlickGreeter
+diff -ruN a/src/slick-greeter.vala b/src/slick-greeter.vala
+--- a/src/slick-greeter.vala	2020-06-24 18:37:33.000000000 +0700
++++ b/src/slick-greeter.vala	2020-09-28 03:17:59.328894496 +0700
+@@ -232,8 +232,14 @@
      {
          /* Explicitly set the right scale before closing window */
          var display = Gdk.Display.get_default();
