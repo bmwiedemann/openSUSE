@@ -19,13 +19,13 @@
 %define real_name BuildStream
 
 Name:           buildstream
-Version:        1.4.3
+Version:        1.6.0
 Release:        0
 Summary:        A framework for modelling build pipelines in YAML
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Building
 URL:            https://wiki.gnome.org/Projects/BuildStream
-Source0:        https://download.gnome.org/sources/BuildStream/1.4/%{real_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/BuildStream/1.6/%{real_name}-%{version}.tar.xz
 
 BuildRequires:  bubblewrap
 BuildRequires:  fdupes

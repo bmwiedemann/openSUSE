@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Sep 25 16:32:09 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.6.0:
+  + Fixed edge case issue when dealing with git remotes.
+- Changes from version 1.5.1:
+  + Support `buildstream1.conf` as well as `buildstream.conf` for
+    parallel installations.
+  + Lazy resolution of variables, this allows junctions to use
+    variables without requiring the project to have fully resolved
+    variables, while still reporting the right error messages if a
+    junction uses unresolved variables.
+  + Fix an issue where conditional statements were being lost
+    instead of processed at include time, only when the include
+    happens in project.conf.
+  + Backport some artifact cache related structural changes, and
+    allow BuildStream 1 clients to interface with BuildStream 2
+    remote asset caches, while still allowing BuildStream 1 to
+    interface with its own bst-artifact-server implementation.
+  + Added sandbox configuration for `os` and `architecture` to
+    mirror the added options in BuildStream 2.
+- Changes from version 1.5.0:
+  + Process options in included files in the context of the project
+    they were included from.
+    This is technically a breaking change, however it is highly
+    unlikely that this will break projects. In some cases projects
+    were working around the broken behavior by ensuring matching
+    project option names in junctioned projects, and in other cases
+    simply avoiding including files which have project option
+    conditional statements.
+  + Added errors when trying to load BuildStream 2 projects,
+    recommending to install the appropriate BuildStream version for
+    the project.
+  + Added errors when loading BuildStream 2 plugins in a
+    BuildStream 1 project, recommending to use BuildStream 1
+    plugins with BuildStream 1 projects.
+
+-------------------------------------------------------------------
 Wed May 13 19:53:32 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.3:
