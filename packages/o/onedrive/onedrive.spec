@@ -28,13 +28,13 @@
 %endif
 
 Name:           onedrive
-Version:        2.4.3
+Version:        2.4.5
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://github.com/abraunegg/onedrive/
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar
 %if %{with dcompiler_dmd}
 BuildRequires:  dmd
 BuildRequires:  phobos-devel-static
@@ -64,6 +64,11 @@ Summary:        OneDrive zsh completition
 Group:          Productivity/Networking/Other
 Requires:       zsh
 
+%package completion-fish
+Summary:        OneDrive fish completition
+Group:          Productivity/Networking/Other
+Requires:       fish
+
 %description
 OneDrive is a client for Microsoft file serving service
 
@@ -72,6 +77,9 @@ OneDrive shell completions for Bash.
 
 %description completion-zsh
 OneDrive shell completions for zsh.
+
+%description completion-fish
+OneDrive shell completions for fish.
 
 %prep
 %setup -q
@@ -129,5 +137,10 @@ install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 %dir %{_prefix}/local/share/zsh/
 %dir %{_prefix}/local/share/zsh/site-functions
 %{_prefix}/local/share/zsh/site-functions/_onedrive
+
+%files completion-fish
+%dir %{_prefix}/local/share/fish
+%dir %{_prefix}/local/share/fish/completions
+%{_prefix}/local/share/fish/completions/onedrive.fish
 
 %changelog

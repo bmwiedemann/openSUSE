@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Sep 27 10:08:36 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Changed from obs_scm to tar_scm to unstuck legaldb
+- Added:
+  * onedrive-2.4.5.tar
+- Removed:
+  * onedrive-2.4.5.obscpio
+  * onedrive-2.4.5.tar.gz 
+
+-------------------------------------------------------------------
+Wed Sep 16 10:21:44 UTC 2020 - egotthold@suse.com
+
+- Add fish completition to specfile
+- Update to version 2.4.5:
+  * Release files for 2.4.5 (#1018)
+  * Fix installation of fish, enable autoconf configure argument (#1016)
+  * Release 2.4.5 Development Prep (#1017)
+  * Release files for 2.4.4 (#1015)
+  * Update --single-directory handling of parent path matching (#1014)
+  * Update how available free space is tracked when uploading files to OneDrive (#1011)
+  * Fix 'Skipping uploading this new file as parent path is not in the database' when uploading to a Personal Shared Folder (#1009)
+  * Update Office365 / SharePoint site search query (#1006)
+  * Check shared folder DB entries for matching skip_dir items (#1003)
+  * Update Docker.md (#1002)
+  * Update when 'Sync with OneDrive is ..' is outputted when in --monitor mode (#999)
+  * Fix segfault when moving file when using --monitor (#997)
+  * Improve --single-directory sync performance (#992)
+  * Fish Tab Auto-completions (#991)
+  * Update the 'Processing XXXX' output to display the full path (#987)
+  * Increase maximum file size to 100GB (#989)
+  * Resolve client 'hang' when attempting to sync a Unix pipe file (#985)
+  * Update 'skip_dir' and 'skip_file' pattern matching and handling for --monitor (#986)
+  * Update 'skip_dir' and 'skip_file' pattern matching and handling (Issue #982) (#983)
+  * Update installation instructions for NixOS (#981)
+  * Update docker md (#977)
+  * Update Dockerfiles (#980)
+  * Update bug_report.md
+  * Release 2.4.4 Development Prep (#974)
+
+-------------------------------------------------------------------
 Wed Aug 19 13:26:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use LDC on non-x86 archs since DMD is x86 only
