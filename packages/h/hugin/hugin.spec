@@ -52,7 +52,7 @@ BuildRequires:  pkg-config
 BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  vigra-devel
-BuildRequires:  wxWidgets-devel >= 3
+BuildRequires:  wxGTK3-devel >= 3
 %define mversion 2019.2
 Version:        2019.2.0
 Release:        0
@@ -115,16 +115,6 @@ rmdir -p --ignore-fail-on-non-empty %{buildroot}%{_datadir}/icons/gnome/48x48/mi
 # Install manually so it can be dedup'ed with the one in the program resources
 install -m644 -D -t %{buildroot}%{_licensedir}/hugin/ COPYING.txt
 %fdupes %{buildroot}
-
-%post
-%icon_theme_cache_post
-%mime_database_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%mime_database_postun
-%desktop_database_postun
 
 %files -f %{name}.lang
 %license COPYING.txt

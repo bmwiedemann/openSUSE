@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 13:03:26 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use wxGTK3 instead of wxWidgets (GTK2), for better HiDPI support.
+- Cleanup spec file.
+
+-------------------------------------------------------------------
 Thu Aug 20 08:38:47 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.
