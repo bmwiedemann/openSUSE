@@ -907,4 +907,12 @@
 - Add pkgconfig(libsystemd) BuildRequires: new dependency. (forwarded request 834735 from iznogood)</comment>
     <requestid>836033</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>b01409752f50a295f3d016b42dbdad88</srcmd5>
+    <version>2.30.1</version>
+    <time>1601296110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837832</requestid>
+  </revision>
 </revisionlist>
