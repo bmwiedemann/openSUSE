@@ -246,7 +246,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20200927</value>
+    <value>20200928</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -279,9 +279,6 @@ products:
     - i586
     - x86_64
   - csi-snapshotter-image:
-    - i586
-    - x86_64
-  - kubic-cilium-etcd-operator-image:
     - i586
     - x86_64
   - kubic-cilium-image:

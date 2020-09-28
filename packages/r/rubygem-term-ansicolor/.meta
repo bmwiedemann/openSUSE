@@ -1,8 +1,0 @@
-<package name="rubygem-term-ansicolor" project="openSUSE:Factory">
-  <title>Ruby library that colors strings using ANSI escape sequences</title>
-  <description>Small Ruby library that colors strings using ANSI escape sequences.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-term-ansicolor"/>
-  <url>http://term-ansicolor.rubyforge.org</url>
-</package>
