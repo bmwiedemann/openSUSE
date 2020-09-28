@@ -46,4 +46,15 @@
     <comment></comment>
     <requestid>702872</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b2ed47d2a03cc7d1ef2b127b6fd1b31e</srcmd5>
+    <version>1.6</version>
+    <time>1601296198</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6:
+ - Add Python 3.8 support
+ - Drop Python 2.7 support
+ - Update to SWIG 4.0.1</comment>
+    <requestid>838243</requestid>
+  </revision>
 </revisionlist>

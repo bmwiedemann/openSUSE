@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygraphviz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,11 @@
 %bcond_without tests
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-pygraphviz
-Version:        1.5
+Version:        1.6
 Release:        0
-Url:            http://networkx.lanl.gov/pygraphviz
+URL:            http://networkx.lanl.gov/pygraphviz
 Summary:        Python interface to Graphviz
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
@@ -88,14 +89,13 @@ popd
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc LICENSE README.rst
+%license LICENSE
+%doc README.rst
 %{python_sitearch}/pygraphviz/
 %{python_sitearch}/pygraphviz-%{version}-py*.egg-info
 
 %files -n %{name}-doc
-%defattr(-,root,root,-)
-%doc LICENSE
+%license LICENSE
 %{_docdir}/pygraphviz-%{version}
 
 %changelog

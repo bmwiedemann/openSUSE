@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:16:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.6:
+ - Add Python 3.8 support
+ - Drop Python 2.7 support
+ - Update to SWIG 4.0.1
+
+-------------------------------------------------------------------
 Tue May 14 14:40:16 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.5
