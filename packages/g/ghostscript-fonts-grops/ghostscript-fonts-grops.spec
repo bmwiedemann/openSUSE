@@ -46,8 +46,13 @@ A version of PostScript® driver for Groff to support characters outside ISO Lat
 
 %build
 %define gs_fonts %{_datadir}/ghostscript/fonts
-%define import_font() ln -s -T "%{gs_fonts}/%1.afm" "%2.afm" && pfbtopfa "%{gs_fonts}/%1.pfb" "devps/%1.pfa"
 %define gs_version %(gs --version)
+%define gs_ver %(gs --version | sed "s/\\.//")
+%if %{gs_ver} >= 950
+%define import_font() ln -s -T "%{gs_fonts}/%1.afm" "%2.afm" && gs -P- -dNOSAFER -dNODISPLAY -- pfbtopfa.ps %{gs_fonts}/%1.pfb devps/%1.pfa
+%else
+%define import_font() ln -s -T "%{gs_fonts}/%1.afm" "%2.afm" && pfbtopfa %{gs_fonts}/%1.pfb devps/%1.pfa
+%endif
 %define gs_docdir %(if [ -d "%{_datadir}/ghostscript/%{gs_version}/doc" ] ; then echo "%{_datadir}/ghostscript/%{gs_version}/doc" ; else echo "%{_datadir}/doc/ghostscript/%{gs_version}"; fi)
 cp %{S:3} .
 mkdir devps

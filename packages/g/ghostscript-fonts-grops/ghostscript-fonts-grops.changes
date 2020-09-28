@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 08:23:56 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- ghostscript gs >= 9.50 needs "-dNOSAFER" to operate on files
+  but pfbtopfa doesn't have that param
+
+-------------------------------------------------------------------
 Sat Dec 15 20:47:32 UTC 2018 - thomas.schraitle@suse.com
 
 No version change. Fix building issues:
