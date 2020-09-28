@@ -643,7 +643,7 @@
     <package name="git-daemon" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="git-email" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="git-gui" supportstatus="unsupported"/> <!-- reason: dvd:git -->
-    <package name="git-svn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="git-svn" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="git-web" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gitg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="gitg-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
@@ -988,6 +988,7 @@
     <package name="inkscape-extensions-gimp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="inkscape-lang" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="inotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="insserv-compat" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="intel-vaapi-driver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intlfonts-euro-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2209,6 +2210,7 @@
     <package name="libimobiledevice6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libindicator3-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libini_config5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libinotifytools0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="libinput-udev" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libinput10" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libip4tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2280,7 +2282,7 @@
     <package name="libkolabxml1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkomparediff2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkomparediff2-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkpathsea6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libkpathsea6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libksane-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksba8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libkscreen2-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2997,9 +2999,7 @@
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzck1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzebra1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
-    <package name="libzhuyin-1_1-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libzhuyin13" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libzhuyin7" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libzimg2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzinnia0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libzio1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3292,9 +3292,7 @@
     <package name="openslp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="openssh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openssh-askpass-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="openssh-helpers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4602,7 +4600,7 @@
     <package name="subversion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="subversion-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="subversion-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="subversion-perl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="subversion-perl" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="subversion-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="subversion-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="sudo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5130,8 +5128,12 @@
     <package name="xrdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xreader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xreader-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="xreader-plugin-comicsdocument" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="xreader-plugin-djvudocument" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="xreader-plugin-dvidocument" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xreader-plugin-epubdocument" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xreader-plugin-pdfdocument" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="xreader-plugin-pixbufdocument" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xreader-plugin-psdocument" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xreader-plugin-tiffdocument" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xreader-plugin-xpsdocument" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

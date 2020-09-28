@@ -109,9 +109,6 @@
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="openssh" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="perl-Bootloader" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
