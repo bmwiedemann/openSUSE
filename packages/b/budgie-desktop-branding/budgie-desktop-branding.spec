@@ -22,6 +22,11 @@
 %define nsuffix SLE
 %define isnot openSUSE
 %endif
+%if 0%{?sle_version} >= 150300
+%define picsize 5120x2880
+%else
+%define picsize 1920x1200
+%endif
 
 Name:           budgie-desktop-branding
 Version:        20200915.1
@@ -75,7 +80,7 @@ sed -e 's-5120x3200-3840x2400-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_
 %if 0%{?is_backports} 
 sed -e 's-openSUSE-SLE-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
 sed -e 's-openSUSE-SLE-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_settings.gschema.override
-sed -e 's-5120x3200-1920x1200-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
+sed -e 's-5120x3200-%{picsize}-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
 %endif
 %if 0%{?sle_version} >= 150300
 sed -e 's-jpg-png-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
