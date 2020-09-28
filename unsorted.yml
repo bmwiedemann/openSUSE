@@ -6403,7 +6403,6 @@ unsorted:
   - inn-devel 
   - innoextract 
   - innotop 
-  - inotify-tools 
   - inotify-tools-devel 
   - inotify-tools-doc 
   - input-pad 
@@ -10582,7 +10581,6 @@ unsorted:
   - libiniparser1 
   - libiniparser1-32bit: [x86_64] 
   - libinjeqt1 
-  - libinotifytools0 
   - libinput-devel 
   - libinput-tools 
   - libinput10-32bit: [x86_64] 
@@ -13765,7 +13763,6 @@ unsorted:
   - libzen0 
   - libzen0-32bit: [x86_64] 
   - libzfp0: [x86_64] 
-  - libzhuyin-1_1-devel 
   - libzhuyin13-32bit: [x86_64] 
   - libzimg2-32bit: [x86_64] 
   - libzio-devel 
@@ -16536,6 +16533,7 @@ unsorted:
   - onboard-lang 
   - onedrive 
   - onedrive-completion-bash 
+  - onedrive-completion-fish 
   - onedrive-completion-zsh 
   - onefetch 
   - oneko 
@@ -16843,7 +16841,6 @@ unsorted:
   - openspecfun-devel 
   - openssh-cavs 
   - openssh-fips 
-  - openssh-helpers 
   - openssl-1_0_0 
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
@@ -19440,6 +19437,7 @@ unsorted:
   - pyenv-bash-completion 
   - pyenv-fish-completion 
   - pyenv-zsh-completion 
+  - pyliblo-tools 
   - pymilter-common 
   - pyradio 
   - pyspacewar 
@@ -19533,9 +19531,7 @@ unsorted:
   - python-keystonemiddleware-doc 
   - python-ktoblzcheck 
   - python-lammps 
-  - python-libaddrxlat 
   - python-libcomps-doc 
-  - python-libkdumpfile 
   - python-lmiwbem 
   - python-logutils-doc 
   - python-lxml-doc 
@@ -21158,6 +21154,7 @@ unsorted:
   - python3-libfwnt 
   - python3-libfwsi 
   - python3-libixion 
+  - python3-libkdumpfile 
   - python3-liblarch 
   - python3-liblarch-gtk 
   - python3-liblnk 
@@ -21775,6 +21772,8 @@ unsorted:
   - python3-pylast 
   - python3-pylev 
   - python3-pylibacl 
+  - python3-pyliblo 
+  - python3-pyliblo-doc 
   - python3-pylineclip 
   - python3-pylint 
   - python3-pylons-sphinx-themes 
@@ -24196,14 +24195,9 @@ unsorted:
   - ruby2.6-rubygem-systemu 
   - ruby2.6-rubygem-systemu-doc 
   - ruby2.6-rubygem-systemu-testsuite 
-  - ruby2.6-rubygem-taskjuggler 
-  - ruby2.6-rubygem-taskjuggler-doc 
-  - ruby2.6-rubygem-taskjuggler-testsuite 
   - ruby2.6-rubygem-temple 
   - ruby2.6-rubygem-temple-doc 
   - ruby2.6-rubygem-temple-testsuite 
-  - ruby2.6-rubygem-term-ansicolor 
-  - ruby2.6-rubygem-term-ansicolor-doc 
   - ruby2.6-rubygem-text 
   - ruby2.6-rubygem-text-doc 
   - ruby2.6-rubygem-text-hyphen 
@@ -24985,13 +24979,8 @@ unsorted:
   - ruby2.7-rubygem-swd-testsuite 
   - ruby2.7-rubygem-systemu-doc 
   - ruby2.7-rubygem-systemu-testsuite 
-  - ruby2.7-rubygem-taskjuggler 
-  - ruby2.7-rubygem-taskjuggler-doc 
-  - ruby2.7-rubygem-taskjuggler-testsuite 
   - ruby2.7-rubygem-temple-doc 
   - ruby2.7-rubygem-temple-testsuite 
-  - ruby2.7-rubygem-term-ansicolor 
-  - ruby2.7-rubygem-term-ansicolor-doc 
   - ruby2.7-rubygem-text-doc 
   - ruby2.7-rubygem-text-hyphen-doc 
   - ruby2.7-rubygem-text-hyphen-testsuite 
@@ -25102,7 +25091,6 @@ unsorted:
   - rubygem-shoes 
   - rubygem-shoes-doc 
   - rubygem-shoes-testsuite 
-  - rubygem-taskjuggler 
   - runawk 
   - runawk-examples 
   - runc: [i586] 
