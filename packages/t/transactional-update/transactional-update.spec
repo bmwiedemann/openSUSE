@@ -17,7 +17,7 @@
 
 
 Name:           transactional-update
-Version:        2.24.1
+Version:        2.26
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later
@@ -46,6 +46,7 @@ Requires:       psmisc
 Requires:       rsync
 Requires:       snapper
 Requires:       zypper
+Recommends:     inotify-tools
 Recommends:     rebootmgr
 
 %description

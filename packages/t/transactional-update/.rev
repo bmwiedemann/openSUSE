@@ -574,4 +574,16 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     <user>dimstar_suse</user>
     <comment>https://bugzilla.suse.com/show_bug.cgi?id=1176989</comment>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9821870f124df6f31014d7a272ade09d</srcmd5>
+    <version>2.26</version>
+    <time>1601296113</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.26
+  - Fix broken sync for second snapshot [boo#1176989]
+  - Add new options to allow separate cleanup of snapshots and overlays
+  - Check for existence of inotifywait before using it
+  - Check that mount options don't exceed maximum length</comment>
+    <requestid>837917</requestid>
+  </revision>
 </revisionlist>
