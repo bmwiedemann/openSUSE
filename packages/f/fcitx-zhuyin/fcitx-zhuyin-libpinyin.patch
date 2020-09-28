@@ -1,0 +1,134 @@
+Index: fcitx-zhuyin-0.1.0+git20150626.36064e1/cmake/FindLibZhuyin.cmake
+===================================================================
+--- fcitx-zhuyin-0.1.0+git20150626.36064e1.orig/cmake/FindLibZhuyin.cmake
++++ fcitx-zhuyin-0.1.0+git20150626.36064e1/cmake/FindLibZhuyin.cmake
+@@ -18,7 +18,6 @@ endif(LIBZHUYIN_INCLUDE_DIR AND LIBZHUYI
+ find_package(PkgConfig REQUIRED)
+ pkg_check_modules(PC_LIBZHUYIN "libzhuyin>=0.9.91")
+ _pkgconfig_invoke("libzhuyin" PC_LIBZHUYIN LIBZHUYININCLUDEDIR "" "--variable=libzhuyinincludedir")
+-_pkgconfig_invoke("libzhuyin" LIBZHUYIN PKGDATADIR "" "--variable=pkgdatadir")
+ _pkgconfig_invoke("libzhuyin" LIBZHUYIN EXECPREFIX "" "--variable=exec_prefix")
+ 
+ find_path(LIBZHUYIN_INCLUDE_DIR
+@@ -34,7 +33,6 @@ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(LibZhuyin  DEFAULT_MSG
+                                   LIBZHUYIN_LIBRARIES
+                                   LIBZHUYIN_INCLUDE_DIR
+-                                  LIBZHUYIN_PKGDATADIR
+                                   PC_LIBZHUYIN_FOUND
+                                   )
+ 
+Index: fcitx-zhuyin-0.1.0+git20150626.36064e1/src/enummap.cpp
+===================================================================
+--- fcitx-zhuyin-0.1.0+git20150626.36064e1.orig/src/enummap.cpp
++++ fcitx-zhuyin-0.1.0+git20150626.36064e1/src/enummap.cpp
+@@ -21,7 +21,7 @@
+ #include <assert.h>
+ #include "enummap.h"
+ 
+-ZhuyinAmbiguity2 FcitxZhuyinTransAmbiguity(FCITX_AMBIGUITY ambiguity)
++PinyinAmbiguity2 FcitxZhuyinTransAmbiguity(FCITX_AMBIGUITY ambiguity)
+ {
+     switch(ambiguity) {
+         case FCITX_AMB_CiChi:
+@@ -53,22 +53,22 @@ ZhuyinScheme FcitxZhuyinTransZhuyinLayou
+ {
+     switch(layout) {
+         case FCITX_ZHUYIN_STANDARD:
+-            return CHEWING_STANDARD;
++            return ZHUYIN_STANDARD;
+         case FCITX_ZHUYIN_IBM:
+-            return CHEWING_IBM;
++            return ZHUYIN_IBM;
+         case FCITX_ZHUYIN_GIN_YIEH:
+-            return CHEWING_GINYIEH;
++            return ZHUYIN_GINYIEH;
+         case FCITX_ZHUYIN_ET:
+-            return CHEWING_ETEN;
++            return ZHUYIN_ETEN;
+         case FCITX_ZHUYIN_ETEN26:
+-            return CHEWING_ETEN26;
++            return ZHUYIN_ETEN26;
+         case FCITX_ZHUYIN_HSU:
+-            return CHEWING_HSU;
++            return ZHUYIN_HSU;
+         case FCITX_ZHUYIN_STANDARD_DVORAK:
+-            return CHEWING_STANDARD_DVORAK;
++            return ZHUYIN_STANDARD_DVORAK;
+         case FCITX_ZHUYIN_HSU_DVORAK:
+-            return CHEWING_HSU_DVORAK;
++            return ZHUYIN_HSU_DVORAK;
+         default:
+-            return CHEWING_STANDARD;
++            return ZHUYIN_STANDARD;
+     }
+ }
+Index: fcitx-zhuyin-0.1.0+git20150626.36064e1/src/enummap.h
+===================================================================
+--- fcitx-zhuyin-0.1.0+git20150626.36064e1.orig/src/enummap.h
++++ fcitx-zhuyin-0.1.0+git20150626.36064e1/src/enummap.h
+@@ -25,6 +25,6 @@
+ #include "eim.h"
+ 
+ ZhuyinScheme FcitxZhuyinTransZhuyinLayout(FCITX_ZHUYIN_LAYOUT layout);
+-ZhuyinAmbiguity2 FcitxZhuyinTransAmbiguity(FCITX_AMBIGUITY ambiguity);
++PinyinAmbiguity2 FcitxZhuyinTransAmbiguity(FCITX_AMBIGUITY ambiguity);
+ 
+ #endif
+Index: fcitx-zhuyin-0.1.0+git20150626.36064e1/src/eim.cpp
+===================================================================
+--- fcitx-zhuyin-0.1.0+git20150626.36064e1.orig/src/eim.cpp
++++ fcitx-zhuyin-0.1.0+git20150626.36064e1/src/eim.cpp
+@@ -145,7 +145,7 @@ guint LibPinyinGetPinyinOffset(FcitxZhuy
+ 
+     guint len;
+ 
+-    zhuyin_get_n_zhuyin(zhuyin->inst, &len);
++    zhuyin_get_n_phrase(zhuyin->inst, &len);
+ 
+     auto i = FCITX_LIBZHUYIN_MIN(offset, len);
+     if (i >= 1) {
+@@ -405,7 +405,7 @@ void FcitxZhuyinUpdatePreedit(FcitxZhuyi
+     auto lastpos = pyoffset;
+     auto curoffset = pyoffset;
+     guint pinyinLen = 0;
+-    zhuyin_get_n_zhuyin(zhuyin->inst, &pinyinLen);
++    zhuyin_get_n_phrase(zhuyin->inst, &pinyinLen);
+     for (auto i = offset; i < pinyinLen; i ++) {
+         PinyinKey* pykey = NULL;
+         PinyinKeyPos* pykeypos = NULL;
+@@ -434,7 +434,7 @@ void FcitxZhuyinUpdatePreedit(FcitxZhuyi
+             guint16 pykeyposLen = 0;
+             zhuyin_get_zhuyin_key_rest_length(zhuyin->inst, pykeypos, &pykeyposLen);
+             gchar* pystring;
+-            zhuyin_get_bopomofo_string(zhuyin->inst, pykey, &pystring);
++            zhuyin_get_zhuyin_string(zhuyin->inst, pykey, &pystring);
+             FcitxMessagesAddMessageAtLast(FcitxInputStateGetPreedit(input), MSG_CODE, "%s", pystring);
+ 
+             if (curoffset + pykeyposLen <= zhuyin->cursor_pos) {
+@@ -608,7 +608,7 @@ INPUT_RETURN_VALUE FcitxZhuyinGetCandWor
+         auto offset = LibPinyinGetOffset(zhuyin);
+ 
+         guint pykeysLen = 0;
+-        zhuyin_get_n_zhuyin(zhuyin->inst, &pykeysLen);
++        zhuyin_get_n_phrase(zhuyin->inst, &pykeysLen);
+         if (offset >= pykeysLen) {
+             char* sentence = NULL;
+             zhuyin_guess_sentence(zhuyin->inst);
+@@ -718,14 +718,14 @@ void FcitxZhuyinReconfigure(FcitxZhuyinA
+     }
+ 
+     if (config->chewingIncomplete) {
+-        settings |= CHEWING_INCOMPLETE;
++        settings |= ZHUYIN_INCOMPLETE;
+     }
+ 
+     if (config->useTone) {
+         settings |= USE_TONE;
+     }
+     settings |= IS_PINYIN;
+-    settings |= IS_BOPOMOFO;
++    settings |= IS_ZHUYIN;
+     if (zhuyinaddon->zhuyin_context) {
+         zhuyin_set_options(zhuyinaddon->zhuyin_context, settings);
+     }

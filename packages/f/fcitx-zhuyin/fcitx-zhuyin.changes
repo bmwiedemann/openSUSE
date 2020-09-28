@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 27 07:35:22 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- Add fcitx-zhuyin-libpinyin.patch
+  * libzhuyin has merged into libpinyin
+
+-------------------------------------------------------------------
 Sun Oct  8 14:23:46 UTC 2017 - jengelh@inai.de
 
 - Avoid running fdupes across partition boundaries.

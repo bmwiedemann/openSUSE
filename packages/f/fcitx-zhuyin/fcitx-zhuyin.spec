@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-zhuyin
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,20 +22,22 @@ Name:           fcitx-zhuyin
 Version:        0.1.0+git20150626.36064e1
 Release:        0
 Summary:        Libzhuyin Wrapper for Fcitx
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/I18n/Chinese
-Url:            https://github.com/fcitx/fcitx-zhuyin
+URL:            https://github.com/fcitx/fcitx-zhuyin
 Source:         %{name}-%{version}.tar.xz
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org in 1.0.91, zhuyin_guess_candidates
 # was replaced by zhuyin_guess_candidates_after_cursor
 Patch:          libzhuyin-1.0.91-zhuyin_guess_candidates.patch
+#PATCH-FIX-UPSTREAM marguerite@opensuse.org libzhuyin has merged to libpinyin
+# libpinyin doesn't provide pkgdata dir in libzhuyin.pc
+Patch1:         fcitx-zhuyin-libpinyin.patch
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libfcitx-4_2_9
-BuildRequires:  libzhuyin-1_1-devel
+BuildRequires:  libpinyin-devel
 Provides:       locale(fcitx:zh_TW;zh_HK)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -49,6 +51,7 @@ This is a libzhuyin wrapper for fcitx.
 %prep
 %setup -q
 %patch -p1
+%patch1 -p1
 
 %build
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:%{_libdir}/libzhuyin-1.1.1/pkgconfig
