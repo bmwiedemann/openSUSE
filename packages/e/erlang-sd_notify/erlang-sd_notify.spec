@@ -1,7 +1,7 @@
 #
 # spec file for package erlang-sd_notify
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,14 @@
 %define app_name sd_notify
 
 Name:           erlang-%{app_name}
-Version:        1.0
+Version:        1.1
 Release:        0
 %define app_ver {%version}
 Summary:        Erlang interface to systemd notify subsystem
 License:        MIT
-Url:            https://github.com/systemd/erlang-sd_notify
-Source0:        erlang-%{app_name}-%{version}.tar.bz2
+URL:            https://github.com/systemd/erlang-sd_notify
+Source0:        erlang-%{app_name}-%{version}.tar.xz
 BuildRequires:  erlang-rebar
-BuildRequires:  pkgconfig(libsystemd) >= 219
 Requires:       erlang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -38,23 +37,19 @@ Erlang module for native access to the systemd-notify facilities.
 %setup -q
 
 %build
-export LDFLAGS=-lsystemd
 %rebar compile
 
 %install
-mkdir -p %{buildroot}%{erlang_libdir}/%{app_name}-%{app_ver}/{ebin,priv}
+mkdir -p %{buildroot}%{erlang_libdir}/%{app_name}-%{app_ver}/ebin
 install -m 644 -p ebin/%{app_name}.app %{buildroot}%{erlang_libdir}/%{app_name}-%{app_ver}/ebin
 install -m 644 -p ebin/%{app_name}.beam %{buildroot}%{erlang_libdir}/%{app_name}-%{app_ver}/ebin
-install -m 755 -p priv/%{app_name}_drv.so %{buildroot}%{erlang_libdir}/%{app_name}-%{app_ver}/priv
 
 %files
 %defattr(-,root,root,-)
 %doc LICENSE
 %dir %{erlang_libdir}/%{app_name}-%{app_ver}
 %dir %{erlang_libdir}/%{app_name}-%{app_ver}/ebin
-%dir %{erlang_libdir}/%{app_name}-%{app_ver}/priv
 %{erlang_libdir}/%{app_name}-%{app_ver}/ebin/%{app_name}.app
 %{erlang_libdir}/%{app_name}-%{app_ver}/ebin/*.beam
-%{erlang_libdir}/%{app_name}-%{app_ver}/priv/%{app_name}_drv.so
 
 %changelog

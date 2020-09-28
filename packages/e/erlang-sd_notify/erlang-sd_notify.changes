@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep 22 07:53:15 UTC 2020 - matwey.kornilov@gmail.com
+
+- Update to version 1.1:
+  * update rpm to 1.1
+  * Remove the build directory mamually
+  * Update travis
+  * Remove old erlang versions
+  * Clean rebar before start tests
+  * Clean rebar before start tests
+  * Change Rebar to rebar3
+  * Add support for Rebar3
+  * Enable Erlang 23 on CentOS
+  * Add API proposed by Max Lapshin
+  * Unset NOTIFY_SOCKET env if requested
+  * Don't check Erlang/OTP versions anymore
+  * Switch to native Unix sockets
+  * whitespace
+  * Enable Erlang 22 on CentOS
+  * whitespace
+  * Use latest Erlang 20/21
+  * make clean
+  * Docker images for 20 and 21
+  * Docker images for 20 and 21
+  * Docker images for 20 and 21
+  * trigger build
+  * Update README.md
+  * Remove docker image build 18-19-20
+  * Rollback
+  * Change rpm repositories
+  * Fix docker file
+  * Fix docker file for ubuntu
+  * Add instructions for OpenSUSE/SLES
+  * test erlang 20 and 21
+  * add erlang 20 and 21 dockerfiles
+  * rename dir 19 to 19.3
+  * use ubuntu 16.04, update erlang version
+
+-------------------------------------------------------------------
 Thu Dec 19 16:05:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
