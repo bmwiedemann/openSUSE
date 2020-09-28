@@ -1,7 +1,7 @@
 #
 # spec file for package openssh-askpass-gnome
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            http://www.openssh.com/
 Source:         http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{version}.tar.gz
 Source42:       http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{version}.tar.gz.asc
 Requires:       %{_name} = %{version}
-Supplements:    packageand(openssh-clients:libgtk-3-0)
+Supplements:    packageand(openssh:libgtk-3-0)
 %if 0%{?suse_version} >= 1550
 BuildRequires:  gtk3-devel
 %else
@@ -40,15 +40,15 @@ for executing commands on a remote machine. This package contains a
 GNOME-based passphrase dialog for OpenSSH.
 
 %prep
-%autosetup -p1 -n %{_name}-%{version}
+%setup -q -n %{_name}-%{version}
 
 %build
 cd contrib
 export CFLAGS="%{optflags}"
 %if 0%{?suse_version} >= 1550
-%make_build gnome-ssh-askpass3
+make %{?_smp_mflags} gnome-ssh-askpass3
 %else
-%make_build gnome-ssh-askpass2
+make %{?_smp_mflags} gnome-ssh-askpass2
 %endif
 
 %install

@@ -1,7 +1,7 @@
 #
 # spec file for package openssh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -113,8 +113,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libfido2)
 BuildRequires:  pkgconfig(libsystemd)
-Requires:       %{name}-clients = %{version}-%{release}
-Requires:       %{name}-server = %{version}-%{release}
+Requires(post): %fillup_prereq
+Requires(pre):  shadow
+Recommends:     %{name}-helpers = %{version}-%{release}
+Recommends:     audit
+Conflicts:      %{name}-fips < %{version}-%{release}
+Conflicts:      %{name}-fips > %{version}-%{release}
+Conflicts:      nonfreessh
+%{?systemd_requires}
 %if %{with tirpc}
 BuildRequires:  libtirpc-devel
 %endif
@@ -126,112 +132,40 @@ BuildRequires:  krb5-mini-devel
 
 %description
 SSH (Secure Shell) is a program for logging into and executing commands
-on a remote machine. It replaces rsh (rlogin and rsh) and
-provides a secure encrypted communication between two untrusted
+on a remote machine. It is intended to replace rsh (rlogin and rsh) and
+provides openssl (secure encrypted communication) between two untrusted
 hosts over an insecure network.
 
 xorg-x11 (X Window System) connections and arbitrary TCP/IP ports can
 also be forwarded over the secure channel.
-
-This is a dummy package that pulls in both the client and server
-components.
-
-%package common
-Summary:        SSH (Secure Shell) common files
-Group:          Productivity/Networking/SSH
-Conflicts:      nonfreessh
-Conflicts:      %{name}-fips < %{version}-%{release}
-Conflicts:      %{name}-fips > %{version}-%{release}
-
-%description common
-SSH (Secure Shell) is a program for logging into and executing commands
-on a remote machine. It replaces rsh (rlogin and rsh) and
-provides a secure encrypted communication between two untrusted
-hosts over an insecure network.
-
-xorg-x11 (X Window System) connections and arbitrary TCP/IP ports can
-also be forwarded over the secure channel.
-
-This package contains common files for the Secure Shell server and
-clients.
-
-%package server
-Summary:        SSH (Secure Shell) server
-Group:          Productivity/Networking/SSH
-Requires:       %{name}-common = %{version}-%{release}
-Recommends:     audit
-Requires(pre):  shadow
-Requires(post): %fillup_prereq
-Requires(post): permissions
-Provides:       openssh:%{_sbindir}/sshd
-
-%description server
-SSH (Secure Shell) is a program for logging into and executing commands
-on a remote machine. It replaces rsh (rlogin and rsh) and
-provides a secure encrypted communication between two untrusted
-hosts over an insecure network.
-
-xorg-x11 (X Window System) connections and arbitrary TCP/IP ports can
-also be forwarded over the secure channel.
-
-This package contains the Secure Shell daemon, which allows clients to
-securely connect to your server.
-
-%package clients
-Summary:        SSH (Secure Shell) client applications
-Group:          Productivity/Networking/SSH
-Requires:       %{name}-common = %{version}-%{release}
-Provides:       openssh:%{_bindir}/ssh
-
-%description clients
-SSH (Secure Shell) is a program for logging into and executing commands
-on a remote machine. It replaces rsh (rlogin and rsh) and
-provides a secure encrypted communication between two untrusted
-hosts over an insecure network.
-
-xorg-x11 (X Window System) connections and arbitrary TCP/IP ports can
-also be forwarded over the secure channel.
-
-This package contains clients for making secure connections to Secure
-Shell servers.
 
 %package helpers
 Summary:        OpenSSH AuthorizedKeysCommand helpers
 Group:          Productivity/Networking/SSH
-Requires:       %{name}-common = %{version}-%{release}
+Requires:       %{name} = %{version}-%{release}
 
 %description helpers
-SSH (Secure Shell) is a program for logging into and executing commands
-on a remote machine. It replaces rsh (rlogin and rsh) and
-provides a secure encrypted communication between two untrusted
-hosts over an insecure network.
-
-xorg-x11 (X Window System) connections and arbitrary TCP/IP ports can
-also be forwarded over the secure channel.
-
-This package contains helper applications for OpenSSH which retrieve
-keys from various sources.
+Helper applications for OpenSSH which retrieve keys from various sources.
 
 %package fips
-Summary:        OpenSSH FIPS crypto module HMACs
+Summary:        OpenSSH FIPS cryptomodule HMACs
 Group:          Productivity/Networking/SSH
-Requires:       %{name}-common = %{version}-%{release}
-Conflicts:      %{name}-common < %{version}-%{release}
-Conflicts:      %{name}-common > %{version}-%{release}
+Requires:       %{name} = %{version}-%{release}
+Conflicts:      %{name} < %{version}-%{release}
+Conflicts:      %{name} > %{version}-%{release}
 Obsoletes:      %{name}-hmac
 
 %description fips
-This package contains hashes that, together with the main openssh packages,
-form the FIPS certifiable crypto module.
+Hashes that together with the main package form the FIPS certifiable
+cryptomodule.
 
 %package cavs
-Summary:        OpenSSH FIPS crypto module CAVS tests
+Summary:        OpenSSH FIPS cryptomodule CAVS tests
 Group:          Productivity/Networking/SSH
-Requires:       %{name}-common = %{version}-%{release}
+Requires:       %{name} = %{version}-%{release}
 
 %description cavs
-This package contains the FIPS140 CAVS (Cryptographic Algorithm
-Validation Program/Suite) related tests of OpenSSH.
+FIPS140 CAVS tests related parts of the OpenSSH package
 
 %prep
 %setup -q
@@ -330,58 +264,56 @@ done
 
 }}
 
-%pre server
+%pre
 getent group sshd >/dev/null || %{_sbindir}/groupadd -r sshd
 getent passwd sshd >/dev/null || %{_sbindir}/useradd -r -g sshd -d %{_localstatedir}/lib/sshd -s /bin/false -c "SSH daemon" sshd
 %service_add_pre sshd.service
 
-%post server
-%{fillup_only -n ssh}
+%post
+%{fillup_only -n ssh sshd}
 %service_add_post sshd.service
 %set_permissions %{_sysconfdir}/ssh/sshd_config
 
-%preun server
+%preun
 %service_del_preun sshd.service
 
-%postun server
+%postun
 # The openssh-fips trigger script for openssh will normally restart sshd once
 # it gets installed, so only restart the service here is openssh-fips is not
 # present
-rpm -q openssh-fips >/dev/null 2>/dev/null && DISABLE_RESTART_ON_UPDATE=yes
+rpm -q openssh-fips >& /dev/null && DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun sshd.service
 
 %triggerin -n openssh-fips -- %{name} = %{version}-%{release}
 %restart_on_update sshd
 
-%verifyscript server
+%verifyscript
 %verify_permissions -e %{_sysconfdir}/ssh/sshd_config
 
 %files
-# openssh is an empty package that depends on -clients and -server,
-# resulting in a clean upgrade path from prior to the split even when
-# recommends are disabled.
-
-%files common
+%exclude %{_bindir}/ssh%{CHECKSUM_SUFFIX}
+%exclude %{_sbindir}/sshd%{CHECKSUM_SUFFIX}
+%exclude %{_libexecdir}/ssh/sftp-server%{CHECKSUM_SUFFIX}
+%exclude %{_libexecdir}/ssh/cavs*
+%dir %attr(755,root,root) %{_localstatedir}/lib/sshd
 %license LICENCE
 %doc README.SUSE README.kerberos README.FIPS ChangeLog OVERVIEW README TODO CREDITS
 %attr(0755,root,root) %dir %{_sysconfdir}/ssh
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/ssh/moduli
-%attr(0444,root,root) %{_mandir}/man1/ssh-keygen.1*
-%attr(0444,root,root) %{_mandir}/man5/moduli.5*
-%attr(0755,root,root) %{_bindir}/ssh-keygen*
-
-%files server
-%attr(0755,root,root) %{_sbindir}/sshd
-%attr(0755,root,root) %{_sbindir}/rcsshd
-%attr(0755,root,root) %{_sbindir}/sshd-gen-keys-start
-%dir %attr(755,root,root) %{_localstatedir}/lib/sshd
-%verify(not mode) %attr(0640,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config
+%verify(not mode) %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config
+%verify(not mode) %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/sshd
 %attr(0644,root,root) %{_unitdir}/sshd.service
-%attr(0444,root,root) %{_mandir}/man5/sshd_config*
-%attr(0444,root,root) %{_mandir}/man8/sftp-server.8*
-%attr(0444,root,root) %{_mandir}/man8/sshd.8*
-%attr(0755,root,root) %{_libexecdir}/ssh/sftp-server
+%attr(0755,root,root) %{_bindir}/*
+%attr(0755,root,root) %{_sbindir}/*
+%attr(0755,root,root) %dir %{_libexecdir}/ssh
+%exclude %{_libexecdir}/ssh/ssh-ldap*
+%attr(0755,root,root) %{_libexecdir}/ssh/*
+%attr(0444,root,root) %{_mandir}/man1/*
+%attr(0444,root,root) %{_mandir}/man5/*
+%attr(0444,root,root) %{_mandir}/man8/*
+%exclude %{_mandir}/man5/ssh-ldap*
+%exclude %{_mandir}/man8/ssh-ldap*
 %dir %{_sysconfdir}/slp.reg.d
 %config %{_sysconfdir}/slp.reg.d/ssh.reg
 %{_fillupdir}/sysconfig.ssh
@@ -390,32 +322,6 @@ rpm -q openssh-fips >/dev/null 2>/dev/null && DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_fwdefdir}
 %config %{_fwdefdir}/sshd
 %endif
-
-%files clients
-%verify(not mode) %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config
-%attr(0755,root,root) %{_bindir}/ssh
-%attr(0755,root,root) %{_bindir}/scp*
-%attr(0755,root,root) %{_bindir}/sftp*
-%attr(0755,root,root) %{_bindir}/ssh-add*
-%attr(0755,root,root) %{_bindir}/ssh-agent*
-%attr(0755,root,root) %{_bindir}/ssh-copy-id*
-%attr(0755,root,root) %{_bindir}/ssh-keyscan*
-%attr(0755,root,root) %dir %{_libexecdir}/ssh
-%attr(0755,root,root) %{_libexecdir}/ssh/ssh-askpass*
-%attr(0755,root,root) %{_libexecdir}/ssh/ssh-keysign*
-%attr(0755,root,root) %{_libexecdir}/ssh/ssh-pkcs11-helper*
-%attr(0755,root,root) %{_libexecdir}/ssh/ssh-sk-helper*
-%attr(0444,root,root) %{_mandir}/man1/scp.1*
-%attr(0444,root,root) %{_mandir}/man1/sftp.1*
-%attr(0444,root,root) %{_mandir}/man1/ssh-add.1*
-%attr(0444,root,root) %{_mandir}/man1/ssh-agent.1*
-%attr(0444,root,root) %{_mandir}/man1/ssh-keyscan.1*
-%attr(0444,root,root) %{_mandir}/man1/ssh.1*
-%attr(0444,root,root) %{_mandir}/man1/ssh-copy-id.1*
-%attr(0444,root,root) %{_mandir}/man5/ssh_config.5*
-%attr(0444,root,root) %{_mandir}/man8/ssh-pkcs11-helper.8*
-%attr(0444,root,root) %{_mandir}/man8/ssh-sk-helper.8*
-%attr(0444,root,root) %{_mandir}/man8/ssh-keysign.8*
 
 %files helpers
 %attr(0755,root,root) %dir %{_sysconfdir}/ssh
