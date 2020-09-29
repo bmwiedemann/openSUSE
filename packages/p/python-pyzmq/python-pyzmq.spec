@@ -98,8 +98,9 @@ export CFLAGS="%{optflags}"
 
 %if %{with tests}
 %check
+export LANG=en_US.UTF-8
 %python_exec setup.py build_ext --inplace
-timeout 3m bash -c '
+timeout 5m bash -c '
 %pytest
 '
 %endif

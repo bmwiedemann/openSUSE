@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 15:46:33 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- raise test timeout limit to 5m and define an console encoding
+
+-------------------------------------------------------------------
 Mon Sep  7 11:31:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add timeout to tests (boo#1176232)
