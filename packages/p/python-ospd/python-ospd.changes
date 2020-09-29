@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Tue Aug 11 17:53:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use %pytest for running the unittest-based testsuite
+
+-------------------------------------------------------------------
+Tue Aug 11 16:53:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.8.0
+  Added
+  * Add solution method to solution of vt object.
+  * Add wait_for_children().
+  * Extend osp to accept target options.
+  * Accept reverse_lookup_only and reverse_lookup_unify target's
+    options.
+  * Add 'total' and 'sent' attributes to element for <get_vts>
+    cmd response.
+  * Add new get_memory_usage command.
+  * Add lock-file-dir configuration option.
+  * Add details attribute to get_vts command.
+  * Add pontos as dev dependency for managing the version
+    information in ospd.
+  * Add more info about scan progress with progress attribute in
+    get_scans cmd.
+  * Add support for scan queuing
+  * Extend results with optional argument URI
+  * Add new scan status INTERRUPTED.
+  * Extend get_vts with attribute version_only and return the
+    version.
+  * Allow to set all openvas parameters which are not strict
+    openvas only parameters via osp.
+  Changes
+  * Modify init() method and use new syntax for super().
+  * Create data manager and spawn new process to keep the vts
+    dictionary.
+  * Update daemon start sequence. Run daemon.check before
+    daemon.init now.
+  * Improve get_vts cmd response, sending the vts piece by piece.
+  * Start the server before initialize to respond to the client.
+  * Use an iterator to get the vts when get_vts cmd is called.
+  * Update license to AGPL-3.0+
+  * Replaced pipenv with poetry for dependency management. poetry
+    install works a bit different then pipenv install. It installs
+    dev packages by default and also ospd in editable mode. This
+    means after running poetry install ospd will directly be
+    importable in the virtual python environment.
+  * Progress bar calculation does not take in account the dead
+    hosts.
+  * Show progress as integer for get_scans.
+  * Make scan_id attribute mandatory for get_scans.
+  * Ignore subsequent SIGINT once inside exit_cleanup().
+  * Simplify start_scan()
+  * Make ospd-openvas to shut down gracefully
+  * Do not add all params which are in the OSPD_PARAMS dict to the
+    params which are set as scan preferences.
+  Fixed
+  * Fix stop scan. Wait for the scan process to be stopped before
+    delete it from the process table.
+  * Fix get_scanner_details().
+  * Fix thread lib leak using daemon mode for python 3.7.
+  * Fix scan progress in which all hosts are dead or excluded.
+  * Stop all running scans before exiting.
+  * Fix start of parallel queued task.
+  * Strip trailing commas from the target list.
+  Removed
+  * Remove support for resume task.
+
+-------------------------------------------------------------------
+Tue Aug 11 13:59:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.0.1
