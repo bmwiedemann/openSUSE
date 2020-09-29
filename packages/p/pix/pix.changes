@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Sep 27 20:54:26 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.4.11.
+  * Fix app version
+- Update since 2.2.0.
+  * l10n: Update translations
+  * Use the new xapp diaporama-symbolic icon
+  * Packaging: Remove gnome-doc-utils
+  * Remove dependency on scrollkeeper
+  * cairo_io/cairo-image-surface-xcf.c: Initialize some variables. 
+  * various: check for valid surfaces after creating them.
+  * image viewer: do not try do paint surfaces with invalid size
+  * gth-image: allow to set null surfaces
+  * check whether the scaled surface is null before using it
+  * cairo scale: do not create images with invalid dimensions
+  * jpeg loader: do not scan more than output_height lines
+  * jpeg loader: error if the orientation swaps width and height 
+  * jpeg loader: call alloc_sarray before jpeg_start_decompress
+  * jpeg loader: crash when the original size is too big for a 
+    cairo surface 
+  * gth-image-print-job.c: Use better spinbutton settings, and 
+    allow adjustment to two decimal places when inch units are 
+    selected.
+  * gth-image-print-job.c: Update spin button settings when the 
+    view is first created, not just when the units combobox is 
+    changed.
+  * print settings: Keep images centered until explicitly moved off
+    center 
+  * print settings: Remove 'pixel' option in units selector.
+  * print settings: Fix inch-to-metric conversion
+  * Deletion dialogs: Highlight OK button by default
+  * Browser: Replace edit icon
+  * Viewer: Switch to high zoom-quality by default 
+  * Remove gconf usage
+  * Make the slideshow feature respect the preferences zoom quality
+    setting instead of always being low
+- Remove gnome-doc-utils dependency
+
+-------------------------------------------------------------------
 Mon Jul  1 04:10:55 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 2.2.0
