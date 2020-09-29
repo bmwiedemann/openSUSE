@@ -1,0 +1,13 @@
+Index: frame/src/device.cpp
+===================================================================
+--- frame.orig/src/device.cpp
++++ frame/src/device.cpp
+@@ -18,6 +18,8 @@
+  *
+  ****************************************************************************/
+ 
++#include <cstdio>
++
+ #include "device.h"
+ 
+ #include "axis.h"
