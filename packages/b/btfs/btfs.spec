@@ -22,7 +22,7 @@ Release:        0
 Summary:        A BitTorrent file system based on FUSE
 License:        GPL-3.0-or-later
 URL:            https://github.com/johang/%{name}
-Source:         https://github.com/johang/%{name}/archive/v%{version}.tar.gz
+Source:         https://github.com/johang/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
@@ -39,10 +39,11 @@ downloaded on-demand as they are read by applications. Tools like ls, cat and
 cp work as expected. Applications like media players can also work without changes.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i 's,env python,python,' scripts/btplay
 
 %build
+export CXXFLAGS="-std=c++14"
 autoreconf -fi
 %configure
 %make_build

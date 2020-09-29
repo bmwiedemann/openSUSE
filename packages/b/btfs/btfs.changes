@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 08:49:01 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fix build with libtorrent v2.
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Aug 13 06:22:14 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - 2.22

@@ -82,4 +82,12 @@
 - Remove obsolete Groups tag (fate#326485)</comment>
     <requestid>827076</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c1d8151b7067bf576dfe340e6e1e32d3</srcmd5>
+    <version>2.22</version>
+    <time>1601398975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838338</requestid>
+  </revision>
 </revisionlist>
