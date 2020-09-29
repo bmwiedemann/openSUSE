@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sat Sep 26 15:51:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.0
+  Added
+  * Added Console.begin_capture, Console.end_capture and
+    Console.capture
+  * Added Table.title_justify and Table.caption_justify
+  Changed
+  * Improved formatting of exceptions
+  * Enabled Rich exceptions in logging https://github.com/taliraj
+  * UTF-8 encoding is now mentioned in HTML head section
+  Removed
+  * Removed line_numbers argument from traceback.install, which
+    was undocumented and did nothing
+
+-------------------------------------------------------------------
+Fri Sep 18 19:12:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.0
+  Added
+  * New ansi_dark and ansi_light themes
+  * Added Text.append_tokens for fast appending of string + Style
+    pairs
+  * Added Text.remove_suffix
+  * Added Text.append_tokens
+  Changed
+  * Text.tabs_to_spaces was renamed to Text.expand_tabs, which
+    works in place rather than returning a new instance
+  * Renamed Column.index to Column._index
+  * Optimized Style.combine and Style.chain
+  * Optimized text rendering by fixing internal cache mechanism
+  * Optimized hash generation for Styles
+
+-------------------------------------------------------------------
+Fri Sep 11 16:02:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.1.1
+  Added
+  * Added ipv4 and ipv6 to ReprHighlighter
+  Changed
+  * The # sign is included in url highlighting
+  Fixed
+  * Fixed force-color switch in rich.syntax and rich.markdown
+    commands
+
+-------------------------------------------------------------------
+Tue Sep  8 18:56:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.1.1
+  Added
+  * Inspect now adds def to signature of methods. Not strictly
+    necessary, but I think it helps distinguish methods from data.
+  Changed
+  * Restored "def" in inspect signature
+
+-------------------------------------------------------------------
+Mon Sep  7 16:20:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.1.0
+  Added
+  * New inspect module
+  * Added os._Environ to pretty print
+  Fixed
+  * Prevented recursive renderables from getting stuck
+  Changed
+  * force_terminal and force_jupyter can now be used to force the
+    disabled state, or left as None to auto-detect.
+  * Panel now expands to fit title if supplied
+
+-------------------------------------------------------------------
+Tue Aug 25 17:49:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.0.0
+  Fixed
+  * Fixed use of __rich__ cast
+  Changed
+  * New algorithm to pretty print which fits more on a line if
+    possible
+  * Deprecated character parameter in Rule and Console.rule, in
+    favor of characters
+  * Optimized Syntax.from_path to avoid searching all lexers, which
+    also speeds up tracebacks
+  Added
+  * Added soft_wrap flag to Console.print
+
+-------------------------------------------------------------------
 Sat Aug 22 22:09:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.2.1

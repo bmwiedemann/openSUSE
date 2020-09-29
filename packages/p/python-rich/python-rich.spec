@@ -18,8 +18,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-rich
-Version:        5.2.1
+Version:        7.1.0
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
@@ -63,7 +64,7 @@ markdown and more to the terminal.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not test_log'
 
 %files %{python_files}
 %license LICENSE
