@@ -58,4 +58,19 @@
   * Few memory leaks fixed</comment>
     <requestid>737576</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>21edc3459df260936a73f03af5db73d4</srcmd5>
+    <version>0.10.0</version>
+    <time>1601399151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * New API:
+    - xmpp_stanza_get_child_by_name_and_ns()
+    - xmpp_stanza_new_from_string()
+  * Fixed issue with IPv6 on Windows (strophe/libstrophe#153)
+  * LibreSSL support
+  * Improved portability across systems such as Haiku, Windows
+</comment>
+    <requestid>838592</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libmesode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define c_lib   libmesode0
 Name:           libmesode
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        An XMPP library for C
 License:        GPL-3.0-or-later OR MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/profanity-im/libmesode
+URL:            https://github.com/profanity-im/libmesode
 Source0:        https://github.com/profanity-im/%{name}/archive/%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
