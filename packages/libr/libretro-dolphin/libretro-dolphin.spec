@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-dolphin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-dolphin
-Version:        0~git20191020
+Version:        0~git20200831
 Release:        0
 Summary:        Dolphin libretro core for Nintendo GameCube and Wii emulation
 License:        GPL-3.0-only
@@ -25,19 +25,23 @@ Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
-BuildRequires:  gcc-c++
-BuildRequires:  cmake
-BuildRequires:  pkgconfig
 BuildRequires:  Mesa-devel
+BuildRequires:  cmake
+%if 0%{?suse_version} > 1520
+BuildRequires:  gcc9-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  mbedtls-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(hidapi-libusb)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libenet)
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(miniupnpc)
@@ -48,7 +52,7 @@ BuildRequires:  pkgconfig(sfml-system)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
-ExcludeArch: %arm ppc64 ppc64le
+ExcludeArch:    %arm ppc64 ppc64le
 
 %description
 Dolphin is an emulator for running GameCube and Wii games on Windows, Linux,
@@ -60,11 +64,16 @@ RetroArch/libretro front-end.
 %setup -q
 
 %build
+%if 0%{?suse_version} > 1520
+export CC=gcc-9
+export CXX=g++-9
+%endif
 mkdir build
 cd build
 cmake .. \
     -DLIBRETRO=ON \
     -DLIBRETRO_STATIC=1 \
+    -DENABLE_QT=0 \
     -DCMAKE_BUILD_TYPE=Release \
     -DDISTRIBUTOR=openSUSE \
     -DUSE_SHARED_ENET=ON \

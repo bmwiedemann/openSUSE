@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Sep 22 07:30:57 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200831:
+  * mingw fixes
+  * nits.
+  * fix windows build.
+  * Turn GCAdapter's libusb_context into a dynamic variable. thread creation/sync routines will cause a lockup on windows when called from a dll's static initializers.
+  * derp.
+  * adding texture cache accuracy to core options
+  * cheats-core-option
+  * enable Bounding Box Emulation as a core option
+  * Support for real Wiimotes and DolphinBar
+  * new core option: Force Texture Filtering
+
+-------------------------------------------------------------------
+Sun Jun 07 17:42:26 UTC 2020 - i@guoyunhe.me
+
+- Lock to gcc9
+- Update to version 0~git20200607:
+  * Fix gcc10 std::string error
+  * Revert "better fix for #124"
+  * Revert "try at fixing build on win64"
+  * try at fixing build on win64
+  * better fix for #124
+
+-------------------------------------------------------------------
+Wed May 13 08:42:40 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200509:
+  * request glcore context when video driver is gl
+
+-------------------------------------------------------------------
 Wed Feb 12 10:01:08 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable build on unsupported architectures %arm ppc64 ppc64le
