@@ -63,6 +63,12 @@ Source:         http://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Source1:        preamble
 Patch1:         0001-fix-cpu-compatibility.patch
 Patch2:         0001-SLE15-SP3-compatibility-patch-for-kni.patch
+Patch3:         0001-vhost-crypto-fix-pool-allocation.patch
+Patch4:         0002-vhost-crypto-fix-incorrect-descriptor-deduction.patch
+Patch5:         0003-vhost-crypto-fix-missed-request-check-for-copy-mode.patch
+Patch6:         0004-vhost-crypto-fix-incorrect-write-back-source.patch
+Patch7:         0005-vhost-crypto-fix-data-length-check.patch
+Patch8:         0006-vhost-crypto-fix-possible-TOCTOU-attack.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libelf-devel
@@ -161,6 +167,12 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 %setup -q -n dpdk-stable-%{version}
 %patch1 -p1 -z .init
 %patch2 -p1 -z .init
+%patch3 -p1 -z .init
+%patch4 -p1 -z .init
+%patch5 -p1 -z .init
+%patch6 -p1 -z .init
+%patch7 -p1 -z .init
+%patch8 -p1 -z .init
 
 # This fixes CROSS compilation (broken) in the mk file for ThunderX
 sed -i '/^CROSS /s/^/#/'  mk/machine/thunderx/rte.vars.mk

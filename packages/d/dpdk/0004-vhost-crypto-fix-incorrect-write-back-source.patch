@@ -1,0 +1,51 @@
+From 03aa702205544346d11ed7ca5693f9382ef51922 Mon Sep 17 00:00:00 2001
+From: Fan Zhang <roy.fan.zhang@intel.com>
+Date: Wed, 15 Apr 2020 11:48:52 +0100
+Subject: [PATCH 4/6] vhost/crypto: fix incorrect write back source
+
+This patch fixes vhost crypto library for the incorrect source and
+destination buffer calculation in the copy mode.
+
+Fixes: cd1e8f03abf0 ("vhost/crypto: fix packet copy in chaining mode")
+Cc: stable@dpdk.org
+
+Signed-off-by: Fan Zhang <roy.fan.zhang@intel.com>
+Acked-by: Chenbo Xia <chenbo.xia@intel.com>
+---
+ lib/librte_vhost/vhost_crypto.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lib/librte_vhost/vhost_crypto.c b/lib/librte_vhost/vhost_crypto.c
+index 494f49084..f1cc32a9b 100644
+--- a/lib/librte_vhost/vhost_crypto.c
++++ b/lib/librte_vhost/vhost_crypto.c
+@@ -749,14 +749,14 @@ prepare_write_back_data(struct vhost_crypto_data_req *vc_req,
+ 		wb_data->src = src + offset;
+ 		dlen = desc->len;
+ 		dst = IOVA_TO_VVA(uint8_t *, vc_req, desc->addr,
+-			&dlen, VHOST_ACCESS_RW) + offset;
++			&dlen, VHOST_ACCESS_RW);
+ 		if (unlikely(!dst || dlen != desc->len)) {
+ 			VC_LOG_ERR("Failed to map descriptor");
+ 			goto error_exit;
+ 		}
+ 
+-		wb_data->dst = dst;
+-		wb_data->len = RTE_MIN(desc->len - offset, write_back_len);
++		wb_data->dst = dst + offset;
++		wb_data->len = RTE_MIN(dlen - offset, write_back_len);
+ 		write_back_len -= wb_data->len;
+ 		src += offset + wb_data->len;
+ 		offset = 0;
+@@ -801,7 +801,7 @@ prepare_write_back_data(struct vhost_crypto_data_req *vc_req,
+ 			goto error_exit;
+ 		}
+ 
+-		wb_data->src = src;
++		wb_data->src = src + offset;
+ 		wb_data->dst = dst;
+ 		wb_data->len = RTE_MIN(desc->len - offset, write_back_len);
+ 		write_back_len -= wb_data->len;
+-- 
+2.26.2
+

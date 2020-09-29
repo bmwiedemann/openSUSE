@@ -1,0 +1,46 @@
+From b04635713247368935040234d11d33914312096c Mon Sep 17 00:00:00 2001
+From: Fan Zhang <roy.fan.zhang@intel.com>
+Date: Tue, 14 Apr 2020 16:19:51 +0100
+Subject: [PATCH 1/6] vhost/crypto: fix pool allocation
+
+This patch fixes the missing iv space allocation in crypto
+operation mempool.
+
+Fixes: 709521f4c2cd ("examples/vhost_crypto: support multi-core")
+Cc: stable@dpdk.org
+
+Signed-off-by: Fan Zhang <roy.fan.zhang@intel.com>
+Acked-by: Chenbo Xia <chenbo.xia@intel.com>
+---
+ examples/vhost_crypto/main.c        | 2 +-
+ lib/librte_vhost/rte_vhost_crypto.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/examples/vhost_crypto/main.c b/examples/vhost_crypto/main.c
+index 1d7ba9419..11b022e81 100644
+--- a/examples/vhost_crypto/main.c
++++ b/examples/vhost_crypto/main.c
+@@ -544,7 +544,7 @@ main(int argc, char *argv[])
+ 		snprintf(name, 127, "COPPOOL_%u", lo->lcore_id);
+ 		info->cop_pool = rte_crypto_op_pool_create(name,
+ 				RTE_CRYPTO_OP_TYPE_SYMMETRIC, NB_MEMPOOL_OBJS,
+-				NB_CACHE_OBJS, 0,
++				NB_CACHE_OBJS, VHOST_CRYPTO_MAX_IV_LEN,
+ 				rte_lcore_to_socket_id(lo->lcore_id));
+ 
+ 		if (!info->cop_pool) {
+diff --git a/lib/librte_vhost/rte_vhost_crypto.h b/lib/librte_vhost/rte_vhost_crypto.h
+index d29871c7e..866a592a5 100644
+--- a/lib/librte_vhost/rte_vhost_crypto.h
++++ b/lib/librte_vhost/rte_vhost_crypto.h
+@@ -10,6 +10,7 @@
+ #define VHOST_CRYPTO_SESSION_MAP_ENTRIES	(1024) /**< Max nb sessions */
+ /** max nb virtual queues in a burst for finalizing*/
+ #define VIRTIO_CRYPTO_MAX_NUM_BURST_VQS		(64)
++#define VHOST_CRYPTO_MAX_IV_LEN			(32)
+ 
+ enum rte_vhost_crypto_zero_copy {
+ 	RTE_VHOST_CRYPTO_ZERO_COPY_DISABLE = 0,
+-- 
+2.26.2
+

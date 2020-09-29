@@ -1,0 +1,38 @@
+From 2fca489d58acfee297d0b9a7dc14e7fa119e8867 Mon Sep 17 00:00:00 2001
+From: Fan Zhang <roy.fan.zhang@intel.com>
+Date: Thu, 16 Apr 2020 11:29:06 +0100
+Subject: [PATCH 5/6] vhost/crypto: fix data length check
+
+This patch fixes the incorrect data length check to vhost crypto.
+Instead of blindly accepting the descriptor length as data length, the
+change compare the request provided data length and descriptor length
+first. The security issue CVE-2020-14374 is not fixed alone by this
+patch, part of the fix is done through:
+"vhost/crypto: fix missed request check for copy mode".
+
+CVE-2020-14374
+Fixes: 3c79609fda7c ("vhost/crypto: handle virtually non-contiguous buffers")
+Cc: stable@dpdk.org
+
+Signed-off-by: Fan Zhang <roy.fan.zhang@intel.com>
+Acked-by: Chenbo Xia <chenbo.xia@intel.com>
+---
+ lib/librte_vhost/vhost_crypto.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/librte_vhost/vhost_crypto.c b/lib/librte_vhost/vhost_crypto.c
+index f1cc32a9b..cf9aa2566 100644
+--- a/lib/librte_vhost/vhost_crypto.c
++++ b/lib/librte_vhost/vhost_crypto.c
+@@ -624,7 +624,7 @@ copy_data(void *dst_data, struct vhost_crypto_data_req *vc_req,
+ 		desc = &vc_req->head[desc->next];
+ 		rte_prefetch0(&vc_req->head[desc->next]);
+ 		to_copy = RTE_MIN(desc->len, (uint32_t)left);
+-		dlen = desc->len;
++		dlen = to_copy;
+ 		src = IOVA_TO_VVA(uint8_t *, vc_req, desc->addr, &dlen,
+ 				VHOST_ACCESS_RO);
+ 		if (unlikely(!src || !dlen)) {
+-- 
+2.26.2
+

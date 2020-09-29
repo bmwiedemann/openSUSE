@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:13:17 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Add patches to fix vulnerability where malicious guest can harm the host
+  using vhost crypto, this includes executing code in host (VM Escape),
+  reading host application memory space to guest and causing partially
+  denial of service in the host (bsc#1176590).
+  * 0001-vhost-crypto-fix-pool-allocation.patch
+  * 0002-vhost-crypto-fix-incorrect-descriptor-deduction.patch
+  * 0003-vhost-crypto-fix-missed-request-check-for-copy-mode.patch
+  * 0004-vhost-crypto-fix-incorrect-write-back-source.patch
+  * 0005-vhost-crypto-fix-data-length-check.patch
+  * 0006-vhost-crypto-fix-possible-TOCTOU-attack.patch
+
+-------------------------------------------------------------------
 Tue Sep 22 08:13:23 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Update to 19.11.4. For a list of fixes check:
