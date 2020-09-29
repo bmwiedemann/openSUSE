@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:07:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on %arm and aarch64 to fix UnitTests - boo#1176219
+
+-------------------------------------------------------------------
 Wed May 13 06:30:40 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Dropped build dependency on libfallocate-devel as fallocate64 is

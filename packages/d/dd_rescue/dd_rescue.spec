@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch aarch64 %arm
+# boo#1176219
+%define _lto_cflags %{nil}
+%endif
 
 Name:           dd_rescue
 Version:        1.99.8
