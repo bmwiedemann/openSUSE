@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 28 21:07:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.12:
+  * Xerces-C++ versions 3.0 and newer are supported. Xerces-C++
+  * Version 3.2.3 is the preferred stable release.
+  * Addition of a CMake build for all supported platforms.
+  * Rewrite of StyleBook XML documentation in Markdown, hosted at
+  * https://apache.github.io/xalan-c/.
+  * Removal of MacOS and Windows project files for old IDE versions.
+  * Removal of Autoconf build.
+  * Xalan-C++ now supports Microsoft Visual Studio 2019 and earlier
+  * via the new CMake build, which replaces the old version-specific
+  * project and solution files.
+  * Xalan-C++ now also supports building with C++11, C++14 and C++17.
+  * Cygwin and MinGW are known to be nonfunctional in this release.
+  * Restoring full support will be a goal for 1.13. 
+- drop fix-ftbfs-ld-as-needed.diff,
+     fix-testxslt-segfault.diff 
+     xalan-c-1.11-optflags.patch
+     reproducible.patch
+     xalan-c-parallel-build.patch : obsolete
+
+-------------------------------------------------------------------
 Fri May 19 20:12:12 UTC 2017 - bwiedemann@suse.com
 
 - Add reproducible.patch to have constant link-order
