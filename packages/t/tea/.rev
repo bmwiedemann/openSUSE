@@ -71,4 +71,12 @@
     <comment>- Update to version 50.0.3.</comment>
     <requestid>755059</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2a3827a32a8e6b953fd2f1f140cf1937</srcmd5>
+    <version>50.0.4</version>
+    <time>1601399060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838398</requestid>
+  </revision>
 </revisionlist>

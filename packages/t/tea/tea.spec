@@ -1,7 +1,7 @@
 #
 # spec file for package tea
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tea
-Version:        50.0.3
+Version:        50.0.4
 Release:        0
 Summary:        Qt-based text editor with image viewer
 License:        GPL-3.0-or-later
