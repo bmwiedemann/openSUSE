@@ -1,7 +1,7 @@
 #
 # spec file for package kexi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,30 +31,30 @@ Patch0:         Fix-build-with-Qt-5_13.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules
 BuildRequires:  glib2-devel
-BuildRequires:  karchive-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
 BuildRequires:  kdb-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kguiaddons-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemviews-devel
 BuildRequires:  kproperty-devel
 BuildRequires:  kreport-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  libmysqld-devel
-BuildRequires:  marble-devel
 BuildRequires:  mysql-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Marble)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
@@ -65,6 +65,9 @@ BuildRequires:  cmake(Qt5WebKit)
 BuildRequires:  cmake(Qt5WebKitWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+# For dir ownership
+BuildRequires:  hicolor-icon-theme
+Requires:       hicolor-icon-theme
 Recommends:     %{name}-lang = %{version}
 Obsoletes:      calligra-kexi < %{version}
 Provides:       calligra-kexi = %{version}
@@ -102,7 +105,7 @@ This package contains a Spreadsheet-to-Kexi-table import plugin.
 # install translations to %{_kf5_localedir} so they don't clash with the kexi translations in calligra-l10n (KDE4 based)
 # can probably be changed back to the standard location when we have calligra 3 in all supported distributions...
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
