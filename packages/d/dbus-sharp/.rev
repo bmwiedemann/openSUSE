@@ -95,4 +95,14 @@
     <user>dimstar_suse</user>
     <comment>Revert to r11</comment>
   </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>014974b36d277f0dff09b6e9ac9e7d5a</srcmd5>
+    <version>0.7.0</version>
+    <time>1601398935</time>
+    <user>dimstar_suse</user>
+    <comment>- fix libexecdir. mono can't use libexecdir because /usr/lib is
+  fixed in pkgconfig
+</comment>
+    <requestid>838316</requestid>
+  </revision>
 </revisionlist>

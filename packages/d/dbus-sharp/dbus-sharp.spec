@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-sharp
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-# Define _libexecdir for <= 1110
-%if 0%{?suse_version} <= 1110
-%define _libexecdir %{_prefix}/lib
-%endif
 
 Name:           dbus-sharp
 Version:        0.7.0
@@ -27,7 +22,7 @@ Release:        0
 Summary:        Managed C# implementation of D-Bus
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            http://mono.github.com/dbus-sharp/
+URL:            http://mono.github.com/dbus-sharp/
 Source0:        %{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM dbus-sharp-signal-dispatch.patch bnc#780933 dimstar@opensuse.org -- Fix broken signal dispatch, from upstream git.
 Patch0:         dbus-sharp-signal-dispatch.patch
@@ -65,7 +60,7 @@ Version 0.11 and study of the wire protocol of existing tools.
 
 %build
 %configure \
-   --libdir=%{_libexecdir}
+   --libdir=%{_prefix}/lib
 make %{?_smp_mflags}
 
 %install
@@ -73,13 +68,13 @@ make %{?_smp_mflags}
 make DESTDIR=%{buildroot} install
 # Move .pc file to /usr/share/pkgconfig (for no arch) and remove from libdir
 install -Dm 0644 %{name}-1.0.pc %{buildroot}%{_datadir}/pkgconfig/%{name}-1.0.pc
-find %{buildroot}%{_libexecdir} -name %{name}-1.0.pc -type f -print -delete
+find %{buildroot}%{_prefix}/lib -name %{name}-1.0.pc -type f -print -delete
 
 %files
 %defattr(-,root,root)
 %doc COPYING README
-%{_libexecdir}/mono/gac/%{name}/
-%{_libexecdir}/mono/%{name}-1.0/
+%{_prefix}/lib/mono/gac/%{name}/
+%{_prefix}/lib/mono/%{name}-1.0/
 
 %files devel
 %defattr(-,root,root)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:55:03 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- fix libexecdir. mono can't use libexecdir because /usr/lib is
+  fixed in pkgconfig
+
+-------------------------------------------------------------------
 Fri Sep 28 19:44:45 UTC 2012 - dimstar@opensuse.org
 
 - Add dbus-sharp-signal-dispatch.patch: Fix broken signal dispatch.
