@@ -85,4 +85,12 @@
     <comment>via a bug ID (forwarded request 775055 from hillwood)</comment>
     <requestid>775056</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ccc71001382d4513c902d06a2735cb4f</srcmd5>
+    <version>0.3.6~git20200818.e33e7fb</version>
+    <time>1601398876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838143</requestid>
+  </revision>
 </revisionlist>

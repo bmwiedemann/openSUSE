@@ -1,7 +1,7 @@
 #
 # spec file for package libkkc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 %define soname 2
-%define data_version 0.2.7
 Name:           libkkc
-Version:        0.3.5+git20190809.b2e5a15
+Version:        0.3.6~git20200818.e33e7fb
 Release:        0
 Summary:        Japanese Kana-string to Kana-Kanji-mixed-string converter
 License:        GPL-3.0-only
 Group:          System/I18n/Japanese
-Url:            https://github.com/ueno/libkkc
+URL:            https://github.com/ueno/libkkc
 Source:         %{name}-%{version}.tar.xz
-# data: https://bitbucket.org/libkkc/libkkc-data/downloads/
-Source1:        %{name}-data-%{data_version}.tar.xz
+Source1:        https://github.com/ueno/libkkc/releases/download/v0.3.5/libkkc-data-0.2.7.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - use correct shared library for typelib generation
 Patch0:         libkkc-typelib-sharelib.patch
@@ -111,8 +109,11 @@ make %{?_smp_mflags}
 
 # make data
 cp -r %{SOURCE1} .
-tar -xf %{name}-data-%{data_version}.tar.xz
-pushd %{name}-data-%{data_version}
+tar -xf %{name}-data-0.2.7.tar.xz
+OLD=$(pwd)
+pushd %{name}-data-0.2.7
+cp -r ${OLD}/data/templates/libkkc-data/tools/genfilter.py tools/
+cp -r ${OLD}/data/templates/libkkc-data/tools/sortlm.py tools/
 %configure
 # %{?_smp_mflags} cost too much memory
 make
@@ -124,7 +125,7 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 find %{buildroot}%{_libdir} -name "*.la" -delete
 
 # install data
-pushd %{name}-data-%{data_version}
+pushd %{name}-data-0.2.7
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 popd
 

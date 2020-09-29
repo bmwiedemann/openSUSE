@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ueno/libkkc</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">0.3.5+git%cd.%h</param>
+    <param name="versionformat">0.3.6~git%cd.%h</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>
