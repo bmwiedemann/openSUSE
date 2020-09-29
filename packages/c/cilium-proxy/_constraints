@@ -3,7 +3,6 @@
   <overwrite>
     <conditions>
       <arch>x86_64</arch>
-      <arch>aarch64</arch>
     </conditions>
     <hardware>
       <processors>4</processors>
@@ -11,7 +10,18 @@
         <size unit="M">16000</size>
       </memory>
     </hardware>
-</overwrite>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <processors>4</processors>
+      <physicalmemory>
+        <size unit="G">10</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
   <overwrite>
     <conditions>
       <arch>s390x</arch>

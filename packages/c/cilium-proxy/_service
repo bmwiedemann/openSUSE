@@ -1,16 +1,20 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="disabled" name="tar_scm">
     <param name="url">https://github.com/cilium/proxy</param>
     <param name="scm">git</param>
-    <param name="changesgenerate">disable</param>
+    <param name="changesgenerate">enable</param>
     <param name="filename">cilium-proxy</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">c16d0f195d4fa5e26c3a7cff9a27fc69a13437c5</param>
+    <param name="revision">1bae8b37ad80b56e1a378bb04cd06d01e5936347</param>
   </service>
-  <service mode="buildtime" name="tar" />
-  <service mode="buildtime" name="recompress">
+  <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
   </service>
   <service mode="disabled" name="set_version" />
+  <service mode="disabled" name="bazel_repositories">
+    <param name="override-repository">boringssl=/usr/src/boringssl,com_github_curl=/usr/share/bazel-workspaces/curl,com_github_nghttp2_nghttp2=/usr/share/bazel-workspaces/nghttp2,envoy=/usr/src/envoy-proxy,zlib=/usr/share/bazel-workspaces/zlib</param>
+    <param name="exclude">boringssl,curl,nghttp2,zlib</param>
+    <param name="target">//:cilium-envoy</param>
+  </service>
 </services>

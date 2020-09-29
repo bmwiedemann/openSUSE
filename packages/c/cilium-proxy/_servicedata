@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/cilium/proxy</param>
+              <param name="changesrevision">1bae8b37ad80b56e1a378bb04cd06d01e5936347</param></service></servicedata>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:46:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Relax constraints on aarch64
+
+-------------------------------------------------------------------
+Mon Sep 07 18:51:33 UTC 2020 - mrostecki@suse.com
+
+- Update to version 20200813:
+  * istio: Update README.Istio.md to Istio 1.5.9
+  * npds: Add TODO comments
+  * npds: Refine KafkaNetworkPolicyRule
+  * accesslog: Add Kafka support
+  * accesslog: Support Envoy filter metadata.
+  * npds: Support deny rules for L7
+  * network_policy: Support L7 enforcement.
+  * bpf_metadata: Set requested application protocol
+  * docker: Limit Bazel local resources by default
+  * xDS: Send Node only on the first request.
+- Remove the old patch for compatibility with Envoy 1.12.2:
+  * 0001-Adjust-cilium-proxy-to-Envoy-1.12.2.patch
+
+-------------------------------------------------------------------
 Fri Jul 24 14:22:37 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - For ppc64/ppc64le add constraints and limit cpu usage to avoid
