@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 17 14:36:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.2.0:
+  - Python 3.4 is not supported anymore.
+  - ``attr.define()``, ``attr.frozen()``, ``attr.mutable()``, and ``attr.field()`` remain **provisional**.
+  This release fixes a bunch of bugs and ergonomics but they remain mostly unchanged.
+ Further changes see included CHANGELOG.rst
+
+-------------------------------------------------------------------
 Thu May 14 06:45:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not restrict us to new setuptools, we generate stuff

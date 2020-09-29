@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-attrs%{psuffix}
-Version:        19.3.0
+Version:        20.2.0
 Release:        0
 Summary:        Attributes without boilerplate
 License:        MIT
