@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep 28 15:05:18 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.17.7 
+  * Image Viewer: Image attachments, when displayed, are now resized
+    to fit the available width rather than the available height.
+  * -d is now an alias to --debug.
+  * Libravatar plugin: New styles supported: Robohash and Pagan.
+  * SpamAssassin plugin: The 'Maximum size' option now matches
+    SpamAssassin's maximum; it can now handle messages up to 256MB.
+  * LiteHTML viewer plugin: The UI is now translatable.
+  Bug fixes:
+  * bug 4313, 'Recursion stack overflow with rebuilding folder
+    tree'
+  * bug 4372, '[pl_PL] Crash after "Send later" without
+    recipient and then "Close"'
+  * bug 4373, 'attach mailto URI double free'
+  * bug 4374, 'insert mailto URI misses checks'
+  * bug 4384, 'U+00AD (soft hyphen) changed to space in
+    Subject'
+  * bug 4386, 'Allow Sieve config without userid without
+    warning'
+  * Add missing SSL settings when cloning accounts.
+  * Parsing of command-line arguments.
+  * PGP Core plugin: fix segv in address completion with a
+    keyring.
+  * Libravatar plugin: fixes to image display.
+
+-------------------------------------------------------------------
 Thu Sep 17 13:44:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable python-gtk plugin on suse_version > 1500: still relying

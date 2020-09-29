@@ -37,7 +37,7 @@
 %endif
 %bcond_with    tnef
 Name:           claws-mail
-Version:        3.17.6
+Version:        3.17.7
 Release:        0
 Summary:        A configurable email client
 License:        GPL-3.0-or-later

@@ -822,4 +822,12 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
   on python2, which is EOL.</comment>
     <requestid>835255</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>33f90a25c846b0e8761473604d3e495e</srcmd5>
+    <version>3.17.7</version>
+    <time>1601399069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838361</requestid>
+  </revision>
 </revisionlist>
