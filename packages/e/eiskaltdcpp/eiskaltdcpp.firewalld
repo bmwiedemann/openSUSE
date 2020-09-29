@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+	<short>Direct Connect Client (EiskaltDC++)</short>
+	<description>Description: Opens ports for P2P Direct Conect Client EiskaltDC++</description>
+	<port port="3030-3031" protocol="tcp"/>
+	<port port="3030-3031" protocol="udp"/>
+</service>

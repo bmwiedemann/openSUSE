@@ -1,0 +1,555 @@
+-------------------------------------------------------------------
+Tue Sep 29 09:53:04 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Some .spec cleanup:
+  * Use %autosetup
+  * Use %find_lang --with-qt
+  * Remove redundant options to %cmake
+  * Use %cmake_build
+- Use ~git instead of +git to mark it as "before 2.3.0"
+- Add _service to generate the tarball and set the version
+- Update to version 2.3.0~git20200908.0e0ccde5:
+  * Delete hublist.eu
+  * Fix race condition in Search::on
+
+-------------------------------------------------------------------
+Thu Sep  3 12:17:51 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations.
+  * Remove Group tags.
+- Update to 2.3.0+git20200729
+  * https://github.com/eiskaltdcpp/eiskaltdcpp/blob/master/ChangeLog.txt
+  * Added support of miniupnpc API >= 15.
+  * Added support of OpenSSL >= 1.1.
+  * Fixed Quit action in builds with Qt 5.x.
+- Remove all backends and frontends except Qt (qt package).
+- Remove patches:
+  * eiskaltdcpp-fix-php5-issue.patch (upstreamed),
+  * miniupnpc_fixes.patch (upstreamed),
+  * openssl-1.1.x.patch (upstreamed),
+  * eiskaltdcpp.rpmlintrc (don't need).
+- Remove eiskaltdcpp-daemon.
+- Add lua51-devel to BuildRequires.
+- Add eiskaltdcpp.firewalld for ports tcp/udp 3030-3031.
+- Add ru.ts.patch for russian l10n for free space indicator.
+
+-------------------------------------------------------------------
+Fri Jan  5 19:53:25 UTC 2018 - asterios.dramis@gmail.com
+
+- Use libboost_system-devel instead of boost-devel as build
+  requirement for openSUSE Tumbleweed (fixes cmake error).
+- Added a patch "openssl-1.1.x.patch" (taken from upstream) to fix
+  building with OpenSSL >= 1.1.0 in openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Sep 12 17:55:10 UTC 2017 - asterios.dramis@gmail.com
+
+- Fix compilation with lua (define includedir).
+
+-------------------------------------------------------------------
+Sun Apr  9 17:19:54 UTC 2017 - asterios.dramis@gmail.com
+
+- Rename build requirement libxmlrpc-c-devel to xmlrpc-c-devel.
+
+-------------------------------------------------------------------
+Wed Jun  1 19:34:19 UTC 2016 - asterios.dramis@gmail.com
+
+- Added a patch "miniupnpc_fixes.patch" (taken from upstream) to
+  fix compilation with miniupnpc. Includes also a fix to send
+  IPv4-only address in UPNP request.
+
+-------------------------------------------------------------------
+Wed Oct  7 19:33:22 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to 2.2.10:
+  common changes:
+  * GCC < 4.6 and Clang < 3.1 are not supported anymore.
+  * Added option (ShareSkipZeroByte) for skipping zero sized files
+    from share.
+  * Thanks to Anh Phan the Vietnamese translation is now available.
+  * Thanks to Marko Trifunović the Serbian (Cyrillic) translation
+    is now available.
+  * Thanks to Egoitz Rodriguez the Basque translation is now
+    available.
+  * Fixed finding of Lua 5.2.x during configuration.
+  * The local copy of miniupnpc is updated to version 1.8. Build
+    with old miniupnpc versions (1.5.x, 1.6.x and 1.7.x) is still
+    supported.
+  * Prevent crashes when receiving malicious search requests on
+    NMDC hubs. [Thanks to Pavel Pimenov].
+  * Added options: LogFileSpy, LogFormatSpy (issue 1403)
+  * [NMDC] Prevent crashes when receiving malicious search requests
+    http://sourceforge.net/p/dcplusplus/code/ci/1d751b2467b5af9b921e694bca29ee47f5311608/
+    [Thanks to Pavel Pimenov].
+  * Add parse tags TS and HIT in filelists.
+  * [NMDC] Add support CTM2HUB.
+  * [NMDC] Fix parse search requests.
+  * [ADC] Set correct p2p error msg for adc.
+  * Optimize all png images in repo (pull-request 292) [Thanks to
+    Nikoli].
+  * Fix high cpu load on ssl connections after disconnect remote
+    client on begin send file [Thanks to loooser].
+  eiskaltdcpp-qt:
+  * Added some options in settings dialog: SHARE_SKIP_ZERO_BYTE,
+    LOG_FILE_SPY, LOG_FORMAT_SPY, APP_UNIT_BASE, MIME_HANDLER.
+  * Emit signal about each new message in chat (issue 1369).
+  * Add workaround for loading icons in Mac OS X 10.9 (issue 1442).
+  * Fixed build in Mac OS X 10.9 using clang.
+  * Add support build with Qt5.
+  * Add very simple Cmd Debug Frame.
+  * Fix crash in settings dialog (issue 1498).
+  * F3, Shitf+F3, Find All button in PMWindow now work.
+  * Fix unable selection text in chat after find don't exist
+    substring in HubFrame and PMWindow.
+  * Add /rebuild and /refresh chat commands (Github issue 288).
+  * Rework find user for Context Menu in Hub Chat (use
+    QTextBlockUserData instead QRegExp).
+  eiskaltdcpp-gtk:
+  * Added some options in settings dialog: SHARE_SKIP_ZERO_BYTE.
+  eiskaltdcpp-daemon:
+  * Updated embedded mongoose library to version 5.6.
+  * Updated embedded jsoncpp library to current state in SVN trunk.
+  * Added cmake option LOCAL_JSONCPP. Now it is possible to build
+    program with system version of library jsoncpp. But have in
+    mind, if this library do not have our patch, it will causes
+    segmentation faults in eiskaltdcpp-daemon.
+  * Add reload config by SIGHUP.
+- Removed support for openSUSE <= 12.2.
+
+-------------------------------------------------------------------
+Sun Nov  3 22:10:48 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 2.2.9:
+  common changes:
+  * Fixed build with GCC < 4.6 and Clang < 3.1. This is the last release with
+    support of old compilers.
+  * Fixed cmake rules for building with sr@latin localization.
+  * Small code refactoring and optimisation.
+  eiskaltdcpp-qt:
+  * Improvements in search widget: now progress bar works as expected.
+  * Fixed segmentation fault on right click at some nicknames in public chats.
+  * Fixed SIGABRT during closing Tic-Tac-Toe QML widget.
+  * Fixed SIGABRT on program exit when QtScript "LogManager View" is active.
+  * A number of improvements for Mac OS X:
+    - disabled system tray functionality (it never worked there as expected)
+    - added special program menu to the dock icon
+    - now program is hided into dock instead of exiting by the click on window
+      close button
+    - added platform-specific code to handle left click on program icon in dock
+      (now it works as in native Mac OS X programs)
+    - added dock icon jumping when there are new unread personal messages
+    - added support for Retina displays (fonts are rendered in high resolution
+      when program built with Qt 4.8.x)
+    [Thanks to Dmitry Arkhipov who showed developers how Mac OS X looks like]
+  * Some platform-specific improvements in settings dialog: hided options which
+    do not work in Mac OS X, MS Windows or Haiku.
+  eiskaltdcpp-gtk:
+  * Improvements in search widget: now progress bar works as expected.
+  * Fixed SIGABRT when gdk_display_get_default() returns NULL.
+  eiskaltdcpp-daemon:
+  * Fixed check of log file existence in daemon mode (see --syslog and --log
+    command-line options).
+  eiskaltdcpp-cli:
+  * Fixed work with libjson-rpc-perl >= 1.00 (module JSON::RPC::Client was
+    moved to JSON::RPC::Legacy::Client there). [Thanks to Damyan Ivanov]
+
+-------------------------------------------------------------------
+Wed Jul 10 18:15:42 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 2.2.8:
+  common changes:
+  * Fix build with Boost >= 1.50. Dropped support for Boost < 1.39.
+  * Added support of Lua 5.1.x (used by default) and Lua 5.2.x.
+  * The local copy of miniupnpc is updated to version 1.7. Build with old
+    miniupnpc versions (1.5.x and 1.6.x) is still supported.
+  * Fix connection problem when hub domain name has IPv6 address. While we do
+    not have IPv6 support yet, hints.ai_family = AF_UNSPEC was causing the
+    connection problem. [Thanks to Jan Vidar Krey]
+  * Changed logic of search intervals: now minimum search interval can be equal
+    to zero. [Thanks to Dmitry Arkhipov]
+  * Fixed file names for cache of public hub lists: now these files are saved
+    and loaded properly.
+  * Now mutexes from C++11 standard are used in *nix systems. While MinGW does
+    not support this feature, mutexes from Boost are used in MS Windows.
+    Added cmake option DO_NOT_USE_MUTEX (default: OFF), which switches on the
+    old algorithm: Haiku and WINE do not support mutexes yet, so this option
+    is necessary for them. Also this option is used for build in Mac OS X.
+  * Added option for keeping unfinished downloads of file-lists in queue
+    between program restart. (Disabled by default, because it is not very
+    useful: user may leave hub or change CID and such file-list will be in
+    download queue until you manually delete it.)
+  * Added option for choosing MIME handler (i.e. kfmclient, gnome-open). Use
+    MimeHandler field in DCPlusPlus.xml to set it manually.
+  * Fixed buffer overflow error on exit. Problem was caused by attempt to read
+    data from closed UDP socket.
+  * Thanks to Helder Cesar the Portuguese translation is now available.
+  * Some improvements for build in Haiku.
+  * Small code refactoring.
+  eiskaltdcpp-qt:
+  * Fixed opening of public hub lists from cache.
+  * Added progress bar into search widget.
+  * Added menu item "Match all listings".
+  * Added button "Match queue" into the share browser widget.
+  * More consistent handling of magnet links from command line arguments.
+    [Thanks to Dorian Scholz]
+  * Small improvement in download queue widget: use current filename in save
+    dialog.
+  * Added new qtscript for tools panel: NowPlaying QMMP Script.
+    [Thanks to Gustavo Alvarez]
+  * Fixed context menu in transfer view widget. (Copying information for
+    selected items worked wrong.)
+  * Updated list of fake client versions in Favorite Hub settings.
+  * Added menu for quick connection to favorites hubs. (See related action on
+    the tools panel.)
+  * Fixed emoticons processing in chats.
+  * Fixed detection of users on hubs. (Sometimes program took user description
+    from another hub.)
+  * Lot of fixes for user commands.
+  eiskaltdcpp-gtk:
+  * Fixed opening of public hub lists from cache.
+  * Added progress bar into search widget.
+  * Added menu item "Match all listings".
+  * Fixed a number of warnings about using deprecated functions in latest
+    versions of Gtk+ and GLib libraries.
+  * In the file list widget parsing of file lists was detached into separate
+    thread, which solved the problem with a short GUI frieze during opening of
+    large file lists.
+  * Added menu items for opening partial file lists.
+  * Added possibility of configuring the file exceptions in settings dialog.
+    (In previous versions of program it was possible to configure this by
+    manually editing of DCPlusPlus.xml.)
+  * Improved look and fill of settings dialog.
+  * Added option to show user list on the left side of hub widget.
+  * Improved transfers widget: now all information is in separate columns, so
+    some of them can be hided if necessary.
+  eiskaltdcpp-daemon:
+  * Added JSON-RPC methods: hub.getuserinfo, hub.getusers, hub.listfulldesc,
+    queue.matchlists.
+  * Updated JSON-RPC methods: hub.pm, show.ratio.
+  * Synced available XML-RPC and JSON-RPC methods.
+  * Fixed possible program crashes in magnet.add method.
+  * Fixed program hang-up on exit when active hubs are not in connected state.
+  * Added command line options: --syslog, --log=<file>.
+  * Updated embedded mongoose library.
+  * Updated embedded jsonrpc-cpp library.
+  * Additional fix in jsonrpc-cpp:
+    fixed segmentation fault during stopping of mongoose when it was not
+    started.
+  * Additional fixes in jsoncpp:
+    - all source files were combined into three files (.cpp and .h)
+    - added conversion from string to int/uint/int64/uint64/float/double
+  * Now eiskaltdcpp-daemon is ready for daily use via JSON-RPC.
+  * XML-RPC is not recommended, but it is still supported.
+  eiskaltdcpp-cli:
+  * Added new JSON-RPC methods: hash.pause, hash.status, hub.getuserinfo,
+    hub.getusers, hub.listfulldesc, methods.list, queue.getsources,
+    queue.matchlists.
+  * Now eiskaltdcpp-cli-jsonrpc is ready for daily use.
+  * eiskaltdcpp-cli-xmlrpc is not supported.
+- Enable DHT build option.
+
+-------------------------------------------------------------------
+Mon Oct 29 20:27:49 UTC 2012 - asterios.dramis@gmail.com
+
+- Added bzip2 as build requirement (needed for Factory).
+- Added libattr-devel as build requirement.
+
+-------------------------------------------------------------------
+Sat Jun 16 05:19:45 UTC 2012 - highwaystar.ru@gmail.com
+
+- Update to 2.2.7:
+ common changes ***
+ * Updated embedded copy of jsonrpc-cpp library.
+ * Added automatic pause for items from download queue when target directory or
+   temporary target directory is not available in file system [unmounted for
+   example]. (Option CheckTargetsPathsOnStart in config)
+ * Added INSTALL_RUNTIME_PATH option for cmake.
+   (Disabled by default, see file INSTALL)
+ * Refactoring of source code.
+ eiskaltdcpp-qt ***
+ * Support of Qt < 4.6.0 was dropped.
+ * Correctly save state of headers in tables.
+ * Fixed blur of program's icon in D-Bus notifications in Ubuntu Unity.
+ * Added some options in settings dialog:
+  ALLOW_UPLOAD_MULTI_HUB, USE_ADL_ONLY_OWN_LIST.
+ * Fixed problems which were added in version 2.2.5:
+   - Fixed build with GCC >= 4.7.
+   - Fixed program crash at launch time (problem was only in builds with
+     GCC >= 4.7). [Thanks to Pino Toscano]
+   - Fixed build with disabled aspell support.
+   - Fixed actions for main menu items "Hide last status message" and
+     "Hide users statistics".
+   - Fixed system tray icon indication about new unread messages.
+   - Fixed crash on exit.
+ eiskaltdcpp-gtk ***
+ * Always open search for alternates in new widget.
+ * Added some options in settings dialog:
+   ALLOW_UPLOAD_MULTI_HUB, ALLOW_SIM_UPLOADS, LOG_FILE_MAIN_CHAT,
+   LOG_FILE_PRIVATE_CHAT, LOG_FILE_DOWNLOAD, LOG_FILE_UPLOAD,
+   LOG_FORMAT_POST_FINISHED_DOWNLOAD, LOG_FILE_FINISHED_DOWNLOAD,
+   REPORT_ALTERNATES, USE_ADL_ONLY_OWN_LIST
+ * Added saving of last search type in search widget.
+ * Added catching of signals SIGSEGV, SIGABRT, SIGBUS and SIGTERM.
+ * Added chat command and toggle button for disabling chat in hub widget.
+ * Added some options in favorite hub settings dialog: disable chat and
+ external IP.
+ * Changed algorithm of actions for left click on system tray icon. The same
+   behavior as in Qt UI is used now.
+ * In the file list widget parsing of file lists was detached into separate
+   thread, which solved the problem with a short GUI frieze during opening of
+   large file lists.
+ eiskaltdcpp-daemon ***
+ * Synced available XML-RPC and JSON-RPC methods.
+ * Updated JSON-RPC methods: methods.list, show.ratio
+ * Fixed command line options "-c" and "-l": they did not work when argument
+   is not finished by path separator.
+ * JSON-RPC now works using embedded mongoose library.
+   (http://code.google.com/p/mongoose/)
+- removed  gcc-4.7,patch, now upstream
+ 
+
+-------------------------------------------------------------------
+Tue Apr 24 18:15:18 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 2.2.6:
+  common changes:
+  * Thanks to Konstantinos Georgokitsos the Greek translation is now available.
+  * Thanks to Stefano Simoncelli the Italian translation is now available.
+  * Fixed rewriting external IP when DHT is used.
+  * Added support for reading and writing full TTH tree in the file attribute.
+    The implementation is compatible with FlylinkDC++. Not all file systems
+    allow to store data required size. If program can not record the
+    attributes, it processes the files as before.
+  eiskaltdcpp-qt:
+  * Refactoring of source code. Fixed regressions that have been added in
+    version 2.2.5.
+  * Fixed program crash on closing hub tabs when there are open tabs with
+    private chat rooms. (Bug was added in version 2.1.0)
+  * Show count of selected items in the file list widget.
+  * Small improvements in the panel of active transfers.
+  * Item for fast setting of rate limiting was added in the context menu on
+    tray icon.
+  * Used catching of signals SIGSEGV, SIGABRT, SIGBUS, SIGKILL and SIGTERM
+    to release the shared memory before exiting the program.
+    (Not actual in MS Windows)
+  * Added possibility to open downloaded file on double clicking it in the
+    widget of finished transfers. [Thanks to Viranch Mehta]
+  * Fixed adding items to the list of search results when using the sort by the
+    number of sources.
+  * Added option to select the action when changes in active scripts
+    (QtScript): do nothing, ask the user or restart scripts.
+  * Fixed loading of large file lists when the restriction on the maximum file
+    size is enabled: now such file lists are ignored.
+  eiskaltdcpp-gtk:
+  * Improved support of Gtk3.
+  * Added language switcher in settings dialog.
+  * Fixed bug with duplication of entries in GtkComboBoxText elements.
+  * Added support of libcanberra for sound notification (option
+    -DUSE_LIBCANBERRA for cmake).
+  * Fixed program crash in "Indexing progress" dialog window.
+  eiskaltdcpp-daemon:
+  * Added command line option: --debug
+  * Added new JSON-RPC methods: methods.list, hash.pause, hash.status,
+    queue.getsources
+  eiskaltdcpp-cli:
+  * Added new JSON-RPC methods: queue.list, queue.listtargets, search.clear
+- Added a patch (gcc-4.7.patch) to fix compilation with gcc-4.7 (taken from
+  upstream).
+- Changes based on spec-cleaner run.
+- Require lua51-devel instead of lua-devel (5.2) for openSUSE > 12.1 (package
+  fails to compile with lua-5.2).
+- Added openssl-devel build dependency.
+- Enabled compilation with miniupnpc for openSUSE > 12.1.
+- Removed libglade2-devel from build requirements (not needed).
+- Require at least gtk2 version 2.24 (support for older versions was removed
+  from the package).
+- Enabled compilation with USE_QT_QML cmake variable for openSUSE > 11.4.
+
+-------------------------------------------------------------------
+Fri Jan 20 13:49:50 UTC 2012 - tejas.guruswamy@opensuse.org
+
+- Update to 2.2.5. Notable changes:
+    + common changes
+      * Reorganized the source tree.
+      * Added ZLIF support into core.
+      * Added core settings: UseADLOnlyOnOwnList, AllowUploadOverMultiHubs,
+        AllowSimUploads.
+      * Added ability to build the program with miniupnpc version 1.6. Support
+        for version 1.5 saved. The local copy of miniupnpc is updated to version 1.6.
+      * Fixed program crash when using of changed value of IpTOSValue (default -1)
+        without root privileges.
+      * Added recognition of additional fields from file lists of FlylinkDC++:
+        bitrate audio, video and resolution.
+      * Cleanup of code, small optimizations.
+      * Small improvements for Lua scripts support in MS Windows.
+      * Fixed build with Boost >= 1.48.
+      * Transifex web service is used for translators now:
+        http://code.google.com/p/eiskaltdc/wiki/MakingTranslations
+        https://www.transifex.net/projects/p/eiskaltdcpp/
+    + eiskaltdcpp-qt
+      * Refactoring of source code. Regressions are possible.
+      * Now GCC >= 4.5.0 is required for build. (Features from C++11 are used)
+      * Fixed build in Haiku OS. System algorithm to test run only one instance
+        of the program is used now.
+      * A lot of new methods are now available using QtScript. See:
+        http://code.google.com/p/eiskaltdc/wiki/Scripting
+        http://code.google.com/p/eiskaltdc/wiki/Scripting_QtScript_Example_Scripts
+        http://code.google.com/p/eiskaltdc/wiki/Scripting_Working_With_QtScript
+        [Thanks to OmegaPhil for an updated documentation]
+      * Hot reloading of scripts (QtScript) when they have been changed.
+      * Dialog of scripting (QtScript) is appreciably improved.
+      * Improved method of sorting in Search Spy widget.
+        [Thanks to Mikhail Krasikau]
+      * Added recognition of additional fields from file lists of FlylinkDC++:
+        bitrate audio, video and resolution. The information is displayed in a tooltip
+        for a file.
+      * Added ability to clear search history and download directories history on exit
+        or manualy.
+      * Added some options in settings dialog: ALLOW_SIM_UPLOADS (allow simultaneous
+        uploads by user from different hubs), search-history-items-number,
+        download-directory-history-items-number, memorize-tth-search-phrases
+      * Added buttons for navigation in the file list widget: back, forward, up.
+      * Shared memory is freed when program in falling down by the signal SIGSEGV.
+        Without this program is run only the second time. Actual for unix-like
+        systems only, in MS Windows bug was absent.
+      * Fixed a simultaneous operation of the program for multiple users.
+        The environment variable LOGNAME is used to identify the current user
+        in unix-like systems and GetUserNameA is used in MS Windows.
+      * Fixed search of alternatives for uploads.
+      * Fixed context menu in chats on ADC hubs.
+    + eiskaltdcpp-gtk
+      * Support of builds with Gtk < 2.24 was discontinued.
+      * Added ability to build with Gtk3 (option -DUSE_GTK3 for cmake).
+        This is an experimental mode. Various shortcomings are possible.
+      * Added recognition of additional fields from file lists of FlylinkDC++:
+        bitrate audio, video and resolution. The information is displayed
+        in additional columns.
+      * Fixed chat command /ws.
+      * Search widget is appreciably redesigned.
+      * Free space indicator was added into main window.
+      * Added options: use-native-back-color-for-text, show-transfers.
+    + eiskaltdcpp-daemon
+      * Added command line options: --verbose, --ip, --port, --rpclog, --uripath
+      * Added JSON-RPC interface. More detail:
+        http://code.google.com/p/eiskaltdc/wiki/JSONRPC
+
+-------------------------------------------------------------------
+Thu Dec  1 12:08:52 UTC 2011 - gankov@opensuse.org
+
+- Add BuildRequires aspell - fix build for openSUSE 12.1
+- Add eiskaltdcpp-fix-php5-issue.patch - fix resolving 
+  /usr/bin/php5 dependence
+- Using fdupes for removing duplicate file
+
+-------------------------------------------------------------------
+Mon Oct 10 16:14:11 UTC 2011 - tejas.guruswamy@opensuse.org
+
+- Build cli frontent and daemon
+
+-------------------------------------------------------------------
+Mon Oct  3 09:28:07 UTC 2011 - tejas.guruswamy@opensuse.org
+
+- Update to 2.2.4. Notable changes:
+    + common changes 
+        * Partial synchronization with DC++ kernel (0.785).
+        * Now GCC >= 4.4.0 is required for build.
+        * Added support for DHT (http://www.adcportal.com/wiki/StrongDC++_DHT). 
+          This option is disabled in the settings by default. It is possible to 
+          completely remove support for DHT during configuration (option 
+          -DWITH_DHT for cmake). DHT requires white external IPv4 for a work. See 
+          also: http://en.wikipedia.org/wiki/Distributed_hash_table
+        * Fixed build in Mac OS X.
+    + eiskaltdcpp-qt 
+        * Added some options in settings dialog: DHT, DHT_PORT
+        * Fixed wrong logging of private chats.
+        * Added Stop button in the search widget, which only stops adding new 
+          elements to the frame. Responses to the search query will still come 
+          from other clients, but will be ignored. This is caused by 
+          peculiarities of the protocol...
+        * Improvement in the search widget: pressing Return key in size entry field starts searching.
+        * Added possibility to connect to hubs on encoded URLs (for example: 
+          dchub://%D1%85%D0%B0%D0%B1.%D1%81%D0%BC%D0%BE%D0%BB%D0%BD%D0%B5%D1%82.%D1%80%D1%84)
+        * Implemented delayed filling model in the file list widget, which 
+          significantly reduces memory consumption and does not create a short 
+          GUI freeze. Especially noticeable when opening large file lists.
+        * Fixed definition of user availability status in the favorite users widget.
+        * Fixed display the progress of over 100% in downloads progress indicator in the active transfers widget.
+        * Changed algorithm to test run only one instance of the program. Now QSharedMemory is used.
+    + eiskaltdcpp-gtk 
+        * Migrating from Libglade to GtkBuilder. Compatibility with the code base of LinuxDC++ and FreeDC++ was partially lost.
+        * Transition to Gtk+ version 2.24 was made: there are no deprecated 
+          elements in code now. Support of older versions (only Gtk >= 2.18) is 
+          temporarily retained by using the insertions in code and additional 
+          patches.
+        * Added some options in settings dialog: DHT, DHT_PORT, DYNDNS_ENABLE, DYNDNS_SERVER
+        * Some improvements in settings dialog.
+        * Improvement in the search widget: pressing Return key in size entry field starts searching.
+    + eiskaltdcpp-daemon 
+        * Added new XML-RPC methods: search.send, search.getresults, show.version, show.ratio (more detail: http://code.google.com/p/eiskaltdc/wiki/XMLRPC)
+    + eiskaltdcpp-cli 
+        * Added a simple console interface to control the daemon via XML-RPC.
+-------------------------------------------------------------------
+Mon Jun 27 11:55:19 UTC 2011 - tejas.guruswamy@opensuse.org
+
+- Update to 2.2.3. Notable changes:
+  + common changes
+    * Different search intervals for favorite hubs (default value: 60 s).
+    * Fixed bug with connecting to ADC hubs on armel architechture.
+    * Thanks to Chris Leick the German translation is now available.
+    * Common code for updating IP from DynDNS (moved from Qt GUI).
+    * Summary statistics (downloaded/uploaded) moved into the core (current values ​​in the Qt GUI will be dropped).
+    * Fixed problem with hashing files, which contain in their names characters missing in the standard 8-bytes locales, but present in Unicode locales. (Affects only MS Windows)
+    * A lot of fixes and cleanup of code (fixed some compiler warnings and etc).
+  + eiskaltdcpp-qt
+    * Added new chat command: /dcpps (for changing settings of DC++ core)
+    * Added some options in favorite hub settings dialog: MINIMUM_SEARCH_INTERVAL
+    * Async loading of history from databases was implemented in widget of finished transfers.
+    * Added temporary limitation to the number of items loaded from the databases on program startup (only 500 elements from the history of finished transfers). It will be simple history navigation in this widget later.
+    * Added the possibility of searching using patterns in the file list widget.
+    * Fixed chat context menu on ADC hubs.
+    * Added new theme with monochrome app icons.
+  + eiskaltdcpp-gtk
+    * Added saving of information about the general traffic (downloaded/uploaded) between sessions.
+    * Added new chat commands: /ip (IPFilter rules), /ratio, /version
+    * Added some options in favorite hub settings dialog: Mode (connection type), MINIMUM_SEARCH_INTERVAL
+  + eiskaltdcpp-daemon 
+    * New XML-RPC methods.
+    * Full list of currently available methods: magnet.add, daemon.stop, hub.del, hub.say, hub.pm, hub.list, hub.retchat, share.add, share.rename, share.del, share.list, share.refresh
+    * There is no web-ui for daemon control yet.
+
+-------------------------------------------------------------------
+Sun Apr 24 20:00:43 UTC 2011 - tejas.guruswamy@opensuse.org
+
+- Update to 2.2.2. Notable changes:
+  + Partial synchronization with DC++ kernel (0.785).
+  + Align ip-address in a chat (only for monospaced fonts).
+  + Added configuration options: ENABLE_STACKTRACE, WITH_DEV_FILES and EISKALTDCPP_INCLUDE_DIR.
+  + Resolving Internationalized Domain Names (libidn is used) [rfc3490]. (Enabled by default, see file INSTALL)
+  + Possible fix to fix migrating from older releases (<2.1.0) without rehashing.
+  + Added option of hashing delay on programs startup (60 seconds by default).
+  + Added separate file for logging completely finished downloads.
+  + Ability to bind to a network interface.
+  + Fixes to improve Lua-scripts.
+  + Bugfixes.
+
+-------------------------------------------------------------------
+Mon Apr 18 22:44:22 UTC 2011 - tejas.guruswamy@opensuse.org
+
+- Update to 2.2.1. Notable changes:
+ + Partial synchronization with DC++ kernel (0.785).
+ + Fixed support for Lua-scripts.
+ + Fixed bug with "empty share" at startup. Now after updating the list of files will be done back up, 
+   which is used when the program starts. Note: an empty list of files is not an empty share!
+ + Fixed the answering function for search queries on the ADC-hubs.
+ + Added ability to disable segmenting and to change segment size (in MiB)
+
+-------------------------------------------------------------------
+Tue Jan 18 11:31:21 UTC 2011 - tejas.guruswamy@opensuse.org
+
+- Update to version 2.2.0 (final), many bugfixes
+
+-------------------------------------------------------------------
+Tue Jan 11 16:07:46 UTC 2011 - tejas.guruswamy@opensuse.org
+
+- Initial package, 2.2-beta2
+

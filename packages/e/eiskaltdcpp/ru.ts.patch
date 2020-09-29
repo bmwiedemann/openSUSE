@@ -1,0 +1,18 @@
+diff -Pdpru eiskaltdcpp.orig/eiskaltdcpp-qt/translations/ru.ts eiskaltdcpp/eiskaltdcpp-qt/translations/ru.ts
+--- eiskaltdcpp.orig/eiskaltdcpp-qt/translations/ru.ts	2019-05-14 12:48:36.000000000 +0300
++++ eiskaltdcpp/eiskaltdcpp-qt/translations/ru.ts	2019-05-14 13:07:44.847559964 +0300
+@@ -2102,12 +2102,12 @@ Избранный пользовате�
+     <message>
+         <location filename="../src/MainWindow.cpp" line="1714"/>
+         <source>Free %1</source>
+-        <translation>Свободно %1</translation>
++        <translation>%1 свободно</translation>
+     </message>
+     <message>
+         <location filename="../src/MainWindow.cpp" line="1717"/>
+         <source>Free %1 of %2</source>
+-        <translation>Свободно %1 из %2</translation>
++        <translation>%1 из %2 свободно</translation>
+     </message>
+     <message>
+         <location filename="../src/MainWindow.cpp" line="1764"/>
