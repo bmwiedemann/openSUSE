@@ -1419,4 +1419,14 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>826210</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>ecfb1115161f4fea8c61fc6a81e1c5a6</srcmd5>
+    <version>3.2.7</version>
+    <time>1601398773</time>
+    <user>dimstar_suse</user>
+    <comment>* CVE-2020-25863: MIME Multipart dissector crash (boo#1176908)
+  * CVE-2020-25862: TCP dissector crash (boo#1176909)
+  * CVE-2020-25866: BLIP dissector crash (boo#1176910) (forwarded request 836544 from AndreasStieger)</comment>
+    <requestid>838204</requestid>
+  </revision>
 </revisionlist>

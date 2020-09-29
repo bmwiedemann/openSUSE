@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 24 07:56:52 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- wireshark 3.2.7:
+  * CVE-2020-25863: MIME Multipart dissector crash (boo#1176908)
+  * CVE-2020-25862: TCP dissector crash (boo#1176909)
+  * CVE-2020-25866: BLIP dissector crash (boo#1176910)
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.2.7.html
+
+-------------------------------------------------------------------
 Wed Aug 12 20:46:35 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Wireshark 3.2.6:
