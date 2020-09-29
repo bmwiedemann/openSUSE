@@ -293,7 +293,7 @@ unsorted:
   - abook 
   - abook-lang 
   - abootimg 
-  - abseil-cpp-source: [x86_64] 
+  - abseil-cpp-source 
   - abxtest 
   - acars-examples 
   - acars2-examples 
@@ -1075,6 +1075,8 @@ unsorted:
   - baresip 
   - baresip-video 
   - barrier 
+  - barvinok 
+  - barvinok-devel 
   - base64coder 
   - base64coder-javadoc 
   - bash-completion-devel 
@@ -1085,7 +1087,7 @@ unsorted:
   - bat 
   - batctl 
   - bats 
-  - bazel 
+  - bazel: [x86_64] 
   - bazel-apple-support-source 
   - bazel-compilation-database-source 
   - bazel-gazelle 
@@ -1107,6 +1109,7 @@ unsorted:
   - bazel0.29: [x86_64] 
   - bazel1.2: [x86_64] 
   - bazel2.0: [x86_64] 
+  - bazel3.4: [x86_64] 
   - bb 
   - bbe 
   - bbswitch 
@@ -1903,6 +1906,7 @@ unsorted:
   - cni-plugins: [i586] 
   - cntlm 
   - cobbler 
+  - cobbler-tests 
   - cobbler-web 
   - coccigrep 
   - coccinelle 
@@ -2843,6 +2847,7 @@ unsorted:
   - eiciel-lang 
   - eigen3-devel 
   - eigen3-doc 
+  - eiskaltdcpp-qt 
   - elektra 
   - elektra-qt-gui 
   - elementary-cmake-modules 
@@ -3318,6 +3323,7 @@ unsorted:
   - flamerobin 
   - flameshot 
   - flameshot-bash-completion 
+  - flameshot-zsh-completion 
   - flann-devel 
   - flannel 
   - flannel-k8s-yaml: [i586] 
@@ -8842,6 +8848,7 @@ unsorted:
   - libb64-devel 
   - libbabl-0_1-0-32bit: [x86_64] 
   - libbamf3-2 
+  - libbarvinok23 
   - libbase-javadoc 
   - libbaseencode-devel 
   - libbaseencode1 
@@ -11899,6 +11906,8 @@ unsorted:
   - libpreludedbcpp2 
   - libpresage-devel 
   - libpresage-doc 
+  - libprimecount-devel 
+  - libprimecount6 
   - libprimesieve-devel 
   - libprimesieve9 
   - libprofiler0 
@@ -13543,7 +13552,7 @@ unsorted:
   - libx86-devel-static 
   - libx86emu-devel 
   - libxalan-c-devel 
-  - libxalan-c111 
+  - libxalan-c112 
   - libxapian-devel 
   - libxapian30-32bit: [x86_64] 
   - libxapp-devel 
@@ -15882,6 +15891,7 @@ unsorted:
   - nmh 
   - nml 
   - nmon 
+  - nmtree 
   - nnn 
   - no-more-secrets 
   - nodejs-default 
@@ -19247,6 +19257,7 @@ unsorted:
   - premake4 
   - presage 
   - prewikka-lang 
+  - primecount 
   - primesieve 
   - primus 
   - primus-32bit: [x86_64] 
@@ -19358,6 +19369,9 @@ unsorted:
   - pspg 
   - pspp 
   - pspp-devel 
+  - pspp-devel-doc 
+  - pspp-doc 
+  - pspp-lang 
   - psqlODBC 
   - pstoedit 
   - pstoedit-devel 
@@ -21248,6 +21262,7 @@ unsorted:
   - python3-manuel-doc 
   - python3-mapi 
   - python3-marathon 
+  - python3-marisa 
   - python3-markdown-math 
   - python3-markdown2 
   - python3-marshmallow 
@@ -21499,6 +21514,7 @@ unsorted:
   - python3-oslo.vmware 
   - python3-oslotest 
   - python3-osmviz 
+  - python3-ospd 
   - python3-osprofiler 
   - python3-otb 
   - python3-ovirt-engine-sdk 
@@ -24219,8 +24235,6 @@ unsorted:
   - ruby2.6-rubygem-timers 
   - ruby2.6-rubygem-timers-doc 
   - ruby2.6-rubygem-timers-testsuite 
-  - ruby2.6-rubygem-tins 
-  - ruby2.6-rubygem-tins-doc 
   - ruby2.6-rubygem-tmuxinator 
   - ruby2.6-rubygem-tmuxinator-doc 
   - ruby2.6-rubygem-tmuxinator-testsuite 
@@ -24996,8 +25010,6 @@ unsorted:
   - ruby2.7-rubygem-tilt-testsuite-1_4 
   - ruby2.7-rubygem-timers-doc 
   - ruby2.7-rubygem-timers-testsuite 
-  - ruby2.7-rubygem-tins 
-  - ruby2.7-rubygem-tins-doc 
   - ruby2.7-rubygem-tmuxinator-doc 
   - ruby2.7-rubygem-tmuxinator-testsuite 
   - ruby2.7-rubygem-tomlrb-doc 
