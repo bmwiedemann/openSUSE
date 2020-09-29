@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinydb
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,13 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-tinydb
-Version:        3.15.2
+Version:        4.1.1
 Release:        0
 Summary:        A document-oriented database
 License:        MIT
+Group:          Productivity/Databases/Servers
 URL:            https://github.com/msiemens/tinydb
 Source:         https://files.pythonhosted.org/packages/source/t/tinydb/tinydb-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
@@ -42,7 +44,6 @@ external database server.
 %prep
 %setup -q -n tinydb-%{version}
 sed -i '/pytest-cov/d' setup.py
-sed -i '/addopts/d' setup.cfg
 chmod a-x LICENSE
 dos2unix LICENSE
 

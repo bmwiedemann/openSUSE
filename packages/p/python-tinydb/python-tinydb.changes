@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 24 12:08:57 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 4.1.1
+  group added to .spec file (RPMLINT complain)
+  Python 3 only
+
+-------------------------------------------------------------------
 Sun Dec 29 21:16:42 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.15.2:
