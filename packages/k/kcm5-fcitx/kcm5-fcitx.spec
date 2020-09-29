@@ -18,7 +18,7 @@
 
 %define		pkgname	kf5-kcm-fcitx
 Name:           kcm5-fcitx
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        KF5 control module for Fcitx
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ Group:          System/I18n/Chinese
 URL:            http://github.com/fcitx/kcm-fcitx
 Source:         http://download.fcitx-im.org/kcm-fcitx/kcm-fcitx-%{version}.tar.xz
 Source1:        input-keyboard.svg
-#PATCH-FIX-OPENSUSE rename po to kcm5_fcitx to avoid conflict w/ kcm_fcitx
-Patch0:         %{name}-po.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx-devel
@@ -94,7 +92,6 @@ This package provides systemsettings5 icons for fcitx in plasma5-workspace.
 
 %prep
 %setup -q -n kcm-fcitx-%{version}
-%patch0 -p1
 
 %build
 %cmake_kf5 -d build
@@ -111,20 +108,19 @@ for i in $ICONSIZE; do
     rsvg-convert -h $i -w $i %{SOURCE1} -o %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/devices/input-keyboard.png
 done
 
-%find_lang kcm5_fcitx
+%find_lang kcm_fcitx
 
 %{kf5_post_install}
 
 %post -n %{pkgname} -p /sbin/ldconfig
 %postun -n %{pkgname} -p /sbin/ldconfig
 
-%files -n %{pkgname} -f kcm5_fcitx.lang
+%files -n %{pkgname} -f kcm_fcitx.lang
 %defattr(-,root,root,-)
-%config %{_sysconfdir}/xdg/fcitx-skin.knsrc
 %{_bindir}/kbd-layout-viewer
 %{_libdir}/qt5/plugins/kcm_fcitx.so
 %{_datadir}/kservices5/kcm_fcitx.desktop
-%{_datadir}/kservices5/kbd-layout-viewer.desktop
+%{_datadir}/applications/kbd-layout-viewer.desktop
 
 %files -n %{pkgname}-icons
 %defattr(-,root,root,-)

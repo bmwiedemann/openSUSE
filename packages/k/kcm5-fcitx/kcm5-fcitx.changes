@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:27:56 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 0.5.6
+  * [kcm] try qt5 wrapper before qt4
+  * [kcm] use non neg value as role
+- drop kcm5-fcitx-po.patch, no more kcm-fcitx
+
+-------------------------------------------------------------------
 Thu Feb 20 10:14:34 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Leap 15.2 and SLE15 SP2 has newer librsvg, extend the conditional
