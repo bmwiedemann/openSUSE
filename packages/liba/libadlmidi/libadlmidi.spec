@@ -2,7 +2,7 @@
 # spec file for package libadlmidi
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 
 %define sover 1
 Name:           libadlmidi
-Version:        1.4.0.1
+Version:        1.5.0
 Release:        0
 Summary:        A software MIDI synthesizer library with OPL3 emulation
 License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Languages/C and C++
 URL:            https://github.com/Wohlstand/libADLMIDI
-Source:         https://github.com/Wohlstand/libADLMIDI/archive/v%{version}-1.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - https://github.com/Wohlstand/libADLMIDI/issues/229
-Patch1:         libadlmidi-fix-arm.patch
+Source:         https://github.com/Wohlstand/libADLMIDI/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -64,8 +62,7 @@ Requires:       libADLMIDI%{sover} = %{version}
 Development and header files for libADLMIDI.
 
 %prep
-%setup -q -n libADLMIDI-%{version}-1
-%patch1 -p1
+%setup -q -n libADLMIDI-%{version}
 
 %build
 %cmake \
@@ -79,12 +76,13 @@ Development and header files for libADLMIDI.
 
 %install
 %cmake_install
+rm -r %{buildroot}%{_datadir}/doc/
 
 %post   -n libADLMIDI%{sover} -p /sbin/ldconfig
 %postun -n libADLMIDI%{sover} -p /sbin/ldconfig
 
 %files -n libADLMIDI%{sover}
-%license LICENSE.GPL-3.txt LICENSE.LGPL-3.txt LICENSE.txt
+%license LICENSE LICENSE.GPL-3.txt LICENSE.LGPL-2.1.txt
 %doc AUTHORS README.md
 %{_libdir}/libADLMIDI.so.%{sover}*
 
@@ -94,7 +92,7 @@ Development and header files for libADLMIDI.
 
 %files devel
 %{_includedir}/adlmidi.h
-%{_includedir}/adlmidi.hpp
 %{_libdir}/libADLMIDI.so
+%{_libdir}/pkgconfig/libADLMIDI.pc
 
 %changelog
