@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-sharp2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-# Define _libexecdir for <= 1110
-%if 0%{?suse_version} <= 1110
-%define _libexecdir %{_prefix}/lib
-%endif
 
 Name:           dbus-sharp2
 Version:        0.8.1
@@ -27,7 +22,7 @@ Release:        0
 Summary:        Managed C# implementation of D-Bus
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            http://mono.github.com/dbus-sharp/
+URL:            http://mono.github.com/dbus-sharp/
 Source0:        https://github.com/mono/dbus-sharp/releases/download/v%{version}/dbus-sharp-%{version}.tar.gz
 Patch0:         fix-delay-sign.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -68,7 +63,7 @@ Version 0.11 and study of the wire protocol of existing tools.
 %build
 autoreconf -fiv
 %configure \
-   --libdir=%{_libexecdir}
+   --libdir=%{_prefix}/lib
 make %{?_smp_mflags}
 
 %install
@@ -76,13 +71,13 @@ make %{?_smp_mflags}
 make DESTDIR=%{buildroot} install
 # Move .pc file to /usr/share/pkgconfig (for no arch) and remove from libdir
 install -Dm 0644 dbus-sharp-2.0.pc %{buildroot}%{_datadir}/pkgconfig/dbus-sharp-2.0.pc
-find %{buildroot}%{_libexecdir} -name dbus-sharp-2.0.pc -type f -print -delete
+find %{buildroot}%{_prefix}/lib -name dbus-sharp-2.0.pc -type f -print -delete
 
 %files
 %defattr(-,root,root)
 %doc COPYING README
-%{_libexecdir}/mono/gac/dbus-sharp/
-%{_libexecdir}/mono/dbus-sharp-2.0/
+%{_prefix}/lib/mono/gac/dbus-sharp/
+%{_prefix}/lib/mono/dbus-sharp-2.0/
 
 %files devel
 %defattr(-,root,root)

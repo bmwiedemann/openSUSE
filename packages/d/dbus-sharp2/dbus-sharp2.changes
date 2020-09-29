@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:58:00 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- fix libexecdir. mono can't use libexecdir because /usr/lib
+  is fixed in pkgconfig
+
+-------------------------------------------------------------------
 Tue May 2 00:00:00 UTC 2017 - fwdsbs.to.11df@xoxy.net
 
 - add fix-delay-sign.patch: check that dll installed to GAC is delay-signed and perform full-sign if so.
