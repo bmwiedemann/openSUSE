@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 06:55:40 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on aarch64 - boo#1176934:
+  * nss-freebl-fix-aarch64.patch
+
+-------------------------------------------------------------------
 Thu Sep 17 13:57:18 UTC 2020 - Hans Petter Jansson <hpj@suse.com>
 
 - Update nss-fips-approved-crypto-non-ec.patch to match RC2 code

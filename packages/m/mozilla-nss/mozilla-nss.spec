@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-nss
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2006-2020 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -69,6 +69,7 @@ Patch31:        nss-fips-use-strong-random-pool.patch
 Patch32:        nss-fips-detect-fips-mode-fixes.patch
 Patch34:        nss-fips-combined-hash-sign-dsa-ecdsa.patch
 Patch36:        nss-fips-aes-keywrap-post.patch
+Patch37:        nss-freebl-fix-aarch64.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
 BuildRequires:  gcc9-c++
@@ -226,6 +227,9 @@ cd nss
 %patch32 -p1
 %patch34 -p1
 %patch36 -p1
+
+# Freebl
+%patch37 -p1
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins
