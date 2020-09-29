@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 13:25:37 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Do not use Xemacs on SLE products (jsc#SLE-12100) 
+
+-------------------------------------------------------------------
 Tue Sep 15 06:18:12 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update anthy.spec: Drop the is_opensuse macro to eliminate the

@@ -257,4 +257,12 @@
     <comment></comment>
     <requestid>837196</requestid>
   </revision>
+  <revision rev="37" vrev="38">
+    <srcmd5>79d0410c3a90c00ba430182a6563f29b</srcmd5>
+    <version>9100h</version>
+    <time>1601399114</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use Xemacs on SLE products (jsc#SLE-12100)</comment>
+    <requestid>838572</requestid>
+  </revision>
 </revisionlist>

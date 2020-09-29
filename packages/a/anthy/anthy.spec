@@ -45,7 +45,9 @@ Patch5:         bugzilla-1175274-emacs-27.1.patch
 BuildRequires:  emacs-x11
 BuildRequires:  fdupes
 BuildRequires:  libtool
+%if 0%{?is_opensuse}
 BuildRequires:  xemacs
+%endif
 
 %description
 Anthy is a package for an input method editor backend for Unix-like
@@ -96,6 +98,7 @@ cd test
 %install
 %make_install
 install -m 644 $RPM_SOURCE_DIR/suse-start-anthy.el %{buildroot}%{_datadir}/emacs/site-lisp/
+%if 0%{?is_opensuse}
 # compile the XEmacs versions of the emacs-lisp files and install them:
 pushd src-util
     rm -f *.elc
@@ -104,6 +107,7 @@ pushd src-util
     mkdir -p %{buildroot}%{_datadir}/xemacs/site-packages/lisp/anthy
     install -m 644 *.el *.elc %{buildroot}%{_datadir}/xemacs/site-packages/lisp/anthy
 popd
+%endif
 %fdupes %{buildroot}%{_datadir}
 find %{buildroot} -type f -name "*.la" -delete -print
 # remove unneeded Makefiles for documents
@@ -120,7 +124,9 @@ rm -f doc/Makefile.*
 %{_datadir}/anthy/*
 %{_bindir}/*
 %{_datadir}/emacs/site-lisp/*
+%if 0%{?is_opensuse}
 %{_datadir}/xemacs/*
+%endif
 
 %files -n libanthy0
 %{_libdir}/*.so.*
