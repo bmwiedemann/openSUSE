@@ -1,0 +1,70 @@
+From 3e1c00d051ae4a8319df7714d0545b4b7aa81557 Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@dropbear.xyz>
+Date: Thu, 24 Sep 2020 22:01:22 +1000
+Subject: [PATCH] ps: Match on truncated 16 char for -C
+
+The referenced commit the comm length was increased from 16 to 64
+characters to handle the larger command names for things like kernel
+threads.
+
+However most user processes are limited to 15 characters which means
+if you try something like ps -C myprogramisbiggerthansixteen this would
+fail to match because /proc/<PID>/comm would only be myprogramisbigg
+
+ps now checks the comm length and if it is 15 and if the given match
+is 15 or more, it will only match the first 15 characters.
+
+This is also how killall has worked for about a year.
+
+Thanks to Jean Delvare <jdelvare@suse.de> for the note.
+
+References:
+ commit 14005a371e5c14289e96a4927ffd1a827d3c9d85
+ commit psmisc/psmisc@1188315cd037d73bf946a0003b70c6423cc330d2
+
+Signed-off-by: Craig Small <csmall@dropbear.xyz>
+---
+ NEWS        |  1 +
+ ps/select.c | 14 +++++++++-----
+ 2 files changed, 10 insertions(+), 5 deletions(-)
+
+|diff --git a/NEWS b/NEWS
+|index 514f8ef..9dfd42f 100644
+|--- a/NEWS
+|+++ b/NEWS
+|@@ -7,6 +7,7 @@ procps-ng NEXT
+|   * pgrep: Add older than selection                        merge #79
+|   * pidof: show worker threads                             Redhat #1803640
+|   * ps.1: Mention stime alias                              issue #164
+|+  * ps: check also match on truncated 16 char comm names
+|   * sysctl: Match systemd directory order
+|   * sysctl: Document directory order                       Debian #951550
+|   * top: ensure config file backward compatibility         Debian #951335
+diff --git a/ps/select.c b/ps/select.c
+index f58ca25..e26f2f1 100644
+--- a/ps/select.c
++++ b/ps/select.c
+@@ -116,11 +116,15 @@ static int proc_was_listed(proc_t *buf){
+     break; case SEL_TTY : return_if_match(tty,tty);
+     break; case SEL_SESS: return_if_match(session,pid);
+ 
+-    break; case SEL_COMM: i=sn->n; while(i--)
+-    if(!strncmp( buf->cmd, (*(sn->u+i)).cmd, 63 )) return 1;
+-
+-
+-
++    break;
++    case SEL_COMM:
++	i=sn->n;
++	while(i--) {
++	    /* special case, comm is 16 characters but match is longer */
++	    if (strlen(buf->cmd) == 15 && strlen((*(sn->u+i)).cmd) >= 15)
++		if(!strncmp( buf->cmd, (*(sn->u+i)).cmd, 15 )) return 1;
++	    if(!strncmp( buf->cmd, (*(sn->u+i)).cmd, 63 )) return 1;
++	}
+ #undef return_if_match
+ 
+     }
+-- 
+GitLab
+

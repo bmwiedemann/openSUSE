@@ -1136,4 +1136,13 @@ provide distro defaults in a sane way. (forwarded request 71353 from lnussel)</c
     <comment>- Enable pidof by default (forwarded request 829746 from kukuk)</comment>
     <requestid>829779</requestid>
   </revision>
+  <revision rev="115" vrev="3">
+    <srcmd5>62c7bc746c734a132c80b0381a302ea8</srcmd5>
+    <version>3.3.16</version>
+    <time>1601398731</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace patch procps-ng-3.3.16-comm_len.patch with upstream
+  commitment patch procps-ng-3e1c00d0.patch (bsc#1158830)</comment>
+    <requestid>837194</requestid>
+  </revision>
 </revisionlist>

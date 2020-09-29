@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 15:24:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Replace patch procps-ng-3.3.16-comm_len.patch with upstream
+  commitment patch procps-ng-3e1c00d0.patch (bsc#1158830)
+
+-------------------------------------------------------------------
 Wed Aug 26 12:01:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enable pidof by default

@@ -56,8 +56,8 @@ Patch31:        procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
 Patch32:        procps-ng-3.3.10-errno.patch
 # PATCH-FEATURE-SUSE -- Let upstream pmap behave simialr to old suse pmap
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
-# PATCH-FEATURE-SUSE -- "ps -C" does not allow anymore an argument longer than 15 characters
-Patch34:        procps-ng-3.3.16-comm_len.patch
+# PATCH-FIX-UPSTREAM -- "ps -C" does not allow anymore an argument longer than 15 characters
+Patch34:        procps-ng-3e1c00d0.patch
 
 BuildRequires:  automake
 BuildRequires:  dejagnu
@@ -145,7 +145,7 @@ the process information pseudo-file system.
 %patch31 -p1
 %patch32
 %patch33 -b .pmap4us
-%patch34
+%patch34 -p1
 
 %build
 #
