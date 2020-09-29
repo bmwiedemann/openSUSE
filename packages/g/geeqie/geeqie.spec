@@ -85,7 +85,7 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 %{_datadir}/applications/geeqie.desktop
 %{_datadir}/geeqie/
 %{_datadir}/pixmaps/geeqie.png
-%{_libexecdir}/geeqie/
+%{_prefix}/lib/geeqie/
 %{_mandir}/man1/geeqie.1%{?ext_man}
 
 %files lang -f %{name}.lang
