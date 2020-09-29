@@ -387,4 +387,12 @@ If this SR looks good to you, please accept it together with:
     <comment></comment>
     <requestid>796565</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>458b39f62af7724e40f3babb84738f32</srcmd5>
+    <version>3.4</version>
+    <time>1601398797</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude arch %ix86 (forwarded request 835785 from mrostecki)</comment>
+    <requestid>835786</requestid>
+  </revision>
 </revisionlist>

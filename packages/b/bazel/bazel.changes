@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 21 10:16:57 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Exclude arch %ix86
+
+-------------------------------------------------------------------
+Wed Aug 19 14:06:33 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Switch bazel to default version 3.4.
+
+-------------------------------------------------------------------
 Fri Mar 20 07:06:36 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Remove useless tentative to disable armv7 build
