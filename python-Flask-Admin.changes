@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:33:32 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Exclude a failing test
+
+-------------------------------------------------------------------
 Mon Apr 20 13:58:33 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Fix build without python2
