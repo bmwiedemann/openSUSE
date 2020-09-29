@@ -17,13 +17,13 @@
 
 
 Name:           librime
-Version:        1.5.3
+Version:        1.6.2~git20200921.4e518b9
 Release:        0
 Summary:        Rime Input Method Engine
 License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 #PATCH-FIX-OPENSUSE workaround for gcc bug 53613 on 12.3 and lower
 Patch1:         librime-1.1-gcc53613.patch
@@ -99,8 +99,15 @@ This package is the development headers of Rime.
 %endif
 
 %build
-%cmake \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo
+# build internal capnproto
+mkdir -p thirdparty/src/capnproto/build
+pushd thirdparty/src/capnproto/build
+cmake -DCMAKE_INSTALL_PREFIX=../../../ -DCMAKE_CXX_FLAGS="%{optflags} -fPIC" ..
+make
+make install
+popd
+
+%cmake -DCapnProto_DIR=thirdparty/src/%{_lib}/cmake/CapnProto
 make %{?_smp_mflags}
 
 %install
@@ -114,10 +121,11 @@ make %{?_smp_mflags}
 %doc README.md
 %{_bindir}/rime_deployer
 %{_bindir}/rime_dict_manager
+%{_bindir}/rime_patch
 
 %files -n librime1
 %{_libdir}/%{name}.so.1
-%{_libdir}/%{name}.so.%{version}
+%{_libdir}/%{name}.so.1.6.1
 
 %files devel
 %{_includedir}/rime_api.h

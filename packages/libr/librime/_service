@@ -3,8 +3,9 @@
     <param name="url">https://github.com/rime/librime</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">1.4.1~git%cd.%h</param>
+    <param name="versionformat">1.6.2~git%cd.%h</param>
     <param name="revision">master</param>
+    <param name="submodule">master</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

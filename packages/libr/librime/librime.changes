@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 25 03:13:30 UTC 2020 - i@marguerite.su
+
+- Update to version 1.6.2~git20200921.4e518b9:
+  * chore: fix rime_deployer
+  * fix(rime_api.cc): dangling pointer returned from RimeGetSharedDataDir
+  * feat(chord_composer): use Control, Alt, Shift to input chord
+  * feat(tools/rime_proto_console): demo for proto api
+  * feat(api): include candidate labels in proto message
+  * feat(selector): support 4 combinations of horizontal/vertical text
+    orientation and stacked/linear candidate list layout
+
+-------------------------------------------------------------------
 Mon Jan  6 18:23:35 UTC 2020 - Xu Zhao <i@xuzhao.net>
 
 - Update to version 1.5.3:
