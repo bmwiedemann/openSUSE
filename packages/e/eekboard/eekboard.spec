@@ -116,7 +116,7 @@ rm -rf %{buildroot}%{_libdir}/*.la
 %{_bindir}/eekboard
 %{_bindir}/eekboard-server
 %{_libdir}/libeek*.so.*
-/usr/lib/eekboard-setup
+%{_libexecdir}/eekboard-setup
 %{_datadir}/applications/eekboard.desktop
 %{_datadir}/dbus-1
 %{_datadir}/%{name}
