@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sat Aug 29 17:30:56 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.0.0
+  * Update build to use newer autoconf and automake
+  * Add mtree(5) man page (issue #1)
+- Fix build on older systems not having %make_build macro 
+
+-------------------------------------------------------------------
+Thu Aug 20 16:53:50 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Update spec file to use absolute URL in Source tag
+
+-------------------------------------------------------------------
+Mon Aug 17 18:49:33 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Initial release
+
