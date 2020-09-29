@@ -1,7 +1,7 @@
 #
 # spec file for package tboot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,17 @@
 
 
 Name:           tboot
-%define ver 1.9.10
-Version:        20190520_%{ver}
+%define ver 1.9.12
+Version:        20200429_%{ver}
 Release:        0
 Summary:        Program for performing a verified launch using Intel TXT
 License:        BSD-3-Clause
 Group:          Productivity/Security
-Url:            http://sourceforge.net/projects/tboot/
+URL:            http://sourceforge.net/projects/tboot/
 Source0:        http://downloads.sourceforge.net/project/tboot/tboot/tboot-%{ver}.tar.gz
 Patch3:         tboot-grub2-fix-menu-in-xen-host-server.patch
 Patch4:         tboot-grub2-fix-xen-submenu-name.patch
 Patch7:         tboot-distributor.patch
-# This patch should be removed once upstream has a stock solution for the
-# gcc-9 warning
-Patch8:         disable-address-of-packed-member-warning.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
 BuildRequires:  openssl-devel
@@ -57,7 +54,6 @@ verified launch of an OS kernel/VMM.
 %patch3 -p1
 %patch4 -p1
 %patch7 -p1
-%patch8 -p1
 
 %build
 # Tumbleweed now uses -flto=3 by default which gives us trouble with the

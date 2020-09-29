@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 28 12:14:22 UTC 2020 - matthias.gerstner@suse.com
+
+- update to new upstream release 1.9.12:
+    - changes from 1.9.12:
+        - Release localities in S3 flow for CRB interface
+        - Config.mk, safestringlib/makefile : allow tool overrides
+        - safestringlib: fix warnings with GCC 6.4.0
+        - Strip executable file before generating tboot.gz
+        - Add support for EFI memory map parse/modification
+        - Add SHA384 and SHA512 digest algorithms
+        - lcptools-v2: add pconf2 policy element support
+        - tb_polgen: Add SHA384 and SHA512 support
+        - Disable GCC9 address-of-packed-member warning
+        - Fix warnings after "Avoid unsafe functions" scan
+        - Use SHA256 as default hashing algorithm
+    - changes from 1.9.11:
+        - tb_polgen: Add support for SHA256
+        - Configure IOMMU before executing GETSEC[SENTER]
+        - SINIT ACM can have padding, handle that when checking size
+    - disable-address-of-packed-member-warning.patch: now contained upstream
+    - tboot-grub2-fix-xen-submenu-name.patch: refreshed
+
+-------------------------------------------------------------------
 Fri Jul 12 16:24:27 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO in more elegant way (boo#1141323).
