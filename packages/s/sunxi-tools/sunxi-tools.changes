@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 29 07:38:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Exclude build on %arm as builds fail
+
+-------------------------------------------------------------------
+Mon Sep 28 20:46:35 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to upstream git snapshot
+  * Support --sid to select from multiple devices
+  * Support H6 SoC
+  * Support writing SPI flash memory on device
+
+-------------------------------------------------------------------
 Fri Oct 13 13:01:29 UTC 2017 - guillaume@opensuse.org
 
 - Update to v1.4.2

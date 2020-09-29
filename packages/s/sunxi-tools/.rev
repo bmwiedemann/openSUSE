@@ -26,4 +26,17 @@
 </comment>
     <requestid>536247</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b29d884a7217ba0d7be1ab54977f187b</srcmd5>
+    <version>1.4.2+git20200914103652</version>
+    <time>1601399095</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude build on %arm as builds fail
+- Update to upstream git snapshot
+  * Support --sid to select from multiple devices
+  * Support H6 SoC
+  * Support writing SPI flash memory on device
+</comment>
+    <requestid>838472</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package sunxi-tools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,16 +21,18 @@
 %define sunxi_arch armv7hl
 
 Name:           sunxi-tools
-Version:        1.4.2
+Version:        1.4.2+git20200914103652
 Release:        0
 Summary:        Tools for Allwinner A10 devices
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-Url:            https://github.com/linux-sunxi/sunxi-tools
-Source:         https://github.com/linux-sunxi/sunxi-tools/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/linux-sunxi/sunxi-tools
+Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(zlib)
+ExcludeArch:    %arm
 
 %description
 Tools to help hacking Allwinner A10 (aka sun4i) based devices
