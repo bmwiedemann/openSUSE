@@ -25,7 +25,7 @@
 %define   import_path     v2ray.com/core
 
 Name:           v2ray-core
-Version:        4.28.1
+Version:        4.29.0
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
@@ -39,8 +39,8 @@ Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
-# This package can not be built with go version < 1.13
-BuildRequires:  golang(API) = 1.14
+# This package can not be built with go version < 1.15
+BuildRequires:  golang(API) = 1.15
 BuildRequires:  pkgconfig(systemd)
 AutoReqProv:    Off
 Provides:       %{project} = %{version}-%{release}
@@ -66,7 +66,6 @@ This package provide source code for %{repo}
 
 %prep
 %setup -q -a1 -n %{repo}-%{version}
-# %setup -q -D -T -a 1 -n %{repo}-%{version}
 rm go.sum go.mod
 
 %build

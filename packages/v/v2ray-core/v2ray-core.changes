@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 08:35:06 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.29.0
+  * Fix issue#202
+  * Fix issue#203
+  * Routing: Implement Route interface as the routing result of Router
+  * kcp: removing annoying NewAEADAESGCMBasedOnSeed hint
+  * Make isAEAD more efficient
+  * Golangci-lint: disable some plugins
+  * Add XTLS support
+  * CodeQL: do NOT run on ready for review status
+
+-------------------------------------------------------------------
 Sat Sep 12 10:48:05 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update version to 4.28.1
