@@ -20,7 +20,7 @@
 %define oldpython python
 %bcond_without test
 Name:           python-Shapely
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause

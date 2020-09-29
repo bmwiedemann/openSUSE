@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 27 16:35:53 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to 1.7.1
+ * ``STRtree`` now safely implements the pickle protocol (#915).^
+ * Documentation has been added for ``minimum_clearance`` (#875, #874).
+ * In ``STRtree.__del__()`` we guard against calling ``GEOSSTRtree_destroy``
+   when the lgeos module has already been torn down on exit (#897, #830).
+ * Documentation for the ``overlaps()`` method has been corrected (#920).
+ * Correct the test in ``shapely.geometry.base.BaseGeometry.empty()`` to
+   eliminate memory leaks like the one reported in #745.
+ * Get free() not from libc but from the processes global symbols (#891),
+   fixing a bug that manifests on OS X 10.15 and 10.16.
+ * Extracting substrings from complex lines has been made more correct (#848,
+   #849).
+ * Splitting of complex geometries has been sped up by preparing the input
+   geometry (#871).
+ * Fix bug in concatenation of function argtypes (#866).
+ * Improved documentation of STRtree usage (#857).
+ * Improved handling for empty list or list of lists in GeoJSON coordinates
+   (#852).
+ * The polylabel algorithm now accounts for polygon holes (#851, #817).
+
+-------------------------------------------------------------------
 Wed Mar 11 12:51:39 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - drop fix-build-with-geos-3.8.0.patch
