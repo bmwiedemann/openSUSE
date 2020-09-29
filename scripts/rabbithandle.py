@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 # use opensuserabbit.py | rabbithandle.py
+import datetime
 import json
 import os
 import osc.conf
 import subprocess
 import sys
 import time
-from osc.core import get_request
+from osc.core import get_request, get_source_rev
 
 osc.conf.get_config()
 obsbase='https://build.opensuse.org'
@@ -40,6 +41,10 @@ for line in sys.stdin:
         info += change['comment']
     info += '\n'
     print(info);
+    obsrev = get_source_rev(osc.conf.config['apiurl'], "openSUSE:Factory", package, change['rev'])
+    commitdate = datetime.datetime.utcfromtimestamp(int(obsrev["time"])).strftime("%Y-%m-%dT%H:%M:%S")
+    os.environ['GIT_AUTHOR_DATE'] = commitdate
+    os.environ['GIT_COMMITTER_DATE'] = commitdate
     time.sleep(10)
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
     subprocess.call(["lockfile", "-l", "600", ".pkglock"], shell=False)
