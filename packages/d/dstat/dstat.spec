@@ -1,7 +1,7 @@
 #
 # spec file for package dstat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,14 @@ Release:        0
 Summary:        Versatile vmstat, iostat and ifstat Replacement
 License:        GPL-2.0-only
 Group:          System/Monitoring
-Url:            http://dag.wieers.com/home-made/dstat/
+URL:            http://dag.wieers.com/home-made/dstat/
 Source:         https://github.com/dagwieers/dstat/archive/v%{version}.tar.gz
 Source1:        dstat.desktop
 Patch1:         fix_boo_1136279.patch
 # PATCH-FIX-OPENSUSE - boo#1138417
 Patch2:         0001-Use-python3-compatible-way-of-checking-instance-type.patch
+# PATCH-FIX-OPENSUSE - boo#1173004
+Patch3:         loop-should-be-integer.patch
 BuildRequires:  make
 Requires:       python3
 BuildArch:      noarch
@@ -58,6 +60,7 @@ confusion, less mistakes.
 sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' dstat
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 16:35:10 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add loop-should-be-integer.patch
+  * Fixes bug boo#1173004
+  * Is a port of 62ea609fa3026 from https://github.com/scottchiefbaker/dool
+    where the upstream development of dstat is currently happening
+
+-------------------------------------------------------------------
 Tue Jul  2 14:28:44 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix CSV output, boo#1138417
