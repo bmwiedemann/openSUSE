@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 28 20:35:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.7:
+ * Fixed an issue with expires
+ * Fixed an issue with persistence
+ * Minor bug fix
+ * Fixed initialization error
+
+-------------------------------------------------------------------
 Thu Apr 16 08:59:33 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.0.5:

@@ -18,7 +18,7 @@
 
 
 Name:           siege
-Version:        4.0.5
+Version:        4.0.7
 Release:        0
 Summary:        HTTP Regression Testing/Benchmarking Utility
 License:        GPL-2.0-or-later
