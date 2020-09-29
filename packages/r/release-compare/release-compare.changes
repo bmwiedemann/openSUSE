@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 28 12:43:23 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.0
+  * requires new build script!
+  * move script into obsgendiff.d directory
+  * minor output improvement
+
+-------------------------------------------------------------------
+Fri Sep 25 15:09:43 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.15
+  * allow to run further plugins by providing executables
+    in /usr/lib/build/obsgendiff.d
+    NOTE: we may move this functionality into build script
+
+-------------------------------------------------------------------
+Fri Sep 25 14:30:53 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.14
+  * Pick newest obsgendiff archive if multiple exists
+    in maintenance_release projects
+
+-------------------------------------------------------------------
 Wed Sep 23 15:46:56 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.3.13
