@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:45:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Relax constraints on aarch64
+
+-------------------------------------------------------------------
+Tue Aug 25 15:13:28 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Update to 1.14.4
+  * Release notes: https://www.envoyproxy.io/docs/envoy/v1.14.4/intro/version_history
+- Remove patches which were either released upstream or are not
+  relevant anymore:
+  * 0001-server-add-getTransportSocketFactoryContext-to-Filte.patch
+  * 0002-test-Fix-mocks.patch
+  * 0003-test-Fix-format.patch
+  * 0004-server-Add-comments-pointing-out-implementation-deta.patch
+  * 0005-server-Move-setInitManager-to-TransportSocketFactory.patch
+  * 0006-fix-format.patch
+  * 0007-lua-Handle-the-default-case-in-scriptLog.patch
+  * logger-Use-spdlog-memory_buf_t-instead-of-fmt-memory.patch
+  * big-endian-support.patch
+  * bazel-Fix-optional-dynamic-linking-of-OpenSSL.patch
+  * compatibility-with-TLS-1.2-and-OpenSSL-1.1.0.patch
+- Add patches which fix the offline build of the new version:
+  * 0001-build-Use-Go-from-host.patch
+  * 0002-build-update-several-go-dependencies-11581.patch
+  * 0003-build-Add-explicit-requirement-on-rules_cc.patch
+
+-------------------------------------------------------------------
 Wed Jul  1 15:17:29 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Add patch which fixes the error occuring for spdlog 1.6.1:

@@ -1,16 +1,20 @@
 <services>
-  <service mode="disabled" name="obs_scm">
-    <param name="url">https://github.com/envoyproxy/envoy-openssl</param>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/envoyproxy/envoy</param>
     <param name="scm">git</param>
     <param name="changesgenerate">disable</param>
     <param name="filename">envoy-proxy</param>
-    <param name="versionformat">1.12.2+git.%cd</param>
-    <param name="revision">4274cb6bb10e9516089f05554338d662c320a447</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v1.14.4</param>
   </service>
-  <service mode="buildtime" name="tar" />
-  <service mode="buildtime" name="recompress">
+  <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
   </service>
   <service mode="disabled" name="set_version" />
+  <service mode="disabled" name="bazel_repositories">
+    <param name="exclude">boringssl,curl,nghttp2,zlib</param>
+    <param name="target">//source/exe:envoy-static</param>
+  </service>
 </services>

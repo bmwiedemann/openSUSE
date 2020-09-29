@@ -93,4 +93,12 @@ After accepting this SR, please create links:
   * 0007-lua-Handle-the-default-case-in-scriptLog.patch (forwarded request 818140 from mrostecki)</comment>
     <requestid>818141</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cf67f4b27d4afc009bfb69e069b8766e</srcmd5>
+    <version>1.14.4</version>
+    <time>1601398820</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>837198</requestid>
+  </revision>
 </revisionlist>

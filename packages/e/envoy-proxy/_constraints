@@ -3,7 +3,6 @@
   <overwrite>
     <conditions>
       <arch>x86_64</arch>
-      <arch>aarch64</arch>
     </conditions>
     <hardware>
       <processors>4</processors>
@@ -25,6 +24,7 @@
   </overwrite>
   <overwrite>
     <conditions>
+      <arch>aarch64</arch>
       <arch>ppc64</arch>
       <arch>ppc64le</arch>
     </conditions>
