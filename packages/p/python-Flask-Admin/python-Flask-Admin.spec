@@ -77,7 +77,7 @@ rm -f flask_admin/tests/test_form_upload.py
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-%python_expand nosetests-%{$python_bin_suffix}
+%python_expand nosetests-%{$python_bin_suffix} -e test_ajax_fk
 
 %files %{python_files}
 %license LICENSE
