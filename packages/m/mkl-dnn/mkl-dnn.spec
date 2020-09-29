@@ -15,26 +15,34 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch x86_64
+%bcond_without opencl
+%else
+# Build broken on non-x86, with openCL
+%bcond_with opencl
+%endif
 
 %define libname libdnnl1
 Name:           mkl-dnn
-Version:        1.4
+Version:        1.6.3
 Release:        0
 Summary:        Intel(R) Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
-URL:            https://01.org/mkl-dnn
-Source0:        https://github.com/intel/mkl-dnn/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         cmake-no-install-ocl-cmake.patch
+URL:            https://01.org/onednn
+Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/onednn-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
+BuildRequires:  texlive-dvips-bin
+%if %{with opencl}
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
-BuildRequires:  texlive-dvips-bin
 BuildRequires:  pkgconfig(OpenCL)
-ExclusiveArch:  x86_64
+%endif
+ExclusiveArch:  x86_64 aarch64 ppc64le
+Provides:       oneDNN = %{version}
 
 %description
 Intel(R) Math Kernel Library for Deep Neural Networks (Intel(R) MKL-DNN) is an
@@ -59,6 +67,7 @@ This package only includes the benchmark utility including its input files.
 %package devel
 Summary:        Header files of Intel(R) Math Kernel Library
 Requires:       %{libname} = %{version}
+Provides:       oneDNN-devel = %{version}
 
 %description devel
 Intel(R) Math Kernel Library for Deep Neural Networks (Intel(R) MKL-DNN) is an
@@ -97,7 +106,9 @@ to implement deep neural networks (DNN) with C and C++ interfaces.
   -DCMAKE_INSTALL_LIBDIR=%{_lib} \
   -DMKLDNN_ARCH_OPT_FLAGS="" \
   -DDNNL_CPU_RUNTIME=OMP \
+%if %{with opencl}
   -DDNNL_GPU_RUNTIME=OCL \
+%endif
   -DDNNL_INSTALL_MODE=DEFAULT \
   -DDNNL_BUILD_TESTS=ON \
   -DDNNL_WERROR=OFF
@@ -139,6 +150,7 @@ popd
 %{_includedir}/%{name}
 %{_libdir}/*.so
 %{_libdir}/cmake/dnnl
+%{_libdir}/cmake/mkldnn
 
 %files doc
 %{_docdir}/%{name}

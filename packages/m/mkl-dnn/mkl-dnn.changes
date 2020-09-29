@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 13:36:02 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.6.3
+- Drop upstream patch:
+  * cmake-no-install-ocl-cmake.patch
+
+-------------------------------------------------------------------
+Wed Sep 23 13:16:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build on aarch64 and ppc64le which are now also supported
+- Provide oneDNN and oneDNN-devel as it is the new official name
+
+-------------------------------------------------------------------
 Tue May  5 07:38:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.4:
