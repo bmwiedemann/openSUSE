@@ -165,4 +165,12 @@
 </comment>
     <requestid>717227</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1b4ae4e88acf9495e3a3c0d58c16c344</srcmd5>
+    <version>0.39+git20190120.8d5bc2e</version>
+    <time>1601398871</time>
+    <user>dimstar_suse</user>
+    <comment>Fix TW Build </comment>
+    <requestid>837999</requestid>
+  </revision>
 </revisionlist>
