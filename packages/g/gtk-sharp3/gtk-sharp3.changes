@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 01:23:22 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- drop cs8-build-fix.patch, upstreamed
+- fix libexecdir. mono can't use libexecdir because /usr/lib
+  is fixed in pkgconfig
+
+-------------------------------------------------------------------
 Fri Apr 10 22:21:38 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add cs8-build-fix.patch: fix build failure caused by C# 8

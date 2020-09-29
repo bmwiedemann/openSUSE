@@ -16,7 +16,7 @@
 #
 
 
-%define vsuffix git.2017.01.16.9ef7d3f39
+%define vsuffix git.2020.01.10.9dc89137b
 Name:           gtk-sharp3
 # package "libmono-profiler-gui-thread-check0-devel" does not allow us to add even a single symbol to version string without invoking rpmlint warning "W: filename-too-long-for-joliet"
 Version:        2.99.4
@@ -24,11 +24,10 @@ Release:        0
 Summary:        C-Sharp Language Bindings for GTK+
 License:        GPL-2.0-only
 Group:          System/GUI/GNOME
-URL:            https://github.com/mono/gtk-sharp
+URL:            https:/github.com/mono/gtk-sharp
 Source:         gtk-sharp3-%{vsuffix}.tar.xz
 Source99:       create-source-archive.sh
 Patch1:         profiler-update.patch
-Patch2:         cs8-build-fix.patch
 BuildRequires:  gtkhtml2-devel
 BuildRequires:  libmono-2_0-devel
 BuildRequires:  librsvg-devel
@@ -148,12 +147,11 @@ package which depends on all gtk-sharp3 subpackages)
 %prep
 %setup -q -n gtk-sharp3-%{vsuffix}
 %patch1 -p1
-%patch2 -p1
 NOCONFIGURE=1 ./autogen.sh
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%configure --libexecdir=%{_libexecdir} --enable-debug
+%configure --libexecdir=%{_prefix}/lib/ --enable-debug
 make %{?_smp_mflags}
 
 %install
@@ -168,18 +166,18 @@ rm %{buildroot}%{_libdir}/*.*a
 %{_libdir}/libgtksharpglue-3.so
 %{_libdir}/libgiosharpglue-3.so
 %{_libdir}/libpangosharpglue-3.so
-%{_libexecdir}/mono/gtk-sharp-3.0/atk-sharp.dll
-%{_libexecdir}/mono/gtk-sharp-3.0/cairo-sharp.dll
-%{_libexecdir}/mono/gtk-sharp-3.0/gdk-sharp.dll
-%{_libexecdir}/mono/gtk-sharp-3.0/gtk-dotnet.dll
-%{_libexecdir}/mono/gtk-sharp-3.0/gtk-sharp.dll
-%{_libexecdir}/mono/gtk-sharp-3.0/pango-sharp.dll
-%{_libexecdir}/mono/gac/atk-sharp/
-%{_libexecdir}/mono/gac/cairo-sharp/
-%{_libexecdir}/mono/gac/gdk-sharp/
-%{_libexecdir}/mono/gac/gtk-dotnet/
-%{_libexecdir}/mono/gac/gtk-sharp/
-%{_libexecdir}/mono/gac/pango-sharp/
+%{_prefix}/lib/mono/gtk-sharp-3.0/atk-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-3.0/cairo-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-3.0/gdk-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-3.0/gtk-dotnet.dll
+%{_prefix}/lib/mono/gtk-sharp-3.0/gtk-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-3.0/pango-sharp.dll
+%{_prefix}/lib/mono/gac/atk-sharp/
+%{_prefix}/lib/mono/gac/cairo-sharp/
+%{_prefix}/lib/mono/gac/gdk-sharp/
+%{_prefix}/lib/mono/gac/gtk-dotnet/
+%{_prefix}/lib/mono/gac/gtk-sharp/
+%{_prefix}/lib/mono/gac/pango-sharp/
 
 %files devel
 %{_libdir}/pkgconfig/gtk-sharp-3.0.pc
@@ -188,16 +186,16 @@ rm %{buildroot}%{_libdir}/*.*a
 %{_libdir}/pkgconfig/glib-sharp-3.0.pc
 
 %files gapi
-%dir %{_libexecdir}/gapi-3.0
+%dir %{_prefix}/lib/gapi-3.0
 %{_bindir}/gapi3-codegen
 %{_bindir}/gapi3-fixup
 %{_bindir}/gapi3-parser
 %{_datadir}/gapi-3.0
-%{_libexecdir}/gapi-3.0/gapi_codegen.exe
-%{_libexecdir}/gapi-3.0/gapi-fixup.exe
-%{_libexecdir}/gapi-3.0/gapi-parser.exe
-%{_libexecdir}/gapi-3.0/gapi_pp.pl
-%{_libexecdir}/gapi-3.0/gapi2xml.pl
+%{_prefix}/lib/gapi-3.0/gapi_codegen.exe
+%{_prefix}/lib/gapi-3.0/gapi-fixup.exe
+%{_prefix}/lib/gapi-3.0/gapi-parser.exe
+%{_prefix}/lib/gapi-3.0/gapi_pp.pl
+%{_prefix}/lib/gapi-3.0/gapi2xml.pl
 
 %files -n gtk-sharp3-gapi-devel
 %{_libdir}/pkgconfig/gapi-3.0.pc
@@ -205,15 +203,15 @@ rm %{buildroot}%{_libdir}/*.*a
 %files -n gtk-sharp3-doc
 %license COPYING
 %doc README
-%{_libexecdir}/monodoc
+%{_prefix}/lib/monodoc
 
 %files -n glib-sharp3
-%{_libexecdir}/mono/gac/glib-sharp/
-%{_libexecdir}/mono/gtk-sharp-3.0/glib-sharp.dll
+%{_prefix}/lib/mono/gac/glib-sharp/
+%{_prefix}/lib/mono/gtk-sharp-3.0/glib-sharp.dll
 
 %files -n gio-sharp3
-%{_libexecdir}/mono/gac/gio-sharp/
-%{_libexecdir}/mono/gtk-sharp-3.0/gio-sharp.dll
+%{_prefix}/lib/mono/gac/gio-sharp/
+%{_prefix}/lib/mono/gtk-sharp-3.0/gio-sharp.dll
 
 %files -n gio-sharp3-devel
 %{_libdir}/pkgconfig/gio-sharp-3.0.pc
@@ -225,6 +223,6 @@ rm %{buildroot}%{_libdir}/*.*a
 %{_libdir}/libmono-profiler-gui-thread-check.so
 
 %files -n gtk-sharp3-complete
-%dir %{_libexecdir}/mono/gtk-sharp-3.0
+%dir %{_prefix}/lib/mono/gtk-sharp-3.0
 
 %changelog
