@@ -30,6 +30,7 @@ Source2:        %{name}.keyring
 Source3:        config
 Source4:        hostapd.service
 Patch1:         CVE-2019-16275.patch
+Patch2:         CVE-2020-12695.patch
 BuildRequires:  libnl3-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig

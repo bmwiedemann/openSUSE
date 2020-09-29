@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 29 12:52:10 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add CVE-2020-12695.patch -- UPnP SUBSCRIBE misbehavior in hostapd WPS AP
+  (bsc#1172700)
+
+-------------------------------------------------------------------
 Thu Apr 23 22:14:35 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Add CVE-2019-16275.patch -- AP mode PMF disconnection protection bypass
