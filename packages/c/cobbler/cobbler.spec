@@ -28,7 +28,7 @@
 %define apache_user wwwrun
 %define apache_group www
 %define apache_log /var/log/apache2
-%define apache_webconfigdir /etc/apache2/vhosts.d
+%define apache_webconfigdir /etc/apache2/conf.d
 %define apache_mod_wsgi apache2-mod_wsgi-python%{python3_pkgversion}
 %define tftpboot_dir /srv/tftpboot
 %define tftpsrv_pkg tftp
@@ -131,7 +131,9 @@ License:        GPL-2.0-or-later
 Source:         %{name}-%{version}.tar.gz
 Source1:        cobbler.rpmlintrc
 BuildArch:      noarch
-Patch0:         cgi_parse_qs_is_deprecated.diff 
+Patch0:         cgi_parse_qs_is_deprecated.diff
+Patch1:         refactored_auth_module.diff
+Patch2:         load_module_apache_suse_fix.diff
 
 BuildRequires:  git-core
 BuildRequires:  %{system_release_pkg}
@@ -182,6 +184,7 @@ Requires(postun): systemd
 Requires:       %{apache_pkg}
 Requires:       %{tftpsrv_pkg}
 Requires:       %{createrepo_pkg}
+Requires:       fence-agents
 Requires:       rsync
 Requires:       xorriso
 %{?python_enable_dependency_generator}
@@ -250,10 +253,22 @@ Requires(post): openssl
 Web interface for Cobbler that allows visiting
 http://server/cobbler_web to configure the install server.
 
+%if 0%{?suse_version}
+%package tests
+Summary:        Unit tests for cobbler
+Requires:       cobbler = %{version}-%{release}
+
+%description tests
+Unit test files from the Cobbler project
+%endif
 
 %prep
 %setup
 %patch0 -p1
+%patch1 -p1
+%if 0%{?suse_version}
+%patch2 -p1
+%endif
 
 %if 0%{?suse_version}
 # Set tftpboot location correctly for SUSE distributions
@@ -273,6 +288,11 @@ rm %{buildroot}%{_sysconfdir}/cobbler/cobbler.conf
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 mv %{buildroot}%{_sysconfdir}/cobbler/cobblerd_rotate %{buildroot}%{_sysconfdir}/logrotate.d/cobblerd
 
+# No VirtualHost definition as it overwrite all the Uyuni RewriteRules configured in conf.d/
+mkdir -p %{buildroot}%{_sysconfdir}/apache2/conf.d
+mv %{buildroot}%{_sysconfdir}/apache2/vhosts.d/cobbler.conf %{buildroot}%{_sysconfdir}/apache2/conf.d
+sed -i 's/^.*VirtualHost.*$//g' %{buildroot}%{_sysconfdir}/apache2/conf.d/cobbler.conf
+
 # Create data directories in tftpboot_dir
 mkdir -p %{buildroot}%{tftpboot_dir}/{boot,etc,grub,images{,2},ppc,pxelinux.cfg,s390x}
 
@@ -285,6 +305,11 @@ ln -sf service %{buildroot}%{_sbindir}/rccobblerd
 
 # cobbler-web
 rm %{buildroot}%{_sysconfdir}/cobbler/cobbler_web.conf
+
+%if 0%{?suse_version}
+# cobbler-tests
+cp -r tests/ %{buildroot}/%{_datadir}/cobbler/
+%endif
 
 
 %pre
@@ -454,7 +479,7 @@ sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = \'$RAND_SECRET\'/" %{_datadir}/cobbler
 %files web
 %license COPYING
 %doc AUTHORS.in README.md
-%config(noreplace) %{apache_webconfigdir}/cobbler_web.conf
+%config(noreplace) %{apache_etc}/vhosts.d/cobbler_web.conf
 %if %{_vendor} == "debbuild"
 # Work around broken attr support
 # Cf. https://github.com/debbuild/debbuild/issues/160
@@ -467,6 +492,11 @@ sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = \'$RAND_SECRET\'/" %{_datadir}/cobbler
 %attr(-,%{apache_user},%{apache_group}) %{apache_dir}/cobbler_webui_content/
 %endif
 
+%if 0%{?suse_version}
+%files tests
+%dir /usr/share/cobbler/tests
+/usr/share/cobbler/tests/*
+%endif
 
 %changelog
 * Thu Dec 19 2019 Neal Gompa <ngompa13@gmail.com>

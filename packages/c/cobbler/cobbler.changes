@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:39:25 UTC 2020 - Dominik Gedon <dominik.gedon@suse.com>
+
+- Add fence-agents package as requirement
+- Fix position of wrong endif
+
+-------------------------------------------------------------------
+Tue Sep 15 13:42:00 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
+
+- Add cobbler-tests subpackage for unit testing for openSUSE/SLE 
+
+-------------------------------------------------------------------
+Fri Sep 11 15:00:02 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Adds LoadModule definitions for openSUSE/SLE
+
+- Added:
+  * load_module_apache_suse_fix.diff
+
+-------------------------------------------------------------------
+Wed Sep  9 07:16:51 UTC 2020 - Dominik Gedon <dominik.gedon@suse.com>
+
+- Switch to new refactored auth module.
+
+- Added:
+  * refactored_auth_module.diff
+
+-------------------------------------------------------------------
 Mon Sep  7 14:31:58 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
 - Adding tornado dependency for cobbler tftpd again.

@@ -1,0 +1,15 @@
+diff --git a/config/apache/cobbler.conf b/config/apache/cobbler.conf
+index e6f7afef..54ddad0a 100644
+--- a/config/apache/cobbler.conf
++++ b/config/apache/cobbler.conf
+@@ -1,6 +1,10 @@
+ # This configuration file allows cobbler data
+ # to be accessed over HTTP.
+ 
++LoadModule wsgi_module /usr/lib64/apache2/mod_wsgi.so
++LoadModule proxy_module /usr/lib64/apache2/mod_proxy.so
++LoadModule proxy_http_module /usr/lib64/apache2/mod_proxy_http.so
++
+ AliasMatch ^/cblr(?!/svc/)(.*)?$ "@@webroot@@/cobbler$1"
+ AliasMatch ^/cobbler_track(.*)?$ "@@webroot@@/cobbler$1"
+ #AliasMatch ^/cobbler(.*)?$ "@@webroot@@/cobbler$1"
