@@ -87,7 +87,7 @@ sed -i "3d" %{buildroot}%{_datadir}/applications/lxsession-edit.desktop
 %{_datadir}/applications/lxsession-edit.desktop
 %{_mandir}/man1/*.1%{?ext_man}
 %{_sysconfdir}/xdg/autostart/lxpolkit.desktop
-%dir %{_prefix}/lib/lxsession
-%{_prefix}/lib/lxsession/lxsession-xsettings
+%dir %{_libexecdir}/lxsession
+%{_libexecdir}/lxsession/lxsession-xsettings
 
 %changelog
