@@ -1,7 +1,7 @@
 #
 # spec file for package htmldoc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           htmldoc
-Version:        1.9.1
+Version:        1.9.9
 Release:        0
 Summary:        HTML Processor that Generates HTML, PostScript, and PDF Files
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/HTML/Tools
-Url:            https://michaelrsweet.github.io/htmldoc/index.html
+URL:            https://michaelrsweet.github.io/htmldoc/index.html
 Source:         https://github.com/michaelrsweet/htmldoc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
@@ -44,7 +44,7 @@ Portable Document Format (PDF) files that can be viewed online or printed.
 %build
 %configure \
   --with-gui
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -58,12 +58,13 @@ rm -rf %{buildroot}/home %{buildroot}%{_datadir}/doc/%{name}
 %suse_update_desktop_file %{name} -G%{name}
 
 %files
-%doc CHANGES.md COPYING README.md
+%license COPYING
+%doc CHANGES.md README.md
 %{_bindir}/htmldoc
 %{_datadir}/htmldoc
 %{_datadir}/pixmaps/htmldoc.xpm
 %{_datadir}/mime/packages/htmldoc.xml
 %{_datadir}/applications/htmldoc.desktop
-%{_mandir}/man1/htmldoc.1%{ext_man}
+%{_mandir}/man1/htmldoc.1%{?ext_man}
 
 %changelog

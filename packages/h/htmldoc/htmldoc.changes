@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Aug 18 18:57:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.9.9:
+  - Added support for a `HTMLDOC.filename` META keyword that controls the filename
+    reported in CGI mode; the default remains "htmldoc.pdf" (Issue #367)
+  - Fixed a paragraph formatting issue with large inline images (Issue #369)
+  - Fixed a buffer underflow issue (Issue #370)
+  - Fixed PDF page numbers (Issue #371)
+  - Added support for a new `L` header/footer format (`$LETTERHEAD`), which
+    inserts a letterhead image at its full size (Issue #372, Issue #373,
+    Issue #375)
+  - Updated the build documentation (Issue #374)
+  - Refactored the PRE rendering code to work around compiler optimization bugs
+  - Added support for links with targets (Issue #351)
+  - Fixed a table rowspan + valign bug (Issue #360)
+  - Added support for data URIs (Issue #340)
+  - HTMLDOC no longer includes a PDF table of contents when converting a single
+    web page (Issue #344)
+  - Updated the markdown support with external links, additional inline markup,
+    and hard line breaks.
+  - Links in markdown text no longer render with a leading space as part of the
+    link (Issue #346)
+  - Fixed a buffer underflow bug discovered by AddressSanitizer.
+  - Fixed a bug in UTF-8 support (Issue #348)
+  - PDF output now includes the base language of the input document(s)
+  - Optimized the loading of font widths (Issue #354)
+  - Optimized PDF page resources (Issue #356)
+  - Optimized the base memory used for font widths (Issue #357)
+  - Added proper `&shy;` support (Issue #361)
+  - Title files can now be markdown.
+  - The GUI did not support EPUB output.
+  - Empty markdown table cells were not rendered in PDF or PostScript output.
+  - The automatically-generated title page now supports both "docnumber" and
+    "version" metadata.
+  - Added support for dc:subject and dc:language metadata in EPUB output from the
+    HTML keywords and lang values.
+  - Added support for the subject and language metadata in markdown input.
+  - Fixed a buffer underflow bug (Issue #338)
+  - `htmldoc --help` now reports whether HTTPS URLs are supported (Issue #339)
+  - Fixed an issue with HTML title pages and EPUB output.
+  - Inline fixed-width text is no longer reduced in size automatically
+  - Optimized initialization of font width data (Issue #334)
+  - Fixed formatting bugs with aligned images (Issue #322, Issue #324)
+  - Fixed support for three digit "#RGB" color values (Issue #323)
+  - Fixed character set support for markdown metadata.
+  - Updated libpng to v1.6.34 (Issue #326)
+  - The makefiles did not use the CPPFLAGS value (Issue #328)
+  - Added Markdown table support.
+  - Fixed parsing of TBODY, TFOOT, and THEAD elements in HTML files.
+
+-------------------------------------------------------------------
 Mon Dec  4 08:06:31 UTC 2017 - mpluskal@suse.com
 
 - Update to new version 1.9.1:

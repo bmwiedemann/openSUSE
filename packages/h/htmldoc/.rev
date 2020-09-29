@@ -188,4 +188,12 @@
 - Use gnutls/gcrypt for crypto support as openssl support is gone</comment>
     <requestid>548024</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f66c80a0254df547335efc4a995a83d0</srcmd5>
+    <version>1.9.9</version>
+    <time>1601398723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827709</requestid>
+  </revision>
 </revisionlist>
