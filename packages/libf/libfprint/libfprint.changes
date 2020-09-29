@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 27 10:12:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.90.3:
+  * New goodixmoc driver supporting Goodix USB devices: 27C6:5840 27C6:6496 27C6:60A2
+  * Newly added support for Synaptics device: 06CB:00E9 06CB:00DF
+  * Fixed an issue with Synaptics devices sometimes not working at boot
+  * Fix issue with aes3k driver (#306)
+  * A patch for nbis required for some sensors was accidentally dropped in an earlier release 
+  Users of these sensors/drivers need to re-enroll
+
+-------------------------------------------------------------------
 Thu Apr 30 16:04:59 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - gobject-introspection-devel added to fix TW build error 

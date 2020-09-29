@@ -17,19 +17,18 @@
 #
 
 
-%define commit 662cd834e76c02c4d74ad01c50412759
 %define apiver 2
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 
 Name:           libfprint
-Version:        1.90.1
+Version:        1.90.3
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/fprint
-Source0:        https://gitlab.freedesktop.org/libfprint/libfprint/uploads/%{commit}/%{name}-%{version}.tar.xz
+Source0:        https://gitlab.freedesktop.org/libfprint/libfprint/-/archive/v%{version}/libfprint-v%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
@@ -98,7 +97,7 @@ Group:          System/Libraries
 This package contains the introspection bindings for the libfprint.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %meson \
