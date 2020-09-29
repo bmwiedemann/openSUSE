@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 10:45:45 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- For s390/s390x add TARGET=ZARCH_GENERIC (jsc#SLE-13773).
+
+-------------------------------------------------------------------
 Wed Aug 12 02:36:15 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Avoid compile-time CPU-detection (boo#1100677)

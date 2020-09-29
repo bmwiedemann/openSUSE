@@ -299,12 +299,15 @@ cp %{SOURCE2} .
 %define openblas_target TARGET=CORE2 DYNAMIC_ARCH=1
 %endif
 %ifarch aarch64
-%if !(0%{?suse_version} > 1500)
+ %if !(0%{?suse_version} > 1500)
 # Temporary fix, SLE/Leap15.x compiler segfaults for -mtune=cortex-a57 with kernel/arm/axpby.c (boo#1128794)
-%define openblas_target TARGET=ARMV8
-%else
-%define openblas_target DYNAMIC_ARCH=1
-%endif
+  %define openblas_target TARGET=ARMV8
+ %else
+  %define openblas_target DYNAMIC_ARCH=1
+  %ifarch s390 s390x
+   %define openblas_target %openblas_target TARGET=ZARCH_GENERIC
+  %endif
+ %endif
 %endif
 # force -mvsx for ppc64 to avoid build failure:
 # ../kernel/power/sasum_microk_power8.c:41:3: error: '__vector' undeclared (first use in this function); did you mean '__cpow'?
