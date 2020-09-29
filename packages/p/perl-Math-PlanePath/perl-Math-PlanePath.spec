@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Math-PlanePath
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-Math-PlanePath
-Version:        127
+Version:        128
 Release:        0
 #Upstream: GPL-1.0-or-later
 %define cpan_name Math-PlanePath
 Summary:        Points on a path through the 2-D plane
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/K/KR/KRYDE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -79,9 +79,10 @@ related things are further down like 'Math::PlanePath::Base::Xyzzy'.
     PythagoreanTree        X^2+Y^2=Z^2 by trees
 
     PeanoCurve             3x3 self-similar quadrant
+    PeanoDiagonals         across unit squares
     WunderlichSerpentine   transpose parts of PeanoCurve
     HilbertCurve           2x2 self-similar quadrant
-    HilbertSides           2x2 self-similar quadrant segments
+    HilbertSides           along sides of unit squares
     HilbertSpiral          2x2 self-similar whole-plane
     ZOrderCurve            replicating Z shapes
     GrayCode               Gray code splits
@@ -98,7 +99,7 @@ related things are further down like 'Math::PlanePath::Base::Xyzzy'.
     CubicBase              replicate in three directions
     SquareReplicate        3x3 replicating squares
     CornerReplicate        2x2 replicating "U"
-    LTiling                self-simlar L shapes
+    LTiling                self-similar L shapes
     DigitGroups            digits grouped by zeros
     FibonacciWordFractal   turns by Fibonacci word bits
 
@@ -191,7 +192,7 @@ printout of numbers from selected paths or all paths.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
