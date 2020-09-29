@@ -16,6 +16,13 @@
 #
 
 
+# mariadb-rpm-macros is either not available or not sufficient for Leaps
+%if 0%{?suse_version} > 1500 
+%bcond_without tests
+%else
+%bcond_with tests
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyMySQL
 Version:        0.10.0
@@ -28,7 +35,9 @@ Source:         https://github.com/PyMySQL/PyMySQL/archive/v%{version}.tar.gz#/P
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+%if %{with tests}
 BuildRequires:  mariadb-rpm-macros
+%endif
 # will be removed with next release
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,6 +67,7 @@ sed -i '1 { /^#!/ d }' pymysql/tests/thirdparty/test_MySQLdb/*.py
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%if %{with tests}
 %check
 exit_code=0
 dbuser='db_user'
@@ -90,6 +100,7 @@ export PASSWORD="$dbuserpw"
 #
 %mysql_testserver_stop
 exit $exit_code
+%endif
 
 %files %{python_files}
 %license LICENSE
