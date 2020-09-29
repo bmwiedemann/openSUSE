@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- OBS-ExcludeArch: i586 s390 -->
+
+<image schemaversion="6.9" name="opensuse-cockpit-ws-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Thorsten Kukuk</author>
+    <contact>kukuk@suse.com</contact>
+    <specification>openSUSE image containing the Cockpit Web Service.</specification>
+  </description>
+  <preferences>
+    <type
+      image="docker"
+      derived_from="obsrepositories:/opensuse/busybox#latest">
+      <containerconfig
+        name="opensuse/cockpit-ws"
+        tag="latest"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+        <subcommand execute="/container/atomic-run"/>
+        <labels>
+          <label name="INSTALL" value="/usr/bin/docker run --rm --privileged -v /:/host IMAGE /container/atomic-install IMAGE"/>
+          <label name="UNINSTALL" value="/usr/bin/docker run --rm --privileged -v /:/host IMAGE /container/atomic-uninstall"/>
+          <label name="RUN" value="/usr/bin/docker run -d --name NAME --privileged --pid=host -v /:/host IMAGE /container/atomic-run --local-ssh"/>
+          <suse_label_helper:add_prefix prefix="org.opensuse.cockpit-ws">
+            <label name="org.opencontainers.image.title" value="openSUSE Cockpit Web Service container"/>
+            <label name="org.opencontainers.image.description" value="Image containing the Cockpit Web Service."/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cockpit-ws:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE Cockpit Web Service container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-excludedocs>false</rpm-excludedocs>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="cockpit-ws"/>
+    <package name="cockpit-bridge"/>
+    <package name="cockpit-dashboard"/>
+    <package name="mandoc"/>
+    <package name="-busybox-man"/>
+    <package name="-busybox-diffutils"/>
+    <package name="-busybox-adduser"/>
+    <archive name="container.tar.gz"/>
+  </packages>
+</image>

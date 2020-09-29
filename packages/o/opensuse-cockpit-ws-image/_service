@@ -1,0 +1,26 @@
+<services>
+    <service name="obs_scm" mode="disabled">
+        <param name="url">https://github.com/cockpit-project/cockpit-container.git</param>
+        <param name="scm">git</param>
+        <param name="revision">master</param>
+        <param name="versionformat">%cd.%h</param>
+    </service>
+    <service name="tar" mode="disabled">
+        <param name="filename">container</param>
+        <param name="include">atomic-install</param>
+        <param name="include">atomic-uninstall</param>
+        <param name="include">atomic-run</param>
+    </service>
+    <service name="recompress" mode="disabled">
+        <param name="file">*.tar</param>
+        <param name="compression">gz</param>
+     </service>
+    <service mode="buildtime" name="kiwi_metainfo_helper"/>
+    <service mode="buildtime" name="kiwi_label_helper"/>
+    <service name="replace_using_package_version" mode="buildtime">
+        <param name="file">opensuse-cockpit-ws-image.kiwi</param>
+        <param name="regex">%PKG_VERSION%</param>
+        <param name="parse-version">patch</param>
+        <param name="package">cockpit-ws</param>
+    </service>
+</services>
