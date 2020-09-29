@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 28 00:52:42 UTC 2020 - i@marguerite.su
+
+- Update to version 1.4.1~git20200712.33b2755:
+  * fix(rime_engine): ignore keys with super modifier
+  * feat(ibus_rime.yaml): install config file for ibus-rime, set default UI style
+  * fix(logging): wrong log file name
+  * feat(rime_settings): add config options: style/preedit_style, style/cursor_type
+  * fix(rime_settings.h): compile with gcc 10
+  * feat(plugin): dynamically load librime plugins read from `ibus_rime.yaml` (#73)
+  * chore(CHANGELOG.md): fix typo
+  * chore(release): 1.4.0 :tada:
+  * chore(README.md, rime.xml): use https link
+  * fix(rime_main.cc): deploy ibus_rime.yaml on maintenance
+
+-------------------------------------------------------------------
 Wed Mar 27 05:56:21 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - update License

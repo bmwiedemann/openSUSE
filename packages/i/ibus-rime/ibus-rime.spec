@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-rime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           ibus-rime
-Version:        1.4.1~git20190223.c80c02f
+Version:        1.4.1~git20200712.33b2755
 Release:        0
 Summary:        Rime for Linux/IBus
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/rime/ibus-rime
+URL:            https://github.com/rime/ibus-rime
 Source:         %{name}-%{version}.tar.xz
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
@@ -36,7 +36,6 @@ BuildRequires:  ibus-devel
 BuildRequires:  libkyotocabinet-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  librime-devel >= 1.0
-BuildRequires:  opencc
 BuildRequires:  opencc-devel
 Requires:       rime
 
@@ -55,8 +54,10 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 %files
 %defattr(-,root,root)
 %doc README.md
+%dir %{_datadir}/rime-data
 %{_ibus_componentdir}/rime.xml
 %{_datadir}/ibus-rime/
-%{_libexecdir}/ibus-rime/
+%{_datadir}/rime-data/ibus_rime.yaml
+%{_prefix}/lib/ibus-rime/
 
 %changelog
