@@ -147,6 +147,8 @@ Patch10:        n_correct_path_in_desktop_file.patch
 Patch11:        U_viewer-reset-ctrl-alt-to-menu-state-on-focus.patch
 Patch12:        tigervnc-fix-saving-of-bad-server-certs.patch
 Patch13:        u_xorg-server-1.20.7-ddxInputThreadInit.patch
+Patch21:        U_0001-Properly-store-certificate-exceptions.patch
+Patch22:        U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
 
 %description
 TigerVNC is an implementation of VNC (Virtual Network Computing), a
@@ -259,12 +261,14 @@ It maps common x11vnc arguments to x0vncserver arguments.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch21 -p1
+%patch22 -p1
+%patch8 -p1
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver

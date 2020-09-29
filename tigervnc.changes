@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 25 10:38:58 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_0001-Properly-store-certificate-exceptions.patch,
+  U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
+  * Properly store certificate exceptions (boo#1176733)
+- adjusted u_tigervnc-add-autoaccept-parameter.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 10:01:17 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - vnserver: fix startup of Plasma desktop (boo#1176571)
