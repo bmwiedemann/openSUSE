@@ -1,7 +1,7 @@
 #
 # spec file for package labplot-kf5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,15 @@
 %define _kf5_appstreamdir %{_kf5_sharedir}/appdata
 %endif
 Name:           labplot-kf5
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        KDE Framework 5 data analysis and visualization application
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://labplot.kde.org/
 Source:         https://download.kde.org/stable/labplot/%{version}/labplot-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix_labplot_assumption_cantor_version.patch andythe_great@pm.me -- Fix Labplot 2.8.0 wrong assumption that Cantor 20.08.1 has a new interface.
+Patch0:         fix_labplot_assumption_cantor_version.patch
 BuildRequires:  bison
 BuildRequires:  cantor-devel
 BuildRequires:  extra-cmake-modules
@@ -74,7 +76,6 @@ BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(zlib)
 Provides:       labplot = %{version}
 Obsoletes:      labplot < 2.3.0
-
 %lang_package
 
 %description
@@ -88,6 +89,7 @@ This version is based on KDE Frameworks 5
 
 %prep
 %setup -q -n labplot-%{version}
+%patch0 -p1
 
 %build
 %cmake_kf5 -d build
@@ -127,7 +129,6 @@ This version is based on KDE Frameworks 5
 %dir %{_kf5_appstreamdir}
 %{_kf5_appstreamdir}/org.kde.labplot2.appdata.xml
 %{_kf5_htmldir}/en/labplot2/
-%{_kf5_configdir}/labplot2_themes.knsrc
 %{_kf5_mandir}/man1/labplot2.1%{?ext_man}
 
 %files lang -f labplot2.lang

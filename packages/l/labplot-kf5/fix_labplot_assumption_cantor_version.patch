@@ -1,0 +1,13 @@
+https://invent.kde.org/education/labplot/-/commit/4255438c98ce274a4bbb381b706b6ba5b41816c7
+diff -ruN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-09-12 15:17:33.000000000 +0700
++++ b/CMakeLists.txt	2020-09-16 22:29:49.371712613 +0700
+@@ -230,7 +230,7 @@
+ 	ELSE ()
+ 		MESSAGE (STATUS "Cantor Library ${Cantor_VERSION} TOO OLD. Minimum usable version is 19.12")
+ 	ENDIF ()
+-	IF (${Cantor_VERSION} VERSION_GREATER "20.08")
++	IF (${Cantor_VERSION} VERSION_GREATER "20.08.1")
+ 		add_definitions (-DHAVE_NEW_CANTOR_LIBS)
+ 	ENDIF ()
+ ELSE ()

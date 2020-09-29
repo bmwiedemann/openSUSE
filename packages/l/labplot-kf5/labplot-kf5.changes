@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Sep 25 12:05:16 UTC 2020 - wbauer@tmo.at
+
+- Move english docs from labplot-kf5-lang to the main package again
+- Remove unused Qt5Qml BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 16 14:52:28 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.8.0.
+  * New features:
+    * Improved DateTime data support
+    * Show the size of the members in the JSON file in the import 
+      file dialog
+    * [worksheet] In the Export Worksheet Dialog allow to export to
+      the clipboard
+    * [worksheet] Allow to move plots, text labels and legend with
+      arrow keys
+    * [worksheet] Image worksheet element
+    * [worksheet] Reference line on the plot
+    * [worksheet] Support for imperial units for geometry and size
+      settings of objects
+    * [worksheet] Improve axes major and minor tick settings
+    * [spreadsheet] show infinite values as such and not as NaN
+    * [spreadsheet] support big integer (64 bit) as data type
+    * [spreadsheet] column normalization methods "divide by max", 
+      "divide by min", etc.
+    * [spreadsheet] Tukey's ladder of powers
+    * [spreadsheet] added the size of the data set, its mode, 1st 
+      and 3rd quartiles and IQR to the column statistics
+    * [analysis] calculate and expose the rough values as the 
+      result of a smooth (data = smooth + rough)
+    * Allow to open Cantor and Jupyter projects
+    * [Windows] improved craft blueprint and installer package
+    * [macOS] added support for touchbar
+    * Support global user specified decimal separator
+    * Improved locale support in number input fields
+    * Extended "About"-Dialog
+  * Bug fixes:
+    * BUG: 421193 - import float(4) data from hdf5
+    * BUG: 418390 - Ignore infinite values (created in CAS 
+      worksheets for example) in curves
+    * BUG: 412455 - Don't crash (sporadically) when opening the 
+      color scheme menu
+    * BUG: 415214 - Better algorithm to draw the error bar caps
+    * BUG: 413397 - Properly handle removal of columns in the 
+      spreadsheet model
+    * BUG: 413401 - In plot data dialog, don't add new worksheets 
+      as children to workbooks, use the proper parent aspect
+    * Fix Cantor support and Unicode characters on Windows
+    * Fix evaluating fit residuals
+- Add fix_labplot_assumption_cantor_version.patch to fix Labplot 2.8.0
+  wrong assumption that Cantor 20.08.1 has a new interface.
+
+-------------------------------------------------------------------
 Fri Oct 25 11:17:32 UTC 2019 - wbauer@tmo.at
 
 - Update to version 2.7.0
