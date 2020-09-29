@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  6 10:27:00 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to PSPP 1.4.1:
+  * Bug fixes.
+  * Translation updates.
+  * HTML output is now HTML5 instead of HTML4.0 Transitional.
+  * The HOST command has been reimplemented.  It now supports TIMELIMIT.
+- Split -lang package.
+- Add documentation packages.
+
+-------------------------------------------------------------------
 Thu Aug 20 19:31:33 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
 
 - Update to PSPP 1.4.0:

@@ -26,7 +26,7 @@
 %define _disable_ld_as_needed 1
 %endif
 Name:           pspp
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        A program for statistical analysis of sampled data
 License:        GPL-3.0-or-later
@@ -35,6 +35,21 @@ URL:            https://www.gnu.org/software/pspp/
 Source0:        ftp://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz
 Source1:        ftp://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=245#/%{name}.keyring
+Source3:        https://translationproject.org/PO-files/lt/pspp-%{version}.lt.po
+
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?fedora} 
+BuildRequires:  atlas
+%endif
+%if 0%{?suse_version}
+BuildRequires:  fdupes
+BuildRequires:  update-desktop-files
+PreReq:         %install_info_prereq
+%endif
+%if 0%{?is_opensuse}
+# Next package only for "make check", but "free-ttf-fonts" exist only in openSUSE, not in SUSE
+BuildRequires:  free-ttf-fonts
+%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cairo-devel
@@ -42,47 +57,23 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  gsl-devel >= 1.12
 BuildRequires:  gtk3-devel >= 3.22
+BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  m4
 BuildRequires:  pango-devel
+BuildRequires:  perl(base)
+BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl(Text::Diff)
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(appstream)
+BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  postgresql-devel
 BuildRequires:  readline-devel
 BuildRequires:  spread-sheet-widget-devel >= 0.6
 BuildRequires:  texinfo
 BuildRequires:  zlib-devel
-Requires:       yelp
-%if 0%{?centos_version}
-BuildRequires:  gtksourceview3-devel
-BuildRequires:  perl
-BuildRequires:  perl-ExtUtils-MakeMaker
-BuildRequires:  pkgconfig
-%endif
-%if 0%{?fedora}
-BuildRequires:  atlas
-BuildRequires:  gtksourceview3-devel
-BuildRequires:  perl
-BuildRequires:  perl-ExtUtils-MakeMaker
-BuildRequires:  pkgconfig
-%endif
-%if 0%{?mandriva_version}
-BuildRequires:  gtksourceview-devel
-BuildRequires:  perl
-BuildRequires:  pkgconfig
-%endif
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-BuildRequires:  gtksourceview-devel >= 3.18
-BuildRequires:  perl-base
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %{install_info_prereq}
-%endif
-%if 0%{?is_opensuse}
-# Next package only for "make check"
-# "free-ttf-fonts" exist only in openSUSE, not in SUSE
-BuildRequires:  free-ttf-fonts
-%endif
+AutoReqProv:    Yes
+Recommends:     %{name}-doc
 
 %description
 PSPP is a program for statistical analysis of sampled data. It
@@ -92,6 +83,22 @@ PSPP development is ongoing. It already supports a large subset of
 SPSS's syntax. Its statistical procedure support is currently
 limited, but growing. At your option, PSPP will produce statistical
 reports in ASCII, PostScript, PDF, HTML, SVG, or OpenDocument formats.
+
+
+%if 0%{?suse_version}
+%lang_package
+%else
+%package lang
+Summary:        Translations for package pspp
+License:        GPL-3.0-or-later
+
+%description lang
+PSPP is a program for statistical analysis of sampled data. It
+is a free replacement for the proprietary program SPSS.
+
+This subpackage provides translations for PSPP.
+%endif
+
 
 %package devel
 Summary:        Development files for pspp, a statistical analysis program
@@ -105,6 +112,7 @@ Requires:       zlib-devel
 %if 0%{?suse_version} 
 Requires:       xz-devel
 %endif
+Recommends:     %{name}-devel-doc
 
 %description devel
 PSPP is a program for statistical analysis of sampled data. It
@@ -113,27 +121,53 @@ is a free replacement for the proprietary program SPSS.
 This subpackage contains libraries and header files for developing
 applications that want to build pspp plugins.
 
+
+%package doc
+Summary:        Manual for PSPP
+License:        GPL-3.0-or-later
+
+%description doc
+PSPP is a program for statistical analysis of sampled data. It
+is a free replacement for the proprietary program SPSS.
+
+This subpackage contains documentation for PSPP.
+
+
+%package devel-doc
+Summary:        PSPP Developers Guide
+License:        GPL-3.0-or-later
+
+%description devel-doc
+PSPP is a program for statistical analysis of sampled data. It
+is a free replacement for the proprietary program SPSS.
+
+This subpackage contains development documentation for PSPP.
+
+
 %prep
 %setup -q -n pspp-%{version}
+cp -f %{SOURCE3} po/lt.po
 
 %build
 export SUSE_ASNEEDED=0
 export CFLAGS="%{optflags} -fgnu89-inline -fcommon"
 %configure \
              --disable-relocatable --disable-static --disable-rpath \
-             --enable-debug --without-libreadline-prefix
+             --without-libreadline-prefix
 
 %if 0%{?suse_version} >= 1500 
 %make_build
 %else
 make
 %endif
+make html
 
 %install
 %make_install
 %if 0%{?suse_version}
 %suse_update_desktop_file -r org.fsf.%{name} Education Math
 %endif
+cp -r ./doc/pspp.html/ ./doc/pspp-dev.html/ %{buildroot}%{_datadir}/doc/pspp/
 
 # don't own /usr/share/info/dir if it exist
 [ -f %{buildroot}/%{_infodir}/dir ] && rm %{buildroot}/%{_infodir}/dir
@@ -155,6 +189,7 @@ mv $RPM_BUILD_ROOT/%{_datadir}/metainfo $RPM_BUILD_ROOT/%{_datadir}/appdata
 %find_lang pspp
 
 %check
+export TESTSUITEFLAGS='-v -j128'
 %make_build check || /bin/true
 [ -f ./tests/testsuite.log ] || echo "check did not run" > ./tests/testsuite.log
 mkdir $RPM_BUILD_ROOT/%{_datadir}/pspp/tests
@@ -185,10 +220,19 @@ fi
 /sbin/ldconfig
 %desktop_database_postun
 
-%files -f pspp.lang
+%files
 %license COPYING
 %doc README THANKS AUTHORS
 %doc %{_datadir}/doc/pspp
+%if 0%{?suse_version}
+%doc %{_datadir}/doc/pspp/
+%else
+%doc %{_datadir}/doc/pspp/pspp.xml
+%endif
+%exclude %dir %{_datadir}/doc/pspp/pspp.html/
+%exclude %{_datadir}/doc/pspp/pspp.html/*.html
+%exclude %dir %{_datadir}/doc/pspp/pspp-dev.html/
+%exclude %{_datadir}/doc/pspp/pspp-dev.html/*.html
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/pspp.conf
 %{_bindir}/pspp
 %{_bindir}/psppire
@@ -250,11 +294,24 @@ fi
 %doc %{_mandir}/man1/pspp-output.1.gz
 %endif
 
+%files lang -f %{name}.lang
+
 %files devel
 %dir %{_libdir}/pspp/
 %{_libdir}/pspp/libpspp-core.la
 %{_libdir}/pspp/libpspp.la
 %dir %{_datadir}/pspp/tests
 %{_datadir}/pspp/tests/testsuite.log
+
+%files doc
+%defattr(-, root, root)
+%dir %{_datadir}/doc/pspp/pspp.html/
+%doc %{_datadir}/doc/pspp/pspp.html/*.html
+
+%files devel-doc
+%defattr(-, root, root)
+%dir %{_datadir}/doc/pspp/pspp-dev.html/
+%doc %{_datadir}/doc/pspp/pspp-dev.html/*.html
+
 
 %changelog

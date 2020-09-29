@@ -130,4 +130,12 @@
     <comment></comment>
     <requestid>835662</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8dd346e60c7412dc20e89cd60e945f6c</srcmd5>
+    <version>1.4.1</version>
+    <time>1601398861</time>
+    <user>dimstar_suse</user>
+    <comment>update to v1.4.1, split -lang package, add documentation packages</comment>
+    <requestid>837843</requestid>
+  </revision>
 </revisionlist>
