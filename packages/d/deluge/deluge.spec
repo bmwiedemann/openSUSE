@@ -36,7 +36,11 @@ BuildRequires:  intltool
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Twisted >= 17.1
 BuildRequires:  python3-devel
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-libtorrent-rasterbar-1 >= 1.1.1
+%else
 BuildRequires:  python3-libtorrent-rasterbar >= 1.1.1
+%endif
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
@@ -46,7 +50,11 @@ Requires:       python3-Twisted >= 17.1
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
+%if 0%{?suse_version} > 1500
+Requires:       python3-libtorrent-rasterbar-1 >= 1.1.1
+%else
 Requires:       python3-libtorrent-rasterbar >= 1.1.1
+%endif
 Requires:       python3-pyOpenSSL
 Requires:       python3-rencode
 Requires:       python3-setproctitle
@@ -84,6 +92,7 @@ model.
 
 %prep
 %autosetup -p1
+sed -i '/^#!/d' deluge/path_chooser_common.py deluge/ui/gtk3/path_combo_chooser.py
 
 %build
 %py3_build
@@ -106,6 +115,7 @@ ls | while read -r f; do
     fi
 done
 popd
+%fdupes %{buildroot%}%{_datadir}/icons
 
 %files
 %license LICENSE

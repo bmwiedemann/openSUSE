@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 18 12:50:21 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use legacy libtorrent-rasterbar on Tumbleweed
+
+-------------------------------------------------------------------
 Sat Feb 29 19:11:18 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add a missing requirement python3-setproctitle (boo#1164888).
