@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 29 02:09:37 UTC 2020 - i@marguerite.su
+
+- Update to version 0.7.5~git20200915.1e8791e:
+  * importer: process events after layout parse. For #327
+  * importer: small fixes
+  * meson: fix budgie applet name
+  * ci: fixed release
+  * ci: use VERSION only when required
+  * ci: add VERSION
+  * all: fully switch to meson
+  * meson: make docs installation configurable
+  * meson: clarify or later
+  * Update .gitlab-ci.yml
+
+-------------------------------------------------------------------
 Mon Feb  3 16:47:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

@@ -17,20 +17,19 @@
 
 
 Name:           vala-panel-appmenu
-Version:        0.7.3
+Version:        0.7.5~git20200915.1e8791e
 Release:        0
 Summary:        AppMenu plugin for xfce4-panel, mate-panel and vala-panel
 License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
-URL:            https://gitlab.com/vala-panel-project/vala-panel-appmenu
+URL:            https://github.com/rilian-la-te/vala-panel-appmenu
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bamf-daemon
-BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
 BuildRequires:  git
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.24
-BuildRequires:  vala-cmake-modules
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
@@ -209,13 +208,12 @@ This is Global Menu plugin for using with Vala Panel.
 %build
 export CFLAGS="$CFLAGS -I/usr/include/harfbuzz"
 export CXXFLAGS="$CXXFLAGS -I/usr/include/harfbuzz"
-%cmake \
-  -DCMAKE_SHARED_LINKER_FLAGS="" \
-  -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}
-make %{?_smp_mflags} V=1
+meson --prefix=%{_prefix} build
+meson compile -C build
 
 %install
-%cmake_install
+DESTDIR=%{buildroot} meson install -C build --no-rebuild
+rm -rf %{buildroot}%{_datadir}/{appmenu-gtk-module,vala-panel-appmenu}/doc
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/
 
@@ -269,7 +267,7 @@ make %{?_smp_mflags} V=1
 %files -n libappmenu-gtk2-parser0
 %defattr(-,root,root)
 %{_libdir}/libappmenu-gtk2-parser.so.0
-%{_libdir}/libappmenu-gtk2-parser.so.%{version}
+%{_libdir}/libappmenu-gtk2-parser.so.0.7
 
 %files -n libappmenu-gtk2-parser-devel
 %defattr(-,root,root)
@@ -279,7 +277,7 @@ make %{?_smp_mflags} V=1
 %files -n libappmenu-gtk3-parser0
 %defattr(-,root,root)
 %{_libdir}/libappmenu-gtk3-parser.so.0
-%{_libdir}/libappmenu-gtk3-parser.so.%{version}
+%{_libdir}/libappmenu-gtk3-parser.so.0.7
 
 %files -n libappmenu-gtk3-parser-devel
 %defattr(-,root,root)
