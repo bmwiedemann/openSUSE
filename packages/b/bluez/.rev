@@ -1365,4 +1365,12 @@ If we cannot get this in, we need to push an security update for the current blu
 - use autopatch, spec-cleaner</comment>
     <requestid>833388</requestid>
   </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>e4b8cf7f4d3dfa4d06020b50e16a563b</srcmd5>
+    <version>5.55</version>
+    <time>1601398733</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>837197</requestid>
+  </revision>
 </revisionlist>

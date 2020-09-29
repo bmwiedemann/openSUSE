@@ -1,9 +1,0 @@
-<services>
-  <service name="obs_scm" mode="disabled">
-    <param name="url">https://github.com/seifes-opensuse-packages/bluez.git</param>
-    <param name="scm">git</param>
-    <param name="extract">*.*</param>
-    <param name="version">_none_</param>
-  </service>
-  <service mode="disabled" name="download_files"/>
-</services>

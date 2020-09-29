@@ -38,9 +38,6 @@ Source:         http://www.kernel.org/pub/linux/bluetooth/bluez-%{version}.tar.x
 #KEEP NOSOURCE DEBUGINFO
 Source5:        baselibs.conf
 Source7:        bluetooth.modprobe
-# unused in the package, but allows to use "extract *.*" in source service
-Source42:       README.md
-NoSource:       42
 # fix some logitech HID devices, bnc#681049, bnc#850478 --seife+obs@b1-systems.com
 Patch1:         bluez-5.11-logitech-hid2hci.patch
 Patch2:         bluez-sdp-unix-path.patch
