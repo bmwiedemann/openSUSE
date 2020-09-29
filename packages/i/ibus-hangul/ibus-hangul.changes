@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 29 14:38:12 CEST 2020 - tiwai@suse.de
+
+- Replace buildreq gettext-runtime with gettext, which is preferred
+  for OBS
+
+-------------------------------------------------------------------
+Fri Sep 25 06:10:14 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-hangul.spec: Add build requirement for gettext-runtime,
+  to fix build failure in the integration of SLE-15:SP3.
+
+-------------------------------------------------------------------
 Mon Apr 20 08:24:56 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.5.3

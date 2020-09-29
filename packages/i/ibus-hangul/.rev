@@ -225,4 +225,12 @@
     <comment>Fix the sentence (forwarded request 796262 from namtrac)</comment>
     <requestid>796366</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>853d0dfa53767bb765223d564395b524</srcmd5>
+    <version>1.5.3</version>
+    <time>1601399107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838560</requestid>
+  </revision>
 </revisionlist>

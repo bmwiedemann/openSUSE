@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-hangul
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/I18n/Korean
 URL:            https://github.com/libhangul/ibus-hangul
 Source:         https://github.com/libhangul/ibus-hangul/archive/1.5.3/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  gettext
 BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
