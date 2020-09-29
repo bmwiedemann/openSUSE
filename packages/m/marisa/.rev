@@ -45,4 +45,15 @@
     <comment></comment>
     <requestid>826849</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>73aac54dfb2bc23be9fd6854b628c87c</srcmd5>
+    <version>0.2.6</version>
+    <time>1601398872</time>
+    <user>dimstar_suse</user>
+    <comment>- update version 0.2.6
+  * see git commits
+- enable python3 binding again
+</comment>
+    <requestid>838099</requestid>
+  </revision>
 </revisionlist>

@@ -16,31 +16,20 @@
 #
 
 
-%define with_python2 0%{?suse_version} < 1550
-%{!?py_ver: %global py_ver %(python -c "import sys; v=sys.version_info[:2]; print '%%d.%%d'%%v" 2>/dev/null || echo PYTHON-NOT-FOUND)}
-%{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
-
-%if 0%{?sles_version} < 1110
-%{!?rb_arch: %global rb_arch %(/usr/bin/ruby -e 'print RUBY_PLATFORUM')}
-%{!?rb_ver: %global rb_ver %(/usr/bin/ruby -e 'puts VERSION.sub(/\\\.\\\d$/,"")')}
-%{!?rb_vendorarch: %global rb_vendorarch %{_libdir}/ruby/site_ruby/%{rb_ver}/%{rb_arch}}
-%endif
-
 Name:           marisa
-Version:        0.2.4
+Version:        0.2.6
 Release:        0
 Summary:        Matching Algorithm with Recursively Implemented StorAge
 License:        LGPL-2.1-or-later OR BSD-2-Clause
 Group:          System/I18n/Japanese
-URL:            https://code.google.com/p/marisa-trie/
-Source:         https://marisa-trie.googlecode.com/files/%{name}-%{version}.tar.gz
+URL:            https://github.com/s-yata/marisa-trie/
+Source:         https://github.com/s-yata/marisa-trie/archive/v%{version}/%{name}-trie-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  perl
 BuildRequires:  pkg-config
-%if %with_python2
-BuildRequires:  python-devel
-%endif
+BuildRequires:  python3-devel
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 Provides:       marisa-trie = %{version}
@@ -68,25 +57,18 @@ The libmarisa0 package contains runtime libraries for marisa.
 Summary:        Perl bindings for %{name}
 Group:          Development/Libraries/Perl
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} < 1140
-Requires:       perl = %{perl_version}
-%else
 %{perl_requires}
-%endif
 
 %description -n perl-marisa
 Perl bindings for %{name}.
 
-%if %with_python2
-%package -n python-marisa
-Summary:        Python bindings for %{name}
+%package -n python3-marisa
+Summary:        Python3 bindings for %{name}
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
-%py_requires
 
-%description -n python-marisa
-Python bindings for %{name}.
-%endif
+%description -n python3-marisa
+Python3 bindings for %{name}.
 
 %package -n ruby-marisa
 Summary:        Ruby bindings for %{name}
@@ -102,9 +84,7 @@ Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       perl-marisa = %{version}
-%if %with_python2
-Requires:       python-marisa = %{version}
-%endif
+Requires:       python3-marisa = %{version}
 Requires:       ruby-marisa = %{version}
 
 %description devel
@@ -112,29 +92,30 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%setup -q -n marisa-trie-%{version}
 
 %build
+autoreconf -fiv
 %configure
 make %{?_smp_mflags}
 
 # build ruby
 pushd bindings/ruby
-ruby extconf.rb --with-opt-include="%{_builddir}/%{name}-%{version}/lib" --vendor
+ruby extconf.rb --with-opt-include=../../include --with-opt-lib=../../lib/marisa/.libs --vendor
 make %{?_smp_mflags}
 popd
 
-%if %with_python2
 # build python
 pushd bindings/python
-python setup.py build_ext --include-dirs="%{_builddir}/%{name}-%{version}/lib" --library-dirs="%{_builddir}/%{name}-%{version}/lib/.libs"
-python setup.py build
+swig -Wall -c++ -python -py3 -outdir . ../marisa-swig.i
+mv ../marisa-swig_wrap.cxx .
+python3 setup.py build_ext --include-dirs=../../include --library-dirs=../../lib/marisa/.libs
+python3 setup.py build
 popd
-%endif
 
 # build perl
 pushd bindings/perl
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" INC="-I%{_builddir}/%{name}-%{version}/lib" LIBS="-L%{_builddir}/%{name}-%{version}/lib/.libs"
+%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" INC="-I../../include" LIBS="-L../../lib/marisa/.libs"
 make %{?_smp_mflags}
 popd
 
@@ -148,17 +129,18 @@ pushd bindings/ruby
 make install DESTDIR=%{buildroot} hdrdir=%{_includedir}/ruby-%{rb_ver} rubyhdrdir=%{_includedir}/ruby-%{rb_ver}
 popd
 
-%if %with_python2
 # install python
 pushd bindings/python
-python setup.py install --prefix=%{_prefix} --root=%{buildroot}
+python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+rm -rf %{buildroot}%{python3_sitearch}/__pycache__
 popd
-%endif
 
 # install perl
 pushd bindings/perl
 make install DESTDIR=%{buildroot}
 rm -rf %{buildroot}%{perl_vendorarch}/auto/marisa/.packlist
+rm -rf %{buildroot}%{perl_vendorarch}/benchmark.pl
+rm -rf %{buildroot}%{perl_vendorarch}/sample.pl
 popd
 sed -i '1s/^=head2 .*:/=head2/' %{buildroot}%{perl_archlib}/perllocal.pod
 
@@ -168,7 +150,8 @@ sed -i '1s/^=head2 .*:/=head2/' %{buildroot}%{perl_archlib}/perllocal.pod
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS README COPYING
+%doc AUTHORS README.md
+%license COPYING.md
 %{_bindir}/%{name}-benchmark
 %{_bindir}/%{name}-build
 %{_bindir}/%{name}-common-prefix-search
@@ -184,31 +167,20 @@ sed -i '1s/^=head2 .*:/=head2/' %{buildroot}%{perl_archlib}/perllocal.pod
 
 %files -n ruby-marisa
 %defattr(-,root,root)
-%if 0%{?suse_version} > 1210
 %{rb_vendorarchdir}/%{name}.so
-%else
-%{rb_vendorarch}/%{name}.so
-%endif
 
-%if %with_python2
-%files -n python-marisa
+%files -n python3-marisa
 %defattr(-,root,root)
-%{python_sitearch}/_marisa.so
-%{python_sitearch}/marisa.*
-%if 0%{?suse_version} >= 1110
-%{python_sitearch}/marisa-0.0.0-py%{py_ver}.egg-info
-%endif
-%endif
+%{python3_sitearch}/_marisa.*.so
+%{python3_sitearch}/marisa.py
+%{python3_sitearch}/marisa-0.0.0-py%{py3_ver}.egg-info
 
 %files -n perl-marisa
 %defattr(-,root,root)
 %{perl_archlib}/perllocal.pod
-%if 0%{?suse_version} >= 1140
 %dir %{perl_vendorarch}/auto/
-%endif
 %{perl_vendorarch}/auto/marisa
 %{perl_vendorarch}/marisa.pm
-%{perl_vendorarch}/sample.pl
 
 %files devel
 %defattr(-,root,root)

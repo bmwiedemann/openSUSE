@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 27 04:25:30 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 0.2.6
+  * see git commits
+- enable python3 binding again
+
+-------------------------------------------------------------------
 Fri Aug 14 12:55:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer package python2-binding on suse_version > 1500.
