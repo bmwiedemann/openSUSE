@@ -17,34 +17,26 @@
 
 
 Name:           flameshot
-Version:        0.6.0
+Version:        0.8.1
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/lupoDharkael/flameshot#flameshot
+#Git-Clone:     https://github.com/flameshot-org/flameshot.git
 Source0:        https://github.com/lupoDharkael/flameshot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         desktop-files.patch
-Patch2:         0001-utils-confighandler.cpp-Enable-Pin-and-Text-tool-by-.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Fix-build-with-Qt-5.15.patch
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-qtbase
-BuildRequires:  make
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core) >= 5
 BuildRequires:  pkgconfig(Qt5DBus) >= 5
 BuildRequires:  pkgconfig(Qt5Gui) >= 5
 BuildRequires:  pkgconfig(Qt5Network) >= 5
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5
-%if 0%{?suse_version} >= 1500
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%endif
 
 %description
 A program to capture screenshots.
@@ -61,38 +53,42 @@ BuildArch:      noarch
 %description bash-completion
 Bash completion script for flameshot's CLI.
 
-%prep
-%autosetup -p1
+%package zsh-completion
+Summary:        ZSH completion for %{name}
+Group:          Productivity/Networking/Security
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
 
-%if 0%{?suse_version} < 1500
-sed -i '/appdata.path/s/metainfo/appdata/' flameshot.pro
-%endif
+%description zsh-completion
+zsh shell completions for %{name}.
+
+%prep
+%setup -q
 
 %build
-%qmake5 \
-%if 0%{?suse_version} < 1500
- QMAKE_CC=gcc-7 QMAKE_CXX=g++-7 \
-%endif
- CONFIG+=packaging
+%cmake
 %make_jobs
 
 %install
-%qmake5_install
+%cmake_install
+install -d %{buildroot}/%{_sysconfdir}/zsh_completion.d
+mv %{buildroot}%{_datadir}/zsh/site-functions/_flameshot %{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}
+%suse_update_desktop_file -r %{name} Utility X-SuSE-DesktopUtility
 
 %files
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/dbus-1/services/org.dharkael.Flameshot.service
-%{_datadir}/dbus-1/interfaces/org.dharkael.Flameshot.xml
+%{_datadir}/dbus-1/interfaces/org.flameshot.Flameshot.xml
+%{_datadir}/dbus-1/services/org.flameshot.Flameshot.service
+%{_datadir}/metainfo/%{name}.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
-%if 0%{?suse_version} >= 1500
-%{_datadir}/metainfo/%{name}.appdata.xml
-%else
-%{_datadir}/appdata/%{name}.appdata.xml
-%endif
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}
+
+%files zsh-completion
+%dir %{_sysconfdir}/zsh_completion.d
+%config %{_sysconfdir}/zsh_completion.d/%{name}
 
 %changelog

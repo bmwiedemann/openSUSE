@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Sep 24 14:40:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.1
+  * Auto contrast on circle counter
+
+-------------------------------------------------------------------
+Tue Sep 22 21:42:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.0
+  New Features
+  * Fix capture after pressing ctrl + S during textarea input
+  * Add translations
+  * Allow enter key to copy image to clipboard
+  * side panel: Add thickness slider
+  * Add support for saving as JPG and BMP files.
+  * Allow 45 degree adjustment for some tools
+  * Add a basic launcher panel.
+  * Add option to auto copy URL after upload
+  * Add a circle counter tool.
+  * Replace the blur tool with pixelate tool.
+  * Convert buildsystem from QMake to CMake.
+  Fixes
+  * Exit non-zero when aborting with --raw.
+  * Enable Pin and Text tool by default.
+  * Fix the problem that moving or resizing does not affect
+    screenshot.
+  * Fix problem with re-enabling disabled tray icon.
+  * Fix compilation problem against Qt 5.15.
+- Drop not longer needed patches:
+  * 0001-Fix-build-with-Qt-5.15.patch
+  * 0001-utils-confighandler.cpp-Enable-Pin-and-Text-tool-by-.patch
+  * desktop-files.patch
+- Introduce zsh-completion subpackage
+
+-------------------------------------------------------------------
 Fri Jun  5 18:11:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.15:
