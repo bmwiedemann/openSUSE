@@ -1,0 +1,86 @@
+Subject: addstorage: Return to using qcow2 sparse by default
+From: Cole Robinson crobinso@redhat.com Sat Sep 19 18:06:45 2020 -0400
+Date: Sun Sep 20 10:11:36 2020 -0400:
+Git: ba08f84b3408744e9aa9763d100e8aa217c1f5ff
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1759454
+
+See 15a6a7e2105440df528f75c4df4d2471df28bd1e
+
+The idea behind virt-manager's sparse vs nonsparse default, is that if
+the user selected 'raw' for as the default image format, assume they
+want to maximize performance, so fully allocate the disk.
+
+qcow2 didn't support anything except sparse, so the sparse=True vs
+sparse=False made no difference. So we always set sparse=False
+
+Then qcow2 grows non-sparse support, and virt-manager is suddenly
+defaulting to it, which is not the intention.
+
+Default to sparse when requested format isn't raw
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+Index: virt-manager-3.0.0/tests/uitests/test_addhardware.py
+===================================================================
+--- virt-manager-3.0.0.orig/tests/uitests/test_addhardware.py
++++ virt-manager-3.0.0/tests/uitests/test_addhardware.py
+@@ -152,11 +152,8 @@ class AddHardware(lib.testcase.UITestCas
+         tab.combo_select("Cache mode:", "none")
+         tab.combo_select("Discard mode:", "ignore")
+         tab.combo_select("Detect zeroes:", "unmap")
+-        # Size too big
+-        tab.find("GiB", "spin button").set_text("2000")
+-        self._finish(addhw, check=None)
+-        self.app.click_alert_button("not enough free space", "Close")
+-        tab.find("GiB", "spin button").set_text("1.5")
++        # High number but we are non-sparse by default so it won't complain
++        tab.find("GiB", "spin button").set_text("200000")
+         self._finish(addhw, check=details)
+ 
+         # USB disk with removable setting
+Index: virt-manager-3.0.0/tests/uitests/test_createvm.py
+===================================================================
+--- virt-manager-3.0.0.orig/tests/uitests/test_createvm.py
++++ virt-manager-3.0.0/tests/uitests/test_createvm.py
+@@ -201,12 +201,11 @@ class NewVM(lib.testcase.UITestCase):
+         self.forward(newvm)
+         self.forward(newvm)
+ 
+-        # Trigger size validation failure
++        # qcow2 default shouldn't trigger size error
+         sizetext = newvm.find(None, "spin button", "GiB")
+         sizetext.set_text("10000000")
+-        self.forward(newvm, check=False)
+-        self.app.click_alert_button("Storage parameter error", "OK")
+-        sizetext.set_text("1")
++        _forward(newvm)
++        _back(newvm)
+ 
+         # Use the storage browser to select a local file
+         storagetext = newvm.find("storage-entry")
+Index: virt-manager-3.0.0/virtManager/device/addstorage.py
+===================================================================
+--- virt-manager-3.0.0.orig/virtManager/device/addstorage.py
++++ virt-manager-3.0.0/virtManager/device/addstorage.py
+@@ -251,14 +251,18 @@ class vmmAddStorage(vmmGObjectUI):
+         if disk.wants_storage_creation():
+             pool = disk.get_parent_pool()
+             size = uiutil.spin_get_helper(self.widget("storage-size"))
+-            sparse = False
++            fmt = self.conn.get_default_storage_format()
++
++            # If the user changed the default disk format to raw, assume
++            # they want to maximize performance, so fully allocate the
++            # disk image. Otherwise use sparse
++            sparse = fmt != 'raw'
+ 
+             vol_install = virtinst.DeviceDisk.build_vol_install(
+                 disk.conn, os.path.basename(disk.path), pool,
+                 size, sparse)
+             disk.set_vol_install(vol_install)
+ 
+-            fmt = self.conn.get_default_storage_format()
+             if disk.get_vol_install().supports_format():
+                 log.debug("Using default prefs format=%s for path=%s",
+                     fmt, disk.path)

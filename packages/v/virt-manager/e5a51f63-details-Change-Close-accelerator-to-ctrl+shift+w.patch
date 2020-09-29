@@ -1,0 +1,104 @@
+Subject: details: Change Close accelerator to ctrl+shift+w
+From: Cole Robinson crobinso@redhat.com Mon Sep 21 14:33:25 2020 -0400
+Date: Mon Sep 21 14:33:25 2020 -0400:
+Git: e5a51f637411b4b2efc789fdef99eb4860ac3b9f
+
+Close accelerator changes ctrl+w -> ctrl+shift+w
+Quit accelerator changes ctrl+q -> ctrl+shift+q
+
+After aafb874c8, if the mouse pointer isn't inside the console
+window, it has keyboard focus but ctrl+w will be sent to the vmwindow
+and not the VM. ctrl+w is a common shortcut for deleting a word so
+this is pretty disruptive if you are typing inside the VM
+
+Use gnome-terminal-esque accelerators starting with ctrl+shift to
+reduce the chance of collision.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1880295
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+Index: virt-manager-3.0.0/tests/uitests/test_livetests.py
+===================================================================
+--- virt-manager-3.0.0.orig/tests/uitests/test_livetests.py
++++ virt-manager-3.0.0/tests/uitests/test_livetests.py
+@@ -146,7 +146,7 @@ class Console(lib.testcase.UITestCase):
+         # Check that modifiers don't work
+         win.click()
+         self.app.sleep(1)
+-        win.keyCombo("<ctrl>w")
++        win.keyCombo("<ctrl><shift>w")
+         lib.utils.check(lambda: win.showing)
+         dom.destroy()
+         win.find("Guest is not running.")
+@@ -315,13 +315,13 @@ class Console(lib.testcase.UITestCase):
+ 
+         # Ensure ctrl+w doesn't close the window, modifiers are disabled
+         term.click()
+-        win.keyCombo("<ctrl>w")
++        win.keyCombo("<ctrl><shift>w")
+         lib.utils.check(lambda: win.showing)
+-        # Shut it down, ensure <ctrl>w works again
++        # Shut it down, ensure accelerator works again
+         self._destroy(win)
+         win.click_title()
+         self.app.sleep(1)
+-        win.keyCombo("<ctrl>w")
++        win.keyCombo("<ctrl><shift>w")
+         lib.utils.check(lambda: not win.showing)
+ 
+ 
+Index: virt-manager-3.0.0/ui/vmwindow.ui
+===================================================================
+--- virt-manager-3.0.0.orig/ui/vmwindow.ui
++++ virt-manager-3.0.0/ui/vmwindow.ui
+@@ -3,6 +3,16 @@
+ <interface>
+   <requires lib="gtk+" version="3.22"/>
+   <object class="GtkAccelGroup" id="accelgroup1"/>
++  <object class="GtkImage" id="image1">
++    <property name="visible">True</property>
++    <property name="can_focus">False</property>
++    <property name="stock">gtk-close</property>
++  </object>
++  <object class="GtkImage" id="image2">
++    <property name="visible">True</property>
++    <property name="can_focus">False</property>
++    <property name="stock">gtk-quit</property>
++  </object>
+   <object class="GtkWindow" id="vmm-vmwindow">
+     <property name="can_focus">False</property>
+     <property name="title" translatable="yes">Virtual Machine</property>
+@@ -48,24 +58,28 @@
+                     </child>
+                     <child>
+                       <object class="GtkImageMenuItem" id="close4">
+-                        <property name="label">gtk-close</property>
++                        <property name="label">_Close</property>
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="use_underline">True</property>
+-                        <property name="use_stock">True</property>
++                        <property name="image">image1</property>
++                        <property name="use_stock">False</property>
+                         <property name="accel_group">accelgroup1</property>
+                         <signal name="activate" handler="on_details_menu_close_activate" swapped="no"/>
++                        <accelerator key="w" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                       </object>
+                     </child>
+                     <child>
+                       <object class="GtkImageMenuItem" id="quit3">
+-                        <property name="label">gtk-quit</property>
++                        <property name="label">_Quit</property>
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="use_underline">True</property>
+-                        <property name="use_stock">True</property>
++                        <property name="image">image2</property>
++                        <property name="use_stock">False</property>
+                         <property name="accel_group">accelgroup1</property>
+                         <signal name="activate" handler="on_details_menu_quit_activate" swapped="no"/>
++                        <accelerator key="q" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                       </object>
+                     </child>
+                   </object>

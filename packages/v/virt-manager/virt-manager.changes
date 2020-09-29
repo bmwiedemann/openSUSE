@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 08:17:59 MDT 2020 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942)
+  ba08f84b-addstorage-Return-to-using-qcow2-sparse-by-default.patch
+  a010c49b-cli-Fix-os-variant-help-introspection.patch
+  79ebcbcb-viewers-Fix-spice-audio.patch
+  e5a51f63-details-Change-Close-accelerator-to-ctrl+shift+w.patch
+  9c13d2f8-Remove-use-of-problematic-terminology.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 05:24:21 MDT 2020 - carnold@suse.com
 
-- Update to virt-manager 3.0.0 (fate#326786)
+- jsc#SLE-16582, Upgrade virt-manager >= 3.x
   virt-manager-3.0.0.tar.bz2
   * virt-install –cloud-init support (Athina Plaskasoviti, Cole
     Robinson)
