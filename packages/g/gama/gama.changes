@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 27 04:43:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.10:
+  * Adjustment results output in Octave format (.m file) with
+    independent test of adjustment results (regularization of
+    singular systems by the set of constraints)
+  * update-constrained-coordinates parameter removed from the input
+    XML data format
+- fix incorrect dependency warning via gama-rpmlintrc:
+  libxml2-tools is a tools package, not a library
+
+-------------------------------------------------------------------
 Sat Aug  1 14:34:08 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.09:

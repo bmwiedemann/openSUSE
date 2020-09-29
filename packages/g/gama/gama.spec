@@ -17,7 +17,7 @@
 
 
 Name:           gama
-Version:        2.09
+Version:        2.10
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ URL:            https://www.gnu.org/software/gama/
 Source:         http://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
 Source2:        http://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 Source3:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+Source4:        %{name}-rpmlintrc
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
@@ -44,6 +45,8 @@ Adjustment in local Cartesian coordinate systems is fully supported by a command
 
 %prep
 %setup -q
+# spurious-executable-perm
+chmod -v a-x COPYING ChangeLog* README NEWS TODO AUTHORS
 
 %build
 %configure
