@@ -618,4 +618,14 @@
     <comment></comment>
     <requestid>831923</requestid>
   </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>da6b92e0a0f797865aaefdaa9d511bbc</srcmd5>
+    <version>unknown</version>
+    <time>1601399138</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix wrong default directories for OVS python utilities (bsc#1176273). 
+- Add upstream patches to fix openvswitch-ipsec service (bsc#1176273).
+  * 0001-ipsec-Fix-Strongswan-configuration-syntax.patch</comment>
+    <requestid>838587</requestid>
+  </revision>
 </revisionlist>

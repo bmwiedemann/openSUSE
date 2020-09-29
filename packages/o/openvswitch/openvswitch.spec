@@ -70,6 +70,8 @@ Patch2:         0001-Don-t-change-permissions-of-dev-hugepages.patch
 Patch3:         0001-rhel-Fix-reload-of-OVS_USER_ID-on-startup.patch
 # PATCH-FIX-OPENSUSE: 0001-Use-double-hash-for-OVS_USER_ID-comment.patch
 Patch4:         0001-Use-double-hash-for-OVS_USER_ID-comment.patch
+# PATCH-FIX-UPSTREAM: 0001-ipsec-Fix-Strongswan-configuration-syntax.patch
+Patch5:         0001-ipsec-Fix-Strongswan-configuration-syntax.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
@@ -261,6 +263,7 @@ performance and connectivity issues in Open vSwitch setup.
 # OVN preambles from now on, overwrites Version and URL
 %package -n ovn
 Version:        %{ovn_version}
+Release:        0
 Summary:        Open Virtual Network diagnostic utilities
 License:        Apache-2.0
 Group:          Productivity/Networking/System
@@ -285,6 +288,7 @@ overlays and security groups.
 
 %package -n ovn-central
 Version:        %{ovn_version}
+Release:        0
 Summary:        Open Virtual Network support for Open vSwitch
 License:        Apache-2.0
 Group:          Productivity/Networking/System
@@ -293,8 +297,8 @@ Requires:       %{name} = %{ovs_version}
 Requires:       ovn = %{ovn_version}
 # openvswitch-ovn has been split into openvswitch-ovn-{central,common,docker,host,vtep}
 Provides:       %{name}-dpdk-ovn:%{_bindir}/ovn-northd
-Provides:       %{name}-ovn:%{_bindir}/ovn-northd
 Provides:       %{name}-ovn-central = %{ovn_version}
+Provides:       %{name}-ovn:%{_bindir}/ovn-northd
 Obsoletes:      %{name}-ovn-central < 2.13.0
 
 %description -n ovn-central
@@ -302,6 +306,7 @@ This subpackage contains the OVN database and northbound daemon.
 
 %package -n ovn-host
 Version:        %{ovn_version}
+Release:        0
 Summary:        Open Virtual Network support for Open vSwitch
 License:        Apache-2.0
 Group:          Productivity/Networking/System
@@ -310,8 +315,8 @@ Requires:       %{name} = %{ovs_version}
 Requires:       ovn = %{ovn_version}
 # openvswitch-ovn has been split into openvswitch-ovn-{central,common,docker,host,vtep}
 Provides:       %{name}-dpdk-ovn:%{_bindir}/ovn-controller
-Provides:       %{name}-ovn:%{_bindir}/ovn-controller
 Provides:       %{name}-ovn-host = %{ovn_version}
+Provides:       %{name}-ovn:%{_bindir}/ovn-controller
 Obsoletes:      %{name}-ovn-host < 2.13.0
 
 %description -n ovn-host
@@ -319,6 +324,7 @@ This subpackage contains the OVN host controller.
 
 %package -n ovn-vtep
 Version:        %{ovn_version}
+Release:        0
 Summary:        Open Virtual Network VTEP controller for Open vSwitch
 License:        Apache-2.0
 Group:          Productivity/Networking/System
@@ -327,8 +333,8 @@ Requires:       %{name} = %{ovs_version}
 Requires:       ovn = %{ovn_version}
 # openvswitch-ovn has been split into openvswitch-ovn-{central,common,docker,host,vtep}
 Provides:       %{name}-dpdk-ovn:%{_bindir}/ovn-controller-vtep
-Provides:       %{name}-ovn:%{_bindir}/ovn-controller-vtep
 Provides:       %{name}-ovn-vtep = %{ovn_version}
+Provides:       %{name}-ovn:%{_bindir}/ovn-controller-vtep
 Obsoletes:      %{name}-ovn-vtep < 2.13.0
 
 %description -n ovn-vtep
@@ -336,6 +342,7 @@ This subpackage contains the OVN VTEP (VXLAN Tunnel Endpoint) controller.
 
 %package -n ovn-docker
 Version:        %{ovn_version}
+Release:        0
 Summary:        Docker network plugins for OVN
 License:        Apache-2.0
 Group:          Productivity/Networking/System
@@ -345,8 +352,8 @@ Requires:       ovn = %{ovn_version}
 Requires:       python3-openvswitch = %{ovs_version}
 # openvswitch-ovn has been split into openvswitch-ovn-{central,common,docker,host,vtep}
 Provides:       %{name}-dpdk-ovn:%{_bindir}/ovn-docker-overlay-driver
-Provides:       %{name}-ovn:%{_bindir}/ovn-docker-overlay-driver
 Provides:       %{name}-ovn-docker = %{ovn_version}
+Provides:       %{name}-ovn:%{_bindir}/ovn-docker-overlay-driver
 Obsoletes:      %{name}-ovn-docker < 2.13.0
 
 %description -n ovn-docker
@@ -354,6 +361,7 @@ This subpackage contains the OVN Docker network plugins.
 
 %package -n ovn-doc
 Version:        %{ovn_version}
+Release:        0
 Summary:        Open Virtual Network Documentation
 License:        Apache-2.0
 Group:          System/Libraries
@@ -364,6 +372,7 @@ Contains additional documentation for OVN.
 
 %package -n %{ovn_lname}
 Version:        %{ovn_version}
+Release:        0
 Summary:        Open Virtual Network core libraries
 License:        Apache-2.0
 Group:          System/Libraries
@@ -373,6 +382,7 @@ iThis subpackage contains the OVN shared libraries.
 
 %package -n ovn-devel
 Version:        %{ovn_version}
+Release:        0
 Summary:        Development files for Open Virtual Network
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
@@ -390,6 +400,7 @@ Devel libraries and headers for Open Virtual Network.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 cd %{ovn_dir}
 %patch20 -p1
 
@@ -514,7 +525,6 @@ for flavor in %{flavors_to_build}; do
 done
 %endif
 
-
 # Install OVS dist files on temp buildroot.
 mkdir -p buildroot/ovs
 pushd %ovs_dir
@@ -524,7 +534,6 @@ popd
 # Clean up OVS files
 rm -f buildroot/ovs%{_libdir}/*.a
 rm -f buildroot/ovs%{_libdir}/*.la
-
 
 # Install OVN dist files on temp build root.
 mkdir -p buildroot/ovn
@@ -547,7 +556,6 @@ dupes=$(find buildroot -mindepth 2 -type f -printf '%p\n' | cut -d'/' -f3- | sor
 [ -n "$dupes" ] && exit 1
 cp -an buildroot/ovn/* %{buildroot}/
 cp -an buildroot/ovs/* %{buildroot}/
-
 
 # Install OVS additional files
 pushd %ovs_dir
@@ -630,12 +638,10 @@ cp -a %{buildroot}%{_datadir}/openvswitch/python/ovstest \
 # Python subpackage
 # Build on a temporary directory.
 mkdir python3-ovs && pushd $_
-cp -a ../%{ovs_dir}/python/* $(pwd)/
-
 # Some build files are in sources while others are generated directly on
-# buildroot as part of make_install (dirs.py), so update the former with the
-# latter.
-cp -an %{buildroot}%{_datadir}/openvswitch/python/* $(pwd)/
+# buildroot as part of make_install (dirs.py). Copy them first. 
+cp -an ../buildroot/ovs%{_datadir}/openvswitch/python/* $(pwd)/
+cp -an ../%{ovs_dir}/python/* $(pwd)/
 rm -rf %{buildroot}%{_datadir}/openvswitch/python
 
 export LDFLAGS="${LDFLAGS} -L %{buildroot}%{_libdir}"
@@ -654,7 +660,6 @@ export CPPFLAGS="-I ../../include"
 
 # Done with OVS additional files.
 popd
-
 
 # Install OVN aditional files.
 pushd %ovn_dir

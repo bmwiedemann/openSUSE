@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:41:30 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Fix wrong default directories for OVS python utilities (bsc#1176273). 
+- Add upstream patches to fix openvswitch-ipsec service (bsc#1176273).
+  * 0001-ipsec-Fix-Strongswan-configuration-syntax.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 13:50:47 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
-- Update openvswitch to 2.13.0. For a list of changes, check
+- Update openvswitch to 2.14.0. For a list of changes, check
   https://github.com/openvswitch/ovs/blob/v2.14.0/NEWS 
 - Update OVN to 20.06.2. For a list of changes, check
   https://github.com/ovn-org/ovn/blob/v20.06.2/NEWS 

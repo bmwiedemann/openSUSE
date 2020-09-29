@@ -1,0 +1,56 @@
+From 0723a7b85fa446bbe372567f9e06869041982e9b Mon Sep 17 00:00:00 2001
+From: Boleslaw Tokarski <boleslaw.tokarski@jollamobile.com>
+Date: Wed, 8 Apr 2020 11:47:20 +0100
+Subject: [PATCH 1/2] ipsec: Fix Strongswan configuration syntax.
+
+Strongswan seems to have .opt files in the source tree with the dotted
+option syntax. It seems that up until version 5.6, the syntax was also
+accepted by Strongswan.
+
+However, the .opt files are converted to .conf files during Strongswan
+build, and the dotted syntax is no longer accepted by Strongswan (tested
+on 5.8.2).
+
+The effect was that the ovs ipsec monitor fails to start Strongswan,
+since that complains with:
+/etc/strongswan.d/ovs.conf:4: syntax error, unexpected ., expecting : or '{' or '=' [.]
+
+This commit fixes the configuration file provided to Strongswan to .conf
+syntax.
+
+Signed-off-by: Boleslaw Tokarski <boleslaw.tokarski@jollamobile.com>
+Signed-off-by: Ilya Maximets <i.maximets@ovn.org>
+---
+ ipsec/ovs-monitor-ipsec.in | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/ipsec/ovs-monitor-ipsec.in b/ipsec/ovs-monitor-ipsec.in
+index 37e370324..da8b92b6c 100755
+--- a/ipsec/ovs-monitor-ipsec.in
++++ b/ipsec/ovs-monitor-ipsec.in
+@@ -145,10 +145,18 @@ class StrongSwanHelper(object):
+     """This class does StrongSwan specific configurations."""
+ 
+     STRONGSWAN_CONF = """%s
+-charon.plugins.kernel-netlink.set_proto_port_transport_sa = yes
+-charon.plugins.kernel-netlink.xfrm_ack_expires = 10
+-charon.load_modular = yes
+-charon.plugins.gcm.load = yes
++charon {
++  plugins {
++    kernel-netlink {
++      set_proto_port_transport_sa = yes
++      xfrm_ack_expires = 10
++    }
++    gcm {
++      load = yes
++    }
++  }
++  load_modular = yes
++}
+ """ % (FILE_HEADER)
+ 
+     CONF_HEADER = """%s
+-- 
+2.26.2
+
