@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:10:58 UTC 2020 - dmulder@suse.com
+
+- Rev version for SLE update; (jsc#ECO-2527);
+- 1.5
+
+-------------------------------------------------------------------
 Tue May 12 15:27:03 UTC 2020 - dmulder@suse.com
 
 - Fix slow load of ADUC caused by chatty ldap traffic;
