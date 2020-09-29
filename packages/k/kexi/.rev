@@ -145,4 +145,14 @@
     <comment>Fix build with Qt5.13</comment>
     <requestid>722601</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>bcbbe6eb6b9a825f73473b88b8866ad6</srcmd5>
+    <version>3.2.0</version>
+    <time>1601398985</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in hicolor-icon-theme for dir ownership
+
+- Spec cleanup</comment>
+    <requestid>838447</requestid>
+  </revision>
 </revisionlist>
