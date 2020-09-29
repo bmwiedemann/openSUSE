@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Temp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-File-Temp
-Version:        0.2309
+Version:        0.2310
 Release:        0
 %define cpan_name File-Temp
-Summary:        Return Name and Handle of a Temporary File Safely
+Summary:        Return name and handle of a temporary file safely
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
