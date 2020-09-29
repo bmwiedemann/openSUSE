@@ -71,4 +71,12 @@
     <user>dimstar_suse</user>
     <comment>Revert to r8</comment>
   </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>6ab4962d11d574977b655d02ecfd06fb</srcmd5>
+    <version>0.5.0</version>
+    <time>1601398992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838388</requestid>
+  </revision>
 </revisionlist>

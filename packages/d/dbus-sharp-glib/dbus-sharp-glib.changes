@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 14:01:22 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- fix libexecdir. mono can't use libexecdir because /usr/lib
+  is fixed in pkgconfig
+
+-------------------------------------------------------------------
 Mon Jul 11 07:50:03 UTC 2011 - nmarques@opensuse.org
 
 - Removed %clean section.
