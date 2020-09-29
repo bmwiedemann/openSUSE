@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 17:08:47 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 2.9.8
+  * Fixed issue #1851: Paths are not counted as coveraged with loops calling function
+  * Fixed issue #1855: Build issues on FreeBSD
+
+-------------------------------------------------------------------
 Wed Sep 16 21:09:11 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 2.9.7

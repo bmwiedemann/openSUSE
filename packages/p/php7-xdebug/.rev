@@ -125,4 +125,14 @@
     <comment></comment>
     <requestid>835092</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>46a993b5a74bb4af7e8f515283a36af6</srcmd5>
+    <version>2.9.8</version>
+    <time>1601399075</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Xdebug 2.9.8
+  * Fixed issue #1851: Paths are not counted as coveraged with loops calling function
+  * Fixed issue #1855: Build issues on FreeBSD</comment>
+    <requestid>838350</requestid>
+  </revision>
 </revisionlist>

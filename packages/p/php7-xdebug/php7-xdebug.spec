@@ -19,7 +19,7 @@
 %define pkg_name    xdebug
 %define pkg_version %{version}
 Name:           php7-%{pkg_name}
-Version:        2.9.7
+Version:        2.9.8
 Release:        0
 Summary:        Extended PHP debugger
 License:        PHP-3.0
