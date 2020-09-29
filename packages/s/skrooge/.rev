@@ -41,4 +41,14 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment></comment>
     <requestid>821756</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b10a7bfa39d3db8c2c73b8e388ffd757</srcmd5>
+    <version>2.23.0</version>
+    <time>1601399091</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in hicolor-icon-theme for dir ownership
+
+- Use %cmake_build instead of %make_jobs</comment>
+    <requestid>838477</requestid>
+  </revision>
 </revisionlist>

@@ -35,6 +35,7 @@ BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  grantlee5-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libofx-devel
 BuildRequires:  libqca-qt5-devel
@@ -84,6 +85,7 @@ BuildRequires:  cmake(Qt5WebEngineWidgets)
 %else
 BuildRequires:  cmake(Qt5WebKitWidgets)
 %endif
+Requires:       hicolor-icon-theme
 
 %description
 Skrooge allows managing personal finances, powered by KDE.
@@ -102,7 +104,7 @@ analyze expenses.
 %cmake_kf5
 %endif
 
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall
