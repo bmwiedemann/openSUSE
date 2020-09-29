@@ -1,0 +1,22 @@
+From c351a9d86f705ce14e5b5e1393a3c46331f3920d Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <mrostecki@opensuse.org>
+Date: Mon, 20 Apr 2020 11:15:39 +0200
+Subject: [PATCH] python: Always use python3
+
+---
+ .../build/lib/bazel/rules/python/BazelPythonSemantics.java      | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: bazel3.4-3.4.1/src/main/java/com/google/devtools/build/lib/bazel/rules/python/BazelPythonSemantics.java
+===================================================================
+--- bazel3.4-3.4.1.orig/src/main/java/com/google/devtools/build/lib/bazel/rules/python/BazelPythonSemantics.java
++++ bazel3.4-3.4.1/src/main/java/com/google/devtools/build/lib/bazel/rules/python/BazelPythonSemantics.java
+@@ -247,7 +247,7 @@ public class BazelPythonSemantics implem
+         PathFragment shExecutable = ShToolchain.getPathOrError(ruleContext);
+         // TODO(#8685): Remove this special-case handling as part of making the proper shebang a
+         // property of the Python toolchain configuration.
+-        String pythonExecutableName = OS.getCurrent() == OS.OPENBSD ? "python3" : "python";
++        String pythonExecutableName = "python3";
+         // NOTE: keep the following line intact to support nix builds
+         String pythonShebang = "#!/usr/bin/env " + pythonExecutableName;
+         ruleContext.registerAction(
