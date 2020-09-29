@@ -3189,4 +3189,12 @@
     <comment>Softwarestack update</comment>
     <requestid>835695</requestid>
   </revision>
+  <revision rev="435" vrev="1">
+    <srcmd5>13ae24b2a18a361665b8adec69cb576e</srcmd5>
+    <version>17.25.1</version>
+    <time>1601398762</time>
+    <user>dimstar_suse</user>
+    <comment>Softwarestack update</comment>
+    <requestid>837395</requestid>
+  </revision>
 </revisionlist>
