@@ -17,7 +17,7 @@
 
 
 Name:           perl-Lingua-Stem
-Version:        2.30
+Version:        2.31
 Release:        0
 %define cpan_name Lingua-Stem
 Summary:        Stemming of words
@@ -38,7 +38,7 @@ BuildRequires:  perl(Lingua::Stem::Ru)
 BuildRequires:  perl(Lingua::Stem::Snowball::Da) >= 1.01
 BuildRequires:  perl(Lingua::Stem::Snowball::No) >= 1.00
 BuildRequires:  perl(Lingua::Stem::Snowball::Se) >= 1.01
-BuildRequires:  perl(Module::Build) >= 0.420000
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Text::German)
 Requires:       perl(Lingua::GL::Stemmer)
 Requires:       perl(Lingua::PT::Stemmer)
