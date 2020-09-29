@@ -73,4 +73,37 @@ icewm-theme-branding icewm-config-upstream</comment>
     <comment></comment>
     <requestid>785467</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8f1c944eb5354d4c796a36ea39e48215</srcmd5>
+    <version>1.2.5</version>
+    <time>1601398747</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve spec:
+  * Conditionally define icewm_version to the version number used
+    in Leap/SLE 15 code stream and Tumbleweed.
+
+- Version update to 1.2.5
+  * Update the format of SLE backgound image to png (bsc#1176835).
+  * Drop upstreamed add-adwaita-legacy-iconpath-to-preference.patch.
+- Update spec
+  * Keep the format of Leap background image to jpg.
+
+- fixed obsoletion of icemwm-upstream-config (bsc#1173441 bsc#1170420)
+
+- Improve spec:
+  * Make a more explict summary since this package is not used by
+    openSUSE Tumbleweed.
+  * Introduce %{icewm_version} to make the provided capability had a
+    consistent version number with icewm-config-upstream.
+  * Explicitly obsoletes icewm-config-upstream to fix the &quot;zypper
+    dup&quot; issue on Leap (bsc#1170420).
+
+- Improve build tag consistency between SLE and Leap
+  (jsc#SLE-11888, bsc#1170420).
+- Add add-adwaita-legacy-iconpath-to-preference.patch:
+  Add the adwaita legacy path to the IconPath in
+- Copy package from openSUSE to SLE;
+  Allow icewm to have several brandings.(fate#319667)</comment>
+    <requestid>837284</requestid>
+  </revision>
 </revisionlist>

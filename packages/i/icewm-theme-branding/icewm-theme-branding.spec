@@ -17,6 +17,11 @@
 
 
 %define _name   icewm-config-openSUSE
+%if 0%{?suse_version} == 1500
+%define icewm_version 1.4.2
+%else
+%define icewm_version 1.6.5
+%endif
 
 %define flavor @BUILD_FLAVOR@
 %if "%{flavor}" == ""
@@ -36,18 +41,17 @@ ExclusiveArch:  %{nil}
 %endif
 
 Name:           icewm-theme-branding
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
-Summary:        Icewm theme branding for SLES or openSUSE
+Summary:        Icewm theme branding
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
 URL:            https://github.com/openSUSE/icewm-config-openSUSE
 Source:         https://github.com/openSUSE/%{_name}/archive/%{_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM add-adwaita-legacy-iconpath-to-preference.patch bsc#1157930 gh#openSUSE/icewm-config-openSUSE!8 yfjiang@suse.com -- Add the adwaita legacy path to the IconPath
-Patch0:         add-adwaita-legacy-iconpath-to-preference.patch
 Requires:       icewm
 Conflicts:      icewm < 1.3.11
-Conflicts:      icewm-configuration-files
-Provides:       icewm-configuration-files = %{version}
+Conflicts:      otherproviders(icewm-configuration-files)
+Provides:       icewm-configuration-files = %{icewm_version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -56,11 +60,11 @@ the system default theme,background etc.
 
 %prep
 %setup -q -n %{_name}-%{_name}-%{version}
-%patch0 -p1
 
 %build
 %if 0%{?build_openSUSE}
 sed -i -e 's:SLEdefault:openSUSEdefault:g' preferences
+sed -i -e 's:1920x1080.png:1920x1080.jpg:g' preferences
 %endif
 
 %install

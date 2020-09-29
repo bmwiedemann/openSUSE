@@ -1,20 +1,54 @@
 -------------------------------------------------------------------
+Thu Sep 24 02:29:01 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Improve spec:
+  * Conditionally define icewm_version to the version number used
+    in Leap/SLE 15 code stream and Tumbleweed.
+
+-------------------------------------------------------------------
+Wed Sep 23 07:35:16 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Version update to 1.2.5
+  * Update the format of SLE backgound image to png (bsc#1176835).
+  * Drop upstreamed add-adwaita-legacy-iconpath-to-preference.patch.
+- Update spec
+  * Keep the format of Leap background image to jpg.
+
+-------------------------------------------------------------------
+Tue Aug  4 12:29:27 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- fixed obsoletion of icemwm-upstream-config (bsc#1173441 bsc#1170420)
+
+-------------------------------------------------------------------
+Thu Jun 11 09:42:26 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Improve spec:
+  * Make a more explict summary since this package is not used by
+    openSUSE Tumbleweed.
+  * Introduce %{icewm_version} to make the provided capability had a
+    consistent version number with icewm-config-upstream.
+  * Explicitly obsoletes icewm-config-upstream to fix the "zypper
+    dup" issue on Leap (bsc#1170420).
+
+-------------------------------------------------------------------
 Mon Mar 16 06:46:30 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
-- Improve build tag consistency between SLE and Leap.
+- Improve build tag consistency between SLE and Leap
+  (jsc#SLE-11888, bsc#1170420).
   * Build the branding package separately for openSUSE and SLE,
     like most of other branding packages did.
 
 -------------------------------------------------------------------
 Thu Mar  5 02:46:24 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
-- Add the adwaita legacy path to the IconPath in
+- Add add-adwaita-legacy-iconpath-to-preference.patch:
+
+  Add the adwaita legacy path to the IconPath in
   preferences. adwaita-icon-theme has its main icon updated to
   symbolic style, while icewm's style is more suitable for
   legacy-style icons (eg. web-browser).  Without the update,
   current icewm can not find default web-browser toolbar icon
   (bsc#1157930).
-  * add-adwaita-legacy-iconpath-to-preference.patch
 
 -------------------------------------------------------------------
 Mon Mar 19 01:41:59 UTC 2018 - qzheng@suse.com
@@ -48,6 +82,12 @@ Fri Jun  3 03:19:34 UTC 2016 - yfjiang@suse.com
 
 - Version update to 1.2.1
   drop xscreensaver, use only xlockmore (fate#320737)
+
+-------------------------------------------------------------------
+Mon Apr 11 06:47:11 UTC 2016 - tyang@suse.com
+
+- Copy package from openSUSE to SLE;
+  Allow icewm to have several brandings.(fate#319667)
 
 -------------------------------------------------------------------
 Wed Mar 30 10:50:02 UTC 2016 - tchvatal@suse.com
