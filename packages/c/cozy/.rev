@@ -139,4 +139,15 @@
 </comment>
     <requestid>837231</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>141faf389e88533d7560264cfd357c04</srcmd5>
+    <version>0.7.2</version>
+    <time>1601399020</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.7.2
+  * Basic support for m4b audio books (chapters are not supported yet)
+  * Fixed multiple bugs when using drag and drop to import files
+</comment>
+    <requestid>838344</requestid>
+  </revision>
 </revisionlist>

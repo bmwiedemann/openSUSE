@@ -17,7 +17,7 @@
 
 
 Name:           cozy
-Version:        0.7
+Version:        0.7.2
 Release:        0
 Summary:        Audio Book Player
 License:        GPL-3.0-only
@@ -44,6 +44,7 @@ Requires:       python3-apsw
 Requires:       python3-pytaglib
 Requires:	python3-pytz
 Requires:	python3-requests
+Requires:	python3-packaging
 Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-base
 Recommends:     gstreamer-plugins-good
@@ -60,6 +61,7 @@ BuildRequires:  python3-peewee >= 3.9.6
 BuildRequires:  python3-pytaglib
 BuildRequires:  python3-distro
 BuildRequires:  python3-apsw
+BuildRequires:  python3-packaging
 # /SECTION
 
 %description

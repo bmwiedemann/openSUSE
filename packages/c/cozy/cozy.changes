@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 16:37:25 UTC 2020 - Julian Geywitz <suse@geigi.de>
+
+Update to 0.7.2
+  * Basic support for m4b audio books (chapters are not supported yet)
+  * Fixed multiple bugs when using drag and drop to import files
+
+-------------------------------------------------------------------
 Thu Sep 24 19:00:55 UTC 2020 - Julian Geywitz <suse@geigi.de>
 
 Update to 0.7
