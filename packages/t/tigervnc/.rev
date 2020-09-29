@@ -663,4 +663,15 @@
     <comment>- vnserver: fix startup of Plasma desktop (boo#1176571)</comment>
     <requestid>835044</requestid>
   </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>37f6e26a18447b562a2d9b008698bb76</srcmd5>
+    <version>1.10.1</version>
+    <time>1601398758</time>
+    <user>dimstar_suse</user>
+    <comment>- U_0001-Properly-store-certificate-exceptions.patch,
+  U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
+  * Properly store certificate exceptions (boo#1176733)
+- adjusted u_tigervnc-add-autoaccept-parameter.patch</comment>
+    <requestid>837392</requestid>
+  </revision>
 </revisionlist>
