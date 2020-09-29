@@ -1,7 +1,7 @@
 #
 # spec file for package cgdb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cgdb
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Curses debugger
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
-Url:            https://cgdb.github.io/
+URL:            https://cgdb.github.io/
 Source0:        https://cgdb.me/files/%{name}-%{version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  flex
@@ -60,7 +60,8 @@ make %{?_smp_mflags}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files
-%doc AUTHORS COPYING NEWS README
+%license COPYING
+%doc NEWS
 %{_bindir}/%{name}
 %{_datadir}/%{name}/%{name}.txt
 %{_infodir}/%{name}.info%{ext_info}

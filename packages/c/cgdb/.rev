@@ -122,4 +122,41 @@
     <comment></comment>
     <requestid>563545</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>07672e15e1773f92ad3afdfd11a13917</srcmd5>
+    <version>0.7.1</version>
+    <time>1601398829</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.1:
+  * Status bar messages are now displayed properly in veritical mode.
+    The message is now truncated according to the status bar width instead
+    of the width of the terminal.
+  * Fix spurious error from CGDB on shutdown. You may have seen,
+       CGDB had unexpected results. Search the logs for more details.
+    In the log there was a waitpid error. CGDB was using the API wrong.
+  * Fix issue #161 - CGDB would lock up when doing a regex search from
+    the status bar if the file was just opened from the file dialog and
+    the search did not match any text in the file. Now the search fails
+    to match text as expected.
+  * Status bar commands and gdb console commands now both show gdb
+    output in the gdb window (instead of only the gdb console commands).
+    This fixed issue #154 on github.
+  * Fixed issue where typing F8 would do a 'next', 'step' and
+    screen refresh instead of just doing a 'next' command.
+  * Fix issue #139 - Show appropriate logos when color disabled
+    Previously, if the user had colors disabled, CGDB would still show
+    logos that had ansi escape color sequences in them.
+  * Fixed :highlight regression introduced in 0.7.0.
+    In 0.6.8, if the user entered a :highlight command from the CGDB
+    status bar, for instance:
+        :highlight Comment ctermfg=Blue
+    CGDB would updated the currently displayed source file
+    with the requested highlighting changes. In 0.7.0 this would not occur.
+    Both versions honored :highlight in the .cgdbrc file.
+  * Fix issue #125 - CGDB can cross compile again.
+  * The rust syntax highlighter is now case sensitive instead of case
+    insensitive.
+  * Fix issue #129. CGDB with old versions of ncurses (5.6 or before)</comment>
+    <requestid>827862</requestid>
+  </revision>
 </revisionlist>
