@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 28 03:14:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.60
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.60  2020-09-27
+    - Improved reset method in Mojo::IOLoop to prevent close event to be emitted in affected streams. (kiwiroy)
+    - Improved cookbook with Envoy deployment recipe. (zakame)
+
+-------------------------------------------------------------------
 Mon Sep 14 03:10:06 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.59
