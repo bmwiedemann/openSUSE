@@ -113,4 +113,12 @@
   * bug fix for absl::Status::ErasePayload</comment>
     <requestid>823021</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>13d0b109c55b810f371c848572232393</srcmd5>
+    <version>20200225.2</version>
+    <time>1601398789</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>834036</requestid>
+  </revision>
 </revisionlist>

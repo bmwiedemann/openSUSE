@@ -26,7 +26,7 @@ URL:            https://abseil.io/
 Source0:        https://github.com/abseil/abseil-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
-ExcludeArch:    %{ix86}
+BuildArch:      noarch
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++
