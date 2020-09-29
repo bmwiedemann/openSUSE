@@ -1,5 +1,6 @@
---- a/nemo-seahorse/Makefile.am	2019-02-08 16:11:14.000000000 +0600
-+++ b/nemo-seahorse/Makefile.am	2019-04-26 16:01:50.487857001 +0600
+diff -ruN a/nemo-seahorse/Makefile.am b/nemo-seahorse/Makefile.am
+--- a/nemo-seahorse/Makefile.am	2020-05-13 20:20:10.000000000 +0700
++++ b/nemo-seahorse/Makefile.am	2020-09-26 23:11:34.044931301 +0700
 @@ -1,8 +1,6 @@
  ACLOCAL_AMFLAGS = -I m4
  

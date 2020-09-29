@@ -16,12 +16,13 @@
 #
 
 
+# Disable build for nemo-extension-gtkhash for now, no clue why it cause nemo to segfault.
 # Do not package nemo-extension-media-columns for now: slows Nemo down.
 # nemo-extension-terminal 'requires' two versions, confusing typelib finder.
 %define __requires_exclude typelib\\((Vte))\ =
 %define _version 4.0.0
 Name:           nemo-extensions
-Version:        4.4.0
+Version:        4.6.0
 Release:        0
 Summary:        Set of extensions for Nemo, the Cinnamon file manager
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
@@ -61,7 +62,6 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(evince-view-3.0)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gnome-keyring-1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
@@ -371,6 +371,7 @@ directory in Nemo.
 
 %prep
 %autosetup -p1
+
 find -name COPYING.GPL3 -exec chmod -x '{}' \;
 
 %build
@@ -416,6 +417,50 @@ pushd nemo-compare
 %py3_build
 popd
 
+pushd nemo-dropbox
+NOCONFIGURE=1 ./autogen.sh
+%configure
+%make_build
+popd
+
+pushd nemo-repairer
+NOCONFIGURE=1 ./autogen.sh
+%configure
+%make_build
+popd
+
+pushd nemo-seahorse
+NOCONFIGURE=1 ./autogen.sh
+%configure
+%make_build
+popd
+
+pushd nemo-share
+NOCONFIGURE=1 ./autogen.sh
+%configure
+%make_build
+popd
+
+# pushd nemo-gtkhash
+# NOCONFIGURE=1 ./autogen.sh
+# %%configure \
+#             --with-gtk=3.0 \
+#             --enable-linux-crypto \
+#             --enable-gcrypt \
+#             --enable-libcrypto \
+#             --enable-mbedtls \
+#             --enable-nettle \
+#             --enable-nss \
+#             --enable-mhash \
+#             --enable-nemo
+# 
+# %%make_build
+# popd
+
+pushd nemo-audio-tab
+%py3_build
+popd
+
 %install
 pushd nemo-pastebin
 %py3_install
@@ -449,7 +494,32 @@ pushd nemo-compare
 %py3_install
 popd
 
+pushd nemo-dropbox
+%make_install
+popd
+
+pushd nemo-repairer
+%make_install
+popd
+
+pushd nemo-seahorse
+%make_install
+popd
+
+pushd nemo-share
+%make_install
+popd
+
+# pushd nemo-gtkhash
+# %%make_install
+# popd
+
+pushd nemo-audio-tab
+%py3_install
+popd
+
 %find_lang nemo-preview
+%find_lang nemo-share
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %fdupes %{buildroot}/%{_prefix}
@@ -514,6 +584,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n nemo-extension-audio-tab
 %license nemo-audio-tab/COPYING*
 %doc nemo-audio-tab/debian/changelog
+%{_datadir}/nemo-python/extensions/nemo-audio-tab.py*
+%dir %{_datadir}/nemo-audio-tab
+%{_datadir}/nemo-audio-tab/nemo-audio-tab.glade
+%{python3_sitelib}/nemo_audio_tab-%{version}-py?.?.egg-info
 
 %files -n nemo-extension-compare
 %license nemo-compare/nemo-compare/COPYING*
@@ -526,6 +600,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n nemo-extension-dropbox
 %license nemo-dropbox/COPYING
 %doc nemo-dropbox/AUTHORS nemo-dropbox/debian/changelog
+%exclude %{_libdir}/nemo/extensions-3.0/libnemo-dropbox.a
+%{_libdir}/nemo/extensions-3.0/libnemo-dropbox.so
+%{_datadir}/nemo-dropbox/
 
 %files -n nemo-extension-emblems
 %license nemo-emblems/COPYING*
@@ -542,6 +619,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n nemo-extension-gtkhash
 %license nemo-gtkhash/COPYING
 %doc nemo-gtkhash/AUTHORS nemo-gtkhash/debian/changelog
+# %%{_bindir}/gtkhash
+# %%{_datadir}/glib-2.0/schemas/app.gtkhash.gschema.xml
+# %%dir %%{_datadir}/nemo-gtkhash
+# %%{_datadir}/nemo-gtkhash/gtkhash.xml.gz
+# %%{_libdir}/nemo/extensions-3.0/libgtkhash-properties.so
+# %%{_datadir}/glib-2.0/schemas/org.nemo.extensions.gtkhash.gschema.xml
+# %%dir %%{_datadir}/nemo-gtkhash/nautilus
+# %%{_datadir}/nemo-gtkhash/nautilus/gtkhash-properties.xml.gz
 
 %files -n nemo-extension-image-converter
 %license nemo-image-converter/COPYING
@@ -572,14 +657,22 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n nemo-extension-repairer
 %license nemo-repairer/COPYING
 %doc nemo-repairer/AUTHORS nemo-repairer/README
+%{_libdir}/nemo/extensions-3.0/libnemo-filename-repairer.so
+%{_bindir}/nemo-filename-repairer
+%{_datadir}/nemo-filename-repairer/
 
 %files -n nemo-extension-seahorse
 %license nemo-seahorse/COPYING
 %doc nemo-seahorse/debian/changelog
+%{_libdir}/nemo/extensions-3.0/libnemo-seahorse.so
 
-%files -n nemo-extension-share
+%files -n nemo-extension-share -f nemo-share.lang
 %license nemo-share/COPYING
 %doc nemo-share/AUTHORS nemo-share/debian/changelog
+%{_libdir}/nemo/extensions-3.0/libnemo-share.so
+%exclude %{_libdir}/nemo/extensions-3.0/libnemo-share.a
+%{_datadir}/nemo-share/
+%{_datadir}/polkit-1/actions/org.nemo.share.samba_install.policy
 
 %files -n nemo-extension-terminal
 %license nemo-terminal/COPYING
@@ -589,6 +682,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/nemo-python/extensions/nemo_terminal.py
 %{_datadir}/glib-2.0/schemas/org.nemo.extensions.nemo-terminal.gschema.xml
 %{python3_sitelib}/nemo_terminal-%{version}-py?.?.egg-info
-%{python3_sitelib}/nemo_terminal-%{version}-py?.?.egg-info/*
 
 %changelog

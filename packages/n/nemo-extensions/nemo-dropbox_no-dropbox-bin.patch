@@ -1,35 +1,7 @@
---- a/nemo-dropbox/data/icons/Makefile.am	2019-02-08 16:11:14.000000000 +0600
-+++ b/nemo-dropbox/data/icons/Makefile.am	2019-04-26 16:24:53.987859398 +0600
+diff -ruN a/nemo-dropbox/data/icons/Makefile.am c/nemo-dropbox/data/icons/Makefile.am
+--- a/nemo-dropbox/data/icons/Makefile.am	2020-05-13 20:20:10.000000000 +0700
++++ c/nemo-dropbox/data/icons/Makefile.am	2020-09-26 23:36:50.507877568 +0700
 @@ -1 +1 @@
 -SUBDIRS = hicolor nemo-dropbox
-\ В конце файла нет новой строки
+\ No newline at end of file
 +SUBDIRS = nemo-dropbox
---- a/nemo-dropbox/data/Makefile.am	2019-02-08 16:11:14.000000000 +0600
-+++ b/nemo-dropbox/data/Makefile.am	2019-04-26 16:22:54.579516828 +0600
-@@ -1,6 +1 @@
--applicationdir = $(datadir)/applications
--application_DATA = dropbox.desktop
--
--EXTRA_DIST = $(application_DATA)
--
- SUBDIRS = icons emblems
---- a/nemo-dropbox/Makefile.am	2019-02-08 16:11:14.000000000 +0600
-+++ b/nemo-dropbox/Makefile.am	2019-04-26 16:20:16.871064377 +0600
-@@ -1,16 +1,6 @@
- AUTOMAKE_OPTIONS = dist-bzip2 no-dist-gzip
- 
--bin_SCRIPTS = dropbox
--CLEANFILES = $(bin_SCRIPTS) dropbox.1 dropbox.txt
-+CLEANFILES = dropbox.txt
- EXTRA_DIST = dropbox.in serializeimages.py dropbox.txt.in docgen.py rst2man.py
--man_MANS = dropbox.1
--
--dropbox: dropbox.in serializeimages.py
--	python serializeimages.py $(PACKAGE_VERSION) $(datadir)/applications < dropbox.in > dropbox
--	chmod +x dropbox
--
--dropbox.1: dropbox dropbox.txt.in docgen.py
--	python docgen.py $(PACKAGE_VERSION) < dropbox.txt.in > dropbox.txt
--	$(RST2MAN) dropbox.txt > dropbox.1
- 
- SUBDIRS = data src
