@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 24 19:04:31 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.12.0:
+  * n-api:
+    + create N-API version 7
+    + add more property defaults
+
+- Changes since version 14.9.0
+  * deps:
+    + update llhttp to 2.1.2 (bsc#1176605, CVE-2020-8201)
+    + http: add requestTimeout. Fixes Denial of Service by
+      resource exhaustion due to unfinished HTTP/1.1 requests
+      (bsc#1176604, CVE-2020-8251)
+    + buffer: also alias BigUInt methods
+    + crypto: add randomInt function
+    + perf_hooks: add idleTime and event loop util
+    + stream: simpler and faster Readable async iterator
+    + stream: save error in state
+
+-------------------------------------------------------------------
 Wed Sep  2 10:44:47 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - old_icu.patch: re-add support for ICU 65 from SLE15 SP2
