@@ -17,7 +17,7 @@
 
 
 Name:           libretro-beetle-psx-hw
-Version:        0~git20200810
+Version:        0~git20200921
 Release:        0
 Summary:        Mednafen PSX libretro core for Sony PlayStation emulation
 License:        GPL-2.0-only

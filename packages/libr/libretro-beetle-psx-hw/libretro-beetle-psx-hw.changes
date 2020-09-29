@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Sep 21 18:53:17 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200921:
+  * Fix Wild Arms 2 overworld forest sprite for software mode with scaling
+  * Fix non-pgxp being completely broken in previous commit in this pr
+  * Get rid of MD5 calculation
+  * Cleanups
+  * Use signed integer for comparison
+  * Make pgxp tolerance an option
+  * Copy adjusted vert for first vert in quad
+  * "Clamp" pgxp coordinates if lacking w components
+  * Fix Wild Arms 2 overworld forest sprite; some rearranging of code;
+  * Cleanups
+  * Revert "Cleanups"
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Simplify hack to avoid texture filtering on scaled read
+  * Wrap around in vram on scanout
+  * Add barrier to prevent flickering in location titles in Valkyrie Profile
+  * Cleanups
+  * Cleanups
+  * Get rid of HAVE_CDROM_NEW
+  * Add shift variable to spec constant
+  * Avoid textureLod path that requires division; fix performance regression
+  * Remove this variable
+  * Cleanups
+  * Get rid of overloading
+  * Cleanups
+  * Convert settings.cpp to C
+  * Cleanup
+  * Unbreak scanout_to_buffer, scanout_vram_to_texture, and scanout_vram_to_buffer when msaa is enabled
+  * Make uv_rect passed to texture_loaded in build_attribs more correct; some minor cleanup
+  * Added missing prebuilt shader files
+  * Simplify ternary code in render_semi_transparent_primitives
+  * Use unscaled framebuffer read when possible (some performance improvement)
+  * Use separate pass for msaa resolve (minor performance improvement) (fix broken msaa resolve on AMD hardware)
+  * Use scaled_framebuffer_msaa for texture reads if possible (fix unwanted black outlines in Vagrant Story for msaa as well) (further performance hit)
+  * Ignore first/last row/column instead of checking if half loaded in atlas texture_loaded
+  * Use scaled_framebuffer for texture reads (higher quality fix for unwanted black oulines for Vagrant Story) (performance regression to be resolved)
+  * Use nearest neighbor for resolve to unscaled; separate pass for ssaa
+  * Spec constants for resolve
+  * Spec constants for feedback shaders
+  * Spec constants for filters to get down the number of shader combinations
+  * Apply JINC2 change to OpenGl
+  * Update JINC2 to prevent NaN, which result in black texture in some cases
+  * Xcode wants his variables initialized or won't link (#709)
+  * Removed library path /usr/local/lib.
+
+-------------------------------------------------------------------
 Wed Aug 12 19:30:49 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200810:
