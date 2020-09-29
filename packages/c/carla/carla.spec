@@ -18,7 +18,11 @@
 
 %define rev 9249bebbf5a8f2358cb912a5b8c429bc0c5b479b
 
+%if 0%{?suse_version} > 1501
+%bcond_without liblo
+%else
 %bcond_with liblo
+%endif
 
 %define __provides_exclude_from ^%{_libdir}/carla/jack/.*.so.0$
 Name:           carla
@@ -88,6 +92,7 @@ Suggests:       %{name}-vst = %{version}
 #End wine
 Requires:       python3-base
 Requires:       python3-qt5
+Requires:       python3-rdflib
 %if %{with liblo}
 Requires:       python3-pyliblo
 %endif

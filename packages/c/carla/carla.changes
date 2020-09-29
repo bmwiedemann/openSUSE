@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 28 14:52:01 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Enabled liblo for Tumbleweed.
+
+-------------------------------------------------------------------
 Sat Sep 26 08:52:16 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Disable liblo until python-pyliblo is on the way to Tumbleweed

@@ -159,4 +159,13 @@
     <comment></comment>
     <requestid>837889</requestid>
   </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>c191d3e5427b579b9e70311b52a679eb</srcmd5>
+    <version>2.1.1</version>
+    <time>1601399065</time>
+    <user>dimstar_suse</user>
+    <comment>- Enabled liblo for Tumbleweed.
+</comment>
+    <requestid>838406</requestid>
+  </revision>
 </revisionlist>
