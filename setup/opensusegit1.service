@@ -1,0 +1,12 @@
+[Unit]
+Description=Rabbitmq listener for OBS-git integration
+After=network.target remote-fs.target
+
+[Service]
+User=opensusegit
+WorkingDirectory=/home/opensusegit/openSUSE/
+ExecStart=/home/opensusegit/openSUSE/scripts/rabbithandle.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
