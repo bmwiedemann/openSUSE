@@ -39,4 +39,14 @@
     <comment>Version 0.6.1596796104.87bdab7</comment>
     <requestid>824845</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>685b3f0b8f02bf179fb50e0861d1ee49</srcmd5>
+    <version>0.6.1601367426.843fe7a</version>
+    <time>1601399100</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.6.1601367426.843fe7a
+- Allow wildcard matching (jsc#SLE-14168)
+- Implement successor handling (jsc#SLE-16251)</comment>
+    <requestid>838482</requestid>
+  </revision>
 </revisionlist>

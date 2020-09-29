@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:18:45 UTC 2020 - Vladimir Nadvornik <nadvornik@suse.com>
+
+- Version 0.6.1601367426.843fe7a
+- Allow wildcard matching (jsc#SLE-14168)
+- Implement successor handling (jsc#SLE-16251)
+
+-------------------------------------------------------------------
 Fri Aug  7 10:31:01 UTC 2020 - Vladimir Nadvornik <nadvornik@suse.com>
 
 - Version 0.6.1596796104.87bdab7

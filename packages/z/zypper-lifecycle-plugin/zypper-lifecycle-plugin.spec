@@ -23,7 +23,7 @@
 
 Name:           zypper-lifecycle-plugin
 Url:            https://github.com/SUSE/zypper-lifecycle
-Version:        0.6.1596796104.87bdab7
+Version:        0.6.1601367426.843fe7a
 Release:        0
 Requires:       zypper >= 1.13.10
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
