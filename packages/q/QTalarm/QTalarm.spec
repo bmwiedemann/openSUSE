@@ -18,14 +18,13 @@
 
 %define  _name  qtalarm
 Name:           QTalarm
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        A handy alarm clock Program written in QT
 License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://www.random-hackery.net/qtalarm
 Source:         https://github.com/CountMurphy/QTalarm/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/CountMurphy/QTalarm/master/LICENSE
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -45,7 +44,6 @@ Features:
 
 %prep
 %setup -q
-cp %{SOURCE1} .
 
 %build
 %qmake5
@@ -57,18 +55,6 @@ install -Dm 0644 Icons/*_Clock.png %{buildroot}%{_datadir}/icons/hicolor/48x48/a
 install -Dm 0644 Icons/*_Clock24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/%{_name}.png
 install -Dm 0644 Icons/*_Clock16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/%{_name}.png
 %suse_update_desktop_file -c %{_name} "QT Alarm" "Alarm Clock" %{_name} %{_name} Utility Clock
-
-%if 0%{?suse_version} < 1330
-%post
-%icon_theme_cache_post
-%desktop_database_post
-%endif
-
-%if 0%{?suse_version} < 1330
-%postun
-%icon_theme_cache_postun
-%desktop_database_post
-%endif
 
 %files
 %license LICENSE

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 16:59:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.2
+  * Ui fixes: click tray icon to toggle reactive windows
+  * Add license file
+- Drop compatibility ifdef's for old distributions
+
+-------------------------------------------------------------------
 Mon Jan  6 21:49:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Package cleanup
