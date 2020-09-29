@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 28 03:16:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.5
+   see /usr/share/doc/packages/perl-PadWalker/Changes
+
+
+  2.4  Sat 26 Sep 2020 18:39:17 BST
+      - Names of utf8 lexical vars not reported correctly
+        https://rt.cpan.org/Ticket/Display.html?id=133424
+
+  2.5  Sun 27 Sep 2020 13:22:11 BST
+      - Make 2.4 compatible with older perl.
+
+-------------------------------------------------------------------
 Sat Nov 11 06:44:44 UTC 2017 - coolo@suse.com
 
 - updated to 2.3
