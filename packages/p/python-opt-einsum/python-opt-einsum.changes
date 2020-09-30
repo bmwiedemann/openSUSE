@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 07:41:26 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to version 3.3.0 which fixes failed unit test for
+  factory (see upstream issue #131), new features are:
+  * mars backend support
+  * object based backend so that contract(backend='object') can be use
+
+-------------------------------------------------------------------
 Tue Feb 25 09:41:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Enable testing

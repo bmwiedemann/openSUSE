@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-opt-einsum
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        Optimizing numpys einsum function
 License:        MIT
