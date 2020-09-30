@@ -1,7 +1,7 @@
 #
 # spec file for package sitecopy
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,15 +21,18 @@ BuildRequires:  fdupes
 BuildRequires:  neon-devel
 BuildRequires:  pkgconfig
 Summary:        Local to Remote Website Synchronizer
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 Version:        0.16.6
 Release:        0
 Requires:       %{name}-lang = %{version}
-Url:            http://www.manyfish.co.uk/sitecopy/
+URL:            http://www.manyfish.co.uk/sitecopy/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.lyra.org/sitecopy/sitecopy-%{version}.tar.bz2
 Patch0:         sitecopy-support-neon-0.29.diff
+Patch1:         06-sftpdriver.c-fix-for-new-openssh.patch
+Patch2:         10-bts410703-preserve-storage-files-sigint.patch
+Patch3:         30-bts320586-manpage-document-sftp.patch
 
 %description
 Sitecopy is useful for copying locally stored web sites to remote web
@@ -44,6 +47,9 @@ HTTP-based authoring servers are supported.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 # Forcibly prevent use of bundled neon/expat/gettext sources.
 rm -r lib/neon/*.[ch] intl/*.[ch]
 

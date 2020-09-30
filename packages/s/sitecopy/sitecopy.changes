@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 23 09:32:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- 06-sftpdriver.c-fix-for-new-openssh.patch: fix sftp support with
+  newer openssh versions
+- 10-bts410703-preserve-storage-files-sigint.patch: preserve 
+  storage if Ctrl-C is pressed
+- 30-bts320586-manpage-document-sftp.patch: document sftp support
+  in the manual page
+
+-------------------------------------------------------------------
 Sun Apr 27 16:14:56 UTC 2014 - crrodriguez@opensuse.org
 
 - fix build with no SSLv2, caused by package using 
