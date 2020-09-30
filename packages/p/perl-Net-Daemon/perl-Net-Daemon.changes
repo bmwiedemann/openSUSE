@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 30 10:51:17 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Add manual license
+
+-------------------------------------------------------------------
+Sat Sep 26 03:08:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.49
+   see /usr/share/doc/packages/perl-Net-Daemon/ChangeLog
+
+  2020-09-22 Todd Rinaldo <toddr@cpan.org> (0.49)
+  	* Perl 5.6 is the minimum required version now.
+  	* RIP Thread.pm it has not been relevant since 5.6
+  	* Now using github CI to monitor the major platforms.
+  	* .gitignore for better management
+  	* Update the MANIFEST
+  	* Perltidy the code base.
+  	* use strict, warnings, no vars, our
+  	* Remove perl 4-ish subroutine calls
+  	* Require Sys::Syslog 0.29 to function properly.
+  	* t/base.t -> Test::More
+  	* Improve skipall messages and detection of ithreads/forks
+  	* Disable t/ithreadm.t for Windows See https://github.com/toddr/Net-Daemon/issues/19
+  	* Only load threads if forks hasn't already been loaded and threads exist.
+  	* Update tracker location to github
+  	* Fix ReadConfigFile implementation traversing @INC
+
+-------------------------------------------------------------------
 Tue Dec 13 13:57:10 UTC 2011 - coolo@suse.com
 
 - license is "as perl"

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Daemon
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Net-Daemon
-Version:        0.48
+Version:        0.49
 Release:        0
+#Upstream:  Am Eisteich 9 72555 Metzingen Germany Phone: +49 7123 14887 Email: joe@ispsoft.de All rights reserved. You may distribute this package under the terms of either the GNU General Public License or the Artistic License, as specified in the Perl README file.
 %define cpan_name Net-Daemon
 Summary:        Perl extension for portable daemons
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Net-Daemon/
-Source:         http://www.cpan.org/authors/id/M/MN/MNOONING/Net-Daemon-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Sys::Syslog) >= 0.29
+Requires:       perl(Sys::Syslog) >= 0.29
 %{perl_requires}
 
 %description
@@ -46,23 +50,19 @@ inheriting will safe you a lot of work anyways.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-# requires syslog in chroot
-# %{__make} test
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(644,root,root,755)
-%doc ChangeLog README regexp-threads
+%defattr(-,root,root,755)
+%doc ChangeLog README
 
 %changelog
