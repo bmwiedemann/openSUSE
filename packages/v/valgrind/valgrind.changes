@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Aug 16 01:22:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- update to 3.16.1:
+- update to 3.16.1 (jsc#SLE-13769):
   * PPC sync instruction L field should only be 2 bits in ISA 3.0
   * vex: the `impossible' happened: expr_is_guardable: unhandled expr
 - remove 0001-Power-PC-Fix-extraction-of-the-L-field-for-sync-inst.patch (upstream)

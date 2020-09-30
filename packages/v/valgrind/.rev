@@ -1212,4 +1212,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
 - remove 0001-Power-PC-Fix-extraction-of-the-L-field-for-sync-inst.patch (upstream)</comment>
     <requestid>826927</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>1397816a228426a77b39f12ae78026bb</srcmd5>
+    <version>3.16.1</version>
+    <time>1601488435</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.16.1 (jsc#SLE-13769):</comment>
+    <requestid>838585</requestid>
+  </revision>
 </revisionlist>
