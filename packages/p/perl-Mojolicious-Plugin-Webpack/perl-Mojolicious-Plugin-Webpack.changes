@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Wed Sep  9 09:49:54 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Limit description paragraphs
+
+-------------------------------------------------------------------
+Mon Sep  7 03:11:51 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Webpack/Changes
+
+  0.13 2020-09-07T10:10:24+0900
+   - Fix "sass-loader" options #4
+   - Removed support for "shim"
+   - Improved documentation
+
+-------------------------------------------------------------------
+Tue Oct  8 08:05:23 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Webpack/Changes
+
+  0.12 2019-10-07T07:02:11+0900
+   - Renamed every ".dev." file to ".development." #2
+  
+  0.11 2019-10-05T22:12:07+0900
+   - Will skip entries in generated HTML file that does not match current mode.
+  
+  0.10 2019-10-02T15:35:43+0900
+   - Add support for custom "npm" binary
+   - Need to look in "devDependencies" as well to skip install of node module
+   - Will only install modules once
+
+-------------------------------------------------------------------
+Tue May 21 05:15:22 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Webpack/Changes
+
+  0.09 2019-05-20T22:37:42+0200
+   - Add support for rollup.js
+   - Changed the EXPERIMENTAL statement
+
+-------------------------------------------------------------------
+Sun May  5 09:20:01 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- initial package 0.08
+ * created by cpanspec 1.78.09
