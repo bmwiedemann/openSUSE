@@ -1,7 +1,7 @@
 #
 # spec file for package cfengine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,30 +22,29 @@
 # reported upstream as https://cfengine.com/dev/issues/1896
 %define         basedir   %{_localstatedir}/%{name}
 %define         workdir   %{basedir}
-%if 0%{?suse_version} >= 1210
-%define have_systemd 1
-%else
-%define have_systemd 0
-%endif
-%if 0%{?suse_version} <= 150100
+# This is the place where workdir should be
+#define         basedir   /var/lib/%%{name}
+#define         workdir   %%{basedir}/work
+
+%if 0%{?suse_version} < 1500
+# assume SuSEfirewall2
 %define with_sfw2 1
 %else
+# assume firewalld
 %define with_sfw2 0
 %endif
 # pass --with-bla to enable the build
 %bcond_with mysql
 %bcond_with postgresql
 %bcond_with libvirt
+
 Name:           cfengine
-Version:        3.12.1
+Version:        3.16.0
 Release:        0
-# This is the place where workdir should be
-#define         basedir   /var/lib/%%{name}
-#define         workdir   %%{basedir}/work
 Summary:        Configuration management framework
 License:        GPL-3.0-only
 Group:          Productivity/Networking/System
-Url:            http://www.cfengine.org/
+URL:            http://www.cfengine.org/
 Source:         https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-%{version}.tar.gz
 Source1:        %{name}.SuSEfirewall2
 Source2:        cf-execd.service
@@ -56,33 +55,11 @@ Source6:        cf-execd
 Source7:        cf-serverd
 Source10:       %{name}.cron
 Source11:       %{name}-rpmlintrc
-# docs
-Source101:      http://www.cfengine.org/manuals/cf3-Reference.pdf
-Source102:      http://www.cfengine.org/manuals/cf3-conceptguide.pdf
-Source103:      http://www.cfengine.org/manuals/cf3-glossary.pdf
-Source104:      http://www.cfengine.org/manuals/cf3-quickstart.pdf
-Source105:      http://www.cfengine.org/manuals/cf3-solutions.pdf
-Source106:      http://www.cfengine.org/manuals/cf3-tutorial.pdf
-Source107:      http://www.verticalsysadmin.com/cfengine/primer.pdf
 
-# PATCH-FIX-SUSE
-# set cfengine's notion of bindir to /usr/bin instead of /var/cfengine/bin
-# kkaempf@suse.de
-Patch1:         0001-Set-sys.bindir-to-usr-sbin-expect-cf-components-ther.patch
-# PATCH-FIX-UPSTREAM add 'suse' class for consistency with other vendor classes
-# PATCH-FEATURE-UPSTREAM better /etc/SuSE-release parsing, upstream #5423
-# kkaempf@suse.de
-Patch2:         0002-Simplify-and-fix-parsing-of-etc-SuSE-release-fixes-i.patch
-# PATCH-FIX-SUSE reduce "string truncated" (in strncpy) warnings
-Patch3:         0003-Reduce-string-truncation-warnings.patch
-# PATCH-FIX-SUSE BNC#1016848, adam.majer
-Patch10:        0004-make-home-dir-for-tests.patch
-# SLE 11 or RHEL5 autoconf does not support AM_SUBST_NOTMAKE, kkaempf@suse.de
-Patch99:        remove-am_subst_notmake.patch
+Recommends:     %{name}-documentation
 
 BuildRequires:  bison
 BuildRequires:  db-devel
-BuildRequires:  fakeroot
 BuildRequires:  flex
 BuildRequires:  libacl-devel
 BuildRequires:  libtool
@@ -91,13 +68,14 @@ BuildRequires:  lmdb-devel >= 0.9.17
 BuildRequires:  openssl-devel >= 1.0.2e
 BuildRequires:  pam-devel
 BuildRequires:  pcre-devel >= 8.38
-BuildRequires:  python
 # for flock
 BuildRequires:  util-linux
 # for llzma
 BuildRequires:  xz-devel
 Requires:       %{libsoname} = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if !%{with_sfw2}
+BuildRequires:  firewall-macros
+%endif
 %if %{with mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -107,23 +85,9 @@ BuildRequires:  libvirt-devel
 %if %{with postgresql}
 BuildRequires:  postgresql-devel
 %endif
-%if %{have_systemd}
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
-%else
-# Without systemd we require cron
-Requires:       cron
-%if 0%{?suse_version}
-Requires(post): %insserv_prereq %fillup_prereq
-%endif
-%endif
-# FHS was a hit with sle11 so it dies out otherwise
-%if 0%{?suse_version} <= 1110
-BuildRequires:  -post-build-checks
-%endif
-%if 0%{?suse_version} > 1020
 BuildRequires:  fdupes
-%endif
 %if 0%{?fedora_version} == 20
 BuildRequires:  perl-Exporter
 %endif
@@ -157,29 +121,16 @@ A character set detection library.
 This package contains the files needed to compile programs that use the
 libpromises library.
 
-%package doc
-Summary:        Documentation for CFEngine, a config management framework
-Group:          Documentation/Other
-
-%description doc
-Documentation for cfengine.
-
 %package examples
 Summary:        CFEngine example promises
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description examples
 Lots of example promises for CFEngine.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%if 0%{?suse_version} <= 1110
-%patch99 -p1
-%endif
-%patch10 -p1
 
 ##### rpmlint
 #### wrong-file-end-of-line-encoding
@@ -187,12 +138,7 @@ Lots of example promises for CFEngine.
 ### http://www.fsf.org/about/contact/
 find ./examples -type f -name "*.cf" -exec perl -p -i -e 's|\r\n|\n|,s|^# Foundation.*|# Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110-1335, USA|' {} \;
 
-### install extra docs
-install -d docs
-cp -a $RPM_SOURCE_DIR/*pdf docs/
-
 %build
-echo %{version} > CFVERSION
 EXPLICIT_VERSION=%{version} autoreconf -fvi -I m4
 CC=cc CFLAGS="%{optflags} -fno-strict-aliasing" \
 %configure \
@@ -243,35 +189,15 @@ install -d %{buildroot}/{%{_bindir},%{_sbindir},%{workdir}/{bin,inputs,reports}}
 # create dirs needed for better organizing dirs and files
 install -d %{buildroot}/%{basedir}/{backup,failsafe,config,plugins}
 
-%if %{have_systemd}
 # systemd: install sample cron file in docdir
 cp %{SOURCE10} %{buildroot}/%{_docdir}/%{name}
-%else
-# no systemd -> use cron
-# install cron file
-install -D -m0644 %{SOURCE10} %{buildroot}/%{_sysconfdir}/cron.d/%{name}
-%endif
 
-%if %{have_systemd}
 # install systemd scripts
 install -d %{buildroot}%{_unitdir}
 install -m 0644 %{SOURCE2} %{SOURCE3} %{SOURCE4} %{buildroot}/%{_unitdir}
 ln -s -f service %{buildroot}/%{_sbindir}/rccf-monitord
 ln -s -f service %{buildroot}/%{_sbindir}/rccf-execd
 ln -s -f service %{buildroot}/%{_sbindir}/rccf-serverd
-%else
-# install init scripts
-install -d %{buildroot}%{_initddir}
-install -m 0755 %{SOURCE5} %{SOURCE6} %{SOURCE7} %{buildroot}%{_initddir}/
-ln -s -f ../..%{_initddir}/cf-monitord %{buildroot}/%{_sbindir}/rccf-monitord
-ln -s -f ../..%{_initddir}/cf-execd %{buildroot}/%{_sbindir}/rccf-execd
-ln -s -f ../..%{_initddir}/cf-serverd %{buildroot}/%{_sbindir}/rccf-serverd
-# sed @workdir@ in initscripts/cron.d
-sed -i\
- -e "s,@workdir@,%{workdir},g"\
- -e "s,@basedir@,%{basedir},g" \
- %{buildroot}%{_initddir}/cf-* %{buildroot}%{_sysconfdir}/cron.d/%{name}
-%endif
 
 # create symlinks for bin_PROGRAMS
 # because: cf-promises needs to be installed in /var/cfengine/work/bin for pre-validation of full configuration
@@ -299,50 +225,33 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.
 %endif
 
 # Ckeabyo dyoes
-%if 0%{?suse_version} > 1020
 %fdupes %{buildroot}%{_datadir}/cfengine
-%endif
 
 %pre
-%if %{have_systemd}
-%service_add_pre cf-execd.service cf-monitord.service cf-serverd.service
-%endif
+%service_add_pre cf-execd.service cf-monitord.service cf-serverd.service cf-apache.service cf-hub.service cf-postgres.service cf-runalerts.service cfengine3.service
 
 %post
-%if %{have_systemd}
-%service_add_post cf-execd.service cf-monitord.service cf-serverd.service
-%else
-for i in execd monitord serverd; do
-  %fillup_and_insserv cf-${i}
-done
-%endif
+%service_add_post cf-execd.service cf-monitord.service cf-serverd.service cf-apache.service cf-hub.service cf-postgres.service cf-runalerts.service cfengine3.service
 if [ $1 -lt 2 ]; then
   # first install, generate key pair
   cf-key
 fi
+%if !%{with_sfw2}
+%firewalld_reload
+%endif
 
 %preun
-%if %{have_systemd}
-%service_del_preun cf-execd.service cf-monitord.service cf-serverd.service
-%else
-for i in execd monitord serverd; do
-  %stop_on_removal cf-${i}
-done
-%endif
+%service_del_preun cf-execd.service cf-monitord.service cf-serverd.service cf-apache.service cf-hub.service cf-postgres.service cf-runalerts.service cfengine3.service
 
 %postun
-%if %{have_systemd}
-%service_del_postun cf-execd.service cf-monitord.service cf-serverd.service
-%else
-%insserv_cleanup
-for i in execd monitord serverd; do
-  %restart_on_update cf-${i}
-done
-%endif
+%service_del_postun cf-execd.service cf-monitord.service cf-serverd.service cf-apache.service cf-hub.service cf-postgres.service cf-runalerts.service cfengine3.service
 if [ $1 -eq 0 ]; then
   # clean up inputs cache dir on removal
   rm -rf %{basedir}/inputs/*
 fi
+%if !%{with_sfw2}
+%firewalld_reload
+%endif
 
 %post   -n %{libsoname} -p /sbin/ldconfig
 
@@ -359,32 +268,28 @@ fi
 %{_bindir}/cf-net
 %{_bindir}/cf-monitord
 %{_bindir}/cf-promises
+%{_bindir}/cf-secret
 %{_bindir}/cf-serverd
 %{_bindir}/cf-upgrade
 %{_bindir}/cf-runagent
 %{_bindir}/rpmvercmp
-%if %{have_systemd}
 %{_unitdir}/cf-execd.service
 %{_unitdir}/cf-monitord.service
 %{_unitdir}/cf-serverd.service
-%else
-%config %attr(0755,root,root) %{_initddir}/*
-%endif
 %{_sbindir}/rccf-execd
 %{_sbindir}/rccf-monitord
 %{_sbindir}/rccf-serverd
+%{_unitdir}/*.service
 %if %{with_sfw2}
+%config %dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d
+%config %dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/cfengine
 %endif
 %{_mandir}/man8/*
 %dir %{basedir}
 %dir %{workdir}
 %{workdir}/*
-%if %{have_systemd}
 %{_docdir}/%{name}/cfengine.cron
-%else
-%config(noreplace) %{_sysconfdir}/cron.d/%{name}
-%endif
 
 %files -n %{libsoname}
 %defattr(-,root,root)
@@ -394,10 +299,6 @@ fi
 %files -n %{libname}-devel
 %defattr(-,root,root)
 %{_libdir}/%{name}/%{libname}.so
-
-%files doc
-%defattr(-,root,root)
-%doc docs/*.pdf
 
 %files examples
 %defattr(-,root,root)

@@ -1,4 +1,271 @@
 -------------------------------------------------------------------
+Wed Sep 23 08:34:55 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- drop cfengine-doc subpackage in favor of cfengine-documentation
+
+-------------------------------------------------------------------
+Tue Sep 22 07:52:50 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- update to 3.16.0
+  - Added 'cf-secret' binary for host-specific encryption (CFE-2613)
+  - 'cf-check diagnose --test-write' can now be used to test writing
+    into LMDB files (ENT-4484)
+  - 'if' constraint now works in combination with class contexts
+    (CFE-2615)
+  - Added $(sys.cf_version_release) variable (ENT-5348)
+  - Added new macros to parser: else, maximum_version, between_versions,
+    before_version, at_version and after_version. Version macros now
+    accept single digits (CFE-3198)
+  - Added cf-postgres requirement to cf-apache and cf-hub systemd units
+    (ENT-5125)
+  - Added files promise content attribute (CFE-3276)
+  - Added string_trim() policy function (CFE-3074)
+  - Added warning if CSV parser parses nothing from non-empty file
+    (CFE-3256)
+  - All changes made by 'files' promises are now reported. Also,
+    directory and file creations are now properly reported as 'info'
+    messages. And failures in edit_xml result in promises marked as
+    failed not interrupted. Purged dirs and files are reported as
+    repaired (ENT-5291, CFE-3260)
+  - Bootstrap to loopback interface is now allowed, with a warning
+    (CFE-3304)
+  - Client initiated reporting was fixed on RHEL 8.1 (ENT-5415)
+  - Fixed rare crashing bug when parsing zombie entries in ps output.
+    The problem was only ever observed on AIX, but could theoretically happen
+    on any platform depending on exact libc behavior. (ENT-5329)
+  - Fixed an issue causing duplicate entries in sys.interfaces, and
+    sys.hardware. (CFE-3046)
+  - Fixed ifelse() to return fallback in case of unresolved variables
+    (ENT-4653)
+  - Fixed locking of promises using log_repaired / log_string with
+    timestamps (CFE-3376)
+  - Fixed memory leak in handling of inline JSON in policy evaluation
+  - Fixed memory leak in readlist functions (CFE-3263)
+  - Fixed race condition when multiple agents are acquiring critical
+    section locks simultaneously (CFE-3361)
+  - Fixed selection of standard_services when used from non-default
+    namespace (ENT-5406)
+  - Fixed service status cfengine3 on systemd managed hosts
+    (ENT-5528)
+  - Fixed some memory leaks and crashes in policy evaluation (CFE-3263)
+  - Improved error message for invalid body attribute names (CFE-3273)
+  - Improved management of secondary groups to avoid intermediary state
+    failures (ENT-3710)
+  - LMDB files are now created with correct permissions (ENT-5986)
+  - Log messages about broken Mustache templates are now errors
+    (CFE-3263)
+  - Made classfiltercsv() fail properly on invalid class expression index 
+  - Measurements promises with no match no longer produce errors
+    (ENT-5171)
+  - Moved error reading file in countlinesmatching() from verbose to
+    error (CFE-3234)
+  - Added new data validation policy functions validdata() and validjson()
+    (CFE-2898)
+  - New version checking convenience policy functions (CFE-3197)
+    Added the following policy functions to check against local CFEngine version:
+    - cf_version_maximum()
+    - cf_version_minimum()
+    - cf_version_after()
+    - cf_version_before()
+    - cf_version_at()
+    - cf_version_between()
+  - Removed (USE AT YOUR OWN RISK) from cf-key help menu for -x (ENT-5090)
+  - Rewrote helloworld.cf to use files promises content attribute (CFE-3276)
+  - The outcome classes are now defined for the top-level directory when
+    'include_basedir' is 'false' (ENT-5291)
+  - Variable references with nested parentheses no longer cause errors
+    (CFE-3242)
+  - cf-check: Added a more user friendly message when trying to print
+    unknown binary data (ENT-5234)
+  - cf-check: Added data validation for cf_lastseen.lmdb (CFE-2988)
+  - cf-check: Added nice printing for nova_agent_executions.lmdb
+    (ENT-5234)
+  - cf-check: Added validation for timestamps in cf_lock.lmdb (CFE-2988)
+  - cf-check: Added validation for timestamps in lastseen.lmdb (CFE-2988)
+  - cf-check: Fixed issue causing repair to target the wrong database file
+    (ENT-5309)
+  - cf-check: Symlinked LMDB databases are now preserved in repair
+    Performs diagnosis and repair on symlink target instead of symlink.
+    Repaired files / copies are placed alongside symlink target.
+    In some cases, the symlink target is deleted to repair a corrupt
+    database, and the symlink is left as a broken symlink. This is
+    handled gracefully by the agent, it will be recreated.
+    Broken symlinks are now detected as an acceptable condition in diagnose,
+    it won't try to repair them or delete them. (ENT-5162)
+  - storage promises managing nfs mounts should now correctly mount
+    after editing fstab entries
+
+- drop 0001-Simplify-and-fix-parsing-of-etc-SuSE-release-fixes-i.patch,
+  0002-Reduce-string-truncation-warnings.patch,
+  0003-make-home-dir-for-tests.patch - all upstream
+
+-------------------------------------------------------------------
+Tue Jul 28 14:28:49 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix version format for suse_version (SuSEfirewall2 check)
+
+-------------------------------------------------------------------
+Fri Jun 12 14:34:51 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- update to 3.15.0
+	- New policy function basename() added (CFE-3196)
+	- Added read_module_protocol() policy function
+	  This function reads module protocol from a file, and can be used
+	  for caching the results of commands modules. (CFE-2973)
+	- The @ character is now allowed in the key of classic arrays defined
+	  by the module protocol (CFE-3099)
+	- nth() policy function now supports negative indices (CFE-3194)
+	- Fixed .xy floating point numbers parsing in eval() (CFE-2762)
+	- Added inform constraint to commands promises, to allow suppression of
+	  INFO log messages (CFE-2973)
+	- Changed unless constraint to be more consistent with if
+	  For any situation where if would NOT skip a promise, unless
+	  will cause the promise to be skipped. When there are
+	  unresolved variables / function calls, if will skip, unless
+	  will NOT skip. (CFE-3160)
+	- Default minimum allowed TLS version is now 1.1 (ENT-4616)
+	- Network protocol version 2 is now called "tls"
+	  "tls" or "2" can be used in places where you specify network
+	  protocol. Log messages were altered, to show "tls" instead of
+	  "latest". (ENT-4406)
+	- Introduced protocol version 3 - "cookie"
+	  This protocol is identical to version 2 ("tls"),
+	  except it allows the enterprise reporting hub to send
+	  the COOKIE command to enterprise hosts. This command is used for
+	  detecting hosts using duplicate identities. Protocol version "latest"
+	  now points to version 3. For community installations, it should not
+	  make a difference, policy servers will not send this command. The only
+	  visible difference is the new version number (in logs and policy).
+	  (ENT-4406)
+	- Package modules now hit network when package cache is first initialized
+	  (CFE-3094)
+	- Fixed promise skipping bug in unless (CFE-2689)
+	- Fixed error message for unexpanded variables in function calls in unless
+	  (CFE-2689)
+	- Prevented buffer overflow when policy variable names are longer than
+	  1024 bytes
+	- Zero bytes in class guards no longer cause crashes (CFE-3028)
+	- Fixed bug in ps parsing on OpenBSD / NetBSD causing bootstrap to fail
+	- Fixed crash in policy/JSON parsing of numbers with too many decimal
+	  points (CFE-3138)
+	- copy_from without preserve now respects destination mode (ENT-4016)
+	- Removed stime_range and ttime_range constraints from promise hash
+	  (ENT-4921)
+	- Fixed promise result when using process_stop in processes type promises
+	  (ENT-4988)
+	- cf-execd now sends SIGKILL to the agent process in case of
+	  agent_expireafter, after attempting SIGINT and SIGTERM (CFE-2664)
+	- cf-serverd now tries to accept connection multiple times (CFE-3066)
+	- Fixed multiple measurements tracking growth of same file (ENT-4814)
+	- Set create permissions of monitord files in state directory to 0600
+	  0600 matches the permissions enforced by policy.
+	  Affected files:
+	   * state/cf_incoming.*
+	   * state/cf_outgoing.*
+	   * state/cf_users
+	   * state/env_data
+	  (ENT-4863)
+	- Clarified descriptions of io_writtendata and io_readdata (ENT-5127)
+	- Clarified log message about process_count and restart_class being used
+	  concurrently (CFE-208)
+	- Agent runs that hit abortclasses now record results (ENT-2471)
+	- An ID of rhel in os-release file will now define both rhel and redhat
+	  classes (CFE-3140)
+	- Version specific distro classes are now collected by default in
+	  Enterprise (ENT-4752)
+	- redhat_8 and redhat_8_0 are now defined on RHEL 8 (CFE-3140)
+	- Added derived-from-file tag to hard classes based on /etc/redhat-release
+	  (CFE-3140)
+	- Added sys.bootstrap_id policy variable containing the ID from
+	  /var/cfengine/bootstrap_id.dat, if present (CFE-2977)
+	- sys.interfaces now contains interfaces even when they only have
+	  IPv6 addresses (ENT-4858)
+	- IPv6-only interfaces added to sys.hardware_(addresses,mac) (CFE-3164)
+	- IPv6 addresses are now added to policy variable sys.ip_addresses
+	  (CFE-682)
+	- IPv6 addresses now respect ignored_interfaces.rx (CFE-3156)
+	- hostname now allowed in bindtoaddress (CFE-3190)
+	- Fixed issue when removing comments from files in various policy functions
+	  This also fixes many erroneous occurences of the error message
+	  mentioning:
+
+	     [...] because it legally matches nothing
+
+	  (A warning can still appear if a comment regex actually matches nothing).
+	  Also made this comment removing logic faster.
+	  Affected functions include:
+	  * readstringlist()
+	  * readintlist()
+	  * readreallist()
+	  * peers()
+	  * peerleader()
+	  * peerleaders()
+	  * data_readstringarray()
+	  * data_readstringarrayidx()
+	  * data_expand()
+	  * readstringarray()
+	  * readstringarrayidx()
+	  * readintarray()
+	  * readrealarray()
+	  * parsestringarray()
+	  * parsestringarrayidx()
+	  * parseintarray()
+	  * parserealarray()
+	  (CFE-3188, ENT-5019)
+	- Fixed memory leak in JSON / env file parsing (CFE-3210)
+	- Fixed memory leak in handling of nfs / fstab (CFE-3210)
+	- Fixed memory leak in string_replace() and regex_replace() (CFE-3210)
+	- Fixed memory leak when using with constraint (CFE-3210)
+	- Fixed minor memory leak in policy evaluation (CFE-3210)
+	- Fixed small memory leak in SQL database promises (CFE-3210)
+	- Received SIGBUS now triggers a repair of local DBs (CFE-3127)
+	- Corrupted LMDB files are now automatically repaired (CFE-3127)
+	- Keys in the lock database, cf_lock.lmdb, are now human-readable
+	  (CFE-2596)
+	- Local databases now use synchronous access on AIX and Solaris (ENT-4002)
+	- Report corrupted local database with a critical log message (CFE-2469)
+	- Local DB errors are now logged with the particular DB file path (CFE-2469)
+	- cf-check: repair now preserves readable data in corrupted LMDB files
+	  (CFE-3127)
+	- cf-check: --dump option was added to the backup command
+	- cf-check: Added --no-fork to diagnose command (CFE-3145)
+	- cf-check: Added -M manpage option and other common options (CFE-3082)
+	- cf-check: No DB files in state dir now causes errors
+	- cf-check: dump command now dumps DB contents to JSON5 (CFE-3126)
+	- cf-check: help command can now take a topic as argument
+
+-------------------------------------------------------------------
+Fri Feb  7 17:51:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop fakeroot build dependency, unused.
+- Drop python build dependency, determine-version.py is not used.
+- Always build with systemd, distribution versions without
+  systemd are no longer supported by CFEngine.
+- Drop RHEL5/SLE11 only remove-am_subst_notmake.patch
+- Cleanup spec file, remove obsolete conditionals.
+- Make doc and examples packages noarch.
+
+- rename 0002-Simplify-and-fix-parsing-of-etc-SuSE-release-fixes-i.patch
+  to 0001-Simplify-and-fix-parsing-of-etc-SuSE-release-fixes-i.patch
+  0003-Reduce-string-truncation-warnings.patch
+  to 0002-Reduce-string-truncation-warnings.patch
+  0004-make-home-dir-for-tests.patch
+  to 0003-make-home-dir-for-tests.patch
+- remove 0001-Set-sys.bindir-to-usr-sbin-expect-cf-components-ther.patch
+  
+-------------------------------------------------------------------
+Mon Feb  3 12:08:28 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Mon Dec 16 13:25:37 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 3.14.0.2 (upstream 3.14.0-2)
+  see https://github.com/cfengine/core/blob/3.14.0-2/ChangeLog
+
+-------------------------------------------------------------------
 Tue Jul 23 11:23:47 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
