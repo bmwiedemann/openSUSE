@@ -36,13 +36,14 @@ for line in sys.stdin:
         rqobj = get_request(osc.conf.config['apiurl'], change['requestid'])
         commitdate = rqobj.state.when
         user2 = rqobj.creator
-        if user2 != change['user']:
+        if 'user' in change and user2 != change['user']:
             change['user'] = user2 + ' + ' + change['user']
     else:
         info += "\n\n"
         if 'rev' in change:
             info += obsbase+'/package/rdiff/'+change['project']+'/'+package+'?linkrev=base&rev='+change['rev']+"\n";
-    info += 'by user '+change['user']+"\n"
+    if 'user' in change:
+        info += 'by user '+change['user']+"\n"
     if 'comment' in change:
         info += change['comment']
     info += '\n'
