@@ -19,17 +19,19 @@
 %global pkg_name wai-extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.0.29.2
+Version:        3.1.0
 Release:        0
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-call-stack-devel
 BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-cookie-devel
@@ -57,7 +59,6 @@ BuildRequires:  ghc-wai-logger-devel
 BuildRequires:  ghc-word8-devel
 BuildRequires:  ghc-zlib-devel
 %if %{with tests}
-BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-hspec-devel
 %endif
 
