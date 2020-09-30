@@ -265,4 +265,12 @@
     <comment>- Do not use Xemacs on SLE products (jsc#SLE-12100)</comment>
     <requestid>838572</requestid>
   </revision>
+  <revision rev="38" vrev="39">
+    <srcmd5>63e8e0482f787dcd5bb270efbd8ab648</srcmd5>
+    <version>9100h</version>
+    <time>1601488515</time>
+    <user>dimstar_suse</user>
+    <comment>- Use build condition to enable or disable Xemacs support (jsc#SLE-12100)</comment>
+    <requestid>838742</requestid>
+  </revision>
 </revisionlist>

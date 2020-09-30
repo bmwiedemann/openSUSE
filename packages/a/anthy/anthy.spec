@@ -16,6 +16,8 @@
 #
 
 
+%bcond_with     xemacs
+
 Name:           anthy
 Version:        9100h
 Release:        0
@@ -45,7 +47,7 @@ Patch5:         bugzilla-1175274-emacs-27.1.patch
 BuildRequires:  emacs-x11
 BuildRequires:  fdupes
 BuildRequires:  libtool
-%if 0%{?is_opensuse}
+%if %{with xemacs}
 BuildRequires:  xemacs
 %endif
 
@@ -98,7 +100,7 @@ cd test
 %install
 %make_install
 install -m 644 $RPM_SOURCE_DIR/suse-start-anthy.el %{buildroot}%{_datadir}/emacs/site-lisp/
-%if 0%{?is_opensuse}
+%if %{with xemacs}
 # compile the XEmacs versions of the emacs-lisp files and install them:
 pushd src-util
     rm -f *.elc
@@ -124,7 +126,7 @@ rm -f doc/Makefile.*
 %{_datadir}/anthy/*
 %{_bindir}/*
 %{_datadir}/emacs/site-lisp/*
-%if 0%{?is_opensuse}
+%if %{with xemacs}
 %{_datadir}/xemacs/*
 %endif
 
