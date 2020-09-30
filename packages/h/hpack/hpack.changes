@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:33:30 UTC 2020 - psimons@suse.com
+
+- Update hpack to version 0.34.2.
+  ## Changes in 0.34.2
+    - Accept subcomponents as dependencies (close #382)
+
+  ## Changes in 0.34.1
+    - Fix a bug in `github: ...` introduced with `0.34.0`
+      (f63eb19b956517b4dd8e28dc5785be5889a99298)
+
+  ## Changes in 0.34.0 (deprecated)
+    - Use `PreferNoHash` as default `GenerateHashStrategy`
+    - Add support for library `visibility` (see #382)
+    - Reject URLs for `github`
+
+  ## Changes in 0.33.1
+    - Add `GenerateHashStrategy`.  The default is `PreferHash` for `0.33.0` and
+      will change to `PreferNoHash` with `0.34.0`. See
+      https://github.com/sol/hpack/pull/390) for details.
+
+    - Add command-line options `--hash` and `--no-hash`
+
+  ## Changes in 0.33.0.1
+    - Silently ignore missing hash when the cabal file content didn't change at
+      all (for forward compatibility with #390)
+
+-------------------------------------------------------------------
 Wed Aug 19 08:11:00 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 6GB min disk space for ppc64/ppc64le
