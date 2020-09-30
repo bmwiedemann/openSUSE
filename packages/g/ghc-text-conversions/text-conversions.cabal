@@ -1,0 +1,60 @@
+name:           text-conversions
+version:        0.3.0
+x-revision: 1
+synopsis:       Safe conversions between textual types
+description:    Safe conversions between textual types
+category:       Data
+homepage:       https://github.com/cjdev/text-conversions#readme
+bug-reports:    https://github.com/cjdev/text-conversions/issues
+author:         Alexis King
+maintainer:     lexi.lambda@gmail.com
+license:        ISC
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    CHANGELOG.md
+    LICENSE
+    package.yaml
+    README.md
+    stack.yaml
+
+source-repository head
+  type: git
+  location: https://github.com/cjdev/text-conversions
+
+library
+  hs-source-dirs:
+      src
+  default-extensions: FlexibleInstances MultiParamTypeClasses OverloadedStrings
+  ghc-options: -Wall
+  build-depends:
+      base >= 4.7 && < 5
+    , bytestring
+      -- see https://github.com/haskell-infra/hackage-trustees/issues/280
+    , base16-bytestring >= 0.1.1 && < 0.2
+    , base64-bytestring
+    , errors
+    , text
+  exposed-modules:
+      Data.Text.Conversions
+  default-language: Haskell2010
+
+test-suite text-conversions-test-suite
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  hs-source-dirs:
+      test
+  default-extensions: FlexibleInstances MultiParamTypeClasses OverloadedStrings
+  ghc-options: -Wall -rtsopts -threaded -with-rtsopts=-N
+  build-depends:
+      base
+    , text-conversions
+    , bytestring
+    , hspec
+    , hspec-discover
+    , text
+  other-modules:
+      Data.Text.ConversionsSpec
+  default-language: Haskell2010
