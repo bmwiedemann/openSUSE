@@ -16,7 +16,13 @@
 #
 
 
+# Available on Tumbleweed for all archs
+# TODO revisit the condition for Leap > 15.2 / jump
+%if 0%{?suse_version} > 1500
+%bcond_without system_assimp
+%else
 %bcond_with system_assimp
+%endif
 
 %define base_name libqt5
 %define real_version 5.15.1
@@ -30,6 +36,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+# PATCH-FIX-UPSTREAM https://bugreports.qt.io/browse/QTBUG-84037
+Patch0:         0001-Fix-build-with-the-system-assimp.patch
 BuildRequires:  fdupes
 %if %{with system_assimp}
 BuildRequires:  pkgconfig(assimp) >= 5.0.0
@@ -123,13 +131,13 @@ Group:          Development/Libraries/X11
 Examples for the Qt Quick 3D module.
 
 %prep
-%autosetup -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %build
 %qmake5 -- \
-	%if %{with system_assimp}
-	-system-assimp \
-	%endif
+  %if %{with system_assimp}
+  -system-quick3d-assimp
+  %endif
 
 %make_jobs
 

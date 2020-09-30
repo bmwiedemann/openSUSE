@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 21:36:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use the system assimp package for openSUSE Tumbleweed.
+- Add patch suggested by upstream to fix build:
+  * 0001-Fix-build-with-the-system-assimp.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 07:57:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.1:
