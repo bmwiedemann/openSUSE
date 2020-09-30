@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 20:55:52 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix dsymutil crash on ELF file. (bsc#1176964)
+  * llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch
+
+-------------------------------------------------------------------
 Mon Aug 31 12:33:06 UTC 2020 - Sumit Jamgade <sjamgade@suse.com>
 
 - start using ccache 

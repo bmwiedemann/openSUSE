@@ -133,6 +133,8 @@ Patch36:        compiler-rt-move-fdp.patch
 Patch37:        compiler-rt-sanitizer-ipc-perm.patch
 # PATCH-FIX-UPSTREAM fix-ppcle64-build.patch -- Fix ppcle64 build with newer GCC
 Patch38:        fix-ppcle64-build.patch
+# PATCH-FIX-UPSTREAM llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch -- Fix dsymutil crash on ELF file.
+Patch39:        llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  ccache
 BuildRequires:  cmake
@@ -566,6 +568,7 @@ This package contains the development files for Polly.
 %patch33 -p1
 %patch34 -p1
 %patch35 -p1
+%patch39 -p2
 
 pushd compiler-rt-%{version}.src
 %patch28 -p2
