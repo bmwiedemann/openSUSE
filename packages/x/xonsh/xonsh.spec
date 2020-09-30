@@ -17,7 +17,7 @@
 
 
 Name:           xonsh
-Version:        0.9.21
+Version:        0.9.22
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-3-Clause AND BSD-2-Clause
