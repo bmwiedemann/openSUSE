@@ -1,9 +1,12 @@
 -------------------------------------------------------------------
 Fri Sep 25 10:38:58 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
-- U_0001-Properly-store-certificate-exceptions.patch,
+- CVE-2020-26117: Server certificates were stored as certiticate
+  authoritied, allowing malicious owners of these certificates
+  to impersonate any server after a client had added an exception
+  (boo#1176733)
+  U_0001-Properly-store-certificate-exceptions.patch,
   U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
-  * Properly store certificate exceptions (boo#1176733)
 - adjusted u_tigervnc-add-autoaccept-parameter.patch
 
 -------------------------------------------------------------------
