@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 30 11:03:21 UTC 2020 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed build on Tumbleweed: New commandline options from inkscape
+
+-------------------------------------------------------------------
 Sat Feb 24 16:35:12 UTC 2018 - crrodriguez@opensuse.org
 
 - Fix BuildRequires so it lists all the needed, specific 

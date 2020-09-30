@@ -245,4 +245,12 @@ Also now made the changelog factory-auto-review compliant.</comment>
     <comment></comment>
     <requestid>579828</requestid>
   </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>ba563b636f1acaade7941b6acf57d5bc</srcmd5>
+    <version>0.4.8.2016</version>
+    <time>1601488528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838753</requestid>
+  </revision>
 </revisionlist>

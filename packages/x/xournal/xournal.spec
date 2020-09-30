@@ -1,7 +1,7 @@
 #
 # spec file for package xournal
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        An application for notetaking, sketching, and keeping a journal using a stylus
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
-Url:            http://xournal.sourceforge.net/
+URL:            http://xournal.sourceforge.net/
 Source:         http://download.sf.net/xournal/%{name}-%{version}.tar.gz
 Patch0:         %{name}-implicit-funcs.patch
 # PATCH-FIX-UPSTREAM xournal-Improve-window-title.patch -- https://sourceforge.net/p/xournal/patches/79/
@@ -36,6 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  inkscape
 BuildRequires:  intltool
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
@@ -54,14 +55,12 @@ BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 %description
 Xournal is an application for notetaking, sketching, and keeping a journal
 using a stylus. You can also use it to annotate PDF files with scribbles or
 text. It works similarly to applications like Microsoft Windows Journal or
 Jarnal.
-It is free software (GNU GPL) and runs on Linux and other GTK+/Gnome platforms. 
+It is free software (GNU GPL) and runs on Linux and other GTK+/Gnome platforms.
 
 %prep
 %setup -q
@@ -74,21 +73,26 @@ It is free software (GNU GPL) and runs on Linux and other GTK+/Gnome platforms.
 autoreconf -fi
 intltoolize --force
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 make DESTDIR=%{buildroot} desktop-install
 
+%if 0%{?suse_version} > 1500
+export EXPORT="--export-filename"
+%else
+export EXPORT="-e"
+%endif
 # GENERATE AND INSTALL HIRES ICONS IN HICOLOR ICON DIR
-for i in 24 32 48 64 128 256
+for i in 64 128 256
 do
   mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps
   mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/mimetypes
   inkscape -w ${i} -C pixmaps/%{name}.svg \
-           -e %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png
+           $EXPORT %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png
   inkscape -w ${i} -C pixmaps/xoj.svg \
-           -e %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/mimetypes/application-x-xoj.png
+           $EXPORT %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/mimetypes/application-x-xoj.png
 done
 
 %suse_update_desktop_file %{name}
@@ -111,7 +115,6 @@ install -m 0644 -t %{buildroot}%{_docdir}/%{name} AUTHORS COPYING ChangeLog NEWS
 %mime_database_postun
 
 %files -f %{name}.lang
-%defattr(-, root, root)
 %doc %{_docdir}/%{name}
 %{_bindir}/%{name}
 %{_datadir}/%{name}
@@ -120,6 +123,7 @@ install -m 0644 -t %{buildroot}%{_docdir}/%{name} AUTHORS COPYING ChangeLog NEWS
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/icons/hicolor/*/mimetypes/*xoj.*
 %{_datadir}/mime/packages/xournal.xml
+%dir %{_datadir}/mime/application
 %{_datadir}/mime/application/x-xoj.xml
 %dir %{_datadir}/mimelnk
 %dir %{_datadir}/mimelnk/application
