@@ -39,7 +39,9 @@ for line in sys.stdin:
         if user2 != change['user']:
             change['user'] = user2 + ' + ' + change['user']
     else:
-        info += "\n\n"+obsbase+'/package/rdiff/'+change['project']+'/'+package+'?linkrev=base&rev='+change['rev']+"\n";
+        info += "\n\n"
+        if 'rev' in change:
+            info += obsbase+'/package/rdiff/'+change['project']+'/'+package+'?linkrev=base&rev='+change['rev']+"\n";
     info += 'by user '+change['user']+"\n"
     if 'comment' in change:
         info += change['comment']
