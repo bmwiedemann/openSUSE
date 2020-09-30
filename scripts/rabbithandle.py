@@ -31,6 +31,8 @@ for line in sys.stdin:
         info = 'Update '+package+' to rev '+change['rev']
     else:
         info = 'Delete '+package
+    if not 'user' in change and 'sender' in change:
+        change['user'] = change['sender']
     if 'requestid' in change:
         info += ' via SR '+change['requestid']+"\n\n"+obsbase+'/request/show/'+change['requestid']+"\n"
         rqobj = get_request(osc.conf.config['apiurl'], change['requestid'])
