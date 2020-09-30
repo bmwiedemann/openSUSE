@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+	<short>Music Player Daemon</short>
+	<description>Opens ports for Music Player Daemon</description>
+	<port port="6600" protocol="tcp"/>
+	<port port="8000" protocol="tcp"/>
+</service>

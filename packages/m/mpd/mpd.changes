@@ -1,23 +1,84 @@
 -------------------------------------------------------------------
+Wed Sep 30 01:36:05 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations
+  * Removed unnecessary constructions and comments.
+  * Add sig-file.
+  * Add mpd.firewalld file with 6600 and 8000 tcp ports for firewalld.
+  * Add mpd.tmpfiles.d for /run/mpd directory.
+  * Enable build documentation and add separate doc package.
+  * Remove patch mpd-docs.patch (needless).
+- Change patch mpd-mpdconf_suse.patch and rename to mpd-conf.patch.
+  * Change and set log_file option to "/var/log/mpd.log".
+  * Change and set pid_file and bind_to_address to /run/mpd/* directory.
+  * Add additional description for log_level option and set to "warning".
+  * Set auto_update and zeroconf_enabled options to "no".
+  * Remove prefix "My " in name options alsa and httpd output devices.
+  * Change option device in alsa_output to "plug:plugequal" for alsaequal.
+  * Add optional option mixer_control in alsa_output with value "Master".
+  * Change quality, bitrate and format options in output devices.
+- Change mpd-user.conf file: add alsa audio_output and drop id3v1_encoding.
+- Update to 0.22
+  * Add BuildRequires for cmake, python3-Sphinx and pkgconfig(liburing).
+  * Increased the minimum version for meson to 0.49.0.
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.22/NEWS
+  * protocol
+    * "findadd"/"searchadd"/"searchaddpl" support the "sort" and
+    * "window" parameters
+    * add command "readpicture" to download embedded pictures
+    * command "moveoutput" moves an output between partitions
+    * command "delpartition" deletes a partition
+    * show partition name in "status" response
+  * tags: new tags "Grouping" (for ID3 "TIT1"), "Work" and "Conductor"
+  * input
+    * curl: support "charset" parameter in URI fragment
+    * ffmpeg: allow partial reads
+    * io_uring: new plugin for local files on Linux (using liburing)
+    * smbclient: close unused SMB/CIFS connections
+  * database: upnp: drop support for libupnp versions older than 1.8
+  * playlist
+    * cue: integrate contents in database
+    * flac: support reading CUE sheets from remote FLAC files
+  * decoder
+    * ffmpeg: support RTSP
+    * mad: remove option "gapless", always do gapless
+    * sidplay: add option "default_genre"
+    * sidplay: map SID name field to "Album" tag
+    * sidplay: add support for new song length format with libsidplayfp 2.0
+    * vorbis, opus: improve seeking accuracy
+  * filter
+    * ffmpeg: new plugin based on FFmpeg's libavfilter library
+    * hdcd: new plugin based on FFmpeg's "af_hdcd" for HDCD playback
+    * volume: convert S16 to S24 to preserve quality and reduce dithering noise
+    * dsd: add integer-only DSD to PCM converter
+  * output
+    * jack: add option "auto_destination_ports"
+    * jack: report error details
+    * pulse: add option "media_role"
+    * solaris: support S8 and S32
+  * lower the real-time priority from 50 to 40
+  * switch to C++17 GCC 8 or clang 5 (or newer) recommended
+
+-------------------------------------------------------------------
 Wed Sep 23 06:37:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.21.26:
   * database
-    - inotify: obey ".mpdignore" files
+    * inotify: obey ".mpdignore" files
   * output
-    - osx: fix crash bug
-    - sles: support floating point samples
+    * osx: fix crash bug
+    * sles: support floating point samples
   * archive
-    - bzip2: fix crash on corrupt bzip2 file
-    - bzip2: flush output at end of input file
-    - iso9660: fix unaligned reads
-    - iso9660: support seeking
-    - zzip: fix crash on corrupt ZIP file
+    * bzip2: fix crash on corrupt bzip2 file
+    * bzip2: flush output at end of input file
+    * iso9660: fix unaligned reads
+    * iso9660: support seeking
+    * zzip: fix crash on corrupt ZIP file
   * decoder
-    - ffmpeg: remove "rtsp://" from the list of supported protocols
-    - ffmpeg: add "hls+http://" to the list of supported protocols
-    - opus: support the gain value from the Opus header
-    - sndfile: fix lost samples at end of file
+    * ffmpeg: remove "rtsp://" from the list of supported protocols
+    * ffmpeg: add "hls+http://" to the list of supported protocols
+    * opus: support the gain value from the Opus header
+    * sndfile: fix lost samples at end of file
   * fix "single" mode bug after resuming playback
   * the default log_level is "default", not "info" 
 
@@ -38,21 +99,21 @@ Tue Jul  7 06:32:18 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.25/NEWS
   * protocol: fix crash when using "rangeid" while playing
   * database
-    - simple: automatically scan new mounts
-    - upnp: fix compatibility with Plex DLNA
+    * simple: automatically scan new mounts
+    * upnp: fix compatibility with Plex DLNA
   * storage
-    - fix disappearing mounts after mounting twice
-    - udisks: fix reading ".mpdignore"
+    * fix disappearing mounts after mounting twice
+    * udisks: fix reading ".mpdignore"
   * input
-    - file: detect premature end of file
-    - smbclient: don't send credentials to MPD clients
+    * file: detect premature end of file
+    * smbclient: don't send credentials to MPD clients
   * decoder
-    - opus: apply pre-skip and end trimming
-    - opus: fix memory leak
-    - opus: fix crash bug
-    - vorbis: fix crash bug
+    * opus: apply pre-skip and end trimming
+    * opus: fix memory leak
+    * opus: fix crash bug
+    * vorbis: fix crash bug
   * neighbor
-    - upnp: fix crash during shutdown
+    * upnp: fix crash during shutdown
 
 -------------------------------------------------------------------
 Mon Jun 22 10:33:14 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>

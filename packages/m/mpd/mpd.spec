@@ -16,28 +16,27 @@
 #
 
 
-%define mver    0.21
+%define mver    0.22
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.21.26
+Version:        0.22
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
 URL:            https://www.musicpd.org
-Source0:        https://www.musicpd.org/download/mpd/%{mver}/mpd-%{version}.tar.xz
-Source1:        README.%{name}
-Source2:        mpd-user.conf
-# PATCH-FEATURE-OPENSUSE mpd-mpdconf_suse.patch --
-Patch0:         %{name}-mpdconf_suse.patch
-# PATCH-FEATURE-OPENSUSE mpd-docs.patch
-Patch1:         mpd-docs.patch
-# PATCH-FIX-OPENSUSE mpd-sndfile.patch
-Patch2:         mpd-sndfile.patch
+Source0:        https://www.musicpd.org/download/%{name}/%{mver}/%{name}-%{version}.tar.xz
+Source1:        https://www.musicpd.org/download/%{name}/%{mver}/%{name}-%{version}.tar.xz.sig
+Source2:        README.%{name}
+Source3:        %{name}-user.conf
+Source4:        %{name}.firewalld
+Source5:        %{name}.tmpfiles.d
+Patch0:         %{name}-conf.patch
+Patch1:         %{name}-sndfile.patch
+BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  group(audio)
-#
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libcue-devel
@@ -45,8 +44,9 @@ BuildRequires:  libcue-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libmikmod-devel
 BuildRequires:  libmp3lame-devel
-BuildRequires:  meson >= 0.47.2
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Sphinx
 # MPD_ENABLE_AUTO_PKG
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ao)
@@ -76,6 +76,7 @@ BuildRequires:  pkgconfig(libnfs)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libupnp)
+BuildRequires:  pkgconfig(liburing)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
@@ -115,14 +116,17 @@ for Gnome, KDE, console and Apache (PHP).
 
 Please read README.mpd how to configure it.
 
+%package doc
+Summary:        Additional Package Documentation
+BuildArch:      noarch
+
+%description doc
+This package contains optional documentation provided in addition to this package's base documentation.
+
 %prep
 %autosetup -p1
 
 %build
-export CC=gcc
-export CXX=g++
-test -x "$(type -p gcc-7)" && export CC=gcc-7
-test -x "$(type -p g++-7)" && export CXX=g++-7
 %meson \
     -Dsidplay=disabled \
     -Dfaad=disabled \
@@ -133,7 +137,8 @@ test -x "$(type -p g++-7)" && export CXX=g++-7
     -Depoll=true \
     -Ddatabase=true \
     -Ddaemon=true \
-    -Ddocumentation=false \
+    -Ddocumentation=enabled \
+    -Dmanpages=true \
     -Ddsd=true \
     -Dfifo=true \
     -Dhttpd=true \
@@ -210,46 +215,56 @@ test -x "$(type -p g++-7)" && export CXX=g++-7
 
 %install
 %meson_install
-# missing dirs
-install -d \
-        %{buildroot}%{_localstatedir}/lib/%{name}/playlists \
-        %{buildroot}%{_sbindir}
-# additional docs
-install -m 0644 %{SOURCE1} README.mpd
-cp -a "%{SOURCE2}" "%{buildroot}%{_docdir}/%{name}/"
-ln -s service %{buildroot}%{_sbindir}/rcmpd
-rm %{buildroot}%{_userunitdir}/mpd.socket
-ln -s ../system/mpd.socket %{buildroot}%{_userunitdir}/mpd.socket
+mv %{buildroot}%{_datadir}/doc/%{name}/html .
+rm -r %{buildroot}%{_datadir}/doc/%{name}
+install -pm0644 %{SOURCE2} %{SOURCE3} .
+install -Dpm0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
+install -Dpm0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -Dpm0644 doc/mpdconf.example %{buildroot}%{_sysconfdir}/%{name}.conf
+install -pm0644 build/doc/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+install -pm0644 build/doc/%{name}.conf.5 %{buildroot}%{_mandir}/man5/%{name}.conf.5
+# Remove duplicate for mpd.socket and replace it with a symlink.
+rm %{buildroot}%{_userunitdir}/%{name}.socket
+ln -s ../system/%{name}.socket %{buildroot}%{_userunitdir}/%{name}.socket
+mkdir %{buildroot}%{_sbindir}
+ln -s service %{buildroot}%{_sbindir}/rc%{name}
+mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}/playlists
 
 %pre
-# add mpd user only when installing first time
-getent passwd mpd >/dev/null || useradd -r -g audio -d %{_localstatedir}/lib/mpd -s /sbin/nologin -c "user for mpd" mpd
-%service_add_pre mpd.service mpd.socket
+getent passwd %{name} >/dev/null || useradd -rc 'Music Player Daemon' -s /bin/false -d %{_localstatedir}/lib/%{name} -g audio %{name}
+%service_add_pre %{name}.service %{name}.socket
 
 %post
-%service_add_post mpd.service mpd.socket
+%service_add_post %{name}.service %{name}.socket
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %preun
-%service_del_preun mpd.service mpd.socket
+%service_del_preun %{name}.service %{name}.socket
 
 %postun
-%service_del_postun mpd.service mpd.socket
+%service_del_postun %{name}.service %{name}.socket
 
 %files
 %license COPYING
-%doc README.mpd
+%doc AUTHORS NEWS README.md README.%{name} %{name}-user.conf doc/mpdconf.example
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/%{name}
-%{_sbindir}/rcmpd
+%{_sbindir}/rc%{name}
 %attr(0755,mpd,audio) %{_localstatedir}/lib/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man5/%{name}.conf.5%{?ext_man}
-%dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_unitdir}/mpd.service
-%{_unitdir}/mpd.socket
-%{_userunitdir}/mpd.socket
-%{_userunitdir}/mpd.service
+%{_unitdir}/%{name}.service
+%{_unitdir}/%{name}.socket
+%{_userunitdir}/%{name}.socket
+%{_userunitdir}/%{name}.service
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/%{name}.xml
+%{_tmpfilesdir}/%{name}.conf
+%ghost %dir /run/%{name}
+
+%files doc
+%doc html/*.{html,js} html/_static
 
 %changelog
