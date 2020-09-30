@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:57:27 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.27.0:
+  * better detection of critical logs in the inspect chisel
+- Drop no longer needed patches:
+  * sysdig-kernel5_6.patch
+  * sysdig-32bit.patch
+
+-------------------------------------------------------------------
 Thu Apr  9 06:11:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.26.6:

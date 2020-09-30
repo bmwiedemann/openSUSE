@@ -384,4 +384,16 @@
   * sysdig-kernel5_6.patch</comment>
     <requestid>792638</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b8d84e4c2695823bccdaca7bfbf57c7e</srcmd5>
+    <version>0.27.0</version>
+    <time>1601488503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.27.0:
+  * better detection of critical logs in the inspect chisel
+- Drop no longer needed patches:
+  * sysdig-kernel5_6.patch
+  * sysdig-32bit.patch</comment>
+    <requestid>838718</requestid>
+  </revision>
 </revisionlist>
