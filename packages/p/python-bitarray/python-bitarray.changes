@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 30 04:35:36 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.3:
+  * add optional index parameter to `.index()` to invert single bit
+  * fix `sys.getsizeof(bitarray)` by adding `.__sizeof__()`, see issue #100 
+
+-------------------------------------------------------------------
 Mon Aug 31 04:58:58 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.2: 
