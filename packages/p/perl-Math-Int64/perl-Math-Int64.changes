@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Wed Jan  6 10:12:30 UTC 2016 - coolo@suse.com
+
+- updated to 0.54
+   see /usr/share/doc/packages/perl-Math-Int64/Changes
+
+  0.54     2016-01-04
+          - don't use the reserved preprocessor macro __INT64 which was
+            causing a conflict in Cygwin (bug report by Graham Ollis)
+
+-------------------------------------------------------------------
+Fri May 15 11:10:34 UTC 2015 - coolo@suse.com
+
+- updated to 0.53
+   see /usr/share/doc/packages/perl-Math-Int64/Changes
+
+  0.53     2015-05-14
+          - warn when both native_if_available and die_on_overflow are
+            enabled (bug report by David Wheeler).
+
+-------------------------------------------------------------------
+Mon Apr 13 18:32:51 UTC 2015 - coolo@suse.com
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-Math-Int64/Changes
+
+-------------------------------------------------------------------
+Tue Feb 17 13:42:07 UTC 2015 - coolo@suse.com
+
+- initial package 0.34
+    * created by cpanspec 1.78.08
+
