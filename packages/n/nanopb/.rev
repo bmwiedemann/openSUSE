@@ -73,4 +73,12 @@
   * Fixes for AVR builds and tests. (forwarded request 782945 from mrostecki)</comment>
     <requestid>782946</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e9b58dda5f50e3277c128a58ddf18afc</srcmd5>
+    <version>0.4.2</version>
+    <time>1601488518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838741</requestid>
+  </revision>
 </revisionlist>

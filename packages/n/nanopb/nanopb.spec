@@ -19,7 +19,7 @@
 %define sover 0
 %define src_install_dir %{_prefix}/src/%{name}
 Name:           nanopb
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Protocol Buffers with small code size
 License:        Zlib
