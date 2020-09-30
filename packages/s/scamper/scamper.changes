@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 23 06:32:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20200923:
+ - scamper:
+  * integrate some fixes for compiling scamper on windows
+ - sc_erosprober:
+  * allow larger probe intervals
+ - sc_hoiho:
+  * add support for learning regexes that extract ASNs in hostnames
+
+-------------------------------------------------------------------
 Sat Jul 18 13:36:44 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 20200717:
