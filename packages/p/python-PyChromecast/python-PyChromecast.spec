@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-PyChromecast
-Version:        7.3.0
+Version:        7.5.0
 Release:        0
 Summary:        Python module to talk to Google Chromecast
 License:        MIT
