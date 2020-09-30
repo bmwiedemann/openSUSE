@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 24 02:00:45 UTC 2020 - psimons@suse.com
+
+- Update yesod-core to version 1.6.18.4.
+  ## 1.6.18.4
+
+  * Fixed a bug where `mkYesod` and other TH functions didn't work for datatypes with explicitly stated type variables, including the case with typeclass constraints. [https://github.com/yesodweb/yesod/pull/1697](#1697)
+
+  ## 1.6.18.3
+
+  * Remove mention of an oudated Yesod type (`GHandler`) from the docs for `handlerToIO`. [https://github.com/yesodweb/yesod/pull/1695](#1695)
+
+  ## 1.6.18.2
+
+  * Recommends `.yesodroutes` as the file extension for Yesod routes files. [#1686](https://github.com/yesodweb/yesod/pull/1686)
+
+  ## 1.6.18.1
+
+  * Increase the size of CSRF token
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:33 UTC 2020 - psimons@suse.com
 
 - Update yesod-core to version 1.6.18 revision 1.
