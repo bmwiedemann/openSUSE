@@ -25,7 +25,8 @@ channel.queue_bind(exchange='pubsub', queue=queue_name, routing_key=prefix+'.obs
 
 def callback(ch, method, properties, body):
     #if method.routing_key == "opensuse.obs.request.create":
-        print(body.decode("utf-8", "ignore"))
+        body=body.decode("utf-8", "ignore")
+        print(body[:1] + '"routing_key":"'+method.routing_key+'",' + body[1:])
         sys.stdout.flush()
 
 channel.basic_consume(queue_name, callback,
