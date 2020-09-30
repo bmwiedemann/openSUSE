@@ -1,0 +1,29 @@
+Fix a copy and paste error that would cause a crash.
+
+Summary: The wrong variable was being checked for an error, which mean a llvm::Error went unchecked and crashes dsymutil. Discovered this when trying to feed an ELF file to "dsymutil --update" and running into the crash.
+
+Reviewers: aprantl, JDevlieghere
+
+Subscribers: llvm-commits
+
+Tags: #llvm
+
+Differential Revision: https://reviews.llvm.org/D75777
+
+---
+ llvm/tools/dsymutil/MachODebugMapParser.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/llvm/tools/dsymutil/MachODebugMapParser.cpp b/llvm/tools/dsymutil/MachODebugMapParser.cpp
+index 83703fb13f0a..a9d6c876860c 100644
+--- a/llvm/tools/dsymutil/MachODebugMapParser.cpp
++++ b/llvm/tools/dsymutil/MachODebugMapParser.cpp
+@@ -383,7 +383,7 @@ ErrorOr<std::vector<std::unique_ptr<DebugMap>>> MachODebugMapParser::parse() {
+ 
+   auto Objects = ObjectEntry->getObjectsAs<MachOObjectFile>();
+   if (!Objects) {
+-    return errorToErrorCode(ObjectEntry.takeError());
++    return errorToErrorCode(Objects.takeError());
+   }
+ 
+   std::vector<std::unique_ptr<DebugMap>> Results;
