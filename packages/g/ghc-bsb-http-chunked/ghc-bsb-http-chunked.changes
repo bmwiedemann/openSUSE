@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 02:00:35 UTC 2020 - psimons@suse.com
+
+- Update bsb-http-chunked to version 0.0.0.4 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:39 UTC 2020 - psimons@suse.com
 
 - Update bsb-http-chunked to version 0.0.0.4 revision 2.

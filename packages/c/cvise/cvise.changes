@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 29 15:39:22 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.7.0+git.20200929.17345b8:
+  * Bump to v1.7.0.
+
+-------------------------------------------------------------------
+Tue Sep 29 15:33:15 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.6.0+git.20200929.a12db89:
+  * Fix psutil core count detection code.
+  * Add OBS image at the beginning.
+  * Add icon.
+  * Add OBS master following project.
+  * Update last update Creduce commit.
+  * build_and_test.sh: resolve bash via /usr/bin/env
+  * passes/ifs.py: fix infinite loop in IfPass
+  * Fix a small type.
+
+-------------------------------------------------------------------
 Thu Jul 30 09:25:01 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Stop using zstd compression.

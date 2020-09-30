@@ -18,7 +18,7 @@
 
 
 Name:           embree
-Version:        3.11.0
+Version:        3.12.0
 Release:        0
 Summary:        Ray Tracing Kernels
 License:        Apache-2.0

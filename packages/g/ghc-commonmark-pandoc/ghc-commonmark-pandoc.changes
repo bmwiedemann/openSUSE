@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:33:51 UTC 2020 - psimons@suse.com
+
+- Update commonmark-pandoc to version 0.2.0.1.
+  ## 0.2.0.1
+
+  - Allow pandoc-types 1.22.
+
+-------------------------------------------------------------------
 Tue Sep 15 15:28:37 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 4GB min disk space

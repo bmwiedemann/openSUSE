@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 02:00:58 UTC 2020 - psimons@suse.com
+
+- Update http-date to version 0.0.9.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:08 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

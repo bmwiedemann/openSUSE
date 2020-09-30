@@ -19,7 +19,7 @@
 %global pkg_name cassava-megaparsec
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Megaparsec parser of CSV files that plays nicely with Cassava
 License:        MIT
@@ -53,7 +53,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver megaparsec '< 9.0' '< 10'
 
 %build
 %ghc_lib_build

@@ -22,7 +22,7 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 %define php_major_version       %(php -r "echo PHP_MAJOR_VERSION;")
 Name:           roundcubemail
-Version:        1.4.8
+Version:        1.4.9
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        GPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause

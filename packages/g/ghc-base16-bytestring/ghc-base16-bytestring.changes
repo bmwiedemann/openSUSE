@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:33:51 UTC 2020 - psimons@suse.com
+
+- Update base16-bytestring to version 0.1.1.7 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:06 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

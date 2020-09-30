@@ -25,6 +25,7 @@ Summary:        Safe conversions between textual types
 License:        ISC
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-base64-bytestring-devel
@@ -53,6 +54,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

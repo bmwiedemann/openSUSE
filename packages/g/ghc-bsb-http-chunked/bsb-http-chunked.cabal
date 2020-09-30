@@ -1,6 +1,6 @@
 Name:                bsb-http-chunked
 Version:             0.0.0.4
-x-revision: 2
+x-revision: 3
 Synopsis:            Chunked HTTP transfer encoding for bytestring builders
 
 Description:         This library contains functions for encoding [bytestring
@@ -38,7 +38,7 @@ Source-repository head
 Library
   exposed-modules:   Data.ByteString.Builder.HTTP.Chunked
   build-depends:     base >= 4.8 && < 5,
-                     bytestring >= 0.10.2 && < 0.11
+                     bytestring >= 0.10.2 && < 0.12
   ghc-options:       -Wall -O2
   if impl(ghc >= 8.0)
     ghc-options:     -Wcompat

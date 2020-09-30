@@ -1,5 +1,0 @@
-# Ignore the following warnings in the source package
-addFilter("upb-source.* env-script-interpreter")
-addFilter("upb-source.* non-executable-script")
-addFilter("upb-source.* suse-filelist-forbidden-fhs23")
-addFilter("upb-source.* zero-length")

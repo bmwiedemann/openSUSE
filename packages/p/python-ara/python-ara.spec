@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ara
-Version:        1.4.3
+Version:        1.5.1
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later
@@ -38,6 +38,7 @@ BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-cliff
 Requires:       python-pbr >= 2.0.0
 Requires:       python-requests >= 2.14.2
 Requires(post): update-alternatives
@@ -79,6 +80,7 @@ tools and interfaces.
 %install
 %if !%{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ara
 %python_clone -a %{buildroot}%{_bindir}/ara-manage
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -90,14 +92,17 @@ ara-manage test ara
 
 %if !%{with test}
 %post
+%python_install_alternative ara
 %python_install_alternative ara-manage
 
 %postun
+%python_uninstall_alternative ara
 %python_uninstall_alternative ara-manage
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
+%python_alternative %{_bindir}/ara
 %python_alternative %{_bindir}/ara-manage
 %{python_sitelib}/*
 %endif

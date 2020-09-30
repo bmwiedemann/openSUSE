@@ -25,6 +25,7 @@ Summary:        Liquid Types for Haskell
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 Patch1:         fix-build-with-diff-0.4.x-part-1.patch
 Patch2:         fix-build-with-diff-0.4.x-part-2.patch
 BuildRequires:  chrpath

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 30 02:51:51 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.5.0:
+  * Allow passing additional media information through to play_media
+  * Add support for lists, playQueues, and playlists to Plex controller
+  * Misc spelling changes
+
+-------------------------------------------------------------------
 Tue Sep 22 04:34:34 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.3.0:

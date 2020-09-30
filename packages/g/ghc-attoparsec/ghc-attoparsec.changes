@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:33:18 UTC 2020 - psimons@suse.com
+
+- Update attoparsec to version 0.13.2.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:02 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

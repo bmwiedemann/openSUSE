@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 12 16:16:32 UTC 2020 - psimons@suse.com
+
+- Update cassava-megaparsec to version 2.0.2.
+  ## Cassava Megaparsec 2.0.2
+
+  * Add suppport for `megaparsec-9.0.0`
+
+-------------------------------------------------------------------
 Wed Sep  9 14:43:15 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Relax over-specified constraint on megaparsec.

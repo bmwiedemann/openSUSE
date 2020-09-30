@@ -19,7 +19,7 @@
 %global pkg_name hpack
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.33.0
+Version:        0.34.2
 Release:        0
 Summary:        A modern format for Haskell packages
 License:        MIT
@@ -78,7 +78,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{name} library development files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %ghc_lib_build

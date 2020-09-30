@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:35:49 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/wai-extra-3.1.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Fri Sep 18 02:00:38 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.0.31.
+  ## 3.0.31
+
+  * Undo WaiTestFailure change in previous release
+
+  ## 3.0.30
+
+  * `Network.Wai.Test`: Add support source locations to assertion primitives [#812](https://github.com/yesodweb/wai/pull/812)
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:36 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
