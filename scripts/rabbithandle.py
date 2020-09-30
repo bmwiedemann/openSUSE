@@ -27,6 +27,7 @@ for line in sys.stdin:
     if change['project'] != 'openSUSE:Factory':
         continue
     package = change['package']
+    commitdate = None
     if 'rev' in change:
         info = 'Update '+package+' to rev '+change['rev']
     else:
