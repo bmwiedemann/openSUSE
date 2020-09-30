@@ -337,6 +337,8 @@ products:
     - x86_64
   - opensuse-bind-image:
     - x86_64
+  - opensuse-cockpit-ws-image:
+    - x86_64
   - opensuse-dhcp-server-image:
     - x86_64
   - opensuse-docker_auth-image:
@@ -465,7 +467,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20200928'
 publishing: '20200928'
-testing: '20200928'
+testing: '20200929'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
