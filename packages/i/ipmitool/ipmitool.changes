@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:49:45 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- clean up patches
+  rename fwum_enhance_output.patch
+   to 0001-Enhance-fwum-output.patch
+  rename fix_file_permissions.patch
+   to 0002-Fix-file-permissions.patch
+  rename several_more_compile_fixes.patch
+   to 0003-Cleanup-and-compiler-issues-only-no-functional-chang.patch
+  rename ipmitool_adjust_suse_paths.patch
+   to 0004-Adjust-SUSE-paths.patch
+  rename hpm_x_compatibility_msg_is_debug_only.patch
+   to 0005-HPM-x-compatibility-message-is-DEBUG-only.patch
+  rename autotools_define_DOWNLOAD.diff
+   to 0006-Make-IANA-PEN-download-configurable-fix-uninitalized.patch
+
+-------------------------------------------------------------------
+Wed Sep 23 07:30:26 UTC 2020 - kkaempf@suse.com
+
+- Update to version 1.8.18+git20200916.1245aaa387dc:
+  * fru: Fix crashes on 6-bit ASCII strings
+  * Refix 6e037d6bfbbb93b349c8ca331ebde03a837f76bf
+  * oem: Add product ID for YADRO VEGMAN
+  * configure.ac: add '--location' for curl to follow location
+  * configure.ac: replace '-#' by '--progress-bar' with curl
+  * log: refix 16f937a1: Add missing header changes
+  * Add version info to debug output
+  * doc, ci: Fix an error in package name for Windows
+  * doc: Fix a small typo in INSTALL
+  * RPM support: updated spec file changelog
+
+-------------------------------------------------------------------
 Tue Feb 11 13:39:26 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Don't hardcode /usr but use rpm variables 

@@ -1,0 +1,130 @@
+From 44faed961d148ded6e6a75b73a25d85bcbdd843c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 23 Sep 2020 09:44:29 +0200
+Subject: [PATCH 6/6] Make IANA PEN download configurable - fix uninitalized
+ DOWNLOAD variable
+
+Currently if you do not have wget and curl requirement met, you get
+this error:
+[   93s] configure: WARNING: ** Neither wget nor curl could be found.
+[   93s] configure: WARNING: ** IANA PEN database will not be installed by `make install` !
+[   93s] configure: WARNING: ** Download is:
+[   93s] configure: WARNING:
+...
+[  104s] configure: error: conditional "DOWNLOAD" was never defined.
+[  104s] Usually this means the macro was only invoked conditionally.
+[  104s] error: Bad exit status from /var/tmp/rpm-tmp.TYnvu5 (%build)
+
+Internet download is restricted in most build environments.
+So there must be a knob to enable/disable IANA PEN database download.
+For security reasons and as a good manner for open source tools, the internet
+download is by default set to off.
+
+This patch initializes all needed variables and also introduces to make the
+IANA PEN internet download configurable.
+
+./configure
+then has this additional feature:
+
+  --enable-iana-download  Download IANA PEN database [default=no]
+
+Depending on whether it has explicitly been enabled this additional output
+is shown after build env is successfully set up via ./configure:
+
+  Download IANA PEN database   : yes
+  IANA PEN database URL        : http://www.iana.org/assignments/enterprise-numbers
+
+The URL is unfortunately hardcoded in the message. I couldn't find a quick
+way to show the IANA_PEN_URL variable there, so if this is ever changed (it is
+not configurable right now, but maybe with a follow up patch in the future),
+it has to be changed in the help string as well.
+---
+ Makefile.am  |  5 ++---
+ configure.ac | 39 ++++++++++++++++++++++++++-------------
+ 2 files changed, 28 insertions(+), 16 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index ce3267f00bc8..05fa209e90bc 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -41,7 +41,6 @@ MAINTAINERCLEANFILES = Makefile.in aclocal.m4 configure configure-stamp \
+ 	$(distdir).tar.gz $(distdir).tar.bz2
+ 
+ SUBDIRS = lib src include doc contrib control
+-IANA_PEN = http://www.iana.org/assignments/enterprise-numbers
+ 
+ dist-hook:
+ 	cp control/ipmitool.spec $(distdir)
+@@ -53,8 +52,8 @@ if DOWNLOAD
+ 
+ enterprise-numbers:
+ 	@echo Downloading IANA PEN database...
+-	@$(DOWNLOAD) "$(IANA_PEN)" > tmpfile.$$PPID || {\
+-		echo "FAILED to download the IANA PEN database"; \
++	@$(DOWNLOAD) "$(IANA_PEN_URL)" > tmpfile.$$PPID || {\
++		echo "FAILED to download the IANA PEN database from $(IANA_PEN_URL)"; \
+ 		rm tmpfile.$$PPID; \
+ 		false; \
+ 	}
+diff --git a/configure.ac b/configure.ac
+index b421192daef7..c7a20cad1dc3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -56,23 +56,34 @@ if test "x$exec_prefix" = "xNONE"; then
+ 	exec_prefix="$prefix"
+ fi
+ 
+-if test "x$WGET" = "x"; then
+-	if test "x$CURL" = "x"; then
+-		AC_MSG_WARN([** Neither wget nor curl could be found.])
+-		AC_MSG_WARN([** IANA PEN database will not be installed by `make install` !])
++xiana_pen_url="http://www.iana.org/assignments/enterprise-numbers"
++AC_SUBST(IANA_PEN_URL, xiana_pen_url)
++
++AC_ARG_ENABLE([iana-download],
++	[AC_HELP_STRING([--enable-iana-download],
++			[Download IANA PEN database [default=no]])],
++	[xenable_iana_download=$enableval],
++	[xenable_iana_download=no])
++if test "x$xenable_iana_download" = "xyes"; then
++	if test "x$WGET" = "x"; then
++		if test "x$CURL" = "x"; then
++			AC_MSG_WARN([** Neither wget nor curl could be found.])
++			AC_MSG_WARN([** IANA PEN database will not be installed by `make install` !])
++			xenable_iana_download="no"
++		else
++			DOWNLOAD="$CURL -#"
++		fi
+ 	else
+-		DOWNLOAD="$CURL --location --progress-bar"
+-		AM_CONDITIONAL([DOWNLOAD], [true])
++		DOWNLOAD="$WGET -c -nd -O -"
+ 	fi
++fi
++if test "x$xenable_iana_download" = "xyes"; then
++ 	AM_CONDITIONAL([DOWNLOAD], [true])
++	AC_SUBST(DOWNLOAD, $DOWNLOAD)
+ else
+-	DOWNLOAD="$WGET -c -nd -O -"
+-	AM_CONDITIONAL([DOWNLOAD], [true])
++	AM_CONDITIONAL([DOWNLOAD], [false])
+ fi
+ 
+-AC_MSG_WARN([** Download is:])
+-AC_MSG_WARN($DOWNLOAD)
+-AC_SUBST(DOWNLOAD, $DOWNLOAD)
+-
+ dnl
+ dnl set default option values
+ dnl
+@@ -773,4 +784,6 @@ AC_MSG_RESULT([Extra tools])
+ AC_MSG_RESULT([  ipmievd   : yes])
+ AC_MSG_RESULT([  ipmishell : $xenable_ipmishell])
+ AC_MSG_RESULT([])
+-
++AC_MSG_RESULT([  Download IANA PEN database   : $xenable_iana_download])
++AC_MSG_RESULT([  IANA PEN database URL        : $xiana_pen_url])
++AC_MSG_RESULT([])
+-- 
+2.26.0
+

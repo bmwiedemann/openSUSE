@@ -17,7 +17,7 @@
 
 
 Name:           ipmitool
-Version:        1.8.18+git20200204.7ccea28
+Version:        1.8.18+git20200916.1245aaa387dc
 Release:        0
 Summary:        Utility for IPMI Control
 License:        BSD-3-Clause
@@ -27,12 +27,12 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        ipmievd.service
 Source2:        ipmievd.sysconf
 Source3:        enterprise-numbers
-Patch0:         fwum_enhance_output.patch
-Patch1:         fix_file_permissions.patch
-Patch2:         several_more_compile_fixes.patch
-Patch3:         ipmitool_adjust_suse_paths.patch
-Patch4:         hpm_x_compatibility_msg_is_debug_only.patch
-Patch5:         autotools_define_DOWNLOAD.diff
+Patch1:         0001-Enhance-fwum-output.patch
+Patch2:         0002-Fix-file-permissions.patch
+Patch3:         0003-Cleanup-and-compiler-issues-only-no-functional-chang.patch
+Patch4:         0004-Adjust-SUSE-paths.patch
+Patch5:         0005-HPM-x-compatibility-message-is-DEBUG-only.patch
+Patch6:         0006-Make-IANA-PEN-download-configurable-fix-uninitalized.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  readline-devel

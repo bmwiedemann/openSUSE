@@ -1,0 +1,28 @@
+From d682f056d836b7978d67c5f9170a3ebfb103f54d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 23 Sep 2020 09:38:11 +0200
+Subject: [PATCH 5/6] HPM x compatibility message is DEBUG only
+
+bsc#948540
+
+Signed-off-by: Thomas Renninger <trenn@suse.com>
+---
+ lib/hpm2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/hpm2.c b/lib/hpm2.c
+index 52e5366c7725..c7ae2343c004 100644
+--- a/lib/hpm2.c
++++ b/lib/hpm2.c
+@@ -99,7 +99,7 @@ int hpm2_get_capabilities(struct ipmi_intf * intf,
+ 		lprintf(LOG_DEBUG, "IPM Controller is not HPM.2 compatible");
+ 		return rsp->ccode;
+ 	} else if (rsp->ccode) {
+-		lprintf(LOG_NOTICE, "Get HPM.x Capabilities request failed,"
++		lprintf(LOG_DEBUG, "Get HPM.x Capabilities request failed,"
+ 				" compcode = %x", rsp->ccode);
+ 		return rsp->ccode;
+ 	}
+-- 
+2.26.0
+

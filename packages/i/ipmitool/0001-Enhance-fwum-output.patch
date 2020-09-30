@@ -1,0 +1,44 @@
+From 9d1b55b396007558288a9807ef269141c6aeac25 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 23 Sep 2020 09:35:23 +0200
+Subject: [PATCH 1/6] Enhance fwum output
+
+---
+ lib/ipmi_fwum.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/lib/ipmi_fwum.c b/lib/ipmi_fwum.c
+index b01c5458d974..ba97da3ae266 100644
+--- a/lib/ipmi_fwum.c
++++ b/lib/ipmi_fwum.c
+@@ -1098,12 +1098,14 @@ ipmi_kfwum_checkfwcompat(tKFWUM_BoardInfo boardInfo,
+ 	int compatible = 0;
+ 	if (boardInfo.iana != firmInfo.iana) {
+ 		lprintf(LOG_ERR,
+-				"Board IANA does not match firmware IANA.");
++			"Board IANA [%u] does not match firmware IANA [%u]\n",
++			boardInfo.iana, firmInfo.iana);
+ 		compatible = (-1);
+ 	}
+ 	if (boardInfo.boardId != firmInfo.boardId) {
+ 		lprintf(LOG_ERR,
+-				"Board IANA does not match firmware IANA.");
++		"Board ID [%u] does not match firmware board ID [%u]\n",
++			boardInfo.boardId, firmInfo.boardId);
+ 		compatible = (-1);
+ 	}
+ 	if (compatible != 0) {
+@@ -1121,6 +1123,10 @@ printf_kfwum_info(tKFWUM_BoardInfo boardInfo, tKFWUM_InFirmwareInfo firmInfo)
+ 	printf(
+ "Target IANA number         : %u\n", boardInfo.iana);
+ 	printf(
++"FW File Board Id           : %u\n",firmInfo.boardId);
++	printf(
++"FW File IANA number        : %u\n",firmInfo.iana);
++	printf(
+ "File Size                  : %lu bytes\n", firmInfo.fileSize);
+ 	printf(
+ "Firmware Version           : %d.%d%d SDR %d\n", firmInfo.versMajor,
+-- 
+2.26.0
+

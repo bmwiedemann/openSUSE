@@ -311,4 +311,12 @@
     <comment></comment>
     <requestid>773460</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c12af79f6f4899669be1d98f64e2f5a5</srcmd5>
+    <version>1.8.18+git20200916.1245aaa387dc</version>
+    <time>1601488522</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838737</requestid>
+  </revision>
 </revisionlist>

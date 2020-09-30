@@ -1,0 +1,51 @@
+From e48fa62fe6e9b5fa1f537c2d149078fb0ce218c1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 23 Sep 2020 09:36:46 +0200
+Subject: [PATCH 3/6] Cleanup and compiler issues only, no functional change
+
+Changes partly very old and not possible to find the original author.
+
+Signed-off-by: Thomas Renninger <trenn@suse.de>
+---
+ lib/ipmi_ekanalyzer.c | 2 +-
+ lib/ipmi_picmg.c      | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/ipmi_ekanalyzer.c b/lib/ipmi_ekanalyzer.c
+index be6b671ac6aa..73472e74d760 100644
+--- a/lib/ipmi_ekanalyzer.c
++++ b/lib/ipmi_ekanalyzer.c
+@@ -4017,7 +4017,7 @@ ipmi_ek_display_clock_config_record(struct ipmi_ek_multi_header *record)
+ 					(feature & 1) ? "Source" : "Receiver");
+ 			printf("\tFamily:  0x%02x    - AccLVL: 0x%02x\n",
+ 					family, accuracy);
+-			printf("\tFRQ: %-9ld - min: %-9ld - max: %-9ld\n",
++			printf("\tFRQ: %-9lu - min: %-9lu - max: %-9lu\n",
+ 					freq, min_freq, max_freq);
+ 		}
+ 		printf("\n");
+diff --git a/lib/ipmi_picmg.c b/lib/ipmi_picmg.c
+index 8becc7883922..a7e32f626894 100644
+--- a/lib/ipmi_picmg.c
++++ b/lib/ipmi_picmg.c
+@@ -949,7 +949,7 @@ ipmi_picmg_portstate_get(struct ipmi_intf * intf, int32_t interface,
+ 					}
+ 					else if (d->type >= 0x06 && d->type <= 0xef)
+ 					{
+-						printf("Reserved\n");
++						printf("Reserved %d\n",d->type);
+ 					}
+ 					else if (d->type >= 0xf0 && d->type <= 0xfe)
+ 					{
+@@ -1805,7 +1805,7 @@ ipmi_picmg_clk_get(struct ipmi_intf * intf, uint8_t clk_id, int8_t clk_res,
+ 						oemval2str( rsp->data[3], rsp->data[4],
+ 											picmg_clk_accuracy_vals));
+ 		
+-		      printf("  - Freq:   %ld\n", freq);
++		      printf("  - Freq:   %lu\n", freq);
+ 		   }
+ 		}
+ 	}
+-- 
+2.26.0
+

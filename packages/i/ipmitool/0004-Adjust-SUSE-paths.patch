@@ -1,0 +1,59 @@
+From 8ede995f261edd539bd1f1d454dd74941a6f4aa8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 23 Sep 2020 09:37:22 +0200
+Subject: [PATCH 4/6] Adjust SUSE paths
+
+---
+ contrib/bmc-snmp-proxy                      | 4 ++++
+ contrib/bmc-snmp-proxy.service              | 4 ++--
+ contrib/exchange-bmc-os-info.service.redhat | 4 ++--
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/contrib/bmc-snmp-proxy b/contrib/bmc-snmp-proxy
+index fcb2ab8256d3..7f0a5a86472e 100644
+--- a/contrib/bmc-snmp-proxy
++++ b/contrib/bmc-snmp-proxy
+@@ -14,6 +14,10 @@
+ #
+ # Assumptions:  This script will work only when /etc/snmp/ is writable.
+ #
++# Provides:          bmc-snmp-proxy
++# Required-Start:    ipmi snmp
++# Default-Start:     3 4 5
++# Default-Stop:      0 1 2 6
+ #############################################################################
+ # GLOBALS
+ #############################################################################
+diff --git a/contrib/bmc-snmp-proxy.service b/contrib/bmc-snmp-proxy.service
+index 247137a4fffd..80b7b100c4e2 100644
+--- a/contrib/bmc-snmp-proxy.service
++++ b/contrib/bmc-snmp-proxy.service
+@@ -11,8 +11,8 @@ ConditionPathExists=/var/run/bmc-info
+ Type=oneshot
+ RemainAfterExit=yes
+ 
+-ExecStart=/usr/libexec/bmc-snmp-proxy start
+-ExecStop=/usr/libexec/bmc-snmp-proxy stop
++ExecStart=/usr/sbin/bmc-snmp-proxy start
++ExecStop=/usr/sbin/bmc-snmp-proxy stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/contrib/exchange-bmc-os-info.service.redhat b/contrib/exchange-bmc-os-info.service.redhat
+index eb28ffee1f33..34e90fdb19bb 100644
+--- a/contrib/exchange-bmc-os-info.service.redhat
++++ b/contrib/exchange-bmc-os-info.service.redhat
+@@ -7,8 +7,8 @@ AssertPathExistsGlob=/dev/ipmi*
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/usr/libexec/exchange-bmc-os-info start
+-ExecStop=/usr/libexec/exchange-bmc-os-info stop
++ExecStart=/usr/sbin/exchange-bmc-os-info start
++ExecStop=/usr/sbin/exchange-bmc-os-info stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.26.0
+
