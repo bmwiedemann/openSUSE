@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 12:28:11 UTC 2020 - psimons@suse.com
+
+- Update wai-app-static to version 3.1.7.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Aug 19 08:07:41 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 6GB min disk space for ppc64/ppc64le
