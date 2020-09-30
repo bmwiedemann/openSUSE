@@ -91,4 +91,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>835981</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>23b35f3a34b4b8269b308f6748a7ebdb</srcmd5>
+    <version>1.5.1</version>
+    <time>1601488459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1:
+  * A new 'ara' CLI API client is now available.
+  * New settings have been added:
+    + ARA_EXTERNAL_AUTH for enabling Django's external authentication.
+    + ARA_DATABASE_OPTIONS for passing options to the Django database
+      backend such as SSL.
+  * Nested children resources are no longer returned, improving performance
+    considerably for larger playbooks.
+  * A new status was added for playbooks, plays and tasks: &quot;expired&quot;.
+  * URLs have been pluralized to match the endpoints provided by the API.
+  * The introduction of the new CLI adds a requirement on the cliff python
+    library.
+  * ara 1.5.0 introduces significant API changes, some of which aren't
+    backwards compatible such as no longer returning nested resources.
+  * Two small SQL migrations have been added to remove result statuses and
+    add the expired status for playbooks, plays and tasks. Run them with
+    &quot;ara-manage migrate&quot;.</comment>
+    <requestid>838632</requestid>
+  </revision>
 </revisionlist>
