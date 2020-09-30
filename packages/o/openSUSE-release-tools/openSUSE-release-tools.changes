@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 23 08:34:49 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200923.c33e6a9e:
+  * Change SP2 QU job to run on Thursday
+  * Remove 15SP1 QU settings
+  * Add setup for 15SP2 quarterly updates
+
+-------------------------------------------------------------------
+Mon Sep 21 11:54:33 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200921.26408ca6:
+  * Dashboard: be more precise in percentage to avoid to display 'done' with few jobs remaining
+
+-------------------------------------------------------------------
+Fri Sep 18 09:27:06 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200918.4b77ae84:
+  * Add a readme about TTM
+
+-------------------------------------------------------------------
 Wed Sep 09 13:48:01 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200909.0bb0f971:
