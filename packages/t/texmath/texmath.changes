@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:33:28 UTC 2020 - psimons@suse.com
+
+- Update texmath to version 0.12.0.3.
+  texmath (0.12.0.3)
+
+    * Allow pandoc-types 1.22.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:54 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

@@ -19,7 +19,7 @@
 %global pkg_name texmath
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.12.0.2
+Version:        0.12.0.3
 Release:        0
 Summary:        Conversion between formats used to represent mathematics
 License:        GPL-2.0-or-later
