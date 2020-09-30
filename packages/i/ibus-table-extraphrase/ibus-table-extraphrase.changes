@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 30 03:41:13 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- remove libdir=@libdir@ from ibus-table-extraphrase.pc (boo#1109895)
+
+-------------------------------------------------------------------
 Mon Feb 29 19:28:15 CST 2016 - qzhao@suse.com
 
 - Make sure source code's COPYING file install by default.

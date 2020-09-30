@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table-extraphrase
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ibus-table-extraphrase
-BuildRequires:  ibus-table-devel
-BuildRequires:  pkg-config
 Version:        1.3.9.20110826
 Release:        0
-Url:            http://code.google.com/p/ibus/
-Source:         %{name}-%{version}.tar.gz
 Summary:        Extra phrases for IBus-table based IME
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://code.google.com/p/ibus/
+Source:         %{name}-%{version}.tar.gz
+BuildRequires:  ibus-table-devel
+BuildRequires:  pkgconfig
 BuildArch:      noarch
 
 %description
@@ -45,25 +44,24 @@ ibus-table-extraphrase.
 
 %prep
 %setup -q
+sed -i "/^libdir=/d" %{name}.pc.in
 
 %build
 %configure
-make
+%make_build
 
 %install
-%makeinstall
+%make_install
 # move pkgconfig file to /usr/share/pkgconfig
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/pkgconfig
-mv $RPM_BUILD_ROOT%{_libdir}/pkgconfig/*.pc \
-   $RPM_BUILD_ROOT%{_datadir}/pkgconfig
+mkdir -p %{buildroot}%{_datadir}/pkgconfig
+mv %{buildroot}%{_libdir}/pkgconfig/%{name}.pc \
+   %{buildroot}%{_datadir}/pkgconfig
 
 %files
-%defattr(-,root,root)
 %{_datadir}/ibus-table/data/extra_phrase.txt
-%doc COPYING
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
-%{_datadir}/pkgconfig/*.pc
+%{_datadir}/pkgconfig/%{name}.pc
 
 %changelog
