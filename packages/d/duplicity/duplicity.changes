@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 30 00:25:50 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.16:
+  + Merged in convert2md - Convert README's to markdown.
+  + Merged in s3-boto3-region-and-endpoint - after fixes.
+  + Merged in lazy init for Boto3 network connections.
+  + Merged in OutlawPlz:paramiko-progress.
+  + Merged in s3-unfreeze-all.
+
+-------------------------------------------------------------------
 Tue Jul 28 22:44:05 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.15: 

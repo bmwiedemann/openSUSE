@@ -17,7 +17,7 @@
 
 
 Name:           duplicity
-Version:        0.8.15
+Version:        0.8.16
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
@@ -71,7 +71,7 @@ perl -n -i -e 'print unless m,(%{_bindir}|%{_mandir}|%{_datadir}/doc|%{_datadir}
 
 %files
 %license COPYING
-%doc CHANGELOG README
+%doc CHANGELOG README.md
 %{_bindir}/duplicity
 %{_bindir}/rdiffdir
 %{python3_sitearch}/duplicity
