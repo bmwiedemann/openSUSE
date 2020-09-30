@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           buildah
-Version:        1.15.1
+Version:        1.16.2
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -42,7 +42,7 @@ BuildRequires:  libassuan-devel
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) >= 1.10
+BuildRequires:  golang(API) >= 1.13
 Requires:       patterns-base-apparmor
 Requires:       libcontainers-common
 Requires:       libcontainers-image
@@ -89,7 +89,7 @@ make %{?_smp_mflags} GIT_COMMIT=unknown EXTRALDFLAGS=-buildmode=pie
 %install
 cd $HOME/go/src/%{project}
 
-install -D -m 0755 buildah %{buildroot}/%{_bindir}/buildah
+install -D -m 0755 bin/buildah %{buildroot}/%{_bindir}/buildah
 install -d %{buildroot}/%{_mandir}/man1
 install -m 0644 docs/buildah*.1 %{buildroot}/%{_mandir}/man1
 install -D -m 0644 contrib/completions/bash/buildah %{buildroot}/%{_datadir}/bash-completion/completions/buildah
