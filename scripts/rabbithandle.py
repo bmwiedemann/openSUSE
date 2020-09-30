@@ -27,10 +27,14 @@ for line in sys.stdin:
     if change['project'] != 'openSUSE:Factory':
         continue
     package = change['package']
-    info = 'Update '+package+' to rev '+change['rev']
+    if 'rev' in change:
+        info = 'Update '+package+' to rev '+change['rev']
+    else:
+        info = 'Delete '+package
     if 'requestid' in change:
         info += ' via SR '+change['requestid']+"\n\n"+obsbase+'/request/show/'+change['requestid']+"\n"
         rqobj = get_request(osc.conf.config['apiurl'], change['requestid'])
+        commitdate = rqobj.state.when
         user2 = rqobj.creator
         if user2 != change['user']:
             change['user'] = user2 + ' + ' + change['user']
@@ -41,10 +45,16 @@ for line in sys.stdin:
         info += change['comment']
     info += '\n'
     print(info);
-    obsrev = get_source_rev(osc.conf.config['apiurl'], "openSUSE:Factory", package, change['rev'])
-    commitdate = datetime.datetime.utcfromtimestamp(int(obsrev["time"])).strftime("%Y-%m-%dT%H:%M:%S")
-    os.environ['GIT_AUTHOR_DATE'] = commitdate
-    os.environ['GIT_COMMITTER_DATE'] = commitdate
+    if 'rev' in change:
+        obsrev = get_source_rev(osc.conf.config['apiurl'], "openSUSE:Factory", package, change['rev'])
+        commitdate = datetime.datetime.utcfromtimestamp(int(obsrev["time"])).strftime("%Y-%m-%dT%H:%M:%S")
+    if commitdate:
+        os.environ['GIT_AUTHOR_DATE'] = commitdate
+        os.environ['GIT_COMMITTER_DATE'] = commitdate
+        print("set commitdate "+commitdate)
+    else:
+        os.environ.pop('GIT_AUTHOR_DATE', None)
+        os.environ.pop('GIT_COMMITTER_DATE', None)
     time.sleep(10)
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
     subprocess.call(["lockfile", "-l", "600", ".pkglock"], shell=False)

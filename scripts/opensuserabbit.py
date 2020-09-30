@@ -19,6 +19,8 @@ result = channel.queue_declare("", exclusive=True)
 queue_name = result.method.queue
 
 channel.queue_bind(exchange='pubsub', queue=queue_name, routing_key=prefix+'.obs.package.commit')
+channel.queue_bind(exchange='pubsub', queue=queue_name, routing_key=prefix+'.obs.package.delete')
+channel.queue_bind(exchange='pubsub', queue=queue_name, routing_key=prefix+'.obs.package.undelete')
 #channel.queue_bind(exchange='pubsub', queue=queue_name, routing_key=prefix+'.obs.request.state_change')
 
 def callback(ch, method, properties, body):

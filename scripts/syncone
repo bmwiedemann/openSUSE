@@ -10,8 +10,9 @@ my @rsync=qw"rsync -a
   --exclude=DELETED
   --exclude=.osc
   --delete
+  --delete-missing-args
   --delete-excluded";
-system(@rsync, "/mounts/work/SRC/openSUSE\:Factory/$pkg/", "in/$pkg/");
+system(@rsync, "/mounts/work/SRC/openSUSE\:Factory/$pkg", "in/");
 die "rsync of $pkg failed" unless $? == 0;
 my $first=lc(substr($pkg, 0, 1));
 system(qw"rm -rf", glob("packages/$first*/$pkg"));
