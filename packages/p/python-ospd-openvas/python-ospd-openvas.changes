@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Mon Aug 17 07:54:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix download archives
+
+-------------------------------------------------------------------
+Mon Aug 17 07:13:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove unused file
+
+-------------------------------------------------------------------
+Tue Aug 11 16:45:43 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.8.0
+  Added
+  * Add solution method to solution of vt object.
+  * Add typing to daemon.py, nvticache.py and db.py.
+  * Add support for alive test settings.
+  * Add missing scan preferences expand_vhosts and
+    test_empty_vhost.
+  * Set reverse lookup options.
+  * Check if the amount of vts in redis is coherent.
+  * Add support for test_alive_hosts_only feature of openvas.
+  * Use lock file during feed update to avoid corrupted cache.
+  * Add details parameter to get_vt_iterator().
+  * Add pontos as dev dependency for managing the version
+    information in ospd-openvas.
+  * Pass store directory to OSPDaemon init.
+  * Add URI field to results for file path or webservice URL.
+  * Add element to OSPD_PARAMS entries to indicate visibility
+    for client.
+  Changed
+  * Less strict checks for the nvti cache version
+  * Set self.vts to None if there is a pending feed.
+  * Use the new method clear() from Vts class.
+  * Start server before initialize the vts.
+  * Get vts metadata from redis and reduce stored data in cache.
+  * Update license to AGPL-3.0+
+  * Replaced pipenv with poetry for dependency management.
+    poetry install works a bit different then pipenv install.
+    It installs dev packages by default and also ospd in
+    editable mode. This means after running poetry install ospd will
+    directly be importable in the virtual python environment.
+  * Don't send host details and log messages to the client when
+    Boreas is enabled.
+  * Progress bar calculation do not takes in account dead hosts
+  * Host progress is stored as integer.
+  * Use flock for the feed lock file.
+  * Improvements for fetching results from redis.
+  * Add RW permission to the group on the feed lock file.
+  Fixed
+  * Check vt_aux for None before trying to access it.
+  * Fix snmp credentials.
+  * Escape script name before adding the result in an xml entity.
+  * Fix handling of denied hosts.
+  * Fix handling of special chars in credentials.
+  * Fix type and default value of optimize_test preference.
+  Removed
+  * Remove use_mac_addr, vhost_ip and vhost scan preferences.
+  * Handling of finished host for resume task.
+  * Don't release vts explicitly.
+  * Drop handling of network_scan.
+
+-------------------------------------------------------------------
+Tue Aug 11 16:45:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.0.1
