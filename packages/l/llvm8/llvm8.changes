@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 21:10:54 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix dsymutil crash on ELF file. (bsc#1176964)
+  * llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch
+
+-------------------------------------------------------------------
 Fri Jul 10 20:27:00 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add fix-ppcle64-build.patch to fix ppc64le build.

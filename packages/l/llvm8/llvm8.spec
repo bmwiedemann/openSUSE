@@ -106,6 +106,8 @@ Patch28:        llvm-add-missing-include.patch
 Patch29:        compiler-rt-sanitizer-ipc-perm.patch
 # PATCH-FIX-UPSTREAM fix-ppcle64-build.patch -- Fix ppcle64 build with newer gcc5
 Patch30:        fix-ppcle64-build.patch
+# PATCH-FIX-UPSTREAM llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch -- Fix dsymutil crash on ELF file.
+Patch31:        llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -503,6 +505,7 @@ This package contains the development files for Polly.
 %patch24 -p1
 %patch27 -p2
 %patch28 -p2
+%patch31 -p2
 
 pushd cfe-%{_relver}.src
 %patch1 -p1

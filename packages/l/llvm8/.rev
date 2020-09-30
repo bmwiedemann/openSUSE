@@ -133,4 +133,12 @@
     <comment>- Add fix-ppcle64-build.patch to fix ppc64le build.</comment>
     <requestid>820569</requestid>
   </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>24ea039cebb226af69903c9d89297c9c</srcmd5>
+    <version>8.0.1</version>
+    <time>1601488480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838613</requestid>
+  </revision>
 </revisionlist>
