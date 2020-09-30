@@ -16,7 +16,7 @@
 #
 
 
-%define rev eeb9f7e30311a11bb9ea2d37ee701db086dc4fd9
+%define rev b49afcc5b73162fba903095c5d85046804c9a283
 
 %bcond_without git
 
@@ -29,7 +29,7 @@
 %define gname Clementine
 
 Name:           clementine
-Version:        1.3.92
+Version:        1.3.99
 Release:        0
 Summary:        A music player inspired by Amarok 1.4
 License:        GPL-3.0-or-later
@@ -44,7 +44,6 @@ Source0:        https://github.com/clementine-player/Clementine/archive/%{rev}.t
 Patch1:         clementine-udisks-headers.patch
 # Patch fix factory build, add -fPIC to moodbar build
 Patch2:         clementine-moodbar-fpic.patch
-Patch3:         0001-Adds-missing-QPainterPath-include.patch
 # PATCH-FIX-OPENSUSE clementine-hidden-systray-icon.patch davejplater@gmail.com -- sys tray icon is hidden on some plasma5 systems.
 Patch4:         clementine-hidden-systray-icon.patch
 # PATCH-FEATURE-OPENSUSE

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 30 06:49:13 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.3.99 (tagged as 1.4.0rc1-343-gb49afcc5b)
+  * a lot of features and fixes, see the changes:
+    https://github.com/clementine-player/Clementine/compare/eeb9f7e30311...b49afcc5b731
+- remove 0001-Adds-missing-QPainterPath-include.patch
+  It's upstream now.
+
+-------------------------------------------------------------------
 Thu Jul  9 06:43:11 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints for PowerPC to avoid "No space left" build error
