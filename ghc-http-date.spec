@@ -19,7 +19,7 @@
 %global pkg_name http-date
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.0.8
+Version:        0.0.9
 Release:        0
 Summary:        HTTP Date parser/formatter
 License:        BSD-3-Clause
