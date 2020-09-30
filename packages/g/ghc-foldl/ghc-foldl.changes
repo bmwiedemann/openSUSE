@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 02:01:38 UTC 2020 - psimons@suse.com
+
+- Update foldl to version 1.4.9.
+  1.4.9
+
+  * Implement `vector` utility more efficiently
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:37 UTC 2020 - psimons@suse.com
 
 - Update foldl to version 1.4.8 revision 1.
