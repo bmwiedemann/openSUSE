@@ -1698,7 +1698,6 @@ unsorted:
   - cf-cli 
   - cf-cli-test 
   - cfengine 
-  - cfengine-doc 
   - cfengine-examples 
   - cfengine-masterfiles 
   - cfitsio 
@@ -13156,7 +13155,6 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb0 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -15165,6 +15163,7 @@ unsorted:
   - mpc-qt 
   - mpclient 
   - mpd 
+  - mpd-doc 
   - mpeg2dec 
   - mpfi-devel 
   - mpfpx-devel 
@@ -18043,6 +18042,7 @@ unsorted:
   - perl-Math-ConvexHull 
   - perl-Math-ConvexHull-MonotoneChain 
   - perl-Math-Geometry-Voronoi 
+  - perl-Math-Int64 
   - perl-Math-Libm 
   - perl-Math-PlanePath 
   - perl-Math-Random-ISAAC 
@@ -18096,9 +18096,11 @@ unsorted:
   - perl-Mojolicious-Plugin-OAuth2 
   - perl-Mojolicious-Plugin-RenderFile 
   - perl-Mojolicious-Plugin-Status 
+  - perl-Mojolicious-Plugin-Webpack 
   - perl-Monitoring-Plugin 
   - perl-Moo 
   - perl-MooX-HandlesVia 
+  - perl-MooX-Locale-Passthrough 
   - perl-MooX-Types-MooseLike 
   - perl-MooX-Types-MooseLike-Numeric 
   - perl-MooX-late 
@@ -18167,6 +18169,7 @@ unsorted:
   - perl-NKF 
   - perl-Nagios-Plugin 
   - perl-Net-AMQP: [x86_64] 
+  - perl-Net-AMQP-RabbitMQ 
   - perl-Net-CIDR 
   - perl-Net-CIDR-Set 
   - perl-Net-DNS-Resolver-Programmable 
@@ -21515,6 +21518,7 @@ unsorted:
   - python3-oslotest 
   - python3-osmviz 
   - python3-ospd 
+  - python3-ospd-openvas 
   - python3-osprofiler 
   - python3-otb 
   - python3-ovirt-engine-sdk 
@@ -25996,7 +26000,7 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default 
+  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 
@@ -34589,8 +34593,6 @@ unsorted:
   - uom-lib-common 
   - uom-lib-javadoc 
   - uom-parent 
-  - upb-devel 
-  - upb-source 
   - update-bootloader-rpm-macros 
   - update-checker 
   - update-desktop-files 
