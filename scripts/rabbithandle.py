@@ -61,7 +61,7 @@ for line in sys.stdin:
     else:
         os.environ.pop('GIT_AUTHOR_DATE', None)
         os.environ.pop('GIT_COMMITTER_DATE', None)
-    time.sleep(10)
+    time.sleep(1)
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
     subprocess.call(["lockfile", "-l", "600", ".pkglock"], shell=False)
     subprocess.call(["scripts/syncone", package], shell=False)
