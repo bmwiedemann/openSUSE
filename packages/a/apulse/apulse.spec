@@ -1,7 +1,7 @@
 #
 # spec file for package apulse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 # integer of major pulse version
-%define pulse_major %(sed -n '/^#define.*PA_MAJOR/{s/^.* //;p}' /usr/include/pulse/version.h)
-
+%define pulse_major %(sed -n '/^#define.*PA_MAJOR/{s/^.* //;p}' %{_includedir}/pulse/version.h)
 %define __provides_exclude_from ^%{_libdir}/apulse/.*.so.*$
 Name:           apulse
-Version:        0.1.12
+Version:        0.1.13
 Release:        0
 Summary:        PulseAudio emulation for ALSA
 License:        MIT
@@ -30,12 +29,9 @@ Source0:        https://github.com/i-rinat/%{name}/archive/v%{version}.tar.gz#/%
 Source1:        baselibs.conf
 Source2:        %{name}.py
 Source3:        %{name}.conf
-# PATCH-FIX-OPENSUSE apulse-fix-pulse-12.patch sor.alexei@meowr.ru -- Fix PulseAudio 12+ compatibility.
-Patch0:         apulse-fix-pulse-12.patch
-Patch1:         apulse-alsa.patch
 %if %{pulse_major} > 12
-# PATCH-FIX-OPENSUSE apulse-fix-pulse-13.patch seife+obs@b1-systems.com -- fix pulse 13+ compatibility.
-Patch2:         apulse-fix-pulse-13.patch
+# PATCH-FIX-OPENSUSE apulse-fix-pulse-13.patch seife+obs@b1-systems.com -- Fix PulseAudio 13+ compatibility.
+Patch0:         apulse-fix-pulse-13.patch
 %endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -58,7 +54,7 @@ PulseAudio emulation intended to be used with Firefox and Skype.
   -DUSE_BUNDLED_PULSEAUDIO_HEADERS=OFF \
   -DAPULSEPATH=%{_libdir}/%{name}      \
   -DCMAKE_SHARED_LINKER_FLAGS="" -LA
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %cmake_install
@@ -71,15 +67,11 @@ install -Dpm 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}.conf
 %postun -p /sbin/ldconfig
 
 %files
-%if 0%{?suse_version} >= 1500
 %license LICENSE.MIT
-%else
-%doc LICENSE.MIT
-%endif
 %doc README.md
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/%{name}
-%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/
 %{_libdir}/%{name}/libpulse*.so.*
 %{_mandir}/man1/apulse.1%{?ext_man}
 
