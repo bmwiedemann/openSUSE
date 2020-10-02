@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-kubernetesconfiguration
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Microsoft Azure Kubernetes Configuration Management Client Library
 License:        MIT
