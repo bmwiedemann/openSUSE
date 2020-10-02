@@ -1,7 +1,7 @@
 #
 # spec file for package units
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without	units_cur
 Name:           units
-Version:        2.19
+Version:        2.20
 Release:        0
 Summary:        Conversion Utility
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ Group:          Productivity/Scientific/Physics
 URL:            https://www.gnu.org/software/units/
 Source0:        http://ftp.gnu.org/gnu/units/units-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/units/units-%{version}.tar.gz.sig
-Source2:        units.keyring
+Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=units&download=1#/units.keyring
 BuildRequires:  bison
 BuildRequires:  readline-devel
 Requires(post): %{install_info_prereq}

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:36:57 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- units 2.20:
+  * Add abs(), ceil(), round(), floor(), Gamma(), lnGamma(),
+    factorial(), erf() and erfc() functions.  
+  * Add densities of all of the elements  
+  * Add several new unit systems
+  * Add --conformable option which noninteractively prints a list
+    of all units conformable with a specified a specified unit
+  * Invoke the pager more intelligently depending on the size of the
+    screen
+  * Fix bug where unit lists conversions displayed excess precision
+    (e.g. non-integer output for integer input)
+  * Display precision warning when conversion to unit lists uses
+    all of the available precision
+
+-------------------------------------------------------------------
 Wed Jul 31 20:24:47 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - units 2.19:
