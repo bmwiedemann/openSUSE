@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic-jQuery
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-XStatic-jQuery
-Version:        1.12.4.1
+Version:        3.4.1.0
 Release:        0
 Summary:        jQuery repackaged for the XStatic standard
 License:        MIT
-Group:          Development/Languages/Python
-Url:            http://jquery.com/
+URL:            http://jquery.com/
 Source:         https://files.pythonhosted.org/packages/source/X/XStatic-jQuery/XStatic-jQuery-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
