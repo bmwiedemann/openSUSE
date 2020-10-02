@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 30 18:30:12 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Undo part of the split-provides recently done. We have to wait on
+  virt-manager to handle qemu modularization better before we make
+  qemu-hw-display-qxl and qemu-hw-usb-redirect non-required
+  (boo#1157320 boo#1176517)
+
+-------------------------------------------------------------------
 Mon Sep 21 12:10:08 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix spec file, where a conditional macro didn't have the correct

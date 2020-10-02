@@ -393,8 +393,8 @@ Requires(post): procps
 Recommends:     kvm_stat
 %endif
 Recommends:     qemu-block-curl
-Recommends:     qemu-hw-display-qxl
-Recommends:     qemu-hw-usb-redirect
+Requires:       qemu-hw-display-qxl
+Requires:       qemu-hw-usb-redirect
 Recommends:     qemu-hw-usb-smartcard
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
@@ -696,7 +696,6 @@ Summary:        QXL display support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/01
 Provides:       %name:%_docdir/%name/qemu-ga-ref.txt
 %{qemu_module_conflicts}
 
@@ -708,7 +707,6 @@ Summary:        USB redirection support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/02
 Provides:       %name:%_docdir/%name/qemu-qmp-ref.html
 %{qemu_module_conflicts}
 
@@ -821,8 +819,9 @@ Release:        0
 BuildArch:      noarch
 
 %description microvm
-MicroVM (qboot) is a minimal x86 firmware for booting Linux kernel.
-It provides the minimum resources needed to boot PVH and bzImages.
+This package provides minimal x86 firmware for booting certain guests.
+qboot based bios-microvm provides the minimum resources needed to boot PVH and
+bzImages.
 
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
@@ -1615,13 +1614,10 @@ install -D -m 0644 %{SOURCE204} %{buildroot}%_docdir/%name/qemu-qmp-ref.html
 install -D -m 0644 %{SOURCE205} %{buildroot}%_docdir/%name/qemu-qmp-ref.txt
 mv %{buildroot}%_libexecdir/qemu-pr-helper %{buildroot}%_bindir/qemu-pr-helper
 install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
-ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/00
-ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/01
-ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/02
-ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/03
-ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/04
-ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/05
-ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/06
+for X in 00 01 02 03 04 05 06 07 08 09
+do
+  ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/$X
+done
 %fdupes -s %{buildroot}
 
 # ========================================================================
@@ -1718,9 +1714,14 @@ fi
 %dir %_datadir/%name/firmware
 %dir %_datadir/%name/forsplits
 %_datadir/%name/forsplits/pkg-split.txt
+%_datadir/%name/forsplits/01
+%_datadir/%name/forsplits/02
 %_datadir/%name/forsplits/04
 %_datadir/%name/forsplits/05
 %_datadir/%name/forsplits/06
+%_datadir/%name/forsplits/07
+%_datadir/%name/forsplits/08
+%_datadir/%name/forsplits/09
 %_datadir/%name/keymaps
 %_datadir/%name/qemu-ifup
 %_datadir/%name/qemu-nsis.bmp
@@ -2031,9 +2032,6 @@ fi
 
 %files hw-display-qxl
 %defattr(-, root, root)
-%dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/01
 %dir %_docdir/%name
 %_docdir/%name/qemu-ga-ref.txt
 %dir %_libdir/%name
@@ -2041,9 +2039,6 @@ fi
 
 %files hw-usb-redirect
 %defattr(-, root, root)
-%dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/02
 %dir %_docdir/%name
 %_docdir/%name/qemu-qmp-ref.html
 %dir %_libdir/%name
