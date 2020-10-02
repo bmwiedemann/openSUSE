@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 23 09:33:59 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Install correct license file corresponding to each subpackage:
+  GPL for binaries and libraries (main pkg) and CCPL for game data
+  (pkg plee-the-bear-data).
+
+-------------------------------------------------------------------
 Tue Sep 22 23:28:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.7.1
