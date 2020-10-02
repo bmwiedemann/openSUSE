@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:24:40 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v6.1.0 (2020-09-30)
+  + SAP has live-patching enabled
+  + Handle Google HttpError explicitly.
+  + Disable all pytest stdout capturing with -s option.
+  + Catch unhandled exceptions from pytest.
+
+-------------------------------------------------------------------
 Tue Aug 18 19:53:54 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v6.0.0 (2020-08-18)
