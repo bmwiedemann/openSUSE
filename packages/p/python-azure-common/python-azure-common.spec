@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-common
-Version:        1.1.24
+Version:        1.1.25
 Release:        0
 Summary:        Microsoft Azure common code
 License:        MIT
@@ -60,7 +60,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/common
 %{python_sitelib}/azure_common-*.egg-info
