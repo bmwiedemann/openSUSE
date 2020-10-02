@@ -49,4 +49,17 @@
     HISTORY.txt file provided with this package (forwarded request 767747 from glaubitz)</comment>
     <requestid>767836</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39df7b9fab5d19a48dbbfa2eaa41370b</srcmd5>
+    <version>0.9.0</version>
+    <time>1601652124</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 830763 from glaubitz)</comment>
+    <requestid>830902</requestid>
+  </revision>
 </revisionlist>
