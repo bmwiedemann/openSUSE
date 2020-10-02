@@ -43,4 +43,15 @@
     <comment></comment>
     <requestid>790985</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>61eedd32528851e3c73aa00a385794ba</srcmd5>
+    <version>3.1.0</version>
+    <time>1601652111</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 830761 from glaubitz)</comment>
+    <requestid>830900</requestid>
+  </revision>
 </revisionlist>
