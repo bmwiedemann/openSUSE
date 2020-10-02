@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Wed Apr  3 07:14:40 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.103
+   see /usr/share/doc/packages/perl-MooX-Options/Changes
+
+  Revision history for MooX-Options
+  
+  4.103	2017-08-22
+      * fix broken shortname split (Thanks to Burak Gürsoy for reporting the issue)
+      * fix copy/paste issue in tests of shortname
+      * fix some typo's in tests
+      * declare honestly the state of Mo support
+  
+  4.102	2017-08-21
+      * fix out-of-order abbrev (analyzed and reported by
+        Jean-Damien Durand <jeandamiendurand@free.fr>)
+  
+  4.101	2017-07-24
+      * remove fatalized warnings for all categories and rely on wise
+        strictures maintainer instead
+      * remove dynamic_config from META files (fix RT#122349)
+  
+  4.100	2017-06-27
+      * release 4.099_003 as 4.100
+        Please read carefully the Changes before updating blindly!
+  
+  4.099_003  2017-06-12
+      * use MRO::Compat instead of mro for Perls bevor v5.9.5
+  
+  4.099_002  2017-06-06
+      * fix some broken documentation due move from Dist::Zilla to
+        ExtUtils::MakeMaker
+      * improve additional documentation regarding MooX::Cmd,
+        MooX::ConfigFromFile and namespace::clean
+      * add localization (test) using MooX::Locale::TextDomain::OO
+      * remove unused modules being loaded from tests
+  
+  4.099_001  2017-06-02
+      * Move from Dist::Zilla to ExtUtils::MakeMaker
+      * allow enhancing attributes to option
+      * improve Kwalitee
+      * rename negativable into negatable
+      * replace Locale::TextDomain by MooX::Locale::Passthrough
+      * make lazy loaded features optional
+      * decouple autorange and autosplit
+      * relax related current directory in INC
+
+-------------------------------------------------------------------
+Mon May 29 05:07:42 UTC 2017 - coolo@suse.com
+
+- initial package 4.023
+ * created by cpanspec 1.78.08
