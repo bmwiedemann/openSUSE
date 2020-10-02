@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 10:36:43 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add check_if_xcb-screensaver_present.patch
+  * fixes boo#1176626: Telegram-desktop crashes on Xwayland
+
+-------------------------------------------------------------------
 Sun Aug 30 22:25:52 UTC 2020 - Xu Zhao <i@xuzhao.net>
 
 - Update to 2.3.2

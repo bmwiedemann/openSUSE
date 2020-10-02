@@ -1,0 +1,860 @@
+From ea8e256a235082157b942344f4683ec54d3b337e Mon Sep 17 00:00:00 2001
+From: Ilya Fedin <fedin-ilja2010@ya.ru>
+Date: Fri, 28 Aug 2020 16:07:29 +0400
+Subject: [PATCH] Revert "Revert "Add main window shadow for Linux""
+
+This reverts commit b7f5cfe0833232a727c1ff212df13d00273ba2a3.
+---
+ Telegram/SourceFiles/mainwindow.cpp           |   8 +-
+ .../platform/linux/specific_linux.cpp         | 231 ++++++++++++++++--
+ .../SourceFiles/platform/mac/specific_mac.h   |   4 +
+ .../SourceFiles/platform/platform_specific.h  |   2 +
+ .../SourceFiles/platform/win/specific_win.h   |   4 +
+ Telegram/SourceFiles/window/main_window.cpp   |  63 +++--
+ Telegram/SourceFiles/window/main_window.h     |   6 +
+ .../SourceFiles/window/window_title_qt.cpp    |  93 ++++++-
+ Telegram/SourceFiles/window/window_title_qt.h |   4 +
+ 9 files changed, 361 insertions(+), 54 deletions(-)
+
+diff --git a/Telegram/SourceFiles/mainwindow.cpp b/Telegram/SourceFiles/mainwindow.cpp
+index 39aca78a1a..66272f6004 100644
+--- a/Telegram/SourceFiles/mainwindow.cpp
++++ b/Telegram/SourceFiles/mainwindow.cpp
+@@ -39,6 +39,7 @@ For license and copyright information please follow this link:
+ #include "apiwrap.h"
+ #include "api/api_updates.h"
+ #include "settings/settings_intro.h"
++#include "platform/platform_specific.h"
+ #include "platform/platform_notifications_manager.h"
+ #include "base/platform/base_platform_info.h"
+ #include "base/call_delayed.h"
+@@ -110,7 +111,12 @@ MainWindow::MainWindow(not_null<Window::Controller*> controller)
+ 	}, lifetime());
+ 
+ 	setAttribute(Qt::WA_NoSystemBackground);
+-	setAttribute(Qt::WA_OpaquePaintEvent);
++
++	if (Platform::WindowsNeedShadow()) {
++		setAttribute(Qt::WA_TranslucentBackground);
++	} else {
++		setAttribute(Qt::WA_OpaquePaintEvent);
++	}
+ }
+ 
+ void MainWindow::initHook() {
+diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.cpp b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+index cefceb8d23..eda4684eb6 100644
+--- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+@@ -81,6 +81,8 @@ constexpr auto kXDGDesktopPortalService = "org.freedesktop.portal.Desktop"_cs;
+ constexpr auto kXDGDesktopPortalObjectPath = "/org/freedesktop/portal/desktop"_cs;
+ constexpr auto kPropertiesInterface = "org.freedesktop.DBus.Properties"_cs;
+ 
++constexpr auto kXCBFrameExtentsAtomName = "_GTK_FRAME_EXTENTS"_cs;
++
+ QStringList PlatformThemes;
+ 
+ bool IsTrayIconSupported = true;
+@@ -298,6 +300,91 @@ bool GetImageFromClipboardSupported() {
+ }
+ #endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
+ 
++std::optional<xcb_atom_t> GetXCBAtom(
++		xcb_connection_t *connection,
++		const QString &name) {
++	const auto cookie = xcb_intern_atom(
++		connection,
++		0,
++		name.size(),
++		name.toUtf8());
++
++	auto reply = xcb_intern_atom_reply(
++		connection,
++		cookie,
++		nullptr);
++
++	if (!reply) {
++		return std::nullopt;
++	}
++
++	const auto atom = reply->atom;
++	free(reply);
++
++	return atom;
++}
++
++std::vector<xcb_atom_t> GetXCBWMSupported(xcb_connection_t *connection) {
++	auto netWmAtoms = std::vector<xcb_atom_t>{};
++
++	const auto native = QGuiApplication::platformNativeInterface();
++	if (!native) {
++		return netWmAtoms;
++	}
++
++	const auto root = static_cast<xcb_window_t>(reinterpret_cast<quintptr>(
++		native->nativeResourceForIntegration(QByteArray("rootwindow"))));
++
++	const auto supportedAtom = GetXCBAtom(connection, "_NET_SUPPORTED");
++	if (!supportedAtom.has_value()) {
++		return netWmAtoms;
++	}
++
++	auto offset = 0;
++	auto remaining = 0;
++
++	do {
++		const auto cookie = xcb_get_property(
++			connection,
++			false,
++			root,
++			*supportedAtom,
++			XCB_ATOM_ATOM,
++			offset,
++			1024);
++
++		auto reply = xcb_get_property_reply(
++			connection,
++			cookie,
++			nullptr);
++
++		if (!reply) {
++			break;
++		}
++
++		remaining = 0;
++
++		if (reply->type == XCB_ATOM_ATOM && reply->format == 32) {
++			const auto len = xcb_get_property_value_length(reply)
++				/ sizeof(xcb_atom_t);
++
++			const auto atoms = reinterpret_cast<xcb_atom_t*>(
++				xcb_get_property_value(reply));
++
++			const auto s = netWmAtoms.size();
++			netWmAtoms.resize(s + len);
++			memcpy(netWmAtoms.data() + s, atoms, len * sizeof(xcb_atom_t));
++
++			remaining = reply->bytes_after;
++			offset += len;
++		}
++
++		free(reply);
++	} while (remaining > 0);
++
++	return netWmAtoms;
++}
++
+ std::optional<crl::time> XCBLastUserInputTime() {
+ 	const auto native = QGuiApplication::platformNativeInterface();
+ 	if (!native) {
+@@ -311,24 +398,24 @@ std::optional<crl::time> XCBLastUserInputTime() {
+ 		return std::nullopt;
+ 	}
+ 
+-	const auto screen = xcb_setup_roots_iterator(xcb_get_setup(connection)).data;
+-	if (!screen) {
+-		return std::nullopt;
+-	}
++	const auto root = static_cast<xcb_window_t>(reinterpret_cast<quintptr>(
++		native->nativeResourceForIntegration(QByteArray("rootwindow"))));
+ 
+-	const auto cookie = xcb_screensaver_query_info(connection, screen->root);
++	const auto cookie = xcb_screensaver_query_info(
++		connection,
++		root);
+ 
+-	auto info = xcb_screensaver_query_info_reply(
++	auto reply = xcb_screensaver_query_info_reply(
+ 		connection,
+ 		cookie,
+ 		nullptr);
+ 
+-	if (!info) {
++	if (!reply) {
+ 		return std::nullopt;
+ 	}
+ 
+-	const auto idle = info->ms_since_user_input;
+-	free(info);
++	const auto idle = reply->ms_since_user_input;
++	free(reply);
+ 
+ 	return (crl::now() - static_cast<crl::time>(idle));
+ }
+@@ -468,7 +555,6 @@ enum wl_shell_surface_resize WlResizeFromEdges(Qt::Edges edges) {
+ 
+ bool StartXCBMoveResize(QWindow *window, int edges) {
+ 	const auto native = QGuiApplication::platformNativeInterface();
+-
+ 	if (!native) {
+ 		return false;
+ 	}
+@@ -487,29 +573,16 @@ bool StartXCBMoveResize(QWindow *window, int edges) {
+ 		return false;
+ 	}
+ 
+-	const auto moveResizeCookie = xcb_intern_atom(
+-		connection,
+-		0,
+-		strlen("_NET_WM_MOVERESIZE"),
+-		"_NET_WM_MOVERESIZE");
+-
+-	auto moveResizeReply = xcb_intern_atom_reply(
+-		connection,
+-		moveResizeCookie,
+-		nullptr);
+-
+-	if (!moveResizeReply) {
++	const auto moveResize = GetXCBAtom(connection, "_NET_WM_MOVERESIZE");
++	if (!moveResize.has_value()) {
+ 		return false;
+ 	}
+ 
+-	const auto moveResize = moveResizeReply->atom;
+-	free(moveResizeReply);
+-
+ 	const auto globalPos = QCursor::pos();
+ 
+ 	xcb_client_message_event_t xev;
+ 	xev.response_type = XCB_CLIENT_MESSAGE;
+-	xev.type = moveResize;
++	xev.type = *moveResize;
+ 	xev.sequence = 0;
+ 	xev.window = window->winId();
+ 	xev.format = 32;
+@@ -582,6 +655,87 @@ bool ShowWaylandWindowMenu(QWindow *window) {
+ 	return false;
+ }
+ 
++bool XCBFrameExtentsSupported() {
++	const auto native = QGuiApplication::platformNativeInterface();
++	if (!native) {
++		return false;
++	}
++
++	const auto connection = reinterpret_cast<xcb_connection_t*>(
++		native->nativeResourceForIntegration(QByteArray("connection")));
++
++	if (!connection) {
++		return false;
++	}
++
++	const auto frameExtentsAtom = GetXCBAtom(
++		connection,
++		kXCBFrameExtentsAtomName.utf16());
++
++	if (!frameExtentsAtom.has_value()) {
++		return false;
++	}
++
++	return ranges::contains(GetXCBWMSupported(connection), *frameExtentsAtom);
++}
++
++bool SetXCBFrameExtents(QWindow *window, const QMargins &extents) {
++	const auto native = QGuiApplication::platformNativeInterface();
++	if (!native) {
++		return false;
++	}
++
++	const auto connection = reinterpret_cast<xcb_connection_t*>(
++		native->nativeResourceForIntegration(QByteArray("connection")));
++
++	if (!connection) {
++		return false;
++	}
++
++	const auto frameExtentsAtom = GetXCBAtom(
++		connection,
++		kXCBFrameExtentsAtomName.utf16());
++
++	if (!frameExtentsAtom.has_value()) {
++		return false;
++	}
++
++	const auto extentsVector = std::vector<uint>{
++		uint(extents.left()),
++		uint(extents.right()),
++		uint(extents.top()),
++		uint(extents.bottom()),
++	};
++
++	xcb_change_property(
++		connection,
++		XCB_PROP_MODE_REPLACE,
++		window->winId(),
++		*frameExtentsAtom,
++		XCB_ATOM_CARDINAL,
++		32,
++		extentsVector.size(),
++		extentsVector.data());
++
++	return true;
++}
++
++bool SetWaylandWindowGeometry(QWindow *window, const QRect &geometry) {
++#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0) || defined DESKTOP_APP_QT_PATCHED
++	if (const auto waylandWindow = static_cast<QWaylandWindow*>(
++		window->handle())) {
++		if (const auto seat = waylandWindow->display()->lastInputDevice()) {
++			if (const auto shellSurface = waylandWindow->shellSurface()) {
++				shellSurface->setWindowGeometry(geometry);
++				return true;
++			}
++		}
++	}
++#endif // Qt >= 5.13 || DESKTOP_APP_QT_PATCHED
++
++	return false;
++}
++
+ Window::Control GtkKeywordToWindowControl(const QString &keyword) {
+ 	if (keyword == qstr("minimize")) {
+ 		return Window::Control::Minimize;
+@@ -926,6 +1080,31 @@ bool ShowWindowMenu(QWindow *window) {
+ 	return false;
+ }
+ 
++bool SetWindowExtents(QWindow *window, const QMargins &extents) {
++	if (IsWayland()) {
++		const auto geometry = QRect(QPoint(), window->size())
++			.marginsRemoved(extents);
++
++		return SetWaylandWindowGeometry(window, geometry);
++	} else {
++		return SetXCBFrameExtents(window, extents);
++	}
++}
++
++bool WindowsNeedShadow() {
++#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0) || defined DESKTOP_APP_QT_PATCHED
++	if (IsWayland()) {
++		return true;
++	}
++#endif // Qt >= 5.13 || DESKTOP_APP_QT_PATCHED
++
++	if (!IsWayland() && XCBFrameExtentsSupported()) {
++		return true;
++	}
++
++	return false;
++}
++
+ Window::ControlsLayout WindowControlsLayout() {
+ #ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+ 	if (Libs::GtkSettingSupported()
+diff --git a/Telegram/SourceFiles/platform/mac/specific_mac.h b/Telegram/SourceFiles/platform/mac/specific_mac.h
+index 7db80f1a48..6c966f9b6f 100644
+--- a/Telegram/SourceFiles/platform/mac/specific_mac.h
++++ b/Telegram/SourceFiles/platform/mac/specific_mac.h
+@@ -44,6 +44,10 @@ inline bool TrayIconSupported() {
+ 	return true;
+ }
+ 
++inline bool WindowsNeedShadow() {
++	return false;
++}
++
+ namespace ThirdParty {
+ 
+ inline void start() {
+diff --git a/Telegram/SourceFiles/platform/platform_specific.h b/Telegram/SourceFiles/platform/platform_specific.h
+index ec419bab7b..dd4cb60204 100644
+--- a/Telegram/SourceFiles/platform/platform_specific.h
++++ b/Telegram/SourceFiles/platform/platform_specific.h
+@@ -56,6 +56,8 @@ QImage GetImageFromClipboard();
+ bool StartSystemMove(QWindow *window);
+ bool StartSystemResize(QWindow *window, Qt::Edges edges);
+ bool ShowWindowMenu(QWindow *window);
++bool WindowsNeedShadow();
++bool SetWindowExtents(QWindow *window, const QMargins &extents);
+ Window::ControlsLayout WindowControlsLayout();
+ 
+ namespace ThirdParty {
+diff --git a/Telegram/SourceFiles/platform/win/specific_win.h b/Telegram/SourceFiles/platform/win/specific_win.h
+index 71a7ff30a0..46b8e7d2a0 100644
+--- a/Telegram/SourceFiles/platform/win/specific_win.h
++++ b/Telegram/SourceFiles/platform/win/specific_win.h
+@@ -38,6 +38,10 @@ inline bool TrayIconSupported() {
+ 	return true;
+ }
+ 
++inline bool WindowsNeedShadow() {
++	return false;
++}
++
+ namespace ThirdParty {
+ 
+ void start();
+diff --git a/Telegram/SourceFiles/window/main_window.cpp b/Telegram/SourceFiles/window/main_window.cpp
+index e567d93809..9a808233a4 100644
+--- a/Telegram/SourceFiles/window/main_window.cpp
++++ b/Telegram/SourceFiles/window/main_window.cpp
+@@ -10,6 +10,7 @@ For license and copyright information please follow this link:
+ #include "storage/localstorage.h"
+ #include "platform/platform_window_title.h"
+ #include "base/platform/base_platform_info.h"
++#include "ui/platform/ui_platform_utility.h"
+ #include "history/history.h"
+ #include "window/themes/window_theme.h"
+ #include "window/window_session_controller.h"
+@@ -33,6 +34,7 @@ For license and copyright information please follow this link:
+ #include "facades.h"
+ #include "app.h"
+ #include "styles/style_window.h"
++#include "styles/style_calls.h" // st::callShadow
+ 
+ #include <QtWidgets/QDesktopWidget>
+ #include <QtCore/QMimeData>
+@@ -292,6 +294,17 @@ HitTestResult MainWindow::hitTest(const QPoint &p) const {
+ 	return Window::HitTestResult::None;
+ }
+ 
++bool MainWindow::hasShadow() const {
++	const auto center = geometry().center();
++	return Platform::WindowsNeedShadow()
++		&& Ui::Platform::TranslucentWindowsSupported(center)
++		&& _title;
++}
++
++QRect MainWindow::inner() const {
++	return rect().marginsRemoved(_padding);
++}
++
+ int MainWindow::computeMinWidth() const {
+ 	auto result = st::windowMinWidth;
+ 	if (const auto session = _controller->sessionController()) {
+@@ -302,7 +315,7 @@ int MainWindow::computeMinWidth() const {
+ 	if (_rightColumn) {
+ 		result += _rightColumn->width();
+ 	}
+-	return result;
++	return result + _padding.left() + _padding.right();
+ }
+ 
+ int MainWindow::computeMinHeight() const {
+@@ -311,10 +324,10 @@ int MainWindow::computeMinHeight() const {
+ 		if (!_outdated) {
+ 			return 0;
+ 		}
+-		_outdated->resizeToWidth(st::windowMinWidth);
++		_outdated->resizeToWidth(st::windowMinWidth - _padding.left() - _padding.right());
+ 		return _outdated->height();
+ 	}();
+-	return title + outdated + st::windowMinHeight;
++	return title + outdated + st::windowMinHeight + _padding.top() + _padding.bottom();
+ }
+ 
+ void MainWindow::refreshTitleWidget() {
+@@ -337,7 +350,20 @@ void MainWindow::updateMinimumSize() {
+ 	setMinimumHeight(computeMinHeight());
+ }
+ 
++void MainWindow::updateShadowSize() {
++	_padding = hasShadow() && !isMaximized()
++		? st::callShadow.extend
++		: style::margins();
++}
++
+ void MainWindow::recountGeometryConstraints() {
++#ifdef Q_OS_LINUX
++	const auto hasShadow = this->hasShadow();
++	setWindowFlag(Qt::NoDropShadowWindowHint, hasShadow);
++	setAttribute(Qt::WA_OpaquePaintEvent, !hasShadow);
++#endif // Q_OS_LINUX
++
++	updateShadowSize();
+ 	updateMinimumSize();
+ 	updateControlsGeometry();
+ 	fixOrder();
+@@ -436,7 +462,15 @@ void MainWindow::attachToTrayIcon(not_null<QSystemTrayIcon*> icon) {
+ 	App::wnd()->updateTrayMenu();
+ }
+ 
++void MainWindow::paintEvent(QPaintEvent *e) {
++	if (hasShadow() && !isMaximized()) {
++		QPainter p(this);
++		Ui::Shadow::paint(p, inner(), width(), st::callShadow);
++	}
++}
++
+ void MainWindow::resizeEvent(QResizeEvent *e) {
++	updateShadowSize();
+ 	updateControlsGeometry();
+ }
+ 
+@@ -449,27 +483,28 @@ void MainWindow::leaveEventHook(QEvent *e) {
+ }
+ 
+ void MainWindow::updateControlsGeometry() {
+-	auto bodyLeft = 0;
+-	auto bodyTop = 0;
+-	auto bodyWidth = width();
++	const auto inner = this->inner();
++	auto bodyLeft = inner.x();
++	auto bodyTop = inner.y();
++	auto bodyWidth = inner.width();
+ 	if (_title && !_title->isHidden()) {
+-		_title->setGeometry(0, bodyTop, width(), _title->height());
++		_title->setGeometry(inner.x(), bodyTop, inner.width(), _title->height());
+ 		bodyTop += _title->height();
+ 	}
+ 	if (_titleShadow) {
+-		_titleShadow->setGeometry(0, bodyTop, width(), st::lineWidth);
++		_titleShadow->setGeometry(inner.x(), bodyTop, inner.width(), st::lineWidth);
+ 	}
+ 	if (_outdated) {
+ 		Ui::SendPendingMoveResizeEvents(_outdated.data());
+-		_outdated->resizeToWidth(width());
+-		_outdated->moveToLeft(0, bodyTop);
++		_outdated->resizeToWidth(inner.width());
++		_outdated->moveToLeft(inner.x(), bodyTop);
+ 		bodyTop += _outdated->height();
+ 	}
+ 	if (_rightColumn) {
+ 		bodyWidth -= _rightColumn->width();
+-		_rightColumn->setGeometry(bodyWidth, bodyTop, width() - bodyWidth, height() - bodyTop);
++		_rightColumn->setGeometry(bodyWidth, bodyTop, inner.width() - bodyWidth, inner.height() - (bodyTop - inner.y()));
+ 	}
+-	_body->setGeometry(bodyLeft, bodyTop, bodyWidth, height() - bodyTop);
++	_body->setGeometry(bodyLeft, bodyTop, bodyWidth, inner.height() - (bodyTop - inner.y()));
+ }
+ 
+ void MainWindow::updateUnreadCounter() {
+@@ -599,12 +634,12 @@ void MainWindow::showRightColumn(object_ptr<TWidget> widget) {
+ 
+ int MainWindow::maximalExtendBy() const {
+ 	auto desktop = QDesktopWidget().availableGeometry(this);
+-	return std::max(desktop.width() - geometry().width(), 0);
++	return std::max(desktop.width() - inner().width(), 0);
+ }
+ 
+ bool MainWindow::canExtendNoMove(int extendBy) const {
+ 	auto desktop = QDesktopWidget().availableGeometry(this);
+-	auto inner = geometry();
++	auto inner = geometry().marginsRemoved(_padding);
+ 	auto innerRight = (inner.x() + inner.width() + extendBy);
+ 	auto desktopRight = (desktop.x() + desktop.width());
+ 	return innerRight <= desktopRight;
+diff --git a/Telegram/SourceFiles/window/main_window.h b/Telegram/SourceFiles/window/main_window.h
+index ceb6cdedac..9483e30e7a 100644
+--- a/Telegram/SourceFiles/window/main_window.h
++++ b/Telegram/SourceFiles/window/main_window.h
+@@ -101,12 +101,15 @@ class MainWindow : public Ui::RpWidget, protected base::Subscriber {
+ 
+ 	void clearWidgets();
+ 
++	QRect inner() const;
+ 	int computeMinWidth() const;
+ 	int computeMinHeight() const;
+ 
+ 	void recountGeometryConstraints();
+ 	virtual void updateControlsGeometry();
+ 
++	bool hasShadow() const;
++
+ public slots:
+ 	bool minimizeToTray();
+ 	void updateGlobalMenu() {
+@@ -114,6 +117,7 @@ public slots:
+ 	}
+ 
+ protected:
++	void paintEvent(QPaintEvent *e) override;
+ 	void resizeEvent(QResizeEvent *e) override;
+ 	void leaveEventHook(QEvent *e) override;
+ 
+@@ -179,6 +183,7 @@ public slots:
+ private:
+ 	void refreshTitleWidget();
+ 	void updateMinimumSize();
++	void updateShadowSize();
+ 	void updatePalette();
+ 	void initSize();
+ 
+@@ -198,6 +203,7 @@ public slots:
+ 	QIcon _icon;
+ 	bool _usingSupportIcon = false;
+ 	QString _titleText;
++	style::margins _padding;
+ 
+ 	bool _isActive = false;
+ 
+diff --git a/Telegram/SourceFiles/window/window_title_qt.cpp b/Telegram/SourceFiles/window/window_title_qt.cpp
+index a8a02de5b6..1763ef659e 100644
+--- a/Telegram/SourceFiles/window/window_title_qt.cpp
++++ b/Telegram/SourceFiles/window/window_title_qt.cpp
+@@ -8,11 +8,13 @@ For license and copyright information please follow this link:
+ #include "window/window_title_qt.h"
+ 
+ #include "platform/platform_specific.h"
++#include "ui/platform/ui_platform_utility.h"
+ #include "ui/widgets/buttons.h"
+ #include "ui/widgets/shadow.h"
+ #include "core/core_settings.h"
+ #include "core/application.h"
+ #include "styles/style_window.h"
++#include "styles/style_calls.h" // st::callShadow
+ #include "base/call_delayed.h"
+ 
+ #include <QtGui/QGuiApplication>
+@@ -27,6 +29,10 @@ namespace {
+ // that window. If we show the window back with this delay it works.
+ constexpr auto kShowAfterFramelessToggleDelay = crl::time(1000);
+ 
++style::margins ShadowExtents() {
++	return st::callShadow.extend;
++}
++
+ } // namespace
+ 
+ TitleWidgetQt::TitleWidgetQt(QWidget *parent)
+@@ -63,12 +69,17 @@ TitleWidgetQt::TitleWidgetQt(QWidget *parent)
+ 
+ 	QCoreApplication::instance()->installEventFilter(this);
+ 
+-	_windowWasFrameless = (window()->windowFlags() & Qt::FramelessWindowHint) != 0;
++	_windowWasFrameless = (window()->windowFlags()
++		& Qt::FramelessWindowHint) != 0;
++
+ 	if (!_windowWasFrameless) {
+ 		toggleFramelessWindow(true);
+ 	}
++
+ 	setAttribute(Qt::WA_OpaquePaintEvent);
+ 	resize(width(), _st.height);
++
++	updateWindowExtents();
+ }
+ 
+ TitleWidgetQt::~TitleWidgetQt() {
+@@ -76,6 +87,7 @@ TitleWidgetQt::~TitleWidgetQt() {
+ 	if (!_windowWasFrameless) {
+ 		toggleFramelessWindow(false);
+ 	}
++	Platform::SetWindowExtents(window()->windowHandle(), QMargins());
+ }
+ 
+ void TitleWidgetQt::toggleFramelessWindow(bool enabled) {
+@@ -98,11 +110,22 @@ void TitleWidgetQt::init() {
+ 		&QWindow::windowStateChanged,
+ 		this,
+ 		[=](Qt::WindowState state) { windowStateChanged(state); });
++	connect(
++		window()->windowHandle(),
++		&QWindow::visibleChanged,
++		this,
++		[=](bool visible) { visibleChanged(visible); });
+ 	_maximizedState = (window()->windowState() & Qt::WindowMaximized);
+ 	_activeState = isActiveWindow();
+ 	updateButtonsState();
+ }
+ 
++bool TitleWidgetQt::hasShadow() const {
++	const auto center = window()->geometry().center();
++	return Platform::WindowsNeedShadow()
++		&& Ui::Platform::TranslucentWindowsSupported(center);
++}
++
+ void TitleWidgetQt::paintEvent(QPaintEvent *e) {
+ 	auto active = isActiveWindow();
+ 	if (_activeState != active) {
+@@ -112,6 +135,14 @@ void TitleWidgetQt::paintEvent(QPaintEvent *e) {
+ 	Painter(this).fillRect(rect(), active ? _st.bgActive : _st.bg);
+ }
+ 
++void TitleWidgetQt::updateWindowExtents() {
++	if (hasShadow() && !_maximizedState) {
++		Platform::SetWindowExtents(window()->windowHandle(), ShadowExtents());
++	} else {
++		Platform::SetWindowExtents(window()->windowHandle(), QMargins());
++	}
++}
++
+ void TitleWidgetQt::updateControlsPosition() {
+ 	const auto controlsLayout = Core::App().settings().windowControlsLayout();
+ 	const auto controlsLeft = controlsLayout.left;
+@@ -197,7 +228,7 @@ void TitleWidgetQt::mousePressEvent(QMouseEvent *e) {
+ }
+ 
+ void TitleWidgetQt::mouseDoubleClickEvent(QMouseEvent *e) {
+-	if (window()->windowState() == Qt::WindowMaximized) {
++	if (_maximizedState) {
+ 		window()->setWindowState(Qt::WindowNoState);
+ 	} else {
+ 		window()->setWindowState(Qt::WindowMaximized);
+@@ -205,11 +236,19 @@ void TitleWidgetQt::mouseDoubleClickEvent(QMouseEvent *e) {
+ }
+ 
+ bool TitleWidgetQt::eventFilter(QObject *obj, QEvent *e) {
++	// I tried to listen only QEvent::Move and QEvent::Resize
++	// but that didn't work
++	if (obj->isWidgetType()
++		&& window() == static_cast<QWidget*>(obj)) {
++		updateWindowExtents();
++	}
++
+ 	if (e->type() == QEvent::MouseMove
+ 		|| e->type() == QEvent::MouseButtonPress) {
+ 		if (window()->isAncestorOf(static_cast<QWidget*>(obj))) {
+ 			const auto mouseEvent = static_cast<QMouseEvent*>(e);
+-			const auto edges = edgesFromPos(mouseEvent->windowPos().toPoint());
++			const auto edges = edgesFromPos(
++				mouseEvent->windowPos().toPoint());
+ 
+ 			if (e->type() == QEvent::MouseMove
+ 				&& mouseEvent->buttons() == Qt::NoButton) {
+@@ -218,7 +257,7 @@ bool TitleWidgetQt::eventFilter(QObject *obj, QEvent *e) {
+ 
+ 			if (e->type() == QEvent::MouseButtonPress
+ 				&& mouseEvent->button() == Qt::LeftButton
+-				&& window()->windowState() != Qt::WindowMaximized) {
++				&& !_maximizedState) {
+ 				return startResize(edges);
+ 			}
+ 		}
+@@ -243,6 +282,12 @@ void TitleWidgetQt::windowStateChanged(Qt::WindowState state) {
+ 	}
+ }
+ 
++void TitleWidgetQt::visibleChanged(bool visible) {
++	if (visible) {
++		updateWindowExtents();
++	}
++}
++
+ void TitleWidgetQt::updateButtonsState() {
+ 	_minimize->setIconOverride(_activeState
+ 		? &_st.minimizeIconActive
+@@ -273,26 +318,48 @@ void TitleWidgetQt::updateButtonsState() {
+ 		: nullptr);
+ }
+ 
++int TitleWidgetQt::getResizeArea(Qt::Edge edge) const {
++	if (!hasShadow()) {
++		return st::windowResizeArea;
++	}
++
++	if (edge == Qt::LeftEdge) {
++		return ShadowExtents().left();
++	} else if (edge == Qt::RightEdge) {
++		return ShadowExtents().right();
++	} else if (edge == Qt::TopEdge) {
++		return ShadowExtents().top();
++	} else if (edge == Qt::BottomEdge) {
++		return ShadowExtents().bottom();
++	}
++
++	return 0;
++}
++
+ Qt::Edges TitleWidgetQt::edgesFromPos(const QPoint &pos) {
+-	if (pos.x() <= st::windowResizeArea) {
+-		if (pos.y() <= st::windowResizeArea) {
++	if (pos.x() <= getResizeArea(Qt::LeftEdge)) {
++		if (pos.y() <= getResizeArea(Qt::TopEdge)) {
+ 			return Qt::LeftEdge | Qt::TopEdge;
+-		} else if (pos.y() >= (window()->height() - st::windowResizeArea)) {
++		} else if (pos.y()
++			>= (window()->height() - getResizeArea(Qt::BottomEdge))) {
+ 			return Qt::LeftEdge | Qt::BottomEdge;
+ 		}
+ 
+ 		return Qt::LeftEdge;
+-	} else if (pos.x() >= (window()->width() - st::windowResizeArea)) {
+-		if (pos.y() <= st::windowResizeArea) {
++	} else if (pos.x()
++		>= (window()->width() - getResizeArea(Qt::RightEdge))) {
++		if (pos.y() <= getResizeArea(Qt::TopEdge)) {
+ 			return Qt::RightEdge | Qt::TopEdge;
+-		} else if (pos.y() >= (window()->height() - st::windowResizeArea)) {
++		} else if (pos.y()
++			>= (window()->height() - getResizeArea(Qt::BottomEdge))) {
+ 			return Qt::RightEdge | Qt::BottomEdge;
+ 		}
+ 
+ 		return Qt::RightEdge;
+-	} else if (pos.y() <= st::windowResizeArea) {
++	} else if (pos.y() <= getResizeArea(Qt::TopEdge)) {
+ 		return Qt::TopEdge;
+-	} else if (pos.y() >= (window()->height() - st::windowResizeArea)) {
++	} else if (pos.y()
++		>= (window()->height() - getResizeArea(Qt::BottomEdge))) {
+ 		return Qt::BottomEdge;
+ 	} else {
+ 		return 0;
+@@ -307,7 +374,7 @@ void TitleWidgetQt::restoreCursor() {
+ }
+ 
+ void TitleWidgetQt::updateCursor(Qt::Edges edges) {
+-	if (!edges || window()->windowState() == Qt::WindowMaximized) {
++	if (!edges || _maximizedState) {
+ 		restoreCursor();
+ 		return;
+ 	} else if (!QGuiApplication::overrideCursor()) {
+diff --git a/Telegram/SourceFiles/window/window_title_qt.h b/Telegram/SourceFiles/window/window_title_qt.h
+index c3536587d4..02db001f7c 100644
+--- a/Telegram/SourceFiles/window/window_title_qt.h
++++ b/Telegram/SourceFiles/window/window_title_qt.h
+@@ -39,6 +39,8 @@ class TitleWidgetQt : public TitleWidget {
+ 
+ private:
+ 	void windowStateChanged(Qt::WindowState state = Qt::WindowNoState);
++	void visibleChanged(bool visible);
++	void updateWindowExtents();
+ 	void updateButtonsState();
+ 	void updateControlsPosition();
+ 	void updateControlsPositionBySide(
+@@ -46,6 +48,8 @@ class TitleWidgetQt : public TitleWidget {
+ 		bool right);
+ 
+ 	void toggleFramelessWindow(bool enabled);
++	bool hasShadow() const;
++	int getResizeArea(Qt::Edge edge) const;
+ 	Qt::Edges edgesFromPos(const QPoint &pos);
+ 	void updateCursor(Qt::Edges edges);
+ 	void restoreCursor();
+From 6635d03818c90f62cfddb516acadc293255b8905 Mon Sep 17 00:00:00 2001
+From: Ilya Fedin <fedin-ilja2010@ya.ru>
+Date: Sat, 29 Aug 2020 03:55:38 +0400
+Subject: [PATCH] Check if xcb-screensaver extension present
+
+---
+ .../platform/linux/specific_linux.cpp          | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.cpp b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+index a5a8274189..fc06381584 100644
+--- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+@@ -324,6 +324,20 @@ std::optional<xcb_atom_t> GetXCBAtom(
+ 	return atom;
+ }
+ 
++bool IsXCBExtensionPresent(
++		xcb_connection_t *connection,
++		xcb_extension_t *ext) {
++	const auto reply = xcb_get_extension_data(
++		connection,
++		ext);
++
++	if (!reply) {
++		return false;
++	}
++
++	return reply->present;
++}
++
+ std::vector<xcb_atom_t> GetXCBWMSupported(xcb_connection_t *connection) {
+ 	auto netWmAtoms = std::vector<xcb_atom_t>{};
+ 
+@@ -398,6 +412,10 @@ std::optional<crl::time> XCBLastUserInputTime() {
+ 		return std::nullopt;
+ 	}
+ 
++	if (!IsXCBExtensionPresent(connection, &xcb_screensaver_id)) {
++		return std::nullopt;
++	}
++
+ 	const auto root = static_cast<xcb_window_t>(reinterpret_cast<quintptr>(
+ 		native->nativeResourceForIntegration(QByteArray("rootwindow"))));
+ 

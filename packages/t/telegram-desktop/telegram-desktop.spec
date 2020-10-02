@@ -38,14 +38,16 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
-# tg_owt: https://github.com/desktop-app/tg_owt/archive/master.zip 
-Source1:        tg_owt-master.zip 
+# tg_owt: https://github.com/desktop-app/tg_owt/archive/master.zip
+Source1:        tg_owt-master.zip
 # PATCH-FIX-OPENSUSE
 Patch0:         0000-gtk2-default.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-tg_owt-fix-name-confliction.patch
+# PATCH-FIX-UPSTREAM: boo#1176626: Telegram-desktop crashes on Xwayland
+Patch3:         check_if_xcb-screensaver_present.patch
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.16
@@ -149,6 +151,7 @@ The service also provides APIs to independent developers.
 %setup -q -n tdesktop-%{version}-full
 %patch0 -p1
 %patch1 -p2
+%patch3 -p1
 
 cd ../
 unzip %{S:1}
@@ -173,7 +176,7 @@ cmake -G Ninja \
        -DTG_OWT_OPUS_INCLUDE_PATH=/usr/include/opus \
        -DTG_OWT_FFMPEG_INCLUDE_PATH=/usr/include/ffmpeg \
        ../..
-sed -i 's,gnu++2a,gnu++17,g' build.ninja 
+sed -i 's,gnu++2a,gnu++17,g' build.ninja
 ninja
 
 cd %{_builddir}/tdesktop-%{version}-full
