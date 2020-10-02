@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:15:40 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building with go support on openSUSE 15.2
+
+-------------------------------------------------------------------
+Tue Sep 22 07:30:36 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Build with python3
+- Protect /etc/netdata as it contains sensitive data (passwords, secrets)
+
+-------------------------------------------------------------------
+Wed Sep 16 11:31:06 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.25.0:
+Improvements
+  * Add code to release memory used by the global GUID map (#9729, @stelfrag)
+  * Add check for spurious wakeups
+Netdata Cloud
+  * Add v2 HTTP message with compression to ACLK (#9895, @underhood)
+  * Add version negotiation to ACLK (#9819, @underhood)
+  * Add claimed_id for child nodes streamed to their parents (#9804, @underhood)
+  * Update netdata-installer.sh to enable Netdata Cloud support in macOS (#9360, @mrbrutti)
+Collectors
+  * Update go.d.plugin version to v0.22.0 (#9898, @ilyam8)
+  * Add support for IP ranges to Python-based isc_dhcpd collector (#9755, @vsc55)
+  * Add Network viewer charts to ebpf.plugin (#9591, @thiagoftsm)
+  * Add collecting active processes limit on Linux systems (#9843, @Ancairon)
+  * Improve eBPF plugin by removing unnecessary debug messages (#9754, @thiagoftsm)
+  * Add CAP_SYS_CHROOT for netdata service to read LXD network interfaces (#9726, @vlvkobal)
+  * Add collecting maxmemory to python.d/redis (#9767, @ilyam8)
+  * Add option for multiple storage backends in python.d/varnish (#9668, @florianmagnin)
+* Dashboard
+  * Update dashboard v1.4.2 (#9837, @jacekkolasa)
+* Lots of documentation improvements and bug fixes
+
+-------------------------------------------------------------------
 Wed Aug 26 19:08:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.24.0:

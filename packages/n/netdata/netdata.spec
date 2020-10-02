@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.19.2
+%define godplugin_version 0.22.0
 Name:           netdata
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -37,8 +37,12 @@ BuildRequires:  cups-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  git-core
-%if 0%{?suse_version} > 1500
+# suse_version is set to 1500 even for 15.2
+%if 0%{?sle_version} >= 150200
 BuildRequires:  go >= 1.13
+BuildRequires:  python3
+%else
+BuildRequires:  python2
 %endif
 BuildRequires:  judy-devel
 BuildRequires:  pkgconfig
@@ -56,9 +60,15 @@ Recommends:     curl
 Recommends:     iproute-tc
 Recommends:     lm_sensors
 Recommends:     nmap-ncat curl openssl(cli)
+%if 0%{?sle_version} >= 150200
+Recommends:     python3
+Recommends:     python3-PyMySQL
+Recommends:     python3-psycopg2
+%else
 Recommends:     python
 Recommends:     python2-PyMySQL
 Recommends:     python2-psycopg2
+%endif
 Suggests:       logrotate
 Suggests:       nodejs
 %ifarch i586 x86_64
@@ -77,7 +87,9 @@ using interactive web dashboards.
 %patch2 -p1
 sed -i 's,/usr/bin/env bash,/bin/bash,' claim/%{name}-claim.sh.in
 
-%if 0%{?suse_version} > 1500
+%if 0%{?sle_version} >= 150200
+sed -i 's,^pybinary=.*,pybinary=/usr/bin/python3,' collectors/python.d.plugin/python.d.plugin.in
+
 tar xf %{S:1}
 cd go.d.plugin-%{godplugin_version}
 tar xf %{S:2}
@@ -98,7 +110,7 @@ export GOFLAGS=-mod=vendor
     %{?conf}
 %make_build
 
-%if 0%{?suse_version} > 1500
+%if 0%{?sle_version} >= 150200
 cd go.d.plugin-%{godplugin_version}
 go vet ./...
 
@@ -128,7 +140,7 @@ sed -i 's,^#!%{_bindir}/env bash,#!/bin/bash,;s,^#!%{_bindir}/env sh,#!/bin/sh,'
 # Hence, disable statistics by default.
 touch %{buildroot}%{_sysconfdir}/%{name}/.opt-out-from-anonymous-statistics
 
-%if 0%{?suse_version} > 1500
+%if 0%{?sle_version} >= 150200
 cd go.d.plugin-%{godplugin_version}
 cp -r config/* %{buildroot}%{_libdir}/%{name}/conf.d
 install -m0755 -p bin/go.d.plugin %{buildroot}%{_libexecdir}/%{name}/plugins.d/go.d.plugin
@@ -160,10 +172,6 @@ getent passwd %{netdata_user} >/dev/null || \
 %doc README.md CHANGELOG.md
 %license LICENSE REDISTRIBUTED.md
 
-%dir %{_sysconfdir}/%{name}
-%{_sysconfdir}/%{name}/edit-config
-%config(noreplace) %{_sysconfdir}/%{name}/*.conf
-%config(noreplace) %{_sysconfdir}/%{name}/.opt-out-from-anonymous-statistics
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 
 %{_libexecdir}/%{name}
@@ -173,19 +181,27 @@ getent passwd %{netdata_user} >/dev/null || \
 %{_sbindir}/%{name}-claim.sh
 %{_sbindir}/%{name}cli
 %{_sbindir}/rc%{name}
+%{_unitdir}/%{name}.service
+
+%attr(-,root,%{netdata_group}) %dir %{_datadir}/%{name}
+%attr(-,root,%{netdata_group}) %{_datadir}/%{name}/web
 
 %attr(0750,%{netdata_user},root) %dir %{_localstatedir}/cache/%{name}
 %attr(0750,%{netdata_user},root) %dir %{_localstatedir}/log/%{name}
 %attr(0750,%{netdata_user},root) %dir %{_localstatedir}/lib/%{name}
 
-%attr(-,root,%{netdata_group}) %dir %{_datadir}/%{name}
+# Do not allow users to read netdata config dir and files as they can
+# contain passwords!
+%defattr(0640,root,%{netdata_group},0750)
+
+%dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/%{name}/health.d
 %dir %{_sysconfdir}/%{name}/python.d
 %dir %{_sysconfdir}/%{name}/statsd.d
 
-%{_unitdir}/%{name}.service
+%config(noreplace) %{_sysconfdir}/%{name}/.opt-out-from-anonymous-statistics
+%config(noreplace) %{_sysconfdir}/%{name}/*.conf
 
-%defattr(0644,root,%{netdata_group},0755)
-%{_datadir}/%{name}/web
+%attr(0750,root,%{netdata_group}) %{_sysconfdir}/%{name}/edit-config
 
 %changelog

@@ -2551,4 +2551,12 @@ Bug fixes:
 * Many bugfixes, see https://github.com/netdata/netdata/releases/tag/v1.24.0</comment>
     <requestid>829822</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7f67056e85c55d84d9ee1cea4db78d70</srcmd5>
+    <version>1.25.0</version>
+    <time>1601652904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838874</requestid>
+  </revision>
 </revisionlist>
