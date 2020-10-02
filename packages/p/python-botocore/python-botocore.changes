@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 17:50:34 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Adjust remove_nose.patch to apply again
+
+-------------------------------------------------------------------
 Mon Sep  7 10:47:56 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.17.56
@@ -91,6 +96,13 @@ Mon Sep  7 10:47:56 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * api-change:``lambda``: Update lambda client to latest version
   * api-change:``iot``: Update iot client to latest version
   * api-change:``cloud9``: Update cloud9 client to latest version
+
+-------------------------------------------------------------------
+Wed Aug 26 16:54:07 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch which ports test suite from nose to
+  pytest (mostly just plain unittest, I just don't know how to
+  mark tests as slow). Filed upstream as gh#boto/botocore#2134.
 
 -------------------------------------------------------------------
 Wed Aug 12 10:45:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

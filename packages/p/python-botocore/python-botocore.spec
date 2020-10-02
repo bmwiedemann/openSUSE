@@ -25,6 +25,9 @@ License:        Apache-2.0
 URL:            https://github.com/boto/botocore
 Source:         https://files.pythonhosted.org/packages/source/b/botocore/botocore-%{version}.tar.gz
 Patch0:         hide_py_pckgmgmt.patch
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#boto/botocore#2134 mcepl@suse.com
+# Port test suite from nose to pytest (mostly just plain unittest)
+Patch1:         remove_nose.patch
 BuildRequires:  %{python_module docutils >= 0.10}
 BuildRequires:  %{python_module jmespath < 1.0.0}
 BuildRequires:  %{python_module jmespath >= 0.7.1}
@@ -50,8 +53,9 @@ BuildArch:      noarch
 BuildRequires:  python
 %endif
 # SECTION Testing requirements
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pluggy >= 0.7}
+BuildRequires:  %{python_module py >= 1.5.0}
+BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 # /SECTION
@@ -62,7 +66,8 @@ A low-level interface to a growing number of Amazon Web Services.
 
 %prep
 %setup -q -n botocore-%{version}
-%patch0 -p1
+%autopatch -p1
+
 # remove bundled cacert.pem
 rm botocore/cacert.pem
 # remove bundled 3rd party Python modules
@@ -80,7 +85,7 @@ sed -i 's/botocore\.vendored\.//' botocore/*.py tests/functional/*.py tests/inte
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v tests/unit
+%pytest tests/unit
 
 %files %{python_files}
 %doc README.rst
