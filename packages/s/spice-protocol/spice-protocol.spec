@@ -51,6 +51,8 @@ Headers defining the SPICE-protocol
 
 %install
 %meson_install
+# drop the libdir= entry from the .pc file. It's irrelevant for a arch-independent file
+sed -i "/libdir=/d" %{buildroot}%{_datadir}/pkgconfig/spice-protocol.pc
 
 %files devel
 %license COPYING

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:14:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libdir=/usr/(lib|lib64} entry from the .pc file: the
+  package is noarch and the libdir entry changes between archs
+  (boo#1109895).
+
+-------------------------------------------------------------------
 Mon Aug 17 14:47:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.14.2:
