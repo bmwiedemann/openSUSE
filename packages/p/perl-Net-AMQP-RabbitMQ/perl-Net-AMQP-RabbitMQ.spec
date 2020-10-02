@@ -21,7 +21,7 @@ Version:        2.40007
 Release:        0
 %define cpan_name Net-AMQP-RabbitMQ
 Summary:        Interact with RabbitMQ over AMQP using librabbitmq
-License:        MIT
+License:        MPL-1.1
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MS/MSTEMLE/%{cpan_name}-%{version}.tar.gz
