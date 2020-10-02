@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 31 08:24:48 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+
+-------------------------------------------------------------------
 Wed Jan 29 15:09:50 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
