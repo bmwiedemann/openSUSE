@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 30 10:28:26 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Update to version 4.0.0
+  * The pdk15 backend now passes the regression tests (both with
+    and without --stack-auto), and is thus considered stable.
+  * New in-development pdk13 backend for Padauk µC with 13-bit
+    wide program memory.
+  * C2X memccpy(), strdup(), strndup().
+  * Better tail call optimization.
+  * Many fixes in the pic14 backend.
+  * C2X u8 character constants.
+  * C2X bool, static_assert, alignof, alignas.
+  * C2X attributes on statements.
+  * C2X attribute declarations.
+  * Support for extended ASCII characters in sdas, sdld.
+  * Compiler support for UCNs and non-ASCII utf8 in identifiers.
+- Fix build by adding sdcc-fixupInlineLabel.patch to fix a
+  potential buffer overflow.
+- Add sdcc-pcode.patch to fix a strict aliasing warning and remove
+  -fno-strict-aliasing from CFLAGS.
+- Remove executable bits from source files to make rpmlint happy.
+
+-------------------------------------------------------------------
 Mon Nov 18 22:32:42 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.9.0
