@@ -17,7 +17,7 @@
 
 
 Name:           fluent-bit
-Version:        1.5.3
+Version:        1.5.6
 Release:        0
 Summary:        Fast Log Processor and Forwarder
 License:        Apache-2.0
