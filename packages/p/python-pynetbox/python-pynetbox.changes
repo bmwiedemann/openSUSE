@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 24 18:40:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1.0
+  * Add Basic plugins support (#290).
+
+-------------------------------------------------------------------
+Wed Sep  2 05:58:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.8
+  * Fixes malformed URL when calling .save() and .delete() on
+    nested objects.
+
+-------------------------------------------------------------------
 Sat Aug 22 22:03:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.0.7
