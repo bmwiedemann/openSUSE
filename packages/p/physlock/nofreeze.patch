@@ -1,0 +1,20 @@
+From 4fbacee834abef613d7f4bd37d52a9f5fe269c82 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bert=20M=C3=BCnnich?= <ber.t@posteo.de>
+Date: Thu, 16 Jan 2020 16:00:46 +0100
+Subject: [PATCH] Unlock VT switching before acquiring lock screen
+
+Fixes issue #81.
+---
+ main.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- main.c
++++ main.c	2020-09-02 11:07:36.452653111 +0000
+@@ -158,6 +158,7 @@ int main(int argc, char **argv) {
+ 				exit(EXIT_FAILURE);
+ 	}
+ 
++	vt_lock_switch(0);
+ 	vt_acquire(&vt);
+ 	vt_lock_switch(1);
+ 

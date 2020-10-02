@@ -1,0 +1,3 @@
+addFilter(".*W:.*binary.*")
+addFilter(".*W:.*permissions-incorrect.*/usr/bin/physlock.*has.*mode.*04750.*but.*should.*be.*0755.*")
+addFilter(".*W:.*permissions-incorrect-owner.*/usr/bin/physlock.*belongs.*to.*root:trusted.*but.*should.*be.*root:root.*")
