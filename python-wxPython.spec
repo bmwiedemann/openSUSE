@@ -21,7 +21,7 @@
 %define         oldpython python
 %define         X_display ":98"
 %bcond_with     test
-%bcond_with     syswx
+%bcond_without  syswx
 %if %{with syswx}
 %define wx_args --use_syswx --gtk3 -v
 %else
@@ -32,6 +32,7 @@ Version:        4.1.0
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
+Group:          System/Libraries
 URL:            https://github.com/wxWidgets/Phoenix
 Source:         https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-%{version}.tar.gz
 Source1:        python-wxPython-rpmlintrc
@@ -52,12 +53,8 @@ BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  xorg-x11-server
-BuildRequires:  pkgconfig(cppunit)
-%endif
 %if %{with syswx}
-BuildRequires:  wxGTK3-devel
+BuildRequires:  wxGTK3-devel >= 3.1.4
 %else
 BuildRequires:  freeglut-devel
 BuildRequires:  gstreamer-plugins-base-devel
@@ -82,9 +79,15 @@ Requires(postun): update-alternatives
 Conflicts:      python-wxWidgets
 Provides:       python-wxWidgets = %{version}
 %if %{with test}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
+# Need at least one font installed
+BuildRequires:  google-opensans-fonts
+BuildRequires:  wxWidgets-lang
+BuildRequires:  xorg-x11-server
+BuildRequires:  pkgconfig(cppunit)
 %endif
 %ifpython2
 Conflicts:      %{oldpython}-wxWidgets
@@ -103,6 +106,7 @@ platform specific code.
 %package lang
 # We cannot use %%lang_package here. Editra translations use noarch incompatible path.
 Summary:        Languages for package %{name}
+Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires:       python-base
 Supplements:    (bundle-lang-other and %{name})
@@ -112,12 +116,7 @@ Provides:       %{name}-lang-all = %{version}
 Provides translations to the package %{name}.
 
 %prep
-%setup -q -n wxPython-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -n wxPython-%{version} -p1
 sed -i -e '/^#!\//, 1d' wx/py/*.py
 sed -i -e '/^#!\//, 1d' wx/tools/*.py
 sed -i -e '/^#!\//, 1d' wx/py/tests/*.py
@@ -145,23 +144,28 @@ export DOXYGEN=%{_bindir}/doxygen
 %python_clone -a %{buildroot}%{_bindir}/wxdocs
 %python_clone -a %{buildroot}%{_bindir}/wxget
 
-%if %{with test}
 %check
+%if %{with test}
 #############################################
 ### Launch a virtual framebuffer X server ###
 #############################################
 export DISPLAY=%{X_display}
 Xvfb %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
-sleep 10
+sleep 5
 
-rm -r build
-rm -r _build*
-
+# Make sure "import wx" does not confuse the wx dir with the module
 mv wx wx_temp
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -B build.py test %{wx_args}
-}
+
+# Run each test as a separate process, otherwise multiple app
+# instances will corrupt each others static data
+# Run UiAction tests one by one
+%pytest_arch --forked -n 1 -k 'test_uiaction or test_mousemanager' unittests/
+# Skip Auto ID management test (only enabled on Windows)
+# Skip Frame restore (requires a window manager)
+# Skip UiAction tests (already done)
+%pytest_arch --forked -n auto -k '(not test_newIdRef03) and (not test_uiaction) and (not test_mousemanager) and (not test_frameRestore)' unittests/
+
 mv wx_temp wx
 %endif
 
@@ -172,8 +176,8 @@ mv wx_temp wx
 %python_uninstall_alternative pywxrc
 
 %files %{python_files}
-%license LICENSE.txt
-%doc CHANGES.rst README.rst TODO.rst license/*.txt
+%license LICENSE.txt license/*.txt
+%doc CHANGES.rst README.rst TODO.rst
 %python_alternative %{_bindir}/helpviewer
 %python_alternative %{_bindir}/img2png
 %python_alternative %{_bindir}/img2py

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 30 17:48:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use system wxWidgets (wxGTK3) instead of bundling
+- Cleanup test dependencies and check section (tests still disabled
+  due to too many failures)
+
+-------------------------------------------------------------------
 Wed Jul  1 12:55:23 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Wrap all relevant build dependencies when building with system
