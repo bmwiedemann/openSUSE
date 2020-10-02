@@ -7,4 +7,17 @@
     <comment>- Resubmit with extra LICENSE.txt removed</comment>
     <requestid>735805</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0dd67077c020ea24297b82871ba79ace</srcmd5>
+    <version>4.1.0</version>
+    <time>1601651879</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename changelog.md to CHANGELOG.md in %files section
+- Update Requires from setup.py (forwarded request 830745 from glaubitz)</comment>
+    <requestid>830862</requestid>
+  </revision>
 </revisionlist>
