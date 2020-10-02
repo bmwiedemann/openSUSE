@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>681535</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b295a72befad12c857e270c603e1e387</srcmd5>
+    <version>0.3.3</version>
+    <time>1601653040</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the local file in Source, not the full url on pypi.
+  The current version 0.3.3 is no longer available on pypi.</comment>
+    <requestid>838981</requestid>
+  </revision>
 </revisionlist>

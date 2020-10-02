@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntplib
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,8 +24,8 @@ Release:        0
 Summary:        Python NTP library
 License:        MIT
 Group:          Development/Libraries/Python
-Url:            http://pypi.python.org/pypi/ntplib
-Source0:        https://files.pythonhosted.org/packages/source/n/ntplib/ntplib-%{version}.tar.gz
+URL:            http://pypi.python.org/pypi/ntplib
+Source0:        ntplib-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}

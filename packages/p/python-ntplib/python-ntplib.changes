@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 12:45:57 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- Use the local file in Source, not the full url on pypi.
+  The current version 0.3.3 is no longer available on pypi.  
+
+-------------------------------------------------------------------
 Mon Aug 28 12:28:27 UTC 2017 - tbechtold@suse.com
 
 - convert to singlespec
