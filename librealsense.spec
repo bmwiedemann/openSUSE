@@ -18,16 +18,15 @@
 
 %define libver 2
 Name:           librealsense
-Version:        2.33.1+git20200305.ge0b160f01
+Version:        2.38.1
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/IntelRealSense/librealsense
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/IntelRealSense/librealsense/archive/v%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM - https://github.com/IntelRealSense/librealsense/pull/6321
-Patch1:         0001-Fix-aarch64-arm-detection.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
