@@ -1524,4 +1524,17 @@
 - ipv6: support to apply stable secret ifsysctl (jsc#SLE-6960)</comment>
     <requestid>781526</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>aa829219d31e5eb0a82ed544efdecb4a</srcmd5>
+    <version>0.6.64</version>
+    <time>1601651723</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.64
+- avoid incomplete ifdown/timeout on route deletion error (bsc#1174099)
+- dhcp4: add DHCLIENT_CREATE_CID to ifcfg (jsc#SLE-15770)
+- wicked: fixes to ifreload on port changes (bsc#1168155,bsc#1172082)
+- team: fix schema to use correct hwaddr_policy property (boo#1171234)
+- team: enable ipv6 on ports when nsna_ping linkwatch is used (bsc#959556)</comment>
+    <requestid>838810</requestid>
+  </revision>
 </revisionlist>

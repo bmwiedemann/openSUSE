@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:37:00 UTC 2020 - rtorreromarijnissen@suse.com
+
+- version 0.6.64
+- avoid incomplete ifdown/timeout on route deletion error (bsc#1174099)
+- dhcp4: add DHCLIENT_CREATE_CID to ifcfg (jsc#SLE-15770)
+- wicked: fixes to ifreload on port changes (bsc#1168155,bsc#1172082)
+- team: fix schema to use correct hwaddr_policy property (boo#1171234)
+- team: enable ipv6 on ports when nsna_ping linkwatch is used (bsc#959556)
+
+-------------------------------------------------------------------
 Wed Mar  4 13:24:18 UTC 2020 - mt@suse.com
 
 - version 0.6.63

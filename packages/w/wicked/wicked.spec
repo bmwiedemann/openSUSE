@@ -1,7 +1,7 @@
 #
 # spec file for package wicked
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.63
+Version:        0.6.64
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_63 = %{version}-%{release}
+Provides:       libwicked-0_6_64 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -160,7 +160,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_63 = %{version}-%{release}
+Requires:       libwicked-0_6_64 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
