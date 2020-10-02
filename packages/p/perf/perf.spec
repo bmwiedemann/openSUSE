@@ -36,6 +36,7 @@ Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
+Patch0:         0001-perf-fix-off-by-ones-in-memset-after-realloc.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}

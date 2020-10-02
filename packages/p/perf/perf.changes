@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  1 10:22:13 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-perf-fix-off-by-ones-in-memset-after-realloc.patch (bsc#1177113)
+
+-------------------------------------------------------------------
 Tue Sep 22 06:39:52 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - remove perf-cs-etm-move-definition-of-traceid_list-global-variable-from-header-file.patch
