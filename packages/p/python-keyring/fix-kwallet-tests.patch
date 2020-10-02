@@ -1,0 +1,95 @@
+diff --git a/tests/backends/test_kwallet.py b/tests/backends/test_kwallet.py
+index 68cb4c7..f2d1638 100644
+--- a/tests/backends/test_kwallet.py
++++ b/tests/backends/test_kwallet.py
+@@ -6,6 +6,7 @@ from keyring.testing.backend import BackendBasicTests
+ 
+ @pytest.mark.skipif(not kwallet.DBusKeyring.viable, reason="KWallet5 unavailable")
+ class TestDBusKWallet(BackendBasicTests):
++    __test__ = True
+ 
+     # Remove '@' from service name as this is not supported in service names
+     # '@' will cause troubles during migration of kwallet entries
+@@ -14,66 +15,27 @@ class TestDBusKWallet(BackendBasicTests):
+     def init_keyring(self):
+         return kwallet.DBusKeyring()
+ 
+-    def cleanup(self):
+-        for item in self.credentials_created:
+-            # Suppress errors, as only one pre/post migration item will be
+-            # present
+-            try:
+-                self.keyring.delete_password(*item)
+-            except BaseException:
+-                pass
+-
+-        # TODO Remove empty folders created during tests
+-
+-    def set_password(self, service, username, password, old_format=False):
+-        # set the password and save the result so the test runner can clean
+-        #  up after if necessary.
+-        self.credentials_created.add((service, username))
+-
+-        if old_format:
+-            username = username + '@' + service
+-            service = 'Python'
+-
+-        super().set_password(service, username, password)
+-
+-    def check_set_get(self, service, username, password):
++    def test_credential(self):
+         keyring = self.keyring
+ 
+-        # for the non-existent password
+-        self.assertEqual(keyring.get_password(service, username), None)
++        # not supported from kwallets
++        #cred = keyring.get_credential('service', None)
++        #assert cred is None
+ 
+-        # common usage
+-        self.set_password(service, username, password, True)
+-        # re-init keyring to force migration
+-        self.keyring = keyring = self.init_keyring()
+-        ret_password = keyring.get_password(service, username)
+-        self.assertEqual(
+-            ret_password,
+-            password,
+-            "Incorrect password for username: '%s' "
+-            "on service: '%s'. '%s' != '%s'"
+-            % (service, username, ret_password, password),
+-        )
++        self.set_password('service1', 'user1', 'password1')
++        self.set_password('service1', 'user2', 'password2')
+ 
+-        # for the empty password
+-        self.set_password(service, username, "", True)
+-        # re-init keyring to force migration
+-        self.keyring = keyring = self.init_keyring()
+-        ret_password = keyring.get_password(service, username)
+-        self.assertEqual(
+-            ret_password,
+-            "",
+-            "Incorrect password for username: '%s' "
+-            "on service: '%s'. '%s' != '%s'" % (service, username, ret_password, ""),
++        cred = keyring.get_credential('service1', None)
++        assert cred is None or (cred.username, cred.password) in (
++            ('user1', 'password1'),
++            ('user2', 'password2'),
+         )
+-        ret_password = keyring.get_password('Python', username + '@' + service)
+-        self.assertEqual(
+-            ret_password,
+-            None,
+-            "Not 'None' password returned for username: '%s' "
+-            "on service: '%s'. '%s' != '%s'. Passwords from old "
+-            "folder should be deleted during migration."
+-            % (service, username, ret_password, None),
++
++        cred = keyring.get_credential('service1', 'user2')
++        assert cred is not None
++        assert (cred.username, cred.password) in (
++            ('user1', 'password1'),
++            ('user2', 'password2'),
+         )
+ 
+ 

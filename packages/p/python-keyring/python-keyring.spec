@@ -23,8 +23,10 @@ Version:        21.2.1
 Release:        0
 Summary:        System keyring service access from Python
 License:        Python-2.0 AND MIT
+Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
+Patch:          fix-kwallet-tests.patch
 BuildRequires:  %{python_module SecretStorage >= 3}
 BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module importlib-metadata}
@@ -50,6 +52,7 @@ from python. It can be used in any application that needs safe password storage.
 
 %prep
 %setup -q -n keyring-%{version}
+%patch -p1
 # For rpmlint warning: remove shebang from python library:
 sed -i '/^#!/d' keyring/cli.py
 sed -i -e 's,--flake8,,' -e 's,--black,,' -e 's,--cov,,' pytest.ini

@@ -402,4 +402,12 @@
 - %python3_only -&gt; %python_alternative</comment>
     <requestid>810904</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>f27a87d3b9a30518b0a0d9b0ffbf36a2</srcmd5>
+    <version>21.2.1</version>
+    <time>1601651731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838815</requestid>
+  </revision>
 </revisionlist>
