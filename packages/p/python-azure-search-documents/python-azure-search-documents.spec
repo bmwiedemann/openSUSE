@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-search-documents
-Version:        1.0.0b2
+Version:        11.0.0
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
@@ -34,11 +34,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
+Requires:       python-azure-core < 2.0.0
+Requires:       python-azure-core >= 1.4.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-search-nspkg >= 1.0.0
-Requires:       python-requests
-Requires:       python-uamqp < 2.0.0
-Requires:       python-uamqp >= 1.2.5
+Requires:       python-msrest >= 0.6.10
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch

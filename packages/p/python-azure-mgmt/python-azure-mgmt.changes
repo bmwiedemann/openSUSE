@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Sep 23 11:02:54 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-containerservice >= 9.4.0
+  + python-azure-mgmt-eventhub >= 8.0.0
+  + python-azure-mgmt-network >= 16.0.0
+  + python-azure-mgmt-rdbms >= 3.0.0
+  + python-azure-mgmt-sql >= 0.21.0
+
+-------------------------------------------------------------------
+Tue Sep  8 20:06:48 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-appplatform >= 1.0.0
+  + python-azure-mgmt-hybridcompute >= 1.0.0
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-advisor >= 4.0.0
+  + python-azure-mgmt-apimanagement >= 0.2.0
+  + python-azure-mgmt-containerservice >= 9.3.0
+  + python-azure-mgmt-datafactory >= 0.13.0
+  + python-azure-mgmt-mixedreality >= 0.2.0
+  + python-azure-mgmt-recoveryservices >= 0.5.0
+  + python-azure-mgmt-recoveryservicesbackup >= 0.8.0
+
+-------------------------------------------------------------------
+Tue Sep  1 19:53:01 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-keyvault >= 7.0.0
+  + python-azure-mgmt-synapse >= 0.3.0
+
+-------------------------------------------------------------------
+Mon Aug 31 09:39:38 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-datashare >= 0.2.0
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-appconfiguration >= 0.6.0
+  + python-azure-mgmt-authorization >= 0.61.0
+  + python-azure-mgmt-containerinstance < 3.0.0
+  + python-azure-mgmt-containerinstance >= 2.0.0
+  + python-azure-mgmt-containerservice >= 9.2.0
+  + python-azure-mgmt-datafactory >= 0.12.0
+  + python-azure-mgmt-hanaonazure >= 0.14.0
+  + python-azure-mgmt-iotcentral >= 3.1.0
+  + python-azure-mgmt-kubernetesconfiguration >= 0.2.0
+  + python-azure-mgmt-kusto >= 0.9.0
+  + python-azure-mgmt-reservations >= 0.8.0
+  + python-azure-mgmt-servicefabric >= 0.5.0
+  + python-azure-mgmt-sql >= 0.20.0
+  + python-azure-mgmt-storage >= 11.2.0
+  + python-azure-mgmt-storagecache >= 0.3.0
+  + python-azure-mgmt-subscription >= 0.6.0
+
+-------------------------------------------------------------------
 Tue Aug 18 21:56:49 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update version numbers for component packages in Requires

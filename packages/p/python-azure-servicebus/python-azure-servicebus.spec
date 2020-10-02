@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-servicebus
-Version:        0.50.2
+Version:        0.50.3
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
@@ -36,7 +36,7 @@ Requires:       python-azure-common >= 1.1
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-requests
 Requires:       python-uamqp < 2.0.0
-Requires:       python-uamqp >= 1.2.5
+Requires:       python-uamqp >= 1.2.8
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -68,7 +68,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/servicebus
 %{python_sitelib}/azure_servicebus-*.egg-info

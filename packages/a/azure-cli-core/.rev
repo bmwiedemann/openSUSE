@@ -147,4 +147,17 @@
 - Update Requires from setup.py (forwarded request 827683 from glaubitz)</comment>
     <requestid>827685</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d08b682ccddfe42fff617e94805bb616</srcmd5>
+    <version>2.12.1</version>
+    <time>1601652746</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.12.1
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Add patch to disable automatic check for updates (boo#1175289)
+  + acc_disable-update-check.patch (forwarded request 838781 from glaubitz)</comment>
+    <requestid>838784</requestid>
+  </revision>
 </revisionlist>

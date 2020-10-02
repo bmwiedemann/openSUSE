@@ -1,0 +1,36 @@
+From 1b0319448c69ad27922c0112f5edcb193665b81a Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 6 Dec 2019 18:32:46 +0100
+Subject: [PATCH] Set EXTERNAL_BUILD_TIMESTAMP from SOURCE_DATE_EPOCH
+
+to make the package build reproducible by default without
+everyone having to discover the custom variable.
+
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+This code assigns the plain integer to keep the code simple.
+Otherwise we would have to deal with differences between GNU date
+and BSD date or include extra build deps like perl or python.
+---
+ ircd/version.c.SH | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/ircd/version.c.SH b/ircd/version.c.SH
+index fcaad4b8..35818842 100644
+--- a/ircd/version.c.SH
++++ b/ircd/version.c.SH
+@@ -15,6 +15,9 @@ fi
+ 
+ generation=`expr $generation + 1`
+ 
++if test -n "$SOURCE_DATE_EPOCH" -a "$EXTERNAL_BUILD_TIMESTAMP" = '' ; then
++    EXTERNAL_BUILD_TIMESTAMP=$SOURCE_DATE_EPOCH
++fi
+ if test "$EXTERNAL_BUILD_TIMESTAMP" = ''; then
+     creation=`LC_ALL=C date | \
+ awk '{if (NF == 6) \
+-- 
+2.28.0
+

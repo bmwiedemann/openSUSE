@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.10.1
+Version:        2.12.1
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-core/azure-cli-core-%{version}.tar.gz
 Source1:        LICENSE.txt
+Patch0:         acc_disable-update-check.patch
 BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -32,7 +33,7 @@ BuildRequires:  python3-azure-nspkg >= 3.0.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-setuptools
 Requires:       azure-cli-nspkg
-Requires:       azure-cli-telemetry
+Requires:       azure-cli-telemetry >= 1.0.6
 Requires:       python3-PyJWT
 Requires:       python3-PyYAML < 6.0
 Requires:       python3-PyYAML >= 5.2
@@ -41,9 +42,9 @@ Requires:       python3-adal >= 1.2.3
 Requires:       python3-argcomplete < 2.0
 Requires:       python3-argcomplete >= 1.8
 Requires:       python3-azure-mgmt-core < 2.0.0
-Requires:       python3-azure-mgmt-core >= 1.0.0
+Requires:       python3-azure-mgmt-core >= 1.2.0
 Requires:       python3-azure-mgmt-resource < 11.0.0
-Requires:       python3-azure-mgmt-resource >= 10.1.0
+Requires:       python3-azure-mgmt-resource >= 10.2.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-colorama >= 0.4.1
 Requires:       python3-humanfriendly < 9.0
@@ -79,6 +80,7 @@ Microsoft Azure CLI Core Module
 
 %prep
 %setup -q -n azure-cli-core-%{version}
+%patch0 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-core-%{version}

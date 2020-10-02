@@ -1,10 +1,10 @@
 References: bnc#907958
 Sanity check for those who forget '-X' on ssh and try to start virt-manager
-Index: virt-manager-3.0.0/virtManager/virtmanager.py
+Index: virt-manager-3.1.0/virtManager/virtmanager.py
 ===================================================================
---- virt-manager-3.0.0.orig/virtManager/virtmanager.py
-+++ virt-manager-3.0.0/virtManager/virtmanager.py
-@@ -67,8 +67,11 @@ def _import_gtk(leftovers):
+--- virt-manager-3.1.0.orig/virtManager/virtmanager.py
++++ virt-manager-3.1.0/virtManager/virtmanager.py
+@@ -62,8 +62,11 @@ def _import_gtk(leftovers):
              print("gtk3 3.22.0 or later is required.")
              sys.exit(1)
  

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  2 09:01:09 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 4GB min disk space
+- Use limit_build macro for all arches
+- Exclude more tests for ppc64 & ppc64le
+
+-------------------------------------------------------------------
 Wed Sep  9 07:24:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix typo

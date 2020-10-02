@@ -55,4 +55,15 @@
     <comment></comment>
     <requestid>801197</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>863e3e1839db7e301b035a5734ff4962</srcmd5>
+    <version>0.4.1</version>
+    <time>1601652210</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.4.1
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 831071 from glaubitz)</comment>
+    <requestid>831095</requestid>
+  </revision>
 </revisionlist>

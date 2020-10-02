@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 30 17:07:44 MDT 2020 - carnold@suse.com
+
+- jsc#SLE-16582, Upgrade virt-manager >= 3.x
+  * Return to using qcow2 sparse by default with libvirt 5.0.0+
+  * Make VM window shortcuts less likely to conflict with guest
+    usage
+  * Fix 3.0.0 regression with spice audio
+  * createvol: Add explicit option for qcow2 non-sparse
+  * Unconditionally add USB redirdev to new VMs when using SPICE
+  * Unconditionally add sound devices to new VMs
+  * Translation string improvements (Pino Toscano)
+- bsc#1176881 - No audio in virt-manager after upgrade
+  virt-manager-3.1.0.tar.bz2
+- Drop patches contained in new tarball
+  ba08f84b-addstorage-Return-to-using-qcow2-sparse-by-default.patch
+  a010c49b-cli-Fix-os-variant-help-introspection.patch
+  79ebcbcb-viewers-Fix-spice-audio.patch
+  e5a51f63-details-Change-Close-accelerator-to-ctrl+shift+w.patch
+  9c13d2f8-Remove-use-of-problematic-terminology.patch
+
+-------------------------------------------------------------------
 Mon Sep 28 08:17:59 MDT 2020 - carnold@suse.com
 
 - Upstream bug fixes (bsc#1027942)

@@ -45,4 +45,24 @@
     <comment>- Update to 0.13.3</comment>
     <requestid>345674</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d649dff908ecf9254cd70a0e3a4ad27e</srcmd5>
+    <version>1.0.0</version>
+    <time>1601653428</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner
+
+- Update to 1.0.0
+    * The first stable release of Hiredis.
+    * RESP3 support, TLS connections, allocator injection.
+    * Connect and command timeouts.
+    * API breaking changes, recompilation required.
+- Update to 0.14.1
+    * CVE-2020-7105 (failure to check for NULL return when 
+    allocating memory).
+- Update to 0.14.0
+    * ABI changes.  Upstream &quot;changes are numerous&quot;.
+- Add relocatable_executable.patch</comment>
+    <requestid>839156</requestid>
+  </revision>
 </revisionlist>

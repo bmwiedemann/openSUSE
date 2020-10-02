@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 14:41:29 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Set-EXTERNAL_BUILD_TIMESTAMP-from-SOURCE_DATE_EPOCH.patch
+  for reproducible builds.
+
+-------------------------------------------------------------------
 Sun Sep 29 07:45:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.1.2

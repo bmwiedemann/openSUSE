@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-advisor
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Microsoft Azure Advisor Client Library
 License:        MIT
@@ -72,7 +72,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/mgmt/advisor
 %{python_sitelib}/azure_mgmt_advisor-*.egg-info

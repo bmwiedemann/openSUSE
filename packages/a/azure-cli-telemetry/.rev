@@ -31,4 +31,12 @@
     <comment>- Update Azure CLI to latest version (boo#1154393) (forwarded request 742598 from glaubitz)</comment>
     <requestid>742730</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>692730d10b30c3f80bf3401c46af0104</srcmd5>
+    <version>1.0.6</version>
+    <time>1601652222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831456</requestid>
+  </revision>
 </revisionlist>

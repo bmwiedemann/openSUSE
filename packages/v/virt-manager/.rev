@@ -1662,4 +1662,12 @@
     <comment>A few upstream fixes and an adjustment to the changelog to include a Jira number</comment>
     <requestid>838334</requestid>
   </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>a956fdfb477c92c1a7d0ac8730a5e516</srcmd5>
+    <version>3.1.0</version>
+    <time>1601653125</time>
+    <user>dimstar_suse</user>
+    <comment>Update to virt-manager version 3.1.0</comment>
+    <requestid>839026</requestid>
+  </revision>
 </revisionlist>

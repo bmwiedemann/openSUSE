@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  2 11:20:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8.9
+  * New extensions:
+  * Input types rational_lattice and rational_offset. They allow
+    to choose an arbitrary sublattice of the rational space as
+    the lattice of reference.
+  * Computation goal IsEmptySemiOpen. It allows to check the
+    emptyness of semiopen polyhedra defined by inequalities
+    and strict inequalities.
+  * Computation goals DualFaceLattice, DualFVector, DualIncidence
+    computing the face lattice etc. for the dual cone.
+  * Computation goal TriangulationGenerators: it replaces
+    unstable Generators, and the name says explicitly for what it
+    is meant.
+
+-------------------------------------------------------------------
 Tue Sep  1 06:57:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable flint integration

@@ -315,4 +315,20 @@
   * mod_admin_telnet: Handle unavailable cipher info (fixes #1510: mod_admin_telnet backtrace)</comment>
     <requestid>833724</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7c8edebcd6543a59ed5c43c1be2a53ee</srcmd5>
+    <version>0.11.7</version>
+    <time>1601653172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.7:
+  Security:
+  * mod_websocket: Enforce size limits on received frames (fixes #1593)
+  Fixes and improvements:
+  * mod_c2s, mod_s2s: Make stanza size limits configurable
+  * Add configuration options to control Lua garbage collection parameters
+  * net.http: Backport SNI support for outgoing HTTP requests (#409)
+  * mod_websocket: Process all data in the buffer on close frame and connection errors (fixes #1474, #1234)
+  * util.indexedbheap: Fix heap data structure corruption, causing some timers to fail after a reschedule (fixes #1572)</comment>
+    <requestid>839107</requestid>
+  </revision>
 </revisionlist>

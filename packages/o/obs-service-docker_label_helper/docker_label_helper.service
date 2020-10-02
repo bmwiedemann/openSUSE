@@ -1,0 +1,4 @@
+<service name="docker_label_helper">
+	<summary>Allows automatic duplication of labels with a custom prefix.</summary>
+	<description>Implements the PREFIXEDLABEL pseudo command for Dockerfile.</description>
+</service>

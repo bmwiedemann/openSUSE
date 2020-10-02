@@ -23,7 +23,6 @@ Name:           libnvidia-container
 Version:        1.1.1
 Release:        0
 Summary:        NVIDIA container runtime library
-License:        BSD-3-Clause AND Apache-2.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND GPL-2.0-only
 # elftoolchain is licensed under BSD-3-Clause
 #  https://github.com/elftoolchain/elftoolchain#copyright-and-license
 # libnvidia-container is licensed under apache-2.0
@@ -36,6 +35,7 @@ License:        BSD-3-Clause AND Apache-2.0 AND GPL-3.0-or-later AND LGPL-3.0-or
 #  https://github.com/NVIDIA/nvidia-modprobe/blob/master/COPYING
 # several nvidia-modprobe files contain the MIT license header
 #  https://github.com/NVIDIA/nvidia-modprobe/blob/master/utils.mk
+License:        BSD-3-Clause AND Apache-2.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND GPL-2.0-only
 URL:            https://github.com/NVIDIA/libnvidia-container
 Source:         https://github.com/NVIDIA/libnvidia-container/archive/v%{version}.tar.gz#/libnvidia-container-%{version}.tar.gz
 Source1:        https://github.com/NVIDIA/nvidia-modprobe/archive/%{modprobe_version}.tar.gz#/nvidia-modprobe-%{modprobe_version}.tar.gz
@@ -52,6 +52,7 @@ BuildRequires:  libtirpc-devel
 BuildRequires:  lsb-release
 BuildRequires:  m4
 BuildRequires:  rpcgen
+ExcludeArch:    i586
 
 %description
 The nvidia-container library provides an interface to configure GNU/Linux

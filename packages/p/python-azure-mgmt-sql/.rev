@@ -82,4 +82,15 @@
     CHANGELOG.md file provided with this package (forwarded request 821913 from glaubitz)</comment>
     <requestid>821944</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1d2ca848ed8e05131d14c3ea11d5dead</srcmd5>
+    <version>0.21.0</version>
+    <time>1601652678</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.21.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 836308 from glaubitz)</comment>
+    <requestid>836542</requestid>
+  </revision>
 </revisionlist>

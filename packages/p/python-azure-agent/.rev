@@ -207,4 +207,12 @@
   + sudoers file is managed by cloud-init we no longer need this hack</comment>
     <requestid>826678</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>834f2933a66465c47c80827c0f5e2d35</srcmd5>
+    <version>2.2.49.2</version>
+    <time>1601652497</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835300</requestid>
+  </revision>
 </revisionlist>

@@ -94,4 +94,16 @@
     CHANGELOG.md file provided with this package (forwarded request 821904 from glaubitz)</comment>
     <requestid>821942</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>acdd09c4dc754dac1542dd2c05ab9135</srcmd5>
+    <version>16.0.0</version>
+    <time>1601652649</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 16.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 836305 from glaubitz)</comment>
+    <requestid>836340</requestid>
+  </revision>
 </revisionlist>

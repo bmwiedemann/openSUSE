@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:44:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Do not ship tests
+
+-------------------------------------------------------------------
+Wed Sep 16 21:15:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.22.2:
+  * Fixed compatibility with Python 2 and older versions of Python 3.
+  * Fixed non-working ``--backend`` option with ``pybtex -l python``.
+  * Fixed handling of duplicate fields in ``.bib`` biles.
+  * BibTeX parser is now up to 10% faster on some files.
+  * Fixed parsing of names with ``\~`` characters.
+  * Fixed formatting proceedings without an ``editor`` field in ``unsrt.py``.
+  * In case of too many braces in a BibTeX string, ``PybtexSyntaxError`` is now raised instead
+  * Dropped ``2to3``, made the code compatible with both Python 2 and 3 with Six_.
+  * Moved tests outside of the ``pybtex`` package.
+  * Fixed searching in docs with recent versions of Sphinx_.
+  * API: renamed ``bibtex.BibTeXEntryIterator`` to ``bibtex.LowLevelParser`` for clarity.
+  * API: removed confusing usage of ``Person.text`` in ``tempate.names``.
+  * API: ``Entry.fields`` does not automagically look for cross-referenced entries
++  anymore.
+
+-------------------------------------------------------------------
 Wed May 20 07:26:17 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

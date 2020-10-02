@@ -118,4 +118,21 @@ Created in 2007 and actively maintained and enhanced since then.</comment>
 - Remove obsolete macros.</comment>
     <requestid>768442</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a806fa63216066cf3e1eabd2a8c1900b</srcmd5>
+    <version>2.17</version>
+    <time>1601653191</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.17:
+  - Improved handling of carriage return (gl#saalen/ansifilter#25).
+  - Applied makefile patch to address Portage warnings
+    (gl#saalen/ansifilter#24).
+  - Fixed section naming of LaTeX files if input path contained
+    slashes.
+  - CLI: Added `--max-size` option to limit input file size
+    (default: 256 MB).
+- Update ansifilter.keyring.
+- Update list of generated source files cleaned in prep section.</comment>
+    <requestid>839051</requestid>
+  </revision>
 </revisionlist>

@@ -1058,4 +1058,12 @@
     <comment> (forwarded request 800231 from msmeissn)</comment>
     <requestid>800232</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>90c42fafc09c5a734c9872d585db6aa1</srcmd5>
+    <version>1.3.4</version>
+    <time>1601653337</time>
+    <user>dimstar_suse</user>
+    <comment>update openscap to 1.3.4 (forwarded request 839124 from rfrohl)</comment>
+    <requestid>839126</requestid>
+  </revision>
 </revisionlist>

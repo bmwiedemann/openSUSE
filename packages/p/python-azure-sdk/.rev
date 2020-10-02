@@ -71,4 +71,15 @@
     <comment></comment>
     <requestid>790571</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>b6e07244759204887f596d3bf490b3d4</srcmd5>
+    <version>4.0.0</version>
+    <time>1601652702</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-keyvault-administration
+- Update version numbers for component packages in Requires
+  + python-azure-appconfiguration &amp;gt;= 1.1.0 (forwarded request 836309 from glaubitz)</comment>
+    <requestid>836543</requestid>
+  </revision>
 </revisionlist>

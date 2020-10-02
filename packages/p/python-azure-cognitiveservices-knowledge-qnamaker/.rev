@@ -15,4 +15,17 @@
     <comment>- Update Python Azure SDK to latest version (forwarded request 735134 from glaubitz)</comment>
     <requestid>735656</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>658ef4e057608d959059740cc149f90a</srcmd5>
+    <version>0.2.0</version>
+    <time>1601652257</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833079 from glaubitz)</comment>
+    <requestid>833104</requestid>
+  </revision>
 </revisionlist>

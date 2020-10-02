@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Oct  1 09:04:59 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.23.0:
+  Bug news
+  * Frontend, druntime and Phobos are at version 2.093.1+, 
+    incl. new command-line option -vtemplates. (#3476, #3538, #3541)
+  * New -platformlib CLI option to override the default linked-with
+    platform libraries, e.g., when targeting bare-metal. (#3374, #3475)
+  Platform support
+  * Supports LLVM 6.0 - 10.0.
+  Bug fixes
+  * Fix regression since v1.22: shared druntime potentially overriding
+    libstdc++ symbols and breaking exceptions in C++ libraries. (#3530, #3537)
+  * Fix naked DMD-style asm emission for non-Mac x86 Darwin targets
+    (e.g., iOS simulators). (#3478)
+  * -betterC: Don't use unsupported EH for handling clean-ups. (#3479, #3482)
+  * dcompute: Fix wrong address space loads and stores. Thx Rob! (#3428)
+  * Fix ICE wrt. missing IR declarations for some forward-declared 
+    functions. (#3496, #3503)
+  * Fix ICE wrt. inline IR and empty parameter types tuple. (#3509)
+  * Fix PGO issues. (#3375, #3511, #3512, #3524)
+  * Improve support for LLVM's ThreadSanitizer. (#3522)
+  * Fix linker cmdline length limitation via response files. (#3535, #3536)
+  Internals
+  * Compiler performance wrt. string literals emission has been improved.
+    Thx @looked-at-me! (#3490, #3492)
+  * Link libstdc++ statically for libldc-jit.so of prebuilt Linux packages,
+    to increase portability. (#3473, #3474)
+  * Set up Visual D when using the Visual Studio CMake generator, making
+    LDC compiler development on Windows a smooth out-of-the-box experience. (#3494)
+  Known issues
+  * When building LDC, old LDC 0.17.*/ltsmaster host compilers miscompile 
+    LDC ≥ 1.21, leading to potential segfaults of the built LDC. Ltsmaster 
+    can still be used to bootstrap a first compiler and then let that compiler
+    compile itself. (#3354)
+  * Buggy older ld.bfd linker versions may wrongly strip out required symbols,
+    e.g., ModuleInfos (so that e.g. no module ctors/dtors are run).
+    LDC defaults to ld.gold on Linux.
+  * LDC does not zero the padding area of a real variable. This may 
+    lead to wrong results if the padding area is also considered. 
+    See #770. Does not apply to real members inside structs etc.
+
+-------------------------------------------------------------------
 Sun Aug  9 21:57:52 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.22.0: 

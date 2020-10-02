@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-ai-textanalytics
-Version:        1.0.0b4
+Version:        5.0.0
 Release:        0
 Summary:        Azure Text Analytics client library for Python
 License:        MIT

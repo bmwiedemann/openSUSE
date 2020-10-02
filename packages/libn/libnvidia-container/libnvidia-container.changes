@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  1 12:26:39 UTC 2020 - jmassaguerpla@suse.com
+
+- Exclude i586 because it is not supported and because of this we
+  get this error message when trying to build it
+
+    `+ make distclean`
+    `/home/abuild/rpmbuild/BUILD/libnvidia-container-1.1.1/mk/common.mk:49:
+     *** Unsupported architecture.  Stop.`
+
+-------------------------------------------------------------------
 Wed Jun  3 20:21:39 UTC 2020 - Colleen Murphy <comurphy@suse.com>
 
 - Update to version 1.1.1

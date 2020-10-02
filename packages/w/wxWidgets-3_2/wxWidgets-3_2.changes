@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 30 17:39:01 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix wxPython compatibility issue:
+  Add 0001-Don-t-use-wxASCII_STR-inside-wxART_MAKE_XXX_ID-macro.patch
+  Add 0002-Fix-documented-type-of-wxART_XXX-constants.patch
+
+-------------------------------------------------------------------
 Wed Aug 19 18:01:10 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use _multibuild to avoid changes and spec files of the variants

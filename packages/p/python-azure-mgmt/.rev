@@ -167,4 +167,17 @@
     <comment></comment>
     <requestid>827750</requestid>
   </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>9bac2997aa9da6debbff83bd032593f4</srcmd5>
+    <version>4.0.0</version>
+    <time>1601652580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version numbers for component packages in Requires
+  + python-azure-mgmt-containerservice &amp;gt;= 9.4.0
+  + python-azure-mgmt-eventhub &amp;gt;= 8.0.0
+  + python-azure-mgmt-network &amp;gt;= 16.0.0
+  + python-azure-mgmt-rdbms &amp;gt;= 3.0.0
+  + python-azure-mgmt-sql &amp;gt;= 0.21.0 (forwarded request 836300 from glaubitz)</comment>
+    <requestid>836335</requestid>
+  </revision>
 </revisionlist>

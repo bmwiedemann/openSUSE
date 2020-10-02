@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Sep 30 19:09:59 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit d7b5ac76dc95ddf30e707d26998e36303e9f52a7 (merge of v246.6)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1cab0d44584687ace92d1df30eadf264231e3b65...d7b5ac76dc95ddf30e707d26998e36303e9f52a7
+
+-------------------------------------------------------------------
+Tue Sep 29 16:37:40 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Ship {/usr/lib,/etc}/systemd/network directories in the main package
+
+  These directories can be used by both udevd and networkd.
+
+-------------------------------------------------------------------
+Thu Sep 17 15:12:48 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Remove dangling symlink
+  /usr/lib/systemd/system/sockets.target.wants/systemd-journald-audit.socket
+
+  Otherwise the build system complains.
+
+-------------------------------------------------------------------
+Thu Sep 17 12:50:27 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit 1cab0d44584687ace92d1df30eadf264231e3b65 (include v246.5)
+
+  304ec2c7ab fstab-generator: add 'nofail' when  NFS 'bg' option is used (bsc#1176513)
+  6ae277fb37 test: adapt TEST-21-SYSUSERS for SUSE
+  acd8bfd2cc test: adapt TEST-13-NSPAWN-SMOKE for SUSE
+  [...]
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/a4e393eecb9dbe140a6c7d57419c291d786155cf...1cab0d44584687ace92d1df30eadf264231e3b65
+
+-------------------------------------------------------------------
 Wed Sep 16 14:07:56 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Drop 0001-udev-temporarly-restore-the-creation-a-few-symlinks-.patch

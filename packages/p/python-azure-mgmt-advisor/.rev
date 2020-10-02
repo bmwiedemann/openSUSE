@@ -42,4 +42,17 @@
     HISTORY.txt file provided with this package (forwarded request 767734 from glaubitz)</comment>
     <requestid>767793</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18692f50ce96bbfdb59e168084523235</srcmd5>
+    <version>4.0.0</version>
+    <time>1601652315</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833088 from glaubitz)</comment>
+    <requestid>833111</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  8 14:27:14 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0b6
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.md to CHANGELOG.md in %files section
+
+-------------------------------------------------------------------
 Wed Jan 29 12:42:01 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build

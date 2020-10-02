@@ -19,7 +19,7 @@
 
 %bcond_without gui
 Name:           ansifilter
-Version:        2.16
+Version:        2.17
 Release:        0
 Summary:        ANSI Terminal Escape Code Converter
 License:        GPL-3.0-or-later
@@ -49,9 +49,10 @@ This package provides a Qt Graphical User Interface to run %{name}.
 %prep
 %setup -q
 %if %{with gui}
-# Remove pre-configured files which may cause errors with Leap 42.x.
+# Remove generated files which may cause errors when building with
+# a version of Qt different from the one used to generate the files.
 rm -v src/qt-gui/moc_*.cpp
-rm -v src/qt-gui/Makefile*
+rm -v src/qt-gui/ui_ansifilter.h
 %endif
 
 %build

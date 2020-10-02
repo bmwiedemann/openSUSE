@@ -25,7 +25,7 @@
 %define with_bindings 0
 
 Name:           openscap
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz
 # temp snapshot to make it build with new RPM before 1.3.2

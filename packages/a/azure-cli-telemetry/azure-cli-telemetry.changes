@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  2 12:35:06 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.6
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+
+-------------------------------------------------------------------
 Thu Oct 24 12:12:41 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
   + Version 1.0.4
   + For detailed information about changes see the
-    HISTORY.txt file provided with this package
+    HISTORY.rst file provided with this package
 - Drop patch to relax version requires in setup.py, it's
   not required as the dependencies are managed by RPM
   + act_relax-requires-versions.patch
@@ -21,7 +29,7 @@ Tue Apr 16 19:01:40 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - New upstream release
   + Version 1.0.1
   + For detailed information about changes see the
-    HISTORY.txt file provided with this package
+    HISTORY.rst file provided with this package
 - Bump minimum version for Python Azure SDK namespace
   packages to 3.0.0 in BuildRequires and Requires
 - Remove python3-devel package from BuildRequires

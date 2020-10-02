@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define rb_build_ruby_abis     %{rb_default_ruby_abi}
+%define rb_build_versions      %{rb_default_ruby}
 
 Name:           git-lfs
 Version:        2.10.0

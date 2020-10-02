@@ -1,0 +1,179 @@
+From 93860ce690d7a8d9f9a4d900aa45fdd4839d01b5 Mon Sep 17 00:00:00 2001
+From: Vadim Zeitlin <vadim@wxwidgets.org>
+Date: Sun, 23 Aug 2020 02:44:25 +0200
+Subject: [PATCH 1/2] Don't use wxASCII_STR() inside wxART_MAKE_XXX_ID macros
+
+This changed the type of the art and client ID values, which broke
+compatibility with existing code, notably in wxPython (see
+https://github.com/wxWidgets/wxWidgets/pull/1996), and the attempts to
+fix this compatibility broke it with all the existing code using
+wxART_MAKE_ART_ID() or wxART_MAKE_CLIENT_ID() for their own IDs.
+
+Keep things simple and just define the macros as they were defined
+before 4552009805 (Merge branch 'pr1312-no-unsafe-wxstring-conv',
+2020-07-20), except for wxART_MAKE_CLIENT_ID_FROM_STR() whose argument
+and produced value was already of wxString type, and use wxASCII_STR()
+at the place of use of wxART_XXX constants in wx code.
+
+This is obviously not ideal as it will require using wxASCII_STR() in
+the application code as well, but seems to be the least evil.
+---
+ include/wx/artprov.h           | 12 ++++++------
+ include/wx/xrc/xmlres.h        | 10 +++++-----
+ include/wx/xrc/xmlreshandler.h | 20 ++++++++++----------
+ 3 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/include/wx/artprov.h b/include/wx/artprov.h
+index b54597659b..6dd2850a82 100644
+--- a/include/wx/artprov.h
++++ b/include/wx/artprov.h
+@@ -28,9 +28,9 @@ typedef wxString wxArtClient;
+ typedef wxString wxArtID;
+ 
+ #define wxART_MAKE_CLIENT_ID_FROM_STR(id)  ((id) + wxASCII_STR("_C"))
+-#define wxART_MAKE_CLIENT_ID(id)           wxASCII_STR(#id "_C")
++#define wxART_MAKE_CLIENT_ID(id)           (#id "_C")
+ #define wxART_MAKE_ART_ID_FROM_STR(id)     (id)
+-#define wxART_MAKE_ART_ID(id)              wxASCII_STR(#id)
++#define wxART_MAKE_ART_ID(id)              (#id)
+ 
+ // ----------------------------------------------------------------------------
+ // Art clients
+@@ -154,13 +154,13 @@ public:
+     // Query the providers for bitmap with given ID and return it. Return
+     // wxNullBitmap if no provider provides it.
+     static wxBitmap GetBitmap(const wxArtID& id,
+-                              const wxArtClient& client = wxART_OTHER,
++                              const wxArtClient& client = wxASCII_STR(wxART_OTHER),
+                               const wxSize& size = wxDefaultSize);
+ 
+     // Query the providers for icon with given ID and return it. Return
+     // wxNullIcon if no provider provides it.
+     static wxIcon GetIcon(const wxArtID& id,
+-                          const wxArtClient& client = wxART_OTHER,
++                          const wxArtClient& client = wxASCII_STR(wxART_OTHER),
+                           const wxSize& size = wxDefaultSize);
+ 
+     // Helper used by GetMessageBoxIcon(): return the art id corresponding to
+@@ -173,13 +173,13 @@ public:
+     // can be set)
+     static wxIcon GetMessageBoxIcon(int flags)
+     {
+-        return GetIcon(GetMessageBoxIconId(flags), wxART_MESSAGE_BOX);
++        return GetIcon(GetMessageBoxIconId(flags), wxASCII_STR(wxART_MESSAGE_BOX));
+     }
+ 
+     // Query the providers for iconbundle with given ID and return it. Return
+     // wxNullIconBundle if no provider provides it.
+     static wxIconBundle GetIconBundle(const wxArtID& id,
+-                                      const wxArtClient& client = wxART_OTHER);
++                                      const wxArtClient& client = wxASCII_STR(wxART_OTHER));
+ 
+     // Gets native size for given 'client' or wxDefaultSize if it doesn't
+     // have native equivalent
+diff --git a/include/wx/xrc/xmlres.h b/include/wx/xrc/xmlres.h
+index 8b4710b676..6507afe6d9 100644
+--- a/include/wx/xrc/xmlres.h
++++ b/include/wx/xrc/xmlres.h
+@@ -565,27 +565,27 @@ public:
+ 
+     // Gets a bitmap.
+     wxBitmap GetBitmap(const wxString& param = wxT("bitmap"),
+-                       const wxArtClient& defaultArtClient = wxART_OTHER,
++                       const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                        wxSize size = wxDefaultSize) wxOVERRIDE;
+ 
+     // Gets a bitmap from an XmlNode.
+     wxBitmap GetBitmap(const wxXmlNode* node,
+-                       const wxArtClient& defaultArtClient = wxART_OTHER,
++                       const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                        wxSize size = wxDefaultSize) wxOVERRIDE;
+ 
+     // Gets an icon.
+     wxIcon GetIcon(const wxString& param = wxT("icon"),
+-                   const wxArtClient& defaultArtClient = wxART_OTHER,
++                   const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                    wxSize size = wxDefaultSize) wxOVERRIDE;
+ 
+     // Gets an icon from an XmlNode.
+     wxIcon GetIcon(const wxXmlNode* node,
+-                   const wxArtClient& defaultArtClient = wxART_OTHER,
++                   const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                    wxSize size = wxDefaultSize) wxOVERRIDE;
+ 
+     // Gets an icon bundle.
+     wxIconBundle GetIconBundle(const wxString& param,
+-                               const wxArtClient& defaultArtClient = wxART_OTHER) wxOVERRIDE;
++                               const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER)) wxOVERRIDE;
+ 
+     // Gets an image list.
+     wxImageList *GetImageList(const wxString& param = wxT("imagelist")) wxOVERRIDE;
+diff --git a/include/wx/xrc/xmlreshandler.h b/include/wx/xrc/xmlreshandler.h
+index b478356d6d..7f132b99a9 100644
+--- a/include/wx/xrc/xmlreshandler.h
++++ b/include/wx/xrc/xmlreshandler.h
+@@ -85,19 +85,19 @@ public:
+     virtual wxSize GetPairInts(const wxString& param) = 0;
+     virtual wxDirection GetDirection(const wxString& param, wxDirection dir = wxLEFT) = 0;
+     virtual wxBitmap GetBitmap(const wxString& param = wxT("bitmap"),
+-                               const wxArtClient& defaultArtClient = wxART_OTHER,
++                               const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                                wxSize size = wxDefaultSize) = 0;
+     virtual wxBitmap GetBitmap(const wxXmlNode* node,
+-                               const wxArtClient& defaultArtClient = wxART_OTHER,
++                               const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                                wxSize size = wxDefaultSize) = 0;
+     virtual wxIcon GetIcon(const wxString& param = wxT("icon"),
+-                           const wxArtClient& defaultArtClient = wxART_OTHER,
++                           const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                            wxSize size = wxDefaultSize) = 0;
+     virtual wxIcon GetIcon(const wxXmlNode* node,
+-                           const wxArtClient& defaultArtClient = wxART_OTHER,
++                           const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                            wxSize size = wxDefaultSize) = 0;
+     virtual wxIconBundle GetIconBundle(const wxString& param,
+-                                       const wxArtClient& defaultArtClient = wxART_OTHER) = 0;
++                                       const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER)) = 0;
+     virtual wxImageList *GetImageList(const wxString& param = wxT("imagelist")) = 0;
+ 
+ #if wxUSE_ANIMATIONCTRL
+@@ -321,31 +321,31 @@ protected:
+         return GetImpl()->GetDirection(param, dir);
+     }
+     wxBitmap GetBitmap(const wxString& param = wxT("bitmap"),
+-                       const wxArtClient& defaultArtClient = wxART_OTHER,
++                       const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                        wxSize size = wxDefaultSize)
+     {
+         return GetImpl()->GetBitmap(param, defaultArtClient, size);
+     }
+     wxBitmap GetBitmap(const wxXmlNode* node,
+-                       const wxArtClient& defaultArtClient = wxART_OTHER,
++                       const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                        wxSize size = wxDefaultSize)
+     {
+         return GetImpl()->GetBitmap(node, defaultArtClient, size);
+     }
+     wxIcon GetIcon(const wxString& param = wxT("icon"),
+-                   const wxArtClient& defaultArtClient = wxART_OTHER,
++                   const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                    wxSize size = wxDefaultSize)
+     {
+         return GetImpl()->GetIcon(param, defaultArtClient, size);
+     }
+     wxIcon GetIcon(const wxXmlNode* node,
+-                   const wxArtClient& defaultArtClient = wxART_OTHER,
++                   const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER),
+                    wxSize size = wxDefaultSize)
+     {
+         return GetImpl()->GetIcon(node, defaultArtClient, size);
+     }
+     wxIconBundle GetIconBundle(const wxString& param,
+-                               const wxArtClient& defaultArtClient = wxART_OTHER)
++                               const wxArtClient& defaultArtClient = wxASCII_STR(wxART_OTHER))
+     {
+         return GetImpl()->GetIconBundle(param, defaultArtClient);
+     }
+-- 
+2.28.0
+

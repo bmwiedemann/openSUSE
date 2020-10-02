@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-synapse
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Microsoft Azure Synapse Management Client Library
 License:        MIT

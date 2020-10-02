@@ -1,8 +1,7 @@
-From 59f2eadb29ac38803fd32fe52f1403343a7d74ac Mon Sep 17 00:00:00 2001
+From 47563b617a371680d1ec3729fa4324310ebe3710 Mon Sep 17 00:00:00 2001
 From: Thomas Blume <thomas.blume@suse.com>
 Date: Tue, 25 Mar 2014 13:08:56 +0000
-Subject: [PATCH 02/12] rc-local: fix ordering startup for
- /etc/init.d/boot.local
+Subject: [PATCH 1/1] rc-local: fix ordering startup for /etc/init.d/boot.local
 
 [tblume: fixes bnc#869142]
 ---
@@ -10,13 +9,13 @@ Subject: [PATCH 02/12] rc-local: fix ordering startup for
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/units/rc-local.service.in b/units/rc-local.service.in
-index 78ce69e0ae..0bcea82bed 100644
+index d4aaaf09d4..5cd1571cc7 100644
 --- a/units/rc-local.service.in
 +++ b/units/rc-local.service.in
 @@ -13,7 +13,7 @@
- Description=@RC_LOCAL_SCRIPT_PATH_START@ Compatibility
+ Description=@RC_LOCAL_PATH@ Compatibility
  Documentation=man:systemd-rc-local-generator(8)
- ConditionFileIsExecutable=@RC_LOCAL_SCRIPT_PATH_START@
+ ConditionFileIsExecutable=@RC_LOCAL_PATH@
 -After=network.target
 +After=basic.target
  

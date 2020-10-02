@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>827652</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a110b16998d1e43c1109b7081f9cf627</srcmd5>
+    <version>0.6.0</version>
+    <time>1601652007</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 830752 from glaubitz)</comment>
+    <requestid>830893</requestid>
+  </revision>
 </revisionlist>

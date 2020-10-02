@@ -21,7 +21,7 @@
 %global default_hvs                "qemu,xen,lxc"
 
 Name:           virt-manager
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Virtual Machine Manager
 License:        GPL-2.0-or-later
@@ -32,11 +32,6 @@ Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
-Patch1:         ba08f84b-addstorage-Return-to-using-qcow2-sparse-by-default.patch
-Patch2:         a010c49b-cli-Fix-os-variant-help-introspection.patch
-Patch3:         79ebcbcb-viewers-Fix-spice-audio.patch
-Patch4:         e5a51f63-details-Change-Close-accelerator-to-ctrl+shift+w.patch
-Patch5:         9c13d2f8-Remove-use-of-problematic-terminology.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -159,11 +154,6 @@ machine).
 %prep
 %setup -q
 # Upstream Patches
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1

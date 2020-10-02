@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:00:55 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.7:
+  Security:
+  * mod_websocket: Enforce size limits on received frames (fixes #1593)
+  Fixes and improvements:
+  * mod_c2s, mod_s2s: Make stanza size limits configurable
+  * Add configuration options to control Lua garbage collection parameters
+  * net.http: Backport SNI support for outgoing HTTP requests (#409)
+  * mod_websocket: Process all data in the buffer on close frame and connection errors (fixes #1474, #1234)
+  * util.indexedbheap: Fix heap data structure corruption, causing some timers to fail after a reschedule (fixes #1572)
+
+-------------------------------------------------------------------
 Fri Sep 11 08:48:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.6:

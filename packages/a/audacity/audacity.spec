@@ -39,10 +39,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
 %if 0%{?suse_version} && 0%{?suse_version} > 1520
-BuildRequires:  libwx_gtk3u_core-suse-nostl3_1_3
 BuildRequires:  wxWidgets-3_2-nostl-devel
 %else
-BuildRequires:  libwx_gtk3u_core-suse3_1_1
 BuildRequires:  wxWidgets-3_0-nostl-devel
 %endif
 BuildRequires:  pkgconfig(alsa)

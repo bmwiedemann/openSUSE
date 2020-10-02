@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 22 12:38:47 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Temporarily override package version to 7.0.0.0 to allow
+  upgrades from the previous 7.0.0b2 version
+
+-------------------------------------------------------------------
+Tue Sep  1 13:19:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 7.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
 Thu Apr  2 11:25:54 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

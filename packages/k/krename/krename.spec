@@ -1,7 +1,7 @@
 #
 # spec file for package krename
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,28 +36,30 @@ Patch4:         0003-Fix-the-previous-commits-and-the-build-with-exiv2-0..patch
 Patch5:         lower-minimum-cmake-version.patch
 # PATCH-FIX-UPSTREAM
 Patch6:         use-local-cmake-modules-first.patch
+# PATCH-FIX-UPSTREAM
+Patch7:         Close-the-app-if-the-progress-dialog-is-closed.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kjobwidgets-devel
-BuildRequires:  kjs-devel
-BuildRequires:  kservice-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  libexiv2-devel
 BuildRequires:  libpodofo-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5JS)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(taglib)
 
 %description
@@ -67,14 +69,13 @@ filename, an increasing number, or accessing file metadata, like
 creation date or Exif information of an image.
 
 %prep
-%setup -q
+%autosetup -p1
 # GPLv2 only code, not really needed, lets avoid the license discussion
 rm -rf src/modeltest.*
-%autopatch -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -85,9 +86,6 @@ rm -rf src/modeltest.*
 %files -f %{name}.lang
 %license COPYING
 %doc AUTHORS README.md TODO
-%if 0%{?suse_version} == 1315 && 0%{?sle_version} == 120100
-%dir %{_kf5_appstreamdir}
-%endif
 %{_kf5_applicationsdir}/org.kde.krename.desktop
 %{_kf5_appstreamdir}/org.kde.krename.appdata.xml
 %{_kf5_bindir}/krename

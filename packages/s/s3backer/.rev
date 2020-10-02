@@ -154,4 +154,12 @@
   + Don't kill IAM thread unless actually started (issue #115).</comment>
     <requestid>736308</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8b53eaf2071f56d66352c0b92ab03371</srcmd5>
+    <version>1.5.5</version>
+    <time>1601653224</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>839054</requestid>
+  </revision>
 </revisionlist>

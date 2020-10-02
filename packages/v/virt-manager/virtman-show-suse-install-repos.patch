@@ -1,11 +1,11 @@
 Enhancement that gets installation repos from zypper.
 These locations are then presented as potential installation
 sources when creating a VM.
-Index: virt-manager-3.0.0/virtManager/createvm.py
+Index: virt-manager-3.1.0/virtManager/createvm.py
 ===================================================================
---- virt-manager-3.0.0.orig/virtManager/createvm.py
-+++ virt-manager-3.0.0/virtManager/createvm.py
-@@ -164,6 +164,70 @@ class _GuestData:
+--- virt-manager-3.1.0.orig/virtManager/createvm.py
++++ virt-manager-3.1.0/virtManager/createvm.py
+@@ -163,6 +163,70 @@ class _GuestData:
          return guest
  
  
@@ -76,7 +76,7 @@ Index: virt-manager-3.0.0/virtManager/createvm.py
  ##############
  # Main class #
  ##############
-@@ -422,7 +486,13 @@ class vmmCreateVM(vmmGObjectUI):
+@@ -421,7 +485,13 @@ class vmmCreateVM(vmmGObjectUI):
          self.widget("install-url-entry").set_text("")
          self.widget("install-url-options").set_expanded(False)
          urlmodel = self.widget("install-url-combo").get_model()

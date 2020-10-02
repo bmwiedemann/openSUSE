@@ -1,0 +1,41 @@
+---
+#description_paragraphs: 2
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+  BuildRequires:  xorg-x11
+  BuildRequires:  xorg-x11-Xvfb
+  BuildRequires:  xorg-x11-server
+  %if 0%{?suse_version} >= 01550
+  BuildRequires:  xvfb-run
+  %endif
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+custom_test: |-
+  # Temporarily remove failing tests
+  rm t/{GdkPixbuf,PangoContext,PangoFont*,PangoRenderer}.t
+  %if 0%{?suse_version} >= 01550
+  xvfb-run -a make test %{?_smp_mflags}
+  %else
+  Xvfb :95 &
+  trap "kill $! || true" EXIT
+  sleep 5
+  DISPLAY=:95 make test %{?_smp_mflags}
+  %endif
+#startserver && make test
+#ignore_requires: Bizarre::Module

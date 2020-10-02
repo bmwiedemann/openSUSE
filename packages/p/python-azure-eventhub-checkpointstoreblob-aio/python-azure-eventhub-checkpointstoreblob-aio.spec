@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-azure-eventhub-checkpointstoreblob-aio
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Azure EventHubs Checkpoint Store client library for Python using Storage Blobs
 License:        MIT
@@ -68,7 +68,7 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-eventhub-checkpointstoreblob-aio-%{
 }
 
 %files %{python_files}
-%doc HISTORY.md README.md
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/eventhub/extensions/checkpointstoreblobaio
 %{python_sitelib}/azure_eventhub_checkpointstoreblob_aio-*.egg-info

@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oname   pybtex
 Name:           python-pybtex
-Version:        0.21
+Version:        0.22.2
 Release:        0
 Summary:        BibTeX-compatible Bibliography Processor in Python
 License:        MIT
@@ -33,10 +33,12 @@ BuildRequires:  %{python_module latexcodec}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-latexcodec
 Requires:       python-pyparsing
+Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -61,6 +63,7 @@ process the above formats.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 # install man
 for man in %{oname} %{oname}-convert %{oname}-format ; do
   install -Dpm 0644 docs/man1/${man}.1 %{buildroot}%{_mandir}/man1/${man}.1

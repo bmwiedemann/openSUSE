@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uamqp
-Version:        1.2.7
+Version:        1.2.10
 Release:        0
 Summary:        AMQP 10 Client Library for Python
 License:        MIT
@@ -62,7 +62,7 @@ export CFLAGS="%{optflags}"
 #%%python_exec setup.py test
 
 %files %{python_files}
-%doc README.rst
+%doc HISTORY.rst README.rst
 %{python_sitearch}/*
 
 %changelog

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep  8 19:58:59 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.0
+  + New unified PersistenceNotFound exception is now raised for cases
+    where the persistence is not found. (#64, #67)
+  + Bugfix: File not found exception is now handled for Python 2.7 as a no-op (#69)
+  + Added performance tests for locking behavior (#58)
+  + A non-exist persistence on Linux platform would previously return a None.
+    Since this release, it will raise PersistenceNotFound exception which becomes
+    a consistent behavior on Windows and macOS.
+
+-------------------------------------------------------------------
+Fri Aug 28 13:40:11 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.2
+  + Bugfix: Restored compatibility with upstream package portalocker version
+    < 1.4.0 when running on non-Windows platform (#50)
+  + Bugfix: Cache on Windows was not functioning in version 0.2.0 and 0.2.1(#52)
+  + Enhancement: Improved readme providing installation and usage instructions (#53)
+- from version 0.2.1
+  + Functionally the same as 0.2.0, but we change the installation-time and import-time
+    dependency of PyGObject to run-time dependency. This would make the installation
+    easier for those customers who do not necessarily need to use the Encryption on Linux. (#47)
+  + The version 1.6.0+ of upstream package portalocker is only required on Windows.
+    Other platforms remain with portalocker 1.0.0+. (#49)
+- from version 0.2.0
+  + New feature: Support token cache encryption when running on Linux Desktop (#4, #44)
+  + Bug fix: The cache lock was not properly removed on Windows 10 (#42, #43)
+  + Change: A new set of API PersistedTokenCache is provided. Previous API is now deprecated
+    and will be removed in next major release which will likely come within a month:
+    WindowsTokenCache, OSXTokenCache, UnencryptedTokenCache, FileTokenCache and TokenCache.
+  + Since this release, we have a dependency on PyGObject, when running on Linux.
+    You may need to follow its installation steps, or follow our CI setup.
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Feb 18 11:26:39 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build

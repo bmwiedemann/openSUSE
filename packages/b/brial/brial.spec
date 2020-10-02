@@ -18,7 +18,7 @@
 
 %define lname	libbrial3
 Name:           brial
-Version:        1.2.9
+Version:        1.2.10
 Release:        0
 Summary:        The Polynomials over Boolean Rings Computer Algebra System
 License:        GPL-2.0-or-later

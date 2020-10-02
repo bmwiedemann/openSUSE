@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.20.gf1344d5b7f
+%define suse_version +suse.27.gd7b5ac76dc
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -53,7 +53,7 @@
 
 Name:           systemd
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        246.4
+Version:        246.6
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -603,6 +603,7 @@ install -m0755 -D %{S:3}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-conve
 install -m0755 -D %{S:4}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-install
 %endif
 
+mkdir -p % %{buildroot}%{_sysconfdir}/systemd/network
 mkdir -p % %{buildroot}%{_sysconfdir}/systemd/nspawn
 
 # Package the scripts used to fix all packaging issues. Also drop the
@@ -807,6 +808,7 @@ EOF
 # us to prevent journald from recording audit messages in the journal
 # by default (bsc#1109252).
 rm -f %{buildroot}%{_unitdir}/systemd-journald-audit.socket
+rm -f %{buildroot}%{_unitdir}/sockets.target.wants/systemd-journald-audit.socket
 
 %if ! 0%{?bootstrap}
 %find_lang systemd
@@ -1119,6 +1121,7 @@ fi
 %{_prefix}/lib/kernel/install.d/50-depmod.install
 %{_prefix}/lib/kernel/install.d/90-loaderentry.install
 %dir %{_prefix}/lib/systemd
+%dir %{_prefix}/lib/systemd/network
 %dir %{_unitdir}
 %{_userunitdir}
 %if %{with coredump}
@@ -1242,6 +1245,7 @@ fi
 %dir %{_sysconfdir}/X11/xinit/xinitrc.d
 %dir %{_sysconfdir}/X11/xorg.conf.d
 %dir %{_sysconfdir}/systemd
+%dir %{_sysconfdir}/systemd/network
 %dir %{_sysconfdir}/systemd/system
 %dir %{_sysconfdir}/systemd/user
 %dir %{_sysconfdir}/xdg/systemd
@@ -1446,7 +1450,7 @@ fi
 %{_mandir}/man8/systemd-udev*
 %{_mandir}/man8/udev*
 %endif
-%dir %{_prefix}/lib/systemd/system
+%dir %{_unitdir}
 %{_prefix}/lib/systemd/systemd-udevd
 %{_unitdir}/systemd-udev*.service
 %{_unitdir}/systemd-udevd*.socket
@@ -1455,7 +1459,6 @@ fi
 %{_unitdir}/sysinit.target.wants/systemd-udev*.service
 %dir %{_unitdir}/sockets.target.wants
 %{_unitdir}/sockets.target.wants/systemd-udev*.socket
-%dir %{_prefix}/lib/systemd/network
 %{_prefix}/lib/systemd/network/99-default.link
 %{_datadir}/pkgconfig/udev.pc
 
@@ -1594,7 +1597,6 @@ fi
 %files network
 %defattr(-,root,root)
 %if %{with networkd}
-%dir %{_sysconfdir}/systemd/network
 %config(noreplace) %{_sysconfdir}/systemd/networkd.conf
 %{_bindir}/networkctl
 %{_datadir}/dbus-1/system.d/org.freedesktop.network1.conf

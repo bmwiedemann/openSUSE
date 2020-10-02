@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-containerservice
-Version:        9.0.1
+Version:        9.4.0
 Release:        0
 Summary:        Microsoft Azure Container Service Management Client Library
 License:        MIT

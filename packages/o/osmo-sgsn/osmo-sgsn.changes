@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 26 19:00:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.6.2
+  * gtphub: rename sgsn's oww osmo_sockaddr into sgsn_sockaddr
+
+-------------------------------------------------------------------
 Sat Aug  1 14:28:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.6.1

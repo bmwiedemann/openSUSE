@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  1 08:52:40 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.0:
+  * added fix to avoid crashes on X11, when a display is connected, but turned off #110
+  * added CLI messages on missing optional dependencies #101
+  * screen height is deprecated #108 issue fixed in slightly tricky way
+
+-------------------------------------------------------------------
 Mon Sep 14 07:26:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.14:

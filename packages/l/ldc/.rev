@@ -197,4 +197,12 @@
     <comment></comment>
     <requestid>827298</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fac4cde01fd0a9d7dc3b60f41b9cecbf</srcmd5>
+    <version>1.23.0</version>
+    <time>1601653153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23.0</comment>
+    <requestid>839016</requestid>
+  </revision>
 </revisionlist>

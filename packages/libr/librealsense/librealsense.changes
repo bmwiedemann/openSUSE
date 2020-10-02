@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 25 09:29:58 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.38.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.38.1
+- Drop 0001-Fix-aarch64-arm-detection.patch as it is upstream
+- Switch from snapshots to releases 
+
+-------------------------------------------------------------------
 Wed Apr 29 10:08:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on %arm and aarch64:

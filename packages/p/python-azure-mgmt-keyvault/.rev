@@ -55,4 +55,17 @@
     <comment></comment>
     <requestid>790986</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8e25bbb83c393d868f15c260306cf151</srcmd5>
+    <version>7.0.0.0</version>
+    <time>1601652630</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Temporarily override package version to 7.0.0.0 to allow
+  upgrades from the previous 7.0.0b2 version (forwarded request 836303 from glaubitz)</comment>
+    <requestid>836339</requestid>
+  </revision>
 </revisionlist>

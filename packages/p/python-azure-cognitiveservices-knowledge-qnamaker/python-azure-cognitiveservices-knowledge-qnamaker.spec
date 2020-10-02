@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-cognitiveservices-knowledge-qnamaker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-cognitiveservices-knowledge-qnamaker
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Microsoft Azure QnA Maker Client Library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Azure/azure-sdk-for-python
+URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-knowledge-qnamaker/azure-cognitiveservices-knowledge-qnamaker-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-cognitiveservices-knowledge-nspkg >= 3.0.0}
@@ -71,7 +71,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/cognitiveservices/knowledge/qnamaker
 %{python_sitelib}/azure_cognitiveservices_knowledge_qnamaker-*.egg-info

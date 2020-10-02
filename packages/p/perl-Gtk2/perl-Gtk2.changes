@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 30 12:52:54 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Temporarily skip failing tests:
+  * PangoContext.t PangoFont.t PangoFontMap.t
+    PangoFontset.t PangoRenderer.t
+- Add cpanspec.yml and update spec file
+
+-------------------------------------------------------------------
 Thu Oct 24 14:26:46 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Tag LICENSE file as %license

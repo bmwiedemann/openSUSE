@@ -59,4 +59,17 @@
 - Update %description from README.rst (forwarded request 767753 from glaubitz)</comment>
     <requestid>767841</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>47d71e85f7e2130ade6e425cb36a24c1</srcmd5>
+    <version>0.8.0</version>
+    <time>1601652428</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833097 from glaubitz)</comment>
+    <requestid>833119</requestid>
+  </revision>
 </revisionlist>

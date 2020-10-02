@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 29 12:55:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 11.0
+  * No changelog available
+  * Remove obsolete patches:
+    + Fix-makefile-rules-for-header-files-generated-by-bison.patch
+    + fix-cfparse-include-order-causing-lto-type-mismatch.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Fri Jul 26 19:40:35 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 10.2

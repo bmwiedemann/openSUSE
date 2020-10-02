@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  1 21:00:49 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 2.17:
+  - Improved handling of carriage return (gl#saalen/ansifilter#25).
+  - Applied makefile patch to address Portage warnings
+    (gl#saalen/ansifilter#24).
+  - Fixed section naming of LaTeX files if input path contained
+    slashes.
+  - CLI: Added `--max-size` option to limit input file size
+    (default: 256 MB).
+- Update ansifilter.keyring.
+- Update list of generated source files cleaned in prep section.
+
+-------------------------------------------------------------------
 Wed Jan 29 19:32:03 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 2.16:

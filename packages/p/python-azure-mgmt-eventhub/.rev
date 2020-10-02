@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>821938</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>85068c140883666c54c057888a74d43c</srcmd5>
+    <version>8.0.0</version>
+    <time>1601652615</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 836302 from glaubitz)</comment>
+    <requestid>836338</requestid>
+  </revision>
 </revisionlist>

@@ -26,6 +26,7 @@ License:        LGPL-2.1-or-later
 Group:          System/Base
 URL:            http://sourceforge.net/projects/linux-ima/
 Source0:        http://downloads.sourceforge.net/project/linux-ima/ima-evm-utils/%{name}-%{version}.tar.gz
+Patch1:         0001-help-Add-missing-new-line-for-ignore-violations.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake

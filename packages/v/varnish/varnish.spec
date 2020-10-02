@@ -26,7 +26,7 @@
 %define pkg_logdir   %_localstatedir/log/%name
 %define pkg_cachedir %_localstatedir/cache/%name
 Name:           varnish
-Version:        6.5.0
+Version:        6.5.1
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause

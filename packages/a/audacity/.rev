@@ -857,4 +857,12 @@ Added audacity-misc-errors.patch to fix various errors picked up by rpmlint.
 </comment>
     <requestid>830589</requestid>
   </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>6f922b7ad3665d33e71fbf70edc4d899</srcmd5>
+    <version>2.4.2</version>
+    <time>1601653091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838940</requestid>
+  </revision>
 </revisionlist>

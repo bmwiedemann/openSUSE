@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 17:43:05 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.5.5
+  + Added `--no-vhost' flag (issue #117)
+  + Added `--blockCacheNumProtected' flag (pr #119)
+  + Added `--test-errors', `--test-delays', and `--test-discard'
+  + Disallow stream encryption ciphers (issue #123)
+
+-------------------------------------------------------------------
 Tue Oct  8 17:25:01 UTC 2019 -  <archie.cobbs@gmail.com>
 
 - Upgrade to release 1.5.4

@@ -1,29 +1,6 @@
 --- azurelinuxagent/common/osutil/suse.py.orig
 +++ azurelinuxagent/common/osutil/suse.py
-@@ -16,20 +16,12 @@
- # Requires Python 2.6+ and Openssl 1.0+
- #
- 
--import os
--import re
--import pwd
--import shutil
--import socket
--import array
--import struct
--import fcntl
- import time
-+
- import azurelinuxagent.common.logger as logger
- import azurelinuxagent.common.utils.fileutil as fileutil
- import azurelinuxagent.common.utils.shellutil as shellutil
--import azurelinuxagent.common.utils.textutil as textutil
--from azurelinuxagent.common.version import DISTRO_NAME, DISTRO_VERSION, DISTRO_FULL_NAME
-+
- from azurelinuxagent.common.osutil.default import DefaultOSUtil
- 
- 
-@@ -82,11 +74,64 @@ class SUSEOSUtil(SUSE11OSUtil):
+@@ -69,9 +69,62 @@ class SUSEOSUtil(SUSE11OSUtil):
          super(SUSEOSUtil, self).__init__()
          self.dhclient_name = 'wickedd-dhcp4'
  
@@ -50,9 +27,7 @@
 +                    logger.warn("exceeded restart retries")
 +
      def set_hostname(self, hostname):
-         shellutil.run(
-             "hostnamectl set-hostname {0}".format(hostname), chk_err=False
-         )
+         self._run_command_without_raising(["hostnamectl", "set-hostname", hostname], log_error=False)
  
 +    def set_dhcp_hostname(self, hostname):
 +        dhcp_config_file_path = '/etc/sysconfig/network/dhcp'
@@ -86,5 +61,5 @@
 +            )
 +
      def stop_dhcp_service(self):
-         cmd = "systemctl stop {0}".format(self.dhclient_name)
-         return shellutil.run(cmd, chk_err=False)
+         self._run_command_without_raising(["systemctl", "stop", "{}.service".format(self.dhclient_name)],
+                                           log_error=False)

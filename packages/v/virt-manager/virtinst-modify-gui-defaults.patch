@@ -1,11 +1,11 @@
 Enhancement for the following GUI wizard installation option.
 1) If Xen, leave 'Architecture options' expanded so users know PV
 is the default
-Index: virt-manager-3.0.0/virtManager/createvm.py
+Index: virt-manager-3.1.0/virtManager/createvm.py
 ===================================================================
---- virt-manager-3.0.0.orig/virtManager/createvm.py
-+++ virt-manager-3.0.0/virtManager/createvm.py
-@@ -460,8 +460,20 @@ class vmmCreateVM(vmmGObjectUI):
+--- virt-manager-3.1.0.orig/virtManager/createvm.py
++++ virt-manager-3.1.0/virtManager/createvm.py
+@@ -459,8 +459,20 @@ class vmmCreateVM(vmmGObjectUI):
          self.widget("method-local").set_active(True)
          self.widget("create-conn").set_active(-1)
          activeconn = self._populate_conn_list(urihint)

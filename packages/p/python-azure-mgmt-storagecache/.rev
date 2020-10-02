@@ -18,4 +18,17 @@
     HISTORY.txt file provided with this package (forwarded request 767754 from glaubitz)</comment>
     <requestid>767842</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8db3c7e3700fc4af4e16c0b916042e6a</srcmd5>
+    <version>0.3.0</version>
+    <time>1601652152</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 830769 from glaubitz)</comment>
+    <requestid>830907</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 30 05:13:08 UTC 2020 - Ava Lon <minava@t-online.de>
+
+- Update to version 1.9:
+  * Fix issue with WPA3 connections in transition mode.
+  * Fix issue with handling roaming attempt failures.
+  * Add support for radio management work queue.
+  * Add support P2P service manager interface.
+  * Add support for WiFi Display client API.
+
+-------------------------------------------------------------------
 Tue Aug 18 15:11:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix wrong usage of %{_libexecdir} for systemd owned directories

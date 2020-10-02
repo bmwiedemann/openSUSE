@@ -1,0 +1,59 @@
+From 11abc9b6877fd5dfae2a0c9d403dda1732e6f14f Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 20 Jun 2018 17:09:16 +0200
+Subject: [PATCH] Close the app if the progress dialog is closed
+
+BUG: 395084
+---
+ src/progressdialog.cpp | 13 +++++++++++++
+ src/progressdialog.h   |  3 +++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/src/progressdialog.cpp b/src/progressdialog.cpp
+index 538b355..8057067 100644
+--- a/src/progressdialog.cpp
++++ b/src/progressdialog.cpp
+@@ -45,6 +45,8 @@ ProgressDialog::ProgressDialog(ESplitMode eSplitMode, unsigned int dot, QWidget
+             this, &ProgressDialog::slotOpenDestination);
+     connect(m_buttonUndo, &QPushButton::clicked,
+             this, &ProgressDialog::slotUndo);
++    connect(m_buttonClose, &QPushButton::clicked,
++            qApp, &QApplication::quit, Qt::QueuedConnection);
+ 
+     QMenu *menu = new QMenu(this);
+     menu->addAction(i18n("Restart &KRename..."), this, SLOT(slotRestartKRename()));
+@@ -156,6 +158,17 @@ void ProgressDialog::renamingDone(bool enableMore, bool enableUndo, BatchRenamer
+     m_renamer = renamer;
+ }
+ 
++void ProgressDialog::closeEvent(QCloseEvent *event)
++{
++    // KRenameWindow is still around but hidden. When we close this dialog we
++    // want to quit the app completely if there isn't some operation still
++    // running.
++    if (m_buttonClose->isEnabled()) {
++        qApp->quit();
++        QWidget::closeEvent(event);
++    }
++}
++
+ void ProgressDialog::print(const QString &text, const QString &pixmap)
+ {
+     QPixmap icon = SmallIcon(pixmap);
+diff --git a/src/progressdialog.h b/src/progressdialog.h
+index 25ee13e..84994fb 100644
+--- a/src/progressdialog.h
++++ b/src/progressdialog.h
+@@ -103,6 +103,9 @@ public:
+      */
+     void renamingDone(bool enableMore, bool enableUndo, BatchRenamer *renamer, int errors);
+ 
++protected:
++    void closeEvent(QCloseEvent *event) override;
++
+ private Q_SLOTS:
+     /** Called when the user cancels the operation
+      */
+-- 
+GitLab
+

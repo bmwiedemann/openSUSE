@@ -16,11 +16,9 @@
 #
 
 
-%global _lto_cflags %nil
-
 Name:           normaliz
 %define lname	libnormaliz3
-Version:        3.8.8
+Version:        3.8.9
 Release:        0
 Summary:        Tools for computations in affine monoids and rational cones
 License:        GPL-3.0-or-later

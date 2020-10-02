@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 07:30:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.1 bsc#1099674:
+  * Use Leap 15.2 as a base for data files
+
+-------------------------------------------------------------------
 Wed Aug 26 08:15:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %{_prefix}/lib instead of %{_libexecdir}: obs services are

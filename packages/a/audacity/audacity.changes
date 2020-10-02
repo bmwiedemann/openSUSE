@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 09:05:10 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Remove build requirement for libwx_gtk3u_core-suse-nostl3_1_3 as
+  it is no longer needed and it prevents Factory build.
+
+-------------------------------------------------------------------
 Sat Aug 29 07:15:45 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Remove libavformat symlink and remove the plugins sub package.

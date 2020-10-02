@@ -1,0 +1,28 @@
+Index: xplayer-plparser-1.0.2/configure.ac
+===================================================================
+--- xplayer-plparser-1.0.2.orig/configure.ac
++++ xplayer-plparser-1.0.2/configure.ac
+@@ -81,8 +81,8 @@ AC_ARG_ENABLE(gmime-i-know-what-im-doing
+ 
+ if test "x$enable_gmime" = "xyes" ; then
+    PKG_CHECK_MODULES(GMIME,  
+-		       gmime-2.6,
+-		       [have_gmime=yes GMIME=gmime-2.6], 
++		       gmime-3.0,
++		       [have_gmime=yes GMIME=gmime-3.0], 
+ 		       [have_gmime=no])
+ 
+    if test "x$have_gmime" = "xyes" ; then
+Index: xplayer-plparser-1.0.2/plparse/xplayer-pl-parser.c
+===================================================================
+--- xplayer-plparser-1.0.2.orig/plparse/xplayer-pl-parser.c
++++ xplayer-plparser-1.0.2/plparse/xplayer-pl-parser.c
+@@ -2337,7 +2337,7 @@ xplayer_pl_parser_parse_date (const char
+ 	}
+ 	D(g_message ("Failed to parse duration '%s' using the ISO8601 parser", date_str));
+ 	/* Fall back to RFC 2822 date parsing */
+-	return g_mime_utils_header_decode_date (date_str, NULL);
++	return g_mime_utils_header_decode_date (date_str);
+ #else
+ 	WARN_NO_GMIME;
+ #endif /* HAVE_GMIME */

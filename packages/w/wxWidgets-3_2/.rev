@@ -89,4 +89,14 @@
     <comment>- Update to new upstream release 3.1.4:</comment>
     <requestid>831918</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>065113dae56abb142b05315fb321c6ac</srcmd5>
+    <version>3.1.4</version>
+    <time>1601651773</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix wxPython compatibility issue:
+  Add 0001-Don-t-use-wxASCII_STR-inside-wxART_MAKE_XXX_ID-macro.patch
+  Add 0002-Fix-documented-type-of-wxART_XXX-constants.patch</comment>
+    <requestid>838843</requestid>
+  </revision>
 </revisionlist>

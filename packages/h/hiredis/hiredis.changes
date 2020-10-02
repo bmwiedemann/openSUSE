@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  2 12:02:20 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 28 12:00:00 UTC 2020 - paul.fee@jci.com
+
+- Update to 1.0.0
+    * The first stable release of Hiredis.
+    * RESP3 support, TLS connections, allocator injection.
+    * Connect and command timeouts.
+    * API breaking changes, recompilation required.
+- Update to 0.14.1
+    * CVE-2020-7105 (failure to check for NULL return when 
+    allocating memory).
+- Update to 0.14.0
+    * ABI changes.  Upstream "changes are numerous".
+- Add relocatable_executable.patch
+
+-------------------------------------------------------------------
 Sun Nov 22 08:50:22 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.13.3

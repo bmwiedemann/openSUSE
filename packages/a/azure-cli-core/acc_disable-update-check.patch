@@ -1,0 +1,42 @@
+diff -Nru azure-cli-core-2.12.1.orig/azure/cli/core/util.py azure-cli-core-2.12.1/azure/cli/core/util.py
+--- azure-cli-core-2.12.1.orig/azure/cli/core/util.py	2020-09-28 10:37:30.000000000 +0200
++++ azure-cli-core-2.12.1/azure/cli/core/util.py	2020-09-30 14:51:49.700308773 +0200
+@@ -331,37 +331,7 @@
+ 
+ 
+ def show_updates_available(new_line_before=False, new_line_after=False):
+-    from azure.cli.core._session import VERSIONS
+-    import datetime
+-
+-    if VERSIONS[_VERSION_CHECK_TIME]:
+-        version_check_time = datetime.datetime.strptime(VERSIONS[_VERSION_CHECK_TIME], '%Y-%m-%d %H:%M:%S.%f')
+-        if datetime.datetime.now() < version_check_time + datetime.timedelta(days=7):
+-            return
+-
+-    _, updates_available_components = get_az_version_string(use_cache=True)
+-    if updates_available_components:
+-        if new_line_before:
+-            logger.warning("")
+-        show_updates(updates_available_components)
+-        if new_line_after:
+-            logger.warning("")
+-    VERSIONS[_VERSION_CHECK_TIME] = str(datetime.datetime.now())
+-
+-
+-def show_updates(updates_available_components):
+-    if updates_available_components is None:
+-        logger.warning('Unable to check if your CLI is up-to-date. Check your internet connection.')
+-    elif updates_available_components:  # pylint: disable=too-many-nested-blocks
+-        if in_cloud_console():
+-            warning_msg = 'You have %i updates available. They will be updated with the next build of Cloud Shell.'
+-        else:
+-            warning_msg = "You have %i updates available."
+-            if CLI_PACKAGE_NAME in updates_available_components:
+-                warning_msg = "{} Consider updating your CLI installation with 'az upgrade'".format(warning_msg)
+-        logger.warning(warning_msg, len(updates_available_components))
+-    else:
+-        print('Your CLI is up-to-date.')
++    return
+ 
+ 
+ def get_json_object(json_string):

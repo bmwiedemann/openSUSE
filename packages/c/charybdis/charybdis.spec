@@ -1,7 +1,7 @@
 #
 # spec file for package charybdis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/charybdis-ircd/charybdis
 #Git-Clone:	https://github.com/charybdis-ircd/charybdis
 Source:         https://github.com/charybdis-ircd/charybdis/archive/%name-%version.tar.gz
 Source9:        example.conf
+Patch1:         0001-Set-EXTERNAL_BUILD_TIMESTAMP-from-SOURCE_DATE_EPOCH.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -56,7 +57,7 @@ autoreconf -fiv
 %configure --sysconfdir="%_sysconfdir/%name" \
 	--with-logdir="%_localstatedir/log/%name" \
 	--with-rundir="/run" --localstatedir="%_localstatedir/lib"
-make %{?_smp_mflags} CHARYBDIS_VERSION="%version"
+%make_build CHARYBDIS_VERSION="%version"
 
 %install
 b="%buildroot"

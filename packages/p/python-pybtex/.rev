@@ -203,4 +203,28 @@
     <comment></comment>
     <requestid>807689</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0b567e435700d192eb810a9756a56e04</srcmd5>
+    <version>0.22.2</version>
+    <time>1601653237</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not ship tests
+
+- update to 0.22.2:
+  * Fixed compatibility with Python 2 and older versions of Python 3.
+  * Fixed non-working ``--backend`` option with ``pybtex -l python``.
+  * Fixed handling of duplicate fields in ``.bib`` biles.
+  * BibTeX parser is now up to 10% faster on some files.
+  * Fixed parsing of names with ``\~`` characters.
+  * Fixed formatting proceedings without an ``editor`` field in ``unsrt.py``.
+  * In case of too many braces in a BibTeX string, ``PybtexSyntaxError`` is now raised instead
+  * Dropped ``2to3``, made the code compatible with both Python 2 and 3 with Six_.
+  * Moved tests outside of the ``pybtex`` package.
+  * Fixed searching in docs with recent versions of Sphinx_.
+  * API: renamed ``bibtex.BibTeXEntryIterator`` to ``bibtex.LowLevelParser`` for clarity.
+  * API: removed confusing usage of ``Person.text`` in ``tempate.names``.
+  * API: ``Entry.fields`` does not automagically look for cross-referenced entries
++  anymore.</comment>
+    <requestid>839118</requestid>
+  </revision>
 </revisionlist>

@@ -7,4 +7,17 @@
     <comment>- New Python Azure ADK component package</comment>
     <requestid>735794</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e72a5d83e8a8b98553c0ee7e4bc8d84b</srcmd5>
+    <version>0.3.0</version>
+    <time>1601652246</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833078 from glaubitz)</comment>
+    <requestid>833103</requestid>
+  </revision>
 </revisionlist>

@@ -16,13 +16,13 @@
 #
 
 
-%define project        github.com/containers/libpod
+%define project        github.com/containers/podman
 # Build with libostree-devel in Tumbleweed, Leap 15 and SLES 15
 %if 0%{?suse_version} >= 1500
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        2.0.6
+Version:        2.1.1
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -32,6 +32,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
 Source3:        %{name}-rpmlintrc
 Source4:        README.SUSE.SLES
+Patch0:         varlink.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel
@@ -82,6 +83,7 @@ skopeo, as they all share the same datastore backend.
 
 %prep
 %setup -q
+%patch0 
 
 %package cni-config
 Summary:        Basic CNI configuration for podman
@@ -97,16 +99,8 @@ setups. In more complicated setups, users are recommended to write their own
 CNI configurations.
 
 %build
-# We can't use symlinks here because go-list gets confused by symlinks, so we
-# have to copy the source to $HOME/go and then use that as the GOPATH.
-export GOPATH=$HOME/go
-mkdir -pv $HOME/go/src/%{project}
-rm -rf $HOME/go/src/%{project}/*
-cp -avr * $HOME/go/src/%{project}
-cd $HOME/go/src/%{project}
-
 # Build podman
-make BUILDFLAGS=-buildmode=pie
+BUILDFLAGS="-buildmode=pie" make
 
 # Build manpages
 make %{?_smp_mflags} docs
@@ -150,8 +144,12 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_datadir}/zsh/site-functions/_podman
 %{_unitdir}/podman.service
 %{_unitdir}/podman.socket
+%{_unitdir}/podman-auto-update.service
+%{_unitdir}/podman-auto-update.timer
 %{_userunitdir}/podman.service
 %{_userunitdir}/podman.socket
+%{_userunitdir}/podman-auto-update.service
+%{_userunitdir}/podman-auto-update.timer
 %ghost /run/podman
 %ghost  %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-libpodconf
 %license LICENSE

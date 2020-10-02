@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-appplatform
-Version:        0.1.0
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure MyService Management Client Library
 License:        MIT
@@ -69,7 +69,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/mgmt/appplatform
 %{python_sitelib}/azure_mgmt_appplatform-*.egg-info

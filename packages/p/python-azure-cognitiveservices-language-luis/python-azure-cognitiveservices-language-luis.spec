@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-cognitiveservices-language-luis
-Version:        0.5.0
+Version:        0.7.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services LUIS Client Library
 License:        MIT
@@ -73,7 +73,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/cognitiveservices/language/luis
 %{python_sitelib}/azure_cognitiveservices_language_luis-*.egg-info

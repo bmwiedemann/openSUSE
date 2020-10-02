@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  1 13:12:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.7
+  * Fix magnifier, it is now possible to use on all screens
+  * Fix audio device monitoring, now done by pulseaudio
+  * Set webcam resolution dynamically from supported resolutions
+  * Extend logged videopath information and keep unlimited number
+    of logs
+
+-------------------------------------------------------------------
 Tue Sep  1 09:20:36 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.0.6

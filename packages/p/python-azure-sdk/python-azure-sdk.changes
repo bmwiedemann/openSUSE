@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 23 11:06:07 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-keyvault-administration
+- Update version numbers for component packages in Requires
+  + python-azure-appconfiguration >= 1.1.0
+
+-------------------------------------------------------------------
+Wed Sep  9 08:59:51 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-cognitiveservices-inkrecognizer
+- Update version numbers for component packages in Requires
+  + python-azure-cognitiveservices-anomalydetector >= 0.3.0
+  + python-azure-cognitiveservices-knowledge-qnamaker >= 0.2.0
+  + python-azure-cognitiveservices-language-luis >= 0.7.0
+  + python-azure-cognitiveservices-language-textanalytics >= 0.2.0
+  + python-azure-cognitiveservices-search-autosuggest >= 0.2.0
+  + python-azure-cognitiveservices-search-visualsearch >= 0.2.0
+  + python-azure-cognitiveservices-vision-computervision >= 0.6.0
+  + python-azure-cognitiveservices-vision-customvision >= 3.0.0
+  + python-azure-cognitiveservices-vision-face >= 0.4.1
+
+-------------------------------------------------------------------
 Wed Apr  1 12:07:51 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires

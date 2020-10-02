@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  1 10:11:26 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.8.1
+  * Fixed load_env_levels() and load_argv_levels()
+  * Fixed stopwatch's clock to use chrono::steady_clock
+  * Added support for Rcpp (R cpp compiler)
+
+-------------------------------------------------------------------
 Tue Sep  1 12:36:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.8.0

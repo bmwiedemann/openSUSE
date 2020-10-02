@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 28 11:38:24 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.2.10
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Install HISTORY.rst in %doc section
+
+-------------------------------------------------------------------
 Wed May  6 13:09:14 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

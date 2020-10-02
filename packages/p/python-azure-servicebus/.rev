@@ -52,4 +52,18 @@
 - Update Requires from setup.py (forwarded request 767757 from glaubitz)</comment>
     <requestid>767845</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4e1a9438007032366bab6a4a5b3a0af</srcmd5>
+    <version>0.50.3</version>
+    <time>1601652178</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.50.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py (forwarded request 830774 from glaubitz)</comment>
+    <requestid>830910</requestid>
+  </revision>
 </revisionlist>

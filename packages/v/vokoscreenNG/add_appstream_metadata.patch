@@ -74,7 +74,7 @@ diff --git a/src/vokoscreenNG.pro b/src/vokoscreenNG.pro
 index 69bc5a33..fdf7fd07 100644
 --- a/src/vokoscreenNG.pro
 +++ b/src/vokoscreenNG.pro
-@@ -156,5 +156,30 @@ include(loadExtensions/loadExtensions.pri)
+@@ -157,5 +157,30 @@ include(loadExtensions/loadExtensions.pri)
  # systrayAlternative
  include(systrayAlternative/systrayAlternative.pri)
  
@@ -104,4 +104,4 @@ index 69bc5a33..fdf7fd07 100644
 +}
 +
  # ciscoOpenh264
- # include( ciscoOpenh264/ciscoOpenh264.pri)
+ # include(ciscoOpenh264/ciscoOpenh264.pri)

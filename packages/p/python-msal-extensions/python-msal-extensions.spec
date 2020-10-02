@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msal-extensions
-Version:        0.1.3
+Version:        0.3.0
 Release:        0
 Summary:        Microsoft Authentication Library (MSAL) for Python Extensions
 License:        MIT
@@ -29,16 +29,19 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-msal >= 0.4.1
 Requires:       python-msal < 2.0.0
-Requires:       python-portalocker >= 1.0
+Requires:       python-msal >= 0.4.1
 Requires:       python-portalocker < 2.0
+Requires:       python-portalocker >= 1.0
+%ifpython2
+Requires:       python-pathlib2
+%endif
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module msal >= 0.4.1}
 BuildRequires:  %{python_module msal < 2.0.0}
-BuildRequires:  %{python_module portalocker >= 1.0}
+BuildRequires:  %{python_module msal >= 0.4.1}
 BuildRequires:  %{python_module portalocker < 2.0}
+BuildRequires:  %{python_module portalocker >= 1.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

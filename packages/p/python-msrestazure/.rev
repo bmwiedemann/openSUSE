@@ -71,4 +71,16 @@
     <comment></comment>
     <requestid>790244</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf618073199499d3e34be4d197e4354b</srcmd5>
+    <version>0.6.4</version>
+    <time>1601652197</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.4
+  + For detailed information about changes see the
+    README.rst file provided with this package
+- Update Requires from setup.py (forwarded request 830778 from glaubitz)</comment>
+    <requestid>830914</requestid>
+  </revision>
 </revisionlist>

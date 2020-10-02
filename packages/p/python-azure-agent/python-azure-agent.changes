@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Sep 10 13:02:13 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 2.2.49.2 (bsc#1176368, bsc#1176369)
+  + Remove paa_use_hostnamectl.patch included upstream
+  + Forwrad port proper_dhcp_config_set.patch
+  + Do not use --unit with systemd-cgls (#1910)
+  + Report processes that do not belong to the agent's cgroup (#1908)
+  + Use controller mount point for extension cgroup path (#1899)
+  + Improvements in setup of cgroups (#1896)
+  + Remove ExtensionsMetricsData and per-process Memory data (#1884)
+  + Fix return value of start_extension_command (#1927)
+  + Remove import * (#1900)
+  + Fix flaky ExtensionCleanupTest class (#1898)
+  + Fix codecov badge (#1883)
+  + Changed codecov to run on py3.8 (#1875)
+  + Update documentation on /dev/random (#1909)
+  + Mount options are in mount(8) (#1893)
+  + Remove ssh host key thumbprint in report ready (#1913)
+  + Emit AutoUpdate value at service start only (#1907)
+  + Add logging for version mismatch (#1895)
+  + Send telemetry event if libdir changes (#1897)
+  + Add log collector utility (#1847)
+  + Move AutoUpdate reporting to HeartBeat event (#1919)
+  + Removing infinite download of extension manifest without a new GS (#1874)
+  + Fix wrongful dir deletion (#1873)
+  + Fix the cleanup-outdated-handlers to only delete handlers that are not
+    present in the GS (#1889)
+  + Expose periods of environment thread in waagent.conf (#1891)
+  + Added user @kevinclark19a as Contributor. (#1906)
+
+- From 2.2.48.1
+  + Refactoring GoalState class out of Protocol, making Protocol thread-safe,
+    removing stale dependencies of Protocol and removing the dependency on
+    the file system to read the Protocol info
+  + Fetch goal state when creating HostPluginProtocol (#1799)
+  + Separate goal state from the protocol class (#1777)
+  + Make protocol util a singleton per thread (#1743, #1756)
+  + Fetch goal state before sending telemetry (#1751)
+  + Remove file dependency (#1754)
+  + Others (#1758, #1767, #1744, #1749, #1816, #1820)
+  + New logs for goal state fetch (#1797) and refresh (#1794).
+  + Thread name added to logs (#1778)
+  + Populate telemetry events at creation time (#1791)
+  + Periodic HeartBeat to be logged to the file (#1755)
+  + Add unit test to verify call stacks on telemetry events (#1828)
+  + Others (#1841, #1842, #1846)
+  + Handling errors while reading extension status files
+    (Limiting Size and Transient issues)(#1761)
+  + Enable SWAP on Resource Disk as Application Certification Support
+    suggested (#1762)
+  + Update 'Provisioning' options in default configs ( #1853)
+  + Drop Metadata Server Support (#1806, #1839, #1840 )
+  + Improve documentation of ResourceDisk.EnableSwapEncryption (#1782)
+  + Removed is_snappy function (#1774)
+  + Handle exceptions in monitor thread (#1770)
+  + Fix timestamp for periodic operations in the monitor thread (#1879)
+  + Fix permissions on the Ubuntu systemd service file (#1814)
+  + Update hostname setting for SUSE distros (#1832)
+  + Python 3.8 improvements + support for Ubuntu 20.04 (#1860, #1865, #1738)
+  + Testing and dev-infra improvements
+    [#1771, #1768, #1800, #1826, #1827, #1833]
+  + Others (#1854, #1858)
+
+- From 2.2.46
+  + [#1741] Do not update goal state when refreshing the host plugin
+  + [#1731] Fix upgrade sequence when update command fails
+  + [#1725] Initialize CPU usage
+  + [#1716, #1737] Added UTC logging and correcting the format
+  + [#1651, #1729] Start sending PerformanceCounter metrics and
+    additional memory information for Cgroups
+
+-------------------------------------------------------------------
 Fri Aug 14 12:59:45 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Drop paa_sudo_sle15_nopwd.patch (bsc#1175198)

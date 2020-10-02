@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Oct  1 10:32:02 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Add Provides and Obsoletes for the python-azure-synapse package
+
+-------------------------------------------------------------------
+Mon Aug 31 13:30:55 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.2.0

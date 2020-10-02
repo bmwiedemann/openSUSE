@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  2 12:27:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.5.1
+  * Bump the VRT_MAJOR_VERSION number defined in the vrt.h
+
+-------------------------------------------------------------------
 Thu Sep 17 08:34:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.5.0

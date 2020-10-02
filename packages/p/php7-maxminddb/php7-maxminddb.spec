@@ -19,7 +19,7 @@
 %define source_file MaxMind-DB-Reader-php
 %define pkg_name    maxminddb
 Name:           php7-%{pkg_name}
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        PHP extension providing access to maxminddb databases
 License:        Apache-2.0

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct  1 12:34:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to e7464dd (2020-09-30):
+  * firmware: platform: Add support for SCB clock and set to 250MHz
+  * firmware: Revert arm_loader: Move first call to set_turbo after arm->start
+  * firmware: arm_ldconfig: GZIP-compressed ARMv8 kernel support
+  * arm_ldconfig: Fix kernel8 decompression See: #1467
+  * firmware: arm_ldconfig: Restore the fallback load address See: #1467
+  * firmware: ilcamera: Disable timeouts on trigger sink devices
+  * firmware: genet: Flush RBUF/TBUF and clear mac-address on stop
+    See: raspberrypi/linux#3850
+  * firmware: dmalib: Add support for 40-bit 2d memcpy
+  * firmware: sdcard: Reduce SD read overhead
+  * firmware: sdhost_arasan: Increase time threshold before suspend
+  * firmware: video_decode: Only shutdown codec on both ports being disabled …
+  * firmware: vc_image_helper: Avoid misaligned exception due to uninitialised pointer
+  * firmware: arm_loader: Make arm clock accesses only see their own boosts
+    See: #1469
+
+-------------------------------------------------------------------
 Wed Sep  9 11:36:50 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update to baec4d28b (2020-09-03) (bsc#1176202)

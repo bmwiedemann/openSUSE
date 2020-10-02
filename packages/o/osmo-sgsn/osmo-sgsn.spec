@@ -21,7 +21,7 @@
 
 %define with_iu 1
 Name:           osmo-sgsn
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Osmocom's SGSN for 2G and 3G packet-switched mobile networks
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later

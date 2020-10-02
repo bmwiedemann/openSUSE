@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msrestazure
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        AutoRest swagger generator - Azure-specific module
 License:        MIT
@@ -33,6 +33,7 @@ Requires:       python-adal < 2.0.0
 Requires:       python-adal >= 0.6.0
 Requires:       python-msrest < 2.0.0
 Requires:       python-msrest >= 0.6.0
+Requires:       python-six
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 

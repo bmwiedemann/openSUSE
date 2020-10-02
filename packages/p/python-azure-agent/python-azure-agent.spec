@@ -20,13 +20,12 @@ Name:           python-azure-agent
 Summary:        Microsoft Azure Linux Agent
 License:        Apache-2.0
 Group:          System/Daemons
-Version:        2.2.45
+Version:        2.2.49.2
 Release:        0
 URL:            https://github.com/Azure/WALinuxAgent
 Source0:        WALinuxAgent-%{version}.tar.gz
 Patch1:         agent-no-auto-update.patch
 Patch6:         paa_force_py3_sle15.patch
-Patch10:        paa_use_hostnamectl.patch
 Patch11:        proper_dhcp_config_set.patch
 BuildRequires:  dos2unix
 
@@ -120,7 +119,6 @@ Unit tests for python-azure-agent.
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 %patch6
 %endif
-%patch10
 %patch11
 
 %build
@@ -162,6 +160,7 @@ touch %{buildroot}/%{_localstatedir}/log/waagent.log
 chmod +x %{buildroot}/%{_sbindir}/waagent2.0
 ### naming issues
 mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/waagent
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent-extn.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/waagent-extn
 
 # install tests
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
@@ -203,6 +202,7 @@ cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
 %attr(0755,root,root) %{_sbindir}/waagent
 %attr(0755,root,root) %{_sbindir}/waagent2.0
 %config(noreplace) %{_sysconfdir}/logrotate.d/waagent
+%config(noreplace) %{_sysconfdir}/logrotate.d/waagent-extn
 %config(noreplace) %{_sysconfdir}/waagent.conf
 %ghost %{_localstatedir}/log/waagent.log
 %if 0%{?suse_version} > 1140

@@ -42,4 +42,16 @@
     <comment></comment>
     <requestid>801207</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b2aa2ffa7cc506998567b06a6dcba30b</srcmd5>
+    <version>1.2.10</version>
+    <time>1601652203</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.10
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Install HISTORY.rst in %doc section (forwarded request 830779 from glaubitz)</comment>
+    <requestid>830927</requestid>
+  </revision>
 </revisionlist>

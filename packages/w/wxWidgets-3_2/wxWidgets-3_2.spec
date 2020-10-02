@@ -87,6 +87,10 @@ Source5:        wxWidgets-3_2-rpmlintrc
 # identify and backport wxPython fixes to wxWidgets.
 Source6:        wxpython-mkdiff.sh
 Patch1:         soversion.diff
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Don-t-use-wxASCII_STR-inside-wxART_MAKE_XXX_ID-macro.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0002-Fix-documented-type-of-wxART_XXX-constants.patch
 BuildRequires:  autoconf
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++

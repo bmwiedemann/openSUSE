@@ -28,4 +28,16 @@
     <comment></comment>
     <requestid>801171</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8658d1bd12f3e9127eba041a792d101</srcmd5>
+    <version>4.2.0</version>
+    <time>1601651960</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 830749 from glaubitz)</comment>
+    <requestid>830890</requestid>
+  </revision>
 </revisionlist>

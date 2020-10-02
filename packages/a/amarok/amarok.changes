@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 30 14:37:15 UTC 2020 - christophe@krop.fr
+
+- Update to version 2.9.70git.20200930T124856~3973278a68:
+  * Replace qtscript with qjs engine
+  * Drop superfluous ZLIB linking
+  * Add FindMariaDB.cmake module and use it if MySQL is not found
+  * FindMySQL.cmake: Split out MySQL Embedded detection into FindMySQLe.cmake
+  * Port Amarok Script Engine from deprecated QScriptEngine to QJSEngine
+  * Update stylesheet to QT5
+  * Replace deprecated Phonon module with PulseAudio
+  * cmake: install amarok.knsrc in newer ECM 5.58.0+ location
+  * appdata: use canonical help URL
+- Drop amarok_mariadb.patch
+- Update translations
+
+-------------------------------------------------------------------
 Fri Aug 07 07:11:19 UTC 2020 - christophe@krop.fr
 
 - Update to version 2.9.70git.20200731T193253~4ae108506f:

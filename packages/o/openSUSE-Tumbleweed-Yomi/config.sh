@@ -27,51 +27,38 @@ test -f /.profile && . /.profile
 
 set -euxo pipefail
 
-mkdir /var/lib/misc/reconfig_system
-
 #======================================
 # Greeting...
 #--------------------------------------
-echo "Configure image: [$kiwi_iname]..."
+echo "Configure image: [$kiwi_iname]-[$kiwi_profiles]..."
 
 #======================================
 # add missing fonts
 #--------------------------------------
-CONSOLE_FONT="eurlatgr.psfu"
+# Systemd controls the console font now
+echo FONT="eurlatgr.psfu" >> /etc/vconsole.conf
 
 #======================================
 # prepare for setting root pw, timezone
 #--------------------------------------
 echo ** "reset machine settings"
+sed -i 's/^root:[^:]*:/root:*:/' /etc/shadow
+rm -f /etc/machine-id \
+      /var/lib/zypp/AnonymousUniqueId \
+      /var/lib/systemd/random-seed \
+      /var/lib/dbus/machine-id
+
+# Remove root password
 passwd -d root
 pam-config -a --nullok
 
 # Support SSH into the root user
 echo 'PermitEmptyPasswords yes' >> /etc/ssh/sshd_config
 
-rm -f /etc/machine-id \
-      /var/lib/zypp/AnonymousUniqueId \
-      /var/lib/systemd/random-seed \
-      /var/lib/dbus/machine-id
-
-#======================================
-# SuSEconfig
-#--------------------------------------
-echo "** Running suseConfig..."
-suseConfig
-
-echo "** Running ldconfig..."
-/sbin/ldconfig
-
-#======================================
-# Setup baseproduct link
-#--------------------------------------
-suseSetupProduct
-
 #======================================
 # Specify default runlevel
 #--------------------------------------
-baseSetRunlevel 3
+baseSetRunlevel multi-user.target
 
 #======================================
 # Add missing gpg keys to rpm
@@ -81,7 +68,7 @@ suseImportBuildKey
 #======================================
 # Enable sshd
 #--------------------------------------
-systemctl enable sshd
+systemctl enable sshd.service
 
 # Enable jeos-firstboot
 mkdir -p /var/lib/YaST2
@@ -95,48 +82,35 @@ if [ -x /usr/sbin/firewalld ]; then
     systemctl enable firewalld
 fi
 
-# Set GRUB2 to boot graphically (bsc#1097428)
-sed -Ei"" "s/#?GRUB_TERMINAL=.+$/GRUB_TERMINAL=gfxterm/g" /etc/default/grub
-sed -Ei"" "s/#?GRUB_GFXMODE=.+$/GRUB_GFXMODE=auto/g" /etc/default/grub
-
-# Systemd controls the console font now
-echo FONT="$CONSOLE_FONT" >> /etc/vconsole.conf
-
-#======================================
-# SSL Certificates Configuration
-#--------------------------------------
-echo '** Rehashing SSL Certificates...'
-update-ca-certificates
-
-if [ ! -s /var/log/zypper.log ]; then
-    > /var/log/zypper.log
-fi
-
-#======================================
-# Import trusted rpm keys
-#--------------------------------------
-for i in /usr/lib/rpm/gnupg/keys/gpg-pubkey*asc; do
-    # importing can fail if it already exists
-    rpm --import $i || true
-done
-
 #======================================
 # Add repos from control.xml
 #--------------------------------------
-add-yast-repos
-zypper --non-interactive rm -u live-add-yast-repos
+if grep -q opensuse /usr/lib/os-release; then
+    add-yast-repos
+    zypper --non-interactive rm -u live-add-yast-repos
+fi
 
-# only for debugging
-#systemctl enable debug-shell.service
+#=====================================
+# Configure snapper
+#-------------------------------------
+if [ "${kiwi_btrfs_root_is_snapshot-false}" = 'true' ]; then
+    echo "creating initial snapper config ..."
+    # we can't call snapper here as the .snapshots subvolume
+    # already exists and snapper create-config doesn't like
+    # that.
+    cp /etc/snapper/config-templates/default /etc/snapper/configs/root
+    # Change configuration to match SLES12-SP1 values
+    sed -i -e '/^TIMELINE_CREATE=/s/yes/no/' /etc/snapper/configs/root
+    sed -i -e '/^NUMBER_LIMIT=/s/50/10/'     /etc/snapper/configs/root
+
+    baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
+fi
 
 #=====================================
 # Enable chrony if installed
 #-------------------------------------
 if [ -f /etc/chrony.conf ]; then
-    suseInsertService chronyd
-    for i in 0 1 2 3; do
-	echo "server $i.opensuse.pool.ntp.org iburst"
-    done > /etc/chrony.d/opensuse.conf
+    systemctl enable chronyd.service
 fi
 
 #======================================
@@ -233,13 +207,13 @@ cat > /etc/systemd/system/salt-minion.service.d/20-minion-id.conf <<-EOF
 	ExecStartPre=/usr/bin/minion_id.sh
 EOF
 
-suseInsertService salt-minion
+systemctl enable salt-minion.service
 
 #======================================
 # Config for jeos-firstboot (Yomi)
 #--------------------------------------
 cat > /etc/jeos-firstboot.conf <<-EOF
-	JEOS_LOCALE="en_US"
+	JEOS_LOCALE="en_US.UTF-8"
 	JEOS_KEYTABLE="us"
 	JEOS_TIMEZONE="UTC"
 	JEOS_PASSWORD_ALREADY_SET=1
@@ -251,11 +225,6 @@ EOF
 # Config for nano editor (Yomi)
 #--------------------------------------
 cat > /etc/nanorc <<-EOF
-include "/usr/share/nano/*.nanorc"
-set suspend
+	include "/usr/share/nano/*.nanorc"
+	set suspend
 EOF
-
-# Not compatible with set -e
-baseCleanMount || true
-
-exit 0

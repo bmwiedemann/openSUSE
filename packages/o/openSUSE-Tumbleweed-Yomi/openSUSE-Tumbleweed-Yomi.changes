@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 12:30:00 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update config.sh based on last JeOS template
+- Update JEOS_LOCALE to en_US.UTF-8
+
+-------------------------------------------------------------------
 Tue Jun 23 13:59:41 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add kernel-firmware (bsc#1173264)

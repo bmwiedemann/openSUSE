@@ -16,8 +16,10 @@
 #
 
 
+# Leap 15.1 compatibility
+%{!?_kf5_knsrcfilesdir: %global _kf5_knsrcfilesdir %{_kf5_configdir}}
 Name:           amarok
-Version:        2.9.70git.20200731T193253~4ae108506f
+Version:        2.9.70git.20200930T124856~3973278a68
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -25,8 +27,6 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://amarok.kde.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-lang.tar.xz
-# PATCH-FIX-OPENSUSE
-Patch0:         amarok_mariadb.patch
 # PATCH-FIX-OPENSUSE flac_mimetype_bnc671581.diff bnc#671581 ctrippe@gmx.net -- Support for the changed mimetype for flac files
 Patch1:         flac_mimetype_bnc671581.diff
 # PATCH-FIX-OPENSUSE
@@ -54,7 +54,10 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Attica)
 BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
@@ -67,7 +70,6 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
@@ -76,19 +78,18 @@ BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5ThreadWeaver)
 BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5ScriptTools)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
@@ -98,6 +99,7 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(taglib-extras)
+BuildRequires:  pkgconfig(zlib)
 # needed by the context view
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols
@@ -114,7 +116,7 @@ Vorbis, audio CDs, podcasts and streams. Play lists can be stored in
 %lang_package
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1 -a1
 cat >> CMakeLists.txt << EOF
 ki18n_install(po)
 EOF
@@ -139,7 +141,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %fdupes -s %{buildroot}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
@@ -157,6 +158,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_dbusinterfacesdir}/
 %{_kf5_htmldir}/en/amarok/
 %{_kf5_iconsdir}/hicolor/*/*/*
+%{_kf5_knsrcfilesdir}/amarok.knsrc
 %{_kf5_libdir}/libamarok-sqlcollection.so*
 %{_kf5_libdir}/libamarok-transcoding.so*
 %{_kf5_libdir}/libamarok_service_lastfm_config.so
