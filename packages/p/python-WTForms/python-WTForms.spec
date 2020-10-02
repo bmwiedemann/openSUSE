@@ -1,7 +1,7 @@
 #
 # spec file for package python-WTForms
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-WTForms
-Version:        2.2.1
+Version:        2.3.3
 Release:        0
 Summary:        A flexible forms validation and rendering library for Python web development
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://wtforms.simplecodes.com/
 Source:         https://files.pythonhosted.org/packages/source/W/WTForms/WTForms-%{version}.tar.gz
+BuildRequires:  %{python_module MarkupSafe}
+BuildRequires:  %{python_module email_validator}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-MarkupSafe
+Requires:       python-email_validator
 Recommends:     python-Babel
 Recommends:     python-Django
 Recommends:     python-SQLAlchemy
@@ -51,8 +54,6 @@ Because of this loose coupling, any template engine may be used for this.
 
 %package -n %{name}-doc
 Summary:        Documentation for WTForms
-Group:          Documentation/HTML
-Requires:       %{name} = %{version}
 
 %description -n %{name}-doc
 Documentation for WTForms, which is a forms validation and rendering library for Python web development.
@@ -78,7 +79,7 @@ popd
 
 %files %{python_files}
 %license LICENSE.rst
-%doc AUTHORS.rst CHANGES.rst README.rst
+%doc CHANGES.rst README.rst
 %{python_sitelib}/*
 
 %files -n %{name}-doc

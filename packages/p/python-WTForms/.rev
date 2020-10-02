@@ -41,4 +41,74 @@ Required for python-puppetboard SR 263316</comment>
     <comment></comment>
     <requestid>719691</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>64c6168b80f4a9727607bc716ecdfa86</srcmd5>
+    <version>2.3.3</version>
+    <time>1601652832</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop Requires on the code package on the doc package. 
+
+- Update to 2.3.3:
+  * This release includes the translation files that were missing in the 2.3.2
+    release.
+  * Fixed a bug with :class:`~fields.SelectField` choices shortcut at form
+    submission.
+
+- Update to 2.3.1:
+  * All modules in ``wtforms.ext`` show a deprecation warning on import.
+  * Fixed a bug when :class:`~fields.SelectField` choices is ``None``.
+  * Restored ``HTMLString`` and ``escape_html`` as aliases for
+    MarkupSafe functions. Their use shows a ``DeprecationWarning``.
+  * ``Form.validate`` takes an ``extra_validators`` parameter, mapping
+    field names to lists of extra validator functions. This matches
+    ``BaseForm.validate``.
+  * Update locale catalogs.
+  * Drop support for Python 2.6, 3.3, and 3.4.
+  * :class:`~fields.SelectField` uses ``list()`` to construct a new list
+    of choices.
+  * Permitted underscores in ``HostnameValidation``.
+  * :class:`~validators.URL` validator now allows query parameters in
+    the URL.
+  * Updated ``false_values`` param in ``BooleanField`` docs.
+  * Fixed broken format string in Arabic translation
+  * Updated French and Japanese translations.
+  * Updated Ukrainian translation.
+  * ``FieldList`` error list keeps entries in order for easier
+    identification of which fields had errors.
+  * :class:`~validators.Length` gives a more helpful error message when
+    ``min`` and ``max`` are the same value.
+  * :class:`~fields.SelectField` no longer coerces ``None`` to
+    ``&quot;None&quot;`` allowing use of ``&quot;None&quot;`` as an option.
+  * The :class:`~widgets.TextArea` widget prepends a ``\r\n`` newline
+    when rendering to account for browsers stripping an initial line for
+    display. This does not affect the value.
+  * HTML5 :class:`~fields.html5.IntegerField` and
+    :class:`~fields.html5.RangeInput` don't render the ``step=&quot;1&quot;``
+    attribute by default.
+  * ``aria_`` args are rendered the same way as ``data_`` args, by
+    converting underscores to hyphens. ``aria_describedby=&quot;name*help&quot;``
+    becomes ``aria*describedby=&quot;name-help&quot;``.
+  * Added a ``check_validators`` method to :class:`~fields.Field` which
+    checks if the given validators are both callable, and not classes.
+  * ``form.errors`` is not cached and will update if an error is
+    appended to a field after access.
+  * :class:`~wtforms.validators.NumberRange` correctly handle NaN
+    values.
+  * :class:`~fields.IntegerField` checks input type when processing data.
+  * Added a parameter to :class:`~fields.SelectField` to skip choice
+    validation.
+  * Choices which name and data are the same do not need to use tuples.
+  * Added more documentation on HTML5 fields.
+  * HTML is escaped using MarkupSafe instead of the previous internal
+    implementation. :func:`~widgets.core.escape_html` is removed,
+    replaced by :func:`markupsafe.escape`.
+    :class:`~widgets.core.HTMLString` is removed, replaced by
+    :class:`markupsafe.Markup`.
+  * Fixed broken IPv6 validator, validation now uses the ``ipaddress``
+    package.
+  * :class:`~fields.core.Label` text is escaped before rendering.
+  * Email validation is now handled by an optional library,
+  ``email_validator``.</comment>
+    <requestid>833358</requestid>
+  </revision>
 </revisionlist>
