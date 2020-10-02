@@ -135,6 +135,7 @@ Requires:       metatheme-greybird-geeko-common
 Requires:       noto-coloremoji-fonts
 Requires:       noto-sans-fonts
 Requires:       openSUSE-xfce-icon-theme
+Recommends:     noto-sans-cjk-fonts
 Conflicts:      otherproviders(xfce4-settings-branding)
 Provides:       xfce4-settings-branding = %{xfce4_settings_version}
 Supplements:    packageand(xfce4-settings:branding-openSUSE)
