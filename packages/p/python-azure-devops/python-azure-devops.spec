@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-devops
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-devops
-Version:        6.0.0b2
+Version:        6.0.0b4
 Release:        0
-License:        MIT
 Summary:        Python wrapper around the Azure DevOps 5x APIs
-Url:            https://github.com/Microsoft/vsts-python-api
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/Microsoft/vsts-python-api
 Source:         https://files.pythonhosted.org/packages/source/a/azure-devops/azure-devops-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module msrest >= 0.6.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-msrest < 0.7.0
 Requires:       python-msrest >= 0.6.0
 Provides:       python-vsts = %{version}
 Obsoletes:      python-vsts < %{version}
