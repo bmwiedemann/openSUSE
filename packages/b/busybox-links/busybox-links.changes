@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:02:38 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't fail if rpm will not be build
+
+-------------------------------------------------------------------
 Mon Sep 21 07:41:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add post/postun requires for busybox to busybox-sh
@@ -13,6 +18,11 @@ Wed Sep 16 15:33:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 Fri Sep 11 10:21:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - busybox-vi: conflict with all vi variants
+
+-------------------------------------------------------------------
+Fri Aug 28 08:09:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add zgrep to gzip sub-package
 
 -------------------------------------------------------------------
 Thu Aug 13 09:30:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>

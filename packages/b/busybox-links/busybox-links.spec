@@ -561,7 +561,7 @@ mkdir used
 mkdir missing
 for i in `cat %{_datadir}/busybox/busybox.links` ; do touch apps/`basename $i`; done
 # No rpm/rpm2cpio, will break build service
-rm apps/rpm apps/rpm2cpio
+rm -f apps/rpm apps/rpm2cpio
 # No /linuxrc
 rm -f apps/linuxrc
 # Does not really fit
@@ -627,6 +627,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 #ln -sf %{_bindir}/busybox %{buildroot}%{_sysconfdir}/alternatives/sh
 ln -sf %{_sysconfdir}/alternatives/sh %{buildroot}%{_bindir}/sh
 ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
+cp -av %{_bindir}/zgrep %{buildroot}%{_bindir}
 
 %post -n busybox-sh -p /usr/bin/ash
 %{_sbindir}/update-alternatives --quiet --force \
@@ -653,6 +654,7 @@ fi
 %files -n busybox-gawk -f filelist-gawk.txt
 %files -n busybox-grep -f filelist-grep.txt
 %files -n busybox-gzip -f filelist-gzip.txt
+%{_bindir}/zgrep
 %files -n busybox-hostname -f filelist-hostname.txt
 %files -n busybox-iproute2 -f filelist-iproute2.txt
 %files -n busybox-iputils -f filelist-iputils.txt
