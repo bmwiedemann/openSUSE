@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 15:33:08 UTC 2020 - Peter Varkoly <varkoly@suse.com>
+
+- Adapt mod_authz_host parameter instead of deprecated mod_access_compat
+  parametere. 
+
+-------------------------------------------------------------------
 Mon Feb  3 16:56:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
