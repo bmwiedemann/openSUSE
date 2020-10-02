@@ -1,0 +1,16 @@
+diff -ruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-libyui-bindings-2.0.2/swig/ruby/CMakeLists.txt ./swig/ruby/CMakeLists.txt
+--- ../orig-libyui-bindings-2.0.2/swig/ruby/CMakeLists.txt	2020-05-27 09:55:17.000000000 +0200
++++ ./swig/ruby/CMakeLists.txt	2020-09-30 15:22:04.761793048 +0200
+@@ -6,9 +6,12 @@
+ 
+ EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['vendorarchdir']" OUTPUT_VARIABLE RUBY_VENDOR_ARCH_DIR)
+ STRING(REGEX REPLACE "^/usr/" "${CMAKE_INSTALL_PREFIX}/" RUBY_VENDOR_ARCH_DIR "${RUBY_VENDOR_ARCH_DIR}")
++EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['vendorlibdir']" OUTPUT_VARIABLE RUBY_VENDORLIB_DIR)
++STRING(REGEX REPLACE "^/usr/" "${CMAKE_INSTALL_PREFIX}/" RUBY_VENDORLIB_DIR "${RUBY_VENDORLIB_DIR}")
+ 
+ MESSAGE(STATUS "Ruby executable: ${RUBY_EXECUTABLE}")
+ MESSAGE(STATUS "Ruby vendor arch dir: ${RUBY_VENDOR_ARCH_DIR}")
++MESSAGE(STATUS "Ruby vendorlib dir: ${RUBY_VENDORLIB_DIR}")
+ MESSAGE(STATUS "Ruby include path: ${RUBY_INCLUDE_PATH}")
+ 
+ SET( SWIG_OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/yui_ruby.cxx" )

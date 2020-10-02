@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 30 13:08:15 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- fix Factory build, add libyui-bindings-2.0.2.patch
+
+- move to python3-only build
+
+-------------------------------------------------------------------
 Wed May 27 06:45:02 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix ruby bindings when build as non-gem (bsc#1172158)

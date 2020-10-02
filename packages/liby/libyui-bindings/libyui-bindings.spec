@@ -33,6 +33,8 @@ BuildRequires:  python3-devel
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 Source:         %{name}-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE - adapt to newer CMake kkaempf@suse.de
+Patch1:         libyui-bindings-2.0.2.patch
 Prefix:         /usr
 
 %description
@@ -48,6 +50,7 @@ Authors:
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 mkdir build
@@ -55,7 +58,7 @@ cd build
 cmake -DYPREFIX=%{prefix} \
       -DCMAKE_INSTALL_PREFIX=%{prefix} \
       -DLIB=%{_lib} \
-      -DPYTHON_SITEDIR=%{python_sitelib} \
+      -DPYTHON_SITEDIR=%{python3_sitelib} \
       -DCMAKE_VERBOSE_MAKEFILE=TRUE \
       -DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags}" \
       -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
@@ -130,8 +133,8 @@ Authors:
 %files -n python3-yui
 %defattr(-,root,root,-)
 %doc swig/python/examples/*.py
-%{python_sitelib}/_yui.so
-%{python_sitelib}/yui.py
+%{python3_sitelib}/_yui.so
+%{python3_sitelib}/yui.py
 
 %files -n perl-yui
 %defattr(-,root,root,-)

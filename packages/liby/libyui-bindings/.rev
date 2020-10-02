@@ -165,4 +165,12 @@
     <comment>submit new version 2.0.2</comment>
     <requestid>809188</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>87e9064e46564021a930475fdb9391d1</srcmd5>
+    <version>2.0.2</version>
+    <time>1601652899</time>
+    <user>dimstar_suse</user>
+    <comment>fix the build</comment>
+    <requestid>838786</requestid>
+  </revision>
 </revisionlist>
