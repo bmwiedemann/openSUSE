@@ -107,11 +107,12 @@ chmod +x %{buildroot}%{_datadir}/%{name}/gfx/forest/bk/*/mk.sh
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %doc %{name}/README.md
-%license %{name}/LICENSE %{name}/license/*
+%license %{name}/LICENSE %{name}/license/GPL
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/metainfo/%{name}.appdata.xml
 
 %files data -f %{name}.lang
+%license %{name}/license/CCPL
 %{_datadir}/%{name}
 %dir %{_datadir}/bear-factory
 %{_datadir}/bear-factory/%{name}
