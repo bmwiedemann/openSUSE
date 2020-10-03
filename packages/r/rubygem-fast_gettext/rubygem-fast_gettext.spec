@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-fast_gettext
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 %define mod_name fast_gettext
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.3.0}
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/grosser/fast_gettext
