@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 30 06:24:22 UTC 2020 - Neil Brown <nfbrown@suse.com>
+
+- Remove nfs-doc package.  The documentation is 20 years old
+  and barely relevant.
+  (bsc#1171448)
+
+-------------------------------------------------------------------
+Tue Jul 14 16:05:08 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.5.1
+  Dropped patch accepted upstream:
+  0001-conffile-Don-t-give-warning-for-optional-config-file.patch
+
+  - improvements for 64bit time
+  - improvements for SASL referrals
+  - Rename clddb-tool to nfsdclddb
+  - New tools  nfsdclnts
+  - Better python3 support
+  - many bug-fixes
+
+-------------------------------------------------------------------
 Fri Jun  5 10:02:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use group statd instead of nogroup, nogroup would invalidate

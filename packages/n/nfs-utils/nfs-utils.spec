@@ -22,16 +22,13 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.4.3
+Version:        2.5.1
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/NFS
 URL:            http://kernel.org/pub/linux/utils/nfs-utils/
 Source0:        http://kernel.org/pub/linux/utils/nfs-utils/%{version}/nfs-utils-%{version}.tar.xz
-# Download does not work:
-# Source1:        ftp://nfs.sourceforge.net/pub/nfs/nfs.doc.tar.bz2
-Source1:        nfs.doc.tar.bz2
 Source4:        sysconfig.nfs
 Source11:       idmapd.conf
 Source12:       statd-user.conf
@@ -45,7 +42,6 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch1:         0001-conffile-Don-t-give-warning-for-optional-config-file.patch
 
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fedfs-utils-devel
@@ -128,20 +124,9 @@ In NFSv4, identities of users are conveyed by names rather than user ID
 and group ID. Both the NFS server and client code in the kernel need to
 translate these to numeric IDs.
 
-%package -n nfs-doc
-Summary:        Support Utilities for NFS
-Group:          Productivity/Networking/NFS
-Requires:       latex2html-pngicons
-Obsoletes:      nfs-utils < 1.1.0
-Supplements:    (nfs-utils and patterns-base-documentation)
-
-%description -n nfs-doc
-This package contains additional NFS documentation.
-
 %prep
-%setup -q -a 1
+%setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 autoreconf -fvi
@@ -161,14 +146,6 @@ export LDFLAGS="-pie"
 	--enable-mountconfig
 make %{?_smp_mflags}
 %sysusers_generate_pre %{SOURCE12} statd
-cd nfs
-for i in *.html ; do
-sed -i \
- -e "s@%{_prefix}/lib/latex2html/icons.png/next_motif.png@%{_datadir}/latex2html/icons/next.png@" \
- -e "s@%{_prefix}/lib/latex2html/icons.png/up_motif_gr.png@%{_datadir}/latex2html/icons/up.png@" \
- -e "s@%{_prefix}/lib/latex2html/icons.png/previous_motif_gr.png@%{_datadir}/latex2html/icons/prev.png@" \
- $i
-done
 
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
@@ -281,7 +258,8 @@ fi
 /sbin/umount.nfs4
 %attr(0755,root,root) %{_sbindir}/mountstats
 %attr(0755,root,root) %{_sbindir}/nfsiostat
-%{_sbindir}/clddb-tool
+%{_sbindir}/nfsdclddb
+%{_sbindir}/nfsdclnts
 %{_sbindir}/nfsdcld
 %{_sbindir}/nfsidmap
 %{_sbindir}/nfsstat
@@ -315,7 +293,8 @@ fi
 %dir /usr/lib/systemd/system-generators
 /usr/lib/systemd/system-generators/nfs-server-generator
 /usr/lib/systemd/system-generators/rpc-pipefs-generator
-%{_mandir}/man8/clddb-tool.8%{ext_man}
+%{_mandir}/man8/nfsdclddb.8%{ext_man}
+%{_mandir}/man8/nfsdclnts.8%{ext_man}
 %{_mandir}/man5/nfsmount.conf.5%{ext_man}
 %{_mandir}/man5/nfs.conf.5%{ext_man}
 %{_mandir}/man5/nfs.5%{ext_man}
@@ -385,9 +364,5 @@ fi
 %{_libdir}/pkgconfig/libnfsidmap.pc
 %{_mandir}/man3/*
 %doc support/nfsidmap/README
-
-%files -n nfs-doc
-%defattr(-,root,root)
-%doc nfs/*.html nfs/*.ps
 
 %changelog

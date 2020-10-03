@@ -1458,4 +1458,24 @@
     <comment></comment>
     <requestid>817957</requestid>
   </revision>
+  <revision rev="157" vrev="18">
+    <srcmd5>11e895266c283fe4510e24a6d10f5c24</srcmd5>
+    <version>unknown</version>
+    <time>1601744036</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove nfs-doc package.  The documentation is 20 years old
+  and barely relevant.
+  (bsc#1171448)
+
+- Update to version 2.5.1
+  Dropped patch accepted upstream:
+  0001-conffile-Don-t-give-warning-for-optional-config-file.patch
+  - improvements for 64bit time
+  - improvements for SASL referrals
+  - Rename clddb-tool to nfsdclddb
+  - New tools  nfsdclnts
+  - Better python3 support
+  - many bug-fixes</comment>
+    <requestid>838679</requestid>
+  </revision>
 </revisionlist>
