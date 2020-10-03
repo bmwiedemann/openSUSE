@@ -60,7 +60,7 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(pango) >= 1.44.4
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
 BuildRequires:  pkgconfig(x11)
-Requires:       tracker-miner-files
+Requires:       (tracker-miner-files with tracker-miner-files < 2.99)
 Recommends:     gvfs
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 09:12:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require tracker-miner-files 2.x; Tracker 3 is only supported in
+  GNOME 3.38, but TW started the migration path.
+
+-------------------------------------------------------------------
 Fri May 29 19:23:14 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:

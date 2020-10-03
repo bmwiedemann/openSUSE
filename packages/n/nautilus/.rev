@@ -1345,4 +1345,13 @@ Hence, recommended to be added to 12.3</comment>
     <comment>New stable rel (forwarded request 810278 from iznogood)</comment>
     <requestid>811421</requestid>
   </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>64172257812d1b90cf6fedd0d4ac6264</srcmd5>
+    <version>3.36.3</version>
+    <time>1601743933</time>
+    <user>dimstar_suse</user>
+    <comment>- Require tracker-miner-files 2.x; Tracker 3 is only supported in
+  GNOME 3.38, but TW started the migration path. (forwarded request 838212 from dimstar)</comment>
+    <requestid>838228</requestid>
+  </revision>
 </revisionlist>
