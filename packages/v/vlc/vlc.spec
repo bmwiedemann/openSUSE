@@ -1117,6 +1117,12 @@ dd if=/dev/zero bs=1M count=1 of=%{buildroot}/%{_libdir}/vlc/plugins/plugins.dat
 %{_libdir}/vlc/plugins/video_splitter/libwall_plugin.so
 %{_libdir}/vlc/plugins/visualization/libvisual_plugin.so
 %{_libdir}/vlc/plugins/vaapi/libvaapi_filters_plugin.so
+%ifarch %{arm}
+%dir %{_libdir}/vlc/plugins/arm_neon
+%{_libdir}/vlc/plugins/arm_neon/libchroma_yuv_neon_plugin.so
+%{_libdir}/vlc/plugins/arm_neon/libvolume_neon_plugin.so
+%{_libdir}/vlc/plugins/arm_neon/libyuv_rgb_neon_plugin.so
+%endif
 %{_libdir}/vlc/vlc-cache-gen
 
 %files jack
