@@ -992,4 +992,12 @@ This is a bug fix only release.
     <comment>- Add python3-nftables as a requirement. (forwarded request 833251 from mrostecki)</comment>
     <requestid>833252</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>f7db87526caaae9bb8b235b444cdf642</srcmd5>
+    <version>0.9.0</version>
+    <time>1601744128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836462</requestid>
+  </revision>
 </revisionlist>

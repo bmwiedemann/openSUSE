@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 11 18:05:42 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Make use of %service_del_postun_without_restart
+
+  And stop using DISABLE_RESTART_ON_UPDATE as this interface is
+  obsolete.
+
+-------------------------------------------------------------------
 Wed Sep  9 14:47:20 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Add python3-nftables as a requirement.

@@ -170,8 +170,7 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rcfirewalld
 # made it permanent yet so restarting the service could be
 # dangerous. It's safer to not touch the firewall ourselves but
 # Let the user restart it whenever he feels like it.
-export DISABLE_RESTART_ON_UPDATE=yes
-%service_del_postun firewalld.service
+%service_del_postun_without_restart firewalld.service
 
 %post -n firewall-applet
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
