@@ -1166,4 +1166,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>829129</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>ef90090182f7b8de359e673dddcf14b8</srcmd5>
+    <version>3.0.11.1</version>
+    <time>1601743927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838215</requestid>
+  </revision>
 </revisionlist>
