@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 23 17:21:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Work-around intermittent connection problems by disabling
+    discovery when connecting to devices.
+  + Hide pairing dialogue when pairing fails.
+  + Allow $HOME to be the Downloads dir.
+  + Better handling of the 8bitdo Zero gamepad.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Mar 11 00:33:11 UTC 2020 - mgorse@suse.com
 
 - Update to version 3.34.1:
