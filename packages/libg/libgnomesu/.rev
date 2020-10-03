@@ -452,4 +452,15 @@
     <comment>Follow the /usr/lib -&amp;gt; /usr/libexec move. Use the correct macros (forwarded request 799209 from dimstar)</comment>
     <requestid>799477</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>4da1f45f42f59bc7d0cf8c48d879035c</srcmd5>
+    <version>2.0.5</version>
+    <time>1601743913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.5:
+  * Gracefully exit on SIGTERM to avoid leaving behind xauth
+    temporary files due to skipped pam cleanup on shutdown
+    (bsc#1176514). (forwarded request 836125 from sbrabec)</comment>
+    <requestid>838193</requestid>
+  </revision>
 </revisionlist>

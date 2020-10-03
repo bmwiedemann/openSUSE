@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 14:52:31 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.0.5:
+  * Gracefully exit on SIGTERM to avoid leaving behind xauth
+    temporary files due to skipped pam cleanup on shutdown
+    (bsc#1176514).
+
+-------------------------------------------------------------------
 Thu Apr 30 11:15:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %{_libexecdir} where appropriate (instead of %{_prefix}/lib).

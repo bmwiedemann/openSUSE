@@ -17,7 +17,7 @@
 
 
 Name:           libgnomesu
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        GNOME su Library
 License:        LGPL-2.1-or-later
