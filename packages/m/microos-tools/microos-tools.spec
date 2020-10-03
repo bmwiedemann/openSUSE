@@ -17,7 +17,7 @@
 
 
 Name:           microos-tools
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/kubic-project/microos-tools
 Source:         microos-tools-%{version}.tar.xz
 Source1:        tmp.mount
+Source2:        tmp.conf
 Source99:       microos-tools-rpmlintrc
 BuildRequires:  distribution-release
 BuildRequires:  pkgconfig
@@ -34,7 +35,7 @@ Requires:       read-only-root-fs
 Conflicts:      systemd-coredump
 
 %description
-Files, scripts and directories for openSUSE Kubic.
+Files, scripts and directories for openSUSE MicroOS.
 
 %prep
 %setup -q
@@ -79,13 +80,9 @@ install -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/
 %{_unitdir}/setup-systemd-proxy-env.service
 %dir %{_unitdir}/sysinit.target.wants
 %{_unitdir}/sysinit.target.wants/MicroOS-firstboot.service
-%if 0%{?suse_version} <= 1500
-%{_unitdir}/tmp.mount
-%endif
 %dir %{_unitdir}/salt-minion.service.d
 %{_unitdir}/salt-minion.service.d/TMPDIR.conf
 %{_tmpfilesdir}/salt-minion-tmpdir.conf
-%{_tmpfilesdir}/tmp.conf
 %{_sysctldir}/30-corefiles.conf
 %{_libexecdir}/MicroOS-firstboot
 %{_sbindir}/setup-systemd-proxy-env
@@ -95,5 +92,9 @@ install -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/
 %{_systemdgeneratordir}/selinux-autorelabel-generator
 %config %{_sysconfdir}/profile.d/ssh-locale-check.sh
 %{_bindir}/locale-check
+%if 0%{?suse_version} <= 1500
+%{_unitdir}/tmp.mount
+%{_tmpfilesdir}/tmp.conf
+%endif
 
 %changelog

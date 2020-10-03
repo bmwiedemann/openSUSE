@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 09:13:15 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.5 
+  - tmp.conf now part of filesystem package for Factory
+- Include tmp.conf for SUSE MicroOS
+
+-------------------------------------------------------------------
 Tue Aug 18 14:33:56 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.4

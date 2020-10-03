@@ -109,4 +109,14 @@
     - Add dracut module to relabel core system if required</comment>
     <requestid>827614</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aeebf305a74aeb646c73756b502d485e</srcmd5>
+    <version>2.5</version>
+    <time>1601743923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5 
+  - tmp.conf now part of filesystem package for Factory
+- Include tmp.conf for SUSE MicroOS</comment>
+    <requestid>838213</requestid>
+  </revision>
 </revisionlist>
