@@ -1931,4 +1931,14 @@ and I can give it a stab.
   libvirt leaseshelper script (jsc#SLE-14253) (forwarded request 831960 from jfehlig)</comment>
     <requestid>832593</requestid>
   </revision>
+  <revision rev="142" vrev="8">
+    <srcmd5>58915e679cee5c2fa6690964ed59db49</srcmd5>
+    <version>2.13.4</version>
+    <time>1601744020</time>
+    <user>dimstar_suse</user>
+    <comment>- Make use of %service_del_postun_without_restart
+  And stop using DISABLE_RESTART_ON_UPDATE as this interface is
+  obsolete. (forwarded request 835136 from fbui)</comment>
+    <requestid>838608</requestid>
+  </revision>
 </revisionlist>

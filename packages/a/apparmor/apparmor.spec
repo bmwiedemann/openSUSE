@@ -762,8 +762,7 @@ fi
 
 %postun parser
 # don't call try-restart, see bnc#853019
-export DISABLE_RESTART_ON_UPDATE="yes"
-%service_del_postun apparmor.service
+%service_del_postun_without_restart apparmor.service
 
 %post abstractions
 # workaround for bnc#904620#c8 / lp#1392042
