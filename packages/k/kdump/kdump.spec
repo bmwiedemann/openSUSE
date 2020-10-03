@@ -16,10 +16,6 @@
 #
 
 
-# on systemd distros, rpm-build requires systemd-rpm-macros,
-# which in turn defines %%systemd_requires
-%define systemd_present %{defined systemd_requires}
-
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -68,6 +64,7 @@ Patch29:        %{name}-prefer-by-path-and-device-mapper.patch
 Patch30:        %{name}-calibrate-Update-values.patch
 Patch31:        %{name}-activate-udev-rules-late-during-boot.patch
 Patch32:        %{name}-make-sure-that-the-udev-runtime-directory-exists.patch
+Patch33:        %{name}-make-sure-that-initrd.target.wants-directory-exists.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -79,6 +76,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 #!BuildIgnore:  fop
 Requires:       /usr/bin/sed
@@ -95,15 +93,7 @@ Recommends:     nfs-client
 # update should detect the split-off from kexec-tools
 Provides:       kexec-tools:%{_initddir}/kdump
 ExcludeArch:    s390 ppc
-%if %{systemd_present}
-BuildRequires:  pkgconfig(systemd)
-%else
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %insserv_prereq
-%endif
-%if %{systemd_present}
-%systemd_ordering
-%endif
+%{?systemd_ordering}
 
 %description
 kdump is a package that includes several scripts for kdump, including
@@ -158,41 +148,38 @@ after a crash dump has occured.
 %patch30 -p1
 %patch31 -p1
 %patch32 -p1
+%patch33 -p1
 
 %build
-export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -std=gnu++98"
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
-make %{?_smp_mflags}
+%cmake
+
+# for SLE_15
+%if %{undefined cmake_build}
+%define cmake_build make %{?_smp_mflags}
+%define ctest cd build; ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags}
+%define cmake_install DESTDIR=%{buildroot} make -C build %{?_smp_mflags} install
+%endif
+
+%cmake_build
 
 %check
-cd build
-ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} 
+%ctest
 
 %install
-DESTDIR=%{buildroot} make -C build %{?_smp_mflags} install
+%cmake_install
 # remove executable bit from non-binaries
 chmod -x %{buildroot}/lib/kdump/setup-kdump.functions
 # empty directory
 mkdir -p %{buildroot}%{_localstatedir}/crash
 
 # symlink for init script
-%if %{systemd_present}
 rm %{buildroot}%{_initddir}/boot.kdump
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rckdump
-%else
-rm %{buildroot}%{_prefix}/lib/systemd/system/kdump.service
-rm %{buildroot}%{_prefix}/lib/systemd/system/kdump-early.service
-ln -s ../..%{_initddir}/boot.kdump %{buildroot}%{_sbindir}/rckdump
-%endif
 
-%if %{systemd_present}
 %pre
 %service_add_pre kdump.service
 %service_add_pre kdump-early.service
-%endif
 
 %post
 # change only permission if the file exists before /etc/sysconfig/kdump
@@ -201,7 +188,6 @@ change_permission=0
 if [ ! -f %{_sysconfdir}/sysconfig/kdump ] ; then
     change_permission=1
 fi
-%if %{systemd_present}
 %{fillup_only -n kdump}
 %service_add_post kdump.service
 %service_add_post kdump-early.service
@@ -209,9 +195,6 @@ fi
 if [ -x %{_bindir}/systemctl ] && %{_bindir}/systemctl is-enabled kdump.service &>/dev/null ; then
 	%{_bindir}/systemctl reenable kdump.service || :
 fi
-%else
-%{fillup_and_insserv -n kdump boot.kdump}
-%endif
 if [ "$change_permission" = 1 ]; then
     chmod 0600 %{_sysconfdir}/sysconfig/kdump
 fi
@@ -223,25 +206,16 @@ fi
 
 %preun
 echo "Stopping kdump ..."
-%if %{systemd_present}
 %service_del_preun kdump.service
 %service_del_preun kdump-early.service
-%else
-%stop_on_removal boot.kdump
-%endif
 
 %postun
 # force regeneration of kdumprd
 touch %{_sysconfdir}/sysconfig/kdump
 # delete symbolic link
 rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
-%if %{systemd_present}
 %service_del_postun kdump.service
 %service_del_postun kdump-early.service
-%else
-%restart_on_update boot.kdump
-%insserv_cleanup
-%endif
 
 # Compatibility cruft
 # there is no %%license prior to SLE12
@@ -273,12 +247,8 @@ rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 /lib/kdump/*
 %dir /usr/lib/kdump
 /usr/lib/kdump/70-kdump.rules
-%if %{systemd_present}
 %{_unitdir}/kdump.service
 %{_unitdir}/kdump-early.service
-%else
-%{_sysconfdir}/init.d/boot.kdump
-%endif
 %{_sbindir}/rckdump
 
 %changelog

@@ -1,0 +1,38 @@
+From: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+Date: Wed, 29 Jul 2020 14:40:10 +0800
+Subject: Make sure that initrd.target.wants directory exists
+Git-repo: https://github.com/openSUSE/kdump.git
+Git-commit: 506794bf323ceb27f4796e60e311fad11e6d6986
+Patch-mainline: yes
+References: bsc#1172670
+
+Creation of symbolic link to kdump-save.service will fail if the directory
+doesn't exists, and dump will not be captured because kdump-save.service is
+never started.
+
+The user will see the rescue mode prompt when the kernel crashed because
+systemd will proceed to initrd-switch-root, which will fail (thus triggering
+rescue mode) because kdump initrd does not setup /sysroot properly.
+
+Reference: bsc#1172670
+Signed-off-by: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ init/module-setup.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/init/module-setup.sh b/init/module-setup.sh
+index 9c1e6feb..057e5800 100755
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -281,6 +281,7 @@ install() {
+             done
+         ) > "$_d"/kdump.conf
+ 
++	mkdir -p "$initdir/$systemdsystemunitdir"/initrd.target.wants
+ 	ln_r "$systemdsystemunitdir"/kdump-save.service \
+ 	    "$systemdsystemunitdir"/initrd.target.wants/kdump-save.service
+     else
+-- 
+2.26.2
+
