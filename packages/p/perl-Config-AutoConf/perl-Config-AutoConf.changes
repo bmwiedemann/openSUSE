@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 30 03:07:20 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.319
+   see /usr/share/doc/packages/perl-Config-AutoConf/Changes
+
+  0.319	2020-09-29
+  	- add optional extra_link_flags to search_libs
+  	- fix check_prog to not find directories (RT#132993), thanks
+  	  RJBS for reporting
+  	- include .perltidyrc to allow CPAN distribution downloaders
+  	  creating sane patches
+  	- tooling improvements
+
+-------------------------------------------------------------------
 Fri Jan  3 03:07:20 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.318
