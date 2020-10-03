@@ -7,11 +7,12 @@
 
 for i in NUM SCR CAPS; do
 	conf=$(eval echo KBD_${i}LOCK)
-	[ -z ${!conf} ] && continue
-	param=$(echo ${i,,} | sed 's/scr/scroll/')
+	eval confval=\"\$$conf\"
+	[ -z "$confval" ] && continue
+	param=$(echo $i | tr A-Z a-z | sed 's/scr/scroll/')
 
 	for tty in ${KBD_TTY:-tty1 tty2 tty3 tty4 tty5 tty6}; do
-		case "${!conf}" in
+		case "$confval" in
 		yes)
 			if [ $param = "num" ]; then
 				touch /run/numlock-on
@@ -35,11 +36,11 @@ for i in NUM SCR CAPS; do
 					/usr/bin/setleds -D -$param < /dev/$tty
 				fi
 			else
-				echo "Value ${!conf} invalid for $conf"
+				echo "Value $confval invalid for $conf"
 			fi
 			;;
 		*)
-			echo "error: unknown value ${!conf} in $conf"
+			echo "error: unknown value $confval in $conf"
 			;;
 		esac
 	done

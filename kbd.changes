@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Sep 25 10:28:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not package libtswrap.so.0: it's only used by the test suite
+  in a LD_PRELOAD fashion.
+
+-------------------------------------------------------------------
+Thu Sep 24 00:08:45 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.3.0:
+  * Added libkfont library (internal yet).
+  * Added Canadian Multilingual Standard keyboard map.
+  * Added us1 that maps Right Alt to AltGr and Shift+Tab to
+    Alt+Tab.
+  * The dead_macron is used instead of macron in fi.map.
+  * Added retries when switching to the console (chvt, openvt).
+  * Added option -d to double size of font (setfont).
+  * Added long options, help messages.
+  * Added solar24x32 font.
+  * Updated eurlatgr font.
+  * Fixed problems with formatting man pages.
+  * Fixed search path error (boo#1176854).
+- Refresh partially upstreamed kbd-1.15.2-dumpkeys-C-opt.patch
+- Drop upstreamed libkeymap-Fix-mk_mapname-for-the-plain-map.patch
+- Refresh kbd-1.15.2-setfont-no-cruft.patch and
+  kbd-1.15.5-loadkeys-search-path.patch
+
+-------------------------------------------------------------------
+Tue Sep 22 08:45:57 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Refresh patch to fix build on non-x86 architecture broken
+  by previous commit:
+  * kbdsettings-nox86.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 22:43:16 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Make kbdsettings working in both bash and dash (boo#1175040).
+
+-------------------------------------------------------------------
+Thu Sep 17 14:47:04 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix kbd-1.15.5-loadkeys-search-path.patch to prefer xkb keymaps
+  (boo#1176302).
+
+-------------------------------------------------------------------
 Thu Aug 20 11:34:32 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - add libkeymap-Fix-mk_mapname-for-the-plain-map.patch
