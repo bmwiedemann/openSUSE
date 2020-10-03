@@ -1,0 +1,29 @@
+From a31c3b70d8d4f887f906afe35accbc9a59ebcd37 Mon Sep 17 00:00:00 2001
+From: Ethan A Merritt <merritt@u.washington.edu>
+Date: Sat, 12 Sep 2020 10:18:10 -0700
+Subject: [PATCH] Better error handling for faulty font syntax
+
+Commit 963c7df3 failed to deal with an error detected at the final character
+of a text string.
+
+Bugs #2303 #2308
+---
+ src/term.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git src/term.c src/term.c
+index 70a2a7f25..b9237784d 100644
+--- src/term.c
++++ src/term.c
+@@ -2179,7 +2179,7 @@ enhanced_recursion(
+ 			    ++p;
+ 			if (*p != *start_of_fontname) {
+ 			    int_warn(NO_CARET, "cannot interpret font name %s", start_of_fontname);
+-			    p = start_of_fontname + 1;
++			    break;
+ 			}
+ 			start_of_fontname++;
+ 			end_of_fontname = p++;
+-- 
+2.26.2
+

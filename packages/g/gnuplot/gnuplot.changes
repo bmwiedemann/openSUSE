@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 28 10:14:01 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add temporary upstream commits as patches
+  * 052cbd17.patch
+  * 1f36c4fb.patch
+  * 963c7df3.patch
+  * a31c3b70.patch
+  to fix the bugs bsc#1176689 with CVE-2020-25559 and bsc#1176687
+  with CVE-2020-25412
+
+-------------------------------------------------------------------
 Fri Jul 17 07:36:14 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 5.4

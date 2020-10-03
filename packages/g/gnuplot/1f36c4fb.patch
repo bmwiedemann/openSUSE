@@ -1,0 +1,42 @@
+From 1f36c4fbb3e8e0beb213b4a29ab463e43db9ef42 Mon Sep 17 00:00:00 2001
+From: Ethan A Merritt <merritt@u.washington.edu>
+Date: Fri, 11 Sep 2020 17:38:55 -0700
+Subject: [PATCH] prevent buffer overflow of enhanced text fragment
+
+The generic enhanced text buffering uses a shared buffer with fixed length.
+Add a check on the current position before adding each character in an
+enhanced text fragment.  Affects terminals
+  caca canvas dumb emf gd pc pdf pm tkcanvas x11 win
+Does not affect terminals with customized text handling
+  qt wxt cairo
+
+Bugs #2310 #2311
+---
+ src/term.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git src/term.c src/term.c
+index 7fd46fa04..70a2a7f25 100644
+--- src/term.c
++++ src/term.c
+@@ -185,6 +185,7 @@ char *enhanced_cur_text = NULL;
+ double enhanced_fontscale = 1.0;
+ char enhanced_escape_format[16] = "";
+ double enhanced_max_height = 0.0, enhanced_min_height = 0.0;
++#define ENHANCED_TEXT_MAX (&enhanced_text[MAX_LINE_LEN])
+ /* flag variable to disable enhanced output of filenames, mainly. */
+ TBOOLEAN ignore_enhanced_text = FALSE;
+ 
+@@ -2021,6 +2022,9 @@ test_term()
+ void
+ do_enh_writec(int c)
+ {
++    /* Guard against buffer overflow */
++    if (enhanced_cur_text >= ENHANCED_TEXT_MAX)
++	return;
+     /* note: c is meant to hold a char, but is actually an int, for
+      * the same reasons applying to putc() and friends */
+     *enhanced_cur_text++ = c;
+-- 
+2.26.2
+

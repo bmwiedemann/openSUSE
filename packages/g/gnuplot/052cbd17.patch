@@ -1,0 +1,25 @@
+From 052cbd17c3cbbc602ee080b2617d32a8417d7563 Mon Sep 17 00:00:00 2001
+From: Ethan A Merritt <merritt@u.washington.edu>
+Date: Wed, 9 Sep 2020 11:00:59 -0700
+Subject: [PATCH] successive failures of "set print <foo>" could cause
+ double-free Bug #2312
+
+---
+ src/command.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git src/command.c src/command.c
+index c6a923b5a..9701de995 100644
+--- src/command.c
++++ src/command.c
+@@ -1914,6 +1914,7 @@ print_set_output(char *name, TBOOLEAN datablock, TBOOLEAN append_p)
+ #endif
+ 	    if (0 > fclose(print_out))
+ 		perror(print_out_name);
++	print_out = stderr;
+     }
+ 
+     free(print_out_name);
+-- 
+2.26.2
+
