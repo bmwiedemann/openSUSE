@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 07:48:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix PC3 Button icon colors (kde#426556):
+  * 0001-Fix-PC3-Button-ToolButton-icons-not-always-having-th.patch
+
+-------------------------------------------------------------------
 Sun Sep  6 12:50:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
