@@ -129,4 +129,14 @@
     <comment></comment>
     <requestid>724418</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e194d786ee2bf0e679a8d9796c6558b8</srcmd5>
+    <version>1.4.0</version>
+    <time>1601744059</time>
+    <user>dimstar_suse</user>
+    <comment>- Add u_xtrans-noarch-pkgconfig.patch: Do not add
+  libdir=/usr(lib|lib64) entry to an arch-independent pkgconfig
+  file (installed to /usr/share) (boo#1109895).</comment>
+    <requestid>838722</requestid>
+  </revision>
 </revisionlist>

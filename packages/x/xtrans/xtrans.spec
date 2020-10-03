@@ -1,7 +1,7 @@
 #
 # spec file for package xtrans
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://xorg.freedesktop.org/
 Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.bz2
 Patch0:         p_xauth.diff
 Patch1:         n_unifdef-LBXPROXY_t-and-TEST_t.patch
+Patch2:         u_xtrans-noarch-pkgconfig.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.12
 BuildRequires:  pkgconfig(xshmfence)
@@ -46,6 +47,7 @@ libX11, libICE, the X font server, and related components.
 %setup -q
 %patch0
 %patch1 -p1 -R
+%patch2 -p1
 
 %build
 %configure --docdir=%{_docdir}/xtrans
