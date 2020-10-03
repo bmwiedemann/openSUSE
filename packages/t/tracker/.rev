@@ -1105,4 +1105,13 @@
     <comment>Update to 2.99.x - we have tracker stable renamed to tracker2, so we can easily already push the unstable branch (forwarded request 833772 from dimstar)</comment>
     <requestid>836025</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>47c3541b65121b167b236ac6ea692ca8</srcmd5>
+    <version>3.0.0</version>
+    <time>1601744068</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0:
+  + Updated translations. (forwarded request 838216 from dimstar)</comment>
+    <requestid>838739</requestid>
+  </revision>
 </revisionlist>
