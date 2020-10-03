@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 28 17:16:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.5.3:
+  * Various sanitizer/fuzz-identified issues related to handling of invalid input
+  * Fixes to misc compiler warnings
+  * Cmake fix for building on arm64 macOS (#772)
+  * Read performance optimization (#782)
+  * Fix for building on non-glibc (#798)
+  * Fixes to tests
+
+-------------------------------------------------------------------
 Sun Jul  5 23:02:07 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix 0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch

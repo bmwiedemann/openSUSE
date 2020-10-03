@@ -313,4 +313,18 @@
     <comment></comment>
     <requestid>818942</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8f43fe4e5155896da45304f8f02d095f</srcmd5>
+    <version>2.5.3</version>
+    <time>1601744012</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.3:
+  * Various sanitizer/fuzz-identified issues related to handling of invalid input
+  * Fixes to misc compiler warnings
+  * Cmake fix for building on arm64 macOS (#772)
+  * Read performance optimization (#782)
+  * Fix for building on non-glibc (#798)
+  * Fixes to tests (forwarded request 838351 from dirkmueller)</comment>
+    <requestid>838466</requestid>
+  </revision>
 </revisionlist>

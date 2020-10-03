@@ -21,7 +21,7 @@
 %define sonum 25
 %global so_suffix -2_5
 Name:           ilmbase
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        Base library for ILM software (OpenEXR)
 License:        BSD-3-Clause
