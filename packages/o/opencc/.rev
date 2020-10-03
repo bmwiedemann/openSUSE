@@ -153,4 +153,12 @@
   * Correct a large number of conversion errors. (forwarded request 834807 from dirkmueller)</comment>
     <requestid>835040</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e1b6b50ef9e202d6869bdea428ba2d61</srcmd5>
+    <version>1.1.1</version>
+    <time>1601743904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838153</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 05:07:44 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- add opencc-1.1.1-missing-builtin-types.patch
+  * SimpleConverter.hpp missed "#include <string>" that breaks pyzy 
+
+-------------------------------------------------------------------
 Sat Sep 12 19:49:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.1.1

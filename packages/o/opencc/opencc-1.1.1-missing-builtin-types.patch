@@ -1,0 +1,13 @@
+Index: OpenCC-ver.1.1.1/src/SimpleConverter.hpp
+===================================================================
+--- OpenCC-ver.1.1.1.orig/src/SimpleConverter.hpp
++++ OpenCC-ver.1.1.1/src/SimpleConverter.hpp
+@@ -16,6 +16,8 @@
+  * limitations under the License.
+  */
+ 
++#include <string>
++
+ #include "Export.hpp"
+ 
+ #ifndef __OPENCC_SIMPLECONVERTER_HPP_
