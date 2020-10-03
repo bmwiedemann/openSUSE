@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 18 07:00:58 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.22.1:
+  * fs.realpath.native on may cause buffer overflow
+    (bsc#1176589, CVE-2020-8252)
+- fix_ci_tests.patch: re-add missing debug symbol removal before
+  running unit tests
+
+-------------------------------------------------------------------
 Fri Aug 21 15:20:46 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Strip debugging symbols prior to running unit tests. Some tests
@@ -18,7 +27,7 @@ Tue Jul 28 07:13:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Jul 22 12:27:31 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
-- New upstream LTS version 12.22.0:
+- New upstream LTS version 10.22.0:
   * deps:
     + upgrade npm to 6.14.6 - fixes potential information leak through
       log files (bsc#1173937, CVE-2020-15095)
