@@ -245,7 +245,7 @@ parameters and keywords for the svn command and other tools.
 %patch46 -p1
 
 # do not use 'env python'
-sed -i -e 's#/usr/bin/env python#/usr/bin/python3#' subversion/tests/cmdline/*.py
+sed -i -e 's#%{_bindir}/env python#%{_bindir}/python3#' subversion/tests/cmdline/*.py
 
 %build
 # Re-boot strap, needed for patch37
@@ -403,9 +403,14 @@ rm -rf doc/doxygen/html/installdox
 %check
 export LANG=C LC_ALL=C
 
-%make_build check CLEANUP=true || (cat fails.log; exit 1)
-%make_build check-javahl || (cat fails.log; exit 1)
-%make_build check-swig-pl || (cat fails.log; exit 1)
+echo "========= mount RAM disc"
+test ! -e /dev/shm/svn-test-work && mkdir /dev/shm/svn-test-work
+test -e subversion/tests/cmdline/svn-test-work && rm -rf subversion/tests/cmdline/svn-test-work
+ln -s /dev/shm/svn-test-work subversion/tests/cmdline/
+
+%make_build -Onone check FS_TYPE=fsfs CLEANUP=true || (cat fails.log; exit 1)
+%make_build -Onone check-javahl || (cat fails.log; exit 1)
+%make_build -Onone check-swig-pl || (cat fails.log; exit 1)
 %if 0%{?suse_version} <= 1500
 # swig bindings check failing from swig 4.0.0 and later
 %make_build check-swig-py || (cat fails.log; exit 1)

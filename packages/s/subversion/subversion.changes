@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 23 18:53:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- speed up testsuite run by using /dev/shm
+- disable output aggregation that spec-cleaner introduces in checks
+
+-------------------------------------------------------------------
 Wed Sep  9 08:07:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix jira reference to SLE-11901
