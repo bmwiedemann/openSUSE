@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Sep  9 11:24:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.24.0:
+  * see https://github.com/ARMmbed/mbedtls/releases/tag/v2.24.0
+  * Fix a vulnerability in the verification of X.509 certificates when matching
+  the expected common name (the cn argument of mbedtls_x509_crt_verify())
+  with the actual certificate name: when the subjecAltName extension is
+  present, the expected name was compared to any name in that extension
+  regardless of its type. This means that an attacker could for example
+  impersonate a 4-bytes or 16-byte domain by getting a certificate for the
+  corresponding IPv4 or IPv6 (this would require the attacker to control that
+  IP address, though). Similar attacks using other subjectAltName name types
+  might be possible.
+  * When checking X.509 CRLs, a certificate was only considered as revoked if
+  its revocationDate was in the past according to the local clock if
+  available. In particular, on builds without MBEDTLS_HAVE_TIME_DATE,
+  certificates were never considered as revoked. On builds with
+  MBEDTLS_HAVE_TIME_DATE, an attacker able to control the local clock (for
+  example, an untrusted OS attacking a secure enclave) could prevent
+  revocation of certificates via CRLs. Fixed by no longer checking the
+  revocationDate field, in accordance with RFC 5280. Reported by yuemonangong
+  in #3340. Reported independently and fixed by Raoul Strackx and Jethro
+  * In (D)TLS record decryption, when using a CBC ciphersuites without the
+  Encrypt-then-Mac extension, use constant code flow memory access patterns
+  to extract and check the MAC. This is an improvement to the existing
+  countermeasure against Lucky 13 attacks. The previous countermeasure was
+  effective against network-based attackers, but less so against local
+  attackers. The new countermeasure defends against local attackers, even if
+  they have access to fine-grained measurements. In particular, this fixes a
+  local Lucky 13 cache attack found and reported by Tuba Yavuz, Farhaan
+  Fowze, Ken (Yihan) Bai, Grant Hernandez, and Kevin Butler (University of
+  Florida) and Dave Tian (Purdue University).
+  * Fix side channel in RSA private key operations and static (finite-field)
+  Diffie-Hellman. An adversary with precise enough timing and memory access
+  information (typically an untrusted operating system attacking a secure
+  enclave) could bypass an existing counter-measure (base blinding) and
+  potentially fully recover the private key.
+  * Fix a 1-byte buffer overread in mbedtls_x509_crl_parse_der(). Credit to
+  OSS-Fuzz for detecting the problem and to Philippe Antoine for pinpointing
+  the problematic code.
+  * Zeroising of plaintext buffers in mbedtls_ssl_read() to erase unused
+  application data from memory. 
+
+-------------------------------------------------------------------
 Mon Sep  7 01:37:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add workaround for failing builds (Python not found) due to
