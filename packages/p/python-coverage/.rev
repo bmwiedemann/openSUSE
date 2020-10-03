@@ -361,4 +361,13 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
     <comment>- fix build for older distros by buildrequiring a new-enough pytest</comment>
     <requestid>787145</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2586b4a62434af29e817724695ee3b9f</srcmd5>
+    <version>5.3</version>
+    <time>1601744072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3 release:
+  * 5 series redesigned on top of sql database instead of file</comment>
+    <requestid>838760</requestid>
+  </revision>
 </revisionlist>

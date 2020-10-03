@@ -18,25 +18,28 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-coverage
-Version:        4.5.4
+Version:        5.3
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/nedbat/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module hypothesis >= 4.57}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest >= 4.4.0}
+BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module unittest-mixins}
 BuildRequires:  %{python_module xml}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python
 Requires:       python-setuptools
-Requires:       python-xml
+Requires:       python-toml
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %python_subpackages
@@ -78,10 +81,12 @@ ln -sf coverage-%{python3_version} %{buildroot}%{_bindir}/coverage3
 # test_unicode - differs between py2/py3
 # test_version - checks for non-compiled variant, we ship only compiled one
 # test_multiprocessing_with_branching - whitespace issue in regexp
-# test_farm - tries to write in /usr
+# test_farm, test_encoding, test_multi - tries to write in /usr
 # test_dothtml_not_python - no idea
 # test_bytes
 # test_one_of
+# test_xdist_sys_path_nuttiness_is_fixed - xdist check that we actually fail on purpose
+# test_debug_sys_ctracer - requires dep on ctracer
 export LANG=en_US.UTF8
 # Copy executables to py2/3 build areas, to be used for testing
 %{python_expand mkdir build/bin
@@ -92,7 +97,7 @@ for filepath in %{buildroot}/%{_bindir}/coverage*-%{$python_bin_suffix}; do
 done
 export PATH="$(pwd)/build/bin:$PATH"
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
-py.test-%{$python_bin_suffix} -v -k 'not (test_get_encoded_zip_files or test_egg or test_doctest or test_unicode or test_version or test_multiprocessing_with_branching or test_farm or test_dothtml_not_python or test_one_of or test_bytes)'
+py.test-%{$python_bin_suffix} -v -k 'not (test_get_encoded_zip_files or test_egg or test_doctest or test_unicode or test_version or test_multiprocessing_with_branching or test_farm or test_dothtml_not_python or test_one_of or test_bytes or test_encoding or test_multi or test_xdist_sys_path_nuttiness_is_fixed or test_debug_sys_ctracer)'
 rm -r build/bin
 }
 
@@ -104,7 +109,7 @@ rm -r build/bin
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGES.rst CONTRIBUTORS.txt README.rst TODO.txt howto.txt
+%doc CHANGES.rst CONTRIBUTORS.txt README.rst howto.txt
 %python_alternative %{_bindir}/coverage
 %python2_only %{_bindir}/coverage2
 %python3_only %{_bindir}/coverage3

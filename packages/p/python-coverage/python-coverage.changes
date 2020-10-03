@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 11:09:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.3 release:
+  * 5 series redesigned on top of sql database instead of file
+
+-------------------------------------------------------------------
 Sat Mar 21 15:01:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - fix build for older distros by buildrequiring a new-enough pytest
