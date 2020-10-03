@@ -134,6 +134,8 @@ Patch25:        restore-llvm10-abi.patch
 Patch26:        lld-default-sha1.patch
 # PATCH-FIX-UPSTREAM fix-atomics-test.patch -- Fix Clang test for arches without native atomics.
 Patch27:        fix-atomics-test.patch
+# PATCH-FIX-UPSTREAM llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch -- Fix dsymutil crash on ELF file.
+Patch28:        llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -555,6 +557,7 @@ This package contains the development files for Polly.
 %patch22 -p1
 %patch24 -p1
 %patch25 -p1
+%patch28 -p2
 
 pushd clang-%{_version}.src
 %patch2 -p1
