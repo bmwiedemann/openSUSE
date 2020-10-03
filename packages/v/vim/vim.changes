@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Sep 30 09:55:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.1775, fixes the following problems
+- refreshed vim-7.3-sh_is_bash.patch
+  * Vim9: no error if comma is missing in between arguments.
+  * Vim9: memory leak with heredoc that isn't executed. (Dominique Pellé)
+  * Vim9: cannot assign a lambda to a variable of type function.
+  * Vim9: Variable argument name cannot start with underscore.
+  * Vim9: assignment tests spread out.
+  * Not all Pascal files are recognized.
+  * Fuzzy matching only works on strings.
+  * A popup created with "cursorline" will ignore "firstline".
+  * Compiler warning for using uninitialized variable. (John Marriott)
+  * Endless loop when ":normal" feeds popup window filter.
+  * Vim9: cannot use member of unknown type.
+  * Vim9: cannot use += to append to empty NULL list.
+  * Stuck when win_execute() for a popup causes an error.
+  * Vim9: memory leaks when using nested function.
+  * Vim9: cannot use a funcref for a closure twice.
+  * Failure to compile a pattern not tested much.
+  * Cursor line highlight in popup window is not always updated.
+  * Mac: str2float() recognizes comma instead of decimal point.
+  * Vim9: crash when compiling a manually defined function. (Antony Scriven)
+  * Test fails without the terminal feature.
+  * pathshorten() only supports using one character.
+  * Test still fails without the terminal feature.
+  * Cannot build without the eval feature.
+  * Vim9: using ":const!" is weird.
+  * Tiny version doesn't build.
+  * Vim9: Cannot use "fina" for "finally". (Naruhiko Nishino)
+  * Result of expand() unexpectedly depends on 'completeslash'.
+  * Closing split window in other tab may cause a crash.
+  * Vim9: crash when closure fails in nested function.
+  * Setting firstline with popup_setoptions() fails if cursorline is set.
+  * Using 2 where bool is expected may throw an error.
+  * GTK GUI: cannot map alt-? with <A-?>. (Ingo Karkat)
+  * Vim9: crash when using import at script level.
+  * Completion with spell checking not tested.
+  * Vim9: crash when using invalid heredoc marker. (Dhiraj Mishra)
+  * Vim9: :let will soon be disallowed.
+  * Mac: default locale is lacking the encoding.
+  * Vim9: type of unmaterialized list is wrong.
+  * Vim9: Some tests are still using :let.
+  * Vim9: crash when end marker is missing. (Dhiraj Mishra)
+  * Vim9: Some tests are still using :let.
+  * When a timer uses :stopinsert Insert mode completion isn't
+  stopped. (Stanley Chan)
+  * Vim9: cannot use "true" for popup window scrollbar option.
+  * Vim9: no error when assigning to script var with wrong type.
+  * Vim9: some tests use "var var".
+  * Vim9: Some tests are still using :let.
+  * Vim9: test fails with python support.
+  * Cannot use the help menu from a terminal window.
+  * A popup filter interferes with using :normal to move the cursor in a popup.
+  * Invalid memory use when using SpellFileMissing autocmd.
+  * synIDattr() cannot get the value of ctermul.
+  * Cannot use CTRL-W <Down> to move out of a terminal window.
+  * Crash when calling mapset() with a list as first argument.
+  * GTK: hang when forced to exit.
+
+-------------------------------------------------------------------
 Mon Sep 21 08:18:45 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.1719, fixes the following problems

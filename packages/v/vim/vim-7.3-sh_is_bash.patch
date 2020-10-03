@@ -1,9 +1,9 @@
-Index: vim-8.2.0348/runtime/syntax/sh.vim
+Index: vim-8.2.1775/runtime/syntax/sh.vim
 ===================================================================
---- vim-8.2.0348.orig/runtime/syntax/sh.vim
-+++ vim-8.2.0348/runtime/syntax/sh.vim
-@@ -64,6 +64,13 @@ if !exists("b:is_kornshell") && !exists(
-   endif
+--- vim-8.2.1775.orig/runtime/syntax/sh.vim
++++ vim-8.2.1775/runtime/syntax/sh.vim
+@@ -74,6 +74,13 @@ if exists("b:is_dash")
+  let b:is_posix= 1
  endif
  
 +" Neither is_kornshell nor is_bash was explicitly set, and
