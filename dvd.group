@@ -2188,7 +2188,6 @@
     <package name="libharfbuzz-icu0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libhavege2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libhiredis0_13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3759,7 +3758,6 @@
     <package name="python3-gst" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-gunicorn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-h2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python3-hiredis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-hpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-hyperframe" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-hyperlink" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -5339,6 +5337,8 @@
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="apulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="apulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="audacity" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="audacity-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5346,6 +5346,7 @@
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="ffmpeg-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="gdk-pixbuf-query-loaders-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="glibc-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5388,6 +5389,7 @@
     <package name="libaudit1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libavahi-client3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libavahi-common3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libavdevice58_10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libblkid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libbrotlicommon1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbrotlidec1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5490,6 +5492,7 @@
     <package name="libsmbldap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libstdc++6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libstdc++6-pp-gcc10-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libsuil-0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libsystemd0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtalloc2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5504,6 +5507,7 @@
     <package name="libudev1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libunistring2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libuuid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libvamp-hostsdk3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libverto1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libvirt-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libvirt-client" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5516,6 +5520,12 @@
     <package name="libvorbis0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvorbisfile3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libwbclient0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libwx_baseu-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_baseu_net-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_baseu_xml-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_gtk3u_core-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_gtk3u_html-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_gtk3u_qa-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libxcb-render0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libxcb-shm0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libxcb1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5578,6 +5588,7 @@
     <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="virtualbox-guest-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="wxWidgets-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="xen-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="xmlstarlet" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

@@ -884,8 +884,6 @@ unsorted:
   - audacious-plugins 
   - audacious-plugins-extra 
   - audacious-plugins-lang 
-  - audacity: [x86_64] 
-  - audacity-lang: [x86_64] 
   - audaspace 
   - audaspace-devel 
   - audaspace-doc 
@@ -2857,7 +2855,6 @@ unsorted:
   - elemines 
   - elftoaout 
   - elfutils-debuginfod 
-  - elib 
   - elinks: [x86_64] 
   - elisa 
   - elisa-lang 
@@ -3214,7 +3211,7 @@ unsorted:
   - ffcall 
   - fflas-ffpack-devel 
   - fflas-ffpack-doc 
-  - ffmpeg-4 
+  - ffmpeg-4: [i586] 
   - ffmpeg-4-libavcodec-devel 
   - ffmpeg-4-libavdevice-devel 
   - ffmpeg-4-libavfilter-devel 
@@ -8816,7 +8813,7 @@ unsorted:
   - libavc1394-devel-32bit: [x86_64] 
   - libavc1394-tools 
   - libavcodec58_91-32bit: [x86_64] 
-  - libavdevice58_10 
+  - libavdevice58_10: [i586] 
   - libavdevice58_10-32bit: [x86_64] 
   - libavfilter7_85-32bit: [x86_64] 
   - libavformat58_45-32bit: [x86_64] 
@@ -9555,7 +9552,7 @@ unsorted:
   - libdrumstick-file1 
   - libdrumstick-rt-plugins 
   - libdrumstick-rt1 
-  - libdruntime-ldc92 
+  - libdruntime-ldc93 
   - libdtkcore2 
   - libdtkwidget2 
   - libdtkwm2 
@@ -10481,6 +10478,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
+  - libhiredis1_0_0 
   - libhivex0: [i586] 
   - libhmac-devel 
   - libhmac-tools 
@@ -10839,7 +10837,7 @@ unsorted:
   - libldac2 
   - libldapcpp-devel 
   - libldb-devel 
-  - libldc-jit92 
+  - libldc-jit93 
   - libldl-doc 
   - libldl2 
   - libldm-1_0-0: [i586] 
@@ -11780,7 +11778,7 @@ unsorted:
   - libpgf7 
   - libpgm-5_2-0-32bit: [x86_64] 
   - libphobos2-0_87 
-  - libphobos2-ldc92 
+  - libphobos2-ldc93 
   - libphonenumber-devel 
   - libphonon4qt5-32bit: [x86_64] 
   - libphysfs-devel 
@@ -12486,6 +12484,8 @@ unsorted:
   - librsync2 
   - librtaudio6 
   - librtmidi5 
+  - librtprocess-devel 
+  - librtprocess0 
   - librtr0 
   - librttr_core0_9_6 
   - librubberband-devel 
@@ -12840,7 +12840,7 @@ unsorted:
   - libsubtitleeditor-devel 
   - libsubtitleeditor0 
   - libsubunit0 
-  - libsuil-0-0 
+  - libsuil-0-0: [i586] 
   - libsundials3 
   - libsundials3-mvapich2 
   - libsundials3-openmpi1 
@@ -13221,7 +13221,7 @@ unsorted:
   - libvala-0_48-devel 
   - libvaladoc-0_48-0 
   - libvaladoc-0_48-devel 
-  - libvamp-hostsdk3 
+  - libvamp-hostsdk3: [i586] 
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
@@ -13441,17 +13441,17 @@ unsorted:
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_baseu-suse-nostl3_0_4 
-  - libwx_baseu-suse-nostl4_0_0 
+  - libwx_baseu-suse-nostl4_0_0: [i586] 
   - libwx_baseu-suse3_0_4 
   - libwx_baseu-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu-suse4_0_0 
   - libwx_baseu_net-suse-nostl3_0_4 
-  - libwx_baseu_net-suse-nostl4_0_0 
+  - libwx_baseu_net-suse-nostl4_0_0: [i586] 
   - libwx_baseu_net-suse3_0_4 
   - libwx_baseu_net-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_net-suse4_0_0 
   - libwx_baseu_xml-suse-nostl3_0_4 
-  - libwx_baseu_xml-suse-nostl4_0_0 
+  - libwx_baseu_xml-suse-nostl4_0_0: [i586] 
   - libwx_baseu_xml-suse3_0_4 
   - libwx_baseu_xml-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_xml-suse4_0_0 
@@ -13507,17 +13507,17 @@ unsorted:
   - libwx_gtk3u_adv-suse4_0_0 
   - libwx_gtk3u_aui-suse-nostl4_0_0 
   - libwx_gtk3u_aui-suse4_0_0 
-  - libwx_gtk3u_core-suse-nostl4_0_0 
+  - libwx_gtk3u_core-suse-nostl4_0_0: [i586] 
   - libwx_gtk3u_core-suse4_0_0 
   - libwx_gtk3u_gl-suse-nostl4_0_0 
   - libwx_gtk3u_gl-suse4_0_0 
-  - libwx_gtk3u_html-suse-nostl4_0_0 
+  - libwx_gtk3u_html-suse-nostl4_0_0: [i586] 
   - libwx_gtk3u_html-suse4_0_0 
   - libwx_gtk3u_media-suse-nostl4_0_0 
   - libwx_gtk3u_media-suse4_0_0 
   - libwx_gtk3u_propgrid-suse-nostl4_0_0 
   - libwx_gtk3u_propgrid-suse4_0_0 
-  - libwx_gtk3u_qa-suse-nostl4_0_0 
+  - libwx_gtk3u_qa-suse-nostl4_0_0: [i586] 
   - libwx_gtk3u_qa-suse4_0_0 
   - libwx_gtk3u_ribbon-suse-nostl4_0_0 
   - libwx_gtk3u_ribbon-suse4_0_0 
@@ -16231,6 +16231,7 @@ unsorted:
   - objenesis-javadoc 
   - obs-service-appimage 
   - obs-service-cargo_vendor 
+  - obs-service-docker_label_helper 
   - obs-service-download_files 
   - obs-service-download_url 
   - obs-service-extract_file 
@@ -17669,6 +17670,7 @@ unsorted:
   - perl-DBIx-Class-Fixtures 
   - perl-DBIx-Class-InflateColumn-FS 
   - perl-DBIx-Class-IntrospectableM2M 
+  - perl-DBIx-Class-Migration 
   - perl-DBIx-Class-OptimisticLocking 
   - perl-DBIx-Class-Schema-Config 
   - perl-DBIx-Class-Schema-Loader 
@@ -18099,8 +18101,11 @@ unsorted:
   - perl-Mojolicious-Plugin-Webpack 
   - perl-Monitoring-Plugin 
   - perl-Moo 
+  - perl-MooX-Attribute-ENV 
   - perl-MooX-HandlesVia 
   - perl-MooX-Locale-Passthrough 
+  - perl-MooX-Options 
+  - perl-MooX-Traits 
   - perl-MooX-Types-MooseLike 
   - perl-MooX-Types-MooseLike-Numeric 
   - perl-MooX-late 
@@ -18798,6 +18803,7 @@ unsorted:
   - php7-zlib 
   - phpMyAdmin 
   - phpPgAdmin 
+  - physlock 
   - pianobar 
   - picard 
   - picard-lang 
@@ -20079,6 +20085,7 @@ unsorted:
   - python3-azure-graphrbac 
   - python3-azure-identity 
   - python3-azure-keyvault 
+  - python3-azure-keyvault-administration 
   - python3-azure-keyvault-certificates 
   - python3-azure-keyvault-keys 
   - python3-azure-keyvault-nspkg 
@@ -20205,7 +20212,10 @@ unsorted:
   - python3-azure-storage-file-share 
   - python3-azure-storage-nspkg 
   - python3-azure-storage-queue 
-  - python3-azure-synapse 
+  - python3-azure-synapse-accesscontrol 
+  - python3-azure-synapse-artifacts 
+  - python3-azure-synapse-nspkg 
+  - python3-azure-synapse-spark 
   - python3-azurectl 
   - python3-azuremetadata 
   - python3-babelfish 
@@ -20918,6 +20928,7 @@ unsorted:
   - python3-hetznercloud 
   - python3-hexdump 
   - python3-hide-code 
+  - python3-hiredis 
   - python3-hivex 
   - python3-hkdf 
   - python3-hl7apy 
@@ -35107,7 +35118,7 @@ unsorted:
   - wxWidgets-3_2-nostl-devel 
   - wxWidgets-3_2-plugin-sound_sdlu-3_2 
   - wxWidgets-docs 
-  - wxWidgets-lang 
+  - wxWidgets-lang: [i586] 
   - wxhexeditor 
   - wxhexeditor-lang 
   - wxlua 
