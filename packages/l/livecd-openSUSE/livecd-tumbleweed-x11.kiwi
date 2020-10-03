@@ -69,6 +69,8 @@
     <ignore name="gimp-help"/>
     <package name="aaa_base" replaces="libreoffice-base"/>
     <ignore name="libreoffice-base"/>
+    <package name="aaa_base" replaces="noto-sans-cjk-fonts"/>
+    <ignore name="noto-sans-cjk-fonts"/>
     <package name="aaa_base" replaces="libreoffice-mailmerge"/>
     <ignore name="libreoffice-mailmerge"/>
     <package name="aaa_base" replaces="libreoffice-math"/>
