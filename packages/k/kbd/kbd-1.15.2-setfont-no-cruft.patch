@@ -1,10 +1,10 @@
-Index: kbd-2.2.0/src/kdfontop.c
+Index: kbd-2.3.0/src/libkfont/kdfontop.c
 ===================================================================
---- kbd-2.2.0.orig/src/kdfontop.c
-+++ kbd-2.2.0/src/kdfontop.c
-@@ -169,6 +169,23 @@ int putfont(int fd, unsigned char *buf,
- 			return 0;
- 	}
+--- kbd-2.3.0.orig/src/libkfont/kdfontop.c
++++ kbd-2.3.0/src/libkfont/kdfontop.c
+@@ -321,6 +321,23 @@ kfont_put_font(struct kfont_context *ctx
+ 	if (ret <= 0)
+ 		return ret;
  
 +#if 1
 +	// We no longer try PIO_FONT* calls.
@@ -19,16 +19,16 @@ Index: kbd-2.2.0/src/kdfontop.c
 +	// b) Without the old compat calls, it should be easier to 
 +	//    fix this in kernel side.
 +	//
-+	fprintf(stderr, "%s: putfont: %d,%dx%d:  failed: %d\n", get_progname(), count, width, height, i);
++	fprintf(stderr, "%s: putfont: %d,%dx%d:  failed: %d\n", get_progname(), count, width, height, ret);
 +	perror("putfont: KDFONTOP");
 +	return -1;
 +#else
  	/* Second attempt: PIO_FONTX */
- 	cfd.charcount  = count;
- 	cfd.charheight = height;
-@@ -191,4 +208,5 @@ int putfont(int fd, unsigned char *buf,
- 		return -1;
- 	}
- 	return 0;
+ 	ret = put_font_piofontx(ctx, fd, buf, count, width, height);
+ 	if (ret <= 0)
+@@ -328,4 +345,5 @@ kfont_put_font(struct kfont_context *ctx
+ 
+ 	/* Third attempt: PIO_FONT */
+ 	return put_font_piofont(ctx, fd, buf, count, width, height);
 +#endif
  }

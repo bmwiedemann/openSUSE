@@ -24,16 +24,16 @@
 %define legacy_folders amiga,atari,i386,include,mac,ppc,sun
 
 Name:           kbd
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Keyboard and Font Utilities
 # git: git://git.altlinux.org/people/legion/packages/kbd.git
 License:        GPL-2.0-or-later
 Group:          System/Console
 URL:            http://kbd-project.org/
-# repack_kbd.sh on ftp://ftp.altlinux.org/pub/people/legion/kbd/kbd-%{version}.tar.xz
+# repack_kbd.sh on ftp://ftp.altlinux.org/pub/people/legion/kbd/kbd-%%{version}.tar.xz
 # or
-#  repack_kbd.sh on ftp://ftp.kernel.org/pub/linux/utils/kbd/kbd-%{version}.tar.xz
+#  repack_kbd.sh on ftp://ftp.kernel.org/pub/linux/utils/kbd/kbd-%%{version}.tar.xz
 Source:         %{name}-%{version}-repack.tar.xz
 Source1:        kbd_fonts.tar.bz2
 Source2:        suse-add.tar.bz2
@@ -56,7 +56,6 @@ Patch2:         kbd-1.15.2-unicode_scripts.patch
 Patch3:         kbd-1.15.2-docu-X11R6-xorg.patch
 Patch4:         kbd-1.15.2-sv-latin1-keycode10.patch
 Patch5:         kbd-1.15.2-setfont-no-cruft.patch
-# TODO: no ideas how to port it.
 Patch6:         kbd-1.15.2-dumpkeys-C-opt.patch
 Patch9:         kbd-2.0.2-comment-typo-qwerty.patch
 Patch10:        kbd-2.0.2-doshell-reference.patch
@@ -69,7 +68,7 @@ Patch13:        kbd-1.15.5-loadkeys-search-path.patch
 Patch14:        kbdsettings-nox86.patch
 # PATCH-FIX-SLE kbd-unicode-fxxx.patch sbrabec@suse.com bsc1085432 -- Do not cause error on UNICODE characters >= 0xF000 (e. g. ligature fi)
 Patch15:        kbd-unicode-fxxx.patch
-Patch16:        libkeymap-Fix-mk_mapname-for-the-plain-map.patch
+BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  check-devel
@@ -77,6 +76,7 @@ BuildRequires:  console-setup
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc >= 4.6
+BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  suse-module-tools
@@ -134,7 +134,6 @@ cp -fp %{SOURCE22} .
 %patch14 -p0
 %endif
 %patch15 -p1
-%patch16 -p1
 
 %build
 for i in `find data/keymaps/mac -type f` ; do
@@ -152,12 +151,14 @@ pushd data/keymaps/i386
 	test -f olpc/pt.map || mv olpc/pt.map olpc/pt-olpc.map
 	test -f qwerty/cz.map || mv qwerty/cz.map qwerty/cz-qwerty.map
 popd
+./autogen.sh
 %configure \
 	--disable-silent-rules \
 	--datadir=%{kbd} \
 	--enable-nls \
 	--localedir=%{_datadir}/locale \
-	--enable-optional-progs
+	--enable-optional-progs \
+	--disable-static
 make %{?_smp_mflags}
 gcc %{optflags} -o fbtest      $RPM_SOURCE_DIR/fbtest.c
 %ifarch %{ix86} x86_64
@@ -188,6 +189,9 @@ install -m 644 fonts/*/* $K/consolefonts/
 # Now call kbd install
 echo "# Now call kbd install DESTDIR=%{buildroot} DATA_DIR=%{kbd} MAN_DIR=%{_mandir}"
 make DESTDIR=%{buildroot} DATA_DIR=%{kbd} MAN_DIR=%{_mandir} install
+# This is an internal library, these files have no use outside kbd.
+rm %{buildroot}%{_libdir}/libtswrap.la
+rm %{buildroot}%{_libdir}/libtswrap.so*
 # ln -s iso01-12x22.psfu $K/consolefonts/suse12x22.psfu
 install -m 644 data/consolefonts/README* $DOC/fonts/
 mkdir -p $DOC/doc/

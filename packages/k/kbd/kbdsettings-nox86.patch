@@ -15,11 +15,11 @@
 -					/usr/bin/setleds -D -$param < /dev/$tty
 -				fi
 -			else
--				echo "Value ${!conf} invalid for $conf"
+-				echo "Value $confval invalid for $conf"
 -			fi
 -			;;
  		*)
- 			echo "error: unknown value ${!conf} in $conf"
+ 			echo "error: unknown value $confval in $conf"
  			;;
 --- sysconfig.keyboard
 +++ sysconfig.keyboard
