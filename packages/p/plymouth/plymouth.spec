@@ -32,7 +32,7 @@ Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
 Group:          System/Base
-URL:            http://www.freedesktop.org/wiki/Software/Plymouth
+URL:            https://www.freedesktop.org/wiki/Software/Plymouth
 Source0:        %{name}-%{version}.tar.xz
 Source1:        boot-duration
 # PATCH-FIX-OPENSUSE plymouth-dracut-path.patch tittiatcoke@gmail.com -- Prefix is /usr/sbin and /usr/bin
@@ -56,13 +56,15 @@ Patch1002:      0003-fix_null_deref.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
-BuildRequires:  kernel-headers
 BuildRequires:  libtool
 BuildRequires:  libxslt
-BuildRequires:  module-init-tools
 BuildRequires:  pkgconfig
+%if 0%{suse_version} >= 1550
+# regenerate_initrd_post moved to rpm-config-SUSE:initrd.macros
+BuildRequires:  rpm-config-SUSE >= 0.g11
+%else
 BuildRequires:  suse-module-tools
-# needed for systemd-tty-ask-password-agent
+%endif
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -72,13 +74,13 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libsystemd) >= 186
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pango) >= 1.21.0
+# needed for systemd-tty-ask-password-agent
 BuildRequires:  pkgconfig(systemd) >= 186
 %if %{with x11_renderer}
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 %endif
 Recommends:     %{name}-lang
 Requires:       %{name}-branding
-Requires:       gnu-unifont-bitmap-fonts
 Requires:       systemd >= 186
 Requires(post): coreutils
 Requires(post): plymouth-scripts = %{version}
@@ -136,7 +138,7 @@ Conflicts:      %{name}-branding
 BuildArch:      noarch
 
 %description branding-upstream
-This package contains the /usr/share/plymouthd.defaults which contains the basic 
+This package contains the /usr/share/plymouthd.defaults which contains the basic
 settings and branding from the upstream.
 
 %package devel
@@ -177,12 +179,12 @@ behavior on environments with a valid DISPLAY.
 %package scripts
 Summary:        Plymouth related scripts
 Group:          System/Base
-Requires:       coreutils
-Requires:       cpio
+Requires:       awk
 Requires:       dracut
-Requires:       findutils
-Requires:       gzip
+Requires:       grep
+Requires:       sed
 Requires(pre):  %{name} = %{version}
+BuildArch:      noarch
 
 %description scripts
 This package contains scripts that help integrate Plymouth with
@@ -207,7 +209,7 @@ Requires:       libply-splash-graphics%{soversion} = %{version}
 %description plugin-label-ft
 This package contains the label control plugin for
 Plymouth. It provides the ability to render text on
-graphical boot splashes using FreeTyoe
+graphical boot splashes using FreeType
 
 %package plugin-fade-throbber
 Summary:        Plymouth "Fade-Throbber" plugin
@@ -369,15 +371,12 @@ BuildArch:      noarch
 
 %description theme-bgrt
 This package contains the "bgrt" boot splash theme for
-Plymouth. 
+Plymouth.
 
 %prep
 %setup -q
 %autopatch -p1
 autoreconf -ivf
-
-# replace builddate with patch0date
-sed -i "s/__DATE__/\"$(stat -c %%y %{_sourcedir}/%{name}.changes)\"/" src/main.c
 
 %build
 %configure \
@@ -398,7 +397,7 @@ sed -i "s/__DATE__/\"$(stat -c %%y %{_sourcedir}/%{name}.changes)\"/" src/main.c
            --with-background-end-color-stop=0x4EA65C             \
            --with-background-color=0x3391cd                      \
            --without-rhgb-compat-link                            \
-           --without-system-root-install                         
+           --without-system-root-install
 
 make %{?_smp_mflags}
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 28 16:32:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove gnu-unifont-bitmap-fonts runtime dependency, it is not
+  used anywhere.
+- Remove unused kernel-headers and module-init-tools build deps.
+- Make plymouth-scripts noarch, correct its runtime dependencies.
+- Clean up spec file.
+
+-------------------------------------------------------------------
 Sat Aug 29 06:13:50 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Add plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch:
