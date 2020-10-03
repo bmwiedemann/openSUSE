@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 17 12:23:42 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add eigen3-CastXML-support-for-aarch64.patch to support CastXML
+  on aarch64 [https://gitlab.com/libeigen/eigen/-/issues/1979];
+  patch taken from upstream commit and rebased to apply without
+  fuzz.
+
+-------------------------------------------------------------------
 Mon Aug  5 23:28:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Convert to _multibuild, to avoid doc dependencies when building

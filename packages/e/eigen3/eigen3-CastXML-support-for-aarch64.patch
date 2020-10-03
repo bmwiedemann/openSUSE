@@ -1,0 +1,54 @@
+From 880fa43b2ba9c25f45ae3ad4871a6aabe558329f Mon Sep 17 00:00:00 2001
+From: Brad King <brad.king@kitware.com>
+Date: Wed, 16 Sep 2020 13:37:27 -0400
+Subject: [PATCH] Add support for CastXML on ARM aarch64
+
+CastXML simulates the preprocessors of other compilers, but actually
+parses the translation unit with an internal Clang compiler.
+Use the same `vld1q_u64` workaround that we do for Clang.
+
+Fixes: #1979
+---
+ Eigen/src/Core/arch/NEON/Complex.h | 4 ++--
+ Eigen/src/Core/util/Macros.h       | 6 ++++++
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+Index: eigen-eigen-323c052e1731/Eigen/src/Core/arch/NEON/Complex.h
+===================================================================
+--- eigen-eigen-323c052e1731.orig/Eigen/src/Core/arch/NEON/Complex.h
++++ eigen-eigen-323c052e1731/Eigen/src/Core/arch/NEON/Complex.h
+@@ -17,7 +17,7 @@ namespace internal {
+ 
+ inline uint32x4_t p4ui_CONJ_XOR() {
+ // See bug 1325, clang fails to call vld1q_u64.
+-#if EIGEN_COMP_CLANG
++#if EIGEN_COMP_CLANG || EIGEN_COMP_CASTXML
+   uint32x4_t ret = { 0x00000000, 0x80000000, 0x00000000, 0x80000000 };
+   return ret;
+ #else
+@@ -291,7 +291,7 @@ ptranspose(PacketBlock<Packet2cf,2>& ker
+ #if EIGEN_ARCH_ARM64 && !EIGEN_APPLE_DOUBLE_NEON_BUG
+ 
+ // See bug 1325, clang fails to call vld1q_u64.
+-#if EIGEN_COMP_CLANG
++#if EIGEN_COMP_CLANG || EIGEN_COMP_CASTXML
+   static uint64x2_t p2ul_CONJ_XOR = {0x0, 0x8000000000000000};
+ #else
+   const uint64_t  p2ul_conj_XOR_DATA[] = { 0x0, 0x8000000000000000 };
+Index: eigen-eigen-323c052e1731/Eigen/src/Core/util/Macros.h
+===================================================================
+--- eigen-eigen-323c052e1731.orig/Eigen/src/Core/util/Macros.h
++++ eigen-eigen-323c052e1731/Eigen/src/Core/util/Macros.h
+@@ -35,6 +35,12 @@
+   #define EIGEN_COMP_CLANG 0
+ #endif
+ 
++/// \internal EIGEN_COMP_CASTXML set to 1 if being preprocessed by CastXML
++#if defined(__castxml__)
++  #define EIGEN_COMP_CASTXML 1
++#else
++  #define EIGEN_COMP_CASTXML 0
++#endif
+ 
+ /// \internal EIGEN_COMP_LLVM set to 1 if the compiler backend is llvm
+ #if defined(__llvm__)

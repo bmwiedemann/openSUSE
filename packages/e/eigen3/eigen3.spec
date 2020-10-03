@@ -1,7 +1,7 @@
 #
 # spec file for package eigen3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Release:        0
 Summary:        C++ Template Library for Linear Algebra
 License:        MPL-2.0 AND LGPL-2.1-only AND LGPL-2.1-or-later AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://eigen.tuxfamily.org/
+URL:            http://eigen.tuxfamily.org/
 Source0:        https://bitbucket.org/eigen/eigen/get/%{version}.tar.bz2#/%{pkgname}-%{version}.tar.bz2
 Patch0:         0001-Disable-Altivec-for-ppc64le.patch
 Patch1:         0001-Do-stack-allignment-on-ppc.patch
@@ -41,6 +41,8 @@ Patch2:         eigen_pkgconfig.patch
 Patch3:         01_install_FindEigen3.patch
 # PATCH-FIX-OPENSUSE eigen3-3.3.1-fixcmake.patch -- Fix double {prefix} as we use INCLUDE_INSTALL_DIR with {_includedir}
 Patch4:         eigen3-3.3.1-fixcmake.patch
+# PATCH-FIX-UPSTREAM eigen3-CastXML-support-for-aarch64.patch badshah400@gmail.com -- Add CastXML support for ARM aarch64 [https://gitlab.com/libeigen/eigen/-/issues/1979]
+Patch5:         eigen3-CastXML-support-for-aarch64.patch
 BuildRequires:  adolc-devel
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
@@ -102,6 +104,7 @@ for Linear Algebra
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
 sed -i 's/\r$//' COPYING.MINPACK
