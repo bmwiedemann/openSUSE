@@ -33,4 +33,12 @@ See related SR https://build.opensuse.org/request/show/615279</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>773829</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>63ef47e2bb0fff77e7d374d37f18cf44</srcmd5>
+    <version>1.19.2</version>
+    <time>1601743892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838062</requestid>
+  </revision>
 </revisionlist>
