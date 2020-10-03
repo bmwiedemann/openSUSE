@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 29 12:46:19 CEST 2020 - tiwai@suse.de
+
+- Fix the directory to save asound.state again to /var/lib/alsa,
+  which was mistakenly changed to /etc
+
+-------------------------------------------------------------------
 Tue Jun  9 11:21:59 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-utils 1.2.3:
