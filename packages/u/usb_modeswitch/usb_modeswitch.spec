@@ -1,7 +1,7 @@
 #
 # spec file for package usb_modeswitch
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,29 @@
 #
 
 
-%define source_name	usb-modeswitch
-%define date		20191128
+%define source_name usb-modeswitch
+%define date	20191128
 %define _udevdir %(pkg-config --variable=udevdir udev)
 Name:           usb_modeswitch
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        A mode switching tool for controlling multiple-device USB gear
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Mobile
-Url:            http://www.draisberghof.de/usb_modeswitch
-Source0:        http://www.draisberghof.de/usb_modeswitch/%{source_name}-%{version}.tar.bz2
-Source1:        http://www.draisberghof.de/usb_modeswitch/%{source_name}-data-%{date}.tar.bz2
-Source2:        http://www.draisberghof.de/usb_modeswitch/device_reference.txt
-Source3:        http://www.draisberghof.de/usb_modeswitch/parameter_reference.txt
+URL:            https://www.draisberghof.de/usb_modeswitch/
+Source0:        https://www.draisberghof.de/usb_modeswitch/%{source_name}-%{version}.tar.bz2
+Source1:        https://www.draisberghof.de/usb_modeswitch/%{source_name}-data-%{date}.tar.bz2
+Source2:        https://www.draisberghof.de/usb_modeswitch/device_reference.txt
+Source3:        https://www.draisberghof.de/usb_modeswitch/parameter_reference.txt
 Patch1:         usb_modeswitch-fix_fsf_address.patch
 BuildRequires:  fdupes
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+BuildRequires:  pkgconfig(udev)
 Requires:       tcl >= 8.4
 Requires:       usb_modeswitch-data = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%{?systemd_requires}
 
 %description
 USB_ModeSwitch is a mode switching tool for controlling "flip flop"
@@ -91,19 +90,18 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags} RULESDIR=%{buildroot}%{_udevdi
 %service_del_postun usb_modeswitch@.service
 
 %files
-%defattr(-,root,root,-)
-%doc README COPYING device_reference.txt parameter_reference.txt
+%license COPYING
+%doc README device_reference.txt parameter_reference.txt
 %{_sbindir}/usb_modeswitch
 %{_sbindir}/usb_modeswitch_dispatcher
 %{_udevdir}/usb_modeswitch
 %{_unitdir}/usb_modeswitch@.service
 %{_localstatedir}/lib/usb_modeswitch
 %config %{_sysconfdir}/usb_modeswitch.conf
-%{_mandir}/man1/usb_modeswitch.1.gz
-%{_mandir}/man1/usb_modeswitch_dispatcher.1.gz
+%{_mandir}/man1/usb_modeswitch.1%{?ext_man}
+%{_mandir}/man1/usb_modeswitch_dispatcher.1%{?ext_man}
 
 %files data
-%defattr(-,root,root,-)
 %{_datadir}/usb_modeswitch/
 %{_udevdir}/rules.d/40-usb_modeswitch.rules
 

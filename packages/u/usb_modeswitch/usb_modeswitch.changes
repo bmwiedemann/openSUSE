@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:17:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.6.1:
+  Wrapper now handles devices with non-continuous interface numbering:
+  www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?f=2&t=2915&p=19605
+  (thanks to Jakub Vaněk); catch error with retrieving the active confi-
+  guration, exit gracefully
+- use https for downloads, spec-cleaner run
+
+-------------------------------------------------------------------
 Mon Dec 23 21:41:13 UTC 2019 - enzokiel@kabelmail.de
 
 - Update to version 2.6.0
