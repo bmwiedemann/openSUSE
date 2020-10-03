@@ -1,19 +1,14 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
-    <param name="url">https://github.com/andikleen/mcelog</param>
-    <param name="subdir"></param>
-    <param name="filename">mcelog</param>
+    <param name="url">git://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">refs/tags/v166</param>
-    <param name="versionformat">1.66</param>
-<!--
-      <param name="versionformat">1.64+git%cd.%h</param>
--->
+    <param name="revision">v173</param>
+    <param name="versionformat">173</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">mcelog*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="disabled"/>
 </services>

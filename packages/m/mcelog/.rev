@@ -660,4 +660,12 @@ M email.patch
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>835386</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f12aeb624a75dae6231ed02dbe57c17d</srcmd5>
+    <version>173</version>
+    <time>1601743980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838278</requestid>
+  </revision>
 </revisionlist>

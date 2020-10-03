@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 10:16:15 UTC 2020 - trenn@suse.de
+
+- jsc#SLE-13505, jsc#SLE-13494
+- Update to version 173:
+  * mcelog: Rebalance the red-black tree after inserting a new node
+  * mcelog: Add Tigerlake, Rocketlake, Alderlake, Lakefield
+  * mcelog.service: Check existence of `/dev/mcelog` in systemd
+  * mcelog.service: Remove DefaultStandardOutput configuration
+  * mcelog: Add decode for MCi_MISC from 10nm memory controller
+  * Add reporter tracking to trigger-invoking functions.
+  * mcelog: Add "kflags" field to "struct mce"
+
+-------------------------------------------------------------------
 Sun Aug 16 19:01:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 170:
