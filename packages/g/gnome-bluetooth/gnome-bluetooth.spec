@@ -18,7 +18,7 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           gnome-bluetooth
-Version:        3.34.1
+Version:        3.34.2
 Release:        0
 Summary:        GNOME Bluetooth graphical utilities
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -102,7 +102,7 @@ translation-update-upstream po gnome-bluetooth2
 
 %files
 %license COPYING
-%doc NEWS README
+%doc NEWS README.md
 %{_bindir}/bluetooth-*
 %{_datadir}/applications/bluetooth-sendto.desktop
 %{_datadir}/gnome-bluetooth/
