@@ -89,7 +89,6 @@ install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/nbd-server/config.ex
 install -D -p -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}-server
 
 %post
-export DISABLE_RESTART_ON_UPDATE=yes
 %service_add_post %{name}-server.service
 %fillup_only -n nbd-server
 if test -e %{_sysconfdir}/nbd-server.conf; then

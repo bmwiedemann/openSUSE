@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.21.7
+Version:        9.21.14
 Provides:       kiwi-schema = 7.2
 Release:        0
 Url:            https://github.com/OSInside/kiwi

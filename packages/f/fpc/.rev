@@ -86,4 +86,14 @@
 </comment>
     <requestid>837228</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ba2adf8659107e51355bd8ac496f3ecc</srcmd5>
+    <version>3.2.0</version>
+    <time>1601743951</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build on ppc64le:
+  * fpc-fix-library-paths-on-ppc64.patch
+</comment>
+    <requestid>838276</requestid>
+  </revision>
 </revisionlist>

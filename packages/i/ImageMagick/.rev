@@ -2767,4 +2767,19 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - remove ImageMagick-set-correct-colorspace.patch, ImageMagick-inkscape-commandilne.patch (upstream) (forwarded request 834244 from dirkmueller)</comment>
     <requestid>834263</requestid>
   </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>3a0aa59453b4b626dc1fd4fa148dba61</srcmd5>
+    <version>7.0.10.31</version>
+    <time>1601744171</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.10.31:
+  * Add support for APNG (specify explicitly, e.g. apng:animate.png).
+  * Add support for WEBM.
+  * Fixed registry lookup of GhostScript that now writes the patch version to the
+    registry
+  * Add endian support to JSON coder.
+  * Regression: MapCache type cache allocation skipped
+  * Some DCM images include a thumbnail (forwarded request 838367 from dirkmueller)</comment>
+    <requestid>838465</requestid>
+  </revision>
 </revisionlist>

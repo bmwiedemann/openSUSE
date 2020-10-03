@@ -10,7 +10,7 @@ diff -r 6b017d3e9733 gfx/gl/GLContext.h
      BEFORE_GL_CALL;
      mSymbols.fReadPixels(x, y, width, height, format, type, pixels);
      OnSyncCall();
-+#if MOZ_BIG_ENDIAN
++#if MOZ_BIG_ENDIAN()
 +    uint8_t* itr = (uint8_t*)pixels;
 +    for (GLsizei i = 0; i < width * height; i++) {
 +      NativeEndian::swapToLittleEndianInPlace((uint32_t*)itr, 1);

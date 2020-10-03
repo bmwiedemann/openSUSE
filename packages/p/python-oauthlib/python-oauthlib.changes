@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 11:18:07 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix patch numbering
+
+-------------------------------------------------------------------
 Wed Apr 29 12:15:23 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch to switch from external mock to unittest.mock

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:32:48 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 228
+  https://cockpit-project.org/blog/cockpit-228.html
+  https://cockpit-project.org/blog/cockpit-227.html
+  https://cockpit-project.org/blog/cockpit-226.html
+- enable cockpit-machines to manage libvirt
+
+-------------------------------------------------------------------
 Thu Sep 10 12:49:00 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - adjust spec file to match upstream

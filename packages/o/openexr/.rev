@@ -540,4 +540,18 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   on any bigendian platform in current state (forwarded request 834725 from oertel)</comment>
     <requestid>834726</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b332b2efdd190cf76b6a8c67f66644c3</srcmd5>
+    <version>2.5.3</version>
+    <time>1601744045</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.5.3
+  * Various sanitizer/fuzz-identified issues related to handling of invalid input
+  * Fixes to misc compiler warnings
+  * Cmake fix for building on arm64 macOS (#772)
+  * Read performance optimization (#782)
+  * Fix for building on non-glibc (#798)
+  * Fixes to tests</comment>
+    <requestid>838690</requestid>
+  </revision>
 </revisionlist>

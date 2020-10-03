@@ -1,0 +1,147 @@
+From 32addac948a61c4770f9cdf459fa29879602df38 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 6 Jul 2020 16:34:33 +0200
+Subject: [PATCH 03/32] ucm: substitute the merged tree completely
+
+We need to define the common shared configuration like for multiple
+HDMI devices or so. Substitute the whole merged configuration tree
+including identifiers.
+
+Fixes: https://github.com/alsa-project/alsa-lib/issues/67
+Fixes: https://github.com/alsa-project/alsa-ucm-conf/commit/dcef48f13d4f5db79b006755074940b94730a883
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/ucm/ucm_cond.c    |  2 +-
+ src/ucm/ucm_include.c |  9 +++++++--
+ src/ucm/ucm_local.h   |  6 +++++-
+ src/ucm/ucm_subs.c    | 53 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 66 insertions(+), 4 deletions(-)
+
+diff --git a/src/ucm/ucm_cond.c b/src/ucm/ucm_cond.c
+index cc4915396d71..3ca3096e0b19 100644
+--- a/src/ucm/ucm_cond.c
++++ b/src/ucm/ucm_cond.c
+@@ -401,7 +401,7 @@ int uc_mgr_evaluate_condition(snd_use_case_mgr_t *uc_mgr,
+ 		err = uc_mgr_evaluate_inplace(uc_mgr, a);
+ 		if (err < 0)
+ 			return err;
+-		err = uc_mgr_config_tree_merge(parent, a, before, after);
++		err = uc_mgr_config_tree_merge(uc_mgr, parent, a, before, after);
+ 		if (err < 0)
+ 			return err;
+ 		snd_config_delete(a);
+diff --git a/src/ucm/ucm_include.c b/src/ucm/ucm_include.c
+index c69490f49c6e..94ae944d2001 100644
+--- a/src/ucm/ucm_include.c
++++ b/src/ucm/ucm_include.c
+@@ -206,7 +206,8 @@ static int compound_merge(const char *id,
+ 	return 0;
+ }
+ 
+-int uc_mgr_config_tree_merge(snd_config_t *parent, snd_config_t *new_ctx,
++int uc_mgr_config_tree_merge(snd_use_case_mgr_t *uc_mgr,
++			     snd_config_t *parent, snd_config_t *new_ctx,
+ 			     snd_config_t *before, snd_config_t *after)
+ {
+ 	snd_config_iterator_t i, next;
+@@ -214,6 +215,10 @@ int uc_mgr_config_tree_merge(snd_config_t *parent, snd_config_t *new_ctx,
+ 	const char *id;
+ 	int err;
+ 
++	err = uc_mgr_substitute_tree(uc_mgr, new_ctx);
++	if (err < 0)
++		return err;
++
+ 	snd_config_for_each(i, next, new_ctx) {
+ 		n = snd_config_iterator_entry(i);
+ 		err = snd_config_remove(n);
+@@ -271,7 +276,7 @@ int uc_mgr_evaluate_include(snd_use_case_mgr_t *uc_mgr,
+ 		err = uc_mgr_evaluate_inplace(uc_mgr, a);
+ 		if (err < 0)
+ 			return err;
+-		err = uc_mgr_config_tree_merge(parent, a, before, after);
++		err = uc_mgr_config_tree_merge(uc_mgr, parent, a, before, after);
+ 		if (err < 0)
+ 			return err;
+ 		snd_config_delete(a);
+diff --git a/src/ucm/ucm_local.h b/src/ucm/ucm_local.h
+index 709f4cbd5a20..dd72e3f55f95 100644
+--- a/src/ucm/ucm_local.h
++++ b/src/ucm/ucm_local.h
+@@ -307,7 +307,11 @@ int uc_mgr_get_substituted_value(snd_use_case_mgr_t *uc_mgr,
+ 				 char **_rvalue,
+ 				 const char *value);
+ 
+-int uc_mgr_config_tree_merge(snd_config_t *parent, snd_config_t *new_ctx,
++int uc_mgr_substitute_tree(snd_use_case_mgr_t *uc_mgr,
++			   snd_config_t *node);
++
++int uc_mgr_config_tree_merge(snd_use_case_mgr_t *uc_mgr,
++			     snd_config_t *parent, snd_config_t *new_ctx,
+ 			     snd_config_t *before, snd_config_t *after);
+ 
+ int uc_mgr_evaluate_inplace(snd_use_case_mgr_t *uc_mgr,
+diff --git a/src/ucm/ucm_subs.c b/src/ucm/ucm_subs.c
+index d40e5478b084..f608bb0955a6 100644
+--- a/src/ucm/ucm_subs.c
++++ b/src/ucm/ucm_subs.c
+@@ -395,3 +395,56 @@ __error:
+ 	free(r);
+ 	return err;
+ }
++
++static inline int uc_mgr_substitute_check(const char *s)
++{
++	return s && strstr(s, "${") != NULL;
++}
++
++int uc_mgr_substitute_tree(snd_use_case_mgr_t *uc_mgr, snd_config_t *node)
++{
++	snd_config_iterator_t i, next;
++	snd_config_t *n;
++	const char *id, *s2;
++	char *s;
++	int err;
++
++	err = snd_config_get_id(node, &id);
++	if (err < 0)
++		return err;
++	if (uc_mgr_substitute_check(id)) {
++		err = uc_mgr_get_substituted_value(uc_mgr, &s, id);
++		if (err < 0)
++			return err;
++		err = snd_config_set_id(node, s);
++		free(s);
++		if (err < 0) {
++			uc_error("unable to set substituted id '%s' (old id '%s')", s, id);
++			return err;
++		}
++	}
++	if (snd_config_get_type(node) != SND_CONFIG_TYPE_COMPOUND) {
++		if (snd_config_get_type(node) == SND_CONFIG_TYPE_STRING) {
++			err = snd_config_get_string(node, &s2);
++			if (err < 0)
++				return err;
++			if (!uc_mgr_substitute_check(s2))
++				return 0;
++			err = uc_mgr_get_substituted_value(uc_mgr, &s, s2);
++			if (err < 0)
++				return err;
++			err = snd_config_set_string(node, s);
++			free(s);
++			if (err < 0)
++				return err;
++		}
++		return 0;
++	}
++	snd_config_for_each(i, next, node) {
++		n = snd_config_iterator_entry(i);
++		err = uc_mgr_substitute_tree(uc_mgr, n);
++		if (err < 0)
++			return err;
++	}
++	return 0;
++}
+-- 
+2.16.4
+

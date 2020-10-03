@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:57:00 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable topology support for aarch64
+
+-------------------------------------------------------------------
+Wed Sep 23 16:49:23 CEST 2020 - tiwai@suse.de
+
+- Backport upstream fixes:
+  0001-ucm-substitution-remove-duplicate-allow_empty-assign.patch
+  0002-ucm-fix-parse_get_safe_name-safe-name-must-be-checke.patch
+  0003-ucm-substitute-the-merged-tree-completely.patch
+  0004-ctl-improve-documentation-for-identifier-of-control-.patch
+  0005-pcm-dmix-make-lockless-operation-optional.patch
+  0006-pcm-dmix-Fix-semaphore-usage-with-lockless-operation.patch
+  0007-pcm-iec958-implement-HDMI-HBR-audio-formatting.patch
+  0008-pcm-iec958-set-channel-status-bits-according-to-rate.patch
+  0009-conf-pcm-USB-Added-S-PDIF-fix-for-Asus-Xonar-SE.patch
+  0010-control-ctlparse-fix-enum-values-in-or.patch
+  0011-conf-USB-Audio-Disable-IEC958-on-Lenovo-ThinkStation.patch
+  0012-pcm-dmix-fix-access-to-sum-buffer-in-non-interleaved.patch
+  0014-control-Add-documentation-for-snd_ctl_elem_list_.patch
+  0015-conf-quote-also-strings-with-and-characters-in-strin.patch
+  0016-topology-decode-Fix-channel-map-memory-allocation.patch
+  0017-topology-decode-Fix-infinite-loop-in-decoding-enum-c.patch
+  0018-topology-decode-Remove-decoding-values-for-enum-cont.patch
+  0019-topology-decode-Add-enum-control-texts-as-separate-e.patch
+  0020-topology-decode-Fix-printing-texts-section.patch
+  0021-topology-decode-Change-declaration-of-enum-decoding-.patch
+  0022-topology-decode-Fix-decoding-PCM-formats-and-rates.patch
+  0023-topology-decode-Print-sig_bits-field-in-PCM-capabili.patch
+  0024-topology-decode-Add-DAI-name-printing.patch
+  0025-topology-Make-buffer-for-saving-dynamic-size.patch
+  0026-topology-return-correct-value-in-tplg_save_printf.patch
+  0027-topology-fix-some-gcc10-warnings-labs-signess.patch
+  0028-topology-fix-sort_config.patch
+  0029-topology-fix-the-unaligned-access.patch
+  0030-topology-improve-the-printf-buffer-management.patch
+  0031-control-Improve-general-control-interface-documentat.patch
+  0032-control-Add-documentation-for-snd_ctl_elem_value_.patch
+- Build topology library conditionally;
+  currently it's supported only for little-endian
+
+-------------------------------------------------------------------
 Thu Jul  9 16:01:13 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-lib 1.2.3.2:

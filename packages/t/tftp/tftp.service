@@ -6,6 +6,6 @@ Requires=tftp.socket
 
 [Service]
 EnvironmentFile=/etc/sysconfig/tftp
-ExecStart=/usr/sbin/in.tftpd -u $TFTP_USER -s $TFTP_DIRECTORY $TFTP_OPTIONS
+ExecStart=/usr/sbin/in.tftpd -u $TFTP_USER -s $TFTP_OPTIONS $TFTP_DIRECTORY
 StandardInput=socket
 PrivateDevices=yes

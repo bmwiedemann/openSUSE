@@ -24,10 +24,10 @@ Name:           kernel-syms
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.8.10
+Version:        5.8.12
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gaf3e800
+Release:        <RELEASE>.g79e03c2
 %else
 Release:        0
 %endif
@@ -52,13 +52,18 @@ Requires:       kernel-pae-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-af3e800080ea43fbe9f7197f1b859aa8faafdcda
+Provides:       %name-srchash-79e03c25f1842966b73fd48825bb1b7d969c0fe5
 Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64 ppc64le riscv64 s390x x86_64
 Prefix:         /usr/src
+
+# Force bzip2 instead of lzma compression to
+# 1) allow install on older dist versions, and
+# 2) decrease build times (bsc#962356 boo#1175882)
+%define _binary_payload w9.bzdio
 
 %description
 Kernel symbols, such as functions and variables, have version

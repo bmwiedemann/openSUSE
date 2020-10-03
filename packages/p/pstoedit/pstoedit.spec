@@ -1,7 +1,7 @@
 #
 # spec file for package pstoedit
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pstoedit
-Version:        3.70
+Version:        3.75
 Release:        0
 Summary:        PostScript and PDF Converter
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PS
-Url:            http://www.pstoedit.net/
+URL:            http://www.pstoedit.net/
 Source:         https://sourceforge.net/projects/pstoedit/files/pstoedit/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pstoedit-pkglibdir.patch sbrabec@suse.cz -- Fix plugin search path.
-Patch:          pstoedit-pkglibdir.patch
 Patch1:         reproducible.patch
-# pstoedit-imagemagick7.patch sent to author (wglunz35_AT_pstoedit.net) on 2017-09-20
-Patch2:         pstoedit-imagemagick7.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -39,10 +35,9 @@ BuildRequires:  libMagick++-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtool
 BuildRequires:  libzip-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  plotutils-devel
 Requires:       ghostscript
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 pstoedit converts PostScript and PDF files to other vector graphic
@@ -93,9 +88,7 @@ PostScript and PDF converter development headers and library files.
 
 %prep
 %setup -q
-%patch -p1
 %patch1 -p1
-%patch2 -p1
 chmod -x examples/*.ps examples/Makefile* doc/*.* copying
 
 %build
@@ -110,33 +103,31 @@ sh autogen.sh
 	--with-pptx \
 	--without-swf
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # doc cleanup
 rm -rf examples/Makefile*
+rm -rf %{buildroot}/usr/share/doc/%{name}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc copying
-%doc examples
-%doc doc/*.htm
+%license copying
+%doc examples doc/readme.txt
+%doc doc/*.htm doc/%{name}.pdf
 %{_bindir}/pstoedit
 %{_libdir}/*.so.*
 %dir %{_libdir}/pstoedit
 %{_libdir}/pstoedit/*.so
 %{_libdir}/pstoedit/*.so.*
 %{_datadir}/%{name}
-%doc %{_mandir}/man?*/*.*
+%{_mandir}/man?*/*.*
 
 %files devel
-%defattr(-, root, root)
 %{_libdir}/*.so
 %{_includedir}/pstoedit
 %{_libdir}/pkgconfig/*.pc

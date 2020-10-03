@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 23 06:16:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.18.3:
+  * The Compile Features functionality was updated for MSVC 19.28 
+
+-------------------------------------------------------------------
 Mon Sep 14 10:29:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - reapply this change (bsc#1174581):

@@ -16,6 +16,7 @@ enable check-battery.timer
 enable cron.service
 enable display-manager.service
 enable dm-event.socket
+enable dnf-makecache.timer
 disable fstrim.service
 enable fstrim.timer
 enable getty@.service

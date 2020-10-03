@@ -10,3 +10,27 @@ Index: boost_1_74_0/boost/serialization/set.hpp
  
  #include <boost/serialization/collections_save_imp.hpp>
  #include <boost/serialization/split_free.hpp>
+Index: boost_1_74_0/boost/serialization/unordered_map.hpp
+===================================================================
+--- boost_1_74_0.orig/boost/serialization/unordered_map.hpp
++++ boost_1_74_0/boost/serialization/unordered_map.hpp
+@@ -22,6 +22,7 @@
+ 
+ #include <unordered_map>
+ 
++#include <boost/serialization/library_version_type.hpp>
+ #include <boost/serialization/utility.hpp>
+ #include <boost/serialization/unordered_collections_save_imp.hpp>
+ #include <boost/serialization/unordered_collections_load_imp.hpp>
+Index: boost_1_74_0/boost/serialization/list.hpp
+===================================================================
+--- boost_1_74_0.orig/boost/serialization/list.hpp
++++ boost_1_74_0/boost/serialization/list.hpp
+@@ -28,6 +28,7 @@
+ #include <boost/serialization/collection_size_type.hpp>
+ #include <boost/serialization/item_version_type.hpp>
+ #include <boost/serialization/split_free.hpp>
++#include <boost/serialization/library_version_type.hpp>
+ 
+ namespace boost {
+ namespace serialization {

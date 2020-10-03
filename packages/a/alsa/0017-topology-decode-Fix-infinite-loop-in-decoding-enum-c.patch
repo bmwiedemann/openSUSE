@@ -1,0 +1,36 @@
+From 346a5efa87c38a0d5ff9bd5b5d08be27b6c9bfaf Mon Sep 17 00:00:00 2001
+From: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Date: Mon, 31 Aug 2020 11:08:55 +0200
+Subject: [PATCH 17/32] topology: decode: Fix infinite loop in decoding enum
+ control
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Accessing memory outside of allocated boundaries caused segmentation fault.
+
+Signed-off-by: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Reviewed-by: Cezary Rojewski <cezary.rojewski@intel.com>
+Reviewed-by: Amadeusz Sławiński <amadeuszx.slawinski@linux.intel.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/ctl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 6e6c1d163aa3..0aa49ab82c1e 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -1367,7 +1367,7 @@ int tplg_decode_control_enum1(snd_tplg_t *tplg,
+ 		et->texts = tplg_calloc(heap, sizeof(char *) * ec->items);
+ 		if (!et->texts)
+ 			return -ENOMEM;
+-		for (i = 0; ec->items; i++) {
++		for (i = 0; i < ec->items; i++) {
+ 			unsigned int j = i * sizeof(int) * ENUM_VAL_SIZE;
+ 			et->texts[i] = ec->texts[i];
+ 			et->values[i] = (int *)&ec->values[j];
+-- 
+2.16.4
+

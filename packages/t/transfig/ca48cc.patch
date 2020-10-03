@@ -1,0 +1,35 @@
+From ca48ccc90bd3e7801a63cf9a541f292b28ed1260 Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Mon, 17 Feb 2020 12:18:12 +0100
+Subject: [PATCH] Amend previous commit - avoid buffer overflow
+
+Regards to Dr. Werner Fink, see discussion to ticket #83.
+---
+ fig2dev/read.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git fig2dev/read.c fig2dev/read.c
+index 0bdcd3d..d1ae463 100644
+--- fig2dev/read.c
++++ fig2dev/read.c
+@@ -1489,8 +1489,6 @@ read_textobject(FILE *fp, char **restrict line, size_t *line_len, int *line_no)
+ 
+ 		len = strlen(start);
+ 		start[len++] = '\n';	/* put back the newline */
+-		start[len] = '\0';	/* and terminate the string,
+-					   in case nothing else is found */
+ 
+ 		/* allocate plenty of space */
+ 		next = malloc(len + BUFSIZ);
+@@ -1500,6 +1498,8 @@ read_textobject(FILE *fp, char **restrict line, size_t *line_len, int *line_no)
+ 			return NULL;
+ 		}
+ 		memcpy(next, start, len + 1);
++		next[len] = '\0';	/* terminate the initial string,
++					   in case nothing else is found */
+ 
+ 		while ((chars = getline(line, line_len, fp)) != -1) {
+ 			++(*line_no);
+-- 
+2.16.4
+

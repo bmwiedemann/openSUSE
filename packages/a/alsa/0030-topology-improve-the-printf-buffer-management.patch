@@ -1,0 +1,666 @@
+From 472ab5db67a0ed04de634214773e7b17d10b5415 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 31 Aug 2020 19:44:46 +0200
+Subject: [PATCH 30/32] topology: improve the printf buffer management
+
+The commit d04e72c9a593015952e4858b92ab3f9d821560d9 introduced
+the dynamic printf buffer allocation for each tplg_save_printf()
+call.
+
+Introduce 'struct tplg_buf' which carries extra information about
+the temporary printf buffer and the destination buffer to save allocation
+requests.
+
+The printf buffer is also allocated using 1024 bytes chunks.
+
+A comparison between 'alloc everyting' and 'cache+chunk alloc' for the
+random picked topology file:
+
+  1: 18,620 allocs, 18,620 frees, 7,239,688 bytes allocated
+  2: 12,490 allocs, 12,490 frees, 962,568 bytes allocated
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/channel.c    |   3 +-
+ src/topology/ctl.c        |  14 +++---
+ src/topology/dapm.c       |   5 ++-
+ src/topology/data.c       |  15 ++++---
+ src/topology/ops.c        |   6 +--
+ src/topology/pcm.c        |  18 ++++----
+ src/topology/save.c       | 108 ++++++++++++++++++++++++++++------------------
+ src/topology/text.c       |   2 +-
+ src/topology/tplg_local.h |  56 +++++++++++++-----------
+ 9 files changed, 130 insertions(+), 97 deletions(-)
+
+diff --git a/src/topology/channel.c b/src/topology/channel.c
+index 47d5ea4c419a..ebdff46968f6 100644
+--- a/src/topology/channel.c
++++ b/src/topology/channel.c
+@@ -138,7 +138,8 @@ int tplg_parse_channel(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ int tplg_save_channels(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		       struct snd_soc_tplg_channel *channel,
+-		       unsigned int count, char **dst, const char *pfx)
++		       unsigned int count, struct tplg_buf *dst,
++		       const char *pfx)
+ {
+ 	struct snd_soc_tplg_channel *c;
+ 	const char *s;
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 1d31b4944abf..a38399631c54 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -105,8 +105,8 @@ int parse_access(snd_config_t *cfg,
+ 
+ /* Save Access */
+ static int tplg_save_access(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+-			    struct snd_soc_tplg_ctl_hdr *hdr, char **dst,
+-			    const char *pfx)
++			    struct snd_soc_tplg_ctl_hdr *hdr,
++			    struct tplg_buf *dst, const char *pfx)
+ {
+ 	const char *last;
+ 	unsigned int j, count, access, cval;
+@@ -399,7 +399,7 @@ int tplg_parse_tlv(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save TLV data */
+ int tplg_save_tlv(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		  struct tplg_elem *elem,
+-		  char **dst, const char *pfx)
++		  struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_ctl_tlv *tlv = elem->tlv;
+ 	struct snd_soc_tplg_tlv_dbscale *scale;
+@@ -557,7 +557,7 @@ int tplg_parse_control_bytes(snd_tplg_t *tplg,
+ /* save control bytes */
+ int tplg_save_control_bytes(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			    struct tplg_elem *elem,
+-			    char **dst, const char *pfx)
++			    struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_bytes_control *be = elem->bytes_ext;
+ 	char pfx2[16];
+@@ -697,7 +697,7 @@ int tplg_parse_control_enum(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save control eunm */
+ int tplg_save_control_enum(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			   struct tplg_elem *elem,
+-			   char **dst, const char *pfx)
++			   struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_enum_control *ec = elem->enum_ctrl;
+ 	char pfx2[16];
+@@ -858,8 +858,8 @@ int tplg_parse_control_mixer(snd_tplg_t *tplg,
+ }
+ 
+ int tplg_save_control_mixer(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+-			    struct tplg_elem *elem, char **dst,
+-			    const char *pfx)
++			    struct tplg_elem *elem,
++			    struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_mixer_control *mc = elem->mixer_ctrl;
+ 	char pfx2[16];
+diff --git a/src/topology/dapm.c b/src/topology/dapm.c
+index 73a9390340c2..46f2f8b3dae5 100644
+--- a/src/topology/dapm.c
++++ b/src/topology/dapm.c
+@@ -416,7 +416,8 @@ int tplg_parse_dapm_graph(snd_tplg_t *tplg, snd_config_t *cfg,
+ }
+ 
+ /* save DAPM graph */
+-int tplg_save_dapm_graph(snd_tplg_t *tplg, int index, char **dst, const char *pfx)
++int tplg_save_dapm_graph(snd_tplg_t *tplg, int index,
++			 struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_dapm_graph_elem *route;
+ 	struct list_head *pos;
+@@ -669,7 +670,7 @@ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ /* save DAPM widget */
+ int tplg_save_dapm_widget(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			  struct tplg_elem *elem,
+-			  char **dst, const char *pfx)
++			  struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_dapm_widget *widget = elem->widget;
+ 	const char *s;
+diff --git a/src/topology/data.c b/src/topology/data.c
+index 5742b35773f6..3585af309499 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -121,7 +121,8 @@ int tplg_parse_refs(snd_config_t *cfg, struct tplg_elem *elem,
+ /* save references */
+ int tplg_save_refs(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		   struct tplg_elem *elem, unsigned int type,
+-		   const char *id, char **dst, const char *pfx)
++		   const char *id, struct tplg_buf *dst,
++		   const char *pfx)
+ {
+ 	struct tplg_ref *ref, *last;
+ 	struct list_head *pos;
+@@ -890,7 +891,7 @@ err:
+ /* save tuple set */
+ static int tplg_save_tuple_set(struct tplg_vendor_tuples *tuples,
+ 			       unsigned int set_index,
+-			       char **dst, const char *pfx)
++			       struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct tplg_tuple_set *set;
+ 	struct tplg_tuple *tuple;
+@@ -1014,7 +1015,7 @@ static int parse_tuple_sets(snd_config_t *cfg,
+ /* save tuple sets */
+ int tplg_save_tuple_sets(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			 struct tplg_elem *elem,
+-			 char **dst, const char *pfx)
++			 struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct tplg_vendor_tuples *tuples = elem->tuples;
+ 	unsigned int i;
+@@ -1085,7 +1086,7 @@ int tplg_parse_tokens(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save vendor tokens */
+ int tplg_save_tokens(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		     struct tplg_elem *elem,
+-		     char **dst, const char *pfx)
++		     struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct tplg_vendor_tokens *tokens = elem->tokens;
+ 	unsigned int i;
+@@ -1156,7 +1157,7 @@ int tplg_parse_tuples(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save vendor tuples */
+ int tplg_save_tuples(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		     struct tplg_elem *elem,
+-		     char **dst, const char *pfx)
++		     struct tplg_buf *dst, const char *pfx)
+ {
+ 	char pfx2[16];
+ 	int err;
+@@ -1242,7 +1243,7 @@ int tplg_parse_manifest_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ /* save manifest data */
+ int tplg_save_manifest_data(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+-			    struct tplg_elem *elem, char **dst,
++			    struct tplg_elem *elem, struct tplg_buf *dst,
+ 			    const char *pfx)
+ {
+ 	struct list_head *pos;
+@@ -1420,7 +1421,7 @@ int tplg_parse_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save data element */
+ int tplg_save_data(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		   struct tplg_elem *elem,
+-		   char **dst, const char *pfx)
++		   struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_private *priv = elem->data;
+ 	struct list_head *pos;
+diff --git a/src/topology/ops.c b/src/topology/ops.c
+index 110eef58851d..da175608557a 100644
+--- a/src/topology/ops.c
++++ b/src/topology/ops.c
+@@ -105,8 +105,8 @@ int tplg_parse_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED, snd_config_t *cfg,
+ 
+ /* save control operations */
+ int tplg_save_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+-		  struct snd_soc_tplg_ctl_hdr *hdr, char **dst,
+-		  const char *pfx)
++		  struct snd_soc_tplg_ctl_hdr *hdr,
++		  struct tplg_buf *dst, const char *pfx)
+ {
+ 	const char *s;
+ 	int err;
+@@ -191,7 +191,7 @@ int tplg_parse_ext_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ /* save external control operations */
+ int tplg_save_ext_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		      struct snd_soc_tplg_bytes_control *be,
+-		      char **dst, const char *pfx)
++		      struct tplg_buf *dst, const char *pfx)
+ {
+ 	const char *s;
+ 	int err;
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index a60ba00d979a..191b7a0a92da 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -538,7 +538,7 @@ int tplg_parse_stream_caps(snd_tplg_t *tplg,
+ /* save stream caps */
+ int tplg_save_stream_caps(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			  struct tplg_elem *elem,
+-			  char **dst, const char *pfx)
++			  struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_stream_caps *sc = elem->stream_caps;
+ 	const char *s;
+@@ -686,7 +686,7 @@ static int tplg_parse_streams(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ /* Save the caps and config of a pcm stream */
+ int tplg_save_streams(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		      struct tplg_elem *elem,
+-		      char **dst, const char *pfx)
++		      struct tplg_buf *dst, const char *pfx)
+ {
+ 	static const char *stream_ids[2] = {
+ 		"playback",
+@@ -778,7 +778,7 @@ static int tplg_parse_fe_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ /* Save the caps and config of a pcm stream */
+ int tplg_save_fe_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		     struct tplg_elem *elem,
+-		     char **dst, const char *pfx)
++		     struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_pcm *pcm = elem->pcm;
+ 	int err = 0;
+@@ -810,7 +810,7 @@ static int parse_flag(snd_config_t *n, unsigned int mask_in,
+ }
+ 
+ static int save_flags(unsigned int flags, unsigned int mask,
+-		      char **dst, const char *pfx)
++		      struct tplg_buf *dst, const char *pfx)
+ {
+ 	static unsigned int flag_masks[3] = {
+ 		SND_SOC_TPLG_LNK_FLGBIT_SYMMETRIC_RATES,
+@@ -944,7 +944,7 @@ int tplg_parse_pcm(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save PCM */
+ int tplg_save_pcm(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		  struct tplg_elem *elem,
+-		  char **dst, const char *pfx)
++		  struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_pcm *pcm = elem->pcm;
+ 	char pfx2[16];
+@@ -1081,7 +1081,7 @@ int tplg_parse_dai(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save DAI */
+ int tplg_save_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		  struct tplg_elem *elem,
+-		  char **dst, const char *pfx)
++		  struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_dai *dai = elem->dai;
+ 	char pfx2[16];
+@@ -1235,7 +1235,7 @@ int tplg_parse_link(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save physical link */
+ int tplg_save_link(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		   struct tplg_elem *elem,
+-		   char **dst, const char *pfx)
++		   struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_link_config *link = elem->link;
+ 	char pfx2[16];
+@@ -1315,7 +1315,7 @@ int tplg_parse_cc(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save CC */
+ int tplg_save_cc(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		 struct tplg_elem *elem,
+-		 char **dst, const char *pfx)
++		 struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_link_config *link = elem->link;
+ 	char pfx2[16];
+@@ -1611,7 +1611,7 @@ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save hw config */
+ int tplg_save_hw_config(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			struct tplg_elem *elem,
+-			char **dst, const char *pfx)
++			struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_hw_config *hc = elem->hw_cfg;
+ 	int err;
+diff --git a/src/topology/save.c b/src/topology/save.c
+index 631d84b273bf..56250af308b2 100644
+--- a/src/topology/save.c
++++ b/src/topology/save.c
+@@ -19,25 +19,43 @@
+ #include "tplg_local.h"
+ 
+ #define SAVE_ALLOC_SHIFT	(13)	/* 8192 bytes */
+-#define PRINT_BUF_SIZE		(1024)
++#define PRINT_ALLOC_SHIFT	(10)	/* 1024 bytes */
+ #define PRINT_BUF_SIZE_MAX	(1024 * 1024)
++#define NEXT_CHUNK(val, shift)	((((val) >> (shift)) + 1) << (shift))
+ 
+-int tplg_save_printf(char **dst, const char *pfx, const char *fmt, ...)
++void tplg_buf_init(struct tplg_buf *buf)
++{
++	buf->dst = NULL;
++	buf->dst_len = 0;
++	buf->printf_buf = NULL;
++	buf->printf_buf_size = 0;
++}
++
++void tplg_buf_free(struct tplg_buf *buf)
++{
++	free(buf->dst);
++	free(buf->printf_buf);
++}
++
++char *tplg_buf_detach(struct tplg_buf *buf)
++{
++	char *ret = buf->dst;
++	free(buf->printf_buf);
++	return ret;
++}
++
++int tplg_save_printf(struct tplg_buf *dst, const char *pfx, const char *fmt, ...)
+ {
+ 	va_list va;
+-	char *buf, *s;
++	char *s;
+ 	size_t n, l, t, pl;
+ 	int ret = 0;
+ 
+-	buf = malloc(PRINT_BUF_SIZE);
+-	if (!buf)
+-		return -ENOMEM;
+-
+ 	if (pfx == NULL)
+ 		pfx = "";
+ 
+ 	va_start(va, fmt);
+-	n = vsnprintf(buf, PRINT_BUF_SIZE, fmt, va);
++	n = vsnprintf(dst->printf_buf, dst->printf_buf_size, fmt, va);
+ 	va_end(va);
+ 
+ 	if (n >= PRINT_BUF_SIZE_MAX) {
+@@ -45,42 +63,41 @@ int tplg_save_printf(char **dst, const char *pfx, const char *fmt, ...)
+ 		goto end;
+ 	}
+ 
+-	if (n >= PRINT_BUF_SIZE) {
+-		char *tmp = realloc(buf, n + 1);
+-		if (!tmp) {
++	if (n >= dst->printf_buf_size) {
++		t = NEXT_CHUNK(n + 1, PRINT_ALLOC_SHIFT);
++		s = realloc(dst->printf_buf, t);
++		if (!s) {
+ 			ret = -ENOMEM;
+ 			goto end;
+ 		}
+-		buf = tmp;
++		dst->printf_buf = s;
++		dst->printf_buf_size = t;
+ 		va_start(va, fmt);
+-		n = vsnprintf(buf, n + 1, fmt, va);
++		n = vsnprintf(dst->printf_buf, n + 1, fmt, va);
+ 		va_end(va);
+ 	}
+ 
+ 	pl = strlen(pfx);
+-	l = *dst ? strlen(*dst) : 0;
++	l = dst->dst_len;
+ 	t = l + pl + n + 1;
+ 	/* allocate chunks */
+-	if (*dst == NULL ||
++	if (dst->dst == NULL ||
+ 	    (l >> SAVE_ALLOC_SHIFT) != (t >> SAVE_ALLOC_SHIFT)) {
+-		s = realloc(*dst, ((t >> SAVE_ALLOC_SHIFT) + 1) <<
+-							SAVE_ALLOC_SHIFT);
++		s = realloc(dst->dst, NEXT_CHUNK(t, SAVE_ALLOC_SHIFT));
+ 		if (s == NULL) {
+-			free(*dst);
+-			*dst = NULL;
+ 			ret = -ENOMEM;
+ 			goto end;
+ 		}
+ 	} else {
+-		s = *dst;
++		s = dst->dst;
+ 	}
+ 
+ 	if (pl > 0)
+ 		strcpy(s + l, pfx);
+-	strcpy(s + l + pl, buf);
+-	*dst = s;
++	strcpy(s + l + pl, dst->printf_buf);
++	dst->dst = s;
++	dst->dst_len = t - 1;
+ end:
+-	free(buf);
+ 	return ret;
+ }
+ 
+@@ -209,7 +226,7 @@ static int tplg_check_quoted(const unsigned char *p)
+ 	return 0;
+ }
+ 
+-static int tplg_save_quoted(char **dst, const char *str)
++static int tplg_save_quoted(struct tplg_buf *dst, const char *str)
+ {
+ 	static const char nibble[16] = "0123456789abcdef";
+ 	unsigned char *p, *d, *t;
+@@ -263,7 +280,7 @@ static int tplg_save_quoted(char **dst, const char *str)
+ 	return tplg_save_printf(dst, NULL, "'%s'", d);
+ }
+ 
+-static int tplg_save_string(char **dst, const char *str, int id)
++static int tplg_save_string(struct tplg_buf *dst, const char *str, int id)
+ {
+ 	const unsigned char *p = (const unsigned char *)str;
+ 
+@@ -279,7 +296,7 @@ static int tplg_save_string(char **dst, const char *str, int id)
+ 	return tplg_save_printf(dst, NULL, "%s", str);
+ }
+ 
+-static int save_config(char **dst, int level, const char *delim, snd_config_t *src)
++static int save_config(struct tplg_buf *dst, int level, const char *delim, snd_config_t *src)
+ {
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *s;
+@@ -400,7 +417,8 @@ retval:
+ 	return 0;
+ }
+ 
+-static int tplg_save(snd_tplg_t *tplg, char **dst, int gindex, const char *prefix)
++static int tplg_save(snd_tplg_t *tplg, struct tplg_buf *dst,
++		     int gindex, const char *prefix)
+ {
+ 	struct tplg_table *tptr;
+ 	struct tplg_elem *elem;
+@@ -484,8 +502,6 @@ static int tplg_save(snd_tplg_t *tplg, char **dst, int gindex, const char *prefi
+ 	return 0;
+ 
+ _err:
+-	free(*dst);
+-	*dst = NULL;
+ 	return err;
+ }
+ 
+@@ -540,9 +556,9 @@ static int tplg_index_groups(snd_tplg_t *tplg, int **indexes)
+ 
+ int snd_tplg_save(snd_tplg_t *tplg, char **dst, int flags)
+ {
++	struct tplg_buf buf, buf2;
+ 	snd_input_t *in;
+ 	snd_config_t *top, *top2;
+-	char *dst2;
+ 	int *indexes, *a;
+ 	int err;
+ 
+@@ -550,35 +566,41 @@ int snd_tplg_save(snd_tplg_t *tplg, char **dst, int flags)
+ 	assert(dst);
+ 	*dst = NULL;
+ 
++	tplg_buf_init(&buf);
++
+ 	if (flags & SND_TPLG_SAVE_GROUPS) {
+ 		err = tplg_index_groups(tplg, &indexes);
+ 		if (err < 0)
+ 			return err;
+ 		for (a = indexes; err >= 0 && *a >= 0; a++) {
+-			err = tplg_save_printf(dst, NULL,
++			err = tplg_save_printf(&buf, NULL,
+ 					       "IndexGroup.%d {\n",
+ 					       *a);
+ 			if (err >= 0)
+-				err = tplg_save(tplg, dst, *a, "\t");
++				err = tplg_save(tplg, &buf, *a, "\t");
+ 			if (err >= 0)
+-				err = tplg_save_printf(dst, NULL, "}\n");
++				err = tplg_save_printf(&buf, NULL, "}\n");
+ 		}
+ 		free(indexes);
+ 	} else {
+-		err = tplg_save(tplg, dst, -1, NULL);
++		err = tplg_save(tplg, &buf, -1, NULL);
+ 	}
+ 
+ 	if (err < 0)
+ 		goto _err;
+ 
+-	if (*dst == NULL)
+-		return -EINVAL;
++	if (buf.dst == NULL) {
++		err = -EINVAL;
++		goto _err;
++	}
+ 
+-	if (flags & SND_TPLG_SAVE_NOCHECK)
++	if (flags & SND_TPLG_SAVE_NOCHECK) {
++		*dst = tplg_buf_detach(&buf);
+ 		return 0;
++	}
+ 
+ 	/* always load configuration - check */
+-	err = snd_input_buffer_open(&in, *dst, strlen(*dst));
++	err = snd_input_buffer_open(&in, buf.dst, strlen(buf.dst));
+ 	if (err < 0) {
+ 		SNDERR("could not create input buffer");
+ 		goto _err;
+@@ -610,20 +632,20 @@ int snd_tplg_save(snd_tplg_t *tplg, char **dst, int flags)
+ 		top = top2;
+ 	}
+ 
+-	dst2 = NULL;
+-	err = save_config(&dst2, 0, NULL, top);
++	tplg_buf_init(&buf2);
++	err = save_config(&buf2, 0, NULL, top);
+ 	snd_config_delete(top);
+ 	if (err < 0) {
+ 		SNDERR("could not save configuration");
+ 		goto _err;
+ 	}
+ 
+-	free(*dst);
+-	*dst = dst2;
++	tplg_buf_free(&buf);
++	*dst = tplg_buf_detach(&buf2);
+ 	return 0;
+ 
+ _err:
+-	free(*dst);
++	tplg_buf_free(&buf);
+ 	*dst = NULL;
+ 	return err;
+ }
+diff --git a/src/topology/text.c b/src/topology/text.c
+index b899b2813ab4..b07feb999db9 100644
+--- a/src/topology/text.c
++++ b/src/topology/text.c
+@@ -93,7 +93,7 @@ int tplg_parse_text(snd_tplg_t *tplg, snd_config_t *cfg,
+ /* save text data */
+ int tplg_save_text(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		   struct tplg_elem *elem,
+-		   char **dst, const char *pfx)
++		   struct tplg_buf *dst, const char *pfx)
+ {
+ 	struct tplg_texts *texts = elem->texts;
+ 	unsigned int i;
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index 0c7be2001a63..d553117e2333 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -200,6 +200,14 @@ struct map_elem {
+ 	int id;
+ };
+ 
++/* output buffer */
++struct tplg_buf {
++	char *dst;
++	size_t dst_len;
++	char *printf_buf;
++	size_t printf_buf_size;
++};
++
+ /* mapping table */
+ struct tplg_table {
+ 	const char *name;
+@@ -214,9 +222,9 @@ struct tplg_table {
+ 	void (*free)(void *);
+ 	int (*parse)(snd_tplg_t *tplg, snd_config_t *cfg, void *priv);
+ 	int (*save)(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		    char **dst, const char *prefix);
++		    struct tplg_buf *dst, const char *prefix);
+ 	int (*gsave)(snd_tplg_t *tplg, int index,
+-		     char **dst, const char *prefix);
++		     struct tplg_buf *dst, const char *prefix);
+ 	int (*decod)(snd_tplg_t *tplg, size_t pos,
+ 		     struct snd_soc_tplg_hdr *hdr,
+ 		     void *bin, size_t size);
+@@ -348,49 +356,49 @@ int tplg_add_dai_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t);
+ 
+ int tplg_nice_value_format(char *dst, size_t dst_size, unsigned int value);
+ 
+-int tplg_save_printf(char **dst, const char *prefix, const char *fmt, ...);
++int tplg_save_printf(struct tplg_buf *dst, const char *prefix, const char *fmt, ...);
+ int tplg_save_refs(snd_tplg_t *tplg, struct tplg_elem *elem, unsigned int type,
+-		   const char *id, char **dst, const char *pfx);
++		   const char *id, struct tplg_buf *dst, const char *pfx);
+ int tplg_save_channels(snd_tplg_t *tplg, struct snd_soc_tplg_channel *channel,
+-		       unsigned int channel_count, char **dst, const char *pfx);
++		       unsigned int channel_count, struct tplg_buf *dst, const char *pfx);
+ int tplg_save_ops(snd_tplg_t *tplg, struct snd_soc_tplg_ctl_hdr *hdr,
+-		  char **dst, const char *pfx);
++		  struct tplg_buf *dst, const char *pfx);
+ int tplg_save_ext_ops(snd_tplg_t *tplg, struct snd_soc_tplg_bytes_control *be,
+-		      char **dst, const char *pfx);
++		      struct tplg_buf *dst, const char *pfx);
+ int tplg_save_manifest_data(snd_tplg_t *tplg, struct tplg_elem *elem,
+-			    char **dst, const char *pfx);
++			    struct tplg_buf *dst, const char *pfx);
+ int tplg_save_control_mixer(snd_tplg_t *tplg, struct tplg_elem *elem,
+-			    char **dst, const char *pfx);
++			    struct tplg_buf *dst, const char *pfx);
+ int tplg_save_control_enum(snd_tplg_t *tplg, struct tplg_elem *elem,
+-			   char **dst, const char *pfx);
++			   struct tplg_buf *dst, const char *pfx);
+ int tplg_save_control_bytes(snd_tplg_t *tplg, struct tplg_elem *elem,
+-			    char **dst, const char *pfx);
++			    struct tplg_buf *dst, const char *pfx);
+ int tplg_save_tlv(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		  char **dst, const char *pfx);
++		  struct tplg_buf *dst, const char *pfx);
+ int tplg_save_data(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		   char **dst, const char *pfx);
++		   struct tplg_buf *dst, const char *pfx);
+ int tplg_save_text(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		   char **dst, const char *pfx);
++		   struct tplg_buf *dst, const char *pfx);
+ int tplg_save_tokens(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		     char **dst, const char *pfx);
++		     struct tplg_buf *dst, const char *pfx);
+ int tplg_save_tuples(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		     char **dst, const char *pfx);
++		     struct tplg_buf *dst, const char *pfx);
+ int tplg_save_dapm_graph(snd_tplg_t *tplg, int index,
+-			 char **dst, const char *pfx);
++			 struct tplg_buf *dst, const char *pfx);
+ int tplg_save_dapm_widget(snd_tplg_t *tplg, struct tplg_elem *elem,
+-			  char **dst, const char *pfx);
++			  struct tplg_buf *dst, const char *pfx);
+ int tplg_save_link(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		   char **dst, const char *pfx);
++		   struct tplg_buf *dst, const char *pfx);
+ int tplg_save_cc(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		 char **dst, const char *pfx);
++		 struct tplg_buf *dst, const char *pfx);
+ int tplg_save_pcm(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		  char **dst, const char *pfx);
++		  struct tplg_buf *dst, const char *pfx);
+ int tplg_save_hw_config(snd_tplg_t *tplg, struct tplg_elem *elem,
+-			char **dst, const char *pfx);
++			struct tplg_buf *dst, const char *pfx);
+ int tplg_save_stream_caps(snd_tplg_t *tplg, struct tplg_elem *elem,
+-			  char **dst, const char *pfx);
++			  struct tplg_buf *dst, const char *pfx);
+ int tplg_save_dai(snd_tplg_t *tplg, struct tplg_elem *elem,
+-		  char **dst, const char *pfx);
++		  struct tplg_buf *dst, const char *pfx);
+ 
+ int tplg_decode_template(snd_tplg_t *tplg,
+ 			 size_t pos,
+-- 
+2.16.4
+

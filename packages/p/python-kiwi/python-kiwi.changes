@@ -1,4 +1,314 @@
 -------------------------------------------------------------------
+Wed Sep 23 13:06:47 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.13 → 9.21.14
+
+-------------------------------------------------------------------
+Wed Sep 23 10:49:20 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed s390/sle15 Virtual disk integration test
+
+  The integration test used FBA mode as target. As the target
+  is expected to be KVM this is the wrong setting. SCSI should
+  be used instead. This Fixes bsc#1170863
+
+-------------------------------------------------------------------
+Wed Sep 23 10:21:40 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Followup fix to handle one disk type better
+
+  The vmx type is auto converted into an oem type with rootfs
+  resize disabled such that all disk images can be handled
+  under one disk type. However people who run kiwi on the
+  commandline and have selected --type vmx before now end
+  with an error message saying that there is no vmx type
+  because it was converted into an oem type. To handle this
+  more gracefully this commit changes the commandline
+  option --type vmx into --type oem if provided and prints
+  a warning message.
+
+-------------------------------------------------------------------
+Tue Sep 22 12:19:15 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.12 → 9.21.13
+
+-------------------------------------------------------------------
+Tue Sep 22 11:36:52 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Cleanup grub adaptions code
+
+  The grub setup code has some after grub-mkconfig code that
+  fixes the written grub.cfg file on certain conditions. For
+  a better understanding and readability those conditions
+  and reasons are now put into private _fix* methods that
+  explains why we need to patch the written grub config file.
+  We all hope that those methods can go away when grub gets
+  fixed properly. This Fixes #1527
+
+-------------------------------------------------------------------
+Mon Sep 21 17:04:08 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Cosmetic update for build status helper
+
+  Show disabled integration test builds with a clear indicator
+
+-------------------------------------------------------------------
+Mon Sep 21 15:54:33 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.11 → 9.21.12
+
+-------------------------------------------------------------------
+Mon Sep 21 15:21:21 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added consistency runtime check for the type setup
+
+  multiple type sections within one preferences section is allowed
+  in a kiwi image description. However, if multiple type sections
+  for the same image attribute are configured only the last type
+  configuration will be ever reachable. The proposed runtime check
+  in this commit detects this situation and raises an exception
+  showing the conflicting types including a solution suggestion
+  which needs to be based on profiles to distinguish between
+  types of the same image type name.
+
+-------------------------------------------------------------------
+Mon Sep 21 09:09:29 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Get default maintainer and author from image description
+
+  This commit sets the maintainer and author metadata from the description
+  section of the image in they are not explicitly specified in
+  container-config section.
+
+  In addition it sets the default container name to `system-container`
+  instead of `systemContainer` as uppercase letters are not valid for
+  docker container references.
+
+  Fixes #1419
+
+-------------------------------------------------------------------
+Fri Sep 18 16:06:02 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.10 → 9.21.11
+
+-------------------------------------------------------------------
+Fri Sep 18 15:13:08 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update build test directory names
+
+  Name the build test directory to follow the changes done
+  in Issue #1425. There is only one disk image type now, thus
+  the tests for testing disk images should indicate that
+  better. Also the tests that build live iso images should
+  indicate a live iso not only an iso as it could be mixed
+  up with an install iso
+
+-------------------------------------------------------------------
+Thu Sep 17 16:40:19 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Consolidate build test names and description
+
+  Update build test image names to be more generic and not
+  bound to a specific version of a distribution. As the tests
+  are usually based on rolling releases of distros the name
+  of the test image should be generic. Also adapted the
+  specification of the test images to describe the focus
+  of the test if not generic.
+
+-------------------------------------------------------------------
+Wed Sep 16 15:03:39 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.9 → 9.21.10
+
+-------------------------------------------------------------------
+Wed Sep 16 11:35:00 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Fix the early boot grub.cfg file
+
+  This commit makes sure that the early boot configuration files
+  for grub make use of the proper boot path and omiting the `/boot`
+  prefix if there is a dedicated boot partition.
+
+  Fixes #1553
+
+-------------------------------------------------------------------
+Tue Sep 15 11:54:24 CEST 2020 - Vincent Moutoussamy <3873925+vmoutoussamy@users.noreply.github.com>
+
+- Change Appliance names to drop the name LimeJeOS
+
+  The name LimeJeOS was an invention of the SUSE Studio project.
+  Since the project does no longer exist, users have no idea
+  what the name means. Therefore the integration tests as well
+  as the documentation now changes the image names to provide
+  more clarity. This Fixes #1544
+
+-------------------------------------------------------------------
+Mon Sep 14 22:04:30 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Include loadenv as a default module for grub images
+
+  This commit includes the 'loadenv' module to the list of basic grub
+  modules. This makes sure the module is included in any grub-mkimage
+  that KIWI does.
+
+  Fixes #1547
+
+-------------------------------------------------------------------
+Sun Sep 13 20:36:02 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Make oem be a superset of vmx
+
+  A vmx image is the same disk as an oem just without the dracut
+  repart/resize feature. This difference is better handled with
+  an oemconfig parameter <oem-resize> which allows to switch resize
+  on or off. The extra image type vmx will be dropped and an XSLT
+  stylesheet automatically transforms a vmx description to be a
+  oem image with the resize feature switched off.
+  This Fixes #1425
+
+-------------------------------------------------------------------
+Fri Sep 11 09:25:50 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Make oem image use dracut by default
+
+  Before this commit an oem image still had the kiwi initrd_system
+  set as default. As we are decommission the custom kiwi initrd
+  concept the default should be changed. It is still possible to
+  use a custom kiwi initrd but it needs to be explicitly requested
+  via the initrd_system="kiwi" attribute. In addition to the
+  changed default a runtime check was introduced that checks
+  the presence of the boot= attribute which only makes sense
+  in combination with the kiwi initrd_system. If boot= is
+  set but initrd_system="kiwi" is not, a message is raised that
+  explains the situation and either requests setting initrd_system
+  properly or deleting the boot attribute. The change only
+  affects people who still use oem with a boot="oemboot/..."
+  setting and no explicit selection of kiwi as the initrd_system.
+  As these image type configurations should not be in use anyway
+  because this is all legacy and announced to go away, we
+  need to make the next step and enforce a new default in
+  code. This is related to Issue #1299
+
+-------------------------------------------------------------------
+Wed Sep 09 12:23:12 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.8 → 9.21.9
+
+-------------------------------------------------------------------
+Tue Sep 08 18:14:15 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Support dynamic linux/linuxefi in any case
+
+  Instead of restricting the dynamic linux vs. linuxefi setup
+  to a specific grub version, support this setup for any version
+  of grub. This Fixes bsc#1175729 and bsc#1176134
+
+-------------------------------------------------------------------
+Tue Sep 08 10:25:45 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Explicitly set start sector for msdos repartition
+
+  When using the sfdisk(>=2.26) tool the start and end of partitions
+  aligns to block-device I/O limits. This means it's hardware specific
+  what values sfdisk picks. In a repart operation this is however
+  dangerous for the start sector which must be the same to prevent
+  corruption of the data in the partition when kiwi resizes it.
+  Therefore this commit uses the sfdisk dump command to read the
+  start sector for deleted partitions and uses that start sector
+  if the same partition gets recreated such that only the end of
+  the partition changes and gets aligned properly.
+  This Fixes #1543
+
+-------------------------------------------------------------------
+Mon Sep 07 16:50:26 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Complete documentation of type attributes
+
+  Some type attributes e.g efipartsize and others were not
+  documented properly. This Fixes #1532
+
+-------------------------------------------------------------------
+Mon Sep 07 15:49:44 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Strip package and archive names
+
+  This commit strips the package and archive names string to trim any
+  trailing or heading space included into the XML.
+
+  Fixes #1494
+
+-------------------------------------------------------------------
+Sun Sep 06 09:31:36 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.7 → 9.21.8
+
+-------------------------------------------------------------------
+Thu Aug 27 17:50:18 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Make use of POSIX locale in Arch Linux integration tests
+
+  Current Arch Linux (August 2020) has no other locale than POSIX or
+  C enabled on the system by default. In fact, to enable further locales
+  in Arch it is required to uncomment the desired ones in `/etc/locale.gen`
+  and then execute the tool `locale-gen`, after that the selected locales
+  are eligible for the common system adminstration tools such as
+  `localectl`.
+
+  In KIWI the locale setting happens before running `config.sh` so there
+  aren't changes to generate any custom locale before applying the value
+  configured in the description XML file.
+
+-------------------------------------------------------------------
+Thu Aug 27 14:45:00 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed legacy custom kiwi initrd based image builds
+
+  This patch is two fold:
+
+  * Image builds that uses the kiwi initrd system did not apply
+  the grub config file fixes because the root= parameter is
+  an optional information when using a kiwi initrd. However
+  this information is required to apply the grub config file
+  fixes. Therefore this patch simplifies the kernel commandline
+  processing such that it is the same for dracut and custom
+  kiwi initrd based systems. This means root= is passed in
+  any case.
+
+  * The other part of the patch disables the method that strips
+  unused libraries from the custom kiwi initrd. It has turned
+  out that is safes us almost nothing but could causes corrupted
+  initrds missing important libraries e.g libpam which is linked
+  against udev and other tools. Therefore libpam is also added
+  to the protected strip list
+
+-------------------------------------------------------------------
+Thu Aug 27 14:43:46 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed legacy oem test build
+
+  install gawk package in bootstrap to avoid conflict in
+  tumbleweed between gawk and busybox-gawk
+
+-------------------------------------------------------------------
+Wed Aug 19 09:25:13 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added s390 SLE15 integration tests
+
+-------------------------------------------------------------------
+Tue Aug 18 17:57:59 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added suse integration test built with dnf
+
+  Use dnf to build a suse image
+
+-------------------------------------------------------------------
+Thu Aug 13 11:17:33 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Include box plugin images to build_status
+
+  Also show some colors for failed and unresolvable builds
+
+-------------------------------------------------------------------
 Tue Aug 11 12:33:45 CEST 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.21.6 → 9.21.7
@@ -41,6 +351,17 @@ Tue Aug 11 11:08:56 CEST 2020 - Marcus Schäfer <ms@suse.de>
 - Bump version: 9.21.5 → 9.21.6
 
 -------------------------------------------------------------------
+Mon Aug 10 16:26:43 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed doc structure for image types
+
+  The documentation did not differentiate correctly between
+  the explanation of the image types, their results and the
+  build host constraints compared to the documentation that
+  actually describes how to build an image for those types.
+  This Fixes #1520
+
+-------------------------------------------------------------------
 Fri Jul 24 17:49:47 CEST 2020 - Marcus Schäfer <ms@suse.de>
 
 - Skip filesystem check for XFS prior xfs_grow
@@ -52,6 +373,27 @@ Fri Jul 24 17:49:47 CEST 2020 - Marcus Schäfer <ms@suse.de>
   its journal). Given that xfs can only grow online (while being mounted),
   this is sufficient to ensure that the fs is in a state where it
   can be resized. This is related to bsc#1174009
+
+-------------------------------------------------------------------
+Fri Jul 24 16:25:43 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Remove tuned daemon from CentOS integration test
+
+  tuned daemon causes issues at install time with grub configuration.
+  The build host configuration affects BLS entries generation if tuned
+  deamon is around. This is likely to cause issues in general and it
+  actually cause issues in OBS builds (because of a non standard highly
+  customized build environment).
+
+-------------------------------------------------------------------
+Fri Jul 24 13:40:52 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Add Fedora RawHide test
+
+  This commit upgrades the Fedora 30 test to a Fedora RawHide integration
+  test in OBS. Note that an archive needs to be added at bootstrap phase
+  to include `/etc/kernek/cmdline` configuration file to ensure the BLS
+  entries are properly generated under OBS worker hosts.
 
 -------------------------------------------------------------------
 Fri Jul 24 13:17:53 CEST 2020 - Marcus Schäfer <ms@suse.de>

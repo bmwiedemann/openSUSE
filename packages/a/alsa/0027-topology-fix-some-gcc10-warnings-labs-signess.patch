@@ -1,0 +1,40 @@
+From 6ca1ddfbcdf97ad46c3767ba314d1144119361fd Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 31 Aug 2020 13:25:01 +0200
+Subject: [PATCH 27/32] topology: fix some gcc10 warnings (labs, signess)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/builder.c | 2 +-
+ src/topology/ctl.c     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/topology/builder.c b/src/topology/builder.c
+index 15757668d7d4..f8aba830320e 100644
+--- a/src/topology/builder.c
++++ b/src/topology/builder.c
+@@ -55,7 +55,7 @@ static ssize_t write_block_header(snd_tplg_t *tplg, unsigned int type,
+ 			" offset 0x%zx is %s by %ld bytes",
+ 			tplg->next_hdr_pos, tplg->bin_pos,
+ 			tplg->bin_pos > tplg->next_hdr_pos ? "ahead" : "behind",
+-			labs(tplg->bin_pos - tplg->next_hdr_pos));
++			tplg->bin_pos - tplg->next_hdr_pos);
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 47db400fd4d1..1d31b4944abf 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -1363,7 +1363,7 @@ int tplg_decode_control_enum1(snd_tplg_t *tplg,
+ 		et->texts = tplg_calloc(heap, sizeof(char *) * ec->items);
+ 		if (!et->texts)
+ 			return -ENOMEM;
+-		for (i = 0; i < ec->items; i++)
++		for (i = 0; (unsigned int)i < ec->items; i++)
+ 			et->texts[i] = ec->texts[i];
+ 	}
+ 
+-- 
+2.16.4
+

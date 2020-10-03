@@ -25,14 +25,19 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major           68
-%define mainver         %major.12.0
-%define orig_version    68.12.0
-%define orig_suffix     %{nil}
-%define update_channel  release
-%define source_prefix   thunderbird-%{mainver}
+%define major          78
+%define mainver        %major.3.1
+%define orig_version   78.3.1
+%define orig_suffix    %{nil}
+%define update_channel release
+%define source_prefix  thunderbird-%{orig_version}
 
-# always build with GCC as SUSE Security Team requires that
+%if 0%{?suse_version} > 1500
+# PGO builds do not work in TW currently (bmo#1642410)
+%define do_profiling   0
+%endif
+
+# upstream default is clang (to use gcc for large parts set to 0)
 %define clang_build 0
 
 # PIE, full relro
@@ -47,6 +52,7 @@
 # general build definitions
 %define progname thunderbird
 %define pkgname  MozillaThunderbird
+%define srcname  thunderbird
 %define appname  Thunderbird
 %define progdir %{_prefix}/%_lib/%{progname}
 %define gnome_dir     %{_prefix}
@@ -55,8 +61,13 @@
 %define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libldap.*|libldif.*|libprldap.*)$
 %define localize 1
 %define crashreporter 0
-
-%define has_system_cairo 0
+%if 0%{?sle_version} > 150100
+# pipewire is too old on Leap <=15.1
+# Activate only on everything newer
+%define with_pipewire0_3 1
+%else
+%define with_pipewire0_3 0
+%endif
 
 Name:           %{pkgname}
 BuildRequires:  Mesa-devel
@@ -64,54 +75,62 @@ BuildRequires:  alsa-devel
 BuildRequires:  autoconf213
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
+BuildRequires:  memory-constraints
 %if 0%{?suse_version} <= 1320
-BuildRequires:  gcc7-c++
+BuildRequires:  gcc9-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.34
-#BuildRequires:  hunspell-devel
+BuildRequires:  cargo >= 1.41
+BuildRequires:  ccache
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
-BuildRequires:  libnotify-devel
-BuildRequires:  memory-constraints
-BuildRequires:  mozilla-nspr-devel >= 4.21
-BuildRequires:  mozilla-nss-devel >= 3.44.4
-BuildRequires:  nasm >= 2.13
-BuildRequires:  nodejs10 >= 10.19.0
+BuildRequires:  mozilla-nspr-devel >= 4.25.1
+BuildRequires:  mozilla-nss-devel >= 3.53.1
+BuildRequires:  nasm >= 2.14
+BuildRequires:  nodejs10 >= 10.21.0
 BuildRequires:  python-devel
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+BuildRequires:  python-libxml2
+BuildRequires:  python36
+%else
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
-BuildRequires:  rust >= 1.34
-BuildRequires:  rust-cbindgen >= 0.8.7
-BuildRequires:  startup-notification-devel
+%endif
+BuildRequires:  rust >= 1.41
+BuildRequires:  rust-cbindgen >= 0.14.1
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
+%if 0%{?do_profiling}
+BuildRequires:  xvfb-run
+%endif
 BuildRequires:  xz
 BuildRequires:  yasm
 BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
+%if (0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000)
+BuildRequires:  clang6-devel
+%else
+BuildRequires:  clang-devel >= 5
+%endif
 BuildRequires:  pkgconfig(gdk-x11-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libpulse)
+%if %{with_pipewire0_3}
+BuildRequires:  pkgconfig(libpipewire-0.3)
+%endif
 %if %{with mozilla_tb_valgrind}
 BuildRequires:  pkgconfig(valgrind)
-%endif
-%if 0%{?suse_version} > 1320
-BuildRequires:  llvm-clang-devel >= 3.9.0
-%else
-# this covers the workaround to compile on Leap 42 in OBS
-BuildRequires:  clang4-devel
 %endif
 # libavcodec is required for H.264 support but the
 # openSUSE version is currently not able to play H.264
@@ -136,55 +155,57 @@ License:        MPL-2.0
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.thunderbird.net/
 %if !%{with only_print_mozconfig}
-Source:         http://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz
+Source:         http://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz
 Source1:        thunderbird.desktop
 Source2:        thunderbird-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
 Source6:        suse-default-prefs.js
-Source7:        l10n-%{version}.tar.xz
+Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
 Source9:        thunderbird.appdata.xml
+Source13:       spellcheck.js
 Source14:       https://github.com/openSUSE/firefox-scripts/raw/5e54f4a/create-tar.sh
-Source20:       https://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
-Source21:       https://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}/KEY#/mozilla.keyring
+Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
+Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
-Patch4:         mozilla-openaes-decl.patch
-Patch5:         mozilla-aarch64-startup-crash.patch
-Patch6:         mozilla-bmo1463035.patch
-Patch7:         mozilla-cubeb-noreturn.patch
-Patch8:         mozilla-fix-aarch64-libopus.patch
-Patch9:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
-Patch10:        mozilla-s390-context.patch
-Patch11:        mozilla-s390-bigendian.patch
-Patch12:        mozilla-reduce-rust-debuginfo.patch
-Patch13:        mozilla-ppc-altivec_static_inline.patch
-Patch14:        mozilla-bmo1005535.patch
-Patch15:        mozilla-bmo1568145.patch
-Patch16:        mozilla-bmo849632.patch
-Patch17:        mozilla-bmo1504834-part1.patch
-Patch18:        mozilla-bmo1504834-part2.patch
-Patch19:        mozilla-bmo1504834-part3.patch
-Patch20:        mozilla-bmo1602730.patch
-Patch21:        mozilla-bmo1554971.patch
-Patch22:        mozilla-nestegg-big-endian.patch
-Patch24:        mozilla-fix-top-level-asm.patch
-Patch25:        mozilla-bmo1504834-part4.patch
+Patch4:         mozilla-aarch64-startup-crash.patch
+Patch5:         mozilla-bmo1463035.patch
+Patch6:         mozilla-sandbox-fips.patch
+Patch7:         mozilla-fix-aarch64-libopus.patch
+Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
+Patch9:         mozilla-s390-context.patch
+Patch11:        mozilla-reduce-rust-debuginfo.patch
+Patch12:        mozilla-ppc-altivec_static_inline.patch
+Patch13:        mozilla-bmo1005535.patch
+Patch14:        mozilla-bmo1568145.patch
+Patch15:        mozilla-bmo1504834-part1.patch
+Patch16:        mozilla-bmo1504834-part2.patch
+Patch17:        mozilla-bmo1504834-part3.patch
+Patch18:        mozilla-bmo1554971.patch
+Patch19:        mozilla-bmo1512162.patch
+Patch20:        mozilla-fix-top-level-asm.patch
+Patch21:        mozilla-bmo1504834-part4.patch
+Patch22:        mozilla-bmo849632.patch
+Patch23:        mozilla-pipewire-0-3.patch
+Patch24:        mozilla-bmo1602730.patch
+Patch25:        mozilla-bmo998749.patch
+Patch26:        mozilla-bmo1626236.patch
+Patch27:        mozilla-s390x-skia-gradient.patch
 %endif # only_print_mozconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         coreutils fileutils textutils /bin/sh
-Recommends:     libcanberra0
-Recommends:     libpulse0
-### build options
-%define has_system_cairo 0
 ### build options end
 Requires:       mozilla-nspr >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 Requires:       mozilla-nss >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nss)
+Recommends:     libcanberra0
+Recommends:     libpulse0
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 %define libgssapi libgssapi_krb5.so.2
+ExcludeArch:    armv6l armv6hl
 
 %description
 Thunderbird is a free, open-source, cross-platform application for
@@ -207,7 +228,7 @@ of %{appname}.
 %package translations-other
 Summary:        Extra translations for %{appname}
 Group:          System/Localization
-Provides:       locale(%{name}:ast;be;bg;br;cak;cy;dsb;et;eu;fy_NL;ga_IE;gd;gl;he;hr;hsb;hy_AM;id;is;ka;kab;kk;lt;ms;nn_NO;rm;ro;si;sk;sl;sq;sr;tr;uk;uz;vi)
+Provides:       locale(%{name}:ach;af;an;ast;az;be;bg;bn;br;bs;cak;cy;dsb;en_CA;eo;es_MX;et;eu;fa;ff;fy_NL;ga_IE;gd;gl;gn;gu_IN;he;hi_IN;hr;hsb;hy_AM;ia;id;is;ka;kab;kk;km;kn;lij;lt;lv;mk;mr;ms;my;ne_NP;nn_NO;oc;pa_IN;rm;ro;si;sk;sl;son;sq;sr;ta;te;th;tr;uk;ur;uz;vi;xh)
 Requires:       %{name} = %{version}
 Obsoletes:      %{name}-translations < %{version}-%{release}
 
@@ -237,9 +258,10 @@ if (( $(stat -Lc%s "%{SOURCE7}") < MINSIZE)); then
     echo "Translations tarball %{SOURCE7} not generated properly."
     exit 1
 fi
-%setup -q -n %{source_prefix} -b 7
+
+%setup -q -n %{srcname}-%{orig_version} -b 7
 %else
-%setup -q -n %{source_prefix}
+%setup -q -n %{srcname}-%{orig_version}
 %endif
 %patch1 -p1
 %if %{with mozilla_tb_kde4}
@@ -252,10 +274,7 @@ fi
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
-%ifarch s390x ppc64
 %patch11 -p1
-%endif
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
@@ -267,18 +286,30 @@ fi
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%if %{with_pipewire0_3}
+%patch23 -p1
+%endif
 %patch24 -p1
 %patch25 -p1
+%patch26 -p1
+%patch27 -p1
 %endif # only_print_mozconfig
 
 %build
 %if !%{with only_print_mozconfig}
-%define _lto_cflags %{nil}
 # no need to add build time to binaries
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
+
+# SLE-12 provides python36, but that package does not provide a python3 binary
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+sed -i "s/python3/python36/g" configure.in
+sed -i "s/python3/python36/g" mach
+export PYTHON3=/usr/bin/python36
+%endif
+
 #
 %if %{with mozilla_tb_kde4}
 kdehelperversion=$(cat toolkit/xre/nsKDEUtils.cpp | grep '#define KMOZILLAHELPER_VERSION' | cut -d ' ' -f 3)
@@ -291,13 +322,17 @@ fi
 
 source %{SOURCE4}
 
-export SUSE_ASNEEDED=0
+export CARGO_HOME=${RPM_BUILD_DIR}/%{srcname}-%{orig_version}/.cargo
+export MOZ_SOURCE_CHANGESET=$RELEASE_TAG
+export SOURCE_REPO=$RELEASE_REPO
+export source_repo=$RELEASE_REPO
+export MOZ_SOURCE_REPO=$RELEASE_REPO
 export MOZ_BUILD_DATE=$RELEASE_TIMESTAMP
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 %if 0%{?suse_version} <= 1320
-export CC=gcc-7
+export CC=gcc-9
 %else
 %if 0%{?clang_build} == 0
 export CC=gcc
@@ -322,37 +357,42 @@ export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
 echo "export CC=$CC"
 echo "export CXX=$CXX"
 echo "export CFLAGS=\"$CFLAGS\""
+echo "export CXXFLAGS=\"$CXXFLAGS\""
 echo "export LDFLAGS=\"$LDFLAGS\""
 echo "export RUSTFLAGS=\"$RUSTFLAGS\""
+echo "export CARGO_HOME=\"$CARGO_HOME\""
+echo "export PATH=\"$PATH\""
+echo "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\""
+echo "export PKG_CONFIG_PATH=\"$PKG_CONFIG_PATH\""
+echo "export MOZCONFIG=\"$MOZCONFIG\""
+echo "export MOZILLA_OFFICIAL=1"
+echo "export BUILD_OFFICIAL=1"
+echo "export MOZ_TELEMETRY_REPORTING=1"
 echo ""
 cat << EOF
 %else
+%ifarch ppc64 ppc64le
+%limit_build -m 2500
+%else
 %limit_build -m 2000
+%endif
+# TODO: Check if this can be removed
 export MOZ_DEBUG_FLAGS="-pipe"
 cat << EOF > $MOZCONFIG
 %endif
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
-mk_add_options MOZ_MILESTONE_RELEASE=1
-%if 0%{?suse_version} > 1320
-%ifarch i586
-mk_add_options MOZ_MAKE_FLAGS=-j1
-%else
 mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
-%endif
-%endif
 mk_add_options MOZ_OBJDIR=$RPM_BUILD_DIR/obj
 ac_add_options --prefix=%{_prefix}
-ac_add_options --libdir=%{progdir}
+ac_add_options --libdir=%{_libdir}
 ac_add_options --includedir=%{_includedir}
 ac_add_options --enable-application=comm/mail
-ac_add_options --enable-calendar
-ac_add_options --disable-tests
-ac_add_options --disable-debug
-ac_add_options --enable-alsa
+ac_add_options --enable-release
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 ac_add_options --enable-default-toolkit=cairo-gtk3
-%if 0%{?suse_version} >= 1550
-ac_add_options --disable-gconf
+%else
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 %endif
 # bmo#1441155 - Disable the generation of Rust debug symbols on Linux32
 %ifarch %ix86 %arm
@@ -360,27 +400,27 @@ ac_add_options --disable-debug-symbols
 %else
 ac_add_options --enable-debug-symbols
 %endif
-%if 0%{?suse_version} > 1549
+# building with elf-hack started to fail everywhere with FF73
+#%if 0%{?suse_version} > 1549
 %ifnarch aarch64 ppc64 ppc64le s390x
 ac_add_options --disable-elf-hack
 %endif
-%endif
+#%endif
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-zlib
-%if 0%{?localize}
+ac_add_options --with-ccache
+%if %{localize}
 ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n
 %endif
+ac_add_options --with-system-zlib
 ac_add_options --disable-updater
-#ac_add_options --with-system-png # no apng support
-#ac_add_options --enable-system-hunspell
-ac_add_options --enable-startup-notification
+ac_add_options --disable-tests
+ac_add_options --enable-alsa
+ac_add_options --disable-debug
 ac_add_options --disable-necko-wifi
 ac_add_options --enable-update-channel=%{update_channel}
-%if %has_system_cairo
-ac_add_options --enable-system-cairo
-%endif
 ac_add_options --with-unsigned-addon-scopes=app
+ac_add_options --allow-addon-sideload
 ac_add_options --enable-official-branding
 %if ! %crashreporter
 ac_add_options --disable-crashreporter
@@ -402,11 +442,14 @@ ac_add_options --enable-optimize="-O1"
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
 %if 0%{?suse_version} > 1500
 ac_add_options --enable-lto
+%if 0%{?do_profiling}
+ac_add_options MOZ_PGO=1
 %endif
 %endif
 %if %{with mozilla_tb_valgrind}
 ac_add_options --disable-jemalloc
 ac_add_options --enable-valgrind
+%endif
 %endif
 EOF
 %if !%{with only_print_mozconfig}
@@ -420,7 +463,11 @@ echo "Generate big endian version of config/external/icu/data/icud58l.dat"
 ls -l config/external/icu/data
 rm -f config/external/icu/data/icudt*l.dat
 %endif
-./mach build
+ccache -s
+%if 0%{?do_profiling}
+xvfb-run --server-args="-screen 0 1920x1080x24" \
+%endif
+./mach build -v
 
 # build additional locales
 %if %localize
@@ -448,48 +495,32 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
 
 %install
 cd $RPM_BUILD_DIR/obj
+source %{SOURCE4}
+export MOZ_SOURCE_STAMP=$RELEASE_TAG
+export MOZ_SOURCE_REPO=$RELEASE_REPO
 make -C comm/mail/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
 # copy tree into RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{progdir}
 cp -rf $RPM_BUILD_DIR/obj/dist/%{progname}/* %{buildroot}%{progdir}
 
-%if %localize
-# repack the lightning xpi with all available locales (boo#939153) (lp#545778)
-_extid="{e2fda1a4-762b-4020-b5ad-a41df1933103}"
-rm -rf _lightning
-mkdir -p _lightning
-unzip -q -d _lightning "%{buildroot}%{progdir}/distribution/extensions/${_extid}.xpi"
-_langpacks=$(cd "%{buildroot}%{progdir}/extensions/" && find langpack-* -type d -prune -print|cut -d'-' -f2-|cut -d'@' -f1)
-for _loc in $_langpacks ; do
-    _dir="%{buildroot}%{progdir}/extensions/langpack-${_loc}@thunderbird.mozilla.org"
-    _dir="${_dir}/distribution/extensions/${_extid}"
-    test -d "_lightning/chrome/calendar-${_loc}" && continue
-    test -d "_lightning/chrome/lightning-${_loc}" && continue
-    test -f "${_dir}/chrome.manifest" || continue
-    cp -rL "${_dir}"/chrome/{calendar,lightning}-"${_loc}" _lightning/chrome/
-    cat "${_dir}/chrome.manifest" >> _lightning/chrome.manifest
-done
-(cd _lightning && zip -q9r ../"${_extid}.xpi" *)
-cp -p "${_extid}.xpi" %{buildroot}%{progdir}/distribution/extensions/
-%endif
 # remove some executable permissions
-find %{buildroot}%{_libdir}/%{progname}  \
-    -name "*.js" -o \
-    -name "*.jsm" -o \
-    -name "*.rdf" -o \
-    -name "*.properties" -o \
-    -name "*.dtd" -o \
-    -name "*.txt" -o \
-    -name "*.xml" -o \
-    -name "*.css" \
-    -exec chmod a-x {} +
+find %{buildroot}%{progdir} \
+     -name "*.js" -o \
+     -name "*.jsm" -o \
+     -name "*.rdf" -o \
+     -name "*.properties" -o \
+     -name "*.dtd" -o \
+     -name "*.txt" -o \
+     -name "*.xml" -o \
+     -name "*.css" \
+     -exec chmod a-x {} +
 # remove mkdir.done files from installed base
 find %{buildroot}%{progdir} -type f -name ".mkdir.done" -delete
 # overwrite the mozilla start-script and link it to /usr/bin
 mkdir --parents %{buildroot}%{_bindir}/
 sed "s:%%PREFIX:%{_prefix}:g
 s:%%PROGDIR:%{progdir}:g
-s:%%APPNAME:thunderbird:g
+s:%%APPNAME:%{progname}:g
 s:%%PROFILE:.thunderbird:g" \
   %{SOURCE3} > %{buildroot}%{progdir}/%{progname}.sh
 chmod 755 %{buildroot}%{progdir}/%{progname}.sh
@@ -570,8 +601,6 @@ exit 0
 %attr(755,root,root) %{progdir}/%{progname}.sh
 %dir %{progdir}
 %{progdir}/application.ini
-%{progdir}/blocklist.xml
-%{progdir}/chrome.manifest
 %{progdir}/dependentlibs.list
 %{progdir}/fonts/
 %dir %{progdir}/gtk2
@@ -591,7 +620,6 @@ exit 0
 %endif
 %dir %{progdir}/chrome/
 %{progdir}/chrome/icons/
-%{progdir}/distribution/
 %{progdir}/defaults/
 %{progdir}/features/
 %{progdir}/isp/

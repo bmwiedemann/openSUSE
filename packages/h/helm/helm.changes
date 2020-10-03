@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 19:49:33 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.3.4:
+  * Fixing import package issue
+  * use warning function
+  * Fixing issue with idempotent repo add
+
+-------------------------------------------------------------------
 Mon Sep 21 09:10:14 UTC 2020 - Vicente Zepeda Mas <vzepedamas@suse.com>
 
 - Update to version 3.3.3:

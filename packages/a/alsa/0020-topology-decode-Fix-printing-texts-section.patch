@@ -1,0 +1,33 @@
+From 56a096ca2ceaf1dec944258d961c274e6550b27a Mon Sep 17 00:00:00 2001
+From: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Date: Mon, 31 Aug 2020 11:08:58 +0200
+Subject: [PATCH 20/32] topology: decode: Fix printing texts section
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Reviewed-by: Cezary Rojewski <cezary.rojewski@intel.com>
+Reviewed-by: Amadeusz Sławiński <amadeuszx.slawinski@linux.intel.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/text.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/topology/text.c b/src/topology/text.c
+index 507c5450ab14..b899b2813ab4 100644
+--- a/src/topology/text.c
++++ b/src/topology/text.c
+@@ -103,7 +103,7 @@ int tplg_save_text(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 		return 0;
+ 	err = tplg_save_printf(dst, pfx, "'%s'.values [\n", elem->id);
+ 	for (i = 0; err >= 0 && i < texts->num_items; i++)
+-		err = tplg_save_printf(dst, pfx, "\t'%s'\n", texts->items[i][0]);
++		err = tplg_save_printf(dst, pfx, "\t'%s'\n", texts->items[i]);
+ 	if (err >= 0)
+ 		err = tplg_save_printf(dst, pfx, "]\n");
+ 	return err;
+-- 
+2.16.4
+

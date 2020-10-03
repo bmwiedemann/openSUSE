@@ -1,28 +1,25 @@
-diff -r 6ef20eee3f8f gfx/layers/basic/BasicCompositor.cpp
---- a/gfx/layers/basic/BasicCompositor.cpp	Thu Oct 31 09:11:56 2019 +0100
-+++ b/gfx/layers/basic/BasicCompositor.cpp	Wed Dec 11 16:16:09 2019 +0100
-@@ -693,9 +693,13 @@
- 
-   RefPtr<SourceSurface> sourceMask;
-   Matrix maskTransform;
-+  // Setting an alpha-mask here breaks the URL-bar on big endian (s390x)
-+  // if the typed URL is too long for the textbox (automatic scrolling needed)
-+#if MOZ_LITTLE_ENDIAN
-   if (aTransform.Is2D()) {
-     SetupMask(aEffectChain, dest, offset, sourceMask, maskTransform);
-   }
-+#endif
- 
-   CompositionOp blendMode = CompositionOp::OP_OVER;
-   if (Effect* effect =
-diff -r 6ef20eee3f8f gfx/layers/composite/CompositableHost.cpp
---- a/gfx/layers/composite/CompositableHost.cpp	Thu Oct 31 09:11:56 2019 +0100
-+++ b/gfx/layers/composite/CompositableHost.cpp	Wed Dec 11 16:16:09 2019 +0100
-@@ -91,6 +91,7 @@
+# HG changeset patch
+# User msirringhaus@suse.de
+# Date 1582805890 -3600
+#      Thu Feb 27 13:18:10 2020 +0100
+# Node ID 457cbe5705f2a3759d3da36a05c0ed66ec61ea12
+# Parent  7440f4b6bab85068ca2f84e9c48e0706d04330e8
+imported patch mozilla-bmo1602730-FF73.patch
+
+diff -r 7440f4b6bab8 gfx/layers/composite/CompositableHost.cpp
+--- a/gfx/layers/composite/CompositableHost.cpp	Thu Feb 27 13:17:56 2020 +0100
++++ b/gfx/layers/composite/CompositableHost.cpp	Wed Jun 17 15:33:32 2020 +0200
+@@ -92,9 +92,13 @@
    }
    MOZ_ASSERT(source);
  
-+  // Alternatively: Comment out these lines where the alpha-mask is set
++  // Setting an alpha-mask here breaks the URL-bar on big endian (s390x)
++  // if the typed URL is too long for the textbox (automatic scrolling needed)
++#if MOZ_LITTLE_ENDIAN()
    RefPtr<EffectMask> effect =
        new EffectMask(source, source->GetSize(), aTransform);
    aEffects.mSecondaryEffects[EffectTypes::MASK] = effect;
++#endif
+   return true;
+ }
+ 

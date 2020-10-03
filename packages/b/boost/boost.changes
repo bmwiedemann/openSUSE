@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 29 12:20:56 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- serialization_missing_includes.patch: Add additional missing
+  includes in the serialization library
+
+-------------------------------------------------------------------
 Wed Sep 16 11:57:48 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - serialization_missing_includes.patch: Add missing includes in the

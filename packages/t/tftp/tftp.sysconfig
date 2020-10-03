@@ -21,6 +21,5 @@ TFTP_OPTIONS=""
 ## "/tftpboot" is not allowed anymore in FHS 2.2.
 #
 #  TFTP directory must be a world readable/writable directory.
-#  By default /srv/tftpboot is assumed.
 #
 TFTP_DIRECTORY="/srv/tftpboot"

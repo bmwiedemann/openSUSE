@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 30 10:48:31 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream security patches/commits
+  * 100e27.patch
+  * 3065eb.patch
+  * ca48cc.patch
+
+-------------------------------------------------------------------
+Tue Sep 29 09:24:16 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Do hardening via compile and linker flags 
+
+-------------------------------------------------------------------
 Tue Feb 11 11:38:01 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream security patches/commits

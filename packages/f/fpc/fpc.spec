@@ -87,6 +87,7 @@ Patch1:         fpc-si_c-x86_64-plt.patch
 Patch2:         aarch64-fpc-compilation-fix.patch
 # From https://github.com/graemeg/freepascal/commit/aad68409bec902e39f9292930238edd32dbc5ac7
 Patch3:         aarch64-fpu-initialization.patch
+Patch4:         fpc-fix-library-paths-on-ppc64.patch
 BuildRequires:  binutils
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -160,6 +161,7 @@ documentation or automatical-code generation purposes.
 %patch1 -p0
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %if %{with bootstrap}
 %if "%{flavor}" == ""

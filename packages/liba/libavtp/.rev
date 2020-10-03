@@ -16,4 +16,12 @@ will be required in the next version of alsa-lib plugin.</comment>
     <comment></comment>
     <requestid>663807</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8715ab568880c6678e1d7bff0e6789ad</srcmd5>
+    <version>0.1.0+git20200527.9482c11</version>
+    <time>1601744205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838557</requestid>
+  </revision>
 </revisionlist>

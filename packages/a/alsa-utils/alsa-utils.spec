@@ -83,7 +83,6 @@ autoreconf -fi
 %endif
 %configure --with-curses=ncursesw \
   --with-systemdsystemunitdir=%{_unitdir} \
-  --with-asound-state-dir=%{_sysconfdir} \
   --with-udev-rules-dir=%{_udevdir}/rules.d
 make %{?_smp_mflags}
 

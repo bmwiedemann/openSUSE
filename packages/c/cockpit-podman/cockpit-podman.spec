@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cockpit-podman
-Version:        21
+Version:        24
 Release:        0
 Summary:        Cockpit component for Podman containers
 License:        LGPL-2.1-or-later
-Url:            https://github.com/cockpit-project/cockpit-podman
+URL:            https://github.com/cockpit-project/cockpit-podman
 Source:         https://github.com/cockpit-project/cockpit-podman/releases/download/%{version}/cockpit-podman-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  appstream-glib
@@ -29,8 +29,11 @@ Requires:       cockpit-bridge >= 138
 Requires:       cockpit-shell >= 138
 Requires:       podman >= 2.0.4
 #
-BuildRequires:  translate-toolkit npm nodejs-devel
 BuildRequires:  gcc-c++
+BuildRequires:  nodejs-devel
+BuildRequires:  npm
+BuildRequires:  translate-toolkit
+
 %description
 Cockpit component for managing Podman containers
 
@@ -51,4 +54,3 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*
 %{_datadir}/metainfo/*
 
 %changelog
-

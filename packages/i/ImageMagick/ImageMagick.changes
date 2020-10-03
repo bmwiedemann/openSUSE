@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 28 19:50:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 7.0.10.31:
+  * Add support for APNG (specify explicitly, e.g. apng:animate.png).
+  * Add support for WEBM.
+  * Fixed registry lookup of GhostScript that now writes the patch version to the
+    registry
+  * Add endian support to JSON coder.
+  * Regression: MapCache type cache allocation skipped
+  * Some DCM images include a thumbnail
+
+-------------------------------------------------------------------
 Mon Sep 14 07:56:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 7.0.10.29:

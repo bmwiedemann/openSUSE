@@ -1,7 +1,7 @@
 #
 # spec file for package libavtp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define git_version	%{version}.g2f0b071
-
+%define _lto_cflags %{nil}
 Name:           libavtp
-Version:        0.1
+Version:        0.1.0+git20200527.9482c11
 Release:        0
 Summary:        Audio Video Transport Protocol (AVTP) Support Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/AVnu/libavtp.git
-Source:         %{name}-%{git_version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cmocka)
@@ -52,7 +51,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require libavtp.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 
 %build
 %meson

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep 17 17:56:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.75:
+  * Fix a compile problem under certain MacOS versions.
+  * Various changes needed for interworking with newer versions of GhostScript.
+  * Some code modernization based on feedback from VS-2019, Clang Powertools
+    and PVS Studio.
+  * Added support for dotted and dashed lines to the DXF backend.
+  * Reduce redundancy in help documents.
+  * Porting to Windows CE by Rohan Shetty.
+  * Made pstoedit compatible with ghostscript 9.27.
+  * Fix a bug occurring with large scale factors.
+  * Include full documentation by default and provide an option to generate
+    documentation locally which then fit best to the local installation.
+  * Started to apply improvements proposed by clang-tidy.
+  * Included a bunch of patches from Debian for easier maintenance of the
+    package plus correction to some spelling issues. Thanks to Barak A.
+    Pearlmutter.
+  * added a -vl option to specify a verbosity level. Using the older -v enables
+    level 1. For more use -vl 2.
+  * included a patch contributed by OpenSuse folks fixing a problem in finding
+    the plugins under certain conditions.
+  * included a patch contributed by Martin Madsen related to checking non
+    existing directories when looking for plugins.
+  * added support for pdfwithshow and pdfawidthshow special operators when
+    reading PDF files.
+  * Scott Pakin updated the cfdg driver to support the current version of cfdg.
+  * changes needed for newer versions of GhostScript.
+  * some code cleanup. pstoedit passed all Coverity checks.
+- remove pstoedit-imagemagick7.patch pstoedit-pkglibdir.patch (obsolete)
+- rediff reproducible.patch
+
+-------------------------------------------------------------------
 Wed Sep 20 09:27:00 UTC 2017 - pgajdos@suse.com
 
 - build against ImageMagick 7

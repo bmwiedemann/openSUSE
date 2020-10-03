@@ -1,13 +1,13 @@
 # HG changeset patch
-# Parent  36563351309ddbc6c29559ba50a41d005f925abb
+# Parent  0e579dcbf7328dda4512cbdafc9b42acec4935ea
 Skia does not support big endian. The places to fix are too numerous and upstream (skia, not Mozilla)
 has no interest in maintaining big endian.
 So here we try to swizzle the input for skia, so that skia always works on LE, and when it comes
 out again, we transform back to BE.
 
-diff -r 36563351309d gfx/2d/ConvolutionFilter.cpp
---- a/gfx/2d/ConvolutionFilter.cpp	Mon Sep 09 17:59:28 2019 +0200
-+++ b/gfx/2d/ConvolutionFilter.cpp	Tue Sep 10 08:25:13 2019 +0200
+diff -r 0e579dcbf732 gfx/2d/ConvolutionFilter.cpp
+--- a/gfx/2d/ConvolutionFilter.cpp	Wed Jan 08 12:17:44 2020 +0100
++++ b/gfx/2d/ConvolutionFilter.cpp	Wed Jan 08 12:17:49 2020 +0100
 @@ -35,9 +35,38 @@
    return true;
  }
@@ -23,7 +23,7 @@ diff -r 36563351309d gfx/2d/ConvolutionFilter.cpp
 +
  void ConvolutionFilter::ConvolveHorizontally(const uint8_t* aSrc, uint8_t* aDst,
                                               bool aHasAlpha) {
-+#if MOZ_BIG_ENDIAN
++#if MOZ_BIG_ENDIAN()
 +    int outputSize = mFilter->numValues();
 +
 +    // Input size isn't handed in, so we have to calculate it quickly
@@ -40,7 +40,7 @@ diff -r 36563351309d gfx/2d/ConvolutionFilter.cpp
 +
    SkOpts::convolve_horizontally(aSrc, *mFilter, aDst, aHasAlpha);
 +
-+#if MOZ_BIG_ENDIAN
++#if MOZ_BIG_ENDIAN()
 +    ByteSwapArray((uint8_t*)aSrc, inputSize);
 +    ByteSwapArray(aDst, outputSize);
 +#endif
@@ -52,7 +52,7 @@ diff -r 36563351309d gfx/2d/ConvolutionFilter.cpp
    auto filterValues =
        mFilter->FilterForValue(aRowIndex, &filterOffset, &filterLength);
 +
-+#if MOZ_BIG_ENDIAN
++#if MOZ_BIG_ENDIAN()
 +  for (int filterY = 0; filterY < filterLength; filterY++) {
 +      // Skia only knows LE, so we have to swizzle the input
 +    ByteSwapArray(aSrc[filterY], aRowSize);
@@ -62,7 +62,7 @@ diff -r 36563351309d gfx/2d/ConvolutionFilter.cpp
    SkOpts::convolve_vertically(filterValues, filterLength, aSrc, aRowSize, aDst,
                                aHasAlpha);
 +
-+#if MOZ_BIG_ENDIAN
++#if MOZ_BIG_ENDIAN()
 +  // After skia is finished, we swizzle back to BE, in case
 +  // the input is used again somewhere else
 +  for (int filterY = 0; filterY < filterLength; filterY++) {
@@ -74,9 +74,9 @@ diff -r 36563351309d gfx/2d/ConvolutionFilter.cpp
  }
  
  /* ConvolutionFilter::ComputeResizeFactor is derived from Skia's
-diff -r 36563351309d gfx/skia/skia/include/core/SkPreConfig.h
---- a/gfx/skia/skia/include/core/SkPreConfig.h	Mon Sep 09 17:59:28 2019 +0200
-+++ b/gfx/skia/skia/include/core/SkPreConfig.h	Tue Sep 10 08:25:13 2019 +0200
+diff -r 0e579dcbf732 gfx/skia/skia/include/core/SkPreConfig.h
+--- a/gfx/skia/skia/include/core/SkPreConfig.h	Wed Jan 08 12:17:44 2020 +0100
++++ b/gfx/skia/skia/include/core/SkPreConfig.h	Wed Jan 08 12:17:49 2020 +0100
 @@ -73,7 +73,7 @@
        defined(__ppc__) || defined(__hppa) || \
        defined(__PPC__) || defined(__PPC64__) || \

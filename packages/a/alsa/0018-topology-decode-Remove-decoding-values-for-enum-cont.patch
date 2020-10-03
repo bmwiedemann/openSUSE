@@ -1,0 +1,42 @@
+From 11d4a5aa721dce2c3f7430996caf244a73dd5099 Mon Sep 17 00:00:00 2001
+From: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Date: Mon, 31 Aug 2020 11:08:56 +0200
+Subject: [PATCH 18/32] topology: decode: Remove decoding values for enum
+ control
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Values have no representation in standard ALSA configuration files,
+therefore there is no need to populate them. Also memory for values
+wasn't allocated which was causing undefined behaviour.
+
+Signed-off-by: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Reviewed-by: Cezary Rojewski <cezary.rojewski@intel.com>
+Reviewed-by: Amadeusz Sławiński <amadeuszx.slawinski@linux.intel.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/ctl.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 0aa49ab82c1e..02e482e7d05d 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -1367,11 +1367,8 @@ int tplg_decode_control_enum1(snd_tplg_t *tplg,
+ 		et->texts = tplg_calloc(heap, sizeof(char *) * ec->items);
+ 		if (!et->texts)
+ 			return -ENOMEM;
+-		for (i = 0; i < ec->items; i++) {
+-			unsigned int j = i * sizeof(int) * ENUM_VAL_SIZE;
++		for (i = 0; i < ec->items; i++)
+ 			et->texts[i] = ec->texts[i];
+-			et->values[i] = (int *)&ec->values[j];
+-		}
+ 	}
+ 
+ 	et->map = tplg_calloc(heap, sizeof(struct snd_tplg_channel_map_template));
+-- 
+2.16.4
+

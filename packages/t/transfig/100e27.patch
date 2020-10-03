@@ -1,0 +1,32 @@
+From 100e2789f8106f9cc0f7e4319c4ee7bda076c3ac Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Sun, 16 Feb 2020 13:25:03 +0100
+Subject: [PATCH] Modify commit [3165d8]: Use tangent, not secant
+
+Use the tangent, not a secant, for short arrows on arcs.
+---
+ fig2dev/bound.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git fig2dev/bound.c fig2dev/bound.c
+index d305ab9..ea97461 100644
+--- fig2dev/bound.c
++++ fig2dev/bound.c
+@@ -1102,12 +1102,10 @@ compute_arcarrow_angle(double x1, double y1, double x2, double y2,
+ 	/* add this to the length */
+ 	h += lpt;
+ 
+-	/* radius too small for this method, use normal method */
+-	if (h > 2.0*r) {
++	/* secant would be too large or too small */
++	if (h > 2.0*r || h < 0.01*r) {
+ 	    arc_tangent_int(x1,y1,x2,y2,direction,x,y);
+ 	    return;
+-	} else if (h < thick) {
+-	    h = thick;
+ 	}
+ 
+ 	beta=atan2(dy,dx);
+-- 
+2.16.4
+

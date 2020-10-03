@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 29 14:34:10 CEST 2020 - tiwai@suse.de
+
+- Don't build / package static library
+
+-------------------------------------------------------------------
+Thu Sep  3 11:22:19 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.1.0+git20200527.9482c11
+  * Fix compilation with GCC 9
+  * Declare dependency so libavtp can be used as a meson subproject
+  * Update version to MAJOR.MINOR.PATCH format
+  * Fix URL in meson.build
+  * Add IEC 61883/IIDC support
+  * Many added examples and tests
+  * Add CVF support - H.264 only
+  * Factor out "common stream header" from avtp_aaf.c
+
+-------------------------------------------------------------------
 Tue Jan  8 17:45:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix SRPM group, and update description to avoid redundancies.

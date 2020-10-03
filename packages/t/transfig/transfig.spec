@@ -70,6 +70,9 @@ Patch14:        2f8d1a.patch
 Patch15:        4d4e1f.patch
 Patch16:        3165d8.patch
 Patch17:        639c36.patch
+Patch18:        100e27.patch
+Patch19:        3065eb.patch
+Patch20:        ca48cc.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
 Patch45:        fig2dev-3.2.6a-RGBFILE.patch
@@ -127,14 +130,59 @@ find -type f | xargs -r chmod a-x,go-w
 %patch15 -p0 -b .sec12
 %patch16 -p0 -b .sec13
 %patch17 -p0 -b .sec14
+%patch18 -p0 -b .sec15
+%patch19 -p0 -b .sec16
+%patch20 -p0 -b .sec17
 %patch43 -p2 -b .mpdf
 %patch44 -p1 -b .mpdfdoc
 %patch45 -p1 -b .p45
 
 %build
 ulimit -v unlimited || :
+  #
+  # Used for detection of hardening options of gcc and linker
+  #
+  cflags ()
+  {
+      local flag=$1; shift
+      local var=$1; shift
+      test -n "${flag}" -a -n "${var}" || return
+      case "${!var}" in
+      *${flag}*) return
+      esac
+      case "$flag" in
+      -Wl,*)
+	   set -o noclobber
+	   echo 'int main () { return 0; }' > ldtest.c
+	   if ${CC:-gcc} -Werror $flag -o /dev/null -xc ldtest.c > /dev/null 2>&1 ; then
+	       eval $var=\${$var:+\$$var\ }$flag
+	   fi
+	   set +o noclobber
+	   rm -f ldtest.c
+	   ;;
+      *)
+	   if ${CC:-gcc} -Werror $flag -S -o /dev/null -xc /dev/null > /dev/null 2>&1 ; then
+	       eval $var=\${$var:+\$$var\ }$flag
+	   fi
+	   if ${CXX:-g++} -Werror $flag -S -o /dev/null -xc++ /dev/null > /dev/null 2>&1 ; then
+	       eval $var=\${$var:+\$$var\ }$flag
+	   fi
+      esac
+  }
+
 CC=gcc
 CFLAGS="%{optflags} -fno-strict-aliasing -w -D_GNU_SOURCE -std=gnu99 $(getconf LFS_CFLAGS)"
+cflags -D_FORTIFY_SOURCE=2       CFLAGS
+cflags -fstack-protector         CFLAGS
+cflags -fstack-protector-strong  CFLAGS
+cflags -fstack-protector-all     CFLAGS
+cflags -Wformat                  CFLAGS
+cflags -Wformat-security         CFLAGS
+cflags -Werror=format-security   CFLAGS
+cflags -fPIE                     CFLAGS
+cflags -pie                      LDFLAGS
+cflags -Wl,-z,relro              LDFLAGS
+cflags -Wl,-z,now                LDFLAGS
 export CC CFLAGS LDFLAGS
 chmod 755 configure
 %configure \

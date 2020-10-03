@@ -1,13 +1,13 @@
-Index: pstoedit-3.70/src/pstoedit.cpp
+Index: pstoedit-3.75/src/pstoedit.cpp
 ===================================================================
---- pstoedit-3.70.orig/src/pstoedit.cpp
-+++ pstoedit-3.70/src/pstoedit.cpp
-@@ -390,7 +390,7 @@ extern "C" DLLEXPORT
+--- pstoedit-3.75.orig/src/pstoedit.cpp
++++ pstoedit-3.75/src/pstoedit.cpp
+@@ -399,7 +399,7 @@ extern "C" DLLEXPORT
  	const char buildtype [] = "release build";
  #endif
- 		errstream << "pstoedit: version " << version << " / DLL interface " <<
--		drvbaseVersion << " (built: " << __DATE__ << " - " << buildtype << " - " << compversion << ")" 
-+		drvbaseVersion << " (" << " - " << buildtype << " - " << compversion << ")" 
- 		" : Copyright (C) 1993 - 2014 Wolfgang Glunz\n";
+ 		errstream << "pstoedit: version " << PACKAGE_VERSION << " / DLL interface " <<
+-		drvbaseVersion << " (built: " << __DATE__ << " - " << buildtype << " - " << compversion << ")"
++		drvbaseVersion << " (" << buildtype << " - " << compversion << ")"
+ 		" : Copyright (C) 1993 - 2020 Wolfgang Glunz\n";
  	}
  

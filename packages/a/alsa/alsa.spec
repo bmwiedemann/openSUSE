@@ -25,6 +25,12 @@
 %define _udevrulesdir /lib/udev/rules.d/
 %endif
 
+%ifarch %ix86 x86_64 %arm aarch64 ppc64le
+%define enable_topology	1
+%else
+%define enable_topology	0
+%endif
+
 Name:           alsa
 Version:        1.2.3.2
 Release:        0
@@ -47,6 +53,37 @@ Source30:       all_notes_off
 Source31:       all_notes_off.bin
 Source32:       all_notes_off.mid
 Source34:       alsa-init.sh
+Patch1:         0001-ucm-substitution-remove-duplicate-allow_empty-assign.patch
+Patch2:         0002-ucm-fix-parse_get_safe_name-safe-name-must-be-checke.patch
+Patch3:         0003-ucm-substitute-the-merged-tree-completely.patch
+Patch4:         0004-ctl-improve-documentation-for-identifier-of-control-.patch
+Patch5:         0005-pcm-dmix-make-lockless-operation-optional.patch
+Patch6:         0006-pcm-dmix-Fix-semaphore-usage-with-lockless-operation.patch
+Patch7:         0007-pcm-iec958-implement-HDMI-HBR-audio-formatting.patch
+Patch8:         0008-pcm-iec958-set-channel-status-bits-according-to-rate.patch
+Patch9:         0009-conf-pcm-USB-Added-S-PDIF-fix-for-Asus-Xonar-SE.patch
+Patch10:        0010-control-ctlparse-fix-enum-values-in-or.patch
+Patch11:        0011-conf-USB-Audio-Disable-IEC958-on-Lenovo-ThinkStation.patch
+Patch12:        0012-pcm-dmix-fix-access-to-sum-buffer-in-non-interleaved.patch
+Patch14:        0014-control-Add-documentation-for-snd_ctl_elem_list_.patch
+Patch15:        0015-conf-quote-also-strings-with-and-characters-in-strin.patch
+Patch16:        0016-topology-decode-Fix-channel-map-memory-allocation.patch
+Patch17:        0017-topology-decode-Fix-infinite-loop-in-decoding-enum-c.patch
+Patch18:        0018-topology-decode-Remove-decoding-values-for-enum-cont.patch
+Patch19:        0019-topology-decode-Add-enum-control-texts-as-separate-e.patch
+Patch20:        0020-topology-decode-Fix-printing-texts-section.patch
+Patch21:        0021-topology-decode-Change-declaration-of-enum-decoding-.patch
+Patch22:        0022-topology-decode-Fix-decoding-PCM-formats-and-rates.patch
+Patch23:        0023-topology-decode-Print-sig_bits-field-in-PCM-capabili.patch
+Patch24:        0024-topology-decode-Add-DAI-name-printing.patch
+Patch25:        0025-topology-Make-buffer-for-saving-dynamic-size.patch
+Patch26:        0026-topology-return-correct-value-in-tplg_save_printf.patch
+Patch27:        0027-topology-fix-some-gcc10-warnings-labs-signess.patch
+Patch28:        0028-topology-fix-sort_config.patch
+Patch29:        0029-topology-fix-the-unaligned-access.patch
+Patch30:        0030-topology-improve-the-printf-buffer-management.patch
+Patch31:        0031-control-Improve-general-control-interface-documentat.patch
+Patch32:        0032-control-Add-documentation-for-snd_ctl_elem_value_.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -88,6 +125,7 @@ Provides:       alsadev = %{version}
 This package contains all necessary include files and libraries needed
 to develop applications that require ALSA.
 
+%if %enable_topology
 %package topology-devel
 Summary:        Header files for ALSA topology development
 License:        LGPL-2.1-or-later
@@ -98,6 +136,7 @@ Requires:       libatopology2 = %{version}
 %description topology-devel
 This package contains all necessary include files and libraries needed
 to develop applications that require ALSA topology.
+%endif
 
 %package docs
 Summary:        Additional Package Documentation for ALSA
@@ -121,6 +160,7 @@ Provides:       alsa-lib
 This package contains the library for ALSA, Advanced Linux Sound
 Architecture.
 
+%if %enable_topology
 %package -n libatopology2
 Summary:        ALSA Topology Library
 License:        LGPL-2.1-or-later
@@ -128,9 +168,41 @@ Group:          System/Libraries
 
 %description -n libatopology2
 This package contains the library for ALSA topology support.
+%endif
 
 %prep
 %setup -q -n alsa-lib-%{version}
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
 %patch101 -p1
 
 %build
@@ -144,6 +216,9 @@ autoreconf -fi
   --enable-symbolic-functions \
   --disable-aload \
   --disable-alisp \
+%if !%enable_topology
+  --disable-topology \
+%endif
   --disable-python
 make V=1 %{?_smp_mflags}
 # run doxygen
@@ -156,6 +231,9 @@ make -C doc doc %{?_smp_mflags}
 rm -f %{buildroot}%{_libdir}/*.*a
 # rm -f %{buildroot}%{_libdir}/alsa-lib/smixer/*.*a
 rm -f %{buildroot}%{_bindir}/aserver
+%if !%enable_topology
+rm -f %{buildroot}%{_libdir}/pkgconfig/alsa-topology.pc
+%endif
 #
 # install helper scripts
 mkdir -p %{buildroot}%{_bindir}
@@ -242,8 +320,10 @@ exit 0
 %post -n libasound2 -p /sbin/ldconfig
 %postun -n libasound2 -p /sbin/ldconfig
 
+%if %enable_topology
 %post -n libatopology2 -p /sbin/ldconfig
 %postun -n libatopology2 -p /sbin/ldconfig
+%endif
 
 %files
 %defattr(-, root, root)
@@ -266,16 +346,20 @@ exit 0
 %{_libdir}/libasound.so
 %{_includedir}/sys/*
 %{_includedir}/alsa
+%if %enable_topology
 %exclude %{_includedir}/alsa/topology.h
+%endif
 %{_includedir}/asoundlib.h
 %{_datadir}/aclocal/*.m4
 %{_libdir}/pkgconfig/alsa.pc
 
+%if %enable_topology
 %files topology-devel
 %defattr(-, root, root)
 %{_libdir}/libatopology.so
 %{_includedir}/alsa/topology.h
 %{_libdir}/pkgconfig/alsa-topology.pc
+%endif
 
 %files docs
 %defattr(-, root, root)
@@ -286,8 +370,10 @@ exit 0
 %{_libdir}/libasound.so.*
 %{_datadir}/alsa
 
+%if %enable_topology
 %files -n libatopology2
 %defattr(-, root, root)
 %{_libdir}/libatopology.so.*
+%endif
 
 %changelog

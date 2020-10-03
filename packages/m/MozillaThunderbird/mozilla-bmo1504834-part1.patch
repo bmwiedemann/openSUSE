@@ -1,11 +1,16 @@
 # HG changeset patch
-# Parent  051b75a600dfbf7503c3485cebfd34d4eb29be96
+# Parent  9db312f823881c04c5c16a7623df08cf6aef371d
 Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
 
-diff -r 051b75a600df gfx/2d/DrawTargetSkia.cpp
---- a/gfx/2d/DrawTargetSkia.cpp	Fri Jul 05 12:42:44 2019 +0200
-+++ b/gfx/2d/DrawTargetSkia.cpp	Mon Jul 08 10:59:30 2019 +0200
-@@ -138,8 +138,7 @@
+diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
+--- a/gfx/2d/DrawTargetSkia.cpp
++++ b/gfx/2d/DrawTargetSkia.cpp
+@@ -131,18 +131,17 @@ static IntRect CalculateSurfaceBounds(co
+   Rect sampledBounds = inverse.TransformBounds(*aBounds);
+   if (!sampledBounds.ToIntRect(&bounds)) {
+     return surfaceBounds;
+   }
+ 
    return surfaceBounds.Intersect(bounds);
  }
  
@@ -15,38 +20,68 @@ diff -r 051b75a600df gfx/2d/DrawTargetSkia.cpp
  
  static bool VerifyRGBXFormat(uint8_t* aData, const IntSize& aSize,
                               const int32_t aStride, SurfaceFormat aFormat) {
-diff -r 051b75a600df gfx/2d/Types.h
---- a/gfx/2d/Types.h	Fri Jul 05 12:42:44 2019 +0200
-+++ b/gfx/2d/Types.h	Mon Jul 08 10:59:30 2019 +0200
-@@ -85,15 +85,8 @@
+   if (aFormat != SurfaceFormat::B8G8R8X8 || aSize.IsEmpty()) {
+     return true;
+   }
+   // We should've initialized the data to be opaque already
+   // On debug builds, verify that this is actually true.
+diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
+--- a/gfx/2d/Types.h
++++ b/gfx/2d/Types.h
+@@ -82,25 +82,18 @@ enum class SurfaceFormat : int8_t {
+   Depth,
+ 
+   // This represents the unknown format.
+   UNKNOWN,
+ 
  // The following values are endian-independent synonyms. The _UINT32 suffix
  // indicates that the name reflects the layout when viewed as a uint32_t
  // value.
--#if MOZ_LITTLE_ENDIAN
+-#if MOZ_LITTLE_ENDIAN()
    A8R8G8B8_UINT32 = B8G8R8A8,  // 0xAARRGGBB
-   X8R8G8B8_UINT32 = B8G8R8X8   // 0x00RRGGBB
--#elif MOZ_BIG_ENDIAN
+   X8R8G8B8_UINT32 = B8G8R8X8,  // 0x00RRGGBB
+-#elif MOZ_BIG_ENDIAN()
 -  A8R8G8B8_UINT32 = A8R8G8B8,  // 0xAARRGGBB
--  X8R8G8B8_UINT32 = X8R8G8B8   // 0x00RRGGBB
+-  X8R8G8B8_UINT32 = X8R8G8B8,  // 0x00RRGGBB
 -#else
 -#  error "bad endianness"
 -#endif
- };
  
- static inline int BytesPerPixel(SurfaceFormat aFormat) {
-diff -r 051b75a600df gfx/skia/skia/third_party/skcms/skcms.cc
---- a/gfx/skia/skia/third_party/skcms/skcms.cc	Fri Jul 05 12:42:44 2019 +0200
-+++ b/gfx/skia/skia/third_party/skcms/skcms.cc	Mon Jul 08 10:59:30 2019 +0200
-@@ -17,6 +17,8 @@
-     #include <arm_neon.h>
- #elif defined(__SSE__)
-     #include <immintrin.h>
+   // The following values are OS and endian-independent synonyms.
+   //
+   // TODO(aosmond): When everything blocking bug 1581828 has been resolved, we
+   // can make this use R8B8G8A8 and R8B8G8X8 for non-Windows platforms.
+   OS_RGBA = A8R8G8B8_UINT32,
+   OS_RGBX = X8R8G8B8_UINT32
+ };
+diff --git a/gfx/skia/skia/third_party/skcms/skcms.cc b/gfx/skia/skia/third_party/skcms/skcms.cc
+--- a/gfx/skia/skia/third_party/skcms/skcms.cc
++++ b/gfx/skia/skia/third_party/skcms/skcms.cc
+@@ -25,16 +25,18 @@
+         // it'd be a lot slower.  But we want all those headers included so we
+         // can use their features after runtime checks later.
+         #include <smmintrin.h>
+         #include <avxintrin.h>
+         #include <avx2intrin.h>
+         #include <avx512fintrin.h>
+         #include <avx512dqintrin.h>
+     #endif
 +#else
 +    #define SKCMS_PORTABLE
  #endif
  
  // sizeof(x) will return size_t, which is 32-bit on some machines and 64-bit on others.
-@@ -124,20 +126,28 @@
+ // We have better testing on 64-bit machines, so force 32-bit machines to behave like 64-bit.
+ //
+ // Please do not use sizeof() directly, and size_t only when required.
+ // (We have no way of enforcing these requests...)
+ #define SAFE_SIZEOF(x) ((uint64_t)sizeof(x))
+@@ -275,30 +277,38 @@ enum {
+     skcms_Signature_sf32 = 0x73663332,
+     // XYZ is also a PCS signature, so it's defined in skcms.h
+     // skcms_Signature_XYZ = 0x58595A20,
+ };
+ 
  static uint16_t read_big_u16(const uint8_t* ptr) {
      uint16_t be;
      memcpy(&be, ptr, sizeof(be));
@@ -79,3 +114,8 @@ diff -r 051b75a600df gfx/skia/skia/third_party/skcms/skcms.cc
  #endif
  }
  
+ static int32_t read_big_i32(const uint8_t* ptr) {
+     return (int32_t)read_big_u32(ptr);
+ }
+ 
+ static float read_big_fixed(const uint8_t* ptr) {

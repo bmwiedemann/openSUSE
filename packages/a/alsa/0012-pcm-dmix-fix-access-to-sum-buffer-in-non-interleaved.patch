@@ -1,0 +1,92 @@
+From 82cb27c165d4337fe3183668bd0fa21ff6287e8e Mon Sep 17 00:00:00 2001
+From: Vijay Palaniswamy <vijay.palaniswamy@in.bosch.com>
+Date: Thu, 23 Jul 2020 11:49:10 +0530
+Subject: [PATCH 12/32] pcm: dmix: fix access to sum-buffer in non-interleaved
+ mixing mode
+
+When dmix uses non-interleaved mixing mode the offset and step width
+to sum_buffer was calculated by using the dmix channels instead of
+the slave channels. This leads to audio distortions due to frame
+corruption.
+
+example:
+- With below configuratio, Do aplay on both device in parallel for
+audio distortion
+
+pcm.dmix_2_channels {
+        type dmix
+        ipc_key 5678293
+        ipc_perm 0660
+        ipc_gid audio
+        bindings [0 1]
+
+        slave {
+                pcm "hardware"
+                channels 2
+                periods  4
+                period_time 40000
+        }
+}
+
+pcm.dmix_1_channels {
+        type dmix
+        ipc_key 5678293
+        ipc_perm 0660
+        ipc_gid audio
+        bindings [0]
+
+        slave {
+                pcm "hardware"
+                channels 1
+                periods  4
+                period_time 40000
+        }
+}
+
+pcm.hardware {
+        type hw
+        card 0
+        channels 2
+        rate 48000
+        format S16_LE
+}
+
+Signed-off-by: Vijay Palaniswamy <vijay.palaniswamy@in.bosch.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/pcm/pcm_dmix.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/pcm/pcm_dmix.c b/src/pcm/pcm_dmix.c
+index e9343b19a536..8bce7aca85f7 100644
+--- a/src/pcm/pcm_dmix.c
++++ b/src/pcm/pcm_dmix.c
+@@ -212,10 +212,10 @@ static void mix_areas(snd_pcm_direct_t *dmix,
+ 		do_mix_areas(size,
+ 			     ((unsigned char *)dst_areas[dchn].addr + dst_areas[dchn].first / 8) + dst_ofs * dst_step,
+ 			     ((unsigned char *)src_areas[chn].addr + src_areas[chn].first / 8) + src_ofs * src_step,
+-			     dmix->u.dmix.sum_buffer + channels * dst_ofs + chn,
++			     dmix->u.dmix.sum_buffer + dmix->shmptr->s.channels * dst_ofs + dchn,
+ 			     dst_step,
+ 			     src_step,
+-			     channels * sizeof(signed int));
++			     dmix->shmptr->s.channels * sizeof(signed int));
+ 	}
+ }
+ 
+@@ -280,10 +280,10 @@ static void remix_areas(snd_pcm_direct_t *dmix,
+ 		do_remix_areas(size,
+ 			       ((unsigned char *)dst_areas[dchn].addr + dst_areas[dchn].first / 8) + dst_ofs * dst_step,
+ 			       ((unsigned char *)src_areas[chn].addr + src_areas[chn].first / 8) + src_ofs * src_step,
+-			       dmix->u.dmix.sum_buffer + channels * dst_ofs + chn,
++			       dmix->u.dmix.sum_buffer + dmix->shmptr->s.channels * dst_ofs + dchn,
+ 			       dst_step,
+ 			       src_step,
+-			       channels * sizeof(signed int));
++			       dmix->shmptr->s.channels * sizeof(signed int));
+ 	}
+ }
+ 
+-- 
+2.16.4
+

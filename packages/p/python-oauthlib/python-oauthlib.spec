@@ -58,7 +58,7 @@ veneer on top of OAuthLib and get OAuth support for very little effort.
 
 %prep
 %setup -q -n oauthlib-%{version}
-%patch0 -p1
+%patch -p1
 
 %build
 %python_build

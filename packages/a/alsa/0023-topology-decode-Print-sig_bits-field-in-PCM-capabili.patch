@@ -1,0 +1,38 @@
+From d93b3462996a20951bc0ca753d0304bbbb9850fc Mon Sep 17 00:00:00 2001
+From: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Date: Mon, 31 Aug 2020 11:09:01 +0200
+Subject: [PATCH 23/32] topology: decode: Print sig_bits field in PCM
+ capabilities section
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Not printing this field makes data loss while converting from binary
+to standard ALSA configuration file.
+
+Signed-off-by: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Reviewed-by: Cezary Rojewski <cezary.rojewski@intel.com>
+Reviewed-by: Amadeusz Sławiński <amadeuszx.slawinski@linux.intel.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/pcm.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index db401145f3ec..49c5eaba8b82 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -604,6 +604,9 @@ int tplg_save_stream_caps(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	if (err >= 0 && sc->buffer_size_max)
+ 		err = tplg_save_printf(dst, pfx, "\tbuffer_size_max %u\n",
+ 				       sc->buffer_size_max);
++	if (err >= 0 && sc->sig_bits)
++		err = tplg_save_printf(dst, pfx, "\tsig_bits %u\n",
++				       sc->sig_bits);
+ 	if (err >= 0)
+ 		err = tplg_save_printf(dst, pfx, "}\n");
+ 	return err;
+-- 
+2.16.4
+

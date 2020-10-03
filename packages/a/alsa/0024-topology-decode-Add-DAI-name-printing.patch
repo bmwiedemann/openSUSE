@@ -1,0 +1,38 @@
+From 6b0fb2bc7e0cfac8e1aedfcad183ab247c85173d Mon Sep 17 00:00:00 2001
+From: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Date: Mon, 31 Aug 2020 11:09:02 +0200
+Subject: [PATCH 24/32] topology: decode: Add DAI name printing
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+DAI name is a part of topology binary. Not printing makes data loss while
+converting from binary to standard ALSA configuration file.
+
+Signed-off-by: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Reviewed-by: Cezary Rojewski <cezary.rojewski@intel.com>
+Reviewed-by: Amadeusz Sławiński <amadeuszx.slawinski@linux.intel.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/pcm.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index 49c5eaba8b82..5a54e1534c95 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -781,7 +781,9 @@ int tplg_save_fe_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	struct snd_soc_tplg_pcm *pcm = elem->pcm;
+ 	int err = 0;
+ 
+-	if (pcm->dai_id > 0)
++	if (strlen(pcm->dai_name))
++		err = tplg_save_printf(dst, pfx, "dai.'%s'.id %u\n", pcm->dai_name, pcm->dai_id);
++	else if (pcm->dai_id > 0)
+ 		err = tplg_save_printf(dst, pfx, "dai.0.id %u\n", pcm->dai_id);
+ 	return err;
+ }
+-- 
+2.16.4
+

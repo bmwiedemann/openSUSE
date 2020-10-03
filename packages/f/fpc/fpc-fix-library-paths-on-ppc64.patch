@@ -1,0 +1,11 @@
+--- fpcbuild-3.2.0/fpcsrc/compiler/systems/t_linux.pas.orig	2020-09-25 07:43:31.880558566 +0000
++++ fpcbuild-3.2.0/fpcsrc/compiler/systems/t_linux.pas	2020-09-25 07:55:16.789263339 +0000
+@@ -141,7 +141,7 @@ begin
+       if target_info.abi<>abi_powerpc_elfv2 then
+         LibrarySearchPath.AddLibraryPath(sysrootpath,'=/lib64;=/usr/lib64;=/usr/X11R6/lib64',true)
+       else
+-        LibrarySearchPath.AddLibraryPath(sysrootpath,'=/lib64;=/usr/lib/powerpc64le-linux-gnu;=/usr/X11R6/powerpc64le-linux-gnu',true);
++        LibrarySearchPath.AddLibraryPath(sysrootpath,'=/lib64;=/usr/lib64;=/usr/X11R6/lib64',true);
+ {$else}
+ {$ifdef aarch64}
+       LibrarySearchPath.AddLibraryPath(sysrootpath,'=/usr/lib',true);

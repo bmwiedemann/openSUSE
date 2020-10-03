@@ -1,0 +1,50 @@
+From f1435207a2fbe35bf616c6d58eecd8801dbe5642 Mon Sep 17 00:00:00 2001
+From: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Date: Mon, 31 Aug 2020 11:08:57 +0200
+Subject: [PATCH 19/32] topology: decode: Add enum control texts as separate
+ element
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Texts are separate sections that should referenced by enum control.
+
+Signed-off-by: Piotr Maziarz <piotrx.maziarz@linux.intel.com>
+Reviewed-by: Cezary Rojewski <cezary.rojewski@intel.com>
+Reviewed-by: Amadeusz Sławiński <amadeuszx.slawinski@linux.intel.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/ctl.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 02e482e7d05d..1f3984616a65 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -1088,11 +1088,19 @@ int tplg_add_enum(snd_tplg_t *tplg, struct snd_tplg_enum_template *enum_ctl,
+ 	}
+ 
+ 	if (enum_ctl->texts != NULL) {
++		struct tplg_elem *texts = tplg_elem_new_common(tplg, NULL,
++						enum_ctl->hdr.name, SND_TPLG_TYPE_TEXT);
++
++		texts->texts->num_items = num_items;
+ 		for (i = 0; i < num_items; i++) {
+-			if (enum_ctl->texts[i] != NULL)
+-				snd_strlcpy(ec->texts[i], enum_ctl->texts[i],
+-					    SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
++			if (!enum_ctl->texts[i])
++				continue;
++			snd_strlcpy(ec->texts[i], enum_ctl->texts[i],
++				    SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
++			snd_strlcpy(texts->texts->items[i], enum_ctl->texts[i],
++				    SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
+ 		}
++		tplg_ref_add(elem, SND_TPLG_TYPE_TEXT, enum_ctl->hdr.name);
+ 	}
+ 
+ 	if (enum_ctl->values != NULL) {
+-- 
+2.16.4
+

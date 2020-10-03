@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 10:14:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on ppc64le:
+  * fpc-fix-library-paths-on-ppc64.patch
+
+-------------------------------------------------------------------
 Thu Sep 24 06:30:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add aarch64-fpc-compilation-fix.patch: pass vfp flags to 

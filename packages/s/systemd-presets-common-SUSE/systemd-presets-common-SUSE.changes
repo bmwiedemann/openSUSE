@@ -6,6 +6,11 @@ Wed Aug 26 08:11:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
   (boo#1165780)
 
 -------------------------------------------------------------------
+Tue Aug 11 17:25:57 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Enable dnf-makecache.timer
+
+-------------------------------------------------------------------
 Wed Jun 12 14:52:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

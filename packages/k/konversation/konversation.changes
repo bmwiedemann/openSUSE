@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 30 10:54:25 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.7.6:
+  * Fixed loading of nick icon theme to deal with multiple copies
+  * Fixed configuration dialogs to have consistent indentation of
+    subordinate options as well as spacings between labels & fields
+  * Fixed building against Qt 5.15.
+  * Fixed building against Qt 5.13.
+  * Translations improved
+- Drop patches merged upstream:
+  * add-missing-includes.patch
+  * 0001-Fix-build-with-Qt-5.13.patch
+
+-------------------------------------------------------------------
+Thu Aug 27 11:17:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Apr 29 09:46:20 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix build against Qt 5.15:

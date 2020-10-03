@@ -459,4 +459,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>775156</requestid>
   </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>a81665c7e9a1de35704db5d8408f698a</srcmd5>
+    <version>3.2.7b</version>
+    <time>1601744100</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream security patches/commits
+  * 100e27.patch
+  * 3065eb.patch
+  * ca48cc.patch
+
+- Do hardening via compile and linker flags</comment>
+    <requestid>838775</requestid>
+  </revision>
 </revisionlist>

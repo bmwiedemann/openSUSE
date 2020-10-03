@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Sep 25 06:25:54 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.3.1
+  * fix crash in nsImapProtocol::CreateNewLineFromSocket (bmo#1667120)
+
+-------------------------------------------------------------------
+Wed Sep 23 21:04:45 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.3.0
+  MFSA 2020-44 (bsc#1176756)
+  * CVE-2020-15677 (bmo#1641487)
+    Download origin spoofing via redirect
+  * CVE-2020-15676 (bmo#1646140)
+    XSS when pasting attacker-controlled data into a
+    contenteditable element
+  * CVE-2020-15678 (bmo#1660211)
+    When recursing through layers while scrolling, an iterator
+    may have become invalid, resulting in a potential use-after-
+    free scenario
+  * CVE-2020-15673 (bmo#1648493, bmo#1660800)
+    Memory safety bugs fixed in Thunderbird 78.3
+- requires NSPR >= 4.25.1
+- removed obsolete thunderbird-bmo1664607.patch
+
+-------------------------------------------------------------------
+Sun Sep 13 20:10:39 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.2.2
+  https://www.thunderbird.net/en-US/thunderbird/78.2.2/releasenotes
+- added thunderbird-bmo1664607.patch required for builds w/o updater
+  (boo#1176384)
+
+-------------------------------------------------------------------
+Mon Aug 31 12:08:25 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.2.1
+  * based on Mozilla's 78 ESR codebase
+  * many new and changed features
+    https://www.thunderbird.net/en-US/thunderbird/78.0/releasenotes/#whatsnew
+  * built-in OpenPGP support (enigmail neither required nor supported)
+- added platform patches:
+  * mozilla-s390x-skia-gradient.patch
+  * mozilla-pipewire-0-3.patch
+  * mozilla-bmo1512162.patch
+  * mozilla-bmo1626236.patch
+  * mozilla-bmo998749.patch
+  * mozilla-sandbox-fips.patch
+- removed obsolete platform patches
+  * mozilla-s390-bigendian.patch
+  * mozilla-nestegg-big-endian.patch
+  * mozilla-openaes-decl.patch
+  * mozilla-cubeb-noreturn.patch
+
+-------------------------------------------------------------------
 Sun Aug 30 11:05:01 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 68.12.0

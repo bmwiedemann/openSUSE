@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Loader
 Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/v%version.tar.gz
 Source9:        baselibs.conf
+Patch0:         0001-Revert-loader-Return-error-if-layer-loading-failed.patch
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  pkgconfig
@@ -66,7 +67,7 @@ This subpackage contains the development headers for packages wanting
 to make use of Vulkan.
 
 %prep
-%autosetup -n Vulkan-Loader-%version
+%autosetup -p1 -n Vulkan-Loader-%version
 
 %build
 %cmake \

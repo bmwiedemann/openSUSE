@@ -1,0 +1,110 @@
+From d824b461ae807ea436e2df36da9c2212e485e3e6 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 19 Jun 2020 18:40:46 +0200
+Subject: [PATCH 06/32] pcm: dmix: Fix semaphore usage with lockless operation
+
+As Maarten Baert recently reported, the current dmix code applies the
+semaphore unnecessarily around mixing streams even when the lockless
+mix operation is used on x86.  This was rather introduced mistakenly
+at the commit 267d7c728196 ("Add support of little-endian on
+i386/x86_64 dmix") where the generic dmix code was included on x86,
+too.
+
+For achieving the original performance back, this patch changes the
+semaphore handling to be checked at run time instead of statically at
+compile time.
+
+Reviewed-by: Jaroslav Kysela <perex@perex.cz>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/pcm/pcm_direct.h       |  1 +
+ src/pcm/pcm_dmix.c         | 18 +++++++++++-------
+ src/pcm/pcm_dmix_generic.c |  2 +-
+ src/pcm/pcm_dmix_i386.c    |  1 +
+ src/pcm/pcm_dmix_x86_64.c  |  1 +
+ 5 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/src/pcm/pcm_direct.h b/src/pcm/pcm_direct.h
+index 8a236970a3a1..2150bce15449 100644
+--- a/src/pcm/pcm_direct.h
++++ b/src/pcm/pcm_direct.h
+@@ -186,6 +186,7 @@ struct snd_pcm_direct {
+ 			mix_areas_32_t *remix_areas_32;
+ 			mix_areas_24_t *remix_areas_24;
+ 			mix_areas_u8_t *remix_areas_u8;
++			unsigned int use_sem;
+ 		} dmix;
+ 		struct {
+ 			unsigned long long chn_mask;
+diff --git a/src/pcm/pcm_dmix.c b/src/pcm/pcm_dmix.c
+index 843fa3168756..e9343b19a536 100644
+--- a/src/pcm/pcm_dmix.c
++++ b/src/pcm/pcm_dmix.c
+@@ -292,13 +292,17 @@ static void remix_areas(snd_pcm_direct_t *dmix,
+  * the area via semaphore
+  */
+ #ifndef DOC_HIDDEN
+-#ifdef NO_CONCURRENT_ACCESS
+-#define dmix_down_sem(dmix) snd_pcm_direct_semaphore_down(dmix, DIRECT_IPC_SEM_CLIENT)
+-#define dmix_up_sem(dmix) snd_pcm_direct_semaphore_up(dmix, DIRECT_IPC_SEM_CLIENT)
+-#else
+-#define dmix_down_sem(dmix)
+-#define dmix_up_sem(dmix)
+-#endif
++static void dmix_down_sem(snd_pcm_direct_t *dmix)
++{
++	if (dmix->u.dmix.use_sem)
++		snd_pcm_direct_semaphore_down(dmix, DIRECT_IPC_SEM_CLIENT);
++}
++
++static void dmix_up_sem(snd_pcm_direct_t *dmix)
++{
++	if (dmix->u.dmix.use_sem)
++		snd_pcm_direct_semaphore_up(dmix, DIRECT_IPC_SEM_CLIENT);
++}
+ #endif
+ 
+ /*
+diff --git a/src/pcm/pcm_dmix_generic.c b/src/pcm/pcm_dmix_generic.c
+index 40c08747a74a..8a5b6f148556 100644
+--- a/src/pcm/pcm_dmix_generic.c
++++ b/src/pcm/pcm_dmix_generic.c
+@@ -43,7 +43,6 @@ static inline unsigned long __cmpxchg(volatile void *ptr, unsigned long old,
+ #ifndef ARCH_ADD
+ #define ARCH_ADD(p,a) (*(p) += (a))
+ #define ARCH_CMPXCHG(p,a,b) (*(p)) /* fake */
+-#define NO_CONCURRENT_ACCESS	/* use semaphore to avoid race */
+ #define IS_CONCURRENT	0	/* no race check */
+ #endif
+ 
+@@ -530,6 +529,7 @@ static void generic_mix_select_callbacks(snd_pcm_direct_t *dmix)
+ 	dmix->u.dmix.mix_areas_u8 = generic_mix_areas_u8;
+ 	dmix->u.dmix.remix_areas_24 = generic_remix_areas_24;
+ 	dmix->u.dmix.remix_areas_u8 = generic_remix_areas_u8;
++	dmix->u.dmix.use_sem = 1;
+ }
+ 
+ #endif
+diff --git a/src/pcm/pcm_dmix_i386.c b/src/pcm/pcm_dmix_i386.c
+index 1ab983a8a373..82a91c5c2897 100644
+--- a/src/pcm/pcm_dmix_i386.c
++++ b/src/pcm/pcm_dmix_i386.c
+@@ -135,4 +135,5 @@ static void mix_select_callbacks(snd_pcm_direct_t *dmix)
+ 		dmix->u.dmix.mix_areas_24 = smp > 1 ? mix_areas_24_smp: mix_areas_24;
+ 		dmix->u.dmix.remix_areas_24 = smp > 1 ? remix_areas_24_smp: remix_areas_24;
+ 	}
++	dmix->u.dmix.use_sem = 0;
+ }
+diff --git a/src/pcm/pcm_dmix_x86_64.c b/src/pcm/pcm_dmix_x86_64.c
+index 34c40d4e9d1d..4d882bfd01bf 100644
+--- a/src/pcm/pcm_dmix_x86_64.c
++++ b/src/pcm/pcm_dmix_x86_64.c
+@@ -102,4 +102,5 @@ static void mix_select_callbacks(snd_pcm_direct_t *dmix)
+ 	dmix->u.dmix.remix_areas_32 = smp > 1 ? remix_areas_32_smp : remix_areas_32;
+ 	dmix->u.dmix.mix_areas_24 = smp > 1 ? mix_areas_24_smp : mix_areas_24;
+ 	dmix->u.dmix.remix_areas_24 = smp > 1 ? remix_areas_24_smp : remix_areas_24;
++	dmix->u.dmix.use_sem = 0;
+ }
+-- 
+2.16.4
+

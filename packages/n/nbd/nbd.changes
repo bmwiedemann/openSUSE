@@ -5,6 +5,20 @@ Fri Sep 18 08:53:47 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
   package now.
 
 -------------------------------------------------------------------
+Fri Sep 11 18:22:18 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop use of DISABLE_RESTART_ON_UPDATE=yes
+
+  This interface is deprecated and %service_del_postun_without_restart
+  should be preferred.
+
+  However the variable was misused as DISABLE_RESTART_ON_UPDATE=yes
+  was not supposed to be used with %service_add_post in %post but with
+  %service_del_postun in %postun section.
+
+  Given that no one noticed that for years let's just drop it.
+
+-------------------------------------------------------------------
 Thu Aug 20 07:03:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix typo in previous commit (%{prefix/lib} ->%{_prefix}/lib).
@@ -534,3 +548,4 @@ Mon Jul  4 18:24:39 CEST 2005 - garloff@suse.de
 - Initial creation of package.
 
 -------------------------------------------------------------------
+Mon Jul  4 18:24:39 CEST 2005 - 

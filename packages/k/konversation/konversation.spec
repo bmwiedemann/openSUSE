@@ -18,47 +18,43 @@
 
 %define kf5_version 5.25.0
 Name:           konversation
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://konversation.kde.org/
-Source0:        http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-Qt-5.13.patch
-Patch1:         add-missing-includes.patch
+Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
-BuildRequires:  karchive-devel >= %{kf5_version}
-BuildRequires:  kbookmarks-devel >= %{kf5_version}
-BuildRequires:  kconfig-devel >= %{kf5_version}
-BuildRequires:  kconfigwidgets-devel >= %{kf5_version}
-BuildRequires:  kcoreaddons-devel >= %{kf5_version}
-BuildRequires:  kcrash-devel >= %{kf5_version}
-BuildRequires:  kdbusaddons-devel >= %{kf5_version}
-BuildRequires:  kdoctools-devel >= %{kf5_version}
-BuildRequires:  kemoticons-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kglobalaccel-devel >= %{kf5_version}
-BuildRequires:  ki18n-devel >= %{kf5_version}
-BuildRequires:  kiconthemes-devel >= %{kf5_version}
-BuildRequires:  kidletime-devel >= %{kf5_version}
-BuildRequires:  kio-devel >= %{kf5_version}
-BuildRequires:  kitemviews-devel >= %{kf5_version}
-BuildRequires:  knotifications-devel >= %{kf5_version}
-BuildRequires:  knotifyconfig-devel >= %{kf5_version}
-BuildRequires:  kparts-devel >= %{kf5_version}
-BuildRequires:  kwallet-devel >= %{kf5_version}
-BuildRequires:  kwidgetsaddons-devel >= %{kf5_version}
-BuildRequires:  kwindowsystem-devel >= %{kf5_version}
 BuildRequires:  libqca-qt5-devel
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  pkgconfig
-BuildRequires:  solid-devel >= %{kf5_version}
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.5.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.5.0
+BuildRequires:  cmake(KF5Archive) >= %{kf5_version}
+BuildRequires:  cmake(KF5Bookmarks) >= %{kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{kf5_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
+BuildRequires:  cmake(KF5Emoticons) >= %{kf5_version}
+BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
+BuildRequires:  cmake(KF5IdleTime) >= %{kf5_version}
+BuildRequires:  cmake(KF5ItemViews) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
+BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
+BuildRequires:  cmake(KF5Parts) >= %{kf5_version}
+BuildRequires:  cmake(KF5Solid) >= %{kf5_version}
+BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qt5Core) >= 5.5.0
+BuildRequires:  cmake(Qt5Gui) >= 5.5.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.5.0
 Recommends:     %{name}-lang = %{version}
 
 %description
@@ -81,11 +77,11 @@ Features:
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -95,18 +91,18 @@ Features:
 %files
 %license COPYING
 %doc AUTHORS COPYING-DOCS ChangeLog NEWS README
+%doc %{_kf5_htmldir}/en/konversation/
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_sharedir}/kconf_update/
-%doc %{_kf5_htmldir}/en/konversation/
 %{_kf5_applicationsdir}/org.kde.konversation.desktop
 %{_kf5_appstreamdir}/org.kde.konversation.appdata.xml
 %{_kf5_bindir}/konversation
 %{_kf5_iconsdir}/hicolor/*/actions/konv_message.*
 %{_kf5_iconsdir}/hicolor/*/apps/konversation.*
+%{_kf5_kxmlguidir}/konversation/
 %{_kf5_notifydir}/konversation.notifyrc
 %{_kf5_sharedir}/kconf_update/konversation*
 %{_kf5_sharedir}/konversation/
-%{_kf5_kxmlguidir}/konversation/
 
 %files lang -f %{name}.lang
 %dir %{_kf5_htmldir}/pt_BR/

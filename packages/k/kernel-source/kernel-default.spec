@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.8
-%define patchversion 5.8.10
+%define patchversion 5.8.12
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -51,7 +51,7 @@
 
 # Define some CONFIG variables as rpm macros as well. (rpm cannot handle
 # defining them all at once.)
-%define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB
+%define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES
 %{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
 %define split_extra (%CONFIG_MODULES == "y" && %CONFIG_SUSE_KERNEL_SUPPORTED == "y")
 %if %CONFIG_MODULES != "y"
@@ -68,9 +68,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.8.10
+Version:        5.8.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gaf3e800
+Release:        <RELEASE>.g79e03c2
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-af3e800080ea43fbe9f7197f1b859aa8faafdcda
-Provides:       kernel-srchash-af3e800080ea43fbe9f7197f1b859aa8faafdcda
+Provides:       kernel-%build_flavor-base-srchash-79e03c25f1842966b73fd48825bb1b7d969c0fe5
+Provides:       kernel-srchash-79e03c25f1842966b73fd48825bb1b7d969c0fe5
 # END COMMON DEPS
-Provides:       %name-srchash-af3e800080ea43fbe9f7197f1b859aa8faafdcda
+Provides:       %name-srchash-79e03c25f1842966b73fd48825bb1b7d969c0fe5
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -869,6 +869,15 @@ if [ %CONFIG_MODULES = y ]; then
     # List of symbols that are used to generate kernel livepatches
     %if 0%{?klp_symbols}
         cp Symbols.list %rpm_install_dir/%cpu_arch/%build_flavor
+        echo %obj_install_dir/%cpu_arch/%build_flavor/Symbols.list > %my_builddir/livepatch-files.no_dir
+
+        %if %CONFIG_LIVEPATCH_IPA_CLONES == "y"
+            find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' > ipa-clones.list
+            cp ipa-clones.list %rpm_install_dir/%cpu_arch/%build_flavor
+            echo %obj_install_dir/%cpu_arch/%build_flavor/ipa-clones.list >> %my_builddir/livepatch-files.no_dir
+            tar -C %kernel_build_dir --verbatim-files-from -T ipa-clones.list -cf- | tar -C %rpm_install_dir/%cpu_arch/%build_flavor -xvf-
+            cat ipa-clones.list | sed -e 's|^|%obj_install_dir/%cpu_arch/%build_flavor/|' >> %my_builddir/livepatch-files.no_dir
+        %endif
     %endif
 
     # Table of types used in exported symbols (for modversion debugging).
@@ -999,6 +1008,10 @@ add_dirs_to_filelist() {
 }
 
 # Collect the file lists.
+if [ -f %my_builddir/livepatch-files.no_dir ] ; then
+    cat %my_builddir/livepatch-files.no_dir | add_dirs_to_filelist > %my_builddir/livepatch-files
+fi
+
 shopt -s nullglob dotglob
 > %my_builddir/kernel-devel.files
 for file in %buildroot/boot/symtypes* %buildroot/lib/modules/*/{build,source}; do
@@ -1308,13 +1321,7 @@ kernel symbols and its respective kernel object . This list is to be used by
 the klp-convert tool, which helps livepatch developers by enabling automatic
 symbol resolution.
 
-%files %{livepatch}-devel
-%defattr(-, root, root)
-%dir %obj_install_dir
-%dir %obj_install_dir/%cpu_arch
-%dir %obj_install_dir/%cpu_arch_flavor/
-%obj_install_dir/%cpu_arch_flavor/Symbols.list
-
+%files %{livepatch}-devel -f livepatch-files
 %endif
 
 %if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"

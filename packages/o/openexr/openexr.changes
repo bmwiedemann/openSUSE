@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 30 06:55:23 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.5.3
+  * Various sanitizer/fuzz-identified issues related to handling of invalid input
+  * Fixes to misc compiler warnings
+  * Cmake fix for building on arm64 macOS (#772)
+  * Read performance optimization (#782)
+  * Fix for building on non-glibc (#798)
+  * Fixes to tests
+
+-------------------------------------------------------------------
 Tue Sep 15 18:56:44 CEST 2020 - ro@suse.de
 
 - Disable testsuite also on s390/s390x, probably will not pass
