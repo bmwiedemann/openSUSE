@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 28 08:54:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- grep 3.5:
+  * message for matching binary files now sent to stderr, and changed
+  * --files-without-match (-L) behavior reverted to again succeed 
+    when a line is selected, not when a file is listed
+  * various bug fixes
+- drop gnulib-test-avoid-FP-perror-strerror.patch, upstream
+
+-------------------------------------------------------------------
 Mon Aug 31 10:23:23 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - gnulib-test-avoid-FP-perror-strerror.patch: Add patch to

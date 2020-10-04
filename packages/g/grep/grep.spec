@@ -17,7 +17,7 @@
 
 
 Name:           grep
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        Print lines matching a pattern
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=grep&download=1#/%{name}.keyring
 Source4:        profile.sh
-Patch1:         gnulib-test-avoid-FP-perror-strerror.patch
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
 BuildRequires:  pcre-devel
@@ -43,7 +42,6 @@ match to a specified pattern.  By default, grep prints the matching lines.
 
 %prep
 %setup -q
-%patch1
 
 %build
 %configure \

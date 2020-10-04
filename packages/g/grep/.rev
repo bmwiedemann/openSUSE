@@ -624,4 +624,12 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
   'test-strerror_r', visible on armv7l.</comment>
     <requestid>830790</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>040270c927bf3ac4cd837182a71f8ffc</srcmd5>
+    <version>3.5</version>
+    <time>1601825398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838208</requestid>
+  </revision>
 </revisionlist>
