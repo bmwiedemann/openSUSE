@@ -19,7 +19,7 @@ Index: libutempter-1.1.6/Makefile
  	$(INSTALL) -p -m2711 $(PROJECT) $(DESTDIR)$(libexecdir)/$(PROJECT)/
  	$(INSTALL) -p -m644 $(PROJECT).h $(DESTDIR)$(includedir)/
  	$(INSTALL) -p -m755 $(SHAREDLIB) $(DESTDIR)$(libdir)/$(SHAREDLIB).$(VERSION)
-@@ -75,9 +78,11 @@ install:
+@@ -75,6 +78,7 @@ install:
  	ln -s $(SHAREDLIB).$(VERSION) $(DESTDIR)$(libdir)/$(SONAME)
  	ln -s $(SONAME) $(DESTDIR)$(libdir)/$(SHAREDLIB)
  	$(INSTALL) -p -m644 $(PROJECT).3 $(DESTDIR)$(man3dir)/
@@ -27,10 +27,6 @@ Index: libutempter-1.1.6/Makefile
  	for n in lib$(PROJECT) utempter_add_record utempter_remove_record \
  	    utempter_remove_added_record utempter_set_helper; do \
  		ln -s $(PROJECT).3 $(DESTDIR)$(man3dir)/$$n.3; \
-+		ln -s $(PROJECT).8 $(DESTDIR)$(man8dir)/$$n.8; \
- 	done
- 
- clean:
 Index: libutempter-1.1.6/utempter.8
 ===================================================================
 --- /dev/null
@@ -44,9 +40,9 @@ Index: libutempter-1.1.6/utempter.8
 +.SH NAME
 +utempter \- privileged helper program for utmp/wtmp updates
 +.SH "SYNOPSIS"
-+\fButempter\fR \-a \fIslave-device-name\fR  \fIhost\fR
++\fButempter\fR add \fIhost\fR
 +.sp
-+\fButempter\fR \-d \fIslave-device-name\fR
++\fButempter\fR del\fR
 +.SH "DESCRIPTION"
 +.B utempter
 +is a privileged helper program that writes utmp/wtmp entries for unprivileged 
@@ -54,9 +50,9 @@ Index: libutempter-1.1.6/utempter.8
 +
 +.SH "OPTIONS"
 +The following options are supported:
-+.IP "\fB-a \fIslave-device-name host\fR
++.IP "\fBadd \fIhost\fR"
 +add an entry to the utmp/wtmp file
-+.IP "\fB\-d \fIslave-device-name\fR 
++.IP "\fBdel\fR" 
 +delete an entry from the utmp file
 +
 +.SH "RETURN VALUE"

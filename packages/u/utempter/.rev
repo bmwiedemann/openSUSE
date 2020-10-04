@@ -265,4 +265,15 @@
     <comment>- fixed utempter location after libexecdir change (bsc#1175925) (forwarded request 831927 from msmeissn)</comment>
     <requestid>831928</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>a7505f4b78e77957eb6deb22f7eb8cfb</srcmd5>
+    <version>1.2.0</version>
+    <time>1601825403</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix License, libutempter has been LGPL-2.1+ for the last 19 years
+- Fix utempter.8 man page to match real parameters
+- Remove erroneous links to utempter.8 man page
+- Clean up spec file (forwarded request 838373 from StefanBruens)</comment>
+    <requestid>838415</requestid>
+  </revision>
 </revisionlist>

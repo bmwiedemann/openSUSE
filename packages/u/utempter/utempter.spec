@@ -22,7 +22,7 @@ Name:           utempter
 Version:        1.2.0
 Release:        0
 Summary:        A privileged helper for utmp and wtmp updates
-License:        MIT
+License:        LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://github.com/altlinux/libutempter/
 Source:         ftp://ftp.altlinux.org/pub/people/ldv/utempter/lib%{name}-%{version}.tar.gz
@@ -31,7 +31,6 @@ Source2:        baselibs.conf
 Source3:        %{name}.keyring
 Patch0:         utempter.eal3.diff
 Patch1:         utempter-no-staticlib.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Utempter is a utility that allows non-privileged applications such as
@@ -51,9 +50,7 @@ package contains the development files needed.
 Summary:        Shared library of utempter
 Group:          Development/Libraries/C and C++
 Requires(post): permissions
-%if 0%{?suse_version} >= 1330
 Requires(pre):  group(%{utmpGroup})
-%endif
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < 0.5.6
 
@@ -70,9 +67,7 @@ package contains the library used by applications.
 make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fPIC" CC="gcc" libexecdir=%{_libexecdir}
 
 %install
-export DESTDIR=%{buildroot}
-make PREFIX=$DESTDIR libdir=%{_libdir} libexecdir=%{_libexecdir} DESTDIR=%{buildroot} install
-chmod 755 $DESTDIR%{_libdir}/libutempter.so*
+make libdir=%{_libdir} libexecdir=%{_libexecdir} DESTDIR=%{buildroot} install
 
 %verifyscript -n %{lname}
 %verify_permissions -e %{_libexecdir}/utempter/utempter
@@ -84,7 +79,6 @@ chmod 755 $DESTDIR%{_libdir}/libutempter.so*
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(644,root,root,755)
 %license COPYING
 %dir %{_libexecdir}/utempter
 %attr(02755, root, %{utmpGroup}) %{_libexecdir}/utempter/utempter
@@ -92,9 +86,7 @@ chmod 755 $DESTDIR%{_libdir}/libutempter.so*
 %attr(644,root,root) %doc %{_mandir}/man8/*
 
 %files devel
-%defattr(-,root,root)
 %license COPYING
-%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libutempter.so
 %attr(644,root,root) %{_includedir}/utempter.h
 %attr(644,root,root) %doc %{_mandir}/man3/*

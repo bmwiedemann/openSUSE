@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 20:25:57 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix License, libutempter has been LGPL-2.1+ for the last 19 years
+- Fix utempter.8 man page to match real parameters
+- Remove erroneous links to utempter.8 man page
+- Clean up spec file
+
+-------------------------------------------------------------------
 Thu Sep  3 15:52:03 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - fixed utempter location after libexecdir change (bsc#1175925)
