@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 09:26:44 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200930:
+  * whitelist Xorg setuid-root wrapper (bsc#1175867)
+
+-------------------------------------------------------------------
 Wed Sep 09 10:00:18 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 20200909:

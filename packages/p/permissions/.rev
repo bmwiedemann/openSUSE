@@ -1320,4 +1320,13 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * screen: remove /run/uscreens covered by systemd-tmpfiles (bsc#1171879)</comment>
     <requestid>833221</requestid>
   </revision>
+  <revision rev="144" vrev="24">
+    <srcmd5>8ed79530ead78e6137e46c5faecff459</srcmd5>
+    <version>unknown</version>
+    <time>1601825404</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200930:
+  * whitelist Xorg setuid-root wrapper (bsc#1175867)</comment>
+    <requestid>838733</requestid>
+  </revision>
 </revisionlist>
