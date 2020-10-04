@@ -19,7 +19,7 @@
 %define major_version 5.3
 %define libname liblua5_3-5
 Name:           lua53
-Version:        5.3.5
+Version:        5.3.6
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        MIT
@@ -29,10 +29,10 @@ Source:         http://www.lua.org/ftp/lua-%{version}.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE tweak the buildsystem to produce what is needed for SUSE
 Patch0:         lua-build-system.patch
-# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.3.5
-Patch1:         upstream-bugs.patch
+# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.3.6
+#Patch1:        upstream-bugs.patch
 # PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.0
-Patch2:         upstream-bugs-backport-lua54.patch
+#Patch2:        upstream-bugs-backport-lua54.patch
 BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig

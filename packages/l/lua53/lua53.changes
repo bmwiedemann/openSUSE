@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 25 14:46:59 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.3.6:
+  * Fixes bugs found in Lua 5.3.5 and Lua 5.4.0
+  * Lua 5.3 is now EOL
+- Removed upstream-bugs.patch: new release (no bugs found yet)
+- Removed upstream-bugs-backport-lua54.patch: new release (no bugs found yet)
+
+-------------------------------------------------------------------
 Wed Aug 19 14:03:08 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Added upstream-bugs.patch: upstream bug patches
