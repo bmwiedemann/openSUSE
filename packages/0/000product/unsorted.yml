@@ -1911,8 +1911,8 @@ unsorted:
   - cockpit-bridge 
   - cockpit-dashboard 
   - cockpit-doc 
-  - cockpit-docker: [x86_64] 
   - cockpit-kdump 
+  - cockpit-machines 
   - cockpit-networkmanager 
   - cockpit-packagekit 
   - cockpit-pcp 
@@ -5291,6 +5291,7 @@ unsorted:
   - gnu-regexp 
   - gnu-regexp-demo 
   - gnu-regexp-javadoc 
+  - gnu-unifont-bitmap-fonts 
   - gnu-unifont-legacy-bitmap-fonts 
   - gnu_ddrescue 
   - gnu_parallel 
@@ -7760,6 +7761,7 @@ unsorted:
   - latencytop 
   - latex2html 
   - latex2html-doc 
+  - latex2html-pngicons 
   - latex2rtf 
   - lato-fonts 
   - latrace 
