@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # use opensuserabbit.py | rabbithandle.py
 import datetime
+import io
 import json
 import os
 import osc.conf
@@ -20,7 +21,19 @@ def pkgmap(p):
          first=p[0:4]
      return outdir+"/"+first.lower()+"/"+p
 
-for line in sys.stdin:
+def watchtail(fp):
+    try:
+        fp.seek(0, os.SEEK_END)
+    except io.UnsupportedOperation:
+        pass # allow pipes
+    while True:
+        new = fp.readline()
+        if new:
+            yield new
+        else:
+            time.sleep(0.25)
+
+for line in watchtail(sys.stdin):
     change = json.loads(line)
     if not 'package' in change:
         continue
