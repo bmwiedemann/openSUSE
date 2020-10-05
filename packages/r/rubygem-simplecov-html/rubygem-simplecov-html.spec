@@ -24,16 +24,15 @@
 #
 
 Name:           rubygem-simplecov-html
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 %define mod_name simplecov-html
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby < 3}
-BuildRequires:  %{ruby => 2.4}
+BuildRequires:  %{ruby >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/colszowka/simplecov-html
+URL:            https://github.com/simplecov-ruby/simplecov-html
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Default HTML formatter for SimpleCov code coverage tool for ruby 2.4+
