@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-json_pure
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 %define mod_name json_pure
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9}
+BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
