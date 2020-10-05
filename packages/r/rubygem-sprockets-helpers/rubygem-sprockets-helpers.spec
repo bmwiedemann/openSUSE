@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sprockets-helpers
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 %define mod_name sprockets-helpers
 %define mod_full_name %{mod_name}-%{version}
