@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct  4 07:28:10 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.5.12
+  * added hyperlink support for the chat window
+  * added new menu entry "Clear All Stored Solo Settings"
+  * fade in all clients at the server when entering a server to
+    avoid the volume is at 100% when joining a server
+  * added a qmake CONFIG flag for disabling the automatic
+    version check
+  * avoid confusion with the Server Address field on the
+    connection setup window by no longer showing the server name
+    in that field since it is only intended for entering IP
+    addresses or valid server URLs
+  * removed the "Show Creative Commons BY-NC-SA 4.0 Licence
+    Dialog" setting from the server GUI and changed the
+    -L/--licence text in the licence dialog to "Do you agree
+    to the text in the chat window?" so that a licence text must
+    now be given in the server welcome message
+  * added a protocol message for a reduced server list to
+    improve the situation caused by UDP packet fragmentation
+  * added translation: Slovak
+  * bug fix: crash when using the jam recorder in the server
+- Dropped Jamulus-disable_version_check.patch (merged upstream)
+
+-------------------------------------------------------------------
 Thu Sep 24 18:57:44 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.5.11

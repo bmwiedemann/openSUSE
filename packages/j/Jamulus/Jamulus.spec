@@ -17,18 +17,16 @@
 #
 
 
-%define tarball_version 3_5_11
+%define tarball_version 3_5_12
 
 Name:           Jamulus
-Version:        3.5.11
+Version:        3.5.12
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
 URL:            http://llcon.sourceforge.net/index.html
 Source0:        https://github.com/corrados/jamulus/archive/r%{tarball_version}.tar.gz#/jamulus-r%{tarball_version}.tar.gz
 Source1:        %{name}_icon.png
-# PATCH-FIX-UPSTREAM Jamulus-disable_version_check.patch
-Patch0:         Jamulus-disable_version_check.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
