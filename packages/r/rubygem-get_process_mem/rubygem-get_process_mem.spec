@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-get_process_mem
-Version:        0.2.5
+Version:        0.2.7
 Release:        0
 %define mod_name get_process_mem
 %define mod_full_name %{mod_name}-%{version}
