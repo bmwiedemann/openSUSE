@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Wed Sep 30 13:41:48 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Clean up specfile:
+  * Remove no longer required autoconf, automake and intltool build deps
+  * Remove irrelevant cmake build dep
+  * Remove duplicated libjpeg/exiv2 devel build deps
+  * Add comment for overriding meson_build directory
+  
+-------------------------------------------------------------------
+Mon Sep 21 06:49:37 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.99.4
+  * New UI with a single window
+  * New demosaicing algorithms, RCD is now the default one
+  * New algorithm to fix the AF square with XTRANS sensor
+  * New support for FITS decompression and compression with
+    Rice/Gzip and HCompress methods
+  * New support for quantization and HCompress scale factor settings
+    for FITS compression 
+  * New functions to extract Ha and Ha/OII from RGB images
+  * New linear match function
+  * New link command to create symbolic links
+  * New convert command to convert all files (and link FITS)
+  * New preference entries for FITS compression settings
+  * New native image format: 32-bit floating point image
+  * New native sequence format: FITS sequence in a single image
+  * New UI for sequence image list
+  * New zoom handing: ctrl+scroll (up and down) is the new way
+    to zoom in and out
+  * New preview in open dialog
+  * New language selector in preferences
+  * New image importer: HEIF format
+  * New stacking filtering criterion (weighted FWHM).
+    It can exclude more spurious images
+  * New RL deconvolution tool
+  * New keyword CTYPE3 for RGB FITS in order to be used by Aladin
+  * New binary siril-cli to start siril without X server
+  * New preference entries with darks/biases/flat libraries
+  * New preliminary Meson support (Florian Benedetti)
+  * New ROWORDER FITS keyword that should be used by
+    several programm now
+  * X(Y)BAYEROFF can now be configured in preferences
+  * Parallelizing conversion and some other functions
+  * CI file was totally rewritten (Florian Benedetti)
+  * Config file was moved to more standard path
+  * Optimization of several algorithms (Ingo Weyrich)
+  * Background extraction is now available for sequence
+  * Midtone Transfer Function is now available for sequence
+  * Fixed code for Big Endian machine (Flössie)
+  * Fixed bug in SER joining operation when Bayer information was lost
+  * Fixed a bug of inaccessible directories in MacOS Catalina
+  * Fixed crash on some OpenCV operation with monochrome images
+  * Fixed annoying error boxes about missing disk drives on Windows
+
+-------------------------------------------------------------------
+Thu Jun 18 07:04:56 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon to allow building against GCC10 
+
+-------------------------------------------------------------------
+Mon Mar 23 00:03:21 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.9.12
+  http://free-astro.org/index.php?title=Siril:0.9.12
+- add debian files
+
+-------------------------------------------------------------------
+Sat Oct 19 23:23:44 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- add buildrequires for some missing features
+  - video support: libavformat libavutil >= 55.20 libavcodec
+    libswscale libswresample
+  - websupport: libcurl
+  - ffms2
+
+-------------------------------------------------------------------
+Sat Oct 19 23:01:21 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.9.11
+  http://free-astro.org/index.php?title=Siril:0.9.11
+
+-------------------------------------------------------------------
+Mon Mar 18 16:27:53 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- also package mime info file
+
+-------------------------------------------------------------------
+Mon Mar 18 16:22:09 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- install appdata and desktop file
+
+-------------------------------------------------------------------
+Mon Mar 18 14:47:20 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.9.10
+  http://free-astro.org/index.php?title=Siril:0.9.10
+
+-------------------------------------------------------------------
+Sun Jan 13 00:54:08 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.9.9
+  http://free-astro.org/index.php?title=Siril:0.9.9
+
+-------------------------------------------------------------------
+Fri Apr 13 21:02:46 UTC 2018 - mrueckert@suse.de
+
+- update to 0.9.8.3
+
+-------------------------------------------------------------------
+Fri Nov 10 16:48:01 UTC 2017 - mrueckert@suse.de
+
+- update to 0.9.7
+
+-------------------------------------------------------------------
+Mon Jan 23 17:14:31 UTC 2017 - mrueckert@suse.de
+
+- update to 0.9.5
+
+-------------------------------------------------------------------
+Mon May 25 00:27:13 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- initial OBS version
+
