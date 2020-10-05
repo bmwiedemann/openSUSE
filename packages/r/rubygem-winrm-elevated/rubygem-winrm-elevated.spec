@@ -16,26 +16,28 @@
 #
 
 
-%define mod_name winrm-elevated
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-winrm-elevated
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
-Summary:        Ruby library for running commands as elevated
-License:        Apache-2.0
-Group:          Development/Languages/Ruby
-URL:            https://github.com/WinRb/winrm-elevated
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+%define mod_name winrm-elevated
+%define mod_full_name %{mod_name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/WinRb/winrm-elevated
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+Summary:        Ruby library for running commands as elevated
+License:        Apache-2.0
+Group:          Development/Languages/Ruby
 
 %description
 Ruby library for running commands via WinRM as elevated through a scheduled
