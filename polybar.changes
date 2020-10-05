@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu Aug 20 18:42:49 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 3.4.3
+- Fixes GCC 10 Compilation (gh#2098), see gh#2097
+
+-------------------------------------------------------------------
+Fri Feb 28 07:45:27 UTC 2020 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Bump to version 3.4.2
+- Fix:
+    * internal/i3: Workspace icon map misbehaves for empty icon
+    * custom/ipc: Clear content if hook produces no output.
+    * renderer:
+        - The modules on the right no longer overlap the tray or are shifted out of the bar
+        - The gradient when modules are shifted out of the bar (because there is not enough space) is now drawn correctly in all circumstances
+        - build: Fixed a compilation issue in gcc10
+
+-------------------------------------------------------------------
+Thu Oct 31 08:33:40 UTC 2019 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Removed python2 as dependency (EOL)
+
+-------------------------------------------------------------------
+Tue Oct 15 21:17:25 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Use c++_compiler in BuildRequires instead of clang
+
+-------------------------------------------------------------------
+Thu Aug 22 16:11:44 UTC 2019 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Bump to version 3.4.0
+- Add new dependency: python-Sphinx
+
+-------------------------------------------------------------------
+Wed Apr  3 07:25:45 UTC 2019 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Bump to version 3.3.1
+- Removed polybar-3.3.0-libtype.patch
+
+-------------------------------------------------------------------
+Tue Jan 29 10:13:30 UTC 2019 - mvetter@suse.com
+
+- Remove `userconfig` argument from make:
+  This actually is intended to install the config in the users
+  home directory. Not possible here.
+
+-------------------------------------------------------------------
+Mon Jan 28 08:09:29 UTC 2019 - mvetter@suse.com
+
+- Add polybar-3.3.0-libtype.patch:
+  Fix usage with our cmake macros
+
+-------------------------------------------------------------------
+Fri Jan 25 12:00:28 UTC 2019 - mateusz.mielczarek2@gmail.com
+
+- Init package
