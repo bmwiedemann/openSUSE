@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-excon
-Version:        0.73.0
+Version:        0.76.0
 Release:        0
 %define mod_name excon
 %define mod_full_name %{mod_name}-%{version}
