@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sun Oct  4 13:09:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 51.0.0
+  New features and enhancements:
+  * mkvmerge, mkvpropedit, MKVToolNix GUI: IETF BCP 47 language
+    tags: added missing support for UN M.49 regions for which
+    there are no corresponding ISO 3166 alpha codes. This
+    enables language tags such as `es-419` = Spanish in
+    Latin America and the Caribbean.
+  * MKVToolNix GUI: IETF BCP 47 language tags: the text in the
+    widget displaying the current language & the corresponding
+    edit button is now displayed like a link (depending on the
+    theme: different color & underlined), making it clearer
+    that not just the edit button can be clicked but the text,
+    too.
+  Bug fixes:
+  * mkvmerge: AV1 parser: fixed mkvmerge crashing after uncaught
+    exceptions due to certain data conditions. Found by fuzzying.
+  * mkvmerge: AV1 packetizer: the duration of frames wasn't set
+    properly. When appending AV1 IVF or OBU files this meant that
+    the last frame of the Nth file and the first frame of file
+    N+1 had the same timestamp.
+  * mkvmerge: DTS reader: fixed handling of buffers with an odd
+    length when byte-swapped DTS is detected so that mkvmerge
+    doesn't abort with a failed assertion. Found by fuzzying.
+  * mkvmerge: h.264/AVC and h.265/HEVC elementary stream
+    readers: mkvmerge will no longer claim to recognize data
+    that looks like AVC or HEVC but with invalid video
+    width/height values as that lead to failed assertions in
+    libEBML later. Found by fuzzying.
+  * mkvmerge: h.265/HEVC parser: fixed mkvmerge aborting after
+    uncaught exceptions due to certain data constellations found
+    by fuzzying.
+  * mkvmerge: IVF reader: fixed mkvmerge crashing with a
+    "division by zero" error due to certain data conditions.
+    Found by fuzzying.
+  * mkvmerge: fixed mkvmerge aborting with a "division by zero"
+    error due to the timestamp scaling factor being 0 after
+    handling certain data constellations. Found by fuzzying.
+  * mkvmerge: track statistics: fixed a "division by zero" error
+    when the content's shorter than 1ms. Found by fuzzying.
+  * mkvmerge, mkvinfo, mkvextract, mkvpropedit: Matroska access
+    class: fixed an invalid memory access under certain data
+    conditions. Found by fuzzying.
+  * MKVToolNix GIU: IETF BCP 47/RFC 5646 language tags: the GUI
+    will no longer open the language dialog when clicking on a
+    disabled language display widget.
+  * MKVToolNix GUI: IETF BCP 47 language tags: the "variants"
+    combo-boxes were not populated even when the language tag was
+    valid and contained at a variant.
+  * MKVToolNix GUI: IETF BCP 47 language tags: when no language
+    is selected, at least one of the other components (extended
+    subtags, region, or variants) has something selected and
+    "private use" is not empty, the GUI would claim this to be a
+    valid tag, which it isn't.
+  * MKVToolNix GUI: multiplexer: when the tracks/chapters/tags
+    selection changes from "at least one entry selected" to "no
+    entry selected", the input controls will be reset to their
+    default state and not just disabled.
+  Build system changes:
+  * `configure` now checks for the presence of the a system-wide
+    installed copy of the JPCRE2 C++ wrapper library for the
+    PCRE2 library and uses that if it's new enough (at least
+    v10.32.1). If not, the bundled version will be used as a
+    fallback.
+
+-------------------------------------------------------------------
 Sun Sep  6 15:01:13 UTC 2020 - aloisio@gmx.com
 
 - Update to version 50.0.0
