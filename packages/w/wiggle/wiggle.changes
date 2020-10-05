@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  5 12:29:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3:
+  * Performance improvements when comparing large files
+  * libwiggle.a can be built for other tools to use
+  * Makefile is quieter and can put binaries elsewhere
+  * Fix a bug that corrupted the format of output in some case
+
+-------------------------------------------------------------------
 Fri Dec 27 10:53:41 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2:
