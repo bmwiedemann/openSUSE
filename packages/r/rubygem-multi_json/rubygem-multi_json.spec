@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-multi_json
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 %define mod_name multi_json
 %define mod_full_name %{mod_name}-%{version}
