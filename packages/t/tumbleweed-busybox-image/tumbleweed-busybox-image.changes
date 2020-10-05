@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 14:36:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove config.sh, busybox does not support rpm anymore (not
+  able to read our current RPMs), so no need to create links
+
+-------------------------------------------------------------------
 Wed Aug 12 14:59:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add busybox-policycoreutils and busybox-selinux-tools
