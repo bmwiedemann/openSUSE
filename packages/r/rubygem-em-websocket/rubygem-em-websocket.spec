@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-em-websocket
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
@@ -22,19 +24,19 @@
 #
 
 Name:           rubygem-em-websocket
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 %define mod_name em-websocket
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            http://github.com/igrigorik/em-websocket
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
-Source1:       gem2rpm.yml
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
+URL:            http://github.com/igrigorik/em-websocket
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 Summary:        EventMachine based WebSocket server
-License:        X11
+License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
@@ -46,7 +48,7 @@ EventMachine based WebSocket server.
 
 %install
 %gem_install \
-  --doc-files="CHANGELOG.rdoc README.md" \
+  --doc-files="CHANGELOG.rdoc LICENCE README.md" \
   -f
 
 %gem_packages
