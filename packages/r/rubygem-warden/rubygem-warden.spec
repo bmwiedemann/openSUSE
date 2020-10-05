@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-warden
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,15 @@
 #
 
 Name:           rubygem-warden
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 %define mod_name warden
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/hassox/warden
+URL:            https://github.com/hassox/warden
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        An authentication library compatible with all Rack-based frameworks
