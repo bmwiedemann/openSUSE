@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 25 14:24:56 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.1.0
+ see installed CHANGES.txt
+
+  === 6.1.0
+  
+    * adapt to ssh's default bahaviors when no username is provided.
+      When Net::SSH.start user is nil and config has no entry
+      we default to Etc.getpwuid.name() instead of Etc.getlogin(). [#749]
+  
+  === 6.1.0.rc1
+  
+    * Make sha2-{256,512}-etm@openssh.com MAC default again [#761]
+    * Support algorithm subtraction syntax from ssh_config [#751]
+  
+
+-------------------------------------------------------------------
 Thu May  7 21:07:37 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 6.0.2
