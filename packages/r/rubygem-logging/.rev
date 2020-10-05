@@ -7,4 +7,12 @@
     <comment>dependency for vagrant 1.9.5</comment>
     <requestid>503469</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>423871f381a014e9432fedfeedcb0d1b</srcmd5>
+    <version>2.3.0</version>
+    <time>1601919120</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838048</requestid>
+  </revision>
 </revisionlist>
