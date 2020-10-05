@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-grape
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 %define mod_name grape
 %define mod_full_name %{mod_name}-%{version}
