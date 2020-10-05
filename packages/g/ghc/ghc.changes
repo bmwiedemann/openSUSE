@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  3 15:58:52 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add --enable-unregistered to configure phase on unregistered
+  architectures
+
+-------------------------------------------------------------------
 Sun Aug  9 11:27:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 8.10.2

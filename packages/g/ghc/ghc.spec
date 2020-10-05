@@ -55,9 +55,11 @@ BuildRequires:  binutils-gold
 %endif
 %ifarch aarch64 %{arm} %{ix86} x86_64
 %if 0%{?suse_version} >= 1550
+BuildRequires:  llvm9
 BuildRequires:  llvm9-devel
 BuildRequires:  clang9 
 %else
+BuildRequires:  llvm
 BuildRequires:  llvm-devel
 BuildRequires:  clang 
 %endif
@@ -257,8 +259,11 @@ export CFLAGS="${CFLAGS:-%optflags}"
   --datadir=%{_datadir} --includedir=%{_includedir} --libdir=%{_libdir} \
   --libexecdir=%{_libexecdir} --localstatedir=%{_localstatedir} \
   --sharedstatedir=%{_sharedstatedir} --mandir=%{_mandir} \
-  --with-system-libffi 
-
+%ifarch %{unregisterised_archs}
+  --enable-unregisterised \
+%endif
+  --with-system-libffi
+  
 %if 0%{?suse_version} >= 1500
 %ifarch %{unregisterised_archs}
 %if 0%{?qemu_user_space_build}
