@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-cool.io
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 %define mod_name cool.io
 %define mod_full_name %{mod_name}-%{version}
