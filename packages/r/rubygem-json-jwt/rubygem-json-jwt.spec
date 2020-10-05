@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-json-jwt
-Version:        1.11.0
+Version:        1.13.0
 Release:        0
 %define mod_name json-jwt
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.3}
+BuildRequires:  %{ruby >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/nov/json-jwt
