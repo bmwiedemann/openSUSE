@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-simplecov
-Version:        0.18.5
+Version:        0.19.0
 Release:        0
 %define mod_name simplecov
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.4.0}
+BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/colszowka/simplecov
+URL:            https://github.com/simplecov-ruby/simplecov
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Code coverage for Ruby
