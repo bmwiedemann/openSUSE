@@ -1,0 +1,13 @@
+<constraints>
+ <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>

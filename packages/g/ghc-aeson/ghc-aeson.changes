@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct  4 18:06:49 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add constraints for s390x and riscv64
+
+-------------------------------------------------------------------
 Mon Aug 31 02:02:42 UTC 2020 - psimons@suse.com
 
 - Update aeson to version 1.5.4.0.
