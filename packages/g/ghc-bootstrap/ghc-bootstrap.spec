@@ -70,7 +70,7 @@ Source10:       ghc-8.10.1-i386-unknown-linux.tar.xz
 Source12:       ghc-8.10.1-powerpc64-unknown-linux.tar.xz
 Source13:       ghc-8.10.1-powerpc64le-unknown-linux.tar.xz
 Source14:       ghc-8.10.1-x86_64-unknown-linux.tar.xz
-Source16:       ghc-8.6.5-s390x-ibm-linux.tar.xz
+Source16:       ghc-8.10.2-s390x-ibm-linux.tar.xz
 Source17:       ghc-8.10.1-aarch64-unknown-linux.tar.xz
 Source18:       ghc-8.10.1-arm-unknown-linux.tar.xz
 Source19:       ghc-8.10.1-riscv64-unknown-linux.tar.xz
@@ -89,7 +89,7 @@ AutoReq:        off
 %ifnarch s390 s390x
 Version:        8.10.1
 %else
-Version:        8.6.5
+Version:        8.10.2
 %endif
 %ifnarch %{arm} s390x
 BuildRequires:  libnuma-devel
