@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-treetop
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-treetop
-Version:        1.6.10
+Version:        1.6.11
 Release:        0
 %define mod_name treetop
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            https://github.com/cjheath/treetop
+URL:            https://github.com/cjheath/treetop
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A Ruby-based text parsing and interpretation DSL
