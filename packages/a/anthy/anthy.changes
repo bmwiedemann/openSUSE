@@ -4,15 +4,25 @@ Wed Sep 30 10:31:45 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 - Use build condition to enable or disable Xemacs support (jsc#SLE-12100) 
 
 -------------------------------------------------------------------
+Wed Sep 30 10:31:45 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Use build condition to enable or disable Xemacs support (jsc#SLE-11658) 
+
+-------------------------------------------------------------------
 Tue Sep 29 13:25:37 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Do not use Xemacs on SLE products (jsc#SLE-12100) 
 
 -------------------------------------------------------------------
+Tue Sep 29 13:25:37 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Do not use Xemacs on SLE products (jsc#SLE-11658) 
+
+-------------------------------------------------------------------
 Tue Sep 15 06:18:12 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update anthy.spec: Drop the is_opensuse macro to eliminate the
-  difference between SLE-15 and openSUSE-Leap (jsc#SLE-12100). 
+  difference between SLE-15 and openSUSE-Leap (jsc#SLE-11658). 
 
 -------------------------------------------------------------------
 Tue Aug 18 11:19:51 UTC 2020 - Dr. Werner Fink <werner@suse.de>

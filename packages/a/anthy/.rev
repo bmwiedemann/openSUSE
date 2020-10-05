@@ -273,4 +273,12 @@
     <comment>- Use build condition to enable or disable Xemacs support (jsc#SLE-12100)</comment>
     <requestid>838742</requestid>
   </revision>
+  <revision rev="39" vrev="40">
+    <srcmd5>67bdc006384bf9a956ac9397e2a84ac3</srcmd5>
+    <version>9100h</version>
+    <time>1601919123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839543</requestid>
+  </revision>
 </revisionlist>
