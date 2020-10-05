@@ -22,20 +22,15 @@
 %define nsuffix SLE
 %define isnot openSUSE
 %endif
-%if 0%{?sle_version} >= 150300
-%define picsize 5120x2880
-%else
-%define picsize 1920x1200
-%endif
 
 Name:           budgie-desktop-branding
-Version:        20200915.1
+Version:        20201004.2
 Release:        0
 Summary:        Branding of the Budgie Desktop Environment
 Group:          System/GUI/Other
 License:        GPL-2.0-only AND CC-BY-SA-3.0
 URL:            https://github.com/gmbr3/budgie-desktop-branding
-Source:         budgie-desktop-branding-%{version}.tar.gz
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  meson
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  hicolor-icon-theme
@@ -64,35 +59,50 @@ Recommends:     firefox
 This package provides the %{nsuffix} look and feel for the Budgie
 desktop environment.
 
+%package upstream
+Summary:        Upstream branding of the Budgie Desktop Environment
+Requires:       budgie-desktop
+Supplements:    (budgie-desktop and branding-upstream)
+Conflicts:      budgie-desktop-branding
+Provides:       budgie-desktop-branding = %{version}
+Recommends:     gnome-backgrounds
+Recommends:     gtk3-metatheme-greybird-geeko
+Recommends:     adwaita-icon-theme
+BuildArch:      noarch
+
+%description upstream
+This package provides the upstream look and feel for the Budgie
+desktop environment.
+
 
 %prep
 %setup -q -n budgie-desktop-branding-%{version}
 
 %build
-%meson
+%meson -Dversion=%{nsuffix},upstream
 %meson_build
 
 %install
 %meson_install
 %if !0%{?is_backports} && 0%{?suse_version} < 1550
-sed -e 's-5120x3200-3840x2400-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
+sed -e 's-5120x3200-3840x2400-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_%{nsuffix}.gschema.override
 %endif
-%if 0%{?is_backports} 
-sed -e 's-openSUSE-SLE-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
-sed -e 's-openSUSE-SLE-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_settings.gschema.override
-sed -e 's-5120x3200-%{picsize}-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
+%if 0%{?is_backports} && 0%{?sle_version} < 150300
+sed -e 's-5120x2880-1920x1200-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_%{nsuffix}.gschema.override
 %endif
-%if 0%{?sle_version} >= 150300
-sed -e 's-jpg-png-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
+%if 0%{?is_backports} && 0%{?suse_version} < 1550
+sed -e 's-png-jpg-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_%{nsuffix}.gschema.override
 %endif
-rm %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/budgie-%{isnot}-distributor-logo.svg
 
 %files %{nsuffix}
 %license LICENSE LICENSE.CC-BY-SA-3.0
 %doc README.md
-%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings.gschema.override
-%{_datadir}/glib-2.0/schemas/10_budgie_settings.gschema.override
+%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_%{nsuffix}.gschema.override
 %{_datadir}/icons/hicolor/scalable/apps/budgie-%{nsuffix}-distributor-logo.svg
 
+%files upstream
+%license LICENSE LICENSE.CC-BY-SA-3.0
+%doc README.md
+%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_upstream.gschema.override
 
 %changelog
