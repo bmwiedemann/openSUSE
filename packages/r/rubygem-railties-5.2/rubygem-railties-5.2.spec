@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-railties-5.2
-Version:        5.2.4.2
+Version:        5.2.4.4
 Release:        0
 %define mod_name railties
 %define mod_full_name %{mod_name}-%{version}
