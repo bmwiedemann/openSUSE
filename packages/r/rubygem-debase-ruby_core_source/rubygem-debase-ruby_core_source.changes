@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:49:50 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.10.10
+ see installed CHANGELOG.md
+
+  ## [0.10.10](https://github.com/ruby-debug/debase-ruby_core_source/compare/v0.10.9...v0.10.10)
+  
+  * removed ruby 2.7.0 preview sources to avoid falling back on them for release versions
+  
+
+-------------------------------------------------------------------
 Mon Feb 10 14:25:30 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 0.10.9

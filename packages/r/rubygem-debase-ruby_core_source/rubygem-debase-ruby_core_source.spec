@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-debase-ruby_core_source
-Version:        0.10.9
+Version:        0.10.10
 Release:        0
 %define mod_name debase-ruby_core_source
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{ruby < 3}
 BuildRequires:  %{ruby => 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            http://github.com/os97673/debase-ruby_core_source
+URL:            http://github.com/ruby-debug/debase-ruby_core_source
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rpmlintrc
 Source2:        gem2rpm.yml
