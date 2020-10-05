@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  3 15:00:30 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Disable translations on i586 for Tumbleweed (lconvert from Qt 5.15.1
+  crashes on this architecture due to memory allocation issues)
+
+-------------------------------------------------------------------
 Sun Sep 27 11:04:43 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 0.20.3
