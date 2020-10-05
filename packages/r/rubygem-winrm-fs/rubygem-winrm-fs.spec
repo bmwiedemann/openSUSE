@@ -16,29 +16,30 @@
 #
 
 
-%define mod_name winrm-fs
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-winrm-fs
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
-Summary:        WinRM File System
-License:        Apache-2.0
-Group:          Development/Languages/Ruby
-URL:            https://github.com/WinRb/winrm-fs
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+%define mod_name winrm-fs
+%define mod_full_name %{mod_name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-# FIXME: use proper Requires(pre/post/preun/...)
+URL:            http://github.com/WinRb/winrm-fs
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+Summary:        WinRM File System
+License:        Apache-2.0
+Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
