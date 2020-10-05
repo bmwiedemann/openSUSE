@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-templates
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define compatversion 5.0.0
 
 Name:           kicad-templates
-Version:        5.1.5
+Version:        5.1.7
 Release:        0
 Summary:        Project templates for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
 # See included LICENSE.md and kicad-pcb.org/libraries/license/
 License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
-URL:            http://kicad-pcb.org
+URL:            https://kicad-pcb.org
 Source:         https://github.com/KiCad/kicad-templates/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -48,14 +48,14 @@ This is the project templates package for KiCad.
 %build
 %cmake \
     -DKICAD_DATA:PATH=%{_datadir}/kicad
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
-%fdupes -s %{buildroot}/%{_datadir}/kicad/template/
+%fdupes %{buildroot}/%{_datadir}/kicad/template/
 
 %files
-%{_datadir}/kicad/
 %license LICENSE.md
+%{_datadir}/kicad/
 
 %changelog
