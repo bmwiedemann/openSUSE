@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-devise
-Version:        4.7.1
+Version:        4.7.3
 Release:        0
 %define mod_name devise
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.1.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/plataformatec/devise
+URL:            https://github.com/heartcombo/devise
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Flexible authentication solution for Rails with Warden
