@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-fritzconnection
-Version:        1.2.1
+Version:        1.3.4
 Release:        0
 Summary:        A Python module to talk to a AVM fritzbox
 License:        MIT
