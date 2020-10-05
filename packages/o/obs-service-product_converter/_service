@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/openSUSE/obs-service-product_converter.git</param>
     <param name="scm">git</param>
-    <param name="version">1.4.3</param>
-    <param name="revision">1.4.3</param>
+    <param name="version">1.4.4</param>
+    <param name="revision">1.4.4</param>
   </service>
   <service name="set_version" mode="disabled"/>
   <service name="tar" mode="buildtime"/>

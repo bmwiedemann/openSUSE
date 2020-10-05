@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 30 10:13:49 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.4
+  - allow to write milestone comment independent of beta version (OBS-51)
+  - additional warning when using it manually to verify OBS_NAME
+
+-------------------------------------------------------------------
 Tue Jul 28 06:49:31 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.2
