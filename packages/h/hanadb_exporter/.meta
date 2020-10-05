@@ -1,5 +1,0 @@
-<package name="hanadb_exporter" project="openSUSE:Factory">
-  <title>SAP HANA database metrics exporter</title>
-  <description>SAP HANA database metrics exporter</description>
-  <devel project="server:monitoring" package="hanadb_exporter"/>
-</package>
