@@ -385,4 +385,13 @@
 </comment>
     <requestid>828936</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>c9efc99745c332263d391ebc89127552</srcmd5>
+    <version>5.0.27</version>
+    <time>1601919532</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 5.0.27 - Bugfix Release
+</comment>
+    <requestid>839304</requestid>
+  </revision>
 </revisionlist>
