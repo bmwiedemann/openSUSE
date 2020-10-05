@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:28:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.3.2:
+  * This release fixes a crash due to incorrect handling of fragmented packets
+  and adds copy & paste support.
+  * This release fixes a bug with tight encoding reported by Jeroen Hofstee
+
+-------------------------------------------------------------------
 Tue Jul 28 09:08:39 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
 
 - Update to version 0.2.0

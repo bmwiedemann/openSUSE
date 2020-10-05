@@ -17,7 +17,7 @@
 
 
 Name:           neatvnc
-Version:        0.2.0
+Version:        0.3.2
 Release:        0
 Summary:        A VNC server library
 License:        ISC
