@@ -20,15 +20,13 @@
 %bcond_with libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Other
 URL:            https://www.scummvm.org/
 Source:         https://www.scummvm.org/frs/scummvm/%{version}/scummvm-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-AUDIO-Really-Fix-Compilation-Against-Fluidsynth-v2.1.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -81,7 +79,6 @@ These engines are in a worse state, but allow to play extra games.
 
 %prep
 %setup -q
-%patch0 -p1
 
 # build the endianness test without optimization otherwise gcc is too smart
 # and optimize everything away, making the test fail
@@ -117,8 +114,7 @@ make %{?_smp_mflags}
 %{_datadir}/scummvm
 %{_mandir}/man6/scummvm.6*
 %{_datadir}/applications/scummvm.desktop
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/scummvm.appdata.xml
+%{_datadir}/metainfo/scummvm.appdata.xml
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/pixmaps/scummvm.xpm
 %{_docdir}/%{name}

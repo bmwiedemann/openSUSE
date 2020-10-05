@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:46:47 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Drop 0001-AUDIO-Really-Fix-Compilation-Against-Fluidsynth-v2.1.patch
+- Update to version 2.2.0
+  * Add support for ~1594 Interactive Fiction games
+  * Adds 3 more game engines and extended another 4
+
+-------------------------------------------------------------------
 Sat Aug 22 09:24:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.1.2:
