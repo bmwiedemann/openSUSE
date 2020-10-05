@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>838398</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ea90cad048d627695c96a2d655d8c04a</srcmd5>
+    <version>50.1.0</version>
+    <time>1601919411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.1.0.</comment>
+    <requestid>839226</requestid>
+  </revision>
 </revisionlist>

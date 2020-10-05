@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:53:18 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 50.1.0:
+  * Now the following features are disabled by default when
+    building with CMake and Meson: QML, Aspell, Poppler, ddjvuapi.
+  * Add Functions - Analysis - UNITAZ sorting length.
+  * Add Functions - Filter - Filter by repetitions.
+  * Add Functions - Sort - Sort by length.
+
+-------------------------------------------------------------------
 Mon Sep 28 16:46:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 50.0.4:

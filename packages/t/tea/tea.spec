@@ -17,11 +17,10 @@
 
 
 Name:           tea
-Version:        50.0.4
+Version:        50.1.0
 Release:        0
 Summary:        Qt-based text editor with image viewer
 License:        GPL-3.0-or-later
-Group:          Productivity/Text/Editors
 URL:            http://semiletov.org/tea
 Source:         https://github.com/psemiletov/tea-qt/archive/%{version}.tar.gz#/%{name}-qt-%{version}.tar.gz
 Source1:        org.semiletov.tea.desktop
@@ -54,7 +53,12 @@ cp -a %{SOURCE2} org.semiletov.tea.appdata.xml
 sed -i '/DESTINATION share\/applications/d' CMakeLists.txt
 
 %build
-%cmake
+%cmake \
+  -DUSE_ASPELL=ON  \
+  -DUSE_PRINTER=ON \
+  -DUSE_PDF=ON     \
+  -DUSE_DJVU=ON    \
+  -DUSE_QML=ON
 %cmake_build
 
 %install
