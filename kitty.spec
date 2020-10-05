@@ -17,7 +17,7 @@
 
 
 Name:           kitty
-Version:        0.18.3
+Version:        0.19.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -36,6 +36,7 @@ BuildRequires:  libXi-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  libXrandr-devel
 BuildRequires:  libcanberra-devel
+BuildRequires:  liblcms2-devel
 BuildRequires:  libpng16-compat-devel
 BuildRequires:  libwayland-egl-devel
 BuildRequires:  libxkbcommon-devel
