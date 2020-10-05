@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  1 13:43:25 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- update to latest version
+  * enable BlueField-2 support
+  * Add configuration file support
+
+-------------------------------------------------------------------
 Wed Jun 10 10:56:05 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - add _service file
