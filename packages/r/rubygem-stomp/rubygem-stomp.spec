@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-stomp
-Version:        1.4.9
+Version:        1.4.10
 Release:        0
 %define mod_name stomp
 %define mod_full_name %{mod_name}-%{version}
