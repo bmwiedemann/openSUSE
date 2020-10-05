@@ -22,9 +22,9 @@
 %endif
 %define title_version 0.1.2
 %define title_version_url %{title_version}c
-%define objects_version 1.0.16
+%define objects_version 1.0.17
 Name:           openrct2
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        An open source re-implementation of Roller Coaster Tycoon 2
 License:        GPL-3.0-only
@@ -41,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  nlohmann_json-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
@@ -49,7 +50,6 @@ BuildRequires:  pkgconfig(duktape)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(icu-uc) >= 59.0
-BuildRequires:  pkgconfig(jansson) >= 2.5
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libzip) >= 1.0
