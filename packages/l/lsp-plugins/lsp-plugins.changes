@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct  3 12:10:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update license to LGPL-3.0-or-later
+
+-------------------------------------------------------------------
+Sat Oct  3 05:19:45 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 1.1.26
+  * Implemented Crossover Plugin series.
+  * Fixed phase mismatch between channels in the oversampling mode 
+    of limiter (contributed by Hector Martin).
+  * Fixed bug in convolver module which could perform improper tail
+    convolution (reported by Robin Gareus).
+    Affected plugins: Impulse Responses, Impulse Reverb, 
+    Room Builder.
+  * Fixed small memory leakage in multiband plugins (Compressor, 
+    Gate, Expander) related to usage of Inline Display feature.
+  * Added support of pg:mainInput and pg:mainOutput LV2 properties
+    in TTL files for all plugins.
+  * Updated all C++ heades and source files to match the LGPL3+
+    license headers.
+
+-------------------------------------------------------------------
 Fri Aug 28 07:14:58 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.1.24. 

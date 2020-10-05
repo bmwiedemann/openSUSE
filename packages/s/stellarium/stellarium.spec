@@ -63,6 +63,11 @@ binoculars or a small telescope.
 %build
 export QT_HASH_SEED=0
 %cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
+%if 0%{?suse_version} >= 1550
+%ifarch i586
+       -DENABLE_NLS=OFF \
+%endif
+%endif
        -DCMAKE_CXX_VISIBILITY_PRESET=hidden -DCMAKE_VISIBILITY_INLINES_HIDDEN=1
 %if 0%{?suse_version} >= 1550
 %make_jobs -j1

@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Sep 28 09:15:02 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.8.6.
+  * Terminal: Make background fully opaque
+- Update since 1.8.0.
+  * Mint-X: Fix infobar colors
+  * Revert "Update Orange color"
+  * Revert "Update Grey color"
+  * Revert "Update Purple Color"
+  * Revert "Update Red color"
+  * Revert "Update Teal color"
+  * Revert "Update Sand color"
+  * Revert "Update Blue color"
+  * Revert "Update Aqua color"
+  * Revert "Fix pink GTK2 dark menubars"
+  * Revert "Factorize color codes into a single constants.py file"
+  * Revert "Update Pink Color"
+  * Factorize color codes into a single constants.py file
+  * Covert to use sassc
+  * Mint-Y-Cinnamon: Don't hardcode font sizes
+  * Fix an error from the port to sassc
+  * Mint-Y-Cinnamon: Update theming for the workspace and restart osd
+  * Mint-X-Cinnamon: Remove hard coded font sizing
+  * Mint-X-Cinnamon: Update theming for restart and workspace osd
+  * Mint-X-Gtk3: Fix wrong colored headerbars
+  * Mint-X-gtk3: Fix theming for GtkFlowBox and GtkFlowBoxChild
+  * Mint-Y-Cinnamon: Improve the checkbox colors
+  * update-variations: Accept a color as argument
+  * Update variations: Fix re-creating dirs
+  * Mint-Y-Gtk3: Fix the drag and drop target color
+  * Mint-Y-Colors: new directory with files
+  * Mint-Y-Grey: Fix the hover color of the window close button
+  * update-variations: Don't modify GTK2 menubars
+  * Mint-Y-Cinnamon: Tweak the look of GWL thumbnails
+  * Update Pink Color
+  * Factorize color codes into a single constants.py file
+  * Fix pink GTK2 dark menubars
+  * Update Aqua color
+  * Update Blue color
+  * Update Sand color
+  * Update Teal color
+  * Update Red color
+  * Update Purple Color
+  * Update Grey color
+  * Update Orange color
+  * Mint-Y: Update the theme for newer libsass
+  * Linux Mint Cinnamon: Add styling for the media key osd level bar
+  * Mint-X - fix theme not complying with apps request to set a monospace font
+  * Remove about dialog styling from the cinnamon css
+  * Gtk3: Add support for GtkStackSidebar needs attention
+  * Use destructive/error color in stacksidebar needs-attention
+  * Use selected_fg_color in stacksidebar needs-attention when it's selected
+  * Mint-Y - Improve Cinnamon calendar menu's response to text scaling changes
+  * Mint-Y: Fixes for Xfce 4.14
+  * Mint-X: Xfce 4.14 fixes
+  * Mint-Y: Darken xfwm4 titlebar text
+  * Mint-Y: Darken xfwm4 buttons
+  * Increase panel font size to 10pt in Mint-X and Linux Mint
+  * Mint-Y-Dark(Cinnamon): Adjust accent color
+  * Mint-Y: Darken terminal opacity 90% -> 97%
+
+-------------------------------------------------------------------
 Thu Sep  5 13:36:11 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.8.0 (changes since 1.7.8):

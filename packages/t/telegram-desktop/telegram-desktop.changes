@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Oct  2 19:24:42 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.2
+  * Allow block, report and delete all message from user from
+    "user joined" service message context menu.
+  * Fix admin badge display in groups.
+  * Fix loading and opening of comments in channels.
+
+-------------------------------------------------------------------
+Fri Oct  2 09:30:38 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.1
+  * Move by PageUp and PageDown in channel comments.
+  * Several layout bugfixes.
+  * Several crashfixes.
+
+-------------------------------------------------------------------
+Thu Oct  1 08:42:42 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.0
+  * Turn on "Remain Anonymous" in an admin's Permissions to
+    let them post on behalf of the group and become invisible
+    in the list of members.
+  * Comment on posts in channels that have a discussion group.
+  * Get notified about replies to your comments via the new
+    Replies chat (if you are not a member of the discussion group).
+- Remove check_if_xcb-screensaver_present.patch, obsolete
+- Update tg_owt and patches
+
+-------------------------------------------------------------------
 Wed Sep 30 10:36:43 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add check_if_xcb-screensaver_present.patch

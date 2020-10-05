@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:55:04 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v4.15.0-1 (jsc#SLE-15968)
+  - New Supported Devices
+    - ConnectX-6Lx adapter cards support.
+    - BlueField-2 adapter cards support.
+  - mstconfig tool
+    - QOS ets configuration ConnectX-4 LX 25NIC failed when enabled VFs > 21
+    - Network programmability (Dynamic Flex Parse) Packet classification on
+      eCPRI header on receive with DPDK
+    - Improved BlueField NVMf Performance when working in 4K block size
+        [BlueField SmartNIC] Support full virtio-net PCI device emulation +
+		Device Hot Plug - BareMetal case GA
+    - ConnectX-6 SHARPv2 to achieve line-rate performance
+    - New Feature - BOOT_INTERRUPT_DIS parameter was added to mlxconfig.
+      When TRUE, legacy interrupts should not be used for receive/transmit indication.
+      Polling should be used instead.
+  - mstdump tool
+    - Fixed an issue that caused mstflint to print garbage messages.
+      To fix the bug, the new kernel module should be recompiled and loaded
+  - mstreg tool
+        [software steering, ASAP^2, Connection Tracking] adding DP_HASH support
+    - Virtual output Queuing - exposing descriptors
+    - New Feature - Increased the registry keys the tool supports and now it exposes the full PRM.
+    - For additional information, refer to the PRM.
+  - mstlink tool
+    - need mstlink to support TX SerDes set --database at Quantum and Spectrum-2
+    - QSFP DD + CMIS
+    - mstlink - support for 400G
+    - mstlink to enforce PRBS at host-management and/ or multi-host systems
+    - mstlink - add support to configure PRBS
+    - Read/Write SerDes Tx taps with new SLTP register - mstlink
+    - Fix the return bad status of SLTP according to the new return values
+    - New Feature - HDR lane rate is now supported when in Pseudorandom Binary Sequence (PRBS) mode.
+    - New Feature - Added support for switching between NRZ/PAM4 speeds for new devices that support
+    - HDR/200G speeds (ConnectX-6, ConnectX-6 Dx, Mellanox Quantum, Mellanox Spectrum 2).
+  - mstfwreset tool
+    - handling mstfwreset on SN in different modes
+  - mstflint tool
+        [Secure Boot][BlueField-2] EFUSE keys burn tool (Arm OS) for RSA Keys and MKEK
+    - Support HPCC in CX6Dx
+    - Add life cycle, secure boot, recovery indications to the flint query full command
+    - New Feature - Enables the user to insert information manually to the flash on components
+      such as MFG/DEV GUID/MAC when no information exists after the burn process using the command
+        "mstflint -d \<device\> sg \<guid\>".
+      If the information is not inserted manually, the existing GUID/MAC
+    - information will be used instead.
+    - New Feature - Enables the user to query the MFA2 file using a PSID.
+  - mstresourcedump tool
+    - MSTResoruceDump new tool: Build a dump passer tool for parsing resource dumps
+    - Added support for "--virtual-hca-id" command. Now the tool can provide info on the virtual HCA
+        (host channel adapter, NIC) ID.
+
+-------------------------------------------------------------------
 Fri Jan 24 15:03:35 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v4.13.3-2

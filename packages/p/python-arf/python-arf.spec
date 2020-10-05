@@ -17,8 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# This version of the package intentionally doesn't work with
+# Python < 3.5.
+%define skip_python2 1
 Name:           python-arf
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 # Note: I know that "advertisement" words are frowned on, but in this case
 # the package name is an acronym so "advanced" needs to stay in
@@ -26,9 +29,6 @@ Summary:        Advanced Recording Format for physiology and behavior
 License:        GPL-2.0-only
 URL:            https://github.com/melizalab/arf
 Source:         https://files.pythonhosted.org/packages/source/a/arf/arf-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM denose.patch gh#melizalab/arf#7 mcepl@suse.com
-# Remove the dependency on the nose package.
-Patch0:         denose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

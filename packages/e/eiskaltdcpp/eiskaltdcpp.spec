@@ -25,7 +25,6 @@ URL:            https://github.com/eiskaltdcpp/eiskaltdcpp
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}.firewalld
 Patch0:         ru.ts.patch
-BuildRequires:  aspell-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libattr-devel
@@ -72,7 +71,7 @@ clients. This is the Qt frontend.
 
 %build
 %cmake -LA \
-       -DUSE_ASPELL=ON \
+       -DUSE_ASPELL=OFF \
        -DWITH_SOUNDS=ON \
        -DUSE_MINIUPNP=ON \
        -Dlinguas="*"

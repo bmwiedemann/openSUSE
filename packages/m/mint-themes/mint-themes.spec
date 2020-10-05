@@ -1,7 +1,7 @@
 #
 # spec file for package mint-themes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define _name   mint
 Name:           mint-themes
-Version:        1.8.0
+Version:        1.8.6
 Release:        0
 Summary:        Mint Themes
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://github.com/linuxmint/mint-themes
-Source:         https://github.com/linuxmint/%{name}/releases/download/%{version}/%{name}_%{version}.tar.xz
+URL:            https://github.com/linuxmint/mint-themes
+Source:         http://packages.linuxmint.com/pool/main/m/mint-themes/%{name}_%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  python3
 BuildRequires:  rubygem(sass)

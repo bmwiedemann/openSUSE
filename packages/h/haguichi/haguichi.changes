@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct  3 15:46:30 UTC 2020 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.4.3
+  * Fixed search entry leaving out the trigger character when activated by typing for the first time.
+  * Added fallback method to detect if Hamachi configuration path exists when running inside a Flatpak sandbox while the path is not yet mounted.
+  * Added symlinks to hicolor status icons in Yaru theme in order to prevent the indicator from falling back to the application icon.
+  * Moved symbolic application icons for hicolor theme to a more specific folder to make sure they are rendered properly.
+  * Symbolic icons are now used for the indicator on Cinnamon desktops.
+  * Client side decorations are now used on MATE desktops.
+  * Removed "Donate" menu item due to little use.
+  * Translator credits are now part of the translations themselves.
+  * Added complete Portuguese translation (thanks to André Barata).
+  * Updated Dutch and Polish translations.
+
+-------------------------------------------------------------------
 Wed Dec 18 21:19:54 UTC 2019 - Stephen Brandt <stephen@stephenbrandt.com>
 
 - update to 1.4.2

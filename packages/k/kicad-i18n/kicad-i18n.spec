@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-i18n
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           kicad-i18n
-Version:        5.1.5
+Version:        5.1.7
 Release:        0
 Summary:        Localization for KiCad
 # license same as KiCad package
 License:        GPL-3.0-or-later AND AGPL-3.0-or-later
 Group:          System/Localization
-URL:            http://kicad-pcb.org
-Source:         https://github.com/KiCad/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://kicad-pcb.org
+Source:         https://gitlab.com/kicad/code/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gettext
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 KiCad is a software suite used for Electronic Design Automation (EDA).
@@ -226,7 +225,7 @@ This package contains Traditional Chinese translations for KiCad
 %build
 %cmake \
     -DKICAD_I18N_UNIX_STRICT_PATH=ON
-make
+%cmake_build
 
 %install
 %cmake_install

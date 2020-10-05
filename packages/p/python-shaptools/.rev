@@ -122,4 +122,12 @@
     <comment>New version of python-shaptools released</comment>
     <requestid>835846</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>385088cb6b3bf718a4076d91e92fedfd</srcmd5>
+    <version>0.3.10+git.1601275579.c59c61d</version>
+    <time>1601919666</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>839491</requestid>
+  </revision>
 </revisionlist>

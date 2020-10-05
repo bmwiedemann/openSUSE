@@ -19,6 +19,7 @@
 
 %bcond_with     cumulus
 %bcond_with     datacenter
+%bcond_with     mininet
 
 %define skip_python2 1
 
@@ -49,7 +50,9 @@ BuildRequires:  flex
 BuildRequires:  libtool
 BuildRequires:  libyang-extentions
 BuildRequires:  makeinfo
+%if %{with mininet}
 BuildRequires:  mininet
+%endif
 BuildRequires:  net-snmp-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -386,9 +389,8 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %{_libdir}/frr/modules/bgpd_rpki.so
 %{_libdir}/frr/modules/grpc.so
 %{_libdir}/frr/modules/dplane_fpm_nl.so
-%{_prefix}/lib/frr/vrrpd
-%{_prefix}/lib/frr/generate_support_bundle.py
 %{_libdir}/frr/modules/bgpd_bmp.so
+%{_prefix}/lib/frr/generate_support_bundle.py
 
 %files -n libfrr_pb0
 %{_libdir}/libfrr_pb.so.0*

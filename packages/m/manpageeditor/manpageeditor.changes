@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  2 15:16:37 UTC 2020 - pgajdos@suse.com
+
+- remove dependency on aspell, it is going to be removed from
+  factory
+
+-------------------------------------------------------------------
 Thu Jun  9 17:36:11 UTC 2016 - dap.darkness@gmail.com
 
 - 0.1.1.

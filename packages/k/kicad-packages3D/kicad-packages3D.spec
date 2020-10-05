@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-packages3D
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define compatversion 5.0.0
 
 Name:           kicad-packages3D
-Version:        5.1.5
+Version:        5.1.7
 Release:        0
 Summary:        3D model libraries for rendering and MCAD integration
 # License is CC-BY-SA-4.0 but there is an exception
 # See included LICENSE.md and kicad-pcb.org/libraries/license/
 License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
-URL:            http://kicad-pcb.org
+URL:            https://kicad-pcb.org
 Source:         https://github.com/KiCad/kicad-packages3D/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -50,20 +50,20 @@ library components for rendering and mechanical CAD (MCAD) integration.
 %build
 %cmake \
     -DKICAD_DATA:PATH=%{_datadir}/kicad
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
-%fdupes -s %{buildroot}%{_datadir}/kicad/modules/
+%fdupes %{buildroot}%{_datadir}/kicad/modules/
 
 %files
 %doc README.md CREDITS.md
+%license LICENSE.md
 %dir %{_datadir}/kicad/
 %dir %{_datadir}/kicad/modules/
 %dir %{_datadir}/kicad/modules/packages3d
 %dir %{_datadir}/kicad/modules/packages3d/*
 %{_datadir}/kicad/modules/packages3d/*/*.step
 %{_datadir}/kicad/modules/packages3d/*/*.wrl
-%license LICENSE.md
 
 %changelog

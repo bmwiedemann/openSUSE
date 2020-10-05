@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Oct  5 07:32:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.0:
+  * Add support for hyperlinks from terminal programs. Controlled
+    via allow_hyperlinks (#68)
+  * Add support for easily editing or downloading files over SSH
+    sessions without the need for any special software
+  * A new Hyperlinked grep kitten to easily search files and open
+    the results at the matched line by clicking on them.
+  * Allow customizing the actions kitty takes when clicking on URLs
+  * Improve rendering of borders when using minimal borders.
+    Use less space and do not display a box around active windows
+  * Add a new extensible escape code to allow terminal programs to
+    trigger desktop notifications. See Desktop notifications (#1474)
+  * Implement special rendering for various characters from the set
+    of "Symbols for Legacy Computing" from the Unicode 13 standard
+  * Unicode input kitten: Allow choosing symbols from the NERD font
+    as well. These are mostly Private Use symbols not in any standard,
+    however are common. (#2972)
+  * Allow specifying border sizes in either pts or pixels. Change the
+    default to 0.5pt borders as this works best with the new minimal border style
+  * Add support for displaying correct colors with non-sRGB PNG
+    files (Adds a dependency on liblcms2)
+  * hints kitten: Add a new kitty +kitten hints --type of hyperlink useful
+    for activating hyperlinks using just the keyboard
+  * Allow tracking focus change events in watchers (#2918)
+  * Allow specifying watchers in session files and via a
+    command line argument (#2933)
+  * Add a setting tab_activity_symbol to show a symbol in the tab title if
+    one of the windows has some activity after it was last focused (#2515)
+  * When in the main screen and a program grabs the mouse, do not use the
+    scroll wheel events to scroll the scrollback buffer, instead send
+    them to the program (#2939)
+  * Fix unfocused windows in which a bell occurs not changing their border color
+    to red until a relayout
+  * Linux: Fix automatic detection of bold/italic faces for fonts such as IBM
+    Plex Mono that have the regular face with a full name that is the same as
+    the family name (#2951)
+  * Fix a regression that broke kitten_alias (#2952)
+  * Fix a regression that broke the move_window_to_top action (#2953)
+  * Fix a memory leak when changing font sizes
+  * Fix some lines in the scrollback buffer not being properly rendered after a
+    window resize/font size change (#2619)
+
+-------------------------------------------------------------------
 Wed Sep 23 14:43:57 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - kitty doesn't use libexecdir 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  3 18:58:17 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.18.2:
+  * Bugfixes
+  - floating_maybe_reassign_ws: only re-focus if previously focused
+    (fixes a focus issue with KDE notifications)
+  - get_output_by_name: guard output->primary with require_active
+  - i3bar: fix Xorg memory leak
+
+-------------------------------------------------------------------
 Fri Jun  5 01:17:18 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 4.18.1:

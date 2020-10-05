@@ -16,4 +16,12 @@ ML: https://lists.opensuse.org/opensuse-factory/2016-05/msg00230.html</comment>
     <comment>1</comment>
     <requestid>400879</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>39afe64fcacb32720e3c5b0d80124602</srcmd5>
+    <version>0.1.1</version>
+    <time>1601919624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839296</requestid>
+  </revision>
 </revisionlist>

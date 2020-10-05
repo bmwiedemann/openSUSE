@@ -39,11 +39,6 @@ Requires:       pcsc-lite
 Supplements:    modalias(usb:v0DC3p1701d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0DC3p1702d*dc*dsc*dp*ic*isc*ip*)
 %define ifddir %(pkg-config libpcsclite --variable=usbdropdir)
-%if %( pkg-config --modversion udev ) > 190
-%define _udevrulesdir %{_libexecdir}/udev/rules.d
-%else
-%define _udevrulesdir /lib/udev/rules.d
-%endif
 
 %description
 This package contains a driver for the ASEKey USB Token.
@@ -69,7 +64,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog LICENSE README
+%doc ChangeLog README
+%license LICENSE
 %{ifddir}/ifd-ASEKey.bundle
 %{_udevrulesdir}/*.rules
 

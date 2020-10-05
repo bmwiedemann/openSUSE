@@ -1,7 +1,7 @@
 #
 # spec file for package qperf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define git_ver .0.aa644b22fff9
+%define git_ver .0.c706363815a3
 
 Name:           qperf
 Summary:        Tool to measure socket and RDMA performance
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-Version:        0.4.10
+Version:        0.4.11
 Release:        0
 Source:         %{name}-%{version}%{git_ver}.tar.bz2
-Url:            http://github.com/linux-rdma/qperf
+URL:            http://github.com/linux-rdma/qperf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake

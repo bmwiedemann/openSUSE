@@ -1,8 +1,8 @@
 #
 # spec file for package haguichi
 #
+# Copyright (c) 2013-2020 Stephen Brandt <stephen@stephenbrandt.com>
 # Copyright (c) 2018 Alexei Podvalsky <avvissu@yandex.by>
-# Copyright (c) 2013-2019 Stephen Brandt <stephen@stephenbrandt.com>
 # Copyright (c) 2010-2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,12 +20,12 @@
 
 %define rdnn    com.github.ztefn.%{name}
 Name:           haguichi
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Hamachi Network Manager
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
-URL:            https://www.haguichi.net/
+URL:            https://haguichi.net
 Source0:        https://launchpad.net/haguichi/1.4/%{version}/+download/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

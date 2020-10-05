@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  2 12:38:25 UTC 2020 - Marius Tomaschewski <mt@suse.com>
+
+- add build condition disabling mininet build require by default,
+  needed by the optional topology tests.
+- removed one occurrence of vrrpd binary listed twice in file list
+
+-------------------------------------------------------------------
 Wed Jul  1 12:21:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.4

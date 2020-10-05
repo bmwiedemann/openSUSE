@@ -22,7 +22,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-shaptools
-Version:        0.3.10+git.1600699158.46fca28
+Version:        0.3.10+git.1601275579.c59c61d
 Release:        0
 Summary:        Python tools to interact with SAP HANA utilities
 License:        Apache-2.0

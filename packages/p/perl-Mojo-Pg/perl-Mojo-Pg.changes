@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  4 03:17:59 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.20
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  4.20  2020-10-01
+    - Fixed fork-safety feature to work with more than one fork.
+
+-------------------------------------------------------------------
 Mon Jun  1 03:13:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 4.19

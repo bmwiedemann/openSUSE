@@ -31,7 +31,7 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        2.3.2
+Version:        2.4.2
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -46,8 +46,6 @@ Patch0:         0000-gtk2-default.patch
 Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-tg_owt-fix-name-confliction.patch
-# PATCH-FIX-UPSTREAM: boo#1176626: Telegram-desktop crashes on Xwayland
-Patch3:         check_if_xcb-screensaver_present.patch
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.16
@@ -151,7 +149,6 @@ The service also provides APIs to independent developers.
 %setup -q -n tdesktop-%{version}-full
 %patch0 -p1
 %patch1 -p2
-%patch3 -p1
 
 cd ../
 unzip %{S:1}
@@ -191,14 +188,8 @@ cd %{_builddir}/tdesktop-%{version}-full
       -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
       -DDESKTOP_APP_USE_PACKAGED=ON \
       -DDESKTOP_APP_QTWAYLANDCLIENT_PRIVATE_HEADERS=OFF \
-      -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
-      -DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF \
-      -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
-      -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
-      -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
       -DDESKTOP_APP_USE_PACKAGED_FONTS=ON \
       -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
-      -DTDESKTOP_DISABLE_AUTOUPDATE=ON \
       -DTDESKTOP_LAUNCHER_BASENAME=%{name} \
       -DDESKTOP_APP_SPECIAL_TARGET=""
 

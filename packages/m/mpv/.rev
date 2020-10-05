@@ -1052,4 +1052,20 @@
   * stream_slice: interpret `end` as offset if it starts with '+'</comment>
     <requestid>836077</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>38f55312ce9403ffdba5cf83f7ca32b6</srcmd5>
+    <version>0.32.0+git.20201001T111222.34b8adc456</version>
+    <time>1601919637</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20201001T111222.34b8adc456:
+  * wayland: set an opaque region
+  * options: fix --cover-art-file typo
+  * player: cosmetically change around some code
+  * player: add automatic loading of external cover art files
+  * player: let frontend decide whether to use cover-art mode
+  * ci: fix spirv-cross build in mingw scripts
+  * mac: add support for the focused property
+  * mac: add an option to prevent focusing of the window on open</comment>
+    <requestid>839302</requestid>
+  </revision>
 </revisionlist>

@@ -226,4 +226,18 @@
 </comment>
     <requestid>812067</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>44b0eaffb97b9474c34406569fb25c1f</srcmd5>
+    <version>4.18.2</version>
+    <time>1601919570</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.2:
+  * Bugfixes
+  - floating_maybe_reassign_ws: only re-focus if previously focused
+    (fixes a focus issue with KDE notifications)
+  - get_output_by_name: guard output-&gt;primary with require_active
+  - i3bar: fix Xorg memory leak
+</comment>
+    <requestid>839349</requestid>
+  </revision>
 </revisionlist>

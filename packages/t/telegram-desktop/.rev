@@ -417,4 +417,30 @@
     <comment></comment>
     <requestid>838804</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>945ed667615ac5651d2d85d1a6f6e27a</srcmd5>
+    <version>2.4.2</version>
+    <time>1601919524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2
+  * Allow block, report and delete all message from user from
+    &quot;user joined&quot; service message context menu.
+  * Fix admin badge display in groups.
+  * Fix loading and opening of comments in channels.
+- Update to 2.4.1
+  * Move by PageUp and PageDown in channel comments.
+  * Several layout bugfixes.
+  * Several crashfixes.
+- Update to 2.4.0
+  * Turn on &quot;Remain Anonymous&quot; in an admin's Permissions to
+    let them post on behalf of the group and become invisible
+    in the list of members.
+  * Comment on posts in channels that have a discussion group.
+  * Get notified about replies to your comments via the new
+    Replies chat (if you are not a member of the discussion group).
+- Remove check_if_xcb-screensaver_present.patch, obsolete
+- Update tg_owt and patches
+</comment>
+    <requestid>839233</requestid>
+  </revision>
 </revisionlist>

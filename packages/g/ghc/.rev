@@ -834,4 +834,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment></comment>
     <requestid>825369</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>0f60390595d2507dc5e7a66fce708f76</srcmd5>
+    <version>8.10.2</version>
+    <time>1601919612</time>
+    <user>dimstar_suse</user>
+    <comment>fix typo (forwarded request 839357 from mimi_vx)</comment>
+    <requestid>839358</requestid>
+  </revision>
 </revisionlist>
