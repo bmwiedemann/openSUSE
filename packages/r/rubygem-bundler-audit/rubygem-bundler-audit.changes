@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:43:31 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.7.0.1
+ see installed ChangeLog.md
+
+  ### 0.7.0.1 / 2020-06-12
+  
+  * Forgot to populate `data/ruby-advisory-db`.
+  
+  ### 0.7.0 / 2020-06-12
+  
+  * Require [thor] >= 0.18, < 2.
+  * Added {Bundler::Audit::Advisory#ghsa} (@rschultheis).
+  * Added {Bundler::Audit::Advisory#cvss_v3} (@ahamlin-nr).
+  * Added {Bundler::Audit::Advisory#identifiers} (@rschultheis).
+  * Updated {Bundler::Audit::Advisory#criticality} ranges (@reedloden).
+  * Avoid rebasing the ruby-advisory-db when updating (@nicknovitski).
+  * Fixed issue with Bundler 2.x where source URIs are no longer parsed as
+    `URI::HTTP` objects, but as `Bundler::URI::HTTP` objects. (@milgner)
+  
+
+-------------------------------------------------------------------
 Sat Mar  2 15:07:09 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 0.6.1
