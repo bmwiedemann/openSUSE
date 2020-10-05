@@ -19,15 +19,16 @@
 Name:           alpine
 # For debugging only:
 %define		build_vanilla		0
-Version:        2.23
+Version:        2.23.2
 Release:        0
 Summary:        Mail User Agent
 License:        Apache-2.0
 Group:          Productivity/Networking/Email/Clients
 URL:            http://alpine.x10host.com/alpine/
+#Git-Clone:     https://repo.or.cz/alpine.git
 
-# direct download does not work for openSUSE:Factory
-Source:         http://alpine.x10host.com/alpine/release/src/%name-%version.tar.xz
+#Source:         http://alpine.x10host.com/alpine/release/src/%name-%version.tar.xz
+Source:         %name-%version.tar.xz
 Source1:        %name.png
 Source2:        %name.desktop
 Source9:        UPDATING.txt

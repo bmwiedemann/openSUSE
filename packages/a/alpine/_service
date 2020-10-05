@@ -1,0 +1,25 @@
+<services>
+	<!--
+	Often, only the main releases (e.g. 2.22, 2.23) are made
+	available as tarball, but 2.23.1 and 2.23.2 were git-only.
+
+	Changelog:
+	git diff v2.23..v2.23.2 pith/pine.hlp
+
+	set_version is not used, as there are multiple Version: in the spec.
+	You need to update the Version: field manually.
+	-->
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://repo.or.cz/alpine.git</param>
+		<param name="revision">v2.23.2</param>
+		<param name="versionformat">2.23.2</param>
+		<param name="exclude">*.dll</param>
+		<param name="exclude">*.exe</param>
+		<param name="exclude">*.lib</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+</services>

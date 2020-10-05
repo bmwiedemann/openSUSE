@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  2 20:43:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.23.2
+  * Expansion of the configuration screen for XOAUTH2 to include
+    username, and tenant.
+  * Alpine uses the domain in the From: header of a message
+    to generate a message-id and suppresses all information
+    about Alpine, version, revision, and time of generation
+    of the message-id from this header.
+  * When messages are selected, pressing the ';' command to
+    broaden or narrow a search, now offers the possibility to
+    completely replace the search, and is almost equivalent to
+    being a shortcut to "unselect all messages, and select
+    again".
+
+-------------------------------------------------------------------
 Mon Sep  7 13:44:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.23
