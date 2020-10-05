@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 25 06:35:31 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- enigmail 2.2.2
+  * Enigmail version 2.2.x is a specially modified version, which
+    only works with Thunderbird 78 and later version. Enigmail 2.2.x
+    doesn't provide the traditional functionality, rather it exists
+    to help you migrate your keys and settings to Thunderbird 78.
+
+-------------------------------------------------------------------
 Fri Sep 18 11:52:59 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enigmail 2.1.8:

@@ -18,7 +18,7 @@
 
 
 Name:           enigmail
-Version:        2.1.8
+Version:        2.2.2
 Release:        0
 Summary:        OpenPGP addon for Mozilla Thunderbird
 License:        MPL-2.0
@@ -33,11 +33,14 @@ BuildRequires:  perl >= 5
 BuildRequires:  python3
 BuildRequires:  unzip
 BuildRequires:  zip
+Requires:       MozillaThunderbird >= 78
 Requires:       gpg2 >= 2.0.7
 Requires:       pinentry-gui
 
 %description
-This package contains the Enigmail OpenPGP Addon for Mozilla Thunderbird.
+This package contains the Enigmail OpenPGP Addon for Mozilla Thunderbird 78.
+The addon will assist the migration from Enigmail to Thunderbird's built-in
+OpenPGP support.
 
 %prep
 %setup -q -n enigmail

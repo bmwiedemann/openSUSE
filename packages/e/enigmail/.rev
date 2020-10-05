@@ -332,4 +332,16 @@ The upcoming (this week) new MozillaThunderbird package (24.7.0) will have enigm
     <comment></comment>
     <requestid>835411</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d59d16310e36f521ee770c247ec471f6</srcmd5>
+    <version>2.2.2</version>
+    <time>1601918930</time>
+    <user>dimstar_suse</user>
+    <comment>- enigmail 2.2.2
+  * Enigmail version 2.2.x is a specially modified version, which
+    only works with Thunderbird 78 and later version. Enigmail 2.2.x
+    doesn't provide the traditional functionality, rather it exists
+    to help you migrate your keys and settings to Thunderbird 78.</comment>
+    <requestid>837358</requestid>
+  </revision>
 </revisionlist>
