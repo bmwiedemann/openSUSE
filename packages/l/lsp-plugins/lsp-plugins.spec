@@ -20,10 +20,10 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           lsp-plugins
-Version:        1.1.24
+Version:        1.1.26
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
-License:        LGPL-3.0-only AND Zlib
+License:        LGPL-3.0-or-later AND Zlib
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
 Source0:        https://github.com/sadko4u/lsp-plugins/archive/%{name}-%{version}.tar.gz#/%{name}-%{name}-%{version}.tar.gz
