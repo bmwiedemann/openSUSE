@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-dry-logic
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 %define mod_name dry-logic
 %define mod_full_name %{mod_name}-%{version}
