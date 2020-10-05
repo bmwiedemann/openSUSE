@@ -1,7 +1,7 @@
 #
 # spec file for package manpageeditor
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,14 +22,13 @@ Name:           manpageeditor
 Version:        0.1.1
 Release:        0
 Summary:        A simple manual pages editor
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Development/Tools/Other
-Url:            http://gtk-apps.org/content/show.php?content=160219
+URL:            http://gtk-apps.org/content/show.php?content=160219
 Source0:        http://khapplications.darktech.org/zips/manpageeditor/%{oname}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE vs. various errors & warnings about desktop files.
 Patch1:         manpageeditor-desktop-warnings.diff
 
-BuildRequires:  aspell-devel
 BuildRequires:  ctags
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -51,8 +50,7 @@ Create, edit, import, preview man-pages.
 %patch1
 
 %build
-%configure \
-           --enable-aspell
+%configure 
 
 %install
 %make_install
