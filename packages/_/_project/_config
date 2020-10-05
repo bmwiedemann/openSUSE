@@ -1047,7 +1047,7 @@ Prefer: oxygen5-icon-theme
 # kernel bug (coolo)
 Prefer: kernel-default-devel
 
-Prefer: wxWidgets-3_0-devel python-wxWidgets-3_0
+Prefer: -wxWidgets-3_0-devel -python-wxWidgets-3_0 wxWidgets-3_2-devel
 Prefer: libopenssl-devel
 
 Prefer: -NX -xaw3dd -db43 -amanda
