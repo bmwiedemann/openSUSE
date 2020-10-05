@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  2 13:58:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.2
+  * Fixed: It was possible to create invalid `PBR` objects, which
+    caused some incorrect values to be returned by
+    `FroidurePin<PBR>` instances. The `to_string` implementation
+    for `PBR` also did not work properly in all cases.
+
+-------------------------------------------------------------------
 Tue Sep 22 11:16:35 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.1
