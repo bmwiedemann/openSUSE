@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  5 07:19:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.1:
+  * screen height measurement on sway simplified
+  * Esc key closes the Azote window
+  * dialog windows' behaviour unified
+
+-------------------------------------------------------------------
 Thu Oct  1 08:52:40 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.0:
