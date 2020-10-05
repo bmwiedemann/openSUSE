@@ -1,7 +1,7 @@
 #
 # spec file for package kicad
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,7 @@ ExclusiveArch:  do_not_build
 
 %if "%flavor" == "pdf"
 %define pkg_suffix -pdf
-# Stock distribution package for xetex has a bug. As there is no way to just
-# build languages which use pdftex, disable PDF documentation completely
-%if 0%{?suse_version} > 1500
 %bcond_without pdf
-%else
-ExclusiveArch:  do_not_build
-%endif
 %endif
 
 %if "%flavor" == "html"
@@ -39,16 +33,13 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        5.1.5
+Version:        5.1.7
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Documentation/HTML
-%if "%flavor" == "pdf"
-%else
-%endif
-URL:            http://kicad-pcb.org
-Source:         https://github.com/KiCad/%{sname}/archive/%{version}.tar.gz#/%{sname}-%{version}.tar.gz
+URL:            https://kicad-pcb.org
+Source:         https://gitlab.com/kicad/services/%{sname}/-/archive/%{version}/%{sname}-%{version}.tar.bz2#/%{sname}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE kicad-doc-notimestamp.patch davejplater@gmail.com -- Remove time stamped footer from html pages.
 Patch0:         kicad-doc-notimestamp.patch
 BuildRequires:  asciidoc >= 8.6.9
@@ -104,9 +95,8 @@ and tutorials.
 %package        ca
 Summary:        Catalan documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:ca)
+Provides:       locale(%{name}:ca)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    ca
 This package contains Catalan documentation and tutorials for KiCad
@@ -114,9 +104,8 @@ This package contains Catalan documentation and tutorials for KiCad
 %package        de
 Summary:        German documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:de)
+Provides:       locale(%{name}:de)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    de
 This package contains German documentation and tutorials for KiCad
@@ -124,7 +113,7 @@ This package contains German documentation and tutorials for KiCad
 %package        en
 Summary:        English documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:en)
+Provides:       locale(%{name}:en)
 Requires:       kicad = %{version}
 Requires:       kicad-doc = %{version}
 
@@ -134,9 +123,8 @@ This package contains English documentation and tutorials for KiCad
 %package        es
 Summary:        Spanish documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:es)
+Provides:       locale(%{name}:es)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    es
 This package contains Spanish documentation and tutorials for KiCad
@@ -144,9 +132,8 @@ This package contains Spanish documentation and tutorials for KiCad
 %package        fr
 Summary:        French documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:fr)
+Provides:       locale(%{name}:fr)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    fr
 This package contains French documentation and tutorials for KiCad
@@ -154,9 +141,8 @@ This package contains French documentation and tutorials for KiCad
 %package        id
 Summary:        Indonesian documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:id)
+Provides:       locale(%{name}:id)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    id
 This package contains Indonesian documentation and tutorials for KiCad
@@ -164,9 +150,8 @@ This package contains Indonesian documentation and tutorials for KiCad
 %package        it
 Summary:        Italian documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:it)
+Provides:       locale(%{name}:it)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    it
 This package contains Italian documentation and tutorials for KiCad
@@ -174,9 +159,8 @@ This package contains Italian documentation and tutorials for KiCad
 %package        ja
 Summary:        Japanese documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:ja)
+Provides:       locale(%{name}:ja)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    ja
 This package contains Japanese documentation and tutorials for KiCad
@@ -184,9 +168,8 @@ This package contains Japanese documentation and tutorials for KiCad
 %package        pl
 Summary:        Polish documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:pl)
+Provides:       locale(%{name}:pl)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    pl
 This package contains Polish documentation and tutorials for KiCad
@@ -194,9 +177,8 @@ This package contains Polish documentation and tutorials for KiCad
 %package        ru
 Summary:        Russian documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:ru)
+Provides:       locale(%{name}:ru)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    ru
 This package contains Russian documentation and tutorials for KiCad
@@ -204,9 +186,8 @@ This package contains Russian documentation and tutorials for KiCad
 %package        zh
 Summary:        Chinese documentation and tutorials for KiCad
 Group:          Documentation/Other
-Provides:       locale(kicad-doc:zh)
+Provides:       locale(%{name}:zh)
 Requires:       %{name}-en = %{version}
-Requires:       kicad-doc = %{version}
 
 %description    zh
 This package contains Chinese documentation and tutorials for KiCad
@@ -224,10 +205,8 @@ cp /usr/share/dblatex/latex/graphics/warning.pdf CMakeSupport/
 %build
 # Supported output formats: html;pdf;epub;
 %if %{with pdf}
-# SOURCE_DATE_EPOCH affirmation variable used by TeX, current
+# SOURCE_DATE_EPOCH affirmation variable used by TeX
 export FORCE_SOURCE_DATE=1
-# Deprecated variant used by TeX in Leap 42.x
-export SOURCE_DATE_EPOCH_TEX_PRIMITIVES=1
 # Do not build PL translations, bad interaction of po4a, asciidoc and xetex (gh#KiCad/kicad-doc#697)
 %cmake -DKICAD_DOC_PATH=%{_docdir}/kicad/help -DBUILD_FORMATS='pdf;' -DLANGUAGES='ca;de;en;es;fr;id;it;ja;ru;zh'
 %else
