@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nio4r
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 %define mod_name nio4r
 %define mod_full_name %{mod_name}-%{version}

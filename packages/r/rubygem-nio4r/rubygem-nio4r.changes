@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 25 14:26:27 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.5.4
+ see installed CHANGES.md
+
+  ## 2.5.4 (2020-09-16)
+  
+  * [#251](https://github.com/socketry/nio4r/issues/251)
+    Intermittent SEGV during GC.
+    ([@boazsegev])
+  
+
+-------------------------------------------------------------------
 Sat Sep 12 12:28:10 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.5.3
