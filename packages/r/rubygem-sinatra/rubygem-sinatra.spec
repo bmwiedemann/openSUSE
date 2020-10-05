@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-sinatra
-Version:        2.0.8.1
+Version:        2.1.0
 Release:        0
 %define mod_name sinatra
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.2.0}
+BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
