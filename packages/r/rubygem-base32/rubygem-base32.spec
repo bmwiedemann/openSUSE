@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-base32
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+#
+# This file was generated with a gem2rpm.yml and not just plain gem2rpm.
+# All sections marked as MANUAL, license headers, summaries and descriptions
+# can be maintained in that file. Please consult this file before editing any
+# of those fields
 #
 
 Name:           rubygem-base32
-Version:        0.3.2
+Version:        0.3.4
 Release:        0
 %define mod_name base32
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/stesla/base32
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 Summary:        Ruby extension for base32 encoding and decoding
 License:        MIT
 Group:          Development/Languages/Ruby
@@ -39,7 +47,7 @@ Ruby extension for base32 encoding and decoding.
 
 %install
 %gem_install \
-  --doc-files="CHANGELOG.md LICENSE README" \
+  --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
 
 %gem_packages

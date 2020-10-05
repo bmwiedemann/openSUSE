@@ -7,4 +7,12 @@
     <comment>required for building portus</comment>
     <requestid>570729</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f0acb1ce3b773a4084f6dcd1cc21524c</srcmd5>
+    <version>0.3.4</version>
+    <time>1601919001</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838021</requestid>
+  </revision>
 </revisionlist>
