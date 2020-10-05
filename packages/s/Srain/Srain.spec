@@ -17,12 +17,14 @@
 
 
 Name:           Srain
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC
 URL:            https://srain.im
 Source:         https://github.com/SrainApp/srain/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Srain-no_implicit_declarations.patch
+Patch0:         Srain-no_implicit_declarations.patch
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -42,7 +44,7 @@ IRC client written in GTK3+.
 %lang_package
 
 %prep
-%autosetup -n srain-%{version}
+%autosetup -p1 -n srain-%{version}
 
 %build
 %configure --disable-debug

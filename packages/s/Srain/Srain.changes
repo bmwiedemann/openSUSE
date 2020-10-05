@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  4 08:29:52 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.3
+  * fix an use-after-free case
+  * remove server when main loop is idle
+- Add Srain-no_implicit_declarations.patch
+
+-------------------------------------------------------------------
 Sat Jun 27 08:02:25 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.1.1

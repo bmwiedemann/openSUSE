@@ -1,0 +1,22 @@
+From 00b152a3af6b65102e08b01faab74a1f17af99b2 Mon Sep 17 00:00:00 2001
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: Sun, 4 Oct 2020 11:05:38 +0200
+Subject: [PATCH] Fix implicit-declaration error on some systems
+
+---
+ src/lib/path.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/lib/path.c b/src/lib/path.c
+index 2449072c..30611c68 100644
+--- a/src/lib/path.c
++++ b/src/lib/path.c
+@@ -37,6 +37,8 @@
+ #include "i18n.h"
+ #include "path.h"
+ 
++#include <stdlib.h>
++
+ #ifdef _WIN32
+ #include <windows.h>
+ #include <Shlwapi.h>
