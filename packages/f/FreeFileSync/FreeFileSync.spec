@@ -17,7 +17,7 @@
 
 
 Name:           FreeFileSync
-Version:        11.0
+Version:        11.2
 Release:        0
 Summary:        Free backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -32,13 +32,13 @@ Patch0:         FreeFileSync-Build.patch
 Patch1:         FreeFileSync-Resources.patch
 BuildRequires:  boost-devel >= 1.54
 BuildRequires:  gcc-c++
-BuildRequires:  libstdc++6 >= 10.0.0
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libssh2-devel
+BuildRequires:  libstdc++6 >= 10.0.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_2-devel
+BuildRequires:  wxGTK3-3_2-devel >= 3.1.4
 
 %description
 FreeFileSync is a free Open Source software that helps you synchronize files

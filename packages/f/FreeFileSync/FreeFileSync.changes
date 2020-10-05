@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Oct  3 08:47:24 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.2
+  - Improved grid layout with file icons hidden
+  - Improved rendering of inactive and disabled grid items
+  - Remember last user-selected paths for file and folder pickers
+  - Fixed folder name hidden in "item name" view type
+  - Fixed determination of unsupported trash folder (Linux)
+  - Fixed copying broken symlinks (macOS)
+  - Fixed default action when pressing Enter in popup dialogs
+  - Fixed default popup dialog size (macOS)
+  - Use localized start of week for %WeekDay% (Linux, macOS)
+  - Swap sides using CTRL+W instead of F10
+  - Show confirmation dialog before swapping sides
+
+-------------------------------------------------------------------
+Wed Sep  2 11:06:48 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.1
+  - New file group layout on main grid (reloaded)
+  - Alternate colors for main grid folder groups
+  - Added file group context menu
+  - Quick selection of items in folder group
+  - Fixed FTP access errors with Explicit SSL/TLS
+  - Fixed Google Drive error when double quotes in file name
+  - Fixed RTL layout bug with number input control
+  - Fixed grid column default sizes
+  - Fixed grid rendering performance during mouse scrolling
+  - Update all config files transactionally
+  - Respect user-preferred number/time format (Linux)
+  - Fixed floating panels not being resizable (Linux)
+  - Instantly open selection context menu on right mouse button down
+  - Further improved high DPI support
+  - Updated deprecated system API calls (requires macOS 10.10 or later)
+  - Fixed crash when accessing Nexis storage (macOS)
+  - Avoid buffer flush when aborting native file output
+  - Clear preview after folder history selection
+  - Pre-allocate target file without setting size
+  - Unified system error message formatting 
+
+-------------------------------------------------------------------
 Wed Aug  5 10:00:02 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 11.0
