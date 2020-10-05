@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">aa644b22fff9e939e549a9759629be58b3c5cac2</param>
+    <param name="revision">c706363815a38ff2c5cbc07b73e2cfaaa59bae0f</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">qperf*.tar</param>
