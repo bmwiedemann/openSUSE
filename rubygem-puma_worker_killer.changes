@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 25 14:41:04 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.3.1
+ see installed CHANGELOG.md
+
+  ## Main
+  
+  ## 0.3.1
+  
+  - Relax puma dependency (#94)
+  
+  ## 0.3.0
+  
+  - Test on recent ruby versions #84
+  - Add option to adjust restart randomizer (#78)
+  
+  ## 0.2.0
+  
+  - Simplify workers memory calculation in PumaMemory‘s `get_total` method #81
+  - Add rubocop in gemspec and CI, with offenses corrected and unnecessary cops disabled.
+  - Add `pre_term`-like `rolling_pre_term` config for terminations caused by rolling restart (#86)
+  - Fix compatibility with ruby version 2.3.X (#87)
+  
+
+-------------------------------------------------------------------
 Fri Jul 19 09:29:56 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 0.1.1

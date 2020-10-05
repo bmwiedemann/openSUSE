@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-puma_worker_killer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-puma_worker_killer
-Version:        0.1.1
+Version:        0.3.1
 Release:        0
 %define mod_name puma_worker_killer
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/schneems/puma_worker_killer
+URL:            https://github.com/schneems/puma_worker_killer
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        If you have a memory leak in your web code puma_worker_killer can
