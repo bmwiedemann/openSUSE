@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-ruby_parser
-Version:        3.14.2
+Version:        3.15.0
 Release:        0
 %define mod_name ruby_parser
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby < 3}
-BuildRequires:  %{ruby => 2.2}
+BuildRequires:  %{ruby < 3.1}
+BuildRequires:  %{ruby >= 2.1}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
