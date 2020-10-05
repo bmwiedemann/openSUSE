@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-sexp_processor
-Version:        4.14.1
+Version:        4.15.1
 Release:        0
 %define mod_name sexp_processor
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby < 3}
-BuildRequires:  %{ruby => 2.2}
+BuildRequires:  %{ruby < 3.1}
+BuildRequires:  %{ruby >= 2.1}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
