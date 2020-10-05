@@ -1,15 +1,15 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 295c8d2..84fb093 100644
+index e506aaa..9c14ce4 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -252,12 +252,12 @@ INSTALL(FILES
+@@ -227,12 +227,12 @@ INSTALL(FILES
  	${CMAKE_SOURCE_DIR}/README.md
  	DESTINATION ${DATA_INSTALL_DIR})
  IF(UNIX AND NOT APPLE AND NOT BEOS AND NOT HAIKU)
 -	INSTALL(FILES ${CMAKE_SOURCE_DIR}/build/linux/io.github.cxong.cdogs-sdl.desktop DESTINATION ${INSTALL_PREFIX}/share/applications)
--	INSTALL(FILES ${CMAKE_SOURCE_DIR}/build/linux/io.github.cxong.cdogs-sdl.appdata.xml DESTINATION ${INSTALL_PREFIX}/share/appdata)
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/build/linux/io.github.cxong.cdogs-sdl.desktop DESTINATION ${INSTALL_PREFIX}/share/applications/ RENAME cdogs-sdl.desktop)
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/build/linux/io.github.cxong.cdogs-sdl.appdata.xml DESTINATION ${INSTALL_PREFIX}/share/appdata/ RENAME cdogs-sdl.appdata.xml)
+-	INSTALL(FILES ${CMAKE_SOURCE_DIR}/build/linux/io.github.cxong.cdogs-sdl.appdata.xml DESTINATION ${INSTALL_PREFIX}/share/metainfo)
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/build/linux/io.github.cxong.cdogs-sdl.desktop DESTINATION ${INSTALL_PREFIX}/share/applications  RENAME cdogs-sdl.desktop)
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/build/linux/io.github.cxong.cdogs-sdl.appdata.xml DESTINATION ${INSTALL_PREFIX}/share/metainfo RENAME cdogs-sdl.appdata.xml)
  	foreach(RES 16 22 32 48 128)
  		INSTALL(FILES ${CMAKE_SOURCE_DIR}/build/linux/cdogs-icon.${RES}.png
  			DESTINATION ${INSTALL_PREFIX}/share/icons/hicolor/${RES}x${RES}/apps

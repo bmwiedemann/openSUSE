@@ -1,0 +1,12 @@
+diff -Nur cdogs-sdl-0.9.0/src/proto/nanopb/generator/nanopb_generator.py new/src/proto/nanopb/generator/nanopb_generator.py
+--- cdogs-sdl-0.9.0/src/proto/nanopb/generator/nanopb_generator.py	2020-09-16 15:27:30.000000000 +0200
++++ new/src/proto/nanopb/generator/nanopb_generator.py	2020-09-30 12:35:40.026179442 +0200
+@@ -1928,7 +1928,7 @@
+     for fdesc in fdescs.values():
+         results = process_file(fdesc.name, fdesc, options, other_files)
+ 
+-        base_dir = options.output_dir or ''
++        base_dir = options.output_dir or '.'
+         to_write = [
+             (os.path.join(base_dir, results['headername']), results['headerdata']),
+             (os.path.join(base_dir, results['sourcename']), results['sourcedata']),

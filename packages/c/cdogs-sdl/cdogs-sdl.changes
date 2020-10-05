@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Oct  1 18:35:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 0.9.1:
+  * Fix bugs that spawn player in locked rooms
+  Game
+  * Fix spawning player in locked rooms.
+  * Fix spawning keys inside locked doors.
+  * Add show map powerup in Doom campaign.
+  Editor
+  * Add color highlights for locked rooms.
+  Other
+  * Fix linker issue in gcc10 (fixed by @susnux).
+- Drop patch:
+  * cdogs-gLog.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Wed Sep 30 11:12:45 UTC 2020 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.9.0:
+  * Feature complete Doom campaign
+  Game
+  * Add feet colors
+  * Add new hairs/hats: helmet, donut, hazmat
+  * Add AI wake sounds #651
+  * Fix sound spam at start of maps #605
+  * Improve weapon selection by disabling menus if there are none available #628
+  * Improve pause menu with background overlay #283
+  Editor
+  * Add level warp, multiple exits #451
+  * Add static pickups #644
+  * Add player template editing in editor #495
+  * Add option to skip weapon selection screen #647
+  * Add option for keeping picked up guns across missions #573
+  * Add option for ammo persistence #350
+  * Fix numpad insert/delete in editor #353
+- Added nanopb.patch from nanopb upstream
+- Added cdogs-gLog.patch to fix build with new gcc
+- Rebased cdogs-sdl-fix-desktop-and-appdata.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon May 25 17:43:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.0
+  * Custom tile classes and revamped Doom campaign
+  Game
+  * Fix string overflow for long weapon descriptions
+  * Fix players sometimes spawning in locked rooms
+  * Fix missing death animation
+  * Fix leg animation when stationary shooting
+  * Fix some bullet colors
+  * Add button labels for PS3/PS4 controllers
+  * Improve Doom campaign with multiple tile types, walk-through
+    walls
+  Editor
+  * Fix background clearing
+  * Add support for custom tile types for static maps
+  * Add hair editing in char editor
+  * Add native file open/save dialogs
+  * Add support for drag/dropping guide image
+  * Add hardware cursors
+  * Improve guide image rendering speed
+
+-------------------------------------------------------------------
 Sun Jan  5 19:28:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.3
