@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rouge
-Version:        3.18.0
+Version:        3.23.0
 Release:        0
 %define mod_name rouge
 %define mod_full_name %{mod_name}-%{version}
