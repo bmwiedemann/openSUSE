@@ -48,9 +48,19 @@ diff --git a/tdesktop-2.3.2-full/cmake/external/webrtc/CMakeLists.txt b/tdesktop
 index 1273291..1dd8ae6 100644
 --- a/tdesktop-2.3.2-full/cmake/external/webrtc/CMakeLists.txt
 +++ b/tdesktop-2.3.2-full-patched/cmake/external/webrtc/CMakeLists.txt
-@@ -99,4 +99,5 @@ target_link_libraries(external_webrtc
- INTERFACE
-     ${webrtc_libs_list}
-     desktop-app::external_openssl
-+    jpeg
- )
+@@ -7,7 +7,7 @@
+ add_library(external_webrtc INTERFACE IMPORTED GLOBAL)
+ add_library(desktop-app::external_webrtc ALIAS external_webrtc)
+ 
+-if (DESKTOP_APP_USE_PACKAGED)
++if (NOT DESKTOP_APP_USE_PACKAGED)
+     find_package(tg_owt REQUIRED)
+     target_link_libraries(external_webrtc INTERFACE tg_owt::tg_owt)
+ else()
+@@ -98,5 +98,6 @@ else()
+     INTERFACE
+         ${webrtc_libs_list}
+         desktop-app::external_openssl
++        jpeg
+     )
+ endif()
