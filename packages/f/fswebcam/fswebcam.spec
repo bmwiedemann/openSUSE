@@ -1,7 +1,7 @@
 #
 # spec file for package fswebcam
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
+Name:           fswebcam
+Version:        20200725
+Release:        0
 Summary:        Tiny and flexible webcam program
 License:        GPL-2.0-only
-Name:           fswebcam
-Version:        20190307
-Release:        0
-Source0:        fswebcam-%{version}.tar.xz
-Url:            http://www.sanslogic.co.uk/fswebcam/
+URL:            https://www.sanslogic.co.uk/fswebcam/
+Source0:        https://www.sanslogic.co.uk/fswebcam/files/%{name}-%{version}.tar.xz
 BuildRequires:  gd-devel > 2
 Requires:       gd > 2
 
@@ -35,15 +35,15 @@ device, and overlaying a caption or image.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR="%{buildroot}" install
+%make_install
 
 %files
 %license LICENSE
 %doc README CHANGELOG example.conf
 %{_bindir}/fswebcam
-%{_mandir}/man1/fswebcam.1.gz
+%{_mandir}/man1/fswebcam.1%{?ext_man}
 
 %changelog

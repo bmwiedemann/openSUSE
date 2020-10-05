@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:05:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20200725:
+  - Return a non-zero if the capture fails.
+  - Add option to change camera timeout from default of 10 seconds.
+    (James McCormac)
+  - Add new Bayer palettes. (Eugen Hristev)
+  - Add WebP output support.
+  - Add option to dump raw frames to stdout. (Philipp Simon Schmidt)
+  - Add option to limit number of times to loop.
+  - Fix libgd 2.3.0+ issue where the font test always fails. (Ashley Dixon)
+
+-------------------------------------------------------------------
 Thu Jan  2 15:18:41 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to current version from git
