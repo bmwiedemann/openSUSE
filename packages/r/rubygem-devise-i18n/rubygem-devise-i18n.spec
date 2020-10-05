@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-devise-i18n
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 %define mod_name devise-i18n
 %define mod_full_name %{mod_name}-%{version}
