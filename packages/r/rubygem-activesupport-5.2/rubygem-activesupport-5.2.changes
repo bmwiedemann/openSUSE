@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:24:20 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 5.2.4.4
+ see installed CHANGELOG.md
+
+  ## Rails 5.2.4.4 (September 09, 2020) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.2.4.3 (May 18, 2020) ##
+  
+  *   [CVE-2020-8165] Deprecate Marshal.load on raw cache read in RedisCacheStore
+  
+  *   [CVE-2020-8165] Avoid Marshal.load on raw cache value in MemCacheStore
+  
+
+-------------------------------------------------------------------
 Thu May  7 20:04:18 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 5.2.4.2
