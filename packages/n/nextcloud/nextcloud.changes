@@ -1,8 +1,37 @@
 -------------------------------------------------------------------
+Sat Oct  3 10:31:15 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 20.0.0
+  - No changelog from upstream at this time.
+- Upgrade apps during update process.
+
+-------------------------------------------------------------------
 Thu Sep 10 15:20:27 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 19.0.3
-  - No changelog from upstream at this time.
+  - Fix possible leaking scope in Flow (server#22410)
+  - Combine body-login rules in theming and fix twofactor and guest styling on bright colors (server#22427)
+  - Show better quota warning for group folders and external storage (server#22442)
+  - Add php docs build script (server#22448)
+  - Fix clicks on actions menu of non opaque file rows in acceptance tests (server#22503)
+  - Fix writing BLOBs to postgres with recent contacts interaction (server#22515)
+  - Set the mount id before calling storage wrapper (server#22519)
+  - Fix S3 error handling (server#22521)
+  - Only disable zip64 if the size is known (server#22537)
+  - Change free space calculation (server#22553)
+  - Do not keep the part file if the forbidden exception has no retry set (server#22560)
+  - Fix app password updating out of bounds (server#22569)
+  - Use the correct root to determinate the webroot for the resource (server#22579)
+  - Upgrade icewind/smb to 3.2.7 (server#22581)
+  - Bump elliptic from 6.4.1 to 6.5.3 (notifications#732)
+  - Fixes regression that prevented you from toggling the encryption flag (privacy#489)
+  - Match any non-whitespace character in filesystem pattern (serverinfo#229)
+  - Catch StorageNotAvailable exceptions (text#1001)
+  - Harden read only check on public endpoints (text#1017)
+  - Harden check when using token from memcache (text#1020)
+  - Sessionid is an int (text#1029)
+  - Only overwrite Ctrl-f when text is focussed (text#990)
+  - Set the X-Requested-With header on dav requests (viewer#582)
 
 -------------------------------------------------------------------
 Fri Aug 28 11:22:36 UTC 2020 - ecsos <ecsos@opensuse.org>

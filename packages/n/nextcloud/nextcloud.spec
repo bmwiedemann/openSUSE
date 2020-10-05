@@ -49,7 +49,7 @@
 %endif
 
 Name:           nextcloud
-Version:        19.0.3
+Version:        20.0.0
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -233,7 +233,7 @@ fi
 if [ $1 -eq 1 ]; then
     echo "%{name}-server: First install starting"
 else
-    echo "%{name}-server: installing upgrade ..."
+    echo "%{name}-server: Upgrade starting ..."
 fi
 # https://github.com/nextcloud
 if [ -x %{ocphp_bin}/php -a -f %{oc_dir}/occ ]; then
@@ -244,11 +244,6 @@ fi
 
 %post
 %service_add_post %{name}-cron.timer %{name}-cron.service
-if [ $1 -eq 1 ]; then
-    echo "%{name} First install complete"
-else
-    echo "%{name} Upgrade complete"
-fi
 
 if [ $1 -eq 1 ]; then
 %if 0%{?suse_version}
@@ -279,6 +274,8 @@ fi
 if [ -s %{statedir}/occ_maintenance_mode_during_nextcloud_install ]; then
 echo "%{name}: occ maintenance:repair (fix possible errors)"
 su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair" || true
+echo "%{name}: occ update apps"
+su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ app:update --all" || true
 echo "%{name}: occ upgrade"
 su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ upgrade" || true
 echo "%{name}: occ maintenance:mode --off"
@@ -287,6 +284,12 @@ fi
 
 rm -f %{statedir}/apache_stopped_during_nextcloud_install
 rm -f %{statedir}/occ_maintenance_mode_during_nextcloud_install
+
+if [ $1 -eq 1 ]; then
+    echo "%{name}-server: First install complete"
+else
+    echo "%{name}-server: Upgrade complete"
+fi
 
 %preun
 %service_del_preun %{name}-cron.timer %{name}-cron.service
