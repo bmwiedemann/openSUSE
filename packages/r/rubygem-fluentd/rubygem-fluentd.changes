@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:57:44 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.11.2
+ see installed CHANGELOG.md
+
+  # v1.11
+  
+  ## Release v1.11.2 - 2020/08/04
+  
+  ### Enhancement
+  
+  * `in_dummy` renamed to `in_sample`
+    https://github.com/fluent/fluentd/pull/3065
+  * Allow regular expression in filter/match directive
+    https://github.com/fluent/fluentd/pull/3071
+  * Refactoring code
+    https://github.com/fluent/fluentd/pull/3051
+  
+  ### Bug fix
+  
+  * buffer: Fix log message for `chunk_limit_records` case
+    https://github.com/fluent/fluentd/pull/3079
+  * buffer: Fix timekey optimization for non-windows platform
+    https://github.com/fluent/fluentd/pull/3092
+  * cert: Raise an error for broken certificate file
+    https://github.com/fluent/fluentd/pull/3086
+  * cert: Set TLS ciphers list correcty on older OpenSSL
+    https://github.com/fluent/fluentd/pull/3093
+  
+  ## Release v1.11.1 - 2020/06/22
+  
+  ### Enhancement
+  
+  * in_http: Add `dump_error_log` parameter
+    https://github.com/fluent/fluentd/pull/3035
+  * in_http: Improve time field handling
+    https://github.com/fluent/fluentd/pull/3046
+  * Refactoring code
+    https://github.com/fluent/fluentd/pull/3047
+  
+  ### Bug fix
+  
+  * in_tail: Use actual path instead of based pattern for ignore list
+    https://github.com/fluent/fluentd/pull/3042
+  * child_process helper: Fix child process failure due to SIGPIPE if the command uses stdout
+    https://github.com/fluent/fluentd/pull/3044
+  
+  ## Release v1.11.0 - 2020/06/04
+  
+  ### New feature
+  
+  * in_unix: Use v1 API
+    https://github.com/fluent/fluentd/pull/2992
+  
+  ### Enhancement
+  
+  * parser_syslog: Support any `time_format` for RFC3164 string parser
+    https://github.com/fluent/fluentd/pull/3014
+  * parser_syslog: Add new parser for RFC5424
+    https://github.com/fluent/fluentd/pull/3015
+  * Refactoring code
+    https://github.com/fluent/fluentd/pull/3019
+  
+  ### Bug fix
+  
+  * in_gc_stat: Add `use_symbol_keys` parameter to emit string key record
+    https://github.com/fluent/fluentd/pull/3008
+  
+
+-------------------------------------------------------------------
 Thu May  7 20:43:16 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 1.10.3
