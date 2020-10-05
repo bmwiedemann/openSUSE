@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:29:34 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1601454562.440df182:
+  * t: Reorder 14-isotovideo.t to cover the "happy path" first
+  * Allow autotest and command server to shutdown gracefully
+  * Avoid possible Perl warning in isotovideo's cleanup code
+
+-------------------------------------------------------------------
 Sun Sep 27 21:31:27 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1601113711.059fe38b:
