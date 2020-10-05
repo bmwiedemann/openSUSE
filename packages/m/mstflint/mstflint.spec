@@ -16,10 +16,10 @@
 #
 
 
-%define extra_version -2
+%define extra_version -1
 
 Name:           mstflint
-Version:        4.13.3
+Version:        4.15.0
 Release:        0
 Summary:        Mellanox Firmware Burning and Diagnostics Tools
 License:        GPL-2.0-only OR BSD-2-Clause
@@ -80,6 +80,7 @@ rm -rf %{buildroot}%{_bindir}/hca_self_test.ofed
 %{_bindir}/mstprivhost
 %{_bindir}/mstregdump
 %{_bindir}/mstresourcedump
+%{_bindir}/mstresourceparse
 %{_bindir}/mstvpd
 %{_bindir}/mstfwtrace
 %{_mandir}/man1/*.1%{ext_man}
