@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-timers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-timers
-Version:        4.3.0
+Version:        4.3.2
 Release:        0
 %define mod_name timers
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.2.1}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/socketry/timers
+URL:            https://github.com/socketry/timers
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Pure Ruby one-shot and periodic timers
@@ -40,8 +40,7 @@ License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-Schedule procs to run after a certain time, or at periodic intervals, using
-any API that accepts a timeout.
+Pure Ruby one-shot and periodic timers.
 
 %prep
 
@@ -49,7 +48,6 @@ any API that accepts a timeout.
 
 %install
 %gem_install \
-  --doc-files="README.md" \
   -f
 
 %gem_packages
