@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-puma
-Version:        4.3.6
+Version:        5.0.0
 Release:        0
 %define mod_name puma
 %define mod_full_name %{mod_name}-%{version}
@@ -36,7 +36,7 @@ BuildRequires:  %{rubydevel >= 2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-URL:            http://puma.io
+URL:            https://puma.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-puma-rpmlintrc
 Source2:        gem2rpm.yml
